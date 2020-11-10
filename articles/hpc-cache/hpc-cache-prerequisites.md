@@ -4,14 +4,14 @@ description: Předpoklady pro použití mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 11/05/2020
 ms.author: v-erkel
-ms.openlocfilehash: 92c8d860925ebde7d20befbaa708e8530cd1a0eb
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: a31aee3f4548d3137fa1241aaa3a0f6171cf6895
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344011"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412506"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 
@@ -59,9 +59,22 @@ Osvědčeným postupem je vytvořit novou podsíť pro každou mezipaměť. V r�
 Mezipaměť potřebuje DNS pro přístup k prostředkům mimo svou virtuální síť. V závislosti na tom, jaké prostředky používáte, možná budete muset nastavit vlastní server DNS a nakonfigurovat přesměrování mezi tímto serverem a Azure DNS servery:
 
 * Pro přístup k koncovým bodům služby Azure Blob Storage a dalším interním prostředkům budete potřebovat server DNS založený na Azure.
-* Pokud chcete získat přístup k místnímu úložišti, musíte nakonfigurovat vlastní server DNS, který dokáže přeložit názvy hostitelů úložiště.
+* Pokud chcete získat přístup k místnímu úložišti, musíte nakonfigurovat vlastní server DNS, který dokáže přeložit názvy hostitelů úložiště. Tuto možnost je nutné provést **před** vytvořením mezipaměti.
 
 Pokud potřebujete jenom přístup k úložišti objektů blob, můžete pro svou mezipaměť použít výchozí server DNS určený pro Azure. Pokud ale potřebujete přístup k jiným prostředkům, měli byste vytvořit vlastní server DNS a nakonfigurovat ho tak, aby přenesl všechny požadavky na rozlišení specifické pro Azure na Azure DNS Server.
+
+Chcete-li použít vlastní server DNS, musíte provést tyto kroky instalace před vytvořením mezipaměti:
+
+* Vytvořte virtuální síť, která bude hostovat mezipaměť prostředí Azure HPC.
+* Vytvořte server DNS.
+* Přidejte server DNS do virtuální sítě mezipaměti.
+
+  Pomocí těchto kroků přidejte server DNS do virtuální sítě v Azure Portal:
+
+  1. Otevřete virtuální síť v Azure Portal.
+  1. V nabídce **Nastavení** na bočním panelu vyberte **servery DNS** .
+  1. Vybrat **vlastní**
+  1. Do pole zadejte IP adresu serveru DNS.
 
 K vyrovnávání zatížení připojení klientů mezi všemi dostupnými přípojnými body mezipaměti se dá použít taky jednoduchý server DNS.
 
@@ -143,7 +156,7 @@ Další informace najdete v tématu [řešení problémů s cílovým úložišt
 * **Přístup k adresáři:** Povolte `showmount` příkaz v systému úložiště. Azure HPC Cache používá tento příkaz ke kontrole, zda konfigurace cíle úložiště odkazuje na platný export, a také k tomu, aby se zajistilo, že více připojení nemá přístup ke stejným podadresářům (riziko kolizí souborů).
 
   > [!NOTE]
-  > Pokud váš systém úložiště NFS používá operační systém ONTAP 9,2 NetApp, **nepovolujte `showmount` **ho. Pro pomoc [se obraťte na službu a podporu společnosti Microsoft](hpc-cache-support-ticket.md) .
+  > Pokud váš systém úložiště NFS používá operační systém ONTAP 9,2 NetApp, **nepovolujte `showmount`** ho. Pro pomoc [se obraťte na službu a podporu společnosti Microsoft](hpc-cache-support-ticket.md) .
 
   Další informace o přístupu k výpisu adresářů najdete v [článku věnovaném řešení potíží s](troubleshoot-nas.md#enable-export-listing)cílovým úložištěm NFS.
 

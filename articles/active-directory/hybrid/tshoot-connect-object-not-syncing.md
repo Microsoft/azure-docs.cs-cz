@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77895fd81bd37e304d422aea64da0298fc1673ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0c8a42edad08308095469039c048f8dd8552af
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85356470"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413458"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Řešení potíží s objektem, který se nesynchronizuje s Azure Active Directory
 
@@ -54,7 +54,7 @@ Proces synchronizace zahrnuje následující kroky:
 
 5. **Exportovat do služby Azure AD:** Po synchronizaci se objekty exportují z Azure AD CS do Azure AD.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Chcete-li zjistit chyby, podívejte se na několik různých míst v následujícím pořadí:
 
@@ -81,7 +81,7 @@ Sloupec **Status (stav** ) obsahuje nejdůležitější informace a zobrazuje ne
 | dokončeno – \* Upozornění |Běh se dokončil, ale některá data nejsou v očekávaném stavu. Pokud máte chyby, tato zpráva je obvykle jenom příznakem. Nezkoumejte upozornění, dokud nevyřešíte chyby. |
 | úspěch |Žádné problémy. |
 
-Když vyberete řádek, v dolní části karty **operace** se aktualizuje, aby se zobrazily podrobnosti o tomto spuštění. Na levé straně této oblasti může být seznam s názvem **Krok #**. Tento seznam se zobrazí pouze v případě, že máte více domén v doménové struktuře a každá doména je reprezentována krokem. Název domény najdete pod **oddílem**nadpisu. Pod hlavičkou **Statistika synchronizace** můžete najít další informace o počtu zpracovaných změn. Kliknutím na odkazy zobrazíte seznam změněných objektů. Pokud máte objekty s chybami, zobrazí se tyto chyby pod hlavičkou **chyby synchronizace** .
+Když vyberete řádek, v dolní části karty **operace** se aktualizuje, aby se zobrazily podrobnosti o tomto spuštění. Na levé straně této oblasti může být seznam s názvem **Krok #**. Tento seznam se zobrazí pouze v případě, že máte více domén v doménové struktuře a každá doména je reprezentována krokem. Název domény najdete pod **oddílem** nadpisu. Pod hlavičkou **Statistika synchronizace** můžete najít další informace o počtu zpracovaných změn. Kliknutím na odkazy zobrazíte seznam změněných objektů. Pokud máte objekty s chybami, zobrazí se tyto chyby pod hlavičkou **chyby synchronizace** .
 
 ### <a name="errors-on-the-operations-tab"></a>Chyby na kartě operace
 Pokud máte chyby, Synchronization Service Manager zobrazí objekt chyba a samotnou chybu jako odkazy, které poskytují další informace.
@@ -89,9 +89,9 @@ Pokud máte chyby, Synchronization Service Manager zobrazí objekt chyba a samot
 ![Snímek obrazovky s chybami v Synchronization Service Manager](./media/tshoot-connect-object-not-syncing/errorsync.png)  
 Začněte tím, že vyberete řetězec chyby. (Na předchozím obrázku je chybový řetězec **synchronizace-pravidlo-Chyba-funkce – aktivované**.) Nejprve se zobrazí přehled o objektu. Pokud se chcete podívat na skutečnou chybu, vyberte **trasování zásobníku**. Toto trasování poskytuje informace na úrovni ladění pro chybu.
 
-Klikněte pravým tlačítkem myši na pole **informace o zásobníku volání** , klikněte na **Vybrat vše**a pak vyberte **Kopírovat**. Pak zkopírujte zásobník a podívejte se na chybu ve vašem oblíbeném editoru, jako je Poznámkový blok.
+Klikněte pravým tlačítkem myši na pole **informace o zásobníku volání** , klikněte na **Vybrat vše** a pak vyberte **Kopírovat**. Pak zkopírujte zásobník a podívejte se na chybu ve vašem oblíbeném editoru, jako je Poznámkový blok.
 
-Pokud je chyba ze **SyncRulesEngine**, informace zásobníku volání nejprve zobrazí všechny atributy objektu. Posuňte se dolů, dokud se nezobrazí záhlaví **InnerException =>**.  
+Pokud je chyba ze **SyncRulesEngine** , informace zásobníku volání nejprve zobrazí všechny atributy objektu. Posuňte se dolů, dokud se nezobrazí záhlaví **InnerException =>**.  
 
   ![Snímek obrazovky Synchronization Service Manager, který zobrazuje informace o chybě pod hlavičkou InnerException =>](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
   
@@ -104,7 +104,7 @@ Pokud karta [**operace**](#operations) neobsahuje žádné chyby, použijte obje
 
 ### <a name="searching-for-an-object-in-the-cs"></a>Hledání objektu v CS
 
-V Synchronization Service Manager vyberte **konektory**, vyberte konektor služby Active Directory a vyberte **Hledat místo v konektoru**.
+V Synchronization Service Manager vyberte **konektory** , vyberte konektor služby Active Directory a vyberte **Hledat místo v konektoru**.
 
 V poli **obor** vyberte možnost **RDN** , pokud chcete vyhledat atribut CN, nebo vyberte možnost **DN nebo kotva** , pokud chcete vyhledat atribut **rozlišujícího** atributu. Zadejte hodnotu a vyberte **Hledat**. 
  
@@ -112,11 +112,11 @@ V poli **obor** vyberte možnost **RDN** , pokud chcete vyhledat atribut CN, neb
 
 Pokud hledaný objekt nenajdete, možná se vyfiltroval pomocí [filtrování založeného na doméně](how-to-connect-sync-configure-filtering.md#domain-based-filtering) nebo [filtrování na základě organizačních jednotek](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering). Pokud chcete ověřit, jestli je filtrování nakonfigurované podle očekávání, přečtěte si téma [Azure AD Connect Sync: Konfigurace filtrování](how-to-connect-sync-configure-filtering.md).
 
-Můžete provést další užitečné hledání tak, že vyberete konektor Azure AD. V poli **obor** vyberte možnost **nedokončený import**a pak zaškrtněte políčko **Přidat** . Toto vyhledávání poskytuje všechny synchronizované objekty ve službě Azure AD, které nelze přidružit k místnímu objektu.  
+Můžete provést další užitečné hledání tak, že vyberete konektor Azure AD. V poli **obor** vyberte možnost **nedokončený import** a pak zaškrtněte políčko **Přidat** . Toto vyhledávání poskytuje všechny synchronizované objekty ve službě Azure AD, které nelze přidružit k místnímu objektu.  
 
 ![Snímek obrazovky osamocených míst v prostoru konektoru hledání](./media/tshoot-connect-object-not-syncing/cssearchorphan.png) 
  
-Tyto objekty byly vytvořeny jiným modulem synchronizace nebo modulem synchronizace s jinou konfigurací filtrování. Tyto osamocené objekty již nejsou spravovány. Projděte si tento seznam a zvažte odebrání těchto objektů pomocí rutin [Azure AD PowerShellu](https://aka.ms/aadposh) .
+Tyto objekty byly vytvořeny jiným modulem synchronizace nebo modulem synchronizace s jinou konfigurací filtrování. Tyto osamocené objekty již nejsou spravovány. Projděte si tento seznam a zvažte odebrání těchto objektů pomocí rutin [Azure AD PowerShellu](/previous-versions/azure/jj151815(v=azure.100)) .
 
 ### <a name="cs-import"></a>Import CS
 Když otevřete objekt CS, v horní části je několik karet. Karta **Import** zobrazuje data, která jsou připravená po importu.  
@@ -125,7 +125,7 @@ Když otevřete objekt CS, v horní části je několik karet. Karta **Import** 
 
 Sloupec **stará hodnota** zobrazuje informace o tom, co je aktuálně Uloženo v poli připojit, a sloupec **Nová hodnota** zobrazuje informace o tom, co bylo přijato ze zdrojového systému a dosud nebylo použito. Pokud v objektu dojde k chybě, změny se nezpracují.
 
-Karta **chyb synchronizace** se zobrazí v okně **vlastnosti objektu prostoru konektoru** pouze v případě, že došlo k potížím s objektem. Další informace najdete [v tématu řešení potíží s chybami synchronizace na kartě **operace** ](#errors-on-the-operations-tab).
+Karta **chyb synchronizace** se zobrazí v okně **vlastnosti objektu prostoru konektoru** pouze v případě, že došlo k potížím s objektem. Další informace najdete [v tématu řešení potíží s chybami synchronizace na kartě **operace**](#errors-on-the-operations-tab).
 
 ![Snímek obrazovky karty Chyba synchronizace v objektu prostoru konektoru okno Vlastnosti](./media/tshoot-connect-object-not-syncing/cssyncerror.png)  
 
@@ -143,7 +143,7 @@ Na předchozím obrázku můžete také ve sloupci **PasswordSync** zobrazit, ž
 **Na kartě zarážky se** můžete dostat do úložiště metaverse tím, že vyberete [**vlastnosti objektu úložiště metaverse**](#mv-attributes).
 
 ### <a name="preview"></a>Preview
-V levém dolním rohu okna **vlastnosti objektu prostoru konektoru** je tlačítko **Náhled** . Kliknutím na toto tlačítko otevřete stránku **náhledu** , kde můžete synchronizovat jeden objekt. Tato stránka je užitečná, Pokud řešíte některá vlastní synchronizační pravidla a chcete zobrazit efekt změny u jednoho objektu. Můžete vybrat **úplnou synchronizaci** nebo **rozdílovou synchronizaci**. Můžete také vybrat možnost **Generovat náhled**, která zachovává pouze změnu paměti. Nebo vyberte možnost **Potvrdit náhled**, která aktualizuje úložiště metaverse a fáze všechny změny v cílových prostorech konektoru.  
+V levém dolním rohu okna **vlastnosti objektu prostoru konektoru** je tlačítko **Náhled** . Kliknutím na toto tlačítko otevřete stránku **náhledu** , kde můžete synchronizovat jeden objekt. Tato stránka je užitečná, Pokud řešíte některá vlastní synchronizační pravidla a chcete zobrazit efekt změny u jednoho objektu. Můžete vybrat **úplnou synchronizaci** nebo **rozdílovou synchronizaci**. Můžete také vybrat možnost **Generovat náhled** , která zachovává pouze změnu paměti. Nebo vyberte možnost **Potvrdit náhled** , která aktualizuje úložiště metaverse a fáze všechny změny v cílových prostorech konektoru.  
 
 ![Snímek obrazovky se stránkou Preview s vybranou možnost začít Preview](./media/tshoot-connect-object-not-syncing/preview.png)  
 
@@ -158,7 +158,7 @@ Vedle tlačítka **Náhled** vyberte tlačítko **protokol** a otevřete stránk
 Je obvykle lepší začít vyhledávat ze zdrojového prostoru konektoru služby Active Directory. Můžete ale také začít vyhledávat z úložiště metaverse.
 
 ### <a name="searching-for-an-object-in-the-mv"></a>Hledání objektu v MV
-V Synchronization Service Manager vyberte **Hledat v úložišti Metaverse**, jak je znázorněno na následujícím obrázku. Vytvoření dotazu, který znáte, zjistíte uživatele. Vyhledejte běžné atributy, jako je třeba **account** (**sAMAccountName**) a **userPrincipalName**. Další informace najdete v tématu [synchronizace Service Managerho vyhledávání v úložišti Metaverse](how-to-connect-sync-service-manager-ui-mvsearch.md).
+V Synchronization Service Manager vyberte **Hledat v úložišti Metaverse** , jak je znázorněno na následujícím obrázku. Vytvoření dotazu, který znáte, zjistíte uživatele. Vyhledejte běžné atributy, jako je třeba **account** ( **sAMAccountName** ) a **userPrincipalName**. Další informace najdete v tématu [synchronizace Service Managerho vyhledávání v úložišti Metaverse](how-to-connect-sync-service-manager-ui-mvsearch.md).
 
 ![Snímek obrazovky Synchronization Service Manager s vybranou kartou hledání Metaverse](./media/tshoot-connect-object-not-syncing/mvsearch.png)  
 
@@ -191,8 +191,8 @@ Na kartě **atributy** vidíte hodnoty a které konektory je přidaly.
 ![Snímek obrazovky okno Vlastnosti objektu Metaverse s vybranou kartou atributy](./media/tshoot-connect-object-not-syncing/mvobject.png)  
 
 Pokud se objekt nesynchronizuje, požádejte o tyto otázky informace o stavech atributů v úložišti Metaverse:
-- Je atribut přítomný **cloudFiltered** a je nastaven na **hodnotu true**? Pokud je, je filtrovaný podle kroků v [filtrování založeném na atributech](how-to-connect-sync-configure-filtering.md#attribute-based-filtering).
-- Je přítomen atribut **sourceAnchor** ? Pokud ne, máte topologii doménové struktury prostředků účtů? Pokud je objekt identifikován jako propojená poštovní schránka (atribut **msExchRecipientTypeDetails** má hodnotu **2**), **sourceAnchor** ho do doménové struktury připnul s povoleným účtem služby Active Directory. Zajistěte, aby byl hlavní účet správně naimportovaný a synchronizovaný. Hlavní účet musí být uveden mezi [konektory](#mv-connectors) pro daný objekt.
+- Je atribut přítomný **cloudFiltered** a je nastaven na **hodnotu true** ? Pokud je, je filtrovaný podle kroků v [filtrování založeném na atributech](how-to-connect-sync-configure-filtering.md#attribute-based-filtering).
+- Je přítomen atribut **sourceAnchor** ? Pokud ne, máte topologii doménové struktury prostředků účtů? Pokud je objekt identifikován jako propojená poštovní schránka (atribut **msExchRecipientTypeDetails** má hodnotu **2** ), **sourceAnchor** ho do doménové struktury připnul s povoleným účtem služby Active Directory. Zajistěte, aby byl hlavní účet správně naimportovaný a synchronizovaný. Hlavní účet musí být uveden mezi [konektory](#mv-connectors) pro daný objekt.
 
 ### <a name="mv-connectors"></a>Konektory MV
 Karta **konektory** zobrazuje všechny prostory konektorů, které mají reprezentace objektu. 

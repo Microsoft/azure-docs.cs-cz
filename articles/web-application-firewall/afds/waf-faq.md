@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ba0cbbccd1f4a9bc8ff8a4895e238c9150c9b17
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82837630"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413067"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Nejčastější dotazy k firewallu webových aplikací Azure na službě Azure front-dveří
 
@@ -35,7 +35,7 @@ Přední dveře nabízí snižování zátěže TLS. WAF je nativně integrovan�
 
 ## <a name="does-azure-waf-support-ipv6"></a>Podporuje Azure WAF protokol IPv6?
 
-Ano. Můžete nakonfigurovat omezení IP adres pro IPv4 a IPv6.
+Yes. Můžete nakonfigurovat omezení IP adres pro IPv4 a IPv6.
 
 ## <a name="how-up-to-date-are-the-managed-rule-sets"></a>Jak se spravují sady pravidel?
 
@@ -64,7 +64,7 @@ V současné době se pravidla ModSecch počítačových 2.2.9, počítačových
 
 ## <a name="is-ddos-protection-integrated-with-front-door"></a>Je ochrana DDoS integrovaná s předními dvířky? 
 
-V případě globálně distribuovaných na okrajích sítě Azure můžou přední dveře Azure absorbovat a geograficky izolovat útoky na velké objemy svazků. Můžete vytvořit vlastní zásady WAF a automaticky tak blokovat a omezit útoky na požadavky HTTP (s), které mají známé signatury. Další informace můžete povolit DDoS Protection Standard ve virtuální síti, kde jsou nasazené back-endy. Zákazníci s Azure DDoS Protection Standard získají další výhody, jako je ochrana nákladů, záruka SLA a přístup k odborníkům z týmu DDoS Rapid Response pro zajištění okamžité pomoci během útoku.
+V případě globálně distribuovaných na okrajích sítě Azure můžou přední dveře Azure absorbovat a geograficky izolovat útoky na velké objemy svazků. Můžete vytvořit vlastní zásady WAF a automaticky tak blokovat a omezit útoky na požadavky HTTP (s), které mají známé signatury. Další informace můžete povolit DDoS Protection Standard ve virtuální síti, kde jsou nasazené back-endy. Zákazníci s Azure DDoS Protection Standard získají další výhody, jako je ochrana nákladů, záruka SLA a přístup k odborníkům z týmu DDoS Rapid Response pro zajištění okamžité pomoci během útoku. Další informace najdete v tématu [DDoS Protection na předních dveřích](../../frontdoor/front-door-ddos.md).
 
 ## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>Proč se do back-endu serveru předají další požadavky nad prahovou hodnotou nakonfigurovanou pro pravidlo pro omezení přenosové rychlosti?
 

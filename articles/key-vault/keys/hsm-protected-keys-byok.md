@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: fe7a8a3df535d05c3c834d3e2fbba5f7df5d6fcd
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: a1c6b054a9caac8ba223bc81e164e7ebf34bd267
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372240"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413322"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>Import klíčů chráněných HSM do Key Vault (BYOK)
 
@@ -43,7 +43,7 @@ Tady je přehled tohoto procesu. Konkrétní kroky k dokončení jsou popsány d
 * KEK musí být ve stejném trezoru klíčů, kam se bude cílový klíč importovat.
 * Po nahrání souboru BYOK do Key Vault Key Vault HSM používá privátní klíč KEK k dešifrování cílového klíčového materiálu a naimportuje ho jako klíč HSM. Tato operace probíhá zcela v rámci Key Vault HSM. Cílový klíč vždy zůstává na hranici ochrany HSM.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V následující tabulce jsou uvedeny předpoklady pro používání BYOK v Azure Key Vault:
 
@@ -64,6 +64,7 @@ V následující tabulce jsou uvedeny předpoklady pro používání BYOK v Azur
 |PERC|Manufacturer|Všechny LiquidSecurity HSM s<ul><li>Firmware verze 2.0.4 nebo novější</li><li>Firmware verze 3,2 nebo novější</li></ul>|[Nástroj a dokumentace k PERC BYOK](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Enterprise Key Management System)|Několik značek HSM a modelů, včetně<ul><li>Podpůrný software nCipher</li><li>Thales</li><li>Utimaco</li></ul>Podrobnosti najdete v tématu [Cryptomathic web](https://www.cryptomathic.com/azurebyok) .|[Nástroj a dokumentace pro Cryptomathic BYOK](https://www.cryptomathic.com/azurebyok)|
 |Securosys SA|Výrobce, HSM jako služba|Primus, rodina HSM, Securosys cloudy HSM|[Nástroj a dokumentace pro Primus BYOK](https://www.securosys.com/primus-azure-byok)|
+|StorMagic|ISV (Enterprise Key Management System)|Několik značek HSM a modelů, včetně<ul><li>Utimaco</li><li>Thales</li><li>Podpůrný software nCipher</li></ul>Podrobnosti najdete v tématu [StorMagic web](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm) .|[SvKMS a Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
 ||||
 
 

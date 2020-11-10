@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372289"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413220"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Vytvoření kontroleru dat ARC Azure
 
@@ -36,7 +36,8 @@ V současné době podporuje seznam Kubernetes služeb a distribucí následují
 - Open source upstreamové prostředí Kubernetes obvykle nasazené s využitím nástroje kubeadm
 
 > [!IMPORTANT]
-> * Minimální podporovaná verze Kubernetes je v 1.14.
+> * Minimální podporovaná verze Kubernetes je v 1.17.
+> * Minimální podporovaná verze OCP je 4,3.
 > * Podívejte se na [požadavky na připojení](connectivity.md) a zjistěte, co je mezi vaším prostředím a Azure vyžadováno připojení.
 > * Podrobné informace o tom, jak nakonfigurovat trvalé úložiště, najdete v tématu [pokyny ke konfiguraci úložiště](storage-configuration.md) .
 > * Pokud používáte službu Azure Kubernetes, měla by být velikost virtuálního počítače pracovního uzlu clusteru aspoň **Standard_D8s_v3** a používat **prémiové disky.** Cluster by neměl zahrnovat více zón dostupnosti. 
@@ -45,7 +46,7 @@ V současné době podporuje seznam Kubernetes služeb a distribucí následují
 > [!NOTE]
 > Pokud používáte platformu Red Hat OpenShift Container Platform v Azure, doporučuje se použít nejnovější dostupnou verzi.
 
-V závislosti na zvolené možnosti se budou _vyžadovat_některé nástroje, ale před zahájením vytváření kontroleru dat ARC Azure se doporučuje [nainstalovat všechny nástroje klienta](./install-client-tools.md) .
+V závislosti na zvolené možnosti se budou _vyžadovat_ některé nástroje, ale před zahájením vytváření kontroleru dat ARC Azure se doporučuje [nainstalovat všechny nástroje klienta](./install-client-tools.md) .
 
 Bez ohledu na to, kterou možnost zvolíte, budete muset během procesu vytváření zadat následující informace:
 

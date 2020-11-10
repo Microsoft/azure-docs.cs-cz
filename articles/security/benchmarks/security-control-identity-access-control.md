@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d8ca0b0fa632321b6aa075ab5ca2bdf6632ab51
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 8d2901e71a3c638e25899803ff9b24e20fdf1969
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216500"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412659"
 ---
 # <a name="security-control-identity-and-access-control"></a>Řízení zabezpečení: identita a Access Control
 
@@ -26,9 +26,9 @@ Doporučení pro správu identit a přístupu se zaměřují na problémy souvis
 
 Azure AD má předdefinované role, které se musí explicitně přiřadit a jsou Queryable. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu.
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true)
 
 ## <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
@@ -48,7 +48,7 @@ Vytvořte standardní operační postupy kolem použití vyhrazených účtů pr
 
 Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služby společnosti Microsoft a Azure Resource Manager můžete také povolit přístup za běhu nebo jen tolik. 
 
-- [Další informace o Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+- [Další informace o Privileged Identity Management](../../active-directory/privileged-identity-management/index.yml)
 
 ## <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
@@ -58,7 +58,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 Kdykoliv je to možné, použijte Azure Active Directory jednotného přihlašování (SSO), než nakonfigurujete jednotlivé samostatné přihlašovací údaje na službu. Použijte Azure Security Center doporučení pro správu identit a přístupu.
 
-- [Vysvětlení jednotného přihlašování pomocí Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Vysvětlení jednotného přihlašování pomocí Azure AD](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
 ## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
@@ -68,9 +68,9 @@ Kdykoliv je to možné, použijte Azure Active Directory jednotného přihlašov
 
 Povolte Azure AD MFA a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
-- [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Jak povolit vícefaktorové ověřování v Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Jak monitorovat identitu a přístup v rámci Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Jak monitorovat identitu a přístup v rámci Azure Security Center](../../security-center/security-center-identity-access.md)
 
 ## <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
 
@@ -80,9 +80,9 @@ Povolte Azure AD MFA a sledujte Azure Security Center doporučení pro správu i
 
 Použijte privilegovaným přístupem (Privileged Access Workstations) s MFA nakonfigurovaným pro přihlášení k prostředkům Azure a jejich konfigurace.
 
-- [Další informace o pracovních stanicích s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Jak povolit vícefaktorové ověřování v Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 ## <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: protokolovat a upozornit na podezřelé aktivity z účtů pro správu
 
@@ -92,9 +92,9 @@ Použijte privilegovaným přístupem (Privileged Access Workstations) s MFA nak
 
 Pomocí Azure Active Directorych sestav zabezpečení můžete generovat protokoly a výstrahy, když v prostředí dojde k podezřelé nebo nebezpečné aktivitě. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
 
-- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](../../security-center/security-center-identity-access.md)
 
 ## <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
 
@@ -104,7 +104,7 @@ Pomocí Azure Active Directorych sestav zabezpečení můžete generovat protoko
 
 Pomocí pojmenovaných umístění podmíněného přístupu povolíte přístup jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
 
-- [Postup konfigurace pojmenovaných umístění v Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [Postup konfigurace pojmenovaných umístění v Azure](../../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 ## <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
@@ -114,7 +114,7 @@ Pomocí pojmenovaných umístění podmíněného přístupu povolíte přístup
 
 Jako centrální ověřování a systém autorizací použijte Azure Active Directory. Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
-- [Jak vytvořit a nakonfigurovat instanci Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Jak vytvořit a nakonfigurovat instanci Azure AD](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
@@ -124,9 +124,9 @@ Jako centrální ověřování a systém autorizací použijte Azure Active Dire
 
 Azure AD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. 
 
-- [Pochopení sestav Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../../active-directory/reports-monitoring/index.yml)
 
-- [Jak používat recenze Azure identity Access](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Jak používat recenze Azure identity Access](../../active-directory/governance/access-reviews-overview.md)
 
 ## <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: sledování pokusů o přístup k deaktivovaným přihlašovacím údajům
 
@@ -138,7 +138,7 @@ Máte přístup ke zdrojům přihlašovacích aktivit, auditu a rizikových udá
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure Active Directory uživatelských účtů a odesláním protokolů auditu a protokolů přihlášení do pracovního prostoru Log Analytics. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics.
 
-- [Jak integrovat protokoly aktivit Azure do Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit Azure do Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 ## <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
@@ -148,11 +148,11 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 
 Pomocí funkcí pro rizika a ochranu identity v Azure AD můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
-- [Jak zobrazit rizikové přihlašování Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Jak zobrazit rizikové přihlašování Azure AD](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Jak nakonfigurovat a povolit zásady rizik ochrany identity](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+- [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-- [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
 ## <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
 
@@ -162,7 +162,7 @@ Pomocí funkcí pro rizika a ochranu identity v Azure AD můžete nakonfigurovat
 
 Ve scénářích podpory, kde Microsoft potřebuje získat přístup k zákaznickým datům, Customer Lockbox poskytuje rozhraní pro kontrolu a schválení nebo odmítnutí žádostí o přístup k datům zákazníků.
 
-- [Pochopení Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+- [Pochopení Customer Lockbox](../fundamentals/customer-lockbox-overview.md)
 
 
 ## <a name="next-steps"></a>Další kroky

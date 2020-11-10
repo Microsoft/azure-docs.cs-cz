@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/22/2020
 ms.author: aahi
 keywords: místní, Docker, kontejner, Kubernetes
-ms.openlocfilehash: a59d9fb4fb15b361259a705a024b9bea975e8072
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 56d88b9223a80ea9981e8830cac44bac7c6edb3b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368844"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413033"
 ---
 # <a name="azure-cognitive-services-containers"></a>Kontejnery Azure Cognitive Services
 
@@ -58,7 +58,7 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 
 | Služba | Podporovaná cenová úroveň | Kontejner | Popis |
 |--|--|--|--|
-| [Detektor anomálií][ad-containers] | F0, S0 | **Anomálie-detektor** ( [Obrázek](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení.<br>[Vyžádání přístup][request-access] |
+| [Detektor anomálií][ad-containers] | F0, S0 | **Anomálie-detektor** ( [Obrázek](https://hub.docker.com/_/microsoft-azure-cognitive-services-decision-anomaly-detector))  | Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení.<br>[Vyžádání přístup][request-access] |
 | [Počítačové zpracování obrazu][cv-containers] | F0, S1 | **Číst** Optické rozpoznávání znaků ( [Obrázek](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Kontejner OCR pro čtení umožňuje extrahovat vytištěný a rukou psaný text z obrázků a dokumentů s podporou formátů souborů JPEG, PNG, BMP, PDF a TIFF. Další informace najdete v [dokumentaci k rozhraní API pro čtení](./computer-vision/concept-recognizing-text.md).<br>[Vyžádání přístup][request-access] |
 | [Rozpoznávání tváře][fa-containers] | F0, S0 | **Rozpoznávání tváře** | Detekuje lidské obličeje na obrázcích a identifikuje atributy, včetně orientačních bodů (jako jsou nos a oči), pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli se dvě plošky ve stejné imagi nebo různých obrázcích shodují s použitím skóre spolehlivosti, nebo porovnávat plošky s databází, abyste viděli, jestli už existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností. |
 | [Nástroj pro rozpoznávání formulářů][fr-containers] | F0, S0 | **Rozpoznávání formulářů** | Porozumění formuláře používá technologii strojového učení k identifikaci a extrakci párů klíč-hodnota a tabulek z formulářů. |
@@ -80,8 +80,8 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 
 Kromě toho jsou některé kontejnery podporovány v Cognitive Services klíče prostředků [**nabídky vše v jednom**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) . Můžete vytvořit jeden Cognitive Services prostředek All-in-One a použít stejný fakturační klíč v rámci podporovaných služeb pro následující služby:
 
-* Computer Vision
-* Tvář
+* Počítačové zpracování obrazu
+* Rozpoznávání tváře
 * LUIS
 * Analýza textu
 
@@ -91,7 +91,7 @@ Kontejnery Azure Cognitive Services jsou veřejně dostupné prostřednictvím v
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete používat kontejnery Cognitive Services Azure, musíte splnit následující předpoklady:
 

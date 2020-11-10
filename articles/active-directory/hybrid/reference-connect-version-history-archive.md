@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f80808f917036dfba122a97bbd255d466f40e476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0adf548b009ad6fe0c85501b9777ff23723b3e24
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018488"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413407"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect: archiv Historie vydání verze
 
@@ -167,7 +167,7 @@ Azure AD Connect upgrade se nepovede, pokud je pro ADSync DB nakonfigurovaná do
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
 - Azure AD Connect federovat je teď dostupná pro obecnou dostupnost. [Přečtěte si další informace o federovaném Azure AD pomocí testu federovat](./plan-connect-user-signin.md#federation-with-pingfederate)
-- Azure AD Connect teď vytvoří zálohu vztahu důvěryhodnosti služby Azure AD v AD FS pokaždé, když se provede aktualizace, a v případě potřeby ji uloží do samostatného souboru, aby se snadno obnovila. [Přečtěte si další informace o nových funkcích a správě důvěryhodnosti Azure AD v Azure AD Connect](https://aka.ms/fedtrustinaadconnect).
+- Azure AD Connect teď vytvoří zálohu vztahu důvěryhodnosti služby Azure AD v AD FS pokaždé, když se provede aktualizace, a v případě potřeby ji uloží do samostatného souboru, aby se snadno obnovila. [Přečtěte si další informace o nových funkcích a správě důvěryhodnosti Azure AD v Azure AD Connect](./how-to-connect-azure-ad-trust.md).
 - Nové nástroje pro řešení potíží pomáhají při odstraňování potíží se změnou primární e-mailové adresy a skrytím účtu z globálního seznamu adres.
 - Azure AD Connect se aktualizovala tak, aby obsahovala nejnovější verzi SQL Server 2012 Native Client.
 - Když přepnete přihlášení uživatele na synchronizaci hodnoty hash hesla nebo předávací ověřování v úloze Změna přihlašování uživatelů, je políčko bezproblémové jediné Sign-On ve výchozím nastavení povolené.
@@ -212,8 +212,8 @@ Nové funkce a vylepšení
 - Konfigurace zpětného zápisu zařízení je teď spravovaná výhradně v rámci průvodce Azure AD Connect.
 - Přidá se nový modul PowerShellu s názvem ADSyncTools. psm1, který se dá použít k řešení problémů s připojením SQL a k různým dalším nástrojům pro řešení potíží. Přečtěte si další informace o [modulu ADSyncTools](tshoot-connect-tshoot-sql-connectivity.md). 
 - Přidá se nový další úkol "Konfigurace možností zařízení". Tuto úlohu můžete použít ke konfiguraci následujících dvou operací: 
-  - **Připojení k hybridní službě Azure AD**: v případě, že vaše prostředí obsahuje místní služby AD a máte výhod výhod funkcí poskytovaných Azure Active Directory, můžete implementovat zařízení připojená k hybridní službě Azure AD. Jedná se o zařízení připojená k místní službě Active Directory i k Azure Active Directory.
-  - **Zpětný zápis zařízení**: zpětný zápis zařízení umožňuje povolit podmíněný přístup na základě zařízení, aby se AD FS (2012 R2 nebo novější) chráněná zařízení.
+  - **Připojení k hybridní službě Azure AD** : v případě, že vaše prostředí obsahuje místní služby AD a máte výhod výhod funkcí poskytovaných Azure Active Directory, můžete implementovat zařízení připojená k hybridní službě Azure AD. Jedná se o zařízení připojená k místní službě Active Directory i k Azure Active Directory.
+  - **Zpětný zápis zařízení** : zpětný zápis zařízení umožňuje povolit podmíněný přístup na základě zařízení, aby se AD FS (2012 R2 nebo novější) chráněná zařízení.
 
     >[!NOTE] 
     > - Možnost Povolit zpětný zápis zařízení z přizpůsobení možností synchronizace bude šedá. 
@@ -367,7 +367,7 @@ Typ     | Name                          | Access               | Platí pro
 Povolit    | SYSTEM                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
 Povolit    | Domain Admins                 | Úplné řízení         | Tento objekt  |
-Povolit    | Správci                | Úplné řízení         | Tento objekt  |
+Povolit    | Administrators                | Úplné řízení         | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Vypsat obsah        | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Číst všechny vlastnosti  | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Oprávnění ke čtení     | Tento objekt  |
@@ -425,27 +425,27 @@ Stav: říjen 19 2017
 #### <a name="fixed-issues"></a>Opravené problémy
 * Opravili jsme problém s *přihlašovacím úkolem změny uživatele* v Azure AD Connect Průvodce:
 
-  * K tomuto problému dochází, když máte existující nasazení Azure AD Connect se **zapnutou**synchronizací hesel a pokoušíte se nastavit metodu přihlašování uživatelů jako *předávací ověřování*. Před použitím změny se v průvodci nesprávně zobrazí výzva "*zakázat synchronizaci hesla*". Synchronizace hesel ale zůstane zapnutá i po použití změny. V této opravě už průvodce nezobrazuje výzvu.
+  * K tomuto problému dochází, když máte existující nasazení Azure AD Connect se **zapnutou** synchronizací hesel a pokoušíte se nastavit metodu přihlašování uživatelů jako *předávací ověřování*. Před použitím změny se v průvodci nesprávně zobrazí výzva " *zakázat synchronizaci hesla* ". Synchronizace hesel ale zůstane zapnutá i po použití změny. V této opravě už průvodce nezobrazuje výzvu.
 
   * V rámci návrhu průvodce nevypne synchronizaci hesla, když aktualizujete metodu přihlašování uživatelů pomocí úlohy změny přihlašování *uživatele* . Je to zabránit tomu, aby zákazníci, kteří chtějí uchovat synchronizaci hesel, nenarušili, i když povolují předávací ověřování nebo federaci jako svoji primární metodu přihlašování uživatele.
 
   * Pokud chcete po aktualizaci metody přihlašování uživatele zakázat synchronizaci hesel, je nutné spustit úlohu *přizpůsobení konfigurace synchronizace* v průvodci. Když přejdete na stránku *volitelné funkce* , zrušte zaškrtnuté políčko *Synchronizace hesel* .
 
-  * Pamatujte na to, že pokud se pokusíte povolit nebo zakázat bezproblémové jednotné přihlašování, nastane stejný problém taky. Konkrétně máte k dispozici existující nasazení Azure AD Connect se zapnutou synchronizací hesel a metoda přihlašování uživatele je už nakonfigurovaná jako *předávací ověřování*. Pomocí úlohy *změnit přihlašování uživatele* se pokusíte zaškrtnout nebo zrušit kontrolu možnosti *Povolit bezproblémové používání jednotného přihlašování* , zatímco metoda přihlašování uživatele zůstává nakonfigurovaná jako předávací ověřování. Před použitím změny se v průvodci nesprávně zobrazí výzva "*zakázat synchronizaci hesla*". Synchronizace hesel ale zůstane zapnutá i po použití změny. V této opravě už průvodce nezobrazuje výzvu.
+  * Pamatujte na to, že pokud se pokusíte povolit nebo zakázat bezproblémové jednotné přihlašování, nastane stejný problém taky. Konkrétně máte k dispozici existující nasazení Azure AD Connect se zapnutou synchronizací hesel a metoda přihlašování uživatele je už nakonfigurovaná jako *předávací ověřování*. Pomocí úlohy *změnit přihlašování uživatele* se pokusíte zaškrtnout nebo zrušit kontrolu možnosti *Povolit bezproblémové používání jednotného přihlašování* , zatímco metoda přihlašování uživatele zůstává nakonfigurovaná jako předávací ověřování. Před použitím změny se v průvodci nesprávně zobrazí výzva " *zakázat synchronizaci hesla* ". Synchronizace hesel ale zůstane zapnutá i po použití změny. V této opravě už průvodce nezobrazuje výzvu.
 
 * Opravili jsme problém s *přihlašovacím úkolem změny uživatele* v Azure AD Connect Průvodce:
 
-  * K tomuto problému dochází, když máte existující nasazení Azure AD Connect se **zakázanou**synchronizací hesel a pokoušíte se nastavit metodu přihlašování uživatelů jako *předávací ověřování*. Při použití změny Průvodce povolí předávací ověřování i synchronizaci hesel. V této opravě už průvodce neumožňuje synchronizaci hesel.
+  * K tomuto problému dochází, když máte existující nasazení Azure AD Connect se **zakázanou** synchronizací hesel a pokoušíte se nastavit metodu přihlašování uživatelů jako *předávací ověřování*. Při použití změny Průvodce povolí předávací ověřování i synchronizaci hesel. V této opravě už průvodce neumožňuje synchronizaci hesel.
 
-  * Dřív byla synchronizace hesel předpokladem pro povolení předávacího ověřování. Když nastavíte metodu přihlašování uživatele jako *předávací ověřování*, průvodce povolí jak předávací ověřování, tak i synchronizaci hesel. Nedávno se synchronizace hesel odstranila jako požadavek. V rámci Azure AD Connect verze 1.1.557.0 byla provedena změna Azure AD Connect, aby nepovolovala synchronizaci hesel při nastavení metody přihlašování uživatelů jako *předávacího ověřování*. Tato změna se ale použila jenom pro Azure AD Connect instalaci. V této opravě se u *přihlašovací úlohy změny uživatele* použije taky stejná změna.
+  * Dřív byla synchronizace hesel předpokladem pro povolení předávacího ověřování. Když nastavíte metodu přihlašování uživatele jako *předávací ověřování* , průvodce povolí jak předávací ověřování, tak i synchronizaci hesel. Nedávno se synchronizace hesel odstranila jako požadavek. V rámci Azure AD Connect verze 1.1.557.0 byla provedena změna Azure AD Connect, aby nepovolovala synchronizaci hesel při nastavení metody přihlašování uživatelů jako *předávacího ověřování*. Tato změna se ale použila jenom pro Azure AD Connect instalaci. V této opravě se u *přihlašovací úlohy změny uživatele* použije taky stejná změna.
 
   * Pamatujte na to, že pokud se pokusíte povolit nebo zakázat bezproblémové jednotné přihlašování, nastane stejný problém taky. Konkrétně jste měli stávající nasazení Azure AD Connect se zakázanou synchronizací hesel a metoda přihlašování uživatelů je už nakonfigurovaná jako *předávací ověřování*. Pomocí úlohy *změnit přihlašování uživatele* se pokusíte zaškrtnout nebo zrušit kontrolu možnosti *Povolit bezproblémové používání jednotného přihlašování* , zatímco metoda přihlašování uživatele zůstává nakonfigurovaná jako předávací ověřování. Při použití změny Průvodce povolí synchronizaci hesel. V této opravě už průvodce neumožňuje synchronizaci hesel. 
 
-* Opravili jsme problém, který způsobil, že Azure AD Connect upgrade selže, a dojde k chybě "*nepovedlo se upgradovat synchronizační službu*". Synchronizační služba již nadále nemůže začínat chybou události "*službu nebylo možné spustit, protože verze databáze je novější než verze nainstalovaná v binárních souborech*". K tomuto problému dochází, pokud správce, který provádí upgrade, nemá oprávnění správce systému pro SQL Server, který používá Azure AD Connect. Tato oprava Azure AD Connect vyžaduje, aby správce měl během upgradu db_owner oprávnění k databázi ADSync.
+* Opravili jsme problém, který způsobil, že Azure AD Connect upgrade selže, a dojde k chybě " *nepovedlo se upgradovat synchronizační službu* ". Synchronizační služba již nadále nemůže začínat chybou události " *službu nebylo možné spustit, protože verze databáze je novější než verze nainstalovaná v binárních souborech* ". K tomuto problému dochází, pokud správce, který provádí upgrade, nemá oprávnění správce systému pro SQL Server, který používá Azure AD Connect. Tato oprava Azure AD Connect vyžaduje, aby správce měl během upgradu db_owner oprávnění k databázi ADSync.
 
 * Opravili jsme problém s upgradem Azure AD Connect, který ovlivnil zákazníky, kteří mají povolené [bezproblémové jednotné přihlašování](./how-to-connect-sso.md). Po upgradu Azure AD Connect se bezproblémové jednoduché Sign-On v průvodci Azure AD Connect jeví jako zakázané, a to i v případě, že funkce zůstane zapnutá a plně funkční. V této opravě se tato funkce teď v průvodci zobrazí správně, jak je zapnutá.
 
-* Opravili jsme problém, který způsobil, že Průvodce Azure AD Connect, aby na stránce *připraveno ke konfiguraci* vždycky zobrazoval výzvu "*konfigurace zdrojového ukotvení*", i když se neudělaly žádné změny související se zdrojovým ukotvením.
+* Opravili jsme problém, který způsobil, že Průvodce Azure AD Connect, aby na stránce *připraveno ke konfiguraci* vždycky zobrazoval výzvu " *konfigurace zdrojového ukotvení* ", i když se neudělaly žádné změny související se zdrojovým ukotvením.
 
 * Při ručním upgradu Azure AD Connect se zákazník musí zadat přihlašovací údaje globálního správce odpovídajícího tenanta Azure AD. Předchozí upgrade může pokračovat i v případě, že přihlašovací údaje globálního správce patří do jiného tenanta Azure AD. I když se upgrade jeví k úspěšnému dokončení, některé konfigurace se při upgradu správně neuloží. V této změně Průvodce brání v pokračování upgradu, pokud zadané přihlašovací údaje neodpovídají tenantovi Azure AD.
 
@@ -480,7 +480,7 @@ Stav: září 05 2017
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="known-issues"></a>Známé problémy
-* Došlo k známému problému, který způsobuje, že Azure AD Connect upgrade selže a dojde k chybě "*nepovedlo se upgradovat synchronizační službu*". Synchronizační služba již nadále nemůže začínat chybou události "*službu nebylo možné spustit, protože verze databáze je novější než verze nainstalovaná v binárních souborech*". K tomuto problému dochází, pokud správce, který provádí upgrade, nemá oprávnění správce systému pro SQL Server, který používá Azure AD Connect. Oprávnění dbo nejsou dostatečná.
+* Došlo k známému problému, který způsobuje, že Azure AD Connect upgrade selže a dojde k chybě " *nepovedlo se upgradovat synchronizační službu* ". Synchronizační služba již nadále nemůže začínat chybou události " *službu nebylo možné spustit, protože verze databáze je novější než verze nainstalovaná v binárních souborech* ". K tomuto problému dochází, pokud správce, který provádí upgrade, nemá oprávnění správce systému pro SQL Server, který používá Azure AD Connect. Oprávnění dbo nejsou dostatečná.
 
 * Došlo k známému problému s Azure AD Connect upgradem, který má vliv na zákazníky, kteří mají povolené [bezproblémové jednotné přihlašování](how-to-connect-sso.md). Po upgradu Azure AD Connect se tato funkce v průvodci zobrazí jako zakázaná, i když tato funkce zůstane zapnutá. Oprava tohoto problému bude k dispozici v budoucí verzi. Zákazníci, kteří mají obavy z tohoto problému, ho můžou ručně opravit tak, že v průvodci povolí bezproblémové jednoduché Sign-On.
 

@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 10/19/2020
+ms.date: 11/09/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 98ae6de8828ca44dc523bf2c509648a8c58fbd23
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: ab5a4717f32269f34a9351cb0ffa3796b89ccd6e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380071"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412744"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -59,6 +59,7 @@ Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP)
 |Vlastní DNS nefunguje s vynuceným tunelovým propojením|Pokud je povolené vynucené tunelování, vlastní DNS nefunguje.|Probíhá šetření opravy.|
 |Nová podpora veřejných IP adres pro více Zóny dostupnosti|Novou veřejnou IP adresu nemůžete přidat při nasazení brány firewall se dvěma zónami dostupnosti (1 a 2, 2 a 3 nebo 1 a 3).|Toto je omezení prostředků veřejné IP adresy.|
 |Funkce Spustit/zastavit nefunguje s bránou firewall nakonfigurovanou v režimu vynuceného tunelového propojení.|Spuštění/zastavení nefunguje s bránou Azure firewall nakonfigurovanou v režimu vynuceného tunelového propojení. Při pokusu o spuštění Azure Firewall s nakonfigurovaným vynuceným tunelovým propojením dojde k následující chybě:<br><br>*Set-AzFirewall: AzureFirewall nelze přidat konfiguraci IP adresy pro správu FW-XX do existující brány firewall. Pokud chcete používat vynucené tunelové propojení, proveďte znovu nasazení s konfigurací IP adresy pro správu. <br> StatusCode: 400 <br> ReasonPhrase: Chybný požadavek*|V rámci šetření.<br><br>Jako alternativní řešení můžete odstranit existující bránu firewall a vytvořit novou se stejnými parametry.|
+|Nejde přidat značky zásad brány firewall pomocí portálu.|Zásady Azure Firewall mají omezení podpory oprav, které vám brání v přidávání značky pomocí Azure Portal. Vygenerovala se následující chyba: *značky pro prostředek se nepovedlo Uložit*.|Probíhá šetření opravy. Alternativně můžete použít rutinu Azure PowerShell `Set-AzFirewallPolicy` k aktualizaci značek.
 
 
 ## <a name="next-steps"></a>Další kroky

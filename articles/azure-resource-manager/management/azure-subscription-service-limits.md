@@ -3,12 +3,12 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: f18bd4589ea995696175fa23300432793f0f5974
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: b95c056a8885998c3ca5b5c62cb13049c3a8c66d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950240"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412919"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -21,7 +21,7 @@ Další informace o cenách Azure najdete v tématu [Přehled cen Azure](https:/
 > [!NOTE]
 > Některé služby mají nastavitelná omezení.
 >
-> Pokud služba nemá nastavitelná omezení, používají následující tabulky **limit**hlaviček. V těchto případech jsou výchozí a maximální limity stejné.
+> Pokud služba nemá nastavitelná omezení, používají následující tabulky **limit** hlaviček. V těchto případech jsou výchozí a maximální limity stejné.
 >
 > V případě, že je možné upravit limit, tabulky obsahují **výchozí limit** a **maximální počet** hlaviček. Limit je možné vyvýšený nad výchozí limit, ale ne nad maximálním limitem.
 >
@@ -96,7 +96,7 @@ Cenové úrovně určují kapacitu a omezení služby vyhledávání. Mezi vrstv
 
 * **Bezplatná** víceklientská služba, která je sdílená s ostatními předplatiteli Azure, je určená pro vyhodnocení a malé vývojové projekty.
 * **Basic** poskytuje vyhrazené výpočetní prostředky pro produkční úlohy v menším měřítku, a to až tři repliky pro úlohy dotazů s vysokou dostupností.
-* Pro větší produkční úlohy je **Standard**, který zahrnuje S1, S2, S3 a S3 vysokou hustotu. Na úrovni Standard existuje více úrovní, takže můžete zvolit konfiguraci prostředků, která nejlépe odpovídá vašemu profilu zatížení.
+* Pro větší produkční úlohy je **Standard** , který zahrnuje S1, S2, S3 a S3 vysokou hustotu. Na úrovni Standard existuje více úrovní, takže můžete zvolit konfiguraci prostředků, která nejlépe odpovídá vašemu profilu zatížení.
 
 **Omezení na předplatné**
 
@@ -285,7 +285,11 @@ Omezení specifická pro Media Services V2 (starší verze) najdete v tématu [M
 
 ### <a name="virtual-network-gateway-limits"></a>Omezení Virtual Network brány
 
-[!INCLUDE [virtual-wan-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+[!INCLUDE [virtual-network-gateway-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+
+### <a name="nat-gateway-limits"></a>Omezení brány NAT
+
+[!INCLUDE [nat-gateway-limits](../../../includes/azure-nat-gateway-limits.md)]
 
 ### <a name="virtual-wan-limits"></a>Omezení virtuální sítě WAN
 

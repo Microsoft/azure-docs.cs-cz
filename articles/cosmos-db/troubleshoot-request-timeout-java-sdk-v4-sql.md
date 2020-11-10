@@ -8,12 +8,12 @@ ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 442d6638e88462b1dc87e9321dc631fe0a4f3a10
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a805300ac62d0627c9b06188c9764a6887947afe
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340066"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411282"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Diagnostika a řešení potíží s Azure Cosmos DBmi výjimkami časového limitu požadavku sady Java v4 SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,6 +22,9 @@ K chybě HTTP 408 dojde v případě, že sada SDK nemohla dokončit požadavek 
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 Následující seznam obsahuje známé příčiny a řešení pro výjimky časového limitu požadavku.
+
+### <a name="existing-issues"></a>Existující problémy
+Pokud se vám zobrazují požadavky, které se budou zablokovat déle než delší dobu nebo časování, upgradujte prosím sadu Java v4 SDK na nejnovější verzi. Poznámka: Důrazně doporučujeme použít verzi 4.7.0 a vyšší. Další podrobnosti najdete v [poznámkách k verzi sady Java v4 SDK](sql-api-sdk-java-v4.md) .
 
 ### <a name="high-cpu-utilization"></a>Vysoké využití procesoru
 Vysoké využití procesoru je nejběžnější případ. Pro zajištění optimální latence by využití CPU mělo zhruba 40 procent. Použijte 10 sekund jako interval pro monitorování maximálního (neprůměrného) využití procesoru. Špičky procesoru jsou běžnější u dotazů mezi oddíly, kde může provádět více připojení pro jeden dotaz.

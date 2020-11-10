@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e2144a61d83f6c7dece8f34232031192b51cde8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395987"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412693"
 ---
 # <a name="security-control-data-protection"></a>Řízení zabezpečení: Ochrana dat
 
@@ -26,7 +26,7 @@ Doporučení ochrany dat se zaměřují na řešení problémů souvisejících 
 
 Pomocí značek můžete posloužit ke sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
@@ -36,11 +36,11 @@ Pomocí značek můžete posloužit ke sledování prostředků Azure, které uk
 
 Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit prostřednictvím řízení přístupu na základě role Azure (RBAC). 
 
-- [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Postup vytvoření Skupiny pro správu](../../governance/management-groups/create-management-group-portal.md)
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
 
@@ -52,7 +52,7 @@ Využijte řešení třetích stran z Azure Marketplace na hraničních sítích
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft zpracovává veškerý obsah zákazníků jako citlivý a chráněný proti ztrátám a expozici zákaznických dat. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-- [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Pochopení ochrany zákaznických dat v Azure](../fundamentals/protection-customer-data.md)
 
 ## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
@@ -64,7 +64,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft zpracová
 
 Pokud je to možné, postupujte podle Azure Security Center doporučení pro šifrování v klidovém režimu a šifrování.
 
-- [Pochopení šifrování při přenosu pomocí Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Pochopení šifrování při přenosu pomocí Azure](../fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 ## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
 
@@ -78,11 +78,11 @@ K identifikaci citlivých informací v rámci Microsoft 365 dokumentů použijte
 
 Využijte Azure SQL Information Protection k usnadnění klasifikace a označování informací uložených v Azure SQL Database.
 
-- [Implementace zjišťování dat SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Implementace zjišťování dat SQL Azure](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-- [Postup implementace Azure Information Protection](https://docs.microsoft.com/azure/information-protection/deployment-roadmap)
+- [Postup implementace Azure Information Protection](/azure/information-protection/deployment-roadmap)
 
-- [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Pochopení ochrany zákaznických dat v Azure](../fundamentals/protection-customer-data.md)
 
 ## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
@@ -92,7 +92,7 @@ Využijte Azure SQL Information Protection k usnadnění klasifikace a označov�
 
 K řízení přístupu k datům a prostředkům použijte řízení přístupu na základě role Azure (Azure RBAC), jinak použijte metody řízení přístupu ke konkrétním službám.
 
-- [Jak nakonfigurovat službu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Jak nakonfigurovat službu Azure RBAC](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
 
@@ -104,19 +104,19 @@ Pokud je to nutné pro dodržování předpisů u výpočetních prostředků, i
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-- [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Pochopení ochrany zákaznických dat v Azure](../fundamentals/protection-customer-data.md)
 
 ## <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 4,8 | 14,8 | Zákazník |
+| 4.8 | 14,8 | Zákazník |
 
 Pro všechny prostředky Azure použijte šifrování v klidovém provozu. Microsoft doporučuje povolit správu šifrovacích klíčů v Azure, ale v některých případech je k dispozici možnost spravovat vlastní klíče. 
 
-- [Vysvětlení šifrování v klidovém umístění v Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [Vysvětlení šifrování v klidovém umístění v Azure](../fundamentals/encryption-atrest.md)
 
-- [Postup konfigurace šifrovacích klíčů spravovaných zákazníkem](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+- [Postup konfigurace šifrovacích klíčů spravovaných zákazníkem](../../storage/common/customer-managed-keys-configure-key-vault.md)
 
 ## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
@@ -126,7 +126,7 @@ Pro všechny prostředky Azure použijte šifrování v klidovém provozu. Micro
 
 Pomocí Azure Monitor s protokolem aktivit Azure můžete vytvářet výstrahy, které se použijí v případě, že se změny projeví u kritických prostředků Azure.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/platform/alerts-activity-log.md)
 
 
 ## <a name="next-steps"></a>Další kroky

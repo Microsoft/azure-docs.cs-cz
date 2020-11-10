@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: ba9f2b10258f19504e3fd37723eceff7b8c37f6a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7e1deb11eb8ae754198cae5be7ecf7150262a61e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203479"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411384"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
-Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, jsou v některých případech, kdy můžete výrazně vylepšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
+Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, existují případy, kdy můžete výrazně zvýšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
 
 Většina techniků je společná pro dotazy, které se spouštějí přímo v protokolech Azure Průzkumník dat a Azure Monitor, i když existuje několik jedinečných důležitých Azure Monitor protokolů, které jsou zde popsány. Další tipy k optimalizaci pro Azure Průzkumník dat najdete v tématu [osvědčené postupy pro dotazy](/azure/kusto/query/best-practices).
 
@@ -131,7 +131,7 @@ SecurityEvent
 
 Zatímco některé agregační příkazy jako [Max ()](/azure/kusto/query/max-aggfunction), [Sum ()](/azure/kusto/query/sum-aggfunction), [Count ()](/azure/kusto/query/count-aggfunction)a [AVG ()](/azure/kusto/query/avg-aggfunction) mají nízký dopad na procesor z důvodu jejich logiky, jiné jsou složitější a zahrnují heuristické a odhady, které umožňují jejich efektivní spouštění. Například [DCount ()](/azure/kusto/query/dcount-aggfunction) používá HyperLogLog algoritmus k poskytnutí přibližného odhadu pro jedinečný počet velkých sad dat, aniž by bylo nutné skutečně počítat každou hodnotu; funkce percentilu jsou podobné aproximace pomocí nejbližšího algoritmu percentilu. Několik příkazů zahrnuje volitelné parametry, které snižují jejich dopad. Například funkce [makeset ()](/azure/kusto/query/makeset-aggfunction) má volitelný parametr pro definování maximální velikosti sady, která VÝZNAMNĚ ovlivňuje procesor a paměť.
 
-Příkazy [Join](/azure/kusto/query/joinoperator?pivots=azuremonitor) a [sumarizace](/azure/kusto/query/summarizeoperator) můžou způsobit vysoké využití procesoru při zpracování velké sady dat. Jejich složitost přímo souvisí s počtem možných hodnot, které jsou označovány jako *mohutnost*sloupců, které se používají jako `by` v souhrnu nebo jako atributy spojení. Vysvětlení a optimalizace spojení a shrnutí najdete v článcích dokumentace a tipy k optimalizaci.
+Příkazy [Join](/azure/kusto/query/joinoperator?pivots=azuremonitor) a [sumarizace](/azure/kusto/query/summarizeoperator) můžou způsobit vysoké využití procesoru při zpracování velké sady dat. Jejich složitost přímo souvisí s počtem možných hodnot, které jsou označovány jako *mohutnost* sloupců, které se používají jako `by` v souhrnu nebo jako atributy spojení. Vysvětlení a optimalizace spojení a shrnutí najdete v článcích dokumentace a tipy k optimalizaci.
 
 Například následující dotazy vytváří přesně stejný výsledek, protože **CounterPath** je vždy mapováno na **CounterName** a **ObjectName**. Druhá je efektivnější, protože dimenze agregace je menší:
 
@@ -342,7 +342,7 @@ Perf
 ) on Computer
 ```
 
-Běžným případem, kdy dojde k takové chybě, je použití [arg_max ()](/azure/kusto/query/arg-max-aggfunction) k vyhledání nejaktuálnějšího výskytu. Například:
+Běžným případem, kdy dojde k takové chybě, je použití [arg_max ()](/azure/kusto/query/arg-max-aggfunction) k vyhledání nejaktuálnějšího výskytu. Zde je příklad:
 
 ```Kusto
 Perf

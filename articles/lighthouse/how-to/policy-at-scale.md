@@ -1,14 +1,14 @@
 ---
 title: Nasazení Azure Policy k delegovaným předplatným ve velkém měřítku
 description: Přečtěte si, jak vám Azure Lighthouse umožňuje nasadit definici zásady a přiřazení zásad napříč více klienty.
-ms.date: 08/12/2020
+ms.date: 11/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 27d32a68c1a3806e514533efbae581aa97bc6d0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5af938c61ad3e42e36360a15c6011b54fa1e823d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167279"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412064"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Nasazení Azure Policy k delegovaným předplatným ve velkém měřítku
 
@@ -91,7 +91,11 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
+> [!NOTE]
+> I když můžete nasadit zásady napříč více klienty, v současné době nemůžete [Zobrazit podrobnosti o dodržování předpisů](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) pro prostředky, které nedodržují předpisy v těchto klientech.
+
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [Azure Policy](../../governance/policy/index.yml).
 - Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
+- Naučte se [, jak nasadit zásadu, která se dá opravit](deploy-policy-remediation.md) v rámci delegovaného předplatného.

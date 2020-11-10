@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f717e14e5abe62aafffdeef841889ea2458fa8b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369790"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413441"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Jak Azure AD nabízí cloudovou správu pro místní úlohy
 
@@ -39,7 +39,7 @@ Tento dokument popisuje strategii Microsoftu pro hybridní IDaaS a popisuje, jak
 
 ## <a name="the-azure-ad-approach-to-cloud-governed-identity-management"></a>Přístup Azure AD k řízení identit v cloudu, který řídí.
 
-Protože organizace přecházejí do cloudu, potřebují ujištění, že mají kontrolu nad jejich kompletním prostředím – lepší zabezpečení a lepší přehled o aktivitách, které podporuje automatizace a proaktivní přehledy. "**Správa řízená v cloudu**" popisuje, jak organizace spravují a řídí své uživatele, aplikace, skupiny a zařízení z cloudu.
+Protože organizace přecházejí do cloudu, potřebují ujištění, že mají kontrolu nad jejich kompletním prostředím – lepší zabezpečení a lepší přehled o aktivitách, které podporuje automatizace a proaktivní přehledy. " **Správa řízená v cloudu** " popisuje, jak organizace spravují a řídí své uživatele, aplikace, skupiny a zařízení z cloudu.
 
 V tomto moderním světě je potřeba, aby organizace byly schopné efektivně spravovat ve velkém měřítku, a to z důvodu rozšiřování aplikací SaaS a rostoucí role spolupráce a externích identit. Nové riziko v cloudu znamená, že organizace musí být delší reagovat – škodlivý objekt actor, který by mohl ohrozit cloudový uživatel, by mohl ovlivnit cloudové a místní aplikace.
 
@@ -77,7 +77,7 @@ Spolupráce mezi společnostmi stále vyžaduje udělení přístupu lidem mimo 
 
 Služba Azure AD může [automaticky vytvářet účty v rámci služby AD pro uživatele typu Host](../external-identities/hybrid-cloud-to-on-premises.md) podle potřeby a umožnit tak obchodním hostům přístup k místním aplikacím integrovaným službou AD bez nutnosti dalšího hesla. Organizace můžou nastavit [zásady vícefaktorového ověřování (MFA) pro uživatele typu Host](../external-identities/conditional-access.md), takže kontroly MFA se provádějí při ověřování proxy aplikací. Také všechny kontroly [přístupu](../governance/manage-guest-access-with-access-reviews.md) , které jsou provedeny u cloudových uživatelů B2B, platí pro místní uživatele. Pokud se například uživatel cloudu odstraní prostřednictvím zásad správy životního cyklu, místní uživatel se odstraní také.
 
-**Správa přihlašovacích údajů pro účty služby Active Directory** Samoobslužné resetování hesla služby Azure AD umožňuje uživatelům, kteří si zapomněli svá hesla, znovu ověřit a resetovat hesla, a to u změněných hesel [zapsaných do místní služby Active Directory](../authentication/concept-sspr-writeback.md). Proces resetování hesla může také používat místní zásady hesel služby Active Directory: když uživatel resetuje heslo, před jeho potvrzením do tohoto adresáře se ověří, jestli splňuje místní zásady služby Active Directory. [Plán nasazení](https://aka.ms/deploymentplans/sspr) samoobslužného resetování hesla popisuje osvědčené postupy pro zavedení samoobslužného resetování hesla uživatelům přes prostředí integrované na webu a v systému Windows.
+**Správa přihlašovacích údajů pro účty služby Active Directory** Samoobslužné resetování hesla služby Azure AD umožňuje uživatelům, kteří si zapomněli svá hesla, znovu ověřit a resetovat hesla, a to u změněných hesel [zapsaných do místní služby Active Directory](../authentication/concept-sspr-writeback.md). Proces resetování hesla může také používat místní zásady hesel služby Active Directory: když uživatel resetuje heslo, před jeho potvrzením do tohoto adresáře se ověří, jestli splňuje místní zásady služby Active Directory. [Plán nasazení](../authentication/howto-sspr-deployment.md) samoobslužného resetování hesla popisuje osvědčené postupy pro zavedení samoobslužného resetování hesla uživatelům přes prostředí integrované na webu a v systému Windows.
 
 ![Architektura Azure AD SSPR](media/cloud-governed-management-for-on-premises/image3.png)
 
@@ -97,7 +97,7 @@ Pokud chcete začít migrovat federované aplikace do služby Azure AD jako zpro
 
 * Dokument White Paper, který [migruje vaše aplikace do Azure Active Directory](https://aka.ms/migrateapps/whitepaper), který představuje výhody migrace a popisuje, jak naplánovat migraci ve čtyřech jasně stanovených fázích: zjišťování, klasifikace, migrace a průběžná správa. Provedete vás postupem, jak se zamyslet na proces a rozdělte projekt na snadno ovladatelné části. V celém dokumentu jsou odkazy na důležité prostředky, které vám pomůžou na cestě.
 
-* Průvodce řešením [migruje ověřování aplikace z Active Directory Federation Services (AD FS) a Azure Active Directory](https://aka.ms/migrateapps/adfssolutionguide) se podrobněji prozkoumá stejné čtyři fáze plánování a provádění projektu migrace aplikace. V této příručce se dozvíte, jak tyto fáze použít na konkrétní cíl přesunutí aplikace z Active Directory Federation Services (AD FS) (AD FS) do služby Azure AD.
+* Průvodce řešením [migruje ověřování aplikace z Active Directory Federation Services (AD FS) a Azure Active Directory](../manage-apps/migrate-adfs-apps-to-azure.md) se podrobněji prozkoumá stejné čtyři fáze plánování a provádění projektu migrace aplikace. V této příručce se dozvíte, jak tyto fáze použít na konkrétní cíl přesunutí aplikace z Active Directory Federation Services (AD FS) (AD FS) do služby Azure AD.
 
 * [Skript připravenosti na migraci Active Directory Federation Services (AD FS)](https://aka.ms/migrateapps/adfstools) můžete spustit na stávajících serverech místního Active Directory Federation Services (AD FS) (AD FS) a určit připravenost aplikací pro migraci do Azure AD.
 
@@ -111,7 +111,7 @@ Organizace můžou proces životního cyklu přístupu automatizovat prostředni
 
 ## <a name="future-directions"></a>Budoucí pokyny
 
-V hybridních prostředích má strategie Microsoftu možnost povolit nasazení, kde **Cloud je řídicí plocha pro identitu**, a místní adresáře a jiné systémy identit, jako je služba Active Directory a další místní aplikace, jsou cílem zřizování uživatelů s přístupem. Tato strategie bude nadále zajišťovat práva, identity a přístup v těchto aplikacích a úlohách, které je spoléhají na ně. V tomto konečném stavu budou organizace moci řídit produktivitu koncových uživatelů výhradně z cloudu.
+V hybridních prostředích má strategie Microsoftu možnost povolit nasazení, kde **Cloud je řídicí plocha pro identitu** , a místní adresáře a jiné systémy identit, jako je služba Active Directory a další místní aplikace, jsou cílem zřizování uživatelů s přístupem. Tato strategie bude nadále zajišťovat práva, identity a přístup v těchto aplikacích a úlohách, které je spoléhají na ně. V tomto konečném stavu budou organizace moci řídit produktivitu koncových uživatelů výhradně z cloudu.
 
 ![Architektura Azure AD](media/cloud-governed-management-for-on-premises/image6.png)
 

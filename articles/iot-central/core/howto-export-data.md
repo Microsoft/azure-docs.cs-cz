@@ -4,16 +4,16 @@ description: Jak používat novou export dat k exportu dat IoT do Azure a vlastn
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/15/2020
+ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
-ms.openlocfilehash: 2cbdeca41746099643fb06ff5861a39b2e032b33
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b16880f42cab21c1437d9adcbeb9825d77475e0e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126699"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413169"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Export dat IoT do cloudových cílů pomocí exportu dat
 
@@ -65,7 +65,7 @@ Pokud nemáte existující Event Hubs obor názvů pro export do, postupujte pod
     - Zkopírujte buď primární nebo sekundární připojovací řetězec. Tento připojovací řetězec můžete použít k nastavení nového cíle v IoT Central.
     - Alternativně můžete vygenerovat připojovací řetězec pro celý Event Hubs obor názvů:
         1. V Azure Portal přejít na obor názvů Event Hubs.
-        2. V části **Nastavení**vyberte **zásady sdíleného přístupu** .
+        2. V části **Nastavení** vyberte **zásady sdíleného přístupu** .
         3. Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
         4. Zkopírování primárního nebo sekundárního připojovacího řetězce
         
@@ -85,7 +85,7 @@ Pokud nemáte existující Service Bus obor názvů pro export do, postupujte po
     - Zkopírujte buď primární nebo sekundární připojovací řetězec. Tento připojovací řetězec můžete použít k nastavení nového cíle v IoT Central.
     - Alternativně můžete vygenerovat připojovací řetězec pro celý Service Bus obor názvů:
         1. V Azure Portal přejít na obor názvů Service Bus.
-        2. V části **Nastavení**vyberte **zásady sdíleného přístupu** .
+        2. V části **Nastavení** vyberte **zásady sdíleného přístupu** .
         3. Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
         4. Zkopírování primárního nebo sekundárního připojovacího řetězce
 
@@ -102,9 +102,9 @@ Pokud nemáte existující účet úložiště Azure pro export do, postupujte t
     |Standard|Blob Storage|
     |Premium|Úložiště objektů blob bloku|
 
-1. Pokud chcete vytvořit kontejner v účtu úložiště, klikněte na účet úložiště. V části **BLOB Service**vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.
+1. Pokud chcete vytvořit kontejner v účtu úložiště, klikněte na účet úložiště. V části **BLOB Service** vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.
 
-1. Kliknutím na **nastavení > přístupové klíče**vygenerujte připojovací řetězec pro váš účet úložiště. Zkopírujte jeden ze dvou připojovacích řetězců.
+1. Kliknutím na **nastavení > přístupové klíče** vygenerujte připojovací řetězec pro váš účet úložiště. Zkopírujte jeden ze dvou připojovacích řetězců.
 
 ### <a name="create-a-webhook-endpoint"></a>Vytvoření koncového bodu Webhooku
 
@@ -126,7 +126,7 @@ Teď, když máte cíl exportovat data do, nastavte export dat do aplikace IoT C
 
 1. Vyberte **+ Nový export**.
 
-1. Zadejte zobrazovaný název pro nový export a ujistěte se, že je **povolen**export dat.
+1. Zadejte zobrazovaný název pro nový export a ujistěte se, že je **povolen** export dat.
 
 1. Vyberte typ dat, který chcete exportovat. Následující tabulka uvádí podporované typy exportu dat:
 
@@ -135,28 +135,32 @@ Teď, když máte cíl exportovat data do, nastavte export dat do aplikace IoT C
     |  Telemetrie | Exportujte zprávy telemetrie ze zařízení téměř v reálném čase. Každá exportovaná zpráva obsahuje úplný obsah původní zprávy zařízení, normalizováno.   |  [Formát zprávy telemetrie](#telemetry-format)   |
     | Změny vlastností | Exportujte změny do vlastností zařízení a cloudu téměř v reálném čase. V případě vlastností zařízení jen pro čtení jsou exportovány změny hlášených hodnot. Pro vlastnosti pro čtení i zápis jsou vyexportovány obě hlášené i požadované hodnoty. | [Formát zprávy o změně vlastnosti](#property-changes-format) |
 
+<a name="DataExportFilters"></a>
 1. Volitelně můžete přidat filtry pro snížení objemu exportovaných dat. Pro každý typ exportu dat jsou k dispozici různé typy filtrů:
 
     K filtrování telemetrie můžete:
 
     - **Vyfiltruje** exportovaný datový proud tak, aby obsahoval pouze telemetrii ze zařízení, která odpovídají názvu zařízení, ID zařízení a podmínky filtru šablony zařízení.
     - **Filtrovat** přes možnosti: Pokud zvolíte položku telemetrie v rozevíracím seznamu **název** , exportovaný datový proud obsahuje jenom telemetrii, která splňuje podmínku filtru. Pokud v rozevíracím seznamu **název** zvolíte položku zařízení nebo cloudová vlastnost, exportovaný datový proud obsahuje jenom telemetrii ze zařízení s vlastnostmi, které odpovídají podmínkám filtru.
-    - **Filtr vlastností zpráv**: zařízení, která používají sady SDK pro zařízení, mohou odesílat *vlastnosti zprávy* nebo *Vlastnosti aplikace* v každé zprávě telemetrie. Vlastnosti jsou kontejner párů klíč-hodnota, které označí zprávu vlastními identifikátory. Chcete-li vytvořit filtr vlastností zprávy, zadejte klíč vlastnosti zprávy, který hledáte, a zadejte podmínku. Exportují se jenom zprávy telemetrie s vlastnostmi, které odpovídají zadané podmínce filtru. Jsou podporovány následující řetězcové operátory porovnání: Equals, není rovno, obsahuje, neobsahuje, existuje, neexistuje. [Přečtěte si další informace o vlastnostech aplikace z IoT Hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
+    - **Filtr vlastností zpráv** : zařízení, která používají sady SDK pro zařízení, mohou odesílat *vlastnosti zprávy* nebo *Vlastnosti aplikace* v každé zprávě telemetrie. Vlastnosti jsou kontejner párů klíč-hodnota, které označí zprávu vlastními identifikátory. Chcete-li vytvořit filtr vlastností zprávy, zadejte klíč vlastnosti zprávy, který hledáte, a zadejte podmínku. Exportují se jenom zprávy telemetrie s vlastnostmi, které odpovídají zadané podmínce filtru. Jsou podporovány následující řetězcové operátory porovnání: Equals, není rovno, obsahuje, neobsahuje, existuje, neexistuje. [Přečtěte si další informace o vlastnostech aplikace z IoT Hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
     Chcete-li filtrovat změny vlastností, použijte **Filtr schopností**. V rozevíracím seznamu vyberte položku Vlastnosti. Exportovaný datový proud obsahuje pouze změny vybrané vlastnosti, která splňuje podmínku filtru.
 
+<a name="DataExportEnrichmnents"></a>
 1. Volitelně můžete rozšířit exportované zprávy s dalšími metadaty páru klíč-hodnota. K dispozici jsou následující obohacení pro telemetrie a vlastnost pro změny typů exportu dat:
 
-    - **Vlastní řetězec**: přidá do každé zprávy vlastní statický řetězec. Zadejte libovolný klíč a zadejte libovolnou hodnotu řetězce.
-    - **Vlastnost**: přidá do každé zprávy aktuální nahlášenou vlastnost nebo hodnotu vlastnosti cloudu. Zadejte libovolný klíč a vyberte vlastnost zařízení nebo cloudu. Pokud je vyexportovaná zpráva ze zařízení, které nemá zadanou vlastnost, vyexportovaná zpráva nezíská obohacení.
+    - **Vlastní řetězec** : přidá do každé zprávy vlastní statický řetězec. Zadejte libovolný klíč a zadejte libovolnou hodnotu řetězce.
+    - **Vlastnost** : přidá do každé zprávy aktuální nahlášenou vlastnost nebo hodnotu vlastnosti cloudu. Zadejte libovolný klíč a vyberte vlastnost zařízení nebo cloudu. Pokud je vyexportovaná zpráva ze zařízení, které nemá zadanou vlastnost, vyexportovaná zpráva nezíská obohacení.
 
 1. Přidejte nový cíl nebo přidejte cíl, který jste už vytvořili. Vyberte odkaz **vytvořit nové** a přidejte následující informace:
 
-    - **Název cíle**: zobrazovaný název cíle v IoT Central.
-    - **Cílový typ**: Vyberte typ cíle. Pokud jste ještě nevytvořili cíl, přečtěte si téma [Nastavení cíle exportu](#set-up-export-destination).
+    - **Název cíle** : zobrazovaný název cíle v IoT Central.
+    - **Cílový typ** : Vyberte typ cíle. Pokud jste ještě nevytvořili cíl, přečtěte si téma [Nastavení cíle exportu](#set-up-export-destination).
     - V případě služby Azure Event Hubs Azure Service Bus Queue nebo téma vložte připojovací řetězec pro váš prostředek a v případě potřeby zadejte název centra událostí s rozlišováním velkých a malých písmen, fronty nebo tématu.
     - Pro Azure Blob Storage vložte připojovací řetězec pro váš prostředek a v případě potřeby zadejte název kontejneru rozlišující velká a malá písmena.
-    - Pro Webhook vložte adresu URL zpětného volání pro svůj koncový bod Webhooku.
+    - Pro Webhook vložte adresu URL zpětného volání pro svůj koncový bod Webhooku. Volitelně můžete nakonfigurovat autorizaci Webhooku (OAuth 2,0 a autorizační token) a přidat vlastní hlavičky. 
+        - U OAuth 2,0 se podporuje jenom tok přihlašovacích údajů klienta. Po uložení cíle IoT Central bude komunikovat se zprostředkovatelem OAuth, aby získal autorizační token. Tento token bude připojen k hlavičce "Authorization" pro každou zprávu odeslanou do tohoto cíle.
+        - U autorizačního tokenu můžete zadat hodnotu tokenu, která bude přímo připojena k hlavičce "Authorization" pro každou zprávu odeslanou do tohoto cíle.
     - Vyberte **Vytvořit**.
 
 1. Vyberte **+ cíl** a zvolte cíl z rozevíracího seznamu. Do jednoho exportu můžete přidat až pět cílů.

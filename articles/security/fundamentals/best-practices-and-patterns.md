@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4a3b2afd8b1a5ffdbb1fe0db1c3e345a9c99154
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73889856"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412608"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Osvědčené postupy a vzory zabezpečení Azure
 
@@ -28,8 +28,8 @@ Níže uvedené články obsahují osvědčené postupy zabezpečení, které m�
 
 Osvědčenými postupy jsou prostředky pro odborníky na IT. To může zahrnovat návrháře, architekty, vývojáře a testery, kteří sestavují a nasazují zabezpečená řešení Azure.
 
-* [Osvědčené postupy hraničního zabezpečení v Azure](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
-* [Osvědčené postupy zabezpečení databáze v Azure](database-best-practices.md)
+* [Osvědčené postupy hraničního zabezpečení v Azure](./network-best-practices.md#adopt-a-zero-trust-approach)
+* [Osvědčené postupy zabezpečení databáze v Azure](../../azure-sql/database/security-best-practice.md)
 * [Osvědčené postupy zabezpečení a šifrování dat v Azure](data-encryption-best-practices.md)
 * [Osvědčené postupy správy identit a zabezpečení řízení přístupu v Azure](identity-management-best-practices.md)
 * [Osvědčené postupy zabezpečení sítí Azure](network-best-practices.md)
@@ -38,7 +38,7 @@ Osvědčenými postupy jsou prostředky pro odborníky na IT. To může zahrnova
 * [Osvědčené postupy zabezpečení Azure Service Fabric](service-fabric-best-practices.md)
 * [Osvědčené postupy pro zabezpečení virtuálních počítačů Azure](iaas.md)
 * [Implementace zabezpečené hybridní síťové architektury v Azure](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
-* [Osvědčené postupy zabezpečení IOT](iot-best-practices.md)
+* [Osvědčené postupy zabezpečení IOT](../../iot-fundamentals/iot-security-best-practices.md)
 * [Zabezpečení databází PaaS v Azure](paas-applications-using-sql.md)
 * [Zabezpečení webových a mobilních aplikací PaaS pomocí Azure App Service](paas-applications-using-app-services.md)
 * [Zabezpečení webových a mobilních aplikací PaaS pomocí Azure Storage](paas-applications-using-storage.md)

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 author: christopheranderson
 ms.author: chrande
-ms.openlocfilehash: 6c48639279556d495be57a2933f1d7f3c139294a
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 43bcd54955cb1a8aaf08785368faf13c14f8322c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361110"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413050"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Použití MongoDB kompasu pro připojení k rozhraní API Azure Cosmos DB pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,9 +27,6 @@ Pokud se chcete k účtu Cosmos DB připojit pomocí MongoDB kompasu, musíte:
 
 * Stažení a instalace [kompasu](https://www.mongodb.com/download-center/compass?jmp=hero)
 * Informace o [připojovacím řetězci](connect-mongodb-account.md) Cosmos DB
-
-> [!NOTE]
-> V současné době je Azure Cosmos DB rozhraní API pro server MongoDB verze 3,2 podporováno nejnovější verzí MongoDB kompasu. MongoDB kompas ještě není ve verzi 3,6 serveru podporován. 
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Připojení k rozhraní API Cosmos DB pro MongoDB
 

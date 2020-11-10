@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 10/22/2020
+ms.date: 11/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5443c3b5a34cd493e0956f2a0d6ed7d6fecd603d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: dfb92e3f4f02e693ae5e4bba57e5344288c4615a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460661"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413118"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -104,7 +104,6 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 
 [Azure Policy](../../governance/policy/index.yml):
 
-- Snímky dodržování předpisů zobrazují podrobnosti o přiřazených zásadách v rámci delegovaných předplatných.
 - Vytvoření a úprava definic zásad v rámci delegovaných předplatných
 - Přiřazení definic zásad definovaných uživatelem v rámci delegovaných předplatných
 - Zákazníci uvidí zásady vytvořené poskytovatelem služeb společně se všemi zásadami, které sami vytvořily.
@@ -157,7 +156,7 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 
 Žádosti o podporu:
 
-- [Otevřete žádosti o podporu z **nápovědu a podpory** ](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) v Azure Portal delegovaných prostředků (výběr plánu podpory dostupného pro delegovaný obor).
+- [Otevřete žádosti o podporu z **nápovědu a podpory**](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) v Azure Portal delegovaných prostředků (výběr plánu podpory dostupného pro delegovaný obor).
 
 ## <a name="current-limitations"></a>Aktuální omezení
 

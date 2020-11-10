@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dc931c461988daf9ff6fb2f954b52fa58ce94af
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 795f5ede382e561ee810e54e1f8897c5d806e8b8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369773"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412370"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Čtyři kroky pro silnou identitu Foundation s Azure Active Directory
 
@@ -83,7 +83,7 @@ V moderních podnicích IT oddělení často nevědí o všech cloudových aplik
 
 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) vám může pomoct identifikovat užitečné aplikace, které jsou oblíbené s uživateli, které může schválit a přidat do galerie podnikových aplikací, aby uživatelé využili výhod funkcí, jako je jednotné přihlašování a podmíněný přístup.
 
-<em>"**Cloud App Security** nám pomáhá zajistit, aby naši lidé správně používali naše cloudové a SaaS aplikace, a to díky způsobem, který podporuje základní zásady zabezpečení, které pomáhají chránit Accenture."</em> --- [Jan Blasi, Správa ředitele, zabezpečení informací, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>" **Cloud App Security** nám pomáhá zajistit, aby naši lidé správně používali naše cloudové a SaaS aplikace, a to díky způsobem, který podporuje základní zásady zabezpečení, které pomáhají chránit Accenture."</em> --- [Jan Blasi, Správa ředitele, zabezpečení informací, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 Kromě detekce stínového IT může MCAS také určit úroveň rizika aplikací, zabránit neoprávněnému přístupu k podnikovým datům, možnému úniku dat a dalším bezpečnostním rizikům, která jsou v aplikacích spojená.
 
@@ -147,7 +147,7 @@ Podobně je možné pomocí [sestavy samoobslužné správy hesel](../authentica
 
 ### <a name="self-service-app-management"></a>Samoobslužná správa aplikací
 
-Než budou moct vaši uživatelé sami zjišťovat aplikace z přístupového panelu, musíte povolit [Samoobslužný přístup](../manage-apps/access-panel-manage-self-service-access.md) k aplikacím, u kterých chcete uživatelům umožnit, aby si mohli sami vyhledat a požádat o přístup. Samoobslužný přístup k aplikacím je skvělý způsob, jak uživatelům povolit, aby si mohli sami zjistit aplikace a volitelně povolit obchodní skupině schvalovat přístup k těmto aplikacím. Obchodní skupině můžete dovolit, aby uživatelé spravovali přihlašovací údaje přiřazené k [heslům Single-Sign v aplikacích](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) přímo ze svých přístupových panelů.
+Než budou moct vaši uživatelé sami zjišťovat aplikace z přístupového panelu, musíte povolit [Samoobslužný přístup](../manage-apps/access-panel-manage-self-service-access.md) k aplikacím, u kterých chcete uživatelům umožnit, aby si mohli sami vyhledat a požádat o přístup. Samoobslužný přístup k aplikacím je skvělý způsob, jak uživatelům povolit, aby si mohli sami zjistit aplikace a volitelně povolit obchodní skupině schvalovat přístup k těmto aplikacím. Obchodní skupině můžete dovolit, aby uživatelé spravovali přihlašovací údaje přiřazené k [heslům Single-Sign v aplikacích](../manage-apps/troubleshoot-password-based-sso.md#automatically-capture-sign-in-fields-for-an-app) přímo ze svých přístupových panelů.
 
 ### <a name="self-service-group-management"></a>Samoobslužná správa skupin
 
@@ -212,7 +212,7 @@ Kromě zjišťování stínového IT můžete monitorovat využití aplikací v 
 
 *"Díky Cloud App Security můžeme rychle odhalit anomálie a provést akci."* --- [Eric LePenske, vedoucí správce, zabezpečení informací, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Existuje mnoho aspektů implementace řešení hybridní identity, ale tento podrobný kontrolní seznam vám pomůže rychle provést infrastrukturu identit, která umožní uživatelům zvýšit produktivitu a zabezpečení.
 
@@ -267,6 +267,6 @@ Doporučujeme vytisknout následující kontrolní seznam, který bude odkazovat
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak můžete zvýšit zabezpečení stav pomocí možností Azure Active Directory a tohoto kontrolního seznamu pěti kroků – [pět kroků k zabezpečení vaší infrastruktury identity](https://aka.ms/securitysteps).
+Přečtěte si, jak můžete zvýšit zabezpečení stav pomocí možností Azure Active Directory a tohoto kontrolního seznamu pěti kroků – [pět kroků k zabezpečení vaší infrastruktury identity](../../security/fundamentals/steps-secure-identity.md).
 
-Přečtěte si, jak funkce identity v Azure AD vám pomůžou zrychlit přechod na správu na základě cloudu tím, že poskytují řešení a možnosti, které organizacím umožňují rychle přijmout a přesunout další správu identit z tradičních místních systémů do Azure AD – [jak Azure AD poskytuje cloudovou správu pro místní úlohy](https://aka.ms/cloudgoverned).
+Přečtěte si, jak funkce identity v Azure AD vám pomůžou zrychlit přechod na správu na základě cloudu tím, že poskytují řešení a možnosti, které organizacím umožňují rychle přijmout a přesunout další správu identit z tradičních místních systémů do Azure AD – [jak Azure AD poskytuje cloudovou správu pro místní úlohy](./cloud-governed-management-for-on-premises.md).

@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: da17122de8db41b6ba9ae9597d52bc3e1d8d0062
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c1200121d1c768a3fdddd7749184d7f8b5c98a96
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962390"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413101"
 ---
 # <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Verze Preview: Zvýhodněné hybridní využití Azure – jak se vztahuje Linux Virtual Machines
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Přehled
 
 Zvýhodněné hybridní využití Azure vám umožní snadněji migrovat místní virtuální počítače s Red Hat Enterprise Linux (RHEL) a SUSE Linux Enterprise Server (SLES) do Azure pomocí vlastního předplatného Red Hat nebo SUSE softwaru. S touto výhodou platíte jenom za náklady na infrastrukturu vašeho virtuálního počítače, protože poplatek za software je pokrytý vaším předplatným RHEL nebo SLES. Tato výhoda se vztahuje na všechny image RHEL a SLES Marketplace s průběžnými platbami (PAYG).
 
@@ -57,7 +57,7 @@ V této fázi můžete získat přístup k výhodám vyplněním formuláře [zd
 1.    Registrace v [programu Red Hat Cloud Access](https://aka.ms/rhel-cloud-access)
 1.    Umožněte vašim předplatným Azure pro cloudový přístup a povolte předplatná obsahující virtuální počítače, které chcete využívat.
 1.    Využijte výhod pro stávající virtuální počítače buď prostřednictvím Azure Portal, nebo pomocí Azure CLI.
-1.    Zaregistrujte si virtuální počítače, které obdrží výhodu, pomocí samostatného zdroje aktualizací.
+1.    Volitelné, zaregistrujte si virtuální počítače, které obdrží výhodu, pomocí samostatného zdroje aktualizací (přepínaný virtuální počítače můžou zůstat připojené k [RHUI](../workloads/redhat/redhat-rhui.md) nebo registrovat prostřednictvím RHSM).
 
 ### <a name="suse-customers"></a>Zákazníci SUSE
 
@@ -147,13 +147,14 @@ Odpověď: Ne, nemůžete. Pokud se pokusíte zadat typ licence, který nespráv
 
 Odpověď: může trvat nějakou dobu, než se registrace předplatného služby Red Hat pro cloudový přístup došíří z Red Hat do Azure. Pokud se vám i po jednom pracovním dni stále zobrazuje chyba, obraťte se na podporu Microsoftu.
 
-## <a name="common-errors"></a>Běžné chyby
-Tato část obsahuje seznam běžných chyb a kroků pro zmírnění rizik.
+## <a name="common-issues"></a>Běžné problémy
+Tato část obsahuje seznam běžných problémů, které by mohly být zjištěny, a kroky pro zmírnění rizik.
 
 | Chyba | Omezení rizik |
 | ----- | ---------- |
 | "Předplatné není zaregistrované pro Linux Preview Zvýhodněné hybridní využití Azure. Podrobné pokyny najdete v https://aka.ms/ahb-linux části. | Vyplňte formulář v https://aka.ms/ahb-linux-form a zaregistrujte se pro Linux preview zvýhodněné hybridní využití Azure.
 | Akce nemohla být dokončena, protože naše záznamy ukazují, že jste v předplatném Azure nepovolili přístup do cloudu Red Hat.... | Aby bylo možné využívat výhod s virtuálními počítači s RHEL, musíte nejdřív zaregistrovat vaše předplatná Azure s přístupem Red Hat Cloud Access. Navštivte tento odkaz, kde najdete další informace o registraci předplatných Azure pro cloudový přístup Red Hat.
+|Možnost Zvýhodněné hybridní využití Azure se na portálu nezobrazí. | Jedná se o známý problém pro virtuální počítače RHEL a SLES vytvořené z Galerie sdílených imagí, snímky nebo zachycené image PAYG. V takovém případě použijte kroky CLI popsané v části[povolení a zakázání výhod v rozhraní příkazového řádku Azure CLI](#enable-and-disable-the-benefit-in-the-azure-cli). Chcete-li zobrazit stav AHB, použijte příkaz ` az vm get-instance-view -g MyResourceGroup -n MyVm` .|
 
 ## <a name="next-steps"></a>Další kroky
 * Začněte s verzí Preview vyplněním formuláře [zde](https://aka.ms/ahb-linux-form).

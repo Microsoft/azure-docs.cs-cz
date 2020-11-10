@@ -16,12 +16,12 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9411c22183620f883b4d2819eb3078e49837e578
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016074"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413186"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace služby Azure AD Connect: Atributy synchronizované se službou Azure Active Directory
 Toto téma obsahuje seznam atributů synchronizovaných pomocí Azure AD Connect synchronizace.  
@@ -41,22 +41,22 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 ## <a name="microsoft-365-apps-for-enterprise"></a>Aplikace Microsoft 365 pro podniky
 | Název atributu | Uživatel | Komentář |
 | --- |:---:| --- |
-| accountEnabled |× |Definuje, jestli je účet povolený. |
-| CN |× | |
-| displayName |× | |
-| objectSID |× |Mechanická vlastnost. Identifikátor uživatele služby AD používaný k údržbě synchronizace mezi službami Azure AD a AD. |
-| pwdLastSet |× |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. |
-|samAccountName|×| |
-| sourceAnchor |× |Mechanická vlastnost. Neproměnlivý identifikátor, který udržuje vztah mezi PŘIDÁVÁNÍm a službou Azure AD. |
-| usageLocation |× |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
-| userPrincipalName (Hlavní název uživatele) |× |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
+| accountEnabled |X |Definuje, jestli je účet povolený. |
+| CN |X | |
+| displayName |X | |
+| objectSID |X |Mechanická vlastnost. Identifikátor uživatele služby AD používaný k údržbě synchronizace mezi službami Azure AD a AD. |
+| pwdLastSet |X |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. |
+|samAccountName|X| |
+| sourceAnchor |X |Mechanická vlastnost. Neproměnlivý identifikátor, který udržuje vztah mezi PŘIDÁVÁNÍm a službou Azure AD. |
+| usageLocation |X |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
+| userPrincipalName (Hlavní název uživatele) |X |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
 
 ## <a name="exchange-online"></a>Exchange Online
-| Název atributu | Uživatel | Kontakt | Group (Skupina) | Komentář |
+| Název atributu | Uživatel | Kontakt | Skupina | Komentář |
 | --- |:---:|:---:|:---:| --- |
-| accountEnabled |× | | |Definuje, jestli je účet povolený. |
+| accountEnabled |X | | |Definuje, jestli je účet povolený. |
 | pomocníka |X |X | | |
-| altRecipient |× | | |Vyžaduje Azure AD Connect Build 1.1.552.0 nebo After. |
+| altRecipient |X | | |Vyžaduje Azure AD Connect Build 1.1.552.0 nebo After. |
 | authOrig |X |X |X | |
 | c |X |X | | |
 | CN |X | |X | |
@@ -64,7 +64,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | company |X |X | | |
 | countryCode |X |X | | |
 | Oddělení |X |X | | |
-| Popis | | |× | |
+| description | | |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -91,27 +91,27 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | l |X |X | | |
 | legacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
-| managedBy | | |× | |
+| managedBy | | |X | |
 | manager |X |X | | |
-| člen | | |× | |
+| člen | | |X | |
 | mobil |X |X | | |
 | msDS-HABSeniorityIndex |X |X |X | |
 | msDS-PhoneticDisplayName |X |X |X | |
-| msExchArchiveGUID |× | | | |
-| msExchArchiveName |× | | | |
+| msExchArchiveGUID |X | | | |
+| msExchArchiveName |X | | | |
 | msExchAssistantName |X |X | | |
-| msExchAuditAdmin |× | | | |
-| msExchAuditDelegate |× | | | |
-| msExchAuditDelegateAdmin |× | | | |
-| msExchAuditOwner |× | | | |
+| msExchAuditAdmin |X | | | |
+| msExchAuditDelegate |X | | | |
+| msExchAuditDelegateAdmin |X | | | |
+| msExchAuditOwner |X | | | |
 | msExchBlockedSendersHash |X |X | | |
-| msExchBypassAudit |× | | | |
-| msExchBypassModerationLink | | |× |K dispozici ve verzi Azure AD Connect 1.1.524.0 |
-| msExchCoManagedByLink | | |× | |
-| msExchDelegateListLink |× | | | |
-| msExchELCExpirySuspensionEnd |× | | | |
-| msExchELCExpirySuspensionStart |× | | | |
-| msExchELCMailboxFlags |× | | | |
+| msExchBypassAudit |X | | | |
+| msExchBypassModerationLink | | |X |K dispozici ve verzi Azure AD Connect 1.1.524.0 |
+| msExchCoManagedByLink | | |X | |
+| msExchDelegateListLink |X | | | |
+| msExchELCExpirySuspensionEnd |X | | | |
+| msExchELCExpirySuspensionStart |X | | | |
+| msExchELCMailboxFlags |X | | | |
 | msExchEnableModeration |X | |X | |
 | msExchExtensionCustomAttribute1 |X |X |X |Tento atribut aktuálně nevyužívá Exchange Online. |
 | msExchExtensionCustomAttribute2 |X |X |X |Tento atribut aktuálně nevyužívá Exchange Online. |
@@ -119,34 +119,34 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | msExchExtensionCustomAttribute4 |X |X |X |Tento atribut aktuálně nevyužívá Exchange Online. |
 | msExchExtensionCustomAttribute5 |X |X |X |Tento atribut aktuálně nevyužívá Exchange Online. |
 | msExchHideFromAddressLists |X |X |X | |
-| msExchImmutableID |× | | | |
+| msExchImmutableID |X | | | |
 | msExchLitigationHoldDate |X |X |X | |
 | msExchLitigationHoldOwner |X |X |X | |
-| msExchMailboxAuditEnable |× | | | |
-| msExchMailboxAuditLogAgeLimit |× | | | |
-| msExchMailboxGuid |× | | | |
+| msExchMailboxAuditEnable |X | | | |
+| msExchMailboxAuditLogAgeLimit |X | | | |
+| msExchMailboxGuid |X | | | |
 | msExchModeratedByLink |X |X |X | |
 | msExchModerationFlags |X |X |X | |
 | msExchRecipientDisplayType |X |X |X | |
 | msExchRecipientTypeDetails |X |X |X | |
-| msExchRemoteRecipientType |× | | | |
+| msExchRemoteRecipientType |X | | | |
 | msExchRequireAuthToSendTo |X |X |X | |
-| msExchResourceCapacity |× | | | |
-| msExchResourceDisplay |× | | | |
-| msExchResourceMetaData |× | | | |
-| msExchResourceSearchProperties |× | | | |
+| msExchResourceCapacity |X | | | |
+| msExchResourceDisplay |X | | | |
+| msExchResourceMetaData |X | | | |
+| msExchResourceSearchProperties |X | | | |
 | msExchRetentionComment |X |X |X | |
 | msExchRetentionURL |X |X |X | |
 | msExchSafeRecipientsHash |X |X | | |
 | msExchSafeSendersHash |X |X | | |
 | msExchSenderHintTranslations |X |X |X | |
-| msExchTeamMailboxExpiration |× | | | |
-| msExchTeamMailboxOwners |× | | | |
-| msExchTeamMailboxSharePointUrl |× | | | |
-| msExchUserHoldPolicies |× | | | |
-| msOrg-organizační | | |× | |
+| msExchTeamMailboxExpiration |X | | | |
+| msExchTeamMailboxOwners |X | | | |
+| msExchTeamMailboxSharePointUrl |X | | | |
+| msExchUserHoldPolicies |X | | | |
+| msOrg-organizační | | |X | |
 | objectSID |X | |X |Mechanická vlastnost. Identifikátor uživatele služby AD používaný k údržbě synchronizace mezi službami Azure AD a AD. |
-| oOFReplyToOriginator | | |× | |
+| oOFReplyToOriginator | | |X | |
 | otherFacsimileTelephone |X |X | | |
 | otherHomePhone |X |X | | |
 | otherTelephone |X |X | | |
@@ -155,9 +155,9 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | Ovládacím |X |X | | |
 | proxyAddresses |X |X |X | |
 | publicDelegates |X |X |X | |
-| pwdLastSet |× | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hesla i federaci. |
-| reportToOriginator | | |× | |
-| reportToOwner | | |× | |
+| pwdLastSet |X | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hesla i federaci. |
+| reportToOriginator | | |X | |
+| reportToOwner | | |X | |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanická vlastnost. Neproměnlivý identifikátor, který udržuje vztah mezi PŘIDÁVÁNÍm a službou Azure AD. |
 | st |X |X | | |
@@ -168,16 +168,16 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | thumbnailphoto |X |X | |synchronizuje se jenom jednou z Azure AD po Exchange Online, po které se Exchange Online stal zdrojem oprávnění pro tento atribut a jakékoli pozdější změny se nedají synchronizovat z místního. Další informace najdete v tématu ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)).|
 | title |X |X | | |
 | unauthOrig |X |X |X | |
-| usageLocation |× | | |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
+| usageLocation |X | | |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
 | userCertificate |X |X | | |
-| userPrincipalName (Hlavní název uživatele) |× | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
+| userPrincipalName (Hlavní název uživatele) |X | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
 | userSMIMECertificates |X |X | | |
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| Název atributu | Uživatel | Kontakt | Group (Skupina) | Komentář |
+| Název atributu | Uživatel | Kontakt | Skupina | Komentář |
 | --- |:---:|:---:|:---:| --- |
-| accountEnabled |× | | |Definuje, jestli je účet povolený. |
+| accountEnabled |X | | |Definuje, jestli je účet povolený. |
 | authOrig |X |X |X | |
 | c |X |X | | |
 | CN |X | |X | |
@@ -185,7 +185,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | company |X |X | | |
 | countryCode |X |X | | |
 | Oddělení |X |X | | |
-| Popis |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -206,7 +206,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | extensionAttribute9 |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
-| hideDLMembership | | |× | |
+| hideDLMembership | | |X | |
 | homePhone |X |X | | |
 | příjemce |X |X |X | |
 | iniciály |X |X | | |
@@ -214,17 +214,17 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | l |X |X | | |
 | pošta |X |X |X | |
 | mailNickname |X |X |X | |
-| managedBy | | |× | |
+| managedBy | | |X | |
 | manager |X |X | | |
-| člen | | |× | |
+| člen | | |X | |
 | middleName |X |X | | |
 | mobil |X |X | | |
-| msExchTeamMailboxExpiration |× | | | |
-| msExchTeamMailboxOwners |× | | | |
-| msExchTeamMailboxSharePointLinkedBy |× | | | |
-| msExchTeamMailboxSharePointUrl |× | | | |
+| msExchTeamMailboxExpiration |X | | | |
+| msExchTeamMailboxOwners |X | | | |
+| msExchTeamMailboxSharePointLinkedBy |X | | | |
+| msExchTeamMailboxSharePointUrl |X | | | |
 | objectSID |X | |X |Mechanická vlastnost. Identifikátor uživatele služby AD používaný k údržbě synchronizace mezi službami Azure AD a AD. |
-| oOFReplyToOriginator | | |× | |
+| oOFReplyToOriginator | | |X | |
 | otherFacsimileTelephone |X |X | | |
 | otherHomePhone |X |X | | |
 | otherIpPhone |X |X | | |
@@ -235,11 +235,11 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | physicalDeliveryOfficeName |X |X | | |
 | Ovládacím |X |X | | |
 | postOfficeBox |X |X | |SharePoint Online tuto vlastnost aktuálně nevyužívá. |
-| preferredLanguage |× | | | |
+| preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |× | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. |
-| reportToOriginator | | |× | |
-| reportToOwner | | |× | |
+| pwdLastSet |X | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. |
+| reportToOriginator | | |X | |
+| reportToOwner | | |X | |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanická vlastnost. Neproměnlivý identifikátor, který udržuje vztah mezi PŘIDÁVÁNÍm a službou Azure AD. |
 | st |X |X | | |
@@ -251,21 +251,21 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | title |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
-| usageLocation |× | | |Mechanická vlastnost. Země nebo oblast uživatele
+| usageLocation |X | | |Mechanická vlastnost. Země nebo oblast uživatele
 . Používá se pro přiřazení licencí. |
-| userPrincipalName (Hlavní název uživatele) |× | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
+| userPrincipalName (Hlavní název uživatele) |X | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
 | wWWHomePage |X |X | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>Týmy a Skype pro firmy online
-| Název atributu | Uživatel | Kontakt | Group (Skupina) | Komentář |
+| Název atributu | Uživatel | Kontakt | Skupina | Komentář |
 | --- |:---:|:---:|:---:| --- |
-| accountEnabled |× | | |Definuje, jestli je účet povolený. |
+| accountEnabled |X | | |Definuje, jestli je účet povolený. |
 | c |X |X | | |
 | CN |X | |X | |
 | co |X |X | | |
 | company |X |X | | |
 | Oddělení |X |X | | |
-| Popis |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
@@ -274,25 +274,25 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | l |X |X | | |
 | pošta |X |X |X | |
 | mailNickname |X |X |X | |
-| managedBy | | |× | |
+| managedBy | | |X | |
 | manager |X |X | | |
-| člen | | |× | |
+| člen | | |X | |
 | mobil |X |X | | |
 | msExchHideFromAddressLists |X |X |X | |
-| msRTCSIP – ApplicationOptions |× | | | |
+| msRTCSIP – ApplicationOptions |X | | | |
 | msRTCSIP – DeploymentLocator |X |X | | |
 | msRTCSIP-line |X |X | | |
 | msRTCSIP – OptionFlags |X |X | | |
-| msRTCSIP – OwnerUrn |× | | | |
+| msRTCSIP – OwnerUrn |X | | | |
 | msRTCSIP – PrimaryUserAddress |X |X | | |
 | msRTCSIP – UserEnabled |X |X | | |
 | objectSID |X | |X |Mechanická vlastnost. Identifikátor uživatele služby AD používaný k údržbě synchronizace mezi službami Azure AD a AD. |
 | otherTelephone |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
 | Ovládacím |X |X | | |
-| preferredLanguage |× | | | |
+| preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |× | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. |
+| pwdLastSet |X | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanická vlastnost. Neproměnlivý identifikátor, který udržuje vztah mezi PŘIDÁVÁNÍm a službou Azure AD. |
 | st |X |X | | |
@@ -300,171 +300,171 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | |synchronizuje se jenom jednou z Azure AD po Exchange Online, po které se Exchange Online stal zdrojem oprávnění pro tento atribut a jakékoli pozdější změny se nedají synchronizovat z místního. Další informace najdete v tématu ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)).|
 | title |X |X | | |
-| usageLocation |× | | |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
-| userPrincipalName (Hlavní název uživatele) |× | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
+| usageLocation |X | | |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
+| userPrincipalName (Hlavní název uživatele) |X | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| Název atributu | Uživatel | Kontakt | Group (Skupina) | Komentář |
+| Název atributu | Uživatel | Kontakt | Skupina | Komentář |
 | --- |:---:|:---:|:---:| --- |
-| accountEnabled |× | | |Definuje, jestli je účet povolený. |
+| accountEnabled |X | | |Definuje, jestli je účet povolený. |
 | CN |X | |X |Běžný název nebo alias. Nejčastěji se jedná o předponu hodnoty [mail]. |
 | displayName |X |X |X |Řetězec, který představuje název často zobrazený jako popisný název (křestní jméno příjmení). |
 | pošta |X |X |X |úplná e-mailová adresa |
-| člen | | |× | |
+| člen | | |X | |
 | objectSID |X | |X |Mechanická vlastnost. Identifikátor uživatele služby AD používaný k údržbě synchronizace mezi službami Azure AD a AD. |
 | proxyAddresses |X |X |X |Mechanická vlastnost. Používá se v Azure AD. Obsahuje všechny sekundární e-mailové adresy uživatele. |
-| pwdLastSet |× | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. |
+| pwdLastSet |X | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. |
 | sourceAnchor |X |X |X |Mechanická vlastnost. Neproměnlivý identifikátor, který udržuje vztah mezi PŘIDÁVÁNÍm a službou Azure AD. |
-| usageLocation |× | | |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
-| userPrincipalName (Hlavní název uživatele) |× | | |Tento hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
+| usageLocation |X | | |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
+| userPrincipalName (Hlavní název uživatele) |X | | |Tento hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
 
 ## <a name="intune"></a>Intune
-| Název atributu | Uživatel | Kontakt | Group (Skupina) | Komentář |
+| Název atributu | Uživatel | Kontakt | Skupina | Komentář |
 | --- |:---:|:---:|:---:| --- |
-| accountEnabled |× | | |Definuje, jestli je účet povolený. |
+| accountEnabled |X | | |Definuje, jestli je účet povolený. |
 | c |X |X | | |
 | CN |X | |X | |
-| Popis |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | pošta |X |X |X | |
 | mailNickname |X |X |X | |
-| člen | | |× | |
+| člen | | |X | |
 | objectSID |X | |X |Mechanická vlastnost. Identifikátor uživatele služby AD používaný k údržbě synchronizace mezi službami Azure AD a AD. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |× | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. |
+| pwdLastSet |X | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. |
 | sourceAnchor |X |X |X |Mechanická vlastnost. Neproměnlivý identifikátor, který udržuje vztah mezi PŘIDÁVÁNÍm a službou Azure AD. |
-| usageLocation |× | | |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
-| userPrincipalName (Hlavní název uživatele) |× | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
+| usageLocation |X | | |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
+| userPrincipalName (Hlavní název uživatele) |X | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| Název atributu | Uživatel | Kontakt | Group (Skupina) | Komentář |
+| Název atributu | Uživatel | Kontakt | Skupina | Komentář |
 | --- |:---:|:---:|:---:| --- |
-| accountEnabled |× | | |Definuje, jestli je účet povolený. |
+| accountEnabled |X | | |Definuje, jestli je účet povolený. |
 | c |X |X | | |
 | CN |X | |X | |
 | co |X |X | | |
 | company |X |X | | |
 | countryCode |X |X | | |
-| Popis |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | l |X |X | | |
-| managedBy | | |× | |
+| managedBy | | |X | |
 | manager |X |X | | |
-| člen | | |× | |
+| člen | | |X | |
 | mobil |X |X | | |
 | objectSID |X | |X |Mechanická vlastnost. Identifikátor uživatele služby AD používaný k údržbě synchronizace mezi službami Azure AD a AD. |
 | physicalDeliveryOfficeName |X |X | | |
 | Ovládacím |X |X | | |
-| preferredLanguage |× | | | |
-| pwdLastSet |× | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. |
+| preferredLanguage |X | | | |
+| pwdLastSet |X | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanická vlastnost. Neproměnlivý identifikátor, který udržuje vztah mezi PŘIDÁVÁNÍm a službou Azure AD. |
 | st |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | title |X |X | | |
-| usageLocation |× | | |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
-| userPrincipalName (Hlavní název uživatele) |× | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
+| usageLocation |X | | |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
+| userPrincipalName (Hlavní název uživatele) |X | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
 
 ## <a name="3rd-party-applications"></a>aplikace třetích stran
 Tato skupina je sadou atributů používaných jako minimální atributy, které jsou potřeba pro obecné úlohy nebo aplikace. Dá se použít pro úlohy, které nejsou uvedené v jiné části nebo pro aplikaci od jiného výrobce než Microsoftu. Používá se explicitně pro následující:
 
 * Yammer (jenom uživatel se spotřebovává)
-* [Hybridní scénáře spolupráce mezi organizacemi B2B (Business-to-Business) nabízené prostředky, jako je SharePoint](https://go.microsoft.com/fwlink/?LinkId=747036)
+* [Hybridní scénáře spolupráce mezi organizacemi B2B (Business-to-Business) nabízené prostředky, jako je SharePoint](/sharepoint/create-b2b-extranet)
 
 Tato skupina je sadou atributů, které se dají použít, když se adresář služby Azure AD nepoužívá k podpoře Microsoft 365, Dynamics nebo Intune. Má malou sadu základních atributů. Mějte na paměti, že jednotné přihlašování nebo zřizování pro některé aplikace třetích stran vyžaduje konfiguraci synchronizace atributů kromě atributů popsaných tady. Požadavky na aplikace jsou popsány v [kurzu aplikace SaaS](../saas-apps/tutorial-list.md) pro jednotlivé aplikace.
 
-| Název atributu | Uživatel | Kontakt | Group (Skupina) | Komentář |
+| Název atributu | Uživatel | Kontakt | Skupina | Komentář |
 | --- |:---:|:---:|:---:| --- |
-| accountEnabled |× | | |Definuje, jestli je účet povolený. |
+| accountEnabled |X | | |Definuje, jestli je účet povolený. |
 | CN |X | |X | |
 | displayName |X |X |X | |
-| employeeID |× |  |  | |
+| employeeID |X |  |  | |
 | givenName |X |X | | |
 | pošta |X | |X | |
-| managedBy | | |× | |
+| managedBy | | |X | |
 | mailNickName |X |X |X | |
-| člen | | |× | |
-| objectSID |× | | |Mechanická vlastnost. Identifikátor uživatele služby AD používaný k údržbě synchronizace mezi službami Azure AD a AD. |
+| člen | | |X | |
+| objectSID |X | | |Mechanická vlastnost. Identifikátor uživatele služby AD používaný k údržbě synchronizace mezi službami Azure AD a AD. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |× | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. |
+| pwdLastSet |X | | |Mechanická vlastnost. Používá se k zjištění, kdy už vydané tokeny jsou neověřené. Používá se pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanická vlastnost. Neproměnlivý identifikátor, který udržuje vztah mezi PŘIDÁVÁNÍm a službou Azure AD. |
-| usageLocation |× | | |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
-| userPrincipalName (Hlavní název uživatele) |× | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
+| usageLocation |X | | |Mechanická vlastnost. Země nebo oblast uživatele. Používá se pro přiřazení licencí. |
+| userPrincipalName (Hlavní název uživatele) |X | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
 
 ## <a name="windows-10"></a>Windows 10
 Počítač připojený k doméně Windows 10 (zařízení) synchronizuje některé atributy do Azure AD. Další informace o těchto scénářích najdete v tématu [připojení zařízení připojených k doméně ke službě Azure AD pro prostředí Windows 10](../devices/hybrid-azuread-join-plan.md). Tyto atributy se vždycky synchronizují a Windows 10 se nezobrazí jako aplikace, kterou můžete zrušit. Počítač připojený k doméně Windows 10 je identifikovaný, protože má atribut userCertificate vyplněný.
 
 | Název atributu | Zařízení | Komentář |
 | --- |:---:| --- |
-| accountEnabled |× | |
-| deviceTrustType |× |Hodnota pevně zakódované pro počítače připojené k doméně |
-| displayName |× | |
-| MS-DS-CreatorSID |× |Také se označuje jako registeredOwnerReference. |
-| objectGUID |× |Také se nazývá deviceID. |
-| objectSID |× |Také se označuje jako onPremisesSecurityIdentifier. |
-| operatingSystem |× |Také se označuje jako deviceOSType. |
-| operatingSystemVersion |× |Také se označuje jako deviceOSVersion. |
-| userCertificate |× | |
+| accountEnabled |X | |
+| deviceTrustType |X |Hodnota pevně zakódované pro počítače připojené k doméně |
+| displayName |X | |
+| MS-DS-CreatorSID |X |Také se označuje jako registeredOwnerReference. |
+| objectGUID |X |Také se nazývá deviceID. |
+| objectSID |X |Také se označuje jako onPremisesSecurityIdentifier. |
+| operatingSystem |X |Také se označuje jako deviceOSType. |
+| operatingSystemVersion |X |Také se označuje jako deviceOSVersion. |
+| userCertificate |X | |
 
 Tyto atributy pro **uživatele** jsou kromě dalších vybraných aplikací.  
 
 | Název atributu | Uživatel | Komentář |
 | --- |:---:| --- |
-| domainFQDN |× |Také se označuje jako dnsDomainName. Například contoso.com. |
-| domainNetBios |× |Označuje se také jako netBios. Například CONTOSO. |
-| msDS-KeyCredentialLink |× |Jakmile se uživatel zaregistruje ve Windows Hello pro firmy. | 
+| domainFQDN |X |Také se označuje jako dnsDomainName. Například contoso.com. |
+| domainNetBios |X |Označuje se také jako netBios. Například CONTOSO. |
+| msDS-KeyCredentialLink |X |Jakmile se uživatel zaregistruje ve Windows Hello pro firmy. | 
 
 ## <a name="exchange-hybrid-writeback"></a>Hybridní zpětný zápis systému Exchange
 Tyto atributy se napíší zpátky z Azure AD do místní služby Active Directory, když vyberete možnost povolit službu **Exchange Hybrid**. V závislosti na verzi systému Exchange může být synchronizovaný méně atributů.
 
-| Název atributu (místní služba AD) | Název atributu (připojit uživatelské rozhraní) | Uživatel | Kontakt | Group (Skupina) | Komentář |
+| Název atributu (místní služba AD) | Název atributu (připojit uživatelské rozhraní) | Uživatel | Kontakt | Skupina | Komentář |
 | --- |:---:|:---:|:---:| --- |---|
-| msDS-ExternalDirectoryObjectID| MS-DS-External-Directory-Object-ID |× | | |Je odvozeno od cloudAnchor ve službě Azure AD. Tento atribut je v systémech Exchange 2016 a Windows Server 2016 AD nový. |
-| msExchArchiveStatus| MS-Exch-ArchiveStatus |× | | |Online archiv: umožňuje zákazníkům archivovat poštu. |
-| msExchBlockedSendersHash| MS-Exch-BlockedSendersHash |× | | |Filtrování: zapisuje zpět místní filtrování a online bezpečná a blokovaná data odesílatele od klientů. |
-| msExchSafeRecipientsHash| MS-Exch-SafeRecipientsHash  |× | | |Filtrování: zapisuje zpět místní filtrování a online bezpečná a blokovaná data odesílatele od klientů. |
-| msExchSafeSendersHash| MS-Exch-SafeSendersHash  |× | | |Filtrování: zapisuje zpět místní filtrování a online bezpečná a blokovaná data odesílatele od klientů. |
-| msExchUCVoiceMailSettings| MS-Exch-UCVoiceMailSettings |× | | |Povolit Unified Messaging (UM) – online hlasová pošta: používá se integrací Microsoft Lync serveru k tomu, aby se na serveru Lync používala hlasová pošta v online služby. |
-| msExchUserHoldPolicies| MS-Exch-UserHoldPolicies |× | | |Blokování sporů: umožňuje cloudovým službám určit, kteří uživatelé jsou v rámci sporů. |
+| msDS-ExternalDirectoryObjectID| MS-DS-External-Directory-Object-ID |X | | |Je odvozeno od cloudAnchor ve službě Azure AD. Tento atribut je v systémech Exchange 2016 a Windows Server 2016 AD nový. |
+| msExchArchiveStatus| MS-Exch-ArchiveStatus |X | | |Online archiv: umožňuje zákazníkům archivovat poštu. |
+| msExchBlockedSendersHash| MS-Exch-BlockedSendersHash |X | | |Filtrování: zapisuje zpět místní filtrování a online bezpečná a blokovaná data odesílatele od klientů. |
+| msExchSafeRecipientsHash| MS-Exch-SafeRecipientsHash  |X | | |Filtrování: zapisuje zpět místní filtrování a online bezpečná a blokovaná data odesílatele od klientů. |
+| msExchSafeSendersHash| MS-Exch-SafeSendersHash  |X | | |Filtrování: zapisuje zpět místní filtrování a online bezpečná a blokovaná data odesílatele od klientů. |
+| msExchUCVoiceMailSettings| MS-Exch-UCVoiceMailSettings |X | | |Povolit Unified Messaging (UM) – online hlasová pošta: používá se integrací Microsoft Lync serveru k tomu, aby se na serveru Lync používala hlasová pošta v online služby. |
+| msExchUserHoldPolicies| MS-Exch-UserHoldPolicies |X | | |Blokování sporů: umožňuje cloudovým službám určit, kteří uživatelé jsou v rámci sporů. |
 | proxyAddresses| proxyAddresses |X |X |X |Je vložena pouze adresa x500 z Exchange Online. |
-| publicDelegates| MS-Exch – veřejné – Delegáti  |× | | |Umožňuje poštovní schránce Exchange Online udělit uživatelům s místní poštovní schránkou Exchange SendOnBehalfTo práva. Vyžaduje Azure AD Connect Build 1.1.552.0 nebo After. |
+| publicDelegates| MS-Exch – veřejné – Delegáti  |X | | |Umožňuje poštovní schránce Exchange Online udělit uživatelům s místní poštovní schránkou Exchange SendOnBehalfTo práva. Vyžaduje Azure AD Connect Build 1.1.552.0 nebo After. |
 
 ## <a name="exchange-mail-public-folder"></a>Veřejná složka pošty Exchange
 Tyto atributy se synchronizují z místní služby Active Directory do Azure AD, když vyberete povolení **veřejné složky pošty Exchange**.
 
 | Název atributu | PublicFolder | Komentář |
 | --- | :---:| --- |
-| displayName | × |  |
-| pošta | × |  |
-| msExchRecipientTypeDetails | × |  |
-| objectGUID | × |  |
-| proxyAddresses | × |  |
-| targetAddress | × |  |
+| displayName | X |  |
+| pošta | X |  |
+| msExchRecipientTypeDetails | X |  |
+| objectGUID | X |  |
+| proxyAddresses | X |  |
+| targetAddress | X |  |
 
 ## <a name="device-writeback"></a>Zpětný zápis zařízení
 Objekty zařízení se vytvářejí ve službě Active Directory. Tyto objekty můžou být zařízení připojená ke službě Azure AD nebo počítačům s Windows 10 připojenými k doméně.
 
 | Název atributu | Zařízení | Komentář |
 | --- |:---:| --- |
-| altSecurityIdentities |× | |
-| displayName |× | |
-| rozlišující název |× | |
-| msDS-CloudAnchor |× | |
-| msDS-DeviceID |× | |
-| msDS-DeviceObjectVersion |× | |
-| msDS-DeviceOSType |× | |
-| msDS-DeviceOSVersion |× | |
-| msDS-DevicePhysicalIDs |× | |
-| msDS-KeyCredentialLink |× |Jenom se schématem AD ve Windows serveru 2016 |
-| msDS-nedodržuje předpisy |× | |
-| msDS-povoleno |× | |
-| msDS-spravovatelný |× | |
-| msDS-RegisteredOwner |× | |
+| altSecurityIdentities |X | |
+| displayName |X | |
+| rozlišující název |X | |
+| msDS-CloudAnchor |X | |
+| msDS-DeviceID |X | |
+| msDS-DeviceObjectVersion |X | |
+| msDS-DeviceOSType |X | |
+| msDS-DeviceOSVersion |X | |
+| msDS-DevicePhysicalIDs |X | |
+| msDS-KeyCredentialLink |X |Jenom se schématem AD ve Windows serveru 2016 |
+| msDS-nedodržuje předpisy |X | |
+| msDS-povoleno |X | |
+| msDS-spravovatelný |X | |
+| msDS-RegisteredOwner |X | |
 
 ## <a name="notes"></a>Poznámky
 * Při použití alternativního ID se místní atribut userPrincipalName synchronizuje s atributem Azure AD onPremisesUserPrincipalName. Identifikátor alternativní ID, například pošta, je synchronizovaný s atributem userPrincipalName služby Azure AD.

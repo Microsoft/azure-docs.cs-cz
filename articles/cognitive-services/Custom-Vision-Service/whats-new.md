@@ -10,16 +10,31 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: a87e76d4a726f7a01b96d602e7f41d60409dae56
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 030b09dae9db11fb14defecde3d14e949b9e6748
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521488"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412727"
 ---
 # <a name="whats-new-in-custom-vision"></a>Co je nového v Custom Vision
 
 Zjistěte, co je nového ve službě. Tyto položky můžou být poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
+
+
+## <a name="october-2020"></a>Říjen 2020 
+
+### <a name="custom-base-model"></a>Vlastní základní model
+
+- Některé aplikace mají velké množství společných školicích dat, ale potřebují vyladit jejich modely samostatně; Výsledkem je lepší výkon imagí z různých zdrojů s menšími rozdíly. V takovém případě můžete vytvořit první model obvyklým způsobem s velkým objemem školicích dat. Pak zavolejte **TrainProject** v rozhraní API Public preview verze 3,4 s _CustomBaseModelInfo_ v těle žádosti, aby používala první připravený model pro podřízené projekty jako základní model. Pokud zdrojový projekt a cílový projekt pro příjem dat mají podobné charakteristiky obrázků, můžete očekávat lepší výkon. 
+
+### <a name="new-domain-information"></a>Informace o nové doméně
+
+- Informace o doméně vracené z **Getdomainnames** v rozhraní API Custom Vision 3,4 Public Preview teď obsahují podporované exportovatelné platformy, stručný popis architektury modelů a velikost modelu pro kompaktní domény.
+
+### <a name="training-divergence-feedback"></a>Školení rozdílové zpětné vazby
+
+- Rozhraní API verze Public Preview služby Custom Vision Custom Vision 3,4 nyní vrací **TrainingErrorDetails** z volání **getiterace** . V případě neúspěšných iterací se zobrazí informace o tom, jestli došlo k selhání kvůli nedodržení školení, které je možné odstranit pomocí dalších a vyšší kvality školicích dat.
 
 ## <a name="july-2020"></a>Červenec 2020
 

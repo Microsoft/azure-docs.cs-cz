@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897071"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413084"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -107,7 +107,7 @@ V současné době můžete v rámci virtuální sítě použít funkce triggeru
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Plán Premium s triggery virtuální sítě
 
-Když spustíte plán Premium, můžete připojit funkce triggeru jiného typu než HTTP ke službám, které běží ve virtuální síti. K tomu musíte povolit podporu triggeru virtuální sítě pro vaši aplikaci Function App. Nastavení **monitorování škály běhového prostředí** najdete v [Azure Portal](https://portal.azure.com) v **Configuration** části  >  **nastavení modulu runtime konfigurační funkce** .
+Když spustíte plán Premium, můžete připojit funkce triggeru jiného typu než HTTP ke službám, které běží ve virtuální síti. K tomu musíte povolit podporu triggeru virtuální sítě pro vaši aplikaci Function App. Nastavení **monitorování škály běhového prostředí** najdete v [Azure Portal](https://portal.azure.com) v **Configuration** části  >  **nastavení modulu runtime konfigurační funkce**.
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -116,6 +116,9 @@ Aktivační události virtuální sítě taky můžete povolit pomocí následuj
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
+
+> [!TIP]
+> Povolení triggerů virtuální sítě může mít vliv na výkon vaší aplikace, protože instance App Service plánu budou potřebovat monitorovat triggery a určit, kdy se má škálovat. Tento dopad pravděpodobně bude velmi malý.
 
 Aktivační události virtuální sítě se podporují ve verzi 2. x a novějších modulech runtime Functions. Jsou podporovány následující typy triggerů bez protokolu HTTP.
 

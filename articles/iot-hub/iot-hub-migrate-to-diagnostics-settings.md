@@ -1,6 +1,6 @@
 ---
-title: Migrace Azure IoT Hub do nastavení diagnostiky | Microsoft Docs
-description: Postup aktualizace služby Azure IoT Hub pro použití nastavení diagnostiky Azure místo monitorování operací k monitorování stavu operací ve službě IoT Hub v reálném čase.
+title: Migrace monitorování provozu Azure IoT Hub do IoT Hubch protokolů prostředků v Azure Monitor | Microsoft Docs
+description: Postup aktualizace služby Azure IoT Hub pro použití Azure Monitor místo monitorování operací k monitorování stavu operací ve službě IoT Hub v reálném čase.
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -8,43 +8,69 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 40c90142330b0530f1127beae1624ff27d7eb6ca
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eb53e7052db6d4de365864184b9bd2e6585b7e2d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541481"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412104"
 ---
-# <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migrace IoT Hub z monitorování provozu na nastavení diagnostiky
+# <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>Migrace IoT Hub z monitorování operací na protokoly prostředků Azure Monitor
 
-Zákazníci, kteří používají [monitorování operací](iot-hub-operations-monitoring.md) ke sledování stavu operací v IoT Hub, můžou tento pracovní postup migrovat do [nastavení diagnostiky Azure](../azure-monitor/platform/platform-logs-overview.md), což je funkce Azure monitor. Nastavení diagnostiky poskytují diagnostické informace na úrovni prostředku pro mnoho služeb Azure.
+Zákazníci, kteří používají [monitorování operací](iot-hub-operations-monitoring.md) ke sledování stavu operací v IoT Hub, můžou tento pracovní postup migrovat do [Azure Monitorch protokolů prostředků](../azure-monitor/platform/platform-logs-overview.md), což je funkce Azure monitor. Protokoly prostředků poskytují diagnostické informace na úrovni prostředku pro mnoho služeb Azure.
 
-**Funkce monitorování operací IoT Hub je zastaralá** a byla odebrána z portálu. Tento článek popisuje kroky pro přesun úloh z monitorování provozu do nastavení diagnostiky. Další informace o časové ose zastaralosti najdete v tématu [monitorování řešení Azure IoT pomocí Azure monitor a Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
+**Funkce monitorování operací IoT Hub je zastaralá** a byla odebrána z portálu. Tento článek popisuje kroky, jak přesunout vaše úlohy z monitorování provozu do Azure Monitorch protokolů prostředků. Další informace o časové ose zastaralosti najdete v tématu [monitorování řešení Azure IoT pomocí Azure monitor a Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
 
 ## <a name="update-iot-hub"></a>Aktualizovat IoT Hub
 
-Chcete-li aktualizovat IoT Hub v Azure Portal, nejprve zapněte nastavení diagnostiky a pak vypněte monitorování provozu.  
+Chcete-li aktualizovat IoT Hub v Azure Portal, nejprve vytvořte nastavení diagnostiky a pak vypněte monitorování provozu.  
 
-[!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
+### <a name="create-a--diagnostic-setting"></a>Vytvoření nastavení diagnostiky
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do služby IoT Hub.
+
+1. V levém podokně v části **monitorování** vyberte **nastavení diagnostiky**. Pak vyberte **Přidat nastavení diagnostiky**.
+
+   :::image type="content" source="media/iot-hub-migrate-to-diagnostics-settings/open-diagnostic-settings.png" alt-text="Snímek obrazovky, který zvýrazní nastavení diagnostiky v části monitorování.":::
+
+1. V podokně **nastavení diagnostiky** zadejte název pro nastavení diagnostiky.
+
+1. V části **Podrobnosti kategorie** vyberte kategorie pro operace, které chcete monitorovat. Další informace o kategoriích operací, které jsou k dispozici v IoT Hub, najdete v tématu [protokoly prostředků](monitor-iot-hub-reference.md#resource-logs).
+
+1. V části **Podrobnosti o cíli** vyberte, kam chcete protokoly odesílat. Můžete vybrat libovolnou kombinaci těchto umístění:
+
+   * Archivovat v účtu úložiště
+   * Streamovat do centra událostí
+   * Odeslání do Azure Monitor protokolů přes pracovní prostor Log Analytics
+
+   Následující snímek obrazovky ukazuje nastavení diagnostiky, které směruje operace v kategorii připojení a telemetrie zařízení do Log Analyticsho pracovního prostoru:
+
+   :::image type="content" source="media/iot-hub-migrate-to-diagnostics-settings/add-diagnostic-setting.png" alt-text="Snímek obrazovky znázorňující dokončené nastavení diagnostiky":::
+
+1. Vyberte **Uložit** a nastavení se uloží.
+
+Nové nastavení se projeví přibližně po dobu 10 minut. Pak se protokoly zobrazí v nakonfigurovaném cíli. Další informace o konfiguraci diagnostiky najdete v tématu [shromažďování a využívání dat protokolů z prostředků Azure](/azure/azure-monitor/platform/platform-logs-overview).
+
+Podrobnější informace o tom, jak vytvořit nastavení diagnostiky, včetně PowerShellu a rozhraní příkazového řádku Azure, najdete v tématu [nastavení diagnostiky](/azure/azure-monitor/platform/diagnostic-settings) v dokumentaci k Azure monitor.
 
 ### <a name="turn-off-operations-monitoring"></a>Vypnout monitorování operací
 
 > [!NOTE]
-> Od 11. března 2019 je funkce monitorování operací z Azure Portalho rozhraní IoT Hub odebrána. Níže uvedený postup už neplatí. Pokud chcete provést migraci, ujistěte se, že jsou ve Azure Monitor nastavení diagnostiky nahoře zapnuté správné kategorie.
+> Od 11. března 2019 je funkce monitorování operací z Azure Portalho rozhraní IoT Hub odebrána. Níže uvedený postup už neplatí. Chcete-li provést migraci, ujistěte se, že jsou správné kategorie směrovány do cíle s výše uvedeným nastavením diagnostiky Azure Monitor.
 
 Jakmile otestujete nové nastavení diagnostiky ve svém pracovním postupu, můžete funkci monitorování provozu vypnout. 
 
-1. V nabídce IoT Hub vyberte **monitorování operací** .
+1. V nabídce IoT Hub vyberte **monitorování operací**.
 
-2. V části každá kategorie monitorování vyberte **žádné** .
+2. V části každá kategorie monitorování vyberte **žádné**.
 
 3. Uložte změny monitorování operací.
 
 ## <a name="update-applications-that-use-operations-monitoring"></a>Aktualizace aplikací, které používají monitorování operací
 
-Schémata pro nastavení monitorování a diagnostiky operací se mírně liší. Je důležité aktualizovat aplikace, které dnes používají monitorování operací, k mapování schématu používaného nastavením diagnostiky. 
+Schémata pro monitorování provozu a protokoly prostředků se mírně liší. Je důležité aktualizovat aplikace, které dnes používají monitorování operací, k mapování schématu používaného protokoly prostředků.
 
-Nastavení diagnostiky taky nabízí pět nových kategorií pro sledování. Po aktualizaci aplikací pro existující schéma přidejte také nové kategorie:
+IoT Hub protokoly prostředků taky nabízí pět nových kategorií pro sledování. Po aktualizaci aplikací pro existující schéma přidejte také nové kategorie:
 
 * Zdvojené operace z cloudu na zařízení
 * Zdvojené operace mezi zařízeními a cloudem
@@ -60,4 +86,4 @@ Pokud chcete monitorovat události připojení a odpojení zařízení v produk�
 
 ## <a name="next-steps"></a>Další kroky
 
-[IoT Hub monitorování](monitor-iot-hub.md)
+[Monitorování IoT Hubu](monitor-iot-hub.md)

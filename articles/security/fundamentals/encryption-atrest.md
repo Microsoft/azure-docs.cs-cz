@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397245"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412778"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování neaktivních uložených dat v Azure
 
@@ -48,7 +48,7 @@ V praxi jsou scénáře správy a řízení klíčů a také zajištění škál
 
 Šifrování v klidovém stavu je navrženo tak, aby zabránilo útočníkovi v přístupu k nezašifrovaným datům tím, že zajistí, že se data budou šifrovat při použití disku. Pokud útočník získá pevný disk se zašifrovanými daty, ale ne šifrovacími klíči, útočník musí toto šifrování před tím, než bude data číst. Tento útok je mnohem složitější a spotřebovává prostředky než přístup k nešifrovaným datům na pevném disku. Z tohoto důvodu se důrazně doporučuje šifrování v klidovém umístění a u mnoha organizací je potřeba mít vysokou prioritu.
 
-Šifrování v klidové době může být vyžadováno i organizací potřebnou pro řízení dat a dodržování předpisů. Předpisy pro odvětví a státní správu, jako jsou HIPAA, PCI a FedRAMP, rozvrhnout konkrétní ochranná opatření týkající se ochrany dat a požadavků na šifrování. Šifrování v klidovém umístění je povinná míra požadovaná pro splnění některých z těchto předpisů. Další informace o přístupu Microsoftu k ověřování FIPS 140-2 najdete v článku [publikace standardu FIPS (Federal Information Processing Standard) 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2).
+Šifrování v klidové době může být vyžadováno i organizací potřebnou pro řízení dat a dodržování předpisů. Předpisy pro odvětví a státní správu, jako jsou HIPAA, PCI a FedRAMP, rozvrhnout konkrétní ochranná opatření týkající se ochrany dat a požadavků na šifrování. Šifrování v klidovém umístění je povinná míra požadovaná pro splnění některých z těchto předpisů. Další informace o přístupu Microsoftu k ověřování FIPS 140-2 najdete v článku [publikace standardu FIPS (Federal Information Processing Standard) 140-2](/microsoft-365/compliance/offering-fips-140-2).
 
 Kromě dodržování předpisů a zákonných požadavků šifrování v klidovém umístění zajišťuje ochranu před důkladnou ochranou. Microsoft Azure poskytuje odpovídající platformu pro služby, aplikace a data. Poskytuje také komplexní zařízení a fyzické zabezpečení, řízení přístupu k datům a auditování. Je ale důležité zajistit další "překrývající" se bezpečnostní opatření pro případ, že jedna z ostatních bezpečnostních opatření nebude úspěšná a šifrování v klidovém případě zajišťuje takové bezpečnostní opatření.
 
@@ -115,22 +115,22 @@ Služba Microsoft Azure Services každý podporuje jedno nebo více šifrování
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Každý zákazník, který používá funkce infrastruktury jako služby (IaaS) Azure, může pro své virtuální počítače s IaaS a disky prostřednictvím Azure Disk Encryption dosáhnout šifrování v klidovém provozu. Další informace o službě Azure Disk Encryption najdete v [dokumentaci k Azure Disk Encryption](../azure-security-disk-encryption-overview.md).
+Každý zákazník, který používá funkce infrastruktury jako služby (IaaS) Azure, může pro své virtuální počítače s IaaS a disky prostřednictvím Azure Disk Encryption dosáhnout šifrování v klidovém provozu. Další informace o službě Azure Disk Encryption najdete v [dokumentaci k Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md).
 
 #### <a name="azure-storage"></a>Azure Storage
 
 Všechny Azure Storage služby (úložiště objektů blob, úložiště front, úložiště tabulek a soubory Azure) podporují šifrování na straně serveru v klidovém umístění. Některé služby dále podporují klíče spravované zákazníkem a šifrování na straně klienta.
 
-- Na straně serveru: všechny Azure Storage služby umožňují ve výchozím nastavení šifrování na straně serveru pomocí klíčů spravovaných službou, které jsou pro aplikaci transparentní. Další informace najdete v tématu [šifrování služby Azure Storage pro](../../storage/common/storage-service-encryption.md)neaktivní neaktivní data. Azure Blob Storage a soubory Azure podporují také RSA 2048 klíče spravované zákazníkem v Azure Key Vault. Další informace najdete v tématu [šifrování služby Storage používání klíčů spravovaných zákazníkem v Azure Key Vault](../../storage/common/storage-encryption-keys-portal.md).
+- Na straně serveru: všechny Azure Storage služby umožňují ve výchozím nastavení šifrování na straně serveru pomocí klíčů spravovaných službou, které jsou pro aplikaci transparentní. Další informace najdete v tématu [šifrování služby Azure Storage pro](../../storage/common/storage-service-encryption.md)neaktivní neaktivní data. Azure Blob Storage a soubory Azure podporují také RSA 2048 klíče spravované zákazníkem v Azure Key Vault. Další informace najdete v tématu [šifrování služby Storage používání klíčů spravovaných zákazníkem v Azure Key Vault](../../storage/common/customer-managed-keys-configure-key-vault.md).
 - Klientská strana: objekty blob, tabulky a fronty Azure podporují šifrování na straně klienta. Při použití šifrování na straně klienta zašifrují zákazníci data a odesílají data jako zašifrovaný objekt BLOB. Správu klíčů provádí zákazník. Další informace najdete v tématu [šifrování na straně klienta a Azure Key Vault pro Microsoft Azure Storage](../../storage/common/storage-client-side-encryption.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL Database aktuálně podporuje šifrování v klidovém provozu pro scénáře pro šifrování na straně služby spravované Microsoftem a na straně klienta.
 
-Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím funkce SQL s názvem transparentní šifrování dat. Jakmile zákazník Azure SQL Database povolí, automaticky se vytvoří a nařídí klíč TDE. Šifrování v klidovém umístění lze povolit na úrovni databáze a serveru. Od června 2017 je [transparentní šifrování dat (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) ve výchozím nastavení povolená u nově vytvořených databází. Azure SQL Database podporuje RSA 2048 klíčů spravovaných zákazníkem v Azure Key Vault. Další informace najdete v tématu [transparentní šifrování dat s podporou Bring Your Own Key pro Azure SQL Database a datový sklad](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current).
+Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím funkce SQL s názvem transparentní šifrování dat. Jakmile zákazník Azure SQL Database povolí, automaticky se vytvoří a nařídí klíč TDE. Šifrování v klidovém umístění lze povolit na úrovni databáze a serveru. Od června 2017 je [transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) ve výchozím nastavení povolená u nově vytvořených databází. Azure SQL Database podporuje RSA 2048 klíčů spravovaných zákazníkem v Azure Key Vault. Další informace najdete v tématu [transparentní šifrování dat s podporou Bring Your Own Key pro Azure SQL Database a datový sklad](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current).
 
-Šifrování Azure SQL Databasech dat na straně klienta je podporováno prostřednictvím funkce [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) . Always Encrypted používá klíč, který vytvořil a uložil klient. Zákazníci můžou hlavní klíč Uložit do úložiště certifikátů Windows, Azure Key Vault nebo místního modulu hardwarového zabezpečení. Pomocí SQL Server Management Studio uživatelé SQL zvolí, který klíč mají použít k zašifrování, který sloupec.
+Šifrování Azure SQL Databasech dat na straně klienta je podporováno prostřednictvím funkce [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) . Always Encrypted používá klíč, který vytvořil a uložil klient. Zákazníci můžou hlavní klíč Uložit do úložiště certifikátů Windows, Azure Key Vault nebo místního modulu hardwarového zabezpečení. Pomocí SQL Server Management Studio uživatelé SQL zvolí, který klíč mají použít k zašifrování, který sloupec.
 
 ## <a name="conclusion"></a>Závěr
 

@@ -1,34 +1,38 @@
 ---
-title: Nastavení diagnostiky
+title: Povolit a dotazovat diagnostické protokoly
 titleSuffix: Azure Digital Twins
-description: Viz jak povolit protokolování s nastavením diagnostiky.
+description: Podívejte se, jak povolit protokolování s nastavením diagnostiky a zadat dotaz na protokoly pro okamžité prohlížení.
 author: baanders
 ms.author: baanders
-ms.date: 7/28/2020
+ms.date: 11/9/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 11a7b4876c773922d4b0ed28f7047912b738ee6a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0d775ffa1ce063c01fc6762d77201e5a4caaad87
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091731"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411747"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Řešení potíží se službou Azure Digital nevláken: protokolování diagnostiky
 
-Digitální vlákna Azure shromažďuje [metriky](troubleshoot-metrics.md) pro vaši instanci služby, která poskytuje informace o stavu vašich prostředků. Tyto metriky můžete použít k vyhodnocení celkového stavu služby digitálních vláken Azure a prostředků, které jsou k ní připojené. Tyto údaje zaměřené na uživatele vám pomůžou zjistit, co se týká vašich digitálních vláken Azure, a pomáhat s analýzou příčin potíží, aniž byste museli kontaktovat podporu Azure.
+Digitální vlákna Azure může shromažďovat protokoly pro instanci služby za účelem sledování jeho výkonu, přístupu a dalších dat. Pomocí těchto protokolů můžete získat představu o tom, co se děje v instanci digitálních vláken Azure, a provádět analýzy původních příčin problémů, aniž byste museli kontaktovat podporu Azure.
 
-V tomto článku se dozvíte, jak zapnout **protokolování diagnostiky** pro data metrik z instance digitálního vlákna Azure. Tyto protokoly můžete použít k usnadnění odstraňování potíží se službou a ke konfiguraci nastavení diagnostiky pro odesílání metriky digitálních vláken Azure do různých míst určení. Další informace o těchto nastaveních najdete v tématu [*Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění*](../azure-monitor/platform/diagnostic-settings.md).
+V tomto článku se dozvíte, jak [**nakonfigurovat nastavení diagnostiky**](#turn-on-diagnostic-settings) v [Azure Portal](https://portal.azure.com) spustit shromažďování protokolů z instance digitálních vláken Azure. Můžete také zadat, kam se mají ukládat protokoly (například Log Analytics nebo účet úložiště podle vašeho výběru).
 
-## <a name="turn-on-diagnostic-settings-with-the-azure-portal"></a>Zapnout nastavení diagnostiky pomocí Azure Portal
+Tento článek obsahuje také seznam všech [kategorií protokolů](#log-categories) a [schémat protokolů](#log-schemas) , které shromažďuje digitální vlákna Azure.
 
-Tady je postup povolení nastavení diagnostiky instance digitálního vlákna Azure:
+Po nastavování protokolů můžete také [**dotazovat protokoly**](#view-and-query-logs) a rychle tak shromáždit vlastní přehledy.
+
+## <a name="turn-on-diagnostic-settings"></a>Zapnout nastavení diagnostiky 
+
+Zapnutím nastavení diagnostiky zahajte shromažďování protokolů na instanci digitálních vláken Azure. Můžete také zvolit cíl, ve kterém se mají ukládat exportované protokoly. Tady je postup, jak povolit nastavení diagnostiky pro instanci digitálních vláken Azure.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte k instanci digitálních vláken Azure. Můžete ji najít zadáním jejího názvu do panelu hledání na portálu. 
 
-2. V nabídce vyberte **nastavení diagnostiky** a pak **přidejte nastavení diagnostiky** .
+2. V nabídce vyberte **nastavení diagnostiky** a pak **přidejte nastavení diagnostiky**.
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky a tlačítko, které se má přidat":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky a tlačítko, které se má přidat" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
 
 3. Na následující stránce zadejte následující hodnoty:
      * **Název nastavení diagnostiky** : zadejte název diagnostického nastavení.
@@ -39,7 +43,7 @@ Tady je postup povolení nastavení diagnostiky instance digitálního vlákna A
         - QueryOperation
         - AllMetrics
         
-        Další podrobnosti o těchto možnostech najdete v části [*Podrobnosti o kategorii*](#category-details) níže.
+        Další podrobnosti o těchto kategoriích a informacích, které obsahují, najdete v části [*Kategorie protokolů*](#log-categories) níže.
      * **Podrobnosti cíle** : vyberte, kam chcete protokoly odesílat. Můžete vybrat libovolnou kombinaci tří možností:
         - Odeslání do Log Analytics
         - Archivovat v účtu úložiště
@@ -49,15 +53,17 @@ Tady je postup povolení nastavení diagnostiky instance digitálního vlákna A
     
 4. Uložte nová nastavení. 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky a tlačítko, které se má přidat":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky, kde uživatel vyplnil název nastavení diagnostiky a provedl některé výběry zaškrtávacích políček pro podrobnosti kategorie a podrobnosti o cíli. Tlačítko Uložit je zvýrazněno." lightbox="media/troubleshoot-diagnostics/diagnostic-settings-details.png":::
 
 Nové nastavení se projeví přibližně po dobu 10 minut. Po této konfiguraci se protokoly zobrazí na stránce **nastavení diagnostiky na stránce nastavení diagnostiky** pro vaši instanci. 
 
-## <a name="category-details"></a>Podrobnosti kategorie
+Podrobnější informace o nastavení diagnostiky a jejich možnostech instalace najdete na stránce [*Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění*](../azure-monitor/platform/diagnostic-settings.md).
 
-Tady jsou další podrobnosti o kategoriích protokolů, které se dají vybrat v části **Podrobnosti o kategorii** při nastavování nastavení diagnostiky.
+## <a name="log-categories"></a>Kategorie protokolů
 
-| Kategorie protokolu | Description |
+Tady jsou další podrobnosti o kategoriích protokolů, které shromažďuje digitální vlákna Azure.
+
+| Kategorie protokolu | Popis |
 | --- | --- |
 | ADTModelsOperation | Protokolovat všechna volání rozhraní API týkající se modelů |
 | ADTQueryOperation | Protokolování všech volání rozhraní API vztahujících se k dotazům |
@@ -108,7 +114,7 @@ Tady jsou popisy polí a vlastností pro protokoly rozhraní API.
 
 | Název pole | Datový typ | Popis |
 |-----|------|-------------|
-| `Time` | DateTime | Datum a čas, kdy k této události došlo, v UTC |
+| `Time` | Datum a čas | Datum a čas, kdy k této události došlo, v UTC |
 | `ResourceID` | Řetězec | ID prostředku Azure Resource Manager prostředku, ve kterém se událost uskutečnila |
 | `OperationName` | Řetězec  | Typ akce prováděné během události |
 | `OperationVersion` | Řetězec | Verze rozhraní API využitá během události |
@@ -194,7 +200,7 @@ Toto je schéma pro `ADTEventRoutesOperation` protokoly. Obsahují podrobnosti t
 
 |Název pole | Datový typ | Popis |
 |-----|------|-------------|
-| `Time` | DateTime | Datum a čas, kdy k této události došlo, v UTC |
+| `Time` | Datum a čas | Datum a čas, kdy k této události došlo, v UTC |
 | `ResourceId` | Řetězec | ID prostředku Azure Resource Manager prostředku, ve kterém se událost uskutečnila |
 | `OperationName` | Řetězec  | Typ akce prováděné během události |
 | `Category` | Řetězec | Typ prostředku, který se emituje. |
@@ -222,6 +228,34 @@ Níže jsou uvedeny příklady tělo JSON pro tyto typy protokolů.
   }
 }
 ```
+
+## <a name="view-and-query-logs"></a>Zobrazení a dotazování protokolů
+
+Dříve v tomto článku jste nakonfigurovali typy protokolů pro ukládání a určení jejich umístění úložiště.
+
+K řešení potíží a generování přehledů z těchto protokolů můžete vytvářet **vlastní dotazy**. Chcete-li začít, můžete také využít několik ukázkových dotazů, které vám poskytla služba, což řeší běžné otázky, které mohou zákazníci mít o své instanci.
+
+Tady je postup dotazování protokolů vaší instance.
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte k instanci digitálních vláken Azure. Můžete ji najít zadáním jejího názvu do panelu hledání na portálu. 
+
+2. V nabídce vyberte **protokoly** a otevřete stránku dotaz na protokol. Stránka se otevře v okně s názvem *dotazy*.
+
+    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Snímek obrazovky se stránkou protokolů pro instanci digitálních vláken Azure Je překrytý pomocí okna dotazů, které zobrazuje předem sestavené dotazy pojmenované po různých možnostech protokolu, jako je latence rozhraní API DigitalTwin a latence rozhraní API modelu." lightbox="media/troubleshoot-diagnostics/logs.png":::
+
+    Jedná se o předem připravené Ukázkové dotazy napsané pro různé protokoly. Můžete vybrat jeden z dotazů a načíst ho do editoru dotazů a spustit ho pro zobrazení těchto protokolů vaší instance.
+
+    Můžete také zavřít okno *dotazy* , aniž byste museli spustit cokoli, a přejít přímo na stránku Editor dotazů, kde můžete napsat nebo upravit vlastní kód dotazu.
+
+3. Po ukončení okna *dotazů* uvidíte hlavní stránku editoru dotazů. Tady můžete zobrazit a upravit text ukázkových dotazů nebo napsat vlastní dotazy od začátku.
+    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Snímek obrazovky se stránkou protokolů pro instanci digitálních vláken Azure Okno dotazy zmizelo a místo toho je zobrazen seznam různých protokolů, podokno úprav s upravitelným kódem dotazu a podokno s historií dotazů." lightbox="media/troubleshoot-diagnostics/logs-query.png":::
+
+    V levém podokně 
+    - Karta *tabulky* zobrazuje různé [Kategorie protokolů](#log-categories) digitálních vláken Azure, které jsou k dispozici pro použití ve vašich dotazech. 
+    - Karta *dotazy* obsahuje příklady dotazů, které lze načíst do editoru.
+    - Karta *Filtr* umožňuje přizpůsobit filtrované zobrazení dat vrácených dotazem.
+
+Podrobnější informace o dotazech protokolů a o tom, jak je napsat, najdete [*v tématu Přehled dotazů protokolu v Azure monitor*](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

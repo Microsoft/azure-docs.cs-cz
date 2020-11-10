@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a26228b33a7d90df558de2ecdf4686910e606a54
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80811103"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413288"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 
@@ -63,7 +63,7 @@ Azure podporuje několik typů řízení přístupu k síti, například:
 Jakékoli zabezpečené nasazení vyžaduje určitou míru řízení přístupu k síti. Cílem řízení přístupu k síti je omezit komunikaci virtuálních počítačů s potřebnými systémy. Ostatní pokusy o komunikaci jsou blokované.
 
 > [!NOTE]
-> Brány firewall úložiště jsou uvedené v článku [Přehled zabezpečení služby Azure Storage](storage-overview.md) .
+> Brány firewall úložiště jsou uvedené v článku [Přehled zabezpečení služby Azure Storage](../../storage/blobs/security-recommendations.md) .
 
 #### <a name="network-security-rules-nsgs"></a>Pravidla zabezpečení sítě (skupin zabezpečení sítě)
 
@@ -77,11 +77,11 @@ Skupin zabezpečení sítě neposkytuje kontrolu aplikační vrstvy ani ověřov
 
 Další informace:
 
-* [Skupiny zabezpečení sítě](../../virtual-network/security-overview.md)
+* [Skupiny zabezpečení sítě](../../virtual-network/network-security-groups-overview.md)
 
 #### <a name="asc-just-in-time-vm-access"></a>Přístup k virtuálnímu počítači v čase ASC
 
-[Azure Security Center](../../security-center/security-center-intro.md) může spravovat skupin zabezpečení sítě na virtuálních počítačích a uzamknout přístup k virtuálnímu počítači, dokud uživatel s [příslušnými oprávněními pro](/azure/role-based-access-control/overview) řízení přístupu na základě role nepožaduje přístup. Po úspěšném ověření uživatele ASC provede úpravy skupin zabezpečení sítě k povolení přístupu k vybraným portům po určenou dobu. Po vypršení časového limitu se skupin zabezpečení sítě obnoví na předchozí zabezpečený stav.
+[Azure Security Center](../../security-center/security-center-introduction.md) může spravovat skupin zabezpečení sítě na virtuálních počítačích a uzamknout přístup k virtuálnímu počítači, dokud uživatel s [příslušnými oprávněními pro](../../role-based-access-control/overview.md) řízení přístupu na základě role nepožaduje přístup. Po úspěšném ověření uživatele ASC provede úpravy skupin zabezpečení sítě k povolení přístupu k vybraným portům po určenou dobu. Po vypršení časového limitu se skupin zabezpečení sítě obnoví na předchozí zabezpečený stav.
 
 Další informace:
 
@@ -141,7 +141,7 @@ Azure Firewall je spravovaná cloudová služba síťového zabezpečení, kter�
 
 Další informace:
 
-* [Přehled Azure Firewall](/azure/firewall/overview)
+* [Přehled Azure Firewall](../../firewall/overview.md)
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Zabezpečený vzdálený přístup a připojení mezi místními sítěmi
 
@@ -202,7 +202,7 @@ Pro vaše nasazení je možné použít spoustu virtuálních sítí. K dispozic
 
 Jednou z možností je, že služby v jedné virtuální síti se připojují ke službám v jiné virtuální síti – "opakováním" prostřednictvím Internetu. Připojení se spouští v jedné virtuální síti, prochází přes Internet a pak se vrátí do cílové virtuální sítě. Tato možnost zveřejňuje připojení k problémům se zabezpečením, které jsou součástí jakékoli internetové komunikace.
 
-Lepší možností může být vytvoření sítě VPN typu Site-to-site, která se připojuje mezi dvěma virtuálními sítěmi. Tato metoda používá stejný protokol [tunelového režimu IPSec](https://technet.microsoft.com/library/cc786385.aspx) jako připojení VPN typu Site-to-site uvedená výše.
+Lepší možností může být vytvoření sítě VPN typu Site-to-site, která se připojuje mezi dvěma virtuálními sítěmi. Tato metoda používá stejný protokol [tunelového režimu IPSec](/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) jako připojení VPN typu Site-to-site uvedená výše.
 
 Výhodou tohoto přístupu je, že připojení VPN se naváže přes síťové prostředky infrastruktury Azure místo připojení přes Internet. V porovnání s sítěmi VPN typu Site-to-site, které se připojují přes Internet, získáte další vrstvu zabezpečení.
 
@@ -237,7 +237,7 @@ Azure Application Gateway poskytuje vyrovnávání zatížení na základě prot
 
 Další informace:
 
-* [Přehled služby Application Gateway](/azure/application-gateway/application-gateway-introduction)
+* [Přehled služby Application Gateway](../../application-gateway/overview.md)
 
 ### <a name="network-level-load-balancing"></a>Vyrovnávání zatížení na úrovni sítě
 
@@ -252,8 +252,8 @@ Výhody vyrovnávání zatížení sítě v Azure můžete získat pomocí Azure
 
 Další informace:
 
-* [Internetový nástroj pro vyrovnávání zatížení mezi několika virtuálními počítači nebo službami](/azure/load-balancer/load-balancer-internet-overview)
-* [Interní přehled nástroje pro vyrovnávání zatížení](/azure/load-balancer/load-balancer-internal-overview)
+* [Internetový nástroj pro vyrovnávání zatížení mezi několika virtuálními počítači nebo službami](../../load-balancer/load-balancer-overview.md)
+* [Interní přehled nástroje pro vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md)
 
 ### <a name="global-load-balancing"></a>Globální vyrovnávání zatížení
 
@@ -381,7 +381,7 @@ Security Center vám pomůže optimalizovat a monitorovat zabezpečení sítě p
 
 Další informace:
 
-* [Úvod do Azure Security Center](../../security-center/security-center-intro.md)
+* [Úvod do Azure Security Center](../../security-center/security-center-introduction.md)
 
 ### <a name="virtual-network-tap"></a>Virtual Network klepněte na
 

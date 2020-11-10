@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/23/2020
+ms.date: 11/09/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: místní, Docker, kontejner
-ms.openlocfilehash: 6f04e40b0b2baa496faf8001684304c5df78ec20
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f91d96732c872c6f93ee2de4c5c3eba5fe5ffbc4
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496134"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412234"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API služby pro rozpoznávání řeči 
 
@@ -41,24 +41,24 @@ Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplik
 
 | Kontejner | Funkce | Latest (Nejnovější) |
 |--|--|--|
-| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | 2.5.0 |
-| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.5.0 |
-| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.7.0 |
-| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.7.0 |
+| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | 2.6.0 |
+| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.6.0 |
+| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.8.0 |
+| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.8.0 |
 | Rozpoznávání jazyka řeči | Zjišťuje jazyk používaný v zvukových souborech. | 1,0 |
 | Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.2.0 |
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před použitím kontejnerů řeči je nutné splnit následující předpoklady:
 
 | Vyžadováno | Účel |
 |--|--|
-| Docker Engine | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
+| Docker Engine | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows** musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
 | Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů. |
-| Prostředek řeči | Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého klíče rozhraní API a identifikátoru URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách s přehledem a klíči pro Azure Portal **řeči** . Oba jsou nutné ke spuštění kontejneru.<br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}**: koncový bod uvedený na stránce **Přehled** |
+| Prostředek řeči | Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého klíče rozhraní API a identifikátoru URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách s přehledem a klíči pro Azure Portal **řeči** . Oba jsou nutné ke spuštění kontejneru.<br><br>**{API_KEY}** : jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : koncový bod uvedený na stránce **Přehled** |
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -156,7 +156,7 @@ Obrázky kontejneru pro řeč jsou k dispozici v následujících Container Regi
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>Funkce Docker Pull pro kontejner převodu řeči na text
 
-Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
+Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru Microsoft Container Registry.
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text:latest
@@ -176,7 +176,7 @@ Všechny značky s výjimkou `latest` jsou v následujícím formátu a rozlišu
 Následující značka je příkladem formátu:
 
 ```
-2.5.0-amd64-en-us-preview
+2.6.0-amd64-en-us
 ```
 
 Pro všechna podporovaná národní prostředí kontejneru **převodů řeči** na text se podívejte na [tagy pro obrázky typu převod řeči na text](../containers/container-image-tags.md#speech-to-text).
@@ -185,7 +185,7 @@ Pro všechna podporovaná národní prostředí kontejneru **převodů řeči** 
 
 #### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>Vyžádání obsahu Docker pro kontejner Custom Speech-to-text
 
-Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
+Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru Microsoft Container Registry.
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest
@@ -198,7 +198,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-spe
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>Vyžádání obsahu Docker pro kontejner převodu textu na řeč
 
-Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
+Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru Microsoft Container Registry.
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech:latest
@@ -218,7 +218,7 @@ Všechny značky s výjimkou `latest` jsou v následujícím formátu a rozlišu
 Následující značka je příkladem formátu:
 
 ```
-1.6.0-amd64-en-us-ariarus-preview
+1.8.0-amd64-en-us-ariarus
 ```
 
 U všech podporovaných národních prostředí a odpovídajících hlasů kontejneru **textu na řeč** se podívejte na [značky obrázku pro převod textu na mluvené slovo](../containers/container-image-tags.md#text-to-speech).
@@ -230,7 +230,7 @@ U všech podporovaných národních prostředí a odpovídajících hlasů konte
 
 #### <a name="docker-pull-for-the-neural-text-to-speech-container"></a>Vyžádané čtení Docker pro kontejner neuronové textu na řeč
 
-Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
+Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru Microsoft Container Registry.
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech:latest
@@ -262,7 +262,7 @@ Pro všechna podporovaná národní prostředí a odpovídající hlasy kontejne
 
 #### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>Vyžádání obsahu Docker pro vlastní kontejner převodu textu na řeč
 
-Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
+Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru Microsoft Container Registry.
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest
@@ -275,7 +275,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-tex
 
 #### <a name="docker-pull-for-the-speech-language-detection-container"></a>Stažení Docker pro kontejner Rozpoznávání jazyka řeči
 
-Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
+Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru Microsoft Container Registry.
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection:latest
@@ -315,8 +315,14 @@ Tento příkaz:
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Analýza mínění na výstup řeči na text 
+Počínaje v v 2.6.0 kontejneru převodů textu na text byste měli místo verze Preview použít koncový bod rozhraní TextAnalytics 3,0 API. Například
+* `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
+* `https://localhost:5000/text/analytics/v3.0/sentiment`
 
-Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Například: 
+> [!NOTE]
+> Rozhraní Analýza textu `v3.0` API není zpětně kompatibilní s analýza textu `v3.0-preview.1` . Pokud chcete získat nejnovější podporu funkcí mínění, použijte `v2.6.0` Image kontejneru převodu řeči na text a analýza textu `v3.0` .
+
+Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Zde je příklad: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -338,6 +344,26 @@ Tento příkaz:
 
 * Provede stejné kroky jako v příkazu výše.
 * Ukládá rozhraní API pro analýzu textu koncový bod a klíč pro posílání žádostí o analýzu mínění. 
+
+#### <a name="phraselist-v2-on-the-speech-to-text-output"></a>PhraseList v2 na výstupu z převodu řeči na text 
+
+Počínaje v v 2.6.0 kontejneru převodu řeči na text můžete získat výstup s vašimi vlastními větami – buď celou větu, nebo frázi uprostřed. Například *vyšší muž* v následující větě:
+
+* "Toto je věta **, kterou vysoké je, že** je to další věta."
+
+Chcete-li nakonfigurovat seznam frází, je nutné přidat vlastní fráze při volání. Zde je příklad:
+
+```python
+    phrase="the tall man"
+    recognizer = speechsdk.SpeechRecognizer(
+        speech_config=dict_speech_config,
+        audio_config=audio_config)
+    phrase_list_grammer = speechsdk.PhraseListGrammar.from_recognizer(recognizer)
+    phrase_list_grammer.addPhrase(phrase)
+
+```
+
+Pokud máte více frází pro přidání, zavolejte `.addPhrase()` každou frázi a přidejte ji do seznamu frází. 
 
 
 # <a name="custom-speech-to-text"></a>[Custom Speech na text](#tab/cstt)
@@ -391,6 +417,46 @@ Tento příkaz:
 * Stáhne model na základě `ModelId` (pokud nebyl nalezen v připojení svazku).
 * Pokud se vlastní model stáhl dříve, `ModelId` ignoruje se.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+
+
+#### <a name="base-model-download-on-the-custom-speech-to-text-container"></a>Stažení základního modelu na vlastní kontejner řeči na text  
+Počínaje v v 2.6.0 vlastního kontejneru řeči a textu můžete získat dostupné informace o základním modelu pomocí možnosti `BaseModelLocale=<locale>` . Tato možnost vám poskytne seznam dostupných základních modelů v tomto národním prostředí v rámci vašeho fakturačního účtu. Zde je příklad:
+
+```bash
+docker run --rm -it \
+mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text \
+BaseModelLocale={LOCALE} \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+Tento příkaz:
+
+* Spustí kontejner *Custom Speech-to-text* z image kontejneru.
+* Zkontroluje a vrátí dostupné základní modely cílového národního prostředí.
+
+Výstup poskytuje seznam základních modelů s informacemi o národním prostředí, ID modelu a datum a čas vytvoření. Pomocí ID modelu můžete stáhnout a používat konkrétní základní model, který dáváte přednost. Zde je příklad:
+```
+Checking available base model for en-us
+2020/10/30 21:54:20 [Info] Searching available base models for en-us
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2016-11-04T08:23:42Z, Id: a3d8aab9-6f36-44cd-9904-b37389ce2bfa
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2016-11-04T12:01:02Z, Id: cc7826ac-5355-471d-9bc6-a54673d06e45
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2017-08-17T12:00:00Z, Id: a1f8db59-40ff-4f0e-b011-37629c3a1a53
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-04-16T11:55:00Z, Id: c7a69da3-27de-4a4b-ab75-b6716f6321e5
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-09-21T15:18:43Z, Id: da494a53-0dad-4158-b15f-8f9daca7a412
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-10-19T11:28:54Z, Id: 84ec130b-d047-44bf-a46d-58c1ac292ca7
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-11-26T07:59:09Z, Id: ee5c100f-152f-4ae5-9e9d-014af3c01c56
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-11-26T09:21:55Z, Id: d04959a6-71da-4913-9997-836793e3c115
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2019-01-11T10:04:19Z, Id: 488e5f23-8bc5-46f8-9ad8-ea9a49a8efda
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2019-02-18T14:37:57Z, Id: 0207b3e6-92a8-4363-8c0e-361114cdd719
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2019-03-03T17:34:10Z, Id: 198d9b79-2950-4609-b6ec-f52254074a05
+2020/10/30 21:54:21 [Fatal] Please run this tool again and assign --modelId '<one above base model id>'. If no model id listed above, it means currently there is no available base model for en-us
+```
+
+#### <a name="custom-pronunciation-on-the-custom-speech-to-text-container"></a>Vlastní výslovnost na vlastním kontejneru řeči na text 
+Počínaje v v 2.5.0 vlastního kontejneru Speech-to-text můžete získat vlastní výsledek výslovnosti ve výstupu. Stačí udělat, abyste si nastavili vlastní pravidla pro výslovnost ve vašem vlastním modelu a model přiřadíte do vlastního kontejneru řeči-text.
+
 
 # <a name="text-to-speech"></a>[Převod textu na řeč](#tab/tts)
 
