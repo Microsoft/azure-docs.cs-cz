@@ -4,18 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/09/2020
 ms.author: v-jawe
-ms.openlocfilehash: 029cb1e59876eb01c609ef8b7ba0412ed35a2a1b
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 8a877e1773431053c5ad7344209076cb868a0ee3
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940735"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425076"
 ---
 V tomto rychlém startu se dozvíte, jak převést text na řeč pomocí služby Speech a kudrlinkou.
 
 Základní informace o konceptech textu na řeč najdete v článku [Přehled](../../../text-to-speech.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
@@ -26,7 +26,7 @@ Na příkazovém řádku spusťte následující příkaz. Do příkazu bude nut
 - Vaše oblast služby Speech.
 
 Můžete si také změnit následující hodnoty.
-- `X-Microsoft-OutputFormat`Hodnota hlavičky, která určuje formát výstupu zvuku. Seznam podporovaných formátů zvukových výstupů můžete najít v [Referenční příručce REST API převodu textu na řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs).
+- `X-Microsoft-OutputFormat`Hodnota hlavičky, která určuje formát výstupu zvuku. Seznam podporovaných formátů zvukových výstupů můžete najít v [Referenční příručce REST API převodu textu na řeč](../../../rest-text-to-speech.md#audio-outputs).
 - Výstupní hlas. Pokud chcete získat seznam hlasů dostupných pro váš koncový bod řeči, přečtěte si další část.
 - Výstupní soubor. V tomto příkladu nasměrujeme odpověď ze serveru do souboru s názvem `output.wav` .
 

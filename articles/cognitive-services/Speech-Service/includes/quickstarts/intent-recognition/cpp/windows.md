@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 9c0c2673acf12ddf80b77be57acc5af55e7f160c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d1fab57adfb675e8cc4ea604980e6f04a3f4a89f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87298709"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424748"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -46,14 +46,14 @@ Předtím, než budete moci inicializovat `IntentRecognizer` objekt, je nutné v
 Vložte tento kód do `recognizeIntent()` metody. Ujistěte se, že tyto hodnoty aktualizujete:
 
 * Nahraďte `"YourLanguageUnderstandingSubscriptionKey"` klíčem předpovědi Luis.
-* Nahraďte `"YourLanguageUnderstandingServiceRegion"` umístěním Luis.  Použijte **identifikátor oblasti** z [oblasti](https://aka.ms/speech/sdkregion).
+* Nahraďte `"YourLanguageUnderstandingServiceRegion"` umístěním Luis.  Použijte **identifikátor oblasti** z [oblasti](../../../../regions.md).
 
 >[!TIP]
 > Pokud potřebujete nápovědu k nalezení těchto hodnot, přečtěte si téma [Vytvoření aplikace v Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition).
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=25)]
 
-Tato ukázka používá `FromSubscription()` metodu pro sestavení `SpeechConfig` . Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig).
+Tato ukázka používá `FromSubscription()` metodu pro sestavení `SpeechConfig` . Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](/cpp/cognitive-services/speech/speechconfig).
 
 Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
 
@@ -105,7 +105,7 @@ V tomto okamžiku váš kód by měl vypadat takto:
 
 Nyní jste připraveni sestavit aplikaci a otestovat rozpoznávání řeči pomocí služby Speech.
 
-1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení**  >  **řešení**sestavení.
+1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení**  >  **řešení** sestavení.
 2. **Spusťte aplikaci** – z řádku nabídek zvolte **ladění**  >  **Spustit ladění** nebo stiskněte klávesu <kbd>F5</kbd>.
 3. **Spustit rozpoznávání** – zobrazí výzvu k vymluvenému vynechání fráze v angličtině. Váš hlas se odešle službě Speech, přepisu jako text a vykreslí se v konzole nástroje.
 

@@ -4,15 +4,14 @@ description: Tento článek poskytuje informace o tom, jak přidat koncový bod 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1b62f69bad4484239b3a6c5d6f7ae910fbdef03f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8005a2c43d42908a9ad6ebea10b6a13ef381084c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843375"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427645"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Povolení přístupu k oboru názvů Azure Service Bus z konkrétních virtuálních sítí
-
 Integrace Service Bus s [koncovými body služby Virtual Network (VNET)][vnet-sep] umožňuje zabezpečenému přístupu k funkcím zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou svázané s virtuálními sítěmi, a cestu síťového provozu, která je zabezpečená na obou koncích.
 
 Po navázání vazby na alespoň jeden koncový bod služby virtuální sítě nebude příslušný obor názvů Service Bus nadále přijímat přenosy z odkudkoli, ale z autorizovaných virtuálních sítí a volitelně i konkrétních IP adres Internetu. Z perspektivy virtuální sítě naváže obor názvů Service Bus na koncový bod služby a nakonfiguruje izolovaný síťový tunel z podsítě virtuální sítě do služby zasílání zpráv.
@@ -20,24 +19,14 @@ Po navázání vazby na alespoň jeden koncový bod služby virtuální sítě n
 Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť a odpovídajícím oborem názvů Service Bus, a to i přes pozorovatelnou síťovou adresu koncového bodu služby zasílání zpráv ve veřejném rozsahu IP adres.
 
 >[!WARNING]
-> Implementace integrace virtuálních sítí může ostatním službám Azure zabránit v interakci s Service Bus.
+> Implementace integrace virtuálních sítí může ostatním službám Azure zabránit v interakci s Service Bus. V případě výjimky můžete povolit přístup k Service Bus prostředkům z určitých důvěryhodných služeb i v případě, že jsou povolené koncové body síťové služby. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services).
 >
-> Důvěryhodné služby společnosti Microsoft nejsou podporovány, pokud jsou implementovány virtuální sítě.
->
-> Běžné scénáře Azure, které nefungují s virtuálními sítěmi (Všimněte si, že seznam **není vyčerpávající)** –
-> - Integrace s Azure Event Grid
-> - Trasy k Azure IoT Hub
-> - Device Explorer Azure IoT
->
-> Níže uvedené služby společnosti Microsoft musí být ve virtuální síti.
+> Následující služby společnosti Microsoft musí být ve virtuální síti.
 > - Azure App Service
 > - Azure Functions
-> - Azure Monitor (nastavení diagnostiky)
 
 > [!IMPORTANT]
-> Virtuální sítě se podporují jenom v oborech názvů Service Bus [úrovně Premium](service-bus-premium-messaging.md) .
-> 
-> Při použití koncových bodů služby virtuální sítě s Service Bus byste neměli povolit tyto koncové body v aplikacích, které používají obory názvů Service Bus úrovně Standard a Premium. Protože úroveň Standard nepodporuje virtuální sítě. Koncový bod je omezený jenom na obory názvů úrovně Premium.
+> Virtuální sítě se podporují jenom v oborech názvů Service Bus [úrovně Premium](service-bus-premium-messaging.md) . Při použití koncových bodů služby virtuální sítě s Service Bus byste neměli povolit tyto koncové body v aplikacích, které používají obory názvů Service Bus úrovně Standard a Premium. Vzhledem k tomu, že úroveň Standard nepodporuje virtuální sítě. Koncový bod je omezený jenom na obory názvů úrovně Premium.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Pokročilé scénáře zabezpečení povolené integrací virtuální sítě 
 
@@ -63,7 +52,7 @@ Pravidlo virtuální sítě je přidružení oboru názvů Service Bus k podsít
 V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služby virtuální sítě. Chcete-li omezit přístup, je nutné integrovat koncový bod služby virtuální sítě pro tento Event Hubs obor názvů.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do **oboru názvů Service Bus** .
-2. V nabídce vlevo vyberte v části **Nastavení**možnost **sítě** .  
+2. V nabídce vlevo vyberte v části **Nastavení** možnost **sítě** .  
 
     > [!NOTE]
     > Karta **síť** se zobrazí jenom pro obory názvů úrovně **Premium** .  
@@ -83,7 +72,7 @@ V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služ
    
    ![vybrat podsíť](./media/service-endpoints/select-subnet.png)
 
-4. Po povolení koncového bodu služby pro podsíť pro **Microsoft. ServiceBus**by se měla zobrazit následující úspěšná zpráva. V dolní části stránky vyberte **Přidat** a přidejte síť. 
+4. Po povolení koncového bodu služby pro podsíť pro **Microsoft. ServiceBus** by se měla zobrazit následující úspěšná zpráva. V dolní části stránky vyberte **Přidat** a přidejte síť. 
 
     ![Vyberte podsíť a povolte koncový bod.](./media/service-endpoints/subnet-service-endpoint-enabled.png)
 
@@ -96,17 +85,19 @@ V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služ
     > [!NOTE]
     > Pokyny k povolení přístupu z konkrétních IP adres nebo rozsahů najdete v tématu [Povolení přístupu z konkrétních IP adres nebo rozsahů](service-bus-ip-filtering.md).
 
+[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
+
 ## <a name="use-resource-manager-template"></a>Použití šablony Resource Manageru
 Následující šablona Správce prostředků umožňuje přidání pravidla virtuální sítě do existujícího oboru názvů Service Bus.
 
 Parametry šablony:
 
-* **obor názvů**: Service Bus obor názvů.
-* **virtualNetworkingSubnetId**: plně kvalifikovaná cesta správce prostředků pro podsíť virtuální sítě; například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
+* **obor názvů** : Service Bus obor názvů.
+* **virtualNetworkingSubnetId** : plně kvalifikovaná cesta správce prostředků pro podsíť virtuální sítě; například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
 
 > [!NOTE]
 > I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.
-> Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit ***"defaultAction"*** .
+> Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit **_"defaultAction"_ .**
 > 
 > Výsledkem
 > ```json

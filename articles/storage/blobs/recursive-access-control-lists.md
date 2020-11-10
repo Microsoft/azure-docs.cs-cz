@@ -9,12 +9,12 @@ ms.date: 11/03/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d61942155e46792f95091957925523381a5a9cda
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: efa434959df1d0310e390e78cee2ada726f61827
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422616"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427531"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2 rekurzivně
 
@@ -994,12 +994,6 @@ Pokud chcete, aby byl proces dokončen bez přerušení pomocí chyb oprávněn�
 V tomto příkladu se používá `ContinueOnFailure` parametr, aby provádění pokračovalo i v případě, že při operaci dojde k chybě oprávnění. 
 
 ```powershell
-
-$TotalDirectoriesSuccess = 0
-$TotalFilesSuccess = 0
-$totalFailure = 0
-$FailedEntries = New-Object System.Collections.Generic.List[System.Object]
-
 $result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl -ContinueOnFailure
 
 echo "[Result Summary]"
@@ -1112,7 +1106,7 @@ Příklad, který zpracovává seznam ACL rekurzivně v dávkách zadáním veli
 
 ---
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 Tato část obsahuje odkazy na knihovny a ukázky kódu.
 

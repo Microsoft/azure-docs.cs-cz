@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: b500a3777ee24d6615022dae2571d021bd0d675a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 33f5314c80dc33dbec50dc21a71f4cb507979e12
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201167"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427424"
 ---
 # <a name="limitations"></a>Omezení
 
@@ -18,20 +18,21 @@ Množství funkcí má velikost, počet nebo jiná omezení.
 
 ## <a name="azure-frontend"></a>Azure front-end
 
-* Celkový počet instancí AzureFrontend na proces: 16.
-* Celkový počet instancí AzureSession na AzureFrontend: 16.
+Následující omezení se vztahují na front-endové rozhraní API (C++ a C#):
+* Celkový počet instancí [AzureFrontend](/dotnet/api/microsoft.azure.remoterendering.azurefrontend) na proces: 16.
+* Celkový počet instancí [AzureSession](/dotnet/api/microsoft.azure.remoterendering.azuresession) na [AzureFrontend](/dotnet/api/microsoft.azure.remoterendering.azurefrontend): 16.
 
 ## <a name="objects"></a>Objekty
 
-* Celkem přípustných objektů jednoho typu (entita, CutPlaneComponent atd.): 16 777 215.
+* Celkem přípustných objektů jednoho typu ([entita](../concepts/entities.md), [CutPlaneComponent](../overview/features/cut-planes.md)atd.): 16 777 215.
 * Celkový povolený počet aktivních vyjmutých ploch: 8.
 
 ## <a name="geometry"></a>Geometrie
 
-* **Animace:** Animace jsou omezené na animace jednotlivých transformací herních objektů. Animace základní s animacemi s použitím změny vzhledu a vrcholu se nepodporují. Animační běhy ze zdrojového souboru prostředků se nezachovají. Místo toho musí být animace transformace objektů řízeny klientským kódem.
+* **Animace:** Animace jsou omezené na animace jednotlivých transformací [herních objektů](../concepts/entities.md). Animace základní s animacemi s použitím změny vzhledu a vrcholu se nepodporují. Animační běhy ze zdrojového souboru prostředků se nezachovají. Místo toho musí být animace transformace objektů řízeny klientským kódem.
 * **Vlastní shadery:** Vytváření vlastních shaderů se nepodporuje. Je možné použít pouze předdefinované [barevné materiály](../overview/features/color-materials.md) nebo [materiály PBR](../overview/features/pbr-materials.md) .
 * **Maximální počet různých materiálů** v prostředku: 65 535. Další informace o automatickém snížení počtu materiálu najdete v kapitole [de-duplikace materiálu](../how-tos/conversion/configure-model-conversion.md#material-de-duplication) .
-* **Maximální rozměr jedné textury**: 16 384 × 16 384. V rámci procesu převodu se velikost větších textur od velkých zdrojů zmenší.
+* **Maximální rozměr jedné textury** : 16 384 × 16 384. V rámci procesu převodu se velikost větších textur od velkých zdrojů zmenší.
 
 ### <a name="overall-number-of-polygons"></a>Celkový počet mnohoúhelníků
 

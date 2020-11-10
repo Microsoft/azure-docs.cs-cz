@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights Java
 description: Monitorování výkonu aplikací pro aplikace v jazyce Java spuštěné v jakémkoli prostředí bez nutnosti změny kódu. Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 2459f80746d95234701319bbb5142c8e540890d3
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: f7cda0f9389f0b628aca82dd6c65acba140e739b
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379765"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426829"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor monitorování aplikací s kódováním kódu Java Application Insights
 
@@ -16,9 +16,9 @@ Monitorování aplikací bez kódu Java je vše o jednoduchosti – neexistují 
 
  Agent Java funguje v jakémkoli prostředí a umožňuje monitorovat všechny aplikace v jazyce Java. Jinými slovy, bez ohledu na to, jestli máte aplikace Java spuštěné na virtuálních počítačích, místně v AKS, v systému Windows, Linux – pojmenujte ji agent Java 3,0, který bude vaši aplikaci monitorovat.
 
-Přidání sady Application Insights Java SDK do vaší aplikace už není potřeba, protože agent 3,0 autoshromáždí požadavky, závislosti a protokoly sám o sobě.
+Přidání Application Insights Java SDK do vaší aplikace už není potřeba, protože agent 3,0 automaticky shromažďuje požadavky, závislosti a protokoly sama o sobě.
 
-Z aplikace můžete stále odesílat vlastní telemetrie. Agent 3,0 bude sledovat a koreluje spolu se všemi všemi shromažďovanými telemetriemi.
+Z aplikace můžete stále odesílat vlastní telemetrie. Agent 3,0 bude sledovat a koreluje spolu se všemi automaticky shromážděnými telemetrie.
 
 Agent 3,0 podporuje jazyk Java 8 a vyšší.
 
@@ -82,7 +82,7 @@ V `applicationinsights.json` souboru můžete také nakonfigurovat:
 * Vzorkování
 * JMX metriky
 * Vlastní rozměry
-* Procesory telemetrie
+* Procesory telemetrie (Preview)
 * Automaticky shromážděné protokolování
 * Automaticky shromážděná metrika mikroměřiče (včetně metriky pohánějícího spouštěcího zařízení)
 * Tep
@@ -91,7 +91,7 @@ V `applicationinsights.json` souboru můžete také nakonfigurovat:
 
 Úplné podrobnosti najdete v tématu [Možnosti konfigurace](./java-standalone-config.md) .
 
-## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Autoshromáždit požadavky, závislosti, protokoly a metriky
+## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>Automaticky shromážděné požadavky, závislosti, protokoly a metriky
 
 ### <a name="requests"></a>Žádosti
 
@@ -141,13 +141,13 @@ Následující tabulka představuje aktuálně podporované vlastní typy teleme
 
 |                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Vlastní události**   |            |                     |  Ano    |
-| **Vlastní metriky**  |  Ano       |                     |  Ano    |
-| **Závislosti**    |            |                     |  Ano    |
-| **Výjimky**      |            |  Ano                |  Ano    |
-| **Page Views**      |            |                     |  Ano    |
-| **Žádosti**        |            |                     |  Ano    |
-| **Trasování**          |            |  Ano                |  Ano    |
+| **Vlastní události**   |            |                     |  Yes    |
+| **Vlastní metriky**  |  Yes       |                     |  Yes    |
+| **Závislosti**    |            |                     |  Yes    |
+| **Výjimky**      |            |  Yes                |  Yes    |
+| **Page Views**      |            |                     |  Yes    |
+| **Žádosti**        |            |                     |  Yes    |
+| **Trasování**          |            |  Yes                |  Yes    |
 
 V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 

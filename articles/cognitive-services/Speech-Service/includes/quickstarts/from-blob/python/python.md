@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: d69cb782b3be7035b7571653dcb434e44d22da93
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: edf08715290fc68b65f2d910440093be7df37af0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376519"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425069"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -18,7 +18,7 @@ Než začnete, nezapomeňte:
 > [!div class="checklist"]
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 > * [Vytvoření prostředku Azure Speech](../../../../overview.md#try-the-speech-service-for-free)
-> * [Nahrání zdrojového souboru do objektu blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Nahrání zdrojového souboru do objektu blob Azure](../../../../../../storage/blobs/storage-quickstart-blobs-portal.md)
 
 ## <a name="download-and-install-the-api-client-library"></a>Stažení a instalace klientské knihovny rozhraní API
 
@@ -27,7 +27,7 @@ Chcete-li spustit ukázku, je třeba vygenerovat knihovnu Python pro REST API, k
 Pro instalaci použijte tento postup:
 
 1. Přejděte na https://editor.swagger.io.
-1. Klikněte na **soubor**a pak na **importovat adresu URL**.
+1. Klikněte na **soubor** a pak na **importovat adresu URL**.
 1. Zadejte adresu URL Swagger, včetně oblasti pro předplatné služby Speech: `https://<your-region>.cris.ai/docs/v2.0/swagger` .
 1. Klikněte na **vygenerovat klienta** a vyberte **Python**.
 1. Uložte klientskou knihovnu.

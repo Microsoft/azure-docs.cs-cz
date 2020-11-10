@@ -8,86 +8,48 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 164f5803b6e9e62447423735e98f6e4c36c73f13
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: de916fcbe0623185821e2f5da15a8f9cf71dfd4e
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877175"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426738"
 ---
-### <a name="add-relationships"></a>Přidat relace
-
-V šabloně zařízení **brány lva Edge** v části **moduly/lva Edge Gateway**vyberte **relace**. Vyberte **+ Přidat relaci** a přidejte následující dvě relace:
-
-|Zobrazovaný název               |Name          |Cíl |
-|-------------------------- |------------- |------ |
-|Detektor pohybu LVA Edge   |Použijte výchozí.   |Zařízení detektoru pohybu LVA Edge |
-|Detektor objektu LVA Edge   |Použijte výchozí.   |Zařízení LVA Edge pro detektor objektů |
-
-Pak vyberte **Uložit**.
-
-:::image type="content" source="media/iot-central-video-analytics-part4/relationships.png" alt-text="Přidat relace":::
-
-### <a name="add-views"></a>Přidání zobrazení
-
-Šablona zařízení **brány lva Edge** neobsahuje žádné definice zobrazení.
-
-Přidání zobrazení do šablony zařízení:
-
-1. V šabloně zařízení **brány lva Edge** přejděte do **zobrazení** a vyberte **vizualizaci dlaždice zařízení** .
-
-1. Jako název zobrazení zadejte *zařízení brány lva Edge* .
-
-1. Přidejte do zobrazení následující dlaždice:
-
-    * Dlaždice s vlastnostmi **informací o zařízení** : **model zařízení**, **výrobce**, **operační systém**, **Architektura procesoru**, **verze softwaru**, **Celková paměť**a **Celková velikost úložiště**.
-    * Dlaždice spojnicového grafu s **volnou pamětí** a hodnotami telemetrie **prezenčního signálu systému**
-    * Dlaždice historie událostí s následujícími událostmi: **vytvořit kameru**, **Odstranit kameru**, **restartovat modul**, **modul spuštěný**, **modul se zastavil**.
-    * Dlaždice 2x1 Poslední známá hodnota znázorňující IoT Central telemetrie **stavu klienta** .
-    * Dlaždice Poslední známá hodnota 2x1 zobrazující telemetrii **stavu modulu** .
-    * Dlaždice Poslední známá hodnota 1x1 zobrazující telemetrii **prezenčního signálu systému** .
-    * Dlaždice Poslední známá hodnota 1x1 zobrazující telemetrii **připojených fotoaparátů** .
-
-    :::image type="content" source="media/iot-central-video-analytics-part4/gateway-dashboard.png" alt-text="Přidat relace":::
-
-1. Vyberte **Uložit**.
-
 ### <a name="publish-the-device-template"></a>Publikování šablony zařízení
 
 Předtím, než budete moci do aplikace přidat zařízení, je nutné publikovat šablonu zařízení:
 
-1. V šabloně zařízení **brány lva Edge** vyberte **publikovat**.
+1. V šabloně zařízení **lva Edge Gateway v2** vyberte **publikovat**.
 
 1. Na stránce **Publikovat tuto šablonu zařízení na stránku aplikace** vyberte **publikovat**.
 
-**Brána lva Edge** je teď k dispozici jako typ zařízení, který se má použít na stránce **zařízení** v aplikaci.
+**Lva Edge Gateway v2** je teď k dispozici jako typ zařízení, který se má použít na stránce **zařízení** v aplikaci.
 
-## <a name="add-a-gateway-device"></a>Přidat zařízení brány
+## <a name="migrate-the-gateway-device"></a>Migrace zařízení brány
 
-Přidání zařízení **brány lva Edge** do aplikace:
+Stávající zařízení **brány – 001** používá šablonu zařízení **lva Edge Gateway** . Pokud chcete použít nový manifest nasazení, migrujte zařízení do nové šablony zařízení:
 
-1. Přejděte na stránku **zařízení** a vyberte šablonu zařízení **lva Edge Gateway** .
+Migrace zařízení **brány – 001** :
 
-1. Vyberte **+ Nový**.
+1. Přejděte na stránku **zařízení** a vyberte zařízení **brány – 001** , které chcete v seznamu zvýraznit.
 
-1. V dialogovém okně **vytvořit nové zařízení** změňte název zařízení na *lva Gateway 001*a změňte ID zařízení na *lva-Gateway-001*.
+1. Vyberte možnost **Migrate** (Migrovat). Pokud není ikona **migrace** zobrazená, vyberte **...** a podívejte se na další možnosti.
 
-    > [!NOTE]
-    > ID zařízení musí být v aplikaci jedinečné.
+    :::image type="content" source="media/iot-central-video-analytics-part4/migrate-device.png" alt-text="Migrace zařízení brány na novou verzi":::
 
-1. Vyberte **Vytvořit**.
+1. V seznamu v dialogovém okně **migrovat** vyberte **lva Edge Gateway v2** a pak vyberte **migrovat**.
 
-Stav zařízení je **zaregistrovaný**.
+Po několika sekundách se migrace dokončí. Vaše zařízení teď používá šablonu zařízení **lva Edge Gateway v2** s vlastním přizpůsobeným manifestem nasazení.
 
 ### <a name="get-the-device-credentials"></a>Získání přihlašovacích údajů zařízení
 
 Budete potřebovat přihlašovací údaje, které umožní zařízení připojit se k vaší IoT Central aplikaci. Přihlašovací údaje pro získání zařízení:
 
-1. Na stránce **zařízení** vyberte zařízení **lva-Gateway-001** , které jste vytvořili.
+1. Na stránce **zařízení** vyberte zařízení **Gateway – 001** .
 
-1. Vyberte **Připojit**.
+1. Vyberte **Connect** (Připojit).
 
-1. Na stránce **připojení zařízení** si poznamenejte v souboru *scratchpad.txt* **rozsahu ID**, **ID zařízení**a **primární klíč**zařízení. Tyto hodnoty použijete později.
+1. Na stránce **připojení zařízení** si poznamenejte v souboru *scratchpad.txt* **rozsahu ID** , **ID zařízení** a **primární klíč** zařízení. Tyto hodnoty použijete později.
 
 1. Ujistěte se, že je metoda připojení nastavená na **sdílený přístupový podpis**.
 

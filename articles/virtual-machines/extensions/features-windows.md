@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 00cb63f63ffb1f2e10a276cfdeee9c5e8e1022de
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977370"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427373"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření a funkce virtuálních počítačů pro Windows
 
@@ -92,7 +92,7 @@ Pomocí následujících metod lze spustit rozšíření pro existující virtu�
 
 ### <a name="powershell"></a>PowerShell
 
-Pro spuštění jednotlivých rozšíření existuje několik příkazů PowerShellu. Chcete-li zobrazit seznam, použijte [příkaz Get-Command](/powershell/module/microsoft.powershell.core/get-command) a filtrujte podle *rozšíření*:
+Pro spuštění jednotlivých rozšíření existuje několik příkazů PowerShellu. Chcete-li zobrazit seznam, použijte [příkaz Get-Command](/powershell/module/microsoft.powershell.core/get-command) a filtrujte podle *rozšíření* :
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -142,7 +142,7 @@ Pomocí `Set-AzVMExtension` příkazu můžete spustit libovolné rozšíření 
 
 ### <a name="azure-portal"></a>portál Azure
 
-Rozšíření virtuálních počítačů je možné použít pro existující virtuální počítač prostřednictvím Azure Portal. Vyberte virtuální počítač na portálu, klikněte na **rozšíření**a pak vyberte **Přidat**. V seznamu dostupných rozšíření vyberte požadované rozšíření a postupujte podle pokynů v průvodci.
+Rozšíření virtuálních počítačů je možné použít pro existující virtuální počítač prostřednictvím Azure Portal. Vyberte virtuální počítač na portálu, klikněte na **rozšíření** a pak vyberte **Přidat**. V seznamu dostupných rozšíření vyberte požadované rozšíření a postupujte podle pokynů v průvodci.
 
 Následující příklad ukazuje instalaci rozšíření Microsoft Antimalware z Azure Portal:
 
@@ -286,7 +286,7 @@ Microsoft.Compute     CustomScriptExtension                1.9
 
 #### <a name="agent-updates"></a>Aktualizace agenta
 
-Agent hosta systému Windows obsahuje *kód pro zpracování přípony*, *kód zřizování systému Windows* je oddělený. Můžete odinstalovat agenta hosta systému Windows. Nelze zakázat automatickou aktualizaci agenta hosta okna.
+Agent hosta systému Windows obsahuje *kód pro zpracování přípony* , *kód zřizování systému Windows* je oddělený. Můžete odinstalovat agenta hosta systému Windows. Nelze zakázat automatickou aktualizaci agenta hosta okna.
 
 *Kód pro manipulaci s rozšířeními* zodpovídá za komunikaci s prostředky infrastruktury Azure a zpracovává operace rozšíření virtuálních počítačů, jako jsou instalace, stav generování sestav, aktualizace jednotlivých rozšíření a jejich odebrání. Aktualizace obsahují opravy zabezpečení, opravy chyb a vylepšení *kódu pro zpracování rozšíření*.
 
@@ -294,7 +294,7 @@ Pokud chcete zjistit verzi, kterou používáte, přečtěte si téma [Zjištěn
 
 #### <a name="extension-updates"></a>Aktualizace rozšíření
 
-Pokud je k dispozici aktualizace rozšíření, Agent hosta systému Windows stáhne a upgraduje rozšíření. Automatické aktualizace rozšíření jsou buď *drobné* , nebo *hotfix*. Při zřizování rozšíření můžete povolit nebo odhlásit rozšíření *dílčí* aktualizace. Následující příklad ukazuje, jak automaticky upgradovat dílčí verze v Správce prostředků šabloně pomocí *autoUpgradeMinorVersion ": true,"*:
+Pokud je k dispozici aktualizace rozšíření, Agent hosta systému Windows stáhne a upgraduje rozšíření. Automatické aktualizace rozšíření jsou buď *drobné* , nebo *hotfix*. Při zřizování rozšíření můžete povolit nebo odhlásit rozšíření *dílčí* aktualizace. Následující příklad ukazuje, jak automaticky upgradovat dílčí verze v Správce prostředků šabloně pomocí *autoUpgradeMinorVersion ": true,"* :
 
 ```json
     "properties": {
@@ -322,7 +322,7 @@ V případě, že se rozšíření zřídilo pomocí ' autoUpgradeMinorVersion '
  $vm.Extensions
 ```
 
-Následující příklad výstupu ukazuje, že *autoUpgradeMinorVersion* je nastavená na *hodnotu true*:
+Následující příklad výstupu ukazuje, že *autoUpgradeMinorVersion* je nastavená na *hodnotu true* :
 
 ```powershell
 ForceUpdateTag              :
@@ -336,7 +336,7 @@ AutoUpgradeMinorVersion     : True
 
 Pokud chcete zjistit, kdy došlo k aktualizaci rozšíření, zkontrolujte protokoly agenta na virtuálním počítači na adrese *C:\WindowsAzure\Logs\WaAppAgent.log* .
 
-V následujícím příkladu měl virtuální počítač nainstalovaný *Microsoft. Compute. CustomScriptExtension 1,8* . Pro verzi *1,9*byla k dispozici oprava hotfix:
+V následujícím příkladu měl virtuální počítač nainstalovaný *Microsoft. Compute. CustomScriptExtension 1,8* . Pro verzi *1,9* byla k dispozici oprava hotfix:
 
 ```powershell
 [INFO]  Getting plugin locations for plugin 'Microsoft.Compute.CustomScriptExtension'. Current Version: '1.8', Requested Version: '1.9'
@@ -355,7 +355,7 @@ Následující kroky pro řešení potíží se vztahují na všechna rozšíře
 
 1. Pokud chcete zkontrolovat protokol agenta hosta systému Windows, podívejte se na aktivitu při zřizování rozšíření v *C:\WindowsAzure\Logs\WaAppAgent.log* .
 
-2. Další podrobnosti najdete v protokolech aktuálních rozšíření *C:\WindowsAzure\Logs\Plugins \<extensionName> * .
+2. Další podrobnosti najdete v protokolech aktuálních rozšíření *C:\WindowsAzure\Logs\Plugins \\ <extensionName>* .
 
 3. Podívejte se na oddíly řešení potíží v dokumentaci ke konkrétnímu rozšíření pro kódy chyb, známé problémy atd.
 
@@ -403,7 +403,7 @@ Extensions[0]           :
     Message             : Finished executing command
 ```
 
-Stav spuštění rozšíření lze také najít v Azure Portal. Pokud chcete zobrazit stav rozšíření, vyberte virtuální počítač, zvolte **rozšíření**a pak vyberte požadované rozšíření.
+Stav spuštění rozšíření lze také najít v Azure Portal. Pokud chcete zobrazit stav rozšíření, vyberte virtuální počítač, zvolte **rozšíření** a pak vyberte požadované rozšíření.
 
 ### <a name="rerun-vm-extensions"></a>Znovu spustit rozšíření virtuálních počítačů
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 5759cd80278d20ee383fbe5922e43d250babe09f
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b22c73b3f0626b9938608e88c3382e3f5e8d97fc
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380670"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427475"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
@@ -135,13 +135,12 @@ V pravém horním rohu vyberte **Uložit a výuka** a uložte úpravy a výukov�
 1. Na portálu QnA Maker v pravém horním rohu vyberte **test** , abyste otestovali, že provedené změny se projevily.
 2. Do textového pole zadejte ukázkový dotaz uživatele.
 
-    `How many Azure services are used by a knowledge base?`
+    `whats the size of the touchscreen`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/enable-short-answer.png" alt-text="Snímek obrazovky s dialogovým oknem s uživatelským rozhraním chatu otázka: kolik stránek bude mít nepatrný cestovní pas? a odpověď: jenom 36 stránek brožura Passport se vydávají nezletilým.":::
+3. Pokud povolíte funkci MRC pro vaši znalostní bázi, výběrem **zobrazené krátké odpovědi** zobrazíte také přesnou odpověď, pokud je k dispozici, spolu s pasáží odpovědi v podokně test. 
 
-3. Pokud povolíte funkci MRC pro vaši znalostní bázi, výběrem možnosti **Povolit krátkou odpověď (experimentální)** se zobrazí také přesná odpověď, je-li k dispozici, spolu s průchodem odpovědí v podokně test. 
-
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/enable-short-answer-checked.png" alt-text="Snímek obrazovky s dialogovým oknem s uživatelským rozhraním chatu otázka: kolik stránek bude mít nepatrný cestovní pas? a odpověď: 36. na jeden řádek následovaný druhým řádkem, který uvádí: jenom 36 stránek brožura Passport se vydávají jen pro děti.":::
+    ![Spravované podokno povoleného testu](../media/conversational-context/test-pane-with-managed.png)
+    
 
 4. Pokud chcete odpověď prozkoumat podrobněji, vyberte zkontrolovat. Testovací okno slouží k otestování změn ve znalostní bázi před publikováním znalostní báze. 
 5. Vyberte znovu **test** pro zavření **testovacího** panelu.

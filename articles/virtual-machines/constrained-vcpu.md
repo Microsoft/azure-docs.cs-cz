@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 03/09/2018
 ms.author: mimckitt
-ms.openlocfilehash: c7852bd1b6d93357c1c9127686d1edbb5c702a3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 530ae08dabe54ed279a4055e52109aad0ef4f842
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88701502"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426149"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Omezené velikosti virtuálních počítačů s možností omezení vCPU
 
@@ -24,7 +24,7 @@ Aktuální velikost virtuálního počítače Standard_GS5 například přináš
 Licenční poplatky účtované za SQL Server nebo Oracle jsou omezené na nový počet vCPU a další produkty by se měly účtovat na základě nového počtu vCPU. Výsledkem je 50% až 75% zvýšení poměru specifikací virtuálních počítačů na aktivní (fakturovatelný) vCPU. Tyto nové velikosti virtuálních počítačů umožňují zákaznickým úlohám při optimalizaci nákladů na software využívat stejnou paměť, úložiště a I/O šířku pásma. V tomto okamžiku zůstává náklady na výpočetní výkon, včetně licencování operačního systému, stejné jako původní velikost. Další informace najdete v tématu [velikosti virtuálních počítačů Azure pro cenově výhodné databázové úlohy](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| Name                | Virtuální procesory | Specifikace           |
+| Name (Název)                | Virtuální procesory | Specifikace           |
 |---------------------|------|-----------------|
 | Standard_M8 – 2 MS     | 2    | Stejné jako M8ms    |
 | Standard_M8 – 4ms     | 4    | Stejné jako M8ms    |
@@ -63,6 +63,17 @@ Licenční poplatky účtované za SQL Server nebo Oracle jsou omezené na nový
 | Standard_E32 – 8ds_v4 | 8    | Stejné jako E32ds_v4|
 | Standard_E64 – 32ds_v4| 32   | Stejné jako E64ds_v4|
 | Standard_E64 – 16ds_v4| 16   | Stejné jako E64ds_v4|
+| Standard_E4 – 2as_v4  | 2    | Stejné jako E4as_v4 |
+| Standard_E8 – 4as_v4  | 4    | Stejné jako E8as_v4 |
+| Standard_E8 – 2as_v4  | 2    | Stejné jako E8as_v4 |
+| Standard_E16 – 8as_v4 | 8    | Stejné jako E16as_v4|
+| Standard_E16 – 4as_v4 | 4    | Stejné jako E16as_v4|
+| Standard_E32 – 16as_v4| 16   | Stejné jako E32as_v4|
+| Standard_E32 – 8as_v4 | 8    | Stejné jako E32as_v4|
+| Standard_E64 – 32as_v4| 32   | Stejné jako E64as_v4|
+| Standard_E64 – 16as_v4| 16   | Stejné jako E64as_v4|
+| Standard_E96 – 48as_v4| 48   | Stejné jako E96as_v4|
+| Standard_E96 – 24as_v4| 24   | Stejné jako E96as_v4|
 | Standard_GS4-8      | 8    | Stejné jako GS4 úrovně     |
 | Standard_GS4-4      | 4    | Stejné jako GS4 úrovně     |
 | Standard_GS5-16     | 16   | Stejné jako GS5     |

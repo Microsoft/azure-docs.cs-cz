@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 10/15/2020
-ms.openlocfilehash: 924ac3a58a005b84cbf87f833e97862e26a5b8e0
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 2970bb58bb73d52c75729b00a8209a9c576d4ec0
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363353"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427407"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Monitorování pracovního prostoru synapse
 
@@ -31,8 +31,7 @@ Otevřete synapse Studio a přejděte do centra **monitorování** . Tady vidít
 ## <a name="integration"></a>Integrace
 
 1. Přejděte do **kanálu integrace >**. V tomto zobrazení můžete zobrazit pokaždé, když se v pracovním prostoru spustí kanál. 
-1. Vyhledejte kanál, který jste spustili v předchozím kroku, a klikněte na **název jeho kanálu**.
-1. Nyní vidíte, jak jednotlivé aktivity v rámci tohoto kanálu spouští.
+1. Vyhledejte kanál, který jste spustili v předchozím kroku, a kliknutím na jeho **název** zobrazte podrobnosti.
 1. Klikněte na **panel s popisem cesty** v horní části synapse studia, klikněte na **všechna spuštění kanálu** a vraťte se k předchozímu zobrazení.
 
 ## <a name="apache-spark-activities"></a>Apache Spark aktivity

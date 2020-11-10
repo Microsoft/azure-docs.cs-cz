@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 05cf63f741e287112ace76a5249ae2ca8d01f34f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b0e8b38f4760bf9e9adf8d26dfd6b7a15c904eab
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376929"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425233"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -19,7 +19,7 @@ Než začnete, nezapomeňte:
 > [!div class="checklist"]
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programmming-language-csharp)
 > * [Vytvoření prostředku Azure Speech](../../../../overview.md#try-the-speech-service-for-free)
-> * [Nahrání zdrojového souboru do objektu blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Nahrání zdrojového souboru do objektu blob Azure](../../../../../../storage/blobs/storage-quickstart-blobs-portal.md)
 
 ## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v aplikaci Visual Studio
 
@@ -552,7 +552,7 @@ namespace BatchClient
 
 Nyní jste připraveni sestavit aplikaci a otestovat rozpoznávání řeči pomocí služby Speech.
 
-1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení**  >  **řešení**sestavení.
+1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení**  >  **řešení** sestavení.
 2. **Spusťte aplikaci** – z řádku nabídek zvolte **ladění**  >  **Spustit ladění** nebo stiskněte klávesu **F5**.
 3. **Spustit rozpoznávání** – zobrazí výzvu k vymluvenému vynechání fráze v angličtině. Váš hlas se odešle službě Speech, přepisu jako text a vykreslí se v konzole nástroje.
 

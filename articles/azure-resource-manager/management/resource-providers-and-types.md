@@ -2,14 +2,14 @@
 title: Poskytovatelé prostředků a typy prostředků
 description: Popisuje poskytovatele prostředků, kteří podporují Azure Resource Manager. Popisuje jejich schémata, dostupné verze rozhraní API a oblasti, které mohou hostovat prostředky.
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8b1a9e6d539d37fb26d8fb0e3a541415dd574e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278863"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426455"
 ---
 # <a name="azure-resource-providers-and-types"></a>Poskytovatelé a typy prostředků Azure
 
@@ -32,7 +32,7 @@ Seznam, který mapuje poskytovatele prostředků na služby Azure, najdete v té
 
 ## <a name="register-resource-provider"></a>Registrace poskytovatele prostředků
 
-Před použitím poskytovatele prostředků musíte zaregistrovat poskytovatele prostředků pro vaše předplatné Azure. Tento krok nakonfiguruje předplatné pro práci s poskytovatelem prostředků. Obor pro registraci je vždy předplatné. Ve výchozím nastavení je řada poskytovatelů prostředků zaregistrována automaticky. Je ale možné, že budete muset některé poskytovatele prostředků zaregistrovat ručně.
+Před použitím poskytovatele prostředků musí být vaše předplatné Azure zaregistrované pro poskytovatele prostředků. Registrace nakonfiguruje vaše předplatné, aby spolupracovalo s poskytovatelem prostředků. Někteří poskytovatelé prostředků jsou registrováni ve výchozím nastavení. Jiní poskytovatelé prostředků jsou registrováni automaticky při provedení určitých akcí. Například při vytváření prostředku prostřednictvím portálu je poskytovatel prostředků obvykle zaregistrován za vás. Pro jiné scénáře možná budete muset ručně zaregistrovat poskytovatele prostředků.
 
 V tomto článku se dozvíte, jak ověřit stav registrace poskytovatele prostředků a jak ho podle potřeby zaregistrovat. Musíte mít oprávnění k provedení `/register/action` operace pro poskytovatele prostředků. Oprávnění je obsaženo v rolích přispěvatel a Owner.
 
@@ -49,7 +49,7 @@ Pokud chcete zobrazit všechny poskytovatele prostředků a stav registrace pro 
 
     ![vybrat odběry](./media/resource-providers-and-types/select-all-services.png)
 
-3. V poli **všechny služby** zadejte **předplatné**a pak vyberte **předplatná**.
+3. V poli **všechny služby** zadejte **předplatné** a pak vyberte **předplatná**.
 4. Vyberte předplatné ze seznamu odběrů, které chcete zobrazit.
 5. Vyberte **poskytovatele prostředků** a zobrazte seznam dostupných poskytovatelů prostředků.
 
@@ -61,7 +61,7 @@ Chcete-li zobrazit informace o konkrétním poskytovateli prostředků:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V nabídce webu Azure Portal vyberte **Všechny služby**.
-3. V poli **všechny služby** zadejte **Průzkumník prostředků**a potom vyberte **Průzkumník prostředků**.
+3. V poli **všechny služby** zadejte **Průzkumník prostředků** a potom vyberte **Průzkumník prostředků**.
 
     ![vybrat všechny služby](./media/resource-providers-and-types/select-resource-explorer.png)
 
@@ -83,8 +83,6 @@ Chcete-li zobrazit informace o konkrétním poskytovateli prostředků:
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 Pokud chcete zobrazit všechny poskytovatele prostředků v Azure a stav registrace pro vaše předplatné, použijte:
 
 ```azurepowershell-interactive
@@ -101,6 +99,12 @@ Microsoft.ClassicNetwork         Registered
 Microsoft.ClassicStorage         Registered
 Microsoft.CognitiveServices      Registered
 ...
+```
+
+Pokud chcete zobrazit všechny registrované poskytovatele prostředků pro vaše předplatné, použijte:
+
+```azurepowershell-interactive
+ Get-AzResourceProvider -ListAvailable | Where-Object RegistrationState -eq "Registered" | Select-Object ProviderNamespace, RegistrationState | Sort-Object ProviderNamespace
 ```
 
 Chcete-li zaregistrovat poskytovatele prostředků, použijte:
@@ -190,7 +194,7 @@ West US
 
 Pokud chcete zobrazit všechny poskytovatele prostředků v Azure a stav registrace pro vaše předplatné, použijte:
 
-```azurecli
+```azurecli-interactive
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
 ```
 
@@ -206,9 +210,15 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
+Pokud chcete zobrazit všechny registrované poskytovatele prostředků pro vaše předplatné, použijte:
+
+```azurecli-interactive
+az provider list --query "sort_by([?registrationState=='Registered'].{Provider:namespace, Status:registrationState}, &Provider)" --out table
+```
+
 Chcete-li zaregistrovat poskytovatele prostředků, použijte:
 
-```azurecli
+```azurecli-interactive
 az provider register --namespace Microsoft.Batch
 ```
 
@@ -216,7 +226,7 @@ Vrátí zprávu o tom, že probíhá registrace.
 
 Pokud chcete zobrazit informace o konkrétním poskytovateli prostředků, použijte:
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch
 ```
 
@@ -235,7 +245,7 @@ Což vrátí výsledek podobný tomuto:
 
 Chcete-li zobrazit typy prostředků pro poskytovatele prostředků, použijte:
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceType" --out table
 ```
 
@@ -254,7 +264,7 @@ Verze rozhraní API odpovídá verzi REST API operací, které jsou vydány posk
 
 K získání dostupných verzí rozhraní API pro typ prostředku použijte:
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].apiVersions | [0]" --out table
 ```
 
@@ -274,7 +284,7 @@ Správce prostředků se podporují ve všech oblastech, ale prostředky, které
 
 Chcete-li získat podporovaná umístění pro typ prostředku, použijte.
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].locations | [0]" --out table
 ```
 

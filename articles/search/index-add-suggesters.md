@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ae25c63e9c6e3bf6ad363cde9eb641703562811
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ed7b61e9e0379462e0dfbcdcc93acfccf470d95f
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360015"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427033"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření modulu pro návrhy umožňující automatické dokončování a navrhované výsledky v dotazu
 
@@ -26,7 +26,7 @@ Následující snímek obrazovky z části [Vytvoření první aplikace v jazyce
 
 Tyto funkce můžete použít samostatně nebo dohromady. K implementaci těchto chování ve službě Azure Kognitivní hledání je k dispozici komponenta index a dotaz. 
 
-+ V indexu přidejte k indexu modul pro návrhy. Můžete použít portál, [REST API](/rest/api/searchservice/create-index)nebo [.NET SDK](/dotnet/api/microsoft.azure.search.models.suggester). Zbývající část tohoto článku se zaměřuje na vytvoření modulu pro návrhy.
++ V indexu přidejte k indexu modul pro návrhy. Můžete použít portál, [Create index (REST) (/REST/API/SearchService/Create-index) nebo [vlastnost pro návrhy](/dotnet/api/azure.search.documents.indexes.models.searchindex.suggesters). Zbývající část tohoto článku se zaměřuje na vytvoření modulu pro návrhy.
 
 + V požadavku na dotaz volejte jedno z [rozhraní API uvedených níže](#how-to-use-a-suggester).
 
@@ -107,24 +107,23 @@ V REST API přidejte moduly pro návrhy prostřednictvím [Create index](/rest/a
 
 ## <a name="create-using-net"></a>Vytvoření pomocí .NET
 
-V jazyce C# Definujte objekt nástroje pro [návrhy](/dotnet/api/microsoft.azure.search.models.suggester). `Suggesters` je kolekce, ale může mít pouze jednu položku. 
+V jazyce C# definujte [objekt SearchSuggester](/dotnet/api/azure.search.documents.indexes.models.searchsuggester). `Suggesters` je kolekce na objektu SearchIndex, ale může mít pouze jednu položku. 
 
 ```csharp
-private static void CreateHotelsIndex(SearchServiceClient serviceClient)
+private static void CreateIndex(string indexName, SearchIndexClient indexClient)
 {
-    var definition = new Index()
-    {
-        Name = "hotels-sample-index",
-        Fields = FieldBuilder.BuildForType<Hotel>(),
-        Suggesters = new List<Suggester>() {new Suggester()
-            {
-                Name = "sg",
-                SourceFields = new string[] { "HotelName", "Category" }
-            }}
-    };
+    FieldBuilder fieldBuilder = new FieldBuilder();
+    var searchFields = fieldBuilder.Build(typeof(Hotel));
 
-    serviceClient.Indexes.Create(definition);
+    //var suggester = new SearchSuggester("sg", sourceFields = "HotelName", "Category");
 
+    var definition = new SearchIndex(indexName, searchFields);
+
+    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category"});
+
+    definition.Suggesters.Add(suggester);
+
+    indexClient.CreateOrUpdateIndex(definition);
 }
 ```
 
@@ -134,7 +133,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |--------------|-----------------|
 |`name`        |Název modulu pro návrhy.|
 |`searchMode`  |Strategie použitá pro hledání kandidátských frází. Jediným aktuálně podporovaným režimem je `analyzingInfixMatching` , který aktuálně odpovídá začátku období.|
-|`sourceFields`|Seznam jednoho nebo více polí, která jsou zdrojem obsahu pro návrhy. Pole musí být typu `Edm.String` a `Collection(Edm.String)` . Je-li v poli analyzátor určen, musí se jednat o pojmenovaný analyzátor z [tohoto seznamu](/dotnet/api/microsoft.azure.search.models.analyzername) (nikoli vlastní analyzátor).<p/> Osvědčeným postupem je zadat pouze ta pole, která samy zapůjčuje očekávanou a odpovídající odpověď, ať už se jedná o dokončený řetězec na panelu hledání nebo v rozevíracím seznamu.<p/>Název hotelu je dobrý kandidát, protože má přesnost. Podrobná pole, jako jsou popisy a komentáře, jsou moc zhuštěná. Podobně opakující se pole, jako jsou kategorie a značky, jsou méně efektivní. V příkladech obsahuje "Category", abyste ukázali, že můžete zahrnout více polí. |
+|`sourceFields`|Seznam jednoho nebo více polí, která jsou zdrojem obsahu pro návrhy. Pole musí být typu `Edm.String` a `Collection(Edm.String)` . Je-li v poli analyzátor určen, musí se jednat o pojmenovaný analyzátor z [tohoto seznamu](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) (nikoli vlastní analyzátor).<p/> Osvědčeným postupem je zadat pouze ta pole, která samy zapůjčuje očekávanou a odpovídající odpověď, ať už se jedná o dokončený řetězec na panelu hledání nebo v rozevíracím seznamu.<p/>Název hotelu je dobrý kandidát, protože má přesnost. Podrobná pole, jako jsou popisy a komentáře, jsou moc zhuštěná. Podobně opakující se pole, jako jsou kategorie a značky, jsou méně efektivní. V příkladech obsahuje "Category", abyste ukázali, že můžete zahrnout více polí. |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -144,8 +143,8 @@ V dotazu se používá modul pro návrhy. Po vytvoření modulu pro vytváření
 
 + [REST API návrhů](/rest/api/searchservice/suggestions)
 + [REST API automatického dokončování](/rest/api/searchservice/autocomplete)
-+ [Metoda SuggestWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
-+ [Metoda AutocompleteWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
++ [Metoda SuggestAsync](/dotnet/api/azure.search.documents.searchclient.suggestasync)
++ [Metoda AutocompleteAsync](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)
 
 V aplikaci vyhledávání by měl klientský kód využít knihovnu, jako je například [Automatické dokončování uživatelského rozhraní jQuery](https://jqueryui.com/autocomplete/) , ke shromáždění částečného dotazu a zadání shody. Další informace o této úloze najdete v tématu [Přidání automatického dokončování nebo navrhovaných výsledků do klientského kódu](search-autocomplete-tutorial.md).
 

@@ -5,12 +5,12 @@ description: Přečtěte si, jak aktualizovat nebo resetovat přihlašovací úd
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: e787322f421094cf9ac6681df0119ba820b654ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c787f172bc03e11c574c4de967aee05da9df18aa
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871220"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427509"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualizace nebo otočení přihlašovacích údajů pro službu Azure Kubernetes (AKS)
 
@@ -22,7 +22,7 @@ Alternativně můžete místo instančního objektu použít spravovanou identit
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>Aktualizace nebo vytvoření nového instančního objektu pro cluster AKS
 
@@ -82,7 +82,7 @@ Výstup se podobá následujícímu příkladu. Poznamenejte si sami `appId` a `
 }
 ```
 
-Nyní Definujte proměnné pro ID instančního objektu a tajný klíč klienta pomocí výstupu z vlastního příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create] , jak je znázorněno v následujícím příkladu. *SP_ID* je vaše *appId*a *SP_SECRET* je vaše *heslo*:
+Nyní Definujte proměnné pro ID instančního objektu a tajný klíč klienta pomocí výstupu z vlastního příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create] , jak je znázorněno v následujícím příkladu. *SP_ID* je vaše *appId* a *SP_SECRET* je vaše *heslo* :
 
 ```console
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
@@ -104,7 +104,7 @@ az aks update-credentials \
     --name myAKSCluster \
     --reset-service-principal \
     --service-principal $SP_ID \
-    --client-secret "$SP_SECRET"
+    --client-secret $SP_SECRET
 ```
 
 V případě malých a středně velkých clusterů chvíli trvá, než se přihlašovací údaje instančního objektu aktualizují ve službě AKS.

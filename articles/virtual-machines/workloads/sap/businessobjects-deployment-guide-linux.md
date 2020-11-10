@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 7253e257f9d721c09f2e041c1473a9d81d09a321
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1f15a3b4d8f51ec79fffce09bc006942d08096a6
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094306"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427458"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Průvodce nasazením platformy SAP BusinessObjects BI pro Linux v Azure
 
@@ -36,7 +36,7 @@ V tomto příkladu se používá verze produktu a rozložení systému souborů.
 - Azure Database for MySQL (verze: 8.0.15)
 - MySQL C API Connector – libmysqlclient (verze: 6.1.11)
 
-| Systém souborů        | Popis                                                                                                               | Velikost (GB)             | Vlastník  | Group (Skupina)  | Úložiště                    |
+| Systém souborů        | Popis                                                                                                               | Velikost (GB)             | Vlastník  | Skupina  | Úložiště                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | Systém souborů pro instalaci instance SAP BOBI, výchozí webové aplikace Tomcat a ovladače databáze (v případě potřeby) | Pokyny pro určení velikosti SAP | bl1adm | sapsys | Spravovaný disk úrovně Premium – SSD |
 | /usr/sap/frsinput  | Adresář pro připojení je určený pro sdílené soubory ve všech hostitelích BOBI, které se použijí jako adresář úložiště vstupních souborů.  | Obchodní potřeby         | bl1adm | sapsys | Azure NetApp Files         |
@@ -113,7 +113,7 @@ Při vytváření Azure NetApp Files pro server úložiště souborů platformy 
 
 Kroky v této části používají následující předpony:
 
-**[A]**: Tento krok platí pro všechny hostitele.
+**[A]** : Tento krok platí pro všechny hostitele.
 
 ### <a name="format-and-mount-sap-file-system"></a>Formátování a připojení systému souborů SAP
 
@@ -274,7 +274,7 @@ Pokyny platí jenom v případě, že používáte Azure DB for MySQL. Další i
 
 ### <a name="create-an-azure-database-for-mysql"></a>Vytvoření Azure Database for MySQL
 
-Přihlaste se k Azure Portal a postupujte podle kroků uvedených v této úvodní [příručce k Azure Database for MySQL](../../../mysql/quickstart-create-mysql-server-database-using-azure-portal.md#create-an-azure-database-for-mysql-server). Několik bodů, které se mají poznamenat při zřizování Azure Database for MySQL –
+Přihlaste se k Azure Portal a postupujte podle kroků uvedených v této úvodní [příručce k Azure Database for MySQL](../../../mysql/quickstart-create-mysql-server-database-using-azure-portal.md). Několik bodů, které se mají poznamenat při zřizování Azure Database for MySQL –
 
 1. Vyberte stejnou oblast pro Azure Database for MySQL, kde běží aplikační servery platformy SAP BI.
 
@@ -395,15 +395,15 @@ Aby aplikační Server SAP BOBI měl přístup k databázi, vyžaduje databázov
 
 Kroky v této části používají následující předpony:
 
-**[A]**: Tento krok platí pro všechny hostitele.
+**[A]** : Tento krok platí pro všechny hostitele.
 
 1. **[A]** na základě charakteru systému Linux (SLES nebo RHEL) je nutné nastavit parametry jádra a nainstalovat požadované knihovny. Informace najdete v části **požadavky na systém** v [příručce pro instalaci platformy Business Intelligence pro systém UNIX](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US).
 
 2. **[A]** Ujistěte se, že je ve vašem počítači správně nastavené časové pásmo. Další informace najdete v [části Další požadavky pro systémy UNIX a Linux](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html) v Průvodci instalací.
 
-3. **[A]** vytvořte uživatelský účet (**BL1**ADM) a skupinu (sapsys), ve kterých se můžou spouštět procesy na pozadí softwaru. Pomocí tohoto účtu můžete spustit instalaci a spustit software. Účet nevyžaduje oprávnění root.
+3. **[A]** vytvořte uživatelský účet ( **BL1** ADM) a skupinu (sapsys), ve kterých se můžou spouštět procesy na pozadí softwaru. Pomocí tohoto účtu můžete spustit instalaci a spustit software. Účet nevyžaduje oprávnění root.
 
-4. **[A]** nastavte prostředí uživatelského účtu (**BL1**ADM) pro použití podporovaného národního prostředí UTF-8 a ujistěte se, že váš software konzoly podporuje znakové sady UTF-8. Aby se zajistilo, že váš operační systém používá správné národní prostředí, nastavte proměnné prostředí LC_ALL a LANG na své preferované národní prostředí ve vašem uživatelském prostředí (**BL1**ADM).
+4. **[A]** nastavte prostředí uživatelského účtu ( **BL1** ADM) pro použití podporovaného národního prostředí UTF-8 a ujistěte se, že váš software konzoly podporuje znakové sady UTF-8. Aby se zajistilo, že váš operační systém používá správné národní prostředí, nastavte proměnné prostředí LC_ALL a LANG na své preferované národní prostředí ve vašem uživatelském prostředí ( **BL1** ADM).
 
    ```bash
    # This configuration is for bash shell. If you are using any other shell for sidadm, kindly set environment variable accordingly.
@@ -413,7 +413,7 @@ Kroky v této části používají následující předpony:
    export LC_ALL=en_US.utf8
    ```
 
-5. **[A]** nakonfigurujte uživatelský účet (**BL1**ADM).
+5. **[A]** nakonfigurujte uživatelský účet ( **BL1** ADM).
 
    ```bash
    # Set ulimit for bl1adm to unlimited
@@ -445,7 +445,7 @@ Kroky v této části používají následující předpony:
 
 ## <a name="installation"></a>Instalace
 
-Ověřte národní prostředí pro **BL1**ADM uživatelského účtu na serveru.
+Ověřte národní prostředí pro **BL1** ADM uživatelského účtu na serveru.
 
 ```bash
 bl1adm@azusbosl1:~> locale
@@ -453,7 +453,7 @@ LANG=en_US.utf8
 LC_ALL=en_US.utf8
 ```
 
-Přejděte na médium pro SAP BusinessObjects BI Platform a spusťte příkaz pomocí příkazu **BL1**ADM User-.
+Přejděte na médium pro SAP BusinessObjects BI Platform a spusťte příkaz pomocí příkazu **BL1** ADM User-.
 
 ```bash
 ./setup.sh -InstallDir /usr/sap/BL1
@@ -465,7 +465,7 @@ Projděte si příručku pro instalaci [platformy SAP BOBI](https://help.sap.com
 
 - Na obrazovce **Vybrat typ instalace** vyberte možnost **Úplná** instalace na první server (azusbosl1), pro jiný server (Azusbosl2) vyberte možnost **vlastní/rozbalit** , čímž se rozbalí existující nastavení BOBI.
 
-- Na obrazovce **Vybrat výchozí nebo existující databázi** vyberte **Konfigurovat existující databázi**, která vás vyzve k výběru CMS a auditu databáze. Vyberte **MySQL** pro typ databáze CMS a audit typ databáze.
+- Na obrazovce **Vybrat výchozí nebo existující databázi** vyberte **Konfigurovat existující databázi** , která vás vyzve k výběru CMS a auditu databáze. Vyberte **MySQL** pro typ databáze CMS a audit typ databáze.
 
   Pokud během instalace nechcete konfigurovat auditování, můžete také vybrat možnost bez auditování databáze.
 
@@ -557,7 +557,7 @@ V rámci procesu zálohování se snímek povede a data se přenesou do trezoru 
 
 #### <a name="backup--restore-for-file-repository-server"></a>Zálohování & obnovení pro server úložiště souborů
 
-Pro **Azure NetApp Files**můžete vytvořit snímky na vyžádání a naplánovat automatické snímky pomocí zásad snímků. Kopie snímků poskytují kopii ANF svazku v čase. Další informace najdete v tématu [Správa snímků pomocí Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md).
+Pro **Azure NetApp Files** můžete vytvořit snímky na vyžádání a naplánovat automatické snímky pomocí zásad snímků. Kopie snímků poskytují kopii ANF svazku v čase. Další informace najdete v tématu [Správa snímků pomocí Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md).
 
 Zálohování **souborů Azure** je integrované s nativní [Azure Backupovou](../../../backup/backup-overview.md) službou, která centralizovat funkci zálohování a obnovení společně s zálohováním virtuálních počítačů a zjednodušuje práci s operacemi. Další informace najdete v tématu [Zálohování sdílených složek Azure](../../../backup/azure-file-share-backup-overview.md) a [Nejčastější dotazy – zálohování souborů Azure](../../../backup/backup-azure-files-faq.md).
 
@@ -584,7 +584,7 @@ Implementace tohoto řešení se liší v závislosti na povaze nastavení syst�
 
 Vysoká dostupnost odkazuje na sadu technologií, které mohou minimalizovat přerušení IT tím, že zajišťují kontinuitu podnikových a aplikačních funkcí prostřednictvím redundantních součástí chráněných při selhání, odolnosti proti chybám nebo převzetí služeb při selhání v jednom datovém centru. V našem případě jsou datová centra v jedné oblasti Azure. Architektura s [vysokou dostupností a scénáři pro SAP](sap-high-availability-architecture-scenarios.md) poskytuje základní přehled o různých technikách vysoké dostupnosti a doporučeních nabízených v Azure pro aplikace SAP, které vám pomůžou pokyny v této části.
 
-Na základě výsledků změny velikosti platformy SAP BOBI je potřeba navrhnout na šířku a určit distribuci komponent BI napříč Virtual Machines a podsítěmi Azure. Úroveň redundance v distribuované architektuře závisí na cíli požadované doby obnovení (RTO) a cíli bodu obnovení (RPO). Platforma SAP BOBI zahrnuje různé úrovně a komponenty na každé úrovni by měly být navržené tak, aby umožňovaly redundanci. Takže v případě, že dojde k výpadku jedné součásti, nedochází k žádnému přerušení vaší aplikace SAP BOBI. Příklad:
+Na základě výsledků změny velikosti platformy SAP BOBI je potřeba navrhnout na šířku a určit distribuci komponent BI napříč Virtual Machines a podsítěmi Azure. Úroveň redundance v distribuované architektuře závisí na cíli požadované doby obnovení (RTO) a cíli bodu obnovení (RPO). Platforma SAP BOBI zahrnuje různé úrovně a komponenty na každé úrovni by měly být navržené tak, aby umožňovaly redundanci. Takže v případě, že dojde k výpadku jedné součásti, nedochází k žádnému přerušení vaší aplikace SAP BOBI. Třeba
 
 - Redundantní aplikační servery, jako jsou aplikační servery BI a webový server
 - Jedinečné součásti, jako je databáze CMS, server úložiště souborů, Load Balancer

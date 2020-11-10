@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: d3c0ba55541baf3f31952b82a2fa357b48a5f1a9
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 9c5e57f2eb3c38a7df23052a4b3d33bc5a9675fc
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148350"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425928"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifikace pokročilých hrozeb pomocí analýzy chování uživatelů a entit (UEBA) v Azure Sentinel
 
@@ -30,7 +30,7 @@ ms.locfileid: "93148350"
 >    - Oblast Evropa – západ
 >    - Zeměpisná Austrálie
 >
-> - Ve všech ostatních geografických oblastech a oblastech jsou tyto funkce stále ve **verzi Public Preview** a jsou poskytovány bez smlouvy o úrovni služeb. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> - Ve všech ostatních geografických oblastech a oblastech jsou tyto funkce pro dobu ve **verzi Preview** stále. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [**podmínky použití pro Microsoft Azure**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Co je analýza chování uživatelů a entit (UEBA)?
 
@@ -56,13 +56,15 @@ Nechte inspirovat podle Gartner 's paradigma pro UEBA řešení poskytuje Azure 
 
 - **Analýza:** Pomocí různých algoritmů strojového učení (ML) Azure Sentinel identifikuje aktivity neobvyklé a prezentuje důkaz jasně a stručně ve formě kontextových rozšíření, které jsou uvedené níže.
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="Architektura analýzy chování entit" výsledek indikuje zjištěnou anomálii:
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="Analýza chování mimo přístup":::
+
+Azure Sentinel prezentuje artefakty, které pomůžou vašim analytikům zabezpečení jasně pochopit aktivity neobvyklé v kontextu a porovnat s profilem standardních hodnot uživatele. Akce prováděné uživatelem (nebo hostitelem nebo adresou) jsou vyhodnocovány v kontextu, kde "true" výsledek indikuje zjištěnou anomálii:
 - v různých geografických umístěních, zařízeních a prostředích.
 - v rámci časových a frekvenčních horizontů (ve srovnání s vlastní historií uživatele).
 - ve srovnání s chováním partnerských vztahů.
 - ve srovnání s chováním organizace.
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="Architektura analýzy chování entit":::
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="Kontext entity":::
 
 
 ### <a name="scoring"></a>Vyhodnocování
@@ -118,7 +120,7 @@ Stránky entit se skládají ze tří částí:
 
 ### <a name="the-timeline"></a>Časová osa
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="Architektura analýzy chování entit":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="Časová osa stránek entit":::
 
 Časová osa je hlavní součástí příspěvku na stránce entity k analýze chování v Azure Sentinel. Prezentuje v souvislosti s událostmi souvisejícími s entitami, které vám pomůžou pochopit aktivitu entity v určitém časovém rámci.
 
@@ -126,7 +128,7 @@ Můžete zvolit **časový rozsah** mezi několika možnostmi přednastavených 
 
 Časová osa obsahuje následující typy položek:
 
-- Výstrahy – všechny výstrahy, ve kterých je entita definovaná jako **mapovaná entita** . Všimněte si, že pokud vaše organizace vytvořila [vlastní výstrahy pomocí analytických pravidel](./tutorial-detect-threats-custom.md), měli byste se ujistit, že mapování entit pravidel se provádí správně.
+- Výstrahy – všechny výstrahy, ve kterých je entita definovaná jako **mapovaná entita**. Všimněte si, že pokud vaše organizace vytvořila [vlastní výstrahy pomocí analytických pravidel](./tutorial-detect-threats-custom.md), měli byste se ujistit, že mapování entit pravidel se provádí správně.
 
 - Záložky – jakékoli záložky, které obsahují konkrétní entitu zobrazenou na stránce.
 
@@ -146,14 +148,14 @@ Entity Insights jsou dotazy definované výzkumníky zabezpečení Microsoftu, k
 
 Stránky entit jsou navržené tak, aby byly součástí více scénářů použití, a je možné k nim získat přístup ze správy incidentů, grafu šetření, záložek nebo přímo na stránce vyhledávání entit v části **Analýza chování entit** v hlavní nabídce Azure Sentinel.
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Architektura analýzy chování entit":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Případy použití stránky entity":::
 
 
 ## <a name="data-schema"></a>Schéma dat
 
 ### <a name="behavior-analytics-table"></a>Tabulka analýzy chování
 
-| Pole                     | Description                                                         |
+| Pole                     | Popis                                                         |
 |---------------------------|---------------------------------------------------------------------|
 | TenantId                  | jedinečné ID pro tenanta                                      |
 | SourceRecordId            | jedinečné číslo ID události EBA                                   |
@@ -195,7 +197,7 @@ Metadata uživatelských partnerů poskytují důležitý kontext při detekci h
 
 Služba Azure Sentinel vypočítá a rozhodne partnerské vztahy uživatele na základě členství ve skupině zabezpečení Azure AD, seznamu adresátů, et zajistila a ukládá partnerské vztahy seřazené 1-20 v tabulce **UserPeerAnalytics** . Níže uvedený snímek obrazovky ukazuje schéma tabulky UserPeerAnalytics a zobrazuje prvních osm partnerských uzlů uživatele Kendall Collins. Azure Sentinel používá algoritmus *četnosti inverzního dokumentu* (TF-IDF) k normalizování vážení pro výpočet pořadí: čím menší je, tím vyšší je váha. 
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="Architektura analýzy chování entit":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="Snímek obrazovky tabulky metadat partnerských vztahů uživatelů":::
 
 K vizualizaci metadat partnerských vztahů uživatelů můžete použít [Poznámkový blok Jupyter](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) , který je k dispozici v úložišti GitHub Azure Sentinel. Podrobné pokyny k používání poznámkového bloku najdete v poznámkovém bloku [metadata zabezpečení uživatele s asistencí](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) .
 
@@ -203,9 +205,9 @@ K vizualizaci metadat partnerských vztahů uživatelů můžete použít [Pozn�
 
 Analýza oprávnění pomáhá určit potenciální dopad na narušení organizačního prostředku útočníkem. Tento dopad se označuje také jako "vysoké poloměr assetu". Analytici zabezpečení můžou tyto informace použít k určení priorit šetření a zpracování incidentů.
 
-Azure Sentinel Určuje práva k přímým a přenosnému přístupu držené daným uživatelem a prostředky Azure vyhodnocením předplatných Azure, ke kterým může uživatel přistupovat přímo nebo prostřednictvím skupin nebo instančních objektů. Tyto informace, stejně jako úplný seznam členství uživatele ve skupině zabezpečení Azure AD, se pak ukládají do tabulky **UserAccessAnalytics** . Níže uvedený snímek obrazovky ukazuje vzorový řádek v tabulce UserAccessAnalytics pro uživatele Alex Johnsonem. **Zdrojová entita** je uživatel nebo hlavní účet služby a **Cílová entita** je prostředek, ke kterému má zdrojová entita přístup. Hodnoty **úrovně přístupu** a **typu přístupu** závisí na modelu řízení přístupu cílové entity. Můžete vidět, že Alex má přispěvatele přístup k Tenantovi Azure s předplatným *Contoso* . Model řízení přístupu předplatného je RBAC.   
+Azure Sentinel Určuje práva k přímým a přenosnému přístupu držené daným uživatelem a prostředky Azure vyhodnocením předplatných Azure, ke kterým může uživatel přistupovat přímo nebo prostřednictvím skupin nebo instančních objektů. Tyto informace, stejně jako úplný seznam členství uživatele ve skupině zabezpečení Azure AD, se pak ukládají do tabulky **UserAccessAnalytics** . Níže uvedený snímek obrazovky ukazuje vzorový řádek v tabulce UserAccessAnalytics pro uživatele Alex Johnsonem. **Zdrojová entita** je uživatel nebo hlavní účet služby a **Cílová entita** je prostředek, ke kterému má zdrojová entita přístup. Hodnoty **úrovně přístupu** a **typu přístupu** závisí na modelu řízení přístupu cílové entity. Můžete vidět, že Alex má přispěvatele přístup k Tenantovi Azure s předplatným *Contoso*. Model řízení přístupu předplatného je RBAC.   
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Architektura analýzy chování entit":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Snímek obrazovky tabulky analýzy přístupu uživatele":::
 
 Pomocí [poznámkového bloku Jupyter](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) (výše zmíněného poznámkového bloku) z úložiště GitHub Azure Sentinel můžete vizualizovat data analýzy oprávnění. Podrobné pokyny k používání poznámkového bloku najdete v poznámkovém bloku [metadata zabezpečení uživatele s asistencí](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) .
 

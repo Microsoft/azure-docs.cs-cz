@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bca960100ee0c9d7e2a779dc86030fc59949dca5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e3503a9eef5c11db35684ca61fb1ee39525a465d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055966"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427594"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurace replikace objektů pro objekty blob bloku
 
@@ -52,7 +52,7 @@ Po nakonfigurování pro cílový účet Azure Portal automaticky vytvoří zás
 Chcete-li vytvořit zásadu replikace v Azure Portal, postupujte podle následujících kroků:
 
 1. V Azure Portal přejděte do zdrojového účtu úložiště.
-1. V části **BLOB Service**vyberte **replikace objektů**.
+1. V části **BLOB Service** vyberte **replikace objektů**.
 1. Vyberte **nastavit pravidla replikace**.
 1. Vyberte cílové předplatné a účet úložiště.
 1. V části **páry kontejnerů** vyberte zdrojový kontejner ze zdrojového účtu a cílový kontejner z cílového účtu. Na jednu zásadu replikace můžete vytvořit až 10 párů kontejnerů.
@@ -65,19 +65,19 @@ Chcete-li vytvořit zásadu replikace v Azure Portal, postupujte podle následuj
 
     Následující obrázek ukazuje filtry, které omezují, které objekty BLOB se zkopírují jako součást pravidla replikace.
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="Snímek obrazovky zobrazující pravidla replikace v Azure Portal":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="Snímek obrazovky znázorňující filtry pro pravidlo replikace":::
 
 1. Ve výchozím nastavení je obor kopírování nastaven na Kopírovat pouze nové objekty. Chcete-li zkopírovat všechny objekty v kontejneru nebo zkopírovat objekty počínaje vlastním datem a časem, vyberte odkaz **změnit** a nakonfigurujte obor kopírování pro dvojici kontejnerů.
 
     Následující obrázek ukazuje vlastní obor kopírování, který kopíruje objekty ze zadaného data a času.
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="Snímek obrazovky zobrazující pravidla replikace v Azure Portal":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="Snímek obrazovky zobrazující vlastní obor kopírování pro replikaci objektů":::
 
 1. Vyberte **Save and Apply (Uložit a použít** ) a vytvořte zásadu replikace a spusťte replikaci dat.
 
 Po nakonfigurování replikace objektů Azure Portal zobrazí zásadu a pravidla replikace, jak je znázorněno na následujícím obrázku.
 
-:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Snímek obrazovky zobrazující pravidla replikace v Azure Portal":::
+:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Snímek obrazovky znázorňující zásady replikace objektů v Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -284,16 +284,16 @@ Při konfiguraci replikace objektů na cílovém účtu se souborem JSON v Azure
 1. Vyberte **Odeslat pravidla replikace**.
 1. Nahrajte soubor JSON. Azure Portal zobrazí zásady a pravidla, která budou vytvořena, jak je znázorněno na následujícím obrázku.
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Snímek obrazovky zobrazující pravidla replikace v Azure Portal":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Snímek obrazovky ukazující, jak nahrát soubor JSON pro definování zásad replikace":::
 
 1. Vyberte **Odeslat** a vytvořte tak zásadu replikace v cílovém účtu.
 
 Pak můžete stáhnout soubor JSON obsahující definici zásady, kterou můžete zadat jinému uživateli ke konfiguraci zdrojového účtu. Pro stažení tohoto souboru JSON postupujte takto:
 
 1. Přejděte do nastavení **replikace objektů** pro cílový účet v Azure Portal.
-1. Vyberte tlačítko **Další** vedle zásady, kterou chcete stáhnout, a pak vyberte **Stáhnout pravidla**, jak je znázorněno na následujícím obrázku.
+1. Vyberte tlačítko **Další** vedle zásady, kterou chcete stáhnout, a pak vyberte **Stáhnout pravidla** , jak je znázorněno na následujícím obrázku.
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Snímek obrazovky zobrazující pravidla replikace v Azure Portal":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak stáhnout pravidla replikace do souboru JSON":::
 
 1. Uložte soubor JSON do místního počítače, abyste ho mohli sdílet s jiným uživatelem a nakonfigurovat zásady na zdrojovém účtu.
 
@@ -361,7 +361,7 @@ Chcete-li zjistit stav replikace pro objekt BLOB ve zdrojovém účtu v Azure Po
 1. Vyhledejte kontejner, který obsahuje zdrojový objekt BLOB.
 1. Vyberte objekt blob, pro který chcete zobrazit jeho vlastnosti. Pokud je objekt BLOB úspěšně replikovaný, zobrazí se v části **replikace objektů** , u kterého je stav nastavený na *dokončeno*. V seznamu jsou uvedeny i ID zásad replikace a ID pro replikaci objektů pro tento kontejner.
 
-:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Snímek obrazovky zobrazující pravidla replikace v Azure Portal":::
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Snímek obrazovky zobrazující stav replikace pro objekt BLOB ve zdrojovém účtu":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -392,6 +392,12 @@ az storage blob show \
 
 ---
 
+Pokud stav replikace objektu BLOB ve zdrojovém účtu indikuje chybu, prozkoumejte následující možné příčiny:
+
+- Ujistěte se, že jsou v cílovém účtu nakonfigurované zásady replikace objektů.
+- Ověřte, zda cílový kontejner stále existuje.
+- Pokud byl zdrojový objekt BLOB v rámci operace zápisu zašifrovaný pomocí klíče poskytnutého zákazníkem, replikace objektu se nezdaří. Další informace o klíčích poskytovaných zákazníkem najdete v tématu [poskytnutí šifrovacího klíče pro požadavek na úložiště objektů BLOB](encryption-customer-provided-keys.md).
+
 ## <a name="remove-a-replication-policy"></a>Odebrat zásadu replikace
 
 Pokud chcete odebrat zásadu replikace a její přidružená pravidla, použijte Azure Portal, PowerShell nebo rozhraní příkazového řádku.
@@ -401,7 +407,7 @@ Pokud chcete odebrat zásadu replikace a její přidružená pravidla, použijte
 Pokud chcete odebrat zásadu replikace v Azure Portal, postupujte takto:
 
 1. V Azure Portal přejděte do zdrojového účtu úložiště.
-1. V části **Nastavení**vyberte **replikace objektů**.
+1. V části **Nastavení** vyberte **replikace objektů**.
 1. Klikněte na tlačítko **Další** vedle názvu zásady.
 1. Vyberte **Odstranit pravidla**.
 

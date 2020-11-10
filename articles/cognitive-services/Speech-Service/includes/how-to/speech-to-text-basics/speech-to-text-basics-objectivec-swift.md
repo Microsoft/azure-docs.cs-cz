@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 9/22/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 8eb74d13c15be619512376da326a94876563f898
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: bc67c3433c939be39453c954ada1171dc210b692
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761617"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424871"
 ---
 Pomocí sady Speech SDK pro SWIFT a cíl-C můžete přepisovat řeč na text.
 
@@ -27,7 +27,4 @@ Následující ukázky předpokládají, že máte účet Azure a předplatné s
 * [Rozpoznávání řeči v SWIFT v systému iOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios/from-microphone)
 * [Další ukázky pro cíl-C v iOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios)
 
-Poskytujeme také online [sadu Speech SDK pro referenci objektiv-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
-
-
-
+Poskytujeme také online [sadu Speech SDK pro referenci objektiv-C](/objectivec/cognitive-services/speech/).

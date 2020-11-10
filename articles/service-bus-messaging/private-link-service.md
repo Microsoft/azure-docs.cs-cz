@@ -5,42 +5,35 @@ author: spelluru
 ms.author: spelluru
 ms.date: 10/07/2020
 ms.topic: article
-ms.openlocfilehash: 54649c47a896937a512a6041e485abfb03ca88dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66de9a4ff65c73264257cb6f7f215fc15820c95f
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91824955"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427143"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Povolení přístupu k Azure Service Bus obory názvů prostřednictvím privátních koncových bodů
-
 Služba privátního propojení Azure vám umožňuje přístup ke službám Azure (například Azure Service Bus, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím **privátního koncového bodu** ve vaší virtuální síti.
+
+> [!IMPORTANT]
+> Tato funkce je podporovaná s úrovní **premium** Azure Service Bus. Další informace o úrovni Premium najdete v článku [Service Bus úrovně pro zasílání zpráv na úrovni Premium a Standard](service-bus-premium-messaging.md) .
 
 Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, která poskytuje nejvyšší úroveň členitosti v řízení přístupu.
 
 Další informace najdete v tématu [co je privátní propojení Azure?](../private-link/private-link-overview.md)
 
 >[!WARNING]
-> Implementace privátních koncových bodů může ostatním službám Azure zabránit v interakci s Service Bus.
+> Implementace privátních koncových bodů může ostatním službám Azure zabránit v interakci s Service Bus. V případě výjimky můžete povolit přístup k Service Bus prostředkům z určitých důvěryhodných služeb i v případě, že jsou povolené soukromé koncové body. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services).
 >
-> Důvěryhodné služby společnosti Microsoft nejsou při používání virtuálních sítí podporovány.
->
-> Běžné scénáře Azure, které nefungují s virtuálními sítěmi (Všimněte si, že seznam **není vyčerpávající)** –
-> - Integrace s Azure Event Grid
-> - Trasy k Azure IoT Hub
-> - Device Explorer Azure IoT
->
-> Níže uvedené služby společnosti Microsoft musí být ve virtuální síti.
+> Následující služby společnosti Microsoft musí být ve virtuální síti.
 > - Azure App Service
 > - Azure Functions
 
-> [!IMPORTANT]
-> Tato funkce je podporovaná s úrovní **premium** Azure Service Bus. Další informace o úrovni Premium najdete v článku [Service Bus úrovně pro zasílání zpráv na úrovni Premium a Standard](service-bus-premium-messaging.md) .
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Přidání privátního koncového bodu pomocí Azure Portal
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete integrovat obor názvů Service Bus s privátním propojením Azure, budete potřebovat následující entity nebo oprávnění:
 
@@ -58,7 +51,7 @@ Pokud již máte existující obor názvů, můžete vytvořit privátní koncov
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. Na panelu hledání zadejte **Service Bus**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
-2. V nabídce vlevo vyberte v části **Nastavení**možnost **sítě** . 
+2. V nabídce vlevo vyberte v části **Nastavení** možnost **sítě** . 
 
     > [!NOTE]
     > Karta **síť** se zobrazí jenom pro obory názvů úrovně **Premium** .  
@@ -79,23 +72,23 @@ Pokud již máte existující obor názvů, můžete vytvořit privátní koncov
     2. Vyberte **skupinu prostředků** pro prostředek privátního koncového bodu.
     3. Zadejte **název** privátního koncového bodu. 
     5. Vyberte **oblast** pro soukromý koncový bod. Váš privátní koncový bod musí být ve stejné oblasti jako vaše virtuální síť, ale může být v jiné oblasti než prostředek privátního propojení, ke kterému se připojujete. 
-    6. V dolní části stránky vyberte tlačítko **Další: >prostředku ** .
+    6. V dolní části stránky vyberte tlačítko **Další: >prostředku** .
 
         ![Stránka pro vytvoření privátního koncového bodu – základy](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. Na stránce **prostředek** použijte následující postup:
-    1. V případě metody připojení vyberte **v adresáři připojit k prostředku Azure**, a to následujícím způsobem:   
+    1. V případě metody připojení vyberte **v adresáři připojit k prostředku Azure** , a to následujícím způsobem:   
         1. Vyberte **předplatné Azure** , ve kterém existuje **Service Bus obor názvů** . 
-        2. Jako **typ prostředku**vyberte **Microsoft. ServiceBus/obory názvů** pro **typ prostředku**.
-        3. V části **prostředek**vyberte obor názvů Service Bus v rozevíracím seznamu. 
+        2. Jako **typ prostředku** vyberte **Microsoft. ServiceBus/obory názvů** pro **typ prostředku**.
+        3. V části **prostředek** vyberte obor názvů Service Bus v rozevíracím seznamu. 
         4. Potvrďte, že je **cílový podprostředek** nastavený na **obor názvů**.
-        5. V dolní části stránky vyberte tlačítko **Další: >konfigurace ** . 
+        5. V dolní části stránky vyberte tlačítko **Další: >konfigurace** . 
         
             ![Vytvoření stránky privátního koncového bodu – prostředek](./media/private-link-service/create-private-endpoint-resource-page.png)
-    2. Pokud vyberete **připojit k prostředku Azure podle ID prostředku nebo aliasu**, postupujte podle těchto kroků:
+    2. Pokud vyberete **připojit k prostředku Azure podle ID prostředku nebo aliasu** , postupujte podle těchto kroků:
         1. Zadejte **ID prostředku** nebo **alias**. Může to být ID prostředku nebo alias, který s vámi někdo sdílí. Nejjednodušší způsob, jak získat ID prostředku, je přejít na obor názvů Service Bus v Azure Portal a zkopírovat část identifikátoru URI od `/subscriptions/` . Příklad najdete na následujícím obrázku. 
-        2. Pro **cílový dílčí prostředek**zadejte **obor názvů**. Je to typ dílčího prostředku, ke kterému má privátní koncový bod přístup. 
+        2. Pro **cílový dílčí prostředek** zadejte **obor názvů**. Je to typ dílčího prostředku, ke kterému má privátní koncový bod přístup. 
         3. volitelné Zadejte **zprávu požadavku**. Vlastník prostředku se zobrazí tato zpráva během správy připojení privátního koncového bodu. 
-        4. Potom v dolní části stránky vyberte tlačítko **Další: >konfigurace ** . 
+        4. Potom v dolní části stránky vyberte tlačítko **Další: >konfigurace** . 
 
             ![Vytvoření privátního koncového bodu – připojení pomocí ID prostředku](./media/private-link-service/connect-resource-id.png)
 9. Na stránce **Konfigurace** vyberte podsíť ve virtuální síti, do které chcete nasadit privátní koncový bod. 
@@ -105,12 +98,14 @@ Pokud již máte existující obor názvů, můžete vytvořit privátní koncov
 
         ![Vytvořit privátní koncový bod – konfigurační stránka](./media/private-link-service/create-private-endpoint-configuration-page.png)
 10. Na stránce **značky** vytvořte všechny značky (názvy a hodnoty), které chcete přidružit k prostředku privátního koncového bodu. Potom v dolní části stránky vyberte tlačítko **Revize + vytvořit** . 
-11. Na stránce **zkontrolovat + vytvořit**Zkontrolujte všechna nastavení a výběrem možnosti **vytvořit** vytvořte privátní koncový bod.
+11. Na stránce **zkontrolovat + vytvořit** Zkontrolujte všechna nastavení a výběrem možnosti **vytvořit** vytvořte privátní koncový bod.
     
     ![Vytvoření privátního koncového bodu – kontrola a vytvoření stránky](./media/private-link-service/create-private-endpoint-review-create-page.png)
-12. Potvrďte, že je vytvořen soukromý koncový bod. Pokud jste vlastníkem prostředku a zvolili jste pro **metodu připojení**možnost **připojit k prostředku Azure v adresáři** , je nutné připojení ke koncovému bodu **automaticky schválit**. Pokud je ve stavu **čekání na vyřízení** , přečtěte si část [Správa privátních koncových bodů pomocí Azure Portal](#manage-private-endpoints-using-azure-portal) .
+12. Potvrďte, že je vytvořen soukromý koncový bod. Pokud jste vlastníkem prostředku a zvolili jste pro **metodu připojení** možnost **připojit k prostředku Azure v adresáři** , je nutné připojení ke koncovému bodu **automaticky schválit**. Pokud je ve stavu **čekání na vyřízení** , přečtěte si část [Správa privátních koncových bodů pomocí Azure Portal](#manage-private-endpoints-using-azure-portal) .
 
     ![Privátní koncový bod byl vytvořen.](./media/private-link-service/private-endpoint-created.png)
+
+[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="add-a-private-endpoint-using-powershell"></a>Přidání privátního koncového bodu pomocí prostředí PowerShell
 Následující příklad ukazuje, jak použít Azure PowerShell k vytvoření připojení privátního koncového bodu k oboru názvů Service Bus.
@@ -189,7 +184,7 @@ Existují čtyři stavy zřizování:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Schválení, zamítnutí nebo odebrání připojení privátního koncového bodu
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 1. Na panelu hledání zadejte **Service Bus**.
 1. Vyberte **obor názvů** , který chcete spravovat.
 1. Vyberte kartu **síť** .
@@ -202,7 +197,7 @@ Existují čtyři stavy zřizování:
 3. Vyberte tlačítko **schválit** .
 
     ![Schválit soukromý koncový bod](./media/private-link-service/private-endpoint-approve.png)
-4. Na stránce **schválit připojení** zadejte volitelný **Komentář**a vyberte **Ano**. Pokud vyberete **ne**, nic se nestane. 
+4. Na stránce **schválit připojení** zadejte volitelný **Komentář** a vyberte **Ano**. Pokud vyberete **ne** , nic se nestane. 
 
     ![Stránka pro schválení připojení](./media/private-link-service/approve-connection-page.png)
 5. V seznamu by se měl zobrazit stav připojení se změnilo na **schváleno**. 
@@ -214,7 +209,7 @@ Existují čtyři stavy zřizování:
 1. Pokud existují nějaká připojení privátního koncového bodu, která chcete odmítnout, ať už se jedná o nevyřízenou žádost nebo existující připojení, které bylo schváleno dříve, vyberte připojení ke koncovému bodu a klikněte na tlačítko **odmítnout** .
 
     ![Tlačítko odmítnout](./media/private-link-service/private-endpoint-reject.png)
-2. Na stránce **odmítnout připojení** zadejte volitelný komentář a vyberte **Ano**. Pokud vyberete **ne**, nic se nestane. 
+2. Na stránce **odmítnout připojení** zadejte volitelný komentář a vyberte **Ano**. Pokud vyberete **ne** , nic se nestane. 
 
     ![Odmítat stránku připojení](./media/private-link-service/reject-connection-page.png)
 3. V seznamu by se měl zobrazit stav připojení byl **odmítnut**. 
@@ -227,7 +222,7 @@ Existují čtyři stavy zřizování:
 1. Pokud chcete odebrat připojení privátního koncového bodu, vyberte ho v seznamu a na panelu nástrojů vyberte **Odebrat** . 
 
     ![Tlačítko odebrat](./media/private-link-service/remove-endpoint.png)
-2. Na stránce **Odstranit připojení** vyberte **Ano** a potvrďte odstranění privátního koncového bodu. Pokud vyberete **ne**, nic se nestane. 
+2. Na stránce **Odstranit připojení** vyberte **Ano** a potvrďte odstranění privátního koncového bodu. Pokud vyberete **ne** , nic se nestane. 
 
     ![Stránka pro odstranění připojení](./media/private-link-service/delete-connection-page.png)
 3. Měl by se zobrazit stav změněno na **Odpojeno**. Pak se v seznamu zobrazí koncový bod. 
@@ -242,8 +237,8 @@ Na kartě **síť** :
 
 1. Zadejte **virtuální síť** a **podsíť**. Musíte vybrat Virtual Network, na které jste nasadili privátní koncový bod.
 2. Zadejte prostředek **veřejné IP adresy** .
-3. V případě **skupiny zabezpečení sítě síťové karty**vyberte **žádné**.
-4. V případě **Vyrovnávání zatížení**vyberte možnost **ne**.
+3. V případě **skupiny zabezpečení sítě síťové karty** vyberte **žádné**.
+4. V případě **Vyrovnávání zatížení** vyberte možnost **ne**.
 
 Připojte se k virtuálnímu počítači, otevřete příkazový řádek a spusťte následující příkaz:
 
@@ -262,11 +257,11 @@ Aliases:  <service-bus-namespace-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>Omezení a faktory návrhu
 
-**Ceny**: informace o cenách najdete v tématu [ceny za privátní propojení Azure](https://azure.microsoft.com/pricing/details/private-link/).
+**Ceny** : informace o cenách najdete v tématu [ceny za privátní propojení Azure](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Omezení**: Tato funkce je dostupná ve všech veřejných oblastech Azure.
+**Omezení** : Tato funkce je dostupná ve všech veřejných oblastech Azure.
 
-**Maximální počet privátních koncových bodů na obor názvů Service Bus**: 120.
+**Maximální počet privátních koncových bodů na obor názvů Service Bus** : 120.
 
 Další informace najdete v tématu [Služba privátního propojení Azure: omezení](../private-link/private-link-service-overview.md#limitations)
 

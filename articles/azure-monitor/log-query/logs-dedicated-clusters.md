@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 845336385fe7490d4c62df41af873c237ae34871
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 293a3fc10920a29cd41e4bdb946e5bb06762eb52
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996330"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427492"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
@@ -47,9 +47,9 @@ Log Analytics vyhrazené clustery používají cenový model rezervace kapacity,
 
 Existují dva režimy fakturace pro použití v clusteru. Tyto parametry mohou být zadány `billingType` parametrem při konfiguraci clusteru. 
 
-1. **Cluster**: v tomto případě (což je výchozí nastavení) se fakturace pro ingestovaná data provádí na úrovni clusteru. Množství zpracovaných dat z každého pracovního prostoru přidruženého ke clusteru se agreguje za účelem výpočtu denního vyúčtování clusteru. 
+1. **Cluster** : v tomto případě (což je výchozí nastavení) se fakturace pro ingestovaná data provádí na úrovni clusteru. Množství zpracovaných dat z každého pracovního prostoru přidruženého ke clusteru se agreguje za účelem výpočtu denního vyúčtování clusteru. 
 
-2. **Pracovní prostory**: náklady na rezervaci kapacity pro váš cluster se úměrně připočítají k pracovním prostorům v clusteru (po zaúčtování pro přidělení podle uzlu z [Azure Security Center](../../security-center/index.yml) pro každý pracovní prostor.)
+2. **Pracovní prostory** : náklady na rezervaci kapacity pro váš cluster se úměrně připočítají k pracovním prostorům v clusteru (po zaúčtování pro přidělení podle uzlu z [Azure Security Center](../../security-center/index.yml) pro každý pracovní prostor.)
 
 Pamatujte na to, že pokud váš pracovní prostor používá starší verzi na cenové úrovni uzlů, bude při propojení s clusterem účtován na základě dat přijatých v rámci rezervace kapacity clusteru a již na jeden uzel. Pro přidělení dat jednotlivých uzlů z Azure Security Center bude nadále použito.
 
@@ -62,12 +62,12 @@ Nejprve vytvoříte prostředky clusteru, abyste mohli začít vytvářet vyhraz
 
 Musí být zadány následující vlastnosti:
 
-- **Název_clusteru**: používá se pro účely správy. Uživatelé nejsou k tomuto názvu vystaveni.
-- **ResourceGroupName**: stejně jako u jakéhokoli prostředku Azure patří clustery do skupiny prostředků. Doporučujeme použít skupinu prostředků centrálního IT, protože clustery jsou obvykle sdíleny mnoha týmy v organizaci. Další informace o návrhu najdete v [návrhu nasazení Azure Monitorch protokolů](../platform/design-logs-deployment.md)
-- **Umístění**: cluster se nachází v konkrétní oblasti Azure. K tomuto clusteru lze propojit pouze pracovní prostory nacházející se v této oblasti.
-- **SkuCapacity**: při vytváření prostředku *clusteru* je nutné zadat úroveň *rezervace kapacity* (SKU). Úroveň *rezervace kapacity* může být v rozsahu 1 000 až 3 000 GB za den. V případě potřeby ji můžete aktualizovat v krocích 100 později. Pokud potřebujete úroveň rezervace kapacity vyšší než 3 000 GB za den, kontaktujte nás na adrese LAIngestionRate@microsoft.com . Další informace o nákladech clusteru najdete v tématu [Správa nákladů pro Log Analytics clustery](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) .
+- **Název_clusteru** : používá se pro účely správy. Uživatelé nejsou k tomuto názvu vystaveni.
+- **ResourceGroupName** : stejně jako u jakéhokoli prostředku Azure patří clustery do skupiny prostředků. Doporučujeme použít skupinu prostředků centrálního IT, protože clustery jsou obvykle sdíleny mnoha týmy v organizaci. Další informace o návrhu najdete v [návrhu nasazení Azure Monitorch protokolů](../platform/design-logs-deployment.md)
+- **Umístění** : cluster se nachází v konkrétní oblasti Azure. K tomuto clusteru lze propojit pouze pracovní prostory nacházející se v této oblasti.
+- **SkuCapacity** : při vytváření prostředku *clusteru* je nutné zadat úroveň *rezervace kapacity* (SKU). Úroveň *rezervace kapacity* může být v rozsahu 1 000 až 3 000 GB za den. V případě potřeby ji můžete aktualizovat v krocích 100 později. Pokud potřebujete úroveň rezervace kapacity vyšší než 3 000 GB za den, kontaktujte nás na adrese LAIngestionRate@microsoft.com . Další informace o nákladech clusteru najdete v tématu [Správa nákladů pro Log Analytics clustery](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) .
 
-Po vytvoření prostředku *clusteru* můžete upravit další vlastnosti, jako je *SKU*, * keyVaultProperties nebo *billingType*. Další podrobnosti najdete níže.
+Po vytvoření prostředku *clusteru* můžete upravit další vlastnosti, jako je *SKU* , * keyVaultProperties nebo *billingType*. Další podrobnosti najdete níže.
 
 > [!WARNING]
 > Vytvoření clusteru aktivuje přidělení a zřizování prostředků. Dokončení této operace může trvat až hodinu. Doporučuje se spouštět asynchronně.
@@ -162,7 +162,7 @@ Zřizování clusteru Log Analytics trvá delší dobu. Stav zřizování může
 
 Po vytvoření prostředku *clusteru* a jeho úplné zřízení můžete na úrovni clusteru upravit další vlastnosti pomocí PowerShellu nebo REST API. Kromě vlastností, které jsou k dispozici během vytváření clusteru, lze další vlastnosti nastavit pouze po zřízení clusteru:
 
-- **keyVaultProperties**: slouží ke konfiguraci Azure Key Vault používaného ke zřízení [Azure monitor klíče spravovaného zákazníkem](../platform/customer-managed-keys.md#cmk-provisioning-procedure). Obsahuje následující parametry: *KeyVaultUri*, KeyName, *verze* *klíče*. 
+- **keyVaultProperties** : slouží ke konfiguraci Azure Key Vault používaného ke zřízení [Azure monitor klíče spravovaného zákazníkem](../platform/customer-managed-keys.md#customer-managed-key-provisioning-procedure). Obsahuje následující parametry: *KeyVaultUri* , KeyName, *verze* *klíče*. 
 - **billingType** – vlastnost *billingType* Určuje přidělení fakturace pro prostředek *clusteru* a jeho data:
   - **Cluster** (výchozí) – náklady na rezervaci kapacity pro váš cluster se připočítají ke zdroji *clusteru* .
   - **Pracovní prostory** – náklady na rezervaci kapacity pro váš cluster jsou úměrně přičteny k pracovním prostorům v clusteru s prostředkem *clusteru* , který se fakturuje jako část využití, pokud je celkový počet zpracovaných dat v daném dni v rámci rezervace kapacity. Další informace o cenovém modelu clusteru najdete v tématu [Log Analytics vyhrazené clustery](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) . 
@@ -180,7 +180,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 **REST**
 
 > [!NOTE]
-> Pomocí opravy můžete aktualizovat *SKU*prostředků *clusteru* , *keyVaultProperties* nebo *billingType* .
+> Pomocí opravy můžete aktualizovat *SKU* prostředků *clusteru* , *keyVaultProperties* nebo *billingType* .
 
 Příklad: 
 

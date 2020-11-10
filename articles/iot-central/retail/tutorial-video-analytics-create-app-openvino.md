@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: e16342b4b46a189a5a5c4c0554fb2d870c9cdcac
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: af967c58cdeb2c750178141193a711a66af7477c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877172"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426719"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>Kurz: Vytvoření aplikace pro video Analytics – objekt a detekce pohybu v Azure IoT Central (OpenVINO &trade; )
 
@@ -109,7 +109,7 @@ V tomto kurzu nakonfigurujeme vaše řešení tak, aby používalo &trade; modul
 
 ### <a name="replace-the-manifest"></a>Nahradit manifest
 
-Na stránce **brány lva Edge** vyberte **+ nahradit manifest**.
+Na stránce **lva Edge Gateway v2** vyberte **+ nahradit manifest**.
 
 :::image type="content" source="./media/tutorial-video-analytics-create-app-openvino/replace-manifest.png" alt-text="Nahradit manifest":::
 

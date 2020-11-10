@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: aa4ddfc773e2226fe155b563c237f1c533d52311
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 23173432db9364f25901e6e9b285d390c6a63a34
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127024"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426541"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (virtuální počítač se systémem Linux)
 
@@ -55,7 +55,7 @@ K dokončení formuláře **vlastního nasazení** použijte informace v násled
 | Uživatelské jméno správce | *AzureUser* |
 | Heslo správce | Zadejte heslo. Poznamenejte si heslo v souboru *scratchpad.txt* , budete ho používat později. |
 | ID oboru | **ID oboru** , které jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu, když jste přidali zařízení brány. |
-| ID zařízení | *lva-Gateway – 001* – zařízení brány, které jste vytvořili v předchozím kurzu. |
+| ID zařízení | *Brána – 001* – zařízení brány, které jste vytvořili v předchozím kurzu. |
 | Klíč zařízení | Primární klíč zařízení, který jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu, když jste přidali zařízení brány. |
 | Hostitel aplikace IoT Central | **Adresa URL aplikace** , kterou jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu. Například *Traders.azureiotcentral.com*. |
 | Token API aplikace IoT Central | Token rozhraní API pro operátora, na který jste si poznamenali v předchozím kurzu. |

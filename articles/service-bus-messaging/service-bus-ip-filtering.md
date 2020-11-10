@@ -3,12 +3,12 @@ title: Konfigurace pravidel brány firewall protokolu IP pro Azure Service Bus
 description: Jak používat pravidla brány firewall k povolení Azure Service Bus Připojení z konkrétních IP adres.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 561ee90fb6d1e25123d15a09bbf143aef59bcf6f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 3aacf54dca07f0e1f2a66c8cdd85f892dda68cd4
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058059"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426563"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Povolení přístupu k oboru názvů Azure Service Bus z konkrétních IP adres nebo rozsahů
 Ve výchozím nastavení jsou Service Bus obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na další jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v zápisu [CIDR (bez třídy) (směrování Inter-Domain)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -22,25 +22,17 @@ Tato funkce je užitečná ve scénářích, ve kterých Azure Service Bus by m�
 Pravidla brány firewall protokolu IP se používají na úrovni oboru názvů Service Bus. Proto se pravidla vztahují na všechna připojení z klientů pomocí libovolného podporovaného protokolu. Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pravidlu IP v oboru názvů Service Bus, se odmítnou jako neoprávněné. Odpověď nezmiňuje pravidlo protokolu IP. Pravidla filtru IP se aplikují v pořadí a první pravidlo, které odpovídá IP adrese, určuje akci přijmout nebo odmítnout.
 
 >[!WARNING]
-> Implementace pravidel brány firewall může zabránit ostatním službám Azure v interakci s Service Bus.
->
-> Důvěryhodné služby společnosti Microsoft nejsou podporovány, pokud je implementováno filtrování IP adres (pravidla brány firewall) a bude k dispozici brzy.
->
-> Běžné scénáře Azure, které nefungují s filtrováním IP adres (Všimněte si, že seznam **není vyčerpávající)** –
-> - Integrace s Azure Event Grid
-> - Trasy k Azure IoT Hub
-> - Device Explorer Azure IoT
+> Implementace pravidel brány firewall může zabránit ostatním službám Azure v interakci s Service Bus. V případě výjimky můžete povolit přístup k Service Bus prostředkům z určitých důvěryhodných služeb i v případě, že je povolené filtrování IP adres. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services). 
 >
 > Následující služby společnosti Microsoft musí být ve virtuální síti.
 > - Azure App Service
 > - Azure Functions
-> - Azure Monitor (nastavení diagnostiky)
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány firewall protokolu IP pro Service Bus obor názvů. 
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do **oboru názvů Service Bus** .
-2. V nabídce vlevo vyberte v části **Nastavení**možnost **sítě** .  
+2. V nabídce vlevo vyberte v části **Nastavení** možnost **sítě** .  
 
     > [!NOTE]
     > Karta **síť** se zobrazí jenom pro obory názvů úrovně **Premium** .  
@@ -54,7 +46,7 @@ V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány 
     ![Snímek obrazovky stránky Azure Portal sítě Možnost povolení přístupu ze všech sítí je vybrána na kartě brány firewall a virtuální sítě.](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
 1. Pokud chcete povolený přístup jenom ze zadané IP adresy, vyberte možnost **vybrané sítě** , pokud už není vybraná. V části **Brána firewall** postupujte podle následujících kroků:
     1. Vyberte možnost **Přidat IP adresu klienta** a poskytněte vaší aktuální IP adrese přístup k oboru názvů. 
-    2. Pro **Rozsah adres**zadejte konkrétní IPv4 adresu nebo rozsah adres IPv4 v zápisu CIDR. 
+    2. Pro **Rozsah adres** zadejte konkrétní IPv4 adresu nebo rozsah adres IPv4 v zápisu CIDR. 
     3. Určete, zda chcete, aby **důvěryhodné služby společnosti Microsoft vynechal tuto bránu firewall**. 
 
         > [!WARNING]
@@ -65,6 +57,8 @@ V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány 
 
     > [!NOTE]
     > Pokud chcete omezit přístup k určitým virtuálním sítím, přečtěte si téma [Povolení přístupu z konkrétních sítí](service-bus-service-endpoints.md).
+
+[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Použití šablony Resource Manageru
 Tato část obsahuje ukázkovou Azure Resource Manager šablonu, která vytvoří virtuální síť a pravidlo brány firewall.
@@ -78,7 +72,7 @@ Parametry šablony:
 
 > [!NOTE]
 > I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.
-> Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit ***"defaultAction"*** .
+> Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit **_"defaultAction"_ .**
 > 
 > Výsledkem
 > ```json

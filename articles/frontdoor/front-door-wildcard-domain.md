@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 5194e088ce2bd35208a92c5295457e6c34cd2cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18504f1ed4200889b20c9608c9c0ad2c13c9aaa5
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570320"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425758"
 ---
 # <a name="wildcard-domains"></a>Domény se zástupnými znaky
 
@@ -27,7 +27,7 @@ Mezi klíčové scénáře, které jsou vylepšené podporou zástupných domén
 - Pokud aplikace přidá novou subdoménu, nebudete už muset měnit provozní konfiguraci front-dveří Azure. Dříve jste museli přidat subdoménu, vytvořit k ní certifikát, připojit zásadu firewallu webových aplikací (WAF) a pak přidat doménu do různých pravidel směrování.
 
 > [!NOTE]
-> Domény se zástupnými znaky se v současné době podporují jenom přes rozhraní API, PowerShell a Azure CLI. Podpora pro přidávání a správu domén se zástupnými znaky není v Azure Portal k dispozici.
+> V současné době se k přidávání domén se zástupnými znaky prostřednictvím Azure DNS podporuje jenom přes rozhraní API, PowerShell a rozhraní příkazového řádku Azure CLI. Podpora pro přidávání a správu domén se zástupnými znaky není v Azure Portal k dispozici.
 
 ## <a name="adding-wildcard-domains"></a>Přidání domén se zástupnými znaky
 

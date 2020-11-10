@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: bc3da6f0d82adab2d21d4dbd91dee8654145b896
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ecb4203c822f5b72068e11d0ad4b988d294aab0d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951481"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427050"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Nastavení klíče spravovaného zákazníkem Sentinel Azure
 
@@ -28,7 +28,7 @@ Tento článek popisuje základní informace a kroky ke konfiguraci klíče spra
 > [!NOTE]
 > - Funkce Azure Sentinel CMK je k dispozici pouze **novým zákazníkům**.
 >
-> - Přístup k této funkci závisí na registraci funkcí Azure.Můžete požádat o přístup kontaktováním azuresentinelCMK@microsoft.com . Nedokončené žádosti budou schváleny na základě dostupné kapacity.
+> - Přístup k této funkci závisí na registraci funkcí Azure. Můžete požádat o přístup kontaktováním azuresentinelCMK@microsoft.com . Nedokončené žádosti budou schváleny na základě dostupné kapacity.
 >
 > - Funkce CMK je dostupná jenom pro zákazníky, kteří odesílají 1 TB za den. Při použití Microsoftu k zřízení CMK ve vašem předplatném Azure budete dostávat informace o dalších cenách. Přečtěte si další informace o [cenách Log Analytics](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
 
@@ -36,14 +36,14 @@ Tento článek popisuje základní informace a kroky ke konfiguraci klíče spra
 
 Řešení Sentinel Azure využívá několik prostředků úložiště pro shromažďování a funkce protokolů, včetně Log Analytics a dalších. V rámci konfigurace Azure Sentinel CMK budete muset taky nakonfigurovat nastavení CMK na souvisejících prostředcích úložiště. Data uložená v jiných úložných zdrojích než Log Analytics budou také šifrována.
 
-Přečtěte si další informace o [CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-cmk-overview).
+Přečtěte si další informace o [CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview).
 
 > [!NOTE]
 > Pokud povolíte CMK v Azure Sentinel, nebude povolena žádná funkce Public Preview, která nepodporuje CMK.
 
 ## <a name="enable-cmk"></a>Povolit CMK 
 
-Při zřizování CMK postupujte takto: 
+Při zřizování CMK postupujte takto: 
 
 1.  Vytvoří Azure Key Vault a uloží klíč.
 
@@ -114,7 +114,7 @@ Jediná operace, kterou je možné provést po odvolání nebo odstranění šif
 
 Pokud se po odvolání obnoví přístup, Azure Sentinel obnoví přístup k datům během hodiny.
 
-Další informace o tom, jak tento postup funguje v Azure Monitor, najdete v článku [Azure monitor odvolání CMK](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-revocation).
+Další informace o tom, jak tento postup funguje v Azure Monitor, najdete v článku [Azure monitor odvolání CMK](../azure-monitor/platform/customer-managed-keys.md#key-revocation).
 
 ## <a name="key-encryption-key-rotation"></a>Střídání šifrovacího klíče
 
@@ -127,7 +127,7 @@ V Key Vault můžete provádět rotaci klíčů vytvořením nové verze klíče
 
 Předchozí verzi klíče můžete zakázat za 24 hodin nebo po Azure Key Vault protokoly auditu nebudou zobrazovat žádné aktivity, které používají předchozí verzi.
 
-Pokud použijete stejný klíč ve službě Azure Sentinel a v Log Analytics, je nutné provést střídání klíčů. v Log Analytics musíte explicitně aktualizovat prostředek clusteru pomocí nové Azure Key Vault verze klíče. Další informace najdete v tématu [Azure monitor rotace CMK](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-rotation).
+Pokud použijete stejný klíč ve službě Azure Sentinel a v Log Analytics, je nutné provést střídání klíčů. v Log Analytics musíte explicitně aktualizovat prostředek clusteru pomocí nové Azure Key Vault verze klíče. Další informace najdete v tématu [Azure monitor rotace CMK](../azure-monitor/platform/customer-managed-keys.md#key-rotation).
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak nastavit klíč spravovaný zákazníkem v rámci Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:

@@ -8,37 +8,21 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 60a62733a17d1a3dcc4ba80ed7ceb1c37c8ac5d6
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 5a13993b06d1a7da8ffdb027deb6ade328d48955
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877174"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426726"
 ---
-## <a name="create-the-azure-iot-edge-gateway-device"></a>Vytvoření zařízení Azure IoT Edge brány
+## <a name="version-the-device-template"></a>Verze šablony zařízení
 
-Aplikace video Analytics – objekt a detekce pohybu obsahují šablonu zařízení **lva Edge** a zařízení **detekce pohybů lva Edge** . V této části vytvoříte šablonu zařízení brány pomocí manifestu nasazení a přidáte zařízení brány do vaší aplikace IoT Central.
+Aplikace video Analytics – objekt a detekce pohybu zahrnuje šablonu zařízení **lva Edge Gateway** . Chcete-li použít aktualizovaný soubor manifestu nasazení s touto šablonou zařízení, je nutné vytvořit a publikovat novou verzi šablony.
 
-### <a name="create-a-device-template-for-the-lva-edge-gateway"></a>Vytvoření šablony zařízení pro bránu LVA Edge
+Vytvoření nové verze šablony:
 
-Import manifestu nasazení a vytvoření šablony zařízení **lva Edge Gateway** :
+1. V IoT Central aplikaci přejděte na **šablony zařízení** a vyberte šablonu zařízení **lva Edge Gateway** .
 
-1. V aplikaci IoT Central přejděte na **šablony zařízení**a vyberte **+ Nový**.
+1. Vyberte možnost **verze** pro vytvoření nové šablony s názvem **lva Edge Gateway v2** a pak vyberte **vytvořit**.
 
-1. Na stránce **Vybrat typ šablony** vyberte dlaždici **Azure IoT Edge** . Pak vyberte **Další: přizpůsobit**.
-
-1. Na stránce **nahrát manifest nasazení Azure IoT Edge** jako název šablony zadejte *lva Edge Gateway* a v **zařízení brány se zařízením pro příjem dat**.
-
-    Zatím nevybírejte manifest nasazení. Pokud tak učiníte, Průvodce nasazením očekává rozhraní pro každý modul, ale je nutné vystavit rozhraní pro **LvaEdgeGatewayModule**. Manifest nahrajete v pozdějším kroku.
-
-    :::image type="content" source="./media/iot-central-video-analytics-part3/upload-deployment-manifest.png" alt-text="Nenahrávat manifest nasazení":::
-
-    Vyberte **Další: Kontrola**.
-
-1. Na stránce **Kontrola** vyberte **vytvořit**.
-
-### <a name="import-the-device-capability-model"></a>Import modelu schopností zařízení
-
-Šablona zařízení musí zahrnovat model schopností zařízení. Na stránce **Brána lva Edge** vyberte dlaždici **importovat model schopností** . Přejděte do složky *lva-Configuration* , kterou jste předtím vytvořili, a vyberte *LvaEdgeGatewayDcm.jsv* souboru.
-
-Šablona zařízení **brány lva Edge** teď obsahuje **modul brány lva Edge** spolu se třemi rozhraními: **informace o zařízení**, **nastavení brány lva Edge**a **rozhraní lva Edge Gateway**.
+Nová šablona zařízení **lva Edge Gateway v2** je teď ve vašem seznamu šablon zařízení.

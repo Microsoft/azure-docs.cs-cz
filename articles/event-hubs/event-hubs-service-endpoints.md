@@ -3,12 +3,12 @@ title: Koncové body služby Virtual Network – Azure Event Hubs | Microsoft Do
 description: Tento článek poskytuje informace o tom, jak přidat koncový bod služby Microsoft. EventHub do virtuální sítě.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: cb0d9a9c4d5e2503e68620ec4e6386d8e05d471c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 029338e3835d03b1a66ff6629e872c84113b0ff2
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88185059"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427190"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Povolení přístupu k oborům názvů Azure Event Hubs z konkrétních virtuálních sítí 
 
@@ -18,20 +18,11 @@ Po navázání vazby na alespoň jeden koncový bod služby virtuální sítě m
 
 Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť a odpovídajícím oborem názvů Event Hubs, a to i přes pozorovatelnou síťovou adresu koncového bodu služby zasílání zpráv ve veřejném rozsahu IP adres. K tomuto chování existuje výjimka. Povolení koncového bodu služby ve výchozím nastavení povolí `denyall` pravidlo v [bráně firewall protokolu IP](event-hubs-ip-filtering.md) přidružené k virtuální síti. Můžete přidat konkrétní IP adresy v bráně firewall protokolu IP a povolit tak přístup ke veřejnému koncovému bodu centra událostí. 
 
->[!IMPORTANT]
+>[!WARNING]
+> Povolením virtuálních sítí pro váš obor názvů Event Hubs zablokují příchozí požadavky ve výchozím nastavení, pokud požadavky pocházejí ze služby, která se nepoužívá v povolených virtuálních sítích. Blokované požadavky zahrnují ty z jiných služeb Azure, od Azure Portal, ze služeb protokolování a metriky atd. V případě výjimky můžete povolit přístup k Event Hubs prostředkům z určitých důvěryhodných služeb i v případě, že jsou povolené virtuální sítě. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services).
+
+> [!NOTE]
 > Virtuální sítě jsou podporovány ve **standardních** a **vyhrazených** úrovních Event Hubs. Na úrovni **Basic** se nepodporuje.
->
-> Zapnutím pravidel brány firewall pro obor názvů Event Hubs blokuje příchozí požadavky ve výchozím nastavení, pokud požadavky pocházejí ze služby, která není povolená pro virtuální sítě. Blokované požadavky zahrnují ty z jiných služeb Azure, od Azure Portal, ze služeb protokolování a metriky atd. 
->
-> Tady jsou některé ze služeb, které nemůžou přistupovat k Event Hubs prostředkům, když jsou povolené virtuální sítě. Všimněte si, že seznam **není vyčerpávající.**
->
-> - Azure Stream Analytics
-> - Trasy k Azure IoT Hub
-> - Device Explorer Azure IoT
-> - Azure Event Grid
-> - Azure Monitor (nastavení diagnostiky)
->
-> V případě výjimky můžete povolit přístup k Event Hubs prostředkům z určitých důvěryhodných služeb i v případě, že jsou povolené virtuální sítě. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services).
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Pokročilé scénáře zabezpečení povolené integrací virtuální sítě 
 
@@ -64,14 +55,14 @@ V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služ
 
     ![Firewall – vybraná možnost všechny sítě](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. Pokud chcete omezit přístup k určitým sítím, vyberte možnost **vybrané sítě** v horní části stránky, pokud už není vybraná.
-2. V části **Virtual Network** stránky vyberte možnost * * + Přidat existující virtuální síť * * *. Pokud chcete vytvořit novou virtuální síť, vyberte **+ vytvořit novou virtuální síť** . 
+2. V části **Virtual Network** stránky vyberte **+ Přidat existující virtuální síť** _. Vyberte _ *+ vytvořit novou virtuální síť* *, pokud chcete vytvořit novou virtuální síť. 
 
     ![Přidat existující virtuální síť](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
 3. V seznamu virtuálních sítí vyberte virtuální síť a pak vyberte **podsíť**. Před přidáním virtuální sítě do seznamu musíte povolit koncový bod služby. Pokud koncový bod služby není povolený, portál vás vyzve, abyste ho povolili.
    
    ![vybrat podsíť](./media/event-hubs-tutorial-vnet-and-firewalls/select-subnet.png)
 
-4. Po povolení koncového bodu služby pro podsíť pro **Microsoft. EventHub**by se měla zobrazit následující úspěšná zpráva. V dolní části stránky vyberte **Přidat** a přidejte síť. 
+4. Po povolení koncového bodu služby pro podsíť pro **Microsoft. EventHub** by se měla zobrazit následující úspěšná zpráva. V dolní části stránky vyberte **Přidat** a přidejte síť. 
 
     ![Vyberte podsíť a povolte koncový bod.](./media/event-hubs-tutorial-vnet-and-firewalls/subnet-service-endpoint-enabled.png)
 
@@ -99,7 +90,7 @@ Parametry šablony:
 
 > [!NOTE]
 > I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.
-> Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit ***"defaultAction"*** .
+> Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit **_"defaultAction"_ .**
 > 
 > Výsledkem
 > ```json
