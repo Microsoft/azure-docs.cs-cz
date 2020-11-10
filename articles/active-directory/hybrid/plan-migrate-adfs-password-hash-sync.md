@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e85d2ef9d75bbff6357466e76ffcf60e3716e78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a22c904d72f09656480be6009e3832fde72b89
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273670"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408630"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
@@ -84,13 +84,13 @@ Ověření nastavení přihlášení aktuálního uživatele:
 #### <a name="verify-the-azure-ad-connect-configuration"></a>Ověření konfigurace Azure AD Connect
 
 1. Na serveru Azure AD Connect otevřete Azure AD Connect. Vyberte **Konfigurovat**.
-2. Na stránce **další úlohy** vyberte **Zobrazit aktuální konfigurace**a pak vyberte **Další**.<br />
+2. Na stránce **další úlohy** vyberte **Zobrazit aktuální konfigurace** a pak vyberte **Další**.<br />
 
    ![Snímek obrazovky s možností zobrazit aktuální konfiguraci vybranou na stránce další úlohy](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image2.png)<br />
 3. Na stránce **Kontrola řešení** si poznamenejte stav **synchronizace hodnoty hash hesla** .<br /> 
 
-   * Pokud je **synchronizace hodnot hash hesel** nastavená na **disabled**, proveďte kroky v tomto článku, abyste je povolili.
-   * Pokud je **synchronizace hodnot hash hesel** nastavená na **povoleno**, můžete přeskočit část **Krok 1: povolení synchronizace hodnot hash hesel** v tomto článku.
+   * Pokud je **synchronizace hodnot hash hesel** nastavená na **disabled** , proveďte kroky v tomto článku, abyste je povolili.
+   * Pokud je **synchronizace hodnot hash hesel** nastavená na **povoleno** , můžete přeskočit část **Krok 1: povolení synchronizace hodnot hash hesel** v tomto článku.
 4. Na stránce **Kontrola řešení** přejděte na **Active Directory Federation Services (AD FS) (AD FS)**.<br />
 
    * Pokud se v této části objeví konfigurace AD FS, můžete bezpečně předpokládat, že AD FS byla původně nakonfigurovaná pomocí Azure AD Connect. Domény můžete převést z federované identity na spravovanou identitu pomocí možnosti Azure AD Connect **změnit přihlašování uživatele** . Tento proces je podrobně popsán v části **možnost A: přepnutí z federace na synchronizaci hodnot hash hesel pomocí Azure AD Connect**.
@@ -110,7 +110,7 @@ Příklad:
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 ```
 
-Ověřte všechna nastavení, která mohla být přizpůsobená pro návrh federace a dokumentaci k nasazení. Konkrétně hledejte vlastní nastavení v **PreferredAuthenticationProtocol**, **SupportsMfa**a **PromptLoginBehavior**.
+Ověřte všechna nastavení, která mohla být přizpůsobená pro návrh federace a dokumentaci k nasazení. Konkrétně hledejte vlastní nastavení v **PreferredAuthenticationProtocol** , **SupportsMfa** a **PromptLoginBehavior**.
 
 Další informace najdete v těchto článcích:
 
@@ -118,7 +118,7 @@ Další informace najdete v těchto článcích:
 * [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
-> Pokud je **SupportsMfa** nastavené na **hodnotu true**, použijete místní řešení Multi-Factor Authentication k vložení výzvy ke čtení druhého faktoru do toku ověřování uživatele. Po převedení této domény z federovaného na spravované ověřování už nebude tato instalace fungovat pro scénáře ověřování Azure AD. Po zakázání federace narušíte vztah k vaší místní federaci a k tomu patří místní adaptéry MFA. 
+> Pokud je **SupportsMfa** nastavené na **hodnotu true** , použijete místní řešení Multi-Factor Authentication k vložení výzvy ke čtení druhého faktoru do toku ověřování uživatele. Po převedení této domény z federovaného na spravované ověřování už nebude tato instalace fungovat pro scénáře ověřování Azure AD. Po zakázání federace narušíte vztah k vaší místní federaci a k tomu patří místní adaptéry MFA. 
 >
 > Místo toho použijte službu Azure Multi-Factor Authentication Cloud-based Service k provedení stejné funkce. Než budete pokračovat, pečlivě vyhodnoťte požadavky služby Multi-Factor Authentication. Před převodem domén se ujistěte, že rozumíte tomu, jak používat Azure Multi-Factor Authentication, dopad na licencování a proces registrace uživatelů.
 
@@ -144,9 +144,9 @@ Před převedením z federované identity na spravovanou identitu si pečlivě p
 |-|-|
 | Plánujete dál používat AD FS s jinými aplikacemi (kromě Azure AD a Microsoft 365). | Po převedení domén budete používat AD FS i Azure AD. Vezměte v úvahu činnost koncového uživatele. V některých scénářích se uživatelé můžou muset ověřit dvakrát: jednou do Azure AD (kde uživatel získá přístup SSO k ostatním aplikacím, třeba Microsoft 365), a znovu pro všechny aplikace, které jsou pořád vázané na AD FS jako vztah důvěryhodnosti předávající strany. |
 | Vaše instance AD FS je silně přizpůsobená a spoléhá na konkrétní nastavení přizpůsobení v souboru onload.js (například pokud jste změnili přihlašovací prostředí tak, aby uživatelé jako uživatelské jméno používali jenom formát **sAMAccountName** , a ne hlavní název uživatele (UPN), nebo vaše organizace intenzivně přihlásila vaše prostředí. Soubor onload.js nejde duplikovat v Azure AD. | Než budete pokračovat, musíte ověřit, že služba Azure AD dokáže splnit vaše aktuální požadavky na vlastní nastavení. Další informace a pokyny najdete v částech AD FS brandingu a AD FS přizpůsobení.|
-| K blokování starších verzí ověřovacích klientů slouží AD FS.| Zvažte nahrazení AD FS ovládacích prvků, které blokují starší verze ověřování klientů pomocí kombinace [ovládacích prvků podmíněného přístupu](../conditional-access/concept-conditional-access-conditions.md) a [pravidel přístupu klienta Exchange Online](https://aka.ms/EXOCAR). |
+| K blokování starších verzí ověřovacích klientů slouží AD FS.| Zvažte nahrazení AD FS ovládacích prvků, které blokují starší verze ověřování klientů pomocí kombinace [ovládacích prvků podmíněného přístupu](../conditional-access/concept-conditional-access-conditions.md) a [pravidel přístupu klienta Exchange Online](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules). |
 | Požadujete, aby uživatelé prováděli vícefaktorové ověřování proti místnímu řešení Multi-Factor Authentication serveru, když se uživatelé ověřují AD FS.| Ve spravované doméně identity nemůžete do toku ověřování vložit výzvu Multi-Factor Authentication prostřednictvím místního řešení Multi-Factor Authentication. Po převodu domény ale můžete službu Azure Multi-Factor Authentication použít pro službu Multi-Factor Authentication.<br /><br /> Pokud uživatelé aktuálně nepoužívají Multi-Factor Authentication Azure, je nutný krok registrace uživatele jednorázová. Musíte připravit na a sdělit plánované registrace vašim uživatelům. |
-| V tuto chvíli používáte k řízení přístupu k Microsoft 365 zásady řízení přístupu (pravidla AuthZ) v AD FS.| Zvažte nahrazení zásad odpovídajícími [zásadami podmíněného přístupu](../conditional-access/overview.md) Azure AD a [pravidly přístupu klienta Exchange Online](https://aka.ms/EXOCAR).|
+| V tuto chvíli používáte k řízení přístupu k Microsoft 365 zásady řízení přístupu (pravidla AuthZ) v AD FS.| Zvažte nahrazení zásad odpovídajícími [zásadami podmíněného přístupu](../conditional-access/overview.md) Azure AD a [pravidly přístupu klienta Exchange Online](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules).|
 
 ### <a name="common-ad-fs-customizations"></a>Společná přizpůsobení AD FS
 
@@ -238,11 +238,11 @@ Z tohoto důvodu doporučujeme, abyste tento krok dokončili jako přípravné �
 Postup povolení synchronizace hodnot hash hesel:
 
 1. Na serveru Azure AD Connect otevřete Průvodce Azure AD Connect a pak vyberte **Konfigurovat**.
-2. Vyberte **přizpůsobit možnosti synchronizace**a pak vyberte **Další**.
+2. Vyberte **přizpůsobit možnosti synchronizace** a pak vyberte **Další**.
 3. Na stránce **připojit ke službě Azure AD** zadejte uživatelské jméno a heslo účtu globálního správce.
 4. Na stránce **připojit adresáře** vyberte **Další**.
 5. Na stránce **filtrování domén a organizačních jednotek** vyberte **Další**.
-6. Na stránce **volitelné funkce** vyberte **Synchronizace hesel**a pak vyberte **Další**.
+6. Na stránce **volitelné funkce** vyberte **Synchronizace hesel** a pak vyberte **Další**.
  
    ![Snímek obrazovky s možností synchronizace hesel vybraný na stránce volitelné funkce](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image6.png)<br />
 7. Na zbývajících stránkách vyberte **Další** . Na poslední stránce vyberte **Konfigurovat**.
@@ -257,7 +257,7 @@ Chcete-li ověřit, zda synchronizace hodnot hash hesel funguje správně, dokon
 1. Na serveru Azure AD Connect otevřete novou relaci prostředí Windows PowerShell pomocí možnosti Spustit jako správce.
 2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted` .
 3. Spusťte Průvodce Azure AD Connect.
-4. Přejít na stránku **další úlohy** , vyberte **řešení potíží**a pak vyberte **Další**.
+4. Přejít na stránku **další úlohy** , vyberte **řešení potíží** a pak vyberte **Další**.
 5. Na stránce **Poradce při potížích** vyberte **Spustit** . tím spustíte nabídku Poradce při potížích v PowerShellu.
 6. V hlavní nabídce vyberte **řešit potíže se synchronizací hodnot hash hesel**.
 7. V podnabídce vyberte možnost **synchronizace hodnot hash hesel nefunguje vůbec**.
@@ -286,11 +286,11 @@ Tuto metodu použijte, pokud jste původně nakonfigurovali AD FS prostředí po
 Nejprve změňte metodu přihlašování:
 
 1. Na serveru Azure AD Connect otevřete Průvodce Azure AD Connect.
-2. Vyberte možnost **změnit přihlášení uživatele**a pak vyberte možnost **Další**. 
+2. Vyberte možnost **změnit přihlášení uživatele** a pak vyberte možnost **Další**. 
 
    ![Snímek obrazovky s možností přihlášení uživatele změny na stránce další úlohy](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image7.png)<br />
 3. Na stránce **připojit ke službě Azure AD** zadejte uživatelské jméno a heslo účtu globálního správce.
-4. Na **přihlašovací stránce uživatele** vyberte **tlačítko synchronizace hodnoty hash hesla**. Nezapomeňte zaškrtnout políčko **nepřevádět uživatelské účty** . Možnost je zastaralá. Vyberte **Povolit jednotné přihlašování**a pak vyberte **Další**.
+4. Na **přihlašovací stránce uživatele** vyberte **tlačítko synchronizace hodnoty hash hesla**. Nezapomeňte zaškrtnout políčko **nepřevádět uživatelské účty** . Možnost je zastaralá. Vyberte **Povolit jednotné přihlašování** a pak vyberte **Další**.
 
    ![Snímek obrazovky se stránkou pro povolení jednotného přihlašování](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image8.png)<br />
 
@@ -320,7 +320,7 @@ Nejprve změňte metodu přihlašování:
 
 7. Na portálu Azure AD vyberte **Azure Active Directory**  >  **Azure AD Connect**.
 8. Ověřte tato nastavení:
-   * **Federace** je nastavená na **disabled (zakázáno**).
+   * **Federace** je nastavená na **disabled (zakázáno** ).
    * **Bezproblémové jednotné přihlašování** je nastavené na **povoleno**.
    * **Synchronizace hesla** je nastavená na **povoleno**.<br /> 
 
@@ -336,9 +336,9 @@ Přejděte k [testování a dalším krokům](#testing-and-next-steps).
 Tuto možnost použijte, pokud jste původně nenakonfigurovali federované domény pomocí Azure AD Connect. Během tohoto procesu povolíte bezproblémové přihlašování a přepnete své domény z federované na spravovanou.
 
 1. Na serveru Azure AD Connect otevřete Průvodce Azure AD Connect.
-2. Vyberte možnost **změnit přihlášení uživatele**a pak vyberte možnost **Další**.
+2. Vyberte možnost **změnit přihlášení uživatele** a pak vyberte možnost **Další**.
 3. Na stránce **připojit ke službě Azure AD** zadejte uživatelské jméno a heslo pro účet globálního správce.
-4. Na **přihlašovací stránce uživatele** vyberte tlačítko **synchronizace hodnoty hash hesla** . Vyberte **Povolit jednotné přihlašování**a pak vyberte **Další**.
+4. Na **přihlašovací stránce uživatele** vyberte tlačítko **synchronizace hodnoty hash hesla** . Vyberte **Povolit jednotné přihlašování** a pak vyberte **Další**.
 
    Než povolíte synchronizaci hodnot hash hesel: ![ snímek obrazovky, který ukazuje možnost nekonfigurovat na přihlašovací stránce uživatele](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
@@ -412,7 +412,7 @@ Test synchronizace hodnot hash hesel:
 
    ![Snímek obrazovky zobrazující přihlašovací stránku, na které zadáváte heslo](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image19.png)
 
-4. Po zadání hesla a výběru **Přihlásit**jste přesměrováni na portál Office 365.
+4. Po zadání hesla a výběru **Přihlásit** jste přesměrováni na portál Office 365.
 
    ![Snímek obrazovky zobrazující portál Office 365](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image20.png)
 

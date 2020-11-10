@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: a02b2157209b5f47ac7ffbde4e15f3e7df1c258b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 278812754c636d434bf579c0408832f1e99d3445
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462526"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408069"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Osvědčené postupy pro zabezpečení databází PaaS v Azure
 
@@ -40,7 +40,7 @@ Azure SQL Database můžete nakonfigurovat tak, aby používaly jeden ze dvou ty
 
 - **Ověřování Azure Active Directory** používá identity spravované pomocí Azure Active Directory a je podporované pro spravované a integrované domény. Pokud chcete použít Azure Active Directory ověřování, musíte vytvořit jiného správce serveru, který se nazývá správce Azure AD, což může spravovat uživatele a skupiny Azure AD. Tento správce může také provádět všechny operace jako běžný správce serveru.
 
-[Ověřování Azure Active Directory](../../active-directory/develop/authentication-scenarios.md) je mechanismus připojení k Azure SQL Database a Azure synapse Analytics pomocí identit v Azure Active Directory (AD). Azure AD poskytuje alternativu k ověřování SQL Server, abyste mohli zastavit šíření uživatelských identit mezi databázovými servery. Ověřování Azure AD umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu v jednom centrálním umístění. Centrální správa ID poskytuje jediné místo pro správu uživatelů databáze a zjednodušuje správu oprávnění.  
+[Ověřování Azure Active Directory](../../active-directory/develop/authentication-vs-authorization.md) je mechanismus připojení k Azure SQL Database a Azure synapse Analytics pomocí identit v Azure Active Directory (AD). Azure AD poskytuje alternativu k ověřování SQL Server, abyste mohli zastavit šíření uživatelských identit mezi databázovými servery. Ověřování Azure AD umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu v jednom centrálním umístění. Centrální správa ID poskytuje jediné místo pro správu uživatelů databáze a zjednodušuje správu oprávnění.  
 
 ### <a name="benefits-of-using-azure-ad-instead-of-sql-authentication"></a>Výhody použití Azure AD místo ověřování SQL
 
@@ -50,7 +50,7 @@ Azure SQL Database můžete nakonfigurovat tak, aby používaly jeden ze dvou ty
 - Používá uživatele databáze s omezením k ověřování identit na úrovni databáze.
 - Podporuje ověřování založené na tokenech pro aplikace, které se připojují k SQL Database.
 - Podporuje federaci doménové federace s Active Directory Federation Services (AD FS) (ADFS) nebo nativním ověřováním uživatele a hesla pro místní službu Azure AD bez synchronizace domén.
-- Podporuje připojení z SQL Server Management Studio, která používají univerzální ověřování služby Active Directory, což zahrnuje [Multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication). MFA zahrnuje silné ověřování s využitím celé řady možností ověření – telefonických hovorů, textových zpráv, čipových karet s kódem PIN nebo oznámení mobilní aplikace. Další informace najdete v tématu [univerzální ověřování pomocí SQL Database a Azure synapse Analytics](../../azure-sql/database/authentication-mfa-ssms-overview.md).
+- Podporuje připojení z SQL Server Management Studio, která používají univerzální ověřování služby Active Directory, což zahrnuje [Multi-Factor Authentication (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md). MFA zahrnuje silné ověřování s využitím celé řady možností ověření – telefonických hovorů, textových zpráv, čipových karet s kódem PIN nebo oznámení mobilní aplikace. Další informace najdete v tématu [univerzální ověřování pomocí SQL Database a Azure synapse Analytics](../../azure-sql/database/authentication-mfa-ssms-overview.md).
 
 Další informace o ověřování Azure AD najdete tady:
 

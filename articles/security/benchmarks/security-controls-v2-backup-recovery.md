@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b2e54545fb79120a3f9d66067da267df3b151b3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3812cef9b90a15870733441c9e830daf32e0b18
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322117"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408936"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Řízení zabezpečení v2: zálohování a obnovení
 
@@ -32,13 +32,13 @@ V případě vyšší úrovně ochrany můžete povolit geograficky redundantní
 
 - [Provozní kontinuita a zotavení po havárii na podnikové úrovni](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
-- [Postup povolení Azure Backup](/azure/backup/)
+- [Postup povolení Azure Backup](../../backup/index.yml)
 
-- [Jak povolit obnovení mezi oblastmi](/azure/backup/backup-azure-arm-restore-vms#cross-region-restore)
+- [Jak povolit obnovení mezi oblastmi](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zásady a standardy](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 
@@ -60,17 +60,17 @@ U místních záloh pomocí Azure Backup je k dispozici šifrování v klidovém
 
 Použití řízení přístupu na základě role v Azure Backup, Azure Key Vault nebo jiných prostředcích k ochraně záloh a spravovaných klíčů zákazníků. Kromě toho můžete povolit pokročilé funkce zabezpečení, které budou vyžadovat vícefaktorové ověřování, aby bylo možné změnit nebo odstranit zálohy.
 
-- [Přehled funkcí zabezpečení v Azure Backup](/azure/backup/security-overview)
+- [Přehled funkcí zabezpečení v Azure Backup](../../backup/security-overview.md)
 
-- [Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem](/azure/backup/encryption-at-rest-with-cmk) 
+- [Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem](../../backup/encryption-at-rest-with-cmk.md) 
 
-- [Postup zálohování klíčů Key Vault v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Postup zálohování klíčů Key Vault v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-- [Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy před útoky](/azure/backup/backup-azure-security-feature#prevent-attacks)
+- [Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy před útoky](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -86,13 +86,13 @@ Použití řízení přístupu na základě role v Azure Backup, Azure Key Vault
 
 Pravidelně provádějte obnovování dat zálohování. Ujistěte se, že můžete obnovit zálohovaných klíčů spravovaných zákazníkem.
 
-- [Postup obnovení souborů ze zálohy virtuálního počítače Azure](/azure/backup/backup-azure-restore-files-from-vm)
+- [Postup obnovení souborů ze zálohy virtuálního počítače Azure](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Postup obnovení klíčů Key Vault v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Postup obnovení klíčů Key Vault v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Příprava na incidenty](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -106,15 +106,14 @@ Pravidelně provádějte obnovování dat zálohování. Ujistěte se, že můž
 
 Ujistěte se, že máte k dispozici míry, abyste zabránili ztrátě klíčů a obnovili je. Povolí v Azure Key Vault ochranu před náhodným odstraněním a vyprázdněním, aby se chránily klíče proti náhodnému nebo škodlivému odstranění.  
 
-- [Jak povolit ochranu před odstraněním a vyprázdněním v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Jak povolit ochranu před odstraněním a vyprázdněním v Key Vault](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [Příprava na incidenty](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
 - [Zabezpečení dat](/azure/cloud-adoption-framework/organize/cloud-security-data-security)
-

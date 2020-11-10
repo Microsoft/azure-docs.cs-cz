@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9dbed0de3cf6cc911111825a75430d0c616f4dc4
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d391586ade9e9a58344f9b1666802a453770152a
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217575"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386488"
 ---
 Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do aplikace v jazyce C#. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 
@@ -36,7 +36,7 @@ Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého sta
 > [!TIP]
 > Získejte nejnovější kód jako řešení sady Visual Studio z [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-V prvním kroku vytvoříme nový projekt konzoly. Potřebujete-li nápovědu k nastavení projektu konzoly, přečtěte si téma [Hello World – první program (Průvodce programováním v C#)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Pokud chcete ve své aplikaci použít sadu SDK Bingu pro vyhledávání na web, budete si muset nainstalovat `Microsoft.Azure.CognitiveServices.Search.WebSearch` pomocí správce balíčků NuGet.
+V prvním kroku vytvoříme nový projekt konzoly. Potřebujete-li nápovědu k nastavení projektu konzoly, přečtěte si téma [Hello World – první program (Průvodce programováním v C#)](/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Pokud chcete ve své aplikaci použít sadu SDK Bingu pro vyhledávání na web, budete si muset nainstalovat `Microsoft.Azure.CognitiveServices.Search.WebSearch` pomocí správce balíčků NuGet.
 
 [Balíček sady SDK webového vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) také nainstaluje:
 
@@ -424,4 +424,3 @@ Až projekt dokončíte, nezapomeňte z kódu aplikace odebrat klíč předplatn
 
 > [!div class="nextstepaction"]
 > [Ukázky sady SDK pro Cognitive Services Node.js](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
-                                    

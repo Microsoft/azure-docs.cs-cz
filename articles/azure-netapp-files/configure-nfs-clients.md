@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: f4b8b4b56693023ede2ccf8ae7eeac7ed5e16824
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216857"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409565"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Konfigurace klienta NFS pro Azure NetApp Files
 
@@ -46,7 +46,7 @@ Příklady v této části používají následující název domény a IP adres
 
 1. Nakonfigurujte `/etc/resolv.conf` pomocí správného serveru DNS.  
 
-    Například:  
+    Zde je příklad:  
 
     `[root@reddoc cbs]# cat /etc/resolv.conf`   
     `search contoso.com`   
@@ -72,10 +72,13 @@ Příklady v této části používají následující název domény a IP adres
 
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou="OU=$YOUROU"`
 
-    Například: 
+    Zde je příklad: 
 
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
-
+    
+    Ujistěte se, že `default_realm` je v nástroji nastavená zadaná sféra `/etc/krb5.conf` .  V takovém případě jej přidejte do `[libdefaults]` části souboru, jak je znázorněno v následujícím příkladu:
+    
+    `default_realm = CONTOSO.COM`
 
 7. Restartujte všechny služby systému souborů NFS:  
  
@@ -88,7 +91,7 @@ Příklady v této části používají následující název domény a IP adres
  
     `sudo kinit $SERVICEACCOUNT@DOMAIN`  
 
-    Například:   
+    Zde je příklad:   
 
     `sudo kinit ad_admin@CONTOSO.COM`
 
@@ -199,18 +202,18 @@ Příklady v této části používají následující název domény a IP adres
 
 5. Ubuntu 18,04 ve výchozím nastavení používá Chrony. Podle pokynů pro konfiguraci v [Ubuntu Bionic: použití Chrony ke konfiguraci NTP](https://ubuntu.com/blog/ubuntu-bionic-using-chrony-to-configure-ntp).
 
-6. Připojte se k Doména služby Active Directory:   
+6. Připojte se k doméně služby Active Directory:   
  
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou="OU=$YOUROU"`
  
-    Například:    
+    Zde je příklad:    
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
 
 7. `kinit`K získání lístků s uživatelem postupujte takto: 
  
     `sudo kinit $SERVICEACCOUNT`   
  
-    Například:    
+    Zde je příklad:    
     `sudo kinit ad_admin`  
 
 ### <a name="ubuntu-configuration-if-you-are-using-dual-protocol"></a>Konfigurace Ubuntu, pokud používáte duální protokol  

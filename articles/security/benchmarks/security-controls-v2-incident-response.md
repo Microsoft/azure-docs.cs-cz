@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 172607a7f8f036bbfb68e8d15e77b2a3e3fb5377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ba7391b3b524f7532101083a444aab6059e8a10
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326384"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408751"
 ---
 # <a name="security-control-v2-incident-response"></a>Řízení zabezpečení v2: reakce na incidenty
 
@@ -26,13 +26,13 @@ Reakce na incidenty pokrývá ovládací prvky v životním cyklu reakce na inci
 
 Ujistěte se, že vaše organizace má procesy, které reagují na incidenty zabezpečení, aktualizovala tyto procesy pro Azure a pravidelně ji vykonává za účelem zajištění připravenosti.
 
-- [Implementace zabezpečení v podnikovém prostředí](https://aka.ms/AzSec4)
+- [Implementace zabezpečení v podnikovém prostředí](/azure/cloud-adoption-framework/security/security-top-10#3-process-assign-accountability-for-cloud-security-decisions)
 
 - [Referenční příručka k reakci na incidenty](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -50,9 +50,9 @@ Nastavte kontaktní informace incidentu zabezpečení v Azure Security Center. T
 
 - [Jak nastavit kontakt zabezpečení Azure Security Center](../../security-center/security-center-provide-security-contact-details.md)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -76,9 +76,9 @@ Vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce expor
 
 - [Jak streamovat výstrahy do Azure Sentinel](../../sentinel/connect-azure-security-center.md)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -116,9 +116,9 @@ Azure Sentinel poskytuje rozsáhlou analýzu dat napříč všemi zdroji protoko
 
 - [Prozkoumat incidenty pomocí služby Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -140,11 +140,11 @@ Navíc můžete označovat prostředky pomocí značek a vytvořit systém pojme
 
 - [Výstrahy zabezpečení ve službě Azure Security Center](../../security-center/security-center-alerts-overview.md)
 
-- [Používání značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
+- [Používání značek k uspořádání prostředků Azure](../../azure-resource-manager/management/tag-resources.md)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -166,13 +166,12 @@ Automatizace ručních opakujících se úloh, které urychlují dobu odezvy a s
 
 - [Nastavení automatických odpovědí na hrozby v Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Příprava na incidenty](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
 - [Analýza hrozeb](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
-

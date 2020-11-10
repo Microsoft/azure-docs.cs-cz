@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2ee92a9eaf9316cbd453ea1ec4def58bb543a5a6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3d80ff9f5f96bbc642aed6598c86cb682d606695
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321140"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410670"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat v úložišti objektů BLOB v Azure pomocí PANDAS
 
@@ -69,7 +69,7 @@ Tady je několik příkladů způsobů, jak prozkoumat data pomocí PANDAS:
 1. Kontrola **počtu řádků a sloupců**
 
     ```python
-    print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
+    print('the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape)
     ```
 
 1. **Zkontrolujte** první nebo poslední **řádky** v následující datové sadě:
@@ -84,7 +84,7 @@ Tady je několik příkladů způsobů, jak prozkoumat data pomocí PANDAS:
 
     ```python
     for col in dataframe_blobdata.columns:
-        print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
+        print(dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype)
     ```
 
 1. Ověřte **základní statistiky** pro sloupce v sadě dat následujícím způsobem.
@@ -103,7 +103,7 @@ Tady je několik příkladů způsobů, jak prozkoumat data pomocí PANDAS:
 
     ```python
     miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
-    print miss_num
+    print(miss_num)
     ```
 
 1. Pokud v datech **chybí hodnoty** pro určitý sloupec, můžete je odstranit takto:

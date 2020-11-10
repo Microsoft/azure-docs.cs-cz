@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87b9e4a3ca7151b3666928b00add175eddeea050
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82127778"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409378"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Vyberte doménu pro Custom Vision projekt.
 
@@ -42,27 +42,15 @@ V okně nastavení pro váš Custom Vision projekt můžete vybrat doménu pro s
 
 ## <a name="compact-domains"></a>Kompaktní domény
 
-Modely generované pomocí kompaktních domén lze exportovat pro místní spuštění. Výkon modelu se liší podle vybrané domény. V níže uvedené tabulce oznamujeme velikost modelu a dobu odvození na PROCESORech Intel Desktop a NVidia GPU \[ 1 \] . 
+Modely generované pomocí kompaktních domén lze exportovat pro místní spuštění. V rozhraní API verze Public Preview služby Custom Vision 3,4 můžete získat seznam exportovaných platforem pro kompaktní domény voláním rozhraní API getdomainnames.
 
-> [!NOTE]
-> Tato čísla nezahrnují předzpracování a postprocessingí času.
+Výkon modelu se liší podle vybrané domény. V níže uvedené tabulce oznamujeme velikost modelu a dobu odvození na PROCESORech Intel Desktop a NVidia GPU \[ 1 \] . Tato čísla nezahrnují předzpracování a postprocessingí času.
 
-|Úloha|Doména|Velikost modelu|Čas odvození procesoru|Čas odvození GPU|
+|Úkol|Doména|Velikost modelu|Čas odvození procesoru|Čas odvození GPU|
 |---|---|---|---|---|
 |Classification|Obecné (kompaktní)|5 MB|13 MS|5 MS|
 |Detekce objektů|Obecné (kompaktní)|45 MB|35 MS|5 MS|
 |Detekce objektů|General (Compact) [S1]|14 MB|27 MS|7 MS|
-
-## <a name="vaidk-vision-ai-dev-kit"></a>VAIDK (Vision AI dev Kit)
-
-Když je vybraná kompaktní doména, je k dispozici možnost exportovat možnosti, která umožňuje rozlišovat základní platformy a Vision AI dev Kit.
-
-V části _Možnosti exportu_ jsou dvě možnosti:
-
-- Základní platformy (Tensorflow, CoreML, ONNX atd.)
-- Sada Vision AI dev Kit.
-
-Když je _sada Vision AI dev Kit_ vybraná jako _Obecné_, _orientační_a _maloobchodní_ , ale ne i _v případě_ , že jsou k dispozici obě _Obecné (kompaktní)_ a _Obecné (kompaktní) [S1]_ pro detekci objektů.
 
 >[!NOTE]
 >__Obecná (kompaktní)__ doména pro detekci objektu vyžaduje speciální logiku postprocessing. Podrobnosti najdete v ukázkovém skriptu v exportovaném balíčku zip. Pokud potřebujete model bez logiky postprocessing, použijte __Obecné (Compact) [S1]__.

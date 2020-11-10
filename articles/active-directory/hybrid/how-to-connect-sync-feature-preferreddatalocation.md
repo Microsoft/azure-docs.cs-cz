@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ec5757b41da630c4cb09ad0c096aee87572615d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4c456e7788280b7ca5328342e1cd848ba3a583a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319890"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411129"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect synchronizace: konfigurace upřednostňovaného umístění dat pro prostředky Microsoft 365
 Účelem tohoto tématu je projít si, jak nakonfigurovat atribut pro preferované umístění dat v Azure Active Directory (Azure AD) Connect Sync. Pokud někdo používá v Microsoft 365 více geografických možností, použijte tento atribut k určení geografického umístění dat Microsoft 365 uživatele. ( *Oblast* podmínek a *geografické* použití jsou zaměnitelné.)
@@ -29,32 +29,32 @@ ms.locfileid: "91319890"
 ## <a name="enable-synchronization-of-preferred-data-location"></a>Povolit synchronizaci umístění upřednostňovaného data
 Ve výchozím nastavení se Microsoft 365 prostředky pro uživatele nacházejí ve stejné geografické podobě jako váš tenant Azure AD. Pokud se například váš tenant nachází v Severní Amerika, jsou poštovní schránky Exchange uživatele také umístěny v Severní Amerika. Pro nadnárodní organizaci to nemusí být optimální.
 
-Nastavením atributu **preferredDataLocation**můžete definovat geografickou hodnotu uživatele. Můžete mít Microsoft 365 prostředky, jako je poštovní schránka a OneDrive, ve stejné geografické podobě jako uživatel a mít pro celou organizaci i jednoho tenanta.
+Nastavením atributu **preferredDataLocation** můžete definovat geografickou hodnotu uživatele. Můžete mít Microsoft 365 prostředky, jako je poštovní schránka a OneDrive, ve stejné geografické podobě jako uživatel a mít pro celou organizaci i jednoho tenanta.
 
 > [!IMPORTANT]
 > Služba multi-Geo je aktuálně dostupná pro zákazníky s aktivním smlouva Enterprise a minimálními předplatnými 250 Microsoft 365 Services. Podrobnosti získáte od zástupce Microsoftu.
 >
 >
 
-Seznam všech zeměpisných oblastech pro Microsoft 365 najdete v části [kde se nacházejí vaše data?](https://aka.ms/datamaps).
+Seznam všech zeměpisných oblastech pro Microsoft 365 najdete v části [kde se nacházejí vaše data?](/microsoft-365/enterprise/o365-data-locations).
 
 Zeměpisných oblastech v Microsoft 365 k dispozici pro více geografických umístění:
 
 | Geografická oblast | hodnota preferredDataLocation |
 | --- | --- |
 | Asie a Tichomoří | KONTAKTOVAT |
-| Austrálie | STŘEDNÍ |
-| Kanada | NEMŮŽE |
+| Australia | STŘEDNÍ |
+| Canada | NEMŮŽE |
 | Evropská unie | EUR |
 | Francie | FRA |
-| Indie | IND |
-| Japonsko | JPN |
+| India | IND |
+| Japan | JPN |
 | Jižní Korea | KOR |
 | Jižní Afrika | ZAF |
 | Švýcarsko | CYRILICE |
 | Spojené arabské emiráty | JSOU |
 | Spojené království | GBR |
-| USA | NAM |
+| Česká republika | NAM |
 
 * Pokud geografická oblast není uvedená v této tabulce (například Jižní Amerika), nedá se použít pro více geografických oblastí.
 
@@ -70,7 +70,7 @@ Azure AD Connect podporuje synchronizaci atributu **preferredDataLocation** pro 
 Ve výchozím nastavení není **preferredDataLocation** povolená synchronizace. Tato funkce je určená pro větší organizace. Schéma služby Active Directory ve Windows serveru 2019 má atribut **msDS-preferredDataLocation** , který byste měli použít k tomuto účelu. Pokud jste schéma služby Active Directory neaktualizovali a nemůžete tak učinit, je nutné určit atribut, který bude pro uživatele uchovávat Microsoft 365 geograficky. To se pro každou organizaci liší.
 
 > [!IMPORTANT]
-> Azure AD umožňuje, aby byl atribut **preferredDataLocation** u **uživatelských objektů cloudového uživatele** přímo nakonfigurovaný pomocí Azure AD PowerShellu. Chcete-li nakonfigurovat tento atribut u **synchronizovaných uživatelských objektů**, je nutné použít Azure AD Connect.
+> Azure AD umožňuje, aby byl atribut **preferredDataLocation** u **uživatelských objektů cloudového uživatele** přímo nakonfigurovaný pomocí Azure AD PowerShellu. Chcete-li nakonfigurovat tento atribut u **synchronizovaných uživatelských objektů** , je nutné použít Azure AD Connect.
 
 Než povolíte synchronizaci:
 
@@ -93,7 +93,7 @@ Aby se zabránilo tomu, že se nezamýšlené změny exportují do služby Azure
 1. Spusťte relaci PowerShellu na Azure AD Connectovém serveru.
 2. Zakažte naplánovanou synchronizaci spuštěním této rutiny: `Set-ADSyncScheduler -SyncCycleEnabled $false` .
 3. Spusťte **Synchronization Service Manager** **spuštěním**  >  **synchronizační služby**.
-4. Vyberte kartu **operace** a potvrďte, že neexistuje žádná operace s *probíhajícím*stavem.
+4. Vyberte kartu **operace** a potvrďte, že neexistuje žádná operace s *probíhajícím* stavem.
 
 ![Snímek obrazovky s Synchronization Service Manager](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
 
@@ -143,7 +143,7 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
     | Name | *Zadat název* | Například "in from AD – User preferredDataLocation" |
-    | Description | *Zadejte vlastní popis.* |  |
+    | Popis | *Zadejte vlastní popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby Active Directory* |  |
     | Typ připojeného systémového objektu | **Uživatel** |  |
     | Typ objektu úložiště metaverse | **Osoba** |  |
@@ -151,7 +151,7 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
     | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
 
 5. Pokud chcete zahrnout všechny objekty, nechejte **Filtr oboru** prázdný. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
-6. Přejít na **kartu transformace**a implementovat následující pravidlo transformace:
+6. Přejít na **kartu transformace** a implementovat následující pravidlo transformace:
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
@@ -172,7 +172,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
     | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
     | Name | *Zadat název* | Například "odchozí do Azure AD – User preferredDataLocation" |
-    | Description | *Zadejte popis.* ||
+    | Popis | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor Azure AD.* ||
     | Typ připojeného systémového objektu | **Uživatel** ||
     | Typ objektu úložiště metaverse | **Osoba** ||
@@ -204,8 +204,8 @@ Obecně je potřeba úplný cyklus synchronizace. Důvodem je to, že jste přid
 1. Spustit **úplný import** na místní konektor služby Active Directory:
 
    1. V Synchronization Service Manager otevřete kartu **operace** .
-   2. Klikněte pravým tlačítkem na **místní konektor služby Active Directory**a vyberte **Spustit**.
-   3. V dialogovém okně vyberte **úplný import**a vyberte **OK**.
+   2. Klikněte pravým tlačítkem na **místní konektor služby Active Directory** a vyberte **Spustit**.
+   3. V dialogovém okně vyberte **úplný import** a vyberte **OK**.
    4. Počkejte na dokončení operace.
 
       > [!NOTE]
@@ -213,8 +213,8 @@ Obecně je potřeba úplný cyklus synchronizace. Důvodem je to, že jste přid
 
 2. Spusťte **úplný import** na konektoru služby Azure AD:
 
-   1. Klikněte pravým tlačítkem na **konektor Azure AD**a vyberte **Spustit**.
-   2. V dialogovém okně vyberte **úplný import**a vyberte **OK**.
+   1. Klikněte pravým tlačítkem na **konektor Azure AD** a vyberte **Spustit**.
+   2. V dialogovém okně vyberte **úplný import** a vyberte **OK**.
    3. Počkejte na dokončení operace.
 
 3. Ověřte změny synchronizačního pravidla u stávajícího objektu **uživatele** .
@@ -223,13 +223,13 @@ Obecně je potřeba úplný cyklus synchronizace. Důvodem je to, že jste přid
 
 4. Spusťte **úplnou synchronizaci** na místním konektoru služby Active Directory:
 
-   1. Klikněte pravým tlačítkem na **místní konektor služby Active Directory**a vyberte **Spustit**.
-   2. V dialogovém okně vyberte možnost **Úplná synchronizace**a pak vyberte **OK**.
+   1. Klikněte pravým tlačítkem na **místní konektor služby Active Directory** a vyberte **Spustit**.
+   2. V dialogovém okně vyberte možnost **Úplná synchronizace** a pak vyberte **OK**.
    3. Počkejte na dokončení operace.
 
 5. Ověřit **nedokončené exporty** do Azure AD:
 
-   1. Klikněte pravým tlačítkem na **konektor Azure AD**a vyberte **Hledat místo v konektoru**.
+   1. Klikněte pravým tlačítkem na **konektor Azure AD** a vyberte **Hledat místo v konektoru**.
    2. V dialogovém okně **Hledat místo konektoru** :
 
         a. Nastavte **Rozsah** na **Export čeká na vyřízení**.<br>
@@ -239,8 +239,8 @@ Obecně je potřeba úplný cyklus synchronizace. Důvodem je to, že jste přid
 
 6. Spuštění **exportu** v **konektoru služby Azure AD**
 
-   1. Klikněte pravým tlačítkem na **konektor Azure AD**a vyberte **Spustit**.
-   2. V dialogovém okně **Spustit konektor** vyberte **exportovat**a vyberte **OK**.
+   1. Klikněte pravým tlačítkem na **konektor Azure AD** a vyberte **Spustit**.
+   2. V dialogovém okně **Spustit konektor** vyberte **exportovat** a vyberte **OK**.
    3. Počkejte na dokončení operace.
 
 > [!NOTE]
@@ -267,8 +267,8 @@ Za předpokladu, že je váš tenant označený k tomu, aby mohl používat tuto
 Další informace o více geografických umístěních v Microsoft 365:
 
 * [Více geografických relací na Ignite](https://aka.ms/MultiGeoIgnite)
-* [Více geografických umístění na OneDrivu](https://aka.ms/OneDriveMultiGeo)
-* [Více geografických umístění v SharePointu Online](https://aka.ms/SharePointMultiGeo)
+* [Více geografických umístění na OneDrivu](/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365)
+* [Více geografických umístění v SharePointu Online](/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365)
 
 Další informace o modelu konfigurace v synchronizačním modulu:
 

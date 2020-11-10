@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b26979f424798bacf6b40d43e5ab603844f595c3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360849"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408698"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Řízení zabezpečení v2: protokolování a detekce hrozeb
 
@@ -30,7 +30,7 @@ Využijte Azure Security Center integrovanou funkci detekce hrozeb, která vych�
 
 Kromě toho použijte Azure Sentinel k vytváření pravidel analýzy, které usnadňují hrozby, které odpovídají konkrétním kritériím v rámci vašeho prostředí. Pravidla generují incidenty, když jsou kritéria shodná, takže můžete prozkoumat jednotlivé incidenty. Funkce Sentinel Azure může také importovat analýzy hrozeb třetích stran a zlepšit tak schopnost detekce hrozeb. 
 
-- [Ochrana před hrozbami v Azure Security Center](../../security-center/threat-protection.md)
+- [Ochrana před hrozbami v Azure Security Center](../../security-center/azure-defender.md)
 
 - [Referenční příručka pro Azure Security Center výstrahy zabezpečení](../../security-center/alerts-reference.md)
 
@@ -73,7 +73,7 @@ Azure Security Center může také upozorňovat na určité podezřelé aktivity
 
 - [Povolit Azure Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Ochrana před hrozbami v Azure Security Center](../../security-center/threat-protection.md)
+- [Ochrana před hrozbami v Azure Security Center](../../security-center/azure-defender.md)
 
 **Zodpovědnost** : zákazník
 
@@ -230,4 +230,3 @@ Všechny protokoly generované prostředky v Azure poskytují časová razítka 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
-

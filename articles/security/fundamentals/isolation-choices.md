@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa2025fa31ac960eb6c61d03bafd582de4f0e55c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533899"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410571"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 
@@ -86,11 +86,11 @@ Mezi další možnosti Azure Active Directory patří:
 
 - Azure AD podporuje jednotné přihlašování (SSO) k aplikacím SaaS bez ohledu na to, kde jsou hostované. Některé aplikace jsou federované pomocí Azure AD, jiné používají jednotné přihlašování pomocí hesla. Federované aplikace mohou také podporovat zřizování uživatelů a vytváření [hesel](https://www.techopedia.com/definition/31415/password-vault).
 
-- Přístup k datům v rámci [Azure Storage](https://azure.microsoft.com/services/storage/) je řízen prostřednictvím ověřování. Každý účet úložiště má primární klíč ([klíč účtu úložiště](../../storage/common/storage-create-storage-account.md)nebo SAK) a sekundární tajný klíč (sdílený přístupový podpis nebo SAS).
+- Přístup k datům v rámci [Azure Storage](https://azure.microsoft.com/services/storage/) je řízen prostřednictvím ověřování. Každý účet úložiště má primární klíč ([klíč účtu úložiště](../../storage/common/storage-account-create.md)nebo SAK) a sekundární tajný klíč (sdílený přístupový podpis nebo SAS).
 
-- Azure AD poskytuje identitu jako službu prostřednictvím federace pomocí [Active Directory Federation Services (AD FS)](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md), synchronizace a replikace s místními adresáři.
+- Azure AD poskytuje identitu jako službu prostřednictvím federace pomocí [Active Directory Federation Services (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs), synchronizace a replikace s místními adresáři.
 
-- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) je služba Multi-Factor Authentication, která vyžaduje, aby uživatelé ověřili přihlášení pomocí mobilní aplikace, telefonního hovoru nebo textové zprávy. Dá se použít s Azure AD k zabezpečení místních prostředků pomocí serveru Azure Multi-Factor Authentication a také s vlastními aplikacemi a adresáři pomocí sady SDK.
+- [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) je služba Multi-Factor Authentication, která vyžaduje, aby uživatelé ověřili přihlášení pomocí mobilní aplikace, telefonního hovoru nebo textové zprávy. Dá se použít s Azure AD k zabezpečení místních prostředků pomocí serveru Azure Multi-Factor Authentication a také s vlastními aplikacemi a adresáři pomocí sady SDK.
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) umožňuje připojit virtuální počítače Azure k doméně služby Active Directory bez nasazení řadičů domény. K těmto virtuálním počítačům se můžete přihlásit pomocí svých podnikových přihlašovacích údajů Active Directory a spravovat virtuální počítače připojené k doméně pomocí Zásady skupiny pro vymáhání standardních hodnot zabezpečení na všech virtuálních počítačích Azure.
 
@@ -119,7 +119,7 @@ Microsoft Azure poskytuje různé cloudové výpočetní služby, které zahrnuj
 
 ### <a name="dedicated-hosts"></a>Vyhrazení hostitelé
 
-Kromě izolovaných hostitelů popsaných v předchozí části nabízí Azure také vyhrazené hostitele. Vyhrazení hostitelé v Azure je služba, která poskytuje fyzické servery, které můžou hostovat jeden nebo víc virtuálních počítačů a které jsou vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé poskytují izolaci hardwaru na úrovni fyzického serveru. Do hostitelů nebudou umístěny žádné další virtuální počítače. Vyhrazení hostitelé se nasazují ve stejných datových centrech a sdílejí stejnou síť a základní infrastrukturu úložiště jako ostatní, neizolované hostitele. Další informace najdete v podrobném přehledu [vyhrazených hostitelů Azure](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts).
+Kromě izolovaných hostitelů popsaných v předchozí části nabízí Azure také vyhrazené hostitele. Vyhrazení hostitelé v Azure je služba, která poskytuje fyzické servery, které můžou hostovat jeden nebo víc virtuálních počítačů a které jsou vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé poskytují izolaci hardwaru na úrovni fyzického serveru. Do hostitelů nebudou umístěny žádné další virtuální počítače. Vyhrazení hostitelé se nasazují ve stejných datových centrech a sdílejí stejnou síť a základní infrastrukturu úložiště jako ostatní, neizolované hostitele. Další informace najdete v podrobném přehledu [vyhrazených hostitelů Azure](../../virtual-machines/dedicated-hosts.md).
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V & izolaci kořenového operačního systému mezi kořenovým virtuálním počítačem & virtuálních počítačů hosta
 
@@ -194,7 +194,7 @@ Proto Azure Storage spouští na samostatném hardwaru bez připojení k síti A
 
 ![Izolace pomocí řízení přístupu k úložišti](./media/isolation-choices/azure-isolation-fig9.png)
 
-**Přístup k datům Azure Storage (včetně tabulek)** se dá řídit pomocí tokenu [SAS (sdíleného přístupového podpisu)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) , který uděluje oborový přístup. SAS se vytvoří pomocí šablony dotazu (URL) podepsané pomocí [sak (klíč účtu úložiště)](https://msdn.microsoft.com/library/azure/ee460785.aspx). Tato [podepsaná adresa URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) může být předána jinému procesu (to znamená delegovaný), který pak může vyplnit podrobnosti dotazu a vytvořit požadavek služby úložiště. SAS umožňuje udělit klientům přístup na základě času bez odhalení tajného klíče účtu úložiště.
+**Přístup k datům Azure Storage (včetně tabulek)** se dá řídit pomocí tokenu [SAS (sdíleného přístupového podpisu)](../../storage/common/storage-sas-overview.md) , který uděluje oborový přístup. SAS se vytvoří pomocí šablony dotazu (URL) podepsané pomocí [sak (klíč účtu úložiště)](/previous-versions/azure/reference/ee460785(v=azure.100)). Tato [podepsaná adresa URL](../../storage/common/storage-sas-overview.md) může být předána jinému procesu (to znamená delegovaný), který pak může vyplnit podrobnosti dotazu a vytvořit požadavek služby úložiště. SAS umožňuje udělit klientům přístup na základě času bez odhalení tajného klíče účtu úložiště.
 
 SAS znamená, že můžeme udělit omezená oprávnění klienta k objektům v našem účtu úložiště po určitou dobu a se zadanou sadou oprávnění. Tato omezená oprávnění můžeme udělit bez nutnosti sdílení přístupových klíčů k vašemu účtu.
 
@@ -225,13 +225,13 @@ V případě mnoha organizací je [šifrování dat v klidovém](isolation-choic
 
 - [Šifrování služby Storage](../../storage/blobs/security-recommendations.md) umožňuje požádat, aby služba úložiště při zápisu do Azure Storage automaticky zašifroval data.
 - [Šifrování na straně klienta](../../storage/blobs/security-recommendations.md) také poskytuje funkci šifrování v klidovém umístění.
-- [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) slouží k šifrování disků s operačním systémem a datových disků, které používá virtuální počítač s IaaS.
+- [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) slouží k šifrování disků s operačním systémem a datových disků, které používá virtuální počítač s IaaS.
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) pro virtuální počítače pomáhá řešit požadavky organizace na zabezpečení a dodržování předpisů tím, že šifruje disky virtuálních počítačů (včetně spouštěcích a datových disků) pomocí klíčů a zásad, které řídíte v [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+[Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) pro virtuální počítače pomáhá řešit požadavky organizace na zabezpečení a dodržování předpisů tím, že šifruje disky virtuálních počítačů (včetně spouštěcích a datových disků) pomocí klíčů a zásad, které řídíte v [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
-Řešení pro šifrování disků pro Windows je založené na [Microsoft nástroj BitLocker Drive Encryption](https://technet.microsoft.com/library/cc732774.aspx)a řešení pro Linux je založené na [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
+Řešení pro šifrování disků pro Windows je založené na [Microsoft nástroj BitLocker Drive Encryption](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11))a řešení pro Linux je založené na [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
 Řešení podporuje následující scénáře pro virtuální počítače s IaaS, když jsou povolené v Microsoft Azure:
 
@@ -243,7 +243,7 @@ V případě mnoha organizací je [šifrování dat v klidovém](isolation-choic
 - Povolení šifrování na virtuálních počítačích s IaaS, na kterých běží klientský operační systém Windows
 - Povolení šifrování u svazků s cestami připojení
 - Povolení šifrování pro virtuální počítače se systémem Linux, které jsou konfigurovány pomocí diskového disku RAID, pomocí [mdadm](https://en.wikipedia.org/wiki/Mdadm)
-- Povolení šifrování pro virtuální počítače se systémem Linux pomocí [LVM (Správce logických svazků)](https://msdn.microsoft.com/library/windows/desktop/bb540532) pro datové disky
+- Povolení šifrování pro virtuální počítače se systémem Linux pomocí [LVM (Správce logických svazků)](/windows/win32/fileio/about-volume-management) pro datové disky
 - Povolení šifrování u virtuálních počítačů s Windows nakonfigurovaných pomocí prostorů úložiště
 - Podporují se všechny veřejné oblasti Azure.
 
@@ -273,7 +273,7 @@ Logické servery a databáze SQL jsou SQL Database specifických konceptech a js
 
 Servery v SQL Database nejsou fyzické nebo instance virtuálních počítačů, místo toho se jedná o kolekce databází, správu sdílení a zásady zabezpečení, které jsou uložené v, označované jako "logická hlavní" databáze.
 
-![SQL Database](./media/isolation-choices/azure-isolation-fig11.png)
+![Databáze SQL](./media/isolation-choices/azure-isolation-fig11.png)
 
 Mezi logické hlavní databáze patří:
 

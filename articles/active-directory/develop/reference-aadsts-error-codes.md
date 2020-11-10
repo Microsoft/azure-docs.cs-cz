@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2020
+ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4bd738197c84d7dce36f087d170f61a55d8e9f32
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 59ed397f3bd54a324f8fa375a3ea870860c31142
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241323"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410925"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
@@ -74,7 +74,7 @@ Tady je Ukázková chybová odpověď:
 ## <a name="lookup-current-error-code-information"></a>Vyhledat aktuální informace o kódu chyby
 Chybové kódy a zprávy mohou být změněny.  Nejaktuálnější informace najdete na stránce, kde [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) najdete popis chyb AADSTS, opravy a některá navrhovaná řešení.  
 
-Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdržíte kód chyby "AADSTS16000", proveďte hledání [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "16000".  Můžete také přímo propojit s konkrétní chybou přidáním čísla kódu chyby k adrese URL: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000) .
+Pokud například obdržíte kód chyby "AADSTS50058", proveďte hledání [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "50058".  Můžete také přímo propojit s konkrétní chybou přidáním čísla kódu chyby k adrese URL: [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058) .
 
 ## <a name="aadsts-error-codes"></a>Kódy chyb AADSTS
 

@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219893859d05eb419bc862484a9083abf8c26db7
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89276180"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409293"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Požadavky na hybridní identitu pro cloud Azure Government
 
@@ -36,7 +36,7 @@ Následující informace popisují implementaci předávacího ověřování a c
 Před nasazením předávacího agenta pro ověřování ověřte, zda existuje brána firewall mezi servery a službou Azure AD. Pokud brána firewall nebo proxy povolí blokované nebo bezpečné programy DNS (Domain Name System), přidejte následující připojení.
 
 > [!NOTE]
-> Následující pokyny platí také pro instalaci [konektoru služby Azure proxy aplikací služby AD](https://aka.ms/whyappproxy) pro Azure Government prostředí.
+> Následující pokyny platí také pro instalaci [konektoru služby Azure proxy aplikací služby AD](../manage-apps/what-is-application-proxy.md) pro Azure Government prostředí.
 
 |URL |Jak se používá|
 |-----|-----|

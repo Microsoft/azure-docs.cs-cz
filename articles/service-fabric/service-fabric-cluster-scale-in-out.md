@@ -3,12 +3,12 @@ title: Horizontální navýšení nebo navýšení Service Fabric clusteru
 description: Škálujte Service Fabric clusteru v nebo v souladu s požadavky nastavením pravidel automatického škálování pro každý typ uzlu nebo sadu škálování virtuálního počítače. Přidání uzlů do clusteru Service Fabric nebo jejich odebrání
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: c9393ca4531dea58859a4fc60509524e9c4a0b7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ee04c73b75d6b335e450ff816c51f0a3089b918
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246482"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409956"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Horizontální snížení nebo navýšení kapacity clusteru
 
@@ -54,7 +54,6 @@ Podle těchto pokynů [nastavte automatické škálování pro jednotlivé sady 
 > [!NOTE]
 > V měřítku ve scénáři, pokud váš typ uzlu nemá [úroveň odolnosti][durability] Gold nebo stříbrné, je nutné volat [rutinu Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate) s odpovídajícím názvem uzlu. Pro bronzovou odolnost se nedoporučuje škálovat ve více než jednom uzlu současně.
 > 
-> 
 
 ## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>Ruční přidání virtuálních počítačů do typu uzlu/sady škálování virtuálních počítačů
 
@@ -97,6 +96,9 @@ Pro stavovou službu potřebujete určit určitý počet uzlů, aby bylo možné
 ### <a name="remove-the-service-fabric-node"></a>Odebrání uzlu Service Fabric
 
 Postup ručního odebrání stavu uzlu se vztahuje pouze na typy uzlů s *bronzovou* úrovní odolnosti.  Pro *stříbro* a *zlatou* úroveň odolnosti se tyto kroky provádí automaticky na platformě. Další informace o odolnosti najdete v článku [Plánování kapacity clusteru Service Fabric][durability].
+
+>[!NOTE]
+> Udržujte minimální počet pěti uzlů pro všechny sady škálování virtuálních počítačů, které mají povolenou úroveň odolnosti Gold nebo stříbrné. Cluster zadáte chybový stav, pokud budete škálovat pod tuto prahovou hodnotu a budete muset ručně vyčistit odebrané uzly.
 
 V zájmu toho, aby byly uzly clusteru rovnoměrně rozdělené v doménách upgradu a doménách selhání a aby se tedy i rovnoměrně využívaly, je potřeba jako první odebrat naposledy vytvořený uzel. Jinak řečeno, uzly by se měly odebírat v opačném pořadí, než v jakém došlo k jejich vytvoření. Naposledy vytvořený uzel je uzel s nejvyšší hodnotou vlastnosti `virtual machine scale set InstanceId`. Následující příklady kódu vracejí naposledy vytvořený uzel.
 
@@ -239,6 +241,9 @@ Abyste se ujistili, že je uzel odebraný při odebrání virtuálního počíta
 
 1. Vyberte úroveň životnosti Gold nebo stříbrného pro typy uzlů v clusteru, což vám umožní integraci infrastruktury. Tím se pak po horizontálním navýšení kapacity budou automaticky odebírat uzly ze stavu FM (System Services).
 Tady najdete [Podrobnosti o úrovních trvanlivosti](service-fabric-cluster-capacity.md) .
+
+> [!NOTE]
+> Udržujte minimální počet pěti uzlů pro všechny sady škálování virtuálních počítačů, které mají povolenou úroveň odolnosti Gold nebo stříbrné. Cluster zadáte chybový stav, pokud budete škálovat pod tuto prahovou hodnotu a budete muset ručně vyčistit odebrané uzly.
 
 2. Po škálování instance virtuálního počítače v nástroji je potřeba zavolat [rutinu Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate).
 

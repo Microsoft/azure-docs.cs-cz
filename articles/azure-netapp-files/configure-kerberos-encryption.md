@@ -12,22 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: f4b485e79bfa89fe293c99fc4e84fc8c0729396a
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 1ffbcc24a2ee386be1a8ce50b55375d5bd458df1
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331885"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410092"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurace šifrování protokolu Kerberos NFSv 4.1 pro Azure NetApp Files
 
 Azure NetApp Files podporuje šifrování klienta NFS v režimech Kerberos (krb5, Krb5i a krb5p) pomocí šifrování AES-256. Tento článek popisuje požadované konfigurace pro použití svazku NFSv 4.1 s šifrováním protokolu Kerberos.
-
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
-
-* NFSv 4.1 svazky šifrování protokolu Kerberos v současné době nepodporují Azure Active Directory Domain Services (AADDS). 
 
 ## <a name="requirements"></a>Požadavky
 
@@ -93,7 +89,7 @@ Postupujte podle pokynů v části [Konfigurace klienta NFS pro Azure NetApp Fil
 
 2. Pokud chcete zobrazit pokyny, vyberte ze svazku **pokyny k připojení** .
 
-    Příklad: 
+    Zde je příklad: 
 
     ![Pokyny pro připojení ke svazkům protokolu Kerberos](../media/azure-netapp-files/mount-instructions-kerberos-volume.png)  
 

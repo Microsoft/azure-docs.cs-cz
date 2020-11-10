@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 72aff2a2761d3aae695968bd5b4b9d07eab1697f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a5b20efbf804c2ea1097f905da1cfd62727ff15
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547686"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410687"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -69,9 +69,9 @@ V následující tabulce jsou uvedena vynutila omezení. Hodnoty odkazují na je
 
    Nakonec, pokud je velikost datové části mezi 156KB a 160 KB, budete moct ve svém rozbočovači udělat jenom 1 volání za sekundu na jednotku, abyste mohli zvýšit počet 160 KB/s/jednotku.
 
-*  Pro úlohy, které se týkají *operací zařízení (metoda aktualizace s dvojitou platností, vyvolání přímé metody)* pro vrstvu S2, 50/s/jednotku platí jenom při vyvolání metod pomocí úloh. Pokud přímo vyvoláte přímé metody, použije se původní limit pro omezení na 24 MB/s/jednotku (pro S2).
+*  Pro úlohy, které jsou *operacemi zařízení (metoda aktualizace s dvojitou platností, vyvolání přímé metody)* pro vrstvu S3, 50/s/jednotku platí jenom při vyvolání metod pomocí úloh. Pokud přímo vyvoláte přímé metody, použije se původní limit omezení na 24 MB/s/jednotku (pro S3).
 
-*  **Kvóta** je agregovaný počet zpráv, které můžete poslat v rámci svého centra *za den* . Omezení kvóty vašeho centra najdete pod **celkovým počtem zpráv za den** na [stránce s cenami IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+*  **Kvóta** je agregovaný počet zpráv, které můžete poslat v rámci svého centra *za den*. Omezení kvóty vašeho centra najdete pod **celkovým počtem zpráv za den** na [stránce s cenami IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 *  Omezení typu cloud-zařízení a zařízení-Cloud určují maximální *rychlost* , kterou můžete odesílat zprávy--počet zpráv bez ohledu na bloky o velikosti 4 KB. Každá zpráva může mít až 256 KB, což je [maximální velikost zprávy](iot-hub-devguide-quotas-throttling.md#other-limits).
 
@@ -79,7 +79,7 @@ V následující tabulce jsou uvedena vynutila omezení. Hodnoty odkazují na je
 
 ### <a name="traffic-shaping"></a>Tvarování provozu
 
-Aby bylo možné přizpůsobit shlukový přenos, IoT Hub přijmout požadavky nad omezením po dobu omezeného času. Prvních pár těchto požadavků se zpracovává okamžitě. Pokud však počet požadavků pokračuje v rozporu s omezením, IoT Hub začne umísťovat požadavky do fronty a zpracovány při dosažení limitu. Tento efekt se nazývá *Změna provozu* . Kromě toho je velikost této fronty omezená. Pokud dojde k porušení omezení, nakonec se fronta vyplní a IoT Hub spustí zamítnutí požadavků `429 ThrottlingException` .
+Aby bylo možné přizpůsobit shlukový přenos, IoT Hub přijmout požadavky nad omezením po dobu omezeného času. Prvních pár těchto požadavků se zpracovává okamžitě. Pokud však počet požadavků pokračuje v rozporu s omezením, IoT Hub začne umísťovat požadavky do fronty a zpracovány při dosažení limitu. Tento efekt se nazývá *Změna provozu*. Kromě toho je velikost této fronty omezená. Pokud dojde k porušení omezení, nakonec se fronta vyplní a IoT Hub spustí zamítnutí požadavků `429 ThrottlingException` .
 
 Například můžete použít simulované zařízení k 200 posílání zpráv typu zařízení-Cloud za sekundu do IoT Hub S1 (která má limit 100/s D2C posílá). Pro první minutu nebo dvě se zprávy zpracovávají okamžitě. Vzhledem k tomu, že zařízení pokračuje v posílání více zpráv, než je limit omezení, IoT Hub začne pouze zpracovávat zprávy 100 za sekundu a zbývající ve frontě vloží. Začnete všímáte zvýšené latence. Nakonec začnete s tím, `429 ThrottlingException` jak se zaplní fronta, a ["počet chyb omezování" IoT Hub metrika](monitor-iot-hub-reference.md#device-telemetry-metrics) začne zvyšovat. Informace o tom, jak vytvářet výstrahy a grafy založené na metrikách, najdete v tématu [monitorování IoT Hub](monitor-iot-hub.md).
 
@@ -139,4 +139,4 @@ Podrobné informace o chování omezení IoT Hub najdete v příspěvku na blogu
 Další referenční témata v tomto IoT Hub příručce pro vývojáře zahrnují:
 
 * [Koncové body IoT Hubu](iot-hub-devguide-endpoints.md)
-* [IoT Hub monitorování](monitor-iot-hub.md)
+* [Monitorování IoT Hubu](monitor-iot-hub.md)

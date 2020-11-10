@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 10/16/2020
-ms.openlocfilehash: 51fd8b8427dd8214e22fa59e50b26bb9db237946
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 749807349fd83f9639461fd4ddd9ab771d108119
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322058"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410551"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových nebo bezstavových pracovních postupů ve Visual Studio Code s využitím rozšíření Azure Logic Apps (Preview)
 
@@ -110,8 +110,6 @@ Pro tuto veřejnou verzi Preview nejsou tyto možnosti k dispozici nebo nejsou p
 
 * Nový typ prostředku **Aplikace logiky (Preview)** můžete nasadit jenom do [plánu hostování Premium nebo App Service v Azure](#publish-azure) nebo do [kontejneru Docker](#deploy-docker), a ne do [prostředí ISEs (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Plány hostování **spotřeby** nejsou podporované ani nejsou k dispozici pro nasazení tohoto typu prostředku.
 
-* V Azure Portal nemůžete vytvářet nové aplikace logiky s novým typem prostředku **Aplikace logiky (Preview)** . Tyto aplikace logiky můžete vytvořit pouze v Visual Studio Code. Po nasazení Logic Apps s tímto typem prostředku z Visual Studio Code do Azure ale můžete [do těchto aplikací logiky přidávat nové pracovní postupy](#add-workflows).
-
 ## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="access-and-connectivity"></a>Přístup a připojení
@@ -135,7 +133,7 @@ Pro tuto veřejnou verzi Preview nejsou tyto možnosti k dispozici nebo nejsou p
    >
    > ![Snímek obrazovky, který zobrazuje emulátor Azure Storage spuštěný.](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
 
-### <a name="tools"></a>nástroje
+### <a name="tools"></a>Nástroje
 
 * [Visual Studio Code 1.30.1 (leden 2019) nebo vyšší](https://code.visualstudio.com/), což je zdarma. Také si stáhněte a nainstalujte tyto další nástroje pro Visual Studio Code, pokud je ještě nemáte:
 
@@ -774,12 +772,7 @@ V Visual Studio Code můžete zobrazit všechny nasazené aplikace logiky ve va�
 
 ## <a name="find-and-manage-deployed-logic-apps-in-the-portal"></a>Hledání a Správa nasazených aplikací logiky na portálu
 
-V Azure Portal můžete zobrazit všechny nasazené aplikace logiky, které jsou ve vašem předplatném Azure, ať už se jedná o původní typ prostředku **Logic Apps** nebo typ prostředku **Aplikace logiky (Preview)** . V současné době se každý typ prostředku organizuje a spravuje jako samostatné kategorie v Azure.
-
-> [!NOTE]
-> Ve verzi Public Preview můžete v Azure Portal jenom zobrazit nasazené prostředky **Aplikace logiky (Preview)** , nevytvářet nové prostředky **Aplikace logiky (Preview)** . Tyto aplikace logiky můžete vytvořit pouze v Visual Studio Code. Do nasazených aplikací logiky ale můžete [Přidat pracovní postupy](#add-workflows) s tímto typem prostředku.
-
-Pokud chcete najít Logic Apps, které mají typ prostředku **Aplikace logiky (Preview)** , postupujte podle těchto kroků:
+V Azure Portal můžete zobrazit všechny nasazené aplikace logiky, které jsou ve vašem předplatném Azure, ať už se jedná o původní typ prostředku **Logic Apps** nebo typ prostředku **Aplikace logiky (Preview)** . V současné době se každý typ prostředku organizuje a spravuje jako samostatné kategorie v Azure. Pokud chcete najít Logic Apps, které mají typ prostředku **Aplikace logiky (Preview)** , postupujte podle těchto kroků:
 
 1. Do vyhledávacího pole Azure Portal zadejte `logic app preview` . Po zobrazení seznamu výsledků vyberte v části **služby** možnost **Aplikace logiky (Preview)**.
 
@@ -876,7 +869,7 @@ Pokud jste projekt již nasadili do Azure Portal, postupujte takto:
 
 1. Do pole **hodnota** zadejte následující hodnotu: `WithStatelessRunHistory`
 
-   Například:
+   Zde je příklad:
 
    ![Snímek obrazovky, který zobrazuje prostředek Azure Portal a aplikace logiky (Preview) s názvem "konfigurace" > "nastavení nového aplikace" < otevře podokno přidat/upravit nastavení aplikace, a pracovní postupy. {yourWorkflowName}. Možnost OperationOptions je nastavena na hodnotu "WithStatelessRunHistory".](./media/create-stateful-stateless-workflows-visual-studio-code/stateless-operation-options-run-history.png)
 

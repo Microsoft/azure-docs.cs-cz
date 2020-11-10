@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458616"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410211"
 ---
 # <a name="azure-encryption-overview"></a>Přehled šifrování v Azure
 
@@ -45,15 +45,15 @@ Při šifrování na straně klienta nemají Poskytovatelé cloudových služeb 
 
 Tři modely šifrování na straně serveru nabízejí různé charakteristiky správy klíčů, které si můžete vybrat podle svých požadavků:
 
-- **Klíče spravované službou**: poskytuje kombinaci řízení a pohodlí s nízkou režií.
+- **Klíče spravované službou** : poskytuje kombinaci řízení a pohodlí s nízkou režií.
 
-- **Klíče spravované zákazníkem**: poskytuje kontrolu nad klíči, včetně podpory BYOK (Přineste si vlastní klíče), nebo umožňuje vygenerovat nové.
+- **Klíče spravované zákazníkem** : poskytuje kontrolu nad klíči, včetně podpory BYOK (Přineste si vlastní klíče), nebo umožňuje vygenerovat nové.
 
-- **Klíče spravované službou v hardwaru ovládaném zákazníkem**: umožňuje spravovat klíče ve vašem vlastním úložišti, mimo kontrolu společnosti Microsoft. Tato vlastnost se nazývá hostitel vlastního klíče (HYOK). Konfigurace je ale komplexní a většina služeb Azure tento model nepodporuje.
+- **Klíče spravované službou v hardwaru ovládaném zákazníkem** : umožňuje spravovat klíče ve vašem vlastním úložišti, mimo kontrolu společnosti Microsoft. Tato vlastnost se nazývá hostitel vlastního klíče (HYOK). Konfigurace je ale komplexní a většina služeb Azure tento model nepodporuje.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Virtuální počítače s Windows a Linuxem můžete chránit pomocí služby [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss), která využívá technologii [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) k ochraně disků a datových disků operačního systému pomocí úplného šifrování svazku.
+Virtuální počítače s Windows a Linuxem můžete chránit pomocí služby [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md), která využívá technologii [Windows BitLocker](/previous-versions/windows/it-pro/windows-vista/cc766295(v=ws.10)) a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) k ochraně disků a datových disků operačního systému pomocí úplného šifrování svazku.
 
 Šifrovací klíče a tajné kódy jsou v [předplatném Azure Key Vault](../../key-vault/general/overview.md)chráněny. Pomocí služby Azure Backup můžete zálohovat a obnovovat šifrované virtuální počítače, které používají konfiguraci klíčového šifrovacího klíče (KEK).
 
@@ -83,13 +83,13 @@ Nakonec můžete použít také klientskou knihovnu Azure Storage pro jazyk Java
 
 #### <a name="transparent-data-encryption"></a>Transparentní šifrování dat
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) se používá k šifrování datových souborů služby [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) v reálném čase pomocí šifrovacího klíče databáze (klíč DEK), který je uložený v záznamu spuštění databáze pro dostupnost během obnovení.
+[TDE](/sql/relational-databases/security/encryption/transparent-data-encryption-tde) se používá k šifrování datových souborů služby [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) v reálném čase pomocí šifrovacího klíče databáze (klíč DEK), který je uložený v záznamu spuštění databáze pro dostupnost během obnovení.
 
 TDE chrání data a soubory protokolů pomocí šifrovacích algoritmů AES a Triple Data Encryption Standard (3DES). Šifrování databázového souboru se provádí na úrovni stránky. Stránky v zašifrované databázi jsou před zápisem na disk zašifrované a při jejich čtení do paměti se dešifrují. TDE je teď ve výchozím nastavení povolená u nově vytvořených databází Azure SQL.
 
 #### <a name="always-encrypted-feature"></a>Always Encrypted funkce
 
-Díky funkci [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) v Azure SQL můžete šifrovat data v rámci klientských aplikací předtím, než je uložíte v Azure SQL Database. Můžete také povolit delegování místní správy databáze třetím stranám a zachovat oddělení mezi osobami, které vlastní, a mohou zobrazovat data a osoby, které ji spravují, ale nemají k nim přístup.
+Díky funkci [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) v Azure SQL můžete šifrovat data v rámci klientských aplikací předtím, než je uložíte v Azure SQL Database. Můžete také povolit delegování místní správy databáze třetím stranám a zachovat oddělení mezi osobami, které vlastní, a mohou zobrazovat data a osoby, které ji spravují, ale nemají k nim přístup.
 
 #### <a name="cell-level-or-column-level-encryption"></a>Šifrování na úrovni buňky nebo sloupce
 
@@ -125,9 +125,9 @@ PFS ( [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) )
 
 Když pracujete s Azure Storage přes Azure Portal, provedou se všechny transakce přes protokol HTTPS. K interakci s Azure Storage můžete použít taky REST API úložiště přes HTTPS. Pomocí protokolu HTTPS můžete vyhovět při volání rozhraní REST API pro přístup k objektům v účtech úložiště tím, že povolíte zabezpečený přenos, který je pro účet úložiště nutný.
 
-Sdílené přístupové podpisy ([SAS](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)), které se dají použít k delegování přístupu k objektům Azure Storage, zahrnují možnost určit, že se při použití sdílených přístupových podpisů dá použít jenom protokol HTTPS. Tento přístup zajišťuje, že kdokoli, kdo posílá odkazy s tokeny SAS, používá správný protokol.
+Sdílené přístupové podpisy ([SAS](../../storage/common/storage-sas-overview.md)), které se dají použít k delegování přístupu k objektům Azure Storage, zahrnují možnost určit, že se při použití sdílených přístupových podpisů dá použít jenom protokol HTTPS. Tento přístup zajišťuje, že kdokoli, kdo posílá odkazy s tokeny SAS, používá správný protokol.
 
-[SMB 3,0](https://technet.microsoft.com/library/dn551363(v=ws.11).aspx#BKMK_SMBEncryption), který se používá pro přístup ke sdíleným složkám souborů Azure, podporuje šifrování a je dostupný v systémech windows Server 2012 R2, Windows 8, Windows 8.1 a Windows 10. Umožňuje přístup mezi jednotlivými oblastmi a dokonce i přístup na plochu.
+[SMB 3,0](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn551363(v=ws.11)#BKMK_SMBEncryption), který se používá pro přístup ke sdíleným složkám souborů Azure, podporuje šifrování a je dostupný v systémech windows Server 2012 R2, Windows 8, Windows 8.1 a Windows 10. Umožňuje přístup mezi jednotlivými oblastmi a dokonce i přístup na plochu.
 
 Šifrování na straně klienta šifruje data předtím, než se odešlou do instance Azure Storage, aby se při přenosu přes síť zašifroval.
 
@@ -143,7 +143,7 @@ Data přenášená do, z a mezi virtuálními počítači, které používají s
 
 ### <a name="rdp-sessions"></a>Relace protokolu RDP
 
-K VIRTUÁLNÍmu počítači se můžete připojit a přihlásit se pomocí [protokol RDP (Remote Desktop Protocol) (RDP)](https://msdn.microsoft.com/library/aa383015(v=vs.85).aspx) z klientského počítače se systémem Windows nebo z počítače Mac s nainstalovaným klientem RDP. Data přenášená přes síť v relacích RDP je možné chránit pomocí protokolu TLS.
+K VIRTUÁLNÍmu počítači se můžete připojit a přihlásit se pomocí [protokol RDP (Remote Desktop Protocol) (RDP)](/windows/win32/termserv/remote-desktop-protocol) z klientského počítače se systémem Windows nebo z počítače Mac s nainstalovaným klientem RDP. Data přenášená přes síť v relacích RDP je možné chránit pomocí protokolu TLS.
 
 Službu Vzdálená plocha můžete také použít k připojení k virtuálnímu počítači se systémem Linux v Azure.
 
@@ -163,7 +163,7 @@ Sítě VPN typu Site-to-site používají k šifrování přenosu [protokol IPSe
 
 ### <a name="point-to-site-vpns"></a>Sítě VPN typu Point-to-Site
 
-Sítě VPN typu Point-to-site umožňují jednotlivým klientským počítačům přístup k virtuální síti Azure. [Protokol SSTP (Secure Socket Tunneling Protocol)](https://technet.microsoft.com/library/2007.06.cableguy.aspx) slouží k vytvoření tunelu VPN. Může procházet brány firewall (tunel se zobrazí jako připojení HTTPS). Pro připojení Point-to-site můžete použít vlastní kořenovou certifikační autoritu infrastruktury veřejných klíčů (PKI).
+Sítě VPN typu Point-to-site umožňují jednotlivým klientským počítačům přístup k virtuální síti Azure. [Protokol SSTP (Secure Socket Tunneling Protocol)](/previous-versions/technet-magazine/cc162322(v=msdn.10)) slouží k vytvoření tunelu VPN. Může procházet brány firewall (tunel se zobrazí jako připojení HTTPS). Pro připojení Point-to-site můžete použít vlastní kořenovou certifikační autoritu infrastruktury veřejných klíčů (PKI).
 
 Můžete nakonfigurovat připojení VPN typu Point-to-site k virtuální síti pomocí Azure Portal s ověřováním certifikátů nebo PowerShellem.
 
@@ -179,7 +179,7 @@ Připojení brány VPN typu Site-to-site můžete použít k připojení místn�
 
 Připojení VPN typu Site-to-site k virtuální síti můžete nakonfigurovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
 
 [Vytvoření připojení typu Site-to-site v Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
@@ -201,9 +201,9 @@ Díky Key Vaultu organizace nemusí konfigurovat, opravovat a udržovat moduly h
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled zabezpečení Azure](get-started-overview.md)
+- [Přehled zabezpečení Azure](./overview.md)
 - [Přehled zabezpečení sítě Azure](network-overview.md)
-- [Přehled zabezpečení Azure Database](database-security-overview.md)
+- [Přehled zabezpečení Azure Database](../../azure-sql/database/security-overview.md)
 - [Přehled zabezpečení virtuálních počítačů Azure](virtual-machines-overview.md)
 - [Šifrování v klidovém stavu](encryption-atrest.md)
 - [Osvědčené postupy šifrování a zabezpečení dat](data-encryption-best-practices.md)

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: d5de8da548c2e141eb921aa4f95e82f7199ae1f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e8310d5941916ed3e4a9d7c66af96779be8f939
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602366"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410272"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity.
 
@@ -177,9 +177,9 @@ Následující diagramy popisují komponenty architektury nejvyšší úrovně, 
 |Kde k ověřování dochází?|V cloudu|V cloudu po výměně zabezpečeného ověřování hesla pomocí místního ověřovacího agenta|Místní|
 |Jaké jsou požadavky na místní server nad rámec zřizovacího systému: Azure AD Connect?|Žádné|Jeden server pro každého dalšího ověřovacího agenta|Dva nebo více AD FS serverů<br><br>Dva nebo více serverů WAP v hraniční/DMZ síti|
 |Jaké jsou požadavky na místní Internet a sítě mimo zřizovací systém?|Žádné|[Odchozí internetový přístup](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) ze serverů používajících ověřovací agenty|[Příchozí internetový přístup](/windows-server/identity/ad-fs/overview/ad-fs-requirements) k serverům WAP v hraniční síti<br><br>Příchozí síťový přístup k serverům AD FS ze serverů WAP v hraniční síti<br><br>Vyrovnávání zatížení sítě|
-|Existuje požadavek na certifikát TLS/SSL?|No|No|Yes|
+|Existuje požadavek na certifikát TLS/SSL?|Ne|Ne|Ano|
 |Existuje nějaké řešení pro monitorování stavu?|Nevyžadováno|Stav agenta poskytnutý [centrem pro správu Azure Active Directory](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
-|Přihlašuje uživatelé k prostředkům cloudu jednotné přihlašování ze zařízení připojených k doméně v podnikové síti?|Ano, [bez problémů s jednotným PŘIhlašováním](../../active-directory/hybrid/how-to-connect-sso.md)|Ano, [bez problémů s jednotným PŘIhlašováním](../../active-directory/hybrid/how-to-connect-sso.md)|Yes|
+|Přihlašuje uživatelé k prostředkům cloudu jednotné přihlašování ze zařízení připojených k doméně v podnikové síti?|Ano, [bez problémů s jednotným PŘIhlašováním](../../active-directory/hybrid/how-to-connect-sso.md)|Ano, [bez problémů s jednotným PŘIhlašováním](../../active-directory/hybrid/how-to-connect-sso.md)|Ano|
 |Jaké typy přihlašování se podporují?|UserPrincipalName + heslo<br><br>Windows-Integrated ověřování pomocí [bezproblémového jednotného PŘIhlašování](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternativní ID přihlášení](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + heslo<br><br>Windows-Integrated ověřování pomocí [bezproblémového jednotného PŘIhlašování](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternativní ID přihlášení](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + heslo<br><br>sAMAccountName + heslo<br><br>Ověřování Windows-Integrated<br><br>[Ověřování pomocí certifikátu a čipové karty](/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternativní ID přihlášení](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Podporuje se Windows Hello pro firmy?|[Klíčový model vztahu důvěryhodnosti](/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Klíčový model vztahu důvěryhodnosti](/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Vyžaduje úroveň funkčnosti domény Windows Server 2016.*|[Klíčový model vztahu důvěryhodnosti](/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model vztahu důvěryhodnosti certifikátu](/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |Jaké jsou možnosti vícefaktorového ověřování?|[Azure MFA](/azure/multi-factor-authentication/)<br><br>[Vlastní ovládací prvky s podmíněným přístupem *](../../active-directory/conditional-access/controls.md)|[Azure MFA](/azure/multi-factor-authentication/)<br><br>[Vlastní ovládací prvky s podmíněným přístupem *](../../active-directory/conditional-access/controls.md)|[Azure MFA](/azure/multi-factor-authentication/)<br><br>[Azure MFA Server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[Vícefaktorové ověřování třetích stran](/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Vlastní ovládací prvky s podmíněným přístupem *](../../active-directory/conditional-access/controls.md)|
@@ -221,4 +221,4 @@ V dnešním světě jsou hrozby k dispozici 24 hodin denně a pocházejí od vš
 
 [Začněte s Azure](../fundamentals/active-directory-whatis.md) AD a nasaďte správné řešení ověřování pro vaši organizaci.
 
-Pokud uvažujete o migraci z federovaných na cloudové ověřování, přečtěte si další informace o tom, jak [se mění Metoda přihlašování](../../active-directory/hybrid/plan-connect-user-signin.md). Abychom vám pomohli naplánovat a implementovat migraci, použít [tyto plány nasazení projektu](https://aka.ms/deploymentplans) nebo zvážit použití nové [fáze přípravy](../../active-directory/hybrid/how-to-connect-staged-rollout.md) pro migraci federovaných uživatelů na použití cloudového ověřování v rámci dvoufázového přístupu.
+Pokud uvažujete o migraci z federovaných na cloudové ověřování, přečtěte si další informace o tom, jak [se mění Metoda přihlašování](../../active-directory/hybrid/plan-connect-user-signin.md). Abychom vám pomohli naplánovat a implementovat migraci, použít [tyto plány nasazení projektu](../fundamentals/active-directory-deployment-plans.md) nebo zvážit použití nové [fáze přípravy](../../active-directory/hybrid/how-to-connect-staged-rollout.md) pro migraci federovaných uživatelů na použití cloudového ověřování v rámci dvoufázového přístupu.

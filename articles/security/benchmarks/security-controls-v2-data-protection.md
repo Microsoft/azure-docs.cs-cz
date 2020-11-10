@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ab42acbc07072f48d28b3adb5bc4c65672f257bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde95006865a2aab2da4a5d6d27ccccc14d74d12
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314313"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408918"
 ---
 # <a name="security-control-v2-data-protection"></a>Řízení zabezpečení v2: Ochrana dat
 
@@ -32,11 +32,11 @@ Pomocí Azure SQL Information Protection můžete pomoct při klasifikaci a ozna
 
 - [Označení citlivých informací pomocí Azure Information Protection](/azure/information-protection/what-is-information-protection) 
 
-- [Implementace zjišťování dat SQL Azure](/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Implementace zjišťování dat SQL Azure](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-**Odpovědnost**: sdílená
+**Odpovědnost** : sdílená
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -60,9 +60,9 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 - [Pochopení ochrany zákaznických dat v Azure](../fundamentals/protection-customer-data.md)
 
-**Odpovědnost**: sdílená
+**Odpovědnost** : sdílená
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -86,11 +86,11 @@ Pokud je to vyžadováno pro zajištění kompatibility ochrany před únikem in
 
 - [Povolit Azure SQL ATP](../../azure-sql/database/threat-detection-overview.md)
 
-- [Povolit Azure Storage ATP](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-security-center)
+- [Povolit Azure Storage ATP](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
-**Odpovědnost**: sdílená
+**Odpovědnost** : sdílená
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security) 
 
@@ -116,9 +116,9 @@ Ve výchozím nastavení poskytuje Azure šifrování dat při přenosu mezi dat
 
 - [Dvojité šifrování pro Azure data při přenosu](../fundamentals/double-encryption.md#data-in-transit)
 
-**Odpovědnost**: sdílená
+**Odpovědnost** : sdílená
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -140,15 +140,15 @@ Azure ve výchozím nastavení poskytuje šifrování pro neaktivní data. U vys
 
 - [Vysvětlení šifrování v klidovém umístění v Azure](../fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services)
 
-- [Postup konfigurace šifrovacích klíčů spravovaných zákazníkem](../../storage/common/storage-encryption-keys-portal.md)
+- [Postup konfigurace šifrovacích klíčů spravovaných zákazníkem](../../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [Model šifrování a tabulka správy klíčů](../fundamentals/encryption-models.md)
 
 - [Data s dvojitým šifrováním v Azure](../fundamentals/double-encryption.md#data-at-rest)
 
-**Odpovědnost**: sdílená
+**Odpovědnost** : sdílená
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -157,4 +157,3 @@ Azure ve výchozím nastavení poskytuje šifrování pro neaktivní data. U vys
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Zabezpečení dat](/azure/cloud-adoption-framework/organize/cloud-security-data-security)
-

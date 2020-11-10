@@ -3,85 +3,94 @@ title: Konfigurace brány signálu pro záznam videa založeného na událostech
 description: Tento článek poskytuje pokyny ke konfiguraci brány signálu v mediálním grafu.
 ms.topic: how-to
 ms.date: 11/3/2020
-ms.openlocfilehash: 4204a43915f9c79cae7dfe82b37e741fee89fb4a
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: afcec7c03f1353f08b58311278f5a533e0c911bc
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380139"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410789"
 ---
 # <a name="configure-a-signal-gate-for-event-based-video-recording"></a>Konfigurace brány signálu pro nahrávání videa založeného na událostech
 
-V rámci mediálního grafu umožňuje [uzel procesoru signálu signálu](media-graph-concept.md#signal-gate-processor) předávané médium z jednoho uzlu do druhého, když je brána aktivována událostí. Když se aktivuje, otevře se brána a v průběhu zadané doby umožní tok médií. V případě nepřítomnosti událostí pro aktivaci brány se tato brána ukončí a zastaví se tok médií. Procesor brány signálu je vhodný pro nahrávání videa založeného na událostech.
-V tomto článku se seznámíte s podrobnostmi o tom, jak nakonfigurovat procesor pro bránu signálu.
+V rámci mediálního grafu umožňuje [uzel procesoru signálu signálu](media-graph-concept.md#signal-gate-processor) předávané médium z jednoho uzlu do druhého, pokud je brána aktivována událostí. Když se aktivuje, brána se otevře a umožní tok multimédií po určenou dobu. V případě nepřítomnosti událostí pro aktivaci brány se zavře a zastaví se přehrávání médií. Procesor brány signálu můžete použít pro nahrávání videa založeného na událostech.
 
-## <a name="suggested-pre-reading"></a>Navrhované před čtením
+V tomto článku se dozvíte, jak nakonfigurovat procesor pro bránu signálu.
+
+## <a name="suggested-prereading"></a>Navrhované předčtení
 -   [Graf médií](media-graph-concept.md)
 -   [Nahrávání videa na základě událostí](event-based-video-recording-concept.md)
 
 
 ## <a name="problem"></a>Problém
-Uživatel může chtít spustit záznam konkrétního času před nebo po spuštění této brány událostí. Uživatel ví přijatelnou latenci v rámci svého systému, takže uživatel chce zadat latenci procesoru brány signálu. Uživatel chce zadat nejkratší a nejdelší, že doba jejich záznamu může být bez ohledu na to, kolik nových událostí se dostalo.
+Uživatel může chtít spustit záznam v určitou dobu před nebo po spuštění brány událostí. Uživatel ví přijatelnou latenci v rámci svého systému. Takže chtějí určit latenci procesoru pro bránu signálu. Také chtějí zadat minimální a maximální dobu trvání záznamu, bez ohledu na to, kolik nových událostí bylo přijato.
  
 ### <a name="use-case-scenario"></a>Scénář použití
-Předpokládejme, že chcete nahrávat video pokaždé, když se otevře přední dvířka vaší budovy. Potřebujete **X** sekund před otevřenými dvířky zahrnutými do záznamu. Chcete, aby nahrávání bylo poslední alespoň **Y** sekund, pokud se dvířka znovu neotevřou. Chcete, aby nahrávání bylo poslední v řádu **Z** sekund, pokud se dveře opakovaně otevírají. Víte, že senzor dvířek má latenci **v sekundách a** chcete snížit pravděpodobnost, že se události nepovažují ("zpožděné doručení"), takže chcete, aby se události dostaly aspoň **K** sekundách.
+Předpokládejme, že chcete nahrávat video pokaždé, když se otevře přední dvířka vaší budovy. Chcete nahrávat: 
+
+- Před otevřením dvířek zahrňte *X* sekund. 
+- Poslední alespoň *Y* sekund, pokud se dvířka znovu neotevřou 
+- Poslední v řádu *Z* sekund, pokud se dvířka opakovaně otevírají. 
+ 
+Víte, že senzor dvířek má latenci *k* (s). Chcete-li snížit pravděpodobnost, že se události nepovažují za pozdní doručení, chcete, aby byly události doručeny alespoň *K* sekundám.
 
 
 ## <a name="solution"></a>Řešení
 
-**_Úprava parametrů procesoru brány signálu_* _
+Pokud chcete tento problém vyřešit, změňte parametry procesoru pro bránu signálu.
 
-Procesor brány signálu je nakonfigurovaný pomocí 4 parametrů:
-- _ *okno vyhodnocení aktivace**
-- **posun aktivačního signálu**
-- **minimální interval aktivace**
-- **maximální interval aktivace** 
+Chcete-li nakonfigurovat procesor brány signálu, použijte tyto čtyři parametry:
+- Okno vyhodnocení aktivace
+- Posun aktivačního signálu
+- Minimální interval aktivace
+- Maximální interval aktivace
 
-Když se aktivuje procesor brány signálu, zůstane otevřený pro minimální dobu aktivace. Aktivační událost začíná na časovém razítku pro nejstarší událost a posun aktivačního signálu. Pokud se procesor brány signálu znovu aktivuje, zatímco je otevřený, časovač se resetuje a brána zůstane otevřená aspoň na minimální dobu aktivace. Procesor brány signálu nikdy nezůstane otevřený déle než maximální doba aktivace. Událost **(Event 1)** , která se vyskytuje před jinou **událostí (událost 2)** na základě časových razítek média, podléhá nepozornostu, pokud systém prodlevy a **událost 1** dorazí na procesor brány signálu po **události 2**. Pokud **událost 1** nepřijde mezi doručením **události 2** a **oknem hodnocení aktivace** , bude **událost 1** ignorována a nebude předána procesorem brány signálu. ID korelace jsou nastavena pro každou událost. Tato ID se nastavují od počáteční události a jsou sekvenční pro každou následující událost.
+Když se aktivuje procesor brány signálu, zůstane otevřený pro minimální dobu aktivace. Aktivační událost začíná v časovém razítku pro nejstarší událost a posun aktivačního signálu. 
+
+Pokud se procesor brány signálu znovu aktivuje, zatímco je otevřený, časovač se resetuje a brána zůstane otevřená aspoň na minimální dobu aktivace. Procesor brány signálu nikdy nezůstane otevřený déle než maximální doba aktivace. 
+
+Událost (Event 1), která se vyskytuje před jinou událostí (událost 2) na základě časových razítek médií, může být ignorována, pokud prodlevy systému a událost 1 dorazí na procesor brány signálu po události 2. Pokud událost 1 nepřijde mezi doručením události 2 a oknem hodnocení aktivace, je událost 1 považovat. Není předáván přes procesor brány signálu. 
+
+ID korelace jsou nastavena pro každou událost. Tato ID se nastavují z počáteční události. Pro každou z následujících událostí jsou sekvenční.
 
 > [!IMPORTANT]
-> Doba média je založena na časovém razítku média při výskytu události v médiu. Sekvence událostí přicházejících do brány signálu nesmí odrážet sekvenci událostí přicházejících v čase média.
+> Doba média je založena na časovém razítku média při výskytu události v médiu. Sekvence událostí, které přicházejí do brány signálu, nemusí odrážet sekvenci událostí, které dorazí v čase média.
 
 
-### <a name="parameters-based-on-when-events-arrive-in-physical-time-to-the-signal-gate"></a>Parametry: (na základě toho, kdy události dorazí do brány signálu v fyzickém čase)
+### <a name="parameters-based-on-the-physical-time-that-events-arrive-at-the-signal-gate"></a>Parametry na základě fyzického času, který události dorazí do brány signálu
 
-* **minimumActivationTime (nejkratší možná doba trvání záznamu)** = minimální počet sekund, po které bude procesor brány signálu otevřený po aktivaci pro příjem nových událostí, pokud se **maximumActivationTime** nepřerušil.
-* **maximumActivationTime (nejdelší možná doba trvání záznamu)** = maximální počet sekund od počáteční události, po jejímž uplynutí bude procesor brány signálu otevřený pro příjem nových událostí bez ohledu na to, jaké události se přijímají
-* **activationSignalOffset** = počet sekund mezi aktivací procesoru brány signálu a okamžikem nahrávání videa, obvykle je tato hodnota záporná, aby bylo možné spustit záznam před triggerem události.
-* **activationEvaluationWindow** = počet sekund od počáteční události aktivace, kdy se událost, ke které došlo před počáteční událostí, v čase média, musí dorazit na procesor brány signálu, než se bude považovat za "pozdní doručení".
+* **minimumActivationTime (nejkratší možná doba nahrávání)** : minimální počet sekund, po který procesor brány signálu zůstane otevřený, když se aktivuje pro příjem nových událostí, pokud není přerušený maximumActivationTime.
+* **maximumActivationTime (nejdelší možná doba pro nahrávání)** : maximální počet sekund od počáteční události, po které se procesor brány signálu otevře po aktivaci pro příjem nových událostí bez ohledu na to, jaké události se přijímají.
+* **activationSignalOffset** : počet sekund mezi aktivací procesoru brány signálu a zahájením záznamu videa. Obvykle je tato hodnota záporná, protože začíná záznam před aktivací události.
+* **activationEvaluationWindow** : počínaje počáteční událostí aktivace se počet sekund, ve kterých událost, ke které došlo před počáteční událostí, v čase média, musí dorazit na procesor brány signálu, než se zabere v úvahu a bude považován za pozdní doručení.
 
 > [!NOTE]
-> Pozdní doručení je jakákoli událost, která se dokončí po úspěšném dokončení okna pro vyhodnocení aktivace, ale tato událost byla doručena před počáteční událostí v čase média.
+> *Pozdní doručení* je jakákoli událost, která přijde po úspěšném dokončení okna pro vyhodnocení aktivace, ale ta dorazí do počáteční události v čase média.
 
 ### <a name="limits-of-parameters"></a>Limity parametrů
 
-* **activationEvaluationWindow: 0 sekund až 10 sekund**
-
-* **activationSignalOffset:-1 minuta až 1 minuta**
-
-* **minimumActivationTime: 1 sekunda až 1 hodina**
-
-* **maximumActivationTime: 1 sekunda až 1 hodina**
+* **activationEvaluationWindow** : 0 sekund až 10 sekund
+* **activationSignalOffset** :-1 minuta až 1 minuta
+* **minimumActivationTime** : 1 sekunda až 1 hodina
+* **maximumActivationTime** : 1 sekunda až 1 hodina
 
 
-Na základě případu použití se parametry nastaví takto:
+V případě použití byste nastavili parametry následujícím způsobem:
 
-* **activationEvaluationWindow = K s**
-* **activationSignalOffset =-X s**
-* **minimumActivationWindow = Y s**
-* **maximumActivationWindow = Z s**
+* **activationEvaluationWindow** : *KB* /s
+* **activationSignalOffset** : *-X* sekund
+* **minimumActivationWindow** : *Y* sekund
+* **maximumActivationWindow** : *Z* sekund
 
 
-Tady je příklad toho, co v části uzlu procesoru pro bránu signálu má být v topologii mediálního grafu pro následující hodnoty parametrů:
-* **activationEvaluationWindow = 1 sekunda**
-* **activationSignalOffset =-5 sekund**
-* **minimumActivationTime = 20 sekund**
-* **maximumActivationTime = 40 sekund**
+Tady je příklad toho, jak by oddíl uzlu **procesoru pro bránu signálu** vypadal v topologii mediálního grafu pro následující hodnoty parametrů:
+* **activationEvaluationWindow** : 1 sekunda
+* **activationSignalOffset** :-5 sekund
+* **minimumActivationTime** : 20 sekund
+* **maximumActivationTime** : 40 sekund
 
 > [!IMPORTANT]
 > Pro každou hodnotu parametru se očekává [Formát trvání ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations
-) . 
-**Např.: PT1S = 1 sekunda**
+) . Například PT1S = 1 sekunda.
 
 
 ```
@@ -107,51 +116,48 @@ Tady je příklad toho, co v části uzlu procesoru pro bránu signálu má být
 ```
 
 
-Podívejme se, jak se tato konfigurace procesoru signálu signálu bude chovat v různých scénářích záznamu.
+Nyní zvažte, jak se tato konfigurace procesoru signálu signálu bude chovat v různých scénářích záznamu.
 
+### <a name="recording-scenarios"></a>Scénáře záznamu
 
-**1 událost z 1 zdroje ( *normální aktivace* )**
+**Jedna událost z jednoho zdroje ( *normální aktivace* )**
 
-Procesor brány signálu, který přijímá jednu událost, by způsobil záznam, který spustí "posun aktivačního signálu" (5) sekund před tím, než se událost dorazila do brány. Zbývající část záznamu je "minimální doba aktivace" (20) sekund, protože žádné jiné události nepřicházejí do doby, než se minimální doba aktivace dokončí pro opětovné spuštění brány.
+Procesor brány signálu, který přijímá jednu událost, má za následek záznam, který před přijetím události do brány spustí 5 sekund (aktivační signál = 5 sekund). Zbytek záznamu je 20 sekund (minimální doba aktivace = 20 sekund), protože žádné jiné události nepřicházejí před koncem minimální doby aktivace pro opětovné spuštění brány.
 
 Příklad diagramu:
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/configure-signal-gate-how-to/normal-activation.svg" alt-text="Normální aktivace":::
+> :::image type="content" source="./media/configure-signal-gate-how-to/normal-activation.svg" alt-text="Diagram znázorňující normální aktivaci jedné události z jednoho zdroje.":::
 
 * Trvání záznamu =-offset + minimumActivationTime = [E1 + offset, E1 + minimumActivationTime]
 
 
-**2 události z 1 zdroje ( *aktivovaná aktivace* )**
+**Dvě události z jednoho zdroje (znovu *aktivované aktivace* )**
 
-Procesor brány signálu, který přijímá dvě události, by způsobil záznam, který spustí "posun aktivačního signálu" (pět) sekund před tím, než se první událost dorazila do brány. Druhá událost dorazí pět sekund po první události, což je před dokončením "minimální doba aktivace" (20) sekund od první události, a proto se brána znovu aktivuje, aby zůstala otevřená. Zbývající část záznamu je "minimální doba aktivace" (20) sekund, protože žádné jiné události nepřicházejí do doby, než se minimální doba aktivace od druhé události dokončí, aby se brána znovu znovu aktivovala.
-
-Příklad diagramu:
-> [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/configure-signal-gate-how-to/retriggering-activation.svg" alt-text="Opětovně aktivované aktivace":::
-
-* Doba nahrávání = – posun + (přijetí druhé události – přijetí 1. události) + minimumActivationTime
-
-
-**N událostí z 1 zdroje ( *maximální aktivace* )**
-
-Procesor brány signálu, který přijímá N událostí, má za následek záznam, který spustí "posun aktivačního signálu" (5) sekund před tím, než se první událost dorazila do brány. Vzhledem k tomu, že každá událost dorazí před dokončením minimální doby aktivace (20) sekund od předchozí události, brána se průběžně znovu aktivuje a zůstane otevřená, dokud "maximální doba aktivace" (40) sekund po první události, kdy by brána zavřela a už nepřijímala žádné nové události.
+Procesor brány signálu, který obdrží dvě události, má za následek záznam, který spustí 5 sekund (posun aktivačního signálu = 5 sekund) předtím, než událost dorazí do brány. Událost 2 také dorazí 5 sekund po události 1. Vzhledem k tomu, že událost 2 dorazí do konce minimální doby aktivace události 1 (20 sekund), brána se znovu aktivuje. Zbytek záznamu je 20 sekund (minimální doba aktivace = 20 sekund), protože žádné další události nepřicházejí před koncem minimální doby aktivace z události 2 pro opětovné spuštění brány.
 
 Příklad diagramu:
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/configure-signal-gate-how-to/maximum-activation.svg" alt-text="Maximální aktivace":::
+> :::image type="content" source="./media/configure-signal-gate-how-to/retriggering-activation.svg" alt-text="Diagram znázorňující opětovnou aktivaci dvou událostí z jednoho zdroje.":::
+
+* Trvání záznamu =-offset + (přijetí události 2-doručení události 1) + minimumActivationTime
+
+
+***N* událostí z jednoho zdroje ( *maximální aktivace* )**
+
+Procesor brány signálu, který obdrží *N* událostí, má za následek záznam, který spustí 5 sekund (posun aktivačního signálu = 5 sekund) před doručením první události do brány. Vzhledem k tomu, že každá událost dorazí před koncem minimální aktivace 20 sekund od předchozí události, je brána neustále znovu aktivována. Zůstane otevřený až do maximální doby aktivace 40 sekund od první události. Pak se brána zavře a už nebude přijímat žádné nové události.
+
+Příklad diagramu:
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/configure-signal-gate-how-to/maximum-activation.svg" alt-text="Diagram znázorňující maximální aktivaci N událostí z jednoho zdroje.":::
  
 * Trvání záznamu = – posun + maximumActivationTime
 
 > [!IMPORTANT]
-> V diagramech se předpokládá, že každá událost dorazí na stejnou instanci v poli fyzického a mediálního času. (Žádné zpožděné doručení)
+> V předchozích diagramech se předpokládá, že každá událost dorazí na stejnou dobu v poli fyzický čas a čas média. To znamená, že se předpokládá, že neexistují žádná pozdní doručení.
 
 ## <a name="next-steps"></a>Další kroky
 
-### <a name="try-it-out"></a>Vyzkoušet
-
-[Kurz pro nahrávání videa založeného na událostech](event-based-video-recording-tutorial.md)
-
-Pomocí kurzu pro nahrávání videa založeného na událostech upravte [topology.jsv](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json), upravte parametry uzlu signalgateProcessor a pak postupujte podle zbývající části kurzu. Zkontrolujte nahrávky videa a analyzujte efekt parametrů.
+Vyzkoušejte [kurz pro nahrávání videa založeného na událostech](event-based-video-recording-tutorial.md). Začněte úpravou [topology.jsna](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json). Upravte parametry uzlu signalgateProcessor a pak postupujte podle zbývající části kurzu. Zkontrolujte nahrávky videa a analyzujte efekt parametrů.
 
 
 

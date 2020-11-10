@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: d1837d84c97227ba3d8743c3717e2f68dafd6b95
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7c09a7f6c6a313852fc6212c6190a584ba5f67bd
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911388"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409888"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény
 
@@ -27,7 +27,7 @@ Tento článek popisuje běžnou bezpečnostní hrozbu převzetí subdomény a p
 
 ## <a name="what-is-subdomain-takeover"></a>Co je převzetí subdomény?
 
-Převzetí subdomény představují běžnou, vysoce závažnou hrozbu pro organizace, které pravidelně vytvářejí a odstraňují spoustu prostředků. K převzetí subdomény může dojít, když máte [záznam DNS](https://docs.microsoft.com/azure/dns/dns-zones-records#dns-records) , který odkazuje na prostředek Azure, který je k dispozici. Tyto záznamy DNS se také označují jako položky DNS dangling. Záznamy CNAME jsou pro tuto hrozbu obzvláště zranitelné. Převzetí subdomény umožňují škodlivým objektům actor přesměrovat provoz určený pro doménu organizace na lokalitu, která provádí škodlivou aktivitu.
+Převzetí subdomény představují běžnou, vysoce závažnou hrozbu pro organizace, které pravidelně vytvářejí a odstraňují spoustu prostředků. K převzetí subdomény může dojít, když máte [záznam DNS](../../dns/dns-zones-records.md#dns-records) , který odkazuje na prostředek Azure, který je k dispozici. Tyto záznamy DNS se také označují jako položky DNS dangling. Záznamy CNAME jsou pro tuto hrozbu obzvláště zranitelné. Převzetí subdomény umožňují škodlivým objektům actor přesměrovat provoz určený pro doménu organizace na lokalitu, která provádí škodlivou aktivitu.
 
 Běžný scénář pro převzetí subdomény:
 

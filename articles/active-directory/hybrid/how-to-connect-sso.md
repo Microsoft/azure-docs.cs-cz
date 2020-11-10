@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7baa851943db3e8c691b50c2cb5446a2adbbccc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5e50b9e5dc683eb30452dbb96d82c9f66de93763
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457987"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408001"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Bezproblémové jednotné přihlašování s Azure Active Directory
 
@@ -63,11 +63,11 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ano\*|Ano|Ano|Ano\*\*\*|–
-|Windows 8.1|Ano\*|Odpoví\*\*\*|Ano|Ano\*\*\*|–
-|Windows 8|Ano\*|–|Ano|Ano\*\*\*|–
-|Windows 7|Ano\*|–|Ano|Ano\*\*\*|–
-|Windows Server 2012 R2 nebo novější|Ano\*\*|–|Ano|Ano\*\*\*|–
+|Windows 10|Ano\*|Ano|Ano|Ano\*\*\*|Není k dispozici
+|Windows 8.1|Ano\*|Odpoví\*\*\*|Ano|Ano\*\*\*|Není k dispozici
+|Windows 8|Ano\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
+|Windows 7|Ano\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
+|Windows Server 2012 R2 nebo novější|Ano\*\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
 |Mac OS X|N/A|N/A|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
 
 
@@ -85,7 +85,7 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 ## <a name="next-steps"></a>Další kroky
 
 - [**Rychlé zprovoznění**](how-to-connect-sso-quick-start.md) – zprovoznění služby Azure AD bez problémů s jednotným přihlašováním
-- [**Plán nasazení**](https://aka.ms/deploymentplans/sso) – podrobný plán nasazení.
+- [**Plán nasazení**](../manage-apps/plan-sso-deployment.md) – podrobný plán nasazení.
 - [**Technický obsáhlý podrobně**](how-to-connect-sso-how-it-works.md) – pochopení, jak tato funkce funguje.
 - [**Nejčastější dotazy**](how-to-connect-sso-faq.md) – odpovědi na nejčastější dotazy
 - [**Řešení potíží**](tshoot-connect-sso.md) – Naučte se řešit běžné problémy s touto funkcí.

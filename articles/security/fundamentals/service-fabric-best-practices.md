@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b25e65914ce603b4a969eda7fd7c048704e466
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81461646"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410007"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Osvědčené postupy zabezpečení Azure Service Fabric
 Nasazení aplikace v Azure je rychlé, jednoduché a nákladově efektivní. Před nasazením cloudové aplikace do produkčního prostředí si Projděte náš seznam základních a doporučených osvědčených postupů pro implementaci zabezpečených clusterů ve vaší aplikaci.
@@ -132,7 +132,7 @@ Certifikát musí splňovat následující požadavky pro certifikáty SSL/TLS v
 -   Název subjektu certifikátu se musí shodovat s názvem domény, který se používá pro přístup ke cloudové službě.
 
     - Získejte vlastní název domény, který se použije pro přístup ke cloudové službě.
-    - Vyžádejte si certifikát od certifikační autority s názvem subjektu, který se shoduje s názvem vlastní domény vaší služby. Pokud například vlastní název domény je __Contoso__**. com**, měl by certifikát z vaší certifikační autority mít název subjektu **. contoso.com** nebo __www__**. contoso.com**.
+    - Vyžádejte si certifikát od certifikační autority s názvem subjektu, který se shoduje s názvem vlastní domény vaší služby. Pokud například vlastní název domény je __Contoso__**. com** , měl by certifikát z vaší certifikační autority mít název subjektu **. contoso.com** nebo __www__**. contoso.com**.
 
     >[!NOTE]
     >Nemůžete získat certifikát SSL/TLS z certifikační autority pro doménu __cloudapp__**.NET** .
@@ -178,6 +178,6 @@ Azure Service Fabric podporuje dva typy řízení přístupu pro klienty, kteř�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kontrolní seznam zabezpečení Service Fabric](service-fabric-checklist.md)
+- [Kontrolní seznam zabezpečení Service Fabric](../../service-fabric/service-fabric-best-practices-security.md)
 - Nastavte [vývojové prostředí](../../service-fabric/service-fabric-get-started.md)Service Fabric.
 - Přečtěte si o [možnostech podpory Service Fabric](../../service-fabric/service-fabric-support.md).

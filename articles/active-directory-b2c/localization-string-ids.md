@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f75fbf286741fcc122332574332a30ad7fa23644
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 45357092784bd9c8821a81b07ce3c381c4ce7989
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096194"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410500"
 ---
 # <a name="localization-string-ids"></a>ID řetězců lokalizací
 
@@ -33,7 +33,7 @@ Následující identifikátory se používají pro definici obsahu s ID `api.sig
 | **logonIdentifier_email** | E-mailová adresa |
 | **requiredField_email** | Zadejte prosím svůj e-mail. |
 | **invalid_email** | Zadejte prosím platnou e-mailovou adresu. |
-| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' '*+/=? ^ _ \` { \| } ~-] + @ [a-za-Z0-9-] + (?: \\ . [ a-zA-Z0-9-] +)*$ |
+| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' *+/=? ^ _ \` { \| } ~-] + @ [a-za-Z0-9-] + (?: \\ . [ a-zA-Z0-9-] +)*$ |
 | **local_intro_username** | Přihlaste se pomocí svého uživatelského jména. |
 | **logonIdentifier_username** | Uživatelské jméno |
 | **requiredField_username** | Zadejte prosím svoje uživatelské jméno. |
@@ -45,7 +45,7 @@ Následující identifikátory se používají pro definici obsahu s ID `api.sig
 | **createaccount_link** | Zaregistrujte se |
 | **divider_title** | NEBO |
 | **cancel_message** | Uživatel zapomněl svoje heslo. |
-| **button_signin** | Přihlášení |
+| **button_signin** | Přihlásit se |
 | **social_intro** | Přihlaste se pomocí účtu sociální sítě. |
   **remember_me** |Zůstat přihlášeni. |
 | **unknown_error** | Máme potíže s přihlášením. Zkuste to později. |
@@ -87,6 +87,7 @@ V následujícím příkladu je lokalizován poskytovatel identity Facebooku do 
 | ID | Výchozí hodnota |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | Heslo není správné. |
+| **UserMessageIfPasswordExpired**| Platnost vašeho hesla vypršela.|
 | **UserMessageIfClaimsPrincipalDoesNotExist** | Nemůžeme se zdát, že váš účet najdete. |
 | **UserMessageIfOldPasswordUsed** | Vypadá to, že jste použili staré heslo. |
 | **DefaultMessage** | Neplatné uživatelské jméno nebo heslo. |
@@ -122,6 +123,7 @@ V následujícím příkladu je lokalizován poskytovatel identity Facebooku do 
     <LocalizedString ElementType="UxElement" StringId="email_pattern">^[a-zA-Z0-9.!#$%&amp;’'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$</LocalizedString>
     <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Your password is incorrect.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfPasswordExpired">Your password has expired.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfOldPasswordUsed">Looks like you used an old password.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="DefaultMessage">Invalid username or password.</LocalizedString>

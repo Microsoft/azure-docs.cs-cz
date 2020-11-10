@@ -15,12 +15,12 @@ ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dddfb8426b769c06cb5b7494431b7eee34dbf9e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144719"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410891"
 ---
 # <a name="adsync-service-account"></a>Účet služby ADSync
 Azure AD Connect nainstaluje místní službu, která orchestruje synchronizaci mezi službou Active Directory a Azure Active Directory.  Služba synchronizace Microsoft Azure AD Sync (ADSync) běží na serveru ve vašem místním prostředí.  Přihlašovací údaje služby se ve výchozím nastavení standardně nastavují v expresních instalacích, ale dají se přizpůsobit tak, aby splňovaly požadavky na zabezpečení vaší organizace.  Tyto přihlašovací údaje se nepoužívají pro připojení k místním doménovým strukturám nebo Azure Active Directory.
@@ -61,7 +61,7 @@ Služba ADSync vydá do protokolu událostí zprávu o chybě, když se nemůže
 
 Poradce při potížích s tímto problémem se Microsoft Azure AD synchronizace šifrovacích klíčů stane nedostupným, pokud se změní přihlašovací údaje služby AdSync.  Pokud se přihlašovací údaje změnily, pomocí aplikace služby změňte účet pro přihlášení zpátky na původně konfigurovanou hodnotu (např. NT SERVICE\AdSync) a restartujte službu.  Tím se okamžitě obnoví správná operace služby AdSync.
 
-Další informace najdete v následujícím [článku](https://go.microsoft.com/fwlink/?linkid=2086764) .
+Další informace najdete v následujícím [článku](./whatis-hybrid-identity.md) .
 
 ### <a name="example-2"></a>Příklad 2
 
@@ -69,7 +69,7 @@ Službu nebylo možné spustit, protože nebylo možné navázat připojení k m
 
 Poradce při potížích s tímto problémem ztratí služba Microsoft Azure AD Sync oprávnění k přístupu k poskytovateli místní databáze, pokud se změní přihlašovací údaje služby AdSync Service.  Pokud se přihlašovací údaje změnily, pomocí aplikace služby změňte účet pro přihlášení zpátky na původně konfigurovanou hodnotu (např. NT SERVICE\AdSync) a restartujte službu.  Tím se okamžitě obnoví správná operace služby AdSync.
 
-Další informace najdete v následujícím [článku](https://go.microsoft.com/fwlink/?linkid=2086764) .
+Další informace najdete v následujícím [článku](./whatis-hybrid-identity.md) .
 
 Další podrobnosti vrátil zprostředkovatel následující informace o chybě:
  

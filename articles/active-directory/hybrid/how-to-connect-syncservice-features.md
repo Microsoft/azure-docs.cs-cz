@@ -16,23 +16,23 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db5dbef2b57fb89b33ea116d0373184cdade0ac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 261ab5d0f039705a2566b7c28ff4c06778bb661a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85356759"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410534"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkce synchronizační služby Azure AD Connect
 
 Funkce synchronizace Azure AD Connect má dvě komponenty:
 
-* Místní součást s názvem **Azure AD Connect synchronizovat**, označovanou také jako **synchronizační modul**.
+* Místní součást s názvem **Azure AD Connect synchronizovat** , označovanou také jako **synchronizační modul**.
 * Služba, která je umístěná ve službě Azure AD, označovaná také jako **služba Azure AD Connect Sync**
 
 V tomto tématu se dozvíte, jak fungují následující funkce **služby Azure AD Connect Sync** a jak je můžete nakonfigurovat pomocí prostředí Windows PowerShell.
 
-Tato nastavení jsou nakonfigurovaná [modulem Azure Active Directory pro Windows PowerShell](https://aka.ms/aadposh). Stáhněte si ho a nainstalujte samostatně z Azure AD Connect. Rutiny popsané v tomto tématu byly představeny v 2016. březnu vydaných [verzí (build 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Pokud nemáte rutiny popsané v tomto tématu nebo neposkytují stejný výsledek, ujistěte se, že jste spustili nejnovější verzi.
+Tato nastavení jsou nakonfigurovaná [modulem Azure Active Directory pro Windows PowerShell](/previous-versions/azure/jj151815(v=azure.100)). Stáhněte si ho a nainstalujte samostatně z Azure AD Connect. Rutiny popsané v tomto tématu byly představeny v 2016. březnu vydaných [verzí (build 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Pokud nemáte rutiny popsané v tomto tématu nebo neposkytují stejný výsledek, ujistěte se, že jste spustili nejnovější verzi.
 
 Pokud chcete zobrazit konfiguraci v adresáři služby Azure AD, spusťte příkaz `Get-MsolDirSyncFeatures` .  
 ![Výsledek Get-MsolDirSyncFeatures](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)

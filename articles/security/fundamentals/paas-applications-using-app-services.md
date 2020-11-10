@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: fc273c2e6e27c191b4407ffae86a4ba227ee642b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e583bb1b9cad79ee3e48e838d81d6a504c44f72c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87131034"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408086"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Osvědčené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí Azure App Service
 
-V tomto článku se zabýváme kolekcí [Azure App Service](/azure/app-service/overview) osvědčených postupů zabezpečení pro zabezpečení webových a mobilních aplikací PaaS. Tyto osvědčené postupy se odvozují z našich zkušeností s Azure a zkušeností zákazníků, jako je sami.
+V tomto článku se zabýváme kolekcí [Azure App Service](../../app-service/overview.md) osvědčených postupů zabezpečení pro zabezpečení webových a mobilních aplikací PaaS. Tyto osvědčené postupy se odvozují z našich zkušeností s Azure a zkušeností zákazníků, jako je sami.
 
 Azure App Service je nabídka typu platforma jako služba (PaaS), která umožňuje vytvářet webové a mobilní aplikace pro jakoukoli platformu nebo zařízení a připojovat se k datům kdekoli, v cloudu i v místním prostředí. App Service zahrnují webové a mobilní funkce, které byly dříve dodávány samostatně jako Azure websites a Azure Mobile Services. Obsahuje také nové možnosti pro automatizaci obchodních procesů a hostování cloudových rozhraní API. Jako jediná integrovaná služba App Service přináší bohatou sadu možností pro webové, mobilní a integrační scénáře.
 
@@ -33,7 +33,7 @@ Azure App Service je nabídka typu platforma jako služba (PaaS), která umožň
 App Service poskytuje službě OAuth 2,0 pro vašeho poskytovatele identity. OAuth 2,0 se zaměřuje na jednoduchost vývojáře v klientských počítačích a poskytuje konkrétní autorizační toky pro webové aplikace, desktopové aplikace a mobilní telefony. Azure AD používá OAuth 2,0, který vám umožní autorizovat přístup k mobilním a webovým aplikacím. Další informace najdete v tématu [ověřování a autorizace v Azure App Service](../../app-service/overview-authentication-authorization.md).
 
 ## <a name="restrict-access-based-on-role"></a>Omezení přístupu na základě role
-Omezení přístupu je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům. Řízení přístupu na základě role (RBAC) můžete použít k přiřazení oprávnění uživatelům, skupinám a aplikacím v určitém oboru, jako je třeba znát a nejnižší principy zabezpečení oprávnění. Další informace o tom, jak udělit uživatelům přístup k aplikacím, najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)](/azure/role-based-access-control/overview).
+Omezení přístupu je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům. Řízení přístupu na základě role (RBAC) můžete použít k přiřazení oprávnění uživatelům, skupinám a aplikacím v určitém oboru, jako je třeba znát a nejnižší principy zabezpečení oprávnění. Další informace o tom, jak udělit uživatelům přístup k aplikacím, najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ## <a name="protect-your-keys"></a>Ochrana klíčů
 Nezáleží na tom, jaký je dobrý způsob zabezpečení při ztrátě klíčů předplatného. Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí Key Vault můžete šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat). Soubory PFX a hesla) pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM). Pro zvýšené bezpečí můžete klíče importovat nebo generovat v modulech HSM. Pomocí Key Vault můžete také spravovat certifikáty TLS s automatickým obnovením. Další informace najdete v tématu [co je Azure Key Vault](../../key-vault/general/overview.md) .

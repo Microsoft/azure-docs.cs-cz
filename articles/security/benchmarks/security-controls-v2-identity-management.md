@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e7447d03fc231d8d96b71c7d944a380c10add0d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b21bea924ee8eaed37246ce55feaf8243e3e7d4
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757932"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408733"
 ---
 # <a name="security-control-v2-identity-management"></a>Řízení zabezpečení v2: Správa identit
 
@@ -39,13 +39,13 @@ Poznámka: Azure AD podporuje externí poskytovatele identity, který umožňuje
 
 - [Definování tenantů Azure AD](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
 
-- [Použití externích zprostředkovatelů identity pro aplikaci](/azure/active-directory/b2b/identity-providers)
+- [Použití externích zprostředkovatelů identity pro aplikaci](../../active-directory/external-identities/identity-providers.md)
 
 - [Co je bezpečné skóre identity ve službě Azure AD](../../active-directory/fundamentals/identity-secure-score.md)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
@@ -75,9 +75,9 @@ Pro služby, které nepodporují spravované identity, použijte službu Azure A
 
 Použití Azure Key Vault k registraci objektu zabezpečení: ověřování # autorizovat-a-Security-Principal-to-Access-Key-trezor
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -95,9 +95,9 @@ Pomocí jednotného přihlašování (SSO) Azure AD můžete spravovat a zabezpe
 
 - [Principy jednotného přihlašování k aplikacím pomocí Azure AD](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -130,9 +130,9 @@ Poznámka: ověřování založené jenom na přihlašovacích údajích hesla j
 
 - [Odstranění chybných hesel pomocí ochrany heslem Azure AD](../../active-directory/authentication/concept-password-ban-bad.md)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -163,13 +163,13 @@ Rozšířená ochrana před internetovými útoky (ATP) je řešení zabezpečen
 
 - [Sestavy aktivit auditu v Azure AD](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [Jak zobrazit rizikové přihlašování Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Jak zobrazit rizikové přihlašování Azure AD](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](../../security-center/security-center-identity-access.md)
 
-- [Výstrahy v modulu Azure Security Center ochrany před hrozbami](/azure/security-center/alerts-reference)
+- [Výstrahy v modulu Azure Security Center ochrany před hrozbami](../../security-center/alerts-reference.md)
 
 - [Jak integrovat protokoly aktivit Azure do Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -177,9 +177,9 @@ Rozšířená ochrana před internetovými útoky (ATP) je řešení zabezpečen
 
 - [Azure Advanced Threat Protection](/azure-advanced-threat-protection/what-is-atp)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -199,9 +199,9 @@ Podmíněný přístup Azure AD můžete použít pro přesnější řízení p�
 
 - [Konfigurace správy relací ověřování pomocí podmíněného přístupu](../../active-directory/conditional-access/howto-conditional-access-session-lifetime.md)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -225,9 +225,9 @@ V případě GitHubu můžete k identifikaci přihlašovacích údajů nebo jin�
 
 - [Kontrola tajného kódu GitHubu](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -245,13 +245,13 @@ Azure Proxy aplikací služby AD umožňuje publikovat starší verze místních
 
 Alternativně Microsoft Cloud App Security je služba CASB (Cloud Access Security Broker), která poskytuje ovládací prvky pro monitorování uživatelských relací a blokování akcí (pro starší místní aplikace a aplikace cloudového softwaru jako služby (SaaS)). 
 
-- [Proxy aplikací služby AD Azure](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
+- [Proxy aplikací služby Azure AD](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
 
 - [Microsoft Cloud App Security osvědčené postupy](/cloud-app-security/best-practices)
 
-**Zodpovědnost**: zákazník
+**Zodpovědnost** : zákazník
 
-**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
