@@ -41,8 +41,6 @@
           href: batch-transcription.md
     - name: Kurzy
       items:
-        - name: Rozpoznávání řeči uložené v úložišti objektů blob
-          href: quickstarts/from-blob.md
         - name: Zlepšení přesnosti s využitím modelů tenantů
           href: tutorial-tenant-model.md
     - name: Přizpůsobení

@@ -12,6 +12,8 @@
   items:
     - name: Vytvoření koncového bodu SCIM a konfigurace zřizování
       href: use-scim-to-provision-users-and-groups.md
+    - name: Přizpůsobení mapování atributů
+      href: customize-application-attributes.md
     - name: Kurzy zřizování konkrétních aplikací
       href: /azure/active-directory/saas-apps
 - name: Koncepty
@@ -30,8 +32,6 @@
   items:
     - name: Konfigurace zřizování pro aplikaci v galerii
       href: configure-automatic-user-provisioning-portal.md
-    - name: Přizpůsobení mapování atributů
-      href: customize-application-attributes.md
     - name: Zahrnutí nebo vyloučení uživatelů a skupin z rozsahu
       items:
         - name: Vymezení uživatelů nebo skupin pro zřízení

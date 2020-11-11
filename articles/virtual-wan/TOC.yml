@@ -15,10 +15,6 @@
       href: virtual-wan-expressroute-portal.md
 - name: Koncepty
   items:
-    - name: Zabezpečení
-      items:
-        - name: Standardní hodnoty zabezpečení
-          href: security-baseline.md
     - name: Práce na dálku
       items:
         - name: Podpora pro práci na dálku
@@ -109,6 +105,8 @@
           href: about-vpn-profile-download.md
         - name: Globální profil a profil založený na centrech
           href: global-hub-profile.md
+        - name: Konfigurace Klienta Azure VPN pro Windows 10
+          href: openvpn-azure-ad-client.md
         - name: Konfigurace klientů OpenVPN
           href: howto-openvpn-clients.md?
         - name: Konfigurace tunelu uživatele VPN AlwaysOn
@@ -119,8 +117,6 @@
           href: openvpn-azure-ad-mfa.md
         - name: Konfigurace ověřování Azure AD
           href: virtual-wan-point-to-site-azure-ad.md
-        - name: Konfigurace Klienta Azure VPN pro Windows 10
-          href: openvpn-azure-ad-client.md
         - name: Konfigurace víceaplikačního ověřování Azure AD
           href: openvpn-azure-ad-tenant-multi-app.md
     - name: Směrování
