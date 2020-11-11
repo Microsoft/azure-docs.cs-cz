@@ -119,12 +119,10 @@
       href: qna-maker-encryption-of-data-at-rest.md
     - name: Reference k rozhraní REST API
       items:
-        - name: Rozhraní API pro vytváření
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase'
-        - name: Rozhraní GenerateAnswer API
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
-        - name: Rozhraní Train API
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
+        - name: QnA Maker 4.0
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/alterations'
+        - name: QnA Maker 5.0 Preview 1
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/alterations'
     - name: Sady SDK
       items:
         - name: C#

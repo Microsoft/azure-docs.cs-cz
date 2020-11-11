@@ -18,6 +18,8 @@
   href: color-materials.md
 - name: Vykreslování obrysů
   href: outlines.md
+- name: Vykreslování prostředí
+  href: shell-effect.md
 - name: Jednostranné vykreslování
   href: single-sided-rendering.md
 - name: Prostorové dotazy
