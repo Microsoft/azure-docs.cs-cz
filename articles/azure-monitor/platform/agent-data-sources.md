@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: a52f10c7081875113a0ad22bd687776e71d238e2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ad5e91a6dcdb61e09a64e61a27f12148ec28168e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460797"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490572"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Log Analytics zdrojů dat agenta v Azure Monitor
 Data, která Azure Monitor shromažďuje z virtuálních počítačů pomocí agenta [Log Analytics](log-analytics-agent.md) , jsou definovaná zdroji dat, které nakonfigurujete v [pracovním prostoru Log Analytics](data-platform-logs.md).   Každý zdroj dat vytvoří záznamy určitého typu s každým typem s vlastní sadou vlastností.
@@ -20,6 +20,9 @@ Data, která Azure Monitor shromažďuje z virtuálních počítačů pomocí ag
 > Tento článek se zabývá zdroji dat pro [agenta Log Analytics](log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](agents-overview.md) .
 
 ![Shromažďování dat protokolu](media/agent-data-sources/overview.png)
+
+> [!IMPORTANT]
+> Zdroje dat popsané v tomto článku se vztahují jenom na virtuální počítače, na kterých běží agent Log Analytics. 
 
 ## <a name="summary-of-data-sources"></a>Shrnutí zdrojů dat
 V následující tabulce jsou uvedeny zdroje dat agenta, které jsou aktuálně k dispozici u agenta Log Analytics.  Každá z nich má odkaz na samostatný článek, který poskytuje podrobnosti pro tento zdroj dat.   Poskytuje také informace o jejich metodě a četnosti shromažďování. 

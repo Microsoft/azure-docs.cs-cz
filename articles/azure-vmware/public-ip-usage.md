@@ -3,12 +3,12 @@ title: Jak používat funkci veřejné IP adresy v řešení Azure VMware
 description: Tento článek vysvětluje, jak používat funkci veřejné IP adresy ve službě Azure Virtual WAN.
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: f51f00a9adc1fd122e723909ecaa6193c152d496
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 63475b478a951632c068b168353acf2e0bb7061c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912663"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490385"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Jak používat funkci veřejné IP adresy v řešení Azure VMware
 
@@ -50,21 +50,21 @@ V tomto scénáři je nutné publikovat na internetovém serveru službu IIS. K 
 
 ## <a name="deploy-virtual-wan"></a>Nasadit Virtual WAN.
 
-1. Přihlaste se k Azure Portal a pak vyhledejte a vyberte **Řešení Azure VMware** .
+1. Přihlaste se k Azure Portal a pak vyhledejte a vyberte **Řešení Azure VMware**.
 
 1. Vyberte privátní cloud řešení Azure VMware.
 
-   :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
+   :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="Snímek obrazovky privátního cloudu řešení Azure VMware." border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
 
-1. V části **Spravovat** vyberte možnost **připojení** .
+1. V části **Spravovat** vyberte možnost **připojení**.
 
-   :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
+   :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="Snímek obrazovky oddílu připojení" border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
 
-1. Vyberte kartu **Veřejná IP adresa** a pak vyberte **Konfigurovat** .
+1. Vyberte kartu **Veřejná IP adresa** a pak vyberte **Konfigurovat**.
 
-   :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
+   :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="Snímek obrazovky, který ukazuje, kde začít konfigurovat veřejnou IP adresu" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
-1. Přijměte výchozí hodnoty nebo je změňte a pak vyberte **vytvořit** .
+1. Přijměte výchozí hodnoty nebo je změňte a pak vyberte **vytvořit**.
 
    - Skupina prostředků virtuální sítě ve velké oblasti
 
@@ -83,46 +83,46 @@ Dokončení nasazení všech součástí trvá přibližně jednu hodinu. Toto n
 
 Pomocí následujících kroků můžeme kontrolovat a přidávat další veřejné IP adresy.
 
-1. V Azure Portal vyhledejte a vyberte **firewall** .
+1. V Azure Portal vyhledejte a vyberte **firewall**.
 
-1. Vyberte nasazenou bránu firewall a potom vyberte **navštívit Manager Azure firewall a nakonfigurujte a spravujte tuto bránu firewall** .
+1. Vyberte nasazenou bránu firewall a potom vyberte **navštívit Manager Azure firewall a nakonfigurujte a spravujte tuto bránu firewall**.
 
-   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
+   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Snímek obrazovky, který ukazuje možnost konfigurovat a spravovat bránu firewall" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
 1. Vyberte **Zabezpečená virtuální centra** a ze seznamu vyberte virtuální rozbočovač.
 
-   :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="Diagram architektury veřejné IP adresy" lightbox="media/public-ip-usage/select-virtual-hub.png":::
+   :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="Snímek obrazovky s manažerem brány firewall" lightbox="media/public-ip-usage/select-virtual-hub.png":::
 
-1. Na stránce virtuální rozbočovač vyberte **Konfigurace veřejné IP** adresy a přidejte další veřejnou IP adresu a pak vyberte **Přidat** . 
+1. Na stránce virtuální rozbočovač vyberte **Konfigurace veřejné IP** adresy a přidejte další veřejnou IP adresu a pak vyberte **Přidat**. 
 
-   :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
+   :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="Snímek obrazovky s postupem přidání konfigurace veřejné IP adresy ve Správci brány firewall" border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
 
-1. Zadejte požadovaný počet IP adres a vyberte **Přidat** .
+1. Zadejte požadovaný počet IP adres a vyberte **Přidat**.
 
-   :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="Diagram architektury veřejné IP adresy" border="true":::
+   :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="Snímek obrazovky pro přidání zadaného počtu konfigurací veřejných IP adres" border="true":::
 
 
 ## <a name="create-firewall-policies"></a>Vytvoření zásad brány firewall
 
 Po nasazení všech součástí je můžete zobrazit v přidané skupině prostředků. Dalším krokem je přidání zásady brány firewall.
 
-1. V Azure Portal vyhledejte a vyberte **firewall** .
+1. V Azure Portal vyhledejte a vyberte **firewall**.
 
-1. Vyberte nasazenou bránu firewall a potom vyberte **navštívit Manager Azure firewall a nakonfigurujte a spravujte tuto bránu firewall** .
+1. Vyberte nasazenou bránu firewall a potom vyberte **navštívit Manager Azure firewall a nakonfigurujte a spravujte tuto bránu firewall**.
 
-   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
+   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Snímek obrazovky, který ukazuje možnost konfigurovat a spravovat bránu firewall" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
-1. Vyberte **zásady Azure firewall** a pak vyberte **vytvořit Azure firewall zásady** .
+1. Vyberte **zásady Azure firewall** a pak vyberte **vytvořit Azure firewall zásady**.
 
-   :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
+   :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="Snímek obrazovky s postupem vytvoření zásady brány firewall ve Správci brány firewall" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
 
-1. Na kartě **základy** zadejte požadované podrobnosti a vyberte **Další: nastavení DNS** . 
+1. Na kartě **základy** zadejte požadované podrobnosti a vyberte **Další: nastavení DNS**. 
 
-1. Na kartě **DNS** vyberte **Zakázat** a potom vyberte **Další: pravidla** .
+1. Na kartě **DNS** vyberte **Zakázat** a potom vyberte **Další: pravidla**.
 
-1. Vyberte **přidat kolekci pravidel** , zadejte níže podrobnosti a vyberte **Přidat** a potom vyberte **Další: Analýza hrozeb** .
+1. Vyberte **přidat kolekci pravidel** , zadejte níže podrobnosti a vyberte **Přidat** a potom vyberte **Další: Analýza hrozeb**.
 
-   -  Název
+   -  Name (Název)
    -  Typ kolekce pravidel – DNAT
    -  Priorita
    -  Akce kolekce pravidel – povolení
@@ -136,21 +136,19 @@ Po nasazení všech součástí je můžete zobrazit v přidané skupině prost�
    -  Přeložená adresa – **privátní IP adresa webového serveru řešení Azure VMware**
    -  Přeložený port – **port webového serveru řešení Azure VMware**
 
-1. Ponechte výchozí hodnotu a pak vyberte **Další: rozbočovače** .
+1. Ponechte výchozí hodnotu a pak vyberte **Další: rozbočovače**.
 
-1. Vyberte **přidružit virtuální rozbočovač** .
+1. Vyberte **přidružit virtuální rozbočovač**.
 
-   :::image type="content" source="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png":::
+1. V seznamu vyberte centrum a vyberte **Přidat**.
 
-1. V seznamu vyberte centrum a vyberte **Přidat** .
+   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Snímek obrazovky, který zobrazuje vybraná centra, která se převedou na Scecured virtuální rozbočovače." border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
-   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
+1. Vyberte **Další: Značky**. 
 
-1. Vyberte **Další: Značky** . 
+1. Volitelné Vytvořte páry název a hodnota pro kategorizaci prostředků. 
 
-1. Volitelné Vytvořte páry název/hodnota pro kategorizaci prostředků. 
-
-1. Vyberte **Další: zkontrolovat + vytvořit** a pak vyberte **vytvořit** .
+1. Vyberte **Další: zkontrolovat + vytvořit** a pak vyberte **vytvořit**.
 
 ## <a name="limitations"></a>Omezení
 

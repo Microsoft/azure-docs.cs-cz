@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 11/09/2020
+ms.date: 11/10/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: ab5a4717f32269f34a9351cb0ffa3796b89ccd6e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 07c0169dcbadc6dc8ae293d69e197c2cd1ec2275
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412744"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489790"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -29,6 +29,17 @@ Můžete centrálně vytvářet, vynucovat a protokolovat zásady připojení k 
 ## <a name="features"></a>Funkce
 
 Další informace o funkcích Azure Firewall najdete v tématu [Azure firewall funkce](features.md).
+
+## <a name="pricing-and-sla"></a>Ceny a smlouvy SLA
+
+Informace o cenách Azure Firewall najdete v tématu [Azure firewall ceny](https://azure.microsoft.com/pricing/details/azure-firewall/).
+
+Informace o Azure Firewall smlouvě SLA najdete v tématu [Azure firewall SLA](https://azure.microsoft.com/support/legal/sla/azure-firewall/).
+
+## <a name="whats-new"></a>Co je nového
+
+Další informace o tom, co je nového v Azure Firewall, najdete v tématu [Aktualizace Azure](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Firewall).
+
 
 ## <a name="known-issues"></a>Známé problémy
 

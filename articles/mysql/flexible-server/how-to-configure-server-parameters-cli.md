@@ -6,16 +6,20 @@ ms.author: ambhatna
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 87ec99a68c538e8133d64351cdecbbf8b10459e6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 58e7c024d6494aee745884997e42b527c51ab237
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92525070"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489535"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Konfigurace parametrů serveru v Azure Database for MySQL flexibilním serveru pomocí Azure CLI
+
+> [!IMPORTANT] 
+> Azure Database for MySQL – flexibilní Server je momentálně ve verzi Public Preview.
+
 Pomocí Azure CLI, nástroje příkazového řádku Azure můžete vypsat, zobrazit a aktualizovat parametry Azure Database for MySQL flexibilního serveru. Při vytváření serveru jsou parametry serveru nastaveny s výchozí a doporučenou hodnotou.  
 
 Tento článek popisuje, jak pomocí Azure CLI vypsat, zobrazit a aktualizovat parametry serveru.
@@ -40,14 +44,14 @@ Definice všech uvedených parametrů naleznete v části referenční dokumenta
 ## <a name="show-server-parameter-details"></a>Zobrazit podrobnosti parametru serveru
 Chcete-li zobrazit podrobnosti o konkrétním parametru serveru, spusťte příkaz [AZ MySQL flexibilní-Server Parameter show](/cli/azure/mysql/flexible-server/parameter) .
 
-Tento příklad ukazuje podrobnosti parametru serveru s **pomalým \_ dotazem \_ ** pro server **mydemoserver.MySQL.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
+Tento příklad ukazuje podrobnosti parametru serveru s **pomalým \_ dotazem \_** pro server **mydemoserver.MySQL.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
 ```azurecli-interactive
 az mysql flexible-server parameter show --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver
 ```
 ## <a name="modify-a-server-parameter-value"></a>Úprava hodnoty parametru serveru
 Můžete také změnit hodnotu určitého parametru serveru, která aktualizuje základní konfigurační hodnotu pro modul serveru MySQL. Chcete-li aktualizovat parametr serveru, použijte příkaz [AZ MySQL flexibilní-Server Parameter set](/cli/azure/mysql/flexible-server/parameter) . 
 
-Pokud chcete aktualizovat parametr serveru s **pomalým \_ dotazem \_ ** na serveru **mydemoserver.MySQL.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
+Pokud chcete aktualizovat parametr serveru s **pomalým \_ dotazem \_** na serveru **mydemoserver.MySQL.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
 ```azurecli-interactive
 az mysql flexible-server parameter set --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver --value ON
 ```
@@ -55,7 +59,7 @@ Pokud chcete resetovat hodnotu parametru, vynechejte volitelný `--value` parame
 ```azurecli-interactive
 az mysql flexible-server parameter set --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver
 ```
-Tento kód resetuje ** \_ \_ protokol pomalých dotazů** na výchozí hodnotu **vypnuto**. 
+Tento kód resetuje **\_ \_ protokol pomalých dotazů** na výchozí hodnotu **vypnuto**. 
 
 ## <a name="setting-non-modifiable-server-parameters"></a>Nastavení neupravitelných parametrů serveru
 
@@ -66,7 +70,7 @@ Aktualizujte parametr **init \_ Connect** serveru serveru **mydemoserver.MySQL.D
 az mysql flexible-server parameter set --name init_connect --resource-group myresourcegroup --server-name mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
 ```
 >[!Note]
-> Pomocí příkazu `init_connect` je možné měnit parametry, které nevyžadují oprávnění SUPER na úrovni relace. Pokud chcete ověřit, jestli můžete nastavit parametr pomocí příkazu `init_connect`, spusťte příkaz `set session parameter_name=YOUR_DESIRED_VALUE;` – pokud selže s chybou **Přístup byl odepřen, potřebujete oprávnění SUPER**, znamená to, že tento parametr nemůžete nastavit pomocí příkazu init_connect.
+> Pomocí příkazu `init_connect` je možné měnit parametry, které nevyžadují oprávnění SUPER na úrovni relace. Pokud chcete ověřit, jestli můžete nastavit parametr pomocí příkazu `init_connect`, spusťte příkaz `set session parameter_name=YOUR_DESIRED_VALUE;` – pokud selže s chybou **Přístup byl odepřen, potřebujete oprávnění SUPER** , znamená to, že tento parametr nemůžete nastavit pomocí příkazu init_connect.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Práce s parametrem časového pásma
 

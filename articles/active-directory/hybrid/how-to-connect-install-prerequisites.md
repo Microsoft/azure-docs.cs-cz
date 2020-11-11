@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f337a66f50338692508ab2e5b4b7d489c735aa20
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: eccc0e71c73fb8bd2a5a50ebd0dda048d34dbea0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420478"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488396"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Tento článek popisuje požadavky a požadavky na hardware pro službu Azure Active Directory (Azure AD) Connect.
@@ -102,7 +102,7 @@ Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok
 ### <a name="connectivity"></a>Připojení
 * Azure AD Connect server potřebuje překlad DNS pro intranet i Internet. Server DNS musí být schopný přeložit názvy do vaší místní služby Active Directory a koncových bodů Azure AD.
 * Pokud máte v intranetu brány firewall a potřebujete otevřít porty mezi Azure AD Connect servery a řadiči domény, přečtěte si další informace v tématu [Azure AD Connect porty](reference-connect-ports.md) .
-* Pokud váš proxy server nebo brána firewall omezují pøístup k adresám URL, musí se otevřít adresy URL dokumentované v [adresách URL Office 365 a rozsahy IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) .
+* Pokud váš proxy server nebo brána firewall omezují pøístup k adresám URL, musí se otevřít adresy URL dokumentované v [adresách URL Office 365 a rozsahy IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) . Viz také [Safelist adresy url Azure Portal v bráně firewall nebo proxy server](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud).
   * Pokud používáte Cloud Microsoftu v Německu nebo Microsoft Azure Government cloudu, přečtěte si téma [informace o Azure AD Connect synchronizace instancí služby](reference-connect-instances.md) pro adresy URL.
 * Azure AD Connect (verze 1.1.614.0 a After) ve výchozím nastavení používá protokol TLS 1,2 pro šifrování komunikace mezi synchronizačním modulem a službou Azure AD. Pokud není v podkladovém operačním systému k dispozici protokol TLS 1,2, Azure AD Connect přírůstkové ke starším protokolům (TLS 1,1 a TLS 1,0).
 * Před verzí 1.1.614.0 Azure AD Connect ve výchozím nastavení používá TLS 1,0 pro šifrování komunikace mezi synchronizačním modulem a službou Azure AD. Pokud chcete přejít na TLS 1,2, postupujte podle kroků v části [Povolení TLS 1,2 pro Azure AD Connect](#enable-tls-12-for-azure-ad-connect).

@@ -4,15 +4,15 @@ description: Seznamte se s možnostmi podpory v partnerském centru, včetně po
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: navits09
+ms.author: navits
 ms.date: 09/18/2020
-ms.openlocfilehash: 983f7e400a33cb36f30505e5a8a28811d9d4cdfb
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b042d1e1f38b2a4a84522d58ad482d4262f69a4a
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283864"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488889"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Podpora programu komerčního tržiště v partnerském centru
 
@@ -60,14 +60,14 @@ Jakmile zjistíte, že jste si vybrali téma, vyberte **Zkontrolovat řešení**
 
 Budou k dispozici následující možnosti:
 
-- Pokud chcete vybrat jiné téma, vyberte v části **vybraný problém**jiný odkaz na téma.
+- Pokud chcete vybrat jiné téma, vyberte v části **vybraný problém** jiný odkaz na téma.
 - Zkontrolujte popis tohoto problému, pokud je k dispozici.  Je to text zobrazený výše **doporučenými kroky**.
-- Zkontrolujte **Doporučené kroky**, pokud jsou k dispozici.
-- Zkontrolujte **Doporučené dokumenty**, pokud jsou k dispozici.
+- Zkontrolujte **Doporučené kroky** , pokud jsou k dispozici.
+- Zkontrolujte **Doporučené dokumenty** , pokud jsou k dispozici.
 
 ![Doporučená řešení](./media/support/recommended-solutions.png)
 
-Pokud nemůžete najít odpověď v **doporučených řešeních**, vyberte **zadat podrobnosti o problému**. Dokončete všechna povinná pole pro urychlení procesu řešení a pak vyberte **Odeslat**.
+Pokud nemůžete najít odpověď v **doporučených řešeních** , vyberte **zadat podrobnosti o problému**. Dokončete všechna povinná pole pro urychlení procesu řešení a pak vyberte **Odeslat**.
 
 >[!Note]
 >Pokud jste přihlášeni do partnerského centra a téma vyžaduje ověření, budete požádáni o přihlášení, než bude možné pokračovat.  Pro veřejná témata není ověřování nutné.
@@ -85,10 +85,10 @@ Chcete-li pomoci s tím, že agenti budou moci vyřešit potíže, zvažte přip
 
 ### <a name="microsoft-edge-and-google-chrome"></a>Microsoft Edge a Google Chrome
 
-Vygenerování souboru HAR pomocí **Microsoft Edge** nebo **Google Chrome**:
+Vygenerování souboru HAR pomocí **Microsoft Edge** nebo **Google Chrome** :
 
 1. Přejít na webovou stránku, na které dochází k problému.
-2. V pravém horním rohu okna vyberte ikonu se třemi tečkami a pak **Další nástroje**pro  >  **vývojáře**. Klávesu F12 můžete stisknout jako zástupce.
+2. V pravém horním rohu okna vyberte ikonu se třemi tečkami a pak **Další nástroje** pro  >  **vývojáře**. Klávesu F12 můžete stisknout jako zástupce.
 3. V podokně nástroje pro vývojáře vyberte kartu **síť** .
 4. Vyberte **Zastavit záznam síťového protokolu** a **zrušte zaškrtnutí** a odeberte existující protokoly. Ikona záznamu změní šedou.
 
@@ -100,13 +100,13 @@ Vygenerování souboru HAR pomocí **Microsoft Edge** nebo **Google Chrome**:
 
 6. Reprodukování problému, který chcete vyřešit.
 7. Po reprodukování problému vyberte **Zastavit záznam síťového protokolu**.
-8. Vyberte **exportovat Har**, označený ikonou šipky dolů a uložte soubor.
+8. Vyberte **exportovat Har** , označený ikonou šipky dolů a uložte soubor.
 
     ![Export souboru HAR na Microsoft Edge nebo Google Chrome](media/support/chromium-network-export-har.png)
 
 ### <a name="mozilla-firefox"></a>Mozilla Firefox
 
-Vygenerování souboru HAR pomocí **Mozilla Firefox**:
+Vygenerování souboru HAR pomocí **Mozilla Firefox** :
 
 1. Přejít na webovou stránku, na které dochází k problému.
 1. V pravém horním rohu okna vyberte ikonu se třemi tečkami a pak nástroje **Web Developer**  >  **Toggle Tools**. Klávesu F12 můžete stisknout jako zástupce.
@@ -121,11 +121,11 @@ Vygenerování souboru HAR pomocí **Mozilla Firefox**:
 
 ### <a name="apple-safari"></a>Apple Safari
 
-Postup vygenerování souboru HAR pomocí **prohlížeče Safari**:
+Postup vygenerování souboru HAR pomocí **prohlížeče Safari** :
 
 1. Povolte vývojářské nástroje v Safari: vyberte předvolby **Safari**  >  **Preferences**. Přejděte na kartu **Upřesnit** a pak na **panelu nabídek vyberte možnost Zobrazit nabídku vývoje**.
 1. Přejít na webovou stránku, na které dochází k problému.
-1. Vyberte **vývoj**a pak vyberte **Zobrazit web Inspector**.
+1. Vyberte **vývoj** a pak vyberte **Zobrazit web Inspector**.
 1. Vyberte kartu **síť** a pak výběrem **položky vymazat síťové položky** odeberte existující protokoly.
 
     ![Jak odebrat existující protokoly v Safari](media/support/safari-clear-session.png)

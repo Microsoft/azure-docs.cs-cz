@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 973d3ebe2879a2e98a72ce1f7571a1f00cd67a93
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b7d587f2be5141f7de82e9294b1fdb9fba4a6a41
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356140"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488637"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro ovladač tajných klíčů úložiště pro Kubernetes
 
@@ -52,6 +52,12 @@ Tato operace vrátí řadu párů klíč/hodnota:
 ![Snímek obrazovky zobrazující appId a heslo pro contosoServicePrincipal](../media/kubernetes-key-vault-1.png)
 
 Zkopírujte přihlašovací údaje **appId** a **Password** pro pozdější použití.
+
+## <a name="flow-for-using-managed-identity"></a>Tok pro použití spravované identity
+
+Tento diagram znázorňuje integrační tok AKS – Key Vault pro spravovanou identitu:
+
+![Diagram, který zobrazuje integrační tok AKS – Key Vault pro spravovanou identitu](../media/aks-key-vault-integration-flow.png)
 
 ## <a name="deploy-an-azure-kubernetes-service-aks-cluster-by-using-the-azure-cli"></a>Nasazení clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 

@@ -1,20 +1,20 @@
 ---
-title: Řídicí panel využití v Microsoft Commercial Marketplace Analytics, Azure Marketplace a Microsoft AppSource
-description: Přečtěte si, jak získat přístup ke všem VIRTUÁLNÍm počítačům nabízí metriky fakturace využití a měření. V partnerském centru v části komerční web Marketplace přejdete na řídicí panel využití.
+title: Řídicí panel využití v komerčních obchodech na webu Marketplace | Azure Marketplace
+description: Naučte se, jak získat přístup ke všem metrikám využití a měření fakturace pro nabídky publikované do Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/09/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 9a1b6197241b93edf778295f196ccc92c45d85d6
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1ae30d97e64dc17086e199c3fcc8188f54e6ab69
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414573"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490113"
 ---
-# <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Řídicí panel využití v Microsoft Commercial Marketplace Analytics
+# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Využití v analýzách komerčního marketplace
 
 Tento článek poskytuje informace o řídicím panelu využití v partnerském centru. Tento řídicí panel zobrazuje všechny virtuální počítače (VM), které nabízí normalizované využití, nezpracované využití a metriky účtované podle objemu dat na třech oddělených kartách: normalizované využití virtuálních počítačů, nezpracované využití virtuálních počítačů a využití účtované fakturace.
 

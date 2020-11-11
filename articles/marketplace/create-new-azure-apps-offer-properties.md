@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 1414f2ce53d1764e788749fc2d225c56f624bcdc
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 6f92c138a02c9dbdc1d22ca04c733cfbee69dcd0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370084"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488515"
 ---
 # <a name="how-to-configure-your-azure-application-offer-properties"></a>Jak nakonfigurovat vlastnosti nabídky aplikací Azure
 
@@ -76,10 +76,6 @@ Místo standardní smlouvy se můžete rozhodnout, že budete chtít zadat vlast
 
 1. V části **zákon** se ujistěte, že je zaškrtnuté políčko **používat standardní kontrakt pro komerční web Marketplace** .
 1. V poli **podmínky a ujednání** zadejte až 10 000 znaků textu.
-
-   > [!NOTE]
-   > Pokud budete potřebovat delší popis, zadejte jednu webovou adresu, na které odkazuje, kde se vaše podmínky a ujednání můžou najít. Zobrazí se zákazníkům jako aktivní odkaz.
-
 1. Než budete pokračovat na další kartu, vyberte **Uložit koncept** . seznam nabídek můžete vybrat.
 
 ## <a name="next-steps"></a>Další kroky

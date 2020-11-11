@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/13/2019
-author: keferna
-ms.author: keferna
-ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+author: trkeya
+ms.author: trkeya
+ms.openlocfilehash: b3f46f934241d924789b97c24cf9b68213d94d63
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125678"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490079"
 ---
 # <a name="test-drive-technical-configuration"></a>Technická konfigurace testovací verze
 
@@ -74,7 +74,7 @@ Abyste Microsoftu umožnili nasazení testovacích jednotek vaším jménem, vyt
 
 - **ID aplikace Azure AD** (požadováno) – zadejte [ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **Registrace aplikací** a vyhledejte uvedené číslo **ID aplikace** (například `50c464d3-4930-494c-963c-1e951d15360e` ).
 
-- **Tajný kód klienta aplikace Azure AD** (povinné) – zadejte svůj [tajný kód klienta](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)aplikace Azure AD. Tuto hodnotu najdete tak, že se přihlásíte k [Azure Portal](https://portal.azure.com/). V nabídce vlevo vyberte kartu **Azure Active Directory** , vyberte **Registrace aplikací** a vyberte svou aplikaci Test Drive. V dalším kroku vyberte **certifikáty a tajné klíče** , vyberte **nový tajný klíč klienta** , zadejte popis, v části **vypršení platnosti** vyberte **nikdy** a pak zvolte **Přidat** . Nezapomeňte hodnotu zkopírovat. Před zkopírováním hodnoty nedělejte odejít ze stránky.
+- **Tajný kód klienta aplikace Azure AD** (povinné) – zadejte svůj [tajný kód klienta](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)aplikace Azure AD. Tuto hodnotu najdete tak, že se přihlásíte k [Azure Portal](https://portal.azure.com/). V nabídce vlevo vyberte kartu **Azure Active Directory** , vyberte **Registrace aplikací** a vyberte svou aplikaci Test Drive. V dalším kroku vyberte **certifikáty a tajné klíče** , vyberte **nový tajný klíč klienta** , zadejte popis, v části **vypršení platnosti** vyberte **nikdy** a pak zvolte **Přidat**. Nezapomeňte hodnotu zkopírovat. Před zkopírováním hodnoty nedělejte odejít ze stránky.
 
 ## <a name="test-drive-listings"></a>Výpisy testovacích jednotek
 
@@ -98,9 +98,4 @@ Pokud momentálně vytváříte testovací jednotku v partnerském centru, vyber
 - [Osvědčené postupy testovacích jednotek](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Přehled](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)(PDF; Ujistěte se, že je blokování automaticky otevíraných oken vypnuté)
 - [Aktualizace stávající nabídky na komerčním webu Marketplace](partner-center-portal/update-existing-offer.md)
-
-## <a name="additional-resources"></a>Další zdroje
-
-## <a name="feedback"></a>Váš názor
-
-Odeslat a zobrazit názor na [Tento produkt](https://feedback.azure.com/forums/216369-azure-marketplace)
+- [Fórum Azure Marketplace Feedback](https://feedback.azure.com/forums/216369-azure-marketplace)

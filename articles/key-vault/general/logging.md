@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5423fc27ecc58bcd79b36a845e4b7569f342f712
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: eef4f6b8ee5821e54b5b7709eee7f8dad8749e63
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286706"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488532"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -75,7 +75,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 | **odcizen** |Identita z tokenu, který byl předložen v žádosti REST API. Obvykle se jedná o "uživatel", "instanční objekt" nebo kombinaci "User + appId", jako v případě požadavku, který je výsledkem rutiny Azure PowerShell. |
 | **vlastnosti** |Informace, které se liší v závislosti na operaci ( **OperationName** ). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet** ), obsahuje taky identifikátor URI klíče (jako `id` ), identifikátor URI trezoru nebo tajný identifikátor URI. |
 
-Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Například:
+Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Příklad:
 
 * Všechny operace trezoru klíčů mají `Vault<action>` formát, například `VaultGet` a `VaultCreate` .
 * Všechny operace s klíči mají `Key<action>` formát, například `KeySign` a `KeyList` .
@@ -93,12 +93,14 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 | **VaultDelete** |[Odstranění trezoru klíčů](/rest/api/keyvault/vaults) |
 | **VaultPatch** |[Aktualizace trezoru klíčů](/rest/api/keyvault/vaults) |
 | **VaultList** |[Výpis všech trezorů klíčů ve skupině prostředků](/rest/api/keyvault/vaults) |
+| **VaultPurge** |[Vymazání odstraněného trezoru](/rest/api/keyvault/vaults/purgedeleted) |
+| **VaultRecover** |Obnovit odstraněný trezor|
+| **VaultGetDeleted** |[Získat odstraněný trezor](/rest/api/keyvault/vaults/getdeleted) |
+| **VaultListDeleted** |[Vypsat odstraněné trezory](/rest/api/keyvault/vaults/listdeleted) |
 | **KeyCreate** |[Vytvoření klíče](/rest/api/keyvault/createkey) |
 | **KeyGet** |[Získání informací o klíči](/rest/api/keyvault/getkey) |
 | **KeyImport** |[Import klíče do trezoru](/rest/api/keyvault/vaults) |
-| **KeyBackup** |[Zálohování klíče](/rest/api/keyvault/backupkey) |
 | **KeyDelete** |[Odstranění klíče](/rest/api/keyvault/deletekey) |
-| **KeyRestore** |[Obnovení klíče](/rest/api/keyvault/restorekey) |
 | **KeySign** |[Podpis klíčem](/rest/api/keyvault/sign) |
 | **KeyVerify** |[Ověření pomocí klíče](/rest/api/keyvault/vaults) |
 | **KeyWrap** |[Zabalení klíče](/rest/api/keyvault/wrapkey) |
@@ -106,14 +108,56 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 | **KeyEncrypt** |[Šifrování pomocí klíče](/rest/api/keyvault/encrypt) |
 | **KeyDecrypt** |[Dešifrování pomocí klíče](/rest/api/keyvault/decrypt) |
 | **KeyUpdate** |[Aktualizace klíče](/rest/api/keyvault/updatekey) |
-| **KeyList** |[Výpis klíčů v trezoru](/rest/api/keyvault/vaults) |
+| **KeyList** |[Výpis klíčů v trezoru](/rest/api/keyvault/getkeys) |
 | **KeyListVersions** |[Výpis verzí klíče](/rest/api/keyvault/getkeyversions) |
+| **Vyprázdnit** |[Vyprázdnit klíč](/rest/api/keyvault/purgedeletedkey) |
+| **KeyBackup** |[Zálohovat klíč](/rest/api/keyvault/backupkey) |
+| **KeyRestore** |[Obnovení klíče](/rest/api/keyvault/restorekey) |
+| **Obnovení** |[Obnovení klíče](/rest/api/keyvault/recoverdeletedkey) |
+| **KeyGetDeleted** |[Získat odstraněný klíč](/rest/api/keyvault/getdeletedkey) |
+| **KeyListDeleted** |[Výpis odstraněných klíčů v trezoru](/rest/api/keyvault/getdeletedkeys) |
+| **CertificateGet** |[Získání informací o certifikátu](/rest/api/keyvault/getcertificate) |
+| **CertificateCreate** |[Vytvoření certifikátu](/rest/api/keyvault/createcertificate) |
+| **CertificateImport** |[Import certifikátu do trezoru](/rest/api/keyvault/importcertificate) |
+| **CertificateUpdate** |[Aktualizace certifikátu](/rest/api/keyvault/updatecertificate) |
+| **CertificateList** |[Výpis certifikátů v trezoru](/rest/api/keyvault/getcertificates) |
+| **CertificateListVersions** |[Seznam verzí certifikátu](/rest/api/keyvault/getcertificateversions) |
+| **CertificateDelete** |[Odstranit certifikát](/rest/api/keyvault/deletecertificate) |
+| **CertificatePurge** |[Vyprázdnit certifikát](/rest/api/keyvault/purgedeletedcertificate) |
+| **CertificateBackup** |[Zálohování certifikátu](/rest/api/keyvault/backupcertificate) |
+| **CertificateRestore** |[Obnovení certifikátu](/rest/api/keyvault/restorecertificate) |
+| **CertificateRecover** |[Obnovení certifikátu](/rest/api/keyvault/recoverdeletedcertificate) |
+| **CertificateGetDeleted** |[Získat odstraněný certifikát](/rest/api/keyvault/getdeletedcertificate) |
+| **CertificateListDeleted** |[Výpis odstraněných certifikátů v trezoru](/rest/api/keyvault/getdeletedcertificates) |
+| **CertificatePolicyGet** |[Získat Zásady certifikátů](/rest/api/keyvault/getcertificatepolicy) |
+| **CertificatePolicyUpdate** |[Aktualizovat zásady certifikátů](/rest/api/keyvault/updatecertificatepolicy) |
+| **CertificatePolicySet** |[Vytvořit zásady certifikátů](/rest/api/keyvault/createcertificate) |
+| **CertificateContactsGet** |[Získat kontakty certifikátu](/rest/api/keyvault/getcertificatecontacts) |
+| **CertificateContactsSet** |[Nastavení kontaktů certifikátu](/rest/api/keyvault/setcertificatecontacts) |
+| **CertificateContactsDelete** |[Odstranit kontakty certifikátu](/rest/api/keyvault/deletecertificatecontacts) |
+| **CertificateIssuerGet** |[Získat vystavitele certifikátu](/rest/api/keyvault/getcertificateissuer) |
+| **CertificateIssuerSet** |[Nastavit vystavitele certifikátu](/rest/api/keyvault/setcertificateissuer) |
+| **CertificateIssuerUpdate** |[Aktualizace vystavitele certifikátu](/rest/api/keyvault/updatecertificateissuer) |
+| **CertificateIssuerDelete** |[Odstranit vystavitele certifikátu](/rest/api/keyvault/deletecertificateissuer) |
+| **CertificateIssuersList** |[Výpis vystavitelů certifikátů](/rest/api/keyvault/getcertificateissuers) |
+| **CertificateEnroll** |Zápis certifikátu |
+| **CertificateRenew** |Obnovení certifikátu |
+| **CertificatePendingGet** |Načíst nevyřízený certifikát |
+| **CertificatePendingMerge** |Čeká se na sloučení certifikátů |
+| **CertificatePendingUpdate** |Čeká se na aktualizaci certifikátu. |
+| **CertificatePendingDelete** |Odstranit certifikát, který čeká |
 | **SecretSet** |[Vytvoření tajného kódu](/rest/api/keyvault/updatecertificate) |
 | **SecretGet** |[Získat tajný kód](/rest/api/keyvault/getsecret) |
 | **SecretUpdate** |[Aktualizace tajného kódu](/rest/api/keyvault/updatesecret) |
 | **SecretDelete** |[Odstranění tajného kódu](/rest/api/keyvault/deletesecret) |
-| **SecretList** |[Výpis tajných kódů v trezoru](/rest/api/keyvault/vaults) |
+| **SecretList** |[Výpis tajných kódů v trezoru](/rest/api/keyvault/getsecrets) |
 | **SecretListVersions** |[Výpis verzí tajného kódu](/rest/api/keyvault/getsecretversions) |
+| **SecretPurge** |[Vyprázdnit tajný klíč](/rest/api/keyvault/purgedeletedsecret) |
+| **SecretBackup** |[Zálohování tajného klíče](/rest/api/keyvault/backupsecret) |
+| **SecretRestore** |[Obnovení tajného klíče](/rest/api/keyvault/restoresecret) |
+| **SecretRecover** |[Obnovení tajného klíče](/rest/api/keyvault/recoverdeletedsecret) |
+| **SecretGetDeleted** |[Získat odstraněný tajný klíč](/rest/api/keyvault/getdeletedsecret) |
+| **SecretListDeleted** |[Výpis odstraněných tajných klíčů v trezoru](/rest/api/keyvault/getdeletedsecrets) |
 | **VaultAccessPolicyChangedEventGridNotification** | Publikovaná událost změny zásad přístupu k trezoru |
 | **SecretNearExpiryEventGridNotification** |Publikovaná událost v blízkosti vypršení platnosti tajného kódu |
 | **SecretExpiredEventGridNotification** |Publikovaná událost vypršela v tajnosti |

@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 0dc55f4d77fde48590b1fbf206ed988e8fb9ec0e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098769"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490266"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -73,7 +73,7 @@ Pokud váš Azure Cosmos DB účet už obsahuje sdílenou databázi propustnosti
 
 Pokud vaše úlohy zahrnují odstranění a opětovné vytvoření všech kolekcí v databázi, doporučuje se odstranit prázdnou databázi a znovu vytvořit novou databázi před vytvořením kolekce. Následující obrázek ukazuje, jak může fyzický oddíl hostovat jeden nebo více logických oddílů, které patří do různých kontejnerů v rámci databáze:
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Fyzický oddíl, který je hostitelem jednoho nebo více logických oddílů kontejneru" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Fyzický oddíl, který je hostitelem jednoho nebo více logických oddílů, které patří do různých kontejnerů. " border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Nastavení propustnosti pro databázi a kontejner
 
@@ -82,9 +82,9 @@ Tyto dva modely můžete kombinovat. Zajištění propustnosti databáze i konte
 * Můžete vytvořit databázi Azure Cosmos s názvem *Z* s zřízenou propustností *"K"* ru. 
 * Dále v rámci databáze vytvořte pět kontejnerů s názvem *a* , *B* , *C* , *D* a *E* . Při vytváření kontejneru B Nezapomeňte povolit **vyhrazenou propustnost pro tuto možnost kontejneru** a explicitně nakonfigurovat *"P"* ru zřízené propustnosti v tomto kontejneru. Sdílenou a vyhrazenou propustnost můžete nakonfigurovat pouze při vytváření databáze a kontejneru. 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Fyzický oddíl, který je hostitelem jednoho nebo více logických oddílů kontejneru":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Nastavení propustnosti na úrovni kontejneru":::
 
-* Propustnost *"K"* ru se sdílí mezi čtyřmi kontejnery *a* , *C* , *D* a *E* . Přesné množství propustnosti, které je dostupné pro *a* , *C* , *D* nebo *E* , se liší. Pro každou propustnost jednotlivých kontejnerů neexistují žádné SLA.
+* Propustnost *"K"* ru se sdílí mezi čtyřmi kontejnery *a* , *C* , *D* a *E*. Přesné množství propustnosti, které je dostupné pro *a* , *C* , *D* nebo *E* , se liší. Pro každou propustnost jednotlivých kontejnerů neexistují žádné SLA.
 * U kontejneru s názvem *B* je zaručeno, že se po celou dobu vrátí propustnost ru *"P"* . Je zajištěný pomocí SLA.
 
 > [!NOTE]
@@ -109,7 +109,7 @@ Reakce těchto metod také obsahuje [minimální zřízenou propustnost](concept
 Skutečné minimální RU/s se může lišit v závislosti na konfiguraci vašeho účtu. Obecně se ale jedná o maximum:
 
 * 400 RU/s 
-* Aktuální úložiště v GB × 10 RU/s
+* Aktuální úložiště v GB × 10 RU/s (Pokud Váš kontejner nebo databáze neobsahuje více než 1 TB dat, přečtěte si náš [velký program pro úložiště/nízkou propustnost](#high-storage-low-throughput-program)).
 * Nejvyšší RU/s zřízené v databázi nebo kontejneru/100
 * Počet kontejnerů × 100 RU/s (pouze sdílená databáze propustnosti)
 

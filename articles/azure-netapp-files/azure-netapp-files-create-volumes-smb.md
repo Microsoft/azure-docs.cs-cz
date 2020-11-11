@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: d0a16dc639fb3206b480c1091a66686955cbb11d
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 9740506da2c03996db756175551867ed43575a7c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932341"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488175"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -119,10 +119,10 @@ Pro Azure NetApp Files se vztahují další požadavky na AADDS:
 
 Při vytváření připojení ke službě Active Directory si všimněte následujících specifických možností pro AADDS:
 
-* V nabídce AADDS najdete informace pro **primární DNS**, **sekundární DNS**a **název domény DNS služby AD** .  
+* V nabídce AADDS najdete informace pro **primární DNS** , **sekundární DNS** a **název domény DNS služby AD** .  
 Pro servery DNS se ke konfiguraci připojení služby Active Directory použijí dvě IP adresy. 
 * **Cesta k organizační jednotce** je `OU=AADDC Computers` .  
-Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod **účtem NetApp**:
+Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod **účtem NetApp** :
 
   ![Cesta organizační jednotky](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
 
@@ -131,7 +131,7 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
 
 ## <a name="create-an-active-directory-connection"></a>Vytvoření připojení ke službě Active Directory
 
-1. Z účtu NetApp klikněte na **připojení služby Active Directory**a pak klikněte na **připojit**.  
+1. Z účtu NetApp klikněte na **připojení služby Active Directory** a pak klikněte na **připojit**.  
 
     ![Připojení ke službě Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
@@ -146,7 +146,7 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
     * **Název domény DNS služby Active Directory**  
         Toto je název domény vašeho Active Directory Domain Services, ke které se chcete připojit.
     * **Název lokality služby Active Directory**  
-        Jedná se o název lokality, na kterou bude zjišťování řadiče domény omezeno.
+        Jedná se o název lokality, na kterou bude zjišťování řadiče domény omezeno. Tato stránka by se měla shodovat s názvem webu v části lokality a služby Active Directory.
     * **Předpona serveru SMB (účet počítače)**  
         Toto je předpona názvů pro účet počítače ve službě Active Directory, kterou Azure NetApp Files použít pro vytváření nových účtů.
 

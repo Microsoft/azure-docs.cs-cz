@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 75d22a5021c7c8ae3a12f25644f2875e0ccf8cdd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: c811a2ea5c06250068e7c0276e4b79e9108d920d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098752"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490351"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB bez serveru (Preview)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -50,9 +50,6 @@ Další informace o tom, jak vybrat nabídku, která nejlépe odpovídá vašemu
 ## <a name="using-serverless-resources"></a>Používání prostředků bez serveru
 
 Bez serveru je nový typ účtu Azure Cosmos, což znamená, že při vytváření nového účtu musíte zvolit mezi **zřízenou propustností** a bez **serveru** . Abyste mohli začít pracovat bez serveru, musíte vytvořit nový účet bez serveru. V rámci verze Preview je jediným podporovaným způsobem, jak vytvořit nový účet bez serveru, [použití Azure Portal](create-cosmosdb-resources-portal.md). Migrace existujících účtů do nebo z režimu bez serveru se v tuto chvíli nepodporuje.
-
-> [!NOTE]
-> V současné době se podporuje jenom na serveru rozhraní API pro Azure Cosmos DB Core (SQL).
 
 Jakýkoli kontejner, který je vytvořený v účtu bez serveru, je kontejner bez serveru. Kontejnery bez serveru zpřístupňují stejné možnosti jako kontejnery vytvořené v režimu zřízené propustnosti, takže můžete data číst, zapisovat a dotazovat přesně stejným způsobem. Účty a kontejnery bez serveru ale mají také specifické vlastnosti:
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f88548b57cee9b5f637247fda1536488382ae2f6
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: bc811ab3cab4b79b81b16dd94a2c72225046e35a
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042605"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488274"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu podmíněného přístupu v Azure Active Directory B2C vlastní zásady
 
@@ -53,7 +53,7 @@ Pro každé přihlášení Azure AD B2C vyhodnotí všechny zásady a před udě
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Typem operace OperationType | Yes | Musí být **vyhodnocena**.  |
+| Typ operace | Yes | Musí být **vyhodnocena**.  |
 
 ### <a name="input-claims"></a>Vstupní deklarace identity
 
@@ -115,7 +115,7 @@ Režim **oprav** pro technický profil podmíněného přístupu informuje Azure
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Typem operace OperationType | Yes | Je nutné provést **nápravu**.  |
+| Typ operace | Yes | Je nutné provést **nápravu**.  |
 
 ### <a name="input-claims"></a>Vstupní deklarace identity
 
@@ -130,7 +130,7 @@ Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputCl
 
 ### <a name="output-claims"></a>Deklarace výstupů
 
-Zprostředkovatel protokolu podmíněného přístupu nevrací žádné **OutputClaims**, takže není nutné zadávat deklarace výstupů. Můžete ale zahrnout deklarace identity, které nevrací poskytovatel protokolu podmíněného přístupu, pokud nastavíte `DefaultValue` atribut.
+Zprostředkovatel protokolu podmíněného přístupu nevrací žádné **OutputClaims** , takže není nutné zadávat deklarace výstupů. Můžete ale zahrnout deklarace identity, které nevrací poskytovatel protokolu podmíněného přístupu, pokud nastavíte `DefaultValue` atribut.
 
 Element **OutputClaimsTransformations** může obsahovat kolekci prvků **OutputClaimsTransformation** , které se používají k úpravě výstupních deklarací identity nebo k vygenerování nových.
 
@@ -428,7 +428,7 @@ Přidejte cestu uživatele, která používá nové deklarace identity, jak je z
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
               <Value>CAChallengeIsMfa</Value>
-              <Value>false</Value>
+              <Value>False</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>
@@ -458,7 +458,7 @@ Přidejte cestu uživatele, která používá nové deklarace identity, jak je z
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
               <Value>CAChallengeIsBlock</Value>
-              <Value>true</Value>
+              <Value>True</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a69ca707577ceddc56ae691d6e5e701458cae28
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4adf0b8a7c12abed9689b9ac0cc9c5d5c8c3f980
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346597"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488430"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Čtení vstupu v jakémkoli formátu pomocí vlastních deserializátorů .NET
 
@@ -249,9 +249,9 @@ Tato funkce není podporována. Pokud tuto funkci potřebujete, můžete hlasova
 
 Po implementaci nástroje pro deserializaci můžete ostatním uživatelům usnadnit sdílení pomocí komunity. Odešlete kód do [úložiště Azure Stream Analytics GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
 
-### <a name="what-are-the-other-limitation-of-using-custom-deserializers-in-stream-analytics"></a>Jaké jsou další omezení používání vlastních deserializátorů v Stream Analytics?
+### <a name="what-are-the-other-limitations-of-using-custom-deserializers-in-stream-analytics"></a>Jaká jsou další omezení používání vlastních deserializátorů v Stream Analytics?
 
-Pokud je váš vstup ve formátu Protobuf se schématem obsahujícím typ MapField, nebudete moci implementovat vlastní deserializaci. Pracujeme na podpoře tohoto typu.
+Pokud je váš vstup ve formátu Protobuf pomocí schématu obsahujícího `MapField` typ, nebudete moci implementovat vlastní deserializaci. Vlastní deserializace také nepodporuje ukázková data ani data ve verzi Preview. 
 
 ## <a name="next-steps"></a>Další kroky
 

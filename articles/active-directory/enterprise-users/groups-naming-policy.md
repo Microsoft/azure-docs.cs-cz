@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9456d663eb1600bf73b1fe253560c2d9f29205ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 45dac4425f4d2f563cbc942f23d81583728139f6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375739"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489450"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Vynutili zásady pojmenování u skupin Microsoft 365 v Azure Active Directory
 
@@ -85,7 +85,7 @@ Vybraní Správci mohou být z těchto zásad vyloučeni napříč všemi úloha
 ## <a name="configure-naming-policy-in-azure-portal"></a>Konfigurace zásady pojmenování v Azure Portal
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu správce skupiny.
-1. Vyberte **skupiny**a pak výběrem **zásady pojmenování** otevřete stránku zásady pojmenování.
+1. Vyberte **skupiny** a pak výběrem **zásady pojmenování** otevřete stránku zásady pojmenování.
 
     ![Otevřete stránku zásady pojmenování v centru pro správu.](./media/groups-naming-policy/policy.png)
 
@@ -102,7 +102,7 @@ Vybraní Správci mohou být z těchto zásad vyloučeni napříč všemi úloha
 
     ![seznam blokovaných slov pro úpravy a nahrání pro zásady pojmenování](./media/groups-naming-policy/blockedwords.png)
 
-1. Výběrem položky **Stáhnout**zobrazíte nebo upravíte aktuální seznam vlastních blokovaných slov.
+1. Výběrem položky **Stáhnout** zobrazíte nebo upravíte aktuální seznam vlastních blokovaných slov.
 1. Kliknutím na ikonu souboru Nahrajte nový seznam vlastních blokovaných slov.
 1. Uložte změny pro nové zásady, aby se projevily, a to tak, že vyberete **Uložit**.
 
@@ -136,7 +136,7 @@ Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny st
    Connect-AzureAD
    ```
 
-   Na obrazovce **Přihlášení k účtu**, která se otevře, zadejte svůj účet a heslo správce pro připojení k vaší službě a vyberte **Přihlásit se**.
+   Na obrazovce **Přihlášení k účtu** , která se otevře, zadejte svůj účet a heslo správce pro připojení k vaší službě a vyberte **Přihlásit se**.
 
 1. Podle pokynů v části [Azure Active Directory rutiny nakonfigurujte nastavení skupiny](../enterprise-users/groups-settings-cmdlets.md) pro vytvoření nastavení skupiny pro tuto organizaci.
 
@@ -249,7 +249,6 @@ Mobilní aplikace skupiny | Skupiny vytvořené v mobilní aplikaci skupiny jsou
 Planner | Plánovač je kompatibilní se zásadami pojmenování. V Planneru se při zadávání názvu plánu zobrazí náhled zásady pojmenování. Když uživatel zadá vlastní blokované slovo, při vytváření plánu se zobrazí chybová zpráva.
 Dynamics 365 for Customer Engagement | Dynamics 365 pro zapojení zákazníka je v souladu se zásadami pojmenování. V případě, že uživatel zadá název skupiny nebo e-mailový alias skupiny, zobrazí se v Dynamics 365 název vykonatelné zásady pojmenování. Když uživatel zadá vlastní blokované slovo, zobrazí se chybová zpráva s blokovaným slovem, aby ho uživatel mohl odebrat.
 Synchronizace školních dat (SDS) | Skupiny vytvořené prostřednictvím SDS dodržují zásady pojmenování, ale zásady pojmenování se neaplikují automaticky. Správci SDS musí připojit předpony a přípony k názvům tříd, pro které se musí vytvořit skupiny a pak se nahrají do SDS. Vytvoření nebo úprava skupiny by jinak nedošlo k chybě.
-Správce zákaznických aplikací Outlook (OCM) | Správce zákaznických aplikací Outlook je kompatibilní se zásadami pojmenování, které se automaticky aplikují na skupinu vytvořenou v aplikaci Outlook Customer Manager. Pokud se zjistí vlastní blokované slovo, bude vytvoření skupiny v OCM zablokované a uživatel je zablokovaný v používání aplikace OCM.
 Aplikace učeben | Skupiny vytvořené v aplikaci učeben vyhovují zásadám pojmenování, ale zásady pojmenování se neaplikují automaticky a verze Preview se uživatelům při zadávání názvu skupiny učeben nezobrazuje. Uživatelé musí zadat název skupiny vynutilého učebny s předponami a příponami. V takovém případě se operace vytvoření nebo úpravy skupiny učeben nepovede s chybami.
 Power BI | Power BI pracovní prostory jsou kompatibilní se zásadami pojmenování.    
 Yammer | Když se uživatel přihlásil ke službě Yammer pomocí svého Azure Active Directory účtu vytvoří skupinu nebo upraví název skupiny, bude název skupiny odpovídat zásadám pojmenování. To platí pro Microsoft 365 propojených skupin i všech ostatních skupin Yammeru.<br>Pokud byla před vytvořením zásady pojmenování vytvořena připojená skupina Microsoft 365, název skupiny nebude automaticky dodržovat zásady pojmenování. Když uživatel upraví název skupiny, zobrazí se výzva k přidání předpony a přípony.

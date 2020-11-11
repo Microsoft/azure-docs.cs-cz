@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 381ee08f44ad8fb4dade9b6229f5a5925cf2b6b7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a17143045b368038e24ac40f131325a623fc934d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375523"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489603"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Změňte členství v statických skupinách na dynamické v Azure Active Directory
 
@@ -32,7 +32,7 @@ ms.locfileid: "92375523"
 
 ## <a name="change-the-membership-type-for-a-group"></a>Změna typu členství pro skupinu
 
-1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globálním správcem nebo správcem uživatelů ve vaší organizaci Azure AD.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globálním správcem, správcem uživatelů nebo správci skupin ve vaší organizaci Azure AD.
 2. Vyberte **skupiny**.
 3. V seznamu **všechny skupiny** otevřete skupinu, kterou chcete změnit.
 4. Vyberte **Vlastnosti**.
@@ -40,11 +40,11 @@ ms.locfileid: "92375523"
 
 Následující kroky jsou příkladem změny skupiny ze statického na dynamické členství pro skupinu uživatelů.
 
-1. Na stránce **vlastnosti** pro vybranou skupinu vyberte **typ členství** **dynamického uživatele**a potom v dialogovém okně vyberte Ano, aby bylo možné pokračovat v členství ve skupině. 
+1. Na stránce **vlastnosti** pro vybranou skupinu vyberte **typ členství** **dynamického uživatele** a potom v dialogovém okně vyberte Ano, aby bylo možné pokračovat v členství ve skupině. 
   
    ![Vyberte typ členství dynamického uživatele.](./media/groups-change-type/select-group-to-convert.png)
   
-2. Vyberte **Přidat dynamický dotaz**a pak zadejte pravidlo.
+2. Vyberte **Přidat dynamický dotaz** a pak zadejte pravidlo.
   
    ![zadejte pravidlo pro dynamickou skupinu.](./media/groups-change-type/enter-rule.png)
   

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 624a147a463ad3be7e15a469294f07793046aaf3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b2a74450477d562231eafd684b3d781d92f700d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445943"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489569"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Kurz: vytvoření hierarchie zařízení IoT Edge (Preview)
 
@@ -53,7 +53,7 @@ Pokud chcete vytvořit hierarchii IoT Edgech zařízení, budete potřebovat:
 * Dvě zařízení se systémem Linux nakonfigurovaná jako zařízení IoT Edge. Pokud nemáte dostupná zařízení, můžete použít [virtuální počítače Azure](https://docs.microsoft.com/azure/virtual-machines/linux/).
 * Účet Azure s platným předplatným. Pokud ještě nemáte [předplatné Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) v Azure úrovně Free nebo Standard.
-* Azure CLI v 2.3.1 s nainstalovaným rozšířením Azure IoT v 0.9.10 nebo novějším. V tomto kurzu se používá [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Pokud Azure Cloud Shell neznáte, [Projděte si podrobnosti v rychlém](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#use-azure-cloud-shell)startu.
+* Azure CLI v 2.3.1 s nainstalovaným rozšířením Azure IoT v 0.10.6 nebo novějším. V tomto kurzu se používá [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Pokud Azure Cloud Shell neznáte, [Projděte si podrobnosti v rychlém](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#use-azure-cloud-shell)startu.
 
 Tento scénář můžete vyzkoušet také pomocí skriptu [Azure IoT Edge pro průmyslovou ukázku IoT](https://aka.ms/iotedge-nested-sample), který nasadí virtuální počítače Azure jako předem nakonfigurovaná zařízení pro simulaci prostředí továrny.
 

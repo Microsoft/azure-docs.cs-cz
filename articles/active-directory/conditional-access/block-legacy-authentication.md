@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 11/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1485c2abd24022dbfa6476e3c5a530413b9cb4f2
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e85f36f1b970a4848ee132fe37bd1b0f4f4fdc82
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233793"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489518"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postupy: blokování staršího ověřování ve službě Azure AD pomocí podmíněného přístupu   
 
@@ -35,7 +35,7 @@ Alex Weinert, ředitel pro zabezpečení identity v Microsoftu, v jeho 12. břez
 
 Pokud je vaše prostředí připravené k blokování starší verze ověřování, aby se zlepšila ochrana vašeho tenanta, můžete tento cíl dosáhnout pomocí podmíněného přístupu. Tento článek vysvětluje, jak můžete nakonfigurovat zásady podmíněného přístupu, které blokují ověřování starší verze pro vašeho tenanta.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte zkušenosti se [základními koncepty](overview.md) podmíněného přístupu Azure AD.
 
@@ -80,7 +80,7 @@ Další informace o těchto ověřovacích protokolech a službách najdete v t�
 
 Než budete moct v adresáři zablokovat starší verze ověřování, musíte nejdřív pochopit, jestli mají vaši uživatelé aplikace, které používají starší verze ověřování a jak ovlivňují celkový adresář. Protokoly přihlášení k Azure AD se dají použít k pochopení, jestli používáte starší verze ověřování.
 
-1. Přejděte do **Azure Portal**  >  **Azure Active Directory**  >  **přihlášení** .
+1. Přejděte do **Azure Portal**  >  **Azure Active Directory**  >  **přihlášení**.
 1. Pokud není zobrazený, klikněte na **sloupce**  >  **klientská aplikace** a přidejte sloupec aplikace klienta.
 1. **Přidat filtry**  >  **Klientská aplikace** > vybrat všechny starší protokoly pro ověřování. Vyberte mimo dialogové okno filtrování a použijte výběr a zavřete dialogové okno.
 
@@ -97,7 +97,7 @@ Existují dva způsoby, jak pomocí zásad podmíněného přístupu zablokovat 
  
 ### <a name="directly-blocking-legacy-authentication"></a>Přímo blokující starší verze ověřování
 
-Nejjednodušší způsob, jak zablokovat starší ověřování v celé organizaci, je nakonfigurovat zásady podmíněného přístupu, které platí konkrétně pro klienty se starším ověřováním a blokují přístup. Při přiřazování uživatelů a aplikací k zásadám nezapomeňte vyloučit uživatele a účty služeb, které se ještě musí přihlašovat pomocí starší verze ověřování. Nastavte podmínku pro klientské aplikace tak, že vyberete možnost **klienti Exchange ActiveSync** a **Další klienti** . Pokud chcete blokovat přístup pro tyto klientské aplikace, nakonfigurujte řízení přístupu tak, aby blokovalo přístup.
+Nejjednodušší způsob, jak zablokovat starší ověřování v celé organizaci, je nakonfigurovat zásady podmíněného přístupu, které platí konkrétně pro klienty se starším ověřováním a blokují přístup. Při přiřazování uživatelů a aplikací k zásadám nezapomeňte vyloučit uživatele a účty služeb, které se ještě musí přihlašovat pomocí starší verze ověřování. Nastavte podmínku pro klientské aplikace tak, že vyberete možnost **klienti Exchange ActiveSync** a **Další klienti**. Pokud chcete blokovat přístup pro tyto klientské aplikace, nakonfigurujte řízení přístupu tak, aby blokovalo přístup.
 
 ![Podmínka klientské aplikace konfigurovaná k blokování ověřování starší verze](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
 
@@ -116,6 +116,10 @@ Konfigurace zásad pro **ostatní klienty** zablokuje celou organizaci od určit
 Může trvat až 24 hodin, než se zásada dostanou platit.
 
 Pro podmínky **ostatních klientů** můžete vybrat všechny dostupné ovládací prvky pro udělení oprávnění. činnost koncového uživatele je ale vždycky zablokovaný přístup.
+
+### <a name="sharepoint-online-and-b2b-guest-users"></a>Uživatelé typu Host služby SharePoint Online a B2B
+
+Aby bylo možné zablokovat přístup uživatelů B2B prostřednictvím staršího ověřování na SharePoint Online, musí organizace zakázat starší ověřování na SharePointu pomocí `Set-SPOTenant` příkazu PowerShellu a nastavením `-LegacyAuthProtocolsEnabled` parametru na `$false` . Další informace o nastavení tohoto parametru najdete v referenčním dokumentu PowerShellu služby SharePoint týkajícím se rutiny [set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps) .
 
 ## <a name="next-steps"></a>Další kroky
 

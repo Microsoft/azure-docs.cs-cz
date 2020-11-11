@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 83db314070f4c8857ebaa10b26d0adf51372776f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: d5da6576258d3e33296781bbc262494220140ddc
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447590"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489280"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Připojení zařízení IoT Edge pro příjem dat k bráně Azure IoT Edge (Preview)
 
@@ -43,7 +43,7 @@ Všechny kroky v tomto článku jsou sestavené na těch v tématu [konfigurace 
 
 * Centrum IoT úrovně Free nebo Standard.
 * Aspoň dvě **IoT Edge zařízení** , jednu jako zařízení nejvyšší vrstvy a jedno nebo více zařízení nižší vrstvy. Pokud nemáte dostupná IoT Edgeá zařízení, můžete [Azure IoT Edge spustit na virtuálních počítačích s Ubuntu](how-to-install-iot-edge-ubuntuvm.md).
-* Pokud k vytváření a správě zařízení používáte Azure CLI, použijte Azure CLI v 2.3.1 s nainstalovaným rozšířením Azure IoT v 0.9.10 nebo novějším.
+* Pokud k vytváření a správě zařízení používáte Azure CLI, použijte Azure CLI v 2.3.1 s nainstalovaným rozšířením Azure IoT v 0.10.6 nebo novějším.
 
 Tento článek poskytuje podrobné postupy a možnosti, které vám pomůžou vytvořit správnou hierarchii brány pro váš scénář. Kurz průvodce najdete v tématu [vytvoření hierarchie IoT Edge zařízení pomocí bran](tutorial-nested-iot-edge.md).
 

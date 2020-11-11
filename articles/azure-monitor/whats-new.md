@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: c9679fec1d9c5d501ead03bcfbf28132d9e3b90a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6ed00931e8cca1febac0b9b72b53eeb7e81042ea
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151804"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94487988"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
 
@@ -99,8 +99,8 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 
 #### <a name="new-and-updated-articles-from-restructure-of-agent-content"></a>Nové a aktualizované články z změny struktury obsahu agenta
 - [Povolit Azure Monitor pro virtuální počítače – přehled](insights/vminsights-enable-overview.md)
-- [Instalace agenta Log Analytics do počítačů se systémem Linux](platform/agent-linux.md)
-- [Instalace agenta Log Analytics do počítačů se systémem Windows](platform/agent-windows.md)
+- [Instalace agenta Log Analytics na počítačích s Linuxem](platform/agent-linux.md)
+- [Instalace agenta Log Analytics na počítačích s Windows](platform/agent-windows.md)
 - [Přehled agenta Log Analytics](platform/log-analytics-agent.md)
 
 ### <a name="application-insights"></a>Application Insights
@@ -157,7 +157,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 ### <a name="alerts"></a>Výstrahy
 - [Pravidla akcí pro Azure monitor výstrahy](platform/alerts-action-rules.md) – přidání procesů CLI.
 - [Vytvoření a Správa skupin akcí v Azure Portal](platform/action-groups.md) – aktualizuje se, aby odrážely změny v uživatelském rozhraní.
-- [Uložené dotazy v Azure Monitor Log Analytics](log-query/saved-queries.md) – nový článek.
+- [Příklady dotazů v Azure Monitor Log Analytics](log-query/example-queries.md) – nový článek.
 - [Vyřešte výstrahy protokolu v části Azure monitor](platform/alerts-troubleshoot-log.md) -added na kvótě pravidla výstrahy.
 - [Řešení potíží s výstrahami Azure metrik](platform/alerts-troubleshoot-metric.md) – Přidal se oddíl na pravidlo výstrahy na vlastní metriku, která ještě není vysílaná.
 - [Pochopte, jak budou výstrahy metriky fungovat v Azure Monitor.](platform/alerts-metric-overview.md) – Bylo přidáno doporučení pro výběr členitosti agregace.
@@ -262,7 +262,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 - [Protokol aktivit Azure](platform/activity-log.md)
 - [Ukázky Azure Monitor CLI](samples/cli-samples.md)
 - [Ukázky Azure Monitor PowerShellu](samples/powershell-samples.md)
-- [Návod k Azure Monitoring REST API](platform/rest-api-walkthrough.md)
+- [Průvodce rozhraním REST API pro monitorování Azure](platform/rest-api-walkthrough.md)
 - [Protokoly prostředků Azure podporují služby a schémata.](./platform/resource-logs-schema.md)
 - [Protokoly prostředků Azure](platform/resource-logs.md)
 - [Shromažďování a analýza protokolu aktivit Azure v Azure Monitor](./platform/activity-log.md)

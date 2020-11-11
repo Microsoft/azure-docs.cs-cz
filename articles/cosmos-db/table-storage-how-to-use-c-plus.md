@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 67cccc1eaa889d0180da9b5ae0fca9b75366edd9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 79b58b76954cf15289e85dbf763b7a399897635d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101149"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489875"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí C++
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -95,11 +95,11 @@ Použijte název účtu Azure Cosmos DB pro `<your_cosmos_db_account>` . Zadejte
 K otestování vaší aplikace v místním počítači se systémem Windows můžete použít emulátor Azure Storage, který je nainstalovaný se sadou [Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště je nástroj, který simuluje služby Azure Blob, Queue a Table, které jsou k dispozici na vašem místním vývojovém počítači. Následující příklad ukazuje, jak deklarovat statické pole pro uložení připojovacího řetězce do místního emulátoru úložiště:  
 
 ```cpp
-// Define the connection string with Azure storage emulator.
+// Define the connection string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Chcete-li spustit emulátor Azure Storage, vyberte z plochy systému Windows tlačítko **Start** nebo klávesu Windows. Zadejte a spusťte *emulátor úložiště Microsoft Azure* . Další informace najdete v tématu [použití emulátoru Azure Storage pro vývoj a testování](../storage/common/storage-use-emulator.md).
+Chcete-li spustit emulátor Azure Storage, vyberte z plochy systému Windows tlačítko **Start** nebo klávesu Windows. Zadejte a spusťte *emulátor úložiště Microsoft Azure*. Další informace najdete v tématu [použití emulátoru Azure Storage pro vývoj a testování](../storage/common/storage-use-emulator.md).
 
 ### <a name="retrieve-your-connection-string"></a>Načtení připojovacího řetězce
 
@@ -498,13 +498,13 @@ else
 }
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Pro Visual Studio Community Edition, pokud projekt získá chyby sestavení z důvodu souborů include *storage_account. h* a *Table. h* , odeberte přepínač kompilátoru **/Permissive-** :
 
-1. V **Průzkumníku řešení** klikněte pravým tlačítkem na váš projekt a vyberte **Vlastnosti** .
-1. V dialogovém okně **Stránky vlastností** rozbalte **Vlastnosti konfigurace** , pak rozbalte **C/C++** a vyberte **Jazyk** .
-1. Nastavte **Režim přizpůsobení** na hodnotu **Ne** .
+1. V **Průzkumníku řešení** klikněte pravým tlačítkem na váš projekt a vyberte **Vlastnosti**.
+1. V dialogovém okně **Stránky vlastností** rozbalte **Vlastnosti konfigurace** , pak rozbalte **C/C++** a vyberte **Jazyk**.
+1. Nastavte **Režim přizpůsobení** na hodnotu **Ne**.
 
 ## <a name="next-steps"></a>Další kroky
 

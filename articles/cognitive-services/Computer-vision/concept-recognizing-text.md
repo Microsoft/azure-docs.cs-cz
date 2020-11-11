@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 34a7cd8669c1545361bc7cd9579cfb6140c0c946
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ac3edc466d640fdb98fd38ba59938aa13fe00f73
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331698"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489144"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
 
@@ -73,6 +73,9 @@ Druhým krokem je volání operace [získat výsledky čtení](https://westcentr
 
 Pokud má pole **stav** hodnotu **úspěch** , odpověď JSON obsahuje extrahovaný textový obsah z obrázku nebo dokumentu. Odpověď JSON uchovává původní spojnici rozpoznaných slov. Obsahuje extrahované textové řádky a jejich Souřadnice ohraničovacího rámečku. Každý textový řádek obsahuje všechna extrahovaná slova s jejich souřadnicemi a výsledky spolehlivosti.
 
+> [!NOTE]
+> Data odeslaná do `Read` operace jsou dočasně zašifrovaná a uložená v klidovém stavu a v 48 hodinách se odstraní. To umožňuje aplikacím získat extrahovaný text jako součást odpovědi služby.
+
 ## <a name="sample-json-output"></a>Ukázkový výstup JSON
 
 Podívejte se na následující příklad úspěšné odpovědi JSON:
@@ -87,7 +90,6 @@ Podívejte se na následující příklad úspěšné odpovědi JSON:
     "readResults": [
       {
         "page": 1,
-        "language": "en",
         "angle": 0.8551,
         "width": 2661,
         "height": 1901,

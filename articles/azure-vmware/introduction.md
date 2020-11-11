@@ -3,12 +3,12 @@ title: Úvod
 description: Seznamte se s funkcemi a výhodami řešení Azure VMware pro nasazení a správu úloh na bázi VMware v Azure.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: b71427402e08167e5868128ed1e553c69bef425d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1875f535a5ca3e346362409c143da82cb8c07a12
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91574449"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488583"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Co je Azure VMware Solution?
 
@@ -44,7 +44,7 @@ Pravidelná upgrade privátního cloudu řešení Azure VMware a softwaru VMware
 
 ## <a name="monitoring-your-private-cloud"></a>Monitorování privátního cloudu
 
-Po nasazení řešení Azure VMware do svého předplatného [Azure monitor protokoly](../azure-monitor/overview.md) se generují automaticky. Kromě toho můžete shromažďovat protokoly na všech virtuálních počítačích v rámci privátního cloudu. [Agenta MMA můžete stáhnout a nainstalovat](../azure-monitor/platform/log-analytics-agent.md#installation-options) na virtuální počítače se systémem Linux a Windows, které běží v privátních cloudech řešení Azure VMware, a povolit [rozšíření Azure Diagnostics](../azure-monitor/platform/diagnostics-extension-overview.md). Můžete dokonce spouštět stejné dotazy, které obvykle spouštíte na virtuálních počítačích. Další informace o vytváření dotazů najdete v tématu [Postup zápisu dotazů](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries). Vzorce monitorování v řešení Azure VMware jsou podobné Azure Virtual Machines v rámci platformy IaaS. Další informace a postupy najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../azure-monitor/insights/monitor-vm-azure.md).
+Po nasazení řešení Azure VMware do svého předplatného [Azure monitor protokoly](../azure-monitor/overview.md) se generují automaticky. Kromě toho můžete shromažďovat protokoly na všech virtuálních počítačích v rámci privátního cloudu. [Agenta MMA můžete stáhnout a nainstalovat](../azure-monitor/platform/log-analytics-agent.md#installation-options) na virtuální počítače se systémem Linux a Windows, které běží v privátních cloudech řešení Azure VMware, a povolit [rozšíření Azure Diagnostics](../azure-monitor/platform/diagnostics-extension-overview.md). Můžete dokonce spouštět stejné dotazy, které obvykle spouštíte na virtuálních počítačích. Další informace o vytváření dotazů najdete v tématu [Přehled protokolů Azure monitor](../azure-monitor/platform/data-platform-logs.md). Vzorce monitorování v řešení Azure VMware jsou podobné Azure Virtual Machines v rámci platformy IaaS. Další informace a postupy najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../azure-monitor/insights/monitor-vm-azure.md).
 
 ## <a name="next-steps"></a>Další kroky
 
