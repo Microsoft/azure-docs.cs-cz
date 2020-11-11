@@ -1,6 +1,6 @@
 ---
 title: Připojení dat CEF k Azure Sentinel Preview | Microsoft Docs
-description: Připojení externího řešení, které odesílá zprávy CEF (Common Event Format) do Azure Sentinel pomocí počítače se systémem Linux jako služby pro přeposílání protokolů.
+description: Připojte externí řešení, které pošle zprávy CEF (Common Event Format) do Azure Sentinel, pomocí počítače se systémem Linux jako služby pro odesílání protokolů.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e8d1704b7f6048c14528b784f22d60b01592b54f
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fd08e6cc953f9d8526174fc96dd4e4d1dc9063f5
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347603"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517967"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externího řešení pomocí běžných formátů událostí
 
@@ -27,7 +27,7 @@ Když připojujete externí řešení, které odesílá zprávy CEF, je třeba s
 
 Krok 1: [připojení CEF nasazením protokolu syslog/CEF](connect-cef-agent.md) – Krok 2: [provedení kroků specifických pro řešení](connect-cef-solution-config.md) krok 3: [ověření připojení](connect-cef-verify.md)
 
-Tento článek popisuje, jak připojení funguje, nabízí požadavky a poskytuje postup nasazení agenta v řešeních zabezpečení, která odesílají zprávy CEF (Common Event Format) do protokolu syslog. 
+Tento článek popisuje, jak připojení funguje, uvádí seznam požadavků a ukazuje postup nasazení mechanismu pro řešení zabezpečení pro posílání zpráv Common Event Format (CEF) nad protokolem syslog. 
 
 > [!NOTE] 
 > Data se ukládají do geografického umístění pracovního prostoru, na kterém běží Azure Sentinel.
@@ -82,7 +82,7 @@ Ujistěte se, že váš počítač splňuje i následující požadavky:
   - Na počítači musíte mít zvýšená oprávnění (sudo). 
 
 - Požadavky na software
-  - Ujistěte se, že je v počítači spuštěný Python 2,7.
+  - Ujistěte se, že na vašem počítači běží Python 2,7 nebo 3.
 
 ## <a name="next-steps"></a>Další kroky
 

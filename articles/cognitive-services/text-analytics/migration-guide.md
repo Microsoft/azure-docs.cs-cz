@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/19/2020
 ms.author: aahi
-ms.openlocfilehash: 172e684c6edbab4d7d47c8cf78e35ae38de3a0af
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 056009c34aec97a8c5c45aea4b93ba41977fa7a6
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461783"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518188"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrace na verzi 3. x z rozhraní API pro analýzu textu
 
@@ -31,14 +31,14 @@ Analýza mínění ve verzi 2,1 vrátí mínění skóre mezi 0 a 1 pro každý 
 
 ## <a name="steps-to-migrate"></a>Postup migrace
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Pokud vaše aplikace používá REST API, aktualizujte koncový bod požadavku na koncový bod v3 pro analýzu mínění. Například: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment` . Také budete muset aplikaci aktualizovat tak, aby používala popisky mínění vrácené v [odpovědi rozhraní API](how-tos/text-analytics-how-to-sentiment-analysis.md#view-the-results). 
 
 Příklady odpovědi JSON najdete v referenční dokumentaci.
 * [Verze 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 * [Verze 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment) 
-* [Verze 3,1-Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
+* [Verze 3,1-Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Sentiment)
 
 ### <a name="client-libraries"></a>Klientské knihovny
 
@@ -55,7 +55,7 @@ Ve verzi 2,1 používá rozhraní API pro analýzu textu jeden koncový bod pro 
 
 ## <a name="steps-to-migrate"></a>Postup migrace
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Pokud vaše aplikace používá REST API, aktualizujte její koncový bod požadavku na koncové body v3 pro propojení NER a/nebo entit.
 
@@ -70,14 +70,14 @@ Také budete muset aplikaci aktualizovat tak, aby používala [kategorie entit](
 Příklady odpovědi JSON najdete v referenční dokumentaci.
 * [Verze 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 * [Verze 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral) 
-* [Verze 3,1-Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/EntitiesRecognitionGeneral)
+* [Verze 3,1-Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/EntitiesRecognitionGeneral)
 
 ### <a name="client-libraries"></a>Klientské knihovny
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
 
-#### <a name="language-detection"></a>[rozpoznávání jazyka,](#tab/language-detection)
+#### <a name="language-detection"></a>[Rozpoznávání jazyka](#tab/language-detection)
 
 ## <a name="feature-changes"></a>Změny funkcí 
 
@@ -85,21 +85,21 @@ Funkce detekce jazyka se v systému V3 nezměnila mimo verzi koncového bodu, al
 
 ## <a name="steps-to-migrate"></a>Postup migrace
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Pokud vaše aplikace používá REST API, aktualizujte koncový bod požadavku na koncový bod v3 pro rozpoznání jazyka. Například: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` . Také budete muset aplikaci aktualizovat, aby se `ConfidenceScore` místo `score` v [odpovědi rozhraní API](how-tos/text-analytics-how-to-language-detection.md#step-3-view-the-results)používala. 
 
 Příklady odpovědi JSON najdete v referenční dokumentaci.
 * [Verze 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)
 * [Verze 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) 
-* [Verze 3,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
+* [Verze 3,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Languages)
 
 ### <a name="client-libraries"></a>Klientské knihovny
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
 
-#### <a name="key-phrase-extraction"></a>[extrakce klíčových frází,](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Extrakce klíčových frází](#tab/key-phrase-extraction)
 
 ## <a name="feature-changes"></a>Změny funkcí 
 
@@ -107,7 +107,7 @@ Funkce Extrakce klíčových frází se v systému V3 nezměnila mimo verzi konc
 
 ## <a name="steps-to-migrate"></a>Postup migrace
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Pokud vaše aplikace používá REST API, aktualizujte koncový bod požadavku na koncový bod v3 pro extrakci klíčových frází. Příklad: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
 
@@ -123,7 +123,7 @@ Příklady odpovědi JSON najdete v referenční dokumentaci.
 ---
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Co je rozhraní API pro analýzu textu](overview.md)
 * [Podpora jazyků](language-support.md)

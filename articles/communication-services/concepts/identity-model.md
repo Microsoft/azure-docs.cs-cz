@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 336e708334778e107331f5f393476c4b3dbb98a3
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 996f138a14923319381738e7a55cd7ba4e8c4320
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507452"
+ms.locfileid: "94517763"
 ---
 # <a name="identity-model"></a>Model identity
 
@@ -59,3 +59,9 @@ Rotace přístupových klíčů služby Azure Communication Service způsobí zr
 V rámci serverové služby doporučujeme vystavovat přístupové tokeny, které se v aplikaci klienta nevyskytují. Důvodem je, že vydávání vyžaduje přístupový klíč nebo zda má být spravovaná identita. Nedoporučuje se z bezpečnostních důvodů sdílet přístupové klíče s aplikací klienta. Klientská aplikace by měla používat koncový bod důvěryhodné služby, který může ověřit vaše klienty a vystavit přístupový token jménem uživatele. Další podrobnosti o architektuře najdete [tady](./client-and-server-architecture.md).
 
 Pokud ukládáte do mezipaměti přístupové tokeny do záložního úložiště, doporučujeme použít šifrování. Přístupový token je citlivý na data a dá se použít na škodlivou aktivitu, pokud není chráněná. Pomocí přístupového tokenu můžete inicializovat sadu SDK a získat přístup k rozhraní API. Dostupné rozhraní API je omezené jenom na základě oborů, které má přístupový token. Doporučujeme vystavovat přístupové tokeny jenom s obory, které jsou povinné.
+
+## <a name="next-steps"></a>Další kroky
+
+* Úvod do správy přístupových tokenů najdete v tématu [Vytvoření a Správa přístupových tokenů](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens) .
+* Úvodní informace k ověřování najdete v tématu [ověřování ve službě Azure Communication Services](https://docs.microsoft.com/azure/communication-services/concepts/authentication) .
+* Úvod k zaregistrování a ochraně osobních údajů najdete v tématu [dostupnost oblasti a](https://docs.microsoft.com/azure/communication-services/concepts/privacy) zaregistrování dat.

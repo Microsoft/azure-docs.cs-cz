@@ -6,34 +6,28 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 990380d553cc12d1a87b2e1c7ca9b09864801294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a60a6889217ce6ca8dccd5ebf5ee74b8f67a7757
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333975"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518205"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>Konfigurace sady škálování virtuálních počítačů s existujícím Azure Load Balancer pomocí rozhraní příkazového řádku Azure
 
-V tomto článku se dozvíte, jak nakonfigurovat sadu škálování virtuálních počítačů s existujícím Azure Load Balancer. 
+V tomto článku se dozvíte, jak nakonfigurovat sadu škálování virtuálních počítačů s existujícím Azure Load Balancer.
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Předplatné Azure.
-- Existující Nástroj pro vyrovnávání zatížení Standard SKU v předplatném, kde se bude nasazovat sada škálování virtuálního počítače.
-- Virtual Network Azure pro sadu škálování virtuálního počítače.
+## <a name="prerequisites"></a>Požadavky 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+- Budete potřebovat existující Nástroj pro vyrovnávání zatížení Standard SKU v předplatném, kde bude nasazená sada škálování virtuálního počítače.
 
-Pokud se rozhodnete používat rozhraní příkazového řádku místně, musíte mít nainstalovanou verzi Azure CLI verze 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+- Pro sadu škálování virtuálního počítače potřebujete Virtual Network Azure.
+ 
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="sign-in-to-azure-cli"></a>Přihlášení k Azure CLI
-
-Přihlaste se k Azure.
-
-```azurecli-interactive
-az login
-```
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>Nasazení sady škálování virtuálních počítačů s existujícím nástrojem pro vyrovnávání zatížení
 

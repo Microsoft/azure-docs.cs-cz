@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 175c92c02196105e9fb1249e5b88d73bc8b87d48
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 3210829b3281aa862cdf0dbdc9c915249a55e423
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735232"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518001"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Kurz: monitorování změn a aktualizace virtuálního počítače se systémem Linux v Azure
 
@@ -32,17 +32,13 @@ V tomto kurzu se naučíte:
 > * Správa aktualizací pro Linux
 > * Monitorování změn a inventáře
 
-## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.30 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-vm"></a>Vytvoření virtuálního počítače
 
-Pokud chcete vidět, jak funguje diagnostika a metriky, potřebujete virtuální počítač. Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků *myResourceGroupMonitor* v umístění *eastus* .
+Pokud chcete vidět, jak funguje diagnostika a metriky, potřebujete virtuální počítač. Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků *myResourceGroupMonitor* v umístění *eastus*.
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
@@ -70,9 +66,9 @@ Informace o cenách najdete na stránce s [cenami služby Automation za správu 
 
 Povolení řešení Update Management pro virtuální počítač:
 
-1. Na levé straně obrazovky vyberte **Virtuální počítače** .
+1. Na levé straně obrazovky vyberte **Virtuální počítače**.
 2. V seznamu vyberte virtuální počítač.
-3. Na obrazovce virtuálního počítače v části **Operace** vyberte **Správa aktualizací** . Otevře se obrazovka **Povolit řešení Update Management** .
+3. Na obrazovce virtuálního počítače v části **Operace** vyberte **Správa aktualizací**. Otevře se obrazovka **Povolit řešení Update Management**.
 
 Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management.
 Toto ověření zahrnuje kontroly pracovního prostoru služby Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení nachází v tomto pracovním prostoru.
@@ -91,7 +87,7 @@ Pokud během připojování chyběla některá z následujících požadovaných
 * [Účet služby Automation](../../automation/index.yml)
 * Povolený [hybridní pracovní proces runbooku](../../automation/automation-hybrid-runbook-worker.md) na virtuálním počítači
 
-Otevře se obrazovka řešení **Update Management** . Nakonfigurujte umístění, Log Analytics pracovní prostor a účet Automation, které se mají použít, a vyberte **Povolit** . Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
+Otevře se obrazovka řešení **Update Management**. Nakonfigurujte umístění, Log Analytics pracovní prostor a účet Automation, které se mají použít, a vyberte **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
 
 ![Povolení řešení Update Management](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
@@ -99,7 +95,7 @@ Povolení řešení může trvat až 15 minut. Během této doby byste neměli z
 
 ### <a name="view-update-assessment"></a>Zobrazení posouzení aktualizací
 
-Po povolení **správy aktualizací** se zobrazí obrazovka **Správa aktualizací** . Po vyhodnocení aktualizací se na kartě **Chybějící aktualizace** zobrazí seznam chybějících aktualizací.
+Po povolení **správy aktualizací** se zobrazí obrazovka **Správa aktualizací**. Po vyhodnocení aktualizací se na kartě **Chybějící aktualizace** zobrazí seznam chybějících aktualizací.
 
  ![Zobrazení stavu aktualizace](./media/tutorial-monitoring/manage-updates-view-status-linux.png)
 
@@ -107,9 +103,9 @@ Po povolení **správy aktualizací** se zobrazí obrazovka **Správa aktualizac
 
 Pokud chcete nainstalovat aktualizace, naplánujte nasazení odpovídající vašemu plánu vydávání a časovému intervalu pro správu a údržbu. Můžete zvolit typy aktualizací, které budou součástí nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
 
-Naplánujte nové nasazení aktualizací pro virtuální počítač kliknutím na **Naplánovat nasazení aktualizace** v horní části obrazovky **Update Management** . Na obrazovce **Nové nasazení aktualizací** zadejte následující informace :
+Naplánujte nové nasazení aktualizací pro virtuální počítač kliknutím na **Naplánovat nasazení aktualizace** v horní části obrazovky **Update Management**. Na obrazovce **Nové nasazení aktualizací** zadejte následující informace :
 
-Pokud chcete vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení aktualizací** . Otevře se stránka **nové nasazení aktualizace** . Zadejte hodnoty vlastností popsaných v následující tabulce a pak klikněte na **vytvořit** :
+Pokud chcete vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení aktualizací**. Otevře se stránka **nové nasazení aktualizace** . Zadejte hodnoty vlastností popsaných v následující tabulce a pak klikněte na **vytvořit** :
 
 | Vlastnost | Popis |
 | --- | --- |
@@ -131,9 +127,9 @@ Všimněte si, že v tabulce **Naplánované** se zobrazí plán nasazení, kter
 
 ### <a name="view-results-of-an-update-deployment"></a>Zobrazení výsledků nasazení aktualizací
 
-Po spuštění naplánovaného nasazení se stav tohoto nasazení zobrazí na kartě **Nasazení aktualizací** na obrazovce **Správa aktualizací** .
-Pokud je nasazení aktuálně spuštěno, jeho stav je **Probíhající** . Po úspěšném dokončení se změní na **Úspěch** .
-Pokud u jedné nebo více aktualizací v nasazení dojde k chybě, stav je **Částečné selhání** .
+Po spuštění naplánovaného nasazení se stav tohoto nasazení zobrazí na kartě **Nasazení aktualizací** na obrazovce **Správa aktualizací**.
+Pokud je nasazení aktuálně spuštěno, jeho stav je **Probíhající**. Po úspěšném dokončení se změní na **Úspěch**.
+Pokud u jedné nebo více aktualizací v nasazení dojde k chybě, stav je **Částečné selhání**.
 Výběrem dokončeného nasazení aktualizací zobrazíte řídicí panel pro toto nasazení aktualizací.
 
 ![Řídicí panel stavu nasazování aktualizací pro konkrétní nasazení](./media/tutorial-monitoring/manage-updates-view-results.png)
@@ -159,11 +155,11 @@ Na svých počítačích můžete shromažďovat a zobrazovat inventář softwar
 
 Povolení správy změn a inventáře pro virtuální počítač:
 
-1. Na levé straně obrazovky vyberte **Virtuální počítače** .
+1. Na levé straně obrazovky vyberte **Virtuální počítače**.
 2. V seznamu vyberte virtuální počítač.
-3. Na obrazovce virtuálního počítače v části **Operace** vyberte **Soupis** nebo **Sledování změn** . Otevře se obrazovka **Povolit řešení Change Tracking a Inventory** .
+3. Na obrazovce virtuálního počítače v části **Operace** vyberte **Soupis** nebo **Sledování změn**. Otevře se obrazovka **Povolit řešení Change Tracking a Inventory**.
 
-Nakonfigurujte umístění, Log Analytics pracovní prostor a účet Automation, které se mají použít, a vyberte **Povolit** . Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation. I když jsou řešení v nabídce oddělená, stále se jedná o stejné řešení. Povolením jednoho se na virtuálním počítači povolí obě.
+Nakonfigurujte umístění, Log Analytics pracovní prostor a účet Automation, které se mají použít, a vyberte **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation. I když jsou řešení v nabídce oddělená, stále se jedná o stejné řešení. Povolením jednoho se na virtuálním počítači povolí obě.
 
 ![Povolení sledování změn a inventáře](./media/tutorial-monitoring/manage-inventory-enable.png)
 
@@ -171,23 +167,23 @@ Po povolení řešení může shromažďování inventáře na virtuálním poč
 
 ### <a name="track-changes"></a>Sledování změn
 
-Na svém virtuálním počítači v části **OPERACE** vyberte **Change Tracking** . Vyberte **Upravit nastavení** a zobrazí se stránka **Sledování změn** . Vyberte typ nastavení, které chcete sledovat, a vybráním možnosti **+ Přidat** nastavení nakonfigurujte. Pro Linux je k dispozici možnost **Soubory Linuxu** .
+Na svém virtuálním počítači v části **OPERACE** vyberte **Change Tracking**. Vyberte **Upravit nastavení** a zobrazí se stránka **Sledování změn**. Vyberte typ nastavení, které chcete sledovat, a vybráním možnosti **+ Přidat** nastavení nakonfigurujte. Pro Linux je k dispozici možnost **Soubory Linuxu**.
 
 Podrobné informace o řešení Change Tracking najdete v tématu [Řešení potíží se změnami na virtuálním počítači](../../automation/automation-tutorial-troubleshoot-changes.md).
 
 ### <a name="view-inventory"></a>Zobrazení inventáře
 
-Na svém virtuálním počítači v části **OPERACE** vyberte **Inventory** . Na kartě **Software** je tabulkový seznam nalezeného softwaru. V tabulce jsou zobrazené základní podrobnosti o jednotlivých záznamech softwaru. Mezi tyto podrobnosti patří název softwaru, verze, vydavatel a čas poslední aktualizace.
+Na svém virtuálním počítači v části **OPERACE** vyberte **Inventory**. Na kartě **Software** je tabulkový seznam nalezeného softwaru. V tabulce jsou zobrazené základní podrobnosti o jednotlivých záznamech softwaru. Mezi tyto podrobnosti patří název softwaru, verze, vydavatel a čas poslední aktualizace.
 
 ![Zobrazení inventáře](./media/tutorial-monitoring/inventory-view-results.png)
 
 ### <a name="monitor-activity-logs-and-changes"></a>Monitorování protokolů aktivit a změn
 
-Na stránce **Change Tracking** na vašem virtuálním počítači vyberte **Správa připojení protokolu aktivit** . Tato úloha otevře stránku **Protokol aktivit Azure** . Vyberte **Připojit** a propojte řešení Change Tracking s protokolem aktivit Azure pro váš virtuální počítač.
+Na stránce **Change Tracking** na vašem virtuálním počítači vyberte **Správa připojení protokolu aktivit**. Tato úloha otevře stránku **Protokol aktivit Azure**. Vyberte **Připojit** a propojte řešení Change Tracking s protokolem aktivit Azure pro váš virtuální počítač.
 
 Když je toto nastavení povolené, přejděte na stránku **Přehled** vašeho virtuálního počítače a výběrem **Zastavit** virtuální počítač zastavte. Po zobrazení výzvy vyberte **Ano** a zastavte virtuální počítač. Až bude přidělení vašeho virtuálního počítače zrušeno, vyberte **Spustit** a restartujte ho.
 
-Zastavení a spuštění virtuálního počítače zapíše tuto událost do jeho protokolu aktivit Vraťte se na stránku **Change Tracking** . Vyberte **Události** v dolní části stránky. Po chvíli se události zobrazí v grafu a tabulce. Každou událost je možné vybrat a zobrazit o ní podrobné informace.
+Zastavení a spuštění virtuálního počítače zapíše tuto událost do jeho protokolu aktivit Vraťte se na stránku **Change Tracking**. Vyberte **Události** v dolní části stránky. Po chvíli se události zobrazí v grafu a tabulce. Každou událost je možné vybrat a zobrazit o ní podrobné informace.
 
 ![Zobrazení změn v protokolu aktivit](./media/tutorial-monitoring/manage-activitylog-view-results.png)
 

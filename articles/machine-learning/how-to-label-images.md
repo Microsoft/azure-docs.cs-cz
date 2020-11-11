@@ -1,6 +1,6 @@
 ---
 title: Označení obrázků v projektu s popisem
-title.suffix: Azure Machine Learning
+titleSuffix: Azure Machine Learning
 description: Naučte se používat nástroje pro označování dat v Azure Machine Learning projektu značení.
 author: sdgilley
 ms.author: sgilley
@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 0d0f344e60edfc83c8ac4f79ad18520307b790e3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: cd015e952f93655a7bdba8c947fac6e9a8f6546c
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396621"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518256"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
@@ -24,7 +24,7 @@ Poté, co správce projektu [vytvoří projekt označování](./how-to-create-la
 > * Nástroje pro označování
 > * Jak používat nástroje pro konkrétní úkoly označování
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Účet Microsoft](https://account.microsoft.com/account) nebo účet Azure Active Directory pro organizaci a projekt
 * Přístup na úrovni přispěvatele k pracovnímu prostoru, který obsahuje projekt značení.

@@ -3,12 +3,12 @@ title: Jak používat funkci veřejné IP adresy v řešení Azure VMware
 description: Tento článek vysvětluje, jak používat funkci veřejné IP adresy ve službě Azure Virtual WAN.
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: 7ff1debe7b52599a2e4f20378f385359325be2f7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 036ec00077720e9dc3197bf9235bea34b77fb5f4
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504403"
+ms.locfileid: "94517899"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Jak používat funkci veřejné IP adresy v řešení Azure VMware
 
@@ -32,21 +32,21 @@ Tento článek podrobně popisuje, jak můžete používat funkci veřejné IP a
 ## <a name="prerequisites"></a>Požadavky
 
 - Prostředí řešení Azure VMware
-- Webový server, který běží v prostředí řešení Azure VMware.
+- WebServer běžící v prostředí řešení Azure VMware.
 - Nový překrývající se rozsah IP adres pro nasazení služby Virtual WAN hub, obvykle a `/24` .
 
 ## <a name="reference-architecture"></a>Referenční architektura
 
 :::image type="content" source="media/public-ip-usage/public-ip-architecture-diagram.png" alt-text="Diagram architektury veřejné IP adresy" border="false" lightbox="media/public-ip-usage/public-ip-architecture-diagram.png":::
 
-Diagram architektury znázorňuje webový server hostovaný v prostředí řešení Azure VMware a nakonfigurovaný s privátními IP adresami RFC1918.  Webová služba je zpřístupněna internetovým funkcím veřejné IP adresy virtuální sítě WAN.  Veřejná IP adresa je obvykle cílový překlad adres (NAT) přeložený v Azure Firewall. Pomocí pravidel DNAT se v zásadách brány firewall přeloží požadavky na veřejnou IP adresu na soukromou adresu (webový server) s portem.
+Diagram architektury znázorňuje webový server hostovaný v prostředí řešení Azure VMware a nakonfigurovaný s privátními IP adresami RFC1918.  Webová služba je zpřístupněna internetovým funkcím veřejné IP adresy virtuální sítě WAN.  Veřejná IP adresa je obvykle cílový překlad adres (NAT) přeložený v Azure Firewall. Pomocí pravidel DNAT se v zásadách brány firewall přeloží požadavky na veřejnou IP adresu na soukromou adresu (webserver) s portem.
 
 Požadavky uživatelů přirazí na bránu firewall na veřejné IP adrese, která je zase přeložena na privátní IP adresu pomocí pravidel DNAT v Azure Firewall. Brána firewall zkontroluje tabulku překladu adres (NAT) a pokud požadavek odpovídá položce, přepošle provoz na přeloženou adresu a port v prostředí řešení Azure VMware.
 
 Webový server obdrží požadavek a odpoví na požadované informace nebo stránku brány firewall a brána firewall přepošle informace uživateli na veřejnou IP adresu.
 
 ## <a name="test-case"></a>Testovací případ
-V tomto scénáři je nutné publikovat webový server služby IIS na Internet. K publikování webu na veřejné IP adrese použijte funkci veřejné IP adresy v řešení Azure VMware.  Nastavíme pravidla překladu adres (NAT) pro bránu firewall a získáte přístup k prostředku řešení Azure VMware (virtuální počítače s webovým serverem) s veřejnou IP adresou.
+V tomto scénáři publikujete webserver IIS na Internet. K publikování webu na veřejné IP adrese použijte funkci veřejné IP adresy v řešení Azure VMware.  Také nakonfigurujete pravidla překladu adres (NAT) pro bránu firewall a přístup k prostředku řešení Azure VMware (virtuální počítače s webovým serverem) s veřejnou IP adresou.
 
 ## <a name="deploy-virtual-wan"></a>Nasadit Virtual WAN.
 
@@ -66,9 +66,9 @@ V tomto scénáři je nutné publikovat webový server služby IIS na Internet. 
 
 1. Přijměte výchozí hodnoty nebo je změňte a pak vyberte **vytvořit**.
 
-   - Skupina prostředků virtuální sítě ve velké oblasti
+   - Skupina prostředků virtuální sítě WAN
 
-   - Název virtuální sítě ve velké oblasti
+   - Název virtuální sítě WAN
 
    - Blok adres virtuálního rozbočovače (pomocí nového rozsahu IP adres, který se nepřekrývá)
 
@@ -142,7 +142,7 @@ Po nasazení všech součástí je můžete zobrazit v přidané skupině prost�
 
 1. V seznamu vyberte centrum a vyberte **Přidat**.
 
-   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Snímek obrazovky, který zobrazuje vybraná centra, která se převedou na Scecured virtuální rozbočovače." border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
+   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Snímek obrazovky zobrazující vybraná centra, která se budou převádět na zabezpečená virtuální centra" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
 1. Vyberte **Další: Značky**. 
 
