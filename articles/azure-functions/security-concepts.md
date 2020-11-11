@@ -3,12 +3,12 @@ title: Zabezpečení Azure Functions
 description: Přečtěte si, jak zajistit, aby byl kód vaší funkce běžící v Azure lépe zabezpečený před běžnými útoky.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: cd97193fdf6549e667578e36f0be9104e4381d30
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102302"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491320"
 ---
 # <a name="securing-azure-functions"></a>Zabezpečení Azure Functions
 
@@ -28,7 +28,7 @@ Security Center se integruje s aplikací Function App na portálu. Poskytuje zda
 
 ### <a name="log-and-monitor"></a>Protokolování a monitorování
 
-Jedním z nich zjišťování útoků je prostřednictvím aktivity monitorování aktivity a analýzy protokolování. Funkce se integrují s Application Insights pro shromažďování dat o protokolech, výkonu a chybách pro aplikaci Function App. Application Insights automaticky detekuje anomálie výkonu a zahrnuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, jak se vaše funkce používají. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+Jedním ze způsobů detekce útoků je využití aktivity monitorování aktivity a analýzy protokolování. Funkce se integrují s Application Insights pro shromažďování dat o protokolech, výkonu a chybách pro aplikaci Function App. Application Insights automaticky detekuje anomálie výkonu a zahrnuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, jak se vaše funkce používají. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
 Funkce se také integrují s protokoly Azure Monitor, které vám umožní konsolidovat protokoly aplikací funkcí se systémovými událostmi pro snazší analýzu. Nastavení diagnostiky můžete použít ke konfiguraci exportu protokolů a metrik platforem pro vaše funkce do cíle podle vašeho výběru, jako je například pracovní prostor Log Analytics. Další informace najdete v tématu [monitorování Azure Functions pomocí protokolů Azure monitor](functions-monitor-log-analytics.md). 
 
@@ -58,9 +58,9 @@ Rozsah systémových klíčů závisí na rozšíření, ale obecně platí pro 
 
 Následující tabulka porovnává použití různých druhů přístupových klíčů:
 
-| Akce                                        | Obor                    | Platné klíče         |
+| Akce                                        | Rozsah                    | Platné klíče         |
 |-----------------------------------------------|--------------------------|--------------------|
-| Spustit funkci                            | Konkrétní funkce        | Funkce           |
+| Spustit funkci                            | Konkrétní funkce        | Function           |
 | Spustit funkci                            | Libovolná funkce             | Funkce nebo hostitel   |
 | Volání koncového bodu správce                        | Aplikace funkcí             | Hostitel (jenom Master) |
 | Volání rozhraní API pro rozšíření trvalých úloh              | Aplikace Function App<sup>1</sup> | Systém<sup>2</sup> |

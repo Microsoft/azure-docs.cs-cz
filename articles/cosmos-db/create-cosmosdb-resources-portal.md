@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 08/19/2020
-ms.openlocfilehash: 127b491da3e01e88c90e689e7dbcc9052ae4392f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: baeb5fbadfaf128c2c491a1fdb7e880b413878d6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099739"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491065"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Rychlý Start: vytvoření účtu, databáze, kontejneru a položek Azure Cosmos z Azure Portal
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,20 +41,20 @@ Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 <a id="create-account"></a>
 ## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
-Azure Cosmos DB účet vytvoříte tak, že přejdete na [Azure Portal](https://portal.azure.com/) . Vyhledejte a vyberte **Azure Cosmos DB** .
+Azure Cosmos DB účet vytvoříte tak, že přejdete na [Azure Portal](https://portal.azure.com/) . Vyhledejte a vyberte **Azure Cosmos DB**.
 
    :::image type="content" source="./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png" alt-text="Podokno Databáze na webu Azure Portal":::
 
-1. Vyberte **Přidat** .
+1. Vyberte **Přidat**.
 1. Na stránce **vytvořit Azure Cosmos DB účet** zadejte základní nastavení pro nový účet Azure Cosmos. 
 
     |Nastavení|Hodnota|Popis |
     |---|---|---|
     |Předplatné|Název předplatného|Vyberte předplatné Azure, které chcete použít pro tento účet Azure Cosmos. |
-    |Skupina prostředků|Název skupiny prostředků|Vyberte skupinu prostředků nebo vyberte **vytvořit nové** a zadejte jedinečný název nové skupiny prostředků. |
+    |Resource Group (Skupina prostředků)|Název skupiny prostředků|Vyberte skupinu prostředků nebo vyberte **vytvořit nové** a zadejte jedinečný název nové skupiny prostředků. |
     |Account Name|Jedinečný název|Zadejte název, který identifikuje váš účet Azure Cosmos. Vzhledem k tomu, že *Documents.Azure.com* je připojen k názvu, který zadáte k vytvoření identifikátoru URI, použijte jedinečný název.<br><br>Název může obsahovat jenom malá písmena, číslice a znak spojovníku (-). Musí mít délku 3-31 znaků.|
     |Rozhraní API|Typ účtu, který se má vytvořit|Vyberte **Core (SQL)** pro vytvoření databáze dokumentů a dotaz pomocí syntaxe SQL. <br><br>Rozhraní API určuje typ účtu, který se má vytvořit. Azure Cosmos DB poskytuje pět rozhraní API: Core (SQL) a MongoDB pro data dokumentů, Gremlin pro data grafu, tabulku Azure a Cassandra. V současné době musíte pro každé rozhraní API vytvořit samostatný účet. <br><br>[Přečtěte si další informace o rozhraní SQL API](introduction.md).|
-    |Režim kapacity|Zřízená propustnost nebo bez serveru|Vyberte **zřízenou propustnost** a vytvořte účet v režimu [zřízené propustnosti](set-throughput.md) . Pokud chcete vytvořit účet v režimu bez [serveru](serverless.md) , vyberte možnost bez **serveru** .<br><br>**Poznámka** : Server bez serveru je aktuálně k dispozici pouze pro účty rozhraní API Core (SQL).|
+    |Režim kapacity|Zřízená propustnost nebo bez serveru|Vyberte **zřízenou propustnost** a vytvořte účet v režimu [zřízené propustnosti](set-throughput.md) . Pokud chcete vytvořit účet v režimu bez [serveru](serverless.md) , vyberte možnost bez **serveru** .|
     |Použít slevu založenou na bezplatné úrovni|Použít nebo nepoužít|U Azure Cosmos DB úrovně Free získáte v účtu první 400 RU/s a 5 GB úložiště zdarma. Přečtěte si další informace o [bezplatné úrovni](https://azure.microsoft.com/pricing/details/cosmos-db/).|
     |Umístění|Oblast nejbližší vašim uživatelům|Vyberte zeměpisné umístění, ve kterém chcete účet služby Azure Cosmos DB hostovat. Použijte umístění, které je nejblíže vašim uživatelům, a poskytněte jim tak nejrychlejší přístup k datům.|
     |Typ účtu|Produkční nebo neprodukční|Vyberte možnost **produkce** , pokud se účet bude používat pro produkční úlohy. Vyberte **neprodukční** , pokud se účet bude používat pro neprodukční, třeba pro vývoj, testování, kontrolu kvality nebo přípravu. Toto je nastavení značky prostředku Azure, které vystavuje možnosti portálu, ale nemá vliv na příslušný účet Azure Cosmos DB. Tuto hodnotu můžete kdykoli změnit.|
@@ -71,28 +71,28 @@ Azure Cosmos DB účet vytvoříte tak, že přejdete na [Azure Portal](https://
 > - Geografická redundance
 > - Zápisy do více oblastí
    
-   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Podokno Databáze na webu Azure Portal":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Stránka nového účtu pro službu Azure Cosmos DB":::
 
-1. Vyberte **Zkontrolovat a vytvořit** . Můžete přeskočit oddíly **síť** a **značky** .
+1. Vyberte **Zkontrolovat a vytvořit**. Můžete přeskočit oddíly **síť** a **značky** .
 
-1. Zkontrolujte nastavení účtu a pak vyberte **vytvořit** . Vytvoření účtu trvá několik minut. Počkejte, než se na stránce portálu zobrazí **dokončené vaše nasazení** . 
+1. Zkontrolujte nastavení účtu a pak vyberte **vytvořit**. Vytvoření účtu trvá několik minut. Počkejte, než se na stránce portálu zobrazí **dokončené vaše nasazení**. 
 
-    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Podokno Databáze na webu Azure Portal":::
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Podokno Oznámení portálu Azure Portal":::
 
 1. Vyberte **Přejít k prostředku** a přejdete na stránku Azure Cosmos DB účet. 
 
-    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png" alt-text="Podokno Databáze na webu Azure Portal":::
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png" alt-text="Stránka Azure Cosmos DB účtu":::
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>Přidání databáze a kontejneru 
 
 K vytvoření databáze a kontejneru můžete použít Průzkumník dat v Azure Portal. 
 
-1.  V levém navigačním panelu na stránce Azure Cosmos DB účtu vyberte **Průzkumník dat** a pak vyberte **Nový kontejner** . 
+1.  V levém navigačním panelu na stránce Azure Cosmos DB účtu vyberte **Průzkumník dat** a pak vyberte **Nový kontejner**. 
     
     Možná se budete muset posunout doprava, aby se zobrazilo okno **Přidat kontejner** .
     
-    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Podokno Databáze na webu Azure Portal":::
+    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Průzkumník dat na webu Azure Portal s podoknem Přidat kontejner":::
     
 1.  V podokně **Přidat kontejner** zadejte nastavení pro nový kontejner.
     
@@ -106,15 +106,15 @@ K vytvoření databáze a kontejneru můžete použít Průzkumník dat v Azure 
     
     Nepřidávat **jedinečné klíče** pro tento příklad. Jedinečné klíče umožňují přidat do databáze vrstvu integrity dat tím, že zajistí jedinečnost jedné nebo více hodnot na klíč oddílu. Další informace najdete v tématu [jedinečné klíče v Azure Cosmos DB](unique-keys.md).
     
-1.  Vyberte **OK** . Průzkumník dat zobrazí novou databázi a kontejner, který jste vytvořili.
+1.  Vyberte **OK**. Průzkumník dat zobrazí novou databázi a kontejner, který jste vytvořili.
 
 ## <a name="add-data-to-your-database"></a>Přidat data do databáze
 
 Přidejte data do nové databáze pomocí Průzkumník dat.
 
-1. V **Průzkumník dat** rozbalte databázi **ToDoList** a rozbalte kontejner **položky** . V dalším kroku vyberte **položky** a pak vyberte **Nová položka** . 
+1. V **Průzkumník dat** rozbalte databázi **ToDoList** a rozbalte kontejner **položky** . V dalším kroku vyberte **položky** a pak vyberte **Nová položka**. 
    
-   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="Podokno Databáze na webu Azure Portal":::
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal":::
    
 1. Přidejte následující strukturu do dokumentu na pravé straně podokna **dokumenty** :
 
@@ -128,9 +128,9 @@ Přidejte data do nové databáze pomocí Průzkumník dat.
      }
      ```
 
-1. Vyberte **Uložit** .
+1. Vyberte **Uložit**.
    
-   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="Podokno Databáze na webu Azure Portal":::
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="Zkopírujte data JSON a vyberte Uložit v Průzkumník dat Azure Portal":::
    
 1. Znovu vyberte **Nový dokument** a vytvořte a uložte jiný dokument s jedinečnými `id` a dalšími vlastnostmi a hodnotami, které chcete. Vaše dokumenty můžou mít jakoukoli strukturu, protože Azure Cosmos DB do vašich dat neukládají žádné schéma.
 
@@ -145,7 +145,7 @@ Přidejte data do nové databáze pomocí Průzkumník dat.
 Pokud chcete odstranit jenom databázi a používat účet Azure Cosmos v budoucnu, můžete databázi odstranit pomocí následujících kroků:
 
 * Máte účet Azure Cosmos.
-* Otevřete **Průzkumník dat** klikněte pravým tlačítkem na databázi, kterou chcete odstranit, a vyberte **odstranit databázi** .
+* Otevřete **Průzkumník dat** klikněte pravým tlačítkem na databázi, kterou chcete odstranit, a vyberte **odstranit databázi**.
 * Zadáním ID databáze nebo databáze potvrďte operaci odstranění. 
 
 ## <a name="next-steps"></a>Další kroky

@@ -9,18 +9,18 @@ ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 32187b7aedd43a57ffe77c2f8524c54049ba10ae
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: d23560e8ee387ca8bc9cb4bba4211f6c8272addd
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234116"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490878"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Použití služby Azure import/export k importu dat do Azure Blob Storage
 
 Tento článek poskytuje podrobné pokyny, jak pomocí služby importu a exportu v Azure bezpečně importovat velké objemy dat do úložiště objektů BLOB v Azure. Aby bylo možné importovat data do objektů blob Azure, služba vyžaduje, abyste dodali šifrované diskové jednotky obsahující vaše data do datacentra Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než vytvoříte úlohu importu pro přenos dat do Azure Blob Storage, pečlivě zkontrolujte a dokončete následující seznam požadavků pro tuto službu.
 Musíte:
@@ -71,7 +71,7 @@ K přípravě jednotek proveďte následující kroky.
 7. Pokud chcete disk připravit, spusťte následující příkaz. **V závislosti na velikosti dat to může trvat několik hodin až dnů.**
 
     ```powershell
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
 
     Soubor deníku se vytvoří ve stejné složce, ve které jste spustili nástroj. Vytvoří se taky další dva soubory – soubor *. XML* (složka, ve které jste nástroj spustili), a *drive-manifest.xml* soubor (složka, ve které se nachází data).
@@ -101,17 +101,17 @@ K přípravě jednotek proveďte následující kroky.
 Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
 1. Přihlaste se k https://portal.azure.com/ .
-2. **> úlohy import/export přejít na všechny služby > úložiště** .
+2. **> úlohy import/export přejít na všechny služby > úložiště**.
 
     ![Přejít na úlohy importu/exportu](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. Klikněte na **vytvořit úlohu importu/exportu** .
+3. Klikněte na **vytvořit úlohu importu/exportu**.
 
     ![Klikněte na vytvořit úlohu importu/exportu.](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
 4. **Základní informace** :
 
-   * Vyberte **importovat do Azure** .
+   * Vyberte **importovat do Azure**.
    * Zadejte popisný název úlohy importu. Pomocí názvu můžete sledovat průběh úloh.
        * Název může obsahovat jenom malá písmena, číslice a spojovníky.
        * Název musí začínat písmenem a nesmí obsahovat mezery.

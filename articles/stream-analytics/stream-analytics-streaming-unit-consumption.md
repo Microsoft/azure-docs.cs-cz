@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 70b5e85c99184b890d2b5269f483785a82340255
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 38f649fbff9ea2c1182adb613b9302768708a4c4
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127548"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490946"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
@@ -20,14 +20,14 @@ Jednotky streamování (SUs) představují výpočetní prostředky, které jsou
 
 Aby se dosáhlo nízké latence zpracování streamů, provádějí úlohy Stream Analytics veškeré zpracování v paměti. Když dojde k nedostatku paměti, úloha streamování se nezdařila. V důsledku toho je pro produkční úlohy důležité monitorovat využití prostředků úlohy streamování a zajistit, aby byl k dispozici dostatek prostředků, aby byly úlohy spuštěné 24/7.
 
-Metrika využití SU%, která je v rozsahu od 0% do 100%, popisuje spotřebu paměti vašich úloh. Pro úlohu streamování s minimálními nároky je tato metrika obvykle mezi 10% a 20%. Pokud je využití SU% vysoké (nad 80%), nebo pokud události vstupu přestanou být zaprotokolovány (i s nízkým využitím%, protože nezobrazuje využití CPU), vaše zatížení pravděpodobně vyžaduje více výpočetních prostředků, což vyžaduje, abyste zvýšili počet služeb SUs. Je vhodné zachovat metriku SU nižší než 80%, aby se zohlednila občasné špičky. Microsoft doporučuje nastavit výstrahu na 80% SU využití metriky, aby se zabránilo vyčerpání prostředků. Další informace najdete v tématu [kurz: nastavení výstrah pro Azure Stream Analytics úlohy](stream-analytics-set-up-alerts.md).
+Metrika využití SU%, která je v rozsahu od 0% do 100%, popisuje spotřebu paměti vašich úloh. Pro úlohu streamování s minimálními nároky je tato metrika obvykle mezi 10% a 20%. Pokud je využití SU% vysoké (nad 80%), nebo pokud události vstupu přestanou být zaprotokolovány (i s nízkým využitím%, protože nezobrazuje využití CPU), vaše zatížení pravděpodobně vyžaduje více výpočetních prostředků, což vyžaduje, abyste zvýšili počet služeb SUs. Je vhodné zachovat metriku SU nižší než 80%, aby se zohlednila občasné špičky. Pokud chcete reagovat na zvýšení zatížení a zvýšit počet jednotek streamování, zvažte nastavení výstrahy 80% na základě metriky využití SU. Také můžete použít metriky zpoždění a nevyřízených událostí, abyste viděli, jestli má dopad.
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Konfigurace Stream Analyticsch jednotek streamování (SUs)
-1. Přihlášení k [Azure Portal](https://portal.azure.com/)
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. V seznamu prostředků Najděte Stream Analytics úlohu, kterou chcete škálovat, a pak ji otevřete. 
 
-3. Na stránce úloha v části **Konfigurovat** záhlaví vyberte **škálovat** . Výchozí počet SUs je 3 při vytváření úlohy.
+3. Na stránce úloha v části **Konfigurovat** záhlaví vyberte **škálovat**. Výchozí počet SUs je 3 při vytváření úlohy.
 
     ![Konfigurace úlohy Azure Portal Stream Analytics][img.stream.analytics.preview.portal.settings.scale]
     
@@ -45,7 +45,7 @@ Vypočítá očekávanou propustnost úlohy. Pokud je propustnost menší, než 
 
 Volba počtu požadovaných součástí služby SUs pro konkrétní úlohu závisí na konfiguraci oddílů pro vstupy a dotaz, který je definován v rámci úlohy. Stránka **škálování** umožňuje nastavit správný počet služby SUs. Osvědčeným postupem je přidělit více služby SUs, než je potřeba. Modul pro zpracování Stream Analytics optimalizuje latenci a propustnost za cenu přidělení další paměti.
 
-Obecně platí, že osvědčeným postupem je začít s 6 službami SUs for dotazů, které nepoužívají **oddíly podle** . Pak se pomocí zkušební a chybové metody, ve které se po předávání reprezentativních objemů dat, a prověřte metriky využití% SU, určí sladké místo. Maximální počet jednotek streamování, které může úloha Stream Analytics použít, závisí na počtu kroků v dotazu definovaném pro úlohu a na počtu oddílů v každém kroku. Další informace o limitech najdete [tady](./stream-analytics-parallelization.md#calculate-the-maximum-streaming-units-of-a-job).
+Obecně platí, že osvědčeným postupem je začít s 6 službami SUs for dotazů, které nepoužívají **oddíly podle**. Pak se pomocí zkušební a chybové metody, ve které se po předávání reprezentativních objemů dat, a prověřte metriky využití% SU, určí sladké místo. Maximální počet jednotek streamování, které může úloha Stream Analytics použít, závisí na počtu kroků v dotazu definovaném pro úlohu a na počtu oddílů v každém kroku. Další informace o limitech najdete [tady](./stream-analytics-parallelization.md#calculate-the-maximum-streaming-units-of-a-job).
 
 Další informace o volbě správného počtu SUs najdete na této stránce: [škálování úloh Azure Stream Analytics pro zvýšení propustnosti](stream-analytics-scale-jobs.md) .
 
@@ -125,12 +125,12 @@ Jakmile je dotaz rozdělený, rozprostře se mezi několik uzlů. V důsledku to
 ## <a name="temporal-analytic-functions"></a>Dočasné analytické funkce
 Spotřebované množství paměti (velikost stavu) dočasné analytické funkce je úměrné četnosti událostí vynásobené dobou trvání. Paměť spotřebovaná analytickými funkcemi není úměrná velikosti okna, ale počítá se podle počtu oddílů v každém časovém intervalu.
 
-Náprava je podobná dočasnému připojení. Můžete škálovat dotaz pomocí **oddílu podle** . 
+Náprava je podobná dočasnému připojení. Můžete škálovat dotaz pomocí **oddílu podle**. 
 
 ## <a name="out-of-order-buffer"></a>Vyrovnávací paměť mimo pořadí 
 Uživatel může nakonfigurovat velikost vyrovnávací paměti mimo pořadí v podokně Konfigurace řazení událostí. Vyrovnávací paměť se používá k ukládání vstupů po dobu trvání okna a jejich uspořádání. Velikost vyrovnávací paměti je úměrná hodnotě vstupní frekvence události vynásobené velikostí okna mimo pořadí. Výchozí velikost okna je 0. 
 
-Chcete-li napravit přetečení vyrovnávací paměti mimo pořadí, proveďte horizontální navýšení kapacity dotazu pomocí **dělení** . Jakmile je dotaz rozdělený, rozprostře se mezi několik uzlů. V důsledku toho se zmenší počet událostí přicházejících na jednotlivé uzly a tím se sníží počet událostí v každé vyrovnávací paměti pro změnu pořadí. 
+Chcete-li napravit přetečení vyrovnávací paměti mimo pořadí, proveďte horizontální navýšení kapacity dotazu pomocí **dělení**. Jakmile je dotaz rozdělený, rozprostře se mezi několik uzlů. V důsledku toho se zmenší počet událostí přicházejících na jednotlivé uzly a tím se sníží počet událostí v každé vyrovnávací paměti pro změnu pořadí. 
 
 ## <a name="input-partition-count"></a>Počet vstupních oddílů 
 Každý vstupní oddíl vstupu úlohy má vyrovnávací paměť. Větší počet vstupních oddílů, čím více prostředků úloha spotřebovává. U každé jednotky streamování může Azure Stream Analytics zpracovat přibližně 1 MB/s vstupu. Proto můžete optimalizovat tak, že odpovídá počtu jednotek streamování Stream Analytics s počtem oddílů v centru událostí. 

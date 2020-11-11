@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/18/2020
+ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 53628f5aa0bc5ab5dedde5deb9950c7b13fb4bf6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741063"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490742"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -68,6 +68,7 @@ $ras.Count
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+- Pokud se pokusíte odebrat přiřazení role posledního vlastníka pro předplatné, může se zobrazit chyba "nelze odstranit poslední přiřazení správce RBAC". Odebrání přiřazení role posledního vlastníka pro předplatné se nepodporuje, aby se předešlo osamocení předplatného. Pokud chcete zrušit předplatné, přečtěte si téma [zrušení předplatného Azure](../cost-management-billing/manage/cancel-azure-subscription.md).
 
 ## <a name="problems-with-custom-roles"></a>Potíže s vlastními rolemi
 
@@ -120,7 +121,7 @@ Pokud jste při vytváření přiřazení role nedávno pozvali uživatele, tent
 
 Nicméně pokud tento objekt zabezpečení není nedávno pozvaníný uživatel, může se jednat o odstraněný objekt zabezpečení. Pokud přiřadíte roli objektu zabezpečení a později odstraníte tento objekt zabezpečení bez prvotního odebrání přiřazení role, bude objekt zabezpečení uveden jako **Identita nebyl nalezen** a je **neznámého** typu.
 
-Pokud toto přiřazení role vypíšete pomocí Azure PowerShell, může se zobrazit prázdná `DisplayName` a je `ObjectType` nastavená na **Neznámý** . Například [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) vrátí přiřazení role, které je podobné následujícímu výstupu:
+Pokud toto přiřazení role vypíšete pomocí Azure PowerShell, může se zobrazit prázdná `DisplayName` a je `ObjectType` nastavená na **Neznámý**. Například [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) vrátí přiřazení role, které je podobné následujícímu výstupu:
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -239,7 +240,7 @@ Pokud nemůžete získat přístup k žádné z těchto dlaždic, požádejte sp
 
 ## <a name="azure-functions-and-write-access"></a>Azure Functions a přístup pro zápis
 
-Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vyžadují přístup pro zápis. Například pokud je uživateli přiřazena role [čtenáře](built-in-roles.md#reader) , nebude moci zobrazit funkce v rámci aplikace Function App. Portál se zobrazí **(bez přístupu)** .
+Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vyžadují přístup pro zápis. Například pokud je uživateli přiřazena role [čtenáře](built-in-roles.md#reader) , nebude moci zobrazit funkce v rámci aplikace Function App. Portál se zobrazí **(bez přístupu)**.
 
 ![Aplikace Function App bez přístupu](./media/troubleshooting/functionapps-noaccess.png)
 

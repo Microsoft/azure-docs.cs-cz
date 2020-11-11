@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 582dafba40012e9ff9c59bc09adb1a0831e999f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208362"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491218"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Monitorování Azure Functions pomocí protokolů Azure Monitor
 
@@ -22,23 +22,23 @@ Protokoly Azure Monitor poskytují možnost konsolidovat protokoly z různých p
 Azure Monitor používá verzi [dotazovacího jazyka Kusto](/azure/kusto/query/) , kterou používá služba Azure Průzkumník dat, která je vhodná pro jednoduché dotazy protokolů, ale zahrnuje i pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Dotazovací jazyk můžete rychle zjistit pomocí [více lekcí](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
-> Integrace s protokoly Azure Monitor je v současnosti ve verzi Public Preview pro aplikace Function App běžící ve Windows, Premium a vyhrazených plánech hostování.
+> Integrace s protokoly Azure Monitor je v současné době ve verzi Public Preview pro aplikace funkcí v2 a V3 spuštěné ve Windows, Premium a vyhrazených hostitelských plánech.
 
 ## <a name="setting-up"></a>Nastavení
 
-1. V části **monitorování** aplikace Function app v [Azure Portal](https://portal.azure.com)vyberte **nastavení diagnostiky**a pak vyberte **Přidat nastavení diagnostiky**.
+1. V části **monitorování** aplikace Function app v [Azure Portal](https://portal.azure.com)vyberte **nastavení diagnostiky** a pak vyberte **Přidat nastavení diagnostiky**.
 
    :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="Vybrat nastavení diagnostiky":::
 
-1. Na stránce **nastavení diagnostiky** v části **Podrobnosti** a **protokol**kategorie vyberte možnost **FunctionAppLogs**.
+1. Na stránce **nastavení diagnostiky** v části **Podrobnosti** a **protokol** kategorie vyberte možnost **FunctionAppLogs**.
 
    Tabulka **FunctionAppLogs** obsahuje požadované protokoly.
 
-1. V části **Podrobnosti o cíli**zvolte **Odeslat do Log Analytics**a pak vyberte **pracovní prostor Log Analytics**. 
+1. V části **Podrobnosti o cíli** zvolte **Odeslat do Log Analytics** a pak vyberte **pracovní prostor Log Analytics**. 
 
-1. Zadejte **název nastavení diagnostiky**a pak vyberte **Uložit**.
+1. Zadejte **název nastavení diagnostiky** a pak vyberte **Uložit**.
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Vybrat nastavení diagnostiky":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Přidat nastavení diagnostiky":::
 
 ## <a name="user-generated-logs"></a>Uživatelem vygenerované protokoly
 
@@ -89,7 +89,7 @@ Dotaz na vygenerované protokoly:
 
    Azure Functions zapisuje všechny protokoly do tabulky **FunctionAppLogs** pod **LogManagement**. 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Vybrat nastavení diagnostiky":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Okno dotazu v pracovním prostoru Log Analytics":::
 
 Tady je několik ukázkových dotazů:
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 4dd592cb1b0037e2e1054bb24d987d4456f15e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d90c9b9b2c9aa97083e17d5ab7d20fc6b471658
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380776"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492119"
 ---
 # <a name="how-to-configure-your-saas-offer-properties"></a>Jak nakonfigurovat vlastnosti nabídky SaaS
 
@@ -23,16 +23,16 @@ Na kartě **vlastnosti** Definujte kategorie a obory, které se vztahují na va�
 
 ## <a name="select-a-category-for-your-offer"></a>Vyberte kategorii pro vaši nabídku.
 
-V části **kategorie**vyberte aspoň jednu a až dvě kategorie pro seskupení nabídky do příslušných oblastí hledání na webu Marketplace. Na základě kategorií, které zvolíte, určíme, na které online obchody se má vaše nabídka vypsat: buď Azure Marketplace, Microsoft AppSource nebo obojí.
+V části **kategorie** vyberte aspoň jednu a až dvě kategorie pro seskupení nabídky do příslušných oblastí hledání na webu Marketplace. Na základě kategorií, které zvolíte, určíme, na které online obchody se má vaše nabídka vypsat: buď Azure Marketplace, Microsoft AppSource nebo obojí.
 
 ## <a name="select-industries-optional"></a>Vybrat obory (volitelné)
 
-V části **odvětví**můžete vybrat až dva obory a až dva dílčí obory (označované také jako svislé) pro každý obor. Tyto obory slouží k zobrazení vaší nabídky, když zákazníci filtrují svá hledání v oborech a pododvětvích v online obchodě.
+V části **odvětví** můžete vybrat až dva obory a až dva dílčí obory (označované také jako svislé) pro každý obor. Tyto obory slouží k zobrazení vaší nabídky, když zákazníci filtrují svá hledání v oborech a pododvětvích v online obchodě.
 
 > [!NOTE]
 > Pokud vaše nabídka není specifická pro konkrétní obor, ponechte tuto část prázdnou.
 
-1. V části **odvětví**vyberte odkaz **+ odvětví** .
+1. V části **odvětví** vyberte odkaz **+ odvětví** .
 1. Vyberte odvětví ze seznamu **odvětví** .
 1. V seznamu **dílčích oborů** vyberte aspoň jednu a maximálně dvě svislá. Pomocí klávesy CTRL můžete vybrat více dílčích oborů.
 1. Pokud chcete přidat další obor a svislý, vyberte **+ odvětví** a opakujte kroky 1 až 3.
@@ -43,7 +43,7 @@ V části **odvětví**můžete vybrat až dva obory a až dva dílčí obory (o
 
 ## <a name="provide-terms-and-conditions"></a>Zadání podmínek a ujednání
 
-V části **právní**zadejte podmínky a ujednání pro vaši nabídku. Máte dvě možnosti:
+V části **právní** zadejte podmínky a ujednání pro vaši nabídku. Máte dvě možnosti:
 
 - [Použití standardní smlouvy s volitelnými změnami](#use-the-standard-contract)
 - [Použití vlastních podmínek a ujednání](#use-your-own-terms-and-conditions)
@@ -73,7 +73,7 @@ V části **Universal dodatku ke standardní smlouvě pro komerční tržiště 
 
 #### <a name="add-one-or-more-custom-amendments"></a>Přidání jednoho nebo více vlastních změn
 
-1. V části **vlastní změny se za podmínky standardní smlouvy pro komerční tržiště Microsoftu**vyberte odkaz **Přidat vlastní termín změny (max. 10)** .
+1. V části **vlastní změny se za podmínky standardní smlouvy pro komerční tržiště Microsoftu** vyberte odkaz **Přidat vlastní termín změny (max. 10)** .
 1. Do pole **vlastní výrazy změny** zadejte své výrazy změny.
 1. Do pole **ID tenanta** zadejte ID tenanta. Pouze zákazníci, kteří jsou přiřazeni k těmto uživatelským identifikátorům, které zadáte pro tyto vlastní výrazy, se jim zobrazí v nákupním toku nabídky v Azure Portal.
    > [!TIP]
@@ -87,13 +87,9 @@ V části **Universal dodatku ke standardní smlouvě pro komerční tržiště 
 
 Místo standardní smlouvy se můžete rozhodnout, že budete chtít zadat vlastní podmínky a ujednání. Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
 
-1. V části **zákon**se ujistěte, že je zaškrtnuté políčko **používat standardní kontrakt pro komerční web Marketplace** .
+1. V části **zákon** se ujistěte, že je zaškrtnuté políčko **používat standardní kontrakt pro komerční web Marketplace** .
 1. V poli **podmínky a ujednání** zadejte až 10 000 znaků textu.
-
-   > [!NOTE]
-   > Pokud budete potřebovat delší popis, zadejte jednu webovou adresu, na které odkazuje, kde se vaše podmínky a ujednání můžou najít. Zobrazí se zákazníkům jako aktivní odkaz.
-
-1. Než budete pokračovat na další **kartu, vyberte**možnost **Uložit koncept** .
+1. Než budete pokračovat na další **kartu, vyberte** možnost **Uložit koncept** .
 
 ## <a name="next-steps"></a>Další kroky
 

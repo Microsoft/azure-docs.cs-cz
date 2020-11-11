@@ -4,15 +4,15 @@ description: Přečtěte si o osvědčených postupech pro uvedení na trh pro v
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 07/06/2020
-ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708641"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492085"
 ---
 # <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
@@ -35,16 +35,16 @@ Kategorie a odvětví pro jiný online obchod budou platit pro různé typy nab�
 | Online obchod | Kategorie <br>podle online obchodu | Kategorie <br>podle online obchodu | Obory <br> pro AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **Typ nabídky**   |  **Azure Marketplace**  | **AppSource**  |
-| Aplikace Azure | × | |
-| Kontejner | × | |
-| Konzultační služby | | | × |
+| Aplikace Azure | X | |
+| Kontejner | X | |
+| Konzultační služby | | | X |
 | Dynamics 365 Customer Engagement & Power Platform | | X | X |
 | Správa dodavatelských řetězců & finance Dynamics 365 | | X | X | 
 | Dynamics 365 Business Central | | X | X |
-| Moduly IoT Edge | × | |
+| Moduly IoT Edge | X | |
 | Power BI | | X | X |
 | SaaS | X | X | X |
-| Virtuální počítač Azure |  × |    |
+| Virtuální počítač Azure |  X |    |
 
 ### <a name="categories"></a>Kategorie
 
@@ -74,7 +74,7 @@ Konkrétní informace o tom, jak možnosti Transact můžou ovlivnit, jak můžo
 |  |  |  | X | X |  |  |  | X |
 |  |  |  | X |  | X |  | ×<sup>1</sup> | ×<sup>1</sup> |
 |  |  |  | X |  |  | X | ×<sup>1</sup> | ×<sup>1, 2</sup> |
-|  |  | × |  |  |  |  | ×<sup>1</sup> | ×<sup>1</sup> | 
+|  |  | X |  |  |  |  | ×<sup>1</sup> | ×<sup>1</sup> | 
 
 1. V závislosti na kategoriích/podkategoriích a průmyslových výběrech
 2. Nabídky s privátními plány budou publikovány na Azure Portal
@@ -130,8 +130,8 @@ Klíčová slova můžou zákazníkům pomáhat při hledání vaší nabídky. 
 ## <a name="link-to-your-offer-page-from-your-website"></a>Odkaz na stránku nabídky z webu
 
 Když propojíte AppSource nebo Azure Marketplace BADGE na vašem webu s vaším výpisem na komerčním webu Marketplace, můžete podporovat silné analýzy a vytváření sestav, a to tak, že na konci adresy URL zadáte následující parametry dotazu:
-* **Src**: zahrnuje zdroj, ze kterého je směrován provoz do AppSource (například web, LinkedIn nebo Facebook).
-* **mktcmpid**: vaše ID marketingové kampaně, které může obsahovat až 16 znaků v libovolné kombinaci písmen, číslic, podtržítka a spojovníků (například *blogpost_12*).
+* **Src** : zahrnuje zdroj, ze kterého je směrován provoz do AppSource (například web, LinkedIn nebo Facebook).
+* **mktcmpid** : vaše ID marketingové kampaně, které může obsahovat až 16 znaků v libovolné kombinaci písmen, číslic, podtržítka a spojovníků (například *blogpost_12* ).
 
 Následující příklad adresy URL obsahuje oba předchozí parametry dotazu: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 

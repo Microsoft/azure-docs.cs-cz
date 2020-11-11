@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 11/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 0d7839b11e48e3e260f4d6b1323d1831e28222de
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e578e377e322e6b6a23f0990ca1fa0285a4ec87d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421859"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491643"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků s využitím služby Azure NetApp Files
 
@@ -108,6 +108,8 @@ Pokud chcete, aby svazek používal zásadu snímku, je nutné [použít zásadu
 
 Pokud chcete, aby svazek používal zásadu snímku, kterou jste vytvořili, musíte zásadu použít na svazek. 
 
+V rámci replikace mezi oblastmi nejde použít zásadu snímku na cílový svazek.  
+
 1.  Přejděte na stránku **svazky** , klikněte pravým tlačítkem na svazek, na který chcete použít zásadu snímku, a vyberte **Upravit**.
 
     ![Místní nabídka – svazky kliknutím pravým tlačítkem](../media/azure-netapp-files/volume-right-cick-menu.png) 
@@ -173,13 +175,15 @@ Připojený svazek obsahuje adresář snímků s názvem  `.snapshot` (v kliente
 
 Pokud jste při vytváření svazku zaškrtli políčko Skrýt cestu ke snímku, je adresář snímků skrytý. Výběrem svazku můžete zobrazit stav pro skrytí cesty snímku svazku. Možnost skrýt cestu snímku můžete upravit kliknutím na **Upravit** na stránce svazku.  
 
+Pro cílový svazek v případě replikace mezi jednotlivými oblastmi je ve výchozím nastavení povolená možnost skrýt cestu k snímku a toto nastavení nejde změnit.
+
 ![Upravit možnosti snímku svazku](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Obnovení souboru pomocí klienta systému Linux NFS 
 
 1. `ls`K vypsání souboru, který chcete obnovit z adresáře, použijte příkaz Linux `.snapshot` . 
 
-    Například:
+    Příklad:
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -194,7 +198,7 @@ Pokud jste při vytváření svazku zaškrtli políčko Skrýt cestu ke snímku,
 
 2. Pomocí `cp` příkazu zkopírujte soubor do nadřazeného adresáře.  
 
-    Například: 
+    Příklad: 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 

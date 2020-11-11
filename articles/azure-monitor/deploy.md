@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0591825bf187648293d5aabc88597b19ab2436e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033468"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491048"
 ---
 # <a name="deploy-azure-monitor"></a>Nasazení Azure Monitoru
 Povolením Azure Monitor monitorování všech vašich prostředků Azure je kombinace konfigurace Azure Monitor komponent a konfigurace prostředků Azure pro generování dat monitorování pro Azure Monitor shromažďování. Tento článek popisuje různé kroky potřebné k dokončení implementace Azure Monitor s využitím společné konfigurace pro monitorování všech prostředků ve vašem předplatném Azure. Základní popisy jednotlivých kroků jsou k dispozici s odkazy na další dokumentaci pro podrobné požadavky na konfiguraci.
@@ -118,7 +118,7 @@ Podrobnosti o instalaci a konfiguraci těchto agentů najdete v tématu [instala
 Azure Monitor monitoruje vlastní aplikace pomocí [Application Insights](app/app-insights-overview.md), které je nutné nakonfigurovat pro každou aplikaci, kterou chcete monitorovat. Proces konfigurace se bude lišit v závislosti na typu monitorované aplikace a typu monitorování, které chcete provést. Data shromážděná pomocí Application Insights jsou uložená v Azure Monitor metrikách, protokoly Azure Monitor a Azure Blob Storage v závislosti na funkci. Údaje o výkonu jsou uloženy v Azure Monitor metrikách i v protokolech Azure Monitor bez nutnosti další konfigurace.
 
 ### <a name="create-an-application-resource"></a>Vytvoření prostředku aplikace
-Pro každou aplikaci, kterou se chystáte monitorovat, musíte vytvořit prostředek v Application Insights. Data protokolu shromažďovaná pomocí Application Insights jsou uložená v protokolech Azure Monitor pro aplikaci založenou na pracovních prostorech. Data protokolu pro klasické aplikace se ukládají odděleně od Log Analytics pracovního prostoru, jak je popsáno v [části struktura dat](platform/data-platform-logs.md#structure-of-data).
+Pro každou aplikaci, kterou se chystáte monitorovat, musíte vytvořit prostředek v Application Insights. Data protokolu shromažďovaná pomocí Application Insights jsou uložená v protokolech Azure Monitor pro aplikaci založenou na pracovních prostorech. Data protokolu pro klasické aplikace se ukládají odděleně od Log Analytics pracovního prostoru, jak je popsáno v tématu [struktura dat](platform/data-platform-logs.md#data-structure).
 
  Když vytváříte aplikaci, musíte vybrat, jestli se má používat klasický nebo založený na pracovních prostorech. Pokud chcete vytvořit klasickou aplikaci, přečtěte si téma [vytvoření prostředku Application Insights](app/create-new-resource.md) . Pokud chcete vytvořit aplikaci založenou na pracovních prostorech, přečtěte si téma [zdroje Application Insights založené na pracovním prostoru (Preview)](app/create-workspace-resource.md) .
 

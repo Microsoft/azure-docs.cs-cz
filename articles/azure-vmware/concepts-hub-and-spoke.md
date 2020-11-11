@@ -3,12 +3,12 @@ title: Koncept – integrace nasazení řešení Azure VMware v architektuře hu
 description: Přečtěte si o integraci nasazení řešení Azure VMware v architektuře hub a paprsků v Azure.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 93c11ad9253fe78e1935da7b40e7251788f1f037
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0895e9c97f79e433b0383f0a99fbeeb124fd9064
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674678"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490810"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrace řešení Azure VMware v architektuře hub a paprsků
 
@@ -36,30 +36,29 @@ Diagram znázorňuje příklad nasazení centra a paprsků v Azure připojeného
 
 Architektura má následující hlavní součásti:
 
--   **Místní lokalita:** Místní datacentrum (y) zákazníka připojené k Azure prostřednictvím připojení ExpressRoute
+- **Místní lokalita:** Místní datacentrum (y) zákazníka připojené k Azure prostřednictvím připojení ExpressRoute
 
--   **Privátní cloud řešení Azure VMware:** Řešení Azure VMware SDDC vytvořené jedním nebo několika clustery vSphere, přičemž každý z nich má maximálně 16 uzlů.
+- **Privátní cloud řešení Azure VMware:** Řešení Azure VMware SDDC vytvořené jedním nebo několika clustery vSphere, přičemž každý z nich má maximálně 16 uzlů.
 
--   **ExpressRoute brána:** Umožňuje komunikaci mezi privátním cloudem řešení Azure VMware, sdílenými službami v centrální virtuální síti a úlohami spuštěnými ve virtuálních sítích s paprsky.
+- **ExpressRoute brána:** Umožňuje komunikaci mezi privátním cloudem řešení Azure VMware, sdílenými službami v centrální virtuální síti a úlohami spuštěnými ve virtuálních sítích s paprsky.
 
--   **ExpressRoute Global REACH:** Umožňuje připojení mezi místním prostředím a privátním cloudem řešení Azure VMware.
-
-
-  > [!NOTE]
-  > **Předpoklady S2S VPN:** Pro nasazení v produkčním prostředí Azure VMware se Azure S2S VPN nepodporuje kvůli požadavkům sítě pro VMware HCX. Můžete ho ale použít pro nasazení podle ověření koncepce.
+- **ExpressRoute Global REACH:** Umožňuje připojení mezi místním prostředím a privátním cloudem řešení Azure VMware. Připojení mezi řešením Azure VMware a prostředky infrastruktury Azure se provádí jenom ExpressRoute Global Reach. Nemůžete vybrat žádnou možnost kromě rychlé cesty ExpressRoute.  ExpressRoute Direct není podporován.
 
 
--   **Virtuální síť centra:** Funguje jako centrální bod připojení k vaší místní síti a privátnímu cloudu řešení Azure VMware.
+- **Předpoklady S2S VPN:** Pro nasazení v produkčním prostředí Azure VMware se Azure S2S VPN nepodporuje kvůli požadavkům sítě pro VMware HCX. Můžete ho ale použít pro nasazení podle ověření koncepce.
 
--   **Virtuální síť paprsků**
 
-    -   **IaaS paprsk:** IaaS uzel hostuje úlohy založené na Azure IaaS, včetně skupin dostupnosti virtuálních počítačů a virtuálních počítačů s měřítkem, a odpovídajících síťových komponent.
+- **Virtuální síť centra:** Funguje jako centrální bod připojení k vaší místní síti a privátnímu cloudu řešení Azure VMware.
 
-    -   **PaaS paprsk:** PaaS uzel hostuje služby Azure PaaS pomocí privátního [koncového bodu s privátním koncovým bodem](../private-link/private-endpoint-overview.md) a [soukromým odkazem](../private-link/private-link-overview.md).
+- **Virtuální síť paprsků**
 
--   **Azure firewall:** Funguje jako centrální kus pro segmentování provozu mezi paprsky a řešením Azure VMware.
+    - **IaaS paprsk:** IaaS uzel hostuje úlohy založené na Azure IaaS, včetně skupin dostupnosti virtuálních počítačů a virtuálních počítačů s měřítkem, a odpovídajících síťových komponent.
 
--   **Application Gateway:** Zpřístupňuje a chrání webové aplikace, které běží na Azure IaaS/PaaS nebo virtuálních počítačích řešení Azure VMware. Integruje se s dalšími službami, jako je API Management.
+    - **PaaS paprsk:** PaaS uzel hostuje služby Azure PaaS pomocí privátního [koncového bodu s privátním koncovým bodem](../private-link/private-endpoint-overview.md) a [soukromým odkazem](../private-link/private-link-overview.md).
+
+- **Azure firewall:** Funguje jako centrální kus pro segmentování provozu mezi paprsky a řešením Azure VMware.
+
+- **Application Gateway:** Zpřístupňuje a chrání webové aplikace, které běží na Azure IaaS/PaaS nebo virtuálních počítačích řešení Azure VMware. Integruje se s dalšími službami, jako je API Management.
 
 ## <a name="network-and-security-considerations"></a>Otázky k síti a zabezpečení
 
@@ -69,12 +68,12 @@ Vzhledem k tomu, že brána ExpressRoute neposkytuje tranzitivní směrování m
 
 * **Tok provozu řešení VMware z místního prostředí do Azure**
 
-  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Tok provozu řešení VMware z místního prostředí do Azure" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
 
 
 * **Tok provozu řešení Azure VMware do centra přenosů virtuální sítě**
 
-  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Tok provozu řešení Azure VMware do centra přenosů dat virtuální sítě" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
 Další podrobnosti o sítích řešení Azure VMware a konceptech připojení najdete v dokumentaci k [produktu řešení Azure VMware](./concepts-networking.md).
@@ -85,7 +84,7 @@ Další podrobnosti o sítích řešení Azure VMware a konceptech připojení n
 
 Vytvořte směrovací tabulky a nasměrujte provoz na Azure Firewall.  Pro virtuální sítě paprsků vytvořte trasu, která nastaví výchozí trasu na interní rozhraní Azure Firewall. Tímto způsobem platí, že pokud je potřeba, aby zatížení v Virtual Network dosáhlo adresního prostoru řešení Azure VMware, firewall ho může vyhodnotit a použít odpovídající přenosové pravidlo, aby ho povolil nebo zakázal.  
 
-:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
+:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Vytvoření směrovacích tabulek pro směrování provozu do Azure Firewall" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
 
 
 > [!IMPORTANT]
@@ -93,7 +92,7 @@ Vytvořte směrovací tabulky a nasměrujte provoz na Azure Firewall.  Pro virtu
 
 Nastavte trasy pro konkrétní sítě v odpovídající směrovací tabulce. Například trasy pro přístup ke správě řešení Azure VMware a úlohám z úloh paprsků a jiným způsobem.
 
-:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
+:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Nastavte trasy pro konkrétní sítě v odpovídající tabulce směrování." lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
 
 Druhá úroveň segmentace přenosu dat pomocí skupin zabezpečení sítě v Paprskech a v centru pro vytváření podrobnějších přenosových zásad.
 
@@ -106,7 +105,7 @@ Azure Application Gateway V1 a v2 byly testovány pomocí webových aplikací, k
 
 Podrobnosti a požadavky najdete v článku týkajícím se [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md) pro řešení Azure VMware.
 
-:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" border="false":::
+:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Druhá úroveň segmentace provozu pomocí skupin zabezpečení sítě" border="false":::
 
 
 ### <a name="jump-box-and-azure-bastion"></a>Pole pro přesun a Azure bastionu
@@ -122,7 +121,7 @@ Z hlediska zabezpečení je nejvhodnější nasadit službu [Microsoft Azure bas
 > Nepřiřazujte veřejnou IP adresu virtuálnímu počítači s odkazem, nebo zveřejňujte port 3389/TCP veřejnému Internetu. 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" border="false":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Virtuální síť Azure bastionu hub" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Azure DNS – požadavky na řešení
@@ -139,11 +138,7 @@ Jako obecné doporučení k návrhu použijte stávající infrastrukturu Azure 
 
 Můžete použít Azure Privátní DNS, kde se zóna Azure Privátní DNS odkazuje na virtuální síť.  Servery DNS se používají jako hybridní překladače s podmíněným předáváním do místního prostředí nebo řešení Azure VMware se systémem DNS s využitím zákaznické infrastruktury Azure Privátní DNS. 
 
-Je potřeba vzít v úvahu několik důležitých Azure DNS privátních zón:
-
-* Automatická registrace by měla být povolená pro Azure DNS k automatické správě životního cyklu záznamů DNS pro virtuální počítače nasazené v rámci virtuálních sítí s paprsky.
-* Maximální počet privátních zón DNS, ke kterým může být virtuální síť propojená, je povolená Automatická registrace jenom jedna.
-* Maximální počet privátních zón DNS, ke kterým může být virtuální síť propojená, je 1000 bez povolení automatické registrace.
+Pokud chcete automaticky spravovat životní cyklus záznamů DNS pro virtuální počítače nasazené v rámci virtuálních sítí paprsků, povolte automatickou registraci. Pokud je tato možnost povolená, je maximální počet privátních zón DNS jenom jeden. Pokud je tato hodnota zakázaná, pak je maximální počet 1000.
 
 Místní a servery řešení Azure VMware je možné nakonfigurovat s použitím podmíněného serveru pro překládání na virtuální počítače v Azure pro zónu Azure Privátní DNS.
 

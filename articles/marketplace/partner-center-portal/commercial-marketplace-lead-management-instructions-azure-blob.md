@@ -4,15 +4,15 @@ description: Naučte se používat Azure Blob ke konfiguraci zájemců pro Micro
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 05/01/2020
-ms.openlocfilehash: dea9c0eec275c6a0596636c8625e52b8978bb9a6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bd2f3d40b1aea1c0133f95e069ebfd527d30bd59
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130540"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491099"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Použití úložiště objektů BLOB v Azure ke správě zájemců z komerčního tržiště
 
@@ -53,7 +53,7 @@ ms.locfileid: "93130540"
 
     ![Snímek obrazovky zobrazující stránku přístupové klíče se zvýrazněným textovým polem "připojovací řetězec".](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
-6. Na stránce účet úložiště vyberte **objekty blob** .
+6. Na stránce účet úložiště vyberte **objekty blob**.
 
    ![Snímek obrazovky se stránkou účtu úložiště Azure s vybranými objekty blob](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "93130540"
 
     Tuto hodnotu uložte, protože je to hodnota *názvu kontejneru* , kterou musíte poskytnout na portálu pro publikování a získat tak zájemce pro vaši nabídku na webu Marketplace.
 
-9. Nastavte úroveň veřejného přístupu ke kontejneru jako **privátní (bez anonymního přístupu)** .
+9. Nastavte úroveň veřejného přístupu ke kontejneru jako **privátní (bez anonymního přístupu)**.
 
 10. Kliknutím na **OK** kontejner vytvoříte.
 
@@ -74,7 +74,7 @@ ms.locfileid: "93130540"
 Až budete připraveni ke konfiguraci informací o správě zájemce pro vaši nabídku na portálu pro publikování, postupujte podle následujících kroků:
 
 1. Přejděte na stránku **nastavení nabídky** pro vaši nabídku.
-2. V části **zájemci pro zákazníky** vyberte **připojit** .
+2. V části **zájemci pro zákazníky** vyberte **připojit**.
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-blob/customer-leads.png" alt-text="Potenciální zákazníci":::
 
@@ -87,7 +87,7 @@ Až budete připraveni ke konfiguraci informací o správě zájemce pro vaši n
     * Příklad názvu kontejneru: `marketplaceleadcontainer`
     * Příklad připojovacího řetězce účtu úložiště: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ Podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
-5. Vyberte **Uložit** .
+5. Vyberte **Uložit**.
 
     > [!NOTE]
     > Musíte dokončit konfiguraci zbytku nabídky a publikovat ji předtím, než budete moct získat zájemce pro tuto nabídku.

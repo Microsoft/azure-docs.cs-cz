@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: cc5702d973150b80188354719333fb7cf22d58b3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 30e5ea4df3de0b8a10c9c1f3b4b27a9e0a19359e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283920"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491201"
 ---
 # <a name="how-to-configure-virtual-machine-offer-properties"></a>Postup konfigurace vlastností nabídky virtuálního počítače
 
@@ -29,7 +29,7 @@ Vyberte kategorie a podkategorie, aby se vaše nabídka umístila do odpovídaj�
 
 ## <a name="provide-terms-and-conditions"></a>Zadání podmínek a ujednání
 
-V části **právní**zadejte podmínky a ujednání pro vaši nabídku. Máte dvě možnosti:
+V části **právní** zadejte podmínky a ujednání pro vaši nabídku. Máte dvě možnosti:
 
 - [Použití standardní smlouvy s volitelnými změnami](#use-the-standard-contract)
 - [Použití vlastních podmínek a ujednání](#use-your-own-terms-and-conditions)
@@ -59,7 +59,7 @@ V části **Universal dodatku ke standardní smlouvě pro komerční tržiště 
 
 #### <a name="add-one-or-more-custom-amendments"></a>Přidání jednoho nebo více vlastních změn
 
-1. V části **vlastní změny se za podmínky standardní smlouvy pro komerční tržiště Microsoftu**vyberte odkaz **Přidat vlastní termín změny (max. 10)** .
+1. V části **vlastní změny se za podmínky standardní smlouvy pro komerční tržiště Microsoftu** vyberte odkaz **Přidat vlastní termín změny (max. 10)** .
 1. Do pole **vlastní výrazy změny** zadejte své výrazy změny.
 1. Do pole **ID tenanta** zadejte ID tenanta. Pouze zákazníci, kteří jsou přiřazeni k těmto uživatelským identifikátorům, které zadáte pro tyto vlastní výrazy, se jim zobrazí v nákupním toku nabídky v Azure Portal.
    > [!TIP]
@@ -73,14 +73,10 @@ V části **Universal dodatku ke standardní smlouvě pro komerční tržiště 
 
 Místo standardní smlouvy se můžete rozhodnout, že budete chtít zadat vlastní podmínky a ujednání. Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
 
-1. V části **zákon**se ujistěte, že je zaškrtnuté políčko **používat standardní kontrakt pro komerční web Marketplace** .
+1. V části **zákon** se ujistěte, že je zaškrtnuté políčko **používat standardní kontrakt pro komerční web Marketplace** .
 1. V poli **podmínky a ujednání** zadejte až 10 000 znaků textu.
-
-   > [!NOTE]
-   > Pokud budete potřebovat delší popis, zadejte jednu webovou adresu, na které odkazuje, kde se vaše podmínky a ujednání můžou najít. Zobrazí se zákazníkům jako aktivní odkaz.
-
-1. Než budete pokračovat na další **kartu, vyberte**možnost **Uložit koncept** .
+1. Než budete pokračovat na další **kartu, vyberte** možnost **Uložit koncept** .
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace seznamu nabídek virtuálních počítačů](azure-vm-create-listing.md)
+- [Konfigurace výpisu nabídek virtuálních počítačů](azure-vm-create-listing.md)

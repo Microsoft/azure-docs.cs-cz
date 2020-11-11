@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 4d4ef9f1d80604373463450adf597f8202611175
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 9031ea2d862a23df5d597b790fffc49e624e53fb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216568"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491915"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: Přijetí a získání dat prostřednictvím služby Azure Data Share  
 
@@ -74,7 +74,7 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. Můžete otevřít pozvánku z e-mailu nebo přímo z Azure Portal. 
 
-   Pokud chcete otevřít pozvánku z e-mailu, Projděte si doručenou poštu od poskytovatele dat. Pozvánka pochází z Microsoft Azure s názvem **pozvání Azure Data Share z <yourdataprovider@domain.com> **. Kliknutím na **Zobrazit pozvánku** zobrazíte pozvánku v Azure. 
+   Pokud chcete otevřít pozvánku z e-mailu, Projděte si doručenou poštu od poskytovatele dat. Pozvánka pochází z Microsoft Azure s názvem **pozvání Azure Data Share z <yourdataprovider@domain.com>**. Kliknutím na **Zobrazit pozvánku** zobrazíte pozvánku v Azure. 
 
    Chcete-li otevřít pozvánku přímo z Azure Portal, vyhledejte v Azure Portal **pozvánky ke sdílení dat** . Tím přejdete do seznamu pozvání ke sdílení dat.
 
@@ -87,7 +87,7 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
    ![Podmínky použití](./media/terms-of-use.png "Podmínky použití") 
 
-1. V části *cílový účet sdílení dat*vyberte předplatné a skupinu prostředků, do které budete nasazovat sdílenou složku. 
+1. V části *cílový účet sdílení dat* vyberte předplatné a skupinu prostředků, do které budete nasazovat sdílenou složku. 
 
    V poli **účet pro sdílení dat** vyberte **vytvořit novou** , pokud nemáte existující účet pro sdílení dat. V opačném případě vyberte existující účet pro sdílení dat, do kterého chcete vaši sdílenou složku přijmout. 
 
@@ -125,12 +125,19 @@ Tyto kroky platí pouze pro sdílení na základě snímků.
 
    ![Spustit snímek](./media/trigger-snapshot.png "Spustit snímek") 
 
-1. Po *úspěšném*stavu posledního spuštění přejdete do cílového úložiště dat a zobrazíte přijatá data. Vyberte **datové sady**a klikněte na odkaz v cílové cestě. 
+1. Po *úspěšném* stavu posledního spuštění přejdete do cílového úložiště dat a zobrazíte přijatá data. Vyberte **datové sady** a klikněte na odkaz v cílové cestě. 
 
    ![Datové sady příjemců](./media/consumer-datasets.png "Mapování datové sady příjemce") 
 
 ## <a name="view-history"></a>Zobrazení historie
-Tento krok platí jenom pro sdílení na základě snímků. Chcete-li zobrazit historii snímků, vyberte kartu **Historie** . Tady najdete historii všech snímků, které se vygenerovaly za posledních 30 dní. 
+Tento krok platí jenom pro sdílení na základě snímků. Chcete-li zobrazit historii snímků, vyberte kartu **Historie** . Tady najdete historii všech snímků, které se vygenerovaly za posledních 30 dní.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už prostředek nepotřebujete, přejdete na stránku s **přehledem sdílení dat** a výběrem **Odstranit** ho odeberete.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste zjistili, jak přijmout a získat sdílenou složku Azure Data. Další informace o konceptech Azure Data Share najdete v článku [Koncepty: terminologie Azure Data Share](terminology.md).
+V tomto kurzu jste zjistili, jak přijmout a získat sdílenou složku Azure Data. Další informace o konceptech Azure Data Share najdete v terminologii Azure Data Share.
+
+> [!div class="nextstepaction"]
+> [Koncepty Azure Data Share](terminology.md)

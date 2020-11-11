@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 2036505dea134a59e7dc0c75a030175b15dac0b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 066e9cf6c63c9f2073ba869e8b40e25bfc993cd8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031938"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491371"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Rozsah dotazu protokolu a časový rozsah ve Azure Monitor Log Analytics
 Když spustíte [dotaz protokolu](log-query-overview.md) v [Log Analytics Azure Portal](get-started-portal.md), sada dat vyhodnocených dotazem závisí na rozsahu a časovém rozsahu, který jste vybrali. Tento článek popisuje rozsah a časový rozsah a způsob, jakým můžete nastavit jednotlivé požadavky v závislosti na vašich požadavcích. Popisuje také chování různých typů oborů.
@@ -48,12 +48,10 @@ Pokud je oborem dotazu Log Analytics pracovní prostor nebo aplikace Application
 V dotazu, který je vymezený na prostředek, nemůžete použít následující příkazy, protože obor dotazu již bude obsahovat všechny pracovní prostory s daty pro daný prostředek nebo sadu prostředků:
 
 - [aplikace](app-expression.md)
-- [stejných](workspace-expression.md)
+- [workspace (pracovní prostor)](workspace-expression.md) 
  
 
-## <a name="query-limits"></a>Limity dotazů
-Můžete mít obchodní požadavky na prostředek Azure, abyste mohli zapisovat data do několika pracovních prostorů Log Analytics. Pracovní prostor nemusí být ve stejné oblasti jako prostředek a jeden pracovní prostor může shromažďovat data z prostředků v různých oblastech.  
-
+## <a name="query-scope-limits"></a>Omezení rozsahu dotazů
 Nastavení oboru na prostředek nebo sadu prostředků je zvláště výkonná funkce Log Analytics, protože umožňuje automaticky konsolidovat distribuovaná data v jednom dotazu. I když je potřeba načíst data z pracovních prostorů napříč několika oblastmi Azure, může to významně ovlivnit výkon.
 
 Log Analytics pomáhá chránit před nadměrnými nároky na dotazy, které zaujímají pracovní prostory v několika oblastech, a to vyvoláním upozornění nebo chyby, když se používá určitý počet oblastí. Dotaz zobrazí upozornění, pokud obor obsahuje pracovní prostory v 5 nebo více oblastech. Pořád se spustí, ale dokončení může trvat příliš dlouho.
@@ -66,28 +64,24 @@ Spuštění dotazu bude zablokováno, pokud obor obsahuje pracovní prostory ve 
 
 
 ## <a name="time-range"></a>Časové rozmezí
-Časový rozsah určuje sadu záznamů, které jsou vyhodnocovány pro dotaz na základě vytvoření záznamu. To je definováno standardním sloupcem u každého záznamu v pracovním prostoru nebo v aplikaci, jak je uvedeno v následující tabulce.
+Časový rozsah určuje sadu záznamů, které jsou vyhodnocovány pro dotaz na základě vytvoření záznamu. To je definováno sloupcem **TimeGenerated** u každého záznamu v pracovním prostoru nebo v aplikaci, jak je uvedeno v následující tabulce. Pro klasický Application Insights aplikace se sloupec **časového razítka** používá pro časový rozsah.
 
-| Umístění | Sloupec |
-|:---|:---|
-| Pracovní prostor služby Log Analytics          | TimeGenerated |
-| Application Insights aplikace | časové razítko     |
 
 Nastavte časový rozsah tak, že ho vyberete v poli pro výběr času v horní části okna Log Analytics.  Můžete vybrat předdefinované období nebo vybrat **vlastní** a zadat konkrétní časový rozsah.
 
 ![Výběr času](media/scope/time-picker.png)
 
-Pokud nastavíte filtr v dotazu, který používá sloupec standardního času, jak je znázorněno v tabulce výše, výběr času se změní na **nastaveno v dotazu**a výběr času je zakázán. V tomto případě je nejefektivnější umístit filtr na začátek dotazu, aby jakékoli následné zpracování fungovalo pouze s filtrovanými záznamy.
+Pokud nastavíte filtr v dotazu, který používá sloupec standardního času, jak je znázorněno v tabulce výše, výběr času se změní na **nastaveno v dotazu** a výběr času je zakázán. V tomto případě je nejefektivnější umístit filtr na začátek dotazu, aby jakékoli následné zpracování fungovalo pouze s filtrovanými záznamy.
 
 ![Filtrovaný dotaz](media/scope/query-filtered.png)
 
-Pokud použijete příkaz [pracovní prostor](workspace-expression.md) nebo [aplikace](app-expression.md) k načtení dat z jiného pracovního prostoru nebo aplikace, výběr času se může chovat jinak. Pokud je oborem Log Analytics pracovní prostor a používáte **aplikaci**, nebo pokud je oborem Application Insights aplikace a používáte **pracovní prostor**, Log Analytics nemusí pochopit, že by měl sloupec použitý ve filtru určovat časový filtr.
+Pokud použijete příkaz [pracovní prostor](workspace-expression.md) nebo [aplikace](app-expression.md) k načtení dat z jiného pracovního prostoru nebo klasické aplikace, výběr času se může chovat jinak. Pokud je oborem Log Analytics pracovní prostor a používáte **aplikaci** nebo pokud je oborem klasický Application Insights aplikace a používáte **pracovní prostor** , Log Analytics nemusí pochopit, zda by měl sloupec použitý ve filtru určovat časový filtr.
 
 V následujícím příkladu je obor nastaven na Log Analytics pracovní prostor.  Dotaz používá **pracovní prostor** k načtení dat z jiného pracovního prostoru Log Analytics. Výběr času se změní na **nastavení v dotazu** , protože vidí filtr, který používá očekávaný sloupec **TimeGenerated** .
 
 ![Dotaz s pracovním prostorem](media/scope/query-workspace.png)
 
-Pokud dotaz používá **aplikaci** k načtení dat z Application Insights aplikace, Log Analytics ale nerozpoznal sloupec **časového razítka** ve filtru a výběr času zůstane beze změny. V tomto případě jsou aplikovány oba filtry. V tomto příkladu jsou do dotazu zahrnuty pouze záznamy vytvořené za posledních 24 hodin, i když v klauzuli **WHERE** zadává 7 dní.
+Pokud dotaz používá **aplikaci** k načtení dat z klasické Application Insights aplikace, Log Analytics ale nerozpozná sloupec **časového razítka** ve filtru a výběr času zůstane beze změny. V tomto případě jsou aplikovány oba filtry. V tomto příkladu jsou do dotazu zahrnuty pouze záznamy vytvořené za posledních 24 hodin, i když v klauzuli **WHERE** zadává 7 dní.
 
 ![Dotazování pomocí aplikace](media/scope/query-app.png)
 

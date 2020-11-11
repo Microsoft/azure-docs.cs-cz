@@ -3,12 +3,12 @@ title: Programové vytváření zásad
 description: Tento článek vás provede programově vytvářením a správou zásad pro Azure Policy pomocí rozhraní příkazového řádku Azure, Azure PowerShell a REST API.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 9b0c2e50536a847555dfa5cc6b9c823cfc1a4cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bf2b1864331fd785ecdd70be4af79be01f1e5e0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047050"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491796"
 ---
 # <a name="programmatically-create-policies"></a>Programové vytváření zásad
 
@@ -16,7 +16,7 @@ Tento článek vás provede programově vytvářením a správou zásad. Azure P
 
 Informace o dodržování předpisů najdete v tématu [získání dat o dodržování předpisů](get-compliance-data.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že jsou splněné následující předpoklady:
 
@@ -92,7 +92,7 @@ Prvním krokem k lepšímu přehledu vašich prostředků je vytváření a při
 
    - Partner `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Skupina prostředků – `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Formě `/subscriptions/{subId}/`
+   - Formě `/subscriptions/{subId}`
    - Skupina pro správu – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Další informace o správě zásad prostředků pomocí modulu Správce prostředků PowerShellu najdete v tématu [AZ. Resources](/powershell/module/az.resources/#policies).

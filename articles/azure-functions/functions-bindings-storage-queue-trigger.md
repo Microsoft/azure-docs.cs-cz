@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26f0006ad2b26757e335ba1819c2b82ba519f8cc
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89376634"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491439"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Aktivační událost služby Azure Queue Storage pro Azure Functions
 
@@ -163,7 +163,7 @@ Aktivační událost fronty úložiště je definována v *function.jsna* míst�
 }
 ```
 
-Kód * _ \_ init_ \_ . py* deklaruje parametr jako `func.QueueMessage` , který umožňuje čtení zprávy fronty ve funkci.
+Kód *_\_ init_ \_ . py* deklaruje parametr jako `func.QueueMessage` , který umožňuje čtení zprávy fronty ve funkci.
 
 ```python
 import logging
@@ -311,7 +311,7 @@ public class QueueTriggerDemo {
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `QueueTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový** | neuvedeno| Musí být nastaven na hodnotu `queueTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr**| neuvedeno | V *function.jspouze v* souboru. Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
@@ -363,7 +363,7 @@ Přístup ke zprávě fronty prostřednictvím parametru zadaného jako [QueueMe
 
 Aktivační událost fronty poskytuje několik [vlastností metadat](./functions-bindings-expressions-patterns.md#trigger-metadata). Tyto vlastnosti lze použít jako součást výrazů vazby v jiných vazbách nebo jako parametry v kódu. Vlastnosti jsou členy třídy [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) .
 
-|Vlastnost|Typ|Description|
+|Vlastnost|Typ|Popis|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Datová část fronty (Pokud platný řetězec). Pokud je datová část zprávy fronty řetězec, `QueueTrigger` má stejnou hodnotu jako proměnná s názvem `name` vlastností v *function.js*.|
 |`DequeueCount`|`int`|Počet, kolikrát byla tato zpráva odstraněna z fronty.|
@@ -375,7 +375,7 @@ Aktivační událost fronty poskytuje několik [vlastností metadat](./functions
 
 ## <a name="poison-messages"></a>Poškozené zprávy
 
-Pokud se funkce triggeru fronty nezdařila, Azure Functions se znovu pokusí použít tuto funkci až pětkrát pro danou zprávu fronty, včetně prvního pokusu. Pokud se všechny pět pokusů nezdaří, modul runtime Functions přidá zprávu do fronty s názvem * &lt; originalqueuename>-jed*. Můžete napsat funkci pro zpracování zpráv z fronty poškození tím, že je přihlásíte nebo posíláte oznámení, že je potřeba ruční pozornost.
+Pokud se funkce triggeru fronty nezdařila, Azure Functions se znovu pokusí použít tuto funkci až pětkrát pro danou zprávu fronty, včetně prvního pokusu. Pokud se všechny pět pokusů nezdaří, modul runtime Functions přidá zprávu do fronty s názvem *&lt; originalqueuename>-jed*. Můžete napsat funkci pro zpracování zpráv z fronty poškození tím, že je přihlásíte nebo posíláte oznámení, že je potřeba ruční pozornost.
 
 Pokud chcete zpracovat poškozené zprávy ručně, podívejte se do [dequeueCount](#message-metadata) zprávy ve frontě.
 
@@ -408,7 +408,7 @@ Aktivační událost fronty automaticky zabrání funkci ve zpracování zprávy
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zápis zpráv služby Blob Storage (výstupní vazba)](./functions-bindings-storage-blob-output.md)
+- [Zápis zpráv do fronty úložiště (výstupní vazba)](./functions-bindings-storage-queue-output.md)
 
 <!-- LINKS -->
 

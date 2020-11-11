@@ -1,18 +1,17 @@
 ---
-title: Přidání dlaždic do řídicího panelu Azure IoT Central | Microsoft Docs
+title: Konfigurace na řídicí panel Azure IoT Central | Microsoft Docs
 description: Jako tvůrce se naučíte, jak nakonfigurovat výchozí řídicí panel aplikace IoT Central pro Azure pomocí dlaždic.
-author: Haley-Rowland
-ms.author: harowl
-ms.date: 05/27/2020
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
-services: iot-central
-ms.openlocfilehash: 5276f9b8c6dd3bdc305142e5b9452cd9c5d60bce
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 2ea2dd18cd5816c7c1406ac201421a2983e431a3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376978"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491975"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicího panelu aplikace
 
@@ -29,23 +28,26 @@ Následující snímek obrazovky ukazuje řídicí panel v aplikaci vytvořené 
 
 Po výběru **Upravit** nebo **Nový** je řídicí panel v režimu *úprav* . Pomocí nástrojů na panelu **Upravit řídicí** panel můžete přidat dlaždice na řídicí panel a přizpůsobit a odebrat dlaždice na samotném řídicím panelu. Například chcete-li přidat dlaždici **telemetrie** pro zobrazení aktuální teploty hlášené jedním nebo více zařízeními:
 
-1. Na panelu **Upravit řídicí panel** vyberte **skupinu zařízení**.
-1. Vyberte jedno nebo více zařízení v rozevíracím seznamu **zařízení** , která chcete zobrazit na dlaždici. Nyní se zobrazí dostupná telemetrie, vlastnosti a příkazy ze zařízení.
-1. V části telemetrie vyberte **teplotu** a pak vyberte **Přidat dlaždici**. Dlaždice se teď zobrazuje na řídicím panelu, kde můžete změnit vizualizaci, změnit velikost dlaždice a nakonfigurovat ji:
+1. Vyberte **skupinu zařízení** a potom zvolte zařízení v rozevíracím seznamu **zařízení** , která chcete zobrazit na dlaždici. Nyní se zobrazí dostupná telemetrie, vlastnosti a příkazy ze zařízení.
+
+1. V případě potřeby můžete použít rozevírací seznam k výběru hodnoty telemetrie, která se má zobrazit na dlaždici. Další položky můžete do dlaždice přidat tak, že vyberete **+ telemetrie** , **+ vlastnost** nebo **+ cloudovou vlastnost**.
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Přidání dlaždice telemetrie na teplotu na řídicí panel":::
 
-Po dokončení přidávání a přizpůsobení dlaždic na řídicím panelu vyberte **Uložit**.
+Po výběru všech hodnot, které mají být na dlaždici zobrazeny, klikněte na tlačítko **Přidat dlaždici.** Dlaždice se nyní zobrazí na řídicím panelu, kde můžete změnit vizualizaci, změnit její velikost, přesunout ji a nakonfigurovat ji.
+
+Až dokončíte přidávání a přizpůsobování dlaždic na řídicím panelu, vyberte **Uložit** a uložte změny na řídicí panel, který vás převezme z režimu úprav.
 
 ## <a name="customize-tiles"></a>Přizpůsobení dlaždic
 
-K přizpůsobení dlaždice na řídicím panelu musí být řídicí panel v režimu úprav. Dostupné možnosti vlastního nastavení závisí na [typu dlaždice](#tile-types):
+Chcete-li upravit dlaždici, musíte být v režimu úprav.  Dostupné možnosti vlastního nastavení závisí na [typu dlaždice](#tile-types):
 
-* Ikona pravítka na dlaždici umožňuje změnit vizualizaci. Mezi vizualizace patří spojnicové grafy, poslední známé hodnoty a Heat mapy.
+* Ikona pravítka na dlaždici umožňuje změnit vizualizaci. Mezi vizualizace patří spojnicové grafy, pruhové grafy, výsečové grafy, poslední známé hodnoty, klíčové ukazatele výkonu (neboli klíčové ukazatele výkonu), Heat mapy a mapy.
 
 * Čtvercová ikona umožňuje změnit velikost dlaždice.
 
 * Ikona ozubeného kolečka umožňuje nakonfigurovat vizualizaci. Například pro vizualizaci spojnicového grafu můžete zvolit zobrazení legendy a osy a zvolit časový rozsah pro vykreslení.
+
 
 ## <a name="tile-types"></a>Typy dlaždic
 
@@ -92,10 +94,15 @@ Pro číselný **klíčový ukazatel výkonu** , **poslední známou hodnotu** a
 Přidejte pravidla podmíněného formátování:
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Snímek obrazovky zobrazující pravidla podmíněného formátování pro průměrný tok Existují tři pravidla – méně než 20 je zelených, méně než 50 je žluté a vše nad 50 je červené.":::
-
+   
 Následující snímek obrazovky ukazuje efekt pravidla podmíněného formátování:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Snímek obrazovky znázorňující žlutou barvu pozadí na dlaždici Průměrná voda Flow Číslo dlaždice je 40,84.":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Snímek obrazovky zobrazující červenou barvu pozadí na dlaždici Průměrná voda Flow Číslo dlaždice je 50,54.":::
+
+### <a name="tile-formatting"></a>formátování "dlaždice"
+Tato funkce, která je dostupná v dlaždicích klíčového ukazatele výkonu, LKV a vlastností, umožňuje uživatelům upravovat velikost písma, zvolit desítkovou přesnost, zkrátit číselné hodnoty (například Format 1 700 jako 1.7 K) nebo hodnoty řetězce ve svých dlaždicích.
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/tile-format.png" alt-text="Formát dlaždic":::
 
 ## <a name="next-steps"></a>Další kroky
 

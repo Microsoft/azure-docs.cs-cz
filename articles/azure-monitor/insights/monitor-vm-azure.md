@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84db7f58c292cf0a9d01cf90da4b847691f601fb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029457"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491626"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Monitorování virtuálních počítačů Azure pomocí Azure Monitor
 Tento článek popisuje, jak pomocí Azure Monitor shromažďovat a analyzovat data monitorování z virtuálních počítačů Azure a udržovat jejich stav. Virtuální počítače je možné monitorovat z hlediska dostupnosti a výkonu pomocí Azure Monitor jako u jakéhokoli [jiného prostředku Azure](monitor-azure-resource.md), ale jsou jedinečné od jiných prostředků, protože potřebujete také monitorovat hostovaný operační systém a systémy a úlohy, které jsou v něm spuštěné. 
@@ -82,7 +82,7 @@ Povolte Azure Monitor pro virtuální počítače z možnosti **Insights** v nab
 ### <a name="configure-log-analytics-workspace"></a>Konfigurace pracovního prostoru Log Analytics
 Agent Log Analytics, který Azure Monitor pro virtuální počítače používá, odesílá data do [pracovního prostoru Log Analytics](../platform/data-platform-logs.md). Konfigurací pracovního prostoru Log Analytics můžete povolit shromažďování dalších údajů o výkonu, událostí a dalších dat monitorování od agenta. Musí se nakonfigurovat jenom jednou, protože každý agent, který se připojuje k pracovnímu prostoru, automaticky stáhne konfiguraci a hned začne shromažďovat definovaná data. 
 
-Ke konfiguraci pracovního prostoru můžete přistupovat přímo z Azure Monitor pro virtuální počítače tím **, že v části Začínáme**vyberete **Konfigurace pracovního prostoru** . Kliknutím na název pracovního prostoru otevřete jeho nabídku.
+Ke konfiguraci pracovního prostoru můžete přistupovat přímo z Azure Monitor pro virtuální počítače tím **, že v části Začínáme** vyberete **Konfigurace pracovního prostoru** . Kliknutím na název pracovního prostoru otevřete jeho nabídku.
 
 ![Konfigurace pracovního prostoru](media/monitor-vm-azure/workspace-configuration.png)
 
@@ -139,7 +139,7 @@ Jakmile nakonfigurujete shromažďování dat monitorování pro virtuální po�
 | Metriky | Otevřete [Průzkumníka metrik](../platform/metrics-getting-started.md) s oborem nastaveným na aktuální virtuální počítač. |
 | Nastavení diagnostiky | Povolí a nakonfiguruje [diagnostické rozšíření](../platform/diagnostics-extension-overview.md) pro aktuální virtuální počítač. |
 | Doporučení Advisoru | Doporučení pro aktuální virtuální počítač z [Azure Advisor](../../advisor/index.yml). |
-| Protokoly | Otevřete [Log Analytics](../log-query/log-query-overview.md#what-is-log-analytics) s [oborem](../log-query/scope.md) nastaveným na aktuální virtuální počítač. |
+| Protokoly | Otevřete [Log Analytics](../log-query/log-analytics-overview.md) s [oborem](../log-query/scope.md) nastaveným na aktuální virtuální počítač. |
 | Monitorování připojení | Otevřete [monitorování připojení Network Watcher](../../network-watcher/connection-monitor-preview.md) pro monitorování připojení mezi aktuálním virtuálním počítačem a dalšími virtuálními počítači. |
 
 
@@ -148,7 +148,7 @@ Metriky pro virtuální počítače můžete analyzovat otevřením **metrik** z
 
 Virtuální počítače používají tři obory názvů pro metriky:
 
-| Obor názvů | Description | Požadavek |
+| Obor názvů | Popis | Požadavek |
 |:---|:---|:---|
 | Hostitel virtuálního počítače | Metriky hostitele se automaticky shromáždily pro všechny virtuální počítače Azure. Podrobný seznam metrik v [Microsoft. COMPUTE/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Shromažďováno automaticky bez nutnosti konfigurace. |
 | Host (klasický) | Omezená sada údajů o výkonu hostovaného operačního systému a aplikace. K dispozici v Průzkumníkovi metrik, ale ne jiné funkce Azure Monitor, jako jsou například výstrahy metriky.  | Bylo nainstalováno [diagnostické rozšíření](../platform/diagnostics-extension-overview.md) . Data se čtou z Azure Storage.  |
@@ -170,7 +170,7 @@ Azure Monitor pro virtuální počítače umožňuje kolekci předem určené sa
 
 
 > [!NOTE]
-> Údaje o výkonu shromážděné agentem Log Analytics zapisuje do tabulky *perf* , zatímco Azure monitor pro virtuální počítače se shromáždí do tabulky *InsightsMetrics* . Jedná se o stejná data, ale tabulky mají jinou strukturu. Pokud máte dotazy na základě *výkonu*, bude nutné je přepsat, aby používaly *InsightsMetrics*.
+> Údaje o výkonu shromážděné agentem Log Analytics zapisuje do tabulky *perf* , zatímco Azure monitor pro virtuální počítače se shromáždí do tabulky *InsightsMetrics* . Jedná se o stejná data, ale tabulky mají jinou strukturu. Pokud máte dotazy na základě *výkonu* , bude nutné je přepsat, aby používaly *InsightsMetrics*.
 
 
 ## <a name="alerts"></a>Výstrahy

@@ -4,21 +4,21 @@ description: Podrobný průvodce a publikování kontrolních seznamů pro publi
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 68b11c672d362e7af7dfc01e2679d035d9e1e4c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b500a87613dee094c63e71fc76fb751d72aa049
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484812"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491150"
 ---
 # <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>Nabídka Průvodce publikováním pro Microsoft 365, Dynamics 365, Power Apps a Power BI
 
 Microsoft AppSource zahrnují nabídky, které sestavují nebo šíří Microsoft 365, Dynamics 365, Power Apps a Power BI. Každý z těchto produktů má konkrétní dokumentaci, která vás provede procesem publikování. 
 
-AppSource má nabídky k dispozici, seznam a zkušební verze *s možnostmi výpisu,* *kontaktujte mě*a vyzkoušejte si *ji*.
+AppSource má nabídky k dispozici, seznam a zkušební verze *s možnostmi výpisu,* *kontaktujte mě* a vyzkoušejte si *ji*.
 
 ## <a name="product-specific-guides"></a>Příručky pro konkrétní produkt
 

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 551f0065f1547e94d93993a38795234f455b9eef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b20391c4d856a5c52b6017ae892ec0b86873dbca
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044392"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491881"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 pomocí spravovaných identit
 
@@ -34,7 +34,7 @@ Tento článek ukazuje tři způsoby, jak povolit spravovanou identitu pro úloh
 
    ![ID instančního Stream Analytics služby](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
  
-   Instanční objekt má stejný název jako Stream Analytics úloha. Pokud je název úlohy například **MyASAJob**, název vytvořeného objektu služby je také **MyASAJob**.
+   Instanční objekt má stejný název jako Stream Analytics úloha. Pokud je název úlohy například **MyASAJob** , název vytvořeného objektu služby je také **MyASAJob**.
 
 3. V okně Vlastnosti výstupu jímky výstupního ADLS Gen1 klikněte na rozevírací seznam režim ověřování a vyberte * * spravovaná identita * *.
 
@@ -54,7 +54,7 @@ Tento článek ukazuje tři způsoby, jak povolit spravovanou identitu pro úloh
 
    ![Vybrat hlavní název služby](./media/stream-analytics-managed-identities-adls/stream-analytics-service-principal-name.png)
  
-8. V podokně **oprávnění** Ověřte oprávnění **zapisovat** a **Spustit** a přiřaďte je k **této složce a všem podřízeným**položkám. Pak klikněte na **OK**.
+8. V podokně **oprávnění** Ověřte oprávnění **zapisovat** a **Spustit** a přiřaďte je k **této složce a všem podřízeným** položkám. Pak klikněte na **OK**.
 
    ![Vyberte oprávnění zapisovat a provést.](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
@@ -175,12 +175,16 @@ Tento článek ukazuje tři způsoby, jak povolit spravovanou identitu pro úloh
 
    Další informace o výše uvedeném příkazu PowerShellu najdete v dokumentaci k rutině [set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) .
 
+## <a name="remove-managed-identity"></a>Odebrat spravovanou identitu
+
+Spravovaná identita vytvořená pro Stream Analytics úlohu se odstraní jenom v případě, že se úloha odstraní. Neexistuje způsob, jak odstranit spravovanou identitu, aniž byste úlohu odstranili. Pokud už nechcete používat spravovanou identitu, můžete pro výstup změnit metodu ověřování. Spravovaná identita bude i nadále existovat, dokud se úloha neodstraní, a použije se, pokud se rozhodnete znovu použít spravované ověřování identity.
+
 ## <a name="limitations"></a>Omezení
 Tato funkce nepodporuje následující:
 
-1. **Přístup s více klienty**: instanční objekt vytvořený pro danou Stream Analytics úlohu se bude nacházet v klientovi Azure Active Directory, na kterém byla úloha vytvořena, a nelze ho použít pro prostředek, který se nachází v jiném Azure Active Directory tenantovi. Proto můžete použít jenom MSI na ADLSch prostředcích 1. generace, které jsou v rámci stejného Azure Active Directory tenanta jako vaše úloha Azure Stream Analytics. 
+1. **Přístup s více klienty** : instanční objekt vytvořený pro danou Stream Analytics úlohu se bude nacházet v klientovi Azure Active Directory, na kterém byla úloha vytvořena, a nelze ho použít pro prostředek, který se nachází v jiném Azure Active Directory tenantovi. Proto můžete použít jenom MSI na ADLSch prostředcích 1. generace, které jsou v rámci stejného Azure Active Directory tenanta jako vaše úloha Azure Stream Analytics. 
 
-2. **[Identita přiřazená uživatelem](../active-directory/managed-identities-azure-resources/overview.md)**: není podporována. To znamená, že uživatel nemůže zadat vlastní instanční objekt, který bude používat jejich Stream Analytics úlohy. Instanční objekt je generovaný Azure Stream Analytics.
+2. **[Identita přiřazená uživatelem](../active-directory/managed-identities-azure-resources/overview.md)** : není podporována. To znamená, že uživatel nemůže zadat vlastní instanční objekt, který bude používat jejich Stream Analytics úlohy. Instanční objekt je generovaný Azure Stream Analytics.
 
 ## <a name="next-steps"></a>Další kroky
 

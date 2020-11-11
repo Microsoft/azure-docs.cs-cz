@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 524b34c48146dc9e6102ed8d20ff8d1076706ba7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8e08c4c34495b58c105560dba9d818be9ebf5e34
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444958"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490963"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testování úlohy Azure Stream Analytics na portálu
 
@@ -101,8 +101,8 @@ Místo používání živých dat můžete použít ukázková data z místního
 
 1.  Časové zásady se v testování portálu nepodporují:
 
-   * Mimo pořadí: budou objednány všechny příchozí události.
-   * Pozdní doručení: nebude k dispozici pozdní událost přijetí, protože Stream Analytics může použít pouze existující data pro testování.
+    * Mimo pořadí: budou objednány všechny příchozí události.
+    * Pozdní doručení: nebude k dispozici pozdní událost přijetí, protože Stream Analytics může použít pouze existující data pro testování.
    
 2.  Jazyk C# UDF není podporován.
 
@@ -112,6 +112,7 @@ Místo používání živých dat můžete použít ukázková data z místního
 
 5.  Strojové učení se nepodporuje.
 
+6. Rozhraní API pro ukázková data se omezuje po pěti žádostech v intervalu 15 minut. Po skončení období od 15 minut můžete provádět další požadavky na ukázková data. Toto omezení se použije na úrovni předplatného.
 
 ## <a name="troubleshooting"></a>Odstraňování potíží
 

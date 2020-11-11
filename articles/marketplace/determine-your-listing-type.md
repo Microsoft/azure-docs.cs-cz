@@ -4,15 +4,15 @@ description: Tento článek popisuje kritéria způsobilosti a požadavky pro pu
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 0b4941d326359a51ff6a75385a74a8bcdabfa075
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 17b53d656d0344e4178b3034a972e26d6aa0bc15
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128993"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492102"
 ---
 # <a name="determine-your-publishing-option"></a>Určení možnosti publikování
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte:
 
 V následující tabulce jsou uvedeny možnosti publikování pro typy nabídek v Microsoft AppSource a Azure Marketplace.
 
-|   | **Seznam (kontakt)**  | **Seznam (zkušební verze)**  | Zadejte možnost pro **bezplatnou** SKU. | **BYOL** | **Transakce**|
+|   | **Seznam (kontakt)**  | **Seznam (zkušební verze)**  | **Free** | **BYOL** | **Transakce**|
 | :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
 | **Virtuální počítač** |  |  |  | Azure Marketplace |  Azure Marketplace |
 | **Aplikace Azure (pro více virtuálních počítačů)** |  |  | Azure Marketplace | Azure Marketplace | Azure Marketplace  |
@@ -54,9 +54,9 @@ Možnosti výpisu, které jsou k dispozici, nabízejí časově rozlišenou zák
 | **Možnost publikování**    | **Popis**  |
 | :------------------- | :-------------------|
 | **Seznam** | Jednoduchý seznam vaší aplikace nebo služby, který umožňuje uživateli na webu Marketplace požádat o připojení k zákazníkovi prostřednictvím možností pro seznam **kontaktů** . |
-| **Zkušební verze** | Pomocí komerčního tržiště Vylepšete možnosti zjistitelnosti a automatizujte zřizování zkušebního prostředí vašeho řešení. umožníte tak potenciálním uživatelům používat vaše SaaS, IaaS nebo prostředí v aplikaci od Microsoftu zdarma po určitou dobu, než se nakupují. Možnosti výpisu, které se používají pro možnost publikování zkušební verze, jsou buď **bezplatné zkušební verze** , nebo **testovací jednotka** . |
-| **BYOL** | Pomocí komerčního tržiště Vylepšete zjistitelnost a automatizujte zřizování vašich řešení a dokončete finanční transakci samostatně. Typy nabídek BYOL jsou ideální pro migrace z místního prostředí do cloudu. Možnost výpisu se **teď získá** .
-| **Transakce** | Nabídky Transact jsou prodávány prostřednictvím komerčního tržiště. Společnost Microsoft zodpovídá za fakturaci a kolekce. Možnost výpisu se **teď získá** .|
+| **Zkušební verze** | Pomocí komerčního tržiště Vylepšete možnosti zjistitelnosti a automatizujte zřizování zkušebního prostředí vašeho řešení. umožníte tak potenciálním uživatelům používat vaše SaaS, IaaS nebo prostředí v aplikaci od Microsoftu zdarma po určitou dobu, než se nakupují. Možnosti výpisu, které se používají pro možnost publikování zkušební verze, jsou buď **bezplatné zkušební verze** , nebo **testovací jednotka**. |
+| **BYOL** | Pomocí komerčního tržiště Vylepšete zjistitelnost a automatizujte zřizování vašich řešení a dokončete finanční transakci samostatně. Typy nabídek BYOL jsou ideální pro migrace z místního prostředí do cloudu. Možnost výpisu se **teď získá**.
+| **Transakce** | Nabídky Transact jsou prodávány prostřednictvím komerčního tržiště. Společnost Microsoft zodpovídá za fakturaci a kolekce. Možnost výpisu se **teď získá**.|
 
 > [!Note]
 > Při použití možnosti publikování v transakčním systému je důležité pochopit důležité informace o cenách, fakturaci, fakturaci a výběru před výběrem typu nabídky a vytvořením nabídky. Pokud se chcete dozvědět víc, přečtěte si článek [Možnosti Transact](./marketplace-commercial-transaction-capabilities-and-considerations.md)-The pro obchod na webu.

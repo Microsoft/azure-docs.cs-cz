@@ -4,15 +4,15 @@ description: Získejte odpovědi na běžné otázky týkající se Azure Market
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: a5c5d7ae4dbf1126d171c78bbd4e353f11402260
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e72acb532a33d0b3751bb8ad5051b1a3df4d7514
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126715"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491473"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -58,10 +58,10 @@ Pokud se chcete přihlásit k komerčnímu vydavateli na webu Marketplace, jdět
 
 Způsoby použití vaší komerční nabídky na webu Marketplace závisí na tom, jak vytváříte nabídky.
 
-- Pro řešení, která poskytujete automaticky, ať už jsou placené, vlastní licence (BYOL) nebo bezplatné, se zákazníkům doporučuje *hned ho získat* .
-- Nabídky, které podporují testovací jednotku (demo), požadují od zákazníka *testování jednotky* . 
+- Pro řešení, která poskytujete automaticky, ať už jsou placené, vlastní licence (BYOL) nebo bezplatné, se zákazníkům doporučuje *hned ho získat*.
+- Nabídky, které podporují testovací jednotku (demo), požadují od zákazníka *testování jednotky*. 
 - Software jako služba (SaaS) nabízí *bezplatnou zkušební verzi* , která poskytuje zkušební verzi mimo komerční web Marketplace.
-- Jednoduché výpisy umožňují zákazníkovi požádat o *kontaktování* .
+- Jednoduché výpisy umožňují zákazníkovi požádat o *kontaktování*.
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Návody vytvořit nabídky pro komerční tržiště?
 

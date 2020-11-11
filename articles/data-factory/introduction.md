@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 1840bf93cbca73e593465c999b416e7cbd7af201
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 730141d22b318d79c8c2b7d995b98ee1c311aaf5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89536308"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491269"
 ---
 # <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
 
@@ -22,7 +22,7 @@ ms.locfileid: "89536308"
 
 Ve světě velkých objemů dat jsou nezpracovaná, neuspořádaná data často uložená v relačních, nerelačních a jiných systémech úložiště. Nezpracovaná data sama o sobě ale nemají potřebný kontext ani význam, aby mohla analytikům, datovým vědcům nebo osobám rozhodujícím v rámci podniků poskytnout smysluplný přehled. 
 
-Velké objemy dat vyžadují službu, která umožňuje orchestraci a operacionalizaci procesů, aby se tato obrovská úložiště nezpracovaných dat proměnila v obchodní informace, podle kterých se lze rozhodovat. Azure Data Factory je spravovaná cloudová služba vytvořená pro tyto komplexní projekty hybridní extrakce, transformace a načítání (ETL), extrakce, načítání a transformace (ELT) a integrace dat.
+Pro velké objemy dat je potřeba služba, která může orchestrovat a zprovoznění procesy pro upřesnění těchto mimořádných obchodů s nezpracovanými daty na základě užitečných obchodních přehledů. Azure Data Factory je spravovaná cloudová služba vytvořená pro tyto komplexní projekty hybridní extrakce, transformace a načítání (ETL), extrakce, načítání a transformace (ELT) a integrace dat.
 
 Představte si například herní společnost, která shromažďuje petabajty herních protokolů vytvářených hrami v cloudu. Společnost chce tyto protokoly analyzovat, aby získala informace o preferencích zákazníků, demografických ukazatelích a chování uživatelů. Zároveň chce identifikovat příležitosti křížového a následného prodeje, vyvíjet nové, zajímavé funkce, podpořit obchodní růst a zlepšovat zkušenosti zákazníků.
 
@@ -93,7 +93,7 @@ Propojené služby slouží ve službě Data Factory ke dvěma účelům:
 
 - Představuje **úložiště dat** , které zahrnuje, ale není omezené na, SQL Server databázi, databázi Oracle, sdílenou složku nebo účet úložiště objektů BLOB v Azure. Seznam podporovaných úložišť dat najdete v článku [Aktivita kopírování](copy-activity-overview.md).
 
-- Představují **výpočetní prostředek**, který může hostovat provádění aktivity. Například aktivita HDInsightHive se spouští na clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v článku o [transformaci dat](transform-data.md).
+- Představují **výpočetní prostředek** , který může hostovat provádění aktivity. Například aktivita HDInsightHive se spouští na clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v článku o [transformaci dat](transform-data.md).
 
 ### <a name="triggers"></a>Aktivační události
 Aktivační události jsou jednotkou zpracování, která určuje, kdy se má zahájit provádění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí.

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 9dfdbbd982503acc063ff88c74dfccde8677eaac
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 4d21bfa69022cbebdcbf80c3bee4aec76bf99c53
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380228"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491116"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Řešení potíží s výkonem souborů Azure
 
@@ -111,7 +111,7 @@ Nedostatečná podpora pro zapůjčení adresáře.
 
 - Pokud je to možné, vyhněte se nadměrnému otevírání a zavírání popisovačům ve stejném adresáři v krátké době.
 - U virtuálních počítačů se systémem Linux zvyšte časový limit mezipaměti položky adresáře zadáním **actimeo = \<sec>** as a Mount. Ve výchozím nastavení je to jedna sekunda, takže může pomáhat větší hodnota, například tři nebo pět.
-- Pro virtuální počítače se systémem Linux upgradujte jádro na 4,20 nebo vyšší.
+- Pro virtuální počítače s RHEL/CentOS upgradujte systém na RHEL/CentOS 8,2. Pro jiné virtuální počítače se systémem Linux upgradujte jádro na 5,0 nebo vyšší.
 
 ## <a name="low-iops-on-centosrhel"></a>Nízká IOPS v CentOS/RHEL
 

@@ -1,6 +1,6 @@
 ---
-title: Data zpracovaná pomocí fondu SQL bez serveru
-description: Tento dokument popisuje, jak se počítá množství zpracovaná data při dotazování dat ve službě Data Lake.
+title: Správa nákladů pro fond SQL bez serveru
+description: Tento dokument popisuje, jak spravovat náklady na SQL fond bez serveru a jak se zpracovávají data při dotazování na data v úložišti Azure.
 services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,14 +9,22 @@ ms.subservice: sql
 ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a108e5fdd30c21cdb7771e3f683dad22773653a4
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 8a26f8ced5e91810f8cadff0a27796dc817e6517
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381197"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491564"
 ---
-# <a name="data-processed-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Data zpracovaná pomocí fondu SQL bez serveru ve službě Azure synapse Analytics
+# <a name="cost-management-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Správa nákladů pro fond SQL bez serveru ve službě Azure synapse Analytics
+
+Tento článek vysvětluje, jak můžete odhadnout a spravovat náklady na SQL fond bez serveru ve službě Azure synapse Analytics:
+- Odhad množství zpracovaných dat před vydáním dotazu
+- Použití funkce řízení nákladů k nastavení rozpočtu
+
+Je důležité pochopit, že náklady na SQL fond bez serveru ve službě Azure synapse Analytics jsou jenom částí měsíčních nákladů na faktuře Azure. Pokud používáte další služby Azure, účtuje se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně služeb třetích stran. Tento článek vysvětluje, jak naplánovat a spravovat náklady pro fond SQL bez serveru ve službě Azure synapse Analytics.
+
+## <a name="data-processed"></a>Zpracovaná data
 
 *Zpracovaná data* jsou množství dat, která systém dočasně ukládá během spuštění dotazu. Zpracovaná data se skládají z následujících množství:
 
@@ -84,6 +92,53 @@ Tento dotaz přečte všechny sloupce a převede všechna data v nekomprimované
 Tento dotaz čte celé soubory. Celková velikost souborů v úložišti pro tuto tabulku je 100 KB. Uzly zpracovávají fragmenty této tabulky a součet pro jednotlivé fragmenty se přenáší mezi uzly. Konečný součet se převede do vašeho koncového bodu. 
 
 Tento dotaz zpracovává mírně více než 100 KB dat. Objem dat zpracovaných pro tento dotaz se zaokrouhluje na 10 MB, jak je uvedeno v části [Zaokrouhlení](#rounding) tohoto článku.
+
+## <a name="cost-control"></a>Řízení nákladů
+
+Funkce řízení nákladů v rámci fondu SQL bez serveru umožňuje nastavit rozpočet pro množství zpracovaných dat. Můžete nastavit rozpočet v TB dat zpracovaných na den, týden a měsíc. Současně můžete mít jeden nebo více sad rozpočtů. Pokud chcete nakonfigurovat řízení nákladů pro fond SQL bez serveru, můžete použít synapse Studio nebo T-SQL.
+
+## <a name="configure-cost-control-for-serverless-sql-pool-in-synapse-studio"></a>Konfigurace řízení nákladů pro fond SQL bez serveru v synapse studiu
+ 
+Pokud chcete nakonfigurovat řízení nákladů pro fond SQL bez serveru v nástroji synapse Studio, přejděte na možnost spravovat položku v nabídce na levé straně, než v části fondy analýz vyberte položku fond SQL. Při přechodu na fond SQL bez serveru si všimněte ikony pro řízení nákladů – klikněte na tuto ikonu.
+
+![Navigace řízení nákladů](./media/data-processed/cost-control-menu.png)
+
+Po kliknutí na ikonu řízení nákladů se zobrazí postranní panel:
+
+![Konfigurace řízení nákladů](./media/data-processed/cost-control-sidebar.png)
+
+Chcete-li nastavit jeden nebo více rozpočtů, nejprve klikněte na tlačítko Povolit přepínač pro rozpočet, který chcete nastavit, než do textového pole zadejte celočíselnou hodnotu. Jednotka pro hodnotu je TBs. Jakmile nakonfigurujete rozpočty, které jste chtěli, klikněte na tlačítko použít v dolní části bočního panelu. To znamená, že se teď nastaví rozpočet.
+
+## <a name="configure-cost-control-for-serverless-sql-pool-in-t-sql"></a>Konfigurace řízení nákladů pro fond SQL bez serveru v T-SQL
+
+Pokud chcete nakonfigurovat řízení nákladů pro fond SQL bez serveru v T-SQL, musíte spustit jeden nebo několik následujících uložených procedur.
+
+```sql
+sp_set_data_processed_limit
+    @type = N'daily',
+    @limit_tb = 1
+
+sp_set_data_processed_limit
+    @type= N'weekly',
+    @limit_tb = 2
+
+sp_set_data_processed_limit
+    @type= N'monthly',
+    @limit_tb = 3334
+```
+
+Pokud chcete zobrazit aktuální konfiguraci, spusťte následující příkaz T-SQL:
+
+```sql
+SELECT * FROM sys.configurations
+WHERE name like 'Data processed %';
+```
+
+Chcete-li zjistit, kolik dat bylo zpracováno během aktuálního dne, týdne nebo měsíce, spusťte následující příkaz T-SQL:
+
+```sql
+SELECT * FROM sys.dm_external_data_processed
+```
 
 ## <a name="next-steps"></a>Další kroky
 

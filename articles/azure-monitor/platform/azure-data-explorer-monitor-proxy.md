@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8a503a5456fc28bd1b3ebb69c784fc59b3c6e7df
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9b434c426264fcfee0dfe663a7d1b21a354badec
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049852"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491252"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Dotazování dat v Azure Monitor pomocí Azure Průzkumník dat (Preview)
 Cluster Azure Průzkumník dat proxy umožňuje provádět dotazy na více produktů mezi službou Azure Průzkumník dat, Log Analyticsmi pracovními prostory a klasickými Application Insights aplikacemi v Azure Monitor. Můžete namapovat Log Analytics pracovní prostory v Azure Monitor nebo v klasických Application Insights aplikacích jako proxy clustery. Pak můžete zadat dotaz na proxy cluster pomocí nástrojů Azure Průzkumník dat a odkazovat na něj v dotazu mezi clustery. V tomto článku se dozvíte, jak se připojit ke clusteru proxy, jak přidat proxy cluster do Azure Průzkumník dat webové uživatelské rozhraní a spouštět dotazy v Log Analyticsch pracovních prostorech nebo klasických Application Insights aplikacích z Azure Průzkumník dat.
@@ -28,7 +28,7 @@ Následující diagram znázorňuje tok proxy serveru služby Azure Průzkumník
 ## <a name="connect-to-the-proxy"></a>Připojit k proxy
 Pokud chcete připojit Log Analytics pracovní prostor nebo klasickou Application Insightsovou aplikaci, otevřete[webové uživatelské rozhraní služby Azure Průzkumník dat](https://dataexplorer.azure.com/clusters). Než se připojíte ke svému Log Analytics nebo Application Insights clusteru, ověřte, že je v levé nabídce zobrazený nativní cluster Azure Průzkumník dat (například cluster *help* ).
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-data-explorer-web-ui-help-cluster.png" alt-text="Tok proxy serveru Azure Data Explorer.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-data-explorer-web-ui-help-cluster.png" alt-text="Nativní cluster Azure Průzkumník dat.":::
 
 Klikněte na **Přidat cluster** a pak přidejte adresu URL Log Analytics nebo Application Insights clusteru v jednom z následujících formátů. 
     
@@ -37,14 +37,14 @@ Klikněte na **Přidat cluster** a pak přidejte adresu URL Log Analytics nebo A
 
 Klikněte na tlačítko **Přidat** a vytvořte připojení.
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-add-cluster.png" alt-text="Tok proxy serveru Azure Data Explorer.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-add-cluster.png" alt-text="Přidejte cluster.":::
  
 > [!NOTE]
 > Pokud přidáte připojení k více než jednomu proxy serveru, zadejte jiný název. Jinak budou mít všichni stejný název v levém podokně.
 
 Po navázání připojení se váš Log Analytics nebo cluster Application Insights zobrazí v levém podokně s vaším nativním clusterem služby Azure Průzkumník dat. 
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-azure-data-explorer-clusters.png" alt-text="Tok proxy serveru Azure Data Explorer.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-azure-data-explorer-clusters.png" alt-text="Clustery Log Analytics a Azure Průzkumník dat.":::
  
 > [!NOTE]
 > Počet Azure Monitor pracovních prostorů, které se dají mapovat, je omezený na 100.
@@ -70,7 +70,7 @@ Spouštění dotazů v clusteru Log Analytics nebo Application Insights. Ověřt
 Perf | take 10 // Demonstrate query through the proxy on the Log Analaytics workspace
 ```
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-query-la.png" alt-text="Tok proxy serveru Azure Data Explorer.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-query-la.png" alt-text="Dotaz Log Analytics pracovní prostor.":::
 
 ### <a name="cross-query-of-your-log-analytics-or-application-insights-proxy-cluster-and-the-azure-data-explorer-native-cluster"></a>Dotazování Log Analytics nebo proxy clusteru Application Insights a nativního clusteru Azure Průzkumník dat
 
@@ -85,7 +85,7 @@ union StormEvents, cluster('https://ade.loganalytics.io/subscriptions/<subscript
 let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>';
 union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
-Použití [ `join` operátoru](/azure/data-explorer/kusto/query/joinoperator?pivots=azuredataexplorer)místo sjednocení může vyžadovat [nápovědu](/azure/data-explorer/kusto/query/joinoperator?pivots=azuredataexplorer#join-hints) pro jeho spuštění v nativním clusteru Azure Průzkumník dat (a ne na proxy serveru). 
+Použití [ `join` operátoru](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor)místo sjednocení může vyžadovat [nápovědu](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor#join-hints) pro jeho spuštění v nativním clusteru Azure Průzkumník dat (a ne na proxy serveru). 
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Připojení dat z clusteru Azure Průzkumník dat v jednom tenantovi s prostředkem Azure Monitor v jiném
 
@@ -113,7 +113,7 @@ Proxy podporuje následující příkazy:
 
 Následující obrázek znázorňuje příklad dotazování tabulkové funkce z webového uživatelského rozhraní Azure Průzkumník dat. Chcete-li použít funkci, spusťte název v okně dotazu.
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-function-query.png" alt-text="Tok proxy serveru Azure Data Explorer.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-function-query.png" alt-text="Dotazování tabulkové funkce z Průzkumník dat webového uživatelského rozhraní Azure":::
  
 > [!NOTE]
 > Azure Monitor podporuje jenom tabulkové funkce, které nepodporují parametry.
@@ -124,7 +124,7 @@ Při volání Log Analytics nebo Application Insightsch clusterů jsou k dispozi
 
 |Popis syntaxe  |Application Insights  |Log Analytics  |
 |----------------|---------|---------|
-| Databáze v rámci clusteru, který obsahuje jenom definovaný prostředek v tomto předplatném (**doporučuje se pro dotazování mezi clustery**). |   cluster ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>` ) | cluster ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>` )     |
+| Databáze v rámci clusteru, který obsahuje jenom definovaný prostředek v tomto předplatném ( **doporučuje se pro dotazování mezi clustery** ). |   cluster ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>` ) | cluster ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>` )     |
 | Cluster, který obsahuje všechny aplikace a pracovní prostory v tomto předplatném    |     cluster ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>` )    |    cluster ( `https://ade.loganalytics.io/subscriptions/<subscription-id>` )     |
 |Cluster, který obsahuje všechny aplikace/pracovní prostory v rámci předplatného a jsou členy této skupiny prostředků    |   cluster ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>` )      |    cluster ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>` )      |
 |Cluster, který obsahuje jenom definovaný prostředek v tomto předplatném      |    cluster ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>` )    |  cluster ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>` )     |

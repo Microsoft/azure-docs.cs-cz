@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics výstup do Azure SQL Database
+title: Zvýšení výkonu propustnosti Azure SQL Database z Azure Stream Analytics
 description: Přečtěte si, jak vypisuje data SQL Azure z Azure Stream Analytics a dosahují vyšších sazeb propustnosti zápisu.
 author: chetanmsft
 ms.author: chetang
@@ -7,14 +7,14 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 362c16a87e5a24c35b3aa637171b6a3f77aa62a6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: a902cbc8256e249a608a5da8436a1145ddb0d565
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346328"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490929"
 ---
-# <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics výstup do Azure SQL Database
+# <a name="increase-throughput-performance-to-azure-sql-database-from-azure-stream-analytics"></a>Zvýšení výkonu propustnosti Azure SQL Database z Azure Stream Analytics
 
 Tento článek popisuje tipy, které vám pomůžou dosáhnout lepší propustnosti zápisu při načítání dat do Azure SQL Database pomocí Azure Stream Analytics.
 
@@ -52,6 +52,6 @@ Pokud je míra příchozích událostí nízká, může snadno vytvořit velikos
 
 K dalšímu takovému scénáři dochází při psaní do neclusterovaných indexů columnstore (NCCI), kde menší hromadné vložení může vytvořit příliš mnoho segmentů, což může způsobit selhání indexu. V takovém případě doporučujeme místo toho použít clusterovaný index columnstore.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V souhrnu se funkce děleného výstupu v Azure Stream Analytics pro výstup SQL zarovnala paralelnímu využití úlohy s dělenou tabulkou v SQL Azure by vám mělo poskytnout významné vylepšení propustnosti. Využití Azure Data Factory pro orchestraci přesunu dat z tabulky In-Memory do tabulek založených na disku může mít za způsob nárůstu propustnosti velikosti. Pokud je to proveditelné, vylepšení hustoty zpráv může být také významným faktorem při zvyšování celkové propustnosti.

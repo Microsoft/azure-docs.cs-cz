@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: cdddbce3e9eb0a5c933ace186607186265197dc4
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f8e0d49c2a35a1e97c79e6d4b8c867a4a8ab88b3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123502"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491518"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Pochopení Stream Analytics monitorování úloh a postup monitorování dotazů
 
@@ -43,7 +43,7 @@ Okno se zobrazí, jak je znázorněno na následujícím obrázku:
 | Události mimo pořadí    | Počet událostí, které byly přijaty mimo pořadí, které byly buď vyřazeny nebo předány upravenému časovému razítku, na základě zásad řazení událostí. To může být ovlivněno konfigurací nastavení okna mimo pořadí tolerance. |
 | Výstupní události          | Množství dat zaslaných úlohou Stream Analytics do cíle výstupu v rámci počtu událostí |
 | Běhové chyby         | Celkový počet chyb souvisejících se zpracováním dotazů (kromě chyb nalezených při ingestování událostí nebo výstupních výsledků) |
-| Využití SU%       | Využití jednotek streamování přiřazených k úloze na kartě škálování v rámci úlohy. Pokud by tento ukazatel dosáhl 80% nebo výše, je velmi pravděpodobnost, že zpracování událostí může být zpožděné nebo zastavené. |
+| Využití SU%       | Pokud je využití prostředků konzistentně více než 80%, prodleva meze roste a počet nevyřízených událostí roste, zvažte zvýšení počtu jednotek streamování. Vysoké využití indikuje, že úloha používá blízko maximálního počtu přidělených prostředků. |
 | Zpoždění vodoznaku       | Maximální prodleva vodoznaku napříč všemi oddíly všech výstupů v rámci úlohy. |
 
 Pomocí těchto metrik můžete [monitorovat výkon Stream Analytics úlohy](./stream-analytics-set-up-alerts.md#scenarios-to-monitor). 

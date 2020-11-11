@@ -4,15 +4,15 @@ description: Naučte se používat systém CRM Marketo ke správě potenciální
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: be1f21f927b01d66e19dc5e97b38e5c35e6664cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbd12481312d310add15bf3d41e21e9c416f1c39
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120258"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491071"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Použití Marketo ke správě potenciálních zákazníků z obchodu na webu Marketplace
 
@@ -60,7 +60,7 @@ Tento článek popisuje, jak nastavit systém Marketo pro CRM na zpracování po
     Další způsob, jak zjistit tyto hodnoty:
 
     - ID serveru najdete v adrese URL vaší instance Marketo, například `serverID.marketo.com` .
-    - Pořiďte si Munchkin ID vašeho předplatného tak **Admin**  >  , že v poli **ID účtu Munchkin** zobrazíte nabídku správce**Munchkin** , nebo z první části vaší REST API domény hostitele Marketo: `https://{Munchkin ID}.mktorest.com` .
+    - Pořiďte si Munchkin ID vašeho předplatného tak **Admin**  >  , že v poli **ID účtu Munchkin** zobrazíte nabídku správce **Munchkin** , nebo z první části vaší REST API domény hostitele Marketo: `https://{Munchkin ID}.mktorest.com` .
     - ID formuláře je ID formuláře pro vložení kódu, který jste vytvořili v kroku 7 ke směrování potenciálních zákazníků z webu Marketplace.
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Konfigurace nabídky pro odesílání zájemců do markety
@@ -79,12 +79,12 @@ Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši 
 
     ![Zvolit cíl zájemce](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 
-1. Zadejte **ID serveru**, **ID účtu Munchkin**a **ID formuláře**.
+1. Zadejte **ID serveru** , **ID účtu Munchkin** a **ID formuláře**.
 
     > [!NOTE]
     > Musíte dokončit konfiguraci zbytku nabídky a publikovat ji předtím, než budete moct získat zájemce pro tuto nabídku. 
 
-1. V části **kontaktní e-mail**zadejte e-mailové adresy pro lidi ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Více e-mailových adres můžete zadat tak, že je oddělíte středníkem.
+1. V části **kontaktní e-mail** zadejte e-mailové adresy pro lidi ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Více e-mailových adres můžete zadat tak, že je oddělíte středníkem.
 
 1. Vyberte **OK**.
 

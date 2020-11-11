@@ -15,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d476b1db645ed1f91b62fcf11464f7077a8fb3c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87077926"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491422"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení s Azure Notification Hubs: nejčastější dotazy
 
@@ -34,16 +34,16 @@ Azure Notification Hubs má dvě úrovně prostředků: centra a obory názvů. 
 
 Nejnovější informace o cenách najdete na stránce s [cenami Notification Hubs] . Notification Hubs se účtuje na úrovni oboru názvů. (Pro definici oboru názvů, přečtěte si téma "Co je struktura prostředků Notification Hubs?") Notification Hubs nabízí tři úrovně:
 
-* **Zdarma**: Tato úroveň je dobrým výchozím bodem pro zkoumání nabízených funkcí. Nedoporučuje se pro produkční aplikace. Získáte 500 zařízení a 1 000 000 nabízených oznámení na obor názvů za měsíc bez záruky smlouvy o úrovni služeb (SLA).
-* **Basic**: Tato vrstva (nebo úroveň Standard) se doporučuje pro menší produkční aplikace. Dostanete 200 000 zařízení a 10 000 000 nabízených oznámení na obor názvů za měsíc jako standardní hodnoty.
-* **Standard**: Tato úroveň se doporučuje pro střední až velké produkční aplikace. Dostanete 10 000 000 zařízení a 10 000 000 nabízených oznámení na obor názvů za měsíc jako standardní hodnoty. Obsahuje bohatou telemetrii (další údaje o nabízeném stavu push).
+* **Zdarma** : Tato úroveň je dobrým výchozím bodem pro zkoumání nabízených funkcí. Nedoporučuje se pro produkční aplikace. Získáte 500 zařízení a 1 000 000 nabízených oznámení na obor názvů za měsíc bez záruky smlouvy o úrovni služeb (SLA).
+* **Basic** : Tato vrstva (nebo úroveň Standard) se doporučuje pro menší produkční aplikace. Dostanete 200 000 zařízení a 10 000 000 nabízených oznámení na obor názvů za měsíc jako standardní hodnoty.
+* **Standard** : Tato úroveň se doporučuje pro střední až velké produkční aplikace. Dostanete 10 000 000 zařízení a 10 000 000 nabízených oznámení na obor názvů za měsíc jako standardní hodnoty. Obsahuje bohatou telemetrii (další údaje o nabízeném stavu push).
 
 Funkce úrovně Standard:
 
-* **Bohatá telemetrie**: pomocí Notification Hubs telemetrie zpráv můžete sledovat všechny žádosti o nabízené oznámení a systém oznámení platformy zpětnou vazbu pro ladění.
-* **Víceklientská architektura: můžete**pracovat s přihlašovacími údaji systém oznámení platformy na úrovni oboru názvů. Tato možnost umožňuje snadno rozdělit klienty do Center v rámci stejného oboru názvů.
-* **Naplánovaná nabízená**oznámení: můžete naplánovat, aby se oznámení odesílala kdykoli.
-* **Hromadné operace**: umožňuje registraci funkcí exportu/importu, jak je popsáno v dokumentu [Export/Import registrací] .
+* **Bohatá telemetrie** : pomocí Notification Hubs telemetrie zpráv můžete sledovat všechny žádosti o nabízené oznámení a systém oznámení platformy zpětnou vazbu pro ladění.
+* **Víceklientská architektura: můžete** pracovat s přihlašovacími údaji systém oznámení platformy na úrovni oboru názvů. Tato možnost umožňuje snadno rozdělit klienty do Center v rámci stejného oboru názvů.
+* **Naplánovaná nabízená** oznámení: můžete naplánovat, aby se oznámení odesílala kdykoli.
+* **Hromadné operace** : umožňuje registraci funkcí exportu/importu, jak je popsáno v dokumentu [Export/Import registrací] .
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Jaká je smlouva SLA pro Notification Hubs?
 
@@ -119,7 +119,7 @@ Vzhledem k povaze nabízených oznámení (jsou dodávány externím PNS specifi
 
 Při registraci mobilní aplikace portálu pro vývojáře platformy (například Apple nebo Google) se odesílají identifikátory aplikace a tokeny zabezpečení. Back-end aplikace poskytuje tyto tokeny PNS platformy, aby bylo možné odesílat nabízená oznámení do zařízení. Tokeny zabezpečení můžou být ve formě certifikátů (například Apple iOS nebo Windows Phone) nebo klíčů zabezpečení (například Google Android nebo Windows). Musí být nakonfigurovány v centrech oznámení. Konfigurace se obvykle provádí na úrovni centra oznámení, ale je možné ji také provést na úrovni oboru názvů ve scénáři s více klienty.
 
-#### <a name="namespaces"></a>Obory názvů
+#### <a name="namespaces"></a>Jmenné prostory
 
 Obory názvů lze použít pro seskupení nasazení. Můžou se také použít k reprezentaci všech Center oznámení pro všechny klienty stejné aplikace ve scénáři s více klienty.
 
@@ -159,15 +159,12 @@ Poskytujeme na našem konci pokrytí metadat pro zotavení po havárii (Notifica
 
 1. Vytvořte sekundární centrum oznámení v jiném datovém centru. Doporučujeme vytvořit jeden od začátku, abyste si ho převedli na událost zotavení po havárii, která může mít vliv na možnosti správy. Můžete ho také vytvořit v době události zotavení po havárii.
 
-2. Naplňte sekundární centrum oznámení pomocí registrací z primárního centra oznámení. Nedoporučujeme se pokoušet o údržbu registrací na obou rozbočovačích a udržovat je synchronizované, protože registrace přicházejí do. Tento postup nefunguje dobře, protože vyprší platnost registrací na straně PNS. Notification Hubs je vyčistí, protože obdrží zpětnou vazbu PNS o vypršení platnosti nebo neplatných registracích.  
+2. Používejte sekundární centrum oznámení v synchronizaci s primárním centrem oznámení pomocí jedné z následujících možností:
 
-Pro back-endy aplikací máme dvě doporučení:
+   * Použijte back-end aplikace, který současně vytvoří a aktualizuje instalace v obou centrech oznámení. Instalace umožňují zadat vlastní jedinečný identifikátor zařízení, což je vhodnější pro scénář replikace. Další informace najdete v tomto [ukázkovém kódu](https://github.com/Azure/azure-notificationhubs-dotnet/tree/main/Samples/RedundantHubSample).
+   * Použijte back-end aplikace, který získá standardní výpis registrací z primárního centra oznámení jako zálohu. Pak může provést hromadné vložení do sekundárního centra oznámení.
 
-* Použijte back-end aplikace, který na konci udržuje danou sadu registrací. Pak může provést hromadné vložení do sekundárního centra oznámení.
-* Použijte back-end aplikace, který získá standardní výpis registrací z primárního centra oznámení jako zálohu. Pak může provést hromadné vložení do sekundárního centra oznámení.
-
-> [!NOTE]
-> Registrace funkcí exportu/importu, které jsou dostupné na úrovni Standard, je popsaná v dokumentu [Export/Import registrací] .
+Sekundární centrum oznámení může skončit s prošlými instalacemi nebo registrací. Když se nahraje na popisovač s vypršenou platností, Notification Hubs automaticky vyčistí přidružený záznam instalace nebo registrace na základě odpovědi přijaté na serveru PNS. Chcete-li vyčistit záznamy s vypršenou platností ze sekundárního centra oznámení, přidejte vlastní logiku, která zpracovává zpětnou vazbu od každého odeslání. Pak vypršení platnosti instalace/registrace v sekundárním centru oznámení.
 
 Pokud nemáte back-end, aplikace při spuštění na cílových zařízeních provede novou registraci v sekundárním centru oznámení. Sekundární centrum oznámení bude mít zaregistrovaná všechna aktivní zařízení.
 
@@ -179,7 +176,7 @@ Azure Notification Hubs šifruje všechna neaktivní zákaznická data s výjimk
 
 ### <a name="is-there-audit-log-capability"></a>Je k dispozici možnost protokolu auditu?
 
-Ano. Všechny operace správy Notification Hubs aktualizují protokol aktivit Azure, ke kterému se v [Azure Portal]zveřejňuje. Protokol aktivit Azure nabízí přehledy o operacích provedených u prostředků ve vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy se mají u prostředků ve vašem předplatném provádět operace zápisu (PUT, POST, DELETE). Můžete také pochopit stav operací a dalších relevantních vlastností. Naopak. Protokol aktivit nezahrnuje operaci čtení (GET).
+Yes. Všechny operace správy Notification Hubs aktualizují protokol aktivit Azure, ke kterému se v [Azure Portal]zveřejňuje. Protokol aktivit Azure nabízí přehledy o operacích provedených u prostředků ve vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy se mají u prostředků ve vašem předplatném provádět operace zápisu (PUT, POST, DELETE). Můžete také pochopit stav operací a dalších relevantních vlastností. Naopak. Protokol aktivit nezahrnuje operaci čtení (GET).
 
 ## <a name="monitoring-and-troubleshooting"></a>Monitorování a řešení potíží
 
@@ -195,7 +192,7 @@ Můžete také programově přistupovat k metrikám. Další informace najdete v
 
 - [Načtěte metriky Azure monitor pomocí .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). V této ukázce se používá uživatelské jméno a heslo. Chcete-li použít certifikát, přetížením metody FromServicePrincipal poskytněte certifikát, jak je znázorněno v [tomto příkladu](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs). 
 - [Získání metrik a protokolů aktivit pro prostředek](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
-- [Návod k Azure Monitoring REST API](../azure-monitor/platform/rest-api-walkthrough.md)
+- [Průvodce rozhraním REST API pro monitorování Azure](../azure-monitor/platform/rest-api-walkthrough.md)
 
 > [!NOTE]
 > Úspěšná oznámení znamenají jednoduše, že nabízená oznámení byla doručena externímu PNS (například APNs pro iOS a macOS nebo FCM pro zařízení s Androidem). PNS je zodpovědný za doručování oznámení na cílová zařízení. PNS obvykle nevystavuje metriky doručení třetím stranám.  

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: c2c199b2366f2708af19c1868cce09e0ba38fc96
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ef03560cff704255d2779a747d124e0b39a1c657
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130251"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491303"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Řešení potíží s Azure Stream Analytics dotazy
 
@@ -25,7 +25,7 @@ Tento článek popisuje běžné problémy s vývojem Azure Stream Analyticsch d
 
 1.  Kontrola chyb pomocí místního testování:
 
-    - Na Azure Portal na kartě **dotaz** vyberte **test** . K [otestování dotazu](stream-analytics-test-query.md)použijte stažená ukázková data. Prověřte případné chyby a pokuste se je opravit.   
+    - Na Azure Portal na kartě **dotaz** vyberte **test**. K [otestování dotazu](stream-analytics-test-query.md)použijte stažená ukázková data. Prověřte případné chyby a pokuste se je opravit.   
     - Dotaz můžete také [místně otestovat](stream-analytics-live-data-local-testing.md) pomocí Azure Stream Analyticsch nástrojů pro aplikaci Visual Studio nebo [Visual Studio Code](visual-studio-code-local-run-live-input.md). 
 
 2.  [Ladit dotazy krok za krokem místně pomocí diagramu úloh](debug-locally-using-job-diagram-vs-code.md) v Azure Stream Analytics nástrojů pro Visual Studio Code. Diagram úlohy ukazuje, jak toky dat ze vstupních zdrojů (centra událostí, IoT Hub atd.) prostřednictvím více kroků dotazů a nakonec až po výstupní jímky. Každý krok dotazu je namapován na dočasnou sadu výsledků definovanou ve skriptu pomocí příkazu WITH. Můžete zobrazit data a také metriky v každé mezilehlé sadě výsledků, abyste našli zdroj problému.
@@ -50,6 +50,8 @@ Tento článek popisuje běžné problémy s vývojem Azure Stream Analyticsch d
 ## <a name="resource-utilization-is-high"></a>Využití prostředků je vysoké.
 
 Zajistěte, abyste využili výhod paralelního využívání Azure Stream Analytics. Můžete se dozvědět, jak [škálovat pomocí paralelního zpracování dotazů](stream-analytics-parallelization.md) Stream Analytics úloh, a to konfigurací vstupních oddílů a optimalizací definice analytického dotazu.
+
+Pokud je využití prostředků konzistentně více než 80%, prodleva meze roste a počet nevyřízených událostí roste, zvažte zvýšení počtu jednotek streamování. Vysoké využití indikuje, že úloha používá blízko maximálního počtu přidělených prostředků.
 
 ## <a name="debug-queries-progressively"></a>Postupné ladění dotazů
 

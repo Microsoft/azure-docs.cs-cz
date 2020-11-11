@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/02/2020
-ms.openlocfilehash: e8b13369cb961d4be49f0045805a805fda38a59c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/10/2020
+ms.openlocfilehash: cac14687c6193d58069240529955e69fc680b2e8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319826"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491813"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -44,7 +44,7 @@ Propustnost můžete zřídit na úrovni kontejneru nebo databáze na úrovni je
 Cosmos kontejner (nebo sdílená databáze propustnosti) musí mít minimální propustnost 400 RU/s. Při zvětšování kontejneru závisí minimální podporovaná propustnost i na následujících faktorech:
 
 * Maximální propustnost, která byla v kontejneru trvale zřízena. Pokud se například propustnost zvýšila na 50 000 RU/s, pak nejnižší možná zajištěná propustnost bude 500 RU/s.
-* Aktuální úložiště v GB v kontejneru. Pokud má váš kontejner například 100 GB úložiště, bude nejnižší možná zajištěná propustnost 1000 RU/s.
+* Aktuální úložiště v GB v kontejneru. Pokud má váš kontejner například 100 GB úložiště, bude nejnižší možná zajištěná propustnost 1000 RU/s. **Poznámka:** Pokud Váš kontejner nebo databáze obsahuje více než 1 TB dat, může mít váš účet nárok na náš [program "vysokorychlostní úložiště/nízká propustnost"](set-throughput.md#high-storage-low-throughput-program).
 * Minimální propustnost ve sdílené databázi propustnosti také závisí na celkovém počtu kontejnerů, které jste dříve vytvořili ve sdílené databázi propustnosti, měřeno v 100 RU/s na jeden kontejner. Pokud jste například vytvořili pět kontejnerů v rámci sdílené databáze propustnosti, musí být propustnost alespoň 500 RU/s.
 
 Aktuální a minimální propustnost kontejneru nebo databáze lze načíst z Azure Portal nebo sad SDK. Další informace najdete v tématu [zřízení propustnosti u kontejnerů a databází](set-throughput.md). 
