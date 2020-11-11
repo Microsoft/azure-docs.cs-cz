@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6ffa7bb07ddb42946acdcef6ee3b7f2aa804f774
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f3ed5f3940a9b02701ad2f3c779b791e128e288c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324316"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506341"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>Rychlý Start: vytvoření vyhrazeného fondu SQL pomocí synapse studia
 
@@ -25,7 +25,7 @@ Tento rychlý Start popisuje kroky pro vytvoření vyhrazeného fondu SQL v prac
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor synapse](quickstart-create-workspace.md)
@@ -75,6 +75,8 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
     > Všimněte si, že existují určitá omezení pro názvy, které mohou používat vyhrazené fondy SQL. Názvy nesmí obsahovat speciální znaky, musí být delší než 15 znaků, nesmí obsahovat vyhrazená slova a v pracovním prostoru být jedinečné.
 
 4. Na další kartě **Další nastavení** vyberte možnost **žádná** a zajistěte tak fond SQL bez dat. Ponechte výchozí kolaci vybranou.
+
+    Pokud chcete obnovit vyhrazený fond SQL z bodu obnovení, vyberte **bod obnovení**. Další informace o tom, jak provést obnovení, najdete v tématu [Postup: obnovení existujícího vyhrazeného fondu SQL.](backuprestore/restore-sql-pool.md)
 
     ![Postup vytvoření fondu SQL – karta Další nastavení](media/quickstart-create-sql-pool/create-sql-pool-studio-25.png)
 

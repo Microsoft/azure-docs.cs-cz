@@ -178,6 +178,8 @@
           href: connect-threat-intelligence.md
         - name: Připojení virtuálních počítačů Azure Stack
           href: connect-azure-stack.md
+        - name: Monitorování stavu konektoru dat
+          href: monitor-data-connector-health.md
     - name: Povolení analýzy chování uživatelů a entit
       href: enable-entity-behavior-analytics.md
     - name: Správa několika tenantů (MSSP)

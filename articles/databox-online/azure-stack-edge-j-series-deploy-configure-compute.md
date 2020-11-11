@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6bea4ee4452675a50ef9144da300c3e15652a81f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 75428b28095b0e425a1670caffcf960aa6ae58f6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952161"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504449"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Kurz: transformace dat pomocí Azure Stack Edge pro
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > * Ověření transformace dat a jejich přenos
 
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před nastavením výpočetní role na zařízení Azure Stack Edge pro se ujistěte, že:
 
@@ -49,7 +49,7 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoř
 
     ![Začínáme se službou COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
 
-2. Na dlaždici **Konfigurace hraničních výpočtů** vyberte **Konfigurovat výpočetní**prostředky.
+2. Na dlaždici **Konfigurace hraničních výpočtů** vyberte **Konfigurovat výpočetní** prostředky.
 
     ![Konfigurace COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
 
@@ -90,7 +90,7 @@ Pro jednoduché nasazení v tomto kurzu budete potřebovat dvě sdílené složk
 
     3. V okně **Přidat sdílenou složku** zadejte název sdílené složky a vyberte typ sdílené složky.
     4. Pokud chcete připojit hraniční sdílenou složku, zaškrtněte políčko pro **použití sdílené složky s hraničními výpočty**.
-    5. Vyberte **účet úložiště**, **službu úložiště**, stávající uživatel a pak vyberte **vytvořit**.
+    5. Vyberte **účet úložiště** , **službu úložiště** , stávající uživatel a pak vyberte **vytvořit**.
 
         ![Přidat hraniční sdílenou složku](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-1.png) 
 
@@ -152,19 +152,19 @@ Pokud chcete ověřit, že je modul spuštěný, udělejte toto:
 
     ![Zobrazit nasazený modul](./media/azure-stack-edge-j-series-deploy-configure-compute/add-module-3.png)
  
-1.   V Průzkumníku souborů se připojte ke sdíleným složkám Edge i k okrajům, které jste vytvořili dříve.
+1. V Průzkumníku souborů se připojte ke sdíleným složkám Edge i k okrajům, které jste vytvořili dříve.
 
     ![Ověření transformace dat](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
  
-1.   Přidejte data do místní sdílené složky.
+1. Přidejte data do místní sdílené složky.
 
     ![Ověření transformace dat](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
  
-    Data se přesunou do cloudové sdílené složky.
+   Data se přesunou do cloudové sdílené složky.
 
     ![Ověření transformace dat](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
 
-    Data se pak odešlou ze sdílené složky cloudu do účtu úložiště. Chcete-li zobrazit data, můžete použít Průzkumník služby Storage.
+   Data se pak odešlou ze sdílené složky cloudu do účtu úložiště. Chcete-li zobrazit data, můžete použít Průzkumník služby Storage.
 
     <!--![Verify data transform](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-5.png)-->
  

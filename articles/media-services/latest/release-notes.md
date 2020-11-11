@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cdc6cbbea8b222007d94ecac99902bc4498a42fe
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791592"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505253"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -56,6 +56,11 @@ Po zastavení živých událostí jsou nyní povoleny aktualizace většiny vlas
 Živá událost podporuje příjem různých vstupních poměrů stran. Režim Stretch umožňuje zákazníkům určit chování roztažení výstupu.
 
 Live Encoding teď přidává schopnost zasílat fragmenty intervalu pevného snímku s pevným klíčem mezi 0,5 až 20 sekund.
+
+## <a name="accounts"></a>Účty
+
+> [!WARNING]
+> Pokud vytvoříte účet Media Services s verzí 2020-05-01 API, nebude fungovat s RESTv2 
 
 ## <a name="august-2020"></a>Srpen 2020
 
@@ -109,7 +114,7 @@ Do [dokumentace k Azure](../azure-media-player/azure-media-player-overview.md)by
 
 ### <a name="azure-government-cloud-updates"></a>Azure Government aktualizace cloudu
 
-Media Services GA'ed v následujících Azure Government oblastech: *USGov Arizona* a *USGov Texas* .
+Media Services GA'ed v následujících Azure Government oblastech: *USGov Arizona* a *USGov Texas*.
 
 ## <a name="december-2019"></a>Prosinec 2019
 
@@ -173,7 +178,7 @@ Media Services V3 oznamuje verzi Preview 24 hodin x 365 dní živého lineární
 
 #### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
 
-Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview* . Data o vyřazení najdete v článku  [starší verze součástí](../previous/legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) nahrazuje tyto starší verze procesorů médií.
+Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. Data o vyřazení najdete v článku  [starší verze součástí](../previous/legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) nahrazuje tyto starší verze procesorů médií.
 
 Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md).
 
@@ -278,7 +283,7 @@ Mezi verze V3 rozhraní API pro aktualizace od verze GA patří:
 * Pro **filtry prostředků** a **filtry účtu** se už nevyžadují vlastnosti **PresentationTimeRange** . 
 * Možnosti $top a $skip dotazu pro **úlohy** a **transformace** byly odebrány a $OrderBy byly přidány. V rámci přidávání nové funkce řazení bylo zjištěno, že $top a $skip možnosti byly omylem vystaveny dříve, i když nejsou implementovány.
 * Rozšiřitelnost výčtu byla znovu povolena. Tato funkce byla povolená ve verzi Preview sady SDK a v rámci verze GA se nechtěně vypnula.
-* Dva předdefinované zásady streamování se přejmenovaly. **SecureStreaming** je teď **MultiDrmCencStreaming** . **SecureStreamingWithFairPlay** je nyní **Predefined_MultiDrmStreaming** .
+* Dva předdefinované zásady streamování se přejmenovaly. **SecureStreaming** je teď **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** je nyní **Predefined_MultiDrmStreaming**.
 
 ## <a name="november-2018"></a>Listopad 2018
 

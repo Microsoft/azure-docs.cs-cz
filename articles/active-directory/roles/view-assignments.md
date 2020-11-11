@@ -13,14 +13,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a0300bd66dbeec84aba2102a510b4f6194debc5
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: ccb158548f52059b780fd71bf19788ba200aa7c4
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378580"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505576"
 ---
-# <a name="view-custom-role-assignments-in-azure-active-directory"></a>Zobrazení přiřazení vlastních rolí v Azure Active Directory
+# <a name="view-custom-role-assignments-using-azure-active-directory"></a>Zobrazení přiřazení vlastních rolí pomocí Azure Active Directory
 
 Tento článek popisuje, jak zobrazit vlastní role, které jste přiřadili v Azure Active Directory (Azure AD). V Azure Active Directory (Azure AD) se role dají přiřadit v oboru celé organizace nebo v oboru s jednou aplikací.
 

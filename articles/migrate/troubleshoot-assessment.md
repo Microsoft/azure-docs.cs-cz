@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: d5e8305fb80e6869bf604108aaa0e4d8e36cab8e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4da0f40c25d322953fea968396ef33924877c2e1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314746"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505219"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
@@ -23,10 +23,10 @@ Tento článek vám pomůže řešit problémy s vizualizací a vizualizací zá
 
 Opravte problémy připravenosti vyhodnocování následujícím způsobem:
 
-**Chybu** | **Oprava**
+**Chybu** | **Opravit**
 --- | ---
 Nepodporovaný typ spuštění | Azure nepodporuje virtuální počítače s typem spouštění EFI. Před spuštěním migrace doporučujeme převést typ spouštění na systém BIOS. <br/><br/>K obsluze migrace takových virtuálních počítačů můžete použít migraci Azure Migrate serveru. Při migraci převede typ spouštění virtuálního počítače na systém BIOS.
-Podmíněně podporované operační systémy Windows | Operační systém předal své datum ukončení podpory a pro [podporu v Azure](/troubleshoot/azure/virtual-machines/server-software-support)potřebuje vlastní smlouvu o podpoře (CSA). Před migrací do Azure zvažte možnost upgradovat.
+Podmíněně podporované operační systémy Windows | Operační systém předal své datum ukončení podpory a pro [podporu v Azure](/troubleshoot/azure/virtual-machines/server-software-support)potřebuje vlastní smlouvu o podpoře (CSA). Před migrací do Azure zvažte možnost upgradovat. [Přečtěte si]() informace o [přípravě počítačů s Windows serverem 2003](prepare-windows-server-2003-migration.md) pro migraci do Azure.
 Nepodporovaný operační systém Windows | Azure podporuje jenom [vybrané verze operačního systému Windows](/troubleshoot/azure/virtual-machines/server-software-support). Před migrací do Azure zvažte možnost upgradovat počítač.
 Podmíněně schválené operační systémy Linux | Azure schválí jenom [vybrané verze operačního systému Linux](../virtual-machines/linux/endorsed-distros.md). Před migrací do Azure zvažte možnost upgradovat počítač. Další informace najdete také [tady](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) .
 Neschválený operační systém Linux | Počítač se může v Azure spustit, ale Azure neposkytuje žádnou podporu operačního systému. Před migrací do Azure zvažte možnost upgradovat na [schválenou verzi systému Linux](../virtual-machines/linux/endorsed-distros.md) .
@@ -48,7 +48,7 @@ Kvůli vnitřní chybě se nepovedlo určit vhodnost virtuálního počítače. 
 Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc disků. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc síťových adaptérů. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 Nenašla se žádná velikost virtuálního počítače pro rezervované instance nabídky Currency. | Počítač je označený jako nevhodný, protože velikost virtuálního počítače se nenašla pro vybranou kombinaci rezervované instance, nabídky a měny. Upravte vlastnosti posouzení pro výběr platných kombinací a přepočítejte hodnocení. 
-Podmíněně připravené Internet Protocol | Platí jenom pro posouzení řešení Azure VMware (AVS). Služba AVS nepodporuje faktor internetových adres IPv6.Pokud je váš počítač zjištěn s protokolem IPv6, obraťte se na tým služby AVS, kde najdete pokyny k nápravě.
+Podmíněně připravené Internet Protocol | Platí jenom pro posouzení řešení Azure VMware (AVS). Služba AVS nepodporuje faktor internetových adres IPv6. Pokud je váš počítač zjištěn s protokolem IPv6, obraťte se na tým služby AVS, kde najdete pokyny k nápravě.
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Navrhovaný Nástroj pro migraci v hodnocení AVS založeném na importu, který je označený jako neznámý
 
@@ -75,7 +75,7 @@ Pro fyzické servery by měly být k dispozici informace o dílčí verzi opera�
 Posouzení serveru Azure Migrate může doporučit skladové položky Azure s více jádry a pamětí než aktuální místní přidělení na základě typu posouzení:
 
 - Doporučení SKU virtuálního počítače závisí na vlastnostech posouzení.
-- To je ovlivněno typem posouzení, které provádíte při posuzování serveru: na *základě výkonu*nebo *jako v*místním prostředí.
+- To je ovlivněno typem posouzení, které provádíte při posuzování serveru: na *základě výkonu* nebo *jako v* místním prostředí.
 - U posouzení na základě výkonu považuje server hodnocení za využití dat z místních virtuálních počítačů (CPU, paměti, disku a sítě) k určení správné cílové SKU virtuálního počítače pro vaše místní virtuální počítače. Přináší také faktor komfortu při určování efektivního využití.
 - Pro místní velikost se data o výkonu neberou v úvahu a cílová skladová jednotka se doporučuje na základě místního přidělení.
 
@@ -83,7 +83,7 @@ Pokud chcete vidět, jak to může ovlivnit doporučení, Podívejme se na pří
 
 Máme místní virtuální počítač se čtyřmi jádry a 8 GB paměti s 50% využitím procesoru a 50% využití paměti a stanovený faktor komfortu 1,3.
 
--  Pokud je posouzení **místní**, doporučuje se skladová položka virtuálního počítače Azure se čtyřmi jádry a 8 GB paměti.
+-  Pokud je posouzení **místní** , doporučuje se skladová položka virtuálního počítače Azure se čtyřmi jádry a 8 GB paměti.
 - Pokud je hodnocení založené na výkonu, na základě efektivního využití procesoru a paměti (50% ze 4 jader × 1,3 = 2,6 jader a 50% 8 GB paměti * 1,3 = 5,3-GB paměti), je doporučena SKU nejlevnější virtuálního počítače se čtyřmi jádry (nejbližší podporovaný počet jader) a 8 GB paměti (nejbližší podporovaná velikost paměti).
 - [Přečtěte si další informace](concepts-assessment-calculation.md#types-of-assessments) o velikosti hodnocení.
 
@@ -91,8 +91,8 @@ Máme místní virtuální počítač se čtyřmi jádry a 8 GB paměti s 50% vy
 
 Posouzení serveru Azure Migrate může doporučit větší disk na základě typu posouzení.
 - Velikost disku v posuzování serveru závisí na dvou vlastnostech posouzení: kritéria změny velikosti a typ úložiště.
-- Pokud jsou kritéria změny velikosti **založená na výkonu**a typ úložiště je nastaven na hodnotu **automaticky**, při určení typu cílového disku (HDD úrovně Standard, SSD úrovně Standard nebo Premium) se bere v úvahu hodnota vstupně-výstupních operací a propustnosti disku. Pak se doporučuje disková jednotka disku z typu disku a doporučení posuzuje požadavky na velikost místního disku.
-- Pokud jsou kritéria změny velikosti v **závislosti na výkonu**a typ úložiště je **Premium**, doporučuje se SKU na disku Premium v Azure na základě požadavků na vstupně-výstupní operace, propustnost a velikost na místním disku. Stejná logika se používá k provedení velikosti disku, pokud jsou kritéria změny velikosti **místní** a typ úložiště je **HDD úrovně Standard**, **SSD úrovně Standard**nebo **Premium**.
+- Pokud jsou kritéria změny velikosti **založená na výkonu** a typ úložiště je nastaven na hodnotu **automaticky** , při určení typu cílového disku (HDD úrovně Standard, SSD úrovně Standard nebo Premium) se bere v úvahu hodnota vstupně-výstupních operací a propustnosti disku. Pak se doporučuje disková jednotka disku z typu disku a doporučení posuzuje požadavky na velikost místního disku.
+- Pokud jsou kritéria změny velikosti v **závislosti na výkonu** a typ úložiště je **Premium** , doporučuje se SKU na disku Premium v Azure na základě požadavků na vstupně-výstupní operace, propustnost a velikost na místním disku. Stejná logika se používá k provedení velikosti disku, pokud jsou kritéria změny velikosti **místní** a typ úložiště je **HDD úrovně Standard** , **SSD úrovně Standard** nebo **Premium**.
 
 Příklad: Pokud máte místní disk s 32 GB paměti, ale agregované vstupně-výstupní operace čtení a zápisu pro disk je 800 IOPS, vyhodnocování serveru doporučuje prémiový disk (kvůli vyššímu počtu požadavků IOPS) a potom doporučuje SKU disku, které může podporovat požadované vstupně-výstupní operace a velikost. Nejbližší shodou by v tomto případě byla skladová položka P15 (256 GB, 1 100 IOPS). I když velikost požadovaná místním diskem byla 32 GB, vyhodnocování serveru doporučuje větší disk kvůli vysokému počtu požadavků na požadavky na místní disk.
 
@@ -126,7 +126,7 @@ Posouzení Azure Migrate serveru v současné době zohledňuje náklady na lice
 Nástroj Hodnocení serverů průběžně shromažďuje data o výkonu místních počítačů a používá je k doporučení skladové položky virtuálního počítače a disku v Azure. [Přečtěte si, jak](concepts-assessment-calculation.md#calculate-sizing-performance-based) se shromažďují data založená na výkonu.
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Proč je moje hodnocení zobrazeno upozorněním, že bylo vytvořeno s neplatnou kombinací rezervovaných instancí, doba provozu a slevy virtuálního počítače (%)?
-Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít. Při vytváření hodnocení s neplatnou kombinací těchto vlastností jsou tlačítka upravit a přepočítat zakázaná. Vytvořte prosím nové posouzení. [Další informace](./concepts-assessment-calculation.md#whats-an-assessment).
+Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít. Při vytváření hodnocení s neplatnou kombinací těchto vlastností jsou tlačítka upravit a přepočítat zakázaná. Vytvořte prosím nové posouzení. [Přečtěte si další informace](./concepts-assessment-calculation.md#whats-an-assessment).
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nezobrazují se údaje o výkonu pro některé síťové adaptéry na mých fyzických serverech.
 
@@ -165,8 +165,8 @@ Pro virtuální počítače se systémem Linux se ujistěte, že instalační p�
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-- **Agent MMS**: Zkontrolujte podporované operační systémy [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)a [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
-- **Agent závislostí**: podporované operační systémy [Windows a Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) .
+- **Agent MMS** : Zkontrolujte podporované operační systémy [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)a [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
+- **Agent závislostí** : podporované operační systémy [Windows a Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) .
 
 ## <a name="visualize-dependencies-for--hour"></a>Vizualizace závislostí pro > hodinu
 
@@ -199,7 +199,7 @@ Azure Migrate v současné době podporuje vytvoření pracovního prostoru OMS 
 
 Shromážděte protokoly síťového provozu následujícím způsobem:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí  **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.
@@ -209,7 +209,7 @@ Shromážděte protokoly síťového provozu následujícím způsobem:
    - V Chrome klikněte pravým tlačítkem a vyberte **Uložit jako Har s obsahem**. Tato akce zkomprimuje a exportuje protokoly jako soubor. har.
    - V Microsoft Edge nebo Internet Exploreru vyberte možnost **exportovat zachycené přenosy** . Tato akce komprimuje a exportuje protokol.
 6. Vyberte kartu **Konzola** a vyhledejte všechna upozornění a chyby. Uložení protokolu konzoly:
-   - V prohlížeči Chrome klikněte pravým tlačítkem myši kdekoli v protokolu konzoly. Vyberte **Uložit jako**, exportovat a protokol zip.
+   - V prohlížeči Chrome klikněte pravým tlačítkem myši kdekoli v protokolu konzoly. Vyberte **Uložit jako** , exportovat a protokol zip.
    - V Microsoft Edge nebo Internet Exploreru klikněte pravým tlačítkem na chyby a vyberte **Kopírovat vše**.
 7. Zavřete Vývojářské nástroje.
 

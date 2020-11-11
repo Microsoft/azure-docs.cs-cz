@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 70a8ee78bbc90725346edbb7c83c247d48d86c4c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 827b4689629dec0318ad66b21b59744392bf9919
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014017"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504005"
 ---
 V odkazech v této části najdete další informace o službách, které nabízejí partneři. Pokud vaše pobočka zařízení není uvedená v následující části, obraťte se na svého poskytovatele firemního zařízení. Můžou nás kontaktovat odesláním e-mailu na adresu azurevirtualwan@microsoft.com .
 
@@ -27,7 +27,7 @@ V odkazech v této části najdete další informace o službách, které nabíz
 | [Fortinet](https://www.fortinet.com/azure-vwan) |[Fortigate a Microsoft Azure Průvodce nasazením služby Virtual WAN Integration](https://www.fortinet.com/content/dam/fortinet/assets/deployment-guides/dg-fortigate-azure-wan-integration.pdf),[blog scénáře směrování ](https://www.fortinet.com/blog/business-and-technology/fortinet-secure-sd-wan-enhances-azure-virtual-wan-integrations)|
 |[HPE Aruba]( https://www.arubanetworks.com/microsoft-vwan/)|[Průvodce nasazením Aruba SD – WAN a Microsoft Azure Virtual WAN](https://www.arubanetworks.com/assets/tg/DG_Using-Aruba-SD-WAN-with-Microsoft-Azure-Virtual-WAN.pdf)|
 | [NetFoundry](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|[Centrum podpory Netfoundry: Azure Virtual WAN](https://support.netfoundry.io/hc/en-us/articles/360018137891-Introduction-to-Azure-Virtual-WAN-sites)|
-|[Nuage/Nokia (poskytováno pouze prostřednictvím British Telecom)](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|[Průvodce nasazením Nuage a Azure Virtual WAN](https://onestore.nokia.com/asset/210073)|
+|[Nuage/Nokia](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|[Průvodce nasazením Nuage a Azure Virtual WAN](https://onestore.nokia.com/asset/210073)|
 |[Otevřené systémy]( https://open-systems.com/solutions/microsoft-azure-virtual-wan)|[Průvodce nasazením systému a Azure Virtual WAN](https://open-systems.com/wp-content/uploads/2020/07/Azure-Virtual-WAN-UserGuide.pdf)|
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |* |
 |[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|* |

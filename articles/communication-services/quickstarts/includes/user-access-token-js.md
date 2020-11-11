@@ -2,22 +2,22 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: azure-communication-services
-author: matthewrobertson
-manager: nimag
+author: tomaschladek
+manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
-ms.author: marobert
-ms.openlocfilehash: 22cfe369561eab1ca334c7ff2450162dfae3e761
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.author: tchladek
+ms.openlocfilehash: af5af26a8970409b07eda6195b0853c3fa931b3f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92347079"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506223"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/) Aktivní LTS a verze LTS údržby (Doporučené 8.11.1 a 10.14.1).
@@ -30,7 +30,7 @@ ms.locfileid: "92347079"
 Otevřete okno terminálu nebo příkazového řádku pro svoji aplikaci vytvořte nový adresář a přejděte do něj.
 
 ```console
-mkdir user-tokens-quickstart && cd user-tokens-quickstart
+mkdir access-tokens-quickstart && cd access-tokens-quickstart
 ```
 
 Spusťte `npm init -y` , chcete-li vytvořit **package.js** pro soubor s výchozími nastaveními.
@@ -65,7 +65,7 @@ Pro začátek použijte následující kód:
 const { CommunicationIdentityClient } = require('@azure/communication-administration');
 
 const main = async () => {
-  console.log("Azure Communication Services - User Access Tokens Quickstart")
+  console.log("Azure Communication Services - Access Tokens Quickstart")
 
   // Quickstart code goes here
 };
@@ -76,9 +76,7 @@ main().catch((error) => {
 })
 ```
 
-1. Uložte nový soubor jako **issue-token.js** v adresáři *User-tokens-Starter* .
-
-[!INCLUDE [User Access Tokens Object Model](user-access-tokens-object-model.md)]
+1. Uložte nový soubor jako **issue-access-token.js** v adresáři *Access-tokens-rychlý Start* .
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -91,64 +89,67 @@ Do metody `main` přidejte následující kód:
 // from an environment variable.
 const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING'];
 
-// Instantiate the user token client
+// Instantiate the identity client
 const identityClient = new CommunicationIdentityClient(connectionString);
 ```
 
-## <a name="create-a-user"></a>Vytvoření uživatele
+## <a name="create-an-identity"></a>Vytvoření identity
 
-Komunikační služby Azure udržují zjednodušený adresář identit. Použijte `createUser` metodu k vytvoření nové položky v adresáři s jedinečným objektem `Id` . Měli byste udržovat mapování mezi uživateli vaší aplikace a komunikačními službami, které vygenerovaly identity (například jejich uložením do databáze aplikačního serveru).
+Komunikační služby Azure udržují zjednodušený adresář identit. Použijte `createUser` metodu k vytvoření nové položky v adresáři s jedinečným objektem `Id` . Uložte si získanou identitu s mapováním na uživatele vaší aplikace. Například uložením do databáze aplikačního serveru. Identita se vyžaduje později pro vydávání přístupových tokenů.
 
 ```javascript
-let userResponse = await identityClient.createUser();
-console.log(`\nCreated a user with ID: ${userResponse.communicationUserId}`);
+let identityResponse = await identityClient.createUser();
+console.log(`\nCreated an identity with ID: ${identityResponse.communicationUserId}`);
 ```
 
-## <a name="issue-user-access-tokens"></a>Vystavení přístupových tokenů uživatele
+## <a name="issue-access-tokens"></a>Vystavení přístupových tokenů
 
-Použijte `issueToken` metodu pro vydání přístupového tokenu pro uživatele komunikačních služeb. Pokud nezadáte volitelný parametr, vytvoří se `user` Nový uživatel, který se vrátí s tokenem.
+Použijte `issueToken` metodu pro vydání přístupového tokenu pro již existující identitu komunikačních služeb. Parametr `scopes` definuje sadu primitivních hodnot, které budou autorizovat tento přístupový token. Podívejte se na [seznam podporovaných akcí](../../concepts/authentication.md). Nová instance parametru `communicationUser` se dá sestavit na základě řetězcové reprezentace identity komunikační služby Azure.
 
 ```javascript
-// Issue an access token with the "voip" scope for a new user
-let tokenResponse = await identityClient.issueToken(userResponse, ["voip"]);
+// Issue an access token with the "voip" scope for an identity
+let tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
 const { token, expiresOn } = tokenResponse;
-console.log(`\nIssued a token with 'voip' scope that expires at ${expiresOn}:`);
+console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);
 console.log(token);
 ```
 
-Tokeny přístupu uživatele jsou krátkodobé přihlašovací údaje, které je potřeba znovu vystavit, aby nedocházelo k přerušení služeb uživatelů. `expiresOn`Vlastnost Response označuje dobu života tokenu.
+Přístupové tokeny jsou krátkodobé přihlašovací údaje, které je potřeba znovu vydat. V takovém případě může dojít k přerušení činnosti uživatelů vaší aplikace. `expiresOn`Vlastnost Response označuje dobu života přístupového tokenu.
 
-## <a name="revoke-user-access-tokens"></a>Odvolat tokeny přístupu uživatele
 
-V některých případech může být nutné explicitně odvolat tokeny přístupu uživatele, například když uživatel změní heslo, které používá k ověření vaší služby. Tato metoda používá `revokeTokens` k devalidaci všech přístupových tokenů uživatele.
+## <a name="refresh-access-tokens"></a>Obnovení přístupových tokenů
 
-```javascript  
-await identityClient.revokeTokens(userResponse);
-console.log(`\nSuccessfully revoked all tokens for user with Id: ${userResponse.communicationUserId}`);
-```
-
-## <a name="refresh-user-access-tokens"></a>Aktualizovat tokeny přístupu uživatele
-
-Chcete-li aktualizovat token, použijte `CommunicationUser` objekt k opakovanému vystavení:
+K aktualizaci přístupového tokenu použijte `CommunicationUser` objekt, který se má znovu vystavit:
 
 ```javascript  
-let userResponse = new CommunicationUser(existingUserId);
-let tokenResponse = await identityClient.issueToken(userResponse, ["voip"]);
+// Value existingIdentity represents identity of Azure Communication Services stored during identity creation
+identityResponse = new CommunicationUser(existingIdentity);
+tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
 ```
 
-## <a name="delete-a-user"></a>Odstranění uživatele
 
-Odstranění uživatele odvolá všechny aktivní tokeny a zabrání vám v vydávání následných tokenů pro identity. Zároveň se tím odebere veškerý trvalý obsah přidružený k uživateli.
+## <a name="revoke-access-tokens"></a>Odvolat přístupové tokeny
+
+V některých případech je možné explicitně odvolat přístupové tokeny. Například když uživatel aplikace změní heslo, které používá k ověření vaší služby. Metoda `revokeTokens` zrušila platnost všech aktivních přístupových tokenů, které byly vystaveny identitě.
+
+```javascript  
+await identityClient.revokeTokens(identityResponse);
+console.log(`\nSuccessfully revoked all access tokens for identity with Id: ${identityResponse.communicationUserId}`);
+```
+
+## <a name="delete-an-identity"></a>Odstranění identity
+
+Odstranění identity odvolá všechny aktivní přístupové tokeny a zabrání vám v vystavování přístupových tokenů pro danou identitu. Zároveň se tím odebere veškerý trvalý obsah přidružený k identitě.
 
 ```javascript
-await identityClient.deleteUser(userResponse);
-console.log(`\nDeleted the user with Id: ${userResponse.communicationUserId}`);
+await identityClient.deleteUser(identityResponse);
+console.log(`\nDeleted the identity with Id: ${identityResponse.communicationUserId}`);
 ```
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-V příkazovém řádku konzoly přejděte do adresáře obsahujícího soubor *issue-token.js* a pak `node` Spusťte následující příkaz, který aplikaci spustí.
+V příkazovém řádku konzoly přejděte do adresáře obsahujícího soubor *issue-access-token.js* a pak `node` Spusťte následující příkaz, který aplikaci spustí.
 
 ```console
-node ./issue-token.js
+node ./issue-access-token.js
 ```

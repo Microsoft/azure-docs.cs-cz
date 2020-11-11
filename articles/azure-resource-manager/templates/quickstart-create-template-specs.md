@@ -2,21 +2,21 @@
 title: Vytvoření a nasazení specifikace šablony
 description: Naučte se vytvořit specifikaci šablony ze šablony ARM. Pak nasaďte specifikaci šablony do skupiny prostředků v rámci vašeho předplatného.
 author: tfitzmac
-ms.date: 10/02/2020
+ms.date: 11/10/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: e1bd2f3da8204cf5947d0cf423cd57b023674608
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 96ef5796aac1d0ee02e6bbafc40b7d3bcdea4e2f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728773"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506358"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Rychlý Start: vytvoření a nasazení specifikace šablony (Preview)
 
 V tomto rychlém startu se dozvíte, jak zabalit šablonu Azure Resource Manager (šablonu ARM) do [specifikace šablony](template-specs.md) a pak nasadit tuto specifikaci šablony. Vaše specifikace šablony obsahuje šablonu ARM, která nasazuje účet úložiště.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -88,7 +88,7 @@ Níže jsou uvedené možnosti.
 1. Když použijete šablonu ARM k vytvoření specifikace šablony, šablona je vložena do definice prostředků. Zkopírujte následující šablonu a uložte ji místně jako **azuredeploy.jsna**. Tento rychlý Start předpokládá, že jste uložili do cesty **c:\Templates\azuredeploy.js** , ale můžete použít libovolnou cestu.
 
     > [!NOTE]
-    > V vložené šabloně musí být všechny levé hranaté závorky uvozené druhou levou hranatou závorkou. `[[`Místo použijte `[` .
+    > V vložené šabloně musí být všechny [výrazy šablony](template-expressions.md) uvozeny druhou levou hranatou závorkou. `"[[`Místo použijte `"[` . Pole JSON stále používají jedinou levou závorku.
 
     ```json
     {

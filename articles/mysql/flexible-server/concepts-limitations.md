@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a064b2b2d0bad5fc8ded9a59b66d84a361facec9
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650285"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504335"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Omezení Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -23,9 +23,9 @@ Tento článek popisuje omezení Azure Database for MySQL flexibilní serverovou
 ## <a name="server-parameters"></a>Parametry serveru
 
 > [!NOTE]
-> Pokud hledáte minimální/maximální hodnoty parametrů serveru `max_connections` , například a `innodb_buffer_pool_size` , tyto informace se přesunuly na koncepty parametrů serveru. <!-- **[server parameters](./concepts-server-parameters.md)** --> předmětu.
+> Pokud hledáte minimální/maximální hodnoty parametrů serveru `max_connections` , například a `innodb_buffer_pool_size` , tyto informace se přesunuly na článek parametry serveru koncepty [serveru](./concepts-server-parameters.md) .
 
-Azure Database for MySQL podporuje optimalizaci hodnot parametrů serveru. Minimální a maximální hodnota některých parametrů (např. `max_connections`, `join_buffer_size` , `query_cache_size` ) závisí na výpočetní úrovni a výpočetní velikosti serveru. Další informace najdete v tématu Koncepty parametrů serveru. <!-- [server parameters](./concepts-server-parameters.md)--> pro další informace o těchto omezeních.
+Azure Database for MySQL podporuje optimalizaci hodnot parametrů serveru. Minimální a maximální hodnota některých parametrů (např. `max_connections`, `join_buffer_size` , `query_cache_size` ) závisí na výpočetní úrovni a výpočetní velikosti serveru. Další informace o těchto omezeních najdete v [parametrech serveru](./concepts-server-parameters.md) .
 
 Moduly plug-in pro heslo, jako je například "validate_password" a "caching_sha2_password", nejsou službou podporovány.
 
@@ -68,7 +68,7 @@ Následující nejsou podporovány:
 - Nepodporováno v výpočetní úrovni, která je k dispozici.
 
 ### <a name="networking"></a>Sítě
-- Metodu připojení nelze po vytvoření serveru změnit. Pokud je server vytvořený pomocí *privátního přístupu (Integration VNET)*, nedá se po vytvoření změnit na *veřejný přístup (povolené IP adresy)* a naopak.
+- Metodu připojení nelze po vytvoření serveru změnit. Pokud je server vytvořený pomocí *privátního přístupu (Integration VNET)* , nedá se po vytvoření změnit na *veřejný přístup (povolené IP adresy)* a naopak.
 - Protokol TLS/SSL je ve výchozím nastavení povolený a nedá se zakázat.
 - Minimální verze protokolu TLS podporovaná na serveru je TLS 1.2. Další informace najdete [v tématu připojení pomocí protokolu TLS/SSL](./how-to-connect-tls-ssl.md) .
 

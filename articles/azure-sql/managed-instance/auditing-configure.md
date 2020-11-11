@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 393fceaa91600ab143912bb3af38c349f29f770a
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427934"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505661"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Začínáme s auditováním spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,7 +59,7 @@ V následující části je popsána konfigurace auditování na spravované ins
   
 3. Po vytvoření kontejneru pro protokoly auditu existují dva způsoby, jak ho nakonfigurovat jako cíl pro protokoly auditu: [pomocí T-SQL](#blobtsql) nebo [pomocí uživatelského rozhraní SQL Server Management Studio (SSMS)](#blobssms):
 
-   - <a id="blobtsql"></a>Konfigurace úložiště objektů BLOB pro protokoly auditu pomocí T-SQL:
+   - <a id="blobtsql"></a>**Konfigurace úložiště objektů BLOB pro protokoly auditu pomocí T-SQL:**
 
      1. V seznamu kontejnery klikněte na nově vytvořený kontejner a pak klikněte na **vlastnosti kontejneru**.
 
@@ -120,7 +120,7 @@ V následující části je popsána konfigurace auditování na spravované ins
 
      1. Pokračujte [vytvořením specifikace auditu serveru nebo specifikace auditu databáze](#createspec).
 
-   - <a id="blobssms"></a>Konfigurace úložiště objektů BLOB pro protokoly auditu pomocí SQL Server Management Studio 18 (Preview):
+   - <a id="blobssms"></a>**Nakonfigurujte úložiště objektů BLOB pro protokoly auditu pomocí SQL Server Management Studio 18:**
 
      1. Připojte se ke spravované instanci pomocí uživatelského rozhraní SQL Server Management Studio.
 
@@ -143,8 +143,8 @@ V následující části je popsána konfigurace auditování na spravované ins
         ![Výběr předplatného Azure, účtu úložiště a kontejneru objektů BLOB](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
      1. Klikněte na **OK** v dialogovém okně **vytvořit audit** .
-
-4. <a id="createspec"></a>Po nakonfigurování kontejneru objektů BLOB jako cíle pro protokoly auditu vytvořte a povolte specifikace auditu serveru nebo specifikace auditu databáze jako u SQL Server:
+     
+     1. <a id="createspec"></a>Po nakonfigurování kontejneru objektů BLOB jako cíle pro protokoly auditu vytvořte a povolte specifikace auditu serveru nebo specifikace auditu databáze jako u SQL Server:
 
    - [Vytvoření specifikace auditu serveru – Průvodce T-SQL](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [Vytvoření specifikace auditu databáze Průvodce T-SQL](/sql/t-sql/statements/create-database-audit-specification-transact-sql)

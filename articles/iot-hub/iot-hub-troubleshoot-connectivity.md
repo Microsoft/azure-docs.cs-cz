@@ -13,12 +13,14 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: f7073fbf39344fe39e179d55a5a8f395a6ba6240
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+- fasttrack-edit
+- iot
+ms.openlocfilehash: b179bb3566cc19b8033a56348db34cd1f05cee10
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357383"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506392"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Monitorování, diagnostika a řešení potíží odpojení pomocí Azure IoT Hub
 
@@ -159,6 +161,11 @@ AzureDiagnostics
 Jako vývojář nebo operátor řešení IoT musíte být vědomi tohoto chování, aby bylo možné interpretovat události připojení/odpojení a související chyby v protokolech. Pokud chcete změnit životnost tokenu nebo chování při obnovení pro zařízení, zkontrolujte, jestli zařízení implementuje nastavení s dvojitým stavem zařízení, nebo metodu zařízení, která to umožňuje.
 
 Pokud sledujete připojení zařízení s centrem událostí, ujistěte se, že jste vytvořili způsob, jak filtrovat pravidelné odpojení z důvodu obnovení tokenu SAS. například neaktivuje akce na základě odpojení, pokud za událostí odpojení následuje událost připojení v určitém časovém období.
+
+> [!NOTE]
+> IoT Hub podporuje jenom jedno aktivní připojení MQTT pro každé zařízení. Jakékoli nové připojení MQTT pro stejné ID zařízení způsobí, že IoT Hub vynechá existující připojení.
+>
+> 400027 ConnectionForcefullyClosedOnNewConnection budou protokolovány do protokolů IoT Hub
 
 ## <a name="i-tried-the-steps-but-they-didnt-work"></a>Vyzkoušel jsem postup, ale nefungoval
 

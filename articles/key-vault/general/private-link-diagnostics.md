@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: c4873bded750186f072dd39ddcb8d78941848586
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 870a55e5bc2701df5c03e142522e8490612b2917
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289369"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506052"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Diagnostika potíží s konfigurací služeb Private Link ve službě Azure Key Vault
 
@@ -142,21 +142,29 @@ Tato část je určená pro účely učení. Pokud Trezor klíčů nemá ve schv
 
 Windows:
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  52.168.109.101
-    Aliases:  fabrikam.vault.azure.net
-              data-prod-eus.vaultcore.azure.net
-              data-prod-eus-region.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  52.168.109.101
+Aliases:  fabrikam.vault.azure.net
+          data-prod-eus.vaultcore.azure.net
+          data-prod-eus-region.vaultcore.azure.net
+```
 
 Linux:
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
-    data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
-    data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```output
+fabrikam.vault.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
+data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
+data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```
 
 Můžete vidět, že se název přeloží na veřejnou IP adresu a že neexistuje žádný `privatelink` alias. Alias se vysvětluje později, nemusíte si ho dělat hned teď.
 
@@ -168,23 +176,24 @@ Pokud má Trezor klíčů jedno nebo více připojení privátních koncových b
 
 Windows:
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  52.168.109.101
-    Aliases:  fabrikam.vault.azure.net
-              fabrikam.privatelink.vaultcore.azure.net
-              data-prod-eus.vaultcore.azure.net
-              data-prod-eus-region.vaultcore.azure.net
-
+Neautoritativní odpověď: adresa: 52.168.109.101 aliasy: fabrikam.vault.azure.net fabrikam.privatelink.vaultcore.azure.net data-prod-eus.vaultcore.azure.net data-prod-eus-region.vaultcore.azure.net
+```
 Linux:
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
-    fabrikam.privatelink.vaultcore.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
-    data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
-    data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```output
+fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
+fabrikam.privatelink.vaultcore.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
+data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
+data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```
 
 Významný rozdíl oproti předchozímu scénáři spočívá v tom, že je k dispozici nový alias s hodnotou `{vaultname}.privatelink.vaultcore.azure.net` . To znamená, že rovina dat trezoru klíčů je připravena přijímat požadavky z privátních odkazů.
 
@@ -198,19 +207,27 @@ Pokud má Trezor klíčů jedno nebo více připojení privátních koncových b
 
 Windows:
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  10.1.2.3
-    Aliases:  fabrikam.vault.azure.net
-              fabrikam.privatelink.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  10.1.2.3
+Aliases:  fabrikam.vault.azure.net
+          fabrikam.privatelink.vaultcore.azure.net
+```
 
 Linux:
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
-    fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
+```output
+fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
+fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
+```
 
 Existují dva významné rozdíly. Nejprve se název přeloží na soukromou IP adresu. Musí to být IP adresa, kterou jsme našli v [odpovídající části](#find-the-key-vault-private-ip-address-in-the-virtual-network) tohoto článku. Za druhé, po jednom neexistují žádné další aliasy `privatelink` . K tomu dochází, protože servery DNS Virtual Network *zachycují* řetězec aliasů a VRACEJÍ privátní IP adresu přímo z názvu `fabrikam.privatelink.vaultcore.azure.net` . Tato položka je vlastně `A` záznamem v zóně privátní DNS. V takovém případě se bude postupovat.
 
@@ -227,7 +244,7 @@ Pokud překlad DNS nefunguje tak, jak je popsáno v předchozí části, může 
 
 Vaše předplatné Azure musí mít prostředek [zóny privátní DNS](../../dns/private-dns-privatednszone.md) s tímto přesným názvem:
 
-    privatelink.vaultcore.azure.net
+`privatelink.vaultcore.azure.net`
 
 Přítomnost tohoto prostředku můžete zjistit tak, že na portálu kliknete na stránku předplatné a v nabídce vlevo vyberete "prostředky". Název prostředku musí být `privatelink.vaultcore.azure.net` a typ prostředku musí být **privátní DNS zóna**.
 
@@ -282,37 +299,48 @@ Váš Trezor klíčů poskytuje `/healthstatus` koncový bod, který se dá pou�
 
 Windows (PowerShell):
 
-    PS C:\> $(Invoke-WebRequest -UseBasicParsing -Uri https://fabrikam.vault.azure.net/healthstatus).Headers
+```powershell
+PS C:\> $(Invoke-WebRequest -UseBasicParsing -Uri https://fabrikam.vault.azure.net/healthstatus).Headers
+```
 
-    Key                           Value
-    ---                           -----
-    Pragma                        no-cache
-    x-ms-request-id               3729ddde-eb6d-4060-af2b-aac08661d2ec
-    x-ms-keyvault-service-version 1.2.27.0
-    x-ms-keyvault-network-info    addr=10.4.5.6;act_addr_fam=InterNetworkV6;
-    Strict-Transport-Security     max-age=31536000;includeSubDomains
-    Content-Length                4
-    Cache-Control                 no-cache
-    Content-Type                  application/json; charset=utf-8
+```output
+Key                           Value
+---                           -----
+Pragma                        no-cache
+x-ms-request-id               3729ddde-eb6d-4060-af2b-aac08661d2ec
+x-ms-keyvault-service-version 1.2.27.0
+x-ms-keyvault-network-info    addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+Strict-Transport-Security     max-age=31536000;includeSubDomains
+Content-Length                4
+Cache-Control                 no-cache
+Content-Type                  application/json; charset=utf-8
+```
 
 Linux nebo nejnovější verze systému Windows 10, které zahrnují `curl` :
 
-    joe@MyUbuntu:~$ curl -i https://fabrikam.vault.azure.net/healthstatus
-    HTTP/1.1 200 OK
-    Cache-Control: no-cache
-    Pragma: no-cache
-    Content-Type: application/json; charset=utf-8
-    x-ms-request-id: 6c090c46-0a1c-48ab-b740-3442ce17e75e
-    x-ms-keyvault-service-version: 1.2.27.0
-    x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
-    Strict-Transport-Security: max-age=31536000;includeSubDomains
-    Content-Length: 4
+```console
+joe@MyUbuntu:~$ curl -i https://fabrikam.vault.azure.net/healthstatus
+```
+
+```output
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Pragma: no-cache
+Content-Type: application/json; charset=utf-8
+x-ms-request-id: 6c090c46-0a1c-48ab-b740-3442ce17e75e
+x-ms-keyvault-service-version: 1.2.27.0
+x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+Strict-Transport-Security: max-age=31536000;includeSubDomains
+Content-Length: 4
+```
 
 Pokud nezískáváte výstup podobný tomuto, nebo pokud se zobrazí chyba sítě, znamená to, že váš Trezor klíčů není přístupný prostřednictvím zadaného názvu hostitele ( `fabrikam.vault.azure.net` v příkladu). Název hostitele se nepřekladuje na správnou IP adresu nebo máte problém s připojením na transportní vrstvě. Může to být způsobeno problémy se směrováním, zavoláním balíčku a dalšími důvody. Je nutné prozkoumat další.
 
 Odpověď musí zahrnovat hlavičku `x-ms-keyvault-network-info` :
 
-    x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+```console
+x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+```
 
 V `addr` poli v `x-ms-keyvault-network-info` hlavičce se zobrazuje IP adresa původu požadavku. Tato IP adresa může být jedna z následujících:
 
@@ -330,11 +358,15 @@ V `addr` poli v `x-ms-keyvault-network-info` hlavičce se zobrazuje IP adresa p�
 
 Pokud jste nainstalovali nejnovější verzi prostředí PowerShell, můžete použít `-SkipCertificateCheck` k přeskočení kontrol certifikátů protokolu HTTPS a pak můžete přímo cílit na [IP adresu trezoru klíčů](#find-the-key-vault-private-ip-address-in-the-virtual-network) :
 
-    PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
+```powershell
+PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
+```
 
 Pokud používáte `curl` , můžete to samé provést s `-k` argumentem:
 
-    joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
+```console
+joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
+```
 
 Odpovědi musí být stejné jako v předchozím oddílu, což znamená, že musí obsahovat `x-ms-keyvault-network-info` hlavičku se stejnou hodnotou. `/healthstatus`Pokud používáte název hostitele trezoru klíčů nebo IP adresu, koncový bod nezáleží.
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bb2ac221169cea84205d087cbe0aadfd035d22db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49a4ab0315dad539a594a20e53eae9fd2890e551
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760508"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504964"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Řešení potíží s povolením Application Insights Snapshot Debugger nebo zobrazením snímků
 Pokud jste u své aplikace povolili Application Insights Snapshot Debugger, ale nevidíte snímky pro výjimky, můžete tyto pokyny použít k řešení potíží. Snímky se nemusí generovat z několika různých důvodů. Můžete spustit kontrolu stavu snímku a identifikovat některé z možných běžných příčin.
@@ -57,19 +57,21 @@ Chcete-li zjistit nastavení, otevřete soubor web.config a vyhledejte část Sy
 > Pokud má targetFramework hodnotu 4,7 nebo vyšší, určí systém Windows dostupné protokoly. V Azure App Service je k dispozici protokol TLS 1,2. Pokud ale používáte vlastní virtuální počítač, možná budete muset v operačním systému povolit TLS 1,2.
 
 ## <a name="preview-versions-of-net-core"></a>Verze Preview rozhraní .NET Core
-Pokud aplikace používá verzi Preview rozhraní .NET Core a Snapshot Debugger byla povolena prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) na portálu, Snapshot Debugger pravděpodobně nebude možné spustit. Postupujte podle pokynů v části [povolit Snapshot debugger pro další prostředí](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) , abyste před povolením prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)zahrnuli ***také*** balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) .
+Pokud aplikace používá verzi Preview rozhraní .NET Core a Snapshot Debugger byla povolena prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) na portálu, Snapshot Debugger pravděpodobně nebude možné spustit. Postupujte podle pokynů v části [povolit Snapshot debugger pro další prostředí](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) a nejprve zahrňte balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) **do aplikace *.** tím se povolíte prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Upgrade na nejnovější verzi balíčku NuGet
 
 Pokud byla Snapshot Debugger povolena prostřednictvím [podokna Application Insights na portálu](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), měla by již vaše aplikace používat nejnovější balíček NuGet. Pokud byla povolená Snapshot Debugger zahrnutím balíčku NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) , použijte Správce balíčků NuGet sady Visual Studio a ujistěte se, že používáte nejnovější verzi Microsoft. ApplicationInsights. SnapshotCollector.
 
+Nejnovější aktualizace a opravy chyb [najdete v poznámkách k verzi](./snapshot-collector-release-notes.md).
+
 ## <a name="check-the-uploader-logs"></a>Podívejte se na protokoly odeslání.
 
 Po vytvoření snímku se na disku vytvoří soubor s minimálním výpisem (. dmp). Samostatný proces odeslání vytvoří soubor s minimálním výpisem a nahraje ho společně s případnými přidruženými soubory PDB pro Application Insights úložiště Snapshot Debugger. Po úspěšném nahrání s minimálním výpisem se z disku odstraní. Soubory protokolu procesu odeslání jsou uchovávány na disku. V prostředí App Service můžete tyto protokoly najít v `D:\Home\LogFiles` . K vyhledání těchto souborů protokolu použijte web pro správu Kudu pro App Service.
 
 1. Otevřete aplikaci App Service v Azure Portal.
-2. Klikněte na **Rozšířené nástroje**nebo vyhledejte **Kudu**.
+2. Klikněte na _ * rozšířené nástroje * * nebo vyhledejte **Kudu**.
 3. Klikněte na **Přejít**.
 4. V rozevíracím seznamu **Konzola ladění** vyberte **cmd**.
 5. Klikněte na **soubory protokolu**.

@@ -5,15 +5,15 @@ services: azure-monitor
 author: rboucher
 tags: azure-service-management
 ms.topic: include
-ms.date: 08/11/2020
+ms.date: 10/01/2020
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 332841d4ee4791cb8da1620aa292b05bbde74955
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33d701fe8dc19b3deaa05cf6f10643bdb1059aa1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88162737"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505735"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -23,7 +23,3 @@ ms.locfileid: "88162737"
 | Výstrahy protokolu | 512 aktivní pravidla výstrah pro každé předplatné. 200 aktivní pravidla upozornění na prostředek. | Podpora volání |
 | Skupiny akcí |skupiny akcí 2 000 pro každé předplatné | Podpora volání |
 | Pravidla upozornění a délka popisu pravidel akcí| Výstrahy prohledávání protokolu 4096 znaků<br/>Všechny ostatní znaky 2048 | Stejné jako výchozí |
-| Nastavení automatického škálování |100 na oblast na jedno předplatné. | Stejné jako výchozí |
-| Profily automatického škálování |20 profilů na nastavení automatického škálování. | Stejné jako výchozí |
-
-

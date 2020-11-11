@@ -8,21 +8,21 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 11/10/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85d392323b24df3cede196d2c68f05c9522b2293
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfaef4460df040ecc9b055fba83d33a3b687b200
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458293"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505372"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Kurz: Používání rozhraní API Video Indexeru
 
 Video Indexer slučuje různé technologie pro audio a video umělal Intelligence (AI), které Microsoft nabízí, do jedné integrované služby, což zjednodušuje vývoj. Rozhraní API jsou navržená tak, aby umožňovala vývojářům soustředit se na využívání technologií Media AI, aniž by se museli starat o škálování, globální dosah, dostupnost a spolehlivost cloudových platforem. Rozhraní API můžete použít k nahrání souborů, získání podrobných informací o videích, získání adres URL pro vložené widgety a pomůcky pro vkládání a další informace.
 
-Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro webové uživatele a až 2 400 minut bezplatného indexování pro uživatele rozhraní API. Pomocí placené možnosti vytvoříte účet Video Indexer, který je [připojený k vašemu předplatnému Azure a účet Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Azure Media Services.
+Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro webové uživatele a až 2 400 minut bezplatného indexování pro uživatele rozhraní API. Pomocí placené možnosti vytvoříte účet Video Indexer, který je [připojený k vašemu předplatnému Azure a účet Azure Media Services](connect-to-azure.md). Platíte za minuty, další informace najdete v tématu [Media Services ceny](https://azure.microsoft.com/pricing/details/media-services/).
 
 Tento článek popisuje, jak můžou vývojáři využít výhod rozhraní [API Video Indexeru](https://api-portal.videoindexer.ai/).
 
@@ -64,7 +64,7 @@ Každé volání do API Operations by mělo být přidružené k přístupovému
 
 Můžete řídit, jestli jsou tyto tokeny jen pro čtení, nebo pokud umožňují úpravy zadáním **allowEdit = true/false**.
 
-Pro většinu scénářů mezi servery budete pravděpodobně používat stejný token **účtu** , protože zahrnuje operace s **účty** a **video** operace. Pokud ale plánujete, že na straně klienta chcete Video Indexer (například z JavaScriptu), budete chtít použít token přístupu k **videu** , abyste klientům zabránili v získání přístupu k celému účtu. To je také důvod, proč při vkládání Video Indexer kódu klienta do klienta (například pomocí **widgetu Get Insights** nebo **Get widget Player**) musíte zadat přístupový token **videa** .
+Pro většinu scénářů mezi servery budete pravděpodobně používat stejný token **účtu** , protože zahrnuje operace s **účty** a **video** operace. Pokud ale plánujete, že na straně klienta chcete Video Indexer (například z JavaScriptu), budete chtít použít token přístupu k **videu** , abyste klientům zabránili v získání přístupu k celému účtu. To je také důvod, proč při vkládání Video Indexer kódu klienta do klienta (například pomocí **widgetu Get Insights** nebo **Get widget Player** ) musíte zadat přístupový token **videa** .
 
 Kvůli usnadnění můžete pomocí **Autorization** API > **GetAccounts** získat účty bez předchozího získání tokenu uživatele. Můžete také požádat o získání účtů s platnými tokeny. To vám umožní přeskočit další volání pro získání tokenu účtu.
 
@@ -76,7 +76,7 @@ Jste připraveni zahájit integraci s rozhraním API. Najděte si [podrobný pop
 
 Parametr Account ID (ID účtu) se vyžaduje u všech volání API operací. ID účtu je globálně jedinečný identifikátor, který se dá získat jedním z těchto způsobů:
 
-* K získání ID účtu použijte **web Video Indexer**:
+* K získání ID účtu použijte **web Video Indexer** :
 
     1. Přejděte na web [Video Indexer](https://www.videoindexer.ai/) a přihlaste se.
     2. Přejděte na stránku **Settings** (Nastavení).
@@ -103,9 +103,9 @@ Parametr Account ID (ID účtu) se vyžaduje u všech volání API operací. ID 
 
 Tato část uvádí několik doporučení pro používání rozhraní API Video Indexeru.
 
-- Pokud plánujete odeslat video, doporučujeme umístit soubor do umístění v některé veřejné síti (například OneDrive). Získejte odkaz na video a zadejte adresu URL jako parametr souboru k nahrání.
+- Pokud plánujete odeslat video, doporučujeme umístit soubor do umístění v některé veřejné síti (například účet Azure Blob Storage). Získejte odkaz na video a zadejte adresu URL jako parametr souboru k nahrání.
 
-    Adresa URL poskytnutá Video Indexeru musí odkazovat na soubor média (zvukový nebo video). Některé z odkazů vygenerovaných OneDrivem vedou na pro stránku HTML, která soubor obsahuje. Snadné ověření adresy URL je vložení do prohlížeče – Pokud se soubor začne stahovat, je nejspíš dobrá adresa URL. Pokud prohlížeč vykresluje určitou vizualizaci, nejedná se nejspíš o odkaz na soubor, ale na stránku HTML.
+    Adresa URL poskytnutá Video Indexeru musí odkazovat na soubor média (zvukový nebo video). Jednoduché ověření adresy URL (nebo adresy URL SAS) je vložení do prohlížeče, pokud se soubor začne přehrávat/stahovat, je to nejspíš dobrá adresa URL. Pokud prohlížeč vykresluje určitou vizualizaci, nejedná se nejspíš o odkaz na soubor, ale na stránku HTML.
 
 - Při volání rozhraní API, které získává přehledy ze zadaného videa získáte jako obsah odpovědi podrobný výstup JSON. [Podrobnosti o vráceném JSON najdete v tomto tématu](video-indexer-output-json-v2.md).
 
@@ -215,5 +215,5 @@ Debug.WriteLine(playerWidgetLink);
 ## <a name="next-steps"></a>Další kroky
 
 - [Projděte si podrobnosti výstupního formátu JSON.](video-indexer-output-json-v2.md)
-- Podívejte se na [vzorový kód](https://github.com/Azure-Samples/media-services-video-indexer) , který ukazuje důležité aspekty nahrávání a indexování videa. Po probíhal kódu získáte dobrou představu o použití našeho rozhraní API pro základní funkce. Nezapomeňte si přečíst vložené komentáře a poznamenat naše rady k osvědčeným postupům.
+- Podívejte se na [vzorový kód](https://github.com/Azure-Samples/media-services-video-indexer) , který ukazuje důležité aspekty nahrávání a indexování videa. Následující kód vám poskytne dobrý nápad na použití našeho rozhraní API pro základní funkce. Nezapomeňte si přečíst vložené komentáře a poznamenat naše rady k osvědčeným postupům.
 

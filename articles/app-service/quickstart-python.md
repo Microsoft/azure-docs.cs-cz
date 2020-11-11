@@ -2,16 +2,16 @@
 title: 'Rychlý Start: Vytvoření aplikace v Pythonu'
 description: Začněte s Azure App Service nasazením první aplikace v Pythonu do kontejneru Linux v App Service.
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: c77465997f74d0f279080a68fd317af0d161127a
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b32977ac1c8cfe0c461bcd1628c08a0ca215ba93
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357517"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506188"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
@@ -64,7 +64,7 @@ Tento příkaz otevře prohlížeč pro shromáždění vašich přihlašovacíc
 
 Po přihlášení můžete spustit příkazy Azure pomocí Azure CLI a pracovat s prostředky ve vašem předplatném.
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/FlaskCLIQuickstartHelp)
+Máte problémy? [Dejte nám prosím jistotu](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="clone-the-sample"></a>Vytvoření klonu ukázky
 
@@ -96,7 +96,7 @@ cd python-docs-hello-django
 
 Ukázka obsahuje kód specifický pro rozhraní, který Azure App Service rozpoznat při spuštění aplikace. Další informace najdete v tématu [proces spuštění kontejneru](configure-language-python.md#container-startup-process).
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/FlaskCLIQuickstartHelp)
+Máte problémy? [Dejte nám prosím jistotu](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
@@ -146,7 +146,7 @@ Ukázka obsahuje kód specifický pro rozhraní, který Azure App Service rozpoz
 1. V okně terminálu ukončete vývojový server stisknutím **kombinace kláves CTRL +** + **C** .
 ::: zone-end
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/FlaskCLIQuickstartHelp)
+Máte problémy? [Dejte nám prosím jistotu](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="deploy-the-sample"></a>Nasazení ukázky
 
@@ -167,13 +167,13 @@ Dokončení příkazu může trvat několik minut. Při spuštění poskytuje zp
 
 ![Příklad výstupu příkazu AZ WebApp up](./media/quickstart-python/az-webapp-up-output.png)
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/FlaskCLIQuickstartHelp)
+Máte problémy? Další informace najdete v části [Průvodce odstraňováním potíží](configure-language-python.md#troubleshooting). v opačném případě [nám dejte](https://aka.ms/FlaskCLIQuickstartHelp)informace.
 
 [!include [az webapp up command note](../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>Přechod do aplikace
 
-Ve webovém prohlížeči přejděte do nasazené aplikace na adrese URL `http://<app-name>.azurewebsites.net` . Spuštění aplikace se zpočátku zabere na chvíli.
+Ve webovém prohlížeči přejděte do nasazené aplikace na adrese URL `http://<app-name>.azurewebsites.net` . Spuštění aplikace může trvat minutu nebo dvě, takže pokud se zobrazí stránka výchozí aplikace, počkejte minutu a aktualizujte prohlížeč.
 
 Vzorový kód Pythonu spouští kontejner Linux v App Service pomocí integrované image.
 
@@ -181,7 +181,7 @@ Vzorový kód Pythonu spouští kontejner Linux v App Service pomocí integrovan
 
 **Blahopřejeme!** Nasadili jste aplikaci v Pythonu na App Service.
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/FlaskCLIQuickstartHelp)
+Máte problémy? Další informace najdete v části [Průvodce odstraňováním potíží](configure-language-python.md#troubleshooting). v opačném případě [nám dejte](https://aka.ms/FlaskCLIQuickstartHelp)informace.
 
 ## <a name="redeploy-updates"></a>Znovu nasadit aktualizace
 
@@ -218,7 +218,7 @@ Po dokončení nasazení přepněte zpátky do okna prohlížeče otevřeného n
 
 ![Spuštění aktualizované ukázkové aplikace v Pythonu v Azure](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/FlaskCLIQuickstartHelp)
+Máte problémy? Další informace najdete v části [Průvodce odstraňováním potíží](configure-language-python.md#troubleshooting). v opačném případě [nám dejte](https://aka.ms/FlaskCLIQuickstartHelp)informace.
 
 > [!TIP]
 > Visual Studio Code poskytuje výkonná rozšíření pro Python a Azure App Service, která zjednodušují proces nasazení webových aplikací v Pythonu na App Service. Další informace najdete v tématu [nasazení aplikací v Pythonu pro App Service z Visual Studio Code](/azure/python/tutorial-deploy-app-service-on-linux-01).
@@ -241,7 +241,7 @@ Soubory protokolu můžete také zkontrolovat v prohlížeči na `https://<app-n
 
 Chcete-li zastavit streamování protokolů kdykoli, stiskněte klávesu **CTRL** + **C** v terminálu.
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/FlaskCLIQuickstartHelp)
+Máte problémy? [Dejte nám prosím jistotu](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 
@@ -259,7 +259,7 @@ Výběr aplikace otevře svou stránku **Přehled** , kde můžete provádět z�
 
 V nabídce App Service najdete různé stránky pro konfiguraci vaší aplikace.
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/FlaskCLIQuickstartHelp)
+Máte problémy? Další informace najdete v části [Průvodce odstraňováním potíží](configure-language-python.md#troubleshooting). v opačném případě [nám dejte](https://aka.ms/FlaskCLIQuickstartHelp)informace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -275,7 +275,7 @@ Příkaz používá název skupiny prostředků uložený v souboru *. Azure/con
 
 `--no-wait`Argument umožňuje příkazu vrátit se před dokončením operace.
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/FlaskCLIQuickstartHelp)
+Máte problémy? [Dejte nám prosím jistotu](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="next-steps"></a>Další kroky
 

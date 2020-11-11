@@ -5,14 +5,14 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 363af72df89be9104e4d946bf8da0d44908382d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef5476ade205109f5dfede1b3bb2c3a4ae2e81a7
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776217"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506001"
 ---
-# <a name="question-and-answer-pair-concepts"></a>Koncepty dvojice otázek a odpovědí
+# <a name="question-and-answer-pair"></a>Pár otázek a odpovědí
 
 Znalostní báze se skládá z párů otázek a odpovědí (QnA).  Každý pár má jednu odpověď a pár obsahuje všechny informace spojené s touto _odpovědí_. Odpověď může volně napodobovat řádek databáze nebo instanci datové struktury.
 
@@ -28,8 +28,8 @@ Každý pár je reprezentován **identifikátorem**.
 Mezi **volitelná** nastavení pro pár patří:
 
 * **Alternativní formy otázky** – to pomáhá QnA maker vrátit správnou odpověď na širší řadu otázek.
-* **Metadata**: metadata jsou značky přidružené k páru QnA a jsou reprezentovány jako páry klíč-hodnota. Značky metadat slouží k filtrování párů QnA a omezení sady, u které se provádí párování dotazů.
-* **Víceřádkové výzvy**, které se používají k pokračování vícenásobného zapínání konverzace
+* **Metadata** : metadata jsou značky přidružené k páru QnA a jsou reprezentovány jako páry klíč-hodnota. Značky metadat slouží k filtrování párů QnA a omezení sady, u které se provádí párování dotazů.
+* **Víceřádkové výzvy** , které se používají k pokračování vícenásobného zapínání konverzace
 
 ![QnA Maker základy znalostí](media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 

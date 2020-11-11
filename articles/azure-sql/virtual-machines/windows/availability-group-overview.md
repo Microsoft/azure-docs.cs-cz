@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eb17b8286ce994146c1fa9867cd8131a909c8ace
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146684"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504386"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Skupina dostupnosti Always On u SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -72,29 +72,28 @@ Informace o tom, jak začít, najdete v tématu [Konfigurace naslouchacího proc
 
 Existuje několik možností, jak nasadit skupinu dostupnosti, která se SQL Server na virtuálních počítačích Azure. některé s víc než jiným Automation než jiné. 
 
-Následující tabulka poskytuje porovnání dostupných možností: 
+Následující tabulka poskytuje porovnání dostupných možností:
 
-| |**[portál Azure](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)**|**[Šablony pro rychlý Start](availability-group-quickstart-template-configure.md)**|**[Ruční](availability-group-manually-configure-prerequisites-tutorial.md)** | 
-|---------|---------|---------|--------- |---------|
+| | portál Azure | Azure CLI/PowerShell | Šablony pro rychlý Start | Ruční |
+|---------|---------|---------|---------|---------|
 |**Verze SQL Serveru** |2016 + |2016 +|2016 +|2012 +|
 |**Edice SQL Serveru** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
-|**Verze Windows serveru**| 2016 + | 2016 + | 2016 + | Vše| 
+|**Verze Windows serveru**| 2016 + | 2016 + | 2016 + | Vše|
 |**Vytvoří cluster za vás.**|Yes|Yes | Yes |No|
 |**Vytvoří skupinu dostupnosti pro vás.** |Yes |No|No|No|
 |**Nezávisle vytvoří naslouchací proces a vyrovnávání zatížení.** |No|No|No|Yes|
 |**Je možné vytvořit naslouchací proces DNN pomocí této metody?**|No|No|No|Yes|
-|**Konfigurace kvora služby WSFC** n|Disk s kopií cloudu|Disk s kopií cloudu|Disk s kopií cloudu|Vše|
+|**Konfigurace kvora služby WSFC**|Disk s kopií cloudu|Disk s kopií cloudu|Disk s kopií cloudu|Vše|
 |**DR s více oblastmi** |No|No|No|Yes|
 |**Podpora více podsítí** |Yes|Yes|Yes|Yes|
 |**Podpora pro existující službu AD**|Yes|Yes|Yes|Yes|
 |**DR s více zónami ve stejné oblasti**|Yes|Yes|Yes|Yes|
 |**Distributed AG bez AD**|No|No|No|Yes|
 |**Distribuovaný AG bez clusteru** |No|No|No|Yes|
-||||||
 
+Další informace najdete v tématech [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [šablony rychlý Start](availability-group-quickstart-template-configure.md)a [Ruční](availability-group-manually-configure-prerequisites-tutorial.md).
 
-
-## <a name="considerations"></a>Požadavky 
+## <a name="considerations"></a>Co je potřeba vzít v úvahu 
 
 Na hostovaném clusteru s podporou převzetí služeb při selhání ve virtuálním počítači Azure IaaS doporučujeme použít jednu síťovou kartu na server (uzel clusteru) a jednu podsíť. Sítě Azure mají fyzickou redundanci, která v clusteru hostů virtuálních počítačů Azure IaaS vyžaduje další síťové adaptéry a podsítě, které nejsou potřebné. I když ověřovací zpráva clusteru vydá varování, že uzly jsou dosažitelné pouze v jedné síti, můžete toto varování bezpečně ignorovat ve všech hostovaných clusterech ve virtuálních počítačích Azure IaaS. 
 

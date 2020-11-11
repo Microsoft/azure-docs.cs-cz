@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 444d7f1574cf1517b01250bcb9d810731030182d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f519ac30468d197c14fcf53d386168ebde5cf8ac
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79527788"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504352"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Koncepty serveru v Azure Database for MariaDB
 Tento článek popisuje informace a pokyny pro práci s Azure Database for MariaDB servery.
@@ -45,11 +45,24 @@ Následující prvky vám pomůžou zajistit bezpečný přístup k vaší datab
 | **Brána firewall** | Pro lepší ochranu dat pravidlo brány firewall zabraňuje všem přístupům k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Viz [pravidla brány firewall serveru Azure Database for MariaDB](./concepts-firewall-rules.md). |
 | **SSL** | Služba podporuje vynucování připojení SSL mezi vašimi aplikacemi a vaším databázovým serverem. Pokud chcete bezpečně připojit k Azure Database for MariaDB, přečtěte si téma [Konfigurace připojení SSL ve vaší aplikaci](./howto-configure-ssl.md). |
 
+## <a name="stopstart-an-azure-database-for-mariadb-preview"></a>Zastavení/spuštění Azure Database for MariaDB (Preview)
+Azure Database for MariaDB vám umožní **zastavit** Server, pokud se nepoužívá, a **Spustit** Server při obnovení aktivity. To je v podstatě hotové, aby se ušetřily náklady na databázové servery a platily jenom za prostředek, který se používá. To je ještě důležitější pro úlohy vývoje a testování, a pokud server používáte jenom během dne. Po zastavení serveru budou všechna aktivní připojení vyhozena. Později, pokud chcete převést Server zpátky do režimu online, můžete použít [Azure Portal](../mysql/how-to-stop-start-server.md) nebo [CLI](../mysql/how-to-stop-start-server.md).
+
+Pokud je server v **zastaveném** stavu, výpočetní služba se neúčtuje. Úložiště se ale nadále bude účtovat, protože úložiště serveru zůstává, aby se zajistilo, že datové soubory budou k dispozici, až se server znovu spustí.
+
+> [!IMPORTANT]
+> Když **zastavíte** Server, zůstane v tomto stavu po dobu dalších 7 dnů roztažení. Pokud ji během této doby **nespustíte** ručně, server bude automaticky spuštěn na konci 7 dnů. Pokud nepoužíváte server, můžete ho znovu **zastavit** .
+
+Během tohoto časového serveru nelze na serveru provádět žádné operace správy. Aby bylo možné změnit nastavení konfigurace na serveru, bude nutné [spustit server](../mysql/how-to-stop-start-server.md).
+
+### <a name="limitations-of-stopstart-operation"></a>Omezení operace zastavení/spuštění
+- Nepodporováno s konfigurací repliky pro čtení (zdroj a repliky).
+
 ## <a name="how-do-i-manage-a-server"></a>Návody spravovat Server?
 Azure Database for MariaDB servery můžete spravovat pomocí Azure Portal nebo rozhraní příkazového řádku Azure.
 
 ## <a name="next-steps"></a>Další kroky
 - Přehled služby najdete v tématu [přehled Azure Database for MariaDB](./overview.md) .
-- Informace o konkrétních kvótách prostředků a omezeních založených na vaší **úrovni služby**najdete v tématu [úrovně služeb](./concepts-pricing-tiers.md) .
+- Informace o konkrétních kvótách prostředků a omezeních založených na vaší **úrovni služby** najdete v tématu [úrovně služeb](./concepts-pricing-tiers.md) .
 
 <!-- - For information about connecting to the service, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md). -->

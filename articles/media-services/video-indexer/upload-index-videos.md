@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 11/10/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ea1df2937c6ae771407e4adf839c9ff0fa9f7f5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a5106e1089e2353d2db884977eb51a4fd2717b99
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218951"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506171"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -26,7 +26,7 @@ Při nahrávání videí pomocí rozhraní API Video Indexeru máte následujíc
 * Odeslat videosoubor jako pole bajtů v textu žádosti
 * Pokud chcete použít existující aktivum služby Azure Media Services, zadejte [ID aktiva](../latest/assets-concept.md) (tato možnost se podporuje pouze u placených účtů).
 
-Po nahrání videa Video Indexer (volitelně) zakóduje video (popsané v článku). Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantou vytvoříte účet Video Indexeru, který je [spojený s vaším předplatným Azure a účtem služby Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Media. 
+Po nahrání videa Video Indexer (volitelně) zakóduje video (popsané v článku). Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantou vytvoříte účet Video Indexeru, který je [spojený s vaším předplatným Azure a účtem služby Azure Media Services](connect-to-azure.md). Platíte za minuty, další informace najdete v tématu [Media Services ceny](https://azure.microsoft.com/pricing/details/media-services/).
 
 V tomto článku se dozvíte, jak nahrát a indexovat videa pomocí těchto možností:
 
@@ -79,7 +79,7 @@ Seznam formátů souborů, které můžete použít s Video Indexer, najdete v �
 1. Když se vaše video nahraje na server, začne ho Video Indexer indexovat a analyzovat.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Nahrát":::
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Průběh nahrávání":::
 1. Po dokončení analýzy Video Indexer obdržíte e-mail s odkazem na vaše video a stručný popis toho, co bylo ve videu nalezeno. Například: lidé, témata, OCR.
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>Nahrání a indexování pomocí rozhraní API
@@ -118,7 +118,7 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
         
     - Příklad: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&FaceID = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&person = Inigo_Montoya 
 
-##### <a name="notes"></a>Poznámky
+##### <a name="other-considerations"></a>Další důležité informace
 
 - Video Indexer vrátí všechny existující parametry zadané v původní adrese URL.
 - Zadaná adresa URL musí být kódovaná.
@@ -140,7 +140,7 @@ Cena závisí na vybrané možnosti indexování.
 
 #### <a name="priority"></a>upřednostněn
 
-Videa se indexují Video Indexer podle jejich priority. Pro určení priority indexu použijte parametr **priority** . Platné jsou následující hodnoty: **Nízká**, **normální** (výchozí) a **Vysoká**.
+Videa se indexují Video Indexer podle jejich priority. Pro určení priority indexu použijte parametr **priority** . Platné jsou následující hodnoty: **Nízká** , **normální** (výchozí) a **Vysoká**.
 
 Parametr **priority** se podporuje jenom pro placené účty.
 
@@ -176,7 +176,7 @@ Po zkopírování tohoto kódu na vývojovou platformu budete muset zadat dva pa
     Pokud chcete získat klíč rozhraní API, Projděte si tento tok:
 
     * Přejděte na adresu https://api-portal.videoindexer.ai/.
-    * Přihlášení
+    * Přihlásit
     * Přejít na **Products**  ->  **Authorization**  ->  **předplatné autorizační autorizace** na produkty
     * Zkopírování **primárního klíče**
 * Adresa URL videa – adresa URL videosouboru nebo zvukového souboru, který se má indexovat. Adresa URL musí odkazovat na soubor média (stránky HTML nejsou podporované). Soubor se dá chránit přístupovým tokenem poskytnutým jako součást identifikátoru URI a koncový bod poskytující soubor musí být zabezpečený pomocí protokolu TLS 1.2 nebo vyššího. Adresa URL musí být zakódovaná.

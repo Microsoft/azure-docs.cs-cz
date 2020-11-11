@@ -4,12 +4,12 @@ description: Automatické škálování v Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: e89cf36e59ab26ec220d1125162a841fc10f0e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd7c1582cdb4b2b1b72d3f969ad08879d208785f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567260"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505833"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Přehled automatického škálování v Microsoft Azure
 Tento článek popisuje, co Microsoft Azure automatické škálování, jeho výhody a jak ho začít používat.  
@@ -63,9 +63,9 @@ Automatické škálování používá následující terminologii a strukturu.
 
   - **Profil automatického škálování** je kombinací:
 
-    - **Nastavení kapacity**, které označuje minimální, maximální a výchozí hodnoty pro počet instancí.
-    - **sada pravidel**, z nichž každá zahrnuje Trigger (čas nebo metriku) a akci škálování (nahoru nebo dolů).
-    - **opakování**, které indikuje, že by měl tento profil platit jako automatické škálování.
+    - **Nastavení kapacity** , které označuje minimální, maximální a výchozí hodnoty pro počet instancí.
+    - **sada pravidel** , z nichž každá zahrnuje Trigger (čas nebo metriku) a akci škálování (nahoru nebo dolů).
+    - **opakování** , které indikuje, že by měl tento profil platit jako automatické škálování.
 
       Můžete mít několik profilů, které vám umožní pořídit různé překrývající se požadavky. Můžete mít různé profily automatického škálování pro různé denní dny nebo dny v týdnu, například.
 
@@ -102,7 +102,7 @@ Automatické škálování můžete nastavit přes
 | Virtual Machines: klasický |[Škálování skupin dostupnosti klasických virtuálních počítačů](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | Virtual Machines: Windows Scale Sets |[Škálování virtuálních počítačů s měřítkem ve Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtual Machines: Linux Scale Sets |[Škálování virtuálních počítačů na úrovni systému Linux](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
-| Virtual Machines: příklad Windows |[Rozšířená konfigurace automatického škálování pomocí šablon Správce prostředků pro VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
+| Virtual Machines: příklad Windows |[Rozšířená konfigurace automatického škálování pomocí šablon Správce prostředků pro VM Scale Sets](autoscale-virtual-machine-scale-sets.md) |
 | Azure App Service |[Horizontální navýšení kapacity aplikace v Azure App Service](../../app-service/manage-scale-up.md)|
 | Služba API Management|[Automatické škálování instance služby Azure API Management](../../api-management/api-management-howto-autoscale.md)
 | Clustery Azure Průzkumník dat|[Správa škálování clusterů Azure Průzkumník dat, aby se vešly měnící se požadavky](/azure/data-explorer/manage-cluster-horizontal-scaling)|

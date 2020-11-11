@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c9dcb2fa8be22c21cc2b005cce1bf8bb1c614381
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324276"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505066"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>Rychlý Start: vytvoření vyhrazeného fondu SQL (ve verzi Preview) pomocí Azure Portal
 
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit vyhrazený fond SQL v pracovn
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor synapse](./quickstart-create-workspace.md)
@@ -59,6 +59,9 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 3. Až skončíte, vyberte **Další: Další nastavení**.
 4. Pokud chcete zřídit vyhrazený fond SQL bez dat, vyberte **none** . Ponechte vybranou výchozí kolaci.
+
+    Pokud chcete obnovit vyhrazený fond SQL z bodu obnovení, vyberte **bod obnovení**. Další informace o tom, jak provést obnovení, najdete v tématu [Postup: obnovení existujícího vyhrazeného fondu SQL.](backuprestore/restore-sql-pool.md)
+
 ![vyhrazený fond SQL vytvořit tok – karta Další nastavení.](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
 5. Vyberte **Zkontrolovat a vytvořit**.

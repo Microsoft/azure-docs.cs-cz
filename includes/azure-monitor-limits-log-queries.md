@@ -8,26 +8,26 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
-ms.openlocfilehash: 83754842eeb4b5d609596045c11451e898960b9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83e046ca97ceee249e707e30f478fad89345f4de
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90064857"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504058"
 ---
 ### <a name="general-query-limits"></a>Obecné limity dotazů
 
-| Omezení | Description |
+| Omezení | Popis |
 |:---|:---|
 | Dotazovací jazyk | Azure Monitor používá stejný [dotazovací jazyk Kusto](/azure/kusto/query/) jako Azure Průzkumník dat. Viz [rozdíly v jazyce Azure monitor protokolu dotazu](../articles/azure-monitor/log-query/data-explorer-difference.md) pro prvky jazyka KQL, které nejsou v Azure monitor podporovány. |
-| Oblast Azure | Dotazy protokolů můžou mít nadměrné nároky na to, kdy data jsou Log Analytics pracovní prostory ve více oblastech Azure. Podrobnosti najdete v tématu [omezení dotazů](../articles/azure-monitor/log-query/scope.md#query-limits) . |
+| Oblast Azure | Dotazy protokolů můžou mít nadměrné nároky na to, kdy data jsou Log Analytics pracovní prostory ve více oblastech Azure. Podrobnosti najdete v tématu [omezení dotazů](../articles/azure-monitor/log-query/scope.md#query-scope-limits) . |
 | Dotazy napříč prostředky | Maximální počet Application Insightsch prostředků a Log Analytics pracovních prostorů v jednom dotazu omezený na 100.<br>Dotaz mezi prostředky není v Návrháři zobrazení podporován.<br>Dotaz na více prostředků v upozorněních protokolu se podporuje v novém rozhraní scheduledQueryRules API.<br>Podrobnosti najdete v tématu [omezení dotazů mezi prostředky](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits) . |
 
 ### <a name="user-query-throttling"></a>Omezování uživatelských dotazů
 Azure Monitor má několik omezení omezování ochrany proti uživatelům, kteří odesílají nadměrný počet dotazů. Takové chování může potenciálně přetížit systémové prostředky back-endu a ohrozit odezvu služby. Následující omezení jsou navržená tak, aby chránila zákazníky před přerušením a zajistila konzistenci úrovně služeb. Omezení uživatelů a omezení jsou navržena tak, aby ovlivnila pouze extrémní využití a neměla by být relevantní pro obvyklé využití.
 
 
-| Measure | Omezení na uživatele | Description |
+| Measure | Omezení na uživatele | Popis |
 |:---|:---|:---|
 | Souběžné dotazy | 5 | Pokud již existuje 5 dotazů, které jsou spuštěny pro uživatele, všechny nové dotazy jsou umístěny do fronty souběžnosti pro jednotlivé uživatele. Když jeden ze spuštěných dotazů skončí, další dotaz se načte z fronty a spustí se. Nezahrnuje dotazy z pravidel výstrah.
 | Čas ve frontě souběžnosti | 3 minuty | Pokud dotaz zůstane ve frontě déle než 3 minuty bez spuštění, bude ukončen chybovou odpovědí HTTP s kódem 429. |

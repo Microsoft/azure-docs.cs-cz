@@ -13,12 +13,14 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 9f063b147fbddaeaa7888af755dba8f325d4fe0f
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+- fasttrack-edit
+- iot
+ms.openlocfilehash: 4e06edaf6323c13b3a5af037b5b85b5b0acecc79
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899100"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505644"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -44,7 +46,7 @@ Port MQTT (8883) je blokován v mnoha firemních a vzdělávacích prostředích
 
 ## <a name="using-the-device-sdks"></a>Používání sad SDK pro zařízení
 
-Sady [SDK pro zařízení](https://github.com/Azure/azure-iot-sdks) , které podporují protokol MQTT, jsou k dispozici pro jazyky Java, Node.js, C, C# a Python. Sady SDK pro zařízení používají standardní připojovací řetězec IoT Hub k navázání připojení ke službě IoT Hub. Aby bylo možné používat protokol MQTT, musí být parametr klientského protokolu nastaven na hodnotu **MQTT** . V parametru protokolu klienta můžete také zadat MQTT přes webové sokety. Sady SDK pro zařízení se ve výchozím nastavení připojují k IoT Hub s příznakem **CleanSession** nastaveným na **hodnotu 0** a používají **technologii QoS 1** pro výměnu zpráv se službou IoT Hub. I když je možné nakonfigurovat **technologii QoS 0** pro rychlejší výměnu zpráv, měli byste si uvědomit, že doručení není zaručené ani potvrzené. Z tohoto důvodu se **technologie QoS 0** často označuje jako "oheň" a "zapomenout".
+Sady [SDK pro zařízení](https://github.com/Azure/azure-iot-sdks) , které podporují protokol MQTT, jsou k dispozici pro jazyky Java, Node.js, C, C# a Python. Sady SDK pro zařízení používají standardní připojovací řetězec IoT Hub k navázání připojení ke službě IoT Hub. Aby bylo možné používat protokol MQTT, musí být parametr klientského protokolu nastaven na hodnotu **MQTT**. V parametru protokolu klienta můžete také zadat MQTT přes webové sokety. Sady SDK pro zařízení se ve výchozím nastavení připojují k IoT Hub s příznakem **CleanSession** nastaveným na **hodnotu 0** a používají **technologii QoS 1** pro výměnu zpráv se službou IoT Hub. I když je možné nakonfigurovat **technologii QoS 0** pro rychlejší výměnu zpráv, měli byste si uvědomit, že doručení není zaručené ani potvrzené. Z tohoto důvodu se **technologie QoS 0** často označuje jako "oheň" a "zapomenout".
 
 Když je zařízení připojené ke službě IoT Hub, poskytují sady SDK pro zařízení metody, které umožní zařízení vyměňovat zprávy se službou IoT Hub.
 
@@ -79,11 +81,11 @@ Aby se zajistilo, že připojení typu klient/IoT Hub zůstane aktivní, služba
 
 |Jazyk  |Výchozí interval Keep-Alive  |Konfigurovatelné  |
 |---------|---------|---------|
-|Node.js     |   180 sekund      |     Ne    |
-|Java     |    230 sekund     |     Ne    |
+|Node.js     |   180 sekund      |     No    |
+|Java     |    230 sekund     |     No    |
 |C     | 240 sekund |  [Ano](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 sekund |  [Ano](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python   | 60 sekund |  Ne   |
+|Python   | 60 sekund |  No   |
 
 Po [specifikaci MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)je interval časového limitu pro udržování připojení IoT Hub, což je 1,5 časů hodnoty Keep-Alive klienta. IoT Hub ale omezuje maximální časový limit na straně serveru na 29,45 minut (1767 sekund), protože všechny služby Azure jsou svázané s časovým limitem nečinnosti protokolu TCP pro vyrovnávání zatížení Azure, což je 29,45 minut. 
 
@@ -139,7 +141,7 @@ Tato složka obsahuje dva příkazy vzorů, které se používají s nástrojem 
 
 Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále připojit k koncovým bodům veřejných zařízení pomocí protokolu MQTT na portu 8883. V paketu **připojení** by mělo zařízení používat následující hodnoty:
 
-* V poli **ClientID** použijte **deviceId** .
+* V poli **ClientID** použijte **deviceId**.
 
 * V poli **uživatelské jméno** použijte `{iothubhostname}/{device_id}/?api-version=2018-06-30` , kde `{iothubhostname}` je kompletní záznam CNAME služby IoT Hub.
 
@@ -162,7 +164,7 @@ Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále
 
 1. Rozbalte kartu **zařízení Azure IoT Hub** v levém dolním rohu Visual Studio Code.
   
-2. Klikněte pravým tlačítkem na zařízení a vyberte **Generovat token SAS pro zařízení** .
+2. Klikněte pravým tlačítkem na zařízení a vyberte **Generovat token SAS pro zařízení**.
   
 3. Nastavte **čas vypršení platnosti** a stiskněte klávesu ENTER.
   
@@ -283,7 +285,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Posílání zpráv ze zařízení do cloudu
 
-Po úspěšném připojení může zařízení posílat zprávy, které se IoT Hub pomocí `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` **názvu tématu** nebo. `{property_bag}`Prvek umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Příklad:
+Po úspěšném připojení může zařízení posílat zprávy, které se IoT Hub pomocí `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` **názvu tématu** nebo. `{property_bag}`Prvek umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Například:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -298,13 +300,14 @@ Následuje seznam IoT Hub chování specifické pro implementaci:
 
 * IoT Hub nezachovají uchování zpráv. Pokud zařízení pošle zprávu s příznakem **zachovat** nastaveným na 1, IoT Hub do zprávy přidá vlastnost aplikace **MQTT-uchovat** . V takovém případě se místo uchování zprávy o zachovává IoT Hub předává do back-endové aplikace.
 
-* IoT Hub podporuje jenom jedno aktivní připojení MQTT pro každé zařízení. Jakékoli nové připojení MQTT pro stejné ID zařízení způsobí, že IoT Hub vynechá existující připojení.
+* IoT Hub podporuje jenom jedno aktivní připojení MQTT pro každé zařízení. Jakékoli nové připojení MQTT pro stejné ID zařízení způsobí, že IoT Hub ztratí existující připojení a **400027 ConnectionForcefullyClosedOnNewConnection** se přihlásí k protokolům IoT Hub
+
 
 Další informace najdete v tématu [Příručka pro vývojáře pro zasílání zpráv](iot-hub-devguide-messaging.md).
 
 ## <a name="receiving-cloud-to-device-messages"></a>Příjem zpráv z cloudu na zařízení
 
-Pokud chcete dostávat zprávy z IoT Hub, zařízení by se mělo přihlásit `devices/{device_id}/messages/devicebound/#` jako **Filtr tématu** . Zástupný znak na více úrovních `#` v rámci filtru tématu slouží pouze k tomu, aby zařízení přijímalo další vlastnosti v názvu tématu. IoT Hub nepovoluje použití `#` `?` zástupných znaků nebo pro filtrování dílčích témat. Vzhledem k tomu, že IoT Hub není modul pro zasílání zpráv typu Pub pro obecné účely, podporuje pouze dokumentované názvy témat a filtry témat.
+Pokud chcete dostávat zprávy z IoT Hub, zařízení by se mělo přihlásit `devices/{device_id}/messages/devicebound/#` jako **Filtr tématu**. Zástupný znak na více úrovních `#` v rámci filtru tématu slouží pouze k tomu, aby zařízení přijímalo další vlastnosti v názvu tématu. IoT Hub nepovoluje použití `#` `?` zástupných znaků nebo pro filtrování dílčích témat. Vzhledem k tomu, že IoT Hub není modul pro zasílání zpráv typu Pub pro obecné účely, podporuje pouze dokumentované názvy témat a filtry témat.
 
 Zařízení neobdrží žádné zprávy od IoT Hub, dokud se úspěšně přihlásí k odběru koncového bodu specifického pro zařízení, reprezentovaného `devices/{device_id}/messages/devicebound/#` filtrem tématu. Po navázání předplatného zařízení obdrží zprávy typu cloud-zařízení, které se do ní poslaly po uplynutí doby platnosti předplatného. Pokud se zařízení připojí s příznakem **CleanSession** nastaveným na **hodnotu 0** , předplatné se trvale zachová napříč různými relacemi. V takovém případě se při příštím připojení zařízení k **CleanSession 0** obdrží všechny nedokončené zprávy, které se do ní odesílají během odpojení. Pokud zařízení používá příznak **CleanSession** nastavené na **1** , ale neobdrží žádné zprávy z IoT Hub, dokud se přihlásí k odběru koncového bodu zařízení.
 
@@ -328,7 +331,7 @@ Když se aplikace zařízení přihlásí k odběru tématu s **QoS 2** , IoT Hu
 
 ## <a name="retrieving-a-device-twins-properties"></a>Načítají se vlastnosti vlákna zařízení.
 
-Nejdřív se zařízení přihlásí k odběru `$iothub/twin/res/#` , aby mohl přijímat odpovědi na operaci. Pak pošle prázdnou zprávu do tématu `$iothub/twin/GET/?$rid={request id}` s vyplněnou hodnotou **ID žádosti** . Služba pak pošle zprávu odpovědi obsahující data zařízení s dvojitým obsahem v tématu s `$iothub/twin/res/{status}/?$rid={request id}` použitím stejného **ID žádosti** jako požadavek.
+Nejdřív se zařízení přihlásí k odběru `$iothub/twin/res/#` , aby mohl přijímat odpovědi na operaci. Pak pošle prázdnou zprávu do tématu `$iothub/twin/GET/?$rid={request id}` s vyplněnou hodnotou **ID žádosti**. Služba pak pošle zprávu odpovědi obsahující data zařízení s dvojitým obsahem v tématu s `$iothub/twin/res/{status}/?$rid={request id}` použitím stejného **ID žádosti** jako požadavek.
 
 ID žádosti může být libovolná platná hodnota pro hodnotu vlastnosti zprávy, podle příručky pro [IoT Hub zasílání zpráv pro odesílání](iot-hub-devguide-messaging.md)a stav je ověřen jako celé číslo.
 
@@ -370,7 +373,7 @@ Následující text popisuje, jak zařízení aktualizuje hlášené vlastnosti 
 
 3. Služba pak pošle zprávu odpovědi, která obsahuje novou hodnotu ETag pro nahlášenou kolekci vlastností v tématu `$iothub/twin/res/{status}/?$rid={request id}` . Tato zpráva odpovědi používá stejné **ID požadavku** jako požadavek.
 
-Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro hlášené vlastnosti. Každý člen v dokumentu JSON aktualizuje nebo přidá odpovídajícího člena do dokumentu vlákna v zařízení. Sada členů, která `null` odstraní člena z objektu, který jej obsahuje. Příklad:
+Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro hlášené vlastnosti. Každý člen v dokumentu JSON aktualizuje nebo přidá odpovídajícího člena do dokumentu vlákna v zařízení. Sada členů, která `null` odstraní člena z objektu, který jej obsahuje. Například:
 
 ```json
 {
@@ -408,7 +411,7 @@ Další informace najdete v příručce pro [vývojáře v zařízení](iot-hub-
 
 ## <a name="receiving-desired-properties-update-notifications"></a>Přijímání oznámení o aktualizaci požadovaných vlastností
 
-Když je zařízení připojené, IoT Hub odesílá oznámení do tématu `$iothub/twin/PATCH/properties/desired/?$version={new version}` , které obsahuje obsah aktualizace provedené back-endu řešení. Příklad:
+Když je zařízení připojené, IoT Hub odesílá oznámení do tématu `$iothub/twin/PATCH/properties/desired/?$version={new version}` , které obsahuje obsah aktualizace provedené back-endu řešení. Například:
 
 ```json
 {

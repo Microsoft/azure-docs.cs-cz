@@ -2,16 +2,16 @@
 title: Azure Event Grid – partnerské události
 description: Posílání událostí od partnerů Event Grid SaaS a PaaS od jiných výrobců přímo ke službám Azure pomocí Azure Event Grid.
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 87d1d40b3696229344b0b5c20d06d9d993a514a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102882"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506140"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Partnerské události v Azure Event Grid (Preview)
-Funkce **partnerských událostí** umožňuje poskytovateli SaaS třetí strany publikovat události ze svých služeb, aby byly dostupné pro uživatele, kteří se můžou přihlásit k odběru těchto událostí. Nabízí prostředí jako první strana pro zdroje událostí třetích stran tím, že zveřejňuje typ [tématu](concepts.md#topics) , **Partnerská část** , kterou předplatitelé používají ke využívání událostí. Nabízí také čistý model Pub-sub, který odděluje obavy a vlastnictví prostředků, které používají vydavatelé a předplatitelé událostí.
+Funkce **partnerských událostí** umožňuje poskytovateli SaaS třetí strany publikovat události ze svých služeb, aby se uživatelé mohli k těmto událostem přihlásit. Tato funkce nabízí prostředí první strany pro zdroje událostí třetích stran tím, že zveřejňuje typ [tématu](concepts.md#topics) , **Partnerská část**. Předplatitelé vytvářejí v tomto tématu předplatná pro využívání událostí. Poskytuje taky čistý model pro publikování na základě oddělení obav a vlastnictví prostředků, které používají vydavatelé a předplatitelé událostí.
 
 > [!NOTE]
 > Pokud s použitím Event Grid začínáte, přečtěte si téma [Přehled](overview.md), [Koncepty](concepts.md)a [obslužné rutiny událostí](event-handlers.md).
@@ -75,6 +75,20 @@ Kanál událostí je zrcadlený prostředek k tématu partnera. Když Vydavatel 
 
 ## <a name="resources-managed-by-subscribers"></a>Prostředky spravované předplatiteli 
 Předplatitelé můžou používat témata partnerů definovaná vydavatelem a jedná se o jediný typ prostředku, který vidí a spravuje. Po vytvoření partnerského tématu může uživatel předplatitele vytvořit odběry událostí definující pravidla filtru na [cíle nebo obslužné rutiny událostí](overview.md#event-handlers). Pro předplatitele téma Partnerská a přidružená předplatná událostí poskytují stejné možnosti jako [vlastní témata](custom-topics.md) a jejich související odběry s jedním významným rozdílem: Partnerská témata podporují jenom [schéma Cloud Events 1,0](cloudevents-schema.md), které poskytuje bohatší sadu funkcí než jiná podporovaná schémata.
+
+Následující obrázek ukazuje tok operací řízení roviny.
+
+:::image type="content" source="./media/partner-events-overview/partner-control-plane-flow.png" alt-text="Události partnerů – tok řízení řízení":::
+
+1. Vydavatel vytvoří **registraci partnera**. Registrace partnerů jsou globální. To znamená, že nejsou přidruženy ke konkrétní oblasti Azure. Tento krok je volitelný.
+1. Vydavatel vytvoří **obor názvů partnera** v konkrétní oblasti.
+1. Když se předplatitel 1 pokusí vytvořit partnerský předmět, v předplatném Azure vydavatele se nejprve vytvoří **kanál událostí** , kanál událostí 1.
+1. V rámci předplatného Azure předplatitele se pak vytvoří **příbuzné** téma 1. Předplatitel musí aktivovat téma partnera. 
+1. Předplatitel 1 vytvoří **předplatné Azure Logic Apps** pro partnera 1.
+1. Předplatitel 1 vytvoří **předplatné služby Azure Blob Storage** pro partnery s tématem 1. 
+1. Když se předplatitele 2 pokusí vytvořit partnerské téma, v předplatném Azure vydavatele se nejprve vytvoří jiný **kanál událostí** , kanál událostí 2. 
+1. Pak se v rámci předplatného Azure druhého předplatitele vytvoří **téma partner** , Partnerská část 2. Předplatitel musí aktivovat téma partnera. 
+1. Předplatitel 2 vytvoří **Azure Functions předplatné** pro partnera 2. 
 
 ## <a name="pricing"></a>Ceny
 Témata týkající se partnerů se účtují podle počtu operací, které se provádí při použití Event Grid. Další informace o všech typech operací, které se používají jako základ pro fakturaci a podrobné informace o cenách, najdete v článku [Event Grid ceny](https://azure.microsoft.com/pricing/details/event-grid/).
