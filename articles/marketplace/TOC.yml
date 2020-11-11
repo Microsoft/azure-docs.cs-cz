@@ -37,6 +37,10 @@
           href: test-drive-technical-configuration.md
         - name: Testovací verze pro Azure Resource Manager
           href: azure-resource-manager-test-drive.md
+        - name: Podrobná konfigurace pro hostovanou testovací verzi
+          href: test-drive-hosted-detailed-config.md
+        - name: Nastavení předplatného Azure pro hostované testovací verze
+          href: test-drive-azure-subscription-setup.md
     - name: Přisuzování využití ze strany zákazníků partnerům Azure
       href: azure-partner-customer-usage-attribution.md
     - name: Možnosti pro uvedení na trh
@@ -270,15 +274,15 @@
     - name: Analýzy komerčního marketplace
       href: partner-center-portal/analytics.md
     - name: Souhrnný řídicí panel
-      href: partner-center-portal/summary-dashboard.md
+      href: summary-dashboard.md
     - name: Řídicí panel objednávek
-      href: partner-center-portal/orders-dashboard.md
+      href: orders-dashboard.md
     - name: Řídicí panel využití
-      href: partner-center-portal/usage-dashboard.md
+      href: usage-dashboard.md
     - name: Řídicí panel zákazníků
-      href: partner-center-portal/customer-dashboard.md
+      href: customer-dashboard.md
     - name: Řídicí panel přehledů Marketplace
-      href: partner-center-portal/insights-dashboard.md
+      href: insights-dashboard.md
     - name: Řídicí panel stahování
       href: partner-center-portal/downloads-dashboard.md
     - name: Řídicí panel hodnocení a recenzí

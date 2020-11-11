@@ -58,6 +58,8 @@
               href: class-type-matlab.md
             - name: SolidWorks – návrh s podporou počítačů (CAD)
               href: class-type-solidworks.md
+            - name: Project Lead the Way
+              href: class-type-pltw.md
         - name: Použití Azure Lab Services v rámci Teams
           items:
             - name: Přehled

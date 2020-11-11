@@ -24,6 +24,8 @@
       href: howto-add-update-pull-secret.md
     - name: Konfigurace předávání DNS pro cluster Azure Red Hat OpenShift 4
       href: dns-forwarding.md
+    - name: Konfigurace integrovaného registru kontejnerů pro Azure Red Hat OpenShift 4
+      href: built-in-container-registry.md
     - name: Konfigurace ověřování Active Directory pro cluster Azure Red Hat OpenShift 4
       items:
         - name: Konfigurace ověřování Azure Active Directory (CLI)
@@ -44,6 +46,10 @@
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
             - name: Zakázání Azure Monitoru pro kontejnery v Azure Red Hat OpenShiftu 3.11 (Preview)
               href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: Otevření aplikace Open/WebSphere Liberty v clusteru platformy Azure Red Hat OpenShift 4
+      items:
+        - name: Nasazení aplikace Open/WebSphere Liberty v clusteru platformy Azure Red Hat OpenShift 4
+          href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11
       items:
         - name: Nastavení vývojového prostředí Azure Red Hat OpenShift pro Azure Red Hat OpenShift 3.11

@@ -171,7 +171,7 @@
           href: sql/overview-features.md
         - name: Modely spotřeby prostředků
           href: sql/resource-consumption-models.md
-        - name: Zpracovaná data
+        - name: Správa nákladů pro bezserverový fond SQL
           href: sql/data-processed.md
         - name: Osvědčené postupy pro bezserverové fondy SQL
           href: sql/best-practices-sql-on-demand.md
@@ -996,6 +996,8 @@
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Rozhraní REST API
       href: /rest/api/synapse/
+    - name: Nástroje Microsoft Sparku
+      href: ./spark/microsoft-spark-utilities.md
     - name: ukázky
       href: 'https://github.com/Azure-Samples/Synapse'
     - name: Systémová zobrazení

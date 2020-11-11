@@ -1,7 +1,11 @@
 - name: Dokumentace ke službě Azure SQL
   href: index.yml
-- name: Co je Azure SQL?
-  href: azure-sql-iaas-vs-paas-what-is-overview.md
+- name: Azure SQL
+  items:
+    - name: Co je Azure SQL?
+      href: azure-sql-iaas-vs-paas-what-is-overview.md
+    - name: Migrace na Azure SQL
+      href: migration-guides/index.yml
 - name: Sdílená dokumentace pro SQL DB a MI
   items:
     - name: Nákupní modely
@@ -301,6 +305,16 @@
               href: database/sql-data-sync-sql-server-configure.md
             - name: Migrace SQLite do prostředí bez serveru
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
+    - name: Průvodci migrací
+      items:
+        - name: Z DB2
+          href: migration-guides/database/db2-to-sql-database-guide.md
+        - name: Ze SQL Serveru
+          items:
+            - name: Přehled
+              href: migration-guides/database/sql-server-to-sql-database-overview.md
+            - name: Migrate
+              href: migration-guides/database/sql-server-to-sql-database-guide.md
     - name: Koncepty
       items:
         - name: Architektura připojení
@@ -696,6 +710,18 @@
               href: managed-instance/replication-between-two-instances-configure-tutorial.md
             - name: 'MI pub, MI dist, SQL sub'
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
+    - name: Průvodci migrací
+      items:
+        - name: Z DB2
+          href: migration-guides/managed-instance/db2-to-managed-instance-guide.md
+        - name: Ze SQL Serveru
+          items:
+            - name: Přehled
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-overview.md
+            - name: Migrate
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
+            - name: Standardní hodnoty výkonu
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-performance-baseline.md
     - name: Koncepty
       items:
         - name: Omezení prostředků
@@ -946,7 +972,7 @@
           href: database/arm-templates-content-guide.md?tabs=managed-instance
         - name: Ukázky kódů
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
-- name: SQL Server na virtuálním počítači Azure
+- name: SQL Server na virtuálních počítačích Azure
   items:
     - name: Dokumentace
       href: virtual-machines/index.yml
@@ -1171,6 +1197,14 @@
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: Stack Overflow
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
+    - name: Průvodci migrací
+      items:
+        - name: Přehled
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+        - name: Ze SQL Serveru
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+        - name: Z DB2
+          href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
 - name: Referenční informace
   items:
     - name: Referenční informace k jazyku T-SQL

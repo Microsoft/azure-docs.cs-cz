@@ -199,6 +199,8 @@
           href: bookmarks.md
         - name: Využití živého streamování k proaktivnímu vyhledávání
           href: livestream.md
+        - name: Správa dotazů proaktivního vyhledávání s využitím REST API
+          href: hunting-with-rest-api.md
     - name: Odebrání Azure Sentinelu
       href: offboard.md
 - name: Referenční informace (novinka!)

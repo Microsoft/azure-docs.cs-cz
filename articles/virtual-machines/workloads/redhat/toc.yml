@@ -18,3 +18,5 @@
   href: byos.md
 - name: Rozšířená podpora životního cyklu pro Red Hat Enterprise Linux
   href: redhat-extended-lifecycle-support.md
+- name: Místní upgrade imagí Red Hatu Enterprise v Azure
+  href: redhat-in-place-upgrade.md

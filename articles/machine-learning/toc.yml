@@ -160,6 +160,8 @@
         - name: Přehled zabezpečení podniku
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
+        - name: Šifrování dat
+          href: concept-data-encryption.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
     - name: Zodpovědné strojové učení
@@ -182,14 +184,17 @@
       items:
         - name: Správa identit a přístupu
           items:
-            - name: Nastavení ověřování
+            - name: Ověřování pracovního prostoru
               displayName: 'authentication, auth, oauth'
               href: how-to-setup-authentication.md
-            - name: Správa uživatelů a skupin
+            - name: Ověřování webové služby
+              displayName: 'authentication, model, web service'
+              href: how-to-authenticate-web-service.md
+            - name: Správa přístupu (autorizace)
               href: how-to-assign-roles.md
-            - name: Použití spravovaných identit pro řízení přístupu
+            - name: Spravované identity pro řízení přístupu
               href: how-to-use-managed-identities.md
-            - name: Použití identity Azure AD v nasazeních AKS
+            - name: Identita Azure AD v nasazeních AKS
               href: how-to-use-azure-ad-identity.md
         - name: Zabezpečení sítě
           items:

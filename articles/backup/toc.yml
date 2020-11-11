@@ -158,6 +158,8 @@
           items:
             - name: Správa záloh virtuálních počítačů Azure
               href: backup-azure-manage-vms.md
+            - name: Správa bodů obnovení
+              href: manage-recovery-points.md
     - name: Zálohování databází SQL Serveru na virtuálních počítačích Azure
       items:
         - name: Přehled

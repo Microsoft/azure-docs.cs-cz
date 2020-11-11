@@ -44,7 +44,7 @@
   items:
     - name: Podpora kontejnerů
       href: cognitive-services-container-support.md
-    - name: Značky imagí kontejnerů
+    - name: Poznámky k verzi a značky imagí kontejnerů
       href: ./containers/container-image-tags.md
     - name: Nejčastější dotazy ke kontejnerům
       href: ./containers/container-faq.md

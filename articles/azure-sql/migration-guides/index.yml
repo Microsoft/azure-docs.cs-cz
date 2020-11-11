@@ -1,0 +1,73 @@
+### YamlMime:Landing
+title: Migrace na Azure SQL
+summary: 'Projděte si dokumentaci k migraci na řadu produktů databázových strojů SQL Serveru (Azure SQL) v cloudu: Azure SQL Database, spravovaná instance Azure SQL a SQL Server na virtuálním počítači Azure. '
+metadata:
+  title: Migrace na Azure SQL
+  description: Projděte si dokumentaci, která vám pomůže migrovat na Azure SQL. Je to řada produktů databázových strojů SQL Serveru v cloudu, která zahrnuje plně spravovanou databázi v Azure SQL Database, plně spravovanou instanci v Azure SQL Managed Instance nebo SQL Server nainstalovaný na virtuální počítač v Azure.
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: service
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: sstein
+  ms.date: 11/06/2020
+  ms.openlocfilehash: 940f28fa76a8f735318010eab4b55d464295c25a
+  ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 11/11/2020
+  ms.locfileid: "94495272"
+landingContent:
+- title: Azure SQL Database
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Přehled
+      url: database/sql-server-to-sql-database-overview.md
+    - text: Ze SQL Serveru
+      url: database/sql-server-to-sql-database-guide.md
+    - text: Z DB2
+      url: database/db2-to-sql-database-guide.md
+- title: Spravovaná instance Azure SQL
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Přehled
+      url: managed-instance/sql-server-to-managed-instance-overview.md
+    - text: Ze SQL Serveru
+      url: managed-instance/sql-server-to-managed-instance-guide.md
+    - text: Z DB2
+      url: managed-instance/db2-to-managed-instance-guide.md
+- title: SQL Server na virtuálním počítači Azure
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Přehled
+      url: virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+    - text: Ze SQL Serveru
+      url: virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+    - text: Z DB2
+      url: virtual-machines/db2-to-sql-on-azure-vm-guide.md
+- title: Nástroje pro migraci
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure Migrate
+      url: /azure/migrate/migrate-services-overview
+    - text: Azure Database Migration Service (DMS)
+      url: /azure/dms/dms-overview
+    - text: Data Migration Assistant (DMA)
+      url: /sql/dma/dma-migrateonpremsqltosqldb
+    - text: Transakční replikace
+      url: /sql/relational-databases/replication/transactional/transactional-replication
+    - text: Služba pro import a export / BACPAC
+      url: ../database/database-import.md
+    - text: Hromadná kopie
+      url: /sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server
+    - text: Azure Data Factory
+      url: /azure/data-factory/connector-azure-sql-database
+    - text: Synchronizace dat SQL
+      url: ../database/sql-data-sync-data-sql-server-sql-database.md

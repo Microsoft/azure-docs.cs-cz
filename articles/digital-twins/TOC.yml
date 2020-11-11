@@ -111,7 +111,7 @@
       items:
         - name: Zobrazení metrik v Azure Monitoru
           href: troubleshoot-metrics.md
-        - name: Povolení diagnostických protokolů
+        - name: Povolení diagnostických protokolů a dotazování na ně
           href: troubleshoot-diagnostics.md
         - name: Povolení upozornění
           href: troubleshoot-alerts.md

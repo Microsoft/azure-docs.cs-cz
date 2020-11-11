@@ -29,7 +29,7 @@
 - name: Koncepty
   items:
     - name: Monitorování připojení (Preview)
-      href: connection-monitor-preview.md
+      href: connection-monitor-overview.md
     - name: Diagnostika potíží s filtrováním síťového provozu virtuálních počítačů
       href: network-watcher-ip-flow-verify-overview.md
     - name: Diagnostika pravidel NSG a filtrování provozu
@@ -61,9 +61,9 @@
     - name: Vytvoření funkce Monitorování připojení (Preview)
       items:
         - name: Pomocí webu Azure Portal
-          href: connection-monitor-preview-create-using-portal.md
+          href: connection-monitor-create-using-portal.md
         - name: Pomocí ARMClienta
-          href: connection-monitor-preview-create-using-arm-client.md
+          href: connection-monitor-create-using-template.md
         - name: Použití PowerShellu
           href: connection-monitor-create-using-powershell.md
     - name: Migrace na Monitorování připojení (Preview)

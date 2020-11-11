@@ -36,6 +36,20 @@
       href: quickstart-multi-container.md
 - name: Kurzy
   items:
+    - name: Zabezpečený přístup aplikací k úložišti a Microsoft Graphu
+      items:
+        - name: Přehled
+          href: scenario-secure-app-overview.md
+        - name: Nastavení ověřování pomocí služby App Service
+          href: scenario-secure-app-authentication-app-service.md
+        - name: Zabezpečený přístup aplikací k úložišti
+          href: scenario-secure-app-access-storage.md
+        - name: Zabezpečený přístup aplikací k Microsoft Graphu jako uživatel
+          href: scenario-secure-app-access-microsoft-graph-as-user.md
+        - name: Zabezpečený přístup aplikací k Microsoft Graphu jako aplikace
+          href: scenario-secure-app-access-microsoft-graph-as-app.md
+        - name: Vyčištění prostředků
+          href: scenario-secure-app-clean-up-resources.md
     - name: Aplikace s DB
       items:
         - name: .NET Core s SQL DB

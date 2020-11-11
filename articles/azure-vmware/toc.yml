@@ -100,7 +100,7 @@
   items:
     - name: Řešení potíží
       items:
-        - name: Pomoc s chybami zřizování nebo nasazení
+        - name: Otevření žádosti o podporu pro selhání nasazení
           href: fix-deployment-provisioning-failures.md
     - name: Nejčastější dotazy
       href: faq.md
