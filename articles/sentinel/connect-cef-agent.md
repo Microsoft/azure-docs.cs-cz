@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 6ab02cc7e60870852666c8c01ccc17a1b1102a62
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2f90a7c954fc8930f69dfee3e7b56b394225405a
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742844"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516733"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Krok 1: nasazení serveru pro překládání protokolů
 
@@ -34,19 +34,19 @@ V tomto kroku určíte a nakonfigurujete počítač se systémem Linux, který p
     - naslouchání zpráv syslog z řešení zabezpečení na portu TCP 514
     - předávání pouze zpráv, které identifikuje jako CEF agenta Log Analytics na localhost pomocí portu TCP 25226
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Na určeném počítači se systémem Linux musíte mít zvýšená oprávnění (sudo).
 
-- Je nutné, aby byl v počítači se systémem Linux nainstalován **python 2,7** .<br>Použijte `python -version` příkaz pro kontrolu.
+- Na počítači se systémem Linux musí být nainstalován **python 2,7** nebo **3** .<br>Použijte `python -version` příkaz pro kontrolu.
 
 - Před instalací agenta Log Analytics nesmí být počítač se systémem Linux připojen k žádnému pracovnímu prostoru Azure.
 
-- V určitém okamžiku tohoto procesu možná budete potřebovat ID pracovního prostoru a primární klíč pracovního prostoru. Můžete je najít v prostředku pracovního prostoru v části **Správa agentů** .
+- V určitém okamžiku tohoto procesu možná budete potřebovat ID pracovního prostoru a primární klíč pracovního prostoru. Můžete je najít v prostředku pracovního prostoru v části **Správa agentů**.
 
 ## <a name="run-the-deployment-script"></a>Spuštění zaváděcího skriptu
  
-1. V navigační nabídce Azure Sentinel klikněte na **datové konektory** . V seznamu konektorů klikněte na dlaždici **CEF (Common Event Format)** a pak na tlačítko **otevřít konektor** na pravé straně. 
+1. V navigační nabídce Azure Sentinel klikněte na **datové konektory**. V seznamu konektorů klikněte na dlaždici **CEF (Common Event Format)** a pak na tlačítko **otevřít konektor** na pravé straně. 
 
 1. V části **1,2 instalace kolekce CEF na počítači se systémem Linux** zkopírujte odkaz, který je k dispozici v části **spuštění následujícího skriptu pro instalaci a použití kolekce CEF** , nebo z následujícího textu (místo zástupných symbolů použijte ID pracovního prostoru a primární klíč):
 

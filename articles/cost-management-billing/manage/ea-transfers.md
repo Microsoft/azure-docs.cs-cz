@@ -6,14 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 10/05/2020
 ms.author: banders
-ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: contperfq1
+ms.openlocfilehash: 3222c934998febe79c36121ca816f949b78d374e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371894"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411554"
 ---
 # <a name="azure-enterprise-transfers"></a>Převody Azure Enterprise
 
@@ -93,21 +94,25 @@ Zálohu na Azure nejde převést mezi registracemi. Zůstatky zálohy na Azure j
 
 Při převodu účtu nebo registrace nedochází k výpadkům. Pokud jsou poskytnuté všechny požadované informace, může převod proběhnout tentýž den jako požadavek.
 
+## <a name="transfer-an-enterprise-subscription-to-a-pay-as-you-go-subscription"></a>Přenos předplatného Enterprise na předplatné s průběžnými platbami
+
+Pokud chcete převést předplatné Enterprise na jednotlivé předplatné s průběžnými platbami, musíte na portálu Azure Enterprise vytvořit novou žádost o podporu. Žádost o podporu vytvoříte výběrem možnosti **+ New support request** (+ Nová žádost o podporu) v oblasti **Help and Support** (Nápověda a podpora).
+
 ## <a name="change-account-owner"></a>Změna vlastníka účtu
 
-Na portálu Azure EA můžete převádět předplatná od jednoho vlastníka účtu k jinému. Další informace najdete v tématu o [změně vlastníka účtu](ea-portal-get-started.md#change-account-owner).
+Na portálu Azure EA můžete převádět předplatná od jednoho vlastníka účtu k jinému. Další informace najdete v tématu o [změně vlastníka účtu](ea-portal-administration.md#change-account-owner).
 
 ## <a name="subscription-transfer-effects"></a>Účinek převodu předplatného
 
 Pokud se předplatné Azure převádí do účtu ve stejném tenantovi Azure Active Directory, zachovají si všichni uživatelé, skupiny a instanční objekty, které ke správě prostředků používaly [přístup na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md), stále svůj přístup.
 
-Zobrazení uživatelů s přístupem Azure RBAC k předplatnému:
+Zobrazení uživatelů s přístupem RBAC k předplatnému:
 
 1. Na webu Azure Portal otevřete **Předplatná**.
 2. Vyberte předplatné, které chcete zobrazit, a pak vyberte **Řízení přístupu (IAM)** .
-3. Vyberte **Přiřazení rolí**. Na stránce Přiřazení rolí se zobrazí seznam všech uživatelů, kteří mají k předplatnému přístup Azure RBAC.
+3. Vyberte **Přiřazení rolí**. Na stránce Přiřazení rolí se zobrazí seznam všech uživatelů, kteří mají k předplatnému přístup RBAC.
 
-Pokud se předplatné převede do účtu jiného tenanta Azure AD, tak všichni uživatelé, skupiny a instanční objekty, které měly ke správě prostředků přístup [Azure RBAC](../../role-based-access-control/overview.md), tento přístup _ztratí_. I když neexistuje přístup Azure RBAC, může být přístup k předplatnému dostupný prostřednictvím bezpečnostních mechanismů, jako je například:
+Pokud se předplatné převede do účtu jiného tenanta Azure AD, tak všichni uživatelé, skupiny a instanční objekty, které měly ke správě prostředků přístup [RBAC](../../role-based-access-control/overview.md), tento přístup _ztratí_. I když neexistuje přístup RBAC, může být přístup k předplatnému dostupný prostřednictvím bezpečnostních mechanismů, jako je například:
 
 - Certifikáty pro správu, které udělují uživateli oprávnění správce prostředků předplatného. Další informace najdete v tématu o [vytvoření a nahrání certifikátu pro správu Azure](../../cloud-services/cloud-services-certs-create.md).
 - Přístupové klíče pro služby, jako je Storage. Další informace najdete v tématu [Přehled účtu Azure Storage](../../storage/common/storage-account-overview.md).

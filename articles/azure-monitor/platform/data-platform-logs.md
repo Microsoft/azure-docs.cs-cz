@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 462242b001da5a5a6d2eba8e4bd06315c0b263a6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 35ed275419cc4319e7edfed608340853c986a927
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491859"
+ms.locfileid: "94515621"
 ---
 # <a name="azure-monitor-logs-overview"></a>Přehled protokolů Azure Monitor
-Protokoly Azure Monitor jsou funkcí Azure Monitor, která shromažďuje a uspořádává data protokolů a výkonu z [monitorovaných prostředků](../monitor-reference.md). Data z různých zdrojů, jako jsou [protokoly platforem](platform-logs-overview.md) ze služeb Azure, data protokolů a výkonu z [agentů virtuálních počítačů](agents-overview.md)a data o využití a výkonu [aplikací](../app/app-insights-overview.md) , se dají konsolidovat do jednoho pracovního prostoru, aby je bylo možné analyzovat společně pomocí sofistikovaného dotazovacího jazyka, který je schopný rychle analyzovat miliony záznamů. Můžete provést jednoduchý dotaz, který jednoduše načte konkrétní sadu záznamů, nebo provede propracované analýzy dat, které identifikují kritické vzory v datech monitorování. Pracujte s dotazy protokolů a jejich výsledky interaktivně pomocí Log Analytics, využijte je v pravidlech výstrah k deaktivnímu upozorňování na problémy nebo Vizualizujte své výsledky v sešitu nebo řídicím panelu.
+Protokoly Azure Monitor jsou funkcí Azure Monitor, která shromažďuje a uspořádává data protokolů a výkonu z [monitorovaných prostředků](../monitor-reference.md). Data z různých zdrojů, jako jsou [protokoly platforem](platform-logs-overview.md) ze služeb Azure, data protokolů a výkonu z [agentů virtuálních počítačů](agents-overview.md)a data o využití a výkonu z [aplikací](../app/app-insights-overview.md) , se dají konsolidovat do jednoho pracovního prostoru, aby je bylo možné analyzovat společně pomocí sofistikovaného dotazovacího jazyka, který je schopný rychle analyzovat miliony záznamů. Můžete provést jednoduchý dotaz, který jednoduše načte konkrétní sadu záznamů, nebo provede propracované analýzy dat, které identifikují kritické vzory v datech monitorování. Pracujte s dotazy protokolů a jejich výsledky interaktivně pomocí Log Analytics, využijte je v pravidlech výstrah k deaktivnímu upozorňování na problémy nebo Vizualizujte své výsledky v sešitu nebo řídicím panelu.
 
 > [!NOTE]
 > Protokoly Azure Monitor tvoří jednu polovinu datové platformy, která podporuje Azure Monitor. Druhý je [Azure monitor metriky](data-platform-metrics.md) , které ukládají číselná data do databáze časových řad. Díky tomu jsou tato data přehlednější než data v Azure Monitor protokoly a můžou podporovat scénáře téměř v reálném čase, které jsou zvláště užitečné pro upozorňování a rychlé zjišťování problémů. Metriky, i když můžou ukládat jenom číselná data do konkrétní struktury, zatímco protokoly můžou ukládat různé datové typy z každého s vlastní strukturou. Pomocí dotazů protokolu, které se nedají použít k analýze dat metrik, můžete také provádět komplexní analýzy dat protokolů.

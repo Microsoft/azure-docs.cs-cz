@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4fd8fb2e40fa44c5aec3f14bfd586187c952df0d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: a3af3307892e82ecd0697124954e99837ad5eb9e
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422429"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515689"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informace o analýze kódu zabezpečení společnosti Microsoft
 
@@ -73,7 +73,7 @@ Hesla a další tajné kódy uložené ve zdrojovém kódu jsou významné probl
 
 ### <a name="roslyn-analyzers"></a>Analyzátory Roslyn
 
-Analyzátory Roslyn jsou nástrojem integrovaným kompilátorem Microsoftu pro statickou analýzu spravovaného kódu C# a Visual Basic. Další informace najdete v tématu [analyzátory založené na Roslyn](https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/security-warnings).
+Analyzátory Roslyn jsou nástrojem integrovaným kompilátorem Microsoftu pro statickou analýzu spravovaného kódu C# a Visual Basic. Další informace najdete v tématu [analyzátory založené na Roslyn](/dotnet/fundamentals/code-analysis/quality-rules/security-warnings).
 
 ### <a name="tslint"></a>TSLint
 

@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283482"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517083"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
-V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
+V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
 
 V tomto článku jsou uvedené tyto fáze SDL:
 
@@ -34,11 +34,11 @@ Předpokládejme, že se vaše aplikace bude používat způsobem, který jste n
 
 ### <a name="perform-code-reviews"></a>Provést revize kódu
 
-Před vrácením kódu se změnami proveďte [Revize kódu](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) a zvyšte tak celkovou kvalitu kódu a snižte riziko vytváření chyb. Můžete použít [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) ke správě procesu revize kódu.
+Před vrácením kódu se změnami proveďte [Revize kódu](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) a zvyšte tak celkovou kvalitu kódu a snižte riziko vytváření chyb. Můžete použít [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) ke správě procesu revize kódu.
 
 ### <a name="perform-static-code-analysis"></a>Provedení analýzy statického kódu
 
-[Statická analýza kódu](https://owasp.org/www-community/controls/Static_Code_Analysis) (označovaná také jako *analýza zdrojového kódu*) se obvykle provádí jako součást revize kódu. Analýza statického kódu obvykle odkazuje na spouštění nástrojů pro analýzu statického kódu pro nalezení potenciálních chyb zabezpečení v nespuštěném kódu pomocí technik, jako je [Kontrola chuti](https://en.wikipedia.org/wiki/Taint_checking) a [Analýza toku dat](https://en.wikipedia.org/wiki/Data-flow_analysis).
+[Statická analýza kódu](https://owasp.org/www-community/controls/Static_Code_Analysis) (označovaná také jako *analýza zdrojového kódu* ) se obvykle provádí jako součást revize kódu. Analýza statického kódu obvykle odkazuje na spouštění nástrojů pro analýzu statického kódu pro nalezení potenciálních chyb zabezpečení v nespuštěném kódu pomocí technik, jako je [Kontrola chuti](https://en.wikipedia.org/wiki/Taint_checking) a [Analýza toku dat](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
 Azure Marketplace nabízí [vývojářské nástroje](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) , které provádějí analýzu statického kódu a pomáhají s revizemi kódu.
 
@@ -62,7 +62,7 @@ Proveďte tuto činnost na serveru, nikoli na straně klienta (nebo na straně s
 
 ### <a name="verify-your-applications-outputs"></a>Ověření výstupů aplikace
 
-Jakýkoli výstup, který prezentujete vizuálně nebo v dokumentu, by měl být vždy kódovaný a řídicí. [Uvozovací znaky](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), označované také jako *výstupní kódování*, slouží k zajištění, že nedůvěryhodná data nejsou vozidlo pro útok na injektáže. Uvozovací znaky kombinované s ověřováním dat poskytují vrstvenou obranu za účelem zvýšení zabezpečení systému jako celku.
+Jakýkoli výstup, který prezentujete vizuálně nebo v dokumentu, by měl být vždy kódovaný a řídicí. [Uvozovací znaky](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), označované také jako *výstupní kódování* , slouží k zajištění, že nedůvěryhodná data nejsou vozidlo pro útok na injektáže. Uvozovací znaky kombinované s ověřováním dat poskytují vrstvenou obranu za účelem zvýšení zabezpečení systému jako celku.
 
 Uvozovací znaky zajistí, že se všechny zobrazují jako *výstup.* Uvozovací znaky také umožňuje Překladači zjistit, že data nejsou určena ke spuštění, a tím zabráníte útokům v práci. Toto je další běžná technika útoku označovaná jako *skriptování mezi weby* (XSS).
 
@@ -99,7 +99,7 @@ Pokud aplikace musí automaticky generovat hesla, ujistěte se, že vygenerovan�
 
 Pokud vaše aplikace umožňuje [nahrávání souborů](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload), zvažte opatření, která můžete pro tuto rizikové aktivity provést. Prvním krokem v mnoha útokech je získání škodlivého kódu do systému, který je napadený. K tomu může útočník využít nahrávání souboru. OWASP nabízí řešení pro ověřování souboru, aby se zajistilo, že soubor, který odesíláte, je bezpečný.
 
-Ochrana proti malwaru pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Můžete nainstalovat [Microsoft Antimalware](../fundamentals/antimalware.md) nebo řešení ochrany koncového bodu Microsoft Partner Microsoftu ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)a [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)).
+Ochrana proti malwaru pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Můžete nainstalovat [Microsoft Antimalware](../fundamentals/antimalware.md) nebo řešení ochrany koncového bodu Microsoft Partner Microsoftu ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)a [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
 
 [Microsoft Antimalware](../fundamentals/antimalware.md) obsahuje funkce, jako je ochrana v reálném čase, plánované prohledávání, náprava malwaru, aktualizace signatur, aktualizace modulu, vytváření sestav ukázek a shromažďování událostí vyloučení. Pomocí [Azure Security Center](../../security-center/security-center-partner-integration.md) můžete integrovat řešení Microsoftu proti malwaru a partnerům, aby se usnadnilo nasazení a vestavěné detekce (výstrahy a incidenty).
 

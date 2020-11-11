@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 2e1f94b5a8e361a6bbd34f3f12756377dd1713f4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 62cf7c979be83454ae2433befcdbf4f5d8e5524f
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518708"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516539"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Kurz: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure CLI
 Při vytváření škálovací sady zadáte image, která se použije při nasazení instancí virtuálních počítačů. Pokud chcete snížit počet úloh po nasazení instancí virtuálních počítačů, můžete použít vlastní image virtuálního počítače. Tato vlastní image virtuálního počítače obsahuje instalace a konfigurace všech požadovaných aplikací. Všechny instance virtuálních počítačů vytvořené ve škálovací sadě používají vlastní image virtuálního počítače a jsou připravené k obsluze provozu aplikace. Co se v tomto kurzu naučíte:
@@ -27,11 +27,11 @@ Při vytváření škálovací sady zadáte image, která se použije při nasaz
 > * Sdílení Galerie imagí
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.4.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.4.0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="overview"></a>Přehled
 
@@ -41,7 +41,7 @@ Galerie sdílených imagí umožňuje sdílet vlastní image virtuálních poč�
 
 ## <a name="create-and-configure-a-source-vm"></a>Vytvoření a konfigurace zdrojového virtuálního počítače
 
-Nejprve vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group) a pak vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Tento virtuální počítač se pak použije jako zdroj image. Následující příklad vytvoří virtuální počítač *myVM* ve skupině prostředků *myResourceGroup*:
+Nejprve vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group) a pak vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Tento virtuální počítač se pak použije jako zdroj image. Následující příklad vytvoří virtuální počítač *myVM* ve skupině prostředků *myResourceGroup* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -63,7 +63,7 @@ Veřejná IP adresa vašeho virtuálního počítače se taky zobrazí ve výstu
 ssh azureuser@<publicIpAddress>
 ```
 
-Teď vlastní virtuální počítač přizpůsobte nainstalováním základního webového serveru. Instance virtuálního počítače po nasazení ve škálovací sadě bude obsahovat všechny požadované balíčky ke spuštění webové aplikace. Následujícím způsobem pomocí příkazu `apt-get` nainstalujte *NGINX*:
+Teď vlastní virtuální počítač přizpůsobte nainstalováním základního webového serveru. Instance virtuálního počítače po nasazení ve škálovací sadě bude obsahovat všechny požadované balíčky ke spuštění webové aplikace. Následujícím způsobem pomocí příkazu `apt-get` nainstalujte *NGINX* :
 
 ```bash
 sudo apt-get install -y nginx
@@ -77,7 +77,7 @@ Galerie imagí je primární prostředek, který slouží k povolení sdílení 
 
 Povolenými znaky pro název galerie jsou velká a malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky.   Názvy galerií musí být v rámci vašeho předplatného jedinečné. 
 
-Pomocí [AZ SIG Create](/cli/azure/sig#az-sig-create)vytvořte galerii imagí. Následující příklad vytvoří skupinu prostředků s názvem Gallery s názvem *myGalleryRG* v *východní USA*a galerii s názvem *myGallery*.
+Pomocí [AZ SIG Create](/cli/azure/sig#az-sig-create)vytvořte galerii imagí. Následující příklad vytvoří skupinu prostředků s názvem Gallery s názvem *myGalleryRG* v *východní USA* a galerii s názvem *myGallery*.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -96,7 +96,7 @@ Další informace o hodnotách, které můžete zadat pro definici obrázku, naj
 
 Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
-V tomto příkladu se definice image jmenuje *myImageDefinition*a je určena pro [specializovanou](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
+V tomto příkladu se definice image jmenuje *myImageDefinition* a je určena pro [specializovanou](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -165,7 +165,7 @@ Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních 
 
 
 ## <a name="test-your-scale-set"></a>Test škálovací sady
-Pokud chcete škálovací sadě povolit příjem provozu a ověřit správné fungování webového serveru, vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule). Následující příklad vytvoří pravidlo *myLoadBalancerRuleWeb* povolující provoz na portu *TCP**80*:
+Pokud chcete škálovací sadě povolit příjem provozu a ověřit správné fungování webového serveru, vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule). Následující příklad vytvoří pravidlo *myLoadBalancerRuleWeb* povolující provoz na portu *TCP**80* :
 
 ```azurecli-interactive
 az network lb rule create \

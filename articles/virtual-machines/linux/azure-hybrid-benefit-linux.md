@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: feaa2471f2867257deb06ab32ed5fc0a26a0d37e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443428"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516437"
 ---
 # <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Public Preview: Zvýhodněné hybridní využití Azure – jak se vztahuje na Linux Virtual Machines
 
@@ -53,10 +53,12 @@ Zvýhodněné hybridní využití Azure (pro Linux) je teď ve fázi Public Prev
 
 ### <a name="red-hat-customers"></a>Zákazníci se Red Hat
 
-1.    Registrace v [programu Red Hat Cloud Access](https://aka.ms/rhel-cloud-access)
-1.    Umožněte vašim předplatným Azure pro cloudový přístup a povolte předplatná obsahující virtuální počítače, které chcete využívat.
-1.    Využijte výhod pro existující virtuální počítače prostřednictvím rozhraní příkazového řádku Azure
-1.    Zaregistrujte si virtuální počítače, které obdrží výhodu, pomocí samostatného zdroje aktualizací.
+Zvýhodněné hybridní využití Azure pro RHEL je k dispozici pro zákazníky, kteří mají aktivní/nepoužívané odběry RHEL, které mají nárok na použití v Azure a kteří povolili jedno nebo více předplatných v Azure s použitím programu [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) . 
+
+1.  Povolte jedno nebo více vašich oprávněných předplatných RHEL pro použití v Azure s využitím [rozhraní zákazníka pro cloudový přístup Red Hat](https://access.redhat.com/management/cloud).
+1.  Předplatné Azure, které jste zadali během procesu povolení pro cloudový přístup Red Hat, pak budou moct používat funkci Zvýhodněné hybridní využití Azure.
+1.  Použijte Zvýhodněné hybridní využití Azure pro libovolný ze stávajících virtuálních počítačů PAYG s RHEL a také všechny nové virtuální počítače RHEL, které nasazujete z Azure Marketplacech imagí PAYG.
+1.  Použijte doporučené [Další kroky](https://access.redhat.com/articles/5419341) pro konfiguraci zdrojů aktualizací pro virtuální počítače s RHEL a pokyny pro dodržování předpisů RHEL pro předplatné.
 
 
 ### <a name="suse-customers"></a>Zákazníci SUSE
@@ -124,7 +126,19 @@ V samotném virtuálním počítači můžete zadat dotaz na metadata IMDS ident
 
 ### <a name="red-hat"></a>Red Hat
 
-Aby bylo možné použít Zvýhodněné hybridní využití Azure pro virtuální počítače s RHEL, musíte se nejdřív zaregistrovat v programu Red Hat Cloud Access. To můžete provést prostřednictvím webu Red Hat Cloud Access. Jakmile na svém VIRTUÁLNÍm počítači povolíte tuto výhodu, musíte virtuální počítač zaregistrovat s vlastním zdrojem aktualizací pomocí Správce předplatných Red Hat nebo Red Hat satelit. Registrace aktualizací vám zajistí, že zůstanete v podporovaném stavu.
+Zákazníci, kteří používají Zvýhodněné hybridní využití Azure pro RHEL, souhlasí se standardními [právními podmínkami](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Cloud_Software_Subscription_Agreement_for_Microsoft_Azure.pdf) a [prohlášením o zásadách ochrany osobních údajů](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Privacy_Statement_for_Microsoft_Azure.pdf) , které jsou přidružené k nabídkám Azure Marketplace RHEL.
+
+Zákazníci, kteří používají Zvýhodněné hybridní využití Azure pro RHEL, mají tři možnosti poskytování aktualizací softwaru a oprav těchto virtuálních počítačů:
+
+1.  [RHUI (Red Hat Update Infrastructure)](../workloads/redhat/redhat-rhui.md) (výchozí možnost)
+1.  Red Hat satelitní Server
+1.  Správce předplatného Red Hat
+
+Zákazníci, kteří si zvolí možnost RHUI, můžou dál používat RHUI jako hlavní zdroj aktualizace pro své virtuální počítače AHB RHEL bez připojení RHEL předplatných k těmto virtuálním počítačům.  Zákazníci, kteří si zvolí možnost RHUI, jsou zodpovědní za zajištění dodržování předpisů v RHEL předplatném.
+
+Zákazníci, kteří si vybrali možnost Red Hat satelitní Server nebo správce předplatného Red Hat, by měli odebrat konfiguraci RHUI a pak připojit RHEL předplatné s povoleným cloudovým přístupem ke svým VIRTUÁLNÍm počítačům AHB RHEL.  
+
+Další informace o kompatibilitě předplatného Red Hat, aktualizacích softwaru a zdrojích pro virtuální počítače s AHB RHEL najdete [tady](https://access.redhat.com/articles/5419341).
 
 ### <a name="suse"></a>SUSE
 

@@ -3,21 +3,102 @@ title: Faktury za smlouvu Azure Enterprise
 description: V tomto článku je vysvětlená správa faktury za Azure Enterprise a její další použití.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperfq1
+ms.openlocfilehash: 57ada2ca760ffff2124582c31fdd095d04d4375f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316133"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410949"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za smlouvu Azure Enterprise
 
 V tomto článku je vysvětlená správa faktury za smlouvu Azure Enterprise (Azure EA) a její další použití. Vaše faktura představuje vyúčtování. Zkontrolujte její správnost. Měli byste se také seznámit s dalšími úkoly, které při správě faktury můžete potřebovat.
+
+## <a name="view-usage-summary-and-download-reports"></a>Zobrazení souhrnu využití a stahování sestav
+
+Podnikoví správci si na portálu Azure Enterprise Portal můžou zobrazit souhrnné údaje o využití, výši spotřebované zálohy na Azure a poplatky za další využití. Poplatky jsou vyjádřené souhrnně za všechny účty a všechna předplatná.
+
+Pokud se chcete podívat na podrobné využití u konkrétních účtů, stáhněte si sestavu s podrobnostmi o využití:
+
+1. Přihlaste se k portálu Azure Enterprise.
+1. Vyberte **Sestavy**.
+1. Vyberte kartu **Download Usage** (Stáhnout data o využití).
+1. V seznamu sestav vyberte **Download** (Stáhnout) u měsíční sestavy, kterou chcete získat.
+
+   > [!NOTE]
+   > Sestava s podrobnostmi využití nezahrnuje příslušné daně.
+   >
+   > Mezi časem skutečného využití a promítnutím tohoto údaje do sestavy může vzniknout zpoždění až 8 hodin.
+
+Zobrazení sestav a grafů se souhrnem využití:
+
+1. Přihlaste se k portálu Azure Enterprise Portal.
+
+1. Vyberte období zálohy.
+
+   Pokud chcete změnit rozsah data pro **Usage Summary** (Souhrn využití), můžete vpravo nahoře na stránce přepnout z **M** (Monthly) (Měsíčně) na **C** (Custom) (Vlastní) a zadat vlastní počáteční a koncové datum.
+
+   ![Vytvoření a zobrazení souhrnu využití a stahování sestav ve vlastním zobrazení](./media/ea-portal-enrollment-invoices/create-ea-view-usage-summary-and-download-reports-custom-view.png)
+1. Pokud se chcete podívat na další podrobnosti, můžete vybrat období nebo měsíc v grafu.
+
+   - V grafu se zobrazuje meziměsíční využití s rozpisem spotřebovaného využití, nadměrného vyúčtování služeb, poplatků fakturovaných samostatně a poplatků z Azure Marketplace.
+   - Pro vybraný měsíc můžete pomocí polí pod grafem filtrovat podle oddělení, účtů a předplatných.
+   - Můžete přepínat mezi volbami **Charge by Services** (Vyúčtování podle služeb) a **Charge by Hierarchy** (Vyúčtování podle hierarchie).
+   - Rozbalením a sbalením příslušných oddílů **Azure Service** (Služba Azure), **Charges Billed Separately** (Samostatně fakturované poplatky) a **Azure Marketplace** si můžete zobrazit podrobnosti.
+
+Podívejte se na toto video, ze kterého se dozvíte, jak zobrazit informace o využití:
+
+> [!VIDEO https://www.youtube.com/embed/Cv2IZ9QCn9E]
+
+### <a name="download-csv-reports"></a>Stahování sestav CSV
+
+Podnikoví správci si mohou ze stránky s měsíčními sestavami stáhnout následující sestavy ve formátu CSV:
+
+- Zůstatek a poplatky
+- Podrobnosti o využití
+- Poplatky za Azure Marketplace
+- Ceník
+
+Jak sestavy stáhnout:
+
+1. Na portálu Azure Enterprise vyberte **Reports** (Sestavy).
+2. V horní části stránky vyberte **Download Usage** (Stáhnout data o využití).
+3. Vyberte tlačítko **Download** (Stáhnout) vedle sestavy pro požadovaný měsíc.
+
+   > [!NOTE]
+   > Mezi datem skutečného využití a jeho zobrazením v sestavě může docházet ke zpoždění až 5 dní.
+   >
+   > U uživatelů, kteří si soubory CSV stahují přes Safari do Excelu, může docházet k chybám formátování. Chybám se vyhnete tak, že soubor otevřete pomocí textového editoru.
+
+![Příklad ukazující stránku pro stažení údajů o využití](./media/ea-portal-enrollment-invoices/create-ea-download-csv-reports.png)
+
+Podívejte se na toto video, které ukazuje, jak si stáhnout informace o využití:
+
+> [!VIDEO https://www.youtube.com/embed/eY797htT1qg]
+
+### <a name="advanced-report-download"></a>Stažení rozšířené sestavy
+
+Pomocí stažení rozšířené sestavy můžete získat sestavy, které pokrývají konkrétní rozsahy kalendářních dat nebo účty. Výstupní soubor je ve formátu CSV, aby pojal rozsáhlé sady záznamů.
+
+1. Na portálu Azure Enterprise vyberte **Advanced Report Download** (Stažení rozšířené sestavy).
+1. Vyberte příslušný rozsah data a příslušné účty.
+1. Vyberte **Požádat o data o využití**.
+1. Opakovaně vyberte tlačítko **Refresh** (Aktualizovat), dokud se stav sestavy neaktualizuje na **Download** (Stáhnout).
+1. Stáhněte sestavu.
+
+### <a name="download-usage-reports-and-billing-information-for-a-prior-enrollment"></a>Stažení sestav využití a fakturačních údajů pro předchozí registraci
+
+Sestavy využití a fakturační údaje pro předchozí registraci si můžete stáhnout až po přenosu registrace. Portál Azure Enterprise i správa nákladů umožňuje generování historických sestav.
+
+Portál Azure Enterprise vyfiltruje neaktivní registrace, aby nebyly vidět. Aby se zobrazily neaktivní přenesené registrace, budete muset zrušit zaškrtnutí políčka **Active** (Aktivní).  
+
+![Zrušení zaškrtnutí políčka Active (Aktivní) umožní uživateli zobrazit neaktivní registrace](./media/ea-portal-enrollment-invoices/unchecked-active-box.png)
 
 ## <a name="change-a-po-number-for-an-upcoming-overage-invoice"></a>Změna čísla nákupní objednávky pro chystanou fakturu za nadlimitní využití
 
@@ -31,7 +112,7 @@ Portál Azure Enterprise Portal automaticky generuje výchozí číslo nákupní
 1. V rozevírací nabídce pro výběr rozsahu dat vyberte **Fakturační období**.
 
    Číslo nákupní objednávky můžete upravit během období 7 dnů po přijetí oznámení o faktuře, musí to ale být dříve, než fakturu uhradíte.
-1. Do pole**Číslo objednávky** zadejte nové číslo nákupní objednávky.
+1. Do pole **Číslo objednávky** zadejte nové číslo nákupní objednávky.
 1. Pokud chcete změnu odeslat, vyberte **Uložit**.
 
 ### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>Aktualizace čísla nákupní objednávky na Azure Marketplace:
@@ -42,7 +123,7 @@ Portál Azure Enterprise Portal automaticky generuje výchozí číslo nákupní
 1. V rozevírací nabídce pro výběr rozsahu dat vyberte **Fakturační období**.
 
    Číslo nákupní objednávky můžete upravit během období 7 dnů po přijetí oznámení o faktuře, musí to ale být dříve, než fakturu uhradíte.
-1. Do pole**Číslo objednávky** zadejte nové číslo nákupní objednávky.
+1. Do pole **Číslo objednávky** zadejte nové číslo nákupní objednávky.
 1. Pokud chcete změnu odeslat, vyberte **Uložit**.
 
 ## <a name="azure-enterprise-billing-frequency"></a>Četnost fakturace Azure Enterprise

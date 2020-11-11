@@ -9,20 +9,20 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 4d8e6d225e02006683166de73a0b66f795bc3993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6edfa1beb568bb05bd0f3f1ef9e7792ac3c3cbe2
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321968"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515740"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Šifrování operačních systémů a připojených datových disků v sadě škálování virtuálního počítače pomocí Azure CLI
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit a zašifrovat sadu škálování virtuálního počítače. Další informace o použití služby Azure Disk Encryption pro sadu škálování virtuálního počítače najdete v tématu [Azure Disk Encryption Virtual Machine Scale Sets](disk-encryption-overview.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.31 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
 
@@ -32,7 +32,7 @@ Než vytvoříte škálovací sadu, vytvořte skupinu prostředků pomocí pří
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří škálovací sadu *myScaleSet* nastavenou tak, aby se při provedení změn automaticky aktualizovala, a vygeneruje klíče SSH v adresáři *~/.ssh/id_rsa*, pokud ještě neexistují. K jednotlivým instancím virtuálních počítačů je připojen datový disk 32 GB a [rozšíření vlastních skriptů](../virtual-machines/extensions/custom-script-linux.md) Azure slouží k přípravě datových disků pomocí [AZ VMSS Extension set](/cli/azure/vmss/extension):
+Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří škálovací sadu *myScaleSet* nastavenou tak, aby se při provedení změn automaticky aktualizovala, a vygeneruje klíče SSH v adresáři *~/.ssh/id_rsa* , pokud ještě neexistují. K jednotlivým instancím virtuálních počítačů je připojen datový disk 32 GB a [rozšíření vlastních skriptů](../virtual-machines/extensions/custom-script-linux.md) Azure slouží k přípravě datových disků pomocí [AZ VMSS Extension set](/cli/azure/vmss/extension):
 
 ```azurecli-interactive
 # Create a scale set with attached data disk
@@ -103,7 +103,7 @@ az vmss encryption enable \
 
 Spuštění procesu šifrování může trvat minutu nebo dvě.
 
-V případě, že je nastavena zásada upgradu v sadě škálování vytvořené v předchozím kroku na hodnotu *automaticky*, instance virtuálních počítačů spustí proces šifrování automaticky. V části sady škálování, na kterých je zásada upgradu nastavena na ruční, spusťte zásadu šifrování na instancích virtuálních počítačů pomocí [AZ VMSS Update-Instances](/cli/azure/vmss#az-vmss-update-instances).
+V případě, že je nastavena zásada upgradu v sadě škálování vytvořené v předchozím kroku na hodnotu *automaticky* , instance virtuálních počítačů spustí proces šifrování automaticky. V části sady škálování, na kterých je zásada upgradu nastavena na ruční, spusťte zásadu šifrování na instancích virtuálních počítačů pomocí [AZ VMSS Update-Instances](/cli/azure/vmss#az-vmss-update-instances).
 
 ### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Povolení šifrování pomocí KEK k zabalení klíče
 
@@ -137,9 +137,9 @@ Pokud chcete zjistit stav šifrování disku, použijte příkaz [AZ VMSS Encryp
 az vmss encryption show --resource-group myResourceGroup --name myScaleSet
 ```
 
-Když jsou instance virtuálních počítačů šifrované, stavový kód hlásí *EncryptionState/Encrypted*, jak je znázorněno v následujícím příkladu výstupu:
+Když jsou instance virtuálních počítačů šifrované, stavový kód hlásí *EncryptionState/Encrypted* , jak je znázorněno v následujícím příkladu výstupu:
 
-```bash
+```console
 [
   {
     "disks": [

@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: eb0aff6692a12ca7fb00090c0585e46f37c84ace
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 322f5f6a79bdce23706b2211ccc04ef2451675d0
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913020"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515723"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Začínáme s Threat Modeling Tool
 
-Microsoft Threat Modeling Tool 2018 byla vydána jako GA v září 2018 jako bezplatný soubor **[ke stažení](https://aka.ms/threatmodelingtool)** . Mechanismus změny v doručení nám umožňuje nabízet nejnovější vylepšení a opravy chyb zákazníkům pokaždé, když tento nástroj otevřou, což usnadňuje údržbu a používání.
+Microsoft Threat Modeling Tool 2018 byla vydána jako GA v září 2018 jako bezplatný soubor **[ke stažení](https://aka.ms/threatmodelingtool)**. Mechanismus změny v doručení nám umožňuje nabízet nejnovější vylepšení a opravy chyb zákazníkům pokaždé, když tento nástroj otevřou, což usnadňuje údržbu a používání.
 Tento článek vás provede procesem Začínáme s řešením Microsoft SDL Threat Modeling a ukazuje, jak používat nástroj k vývoji skvělých modelů hrozeb jako páteře procesu zabezpečení.
 
-Tento článek se sestavuje s existujícím vědomím přístupu k modelování hrozeb v SDL. V případě rychlé kontroly se podívejte na **[webové aplikace modelování hrozeb](https://msdn.microsoft.com/library/ms978516.aspx)** a Archivovaná verze řešení chyb **[zabezpečení na základě přístupu k](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** článku věnovaném webu MSDN publikovaném v 2006.
+Tento článek se sestavuje s existujícím vědomím přístupu k modelování hrozeb v SDL. V případě rychlé kontroly se podívejte na **[webové aplikace modelování hrozeb](/previous-versions/msp-n-p/ff648006(v=pandp.10))** a Archivovaná verze řešení chyb **[zabezpečení na základě přístupu k](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** článku věnovaném webu MSDN publikovaném v 2006.
 
 K rychlému sumarizaci je potřeba, abyste vytvořili diagram, identifikovali hrozby, zmírnili je a vyhodnotili případné zmírnění. Zde je diagram, který zvýrazní tento proces:
 
@@ -87,7 +87,7 @@ Jaký Ricardo se právě ukázal jako Cristina, je **[diagram toku dat](https://
 
 ## <a name="analyzing-threats"></a>Analýza hrozeb
 
-Jakmile kliknete na zobrazení analýzy z výběru nabídky ikony (soubor se zvětšováním skla), převezme se seznam generovaných hrozeb Threat Modeling Tool nalezen na základě výchozí šablony, která používá přístup SDL s názvem **[Rozteč (falšování identity, manipulace, zpřístupnění informací, odmítnutí služby a zvýšení oprávnění)](https://en.wikipedia.org/wiki/STRIDE_(security))** . Účelem je, aby se software objevil v předvídatelné sadě hrozeb, které se dají najít pomocí těchto 6 kategorií.
+Jakmile kliknete na zobrazení analýzy z výběru nabídky ikony (soubor se zvětšováním skla), převezme se seznam generovaných hrozeb Threat Modeling Tool nalezen na základě výchozí šablony, která používá přístup SDL s názvem **[Rozteč (falšování identity, manipulace, zpřístupnění informací, odmítnutí služby a zvýšení oprávnění)](https://en.wikipedia.org/wiki/STRIDE_(security))**. Účelem je, aby se software objevil v předvídatelné sadě hrozeb, které se dají najít pomocí těchto 6 kategorií.
 
 Tento přístup se podobá zabezpečení vaší domu tím, že před přidáním poplašného systému nebo dohledávání po moci zloděj zajistíte, aby jednotlivé dveře a okna byly na svém místě blokovacího mechanismu.
 

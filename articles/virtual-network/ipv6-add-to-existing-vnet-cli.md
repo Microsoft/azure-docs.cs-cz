@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 654924d25a567ed6c63405d27444eb6ff96d480d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c46bb2233fe38380dd5ba19804791c7c9f3da91
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603624"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517338"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>Přidání IPv6 do aplikace IPv4 ve službě Azure Virtual Network – Azure CLI
 
 V tomto článku se dozvíte, jak přidat IPv6 adresy do aplikace, která používá veřejnou IP adresu IPv4 ve virtuální síti Azure pro Standard Load Balancer pomocí Azure CLI. Místní upgrade zahrnuje virtuální síť a podsíť, Standard Load Balancer s konfiguracemi front-endu IPv4 + IPV6, virtuálních počítačů se síťovými kartami, které mají konfigurace IPv4 + IPv6, skupiny zabezpečení sítě a veřejné IP adresy.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Pokud chcete najít nainstalovanou verzi, spusťte příkaz `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
-
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto článku se předpokládá, že jste nasadili Standard Load Balancer, jak je popsáno v tématu [rychlý Start: vytvoření Standard Load Balancer Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md).
+- V tomto článku se předpokládá, že jste nasadili Standard Load Balancer, jak je popsáno v tématu [rychlý Start: vytvoření Standard Load Balancer Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md).
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-ipv6-addresses"></a>Vytvoření IPv6 adres
 

@@ -8,40 +8,33 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 01bfb31577b946de7782812cb0001938e2da0614
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b7efa9a6ae6dda41a5503da389b59880c448bc76
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537095"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515468"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Vytvoření a správa koncových bodů služby virtuální sítě Azure Database for MariaDB pomocí Azure CLI
 
 Pravidla a koncové body služeb virtuální sítě rozšiřují privátní adresní prostor virtuální sítě na server Azure Database for MariaDB. Pomocí praktických příkazů rozhraní příkazového řádku Azure (CLI) můžete vytvářet, aktualizovat, odstraňovat, vypisovat a zobrazovat koncové body a pravidla služby virtuální sítě pro správu serveru. Přehled koncových bodů služby virtuální sítě Azure Database for MariaDB, včetně omezení, najdete v tématu [koncové body služby virtuální sítě v Azure Database for MariaDB serveru](concepts-data-access-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve všech podporovaných oblastech pro Azure Database for MariaDB.
 
-## <a name="prerequisites"></a>Požadavky
-Pokud chcete projít tento průvodce, budete potřebovat:
-- Nainstalujte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) nebo použijte Azure Cloud Shell v prohlížeči.
-- [Server a databáze Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- Potřebujete [Azure Database for MariaDB Server a databázi](quickstart-create-mariadb-server-database-using-azure-cli.md).
+
+- Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 > [!NOTE]
 > Podpora koncových bodů služby virtuální sítě je určená jenom pro Pro obecné účely a paměťově optimalizované servery.
 
 ## <a name="configure-vnet-service-endpoints"></a>Konfigurace koncových bodů služby virtuální sítě
-Příkazy [AZ Network VNet](/cli/azure/network/vnet) se používají ke konfiguraci virtuálních sítí.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Příkazy [AZ Network VNet](/cli/azure/network/vnet?view=azure-cli-latest) se používají ke konfiguraci virtuálních sítí.
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). 
-
-Pokud používáte rozhraní příkazového řádku místně, musíte se přihlásit ke svému účtu pomocí příkazu [az login](/cli/azure/authenticate-azure-cli). Z výstupu příkazu si poznamenejte vlastnost **id** pro odpovídající název předplatného.
-```azurecli-interactive
-az login
-```
-
-Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account#az-account-set) konkrétní ID předplatného. Zástupnou hodnotu id předplatného nahraďte vlastností **id** z výstupu příkazu **az login** pro vaše předplatné.
+Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) konkrétní ID předplatného. Zástupnou hodnotu id předplatného nahraďte vlastností **id** z výstupu příkazu **az login** pro vaše předplatné.
 
 - Účet musí mít potřebná oprávnění k vytvoření virtuální sítě a koncového bodu služby.
 

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b05084a7d01f4c5d5d5a79b60ac0b8ba47843622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4016e1dd055b45f9cd59a172d0e71ef95fec1c40
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816782"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517202"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurace a přizpůsobení úloh sestavení
 
@@ -39,7 +39,7 @@ V poli se seznamem **typů** na snímku obrazovky je vybrána možnost **základ
 
 Windows Defender používá klienta web Windows Update ke stažení a instalaci signatur. Pokud se aktualizace signatury v agentu sestavení nezdařila, kód chyby **HRESULT** bude nejspíš přijít z web Windows Update.
 
-Další informace o chybách web Windows Update a jejich zmírnění najdete v tématu [web Windows Update kódy chyb podle součásti](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference) a článku [web Windows Update agenta – kódy chyb](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx).
+Další informace o chybách web Windows Update a jejich zmírnění najdete v tématu [web Windows Update kódy chyb podle součásti](/windows/deployment/update/windows-update-error-reference) a článku [web Windows Update agenta – kódy chyb](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx).
 
 Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech ochrany proti malwaru YAML](yaml-configuration.md#anti-malware-scanner-task) .
 
@@ -58,7 +58,7 @@ Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazo
 - Aby nedošlo k opakovanému vyhledávání a vytváření vlastního příkazového řádku:
      - V seznamu **typ** vyberte **základní**.
      - V seznamu **funkce** vyberte **analyzovat**.
-- Do vlastnosti **cíl**zadejte jeden nebo více specifikátorů pro soubor, adresář nebo vzor filtru. Tyto specifikátory jsou přeloženy na jeden nebo více binárních souborů, které mají být analyzovány:
+- Do vlastnosti **cíl** zadejte jeden nebo více specifikátorů pro soubor, adresář nebo vzor filtru. Tyto specifikátory jsou přeloženy na jeden nebo více binárních souborů, které mají být analyzovány:
     - Více zadaných cílů musí být oddělených středníkem (;).
     - Specifikátorem může být jeden soubor nebo obsahovat zástupné znaky.
     - Specifikace adresáře musí vždy končit znakem \\ *.
@@ -95,20 +95,20 @@ Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazo
 ![Konfigurace úlohy sestavení pro kontrolu přihlašovacích údajů](./media/security-tools/3-taskdetails.png)
 
 Mezi dostupné možnosti patří:
-  - **Zobrazovaný název**: název úlohy Azure DevOps. Výchozí hodnota je spustit skener přihlašovacích údajů
-  - **Hlavní verze nástroje**: dostupné hodnoty zahrnují **CredScan v2**, **CredScan v1**. Doporučujeme, aby zákazníci používali verzi **CredScan v2** .
-  - **Výstupní formát**: dostupné hodnoty zahrnují **TSV**, **CSV**, **SARIF**a **Fast**.
-  - **Verze nástroje**: Doporučujeme vybrat možnost **nejnovější**.
-  - **Složka pro skenování**: složka úložiště, která se má zkontrolovat.
-  - **Typ souboru vyhledávačů**: možnosti pro vyhledání souboru vyhledávacích souborů, který se používá ke skenování.
-  - **Soubor potlačení**: soubor [JSON](https://json.org/) může potlačit problémy ve výstupním protokolu. Další informace o scénářích potlačení najdete v části Nejčastější dotazy v tomto článku.
-  - **Podrobný výstup**: samozřejmý
-  - **Velikost dávky**: počet souběžných vláken používaných ke spuštění skeneru přihlašovacích údajů. Výchozí hodnota je 20. Možné hodnoty jsou v rozsahu od 1 do 2 147 483 647.
-  - **Časový limit shody**: doba v sekundách, po kterou se při pokusu o vynechání kontroly shoduje se zadaným vyhledávacím objektem.
-  - **Velikost vyrovnávací paměti pro čtení prohledávání souborů**: velikost vyrovnávací paměti použité při čtení obsahu v bajtech. Výchozí hodnota je 524 288.  
-  - **Maximální počet přečtených bajtů při kontrole souborů**: maximální počet bajtů, které se mají načíst ze souboru při analýze obsahu. Výchozí hodnota je 104 857 600.
-  - **Možnosti**  >  ovládacích prvků **Spustit tuto úlohu**: Určuje, kdy se úloha spustí. Pokud chcete zadat složitější podmínky, vyberte **vlastní podmínky** .
-  - **Version (verze**): verze úlohy buildu v rámci služby Azure DevOps. Tato možnost se často nepoužívá.
+  - **Zobrazovaný název** : název úlohy Azure DevOps. Výchozí hodnota je spustit skener přihlašovacích údajů
+  - **Hlavní verze nástroje** : dostupné hodnoty zahrnují **CredScan v2** , **CredScan v1**. Doporučujeme, aby zákazníci používali verzi **CredScan v2** .
+  - **Výstupní formát** : dostupné hodnoty zahrnují **TSV** , **CSV** , **SARIF** a **Fast**.
+  - **Verze nástroje** : Doporučujeme vybrat možnost **nejnovější**.
+  - **Složka pro skenování** : složka úložiště, která se má zkontrolovat.
+  - **Typ souboru vyhledávačů** : možnosti pro vyhledání souboru vyhledávacích souborů, který se používá ke skenování.
+  - **Soubor potlačení** : soubor [JSON](https://json.org/) může potlačit problémy ve výstupním protokolu. Další informace o scénářích potlačení najdete v části Nejčastější dotazy v tomto článku.
+  - **Podrobný výstup** : samozřejmý
+  - **Velikost dávky** : počet souběžných vláken používaných ke spuštění skeneru přihlašovacích údajů. Výchozí hodnota je 20. Možné hodnoty jsou v rozsahu od 1 do 2 147 483 647.
+  - **Časový limit shody** : doba v sekundách, po kterou se při pokusu o vynechání kontroly shoduje se zadaným vyhledávacím objektem.
+  - **Velikost vyrovnávací paměti pro čtení prohledávání souborů** : velikost vyrovnávací paměti použité při čtení obsahu v bajtech. Výchozí hodnota je 524 288.  
+  - **Maximální počet přečtených bajtů při kontrole souborů** : maximální počet bajtů, které se mají načíst ze souboru při analýze obsahu. Výchozí hodnota je 104 857 600.
+  - **Možnosti**  >  ovládacích prvků **Spustit tuto úlohu** : Určuje, kdy se úloha spustí. Pokud chcete zadat složitější podmínky, vyberte **vlastní podmínky** .
+  - **Version (verze** ): verze úlohy buildu v rámci služby Azure DevOps. Tato možnost se často nepoužívá.
 
 Informace o konfiguraci YAML pro tuto úlohu najdete v našich [přihlašovacích údajích k YAML možností skeneru přihlašovacích údajů](yaml-configuration.md#credential-scanner-task) .
 
@@ -124,10 +124,10 @@ Podrobnosti o konfiguraci úlohy jsou uvedené v následujícím seznamu a Pozn�
 
 Mezi dostupné možnosti patří:
 
-- **RuleSet**: hodnoty jsou **vyžadovány v SDL**, **doporučuje se SDL**nebo vaše vlastní sada pravidel.
-- **Verze analyzátorů**: Doporučujeme vybrat možnost **nejnovější**.
-- **Soubor potlačení upozornění kompilátoru**: textový soubor se seznamem ID upozornění, které se potlačí.
-- **Možnosti**  >  ovládacích prvků **Spustit tuto úlohu**: Určuje, kdy se úloha spustí. Zvolte **vlastní podmínky** a určete složitější podmínky.
+- **RuleSet** : hodnoty jsou **vyžadovány v SDL** , **doporučuje se SDL** nebo vaše vlastní sada pravidel.
+- **Verze analyzátorů** : Doporučujeme vybrat možnost **nejnovější**.
+- **Soubor potlačení upozornění kompilátoru** : textový soubor se seznamem ID upozornění, které se potlačí.
+- **Možnosti**  >  ovládacích prvků **Spustit tuto úlohu** : Určuje, kdy se úloha spustí. Zvolte **vlastní podmínky** a určete složitější podmínky.
 
 > [!NOTE]
 >
@@ -143,7 +143,7 @@ Mezi dostupné možnosti patří:
 >
 >   Pokud je nová úloha spuštěna na stejném agentě jako původní úloha, bude výstup nové úlohy přepsat výstup původní úlohy ve složce zdroje *s* . I když je výstup sestavení stejný, doporučujeme, abyste spustili nástroj MSBuild, zkopírovali výstup do pracovního adresáře artefakty a pak spustili analyzátory Roslyn.
 
-Další zdroje pro úlohu analyzátorů Roslyn najdete v [části analyzátory založené na Roslyn](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer) na Microsoft docs.
+Další zdroje pro úlohu analyzátorů Roslyn najdete v [části analyzátory založené na Roslyn](/dotnet/standard/analyzers/api-analyzer) na Microsoft docs.
 
 Balíček analyzátoru nainstalovaný a používaný touto úlohou sestavení můžete najít na stránce NuGet [Microsoft. CodeAnalysis. FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers).
 
@@ -164,9 +164,9 @@ Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazo
 
 ![Konfigurace úlohy sestavení pro publikování protokolů analýzy zabezpečení](./media/security-tools/9-publish-security-analsis-logs600.png)  
 
-- **Název artefaktu**: libovolný identifikátor řetězce.
-- **Typ artefaktu**: v závislosti na vašem výběru můžete protokoly publikovat do Azure DevOps Server nebo do sdíleného souboru, který je přístupný agentovi sestavení.
-- **Nástroje**: můžete si vybrat, že zachováte protokoly pro konkrétní nástroje, nebo můžete vybrat **všechny nástroje** pro zachování všech protokolů.
+- **Název artefaktu** : libovolný identifikátor řetězce.
+- **Typ artefaktu** : v závislosti na vašem výběru můžete protokoly publikovat do Azure DevOps Server nebo do sdíleného souboru, který je přístupný agentovi sestavení.
+- **Nástroje** : můžete si vybrat, že zachováte protokoly pro konkrétní nástroje, nebo můžete vybrat **všechny nástroje** pro zachování všech protokolů.
 
 Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech publikování protokolů zabezpečení YAML](yaml-configuration.md#publish-security-analysis-logs-task) .
 
@@ -176,10 +176,10 @@ Podrobnosti o konfiguraci sestavy zabezpečení jsou uvedeny na následujícím 
 
 ![Konfigurace úlohy sestavení sestavy zabezpečení](./media/security-tools/4-createsecurityanalysisreport600.png)
 
-- **Sestavy**: vyberte libovolnou **konzolu kanálu**, **soubor TSV**a formáty **souborů HTML** . Pro každý vybraný formát se vytvoří jeden soubor sestavy.
-- **Nástroje**: Vyberte nástroje v definici sestavení, pro které chcete souhrn zjištěných problémů. Pro každý vybraný nástroj může být k dispozici možnost vybrat, zda se zobrazí pouze chyby, nebo zobrazit chyby a upozornění v sestavě Shrnutí.
-- **Rozšířené možnosti**: Pokud pro jeden z vybraných nástrojů neexistují žádné protokoly, můžete si vybrat, jestli se má zaznamenat upozornění nebo chyba. Pokud dojde k chybě, úloha se nezdařila.
-- **Základní složka protokolů**: můžete přizpůsobit složku základních protokolů, kde budou nalezeny protokoly. Tato možnost se obvykle nepoužívá.
+- **Sestavy** : vyberte libovolnou **konzolu kanálu** , **soubor TSV** a formáty **souborů HTML** . Pro každý vybraný formát se vytvoří jeden soubor sestavy.
+- **Nástroje** : Vyberte nástroje v definici sestavení, pro které chcete souhrn zjištěných problémů. Pro každý vybraný nástroj může být k dispozici možnost vybrat, zda se zobrazí pouze chyby, nebo zobrazit chyby a upozornění v sestavě Shrnutí.
+- **Rozšířené možnosti** : Pokud pro jeden z vybraných nástrojů neexistují žádné protokoly, můžete si vybrat, jestli se má zaznamenat upozornění nebo chyba. Pokud dojde k chybě, úloha se nezdařila.
+- **Základní složka protokolů** : můžete přizpůsobit složku základních protokolů, kde budou nalezeny protokoly. Tato možnost se obvykle nepoužívá.
 
 Informace o konfiguraci YAML pro tuto úlohu najdete v naší [YAML možnosti sestavy zabezpečení](yaml-configuration.md#security-report-task) .
 
@@ -189,9 +189,9 @@ Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazo
 
 ![Konfigurace úlohy sestavení po analýze](./media/security-tools/a-post-analysis600.png)
 
-- **Nástroje**: Vyberte nástroje v definici sestavení, pro které chcete podmíněně vložit přerušení sestavení. Pro každý vybraný nástroj může být k dispozici možnost vybrat, zda chcete přerušit pouze chyby nebo jak na chyby, tak i na upozornění.
-- **Sestava**: Volitelně můžete napsat výsledky, které způsobují přerušení sestavení. Výsledky se zapisují do okna konzoly Azure DevOps a do souboru protokolu.
-- **Rozšířené možnosti**: Pokud pro jeden z vybraných nástrojů neexistují žádné protokoly, můžete si vybrat, jestli se má zaznamenat upozornění nebo chyba. Pokud dojde k chybě, úloha se nezdařila.
+- **Nástroje** : Vyberte nástroje v definici sestavení, pro které chcete podmíněně vložit přerušení sestavení. Pro každý vybraný nástroj může být k dispozici možnost vybrat, zda chcete přerušit pouze chyby nebo jak na chyby, tak i na upozornění.
+- **Sestava** : Volitelně můžete napsat výsledky, které způsobují přerušení sestavení. Výsledky se zapisují do okna konzoly Azure DevOps a do souboru protokolu.
+- **Rozšířené možnosti** : Pokud pro jeden z vybraných nástrojů neexistují žádné protokoly, můžete si vybrat, jestli se má zaznamenat upozornění nebo chyba. Pokud dojde k chybě, úloha se nezdařila.
 
 Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech YAML po analýze](yaml-configuration.md#post-analysis-task) .
 

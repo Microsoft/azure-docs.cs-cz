@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: d1c13c5d4bea8bfdb0f70e67ce8f264a1929b8a2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 16fd15a5939cc6c268a80e88401f05042a206075
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150890"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516811"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Kurz: Vytvoření aplikace chat serveru Blazor
 
@@ -24,7 +24,7 @@ V tomto kurzu se dozvíte, jak vytvořit a upravit aplikaci Blazor serveru. Dozv
 > * Rychlé nasazení Azure App Service v aplikaci Visual Studio.
 > * Migrujte místní signál do služby Azure Signal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Nainstalovat [sadu .NET Core 3,0 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0) (verze >= 3.0.100)
 * Instalace sady [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) (verze >= 16,3)
 > Verze Visual Studio 2019 Preview funguje i pro vydání nejnovější šablony aplikace Blazor serveru, která cílí na novější verzi .Net Core.
@@ -96,7 +96,7 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
    dotnet add package Microsoft.AspNetCore.SignalR.Client --version 3.1.7
    ```
 
-1. Vytvořte `ChartRoom.razor` v části `Pages` Složka pro implementaci klienta signalizace. Postupujte podle následujících kroků nebo jednoduše zkopírujte [ChatRoom. Razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor).
+1. Vytvořte `ChatRoom.razor` v části `Pages` Složka pro implementaci klienta signalizace. Postupujte podle následujících kroků nebo jednoduše zkopírujte [ChatRoom. Razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor).
 
    1. Přidejte odkaz a odkaz na stránku.
       
@@ -285,7 +285,7 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
    </li>
    ```
    
-1. Aktualizace `site.css` k optimalizaci pro zobrazení bublin v oblasti grafu Přidejte pod kód na konci.
+1. Aktualizace `site.css` k optimalizaci pro zobrazení bublin v oblasti chatu Přidejte pod kód na konci.
 
    ```css
    /* improved for chat text box */
@@ -379,7 +379,7 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
 
 1. Přidat závislost služby signalizace Azure
 
-   Po vytvoření profilu publikování se v části **závislosti služby**zobrazí doporučená zpráva. Kliknutím na **Konfigurovat** vytvořte novou nebo vyberte existující službu Azure Signal Service na panelu.
+   Po vytvoření profilu publikování se v části **závislosti služby** zobrazí doporučená zpráva. Kliknutím na **Konfigurovat** vytvořte novou nebo vyberte existující službu Azure Signal Service na panelu.
 
    [![blazor – konverzace – závislost ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
 

@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: ba14e2c475611ed77661060d6e17ae0bcbf0a6ca
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f0c38e72231fb343cb9b27def520f73d923a70f6
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744209"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515706"
 ---
 # <a name="step-3-validate-connectivity"></a>Krok 3: ověření připojení
 
 Po nasazení služby pro přeposílání protokolů (v kroku 1) a konfiguraci řešení zabezpečení pro posílání zpráv CEF (v kroku 2) postupujte podle těchto pokynů, abyste ověřili konektivitu mezi vaším řešením zabezpečení a službou Azure Sentinel. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - V počítači pro překládání protokolů musíte mít zvýšená oprávnění (sudo).
 
-- V počítači se systémem pro překládání protokolů musíte mít nainstalovanou **python 2,7** .<br>
+- V počítači pro přeposílání protokolů musíte mít nainstalovaný **python 2,7** nebo **3** .<br>
 Použijte `python –version` příkaz pro kontrolu.
 
-- V určitém okamžiku tohoto procesu možná budete potřebovat ID pracovního prostoru a primární klíč pracovního prostoru. Můžete je najít v prostředku pracovního prostoru v části **Správa agentů** .
+- V určitém okamžiku tohoto procesu možná budete potřebovat ID pracovního prostoru a primární klíč pracovního prostoru. Můžete je najít v prostředku pracovního prostoru v části **Správa agentů**.
 
 ## <a name="how-to-validate-connectivity"></a>Jak ověřit připojení
 
-1. V nabídce navigace v Azure Sentinel otevřete **protokoly** . Spusťte dotaz pomocí schématu **CommonSecurityLog** a zjistěte, jestli přijímáte protokoly z řešení zabezpečení.<br>
-Počítejte s tím, že může trvat přibližně 20 minut, než se vaše protokoly začnou zobrazovat v **Log Analytics** . 
+1. V nabídce navigace v Azure Sentinel otevřete **protokoly**. Spusťte dotaz pomocí schématu **CommonSecurityLog** a zjistěte, jestli přijímáte protokoly z řešení zabezpečení.<br>
+Počítejte s tím, že může trvat přibližně 20 minut, než se vaše protokoly začnou zobrazovat v **Log Analytics**. 
 
 1. Pokud nevidíte žádné výsledky z dotazu, ověřte, že se události generují z řešení zabezpečení, nebo zkuste některé z nich vygenerovat a ověřte, že jsou předávány do počítače pro přeposílání syslog, který jste určili. 
 
@@ -47,9 +47,9 @@ Počítejte s tím, že může trvat přibližně 20 minut, než se vaše protok
     sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
     ```
 
-   - Může se vám zobrazit zpráva s přímým spuštěním příkazu pro opravu problému s **mapováním pole *počítač*** . Podrobnosti najdete [v popisu v ověřovacím skriptu](#mapping-command) .
+   - Může se vám zobrazit zpráva s přímým spuštěním příkazu pro opravu problému s **mapováním pole *počítač***. Podrobnosti najdete [v popisu v ověřovacím skriptu](#mapping-command) .
 
-    - Může se vám zobrazit zpráva s přímým spuštěním příkazu pro opravu problému s **analýzou protokolů brány firewall Cisco ASA** . Podrobnosti najdete [v popisu v ověřovacím skriptu](#parsing-command) .
+    - Může se vám zobrazit zpráva s přímým spuštěním příkazu pro opravu problému s **analýzou protokolů brány firewall Cisco ASA**. Podrobnosti najdete [v popisu v ověřovacím skriptu](#parsing-command) .
 
 ## <a name="validation-script-explained"></a>Vysvětlený skript pro ověření
 

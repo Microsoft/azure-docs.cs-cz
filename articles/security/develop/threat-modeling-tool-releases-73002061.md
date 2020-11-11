@@ -6,12 +6,12 @@ ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: fa89ffcfd37629f95fbf281a6a703a173acd5d48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f9b162460cd2e7a624c1ad3f992011487d1b795
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317918"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516930"
 ---
 # <a name="threat-modeling-tool-update-release-73002061---02112020"></a>Threat Modeling Tool vydání aktualizace 7.3.00206.1-02/11/2020
 
@@ -44,7 +44,7 @@ Tento problém byl vyřešen v této verzi.
 
 ## <a name="documentation-and-feedback"></a>Dokumentace a zpětná vazba
 
-- Dokumentace k Threat Modeling Tool je umístěna na [docs.Microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)a obsahuje informace [o použití nástroje](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started).
+- Dokumentace k Threat Modeling Tool je umístěna na [docs.Microsoft.com](./threat-modeling-tool.md)a obsahuje informace [o použití nástroje](./threat-modeling-tool-getting-started.md).
 
 ## <a name="next-steps"></a>Další kroky
 

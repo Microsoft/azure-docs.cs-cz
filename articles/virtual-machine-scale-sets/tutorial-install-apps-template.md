@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 357d3aaa9cf9e324f8dd27636b9f34f503f566de
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2d748f787b40bb26e9faebb028d71c6c3e30ee55
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746023"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516556"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Kurz: Instalace aplikací ve škálovacích sadách virtuálních počítačů pomocí šablony Azure
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. V předchozím kurzu jste zjistili, jak vytvořit a použít vlastní image virtuálního počítače k nasazení instancí virtuálních počítačů. Tato vlastní image zahrnovala ruční instalaci a konfiguraci aplikací. Můžete automatizovat také instalaci aplikací do škálovací sady po nasazení všech instancí virtuálních počítačů nebo aktualizaci aplikace, která je již ve škálovací sadě spuštěná. Co se v tomto kurzu naučíte:
@@ -24,11 +24,11 @@ Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve š
 > * Použití rozšíření vlastních skriptů Azure
 > * Aktualizace spuštěné aplikace ve škálovací sadě
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.29 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 
 ## <a name="what-is-the-azure-custom-script-extension"></a>Co je rozšíření vlastních skriptů Azure?
@@ -40,9 +40,9 @@ Pokud se chcete podívat na rozšíření vlastních skriptů v akci, vytvořte 
 
 
 ## <a name="create-custom-script-extension-definition"></a>Vytvoření definice rozšíření vlastních skriptů
-Pokud definujete škálovací sadu virtuálních počítačů pomocí šablony Azure, poskytovatel prostředků *Microsoft.Compute/virtualMachineScaleSets* může obsahovat část věnovanou rozšířením. *extensionsProfile* obsahuje podrobné informace o tom, co se na instance virtuálních počítačů ve škálovací sadě použije. Pokud chcete použít rozšíření vlastních skriptů, zadejte vydavatele *Microsoft.Azure.Extensions* a typ *CustomScript* .
+Pokud definujete škálovací sadu virtuálních počítačů pomocí šablony Azure, poskytovatel prostředků *Microsoft.Compute/virtualMachineScaleSets* může obsahovat část věnovanou rozšířením. *extensionsProfile* obsahuje podrobné informace o tom, co se na instance virtuálních počítačů ve škálovací sadě použije. Pokud chcete použít rozšíření vlastních skriptů, zadejte vydavatele *Microsoft.Azure.Extensions* a typ *CustomScript*.
 
-Vlastnost *fileUris* slouží k definici zdrojových instalačních skriptů nebo balíčků. Požadované skripty pro spuštění procesu instalace jsou definované v části *commandToExecute* . Následující příklad definuje ukázkový skript z GitHubu, který nainstaluje a nakonfiguruje webový server NGINX:
+Vlastnost *fileUris* slouží k definici zdrojových instalačních skriptů nebo balíčků. Požadované skripty pro spuštění procesu instalace jsou definované v části *commandToExecute*. Následující příklad definuje ukázkový skript z GitHubu, který nainstaluje a nakonfiguruje webový server NGINX:
 
 ```json
 "extensionProfile": {
@@ -108,7 +108,7 @@ Nechte webový prohlížeč otevřený, abyste v dalším kroku viděli aktualiz
 
 
 ## <a name="update-app-deployment"></a>Aktualizace nasazení aplikace
-V průběhu životního cyklu škálovací sady možná budete potřebovat nasadit aktualizovanou verzi své aplikace. Díky rozšíření vlastních skriptů můžete přidat odkaz na aktualizovaný skript nasazení a pak znovu použít rozšíření na škálovací sadu. Když byla sada škálování vytvořená v předchozím kroku, *upgradePolicy* byla nastavena na hodnotu *automaticky* . Toto nastavení umožňuje instancím virtuálních počítačů ve škálovací sadě automaticky aktualizovat a používat nejnovější verzi vaší aplikace.
+V průběhu životního cyklu škálovací sady možná budete potřebovat nasadit aktualizovanou verzi své aplikace. Díky rozšíření vlastních skriptů můžete přidat odkaz na aktualizovaný skript nasazení a pak znovu použít rozšíření na škálovací sadu. Když byla sada škálování vytvořená v předchozím kroku, *upgradePolicy* byla nastavena na hodnotu *automaticky*. Toto nastavení umožňuje instancím virtuálních počítačů ve škálovací sadě automaticky aktualizovat a používat nejnovější verzi vaší aplikace.
 
 Pokud chcete aktualizovat definici rozšíření vlastních skriptů, upravte svou šablonu tak, aby odkazovala na nový instalační skript. Je potřeba použít nový název souboru, aby rozšíření vlastních skriptů tuto změnu rozpoznalo. Rozšíření vlastních skriptů nezkoumá obsah skriptu, aby rozpoznalo případné změny. Následující definice používá aktualizovaný instalační skript, k jehož názvu je připojený řetězec *_v2* :
 

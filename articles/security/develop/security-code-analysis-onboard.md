@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 5366da1048e7c6d9612ad8b6b1f1694068bb35fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fe13c418452a7a88dcd97939d6e853039f3fb64
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543023"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517066"
 ---
 # <a name="onboarding-and-installing"></a>Onboarding a instalace
 
@@ -63,7 +63,7 @@ Tým Microsoft Security Code Analysis je, aby se připojil k partnerům Premier 
 1. Vyberte **Shared**.
 1. Vyberte rozšíření Microsoft Security Code Analysis, vyberte **nainstalovat**.
 1. V rozevíracím seznamu vyberte organizaci Azure DevOps, na kterou chcete rozšíření nainstalovat.
-1. Vyberte **Nainstalovat**. Po dokončení instalace můžete začít používat rozšíření.
+1. Vyberte **Install** (Nainstalovat). Po dokončení instalace můžete začít používat rozšíření.
 
 >[!NOTE]
 > I v případě, že nemáte přístup pro instalaci rozšíření, pokračujte v postupu instalace. Během procesu instalace můžete požádat o přístup správce vaší organizace Azure DevOps.
@@ -73,7 +73,7 @@ Po instalaci rozšíření jsou úkoly sestavení pro bezpečné nasazení vidit
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Přidání konkrétních úloh sestavení do kanálu Azure DevOps
 
 1. Z vaší organizace Azure DevOps otevřete týmový projekt.
-1. Vyberte **Pipelines**  >  **sestavení**kanálů.
+1. Vyberte **Pipelines**  >  **sestavení** kanálů.
 1. Vyberte kanál, do kterého chcete přidat úlohy sestavení rozšíření:
    - Nový kanál: vyberte **Nový** a pomocí podrobných kroků vytvořte nový kanál.
    - Upravit kanál: Vyberte existující kanál a pak výběrem **Upravit** zahajte úpravy kanálu.
@@ -90,7 +90,7 @@ Po instalaci rozšíření jsou úkoly sestavení pro bezpečné nasazení vidit
 > - Pro úlohy sestavení s bezpečným vývojem vždy vyberte možnost **pokračovat při chybě** . I když jeden nástroj nefunguje, můžou ostatní spustit. Mezi nástroji neexistují žádné vzájemné závislosti.
 > - Úkoly sestavení analýzy kódu zabezpečení společnosti Microsoft selžou pouze v případě, že se nepodaří úspěšně spustit nástroj. Ale jsou úspěšné i v případě, že nástroj identifikuje problémy v kódu. Pomocí úlohy sestavení po analýze můžete sestavení nakonfigurovat tak, aby nebylo úspěšné, když nástroj identifikuje problémy v kódu.
 > - Některé úlohy sestavení Azure DevOps se při spuštění prostřednictvím kanálu vydání nepodporují. Konkrétně Azure DevOps nepodporuje úlohy, které publikují artefakty v rámci kanálu vydání.
-> - Seznam předdefinovaných proměnných ve službě Azure DevOps Team Build, které můžete zadat jako parametry, najdete v tématu [proměnné sestavení Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/build/variables?tabs=batch&view=vsts).
+> - Seznam předdefinovaných proměnných ve službě Azure DevOps Team Build, které můžete zadat jako parametry, najdete v tématu [proměnné sestavení Azure DevOps](/azure/devops/pipelines/build/variables?tabs=batch&view=vsts).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: 303ed66b7d268a5bab33d0d857399e907764d152
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f7b96bcebb2106e52c62426ca2b64f9305e09141
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378852"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515404"
 ---
 # <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
 V tomto kurzu se dozvíte, jak vytvořit pracovní prostor synapse, vyhrazený fond SQL a fond Apache Spark bez serveru. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků tohoto kurzu potřebujete mít přístup ke skupině prostředků, ke které jste přiřadili roli **vlastníka** . V této skupině prostředků vytvořte pracovní prostor synapse.
 
@@ -31,11 +31,10 @@ K dokončení kroků tohoto kurzu potřebujete mít přístup ke skupině prost�
 1. Ve výsledcích hledání v části **služby** vyberte **Azure synapse Analytics (pracovní prostory verze Preview)**.
 1. Vyberte **Přidat** a vytvořte pracovní prostor.
 1. V oblasti **základy** zadejte preferované **předplatné** , **skupinu prostředků** , **oblast** a pak zvolte název pracovního prostoru. V tomto kurzu použijeme **MyWorkspace**.
-1. K vytvoření pracovního prostoru potřebujete účet ADLSGEN2 a kontejner v tomto účtu. Pracovní prostor synapse bude tento kontejner používat jako výchozí umístění pro ukládání protokolů Spark a dat pro tabulky Spark.
-    1. Přejděte k **výběru Data Lake Storage Gen 2**. 
-    1. Klikněte na **vytvořit nový** a pojmenujte ho **contosolake**.
-    1. Klikněte na **systém souborů** a pojmenujte ho **Uživatelé**. Tím se vytvoří kontejner s názvem **Uživatelé** .
-1. Váš pracovní prostor Azure synapse použije tento účet úložiště jako primární účet úložiště a kontejner pro uložení dat pracovního prostoru. Pracovní prostor ukládá data v Apache Sparkch tabulkách. Ukládá protokoly aplikací Spark do složky s názvem **/synapse/workspacename**.
+1. Přejděte k **výběru Data Lake Storage Gen 2**. 
+1. Klikněte na **vytvořit nový** a pojmenujte ho **contosolake**.
+1. Klikněte na **systém souborů** a pojmenujte ho **Uživatelé**. Tím se vytvoří kontejner s názvem **Uživatelé** .
+1. Pracovní prostor bude používat tento účet úložiště jako primární účet úložiště pro tabulky Spark a protokoly aplikací Spark.
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš pracovní prostor je připravený během několika minut.
 
 ## <a name="open-synapse-studio"></a>Otevřít synapse Studio
@@ -68,7 +67,7 @@ Vyhrazený fond SQL spotřebovává Fakturovatelné prostředky, pokud je aktivn
     |Nastavení | Navrhovaná hodnota | 
     |---|---|---|
     |**Název Apache Spark fondu**|**Spark1**
-    |**Velikost uzlu**| **Malý**|
+    |**Velikost uzlu**| **Malá**|
     |**Počet uzlů**| Nastavte minimum na 3 a maximum na 3.|
 
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš fond Apache Spark bude připravený během několika sekund.
