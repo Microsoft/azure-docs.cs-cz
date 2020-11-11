@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9eca855269597477bc42a319c99c886576d92c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779282"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94482712"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
@@ -147,7 +147,8 @@ Vrátí řetězec představující aktuální stav volání:
 * Připojeno – volání je připojené.
 * Blokováno – volání je blokováno, žádné médium neprobíhá mezi místním koncovým bodem a vzdáleným účastníkem (y).
 * "Odpojení" – přechodový stav před voláním do stavu "Odpojeno"
-* Odpojeno – stav konečného volání
+* Odpojeno – stav konečného volání.
+   * Pokud dojde ke ztrátě síťového připojení, stav přejde na odpojeno po 2 minutách.
 
 
 * Chcete-li zjistit, proč dané volání skončilo, zkontrolujte `callEndReason` vlastnost.
@@ -233,6 +234,9 @@ const source callClient.getDeviceManager().getCameraList()[1];
 localVideoStream.switchSource(source);
 
 ```
+### <a name="faq"></a>Časté otázky
+ * Pokud dojde ke ztrátě připojení k síti, změní se stav volání na odpojeno?
+    * Ano, pokud dojde ke ztrátě síťového připojení po dobu delší než 2 minuty, volání se převede na odpojený stav a volání skončí.
 
 ## <a name="remote-participants-management"></a>Vzdálená správa účastníků
 
@@ -270,7 +274,8 @@ Stav může být jedna z
 * Připojeno – účastník je připojený k volání.
 * ' Hold ' – účastník je blokován
 * ' EarlyMedia ' – před připojením účastníka k volání se přehraje oznámení.
-* ' Odpojeno ' – konečný stav – účastník je odpojen od volání
+* ' Odpojeno ' – konečný stav – účastník je odpojen od volání.
+   * Pokud vzdálený účastník ztratí své připojení k síti, pak vzdálený stav účastníka přejde na odpojeno po 2 minutách.
 
 Chcete-li zjistit, proč účastník opustil hovor, zkontrolujte `callEndReason` vlastnost:
 ```js
@@ -410,7 +415,9 @@ Později můžete režim škálování aktualizovat vyvoláním `updateScalingMo
 ```js
 view.updateScalingMode('Crop')
 ```
-
+### <a name="faq"></a>Časté otázky
+* Když vzdálený účastník ztratí své síťové připojení, změní se jeho stav na odpojeno?
+    * Ano, pokud vzdálený účastník ztratí své síťové připojení po dobu delší než 2 minuty, jejich stav se převede na odpojeno a odebere se z tohoto volání.
 ## <a name="device-management"></a>Správa zařízení
 
 `DeviceManager` umožňuje vytvořit výčet místních zařízení, která se dají použít při volání přenosů zvukových a video datových proudů. Umožňuje taky požádat uživatele o oprávnění k přístupu ke svému mikrofonu a kameře pomocí rozhraní API nativního prohlížeče.
