@@ -7,6 +7,8 @@
       href: overview.md
     - name: Technický přehled a přehled funkcí
       href: technical-overview.md
+    - name: Novinky v dokumentaci
+      href: whats-new-docs.md
 - name: Rychlé starty
   expanded: true
   items:

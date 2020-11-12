@@ -3,17 +3,17 @@ title: Dokumentace ke službě Azure Database for MariaDB
 summary: Azure Database for MariaDB je relační databázová služba založená na opensourcovém serverovém stroji MariaDB.  Je to nabídka plně spravované databáze jako služby schopné spravovat důležité úlohy s předvídatelným výkonem a možností dynamického škálování. Vyvíjejte aplikace pomocí Azure Database for MariaDB s využitím opensourcových nástrojů a platformy podle vašeho výběru. Naučte se používat Azure Database for MariaDB prostřednictvím našich rychlých zprovoznění, kurzů a ukázek.
 metadata:
   description: Azure Database for MariaDB je relační databázová služba v cloudu Microsoftu vytvořená pro vývojáře na základě opensourcového databázového stroje MariaDB.
-  author: ajlam
-  ms.author: andrela
+  author: savjani
+  ms.author: pariks
   ms.date: 09/05/2019
   ms.service: mariadb
   ms.topic: landing-page
-  ms.openlocfilehash: 3e49a860cca6cb59543f450cda4bda8c6b0c0a38
-  ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+  ms.openlocfilehash: 3c2ea25c4d928071da6f6d3047b58996289aaa13
+  ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92428332"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94539800"
 landingContent:
 - title: Informace o službě Azure Database for MariaDB
   linkLists:
