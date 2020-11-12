@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: vytvoření serveru – Azure CLI-Azure Database for MySQL-flexibilní Server'
 description: V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit Azure Database for MySQL flexibilní Server ve skupině prostředků Azure.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 4be295ada476e4dc41a86d06908ef1d653a3bad8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3e2cb1d7c5f4d19a91eeb2999d7cbe449c10f822
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545017"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542996"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>Rychlý Start: vytvoření Azure Database for MySQL flexibilního serveru pomocí Azure CLI
 
@@ -107,7 +107,7 @@ Pokud se chcete připojit k serveru, budete muset zadat informace o hostiteli a 
 az mysql flexible-server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **administratorLogin** . Níže je ukázka výstupu JSON: 
+Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **administratorLogin**. Níže je ukázka výstupu JSON: 
 
 ```json
 {

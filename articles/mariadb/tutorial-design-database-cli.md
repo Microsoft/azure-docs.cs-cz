@@ -1,19 +1,19 @@
 ---
 title: 'Kurz: návrh Azure Database for MariaDB – Azure CLI'
 description: V tomto kurzu se dozvíte, jak vytvořit a spravovat Azure Database for MariaDB Server a databázi pomocí Azure CLI z příkazového řádku.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 205fe47acb6d10b7596c462476b4e9e718a3d813
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fbc68570fb59be14947755a241ab9b005841e99
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424962"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542497"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Kurz: návrh Azure Database for MariaDB pomocí Azure CLI
 

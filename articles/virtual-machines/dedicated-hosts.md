@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 3b407ae18316071d77cc87992a70a4fba857ab64
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0b0e198075455f697c87ad48741a770e6f78b5a5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979015"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542146"
 ---
 # <a name="azure-dedicated-hosts"></a>Vyhrazení hostitelé Azure
 
@@ -84,7 +84,6 @@ Známé problémy a omezení při použití automatického umístění virtuáln
 
 - Na vyhrazených hostitelích nebudete moct využít výhody hybridního využití Azure.
 - Nebudete moct znovu nasadit virtuální počítač. 
-- Nebudete moct kontrolovat údržbu pro vyhrazené hostitele.
 - Nebudete moct používat virtuální počítače Lsv2, NVasv4, NVsv3, Msv2 nebo M-Series s vyhrazenými hostiteli. 
 
 
@@ -120,7 +119,7 @@ U vyhrazených hostitelů nejsou podporovaná nastavení Orchestrace a optimaliz
 
 Infrastruktura, která podporuje vaše virtuální počítače, se občas může aktualizovat, aby vylepšila spolehlivost, výkon, zabezpečení a spouštěla nové funkce. Platforma Azure se snaží minimalizovat dopad údržby platforem, kdykoli to bude možné, ale zákazníci s *citlivými* úlohami údržby se nemůžou tolerovat ještě pár sekund, než se virtuální počítač musí kvůli údržbě ukotvit nebo odpojit.
 
-**Řízení údržby** poskytuje zákazníkům možnost přeskočit běžné aktualizace platforem naplánované na jejich vyhrazených hostitelích a pak je použít v době jejich výběru v rámci 35ho okna.
+**Řízení údržby** poskytuje zákazníkům možnost přeskočit běžné aktualizace platforem naplánované na jejich vyhrazených hostitelích a pak je použít v době jejich výběru v rámci 35ho okna. V okně údržby můžete provádět údržbu přímo na úrovni hostitele, a to v libovolném pořadí. Po překročení časového období údržby přesune Microsoft vpřed a použije nevyřízenou údržbu na hostitele v takovém pořadí, které nemusí následovat po uživatelem definovaných doménách selhání.
 
 Další informace najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](./maintenance-control.md).
 

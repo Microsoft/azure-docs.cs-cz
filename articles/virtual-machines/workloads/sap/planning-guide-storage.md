@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed99145a2d3860849c4a8117a93a9a0f24d227c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653609"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540922"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Typy služby Azure Storage pro úlohy SAP
 Azure má spoustu typů úložiště, které se v různých možnostech, propustnosti, latenci a cenách liší. Některé typy úložiště nejsou ani omezené možnosti použitelné pro scénáře SAP. Vzhledem k tomu, že některé typy úložiště Azure jsou vhodné nebo optimalizované pro konkrétní scénáře úloh SAP. Zejména u SAP HANA některé typy úložiště Azure získali certifikaci pro použití s SAP HANA. V tomto dokumentu procházíme mezi různými typy úložišť a popisujete jejich schopnost a použitelnost pomocí úloh SAP a komponent SAP.
@@ -273,7 +273,7 @@ Další integrovaná funkce úložiště ANF:
 - Klonování svazků ANF ze snímků
 - Obnovení svazků ze snímků (modul snap-vrácení)
 
-**Shrnutí**: Azure NetApp Files je úložiště s nízkou latencí Hana, které umožňuje nasadit svazky nebo sdílené složky systému souborů NFS a SMB. Úložiště obsahuje tři různé úrovně služeb, které poskytují různé propustnosti a vstupně-výstupní operace lineárním způsobem na GiBou kapacitu svazku. Úložiště ANF umožňuje nasazení SAP HANAch scénářů škálování na více instancí s pohotovostním uzlem. Úložiště je vhodné k poskytování sdílených složek, které jsou potřeba pro/sapmnt nebo globální transportní adresář SAP. Úložiště ANF přináší dostupnost funkcí, která je k dispozici jako nativní funkce NetApp.  
+**Shrnutí** : Azure NetApp Files je úložiště s nízkou latencí Hana, které umožňuje nasadit svazky nebo sdílené složky systému souborů NFS a SMB. Úložiště obsahuje tři různé úrovně služeb, které poskytují různé propustnosti a vstupně-výstupní operace lineárním způsobem na GiBou kapacitu svazku. Úložiště ANF umožňuje nasazení SAP HANAch scénářů škálování na více instancí s pohotovostním uzlem. Úložiště je vhodné k poskytování sdílených složek, které jsou potřeba pro/sapmnt nebo globální transportní adresář SAP. Úložiště ANF přináší dostupnost funkcí, která je k dispozici jako nativní funkce NetApp.  
 
 
 
@@ -352,11 +352,10 @@ Vzhledem k velikosti virtuálních počítačů Azure v životním cyklu systém
 
 
 ## <a name="striping-or-not-striping"></a>Prokládání nebo nepruhování
-Vytvoření Stripe nastaveného na více discích Azure do jednoho většího svazku umožňuje nashromáždit IOPS a propustnost jednotlivých disků na jednom svazku. Používá se jenom pro Azure Storage úrovně Standard a Azure Premium Storage. Azure Ultra disk, na kterém můžete nakonfigurovat propustnost a IOPS nezávisle na kapacitě disku, nevyžaduje použití sad Stripe Sets. Sdílené svazky založené na systému souborů NFS nebo SMB nelze prokládat. Z důvodu nelineárního charakteru propustnosti služby Azure Premium Storage a IOPS můžete zřídit menší kapacitu se stejnými IOPS a propustností než velké samostatné disky Azure Premium Storage. To je metoda, která dosahuje vyšší propustnosti nebo IOPS s nižšími náklady pomocí Azure Premium Storage. Například:
+Vytvoření Stripe nastaveného na více discích Azure do jednoho většího svazku umožňuje nashromáždit IOPS a propustnost jednotlivých disků na jednom svazku. Používá se jenom pro Azure Storage úrovně Standard a Azure Premium Storage. Azure Ultra disk, na kterém můžete nakonfigurovat propustnost a IOPS nezávisle na kapacitě disku, nevyžaduje použití sad Stripe Sets. Sdílené svazky založené na systému souborů NFS nebo SMB nelze prokládat. Z důvodu nelineárního charakteru propustnosti služby Azure Premium Storage a IOPS můžete zřídit menší kapacitu se stejnými IOPS a propustností než velké samostatné disky Azure Premium Storage. To je metoda, která dosahuje vyšší propustnosti nebo IOPS s nižšími náklady pomocí Azure Premium Storage. Například rozložení na dva disky úložiště P15 úrovně Premium vám umožní následující propustnost: 
 
-- Proložení dvou disků úložiště P15 úrovně Premium vám umožní propustnost 
 - 250 MiB/s. Tento svazek bude mít 512 GiBou kapacitu. Pokud chcete mít jeden disk, který vám poskytne 250 propustnosti MiB za sekundu, musíte vybrat P40 disk se 2 TiB kapacitou. 
-- Nebo můžete dosáhnout propustnosti 400 MiB/s tím, že provedete čtyři disky úložiště P10 úrovně Premium s celkovou kapacitou 512 GiB prokládáním. Pokud chcete mít jeden disk s minimální propustností 500 MiB za sekundu, museli byste vybrat disk úložiště P60 úrovně Premium s 8 TiB. Vzhledem k tomu, že se náklady nebo Premium Storage blíží k kapacitě lineárně, můžete při používání Stripe vymezit úspory nákladů.
+- 400 MiB/s prokládá čtyři disky úložiště P10 úrovně Premium s celkovou kapacitou 512 GiB na základě Stripe. Pokud chcete mít jeden disk s minimální propustností 500 MiB za sekundu, museli byste vybrat disk úložiště P60 úrovně Premium s 8 TiB. Vzhledem k tomu, že náklady na Premium Storage jsou blízko lineárního využívání kapacity, můžete při používání Stripe vymezit úspory nákladů.
 
 Při prokládaném je potřeba provést některá pravidla:
 

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761477"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542673"
 ---
 # <a name="sizing-guidance"></a>Pokyny pro změnu velikosti
 
@@ -89,6 +89,7 @@ Každá spravovaná instance SQL musí mít následující minimální požadavk
 - Jádra: 1
 
 Každá vytvořená instance SQL pod vytvořením má tři kontejnery:
+
 |Název kontejneru|Požadavek procesoru|Požadavek na paměť|Limit procesoru|Omezení paměti|Poznámky|
 |---|---|---|---|---|---|
 |fluentbit|100 milionů|100Mi|Neurčeno|Neurčeno|Požadavky na prostředky kontejneru fluentbit jsou _kromě_ požadavků určených pro SPRAVOVANOU instanci SQL.||
@@ -104,6 +105,7 @@ Každý uzel PostgreSQL skupiny serverů s rozšířením na úrovni serveru mus
 - Jádra: 1
 
 Každý PostgreSQL koordinátor skupiny serverů nebo pracovní proces, který je vytvořen, má tři kontejnery:
+
 |Název kontejneru|Požadavek procesoru|Požadavek na paměť|Limit procesoru|Omezení paměti|Poznámky|
 |---|---|---|---|---|---|
 |fluentbit|100 milionů|100Mi|Neurčeno|Neurčeno|Požadavky na prostředky kontejneru fluentbit jsou _kromě_ požadavků určených pro uzly skupin serverů PostgreSQL s rozšířením.|
@@ -122,9 +124,9 @@ Následuje příklad výpočtu velikosti.
 
 Požadavky:
 
-- **"SQL1"**: 1 spravovaná instance SQL s 16 GB paměti RAM, 4 jádra
-- **"Sql2"**: 1 spravovaná instance SQL s 256 GB paměti RAM, 16 jader
-- **"Postgres1"**: 1 PostgreSQL skupina serverů s škálovatelným škálováním a 4 pracovními procesy s 12 GB paměti RAM, 4 jádry
+- **"SQL1"** : 1 spravovaná instance SQL s 16 GB paměti RAM, 4 jádra
+- **"Sql2"** : 1 spravovaná instance SQL s 256 GB paměti RAM, 16 jader
+- **"Postgres1"** : 1 PostgreSQL skupina serverů s škálovatelným škálováním a 4 pracovními procesy s 12 GB paměti RAM, 4 jádry
 
 Výpočty velikosti:
 

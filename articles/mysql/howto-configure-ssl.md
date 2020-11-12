@@ -1,18 +1,18 @@
 ---
 title: Konfigurace SSL-Azure Database for MySQL
 description: Pokyny, jak správně nakonfigurovat Azure Database for MySQL a přidružené aplikace pro správné použití připojení SSL
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 1bedeb752a18d7a0212ede2b34526efb8ea09287
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71e6d024b27ecad09b3339a7b0a8c406c7a3eda1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905831"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541517"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MySQL
 
@@ -63,7 +63,7 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 
 Pomocí Azure Portal přejděte na server Azure Database for MySQL a pak klikněte na **zabezpečení připojení**. Pomocí přepínacího tlačítka povolte nebo zakažte nastavení **Vynutilí připojení SSL** a pak klikněte na **Uložit**. Microsoft doporučuje vždy povolit nastavení **Vynutilí připojení SSL** pro rozšířené zabezpečení.
 
-:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="Uložit konfiguraci SSL":::
+:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="Snímek obrazovky Azure Portal pro vymáhání připojení SSL v Azure Database for MySQL":::
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 

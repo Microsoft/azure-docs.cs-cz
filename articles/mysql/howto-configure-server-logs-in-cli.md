@@ -1,19 +1,19 @@
 ---
 title: Přístup k protokolům pomalým dotazům – Azure CLI-Azure Database for MySQL
 description: Tento článek popisuje, jak získat přístup k protokolům pomalým dotazům v Azure Database for MySQL pomocí rozhraní příkazového řádku Azure.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a662fe9300d78591cc7ae1fcff67f9b3f93ab8c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 945a67f81010a61adf814f6f6f422eba5001b48d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501214"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541568"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům pomalým dotazům pomocí Azure CLI
 Protokoly pomalých dotazů Azure Database for MySQL můžete stáhnout pomocí Azure CLI, nástroje příkazového řádku Azure.
@@ -26,8 +26,8 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Server můžete nakonfigurovat tak, aby se přihlásil k protokolu pomalým dotazů MySQL, a to provedením následujících kroků:
 1. Zapněte pomalé protokolování dotazů nastavením parametru **pomalého \_ \_ protokolu dotazů** na zapnuto.
-2. Vyberte, kde se mají protokoly výstupovat, a použijte přitom ** \_ výstup protokolu**. Pokud chcete odesílat protokoly do místního úložiště i Azure Monitor diagnostické protokoly, vyberte **soubor**. Pokud chcete odesílat protokoly jenom do protokolů Azure Monitor, vyberte **žádné** .
-3. Úprava dalších parametrů, jako jsou **například \_ dlouhé \_ časy dotazů** a ** \_ \_ \_ příkazy správce protokolu s pomalým protokolem**.
+2. Vyberte, kde se mají protokoly výstupovat, a použijte přitom **\_ výstup protokolu**. Pokud chcete odesílat protokoly do místního úložiště i Azure Monitor diagnostické protokoly, vyberte **soubor**. Pokud chcete odesílat protokoly jenom do protokolů Azure Monitor, vyberte **žádné** .
+3. Úprava dalších parametrů, jako jsou **například \_ dlouhé \_ časy dotazů** a **\_ \_ \_ příkazy správce protokolu s pomalým protokolem**.
 
 Informace o tom, jak nastavit hodnotu těchto parametrů prostřednictvím rozhraní příkazového řádku Azure CLI, najdete v tématu [Postup konfigurace parametrů serveru](howto-configure-server-parameters-using-cli.md).
 
@@ -43,7 +43,7 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ## <a name="list-logs-for-azure-database-for-mysql-server"></a>Vypsat protokoly pro Azure Database for MySQL server
 Pokud je **log_output** nakonfigurovaná na soubor, můžete získat přístup k protokolům přímo z místního úložiště serveru. Chcete-li zobrazit seznam dostupných souborů protokolu pomalých dotazů pro váš server, spusťte příkaz [AZ MySQL server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) .
 
-Soubory protokolu pro server **mydemoserver.MySQL.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem ** \_ soubory protokolu \_list.txt**.
+Soubory protokolu pro server **mydemoserver.MySQL.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **\_ soubory protokolu \_list.txt**.
 ```azurecli-interactive
 az mysql server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

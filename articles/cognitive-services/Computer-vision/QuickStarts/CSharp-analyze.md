@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 6ec84a2a528b992a2645e94472987ea67331b533
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 879b451131ef7b2fa108ca1ae307107506fe8f27
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969496"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541908"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Rychlý Start: analýza místní Image pomocí Počítačové zpracování obrazu REST API a C #
 
-V tomto rychlém startu budete analyzovat místně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí REST API Počítačové zpracování obrazu. Pomocí metody [analyzovat image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat informace o vizuálních funkcích z obsahu obrázku.
+V tomto rychlém startu budete analyzovat místně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí REST API Počítačové zpracování obrazu. Pomocí metody [analyzovat image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) můžete extrahovat informace o vizuálních funkcích z obsahu obrázku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Musíte mít [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) nebo novější.
@@ -39,7 +39,7 @@ Když chcete vytvořit ukázku v sadě Visual Studio, postupujte takto:
 1. Nainstalujte balíček NuGet Newtonsoft.Json.
     1. V nabídce klikněte na **Nástroje** vyberte **Správce balíčků NuGet** a potom **Spravovat balíčky NuGet pro řešení**.
     1. Klikněte na kartu **Procházet** a do **vyhledávacího** pole zadejte "Newtonsoft.Jsna" (Pokud ještě není zobrazená).
-    1. Vyberte **Newtonsoft.Jszapnuto**, potom klikněte na zaškrtávací políčko vedle názvu projektu a **nainstalujte**.
+    1. Vyberte **Newtonsoft.Jszapnuto** , potom klikněte na zaškrtávací políčko vedle názvu projektu a **nainstalujte**.
 1. Zkopírujte nebo vložte ukázkový fragment kódu níže do souboru Program.cs. Upravte název oboru názvů, pokud se liší od toho, který jste vytvořili.
 1. Přidejte obrázek výběru do složky bin/Debug/netcoreappX. X a pak přidejte název Image (s příponou) do proměnné ' imageFilePath '.
 1. Spustíte program.

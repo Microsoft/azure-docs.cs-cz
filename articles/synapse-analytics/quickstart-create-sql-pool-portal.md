@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505066"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541007"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>Rychlý Start: vytvoření vyhrazeného fondu SQL (ve verzi Preview) pomocí Azure Portal
 
@@ -48,7 +48,7 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
     | Nastavení | Navrhovaná hodnota | Popis |
     | :------ | :-------------- | :---------- |
-    | **název vyhrazeného fondu SQL** | Libovolné platné jméno | Název vyhrazeného fondu SQL. |
+    | **Název vyhrazeného fondu SQL** | Libovolné platné jméno | Název vyhrazeného fondu SQL. |
     | **Úroveň výkonu** | DW100c | Nastavte na nejmenší velikost, aby se snížily náklady pro tento rychlý Start. |
 
   
@@ -73,7 +73,6 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 8. Po dokončení zřizování se navigace zpátky do pracovního prostoru zobrazí nový záznam pro nově vytvořený vyhrazený fond SQL.
  ![Vytvoření fondu SQL – zřizování prostředků](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
-
 
 
 Po vytvoření vyhrazeného fondu SQL bude k dispozici v pracovním prostoru pro načítání dat, zpracování datových proudů, čtení ze jezera atd.

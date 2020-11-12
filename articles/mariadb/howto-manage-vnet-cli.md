@@ -1,19 +1,19 @@
 ---
 title: Správa koncových bodů VNet – Azure CLI – Azure Database for MariaDB
 description: Tento článek popisuje, jak vytvořit a spravovat Azure Database for MariaDB koncových bodů a pravidel služby VNet pomocí příkazového řádku Azure CLI.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b7efa9a6ae6dda41a5503da389b59880c448bc76
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 7af824d7cdf0c668e4513cd450a1815b88568b3e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515468"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540888"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Vytvoření a správa koncových bodů služby virtuální sítě Azure Database for MariaDB pomocí Azure CLI
 

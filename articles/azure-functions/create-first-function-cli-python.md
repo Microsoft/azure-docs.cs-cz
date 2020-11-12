@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 9c88feca5bf4bdac91af7f88c24cd342dc1b04cf
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 17edd0a402fc6db2b3690074bdc0c652b107c7d0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426285"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541381"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce Pythonu v Azure z příkazového řádku
 
@@ -275,3 +275,5 @@ V samostatném okně terminálu nebo v prohlížeči zavolejte vzdálenou funkci
 
 > [!div class="nextstepaction"]
 > [Připojení k frontě Azure Storage](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-python)
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/python-functions-qs-survey)

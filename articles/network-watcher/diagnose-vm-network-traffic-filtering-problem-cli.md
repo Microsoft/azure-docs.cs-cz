@@ -18,22 +18,24 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 871c4fc69daac9d5f515fdf3e4ec0ca1de6fbe08
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0a483bc6097c4dd76ed67e93e4313ad8c25cbc08
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91295953"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542350"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače – Azure CLI
 
 V tomto rychlém startu nasadíte virtuální počítač a potom zkontrolujete obousměrnou komunikaci mezi IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít spuštěnou verzi Azure CLI 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Po ověření verze Azure CLI spusťte příkaz `az login`  a vytvořte připojení k Azure. Příkazy rozhraní příkazového řádku Azure v tomto rychlém startu jsou naformátované tak, aby běžely v prostředí bash.
+- Tento rychlý Start vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná. 
+
+- Příkazy rozhraní příkazového řádku Azure v tomto rychlém startu jsou naformátované tak, aby běžely v prostředí bash.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
@@ -43,7 +45,7 @@ Než vytvoříte virtuální počítač, musíte vytvořit skupinu prostředků,
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`. Následující příklad vytvoří virtuální počítač *myVm*:
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`. Následující příklad vytvoří virtuální počítač *myVm* :
 
 ```azurecli-interactive
 az vm create \
@@ -132,9 +134,9 @@ az network nic list-effective-nsg \
   --name myVmVMNic
 ```
 
-Vrácený výstup obsahuje následující text pravidla **AllowInternetOutbound**, které v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) umožnilo v předchozím kroku odchozí přístup k adrese www.bing.com:
+Vrácený výstup obsahuje následující text pravidla **AllowInternetOutbound** , které v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) umožnilo v předchozím kroku odchozí přístup k adrese www.bing.com:
 
-```
+```console
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -171,11 +173,11 @@ Vrácený výstup obsahuje následující text pravidla **AllowInternetOutbound*
 },
 ```
 
-V předchozím výstupu můžete vidět, že **předponou zdrojové adresy** (destinationAddressPrefix) je **Internet**. Není však jasné, jak adresa 13.107.21.200 souvisí s **Internetem**. V seznamu **expandedDestinationAddressPrefix**vidíte několik předpon adres. a jednou z nich je **12.0.0.0/6**, která zahrnuje rozsah IP adres od 12.0.0.1 do 15.255.255.254. Vzhledem k tomu, že adresa 13.107.21.200 do tohoto rozsahu adres patří, pravidlo **AllowInternetOutBound** jí odchozí provoz umožní. Kromě toho v předchozím výstupu nejsou zobrazená žádná jiná pravidla s vyšší prioritou (nižším číslem), která by toto pravidlo přepisovala. Pokud byste chtěli odchozí komunikaci na IP adresu odepřít, mohli byste přidat pravidlo zabezpečení s vyšší prioritou, které portu 80 odchozí komunikaci na tuto IP adresu zakáže.
+V předchozím výstupu můžete vidět, že **předponou zdrojové adresy** (destinationAddressPrefix) je **Internet**. Není však jasné, jak adresa 13.107.21.200 souvisí s **Internetem**. V seznamu **expandedDestinationAddressPrefix** vidíte několik předpon adres. a jednou z nich je **12.0.0.0/6** , která zahrnuje rozsah IP adres od 12.0.0.1 do 15.255.255.254. Vzhledem k tomu, že adresa 13.107.21.200 do tohoto rozsahu adres patří, pravidlo **AllowInternetOutBound** jí odchozí provoz umožní. Kromě toho v předchozím výstupu nejsou zobrazená žádná jiná pravidla s vyšší prioritou (nižším číslem), která by toto pravidlo přepisovala. Pokud byste chtěli odchozí komunikaci na IP adresu odepřít, mohli byste přidat pravidlo zabezpečení s vyšší prioritou, které portu 80 odchozí komunikaci na tuto IP adresu zakáže.
 
 Když jste spustili příkaz `az network watcher test-ip-flow`, abyste v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) otestovali odchozí komunikaci na IP adresu 172.131.0.100, výstup vás informoval, že pravidlo **DefaultOutboundDenyAll** komunikaci odepřelo. Pravidlo **DefaultOutboundDenyAll** plní stejnou funkci jako pravidlo **DenyAllOutBound** uvedené v následujícím výstupu z příkazu `az network nic list-effective-nsg`:
 
-```
+```console
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -208,7 +210,7 @@ Pravidlo zobrazuje **hodnotu 0.0.0.0/0** jako **destinationAddressPrefix**. Prav
 
 Když jste spustili příkaz `az network watcher test-ip-flow`, abyste v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) otestovali příchozí komunikaci z IP adresy 172.131.0.100, výstup vás informoval, že pravidlo **DefaultInboundDenyAll** komunikaci odepřelo. Pravidlo **DefaultInboundDenyAll** plní stejnou funkci jako pravidlo **DenyAllInBound** uvedené v následujícím výstupu z příkazu `az network nic list-effective-nsg`:
 
-```
+```console
 {
  "access": "Deny",
  "additionalProperties": {},

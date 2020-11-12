@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 09/16/2020
+ms.date: 11/09/2020
 ms.author: jasteppe
-ms.openlocfilehash: a843ee15d4e7c67bcf69609067d70f592b9b50d6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 124c3b3667e847a5ee1bb8034ef01088c629d503
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394216"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540939"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Azure IoT Connectorem pro FHIR (Preview)
 
@@ -68,7 +68,7 @@ V této části se dozvíte o procesu ověřování, který Azure IoT Connector 
 |Účet neexistuje.|Rozhraní API|Došlo k pokusu o přidání konektoru Azure IoT pro FHIR a neexistuje rozhraní API Azure pro prostředek FHIR.|Vytvořte prostředek Azure API pro FHIR a pak zkuste operaci zopakovat.|
 |Verze Azure API pro FHIR prostředků FHIR není pro službu IoT Connector podporovaná.|Rozhraní API|Pokoušíte se použít Azure IoT Connector pro FHIR s nekompatibilní verzí Azure API pro prostředek FHIR.|Vytvořte nové rozhraní Azure API pro prostředek FHIR (verze R4) nebo použijte existující rozhraní API Azure pro prostředek FHIR (verze R4).
 
-##  <a name="why-is-my-azure-iot-connector-for-fhir-preview-data-not-showing-up-in-azure-api-for-fhir"></a>Proč je můj konektor Azure IoT pro FHIR (ve verzi Preview) nezobrazený v Azure API pro FHIR?
+## <a name="why-is-my-azure-iot-connector-for-fhir-preview-data-not-showing-up-in-azure-api-for-fhir"></a>Proč je můj konektor Azure IoT pro FHIR (ve verzi Preview) nezobrazený v Azure API pro FHIR?
 
 |Potenciální problémy|Opravy|
 |----------------|-----|
@@ -82,7 +82,74 @@ V této části se dozvíte o procesu ověřování, který Azure IoT Connector 
 
 * [Rychlý Start: nasazení konektoru Azure IoT Connector (Preview) pomocí Azure Portal](iot-fhir-portal-quickstart.md#create-new-azure-iot-connector-for-fhir-preview) pro funkční popis konektoru Azure IoT Connector pro typy rozlišení FHIR (například: Lookup nebo Create).
 
+## <a name="use-metrics-to-troubleshoot-issues-in-azure-iot-connector-for-fhir-preview"></a>Použití metrik k řešení problémů v Azure IoT Connectoru pro FHIR (Preview)
+
+Azure IoT Connector pro FHIR vygeneruje několik metrik, které poskytují přehled o procesu toku dat. Jedna z podporovaných metrik se nazývá celkový počet *chyb* , což poskytuje počet všech chyb, ke kterým dojde v rámci instance služby Azure IoT Connector pro FHIR.
+
+Každá chyba se zaprotokoluje s řadou přidružených vlastností. Každá vlastnost poskytuje jiným aspektům chyby, která vám může pomoct identifikovat a řešit potíže. V této části jsou uvedeny různé vlastnosti zaznamenané pro každou chybu v metrikě *celkového počtu chyb* a možné hodnoty těchto vlastností.
+
+> [!NOTE]
+> Můžete přejít na metriku *celkového počtu chyb* pro instanci Azure IoT Connectoru pro FHIR (Preview), jak je popsáno na [stránce metriky Azure IoT Connector pro FHIR (Preview)](iot-metrics-display.md).
+
+Klikněte na graf *Celkový počet chyb* a potom klikněte na tlačítko *Přidat filtr* pro řez a indexy metriky chyby pomocí kterékoli z vlastností uvedených níže.
+
+### <a name="the-operation-performed-by-the-azure-iot-connector-for-fhir-preview"></a>Operace, kterou provádí Azure IoT Connector pro FHIR (Preview)
+
+Tato vlastnost představuje operaci prováděnou konektorem IoT Connector, pokud došlo k chybě. Operace obvykle představuje fázi toku dat při zpracování zprávy zařízení. Tady je seznam možných hodnot pro tuto vlastnost.
+
+> [!NOTE]
+> Další informace o různých fázích toku dat najdete v článku Azure IoT Connector pro FHIR ( [Preview).](iot-data-flow.md)
+
+|Fáze toku dat|Popis|
+|---------------|-----------|
+|Nastavení|Operace specifická pro nastavení instance služby IoT Connector|
+|Normalizace|Fáze toku dat, kde se data zařízení normalizují|
+|Seskupování|Fáze toku dat, kde se seskupují normalizovaná data|
+|FHIRConversion|Fáze toku dat, kde se seskupují normalizovaná data, se transformují na prostředek FHIR.|
+|Neznámý|Typ operace je neznámý, pokud došlo k chybě.|
+
+### <a name="the-severity-of-the-error"></a>Závažnost chyby
+
+Tato vlastnost představuje závažnost chyby, která došlo k chybě. Tady je seznam možných hodnot pro tuto vlastnost.
+
+|Závažnost|Popis|
+|---------------|-----------|
+|Upozornění|Některé drobné problémy v procesu toku dat existují, ale zpracování zprávy zařízení se nezastaví.|
+|Chyba|Při zpracování konkrétní zprávy zařízení došlo k chybě a ostatní zprávy můžou být i nadále spouštěny podle očekávání.|
+|Kritické|U konektoru IoT se vyskytuje několik problémů na úrovni systému a neočekává se, že se budou zpracovávat žádné zprávy.|
+
+### <a name="the-type-of-the-error"></a>Typ chyby
+
+Tato vlastnost označuje kategorii pro danou chybu, která v podstatě představuje logické seskupení pro podobný typ chyb. Tady je seznam možných hodnot pro tuto vlastnost.
+
+|Typ chyby|Popis|
+|----------|-----------|
+|DeviceTemplateError|Chyby související se šablonami mapování zařízení|
+|DeviceMessageError|Při zpracování konkrétní zprávy zařízení došlo k chybám.|
+|FHIRTemplateError|Chyby související se šablonami mapování FHIR|
+|FHIRConversionError|Při transformaci zprávy na prostředek FHIR došlo k chybám.|
+|FHIRResourceError|Chyby související se stávajícími prostředky na serveru FHIR, na které odkazuje konektor IoT Connector|
+|FHIRServerError|Chyby, ke kterým dochází při komunikaci se serverem FHIR|
+|GeneralError|Všechny ostatní typy chyb|
+
+### <a name="the-name-of-the-error"></a>Název chyby
+
+Tato vlastnost poskytuje název konkrétní chyby. Tady je seznam všech názvů chyb s popisem a přidružených typů chyb, závažnosti a fází toku dat.
+
+|Název chyby|Popis|Typy chyb|Závažnost chyby|Fáze toku dat|
+|----------|-----------|-------------|--------------|------------------|
+|MultipleResourceFoundException|Došlo k chybě, když se na serveru FHIR najde víc prostředků pacienta nebo zařízení pro příslušné identifikátory ve zprávě zařízení.|FHIRResourceError|Chyba|FHIRConversion|
+|TemplateNotFoundException|Pro šablonu zařízení nebo mapování FHIR není nakonfigurovaná instance konektoru IoT.|DeviceTemplateError, FHIRTemplateError|Kritické|Normalizace, FHIRConversion|
+|CorrelationIdNotDefinedException|ID korelace není zadané v šabloně mapování zařízení. CorrelationIdNotDefinedException je podmíněná chyba, ke které došlo pouze v případě, že sledování FHIR musí seskupovat měření zařízení pomocí ID korelace, ale není správně nakonfigurováno.|DeviceMessageError|Chyba|Normalizace|
+|PatientDeviceMismatchException|K této chybě dochází, pokud prostředek zařízení na serveru FHIR odkazuje na prostředek pacienta, který se neshoduje s identifikátorem pacienta uvedeným ve zprávě.|FHIRResourceError|Chyba|FHIRConversionError|
+|PatientNotFoundException|Na prostředek FHIR zařízení přidružený k identifikátoru zařízení, který se nachází ve zprávě zařízení, neodkazuje žádný prostředek FHIR pacienta. Poznámka: Tato chyba se projeví jenom v případě, že je instance konektoru IoT nakonfigurovaná s typem překladu *vyhledávání* .|FHIRConversionError|Chyba|FHIRConversion|
+|DeviceNotFoundException|Na serveru FHIR přidruženém k identifikátoru zařízení, který se nachází ve zprávě zařízení, neexistuje žádný prostředek zařízení.|DeviceMessageError|Chyba|Normalizace|
+|PatientIdentityNotDefinedException|K této chybě dochází, pokud výraz pro rozbor identifikátoru pacienta ze zprávy zařízení není nakonfigurovaný v šabloně mapování zařízení nebo identifikátorem pacient není ve zprávě zařízení přítomen. Poznámka k této chybě dochází jenom v případě, že je typ rozlišení konektoru IoT nastavený na *vytvořit* .|DeviceTemplateError|Kritické|Normalizace|
+|DeviceIdentityNotDefinedException|K této chybě dojde, pokud výraz pro analýzu identifikátoru zařízení ze zprávy zařízení není nakonfigurovaný v šabloně mapování zařízení nebo identifikátorem zařízení není přítomna ve zprávě zařízení.|DeviceTemplateError|Kritické|Normalizace|
+|NotSupportedException|Při přijetí zprávy zařízení s nepodporovaným formátem došlo k chybě.|DeviceMessageError|Chyba|Normalizace|
+
 ## <a name="creating-copies-of-the-azure-iot-connector-for-fhir-preview-conversion-mapping-json"></a>Vytváření kopií pro JSON mapování převodu služby Azure IoT Connector pro FHIR (Preview)
+
 Kopírování služby Azure IoT Connector pro soubory mapování FHIR může být užitečné pro úpravy a archivaci mimo Azure Portal Web.
 
 Při otevření lístku podpory, který vám pomůže při řešení potíží, by se měly poskytnout kopie souboru mapování pro technickou podporu Azure.

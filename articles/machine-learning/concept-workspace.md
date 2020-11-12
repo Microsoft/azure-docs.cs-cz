@@ -1,7 +1,7 @@
 ---
 title: Co je pracovní prostor
 titleSuffix: Azure Machine Learning
-description: Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning. Udržuje historii všech školicích běhů, včetně protokolů, metrik, výstupu a snímků vašich skriptů. Pomocí těchto informací určíte, který školicí běh vytváří nejlepší model.
+description: Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning. Udržuje historii všech školicích běhů s protokoly, metrikami, výstupem a snímky vašich skriptů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 1076b49a101d5657397ef12b8fac672d37e477b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 65cdf444386d1b10cf225010c55170e5b47b3eb4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324802"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541347"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
 
@@ -74,7 +74,7 @@ S vaším pracovním prostorem můžete pracovat následujícími způsoby:
 
 Můžete také provádět následující úlohy správy pracovního prostoru:
 
-| Úloha správy pracovního prostoru   | Portál              | Studio | Python SDK/R SDK       | CLI        | VS Code
+| Úloha správy pracovního prostoru   | Portál              | Studio | Python SDK/R SDK       | Rozhraní příkazového řádku        | VS Code
 |---------------------------|---------|---------|------------|------------|------------|
 | Vytvoření pracovního prostoru        | **&check;**     | | **&check;** | **&check;** | **&check;** |
 | Správa přístupu k pracovnímu prostoru    | **&check;**   || |  **&check;**    ||

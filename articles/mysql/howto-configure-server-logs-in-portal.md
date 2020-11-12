@@ -1,17 +1,17 @@
 ---
 title: Přístup k protokolům pomalým dotazům-Azure Portal-Azure Database for MySQL
 description: Tento článek popisuje, jak nakonfigurovat a přistupovat k pomalým protokolům v Azure Database for MySQL z Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: 69368500a99b47238e74a960fdd5381c0339430a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ad4ffa99a7af592e3e93e53673d254956807c40
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905868"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541619"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Konfigurace a přístup k protokolům pomalým dotazům z Azure Portal
 
@@ -23,7 +23,7 @@ Postup v tomto článku vyžaduje, abyste měli [Azure Database for MySQL server
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Nakonfigurujte přístup k protokolu pomalého dotazu MySQL. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte server Azure Database for MySQL.
 
@@ -40,7 +40,7 @@ Nakonfigurujte přístup k protokolu pomalého dotazu MySQL.
 
 8. Vyberte **Uložit**. 
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Snímek obrazovky s možnostmi protokolu serveru":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Snímek obrazovky s pomalými parametry protokolu dotazů a uložení.":::
 
 Na stránce **parametry serveru** se můžete vrátit do seznamu protokolů tím, že stránku zavřete.
 
@@ -53,7 +53,7 @@ Po zahájení protokolování můžete zobrazit seznam dostupných protokolů po
 
 3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. Stránka zobrazuje seznam souborů protokolu.
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="Snímek obrazovky s možnostmi protokolu serveru":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="Snímek obrazovky se stránkou protokolů serveru se zvýrazněným seznamem protokolů":::
 
    > [!TIP]
    > Konvence pojmenování protokolu je **MySQL-pomalé – < názvu serveru>-yyyymmddhh. log**. Datum a čas použití v názvu souboru je čas, kdy byl protokol vydán. Soubory protokolu se otočí každých 24 hodin nebo 7,5 GB, podle toho, co nastane dřív. 
@@ -62,23 +62,23 @@ Po zahájení protokolování můžete zobrazit seznam dostupných protokolů po
 
 5. Chcete-li stáhnout jednotlivé soubory protokolu, vyberte ikonu šipky vedle každého souboru protokolu v řádku tabulky.
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-download.png" alt-text="Snímek obrazovky s možnostmi protokolu serveru":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-download.png" alt-text="Snímek obrazovky se stránkou protokolů serveru s zvýrazněnou ikonou šipky":::
 
 ## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů
 
 1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky**.
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="Snímek obrazovky s možnostmi protokolu serveru":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="Snímek obrazovky s možnostmi nastavení diagnostiky":::
 
 1. Zadejte název nastavení diagnostiky.
 
 1. Určete, které datové jímky mají Odeslat protokoly pomalých dotazů (účet úložiště, centrum událostí nebo Log Analytics pracovní prostor).
 
 1. Jako typ protokolu vyberte **MySqlSlowLogs** .
-:::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="Snímek obrazovky s možnostmi protokolu serveru":::
+:::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="Snímek obrazovky s možnostmi konfigurace nastavení diagnostiky":::
 
 1. Po nakonfigurování datových umyvadel pro přesměrování protokolů pomalých dotazů na vyberte **Uložit**.
-:::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="Snímek obrazovky s možnostmi protokolu serveru":::
+:::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="Snímek obrazovky s možnostmi konfigurace nastavení diagnostiky s zvýrazněným možností Uložit":::
 
 1. Přístup k protokolům pomalým dotazům můžete prozkoumat v datech, která jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
 

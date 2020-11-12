@@ -1,19 +1,19 @@
 ---
 title: Vytvořit projekt pro označování dat
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak vytvořit a spustit označování projektů k označení dat pro strojové učení.  Mezi tyto nástroje patří označení ml s asistencí nebo lidské v rámci popisků pro pomoc s úkolem.
+description: Naučte se, jak vytvořit a spustit označování projektů k označení dat pro strojové učení.  Pomocí označení ML s asistencí nebo lidmi v označení smyčky můžete pomoct s úkolem.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 601434628258b8af3fb5fb9336f701be72441c64
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: da046fd633120944231ee440605367bdb730cbff
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318121"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543217"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -39,12 +39,12 @@ V tomto článku se naučíte:
 > * Export popisků
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Data, která chcete označit, buď v místních souborech nebo v úložišti objektů BLOB v Azure.
 * Sada popisků, které chcete použít.
 * Pokyny pro označování.
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
+* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="create-a-labeling-project"></a>Vytvoření projektu s popisem

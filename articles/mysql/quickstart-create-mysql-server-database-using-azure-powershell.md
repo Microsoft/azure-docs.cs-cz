@@ -1,25 +1,25 @@
 ---
 title: 'Rychlý Start: vytvoření serveru-Azure PowerShell-Azure Database for MySQL'
 description: V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Database for MySQL server ve skupině prostředků Azure.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 04/28/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 65ac6b3252b134fa6774c075ebc7d5f2c428a809
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d12d447acb3b6bf2b6f84e9768e9f063a9a36b03
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545119"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542299"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí prostředí PowerShell
 
 V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Database for MySQL server ve skupině prostředků Azure. PowerShell můžete použít k interaktivnímu vytváření a správě prostředků Azure nebo ve skriptech.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -70,7 +70,7 @@ Následující tabulka obsahuje seznam běžně používaných parametrů a uká
 | SslEnforcement             | Povoleno          | Zda má být pro tento server povolen nebo nikoli protokol SSL. Povolené hodnoty: Enabled, Disabled.                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51200            | Kapacita úložiště serveru (jednotkou jsou megabajty). Platný StorageInMb je minimálně 5120 MB a zvyšuje se o 1024 MB. Další informace o limitech velikosti úložiště najdete v tématu [Azure Database for MySQL cenové úrovně](./concepts-pricing-tiers.md).                                                                               |
 | Verze                    | 5.7              | Hlavní verze MySQL.                                                                                                                                                                                                                                                                                                                 |
-| AdministratorUserName      | myadmin          | Uživatelské jméno pro přihlášení správce. Nemůže být **azure_superuser** , **admin** , **administrátor** , **root** , **host** nebo **public** .                                                                                                                                                                                            |
+| AdministratorUserName      | myadmin          | Uživatelské jméno pro přihlášení správce. Nemůže být **azure_superuser** , **admin** , **administrátor** , **root** , **host** nebo **public**.                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | Heslo správce uživatele ve formě zabezpečeného řetězce. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.                                       |
 
 Hodnota parametru **SKU** dodržuje cenové úrovně **\_ \_ virtuální jádra COMPUTE-Generation** , jak je znázorněno v následujících příkladech.
@@ -81,7 +81,7 @@ Hodnota parametru **SKU** dodržuje cenové úrovně **\_ \_ virtuální jádra 
 
 Informace o platných hodnotách **SKU** podle oblasti a pro vrstvy najdete v tématu [Azure Database for MySQL cenové úrovně](./concepts-pricing-tiers.md).
 
-Následující příklad vytvoří server MySQL v oblasti **západní USA** s názvem **mydemoserver** ve skupině prostředků **myresourcegroup** s přihlašovacími údaji správce serveru **myadmin** . Je to Server Gen 5 v cenové úrovni pro obecné účely s povolenými 2 virtuální jádray a geograficky redundantními zálohováními. Heslo pro účet správce serveru MySQL můžete zdokumentovat v prvním řádku příkladu, protože se jedná o heslo.
+Následující příklad vytvoří server MySQL v oblasti **západní USA** s názvem **mydemoserver** ve skupině prostředků **myresourcegroup** s přihlašovacími údaji správce serveru **myadmin**. Je to Server Gen 5 v cenové úrovni pro obecné účely s povolenými 2 virtuální jádray a geograficky redundantními zálohováními. Heslo pro účet správce serveru MySQL můžete zdokumentovat v prvním řádku příkladu, protože se jedná o heslo.
 
 > [!TIP]
 > Název serveru se mapuje na název DNS a v rámci Azure musí být globálně jedinečný.
@@ -124,7 +124,7 @@ Update-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -SslE
 
 ## <a name="get-the-connection-information"></a>Získání informací o připojení
 
-Pokud se chcete připojit k serveru, budete muset zadat informace o hostiteli a přihlašovací údaje pro přístup. Pomocí následujícího příkladu určete informace o připojení. Poznamenejte si hodnoty pro **FullyQualifiedDomainName** a **AdministratorLogin** .
+Pokud se chcete připojit k serveru, budete muset zadat informace o hostiteli a přihlašovací údaje pro přístup. Pomocí následujícího příkladu určete informace o připojení. Poznamenejte si hodnoty pro **FullyQualifiedDomainName** a **AdministratorLogin**.
 
 ```azurepowershell-interactive
 Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |

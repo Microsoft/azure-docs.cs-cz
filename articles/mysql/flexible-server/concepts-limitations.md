@@ -1,17 +1,17 @@
 ---
 title: Omezení – Azure Database for MySQL – flexibilní Server
 description: Tento článek popisuje omezení Azure Database for MySQLho flexibilního serveru, jako je třeba počet připojení a možnosti modulu úložiště.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: a064b2b2d0bad5fc8ded9a59b66d84a361facec9
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: a3abde9092519be057dcd73ec63318f970fd5c74
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504335"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543081"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Omezení Azure Database for MySQL – flexibilní Server (Preview)
 

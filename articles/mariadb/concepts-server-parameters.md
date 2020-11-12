@@ -1,17 +1,17 @@
 ---
 title: Parametry serveru – Azure Database for MariaDB
 description: Toto téma poskytuje pokyny pro konfiguraci parametrů serveru v Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: b5064e3cef7def1aca5aa0c97d031d519fd610cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4432178d5908d4360cda05a62b62d05687be4235
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626390"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541126"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Parametry serveru v Azure Database for MariaDB
 

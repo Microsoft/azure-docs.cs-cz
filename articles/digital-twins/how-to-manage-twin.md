@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 929181f9a4d159892956274a7958b1daa95cbc10
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360067"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540963"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -26,6 +26,10 @@ Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracova
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
+## <a name="ways-to-manage-twins"></a>Způsoby, jak spravovat vlákna
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
 ## <a name="create-a-digital-twin"></a>Vytvoření digitálního vlákna
 
@@ -187,6 +191,17 @@ foreach (string prop in twin.Contents.Keys)
 ```
 
 Další informace o pomocných třídách serializace najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md).
+
+## <a name="view-all-digital-twins"></a>Zobrazit všechny digitální vlákna
+
+Chcete-li zobrazit všechny digitální vlákna ve vaší instanci, použijte [dotaz](how-to-query-graph.md). Dotaz můžete spustit pomocí [rozhraní API pro dotazy](/rest/api/digital-twins/dataplane/query) nebo [příkazů CLI](how-to-use-cli.md).
+
+Zde je text základního dotazu, který vrátí seznam všech digitálních vláken v instanci:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+``` 
 
 ## <a name="update-a-digital-twin"></a>Aktualizace digitálního vlákna
 
@@ -360,7 +375,7 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 Příklad, jak odstranit všechny vlákna najednou, si můžete stáhnout ukázkovou aplikaci, která se používá v [_Tutorial: Prozkoumejte základy pomocí ukázkové klientské aplikace *](tutorial-command-line-app.md). Soubor *CommandLoop.cs* to dělá ve `CommandDeleteAllTwins()` funkci.
 
-## <a name="manage-twins-using-runnable-code-sample"></a>Správa dvojitých vláken pomocí ukázky kódu spustitelný
+## <a name="runnable-digital-twin-code-sample"></a>Ukázka digitálního zdvojeného kódu spustitelný
 
 Následující příklad kódu spustitelný můžete použít k vytvoření vlákna, aktualizaci jeho podrobností a odstranění vlákna. 
 
@@ -535,22 +550,6 @@ Tady je výstup konzoly výše uvedeného programu:
 
 :::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="Výstup na konzole ukazující, že se vytvoří, aktualizuje a odstraní zdvojený" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
-## <a name="manage-twins-with-cli"></a>Správa dvojitých vláken pomocí rozhraní příkazového řádku
-
-Vlákna je také možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v [_How-to: použijte Azure Digital Revlákens CLI *](how-to-use-cli.md).
-
-## <a name="view-all-digital-twins"></a>Zobrazit všechny digitální vlákna
-
-Chcete-li zobrazit všechny digitální vlákna ve vaší instanci, použijte [dotaz](how-to-query-graph.md). Dotaz můžete spustit pomocí [rozhraní API pro dotazy](/rest/api/digital-twins/dataplane/query) nebo [příkazů CLI](how-to-use-cli.md).
-
-Zde je text základního dotazu, který vrátí seznam všech digitálních vláken v instanci:
-
-```sql
-SELECT *
-FROM DIGITALTWINS
-``` 
-
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se, jak vytvořit a spravovat vztahy mezi vašimi digitálními dvojitými hodnotami:
-* [*Postupy: Správa dvojitých grafů s relacemi*](how-to-manage-graph.md)
+Přečtěte si, jak vytvářet a spravovat relace mezi digitálními vláknami: _ [ *Postupy: Správa dvojitých grafů s relacemi*](how-to-manage-graph.md)

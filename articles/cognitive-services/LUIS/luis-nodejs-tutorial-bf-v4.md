@@ -6,12 +6,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: fb158b713bea588e9de94e13ac194ec0a4d0020a
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 4d399dc9298c51906d62dabbc36650bf21f94af8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058144"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542826"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Kurz: použití robota webové aplikace s povolenou službou Language Understanding v Node.js
 
@@ -52,7 +52,7 @@ Pomocí Node.js můžete vytvořit chatovací robot integrovaný s jazykem poroz
     |Application Insights|Neměňte z poskytnuté výchozí hodnoty.|
     |ID a heslo aplikace od Microsoftu|Neměňte z poskytnuté výchozí hodnoty.|
 
-1. V **šabloně robota**vyberte následující a pak klikněte na tlačítko **Vybrat** pod těmito nastaveními:
+1. V **šabloně robota** vyberte následující a pak klikněte na tlačítko **Vybrat** pod těmito nastaveními:
 
     |Nastavení|Účel|Výběr|
     |--|--|--|
@@ -377,16 +377,16 @@ Zeptejte se robota na záměr na knihu letu.
 
 1. Spusťte emulátor rozhraní bot Framework a vyberte **otevřít robot**.
 1. V automaticky **otevřeném okně robota** zadejte adresu URL robota, například `http://localhost:3978/api/messages` . `/api/messages`Trasa je webová adresa pro robota.
-1. Zadejte **ID aplikace Microsoftu** a **heslo aplikace Microsoftu**, které najdete v souboru **. env** v kořenovém adresáři kódu robota, který jste stáhli.
+1. Zadejte **ID aplikace Microsoftu** a **heslo aplikace Microsoftu** , které najdete v souboru **. env** v kořenovém adresáři kódu robota, který jste stáhli.
 
 1. V emulátoru bot Framework zadejte `Book a flight from Seattle to Berlin tomorrow` a získejte stejnou reakci na základní bot, jak jste dostali v **testu ve webovém chatu**.
 
-    [![Základní odpověď robota v emulátoru](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [![Snímek obrazovky ukazuje emulátor rozhraní bot Framework.](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. Vyberte **Ano**. Robot odpoví souhrnem jeho akcí.
 1. Z protokolu emulátoru bot Framework vyberte řádek, který obsahuje `<- trace LuisV3 Trace` . Tím se zobrazí odpověď JSON z LUIS pro záměr a entity utterance.
 
-    [![Základní odpověď robota v emulátoru](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [![Snímek obrazovky s panelem na pravé straně, který obsahuje kód JSON, zobrazuje emulátor rozhraní bot Framework.](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 

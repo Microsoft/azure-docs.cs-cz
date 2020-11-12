@@ -1,18 +1,18 @@
 ---
 title: Přesunutí oblastí Azure – Azure Portal-Azure Database for MariaDB
 description: Přesuňte server Azure Database for MariaDB z jedné oblasti Azure do jiné pomocí repliky pro čtení a Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 75fabeeb7fa879a0f2843538d34f85e5ccec40e4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f4ce34bc1a1af7b2c0ee57a3297415bd9d033517
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425895"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540820"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Přesunutí serveru Azure Database for MariaDB do jiné oblasti pomocí Azure Portal
 
@@ -33,9 +33,9 @@ K dokončení přesunu do jiné oblasti můžete použít [repliku čtení Azure
 
 Pokud chcete vytvořit v cílové oblasti server repliky pro různé oblasti pomocí Azure Portal, použijte následující postup:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 1. Vyberte existující server Azure Database for MariaDB, který chcete použít jako zdrojový server. Tato akce otevře stránku s **přehledem** .
-1. V nabídce v části **Nastavení**vyberte **replikace** .
+1. V nabídce v části **Nastavení** vyberte **replikace** .
 1. Vyberte **Přidat repliku**.
 1. Zadejte název serveru repliky.
 1. Vyberte umístění serveru repliky. Výchozí umístění je stejné jako na zdrojovém serveru. Ověřte, zda jste vybrali cílové umístění, do kterého chcete repliku nasadit.
@@ -53,10 +53,10 @@ Pokud chcete vytvořit v cílové oblasti server repliky pro různé oblasti pom
 Zastavení replikace na server repliky způsobí, že se stane samostatným serverem. Pokud chcete zastavit replikaci do repliky z Azure Portal, použijte následující postup:
 
 1. Po vytvoření repliky vyhledejte a vyberte zdrojový server Azure Database for MariaDB. 
-1. V nabídce v části **Nastavení**vyberte **replikace** .
+1. V nabídce v části **Nastavení** vyberte **replikace** .
 1. Vyberte server repliky.
 1. Vyberte **zastavit replikaci**.
-1. Kliknutím na **OK**potvrďte, že chcete replikaci zastavit.
+1. Kliknutím na **OK** potvrďte, že chcete replikaci zastavit.
 
 ## <a name="clean-up-source-server"></a>Vyčištění zdrojového serveru
 

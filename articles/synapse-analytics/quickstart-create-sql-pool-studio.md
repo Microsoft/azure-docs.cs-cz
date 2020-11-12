@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření vyhrazeného vyhrazeného fondu SQL pomocí synapse studia'
+title: 'Rychlý Start: vytvoření vyhrazeného fondu SQL pomocí synapse studia'
 description: Podle kroků v této příručce Vytvořte vyhrazený fond SQL pomocí synapse studia.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3ed5f3940a9b02701ad2f3c779b791e128e288c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3644891f12a6475ec9cfec51f572df4742481e8f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506341"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541840"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>Rychlý Start: vytvoření vyhrazeného fondu SQL pomocí synapse studia
 
@@ -110,6 +110,7 @@ Pokud chcete odstranit vyhrazený fond SQL, udělejte toto:
 1. Potvrďte odstranění a stiskněte tlačítko **Odstranit** .
 1. Po úspěšném dokončení procesu nebude vyhrazený fond SQL nadále uveden v prostředcích pracovního prostoru.
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další kroky
+ 
 - Další informace najdete v tématu [rychlý Start: vytvoření poznámkového bloku Apache Spark](quickstart-apache-spark-notebook.md).
 - Další informace najdete v tématu [rychlý Start: vytvoření vyhrazeného fondu SQL pomocí Azure Portal](quickstart-create-sql-pool-portal.md).

@@ -1,6 +1,6 @@
 ---
 title: Referenční informace o Azure Machine Learning dat monitorování | Microsoft Docs
-description: Důležité referenční materiály, které jsou potřeba při monitorování Azure Machine Learning. Seznamte se s daty a prostředky shromážděnými pro Azure Machine Learning a k dispozici v Azure Monitor. Azure Monitor shromažďuje a dostavuje data o pracovním prostoru Azure Machine Learning a umožňuje vám zobrazovat metriky, nastavit výstrahy a analyzovat data protokolu.
+description: Referenční dokumentace k monitorování Azure Machine Learning. Seznamte se s daty & prostředky shromážděnými a dostupnými v Azure Monitor.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bab74a1db04bb557aa6604fe76c05ba3d087f8c0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323950"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540786"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Referenční informace k datům monitorování Azure Machine Learning
 
@@ -24,7 +24,7 @@ Seznamte se s daty a prostředky shromažďovanými nástrojem Azure Monitor z p
 
 V této části jsou uvedené všechny automaticky shromážděné metriky platforem pro Azure Machine Learning. Poskytovatel prostředků pro tyto metriky je [Microsoft. MachineLearningServices/Workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
-**Model**
+**Modelování**
 
 | Metrika | Jednotka | Popis |
 | ----- | ----- | ----- |
@@ -77,7 +77,7 @@ Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidime
 
 Azure Machine Learning má k jeho metrikám přidružené následující dimenze.
 
-| Dimenze | Popis |
+| Rozměr | Popis |
 | ---- | ---- |
 | Název clusteru | Název výpočetní instance. K dispozici pro všechny metriky kvót. |
 | Název rodiny virtuálních počítačů | Název rodiny virtuálních počítačů, kterou cluster používá. K dispozici pro procento využití kvóty. |

@@ -9,12 +9,12 @@ ms.service: api-management
 ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: e9a101de408b506fb5375b5f16c1deff4f67532d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 531e346569b85ababc382f997fd7764a92b3d05f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421979"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542310"
 ---
 # <a name="tutorial-debug-your-apis-using-request-tracing"></a>Kurz: ladění rozhraní API pomocí trasování požadavků
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 :::image type="content" source="media/api-management-howto-api-inspector/api-inspector-001.png" alt-text="Nástroj pro inspekci rozhraní API":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
@@ -47,7 +47,7 @@ Musí být povolené nastavení **Povolit trasování** pro předplatné použí
 1. V seznamu rozhraní API vyberte  **ukázková konferenční konference API** .
 1. Vyberte kartu **Test**.
 1. Vyberte operaci **GetSpeakers**.
-1. Potvrďte, že Hlavička požadavku HTTP zahrnuje **OCP-admin-trace: true** a platnou hodnotu pro **OCP-admin-Subscription-Key**. Pokud není, vyberte **+ Přidat hlavičku** a přidejte záhlaví.
+1. Potvrďte, že Hlavička požadavku HTTP zahrnuje **OCP-APIM-trace: true** a platnou hodnotu pro **OCP-APIM-Subscription-Key**. Pokud není, vyberte **+ Přidat hlavičku** a přidejte záhlaví.
 1. Vyberte **Odeslat** pro volání rozhraní API.
 
   :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="Konfigurace trasování rozhraní API":::

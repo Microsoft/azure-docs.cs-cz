@@ -1,23 +1,23 @@
 ---
 title: Označení obrázků v projektu s popisem
-titleSuffix: Azure Machine Learning
-description: Naučte se používat nástroje pro označování dat v Azure Machine Learning projektu značení.
+title.suffix: Azure Machine Learning
+description: Naučte se používat nástroje pro označování dat k rychlé přípravě dat pro Machine Learning v projektu Azure Machine Learning značení.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: cd015e952f93655a7bdba8c947fac6e9a8f6546c
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 4392086146642e18b1fdef28a9e602bdbb5b0b18
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518256"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542180"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
-Poté, co správce projektu [vytvoří projekt označování](./how-to-create-labeling-projects.md#create-a-labeling-project) v Azure Machine Learning, můžete použít nástroj pro označování (Public Preview) k rychlé přípravě dat pro projekt Machine Learning. Tento článek popisuje:
+Poté, co správce projektu [vytvoří projekt označování](./how-to-create-labeling-projects.md#create-a-labeling-project) v Azure Machine Learning, můžete použít nástroj pro popisování k rychlé přípravě dat projektu Machine Learning. Tento článek popisuje:
 
 > [!div class="checklist"]
 > * Jak získat přístup k projektům označování
@@ -141,11 +141,11 @@ Chcete-li odstranit mnohoúhelník, klikněte na cíl ve tvaru X, který se po v
 
 Chcete-li změnit značku mnohoúhelníku, vyberte nástroj **přesunout oblast** , klikněte na mnohoúhelník a vyberte správnou značku.
 
-Můžete upravit existující mnohoúhelníky. Nástroj pro zamčení/odemčení **oblastí** nástroje ![ ](./media/how-to-label-images/lock-bounding-boxes-tool.png) nebo "L" přepíná toto chování. Pokud jsou oblasti zamčené, můžete změnit jenom tvar nebo umístění nového mnohoúhelníku.
+Můžete upravit existující mnohoúhelníky. Nástroj **oblasti uzamčení/odemknutí** ![ upraví mnohoúhelníky pomocí nástroje pro uzamknutí/odemknutí oblastí ](./media/how-to-label-images/lock-bounding-boxes-tool.png) nebo "L" přepíná toto chování. Pokud jsou oblasti zamčené, můžete změnit jenom tvar nebo umístění nového mnohoúhelníku.
 
-Chcete-li upravit existující mnohoúhelník, použijte nástroj pro práci s panelem nástrojů **Přidat nebo odebrat body mnohoúhelníku** ![ ](./media/how-to-label-images/add-remove-points-tool.png) nebo "U". Kliknutím na mnohoúhelník přidáte nebo odeberete bod. Pokud nemůžete upravit oblast, pravděpodobně jste přepnuli nástroj **oblasti uzamčení/odemknutí** .
+K úpravě existujícího mnohoúhelníku použijte nástroj **Přidat nebo odebrat body mnohoúhelníku** ![ ](./media/how-to-label-images/add-remove-points-tool.png) nebo "U". Kliknutím na mnohoúhelník přidáte nebo odeberete bod. Pokud nemůžete upravit oblast, pravděpodobně jste přepnuli nástroj **oblasti uzamčení/odemknutí** .
 
-Chcete-li odstranit *všechny* mnohoúhelníky v aktuální imagi, vyberte nástroj **Odstranit všechny oblasti** nástroj ![ Odstranit oblasti ](./media/how-to-label-images/delete-regions-tool.png) .
+Chcete-li odstranit *všechny* mnohoúhelníky v aktuální imagi, vyberte nástroj **Odstranit všechny oblasti** nástroj ![ Odstranit všechny oblasti ](./media/how-to-label-images/delete-regions-tool.png) .
 
 Po vytvoření mnohoúhelníků pro obrázek vyberte **Odeslat** a uložte svou práci, jinak se vaše Nedokončená práce nebude ukládat.
 

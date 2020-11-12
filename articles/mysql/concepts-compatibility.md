@@ -1,17 +1,17 @@
 ---
 title: Kompatibilita ovladačů a nástrojů – Azure Database for MySQL
 description: Tento článek popisuje ovladače a nástroje pro správu MySQL, které jsou kompatibilní s Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8d222eca76f020703f89dd1bdd5848cec4bc52ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2ea7af0ec9c740c07cd3a5e4ebd88a9ad1a031d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006529"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542639"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Ovladače a nástroje pro správu MySQL kompatibilní s Azure Database for MySQL
 Tento článek popisuje ovladače a nástroje pro správu, které jsou kompatibilní s Azure Database for MySQL.
@@ -26,7 +26,7 @@ Azure Database for MySQL používá nejoblíbenější komunitní edici Communit
 | .NET | Konektor MySQL/NET | https://github.com/mysql/mysql-connector-net | 6.6.3, 7,0, 8,0 |  | Chyba kódování může způsobit selhání připojení u některých systémů Windows bez kódování UTF8. |
 | Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> Instalační balíček z NPM:<br> Spustit `npm install mysql` z npm | 2.15 | 2.14.1 a před | |
 | Node.js | uzel – mysql2 | https://github.com/sidorares/node-mysql2 | 1.3.4 + | | |
-| Go | Přejít na ovladač MySQL | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 a před | Použijte `allowNativePasswords=true` v připojovacím řetězci pro verzi 1,3. Verze 1,4 obsahuje opravu a `allowNativePasswords=true` již není nutná. |
+| Přejít | Přejít na ovladač MySQL | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 a před | Použijte `allowNativePasswords=true` v připojovacím řetězci pro verzi 1,3. Verze 1,4 obsahuje opravu a `allowNativePasswords=true` již není nutná. |
 | Python | Konektor MySQL/Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2,0, 2,1, 2,2, použití 8.0.16 + s MySQL 8,0  | 1.2.2 a před | |
 | Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11, 0.8.0, 0.8.1, 0.9.3 + | 0.9.0-0.9.2 (regrese v web2py) | |
 | Java | Konektor MariaDB/J | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 a před | | 
@@ -50,7 +50,7 @@ Výhoda kompatibility se rozšiřuje i na nástroje pro správu databáze. Stáv
 | **Automatické dokončování dotazů SQL** | X | X |  |
 | **Import a export dat** | X | X | X |
 | **Exportovat do více formátů** | X | X | X |
-| **Zálohování a obnovení** |  | × |  |
+| **Zálohování a obnovení** |  | X |  |
 | **Zobrazit parametry serveru** | X | X | X |
 | **Zobrazit klientská připojení** | X | X | X |
 

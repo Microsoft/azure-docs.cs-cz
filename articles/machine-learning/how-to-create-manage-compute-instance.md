@@ -1,7 +1,7 @@
 ---
 title: Vytvoření a Správa výpočetní instance
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak vytvořit a spravovat výpočetní instanci v pracovním prostoru Azure Machine Learning. Použijte výpočetní instanci jako vývojové prostředí nebo pro účely školení a odvození vývoje/testování.
+description: Naučte se vytvářet a spravovat výpočetní instanci Azure Machine Learning. Použijte jako vývojové prostředí nebo jako cíl výpočtů pro účely vývoje a testování.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 6e0d80c35a4822ad46973c94b32cf71b129ad1e1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bdae8d77dc5e51cf4a181459ab2e159f31f06e31
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318029"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543098"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Vytvoření a Správa výpočetní instance Azure Machine Learning
 
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Výpočetní instance můžou úlohy spouštět bezpečně ve [virtuálním síťovém prostředí](how-to-secure-training-vnet.md), aniž by museli podniky otevírat porty SSH. Úloha se spustí v kontejnerovém prostředí a zabalí závislosti vašich modelů v kontejneru Docker. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 

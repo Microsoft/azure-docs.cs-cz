@@ -1,24 +1,24 @@
 ---
 title: 'Rychlý Start: připojení MySQL Workbench – Azure Database for MariaDB'
 description: V tomto rychlém startu najdete postup pro použití aplikace MySQL Workbench k připojení a dotazování dat ze služby Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.openlocfilehash: 90247f093096728ac250f36fa7cb0d5d88a597d9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 209c793903f1f706fc27102a783aa76e65382fcd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88121880"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541092"
 ---
 # <a name="quickstart-azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Rychlý Start: Azure Database for MariaDB: použití aplikace MySQL Workbench pro připojení a dotazování dat
 
 Tento rychlý start ukazuje, jak se připojit k instanci Azure Database for MariaDB pomocí aplikace MySQL Workbench. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z následujících průvodců:
 
@@ -33,9 +33,9 @@ Tento rychlý start využívá jako výchozí bod prostředky vytvořené v něk
 
 Získejte informace potřebné pro připojení k instanci Azure Database for MariaDB. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-2. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky**. Vyhledejte server, který jste vytvořili (například **mydemoserver**).
+2. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky**. Vyhledejte server, který jste vytvořili (například **mydemoserver** ).
 
 3. Vyberte název serveru.
 

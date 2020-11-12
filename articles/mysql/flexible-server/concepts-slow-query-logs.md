@@ -1,17 +1,17 @@
 ---
 title: Protokoly pomalých dotazů – Azure Database for MySQL-flexibilní Server
 description: Popisuje protokoly pomalých dotazů, které jsou k dispozici v Azure Database for MySQL flexibilním serveru.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 512a103f5ac116f1f4eb18631cdc8e4a8b9380c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dde9575a70ea80ad262bc01bb9d5d0015c803427
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399206"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543013"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Pomalé dotazy v protokolech v Azure Database for MySQL flexibilním serveru (Preview)
 
@@ -27,10 +27,10 @@ Ve výchozím nastavení je protokol pomalého dotazu zakázán. Pokud chcete pr
 
 Další parametry, které můžete upravit pro řízení chování pomalého protokolování dotazů, zahrnují:
 
-- **long_query_time**: Zaprotokolujte dotaz, pokud trvá dokončení déle než `long_query_time` (v sekundách). Výchozí hodnota je 10 sekund.
-- **log_slow_admin_statements**: Určuje, zda jsou příkazy správy (např. `ALTER_TABLE`, `ANALYZE_TABLE` ) jsou protokolovány.
-- **log_queries_not_using_indexes**: Určuje, zda jsou protokolovány dotazy, které nepoužívají indexy.
-- **log_throttle_queries_not_using_indexes**: omezuje počet neindexovaných dotazů, které lze zapsat do protokolu pomalých dotazů. Tento parametr se projeví `log_queries_not_using_indexes` , pokud je nastaven na hodnotu *on* .
+- **long_query_time** : Zaprotokolujte dotaz, pokud trvá dokončení déle než `long_query_time` (v sekundách). Výchozí hodnota je 10 sekund.
+- **log_slow_admin_statements** : Určuje, zda jsou příkazy správy (např. `ALTER_TABLE`, `ANALYZE_TABLE` ) jsou protokolovány.
+- **log_queries_not_using_indexes** : Určuje, zda jsou protokolovány dotazy, které nepoužívají indexy.
+- **log_throttle_queries_not_using_indexes** : omezuje počet neindexovaných dotazů, které lze zapsat do protokolu pomalých dotazů. Tento parametr se projeví `log_queries_not_using_indexes` , pokud je nastaven na hodnotu *on* .
 
 > [!IMPORTANT]
 > Pokud nejsou tabulky indexovány, `log_queries_not_using_indexes` může nastavení parametrů a na hodnotu `log_throttle_queries_not_using_indexes` **on** ovlivnit výkon MySQL, protože všechny dotazy běžící proti těmto neindexovaným tabulkám budou zapsány do protokolu pomalého dotazu.

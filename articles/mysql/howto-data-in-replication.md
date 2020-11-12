@@ -1,17 +1,17 @@
 ---
 title: Konfigurace replikace dat – Azure Database for MySQL
 description: Tento článek popisuje, jak nastavit Replikace vstupních dat pro Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 58df34ae6a6ff3304304da192b429ac83c1b55c3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b7f1f16b5182658f42ad6594aace22fb5a1a80fc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544031"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541398"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace Azure Database for MySQL Replikace vstupních dat
 
@@ -75,7 +75,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
       ```bash
       ping <output of step 2b>
       ``` 
-      Příklad: 
+      Například: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -134,17 +134,17 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 
    **MySQL Workbench**
 
-   Chcete-li vytvořit roli replikace v aplikaci MySQL Workbench, otevřete panel **Uživatelé a oprávnění** na panelu **Správa** . Pak klikněte na **Přidat účet** . 
+   Chcete-li vytvořit roli replikace v aplikaci MySQL Workbench, otevřete panel **Uživatelé a oprávnění** na panelu **Správa** . Pak klikněte na **Přidat účet**. 
  
    :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="Uživatelé a oprávnění":::
 
    Do pole **přihlašovací jméno** zadejte uživatelské jméno. 
 
-   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Uživatelé a oprávnění":::
+   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Synchronizovat uživatele":::
  
    Klikněte na panel **role pro správu** a potom v seznamu **globálních oprávnění** vyberte **replikace podřízená** . Pak kliknutím na **použít** vytvořte roli replikace.
 
-   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Uživatelé a oprávnění":::
+   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Replikace podřízených":::
 
 1. Nastavení zdrojového serveru na režim jen pro čtení
 
@@ -164,7 +164,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    ```
    Výsledky by měly vypadat podobně jako následující. Nezapomeňte si poznamenat název binárního souboru, jak bude použit v pozdějších krocích.
 
-   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Uživatelé a oprávnění":::
+   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Výsledky hlavního stavu":::
  
 ## <a name="dump-and-restore-source-server"></a>Výpis a obnovení zdrojového serveru
 

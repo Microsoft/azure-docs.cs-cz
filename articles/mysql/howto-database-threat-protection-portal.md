@@ -1,17 +1,17 @@
 ---
 title: Rozšířená ochrana před internetovými útoky – Azure Portal-Azure Database for MySQL
 description: Přečtěte si, jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro detekci neobvykléch databázových aktivit, které indikují potenciální ohrožení zabezpečení databáze.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 96f6993f92192a1149e3b243c68fdf5fe96fdc66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b30bd36dca6f866b8f3e6e8a0b133a6dd61b239b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541447"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541432"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for MySQL
 
@@ -28,7 +28,7 @@ Rozšířená ochrana před internetovými útoky je součástí rozšířené n
 
 ## <a name="set-up-threat-detection"></a>Nastavení detekce hrozeb
 1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
-2. Přejděte na stránku konfigurace serveru Azure Database for MySQL, který chcete chránit. V nastavení zabezpečení vyberte **Rozšířená ochrana před internetovými útoky (Preview)** .
+2. Přejděte na stránku konfigurace serveru Azure Database for MySQL, který chcete chránit. V nastavení zabezpečení vyberte **Rozšířená ochrana před internetovými útoky (Preview)**.
 3. Na stránce konfigurace **rozšířené ochrany před internetovými útoky (Preview)** :
 
    - Povolit rozšířenou ochranu před internetovými útoky na serveru.
@@ -42,15 +42,15 @@ Po detekci neobvykléch databázových aktivit obdržíte e-mailové oznámení.
  
 1. Kliknutím na odkaz **Zobrazit nedávné výstrahy** v e-mailu spustíte Azure Portal a zobrazí se stránka Azure Security Center výstrahy, která poskytuje přehled aktivních hrozeb zjištěných v databázi SQL.
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Nastavení detekce hrozeb":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Sestava aktivity neobvyklé":::
 
     Zobrazit aktivní hrozby:
 
-    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Nastavení detekce hrozeb":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Aktivní hrozby":::
 
 2. Kliknutím na konkrétní výstrahu získáte další podrobnosti a akce pro šetření této hrozby a opravaí budoucích hrozeb.
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Nastavení detekce hrozeb":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Konkrétní výstraha":::
 
 ## <a name="explore-threat-detection-alerts"></a>Prozkoumat výstrahy detekce hrozeb
 
@@ -58,7 +58,7 @@ SQL Database detekce hrozeb integruje své výstrahy s [Azure Security Center](h
 
 Kliknutím na **výstrahu detekce hrozeb** spustíte stránku Azure Security Center výstrahy a získáte přehled o aktivních hrozbách SQL zjištěných v databázi.
 
-   :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Nastavení detekce hrozeb":::
+   :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Výstraha detekce hrozeb":::
    
 
 ## <a name="next-steps"></a>Další kroky

@@ -4,12 +4,12 @@ description: Kurz – Vykreslení scény Autodesk 3ds Max s využitím Arnoldu, 
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: fbaa56ab444b9d686e5054a3668604bd40f7a262
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 579a5446cb199bb73f98e2e1cbb0948f062470a8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097685"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542384"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Kurz: Vykreslení scény pomocí služby Azure Batch 
 
@@ -24,7 +24,7 @@ Azure Batch nabízí možnosti vykreslování v cloudovém měřítku a s platba
 
 V tomto kurzu vykreslíte scénu 3ds Max s využitím služby Batch a rendereru se sledováním paprsků [Arnold](https://www.autodesk.com/products/arnold/overview). Fond služby Batch používá bitovou kopii Azure Marketplace s předem nainstalovanými grafickými a vykreslovacími aplikacemi, které poskytují licencování s platbami na základě využití.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
  - Budete potřebovat předplatné s průběžnými platbami nebo jiné možnosti nákupu Azure, abyste použili vykreslovací aplikace ve službě Batch na základě pay-per-use plateb. **Licencování s platbami na základě využití se nepodporuje, pokud používáte bezplatnou nabídku Azure, která poskytuje peněžní kredit.**
 
@@ -34,11 +34,13 @@ V tomto kurzu vykreslíte scénu 3ds Max s využitím služby Batch a rendereru 
 
 - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.20 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
+> [!TIP]
+> [Šablony úloh Arnold](https://github.com/Azure/batch-extension-templates/tree/master/templates/arnold/render-windows-frames) můžete zobrazit v úložišti GitHub šablony rozšíření Azure Batch.
 ## <a name="create-a-batch-account"></a>Vytvoření účtu Batch
 
 Pokud jste to ještě neudělali, vytvořte ve svém předplatném skupinu prostředků, účet Batch a propojený účet úložiště. 
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus2* .
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus2*.
 
 ```azurecli-interactive 
 az group create \
@@ -195,7 +197,7 @@ az batch job create \
 
 Pomocí příkazu [az batch task create](/cli/azure/batch/task#az-batch-task-create) vytvořte v úloze úkol vykreslování. V tomto příkladu zadáte nastavení úkolu v souboru JSON. V rámci aktuálního prostředí vytvořte soubor *myrendertask.json* a pak do něj zkopírujte a vložte následující obsah. Ujistěte se, že se veškerý text zkopíroval správně. (Tento soubor si můžete stáhnout z [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask.json).)
 
-Úkol určuje příkaz aplikace 3ds Max, který vykreslí jediný snímek scény *MotionBlur-DragonFlying.max* .
+Úkol určuje příkaz aplikace 3ds Max, který vykreslí jediný snímek scény *MotionBlur-DragonFlying.max*.
 
 Upravte v souboru JSON elementy `blobSource` a `containerURL` tak, aby obsahovaly název vašeho účtu úložiště a váš token SAS. 
 
@@ -269,7 +271,7 @@ az storage blob download \
 
 ```
 
-Otevřete na svém počítači soubor *dragon.jpg* . Vykreslený obrázek vypadá přibližně takto:
+Otevřete na svém počítači soubor *dragon.jpg*. Vykreslený obrázek vypadá přibližně takto:
 
 ![Vykreslený snímek s drakem 1](./media/tutorial-rendering-cli/dragon-frame.png) 
 
@@ -286,7 +288,7 @@ Změna velikosti fondu trvá několik minut. Zatímco proces probíhá, nastavte
 
 ## <a name="render-a-multiframe-scene"></a>Vykreslení scény s více snímky
 
-Podobně jako v příkladu s jedním snímkem vytvořte pomocí příkazu [az batch task create](/cli/azure/batch/task#az-batch-task-create) úkoly vykreslování v úloze *myrenderjob* . Tady zadejte nastavení úkolů v souboru JSON s názvem *myrendertask_multi.json* . (Soubor si můžete stáhnout z [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) Každý z šesti úkolů Určuje příkazový řádek Arnold, který vykreslí jeden snímek MotionBlur-DragonFlying maximální scény *.*
+Podobně jako v příkladu s jedním snímkem vytvořte pomocí příkazu [az batch task create](/cli/azure/batch/task#az-batch-task-create) úkoly vykreslování v úloze *myrenderjob*. Tady zadejte nastavení úkolů v souboru JSON s názvem *myrendertask_multi.json*. (Soubor si můžete stáhnout z [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) Každý z šesti úkolů Určuje příkazový řádek Arnold, který vykreslí jeden snímek MotionBlur-DragonFlying maximální scény *.*
 
 V aktuálním prostředí vytvořte soubor *myrendertask_multi.json* a zkopírujte a vložte do něj obsah staženého souboru. Upravte v souboru JSON elementy `blobSource` a `containerURL` tak, aby obsahovaly název vašeho účtu úložiště a váš token SAS. Nezapomeňte změnit nastavení pro každý z šesti úkolů. Uložte soubor a spusťte následující příkaz, který zařadí úkoly do fronty:
 

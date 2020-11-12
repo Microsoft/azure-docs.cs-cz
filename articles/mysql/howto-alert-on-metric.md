@@ -1,17 +1,17 @@
 ---
 title: Konfigurace upozornění na metriku – Azure Portal-Azure Database for MySQL
 description: Tento článek popisuje, jak nakonfigurovat a přistupovat k výstrahám metrik pro Azure Database for MySQL z Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: bb86bc3fbfd4beffdaca713d7989218550841f03
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 81003be986524b94e9c4487cd0d8606540445d16
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546887"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542078"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Pomocí Azure Portal můžete nastavit výstrahy pro metriky pro Azure Database for MySQL 
 
@@ -40,19 +40,19 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 
 4. Otevře se stránka **vytvořit pravidlo** , jak je znázorněno níže. Vyplňte požadované informace:
 
-   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Vybrat pravidla výstrah":::
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Přidat formulář upozornění metriky":::
 
-5. V části **Podmínka** vyberte **Přidat podmínku** .
+5. V části **Podmínka** vyberte **Přidat podmínku**.
 
 6. Vyberte metriku ze seznamu signálů, na kterých se má upozornit. V tomto příkladu vyberte "úložiště v procentech".
    
-   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Vybrat pravidla výstrah":::
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Vybrat metriku":::
 
-7. Nakonfigurujte logiku výstrahy včetně **podmínky** (např. "Větší než"), **prahová hodnota** (ex. 85 procent), **Časová agregace** , časový **interval** , po který musí být pravidlo metriky splněno před triggery výstrahy (např. Za posledních 30 minut a **frekvence** .
+7. Nakonfigurujte logiku výstrahy včetně **podmínky** (např. "Větší než"), **prahová hodnota** (ex. 85 procent), **Časová agregace** , časový **interval** , po který musí být pravidlo metriky splněno před triggery výstrahy (např. Za posledních 30 minut a **frekvence**.
    
    Po dokončení vyberte **Hotovo** .
 
-   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Vybrat pravidla výstrah":::
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Vybrat metriku 2":::
 
 8. V části **skupiny akcí** vyberte **vytvořit novou** a vytvořte novou skupinu pro příjem oznámení o výstraze.
 
@@ -66,11 +66,11 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 
     Po dokončení vyberte **OK** .
 
-    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Vybrat pravidla výstrah":::
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Skupina akcí":::
 
 11. Zadejte název, popis a závažnost pravidla výstrahy.
 
-    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Vybrat pravidla výstrah"::: 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Skupina akcí 2"::: 
 
 12. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
 

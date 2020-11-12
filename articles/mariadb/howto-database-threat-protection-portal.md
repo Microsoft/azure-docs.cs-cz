@@ -1,17 +1,17 @@
 ---
 title: Rozšířená ochrana před internetovými útoky – Azure Portal-Azure Database for MariaDB
 description: Ochrana před hrozbami pro Azure Database for MariaDB detekuje aktivity databáze neobvyklé, které indikují potenciální ohrožení zabezpečení databáze.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 1b5a16a014892764ee26b524489a82744fe6ca82
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7734feddabb1a4a86e7932da3ef4adc57352637e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425974"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542690"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for MariaDB
 
@@ -31,7 +31,7 @@ Rozšířená ochrana před internetovými útoky je součástí rozšířené n
 3. Na stránce konfigurace **rozšířené ochrany před internetovými útoky (Preview)** :
 
    - Povolit rozšířenou ochranu před internetovými útoky na serveru.
-   - V části **Upřesnit nastavení ochrany před internetovými útoky**zadejte do textového pole **Odeslat výstrahy do** seznam e-mailů, které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
+   - V části **Upřesnit nastavení ochrany před internetovými útoky** zadejte do textového pole **Odeslat výstrahy do** seznam e-mailů, které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
   
    ![Nastavení detekce hrozeb](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
 

@@ -2,17 +2,17 @@
 title: Chyby přechodného připojení – Azure Database for MySQL
 description: Naučte se zpracovávat chyby s přechodným připojením a efektivně se připojit k Azure Database for MySQL.
 keywords: připojení MySQL, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení, efektivní připojení
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: cb5adb3787176e3bdbfb7897aa7d7deb9cc2dae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89673c14c38947dc5aeb91cacde1eb2755e84138
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82100137"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542605"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Zpracování přechodných chyb a efektivní připojení k Azure Database for MySQL
 

@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 384778037c6a7e2294cf434d617e799a00d5578d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4964270bc9c562ab17c95010610ba04444c4eede
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969139"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542877"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Rychlý Start: analýza vzdálené Image pomocí Počítačové zpracování obrazu REST API a Java
 
-V tomto rychlém startu analyzujete vzdáleně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí jazyka Java a Počítačové zpracování obrazu REST API. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+V tomto rychlém startu analyzujete vzdáleně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí jazyka Java a Počítačové zpracování obrazu REST API. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Jazyk Java &trade; Platform, Standard Edition Development Kit 7 nebo 8](https://aka.ms/azure-jdks) (JDK 7 nebo 8)
@@ -61,8 +61,8 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 ```java
 public class AnalyzeImage {
     // **********************************************
-    // *** Update or verify the following values. ***
-    // **********************************************
+    // **_ Update or verify the following values. _*_
+    // _*********************************************
 
     // Add your Computer Vision subscription key and endpoint to your environment variables.
     // After setting, close and then re-open your command shell or project for the changes to take effect.
@@ -197,7 +197,7 @@ REST Response:
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte aplikaci v Java Swing, která používá počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR); vytváření chytře ořezaných miniatur; a rozpoznávání, kategorizování, označování a popisování vizuálních funkcí, včetně obličejů v obrázcích. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte aplikaci v Java Swing, která používá počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR); vytváření chytře ořezaných miniatur; a rozpoznávání, kategorizování, označování a popisování vizuálních funkcí, včetně obličejů v obrázcích. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console).
 
 > [!div class="nextstepaction"]
 > [Kurz rozhraní API pro počítačové zpracování obrazu v Javě](../Tutorials/java-tutorial.md)

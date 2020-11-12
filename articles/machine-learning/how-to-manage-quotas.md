@@ -1,7 +1,7 @@
 ---
 title: Správa prostředků a kvót
 titleSuffix: Azure Machine Learning
-description: Přečtěte si o kvótách prostředků pro Azure Machine Learning a o tom, jak se zvýší kvóta.
+description: Přečtěte si o kvótách a omezeních pro prostředky Azure Machine Learning a o tom, jak se zvýší kvóta.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 9bcf6ac9991c1ad070f823c97b5bd0460eff07c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d82cbafbbdeb379c8eb97494ca8d3243f356b7a1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309078"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542112"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Správa a zvýšení kvót pro prostředky pomocí Azure Machine Learning
 

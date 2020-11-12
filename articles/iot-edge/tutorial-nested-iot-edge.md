@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 5b2a74450477d562231eafd684b3d781d92f700d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 78a8ae7724c9ede06b24649d3b19ea90b791ae08
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489569"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541313"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Kurz: vytvoření hierarchie zařízení IoT Edge (Preview)
 
@@ -45,7 +45,7 @@ V tomto kurzu jsou definovány následující vrstvy sítě:
 
 V tomto kurzu se pro jednoduchost používá dvě hierarchie zařízení. Jedno zařízení, **topLayerDevice** , představuje zařízení v horní vrstvě hierarchie, které se může připojit přímo ke cloudu. Toto zařízení se bude také označovat jako **nadřazené zařízení**. Druhé zařízení, **lowerLayerDevice** , představuje zařízení v nižší vrstvě hierarchie, které se nemůže připojit přímo ke cloudu. Toto zařízení se bude také označovat jako **podřízené zařízení**. Můžete přidat další zařízení nižší vrstvy, která reprezentují vaše provozní prostředí. Konfigurace dalších zařízení nižší vrstvy bude následovat po konfiguraci **lowerLayerDevice**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete vytvořit hierarchii IoT Edgech zařízení, budete potřebovat:
 
@@ -244,7 +244,7 @@ Proveďte tyto kroky a restartujte službu IoT Edge pro konfiguraci zařízení.
    hostname: <device fqdn or IP>
    ```
 
-1. U zařízení IoT Edge v **nižších vrstvách** aktualizujte konfigurační soubor tak, aby odkazoval na plně kvalifikovaný název domény nebo IP adresu nadřazeného zařízení, a to podle toho, co je v poli **hostname** nadřazeného zařízení. Pro IoT Edge zařízení v **horní vrstvě** ponechte tento parametr prázdný.
+1. U zařízení IoT Edge v **nižších vrstvách** aktualizujte konfigurační soubor tak, aby odkazoval na plně kvalifikovaný název domény nebo IP adresu nadřazeného zařízení, a to podle toho, co je v poli **hostname** nadřazeného zařízení. U IoT Edge zařízení v **horní vrstvě** ponechte tento parametr Zakomentovat.
 
    ```yml
    parent_hostname: <parent device fqdn or IP>
