@@ -451,6 +451,8 @@
           href: copy-activity-fault-tolerance.md
         - name: Ověření konzistence dat
           href: copy-activity-data-consistency.md
+        - name: Protokol aktivity kopírování
+          href: copy-activity-log.md
         - name: Podpora formátů a komprese (starší verze)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: Transformace dat

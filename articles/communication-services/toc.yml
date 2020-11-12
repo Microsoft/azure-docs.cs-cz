@@ -76,6 +76,8 @@
       href: concepts/pricing.md
     - name: Ochrana osobních údajů
       href: concepts/privacy.md
+    - name: Model identit
+      href: concepts/identity-model.md
     - name: Authentication
       href: concepts/authentication.md
     - name: Zpracování událostí

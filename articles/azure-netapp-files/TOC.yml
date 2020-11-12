@@ -11,8 +11,7 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Nastavení služby Azure NetApp Files a vytvoření svazku NFS – šablona ARM
-      displayName: Resource Manager
+    - name: Nastavení služby Azure NetApp Files a vytvoření svazku NFS
       href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: Koncepty
   items:
@@ -114,8 +113,6 @@
           href: develop-rest-api-powershell.md
         - name: 'Sady SDK, nástroje CLI a šablony ARM'
           href: azure-netapp-files-sdk-cli.md
-        - name: Řešení potíží s chybami poskytovatele prostředků Azure NetApp Files
-          href: azure-netapp-files-troubleshoot-resource-provider-errors.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží s fondy kapacity
@@ -126,6 +123,8 @@
           href: troubleshoot-dual-protocol-volumes.md
         - name: Řešení potíží se zásadami snímků
           href: troubleshoot-snapshot-policies.md
+        - name: Řešení potíží s chybami poskytovatele prostředků
+          href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Referenční informace
   items:
     - name: REST

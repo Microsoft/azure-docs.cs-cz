@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 11/20/2018
 ms.author: alkohli
-ms.openlocfilehash: 16b69ce5d63723919e74b62e8c62770ed5fbec85
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: bb1390a32abfe9ccf31002fc569936d39e4e5428
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376228"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553109"
 ---
 Nakonfigurujte partnerský software pro připojení ke klientovi. Pokud se chcete připojit k partnerskému softwaru, budete obvykle potřebovat následující informace (mohou se lišit), které jste shromáždili na stránce **připojit a kopírovat** místního webového uživatelského rozhraní v předchozím kroku:
 
@@ -23,8 +23,8 @@ Pokud Průzkumník služby Storage používáte poprvé, musíte provést násle
 
 1. V horním panelu příkazů přejdete na **upravit > cílový Azure Stack**.
 
-    ![Řídicí panel Data Box](media/data-box-configure-partner-software/data-box-connect-via-rest-6.png)
+    ![Snímek obrazovky ukazuje cílový Azure Stack vybraný v nabídce Upravit.](media/data-box-configure-partner-software/data-box-connect-via-rest-6.png)
 
 2. Restartujte Průzkumník služby Storage, aby se změny projevily.
 
-    ![Řídicí panel Data Box 2](media/data-box-configure-partner-software/data-box-connect-via-rest-7.png)
+    ![Snímek obrazovky se zobrazí tlačítko restartovat nyní.](media/data-box-configure-partner-software/data-box-connect-via-rest-7.png)

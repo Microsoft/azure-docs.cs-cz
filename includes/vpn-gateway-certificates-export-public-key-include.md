@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f71703dcb6afb5ce7610bf1c5374de1cc98816b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12e9bec0c560f1b068b07a1b6afe218a112e439f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606423"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553129"
 ---
 Po vytvoření kořenového certifikátu podepsaného svým držitelem exportujte soubor. cer veřejného klíče kořenového certifikátu (ne privátní klíč). Později tento soubor nahrajete do Azure. Následující kroky vám pomůžou exportovat soubor. cer pro kořenový certifikát podepsaný svým držitelem:
 
 1. Chcete-li získat soubor .cer z certifikátu, otevřete **správu uživatelských certifikátů**. Vyhledejte kořenový certifikát podepsaný svým držitelem, obvykle v Certificates - Current User\Personal\Certificates, a klikněte pravým tlačítkem myši. Klikněte na **Všechny úlohy** a potom klikněte na **Exportovat**. Otevře se **Průvodce exportem certifikátu**. Pokud certifikát nemůžete najít v rámci aktuálního User\Personal\Certificates, možná jste omylem otevřeli "certifikáty-místní počítač", nikoli "Certifikáty – aktuální uživatel"). Pokud chcete otevřít Správce certifikátů v oboru aktuální uživatel pomocí PowerShellu, zadáte v okně konzoly *certmgr* .
 
-   ![Snímek obrazovky se zobrazí okno certifikáty pro aktuálního uživatele s vybranými certifikáty a místní nabídku se všemi úlohami a vybraným exportem.](./media/vpn-gateway-certificates-export-public-key-include/export.png)
+   ![Snímek obrazovky se zobrazí okno certifikáty pro aktuálního uživatele s vybranými certifikáty a místní nabídku s exportem vybraným ze všech úkolů.](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. V průvodci klikněte na **Další**.
 
    ![Export certifikátu](./media/vpn-gateway-certificates-export-public-key-include/exportwizard.png)
@@ -34,7 +34,7 @@ Po vytvoření kořenového certifikátu podepsaného svým držitelem exportujt
    ![Snímek obrazovky se zobrazí Průvodce exportem certifikátu s textovým polem s názvem souboru a možností procházení.](./media/vpn-gateway-certificates-export-public-key-include/browse.png)
 6. Certifikát vyexportujte kliknutím na **Dokončit**.
 
-   ![Snímek obrazovky s vybraným nastavením zobrazí poslední stránka Průvodce exportem certifikátu.](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
+   ![Snímek obrazovky s vybraným nastavením zobrazí Průvodce exportem certifikátu.](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
 7. Váš certifikát byl úspěšně exportován.
 
    ![Snímek obrazovky se zobrazí zpráva, že export proběhl úspěšně.](./media/vpn-gateway-certificates-export-public-key-include/success.png)
