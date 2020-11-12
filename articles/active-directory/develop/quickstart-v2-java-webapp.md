@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: f00a935815b64f7c2c06dd33130c1a950582e5c3
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 620039ec43009693d09f732913264eff94d662c9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743484"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533238"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu
 
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak integrovat webovou aplikaci Java s plat
 
 Po dokončení tohoto rychlého startu bude vaše aplikace přijímat přihlašovacíky osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory. (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení této ukázky budete potřebovat:
 
@@ -52,14 +52,14 @@ K provedení této ukázky budete potřebovat:
 >
 > 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
 > 1. Vyberte **Nová registrace**.
-> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
+> 1. Když se zobrazí stránka **Registrace aplikace** , zadejte registrační informace vaší aplikace:
 >    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `java-webapp`.
 >    - Vyberte **Zaregistrovat**.
 > 1. Na stránce **Přehled** vyhledejte **ID aplikace (klienta)** a ID adresáře aplikace ( **tenant)** . Tyto hodnoty zkopírujte pro pozdější verzi.
 > 1. V nabídce vyberte **ověřování** a přidejte následující informace:
 >    - Přidejte konfiguraci **webové** platformy.  Přidejte `https://localhost:8443/msal4jsample/secure/aad` je a `https://localhost:8443/msal4jsample/graph/me` jako **identifikátory URI přesměrování**..
 >    - Vyberte **Uložit**.
-> 1. V nabídce vyberte **certifikáty & tajné klíče** a v části **tajné klíče klienta** klikněte na **nový tajný klíč klienta**:
+> 1. V nabídce vyberte **certifikáty & tajné klíče** a v části **tajné klíče klienta** klikněte na **nový tajný klíč klienta** :
 >
 >    - Zadejte popis klíče (např. tajný klíč aplikace).
 >    - Vyberte dobu trvání klíče **v 1 roce**.
@@ -99,7 +99,7 @@ K provedení této ukázky budete potřebovat:
 >   ```
 >   Vygenerovaný soubor úložiště klíčů vložte do složky Resources (prostředky).
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -110,7 +110,7 @@ K provedení této ukázky budete potřebovat:
 > #### <a name="step-3-configure-the-code-sample"></a>Krok 3: Konfigurace ukázky kódu
 > 1. Soubor .zip extrahujte do místní složky.
 > 1. Pokud používáte integrované vývojové prostředí, otevřete ukázku v oblíbeném INTEGROVANÉm vývojovém prostředí (volitelné).
-> 1. Otevřete soubor Application. Properties, který se nachází ve složce src/Main/Resources/Folder a nahraďte hodnotu polí *AAD. ClientID*, *AAD. Authority* a *AAD. SecretKey* s příslušnými hodnotami **ID aplikace**, **ID tenanta** a **tajného klíče klienta** následujícím způsobem:
+> 1. Otevřete soubor Application. Properties, který se nachází ve složce src/Main/Resources/Folder a nahraďte hodnotu polí *AAD. ClientID* , *AAD. Authority* a *AAD. SecretKey* s příslušnými hodnotami **ID aplikace** , **ID tenanta** a **tajného klíče klienta** následujícím způsobem:
 >
 >    ```file
 >    aad.clientId=Enter_the_Application_Id_here
@@ -155,8 +155,8 @@ Pokud používáte webovou aplikaci z rozhraní IDE, klikněte na spustit a pak 
 1. Na přední stránce vyberte tlačítko **přihlášení** , které chcete přesměrovat na Azure Active Directory a vyzvat uživatele k zadání přihlašovacích údajů.
 
 1. Po ověření uživatele budou přesměrováni na *https://localhost:8443/msal4jsample/secure/aad* . Nyní jsou přihlášeni a na stránce se zobrazí informace o přihlášeném účtu. Ukázkové uživatelské rozhraní obsahuje následující tlačítka:
-    - *Odhlášení*: podepíše aktuálního uživatele z aplikace a přesměruje je na domovskou stránku.
-    - *Zobrazit informace o uživateli*: Získá token pro Microsoft Graph a zavolá Microsoft Graph s požadavkem, který obsahuje token, který vrátí základní informace o přihlášeném uživateli.
+    - *Odhlášení* : podepíše aktuálního uživatele z aplikace a přesměruje je na domovskou stránku.
+    - *Zobrazit informace o uživateli* : Získá token pro Microsoft Graph a zavolá Microsoft Graph s požadavkem, který obsahuje token, který vrátí základní informace o přihlášeném uživateli.
 
 ##### <a name="running-from-tomcat"></a>Spuštění z Tomcat
 

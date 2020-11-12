@@ -3,17 +3,17 @@ title: Monitorování výkonu webové aplikace Java v systému Linux – Azure |
 description: Rozšířené monitorování výkonu aplikace vašeho webu Java pomocí shromážděného modulu plug-in pro Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 63b64226c9e788e060298050a74d9009c8035b89
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: a4ce1ad6a8248680b8bdeec8a98195c3dbfe31a1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379005"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532864"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>shromažďováno: metriky výkonu Linux v Application Insights
+# <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>shromážděné: metriky výkonu Linux v Application Insights [zastaralé]
 
 > [!IMPORTANT]
-> Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro [Application Insights agenta Java 3,0](./java-in-process-agent.md).
+> **Doporučený postup** pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro **[Application Insights agenta Java 3,0](./java-in-process-agent.md)**.
 
 Pokud chcete prozkoumat metriky výkonu systému Linux v [Application Insights](./app-insights-overview.md), [nainstalujte společně](https://collectd.org/)s modulem plug-in Application Insights. Toto open source řešení shromažďuje různé statistiky systému a sítě.
 

@@ -9,24 +9,26 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: b8ca96dd0b11f7a4c76f7a954959ef5005fb4a40
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a77f9c8f7e37d2c5a040a48b6bd96bef11d51f14
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323987"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533476"
 ---
 # <a name="monitor-azure-machine-learning"></a>Monitorování Azure Machine Learningu
 
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná nástrojem Azure Machine Learning a postup analýzy a upozornění na tato data pomocí Azure Monitor.
 
 > [!TIP]
-> Informace v tomto dokumentu jsou primárně určené pro správce, protože popisují monitorování Azure Machine Learning na úrovni *pracovního prostoru* . Pokud jste odborníkem na data nebo vývojářem a chcete monitorovat informace, které jsou specifické pro vaše *běhy školicích kurzů* , přečtěte si následující dokumenty:
+> Informace v tomto dokumentu jsou primárně určené pro __správce__ , protože popisují monitorování služby Azure Machine Learning a přidružených služeb Azure. Pokud jste odborníkem na __data__ nebo __vývojářem__ a chcete monitorovat informace, které jsou specifické pro vaše *běhy školicích kurzů* , přečtěte si následující dokumenty:
 >
 > * [Spuštění, monitorování a zrušení školicích běhů](how-to-manage-runs.md)
 > * [Protokolování metrik pro tréninková spuštění](how-to-track-experiments.md)
 > * [Sledování experimentů s využitím MLflow](how-to-use-mlflow.md)
 > * [Vizualizace spuštění s využitím TensorBoardu](how-to-monitor-tensorboard.md)
+>
+> Pokud chcete monitorovat informace vygenerované modely nasazenými jako webové služby nebo moduly IoT Edge, přečtěte si téma [shromáždění dat modelu](how-to-enable-data-collection.md) a [monitorování pomocí Application Insights](how-to-enable-app-insights.md).
 
 ## <a name="what-is-azure-monitor"></a>Co je Azure Monitor?
 

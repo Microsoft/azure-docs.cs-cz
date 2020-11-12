@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 99dd3da3f9e8434f9c859afd347bd19d10628083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b66a184abce53c31fade19fc9e10ffe4c7ff8415
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935739"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532439"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Správa režimu přístupu, napájení a připojení pro grafický procesor Azure Stack Edge pro
 
@@ -49,12 +49,12 @@ Pracovní postup Resetování nevyžaduje, aby uživatel nahrál staré heslo a 
 
 1. V Azure Portal najdete v části **přehled > resetování hesla správce**.
 
-    ![Resetování hesla](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Snímek obrazovky se zvoleným zařízením s resetováním hesla zařízení.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
 2. Zadejte nové heslo a potvrďte ho. Zadané heslo musí mít 8 až 16 znaků. Heslo musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky. Vyberte **Resetovat**.
 
-    ![Resetování hesla](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně Resetovat heslo zařízení.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Správa přístup k prostředků
 
@@ -115,7 +115,7 @@ Kromě výchozího režimu s plným připojením může být zařízení také s
 Chcete-li změnit režim zařízení, postupujte podle následujících kroků:
 
 1. V místním webovém uživatelském rozhraní zařízení, navštivte **konfigurační > Cloud**.
-2. V rozevíracím seznamu vyberte režim, ve kterém má být zařízení provozováno. Můžete vybrat z **úplně připojeného**, **částečně připojeného**a **úplného odpojení**. Pokud chcete zařízení spustit v režimu částečně odpojeno, povolte **správu Azure Portal**.
+2. V rozevíracím seznamu vyberte režim, ve kterém má být zařízení provozováno. Můžete vybrat z **úplně připojeného** , **částečně připojeného** a **úplného odpojení**. Pokud chcete zařízení spustit v režimu částečně odpojeno, povolte **správu Azure Portal**.
 
  
 ## <a name="manage-power"></a>Správa napájení

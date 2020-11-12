@@ -11,21 +11,21 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-dotnet
-ms.openlocfilehash: 52241972e283db1c5e000e1e9f5d655dfdd9c8a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ce75b5465d18f988d9dfd2b329c4157bab41ded9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88928186"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534513"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>Rychlý Start: extrakce textu pomocí operace Počítačové zpracování obrazu 2,0 REST API OCR a jazyka C #
 
 > [!IMPORTANT]
 > Pokud extrahujete text v angličtině, nizozemštině, francouzštině, němčině, italštině, portugalštině, španělštině nebo zjednodušené čínštině (Preview), doporučujeme použít novější [operaci čtení](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text). K dispozici je [rychlý Start pro C#](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) . 
 
-V tomto rychlém startu budete z obrázku extrahovat vytištěný text pomocí funkce Počítačové zpracování obrazu REST API [optické operace](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) . Pomocí této operace můžete detekovat vytištěný text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je použitelný pro počítač.
+V tomto rychlém startu budete z obrázku extrahovat vytištěný text pomocí funkce Počítačové zpracování obrazu REST API [optické operace](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) . Pomocí této operace můžete detekovat vytištěný text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je použitelný pro počítač.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Musíte mít [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) nebo novější.

@@ -4,33 +4,36 @@ description: Kurz použití MSSparkutils v poznámkových blocích Azure synapse
 author: ruxu
 services: synapse-analytics
 ms.service: synapse-analytics
-ms.topic: conceptual
+ms.topic: reference
 ms.subservice: spark
 ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 648c5b75f125725ebda2966d3ebc4200ee76b98c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c03d8e744598386db3d6d03a71e4d1b735d9d71f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428616"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533272"
 ---
 # <a name="introduction-of-microsoft-spark-utilities"></a>Představení nástrojů Microsoft Spark
-Sady nástrojů Microsoft Spark (MSSparkUtils) je předdefinovaná sada, která usnadňuje práci s běžnými úlohami. Pomocí MSSparkUtils můžete efektivně pracovat se systémem souborů, získat proměnné prostředí a pracovat s tajnými kódy. MSSparkUtils jsou k dispozici v `PySpark (Python)` `Scala` `.NET Spark (C#)` poznámkových blocích, a a v kanálech synapse.
+
+Sady nástrojů Microsoft Spark (MSSparkUtils) jsou předplatným balíčkem, který usnadňuje snadné provádění běžných úloh. Pomocí MSSparkUtils můžete pracovat se systémy souborů, získat proměnné prostředí a pracovat s tajnými kódy. MSSparkUtils jsou k dispozici v `PySpark (Python)` `Scala` `.NET Spark (C#)` poznámkových blocích, a a v kanálech synapse.
 
 ## <a name="pre-requisites"></a>Požadavky
+
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Konfigurace přístupu k Azure Data Lake Storage Gen2 
+
 Synapse poznámkové bloky používají předávací službu Azure Active Directory (Azure AD) pro přístup k účtům ADLS Gen2. Pro přístup k účtu ADLS Gen2 (nebo složce) musíte být **přispěvatelem BLOB Storage** . 
 
-Kanály synapse používají k přístupu k účtům úložiště identitu pracovního prostoru (MSI). Pokud chcete ve svých aktivitách kanálu používat MSSparkUtils, musí být identita pracovního prostoru **BLOB Storage Přispěvatel** , aby mohl získat přístup k účtu adls Gen2 (nebo složce).
+Kanály synapse používají k přístupu k účtům úložiště identitu pracovního prostoru (MSI). Pokud chcete ve svých aktivitách kanálu používat MSSparkUtils, musí být identita pracovního prostoru **BLOB Storage Přispěvatel** pro přístup k účtu adls Gen2 (nebo složce).
 
 Pomocí těchto kroků se ujistěte, že váš soubor MSI služby Azure AD a pracovní prostor má přístup k účtu ADLS Gen2:
 1. Otevřete [Azure Portal](https://portal.azure.com/) a účet úložiště, ke kterému chcete získat přístup. Můžete přejít ke konkrétnímu kontejneru, ke kterému chcete získat přístup.
 2. Na levém panelu vyberte **řízení přístupu (IAM)** .
-3. Pro roli **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště přiřaďte **svůj účet služby Azure AD** a **identitu pracovního prostoru** (stejné jako název vašeho pracovního prostoru) nebo se ujistěte, že je už přiřazený. 
-4. Klikněte na **Uložit**.
+3. Přiřaďte **účet služby Azure AD** a **identitu svého pracovního prostoru** (stejné jako název vašeho pracovního prostoru) do role **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště, pokud ještě není přiřazená. 
+4. Vyberte **Uložit**.
 
 K datům v ADLS Gen2 pomocí synapse Spark můžete přistupovat pomocí následující adresy URL:
 
@@ -45,10 +48,10 @@ Pomocí následujících kroků přidejte novou propojenou službu pro účet Az
 1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
 2. Na levém panelu vyberte **Spravovat** a v části **externí připojení** vyberte **propojené služby** .
 3. Hledejte v **Azure Blob Storage** na pravé straně panelu **propojených služeb** .
-4. Klikněte na **Pokračovat**.
+4. Vyberte **Pokračovat**.
 5. Vyberte účet Azure Blob Storage, pro který chcete získat přístup a nakonfigurovat název propojené služby. Navrhněte použití **klíče účtu** pro **metodu ověřování**.
-6. Kliknutím na **Test připojení** ověřte správnost nastavení.
-7. Klikněte na **vytvořit** jako první a kliknutím na **publikovat vše** uložte změny. 
+6. Vyberte možnost **Test připojení** , aby se ověřilo, že jsou nastavení správná.
+7. Vyberte **vytvořit** jako první a kliknutím na **publikovat vše** uložte změny. 
 
 K datům v Azure Blob Storage pomocí synapse Sparku můžete přistupovat pomocí následující adresy URL:
 
@@ -103,25 +106,25 @@ Můžete přidat Azure Key Vault jako propojenou službu pro správu přihlašov
 2. Na levém panelu vyberte **Spravovat** a v části **externí připojení** vyberte **propojené služby** .
 3. Na pravé straně panelu na **nové propojené služby** hledejte **Azure Key Vault** .
 4. Vyberte účet Azure Key Vault, pro který chcete získat přístup, a nakonfigurujte název propojené služby.
-5. Kliknutím na **Test připojení** ověřte správnost nastavení.
-6. Klikněte na **vytvořit** jako první a kliknutím na **publikovat vše** uložte změnu. 
+5. Vyberte možnost **Test připojení** , aby se ověřilo, že jsou nastavení správná.
+6. Vyberte **vytvořit** jako první a kliknutím na **publikovat vše** uložte změnu. 
 
 Synapse poznámkové bloky využívají předávací službu Azure Active Directory (Azure AD) pro přístup k Azure Key Vault. Synapse kanály k přístupu k Azure Key Vault používají identitu pracovního prostoru (MSI). Abyste se ujistili, že váš kód funguje v poznámkovém bloku i v kanálu synapse, doporučujeme udělit oprávnění ke tajnému přístupu pro účet služby Azure AD a identitu pracovního prostoru.
 
 Pomocí těchto kroků udělíte tajný přístup k identitě svého pracovního prostoru:
 1. Otevřete [Azure Portal](https://portal.azure.com/) a Azure Key Vault, ke kterým chcete získat přístup. 
 2. Na levém panelu vyberte **zásady přístupu** .
-3. Klikněte na **Přidat zásady přístupu** : 
+3. Vyberte **Přidat zásady přístupu** : 
     - Jako šablonu konfigurace vyberte **klíč, tajný klíč & Správa certifikátů** .
     - Vyberte **svůj účet Azure AD** a **identitu pracovního prostoru** (stejné jako název vašeho pracovního prostoru) v poli vybrat objekt zabezpečení nebo se ujistěte, že je už přiřazený. 
-4. Klikněte na **Vybrat** a **Přidat**.
+4. Vyberte **Vybrat** a **Přidat**.
 5. Kliknutím na tlačítko **Uložit** potvrďte změny.  
 
 ## <a name="file-system-utilities"></a>Nástroje systému souborů
 
 `mssparkutils.fs` poskytuje nástroje pro práci s různými systémy souborů, včetně Azure Data Lake Storage Gen2 (ADLS Gen2) a Azure Blob Storage. Ujistěte se, že jste správně nakonfigurovali přístup k [Azure Data Lake Storage Gen2](#configure-access-to-azure-data-lake-storage-gen2) a [Azure Blob Storage](#configure-access-to-azure-blob-storage) .
 
-Pokud chcete získat přehled o dostupných metodách, spusťte následující příkaz:
+Pro přehled dostupných metod spusťte následující příkazy:
 
 :::zone pivot = "programming-language-python"
 
@@ -196,7 +199,7 @@ FS.Ls("Your directory path")
 
 
 ### <a name="view-file-properties"></a>Zobrazit vlastnosti souboru
-Vrátí vlastnosti souboru, včetně názvu souboru, cesty k souboru, velikosti souboru, zda se jedná o adresář a zda se jedná o soubor.
+Vrátí vlastnosti souboru, včetně názvu souboru, cesty k souboru, velikosti souboru a toho, jestli se jedná o adresář a soubor.
 
 :::zone pivot = "programming-language-python"
 
@@ -230,7 +233,8 @@ foreach(var File in Files) {
 ::: zone-end
 
 ### <a name="create-new-directory"></a>Vytvořit nový adresář
-Vytvoří daný adresář, pokud neexistuje, a také vytváření všech potřebných nadřazených adresářů.
+
+Vytvoří daný adresář, pokud neexistuje, a všechny nezbytné nadřazené adresáře.
 
 :::zone pivot = "programming-language-python"
 
@@ -256,7 +260,8 @@ FS.Mkdirs("new directory name")
 ::: zone-end
 
 ### <a name="copy-file"></a>Kopírovat soubor
-Zkopíruje soubor nebo adresář, podpora kopírování napříč systémy souborů.
+
+Zkopíruje soubor nebo adresář. Podporuje kopírování mezi systémy souborů.
 
 :::zone pivot = "programming-language-python"
 
@@ -282,6 +287,7 @@ FS.Cp("source file or directory", "destination file or directory", true) // Set 
 ::: zone-end
 
 ### <a name="preview-file-content"></a>Náhled obsahu souboru
+
 Vrátí až první bajty ' maxBytes ' daného souboru jako řetězec kódovaný v kódování UTF-8.
 
 :::zone pivot = "programming-language-python"
@@ -308,7 +314,8 @@ FS.Head("file path", maxBytes to read)
 ::: zone-end
 
 ### <a name="move-file"></a>Přesunout soubor
-Přesune soubor nebo adresář, podporuje přesun mezi systémy souborů.
+
+Přesune soubor nebo adresář. Podporuje přesun mezi systémy souborů.
 
 :::zone pivot = "programming-language-python"
 
@@ -334,6 +341,7 @@ FS.Mv("source file or directory", "destination directory", true)
 ::: zone-end
 
 ### <a name="write-file"></a>Zapsat soubor
+
 Zapíše daný řetězec do souboru kódovaný v kódování UTF-8.
 
 :::zone pivot = "programming-language-python"
@@ -360,6 +368,7 @@ FS.Put("file path", "content to write", true) // Set the last parameter as True 
 ::: zone-end
 
 ### <a name="append-content-to-a-file"></a>Připojit obsah k souboru
+
 Připojí daný řetězec k souboru kódovanému v kódování UTF-8.
 
 :::zone pivot = "programming-language-python"
@@ -386,6 +395,7 @@ FS.Append("file path","content to append",true) // Set the last parameter as Tru
 ::: zone-end
 
 ### <a name="delete-file-or-directory"></a>Odstranit soubor nebo adresář
+
 Odebere soubor nebo adresář.
 
 :::zone pivot = "programming-language-python"
@@ -414,9 +424,9 @@ FS.Rm("file path", true) // Set the last parameter as True to remove all files a
 
 ## <a name="credentials-utilities"></a>Nástroje pro přihlašovací údaje
 
-Pomocí nástrojů MSSparkUtils přihlašovací údaje můžete získat přístupové tokeny propojených služeb a spravovat tajné klíče v Azure Key Vault. 
+Pomocí nástrojů pro přihlašovací údaje MSSparkUtils můžete získat přístupové tokeny propojených služeb a spravovat tajné klíče v Azure Key Vault. 
 
-Pokud chcete získat přehled o dostupných metodách, spusťte následující příkaz:
+Spusťte následující příkaz, který vám umožní získat přehled dostupných metod:
 
 :::zone pivot = "programming-language-python"
 
@@ -454,6 +464,7 @@ putSecret(akvName, secretName, secretValue): puts AKV secret for a given akvName
 ```
 
 ### <a name="get-token"></a>Získat token
+
 Vrátí token Azure AD pro danou cílovou skupinu, název (volitelné). V tabulce níže najdete seznam všech dostupných typů cílových skupin: 
 
 |Typ cílové skupiny|Klíč cílové skupiny|
@@ -492,6 +503,7 @@ mssparkutils.credentials.getToken("audience Key")
 
 
 ### <a name="validate-token"></a>Ověřit token
+
 Vrátí hodnotu true, pokud platnost tokenu nevypršela.
 
 :::zone pivot = "programming-language-python"
@@ -519,6 +531,7 @@ mssparkutils.credentials.isValidToken("your token")
 
 
 ### <a name="get-connection-string-or-credentials-for-linked-service"></a>Získání připojovacího řetězce nebo přihlašovacích údajů pro propojenou službu
+
 Vrátí připojovací řetězec nebo přihlašovací údaje pro propojenou službu. 
 
 :::zone pivot = "programming-language-python"
@@ -546,6 +559,7 @@ mssparkutils.credentials.getConnectionStringOrCreds("linked service name")
 
 
 ### <a name="get-secret-using-workspace-identity"></a>Získání tajného klíče pomocí identity pracovního prostoru
+
 Vrátí tajný klíč Azure Key Vault pro daný název Azure Key Vault, název tajného kódu a název propojené služby pomocí identity pracovního prostoru. Ujistěte se, že jste správně nakonfigurovali přístup k [Azure Key Vault](#configure-access-to-azure-key-vault) .
 
 :::zone pivot = "programming-language-python"
@@ -573,6 +587,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name","linked 
 
 
 ### <a name="get-secret-using-user-credentials"></a>Získání tajného klíče pomocí přihlašovacích údajů uživatele
+
 Vrátí tajný klíč Azure Key Vault pro daný název Azure Key Vault, název tajného kódu a název propojené služby pomocí přihlašovacích údajů uživatele. 
 
 :::zone pivot = "programming-language-python"
@@ -599,6 +614,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name")
 ::: zone-end
 
 ### <a name="put-secret-using-workspace-identity"></a>Vložení tajného kódu pomocí identity pracovního prostoru
+
 Vloží Azure Key Vault tajný klíč pro daný název Azure Key Vault, název tajného kódu a název propojené služby pomocí identity pracovního prostoru. Ujistěte se, že jste správně nakonfigurovali přístup k [Azure Key Vault](#configure-access-to-azure-key-vault) .
 
 :::zone pivot = "programming-language-python"
@@ -626,6 +642,7 @@ mssparkutils.credentials.putSecret("azure key vault name","secret name","secret 
 
 
 ### <a name="put-secret-using-user-credentials"></a>Vložení tajného kódu pomocí přihlašovacích údajů uživatele
+
 Vloží Azure Key Vault tajný klíč pro daný název Azure Key Vault, název tajného kódu a název propojené služby pomocí přihlašovacích údajů uživatele. 
 
 :::zone pivot = "programming-language-python"
@@ -654,7 +671,7 @@ mssparkutils.credentials.putSecret("azure key vault name","secret name","secret 
 
 ## <a name="environment-utilities"></a>Nástroje pro prostředí 
 
-Pokud chcete získat přehled o dostupných metodách, spusťte následující příkaz:
+Spusťte následující příkazy, které vám pomohou získat přehled dostupných metod:
 
 :::zone pivot = "programming-language-python"
 
@@ -689,6 +706,7 @@ getClusterId(): returns cluster id
 ```
 
 ### <a name="get-user-name"></a>Získat uživatelské jméno
+
 Vrátí aktuální uživatelské jméno.
 
 :::zone pivot = "programming-language-python"
@@ -715,6 +733,7 @@ mssparkutils.env.getUserName()
 ::: zone-end
 
 ### <a name="get-user-id"></a>Získat ID uživatele
+
 Vrátí ID aktuálního uživatele.
 
 :::zone pivot = "programming-language-python"
@@ -741,6 +760,7 @@ mssparkutils.env.getUserId()
 ::: zone-end
 
 ### <a name="get-job-id"></a>Získat ID úlohy
+
 Vrátí ID úlohy.
 
 :::zone pivot = "programming-language-python"
@@ -767,6 +787,7 @@ mssparkutils.env.getJobId()
 ::: zone-end
 
 ### <a name="get-workspace-name"></a>Získat název pracovního prostoru
+
 Vrátí název pracovního prostoru.
 
 :::zone pivot = "programming-language-python"
@@ -793,6 +814,7 @@ mssparkutils.env.getWorkspaceName()
 ::: zone-end
 
 ### <a name="get-pool-name"></a>Získat název fondu
+
 Vrátí název fondu Spark.
 
 :::zone pivot = "programming-language-python"
@@ -819,6 +841,7 @@ mssparkutils.env.getPoolName()
 ::: zone-end
 
 ### <a name="get-cluster-id"></a>Získat ID clusteru
+
 Vrátí aktuální ID clusteru.
 
 :::zone pivot = "programming-language-python"
@@ -845,6 +868,7 @@ mssparkutils.env.getClusterId()
 ::: zone-end
 
 ## <a name="next-steps"></a>Další kroky
+
 - [Podívejte se na ukázkové poznámkové bloky synapse](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) ve službě Azure synapse Analytics pomocí nástrojů pro web](../quickstart-apache-spark-notebook.md)
 - [Co je Apache Spark ve službě Azure synapse Analytics](apache-spark-overview.md)

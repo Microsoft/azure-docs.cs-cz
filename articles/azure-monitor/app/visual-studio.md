@@ -4,12 +4,12 @@ description: Analýza výkonu a diagnostika webové aplikace během ladění a v
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: a3937719fd47ba988cf1e0a93f4c06fcc8112d3e
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: d2de29d897c84496fd44d74d88d58decbc64b7f8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932205"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532898"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Ladění aplikací pomocí Azure Application Insights v aplikaci Visual Studio
 V sadě Visual Studio (2015 a novější) můžete analyzovat výkon a diagnostikovat problémy ve vaší webové aplikaci v ASP.NET během ladění i v produkčním prostředí pomocí telemetrie z [Azure Application Insights](./app-insights-overview.md).
@@ -53,12 +53,12 @@ Sestavy výjimek se zobrazí v okně Hledání. (V některých starších typech
 
 Klikněte na výjimku a získejte trasování zásobníku. Pokud je kód aplikace otevřen v sadě Visual Studio, můžete kliknutím z trasování zásobníku přejít na příslušný řádek kódu.
 
-![Trasování zásobníku výjimky](./media/visual-studio/17.png)
+![Snímek obrazovky ukazuje objekt o objektu v trasování zásobníku.](./media/visual-studio/17.png)
 
 ## <a name="view-request-and-exception-summaries-in-the-code"></a>Zobrazení souhrnů požadavků a výjimek v kódu
 V řádku Code Lens nad jednotlivými metodami obslužné rutiny vidíte počet požadavků a výjimek protokolovaných Application Insights za posledních 24 h.
 
-![Trasování zásobníku výjimky](./media/visual-studio/21.png)
+![Snímek obrazovky ukazuje výjimku v rámci kontextového dialogu.](./media/visual-studio/21.png)
 
 > [!NOTE] 
 > Code Lens zobrazí data Application Insights, pouze pokud jste [nakonfigurovali aplikaci k odesílání telemetrie na portál Application Insights](./asp-net.md).

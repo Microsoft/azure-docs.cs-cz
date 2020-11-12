@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 78e0bfb0af494ecae2865fcc42679b8fcce44916
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 73aa6f8f6ee36aeeb41fbc54afe217ac776a4ebc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359574"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533873"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
@@ -25,7 +25,13 @@ Tento článek se zaměřuje na správu vztahů a grafu jako celku. Chcete-li pr
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
-    
+
+## <a name="ways-to-manage-graph"></a>Způsoby správy grafu
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
+
+Můžete také provádět změny v grafu pomocí ukázky pro Průzkumníka digitálních vláken Azure (ADT), která umožňuje vizualizovat vlákna a graf a využívá sadu SDK na pozadí. V další části je podrobně popsána tato ukázka.
+
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>Vytvoření relací
@@ -219,7 +225,8 @@ Nyní můžete zavolat tuto metodu a odstranit tak relaci, například:
 ```csharp
 await DeleteRelationship(client, srcId, relId);
 ```
-## <a name="create-a-twin-graph"></a>Vytvoření vlákna s dvojitou křivkou 
+
+## <a name="runnable-twin-graph-sample"></a>Ukázka zdvojeného grafu spustitelný
 
 Následující fragment kódu spustitelný používá operace vztahu z tohoto článku k vytvoření cyklického grafu z digitálních vláken a vztahů.
 
@@ -575,9 +582,6 @@ namespace creating_twin_graph_from_csv
 }
 
 ```
-## <a name="manage-relationships-with-cli"></a>Správa vztahů pomocí rozhraní příkazového řádku
-
-Vlákna a jejich vztahy se dají spravovat taky pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md).
 
 ## <a name="next-steps"></a>Další kroky
 

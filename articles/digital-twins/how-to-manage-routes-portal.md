@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 21188f473cbd5a6fd2a1ee549f47ad9b0e5b8af3
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 083d868f2d2652be9480227c29dfb289564056d6
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279488"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533782"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Správa koncových bodů a tras v Azure Digital provlákna (portál)
 
@@ -22,7 +22,7 @@ V digitálních prostředcích Azure můžete směrovat [oznámení událostí](
 
 Tento článek vás provede procesem vytvoření koncových bodů a tras pomocí [Azure Portal](https://portal.azure.com).
 
-Můžete také spravovat koncové body a trasy s [rozhraními API pro trasy událostí](/rest/api/digital-twins/dataplane/eventroutes), rozhraní [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)nebo [digitální vlákna Azure](how-to-use-cli.md)s rozhraním příkazového řádku. Verzi tohoto článku, která používá tyto mechanismy místo portálu, najdete v tématu [*How to: Manage Endpoints and Routes (API and CLI)*](how-to-manage-routes-apis-cli.md).
+Alternativně můžete také spravovat koncové body a trasy pomocí [rozhraní API pro směrování událostí](/rest/api/digital-twins/dataplane/eventroutes), sady [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis)nebo rozhraní příkazového [řádku Azure Digital revlákens CLI](how-to-use-cli.md). Verzi tohoto článku, která používá tyto mechanismy místo portálu, najdete v tématu [*How to: Manage Endpoints and Routes (API and CLI)*](how-to-manage-routes-apis-cli.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

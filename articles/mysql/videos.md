@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MySQL videa
 description: Tato stránka obsahuje video o obsahu, který se týká Azure Database for MySQL pro učení, spravované nabídky MySQL od Microsoftu v Azure.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 2c2fbb3352b159ce9f5231c56399638a1d393366
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e264ddba0feb6597d71006f6544f0dd3745705b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513855"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532405"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL videa
 

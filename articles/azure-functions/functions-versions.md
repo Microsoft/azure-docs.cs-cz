@@ -4,19 +4,19 @@ description: Azure Functions podporuje více verzí modulu runtime. Přečtěte 
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c67708b5c23667a7b0a1603b756d564b35fa0c3f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208101"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533731"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions – přehled verzí modulu runtime
 
 Azure Functions aktuálně podporuje tři verze hostitele modulu runtime: 1. x, 2. x a 3. x. Všechny tři verze jsou podporovány v produkčních scénářích.  
 
 > [!IMPORTANT]
-> Verze 1. x je v režimu údržby a podporuje pouze vývoj v Azure Portal nebo lokálně na počítačích se systémem Windows. Vylepšení jsou k dispozici pouze v novějších verzích. 
+> Verze 1. x je v režimu údržby a v počítačích s Windows podporuje jenom vývoj v Azure Portal, portálu Azure Stack hub nebo lokálně. Vylepšení jsou k dispozici pouze v novějších verzích. 
 
 Tento článek podrobně popisuje některé rozdíly mezi různými verzemi, způsob, jakými můžete vytvořit jednotlivé verze, a postup změny verzí.
 

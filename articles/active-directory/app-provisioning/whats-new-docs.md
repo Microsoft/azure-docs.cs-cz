@@ -9,13 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-services: active-directory
-ms.openlocfilehash: 83375eebdbe46fc0132f1fcf0b6d11457aa0e897
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 21307deb509d0735e4367f2b41603086f301bdeb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421001"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533527"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory zřizování aplikací: co je nového
 
@@ -45,7 +44,7 @@ Vítá vás novinky v Azure Active Directory dokumentaci zřizování aplikací.
 
 ### <a name="new-articles"></a>Nové články
 
-- [Co je nového v docs?](whats-new-docs.md)
+- [Novinky v dokumentaci](whats-new-docs.md)
 
 ### <a name="updated-articles"></a>Aktualizované články
 - [Stav zřizování aplikace v karanténě](application-provisioning-quarantine-status.md)

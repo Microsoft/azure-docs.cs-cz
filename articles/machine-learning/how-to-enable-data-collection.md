@@ -1,7 +1,7 @@
 ---
 title: Shromažďování dat v produkčních modelech
 titleSuffix: Azure Machine Learning
-description: Naučte se shromažďovat data z nasazeného Azure Machine Learning modelu.
+description: Naučte se shromažďovat data z modelu Azure Machine Learning nasazeného v clusteru Azure Kubernetes Service (AKS).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,14 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 9a9ef4dbe7f6b97675d395baf441530e5bd79320
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357639"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532813"
 ---
 # <a name="collect-data-from-models-in-production"></a>Shromažďování dat z modelů v produkčním prostředí
-
-
 
 Tento článek ukazuje, jak shromažďovat data z modelu Azure Machine Learning nasazeného v clusteru Azure Kubernetes Service (AKS). Shromážděná data se pak ukládají ve službě Azure Blob Storage.
 

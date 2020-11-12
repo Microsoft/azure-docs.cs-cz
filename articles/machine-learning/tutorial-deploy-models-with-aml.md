@@ -1,7 +1,7 @@
 ---
 title: 'Kurz k klasifikaci imagí: nasazení modelů'
 titleSuffix: Azure Machine Learning
-description: Tento kurz, druhý z řad dvou částí, ukazuje, jak použít Azure Machine Learning k nasazení modelu klasifikace Image pomocí scikit-učení v poznámkovém bloku Python Jupyter.
+description: V tomto kurzu se dozvíte, jak použít Azure Machine Learning k nasazení modelu klasifikace image s scikit-učení v poznámkovém bloku Python Jupyter.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: cc048a523fabdd70c57cb5d75442d440a1753a79
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ee6529f36c302cba1dc7b5a4b53aaf96ce58e4a5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309560"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532779"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: nasazení modelu klasifikace imagí v Azure Container Instances
 
@@ -35,7 +35,7 @@ Container Instances je skvělé řešení pro testování a porozumění pracovn
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí sady Azure Machine Learning SDK 1.0.83 verze.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete spustit Poznámkový blok, nejdřív dokončete školení modelu v [kurzu (část 1): výuka modelu klasifikace imagí](tutorial-train-models-with-aml.md).   Pak otevřete Poznámkový blok  *img-Classification-Část2-Deploy. ipynb* v naklonovaných *kurzech/složce image-Classification-mnist ručně zapsaných-data* .
 
