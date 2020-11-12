@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 06/08/2020
+ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 14b9d9fe0eb9dfe2f25373c2d87d9b4af15dd0d9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 1a9f468b8e2f9fff20b9b26b8890d485e426b691
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371794"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523802"
 ---
 Použití místní integrace virtuální sítě umožňuje aplikacím přístup k těmto akcím:
 
@@ -42,10 +42,10 @@ Ve výchozím nastavení vaše aplikace směruje jenom RFC1918 provoz do vaší 
 Při použití integrace virtuální sítě s virtuální sítě ve stejné oblasti je potřeba mít určitá omezení:
 
 * Nemůžete se připojit k prostředkům napříč globálními připojeními partnerských vztahů.
-* Tato funkce je dostupná jenom z novějších jednotek škálování Azure App Service, které podporují plány App Service PremiumV2. Všimněte si, že *to neznamená, že vaše aplikace musí běžet na cenové úrovni PremiumV2* , jenom to, že musí běžet v plánu App Service, kde je dostupná možnost PremiumV2 (což znamená, že se jedná o novější jednotku škálování, kde je tato funkce integrace virtuální sítě dostupná taky).
+* Tato funkce je dostupná ze všech jednotek škálování App Service v Premium v2 a Premium v3. Je k dispozici i na úrovni Standard, ale jenom z novějších jednotek škálování App Service. Pokud používáte starší jednotku škálování, můžete ji použít jenom z plánu Premium v2 App Service. Pokud chcete mít jistotu, že je možné používat funkci v plánu Standard App Service, vytvořte si aplikaci v plánu App Service Premium v3. Tyto plány jsou podporované jenom na našich nejnovějších jednotkách škálování. V případě potřeby můžete horizontální navýšení kapacity snížit.  
 * Podsíť Integration můžete použít jenom v jednom plánu App Service.
 * Tuto funkci nemůžou používat aplikace pro izolované plánování, které jsou ve App Service Environment.
-* Tato funkce vyžaduje nepoužitou podsíť, která je a/27 s 32 adresou nebo větší ve Azure Resource Manager virtuální síti.
+* Tato funkce vyžaduje nepoužitou podsíť, která je ve virtuální síti Azure Resource Manager a/28 nebo větší.
 * Aplikace a virtuální síť musí být ve stejné oblasti.
 * Virtuální síť nejde odstranit pomocí integrované aplikace. Před odstraněním virtuální sítě odeberte integraci.
 * Integraci s virtuální sítě můžete integrovat jenom do stejného předplatného jako aplikace.
@@ -53,7 +53,21 @@ Při použití integrace virtuální sítě s virtuální sítě ve stejné obla
 * Pokud máte aplikaci, která používá místní integraci virtuální sítě, nemůžete změnit předplatné aplikace ani plán.
 * Vaše aplikace nemůže překládat adresy v Azure DNS Private Zones bez změny konfigurace.
 
-Pro každou instanci plánu se používá jedna adresa. Při škálování aplikace na pět instancí se použije pět adres. Vzhledem k tomu, že velikost podsítě po přiřazení nelze změnit, je nutné použít dostatečně velkou podsíť, aby se vešlo do škálování, které vaše aplikace může dosáhnout. Doporučená velikost je a/26 s 64 adresami. A/26 s 64 adresami přizpůsobil plán Premium s 30 instancemi. Když naplánujete horizontální navýšení nebo snížení kapacity plánu, budete potřebovat dvojnásobný počet adres po krátkou dobu.
+Integrace virtuální sítě závisí na použití vyhrazené podsítě.  Při zřizování podsítě neztratí podsíť Azure 5 IP adres na začátku. Jedna adresa se používá z podsítě integrace pro každou instanci plánu. Při škálování aplikace na čtyři instance se použijí čtyři adresy. Hodnota MD z 5 adres z velikosti podsítě znamená, že maximální dostupné adresy na blok CIDR jsou:
+
+- /28 má 11 adres
+- /27 má 27 adres
+- /26 má 59 adres
+
+Při horizontálním navýšení nebo zmenšení kapacity budete potřebovat dvojnásobnou dobu potřebnou pro vaši adresu. Omezení velikosti znamená, že reálné dostupné instance na velikost podsítě jsou, pokud je vaše podsíť:
+
+- /28, maximální horizontální stupnice je 5 instancí.
+- /27, maximální horizontální škálování je 13 instancí.
+- /26 je maximální horizontální stupnice 29 instancí
+
+Limity zaznamenané u maximálního vodorovného měřítka předpokládají, že v určitém okamžiku bude nutné horizontální navýšení nebo snížení kapacity v libovolné velikosti nebo SKU. 
+
+Vzhledem k tomu, že velikost podsítě po přiřazení nejde změnit, používejte dostatečně velkou podsíť, která bude vyhovovat libovolné škále aplikace, ke které může dojít. Aby nedocházelo k problémům s kapacitou podsítě, doporučená velikost je/26 a 64 adres.  
 
 Pokud chcete, aby vaše aplikace v jiném plánu dosáhly virtuální sítě, ke které už jsou připojené aplikace v jiném plánu, vyberte jinou podsíť, než kterou používá stávající integrace virtuální sítě.
 
@@ -82,21 +96,15 @@ Trasy Border Gateway Protocol (BGP) ovlivňují také přenosy aplikací. Pokud 
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-Jakmile se vaše aplikace integruje s vaší virtuální sítí, používá stejný server DNS, se kterým je nakonfigurovaná vaše virtuální síť. Ve výchozím nastavení vaše aplikace nebude fungovat s Azure DNS Private Zones. Chcete-li pracovat s Azure DNS Private Zones, je nutné přidat následující nastavení aplikace:
-
-1. WEBSITE_DNS_SERVER s hodnotou 168.63.129.16
-1. WEBSITE_VNET_ROUTE_ALL s hodnotou 1
-
-Tato nastavení budou posílat všechna odchozí volání z vaší aplikace do vaší virtuální sítě. Kromě toho umožní aplikaci použít Azure DNS dotazem Privátní DNS zóny na úrovni pracovního procesu. Tato funkce se použije, když běžící aplikace přistupuje k zóně Privátní DNS.
-
-> [!NOTE]
->Pokus o přidání vlastní domény do webové aplikace pomocí Privátní DNS zóny není možné použít s Integrace virtuální sítě. Vlastní ověření domény se provádí na úrovni kontroleru, nikoli na úrovni pracovního procesu, což brání tomu, aby se záznamy DNS zobrazily. Pokud chcete použít vlastní doménu ze zóny Privátní DNS, musí být ověření obejít pomocí Application Gateway nebo interního nástroje App Service Environment.
-
-
+Jakmile se vaše aplikace integruje s vaší virtuální sítí, používá stejný server DNS, se kterým je nakonfigurovaná vaše virtuální síť. Toto chování můžete v aplikaci přepsat konfigurací nastavení aplikace WEBSITE_DNS_SERVER s adresou požadovaného serveru DNS. Pokud jste měli ve své virtuální síti nakonfigurovaný vlastní server DNS, ale chtěli byste, aby vaše aplikace používala Azure DNS privátní zóny, měli byste nastavit WEBSITE_DNS_SERVER s hodnotou 168.63.129.16. 
 
 ### <a name="private-endpoints"></a>Soukromé koncové body
 
-Pokud chcete provést volání do [soukromých koncových bodů][privateendpoints], musíte integrovat s Azure DNS Private Zones nebo spravovat privátní koncový bod na serveru DNS, který používá vaše aplikace. 
+Pokud chcete provést volání do [soukromých koncových bodů][privateendpoints], je nutné zajistit, aby se vaše vyhledávání DNS přeložilo na soukromý koncový bod. Aby vyhledávání DNS z vaší aplikace odkazovalo na vaše soukromé koncové body, můžete:
+
+* integrace s Azure DNS Private Zones. Pokud vaše virtuální síť nemá vlastní server DNS, bude tato funkce automaticky
+* Spravujte privátní koncový bod na serveru DNS, který používá vaše aplikace. K tomu potřebujete znát adresu privátního koncového bodu a pak na koncový bod, na který se pokoušíte připojit, nasměrovat záznam A.
+* Konfigurace vlastního serveru DNS pro přeposílání na Azure DNS privátní zóny
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png

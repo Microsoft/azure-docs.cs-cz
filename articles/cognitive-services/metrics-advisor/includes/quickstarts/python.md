@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: cf4404bbfe7e8f0ad664c9ca8dda07ff61be12d9
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 2c79773d6697ae9fb62e2b7515da60178243fe40
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186839"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523684"
 ---
 [Referenční dokumentace](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/README.md)  |  [Balíček (PiPy)](https://pypi.org/project/azure-ai-metricsadvisor/)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/samples/README.md)
 
@@ -53,7 +53,7 @@ import datetime
 Vytvořte proměnné pro koncový bod a klíč Azure prostředku.
 
 > [!IMPORTANT]
-> Přejděte na Azure Portal. Pokud se prostředek poradce metriky, který jste vytvořili v části **předpoklady** , úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíče předplatného a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků** . <br><br>Pokud chcete načíst klíč rozhraní API, musíte přejít na [https://metricsadvisor.azurewebsites.net](https://metricsadvisor.azurewebsites.net) . Vyberte příslušný **adresář** , **odběry** a **pracovní prostor** pro váš prostředek a zvolte možnost **začít** . Pak budete moci načíst klíče rozhraní API z [https://metricsadvisor.azurewebsites.net/api-key](https://metricsadvisor.azurewebsites.net/api-key) .   
+> Přejděte na Azure Portal. Pokud se prostředek poradce metriky, který jste vytvořili v části **předpoklady** , úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíče předplatného a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. <br><br>Pokud chcete načíst klíč rozhraní API, musíte přejít na [https://metricsadvisor.azurewebsites.net](https://metricsadvisor.azurewebsites.net) . Vyberte příslušný **adresář** , **odběry** a **pracovní prostor** pro váš prostředek a zvolte možnost **začít**. Pak budete moci načíst klíče rozhraní API z [https://metricsadvisor.azurewebsites.net/api-key](https://metricsadvisor.azurewebsites.net/api-key) .   
 >
 > Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
 
@@ -70,9 +70,9 @@ Následující třídy zpracovávají některé z hlavních funkcí sady metrik 
 |Název|Popis|
 |---|---|
 | [MetricsAdvisorClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorClient) | **Používá se pro** : <br> -Výpis incidentů <br> -Výpis hlavní příčiny incidentů <br> – Načítání původních dat časových řad a dat časových řad obohacených službou. <br> -Výpis výstrah <br> – Přidání zpětné vazby k ladění modelu |
-| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html?highlight=metricsadvisoradministrationclient#azure.ai.metricsadvisor.MetricsAdvisorAdministrationClient)| **Umožňuje:** <br> – Správa datových kanálů <br> – Vytváření, konfigurace, načítání, vypsání a odstraňování konfigurací detekce anomálií <br> – Vytváření, konfigurace, načítání, zobrazování a odstraňování konfigurací upozorňujících na anomálii <br> -Spravovat zavěšení  | |
+| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorAdministrationClient) | **Umožňuje:** <br> – Správa datových kanálů <br> – Vytváření, konfigurace, načítání, vypsání a odstraňování konfigurací detekce anomálií <br> – Vytváření, konfigurace, načítání, zobrazování a odstraňování konfigurací upozorňujících na anomálii <br> -Spravovat zavěšení  | |
 | [Datové kanály](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=datafeed#azure.ai.metricsadvisor.models.DataFeed)| **Jaké metriky Advisoru ingestují ze zdroje dat. `DataFeed` Obsahuje řádky:** <br> – Časová razítka <br> – Nula nebo více dimenzí <br> – Jedna nebo více měr  |
-| [Metrika](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=metric#azure.ai.metricsadvisor.models.Metric) | A `Metric` je kvantifikovaná míra, která se používá k monitorování a vyhodnocení stavu konkrétního obchodního procesu. Může se jednat o kombinaci více hodnot časových řad rozdělených do dimenzí. Například metrika stavu webu může obsahovat rozměry počtu uživatelů a trhu en-US. |
+| [DataFeedMetric](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=datafeedmetric#azure.ai.metricsadvisor.models.DataFeedMetric) | A `DataFeedMetric` je kvantifikovaná míra, která se používá k monitorování a vyhodnocení stavu konkrétního obchodního procesu. Může se jednat o kombinaci více hodnot časových řad rozdělených do dimenzí. Například metrika stavu webu může obsahovat rozměry počtu uživatelů a trhu en-US. |
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -96,7 +96,7 @@ client = MetricsAdvisorAdministrationClient(service_endpoint,
 
 ## <a name="add-a-data-feed"></a>Přidání datového kanálu
 
-V nové metodě vytvořte příkazy importu jako příklad níže. Nahraďte `sql_server_connection_string` vlastním připojovacím řetězcem SQL serveru a nahraďte `query` dotazem, který vrací vaše data v jednom časovém razítku. Také budete muset upravit `metric` hodnoty a na `dimension` základě vlastních dat.
+V nové metodě vytvořte příkazy importu jako příklad níže. Nahraďte `sql_server_connection_string` vlastním připojovacím řetězcem SQL serveru a nahraďte `query` dotazem, který vrací vaše data v jednom časovém razítku. Také budete muset upravit `DataFeedmetric` hodnoty a na `DataFeedDimension` základě vlastních dat.
 
 > [!IMPORTANT]
 > Dotaz by měl vracet maximálně jeden záznam pro každou kombinaci dimenzí v každém časovém razítku. A všechny záznamy vrácené dotazem musí mít stejná časová razítka. Poradce metriky spustí tento dotaz pro každé časové razítko k ingestování vašich dat. Další informace a příklady najdete v [části Nejčastější dotazy k dotazům](../../faq.md#how-do-i-write-a-valid-query-for-ingesting-my-data) . 
@@ -110,11 +110,10 @@ def sample_create_data_feed():
     from azure.ai.metricsadvisor.models import (
         SQLServerDataFeed,
         DataFeedSchema,
-        Metric,
-        Dimension,
+        DataFeedMetric,
+        DataFeedDimension,
         DataFeedOptions,
-        DataFeedRollupSettings,
-        DataFeedMissingDataPointFillSettings
+        DataFeedRollupSettings
     )
     sql_server_connection_string = "<replace-with-your-sql-server-connection-string>"
     query = "<replace-with-metrics-advisor-sql-server-query>"
@@ -123,69 +122,73 @@ def sample_create_data_feed():
                                   MetricsAdvisorKeyCredential(subscription_key, api_key))
 
     data_feed = client.create_data_feed(
-        name="My data feed",
-        source=SQLServerDataFeed(
-            connection_string=sql_server_connection_string,
-            query=query,
+    name="My data feed",
+    source=SQLServerDataFeed(
+        connection_string=sql_server_connection_string,
+        query=query,
+    ),
+    granularity="Daily",
+    schema=DataFeedSchema(
+        metrics=[
+            DataFeedMetric(name="cost", display_name="Cost"),
+            DataFeedMetric(name="revenue", display_name="Revenue")
+        ],
+        dimensions=[
+            DataFeedDimension(name="category", display_name="Category"),
+            DataFeedDimension(name="city", display_name="City")
+        ],
+        timestamp_column="Timestamp"
+    ),
+    ingestion_settings=datetime.datetime(2019, 10, 1),
+    options=DataFeedOptions(
+        data_feed_description="cost/revenue data feed",
+        rollup_settings=DataFeedRollupSettings(
+            rollup_type="AutoRollup",
+            rollup_method="Sum",
+            rollup_identification_value="__CUSTOM_SUM__"
         ),
-        granularity="Daily",
-        schema=DataFeedSchema(
-            metrics=[
-                Metric(name="cost", display_name="Cost"),
-                Metric(name="revenue", display_name="Revenue")
-            ],
-            dimensions=[
-                Dimension(name="category", display_name="Category"),
-                Dimension(name="city", display_name="City")
-            ],
-            timestamp_column="Timestamp"
+        missing_data_point_fill_settings=DataFeedMissingDataPointFillSettings(
+            fill_type="SmartFilling"
         ),
-        ingestion_settings=datetime.datetime(2019, 10, 1),
-        options=DataFeedOptions(
-            data_feed_description="cost/revenue data feed",
-            rollup_settings=DataFeedRollupSettings(
-                rollup_type="AutoRollup",
-                rollup_method="Sum",
-                rollup_identification_value="__CUSTOM_SUM__"
-            ),
-            missing_data_point_fill_settings=DataFeedMissingDataPointFillSettings(
-                fill_type="SmartFilling"
-            ),
-            access_mode="Private"
-        )
+        access_mode="Private"
     )
+)
 
-    return data_feed
+return data_feed
 sample_create_data_feed()
 ```
 
 ## <a name="check-the-ingestion-status"></a>Zkontroluje stav příjmu.
 
-V nové metodě vytvořte příkaz importu podobný následujícímu příkladu. Nahraďte `data_feed_id` ID datového kanálu, který jste vytvořili. Vytvořte klienta s vašimi klíči a koncovým bodem a použijte `client.get_data_feed_ingestion_progress()` k získání průběhu přijímání. Vytiskněte podrobnosti, například poslední aktivní a úspěšná časová razítka.
+V nové metodě vytvořte příkaz importu podobný následujícímu příkladu. Nahraďte `data_feed_id` ID datového kanálu, který jste vytvořili. Vytvořte klienta s vašimi klíči a koncovým bodem a použijte `client.list_data_feed_ingestion_status()` k získání průběhu přijímání. Vytiskněte podrobnosti, například poslední aktivní a úspěšná časová razítka.
 
 
 ```python
-def sample_get_data_feed_ingestion_progress():
     from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorAdministrationClient
 
     data_feed_id = "<replace-with-your-metrics-advisor-data-feed-id>"
 
-    client = MetricsAdvisorAdministrationClient(service_endpoint,
-                                  MetricsAdvisorKeyCredential(subscription_key, api_key))
+   client = MetricsAdvisorAdministrationClient(service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key)
+)
 
-    progress = client.get_data_feed_ingestion_progress(data_feed_id)
+ingestion_status = client.list_data_feed_ingestion_status(
+    data_feed_id,
+    datetime.datetime(2020, 9, 20),
+    datetime.datetime(2020, 9, 25)
+)
+for status in ingestion_status:
+    print("Timestamp: {}".format(status.timestamp))
+    print("Status: {}".format(status.status))
+    print("Message: {}\n".format(status.message))
 
-    print("Latest active timestamp: {}".format(progress.latest_active_timestamp))
-    print("Latest successful timestamp: {}".format(progress.latest_success_timestamp))
-sample_get_data_feed_ingestion_progress()
 ```
 
 ## <a name="configure-anomaly-detection"></a>Konfigurovat detekci anomálií
 
-V nové metodě vytvořte příkazy importu jako příklad níže. Nahraďte `metric_id` ID metriky, kterou chcete nakonfigurovat. Vytvořte klienta s vašimi klíči a koncovým bodem a použijte `client.create_metric_anomaly_detection_configuration` k vytvoření nové konfigurace detekce. Mezní podmínky určují parametry pro detekci anomálií.
+V nové metodě vytvořte příkazy importu jako příklad níže. Nahraďte `metric_id` ID metriky, kterou chcete nakonfigurovat. Vytvořte klienta s vašimi klíči a koncovým bodem a použijte `client.create_detection_configuration` k vytvoření nové konfigurace detekce. Mezní podmínky určují parametry pro detekci anomálií.
 
 ```python
-def sample_create_detection_config():
     from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorAdministrationClient
     from azure.ai.metricsadvisor.models import (
         ChangeThresholdCondition,
@@ -196,52 +199,52 @@ def sample_create_detection_config():
     )
     metric_id = "replace-with-your-metric-id"
 
-    client = MetricsAdvisorAdministrationClient(service_endpoint,
-                                  MetricsAdvisorKeyCredential(subscription_key, api_key))
+    
+client = MetricsAdvisorAdministrationClient(
+    service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key)
+)
 
-    change_threshold_condition = ChangeThresholdCondition(
-        anomaly_detector_direction="Both",
-        change_percentage=20,
-        shift_point=10,
-        within_range=True,
-        suppress_condition=SuppressCondition(
-            min_number=5,
-            min_ratio=2
-        )
+change_threshold_condition = ChangeThresholdCondition(
+    anomaly_detector_direction="Both",
+    change_percentage=20,
+    shift_point=10,
+    within_range=True,
+    suppress_condition=SuppressCondition(
+        min_number=5,
+        min_ratio=2
     )
-    hard_threshold_condition = HardThresholdCondition(
-        anomaly_detector_direction="Up",
-        upper_bound=100,
-        suppress_condition=SuppressCondition(
-            min_number=2,
-            min_ratio=2
-        )
+)
+hard_threshold_condition = HardThresholdCondition(
+    anomaly_detector_direction="Up",
+    upper_bound=100,
+    suppress_condition=SuppressCondition(
+        min_number=2,
+        min_ratio=2
     )
-    smart_detection_condition = SmartDetectionCondition(
-        anomaly_detector_direction="Up",
-        sensitivity=10,
-        suppress_condition=SuppressCondition(
-            min_number=2,
-            min_ratio=2
-        )
+)
+smart_detection_condition = SmartDetectionCondition(
+    anomaly_detector_direction="Up",
+    sensitivity=10,
+    suppress_condition=SuppressCondition(
+        min_number=2,
+        min_ratio=2
     )
+)
 
-    detection_config = client.create_metric_anomaly_detection_configuration(
-        name="my_detection_config",
-        metric_id=metric_id,
-        description="anomaly detection config for metric",
-        whole_series_detection_condition=MetricDetectionCondition(
-            cross_conditions_operator="OR",
-            change_threshold_condition=change_threshold_condition,
-            hard_threshold_condition=hard_threshold_condition,
-            smart_detection_condition=smart_detection_condition
-        )
+detection_config = client.create_detection_configuration(
+    name="my_detection_config",
+    metric_id=metric_id,
+    description="anomaly detection config for metric",
+    whole_series_detection_condition=MetricDetectionCondition(
+        cross_conditions_operator="OR",
+        change_threshold_condition=change_threshold_condition,
+        hard_threshold_condition=hard_threshold_condition,
+        smart_detection_condition=smart_detection_condition
     )
-
-    return detection_config
-sample_create_detection_config()
+)
+return detection_config
 ```
-
 
 ## <a name="create-a-hook"></a>Vytvořit zavěšení
 
@@ -251,27 +254,27 @@ V nové metodě vytvořte příkazy importu jako příklad níže. Vytvořte kli
 def sample_create_hook():
 
     from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorAdministrationClient
-    from azure.ai.metricsadvisor.models import EmailHook
+    from azure.ai.metricsadvisor.models import EmailNotificationHook
 
     client = MetricsAdvisorAdministrationClient(service_endpoint,
                                   MetricsAdvisorKeyCredential(subscription_key, api_key))
 
-    hook = client.create_hook(
-        name="email hook",
-        hook=EmailHook(
-            description="my email hook",
-            emails_to_alert=["alertme@contoso.com"],
-            external_link="https://adwiki.azurewebsites.net/articles/howto/alerts/create-hooks.html"
-        )
-    )
+client = MetricsAdvisorAdministrationClient(service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key))
 
-    return hook
-sample_create_hook()
+hook = client.create_hook(
+    hook=EmailNotificationHook(
+        name="email hook",
+        description="my email hook",
+        emails_to_alert=["alertme@alertme.com"],
+        external_link="https://example.com/handleAlerts", # you must enter a valid webhook url to post the alert payload
+    )
+)
 ```
 
 ##  <a name="create-an-alert-configuration"></a>Vytvoření konfigurace výstrahy
 
-V nové metodě vytvořte příkazy importu jako příklad níže. Nahraďte `anomaly_detection_configuration_id` ID pro vaši konfiguraci detekce anomálií a nahraďte jím `hook_id` vytvořeným zavěšením. Vytvořte klienta s vašimi klíči a koncovým bodem a použijte `client.create_anomaly_alert_configuration()` k vytvoření konfigurace výstrahy. `metric_alert_configurations` je seznam `MetricAlertConfiguration` objektů, které určují podmínky a rozsah jednotlivých konfigurací.
+V nové metodě vytvořte příkazy importu jako příklad níže. Nahraďte `detection_configuration_id` ID pro vaši konfiguraci detekce anomálií a nahraďte jím `hook_id` vytvořeným zavěšením. Vytvořte klienta s vašimi klíči a koncovým bodem a použijte `client.create_alert_configuration()` k vytvoření konfigurace výstrahy. 
 
 ```python
 def sample_create_alert_config():
@@ -288,16 +291,18 @@ def sample_create_alert_config():
     anomaly_detection_configuration_id = "<replace-with-your-detection-configuration-id"
     hook_id = "<replace-with-your-hook-id>"
 
-    client = MetricsAdvisorAdministrationClient(service_endpoint,
-                                  MetricsAdvisorKeyCredential(subscription_key, api_key))
+    client = MetricsAdvisorAdministrationClient(
+    service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key)
+)
 
-    alert_config = client.create_anomaly_alert_configuration(
+alert_config = client.create_alert_configuration(
         name="my alert config",
         description="alert config description",
         cross_metrics_operator="AND",
         metric_alert_configurations=[
             MetricAlertConfiguration(
-                detection_configuration_id=anomaly_detection_configuration_id,
+                detection_configuration_id=detection_configuration_id,
                 alert_scope=MetricAnomalyAlertScope(
                     scope_type="WholeSeries"
                 ),
@@ -309,7 +314,7 @@ def sample_create_alert_config():
                 )
             ),
             MetricAlertConfiguration(
-                detection_configuration_id=anomaly_detection_configuration_id,
+                detection_configuration_id=detection_configuration_id,
                 alert_scope=MetricAnomalyAlertScope(
                     scope_type="TopN",
                     top_n_group_in_scope=TopNGroupScope(
@@ -339,26 +344,36 @@ def sample_create_alert_config():
 
 ### <a name="query-the-alert"></a>Dotaz na upozornění
 
-V nové metodě vytvořte příkaz importu podobný následujícímu příkladu. Nahraďte `alert_id` ID upozornění a nahraďte `alert_config_id` ID konfigurace výstrahy. Vytvořte klienta s vašimi klíči a koncovým bodem a použijte `client.list_anomalies_for_alert()` k vypsání konfigurace výstrahy. 
+V nové metodě vytvořte příkaz importu podobný následujícímu příkladu. Nahraďte `alert_id` ID upozornění a nahraďte `alert_config_id` ID konfigurace výstrahy. Vytvořte klienta s vašimi klíči a koncovým bodem a použijte `client.list_anomalies` k vypsání anomálií výstrahy. 
 
 ```python
-def sample_list_anomalies_for_alert(alert_config_id, alert_id):
-
-    from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorClient
+from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorClient
     
-    alert_id = "<replace-with-your-alert-id>"
-    alert_config_id = "<replace-with-your-alert-configuration-id"
-    client = MetricsAdvisorClient(service_endpoint,
-                                  MetricsAdvisorKeyCredential(subscription_key, api_key))
+alert_id = "<replace-with-your-alert-id>"
+alert_config_id = "<replace-with-your-alert-configuration-id"
 
-    results = client.list_anomalies_for_alert(
-            alert_configuration_id=alert_config_id,
-            alert_id=alert_id,
-        )
-    for result in results:
-        print("Create on: {}".format(result.created_on))
-        print("Severity: {}".format(result.severity))
-        print("Status: {}".format(result.status))
+client = MetricsAdvisorClient(service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key)
+)
+
+results = client.list_alerts(
+    alert_configuration_id=alert_config_id,
+    start_time=datetime.datetime(2020, 1, 1),
+    end_time=datetime.datetime(2020, 9, 9),
+    time_mode="AnomalyTime",
+)
+for result in results:
+    print("Alert id: {}".format(result.id))
+    print("Create on: {}".format(result.created_on))
+
+results = client.list_anomalies(
+    alert_configuration_id=alert_config_id,
+    alert_id=alert_id,
+)
+for result in results:
+    print("Create on: {}".format(result.created_on))
+    print("Severity: {}".format(result.severity))
+    print("Status: {}".format(result.status))
 ```
 
 ### <a name="run-the-application"></a>Spuštění aplikace

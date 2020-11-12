@@ -10,14 +10,14 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 994f2829d260223567dcb5aed859812aa1fef3d1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 5eb9867b17151987b165021f42a075e9355a315d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828898"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523975"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nainstalovat [Visual Studio](https://visualstudio.microsoft.com/downloads/) 
@@ -77,7 +77,7 @@ ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential);
 
 Použijte `createChatThread` metodu k vytvoření vlákna chatu.
 - Použijte `topic` k poskytnutí tématu tomuto chatu; Téma lze aktualizovat poté, co je vlákno konverzace vytvořeno pomocí `UpdateThread` funkce.
-- Pomocí `members` vlastnosti můžete předat seznam `ChatThreadMember` objektů, které mají být přidány do konverzačního vlákna. `ChatThreadMember`Objekt je inicializován s `CommunicationUser` objektem. Chcete-li získat `CommunicationUser` objekt, budete muset předat ID přístupu, které jste vytvořili pomocí pokynů pro [Vytvoření uživatele](../../access-tokens.md#create-a-user) .
+- Pomocí `members` vlastnosti můžete předat seznam `ChatThreadMember` objektů, které mají být přidány do konverzačního vlákna. `ChatThreadMember`Objekt je inicializován s `CommunicationUser` objektem. Chcete-li získat `CommunicationUser` objekt, budete muset předat ID přístupu, které jste vytvořili pomocí pokynů pro [Vytvoření uživatele](../../access-tokens.md#create-an-identity) .
 
 Odpověď `chatThreadClient` se používá k provádění operací na vytvořeném konverzačním vlákně: Přidání členů do konverzačního vlákna, odeslání zprávy, odstranění zprávy atd. Obsahuje atribut, `Id` který je jedinečným identifikátorem konverzačního vlákna. 
 

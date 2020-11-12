@@ -10,14 +10,14 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 3c05596e16edc5243b8a97002a5cc5990c69ec43
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2b7d00335253772683b867acf0765b77fc493e79
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946932"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523857"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
@@ -85,7 +85,7 @@ chat_client = ChatClient(endpoint, CommunicationUserCredential(<Access Token>))
 Použijte `create_chat_thread` metodu k vytvoření vlákna chatu.
 
 - Použijte `topic` k poskytnutí tématu vlákna; Téma lze aktualizovat poté, co je vlákno konverzace vytvořeno pomocí `update_thread` funkce.
-- Použijte `members` k vypsání seznamu, který se má `ChatThreadMember` Přidat do konverzačního vlákna, `ChatThreadMember` `CommunicationUser` typ `user` , který je možné po vytvoření [vytvořit uživatelem](../../access-tokens.md#create-a-user) .
+- Použijte `members` k vypsání seznamu, který se má `ChatThreadMember` Přidat do konverzačního vlákna, `ChatThreadMember` `CommunicationUser` typ `user` , který je možné po vytvoření [vytvořit uživatelem](../../access-tokens.md#create-an-identity) .
 
 Odpověď `chat_thread_client` se používá k provádění operací v nově vytvořeném konverzačním vlákně, jako je přidání členů do konverzačního vlákna, odeslání zprávy, odstranění zprávy atd. Obsahuje vlastnost, `thread_id` která je jedinečné ID vlákna chatu.
 
@@ -158,7 +158,7 @@ Po vytvoření vlákna chatu můžete z něj přidat uživatele nebo je z něj o
 Použijte `add_members` metodu pro přidání členů vlákna do vlákna identifikovaného pomocí IDvlákna.
 
 - Slouží `members` k vypsání členů, kteří mají být přidáni do konverzačního vlákna;
-- `user`je povinné, `CommunicationUser` když jste vytvořili v části `CommunicationIdentityClient` [Vytvoření uživatele](../../access-tokens.md#create-a-user) .
+- `user`je povinné, `CommunicationUser` když jste vytvořili v části `CommunicationIdentityClient` [Vytvoření uživatele](../../access-tokens.md#create-an-identity) .
 - `display_name`volitelné, je zobrazované jméno člena vlákna.
 - `share_history_time`volitelné, je čas, od kterého je historie chatu sdílena s členem. Chcete-li sdílet historii od vytvoření vlákna chatu, nastavte tuto vlastnost na jakékoli datum, které je rovno nebo menší než čas vytvoření vlákna. Chcete-li sdílet žádnou historii předchozí po přidání člena, nastavte jej na aktuální datum. Chcete-li sdílet částečnou historii, nastavte ji na datum zprostředkovatele.
 
