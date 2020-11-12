@@ -1,17 +1,17 @@
 ---
 title: Zálohování a obnovení-Azure Portal-Azure Database for MySQL
 description: Tento článek popisuje, jak obnovit server v Azure Database for MySQL pomocí Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bc31cf8fee2669634ff366caac77cb090baf075
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902782"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539137"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for MySQL pomocí Azure Portal
 
@@ -37,11 +37,11 @@ Při vytváření serveru prostřednictvím Azure Portal v okně **cenová úrov
 Další informace o nastavení těchto hodnot během vytváření najdete v [rychlém startu Azure Database for MySQL serveru](quickstart-create-mysql-server-database-using-azure-portal.md).
 
 Dobu uchovávání záloh můžete na serveru změnit pomocí následujících kroků:
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 2. Vyberte server Azure Database for MySQL. Tato akce otevře stránku s **přehledem** .
-3. V nabídce v části **Nastavení**vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
+3. V nabídce v části **Nastavení** vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
 Na snímku obrazovky níže byl zvýšen na 34 dní.
-:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Období uchování zálohy se zvýšilo.":::
 
 4. Potvrďte změnu kliknutím na tlačítko **OK** .
 
@@ -57,15 +57,15 @@ Následující kroky obnovují ukázkový Server k určitému bodu v čase:
 
 2. Na panelu nástrojů na stránce **Přehled** serveru vyberte **obnovit**.
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for MySQL – přehled – tlačítko obnovit":::
 
 3. Do formuláře Restore zadejte požadované údaje:
 
-   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
-   - **Bod obnovení**: Vyberte bod v čase, který chcete obnovit.
-   - **Cílový server**: zadejte název nového serveru.
-   - **Umístění**: oblast nelze vybrat. Ve výchozím nastavení je stejný jako zdrojový server.
-   - **Cenová úroveň**: při obnovení k určitému bodu v čase nelze tyto parametry změnit. Je stejná jako u zdrojového serveru. 
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Informace o obnovení Azure Database for MySQL":::
+   - **Bod obnovení** : Vyberte bod v čase, který chcete obnovit.
+   - **Cílový server** : zadejte název nového serveru.
+   - **Umístění** : oblast nelze vybrat. Ve výchozím nastavení je stejný jako zdrojový server.
+   - **Cenová úroveň** : při obnovení k určitému bodu v čase nelze tyto parametry změnit. Je stejná jako u zdrojového serveru. 
 
 4. Kliknutím na tlačítko **OK** obnovte server, který chcete obnovit do bodu v čase. 
 
@@ -86,13 +86,13 @@ Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete
 
 1. V levém horním rohu portálu vyberte tlačítko **vytvořit prostředek** (+). Vyberte **databáze**  >  **Azure Database for MySQL**.
 
-   :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
+   :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="Přejděte na Azure Database for MySQL.":::
  
 2. Zadejte předplatné, skupinu prostředků a název nového serveru. 
 
-3. Jako **zdroj dat**vyberte **Backup** . Tato akce načte rozevírací seznam, který obsahuje seznam serverů s povolenými geografickými redundantními zálohami.
+3. Jako **zdroj dat** vyberte **Backup** . Tato akce načte rozevírací seznam, který obsahuje seznam serverů s povolenými geografickými redundantními zálohami.
    
-   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Vyberte zdroj dat.":::
     
    > [!NOTE]
    > Při prvním vytvoření serveru nemusí být pro geografickou obnovu k dispozici okamžitě. Naplnění potřebných metadat může trvat několik hodin.
@@ -100,25 +100,25 @@ Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete
 
 4. Vyberte rozevírací seznam **zálohování** .
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Vyberte rozevírací seznam zálohování.":::
 
 5. Vyberte zdrojový server, ze kterého chcete obnovit.
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Vyberte zálohování.":::
 
-6. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra**, **Doba uchování záloh**, **možnost redundance zálohy**, **verze modulu**a **přihlašovací údaje správce**. Vyberte **Pokračovat**. 
+6. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra** , **Doba uchování záloh** , **možnost redundance zálohy** , **verze modulu** a **přihlašovací údaje správce**. Vyberte **Pokračovat**. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Pokračujte v zálohování.":::
 
 7. Vyplňte zbytek formuláře vlastními preferencemi. Můžete vybrat libovolné **umístění**.
 
-    Po výběru umístění můžete vybrat **Konfigurovat Server** a aktualizovat **výpočetní generaci** (Pokud je dostupné v oblasti, kterou jste zvolili), počet **virtuální jádra**, **dobu uchování zálohy**a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
+    Po výběru umístění můžete vybrat **Konfigurovat Server** a aktualizovat **výpočetní generaci** (Pokud je dostupné v oblasti, kterou jste zvolili), počet **virtuální jádra** , **dobu uchování zálohy** a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
 
-   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Cenová úroveň – výběr redundance zálohy"::: 
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Vyplnit formulář"::: 
 
 8. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte výběr. 
 
-9. Vyberte **Vytvořit**, aby se server zřídil. Tato operace může trvat několik minut.
+9. Vyberte **Vytvořit** , aby se server zřídil. Tato operace může trvat několik minut.
 
 Nový server vytvořený geografickým obnovením má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době zahájení obnovení. Heslo lze změnit na stránce **Přehled** nového serveru.
 

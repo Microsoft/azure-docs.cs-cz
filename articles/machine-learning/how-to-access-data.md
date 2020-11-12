@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: 7f2c7e99117c338d07abc2ed8760c2be18955d66
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 30ece529b141f3a50191c532d85265d8e9555b34
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489297"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538593"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Připojení ke službám úložiště v Azure
 
@@ -28,7 +28,7 @@ Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat.
 
 Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
 - Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
@@ -180,7 +180,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 Pro úložiště dat Azure Data Lake Storage generace 2 (ADLS Gen 2) použijte [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) k registraci úložiště dat přihlašovacích údajů připojeného k úložišti Azure datalake Gen 2 s [oprávněními instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md).  
 
-Aby bylo možné použít instanční objekt, musíte [aplikaci zaregistrovat](../active-directory/develop/app-objects-and-service-principals.md) a udělit instančnímu objektu přístup ke **čtečce dat objektů BLOB služby Storage** . Přečtěte si další informace o [nastavení řízení přístupu pro adls Gen 2](../storage/blobs/data-lake-storage-access-control.md). 
+Aby bylo možné použít instanční objekt, musíte [aplikaci zaregistrovat](../active-directory/develop/app-objects-and-service-principals.md) a udělit přístup k datům instančního objektu prostřednictvím řízení přístupu na základě role (Azure RBAC) nebo seznamů řízení přístupu (ACL). Přečtěte si další informace o [nastavení řízení přístupu pro adls Gen 2](../storage/blobs/data-lake-storage-access-control-model.md). 
 
 Následující kód vytvoří a zaregistruje `adlsgen2_datastore_name` úložiště dat do `ws` pracovního prostoru. Toto úložiště dat přistupuje k systému souborů `test` v `account_name` účtu úložiště pomocí zadaných přihlašovacích údajů instančního objektu. Pokyny k scénářům virtuální sítě najdete v části věnované [oprávněním pro přístup & k úložišti](#storage-access-and-permissions) a kde najít požadovaná ověřovací pověření. 
 

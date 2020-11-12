@@ -1,7 +1,7 @@
 ---
 title: Klíčové koncepty & architektury
 titleSuffix: Azure Machine Learning
-description: Přečtěte si o architektuře, pojmech a konceptech, které tvoří Azure Machine Learning.
+description: Tento článek poskytuje podrobný přehled architektury, podmínek a konceptů, které tvoří Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f17cdd42c892f6c0d218875cf304846937ba58d7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444795"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540173"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -267,6 +267,18 @@ Azure IoT Edge zajistí, že je váš modul spuštěný, a monitoruje zařízen�
 Pomocí [kanálů strojového učení](concept-ml-pipelines.md) můžete vytvářet a spravovat pracovní postupy, které dohromady spojí fáze strojového učení. Kanál může například zahrnovat přípravu dat, školení modelů, nasazení modelu a fáze odvození a bodování. Každá fáze může zahrnovat několik kroků, z nichž každá může běžet bez obsluhy v různých výpočetních cílech. 
 
 Kroky kanálu jsou opakovaně použitelné a je možné je spustit bez nutnosti znovu spustit předchozí kroky, pokud se výstup těchto kroků nezměnil. V případě, že se data nezměnila, můžete například přeškolit model bez nutnosti znovu spustit nákladný postup přípravy dat. Kanály také umožňují pracovníkům dat spolupracovat při práci na samostatných oblastech pracovního postupu Machine Learning.
+
+## <a name="monitoring-and-logging"></a>Monitorování a protokolování
+
+Azure Machine Learning poskytuje následující možnosti monitorování a protokolování:
+
+* Pro odborníky přes __data__ můžete sledovat experimenty a informace protokolu z vašich školicích běhů. Další informace najdete v následujících článcích:
+   * [Spuštění, monitorování a zrušení školicích běhů](how-to-manage-runs.md)
+   * [Protokolování metrik pro tréninková spuštění](how-to-track-experiments.md)
+   * [Sledování experimentů s využitím MLflow](how-to-use-mlflow.md)
+   * [Vizualizace spuštění s využitím TensorBoardu](how-to-monitor-tensorboard.md)
+* Pro __správce__ můžete monitorovat informace o pracovním prostoru, souvisejících prostředcích Azure a událostech, jako je vytváření a odstraňování prostředků, pomocí Azure monitor. Další informace najdete v tématu [monitorování Azure Machine Learning](monitor-azure-machine-learning.md).
+* Pro __DevOps__ nebo __MLOps__ můžete monitorovat informace vygenerované modely nasazenými jako webové služby nebo moduly IoT Edge a identifikovat tak problémy s nasazeními a shromažďovat data odeslaná do služby. Další informace najdete v tématu [shromáždění dat modelu](how-to-enable-data-collection.md) a [monitorování pomocí Application Insights](how-to-enable-app-insights.md).
 
 ## <a name="interacting-with-your-workspace"></a>Interakce s vaším pracovním prostorem
 

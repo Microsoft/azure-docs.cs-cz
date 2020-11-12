@@ -1,23 +1,23 @@
 ---
 title: Správa serveru-Azure Portal-Azure Database for MariaDB
 description: Naučte se spravovat Azure Database for MariaDB Server z Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 24481abb6606d9ce830e5b65285b31637417cbd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562447"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537981"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Správa serveru Azure Database for MariaDB pomocí Azure Portal
 V tomto článku se dozvíte, jak spravovat servery Azure Database for MariaDB. Úlohy správy zahrnují výpočetní výkon a škálování úložiště, resetování hesla správce a zobrazení podrobností serveru.
 
 ## <a name="sign-in"></a>Přihlásit se
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-server"></a>Vytvoření serveru
 Další informace o tom, jak vytvořit a začít s Azure Database for MariaDB serverem, najdete v [rychlém](quickstart-create-mariadb-server-database-using-azure-portal.md) startu.
@@ -30,7 +30,7 @@ Po vytvoření serveru můžete škálovat mezi Pro obecné účely a paměťov�
 
 Můžete škálovat z Pro obecné účely na paměťově optimalizované a naopak. Změna na úroveň Basic až po vytvoření serveru není podporovaná. 
 
-1. V Azure Portal vyberte svůj server. Vyberte **cenovou úroveň**, která se nachází v části **Nastavení** .
+1. V Azure Portal vyberte svůj server. Vyberte **cenovou úroveň** , která se nachází v části **Nastavení** .
 
 2. Vyberte **optimalizované** **pro obecné účely** nebo paměť v závislosti na tom, na co se škáluje. 
 
@@ -44,7 +44,7 @@ Můžete škálovat z Pro obecné účely na paměťově optimalizované a naopa
 
 ### <a name="scale-vcores-up-or-down"></a>Škálování virtuální jádra nahoru nebo dolů
 
-1. V Azure Portal vyberte svůj server. Vyberte **cenovou úroveň**, která se nachází v části **Nastavení** .
+1. V Azure Portal vyberte svůj server. Vyberte **cenovou úroveň** , která se nachází v části **Nastavení** .
 
 2. Změňte nastavení **Vcore** přesunutím posuvníku na požadovanou hodnotu.
 
@@ -58,7 +58,7 @@ Můžete škálovat z Pro obecné účely na paměťově optimalizované a naopa
 
 ### <a name="scale-storage-up"></a>Škálování úložiště nahoru
 
-1. V Azure Portal vyberte svůj server. Vyberte **cenovou úroveň**, která se nachází v části **Nastavení** .
+1. V Azure Portal vyberte svůj server. Vyberte **cenovou úroveň** , která se nachází v části **Nastavení** .
 
 2. Změňte nastavení **úložiště** přesunutím posuvníku na požadovanou hodnotu.
 

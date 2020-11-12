@@ -4,12 +4,12 @@ description: Přistupujte rychle k požadavkům Application Insights a telemetri
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 92879e9dc7b9de7ef5862f30241f2b80e6aac9e8
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2cfc4e06dcb5671f34ff98794c9569b6ed5ddae7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932647"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538491"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Telemetrie Application Insights ve Visual Studio CodeLens
 Metody v kódu vaší webové aplikace mohou být opatřeny poznámkami s telemetrií o výjimkách za běhu a časech odezvy na požadavky. Pokud ve své aplikaci nainstalujete [Azure Application Insights](./app-insights-overview.md), telemetrie se zobrazí ve Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) s poznámkami v horní části každé funkce, kde jste zvyklí vídat užitečné informace, jako například počet míst, ze kterých se na funkci odkazuje, nebo jméno poslední osoby, která ji upravila.
@@ -30,7 +30,7 @@ V indikátorech CodeLens veřejných metod žádostí vaší webové aplikace vy
 > 
 
 ## <a name="exceptions-in-codelens"></a>Výjimky v CodeLens
-![Bude doplněno](./media/visual-studio-codelens/codelens-exceptions.png)
+![Snímek obrazovky zobrazuje výjimky 47 zobrazené v CodeLens.](./media/visual-studio-codelens/codelens-exceptions.png)
 
 Indikátor výjimek CodeLens ukazuje počet výskytů výjimek pro 15 nejčastěji se vyskytujících výjimek ve vaší aplikaci v posledních 24 hodinách během zpracování požadavku, který metoda obsluhuje.
 
@@ -52,7 +52,7 @@ Chcete-li zobrazit podrobnosti, klikněte na indikátor výjimek CodeLens:
 > 
 
 ## <a name="requests-in-codelens"></a>Požadavky v CodeLens
-![Bude doplněno](./media/visual-studio-codelens/codelens-requests.png)
+![Snímek obrazovky zobrazuje podrobnosti o požadavcích 684, včetně 7% selhání.](./media/visual-studio-codelens/codelens-requests.png)
 
 Indikátor požadavků CodeLens ukazuje počet požadavků HTTP, které metoda obsloužila během posledních 24 hodin, a procentuální podíl neúspěšných požadavků.
 

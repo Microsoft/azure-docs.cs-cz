@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: fdeddfb0a09151ea010d4e95a2954200dd9371dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 01c5d4395eb584631efb9b3b956b9a987e46b0db
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791422"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540616"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -46,7 +46,7 @@ Skupina synchronizace má následující vlastnosti:
 - **Schéma synchronizace** popisuje, která data se synchronizují.
 - **Směr synchronizace** může být obousměrný nebo může tok pouze v jednom směru. To znamená, že směr synchronizace může být z *rozbočovače na člena* nebo z *člena do středu nebo do* obou.
 - **Interval synchronizace** popisuje, jak často dochází k synchronizaci.
-- **Zásada řešení konfliktů** je zásada na úrovni skupiny, kterou je možné vytvořit jako *rozbočovač WINS* nebo *Členové služby WINS* .
+- **Zásada řešení konfliktů** je zásada na úrovni skupiny, kterou je možné vytvořit jako *rozbočovač WINS* nebo *Členové služby WINS*.
 
 ## <a name="when-to-use"></a>Kdy je použít
 
@@ -72,7 +72,7 @@ Synchronizace dat není preferovaným řešením pro následující scénáře:
 
 - **Sledování změn dat:** Synchronizace dat sleduje změny pomocí aktivačních událostí vložení, aktualizace a odstranění. Změny jsou zaznamenány v tabulce na straně uživatele v uživatelské databázi. Všimněte si, že BULK INSERT ve výchozím nastavení neaktivují triggery. Pokud není zadaný FIRE_TRIGGERS, nespustí se žádné triggery vložení. Přidejte možnost FIRE_TRIGGERS, aby synchronizace dat mohla sledovat tato vložení. 
 - **Synchronizují se data:** Synchronizace dat je navržena v modelu hvězdicového a paprskového modelu. Centrum se synchronizuje s každým členem zvlášť. Změny z centra se stáhnou do člena a změny od tohoto člena se nahrají do centra.
-- **Řeší se konflikty:** Synchronizace dat poskytuje dvě možnosti pro řešení konfliktů, *centrum WINS* nebo *člena služby WINS* .
+- **Řeší se konflikty:** Synchronizace dat poskytuje dvě možnosti pro řešení konfliktů, *centrum WINS* nebo *člena služby WINS*.
   - Pokud vyberete možnost *centrum služby WINS* , změny v centru budou vždy přepisovat změny v členu.
   - Pokud vyberete možnost *Členové serveru WINS* , změny ve členovi přepíšou změny v centru. Pokud existuje více než jeden člen, bude konečná hodnota záviset na tom, který člen se nejprve synchronizuje.
 
@@ -150,7 +150,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 
 #### <a name="unsupported-column-types"></a>Nepodporované typy sloupců
 
-Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Příklad:
+Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Například:
 
 - Vypočítané sloupce.
 - Systémem generované sloupce pro dočasné tabulky.
@@ -166,7 +166,7 @@ Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení an
 | Tabulky ve skupině synchronizace                                          | 500                    | Vytvoření více skupin synchronizace |
 | Sloupce v tabulce ve skupině synchronizace                              | 1000                   |                             |
 | Velikost řádku dat v tabulce                                        | 24 MB                  |                             |
-| Minimální interval četnosti synchronizací                                 | 5 minut              |                             |
+| Minimální interval četnosti synchronizací (od předchozího zahájení synchronizace)     | 5 minut              |                             |
 
 > [!NOTE]
 > V jedné skupině synchronizace může být až 30 koncových bodů, pokud je k dispozici jenom jedna skupina synchronizace. Pokud existuje více než jedna skupina synchronizace, celkový počet koncových bodů napříč všemi skupinami synchronizace nesmí překročit 30. Pokud databáze patří do více skupin synchronizace, počítá se jako několik koncových bodů, nikoli jedna.
@@ -175,7 +175,7 @@ Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení an
 
 Po navázání skupiny synchronizace se musí služba synchronizace dat připojit k databázi centra. V době, kdy vytváříte skupinu synchronizace, musí mít server SQL Azure ve svém nastavení následující konfiguraci `Firewalls and virtual networks` :
 
- * *Odepření přístupu k veřejné síti* musí být nastavené na *vypnuto* .
+ * *Odepření přístupu k veřejné síti* musí být nastavené na *vypnuto*.
  * *Povolte službám a prostředkům Azure přístup k tomuto serveru* musí být nastavené na *Ano* , nebo musíte vytvořit pravidla protokolu IP pro [IP adresy používané službou synchronizace dat](network-access-controls-overview.md#data-sync).
 
 Jakmile skupinu synchronizace vytvoříte a zřídíte, můžete tato nastavení zakázat. Agent synchronizace se připojí přímo k databázi centra a pomocí [pravidel IP adres brány firewall](firewall-configure.md) serveru nebo [privátních koncových bodů](private-endpoint-overview.md) můžete agentům přístup k serveru centrálního přístupu dovolit.
@@ -195,7 +195,7 @@ Synchronizace dat SQL je k dispozici ve všech oblastech.
 
 ### <a name="is-a-sql-database-account-required"></a>Je vyžadován účet SQL Database
 
-Ano. Pro hostování databáze centra musíte mít účet SQL Database.
+Yes. Pro hostování databáze centra musíte mít účet SQL Database.
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-server-databases-only"></a>Můžu použít synchronizaci dat pro synchronizaci mezi SQL Servermi databázemi
 
@@ -203,18 +203,18 @@ Ne přímo. Je možné synchronizovat mezi SQL Servermi databázemi nepřímo, a
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>Můžu použít synchronizaci dat pro synchronizaci mezi databázemi v SQL Database, které patří do různých předplatných.
 
-Ano. Můžete synchronizovat mezi databázemi patřícími do skupin prostředků vlastněných různými předplatnými.
+Yes. Můžete synchronizovat mezi databázemi patřícími do skupin prostředků vlastněných různými předplatnými.
 
 - Pokud předplatná patří ke stejnému tenantovi a máte oprávnění ke všem předplatným, můžete skupinu synchronizace nakonfigurovat v Azure Portal.
 - V opačném případě je nutné použít PowerShell k přidání členů synchronizace, kteří patří do různých předplatných.
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Můžu použít synchronizaci dat pro synchronizaci mezi databázemi v SQL Database, které patří do různých cloudů (například veřejný cloud Azure a Azure Čína 21Vianet).
 
-Ano. Můžete synchronizovat mezi databázemi, které patří do různých cloudů. K přidání členů synchronizace, kteří patří do různých předplatných, musíte použít PowerShell.
+Yes. Můžete synchronizovat mezi databázemi, které patří do různých cloudů. K přidání členů synchronizace, kteří patří do různých předplatných, musíte použít PowerShell.
 
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Můžu použít synchronizaci dat k osazení dat z mé provozní databáze do prázdné databáze a pak je synchronizovat
 
-Ano. Vytvořte schéma ručně v nové databázi skriptováním z původní. Po vytvoření schématu přidejte tabulky do skupiny synchronizace a zkopírujte data a udržujte je synchronizovaná.
+Yes. Vytvořte schéma ručně v nové databázi skriptováním z původní. Po vytvoření schématu přidejte tabulky do skupiny synchronizace a zkopírujte data a udržujte je synchronizovaná.
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Mám použít Synchronizace dat SQL k zálohování a obnovení mých databází
 
@@ -229,7 +229,7 @@ Jednu z doporučených postupů zálohování najdete [v tématu kopírování d
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>Je kolace podporovaná v Synchronizace dat SQL
 
-Ano. Synchronizace dat SQL podporuje kolaci v následujících scénářích:
+Yes. Synchronizace dat SQL podporuje kolaci v následujících scénářích:
 
 - Pokud vybrané tabulky schématu synchronizace ještě nejsou ve vašich hub nebo členských databázích, služba při nasazení skupiny synchronizace automaticky vytvoří odpovídající tabulky a sloupce s nastavením řazení vybraným v prázdných cílových databázích.
 - Pokud tabulky, které mají být synchronizovány, již existují v databázi hub i členské databáze, Synchronizace dat SQL vyžaduje, aby sloupce primárního klíče měly stejnou kolaci mezi databázemi hub a Members k úspěšnému nasazení skupiny synchronizace. Pro jiné sloupce než sloupce primárního klíče neexistují žádná omezení kolace.
@@ -240,7 +240,7 @@ Kořenová databáze federace se dá ve službě Synchronizace dat SQL použít 
 
 ### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>Můžu použít synchronizaci dat pro synchronizaci dat exportovaných z Dynamics 365 pomocí funkce Přineste si vlastní databázi (BYOD)?
 
-Funkce Dynamics 365 Přineste si vlastní databázi umožňuje správcům exportovat datové entity z aplikace do své vlastní Microsoft Azure SQL Database. Synchronizaci dat lze použít k synchronizaci těchto dat do jiných databází, pokud jsou exportována data pomocí **přírůstkového nabízeného oznámení** (úplné nabízené oznámení není podporováno) a **možnost aktivační události v cílové databázi** je nastavena na **hodnotu Ano** .
+Funkce Dynamics 365 Přineste si vlastní databázi umožňuje správcům exportovat datové entity z aplikace do své vlastní Microsoft Azure SQL Database. Synchronizaci dat lze použít k synchronizaci těchto dat do jiných databází, pokud jsou exportována data pomocí **přírůstkového nabízeného oznámení** (úplné nabízené oznámení není podporováno) a **možnost aktivační události v cílové databázi** je nastavena na **hodnotu Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 

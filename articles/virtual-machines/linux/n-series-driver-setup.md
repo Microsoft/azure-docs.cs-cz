@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b80a09c82b1e932fb93b4c85ee250773aa7d3c38
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517255"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539749"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux
 
@@ -98,7 +98,9 @@ sudo reboot
   
    sudo reboot
 
-2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106). Check if LIS is required by verifying the results of lspci. If all GPU devices are listed as expected, installing LIS is not required.
+
+Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer required for these versions.
 
    ```bash
    wget https://aka.ms/lis
@@ -150,7 +152,7 @@ Pokud je ovladač nainstalovaný, zobrazí se výstup podobný následujícímu.
 
 ## <a name="rdma-network-connectivity"></a>Připojení k síti RDMA
 
-Připojení k síti RDMA je možné povolit u virtuálních počítačů řady N-Series s podporou RDMA, jako je NC24r nasazených ve stejné skupině dostupnosti nebo v jedné skupině umístění v sadě škálování virtuálního machiine (VM). Síť RDMA podporuje provoz rozhraní MPI (Message Passing Interface) pro aplikace běžící s Intel MPI 5. x nebo novější verzí. Další požadavky jsou následující:
+Připojení k síti RDMA je možné povolit u virtuálních počítačů řady N-Series s podporou RDMA, jako je NC24r nasazených ve stejné skupině dostupnosti nebo do jedné skupiny umístění v sadě škálování virtuálního počítače (VM). Síť RDMA podporuje provoz rozhraní MPI (Message Passing Interface) pro aplikace běžící s Intel MPI 5. x nebo novější verzí. Další požadavky jsou následující:
 
 ### <a name="distributions"></a>Distribuce
 
@@ -264,7 +266,7 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
    sudo yum install hyperv-daemons
    ```
 
-2. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NV2.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` `nouveau.conf` s názvem s následujícím obsahem:
+2. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NV3.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` `nouveau.conf` s názvem s následujícím obsahem:
 
    ```
    blacklist nouveau
@@ -272,7 +274,9 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
    blacklist lbm-nouveau
    ```
  
-3. Restartujte virtuální počítač, znovu se připojte a nainstalujte nejnovější [integrační služby Linux pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+3. Restartujte virtuální počítač, znovu se připojte a nainstalujte nejnovější [integrační služby Linux pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106). Ověřte, zda je aplikace LIS požadována pomocí ověření výsledků lspci. Pokud jsou všechna zařízení GPU uvedená podle očekávání, instalace aplikace LIS se nevyžaduje. 
+
+Přeskočit tento krok používáte CentOS/RHEL 7,8 a novější.
  
    ```bash
    wget https://aka.ms/lis
@@ -373,6 +377,7 @@ Pak vytvořte záznam pro skript pro aktualizaci v nástroji, `/etc/rc.d/rc3.d` 
 
 * Můžete nastavit režim trvalosti pomocí `nvidia-smi` , takže výstup příkazu je rychlejší, když potřebujete zadat dotaz na karty. Chcete-li nastavit režim trvalosti, spusťte příkaz `nvidia-smi -pm 1` . Všimněte si, že pokud se virtuální počítač restartuje, nastavení režimu zmizí. Vždy můžete skriptovat nastavení režimu, které se spustí při spuštění.
 * Pokud jste ovladače NVIDIA CUDA aktualizovali na nejnovější verzi a zjistíte, že připojení RDMA už nefunguje, [přeinstalujte ovladače RDMA pro opětovné](#rdma-network-connectivity) vytvoření tohoto připojení. 
+* Pokud aplikace LIS nepodporuje určitou verzi operačního systému CentOS/RHEL (nebo jádro), je vyvolána chyba "Nepodporovaná verze jádra". Oznamte tuto chybu spolu s operačním systémem a verzemi jádra.
 
 ## <a name="next-steps"></a>Další kroky
 

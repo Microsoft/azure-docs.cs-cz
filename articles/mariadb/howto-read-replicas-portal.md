@@ -1,17 +1,17 @@
 ---
 title: Spravovat repliky čtení-Azure Portal-Azure Database for MariaDB
 description: Tento článek popisuje, jak nastavit a spravovat repliky pro čtení v Azure Database for MariaDB pomocí portálu.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 5faed87995d1c49ab635f39264354a791f729b57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ca6ef3c368a5f578cc90fae3923caa89f3b076a
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742855"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537743"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Jak vytvořit a spravovat repliky pro čtení v Azure Database for MariaDB pomocí Azure Portal
 
@@ -31,11 +31,11 @@ V tomto článku se naučíte, jak vytvořit a spravovat repliky pro čtení ve 
 
 Server repliky pro čtení se dá vytvořit pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte existující server Azure Database for MariaDB, který chcete použít jako hlavní server. Tato akce otevře stránku s **přehledem** .
 
-3. V nabídce v části **Nastavení**vyberte **replikace** .
+3. V nabídce v části **Nastavení** vyberte **replikace** .
 
 4. Vyberte **Přidat repliku**.
 
@@ -67,7 +67,7 @@ Pokud chcete zastavit replikaci mezi zdrojem a serverem repliky ze Azure Portal,
 
 1. V Azure Portal vyberte svůj zdrojový Azure Database for MariaDB Server. 
 
-2. V nabídce v části **Nastavení**vyberte **replikace** .
+2. V nabídce v části **Nastavení** vyberte **replikace** .
 
 3. Vyberte server repliky, pro který chcete zastavit replikaci.
 
@@ -77,7 +77,7 @@ Pokud chcete zastavit replikaci mezi zdrojem a serverem repliky ze Azure Portal,
 
    ![Azure Database for MariaDB – zastavení replikace](./media/howto-read-replica-portal/stop-replication.png)
 
-5. Kliknutím na **OK**potvrďte, že chcete replikaci zastavit.
+5. Kliknutím na **OK** potvrďte, že chcete replikaci zastavit.
 
    ![Azure Database for MariaDB – zastavení replikace potvrzení](./media/howto-read-replica-portal/stop-replication-confirm.png)
 
@@ -87,7 +87,7 @@ K odstranění serveru repliky pro čtení z Azure Portal použijte následujíc
 
 1. V Azure Portal vyberte svůj zdrojový Azure Database for MariaDB Server.
 
-2. V nabídce v části **Nastavení**vyberte **replikace** .
+2. V nabídce v části **Nastavení** vyberte **replikace** .
 
 3. Vyberte server repliky, který chcete odstranit.
 
@@ -110,7 +110,7 @@ Pokud chcete odstranit zdrojový server z Azure Portal, použijte následující
 
 1. V Azure Portal vyberte svůj zdrojový Azure Database for MariaDB Server.
 
-2. V **přehledu**vyberte **Odstranit**.
+2. V **přehledu** vyberte **Odstranit**.
 
    ![Azure Database for MariaDB – odstranění hlavní větve](./media/howto-read-replica-portal/delete-master-overview.png)
 
@@ -122,7 +122,7 @@ Pokud chcete odstranit zdrojový server z Azure Portal, použijte následující
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte Azure Database for MariaDB server repliky, který chcete monitorovat.
 
-2. V části **monitorování** v postranním panelu vyberte **metriky**:
+2. V části **monitorování** v postranním panelu vyberte **metriky** :
 
 3. V rozevíracím seznamu dostupných metrik vyberte **prodlevu replikace v sekundách** .
 

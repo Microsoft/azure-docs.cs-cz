@@ -10,22 +10,18 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
-ms.openlocfilehash: ef573817927cf732da3426d802f8f26e2e9cd4ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7b696ba052b2aca9e14628327c07275845607ad
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398985"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540582"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>Registrace připojení služby partnerského vztahu pomocí Azure CLI
 
 Azure peering Service je síťová služba, která vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Microsoft 365, Dynamics 365, služby software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu. V tomto článku se dozvíte, jak zaregistrovat připojení služby partnerského vztahu pomocí Azure CLI.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) hned teď.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Spuštěním příkazu [az version](/cli/azure/reference-index#az_version) zjistěte verzi a závislé knihovny, které jsou nainstalované. Pokud chcete upgradovat na nejnovější verzi, spusťte [az upgrade](/cli/azure/reference-index#az_upgrade).
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -41,19 +37,11 @@ Můžete pracovat s partnerem poskytovatele internetových služeb nebo s intern
 
 Ujistěte se, že jsou poskytovatelé připojení partneři s Microsoftem.
 
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Přihlaste se ke svému účtu Azure a vyberte své předplatné.
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-Pokud chcete zahájit konfiguraci, přihlaste se ke svému účtu Azure. Použijete-li možnost **vyzkoušet** Cloud Shell, jste přihlášeni automaticky. Použijte následující příklady, které vám pomůžou se připojit.
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-```azurecli-interactive
-az login
-```
-
-Zkontrolujte předplatná pro příslušný účet.
-
-```azurecli-interactive
-az account list
-```
+### <a name="1-select-your-subscription"></a>1. Vyberte své předplatné.
 
 Vyberte předplatné, pro které chcete zaregistrovat připojení ke službě peering Service.
 

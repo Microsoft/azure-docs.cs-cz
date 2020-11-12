@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cd872d66088e165bfc8356ab6d96a0a6135a0e0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68946325"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538304"
 ---
 # <a name="detect-domain-specific-content"></a>Rozpoznávání obsahu specifického doménu
 
@@ -26,7 +26,7 @@ Existují dva způsoby, jak použít modely specifické pro doménu: samy o sebe
 
 ### <a name="scoped-analysis"></a>Analýza s vymezeným oborem
 
-Můžete analyzovat image jenom pomocí zvoleného modelu specifického pro doménu voláním [modelů/rozhraní API \<model\> /analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) .
+Můžete analyzovat image jenom pomocí zvoleného modelu specifického pro doménu voláním [modelů/rozhraní API \<model\> /analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) .
 
 Následuje ukázková odpověď JSON, kterou vrátí rozhraní API **modelů/celebrit/analyzovat** pro danou Image:
 
@@ -57,7 +57,7 @@ Následuje ukázková odpověď JSON, kterou vrátí rozhraní API **modelů/cel
 
 ### <a name="enhanced-categorization-analysis"></a>Rozšířená analýza kategorizace
 
-Můžete také použít modely specifické pro doménu k doplnění obecné analýzy obrázků. Provedete to jako součást [vysoké úrovně kategorizace](concept-categorizing-images.md) zadáním modelů specifických pro doménu v parametru *Details* pro volání metody [analyzovat](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API.
+Můžete také použít modely specifické pro doménu k doplnění obecné analýzy obrázků. Provedete to jako součást [vysoké úrovně kategorizace](concept-categorizing-images.md) zadáním modelů specifických pro doménu v parametru *Details* pro volání metody [analyzovat](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) rozhraní API.
 
 V tomto případě se jako první volá klasifikátor taxonomie 86-Category. Pokud má kterákoli ze zjištěných kategorií odpovídající modelem specifického pro doménu, projde se tento model i tato image a přidají se výsledky.
 
@@ -105,7 +105,7 @@ V současné době Počítačové zpracování obrazu podporuje následující m
 | celebrit | Rozpoznávání celebrit, podporované pro obrázky klasifikované v `people_` kategorii |
 | památek | Rozpoznávání bodů podporované pro obrázky klasifikované v `outdoor_` `building_` kategoriích nebo |
 
-Volání [modelů](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) rozhraní API vrátí tyto informace spolu s kategoriemi, pro které lze použít každý model:
+Volání [modelů](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20e) rozhraní API vrátí tyto informace spolu s kategoriemi, pro které lze použít každý model:
 
 ```json
 {

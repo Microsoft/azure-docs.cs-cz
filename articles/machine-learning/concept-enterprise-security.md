@@ -10,18 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 2234b1507e6e0fdb0b668fc18a7c8533e3ea7cc1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: eaaedc4404419e6028250a994077dd3df20b83d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441779"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539647"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Podnikové zabezpečení a zásady správného řízení pro Azure Machine Learning
 
 V tomto článku se dozvíte o funkcích zabezpečení dostupných pro Azure Machine Learning.
 
-Když použijete cloudovou službu, osvědčeným postupem je omezit přístup jenom na uživatele, kteří ho potřebují. Začněte tím, že rozumíte modelu ověřování a autorizace používaném službou. Můžete taky chtít omezit přístup k síti nebo bezpečně připojit prostředky v místní síti ke cloudu. Šifrování dat je také důležité v klidovém režimu i při přesunu dat mezi službami. Můžete také vytvořit zásady pro vymáhání určitých konfigurací nebo protokolování při vytváření nevyhovujících konfigurací. Nakonec musíte být schopni sledovat službu a vystavit protokol auditu pro všechny aktivity.
+Když použijete cloudovou službu, osvědčeným postupem je omezit přístup jenom na uživatele, kteří ho potřebují. Začněte tím, že rozumíte modelu ověřování a autorizace používaném službou. Můžete taky chtít omezit přístup k síti nebo bezpečně připojit prostředky v místní síti ke cloudu. Šifrování dat je také důležité v klidovém režimu i při přesunu dat mezi službami. Můžete také vytvořit zásady pro vykonání určitých konfigurací nebo protokolování při vytváření nevyhovujících konfigurací. Nakonec musíte být schopni sledovat službu a vystavit protokol auditu pro všechny aktivity.
 
 > [!NOTE]
 > Informace v tomto článku jsou v sadě Azure Machine Learning Python SDK verze 1.0.83.1 nebo vyšší.
@@ -88,7 +88,7 @@ Každý pracovní prostor má také přidruženou [spravovanou identitu](../acti
 
 | Prostředek | Oprávnění |
 | ----- | ----- |
-| Workspace | Přispěvatel |
+| Pracovní prostor | Přispěvatel |
 | Účet úložiště | Přispěvatel dat v objektech blob služby Storage |
 | Trezor klíčů | Přístup ke všem klíčům, tajným klíčům, certifikátům |
 | Azure Container Registry | Přispěvatel |
@@ -123,10 +123,11 @@ Můžete také chtít šifrovat [diagnostické informace zaznamenané z nasazen�
 
 K dispozici je několik scénářů monitorování, které se Azure Machine Learning v závislosti na roli a co se sleduje.
 
-| Role | Monitorování, které se má použít |
-| ---- | ----- |
-| Správce, DevOps, MLOps | [Azure monitor metriky](#azure-monitor), [Protokol aktivit](#activity-log), [Kontrola ohrožení zabezpečení](#vulnerability-scanning) |
-| Data – vědecký a MLOps | [Monitorování spuštění](#monitor-runs) |
+| Role | Monitorování, které se má použít | Popis |
+| ---- | ----- | ----- |
+| Správce, DevOps, MLOps | [Azure monitor metriky](#azure-monitor), [Protokol aktivit](#activity-log), [Kontrola ohrožení zabezpečení](#vulnerability-scanning) | Informace o úrovni služby |
+| Data – vědecký a MLOps | [Monitorování spuštění](#monitor-runs) | Informace zaznamenané během školicích běhů |
+| MLOps | [Shromažďovat data modelu](how-to-enable-data-collection.md), [monitorovat pomocí Application Insights](how-to-enable-app-insights.md) | Informace zaznamenávané modely nasazenými jako webové služby nebo moduly IoT Edge|
 
 ### <a name="monitor-runs"></a>Monitorování spuštění
 

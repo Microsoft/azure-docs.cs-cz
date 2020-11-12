@@ -5,19 +5,19 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 7/29/2020
+ms.date: 11/11/2020
 ms.author: tisande
-ms.openlocfilehash: 38d37d03c99bd3a39b00276da110ea0ef6bb962e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 35f212ea246e03be02fa082ef1b55dcb7cae1575
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332368"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538644"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL překlad
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Zprostředkovatel dotazů Azure Cosmos DB provádí nejlepší mapování úsilí z dotazu LINQ na dotaz typu Cosmos DB SQL. Pokud chcete získat dotaz SQL, který je přeložen z LINQ, použijte `ToString()` metodu pro vygenerovaný `IQueryable` objekt. Následující popis předpokládá základní znalost pomocí [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries).
+Zprostředkovatel dotazů Azure Cosmos DB provádí nejlepší mapování úsilí z dotazu LINQ na dotaz typu Cosmos DB SQL. Pokud chcete získat dotaz SQL, který je přeložen z LINQ, použijte `ToString()` metodu pro vygenerovaný `IQueryable` objekt. Následující popis předpokládá základní znalost pomocí [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries). Kromě LINQ Azure Cosmos DB podporuje také [Entity Framework Core](/ef/core/providers/cosmos/?tabs=dotnet-core-cli) , která fungují s rozhraním SQL API.
 
 Typ zprostředkovatele dotazu systém podporuje pouze primitivní typy JSON: číselná, logická hodnota, řetězec a hodnota null.
 

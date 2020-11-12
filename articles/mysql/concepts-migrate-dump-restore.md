@@ -1,17 +1,17 @@
 ---
 title: Migrace pomocí výpisu a obnovení Azure Database for MySQL
 description: Tento článek popisuje dva běžné způsoby zálohování a obnovení databází v Azure Database for MySQL pomocí nástrojů, jako jsou mysqldump, MySQL Workbench a PHPMyAdmin.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 336021792b7e5340e35a0c59e0f113d4dad9307d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f21587fe6a48d042ed98c126beb2a7dcaa39b7d8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128959"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537913"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrace databáze MySQL do služby Azure Database for MySQL pomocí výpisu a obnovení.
 
@@ -39,7 +39,7 @@ Nejběžnější případy použití:
 
 - **Přesun od jiného poskytovatele spravované služby** : Většina poskytovatelů spravované služby nemusí poskytnout přístup k fyzickému souboru úložiště z důvodu zabezpečení, takže je jedinou možností, jak provést migraci, je logické zálohování a obnovení.
 - **Migrace z místního prostředí nebo virtuálního počítače** – Azure Database for MySQL nepodporuje obnovení fyzických záloh, což umožňuje jako jediný přístup logické zálohování a obnovení.
-- **Přesunutí úložiště záloh z místně redundantního na geograficky redundantní úložiště** – Azure Database for MySQL umožňuje, aby se konfigurace místně redundantního úložiště nebo geograficky redundantního úložiště pro zálohování mohla povolit jenom během vytváření serveru. Po zřízení serveru nemůžete změnit možnost redundance úložiště zálohování. Aby bylo možné přesunout úložiště záloh z místně redundantního úložiště do geograficky redundantního úložiště, jedinou možností je vypsat a obnovit. 
+- **Přesunutí úložiště záloh z místně redundantního na geograficky redundantní úložiště** – Azure Database for MySQL umožňuje, aby se konfigurace místně redundantního úložiště nebo geograficky redundantního úložiště pro zálohování mohla povolit jenom během vytváření serveru. Po zřízení serveru není možné změnit možnost redundance úložiště zálohování. Aby bylo možné přesunout úložiště záloh z místně redundantního úložiště do geograficky redundantního úložiště, jedinou možností je vypsat a obnovit. 
 -  **Migrace z alternativních úložných motorů do InnoDB** -Azure Database for MySQL podporuje jenom InnoDB modul úložiště, a proto nepodporuje alternativní úložné moduly. Pokud jsou vaše tabulky nakonfigurované s jinými úložnými moduly, převeďte je do formátu modulu InnoDB před migrací na Azure Database for MySQL.
 
     Pokud máte například WordPress nebo WebApp pomocí tabulek MyISAM, nejprve tyto tabulky převeďte tak, že před obnovením do Azure Database for MySQL převedete migraci do formátu InnoDB. Pomocí klauzule `ENGINE=InnoDB` Nastavte modul použitý při vytváření nové tabulky a potom přeneste data do kompatibilní tabulky před obnovením.
@@ -73,7 +73,7 @@ Pokud se chcete připojit, vyhledejte informace o připojení v **přehledu** Az
 
 Přidejte informace o připojení do aplikace MySQL Workbench.
 
-:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="Vyhledat informace o připojení v Azure Portal":::
+:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="Připojovací řetězec MySQL Workbench":::
 
 ## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>Příprava cílového serveru Azure Database for MySQL pro rychlé načítání dat
 Chcete-li připravit cílový Azure Database for MySQL server pro rychlejší načítání dat, je třeba změnit následující parametry serveru a konfiguraci.

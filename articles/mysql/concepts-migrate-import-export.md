@@ -1,17 +1,17 @@
 ---
 title: Import a export – Azure Database for MySQL
 description: Tento článek vysvětluje běžné způsoby importu a exportu databází v Azure Database for MySQL pomocí nástrojů, jako je MySQL Workbench.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 1b4959cbf082a589c90034f48d597907c9b7e6cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: af9f0f65e01a786d478fac0adde6174b8f03b2fd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128925"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537896"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrace databáze MySQL pomocí importu a exportu
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
@@ -33,7 +33,7 @@ Pokud se chcete připojit, vyhledejte informace o připojení v **přehledu** Az
 
 Přidejte informace o připojení do aplikace MySQL Workbench.
 
-:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="Vyhledat informace o připojení v Azure Portal":::
+:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="Připojovací řetězec MySQL Workbench":::
 
 ## <a name="determine-when-to-use-import-and-export-techniques"></a>Určení, kdy použít techniky importu a exportu
 
@@ -47,7 +47,7 @@ Pomocí nástrojů MySQL můžete importovat a exportovat databáze do Azure MyS
 - Když migrujete data z jiných zdrojů dat než databáze MySQL, vytvoříte ploché soubory a naimportujete je pomocí [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html).
 
 > [!Important]
-> Jeden server i flexibilní Server podporují **jenom modul úložiště InnoDB** . Zajistěte, aby všechny tabulky v databázi používaly modul úložiště InnoDB při načítání dat do Azure Database for MySQL.
+> Jeden server i flexibilní Server podporují **jenom modul úložiště InnoDB**. Zajistěte, aby všechny tabulky v databázi používaly modul úložiště InnoDB při načítání dat do Azure Database for MySQL.
 > Pokud zdrojová databáze používá jiný modul úložiště, převeďte prosím na modul InnoDB před migrací databáze. Pokud máte například WordPress nebo webovou aplikaci, která používá modul MyISAM, nejprve převeďte tabulky migrací dat do tabulek InnoDB. Pomocí klauzule `ENGINE=INNODB` Nastavte modul pro vytvoření tabulky a potom přeneste data do kompatibilní tabulky před migrací.
 
    ```sql
@@ -70,33 +70,33 @@ Existují dva způsoby, jak exportovat a importovat data v aplikaci MySQL Workbe
 > - V případě serveru MySQL Flexible můžete použít možnost "uživatelské jméno", pokud se username@servername k připojení použijete, připojení se nezdaří.
 
 ### <a name="table-data-export-and-import-wizards-from-the-object-browsers-context-menu"></a>Průvodce exportem a importem dat v tabulce z kontextové nabídky prohlížeče objektů
-:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="Vyhledat informace o připojení v Azure Portal":::
+:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="Průvodci MySQL Workbench v místní nabídce prohlížeče objektů":::
 
 Průvodci pro data tabulky podporují operace importu a exportu pomocí souborů CSV a JSON. Zahrnují několik možností konfigurace, jako jsou oddělovače, výběr sloupců a kódování výběru. Jednotlivé průvodce můžete provádět na místních nebo vzdáleně připojených serverech MySQL. Importovaná akce zahrnuje mapování typu tabulka, sloupec a typ.
 
-K těmto průvodcům můžete přistupovat z kontextové nabídky prohlížeče objektů kliknutím pravým tlačítkem myši na tabulku. Pak zvolte buď **Průvodce exportem dat tabulky** nebo **Průvodce importem dat tabulky** .
+K těmto průvodcům můžete přistupovat z kontextové nabídky prohlížeče objektů kliknutím pravým tlačítkem myši na tabulku. Pak zvolte buď **Průvodce exportem dat tabulky** nebo **Průvodce importem dat tabulky**.
 
 #### <a name="table-data-export-wizard"></a>Průvodce exportem dat tabulky
 Následující příklad exportuje tabulku do souboru CSV:
 1. Klikněte pravým tlačítkem na tabulku databáze, která se má exportovat.
-2. Vyberte **Průvodce exportem dat tabulky** . Vyberte sloupce, které se mají exportovat, posun řádku (pokud existuje) a počet (pokud existuje).
-3. Na stránce **Vybrat data pro export** klikněte na **Další** . Vyberte typ souboru cesta, CSV nebo JSON. Vyberte také oddělovač řádků, metodu ohraničujících řetězců a oddělovač polí.
-4. Na stránce **Vybrat umístění výstupního souboru** klikněte na **Další** .
-5. Na stránce **exportovat data** klikněte na tlačítko **Další** .
+2. Vyberte **Průvodce exportem dat tabulky**. Vyberte sloupce, které se mají exportovat, posun řádku (pokud existuje) a počet (pokud existuje).
+3. Na stránce **Vybrat data pro export** klikněte na **Další**. Vyberte typ souboru cesta, CSV nebo JSON. Vyberte také oddělovač řádků, metodu ohraničujících řetězců a oddělovač polí.
+4. Na stránce **Vybrat umístění výstupního souboru** klikněte na **Další**.
+5. Na stránce **exportovat data** klikněte na tlačítko **Další**.
 
 #### <a name="table-data-import-wizard"></a>Průvodce importem dat tabulky
 Následující příklad importuje tabulku ze souboru CSV:
 1. Klikněte pravým tlačítkem na tabulku databáze, která se má importovat.
-2. Vyhledejte a vyberte soubor CSV, který chcete naimportovat, a potom klikněte na **Další** .
+2. Vyhledejte a vyberte soubor CSV, který chcete naimportovat, a potom klikněte na **Další**.
 3. Vyberte cílovou tabulku (novou nebo existující) a zaškrtněte nebo zrušte zaškrtnutí políčka **zkracování tabulky před importem** . Klikněte na **Next** (Další).
-4. Vyberte možnost kódování a sloupce, které chcete importovat, a potom klikněte na tlačítko **Další** .
-5. Na stránce **importovat data** klikněte na **Další** . Průvodce importuje data odpovídajícím způsobem.
+4. Vyberte možnost kódování a sloupce, které chcete importovat, a potom klikněte na tlačítko **Další**.
+5. Na stránce **importovat data** klikněte na **Další**. Průvodce importuje data odpovídajícím způsobem.
 
 ### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>Průvodce exportem a importem dat SQL z podokna navigátor
-Pomocí Průvodce můžete exportovat nebo importovat SQL generovaný z aplikace MySQL Workbench nebo vygenerovanou z příkazu mysqldump. K těmto průvodcům se dostanete z podokna **navigátor** nebo výběrem možnosti **Server** z hlavní nabídky. Pak vyberte **exportovat data** nebo **importovat data** .
+Pomocí Průvodce můžete exportovat nebo importovat SQL generovaný z aplikace MySQL Workbench nebo vygenerovanou z příkazu mysqldump. K těmto průvodcům se dostanete z podokna **navigátor** nebo výběrem možnosti **Server** z hlavní nabídky. Pak vyberte **exportovat data** nebo **importovat data**.
 
 #### <a name="data-export"></a>Export dat
-:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="Vyhledat informace o připojení v Azure Portal":::
+:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="Export dat MySQL Workbench pomocí podokna navigátor":::
 
 Pomocí karty **exportu dat** můžete exportovat data MySQL.
 1. Vyberte každé schéma, které chcete exportovat, volitelně zvolte konkrétní objekty nebo tabulky schématu z každého schématu a vygenerujte export. Mezi možnosti konfigurace patří export do složky projektu nebo samostatného souboru SQL, výpisu uložených rutin a událostí nebo přeskočení dat tabulky.
@@ -109,7 +109,7 @@ Pomocí karty **exportu dat** můžete exportovat data MySQL.
 
 
 #### <a name="data-import"></a>Import dat
-:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="Vyhledat informace o připojení v Azure Portal":::
+:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="Import dat aplikace MySQL Workbench pomocí navigátoru pro správu":::
 
 Kartu **Import dat** můžete použít k importu nebo obnovení exportovaných dat z operace exportu dat nebo z příkazu mysqldump.
 1. Vyberte složku projektu nebo soubor SQL, který jste samostatně obsahovali, vyberte schéma, do kterého chcete importovat, nebo vyberte možnost **nové** a definujte nové schéma.
