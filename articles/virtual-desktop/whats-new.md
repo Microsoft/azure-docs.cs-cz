@@ -3,17 +3,17 @@ title: Co je nového ve virtuálním počítači s Windows? – Azure
 description: Nové funkce a aktualizace produktů pro virtuální počítač s Windows
 author: Heidilohr
 ms.topic: overview
-ms.date: 10/01/2020
+ms.date: 11/11/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 0191d6ad74a9b6349f5d1724f9483607dce2d926
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c82312b40955b392243bf616ee991c0108a13fb5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630010"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537386"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -25,6 +25,48 @@ Virtuální počítače s Windows se pravidelně aktualizují. V tomto článku 
 - Opravy chyb
 
 Tento článek se aktualizuje měsíčně. Nezapomeňte se podívat, jak často se budou zobrazovat nové aktualizace.
+
+## <a name="october-2020"></a>Říjen 2020
+
+Tady je postup, který se změnil v říjnu 2020:
+
+### <a name="improved-performance"></a>Vyšší výkon
+
+- Vyoptimalizovali jsme výkon snížením latence připojení v následujících geografických oblastech Azure:
+    - Švýcarsko
+    - Kanada
+
+Teď můžete využít [prostředí Estimator Experience](https://azure.microsoft.com/services/virtual-desktop/assessment/) k odhadu kvality uživatelského prostředí v těchto oblastech.
+
+### <a name="azure-government-cloud-availability"></a>Azure Government dostupnosti cloudu
+
+Azure Government Cloud je teď všeobecně dostupný. Další informace najdete v [našem blogovém příspěvku](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-generally-available-in-the-azure-government-cloud/).
+
+### <a name="windows-virtual-desktop-azure-portal-updates"></a>Azure Portal aktualizace virtuálních počítačů s Windows
+
+Provedli jsme některé aktualizace Azure Portal virtuálních počítačů s Windows:
+
+- Opravili jsme chybu resourceID, která uživatelům zabránila v otevření karty "relace".
+- Zjednodušené uživatelské rozhraní na kartě hostitelé relace.
+- V části vlastnosti protokolu RDP se opravila nastavení výchozí hodnoty, použitelnost a obnovení výchozích hodnot.
+- Funkce Remove a DELETE, které jsou konzistentní na všech kartách.
+- Portál nyní ověřuje názvy aplikací v pracovním postupu přidat aplikaci.
+- Opravili jsme problém, kdy se ve sloupcích nezarovnala data exportu hostitele relace.
+- Opravili jsme problém, kdy portál nemohl načíst uživatelské relace.
+- Opravili jsme problém při načtení hostitele relace, ke kterému došlo při vytvoření virtuálního počítače v jiné skupině prostředků.
+- Karta hostitel relace se aktualizovala tak, aby vypisovat aktivní i odpojené relace.
+- Karta aplikace má teď stránky.
+- Opravili jsme problém, kdy se text "vyžaduje příkazový řádek" na kartě "seznam aplikací" nezobrazuje správně.
+- Opravili jsme problém, když portál nedokázal nasazovat fondy hostitelů nebo virtuální počítače při použití německé jazykové verze Galerie sdílených imagí.
+
+### <a name="client-updates-for-october-2020"></a>Aktualizace klienta pro říjen 2020
+
+Vydali jsme nové verze klientů. Další informace najdete v těchto článcích:
+
+- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
+- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
+
+Další informace o ostatních klientech najdete v tématu [aktualizace klienta](#client-updates).
 
 ## <a name="september-2020"></a>Září 2020
 
@@ -68,7 +110,7 @@ Tady je postup, který se změnil v srpnu 2020:
 
 - Azure Advisor je teď součástí virtuálního klienta Windows. Při přístupu k virtuálnímu klientovi Windows prostřednictvím Azure Portal můžete zobrazit doporučení pro optimalizaci prostředí virtuálních počítačů s Windows. Další informace najdete na [Azure Advisor](azure-advisor.md).
 
-- Azure CLI teď podporuje virtuální počítače s Windows ( `az desktopvirtualization` ), které vám pomůžou automatizovat nasazení virtuálních počítačů s Windows. Seznam příkazů rozšíření najdete v [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest) .
+- Azure CLI teď podporuje virtuální počítače s Windows ( `az desktopvirtualization` ), které vám pomůžou automatizovat nasazení virtuálních počítačů s Windows. Seznam příkazů rozšíření najdete v [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest&preserve-view=true) .
 
 - Aktualizovali jsme naše šablony nasazení tak, aby byly plně kompatibilní s rozhraními Azure Resource Manager virtuálních počítačů s Windows. Šablony můžete najít na [GitHubu](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates).
 
@@ -88,7 +130,7 @@ Další informace o nových funkcích najdete v [tomto blogovém příspěvku](h
 
 Nejnovější verze nástroje pro automatické škálování, který je ve verzi Preview, je teď všeobecně dostupná. Tento nástroj používá účet Azure Automation a aplikaci logiky Azure k automatickému vypnutí a restartování virtuálních počítačů hostitele relace v rámci fondu hostitelů, což snižuje náklady na infrastrukturu. Další informace najdete v informacích o [škálování hostitelů relací pomocí Azure Automation](set-up-scaling-script.md).
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Pomocí Azure Portal ve virtuální ploše Windows teď můžete provádět následující akce: 
 
@@ -97,7 +139,7 @@ Pomocí Azure Portal ve virtuální ploše Windows teď můžete provádět nás
 
 ### <a name="diagnostics"></a>Diagnostika
 
-Vydali jsme některé nové předem připravené dotazy pro Log Analytics pracovní prostor. Pokud chcete získat přístup k dotazům, přejděte na **protokoly** a v části **kategorie**vyberte **virtuální klient Windows**. Další informace najdete v [části použití Log Analytics pro diagnostické funkce](diagnostics-log-analytics.md).
+Vydali jsme některé nové předem připravené dotazy pro Log Analytics pracovní prostor. Pokud chcete získat přístup k dotazům, přejděte na **protokoly** a v části **kategorie** vyberte **virtuální klient Windows**. Další informace najdete v [části použití Log Analytics pro diagnostické funkce](diagnostics-log-analytics.md).
 
 ### <a name="update-for-remote-desktop-client-for-android"></a>Aktualizace pro klienta vzdálené plochy pro Android
 
@@ -140,7 +182,7 @@ Do Azure PowerShell AZ Module této aktualizace jsme přidali nové rutiny AzWvd
 
 Pokud chcete modul nainstalovat, postupujte podle pokynů v části [nastavení modulu PowerShell pro virtuální počítač s Windows](powershell-module.md).
 
-Seznam dostupných příkazů můžete zobrazit také v [Referenční příručce k AzWvd prostředí PowerShell](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization).
+Seznam dostupných příkazů můžete zobrazit také v [Referenční příručce k AzWvd prostředí PowerShell](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization&preserve-view=true).
 
 Další informace o nových funkcích najdete v [našem blogovém příspěvku](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245).
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: ae3d35bea1c75c797447100316ceab9a27fcbe48
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f2f0177b5fe8bb97773d297319f6c9196d8178d2
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424043"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536230"
 ---
 # <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager"></a>Virtuální počítač nereaguje při čekání na správce místní relace
 
@@ -35,7 +35,7 @@ Může existovat několik důvodů, proč virtuální počítač zablokuje ček�
 
 ## <a name="solution"></a>Řešení
 
-V některých případech stačí počkat dostatečně dlouho, než se proces dokončí, aby se váš problém vyřešil. Pokud se váš virtuální počítač na obrazovce čekání po celou hodinu nereaguje, měli byste shromáždit výpis paměti a pak kontaktovat podporu Microsoftu.
+V některých případech stačí počkat dostatečně dlouho, než se proces dokončí, aby se váš problém vyřešil. Pokud váš virtuální počítač neodpovídá a zůstane na obrazovce čekání po celou hodinu, měli byste shromáždit výpis paměti a pak kontaktovat podporu Microsoftu.
 
 ### <a name="collect-the-memory-dump-file"></a>Shromáždit soubor výpisu paměti
 

@@ -10,19 +10,19 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 9b55c4873c4d7ee430e7d9ce84d2782a37e522ae
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: dc5dcf20b8c4fb1dae971b9bda4ef1a7552ce9d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442136"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534734"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 
 
 V tomto článku se dozvíte, jak vytvořit pracovní prostor Azure Machine Learning pomocí Azure CLI. Rozhraní příkazového řádku Azure nabízí příkazy pro správu prostředků Azure. Rozšíření Machine Learning pro rozhraní příkazového řádku poskytuje příkazy pro práci s Azure Machine Learning prostředky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -156,9 +156,12 @@ Další informace o používání privátního koncového bodu a virtuální sí
 
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Klíčový prostor spravovaný zákazníkem a vysokým obchodním dopadem
 
-Ve výchozím nastavení se metriky a metadata pro pracovní prostor ukládají do Azure Cosmos DB instance, kterou Microsoft udržuje. Tato data se šifrují pomocí klíčů spravovaných Microsoftem. 
+Ve výchozím nastavení se metadata pro pracovní prostor ukládají do Azure Cosmos DB instance, kterou společnost Microsoft udržuje. Tato data se šifrují pomocí klíčů spravovaných Microsoftem.
 
-Místo používání klíče spravovaného společností Microsoft můžete použít vlastní klíč. Tím se vytvoří instance Azure Cosmos DB, která ukládá metriky a metadata v předplatném Azure. Pomocí `--cmk-keyvault` parametru zadejte Azure Key Vault, který obsahuje klíč, a `--resource-cmk-uri` Zadejte adresu URL klíče v trezoru.
+> [!NOTE]
+> Azure Cosmos DB se __nepoužívá k__ ukládání informací, jako je například výkon modelu, informace zaznamenané experimenty nebo informace zaznamenané z nasazení modelu. Další informace o monitorování těchto položek najdete v části [monitorování a protokolování](concept-azure-machine-learning-architecture.md) v článku architektura a koncepty.
+
+Místo používání klíče spravovaného společností Microsoft můžete použít vlastní klíč. Tím se vytvoří instance Azure Cosmos DB, která ukládá metadata v předplatném Azure. Pomocí `--cmk-keyvault` parametru zadejte Azure Key Vault, který obsahuje klíč, a `--resource-cmk-uri` Zadejte adresu URL klíče v trezoru.
 
 Před použitím `--cmk-keyvault` parametrů a je `--resource-cmk-uri` třeba nejprve provést následující akce:
 
@@ -393,7 +396,7 @@ az group delete -g <resource-group-name>
 
 Další informace najdete v tématu [AZ ml Workspace Delete](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) Document.
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

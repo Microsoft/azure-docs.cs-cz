@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 0d893eb2bf7a57e173d7acb8f15104522edbc3bf
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: db7d9e99de8a4ee67e49f8b7568700fc07b1e2fd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408203"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536504"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -138,7 +138,7 @@ V konzoli Application Diagnostics lze zobrazit události seskupené následují
 -   Chyby aplikace (Zobrazí se události související s výjimkami.)
 -   Výkon (Zobrazí se události související s výkonem.)
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 V části najdete další informace týkající se klíčových funkcí zabezpečení Azure Storage a souhrnné informace o těchto funkcích.
 
 ### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
@@ -221,7 +221,7 @@ Pokud chcete odesílat síťový provoz mezi Virtual Network Azure a vaší mís
 ### <a name="express-route"></a>Express Route
 Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) je vyhrazené propojení WAN, které umožňuje rozšiřování místních sítí do cloudu Microsoftu přes vyhrazené soukromé připojení, které usnadňuje poskytovatel připojení.
 
-![Express Route](./media/overview/azure-security-fig1.png)
+![Express Route](./media/overview/azure-security-figure-1.png)
 
 Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure, Microsoft 365 a CRM Online. Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění.
 
@@ -231,7 +231,7 @@ Připojení ExpressRoute nevyužívají veřejný Internet, a proto je lze pova�
 ### <a name="application-gateway"></a>Application Gateway
 Microsoft [Azure Application Gateway](../../application-gateway/overview.md) poskytuje jako službu [kontroler doručování aplikací (ADC)](https://en.wikipedia.org/wiki/Application_delivery_controller) a nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaši aplikaci.
 
-![Application Gateway](./media/overview/azure-security-fig2.png)
+![Application Gateway](./media/overview/azure-security-figure-2.png)
 
 Umožňuje optimalizovat produktivitu webové farmy tím, že se v Application Gateway ukončí ukončení protokolu TLS náročné na procesor (označované také jako "přesměrování zpracování TLS" nebo "přemostění TLS"). Poskytuje taky další možnosti směrování vrstvy 7, jako je kruhové dotazování příchozích přenosů, spřažení relací na základě souborů cookie, směrování založené na cestách URL a možnost hostování několika webů za jedním Application Gateway. Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7.
 
@@ -242,7 +242,7 @@ Aplikace poskytuje mnoho funkcí kontroleru doručování aplikací (ADC), včet
 ### <a name="web-application-firewall"></a>Firewall webových aplikací
 Firewall webových aplikací je funkce služby [Azure Application Gateway](../../application-gateway/overview.md) , která poskytuje ochranu webových aplikací, které používají Aplikační bránu pro standardní funkce řízení doručování aplikací (ADC). Firewall webových aplikací chrání webové aplikace před většinou z 10 nejčastějších webových hrozeb podle OWASP.
 
-![Firewall webových aplikací](./media/overview/azure-security-fig1.png)
+![Firewall webových aplikací](./media/overview/azure-security-figure-3.png)
 
 -   Ochrana před útoky prostřednictvím injektáže SQL.
 
@@ -263,7 +263,7 @@ Microsoft [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview
 
 Traffic Manager poskytuje řadu metod směrování provozu, které vyhovují různým potřebám aplikací, [monitorování](../../traffic-manager/traffic-manager-monitoring.md)stavu koncových bodů a automatickému převzetí služeb při selhání. Služba Traffic Manager je odolná vůči selhání, a to i selhání celé oblasti Azure.
 
-### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
+### <a name="azure-load-balancer"></a>Azure Load Balancer
 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) zajišťuje vysokou dostupnost a výkon sítě pro vaše aplikace. Jedná se o nástroj pro vyrovnávání zatížení vrstvy 4 (TCP, UDP), který distribuuje příchozí provoz mezi zdravými instancemi služeb definovaných v sadě s vyrovnáváním zatížení. Azure Load Balancer lze nakonfigurovat na:
 
 -   Vyrovnávání zatížení příchozího internetového provozu do virtuálních počítačů. Tato konfigurace se označuje jako [veřejné vyrovnávání zatížení](../../load-balancer/components.md#frontend-ip-configurations).
@@ -288,7 +288,7 @@ Můžete povolit následující kategorie diagnostického protokolu pro skupin z
 ### <a name="security-center"></a>Security Center
 [Azure Security Center](../../security-center/security-center-introduction.md) průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří [doporučení](../../security-center/security-center-recommendations.md) , která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
 
-## <a name="compute"></a>Výpočetní prostředky
+## <a name="compute"></a>Compute
 V této části najdete další informace týkající se klíčových funkcí v této oblasti a souhrnné informace o těchto funkcích.
 
 ### <a name="antimalware--antivirus"></a>Antimalwarový & Antivirus

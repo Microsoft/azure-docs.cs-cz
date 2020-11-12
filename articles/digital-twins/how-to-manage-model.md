@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b31e3d44cc66e97506b29b81cef5b8d981d05e39
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: ca56c285baff9982ff465b0d4115d15eadedb8c9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279412"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534751"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -23,6 +23,10 @@ Mezi operace správy patří nahrávání, ověřování, načítání a odstra�
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
+## <a name="ways-to-manage-models"></a>Způsoby správy modelů
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
 ## <a name="create-models"></a>Vytváření modelů
 
@@ -73,17 +77,7 @@ V rámci této metody můžete přejít na, abyste definovali modely pro nemocni
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="manage-models-with-apis"></a>Správa modelů pomocí rozhraní API
-
-V následujících částech se dozvíte, jak provádět různé operace správy modelů pomocí [rozhraní API a sad SDK pro digitální vlákna Azure](how-to-use-apis-sdks.md).
-
-> [!NOTE]
-> Níže uvedené příklady nezahrnují zpracování chyb pro zkrácení. V rámci vašich projektů se však důrazně doporučuje zabalit volání služby v blocích try/catch.
-
-> [!TIP] 
-> Pamatujte, že všechny metody sady SDK přicházejí v synchronních a asynchronních verzích. Pro volání stránkování vrátí asynchronní metody `AsyncPageable<T>` při návratu synchronních verzí `Pageable<T>` .
-
-### <a name="upload-models"></a>Nahrávání modelů
+## <a name="upload-models"></a>Nahrávání modelů
 
 Po vytvoření modelů je můžete nahrát do instance digitálních vláken Azure.
 
@@ -117,7 +111,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Příklad:
+Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Například:
 
 ```json
 [
@@ -136,7 +130,7 @@ Soubory modelu mohou obsahovat více než jeden model. V takovém případě mus
  
 Při nahrávání se služba ověřuje pomocí souborů modelu.
 
-### <a name="retrieve-models"></a>Načíst modely
+## <a name="retrieve-models"></a>Načíst modely
 
 Můžete vypsat a načíst modely uložené ve vaší instanci digitálních vláken Azure. 
 
@@ -166,13 +160,13 @@ Rozhraní API volá pro načtení modelů všechny návratové `DigitalTwinsMode
 
 Modely se nemusí nutně vracet přesně do formuláře dokumentu, ve kterém byly nahrané. Digitální vlákna Azure jenom zaručuje, že návratový formulář bude sémanticky rovnocenný. 
 
-### <a name="update-models"></a>Aktualizovat modely
+## <a name="update-models"></a>Aktualizovat modely
 
 Jakmile se model nahraje do instance digitálního vlákna Azure, celé rozhraní modelu je neměnné. To znamená, že neexistují tradiční "úpravy" modelů. Digitální vlákna Azure také neumožňují opakované nahrávání stejného modelu.
 
 Místo toho, pokud chcete provádět změny modelu, jako je například aktualizace `displayName` nebo `description` – způsob, jak to provést, je nahrát **novější verzi** modelu. 
 
-#### <a name="model-versioning"></a>Správa verzí modelů
+### <a name="model-versioning"></a>Správa verzí modelů
 
 Pokud chcete vytvořit novou verzi existujícího modelu, začněte s DTDL původního modelu. Aktualizujte, přidejte nebo odeberte pole, která chcete změnit.
 
@@ -194,7 +188,7 @@ Pak nahrajte novou verzi modelu do instance.
 
 Tato verze modelu pak bude k dispozici v instanci, která bude použita pro digitální vlákna. Nepřepisuje **starší** verze modelu, takže dokud je [neodeberete](#remove-models), bude v instanci existovat více verzí modelu.
 
-#### <a name="impact-on-twins"></a>Dopad na vlákna
+### <a name="impact-on-twins"></a>Dopad na vlákna
 
 Když vytvoříte nové vlákny, protože verze nového modelu a stará verze modelu existují současně, může nový vlákn použít buď novou verzi modelu, nebo starší verzi.
 
@@ -202,7 +196,7 @@ To také znamená, že nahrání nové verze modelu automaticky neovlivní stáv
 
 Tyto existující vlákna můžete aktualizovat na novou verzi modelu tím, že ji aktualizujete, jak je popsáno v části [*aktualizace modelu digitálního vlákna*](how-to-manage-twin.md#update-a-digital-twins-model) v tématu *Postupy: Správa digitálních vláken*. V rámci jedné opravy je nutné aktualizovat **ID modelu** (na novou verzi) a **všechna pole, která je nutné změnit na vlákna, aby odpovídala novému modelu**.
 
-### <a name="remove-models"></a>Odebrat modely
+## <a name="remove-models"></a>Odebrat modely
 
 Modely je také možné z této služby odebrat jedním ze dvou způsobů:
 * **Vyřazení z provozu** : když je model vyřazený z provozu, už ho nemůžete používat k vytváření nových digitálních vláken. Stávající digitální vlákna, které už tento model používají, to neovlivní, takže je můžete dál aktualizovat pomocí akcí, jako jsou změny vlastností a přidávání nebo odstraňování relací.
@@ -210,7 +204,7 @@ Modely je také možné z této služby odebrat jedním ze dvou způsobů:
 
 Jedná se o samostatné funkce, které nejsou navzájem ovlivněny, i když je lze použít společně k tomu, abyste model odebrali postupně. 
 
-#### <a name="decommissioning"></a>Vyřazení
+### <a name="decommissioning"></a>Vyřazení
 
 Zde je kód pro vyřazení modelu z provozu:
 
@@ -223,7 +217,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 
 Stav vyřazení modelu z provozu je obsažen v `ModelData` záznamech vrácených rozhraními API pro načítání modelů.
 
-#### <a name="deletion"></a>Odstranění
+### <a name="deletion"></a>Odstranění
 
 Můžete odstranit všechny modely ve vaší instanci najednou, nebo je můžete udělat jednotlivě.
 
@@ -231,7 +225,7 @@ Příklad, jak odstranit všechny modely, najdete v ukázkové aplikaci použit�
 
 Zbývající část této části rozdělí model na více podrobností a ukazuje, jak to udělat pro jednotlivý model.
 
-##### <a name="before-deletion-deletion-requirements"></a>Před odstraněním: požadavky na odstranění
+#### <a name="before-deletion-deletion-requirements"></a>Před odstraněním: požadavky na odstranění
 
 Obecně platí, že modely lze kdykoli odstranit.
 
@@ -239,7 +233,7 @@ Výjimkou jsou modely, na kterých jsou závislé jiné modely, buď se `extends
 
 To můžete provést tak, že aktualizujete závislý model pro odebrání závislostí nebo úplného odstranění závislého modelu.
 
-##### <a name="during-deletion-deletion-process"></a>Během odstraňování: proces odstranění
+#### <a name="during-deletion-deletion-process"></a>Během odstraňování: proces odstranění
 
 I v případě, že model splňuje požadavky pro okamžité odstranění, možná budete chtít nejdřív projít několik kroků, abyste se vyhnuli nezamýšleným důsledkům pro vlákna, které zůstaly na pozadí. Tady je několik kroků, které vám pomůžou se správou tohoto procesu:
 1. Nejprve vyřaďte model z provozu.
@@ -255,7 +249,7 @@ Chcete-li odstranit model, použijte toto volání:
 await client.DeleteModelAsync(IDToDelete);
 ```
 
-##### <a name="after-deletion-twins-without-models"></a>Po odstranění: vlákna bez modelů
+#### <a name="after-deletion-twins-without-models"></a>Po odstranění: vlákna bez modelů
 
 Po odstranění modelu se teď všechny digitální vlákna, které používaly model, považují za bez modelu. Všimněte si, že není k dispozici žádný dotaz, který vám poskytne seznam všech vláken v tomto stavu, i když je stále *možné* zadat dotaz na vlákna pomocí odstraněného modelu, abyste věděli, jaké jsou zdvojené.
 
@@ -274,17 +268,13 @@ Co **nemůžete** udělat:
 * Úprava odchozích relací (v rámci, vztahů *od* tohoto vlákna k ostatním nevlákenám)
 * Upravit vlastnosti
 
-##### <a name="after-deletion-re-uploading-a-model"></a>Po odstranění: Opětovné nahrání modelu
+#### <a name="after-deletion-re-uploading-a-model"></a>Po odstranění: Opětovné nahrání modelu
 
 Po odstranění modelu se můžete rozhodnout později, abyste nahráli nový model se stejným ID jako ten, který jste odstranili. Tady je postup, co se stane v tomto případě.
 * Z perspektivy úložiště řešení je to stejné jako nahrávání zcela nového modelu. Služba si nepamatuje, že se stará z nich nahrála.   
 * Pokud v grafu existují zbývající vlákna odkazující na odstraněný model, již nebudou osamocená; Toto ID modelu je znovu platné s novou definicí. Pokud je však nová definice modelu odlišná od definice modelu, která byla odstraněna, tyto vlákna mohou mít vlastnosti a relace, které odpovídají odstraněné definici a nejsou platné s novým.
 
 Digitální vlákna Azure nebrání tomuto stavu, proto buďte opatrní na správné opravy, abyste se ujistili, že zůstanou platné prostřednictvím přepínače definice modelu.
-
-## <a name="manage-models-with-cli"></a>Správa modelů pomocí rozhraní příkazového řádku
-
-Modely je také možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md).
 
 ## <a name="next-steps"></a>Další kroky
 

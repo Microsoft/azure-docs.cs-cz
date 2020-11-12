@@ -1,17 +1,17 @@
 ---
 title: Parametry serveru – Azure Database for MySQL
 description: Toto téma poskytuje pokyny pro konfiguraci parametrů serveru v Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: b5b171941a3da42d2f5b385303c51285ff793599
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 0fddc1e8f80e257548d0dda91758273eb8c8ac78
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376770"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534904"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Parametry serveru v Azure Database for MySQL
 

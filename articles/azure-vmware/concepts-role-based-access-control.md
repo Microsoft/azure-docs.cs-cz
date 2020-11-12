@@ -2,13 +2,13 @@
 title: Koncepty – řízení přístupu na základě role (RBAC)
 description: Seznamte se s klíčovými možnostmi řízení přístupu na základě rolí pro řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 4fbda24ec6a8c1d08570d7f64270a954eb3d8a35
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 10/23/2020
+ms.openlocfilehash: 6e1864fdfe397325a7c5ba601b625bcc1776174c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440939"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535482"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Řízení přístupu na základě role (RBAC) pro řešení Azure VMware
 
@@ -31,7 +31,7 @@ Uživatel privátního cloudu nemá přístup ke službě a nemůže konfigurova
 Můžete zobrazit oprávnění udělená roli CloudAdmin Azure VMware pro řešení Azure VMware v rámci vašeho privátního cloudu vCenter.
 
 1. Přihlaste se ke klientovi SDDC vSphere a přejděte do **nabídky**  >  **Správa**.
-1. V části **Access Control**vyberte **role**.
+1. V části **Access Control** vyberte **role**.
 1. V seznamu rolí vyberte **CloudAdmin** a pak vyberte **oprávnění**. 
 
    :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="Jak zobrazit oprávnění role CloudAdmin v klientovi vSphere":::

@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c08e03e6ff77613c0950f17fe5225bccb706524c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 83e8089073f7e7e7634ddf00f7276e12aaf645b0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444347"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536434"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Jak se dá zařízení IoT Edge využít jako brána
 
@@ -45,21 +45,21 @@ Všechny vzory bran poskytují následující výhody:
 
 V modelu transparentní brány se zařízení, která se teoreticky můžou připojit k IoT Hub se můžou místo toho připojit k zařízení brány. Zařízení pro příjem dat mají vlastní IoT Hub identity a připojují se pomocí protokolů MQTT nebo AMQP. Brána jednoduše předává komunikaci mezi zařízeními a IoT Hubem. Zařízení i uživatelé, kteří s nimi pracují prostřednictvím IoT Hub, nevědí, že brána Mediating jejich komunikaci. Nedostatečné povědomí znamená, že brána je považována za *transparentní*.
 
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-
-Zařízení IoT Edge se můžou připojovat prostřednictvím transparentních bran i běžných zařízení IoT.
-
-<!-- TODO add a downstream IoT Edge device to graphic -->
-
-::: moniker-end
-
 <!-- 1.0.10 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge zařízení nemohou být podřízená bráně IoT Edge.
 
 ![Diagram – model transparentní brány](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+Počínaje verzí 1.2.0 se zařízení můžou přes transparentní brány připojit IoT Edge.
+
+<!-- TODO add a downstream IoT Edge device to graphic -->
 
 ::: moniker-end
 
@@ -102,10 +102,22 @@ Pokud se k sobě navzájemně připojí více IoT Edge bran v hierarchii brány,
 
 ### <a name="device-capabilities-behind-transparent-gateways"></a>Možnosti zařízení za transparentními branami
 
-
 Všechny primitivní IoT Hub, které pracují s kanálem zasílání zpráv IoT Edge, podporují také transparentní scénáře brány. Každá brána IoT Edge obsahuje možnosti pro zprávy, které docházejí prostřednictvím služby Store a předávání.
 
 V následující tabulce najdete informace o tom, jak se pro zařízení v porovnání se zařízeními za bránami podporují různé možnosti IoT Hub.
+
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
+
+| Schopnost | Zařízení IoT | IoT za bránou |
+| ---------- | ---------- | -------------------- |
+| [Zprávy ze zařízení do cloudu (D2C)](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![Ano – IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Ano – podřízené IoT D2C](./media/iot-edge-as-gateway/check-yes.png) |
+| [Zprávy z cloudu na zařízení (C2D)](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![Ano – IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Ano – C2D podřízeného IoT](./media/iot-edge-as-gateway/check-yes.png) |
+| [Přímé metody](../iot-hub/iot-hub-devguide-direct-methods.md) | ![Ano – metoda Direct pro IoT](./media/iot-edge-as-gateway/check-yes.png) | ![Ano – podřízená metoda IoT Direct](./media/iot-edge-as-gateway/check-yes.png) |
+| [Vlákna zařízení](../iot-hub/iot-hub-devguide-device-twins.md) a [vlákna v modulu](../iot-hub/iot-hub-devguide-module-twins.md) | ![Ano – vlákna IoT](./media/iot-edge-as-gateway/check-yes.png) | ![Ano – vlákna s podřízenými IoT](./media/iot-edge-as-gateway/check-yes.png) |
+| [Nahrání souboru](../iot-hub/iot-hub-devguide-file-upload.md) | ![Ano – nahrání souboru IoT](./media/iot-edge-as-gateway/check-yes.png) | ![Ne – nahrání podřízeného souboru IoT](./media/iot-edge-as-gateway/crossout-no.png) |
+
+::: moniker-end
 
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"
@@ -123,19 +135,6 @@ V následující tabulce najdete informace o tom, jak se pro zařízení v porov
 **Image kontejnerů** se dají stahovat, ukládat a doručovat z nadřízených zařízení na podřízená zařízení.
 
 **Objekty blob** , včetně sad a protokolů podpory, je možné nahrávat z podřízených zařízení do nadřazených zařízení.
-
-::: moniker-end
-
-<!-- 1.0.10 -->
-::: moniker range="iotedge-2018-06"
-
-| Schopnost | Zařízení IoT | IoT za bránou |
-| ---------- | ---------- | -------------------- |
-| [Zprávy ze zařízení do cloudu (D2C)](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![Ano – IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Ano – podřízené IoT D2C](./media/iot-edge-as-gateway/check-yes.png) |
-| [Zprávy z cloudu na zařízení (C2D)](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![Ano – IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Ano – C2D podřízeného IoT](./media/iot-edge-as-gateway/check-yes.png) |
-| [Přímé metody](../iot-hub/iot-hub-devguide-direct-methods.md) | ![Ano – metoda Direct pro IoT](./media/iot-edge-as-gateway/check-yes.png) | ![Ano – podřízená metoda IoT Direct](./media/iot-edge-as-gateway/check-yes.png) |
-| [Vlákna zařízení](../iot-hub/iot-hub-devguide-device-twins.md) a [vlákna v modulu](../iot-hub/iot-hub-devguide-module-twins.md) | ![Ano – vlákna IoT](./media/iot-edge-as-gateway/check-yes.png) | ![Ano – vlákna s podřízenými IoT](./media/iot-edge-as-gateway/check-yes.png) |
-| [Nahrání souboru](../iot-hub/iot-hub-devguide-file-upload.md) | ![Ano – nahrání souboru IoT](./media/iot-edge-as-gateway/check-yes.png) | ![Ne – nahrání podřízeného souboru IoT](./media/iot-edge-as-gateway/crossout-no.png) |
 
 ::: moniker-end
 

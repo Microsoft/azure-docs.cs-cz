@@ -1,17 +1,17 @@
 ---
 title: Konfigurace replikace dat – Azure Database for MariaDB
 description: Tento článek popisuje, jak nastavit Replikace vstupních dat v Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 21a0aaaa9e10a7c3e445145eb178b50b446ba6ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fe7e02cc34dc9c97e540d7b8d96c48ee8d5cfe09
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425994"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535363"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurace Replikace vstupních dat v Azure Database for MariaDB
 
@@ -45,7 +45,7 @@ Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](c
 > [!NOTE]
 > Komunikace bez posunu
 >
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_ text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
 >
 
 ## <a name="configure-the-source-server"></a>Konfigurace zdrojového serveru
@@ -54,7 +54,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
 
 1. Než budete pokračovat, zkontrolujte [požadavky hlavního serveru](concepts-data-in-replication.md#requirements) . 
 
-2. Ujistěte se, že zdrojový server umožňuje příchozí i odchozí provoz na portu 3306 a že má zdrojový server **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN). 
+2. Ujistěte se, že zdrojový server umožňuje příchozí i odchozí provoz na portu 3306 a že má zdrojový server **veřejnou IP adresu** , služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN). 
    
    Otestujte připojení ke zdrojovému serveru tak, že se pokusíte připojit z nástroje, jako je například příkazový řádek MySQL hostovaný na jiném počítači nebo [Azure Cloud Shell](../cloud-shell/overview.md) k dispozici v Azure Portal.
 
@@ -78,7 +78,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
       ```bash
       ping <output of step 2b>
       ``` 
-      Příklad: 
+      Například: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -149,7 +149,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
 
    ![Synchronizovat uživatele](./media/howto-data-in-replication/syncuser.png)
  
-   Vyberte panel **role pro správu** a potom v seznamu **globálních oprávnění**vyberte **replikace podřízená**. Pokud chcete vytvořit roli replikace, vyberte **použít** .
+   Vyberte panel **role pro správu** a potom v seznamu **globálních oprávnění** vyberte **replikace podřízená**. Pokud chcete vytvořit roli replikace, vyberte **použít** .
 
    ![Replikace podřízených](./media/howto-data-in-replication/replicationslave.png)
 

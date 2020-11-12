@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d323504a46cd35525c889a94d2d044193c1471ac
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899557"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535941"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Nasazení bezstavové aplikace v jazyce PHP s Redisem v clusteru Kubernetes s povoleným obloukem na Azure Stack Edge pro GPU
 
@@ -79,9 +79,9 @@ Pomocí těchto kroků nakonfigurujete prostředek Azure ARC k nasazení konfigu
 
 1. Přejít na **Konfigurace** a vyberte **+ Přidat konfiguraci**.
 
-    ![Přejít na konfigurace](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
+    ![Snímek obrazovky ukazuje cluster Kubernetes s povoleným nastavením Přidat konfiguraci.](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. V části **Přidat konfiguraci**zadejte odpovídající hodnoty pro pole a vyberte **použít**.
+1. V části **Přidat konfiguraci** zadejte odpovídající hodnoty pro pole a vyberte **použít**.
 
     |Parametr  |Popis |
     |---------|---------|
@@ -100,11 +100,11 @@ Pomocí těchto kroků nakonfigurujete prostředek Azure ARC k nasazení konfigu
 
 1. Spustí se nasazení konfigurace a **stav operátoru** se zobrazí jako **čeká na vyřízení**. 
 
-    ![Přejít na konfigurace](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
+    ![Snímek obrazovky ukazuje cluster Kubernetes s povoleným obloukem Azure v nedokončeném stavu, když se aktualizuje.](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
 
 1. Nasazení trvá několik minut. Po dokončení nasazení se **stav operátora** zobrazí jako **nainstalované**.
 
-    ![Přejít na konfigurace](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
+    ![Snímek obrazovky ukazuje cluster Kubernetes s povoleným ARC Azure v nainstalovaném stavu.](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
 
 
 ## <a name="verify-deployment"></a>Ověření nasazení

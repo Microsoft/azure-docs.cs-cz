@@ -1,24 +1,24 @@
 ---
 title: Připojení pomocí přesměrování – Azure Database for MariaDB
 description: Tento článek popisuje, jak můžete nakonfigurovat aplikaci pro připojení k Azure Database for MariaDB pomocí přesměrování.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: 45d93797b72b3b35dd44cddc22124acb73eb3454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f26de72839fcaa39bff4d827aba757721736934
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121091"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537420"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Připojení k Azure Database for MariaDB pomocí přesměrování
 
 Toto téma vysvětluje, jak připojit aplikaci Azure Database for MariaDB Server s režimem přesměrování. Přesměrování se zaměřuje na snížení latence sítě mezi klientskými aplikacemi a MariaDB servery tím, že umožňuje aplikacím připojení přímo k uzlům back-end serverů.
 
 ## <a name="before-you-begin"></a>Než začnete
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vytvořte Azure Database for MariaDB Server s modulem verze 10,2 nebo 10,3. 
+Přihlaste se na [Azure Portal](https://portal.azure.com). Vytvořte Azure Database for MariaDB Server s modulem verze 10,2 nebo 10,3. 
 
 Podrobnosti najdete v tématu Postup vytvoření Azure Database for MariaDB serveru pomocí [Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md) nebo [Azure CLI](quickstart-create-mariadb-server-database-using-azure-cli.md).
 

@@ -2,25 +2,25 @@
 title: Koncepty – identita a přístup
 description: Seznamte se s principy identit a přístupu k řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 7127109801d92d2177f6edac3efcaf76ddf217e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/11/2020
+ms.openlocfilehash: e9c0d62968d94e2b018186f67072b6ae7078db02
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674654"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536094"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Koncepty identity řešení Azure VMware
 
-Při nasazení privátního cloudu se zřídí Server vCenter a správce NSX-T. Pomocí vCenter můžete spravovat úlohy virtuálních počítačů. NSX-T Manager slouží k rozšiřování sítě definované privátním cloudem.
+Privátní cloudy řešení Azure VMware jsou zřízené pomocí serveru vCenter a správce NSX-T. Pomocí vCenter můžete spravovat úlohy virtuálních počítačů. Pro rozšiřování privátního cloudu použijete Správce NSX-T.
 
 Přístup a Správa identit používají pro správce NSX-T oprávnění skupin CloudAdmin pro vCenter a omezená práva správce. Zajišťuje automatickou inovaci vaší privátní cloudové platformy pomocí nejnovějších funkcí a oprav.  Další informace najdete v [článku koncepty pro upgrade privátního cloudu][concepts-upgrades].
 
 ## <a name="vcenter-access-and-identity"></a>přístup k vCenter a identita
 
-Oprávnění v vCenter jsou k dispozici prostřednictvím skupiny CloudAdmin. Tuto skupinu je možné spravovat místně v vCenter nebo prostřednictvím integrace jednotného přihlašování vCenter protokolu vCenter s Azure Active Directory. Po nasazení privátního cloudu jste dostali možnost povolit tuto integraci.
+Skupina CloudAdmin poskytuje oprávnění v vCenter. Skupinu můžete spravovat místně v vCenter. Další možností je integrace jednotného přihlašování přes vCenter LDAP s Azure Active Directory. Tuto integraci povolíte po nasazení privátního cloudu. 
 
-V následující tabulce jsou uvedena oprávnění CloudAdmin a CloudGlobalAdmin.
+V tabulce jsou uvedena oprávnění **CloudAdmin** a **CloudGlobalAdmin** .
 
 |  Sada oprávnění           | CloudAdmin | CloudGlobalAdmin | Komentář |
 | :---                     |    :---:   |       :---:      |   :--:  |
@@ -28,7 +28,7 @@ V následující tabulce jsou uvedena oprávnění CloudAdmin a CloudGlobalAdmin
 |  Automatické nasazení             |  --  |        --        |  Microsoft provádí správu hostitelů.  |
 |  Certifikáty            |  --  |        --       |  Microsoft provádí správu certifikátů.  |
 |  Knihovna obsahu         | Uživatel CloudAdmin má oprávnění k vytváření a používání souborů v knihovně obsahu.    |         Povoleno s jednotným přihlašováním.         |  Společnost Microsoft bude distribuovat soubory do knihovny obsahu do hostitelů ESXi.  |
-|  Datacentrum              |  --  |        --          |  Microsoft provádí všechna data centra operací.  |
+|  Datové centrum              |  --  |        --          |  Microsoft provádí všechna data centra operací.  |
 |  Úložiště dat               | Úložiště dat. AllocateSpace, DataStore. Browse, Datastore.Config, DataStore. DeleteFile, DataStore. správy, DataStore. UpdateVirtualMachineMetadata     |    --    |   -- |
 |  Správce agenta ESX       |  --  |         --       |  Společnost Microsoft provádí všechny operace.  |
 |  Složka                  |  CloudAdmin uživatel má všechna oprávnění ke složkám.     |  --  |  --  |

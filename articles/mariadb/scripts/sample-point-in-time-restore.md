@@ -1,19 +1,19 @@
 ---
 title: Skript CLI – obnovení serveru – Azure Database for MariaDB
 description: Tento ukázkový skript Azure CLI ukazuje, jak obnovit server Azure Database for MariaDB a jeho databáze k dřívějšímu bodu v čase.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 2626f9c5c078b7dc5026f00014fd7f197641b32d
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: a4fc645f43858e80eeffc6c1672f6bd4369e7290
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518018"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536757"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Obnovení serveru Azure Database for MariaDB pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku obnoví jeden Azure Database for MariaDB Server k předchozímu bodu v čase.

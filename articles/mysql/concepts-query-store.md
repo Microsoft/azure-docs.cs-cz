@@ -1,17 +1,17 @@
 ---
 title: Úložiště dotazů – Azure Database for MySQL
 description: Přečtěte si o funkci úložiště dotazů v Azure Database for MySQL, která vám pomůžou sledovat výkon v průběhu času.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 12623dccdc298aaad23ad6779caf33d895c5634a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70e1e5d06ef025801322e15e589d26e31f116fc3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766130"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535074"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorování výkonu Azure Database for MySQL s využitím úložiště dotazů
 
@@ -104,7 +104,7 @@ Následující možnosti platí konkrétně pro čekání na statistiku.
 > [!NOTE]
 > V současné době **query_store_capture_mode** nahrazuje tuto konfiguraci, což znamená, že je nutné povolit obě **QUERY_STORE_CAPTURE_MODE** a **query_store_wait_sampling_capture_mode** všem, aby statistiky čekání fungovaly. Pokud je **query_store_capture_mode** vypnutý, vystaví se nevyřízená statistika, protože statistiky čekání využívají performance_schema povolené a query_text zachycené úložištěm dotazů.
 
- [Azure portal](howto-server-parameters.md)    [Azure CLI](howto-configure-server-parameters-using-cli.md)   K získání nebo nastavení jiné hodnoty pro parametr použijte Azure Portal nebo Azure CLI.
+K získání nebo nastavení jiné hodnoty pro parametr použijte [Azure Portal](howto-server-parameters.md) nebo [Azure CLI](howto-configure-server-parameters-using-cli.md) .
 
 ## <a name="views-and-functions"></a>Zobrazení a funkce
 

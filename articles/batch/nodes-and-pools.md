@@ -2,13 +2,13 @@
 title: Uzly a fondy v Azure Batch
 description: Přečtěte si o výpočetních uzlech a fondech a o tom, jak se používají v Azure Batch pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
-ms.date: 10/21/2020
-ms.openlocfilehash: c85c50d0b30e30563390d2ffb05942f199047d67
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 11/10/2020
+ms.openlocfilehash: 77f3a1c954f5591537436c9ee747052b3a642ec4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913802"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537607"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Uzly a fondy v Azure Batch
 
@@ -72,9 +72,9 @@ Ve Batch jsou k dispozici dva typy konfigurací fondů.
 
 ### <a name="cloud-services-configuration"></a>Konfigurace Cloud Services
 
-**Konfigurace Cloud Services** určuje, že se fond skládá z uzlů Azure Cloud Services. Cloud Services poskytuje *jenom* výpočetní uzly Windows.
+**Konfigurace Cloud Services** určuje, že se fond skládá z uzlů Azure Cloud Services. Cloud Services poskytuje jenom výpočetní uzly Windows.
 
-Operační systémy, které jsou k dispozici pro fondy konfigurace služby Cloud Services, jsou uvedeny v [matici kompatibility verzí hostovaného operačního systému Azure a sad SDK](../cloud-services/cloud-services-guestos-update-matrix.md). Při vytváření fondu, který obsahuje uzly Cloud Services, je nutné zadat velikost uzlu a jeho *rodinu operačních systémů* (což určuje, které verze rozhraní .NET jsou nainstalovány s operačním systémem). Cloud Services se do Azure nasadí rychleji než virtuální počítače s Windows. Pokud chcete fondy výpočetních uzlů Windows, můžete zjistit, že služba Cloud Services představuje výhodu z hlediska času nasazení.
+Dostupné operační systémy pro fondy konfigurací Cloud Services jsou uvedené v části [verze hostovaného operačního systému Azure a v matici kompatibility SDK](../cloud-services/cloud-services-guestos-update-matrix.md)a dostupné velikosti výpočetních uzlů jsou uvedené v seznamu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Při vytváření fondu, který obsahuje uzly Cloud Services, zadáváte velikost uzlu a jeho *rodinu operačních systémů* (což určuje, které verze rozhraní .NET jsou nainstalovány s operačním systémem). Cloud Services se do Azure nasadí rychleji než virtuální počítače s Windows. Pokud chcete fondy výpočetních uzlů Windows, můžete zjistit, že služba Cloud Services představuje výhodu z hlediska času nasazení.
 
 Podobně jako u rolí pracovního procesu v rámci služby Cloud Services můžete zadat *verzi operačního systému* (další informace o rolích pracovního procesu najdete v článku [Přehled služby Cloud Services](../cloud-services/cloud-services-choose-me.md)). Doporučujeme, abyste `Latest (*)` pro *verzi operačního systému* určili, že se uzly automaticky upgradují a že se pro nové vydané verze nevyžadovala žádná práce. Hlavním případem použití s výběrem konkrétní verze operačního systému scénář zajištění kompatibility aplikací, který umožní testovat zpětnou kompatibilitu, než se povolí aktualizace verze. Po ověření bude možné aktualizovat *verzi operačního systému* pro fond a nainstalovat novou bitovou kopii operačního systému. Všechny spuštěné úlohy budou přerušeny a znovu zařazeny do fronty.
 
@@ -127,7 +127,7 @@ Vzorec škálování může být založen na následujících metrikách:
 
 - **Časové metriky** jsou založeny na statistikách shromažďovaných každých pět minut po zadaný počet hodin.
 - **Metriky prostředků** jsou založeny na využití procesoru, šířky pásma a paměti a na počtu uzlů.
-- **Metriky úkolů** jsou založeny na stavu úkolů, jako je například *Aktivní* (zařazený do fronty), *Spuštěný* nebo *Dokončený* .
+- **Metriky úkolů** jsou založeny na stavu úkolů, jako je například *Aktivní* (zařazený do fronty), *Spuštěný* nebo *Dokončený*.
 
 Když automatické škálování snižuje počet výpočetních uzlů ve fondu, je nutné zvážit, jak naložit s úkoly, které v okamžiku snižování již běží. V rámci této služby poskytuje funkce Batch [*možnost zrušení přidělení uzlu*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) , kterou můžete zahrnout do vzorců. Můžete například zadat, že spuštěné úkoly se mají okamžitě zastavit a pak znovu zařadit do fronty pro provedení na jiném uzlu, nebo nechat dokončit před odebráním uzlu z fondu. Všimněte si, že nastavení možnosti zrušení přidělení uzlu jako `taskcompletion` nebo `retaineddata` zabrání operacím změny velikosti fondu, dokud nebudou dokončeny všechny úlohy nebo dokud nevyprší platnost všech dob uchovávání úkolů.
 
