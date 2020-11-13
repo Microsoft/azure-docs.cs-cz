@@ -1,7 +1,7 @@
 ---
 title: Povolení Azure Machine Learning studia ve virtuální síti
 titleSuffix: Azure Machine Learning
-description: Pro přístup k datům uloženým v rámci virtuální sítě použijte Azure Machine Learning Studio.
+description: Naučte se, jak nakonfigurovat Azure Machine Learning Studio pro přístup k datům uloženým ve virtuální síti.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: aca7b7e8590c9c8eb3db987c5d1527d9f135bf3f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 7cdd70a44a090b03a3f11626805565469c7c04e7
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392992"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554661"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Použití Azure Machine Learning studia ve službě Azure Virtual Network
 
@@ -39,7 +39,7 @@ Podívejte se na další články v této sérii:
 > Pokud je váš pracovní prostor v rámci __svrchovaného cloudu__ , například Azure Government nebo Azure Čína 21Vianet, integrované poznámkové bloky _nepodporují použití_ úložiště, které je ve virtuální síti. Místo toho můžete na výpočetní instanci použít poznámkové bloky Jupyter. Další informace najdete v části [přístup k datům v poznámkovém bloku COMPUTE instance](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) .
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Přečtěte si [Přehled zabezpečení sítě](how-to-network-security-overview.md) , abyste porozuměli běžným scénářům virtuální sítě a celkové architektuře virtuální sítě.
 

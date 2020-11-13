@@ -7,20 +7,20 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/09/2020
 ms.author: banders
-ms.openlocfilehash: 16ba70717d04c44e950ce2ed2c47e54859c4be47
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f90d1fe22ae2f46fdc6d764ce98db8e0f48b8b35
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684877"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408018"
 ---
 # <a name="cancel-your-azure-subscription"></a>Zrušení předplatného Azure
 
 Pokud už předplatné Azure nepotřebujete, můžete ho zrušit na webu Azure Portal.
 
-I když se to nevyžaduje, Microsoft *doporučuje*, abyste před zrušením vašeho předplatného provedli následující akce:
+I když se to nevyžaduje, Microsoft *doporučuje* , abyste před zrušením vašeho předplatného provedli následující akce:
 
 * Zálohujte svá data. Pokud například uchováváte data v Azure Storage nebo SQL, stáhněte si kopii. Pokud máte virtuální počítač, uložte jeho image místně.
 * Vypněte používané služby. Přejděte na [stránku s prostředky na portálu pro správu](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources) a **zastavte** všechny běžící virtuální počítače, aplikace nebo jiné služby.
@@ -71,9 +71,21 @@ Pokud omylem zrušíte své předplatné s průběžnými platbami, můžete [ho
 
 Pokud se nejedná o předplatné s průběžnými platbami, požádejte během 90 dnů od zrušení podporu o opětovnou aktivaci svého předplatného.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+## <a name="why-dont-i-see-the-cancel-subscription-option-on-the-azure-portal"></a>Proč se mi na webu Azure Portal nezobrazuje možnost zrušit předplatné? 
 
-Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+Možná nemáte oprávnění potřebná k zrušení předplatného. Přečtěte si téma [Kdo může předplatné zrušit?](https://docs.microsoft.com/azure/cost-management-billing/manage/cancel-azure-subscription#who-can-cancel-a-subscription) obsahující popis, kdo může zrušit jednotlivé typy předplatných.
+
+## <a name="how-do-i-delete-my-azure-account"></a>Jak můžu odstranit svůj účet Azure?
+
+*Potřebuji odebrat svůj účet včetně všech mých osobních údajů. Už mám zrušená aktivní (bezplatná zkušební) předplatná. Nemám žádná aktivní předplatná a chci úplně odstranit svůj účet*.
+
+* Pokud máte účet Azure Active Directory prostřednictvím vaší organizace, může správce Azure AD tento účet odstranit. Potom budou vaše služby zakázané. To znamená, že se zruší přidělení vašich virtuálních počítačů, uvolní se dočasná IP adresa a úložiště přejde do režimu jen pro čtení. Stručně řečeno, po zrušení se okamžitě zastaví účtování.
+
+* Pokud účet Azure AD nemáte prostřednictvím vaší organizace, můžete zrušit předplatná Azure a pak je odstranit. Následně můžete z účtu odebrat svou platební kartu. I když touto akcí účet neodstraníte, stane se nefunkčním. Můžete postoupit ještě dál a také odstranit přidružený účet Microsoft, pokud se nepoužívá k žádným jiným účelům.
+
+## <a name="how-do-i-cancel-a-visual-studio-professional-account"></a>Jak zruším účet Visual Studio Professional?
+
+Přečtěte si článek [Prodloužení a zrušení](https://docs.microsoft.com/visualstudio/subscriptions/faq/admin/renewal-cancellation). Pokud máte nějaká předplatná Azure pro Visual Studio, je potřeba je taky zrušit a odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 

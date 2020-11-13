@@ -1,7 +1,7 @@
 ---
 title: Import dat do návrháře
 titleSuffix: Azure Machine Learning
-description: Naučte se importovat data do návrháře Azure Machine Learning z různých zdrojů dat.
+description: Naučte se, jak importovat data do návrháře Azure Machine Learning pomocí datových sad Azure Machine Learning a modulu import dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce0bb2a30ec4092d0053adf2de711547595c900
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985603"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554712"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Import dat do návrháře Azure Machine Learning
 

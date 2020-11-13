@@ -9,12 +9,12 @@ ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 7b44abbbf2e7592205d5d5c291ce99d381a283f7
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: de93d96085269c2cc8fcf6c18d7e6643facfcaa4
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043283"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372706"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>Programové vytváření předplatných Azure pomocí nejnovějších rozhraní API
 
@@ -798,7 +798,15 @@ V šabloně Azure Resource Manageru (šabloně ARM) můžete vytvářet předpla
 
 ### <a name="prerequisites"></a>Předpoklady
 
-Abyste mohli vytvářet předplatná, musíte mít roli vlastníka, přispěvatele nebo tvůrce předplatného Azure pro oddíl faktury nebo roli vlastníka nebo přispěvatele pro fakturační profil nebo fakturační účet. Další informace najdete v tématu [Role a úlohy fakturace předplatného](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+Abyste mohli vytvořit předplatná, musíte mít jednu z následujících rolí: 
+
+- Vlastník předplatného Azure u oddílu faktury
+- Přispěvatel předplatného Azure u oddílu faktury
+- Tvůrce předplatného Azure u oddílu faktury
+- Vlastník předplatného Azure u fakturačního profilu nebo fakturačního účtu
+- Přispěvatel předplatného Azure u fakturačního profilu nebo fakturačního účtu
+
+ Další informace najdete v tématu [Role a úlohy fakturace předplatného](understand-mca-roles.md#subscription-billing-roles-and-tasks).
 
 Kromě toho platí, že jelikož nasazujete šablonu ARM, potřebujete mít oprávnění k zápisu do kořenového objektu. Pokud tedy nasazení šablony ARM ve skupině pro správu, budete potřebovat oprávnění k zápisu do této skupiny pro správu. Upozorňujeme, že tato akce slouží jenom k vytvoření nasazení šablony ARM. Pokud se vytvoří předplatné, vytvoří se jenom ve skupině pro správu uvedené v této šabloně ARM.
 

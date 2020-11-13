@@ -6,14 +6,15 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/23/2020
 ms.author: banders
-ms.openlocfilehash: 13b344d3f13993dc7b6acf7bfe9a0ccdea0c866b
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: contperfq1
+ms.openlocfilehash: e712b44f22a8080b14a2cc2532cadf2dd4738b76
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371350"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409194"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Správa rolí Azure Enterprise
 
@@ -34,6 +35,86 @@ První správce registrace, který je nastavený během zřizování registrace,
 Pokud je například jako původní typ ověřování nastavený typ Smíšený, EA se přidá jako účet Microsoft a fakturační kontakt bude mít oprávnění správce EA jen pro čtení. Pokud správce EA neschválí pro stávající fakturační kontakt nechválí ověřování pomocí účtu Microsoft, může správce EA dotčeného uživatele odstranit a požádat zákazníka, aby tohoto uživatele přidal znovu jako správce jen pro čtení s nastavením Pracovní nebo školní účet na úrovni registrace na webu EA Portal.
 
 Tyto role jsou specifické pro správu smluv Azure Enterprise a doplňují předdefinované role, pomocí kterých Azure řídí přístup k prostředkům. Další informace najdete v tématu [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md).
+
+## <a name="azure-enterprise-portal-hierarchy"></a>Hierarchie portálu Azure Enterprise
+
+Hierarchie portálu Azure Enterprise se skládá z těchto částí:
+
+- **Portál Azure Enterprise** je online portál pro správu, který pomáhá se správou nákladů na služby Azure EA. Můžete:
+
+  - Vytvořit hierarchii Azure EA s odděleními, účty a předplatnými.
+  - Párovat náklady na spotřebované služby, stahovat sestavy o využití a zobrazovat ceníky.
+  - Vytvořit klíče rozhraní API pro registraci.
+
+- **Oddělení** usnadňují segmentaci nákladů do logických seskupení. Oddělení umožňují nastavit rozpočet nebo kvótu na úrovni oddělení.
+
+- **Účty** jsou organizační jednotky na portálu Azure Enterprise. Pomocí účtů můžete spravovat předplatná a přistupovat k sestavám.
+
+- **Předplatná** představují nejmenší jednotku na portálu Azure Enterprise. Jedná se o kontejnery pro služby Azure spravované správcem služeb.
+
+Následující diagram znázorňuje jednoduché hierarchie Azure EA.
+
+![Diagram jednoduchých hierarchií Azure EA](./media/understand-ea-roles/ea-hierarchies.png)
+
+## <a name="enterprise-user-roles"></a>Role podnikových uživatelů
+
+Následující role administrativního uživatele jsou součástí registrace Enterprise:
+
+- Podnikový správce
+- Správce oddělení
+- Vlastník účtu
+- Správce služeb
+- Kontakt pro oznámení
+
+Role plní úlohy na dvou různých portálech. [Portál Azure Enterprise](https://ea.azure.com) se používá ke správě fakturace a nákladů a web [Azure Portal](https://portal.azure.com) ke správě služeb Azure.
+
+Role uživatelů se přidružují k jednotlivým uživatelským účtům. Pro ověření identity uživatele je nutné, aby měl platný pracovní nebo školní účet nebo účet Microsoft. Zajistěte, aby byl každý účet přidružený k e-mailové adrese, která je aktivně sledovaná. Na tuto e-mailovou adresu se budou odesílat oznámení týkající se účtu.
+
+Při nastavování uživatelů můžete k roli Podnikový správce přiřadit více účtů. Roli vlastníka účtu ale může mít pouze jeden účet. Jednomu účtu můžete také přiřadit jak roli podnikového správce, tak roli vlastníka účtu.
+
+### <a name="enterprise-administrator"></a>Podnikový správce
+
+Uživatelé s touto rolí mají nejvyšší úroveň přístupu. Mohou:
+
+- spravovat účty a jejich vlastníky,
+- spravovat jiné podnikové správce,
+- spravovat správce oddělení,
+- spravovat kontakty pro oznámení,
+- zobrazovat využití napříč všemi účty,
+- zobrazovat nefakturované poplatky napříč všemi účty.
+
+V podnikové registraci můžete mít více podnikových správců. Podnikovým správcům můžete udělit přístup jen pro čtení. Všichni navíc přebírají roli Správce oddělení.
+
+### <a name="department-administrator"></a>Správce oddělení
+
+Uživatelé s tou rolí mohou:
+
+- vytvářet a spravovat oddělení,
+- vytvářet nové vlastníky účtů,
+- zobrazovat podrobnosti o využití pro oddělení, která spravují,
+- zobrazovat náklady, pokud mají udělená potřebná oprávnění.
+
+V podnikové registraci můžete mít více správců oddělení.
+
+Při úpravách nebo vytváření nového správce oddělení můžete tomuto správci udělit přístup jen pro čtení. Možnost Read-Only (Jen pro čtení) nastavte na **Yes** (Ano).
+
+### <a name="account-owner"></a>Vlastník účtu
+
+Uživatelé s tou rolí mohou:
+
+- vytvářet a spravovat předplatná,
+- vytvářet správce služeb,
+- zobrazovat využití u předplatných.
+
+Každý účet vyžaduje jedinečný pracovní nebo školní účet nebo účet Microsoft. Další informace o správcovských rolích na portálu Azure Enterprise najdete v tématu [Principy rolí pro správu smlouvy Azure Enterprise v Azure](understand-ea-roles.md).
+
+### <a name="service-administrator"></a>Správce služeb
+
+Role Správce služeb má oprávnění ke správě služeb přes Azure Portal a k přiřazování role spolusprávce jiným uživatelům.
+
+### <a name="notification-contact"></a>Kontakt pro oznámení
+
+Kontakt pro oznámení dostává oznámení o využití související s příslušnou smlouvou.
 
 Následující části popisují omezení a možnosti jednotlivých rolí.
 
@@ -69,7 +150,7 @@ Následující části popisují omezení a možnosti jednotlivých rolí.
 
 ## <a name="add-a-new-enterprise-administrator"></a>Přidání nového podnikového správce
 
-Podnikoví správci mají při správě registrace do Azure EA největší oprávnění. Úvodní správce Azure EA byl vytvořen při nastavení smlouvy EA. Nové správce můžete kdykoliv přidat nebo odebrat. Nové správce přidávají jenom stávající správci. Další informace o přidání dalších podnikových správců najdete v tématu [Vytvoření dalšího podnikového správce](ea-portal-get-started.md#create-another-enterprise-administrator). Další informace o rolích a úlohách fakturačního profilu najdete v tématu [Role a úlohy fakturačního profilu](understand-mca-roles.md#billing-profile-roles-and-tasks).
+Podnikoví správci mají při správě registrace do Azure EA největší oprávnění. Úvodní správce Azure EA byl vytvořen při nastavení smlouvy EA. Nové správce můžete kdykoliv přidat nebo odebrat. Nové správce přidávají jenom stávající správci. Další informace o přidání dalších podnikových správců najdete v tématu [Vytvoření dalšího podnikového správce](ea-portal-administration.md#create-another-enterprise-administrator). Další informace o rolích a úlohách fakturačního profilu najdete v tématu [Role a úlohy fakturačního profilu](understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ## <a name="update-account-owner-state-from-pending-to-active"></a>Aktualizace stavu vlastníka účtu z Čeká na vyřízení na Aktivní
 
@@ -79,7 +160,7 @@ Při prvním přidání nových vlastníků účtů do registrace Azure EA se u 
 
 Jakmile správce Azure EA vytvoří oddělení, může přidat správce oddělení a přidružit je k oddělením. Správce oddělení může vytvářet nové účty. Nové účty jsou potřeba pro vytvářená předplatná Azure EA.
 
-Další informace o přidání správce oddělení najdete v tématu věnovaném [vytvoření správce oddělení Azure EA](ea-portal-get-started.md#add-a-department-administrator).
+Další informace o přidání správce oddělení najdete v tématu věnovaném [vytvoření správce oddělení Azure EA](ea-portal-administration.md#add-a-department-administrator).
 
 ## <a name="usage-and-costs-access-by-role"></a>Přístup k využití a nákladům podle role
 
@@ -114,12 +195,12 @@ V následující tabulce je uvedený vztah mezi rolemi správce smlouvy Enterpri
 |Vlastník účtu nebo Správce oddělení|✘ Zakázáno |Žádná|Žádné ceny|
 |Žádná|Neuvedeno |Vlastník|Maloobchodní ceny|
 
-Role správce smlouvy Enterprise a zásady zobrazování nákladů se nastavují na webu Enterprise Portal. Roli Azure je možné aktualizovat na webu Azure Portal. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Role správce smlouvy Enterprise a zásady zobrazování nákladů se nastavují na webu Enterprise Portal. Roli Azure je možné aktualizovat na webu Azure Portal. Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Správa přístupu k fakturačním údajům v Azure](manage-billing-access.md)
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+- [Správa přístupu pomocí RBAC a portálu Azure Portal](../../role-based-access-control/role-assignments-portal.md)
 - [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md)

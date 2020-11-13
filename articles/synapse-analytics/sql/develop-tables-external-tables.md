@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: a5a958228d79c86550604109d7aaf19e68593a57
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a9f58a9cdf8dea9631443d499548f2aee61eda69
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314902"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553671"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Použití externích tabulek s synapse SQL
 
@@ -383,13 +383,11 @@ SELECT TOP 1 * FROM census_external_table
 
 Pomocí možností zkoumání Data Lake nyní můžete vytvořit a zadat dotaz na externí tabulku pomocí vyhrazeného fondu SQL nebo bez serveru SQL s jednoduchým kliknutím pravým tlačítkem myši na soubor.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Musíte mít přístup k pracovnímu prostoru, který má alespoň roli přístupu pro přispěvatele dat objektů BLOB úložiště k účtu ADLS Gen2.
 
 - Musíte mít aspoň [oprávnění k vytváření](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true) a dotazování externích tabulek ve fondu SQL nebo v SQL z.
-
-- Propojená služba přidružená k ADLS Gen2mu účtu **musí mít přístup k tomuto souboru**. Pokud má například mechanismus ověřování propojených služeb spravovanou identitu, musí mít spravovaná identita v pracovním prostoru aspoň oprávnění pro čtení objektů BLOB úložiště v účtu úložiště.
 
 Z panelu data vyberte soubor, ze kterého chcete vytvořit externí tabulku:
 > [!div class="mx-imgBorder"]

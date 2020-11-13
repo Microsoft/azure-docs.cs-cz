@@ -1,7 +1,7 @@
 ---
 title: Transformace dat v Návrháři
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak transformovat data v Návrháři Azure Machine Learning vytvořit vlastní datové sady.
+description: Naučte se importovat a transformovat data v Návrháři Azure Machine Learning, abyste mohli vytvářet vlastní datové sady.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: f08d0f1be166630d9cf4b0b9236d78228fd78aae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: be2921f88ad2ecf88c555daf8385f1bd6733e836
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312803"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554011"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Transformace dat v Návrháři Azure Machine Learning
 

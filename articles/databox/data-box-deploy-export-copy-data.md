@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fb1415874c42e3913d98d4a674732a4d9b98a0c5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123904"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335209"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Kurz: Kopírování dat z Azure Data Boxu přes protokol SMB (Preview)
 
@@ -54,9 +54,9 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
 2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Vyberte **OK**.
     
-    ![Získání přihlašovacích údajů sdílené složky 2](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
+    ![Získání přihlašovacích údajů sdílené složky, přístup ke sdílené složce a kopírování dat](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
 
-3. Pokud chcete získat přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště (*exportbvtdataset2* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
+3. Pokud chcete získat přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště ( *exportbvtdataset2* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -73,13 +73,13 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     The command completed successfully.
     ```
 
-4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Výběrem **OK** otevřete Průzkumníka souborů.
+5. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Výběrem **OK** otevřete Průzkumníka souborů.
     
-    ![Připojení ke sdílené složce přes Průzkumníka souborů](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![Připojení ke sdílené složce přes Průzkumníka souborů, zadání IP adresy zařízení](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     Sdílené složky by se teď měly zobrazit jako složky.
     
-    ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
+    ![Připojení ke sdílené složce přes Průzkumníka souborů, zobrazení sdílených složek](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
 
     
 Pokud používáte klienta Linuxu, připojte sdílenou složku SMB pomocí následujícího příkazu. Níže uvedený parametr vers představuje verzi protokolu SMB, kterou podporuje váš hostitel s Linuxem. Do následujícího příkazu vložte odpovídající verzi. Verze protokolu SMB, které Data Box podporuje, najdete v tématu věnovaném [podporovaným systémům souborů pro klienty Linuxu](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients). 

@@ -11,14 +11,28 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 01c9cbe0438ee0efeece4c7e6b17e9607db4c4cc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2586b3aab9d1fb8e7ae12aea540df19ff6c37556
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356684"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553654"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
+
+## <a name="text-to-speech-2020-october-release"></a>Převod textu na řeč 2020 – říjen vydaná verze
+
+**Nové funkce**
+- Tomash podporuje nový `newscast` styl. Podívejte se, [Jak používat styly Speak v SSML](speech-synthesis-markup.md#adjust-speaking-styles).
+- **Neuronové hlasy byly upgradovány na HiFiNet vocoder, s vyšší kvalitou zvuku a rychlejšími rychlostmi syntézy**. Tato výhoda přináší zákazníkům, jejichž scénář spoléhá na zvukové nebo dlouhodobé interakce, včetně video Dubbing, zvukových seznamů nebo online vzdělávacích materiálů. [Přečtěte si další informace o tomto scénáři a hlasových ukázek na našem blogu pro technickou komunitu.](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860)
+- **[Vlastní hlasový](https://speech.microsoft.com/customvoice)  &  [zvuk pro vytváření obsahu](https://speech.microsoft.com/audiocontentcreation) byl lokalizován do 17 národních prostředí**. Uživatelé můžou uživatelské rozhraní snadno přepnout na místní jazyk, aby bylo lépe přívětivé prostředí.   
+- **Vytvoření zvukového obsahu** : byl přidán ovládací prvek stupeň stylu pro XiaoxiaoNeural; Zakontrastí přizpůsobené funkce Break, aby zahrnovala přírůstkové zalomení 50ms. 
+
+**Obecná vylepšení kvality hlasu TTS**
+- Vylepšená přesnost výslovnosti na úrovni aplikace v `pl-PL` (snižování míry chyb: 51%) a `fi-FI` (snížení míry chyb: 58%)
+- Vylepšené `ja-JP` čtení jednoho slova pro scénář slovníku. Chyba s menším množstvím výslovnosti o 80%.
+- `zh-CN-XiaoxiaoNeural`: Vylepšená kvalita hlasu ve stylu mínění/CustomerService/Newscast/Cheerful/Angry.
+- `zh-CN`: Vylepšená výslovnost Erhua a světlá a Prosody prostor pro barevný výkon, což výrazně vylepšuje intelligibility. 
 
 ## <a name="speech-sdk-1140-2020-october-release"></a>Sada Speech SDK 1.14.0:2020 – říjen Release
 
@@ -78,6 +92,18 @@ SPX je rozhraní příkazového řádku, které používá službu Azure Speech 
 - `spx * --http header A=B` – Podpora vlastních hlaviček (přidaných pro Office pro vlastní ověřování). 
 - `spx help` – Vylepšená barva textu a zpětného zaškrtnutí kódované barvy (modrá).
 
+## <a name="text-to-speech-2020-september-release"></a>Převod textu na řeč 2020 – září vydaná verze
+
+### <a name="new-features"></a>Nové funkce
+
+* **Neuronové TTS** 
+    * **Rozšířeno o podporu 18 nových jazyků a národních prostředí.** Jsou bulharské, čeština, němčina (Rakousko), němčina (Švýcarsko), řečtina, angličtina (Irsko), francouzština (Švýcarsko), hebrejština, chorvatština, maďarština, indonéština, maďarština, maďarština, italština, maďarština, italština, tamilština, telugština a vietnamština. 
+    * **Byly vydány 14 nových hlasů pro obohacení celé řady ve stávajících jazycích.** Zobrazit [úplný seznam jazyků a hlasu](language-support.md#neural-voices).
+    * **Nové styly speaking pro `en-US` a `zh-CN` hlasy.** Tomash, nový hlas v angličtině (US), podporuje styly chatovací robot, zákaznických služeb a asistentů. v našem hlasu zh-CN je k dispozici 10 nových stylů speaking, XiaoXiao. Kromě toho hlas XiaoXiao neuronové podporuje `StyleDegree` ladění. Podívejte se, [Jak používat styly Speak v SSML](speech-synthesis-markup.md#adjust-speaking-styles).
+
+* **Kontejnery: kontejner neuronové TTS vydaný ve verzi Public Preview s 16 hlasy dostupnými ve 14 jazycích.** Další informace o [nasazení kontejnerů řeči pro neuronové TTS](speech-container-howto.md)  
+
+Přečtěte si [kompletní oznámení o aktualizacích TTS pro Ignite 2020](https://techcommunity.microsoft.com/t5/azure-ai/ignite-2020-neural-tts-updates-new-language-support-more-voices/ba-p/1698544) 
 
 ## <a name="text-to-speech-2020-august-release"></a>Převod textu na řeč 2020 – srpen Release
 

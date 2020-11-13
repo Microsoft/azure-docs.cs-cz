@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: ce3174516d8046df53b5290bcfeea03756937129
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 26ac1714330bba06c01d33b47105f04c600c7729
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201524"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555103"
 ---
 # <a name="color-materials"></a>Barevné materiály
 
@@ -22,7 +22,7 @@ Barevné materiály jsou efektivnější pro vykreslování než [PBR materiál�
 
 Tyto vlastnosti jsou společné pro všechny materiály:
 
-* **albedoColor:** Tato barva se vynásobí jinými barvami, jako je například *albedoMap* nebo * :::no-loc text="vertex"::: Colors*. Pokud je pro materiál povolená *průhlednost* , alfa kanál se použije k úpravě krytí, což znamená, že je `1` plně neprůhledný a má velmi `0` transparentní význam. Výchozí hodnota je bílá.
+* **albedoColor:** Tato barva se vynásobí jinými barvami, jako je například *albedoMap* nebo *:::no-loc text="vertex"::: Colors*. Pokud je pro materiál povolená *průhlednost* , alfa kanál se použije k úpravě krytí, což znamená, že je `1` plně neprůhledný a má velmi `0` transparentní význam. Výchozí hodnota je bílá.
 
   > [!NOTE]
   > Vzhledem k tomu, že barevné materiály neodrážejí prostředí, je plně transparentní barevný materiál neviditelný. To se u [materiálů PBR](pbr-materials.md)liší.
@@ -38,6 +38,12 @@ Tyto vlastnosti jsou společné pro všechny materiály:
 * **isDoubleSided:** Pokud je vlastnost sidedness nastavená na hodnotu true, budou se tyto trojúhelníky s tímto materiálem vykreslovat i v případě, že fotoaparát hledá své zadní plošky. Ve výchozím nastavení je tato možnost zakázána. Viz také [ :::no-loc text="Single-sided"::: vykreslování](single-sided-rendering.md).
 
 * **TransparencyWritesDepth:** Pokud je pro materiál nastaven příznak TransparencyWritesDepth a materiál je transparentní, objekty, které tento materiál používají, budou také přispívat do konečné vyrovnávací paměti. Podívejte se na vlastnost barevný materiál *transparencyMode* v následující části. Povolení této funkce se doporučuje v případě, že váš případ použití potřebuje další plausibleou [fázi reprojekce](late-stage-reprojection.md) plně transparentních scén. U smíšených neprůhledných a transparentních scén může toto nastavení způsobit implausible reanalýzování nebo artefakty reprojekce. Z tohoto důvodu je výchozím a doporučeným nastavením pro obecný případ použití zakázání tohoto příznaku. Napsané hodnoty hloubky jsou pořízeny ze vrstvy hloubkového pixelu objektu, který je nejblíže kameře.
+
+* **FresnelEffect:** Tento příznak materiálu umožňuje doplňkové [Fresnelova poklesu účinky](../../overview/features/fresnel-effect.md) na příslušný materiál. Vzhled tohoto efektu závisí na dalších parametrech Fresnelova poklesu, které jsou vysvětleny v následujícím tématu. 
+
+* **FresnelEffectColor:** Barva Fresnelova poklesu použitá pro tento materiál Důležité pouze v případě, že byl pro tento materiál nastaven bit Fresnelova poklesu účinek (viz výše). Tato vlastnost řídí základní barvu Fresnelova poklesu. září (viz [efekt Fresnelova poklesu](../../overview/features/fresnel-effect.md) pro úplné vysvětlení). Momentálně jsou důležité pouze hodnoty kanálu RGB a hodnota alfa bude ignorována.
+
+* **FresnelEffectExponent:** Fresnelova poklesu exponent použitý pro tento materiál. Důležité pouze v případě, že byl pro tento materiál nastaven bit Fresnelova poklesu účinek (viz výše). Tato vlastnost řídí rozprostření Fresnelova poklesu. Minimální hodnota 0,01 způsobuje rozprostření napříč celým objektem. Maximální hodnota 10,0, která je větší, než září, aby byla viditelná pouze gracing hrany.
 
 ## <a name="color-material-properties"></a>Vlastnosti barevného materiálu
 

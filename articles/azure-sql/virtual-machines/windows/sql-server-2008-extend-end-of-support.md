@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fbfc4619e8af86a89b82f32ff3bc9a39c92b355a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1c1dd2ba5eb6ee61a0f8cf151649441cbc783166
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784860"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553519"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozšiřování podpory SQL Server 2008 a SQL Server 2008 R2 s Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -45,9 +45,9 @@ Image nasazené prostřednictvím Azure Marketplace se dodávají s předinstalo
 ## <a name="licensing"></a>Licencování
 Nasazení s průběžnými platbami SQL Server 2008 R2 se dá převést na [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-Pokud chcete převést licenci na základě programu Software Assurance (SA) na průběžné platby, měli by se zákazníci zaregistrovat u [poskytovatele prostředků](sql-vm-resource-provider-register.md)virtuálního počítače SQL. Po této registraci se typ licence SQL zamění mezi Zvýhodněné hybridní využití Azure a průběžnými platbami.
+Pokud chcete převést licenci na základě programu Software Assurance (SA) na průběžné platby, měli by se zákazníci zaregistrovat pomocí [rozšíření agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md). Po této registraci se typ licence SQL zamění mezi Zvýhodněné hybridní využití Azure a průběžnými platbami.
 
-Vlastní instalace SQL Server 2008 nebo SQL Server 2008 R2 instance na virtuálním počítači Azure se může zaregistrovat u poskytovatele prostředků virtuálního počítače SQL a převést jejich typ licence na průběžné platby.
+Vlastní instalace SQL Server 2008 nebo SQL Server 2008 R2 instance na virtuálním počítači Azure se může zaregistrovat pomocí rozšíření agenta SQL IaaS a převést jejich typ licence na průběžné platby.
 
 ## <a name="migration"></a>Migrace
 Instance EOS SQL Server můžete migrovat do virtuálního počítače Azure pomocí ručních metod zálohování nebo obnovení. Toto je nejběžnější způsob migrace z místního prostředí do virtuálního počítače Azure.
@@ -71,7 +71,8 @@ SQL Server vyžaduje pro zajištění obnovení Azure Site Recovery snímky konz
 - **Azure Site Recovery** : virtuální počítač můžete replikovat mezi zónami a oblastmi prostřednictvím replikace Azure Site Recovery. SQL Server vyžaduje, aby se snímky konzistentní vzhledem k aplikacím zaručily v případě havárie. Azure Site Recovery nabízí minimální 1 hodinu RPO a 2 hodinu (plus SQL Server čas obnovení) RTO pro zotavení po havárii EOS SQL Server.
 
 ## <a name="security-patching"></a>Opravy zabezpečení
-Rozšířené aktualizace zabezpečení pro SQL Server virtuálních počítačů se doručí prostřednictvím kanálů Microsoft Update po registraci SQL Server virtuálního počítače u [poskytovatele prostředků](sql-vm-resource-provider-register.md)virtuálního počítače SQL. Opravy lze stáhnout ručně nebo automaticky.
+
+Rozšířené aktualizace zabezpečení pro SQL Server virtuálních počítačů se doručí prostřednictvím kanálů Microsoft Update po registraci SQL Server virtuálního počítače pomocí [rozšíření agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md). Opravy lze stáhnout ručně nebo automaticky.
 
 *Automatizované opravy* jsou ve výchozím nastavení povolené. Automatizované opravy umožňují na platformě Azure automaticky opravovat SQL Server a operační systém. Pokud je nainstalováno rozšíření SQL Server IaaS, můžete zadat den v týdnu, čas a dobu trvání okna údržby. V té době pak Azure nainstaluje potřebné opravy. V rámci plánování intervalu údržby se pro čas používá národní prostředí virtuálních počítačů. Další informace najdete v tématu [automatizované opravy pro SQL Server v Azure Virtual Machines](automated-patching.md).
 

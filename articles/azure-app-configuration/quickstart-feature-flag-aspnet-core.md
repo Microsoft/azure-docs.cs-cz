@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 866f1c404df2de87c2b3ce58b791ceb5257fca1b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 88481346f22176b8e307b53774b42d753838f90b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074443"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554817"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -29,7 +29,7 @@ Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou 
 
 [!INCLUDE[Azure App Configuration resource creation steps](../../includes/azure-app-configuration-create.md)]
 
-8. Vyberte **Operations**  >  **Manager**–  >  **Přidat** a přidejte příznak funkce s názvem *beta*.
+8. Vyberte **Operations**  >  **Manager** –  >  **Přidat** a přidejte příznak funkce s názvem *beta*.
 
     > [!div class="mx-imgBorder"]
     > ![Povolit příznak funkce s názvem beta](media/add-beta-feature-flag.png)
@@ -70,7 +70,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Přístup k tomuto tajnému kódu pomocí konfiguračního rozhraní API .NET Core. Dvojtečka ( `:` ) funguje v názvu konfigurace s rozhraním API konfigurace na všech podporovaných platformách. Další informace najdete v tématu [konfigurační klíče a hodnoty](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
-1. V *program.cs*aktualizujte `CreateWebHostBuilder` metodu tak, aby používala konfiguraci aplikace, voláním `AddAzureAppConfiguration` metody.
+1. V *program.cs* aktualizujte `CreateWebHostBuilder` metodu tak, aby používala konfiguraci aplikace, voláním `AddAzureAppConfiguration` metody.
 
     > [!IMPORTANT]
     > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3. x. Vyberte správnou syntaxi na základě vašeho prostředí.
@@ -106,9 +106,9 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    V předchozí změně byl [Poskytovatel konfigurace pro konfiguraci aplikace](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) zaregistrován s rozhraním .NET Core Configuration API.
+    V předchozí změně byl [Poskytovatel konfigurace pro konfiguraci aplikace](https://go.microsoft.com/fwlink/?linkid=2074664) zaregistrován s rozhraním .NET Core Configuration API.
 
-1. Do *Startup.cs*přidejte odkaz na správce funkcí .NET Core:
+1. Do *Startup.cs* přidejte odkaz na správce funkcí .NET Core:
 
     ```csharp
     using Microsoft.FeatureManagement;
@@ -173,7 +173,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
     }
     ```
 
-1. V *zobrazeních/_ViewImports. cshtml*Zaregistrujte pomocníka značky správce funkcí pomocí `@addTagHelper` direktivy:
+1. V *zobrazeních/_ViewImports. cshtml* Zaregistrujte pomocníka značky správce funkcí pomocí `@addTagHelper` direktivy:
 
     ```cshtml
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
@@ -181,36 +181,9 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Předchozí kód umožňuje `<feature>` použití pomocné rutiny tag v souborech *. cshtml* projektu.
 
-1. V *zobrazení/Shared/_Layout. cshtml*nahraďte `<nav>` Čárový kód `<body>`  >  `<header>` následujícím kódem:
+1. Otevřete *_Layout. cshtml* ve sdíleném adresáři *views* \\ *Shared* . Vyhledejte `<nav>` Čárový kód v části `<body>`  >  `<header>` . Vložte novou `<feature>` značku mezi položky *Domů* a navigační panel *ochrany osobních údajů* , jak je znázorněno na zvýrazněných řádcích níže.
 
-    ```cshtml
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TestFeatureFlags</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <feature name="Beta">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Beta" asp-action="Index">Beta</a>
-                    </li>
-                    </feature>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    ```
-
-    V předchozím kódu si všimněte `<feature>` pomocníka značek, který je ohraničen položkou seznamu *beta verze* .
+    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
 
 1. Vytvořte adresář *views/beta* a soubor *index. cshtml* obsahující následující kód:
 
@@ -244,15 +217,17 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-before.png" alt-text="Místní aplikace pro rychlý Start před změnou" border="true":::
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
-1. Vyberte **správce funkcí**a změňte stav *beta* klíče na **zapnuto**.
+1. Vyberte **správce funkcí**. 
+
+1. Aktivujte příznak *beta* zaškrtnutím políčka v části **povoleno**.
 
 1. Vraťte se do příkazového prostředí. Spuštění procesu ukončíte `dotnet` stisknutím <kbd>kombinace kláves CTRL + C</kbd>. Restartujte aplikaci pomocí `dotnet run` .
 
 1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace.
 
-    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="Místní aplikace pro rychlý Start před změnou" border="true":::
+    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="Místní aplikace pro rychlý Start po změně" border="true":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -260,7 +235,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho ke správě funkcí v ASP.NET Core webové aplikaci přes [knihovny pro správu funkcí](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration).
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho ke správě funkcí v ASP.NET Core webové aplikaci přes [knihovny pro správu funkcí](https://go.microsoft.com/fwlink/?linkid=2074664).
 
 * Přečtěte si další informace o [správě funkcí](./concept-feature-management.md).
 * [Správa příznaků funkcí](./manage-feature-flags.md).

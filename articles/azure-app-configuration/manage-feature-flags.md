@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: dd816ebcf2a40e6a0b7febcc3fe5c1006dac20bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e35c408d2e0ec2954ffdcbbce47f98ac49b16b8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88209949"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554695"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Kurz: Správa příznaků funkcí v konfiguraci aplikací Azure
 
@@ -50,12 +50,13 @@ Přidání nového příznaku funkce:
 
     ![Vytváření příznaků funkcí](./media/azure-app-configuration-feature-flag-create.png)
 
-1. Když je stav *zapnutý*, vyberte **+ Přidat filtr** a určete další podmínky, které se mají uvést do stavu. Zadejte vestavěný nebo vlastní klíč filtru a pak vyberte **+ Přidat parametr** pro přidružení jednoho nebo více parametrů k filtru. Mezi předdefinované filtry patří:
+1. Když je stav *zapnutý* , vyberte **+ Přidat filtr** a určete další podmínky, které se mají uvést do stavu. Zadejte vestavěný nebo vlastní klíč filtru a pak vyberte **+ Přidat parametr** pro přidružení jednoho nebo více parametrů k filtru. Mezi předdefinované filtry patří:
 
     | Klíč | Parametry JSON |
     |---|---|
     | Microsoft. PERCENTAGE | {"Value": 0-100%} |
     | Microsoft. TimeWindow | {"Start": čas UTC, "konec": světový čas UTC} |
+    | Microsoft. Targeting | {"Publikum": objekty blob JSON definující uživatele, skupiny a procenta zavedení. Podívejte se na příklad v rámci `EnabledFor` elementu [tohoto souboru nastavení](https://github.com/microsoft/FeatureManagement-Dotnet/blob/master/examples/FeatureFlagDemo/appsettings.json) }
 
     ![Filtr příznaků funkcí](./media/azure-app-configuration-feature-flag-filter.png)
 
@@ -65,7 +66,7 @@ Změna hodnoty stavu příznaku funkce:
 
 1. Vyberte **správce funkcí**.
 
-1. Napravo od příznaku funkce, který chcete upravit, vyberte tři tečky (**...**) a pak vyberte **Upravit**.
+1. Napravo od příznaku funkce, který chcete upravit, vyberte tři tečky ( **...** ) a pak vyberte **Upravit**.
 
 1. Nastavte nový stav příznaku funkce.
 

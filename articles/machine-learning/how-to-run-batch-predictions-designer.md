@@ -1,7 +1,7 @@
 ---
 title: Spuštění dávkového předpovědi pomocí návrháře Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Naučte se naučit model a nastavit kanál předpovědi dávky pomocí návrháře. Nasaďte kanál jako parametrizovanou webovou službu, která se dá aktivovat z libovolné knihovny HTTP.
+description: Přečtěte si, jak vytvořit kanál předpovědi pro dávku. Nasaďte kanál jako parametrizovanou webovou službu a aktivujte ho z jakékoli knihovny HTTP.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: f070cfc1fd9b4326c5a80ce31f6263aadbe8e8bc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2ef125f65e13f7a9fa756553b1de148d4849babc
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325439"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553942"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Spuštění dávkového předpovědi pomocí návrháře Azure Machine Learning
 
@@ -31,7 +31,7 @@ V tomto postupu se naučíte, jak provádět následující úlohy:
 
 Informace o tom, jak pomocí sady SDK nastavit služby vyhodnocování služby Batch, najdete v doprovodném [postupu](./tutorial-pipeline-batch-scoring-classification.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento postup předpokládá, že už máte školicí kanál. Úvod do návrháře s průvodcem najdete v [části první kurz návrháře](tutorial-designer-automobile-price-train-score.md). 
 
