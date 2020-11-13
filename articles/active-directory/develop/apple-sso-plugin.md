@@ -13,19 +13,17 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7ec6ab8b52d9d43d898f481a2f36310e5c0897d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530693"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561076"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO – modul plug-in pro zařízení Apple (Preview)
 
-> [!NOTE]
-> Tato funkce je ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>[!IMPORTANT]
+> Tato funkce [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 *Modul plug-in Microsoft Enterprise SSO pro zařízení Apple* poskytuje jednotné přihlašování (SSO) pro účty Azure Active Directory (Azure AD) ve všech aplikacích, které podporují funkci [podnikového jednotného přihlašování](https://developer.apple.com/documentation/authenticationservices) od společnosti Apple. Společnost Microsoft úzce spolupracuje s Applem při vývoji tohoto modulu plug-in, aby zvýšila použitelnost vaší aplikace a současně poskytovala nejlepší ochranu, kterou může společnost Apple a Microsoft poskytnout.
 
@@ -53,10 +51,10 @@ Aby bylo možné povolit modul plug-in Microsoft Enterprise SSO pro zařízení 
 
 Ke konfiguraci modulu plug-in Microsoft Enterprise SSO pro zařízení Apple použijte následující parametry:
 
-- **Typ**: přesměrování
-- **ID rozšíření**: `com.microsoft.azureauthenticator.ssoextension`
-- **ID týmu**: (Toto pole není pro iOS potřeba)
-- **Adresy URL**:
+- **Typ** : přesměrování
+- **ID rozšíření** : `com.microsoft.azureauthenticator.ssoextension`
+- **ID týmu** : (Toto pole není pro iOS potřeba)
+- **Adresy URL** :
   - `https://login.microsoftonline.com`
   - `https://login.microsoft.com`
   - `https://sts.windows.net`
@@ -80,10 +78,10 @@ Podporují se jenom aplikace, které používají nativní síťové technologie
 
 Pomocí následujících parametrů nakonfigurujte modul plug-in Microsoft Enterprise SSO pro aplikace, které nepoužívají MSAL:
 
-- **Klíč**: `AppAllowList`
-- **Zadejte**: `String`
-- **Hodnota**: seznam identifikátorů aplikačních sad oddělených čárkami, které se můžou zúčastnit jednotného přihlašování
-- **Příklad**: `com.contoso.workapp, com.contoso.travelapp`
+- **Klíč** : `AppAllowList`
+- **Zadejte** : `String`
+- **Hodnota** : seznam identifikátorů aplikačních sad oddělených čárkami, které se můžou zúčastnit jednotného přihlašování
+- **Příklad** : `com.contoso.workapp, com.contoso.travelapp`
 
 [Přijaté aplikace](./application-consent-experience.md) , které může správce MDM zapojit do programu jednotného přihlašování, můžou pro koncového uživatele tiše získat token. Proto je důležité přidat pouze důvěryhodné aplikace do seznamu povolených aplikací. 
 
@@ -95,9 +93,9 @@ Ve výchozím nastavení poskytuje modul plug-in Microsoft Enterprise SSO jednot
 
 `browser_sso_interaction_enabled`Při povolení příznaku se neMSAL aplikace a prohlížeč Safari provede počáteční zavedení a získá sdílené přihlašovací údaje. Pokud modul plug-in jednotného přihlašování (SSO) Microsoft Enterprise ještě nemá sdílené přihlašovací údaje, pokusí se ho získat pokaždé, když se na adrese URL služby Azure AD v prohlížeči Safari, ASWebAuthenticationSession, SafariViewController nebo jiné povolené nativní aplikaci žádá o přihlášení.  
 
-- **Klíč**: `browser_sso_interaction_enabled`
-- **Zadejte**: `Integer`
-- **Hodnota**: 1 nebo 0
+- **Klíč** : `browser_sso_interaction_enabled`
+- **Zadejte** : `Integer`
+- **Hodnota** : 1 nebo 0
 
 Doporučujeme povolit tento příznak pro zajištění jednotnějšího prostředí napříč všemi aplikacemi. Ve výchozím nastavení je zakázaná. 
 
@@ -107,9 +105,9 @@ Modul plug-in Microsoft Enterprise SSO poskytuje jednotné přihlašování pomo
 
 Povolením `disable_explicit_app_prompt` příznaku se omezuje schopnost nativních i webových aplikací, aby se vynutila výzva koncovým uživatelům na vrstvu protokolu a vynechá jednotné přihlašování.
 
-- **Klíč**: `disable_explicit_app_prompt`
-- **Zadejte**: `Integer`
-- **Hodnota**: 1 nebo 0
+- **Klíč** : `disable_explicit_app_prompt`
+- **Zadejte** : `Integer`
+- **Hodnota** : 1 nebo 0
 
 Doporučujeme povolit tento příznak pro zajištění jednotnějšího prostředí napříč všemi aplikacemi. Ve výchozím nastavení je zakázaná. 
 

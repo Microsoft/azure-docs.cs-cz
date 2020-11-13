@@ -5,18 +5,18 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 76e7b3d0b0dd514feb7d16a6bc23d1b908be683f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f2e63903546e173e17f2b457b78eb41bcdf65dbd
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207202"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555562"
 ---
 # <a name="pbr-materials"></a>Materiály PBR
 
 *Materiály PBR* jsou jedním z podporovaných [typů materiálu](../../concepts/materials.md) ve vzdáleném vykreslování Azure. Používají se pro [sítě](../../concepts/meshes.md) , které by měly přijímat reálné osvětlení.
 
-PBR představuje pro **P**hysically **B**ased **R**endering a to znamená, že materiál popisuje vizuální vlastnosti povrchu fyzicky plausible, takže reálné výsledky jsou možné v rámci všech světelných podmínek. Většina moderních herních modulů a nástrojů pro vytváření obsahu podporují PBR materiály, protože se považují za nejlepší odhad scénářů reálného světa pro vykreslování v reálném čase.
+PBR představuje pro **P** hysically **B** ased **R** endering a to znamená, že materiál popisuje vizuální vlastnosti povrchu fyzicky plausible, takže reálné výsledky jsou možné v rámci všech světelných podmínek. Většina moderních herních modulů a nástrojů pro vytváření obsahu podporují PBR materiály, protože se považují za nejlepší odhad scénářů reálného světa pro vykreslování v reálném čase.
 
 ![GlTF Vzorový model, který je vykreslený pomocí ARR](media/helmet.png)
 
@@ -26,7 +26,7 @@ Materiály PBR nejsou univerzálním řešením, i když. V závislosti na úhlu
 
 Tyto vlastnosti jsou společné pro všechny materiály:
 
-* **albedoColor:** Tato barva se vynásobí jinými barvami, jako je například *albedoMap* nebo * :::no-loc text="vertex "::: Colors*. Pokud je pro materiál povolená *průhlednost* , alfa kanál se použije k úpravě krytí, což znamená, že je `1` plně neprůhledný a má velmi `0` transparentní význam. Výchozí hodnota je bílá.
+* **albedoColor:** Tato barva se vynásobí jinými barvami, jako je například *albedoMap* nebo *:::no-loc text="vertex "::: Colors*. Pokud je pro materiál povolená *průhlednost* , alfa kanál se použije k úpravě krytí, což znamená, že je `1` plně neprůhledný a má velmi `0` transparentní význam. Výchozí hodnota je bílá.
 
   > [!NOTE]
   > Když je materiál PBR plně transparentní, jako dokonale čistá část skla, stále odráží prostředí. Jasné skvrny, jako je slunce, jsou pořád viditelné v reflexi. To se pro [barevné materiály](color-materials.md)liší.
@@ -43,9 +43,15 @@ Tyto vlastnosti jsou společné pro všechny materiály:
 
 * **TransparencyWritesDepth:** Pokud je pro materiál nastaven příznak TransparencyWritesDepth a materiál je transparentní, objekty, které tento materiál používají, budou také přispívat do konečné vyrovnávací paměti. Zobrazit v další části příznak materiálu PBR *Průhledný* Povolení této funkce se doporučuje v případě, že váš případ použití potřebuje další plausibleou [fázi reprojekce](late-stage-reprojection.md) plně transparentních scén. U smíšených neprůhledných a transparentních scén může toto nastavení způsobit implausible reanalýzování nebo artefakty reprojekce. Z tohoto důvodu je výchozím a doporučeným nastavením pro obecný případ použití zakázání tohoto příznaku. Napsané hodnoty hloubky jsou pořízeny ze vrstvy hloubkového pixelu objektu, který je nejblíže kameře.
 
+* **FresnelEffect:** Tento příznak materiálu umožňuje doplňkové [Fresnelova poklesu účinky](../../overview/features/fresnel-effect.md) na příslušný materiál. Vzhled tohoto efektu závisí na dalších parametrech Fresnelova poklesu, které jsou vysvětleny v následujícím tématu. 
+
+* **FresnelEffectColor:** Barva Fresnelova poklesu použitá pro tento materiál Důležité pouze v případě, že byl pro tento materiál nastaven bit Fresnelova poklesu účinek (viz výše). Tato vlastnost řídí základní barvu Fresnelova poklesu. září (viz [efekt Fresnelova poklesu](../../overview/features/fresnel-effect.md) pro úplné vysvětlení). Momentálně jsou důležité pouze hodnoty kanálu RGB a hodnota alfa bude ignorována.
+
+* **FresnelEffectExponent:** Fresnelova poklesu exponent použitý pro tento materiál. Důležité pouze v případě, že byl pro tento materiál nastaven bit Fresnelova poklesu účinek (viz výše). Tato vlastnost řídí rozprostření Fresnelova poklesu. Minimální hodnota 0,01 způsobuje rozprostření napříč celým objektem. Maximální hodnota 10,0, která je větší, než září, aby byla viditelná pouze gracing hrany.
+
 ## <a name="pbr-material-properties"></a>Vlastnosti materiálu PBR
 
-Základní nápad, který je fyzicky založený na *vykreslování, je*použití *BaseColor*, vlastností odolnosti a vlastností *hrubosti* k emulaci široké škály reálných materiálů. Podrobný popis PBR překračuje rozsah tohoto článku. Další informace o PBR najdete v tématu [Další zdroje](http://www.pbr-book.org). Následující vlastnosti jsou specifické pro materiály PBR:
+Základní nápad, který je fyzicky založený na *vykreslování, je* použití *BaseColor* , vlastností odolnosti a vlastností *hrubosti* k emulaci široké škály reálných materiálů. Podrobný popis PBR překračuje rozsah tohoto článku. Další informace o PBR najdete v tématu [Další zdroje](http://www.pbr-book.org). Následující vlastnosti jsou specifické pro materiály PBR:
 
 * **baseColor:** V materiálech PBR se *Barva albedo* označuje jako *základní barva*. Ve vzdáleném vykreslování Azure je vlastnost *albedo Color* již přítomna prostřednictvím vlastností společných materiálů, takže neexistuje žádná další základní vlastnost Color.
 

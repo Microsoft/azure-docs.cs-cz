@@ -7,15 +7,15 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: 0119d134861b54ac14c6fe22b638ab459344c5ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2019
+ms.openlocfilehash: fa516f577254f827a6437697df82010bd9b631ee
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569883"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555906"
 ---
-# <a name="transform-data-using-mapping-data-flows"></a>Transformace dat pomocí mapování toků dat
+# <a name="transform-data-using-mapping-data-flows"></a>Transformace dat s využitím mapování toků dat
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -36,14 +36,14 @@ V tomto kurzu provedete následující kroky:
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. ADLS Storage použijete jako *zdrojová* úložiště a úložiště dat *jímky* . Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md), kde najdete postup jeho vytvoření.
 
-Soubor, který v tomto kurzu transformuje, je MoviesDB.csv, který najdete [tady](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv). Pokud chcete načíst soubor z GitHubu, zkopírujte obsah do textového editoru, který si zvolíte, a uložte ho místně jako soubor. csv. Postup nahrání souboru do účtu úložiště najdete v tématu [nahrání objektů BLOB pomocí webu Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). Příklady budou odkazovat na kontejner s názvem Sample-data.
+Soubor, který v tomto kurzu transformuje, je MoviesDB.csv, který najdete [tady](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv). Pokud chcete načíst soubor z GitHubu, zkopírujte obsah do textového editoru, který si zvolíte, a uložte ho místně jako soubor. csv. Postup nahrání souboru do účtu úložiště najdete v tématu [nahrání objektů BLOB pomocí Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). Příklady budou odkazovat na kontejner s názvem Sample-data.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory UX pro vytvoření kanálu v datové továrně.
 
 1. Otevřete **Microsoft Edge** nebo **Google Chrome**. V současné době je Data Factory uživatelské rozhraní podporováno pouze ve webových prohlížečích Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků:
+2. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  **Data Factory** :
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -57,7 +57,7 @@ V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory UX pro vytvo
 
     a. Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
 
-    b. Vyberte **vytvořit novou**a zadejte název skupiny prostředků. 
+    b. Vyberte **vytvořit novou** a zadejte název skupiny prostředků. 
          
     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md). 
 6. Jako **Verzi** vyberte **V2**.
@@ -131,7 +131,7 @@ Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku
 
     Pokud máte aktivní cluster ladění, můžete svoji logiku ověřit kliknutím na **aktualizovat** , aby se zobrazil výstup výrazu v porovnání s použitými vstupy. Existuje více než jedna správná odpověď na to, jak tuto logiku můžete dosáhnout pomocí jazyka výrazů toku dat.
 
-    ![Filtrování](media/tutorial-data-flow/filter2.png)
+    ![Filtr](media/tutorial-data-flow/filter2.png)
 
     Až budete s vaším výrazem hotovi, klikněte na **Uložit a dokončit** .
 
@@ -147,7 +147,7 @@ Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku
 1. Přejít na kartu **agregace** . V levém textovém poli pojmenujte agregovaný sloupec **AverageComedyRating**. Klikněte na pravé pole výrazu a zadejte agregační výraz pomocí Tvůrce výrazů.
 
     ![Snímek obrazovky zobrazující možnost roku na kartě agregace v části agregované nastavení.](media/tutorial-data-flow/agg3.png)
-1. Chcete-li získat průměr **hodnocení**sloupce, použijte ```avg()``` agregační funkci. Protože **hodnocení** je řetězec a ```avg()``` přebírá numerické vstupy, je nutné hodnotu převést na číslo prostřednictvím ```toInteger()``` funkce. Výraz vypadá takto:
+1. Chcete-li získat průměr **hodnocení** sloupce, použijte ```avg()``` agregační funkci. Protože **hodnocení** je řetězec a ```avg()``` přebírá numerické vstupy, je nutné hodnotu převést na číslo prostřednictvím ```toInteger()``` funkce. Výraz vypadá takto:
 
     ```avg(toInteger(Rating))```
 
@@ -160,7 +160,7 @@ Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku
 1. Dále chcete přidat transformaci **jímky** do **umístění cíl**.
 
     ![Snímek obrazovky, který ukazuje, kde přidat transformaci jímky v cíli](media/tutorial-data-flow/sink1.png)
-1. Pojmenujte **jímku**jímky. Kliknutím na **Nový** Vytvořte datovou sadu jímky.
+1. Pojmenujte **jímku** jímky. Kliknutím na **Nový** Vytvořte datovou sadu jímky.
 
     ![Snímek obrazovky, který ukazuje, kde můžete pojmenovat jímku a vytvořit novou datovou sadu jímky.](media/tutorial-data-flow/sink2.png)
 1. Vyberte **Azure Data Lake Storage Gen2**. Klikněte na Pokračovat.
@@ -169,7 +169,7 @@ Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku
 1. Vyberte **DelimitedText**. Klikněte na Pokračovat.
 
     ![Datová sada](media/tutorial-data-flow/dataset2.png)
-1. Pojmenujte datovou sadu jímky **MoviesSink**. V části propojená služba vyberte propojenou službu ADLS Gen2, kterou jste vytvořili v kroku 6. Zadejte výstupní složku, do které se budou zapisovat data. V tomto kurzu píšete do složky ' Output ' v kontejneru ' Sample-data '. Složka nemusí být předem k dispozici a je možné ji vytvořit dynamicky. Nastavte **první řádek jako záhlaví** jako true a pro **Import schématu**vyberte **None (žádné** ). Klikněte na Dokončit.
+1. Pojmenujte datovou sadu jímky **MoviesSink**. V části propojená služba vyberte propojenou službu ADLS Gen2, kterou jste vytvořili v kroku 6. Zadejte výstupní složku, do které se budou zapisovat data. V tomto kurzu píšete do složky ' Output ' v kontejneru ' Sample-data '. Složka nemusí být předem k dispozici a je možné ji vytvořit dynamicky. Nastavte **první řádek jako záhlaví** jako true a pro **Import schématu** vyberte **None (žádné** ). Klikněte na Dokončit.
 
     ![Jímka](media/tutorial-data-flow/sink3.png)
 

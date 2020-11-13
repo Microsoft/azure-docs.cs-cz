@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 37a17105be0b6754bbdfd935c6c17933314114d4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: eee711917a732bfc24b10db82c75786fd9734b57
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289586"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555681"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity prostředků Azure
 
@@ -70,12 +70,22 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure App Service (v oblast
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | Preview | Není k dispozici | Není k dispozici | Není k dispozici | 
+| Přiřazená systémem | Preview | Není k dispozici | Není k dispozici | Není k dispozici |
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 Kubernetes s povoleným ARC Azure aktuálně [podporuje identitu přiřazenou systémem](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes). Certifikát identity spravované služby používá všechny agenti Kubernetes s podporou ARC Azure pro komunikaci s Azure.
 
-### <a name="azure-blueprints"></a>Azure Blueprint
+### <a name="azure-automanage"></a>Azure Automanage
+
+| Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Přiřazená systémem | Preview | Není k dispozici | Není k dispozici | Není k dispozici |
+| Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
+
+Pokud jste vaše předplatné přesunuli na nového tenanta, přečtěte si následující dokument, který překonfiguruje spravovanou identitu:
+* [Opravit poškozený účet automanage](../../automanage/repair-automanage-account.md)
+
+### <a name="azure-blueprints"></a>Azure Blueprints
 
 |Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -151,7 +161,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Data Factory v2 (v ob
 
 
 
-### <a name="azure-event-grid"></a>Azure Event Grid 
+### <a name="azure-event-grid"></a>Azure Event Grid
 
 Typ spravované identity |Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -202,7 +212,7 @@ Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti A
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | Není k dispozici | 
+| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | Není k dispozici |
 | Přiřazená uživatelem | Preview | Není k dispozici | Není k dispozici | Není k dispozici |
 
 
@@ -222,7 +232,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Logic Apps (v oblaste
 - [Azure Portal](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
 - [Šablona Azure Resource Manageru](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
-### <a name="azure-machine-learning"></a>Azure Machine Learning 
+### <a name="azure-machine-learning"></a>Azure Machine Learning
 
 Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -243,7 +253,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Policy (v oblastech, 
 - [Azure Portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
 - [Azure CLI](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
-- [Šablony Azure Resource Manager](/azure/templates/microsoft.authorization/policyassignments)
+- [Šablony Azure Resource Manageru](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/resources/policyassignments/create)
 
 
@@ -264,7 +274,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro aplikace Service Fabric Azu
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | Není k dispozici | Není k dispozici | Není k dispozici | 
+| Přiřazená systémem | ![K dispozici][check] | Není k dispozici | Není k dispozici | Není k dispozici |
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 
@@ -289,7 +299,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machine Scale
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Šablony Azure Resource Manager](qs-configure-template-windows-vm.md)
+- [Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 
@@ -298,7 +308,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machine Scale
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Preview | Preview | 
+| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Preview | Preview |
 | Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | Preview | Preview |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machines (v oblastech, kde je dostupná), podívejte se na následující seznam:
@@ -306,7 +316,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machines (v o
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Šablony Azure Resource Manager](qs-configure-template-windows-vm.md)
+- [Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 - [Sady Azure SDK](qs-configure-sdk-windows-vm.md)
 
@@ -315,7 +325,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machines (v o
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | 
+| Přiřazená systémem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 | Přiřazená uživatelem | [K dispozici v podporovaných oblastech](../../virtual-machines/windows/image-builder-overview.md#regions) | Není k dispozici | Není k dispozici | Není k dispozici |
 
 Informace o tom, jak nakonfigurovat spravovanou identitu pro sestavovatele imagí virtuálních počítačů Azure (v oblastech, kde je k dispozici), najdete v tématu [Přehled Tvůrce imagí](../../virtual-machines/windows/image-builder-overview.md#permissions).

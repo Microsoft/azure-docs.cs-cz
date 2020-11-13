@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b8dae471729b42b1c302c6c45033ddc808c7b43
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 5845a3bdc4b86fbbe44c92779e5aae95044eb6b2
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289307"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556359"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instance clusteru s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,8 +51,8 @@ SQL Server na virtuálních počítačích Azure nabízí různé možnosti jako
 |**Minimální verze operačního systému**| Vše |Windows Server 2012|Windows Server 2016|
 |**Minimální verze SQL Server**|Vše|SQL Server 2012|SQL Server 2016|
 |**Podporovaná dostupnost virtuálního počítače** |Skupiny dostupnosti se skupinami umístění blízkých souborů |Skupiny dostupnosti a zóny dostupnosti|Skupiny dostupnosti |
-|**Podporuje FileStream**|Ano|Ne|Ano |
-|**Mezipaměť objektů BLOB v Azure**|Ne|Ne|Ano|
+|**Podporuje FileStream**|Yes|Ne|Yes |
+|**Mezipaměť objektů BLOB v Azure**|Ne|Ne|Yes|
 
 Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností úložiště, které jsou dostupné pro SQL Server na virtuálních počítačích Azure. 
 
@@ -148,10 +148,11 @@ Další podrobnosti o možnostech připojení clusteru najdete v tématu [Směro
 
 Vezměte v úvahu následující omezení pro instance clusteru s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines. 
 
-### <a name="lightweight-resource-provider"></a>Zjednodušený poskytovatel prostředků   
-V současné době se SQL Server instance clusterů s podporou převzetí služeb při selhání na virtuálních počítačích Azure podporují jenom s [režimem zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). Pokud chcete přejít z režimu úplného rozšíření na odlehčený, odstraňte prostředek **virtuálního počítače SQL** pro odpovídající virtuální počítače a pak je zaregistrujte u poskytovatele prostředků virtuálního počítače SQL ve zjednodušeném režimu. Při odstraňování prostředku **virtuálního počítače SQL** pomocí Azure Portal zrušte zaškrtnutí políčka u správného virtuálního počítače. 
+### <a name="lightweight-extension-support"></a>Podpora zjednodušeného rozšíření   
 
-Úplné rozšíření podporuje funkce, jako je automatické zálohování, opravy a Správa portálu. Tyto funkce nebudou fungovat pro SQL Server virtuální počítače po přeinstalaci agenta v režimu zjednodušené správy.
+V současné době se SQL Server instance clusterů s podporou převzetí služeb při selhání na virtuálních počítačích Azure podporují jenom s [režimem zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) rozšíření agenta SQL Server IaaS. Pokud chcete přejít z režimu úplného rozšíření na odlehčený, odstraňte prostředek **virtuálního počítače SQL** pro odpovídající virtuální počítače a pak je Zaregistrujte pomocí rozšíření agenta SQL IaaS v jednoduchém režimu. Při odstraňování prostředku **virtuálního počítače SQL** pomocí Azure Portal zrušte zaškrtnutí políčka u správného virtuálního počítače, abyste se vyhnuli odstranění virtuálního počítače. 
+
+Úplné rozšíření podporuje funkce, jako je automatické zálohování, opravy a Správa portálu. Tyto funkce nebudou fungovat pro SQL Server virtuální počítače zaregistrované v režimu zjednodušené správy.
 
 ### <a name="msdtc"></a>NÁSTROJE 
 
@@ -167,7 +168,7 @@ V Azure Virtual Machines není služba MSDTC podporovaná pro Windows Server 201
 
 Projděte si [osvědčené postupy konfigurace clusteru](hadr-cluster-best-practices.md)a potom můžete [připravit SQL Server virtuální počítač pro FCI](failover-cluster-instance-prepare-vm.md). 
 
-Další informace naleznete v tématech: 
+Další informace najdete tady: 
 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

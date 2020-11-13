@@ -1,6 +1,6 @@
 ---
 title: Kopírování dat v Blob Storage pomocí Azure Data Factory
-description: Vytvořte datovou továrnu Azure pomocí prostředí PowerShell ke kopírování dat z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
+description: Vytvořte Azure Data Factory pomocí prostředí PowerShell ke kopírování dat z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,14 +13,14 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 1377743fbaefdb812f18768307421fdae637ed54
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a7fcb4be47e0e1e62c190a9b089243a178df8e7a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637577"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562045"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rychlé zprovoznění: Vytvoření datové továrny Azure pomocí PowerShellu
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rychlý Start: vytvoření Azure Data Factory pomocí prostředí PowerShell
 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -28,7 +28,7 @@ ms.locfileid: "92637577"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Tento rychlý start popisuje použití PowerShellu k vytvoření datové továrny Azure. Kanál, který vytvoříte v této datové továrně, **kopíruje** data z jedné složky do jiné složky v úložišti objektů BLOB v Azure. Kurz o tom, jak **transformovat** data pomocí Azure Data Factory, najdete v tématu [kurz: transformace dat pomocí Sparku](transform-data-using-spark.md).
+V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Data Factory. Kanál, který vytvoříte v této datové továrně, **kopíruje** data z jedné složky do jiné složky v úložišti objektů BLOB v Azure. Kurz o tom, jak **transformovat** data pomocí Azure Data Factory, najdete v tématu [kurz: transformace dat pomocí Sparku](transform-data-using-spark.md).
 
 > [!NOTE]
 > Tento článek neposkytuje podrobný úvod do služby Data Factory. Úvod do služby Azure Data Factory najdete v tématu [Úvod do Azure Data Factory](introduction.md).
@@ -43,7 +43,7 @@ Nainstalujte nejnovější Azure PowerShell moduly podle pokynů v tématu [Jak 
 
 #### <a name="log-in-to-powershell"></a>Přihlášení do PowerShellu
 
-1. Spusťte na svém počítači **PowerShell** . Nechte PowerShell otevřený až do konce tohoto rychlého startu. Pokud ho zavřete a znovu otevřete, tyto příkazy bude potřeba znovu spustit.
+1. Spusťte na svém počítači **PowerShell**. Nechte PowerShell otevřený až do konce tohoto rychlého startu. Pokud ho zavřete a znovu otevřete, tyto příkazy bude potřeba znovu spustit.
 
 2. Spusťte následující příkaz a zadejte uživatelské jméno a heslo Azure, které používáte k přihlášení na Azure Portal:
 
@@ -136,15 +136,15 @@ V datové továrně vytvořte propojené služby, abyste svá úložiště dat 
     }
     ```
 
-    Pokud používáte Poznámkový blok, v dialogovém okně **Uložit jako** v poli **Uložit jako typ** vyberte **Všechny soubory** . Jinak se k souboru může přidat přípona `.txt`. Například, `AzureStorageLinkedService.json.txt`. Pokud soubor před otevřením v Poznámkovém bloku vytvoříte v Průzkumníku souborů, přípona `.txt` se možná nezobrazí, protože ve výchozím nastavení je nastavená možnost **Skrýt příponu souborů známých typů** . Než budete pokračovat k dalšímu kroku, odeberte příponu `.txt`.
+    Pokud používáte Poznámkový blok, v dialogovém okně **Uložit jako** v poli **Uložit jako typ** vyberte **Všechny soubory**. Jinak se k souboru může přidat přípona `.txt`. Například, `AzureStorageLinkedService.json.txt`. Pokud soubor před otevřením v Poznámkovém bloku vytvoříte v Průzkumníku souborů, přípona `.txt` se možná nezobrazí, protože ve výchozím nastavení je nastavená možnost **Skrýt příponu souborů známých typů**. Než budete pokračovat k dalšímu kroku, odeberte příponu `.txt`.
 
-2. V **PowerShellu** přejděte do složky **ADFv2QuickStartPSH** .
+2. V **PowerShellu** přejděte do složky **ADFv2QuickStartPSH**.
 
     ```powershell
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
 
-3. Spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte propojenou službu: **AzureStorageLinkedService** .
+3. Spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte propojenou službu: **AzureStorageLinkedService**.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
@@ -163,7 +163,7 @@ V datové továrně vytvořte propojené služby, abyste svá úložiště dat 
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
 
-V tomto postupu vytvoříte dvě datové sady: **InputDataset** a **OutputDataset** . Tyto datové sady jsou typu **Binary** . Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části.
+V tomto postupu vytvoříte dvě datové sady: **InputDataset** a **OutputDataset**. Tyto datové sady jsou typu **Binary**. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části.
 Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů blob ( **adftutorial** ), složku ( **input** ) a soubor ( **emp.txt** ) obsahující zdrojová data.
 Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů blob ( **adftutorial** ), složku ( **output** ) a soubor, do kterého se data kopírují. 
 1. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **InputDataset.js** s následujícím obsahem:
@@ -231,7 +231,7 @@ Výstupní datová sada představuje data kopírovaná do cíle. V definici výs
     }
     ```
 
-4. Spuštěním rutiny **set-AzDataFactoryV2Dataset** vytvořte **sadu** .
+4. Spuštěním rutiny **set-AzDataFactoryV2Dataset** vytvořte **sadu**.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `

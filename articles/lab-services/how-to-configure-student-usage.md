@@ -2,13 +2,13 @@
 title: Konfigurace nastavení využití v učebně Labs Azure Lab Services
 description: Přečtěte si, jak nakonfigurovat počet studentů pro testovací prostředí, jak je zaregistrované v testovacím prostředí, určete počet hodin, po které může virtuální počítač používat, a další.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 742fcd2b504bce7ad2257edd559e4b66a9172d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.openlocfilehash: d3100f1a7e67e3b0d403375de02cb3daf5fcfb31
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399665"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555715"
 ---
 # <a name="add-and-manage-lab-users"></a>Přidání a správa uživatelů testovacího prostředí
 
@@ -20,9 +20,9 @@ V této části přidáte studenty do testovacího prostředí ručně nebo nahr
 
 1. V levém podokně vyberte **Uživatelé**. 
 
-    Ve výchozím nastavení je možnost **omezení přístupu** zapnutá a, pokud se nenacházejí v seznamu uživatelů, Students se v testovacím prostředí nemůže zaregistrovat, i když mají odkaz na registraci. Pomocí registračního odkazu, který odešlete, se můžou do testovacího prostředí zaregistrovat jenom uvedení uživatelé. V tomto postupu přidáte uživatele do seznamu. Alternativně můžete vypnout možnost **omezit přístup**, která umožňuje studentům registraci v testovacím prostředí, pokud mají odkaz na registraci. 
+    Ve výchozím nastavení je možnost **omezení přístupu** zapnutá a, pokud se nenacházejí v seznamu uživatelů, Students se v testovacím prostředí nemůže zaregistrovat, i když mají odkaz na registraci. Pomocí registračního odkazu, který odešlete, se můžou do testovacího prostředí zaregistrovat jenom uvedení uživatelé. V tomto postupu přidáte uživatele do seznamu. Alternativně můžete vypnout možnost **omezit přístup** , která umožňuje studentům registraci v testovacím prostředí, pokud mají odkaz na registraci. 
 
-1. V horní části podokna **Uživatelé** vyberte **Přidat uživatele**a pak vyberte **Přidat podle e-mailové adresy**. 
+1. V horní části podokna **Uživatelé** vyberte **Přidat uživatele** a pak vyberte **Přidat podle e-mailové adresy**. 
 
     ![Tlačítko "Přidat uživatele"](./media/how-to-configure-student-usage/add-users-button.png)
 
@@ -41,13 +41,15 @@ V této části přidáte studenty do testovacího prostředí ručně nebo nahr
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Přidání uživatelů odesláním souboru CSV
 
-Uživatele můžete také přidat tak, že nahrajete soubor CSV, který obsahuje jejich e-mailové adresy.
+Uživatele můžete také přidat tak, že nahrajete soubor CSV, který obsahuje jejich e-mailové adresy. 
+
+Textový soubor CSV se používá k ukládání tabulkových dat oddělených čárkou (CSV) (čísla a text). Místo uložení informací do polí sloupce (například v tabulkách) ukládá soubor CSV informace oddělené čárkami. Každý řádek v souboru CSV bude mít stejný počet polí oddělených čárkou. Pomocí aplikace Excel můžete snadno vytvářet a upravovat soubory CSV.
 
 1. V aplikaci Microsoft Excel vytvořte soubor CSV se seznamem e-mailových adres studentů v jednom sloupci.
 
     ![Seznam uživatelů v souboru CSV](./media/how-to-configure-student-usage/csv-file-with-users.png)
 
-1. V horní části podokna **Uživatelé** vyberte **Přidat uživatele**a pak vyberte **nahrát sdílený svazek clusteru**.
+1. V horní části podokna **Uživatelé** vyberte **Přidat uživatele** a pak vyberte **nahrát sdílený svazek clusteru**.
 
     ![Tlačítko pro nahrání sdíleného svazku clusteru](./media/how-to-configure-student-usage/upload-csv-button.png)
 
@@ -79,11 +81,11 @@ Tato metoda vám ukáže, jak odeslat e-mail s odkazem na registraci a volitelno
 
 1. V okně **poslat pozvánku e-mailem** zadejte volitelnou zprávu a pak vyberte **Odeslat**. 
 
-    E-mail automaticky obsahuje odkaz na registraci. Pokud chcete odkaz pro registraci získat a uložit samostatně, vyberte tři tečky (**...**) v horní části podokna **Uživatelé** a pak vyberte **odkaz na registraci**. 
+    E-mail automaticky obsahuje odkaz na registraci. Pokud chcete odkaz pro registraci získat a uložit samostatně, vyberte tři tečky ( **...** ) v horní části podokna **Uživatelé** a pak vyberte **odkaz na registraci**. 
 
     ![Okno Odeslat odkaz pro registraci e-mailem](./media/tutorial-setup-classroom-lab/send-email.png)
 
-    Sloupec **Pozvánka** v seznamu **Uživatelé** zobrazuje stav pozvánky pro každého přidaného uživatele. Stav by se měl změnit na **odesílání** a pak ** \<date> na. ** 
+    Sloupec **Pozvánka** v seznamu **Uživatelé** zobrazuje stav pozvánky pro každého přidaného uživatele. Stav by se měl změnit na **odesílání** a pak **\<date> na.** 
 
 ### <a name="invite-selected-users"></a>Pozvat vybrané uživatele
 
@@ -95,7 +97,7 @@ Tato metoda vám ukáže, jak pozvat jenom určité studenty a získat odkaz na 
 
     ![Pozvat vybrané uživatele](./media/how-to-configure-student-usage/invite-selected-users.png)
 
-1. V okně **poslat pozvánku e-mailem** zadejte volitelnou **zprávu**a pak vyberte **Odeslat**. 
+1. V okně **poslat pozvánku e-mailem** zadejte volitelnou **zprávu** a pak vyberte **Odeslat**. 
 
     ![Odeslat e-mail vybraným uživatelům](./media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
 
@@ -109,7 +111,7 @@ V této části můžete získat odkaz na registraci z portálu a odeslat ho pom
 
     ![Odkaz pro registraci studenta](./media/how-to-configure-student-usage/registration-link-button.png)
 
-1. V okně **registrace uživatele** vyberte možnost **Kopírovat**a potom vyberte možnost **Hotovo**. 
+1. V okně **registrace uživatele** vyberte možnost **Kopírovat** a potom vyberte možnost **Hotovo**. 
 
     ![Okno "registrace uživatele"](./media/how-to-configure-student-usage/registration-link.png)
 
@@ -120,9 +122,9 @@ V této části můžete získat odkaz na registraci z portálu a odeslat ho pom
 ## <a name="view-registered-users"></a>Zobrazit registrované uživatele
 
 1. Přejít na web [Azure Lab Services](https://labs.azure.com) . 
-1. Vyberte **Přihlásit**se a potom zadejte svoje přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft.
+1. Vyberte **Přihlásit** se a potom zadejte svoje přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft.
 1. Na stránce **Moje cvičení** vyberte testovací prostředí, jehož využití chcete sledovat. 
-1. V levém podokně vyberte **Uživatelé**nebo vyberte dlaždici **Uživatelé** . 
+1. V levém podokně vyberte **Uživatelé** nebo vyberte dlaždici **Uživatelé** . 
 
     V podokně **Uživatelé** se zobrazí seznam studentů, kteří se zaregistrovali v testovacím prostředí.  
 
@@ -137,7 +139,7 @@ Pro každého studenta můžete nastavit hodinovou kvótu následujícím způso
 
     ![Okno kvóty na uživatele](./media/how-to-configure-student-usage/quota-per-user.png)    
 
-    Změněné hodnoty se nyní zobrazují na ** \<number of hours> ** panelu nástrojů a v seznamu Uživatelé, jak je znázorněno zde:
+    Změněné hodnoty se nyní zobrazují na **\<number of hours>** panelu nástrojů a v seznamu Uživatelé, jak je znázorněno zde:
 
     ![Doba kvóty pro jednotlivé uživatele](./media/how-to-configure-student-usage/quot-per-user-after.png)
 
@@ -154,7 +156,7 @@ Pokud chcete nastavit další kvóty, udělejte toto:
 
     ![Tlačítko Upravit kvótu](./media/how-to-configure-student-usage/adjust-quota-button.png)
 
-1. V poli **kvóta úprav \<selected user or users email address> pro **zadejte počet dalších hodin testovacího prostředí, které chcete udělit vybraným studentům nebo studentům, a pak vyberte **použít**. 
+1. V poli **kvóta úprav \<selected user or users email address> pro** zadejte počet dalších hodin testovacího prostředí, které chcete udělit vybraným studentům nebo studentům, a pak vyberte **použít**. 
 
     ![Upravit kvótu... okno](./media/how-to-configure-student-usage/additional-quota.png)
 
@@ -167,11 +169,12 @@ Pokud chcete nastavit další kvóty, udělejte toto:
 Pokud chcete přidat studenty do testovacího prostředí učebny, použijte jejich e-mailové účty. Studenti můžou mít tyto typy e-mailových účtů:
 
 - E-mailový účet studenta poskytnutý instancí Azure Active Directory vaší univerzity
-- E-mailový účet Microsoft-doména, například *Outlook.com*, *hotmail.com*, *MSN.com*nebo *Live.com*.
+- E-mailový účet Microsoft-doména, například *Outlook.com* , *hotmail.com* , *MSN.com* nebo *Live.com*.
 - E-mailový účet jiný než Microsoft, který poskytuje Yahoo! nebo Google. Tyto typy účtů však musí být propojeny s účet Microsoft.
 - Účet GitHub. Tento účet musí být propojený s účet Microsoft.
 
 ### <a name="use-a-non-microsoft-email-account"></a>Používat e-mailový účet jiný než Microsoft
+
 Studenti můžou k registraci a přihlášení do prostředí učebny používat e-mailové účty jiných společností než Microsoft.  Registrace ale vyžaduje, aby nejdřív vytvořily účet Microsoft propojené s jejich e-mailovými adresami, které nepoužívají Microsoftu.
 
 Spousta studentů už může mít účet Microsoft propojená se svou e-mailovou adresou jinou než Microsoftu. Například studenti již mají účet Microsoft, pokud použili svou e-mailovou adresu s jinými produkty nebo službami společnosti Microsoft, jako je Office, Skype, OneDrive nebo Windows.  
@@ -186,6 +189,7 @@ Tady je odkaz pro studenty, kteří si můžou [zaregistrovat účet Microsoft](
 > Když se studenti přihlásí do prostředí učebny, nebudou mít možnost vytvořit účet Microsoft. Z tohoto důvodu doporučujeme, abyste zahrnuli tento odkaz pro http://signup.live.com registraci do e-mailu s registračním prostředím učebny, které odesíláte studentům, kteří používají účty jiných společností než Microsoft.
 
 ### <a name="use-a-github-account"></a>Použití účtu GitHub
+
 Studenti můžou k registraci a přihlašování do prostředí učebny použít taky existující účet GitHubu. Pokud již mají účet Microsoft propojeny se svým účtem GitHub, můžou se studenti přihlásit a zadat heslo, jak je znázorněno v předchozí části. 
 
 Pokud ještě neodkazují svůj účet GitHubu na účet Microsoft, může to udělat takto:
@@ -203,12 +207,13 @@ Pokud ještě neodkazují svůj účet GitHubu na účet Microsoft, může to ud
 ## <a name="export-a-list-of-users-to-a-csv-file"></a>Export seznamu uživatelů do souboru CSV
 
 1. Přejít do podokna **Uživatelé** .
-1. Na panelu nástrojů vyberte tři tečky (**...**) a pak vyberte **exportovat sdílený svazek clusteru**. 
+1. Na panelu nástrojů vyberte tři tečky ( **...** ) a pak vyberte **exportovat sdílený svazek clusteru**. 
 
     ![Tlačítko "exportovat CSV"](./media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
 
 
 ## <a name="next-steps"></a>Další kroky
+
 Viz následující články:
 
 - Pro správce: [vytváření a Správa účtů testovacího prostředí](how-to-manage-lab-accounts.md)

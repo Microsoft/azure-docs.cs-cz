@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: c78899bff39f37c63c7db0eeb12690ab2a90cac4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: df50583e650d3d44e702c0f7d1596f2a733a4445
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285380"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556382"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Vytvoření FCI se sdílenými disky Azure (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ Tento článek vysvětluje, jak vytvořit instanci clusteru s podporou převzet�
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech pro clustery](hadr-cluster-best-practices.md). 
 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
@@ -197,7 +197,7 @@ Datové adresáře FCI musí být na sdílených discích Azure.
 
 ## <a name="register-with-the-sql-vm-rp"></a>Zaregistrujte se pomocí SQL VM RP.
 
-Pokud chcete spravovat SQL Server virtuální počítač z portálu, zaregistrujte ho pomocí poskytovatele prostředků virtuálního počítače SQL (RP) v [režimu zjednodušené správy](sql-vm-resource-provider-register.md#lightweight-management-mode), v současné době se ale jedná o jediný režim podporovaný FCI a SQL Server na virtuálních počítačích Azure. 
+Pokud chcete virtuální počítač SQL Server spravovat z portálu, zaregistrujte ho pomocí rozšíření SQL IaaS Agent (RP) v [režimu zjednodušené správy](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode), v současné době se jedná o jediný režim podporovaný FCI a SQL Server na virtuálních počítačích Azure. 
 
 
 Zaregistrujte SQL Server virtuální počítač v jednoduchém režimu pomocí prostředí PowerShell:  
@@ -217,7 +217,7 @@ Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, na
 
 ## <a name="limitations"></a>Omezení
 
-- Podporuje se jenom registrace u poskytovatele prostředků virtuálního počítače SQL v [režimu zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) .
+- Podporuje se jenom registrování s rozšířením agenta SQL IaaS v [režimu zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) .
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -228,6 +228,6 @@ Pokud se pro vás nejedná o vhodné řešení úložiště FCI, doporučujeme m
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech konfigurace clusteru](hadr-cluster-best-practices.md).
 
-Další informace naleznete v tématech: 
+Další informace najdete tady: 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

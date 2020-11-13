@@ -13,12 +13,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 997e867798922975757a588ef50248f0d09a96e0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 801a9a112615bd6220b5f273b51ed39248ebcd45
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789841"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556467"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Místní změna edice SQL Serveru na virtuálním počítači Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,12 +29,12 @@ Edice SQL Server je určena klíčovým produktem a je určena během procesu in
 
 Po interní změně edice SQL Server k virtuálnímu počítači SQL Server musíte v Azure Portal pro účely fakturace aktualizovat vlastnost edice SQL Server. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li provést místní změnu edice SQL Server, budete potřebovat následující: 
 
 - [Předplatné Azure](https://azure.microsoft.com/free/)
-- [SQL Server virtuální počítač ve Windows](./create-sql-vm-portal.md) zaregistrovaný u [poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md).
+- [SQL Server virtuální počítač ve Windows](./create-sql-vm-portal.md) zaregistrovaný pomocí [rozšíření agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md).
 - Nastavte médium s **požadovanou verzí** SQL Server. Zákazníci, kteří mají [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default), můžou instalační médium získat z centra [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Zákazníci, kteří nemají Software Assurance, mohou použít instalační médium z Azure Marketplace SQL Server image virtuálního počítače, která má požadovanou edici (obvykle se nachází v části `C:\SQLServerFull` ). 
 
 
@@ -50,7 +50,7 @@ Chcete-li upgradovat edici SQL Server, Získejte instalační médium SQL Server
 
    ![Výběr pro upgrade edice SQL Server](./media/change-sql-server-edition/edition-upgrade.png)
 
-1. Vyberte **Další** , dokud se nedostanete na stránku **připraveno k upgradu** , a pak vyberte **upgradovat** . Když se změna projeví, může okno instalace přestat reagovat během několika minut. Po **dokončení** této stránky se ověří, že je upgrade edice dokončený. 
+1. Vyberte **Další** , dokud se nedostanete na stránku **připraveno k upgradu** , a pak vyberte **upgradovat**. Když se změna projeví, může okno instalace přestat reagovat během několika minut. Po **dokončení** této stránky se ověří, že je upgrade edice dokončený. 
 
 Po upgradu edice SQL Server upravte vlastnost edice SQL Server virtuálního počítače v Azure Portal. Tím se aktualizují metadata a fakturace přidružená k tomuto virtuálnímu počítači.
 
@@ -75,11 +75,11 @@ Po downgradu edice SQL Server upravte vlastnost edice SQL Server virtuálního p
 
 ## <a name="change-edition-in-portal"></a>Změna edice na portálu 
 
-Pokud jste změnili edici SQL Server pomocí instalačního média a zaregistrovali jste SQL Server virtuální počítač s [poskytovatelem prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md), můžete pomocí Azure Portal změnit vlastnost edice SQL Server virtuálního počítače pro účely fakturace. To můžete provést pomocí těchto kroků: 
+Pokud jste změnili edici SQL Server pomocí instalačního média a zaregistrovali jste SQL Server virtuální počítač pomocí [rozšíření agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md), můžete pomocí Azure Portal změnit vlastnost edice virtuálního počítače SQL Server pro účely fakturace. To můžete provést pomocí těchto kroků: 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 1. Přejít na prostředek SQL Server prostředku virtuálního počítače. 
-1. V části **Nastavení** vyberte **Konfigurovat** . Pak v rozevíracím seznamu v části **edice** vyberte požadovanou edici SQL Server. 
+1. V části **Nastavení** vyberte **Konfigurovat**. Pak v rozevíracím seznamu v části **edice** vyberte požadovanou edici SQL Server. 
 
    ![Změnit metadata edice](./media/change-sql-server-edition/edition-change-in-portal.png)
 
@@ -91,7 +91,7 @@ Pokud jste změnili edici SQL Server pomocí instalačního média a zaregistrov
 
 - Vlastnost edice pro virtuální počítač s SQL Server musí odpovídat edici SQL Server nainstalované pro všechny SQL Server virtuální počítače, včetně průběžných plateb a typů licencí.
 - Pokud přetáhnete prostředek virtuálního počítače SQL Server, vrátíte se do nastavení pevně zakódované verze image.
-- Možnost změnit edici je funkcí poskytovatele prostředků virtuálního počítače SQL. Nasazení bitové kopie Azure Marketplace pomocí Azure Portal automaticky registruje SQL Server virtuální počítač s poskytovatelem prostředků. Zákazníci, kteří si SQL Server vlastní instalaci, ale budou muset ručně [zaregistrovat svůj SQL Server virtuální počítač](sql-vm-resource-provider-register.md).
+- Možnost změnit edici je funkcí rozšíření agenta SQL IaaS. Nasazení bitové kopie Azure Marketplace pomocí Azure Portal automaticky registruje SQL Server virtuální počítač s rozšířením agenta SQL IaaS. Zákazníci, kteří si SQL Server vlastní instalaci, ale budou muset ručně [zaregistrovat svůj SQL Server virtuální počítač](sql-agent-extension-manually-register-single-vm.md).
 - Přidání virtuálního počítače SQL Server do skupiny dostupnosti vyžaduje opětovné vytvoření virtuálního počítače. Všechny virtuální počítače přidané do skupiny dostupnosti se vrátí k výchozí edici a Tato edice bude muset být upravena znovu.
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: předpověď cen automobilů pomocí návrháře'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí rozhraní přetažení využít výuku, skóre a nasazení modelu strojového učení. Tento kurz je první částí série dvou částí pro předpověď cen automobilů pomocí lineární regrese.
+description: Naučte se model strojového učení předpovídat ceny automobilu pomocí lineární regrese. Tento kurz je první částí z dvoudílné série.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: d9422cfb9bd8e5539f1a9b43d6fb7b137778f3d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0475e7a7b9bb40e77fe23362ff098350037bdd30
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404914"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555252"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Kurz: předpověď ceny automobilu pomocí návrháře
 
@@ -118,7 +118,7 @@ Při výukovém modelu je nutné provést něco o chybějících datech. Ve slou
 
 1. Přetáhněte modul **Výběr sloupců v datové sadě** na plátno. Přetáhněte modul pod modul DataSet.
 
-1. Připojte datovou sadu **dat o ceně automobilu (RAW)** do modulu **Výběr sloupců v datové sadě** . Přetáhněte z výstupního portu datové sady, což je malý kroužek v dolní části datové sady na plátně, na vstupní port pro **Výběr sloupců v datové sadě**, což je malý kruh v horní části modulu.
+1. Připojte datovou sadu **dat o ceně automobilu (RAW)** do modulu **Výběr sloupců v datové sadě** . Přetáhněte z výstupního portu datové sady, což je malý kroužek v dolní části datové sady na plátně, na vstupní port pro **Výběr sloupců v datové sadě** , což je malý kruh v horní části modulu.
 
     > [!TIP]
     > Pokud připojíte výstupní port jednoho modulu ke vstupnímu portu jiného, vytvoříte tok dat prostřednictvím kanálu.
@@ -130,7 +130,7 @@ Při výukovém modelu je nutné provést něco o chybějících datech. Ve slou
 
 1. V podokně podrobností modulu napravo od plátna vyberte **Upravit sloupec**.
 
-1. Rozbalte rozevírací seznam **názvů sloupců** vedle položky **Zahrnout**a vyberte možnost  **všechny sloupce**.
+1. Rozbalte rozevírací seznam **názvů sloupců** vedle položky **Zahrnout** a vyberte možnost  **všechny sloupce**.
 
 1. Pokud **+** chcete přidat nové pravidlo, vyberte.
 
@@ -155,7 +155,7 @@ V datové sadě ještě chybí hodnoty po odebrání sloupce **normalizované zt
 > [!TIP]
 > Vyčištění chybějících hodnot ze vstupních dat je předpokladem pro použití většiny modulů v návrháři.
 
-1. V paletě modulu nalevo od plátna rozbalte **transformaci dat**oddílu a vyhledejte modul **Vyčištění chybějících dat** .
+1. V paletě modulu nalevo od plátna rozbalte **transformaci dat** oddílu a vyhledejte modul **Vyčištění chybějících dat** .
 
 1. Přetáhněte modul **Vyčištění chybějících dat** na plátno kanálu. Připojte ho k modulu **Výběr sloupců v datové sadě** . 
 
@@ -210,9 +210,9 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
     
     Tato možnost zobrazí několik kategorií modulů, které lze použít k inicializaci výukových algoritmů.
 
-1. Vyberte **regresní**  >  **lineární regresi**a přetáhněte ji na plátno kanálu.
+1. Vyberte **regresní**  >  **lineární regresi** a přetáhněte ji na plátno kanálu.
 
-1. V paletě modulu rozbalte možnost **školení modulu**oddíl a přetáhněte modul **vlak model** na plátno.
+1. V paletě modulu rozbalte možnost **školení modulu** oddíl a přetáhněte modul **vlak model** na plátno.
 
 1. Připojte výstup modulu **lineární regrese** k levému vstupu modulu **vlak model** .
 
@@ -221,7 +221,7 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
     > [!IMPORTANT]
     > Ujistěte se, že levé výstupní porty **rozdělených dat** se připojují ke **výukového modelu**. Levý port obsahuje sadu školení. Pravý port obsahuje sadu testů.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Vybrat – sloupec":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Snímek obrazovky znázorňující správnou konfiguraci modulu vlakového modelu. Modul lineární regrese se připojí k levému portu modulu typu vlak a modul rozdělení dat se připojí k pravému portu modelu vlaku.":::
 
 1. Vyberte modul **vlakového modelu** .
 
@@ -232,11 +232,11 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
 1. Do textového pole zadejte *Price (cena* ) a zadejte hodnotu, kterou model bude předpovídat.
 
     >[!IMPORTANT]
-    > Ujistěte se, že jste zadali název sloupce přesně. Nezadávejte **cenu**na velká písmena. 
+    > Ujistěte se, že jste zadali název sloupce přesně. Nezadávejte **cenu** na velká písmena. 
 
     Váš kanál by měl vypadat takto:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Vybrat – sloupec":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Snímek obrazovky, který zobrazuje správnou konfiguraci kanálu po přidání modulu vlakového modelu.":::
 
 ### <a name="add-the-score-model-module"></a>Přidat modul určení skóre modelu
 
@@ -256,7 +256,7 @@ Pomocí modulu **vyhodnocení modelu** můžete vyhodnotit, jak dobře model vyh
 
     Konečný kanál by měl vypadat přibližně takto:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Vybrat – sloupec":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Snímek obrazovky znázorňující správnou konfiguraci kanálu":::
 
 ## <a name="submit-the-pipeline"></a>Odeslat kanál
 
@@ -285,7 +285,7 @@ Po dokončení běhu můžete zobrazit výsledky spuštění kanálu. Nejprve se
 
     Tady vidíte předpovězené ceny a skutečné ceny z testovacích dat.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Vybrat – sloupec":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Snímek obrazovky výstupní vizualizace, která zvýrazňuje sloupec popisku s skóre":::
 
 ### <a name="evaluate-models"></a>Vyhodnotit modely
 
@@ -295,11 +295,11 @@ Pomocí **modelu vyhodnocení** můžete zjistit, jak dobře byl vyškolený mod
 
 Pro váš model se zobrazí následující statistiky:
 
-* **Střední absolutní chyba (Mae)**: průměr absolutních chyb. Chyba je rozdíl mezi předpokládanou hodnotou a skutečnou hodnotou.
-* **Původní střední hodnota chyby (RMSE)**: druhá odmocnina průměru kvadratických chyb předpovědi provedených v testovací datové sadě.
-* **Relativní absolutní chyba**: Průměr absolutních chyb relativních k absolutnímu rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
-* **Relativní kvadratická chyba**: Průměr kvadratických chyb relativních ke kvadratickému rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
-* **Koeficient stanovitelnosti**: označuje se také jako hodnota v hodnotě R. Tato statistická metrika indikuje, jak dobře model odpovídá datům.
+* **Střední absolutní chyba (Mae)** : průměr absolutních chyb. Chyba je rozdíl mezi předpokládanou hodnotou a skutečnou hodnotou.
+* **Původní střední hodnota chyby (RMSE)** : druhá odmocnina průměru kvadratických chyb předpovědi provedených v testovací datové sadě.
+* **Relativní absolutní chyba** : Průměr absolutních chyb relativních k absolutnímu rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
+* **Relativní kvadratická chyba** : Průměr kvadratických chyb relativních ke kvadratickému rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
+* **Koeficient stanovitelnosti** : označuje se také jako hodnota v hodnotě R. Tato statistická metrika indikuje, jak dobře model odpovídá datům.
 
 Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodnota označuje, že předpovědi jsou bližší k skutečným hodnotám. Pro koeficient stanovení je bližší jeho hodnota jednomu (1,0), což je lepší předpovědi.
 

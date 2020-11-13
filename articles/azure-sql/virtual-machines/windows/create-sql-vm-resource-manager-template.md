@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: b57303a1c9fdba2bea8637bef6c148622087a8d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9d0dd8ee1b99ddd2abf4fad154c70315a3d33c83
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789773"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556416"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Rychlý Start: Vytvoření virtuálního počítače s SQL Server pomocí šablony ARM
 
@@ -20,7 +20,7 @@ Pomocí této šablony Azure Resource Manager (šablony ARM) můžete nasadit SQ
 
 [!INCLUDE [About Azure Resource Manager](../../../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
@@ -45,14 +45,14 @@ V šabloně je definováno pět prostředků Azure:
 - [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups): vytvoří skupinu zabezpečení sítě. 
 - [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces): nakonfiguruje síťové rozhraní. 
 - [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): vytvoří virtuální počítač v Azure. 
-- [Microsoft. SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): zaregistruje virtuální počítač u poskytovatele prostředků virtuálního počítače SQL. 
+- [Microsoft. SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): zaregistruje virtuální počítač pomocí rozšíření agenta SQL IaaS. 
 
 Další SQL Server v šablonách virtuálních počítačů Azure najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular).
 
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří virtuální počítač, na kterém je nainstalovaná zamýšlená verze SQL Server, a zaregistrované u poskytovatele prostředků virtuálního počítače SQL. 
+1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří virtuální počítač s nainstalovanou zamýšlenou SQL Server verzí a zaregistrovaný s rozšířením agenta SQL IaaS. 
 
    [![Nasazení do Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
@@ -60,7 +60,7 @@ Další SQL Server v šablonách virtuálních počítačů Azure najdete v [gal
 
     * **Předplatné** : vyberte předplatné Azure.
     * **Skupina prostředků** : Skupina prostředků připravená pro váš virtuální počítač SQL Server. 
-    * **Oblast** : Vyberte oblast.  Například **USA – střed** .
+    * **Oblast** : Vyberte oblast.  Například **USA – střed**.
     * **Název virtuálního počítače** : zadejte název pro SQL Server virtuální počítač. 
     * **Velikost virtuálního počítače** : v rozevíracím seznamu vyberte odpovídající velikost pro virtuální počítač.
     * **Existující Virtual Network název** : zadejte název připravené virtuální sítě pro váš virtuální počítač s SQL Server. 
@@ -77,7 +77,7 @@ Další SQL Server v šablonách virtuálních počítačů Azure najdete v [gal
     * **Cesta protokolu** : cesta pro soubory protokolu SQL Server. 
     * **Umístění** : umístění všech prostředků, tato hodnota by měla zůstat ve výchozím nastavení `[resourceGroup().location]` . 
 
-3. Vyberte **Zkontrolovat a vytvořit** . Po úspěšném nasazení SQL Server virtuálního počítače se zobrazí oznámení.
+3. Vyberte **Zkontrolovat a vytvořit**. Po úspěšném nasazení SQL Server virtuálního počítače se zobrazí oznámení.
 
 K nasazení šablony se použije Azure Portal. Kromě Azure Portal můžete použít také Azure PowerShell, rozhraní příkazového řádku Azure a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../../../azure-resource-manager/templates/deploy-powershell.md).
 

@@ -13,21 +13,19 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 514782d62f117af5bfff4a5d2b3354c4e263eece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cd7074467332f89d4d6c60830be34f4e2a638c1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80550237"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562079"
 ---
 # <a name="overview-of-shared-device-mode"></a>Přehled režimu sdíleného zařízení
 
 Režim sdíleného zařízení je funkce Azure Active Directory, která umožňuje sestavovat aplikace, které podporují Firstline pracovní procesy, a povolit režim sdíleného zařízení na zařízeních, která jsou do nich nasazená.
 
-> [!NOTE]
-> Tato funkce je ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>[!IMPORTANT]
+> Tato funkce [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="what-are-firstline-workers"></a>Co jsou Firstline pracovní procesy?
 

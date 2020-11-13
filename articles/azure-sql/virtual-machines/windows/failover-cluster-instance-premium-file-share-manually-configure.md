@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 1994cda9dbf22a81216408ee07d51f635e89cff4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 56509bfcd267a590946eb750bd74ce1f67aecc00
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285274"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556399"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Vytvoření FCI se souborovou sdílenou složkou Premium (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ Soubory úrovně Premium jsou Prostory úložiště s přímým přístupem (SSD
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech pro clustery](hadr-cluster-best-practices.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
@@ -41,7 +41,7 @@ Před dokončením kroků v tomto článku byste už měli mít:
 
 ## <a name="mount-premium-file-share"></a>Připojit prémiovou sdílenou složku
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). a přejít na účet úložiště.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). a přejít na účet úložiště.
 1. V části **Souborová služba** klikněte na **sdílené složky** a potom vyberte sdílenou složku Premium, kterou chcete použít pro své úložiště SQL.
 1. Výběrem **připojit** otevřete připojovací řetězec pro sdílenou složku.
 1. V rozevíracím seznamu vyberte písmeno jednotky, které chcete použít, a potom zkopírujte oba bloky kódu do poznámkového bloku.
@@ -189,7 +189,7 @@ Po dokončení konfigurace clusteru s podporou převzetí služeb při selhání
 
 ## <a name="register-with-the-sql-vm-rp"></a>Zaregistrujte se pomocí SQL VM RP.
 
-Pokud chcete spravovat SQL Server virtuální počítač z portálu, zaregistrujte ho pomocí poskytovatele prostředků virtuálního počítače SQL (RP) v [režimu zjednodušené správy](sql-vm-resource-provider-register.md#lightweight-management-mode), v současné době jde o jediný režim, který se v FCI a SQL Server na virtuálních počítačích Azure podporuje. 
+Pokud chcete spravovat SQL Server virtuální počítač z portálu, zaregistrujte ho pomocí rozšíření SQL IaaS Agent (RP) v [režimu zjednodušené správy](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode), v současné době se jedná o jediný režim, který podporuje FCI a SQL Server na virtuálních počítačích Azure. 
 
 Registrace virtuálního počítače s SQL Server v jednoduchém režimu pomocí prostředí PowerShell (-LicenseType může být `PAYG` nebo `AHUB` ):
 
@@ -210,7 +210,7 @@ Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, na
 
 - Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) není podporován na Windows serveru 2016 a starších verzích. 
 - FILESTREAM není podporován pro cluster s podporou převzetí služeb při selhání se sdílenou složkou Premium. Pokud chcete použít FILESTREAM, nasaďte cluster místo toho pomocí [prostory úložiště s přímým přístupem](failover-cluster-instance-storage-spaces-direct-manually-configure.md) nebo [sdílených disků Azure](failover-cluster-instance-azure-shared-disks-manually-configure.md) .
-- Podporuje se jenom registrace u poskytovatele prostředků virtuálního počítače SQL v [režimu zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) . 
+- Podporuje se jenom registrování s rozšířením agenta SQL IaaS v [režimu zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) . 
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -221,6 +221,6 @@ Pokud soubory úrovně Premium pro vás nejsou odpovídajícím řešením úlo�
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech konfigurace clusteru](hadr-cluster-best-practices.md). 
 
-Další informace naleznete v tématech: 
+Další informace najdete tady: 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

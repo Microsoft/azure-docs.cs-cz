@@ -12,19 +12,21 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 297b34fd9981308ece52545ac5878eaa144f4829
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 28d912153b52580727e0fb5086e0a7ae55e8b545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824402"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560923"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro Univerzální platformu Windows (UPW)
 
-V tomto rychlém startu se používá ukázka kódu k demonstraci toho, jak se aplikace Univerzální platforma Windows (UWP) může přihlašovat uživatelům pomocí osobních účtů nebo pracovních a školních účtů, získat přístupový token a volat rozhraní Microsoft Graph API. Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak se aplikace Univerzální platforma Windows (UWP) může přihlašovat uživatelům a získat přístupový token pro volání rozhraní API Microsoft Graph. 
+
+Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Předpoklady
+> ## <a name="prerequisites"></a>Požadavky
 >
 > * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
@@ -49,13 +51,13 @@ V tomto rychlém startu se používá ukázka kódu k demonstraci toho, jak se a
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 > 1. Přejděte na stránku [Registrace aplikací](https://aka.ms/MobileAppReg) Microsoft Identity Platform for Developers.
 > 1. Vyberte **Nová registrace**.
-> 1. V **registrování aplikace**zadejte registrační informace aplikace:
+> 1. V **registrování aplikace** zadejte registrační informace aplikace:
 >      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `UWP-App-calling-MsGraph`.
 >      - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)**.
 > 1. Vyberte **Registrovat** , chcete-li vytvořit aplikaci, a pak poznamenejte **ID aplikace (klienta)** pro použití v pozdějším kroku.
-> 1. V části **Spravovat**vyberte **ověřování**.
+> 1. V části **Spravovat** vyberte **ověřování**.
 > 1. Vyberte **Přidat platformu**  >  **mobilní a desktopové aplikace**.
-> 1. V části **identifikátory URI pro přesměrování**vyberte `https://login.microsoftonline.com/common/oauth2/nativeclient` .
+> 1. V části **identifikátory URI pro přesměrování** vyberte `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 > 1. Vyberte **Konfigurovat**.
 
 > [!div renderon="portal" class="sxs-lookup"]
@@ -90,30 +92,30 @@ V tomto rychlém startu se používá ukázka kódu k demonstraci toho, jak se a
 >
 > 1. Extrahujte archiv zip do místní složky blízko do kořene jednotky. Například do **C:\Azure-Samples**.
 > 1. Otevřete projekt v sadě Visual Studio. Pokud se zobrazí výzva, nainstalujte **Univerzální platforma Windows vývojové** úlohy a všechny součásti sady SDK.
-> 1. V *MainPage.XAML.cs*změňte hodnotu `ClientId` proměnné na **ID aplikace (klienta)** aplikace, kterou jste zaregistrovali dříve.
+> 1. V *MainPage.XAML.cs* změňte hodnotu `ClientId` proměnné na **ID aplikace (klienta)** aplikace, kterou jste zaregistrovali dříve.
 >
 >    ```csharp
 >    private const string ClientId = "Enter_the_Application_Id_here";
 >    ```
 >
->    **ID aplikace (klienta)** najdete v podokně **přehledu** aplikace v Azure Portal (**Azure Active Directory**  >  **Registrace aplikací**  >  *{Registrace aplikace}*).
+>    **ID aplikace (klienta)** najdete v podokně **přehledu** aplikace v Azure Portal ( **Azure Active Directory**  >  **Registrace aplikací**  >  *{Registrace aplikace}* ).
 > 1. Vytvořte a potom vyberte nový testovací certifikát podepsaný svým držitelem pro balíček:
->     1. V **Průzkumník řešení**dvakrát klikněte na soubor *Package. appxmanifest* .
+>     1. V **Průzkumník řešení** dvakrát klikněte na soubor *Package. appxmanifest* .
 >     1. Vybrat **balení**  >  **zvolit certifikát...**  >  **Vytvořit...**.
 >     1. Zadejte heslo a pak vyberte **OK**.
 >     1. Vyberte **vybrat ze souboru...** a pak vyberte soubor *Native_UWP_V2_TemporaryKey. pfx* , který jste právě vytvořili, a pak vyberte **OK**.
 >     1. Zavřete soubor *Package. appxmanifest* (Pokud se zobrazí výzva k uložení souboru), vyberte **OK** .
->     1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **Native_UWP_V2** a vyberte možnost **vlastnosti**.
->     1. Vyberte **podepisování**a potom vyberte soubor. pfx, který jste vytvořili v rozevíracím seznamu **Vyberte soubor klíče se silným názvem** .
+>     1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt **Native_UWP_V2** a vyberte možnost **vlastnosti**.
+>     1. Vyberte **podepisování** a potom vyberte soubor. pfx, který jste vytvořili v rozevíracím seznamu **Vyberte soubor klíče se silným názvem** .
 
 #### <a name="step-4-run-the-application"></a>Krok 4: spuštění aplikace
 
 Spuštění ukázkové aplikace na místním počítači:
 
-1. Na panelu nástrojů sady Visual Studio vyberte správnou platformu (pravděpodobně **x64** nebo **x86**, ne ARM). Cílové zařízení by se mělo změnit ze *zařízení* na *místní počítač*.
+1. Na panelu nástrojů sady Visual Studio vyberte správnou platformu (pravděpodobně **x64** nebo **x86** , ne ARM). Cílové zařízení by se mělo změnit ze *zařízení* na *místní počítač*.
 1. Vyberte **Ladit** > **Spustit bez ladění**.
     
-    Pokud se zobrazí výzva k tomu, možná budete muset nejprve povolit **vývojářský režim**a pak znovu **Spustit bez ladění** , aby se aplikace spustila.
+    Pokud se zobrazí výzva k tomu, možná budete muset nejprve povolit **vývojářský režim** a pak znovu **Spustit bez ladění** , aby se aplikace spustila.
 
 Jakmile se zobrazí okno aplikace, můžete vybrat tlačítko **rozhraní API pro volání Microsoft Graph** , zadat své přihlašovací údaje a vyjádřit souhlas s oprávněními požadovanými aplikací. V případě úspěchu aplikace zobrazí některé informace o tokenech a data získaná z volání rozhraní Microsoft Graph API.
 

@@ -1,95 +1,97 @@
 ---
-title: Průvodce řešením potíží s výkonem služby soubory Azure
-description: Řešení známých problémů s výkonem u sdílených složek Azure. Zjistěte možné příčiny a související alternativní řešení, když dojde k těmto potížím.
+title: Průvodce řešením potíží s výkonem sdílené složky Azure
+description: Řešení známých problémů s výkonem se soubory Azure Zjistěte možné příčiny a související alternativní řešení, když dojde k těmto potížím.
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 4d21bfa69022cbebdcbf80c3bee4aec76bf99c53
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 52376cabfd837ad7435c8e9c992fe000e0521247
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491116"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561110"
 ---
-# <a name="troubleshoot-azure-files-performance-issues"></a>Řešení potíží s výkonem souborů Azure
+# <a name="troubleshoot-azure-file-share-performance-issues"></a>Řešení potíží s výkonem Azure File Share
 
-V tomto článku jsou uvedené některé běžné problémy související se sdílenými složkami Azure. Poskytuje možné příčiny a alternativní řešení, když dojde k těmto potížím.
+V tomto článku jsou uvedené některé běžné problémy související se sdílenými složkami Azure. V případě, že dojde k těmto potížím, poskytuje možné příčiny a alternativní řešení.
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Vysoká latence, nízká propustnost a obecné problémy s výkonem
 
 ### <a name="cause-1-share-was-throttled"></a>Příčina 1: sdílená složka byla omezená.
 
-Požadavky jsou omezeny, když jsou dosaženy limity IOPS, příchozí nebo odchozí připojení ke sdílené složce. Pokud chcete pochopit omezení pro sdílené složky Standard a Premium, přečtěte si téma [sdílení souborů a cíle škálování souborů](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets).
+Požadavky jsou omezeny při dosažení vstupně-výstupních operací za sekundu (IOPS), příchozího přenosu dat nebo odchozích přenosů souborů pro sdílenou složku. Pokud chcete pochopit omezení pro sdílené složky Standard a Premium, přečtěte si téma [sdílení souborů a cíle škálování souborů](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets).
 
-Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete využít metriky Azure na portálu.
+Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete na portálu získat přístup a používat metriky Azure.
 
 1. V Azure Portal přejít na účet úložiště.
 
-1. V nabídce vlevo v části **monitorování** vyberte **metriky**.
+1. V levém podokně v části **monitorování** vyberte **metriky**.
 
 1. Jako obor názvů metriky pro rozsah svého účtu úložiště vyberte **soubor** .
 
 1. Jako metriku vyberte **transakce** .
 
-1. Přidejte filtr pro **ResponseType** a zkontrolujte, zda nějaké požadavky obsahují kód odpovědi **SuccessWithThrottling** (pro protokol SMB) nebo **ClientThrottlingError** (pro REST).
+1. Přidejte filtr pro **typ odpovědi** a potom zkontrolujte, zda nějaké požadavky obsahují některý z následujících kódů odpovědí:
+   * **SuccessWithThrottling** : pro protokol SMB (Server Message Block)
+   * **ClientThrottlingError** : pro REST
 
-![Možnosti metrik pro sdílené složky Premium](media/storage-troubleshooting-premium-fileshares/metrics.png)
+   ![Snímek obrazovky s možnostmi metriky pro sdílené složky úrovně Premium, která zobrazuje filtr vlastností "typ odpovědi".](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
-> [!NOTE]
-> Pokud chcete dostávat upozornění, pokud je sdílená složka omezená, přečtěte si téma [Postup vytvoření výstrahy, pokud je sdílená složka omezená](#how-to-create-an-alert-if-a-file-share-is-throttled).
+   > [!NOTE]
+   > Chcete-li zobrazit výstrahu, přečtěte si část [jak vytvořit výstrahu v případě omezení sdílené složky](#how-to-create-an-alert-if-a-file-share-is-throttled) dále v tomto článku.
 
 ### <a name="solution"></a>Řešení
 
 - Pokud používáte standardní sdílení souborů, povolte ve svém účtu úložiště [velké sdílené složky](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) . Velké sdílené složky podporují až 10 000 vstupně-výstupních operací na sdílenou složku.
-- Pokud používáte prémiovou sdílenou složku, zvyšte velikost zřízené sdílené složky a zvyšte limit IOPS. Další informace najdete v části [Principy zřizování pro služby Premium pro sdílení](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares) souborů v příručce pro plánování souborů Azure.
+- Pokud používáte prémiovou sdílenou složku, zvyšte velikost zřízené sdílené složky a zvyšte limit IOPS. Další informace najdete v části porozumění zřizování pro sdílené složky prémiových souborů v [příručce pro plánování souborů Azure](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares).
 
-### <a name="cause-2-metadatanamespace-heavy-workload"></a>Příčina 2: silná úloha metadat/obor názvů
+### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>Příčina 2: silná úloha pro metadata nebo obor názvů
 
-Pokud jsou většina vašich požadavků na střed (například CreateFile/OpenFile/CloseFile/QueryInfo/querydirectory), bude latence ve srovnání s operacemi čtení/zápisu horší.
+Pokud je většina vašich požadavků orientovaných na metadata (například CreateFile, OpenFile, CloseFile, QueryInfo nebo querydirectory), latence bude horší než operace čtení a zápisu.
 
-Pokud chcete potvrdit, jestli je většina vašich požadavků na střed, můžete použít stejné kroky jako v předchozím kroku. S výjimkou přidání filtru pro **ResponseType** přidejte filtr pro **název rozhraní API**.
+Pokud chcete zjistit, jestli je většina vašich požadavků orientovaných na metadata, začněte podle kroků 1-4, jak už bylo uvedeno v příčině 1. Pro krok 5 místo přidání filtru pro **typ odpovědi** přidejte filtr vlastností pro **název rozhraní API**.
 
-![Filtrování názvu rozhraní API v metrikách](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
+![Snímek obrazovky s možnostmi metriky pro sdílené složky Premium se zobrazeným filtrem vlastností název rozhraní API](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
 
 ### <a name="workaround"></a>Alternativní řešení
 
-- Ověřte, zda lze aplikaci upravovat a snížit tak počet operací s metadaty.
-- Přidejte virtuální pevný disk do sdílené složky a připojte VHD přes SMB od klienta k provádění operací se soubory s daty. Tento přístup funguje pro scénáře s jedním zapisovačem a více čtenářů a umožňuje místní operace s metadaty, což nabízí podobný výkon jako místní úložiště připojené přímo.
+- Zkontrolujte, zda lze aplikaci upravit a snížit tak počet operací s metadaty.
+- Přidejte virtuální pevný disk (VHD) do sdílené složky a připojte VHD přes SMB od klienta k provádění operací se soubory na těchto datech. Tento přístup funguje pro scénáře s jedním zapisovačem a několika čtecími zařízení a umožňuje místní operace s metadaty. Nastavení nabízí výkon podobný místnímu přímo připojenému úložišti.
 
 ### <a name="cause-3-single-threaded-application"></a>Příčina 3: aplikace s jedním vláknem
 
-Pokud je aplikace, kterou zákazník používá, jediným vláknem, může to vést k výraznému snížení počtu IOPS/propustnosti, než je maximální možná velikost na základě zřízené velikosti vaší sdílené složky.
+Pokud je aplikace, kterou používáte, jediným vláknem, může tato instalace výrazně snížit propustnost IOPS, než je maximální možná propustnost, a to v závislosti na velikosti zřízené sdílené složky.
 
 ### <a name="solution"></a>Řešení
 
 - Zvýšení paralelismu aplikace zvýšením počtu vláken.
-- Přepněte na aplikace, kde je možné paralelismus. Například pro operace kopírování mohou zákazníci používat AzCopy nebo Robocopy z klientů systému Windows nebo **paralelní** příkaz v klientech se systémem Linux.
+- Přepněte na aplikace, kde je možné paralelismus. Například pro operace kopírování můžete použít AzCopy nebo Robocopy z klientů systému Windows nebo **paralelní** příkaz z klientů se systémem Linux.
 
 ## <a name="very-high-latency-for-requests"></a>Velmi vysoká latence pro žádosti
 
 ### <a name="cause"></a>Příčina
 
-Klientský virtuální počítač se může nacházet v jiné oblasti než sdílená složka.
+Klientský virtuální počítač (VM) se může nacházet v jiné oblasti než sdílení souborů.
 
 ### <a name="solution"></a>Řešení
 
-- Spusťte aplikaci z virtuálního počítače, který je umístěný ve stejné oblasti jako sdílená složka.
+- Spusťte aplikaci z virtuálního počítače, který se nachází ve stejné oblasti jako sdílená složka.
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Klientovi se nepovedlo dosáhnout maximální propustnosti, kterou síť podporuje.
 
-Jednou z možných příčin tohoto je nedostatečná podpora pro více kanálů SMB. Sdílené složky Azure v současné době podporují jenom jeden kanál, takže existuje jenom jedno připojení z virtuálního počítače klienta k serveru. Toto jediné připojení je v klientském počítači klienta připojeno k jednomu jádru, takže maximální propustnost, kterou je možné z virtuálního počítače dosáhnout, je svázána s jedním jádrem.
+### <a name="cause"></a>Příčina
+Jednou z možných příčin je nedostatečná podpora více kanálů SMB. Soubory Azure v současné době podporují jenom jeden kanál, takže existuje jenom jedno připojení z virtuálního počítače klienta k serveru. Toto jediné připojení je v klientském počítači klienta připojeno k jednomu jádru, takže maximální propustnost, kterou je možné z virtuálního počítače dosáhnout, je svázána s jedním jádrem.
 
 ### <a name="workaround"></a>Alternativní řešení
 
-- Získání virtuálního počítače s větším jádrem vám může pomoci zlepšit propustnost.
+- Získání virtuálního počítače s větším jádrem může pomoci zlepšit propustnost.
 - Při spuštění klientské aplikace z více virtuálních počítačů se zvýší propustnost.
-
 - Pokud je to možné, použijte rozhraní REST API.
 
-## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Při porovnání s klienty se systémem Windows výrazně snižuje propustnost klientů se systémem Linux.
+## <a name="throughput-on-linux-clients-is-significantly-lower-than-that-of-windows-clients"></a>Propustnost u klientů se systémem Linux je výrazně nižší než u klientů se systémem Windows.
 
 ### <a name="cause"></a>Příčina
 
@@ -99,9 +101,9 @@ Jedná se o známý problém s implementací klienta SMB v systému Linux.
 
 - Rozprostře zatížení mezi více virtuálních počítačů.
 - Ve stejném virtuálním počítači použijte více přípojných bodů s možností **nosharesock** a rozprostřete zatížení mezi tyto přípojné body.
-- V systému Linux se pokuste připojit pomocí možnosti **nostrictsync** , abyste se vyhnuli vynucení vyprázdnění protokolu SMB u každého volání **Fsync** . U souborů Azure Tato možnost neovlivňuje konzistenci dat, ale může mít za následek zastaralá metadata souborů pro výpis adresáře (příkaz **ls-l** ). Přímo se dotazování na metadata souboru ( **stat** Command) vrátí nejaktuálnější metadata souborů.
+- V systému Linux se pokuste připojit s možností **nostrictsync** , abyste se vyhnuli vynucení vyprázdnění protokolu SMB u každého volání **Fsync** . U souborů Azure Tato možnost nekoliduje s konzistencí dat, ale může to mít za následek zastaralá metadata souborů ve výpisech adresářů (příkaz **ls-l** ). Přímé dotazování na metadata souborů pomocí příkazu **stat** vrátí nejaktuálnější metadata souborů.
 
-## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Vysoká latence pro silná zatížení metadat, která zahrnují rozsáhlé operace otevření/zavření.
+## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Vysoká latence pro úlohy náročné na metadata zahrnující rozsáhlé operace otevření/zavření
 
 ### <a name="cause"></a>Příčina
 
@@ -109,41 +111,40 @@ Nedostatečná podpora pro zapůjčení adresáře.
 
 ### <a name="workaround"></a>Alternativní řešení
 
-- Pokud je to možné, vyhněte se nadměrnému otevírání a zavírání popisovačům ve stejném adresáři v krátké době.
-- U virtuálních počítačů se systémem Linux zvyšte časový limit mezipaměti položky adresáře zadáním **actimeo = \<sec>** as a Mount. Ve výchozím nastavení je to jedna sekunda, takže může pomáhat větší hodnota, například tři nebo pět.
-- Pro virtuální počítače s RHEL/CentOS upgradujte systém na RHEL/CentOS 8,2. Pro jiné virtuální počítače se systémem Linux upgradujte jádro na 5,0 nebo vyšší.
+- Pokud je to možné, vyhněte se nadměrnému počátečnímu nebo uzavíracímu popisovači ve stejném adresáři v krátké době.
+- U virtuálních počítačů se systémem Linux zvyšte časový limit mezipaměti položky adresáře zadáním **actimeo = \<sec>** as a Mount. Ve výchozím nastavení je časový limit 1 sekunda, takže větší hodnota, například 3 nebo 5 sekund, může pomáhat.
+- Pro virtuální počítače se systémem CentOS Linux nebo Red Hat Enterprise Linux (RHEL) upgradujte systém na CentOS Linux 8,2 nebo RHEL 8,2. Pro jiné virtuální počítače se systémem Linux upgradujte jádro na 5,0 nebo novější.
 
-## <a name="low-iops-on-centosrhel"></a>Nízká IOPS v CentOS/RHEL
+## <a name="low-iops-on-centos-linux-or-rhel"></a>Nízká IOPS v systému CentOS Linux nebo RHEL
 
 ### <a name="cause"></a>Příčina
 
-V CentOS/RHEL není podporována Hloubka v/v s větší než jednou.
+V systému CentOS Linux ani RHEL není podporována hloubka I/O větší než 1.
 
 ### <a name="workaround"></a>Alternativní řešení
 
-- Upgradujte na CentOS 8/RHEL 8.
+- Upgradujte na CentOS Linux 8 nebo RHEL 8.
 - Přejděte na Ubuntu.
 
-## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Pomalé kopírování souborů do a ze souborů Azure v systému Linux
+## <a name="slow-file-copying-to-and-from-azure-file-shares-in-linux"></a>Pomalé kopírování souborů do a ze sdílených složek Azure v systému Linux
 
-Pokud máte pomalé kopírování souborů do a ze souborů Azure, podívejte se do části [pomalé kopírování souborů do a ze souborů Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) v Průvodci odstraňováním potíží se systémem Linux.
+Pokud máte pomalé kopírování souborů, přečtěte si část "pomalé kopírování souborů do a ze sdílených složek Azure v systému Linux" v [Průvodci odstraňováním potíží se systémem Linux](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux).
 
-## <a name="jitterysaw-tooth-pattern-for-iops"></a>Model kolísání/pily-tooth pro IOPS
+## <a name="jittery-or-sawtooth-pattern-for-iops"></a>Vzorek kolísání nebo vede pilovému efektu pro IOPS
 
 ### <a name="cause"></a>Příčina
 
-Klientská aplikace konzistentně překračuje základní IOPS. V současné době není možné vyhladit zatížení žádosti na straně služby, takže pokud klient překročí směrného plánu IOPS, bude služba omezena. Toto omezování může mít za následek, že u klienta dochází ke kolísání nebo navýšení IOPS – tooth. V tomto případě může být průměrná hodnota IOPS dosažená klientem nižší než hodnota IOPS.
+Klientská aplikace konzistentně překračuje základní IOPS. V současné době není k dispozici žádná nevyhlazení zátěže na straně služby. Pokud klient překročí směrného plánu IOPS, bude ho služba omezovat. Omezení může mít za následek, že u klienta dochází ke kolísání nebo vede pilovému efektu IOPS. V tomto případě může být průměrná hodnota IOPS dosažená klientem nižší než hodnota IOPS.
 
 ### <a name="workaround"></a>Alternativní řešení
-
-- Snižte zatížení žádosti z klientské aplikace tak, aby se sdílená složka neomezila.
+- Snižte zatížení žádosti z klientské aplikace, aby sdílená složka nezískala omezení.
 - Zvyšte kvótu sdílené složky tak, aby sdílená složka nezískala omezení.
 
 ## <a name="excessive-directoryopendirectoryclose-calls"></a>Nadměrné DirectoryOpen/DirectoryClose volání
 
 ### <a name="cause"></a>Příčina
 
-Pokud je počet volání DirectoryOpen/DirectoryClose mezi horními voláními rozhraní API a neočekáváte, že klient bude provádět mnoho volání, může se jednat o problém s antivirovým programem nainstalovaným na virtuálním počítači klienta Azure.
+Pokud je počet volání **DirectoryOpen/DirectoryClose** mezi horními VOLÁNÍMI rozhraní API a neočekáváte, že klient provede toto mnoho volání, může to být způsobeno antivirovým softwarem, který je nainstalovaný na virtuálním počítači klienta Azure.
 
 ### <a name="workaround"></a>Alternativní řešení
 
@@ -153,7 +154,7 @@ Pokud je počet volání DirectoryOpen/DirectoryClose mezi horními voláními r
 
 ### <a name="cause"></a>Příčina
 
-Úlohy, které spoléhají na vytvoření velkého počtu souborů, nebudou mít podstatný rozdíl mezi výkonem a standardními sdílenými složkami souborů Premium.
+Úlohy, které spoléhají na vytvoření velkého počtu souborů, nebudou mít podstatný rozdíl ve výkonu mezi sdílenými složkami souborů Premium a standardními sdílenými složkami.
 
 ### <a name="workaround"></a>Alternativní řešení
 
@@ -163,7 +164,7 @@ Pokud je počet volání DirectoryOpen/DirectoryClose mezi horními voláními r
 
 ### <a name="cause"></a>Příčina
 
-Vyšší než očekávaná latence při přístupu k souborům Azure pro úlohy náročné na vstupně-výstupní operace.
+Vyšší než očekávaná latence přístupu ke sdíleným složkám Azure pro úlohy náročné na vstupně-výstupní operace.
 
 ### <a name="workaround"></a>Alternativní řešení
 
@@ -171,65 +172,73 @@ Vyšší než očekávaná latence při přístupu k souborům Azure pro úlohy 
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Postup vytvoření výstrahy, pokud je sdílená složka omezená
 
-1. V **Azure Portal** přejít na svůj **účet úložiště** .
-2. V části monitorování klikněte na možnost **výstrahy** a potom klikněte na tlačítko **+ nové pravidlo výstrahy**.
-3. Klikněte na **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
-4. Kliknutím na **vybrat podmínku** přidáte podmínku.
-5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, vyberte metriku **transakcí** .
-6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **typ odpovědi**.
-7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte **SUCCESSWITHTHROTTLING** (pro SMB) nebo **ClientThrottlingError** (pro REST).
+1. V Azure Portal přejít na účet úložiště.
+1. V části **monitorování** vyberte **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
+1. Vyberte **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a potom vyberte **Hotovo**. Pokud je třeba název účtu úložiště *Contoso* , vyberte prostředek contoso/File.
+1. Vyberte **možnost vybrat podmínku** a přidejte podmínku.
+1. V seznamu signálů, které jsou podporované pro účet úložiště, vyberte metriku **transakcí** .
+1. V podokně **Konfigurovat logiku signálu** v rozevíracím seznamu **název dimenze** vyberte **typ odpovědi**.
+1. V rozevíracím seznamu **hodnoty dimenze** vyberte **SUCCESSWITHTHROTTLING** (pro SMB) nebo **ClientThrottlingError** (pro REST).
 
    > [!NOTE]
-   > Pokud není uvedená hodnota dimenze SuccessWithThrottling nebo ClientThrottlingError, znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnotu dimenze, klikněte na tlačítko **Přidat vlastní hodnotu** vedle rozevíracího seznamu **hodnoty dimenzí** , zadejte **SuccessWithThrottling** nebo **ClientThrottlingError** , klikněte na tlačítko **OK** a poté opakujte krok #7.
+   > Pokud není uvedena hodnota dimenze **SuccessWithThrottling** ani **ClientThrottlingError** , znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnotu dimenze, klikněte vedle rozevíracího seznamu **hodnoty dimenze** na **Přidat vlastní hodnotu** , zadejte **SuccessWithThrottling** nebo **ClientThrottlingError** , vyberte **OK** a pak opakujte krok 7.
 
-8. Klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
-9. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
+1. V rozevíracím seznamu **název dimenze** vyberte **sdílení souborů**.
+1. V rozevíracím seznamu **hodnoty dimenze** vyberte sdílenou složku nebo sdílené složky, na kterých chcete upozornit.
 
    > [!NOTE]
-   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neurčí, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
+   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. V rozevíracím seznamu hodnoty dimenze není uveden seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky vázané na sdílení. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neidentifikuje, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou dostupné metriky vázané na sdílení, doporučujeme pro každý účet úložiště použít jednu sdílenou složku.
 
-10. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost agregace a frekvence vyhodnocení) a klikněte na **Hotovo**.
+1. Parametry výstrahy definujte zadáním **prahové hodnoty** , **operátoru** , **členitosti agregace** a **frekvence vyhodnocení** a potom vyberte **Hotovo**.
 
     > [!TIP]
-    > Pokud používáte statickou prahovou hodnotu, graf metriky může pomoci určit rozumnou prahovou hodnotu, pokud je sdílená složka momentálně omezená. Pokud používáte dynamickou prahovou hodnotu, v grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat.
+    > Pokud používáte statickou prahovou hodnotu, graf metriky vám pomůže určit rozumnou prahovou hodnotu, pokud je sdílená složka momentálně omezená. Pokud používáte dynamickou prahovou hodnotu, graf metriky zobrazuje vypočtené prahové hodnoty na základě nejnovějších dat.
 
-11. Kliknutím na **Vybrat skupinu akcí** přidejte **skupinu akcí** (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy** , **Popis** a **závažnost**.
-13. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
-
-Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
-
-## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-towards-being-throttled"></a>Jak vytvořit výstrahy, pokud se v rámci omezení podílu souborů úrovně Premium dospěje k omezení
-
-1. V **Azure Portal** přejít na svůj **účet úložiště** .
-2. V části monitorování klikněte na možnost **výstrahy** a potom klikněte na tlačítko **+ nové pravidlo výstrahy**.
-3. Klikněte na **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
-4. Kliknutím na **vybrat podmínku** přidáte podmínku.
-5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, a vyberte **výstupní** metriku.
-
-   > [!NOTE]
-   > Je nutné vytvořit 3 samostatné výstrahy, které budou upozorňovány, pokud příchozí, odchozí nebo transakční transakce překročí nastavenou prahovou hodnotu. Důvodem je to, že výstraha se aktivuje jenom v případě, že jsou splněné všechny podmínky. Takže pokud zadáte všechny podmínky do jedné výstrahy, budete upozorněni jenom v případě, že příchozí nebo odchozí přenos dat a transakce překročily prahové hodnoty.
-
-6. Posuňte se dolů. Klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
-7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
-8. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost agregace a frekvence vyhodnocení) a klikněte na **Hotovo**.
-
-   > [!NOTE]
-   > Metriky odchozího, příchozího a transakčního vysílání jsou za minutu, i když jste zřídili odchozí, příchozí a vstupně-výstupní operace za sekundu. (pohovořit o členitosti agregace – > za minutu = větší úroveň šumu, takže vyberte rozdílové) Pokud máte například zřízený výstup 90 MiB/s a chcete, aby byla prahová hodnota 80% zřízeného odchozího přenosu, měli byste vybrat následující parametry výstrahy: 75497472 pro **mezní hodnotu** , větší nebo rovnou **operátoru** for a průměr pro **typ agregace**. V závislosti na tom, jak chcete, aby vaše výstraha byla, můžete zvolit, které hodnoty se mají vybrat pro členitost agregace a četnost vyhodnocení. Například pokud chci, aby moje výstraha vypadala na základě průměrného počtu příchozích dat za hodinu a chtěla se spustit pravidlo upozornění každou hodinu, vybrali jste 1 hodinu pro **členitost agregace** a 1 hodinu pro **frekvenci vyhodnocení**.
-
-9. Kliknutím na **Vybrat skupinu akcí** přidejte **skupinu akcí** (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-10. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy** , **Popis** a **závažnost**.
-11. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
-
-    > [!NOTE]
-    > Chcete-li být upozorněni na blížící se omezení vaší sdílené složky v důsledku zřízení příchozího přenosu dat, postupujte prosím podle stejných kroků, s výjimkou kroku 5 vyberte **metriku** příchozího přenosu dat.
-
-    > [!NOTE]
-    > Abyste byli informováni o tom, jestli se nadlimitní sdílení souborů blíží omezení z důvodu zřízeného IOPS, budete muset provést několik změn. V kroku 5 vyberte místo toho metriku **transakcí** . V kroku 10 je také jediná možnost pro **typ agregace** . Proto by prahová hodnota byla závislá na zvolené členitosti agregace. Pokud jste například chtěli, aby byla prahová hodnota 80% zřízeného směrného plánu IOPS a vybrali jste 1 hodinu pro **členitost agregace** , bude **prahová hodnota** vaše základní IOPS (v bajtech) × 0,8 × 3600. Kromě těchto změn použijte stejný postup, který je uvedený výše. 
+1. Vyberte **možnost vybrat skupinu akcí** a potom do výstrahy přidejte skupinu akcí (například E-mail nebo SMS), a to buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
+1. Zadejte podrobnosti výstrahy, jako je **název pravidla výstrahy** , **Popis** a **závažnost**.
+1. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
 
 Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
-## <a name="see-also"></a>Viz také
-* [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)
-* [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)
-* [Nejčastější dotazy ke službě Azure Files](storage-files-faq.md)
+## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-toward-being-throttled"></a>Jak vytvářet výstrahy, pokud se v rámci omezení podílu souborů úrovně Premium blíží omezení
+
+1. V Azure Portal přejít na účet úložiště.
+1. V části **monitorování** vyberte **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
+1. Vyberte **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a potom vyberte **Hotovo**. Pokud je třeba název účtu úložiště *Contoso* , vyberte prostředek contoso/File.
+1. Vyberte **možnost vybrat podmínku** a přidejte podmínku.
+1. V seznamu signálů, které jsou podporované pro účet úložiště, vyberte metriku **odchozího** přenosu dat.
+
+   > [!NOTE]
+   > Je nutné vytvořit tři samostatné výstrahy, které budou upozorňovány, pokud hodnoty příchozího, výstupního nebo transakčního překročí prahové hodnoty, které jste nastavili. Důvodem je to, že výstraha se aktivuje jenom v případě, že jsou splněné všechny podmínky. Pokud například umístíte všechny podmínky do jedné výstrahy, budete upozorněni pouze v případě, že příchozí a odchozí přenos dat a transakce překročí jejich prahové hodnoty.
+
+1. Posuňte se dolů. V rozevíracím seznamu **název dimenze** vyberte **sdílení souborů**.
+1. V rozevíracím seznamu **hodnoty dimenze** vyberte sdílenou složku nebo sdílené složky, na kterých chcete upozornit.
+1. Parametry výstrahy definujte tak, že vyberete hodnoty v rozevíracích seznamech **operátor** , **prahová hodnota** , **členitost agregace** a **frekvence vyhodnocování** a pak vyberete **Hotovo**.
+
+   Metriky odchozího přenosu dat, příchozího přenosu dat a transakcí se vyjadřují za minutu, i když jste zřídili odchozí, příchozí a vstupně-výstupní operace za sekundu. Pokud máte například zřízený výstup 90 &nbsp; mebibytes za sekundu (MIB/s) a chcete, aby byla prahová hodnota 80 &nbsp; procent zřízeného odchozího přenosu, vyberte následující parametry výstrahy: 
+   - Pro **mezní hodnotu** : *75497472* 
+   - For **Operator** – operátor *větší než nebo rovno*
+   - Pro **typ agregace** : *průměr*
+   
+   V závislosti na tom, jak chcete, aby vaše výstraha byla, můžete také vybrat hodnoty pro **členitost agregace** a **četnost vyhodnocení**. Pokud třeba chcete, aby se vaše výstraha zobrazila na průměrném počtu příchozích dat za dobu 1 hodiny, a chcete, aby se pravidlo upozornění spouštělo každou hodinu, vyberte následující:
+   - Pro **členitost agregace** : *1 hodina*
+   - **Frekvence hodnocení** : *1 hodina*
+
+1. Vyberte **Vybrat skupinu akcí** a potom do výstrahy přidejte skupinu akcí (například E-mail nebo SMS), a to tak, že vyberete existující skupinu akcí nebo vytvoříte novou.
+1. Zadejte podrobnosti výstrahy, jako je **název pravidla výstrahy** , **Popis** a **závažnost**.
+1. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
+
+    > [!NOTE]
+    > - Abyste byli informováni o tom, že se vaše rezerva vašich souborů na úrovni Premium blíží omezení *z důvodu zřízeného* příchozího přenosu dat, postupujte podle předchozích pokynů, ale s následující změnou:
+    >    - V kroku 5 **Vyberte metriku** příchozího přenosu dat místo **odchozího** přenosu dat.
+    >
+    > - Abyste byli informováni o tom, že se vaše prémiové sdílení souborů blíží omezení *vzhledem k zřízeným IOPS* , postupujte podle předchozích pokynů, ale s následujícími změnami:
+    >    - V kroku 5 vyberte metriky **transakcí** místo **odchozího** přenosu dat.
+    >    - V kroku 10 je jedinou možností pro **typ agregace** *Celková hodnota*. Proto prahová hodnota závisí na zvolené členitosti agregace. Například pokud chcete, aby byla prahová hodnota 80 &nbsp; procent zřízeného směrného plánu IOPS a pro **členitost** jste vybrali *1 hodinu* , bude **prahová hodnota** vaše základní iops (v bajtech) &times; &nbsp; 0,8 &times; &nbsp; 3600. 
+
+Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+
+## <a name="see-also"></a>Viz také:
+- [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)  
+- [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)  
+- [Nejčastější dotazy ke službě Azure Files](storage-files-faq.md)

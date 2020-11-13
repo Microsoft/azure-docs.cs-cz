@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7a7d96c13b47bee9c092be926dc54555979e6c6f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 78b422cd41f4cea72b74257fe70c09471e9d2d5b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790113"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556570"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizované zálohování v2 pro virtuální počítače Azure (Správce prostředků)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ Automatizované zálohování v2 automaticky konfiguruje [spravovanou zálohu na
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete používat automatizované zálohování v2, Projděte si následující požadavky:
 
 **Operační systém** :
@@ -48,7 +48,7 @@ Pokud chcete používat automatizované zálohování v2, Projděte si následuj
 **Konfigurace databáze** :
 
 - Cílové _uživatelské_ databáze musí používat úplný model obnovení. Systémové databáze nemusejí používat úplný model obnovení. Pokud však požadujete, aby byly zálohy protokolů provedeny pro model nebo MSDB, je nutné použít úplný model obnovení. Další informace o dopadu plného modelu obnovení na zálohování najdete v [části zálohování v rámci úplného modelu obnovení](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105)). 
-- Virtuální počítač SQL Server byl zaregistrován u poskytovatele prostředků virtuálního počítače SQL v [režimu úplné správy](sql-vm-resource-provider-register.md#upgrade-to-full). 
+- SQL Server virtuální počítač se zaregistroval s rozšířením agenta SQL IaaS v [režimu úplné správy](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full). 
 -  Automatické zálohování spoléhá na úplné [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). V takovém případě se automatizované zálohování podporuje jenom v cílových databázích z výchozí instance nebo z jedné pojmenované instance. Pokud neexistuje žádná výchozí instance a více pojmenovaných instancí, rozšíření SQL IaaS selže a automatizované zálohování nebude fungovat. 
 
 ## <a name="settings"></a>Nastavení

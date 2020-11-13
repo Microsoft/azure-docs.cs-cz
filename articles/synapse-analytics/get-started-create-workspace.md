@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: f7b96bcebb2106e52c62426ca2b64f9305e09141
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 65d89436486940ad5239dd2c3e83401b82234a21
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515404"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555460"
 ---
 # <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
@@ -47,14 +47,9 @@ Po vytvoření pracovního prostoru Azure synapse máte dva způsoby, jak otevř
 ## <a name="create-a-dedicated-sql-pool"></a>Vytvoření vyhrazeného fondu SQL
 
 1. V synapse studiu v levém podokně vyberte **Spravovat**  >  **fondy SQL**.
-1. Vyberte **nové** a zadejte tato nastavení:
-
-    |Nastavení | Navrhovaná hodnota | 
-    |---|---|---|
-    |**Název fondu SQL**| **SQLDB1**|
-    |**Úroveň výkonu**|**DW100C**|
-    |||
-
+1. Vybrat **Nový**
+1. Pro **název fondu SQL** vyberte **SQLDB1**
+1. Pro **úroveň výkonu** vyberte **DW100C**
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Vyhrazený fond SQL bude připravený během několika minut. Váš vyhrazený fond SQL je přidružený k vyhrazené databázi fondu SQL, která se také označuje jako **SQLDB1**.
 
 Vyhrazený fond SQL spotřebovává Fakturovatelné prostředky, pokud je aktivní. Fond můžete později pozastavit a snížit tak náklady.
@@ -62,14 +57,10 @@ Vyhrazený fond SQL spotřebovává Fakturovatelné prostředky, pokud je aktivn
 ## <a name="create-a-serverless-apache-spark-pool"></a>Vytvoření fondu Apache Spark bez serveru
 
 1. V synapse studiu v levém podokně vyberte **Spravovat**  >  **fondy Apache Spark**.
-1. Vyberte **nové** a zadejte tato nastavení:
-
-    |Nastavení | Navrhovaná hodnota | 
-    |---|---|---|
-    |**Název Apache Spark fondu**|**Spark1**
-    |**Velikost uzlu**| **Malá**|
-    |**Počet uzlů**| Nastavte minimum na 3 a maximum na 3.|
-
+1. Vybrat **Nový** 
+1. Pro **Apache Spark název fondu** zadejte **Spark1**.
+1. Jako **Velikost uzlu** zadejte **malá**.
+1. Pro **počet uzlů** nastavte Minimum na 3 a maximum na 3.
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš fond Apache Spark bude připravený během několika sekund.
 
 Při provádění aktivity Sparku v Azure synapse určíte fond Spark, který se má použít. Tento fond oznamuje službě Azure synapse, kolik prostředků Spark se má použít. Platíte jenom za prostředky, které používáte. Při aktivním zastavení fondu se prostředky automaticky vyprší a recykluje se.

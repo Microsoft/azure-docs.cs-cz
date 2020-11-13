@@ -1,27 +1,27 @@
 ---
-title: Vyhodnotit přesnost pro službu Custom Speech-Speech
+title: Vyhodnocení a vylepšení Custom Speech přesnosti – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: V tomto dokumentu se dozvíte, jak kvantitativní měření kvality našeho modelu řeči (Speech-to-text) nebo vlastního modelu. Pro testování přesnosti se vyžadují data přepisu a přepisu, které by měly být k dispozici po dobu 30 až 5 hodin reprezentativního zvuku.
+description: V tomto dokumentu se dozvíte, jak kvantitativní měření a zlepšení kvality cloudového modelu pro převod řeči a textu nebo vlastního modelu. Pro testování přesnosti se vyžadují data přepisu a přepisu, které by měly být k dispozici po dobu 30 až 5 hodin reprezentativního zvuku.
 services: cognitive-services
-author: erhopf
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.author: erhopf
-ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.author: trbye
+ms.openlocfilehash: affbf57fcda5ff9fb56e148c2fa8769e7aa775e6
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85856834"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555800"
 ---
-# <a name="evaluate-custom-speech-accuracy"></a>Vyhodnocení přesnosti služby Custom Speech
+# <a name="evaluate-and-improve-custom-speech-accuracy"></a>Vyhodnotit a zlepšit přesnost Custom Speech
 
-V tomto dokumentu se dozvíte, jak kvantitativní měření kvality modelu řeči od Microsoftu nebo vlastního modelu. Pro testování přesnosti se vyžadují data přepisu a přepisu, které by měly být k dispozici po dobu 30 až 5 hodin reprezentativního zvuku.
+V tomto článku se dozvíte, jak změřit a zdokonalit přesnost modelů řeči a textu od Microsoftu nebo vašich vlastních modelů. Pro testování přesnosti se vyžadují data přepisu a přepisu, které by měly být k dispozici po dobu 30 až 5 hodin reprezentativního zvuku.
 
-## <a name="what-is-word-error-rate-wer"></a>Co je četnost chyb ve Wordu (WER)?
+## <a name="evaluate-custom-speech-accuracy"></a>Vyhodnocení přesnosti služby Custom Speech
 
 Standardní hodnota pro měření přesnosti modelu je *počet chyb v aplikaci* (WER). Služba WER počítá počet nesprávných slov zjištěných během rozpoznávání a pak je vydělí celkovým počtem slov poskytnutých v rámci přepisu popisku (viz obrázek N). Nakonec se toto číslo vynásobí 100% za účelem výpočtu WER.
 
@@ -60,14 +60,79 @@ Chcete-li vyhodnotit modely vedle sebe:
 
 Po úspěšném vytvoření testu můžete porovnat výsledky vedle sebe.
 
-## <a name="side-by-side-comparison"></a>Souběžné porovnání
+### <a name="side-by-side-comparison"></a>Souběžné porovnání
 
-Po dokončení testu, který je označen změnou stavu na *úspěch*, najdete číslo wer pro oba modely zahrnuté v testu. Kliknutím na název testu zobrazíte stránku s podrobnostmi o testování. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě, které označují výsledky rozpoznávání dvou modelů společně s přepisem z odeslané datové sady. Chcete-li zkontrolovat souběžné porovnání, můžete přepínat různé typy chyb včetně vložení, odstranění a nahrazování. Díky poslechu zvuku a porovnávání výsledků rozpoznávání v každém sloupci, který ukazuje přepis a výsledky pro dva modely řeči, můžete rozhodnout, který model vyhovuje vašim potřebám a kde je potřeba další školení a vylepšení.
+Po dokončení testu, který je označen změnou stavu na *úspěch* , najdete číslo wer pro oba modely zahrnuté v testu. Kliknutím na název testu zobrazíte stránku s podrobnostmi o testování. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě, které označují výsledky rozpoznávání dvou modelů společně s přepisem z odeslané datové sady. Chcete-li zkontrolovat souběžné porovnání, můžete přepínat různé typy chyb včetně vložení, odstranění a nahrazování. Díky poslechu zvuku a porovnávání výsledků rozpoznávání v každém sloupci, který ukazuje přepis a výsledky pro dva modely řeči, můžete rozhodnout, který model vyhovuje vašim potřebám a kde je potřeba další školení a vylepšení.
+
+## <a name="improve-custom-speech-accuracy"></a>Vylepšení přesnosti služby Custom Speech
+
+Scénáře rozpoznávání řeči se liší podle kvality zvuku a jazyka (slovníku slovního a mluveného stylu). Následující tabulka prověřuje čtyři běžné scénáře:
+
+| Scénář | Kvalita zvuku | Slovník | Styl speaking |
+|----------|---------------|------------|----------------|
+| Call center | Nízká, 8 kHz, možná 2 lidi na 1 zvukovém kanálu, mohli byste je zkomprimovat | Zúžené a jedinečné pro doménu a produkty | Konverzace, volně strukturovaná |
+| Hlasový asistent (například Cortana nebo okno jednotky) | Vysoká, 16 kHz | Silná entita (názvy skladeb, produkty, umístění) | Jasně uvedená slova a fráze |
+| Diktování (rychlá zpráva, poznámky, hledání) | Vysoká, 16 kHz | Řadu | Poznámka – převzetí |
+| Skryté titulky videa | Různé, včetně proměnlivého používání mikrofonu, přidaná hudba | Různé, ze schůzek, recitováného rozpoznávání řeči, hudebních textů | Číst, připravit nebo volně strukturované |
+
+Různé scénáře vedou k různým výsledkům kvality. V následující tabulce najdete informace o tom, jak obsah z těchto čtyř scénářů se [podílí na chybovosti slov (WER)](how-to-custom-speech-evaluate-data.md). Tabulka uvádí, které typy chyb jsou v každém scénáři nejběžnější.
+
+| Scénář | Kvalita rozpoznávání řeči | Chyby vkládání | Chyby při odstraňování | Chyby nahrazení |
+|----------|----------------------------|------------------|-----------------|---------------------|
+| Call center | Střední (< 30% WER) | Nízká, s výjimkou případů, kdy ostatní lidé mluví na pozadí | Může být vysoké. Centra volání můžou mít vysokou úroveň šumu a překrývající se reproduktory můžou model Zaměňujte. | Střední. Tyto chyby můžou způsobovat i názvy produktů a lidí. |
+| Hlasový asistent | Vysoká (může být < 10% WER) | Nízká | Nízká | Střední z důvodu názvů písní, názvů produktů nebo míst |
+| Diktování | Vysoká (může být < 10% WER) | Nízká | Nízká | Vysoká |
+| Skryté titulky videa | Závisí na typu videa (může být < 50% WER). | Nízká | Může být vysoké kvůli hudbě, hluku, kvalitě mikrofonu | Žargonu můžou tyto chyby způsobit. |
+
+Určení součástí WER (počet chyb vložení, odstranění a nahrazení) pomáhá určit, jaký typ dat se má přidat pro zlepšení modelu. K zobrazení kvality směrného modelu použijte [portál Custom Speech](https://speech.microsoft.com/customspeech) . Portál sestaví počty chyb vložení, nahrazení a odstranění, které jsou kombinovány s sazbou kvality WER.
+
+## <a name="improve-model-recognition"></a>Vylepšení rozpoznávání modelu
+
+Přidáním školicích dat na [portálu Custom Speech](https://speech.microsoft.com/customspeech)můžete zkrátit chyby rozpoznávání. 
+
+Naplánujte si udržování vlastního modelu tím, že se pravidelně přidávají zdrojové materiály. Váš vlastní model potřebuje další školení, abyste měli přehled o změnách vašich entit. Můžete například potřebovat aktualizace názvů produktů, názvů skladeb nebo nových umístění služby.
+
+Následující části popisují, jak může každý druh dalších školicích dat snižovat chyby.
+
+### <a name="add-related-text-sentences"></a>Přidat související textové věty
+
+Další související textové věty mohou primárně snižovat chyby při nahrazování související s chybnou rozpoznáním běžných slov a slov specifických pro doménu jejich zobrazením v kontextu. Slova specifická pro doménu můžou být neobvyklá nebo vytvořená slova, ale jejich výslovnost musí být jednoduše rozpoznaná.
+
+> [!NOTE]
+> Nepoužívejte související textové věty, které zahrnují šum, například nerozpoznatelné znaky nebo slova.
+
+### <a name="add-audio-with-human-labeled-transcripts"></a>Přidat zvuk s přepisy s lidským popiskem
+
+Zvuk s přepisy s lidskými štítky nabízí nejlepší vylepšení přesnosti, pokud zvuk pochází z cílového případu použití. Vzorky musí pokrývat plný rozsah řeči. Například centrum volání pro maloobchodní obchod získá většinu volání swimwear a Sunglasses během letních měsíců. Zajistěte, aby vaše ukázka obsahovala plný rozsah řeči, který chcete detekovat.
+
+Vezměte v úvahu tyto podrobnosti:
+
+* Custom Speech může zachytit kontext slova, aby se snížily chyby při nahrazování, ne chyby vložení nebo odstranění.
+* Vyhněte se ukázkám, které obsahují chyby přepisu, ale zahrnují různorodost kvality zvuku.
+* Vyhněte se vět, které nesouvisí s vaší doménou problému. Nesouvisející věty můžou poškodit váš model.
+* V případě, že se kvalita přepisů liší, je možné duplikovat nevyhovující věty (například Skvělé přepisy, které obsahují klíčové fráze) ke zvýšení jejich váhy.
+
+### <a name="add-new-words-with-pronunciation"></a>Přidat nová slova s výslovností
+
+Slova, která jsou tvořená nebo vysoce specializovaná, mohou mít jedinečné výslovnost. Tato slova je možné rozpoznat, pokud je možné slovo rozdělit na menší slova a vyslovit. Například pro rozpoznání pole **Xbox** , vyslovení jako **X**. Tento přístup nezvýší celkovou přesnost, ale může zvýšit rozpoznávání těchto klíčových slov.
+
+> [!NOTE]
+> Tato technika je v tuto chvíli dostupná jenom pro některé jazyky. Podrobnosti najdete v tématu přizpůsobení výslovnosti v [tabulce převod řeči na text](language-support.md) .
+
+## <a name="sources-by-scenario"></a>Zdroje podle scénáře
+
+Následující tabulka uvádí scénáře rozpoznávání hlasu a uvádí zdrojové materiály, které je potřeba zvážit v třech kategoriích výukového obsahu uvedených výše.
+
+| Scénář | Související textové věty | Audio + přepisy s popiskem | Nová slova s výslovností |
+|----------|------------------------|------------------------------|------------------------------|
+| Call center             | marketingové dokumenty, weby, recenze produktů související s aktivitou centra volání | volání Center volá přepisu podle člověka | výrazy s nejednoznačnými výslovnostmi (viz Xbox výše) |
+| Hlasový asistent         | Vypsat věty pomocí všech kombinací příkazů a entit | zaznamenávat hlasy, které mluví do zařízení, a přepisovat je do textu | názvy (filmy, skladby, produkty), které mají jedinečnou výslovnost |
+| Diktování               | psaný vstup, jako jsou rychlé zprávy nebo e-maily | Podobně jako v předchozím příkladu | Podobně jako v předchozím příkladu |
+| Skryté titulky videa | Televizní pořady – skripty, filmy, marketingový obsah, souhrny videí | přesný přepis videí | Podobně jako v předchozím příkladu |
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Trénování modelu](how-to-custom-speech-train-model.md)
-* [Nasazení modelu](how-to-custom-speech-deploy-model.md)
+* [Trénování a nasazení modelu](how-to-custom-speech-train-model.md)
 
 ## <a name="additional-resources"></a>Další zdroje
 

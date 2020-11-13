@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 6/10/2020
-ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: f94975b91a332e480a1b570c29f02040a1047f75
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84730135"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555409"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových a změněných souborů na základě LastModifiedDate pomocí nástroje Kopírování dat
 
@@ -40,7 +40,7 @@ V tomto kurzu dokončíte tyto úlohy:
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Azure Storage účet**: použijte úložiště objektů BLOB pro zdrojová úložiště a úložiště dat jímky. Pokud účet Azure Storage nemáte, postupujte podle pokynů v části [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
+* **Azure Storage účet** : použijte úložiště objektů BLOB pro zdrojová úložiště a úložiště dat jímky. Pokud účet Azure Storage nemáte, postupujte podle pokynů v části [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 
 ## <a name="create-two-containers-in-blob-storage"></a>Vytvoření dvou kontejnerů v úložišti objektů BLOB
 
@@ -52,7 +52,7 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V levém podokně vyberte **Vytvořit prostředek**. Vyberte **Analytics**  >  **Data Factory**analýzy:
+1. V levém podokně vyberte **Vytvořit prostředek**. Vyberte **integrační**  >  **Data Factory** :
 
    ![Vyberte Data Factory](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -63,8 +63,8 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
    ![Chybová zpráva název není k dispozici](./media/doc-common-process/name-not-available-error.png)
 
    Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. Použijte například název _**vaše_jméno**_**ADFTutorialDataFactory**. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
-3. V části **předplatné**vyberte předplatné Azure, ve kterém vytvoříte novou datovou továrnu.
-4. V části **Skupina prostředků**proveďte jeden z následujících kroků:
+3. V části **předplatné** vyberte předplatné Azure, ve kterém vytvoříte novou datovou továrnu.
+4. V části **Skupina prostředků** proveďte jeden z následujících kroků:
 
     * Vyberte **použít existující** a potom v seznamu vyberte existující skupinu prostředků.
 
@@ -88,13 +88,13 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
 2. Na stránce **vlastnosti** proveďte následující kroky:
 
-    a. V části **název úlohy**zadejte **DeltaCopyFromBlobPipeline**.
+    a. V části **název úlohy** zadejte **DeltaCopyFromBlobPipeline**.
 
-    b. V části **úkol tempo nebo plán úlohy**vyberte možnost **spouštět pravidelně podle plánu**.
+    b. V části **úkol tempo nebo plán úlohy** vyberte možnost **spouštět pravidelně podle plánu**.
 
-    c. V části **typ triggeru**vyberte **okno bubnu**.
+    c. V části **typ triggeru** vyberte **okno bubnu**.
 
-    d. V části **opakování**zadejte **15 minut**.
+    d. V části **opakování** zadejte **15 minut**.
 
     e. Vyberte **Další**.
 
@@ -106,13 +106,13 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
     a. Vyberte  **vytvořit nové připojení** a přidejte připojení.
 
-    b. Z Galerie vyberte **Azure Blob Storage** a pak vyberte **pokračovat**:
+    b. Z Galerie vyberte **Azure Blob Storage** a pak vyberte **pokračovat** :
 
     ![Výběr služby Azure blog Storage](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
 
     c. Na stránce **Nová propojená služba (Azure Blob Storage)** vyberte svůj účet úložiště ze seznamu **název účtu úložiště** . Otestujte připojení a pak vyberte **vytvořit**.
 
-    d. Vyberte novou propojenou službu a potom vyberte **Další**:
+    d. Vyberte novou propojenou službu a potom vyberte **Další** :
 
    ![Výběr nové propojené služby](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-linkedservice.png)
 
@@ -122,9 +122,9 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
     ![Zvolte vstupní soubor nebo složku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
 
-    b. V části **chování načítání souborů**vyberte **přírůstkové načtení: LastModifiedDate**.
+    b. V části **chování načítání souborů** vyberte **přírůstkové načtení: LastModifiedDate**.
 
-    c. Vyberte **binární kopii** a potom vyberte **Další**:
+    c. Vyberte **binární kopii** a potom vyberte **Další** :
 
      ![Výběr stránky vstupního souboru nebo složky](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
 
@@ -132,7 +132,7 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
 6. Na stránce **Choose the output file or folder** (Zvolit výstupní soubor nebo složku) proveďte následující kroky:
 
-    a. Vyhledejte a vyberte **cílovou** složku a pak vyberte **zvolit**:
+    a. Vyhledejte a vyberte **cílovou** složku a pak vyberte **zvolit** :
 
     ![Vybrat stránku výstupního souboru nebo složky](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
 
@@ -164,7 +164,7 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
     ![Vytvoření file1.txt a nahrání do zdrojového kontejneru](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
-13. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechna spuštění kanálu**a počkejte, až se znovu automaticky aktivuje stejný kanál.  
+13. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechna spuštění kanálu** a počkejte, až se znovu automaticky aktivuje stejný kanál.  
 
 14. Po dokončení druhého kanálu postupujte podle výše uvedených kroků a podívejte se na podrobnosti o spuštění aktivit.  
 

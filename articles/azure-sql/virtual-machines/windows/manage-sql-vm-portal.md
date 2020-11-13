@@ -12,12 +12,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 467cbe91f4e516dc6facd2d30c38da1483308b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b563e8ca93487a123f97f0bbb86624dc3be2db0
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316966"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556281"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Správa virtuálních počítačů s SQL Server v Azure pomocí Azure Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +30,7 @@ V [Azure Portal](https://portal.azure.com)prostředek [**virtuálních počíta�
 ## <a name="remarks"></a>Poznámky
 
 - K zobrazení a správě vašich SQL Server virtuálních počítačů v Azure doporučujeme použít prostředek [**SQL Virtual Machine**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . Ale v současné době prostředek **virtuálních počítačů s SQL** nepodporuje správu SQL Server virtuálních počítačů na [konci podpory](sql-server-2008-extend-end-of-support.md) . Pokud chcete spravovat nastavení pro SQL Server virtuálních počítačů na konci, použijte místo toho kartu nepoužívané [SQL Server konfigurace](#access-the-sql-server-configuration-tab) . 
-- Prostředek **SQL Virtual Machine** je dostupný jenom pro SQL Server virtuální počítače, které jsou [zaregistrované u poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md). 
+- Prostředek **SQL Virtual Machine** je dostupný jenom pro SQL Server virtuální počítače, které jsou [zaregistrované v rozšíření agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md). 
 
 
 ## <a name="access-the-sql-virtual-machines-resource"></a>Přístup k prostředku virtuálních počítačů SQL
@@ -57,7 +57,7 @@ Pokud chcete získat přístup k prostředku **virtuálních počítačů SQL** 
 > Prostředek **SQL Virtual Machine** je pro vyhrazená nastavení SQL Server. Vyberte název virtuálního počítače v poli **virtuální počítač** a otevřete tak nastavení specifická pro daný virtuální počítač, ale ne výhradně pro SQL Server. 
 
 ## <a name="access-the-sql-server-configuration-tab"></a>Přístup k kartě Konfigurace SQL Server
-Karta **konfigurace SQL Server** je zastaralá. V tuto chvíli je jedinou metodou pro správu SQL Server virtuálních počítačů na [konci podpory](sql-server-2008-extend-end-of-support.md) a SQL Server virtuálních počítačů, které nejsou [zaregistrované u poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md).
+Karta **konfigurace SQL Server** je zastaralá. V tuto chvíli je jedinou metodou pro správu SQL Server virtuálních počítačů na [konci podpory](sql-server-2008-extend-end-of-support.md) a SQL Server virtuálních počítačů, které nejsou [zaregistrované v rozšíření agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md).
 
 Pokud chcete získat přístup k zastaralé **SQL Server kartě Konfigurace** , přejděte do prostředku **virtuální počítače** . Použijte k tomu následující postup:
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: eaaedc4404419e6028250a994077dd3df20b83d4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fb1f1d098970927ba04c840e77ec0a0b8d76ca02
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539647"
+ms.locfileid: "94561314"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Podnikové zabezpečení a zásady správného řízení pro Azure Machine Learning
 
@@ -105,7 +105,13 @@ Volitelně můžete nakonfigurovat vlastní spravované identity pro použití s
 
 K omezení fyzického přístupu k prostředkům Azure Machine Learning můžete použít Azure Virtual Network (VNet). Virtuální sítě umožňují vytvářet síťová prostředí, která jsou částečně nebo plně izolovaná od veřejného Internetu. Tím se sníží plocha pro útoky na vaše řešení a také šance na exfiltrace dat.
 
-Další informace najdete v tématu [Přehled izolace a ochrany osobních údajů ve virtuální síti](how-to-network-security-overview.md).
+Další informace najdete v následujících dokumentech:
+
+* [Přehled izolace a ochrany osobních údajů virtuální sítě](how-to-network-security-overview.md)
+* [Zabezpečené prostředky pracovního prostoru](how-to-secure-workspace-vnet.md)
+* [Zabezpečené prostředí pro trénování](how-to-secure-training-vnet.md)
+* [Zabezpečené odvozené prostředí](how-to-secure-inferencing-vnet.md)
+* [Použití studia v zabezpečené virtuální síti](how-to-enable-studio-virtual-network.md)
 
 <a id="encryption-at-rest"></a><a id="azure-blob-storage"></a>
 

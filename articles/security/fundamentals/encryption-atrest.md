@@ -1,6 +1,6 @@
 ---
-title: Šifrování dat Microsoft Azure v klidovém případě | Microsoft Docs
-description: Tento článek poskytuje přehled o Microsoft Azure šifrování dat v klidovém formátu, celkové možnosti a obecné informace.
+title: Šifrování dat Azure – on-REST – Azure Security
+description: Tento článek poskytuje přehled o službě Azure Data Encryption v klidovém formátu, celkové možnosti a obecné informace.
 services: security
 documentationcenter: na
 author: msmbaldwin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c9a68661a89f53c5aa27bdd046b5bc09a47db400
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412778"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556620"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování neaktivních uložených dat v Azure
 
@@ -128,7 +128,7 @@ Všechny Azure Storage služby (úložiště objektů blob, úložiště front, 
 
 Azure SQL Database aktuálně podporuje šifrování v klidovém provozu pro scénáře pro šifrování na straně služby spravované Microsoftem a na straně klienta.
 
-Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím funkce SQL s názvem transparentní šifrování dat. Jakmile zákazník Azure SQL Database povolí, automaticky se vytvoří a nařídí klíč TDE. Šifrování v klidovém umístění lze povolit na úrovni databáze a serveru. Od června 2017 je [transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) ve výchozím nastavení povolená u nově vytvořených databází. Azure SQL Database podporuje RSA 2048 klíčů spravovaných zákazníkem v Azure Key Vault. Další informace najdete v tématu [transparentní šifrování dat s podporou Bring Your Own Key pro Azure SQL Database a datový sklad](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current).
+Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím funkce SQL s názvem transparentní šifrování dat. Jakmile zákazník Azure SQL Database povolí, automaticky se vytvoří a nařídí klíč TDE. Šifrování v klidovém umístění lze povolit na úrovni databáze a serveru. Od června 2017 je [transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) ve výchozím nastavení povolená u nově vytvořených databází. Azure SQL Database podporuje RSA 2048 klíčů spravovaných zákazníkem v Azure Key Vault. Další informace najdete v tématu [transparentní šifrování dat s podporou Bring Your Own Key pro Azure SQL Database a datový sklad](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql).
 
 Šifrování Azure SQL Databasech dat na straně klienta je podporováno prostřednictvím funkce [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) . Always Encrypted používá klíč, který vytvořil a uložil klient. Zákazníci můžou hlavní klíč Uložit do úložiště certifikátů Windows, Azure Key Vault nebo místního modulu hardwarového zabezpečení. Pomocí SQL Server Management Studio uživatelé SQL zvolí, který klíč mají použít k zašifrování, který sloupec.
 
@@ -140,3 +140,4 @@ Ochrana zákaznických dat uložených v rámci služeb Azure má pro společnos
 
 - Další informace o klíčích spravovaných službou a klíčích spravovaných zákazníkem najdete v tématu [modely šifrování dat](encryption-models.md) .
 - Přečtěte si, jak Azure používá [dvojité šifrování](double-encryption.md) ke zmírnění hrozeb, které jsou součástí šifrování dat.
+- Zjistěte, co Microsoft zajišťuje [integritu platformy a zabezpečení](platform.md) hostitelů, kteří přecházejí mezi kanály pro vytváření a vytváření, integraci, provozování a opravy firmwaru.

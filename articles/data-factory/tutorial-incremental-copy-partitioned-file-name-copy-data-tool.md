@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 6/10/2020
-ms.openlocfilehash: 3a46c2024269affc06d18806aa186fb8b0feaafe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: ae66bb025f2a49a79120fe86e0de7c4a3ccf26ca
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533753"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555358"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových souborů na základě času názvu souboru rozděleného do oddílů pomocí nástroje Kopírování dat
 
@@ -39,7 +39,7 @@ V tomto kurzu budete provádět následující kroky:
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet úložiště Azure**: jako _zdroj_  dat a úložiště dat _jímky_ použijte úložiště objektů BLOB. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
+* **Účet úložiště Azure** : jako _zdroj_  dat a úložiště dat _jímky_ použijte úložiště objektů BLOB. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 
 ### <a name="create-two-containers-in-blob-storage"></a>Vytvoření dvou kontejnerů v úložišti objektů BLOB
 
@@ -56,7 +56,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit prostředek**  >  **data a analýzy**  >  **Data Factory**:
+1. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  **Data Factory** :
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -72,12 +72,12 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 
     a. Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
 
-    b. Vyberte **vytvořit novou**a zadejte název skupiny prostředků. 
+    b. Vyberte **vytvořit novou** a zadejte název skupiny prostředků. 
          
     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).
 
 5. V části **Verze** vyberte **V2**.
-6. V části **umístění**vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například služby Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou můžou být v jiných umístěních a oblastech.
+6. V části **umístění** vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například služby Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou můžou být v jiných umístěních a oblastech.
 7. Vyberte **Vytvořit**.
 8. Po vytvoření se zobrazí domovská stránka **Datová továrna**.
 9. Pokud chcete na samostatné kartě otevřít uživatelské rozhraní služby Azure Data Factory, vyberte dlaždici **Vytvořit a monitorovat**.
@@ -93,13 +93,13 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 
 2. Na stránce **vlastnosti** proveďte následující kroky:
 
-    a. V části **název úlohy**zadejte **DeltaCopyFromBlobPipeline**.
+    a. V části **název úlohy** zadejte **DeltaCopyFromBlobPipeline**.
 
-    b. V části **úkol tempo nebo plán úlohy**vyberte možnost **spouštět pravidelně podle plánu**.
+    b. V části **úkol tempo nebo plán úlohy** vyberte možnost **spouštět pravidelně podle plánu**.
 
-    c. V části **typ triggeru**vyberte **okno bubnu**.
+    c. V části **typ triggeru** vyberte **okno bubnu**.
 
-    d. V části **opakování**zadejte **1 hodina (e)**.
+    d. V části **opakování** zadejte **1 hodina (e)**.
 
     e. Vyberte **Další**.
 
@@ -124,13 +124,13 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 
     ![Snímek obrazovky se zobrazí v dialogovém okně zvolit vstupní soubor nebo složku.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
 
-    b. V části **chování při načítání souborů**vyberte **přírůstkové načtení: čas-dělené složky nebo názvy souborů**.
+    b. V části **chování při načítání souborů** vyberte **přírůstkové načtení: čas-dělené složky nebo názvy souborů**.
 
     c. Napište cestu k dynamické složce jako **zdroj/{Year}/{Month}/{Day}/{Hour}/** a změňte formát, jak je znázorněno na následujícím snímku obrazovky. Ověřte **binární kopii** a klikněte na tlačítko **Další**.
 
     ![Snímek obrazovky se zobrazí dialogové okno zvolit vstupní soubor nebo složku s vybraným adresářem.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
 
-5. Na stránce **cílové úložiště dat** vyberte **AzureBlobStorage**, což je stejný účet úložiště jako úložiště zdroje dat, a potom klikněte na **Další**.
+5. Na stránce **cílové úložiště dat** vyberte **AzureBlobStorage** , což je stejný účet úložiště jako úložiště zdroje dat, a potom klikněte na **Další**.
 
     ![Stránka Cílové úložiště dat](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/destination-data-store-page-select-linkedservice.png)
 6. Na stránce **zvolit výstupní soubor nebo složku** proveďte následující kroky:
@@ -169,7 +169,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
     > [!NOTE]
     > Možná víte, že je potřeba vytvořit novou cestu ke složce. Upravte prosím název složky časem UTC.  Pokud je například aktuální čas UTC 4:20 na březen. 17, 2020, můžete vytvořit cestu ke složce jako **zdroj/2020/03/17/04/** podle pravidla **{Year}/{Month}/{Day}/{Hour}/**.
 
-13. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechny spuštěné kanály**a počkejte, až se znovu aktivuje stejný kanál, a to za jinou hodinu.  
+13. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechny spuštěné kanály** a počkejte, až se znovu aktivuje stejný kanál, a to za jinou hodinu.  
 
     ![Snímek obrazovky se zobrazí odkaz všechny spuštění kanálu, který se vrátí na tuto stránku.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
 

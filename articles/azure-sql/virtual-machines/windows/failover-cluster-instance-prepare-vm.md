@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5eff13c9ec672937258cf35274d2f5f7bc66f18
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 901c090d26959950d0ffd6a96253bdc36c9331c5
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164240"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556331"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Příprava virtuálních počítačů na FCI (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +26,7 @@ Tento článek popisuje, jak připravit virtuální počítače Azure na jejich 
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech pro clustery](hadr-cluster-best-practices.md). 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 - Předplatné Microsoft Azure. Začněte [zdarma](https://azure.microsoft.com/free/). 
 - Doména Windows na virtuálních počítačích Azure nebo v místním datacentru, které se rozšířily do Azure s párováním virtuálních sítí.
@@ -47,9 +47,9 @@ Funkce clusteru s podporou převzetí služeb při selhání vyžaduje, aby virt
 
 Pečlivě vyberte možnost dostupnosti virtuálního počítače, která odpovídá vaší zamýšlené konfiguraci clusteru: 
 
- - **Sdílené disky Azure**: skupina [dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) nakonfigurovaná s doménou selhání a aktualizační doménou je nastavená na 1 a umístěna do [skupiny umístění blízkosti](../../../virtual-machines/windows/proximity-placement-groups-portal.md).
- - **Souborové sdílené složky Premium**: [Skupina dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) nebo [zóna dostupnosti](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address). Sdílené složky Premium jsou jedinou možností sdíleného úložiště, pokud zvolíte zóny dostupnosti jako Konfigurace dostupnosti pro vaše virtuální počítače. 
- - **Prostory úložiště s přímým přístupem**: [Skupina dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
+ - **Sdílené disky Azure** : skupina [dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) nakonfigurovaná s doménou selhání a aktualizační doménou je nastavená na 1 a umístěna do [skupiny umístění blízkosti](../../../virtual-machines/windows/proximity-placement-groups-portal.md).
+ - **Souborové sdílené složky Premium** : [Skupina dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) nebo [zóna dostupnosti](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address). Sdílené složky Premium jsou jedinou možností sdíleného úložiště, pokud zvolíte zóny dostupnosti jako Konfigurace dostupnosti pro vaše virtuální počítače. 
+ - **Prostory úložiště s přímým přístupem** : [Skupina dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
 
 >[!IMPORTANT]
 >Po vytvoření virtuálního počítače už skupinu dostupnosti nemůžete nastavit ani změnit.
@@ -71,15 +71,15 @@ Virtuální počítač Azure můžete vytvořit pomocí Image [s](sql-vm-create-
 
 ## <a name="uninstall-sql-server"></a>Odinstalace SQL Server
 
-V rámci procesu vytváření FCI nainstalujete SQL Server jako clusterovou instanci do clusteru s podporou převzetí služeb při selhání. *Pokud jste nasadili virtuální počítač s Azure Marketplaceovou imagí bez SQL Server, můžete tento krok přeskočit.* Pokud jste nasadili bitovou kopii s předinstalovaným SQL Server, bude nutné zrušit registraci SQL Server virtuálního počítače od poskytovatele prostředků virtuálního počítače SQL a poté odinstalovat SQL Server. 
+V rámci procesu vytváření FCI nainstalujete SQL Server jako clusterovou instanci do clusteru s podporou převzetí služeb při selhání. *Pokud jste nasadili virtuální počítač s Azure Marketplaceovou imagí bez SQL Server, můžete tento krok přeskočit.* Pokud jste nasadili bitovou kopii s předinstalovaným SQL Server, bude nutné zrušit registraci SQL Server virtuálního počítače z rozšíření agenta SQL IaaS a poté odinstalovat SQL Server. 
 
-### <a name="unregister-from-the-sql-vm-resource-provider"></a>Zrušení registrace od poskytovatele prostředků virtuálního počítače SQL
+### <a name="unregister-from-the-sql-iaas-agent-extension"></a>Zrušení registrace rozšíření agenta SQL IaaS
 
-SQL Server image virtuálních počítačů z Azure Marketplace se automaticky zaregistrují u poskytovatele prostředků virtuálního počítače SQL. Před odinstalací předinstalované instance SQL Server musíte nejprve [zrušit registraci každého SQL Server virtuálního počítače od poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md#unregister-from-rp). 
+SQL Server image virtuálních počítačů z Azure Marketplace se automaticky zaregistrují pomocí rozšíření agenta SQL IaaS. Před odinstalací předinstalované instance SQL Server musíte nejprve [zrušit registraci každého SQL Server virtuálního počítače z rozšíření agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension). 
 
 ### <a name="uninstall-sql-server"></a>Odinstalace SQL Server
 
-Po zrušení registrace od poskytovatele prostředků můžete odinstalovat SQL Server. Na každém virtuálním počítači proveďte tyto kroky: 
+Po zrušení registrace z tohoto rozšíření můžete SQL Server odinstalovat. Na každém virtuálním počítači proveďte tyto kroky: 
 
 1. Připojte se k virtuálnímu počítači pomocí protokolu RDP.
 
@@ -87,14 +87,14 @@ Po zrušení registrace od poskytovatele prostředků můžete odinstalovat SQL 
 
 1. Pokud používáte jednu z imagí virtuálních počítačů založených na SQL Server, odeberte instanci SQL Server:
 
-   1. V části **programy a funkce**klikněte pravým tlačítkem na **Microsoft SQL Server 201_ (64 bitů)** a vyberte **Odinstalovat nebo změnit**.
+   1. V části **programy a funkce** klikněte pravým tlačítkem na **Microsoft SQL Server 201_ (64 bitů)** a vyberte **Odinstalovat nebo změnit**.
    1. Vyberte **Odebrat**.
    1. Vyberte výchozí instanci.
-   1. Odeberte všechny funkce ve **službě databázového stroje**. V rámci **sdílených funkcí**nic neodstraňujte. Uvidíte něco podobného jako na následujícím snímku obrazovky:
+   1. Odeberte všechny funkce ve **službě databázového stroje**. V rámci **sdílených funkcí** nic neodstraňujte. Uvidíte něco podobného jako na následujícím snímku obrazovky:
 
       ![Výběr funkcí](./media/failover-cluster-instance-prepare-vm/03-remove-features.png)
 
-   1. Vyberte **Další**a pak vyberte **Odebrat**.
+   1. Vyberte **Další** a pak vyberte **Odebrat**.
    1. Po úspěšném odebrání instance restartujte virtuální počítač. 
 
 ## <a name="open-the-firewall"></a>Otevřete bránu firewall. 
@@ -107,9 +107,9 @@ Tato tabulka podrobně popisuje porty, které může být potřeba otevřít, v 
 
    | Účel | Port | Poznámky
    | ------ | ------ | ------
-   | SQL Server | TCP 1433 | Normální port pro výchozí instance SQL Server. Pokud jste použili image z Galerie, tento port se automaticky otevře. </br> </br> **Používá**se: všechny konfigurace FCI. |
-   | Sonda stavu | TCP 59999 | Libovolný otevřený port TCP. Nakonfigurujte [sondu stavu](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) nástroje pro vyrovnávání zatížení a cluster, který bude používat tento port. </br> </br> **Používá**: FCI s nástrojem pro vyrovnávání zatížení. |
-   | Sdílená složka | UDP 445 | Port, který používá služba sdílení souborů. </br> </br> **Používá se v**: FCI se službou Premium File Share. |
+   | SQL Server | TCP 1433 | Normální port pro výchozí instance SQL Server. Pokud jste použili image z Galerie, tento port se automaticky otevře. </br> </br> **Používá** se: všechny konfigurace FCI. |
+   | Sonda stavu | TCP 59999 | Libovolný otevřený port TCP. Nakonfigurujte [sondu stavu](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) nástroje pro vyrovnávání zatížení a cluster, který bude používat tento port. </br> </br> **Používá** : FCI s nástrojem pro vyrovnávání zatížení. |
+   | Sdílená složka | UDP 445 | Port, který používá služba sdílení souborů. </br> </br> **Používá se v** : FCI se službou Premium File Share. |
 
 ## <a name="join-the-domain"></a>Připojení k doméně
 

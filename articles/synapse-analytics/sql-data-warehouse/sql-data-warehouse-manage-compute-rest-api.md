@@ -1,6 +1,6 @@
 ---
 title: Pozastavení, obnovení, škálování pomocí rozhraní REST API
-description: Spravujte výpočetní výkon v Azure synapse Analytics Data Warehouse prostřednictvím rozhraní REST API.
+description: Spravujte výpočetní výkon pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics prostřednictvím rozhraní REST API.
 services: synapse-analytics
 author: antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/29/2019
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bbb8e82710b4c8ca7736b53d427b3880faf2be05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49702051b5399d5079aacc97c00233a23ba8712d
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213274"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556008"
 ---
-# <a name="rest-apis-for-azure-synapse-analytics-data-warehouse"></a>Rozhraní REST API pro datový sklad Azure synapse Analytics
+# <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Rozhraní REST API pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics
 
-Rozhraní REST API pro správu výpočetních prostředků ve službě Azure synapse Analytics Data Warehouse.
+Rozhraní REST API pro správu výpočetních prostředků pro vyhrazený fond SQL (dříve SQL DW) ve službě Azure synapse Analytics.
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
 
@@ -64,7 +64,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="get-maintenance-schedule"></a>Získat plán údržby
 
-Ověřte plán údržby, který byl nastaven pro datový sklad.
+Ověřte plán údržby, který byl nastaven pro vyhrazený fond SQL (dříve SQL DW).
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -73,7 +73,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="set-maintenance-schedule"></a>Nastavit plán údržby
 
-Nastavení a aktualizace plánu údržby pro existující datový sklad.
+Nastavení a aktualizace plánu údržby stávajícího vyhrazeného fondu SQL (dříve SQL DW).
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1

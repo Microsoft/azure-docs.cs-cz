@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 9b90d13d6f4fa5a33bff38aaa66728a5d0f3d70f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 01f9ee1ad134c14150d16569fd57e658b160784c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289946"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556314"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Vytvoření FCI s využitím Prostory úložiště s přímým přístupem (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +50,7 @@ Předchozí diagram znázorňuje následující prostředky ve stejné skupině 
    > Celé řešení můžete vytvořit v Azure ze šablony. Příklad šablony je k dispozici na stránce [šablony Azure pro rychlý Start](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad) pro GitHub. Tento příklad není navržený nebo testován pro žádnou konkrétní úlohu. Můžete spustit šablonu a vytvořit SQL Server FCI s úložištěm Prostory úložiště s přímým přístupem připojeným k vaší doméně. Můžete vyhodnotit šablonu a upravit ji pro vaše účely.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
@@ -217,7 +217,7 @@ Po nakonfigurování clusteru s podporou převzetí služeb při selhání a vš
 
 ## <a name="register-with-the-sql-vm-rp"></a>Zaregistrujte se pomocí SQL VM RP.
 
-Pokud chcete spravovat SQL Server virtuální počítač z portálu, zaregistrujte ho pomocí poskytovatele prostředků virtuálního počítače SQL (RP) v [režimu zjednodušené správy](sql-vm-resource-provider-register.md#lightweight-management-mode), v současné době jde o jediný režim, který se v FCI a SQL Server na virtuálních počítačích Azure podporuje. 
+Pokud chcete spravovat SQL Server virtuální počítač z portálu, zaregistrujte ho pomocí rozšíření SQL IaaS Agent (RP) v [režimu zjednodušené správy](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode), v současné době se jedná o jediný režim, který podporuje FCI a SQL Server na virtuálních počítačích Azure. 
 
 
 Zaregistrujte SQL Server virtuální počítač v jednoduchém režimu pomocí prostředí PowerShell:  
@@ -239,7 +239,7 @@ Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, na
 
 - Virtuální počítače Azure podporují službu Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) na Windows serveru 2019 s úložištěm v CSV a [standardním nástrojem pro vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md).
 - Disky, které jsou připojené jako disky formátované systémem souborů NTFS, se dají používat s Prostory úložiště s přímým přístupem jenom v případě, že při přidávání úložiště do clusteru není zaškrtnuté políčko nárok na disk nebo když se nevymaže. 
-- Podporuje se jenom registrace u poskytovatele prostředků virtuálního počítače SQL v [režimu zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) .
+- Podporuje se jenom registrování s rozšířením agenta SQL IaaS v [režimu zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) .
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -249,6 +249,6 @@ Pokud Prostory úložiště s přímým přístupem není pro vás vhodné řeš
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech konfigurace clusteru](hadr-cluster-best-practices.md). 
 
-Další informace naleznete v tématech: 
+Další informace najdete tady: 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

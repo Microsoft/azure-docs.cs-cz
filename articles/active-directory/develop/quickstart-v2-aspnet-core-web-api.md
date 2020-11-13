@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: dc0cdca2355403bc8f5409d9a6ca7f4ae89caf25
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa0a001f9c35202939eeb4a7752803b998a3acf7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946924"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562011"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Rychlý Start: ochrana ASP.NET Core webového rozhraní API s platformou Microsoft identity
 
-V tomto rychlém startu se dozvíte, jak chránit ASP.NET Core webového rozhraní API, aby k němu bylo možné získat pouze autorizované účty. Účty můžou být osobní účty (hotmail.com, outlook.com a další) a pracovní a školní účty v libovolné instanci Azure Active Directory (Azure AD).
+V tomto rychlém startu si stáhnete ukázku kódu ASP.NET Core webového rozhraní API a zkontrolujete jeho kód, který omezí přístup k prostředkům jenom na autorizované účty. Ukázka podporuje autorizaci osobních účtů a účtů Microsoft v jakékoli organizaci Azure Active Directory (Azure AD).
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Předpoklady
+> ## <a name="prerequisites"></a>Požadavky
 >
 > - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > - [Tenant Azure Active Directory](quickstart-create-new-tenant.md)
@@ -35,22 +35,22 @@ V tomto rychlém startu se dozvíte, jak chránit ASP.NET Core webového rozhran
 >
 > Nejdřív Zaregistrujte webové rozhraní API ve vašem tenantovi Azure AD a přidejte obor pomocí následujících kroků:
 >
-> 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 > 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. Vyhledejte a vyberte **Azure Active Directory**.
-> 1. V části **Spravovat**vyberte **Registrace aplikací**a pak **Nová registrace**.
+> 1. V části **Spravovat** vyberte **Registrace aplikací** a pak **Nová registrace**.
 > 1. Zadejte **název** vaší aplikace, například `AspNetCoreWebApi-Quickstart` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
 > 1. Vyberte **Zaregistrovat**.
-> 1. V části **Spravovat**vyberte **zveřejnit rozhraní API** .
+> 1. V části **Spravovat** vyberte **zveřejnit rozhraní API** .
 > 1. Vyberte **Přidat obor** a vyberte **Uložit a pokračovat** a přijměte výchozí **identifikátor URI ID aplikace**.
 > 1. V podokně **Přidat obor** zadejte následující hodnoty:
->    - **Název oboru**: `access_as_user`
->    - **Kdo může udělit souhlas?**: **Správci a uživatelé**
->    - **Zobrazovaný název souhlasu správce**: `Access AspNetCoreWebApi-Quickstart`
->    - **Popis souhlasu správce**: `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
->    - **Zobrazovaný název souhlasu uživatele**: `Access AspNetCoreWebApi-Quickstart`
->    - **Popis souhlasu uživatele**: `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
->    - **Stav**: **povoleno**
+>    - **Název oboru** : `access_as_user`
+>    - **Kdo může udělit souhlas?** : **Správci a uživatelé**
+>    - **Zobrazovaný název souhlasu správce** : `Access AspNetCoreWebApi-Quickstart`
+>    - **Popis souhlasu správce** : `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
+>    - **Zobrazovaný název souhlasu uživatele** : `Access AspNetCoreWebApi-Quickstart`
+>    - **Popis souhlasu uživatele** : `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
+>    - **Stav** : **povoleno**
 > 1. Kliknutím na **Přidat obor** dokončete přidání oboru.
 
 ## <a name="step-2-download-the-aspnet-core-project"></a>Krok 2: stažení ASP.NET Coreho projektu
@@ -74,9 +74,9 @@ V tomto rychlém startu se dozvíte, jak chránit ASP.NET Core webového rozhran
 >
 >    - Nahraďte `Enter_the_Application_Id_here` **ID aplikace (klienta)** aplikace, kterou jste zaregistrovali v Azure Portal. **ID aplikace (klienta)** můžete najít na stránce **Přehled** aplikace.
 >    - Nahraďte `Enter_the_Tenant_Info_Here` některou z následujících možností:
->       - Pokud vaše aplikace podporuje **jenom účty v tomto organizačním adresáři**, nahraďte tuto hodnotu **ID adresáře (TENANT)** (identifikátor GUID) nebo **názvem tenanta** (například `contoso.onmicrosoft.com` ). **ID adresáře (tenant)** najdete na stránce **Přehled** aplikace.
->       - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
->       - Pokud vaše aplikace podporuje **všechny účet Microsoft uživatele**, ponechte tuto hodnotu jako `common`
+>       - Pokud vaše aplikace podporuje **jenom účty v tomto organizačním adresáři** , nahraďte tuto hodnotu **ID adresáře (TENANT)** (identifikátor GUID) nebo **názvem tenanta** (například `contoso.onmicrosoft.com` ). **ID adresáře (tenant)** najdete na stránce **Přehled** aplikace.
+>       - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři** , nahraďte tuto hodnotu za `organizations`.
+>       - Pokud vaše aplikace podporuje **všechny účet Microsoft uživatele** , ponechte tuto hodnotu jako `common`
 >
 > V tomto rychlém startu Neměňte žádné jiné hodnoty v *appsettings.js* souboru.
 

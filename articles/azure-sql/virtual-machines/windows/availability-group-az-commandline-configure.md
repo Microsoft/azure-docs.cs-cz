@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: a85c1326501a362371d3bc961f5c5ae448e8d22e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9129d0cb44aea9b85c5569d4d939c0904c398c07
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790079"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556518"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Ke konfiguraci skupiny dostupnosti pro SQL Server na virtuálním počítači Azure použijte PowerShell nebo AZ CLI. 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,13 +29,13 @@ Nasazení skupiny dostupnosti se pořád provádí ručně pomocí SQL Server Ma
 
 V tomto článku se používá prostředí PowerShell a příkaz AZ CLI ke konfiguraci prostředí skupiny dostupnosti, je to také možné z [Azure Portal](availability-group-azure-portal-configure.md), pomocí [šablon Azure pro rychlý Start](availability-group-quickstart-template-configure.md)nebo [ručně](availability-group-manually-configure-tutorial.md) . 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci skupiny dostupnosti Always On musíte mít následující požadavky: 
 
 - [Předplatné Azure](https://azure.microsoft.com/free/)
 - Skupina prostředků s řadičem domény. 
-- Jeden nebo víc virtuálních počítačů připojených k doméně [v Azure se spuštěným SQL Server 2016 (nebo novější) Enterprise Edition](./create-sql-vm-portal.md) ve *stejné* skupině dostupnosti nebo v *různých* zónách dostupnosti, které jsou [zaregistrované u poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md).  
+- Jeden nebo víc virtuálních počítačů připojených k doméně [v Azure se spuštěným SQL Server 2016 (nebo novější) Enterprise Edition](./create-sql-vm-portal.md) ve *stejné* skupině dostupnosti nebo v *různých* zónách dostupnosti, které jsou [zaregistrované pomocí rozšíření agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md).  
 - Nejnovější verzi [PowerShellu](/powershell/scripting/install/installing-powershell) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli). 
 - K dispozici jsou dvě (nepoužívané v žádné entitě) IP adresy. Jedna je určena pro interní nástroj pro vyrovnávání zatížení. Druhá je pro naslouchací proces skupiny dostupnosti ve stejné podsíti jako skupina dostupnosti. Pokud používáte existující Nástroj pro vyrovnávání zatížení, budete pro naslouchací proces skupiny dostupnosti potřebovat jenom jednu dostupnou IP adresu. 
 
@@ -250,7 +250,7 @@ Po ručním vytvoření skupiny dostupnosti můžete naslouchací proces vytvoř
    1. V [Azure Portal](https://portal.azure.com)přejít do skupiny prostředků. 
    1. Vyberte prostředek virtuální sítě. 
    1. V podokně **Nastavení** vyberte **vlastnosti** . 
-   1. Identifikujte ID prostředku pro virtuální síť a přidejte `/subnets/<subnetname>` na konec IT a vytvořte ID prostředku podsítě. Příklad:
+   1. Identifikujte ID prostředku pro virtuální síť a přidejte `/subnets/<subnetname>` na konec IT a vytvořte ID prostředku podsítě. Například:
       - Vaše ID prostředku virtuální sítě je: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
       - Název vaší podsítě: `default`
       - Proto je ID prostředku podsítě: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`
@@ -423,9 +423,9 @@ Odebrání repliky ze skupiny dostupnosti:
 ---
 
 ## <a name="remove-listener"></a>Odebrat naslouchací proces
-Pokud později potřebujete odebrat naslouchací proces skupiny dostupnosti nakonfigurovaný pomocí Azure CLI, musíte projít poskytovatelem prostředků virtuálního počítače SQL. Vzhledem k tomu, že naslouchací proces je zaregistrován prostřednictvím poskytovatele prostředků virtuálního počítače SQL, stačí ho odstranit přes SQL Server Management Studio nedostatečné. 
+Pokud později potřebujete odebrat naslouchací proces skupiny dostupnosti nakonfigurovaný pomocí Azure CLI, musíte projít rozšířením agenta SQL IaaS. Protože je naslouchací proces zaregistrován prostřednictvím rozšíření agenta SQL IaaS, stačí ho odstranit prostřednictvím SQL Server Management Studio nedostatečné. 
 
-Nejlepším způsobem je odstranit ho přes poskytovatele prostředků SQL VM pomocí následujícího fragmentu kódu v Azure CLI. Tím se odebere metadata naslouchacího procesu skupiny dostupnosti z poskytovatele prostředků virtuálního počítače SQL. Také fyzicky odstraní naslouchací proces ze skupiny dostupnosti. 
+Nejlepším způsobem je odstranit ho pomocí rozšíření agenta SQL IaaS pomocí následujícího fragmentu kódu v Azure CLI. Tím se z rozšíření agenta SQL IaaS Odebere metadata naslouchacího procesu skupiny dostupnosti. Také fyzicky odstraní naslouchací proces ze skupiny dostupnosti. 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -451,7 +451,7 @@ Remove-AzAvailabilityGroupListener -Name <Listener> `
 
 ## <a name="remove-cluster"></a>Odebrat cluster
 
-Odeberte všechny uzly z clusteru, abyste je zničili, a pak odeberte metadata clusteru z poskytovatele prostředků virtuálního počítače SQL. Můžete to provést pomocí Azure CLI nebo PowerShellu. 
+Odeberte všechny uzly z clusteru, abyste je zničili, a pak odeberte metadata clusteru z rozšíření agenta SQL IaaS. Můžete to provést pomocí Azure CLI nebo PowerShellu. 
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -468,7 +468,7 @@ az sql vm remove-from-group --name <VM2 name>  --resource-group <resource group 
 
 Pokud se jedná o jediné virtuální počítače v clusteru, bude cluster zničen. Pokud v clusteru dojde k jiným virtuálním počítačům z SQL Server odebraných virtuálních počítačů, ostatní virtuální počítače se neodeberou a cluster nebude zničen. 
 
-Pak z poskytovatele prostředků virtuálního počítače SQL odeberte metadata clusteru: 
+Dále odeberte metadata clusteru z rozšíření agenta SQL IaaS: 
 
 ```azurecli-interactive
 # Remove the cluster from the SQL VM RP metadata
@@ -497,7 +497,7 @@ $sqlvm = Get-AzSqlVM -Name <VM Name> -ResourceGroupName <Resource Group Name>
 
 Pokud se jedná o jediné virtuální počítače v clusteru, bude cluster zničen. Pokud v clusteru dojde k jiným virtuálním počítačům z SQL Server odebraných virtuálních počítačů, ostatní virtuální počítače se neodeberou a cluster nebude zničen. 
 
-Pak z poskytovatele prostředků virtuálního počítače SQL odeberte metadata clusteru: 
+Dále odeberte metadata clusteru z rozšíření agenta SQL IaaS: 
 
 ```powershell-interactive
 # Remove the cluster metadata

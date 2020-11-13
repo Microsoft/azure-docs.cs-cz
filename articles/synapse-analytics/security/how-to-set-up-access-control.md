@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 080e56a5b6be8ba68c901509fe87421632144643
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 79a4db1f7d4be88260ea41ce1090007bc66cc7c8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312045"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556025"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview) 
 
@@ -31,7 +31,7 @@ Pokud chcete zabezpečit pracovní prostor synapse (Preview), postupujte podle v
   - Apache Spark pro správce Azure synapse Analytics
 - Řízení přístupu pro data v Azure Data Lake Storage Gen 2 (ADLSGEN2).
 - Řízení přístupu pro databáze SQL synapse a Spark
-- 
+
 ## <a name="steps-to-secure-a-synapse-workspace"></a>Postup zabezpečení pracovního prostoru synapse
 
 Tento dokument používá ke zjednodušení pokynů standardní názvy. Nahraďte je libovolnými názvy.

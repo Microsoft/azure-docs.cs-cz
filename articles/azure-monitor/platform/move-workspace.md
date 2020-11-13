@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/13/2019
-ms.openlocfilehash: e80ff2c04cf71fa322bb0bf41e8132f595c0644e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 11/12/2020
+ms.openlocfilehash: 04da4d6466d450d04d7008332e32ea3d59cd0252
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372272"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555528"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Přesunutí pracovního prostoru Log Analytics do jiného předplatného nebo skupiny prostředků
 
@@ -29,14 +29,14 @@ Zdrojové a cílové odběry pracovního prostoru musí existovat v rámci stejn
 ```
 
 ## <a name="workspace-move-considerations"></a>Požadavky na přesun v pracovním prostoru
-Spravovaná řešení, která jsou nainstalovaná v pracovním prostoru, se přesunou pomocí operace přesunu pracovního prostoru Log Analytics. Připojení agenti zůstanou připojeni a po přesunutí budou data v pracovním prostoru posílat. Vzhledem k tomu, že operace přesunutí vyžaduje, aby z pracovního prostoru neexistovaly žádné propojené služby, je nutné odebrat řešení, která spoléhají na tento odkaz, aby bylo možné pracovní prostor přesunout.
-
-Řešení, která je potřeba odebrat, než budete moct zrušit propojení svého účtu Automation:
-
-- Update Management
-- Sledování změn
-- Spuštění/zastavení virtuálních počítačů mimo špičku
-- Azure Security Center
+- Spravovaná řešení, která jsou nainstalovaná v pracovním prostoru, se přesunou pomocí operace přesunu pracovního prostoru Log Analytics. 
+- Klíče pracovního prostoru se znovu generují s přesunem pracovního prostoru (primárním a sekundárním). Pokud klíč vašeho pracovního prostoru vytvoříte jako trezor, aktualizujte je pomocí nových vygenerovaných klíčů. 
+- Připojení agenti zůstanou připojeni a po přesunutí budou data v pracovním prostoru posílat. 
+- Vzhledem k tomu, že operace přesunutí vyžaduje, aby z pracovního prostoru neexistovaly žádné propojené služby, je nutné odebrat řešení, která spoléhají na tento odkaz, aby bylo možné pracovní prostor přesunout. Řešení, která je potřeba odebrat, než budete moct zrušit propojení svého účtu Automation:
+  - Update Management
+  - Sledování změn
+  - Spuštění/zastavení virtuálních počítačů mimo špičku
+  - Azure Security Center
 
 >[!IMPORTANT]
 > **Zákazníci s Sentinel Azure**

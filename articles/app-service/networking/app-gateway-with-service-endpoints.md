@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: dbf38c303f024884971e95f7be9d4dfc50d118de
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 954e94063ec91cd2a6d67d154dfd7da553e0935a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127820"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560889"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Integrace Application Gateway s koncovými body služby
 Existují tři variace App Service, které vyžadují mírně odlišnou konfiguraci integrace s Azure Application Gateway. Mezi varianty patří běžné App Service – také označované jako víceklientské, interní Load Balancer (interního nástroje) App Service Environment (pomocného mechanismu) a externí pomocný modul pro čtení. Tento článek vás seznámí s postupem, jak ho nakonfigurovat App Service (multi-tenant) a diskuze o požadavcích na interního nástroje a externím pomocném mechanismem.
@@ -36,7 +36,7 @@ V Azure Portal budete postupovat podle čtyř kroků, kterými instalaci zříd�
 1. Vytvořte App Service pomocí jednoho z rychlých startů v dokumentaci k App Service, například [.NET Core rychlý Start](../quickstart-dotnetcore.md) .
 2. Pomocí rychlého startu na [portálu](../../application-gateway/quick-create-portal.md)vytvořte Application Gateway, ale přeskočte část přidat cíle back-endu.
 3. Nakonfigurujte [App Service jako back-end v Application Gateway](../../application-gateway/configure-web-app-portal.md), ale přeskočte část omezení přístupu.
-4. Nakonec vytvořte [omezení přístupu pomocí koncových bodů služby](../../app-service/app-service-ip-restrictions.md#service-endpoints).
+4. Nakonec vytvořte [omezení přístupu pomocí koncových bodů služby](../../app-service/app-service-ip-restrictions.md#use-service-endpoints).
 
 Nyní můžete k App Service přistupovat prostřednictvím Application Gateway, ale pokud se pokusíte získat přístup k App Service přímo, měli byste obdržet chybu 403 HTTP s oznámením, že web je zastavený.
 

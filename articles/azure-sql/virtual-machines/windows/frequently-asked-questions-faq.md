@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: d3d8908739d6dda76f4c3d44540c36b36115d6f5
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b58119ccc1551d12dfc9b09f76f6980618ba6221
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289403"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556288"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Nejčastější dotazy k SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -43,7 +43,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **SQL Server můžou se z Galerie odebrat image virtuálních počítačů?**
 
-   Ano. Azure udržuje jenom jednu Image na hlavní verzi a edici. Například když je vydána nová aktualizace Service Pack SQL Server, Azure přidá novou bitovou kopii do galerie pro danou aktualizaci Service Pack. Obrázek SQL Server pro předchozí aktualizaci Service Pack je okamžitě odebrán z Azure Portal. Je ale stále k dispozici pro zřizování z PowerShellu po dobu příštích tří měsíců. Po třech měsících již není k dispozici předchozí obrázek aktualizace Service Pack. Tato zásada odebrání by se taky použila v případě, že se SQL Serverá verze Nepodporovaná, když dosáhne konce svého životního cyklu.
+   Yes. Azure udržuje jenom jednu Image na hlavní verzi a edici. Například když je vydána nová aktualizace Service Pack SQL Server, Azure přidá novou bitovou kopii do galerie pro danou aktualizaci Service Pack. Obrázek SQL Server pro předchozí aktualizaci Service Pack je okamžitě odebrán z Azure Portal. Je ale stále k dispozici pro zřizování z PowerShellu po dobu příštích tří měsíců. Po třech měsících již není k dispozici předchozí obrázek aktualizace Service Pack. Tato zásada odebrání by se taky použila v případě, že se SQL Serverá verze Nepodporovaná, když dosáhne konce svého životního cyklu.
 
 
 1. **Je možné nasadit starší obrázek SQL Server, který není viditelný v Azure Portal?**
@@ -52,7 +52,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    
 1. **Je možné vytvořit zobecněnou Azure Marketplace SQL Server bitovou kopii mého SQL Server virtuálního počítače a použít ji k nasazení virtuálních počítačů?**
 
-   Ano, ale abyste mohli spravovat SQL Server virtuální počítač na portálu a využívat funkce, jako jsou automatické opravy a automatické zálohování, musíte [každý SQL Server virtuální počítač zaregistrovat pomocí poskytovatele prostředků SQL Server virtuálního počítače](sql-vm-resource-provider-register.md) . Při registraci u poskytovatele prostředků budete taky muset zadat typ licence pro každý virtuální počítač SQL Server.
+   Ano, ale musíte [každý SQL Server virtuální počítač zaregistrovat pomocí rozšíření agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md) a spravovat tak SQL Server virtuální počítač na portálu a využívat funkce, jako jsou automatické opravy a automatické zálohování. Při registraci s příponou budete taky muset zadat typ licence pro každý virtuální počítač SQL Server.
 
 1. **Návody zobecnit SQL Server na virtuálním počítači Azure a použít ho k nasazení nových virtuálních počítačů?**
 
@@ -64,22 +64,22 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
 
    > [!NOTE]
-   > SQL Server na virtuálních počítačích Azure, včetně těch, které se nasazují z vlastních zobecněných imagí, by mělo být [zaregistrované u poskytovatele prostředků virtuálního počítače SQL](./sql-vm-resource-provider-register.md?tabs=azure-cli%252cbash) , aby splnil požadavky na dodržování předpisů a využili volitelné funkce, jako jsou automatické opravy a automatické zálohování. Poskytovatel prostředků taky umožňuje [zadat typ licence](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal) pro každý virtuální počítač SQL Server.
+   > SQL Server na virtuálních počítačích Azure, včetně těch, které se nasazují z vlastních zobecněných imagí, by mělo být [zaregistrované s rozšířením agenta SQL IaaS](./sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%252cbash) pro splnění požadavků na dodržování předpisů a používání volitelných funkcí, jako jsou automatické opravy a automatické zálohování. Rozšíření také umožňuje [zadat typ licence](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal) pro každý virtuální počítač SQL Server.
 
 1. **Můžu pomocí vlastního virtuálního pevného disku nasadit SQL Server virtuální počítač?**
 
-   Ano, ale abyste mohli spravovat SQL Server virtuální počítač na portálu a využívat funkce, jako jsou automatické opravy a automatické zálohování, musíte [každý SQL Server virtuální počítač zaregistrovat pomocí poskytovatele prostředků SQL Server virtuálního počítače](sql-vm-resource-provider-register.md) .
+   Ano, ale musíte [každý SQL Server virtuální počítač zaregistrovat pomocí rozšíření agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md) a spravovat tak SQL Server virtuální počítač na portálu a využívat funkce, jako jsou automatické opravy a automatické zálohování.
 
 1. **Je možné nastavit konfigurace, které nejsou v galerii virtuálních počítačů zobrazené (například Windows 2008 R2 + SQL Server 2012)?**
 
-   Ne. Pro image z Galerie virtuálních počítačů, které zahrnují SQL Server, je nutné vybrat jednu z poskytnutých imagí buď pomocí Azure Portal nebo pomocí [PowerShellu](create-sql-vm-powershell.md). Máte ale možnost nasadit virtuální počítač s Windows a SQL Server k němu nainstalovat sami. Musíte pak [zaregistrovat svůj SQL Server virtuální počítač pomocí poskytovatele prostředků SQL Server](sql-vm-resource-provider-register.md) pro správu SQL Server virtuálního počítače v Azure Portal a využívat funkce, jako je automatické opravy a automatické zálohování. 
+   Ne. Pro image z Galerie virtuálních počítačů, které zahrnují SQL Server, je nutné vybrat jednu z poskytnutých imagí buď pomocí Azure Portal nebo pomocí [PowerShellu](create-sql-vm-powershell.md). Máte ale možnost nasadit virtuální počítač s Windows a SQL Server k němu nainstalovat sami. Je pak nutné [zaregistrovat svůj SQL Server virtuální počítač s rozšířením agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md) a spravovat tak SQL Server virtuální počítač v Azure Portal a využívat funkce, jako jsou automatické opravy a automatické zálohování. 
 
 
 ## <a name="creation"></a>Vytvoření
 
 1. **Návody vytvořit virtuální počítač Azure s SQL Server?**
 
-   Nejjednodušším způsobem je vytvořit virtuální počítač, který obsahuje SQL Server. Kurz týkající se registrace do Azure a vytvoření virtuálního počítače s SQL Server z portálu najdete v tématu [zřízení virtuálního počítače s SQL Server v Azure Portal](create-sql-vm-portal.md). Můžete vybrat bitovou kopii virtuálního počítače, která používá licencování SQL Server s platbou za sekundu, nebo můžete použít image, která vám umožní využít vlastní SQL Server licenci. Máte také možnost ručně nainstalovat SQL Server na virtuálním počítači s jednou z licencovaných edicí (Developer nebo Express) nebo pomocí místní licence. Nezapomeňte [zaregistrovat svůj SQL Server virtuální počítač pomocí poskytovatele prostředků SQL Server](sql-vm-resource-provider-register.md) pro správu SQL Server virtuálního počítače na portálu a využít funkce, jako jsou automatické opravy a automatické zálohování. Pokud přenesete vlastní licenci, musíte mít [License mobility prostřednictvím Software Assurance v Azure](https://azure.microsoft.com/pricing/license-mobility/). Další informace najdete v tématu [Doprovodné materiály k cenám pro virtuální počítače Azure s SQL Serverem](pricing-guidance.md).
+   Nejjednodušším způsobem je vytvořit virtuální počítač, který obsahuje SQL Server. Kurz týkající se registrace do Azure a vytvoření virtuálního počítače s SQL Server z portálu najdete v tématu [zřízení virtuálního počítače s SQL Server v Azure Portal](create-sql-vm-portal.md). Můžete vybrat bitovou kopii virtuálního počítače, která používá licencování SQL Server s platbou za sekundu, nebo můžete použít image, která vám umožní využít vlastní SQL Server licenci. Máte také možnost ručně nainstalovat SQL Server na virtuálním počítači s jednou z licencovaných edicí (Developer nebo Express) nebo pomocí místní licence. Nezapomeňte [zaregistrovat svůj SQL Server virtuální počítač s rozšířením agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md) , abyste mohli spravovat SQL Server virtuální počítač na portálu, a využívat funkce, jako jsou automatické opravy a automatické zálohování. Pokud přenesete vlastní licenci, musíte mít [License mobility prostřednictvím Software Assurance v Azure](https://azure.microsoft.com/pricing/license-mobility/). Další informace najdete v tématu [Doprovodné materiály k cenám pro virtuální počítače Azure s SQL Serverem](pricing-guidance.md).
 
 1. **Jak můžu migrovat místní databázi SQL Server do cloudu?**
 
@@ -89,7 +89,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Jak můžu na virtuální počítač Azure nainstalovat licencovanou kopii SQL Serveru?**
 
-   Můžete to provést třemi způsoby. Pokud jste zákazníkem smlouva Enterprise (EA), můžete zřídit jednu z [imagí virtuálních počítačů, které podporují licence](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL), označované také jako vlastní licence (BYOL). Pokud máte [program Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default), můžete [zvýhodněné hybridní využití Azure](licensing-model-azure-hybrid-benefit-ahb-change.md) povolit na stávající imagi s průběžnými platbami (PAYG). Případně můžete zkopírovat instalační médium SQL Serveru na virtuální počítač s Windows Serverem a pak na tomto virtuálním počítači nainstalovat SQL Server. Nezapomeňte zaregistrovat svůj SQL Server virtuální počítač u [poskytovatele prostředků](sql-vm-resource-provider-register.md) pro funkce, jako je Správa portálu, automatizované zálohování a automatizované opravy. 
+   Můžete to provést třemi způsoby. Pokud jste zákazníkem smlouva Enterprise (EA), můžete zřídit jednu z [imagí virtuálních počítačů, které podporují licence](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL), označované také jako vlastní licence (BYOL). Pokud máte [program Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default), můžete [zvýhodněné hybridní využití Azure](licensing-model-azure-hybrid-benefit-ahb-change.md) povolit na stávající imagi s průběžnými platbami (PAYG). Případně můžete zkopírovat instalační médium SQL Serveru na virtuální počítač s Windows Serverem a pak na tomto virtuálním počítači nainstalovat SQL Server. Nezapomeňte zaregistrovat SQL Server virtuální počítač s [rozšířením](sql-agent-extension-manually-register-single-vm.md) pro funkce, jako je Správa portálu, automatizované zálohování a automatizované opravy. 
 
 1. **Můžu změnit virtuální počítač tak, aby používal vlastní licenci SQL Serveru, pokud byl vytvořený z některé z imagí z galerie s průběžnými platbami?**
 
@@ -97,15 +97,15 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Způsobí přepnutí modelů licencování výpadek SQL Serveru?**
 
-   Ne. [Změna licenčního modelu](licensing-model-azure-hybrid-benefit-ahb-change.md) nevyžaduje žádné výpadky SQL Server, protože změna je okamžitě platná a nevyžaduje restartování virtuálního počítače. Pokud ale chcete zaregistrovat SQL Server virtuální počítač pomocí poskytovatele prostředků SQL Server virtuálních počítačů, je potřeba [rozšíření SQL IaaS](sql-server-iaas-agent-extension-automate-management.md) a instalace rozšíření SQL IaaS v _plném_ režimu restartuje službu SQL Server. Pokud je třeba nainstalovat rozšíření SQL IaaS, buď ho nainstalujte do _zjednodušeného_ režimu pro omezené funkce, nebo ho během časového období údržby nainstalujte v _plném_ režimu. Rozšíření SQL IaaS nainstalované v _jednoduchém_ režimu můžete kdykoli upgradovat na _úplný_ režim, ale vyžaduje restart služby SQL Server. 
+   Ne. [Změna licenčního modelu](licensing-model-azure-hybrid-benefit-ahb-change.md) nevyžaduje žádné výpadky SQL Server, protože změna je okamžitě platná a nevyžaduje restartování virtuálního počítače. Pokud ale chcete zaregistrovat SQL Server virtuální počítač s rozšířením agenta SQL IaaS, je potřeba [rozšíření SQL IaaS](sql-server-iaas-agent-extension-automate-management.md) a instalace rozšíření SQL IaaS v _plném_ režimu restartuje službu SQL Server. Pokud je třeba nainstalovat rozšíření SQL IaaS, buď ho nainstalujte do _zjednodušeného_ režimu pro omezené funkce, nebo ho během časového období údržby nainstalujte v _plném_ režimu. Rozšíření SQL IaaS nainstalované v _jednoduchém_ režimu můžete kdykoli upgradovat na _úplný_ režim, ale vyžaduje restart služby SQL Server. 
    
 1. **Je možné přepínat modely licencování na SQL Server nasazeném virtuálním počítači pomocí klasického modelu?**
 
-   Ne. Změna modelů licencování není na klasickém virtuálním počítači podporována. Virtuální počítač můžete migrovat na model Azure Resource Manager a zaregistrovat u poskytovatele prostředků virtuálního počítače s SQL Serverem. Změny modelu licencování budou na virtuálním počítači k dispozici po dokončení registrace virtuálního počítače u poskytovatele prostředků virtuálního počítače s SQL Serverem.
+   Ne. Změna modelů licencování není na klasickém virtuálním počítači podporována. Svůj virtuální počítač můžete migrovat do modelu Azure Resource Manager a zaregistrovat se pomocí rozšíření agenta SQL IaaS. Jakmile je virtuální počítač zaregistrován pomocí rozšíření agenta SQL IaaS, budou na virtuálním počítači k dispozici změny modelu licencování.
 
 1. **Můžu pomocí webu Azure Portal spravovat více instancí na jednom virtuálním počítači?**
 
-   Ne. Správa přes portál je funkce, kterou zajišťuje poskytovatel prostředků virtuálního počítače s SQL Serverem a která spoléhá na rozšíření agenta SQL Server IaaS. Proto pro poskytovatele prostředků platí stejná omezení jako pro toto rozšíření. Na portálu je možné spravovat pouze jednu výchozí instanci nebo jednu pojmenovanou instanci (pokud je správně nakonfigurovaná). Další informace o těchto omezeních najdete v tématu [SQL Server rozšíření agenta IaaS](sql-server-iaas-agent-extension-automate-management.md). 
+   Ne. Správa portálu je funkce poskytovaná rozšířením agenta SQL IaaS, která spoléhá na rozšíření agenta SQL Server IaaS. Stejně tak se stejná omezení vztahují na rozšíření jako na rozšíření. Na portálu je možné spravovat pouze jednu výchozí instanci nebo jednu pojmenovanou instanci (pokud je správně nakonfigurovaná). Další informace o těchto omezeních najdete v tématu [SQL Server rozšíření agenta IaaS](sql-server-iaas-agent-extension-automate-management.md). 
 
 1. **Je možné aktivovat Zvýhodněné hybridní využití Azure pro předplatná CSP?**
 
@@ -135,34 +135,34 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    Výhodu DR podporují komplexní programy, které jako pevně danou výhodu nabízejí stejná práva předplatného jako Software Assurance. Patří mezi ně není to ale omezené na, Open Value (OV), Open Value Subscription (OVS), smlouva Enterprise (EA), smlouva Enterprise předplatné (EAS) a zápis na server a Cloud (SCE). Další informace najdete v tématu [podmínky produktu](https://www.microsoft.com/licensing/product-licensing/products) a kontaktování licenčních kontaktů nebo účtu správce účtů. 
 
    
- ## <a name="resource-provider"></a>Poskytovatel prostředků
+ ## <a name="extension"></a>Rozšíření
 
-1. **Zaregistrujeme svůj virtuální počítač pomocí nového poskytovatele prostředků SQL Server virtuálních počítačů, který přináší další náklady?**
+1. **Zaregistruje se můj virtuální počítač s novým rozšířením agenta SQL IaaS a přináší další náklady?**
 
-   Ne. Poskytovatel prostředků virtuálního počítače s SQL Server jenom umožňuje další možnosti správy pro SQL Server na virtuálním počítači Azure bez dalších poplatků. 
+   Ne. Rozšíření agenta SQL IaaS umožňuje pouze další možnosti správy pro SQL Server na virtuálním počítači Azure bez dalších poplatků. 
 
-1. **Je poskytovatel prostředků SQL Server virtuálních počítačů dostupný pro všechny zákazníky?**
+1. **Je k dispozici rozšíření agenta SQL IaaS pro všechny zákazníky?**
  
-   Ano, pokud byl virtuální počítač SQL Server nasazený ve veřejném cloudu pomocí modelu Správce prostředků, a ne klasického modelu. Všichni ostatní zákazníci se můžou zaregistrovat u nového poskytovatele prostředků virtuálního počítače SQL Server. Vlastní licenci ale můžou používat jenom zákazníci s výhodou [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3) , a to aktivací [zvýhodněné hybridní využití Azure (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) na SQL serverm virtuálním počítači. 
+   Ano, pokud byl virtuální počítač SQL Server nasazený ve veřejném cloudu pomocí modelu Správce prostředků, a ne klasického modelu. Všichni ostatní zákazníci se můžou zaregistrovat s novým rozšířením agenta SQL IaaS. Vlastní licenci ale můžou používat jenom zákazníci s výhodou [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3) , a to aktivací [zvýhodněné hybridní využití Azure (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) na SQL serverm virtuálním počítači. 
 
-1. **Co se stane s prostředkem poskytovatele prostředků ( _Microsoft. SqlVirtualMachine_ ), pokud je prostředek virtuálního počítače přesunutý nebo vyřazený?** 
+1. **Co se stane s prostředkem rozšíření ( _Microsoft. SqlVirtualMachine_ ), pokud je prostředek virtuálního počítače přesunutý nebo vyřazený?** 
 
    Po vyřazení nebo přesunutí prostředku Microsoft. COMPUTE/VirtualMachine je přidružený prostředek Microsoft. SqlVirtualMachine upozorněn na asynchronní replikaci operace.
 
-1. **Co se stane s virtuálním počítačem, pokud je prostředek poskytovatele prostředků ( _Microsoft. SqlVirtualMachine_ ) vyřazený?**
+1. **Co se stane s virtuálním počítačem, pokud je prostředek rozšíření ( _Microsoft. SqlVirtualMachine_ ) vyřazený?**
 
     Prostředek Microsoft. COMPUTE/VirtualMachine nemá vliv na vyřazení prostředku Microsoft. SqlVirtualMachine. Změny licencí se ale nastaví jako výchozí zpátky na původní zdroj bitové kopie. 
 
-1. **Je možné zaregistrovat SQL Server virtuální počítače nasazené svým držitelem pomocí SQL Server poskytovatele prostředků virtuálního počítače?**
+1. **Je možné zaregistrovat SQL Server virtuální počítače nasazené svým držitelem pomocí rozšíření agenta SQL IaaS?**
 
-    Ano. Pokud jste nasadili SQL Server z vlastního média a nainstalovali jste rozšíření SQL IaaS, můžete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, abyste získali výhody správy poskytované rozšířením SQL IaaS.    
+    Yes. Pokud jste nasadili SQL Server z vlastního média a nainstalovali jste rozšíření SQL IaaS, můžete zaregistrovat SQL Server virtuální počítač s rozšířením a získat výhody správy, které poskytuje rozšíření SQL IaaS.    
 
 
 ## <a name="administration"></a>Správa
 
 1. **Můžu na stejný virtuální počítač nainstalovat druhou instanci SQL Server? Můžu změnit nainstalované funkce výchozí instance?**
 
-   Ano. Instalační médium SQL Server se nachází ve složce na jednotce **C** . Pokud chcete přidat nové instance SQL Server nebo změnit jiné nainstalované funkce SQL Server na počítači, spusťte z tohoto umístění **Setup.exe** . Všimněte si, že některé funkce, například automatizované zálohování, automatizované opravy a Integrace Azure Key Vault, pracují jenom s výchozí instancí nebo s pojmenovanou instancí nakonfigurovanou správně (viz otázka 3). Zákazníci, kteří používají [Software Assurance prostřednictvím zvýhodněné hybridní využití Azure](licensing-model-azure-hybrid-benefit-ahb-change.md) nebo licenční model s průběžnými **platbami** , můžou do virtuálního počítače nainstalovat víc instancí SQL Server, aniž by se musely účtovat další náklady na licencování. Další instance SQL Server můžou zadržet systémové prostředky, pokud nejsou správně nakonfigurované. 
+   Yes. Instalační médium SQL Server se nachází ve složce na jednotce **C** . Pokud chcete přidat nové instance SQL Server nebo změnit jiné nainstalované funkce SQL Server na počítači, spusťte z tohoto umístění **Setup.exe** . Všimněte si, že některé funkce, například automatizované zálohování, automatizované opravy a Integrace Azure Key Vault, pracují jenom s výchozí instancí nebo s pojmenovanou instancí nakonfigurovanou správně (viz otázka 3). Zákazníci, kteří používají [Software Assurance prostřednictvím zvýhodněné hybridní využití Azure](licensing-model-azure-hybrid-benefit-ahb-change.md) nebo licenční model s průběžnými **platbami** , můžou do virtuálního počítače nainstalovat víc instancí SQL Server, aniž by se musely účtovat další náklady na licencování. Další instance SQL Server můžou zadržet systémové prostředky, pokud nejsou správně nakonfigurované. 
 
 1. **Jaký je maximální počet instancí virtuálního počítače?**
    SQL Server 2012 až SQL Server 2019 může podporovat [instance 50](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP) na samostatném serveru. Toto je stejný limit bez ohledu na místní Azure. Další informace o tom, jak lépe připravit prostředí, najdete v tématu [osvědčené postupy](performance-guidelines-best-practices.md#multiple-instances) . 
@@ -186,12 +186,12 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    1. V případě potřeby zálohujte všechna vaše data, včetně systémových databází. 
    1. Odinstalujte SQL Server úplně, včetně rozšíření SQL IaaS (Pokud je k dispozici).
    1. Nainstalujte bezplatnou [verzi SQL Express](https://www.microsoft.com/sql-server/sql-server-downloads).
-   1. Zaregistrujte se do poskytovatele prostředků virtuálního počítače SQL v [jednoduchém režimu](sql-vm-resource-provider-register.md).
+   1. Zaregistrujte se pomocí rozšíření agenta SQL IaaS v [jednoduchém režimu](sql-agent-extension-manually-register-single-vm.md).
    1. volitelné Zakažte službu Express SQL Server zakázáním spouštění služby. 
 
 1. **Můžu pomocí webu Azure Portal spravovat více instancí na jednom virtuálním počítači?**
 
-   Ne. Správu portálu poskytuje poskytovatel prostředků SQL VM, který spoléhá na rozšíření agenta SQL Server IaaS. Stejně tak platí stejná omezení jako u poskytovatele prostředků jako rozšíření. Portál může spravovat jenom jednu výchozí instanci nebo jednu pojmenovanou instanci, pokud je nakonfigurovaná správně. Další informace najdete v tématu [SQL Server rozšíření agenta IaaS](sql-server-iaas-agent-extension-automate-management.md) . 
+   Ne. Správu portálu poskytuje rozšíření agenta SQL IaaS, které spoléhá na rozšíření agenta SQL Server IaaS. Stejně tak platí stejná omezení jako u rozšíření. Portál může spravovat jenom jednu výchozí instanci nebo jednu pojmenovanou instanci, pokud je nakonfigurovaná správně. Další informace najdete v tématu [SQL Server rozšíření agenta IaaS](sql-server-iaas-agent-extension-automate-management.md) . 
 
 
 ## <a name="updating-and-patching"></a>Aktualizace a opravy
@@ -208,7 +208,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
    Virtuální počítače umožňují kontrolu hostitelského počítače včetně doby a způsobu použití aktualizací. V případě operačního systému můžete aktualizace Windows instalovat ručně nebo můžete povolit službu plánování [Automatizované opravy](automated-patching.md). Automatizované opravy nainstalují jakékoli aktualizace, které jsou označené jako důležité, včetně aktualizací SQL Serveru v této kategorii. Ostatní volitelné aktualizace SQL Server se musí instalovat ručně.
 
-1. **Můžu upgradovat SQL Server 2008/2008 R2 po registraci pomocí poskytovatele prostředků SQL Server virtuálního počítače?**
+1. **Můžu po registraci pomocí rozšíření agenta SQL IaaS upgradovat instanci SQL Server 2008/2008 R2?**
 
    Pokud je operační systém Windows Server 2008 R2 nebo novější, ano. K upgradu verze a edice SQL Server můžete použít libovolné instalační médium a pak můžete upgradovat [IaaS režim rozšíření SQL](sql-server-iaas-agent-extension-automate-management.md#management-modes), a to z _žádného agenta_ na _úplný_. Díky tomu budete mít přístup ke všem výhodám rozšíření SQL IaaS, jako je Správa portálu, automatizované zálohování a automatizované opravy. Pokud je verze operačního systému Windows Server 2008, je podporován pouze režim bez agenta. 
 
@@ -222,7 +222,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Jsou SQL Server na virtuálních počítačích Azure podporované instance clusterů s podporou převzetí služeb při selhání (FCI)?**
 
-   Ano. Pro subsystém úložiště můžete nainstalovat instanci clusteru s podporou převzetí služeb při selhání s využitím úrovně [Premium (PFS File Shares)](failover-cluster-instance-premium-file-share-manually-configure.md) nebo [prostorů úložiště s přímým přístupem (S2D)](failover-cluster-instance-storage-spaces-direct-manually-configure.md) . Soubory úrovně Premium poskytují vstupně-výstupní operace za sekundu a propustnost, které budou vyhovovat potřebám řady úloh. Pro úlohy náročné na v/v zvažte použití prostorů úložiště s přímým přístupem na spravovaných Premium nebo extrémně-discích. Alternativně můžete použít řešení clusteringu nebo úložišť třetích stran, jak je popsáno v tématu [Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines](business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions).
+   Yes. Pro subsystém úložiště můžete nainstalovat instanci clusteru s podporou převzetí služeb při selhání s využitím úrovně [Premium (PFS File Shares)](failover-cluster-instance-premium-file-share-manually-configure.md) nebo [prostorů úložiště s přímým přístupem (S2D)](failover-cluster-instance-storage-spaces-direct-manually-configure.md) . Soubory úrovně Premium poskytují vstupně-výstupní operace za sekundu a propustnost, které budou vyhovovat potřebám řady úloh. Pro úlohy náročné na v/v zvažte použití prostorů úložiště s přímým přístupem na spravovaných Premium nebo extrémně-discích. Alternativně můžete použít řešení clusteringu nebo úložišť třetích stran, jak je popsáno v tématu [Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines](business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions).
 
    > [!IMPORTANT]
    > V tuto chvíli se _úplné_ [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md) nepodporuje pro SQL Server FCI v Azure. Doporučujeme odinstalovat _úplné_ rozšíření z virtuálních počítačů, které jsou součástí FCI, a místo toho nainstalovat rozšíření v _jednoduchém_ režimu. Toto rozšíření podporuje funkce, jako je automatické zálohování a opravy a některé funkce portálu pro SQL Server. Po odinstalaci _úplného_ agenta nebudou tyto funkce fungovat u SQL serverch virtuálních počítačů.
@@ -237,9 +237,9 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Podporují se na virtuálních počítačích s SQL Server distribuované transakce s MSDTC?**
    
-    Ano. Místní služba DTC je podporovaná pro SQL Server 2016 SP2 a vyšší. Avšak aplikace musí být testovány při použití skupin dostupnosti Always On, protože transakce probíhající během převzetí služeb při selhání se nezdaří a musí se opakovat. Služba DTC (CLUSTERED DTC) je dostupná od Windows serveru 2019. 
+    Yes. Místní služba DTC je podporovaná pro SQL Server 2016 SP2 a vyšší. Avšak aplikace musí být testovány při použití skupin dostupnosti Always On, protože transakce probíhající během převzetí služeb při selhání se nezdaří a musí se opakovat. Služba DTC (CLUSTERED DTC) je dostupná od Windows serveru 2019. 
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 **Virtuální počítače s Windows** :
 

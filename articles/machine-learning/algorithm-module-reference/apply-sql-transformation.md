@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/12/2020
+ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76314534"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555596"
 ---
 # <a name="apply-sql-transformation"></a>Použití transformace SQL
 
@@ -29,11 +29,26 @@ Pomocí modulu použít transformaci SQL můžete:
 -   Spusťte příkazy dotazu SQL pro filtrování nebo změnu dat a vrácení výsledků dotazu jako tabulky dat.  
 
 > [!IMPORTANT]
-> Modul SQL použitý v tomto modulu je **SQLite**. Další informace o syntaxi SQLite naleznete v tématu [SQL, jak je popsáno ve službě SQLite](https://www.sqlite.org/index.html) , kde najdete další informace.  
+> Modul SQL použitý v tomto modulu je **SQLite**. Další informace o syntaxi SQLite naleznete v tématu [SQL, jak rozumí SQLite](https://www.sqlite.org/index.html).
+> Tento modul pozastaví data na SQLite, což je databáze paměti, takže spuštění modulu vyžaduje mnohem více paměti a může dojít k `Out of memory` chybě. Ujistěte se, že počítač má dostatek paměti RAM.
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>Postup konfigurace použití transformace SQL  
 
 Modul může jako vstupy trvat až tři datové sady. Když odkazujete na datové sady připojené ke každému vstupnímu portu, musíte použít názvy `t1` , `t2` , a `t3` . Číslo tabulky označuje index vstupního portu.  
+
+Následuje ukázkový kód, který ukazuje, jak spojit dvě tabulky. T1 a T2 jsou dvě datové sady připojené k levému a střednímu vstupnímu portu **použití transformace SQL** :
+
+```sql
+SELECT t1.*
+    , t3.Average_Rating
+FROM t1 join
+    (SELECT placeID
+        , AVG(rating) AS Average_Rating
+    FROM t2
+    GROUP BY placeID
+    ) as t3
+on t1.placeID = t3.placeID
+```
   
 Zbývající parametr je dotaz SQL, který používá syntaxi SQLite. Při zadávání více řádků v textovém poli **skript SQL** ukončete jednotlivé příkazy středníkem. V opačném případě jsou zalomení řádků převedeny na mezery.  
 

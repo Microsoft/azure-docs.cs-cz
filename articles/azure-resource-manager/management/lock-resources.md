@@ -1,15 +1,15 @@
 ---
 title: Uzamknout prostředky, aby nedocházelo ke změnám
-description: Zabrání uživatelům aktualizovat nebo odstraňovat důležité prostředky Azure tím, že použije zámek pro všechny uživatele a role.
+description: Zabrání uživatelům aktualizovat nebo odstraňovat prostředky Azure pomocí zámku pro všechny uživatele a role.
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 57b4fecd0293c714dfd910ae2ad4866397646ce8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340137"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555664"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -74,19 +74,91 @@ Chcete-li odstranit vše pro službu včetně uzamčené skupiny prostředků in
 
 ### <a name="arm-template"></a>Šablona ARM
 
-Při použití šablony Správce prostředků k nasazení zámku použijte v závislosti na rozsahu zámku jiné hodnoty pro název a typ.
+Při použití šablony Azure Resource Manager (šablona ARM) k nasazení zámku je nutné znát rozsah zámku a rozsahu nasazení. Pokud chcete použít zámek v oboru nasazení, jako je třeba uzamčení skupiny prostředků nebo předplatného, nenastavte vlastnost Scope. Při zamykání prostředku v rámci rozsahu nasazení nastavte vlastnost Scope.
 
-Při použití zámku na **prostředek** použijte následující formáty:
+Následující šablona používá zámek pro skupinu prostředků, do které je nasazený. Všimněte si, že u prostředku zámku není vlastnost oboru, protože obor zámku odpovídá rozsahu nasazení. Tato šablona je nasazená na úrovni skupiny prostředků.
 
-* název `{resourceName}/Microsoft.Authorization/{lockName}`
-* textový `{resourceProviderNamespace}/{resourceType}/providers/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {  
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/locks",
+            "apiVersion": "2016-09-01",
+            "name": "rgLock",
+            "properties": {
+                "level": "CanNotDelete",
+                "notes": "Resource Group should not be deleted."
+            }
+        }
+    ]
+}
+```
 
-Při použití zámku u **skupiny prostředků** nebo **předplatného** použijte následující formáty:
+Pokud chcete vytvořit skupinu prostředků a uzamknout ji, nasaďte na úrovni předplatného následující šablonu.
 
-* název `{lockName}`
-* textový `Microsoft.Authorization/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "rgName": {
+            "type": "string"
+        },
+        "rgLocation": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2019-10-01",
+            "name": "[parameters('rgName')]",
+            "location": "[parameters('rgLocation')]",
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "lockDeployment",
+            "resourceGroup": "[parameters('rgName')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Authorization/locks",
+                            "apiVersion": "2016-09-01",
+                            "name": "rgLock",
+                            "properties": {
+                                "level": "CanNotDelete",
+                                "notes": "Resource group and its resources should not be deleted."
+                            }
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
 
-Následující příklad ukazuje šablonu, která vytvoří plán služby App Service, web a na webu zámek. Typ prostředku zámku je typ prostředku, který se má uzamknout a **/providers/Locks**. Název zámku se vytvoří zřetězením názvu prostředku s **/Microsoft.Authorization/** a názvem zámku.
+Při použití zámku na **prostředek** v rámci skupiny prostředků přidejte vlastnost Scope. Nastavte obor na název prostředku, který se má zamknout.
+
+Následující příklad ukazuje šablonu, která vytvoří plán služby App Service, web a na webu zámek. Rozsah zámku je nastaven na web.
 
 ```json
 {
@@ -95,6 +167,10 @@ Následující příklad ukazuje šablonu, která vytvoří plán služby App Se
   "parameters": {
     "hostingPlanName": {
       "type": "string"
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {
@@ -103,9 +179,9 @@ Následující příklad ukazuje šablonu, která vytvoří plán služby App Se
   "resources": [
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('hostingPlanName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "sku": {
         "tier": "Free",
         "name": "f1",
@@ -117,9 +193,9 @@ Následující příklad ukazuje šablonu, která vytvoří plán služby App Se
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[variables('siteName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
       ],
@@ -128,9 +204,10 @@ Následující příklad ukazuje šablonu, která vytvoří plán služby App Se
       }
     },
     {
-      "type": "Microsoft.Web/sites/providers/locks",
+      "type": "Microsoft.Authorization/locks",
       "apiVersion": "2016-09-01",
-      "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
+      "name": "siteLock",
+      "scope": "[concat('Microsoft.Web/sites/', variables('siteName'))]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
       ],
@@ -142,8 +219,6 @@ Následující příklad ukazuje šablonu, která vytvoří plán služby App Se
   ]
 }
 ```
-
-Příklad nastavení zámku pro skupinu prostředků najdete v tématu [Vytvoření skupiny prostředků a její uzamčení](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

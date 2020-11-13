@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 14c7c3deb60c50fe71cf52959e342a3dcf2afc94
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 53cde1178a4faae0fbd11222e4219f70be29145d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151561"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560804"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Zpracování oznámení o plánované údržbě
 
 Azure pravidelně provádí aktualizace za účelem zlepšení spolehlivosti, výkonu a zabezpečení hostitelské infrastruktury pro virtuální počítače. Aktualizace jsou změny, jako je třeba oprava hostitelského prostředí nebo inovace a vyřazení hardwaru z provozu. Většina těchto aktualizací se dokončí bez jakéhokoli dopadu na hostované virtuální počítače. Existují však případy, kdy aktualizace mají dopad:
 
-- Pokud údržba nevyžaduje restart, Azure pomocí místní migrace pozastaví virtuální počítač v době, kdy se hostitel aktualizuje. Tyto typy operací údržby používají doménu selhání podle domény selhání. Průběh se zastaví, pokud se obdrží nějaké signály stavu upozornění.
+- Pokud údržba nevyžaduje restart, Azure během aktualizace hostitele pozastaví virtuální počítač o několik sekund. Tyto typy operací údržby používají doménu selhání podle domény selhání. Průběh se zastaví, pokud se obdrží nějaké signály stavu upozornění.
 
 - Pokud údržba vyžaduje restart, dostanete oznámení o tom, kdy se údržba plánuje. Máte k disčase časový interval přibližně 35 dní, kdy můžete zahájit údržbu sami, když to bude fungovat.
 
@@ -80,7 +80,7 @@ Další informace o vysoké dostupnosti najdete v tématu [dostupnost pro virtu�
 
 **Otázka: Návody dostávat oznámení o plánované údržbě?**
 
-**A:** Spustí se naplánovaná údržba Wave tím, že nastaví plán na jednu nebo více oblastí Azure. Brzy se pošle e-mailové oznámení pro správce předplatného a spolusprávce (jeden e-mail na předplatné). Další kanály a příjemci pro toto oznámení můžou být nakonfigurované pomocí upozornění protokolu aktivit. V případě, že nasadíte virtuální počítač do oblasti, ve které je plánovaná údržba již naplánována, nebudete dostávat oznámení, ale budete muset kontrolovat stav údržby virtuálního počítače.
+**A:** Spustí se naplánovaná údržba Wave tím, že nastaví plán na jednu nebo více oblastí Azure. Brzy se pošle e-mailové oznámení správcům předplatného, spolupracovníkům, vlastníkům a přispěvatelům (jeden e-mail na předplatné). Další kanály a příjemci pro toto oznámení můžou být nakonfigurované pomocí upozornění protokolu aktivit. V případě, že nasadíte virtuální počítač do oblasti, ve které je plánovaná údržba již naplánována, nebudete dostávat oznámení, ale budete muset kontrolovat stav údržby virtuálního počítače.
 
 **Otázka: v portálu, PowerShellu nebo rozhraní příkazového řádku se nezobrazují žádné informace o plánované údržbě. Co je?**
 

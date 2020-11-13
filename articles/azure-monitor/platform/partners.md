@@ -4,14 +4,14 @@ description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete zí
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc33e9d8d613b9d0575da069d884e454d9930eac
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460083"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555633"
 ---
-# <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
+# <a name="azure-monitor-partner-integrations"></a>Integrace partnerů ve službě Azure Monitor
 
 Uvedeno v abecedním pořadí. 
 
@@ -253,7 +253,7 @@ Snižte počet incidentů a MTTR platformou NOW na AIOps, abyste vyloučili šum
 
 ![Logo SignalFX](./media/partners/signalfx.png)
 
-SignalFx je vedoucí v reálném čase, který je součástí provozní logiky pro DevOps řízené daty. Služba zjišťuje a shromažďuje metriky napříč všemi komponentami v cloudu. Nahrazuje tradiční nástroje bodu a poskytuje přehled o dnešních dynamických prostředích v reálném čase. Platforma SaaS je optimalizována pro architektury založené na široce škálovatelné SignalFx platformě a podporuje architektury založené na mikroslužbách a poskytuje výkonnou vizualizaci, proaktivní výstrahy a možnosti třídění v rámci organizací všech velikostí. SignalFx se integruje přímo s Azure Monitor a také prostřednictvím open source konektorů, jako je *telegraf*, *Statistika*a *shromažďovat* , aby poskytovaly nejlepší z řídicích panelů tříd, analýz a výstrah pro Azure.
+SignalFx je vedoucí v reálném čase, který je součástí provozní logiky pro DevOps řízené daty. Služba zjišťuje a shromažďuje metriky napříč všemi komponentami v cloudu. Nahrazuje tradiční nástroje bodu a poskytuje přehled o dnešních dynamických prostředích v reálném čase. Platforma SaaS je optimalizována pro architektury založené na široce škálovatelné SignalFx platformě a podporuje architektury založené na mikroslužbách a poskytuje výkonnou vizualizaci, proaktivní výstrahy a možnosti třídění v rámci organizací všech velikostí. SignalFx se integruje přímo s Azure Monitor a také prostřednictvím open source konektorů, jako je *telegraf* , *Statistika* a *shromažďovat* , aby poskytovaly nejlepší z řídicích panelů tříd, analýz a výstrah pro Azure.
 
 [Dokumentace k signalfx](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure)
 
@@ -301,9 +301,19 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy tím, že součas
 
 [Úvod do Turbonomic](https://turbonomic.com/)
 
+## <a name="bmc-helix"></a>Helix BMC
+
+![Logo BMC Helix](./media/partners/BMCHelix.png)
+
+BMC Helix je autonomní platforma pro podnikové služby a provoz SaaS. Integrovaná s 360 Intelligence přináší organizacím možnost proaktivně a prediktivní zjišťování, monitorování, poskytování služeb, napravení, optimalizace a poskytování omnich prostředí pro IT a obchodní oddělení.
+Kromě toho díky bezproblémové integraci ITSM a správy provozu IT (ITOM), BMC Helix umožňuje IT a obchodním uživatelům eliminovat siloy IT, dělat podniková rozhodnutí založená na datech a dodávat špičkové prostředí pro zákazníky.
+Zákazníci mohou nasadit platformu Helix BMC s nasazením cloudu podle svého výběru – veřejné, privátní nebo hybridní. Zákazníci navíc můžou zvolit řešení AI/ML, která se dají využít od špičkových poskytovatelů v oboru.
+
+[Další informace o Helix BMC](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
+
 ## <a name="next-steps"></a>Další kroky
 
-- [Další informace o Azure Monitor](../overview.md)
+- [Další informace o Azure Monitoru](../overview.md)
 - [Přístup k metrikám pomocí REST API](rest-api-walkthrough.md)
 - [Streamování protokolu aktivit na službu, která není od Microsoftu](./activity-log.md#legacy-collection-methods)
 - [Streamování protokolů prostředků na službu od jiného výrobce než Microsoftu](./resource-logs.md#send-to-azure-event-hubs)

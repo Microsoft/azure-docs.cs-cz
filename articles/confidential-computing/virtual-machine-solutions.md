@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d5ce3cde8c86d66bec025c778318a192ef60b73
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88245848"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560839"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Řešení na virtuálních počítačích Azure
 
@@ -29,7 +29,7 @@ Začněte s nasazením DCsv2-Series virtuálního počítače přes komerční t
 
 ### <a name="current-available-sizes-and-regions"></a>Aktuální dostupné velikosti a oblasti
 
-Pokud chcete získat seznam všech všeobecně dostupných důvěrných velikost výpočetního virtuálního počítače v dostupných oblastech a zónách dostupnosti, spusťte v [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)tento příkaz:
+Pokud chcete získat seznam všech všeobecně dostupných důvěrných velikost výpočetního virtuálního počítače v dostupných oblastech a zónách dostupnosti, spusťte v [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)tento příkaz:
 
 ```azurecli-interactive
 az vm list-skus `
@@ -47,7 +47,7 @@ az vm list-skus `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>Požadavky na vyhrazený hostitel
-Nasazení **Standard_DC8_v2** velikosti virtuálního počítače ve skupině virtuálních počítačů DCSv2-Series zachová celého hostitele a nebude se sdílet s ostatními klienty nebo předplatnými. Tato rodina SKU virtuálního počítače poskytuje izolaci, kterou možná budete potřebovat, aby splňovala zákonné požadavky na dodržování předpisů a zabezpečení, které jsou obvykle splněné pomocí vyhrazené hostitelské služby. Když zvolíte **Standard_DC8_v2** SKU, fyzický hostitelský server bude přidělovat všechny dostupné hardwarové prostředky, včetně paměti EPC jenom pro virtuální počítač. Upozorňujeme, že tato funkce existuje v rámci návrhu infrastruktury a všechny funkce **Standard_DC8_v2** budou podporované. Toto nasazení není stejné jako služba [vyhrazeného hostitele Azure](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) , kterou poskytují jiné rodiny virtuálních počítačů Azure.
+Nasazení **Standard_DC8_v2** velikosti virtuálního počítače ve skupině virtuálních počítačů DCSv2-Series zachová celého hostitele a nebude se sdílet s ostatními klienty nebo předplatnými. Tato rodina SKU virtuálního počítače poskytuje izolaci, kterou možná budete potřebovat, aby splňovala zákonné požadavky na dodržování předpisů a zabezpečení, které jsou obvykle splněné pomocí vyhrazené hostitelské služby. Když zvolíte **Standard_DC8_v2** SKU, fyzický hostitelský server bude přidělovat všechny dostupné hardwarové prostředky, včetně paměti EPC jenom pro virtuální počítač. Upozorňujeme, že tato funkce existuje v rámci návrhu infrastruktury a všechny funkce **Standard_DC8_v2** budou podporované. Toto nasazení není stejné jako služba [vyhrazeného hostitele Azure](../virtual-machines/dedicated-hosts.md) , kterou poskytují jiné rodiny virtuálních počítačů Azure.
 
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
@@ -59,14 +59,14 @@ Postupujte podle kurzu rychlý Start a nasaďte DCsv2-Series virtuální počít
 - **Ceny a regionální dostupnost** – najdete na stránce s cenami pro DCsv2-Series virtuální počítače na [stránce s cenami virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). Podívejte se na [produkty dostupné v oblasti a](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) dostupnost v oblastech Azure.
 
 
-- **Kvóty jader** – možná bude potřeba zvýšit kvótu jader v předplatném Azure z výchozí hodnoty. Vaše předplatné může také omezit počet jader, které můžete nasadit v určitých rodinách velikostí virtuálních počítačů, včetně řady DCsv2-Series. Chcete-li požádat o zvýšení kvóty, [otevřete online žádost o zákaznickou podporu](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) zdarma. Všimněte si, že výchozí omezení se můžou lišit v závislosti na vaší kategorii předplatného.
+- **Kvóty jader** – možná bude potřeba zvýšit kvótu jader v předplatném Azure z výchozí hodnoty. Vaše předplatné může také omezit počet jader, které můžete nasadit v určitých rodinách velikostí virtuálních počítačů, včetně řady DCsv2-Series. Chcete-li požádat o zvýšení kvóty, [otevřete online žádost o zákaznickou podporu](../azure-portal/supportability/per-vm-quota-requests.md) zdarma. Všimněte si, že výchozí omezení se můžou lišit v závislosti na vaší kategorii předplatného.
 
   > [!NOTE]
   > Pokud máte velké nároky na kapacitu, obraťte se na podporu Azure. Kvóty Azure jsou úvěrovými limity, které nezaručují kapacitu. Bez ohledu na vaši kvótu se účtují jenom ty jádra, které používáte.
   
 - **Změna velikosti** – z důvodu jejich specializovaného hardwaru můžete měnit velikost důvěrných výpočetních instancí v rámci stejné řady velikostí. Například můžete změnit velikost virtuálního počítače DCsv2-Series jenom z jedné velikosti řady DCsv2-Series na jinou. Změna velikosti nedůvěrného výpočetního prostředí na velikost důvěrného zpracování není podporovaná.  
 
-- **Image** – pro zajištění podpory rozšíření Intel SGX (software Guard Extension) na důvěrných výpočetních instancích musí být všechna nasazení spuštěná na imagí 2. generace. Důvěrné výpočetní prostředí Azure podporuje úlohy běžící na Ubuntu 18,04 Gen 2, Ubuntu 16,04 Gen 2, Windows Server 2019 Gen2 a Windows Server 2016 Gen 2. Přečtěte si o [podpoře pro virtuální počítače 2. generace v Azure](../virtual-machines/linux/generation-2.md) , kde najdete další informace o podporovaných a nepodporovaných scénářích. 
+- **Image** – pro zajištění podpory rozšíření Intel SGX (software Guard Extension) na důvěrných výpočetních instancích musí být všechna nasazení spuštěná na imagí 2. generace. Důvěrné výpočetní prostředí Azure podporuje úlohy běžící na Ubuntu 18,04 Gen 2, Ubuntu 16,04 Gen 2, Windows Server 2019 Gen2 a Windows Server 2016 Gen 2. Přečtěte si o [podpoře pro virtuální počítače 2. generace v Azure](../virtual-machines/generation-2.md) , kde najdete další informace o podporovaných a nepodporovaných scénářích. 
 
 - **Storage** – datové disky s důvěrnými výpočetními virtuálními počítači Azure a naše dočasné disky s operačním systémem jsou na discích NVMe. Instance podporují pouze SSD úrovně Premium a SSD úrovně Standard disky, nikoli SSD úrovně Ultra nebo HDD úrovně Standard. Velikost virtuálního počítače **DC8_v2** nepodporuje Prémiové úložiště. 
 
@@ -76,7 +76,7 @@ Postupujte podle kurzu rychlý Start a nasaďte DCsv2-Series virtuální počít
 
 Při používání virtuálních počítačů v Azure zodpovídáte za implementaci řešení vysoké dostupnosti a zotavení po havárii, abyste se vyhnuli výpadkům. 
 
-Důvěrné výpočetní prostředí Azure v tuto chvíli nepodporuje redundanci zóny prostřednictvím Zóny dostupnosti. Pro zajištění nejvyšší dostupnosti a redundance pro důvěrný výpočetní prostředí použijte [skupiny dostupnosti](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy). Kvůli hardwarovým omezením můžou skupiny dostupnosti pro instance s důvěrnými výpočetními instancemi mít maximálně 10 aktualizačních domén. 
+Důvěrné výpočetní prostředí Azure v tuto chvíli nepodporuje redundanci zóny prostřednictvím Zóny dostupnosti. Pro zajištění nejvyšší dostupnosti a redundance pro důvěrný výpočetní prostředí použijte [skupiny dostupnosti](../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy). Kvůli hardwarovým omezením můžou skupiny dostupnosti pro instance s důvěrnými výpočetními instancemi mít maximálně 10 aktualizačních domén. 
 
 ## <a name="deployment-with-azure-resource-manager-arm-template"></a>Nasazení pomocí šablony Azure Resource Manager (ARM)
 
@@ -101,7 +101,7 @@ Zadejte jednu z následujících velikostí v šabloně ARM v prostředku virtu�
 
 ### <a name="gen2-os-image"></a>Image operačního systému Gen2
 
-V části **vlastnosti**bude také nutné odkazovat na obrázek v rámci **storageProfile**. Pro **element imagereference**použijte *jenom jednu* z následujících imagí.
+V části **vlastnosti** bude také nutné odkazovat na obrázek v rámci **storageProfile**. Pro **element imagereference** použijte *jenom jednu* z následujících imagí.
 
 ```json
       "2019-datacenter-gensecond": {

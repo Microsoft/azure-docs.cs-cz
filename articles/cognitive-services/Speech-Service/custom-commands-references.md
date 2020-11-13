@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 052418924e73252a780689aea33e84d5bfdbc3f6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 98510132b2341736664dfafa52e9567df95652be
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927647"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561093"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Koncepty a definice vlastních příkazů
 
@@ -40,7 +40,7 @@ Pravidla interakce jsou další pravidla, která budou zpracovávat konkrétněj
 
 Parametry jsou informace vyžadované příkazy k dokončení úkolu. Ve složitých scénářích lze také pomocí parametrů definovat podmínky, které spouštějí vlastní akce.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 Parametr je identifikován vlastností název. Parametru byste měli vždy zadat popisný název. Parametr může být uveden v různých oddílech, například při vytváření podmínek, odezvy řeči nebo jiných akcí.
  
 ### <a name="isglobal"></a>IsGlobal
@@ -48,6 +48,8 @@ Toto zaškrtávací políčko označuje, zda je obor tohoto parametru sdílen ve
 
 ### <a name="required"></a>Vyžadováno
 Toto zaškrtávací políčko označuje, zda je pro tento parametr požadována hodnota pro splnění nebo dokončení příkazu. Je nutné nakonfigurovat odpovědi, aby vyzvat uživatele k zadání hodnoty, pokud je parametr označen jako povinný.
+
+Všimněte si, že pokud jste nakonfigurovali **povinný parametr** tak, aby měl **výchozí hodnotu** , systém bude stále explicitně vyzvat k zadání hodnoty parametru.
 
 ### <a name="type"></a>Typ
 Vlastní příkazy podporují následující typy parametrů:
@@ -57,12 +59,12 @@ Vlastní příkazy podporují následující typy parametrů:
 * Číslo
 * Řetězec
 
-Všechny tyto typy parametrů podporují konfiguraci výchozí hodnoty, kterou můžete nakonfigurovat z Azure Portal.
+Všechny tyto typy parametrů s výjimkou geografického nastavení podporují konfiguraci výchozí hodnoty, kterou můžete nakonfigurovat z portálu.
 
 ### <a name="configuration"></a>Konfigurace
 Konfigurace je vlastnost parametru definovaná pouze pro řetězec typu. Podporovány jsou následující hodnoty:
 
-* **Žádné** .
+* **Žádné**.
 * **Přijmout úplný vstup** : Pokud je povoleno, parametr akceptuje všechny vstupní utterance. Tato možnost je užitečná v případě, že uživatel potřebuje parametr s úplným utterance. Příkladem jsou poštovní adresy.
 * **Přijměte předdefinované vstupní hodnoty z externího katalogu** : Tato hodnota se používá ke konfiguraci parametru, který může předpokládat širokou škálu hodnot. Příkladem je prodej v katalogu. V tomto případě je katalog hostovaný na externím webovém koncovém bodu a dá se nakonfigurovat nezávisle.
 * **Přijměte předdefinované vstupní hodnoty z interního katalogu** : Tato hodnota se používá ke konfiguraci parametru, který může předpokládat několik hodnot. V takovém případě musí být hodnoty nakonfigurovány v studiu řeči.
@@ -75,7 +77,7 @@ Ověření jsou určena pro určité typy parametrů, které umožňují konfigu
 * Číslo
 
 ## <a name="rules-configuration"></a>Konfigurace pravidel
-Pravidlo ve vlastních příkazech je definováno sadou *podmínek* , které při splnění splní sadu *akcí* . Pravidla také umožňují nakonfigurovat *stav po spuštění* a *očekávání* pro další tah.
+Pravidlo ve vlastních příkazech je definováno sadou *podmínek* , které při splnění splní sadu *akcí*. Pravidla také umožňují nakonfigurovat *stav po spuštění* a *očekávání* pro další tah.
 
 ### <a name="types"></a>Typy
 Vlastní příkazy podporují následující kategorie pravidel:

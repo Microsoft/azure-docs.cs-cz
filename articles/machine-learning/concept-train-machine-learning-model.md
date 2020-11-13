@@ -1,7 +1,7 @@
 ---
 title: Sestavování &ch výukových modelů
 titleSuffix: Azure Machine Learning
-description: Naučte se naučit modely pomocí Azure Machine Learning, včetně práce s oblíbenými rozhraními, jako jsou Scikit-učení, TensorFlow a PyTorch. Machine Learning kanály usnadňují plánování bezobslužného spouštění, používání heterogenních výpočetních prostředí a používání částí pracovního postupu. A konfigurace spuštění poskytují podrobnou kontrolu nad výpočetními cíli, na kterých běží školicí proces.
+description: Naučte se naučit modely pomocí Azure Machine Learning. Prozkoumejte různé metody školení a vyberte pro svůj projekt tu správnou.
 services: machine-learning
 ms.service: machine-learning
 author: Blackmist
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8888393cdbc738525b89ace1cf6f5864b7aa3b6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2448f5f778f19674aec63291acb72536c65ca6c9
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324810"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555885"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 
@@ -131,7 +131,7 @@ Například vytvoření modelu __pro každou instanci nebo jednotlivce__ v násl
 
 Další informace najdete v tématu o [mnoha modelech řešení modelů](https://aka.ms/many-models) na GitHubu.
 
-## <a name="cli"></a>CLI
+## <a name="cli"></a>Rozhraní příkazového řádku
 
 Machine Learning CLI je rozšířením rozhraní příkazového řádku Azure CLI. Poskytuje příkazy rozhraní příkazového řádku pro různé platformy pro práci s Azure Machine Learning. Typicky k automatizaci úloh, jako je například školení modelu strojového učení, použijete rozhraní příkazového řádku.
 

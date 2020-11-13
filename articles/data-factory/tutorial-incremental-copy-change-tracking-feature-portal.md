@@ -1,6 +1,6 @@
 ---
 title: Přírůstkové kopírování dat pomocí Change Tracking pomocí Azure Portal
-description: V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data na základě informací o sledování změn ve zdrojové databázi v Azure SQL Database do úložiště objektů BLOB v Azure.
+description: V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načte rozdílová data na základě informací o sledování změn ve zdrojové databázi v Azure SQL Database do úložiště objektů BLOB v Azure.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 78b9d3f30ebc8f74433f04c4474121682c4a3f36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5f87e693d2592f830ec785f2163c232915544d1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542015"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561127"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Přírůstkové načtení dat z Azure SQL Database do Azure Blob Storage pomocí informací o sledování změn pomocí Azure Portal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data na základě informací o **sledování změn** ve zdrojové databázi v Azure SQL Database do úložiště objektů BLOB v Azure.  
+V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načte rozdílová data na základě informací o **sledování změn** ve zdrojové databázi v Azure SQL Database do úložiště objektů BLOB v Azure.  
 
 V tomto kurzu provedete následující kroky:
 
@@ -75,7 +75,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ### <a name="create-a-data-source-table-in-azure-sql-database"></a>Vytvoření tabulky zdroje dat v Azure SQL Database
 
-1. Spusťte **SQL Server Management Studio**a připojte se k SQL Database.
+1. Spusťte **SQL Server Management Studio** a připojte se k SQL Database.
 2. V **Průzkumníku serveru** klikněte pravým tlačítkem na **databázi** a potom zvolte **Nový dotaz**.
 3. Spusťte následující příkaz SQL pro vaši databázi a vytvořte tabulku s názvem `data_source_table` jako úložiště zdroje dat.  
 
@@ -156,7 +156,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte **vytvořit prostředek**  >  **data a analýzy**  >  **Data Factory**:
+1. V nabídce vlevo vyberte **vytvořit prostředek**  >  **data a analýzy**  >  **Data Factory** :
 
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -164,14 +164,14 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 
      ![Stránka Nová datová továrna](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
 
-   Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název objektu pro vytváření dat (třeba na váš_název_ADFTutorialDataFactory) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název Azure Data Factory musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název objektu pro vytváření dat (třeba na váš_název_ADFTutorialDataFactory) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
 
    *Název objektu pro vytváření dat "ADFTutorialDataFactory" není k dispozici.*
 3. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu.
 4. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
 
       - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
-      - Vyberte **vytvořit novou**a zadejte název skupiny prostředků.   
+      - Vyberte **vytvořit novou** a zadejte název skupiny prostředků.   
          
         Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 4. Jako **verzi** vyberte **V2 (Preview)**.
@@ -181,11 +181,11 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **nasazování datové továrny**.
 
     ![nasazování dlaždice datové továrny](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
-9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
+9. Po vytvoření se zobrazí stránka **Datová továrna** , jak je znázorněno na obrázku.
 
    ![Domovská stránka objektu pro vytváření dat](./media/tutorial-incremental-copy-change-tracking-feature-portal/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Azure Data Factory.
-11. Na stránce **Začínáme** přepněte na levém panelu na kartu **Upravit**, jak je znázorněno na následujícím obrázku:
+11. Na stránce **Začínáme** přepněte na levém panelu na kartu **Upravit** , jak je znázorněno na následujícím obrázku:
 
     ![Tlačítko Nový kanál](./media/tutorial-incremental-copy-change-tracking-feature-portal/get-started-page.png)
 
@@ -265,7 +265,7 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci dat, která se kopíruj�
 
     1. Jako **Propojená služba** vyberte **AzureStorageLinkedService**.
     2. Jako část **složka** v **cestě k souboru** zadejte **adftutorial/incchgtracking**.
-    3. Zadejte ** \@ Concat (' incremental-', Pipeline (). RunId, '. txt ')** pro **soubor** , který je součástí **FilePath**.  
+    3. Zadejte **\@ Concat (' incremental-', Pipeline (). RunId, '. txt ')** pro **soubor** , který je součástí **FilePath**.  
 
        ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -289,7 +289,7 @@ V tomto kroku vytvoříte kanál s aktivitou kopírování, která zkopíruje v�
 2. Zobrazí se nová karta, na které můžete kanál konfigurovat. Kanál se zobrazí také ve stromovém zobrazení. V okně **Vlastnosti** změňte název kanálu na **FullCopyPipeline**.
 
     ![Snímek obrazovky zobrazuje kanál se zadaným názvem.](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
-3. Na panelu nástrojů **Aktivity** rozbalte **Tok dat**, přetáhněte aktivitu **Kopírování** na plochu návrháře kanálu a nastavte její název na **FullCopyActivity**.
+3. Na panelu nástrojů **Aktivity** rozbalte **Tok dat** , přetáhněte aktivitu **Kopírování** na plochu návrháře kanálu a nastavte její název na **FullCopyActivity**.
 
     ![Úplný název aktivity kopírování](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png)
 4. Přepněte na kartu **Zdroj** a v poli **Zdrojová datová sada** vyberte **SourceDataset**.
@@ -409,7 +409,7 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
 11. Přetáhněte aktivitu **Uložená procedura** z panelu nástrojů **Aktivity** na plochu návrháře kanálu. Nastavte název aktivity na **StoredProceduretoUpdateChangeTrackingActivity**. Tato aktivita aktualizuje verzi sledování změn v tabulce **table_store_ChangeTracking_version**.
 
     ![Aktivita Uložená procedura – název](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
-12. Přepněte na kartu *Účet SQL** a jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
+12. Přepněte na kartu *Účet SQL* * a jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
 
     ![Aktivita Uložená procedura – účet SQL](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. Přepněte na kartu **Uložená procedura** a proveďte následující kroky:

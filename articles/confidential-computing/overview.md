@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 16f45c39a329998f4b4da4ea89315683a0fab790
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44479db6b29075e87b0d2dcef6f0d9bc1881738c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90967584"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560821"
 ---
 # <a name="confidential-computing-on-azure"></a>Důvěrné výpočetní prostředí v Azure
 
@@ -49,11 +49,11 @@ TEE je prostředí, které vynutilo provádění pouze autorizovaného kódu. Ž
 Spouštění úloh v cloudu vyžaduje důvěryhodnost. Tento vztah důvěryhodnosti udělíte různým poskytovatelům, kteří umožňují různé komponenty vaší aplikace.
 
 
-**Dodavatelé softwaru aplikací**: důvěřovat softwaru nasazením Prem, pomocí Open Source nebo vytvořením interního aplikačního softwaru.
+**Dodavatelé softwaru aplikací** : důvěřovat softwaru nasazením Prem, pomocí Open Source nebo vytvořením interního aplikačního softwaru.
 
-**Dodavatelé hardwaru**: důvěřovat hardwaru pomocí místního hardwaru nebo interního hardwaru. 
+**Dodavatelé hardwaru** : důvěřovat hardwaru pomocí místního hardwaru nebo interního hardwaru. 
 
-**Poskytovatelé infrastruktury**: důvěryhodní poskytovatelé cloudu nebo spravovat vlastní místní datová centra.
+**Poskytovatelé infrastruktury** : důvěryhodní poskytovatelé cloudu nebo spravovat vlastní místní datová centra.
 
 
 Důvěrné výpočetní prostředí Azure usnadňuje důvěřování poskytovateli cloudu tím, že snižuje nutnost důvěry v různých aspektech výpočetní cloudové infrastruktury. Důvěrné výpočetní prostředí Azure minimalizuje důvěru pro jádro hostitelského operačního systému, hypervisor, Správce virtuálních počítačů a správce hostitele.
@@ -68,13 +68,13 @@ Nižší TCB znamená vyšší zabezpečení. Existuje méně nebezpečí vystav
 
 Důvěrné výpočetní prostředí Azure umožňuje využívat důvěrné výpočetní funkce ve virtualizovaném prostředí. Nyní můžete používat nástroje, software a cloudovou infrastrukturu k sestavování nad zabezpečeným hardwarem.  
 
-**Zabránit neoprávněnému přístupu**: spouštějte citlivá data v cloudu. Důvěřovat tomu, že Azure poskytuje nejlepší možnou ochranu dat, a to s malým množstvím změn, co se ještě dnes děje.
+**Zabránit neoprávněnému přístupu** : spouštějte citlivá data v cloudu. Důvěřovat tomu, že Azure poskytuje nejlepší možnou ochranu dat, a to s malým množstvím změn, co se ještě dnes děje.
 
-**Dodržování předpisů**: migrujte do cloudu a udržujte plnou kontrolu nad daty, která budou splňovat předpisy státní správy pro ochranu osobních údajů a zabezpečení IP adresy organizace.
+**Dodržování předpisů** : migrujte do cloudu a udržujte plnou kontrolu nad daty, která budou splňovat předpisy státní správy pro ochranu osobních údajů a zabezpečení IP adresy organizace.
 
-**Zabezpečená a nedůvěryhodná spolupráce**: řešení problémů s pracovním měřítkem napříč různými organizacemi, dokonce i soutěžiteli, k odemknutí rozsáhlých datových analýz a hlubších přehledů.
+**Zabezpečená a nedůvěryhodná spolupráce** : řešení problémů s pracovním měřítkem napříč různými organizacemi, dokonce i soutěžiteli, k odemknutí rozsáhlých datových analýz a hlubších přehledů.
 
-**Izolované zpracování**: nabízí novou vlnu produktů, které odstraňují zodpovědnost na soukromá data pomocí nenevidomého zpracování. Poskytovatel služby nemůže ani načíst uživatelská data. 
+**Izolované zpracování** : nabízí novou vlnu produktů, které odstraňují zodpovědnost na soukromá data pomocí nenevidomého zpracování. Poskytovatel služby nemůže ani načíst uživatelská data. 
 
 ## <a name="get-started"></a>Začínáme
 ### <a name="azure-compute"></a>Azure Compute
@@ -84,7 +84,7 @@ Sestavujte aplikace nad důvěrné nabídky výpočetních IaaS v Azure.
 
 ### <a name="azure-security"></a>Zabezpečení Azure 
 Zajistěte, aby byly vaše úlohy zabezpečené prostřednictvím metod ověřování a správy klíčů na základě hardwaru. 
-- Ověření identity: [Microsoft Azure ověřování (Preview)](https://docs.microsoft.com/azure/attestation/overview)
+- Ověření identity: [Microsoft Azure ověřování (Preview)](../attestation/overview.md)
 - Správa klíčů: spravovaná – HSM (Preview)
 
 ### <a name="develop"></a>Vývoj
@@ -94,7 +94,7 @@ Začněte používat vývoj aplikací pracujících v enklávy a nasaďte důvě
 
 ## <a name="next-steps"></a>Další kroky
 
-Nasaďte virtuální počítač s DCsv2-Series a nainstalujte na něj sadu OE SDK.
+Nasaďte DCsv2-Series virtuální počítač a nainstalujte na něj sadu OE SDK.
 
 > [!div class="nextstepaction"]
 > [Nasazení virtuálního počítače s důvěrným výpočetním prostředím v Azure Marketplace](quick-create-marketplace.md)

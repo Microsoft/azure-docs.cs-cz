@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Ba
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: ee37e994c9e72c3d3c98455360dc68746f49d278
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ae2eb97f214204b813564b6373c4e9dc176f483c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743127"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555432"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -25,7 +25,7 @@ K dispozici jsou další matrice podpory:
 
 ## <a name="vault-support"></a>Podpora trezoru
 
-Azure Backup používá k orchestraci a správě záloh Recovery Services trezory. Používá taky trezory k ukládání zálohovaných dat.
+Azure Backup používá Recovery Services trezory k orchestraci a správě záloh pro následující typy úloh – virtuální počítače Azure, SQL na virtuálních počítačích Azure, SAP HANA ve virtuálních počítačích Azure, sdílené složky Azure a místní úlohy pomocí agenta Azure Backup, Azure Backup Server a aplikace System Center DPM. Používá taky Recovery Services trezory k ukládání zálohovaných dat pro tyto úlohy.
 
 Následující tabulka popisuje funkce trezorů Recovery Services:
 
@@ -114,10 +114,10 @@ Azure Backup podporuje šifrování pro data v přenosu a na REST.
 
 **Počítač** | **Při přenosu** | **V klidovém umístění**
 --- | --- | ---
-**Místní počítače s Windows bez DPM/MABS** | ![Ano][green] | ![Ano][green]
-**Virtuální počítače Azure** | ![Ano][green] | ![Ano][green]
-**Místní počítače s Windows nebo virtuální počítače Azure s DPM** | ![Ano][green] | ![Ano][green]
-**Místní počítače s Windows nebo virtuální počítače Azure s MABS** | ![Ano][green] | ![Ano][green]
+**Místní počítače s Windows bez DPM/MABS** | ![Yes][green] | ![Yes][green]
+**Virtuální počítače Azure** | ![Yes][green] | ![Yes][green]
+**Místní počítače s Windows nebo virtuální počítače Azure s DPM** | ![Yes][green] | ![Yes][green]
+**Místní počítače s Windows nebo virtuální počítače Azure s MABS** | ![Yes][green] | ![Yes][green]
 
 ## <a name="compression-support"></a>Kompresní podpora
 
@@ -130,7 +130,7 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 --- | --- | ---
 **Přímá záloha místních počítačů s Windows** | Není k dispozici | ![Ano][green]
 **Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Není k dispozici | Není k dispozici
-**Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Ano][green] | ![Ano][green]
+**Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Yes][green] | ![Yes][green]
 
 ## <a name="retention-limits"></a>Omezení uchování
 
@@ -150,10 +150,10 @@ Azure Backup přidal funkci obnovení mezi oblastmi k posílení dostupnosti dat
 
 | Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Virtuální počítač Azure               | Ano.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure a cloudy svrchovan.  |
-| SQL/SAP HANA | Ano                                                          | Všechny veřejné oblasti s výjimkou Francie |
-| Agent MARS/místní  | Ne                                                           | Není k dispozici               |
-| AFS (sdílené složky Azure)                 | Ne                                                           | Není k dispozici               |
+| Virtuální počítač Azure               | Yes.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure a cloudy svrchovan.  |
+| SQL/SAP HANA | Yes                                                          | Všechny veřejné oblasti s výjimkou Francie |
+| Agent MARS/místní  | Ne                                                           | –               |
+| AFS (sdílené složky Azure)                 | Ne                                                           | –               |
 
 ## <a name="next-steps"></a>Další kroky
 

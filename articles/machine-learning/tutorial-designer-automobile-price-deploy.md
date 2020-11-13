@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: nasazení modelů ML pomocí návrháře'
 titleSuffix: Azure Machine Learning
-description: V tomto kurzu se dozvíte, jak vytvořit řešení prediktivní analýzy v Návrháři Azure Machine Learning. Využijte moduly pro vytažení, skóre a nasazení modelu strojového učení.
+description: Sestavte řešení prediktivní analýzy v Návrháři Azure Machine Learning. Naučte se, vyhodnocovat a nasazovat model strojového učení pomocí modulů přetažení.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 95e5b3ac568cfa370fd1e49fad990b681aef46d9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 31b742144bfb20af14cf6f5e95f5dfc951845ee2
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311520"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555511"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Kurz: nasazení modelu strojového učení pomocí návrháře
 
@@ -28,7 +28,7 @@ Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-
 > * Nasaďte koncový bod v reálném čase.
 > * Otestujte koncový bod v reálném čase.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Kompletní [část tohoto kurzu](tutorial-designer-automobile-price-train-score.md) se naučíte, jak v Návrháři naučit a vyhodnocovat model strojového učení.
 
@@ -48,7 +48,7 @@ Pokud chcete svůj kanál nasadit, musíte nejdřív převést kanál školení 
 
    ![Snímek obrazovky znázorňující očekávanou konfiguraci kanálu po jeho přípravě na nasazení](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
-    Když vyberete **vytvořit kanál odvození**, nastane několik věcí:
+    Když vyberete **vytvořit kanál odvození** , nastane několik věcí:
     
     * Trained model je uložen jako modul **DataSet** v paletě modulu. Můžete ji najít v části **Moje datové sady**.
     * Odeberou se moduly, jako je **model výuky** a **rozdělená data** .
@@ -59,7 +59,7 @@ Pokud chcete svůj kanál nasadit, musíte nejdřív převést kanál školení 
     > Ve výchozím nastavení bude **vstup webové služby** očekávat stejné schéma dat jako školicí data použitá k vytvoření prediktivního kanálu. V tomto scénáři je cena zahrnutá ve schématu. Cena se ale během předpovědi nepoužívá jako faktor.
     >
 
-1. Vyberte **Odeslat**a použijte stejný cíl výpočtů a experiment, který jste použili v první části.
+1. Vyberte **Odeslat** a použijte stejný cíl výpočtů a experiment, který jste použili v první části.
 
     Pokud se jedná o první spuštění, může trvat až 20 minut, než se váš kanál dokončí. Výchozí nastavení COMPUTE mají minimální velikost uzlu 0, což znamená, že Návrhář musí přidělit prostředky po nečinnosti. Opakované spuštění kanálu bude trvat kratší dobu, protože výpočetní prostředky už jsou přidělené. Kromě toho Návrhář používá výsledky v mezipaměti pro každý modul k dalšímu zvýšení efektivity.
 
@@ -77,7 +77,7 @@ V dialogovém okně, které se zobrazí, můžete vybrat z existujících cluste
    
 1. V podokně odvození clusteru nakonfigurujte novou službu Kubernetes.
 
-1. Jako **výpočetní název**zadejte *AKS-COMPUTE* .
+1. Jako **výpočetní název** zadejte *AKS-COMPUTE* .
     
 1. Vyberte okolní oblast, která je k dispozici pro **oblast**.
 
@@ -99,7 +99,7 @@ Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v r
 
 1. Vyberte **Nasadit**.
     
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Snímek obrazovky ukazující, kde najít tlačítko vytvořit kanál":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Snímek obrazovky ukazující, jak nastavit nový koncový bod v reálném čase":::
 
     Po dokončení nasazení se zobrazí oznámení o úspěchu nad plátnem. Může to trvat několik minut.
 

@@ -3,12 +3,12 @@ title: Tlačítko pro nasazení do Azure
 description: Pomocí tlačítka nasaďte Azure Resource Manager šablony z úložiště GitHub.
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 7d002508f6b2402f8cff40fb0369896080ecbbad
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 25ec5fd7a0c5b356097412ab6f1765cb0886522a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490895"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555257"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Použití tlačítka nasazení k nasazení šablon z úložiště GitHub
 
@@ -19,11 +19,15 @@ Rozsah nasazení je určen schématem šablony. Další informace najdete tady:
 * [skupiny prostředků](deploy-to-resource-group.md)
 * [odběru](deploy-to-subscription.md)
 * [skupiny pro správu](deploy-to-management-group.md)
-* [klienti](deploy-to-tenant.md).
+* [tenantů](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>Použít běžný obrázek
 
 Chcete-li přidat tlačítko na webovou stránku nebo úložiště, použijte následující obrázek:
+
+```markdown
+![Deploy to Azure](https://aka.ms/deploytoazurebutton)
+```
 
 ```html
 <img src="https://aka.ms/deploytoazurebutton"/>
@@ -48,6 +52,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 Pak převeďte adresu URL na hodnotu kódovanou pomocí adresy URL. Můžete použít online kodér nebo spustit příkaz. Následující příklad PowerShellu ukazuje, jak adresa URL kóduje hodnotu.
 
 ```powershell
+$url = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 [uri]::EscapeDataString($url)
 ```
 
@@ -70,6 +75,8 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 ```
 
 Máte úplnou adresu URL odkazu.
+
+Obvykle je tato šablona hostována ve veřejném úložišti. Používáte-li privátní úložiště, je nutné zahrnout token pro přístup k nezpracovanému obsahu šablony. Token vygenerovaný GitHubem je platný jenom pro krátkou dobu. Tento odkaz byste často museli aktualizovat.
 
 Pokud používáte [Git se Azure Repos](/azure/devops/repos/git/) místo úložiště GitHub, můžete pořád použít tlačítko nasadit do Azure. Ujistěte se, že je vaše úložiště veřejné. K získání šablony použijte [operaci Items (položky](/rest/api/azure/devops/git/items/get) ). Vaše žádost by měla být v následujícím formátu:
 

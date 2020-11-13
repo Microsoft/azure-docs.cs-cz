@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6bf17f85892691fe930d3d4b1e12846da8f9dc58
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c49f8b2732a1b62760cec69626d56751971e6a44
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789807"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556433"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Jak pomocí Azure PowerShell zřídit SQL Server v Azure Virtual Machines
 
@@ -28,7 +28,7 @@ ms.locfileid: "92789807"
 
 Tato příručka popisuje možnosti použití prostředí PowerShell ke zřízení SQL Server v Azure Virtual Machines (VM). Zjednodušený Azure PowerShell příklad, který závisí na výchozích hodnotách, najdete v článku [rychlý Start k SQL VM Azure PowerShell](sql-vm-create-powershell-quickstart.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -367,12 +367,17 @@ Virtuální počítač se vytvoří.
 
 ## <a name="install-the-sql-iaas-agent"></a>Instalace agenta SQL IaaS
 
-SQL Server virtuální počítače podporují automatizované funkce správy s [rozšířením agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). Pokud chcete nainstalovat agenta na nový virtuální počítač a zaregistrovat ho u poskytovatele prostředků, spusťte po vytvoření virtuálního počítače příkaz [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) . Zadejte typ licence pro váš virtuální počítač s SQL Server, a to pomocí [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/), ať už máte licenci s průběžnými platbami nebo použitím vlastní licence. Další informace o licencování najdete v tématu [licencování modelu](licensing-model-azure-hybrid-benefit-ahb-change.md). 
+SQL Server virtuální počítače podporují automatizované funkce správy s [rozšířením agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). Pokud chcete zaregistrovat SQL Server s rozšířením, spusťte po vytvoření virtuálního počítače příkaz [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) . Zadejte typ licence pro váš virtuální počítač s SQL Server, a to pomocí [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/), ať už máte licenci s průběžnými platbami nebo použitím vlastní licence. Další informace o licencování najdete v tématu [licencování modelu](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
 
    ```powershell
    New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
+Existují tři způsoby, jak s rozšířením zaregistrovat: 
+- [Automaticky pro všechny aktuální a budoucí virtuální počítače v předplatném](sql-agent-extension-automatic-registration-all-vms.md)
+- [Ruční pro jeden virtuální počítač](sql-agent-extension-manually-register-single-vm.md)
+- [Ruční Ruční pro více virtuálních počítačů](sql-agent-extension-manually-register-vms-bulk.md)
 
 
 ## <a name="stop-or-remove-a-vm"></a>Zastavení nebo odebrání virtuálního počítače
