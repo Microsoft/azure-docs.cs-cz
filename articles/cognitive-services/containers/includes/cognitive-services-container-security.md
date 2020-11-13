@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 11/11/2020
 ms.author: aahi
-ms.openlocfilehash: 348fb301d1a36c8df405c641f7644889417b11ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb9b0da609169288521d21ee6d5e412a786c7549
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91545445"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94573863"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Zabezpečení kontejneru Azure Cognitive Services
 
@@ -33,7 +33,7 @@ Jako alternativní a *bezpečný* přístup by spotřebitelé Cognitive Services
 
 ### <a name="container-networking"></a>Sítě kontejnerů
 
-K odeslání informací o měření pro účely fakturace se vyžadují kontejnery Cognitive Services. Jedinou výjimkou jsou *offline kontejnery* , které sledují jinou metodologii fakturace. Nepovedlo se zakázat seznam různých síťových kanálů, na kterých se spoléhá Cognitive Services kontejnery, aby se zabránilo tomu, že kontejner nebude fungovat.
+K odeslání informací o měření pro účely fakturace se vyžadují kontejnery Cognitive Services. Nepovedlo se zakázat seznam různých síťových kanálů, na kterých se spoléhá Cognitive Services kontejnery, aby se zabránilo tomu, že kontejner nebude fungovat.
 
 #### <a name="allow-list-cognitive-services-domains-and-ports"></a>Seznam povolených Cognitive Services domén a portů
 

@@ -2,14 +2,14 @@
 title: Nejčastější dotazy
 description: Obsahuje odpovědi na některé běžné dotazy týkající se řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 33250b0ba9209f7806346668dac0ef308101e7c2
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 99e9e53693e42f907250331894f55ed0160f9e30
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94487784"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577511"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -229,9 +229,15 @@ Budete mít úplná oprávnění správce NSX-T a mohli spravovat řízení př�
 
 Obecné otázky týkající se cen najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/azure-vmware) řešení Azure VMware. 
 
+#### <a name="can-azure-vmware-solution-be-purchased-through-a-microsoft-csp"></a>Dá se řešení Azure VMware koupit prostřednictvím CSP Microsoftu?
+
+Ano, zákazníci můžou nasazovat řešení Azure VMware v rámci předplatného Azure spravovaného CSP.
+
 #### <a name="who-supports-azure-vmware-solution"></a>Kdo podporuje řešení Azure VMware?
 
-Microsoft poskytuje podporu pro řešení Azure VMware. [Žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)můžete odeslat.
+Microsoft poskytuje podporu pro řešení Azure VMware. [Žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)můžete odeslat. 
+
+U předplatných spravovaných poskytovatelem CSP bude poskytovatel řešení poskytovat první úroveň podpory stejným způsobem jako CSP pro jiné služby Azure.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Jaké účty potřebuji k vytvoření privátního cloudu řešení Azure VMware?
 
@@ -246,6 +252,10 @@ Microsoft a Red Hat sdílejí integrovaný, společně umístěný tým podpory,
 VMware HCX Enterprise Edition (EE) je k dispozici v rámci řešení Azure VMware jako funkce nebo služby ve *verzi Preview* . Protože řešení VMware HCX EE pro Azure VMware je ve verzi Preview, je to bezplatná funkce nebo služba a podléhá podmínkám a ujednáním služby ve verzi Preview. Jakmile se služba VMware HCX EE dostane do GA, dostanete 30denní oznámení o tom, že účtování přepíná. Službu můžete odpínat nebo odhlásit.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Jak Návody požádat o zvýšení kvóty hostitele pro řešení Azure VMware?
+
+U předplatných spravovaných poskytovatelem CSP musí zákazník požádat partnera a Partnerský tým se zapojí se společností Microsoft, aby získal zvýšení kvóty pro předplatné. 
+
+U předplatných EA musí zákazník postupovat podle tohoto postupu.
 
 * Budete potřebovat [Azure smlouva Enterprise (EA)](../cost-management-billing/manage/ea-portal-agreements.md) s Microsoftem.
 * Budete potřebovat účet Azure v předplatném Azure.
@@ -283,9 +293,12 @@ Před vytvořením prostředku řešení Azure VMware je nutné odeslat lístek 
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   `"
 
-   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
+   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md). 
+
+#### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
+
+Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
 
 
 ## Customer communication

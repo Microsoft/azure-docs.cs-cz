@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c59a104796e11b15af805e34f9cd14b2ce8bd075
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 6f7888e978fd4eb19232c156ce65b6e4967d9c5a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628843"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575964"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -41,7 +41,7 @@ Shrnutí dvou scénářů, které nejsou exkluzivní, pomocí SAML:
 | Moje aplikace očekává pro dokončení ověřování kontrolní výraz SAML. | **Azure AD B2C funguje jako zprostředkovatel identity (IdP).**<br />Azure AD B2C funguje jako IdP SAML pro aplikace. | Tento článek. |
 | Moji uživatelé potřebují jednotné přihlašování pomocí zprostředkovatele identity kompatibilního s SAML, jako je ADFS, Salesforce nebo Shibboleth.  | **Azure AD B2C funguje jako poskytovatel služeb (SP).**<br />Azure AD B2C slouží jako poskytovatel služeb při připojování k poskytovateli identity SAML. Jedná se o federační proxy mezi vaší aplikací a poskytovatelem identity SAML.  | <ul><li>[Nastavení přihlášení pomocí služby ADFS jako IdP SAML pomocí vlastních zásad](identity-provider-adfs2016-custom.md)</li><li>[Nastavení přihlašování pomocí poskytovatele služby Salesforce SAML pomocí vlastních zásad](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Proveďte kroky v části Začínáme [s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md). Vlastní zásady *SocialAndLocalAccounts* potřebujete od úvodní sady Custom Policy Pack popsané v článku.
 * Základní porozumění protokolu Security Assertion Markup Language (SAML).
@@ -99,13 +99,13 @@ Pokud ještě certifikát nemáte, můžete pro tento kurz použít certifikát 
 Potom do Azure AD B2C nahrajte kontrolní výraz SAML a podpisový certifikát odpovědi.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyhledejte Azure AD B2C tenanta.
-1. V části **zásady** vyberte možnost **Architektura prostředí identity** a pak **klíče zásad** .
-1. Vyberte **Přidat** a pak vybrat **Možnosti**  >  **nahrát** .
-1. Zadejte **název** , například *SamlIdpCert* . *B2C_1A_* předpony se automaticky přidají do názvu vašeho klíče.
+1. V části **zásady** vyberte možnost **Architektura prostředí identity** a pak **klíče zásad**.
+1. Vyberte **Přidat** a pak vybrat **Možnosti**  >  **nahrát**.
+1. Zadejte **název** , například *SamlIdpCert*. *B2C_1A_* předpony se automaticky přidají do názvu vašeho klíče.
 1. Nahrajte certifikát pomocí ovládacího prvku nahrát soubor.
 1. Zadejte heslo certifikátu.
-1. Vyberte **Vytvořit** .
-1. Ověřte, že se klíč zobrazuje podle očekávání. Například *B2C_1A_SamlIdpCert* .
+1. Vyberte **Vytvořit**.
+1. Ověřte, že se klíč zobrazuje podle očekávání. Například *B2C_1A_SamlIdpCert*.
 
 ## <a name="2-prepare-your-policy"></a>2. Příprava zásad
 
@@ -159,7 +159,7 @@ Teď, když váš tenant může vystavovat kontrolní výrazy SAML, je nutné vy
 
 ### <a name="31-create-sign-up-or-sign-in-policy"></a>3,1 Vytvoření zásady registrace nebo přihlašování
 
-1. Vytvořte kopii souboru *SignUpOrSignin.xml* v pracovním adresáři úvodní Pack a uložte ho s novým názvem. Například *SignUpOrSigninSAML.xml* . Toto je soubor zásad předávající strany.
+1. Vytvořte kopii souboru *SignUpOrSignin.xml* v pracovním adresáři úvodní Pack a uložte ho s novým názvem. Například *SignUpOrSigninSAML.xml*. Toto je soubor zásad předávající strany.
 
 1. Otevřete soubor *SignUpOrSigninSAML.xml* v upřednostňovaném editoru.
 
@@ -260,7 +260,7 @@ Konečný soubor zásad předávající strany by měl vypadat jako následujíc
 
 Uložte změny a nahrajte nový soubor zásad. Po nahrání obou zásad (rozšíření a souborů předávající strany) otevřete webový prohlížeč a přejděte na metadata zásad.
 
-Metadata IDP zásad Azure AD B2C jsou informace, které se používají v protokolu SAML k vystavení konfigurace zprostředkovatele identity SAML. Metadata definují umístění služeb, jako je například přihlášení a odhlášení, certifikáty, metoda přihlašování a další. Metadata zásad Azure AD B2C jsou k dispozici na následující adrese URL. Nahraďte `tenant-name` názvem vašeho tenanta Azure AD B2C a `policy-name` názvem (ID) zásady:
+Metadata IDP zásad Azure AD B2C jsou informace, které se používají v protokolu SAML k vystavení konfigurace zprostředkovatele identity SAML. Metadata definují umístění služeb, jako je například přihlášení a odhlášení, certifikáty, metoda přihlašování a další. Metadata zásad Azure AD B2C jsou k dispozici na následující adrese URL. Nahraďte `tenant-name` názvem vašeho tenanta Azure AD B2C a `policy-name` názvem (ID) zásady, například.../B2C_1A_SAML2_signup_signin/SAMLP/metadata:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -270,14 +270,14 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 zaregistrovat aplikaci v Azure AD B2C
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
-1. V nabídce vlevo vyberte **Azure AD B2C** . Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C** .
-1. Vyberte **Registrace aplikací** a pak vyberte **Nová registrace** .
-1. Zadejte **název** aplikace. Například *SAMLApp1* .
+1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
+1. Vyberte **Registrace aplikací** a pak vyberte **Nová registrace**.
+1. Zadejte **název** aplikace. Například *SAMLApp1*.
 1. V části **podporované typy účtů** vyberte **účty jenom v tomto organizačním adresáři** .
 1. V části **identifikátor URI pro přesměrování** vyberte **Web** a potom zadejte `https://localhost` . Tuto hodnotu upravíte později v manifestu registrace aplikace.
-1. Vyberte **Zaregistrovat** .
+1. Vyberte **Zaregistrovat**.
 
 ### <a name="42-update-the-app-manifest"></a>4,2 aktualizace manifestu aplikace
 
@@ -296,7 +296,7 @@ Tato vlastnost představuje adresu URL veřejně dostupných metadat poskytovate
 
 Metadata jsou informace, které se používají v protokolu SAML k vystavení konfigurace večírku SAML, jako je například poskytovatel služeb. Metadata definují umístění služeb, jako je přihlášení a odhlášení, certifikáty, metoda přihlašování a další. Azure AD B2C čte metadata poskytovatele služby a funguje odpovídajícím způsobem. Metadata se nevyžadují. Můžete také zadat některé atributy, jako je identifikátor URI odpovědi, a identifikátor URI odhlášení přímo v manifestu aplikace.
 
-Pokud jsou v adrese URL metadat *SAML i v* manifestu registrace aplikace zadány vlastnosti, budou **sloučeny** . Vlastnosti zadané v adrese URL metadat jsou zpracovávány jako první a mají přednost.
+Pokud jsou v adrese URL metadat *SAML i v* manifestu registrace aplikace zadány vlastnosti, budou **sloučeny**. Vlastnosti zadané v adrese URL metadat jsou zpracovávány jako první a mají přednost.
 
 Pro účely tohoto kurzu, který používá testovací aplikaci SAML, použijte následující hodnotu pro `samlMetadataUrl` :
 

@@ -8,7 +8,6 @@
     - name: Podporované zdroje dat
       href: supported-data-stores.md
 - name: Rychlé starty
-  expanded: true
   items:
     - name: Sdílení dat – Azure Portal
       href: share-your-data-portal.md
@@ -16,6 +15,7 @@
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: Kurzy
+  expanded: true
   items:
     - name: Sdílení dat
       href: share-your-data.md

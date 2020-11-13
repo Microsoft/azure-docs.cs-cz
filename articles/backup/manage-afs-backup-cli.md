@@ -3,29 +3,27 @@ title: Správa záloh sdílených složek Azure pomocí Azure CLI
 description: Naučte se používat rozhraní příkazového řádku Azure ke správě a monitorování sdílených složek Azure zálohovaných pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 44c095d58e2da5a74985ce216268aab15922ed1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a8a785016845b836a102663a959e4b2f28696b6
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332742"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566448"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Správa záloh sdílených složek Azure pomocí Azure CLI
 
 Azure CLI poskytuje prostředí příkazového řádku pro správu prostředků Azure. Je skvělým nástrojem pro vytváření vlastních automatizace pro používání prostředků Azure. Tento článek vysvětluje, jak provádět úlohy pro správu a monitorování sdílených složek Azure, které jsou zálohované pomocí [Azure Backup](./backup-overview.md). Tyto kroky můžete provést také s [Azure Portal](https://portal.azure.com/).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Pokud chcete nainstalovat a používat rozhraní příkazového řádku místně, musíte spustit Azure CLI verze 2.0.18 nebo novější. Verzi rozhraní příkazového řádku zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
-
 ## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že už máte sdílenou složku Azure zálohovanou [Azure Backup](./backup-overview.md). Pokud ho nemáte, přečtěte si téma [Zálohování sdílených složek Azure pomocí rozhraní příkazového řádku, ve kterém](backup-afs-cli.md) můžete nakonfigurovat zálohování sdílených složek. V tomto článku použijete následující prostředky:
-
-* **Skupina prostředků**: *azurefiles*
-* **RecoveryServicesVault**: *azurefilesvault*
-* **Účet úložiště**: *afsaccount*
-* **Sdílená složka**: *azurefiles*
+   -  **Skupina prostředků** : *azurefiles*
+   -  **RecoveryServicesVault** : *azurefilesvault*
+   -  **Účet úložiště** : *afsaccount*
+   -  **Sdílená složka** : *azurefiles*
+  
+  [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+   - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.18 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="monitor-jobs"></a>Monitorování úloh
 
@@ -98,9 +96,9 @@ Zásadu zálohování můžete upravit tak, aby se změnila frekvence zálohová
 
 Chcete-li změnit zásadu, definujte následující parametry:
 
-* **--Container-Name**: název účtu úložiště, který hostuje sdílenou složku. Pokud chcete načíst **název** nebo **popisný název** svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container#az-backup-container-list) .
-* **--Name**: název sdílené složky, pro kterou chcete zásadu změnit. Pokud chcete načíst **název** nebo **popisný název** zálohované položky, použijte příkaz [AZ Backup Item list](/cli/azure/backup/item#az-backup-item-list) .
-* **--Policy-Name**: název zásady zálohování, kterou chcete nastavit pro sdílenou složku. Pokud chcete zobrazit všechny zásady pro svůj trezor, můžete použít možnost [AZ Backup Policy list](/cli/azure/backup/policy#az-backup-policy-list) .
+* **--Container-Name** : název účtu úložiště, který hostuje sdílenou složku. Pokud chcete načíst **název** nebo **popisný název** svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container#az-backup-container-list) .
+* **--Name** : název sdílené složky, pro kterou chcete zásadu změnit. Pokud chcete načíst **název** nebo **popisný název** zálohované položky, použijte příkaz [AZ Backup Item list](/cli/azure/backup/item#az-backup-item-list) .
+* **--Policy-Name** : název zásady zálohování, kterou chcete nastavit pro sdílenou složku. Pokud chcete zobrazit všechny zásady pro svůj trezor, můžete použít možnost [AZ Backup Policy list](/cli/azure/backup/policy#az-backup-policy-list) .
 
 Následující příklad nastaví zásady zálohování *schedule2* pro sdílenou složku *azurefiles* , která je k dispozici v účtu úložiště *afsaccount* .
 
@@ -110,8 +108,8 @@ az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name
 
 Předchozí příkaz můžete také spustit pomocí popisných názvů kontejneru a položky zadáním následujících dvou dalších parametrů:
 
-* **--zálohování-Správa-typ**: *azurestorage*
-* **--úlohu-typ**: *azurefileshare*
+* **--zálohování-Správa-typ** : *azurestorage*
+* **--úlohu-typ** : *azurefileshare*
 
 ```azurecli-interactive
 az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --name azurefiles --backup-management-type azurestorage --out table
@@ -136,8 +134,8 @@ Je možné, že jsou k dispozici náklady spojené s ponecháním bodů obnoven�
 
 Ochranu sdílené složky zabráníte tak, že definujete následující parametry:
 
-* **--Container-Name**: název účtu úložiště, který hostuje sdílenou složku. Pokud chcete načíst **název** nebo **popisný název** svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container#az-backup-container-list) .
-* **--Item-Name**: název sdílené složky, pro kterou chcete zastavit ochranu. Pokud chcete načíst **název** nebo **popisný název** zálohované položky, použijte příkaz [AZ Backup Item list](/cli/azure/backup/item#az-backup-item-list) .
+* **--Container-Name** : název účtu úložiště, který hostuje sdílenou složku. Pokud chcete načíst **název** nebo **popisný název** svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container#az-backup-container-list) .
+* **--Item-Name** : název sdílené složky, pro kterou chcete zastavit ochranu. Pokud chcete načíst **název** nebo **popisný název** zálohované položky, použijte příkaz [AZ Backup Item list](/cli/azure/backup/item#az-backup-item-list) .
 
 ### <a name="stop-protection-and-retain-recovery-points"></a>Zastavení ochrany a zachování bodů obnovení
 
@@ -151,8 +149,8 @@ az backup protection disable --vault-name azurefilesvault --resource-group azure
 
 Předchozí příkaz můžete také spustit pomocí popisného názvu kontejneru a položky zadáním následujících dvou dalších parametrů:
 
-* **--zálohování-Správa-typ**: *azurestorage*
-* **--úlohu-typ**: *azurefileshare*
+* **--zálohování-Správa-typ** : *azurestorage*
+* **--úlohu-typ** : *azurefileshare*
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --out table
@@ -178,8 +176,8 @@ az backup protection disable --vault-name azurefilesvault --resource-group azure
 
 Předchozí příkaz můžete také spustit pomocí popisného názvu kontejneru a položky zadáním následujících dvou dalších parametrů:
 
-* **--zálohování-Správa-typ**: *azurestorage*
-* **--úlohu-typ**: *azurefileshare*
+* **--zálohování-Správa-typ** : *azurestorage*
+* **--úlohu-typ** : *azurefileshare*
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --delete-backup-data true --out table
@@ -191,9 +189,9 @@ Pokud jste zastavili ochranu sdílené složky Azure, ale zachovali body obnoven
 
 Chcete-li obnovit ochranu sdílené složky, definujte následující parametry:
 
-* **--Container-Name**: název účtu úložiště, který hostuje sdílenou složku. Pokud chcete načíst **název** nebo **popisný název** svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container#az-backup-container-list) .
-* **--Item-Name**: název sdílené složky, pro kterou chcete obnovit ochranu. Pokud chcete načíst **název** nebo **popisný název** zálohované položky, použijte příkaz [AZ Backup Item list](/cli/azure/backup/item#az-backup-item-list) .
-* **--Policy-Name**: název zásad zálohování, pro které chcete obnovit ochranu sdílené složky.
+* **--Container-Name** : název účtu úložiště, který hostuje sdílenou složku. Pokud chcete načíst **název** nebo **popisný název** svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container#az-backup-container-list) .
+* **--Item-Name** : název sdílené složky, pro kterou chcete obnovit ochranu. Pokud chcete načíst **název** nebo **popisný název** zálohované položky, použijte příkaz [AZ Backup Item list](/cli/azure/backup/item#az-backup-item-list) .
+* **--Policy-Name** : název zásad zálohování, pro které chcete obnovit ochranu sdílené složky.
 
 Následující příklad používá rutinu [AZ Backup Protection Resume](/cli/azure/backup/protection#az-backup-protection-resume) k obnovení ochrany sdílené složky *azurefiles* pomocí zásady zálohování *schedule1* .
 
@@ -203,8 +201,8 @@ az backup protection resume --vault-name azurefilesvault --resource-group azuref
 
 Předchozí příkaz můžete také spustit pomocí popisného názvu kontejneru a položky zadáním následujících dvou dalších parametrů:
 
-* **--zálohování-Správa-typ**: *azurestorage*
-* **--úlohu-typ**: *azurefileshare*
+* **--zálohování-Správa-typ** : *azurestorage*
+* **--úlohu-typ** : *azurefileshare*
 
 ```azurecli-interactive
 az backup protection resume --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --policy-name schedule2 --out table
@@ -232,7 +230,7 @@ az backup container unregister --vault-name azurefilesvault --resource-group azu
 
 Můžete také spustit předchozí rutinu pomocí popisného názvu kontejneru zadáním následujícího dalšího parametru:
 
-* **--zálohování-Správa-typ**: *azurestorage*
+* **--zálohování-Správa-typ** : *azurestorage*
 
 ```azurecli-interactive
 az backup container unregister --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --backup-management-type azurestorage --out table

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29fff3a6a430e3bc1a0b3a13876b55d22f7cb545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208340"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566465"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Automatizační pokyny pro partnery služby Virtual WAN
 
@@ -33,9 +33,9 @@ Zařízení pobočky (místní zařízení VPN zákazníka nebo SDWAN CPE) obvyk
 
 ### <a name="additional-information"></a><a name ="additional"></a>Další informace
 
-* [REST API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs) automatizaci vytváření virtuálních rozbočovačů
-* [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways) pro automatizaci Azure VPN Gateway pro virtuální síť WAN
-* [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections) připojení VPNSite ke službě Azure VPN hub
+* [REST API](/rest/api/virtualwan/virtualhubs) automatizaci vytváření virtuálních rozbočovačů
+* [REST API](/rest/api/virtualwan/vpngateways) pro automatizaci Azure VPN Gateway pro virtuální síť WAN
+* [REST API](/rest/api/virtualwan/vpnconnections) připojení VPNSite ke službě Azure VPN hub
 * [Výchozí zásady protokolu IPsec](#default)
 
 ## <a name="customer-experience"></a><a name ="ae"></a>Prostředí pro zákazníky
@@ -63,11 +63,11 @@ Zákazníci musí být schopni nastavit příslušné řízení přístupu pro v
 
 ###  <a name="upload-branch-device-information"></a><a name="branch"></a>Nahrát informace o zařízení pobočky
 
-Měli byste navrhnout činnost koncového uživatele pro nahrání informací o větvích (místních lokalit) do Azure. Pomocí [rozhraní REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) pro VPNSite můžete vytvořit informace o lokalitě ve virtuální síti WAN. Můžete zadat všechna zařízení SDWAN ve větvi/VPN nebo podle potřeby vybrat vlastní nastavení zařízení.
+Měli byste navrhnout činnost koncového uživatele pro nahrání informací o větvích (místních lokalit) do Azure. Pomocí [rozhraní REST API](/rest/api/virtualwan/vpnsites) pro VPNSite můžete vytvořit informace o lokalitě ve virtuální síti WAN. Můžete zadat všechna zařízení SDWAN ve větvi/VPN nebo podle potřeby vybrat vlastní nastavení zařízení.
 
 ### <a name="device-configuration-download-and-connectivity"></a><a name="device"></a>Stažení konfigurace zařízení a připojení
 
-Tento krok zahrnuje stažení konfigurace Azure a nastavení připojení ze zařízení z pobočky do Azure Virtual WAN. V tomto kroku zákazník, který nepoužívá poskytovatele, ručně stáhne konfiguraci Azure a použije ji na místní zařízení SDWAN/VPN. Jako poskytovatel byste měli tento krok automatizovat. Další informace najdete v části stažení [rozhraní REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) . Řadič zařízení může volat ' GetVpnConfiguration ' REST API ke stažení konfigurace Azure.
+Tento krok zahrnuje stažení konfigurace Azure a nastavení připojení ze zařízení z pobočky do Azure Virtual WAN. V tomto kroku zákazník, který nepoužívá poskytovatele, ručně stáhne konfiguraci Azure a použije ji na místní zařízení SDWAN/VPN. Jako poskytovatel byste měli tento krok automatizovat. Další informace najdete v části stažení [rozhraní REST API](/rest/api/virtualwan/vpnsitesconfiguration/download) . Řadič zařízení může volat ' GetVpnConfiguration ' REST API ke stažení konfigurace Azure.
 
 **Poznámky ke konfiguraci**
 

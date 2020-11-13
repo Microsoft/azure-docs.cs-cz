@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 3cc4bdc0fabd9d1e209634a88bed1bf063db917c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aea5f0428fe55c0dae3734e196008cbc26a974b9
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597877"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576213"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Dostupnost a redundance služby Azure Key Vault
 
@@ -23,11 +23,11 @@ Azure Key Vault funkce více vrstev redundance, aby se zajistilo, že vaše klí
 > [!NOTE]
 > Tato příručka se vztahuje na trezory. Spravované fondy HSM používají jiný model vysoké dostupnosti a zotavení po havárii. Další informace najdete v tématu [spravovaná příručka pro zotavení po havárii HSM](../managed-hsm/disaster-recovery-guide.md) .
 
-Obsah trezoru klíčů se replikuje v rámci oblasti a do sekundární oblasti minimálně 150 kilometrů, ale v rámci stejné geografické úrovně zachovává vysokou odolnost klíčů a tajných kódů. Podrobnosti o dvojicích konkrétních oblastí najdete v dokumentu s [spárovanými](../../best-practices-availability-paired-regions.md) oblastmi Azure.
+Obsah trezoru klíčů se replikuje v rámci oblasti a do sekundární oblasti minimálně 150 km, ale v rámci stejné geografické úrovně zachovává vysokou odolnost klíčů a tajných kódů. Podrobnosti o dvojicích konkrétních oblastí najdete v tématu [spárované oblasti Azure](../../best-practices-availability-paired-regions.md). Výjimka pro model spárovaných oblastí je Brazílie – jih, která umožňuje, aby se data v oblasti Brazílie – jih zajistila pouze možností. Brazílie – jih používá místně redundantní úložiště (LRS) k replikaci vašich dat třikrát v jednom umístění nebo oblasti.   
 
 Pokud jednotlivé komponenty v rámci služby trezoru klíčů selžou, alternativní komponenty v rámci této oblasti v rámci vaší žádosti budou sloužit k tomu, aby se zajistilo, že nedojde k žádnému zhoršení funkčnosti. Pro spuštění tohoto procesu nemusíte provádět žádnou akci, k tomu dochází automaticky a pro vás bude transparentní.
 
-V vzácných událostech, že celá oblast Azure není k dispozici, jsou požadavky, které provedete Azure Key Vault v této oblasti, automaticky směrovány (*převzetí*služeb při selhání) do sekundární oblasti. Pokud je primární oblast opět k dispozici, požadavky se přesměrují zpět (po*obnovení*) do primární oblasti. Znovu nemusíte provádět žádnou akci, protože k tomu dochází automaticky.
+V vzácných událostech, že celá oblast Azure není k dispozici, jsou požadavky, které provedete Azure Key Vault v této oblasti, automaticky směrovány ( *převzetí* služeb při selhání) do sekundární oblasti. Pokud je primární oblast opět k dispozici, požadavky se přesměrují zpět (po *obnovení* ) do primární oblasti. Znovu nemusíte provádět žádnou akci, protože k tomu dochází automaticky.
 
 Tento návrh vysoké dostupnosti Azure Key Vault nevyžaduje pro aktivity údržby žádné výpadky.
 

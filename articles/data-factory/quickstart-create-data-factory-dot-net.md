@@ -1,6 +1,6 @@
 ---
-title: Vytvoření datové továrny Azure pomocí sady .NET SDK
-description: Vytvoření datové továrny Azure a kanálu pomocí sady .NET SDK ke kopírování dat z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
+title: Vytvoření Azure Data Factory pomocí sady .NET SDK
+description: Vytvoření Azure Data Factory a kanálu pomocí sady .NET SDK ke kopírování dat z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: e8da3dff39f94d6639471a2d1d96691c9cde614d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d564b96807574dd7a275d6959aea085ad16e9e2e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322848"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565938"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rychlé zprovoznění: Vytvoření datové továrny a kanálu pomocí sady .NET SDK
 
@@ -28,7 +28,7 @@ ms.locfileid: "91322848"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Tento rychlý start popisuje použití sady .NET SDK k vytvoření datové továrny Azure. Kanál, který vytvoříte v této datové továrně, **kopíruje** data z jedné složky do jiné složky v úložišti objektů BLOB v Azure. Kurz o tom, jak **transformovat** data pomocí Azure Data Factory, najdete v tématu [kurz: transformace dat pomocí Sparku](tutorial-transform-data-spark-portal.md).
+V tomto rychlém startu se dozvíte, jak pomocí sady .NET SDK vytvořit Azure Data Factory. Kanál, který vytvoříte v této datové továrně, **kopíruje** data z jedné složky do jiné složky v úložišti objektů BLOB v Azure. Kurz o tom, jak **transformovat** data pomocí Azure Data Factory, najdete v tématu [kurz: transformace dat pomocí Sparku](tutorial-transform-data-spark-portal.md).
 
 > [!NOTE]
 > Tento článek neposkytuje podrobný úvod do služby Data Factory. Úvod do služby Azure Data Factory najdete v tématu [Úvod do Azure Data Factory](introduction.md).
@@ -45,11 +45,11 @@ Stáhněte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/) a nains
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Vytvoření aplikace v Azure Active Directory
 
-V části *Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům*, postupujte podle pokynů k provedení těchto úloh:
+V části *Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům* , postupujte podle pokynů k provedení těchto úloh:
 
 1. V části [vytvořit aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)vytvořte aplikaci, která představuje aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).
-2. V poli [získat hodnoty pro přihlášení](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Získejte **ID aplikace** a **ID tenanta**a poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
-3. V části [certifikáty a tajné](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)klíče Získejte **ověřovací klíč**a poznamenejte si tuto hodnotu, kterou použijete později v tomto kurzu.
+2. V poli [získat hodnoty pro přihlášení](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Získejte **ID aplikace** a **ID tenanta** a poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
+3. V části [certifikáty a tajné](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)klíče Získejte **ověřovací klíč** a poznamenejte si tuto hodnotu, kterou použijete později v tomto kurzu.
 4. V části [přiřadit aplikaci k roli](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)přiřaďte aplikaci roli **Přispěvatel** na úrovni předplatného, aby aplikace mohla vytvářet datové továrny v rámci předplatného.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
@@ -58,7 +58,7 @@ Dále vytvořte konzolovou aplikaci C# .NET v aplikaci Visual Studio:
 
 1. Spusťte **Visual Studio**.
 2. V okně Start vyberte **vytvořit novou**  >  **konzolovou aplikaci projektu (.NET Framework)**. Vyžaduje se .NET verze 4.5.2 nebo novější.
-3. Do **název projektu**zadejte **ADFv2QuickStart**.
+3. Do **název projektu** zadejte **ADFv2QuickStart**.
 4. Vyberte **Vytvořit** a vytvořte projekt.
 
 ## <a name="install-nuget-packages"></a>Instalace balíčků NuGet

@@ -1,6 +1,6 @@
 ---
 title: Přizpůsobení jazyka v tocích uživatelů Azure AD
-description: Přečtěte si o přizpůsobení prostředí v uživatelských tocích.
+description: Přečtěte si, jak přizpůsobit prostředí jazyka v uživatelském toku v Azure Active Directory.
 services: active-directory
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c73a5491c0ad543d57a6721f37d81ae661c0a653
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 98ead87ce2bd3b4e3ffc45763aa5151168c72078
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441432"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576508"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Přizpůsobení jazyka v Azure Active Directory (Preview)
 
@@ -37,7 +37,7 @@ Ve výchozím nastavení je přizpůsobení jazyka povoleno pro uživatele, kte�
 Přizpůsobení jazyka umožňuje přizpůsobení libovolného řetězce v toku uživatele.
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
-2. V části **služby Azure**vyberte **Azure Active Directory**.
+2. V části **služby Azure** vyberte **Azure Active Directory**.
 3. V nabídce vlevo vyberte **externí identity**.
 4. Vyberte **toky uživatelů (Preview)**.
 3. Vyberte tok uživatele, který chcete povolit pro překlady.

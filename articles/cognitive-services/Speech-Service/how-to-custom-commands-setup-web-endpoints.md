@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 7a8bdd911db82a07bfcdd1596b7a8203a19a6442
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341953"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566244"
 ---
 # <a name="set-up-web-endpoints"></a>Nastavení webových koncových bodů
 
@@ -58,7 +58,7 @@ V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webov�
 
 ## <a name="call-web-endpoints"></a>Volání webových koncových bodů
 
-1. Přejděte na příkaz **TurnOnOff**, jako pravidlo dokončení vyberte **ConfirmationResponse** a potom vyberte **Přidat akci**.
+1. Přejděte na příkaz **TurnOnOff** , jako pravidlo dokončení vyberte **ConfirmationResponse** a potom vyberte **Přidat akci**.
 1. V části **New Action-Type** (Nový typ akce) vyberte **Call web endpoint** (Volání koncového bodu).
 1. V části **Edit Action - Endpoints** (Akce pro úpravy – koncové body) vyberte **UpdateDeviceState**. To je webový koncový bod, který jsme vytvořili.  
 1. V části **Configuration** (Konfigurace) zadejte následující hodnoty: 
@@ -125,14 +125,14 @@ Ve většině případů ale chcete posílat aktivitu do klientské aplikace jen
     1. Následující kód JSON zkopírujte do části **Activity Content** (Obsah aktivity).
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
-    > [!div class="mx-imgBorder"]
-    > ![Odeslání aktivity při úspěchu](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-activity.png)
    
 Teď odesíláte aktivitu do klientské aplikace jenom v případě, že požadavek na webový koncový bod je úspěšný.
 
@@ -207,3 +207,4 @@ Pokud jste vaši aplikaci otestovali s parametrem `turn on tv` v předchozí sek
 
 > [!div class="nextstepaction"]
 > [Exportovat aplikaci Custom Commands jako vzdálenou dovednost](./how-to-custom-commands-integrate-remote-skills.md)
+

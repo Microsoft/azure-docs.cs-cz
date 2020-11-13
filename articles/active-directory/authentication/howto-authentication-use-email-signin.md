@@ -10,14 +10,17 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: c822aaebb2451d709f6afcdeba959f39c4d491cb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c3fcff5673f4498e92f5d66fe96d806a08527197
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964532"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576015"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Přihlášení k Azure Active Directory používání e-mailu jako alternativního přihlašovacího ID (Preview)
+
+> [!NOTE]
+> Přihlášení k Azure AD s e-mailem jako alternativním přihlašovacím ID je funkce Public Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Mnoho organizací chce umožnit uživatelům přihlašovat se Azure Active Directory (Azure AD) pomocí stejných přihlašovacích údajů, jako je místní prostředí adresáře. U tohoto přístupu, označovaného jako hybridní ověřování, si uživatelé musí pamatovat jenom jednu sadu přihlašovacích údajů.
 
@@ -27,12 +30,12 @@ Některé organizace se nepřesunuly do hybridního ověřování z následujíc
 * Změna hlavního názvu uživatele (UPN) Azure AD vytvoří neshodu mezi prostředími Prem a Azure AD, která by mohla způsobit problémy s určitými aplikacemi a službami.
 * Organizace nechce, aby se k Azure AD přihlásili pomocí místního hlavního názvu uživatele (UPN) nebo dodržování předpisů.
 
-Abyste mohli přejít na hybridní ověřování, můžete teď nakonfigurovat Azure AD tak, aby se uživatelé mohli přihlašovat pomocí e-mailu v ověřené doméně jako alternativní přihlašovací ID. Pokud se například *Contoso* přesměruje na *Fabrikam*, místo toho, abyste se mohli dál přihlašovat pomocí staršího `balas@contoso.com` hlavního názvu uživatele (UPN), se teď dá použít alternativní přihlašovací ID. Pro přístup k aplikaci nebo službám se uživatelé přihlásí k Azure AD pomocí přiřazeného e-mailu, jako je například `balas@fabrikam.com` .
+Abyste mohli přejít na hybridní ověřování, můžete teď nakonfigurovat Azure AD tak, aby se uživatelé mohli přihlašovat pomocí e-mailu v ověřené doméně jako alternativní přihlašovací ID. Pokud se například *Contoso* přesměruje na *Fabrikam* , místo toho, abyste se mohli dál přihlašovat pomocí staršího `balas@contoso.com` hlavního názvu uživatele (UPN), se teď dá použít alternativní přihlašovací ID. Pro přístup k aplikaci nebo službám se uživatelé přihlásí k Azure AD pomocí přiřazeného e-mailu, jako je například `balas@fabrikam.com` .
 
 V tomto článku se dozvíte, jak povolit a používat e-maily jako alternativní přihlašovací ID. Tato funkce je k dispozici v edici Azure AD Free a vyšší.
 
 > [!NOTE]
-> Přihlášení k Azure AD s e-mailem jako alternativním přihlašovacím ID je funkce Public Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+> Tato funkce je určena jenom pro uživatele Azure AD ověřené pro Cloud.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Přehled přístupů ke službě Azure AD pro přihlášení
 
@@ -169,13 +172,79 @@ Při použití těchto zásad může trvat až hodinu, než se rozšíří a už
 
 Pokud chcete otestovat, jestli se uživatelé můžou přihlašovat pomocí e-mailu, přejděte na [https://myprofile.microsoft.com][my-profile] adresu a přihlaste se pomocí uživatelského účtu na základě jejich e-mailové adresy, jako `balas@fabrikam.com` je například hlavní název uživatele (UPN) `balas@contoso.com` . Prostředí pro přihlašování by mělo vypadat stejně jako u přihlašovací události založené na UPN.
 
+## <a name="enable-staged-rollout-to-test-user-sign-in-with-an-email-address"></a>Povolit připravené zavedení pro testování přihlášení uživatele pomocí e-mailové adresy  
+
+[Příprava na přípravu][staged-rollout] umožňuje správcům klientů povolit funkce pro konkrétní skupiny. Doporučuje se, aby správci klientů používali připravené zavedení k testování přihlášení uživatelů pomocí e-mailové adresy. Když jsou správci připraveni nasadit tuto funkci do celého tenanta, musí použít zásady zjišťování domovské sféry.  
+
+
+K provedení následujících kroků potřebujete oprávnění *správce tenanta* :
+
+1. Otevřete relaci PowerShellu jako správce a pak nainstalujte modul *AzureADPreview* pomocí rutiny [install-Module][Install-Module] :
+
+    ```powershell
+    Install-Module AzureADPreview
+    ```
+
+    Pokud se zobrazí výzva, vyberte **Y** pro instalaci nástroje NuGet nebo pro instalaci z nedůvěryhodného úložiště.
+
+2. Přihlaste se k tenantovi Azure AD jako *správce tenanta* pomocí rutiny [Connect-AzureAD][Connect-AzureAD] :
+
+    ```powershell
+    Connect-AzureAD
+    ```
+
+    Příkaz vrátí informace o vašem účtu, prostředí a ID tenanta.
+
+3. Vypíše všechny existující zásady dvoufázové implementace pomocí následující rutiny:
+   
+   ```powershell
+   Get-AzureADMSFeatureRolloutPolicy
+   ``` 
+
+4. Pokud pro tuto funkci neexistují žádné zásady dvoufázového zavedení, vytvořte nové zásady dvoufázové zavedení a poznamenejte si ID zásady:
+
+   ```powershell
+   New-AzureADMSFeatureRolloutPolicy -Feature EmailAsAlternateId -DisplayName "EmailAsAlternateId Rollout Policy" -IsEnabled $true
+   ```
+
+5. Najděte ID directoryObject skupiny, která se má přidat do zásady dvoufázové zavedení. Všimněte si hodnoty vrácené pro parametr *ID* , protože se použije v dalším kroku.
+   
+   ```powershell
+   Get-AzureADMSGroup -SearchString "Name of group to be added to the staged rollout policy"
+   ```
+
+6. Přidejte skupinu do zásady dvoufázové zavedení, jak je znázorněno v následujícím příkladu. Hodnotu v parametru *-ID* nahraďte hodnotou vrácenou pro ID zásady v kroku 4 a nahraďte hodnotu v parametru *-RefObjectId* *číslem ID* , které jste si poznamenali v kroku 5. Může trvat až 1 hodinu, než se uživatelé ve skupině můžou pomocí svých proxy adres přihlašovat.
+
+   ```powershell
+   Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -RefObjectId "GROUP_OBJECT_ID"
+   ```
+   
+Pro nové členy přidané do skupiny může trvat až 24 hodin, než se budou moct pomocí svých proxy adres přihlašovat.
+
+### <a name="removing-groups"></a>Odebírání skupin
+
+Pokud chcete skupinu odebrat ze zásady dvoufázové zavedení, spusťte následující příkaz:
+
+```powershell
+Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -ObjectId "GROUP_OBJECT_ID" 
+```
+
+### <a name="removing-policies"></a>Odebírají se zásady
+
+Pokud chcete odebrat zásady dvoufázové zavedení, nejdřív zásadu zakažte a pak ji odeberte ze systému:
+
+```powershell
+Set-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID" -IsEnabled $false 
+Remove-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID"
+```
+
 ## <a name="troubleshoot"></a>Řešení potíží
 
 Pokud uživatelé mají problémy s přihlašovacími událostmi pomocí své e-mailové adresy, přečtěte si následující postup řešení potíží:
 
 1. Ujistěte se, že uživatelský účet má svou e-mailovou adresu nastavenou pro atribut *proxyAddresses* v prostředí Prem služba AD DS.
 1. Ověřte, že je konfigurace Azure AD Connect nakonfigurovaná, a úspěšně synchronizuje uživatelské účty z prostředí on-Prem služba AD DS do Azure AD.
-1. Potvrďte, že zásada Azure AD *HomeRealmDiscoveryPolicy* má atribut *AlternateIdLogin* nastavený na *Enabled: true*:
+1. Potvrďte, že zásada Azure AD *HomeRealmDiscoveryPolicy* má atribut *AlternateIdLogin* nastavený na *Enabled: true* :
 
     ```powershell
     Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
@@ -202,4 +271,5 @@ Další informace o hybridních operacích identity najdete v tématu Jak funguj
 [Get-AzureADPolicy]: /powershell/module/azuread/get-azureadpolicy
 [New-AzureADPolicy]: /powershell/module/azuread/new-azureadpolicy
 [Set-AzureADPolicy]: /powershell/module/azuread/set-azureadpolicy
+[staged-rollout]: /powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged-rollout
 [my-profile]: https://myprofile.microsoft.com

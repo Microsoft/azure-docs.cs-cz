@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5092aa0b5b23f04af1f49933bca234815f03f454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 857ae8d824443e9a8abdac7c4a66e2b014be2be0
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604536"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566346"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Kurz: Posílání e-mailových oznámení o událostech služby Azure IoT Hub s využitím služeb Event Grid a Logic Apps
 
@@ -21,19 +21,19 @@ Azure Event Grid vám umožňuje reagovat na události ve službě IoT Hub aktiv
 
 Tento článek vás provede ukázkovou konfigurací, která používá IoT Hub a Event Grid. Na konci máte aplikaci logiky Azure nastavenou k odeslání e-mailového oznámení pokaždé, když se zařízení připojí nebo odpojí ke službě IoT Hub. Event Grid můžete použít k získání včasného oznámení o odpojení důležitých zařízení. Metriky a diagnostika mohou trvat několik (tj. 20 nebo více), ale minuty se zobrazí v protokolech a výstrahách. To může být nepřijatelné pro kritickou infrastrukturu.
 
-## <a name="prerequisites"></a>Předpoklady
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-* Musíte mít aktivní předplatné Azure. Pokud předplatné nemáte, můžete si [vytvořit bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/).
+## <a name="prerequisites"></a>Požadavky
 
-* E-mailový účet od jakéhokoli poskytovatele e-mailu, který podporuje Azure Logic Apps, jako je například Office 365 Outlook nebo Outlook.com. Tento e-mailový účet se používá k posílání oznámení o událostech. 
+* E-mailový účet od jakéhokoli poskytovatele e-mailu, který podporuje Azure Logic Apps, jako je například Office 365 Outlook nebo Outlook.com. Tento e-mailový účet se používá k posílání oznámení o událostech.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Nové centrum IoT můžete rychle vytvořit pomocí Azure Cloud Shell terminálu na portálu.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
 1. V pravém horním rohu stránky vyberte tlačítko Cloud Shell.
 
@@ -59,7 +59,7 @@ Dále vytvořte aplikaci logiky a přidejte Trigger služby Event Grid, který z
 
 ### <a name="create-a-logic-app-resource"></a>Vytvořte prostředek aplikace logiky
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**, do vyhledávacího pole zadejte "Logic App" a vyberte Return (vrátit). Z výsledků vyberte **Aplikace logiky** .
+1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek** , do vyhledávacího pole zadejte "Logic App" a vyberte Return (vrátit). Z výsledků vyberte **Aplikace logiky** .
 
    ![Vytvoření aplikace logiky](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
@@ -91,7 +91,7 @@ Trigger je konkrétní událost, která spustí aplikaci logiky. V tomto kurzu t
 
    ![Použít ukázkovou datovou část](./media/publish-iot-hub-events-to-logic-apps/sample-payload.png)
 
-1. Do textového pole vložte JSON *schématu události připojené zařízení* a potom vyberte **Hotovo**:
+1. Do textového pole vložte JSON *schématu události připojené zařízení* a potom vyberte **Hotovo** :
 
    ```json
      [{  
@@ -137,11 +137,11 @@ Akce jsou všechny kroky, které se provádějí potom, co trigger spustí praco
 
 1. Vytvořte e-mailovou šablonu. 
 
-   * **Komu**: Zadejte e-mailovou adresu pro příjem e-mailů s oznámením. Pro účely tohoto kurzu použijte e-mailový účet, ke kterému máte při testování přístup. 
+   * **Komu** : Zadejte e-mailovou adresu pro příjem e-mailů s oznámením. Pro účely tohoto kurzu použijte e-mailový účet, ke kterému máte při testování přístup. 
 
-   * **Předmět**: Vyplňte text předmětu. Po kliknutí na textové pole Předmět můžete vybrat dynamický obsah, který chcete zahrnout. Tento kurz například používá `IoT Hub alert: {eventType}` . Pokud nevidíte dynamický obsah, vyberte hypertextový odkaz **Přidat dynamický obsah** – tím ho přepínáte a vypnuli.
+   * **Předmět** : Vyplňte text předmětu. Po kliknutí na textové pole Předmět můžete vybrat dynamický obsah, který chcete zahrnout. Tento kurz například používá `IoT Hub alert: {eventType}` . Pokud nevidíte dynamický obsah, vyberte hypertextový odkaz **Přidat dynamický obsah** – tím ho přepínáte a vypnuli.
 
-   * **Text**: Napište text e-mailu. V nástroji pro výběr vyberte vlastnosti JSON, které budou zahrnovat dynamický obsah na základě dat události. Pokud nemůžete zobrazit dynamický obsah, v textovém poli text **zprávy** vyberte hypertextový odkaz **Přidat dynamický obsah** . Pokud se vám nezobrazují požadovaná pole, klikněte na tlačítko *Další* na obrazovce dynamický obsah a přidejte pole z předchozí akce.
+   * **Text** : Napište text e-mailu. V nástroji pro výběr vyberte vlastnosti JSON, které budou zahrnovat dynamický obsah na základě dat události. Pokud nemůžete zobrazit dynamický obsah, v textovém poli text **zprávy** vyberte hypertextový odkaz **Přidat dynamický obsah** . Pokud se vám nezobrazují požadovaná pole, klikněte na tlačítko *Další* na obrazovce dynamický obsah a přidejte pole z předchozí akce.
 
    Vaše e-mailová šablona může vypadat podobně jako tento příklad:
 
@@ -165,7 +165,7 @@ Než odejdete z návrháře aplikace logiky, zkopírujte adresu URL, kterou vaš
 
 V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim dojde. 
 
-1. Na webu Azure Portal přejděte do svého centra IoT. Můžete to udělat tak, že vyberete **skupiny prostředků**, pak vyberete skupinu prostředků tohoto kurzu a pak ze seznamu prostředků vyberete Centrum IoT.
+1. Na webu Azure Portal přejděte do svého centra IoT. Můžete to udělat tak, že vyberete **skupiny prostředků** , pak vyberete skupinu prostředků tohoto kurzu a pak ze seznamu prostředků vyberete Centrum IoT.
 
 1. Vyberte **události**.
 
@@ -191,8 +191,8 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
          ![vybrat typy událostí předplatného](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
    
    4. V části **Podrobnosti o koncovém bodu** : 
-       1. Jako **webový Hook**vyberte **Typ koncového bodu** .
-       2. Klikněte na **Vybrat koncový bod**, vložte adresu URL, kterou jste zkopírovali z aplikace logiky, a potvrďte výběr.
+       1. Jako **webový Hook** vyberte **Typ koncového bodu** .
+       2. Klikněte na **Vybrat koncový bod** , vložte adresu URL, kterou jste zkopírovali z aplikace logiky, a potvrďte výběr.
 
          ![Výběr adresy URL koncového bodu](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
@@ -232,7 +232,7 @@ Tento kurz využívá prostředky, za které vám můžou být v předplatném A
 
 Pokud chcete odstranit všechny prostředky vytvořené v tomto kurzu, odstraňte skupinu prostředků. 
 
-1. Vyberte **skupiny prostředků**a pak vyberte skupinu prostředků, kterou jste pro tento kurz vytvořili.
+1. Vyberte **skupiny prostředků** a pak vyberte skupinu prostředků, kterou jste pro tento kurz vytvořili.
 
 2. V podokně skupina prostředků vyberte **Odstranit skupinu prostředků**. Zobrazí se výzva k zadání názvu skupiny prostředků a pak ho můžete odstranit. Odstraní se také všechny prostředky, které jsou v něm obsažené.
 

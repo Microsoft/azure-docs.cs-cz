@@ -3,12 +3,12 @@ title: Co je Azure Event Grid?
 description: Odešle data události ze zdroje do obslužných rutin pomocí Azure Event Grid. Sestavujte aplikace založené na událostech a integrujte je se službami Azure.
 ms.topic: overview
 ms.date: 09/24/2020
-ms.openlocfilehash: 73d218058c5f95d8c2d2324f1a0e1e77b24f1364
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a4f614a22fdfa7d2272c70751f56f19145a10fa6
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91326490"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576678"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
 
@@ -78,7 +78,7 @@ Toto jsou některé klíčové vlastnosti služby Azure Event Grid:
 * **Ventilátor** – Přihlaste se k odběru několika koncových bodů na stejnou událost, která odešle kopie události na tolik míst podle potřeby.
 * **Spolehlivost** – 24 hodin opakování pomocí exponenciálního omezení rychlostiu, aby se zajistilo doručení událostí.
 * **Platby za události** – plaťte jenom za to, do jaké míry Event Grid využíváte.
-* **Vysoká propustnost** – sestavujte ve službě Event Grid úlohy s vysokým objemem díky podpoře milionů událostí za sekundu.
+* **Vysoká propustnost** – vytváření úloh s vysokým objemem na Event Grid.
 * **Integrované události** – integrované události s definovanými prostředky umožňují rychle zahájit práci.
 * **Vlastní události** – pomocí Event Grid můžete směrovat, filtrovat a spolehlivě doručovat vlastní události ve vaší aplikaci.
 

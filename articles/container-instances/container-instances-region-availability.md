@@ -4,12 +4,12 @@ description: Dostupnost výpočetních a paměťových prostředků pro službu 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: e4fbf1023863f9f4c46e6bd2266f72ff2f7d7adc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2a833c93c80d932305f47b6e292e5e5df4d0cb95
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395865"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576610"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
@@ -55,6 +55,9 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 
 Pro skupinu kontejnerů nasazenou s [prostředky GPU](container-instances-gpu.md) (Preview) jsou k dispozici následující maximální prostředky.
 
+> [!IMPORTANT]
+> V tuto chvíli se nasazení s prostředky GPU v nasazení virtuální sítě Azure nepodporuje a jsou dostupná jenom pro skupiny kontejnerů Linux.
+
 | SKU GPU | Počet GPU | Max CPU (maximální využití procesoru) | Maximální velikost paměti (GB) | Úložiště (GB) |
 | --- | --- | --- | --- | --- |
 | K80 | 1 | 6 | 56 | 50 |
@@ -67,6 +70,9 @@ Pro skupinu kontejnerů nasazenou s [prostředky GPU](container-instances-gpu.md
 ## <a name="windows-container-groups"></a>Skupiny kontejnerů Windows
 
 Následující oblasti a maximální prostředky jsou k dispozici pro skupiny kontejnerů s [podporovanými a náhledem](container-instances-faq.md#what-windows-base-os-images-are-supported) kontejnerů Windows serveru.
+
+> [!IMPORTANT]
+> V tuto chvíli se nasazení pomocí skupin kontejnerů Windows v nasazení virtuální sítě Azure nepodporuje.
 
 ###  <a name="windows-server-2016"></a>Windows Server 2016
 

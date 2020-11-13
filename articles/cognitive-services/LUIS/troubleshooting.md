@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: 8eb37b993ee5bc3944228cba72be0557b52e3dc6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 17b070fea422268ec12e0ccd3357ae0549a78916
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149259"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566261"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Language Understanding
 
@@ -91,7 +91,7 @@ Stavové kódy chyb 403 a 429 získáte, když překročíte transakce za sekund
 
 Když použijete všechny tyto bezplatné dotazy na koncový bod 1000 nebo překročíte kvótu měsíčních transakcí vaší cenové úrovně, obdržíte kód stavu chyby HTTP 403.
 
-Pokud chcete tuto chybu opravit, musíte [změnit svou cenovou úroveň](luis-how-to-azure-subscription.md#change-pricing-tier) na vyšší úroveň nebo [vytvořit nový prostředek](get-started-portal-deploy-app.md#create-the-endpoint-resource) a [přiřadit ho k aplikaci](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+Pokud chcete tuto chybu opravit, musíte [změnit svou cenovou úroveň](luis-how-to-azure-subscription.md#change-the-pricing-tier) na vyšší úroveň nebo [vytvořit nový prostředek](get-started-portal-deploy-app.md#create-the-endpoint-resource) a [přiřadit ho k aplikaci](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
 
 Mezi řešení této chyby patří:
 
@@ -106,7 +106,7 @@ Tento stavový kód se vrátí, když vaše transakce za sekundu překročí va�
 
 Mezi řešení patří:
 
-* Pokud nejste na nejvyšší úrovni, můžete [zvýšit svou cenovou úroveň](luis-how-to-azure-subscription.md#change-pricing-tier).
+* Pokud nejste na nejvyšší úrovni, můžete [zvýšit svou cenovou úroveň](luis-how-to-azure-subscription.md#change-the-pricing-tier).
 * Pokud vaše využití přesáhne nejvyšší cenovou úroveň, přidejte další Language Understanding prostředky s nástrojem pro vyrovnávání zatížení před nimi. K tomu může pomáhat [kontejner Language Understanding](luis-container-howto.md) s Kubernetes nebo Docker Compose.
 * Pomocí [zásady opakování](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) , kterou sami implementujete, můžete své požadavky na klientskou aplikaci vymezit tak, že se zobrazí tento stavový kód.
 
@@ -224,7 +224,7 @@ Vytváření klíčů je k dispozici na portálu LUIS po [migraci na prostředí
 ## <a name="app-management"></a>Správa aplikací
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Návody stáhnout protokol uživatele projevy?
-Ve výchozím nastavení vaše aplikace LUIS zaznamená projevy od uživatelů. Pokud si chcete stáhnout protokol projevy, který uživatelé odesílají do vaší aplikace LUIS, pokračujte na **Moje aplikace**a vyberte aplikaci. Na panelu nástrojů kontext vyberte **exportovat protokoly koncových bodů**. Protokol je formátovaný jako textový soubor s oddělovači (CSV).
+Ve výchozím nastavení vaše aplikace LUIS zaznamená projevy od uživatelů. Pokud si chcete stáhnout protokol projevy, který uživatelé odesílají do vaší aplikace LUIS, pokračujte na **Moje aplikace** a vyberte aplikaci. Na panelu nástrojů kontext vyberte **exportovat protokoly koncových bodů**. Protokol je formátovaný jako textový soubor s oddělovači (CSV).
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Jak můžu zakázat protokolování projevy?
 Protokolování uživatele projevy můžete vypnout nastavením `log=false` adresy URL koncového bodu, kterou klientská aplikace používá pro dotazování Luis. Vypnutí protokolování ale zakáže schopnost vaší aplikace LUIS navrhovat projevy nebo zdokonalovat výkon, který je založený na [aktivním učení](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Pokud jste nastavili `log=false` ochranu proti soukromí dat, nemůžete stáhnout záznam o uživatelích projevy z Luis ani použít tyto projevy k vylepšení vaší aplikace.
@@ -268,17 +268,17 @@ Prvním problémem je izolovat, jestli problém souvisí s LUIS nebo nastane mim
 #### <a name="resolve-issue-in-luis"></a>Řešení potíží v LUIS
 Předejte stejný utterance do LUIS z [koncového bodu Luis](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Pokud se zobrazí chyba, vyřešte problém v LUIS, dokud nebude chyba nadále vrácena. Mezi běžné chyby patří:
 
-* `Out of call volume quota. Quota will be replenished in <time>.` – Tento problém znamená, že buď potřebujete změnit z klíčového obsahu na [klíč koncového bodu](luis-how-to-azure-subscription.md) , nebo potřebujete změnit [úrovně služeb](luis-how-to-azure-subscription.md#change-pricing-tier).
+* `Out of call volume quota. Quota will be replenished in <time>.` – Tento problém znamená, že buď potřebujete změnit z klíčového obsahu na [klíč koncového bodu](luis-how-to-azure-subscription.md) , nebo potřebujete změnit [úrovně služeb](luis-how-to-azure-subscription.md#change-the-pricing-tier).
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Řešení potíží v Azure Bot Service
 
 Pokud používáte Azure Bot Service a problém je, že se **test ve webovém chatu** vrátí `Sorry, my bot code is having an issue` , zkontrolujte protokoly:
 
-1. V Azure Portal pro robota v části **Správa robota** vyberte **Build (sestavit**).
+1. V Azure Portal pro robota v části **Správa robota** vyberte **Build (sestavit** ).
 1. Otevřete Editor kódu online.
 1. V horním, modrém navigačním panelu vyberte název robota (druhá položka napravo).
 1. V rozevíracím seznamu výsledek vyberte možnost **otevřít konzolu Kudu**.
-1. Vyberte **soubory protokolu**a pak vyberte **aplikace**. Zkontrolujte všechny soubory protokolu. Pokud se ve složce aplikace nezobrazuje chyba, zkontrolujte všechny soubory protokolu v **souboru**protokolu.
+1. Vyberte **soubory protokolu** a pak vyberte **aplikace**. Zkontrolujte všechny soubory protokolu. Pokud se ve složce aplikace nezobrazuje chyba, zkontrolujte všechny soubory protokolu v **souboru** protokolu.
 1. Nezapomeňte projekt znovu sestavit, pokud používáte zkompilovaný jazyk, jako je C#.
 
 > [!Tip]

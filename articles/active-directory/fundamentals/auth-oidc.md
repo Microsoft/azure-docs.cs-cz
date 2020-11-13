@@ -1,6 +1,6 @@
 ---
 title: OpenID připojit ověřování pomocí Azure Active Directory
-description: Pokyny pro architekturu při dosahování tohoto vzoru ověřování
+description: Pokyny pro architekturu týkající se ověřování OpenID připojení pomocí Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6f2ad3b5e86eebfc2d6f1f42f8a2ab0520144b5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f38da0dd2dc2adc8049e2b307c861651a55ed700
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114206"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576984"
 ---
 # <a name="openid-connect-authentication-with-azure-active-directory"></a>OpenID připojit ověřování pomocí Azure Active Directory
 
@@ -38,13 +38,13 @@ Vyžaduje se souhlas uživatele a přihlášení k webu.
 
 ## <a name="components-of-system"></a>Součásti systému
 
-* **Uživatel**: vyžádá od aplikace službu.
+* **Uživatel** : vyžádá od aplikace službu.
 
-* **Důvěryhodný agent**: součást, se kterou uživatel pracuje. Tento důvěryhodný Agent je obvykle webový prohlížeč.
+* **Důvěryhodný agent** : součást, se kterou uživatel pracuje. Tento důvěryhodný Agent je obvykle webový prohlížeč.
 
-* **Aplikace**: aplikace nebo server prostředků je místo, kde se nachází prostředek nebo data. Důvěřuje poskytovateli identity pro bezpečné ověření a autorizaci důvěryhodného agenta. 
+* **Aplikace** : aplikace nebo server prostředků je místo, kde se nachází prostředek nebo data. Důvěřuje poskytovateli identity pro bezpečné ověření a autorizaci důvěryhodného agenta. 
 
-* **Azure AD**: poskytovatel OIDC, označovaný také jako poskytovatel identity, bezpečně spravuje cokoli k tomu, aby se informace o uživateli, jejich přístup a vztahy důvěryhodnosti mezi stranami v toku. Ověřuje identitu uživatele, uděluje a odvolává přístup k prostředkům a vydává tokeny. 
+* **Azure AD** : poskytovatel OIDC, označovaný také jako poskytovatel identity, bezpečně spravuje cokoli k tomu, aby se informace o uživateli, jejich přístup a vztahy důvěryhodnosti mezi stranami v toku. Ověřuje identitu uživatele, uděluje a odvolává přístup k prostředkům a vydává tokeny. 
 
 ## <a name="implement-oidc-with-azure-ad"></a>Implementace OIDC s využitím Azure AD
 

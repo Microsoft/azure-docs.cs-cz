@@ -1,6 +1,6 @@
 ---
 title: Přírůstkové kopírování více tabulek pomocí PowerShellu
-description: V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data z několika tabulek v databázi SQL Server do Azure SQL Database.
+description: V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načte rozdílová data z několika tabulek v databázi databáze SQL Server do Azure SQL Database.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: be98ff2a31e3216088fb9197fab477d9b1088f26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 54dea3ba7bbc3339b7b044b476c321fd95138ac2
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634092"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566414"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Přírůstkové načtení dat z více tabulek v SQL Server do Azure SQL Database pomocí prostředí PowerShell
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data z několika tabulek v databázi SQL Server do Azure SQL Database.    
+V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načte rozdílová data z několika tabulek v databázi databáze SQL Server do Azure SQL Database.    
 
 V tomto kurzu provedete následující kroky:
 
@@ -42,11 +42,11 @@ V tomto kurzu provedete následující kroky:
 ## <a name="overview"></a>Přehled
 Tady jsou důležité kroky pro vytvoření tohoto řešení: 
 
-1. **Vyberte sloupec meze** .
+1. **Vyberte sloupec meze**.
 
     Vyberte jeden sloupec pro každou tabulku ve zdrojovém úložišti dat, ve kterém můžete identifikovat nové nebo aktualizované záznamy pro každé spuštění. Data v tomto vybraném sloupci (například čas_poslední_změny nebo ID) se při vytváření nebo aktualizaci řádků obvykle zvyšují. Maximální hodnota v tomto sloupci se používá jako horní mez.
 
-2. **Připravte úložiště dat pro uložení hodnoty meze** .
+2. **Připravte úložiště dat pro uložení hodnoty meze**.
 
     V tomto kurzu uložíte hodnotu meze do databáze SQL.
 
@@ -67,16 +67,16 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* **SQL Server** . V tomto kurzu použijete databázi SQL Server jako zdrojové úložiště dat. 
-* **Azure SQL Database** . Jako úložiště dat jímky použijete databázi v Azure SQL Database. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze v tématu Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření. 
+* **SQL Server**. V tomto kurzu použijete databázi SQL Server jako zdrojové úložiště dat. 
+* **Azure SQL Database**. Jako úložiště dat jímky použijete databázi v Azure SQL Database. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze v tématu Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Vytvoření zdrojových tabulek v databázi SQL Serveru
 
 1. Otevřete [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) nebo [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)a připojte se k SQL Server databázi.
 
-2. V **Průzkumník serveru (SSMS)** nebo v **podokně připojení (Azure Data Studio)** klikněte pravým tlačítkem myši na databázi a vyberte možnost **Nový dotaz** .
+2. V **Průzkumník serveru (SSMS)** nebo v **podokně připojení (Azure Data Studio)** klikněte pravým tlačítkem myši na databázi a vyberte možnost **Nový dotaz**.
 
 3. Spusťte na databázi následující příkaz SQL, aby se vytvořily tabulky s názvem `customer_table` a `project_table`:
 
@@ -115,7 +115,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. Otevřete [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) nebo [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)a připojte se k SQL Server databázi.
 
-2. V **Průzkumník serveru (SSMS)** nebo v **podokně připojení (Azure Data Studio)** klikněte pravým tlačítkem myši na databázi a vyberte možnost **Nový dotaz** .
+2. V **Průzkumník serveru (SSMS)** nebo v **podokně připojení (Azure Data Studio)** klikněte pravým tlačítkem myši na databázi a vyberte možnost **Nový dotaz**.
 
 3. Spusťte na databázi následující příkaz SQL, aby se vytvořily tabulky s názvem `customer_table` a `project_table`:  
 
@@ -812,23 +812,23 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
 ## <a name="monitor-the-pipeline"></a>Monitorování kanálu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-2. Vyberte **Všechny služby** , spusťte hledání pomocí klíčového slova *Datové továrny* a vyberte **Datové továrny** . 
+2. Vyberte **Všechny služby** , spusťte hledání pomocí klíčového slova *Datové továrny* a vyberte **Datové továrny**. 
 
-3. V seznamu datových továren vyhledejte vaši datovou továrnu a vyberte ji. Otevře se stránka **Datová továrna** . 
+3. V seznamu datových továren vyhledejte vaši datovou továrnu a vyberte ji. Otevře se stránka **Datová továrna**. 
 
 4. Na stránce **Datová továrna** vyberte **vytvořit & monitorování** a spusťte Azure Data Factory na samostatné kartě.
 
 5. Na stránce **Začínáme** vyberte **monitor** na levé straně. 
 ![Snímek obrazovky se stránkou Začínáme pro Azure Data Factory.](media/doc-common-process/get-started-page-monitor-button.png)    
 
-6. Zobrazí se všechna spuštění kanálů a jejich stavy. Všimněte si, že stav spuštění kanálu v následujícím příkladu je **Úspěšně** . Parametry předané kanálu můžete zkontrolovat kliknutím na odkaz ve sloupci **Parametry** . Pokud došlo k chybě, uvidíte odkaz ve sloupci **Chyba** .
+6. Zobrazí se všechna spuštění kanálů a jejich stavy. Všimněte si, že stav spuštění kanálu v následujícím příkladu je **Úspěšně**. Parametry předané kanálu můžete zkontrolovat kliknutím na odkaz ve sloupci **Parametry**. Pokud došlo k chybě, uvidíte odkaz ve sloupci **Chyba**.
 
     ![Snímek obrazovky ukazuje spuštění kanálu pro datovou továrnu, včetně vašeho kanálu.](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 7. Když vyberete odkaz ve sloupci **Akce** , zobrazí se všechna spuštění aktivit pro daný kanál. 
 
-8. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechna spuštění kanálu** . 
+8. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechna spuštění kanálu**. 
 
 ## <a name="review-the-results"></a>Kontrola výsledků
 
@@ -954,7 +954,7 @@ project3    2017-03-04 05:16:00.000
 NewProject  2017-10-01 00:00:00.000
 ```
 
-Všimněte si, že do tabulky project_table byla přidána položka **NewProject** . 
+Všimněte si, že do tabulky project_table byla přidána položka **NewProject**. 
 
 **Dotaz**
 

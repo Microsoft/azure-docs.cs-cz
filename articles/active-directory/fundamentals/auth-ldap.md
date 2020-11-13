@@ -1,6 +1,6 @@
 ---
 title: Ověřování protokolu LDAP pomocí Azure Active Directory
-description: Pokyny pro architekturu při dosahování tohoto vzoru ověřování
+description: Pokyny pro architekturu k dosažení ověřování LDAP pomocí Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a70cb4754d98f4573670860c510692a7a2d134c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d5314758acecae2a9d68f2405fc1c3d2196950b4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114243"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577052"
 ---
 # <a name="ldap-authentication-with-azure-active-directory"></a>Ověřování protokolu LDAP pomocí Azure Active Directory
 
@@ -40,23 +40,23 @@ Pro aplikaci nebo službu je nutné, aby používala ověřování protokolu LDA
 
 ## <a name="components-of-system"></a>Součásti systému
 
-* **Uživatel**: přístup k aplikacím závislým na protokolu LDAP prostřednictvím prohlížeče.
+* **Uživatel** : přístup k aplikacím závislým na protokolu LDAP prostřednictvím prohlížeče.
 
-* **Webový prohlížeč**: rozhraní, se kterým uživatel pracuje, aby bylo možné získat přístup k externí adrese URL aplikace.
+* **Webový prohlížeč** : rozhraní, se kterým uživatel pracuje, aby bylo možné získat přístup k externí adrese URL aplikace.
 
-* **Virtual Network**: privátní síť v Azure, přes kterou může starší verze aplikace využívat služby LDAP. 
+* **Virtual Network** : privátní síť v Azure, přes kterou může starší verze aplikace využívat služby LDAP. 
 
-* **Starší verze aplikací**: úlohy aplikací nebo serverů, které vyžadují protokol LDAP nasazený ve virtuální síti v Azure, nebo které mají na služba AD DS IP adresy instancí prostřednictvím síťových tras. 
+* **Starší verze aplikací** : úlohy aplikací nebo serverů, které vyžadují protokol LDAP nasazený ve virtuální síti v Azure, nebo které mají na služba AD DS IP adresy instancí prostřednictvím síťových tras. 
 
-* **Azure AD**: synchronizuje informace o identitě z místního adresáře organizace prostřednictvím Azure AD Connect.
+* **Azure AD** : synchronizuje informace o identitě z místního adresáře organizace prostřednictvím Azure AD Connect.
 
-* **Azure AD Domain Services (služba AD DS)**: provádí jednosměrnou synchronizaci z Azure AD, která poskytuje přístup k centrální skupině uživatelů, skupin a přihlašovacích údajů. Instance služba AD DS je přiřazena k virtuální síti. Aplikace, služby a virtuální počítače v Azure, které se připojují k virtuální síti přiřazené k služba AD DS, můžou používat běžné služba AD DS funkce, jako je LDAP, připojení k doméně, zásady skupiny, Kerberos a ověřování NTLM.
+* **Azure AD Domain Services (služba AD DS)** : provádí jednosměrnou synchronizaci z Azure AD, která poskytuje přístup k centrální skupině uživatelů, skupin a přihlašovacích údajů. Instance služba AD DS je přiřazena k virtuální síti. Aplikace, služby a virtuální počítače v Azure, které se připojují k virtuální síti přiřazené k služba AD DS, můžou používat běžné služba AD DS funkce, jako je LDAP, připojení k doméně, zásady skupiny, Kerberos a ověřování NTLM.
    > [!NOTE]
    >  V prostředích, kde organizace nemůže synchronizovat hodnoty hash hesel nebo se uživatelé přihlásí pomocí čipových karet, doporučujeme, abyste v služba AD DS používali doménovou strukturu prostředků. 
 
-* **Azure AD Connect**: Nástroj pro synchronizaci informací o místních identitách, který se má Microsoft Azure AD. Průvodce nasazením a s asistencí vám pomůžou nakonfigurovat požadavky a součásti potřebné pro připojení, včetně synchronizace a přihlášení ze služby Active Directory do Azure AD. 
+* **Azure AD Connect** : Nástroj pro synchronizaci informací o místních identitách, který se má Microsoft Azure AD. Průvodce nasazením a s asistencí vám pomůžou nakonfigurovat požadavky a součásti potřebné pro připojení, včetně synchronizace a přihlášení ze služby Active Directory do Azure AD. 
 
-* **Active Directory**: Adresářová služba, která ukládá [místní informace o identitě, jako jsou informace o uživatelích a účtech](https://www.dnsstuff.com/active-directory-service-accounts), a informace o zabezpečení, jako jsou hesla.
+* **Active Directory** : Adresářová služba, která ukládá [místní informace o identitě, jako jsou informace o uživatelích a účtech](https://www.dnsstuff.com/active-directory-service-accounts), a informace o zabezpečení, jako jsou hesla.
 
 ## <a name="implement-ldap-authentication-with-azure-ad"></a>Implementace ověřování LDAP pomocí Azure AD
 

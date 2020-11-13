@@ -13,16 +13,19 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 378dab95d8fb3519bb2fc5c934a760e051a18d29
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116291"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575879"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Pokyny pro vývojáře funkce podmíněného přístupu Azure Active Directory
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
+
+> [!NOTE]
+> Verzi tohoto článku pro Microsoft Identity Platform najdete v tématu [pokyny pro vývojáře pro Azure Active Directory podmíněný přístup](/azure/active-directory/develop/v2-conditional-access-dev-guide).
 
 Funkce podmíněného přístupu v Azure Active Directory (Azure AD) nabízí jeden z několika způsobů, jak můžete použít k zabezpečení aplikace a ochraně služby. Podmíněný přístup umožňuje vývojářům a podnikovým zákazníkům chránit služby mnoha různými způsoby, včetně těchto:
 
@@ -40,7 +43,7 @@ Předpokládá se znalost [jednotlivých a víceklientské](../develop/howto-con
 
 ### <a name="app-types-impacted"></a>Ovlivněné typy aplikací
 
-V nejběžnějších případech podmíněný přístup nemění chování aplikace nebo vyžaduje žádné změny od vývojáře.Pouze v některých případech, pokud aplikace nepřímo nebo tiše žádá o token pro službu, vyžaduje aplikace změny kódu pro zpracování výzev podmíněného přístupu.Může to být jednoduché jako při provádění interaktivního přihlašovacího požadavku.
+V nejběžnějších případech podmíněný přístup nemění chování aplikace nebo vyžaduje žádné změny od vývojáře. Pouze v některých případech, pokud aplikace nepřímo nebo tiše žádá o token pro službu, vyžaduje aplikace změny kódu pro zpracování výzev podmíněného přístupu. Může to být jednoduché jako při provádění interaktivního přihlašovacího požadavku.
 
 Konkrétně následující scénáře vyžadují kód pro zpracování výzev podmíněného přístupu:
 
@@ -175,7 +178,7 @@ Naše aplikace potřebuje zachytit `error=interaction_required` . Aplikace pak m
 
 Pokud si chcete vyzkoušet tento scénář, přečtěte si náš [kód pro ukázku kódu v tématu js Spa](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). V tomto příkladu kódu se k předvedení tohoto scénáře používá zásada podmíněného přístupu a webové rozhraní API, které jste zaregistrovali dříve pomocí zabezpečeného hesla. Ukazuje, jak správně zpracovat výzvu deklarací identity a získat přístupový token, který se dá použít pro vaše webové rozhraní API. Alternativně můžete vyrezervovat obecný [Angular.js ukázka kódu](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) pro doprovodné materiály k ÚHLOVé Spa.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * Další informace o možnostech najdete [v tématu podmíněný přístup v Azure Active Directory](../conditional-access/overview.md).
 * Další ukázky kódu Azure AD najdete v tématu [úložiště GitHub ukázek kódu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory).

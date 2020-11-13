@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: fc62c87fd12457c60d3eb26cba6814aa1df76f87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839210"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566091"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Odeslat aktivitu vlastních příkazů klientské aplikaci
 
@@ -36,15 +36,17 @@ Dokončili jste následující úkoly:
 ## <a name="setup-send-activity-to-client"></a>Nastavit aktivitu odeslání na klienta 
 1. Otevřete aplikaci Custom Commands, kterou jste vytvořili dříve.
 1. Vyberte příkaz **TurnOnOff** , v části pravidlo dokončování vyberte **ConfirmationResponse** a pak vyberte **přidat akci** .
-1. V části **nový typ akce**vyberte **Odeslat aktivitu do klienta** .
+1. V části **nový typ akce** vyberte **Odeslat aktivitu do klienta** .
 1. Zkopírujte obsah JSON níže do **obsahu aktivity** .
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
 1. Klikněte na **Uložit** a vytvořte nové pravidlo s akcí odeslat aktivitu, **výukou** a **publikováním** změny.
 
@@ -55,7 +57,7 @@ Dokončili jste následující úkoly:
 
 V tématu [Postupy: nastavení klientské aplikace pomocí sady Speech SDK (Preview)](./how-to-custom-commands-setup-speech-sdk.md)jste vytvořili klientskou aplikaci UWP se sadou Speech SDK, která zpracovává příkazy `turn on the tv` , jako je například `turn off the fan` . V případě přidaných vizuálů vidíte výsledek těchto příkazů.
 
-Chcete-li přidat pole s popiskem s textem, **který označuje nebo** **vypíná**, přidejte následující blok XML StackPanel do `MainPage.xaml` .
+Chcete-li přidat pole s popiskem s textem, **který označuje nebo** **vypíná** , přidejte následující blok XML StackPanel do `MainPage.xaml` .
 
 ```xml
 <StackPanel Orientation="Vertical" H......>
@@ -83,8 +85,8 @@ Chcete-li přidat pole s popiskem s textem, **který označuje nebo** **vypíná
 Vzhledem k tomu, že jste vytvořili datovou část JSON, je nutné přidat odkaz na knihovnu [JSON.NET](https://www.newtonsoft.com/json) pro zpracování deserializace.
 
 1. Napravo od klienta vaše řešení.
-1. Zvolte možnost **Spravovat balíčky NuGet pro řešení**, vyberte **Procházet** . 
-1. Pokud jste již nainstalovali **Newtonsoft.jsna**, ujistěte se, že je její verze alespoň 12.0.3. Pokud ne, klikněte na **Spravovat balíčky NuGet pro řešení – aktualizace**a vyhledejte **Newtonsoft.jsna** webu. Tato příručka používá verzi 12.0.3.
+1. Zvolte možnost **Spravovat balíčky NuGet pro řešení** , vyberte **Procházet** . 
+1. Pokud jste již nainstalovali **Newtonsoft.jsna** , ujistěte se, že je její verze alespoň 12.0.3. Pokud ne, klikněte na **Spravovat balíčky NuGet pro řešení – aktualizace** a vyhledejte **Newtonsoft.jsna** webu. Tato příručka používá verzi 12.0.3.
 
     > [!div class="mx-imgBorder"]
     > ![Datová část aktivity odeslání](media/custom-commands/send-activity-to-client-json-nuget.png)
@@ -114,8 +116,8 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     if (name.Equals("UpdateDeviceState"))
     {
         Debug.WriteLine("Here");
-        var state = activity?.device != null ? activity.state.ToString() : string.Empty;
-        var device = activity?.device != null ? activity.device.ToString() : string.Empty;
+        var state = activity?.value?.state != null ? activity.value.state.ToString() : string.Empty;
+        var device = activity?.value?.device != null ? activity.value.device.ToString() : string.Empty;
 
         if (state.Equals("on") || state.Equals("off"))
         {

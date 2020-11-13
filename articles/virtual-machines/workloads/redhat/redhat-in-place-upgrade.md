@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 48884e6faa5f26f027c772b44d5f960979a40d1d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: beede74134affeb3ee0d4bdd20d5da3b4c5e6eda
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447727"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566618"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Red Hat Enterprise Linux místní upgrady
 
@@ -22,10 +22,12 @@ Tento článek poskytuje podrobné pokyny, jak provést místní upgrade z Red H
 > SQL Server v Red Hat Enterprise Linuxch nabídkách nepodporují místní upgrade v Azure.
 
 ## <a name="what-to-expect-during-the-upgrade"></a>Co očekávat během upgradu
-Během upgradu bude systém několikrát restartovat a to je normální. Poslední restartováním se upgraduje virtuální počítač na nejnovější dílčí verzi RHEL 8.
+Během upgradu bude systém několikrát restartovat a to je normální. Poslední restartováním se upgraduje virtuální počítač na nejnovější dílčí verzi RHEL 8. 
+
+Proces upgradu může trvat až 20 minut až několik hodin. to závisí na několika faktorech, třeba na velikosti virtuálních počítačů a počtu balíčků nainstalovaných v systému.
 
 ## <a name="preparations-for-the-upgrade"></a>Příprava na upgrade
-Místní upgrady jsou oficiálně doporučeným způsobem pro Red Hat a Azure a umožňují zákazníkům upgradovat systém na další hlavní verzi. Před provedením upgradu je zde několik věcí, které byste měli znát a vzít v úvahu. 
+Místní upgrade je oficiálně doporučený způsob, který vám Red Hat a Azure umožní zákazníkům upgradovat systém na další hlavní verzi. Před provedením upgradu je zde několik věcí, které byste měli znát a vzít v úvahu. 
 
 >[!Important] 
 > Než provedete upgrade, podejte prosím snímek image.
@@ -39,6 +41,12 @@ Místní upgrady jsou oficiálně doporučeným způsobem pro Red Hat a Azure a 
     ```bash
     leapp preupgrade --no-rhsm
     ```
+* Ujistěte se, že je konzola sériového rozhraní funkční, protože umožňuje monitorování během procesu upgradu.
+
+* Povolit kořenový přístup SSH v `/etc/ssh/sshd_config`
+    1. Otevřete soubor `/etc/ssh/sshd_config`.
+    1. Hledat #PermitRootLogin Ano
+    1. Odebrat znak "#" pro zrušení komentáře
 
 ## <a name="steps-for-performing-the-upgrade"></a>Kroky pro provedení upgradu
 
@@ -46,7 +54,7 @@ Tyto kroky proveďte pečlivě. Na testovacím počítači se před provozními 
 
 1. K načtení nejnovějších balíčků klientů proveďte aktualizaci Yumu.
     ```bash
-    yum update
+    yum update -y
     ```
 
 1. Nainstalujte balíček leapp-Client-Package.
@@ -58,35 +66,66 @@ Tyto kroky proveďte pečlivě. Na testovacím počítači se před provozními 
     1. Stáhněte si soubor.
     1. Extrahujte obsah a odeberte soubor pomocí následujícího příkazu:
     ```bash
-     tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
+    tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
     ```
-    
-
 
 1. Přidejte soubor Answers pro ' Leapp '.
     ```bash
     leapp answer --section remove_pam_pkcs11_module_check.confirm=True --add
-    ```
-    
-1. Povolit PermitRootLogin v/etc/ssh/sshd_config
-    1. Otevřete soubor/etc/ssh/sshd_config
-    1. Hledat #PermitRootLogin Ano
-    1. Odebrat znak "#" pro zrušení komentáře
-
-
+    ``` 
 
 1. Proveďte upgrade Leapp.
     ```bash
     leapp upgrade --no-rhsm
     ```
+1.  Po `leapp upgrade` úspěšném dokončení příkazu restartujte systém, aby se proces dokončil. Systém bude restartován několikrát, než bude k dispozici. Monitorujte proces pomocí konzoly sériového portu.
+
+1.  Ověřte, zda byl upgrade úspěšně dokončen.
+    ```bash
+    uname -a && cat /etc/redhat-release
+    ```
+
+1. Po dokončení upgradu odebrat kořenový přístup SSH.
+    1. Otevřete soubor `/etc/ssh/sshd_config`.
+    1. Hledat #PermitRootLogin Ano
+    1. Přidat # do komentáře
+
 1. Restartujte službu sshd, aby se změny projevily.
     ```bash
     systemctl restart sshd
     ```
-1. Odkomentovat PermitRootLogin v/etc/ssh/sshd_config znovu
-    1. Otevřete soubor/etc/ssh/sshd_config
-    1. Hledat #PermitRootLogin Ano
-    1. Přidat # do komentáře
+
+## <a name="common-issues"></a>Běžné problémy
+Jedná se o některé běžné instance, které `leapp preupgrade` `leapp upgrade` může způsobit selhání procesu nebo.
+
+**Chyba: pro následující zakázané vzory modulů plug-in nebyly nalezeny žádné shody.**
+```plaintext
+STDERR:
+No matches found for the following disabled plugin patterns: subscription-manager
+Warning: Packages marked by Leapp for upgrade not found in repositories metadata: gpg-pubkey
+```
+**Řešení**\
+Vypněte modul plug-in Správce předplatného úpravou souboru `/etc/yum/pluginconf.d/subscription-manager.conf` a změnou povoleného na `enabled=0` .
+
+To je způsobeno tím, že je povolený modul plug-in Yumu Správce předplatného, který se nepoužívá pro virtuální počítače s PAYG.
+
+**Chyba: možné problémy se vzdáleným přihlášením pomocí kořenového adresáře** `leapp preupgrade` Selhání se nepovedlo s následující chybou:
+```structured-text
+============================================================
+                     UPGRADE INHIBITED
+============================================================
+
+Upgrade has been inhibited due to the following problems:
+    1. Inhibitor: Possible problems with remote login using root account
+Consult the pre-upgrade report for details and possible remediation.
+
+============================================================
+                     UPGRADE INHIBITED
+============================================================
+```
+**Řešení**\
+Povolit přístup rootu v `/etc/sshd_conf` .
+To je způsobeno tím, že nepovolíte kořenový přístup SSH v nástroji `/etc/sshd_conf` jako v části[Příprava na upgrade](#preparations-for-the-upgrade). 
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [obrázcích Red Hat v Azure](./redhat-images.md).

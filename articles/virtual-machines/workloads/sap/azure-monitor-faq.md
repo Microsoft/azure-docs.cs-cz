@@ -1,23 +1,23 @@
 ---
 title: Nejčastější dotazy – Azure Monitor pro řešení SAP | Microsoft Docs
-description: V tomto článku se dozvíte odpovědi na nejčastější dotazy týkající se řešení Azure monitor pro SAP.
+description: V tomto článku se dozvíte odpovědi na nejčastější dotazy týkající se Azure Monitor řešení SAP.
 author: rdeltcheva
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: f584601c2dcbea989f1b68d9fbac5a7f53a59d86
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f872264d5f7bdf4abded516412fe55c417a92e1e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994225"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566108"
 ---
-# <a name="azure-monitor-for-sap-solutions-faq-preview"></a>Nejčastější dotazy týkající se řešení Azure monitor pro SAP (Preview)
+# <a name="azure-monitor-for-sap-solutions-faq-preview"></a>Nejčastější dotazy k Azure Monitor pro řešení SAP (Preview)
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure monitor pro řešení SAP.  
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Monitor řešení SAP.  
 
  - **Musím platit za Azure Monitor pro řešení SAP?**  
 Pro Azure Monitor pro řešení SAP se neúčtují žádné licenční poplatky.  

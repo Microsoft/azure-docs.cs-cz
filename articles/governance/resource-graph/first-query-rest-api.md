@@ -3,12 +3,12 @@ title: 'Rychlý Start: první REST API dotaz'
 description: V tomto rychlém startu budete postupovat podle pokynů pro volání koncového bodu grafu prostředků pro REST API a spuštění prvního dotazu.
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8be0556b6aa2fd234c0f3e25d83c0239c8f674bb
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: eafbd0b408ab50f901d52e59efcfbd5f89b46fe5
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057208"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566074"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí REST API
 
@@ -30,7 +30,7 @@ Specifikace grafu prostředků Azure najdete v tématu [REST API Azure Resource 
 
 ### <a name="rest-api-and-powershell"></a>REST API a PowerShell
 
-Pokud nemáte nástroj na volání REST API, můžete k zadání těchto pokynů použít PowerShell. Následující ukázka kódu získá hlavičku pro ověřování pomocí Azure. Vygenerujte ověřovací hlavičku, která je někdy označovaná jako **nosný token**, a zadejte identifikátor URI v REST API pro připojení s libovolnými parametry nebo **text žádosti**:
+Pokud nemáte nástroj na volání REST API, můžete k zadání těchto pokynů použít PowerShell. Následující ukázka kódu získá hlavičku pro ověřování pomocí Azure. Vygenerujte ověřovací hlavičku, která je někdy označovaná jako **nosný token** , a zadejte identifikátor URI v REST API pro připojení s libovolnými parametry nebo **text žádosti** :
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if not using Cloud Shell
@@ -50,7 +50,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
 `{subscriptionId}` `$restUri` Chcete-li získat informace o vašem předplatném, nahraďte proměnnou v proměnné.
-`$response`Proměnná obsahuje výsledek `Invoke-RestMethod` rutiny, která se dá analyzovat pomocí rutin, jako je [ConvertFrom-JSON](/powershell/module/microsoft.powershell.utility/convertfrom-json). Pokud koncový bod služby REST API očekává **text žádosti**, zadejte do parametru `-Body` proměnnou `Invoke-RestMethod` ve formátu JSON.
+`$response`Proměnná obsahuje výsledek `Invoke-RestMethod` rutiny, která se dá analyzovat pomocí rutin, jako je [ConvertFrom-JSON](/powershell/module/microsoft.powershell.utility/convertfrom-json). Pokud koncový bod služby REST API očekává **text žádosti** , zadejte do parametru `-Body` proměnnou `Invoke-RestMethod` ve formátu JSON.
 
 ## <a name="run-your-first-resource-graph-query"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure CLI
 
@@ -76,7 +76,6 @@ V těle žádosti každého volání REST API existuje proměnná, která se pou
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5"
-         }
      }
      ```
 
@@ -99,7 +98,6 @@ V těle žádosti každého volání REST API existuje proměnná, která se pou
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5 | order by name asc"
-         }
      }
      ```
 
@@ -122,7 +120,6 @@ V těle žádosti každého volání REST API existuje proměnná, která se pou
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | order by name asc | limit 5"
-         }
      }
      ```
 

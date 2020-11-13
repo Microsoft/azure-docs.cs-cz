@@ -1,6 +1,6 @@
 ---
 title: Ověřování na základě hesla pomocí Azure Active Directory
-description: Pokyny pro architekturu při dosahování tohoto vzoru ověřování
+description: Pokyny pro architekturu týkající se ověřování na základě hesla pomocí Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f05bf8f5f7ec4907c2cd61ff48e3438dfa1e097a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 74815976036abafc56f97e622351a1018fe30504
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114203"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576928"
 ---
 # <a name="password-based-authentication-with-azure-active-directory"></a>Ověřování na základě hesla pomocí Azure Active Directory
 
@@ -35,13 +35,13 @@ Je nutné chránit pomocí předběžného ověřování a poskytovat jednotné 
 
 ## <a name="components-of-system"></a>Součásti systému
 
-* **Uživatel**: přistupuje k aplikaci vytvořené pomocí aplikace z mých aplikací nebo přímo na web. 
+* **Uživatel** : přistupuje k aplikaci vytvořené pomocí aplikace z mých aplikací nebo přímo na web. 
 
-* **Webový prohlížeč**: komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace. Uživatel přistupuje k aplikaci založené na formulářích prostřednictvím rozšíření MyApp. 
+* **Webový prohlížeč** : komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace. Uživatel přistupuje k aplikaci založené na formulářích prostřednictvím rozšíření MyApp. 
 
-* **Rozšíření MyApp**: identifikuje nakonfigurovanou aplikaci jednotného přihlašování založené na heslech a zadá přihlašovací údaje do formuláře pro přihlášení. Rozšíření MyApps je nainstalováno ve webovém prohlížeči. 
+* **Rozšíření MyApp** : identifikuje nakonfigurovanou aplikaci jednotného přihlašování založené na heslech a zadá přihlašovací údaje do formuláře pro přihlášení. Rozšíření MyApps je nainstalováno ve webovém prohlížeči. 
 
-* **Azure AD**: ověřuje uživatele.
+* **Azure AD** : ověřuje uživatele.
 
 ## <a name="implement-password-based-sso-with-azure-ad"></a>Implementace jednotného přihlašování založeného na heslech pomocí Azure AD
 

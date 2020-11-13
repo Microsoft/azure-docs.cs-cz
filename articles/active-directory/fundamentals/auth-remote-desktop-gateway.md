@@ -1,6 +1,6 @@
 ---
 title: Brána vzdálené plochy služby s Azure Active Directory
-description: Pokyny pro architekturu při dosahování tohoto vzoru ověřování
+description: Pokyny k architektuře Brána vzdálené plochy Services s Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff099d41970ad4d78d5c6035a60f448f29ab24b1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 57466cccb71444d5711a9221c324a107757c5e82
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114198"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576791"
 ---
 # <a name="remote-desktop-gateway-services"></a>Služby Brána vzdálené plochy
 
@@ -32,15 +32,15 @@ Musíte poskytnout vzdálený přístup a chránit nasazení služby Vzdálená 
 
 ## <a name="components-of-system"></a>Součásti systému
 
-* **Uživatel**: přistupuje k programu RDS Obsluhovánému proxy aplikací.
+* **Uživatel** : přistupuje k programu RDS Obsluhovánému proxy aplikací.
 
-* **Webový prohlížeč**: komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace.
+* **Webový prohlížeč** : komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace.
 
-* **Azure AD**: ověřuje uživatele. 
+* **Azure AD** : ověřuje uživatele. 
 
-* **Služba proxy aplikací**: slouží jako reverzní proxy server k přeposílání žádosti od uživatele do služby RDS. Proxy aplikací může taky vyhovět všem zásadám podmíněného přístupu. 
+* **Služba proxy aplikací** : slouží jako reverzní proxy server k přeposílání žádosti od uživatele do služby RDS. Proxy aplikací může taky vyhovět všem zásadám podmíněného přístupu. 
 
-* **Vzdálená plocha**: slouží jako platforma pro jednotlivé virtualizované aplikace, zajišťuje zabezpečený mobilní a vzdálená desktopový přístup a poskytuje koncovým uživatelům možnost spouštět své aplikace a plochy z cloudu. 
+* **Vzdálená plocha** : slouží jako platforma pro jednotlivé virtualizované aplikace, zajišťuje zabezpečený mobilní a vzdálená desktopový přístup a poskytuje koncovým uživatelům možnost spouštět své aplikace a plochy z cloudu. 
 
 ## <a name="implement-remote-desktop-gateway-services-with-azure-ad"></a>Implementace služby Brána vzdálené plochy Services s využitím Azure AD
 

@@ -1,6 +1,6 @@
 ---
 title: Přizpůsobení jazyka v Azure Active Directory B2C
-description: Přečtěte si o přizpůsobení prostředí v uživatelských tocích.
+description: Přečtěte si, jak přizpůsobit prostředí jazyka v uživatelském toku v Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.date: 08/13/2019
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b3bb3648fff6bc893ea07204fad79d2830a1b47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5bfdada12229070568bb9b0556471ea5aab306f
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355089"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575947"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Přizpůsobení jazyka v Azure Active Directory B2C
 
@@ -28,9 +28,9 @@ Pomocí vlastního nastavení jazyka můžete vybrat jazyky, ve kterých je tok 
 
 Možná nebudete potřebovat tuto úroveň kontroly nad jazyky, které zákazník uvidí. Pokud neposkytnete `ui_locales` parametr, zkušenost zákazníka je vydiktována nastavením prohlížeče. Můžete si i nadále řídit, na které jazyky se má tok uživatele přeložit, a to tak, že ho přidáte jako podporovaný jazyk. Pokud je prohlížeč zákazníka nastavený tak, aby zobrazoval jazyk, který nechcete podporovat, zobrazí se místo toho jazyk, který jste vybrali jako výchozí v podporovaných jazykových verzích.
 
-* **jazykově definované národní prostředí**: po povolení přizpůsobení jazyka se tok uživatele převede do jazyka, který je zde určen.
-* **Požadovaný jazyk v prohlížeči**: Pokud není `ui_locales` zadaný žádný parametr, tok uživatele se převede na jazyk požadovaný prohlížečem, *Pokud je podporovaný jazyk*.
-* **Výchozí jazyk zásad**: Pokud prohlížeč neurčí jazyk, nebo neurčí, který není podporovaný, tok uživatele se převede do výchozího jazyka toku uživatele.
+* **jazykově definované národní prostředí** : po povolení přizpůsobení jazyka se tok uživatele převede do jazyka, který je zde určen.
+* **Požadovaný jazyk v prohlížeči** : Pokud není `ui_locales` zadaný žádný parametr, tok uživatele se převede na jazyk požadovaný prohlížečem, *Pokud je podporovaný jazyk*.
+* **Výchozí jazyk zásad** : Pokud prohlížeč neurčí jazyk, nebo neurčí, který není podporovaný, tok uživatele se převede do výchozího jazyka toku uživatele.
 
 > [!NOTE]
 > Pokud používáte vlastní atributy uživatele, je třeba zadat vlastní překlady. Další informace najdete v tématu [přizpůsobení řetězců](#customize-your-strings).
@@ -65,7 +65,7 @@ Přizpůsobení jazyka umožňuje přizpůsobení libovolného řetězce v toku 
 
 1. Ujistěte se, že uživatelský tok má v předchozích pokynech povolené přizpůsobení jazyka.
 1. Na stránce **jazyky** toku uživatele vyberte jazyk, který chcete přizpůsobit.
-1. V části **soubory prostředků na úrovni stránky**vyberte stránku, kterou chcete upravit.
+1. V části **soubory prostředků na úrovni stránky** vyberte stránku, kterou chcete upravit.
 1. Vyberte možnost **Stáhnout výchozí** (nebo **Stáhnout přepsání** , pokud jste tento jazyk už dříve upravovali).
 
 Tyto kroky poskytují soubor JSON, který můžete použít k zahájení úprav řetězců.
@@ -170,7 +170,7 @@ Můžete také přidat jazyky, které Microsoft v současné době neposkytuje p
 4. V kontextovém podokně, které se otevře, identifikujte jazyk, pro který chcete překlady, zadáním platného kódu národního prostředí.
 5. Pro každou stránku můžete stáhnout sadu přepsání pro angličtinu a pracovat s překlady.
 6. Až se soubory JSON dokončí, můžete je nahrát na každou stránku.
-7. Vyberte **Povolit**a tok uživatele teď může zobrazit tento jazyk pro vaše uživatele.
+7. Vyberte **Povolit** a tok uživatele teď může zobrazit tento jazyk pro vaše uživatele.
 8. Uložte jazyk.
 
 >[!IMPORTANT]

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 5873f28fed492f9ef906a9d7c1364d8ae07033a7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fbdae2480caef5bf1d190124ca3be6c5b97a2f9
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336057"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576355"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Vytvoření spravovaného disku z verze image
 
@@ -23,7 +23,7 @@ V případě potřeby můžete exportovat operační systém nebo jeden datový 
 
 ## <a name="cli"></a>Rozhraní příkazového řádku
 
-Vypište verze imagí v galerii pomocí [seznamu AZ SIG Image-Version list](/cli/azure/sig/image-version.md#az_sig_image_version_list). V tomto příkladu hledáme všechny verze imagí, které jsou součástí definice image *myImageDefinition* v galerii imagí *myGallery* .
+Vypište verze imagí v galerii pomocí [seznamu AZ SIG Image-Version list](/cli/azure/sig/image-version#az_sig_image_version_list). V tomto příkladu hledáme všechny verze imagí, které jsou součástí definice image *myImageDefinition* v galerii imagí *myGallery* .
 
 ```azurecli-interactive
 az sig image-version list \
@@ -33,7 +33,7 @@ az sig image-version list \
    -o table
 ```
 
-Nastavte `source` proměnnou na ID verze image a pak pomocí [AZ disk Create](/cli/azure/disk.md#az_disk_create) vytvořte spravovaný disk. 
+Nastavte `source` proměnnou na ID verze image a pak pomocí [AZ disk Create](//cli/azure/disk#az_disk_create) vytvořte spravovaný disk. 
 
 V tomto příkladu exportujeme disk s operačním systémem verze image pro vytvoření spravovaného disku s názvem *myManagedOSDisk* v oblasti *EastUS* ve skupině prostředků s názvem *myResourceGroup*. 
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b2595eaf1e373c3a15014d0bc684d6e3914a665
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399104"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566635"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Propojení s Čínou pomocí Azure Virtual WAN a zabezpečeného centra
 
@@ -111,7 +111,7 @@ V závislosti na vaší volbě, která se týká připojení k Hongkongu, se cel
 
 Všechny tyto možnosti využívají zabezpečené centrum Azure Virtual WAN pro přímé připojení Microsoft 365 v Hongkongu. Tyto architektury také podporují požadavky na dodržování předpisů pro [Microsoft 365 s více geografickými](/microsoft-365/enterprise/microsoft-365-multi-geo) oblastmi a udržují provoz v blízkosti dalšího umístění front-dveří Azure. V důsledku toho je také lepší využití Microsoft 365 mimo Čína.
 
-Při použití Azure Virtual WAN společně s připojením k Internetu může každé připojení těžit z dalších služeb, jako je [Microsoft Azure služby partnerského vztahu (Maps)](https://docs.microsoft.com/azure/peering-service/about). Služba MAPS byla navržena pro optimalizaci provozu přicházejícího do globální sítě Microsoft od poskytovatelů internetových služeb třetích stran.
+Při použití Azure Virtual WAN společně s připojením k Internetu může každé připojení těžit z dalších služeb, jako je [Microsoft Azure služby partnerského vztahu (Maps)](../peering-service/about.md). Služba MAPS byla navržena pro optimalizaci provozu přicházejícího do globální sítě Microsoft od poskytovatelů internetových služeb třetích stran.
 
 ### <a name="option-1-sdwan-or-vpn"></a><a name="option-1"></a>Možnost 1: SDWAN nebo VPN
 
@@ -151,4 +151,4 @@ Další informace najdete v následujících článcích:
 
 * [Konfigurace virtuálního zabezpečeného centra WAN](../firewall-manager/secure-cloud-network.md)
 
-* [Přehled služby Azure peering ve verzi Preview](https://docs.microsoft.com/azure/peering-service/about)
+* [Přehled služby Azure peering ve verzi Preview](../peering-service/about.md)

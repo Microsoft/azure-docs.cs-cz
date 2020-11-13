@@ -4,12 +4,12 @@ description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI můžete publi
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2c017b95493000b3c206aa7b2398bbf7ef464ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4de7aa1c111b5b21a27b155474ae10f78feba083
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87497337"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566312"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Rychlý Start: směrování vlastních událostí do Azure Queue Storage pomocí rozhraní příkazového řádku Azure a Event Grid
 
@@ -17,12 +17,11 @@ Azure Event Grid je služba zpracování událostí pro cloud. Azure Queue Stora
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud používáte Azure CLI nebo Azure PowerShell na svém místním počítači místo použití Cloud Shell v Azure Portal, ujistěte se, že máte následující verze rozhraní příkazového řádku Azure CLI a Azure PowerShell. 
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.56 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-- Azure CLI verze 2.0.56 nebo vyšší. Pokyny k instalaci nejnovější verze rozhraní příkazového řádku Azure najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
-- Azure PowerShell verze 1.1.0 nebo novější. Stáhněte si nejnovější verzi Azure PowerShell na počítači s Windows ze složky [Azure downloads – nástroje příkazového řádku](https://azure.microsoft.com/downloads/). 
+- Pokud používáte Azure PowerShell v místním počítači místo použití Cloud Shell v Azure Portal, ujistěte se, že máte Azure PowerShell verze 1.1.0 nebo novější. Stáhněte si nejnovější verzi Azure PowerShell na počítači s Windows ze složky [Azure downloads – nástroje příkazového řádku](https://azure.microsoft.com/downloads/). 
 
 Tento článek obsahuje příkazy pro použití rozhraní příkazového řádku Azure CLI. 
 

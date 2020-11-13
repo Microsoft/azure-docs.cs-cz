@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d9a7d7db93e00b9fcccab08522b3363935badf26
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 003203ef1a25102f9fd3c50001603dbd5d33ce5a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203836"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565966"
 ---
 # <a name="tutorial-manipulating-models"></a>Kurz: manipulace s modely
 
@@ -109,7 +109,7 @@ Meze modelu jsou definovány polem, které obsahuje celý model – stejně jako
     ```
 
     > [!NOTE]
-    > Pokud se v C# 6 zobrazí chyba funkce deklarace identity sady Visual Studio *X není dostupná. Použijte prosím jazyk verze 7,0 nebo vyšší*, tato chyba se dá bezpečně ignorovat. To se týká řešení Unity a generování projektů.
+    > Pokud se v C# 6 zobrazí chyba funkce deklarace identity sady Visual Studio *X není dostupná. Použijte prosím jazyk verze 7,0 nebo vyšší* , tato chyba se dá bezpečně ignorovat. To se týká řešení Unity a generování projektů.
 
     Tento skript by měl být přidán do stejného GameObject jako skript, který implementuje  **BaseRemoteRenderedModel**. V tomto případě to znamená **RemoteRenderedModel**. Podobně jako u předchozích skriptů bude tento počáteční kód zpracovávat všechny změny stavu, události a data související se vzdálenými mezemi.
 
@@ -152,7 +152,7 @@ Meze modelu jsou definovány polem, které obsahuje celý model – stejně jako
     }
     ```
 
-Když teď dojde k přidání skriptu **RemoteBounds** ke stejnému hernímu objektu jako **RemoteRenderedModel**, bude v případě potřeby přidán **BoxCollider** a když model dosáhne svého `Loaded` stavu, budou se tato hranice automaticky dotazovat a použít na **BoxCollider**.
+Když teď dojde k přidání skriptu **RemoteBounds** ke stejnému hernímu objektu jako **RemoteRenderedModel** , bude v případě potřeby přidán **BoxCollider** a když model dosáhne svého `Loaded` stavu, budou se tato hranice automaticky dotazovat a použít na **BoxCollider**.
 
 1. Pomocí **TestModel** GameObject, který jste vytvořili dříve, přidejte komponentu **RemoteBounds** .
 1. Potvrďte, že se skript přidá.
@@ -167,7 +167,7 @@ Teď máme místní **BoxCollider** nakonfigurovaný s přesnou hranicí objektu
 
 ## <a name="move-rotate-and-scale"></a>Přesunutí, otočení a škálování  
 
-Přesunutí, otočení a škálování vzdáleně vygenerovaných objektů funguje stejně jako u všech ostatních objektů Unity. **RemoteRenderingCoordinator**ve své `LateUpdate` metodě volá v `Update` aktuálně aktivní relaci. Součástí toho, co `Update` je synchronizace entity místního modelu se svými vzdálenými protějšky. Chcete-li přesunout, otočit nebo škálovat vzdáleně vykreslený model, stačí pouze přesunout, otočit nebo škálovat transformaci GameObject představující vzdálený model. Tady se upraví transformace nadřazených GameObject, ke kterým je připojen skript **RemoteRenderedModel** .
+Přesunutí, otočení a škálování vzdáleně vygenerovaných objektů funguje stejně jako u všech ostatních objektů Unity. **RemoteRenderingCoordinator** ve své `LateUpdate` metodě volá v `Update` aktuálně aktivní relaci. Součástí toho, co `Update` je synchronizace entity místního modelu se svými vzdálenými protějšky. Chcete-li přesunout, otočit nebo škálovat vzdáleně vykreslený model, stačí pouze přesunout, otočit nebo škálovat transformaci GameObject představující vzdálený model. Tady se upraví transformace nadřazených GameObject, ke kterým je připojen skript **RemoteRenderedModel** .
 
 Tento kurz používá MRTK pro interakci s objekty. Většina implementace konkrétního MRTK pro přesun, otočení a škálování objektu je mimo rámec tohoto kurzu. V nabídce **nástroje modelu** je k dispozici kontroler zobrazení modelu, který je předem nakonfigurován uvnitř **AppMenu**.
 
@@ -302,15 +302,15 @@ Nejprve vytvoříme statickou obálku kolem vzdálených dotazů na přetypován
     }
     ```
 
-**RemoteRayCastPointerHandler**Metoda RemoteRayCastPointerHandler `OnPointerClicked` je volána MRTK, když ukazatel "klikne" na kolidujícím objektu, jako je například kokolize našeho boxu. Poté `PointerDataToRemoteRayCast` je volána pro převedení výsledku ukazatele na bod a směr. Tento bod a směr se pak použije k přetypování vzdáleného ray ve vzdálené relaci.
+**RemoteRayCastPointerHandler** Metoda RemoteRayCastPointerHandler `OnPointerClicked` je volána MRTK, když ukazatel "klikne" na kolidujícím objektu, jako je například kokolize našeho boxu. Poté `PointerDataToRemoteRayCast` je volána pro převedení výsledku ukazatele na bod a směr. Tento bod a směr se pak použije k přetypování vzdáleného ray ve vzdálené relaci.
 
 ![Meze aktualizovány](./media/raycast-local-remote.png)
 
 Odesílání žádostí o obsazení paprsků po kliknutí je efektivní strategií pro dotazování vzdálených objektů. Nejedná se však o ideální uživatelské prostředí, protože ukazatel koliduje se kokolizí boxu, nikoli modelem samotného.
 
-Můžete také vytvořit nový ukazatel MRTK, který vrhá své paprsky ve vzdálené relaci častěji. I když se jedná o složitější přístup, činnost koncového uživatele by byla lepší. Tato strategie je mimo rámec tohoto kurzu, ale příklad tohoto přístupu se může zobrazit v aplikaci s ukázkami, který najdete v [úložišti ukázek ARR](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/AzureRemoteRenderingShowcase).
+Můžete také vytvořit nový ukazatel MRTK, který vrhá své paprsky ve vzdálené relaci častěji. I když se jedná o složitější přístup, činnost koncového uživatele by byla lepší. Tato strategie je mimo rámec tohoto kurzu, ale příklad tohoto přístupu se může zobrazit v aplikaci s ukázkami, který najdete v [úložišti ukázek ARR](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/Showcase).
 
-Po úspěšném dokončení přetypování do **RemoteRayCastPointerHandler**se `Entity` z `OnRemoteEntityClicked` události Unity vygeneruje. Pro reakci na tuto událost vytvoříme Pomocný skript, který přijme `Entity` a provede na něm akci. Pojďme začít získáním skriptu pro vytištění názvu `Entity` do protokolu ladění.
+Po úspěšném dokončení přetypování do **RemoteRayCastPointerHandler** se `Entity` z `OnRemoteEntityClicked` události Unity vygeneruje. Pro reakci na tuto událost vytvoříme Pomocný skript, který přijme `Entity` a provede na něm akci. Pojďme začít získáním skriptu pro vytištění názvu `Entity` do protokolu ladění.
 
 1. Vytvořte nový skript s názvem **RemoteEntityHelper** a nahraďte jeho obsah následujícím textem:
 

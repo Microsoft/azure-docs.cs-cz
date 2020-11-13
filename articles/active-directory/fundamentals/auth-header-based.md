@@ -1,6 +1,6 @@
 ---
 title: Ověřování na základě hlaviček pomocí Azure Active Directory
-description: Pokyny pro architekturu při dosahování tohoto vzoru ověřování
+description: Pokyny pro architekturu týkající se dosažení ověřování na základě hlaviček pomocí Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f364e4e14dd1b7c60cb81f06051d9dedd94396a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bb54410fb314376b68d7297a3452f0990762343d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114256"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577154"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>Ověřování na základě hlaviček pomocí Azure Active Directory
 
@@ -34,17 +34,17 @@ Vzdálení uživatelé potřebují bezpečně jednotné přihlašování (SSO) d
 
 ## <a name="components-of-system"></a>Součásti systému
 
-* **Uživatel**: přistupuje k starším aplikacím, které obsluhuje proxy aplikace.
+* **Uživatel** : přistupuje k starším aplikacím, které obsluhuje proxy aplikace.
 
-* **Webový prohlížeč**: komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace.
+* **Webový prohlížeč** : komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace.
 
-* **Azure AD**: ověřuje uživatele. 
+* **Azure AD** : ověřuje uživatele. 
 
-* **Služba proxy aplikací**: slouží jako reverzní proxy server k odeslání požadavku od uživatele do místní aplikace. Je umístěný ve službě Azure AD a může taky vyhovět všem zásadám podmíněného přístupu.
+* **Služba proxy aplikací** : slouží jako reverzní proxy server k odeslání požadavku od uživatele do místní aplikace. Je umístěný ve službě Azure AD a může taky vyhovět všem zásadám podmíněného přístupu.
 
-* **Konektor proxy aplikací**: nainstalovaný místně na serverech Windows pro zajištění připojení k aplikacím. Používá pouze odchozí připojení. Vrátí odpověď do služby Azure AD.
+* **Konektor proxy aplikací** : nainstalovaný místně na serverech Windows pro zajištění připojení k aplikacím. Používá pouze odchozí připojení. Vrátí odpověď do služby Azure AD.
 
-* **Starší verze aplikací**: aplikace, které přijímají požadavky uživatelů od proxy aplikace. Starší verze aplikace obdrží požadované hlavičky HTTP k nastavení relace a vrácení odpovědi. 
+* **Starší verze aplikací** : aplikace, které přijímají požadavky uživatelů od proxy aplikace. Starší verze aplikace obdrží požadované hlavičky HTTP k nastavení relace a vrácení odpovědi. 
 
 ## <a name="implement-header-based-authentication-with-azure-ad"></a>Implementace ověřování na základě hlaviček pomocí Azure AD
 

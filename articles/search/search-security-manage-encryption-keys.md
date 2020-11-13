@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: dfea03270dfea3699f7c3508b9f5275a2dd26372
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7f2df005a8d3211ba53aadb16370624c4f530eb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287158"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575862"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat v Azure Kognitivní hledání
 
@@ -41,7 +41,7 @@ Pro služby vytvořené od 1. srpna 2020 a v určitých oblastech zahrnuje rozsa
 
 Pokud používáte jinou oblast nebo službu vytvořenou před 1. srpna, bude šifrování CMK omezené jenom na datový disk, a to s výjimkou dočasných disků, které služba používá.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto scénáři se používají následující nástroje a služby.
 
@@ -66,7 +66,7 @@ Obě vlastnosti můžete nastavit pomocí portálu, PowerShellu nebo příkazů 
 
 1. Na stránce **Přehled** v části **základy** Povolte ochranu **obnovitelného odstranění** a **vyprázdnění**.
 
-### <a name="using-powershell"></a>Použití PowerShellu
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 1. Spusťte `Connect-AzAccount` a nastavte přihlašovací údaje Azure.
 
@@ -169,9 +169,11 @@ Přístupová oprávnění by mohla být v daném okamžiku odvolána. Po odvol�
 > [!Important]
 > Šifrovaný obsah ve službě Azure Kognitivní hledání je nakonfigurovaný tak, aby používal konkrétní Azure Key Vault klíč s určitou **verzí**. Pokud změníte klíč nebo verzi, je nutné aktualizovat index nebo mapu synonym, aby používaly nové key\version **před** odstraněním předchozího key\version.. Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné. po ztrátě přístupu ke klíči nebude možné obsah dešifrovat.
 
+<a name="encrypt-content"></a>
+
 ## <a name="5---encrypt-content"></a>5. šifrování obsahu
 
-Chcete-li přidat klíč spravovaný zákazníkem na mapě nebo mapování synonym, použijte REST API nebo SDK k vytvoření objektu, jehož definice zahrnuje `encryptionKey` .
+Chcete-li přidat klíč spravovaný zákazníkem na mapě, zdroj dat, dovednosti, indexer nebo mapu synonym, je nutné použít [REST API vyhledávání](https://docs.microsoft.com/rest/api/searchservice/) nebo sadu SDK. Portál nevystavuje mapy synonym ani vlastnosti šifrování. Při použití platných indexů rozhraní API, zdrojů dat, dovednosti, indexerů a mapování synonym podporují vlastnost **EncryptionKey** nejvyšší úrovně.
 
 V tomto příkladu se používá REST API s hodnotami pro Azure Key Vault a Azure Active Directory:
 
@@ -192,6 +194,12 @@ V tomto příkladu se používá REST API s hodnotami pro Azure Key Vault a Azur
 > [!Note]
 > Žádná z těchto podrobností trezoru klíčů není považována za tajnou a lze ji snadno načíst procházením příslušné Azure Key Vault klíčovou stránkou v Azure Portal.
 
+## <a name="example-index-encryption"></a>Příklad: šifrování indexu
+
+Pomocí [REST API Create index kognitivní hledání Azure](https://docs.microsoft.com/rest/api/searchservice/create-index)vytvořte zašifrovaný index. Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
+> [!Note]
+> Žádná z těchto podrobností trezoru klíčů není považována za tajnou a lze ji snadno načíst procházením příslušné Azure Key Vault klíčovou stránkou v Azure Portal.
+
 ## <a name="rest-examples"></a>Příklady REST
 
 V této části se zobrazuje úplný formát JSON pro šifrovaný index a mapu synonym.
@@ -202,7 +210,7 @@ Podrobné informace o vytvoření nového indexu prostřednictvím REST API najd
 
 ```json
 {
- "name": "hotels",  
+ "name": "hotels",
  "fields": [
   {"name": "HotelId", "type": "Edm.String", "key": true, "filterable": true},
   {"name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false},
@@ -231,19 +239,19 @@ Nyní můžete odeslat požadavek na vytvoření indexu a pak začít používat
 
 ### <a name="synonym-map-encryption"></a>Šifrování mapování synonym
 
-Podrobnosti o vytvoření nové mapy synonym prostřednictvím REST API lze nalézt v tématu [vytvoření mapy synonym (REST API)](/rest/api/searchservice/create-synonym-map), kde jediným rozdílem je zadání podrobností šifrovacího klíče v rámci definice mapy synonym: 
+Vytvořte šifrovanou mapu synonym pomocí [mapování vytvořit synonymum Azure Kognitivní hledání REST API](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
 
 ```json
-{   
-  "name" : "synonymmap1",  
-  "format" : "solr",  
+{
+  "name" : "synonymmap1",
+  "format" : "solr",
   "synonyms" : "United States, United States of America, USA\n
   Washington, Wash. => WA",
   "encryptionKey": {
     "keyVaultUri": "https://demokeyvault.vault.azure.net",
     "keyVaultKeyName": "myEncryptionKey",
     "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
-    "activeDirectoryAccessCredentials": {
+    "accessCredentials": {
       "applicationId": "00000000-0000-0000-0000-000000000000",
       "applicationSecret": "myApplicationSecret"
     }
@@ -252,6 +260,86 @@ Podrobnosti o vytvoření nové mapy synonym prostřednictvím REST API lze nal�
 ```
 
 Nyní můžete odeslat požadavek na vytvoření mapy synonym a pak ho začít používat normálně.
+
+## <a name="example-data-source-encryption"></a>Příklad: šifrování zdroje dat
+
+Vytvořte zašifrovaný zdroj dat pomocí [Vytvoření zdroje dat (Azure Kognitivní hledání REST API)](https://docs.microsoft.com/rest/api/searchservice/create-data-source). Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
+
+```json
+{
+  "name" : "datasource1",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
+  },
+  "container" : { "name" : "containername" },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+Nyní můžete odeslat požadavek na vytvoření zdroje dat a pak ho začít používat normálně.
+
+## <a name="example-skillset-encryption"></a>Příklad: šifrování dovednosti
+
+Vytvořte šifrované dovednosti pomocí [REST API Azure kognitivní hledání pro vytvoření dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset). Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
+
+```json
+{
+  "name" : "datasource1",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
+  },
+  "container" : { "name" : "containername" },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+Nyní můžete odeslat žádost o vytvoření dovednosti a pak ji začít používat normálně.
+
+## <a name="example-indexer-encryption"></a>Příklad: šifrování indexeru
+
+Pomocí [REST API Create indexeru pro Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/create-indexer)vytvořte zašifrovaný indexer. Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
+
+```json
+{
+  "name": "indexer1",
+  "dataSourceName": "datasource1",
+  "skillsetName": "skillset1",
+  "parameters": {
+      "configuration": {
+          "imageAction": "generateNormalizedImages"
+      }
+  },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+Nyní můžete odeslat požadavek na vytvoření indexeru a pak ho začít používat normálně.
 
 >[!Important]
 > `encryptionKey`Nelze však přidat k existujícím indexům vyhledávání nebo mapováním synonym, může být aktualizováno poskytnutím různých hodnot pro všechny tři podrobnosti trezoru klíčů (například aktualizace verze klíče). Při přechodu na nový klíč Key Vault nebo na novou verzi klíče se musí nejdřív aktualizovat libovolný index vyhledávání nebo mapa synonym, která tento klíč používá, aby bylo možné použít nový key\version **před** odstraněním předchozího key\version.. Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné, protože po ztrátě přístupu ke klíči nebude moct obsah dešifrovat. I když se později obnoví přístupová oprávnění trezoru klíčů, obnoví se přístup k obsahu.
@@ -265,7 +353,6 @@ Tento přístup vám umožní vynechat postup pro registraci aplikace a tajné k
 Obecně spravovaná identita umožňuje službě vyhledávání ověřovat Azure Key Vault bez uložení přihlašovacích údajů (ApplicationID nebo ApplicationSecret) do kódu. Životní cyklus tohoto typu spravované identity je svázán s životním cyklem služby vyhledávání, který může mít pouze jednu spravovanou identitu. Další informace o tom, jak spravované identity fungují, najdete v tématu [co jsou spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 1. Zpřístupněte službu Search jako důvěryhodnou službu.
-
    ![Zapnout spravovanou identitu přiřazenou systémem](./media/search-managed-identities/turn-on-system-assigned-identity.png "Zapnout spravovanou identitu přiřazenou systémem")
 
 1. Při nastavování zásad přístupu v Azure Key Vault jako princip vyberte službu Trusted Search Service (místo aplikace zaregistrované v rámci služby Active Directory). Přiřaďte stejná oprávnění (vícenásobné získání, zabalení, rozbalení) podle pokynů v kroku udělení oprávnění přístupového klíče.
