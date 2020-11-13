@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
-ms.openlocfilehash: 6ab3e1e063409832de839da26eba80efd8b3f4d5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8c7cb1e9f39b1de7897da29467a607953b42bb24
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344803"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565734"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>Exportovat aplikaci Custom Commands jako vzdálenou dovednost
 
 V tomto článku se dozvíte, jak exportovat aplikaci Custom Commands jako vzdálenou dovednost.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 > [!div class="checklist"]
 > * [Seznámení s dovedností pro robot Framework](https://aka.ms/speech/cc-skill-overview)
 > * [Porozumění manifestu dovedností](https://aka.ms/speech/cc-skill-manifest)
@@ -88,4 +88,4 @@ Jako autor můžete chtít určit, které z **ukázkových vět** se mají použ
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Povolení procesu CI/CD pro aplikaci Vlastní příkazy](./how-to-custom-commands-deploy-cicd.md)
+> [Aktualizace příkazu z klienta](./how-to-custom-commands-update-command-from-client.md)

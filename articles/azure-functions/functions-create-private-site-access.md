@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 6c87fcf4f56b7092436fa16658a72ead24d9fec2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 38bc0ec546526cd0c6631b7cd5b70753c3235d18
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423024"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563983"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Kurz: vytvoření přístupu k privátnímu webu Azure Functions
 
@@ -39,13 +39,13 @@ Následující diagram znázorňuje architekturu řešení, které se má vytvo�
 
 ![Diagram architektury vysoké úrovně pro řešení přístupu k soukromému webu](./media/functions-create-private-site-access/topology.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro účely tohoto kurzu je důležité pochopit IP adresy a podsítě. Můžete začít s [tímto článkem, který se zabývá základy adresování a podsítí](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Mnoho dalších článků a videí je k dispozici online.
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -84,7 +84,7 @@ Prvním krokem v tomto kurzu je vytvoření nového virtuálního počítače ve
     | ------------ | ---------------- | ---------------- |
     | _Název_ | myResourceGroup – VNet | Můžete použít výchozí název vygenerovaný pro vaši virtuální síť. |
     | _Rozsah adres_ | 10.10.0.0/16 | Pro virtuální síť použijte jeden rozsah adres. |
-    | _Název podsítě_ | Kurz | Název podsítě. |
+    | _Název podsítě_ | Tutoriál | Název podsítě. |
     | _Rozsah adres_ (podsíť) | 10.10.1.0/24 | Velikost podsítě určuje, kolik rozhraní lze do podsítě přidat. Tuto podsíť používá virtuální počítač. Podsíť a/24 poskytuje 254 adres hostitelů. |
 
 1. Vyberte **OK** a vytvořte virtuální síť.
@@ -172,7 +172,7 @@ Přístup k [privátní lokalitě](functions-networking-options.md#private-site-
 1. Na stránce _omezení přístupu_ se teď zobrazuje nové omezení. Může to trvat několik sekund, než se _stav koncového bodu_ změní z zakázáno prostřednictvím zřizování na povoleno.
 
     >[!IMPORTANT]
-    > Každá aplikace Function App obsahuje [Web pokročilého nástroje (Kudu)](../app-service/app-service-ip-restrictions.md#scm-site) , který se používá ke správě nasazení aplikací Function App. K tomuto webu se dostanete z adresy URL, jako je: `<FUNCTION_APP_NAME>.scm.azurewebsites.net` . Povolení omezení přístupu na webu Kudu zabraňuje nasazení kódu projektu z místní pracovní stanice pro vývojáře a poté, co je v rámci virtuální sítě potřeba provést nasazení, je nutné mít agenta.
+    > Každá aplikace Function App obsahuje [Web pokročilého nástroje (Kudu)](../app-service/app-service-ip-restrictions.md#restrict-access-to-an-scm-site) , který se používá ke správě nasazení aplikací Function App. K tomuto webu se dostanete z adresy URL, jako je: `<FUNCTION_APP_NAME>.scm.azurewebsites.net` . Povolení omezení přístupu na webu Kudu zabraňuje nasazení kódu projektu z místní pracovní stanice pro vývojáře a poté, co je v rámci virtuální sítě potřeba provést nasazení, je nutné mít agenta.
 
 ## <a name="access-the-functions-app"></a>Přístup k aplikaci Functions
 

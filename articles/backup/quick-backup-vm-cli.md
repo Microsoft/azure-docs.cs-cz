@@ -5,22 +5,22 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 92990df3049f7fa1074d55fc34734e13d6673cd7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 27294f91fd6c79b10a85678a7acd60de56cf1ca4
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91328815"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562334"
 ---
-# <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku
+# <a name="back-up-a-virtual-machine-in-azure-with-the-azure-cli"></a>Zálohování virtuálního počítače v Azure pomocí Azure CLI
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které je možné uchovávat v geograficky redundantních trezorech obnovení. Tento článek podrobně popisuje, jak zálohovat virtuální počítač v Azure pomocí Azure CLI. K provedení těchto kroků můžete také využít [Azure PowerShell](quick-backup-vm-powershell.md) nebo [Azure Portal](quick-backup-vm-portal.md).
 
 V tomto rychlém startu se povolí zálohování na existujícím virtuálním počítači Azure. Pokud potřebujete vytvořit virtuální počítač, můžete [vytvořit virtuální počítač pomocí Azure CLI](../virtual-machines/linux/quick-create-cli.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud chcete rozhraní příkazového řádku nainstalovat a používat místně, musíte použít Azure CLI verze 2.0.18 nebo novější. Verzi rozhraní příkazového řádku zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+ - V tomto rychlém startu se vyžaduje verze Azure CLI 2.0.18 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -28,8 +28,8 @@ Trezor služby Recovery Services je logický kontejner, který uchovává záloh
 
 Vytvořte trezor služby Recovery Services pomocí příkazu [az backup vault create](/cli/azure/backup/vault#az-backup-vault-create). Zadejte stejnou skupinu prostředků a umístění, jako má virtuální počítač, který chcete chránit. Pokud jste použili [rychlý úvod k virtuálním počítačům](../virtual-machines/linux/quick-create-cli.md), pak jste vytvořili:
 
-- skupinu prostředků *myResourceGroup*,
-- virtuální počítač *myVM*,
+- skupinu prostředků *myResourceGroup* ,
+- virtuální počítač *myVM* ,
 - prostředky v umístění *eastus*.
 
 ```azurecli-interactive
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-Ve výchozím nastavení je trezor služby Recovery Services nastavený pro geograficky redundantní úložiště. Geograficky redundantní úložiště zajišťuje replikaci zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti od sebe stovky mil. Pokud je potřeba upravit nastavení redundance úložiště, použijte příkaz [AZ Backup trezor Backup-Properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) rutina.
+Ve výchozím nastavení je trezor služby Recovery Services nastavený pro geograficky redundantní úložiště. Služba Geo-Redundant Storage zajišťuje replikaci zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti vzdálena stovky mil. Pokud je potřeba upravit nastavení redundance úložiště, použijte příkaz [AZ Backup trezor Backup-Properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) rutina.
 
 ```azurecli
 az backup vault backup-properties set \
@@ -81,7 +81,7 @@ Pro zálohování virtuálního počítače se používají následující param
 
 - `--container-name` je název vašeho virtuálního počítače.
 - `--item-name` je název vašeho virtuálního počítače.
-- Hodnota `--retain-until` by měla být nastavená na poslední datum požadované dostupnosti bodu obnovení ve formátu času UTC (**dd-mm-yyyy**).
+- Hodnota `--retain-until` by měla být nastavená na poslední datum požadované dostupnosti bodu obnovení ve formátu času UTC ( **dd-mm-yyyy** ).
 
 Následující příklad zálohuje virtuální počítač *myVM* a nastaví vypršení platnosti bodu obnovení na 18. října 2017:
 

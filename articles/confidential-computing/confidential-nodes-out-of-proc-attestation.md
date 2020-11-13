@@ -6,12 +6,12 @@ author: agowdamsft
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 90b74e51dce994c3041c15feec729ff1fae2bb00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b79b3b40f3fbfe7d70550db3aaf7b365aa455e89
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000946"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564153"
 ---
 # <a name="platform-software-management-with-sgx-quote-helper-daemon-set"></a>Správa softwaru platformy pomocí pomocné rutiny pomocníka SGX
 
@@ -20,13 +20,13 @@ ms.locfileid: "91000946"
 ## <a name="overview"></a>Přehled
  
 Intel podporuje pro spuštění generování nabídky dva režimy ověření identity:
-- **in-proc**: hostuje důvěryhodné softwarové komponenty uvnitř procesu aplikace enklávy.
+- **in-proc** : hostuje důvěryhodné softwarové komponenty uvnitř procesu aplikace enklávy.
 
-- **mimo proc**: hostuje důvěryhodné softwarové komponenty mimo aplikaci enklávy.
+- **mimo proc** : hostuje důvěryhodné softwarové komponenty mimo aplikaci enklávy.
  
 SGX aplikace sestavené pomocí sady Open enklávy SDK ve výchozím nastavení používají režim ověření identity v režimu proc. Aplikace založené na SGX umožňují použití mimo proc a vyžadují další hostování a vystavování požadovaných komponent, jako je například architektura enklávy Service Manager (AESM), které jsou pro aplikaci externí.
 
-Použití této funkce se **důrazně doporučuje**, protože vylepšuje dobu provozu aplikací enklávy během aktualizací platforem Intel nebo aktualizací ovladačů DCAP.
+Použití této funkce se **důrazně doporučuje** , protože vylepšuje dobu provozu aplikací enklávy během aktualizací platforem Intel nebo aktualizací ovladačů DCAP.
 
 ## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>Proč a jaké jsou výhody mimo proc?
 
@@ -126,10 +126,10 @@ spec:
 
 [Rychlé úvodní ukázky – důvěrné kontejnery](https://github.com/Azure-Samples/confidential-container-samples)
 
-[Seznam SKU DCsv2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)
+[Seznam SKU DCsv2](../virtual-machines/dcv2-series.md)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure Attestation]: ../attestation/index.yml
 
 
 <!-- LINKS - internal -->

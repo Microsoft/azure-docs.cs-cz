@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fc6e71494df36cd6f823661b18e4a3d8ce2938c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005595"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563677"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Konfigurace vlastní odpovědi pro Firewall webových aplikací Azure (WAF)
 
-Ve výchozím nastavení, když WAF zablokuje požadavek z důvodu spárovaného pravidla, vrátí stavový kód 403 s **požadavkem na zablokování** zprávy. Výchozí zpráva obsahuje také řetězec sledovacích odkazů, který lze použít k propojení na [položky protokolu](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-monitor) pro požadavek.  Můžete nakonfigurovat vlastní kód stavu odpovědi a vlastní zprávu s referenčním řetězcem pro váš případ použití. Tento článek popisuje, jak nakonfigurovat vlastní stránku odpovědi, když WAF zablokuje požadavek.
+Ve výchozím nastavení, když WAF zablokuje požadavek z důvodu spárovaného pravidla, vrátí stavový kód 403 s **požadavkem na zablokování** zprávy. Výchozí zpráva obsahuje také řetězec sledovacích odkazů, který lze použít k propojení na [položky protokolu](./waf-front-door-monitor.md) pro požadavek.  Můžete nakonfigurovat vlastní kód stavu odpovědi a vlastní zprávu s referenčním řetězcem pro váš případ použití. Tento článek popisuje, jak nakonfigurovat vlastní stránku odpovědi, když WAF zablokuje požadavek.
 
 ## <a name="configure-custom-response-status-code-and-message-use-portal"></a>Konfigurace vlastního kódu stavu odpovědí a portálu pro používání zpráv
 
@@ -27,7 +27,7 @@ V části nastavení zásad můžete na portálu WAF nakonfigurovat vlastní kó
 
 Ve výše uvedeném příkladu jsme kód odpovědi zavedli jako 403 a nakonfigurovali krátký symbol "kontaktujte nás", jak je znázorněno na následujícím obrázku:
 
-:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="Nastavení zásad WAF":::
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="Příklad vlastní odpovědi":::
 
 {{Azure-ref}} vloží do těla odpovědi jedinečný referenční řetězec. Hodnota odpovídá poli TrackingReference v `FrontdoorAccessLog` `FrontdoorWebApplicationFirewallLog` protokolech a.
 
@@ -35,9 +35,9 @@ Ve výše uvedeném příkladu jsme kód odpovědi zavedli jako 403 a nakonfigur
 
 ### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell
 
-Prostředí Azure PowerShell poskytuje sadu rutin, které ke správě vašich prostředků Azure využívají model [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 
+Prostředí Azure PowerShell poskytuje sadu rutin, které ke správě vašich prostředků Azure využívají model [Azure Resource Manager](../../azure-resource-manager/management/overview.md). 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Postupujte podle pokynů na stránce, přihlaste se pomocí přihlašovacích údajů Azure a nainstalujte modul AZ PowerShell.
+[Azure PowerShell](/powershell/azure/) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Postupujte podle pokynů na stránce, přihlaste se pomocí přihlašovacích údajů Azure a nainstalujte modul AZ PowerShell.
 
 ### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Připojení k Azure pomocí interaktivního dialogu pro přihlášení
 

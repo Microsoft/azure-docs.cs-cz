@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 994cf78a9a9b8c418d0f29f5d595f88f021659b4
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 95626836afb09ada286cf7e171f97db450167999
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341902"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564340"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) s důvěrnými výpočetními uzly pomocí rozhraní příkazového řádku Azure (Preview)
 
@@ -19,7 +19,7 @@ Tento rychlý Start je určený pro vývojáře nebo operátory clusterů, kteř
 
 ## <a name="overview"></a>Přehled
 
-V tomto rychlém startu se dozvíte, jak nasadit cluster Azure Kubernetes Service (AKS) s důvěrnými výpočetními uzly pomocí Azure CLI a spustit aplikaci Hello World v enklávy. AKS je spravovaná služba Kubernetes, která umožňuje rychle nasadit a spravovat clustery. Přečtěte [si další informace o AKS.](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+V tomto rychlém startu se dozvíte, jak nasadit cluster Azure Kubernetes Service (AKS) s důvěrnými výpočetními uzly pomocí Azure CLI a spustit aplikaci Hello World v enklávy. AKS je spravovaná služba Kubernetes, která umožňuje rychle nasadit a spravovat clustery. Přečtěte [si další informace o AKS.](../aks/intro-kubernetes.md)
 
 > [!NOTE]
 > DCsv2 virtuální počítače s důvěrnými výpočetními využitím specializovaného hardwaru podléhajícího vyšší ceně a dostupnosti oblastí. Další informace najdete na stránce virtuálních počítačů pro [dostupné SKU a podporované oblasti](virtual-machine-solutions.md).
@@ -27,17 +27,17 @@ V tomto rychlém startu se dozvíte, jak nasadit cluster Azure Kubernetes Servic
 ### <a name="deployment-pre-requisites"></a>Požadavky na nasazení
 
 1. Máte aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-1. Ve vašem počítači nasazení musí být nainstalovaná a nakonfigurovaná verze Azure CLI 2.0.64 nebo novější (spuštěním nástroje `az --version` Najděte verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli) .
+1. Ve vašem počítači nasazení musí být nainstalovaná a nakonfigurovaná verze Azure CLI 2.0.64 nebo novější (spuštěním nástroje `az --version` Najděte verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](../container-registry/container-registry-get-started-azure-cli.md) .
 1. minimální verze [rozšíření AKS-Preview](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) 0.4.62 
-1. Ve vašem předplatném je k dispozici minimálně šest jader **DC <x> s-v2** , které by bylo možné použít. Ve výchozím nastavení kvóta virtuálních počítačů pro důvěrné výpočetní služby na předplatné Azure 8 jader. Pokud plánujete zřídit cluster, který vyžaduje více než 8 jader, postupujte podle [těchto](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) pokynů a vyvolejte lístek zvýšení kvóty.
+1. Ve vašem předplatném je k dispozici minimálně šest jader **DC <x> s-v2** , které by bylo možné použít. Ve výchozím nastavení kvóta virtuálních počítačů pro důvěrné výpočetní služby na předplatné Azure 8 jader. Pokud plánujete zřídit cluster, který vyžaduje více než 8 jader, postupujte podle [těchto](../azure-portal/supportability/per-vm-quota-requests.md) pokynů a vyvolejte lístek zvýšení kvóty.
 
 ### <a name="confidential-computing-node-features-dcxs-v2"></a>Funkce důvěrného výpočetního uzlu (DC <x> s-v2)
 
 1. Linux Worker Nodes podporující pouze kontejnery Linux
 1. Ubuntu generace 2 18,04 Virtual Machines
-1. PROCESOR založený na procesorech Intel SGX s využitím paměti EPC (Encrypted Page cache). Další informace najdete [tady](https://docs.microsoft.com/azure/confidential-computing/faq) .
+1. PROCESOR založený na procesorech Intel SGX s využitím paměti EPC (Encrypted Page cache). Další informace najdete [tady](./faq.md) .
 1. Kubernetes verze 1.16 +
-1. Předem nainstalovaný ovladač Intel SGX DCAP. Další informace najdete [tady](https://docs.microsoft.com/azure/confidential-computing/faq) .
+1. Předem nainstalovaný ovladač Intel SGX DCAP. Další informace najdete [tady](./faq.md) .
 1. Rozhraní příkazového řádku nasazené během verze Preview
 
 
@@ -81,7 +81,7 @@ Nejdřív vytvořte skupinu prostředků pro cluster pomocí příkazu AZ Group 
 az group create --name myResourceGroup --location westus2
 ```
 
-Nyní vytvořte cluster AKS pomocí příkazu AZ AKS Create. Následující příklad vytvoří cluster s jedním uzlem velikosti `Standard_DC2s_v2` . Můžete zvolit další podporovaný seznam SKU DCsv2 z [tohoto místa](https://docs.microsoft.com/azure/virtual-machines/dcv2-series):
+Nyní vytvořte cluster AKS pomocí příkazu AZ AKS Create. Následující příklad vytvoří cluster s jedním uzlem velikosti `Standard_DC2s_v2` . Můžete zvolit další podporovaný seznam SKU DCsv2 z [tohoto místa](../virtual-machines/dcv2-series.md):
 
 ```azurecli-interactive
 az aks create \
@@ -94,7 +94,7 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --aks-custom-headers usegen2vm=true
 ```
-Výše uvedený příkaz by měl zřídit nový cluster AKS s fondy uzlů **DC <x> s-v2** a automaticky instalovat dvě sady démonů – (Pomocník pro[SGXu zařízení](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX pro pomocnou nabídku](confidential-nodes-aks-overview.md#sgx-quote)).
+Výše uvedený příkaz by měl zřídit nový cluster AKS s fondy uzlů **DC <x> s-v2** a automaticky instalovat dvě sady démonů – (Pomocník pro [SGXu zařízení](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX pro pomocnou nabídku](confidential-nodes-aks-overview.md#sgx-quote)).
 
 Pomocí příkazu AZ AKS Get-credentialss Získejte přihlašovací údaje pro váš cluster AKS:
 
@@ -133,7 +133,7 @@ az aks enable-addons --addons confcom --name MyManagedCluster --resource-group M
 Teď do clusteru přidejte fond uzlů **DC <x> s-v2** .
     
 > [!NOTE]
-> Pokud chcete používat funkci důvěrného výpočetního prostředí, váš stávající cluster AKS musí mít minimálně jeden fond uzlů na základě SKU virtuálního počítače ve verzi ** <x> v2** . Další informace o dostupných položkách SKU [a podporovaných oblastech](virtual-machine-solutions.md)pro DCsv2 virtuální počítače s podporou důvěrného zpracování
+> Pokud chcete používat funkci důvěrného výpočetního prostředí, váš stávající cluster AKS musí mít minimálně jeden fond uzlů na základě SKU virtuálního počítače ve verzi **<x> v2** . Další informace o dostupných položkách SKU [a podporovaných oblastech](virtual-machine-solutions.md)pro DCsv2 virtuální počítače s podporou důvěrného zpracování
     
   ```azurecli-interactive
 az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-count 1 --node-vm-size Standard_DC4s_v2 --aks-custom-headers usegen2vm=true
@@ -244,6 +244,3 @@ az aks nodepool delete --cluster-name myAKSCluster --name myNodePoolName --resou
 Spusťte Python, uzel atd. Aplikace, které jsou důvěrné prostřednictvím důvěrných kontejnerů, návštěvou [důvěrných ukázek kontejnerů](https://github.com/Azure-Samples/confidential-container-samples).
 
 Spouštějte enklávy aplikace s podporou enklávy a navštivte [si ukázky kontejnerů Azure s podporou](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/).
-
-
-

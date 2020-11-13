@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: e459f654aa6824bc13b880f042d168b5b7cbafc0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cdd886bfcfb02aa46e440d2574b241f9b1cf3134
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368413"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564136"
 ---
 # <a name="enclave-aware-containers"></a>Kontejnery s podporou enklávy
 
@@ -61,9 +61,9 @@ Bezokrajový RT je open source projekt, který se sestaví na Open enklávy SDK.
 [Ukázky Azure pro kontejnery s podporou enklávy na AKS](https://github.com/Azure-Samples/confidential-computing/tree/main/containersamples)
 
 <!-- LINKS - external -->
-[Ověření identity Azure](../attestation/overview.md)
+[Azure Attestation](../attestation/overview.md)
 
 
 <!-- LINKS - internal -->
-[Virtuální počítač DC](/azure/confidential-computing/virtual-machine-solutions) 
- [Důvěrné kontejnery](/azure/confidential-computing/confidential-containers)
+[Virtuální počítač DC](./virtual-machine-solutions.md) 
+ [Důvěrné kontejnery](./confidential-containers.md)

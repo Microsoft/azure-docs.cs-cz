@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: 725beb50e55852e35ee4434539ff158f082059df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee262c0eb2431085e71d8ee0035bcdab9833d1cf
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88122007"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565768"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>Využití typu obsahu k ukládání hodnot klíče JSON v konfiguraci aplikace
 
@@ -25,9 +25,9 @@ Data jsou uložena v konfiguraci aplikace jako klíčové hodnoty, kde ve výcho
 ## <a name="overview"></a>Přehled
 
 V části Konfigurace aplikace můžete použít typ média JSON jako typ obsahu vašich klíčových hodnot a využít výhody jako:
-- **Jednodušší Správa dat**: Správa klíčových hodnot, jako jsou pole, se stane mnohem jednodušším Azure Portal.
-- **Rozšířené exportu dat**: při exportu dat budou zachovány primitivní typy, pole a objekty JSON.
-- **Nativní podpora pro poskytovatele konfigurace aplikace**: hodnoty klíč-hodnota JSON typu Content budou v aplikacích fungovat, pokud jsou spotřebovány knihovnami poskytovatele konfigurace aplikace.
+- **Jednodušší Správa dat** : Správa klíčových hodnot, jako jsou pole, se stane mnohem jednodušším Azure Portal.
+- **Rozšířené exportu dat** : při exportu dat budou zachovány primitivní typy, pole a objekty JSON.
+- **Nativní podpora pro poskytovatele konfigurace aplikace** : hodnoty klíč-hodnota JSON typu Content budou v aplikacích fungovat, pokud jsou spotřebovány knihovnami poskytovatele konfigurace aplikace.
 
 #### <a name="valid-json-content-type"></a>Platný typ obsahu JSON
 
@@ -53,7 +53,7 @@ Mezi příklady platných hodnot JSON patří:
 - {"ObjectSetting": {"Targeting": {"default": true, "level": "Information"}}}
 
 > [!NOTE]
-> Ve zbývající části tohoto článku se jako **hodnota klíče JSON**označuje jakákoli klíčová hodnota v konfiguraci aplikace s platným typem obsahu JSON a platnou hodnotou JSON. 
+> Ve zbývající části tohoto článku se jako **hodnota klíče JSON** označuje jakákoli klíčová hodnota v konfiguraci aplikace s platným typem obsahu JSON a platnou hodnotou JSON. 
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -63,13 +63,11 @@ V tomto kurzu se naučíte:
 > * Využívání hodnot klíčového klíče JSON ve vašich aplikacích.
 
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
-- Nejnovější verzi rozhraní příkazového řádku Azure CLI (2.10.0 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI, musíte se nejdřív přihlásit pomocí `az login` . Volitelně můžete použít Azure Cloud Shell.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
+- V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.10.0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 

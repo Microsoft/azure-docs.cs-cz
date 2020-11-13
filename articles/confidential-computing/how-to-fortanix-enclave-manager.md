@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2c266d31a3aacc5bc97434de2246bfb1285a1ee
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462424"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565700"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Postupy: spuštění aplikace pomocí Fortanix enklávy Manageru 
 
@@ -60,31 +60,31 @@ V tomto kurzu se dozvíte, jak převést Image aplikace na tajnou bitovou kopii 
 
 6. V tomto kurzu použijeme pro ukázkovou aplikaci registr Docker Fortanix. Vyplňte podrobnosti z následujících informací. Uložte výstupní Image pomocí privátního registru Docker. 
  
-    - **Název aplikace**: aplikační server Pythonu
-    - **Popis**: Server na baňce Python
-    - **Název vstupní image**: fortanix/Python – baňka
-    - **Název výstupního obrázku**: fortanx-Private/Python-baněk-SGX
-    - **ISVPRODID**: 1
-    - **ISVSVM**: 1
-    - **Velikost paměti**: 1 GB
-    - **Počet vláken**: 128
+    - **Název aplikace** : aplikační server Pythonu
+    - **Popis** : Server na baňce Python
+    - **Název vstupní image** : fortanix/Python – baňka
+    - **Název výstupního obrázku** : fortanx-Private/Python-baněk-SGX
+    - **ISVPRODID** : 1
+    - **ISVSVM** : 1
+    - **Velikost paměti** : 1 GB
+    - **Počet vláken** : 128
 
-    *Volitelné*: Spusťte aplikaci.
-    - **Docker Hub**: [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
-    - **Aplikace**: fortanix/Python – baňka
+    *Volitelné* : Spusťte aplikaci.
+    - **Docker Hub** : [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
+    - **Aplikace** : fortanix/Python – baňka
 
         Spusťte následující příkaz:
          ```bash
             sudo docker run fortanix/python-flask
          ```
 
-1. Přidejte certifikát. Zadejte informace podle níže uvedených podrobností a potom vyberte **Další**:
-    - **Doména**: MyApp. domain. Dom
-    - **Typ**: certifikát Vystavitel enklávy Manager 
-    - **Cesta ke klíči**:/appkey.pem
-    - **Typ klíče**: RSA
-    - **Cesta k certifikátu**:/appcert.pem
-    - **Velikost klíče RSA**: 2048 bitů
+1. Přidejte certifikát. Zadejte informace podle níže uvedených podrobností a potom vyberte **Další** :
+    - **Doména** : MyApp. domain. Dom
+    - **Typ** : certifikát Vystavitel enklávy Manager 
+    - **Cesta ke klíči** :/appkey.pem
+    - **Typ klíče** : RSA
+    - **Cesta k certifikátu** :/appcert.pem
+    - **Velikost klíče RSA** : 2048 bitů
     
 
 ## <a name="create-an-image"></a>Vytvoření obrázku
@@ -115,12 +115,12 @@ Když se vytvoří agent uzlu Fortanix, nasadí se virtuální počítač, síť
 1. Přejít na [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) a přihlaste se pomocí přihlašovacích údajů Azure.
 1. Na panelu hledání zadejte Fortanix pro **důvěrné výpočetní uzly**. Vyberte aplikaci, která se zobrazí v poli pro hledání s názvem **Fortanix důvěrné výpočetní uzly** , aby se mohla přejít na domovskou stránku nabídky. 
      ![Hledat na Marketplace](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
-1. Vyberte **získat hned**, v případě potřeby vyplňte svoje informace a vyberte **pokračovat**. Budete přesměrováni na Azure Portal. 
+1. Vyberte **získat hned** , v případě potřeby vyplňte svoje informace a vyberte **pokračovat**. Budete přesměrováni na Azure Portal. 
 1. Vyberte **vytvořit** a zadejte stránku nasazení agenta Fortanix důvěrného výpočetního uzlu.
 1. Na této stránce budete zadávat informace pro nasazení virtuálního počítače. Konkrétně tento virtuální počítač je DCsv2-Series virtuální počítač s podporou Intel SGX z Azure s nainstalovaným softwarem agenta Fortanix Node. Agent uzlu umožní, aby se převedená image bezpečně spouštěla na uzlech Intel SGX v Azure.  Vyberte **předplatné** a **skupinu prostředků** , do kterých chcete nasadit virtuální počítač a přidružené prostředky. 
  
     > [!NOTE]
-    > Při nasazování DCsv2-Series virtuálních počítačů v Azure jsou k dispozici nějaká omezení. Možná budete muset požádat o kvótu pro další jádra. Další informace najdete v tématu věnovaném [důvěrným výpočetním řešením na virtuálních počítačích Azure](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) . 
+    > Při nasazování DCsv2-Series virtuálních počítačů v Azure jsou k dispozici nějaká omezení. Možná budete muset požádat o kvótu pro další jádra. Další informace najdete v tématu věnovaném [důvěrným výpočetním řešením na virtuálních počítačích Azure](./virtual-machine-solutions.md) . 
 
 1. Vyberte dostupnou oblast.
 1. Do pole **název uzlu** zadejte název vašeho virtuálního počítače. 
@@ -174,4 +174,4 @@ V tomto rychlém startu jste použili nástroje Fortanix k převedení image apl
 
 Další informace o nabídkách důvěrného výpočetního prostředí Azure najdete v tématu [Přehled důvěrných výpočetních řešení Azure](overview.md) .
 
- Naučte se, jak provádět podobné úlohy pomocí dalších nabídek třetích stran v Azure, jako jsou [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) a [Scone](https://sconedocs.github.io).  
+ Naučte se, jak provádět podobné úlohy pomocí dalších nabídek třetích stran v Azure, jako jsou [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) a [Scone](https://sconedocs.github.io).

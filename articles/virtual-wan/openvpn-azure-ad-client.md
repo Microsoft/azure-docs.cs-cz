@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: ecebaf9384bcb0dbbb6fe36df4dd474738422149
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 8e97a2f077efd4d00eec4a91645dc1b65057ebd9
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043420"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565003"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurace klienta VPN pro připojení typu point-to-site přes protokol OpenVPN: Ověřování Azure AD
 
@@ -32,7 +32,7 @@ Pomocí tohoto [odkazu](https://go.microsoft.com/fwlink/?linkid=2117554) si stá
 
 1. Pokračujte na Start a pak vyberte nastavení > ochrany osobních údajů > aplikace na pozadí.
 2. V části aplikace na pozadí se ujistěte, že je zapnutá volba **Povolit aplikace spuštěné na pozadí** .
-3. V části zvolit, které aplikace se můžou spouštět na pozadí, zapnout nastavení pro klienta Azure VPN na **zapnuto** .
+3. V části zvolit, které aplikace se můžou spouštět na pozadí, zapnout nastavení pro klienta Azure VPN na **zapnuto**.
 
   ![udělen](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
@@ -54,7 +54,7 @@ Při práci s profilem založeným na certifikátech se ujistěte, že jsou na k
 
 Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním uživatelům, můžete ho exportovat pomocí následujících kroků:
 
-1. Zvýrazněte profil klienta VPN, který chcete exportovat, vyberte **...** a pak vyberte **exportovat** .
+1. Zvýrazněte profil klienta VPN, který chcete exportovat, vyberte **...** a pak vyberte **exportovat**.
 
     ![Snímek obrazovky s vybraným exportem zobrazí z nabídky.](./media/openvpn-azure-ad-client/export/export1.jpg)
 
@@ -64,15 +64,15 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>Import profilu klienta
 
-1. Na stránce vyberte **importovat** .
+1. Na stránce vyberte **importovat**.
 
     ![Snímek obrazovky zobrazující import vybraný z nabídky plus](./media/openvpn-azure-ad-client/import/import1.jpg)
 
-2. Přejděte k souboru XML profilu a vyberte ho. Když je vybraný soubor, vyberte **otevřít** .
+2. Přejděte k souboru XML profilu a vyberte ho. Když je vybraný soubor, vyberte **otevřít**.
 
     ![Snímek obrazovky zobrazuje otevřené dialogové okno, ve kterém můžete vybrat soubor.](./media/openvpn-azure-ad-client/import/import2.jpg)
 
-3. Zadejte název profilu a vyberte **Uložit** .
+3. Zadejte název profilu a vyberte **Uložit**.
 
     ![Snímek obrazovky zobrazuje název připojení, který jste přidali, a tlačítko Uložit.](./media/openvpn-azure-ad-client/import/import3.jpg)
 
@@ -80,13 +80,13 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
     ![Snímek obrazovky se zobrazí tlačítko připojit pro připojení, které jste právě vytvořili.](./media/openvpn-azure-ad-client/import/import4.jpg)
 
-5. Po připojení se ikona změní na zelenou a znamená se **připojit** .
+5. Po připojení se ikona změní na zelenou a znamená se **připojit**.
 
     ![Snímek obrazovky zobrazuje připojení v připojeném stavu s možností odpojení.](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="to-delete-a-client-profile"></a><a name="delete"></a>Odstranění profilu klienta
 
-1. Vyberte tři tečky vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat** .
+1. Vyberte tři tečky vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat**.
 
     ![Snímek obrazovky se zobrazí z nabídky odebrat vybrané.](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
@@ -96,11 +96,11 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Vytvoření připojení
 
-1. Na stránce vyberte **+** a potom **+ Přidat** .
+1. Na stránce vyberte **+** a potom **+ Přidat**.
 
     ![Snímek obrazovky se zobrazí přidat vybrané z nabídky Plus.](./media/openvpn-azure-ad-client/create/create1.jpg)
 
-2. Vyplňte informace o připojení. Pokud si hodnoty nejste jistí, obraťte se na správce. Po vyplnění hodnot vyberte **Uložit** .
+2. Vyplňte informace o připojení. Pokud si hodnoty nejste jistí, obraťte se na správce. Po vyplnění hodnot vyberte **Uložit**.
 
     ![Snímek obrazovky se zobrazí v podokně, kde můžete zadat požadované hodnoty.](./media/openvpn-azure-ad-client/create/create2.jpg)
 
@@ -108,11 +108,11 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
     ![Snímek obrazovky se zobrazí tlačítko připojit pro vaše připojení.](./media/openvpn-azure-ad-client/create/create3.jpg)
 
-4. Vyberte správné přihlašovací údaje a pak vyberte **pokračovat** .
+4. Vyberte správné přihlašovací údaje a pak vyberte **pokračovat**.
 
     ![Snímek obrazovky se zobrazí v dialogovém okně přihlásit se.](./media/openvpn-azure-ad-client/create/create4.jpg)
 
-5. Po úspěšném připojení se ikona změní na zelenou a znamená se **připojit** .
+5. Po úspěšném připojení se ikona změní na zelenou a znamená se **připojit**.
 
     ![Snímek obrazovky ukazuje připojení v připojeném stavu.](./media/openvpn-azure-ad-client/create/create5.jpg)
 
@@ -120,7 +120,7 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
 Tyto kroky vám pomůžou nakonfigurovat připojení pro automatické připojení s vždycky zapnutým.
 
-1. Na domovské stránce klienta VPN vyberte **nastavení sítě VPN** .
+1. Na domovské stránce klienta VPN vyberte **nastavení sítě VPN**.
 
     ![Snímek obrazovky ukazuje připojení V P N, kde můžete vybrat nastavení V P N.](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
@@ -138,11 +138,11 @@ Tyto kroky vám pomůžou nakonfigurovat připojení pro automatické připojen�
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Diagnostika problémů s připojením
 
-1. K diagnostice problémů s připojením můžete použít nástroj pro **diagnostiku** . Vyberte **...** vedle připojení VPN, které chcete diagnostikovat, aby se nabídka zobrazila. Pak vyberte **Diagnostika** .
+1. K diagnostice problémů s připojením můžete použít nástroj pro **diagnostiku** . Vyberte **...** vedle připojení VPN, které chcete diagnostikovat, aby se nabídka zobrazila. Pak vyberte **Diagnostika**.
 
     ![Snímek obrazovky zobrazuje diagnostiku vybranou z nabídky.](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
-2. Na stránce **Vlastnosti připojení** vyberte **Spustit diagnostiku** .
+2. Na stránce **Vlastnosti připojení** vyberte **Spustit diagnostiku**.
 
     ![Snímek obrazovky ukazuje tlačítko spustit diagnostiku pro připojení.](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
@@ -154,7 +154,7 @@ Tyto kroky vám pomůžou nakonfigurovat připojení pro automatické připojen�
 
     ![Snímek obrazovky zobrazuje výsledky diagnostiky.](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Návody přidat do klienta VPN přípony DNS?
 
@@ -192,7 +192,7 @@ Můžete upravit stažený soubor XML profilu a přidat **\<dnsservers> \<dnsser
 ```
 
 > [!NOTE]
-> Klient služby Azure AD OpenVPN využívá položky tabulky zásad překladu názvů DNS (NRPT), což znamená, že servery DNS nebudou uvedené ve výstupu `ipconfig /all` . Pokud chcete potvrdit nastavení používané v rámci služby DNS, podívejte se prosím do rutiny [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) v PowerShellu.
+> Klient služby Azure AD OpenVPN využívá položky tabulky zásad překladu názvů DNS (NRPT), což znamená, že servery DNS nebudou uvedené ve výstupu `ipconfig /all` . Pokud chcete potvrdit nastavení používané v rámci služby DNS, podívejte se prosím do rutiny [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) v PowerShellu.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Návody přidat vlastní trasy k klientovi VPN?

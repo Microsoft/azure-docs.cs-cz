@@ -1,15 +1,15 @@
 ---
-title: Běžné schéma výstrah pro výstrahy Azure monitoru
+title: Běžné schéma výstrah pro výstrahy Azure Monitor
 description: Princip běžných schémat výstrah, proč byste ji měli používat a jak ji povolit
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: bb182f88a896be436e3981ff4e361010ee2655f6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: aa619976c8fa03b925d66e884ad03fc4e385693e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108826"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565598"
 ---
 # <a name="common-alert-schema"></a>Běžné schéma upozornění
 
@@ -20,8 +20,8 @@ Tento článek popisuje, co je běžné schéma výstrah, výhody jeho použív�
 Běžné schéma výstrah standardizace prostředí spotřeby pro oznamování výstrah v Azure ještě dnes. V minulosti měly tři typy výstrah v Azure ještě dnes (metrika, protokol a protokol aktivit) vlastní e-mailové šablony, schémata webhooků atd. Pomocí společného schématu výstrah teď můžete dostávat oznámení o výstrahách s konzistentním schématem.
 
 Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a **příčinu výstrahy**. tyto instance jsou popsány v běžném schématu v následujících částech:
-* **Essentials**: sada **standardizovaných polí**společných pro všechny typy výstrah, které popisují, k **jakým prostředkům** se tato výstraha používá, spolu s dalšími běžnými metadaty výstrah (například závažnost nebo popis). 
-* **Kontext výstrahy**: sada polí, která popisují **příčinu výstrahy**, s poli, která se liší **v závislosti na typu výstrahy**. Například výstraha metriky by měla obsahovat pole jako název metriky a hodnotu metriky v kontextu výstrahy, zatímco výstraha protokolu aktivit by měla obsahovat informace o události, která výstrahu vygenerovala. 
+* **Essentials** : sada **standardizovaných polí** společných pro všechny typy výstrah, které popisují, k **jakým prostředkům** se tato výstraha používá, spolu s dalšími běžnými metadaty výstrah (například závažnost nebo popis). 
+* **Kontext výstrahy** : sada polí, která popisují **příčinu výstrahy** , s poli, která se liší **v závislosti na typu výstrahy**. Například výstraha metriky by měla obsahovat pole jako název metriky a hodnotu metriky v kontextu výstrahy, zatímco výstraha protokolu aktivit by měla obsahovat informace o události, která výstrahu vygenerovala. 
 
 Typickými scénáři integrace, které uslyšíme od zákazníků, je směrování instance výstrahy danému týmu na základě nějakého kontingenčního programu (například skupiny prostředků), po kterém na něm příslušný tým začne pracovat. Společně s běžným schématem výstrah můžete mít standardizovanou logiku směrování napříč typy výstrah, a to využitím základních polí a ponechání kontextových polí tak, aby se pro příslušné týmy mohli lépe prozkoumat.
 

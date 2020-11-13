@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: e3a0eaeebbc0659b217051c6e98d67803896f2e1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102319"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563728"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globální přenosová architektura sítě a virtuální síť WAN
 
@@ -127,7 +127,7 @@ Tento příznak se zobrazí, když uživatel upraví připojení k virtuální s
 
 Rozbočovače Azure Virtual WAN propojování všech koncových bodů sítě v rámci hybridní sítě a potenciálně uvidí veškerý tranzitní síťový provoz. Virtuální rozbočovače WAN je možné převést na zabezpečená virtuální centra tím, že nasadíte Azure Firewall do Center VWAN a povolíte cloudové zabezpečení, přístup a řízení zásad. Orchestrace bran Azure firewall ve virtuálních sítích WAN může provádět Azure Firewall Manager.
 
-[Azure firewall Manager](https://go.microsoft.com/fwlink/?linkid=2107683) poskytuje možnosti pro správu a škálování zabezpečení pro globální přenosové sítě. Azure Firewall Manager nabízí možnost centrálně spravovat směrování, správu globálních zásad a rozšířené služby internetového zabezpečení prostřednictvím třetích stran spolu s Azure Firewall.
+[Azure firewall Manager](../firewall-manager/index.yml) poskytuje možnosti pro správu a škálování zabezpečení pro globální přenosové sítě. Azure Firewall Manager nabízí možnost centrálně spravovat směrování, správu globálních zásad a rozšířené služby internetového zabezpečení prostřednictvím třetích stran spolu s Azure Firewall.
 
 ![zabezpečené virtuální centrum s Azure Firewall](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
@@ -177,4 +177,4 @@ Vytvořte připojení pomocí virtuální sítě WAN a nasaďte Azure Firewall v
 
 * [Připojení typu Site-to-site pomocí virtuální sítě WAN](virtual-wan-site-to-site-portal.md)
 * [Připojení ExpressRoute pomocí virtuální sítě WAN](virtual-wan-expressroute-portal.md)
-* [Azure Firewall Manager pro nasazení nástroje Azure FW v VWAN](https://go.microsoft.com/fwlink/?linkid=2107683)
+* [Azure Firewall Manager pro nasazení nástroje Azure FW v VWAN](../firewall-manager/index.yml)

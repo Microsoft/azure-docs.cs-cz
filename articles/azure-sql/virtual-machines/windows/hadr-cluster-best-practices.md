@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 86db8c88fae7a5fd1ec4828d8936c6cb8172a61c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786424"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564561"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Osvědčené postupy pro konfiguraci clusteru (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,6 +30,10 @@ Tento článek popisuje osvědčené postupy konfigurace clusteru pro [instance 
 ## <a name="networking"></a>Sítě
 
 Použijte jednu síťovou kartu na server (uzel clusteru) a jednu podsíť. Sítě Azure mají fyzickou redundanci, která v hostovaném clusteru virtuálních počítačů Azure nepotřebuje další síťové adaptéry a podsítě. Sestava ověření clusteru vás upozorní, že uzly jsou dosažitelné jenom v jedné síti. Toto upozornění můžete ignorovat u clusterů s podporou převzetí služeb při selhání hosta virtuálního počítače Azure.
+
+### <a name="tuning-failover-cluster-network-thresholds"></a>Ladění prahových hodnot sítě s clustery
+
+Při spuštění uzlů clusteru s podporou převzetí služeb při selhání Windows na virtuálních počítačích Azure s SQL Server AlwaysOn se doporučuje změnit nastavení clusteru na odlehčený stav monitorování.  Díky tomu bude cluster mnohem stabilnější a spolehlivý.  Podrobnosti najdete v tématu [IaaS with SQL AlwaysOn – vyladění prahových hodnot sítě clusteru s podporou převzetí služeb při selhání](/windows-server/troubleshoot/iaas-sql-failover-cluser).
 
 ## <a name="quorum"></a>Umožněn
 
@@ -80,7 +84,7 @@ Informace o tom, jak začít, najdete v tématu [Konfigurace určující sdílen
 
 **Podporovaný operační systém** : Windows Server 2012 a novější   
 
-## <a name="connectivity"></a>Možnosti připojení
+## <a name="connectivity"></a>Připojení
 
 V tradičních místních síťových prostředích se SQL Server instance clusteru s podporou převzetí služeb při selhání jeví jako jediná instance SQL Server spuštěná v jednom počítači. Vzhledem k tomu, že instance clusteru s podporou převzetí služeb při selhání převezme služby při selhání z uzlu na uzel, název virtuální sítě (VNN) pro instanci poskytuje jednotný spojovací bod a umožňuje aplikacím připojit se k instanci SQL Server bez vědomí, který uzel je aktuálně aktivní. Když dojde k převzetí služeb při selhání, název virtuální sítě se zaregistruje do nového aktivního uzlu po jeho spuštění. Tento proces je transparentní pro klienta nebo aplikaci, které se připojují k SQL Server. tím se minimalizuje prostoje, ke kterým klient nebo aplikace při selhání dojde. Naslouchací proces skupiny dostupnosti také používá VNN ke směrování provozu do příslušné repliky. 
 

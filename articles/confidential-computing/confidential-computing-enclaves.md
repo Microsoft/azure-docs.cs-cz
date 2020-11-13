@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 9/3/2020
 ms.author: JenCook
-ms.openlocfilehash: a7e3ade66aa4ebf7584e03b75f85c48b44537d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 565f4971fffde1cbeb2234b43aaad5cce73b5404
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995855"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564374"
 ---
 # <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Přehled virtuálních počítačů s důvěrnými výpočetními platformami Azure
 
@@ -29,7 +29,7 @@ V případě důvěrných výpočetních virtuálních počítačů Azure je sou
 
 Infrastruktura důvěrného výpočetního prostředí Azure se v současné době skládá ze speciální SKU virtuálních počítačů (VM). Tyto virtuální počítače běží na procesorech Intel s rozšířením software Guard (Intel SGX). [Intel SGX](https://intel.com/sgx) je komponenta, která umožňuje zvýšenou ochranu, kterou jsme zjistili v tajných výpočetních prostředích. 
 
-V dnešní době Azure nabízí [řadu DCsv2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) založenou na technologii Intel SGX pro vytváření hardwarových enklávy. Můžete vytvářet zabezpečené aplikace založené na enklávy pro spouštění v DCsv2 virtuálních počítačích pro ochranu dat aplikací a používaného kódu. 
+V dnešní době Azure nabízí [řadu DCsv2](../virtual-machines/dcv2-series.md) založenou na technologii Intel SGX pro vytváření hardwarových enklávy. Můžete vytvářet zabezpečené aplikace založené na enklávy pro spouštění v DCsv2 virtuálních počítačích pro ochranu dat aplikací a používaného kódu. 
 
 [Přečtěte si další](virtual-machine-solutions.md) informace o nasazení virtuálních počítačů s důvěrnými informacemi z Azure pomocí hardwarových enclavesch důvěryhodných systémů.
 
@@ -39,7 +39,7 @@ Enclaves jsou zabezpečené části procesoru a paměti hardwaru. Neexistuje ž�
 
 V podstatě si enklávy jako zabezpečené pole. Šifrovaný kód a data vložíte do boxu. Z vnějšku pole neuvidíte cokoli. Dáte enklávy klíč k dešifrování dat, data se pak znovu zpracovávají a šifrují, než se odešlou z enklávy.
 
-Každý enklávy má nastavenou velikost šifrované stránky cache (EPC), která určuje velikost paměti, kterou může každý enklávy uchovávat. Větší DCsv2 virtuální počítače mají větší paměť EPC. Přečtěte si stránku [specifikace DCsv2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) pro maximální velikost EPC na jeden virtuální počítač.
+Každý enklávy má nastavenou velikost šifrované stránky cache (EPC), která určuje velikost paměti, kterou může každý enklávy uchovávat. Větší DCsv2 virtuální počítače mají větší paměť EPC. Přečtěte si stránku [specifikace DCsv2](../virtual-machines/dcv2-series.md) pro maximální velikost EPC na jeden virtuální počítač.
 
 
 

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
-ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f260bfc7b097931cc1a978e790c1d9dd966703ac
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005612"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563507"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Konfigurace pravidla omezení IP adres pomocí brány firewall webových aplikací pro přední dveře Azure
 
@@ -30,7 +30,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 
 ### <a name="create-a-waf-policy"></a>Vytvoření zásady WAF
 
-1. V Azure Portal vyberte **vytvořit prostředek**, do vyhledávacího pole zadejte  **Firewall webových aplikací** a pak vyberte **Firewall webových aplikací (WAF)**.
+1. V Azure Portal vyberte **vytvořit prostředek** , do vyhledávacího pole zadejte  **Firewall webových aplikací** a pak vyberte **Firewall webových aplikací (WAF)**.
 2. Vyberte **Vytvořit**.
 3. Na stránce **vytvořit zásadu WAF** pomocí následujících hodnot dokončete kartu **základy** :
    
@@ -44,7 +44,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 
    Vybrat **Další: nastavení zásad**
 
-1. Na kartě **nastavení zásad** vyberte **prevence**. Jako **text bloku odpovědi**zadejte, *že jste zablokovali.* Takže vidíte, že vaše vlastní pravidlo je platné.
+1. Na kartě **nastavení zásad** vyberte **prevence**. Jako **text bloku odpovědi** zadejte, *že jste zablokovali.* Takže vidíte, že vaše vlastní pravidlo je platné.
 2. Vyberte **Další: spravovaná pravidla**.
 3. Vyberte **Další: vlastní pravidla**.
 4. Vyberte **Přidat vlastní pravidlo**.
@@ -67,7 +67,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
    Vyberte **Přidat**.
 6. Vyberte **Další: přidružení**.
 7. Vyberte **Přidat hostitele front-end**.
-8. V případě **hostitele s front-endu**vyberte hostitele front-end a vyberte **Přidat**.
+8. V případě **hostitele s front-endu** vyberte hostitele front-end a vyberte **Přidat**.
 9. Vyberte **Zkontrolovat a vytvořit**.
 10. Po úspěšném ověření zásad vyberte **vytvořit**.
 
@@ -76,7 +76,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 1. Po dokončení nasazení zásad WAF vyhledejte název hostitele front-endu s front-endy.
 2. Měla by se zobrazit vaše zpráva o vlastním blokování.
 
-   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="Vlastní pravidlo":::
+   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="Test pravidla WAF":::
 
    > [!NOTE]
    > Privátní IP adresa se úmyslně použila ve vlastním pravidle, aby se zajistilo, že se pravidlo aktivuje. Ve vlastním nasazení vytvořte pravidla *Povolení* a *odmítnutí* pomocí IP adres pro konkrétní situaci.
@@ -109,7 +109,7 @@ K přidání vlastního pravidla řízení přístupu IP pro zásadu WAF, kterou
 
 V následujících příkladech:
 -  Nahraďte *IPAllowPolicyExampleCLI* jedinečnými zásadami, které jste vytvořili dříve.
--  Nahraďte *IP adresou-rozsah-1*, *IP adresou-Range-2* a vlastním rozsahem.
+-  Nahraďte *IP adresou-rozsah-1* , *IP adresou-Range-2* a vlastním rozsahem.
 
 Nejdřív vytvořte pravidlo povolení IP pro zásadu vytvořenou z předchozího kroku. 
 > [!NOTE]
@@ -166,9 +166,9 @@ V tomto příkladu se zásada WAF aplikuje na **FrontendEndpoints [0]**. Zásady
 Než začnete konfigurovat zásady omezení IP adres, nastavte prostředí PowerShell a vytvořte profil front-dveří Azure.
 
 #### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell
-Azure PowerShell poskytuje sadu rutin, které používají model [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pro správu prostředků Azure.
+Azure PowerShell poskytuje sadu rutin, které používají model [Azure Resource Manager](../../azure-resource-manager/management/overview.md) pro správu prostředků Azure.
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Podle pokynů na stránce se přihlaste do PowerShellu pomocí vašich přihlašovacích údajů Azure a pak nainstalujte modul AZ Module.
+[Azure PowerShell](/powershell/azure/) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Podle pokynů na stránce se přihlaste do PowerShellu pomocí vašich přihlašovacích údajů Azure a pak nainstalujte modul AZ Module.
 
 1. Pomocí následujícího příkazu se připojte k Azure a pak se přihlaste pomocí interaktivního dialogu.
     ```
@@ -190,7 +190,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 
 ### <a name="define-an-ip-match-condition"></a>Definování podmínky shody IP
 K definování podmínky shody IP použijte příkaz [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) .
-V následujícím příkladu nahraďte *IP adresou-rozsah-1*, *IP adresou-Range-2* vlastním rozsahem.    
+V následujícím příkladu nahraďte *IP adresou-rozsah-1* , *IP adresou-Range-2* vlastním rozsahem.    
 ```powershell
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable  RemoteAddr `
@@ -225,7 +225,7 @@ Vyhledejte název skupiny prostředků, která obsahuje profil front-dveří Azu
 
 ### <a name="link-a-waf-policy-to-an-azure-front-door-front-end-host"></a>Propojení zásady WAF s front-end hostitelem front-endu Azure
 
-Propojte objekt zásad WAF s existujícím front-end hostitelem a aktualizujte vlastnosti front-endu Azure. Nejdřív načtěte objekt služby Azure front-Dvířks pomocí [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor). Dále nastavte vlastnost **WebApplicationFirewallPolicyLink** na ID prostředku *$IPAllowPolicyExamplePS*vytvořené v předchozím kroku pomocí příkazu [set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) .
+Propojte objekt zásad WAF s existujícím front-end hostitelem a aktualizujte vlastnosti front-endu Azure. Nejdřív načtěte objekt služby Azure front-Dvířks pomocí [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor). Dále nastavte vlastnost **WebApplicationFirewallPolicyLink** na ID prostředku *$IPAllowPolicyExamplePS* vytvořené v předchozím kroku pomocí příkazu [set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) .
 
 ```azurepowershell
   $FrontDoorObjectExample = Get-AzFrontDoor `

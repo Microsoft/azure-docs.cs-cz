@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: e3f6f947b86b1cb34fde66c62199336403037827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea9ddd05fe6fc745a3eefc29ab4f1d6aababc936
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828073"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564697"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Architektura připojení SD-WAN s Azure Virtual WAN
 
@@ -44,9 +44,9 @@ Pomocí virtuální sítě WAN můžou uživatelé získat výběr cest Azure, c
 
 ## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>Model přímého propojení s síťové virtuální zařízení-in-VWAN-hub
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="Model přímého propojení":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="Model přímého propojení s síťové virtuální zařízení-in-VWAN-hub":::
 
-Tento model architektury podporuje nasazení [síťového virtuálního zařízení (síťové virtuální zařízení) jiného výrobce přímo do virtuálního rozbočovače](https://docs.microsoft.com/azure/virtual-wan/about-nva-hub). To umožňuje zákazníkům, kteří chtějí připojit svou pobočku CPE ke stejné značce síťové virtuální zařízení ve virtuálním centru, aby při připojování k úlohám Azure mohli využít výhod všech komplexních funkcí SD-WAN. 
+Tento model architektury podporuje nasazení [síťového virtuálního zařízení (síťové virtuální zařízení) jiného výrobce přímo do virtuálního rozbočovače](./about-nva-hub.md). To umožňuje zákazníkům, kteří chtějí připojit svou pobočku CPE ke stejné značce síťové virtuální zařízení ve virtuálním centru, aby při připojování k úlohám Azure mohli využít výhod všech komplexních funkcí SD-WAN. 
 
 Některé virtuální partneři sítě WAN pracovali tak, aby poskytovaly prostředí, které v rámci procesu nasazení automaticky konfiguruje síťové virtuální zařízení. Jakmile se síťové virtuální zařízení zřídí do virtuálního rozbočovače, všechny další konfigurace, které může být potřeba pro síťové virtuální zařízení, se musí provádět prostřednictvím portálu síťové virtuální zařízení partner nebo aplikace pro správu. Přímý přístup k síťové virtuální zařízení není k dispozici. Síťová virtuální zařízení, které jsou k dispozici pro nasazení přímo do služby Azure Virtual WAN, jsou navržené speciálně pro použití ve virtuálním centru. Pro partnery, kteří podporují síťové virtuální zařízení v centru VWAN a jejich Průvodci nasazením, si přečtěte článek věnované [virtuálním partnerům sítě WAN](virtual-wan-locations-partners.md#partners-with-integrated-virtual-hub-offerings) .
 
@@ -55,7 +55,7 @@ V tomto modelu je podporovaná optimalizace provozu od dodavatele, která je zal
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Model nepřímých propojení
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="Model přímého propojení":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="Model nepřímých propojení":::
 
 V tomto modelu architektury se k virtuálním rozbočovačům sítě WAN nepřímo připojí CPEsá větev SD-WAN. Jak ukazuje obrázek, virtuální CPE SD-WAN se nasadí do virtuální sítě typu Enterprise. Tento virtuální počítač se pak připojí k virtuálním rozbočovačům WAN pomocí protokolu IPsec. Virtuální CPE slouží jako brána SD-WAN do Azure. Větve, které potřebují přístup ke svým úlohám v Azure, budou k nim mít přístup přes bránu v-CPE.
 
@@ -63,7 +63,7 @@ Vzhledem k tomu, že připojení k Azure je přes bránu v-CPE (síťové virtu�
   
 ## <a name="managed-hybrid-wan-model"></a><a name="hybrid"></a>Spravovaný hybridní model sítě WAN
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="Model přímého propojení":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="Spravovaný hybridní model sítě WAN":::
 
 V tomto modelu architektury můžou podniky využívat spravované služby SD-WAN nabízené partnerem spravovaného poskytovatele služeb (MSP). Tento model je podobný přímým nebo nepřímým modelům popsaným výše. V tomto modelu se ale návrh SD-WAN, Orchestrace a operace doručí poskytovateli SD-WAN.
 

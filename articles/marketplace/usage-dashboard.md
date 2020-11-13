@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/09/2020
-author: mingshen-ms
-ms.author: mingshen
-ms.openlocfilehash: 1ae30d97e64dc17086e199c3fcc8188f54e6ab69
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+author: sayantanroy83
+ms.author: sroy
+ms.openlocfilehash: 5e2bdec8b3c628f1d470acb3e27bb18eabbc71ac
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490113"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565534"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Využití v analýzách komerčního marketplace
 
@@ -124,7 +124,7 @@ _**Tabulka 1: slovník datových podmínek**_
 | Typ nabídky | Typ nabídky | Typ nabídky komerčního tržiště. |
 | Typ licence Azure | Typ licence Azure | Typ licenční smlouvy používané zákazníky k nákupu Azure. Označuje se také jako kanál. Možné hodnoty jsou:<ui><li>Program Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise prostřednictvím prodejce</li><li>Průběžné platby</li></ul> |
 | Typ licence Marketplace | Typ licence Marketplace | Způsob fakturace nabídky komerčního obchodu na webu Marketplace. Možné hodnoty jsou:<ul><li>Účtuje se prostřednictvím Azure.</li><li>Přineste si vlastní licenci</li><li>Free</li><li>Microsoft jako prodejce</li></ul> |
-| SKU | SKU | Plán přidružený k této nabídce |
+| Skladová položka | Skladová položka | Plán přidružený k této nabídce |
 | Země zákazníka | Země nebo oblast zákazníka | Název země nebo oblasti, kterou zadal zákazník. Země nebo oblast se může lišit od země nebo oblasti v předplatném Azure zákazníka. |
 | Je verze Preview SKU | Je verze Preview SKU | Hodnota se zobrazí, pokud jste SKU označili jako "Preview". Hodnota bude "Ano", pokud je odpovídajícím způsobem označena skladová jednotka a pouze předplatná Azure, která jsou autorizována, můžete nasadit a použít tuto bitovou kopii. Pokud nebyla položka SKU identifikována jako "Preview", bude hodnota "ne". |
 | Typ fakturace SKU | Typ fakturace SKU | Typ fakturace přidružený k jednotlivým položkám SKU v nabídce Možné hodnoty jsou:<ul><li>Free</li><li>Hrazen</li></ul> |
