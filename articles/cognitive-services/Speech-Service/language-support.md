@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: a864717304dacaf6cf4c77c92050827af619ed39
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: cfd28171524ada5f5feea9e18e4b88a291254e88
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736688"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616786"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -26,7 +26,7 @@ Jazyková podpora se liší podle funkcí služby Speech. Následující tabulka
 
 Sada Microsoft Speech SDK i REST API podporují následující jazyky (národní prostředí). 
 
-Pro zvýšení přesnosti se přizpůsobení nabídne pro podmnožinu jazyků prostřednictvím nahrávání **zvuku a přepisu s popiskem** nebo **souvisejícího textu: věty** . Další informace o přizpůsobení najdete v tématu [Začínáme s Custom Speech](how-to-custom-speech.md).
+Pro zvýšení přesnosti se přizpůsobení nabídne pro podmnožinu jazyků prostřednictvím nahrávání **zvuku a přepisu s popiskem** nebo **souvisejícího textu: věty**. Další informace o přizpůsobení najdete v tématu [Začínáme s Custom Speech](how-to-custom-speech.md).
 
 <!--
 To get the AM and ML bits:
@@ -36,7 +36,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Jazyk                          | Národní prostředí | Vlastní nastavení                                   |
+| Jazyk                          | Národní prostředí (BCP-47) | Vlastní nastavení                                   |
 |-----------------------------------|--------|--------------------------------------------------|
 |Arabština (Bahrajn), moderní Standard  |`ar-BH` | Jazykový model                                   |
 |Arabština (Egypt)                     |`ar-EG` | Jazykový model                                   |
@@ -136,7 +136,7 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 
 Další informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#standard-and-neural-voices).
 
-|Jazyk  | Národní prostředí           | Pohlaví | Název hlasu | Podpora stylů |
+|Jazyk  | Národní prostředí (BCP-47)          | Pohlaví | Název hlasu | Podpora stylů |
 |--|--|--|--|--|
 | Arabština (Egypt) | `ar-EG` | Female | `ar-EG-SalmaNeural` | Obecné |
 | Arabština (Saúdská Arábie) | `ar-SA` | Female | `ar-SA-ZariyahNeural` | Obecné |
@@ -219,7 +219,7 @@ Pokud se chcete dozvědět, jak můžete nakonfigurovat a upravit hlasy neuronov
 
 Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a národních prostředích, což vám umožní převést text na syntetizované řeč. Další informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#standard-and-neural-voices).
 
-| Jazyk | Národní prostředí | Pohlaví | Název hlasu |
+| Jazyk | Národní prostředí (BCP-47) | Pohlaví | Název hlasu |
 |--|--|--|--|
 | Arabština (arabské písmo)  |  `ar-EG`  |  Female  |  `ar-EG-Hoda`|
 | Arabština (Saúdská Arábie)  |  `ar-SA`  |  Male  |  `ar-SA-Naayf`|
@@ -397,7 +397,7 @@ Rozhraní API pro **Překlad** řeči podporuje různé jazyky pro překlad hlas
 
 V následující tabulce najdete podporované jazyky pro různá rozhraní API rozpoznávání mluvčího. Další informace o rozpoznávání mluvčího najdete v tématu [Přehled](speaker-recognition-overview.md) .
 
-| Jazyk | Národní prostředí | Ověřování závislé na textu | Ověřování nezávislé na textu | Identifikace nezávislá na textu |
+| Jazyk | Národní prostředí (BCP-47) | Ověřování závislé na textu | Ověřování nezávislé na textu | Identifikace nezávislá na textu |
 |----|----|----|----|----|
 |Angličtina (USA)  |  en-US  |  ano  |  ano  |  ano |
 |Čínština (Mandarin, zjednodušená) | zh-CN     |     neuvedeno |     ano |     ano|

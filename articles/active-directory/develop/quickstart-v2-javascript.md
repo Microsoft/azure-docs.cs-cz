@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 919d2989cf1d86320d89e8f263bb2a192c992fb4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f2a01c4e4d364494d271fa676bca5bfac2677395
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533170"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592743"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
-V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové aplikace v JavaScriptu (SPA) můžou přihlašovat uživatelům osobních účtů, pracovních účtů a školních účtů. K volání rozhraní API pro Microsoft Graph nebo libovolné webové rozhraní API může získat přístupový token, a to prostřednictvím JavaScriptu. Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak se může aplikace v JavaScriptu (SPA) přihlašovat uživatelům a volat Microsoft Graph. Ukázka kódu také ukazuje, jak získat přístupový token pro volání rozhraní Microsoft Graph API nebo jakéhokoli webového rozhraní API.
+
+Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -203,7 +205,7 @@ Kód pro rychlý Start také ukazuje, jak inicializovat knihovnu MSAL:
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Kde  | Popis |
+> |Kde  | Description |
 > |---------|---------|
 > |`clientId`     | ID aplikace, která je zaregistrována v Azure Portal.|
 > |`authority`    | Volitelné Adresa URL autority, která podporuje typy účtů, jak je popsáno výše v části konfigurace. Výchozí autorita je `https://login.microsoftonline.com/common` . |
@@ -231,7 +233,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Kde  | Popis |
+> |Kde  | Description |
 > |---------|---------|
 > | `scopes`   | Volitelné Obsahuje obory, které jsou požadovány pro souhlas uživatele v době přihlášení. Například `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (tj `api://<Application ID>/access_as_user` .). |
 
@@ -261,7 +263,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Kde  | Popis |
+> |Kde  | Description |
 > |---------|---------|
 > | `scopes`   | Obsahuje požadované obory, které mají být vráceny v přístupovém tokenu pro rozhraní API. Například `[ "mail.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (tj `api://<Application ID>/access_as_user` .).|
 

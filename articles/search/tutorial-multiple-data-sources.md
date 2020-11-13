@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a1a7e19e598980b21ee6c41f6984de38d6a6f2b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c9d9c43ae1be755ccb30fc377692257a81332ea8
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791609"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593718"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Kurz: indexování z více zdrojů dat pomocí sady .NET SDK
 
@@ -31,7 +31,7 @@ V tomto kurzu provedete následující úlohy:
 > * Indexovat data hotelu z Azure Cosmos DB
 > * Sloučení dat z hotelových místností z úložiště objektů BLOB
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="overview"></a>Přehled
 
@@ -43,7 +43,7 @@ Hotovou verzi kódu v tomto kurzu najdete v následujícím projektu:
 
 Tento kurz byl aktualizován tak, aby používal balíček Azure.Search.Documents (verze 11). Starší verzi sady .NET SDK najdete v tématu [Ukázka kódu Microsoft. Azure. Search (verze 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources/v10) na GitHubu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + [Azure Cosmos DB](../cosmos-db/create-cosmosdb-resources-portal.md)
 + [Azure Storage](../storage/common/storage-account-create.md)
@@ -66,21 +66,21 @@ Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních h
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a potom přejděte na stránku přehled účtu Azure Cosmos DB.
 
-1. Vyberte **Průzkumník dat** a pak vyberte **Nová databáze** .
+1. Vyberte **Průzkumník dat** a pak vyberte **Nová databáze**.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="Vytvoření nové databáze" border="false":::
 
-1. Zadejte název **hotelu-místnosti-DB** . Přijměte výchozí hodnoty pro zbývající nastavení.
+1. Zadejte název **hotelu-místnosti-DB**. Přijměte výchozí hodnoty pro zbývající nastavení.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Vytvoření nové databáze" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Konfigurace databáze" border="false":::
 
 1. Vytvořte nový kontejner. Použijte existující databázi, kterou jste právě vytvořili. Zadejte **hotely** pro název kontejneru a použijte **/HotelId** pro klíč oddílu.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Vytvoření nové databáze" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Přidání kontejneru" border="false":::
 
 1. Vyberte **položky** v části **hotely** a pak klikněte na tlačítko **nahrát položku** na panelu příkazů. Přejděte na a potom vyberte soubor **cosmosdb/HotelsDataSubset_CosmosDb.jsve** složce projektu.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Vytvoření nové databáze" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Nahrát do kolekce Azure Cosmos DB" border="false":::
 
 1. Pomocí tlačítka Aktualizovat aktualizujte zobrazení položek v kolekci hotelů. Měli byste vidět sedm nových databázových dokumentů uvedených v seznamu.
 
@@ -88,15 +88,15 @@ Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních h
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob** a pak klikněte na **+ kontejner** .
+1. Přihlaste se k [Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob** a pak klikněte na **+ kontejner**.
 
 1. [Vytvořte kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md) s názvem **hotelové místnosti** pro uložení ukázkových souborů JSON pro hotelovou místnost. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Vytvoření nové databáze" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Vytvoření kontejneru objektů blob" border="false":::
 
-1. Po vytvoření kontejneru ho otevřete a na panelu příkazů vyberte **nahrát** . Přejděte do složky, která obsahuje ukázkové soubory. Vyberte všechny z nich a pak klikněte na **nahrát** .
+1. Po vytvoření kontejneru ho otevřete a na panelu příkazů vyberte **nahrát** . Přejděte do složky, která obsahuje ukázkové soubory. Vyberte všechny z nich a pak klikněte na **nahrát**.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Vytvoření nové databáze" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Nahrání souborů" border="false":::
 
 1. Zkopírujte název účtu úložiště a připojovací řetězec ze stránky **přístupové klíče** do poznámkového bloku. V pozdějším kroku budete potřebovat obě hodnoty pro **appsettings.js** .
 
@@ -112,21 +112,21 @@ K ověření pro vaši vyhledávací službu budete potřebovat adresu URL služ
 
 1. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Vytvoření nové databáze" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
 
 Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
 ## <a name="2---set-up-your-environment"></a>2. nastavení prostředí
 
-1. Spusťte Visual Studio a v nabídce **nástroje** vyberte **Správce balíčků NuGet** a pak **spravujte balíčky NuGet pro řešení...** . 
+1. Spusťte Visual Studio a v nabídce **nástroje** vyberte **Správce balíčků NuGet** a pak **spravujte balíčky NuGet pro řešení...**. 
 
 1. Na kartě **Procházet** vyhledejte a pak nainstalujte **Azure.Search.Documents** (verze 11,0 nebo novější). K dokončení instalace budete muset kliknout na další dialogová okna.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Vytvoření nové databáze" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Přidání knihoven Azure pomocí NuGet" border="false":::
 
 1. Vyhledejte **Microsoft.Extensions.Configuration** a **Microsoft.Extensions.Configuration.Jsna** balíčcích NuGet a nainstalujte je taky.
 
-1. Otevřete soubor řešení **/V11/AzureSearchMultipleDataSources.sln** .
+1. Otevřete soubor řešení **/V11/AzureSearchMultipleDataSources.sln**.
 
 1. V Průzkumník řešení upravte **appsettings.jsv** souboru, aby se přidaly informace o připojení.  
 
@@ -240,7 +240,7 @@ private static async Task CreateAndRunCosmosDbIndexerAsync(string indexName, Sea
     await indexerClient.CreateOrUpdateDataSourceConnectionAsync(cosmosDbDataSource);
 ```
 
-Po vytvoření zdroje dat program nastaví Azure Cosmos DB indexer s názvem **Hotel-místnosti-Cosmos-indexer** .
+Po vytvoření zdroje dat program nastaví Azure Cosmos DB indexer s názvem **Hotel-místnosti-Cosmos-indexer**.
 
 Program aktualizuje všechny existující indexery se stejným názvem, přepíše stávající indexer obsahem výše uvedeného kódu. Zahrnuje také akce resetování a spouštění pro případ, že chcete spustit tento příklad více než jednou.
 
@@ -350,7 +350,7 @@ await indexerClient.CreateOrUpdateIndexerAsync(blobIndexer);
 try
 {
     // Run the indexer.
-    await searchService.Indexers.RunAsync(cosmosDbIndexer.Name);
+    await searchService.Indexers.RunAsync(blobIndexer.Name);
 }
 catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
 {
@@ -369,7 +369,7 @@ Po spuštění programu můžete prozkoumat vyplněný index vyhledávání pomo
 
 V Azure Portal otevřete stránku **Přehled** služby Search a v seznamu **indexy** Najděte rejstřík **Hotel-místnosti – vzor** .
 
-  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Vytvoření nové databáze" border="false":::
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Seznam indexů Kognitivní hledání Azure" border="false":::
 
 V seznamu klikněte na rejstřík hotelových místností. Pro index se zobrazí rozhraní Průzkumníka služby Search. Zadejte dotaz pro termín, jako je například "luxus". Ve výsledcích by se měl zobrazit alespoň jeden dokument a tento dokument by měl v poli místností zobrazit seznam objektů místností.
 

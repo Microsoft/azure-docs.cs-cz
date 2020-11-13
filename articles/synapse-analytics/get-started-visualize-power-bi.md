@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: business-intelligence
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: c5c41b98d52a4b8182fb162c3bfa9a08c0df5e15
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 64a87df4e4fea9fb29e787ab3420f1a62f41323d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171851"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592409"
 ---
 # <a name="visualize-data-with-power-bi"></a>Vizualizace dat pomocí Power BI
 
@@ -37,13 +37,9 @@ Pracovní prostor Power BI můžete propojit s pracovním prostorem Azure synaps
 ### <a name="link-your-azure-synapse-workspace-to-your-new-power-bi-workspace"></a>Propojení pracovního prostoru Azure synapse s novým pracovním prostorem Power BI
 
 1. V synapse studiu si přečtěte, jak **Spravovat**  >  **propojené služby**.
-1. Vyberte **Nový**  >  **připojit k Power BI**a pak nastavte tato pole:
-
-    |Nastavení | Navrhovaná hodnota | 
-    |---|---|
-    |**Název**|**NYCTaxiWorkspace1**|
-    |**Název pracovního prostoru**|**NYCTaxiWorkspace1**|
-
+1. Vyberte **Nový**  >  **připojit k Power BI**
+1. Nastavte **název** na **NYCTaxiWorkspace1** .
+1. Nastavte **název pracovního prostoru** na **NYCTaxiWorkspace1**
 1. Vyberte **Vytvořit**.
 
 ### <a name="create-a-power-bi-dataset-that-uses-data-in-your-azure-synapse-workspace"></a>Vytvoření datové sady Power BI, která používá data v pracovním prostoru Azure synapse
@@ -52,7 +48,7 @@ Pracovní prostor Power BI můžete propojit s pracovním prostorem Azure synaps
 1. Přejít na **NYCTaxiWorkspace1**  >  **Power BI datových sad** a vyberte **Nový Power BI datová sada**.
 1. Najeďte myší na databázi **SQLDB1** a vyberte **Stáhnout soubor. pbids**.
 1. Otevřete stažený soubor **. pbids** . Power BI Desktop se otevře a automaticky se připojí k **SQLDB1** v pracovním prostoru Azure synapse.
-1. Pokud se zobrazí dialogové okno s názvem **databáze SQL serveru**:
+1. Pokud se zobrazí dialogové okno s názvem **databáze SQL serveru** :
     1. Vyberte **účet Microsoft**.
     1. Vyberte **Přihlásit** se a přihlaste se ke svému účtu.
     1. Vyberte **Connect** (Připojit).
@@ -64,17 +60,17 @@ Pracovní prostor Power BI můžete propojit s pracovním prostorem Azure synaps
     1. Přetáhněte sloupce **SumTripDistance** a **AvgTripDistance** na hodnoty **vizualizace**  >  **Values**.
 1. Na kartě **Domů** vyberte **publikovat**.
 1. Vyberte **Uložit** a uložte tak provedené změny.
-1. Zvolte název souboru **PassengerAnalysis. pbix**a pak vyberte Save ( **Uložit**).
-1. V **možnosti vybrat cíl**zvolte možnost **NYCTaxiWorkspace1**a pak klikněte na tlačítko **Vybrat**.
+1. Zvolte název souboru **PassengerAnalysis. pbix** a pak vyberte Save ( **Uložit** ).
+1. V **možnosti vybrat cíl** zvolte možnost **NYCTaxiWorkspace1** a pak klikněte na tlačítko **Vybrat**.
 1. Počkejte na dokončení publikování.
 
 ### <a name="configure-authentication-for-your-dataset"></a>Konfigurace ověřování pro datovou sadu
 
 1. Otevřete [PowerBI.Microsoft.com](https://powerbi.microsoft.com/) a **Přihlaste se**.
-1. Na levé straně v části **pracovní prostory**vyberte pracovní prostor **NYCTaxiWorkspace1** .
-1. V tomto pracovním prostoru Najděte datovou sadu nazvanou **Analýza osobního** prostředí a sestavu s názvem **Analýza osobních**dat.
+1. Na levé straně v části **pracovní prostory** vyberte pracovní prostor **NYCTaxiWorkspace1** .
+1. V tomto pracovním prostoru Najděte datovou sadu nazvanou **Analýza osobního** prostředí a sestavu s názvem **Analýza osobních** dat.
 1. Najeďte myší na **PassengerAnalysis** datovou sadu, vyberte tlačítko se třemi tečkami (...) a pak vyberte **Nastavení**.
-1. V části **přihlašovací údaje ke zdroji dat**nastavte **metodu ověřování** na **OAuth2**a pak vyberte **Přihlásit**se.
+1. V části **přihlašovací údaje ke zdroji dat** nastavte **metodu ověřování** na **OAuth2** a pak vyberte **Přihlásit** se.
 
 ### <a name="edit-a-report-in-synapse-studio"></a>Úprava sestavy v synapse studiu
 
@@ -82,15 +78,15 @@ Pracovní prostor Power BI můžete propojit s pracovním prostorem Azure synaps
 1. Přejít do centra pro **vývoj** .
 1. Najeďte myší na **Power BI** a vyberte uzel aktualizovat **Power BI sestavy** .
 1. V části **Power BI** byste měli vidět:
-    * V části **NYCTaxiWorkspace1**  >  **Power BI datové sady**se vytvoří nová datová sada s názvem **PassengerAnalysis**.
-    * V části **NYCTaxiWorkspace1**  >  **Power BI sestavy**se zobrazí nová sestava s názvem **PassengerAnalysis**.
+    * V části **NYCTaxiWorkspace1**  >  **Power BI datové sady** se vytvoří nová datová sada s názvem **PassengerAnalysis**.
+    * V části **NYCTaxiWorkspace1**  >  **Power BI sestavy** se zobrazí nová sestava s názvem **PassengerAnalysis**.
 1. Vyberte sestavu **PassengerAnalysis** . Sestava se otevře a můžete ji přímo v synapse studiu upravovat.
 
 ## <a name="monitor-activities"></a>Monitorování aktivit
 
 1. V synapse studiu přejdete do centra **monitorování** .
 1. V tomto umístění uvidíte historii všech aktivit prováděných v pracovním prostoru a ty, které jsou teď aktivní.
-1. Prozkoumejte **spuštění kanálu**, **Apache Spark aplikace**a **požadavky SQL** , abyste viděli, co jste už v pracovním prostoru provedli.
+1. Prozkoumejte **spuštění kanálu** , **Apache Spark aplikace** a **požadavky SQL** , abyste viděli, co jste už v pracovním prostoru provedli.
 
 ## <a name="next-steps"></a>Další kroky
 

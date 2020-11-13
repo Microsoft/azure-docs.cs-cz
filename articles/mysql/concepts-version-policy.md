@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: af2a58ecb97e4c62f437d0c693ec79a4b5f618b0
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 4903f1e48eb2f33c68d62c635201474b841ed146
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579228"
+ms.locfileid: "94591508"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>Zásady správy verzí Azure Database for MySQL
 
@@ -30,7 +30,7 @@ Azure Database for MySQL podporuje následující verze databáze.
 
 
 ## <a name="major-version-support"></a>Podpora hlavních verzí
-Každá hlavní verze MySQL bude podporována Azure Database for MySQL od data, kdy Azure začíná podporovat tuto verzi, dokud nebude verze vyřazením komunitou MySQL, jak je uvedeno v [zásadách správy verzí](https://en.wikipedia.org/wiki/mysql).
+Každá hlavní verze MySQL bude podporována Azure Database for MySQL od data, kdy Azure začíná podporovat tuto verzi, dokud nebude verze vyřazením komunitou MySQL, jak je uvedeno v [zásadách správy verzí](https://www.mysql.com/support/eol-notice.html).
 
 ## <a name="minor-version-support"></a>Podpora dílčí verze
 V rámci pravidelné údržby Azure Database for MySQL automaticky provádí upgrady dílčí verze na verzi služby MySQL upřednostňovanou verzí Azure. 

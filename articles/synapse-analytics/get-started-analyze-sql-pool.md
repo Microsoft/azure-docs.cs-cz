@@ -10,21 +10,21 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: bc16dde7d3156df08b946a15012a201054cd8e0a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147561"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592596"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analýza dat pomocí vyhrazených fondů SQL
 
 Azure synapse Analytics poskytuje možnost analyzovat data pomocí vyhrazeného fondu SQL. V tomto kurzu použijete data NYC taxislužby k prozkoumávání schopností dedicted fondu SQL.
 
-## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>Načtení dat taxislužby NYC do SQLDB1
+## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>Načtení dat taxislužby NYC do SQLPOOL1
 
 1. V synapse studiu přejděte do centra pro **vývoj** a pak vytvořte nový skript SQL.
-1. V části připojení k v tomto skriptu vyberte fond SQLDB1 (vytvořený v [kroku 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) tohoto kurzu).
+1. V části připojení k v tomto skriptu vyberte fond SQLPOOL1 (vytvořený v [kroku 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) tohoto kurzu).
 1. Zadejte následující kód:
     ```
     CREATE TABLE [dbo].[Trip]
@@ -76,10 +76,10 @@ Azure synapse Analytics poskytuje možnost analyzovat data pomocí vyhrazeného 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Prozkoumat data taxislužby NYC ve vyhrazeném fondu SQL
 
 1. V synapse studiu přejdete do centra **dat** .
-1. Přejít na **SQLDB1**  >  **tabulky**SQLDB1. Zobrazí se několik načtených tabulek.
+1. Přejít na **SQLPOOL1**  >  **tabulky** SQLPOOL1. Zobrazí se několik načtených tabulek.
 1. Klikněte pravým tlačítkem na **dbo. Tabulka cest** a výběr **nového skriptu SQL**  >  **Vyberte horní 100 řádků**.
 1. Počkejte, než se vytvoří a spustí nový skript SQL.
-1. Všimněte si, že v horní části SQL Script **Connect** se automaticky nastaví fond SQL s názvem **SQLDB1**.
+1. Všimněte si, že v horní části SQL Script **Connect** se automaticky nastaví fond SQL s názvem **SQLPOOL1**.
 1. Nahraďte text skriptu SQL tímto kódem a spusťte ho.
 
     ```sql

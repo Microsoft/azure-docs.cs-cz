@@ -4,12 +4,12 @@ description: Referenční informace o Azure Monitorch pochopit podporované slu�
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: 81f79b81c03e7996d7f6d45b002d8160740c3c14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fd6f07151c93b64c150f01e5c0b5c7f4cffed85
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318296"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593004"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Podporované kategorie pro protokoly prostředků Azure
 
@@ -497,7 +497,6 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 |Kategorie|Zobrazovaný název kategorie|
 |---|---|
 |NetworkSecurityGroupEvent|Událost skupiny zabezpečení sítě|
-|NetworkSecurityGroupFlowEvent|Událost toku pravidla skupiny zabezpečení sítě|
 |NetworkSecurityGroupRuleCounter|Čítač pravidla skupiny zabezpečení sítě|
 
 
@@ -603,7 +602,7 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 |Kategorie|Zobrazovaný název kategorie|
 |---|---|
-|chyby|chyby|
+|Chyby|Chyby|
 |QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|
 |QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|
 |SQLInsights|Přehledy SQL|
@@ -619,7 +618,7 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 |Zablokování|Zablokování|
 |DevOpsOperationsAudit|Protokoly auditu operací DevOps|
 |DmsWorkers|Pracovní procesy DMS|
-|chyby|chyby|
+|Chyby|Chyby|
 |ExecRequests|Požadavky exec|
 |QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|
 |QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|

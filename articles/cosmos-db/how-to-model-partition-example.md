@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: ef999d4b452f3f31942e1fb2ddb46efe760acff0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342143"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616242"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modelování a dělení dat ve službě Azure Cosmos DB s využitím příkladu z reálného světa
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,6 +21,8 @@ ms.locfileid: "93342143"
 Tento článek se sestavuje na několika Azure Cosmos DB konceptech, jako jsou [modelování dat](modeling-data.md), [vytváření oddílů](partitioning-overview.md)a [zajištěná propustnost](request-units.md) , která ukazují, jak se vypořádat s návrhem dat reálného světa.
 
 Pokud obvykle pracujete s relačními databázemi, pravděpodobně jste vytvořili zvyky a intuitionsi, jak navrhnout datový model. Vzhledem k konkrétním omezením, ale i k jedinečným síluem Azure Cosmos DB se většina těchto osvědčených postupů neprojeví dobře a může vás přetáhnout do podoptimálních řešení. Cílem tohoto článku je projít si kompletní proces modelování reálného případu použití na Azure Cosmos DB, z modelování položek až po společné umístění entit a vytváření oddílů kontejnerů.
+
+[Stáhněte si nebo zobrazte zdrojový kód generovaný komunitou](https://github.com/jwidmer/AzureCosmosDbBlogExample) , který ilustruje koncepty z tohoto článku. Tento vzorový kód přispěl Přispěvatel komunity a Azure Cosmos DB tým nepodporuje jeho údržbu.
 
 ## <a name="the-scenario"></a>Scénář
 

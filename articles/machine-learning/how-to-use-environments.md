@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 32748a996e0622c4b75d887aebf8a1805c5368bd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f3056c500453c2249d66a05079334851c851df33
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319074"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616616"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Vytvoření & použití softwarových prostředí v Azure Machine Learning
 
@@ -34,7 +34,7 @@ Příklady v tomto článku ukazují, jak:
 
 Základní informace o tom, jak prostředí pracují v Azure Machine Learning, najdete v tématu [co jsou ml prostředí](concept-environments.md) . Informace o konfiguraci vývojových prostředí najdete [tady](how-to-configure-environment.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
@@ -114,7 +114,7 @@ Ve výchozím nastavení se nově vytvořená image Docker zobrazí v registru k
 
 #### <a name="use-a-prebuilt-docker-image"></a>Použití předem připraveného obrazu Docker
 
-Ve výchozím nastavení služba automaticky používá jednu ze [základních imagí](https://github.com/Azure/AzureML-Containers)založených na Ubuntu Linux, konkrétně ta, kterou definuje `azureml.core.environment.DEFAULT_CPU_IMAGE` . Potom nainstaluje všechny zadané balíčky Pythonu definované pomocí poskytnutého prostředí Azure ML. Je také možné použít [vlastní základní image Docker](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image).
+Ve výchozím nastavení služba automaticky používá jednu ze [základních imagí](https://github.com/Azure/AzureML-Containers)založených na Ubuntu Linux, konkrétně ta, kterou definuje `azureml.core.environment.DEFAULT_CPU_IMAGE` . Potom nainstaluje všechny zadané balíčky Pythonu definované pomocí poskytnutého prostředí Azure ML. V [úložišti](https://github.com/Azure/AzureML-Containers)kontejnerů jsou k dispozici další základní image pro procesor a GPU Azure ml. Je také možné použít [vlastní základní image Docker](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image).
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults

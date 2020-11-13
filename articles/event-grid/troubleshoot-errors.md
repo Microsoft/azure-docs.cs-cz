@@ -3,15 +3,20 @@ title: Azure Event Grid – Průvodce odstraňováním potíží
 description: Tento článek uvádí seznam kódů chyb, chybové zprávy, popisy a doporučené akce.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1dd464339e7654f8886224ff07cf368b4724ff82
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 79533918ccc6995f459b39f058de9e01091c0958
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041398"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592987"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Řešení chyb Azure Event Grid
-Tato příručka pro řešení potíží poskytuje seznam chybových kódů Azure Event Grid, chybové zprávy, jejich popisy a doporučené akce, které byste měli provést při obdržení těchto chyb. 
+Tato příručka pro řešení potíží poskytuje následující informace: 
+
+- Kódy chyb Azure Event Grid
+- Chybové zprávy
+- Popisy chyb
+- Doporučené akce, které byste měli provést po obdržení těchto chyb. 
 
 ## <a name="error-code-400"></a>Kód chyby: 400
 | Kód chyby | Chybová zpráva | Description | Doporučení |
@@ -31,27 +36,17 @@ Tato příručka pro řešení potíží poskytuje seznam chybových kódů Azur
 
 | Kód chyby | Chybová zpráva | Description | Doporučená akce |
 | ---------- | ------------- | ----------- | ------------------ |
-| HttpStatusCode. Forbidden <br/>403 | Publikování do {tematický/Domain} klientem {IpAddress} bylo zamítnuto z důvodu pravidel filtrování adresy IpAddress. | V tématu nebo doméně jsou nakonfigurovaná pravidla brány firewall protokolu IP a přístup je omezený jenom na nakonfigurované IP adresy. | Přidání IP adresy do pravidel brány firewall protokolu IP najdete v tématu [Konfigurace brány firewall protokolu IP](configure-firewall.md) . |
-| HttpStatusCode. Forbidden <br/> 403 | Publikování do aplikace {tematický/Domain} klientem se zamítlo, protože požadavek pochází z privátního koncového bodu a nenašel se žádný souhlas privátního koncového bodu pro daný prostředek. | V tématu nebo doméně jsou nakonfigurovány privátní koncové body a požadavek na publikování pochází z privátního koncového bodu, který není nakonfigurován ani schválen. | Konfigurace privátního koncového bodu pro téma nebo doménu. [Konfigurace privátních koncových bodů](configure-private-endpoints.md) |
+| HttpStatusCode. Forbidden <br/>403 | Publikování do {tematický/Domain} klientem {IpAddress} bylo zamítnuto z důvodu pravidel filtrování IpAddress. | V tématu nebo doméně jsou nakonfigurovaná pravidla brány firewall protokolu IP a přístup je omezený jenom na nakonfigurované IP adresy. | Přidání IP adresy do pravidel brány firewall protokolu IP najdete v tématu [Konfigurace brány firewall protokolu IP](configure-firewall.md) . |
+| HttpStatusCode. Forbidden <br/> 403 | Publikování do aplikace {tematický/Domain} klientem se zamítlo, protože požadavek pochází z privátního koncového bodu a nenašel se žádný souhlas privátního koncového bodu pro daný prostředek. | V tématu nebo doméně jsou privátní koncové body a požadavek na publikování pochází z privátního koncového bodu, který není nakonfigurovaný ani schválen. | Konfigurace privátního koncového bodu pro téma nebo doménu. [Konfigurace privátních koncových bodů](configure-private-endpoints.md) |
 
-## <a name="troubleshoot-event-subscription-validation"></a>Řešení potíží s ověřováním odběru událostí
+Ověřte také, jestli je Webhook za službou Azure Application Gateway nebo bránou firewall webových aplikací. Pokud je, zakažte následující pravidla brány firewall a znovu proveďte příkaz HTTP POST:
 
-Pokud se při vytváření odběru událostí zobrazuje chybová zpráva, například `The attempt to validate the provided endpoint https://your-endpoint-here failed. For more details, visit https://aka.ms/esvalidation` , znamená to, že došlo k chybě ověřovací metody handshake. Chcete-li tuto chybu vyřešit, ověřte následující aspekty:
+- 920300 (žádost neobsahuje hlavičku Accept)
+- 942430 (omezené zjištění anomálií znaků SQL (args): počet speciálních znaků překročen (12))
+- 920230 (bylo zjištěno více kódování adresy URL)
+- 942130 (útok injektáže SQL: byl zjištěn SQL tautology.)
+- 931130 (možný útok na vzdálené zahrnutí souborů (RFI) = odkaz mimo doménu/odkaz)
 
-- Proveďte příspěvek HTTP na adresu URL Webhooku s [ukázkovým](webhook-event-delivery.md#validation-details) textem žádosti SubscriptionValidationEvent pomocí metody post nebo kudrlinkou nebo podobného nástroje.
-- Pokud Webhook implementuje mechanismus synchronního ověřování metodou handshake, ověřte, že se ValidationCode vrací jako součást odpovědi.
-- Pokud Webhook implementuje mechanismus ověřování metodou handshake s asynchronním ověřováním, ověřte, že jste příspěvek HTTP vrátil 200 OK.
-- Pokud Webhook vrací v odpovědi 403 (zakázáno), ověřte, jestli je Webhook za Application Gateway nebo bránou firewall webových aplikací. Pokud je, je nutné zakázat tato pravidla brány firewall a znovu provést operaci HTTP POST:
-
-  920300 (žádost neobsahuje hlavičku Accept, můžeme to opravit)
-
-  942430 (omezené zjištění anomálií znaků SQL (args): počet speciálních znaků překročen (12))
-
-  920230 (bylo zjištěno více kódování adresy URL)
-
-  942130 (útok injektáže SQL: byl zjištěn SQL Tautology.)
-
-  931130 (možný útok vzdáleného začlenění souborů (RFI) = odkaz na Off-Domain/odkaz)
 
 
 ## <a name="next-steps"></a>Další kroky

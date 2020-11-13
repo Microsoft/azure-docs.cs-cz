@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 10/30/2020
-ms.openlocfilehash: 5eb374806d0bdafa7f05b001e4446b184a446b52
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/12/2020
+ms.openlocfilehash: 27d48ef8961aa0b7fde4a92195ea92a1ec20c3f0
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577409"
+ms.locfileid: "94594194"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Kurz: Sdílení dat prostřednictvím služby Azure Data Share  
 
@@ -67,7 +67,7 @@ Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](http
 
 #### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>Předpoklady pro sdílení z fondu SQL Azure synapse Analytics (pracovní prostor)
 
-* Fond SQL Azure synapse Analytics (pracovní prostor) s tabulkami, které chcete sdílet. Sdílení zobrazení není aktuálně podporováno.
+* * Vyhrazený fond SQL ve službě Azure synapse Analytics (pracovní prostor) s tabulkami, které chcete sdílet. Sdílení zobrazení není aktuálně podporováno. Sdílení z fondu SQL bez serveru se v tuto chvíli nepodporuje.
 * Oprávnění k zápisu do fondu SQL v pracovním prostoru synapse, který je k dispozici v *Microsoft. synapse/Workspaces/sqlPools/Write*. Toto oprávnění existuje v roli **Přispěvatel**.
 * Oprávnění pro spravovanou identitu prostředku sdílení dat pro přístup k fondu SQL pracovního prostoru synapse. To lze provést pomocí následujících kroků: 
     1. V Azure Portal přejděte do pracovního prostoru synapse. V levém navigačním panelu vyberte Správce SQL Active Directory a nastavte si ho jako **správce Azure Active Directory**.
@@ -113,7 +113,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj účet pro sdílení dat.|
     | Skupina prostředků | *test-Resource-Group* | Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků. |
     | Umístění | *USA – východ 2* | Vyberte oblast pro svůj účet pro sdílení dat.
-    | Název | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
+    | Name | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
     | | |
 
 1. Vyberte **zkontrolovat + vytvořit** a pak **vytvořte** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty nebo méně. 

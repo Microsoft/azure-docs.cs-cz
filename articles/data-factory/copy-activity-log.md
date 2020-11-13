@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: c54b81ca25602fa77ad66bbb818df3cd8eee39a1
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: e56a840da07a2f6e966867699506f0122a0e7956
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94519967"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593636"
 ---
 #  <a name="session-log-in-copy-activity"></a>Protokol relace v aktivitě kopírování
 
@@ -60,9 +60,10 @@ Následující příklad poskytuje definici JSON pro povolení protokolu relace 
         },
         "logLocationSettings": {
             "linkedServiceName": {
-                "referenceName": "ADLSGen2",
+               "referenceName": "ADLSGen2",
                "type": "LinkedServiceReference"
-            }
+            },
+            "path": "sessionlog/"
         }
     }
 }
@@ -70,12 +71,12 @@ Následující příklad poskytuje definici JSON pro povolení protokolu relace 
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | -------- 
-enableCopyActivityLog | Když nastavíte hodnotu true, budete mít možnost protokolovat zkopírované soubory, přeskočené soubory nebo vynechané řádky.  | Ano<br/>False (výchozí) | Ne
-logLevel | V části informace se zaprotokolují všechny zkopírované soubory, Vynechané soubory a vynechané řádky. "Upozornění" bude protokolovat přeskočené soubory a pouze vynechané řádky.  | Informace<br/>Upozornění (výchozí) | Ne
-enableReliableLogging | Pokud je hodnota true, aktivita kopírování v spolehlivém režimu vyprázdní protokoly ihned po zkopírování každého souboru do cílového umístění.  Pokud kopírujete velké množství souborů s povoleným spolehlivým režimem protokolování v aktivitě kopírování, měli byste očekávat, že by to ovlivnilo propustnost kopírování, protože pro každé kopírování souborů jsou vyžadovány dvojité operace zápisu. Jedna žádost se nachází do cílového úložiště a další požadavek se ukládá do úložiště úložiště protokolu.  Aktivita kopírování v režimu nejlepšího úsilí vyprázdní protokoly se dávkou záznamů v časovém intervalu, kde propustnost kopírování bude mnohem méně ovlivněna. Úplnost a časová osa protokolování není v tomto režimu zaručena, protože je k dispozici několik možností, že poslední dávka událostí protokolu nebyla po selhání aktivity kopírování vyprázdněna do souboru protokolu. V tuto chvíli se zobrazí několik souborů zkopírovaných do cíle, které se zkopírují do protokolu.  | Ano<br/>False (výchozí) | Ne
-logLocationSettings | Skupina vlastností, které lze použít k určení umístění pro uložení protokolů relací. | | Ne
-linkedServiceName | Propojená služba [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) ukládat soubory protokolu relace. | Názvy `AzureBlobStorage` `AzureBlobFS` propojených služeb typu nebo, které odkazují na instanci, kterou používáte k ukládání souborů protokolu. | Ne
-program | Cesta souborů protokolu. | Zadejte cestu, do které chcete ukládat soubory protokolu. Pokud cestu nezadáte, služba vytvoří kontejner. | Ne
+enableCopyActivityLog | Když nastavíte hodnotu true, budete mít možnost protokolovat zkopírované soubory, přeskočené soubory nebo vynechané řádky.  | Ano<br/>False (výchozí) | No
+logLevel | V části informace se zaprotokolují všechny zkopírované soubory, Vynechané soubory a vynechané řádky. "Upozornění" bude protokolovat přeskočené soubory a pouze vynechané řádky.  | Informace<br/>Upozornění (výchozí) | No
+enableReliableLogging | Pokud je hodnota true, aktivita kopírování v spolehlivém režimu vyprázdní protokoly ihned po zkopírování každého souboru do cílového umístění.  Pokud kopírujete velké množství souborů s povoleným spolehlivým režimem protokolování v aktivitě kopírování, měli byste očekávat, že by to ovlivnilo propustnost kopírování, protože pro každé kopírování souborů jsou vyžadovány dvojité operace zápisu. Jedna žádost se nachází do cílového úložiště a další požadavek se ukládá do úložiště úložiště protokolu.  Aktivita kopírování v režimu nejlepšího úsilí vyprázdní protokoly se dávkou záznamů v časovém intervalu, kde propustnost kopírování bude mnohem méně ovlivněna. Úplnost a časová osa protokolování není v tomto režimu zaručena, protože je k dispozici několik možností, že poslední dávka událostí protokolu nebyla po selhání aktivity kopírování vyprázdněna do souboru protokolu. V tuto chvíli se zobrazí několik souborů zkopírovaných do cíle, které se zkopírují do protokolu.  | Ano<br/>False (výchozí) | No
+logLocationSettings | Skupina vlastností, které lze použít k určení umístění pro uložení protokolů relací. | | No
+linkedServiceName | Propojená služba [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) ukládat soubory protokolu relace. | Názvy `AzureBlobStorage` `AzureBlobFS` propojených služeb typu nebo, které odkazují na instanci, kterou používáte k ukládání souborů protokolu. | No
+program | Cesta souborů protokolu. | Zadejte cestu, do které chcete ukládat soubory protokolu. Pokud cestu nezadáte, služba vytvoří kontejner. | No
 
 
 ## <a name="monitoring"></a>Monitorování

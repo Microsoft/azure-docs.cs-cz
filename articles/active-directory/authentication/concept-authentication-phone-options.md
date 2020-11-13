@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 11/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 74be3f4218149f0cdb9f107c8aba0be76d8da27e
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377747"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593072"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Metody ověřování v Azure Active Directory Možnosti telefonu
 
@@ -32,7 +32,7 @@ Aby telefonní čísla fungovala správně, musí být ve formátu *+ CountryCod
 
 ## <a name="mobile-phone-verification"></a>Ověření mobilního telefonu
 
-V případě Azure Multi-Factor Authentication nebo SSPR se uživatelé mohou rozhodnout, že obdrží textovou zprávu s ověřovacím kódem, který se má zadat do přihlašovacího rozhraní, nebo přijmout telefonní hovor s výzvou k zadání kódu PIN.
+V případě Azure Multi-Factor Authentication nebo SSPR se uživatelé mohou rozhodnout, že obdrží textovou zprávu s ověřovacím kódem, který se má zadat do přihlašovacího rozhraní, nebo může získat telefonní hovor.
 
 Pokud uživatelé nechtějí, aby se jejich mobilní telefonní číslo zobrazoval v adresáři, ale chtějí je použít pro resetování hesla, Správci by neměli v adresáři naplnit telefonní číslo. Místo toho by měli uživatelé naplnit svůj ověřovací atribut pro **ověřování** prostřednictvím kombinovaného zápisu bezpečnostních údajů na adrese [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) . Správci můžou tyto informace zobrazit v profilu uživatele, ale nepublikují se jinde.
 
@@ -46,11 +46,11 @@ Při ověřování pomocí textové zprávy během SSPR nebo Azure Multi-Factor 
 
 ### <a name="phone-call-verification"></a>Ověření telefonního hovoru
 
-Při ověřování pomocí telefonního hovoru během SSPR nebo Azure Multi-Factor Authentication se na telefonním čísle zaregistrovaného uživatelem přivede automatizované hlasové volání. K dokončení procesu přihlašování se uživateli zobrazí výzva k zadání čísla PIN kódu, na kterém následuje znak # na své klávesnici.
+Při ověřování pomocí telefonního hovoru během SSPR nebo Azure Multi-Factor Authentication se na telefonním čísle zaregistrovaného uživatelem přivede automatizované hlasové volání. K dokončení procesu přihlašování se uživateli zobrazí výzva k stisknutí klávesy # na své klávesnici.
 
 ## <a name="office-phone-verification"></a>Ověřování pro telefon do kanceláře
 
-Při ověřování pomocí telefonního hovoru během SSPR nebo Azure Multi-Factor Authentication se na telefonním čísle zaregistrovaného uživatelem přivede automatizované hlasové volání. K dokončení procesu přihlašování se uživateli zobrazí výzva k zadání čísla PIN kódu, na kterém následuje znak # na své klávesnici.
+Při ověřování pomocí telefonního hovoru během SSPR nebo Azure Multi-Factor Authentication se na telefonním čísle zaregistrovaného uživatelem přivede automatizované hlasové volání. K dokončení procesu přihlašování se uživateli zobrazí výzva k stisknutí klávesy # na své klávesnici.
 
 ## <a name="troubleshooting-phone-options"></a>Řešení potíží s možnostmi telefonu
 
@@ -61,7 +61,7 @@ Pokud máte problémy s ověřováním pomocí telefonu pro Azure AD, přečtět
 * Chybné telefonní číslo nebo nesprávné číslo země/oblasti nebo nejasnost mezi osobním telefonním číslem a pracovním telefonním číslem.
    * Řešení potíží s uživatelským objektem a nakonfigurovanými metodami ověřování. Ujistěte se, že jsou registrována správná telefonní čísla.
 * Byl zadán nesprávný kód PIN.
-   * Potvrďte, že uživatel použil pro svůj účet správný PIN kód.
+   * Potvrďte, že uživatel použil pro svůj účet správný PIN kód (jenom uživatelé MFA serveru).
 * Volání předané do hlasové pošty.
    * Ujistěte se, že má uživatel zapnutý telefon a že je tato služba k dispozici ve své oblasti, nebo použijte alternativní metodu.
 * Uživatel je blokovaný

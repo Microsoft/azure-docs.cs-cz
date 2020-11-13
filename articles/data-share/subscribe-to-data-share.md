@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 10/30/2020
-ms.openlocfilehash: 752948d9dd6640a20963303833e7da613bc2e211
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/12/2020
+ms.openlocfilehash: 17c3e9ee157cedd31be39f472f619a2df9ae32a6
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577341"
+ms.locfileid: "94594177"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: Přijetí a získání dat prostřednictvím služby Azure Data Share  
 
@@ -67,7 +67,7 @@ Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](http
  
 #### <a name="prerequisites-for-receiving-data-into-azure-synapse-analytics-workspace-sql-pool"></a>Předpoklady pro příjem dat do fondu SQL Azure synapse Analytics (pracovní prostor)
 
-* Fond SQL Azure synapse Analytics (pracovní prostor).
+* Vyhrazený fond SQL ve službě Azure synapse Analytics (pracovní prostor). Příjem dat do fondu SQL bez serveru se momentálně nepodporuje.
 * Oprávnění k zápisu do fondu SQL v pracovním prostoru synapse, který je k dispozici v *Microsoft. synapse/Workspaces/sqlPools/Write*. Toto oprávnění existuje v roli **Přispěvatel**.
 * Oprávnění pro spravovanou identitu prostředku sdílení dat pro přístup ke fondu SQL pracovního prostoru synapse. To lze provést pomocí následujících kroků: 
     1. V Azure Portal přejděte do pracovního prostoru synapse. V levém navigačním panelu vyberte Správce SQL Active Directory a nastavte si ho jako **správce Azure Active Directory**.

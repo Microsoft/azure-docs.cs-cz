@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 08/27/2019
-ms.openlocfilehash: a9f5bac475fd019b294f79abf0acdfaff198f52b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdbc44158de2f24d7d33d68311979c3b8bdda85d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442743"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593973"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Kurz: Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,21 +48,21 @@ V tomto kroku vytvoříte elastický fond a přidáte do něj svou databázi.
 
 Vytvořte elastický fond pomocí Azure Portal.
 
-1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte "Azure SQL". Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
+1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby** a do vyhledávacího pole zadejte "Azure SQL". Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
 1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o různých databázích můžete zobrazit tak, že na dlaždici databáze vyberete Zobrazit podrobnosti.
 1. V rozevíracím seznamu **typ prostředku** na dlaždici **databáze SQL** vyberte **elastický fond** . Vyberte **vytvořit** a vytvořte tak elastický fond.
 
     ![Vybrat elastický fond](./media/failover-group-add-elastic-pool-tutorial/select-azure-sql-elastic-pool.png)
 
 1. Nastavte elastický fond s následujícími hodnotami:
-   - **Název**: Zadejte jedinečný název elastického fondu, například `myElasticPool` .
-   - **Předplatné**: v rozevíracím seznamu vyberte své předplatné.
-   - Skupina prostředků **: v**rozevíracím seznamu vyberte `myResourceGroup` skupinu prostředků, kterou jste vytvořili v části 1.
-   - **Server**: vyberte server, který jste vytvořili v části 1, z rozevíracího seznamu.  
+   - **Název** : Zadejte jedinečný název elastického fondu, například `myElasticPool` .
+   - **Předplatné** : v rozevíracím seznamu vyberte své předplatné.
+   - Skupina prostředků **: v** rozevíracím seznamu vyberte `myResourceGroup` skupinu prostředků, kterou jste vytvořili v části 1.
+   - **Server** : vyberte server, který jste vytvořili v části 1, z rozevíracího seznamu.  
 
        ![Vytvořit nový server pro elastický fond](./media/failover-group-add-elastic-pool-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **COMPUTE + úložiště**: vyberte **Konfigurovat elastický fond** pro konfiguraci výpočetních prostředků, úložiště a přidejte svoji databázi do elastického fondu. Na kartě **nastavení fondu** ponechte výchozí hodnotu Gen5 se 2 virtuální jádra a 32 GB.
+   - **COMPUTE + úložiště** : vyberte **Konfigurovat elastický fond** pro konfiguraci výpočetních prostředků, úložiště a přidejte svoji databázi do elastického fondu. Na kartě **nastavení fondu** ponechte výchozí hodnotu Gen5 se 2 virtuální jádra a 32 GB.
 
 1. Na stránce **Konfigurace** vyberte kartu **databáze** a pak zvolte možnost **Přidat databázi**. Zvolte databázi, kterou jste vytvořili v části 1, a pak vyberte **použít** pro přidání do elastického fondu. Pokud chcete použít nastavení elastického fondu a zavřít stránku **Konfigurace** , vyberte **použít** znovu.
 
@@ -133,7 +133,7 @@ V tomto kroku vytvoříte [skupinu převzetí služeb při selhání](auto-failo
 
 Vytvořte skupinu převzetí služeb při selhání pomocí Azure Portal.
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby** a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
 1. Vyberte elastický fond vytvořený v předchozí části, například `myElasticPool` .
 1. V podokně **Přehled** vyberte název serveru v části **název serveru** a otevřete tak nastavení serveru.
   
@@ -143,13 +143,13 @@ Vytvořte skupinu převzetí služeb při selhání pomocí Azure Portal.
 
     ![Přidat novou skupinu převzetí služeb při selhání](./media/failover-group-add-elastic-pool-tutorial/elastic-pool-failover-group.png)
 
-1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte následující hodnoty a pak vyberte **vytvořit**:
-    - **Název skupiny převzetí služeb při selhání**: Zadejte jedinečný název skupiny převzetí služeb při selhání, například `failovergrouptutorial` .
-    - **Sekundární server**: vyberte možnost *Konfigurace požadovaných nastavení* a pak zvolte **Vytvoření nového serveru**. Alternativně můžete zvolit již existující server jako sekundární server. Po zadání následujících hodnot pro nový sekundární server vyberte **Vybrat**.
-        - **Název serveru**: Zadejte jedinečný název sekundárního serveru, například `mysqlsecondary` .
-        - **Přihlašovací jméno správce serveru**: typ `azureuser`
-        - **Heslo**: zadejte komplexní heslo, které splňuje požadavky na heslo.
-        - **Umístění**: vyberte umístění z rozevíracího seznamu, například `East US` . Toto umístění nemůže být stejné jako primární server.
+1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte následující hodnoty a pak vyberte **vytvořit** :
+    - **Název skupiny převzetí služeb při selhání** : Zadejte jedinečný název skupiny převzetí služeb při selhání, například `failovergrouptutorial` .
+    - **Sekundární server** : vyberte možnost *Konfigurace požadovaných nastavení* a pak zvolte **Vytvoření nového serveru**. Alternativně můžete zvolit již existující server jako sekundární server. Po zadání následujících hodnot pro nový sekundární server vyberte **Vybrat**.
+        - **Název serveru** : Zadejte jedinečný název sekundárního serveru, například `mysqlsecondary` .
+        - **Přihlašovací jméno správce serveru** : typ `azureuser`
+        - **Heslo** : zadejte komplexní heslo, které splňuje požadavky na heslo.
+        - **Umístění** : vyberte umístění z rozevíracího seznamu, například `East US` . Toto umístění nemůže být stejné jako primární server.
 
        > [!NOTE]
        > Přihlašovací údaje serveru a firewall se musí shodovat s nastavením vašeho primárního serveru.
@@ -254,7 +254,7 @@ V tomto kroku dojde k selhání skupiny převzetí služeb při selhání pro se
 
 Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal.
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby** a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
 1. Vyberte elastický fond vytvořený v předchozí části, například `myElasticPool` .
 1. Kliknutím na název serveru v části **název serveru** otevřete nastavení serveru.
 

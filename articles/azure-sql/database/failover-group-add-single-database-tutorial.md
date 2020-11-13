@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 06/19/2019
-ms.openlocfilehash: e4709bf901ed74e0ea7589824a280651f8b73866
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8298c673ddc707130d0873f686e1baed3677a46f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793377"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593943"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Kurz: Přidání Azure SQL Database do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "92793377"
 > - Vytvořte skupinu převzetí služeb při selhání pro databázi mezi dvěma servery.
 > - Testovací převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 # <a name="the-portal"></a>[Portál](#tab/azure-portal)
 
@@ -49,7 +49,7 @@ K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) .
-- Nejnovější verze rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Nejnovější verze rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 ---
 
@@ -78,7 +78,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní svou data
 1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte následující hodnoty a pak vyberte **vytvořit** :
 
    - **Název skupiny převzetí služeb při selhání** : Zadejte jedinečný název skupiny převzetí služeb při selhání, například `failovergrouptutorial` .
-   - **Sekundární server** : vyberte možnost *Konfigurace požadovaných nastavení* a pak zvolte **Vytvoření nového serveru** . Alternativně můžete zvolit již existující server jako sekundární server. Po zadání následujících hodnot vyberte **Vybrat** .
+   - **Sekundární server** : vyberte možnost *Konfigurace požadovaných nastavení* a pak zvolte **Vytvoření nového serveru**. Alternativně můžete zvolit již existující server jako sekundární server. Po zadání následujících hodnot vyberte **Vybrat**.
       - **Název serveru** : Zadejte jedinečný název sekundárního serveru, například `mysqlsecondary` .
       - **Přihlašovací jméno správce serveru** : typ `azureuser`
       - **Heslo** : zadejte komplexní heslo, které splňuje požadavky na heslo.
@@ -199,7 +199,7 @@ Tato část kurzu používá následující rutiny rozhraní příkazového řá
 |---|---|
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří server, který je hostitelem databází a elastických fondů. |
 | [AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Vytvoří pravidla brány firewall serveru. |
-| [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Vytvoří skupinu převzetí služeb při selhání. |
+| [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | Vytvoří skupinu převzetí služeb při selhání. |
 
 ---
 
@@ -322,8 +322,8 @@ Tato část kurzu používá následující rutiny rozhraní příkazového řá
 
 | Příkaz | Poznámky |
 |---|---|
-| [AZ SQL Failover-Group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Vypíše skupiny převzetí služeb při selhání na serveru. |
-| [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Nastavte primární skupinu převzetí služeb při selhání pomocí převzetí služeb při selhání všemi databázemi z aktuálního primárního serveru. |
+| [AZ SQL Failover-Group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | Vypíše skupiny převzetí služeb při selhání na serveru. |
+| [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | Nastavte primární skupinu převzetí služeb při selhání pomocí převzetí služeb při selhání všemi databázemi z aktuálního primárního serveru. |
 
 ---
 
@@ -409,14 +409,14 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [AZ Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Nastaví předplatné jako aktuální aktivní předplatné. |
+| [AZ Account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | Nastaví předplatné jako aktuální aktivní předplatné. |
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří server hostující jednotlivé databáze a elastické fondy v Azure SQL Database. |
 | [AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Vytvoří pravidla brány firewall protokolu IP na úrovni serveru v Azure SQL Database. |
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Vytvoří databázi v Azure SQL Database. |
-| [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Vytvoří skupinu převzetí služeb při selhání v Azure SQL Database. |
-| [AZ SQL Failover-Group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Vypíše skupiny převzetí služeb při selhání na serveru v Azure SQL Database. |
-| [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Nastavte primární skupinu převzetí služeb při selhání pomocí převzetí služeb při selhání všemi databázemi z aktuálního primárního serveru. |
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest&preserve-view=true) | Vytvoří databázi v Azure SQL Database. |
+| [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | Vytvoří skupinu převzetí služeb při selhání v Azure SQL Database. |
+| [AZ SQL Failover-Group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | Vypíše skupiny převzetí služeb při selhání na serveru v Azure SQL Database. |
+| [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | Nastavte primární skupinu převzetí služeb při selhání pomocí převzetí služeb při selhání všemi databázemi z aktuálního primárního serveru. |
 | [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 # <a name="the-portal"></a>[Portál](#tab/azure-portal)

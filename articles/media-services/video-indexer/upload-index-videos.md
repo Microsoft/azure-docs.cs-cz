@@ -8,17 +8,19 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5106e1089e2353d2db884977eb51a4fd2717b99
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 85c9111b0b16667e847aaf70d746e87fe524ef87
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506171"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592919"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
+
+Po nahrání videa Video Indexer (volitelně) zakóduje video (popsané v článku). Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantou vytvoříte účet Video Indexeru, který je [spojený s vaším předplatným Azure a účtem služby Azure Media Services](connect-to-azure.md). Platíte za minuty, další informace najdete v tématu [Media Services ceny](https://azure.microsoft.com/pricing/details/media-services/).
 
 Při nahrávání videí pomocí rozhraní API Video Indexeru máte následující možnosti nahrání: 
 
@@ -26,34 +28,10 @@ Při nahrávání videí pomocí rozhraní API Video Indexeru máte následujíc
 * Odeslat videosoubor jako pole bajtů v textu žádosti
 * Pokud chcete použít existující aktivum služby Azure Media Services, zadejte [ID aktiva](../latest/assets-concept.md) (tato možnost se podporuje pouze u placených účtů).
 
-Po nahrání videa Video Indexer (volitelně) zakóduje video (popsané v článku). Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantou vytvoříte účet Video Indexeru, který je [spojený s vaším předplatným Azure a účtem služby Azure Media Services](connect-to-azure.md). Platíte za minuty, další informace najdete v tématu [Media Services ceny](https://azure.microsoft.com/pricing/details/media-services/).
-
 V tomto článku se dozvíte, jak nahrát a indexovat videa pomocí těchto možností:
 
-* [Web Video Indexeru](#website) 
-* [Rozhraní API Video Indexeru](#apis)
-
-## <a name="uploading-considerations-and-limitations"></a>Důležité informace o nahrávání a omezení
- 
-- Název videa nesmí být delší než 80 znaků.
-- Při nahrávání videa podle zadané adresy URL (upřednostňovaná možnost) musí být koncový bod zabezpečený pomocí protokolu TLS 1.2 (nebo novějšího).
-- Velikost nahrávaného souboru u možnosti s využitím adresy URL je omezená na 30 GB.
-- Délka adresy URL požadavku je omezená na 6 144 znaků a délka adresy URL řetězce dotazu je omezená na 4 096 znaků.
-- Velikost nahrávaného souboru u možnosti s využitím pole bajtů je omezená na 2 GB.
-- Časový limit u možnosti s využitím pole bajtů vyprší za 30 minut.
-- Adresa URL poskytnutá `videoURL` parametrem musí být zakódovaná.
-- Pro indexování aktiv služby Media Services platí stejná omezení jako pro indexování z adresy URL.
-- Ve Video Indexeru platí pro jednotlivé soubory limit maximální doby trvání 4 hodiny.
-- Adresa URL musí být přístupná (například se musí jednat o veřejnou adresu URL). 
-
-    Pokud se jedná o privátní adresu URL, v požadavku je potřeba zadat přístupový token.
-- Adresa URL musí odkazovat na platný mediální soubor, nikoli na webovou stránku, jako je například odkaz na `www.youtube.com` stránku.
-- V placeném účtu můžete nahrát až 50 filmů za minutu a ve zkušebním účtu můžete nahrát až 5 filmů za minutu.
-
-> [!Tip]
-> Doporučujeme používat rozhraní .NET Framework verze 4.6.2 nebo novější, protože starší rozhraní .NET Framework nemají ve výchozím nastavení protokol TLS 1.2.
->
-> Pokud potřebujete použít starší rozhraní .NET Framework, před voláním rozhraní REST API přidejte do kódu jeden řádek:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+* [Web Video Indexeru](#upload-and-index-a-video-using-the-video-indexer-website) 
+* [Rozhraní API Video Indexeru](#upload-and-index-with-api)
 
 ## <a name="supported-file-formats-for-video-indexer"></a>Podporované formáty souborů pro Video Indexer
 
@@ -66,7 +44,7 @@ Seznam formátů souborů, které můžete použít s Video Indexer, najdete v �
 - Videosoubory a zvukové soubory můžete vždycky odstranit, stejně jako veškerá metadata a přehledy z nich extrahovat Video Indexer. Po odstranění souboru z Video Indexer se soubor a jeho metadata a přehledy trvale odeberou z Video Indexer. Pokud jste ale ve službě Azure Storage implementovali vlastní řešení zálohování, zůstane soubor ve službě Azure Storage.
 - Průniku videa je identické, bez ohledu na to, jestli je nahrávání hotové, Video Indexer web nebo pomocí rozhraní API pro nahrání.
    
-## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>Nahrávání a indexování videa pomocí Video Indexer webu
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a>Nahrávání a indexování videa pomocí Video Indexer webu
 
 > [!NOTE]
 > Název videa nesmí být delší než 80 znaků.
@@ -82,7 +60,7 @@ Seznam formátů souborů, které můžete použít s Video Indexer, najdete v �
     > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Průběh nahrávání":::
 1. Po dokončení analýzy Video Indexer obdržíte e-mail s odkazem na vaše video a stručný popis toho, co bylo ve videu nalezeno. Například: lidé, témata, OCR.
 
-## <a name="upload-and-index-with-api"></a><a name="apis"></a>Nahrání a indexování pomocí rozhraní API
+## <a name="upload-and-index-with-api"></a>Nahrání a indexování pomocí rozhraní API
 
 Pomocí rozhraní API pro [nahrání videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) můžete nahrávat a indexovat videa na základě adresy URL. Následující ukázka kódu obsahuje komentovaný kód, který ukazuje, jak nahrát pole bajtů. 
 
@@ -101,7 +79,7 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
 - Změna stavu indexování: 
     - Vlastnosti:    
     
-        |Název|Popis|
+        |Název|Description|
         |---|---|
         |id|ID videa|
         |state|Stav videa|  
@@ -109,7 +87,7 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
 - Osoba identifikovaná ve videu:
   - Vlastnosti
     
-      |Název|Popis|
+      |Název|Description|
       |---|---|
       |id| ID videa|
       |faceId|ID obličeje, které se zobrazí v indexu videa|
@@ -359,11 +337,33 @@ public class AccountContractSlim
 
 Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 
-|Stavový kód|ErrorType (v textu odpovědi)|Popis|
+|Stavový kód|ErrorType (v textu odpovědi)|Description|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
 |400|VIDEO_ALREADY_FAILED|V daném účtu se méně než před 2 hodinami nepodařilo zpracovat stejné video. Klienti rozhraní API by měli před dalším nahráním videa vyčkat minimálně 2 hodiny.|
 |429||Zkušební účty se povolují 5 nahrání za minutu. Placené účty jsou povolené 50 nahrávání za minutu.|
+
+## <a name="uploading-considerations-and-limitations"></a>Důležité informace o nahrávání a omezení
+ 
+- Název videa nesmí být delší než 80 znaků.
+- Při nahrávání videa podle zadané adresy URL (upřednostňovaná možnost) musí být koncový bod zabezpečený pomocí protokolu TLS 1.2 (nebo novějšího).
+- Velikost nahrávaného souboru u možnosti s využitím adresy URL je omezená na 30 GB.
+- Délka adresy URL požadavku je omezená na 6 144 znaků a délka adresy URL řetězce dotazu je omezená na 4 096 znaků.
+- Velikost nahrávaného souboru u možnosti s využitím pole bajtů je omezená na 2 GB.
+- Časový limit u možnosti s využitím pole bajtů vyprší za 30 minut.
+- Adresa URL poskytnutá `videoURL` parametrem musí být zakódovaná.
+- Pro indexování aktiv služby Media Services platí stejná omezení jako pro indexování z adresy URL.
+- Ve Video Indexeru platí pro jednotlivé soubory limit maximální doby trvání 4 hodiny.
+- Adresa URL musí být přístupná (například se musí jednat o veřejnou adresu URL). 
+
+    Pokud se jedná o privátní adresu URL, v požadavku je potřeba zadat přístupový token.
+- Adresa URL musí odkazovat na platný mediální soubor, nikoli na webovou stránku, jako je například odkaz na `www.youtube.com` stránku.
+- V placeném účtu můžete nahrát až 50 filmů za minutu a ve zkušebním účtu můžete nahrát až 5 filmů za minutu.
+
+> [!Tip]
+> Doporučujeme používat rozhraní .NET Framework verze 4.6.2 nebo novější, protože starší rozhraní .NET Framework nemají ve výchozím nastavení protokol TLS 1.2.
+>
+> Pokud potřebujete použít starší rozhraní .NET Framework, před voláním rozhraní REST API přidejte do kódu jeden řádek:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
 ## <a name="next-steps"></a>Další kroky
 

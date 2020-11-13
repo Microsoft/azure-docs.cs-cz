@@ -1,6 +1,6 @@
 ---
 title: Transformace dat pomocí aktivity podregistru – Azure
-description: Zjistěte, jak můžete použít aktivitu podregistru v Azure Data Factory v1 ke spouštění dotazů na podregistr na vyžádání nebo vlastní cluster HDInsight.
+description: Přečtěte si, jak můžete použít aktivitu podregistru v Azure Data Factory v1 ke spouštění dotazů na podregistr na vyžádání nebo vlastní cluster HDInsight.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 36e0d8a0c0ee5e5202c47acdd74b869181cfaf9e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0271029814071b3a692209d3a2015cfdbe5fa941
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371677"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616769"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity podregistru v Azure Data Factory 
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -26,8 +26,8 @@ ms.locfileid: "92371677"
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
 > * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
 > * [Aktivita Sparku](data-factory-spark.md)
-> * [Aktivita spuštění dávky Azure Machine Learning Studio (Classic)](data-factory-azure-ml-batch-execution-activity.md)
-> * [Aktivita aktualizace prostředku Azure Machine Learning Studio (Classic)](data-factory-azure-ml-update-resource-activity.md)
+> * [Aktivita Provedení dávky služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Aktivita Aktualizace prostředků služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)
@@ -75,7 +75,7 @@ Aktivita podregistru HDInsight v Data Factoryovém [kanálu](data-factory-create
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | name |Název aktivity |Ano |
-| Popis |Text popisující, k čemu se aktivita používá |Ne |
+| description |Text popisující, k čemu se aktivita používá |Ne |
 | typ |HDinsightHive |Ano |
 | vztahují |Vstupy spotřebované aktivitou podregistru |Ne |
 | činnosti |Výstupy vytvářené aktivitou podregistru |Ano |

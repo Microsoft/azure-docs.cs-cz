@@ -6,14 +6,14 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: 534452d57884045f90c1d8d3ff44aadc3578cd4f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 30bd45cee962395ad6c6b87e393ea0f1b7329908
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542530"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616837"
 ---
-# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Použití mikroměřiče s Azure Application Insights Java SDK
+# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Použití mikroměřiče s Azure Application Insights Java SDK (nedoporučuje se)
 
 > [!IMPORTANT]
 > Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Telemetrie mikroměření se automaticky shromáždila pomocí Application Insights agenta Java 3,0 – postupujte podle pokynů pro [Application Insights agenta java 3,0](./java-in-process-agent.md).

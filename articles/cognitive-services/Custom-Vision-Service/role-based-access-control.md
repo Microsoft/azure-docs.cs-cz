@@ -10,22 +10,22 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 096946a1a63c0826381875cd3ce4eaf0129a85df
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d265b6698a87c1c651dff1413cf48dd4984cd606
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146370"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616888"
 ---
 # <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 
-Custom Vision podporuje řízení přístupu na základě role Azure (Azure RBAC), což je autorizační systém pro správu individuálního přístupu k prostředkům Azure. Pomocí Azure RBAC přiřadíte různým členům týmu různé úrovně oprávnění pro vaše projekty Custom Vision. Další informace o službě Azure RBAC najdete v [dokumentaci k Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/).
+Custom Vision podporuje řízení přístupu na základě role Azure (Azure RBAC), což je autorizační systém pro správu individuálního přístupu k prostředkům Azure. Pomocí Azure RBAC přiřadíte různým členům týmu různé úrovně oprávnění pro vaše projekty Custom Vision. Další informace o službě Azure RBAC najdete v [dokumentaci k Azure RBAC](../../role-based-access-control/index.yml).
 
 ## <a name="add-role-assignment-to-custom-vision-resource"></a>Přidání přiřazení role k Custom Vision prostředku
 
 Službu Azure RBAC je možné přiřadit k prostředku Custom Vision. Pokud chcete udělit přístup k prostředku Azure, přidejte přiřazení role.
 1. Na webu [Azure Portal](https://ms.portal.azure.com/) vyberte **Všechny služby**. 
-1. Pak vyberte **Cognitive Services**a přejděte ke konkrétnímu prostředku Custom Vision školení.
+1. Pak vyberte **Cognitive Services** a přejděte ke konkrétnímu prostředku Custom Vision školení.
    > [!NOTE]
    > Můžete také nastavit službu Azure RBAC pro celé skupiny prostředků, odběry nebo skupiny pro správu. Provedete to tak, že vyberete požadovanou úroveň oboru a pak přejdete na požadovanou položku (například vyberete **skupiny prostředků** a potom kliknete na požadovanou skupinu prostředků).
 1. V levém navigačním podokně vyberte **řízení přístupu (IAM)** .

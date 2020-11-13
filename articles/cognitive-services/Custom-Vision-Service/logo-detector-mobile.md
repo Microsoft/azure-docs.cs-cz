@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d7d66e247c6a6240bd6fde08612b8eb770bd3b92
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b85b2d9b81e84ec6c6e09fef16c66a919aa30cd7
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737550"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616752"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: rozpoznání loga služeb Azure v obrázcích fotoaparátu
 
@@ -29,14 +29,14 @@ V tomto kurzu se dozvíte, jak:
 > - Připojte svoji aplikaci k Azure Počítačové zpracování obrazu a Custom Vision.
 > - Vytvoření účtu instančního objektu Azure pro nasazení služeb Azure z aplikace
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete. 
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
-- Úlohy Xamarin pro Visual Studio (viz [instalace Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
+- Úlohy Xamarin pro Visual Studio (viz [instalace Xamarin](/xamarin/cross-platform/get-started/installation/windows))
 - Emulátor pro iOS nebo Android pro Visual Studio
-- Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (volitelné)
+- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (volitelné)
 
 ## <a name="get-the-source-code"></a>Získání zdrojového kódu
 
@@ -94,7 +94,7 @@ Pokud chcete získat další informace o tom, jak aplikace zpracovává Tato dat
 
 Custom Vision část tohoto kurzu jste dokončili. Pokud chcete aplikaci spustit, bude potřeba integrovat i službu Počítačové zpracování obrazu. Aplikace používá funkci rozpoznávání textu Počítačové zpracování obrazu k doplnění procesu zjišťování loga. Logo Azure může rozpoznat jeho vzhled *nebo* text, který se v blízkosti něj tiskne. Na rozdíl od Custom Vision modelů je Počítačové zpracování obrazu předvedený, aby na obrázcích a videích prováděl určité operace.
 
-Přihlaste se k odběru služby Počítačové zpracování obrazu, abyste získali adresu URL klíče a koncového bodu. Nápovědu k tomuto kroku najdete v tématu [Jak získat klíče předplatného](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe).
+Přihlaste se k odběru služby Počítačové zpracování obrazu, abyste získali adresu URL klíče a koncového bodu. Nápovědu k tomuto kroku najdete v tématu [Jak získat klíče předplatného](../cognitive-services-apis-create-account.md?tabs=singleservice%2Cwindows).
 
 ![Služba Počítačové zpracování obrazu v Azure Portal s vybranou nabídkou pro rychlý Start. Odkaz na klíče je popsaný, jak je adresa URL koncového bodu rozhraní API.](media/azure-logo-tutorial/comvis-keys.png)
 
@@ -104,7 +104,7 @@ Potom otevřete soubor *Source\VisualProvision\AppSettings.cs* a naplňte `Compu
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-K nasazení služeb do předplatného Azure vyžaduje aplikace účet instančního objektu Azure. Instanční objekt umožňuje delegovat specifická oprávnění k aplikaci pomocí řízení přístupu na základě role v Azure. Další informace najdete v tématu [Průvodce instančními objekty služby](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
+K nasazení služeb do předplatného Azure vyžaduje aplikace účet instančního objektu Azure. Instanční objekt umožňuje delegovat specifická oprávnění k aplikaci pomocí řízení přístupu na základě role v Azure. Další informace najdete v tématu [Průvodce instančními objekty služby](/azure-stack/operator/azure-stack-create-service-principals).
 
 Instanční objekt můžete vytvořit pomocí Azure Cloud Shell nebo rozhraní příkazového řádku Azure CLI, jak je znázorněno zde. Začněte tím, že se přihlásíte a vyberete předplatné, které chcete použít.
 
@@ -176,7 +176,7 @@ Pomocí těchto kroků spusťte aplikaci:
 
 Pokud jste postupovali podle všech kroků v tomto scénáři a použili jste aplikaci k nasazení služeb Azure do svého účtu, pokračujte na [Azure Portal](https://ms.portal.azure.com/). Tam můžete zrušit služby, které nechcete používat.
 
-Pokud plánujete vytvořit vlastní projekt rozpoznávání objektů pomocí Custom Vision, možná budete chtít odstranit projekt detekce loga, který jste vytvořili v tomto kurzu. Bezplatné předplatné pro Custom Vision umožňuje pouze dva projekty. Pokud chcete odstranit projekt zjišťování loga, na [webu Custom Vision](https://customvision.ai)otevřete **projekty** a potom vyberte ikonu odpadkového koše v části **můj nový projekt** .
+Pokud plánujete vytvořit vlastní projekt rozpoznávání objektů pomocí Custom Vision, možná budete chtít odstranit projekt detekce loga, který jste vytvořili v tomto kurzu. Bezplatné předplatné pro Custom Vision umožňuje pouze dva projekty. Pokud chcete odstranit projekt zjišťování loga, na [webu Custom Vision](https://customvision.ai)otevřete **projekty** a potom vyberte ikonu odpadkového koše v části **můj nový projekt**.
 
 ## <a name="next-steps"></a>Další kroky
 

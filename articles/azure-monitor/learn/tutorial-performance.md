@@ -3,16 +3,16 @@ title: Diagnostika problémů s výkonem pomocí Azure Application Insights | Do
 description: Kurz popisující, jak v aplikaci vyhledat a diagnostikovat problémy s výkonem pomocí Azure Application Insights.
 ms.subservice: application-insights
 ms.topic: tutorial
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 3c7185e07190895dfcc97555c6603049ed41c18c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df7cfff7d5bf1b89f88105f79c072d1d7e731b31
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322495"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592562"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Vyhledání a diagnostika problémů s výkonem pomocí Azure Application Insights
 
@@ -102,11 +102,6 @@ Stejně jako data shromážděná pro výkon serveru Application Insights zpří
 2. Protokoly se otevře s dotazem pro každé zobrazení na panelu. První dotaz zobrazí dobu trvání různých zobrazení stránek v průběhu času.
 
     ![Dotaz na protokoly](media/tutorial-performance/10-page-view-logs.png)
-
-3.  Inteligentní Diagnostika je funkce protokolů, které určují jedinečné vzory v datech. Když kliknete na tečku inteligentní diagnostiky ve spojnicovém grafu, spustí se stejný dotaz bez záznamů, které anomálii způsobily. Podrobnosti o těchto záznamech se zobrazí v části dotazu s komentáři, takže můžete identifikovat vlastnosti zobrazení stránek, které způsobují nadměrnou dobu trvání.
-
-    ![Protokoluje pomocí inteligentní diagnostiky](media/tutorial-performance/11-page-view-logs-dsmart.png)
-
 
 ## <a name="next-steps"></a>Další kroky
 Nyní, když jste se naučili, jak identifikovat výjimky za běhu, přejděte k dalšímu kurzu, ve kterém zjistíte, jak jako reakci na chyby vytvářet upozornění.

@@ -1,18 +1,18 @@
 ---
-title: Povolit a dotazovat diagnostické protokoly
+title: Povolení diagnostických protokolů a dotazování na ně
 titleSuffix: Azure Digital Twins
 description: Podívejte se, jak povolit protokolování s nastavením diagnostiky a zadat dotaz na protokoly pro okamžité prohlížení.
 author: baanders
 ms.author: baanders
 ms.date: 11/9/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0d775ffa1ce063c01fc6762d77201e5a4caaad87
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d988617fcaf7479c7bb3356e6ef6f87824ed23a7
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411747"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616650"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Řešení potíží se službou Azure Digital nevláken: protokolování diagnostiky
 
@@ -114,7 +114,7 @@ Tady jsou popisy polí a vlastností pro protokoly rozhraní API.
 
 | Název pole | Datový typ | Popis |
 |-----|------|-------------|
-| `Time` | Datum a čas | Datum a čas, kdy k této události došlo, v UTC |
+| `Time` | DateTime | Datum a čas, kdy k této události došlo, v UTC |
 | `ResourceID` | Řetězec | ID prostředku Azure Resource Manager prostředku, ve kterém se událost uskutečnila |
 | `OperationName` | Řetězec  | Typ akce prováděné během události |
 | `OperationVersion` | Řetězec | Verze rozhraní API využitá během události |
@@ -200,7 +200,7 @@ Toto je schéma pro `ADTEventRoutesOperation` protokoly. Obsahují podrobnosti t
 
 |Název pole | Datový typ | Popis |
 |-----|------|-------------|
-| `Time` | Datum a čas | Datum a čas, kdy k této události došlo, v UTC |
+| `Time` | DateTime | Datum a čas, kdy k této události došlo, v UTC |
 | `ResourceId` | Řetězec | ID prostředku Azure Resource Manager prostředku, ve kterém se událost uskutečnila |
 | `OperationName` | Řetězec  | Typ akce prováděné během události |
 | `Category` | Řetězec | Typ prostředku, který se emituje. |

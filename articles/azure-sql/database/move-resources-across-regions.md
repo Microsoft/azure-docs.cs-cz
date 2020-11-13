@@ -8,16 +8,16 @@ ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 0b78419f4fb37bb96e2c71c89f740a35914ccede
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae6c87c9eabea837ba9c43676d4ca712caa385cb
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446381"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594160"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>Přesunutí prostředků do nové oblasti – Azure SQL Database & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -68,7 +68,7 @@ Tento článek poskytuje obecný pracovní postup pro přesun prostředků do ji
 
 ### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
 
-Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**:
+Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState** :
 
 - **ReplicationState = 2** (CATCH_UP) znamená, že se databáze synchronizuje a že je možné provést její bezpečné převzetí služeb při selhání.
 - **ReplicationState = 0** (osazení) znamená, že databáze ještě není osazená, a pokus o převzetí služeb při selhání se nezdaří.
@@ -122,7 +122,7 @@ Až se přesun dokončí, odeberte prostředky ve zdrojové oblasti, abyste se v
 
 ### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
 
-Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**:
+Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState** :
 
 - **ReplicationState = 2** (CATCH_UP) znamená, že se databáze synchronizuje a že je možné provést její bezpečné převzetí služeb při selhání.
 - **ReplicationState = 0** (osazení) znamená, že databáze ještě není osazená, a pokus o převzetí služeb při selhání se nezdaří.
@@ -170,7 +170,7 @@ Replikace všech databází na každé instanci se iniciuje automaticky. Další
 
 ### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
 
-Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**:
+Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState** :
 
 - **ReplicationState = 2** (CATCH_UP) znamená, že se databáze synchronizuje a že je možné provést její bezpečné převzetí služeb při selhání.
 - **ReplicationState = 0** (osazení) znamená, že databáze ještě není osazená, a pokus o převzetí služeb při selhání se nezdaří.

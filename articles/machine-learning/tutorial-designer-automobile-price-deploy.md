@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 11/13/2020
 ms.custom: designer
-ms.openlocfilehash: 31b742144bfb20af14cf6f5e95f5dfc951845ee2
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5a5d166e36b2870ceb081c1c6d2635e01ab43a4d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555511"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592545"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Kurz: nasazení modelu strojového učení pomocí návrháře
 
@@ -112,6 +112,8 @@ Po dokončení nasazení můžete zobrazit koncový bod v reálném čase tak, �
 1. Na kartě **Podrobnosti** můžete zobrazit další informace, jako je například identifikátor URI, stav a značky REST.
 
 1. Na kartě **spotřebovávat** můžete najít klíče zabezpečení a nastavit metody ověřování.
+
+1. Na kartě **protokoly nasazení** můžete najít podrobné protokoly nasazení koncového bodu v reálném čase. 
 
 Další informace o využívání webové služby najdete v tématu [Spotřeba modelu nasazeného jako WebService](how-to-consume-web-service.md) .
 

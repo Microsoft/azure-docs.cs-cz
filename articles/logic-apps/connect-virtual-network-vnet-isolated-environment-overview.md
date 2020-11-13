@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/05/2020
-ms.openlocfilehash: 86d647a79b7babc2780cb0db904e689f3916673f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/12/2020
+ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500381"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616922"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
 V některých případech vaše aplikace logiky potřebuje přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a další systémy nebo služby, které jsou uvnitř nebo připojené k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md). K nastavení tohoto přístupu můžete [vytvořit *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). ISE je instance služby Logic Apps, která využívá vyhrazené prostředky a spouští se odděleně od "globální" víceklientské služby Logic Apps.
 
-Například některá virtuální síť Azure používá privátní koncové body, které můžete nastavit prostřednictvím [privátního propojení Azure](../private-link/private-link-overview.md)a poskytnout tak přístup ke službám Azure PaaS, jako jsou Azure Storage, Azure Cosmos DB nebo Azure SQL Database, partnerské služby nebo služby zákazníkům hostované v Azure. Pokud vaše aplikace logiky potřebují přístup k virtuálním sítím, které používají privátní koncové body, musíte tyto aplikace logiky vytvořit, nasadit a spustit v rámci ISE.
+Některé virtuální sítě Azure například používají privátní koncové body, které můžete nastavit prostřednictvím [privátního propojení Azure](../private-link/private-link-overview.md)a poskytnout tak přístup ke službám Azure PaaS, jako jsou Azure Storage, Azure Cosmos DB nebo Azure SQL Database, partnerské služby nebo služby zákazníkům hostované v Azure. Pokud vaše aplikace logiky potřebují přístup k virtuálním sítím, které používají privátní koncové body, musíte tyto aplikace logiky vytvořit, nasadit a spustit v rámci ISE.
 
 Když vytvoříte ISE, Azure *vloží* nebo nasadí tento ISE do vaší virtuální sítě Azure. Tuto ISE pak můžete použít jako umístění pro aplikace logiky a účty pro integraci, které potřebují přístup.
 
@@ -33,7 +33,7 @@ Spouštění Logic Apps ve vaší vlastní samostatné vyhrazené instanci pomá
 
 * Přímý přístup k prostředkům, které jsou uvnitř nebo připojené k vaší virtuální síti
 
-  Logic Apps, které vytvoříte a spustíte ve ISE, můžou používat [speciálně navržené konektory, které se spouštějí ve vašich ISE](../connectors/apis-list.md#ise-connectors). Pokud konektor ISE existuje pro místní systém nebo zdroj dat, můžete se připojit přímo, aniž byste museli používat místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md). Další informace najdete v části [vyhrazená oproti více tenantů](#difference) a [přístup k místním systémům](#on-premises) dále v tomto tématu.
+  Logic Apps, které vytvoříte a spustíte ve ISE, můžou používat [speciálně navržené konektory, které běží ve vašich ISE](../connectors/apis-list.md#ise-connectors). Pokud konektor ISE existuje pro místní systém nebo zdroj dat, můžete se připojit přímo, aniž byste museli používat místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md). Další informace najdete v části [vyhrazená oproti více tenantů](#difference) a [přístup k místním systémům](#on-premises) dále v tomto tématu.
 
 * Pokračování přístupu k prostředkům, které jsou mimo nebo nejsou připojené k virtuální síti
 
@@ -65,9 +65,9 @@ Když vytváříte a spouštíte Logic Apps v ISE, získáte stejné uživatelsk
 
   Pokud je konektor ISE dostupný pro místní systém nebo zdroj dat, můžete se s vzácnými výjimkami připojit přímo bez použití [místní brány dat](../logic-apps/logic-apps-gateway-connection.md). Další informace najdete v části [přístup k místním systémům](#on-premises) dále v tomto tématu.
 
-* Spravované konektory, které nezobrazují popisek **ISE** , fungují i pro Logic Apps uvnitř ISE. Tyto konektory se *vždycky spouštějí ve službě Logic Apps více tenantů*, nikoli v ISE.
+* Spravované konektory, které nezobrazují popisek **ISE** , fungují i pro Logic Apps uvnitř ISE. Tyto konektory se *vždycky spouštějí ve službě Logic Apps více tenantů* , nikoli v ISE.
 
-* Vlastní konektory, které vytvoříte *mimo ISE*, bez ohledu na to, jestli vyžadují místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md), budou i nadále fungovat pro Logic Apps v rámci ISE. Vlastní konektory, které vytvoříte *ve ISE* , ale nebudou fungovat s místní bránou dat. Další informace najdete v tématu [přístup k místním systémům](#on-premises).
+* Vlastní konektory, které vytvoříte *mimo ISE* , bez ohledu na to, jestli vyžadují místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md), budou i nadále fungovat pro Logic Apps v rámci ISE. Vlastní konektory, které vytvoříte *ve ISE* , ale nebudou fungovat s místní bránou dat. Další informace najdete v tématu [přístup k místním systémům](#on-premises).
 
 <a name="on-premises"></a>
 
@@ -79,15 +79,15 @@ Logic Apps, které běží v rámci ISE, můžou přímo přistupovat k místní
 
 * Konektor **ISE** , pokud je k dispozici pro místní systém nebo zdroj dat
 
-  Pokud je k dispozici konektor ISE, můžete získat přímý přístup k systému nebo zdroji dat bez [místní brány dat](../logic-apps/logic-apps-gateway-connection.md). Pokud ale potřebujete získat přístup k SQL Server z ISE a používat ověřování systému Windows, musíte použít verzi non-ISE konektoru a místní bránu dat. Verze ISE konektoru nepodporuje ověřování systému Windows. Další informace najdete v tématech [konektory ISE](../connectors/apis-list.md#ise-connectors) a [připojení z prostředí integrační služby](../connectors/apis-list.md#integration-service-environment).
+  Pokud je k dispozici konektor ISE, můžete získat přímý přístup k systému nebo zdroji dat bez místní [brány dat](../logic-apps/logic-apps-gateway-connection.md). Pokud ale potřebujete získat přístup k SQL Server z ISE a používat ověřování systému Windows, musíte použít verzi non-ISE konektoru a místní bránu dat. Verze ISE konektoru nepodporuje ověřování systému Windows. Další informace najdete v tématech [konektory ISE](../connectors/apis-list.md#ise-connectors) a [připojení z prostředí integrační služby](../connectors/apis-list.md#integration-service-environment).
 
 * Vlastní konektor
 
-  * Vlastní konektory, které vytvoříte *mimo ISE*, bez ohledu na to, jestli vyžadují místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md), budou i nadále fungovat pro Logic Apps v rámci ISE.
+  * Vlastní konektory, které vytvoříte *mimo ISE* , bez ohledu na to, jestli vyžadují místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md), budou i nadále fungovat pro Logic Apps v rámci ISE.
 
   * Vlastní konektory, které vytvoříte *ve ISE* , nefungují s místní bránou dat. Tyto konektory mají ale přímý přístup k místním systémům a zdrojům dat, které jsou uvnitř nebo připojené k virtuální síti, která je hostitelem vaší ISE. Proto Logic Apps, které jsou uvnitř ISE, obvykle nepotřebují bránu dat při přístupu k těmto prostředkům.
 
-Chcete-li získat přístup k místním systémům a zdrojům dat, které nemají konektory ISE, jsou mimo vaši virtuální síť nebo nejsou připojené k virtuální síti, je stále nutné použít místní bránu dat. Logic Apps v rámci ISE můžou dál používat konektory, které nemají štítek **Core** nebo **ISE** . Tyto konektory se právě spouštějí ve víceklientské Logic Apps službě, nikoli v ISE. 
+Chcete-li získat přístup k místním systémům a zdrojům dat, které nemají konektory ISE, jsou mimo vaši virtuální síť nebo nejsou připojené k virtuální síti, je stále nutné použít místní bránu dat. Logic Apps v rámci ISE můžou dál používat konektory, které nemají štítek **Core** nebo **ISE** . Tyto konektory se spouštějí ve víceklientské Logic Apps službě, nikoli v ISE. 
 
 <a name="ise-level"></a>
 
@@ -99,7 +99,7 @@ Při vytváření ISE můžete vybrat SKU pro vývojáře nebo SKU úrovně Prem
 
   Poskytuje ISE s nižšími náklady, které můžete použít pro experimentování, vývoj a testování, ale ne pro produkční nebo výkonnostní testování. SKU pro vývojáře obsahuje integrované triggery a akce, standardní konektory, podnikové konektory a jeden účet pro integraci [bezplatné úrovně](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) za pevnou měsíční cenu. Tato SKU ale nezahrnuje žádnou smlouvu o úrovni služeb (SLA), možnosti pro škálování kapacity nebo redundanci při recyklaci, což znamená, že se můžete setkat s prodlevami nebo výpadky.
 
-* **Premium**
+* **Nárok**
 
   Poskytuje ISE, který můžete použít pro produkční prostředí, včetně podpory SLA, integrovaných triggerů a akcí, standardních konektorů, podnikových konektorů, jednoho účtu pro integraci na [standardní úrovni](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) , možností škálování kapacity a redundance během recyklace za pevnou měsíční cenu.
 
@@ -117,18 +117,26 @@ Při vytváření ISE můžete použít buď interní nebo externí koncové bod
 > [!IMPORTANT]
 > Koncový bod přístupu můžete vybrat jenom během vytváření ISE a tuto možnost nemůžete později změnit.
 
-* **Interní**: soukromé koncové body umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazit a přistupovat ke vstupům a výstupům z historie spuštění Logic Apps *jenom z vaší virtuální sítě*.
+* **Interní** : soukromé koncové body umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazit a přistupovat ke vstupům a výstupům z historie spuštění Logic Apps *jenom z vaší virtuální sítě*.
 
   > [!IMPORTANT]
-  > Ujistěte se, že máte síťové připojení mezi soukromými koncovými body a počítačem, ze kterého chcete získat přístup k historii spuštění. V opačném případě se při pokusu o zobrazení historie spuštění vaší aplikace logiky zobrazí chybová zpráva oznamující, že došlo k neočekávané chybě. Nepovedlo se načíst.
+  > Pokud potřebujete tyto triggery založené na webhookech použít, při vytváření ISE použijte externí koncové body, *ne* interní koncové body:
+  > 
+  > * Azure DevOps
+  > * Azure Event Grid
+  > * Common Data Service
+  > * Office 365
+  > * SAP (verze ISE)
+  > 
+  > Také se ujistěte, že máte síťové připojení mezi soukromými koncovými body a počítačem, ze kterého chcete získat přístup k historii spuštění. V opačném případě se při pokusu o zobrazení historie spuštění vaší aplikace logiky zobrazí chybová zpráva oznamující, že došlo k neočekávané chybě. Nepovedlo se načíst.
   >
   > ![Azure Storage chyba akce, která způsobila neschopnost odesílat přenosy přes bránu firewall](./media/connect-virtual-network-vnet-isolated-environment-overview/integration-service-environment-error.png)
   >
   > Například klientský počítač může existovat uvnitř virtuální sítě ISE nebo uvnitř virtuální sítě, která je připojená k virtuální síti ISE prostřednictvím partnerského vztahu nebo virtuální privátní sítě. 
 
-* **External**: veřejné koncové body umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazit a přistupovat ke vstupům a výstupům z historie spuštění Logic Apps *z vnějšku vaší virtuální sítě*. Pokud používáte skupiny zabezpečení sítě (skupin zabezpečení sítě), zajistěte, aby byly nastavené s příchozími pravidly, aby bylo možné povolit přístup k vstupům a výstupům historie spuštění. Další informace najdete v tématu [Povolení přístupu pro ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
+* **External** : veřejné koncové body umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazit a přistupovat ke vstupům a výstupům z historie spuštění Logic Apps *z vnějšku vaší virtuální sítě*. Pokud používáte skupiny zabezpečení sítě (skupin zabezpečení sítě), zajistěte, aby byly nastavené s příchozími pravidly, aby bylo možné povolit přístup k vstupům a výstupům historie spuštění. Další informace najdete v tématu [Povolení přístupu pro ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
 
-Pokud chcete zjistit, jestli váš ISE používá interní nebo externí přístupový bod, v nabídce ISE v části **Nastavení**vyberte **vlastnosti**a najděte vlastnost **koncového bodu přístupu** :
+Pokud chcete zjistit, jestli váš ISE používá interní nebo externí přístupový bod, v nabídce ISE v části **Nastavení** vyberte **vlastnosti** a najděte vlastnost **koncového bodu přístupu** :
 
 ![Najít koncový bod pro přístup k ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 

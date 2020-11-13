@@ -1,6 +1,6 @@
 ---
 title: Transformace dat pomocí aktivity prasete v Azure Data Factory
-description: Zjistěte, jak můžete pomocí aktivity prasete v Azure Data Factory v1 spouštět skripty pro vepřové prostředí na vyžádání nebo vlastním clusteru HDInsight.
+description: Zjistěte, jak můžete pomocí aktivity prasete v Azure Data Factory v1 spouštět skripty prasete na vyžádání nebo vlastním clusteru HDInsight.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 35990312658492e1e41b47096a43748c3a4e653e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c94d66bf98645e12a6c603f2b35d229080717734
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359896"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616854"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity prasete v Azure Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -26,8 +26,8 @@ ms.locfileid: "92359896"
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
 > * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
 > * [Aktivita Sparku](data-factory-spark.md)
-> * [Aktivita spuštění dávky Azure Machine Learning Studio (Classic)](data-factory-azure-ml-batch-execution-activity.md)
-> * [Aktivita aktualizace prostředku Azure Machine Learning Studio (Classic)](data-factory-azure-ml-update-resource-activity.md)
+> * [Aktivita Provedení dávky služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Aktivita Aktualizace prostředků služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)
@@ -85,7 +85,7 @@ Aktivita prasete v HDInsight v [kanálu](data-factory-create-pipelines.md) Data 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | name |Název aktivity |Ano |
-| Popis |Text popisující, k čemu se aktivita používá |Ne |
+| description |Text popisující, k čemu se aktivita používá |Ne |
 | typ |HDinsightPig |Ano |
 | vztahují |Jeden nebo více vstupů spotřebovaných aktivitou prasete |Ne |
 | činnosti |Jeden nebo více výstupů vyprodukovaných aktivitou prasete |Ano |
@@ -210,7 +210,7 @@ Chcete-li použít parametrizovaný skript prasete, postupujte následovně:
       }
     }
     ```
-* V rámci skriptu pro vepřové zobrazení použijte parametry pomocí příkazu '**$ParameterName**', jak je znázorněno v následujícím příkladu:
+* V rámci skriptu pro vepřové zobrazení použijte parametry pomocí příkazu ' **$ParameterName** ', jak je znázorněno v následujícím příkladu:
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);

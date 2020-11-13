@@ -12,20 +12,20 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 63abbc739849a201275995c81a28ede9f9c84b5a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eaac8bdf828d2dd9a8e2dfae0b1b2b5985d1951d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613335"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592698"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rychlý Start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu
 
-V tomto rychlém startu se dozvíte, jak integrovat webovou aplikaci v Pythonu s platformou Microsoft identity. Vaše aplikace se přihlásí k uživateli, získá přístupový token pro volání rozhraní API Microsoft Graph a vytvoří požadavek na rozhraní Microsoft Graph API.
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak se webová aplikace v Pythonu může přihlašovat uživatelům a získat přístupový token pro volání rozhraní Microsoft Graph API. Uživatelé s osobním účtem Microsoft nebo účtem v jakékoli Azure Active Directory (Azure AD) se můžou k aplikaci přihlásit.
 
-Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory. (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
+Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) nebo [Python 3 +](https://www.python.org/downloads/release/python-364/)
@@ -54,9 +54,9 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 > 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
 > 1. Vyberte **Nová registrace**.
-> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
+> 1. Když se zobrazí stránka **Registrace aplikace** , zadejte registrační informace vaší aplikace:
 >      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `python-webapp`.
->      - V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+>      - V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 >      - Vyberte **Zaregistrovat**.
 >      - Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
 > 1. V nabídce vyberte **ověřování** a přidejte následující informace:
@@ -66,7 +66,7 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 >
 >      - Zadejte popis klíče (instance tajného kódu aplikace).
 >      - Vyberte dobu trvání klíče **v intervalu 1 roku**.
->      - Po kliknutí na tlačítko **Přidat**se zobrazí hodnota klíče.
+>      - Po kliknutí na tlačítko **Přidat** se zobrazí hodnota klíče.
 >      - Zkopírujte hodnotu klíče. Budete ho potřebovat později.
 > 1. Vyberte oddíl **oprávnění rozhraní API** .
 >
@@ -128,7 +128,7 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 > [!div renderon="docs"]
 > #### <a name="step-4-run-the-code-sample"></a>Krok 4: spuštění ukázky kódu
 
-1. Budete muset nainstalovat MSAL knihovny Pythonu, architekturu baněk, baňky pro správu relací na straně serveru a požadavky pomocí PIP následujícím způsobem:
+1. Pro správu relací na straně serveru a požadavky pomocí PIP budete muset nainstalovat MSAL Python Library, Flask-Sessions, a to následujícím způsobem:
 
     ```Shell
     pip install -r requirements.txt

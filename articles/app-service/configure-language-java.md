@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 2e77d76ddae540a311655eca36c53b23c418f5e3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9abc069c202af425970e46286d88d1c18ece5a20
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744141"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616191"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurace aplikace Java pro Azure App Service
 
@@ -68,11 +68,11 @@ Sestavy výkonu, vizualizace provozu a checkups stavu jsou k dispozici pro každ
 
 Další informace najdete v tématu [protokoly streamování v Cloud Shell](troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
+::: zone pivot="platform-linux"
+
 ### <a name="ssh-console-access"></a>Přístup ke konzole SSH
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
-
-::: zone pivot="platform-linux"
 
 ### <a name="troubleshooting-tools"></a>Nástroje pro řešení potíží
 
@@ -330,10 +330,10 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 ::: zone pivot="platform-windows"
 
 1. Vytvoření účtu NewRelic na [NewRelic.com](https://newrelic.com/signup)
-2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný *newrelic-java-x.x.x.zip* .
+2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný *newrelic-java-x.x.x.zip*.
 3. Zkopírujte licenční klíč, budete ho potřebovat ke konfiguraci agenta později.
-4. [Do své instance App Service](configure-linux-open-ssh-session.md) a vytvořte nový adresář */Home/site/wwwroot/APM* .
-5. Nahrajte nebalené soubory NewRelic Java do adresáře pod */Home/site/wwwroot/APM* . Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/NewRelic* .
+4. [Do své instance App Service](configure-linux-open-ssh-session.md) a vytvořte nový adresář */Home/site/wwwroot/APM*.
+5. Nahrajte nebalené soubory NewRelic Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/NewRelic*.
 6. Upravte soubor YAML na */Home/site/wwwroot/APM/NewRelic/NewRelic.yml* a nahraďte hodnotu licence zástupného symbolu vlastním licenčním klíčem.
 7. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
 
@@ -344,10 +344,10 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 ::: zone pivot="platform-linux"
 
 1. Vytvoření účtu NewRelic na [NewRelic.com](https://newrelic.com/signup)
-2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný *newrelic-java-x.x.x.zip* .
+2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný *newrelic-java-x.x.x.zip*.
 3. Zkopírujte licenční klíč, budete ho potřebovat ke konfiguraci agenta později.
-4. [Do své instance App Service](configure-linux-open-ssh-session.md) a vytvořte nový adresář */Home/site/wwwroot/APM* .
-5. Nahrajte nebalené soubory NewRelic Java do adresáře pod */Home/site/wwwroot/APM* . Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/NewRelic* .
+4. [Do své instance App Service](configure-linux-open-ssh-session.md) a vytvořte nový adresář */Home/site/wwwroot/APM*.
+5. Nahrajte nebalené soubory NewRelic Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/NewRelic*.
 6. Upravte soubor YAML na */Home/site/wwwroot/APM/NewRelic/NewRelic.yml* a nahraďte hodnotu licence zástupného symbolu vlastním licenčním klíčem.
 7. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
    
@@ -364,8 +364,8 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 
 1. Vytvoření účtu AppDynamics na [AppDynamics.com](https://www.appdynamics.com/community/register/)
 2. Stáhněte si agenta Java z webu AppDynamics, název souboru bude podobný *AppServerAgent-x.x.x.xxxxx.zip*
-3. Pomocí [konzoly Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) vytvořte nový adresář */Home/site/wwwroot/APM* .
-4. Nahrajte soubory agenta Java do adresáře pod */Home/site/wwwroot/APM* . Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/AppDynamics* .
+3. Pomocí [konzoly Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) vytvořte nový adresář */Home/site/wwwroot/APM*.
+4. Nahrajte soubory agenta Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/AppDynamics*.
 5. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
 
    - Pro aplikace **Java se** Vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , kde `<app-name>` je váš App Service název.
@@ -376,8 +376,8 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 
 1. Vytvoření účtu AppDynamics na [AppDynamics.com](https://www.appdynamics.com/community/register/)
 2. Stáhněte si agenta Java z webu AppDynamics, název souboru bude podobný *AppServerAgent-x.x.x.xxxxx.zip*
-3. [Do své instance App Service](configure-linux-open-ssh-session.md) a vytvořte nový adresář */Home/site/wwwroot/APM* .
-4. Nahrajte soubory agenta Java do adresáře pod */Home/site/wwwroot/APM* . Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/AppDynamics* .
+3. [Do své instance App Service](configure-linux-open-ssh-session.md) a vytvořte nový adresář */Home/site/wwwroot/APM*.
+4. Nahrajte soubory agenta Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/AppDynamics*.
 5. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
 
    - Pro aplikace **Java se** Vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , kde `<app-name>` je váš App Service název.
@@ -412,7 +412,7 @@ Další informace o tomto tématu najdete v [dokumentaci ke jarnímu spuštění
 
 Tyto pokyny platí pro všechna databázová připojení. Zástupné symboly budete muset vyplnit pomocí názvu třídy ovladače zvolené databáze a souboru JAR. Poskytuje se tabulka s názvy tříd a stahování ovladačů pro běžné databáze.
 
-| Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
+| databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "nezávislé na platformě") |
@@ -490,7 +490,7 @@ Alternativně můžete k nahrání ovladače JDBC použít klienta FTP. [Při z�
 
 Tyto pokyny platí pro všechna databázová připojení. Zástupné symboly budete muset vyplnit pomocí názvu třídy ovladače zvolené databáze a souboru JAR. Poskytuje se tabulka s názvy tříd a stahování ovladačů pro běžné databáze.
 
-| Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
+| databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "nezávislé na platformě") |
@@ -541,7 +541,7 @@ Dále určete, zda má být zdroj dat k dispozici pro jednu aplikaci nebo pro v�
 
 #### <a name="shared-server-level-resources"></a>Sdílené prostředky na úrovni serveru
 
-Přidání sdíleného zdroje dat na úrovni serveru bude vyžadovat, abyste upravili server.xml Tomcat. Nejdřív nahrajte [spouštěcí skript](faq-app-service-linux.md#built-in-images) a nastavte cestu ke skriptu v příkazu **Konfigurace**  >  **při spuštění** . Spouštěcí skript můžete nahrát pomocí [FTP](deploy-ftp.md).
+Přidání sdíleného zdroje dat na úrovni serveru bude vyžadovat, abyste upravili server.xml Tomcat. Nejdřív nahrajte [spouštěcí skript](faq-app-service-linux.md#built-in-images) a nastavte cestu ke skriptu v příkazu **Konfigurace**  >  **při spuštění**. Spouštěcí skript můžete nahrát pomocí [FTP](deploy-ftp.md).
 
 Spouštěcí skript vytvoří [transformaci XSL](https://www.w3schools.com/xml/xsl_intro.asp) do souboru server.xml a výstup výsledného souboru XML do `/usr/local/tomcat/conf/server.xml` . Spouštěcí skript by měl nainstalovat libxslt přes APK. Soubor XSL a spouštěcí skript je možné nahrávat prostřednictvím FTP. Níže je příklad spouštěcího skriptu.
 
@@ -678,7 +678,7 @@ Existují tři základní kroky při [registraci zdroje dat pomocí protokolu JB
     ```
 
 1. Pomocí klienta FTP dle vašeho výběru nahrajte ovladač JDBC,, `jboss-cli-commands.cli` `startup_script.sh` a definice modulu do nástroje `/site/deployments/tools/` .
-2. Nakonfigurujte, aby se váš web spouštěl `startup_script.sh` při spuštění kontejneru. Na webu Azure Portal přejděte do části **Konfigurace**  >  **Obecné nastavení**  >  **spouštěcí příkaz** . Nastavte pole spouštěcí příkaz na `/home/site/deployments/tools/startup_script.sh` . **Uložte** změny.
+2. Nakonfigurujte, aby se váš web spouštěl `startup_script.sh` při spuštění kontejneru. Na webu Azure Portal přejděte do části **Konfigurace**  >  **Obecné nastavení**  >  **spouštěcí příkaz**. Nastavte pole spouštěcí příkaz na `/home/site/deployments/tools/startup_script.sh` . **Uložte** změny.
 
 Pokud chcete potvrdit, že se zdroj dat přidal do serveru JBoss, připojte se ke svému WebApp a spusťte příkaz SSH `$JBOSS_HOME/bin/jboss-cli.sh --connect` . Po připojení k JBoss spusťte `/subsystem=datasources:read-resource` a vytiskněte seznam zdrojů dat.
 

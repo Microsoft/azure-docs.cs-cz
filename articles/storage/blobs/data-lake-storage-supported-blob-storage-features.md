@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/28/2020
+ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 8f73f2a86e97dad1d6a0b0f05c54f3f896b4b49d
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b670ec3cee2ebd1cc98ea2e04fb2b0dfd90e4e1a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579211"
+ms.locfileid: "94594211"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Funkce BLOB Storage dostupné v Azure Data Lake Storage Gen2
 
@@ -52,14 +52,14 @@ Následující tabulka ukazuje, jak jsou jednotlivé funkce úložiště objekt�
 |Vlastní domény|Zatím nepodporováno|Zatím nepodporováno|[Mapování vlastní domény na koncový bod služby Azure Blob Storage](storage-custom-domain-name.md)|
 |Obory šifrování|Zatím nepodporováno|Zatím nepodporováno|[Vytváření a Správa oborů šifrování (Preview)](encryption-scope-manage.md)|
 |Změna kanálu|Zatím nepodporováno|Zatím nepodporováno|[Změna podpory kanálu ve službě Azure Blob Storage](storage-blob-change-feed.md)|
-|Replikace objektů|Zatím nepodporováno|Zatím nepodporováno|[Konfigurace replikace objektů pro objekty blob bloku (Preview)](object-replication-configure.md)|
-|Správa verzí objektů BLOB|Zatím nepodporováno|Zatím nepodporováno|[Povolení a správa verzí objektů BLOB (Preview)](versioning-enable.md)|
+|Replikace objektů|Zatím nepodporováno|Zatím nepodporováno|[Konfigurace replikace objektů pro objekty blob bloku](object-replication-configure.md)|
+|Správa verzí objektů BLOB|Zatím nepodporováno|Zatím nepodporováno|[Povolení a správa verzí objektů BLOB](versioning-enable.md)|
 
 <div id="blob-container-ACL"><sup>1</sup> můžete nastavit seznamy ACL pro kořenovou složku kontejneru, ale ne samotný kontejner.</div><br>
 
 <div id="preview-form"><sup>2</sup> . Pokud chcete používat snímky, neměnné úložiště nebo statické weby s Data Lake Storage Gen2, musíte se zaregistrovat ve verzi Preview, a to tak, že tento <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>formulář</a>dokončíte.  </div>
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Známé problémy s Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
 - [Služby Azure, které podporují Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md)

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
-ms.openlocfilehash: f7259fe486a473f994d7795de5926b86717bb1b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccf742e5ff612816cae1056ef7bf0e64fc9dbb5b
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391702"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616463"
 ---
 # <a name="custom-vision-service-release-notes"></a>Poznámky k verzi Custom Vision Service
 
@@ -41,7 +41,7 @@ ms.locfileid: "85391702"
 
 - Custom Vision Service do Azure vstoupila Obecná dostupnost!
 - Přidali jsme pokročilou výuku do nového back-endu Machine Learning pro zlepšení výkonu, zejména u náročných datových sad a jemně odstupňované klasifikace. S pokročilým školením můžete určit rozpočet výpočetního času pro školení a Custom Vision bude experimentálním postupem Upřesnit i to, co nejlépe proškolení a rozšíření nastavení. Pro rychlé iterace můžete dál používat stávající rychlé školení.
-- Představena rozhraní API 3,0. Oznámili jsme vyřazení pre-3,0 rozhraní API od 1. října 2019. Příklady toho, jak začít, najdete v dokumentaci k rychlým startům pro [.NET](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial), [Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial), [Node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial), [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)nebo na [webu](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) .
+- Představena rozhraní API 3,0. Oznámili jsme vyřazení pre-3,0 rozhraní API od 1. října 2019. Příklady toho, jak začít, najdete v dokumentaci k rychlým startům pro [.NET](./quickstarts/image-classification.md), [Python](./quickstarts/image-classification.md), [Node](./quickstarts/image-classification.md), [Java](./quickstarts/image-classification.md)nebo na [webu](./quickstarts/image-classification.md) .
 - V rozhraních API 3,0 se nahradila výchozí iterace s publikováním/zrušením publikování.
 - Přidaly se nové cíle exportu modelu. Export souboru Dockerfile byl upgradován tak, aby podporoval ARM pro malin 3. Do sady [Vision AI dev Kit](https://visionaidevkit.com/)se přidala Podpora exportu.
 - Zvýšený limit značek na projekt na 500 pro S0 vrstvu. Vyšší limit imagí na projekt až 100 000 pro S0 vrstvu.

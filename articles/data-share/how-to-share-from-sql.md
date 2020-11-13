@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/15/2020
-ms.openlocfilehash: 205600e488822c5ade4b808c29c66741d28a84a7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/12/2020
+ms.openlocfilehash: 87d6ca8ee69ca49cf52b61e6beddb56721658afa
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575900"
+ms.locfileid: "94593735"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Sdílení a příjem dat ze služeb Azure SQL Database a Azure Synapse Analytics
 
@@ -19,7 +19,7 @@ ms.locfileid: "94575900"
 
 Azure Data Share podporuje sdílení na základě snímků Azure SQL Database a Azure synapse Analytics. Tento článek vysvětluje, jak sdílet a přijímat data z těchto zdrojů.
 
-Azure Data Share podporuje sdílení tabulek nebo zobrazení z Azure SQL Database a Azure synapse Analytics (dříve Azure SQL DW) a sdílení tabulek z fondu SQL Azure synapse Analytics (pracovní prostor). Příjemci dat se můžou rozhodnout, že data přijměte do Azure Data Lake Storage Gen2 nebo Azure Blob Storage jako soubor CSV nebo Parquet, a také do Azure SQL Database a Azure synapse Analytics jako tabulky.
+Azure data Shared podporuje sdílení tabulek a zobrazení z Azure SQL Database a analýzy Azure synapse (dříve Azure SQL DW) a sdílení tabulek z vyhrazeného fondu SQL Azure synapse Analytics (v pracovním prostoru). Sdílení z fondu SQL bez serveru Azure synapse Analytics (v pracovním prostoru) se momentálně nepodporuje. Příjemci dat se můžou rozhodnout, že data přijměte do Azure Data Lake Storage Gen2 nebo Azure Blob Storage jako soubor CSV nebo Parquet, a také do Azure SQL Database a Azure synapse Analytics jako tabulky.
 
 Při přijímání dat do Azure Data Lake Store Gen2 nebo Azure Blob Storage zapíše úplné snímky obsah cílového souboru, pokud už existuje.
 Když se data přijímají do tabulky SQL a cílová tabulka ještě neexistuje, vytvoří Azure Data Share tabulku SQL se zdrojovým schématem. Pokud cílová tabulka již existuje se stejným názvem, bude vynechána a přepíše se nejnovějším úplným snímkem. Přírůstkové snímky se aktuálně nepodporují.
@@ -61,7 +61,7 @@ Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](http
 
 #### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>Předpoklady pro sdílení z fondu SQL Azure synapse Analytics (pracovní prostor)
 
-* Fond SQL Azure synapse Analytics (pracovní prostor) s tabulkami, které chcete sdílet. Sdílení zobrazení není aktuálně podporováno.
+* Vyhrazený fond SQL ve službě Azure synapse Analytics (pracovní prostor) s tabulkami, které chcete sdílet. Sdílení zobrazení není aktuálně podporováno. Sdílení z fondu SQL bez serveru se v tuto chvíli nepodporuje.
 * Oprávnění k zápisu do fondu SQL v pracovním prostoru synapse, který je k dispozici v *Microsoft. synapse/Workspaces/sqlPools/Write*. Toto oprávnění existuje v roli **Přispěvatel**.
 * Oprávnění pro spravovanou identitu prostředku sdílení dat pro přístup k fondu SQL pracovního prostoru synapse. To lze provést pomocí následujících kroků: 
     1. V Azure Portal přejděte do pracovního prostoru synapse. V levém navigačním panelu vyberte Správce SQL Active Directory a nastavte si ho jako **správce Azure Active Directory**.
@@ -101,7 +101,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj účet pro sdílení dat.|
     | Skupina prostředků | *test-Resource-Group* | Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků. |
     | Umístění | *USA – východ 2* | Vyberte oblast pro svůj účet pro sdílení dat.
-    | Název | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
+    | Name | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
     | | |
 
 1. Vyberte **zkontrolovat + vytvořit** a pak **vytvořte** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty nebo méně. 
@@ -132,7 +132,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
     ![AddDatasets](./media/add-datasets.png "Přidat datové sady")    
 
-1. Vyberte svůj pracovní prostor SQL serveru nebo synapse, zadejte přihlašovací údaje, pokud se zobrazí výzva a vyberte **Další** a přejděte k objektu, který chcete sdílet, a vyberte přidat datové sady. 
+1. Vyberte svůj pracovní prostor SQL serveru nebo synapse, zadejte přihlašovací údaje, pokud se zobrazí výzva a vyberte **Další** a přejděte k objektu, který chcete sdílet, a vyberte přidat datové sady. Můžete vybrat tabulky a zobrazení z Azure SQL Database a Azure synapse Analytics (dříve Azure SQL DW) nebo tabulky z vyhrazeného fondu SQL Azure synapse Analytics (pracovní prostor). 
 
     ![SelectDatasets](./media/select-datasets-sql.png "Vybrat datové sady")    
 
@@ -201,7 +201,7 @@ Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](http
  
 #### <a name="prerequisites-for-receiving-data-into-azure-synapse-analytics-workspace-sql-pool"></a>Předpoklady pro příjem dat do fondu SQL Azure synapse Analytics (pracovní prostor)
 
-* Fond SQL Azure synapse Analytics (pracovní prostor).
+* Vyhrazený fond SQL ve službě Azure synapse Analytics (pracovní prostor). Příjem dat do fondu SQL bez serveru se momentálně nepodporuje.
 * Oprávnění k zápisu do fondu SQL v pracovním prostoru synapse, který je k dispozici v *Microsoft. synapse/Workspaces/sqlPools/Write*. Toto oprávnění existuje v roli **Přispěvatel**.
 * Oprávnění pro spravovanou identitu prostředku sdílení dat pro přístup ke fondu SQL pracovního prostoru synapse. To lze provést pomocí následujících kroků: 
     1. V Azure Portal přejděte do pracovního prostoru synapse. V levém navigačním panelu vyberte Správce SQL Active Directory a nastavte si ho jako **správce Azure Active Directory**.

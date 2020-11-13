@@ -9,24 +9,24 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: e042fd62d99c9fdf88a144c93739bf1f3f08a78c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 12163419ad779acfa116f1dee66284623e2d45fb
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325580"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616106"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktivní ladění pomocí Visual Studio Code
 
 
 
-Naučte se, jak interaktivně ladit Azure Machine Learning experimenty, kanály a nasazení s využitím Visual Studio Code (VS Code) a [depugpy](https://github.com/microsoft/debugpy/).
+Naučte se, jak interaktivně ladit Azure Machine Learning experimenty, kanály a nasazení s využitím Visual Studio Code (VS Code) a [debugpy](https://github.com/microsoft/debugpy/).
 
 ## <a name="run-and-debug-experiments-locally"></a>Spustit a ladit experimenty místně
 
 Pomocí rozšíření Azure Machine Learning můžete před odesláním do cloudu ověřit, spustit a ladit experimenty ve strojovém učení.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Rozšíření Azure Machine Learning VS Code (Preview). Další informace najdete v tématu [nastavení rozšíření Azure Machine Learning vs Code](tutorial-setup-vscode-extension.md).
 * [Docker](https://www.docker.com/get-started)
@@ -84,7 +84,7 @@ Podobně jako u vzdálených experimentů můžete rozšířit uzel spuštění 
 
 V některých případech možná budete muset interaktivně ladit kód Pythonu, který se používá v kanálu ML. Pomocí VS Code a debugpy se můžete ke kódu připojit při jeho spuštění ve školicím prostředí.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * __Azure Machine Learning pracovní prostor__ , který je nakonfigurován pro použití __Virtual Network Azure__.
 * __Kanál Azure Machine Learning__ , který jako součást postupu kanálu používá skripty Pythonu. Například PythonScriptStep.

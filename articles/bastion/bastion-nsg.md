@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 11/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7853ac3ece01057282bc6cb421018020e15273b5
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5bff5b341dcbdaa7ccae2b02e62e3e6bd4d115f9
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079186"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594262"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Práce s NSG přístupem a Azure bastionu
 
@@ -34,15 +34,16 @@ V této části se dozvíte, jak se síťový provoz mezi uživatelem a službou
 
 ### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure bastionu se nasazuje konkrétně pro ***AzureBastionSubnet***.
+Azure bastionu se nasazuje konkrétně na * **AzureBastionSubnet** _.
 
-* **Příchozí přenos dat:**
+_ **Přenos příchozího přenosu dat:**
 
    * **Příchozí přenos dat z veřejného Internetu:** Azure bastionu vytvoří veřejnou IP adresu, která potřebuje port 443 povolený ve veřejné IP adrese pro přenos příchozích dat. Na AzureBastionSubnet se nevyžaduje otevřít port 3389/22.
    * **Příchozí přenos dat z roviny ovládacího prvku Azure bastionu:** Pro připojení řídicí roviny povolte port 443 příchozí ze značky služby **GatewayManager** . To umožňuje, aby řídicí plocha, kterou správce bran, mohla komunikovat se službou Azure bastionu.
+   * **Příchozí přenos z Azure pro vyrovnávání zatížení:** V případě sond stavu povolte port 443 příchozí ze značky služby **AzureLoadBalancer** . Díky tomu Nástroj pro vyrovnávání zatížení Azure detekuje problémy s připojením k back-endu.
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="NSG":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Snímek obrazovky zobrazuje příchozí pravidla zabezpečení pro připojení Azure bastionu.":::
 
 * **Odchozí přenos dat:**
 
@@ -50,7 +51,7 @@ Azure bastionu se nasazuje konkrétně pro ***AzureBastionSubnet***.
    * **Odchozí přenos dat do jiných veřejných koncových bodů v Azure:** Azure bastionu musí být schopný se připojit k různým veřejným koncovým bodům v rámci Azure (například pro ukládání protokolů diagnostiky a měřičů měření). Z tohoto důvodu Azure bastionu potřebuje pro značku služby **AzureCloud** odchozí až 443.
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="NSG":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Snímek obrazovky ukazuje odchozí pravidla zabezpečení pro připojení Azure bastionu.":::
 
 ### <a name="target-vm-subnet"></a>Cílová podsíť virtuálních počítačů
 Jedná se o podsíť, která obsahuje cílový virtuální počítač, ke kterému chcete protokol RDP/SSH.

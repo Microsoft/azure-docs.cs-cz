@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: af0e9cd66cf64366a6f563148fa6b075161151f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee9f49463e8e6749d29c810afaf7337cc99a98e8
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87875434"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616038"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Kurz: Spuštění modelu TensorFlow v Pythonu
 
-V tomto rychlém startu se dozvíte, jak po [exportování modelu TensorFlow](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) ze služby Custom Vision Service použít tento model místně ke klasifikaci obrázků.
+V tomto rychlém startu se dozvíte, jak po [exportování modelu TensorFlow](./export-your-model.md) ze služby Custom Vision Service použít tento model místně ke klasifikaci obrázků.
 
 > [!NOTE]
 > Tento kurz se týká pouze modelů exportovaných z projektů klasifikace obrázků.

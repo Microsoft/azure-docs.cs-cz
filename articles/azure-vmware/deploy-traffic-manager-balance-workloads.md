@@ -3,12 +3,12 @@ title: Nasazení Traffic Manager pro vyrovnávání zatížení Azure VMware Sol
 description: Naučte se integrovat Traffic Manager se službou Azure VMware Solution (AVS) pro vyrovnávání zatížení aplikací napříč několika koncovými body v různých oblastech.
 ms.topic: how-to
 ms.date: 08/14/2020
-ms.openlocfilehash: d461cc444c60e1907a34a08c68139446301c133c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 076d9c77d68df3d8acb7b531b3dfbea40fb3cedd
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579842"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593114"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Nasazení Traffic Manager pro vyrovnávání zatížení Azure VMware Solution (AVS)
 
@@ -30,7 +30,7 @@ Jak je znázorněno na následujícím obrázku, Azure Traffic Manager poskytuje
 
 Připojení k virtuální síti mezi dvěma oblastmi privátního cloudu služby AVS, Západní USA a Západní Evropa a místním serverem v Východní USA používá bránu ExpressRoute.   
 
-![Integrace Traffic Manager s využitím AVS](media/traffic-manager/traffic-manager-topology.png)
+![Diagram architektury Traffic Manager integrace s řešením Azure VMware](media/traffic-manager/traffic-manager-topology.png)
  
 ## <a name="prerequisites"></a>Požadavky
 
@@ -55,15 +55,15 @@ Následující postup ověří správnou konfiguraci bran Application Gateway.
     - AVS-GS-EUS (místní)
     - AVS-GS-ZEU
 
-    :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="Seznam aplikačních bran" lightbox="media/traffic-manager/app-gateways-list-1.png":::
+    :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="Snímek obrazovky stránky Application Gateway zobrazující seznam nakonfigurovaných aplikačních bran" lightbox="media/traffic-manager/app-gateways-list-1.png":::
 
 2. Vyberte jednu z dříve nasazených aplikačních bran. Otevře se okno s informacemi o různých informacích o aplikační bráně. Vyberte **back-end fondy** a ověřte konfiguraci jednoho ze skupin back-end.
 
-   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="Seznam aplikačních bran" lightbox="media/traffic-manager/backend-pool-config.png":::
+   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="Snímek obrazovky stránky Application Gateway zobrazující podrobnosti vybrané aplikační brány" lightbox="media/traffic-manager/backend-pool-config.png":::
  
 3. V tomto případě uvidíme jeden člen back-endu virtuálního počítače nakonfigurovaný jako webový server s IP adresou 172.29.1.10.
  
-    :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="Seznam aplikačních bran":::
+    :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="Snímek stránky pro úpravu back-endu back-endu s zvýrazněnou cílovou IP adresou.":::
 
     Podobně můžete ověřit konfiguraci ostatních aplikačních bran a členů fondu back-end. 
 
@@ -75,21 +75,21 @@ V našem scénáři je segment NSX-T nakonfigurovaný v prostředí služby AVS,
 
 1. Vyberte **segmenty** pro zobrazení konfigurovaných segmentů. V tomto případě uvidíme, že contoso-SEGMENT1 je připojený k bráně contoso-T01, což je flexibilní směrovač úrovně 1.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Seznam aplikačních bran":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Snímek obrazovky zobrazující profily segmentů ve Správci NSX-T":::    
 
 2. Vyberte **brány úrovně 1** , abyste viděli seznam bran-1 s počtem propojených segmentů. Vyberte segment propojený s contoso-T01. Otevře se okno znázorňující logické rozhraní nakonfigurované na směrovači vrstvy 1. Slouží jako brána k virtuálnímu počítači back-end fondu připojenému k segmentu.
 
-   :::image type="content" source="media/traffic-manager/nsx-t-segment-linked-2.png" alt-text="Seznam aplikačních bran":::    
+   :::image type="content" source="media/traffic-manager/nsx-t-segment-linked-2.png" alt-text="Snímek obrazovky zobrazující adresu brány vybraného segmentu":::    
 
 3. V klientovi vSphere virtuálního počítače vyberte virtuální počítač, na kterém chcete zobrazit jeho podrobnosti. Všimněte si, že IP adresa se shoduje s tím, co jsme viděli v kroku 3 předchozí části: 172.29.1.10.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Seznam aplikačních bran":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Snímek obrazovky zobrazující podrobnosti o virtuálním počítači v klientovi VSphere":::    
 
 4. Vyberte virtuální počítač a pak klikněte na **akce > upravit nastavení** a ověřte připojení k segmentu NSX-T.
 
 ## <a name="create-your-traffic-manager-profile"></a>Vytvořit profil Traffic Manager
 
-1. Přihlaste se k [Azure Portal](https://rc.portal.azure.com/#home). V části **služby Azure > sítě**vyberte **profily Traffic Manager**.
+1. Přihlaste se k [Azure Portal](https://rc.portal.azure.com/#home). V části **služby Azure > sítě** vyberte **profily Traffic Manager**.
 
 2. Vyberte **+ Přidat** a vytvořte nový profil Traffic Manager.
  
@@ -99,29 +99,23 @@ V našem scénáři je segment NSX-T nakonfigurovaný v prostředí služby AVS,
 
 1. V podokně výsledků hledání vyberte profil Traffic Manager, vyberte **koncové body** a potom **+ Přidat**.
 
-2. Zadejte požadované podrobnosti: typ, název, plně kvalifikovaný název domény (FQDN) nebo IP a váhu (v tomto scénáři přiřadíme váhu 1 ke každému koncovému bodu). Vyberte **Přidat**.
-
-   :::image type="content" source="media/traffic-manager/traffic-manager-profile.png" alt-text="Seznam aplikačních bran":::  
- 
-   Tím se vytvoří externí koncový bod. Stav monitorování musí být **online**. 
-
-   Opakujte stejný postup pro vytvoření dvou externích koncových bodů, jeden v jiné oblasti a jiné místní. Po vytvoření se všechny tři zobrazí v profilu Traffic Manager a stav všech tří by měl být **online**.
+2. Zadejte požadované podrobnosti: typ, název, plně kvalifikovaný název domény (FQDN) nebo IP a váhu (v tomto scénáři přiřadíme váhu 1 ke každému koncovému bodu). Vyberte **Přidat**. Tím se vytvoří externí koncový bod. Stav monitorování musí být **online**. Opakujte stejný postup pro vytvoření dvou externích koncových bodů, jeden v jiné oblasti a jiné místní. Po vytvoření se všechny tři zobrazí v profilu Traffic Manager a stav všech tří by měl být **online**.
 
 3. Vyberte **Přehled**. Zkopírujte adresu URL v části **název DNS**.
 
-   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Seznam aplikačních bran"::: 
+   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Snímek obrazovky s přehledem Traffic Managerho koncového bodu se zvýrazněným názvem DNS"::: 
 
 4. Vložte adresu URL názvu DNS do prohlížeče. Následující snímek obrazovky ukazuje provoz, který směruje do Západní Evropa oblasti.
 
-   :::image type="content" source="media/traffic-manager/traffic-to-west-europe.png" alt-text="Seznam aplikačních bran"::: 
+   :::image type="content" source="media/traffic-manager/traffic-to-west-europe.png" alt-text="Snímek obrazovky okna prohlížeče zobrazující provoz směrovaný na Západní Evropa."::: 
 
 5. Aktualizujte si stránku v prohlížeči. Následující snímek obrazovky ukazuje provoz, který je nyní přesměrován do jiné sady členů fondu back-end v oblasti Západní USA.
 
-   :::image type="content" source="media/traffic-manager/traffic-to-west-us.png" alt-text="Seznam aplikačních bran"::: 
+   :::image type="content" source="media/traffic-manager/traffic-to-west-us.png" alt-text="Snímek obrazovky okna prohlížeče zobrazující provoz směrovaný na Západní USA."::: 
 
 6. Znovu aktualizujte prohlížeč. Následující snímek obrazovky ukazuje provoz, který teď směruje na konečnou sadu členů fondu back-end objektů.
 
-   :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="Seznam aplikačních bran":::
+   :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="Snímek obrazovky okna prohlížeče zobrazující provoz směrovaný do místního prostředí.":::
 
 ## <a name="next-steps"></a>Další kroky
 

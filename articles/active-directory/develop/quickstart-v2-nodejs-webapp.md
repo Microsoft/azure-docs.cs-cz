@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 34baa054104a6cf2c78864cc2827b16c1eedb084
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5cde4b539262c9e20bbcf2e7dd8c8e9de38035c3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613301"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594245"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rychlý Start: přidání přihlášení pomocí OpenID připojení k webové aplikaci Node.js
 
-V tomto rychlém startu se dozvíte, jak nastavit ověřování OpenID Connect ve webové aplikaci vytvořené pomocí Node.js s využitím Express. Ukázka je navržená tak, aby běžela na jakékoli platformě.
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak nastavit ověřování OpenID Connect ve webové aplikaci sestavené pomocí Node.js pomocí Express. Ukázka je navržená tak, aby běžela na jakékoli platformě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/download/).

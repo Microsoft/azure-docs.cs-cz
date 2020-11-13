@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-python
-ms.openlocfilehash: e5c82587eca9ac85820bda9690b54ab1879d5328
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0c7494f62f181e34e4879f1e64bf2c4ee1cf52ec
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087872"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593429"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Rychlý Start: hledání imagí pomocí Vyhledávání obrázků Bingu REST API a Pythonu
 
@@ -35,7 +35,7 @@ Pokud chcete tento příklad spustit jako Jupyter Poznámkový blok v [MyBinder]
 Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) s dalšími zpracováním chyb a poznámkami.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Python 2. x nebo 3. x](https://www.python.org/)
 * [Knihovna pil (Python Imaging Library)](https://pillow.readthedocs.io/en/stable/index.html)
@@ -157,5 +157,5 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 
 * [Co je rozhraní API Bingu pro vyhledávání obrázků?](../overview.md)  
 * [Podrobnosti o cenách pro rozhraní API pro vyhledávání Bingu](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
-* [Dokumentace k Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Dokumentace k Azure Cognitive Services](../../index.yml)
+* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: e223b5ae072a323ad56ed396c06580fea9b8b7ab
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 52e6c70b76b83c73059dc887eaefe8403befac13
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335243"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594228"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v rámci webové aplikace v uzlu pomocí toku kódu ověřování
 
-V tomto rychlém startu spustíte ukázku kódu, která demonstruje, jak se Node.js webová aplikace může přihlašovat uživatelům osobních účtů, pracovních účtů a školních účtů pomocí toku autorizačního kódu. Ukázka kódu také ukazuje získání přístupového tokenu pro volání webového rozhraní API, v tomto případě rozhraní Microsoft Graph API. Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstruje, jak se může webová aplikace Node.js přihlašovat uživatelům pomocí toku autorizačního kódu. Ukázka kódu také ukazuje, jak získat přístupový token pro volání rozhraní Microsoft Graph API. 
+
+Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 V tomto rychlém startu se používá knihovna ověřování Microsoft pro Node.js (uzel MSAL) s tokem autorizačního kódu.
 
@@ -39,7 +41,7 @@ V tomto rychlém startu se používá knihovna ověřování Microsoft pro Node.
 >
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 > 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure AD, kterého chcete použít.
 > 1. Vyberte [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908).
 > 1. Vyberte **Nová registrace**.

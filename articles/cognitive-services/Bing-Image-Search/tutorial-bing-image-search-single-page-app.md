@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: a62133737d48a8ebf454b5fab83ef52ef2daad09
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a9dba9222816ef2cc7891ff7f803e6a7409802a4
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098429"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593446"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání obrázků
 
@@ -37,7 +37,7 @@ Ukázková aplikace předvádí, jak:
 
 Úplný zdrojový kód k tomuto kurzu je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze [Node.js](https://nodejs.org/)
 * Architektura [Express.js](https://expressjs.com/) pro Node.js. Pokyny k instalaci zdrojového kódu jsou k dispozici v ukázkovém souboru Readme pro GitHub.
@@ -122,7 +122,7 @@ Ve výchozím nastavení obslužná rutina `onsubmit` vrátí `false`, což zabr
 
 ![[Formulář Bingu pro vyhledávání obrázků]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-Rozhraní API Bingu pro vyhledávání obrázků nabízí několik [parametrů pro filtrování dotazů](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters), které umožňují zúžit a filtrovat výsledky hledání. Formulář HTML v této aplikaci používá a zobrazuje následující parametry:
+Rozhraní API Bingu pro vyhledávání obrázků nabízí několik [parametrů pro filtrování dotazů](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters), které umožňují zúžit a filtrovat výsledky hledání. Formulář HTML v této aplikaci používá a zobrazuje následující parametry:
 
 | Možnost | Popis |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

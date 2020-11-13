@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 08/14/2019
-ms.openlocfilehash: 98f2a8fb0ce48dab0e1e5f7610d73d55526969eb
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 09bb7cb2344e3e708a64842916e6e483136da3bb
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675106"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594279"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ V tomto tématu se naučíte, jak nakonfigurovat [skupinu automatického převze
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal nebo PowerShellu.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Vezměte v úvahu následující požadavky:
 
@@ -50,7 +50,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
 
    ![Přidat novou skupinu převzetí služeb při selhání](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
-1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **vytvořit** .
+1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **vytvořit**.
 
    - **Databáze v rámci této skupiny** : Vyberte databázi, kterou chcete přidat do skupiny převzetí služeb při selhání. Když přidáte databázi do skupiny převzetí služeb při selhání, automaticky se spustí proces geografické replikace.
 
@@ -196,7 +196,7 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí Azure Portal nebo PowerShellu.  
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Vezměte v úvahu následující požadavky:
 
@@ -220,7 +220,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastick�
 
    ![Přidat novou skupinu převzetí služeb při selhání](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
-1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **vytvořit** . Buď vytvořte nový sekundární server, nebo vyberte existující sekundární server.
+1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **vytvořit**. Buď vytvořte nový sekundární server, nebo vyberte existující sekundární server.
 
 1. **V rámci skupiny vyberte databáze** a pak zvolte elastický fond, který chcete přidat do skupiny převzetí služeb při selhání. Pokud elastický fond na sekundárním serveru ještě neexistuje, zobrazí se upozornění s výzvou k vytvoření elastického fondu na sekundárním serveru. Vyberte upozornění a pak vyberte **OK** a vytvořte elastický fond na sekundárním serveru.
 
@@ -350,7 +350,7 @@ Budete muset buď nakonfigurovat [ExpressRoute](../../expressroute/expressroute-
 
 Nasaďte spravované instance do [spárovaných oblastí](../../best-practices-availability-paired-regions.md) z důvodů výkonu. Spravované instance nacházející se v geograficky spárované oblasti mají mnohem lepší výkon v porovnání s nespárovanými oblastmi. 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Vezměte v úvahu následující požadavky:
 
@@ -371,11 +371,11 @@ Pokud jste nenakonfigurovali [ExpressRoute](../../expressroute/expressroute-howt
 Vytvořte primární bránu virtuální sítě pomocí Azure Portal.
 
 1. V [Azure Portal](https://portal.azure.com)přejdete do skupiny prostředků a vyberete prostředek **virtuální sítě** pro vaši primární spravovanou instanci.
-1. V části **Nastavení** vyberte **podsítě** a pak vyberte, pokud chcete přidat novou **podsíť brány** . Ponechte výchozí hodnoty.
+1. V části **Nastavení** vyberte **podsítě** a pak vyberte, pokud chcete přidat novou **podsíť brány**. Ponechte výchozí hodnoty.
 
    ![Přidat bránu pro primární spravovanou instanci](./media/auto-failover-group-configure/add-subnet-gateway-primary-vnet.png)
 
-1. Po vytvoření brány podsítě v levém navigačním podokně vyberte **vytvořit prostředek** a potom `Virtual network gateway` do vyhledávacího pole zadejte. Vyberte prostředek **brány virtuální sítě** publikovaný **Microsoftem** .
+1. Po vytvoření brány podsítě v levém navigačním podokně vyberte **vytvořit prostředek** a potom `Virtual network gateway` do vyhledávacího pole zadejte. Vyberte prostředek **brány virtuální sítě** publikovaný **Microsoftem**.
 
    ![Vytvořit novou bránu virtuální sítě](./media/auto-failover-group-configure/create-virtual-network-gateway.png)
 
@@ -388,9 +388,9 @@ Vytvořte primární bránu virtuální sítě pomocí Azure Portal.
     | **Předplatné** |  Předplatné, ve kterém je vaše primární spravovaná instance. |
     | **Název** | Název brány virtuální sítě. |
     | **Oblast** | Oblast, ve které je vaše primární spravovaná instance. |
-    | **Typ brány** | Vyberte **VPN** . |
+    | **Typ brány** | Vyberte **VPN**. |
     | **Typ sítě VPN** | Vybrat **na základě trasy** |
-    | **Skladová jednotka (SKU)**| Ponechte výchozí hodnotu `VpnGw1` . |
+    | **SKU**| Ponechte výchozí hodnotu `VpnGw1` . |
     | **Umístění**| Umístění, kde je sekundární spravovaná instance a sekundární virtuální síť.   |
     | **Virtuální síť**| Vyberte virtuální síť pro sekundární spravovanou instanci. |
     | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |
@@ -450,9 +450,9 @@ V následující tabulce jsou uvedeny hodnoty nutné pro bránu sekundární spr
    | **Předplatné** |  Předplatné, ve kterém je vaše sekundární spravovaná instance. |
    | **Název** | Název brány virtuální sítě, například `secondary-mi-gateway` . |
    | **Oblast** | Oblast, ve které je vaše sekundární spravovaná instance. |
-   | **Typ brány** | Vyberte **VPN** . |
+   | **Typ brány** | Vyberte **VPN**. |
    | **Typ sítě VPN** | Vybrat **na základě trasy** |
-   | **Skladová jednotka (SKU)**| Ponechte výchozí hodnotu `VpnGw1` . |
+   | **SKU**| Ponechte výchozí hodnotu `VpnGw1` . |
    | **Umístění**| Umístění, kde je sekundární spravovaná instance a sekundární virtuální síť.   |
    | **Virtuální síť**| Vyberte virtuální síť, která byla vytvořena v části 2, například `vnet-sql-mi-secondary` . |
    | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |
@@ -509,7 +509,7 @@ Vytvořte připojení mezi dvěma branami pomocí Azure Portal.
 1. Vyberte **vytvořit prostředek** z [Azure Portal](https://portal.azure.com).
 1. Do `connection` vyhledávacího pole zadejte a stiskněte klávesu ENTER pro hledání, které vás přesměruje do prostředku **připojení** publikovaného společností Microsoft.
 1. Vyberte **vytvořit** a vytvořte připojení.
-1. Na kartě **základy** vyberte následující hodnoty a pak vyberte **OK** .
+1. Na kartě **základy** vyberte následující hodnoty a pak vyberte **OK**.
     1. Jako `VNet-to-VNet` **Typ připojení** vyberte.
     1. Vyberte vaše předplatné z rozevíracího seznamu.
     1. V rozevíracím seznamu vyberte skupinu prostředků pro spravovanou instanci.
@@ -517,7 +517,7 @@ Vytvořte připojení mezi dvěma branami pomocí Azure Portal.
 1. Na kartě **Nastavení** vyberte nebo zadejte následující hodnoty a pak vyberte **OK** :
     1. Vyberte bránu primárního síťového rozhraní pro **první bránu virtuální sítě** , například `Primary-Gateway` .  
     1. Vyberte bránu sekundární sítě pro **druhou bránu virtuální sítě** , například `Secondary-Gateway` .
-    1. Zaškrtněte políčko vedle možnosti **navázat obousměrné připojení** .
+    1. Zaškrtněte políčko vedle možnosti **navázat obousměrné připojení**.
     1. Buď ponechte výchozí název primárního připojení, nebo ho přejmenujte na hodnotu podle vašeho výběru.
     1. Zadejte **sdílený klíč (PSK)** pro připojení, například `mi1m2psk` .
 

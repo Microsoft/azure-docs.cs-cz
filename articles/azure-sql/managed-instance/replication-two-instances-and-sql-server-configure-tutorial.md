@@ -6,16 +6,16 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 11/21/2019
-ms.openlocfilehash: 8173d53a5d4cac899b22f51a001f6e373f102236
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d2b45f5b51f4656294632aa46f679a7a09c06ed3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790793"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593922"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Kurz: Konfigurace transakční replikace mezi spravovanou instancí Azure SQL a SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -40,7 +40,7 @@ Tento kurz je určený pro zkušené publikum a předpokládá, že uživatel je
 > [!NOTE]
 > Tento článek popisuje použití [transakční replikace](/sql/relational-databases/replication/transactional/transactional-replication) ve spravované instanci Azure SQL. Nesouvisí se [skupinami převzetí služeb při selhání](../database/auto-failover-group-overview.md), což je funkce spravované instance Azure SQL, která umožňuje vytvářet kompletní čitelné repliky jednotlivých instancí. Při konfiguraci [replikace transakcí se skupinami převzetí služeb při selhání](replication-transactional-overview.md#with-failover-groups)jsou k dispozici další předpoklady.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
@@ -69,7 +69,7 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 Pomocí [Azure Portal](https://portal.azure.com)vytvořte v rámci této nové skupiny prostředků dvě spravované instance.
 
 - Název spravované instance vydavatele by měl být `sql-mi-publisher` (spolu s několika znaky pro náhodnost) a název virtuální sítě by měl být `vnet-sql-mi-publisher` .
-- Název spravované instance distributora by měl být `sql-mi-distributor` (spolu s několika znaky pro náhodnost) a měl by být _ve stejné virtuální síti jako spravovaná instance vydavatele_ .
+- Název spravované instance distributora by měl být `sql-mi-distributor` (spolu s několika znaky pro náhodnost) a měl by být _ve stejné virtuální síti jako spravovaná instance vydavatele_.
 
    ![Použití virtuální sítě vydavatele pro distributora](./media/replication-two-instances-and-sql-server-configure-tutorial/use-same-vnet-for-distributor.png)
 
@@ -146,7 +146,7 @@ Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a
 
 ### <a name="create-a-private-dns-zone"></a>Vytvoření privátní zóny DNS
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 1. Pokud chcete vytvořit nový prostředek Azure, vyberte **vytvořit prostředek** .
 1. Hledat `private dns zone` na Azure Marketplace.
 1. Zvolte prostředek **zóny privátní DNS** publikovaný Microsoftem a pak vyberte **vytvořit** a vytvořte zónu DNS.
@@ -155,11 +155,11 @@ Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a
 
    ![Vytvořit privátní zónu DNS](./media/replication-two-instances-and-sql-server-configure-tutorial/create-private-dns-zone.png)
 
-1. Vyberte **Zkontrolovat a vytvořit** . Zkontrolujte parametry vaší privátní zóny DNS a pak vyberte **vytvořit** a vytvořte prostředek.
+1. Vyberte **Zkontrolovat a vytvořit**. Zkontrolujte parametry vaší privátní zóny DNS a pak vyberte **vytvořit** a vytvořte prostředek.
 
 ### <a name="create-an-a-record"></a>Vytvoření záznamu A
 
-1. Přejít do nové **zóny privátní DNS** a vyberte **Přehled** .
+1. Přejít do nové **zóny privátní DNS** a vyberte **Přehled**.
 1. Vyberte **+ Sada záznamů** a vytvořte nový záznam.
 1. Zadejte název vašeho virtuálního počítače SQL Server a privátní interní IP adresu.
 
@@ -169,11 +169,11 @@ Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a
 
 ### <a name="link-the-virtual-network"></a>Propojit virtuální síť
 
-1. Přejdete do nové **zóny privátní DNS** a vyberete **odkazy virtuální sítě** .
-1. Vyberte **+ Přidat** .
+1. Přejdete do nové **zóny privátní DNS** a vyberete **odkazy virtuální sítě**.
+1. Vyberte **+ Přidat**.
 1. Zadejte název odkazu, například `Pub-link` .
 1. V rozevíracím seznamu vyberte své předplatné a pak vyberte virtuální síť pro spravovanou instanci vydavatele.
-1. Zaškrtněte políčko vedle **Povolit automatickou registraci** .
+1. Zaškrtněte políčko vedle **Povolit automatickou registraci**.
 
    ![Vytvořit propojení virtuální sítě](./media/replication-two-instances-and-sql-server-configure-tutorial/configure-vnet-link.png)
 
@@ -283,14 +283,14 @@ Po nakonfigurování distribuce teď můžete vytvořit publikaci. To můžete p
 
 1. Spustí SQL Server Management Studio na SQL Server.
 1. Připojte se ke `sql-mi-publisher` spravované instanci.
-1. V **Průzkumník objektů** rozbalte uzel **replikace** a klikněte pravým tlačítkem myši na složku **místní publikace** . Vybrat **novou publikaci...** .
+1. V **Průzkumník objektů** rozbalte uzel **replikace** a klikněte pravým tlačítkem myši na složku **místní publikace** . Vybrat **novou publikaci...**.
 1. Kliknutím na tlačítko **Další** přejdete za úvodní stránku.
-1. Na stránce **databáze publikace** vyberte `ReplTutorial` databázi, kterou jste předtím vytvořili. Vyberte **Další** .
-1. Na stránce **Typ publikace** vyberte **transakční publikace** . Vyberte **Další** .
-1. Na stránce **články** zaškrtněte políčko vedle pole **tabulky** . Vyberte **Další** .
+1. Na stránce **databáze publikace** vyberte `ReplTutorial` databázi, kterou jste předtím vytvořili. Vyberte **Další**.
+1. Na stránce **Typ publikace** vyberte **transakční publikace**. Vyberte **Další**.
+1. Na stránce **články** zaškrtněte políčko vedle pole **tabulky**. Vyberte **Další**.
 1. Na stránce **Filtrovat řádky tabulky** vyberte **Další** bez přidání jakýchkoli filtrů.
-1. Na stránce **Agent snímku** zaškrtněte políčko vedle **vytvořit snímek hned a nechte snímek dostupný pro inicializaci předplatných** . Vyberte **Další** .
-1. Na stránce **zabezpečení agenta** vyberte **nastavení zabezpečení...** . Zadejte SQL Server přihlašovací přihlašovací údaje pro použití pro agenta snímku a připojení k vydavateli. Výběrem **OK** zavřete stránku **zabezpečení agenta snímků** . Vyberte **Další** .
+1. Na stránce **Agent snímku** zaškrtněte políčko vedle **vytvořit snímek hned a nechte snímek dostupný pro inicializaci předplatných**. Vyberte **Další**.
+1. Na stránce **zabezpečení agenta** vyberte **nastavení zabezpečení...**. Zadejte SQL Server přihlašovací přihlašovací údaje pro použití pro agenta snímku a připojení k vydavateli. Výběrem **OK** zavřete stránku **zabezpečení agenta snímků** . Vyberte **Další**.
 
    ![Konfigurace zabezpečení agenta snímků](./media/replication-two-instances-and-sql-server-configure-tutorial/snapshot-agent-security.png)
 
@@ -352,10 +352,10 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 1. Přejděte do skupiny prostředků v [Azure Portal](https://portal.azure.com).
-1. Vyberte spravované instance a pak vyberte **Odstranit** . `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit** . Dokončení tohoto procesu může nějakou dobu trvat na pozadí a až do dokončení, nebudete moci odstranit *virtuální cluster* ani žádné jiné závislé prostředky. Sledujte odstranění na kartě **aktivita** a potvrďte, že se vaše spravovaná instance odstranila.
-1. Po odstranění spravované instance odstraňte *virtuální cluster* tak, že ho vyberete ve vaší skupině prostředků, a pak zvolíte **Odstranit** . `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit** .
-1. Odstraňte všechny zbývající prostředky. `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit** .
-1. Odstraňte skupinu prostředků výběrem možnosti **Odstranit skupinu prostředků** , zadáním názvu skupiny prostředků `myResourceGroup` a pak výběrem možnosti **Odstranit** .
+1. Vyberte spravované instance a pak vyberte **Odstranit**. `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**. Dokončení tohoto procesu může nějakou dobu trvat na pozadí a až do dokončení, nebudete moci odstranit *virtuální cluster* ani žádné jiné závislé prostředky. Sledujte odstranění na kartě **aktivita** a potvrďte, že se vaše spravovaná instance odstranila.
+1. Po odstranění spravované instance odstraňte *virtuální cluster* tak, že ho vyberete ve vaší skupině prostředků, a pak zvolíte **Odstranit**. `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**.
+1. Odstraňte všechny zbývající prostředky. `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**.
+1. Odstraňte skupinu prostředků výběrem možnosti **Odstranit skupinu prostředků** , zadáním názvu skupiny prostředků `myResourceGroup` a pak výběrem možnosti **Odstranit**.
 
 ## <a name="known-errors"></a>Známé chyby
 
@@ -413,7 +413,7 @@ I když je možné, že tato chybová zpráva je přesná a na vydavateli, ke kt
 - [Funkce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 - [Detekce hrozeb](threat-detection-configure.md)
 - [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking)
-- [Zabezpečení na úrovni řádku](/sql/relational-databases/security/row-level-security)
+- [Zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security)
 - [Transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>Možnosti spravované instance SQL

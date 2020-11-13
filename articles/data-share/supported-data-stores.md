@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 10/30/2020
-ms.openlocfilehash: 47c484268573334057e6b4dd14bbae849f9ce774
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/12/2020
+ms.openlocfilehash: 6289395b5d508de8da3e5c8c89caebb4b0e9b817
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577217"
+ms.locfileid: "94592426"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Podporovaná úložiště dat ve službě Azure Data Share
 
@@ -55,7 +55,7 @@ Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Az
 Podrobnosti najdete [v tématu sdílení a příjem dat z Azure Blob Storage a Azure Data Lake Storage](how-to-share-from-storage.md) .
 
 ## <a name="share-from-a-sql-based-source"></a>Sdílení ze zdroje založeného na jazyce SQL
-Azure Data Share podporuje sdílení tabulek nebo zobrazení z Azure SQL Database a Azure synapse Analytics (dříve Azure SQL DW) a sdílení tabulek z fondu SQL Azure synapse Analytics (pracovní prostor). Příjemci dat se můžou rozhodnout, že data přijměte do Azure Data Lake Storage Gen2 nebo Azure Blob Storage jako soubor CSV nebo Parquet, a také do Azure SQL Database a Azure synapse Analytics jako tabulky.
+Azure data Shared podporuje sdílení tabulek a zobrazení z Azure SQL Database a analýzy Azure synapse (dříve Azure SQL DW) a sdílení tabulek z vyhrazeného fondu SQL Azure synapse Analytics (v pracovním prostoru). Sdílení z fondu SQL bez serveru Azure synapse Analytics (v pracovním prostoru) se momentálně nepodporuje. Příjemci dat se můžou rozhodnout, že data přijměte do Azure Data Lake Storage Gen2 nebo Azure Blob Storage jako soubor CSV nebo Parquet, a také do Azure SQL Database a Azure synapse Analytics jako tabulky.
 
 Při přijímání dat do Azure Data Lake Store Gen2 nebo Azure Blob Storage zapíše úplné snímky obsah cílového souboru, pokud už existuje.
 Když se do tabulky přijímají data a cílová tabulka ještě neexistuje, vytvoří Azure Data Share tabulku SQL se zdrojovým schématem. Pokud cílová tabulka již existuje se stejným názvem, bude vynechána a přepíše se nejnovějším úplným snímkem. Přírůstkové snímky se aktuálně nepodporují.

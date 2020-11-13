@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 1c08ba51b815386783c3412e9238d2e96da03ff9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.date: 11/13/2020
+ms.openlocfilehash: 92ef5b372113d0d226335b8ec464a75a5a684bc3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94377671"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592902"
 ---
 # <a name="one-vs-one-multiclass"></a>Jedna a jedna více tříd
 
@@ -31,6 +31,8 @@ Tento modul implementuje metodu 1:1, v níž je pro dvojici tříd vytvořen bin
 V podstatě modul vytvoří komplet jednotlivých modelů a potom sloučí výsledky pro vytvoření jednoho modelu, který předpovídá všechny třídy. Každý binární klasifikátor lze použít jako základ pro model založený na jednom versus jednom.  
 
 Řekněme například, že nakonfigurujete vícevrstvý model [strojového modelu podpory](two-class-support-vector-machine.md) a zadáte to jako vstup do modulu s více třídami a jedním. Modul vytvoří pro všechny členy třídy Output modely vektorového stroje podpory. Pak by se pak použila Metoda 1:1 pro kombinování výsledků pro všechny třídy.  
+
+Modul používá OneVsOneClassifier z skriptu sklearn a další podrobnosti si můžete přečíst [tady](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsOneClassifier.html).
 
 ## <a name="how-to-configure-the-one-vs-one-multiclass-classifier"></a>Jak nakonfigurovat třídění více tříd – vs-One  
 
