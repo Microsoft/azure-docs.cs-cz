@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: e578e377e322e6b6a23f0990ca1fa0285a4ec87d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c64bc8bf265a8e3cc3c490827bdbd79661e3528a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491643"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591733"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků s využitím služby Azure NetApp Files
 
@@ -144,6 +144,17 @@ Zásadu snímku, kterou už nechcete zachovat, můžete odstranit.
 
     ![Potvrzení odstranění zásady snímku](../media/azure-netapp-files/snapshot-policy-delete-confirm.png) 
 
+## <a name="edit-the-hide-snapshot-path-option"></a>Úprava možnosti skrýt cestu snímku
+Možnost skrýt cestu ke snímku určuje, zda je cesta snímku svazku viditelná. Během vytváření svazku [NFS](azure-netapp-files-create-volumes.md#create-an-nfs-volume) nebo [SMB](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) máte možnost určit, jestli má být cesta snímku skrytá. V případě potřeby můžete následně upravit možnost skrýt cestu k snímku.  
+
+> [!NOTE]
+> U [cílového svazku](cross-region-replication-create-peering.md#create-the-data-replication-volume-the-destination-volume) v případě replikace mezi jednotlivými oblastmi je ve výchozím nastavení povolená možnost skrýt cestu snímku a toto nastavení nejde změnit. 
+
+1. Chcete-li zobrazit nastavení možnosti skrýt cestu k snímku svazku, vyberte svazek. V poli **Skrýt cestu snímku** se zobrazuje, zda je možnost povolena.   
+    ![Snímek obrazovky, který popisuje pole skrýt cestu snímku.](../media/azure-netapp-files/hide-snapshot-path-field.png) 
+2. Chcete-li upravit možnost skrýt cestu k snímku, klikněte na tlačítko **Upravit** na stránce svazek a podle potřeby upravte možnost **Skrýt cestu k snímku** .   
+    ![Snímek obrazovky s popisem možnosti upravit snímek svazku](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>Obnovení snímku na nový svazek
 
 V současné době můžete snímek obnovit pouze na nový svazek. 
@@ -173,17 +184,13 @@ Pokud nechcete [obnovit celý snímek na svazek](#restore-a-snapshot-to-a-new-vo
 
 Připojený svazek obsahuje adresář snímků s názvem  `.snapshot` (v klientech NFS) nebo `~snapshot` (v klientech SMB), který je pro klienta přístupný. Adresář snímků obsahuje podadresáře odpovídající snímkům svazku. Každý podadresář obsahuje soubory snímku. Pokud omylem odstraníte nebo přepíšete soubor, můžete ho obnovit do nadřazeného adresáře pro čtení i zápis zkopírováním souboru z podadresáře Snapshot do adresáře pro čtení i zápis. 
 
-Pokud jste při vytváření svazku zaškrtli políčko Skrýt cestu ke snímku, je adresář snímků skrytý. Výběrem svazku můžete zobrazit stav pro skrytí cesty snímku svazku. Možnost skrýt cestu snímku můžete upravit kliknutím na **Upravit** na stránce svazku.  
-
-Pro cílový svazek v případě replikace mezi jednotlivými oblastmi je ve výchozím nastavení povolená možnost skrýt cestu k snímku a toto nastavení nejde změnit.
-
-![Upravit možnosti snímku svazku](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+Pokud se adresář snímků nezobrazuje, může být skrytý, protože je aktuálně povolená možnost skrýt cestu k snímku. Můžete [upravit možnost skrýt cestu snímku](#edit-the-hide-snapshot-path-option) a zakázat ji.  
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Obnovení souboru pomocí klienta systému Linux NFS 
 
 1. `ls`K vypsání souboru, který chcete obnovit z adresáře, použijte příkaz Linux `.snapshot` . 
 
-    Příklad:
+    Například:
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -198,7 +205,7 @@ Pro cílový svazek v případě replikace mezi jednotlivými oblastmi je ve vý
 
 2. Pomocí `cp` příkazu zkopírujte soubor do nadřazeného adresáře.  
 
-    Příklad: 
+    Například: 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 

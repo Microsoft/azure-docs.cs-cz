@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: b3505f8bf31c2e700ce1cc57e106c33a13e0aa9b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fc44dd6cf91d687f47afadf1c3378956d838bc9d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737179"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579500"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Kurz: použití spravované identity pro připojení Key Vault k aplikaci pro jarní cloudovou službu Azure
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro cloudovou a
 
 Azure Key Vault můžete použít k bezpečnému ukládání a pečlivému řízení přístupu k tokenům, heslům, certifikátům, klíčům rozhraní API a dalším tajným klíčům vaší aplikace. Spravovanou identitu můžete vytvořit v Azure Active Directory (AAD) a ověřit u jakékoli služby, která podporuje ověřování AAD, včetně Key Vault, aniž byste museli zobrazovat přihlašovací údaje v kódu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
 * [Instalace rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
@@ -77,9 +77,11 @@ Slouží `az keyvault set-policy` k udělení správného přístupu v Key Vault
 ```azurecli
 az keyvault set-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY} --secret-permissions set get list
 ```
+> [!NOTE]
+> Použijte `az keyvault delete-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY}` k odebrání přístupu pro aplikaci po zakázání spravované identity přiřazené systémem.
 
 ## <a name="build-a-sample-spring-boot-app-with-spring-boot-starter"></a>Sestavení ukázkové aplikace pro spouštění pomocí jarního startu Starter
-Tato aplikace bude mít přístup k získání tajných kódů z Azure Key Vault. Použijte úvodní aplikaci: [Azure Key Vault tajných klíčů po spuštění](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets).  Azure Key Vault se přidá jako instance jarního **objekt propertysourceu** .  Tajné kódy uložené v Azure Key Vault lze pohodlně přizpůsobovat a používat jako jakékoli externě nastavené konfigurační vlastnosti, jako jsou například vlastnosti v souborech. 
+Tato aplikace bude mít přístup k získání tajných kódů z Azure Key Vault. Použijte úvodní aplikaci: [Azure Key Vault tajných klíčů po spuštění](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets).  Azure Key Vault se přidá jako instance jarního **objekt propertysourceu**.  Tajné kódy uložené v Azure Key Vault lze pohodlně přizpůsobovat a používat jako jakékoli externě nastavené konfigurační vlastnosti, jako jsou například vlastnosti v souborech. 
 
 1. Vygenerujte vzorový projekt z start.spring.io s Azure Key Vault jarní Starter. 
     ```azurecli
@@ -184,7 +186,7 @@ Klientská knihovna Azure Key Vault tajných klíčů vám umožní bezpečně u
     vim src/main/resources/application.properties
     ```
 
-    Pokud chcete používat spravovanou identitu pro aplikace Azure pro jarní Cloud, přidejte vlastnosti s následujícím obsahem do *Src/Main/Resources/Application. Properties* .
+    Pokud chcete používat spravovanou identitu pro aplikace Azure pro jarní Cloud, přidejte vlastnosti s následujícím obsahem do *Src/Main/Resources/Application. Properties*.
 
     ```
     azure.keyvault.enabled=true

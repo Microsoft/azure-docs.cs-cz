@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 6b082801a89450e34056be8be88a96fe26b7eeec
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413084"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578810"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -30,18 +30,36 @@ Aplikace Function App můžete hostovat několika způsoby:
 
 [!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
-## <a name="inbound-ip-restrictions"></a>Omezení příchozích IP adres
+## <a name="inbound-access-restrictions"></a>Omezení přístupu pro příchozí přístup
 
-Omezení IP adres můžete použít k definování seznamu IP adres seřazených podle priority, které mají povolený nebo odepřený přístup k vaší aplikaci. Seznam může zahrnovat IPv4 a IPv6 adresy. Pokud existuje aspoň jedna položka, na konci seznamu už existuje implicitní "Odepřít vše". Omezení protokolu IP fungují se všemi možnostmi hostování funkcí.
+Pomocí omezení přístupu můžete definovat seznam IP adres uspořádaných podle priority, které mají povolený nebo odepřený přístup k vaší aplikaci. Seznam může zahrnovat IPv4 a IPv6 adresy nebo konkrétní podsítě virtuální sítě pomocí [koncových bodů služby](#use-service-endpoints). Pokud existuje aspoň jedna položka, na konci seznamu už existuje implicitní "Odepřít vše". Omezení protokolu IP fungují se všemi možnostmi hostování funkcí.
+
+Omezení přístupu jsou k dispozici v rámci [prémií](functions-premium-plan.md), [spotřeby](functions-scale.md#consumption-plan)a [App Service](functions-scale.md#app-service-plan).
 
 > [!NOTE]
-> V případě použití omezení sítě můžete použít Editor portálu jenom z vaší virtuální sítě, nebo pokud jste IP adresu počítače, který používáte pro přístup k Azure Portal v seznamu bezpečných příjemců, zapnuli. K funkcím na kartě **funkce platformy** ale můžete přistupovat z libovolného počítače.
+> Se síťovými omezeními se dá nasadit jenom z vaší virtuální sítě, nebo když IP adresu počítače, který používáte, přistupujete k Azure Portal v seznamu bezpečných příjemců. Tuto funkci však stále můžete spravovat pomocí portálu.
 
 Další informace najdete v tématu [omezení statického přístupu Azure App Service](../app-service/app-service-ip-restrictions.md).
 
-## <a name="private-site-access"></a>Privátní přístup k webu
+### <a name="use-service-endpoints"></a>Použití koncových bodů služby
+
+Pomocí koncových bodů služby můžete omezit přístup k vybraným podsítím virtuální sítě Azure. Chcete-li omezit přístup k určité podsíti, vytvořte pravidlo omezení s typem **Virtual Network** . Pak můžete vybrat předplatné, virtuální síť a podsíť, pro které chcete povolit nebo odepřít přístup. 
+
+Pokud koncové body služby již nejsou povoleny s Microsoft. Web pro vybranou podsíť, budou automaticky povoleny, pokud nevyberete zaškrtávací políčko **ignorovat chybějící koncové body Microsoft. Web Service** . Scénář, ve kterém možná budete chtít povolit koncové body služby, ale ne podsíť, závisí hlavně na tom, jestli máte oprávnění k jejich povolení v podsíti. 
+
+Pokud k povolení koncových bodů služby v podsíti potřebujete někoho jiného, zaškrtněte políčko **Ignorovat koncové body Microsoft. Web Service** . Vaše aplikace se nakonfiguruje pro koncové body služby při předvídání, že jsou povolené později v podsíti. 
+
+![Snímek obrazovky s vybraným typem Virtual Network v podokně Přidat omezení IP adres](../app-service/media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
+
+Koncové body služby nemůžete použít k omezení přístupu k aplikacím, které běží v App Service Environment. Když je vaše aplikace v App Service Environment, můžete k ní řídit přístup použitím pravidel přístupu IP. 
+
+Informace o nastavení koncových bodů služby najdete v tématu věnovaném [vytvoření Azure Functions přístupu k privátní lokalitě](functions-create-private-site-access.md).
+
+## <a name="private-endpoint-connections"></a>Připojení privátního koncového bodu
 
 [!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
+
+Pokud chcete volat jiné služby, které mají připojení privátního koncového bodu, jako je úložiště nebo Service Bus, je nutné nakonfigurovat aplikaci tak, aby [odchozí volání do soukromých koncových bodů](#private-endpoints).
 
 ## <a name="virtual-network-integration"></a>Integrace virtuální sítě
 
@@ -69,7 +87,7 @@ Další informace najdete v tématu [koncové body služby virtuální sítě](.
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>Omezení účtu úložiště na virtuální síť (Preview)
 
-Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage.  Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu.  Tato funkce Preview v současnosti funguje jenom s plány Windows Premium v Západní Evropa.  Nastavení funkce s účtem úložiště omezeným na soukromou síť:
+Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage.  Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu.  Tato funkce Preview v současnosti funguje jenom s plány Windows Premium v Západní Evropa.  Pokud chcete nastavit funkci s účtem úložiště omezeným na soukromou síť:
 
 > [!NOTE]
 > Omezení účtu úložiště aktuálně funguje na prémiových funkcích pomocí Windows v Západní Evropa
@@ -80,7 +98,7 @@ Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s úč
 1. [Vytvořte sdílenou složku](../storage/files/storage-how-to-create-file-share.md#create-file-share) v účtu zabezpečeného úložiště.
 1. Povolte koncové body služby nebo privátní koncový bod pro účet úložiště.  
     * Pokud používáte koncový bod služby, ujistěte se, že jste povolili podsíť vyhrazenou pro vaše aplikace Function App.
-    * Nezapomeňte vytvořit záznam DNS a nakonfigurovat aplikaci tak, aby [fungovala s koncovými body privátního koncového bodu](#azure-dns-private-zones) , pokud používáte privátní koncový bod.  Účet úložiště bude potřebovat privátní koncový bod pro `file` `blob` dílčí prostředky a.  Pokud používáte určité možnosti, jako je Durable Functions budete potřebovat `queue` a `table` přístup přes připojení privátního koncového bodu.
+    * Nezapomeňte vytvořit záznam DNS a nakonfigurovat aplikaci tak, aby [fungovala s koncovými body privátního koncového bodu](#azure-dns-private-zones) , pokud používáte privátní koncový bod.  Účet úložiště bude potřebovat privátní koncový bod pro `file` `blob` subprostředky a.  Pokud používáte některé možnosti, jako je Durable Functions, budete potřebovat `queue` a `table` přistupovat přes připojení privátního koncového bodu.
 1. Volitelné Zkopírujte soubor a obsah objektu BLOB z účtu úložiště Function App do zabezpečeného účtu úložiště a sdílené složky.
 1. Zkopírujte připojovací řetězec pro tento účet úložiště.
 1. Aktualizujte **nastavení aplikace** v části **Konfigurace** pro aplikaci Function App na následující:
@@ -159,7 +177,7 @@ Když integrujete aplikaci funkcí v plánu Premium nebo App Service plánu s vi
 ## <a name="automation"></a>Automation
 Následující rozhraní API vám umožní programově spravovat integrace místní virtuální sítě:
 
-+ **Azure CLI** : použijte [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) příkazy k přidání, výpisu nebo odebrání integrace místní virtuální sítě.  
++ **Azure CLI** : pomocí [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) příkazů můžete přidat, vypsat nebo odebrat integraci místní virtuální sítě.  
 + **Šablony ARM** : integraci regionální virtuální sítě lze povolit pomocí šablony Azure Resource Manager. Úplný příklad najdete v tématu [Šablona pro rychlý Start pro funkce](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
 ## <a name="troubleshooting"></a>Řešení potíží

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: c79586703c49fe37d4d0915f49b69e6aa842083e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d653916c9b50d552825fcb03a860a2a2008b204d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017518"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578514"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriky pro Azure NetApp Files
 
@@ -88,7 +88,8 @@ Azure NetApp Files poskytuje metriky přiděleného úložiště, skutečné vyu
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>Metriky replikace svazků
 
 > [!NOTE] 
-> Velikost přenosu v síti (například metrika *celkové přenosové replikace svazku* ) se může lišit od zdrojových nebo cílových svazků replikace mezi oblastmi. Toto chování je výsledkem efektivního replikačního stroje, který slouží k minimalizaci nákladů na přenos v síti.
+> * Velikost přenosu v síti (například metrika *celkové přenosové replikace svazku* ) se může lišit od zdrojových nebo cílových svazků replikace mezi oblastmi. Toto chování je výsledkem efektivního replikačního stroje, který slouží k minimalizaci nákladů na přenos v síti.
+> * Metriky replikace svazků jsou aktuálně naplněny pro cílové svazky replikace, nikoli jako zdroj vztahu replikace.
 
 - *Je stav replikace svazku v pořádku*   
     Podmínka vztahu replikace. Dobrý stav je označený `1` . Stav není v pořádku je označený `0` .

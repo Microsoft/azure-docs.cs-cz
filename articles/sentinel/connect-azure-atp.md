@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 64c1a7155d0cc4e80f97db138a0626d6e9fdc9e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 319e0d29ef297f2a675128d498820a2d5b8ac42e
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657819"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579517"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Připojení dat z programu Microsoft Defender k identitě (dříve Rozšířená ochrana před internetovými útoky Azure)
 
@@ -32,7 +32,7 @@ Pomocí jediného kliknutí můžete streamovat protokoly z [Microsoft Defenderu
 ## <a name="prerequisites"></a>Požadavky
 
 - Uživatel s oprávněními globálního správce nebo správce zabezpečení
-- Musíte být zákazníkem verze Preview programu Microsoft Defender pro identitu a povolit integraci mezi Microsoft Defenderem a identitou a Microsoft Cloud App Security. Další informace najdete v tématu [Microsoft Defender pro integraci identity](https://docs.microsoft.com/cloud-app-security/aatp-integration).
+- Musíte být zákazníkem verze Preview programu Microsoft Defender pro identitu a povolit integraci mezi Microsoft Defenderem a identitou a Microsoft Cloud App Security. Další informace najdete v tématu [Microsoft Defender pro integraci identity](https://www.microsoft.com/microsoft-365/identity/advance-threat-protection).
 
 ## <a name="connect-to-microsoft-defender-for-identity"></a>Připojení k programu Microsoft Defender pro identitu
 
@@ -40,7 +40,7 @@ Ujistěte se, že je [ve vaší síti povolená](https://docs.microsoft.com/azur
 Pokud je program Microsoft Defender pro identitu nasazený a ingestuje vaše data, můžou být podezřelé výstrahy snadno streamované do Azure Sentinel. Může trvat až 24 hodin, než se výstrahy spustí streamování do Azure Sentinel.
 
 
-1. Aby bylo možné připojit Microsoft Defender k identitě do Azure Sentinel, musíte nejprve povolit integraci mezi Microsoft Defenderem a identitou a Microsoft Cloud App Security. Informace o tom, jak to provést, najdete v tématu [Microsoft Defender pro integraci identity](https://docs.microsoft.com/cloud-app-security/aatp-integration).
+1. Aby bylo možné připojit Microsoft Defender k identitě do Azure Sentinel, musíte nejprve povolit integraci mezi Microsoft Defenderem a identitou a Microsoft Cloud App Security. Informace o tom, jak to provést, najdete v tématu [Microsoft Defender pro integraci identity](https://www.microsoft.com/microsoft-365/identity/advance-threat-protection).
 
 1. V Azure Sentinel vyberte **datové konektory** a potom klikněte na dlaždici **Microsoft Defender pro identitu (Preview)** .
 

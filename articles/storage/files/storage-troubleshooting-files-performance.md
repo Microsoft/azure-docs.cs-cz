@@ -1,20 +1,20 @@
 ---
-title: Průvodce řešením potíží s výkonem sdílené složky Azure
-description: Řešení známých problémů s výkonem se soubory Azure Zjistěte možné příčiny a související alternativní řešení, když dojde k těmto potížím.
+title: Průvodce řešením potíží se službou Azure File Shares Performance
+description: Řešení známých problémů s výkonem u sdílených složek Azure. Zjistěte možné příčiny a související alternativní řešení, když dojde k těmto potížím.
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 52376cabfd837ad7435c8e9c992fe000e0521247
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 4d89fb4bcedb58aa156e75aaefc87479797dcd37
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561110"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577968"
 ---
-# <a name="troubleshoot-azure-file-share-performance-issues"></a>Řešení potíží s výkonem Azure File Share
+# <a name="troubleshoot-azure-file-shares-performance-issues"></a>Řešení potíží s výkonem Azure File shares
 
 V tomto článku jsou uvedené některé běžné problémy související se sdílenými složkami Azure. V případě, že dojde k těmto potížím, poskytuje možné příčiny a alternativní řešení.
 

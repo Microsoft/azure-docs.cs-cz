@@ -9,12 +9,13 @@ ms.reviewer: ebertra
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: bf7e841586250142c23d6672491af30a011043ca
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+monikerRange: '>=iotedge-2020-11'
+ms.openlocfilehash: 941435e90f91a4c3a4e41c2869e35157da41d8b0
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447759"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592171"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Publikování a přihlášení k odběru pomocí Azure IoT Edge
 
@@ -57,7 +58,7 @@ Pokud chcete protokol TLS zakázat, použijte port 1883 (MQTT) a navažte kontej
 
 Pokud chcete povolit protokol TLS, bude se iniciovat kanál TLS, pokud se klient připojí na portu 8883 (MQTTS) k zprostředkovateli MQTT. Zprostředkovatel odešle svůj řetěz certifikátů, který musí klient ověřit. Aby bylo možné ověřit řetěz certifikátů, musí být kořenový certifikát zprostředkovatele MQTT nainstalován jako důvěryhodný certifikát na klientovi. Pokud kořenový certifikát není důvěryhodný, klient služby MQTT odmítl knihovnu klienta s chybou ověřování certifikátu. Postup pro instalaci tohoto kořenového certifikátu zprostředkovatele na straně klienta je stejný jako v případě [transparentní brány](how-to-create-transparent-gateway.md) a je popsaný v dokumentaci [Příprava zařízení pro příjem dat](how-to-connect-downstream-device.md#prepare-a-downstream-device) .
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Aby se klient MQTT mohl sám ověřit, musí nejdřív odeslat paket připojení ke zprostředkovateli MQTT a iniciovat připojení v jeho názvu. Tento paket nabízí tři části ověřovacích informací: a `client identifier` , `username` a `password` :
 
@@ -84,7 +85,7 @@ Aby se klient MQTT mohl sám ověřit, musí nejdřív odeslat paket připojení
 
 Moduly nasazené pomocí IoT Edge používají [ověřování symetrických klíčů](how-to-authenticate-downstream-device.md#symmetric-key-authentication) a můžou volat místní [rozhraní API pro IoT Edge úlohy](https://github.com/Azure/iotedge/blob/40f10950dc65dd955e20f51f35d69dd4882e1618/edgelet/workload/README.md) , které programově získá token SAS, i když je offline.
 
-### <a name="authorization"></a>Authorization (Autorizace)
+### <a name="authorization"></a>Autorizace
 
 Jakmile se MQTT klient ověří pro IoT Edge centra, musí být autorizovaný pro připojení. Po připojení je potřeba mít oprávnění k publikování nebo přihlášení k odběru určitých témat. Tato autorizace jsou udělována službou IoT Edge hub na základě zásad autorizace. Zásady autorizace jsou sady příkazů vyjádřené jako struktura JSON, která se odesílá do centra IoT Edge prostřednictvím jeho vlákna. Pokud chcete nakonfigurovat zásady autorizace, upravte stav vlákna IoT Edge hub.
 

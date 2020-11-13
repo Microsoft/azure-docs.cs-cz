@@ -7,12 +7,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 10/15/2020
-ms.openlocfilehash: a323dec66a3077784ff85deadd4f12086648fb3a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220454"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579143"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Řešení běžných potíží se službou Azure Data Share 
 
@@ -52,11 +52,11 @@ Nepovedlo se namapovat datové sady.
 
 "Nemohli jsme přidat oprávnění k zápisu pro účet Azure Data Share k jednomu nebo více vybraným prostředkům"
 
-Pokud při vytváření nové sdílené složky nebo mapování datových sad dojde k některé z výše uvedených chyb, může to být způsobeno nedostatečnými oprávněními pro úložiště dat Azure. Další informace najdete v tématu [role a požadavky](concepts-roles-permissions.md) pro požadovaná oprávnění. 
+Pokud při vytváření nové sdílené složky, přidání datových sad nebo mapování datových sad dojde k některé z výše uvedených chyb, může to být způsobeno nedostatečnými oprávněními pro úložiště dat Azure. Další informace najdete v tématu [role a požadavky](concepts-roles-permissions.md) pro požadovaná oprávnění. 
 
-Ke sdílení nebo příjmu dat z úložiště dat Azure, které obvykle existuje v roli přispěvatel, potřebujete oprávnění k zápisu. 
+Ke sdílení nebo příjmu dat z úložiště dat Azure, které obvykle existuje v roli **Přispěvatel** , potřebujete oprávnění k zápisu. 
 
-Pokud se jedná o první sdílení nebo příjem dat z úložiště dat Azure, potřebujete také *Microsoft. Authorization/role nebo* oprávnění k zápisu, které obvykle existují v roli vlastníka. I když jste vytvořili prostředek Azure Data Store, nevytvoří automaticky vlastníka tohoto prostředku. Pomocí správného oprávnění služba Azure Data Share automaticky uděluje přístup spravované identitě prostředku ke sdílení dat do úložiště dat. Tento proces může trvat několik minut, než se projeví. Pokud dojde k selhání kvůli této prodlevě, zkuste to znovu za několik minut.
+Pokud se jedná o první sdílení nebo příjem dat z úložiště dat Azure, potřebujete také *Microsoft. Authorization/role nebo* oprávnění k zápisu, které obvykle existují v roli **vlastníka** . I když jste vytvořili prostředek Azure Data Store, nevytvoří automaticky vlastníka tohoto prostředku. Pomocí správného oprávnění služba Azure Data Share automaticky uděluje přístup spravované identitě prostředku ke sdílení dat do úložiště dat. Tento proces může trvat několik minut, než se projeví. Pokud dojde k selhání kvůli této prodlevě, zkuste to znovu za několik minut.
 
 Sdílení založené na SQL vyžaduje další oprávnění. Podrobný seznam požadovaných součástí najdete v tématu [sdílení ze zdrojů SQL](how-to-share-from-sql.md) .
 
@@ -69,7 +69,7 @@ Snímek se kvůli nejrůznějším důvodům nezdařil. Podrobnou chybovou zprá
 
 V případě zdrojů SQL jsou zde další příčiny selhání snímku. 
 
-* Zdrojový nebo cílový skript SQL, který má udělit oprávnění ke sdílení dat, se nespustí nebo se místo Azure Active Directory ověřování spustí pomocí ověřování SQL.  
+* Zdrojový nebo cílový skript SQL pro udělení oprávnění ke sdílení dat není spuštěn. Nebo pro Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL DW) se používá ověřování SQL místo ověřování Azure Active Directory.  
 * Zdrojové nebo cílové úložiště dat SQL je pozastaveno.
 * Datové typy SQL nejsou podporovány procesem snímku nebo cílovým úložištěm dat. Podrobnosti najdete [v tématu sdílení ze zdrojů SQL](how-to-share-from-sql.md#supported-data-types) .
 * Zdrojové nebo cílové úložiště dat SQL jsou zamčené jinými procesy. Azure Data Share nepoužívá zámky pro zdrojové a cílové úložiště dat SQL. Stávající zámky na zdrojovém a cílovém úložišti dat SQL však způsobí selhání snímku.

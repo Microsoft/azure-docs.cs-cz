@@ -6,16 +6,16 @@ ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: MashaMSFT
-ms.author: mathoma
+author: stevestein
+ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: df53f4912108962e9d50400c4c2516aefaa50976
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e9fb004df5fdf8a955312ebcf16b8b60fd7c9b6a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496592"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592188"
 ---
 # <a name="migration-performance-sql-server-to-sql-managed-instance-performance-analysis"></a>Výkon migrace: SQL Server k analýze výkonu spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -65,7 +65,7 @@ SQL Managed instance poskytuje pokročilé nástroje pro monitorování a řeše
 -  Statistiky, jako je INSTANCE_LOG_GOVERNOR nebo PAGEIOLATCH, které identifikují vstupně-výstupní problémy s úložištěm, zejména na Pro obecné účely úrovni, kde možná budete muset předem přidělit soubory, abyste získali lepší vstupně-výstupní operace. 
 
 
-## <a name="considerations"></a>Požadavky  
+## <a name="considerations"></a>Co je potřeba vzít v úvahu  
 
 Při porovnávání výkonu Vezměte v úvahu následující skutečnosti: 
 

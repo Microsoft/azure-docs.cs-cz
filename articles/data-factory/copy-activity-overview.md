@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 8a84c9979bdfac1165d44d03572567ab1ea7ab1f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: ef7f7ba659d874d4514c45e9391912f3027e2265
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995347"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592052"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
 
@@ -183,7 +183,7 @@ Informace o tom, jak aktivita kopírování mapuje vaše zdrojová data do jímk
 
 ## <a name="add-additional-columns-during-copy"></a>Přidat další sloupce během kopírování
 
-Kromě kopírování dat ze zdrojového úložiště dat do jímky můžete také nakonfigurovat a přidat další datové sloupce pro kopírování do jímky. Příklad:
+Kromě kopírování dat ze zdrojového úložiště dat do jímky můžete také nakonfigurovat a přidat další datové sloupce pro kopírování do jímky. Například:
 
 - Při kopírování ze zdroje založeného na souborech uložte relativní cestu k souboru jako další sloupec, ze kterého se data pocházejí.
 - Duplikuje zadaný zdrojový sloupec jako jiný sloupec. 
@@ -250,7 +250,7 @@ Pokud ho chcete nakonfigurovat programově, přidejte `additionalColumns` do zdr
 
 Když kopírujete data do služby SQL Database/Azure synapse Analytics, pokud cílová tabulka neexistuje, aktivita kopírování podporuje automatické vytvoření na základě zdrojových dat. Díky tomu je možné rychle začít načítat data a vyhodnocovat SQL Database nebo Azure synapse Analytics. Po přijetí dat můžete zkontrolovat a upravit schéma tabulky jímky podle vašich potřeb.
 
-Tato funkce se podporuje při kopírování dat z libovolného zdroje do následujících úložišť dat jímky. Můžete najít možnost v *uživatelském rozhraní pro vytváření ADF* – >á *jímka aktivity kopírování* – > *možnost Tabulka* – > *Automatické vytvoření tabulky*nebo prostřednictvím `tableOption` vlastnosti v datové části jímky aktivity kopírování.
+Tato funkce se podporuje při kopírování dat z libovolného zdroje do následujících úložišť dat jímky. Můžete najít možnost v *uživatelském rozhraní pro vytváření ADF* – >á *jímka aktivity kopírování* – > *možnost Tabulka* – > *Automatické vytvoření tabulky* nebo prostřednictvím `tableOption` vlastnosti v datové části jímky aktivity kopírování.
 
 - [Azure SQL Database](connector-azure-sql-database.md)
 - [Spravovaná instance Azure SQL Database](connector-azure-sql-managed-instance.md)
@@ -262,6 +262,13 @@ Tato funkce se podporuje při kopírování dat z libovolného zdroje do násled
 ## <a name="fault-tolerance"></a>Odolnost proti chybám
 
 Ve výchozím nastavení aktivita kopírování zastaví kopírování dat a vrátí chybu, pokud jsou řádky zdrojového data nekompatibilní s řádky dat jímky. Aby bylo kopírování úspěšné, můžete nakonfigurovat aktivitu kopírování, která přeskočí a zaprotokoluje nekompatibilní řádky a kopíruje pouze kompatibilní data. Podrobnosti najdete v tématu odolnost [proti chybám aktivity kopírování](copy-activity-fault-tolerance.md) .
+
+## <a name="data-consistency-verification"></a>Ověření konzistence dat
+
+Když přesunete data ze zdrojového do cílového úložiště, Azure Data Factory aktivita kopírování poskytuje možnost provést další ověření konzistence dat, aby se zajistilo, že data nebudou úspěšně zkopírována ze zdroje do cílového úložiště, ale také ověřena tak, aby byla konzistentní mezi zdrojovým a cílovým úložištěm. Po nalezení nekonzistentních souborů během přesunu dat můžete buď přerušit aktivitu kopírování, nebo pokračovat ve kopírování zbývajících souborů tak, že povolíte nastavení odolnosti proti chybám, aby se přeskočily nekonzistentní soubory. Vynechané názvy souborů můžete získat povolením nastavení protokol relace v aktivitě kopírování. Podrobnosti najdete [v tématu ověření konzistence dat v aktivitě kopírování](copy-activity-data-consistency.md) .
+
+## <a name="session-log"></a>Protokol relace
+Můžete protokolovat názvy kopírovaných souborů, které vám pomůžou zajistit, aby data nebyla úspěšně zkopírována ze zdroje do cílového úložiště, ale také konzistentní mezi zdrojovým a cílovým úložištěm, a to kontrolou protokolů relace aktivity kopírování. Podrobnosti najdete [v tématu Protokol relace v aktivitě kopírování](copy-activity-log.md) .
 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na následující rychlé starty, kurzy a ukázky:

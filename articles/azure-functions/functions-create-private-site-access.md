@@ -6,16 +6,16 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 38bc0ec546526cd0c6631b7cd5b70753c3235d18
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e367e4f2a704d8c718551fb031164520b3ff5bb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563983"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579126"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Kurz: vytvoření přístupu k privátnímu webu Azure Functions
 
-V tomto kurzu se dozvíte, jak povolit [přístup k privátní lokalitě](./functions-networking-options.md#private-site-access) pomocí Azure Functions. Pomocí privátního přístupu k webu můžete vyžadovat, aby se kód vaší funkce aktivoval jenom z konkrétní virtuální sítě.
+V tomto kurzu se dozvíte, jak povolit [přístup k privátní lokalitě](./functions-networking-options.md#private-endpoint-connections) pomocí Azure Functions. Pomocí privátního přístupu k webu můžete vyžadovat, aby se kód vaší funkce aktivoval jenom z konkrétní virtuální sítě.
 
 Přístup k privátní lokalitě je užitečný ve scénářích, kdy se přístup k aplikaci Function App musí omezovat na konkrétní virtuální síť. Například aplikace Function App se může uplatňovat jenom na zaměstnance konkrétní organizace nebo na služby, které jsou v rámci zadané virtuální sítě (například jiné funkce Azure, virtuální počítač Azure nebo cluster AKS).
 
@@ -159,7 +159,7 @@ Dalším krokem je vytvoření aplikace Function App v Azure s využitím [plán
 
 Dalším krokem je konfigurace [omezení přístupu](../app-service/app-service-ip-restrictions.md) , aby se zajistilo, že funkce může vyvolat jenom prostředky ve virtuální síti.
 
-Přístup k [privátní lokalitě](functions-networking-options.md#private-site-access) je povolený vytvořením [koncového bodu služby](../virtual-network/virtual-network-service-endpoints-overview.md) Azure Virtual Network mezi aplikací funkcí a zadanou virtuální sítí. Omezení přístupu jsou implementována prostřednictvím koncových bodů služby. Koncové body služeb zajišťují, že přístup k určenému prostředku má jenom přenosy pocházející z zadané virtuální sítě. V tomto případě je určeným prostředkem funkce Azure Functions.
+Přístup k [privátní lokalitě](functions-networking-options.md#private-endpoint-connections) je povolený vytvořením [koncového bodu služby](../virtual-network/virtual-network-service-endpoints-overview.md) Azure Virtual Network mezi aplikací funkcí a zadanou virtuální sítí. Omezení přístupu jsou implementována prostřednictvím koncových bodů služby. Koncové body služeb zajišťují, že přístup k určenému prostředku má jenom přenosy pocházející z zadané virtuální sítě. V tomto případě je určeným prostředkem funkce Azure Functions.
 
 1. V rámci aplikace Function App vyberte odkaz **sítě** v hlavičce oddílu _Nastavení_ .
 1. Stránka _síť_ je výchozím bodem, ve kterém se konfigurují přední dveře Azure, Azure CDN a také omezení přístupu.

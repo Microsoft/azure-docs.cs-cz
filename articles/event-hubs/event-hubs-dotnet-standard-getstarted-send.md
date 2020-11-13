@@ -4,12 +4,12 @@ description: Tento článek popisuje postup vytvoření aplikace .NET Core, kter
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4949d68750e95e5b62b8387f03c77c082fbaf7f4
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 1c0f5a5fb45ee45cb9b7e399dc39ad29406b15dc
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329317"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578990"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Odesílání událostí do a příjem událostí z Azure Event Hubs – .NET (Azure. Messaging. EventHubs) 
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí knihovny .NET **Azure. Messaging. EventHubs** . 
@@ -19,7 +19,7 @@ V tomto rychlém startu se dozvíte, jak odesílat události do centra událost�
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
@@ -35,7 +35,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro ode
 
 1. Spusťte Visual Studio 2019. 
 1. Vyberte **vytvořit nový projekt**. 
-1. V dialogovém okně **vytvořit nový projekt** proveďte následující kroky: Pokud toto dialogové okno nevidíte, vyberte v nabídce **soubor** , vyberte možnost **Nový**a pak vyberte možnost **projekt**. 
+1. V dialogovém okně **vytvořit nový projekt** proveďte následující kroky: Pokud toto dialogové okno nevidíte, vyberte v nabídce **soubor** , vyberte možnost **Nový** a pak vyberte možnost **projekt**. 
     1. Pro programovací jazyk vyberte **C#** .
     1. Jako typ aplikace vyberte **Konzola** . 
     1. V seznamu výsledků vyberte **Konzolová aplikace (.NET Core)** . 
@@ -104,7 +104,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro ode
     [![Ověřte, že centrum událostí přijalo zprávy.](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
     > [!NOTE]
-    > Úplný zdrojový kód s dalšími informativními komentáři najdete v [tomto souboru na GitHubu](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample03_PublishAnEventBatch.cs) .
+    > Úplný zdrojový kód s dalšími informativními komentáři najdete v [tomto souboru na GitHubu](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample04_PublishingEvents.md) .
 
 ## <a name="receive-events"></a>Příjem událostí
 V této části se dozvíte, jak napsat konzolovou aplikaci .NET Core, která přijímá zprávy z centra událostí pomocí procesoru událostí. Procesor událostí zjednodušuje přijímání událostí z Center událostí tím, že spravuje trvalé kontrolní body a paralelní příjemy z těchto Center událostí. Procesor událostí je přidružený ke konkrétnímu centru událostí a skupině uživatelů. Přijímá události z více oddílů v centru událostí a předá je delegátovi obslužné rutiny pro zpracování pomocí kódu, který poskytnete. 
@@ -128,9 +128,9 @@ V tomto rychlém startu použijete Azure Storage jako úložiště kontrolního 
 
 ### <a name="create-a-project-for-the-receiver"></a>Vytvořit projekt pro příjemce
 
-1. V okně Průzkumník řešení klikněte pravým tlačítkem na řešení **EventHubQuickStart** , přejděte na **Přidat**a vyberte **Nový projekt**. 
+1. V okně Průzkumník řešení klikněte pravým tlačítkem na řešení **EventHubQuickStart** , přejděte na **Přidat** a vyberte **Nový projekt**. 
 1. Vyberte **aplikace konzoly (.NET Core)** a pak vyberte **Další**. 
-1. Jako **název projektu**zadejte **EventHubsReceiver** a vyberte **vytvořit**. 
+1. Jako **název projektu** zadejte **EventHubsReceiver** a vyberte **vytvořit**. 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Přidání balíčku NuGet služby Event Hubs
 

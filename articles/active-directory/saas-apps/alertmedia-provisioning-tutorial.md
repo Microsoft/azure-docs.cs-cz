@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 086f79239fd4f6b01f4b76d1385598bac52bb471
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9a7c19e30c6c26d7bf7f11d6f03a0acaee160c9a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358962"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578599"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>Kurz: Konfigurace AlertMedia pro Automatické zřizování uživatelů
 
@@ -95,9 +95,9 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
     ![Automatická karta zřizování](common/provisioning-automatic.png)
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** AlertMedia jako jednu z následujících možností.
-      * (žádná vlastní doména) https://dashboard.alertmedia.com/api/scim/v3
+      * (žádná vlastní doména) `https://dashboard.alertmedia.com/api/scim/v3`
 
-      * (vlastní doména) https://subdomain.alertmedia.com/api/scim/v3
+      * (vlastní doména) `https://subdomain.alertmedia.com/api/scim/v3`
 
       Zadejte **tajný token** , který jste dříve získali v kroku 2. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k AlertMedia. Pokud se připojení nepovede, ujistěte se, že má váš účet AlertMedia oprávnění správce, a zkuste to znovu.
 

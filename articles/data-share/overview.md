@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: overview
-ms.date: 07/30/2020
-ms.openlocfilehash: e80ea37409f7b5beb48ba7b8e96aeeda9a5836e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/30/2020
+ms.openlocfilehash: b9fb5d6537d2c8dffef397c56128dd4891c939b7
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89433428"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578123"
 ---
 # <a name="what-is-azure-data-share"></a>Co je Azure Data Share?
 
@@ -45,7 +45,7 @@ Poskytovatelé dat můžou svým spotřebitelům dat postupně aktualizovat data
 
 ![tok sdílení dat](media/data-share-flow.png)
 
-Když příjemce dat přijme sdílenou složku, může přijímat data v úložišti dat podle svého výběru. Pokud například poskytovatel dat sdílí data pomocí Azure Blob Storage, příjemce dat může tato data přijímat v Azure Data Lake Store. Podobně platí, že pokud poskytovatel dat sdílí data ze služby Azure synapse Analytics (dříve SQL Data Warehouse), příjemce dat si může vybrat, jestli chtějí přijímat data do Azure Data Lake Store, Azure SQL Database nebo Azure synapse Analytics. V případě sdílení ze zdrojů založených na jazyce SQL může příjemce dat také zvolit, zda budou přijímat data v Parquet nebo CSV. 
+Když příjemce dat přijme sdílenou složku, může přijímat data v úložišti dat podle svého výběru. Pokud například poskytovatel dat sdílí data pomocí Azure Blob Storage, příjemce dat může tato data přijímat v Azure Data Lake Store. Podobně platí, že pokud poskytovatel dat sdílí data z analýzy Azure synapse, příjemce dat si může vybrat, jestli chtějí data přijímat, do Azure Data Lake Store, Azure SQL Database nebo Azure synapse Analytics. V případě sdílení ze zdrojů založených na jazyce SQL může příjemce dat také zvolit, zda budou přijímat data v Parquet nebo CSV. 
 
 Díky místnímu sdílení můžou poskytovatelé dat sdílet data, kde se nacházejí, bez kopírování dat. Po navázání vztahu sdílení prostřednictvím toku pozvánky se vytvoří symbolické propojení mezi zdrojovým úložištěm dat zprostředkovatele dat a cílovým úložištěm dat příjemce dat. Příjemce dat může data číst a dotazovat se v reálném čase pomocí vlastního úložiště dat. Změny zdrojového úložiště dat jsou k dispozici pro příjemce dat okamžitě. Místní sdílení je v současnosti ve verzi Preview pro Azure Průzkumník dat.
 
@@ -73,9 +73,7 @@ Azure Data Share umožňuje příjemcům dat:
 
 * Přijměte data sdílená s vámi do [podporovaného úložiště dat](supported-data-stores.md).
 
-* Aktivace úplného nebo přírůstkového snímku sdílené složky dat, kterou s vámi organizace sdílí
-
-* Přihlaste se k odběru sdílení dat, abyste získali nejnovější kopii dat prostřednictvím přírůstkového snímku.
+* Přístup k datům na místě nebo Aktivace úplného nebo přírůstkového snímku sdílených dat
 
 Všechny výše uvedené klíčové funkce jsou podporované prostřednictvím Azure Portal nebo přes rozhraní REST API. Další informace o používání sdílené složky Azure prostřednictvím rozhraní REST API najdete v naší referenční dokumentaci. 
 

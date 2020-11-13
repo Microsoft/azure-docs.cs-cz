@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b24bd190eac9cb6c29ceab6eb597d8d1c48f2ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1b56e3818d2d9701ecb0252328746dc39bb260
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605086"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578310"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Vývoj obchodních aplikací pro Azure Active Directory
 Tato příručka poskytuje přehled vývoje obchodních aplikací pro Azure Active Directory (AD). Zamýšlená cílová skupina je globální správce služby Active Directory/Microsoft 365.
@@ -27,7 +27,7 @@ Sestavování aplikací integrovaných do Azure AD poskytuje uživatelům ve va�
 
 Zaregistrujte svoji aplikaci, aby používala Azure Active Directory. Registrace aplikace znamená, že vývojáři můžou pomocí Azure AD ověřovat uživatele a žádat o přístup k uživatelským prostředkům, jako jsou e-mail, kalendář a dokumenty.
 
-Každý člen adresáře (bez hostů) může zaregistrovat aplikaci, jinak se označuje jako *vytvoření objektu aplikace*.
+Každý člen adresáře (bez hostů) může zaregistrovat aplikaci, jinak se označuje jako *vytvoření objektu aplikace*. Pokud se vám nedaří zaregistrovat aplikaci, znamená to, že globální správce vašeho adresáře tuto funkci omezil a možná budete muset kontaktovat tyto funkce, [aby bylo možné](https://docs.microsoft.com/azure/active-directory/roles/delegate-app-roles#assign-built-in-application-admin-roles) aplikaci zaregistrovat. Další informace o tom, jak omezit uživatele, najdete [v tématu oprávnění k registraci aplikace delegáta v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/roles/delegate-app-roles#restrict-who-can-create-applications).
 
 Registrace aplikace umožňuje libovolnému uživateli provádět následující akce:
 

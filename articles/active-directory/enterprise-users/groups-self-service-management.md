@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4651d15fb765182c788733c0542480805387871
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f1730507c022d57495efa56c98215ff72d07e180
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374909"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578174"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Nastavení samoobslužné správy skupin v Azure Active Directory 
 
@@ -44,15 +44,15 @@ Skupiny vytvořené v | Výchozí chování skupiny zabezpečení | Výchozí ch
 ## <a name="make-a-group-available-for-user-self-service"></a>Zpřístupnění skupiny pro uživatelskou samoobsluhu
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který má k adresáři oprávnění globálního správce.
-1. Vyberte **skupiny**a pak vyberte **Obecné** nastavení.
+1. Vyberte **skupiny** a pak vyberte **Obecné** nastavení.
 1. Možnost nastavit **vlastníky mohou spravovat požadavky na členství ve skupinách na přístupovém panelu** na **Ano**.
 1. Nastavte **omezení přístupu ke skupinám na přístupovém panelu** na **ne**.
 1. Pokud nastavíte **možnost Uživatelé můžou vytvářet skupiny zabezpečení na portálech Azure** nebo **Uživatelé můžou na portálech azure vytvářet skupiny Microsoft 365** na
 
-    - **Ano**: všichni uživatelé v organizaci Azure AD můžou vytvářet nové skupiny zabezpečení a přidávat do těchto skupin členy. Tyto nové skupiny se zobrazí také všem ostatním uživatelům na přístupovém panelu. Pokud to nastavení zásad skupiny umožňuje, můžou jiní uživatelé vytvářet žádosti o připojení k těmto skupinám.
-    - **Ne**: uživatelé nemůžou vytvářet skupiny a nemůžou měnit existující skupiny, pro které jsou vlastníci. Můžou však stále spravovat členství v těchto skupinách a schvalovat žádosti o členství od jiných uživatelů.
+    - **Ano** : všichni uživatelé v organizaci Azure AD můžou vytvářet nové skupiny zabezpečení a přidávat do těchto skupin členy. Tyto nové skupiny se zobrazí také všem ostatním uživatelům na přístupovém panelu. Pokud to nastavení zásad skupiny umožňuje, můžou jiní uživatelé vytvářet žádosti o připojení k těmto skupinám.
+    - **Ne** : uživatelé nemůžou vytvářet skupiny a nemůžou měnit existující skupiny, pro které jsou vlastníci. Můžou však stále spravovat členství v těchto skupinách a schvalovat žádosti o členství od jiných uživatelů.
 
-Můžete také použít **vlastníky, kteří můžou přiřadit členy jako vlastníky skupin na portálech Azure** a **vlastníky, kteří můžou členy přiřadit jako vlastníci skupin na portálech Azure** a dosáhnout tak podrobnějšího řízení přístupu pro uživatele samoobslužné správy skupin.
+Můžete také použít **vlastníky, kteří můžou členům přiřadit členy jako vlastníci skupiny v Azure Portal** a dosáhnout tak přesnější řízení přístupu pro uživatele samoobslužné správy skupin.
 
 Když uživatelé můžou vytvářet skupiny, všichni uživatelé ve vaší organizaci můžou vytvářet nové skupiny a potom můžou jako výchozí vlastník přidávat členy do těchto skupin. Nemůžete určit jednotlivce, kteří můžou vytvářet své vlastní skupiny. Můžete určit jednotlivce jenom pro případ, že bude mít jiný člen skupiny jako vlastník skupiny.
 

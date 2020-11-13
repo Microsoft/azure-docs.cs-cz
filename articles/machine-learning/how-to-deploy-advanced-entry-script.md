@@ -11,24 +11,27 @@ ms.date: 09/17/2020
 ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 2225ef42d8862935e5cd682a3c11a7ce687babab
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b05891500ae5fd66e5ec2381066ccd1d26aa7ec
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325569"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578055"
 ---
 # <a name="advanced-entry-script-authoring"></a>Vytváření pokročilých zaváděcích skriptů
 
 Tento článek ukazuje, jak psát skripty pro zadávání pro specializované případy použití.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že už máte školený model strojového učení, který máte v úmyslu nasadit pomocí Azure Machine Learning. Další informace o nasazení modelu najdete v [tomto kurzu](how-to-deploy-and-where.md).
 
 ## <a name="automatically-generate-a-swagger-schema"></a>Automatické generování schématu Swaggeru
 
-Chcete-li automaticky vygenerovat schéma pro webovou službu, poskytněte vzorek vstupu a/nebo výstupu v konstruktoru pro jeden z definovaných objektů typu. Typ a ukázka slouží k automatickému vytvoření schématu. Azure Machine Learning pak vytvoří specifikace [openapi](https://swagger.io/docs/specification/about/) (Swagger) pro webovou službu během nasazování.
+Chcete-li automaticky vygenerovat schéma pro webovou službu, poskytněte vzorek vstupu a/nebo výstupu v konstruktoru pro jeden z definovaných objektů typu. Typ a ukázka slouží k automatickému vytvoření schématu. Azure Machine Learning pak vytvoří specifikace [openapi](https://swagger.io/docs/specification/about/) (Swagger) pro webovou službu během nasazování. 
+
+> [!WARNING]
+> Pro ukázkový vstup nebo výstup nesmíte použít citlivá ani soukromá data. Stránka Swagger pro Inferencing hostovaná v AML zpřístupňuje ukázková data. 
 
 Tyto typy jsou aktuálně podporovány:
 

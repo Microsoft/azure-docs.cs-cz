@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 54a1135931c2be9c6b7941c9ff740fd29f855eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26dd255e6edff7c339ab9766bb71889cf4e2deaa
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601244"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577639"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Pět kroků pro integraci všech vašich aplikací se službou Azure AD
 
@@ -46,7 +46,7 @@ Nakonec můžete integrovat i aplikace, které vyvíjíte interně. Tento postup
 
 V dalším kroku zjistíte, že se zaměstnanci aplikace často používají, a určete prioritu práce při jejich integraci s Azure AD.
 
-Můžete začít pomocí [nástrojů Cloud discovery](/cloud-app-security/tutorial-shadow-it) Microsoft Cloud App Security&#39;s a vyhledat a spravovat &quot; stínové &quot; IT ve vaší síti (tj. aplikace, které nespravuje oddělení IT). [Pomocí rozšířené ochrany před internetovými útoky v programu Microsoft Defender](/cloud-app-security/wdatp-integration) můžete zjednodušit a rozšířit proces zjišťování.
+Můžete začít pomocí [nástrojů Cloud discovery](/cloud-app-security/tutorial-shadow-it) Microsoft Cloud App Security&#39;s a vyhledat a spravovat &quot; stínové &quot; IT ve vaší síti (tj. aplikace, které nespravuje oddělení IT). [Pomocí rozšířené ochrany před internetovými útoky v programu Microsoft Defender](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) můžete zjednodušit a rozšířit proces zjišťování.
 
 Kromě toho můžete pomocí [sestavy aktivita aplikace AD FS](../manage-apps/migrate-adfs-application-activity.md) v Azure Portal zjistit všechny AD FS aplikace ve vaší organizaci, počet jedinečných uživatelů, kteří se k nim přihlásili, a kompatibilitu při jejich integraci s Azure AD.
 

@@ -1,6 +1,6 @@
 ---
-title: Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure PowerShell
-description: Popisuje, jak vytvořit a spravovat virtuální počítače na zařízení Azure Stack Edge pro pomocí Azure PowerShell.
+title: Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí skriptu Azure PowerShell
+description: Popisuje, jak vytvořit a spravovat virtuální počítače na zařízení Azure Stack Edge pro pomocí skriptu Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd877a91c7c082ce7845394f2636857f33b7940f
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890649"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578752"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí skriptu Azure PowerShell
 

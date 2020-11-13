@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 4c578f99e22e35871f0c52440c3b73a636ef958b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d4e66511ce3017749076615f081a8fb56d8b8452
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089311"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591542"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -150,7 +150,7 @@ Ano, před nasazením svazku SMB musíte vytvořit připojení ke službě Activ
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Kolik připojení služby Active Directory je podporováno?
 
-Azure NetApp Files nepodporuje více připojení služby Active Directory (AD) v jedné *oblasti*, i když jsou připojení služby AD v různých účtech NetApp. V jednom *předplatném*ale můžete mít několik připojení AD, pokud jsou připojení služby AD v různých oblastech. Pokud potřebujete více připojení služby AD v jedné oblasti, můžete k tomu použít samostatné odběry. 
+Azure NetApp Files nepodporuje více připojení služby Active Directory (AD) v jedné *oblasti* , i když jsou připojení služby AD v různých účtech NetApp. V jednom *předplatném* ale můžete mít několik připojení AD, pokud jsou připojení služby AD v různých oblastech. Pokud potřebujete více připojení služby AD v jedné oblasti, můžete k tomu použít samostatné odběry. 
 
 Připojení AD je nakonfigurované na účet NetApp. připojení AD je viditelné jenom prostřednictvím účtu NetApp, ve kterém je vytvořený.
 
@@ -173,16 +173,6 @@ Velikost svazku hlášená klientem SMB je maximální velikost, na kterou můž
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
-
-## <a name="dual-protocol-faqs"></a>Nejčastější dotazy týkající se duálního protokolu
-
-### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Byl proveden pokus o použití kořenového a místního uživatele pro přístup ke svazku se dvěma protokoly se stylem zabezpečení systému souborů NTFS v systému UNIX. Proč se mi stala chyba "oprávnění zamítnuto"?   
-
-Přečtěte si téma [řešení potíží se svazky s duálním protokolem](troubleshoot-dual-protocol-volumes.md) pro řešení.
-
-### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Když se pokouším vytvořit svazek se dvěma protokoly, proč proces vytváření selže a dojde k chybě při ověřování konfigurace LDAP, zkuste to znovu po opravě konfigurace LDAP.  
-
-Přečtěte si téma [řešení potíží se svazky s duálním protokolem](troubleshoot-dual-protocol-volumes.md) pro řešení.
 
 ## <a name="capacity-management-faqs"></a>Nejčastější dotazy ke správě kapacity
 

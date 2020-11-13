@@ -3,12 +3,12 @@ title: 'Chyba řešení potíží: Modul runtime služby Azure Functions je nedo
 description: Přečtěte si, jak řešit potíže s neplatným účtem úložiště.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: 094f4f45be0ae4173af434be178f2eae2b21b6be
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0b6778a08bf04367f2a0ef10f7cd4fe29a52dd61
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054725"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579007"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Chyba řešení potíží: "Modul runtime služby Azure Functions je nedosažitelný"
 
@@ -76,7 +76,7 @@ Běhový modul Functions může být nedosažitelný z některého z následují
 
 * Vaše aplikace Function App je hostovaná [interně s vyrovnáváním zatížení App Service Environment](../app-service/environment/create-ilb-ase.md) a je nakonfigurovaná tak, aby blokovala příchozí internetový provoz.
 
-* Vaše aplikace Function App má [omezení příchozích IP adres](functions-networking-options.md#inbound-ip-restrictions) , která jsou nakonfigurovaná tak, aby blokovala přístup k Internetu. 
+* Vaše aplikace Function App má [omezení příchozích IP adres](functions-networking-options.md#inbound-access-restrictions) , která jsou nakonfigurovaná tak, aby blokovala přístup k Internetu. 
 
 Azure Portal volá přímo do spuštěné aplikace a načte seznam funkcí a provede volání HTTP do koncového bodu Kudu. Nastavení na úrovni platformy na kartě **funkce platformy** jsou stále k dispozici.
 

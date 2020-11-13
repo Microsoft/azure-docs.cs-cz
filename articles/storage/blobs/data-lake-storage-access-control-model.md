@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/10/2020
 ms.author: normesta
-ms.openlocfilehash: 099d79e63795a88a66ef1ec65aa1bfd97037191e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a5cdeba654440e666bc79df361b3f90db8a73b0a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92134176"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578644"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Model řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -43,7 +43,7 @@ Následující role umožňují objektu zabezpečení získat přístup k datům
 | [Přispěvatel dat v objektech blob služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) | Čtení, zápis a odstraňování přístupu ke kontejnerům a objektům blob úložiště objektů BLOB. Tento přístup nepovoluje, aby objekt zabezpečení nastavil vlastnictví položky, ale může upravit seznam ACL pro položky, které jsou vlastněny objektem zabezpečení. |
 | [Čtenář dat v objektech blob služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) | Přečte a vypíše kontejnery a objekty blob služby Blob Storage. |
 
-Role, jako je [vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner), [Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor), [Čtenář](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)a [Přispěvatel účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) , umožňují objektu zabezpečení Spravovat účet úložiště, ale neposkytují přístup k datům v rámci tohoto účtu. Tyto role (kromě **čtenářů**) ale můžou získat přístup k klíčům úložiště, které se dají použít v různých nástrojích klienta pro přístup k datům.
+Role, jako je [vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner), [Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor), [Čtenář](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)a [Přispěvatel účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) , umožňují objektu zabezpečení Spravovat účet úložiště, ale neposkytují přístup k datům v rámci tohoto účtu. Tyto role (kromě **čtenářů** ) ale můžou získat přístup k klíčům úložiště, které se dají použít v různých nástrojích klienta pro přístup k datům.
 
 ## <a name="access-control-lists-acls"></a>Seznamy ACL
 
@@ -71,38 +71,38 @@ Následující diagram znázorňuje tok oprávnění pro tři běžné operace: 
 
 ## <a name="permissions-table-combining-azure-rbac-and-acl"></a>Tabulka oprávnění: kombinování služby Azure RBAC a seznamu ACL
 
-V následující tabulce se dozvíte, jak kombinovat role a seznam ACL pro Azure RBAC tak, aby objekt zabezpečení mohl provádět operace uvedené ve sloupci **operace** . Tato tabulka obsahuje sloupec, který představuje jednotlivé úrovně fiktivní hierarchie adresářů. Existuje sloupec pro kořenový adresář kontejneru ( `/` ), podadresář s názvem **Brno**, podadresáře adresáře Brno s názvem **Portland**a textový soubor v adresáři Portland s názvem **Data.txt**. V těchto sloupcích se zobrazují [krátké](data-lake-storage-access-control.md#short-forms-for-permissions) reprezentace položky seznamu ACL, která je vyžadována pro udělení oprávnění. Není **-** li k provedení operace k dispozici, zobrazí se ve sloupci Hodnota_není k dispozici_.
+V následující tabulce se dozvíte, jak kombinovat role a seznam ACL pro Azure RBAC tak, aby objekt zabezpečení mohl provádět operace uvedené ve sloupci **operace** . Tato tabulka obsahuje sloupec, který představuje jednotlivé úrovně fiktivní hierarchie adresářů. Existuje sloupec pro kořenový adresář kontejneru ( `/` ), podadresář s názvem **Brno** , podadresáře adresáře Brno s názvem **Portland** a textový soubor v adresáři Portland s názvem **Data.txt**. V těchto sloupcích se zobrazují [krátké](data-lake-storage-access-control.md#short-forms-for-permissions) reprezentace položky seznamu ACL, která je vyžadována pro udělení oprávnění. Není **-** li k provedení operace k dispozici, zobrazí se ve sloupci Hodnota _není k dispozici_.
 
 |    Operace             | Přiřazená role RBAC               |    /        | Brno     | Portland | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
 | Přečíst Data.txt            |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |  
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
 |                          |   Čtenář dat v objektech blob služby Storage       | N/A      | N/A      | N/A       | N/A    |
-|                          |   Žádné                           | `--X`    | `--X`    | `--X`     | `R--`  |
+|                          |   Žádná                           | `--X`    | `--X`    | `--X`     | `R--`  |
 | Připojit k Data.txt       |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
 |                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `--X`     | `-W-`  |
-|                          |   Žádné                           | `--X`    | `--X`    | `--X`     | `RW-`  |
+|                          |   Žádná                           | `--X`    | `--X`    | `--X`     | `RW-`  |
 | Odstranit Data.txt          |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
-|                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `-WX`     | Není k dispozici    |
-|                          |   Žádné                           | `--X`    | `--X`    | `-WX`     | Není k dispozici    |
+|                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `-WX`     | –    |
+|                          |   Žádná                           | `--X`    | `--X`    | `-WX`     | –    |
 | Vytvořit Data.txt          |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
-|                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `-WX`     | Není k dispozici    |
-|                          |   Žádné                           | `--X`    | `--X`    | `-WX`     | Není k dispozici    |
+|                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `-WX`     | –    |
+|                          |   Žádná                           | `--X`    | `--X`    | `-WX`     | –    |
 | Seznamu                   |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
 |                          |   Čtenář dat v objektech blob služby Storage       | N/A      | N/A      | N/A       | N/A    |
-|                          |   Žádné                           | `R-X`    | N/A      | N/A       | N/A    |
+|                          |   Žádná                           | `R-X`    | N/A      | N/A       | N/A    |
 | Seznam/Oregon/            |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
 |                          |   Čtenář dat v objektech blob služby Storage       | N/A      | N/A      | N/A       | N/A    |
-|                          |   Žádné                           | `--X`    | `R-X`    | N/A       | N/A    |
+|                          |   Žádná                           | `--X`    | `R-X`    | N/A       | N/A    |
 | Seznam/Oregon/Portland/   |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
 |                          |   Čtenář dat v objektech blob služby Storage       | N/A      | N/A      | N/A       | N/A    |
-|                          |   Žádné                           | `--X`    | `--X`    | `R-X`     | Není k dispozici    |
+|                          |   Žádná                           | `--X`    | `--X`    | `R-X`     | –    |
 
 
 > [!NOTE] 
@@ -114,7 +114,7 @@ V následující tabulce se dozvíte, jak kombinovat role a seznam ACL pro Azure
 
 ## <a name="limits-on-azure-rbac-role-assignments-and-acl-entries"></a>Omezení přiřazení rolí a seznamů ACL pro Azure RBAC
 
-Při použití skupin je méně pravděpodobnější, že bude překročen maximální počet přiřazení rolí na předplatné a maximální počet položek seznamu ACl na soubor nebo adresář. Následující tabulka popisuje tato omezení.
+Při použití skupin je méně pravděpodobnější, že bude překročen maximální počet přiřazení rolí na předplatné a maximální počet položek seznamu ACL na soubor nebo adresář. Následující tabulka popisuje tato omezení.
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
 

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 9ce0bb2a30ec4092d0053adf2de711547595c900
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554712"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591984"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Import dat do návrháře Azure Machine Learning
 
@@ -53,6 +53,8 @@ Pokud jsou výstupní data modulu v tabulkovém formátu, je nutné se rozhodnou
 ### <a name="use-a-dataset"></a>Použití datové sady
 
 Vaše registrované datové sady lze nalézt v paletě modulu v části **datové sady**. Pokud chcete datovou sadu použít, přetáhněte ji na plátno kanálu. Pak připojte výstupní port datové sady k ostatním modulům na plátně. 
+
+Pokud zaregistrujete datovou sadu souborů, je typ výstupního portu datové sady **AnyDirectory**. Pokud zaregistrujete tabulkovou sadu, typ výstupního portu pro datovou sadu, pokud **DataFrameDirectory**. Všimněte si, že pokud připojíte výstupní port datové sady k jiným modulům v návrháři, je nutné zarovnat typ portu datových sad a modulů.
 
 ![Snímek obrazovky znázorňující umístění uložených datových sad v paletě návrháře](media/how-to-designer-import-data/use-datasets-designer.png)
 

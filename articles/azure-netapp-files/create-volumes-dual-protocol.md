@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 54be34b2151aa88705559ac2913db4f528ea4492
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4fa2c724906c8a6bfb294541b6616ddc7ae22df6
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963512"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591644"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
@@ -33,11 +33,11 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 * Podsíť musí být delegovaná na Azure NetApp Files.  
     Viz [delegování podsítě na Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 
 * Ujistěte se, že splňujete [požadavky pro připojení ke službě Active Directory](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
 * Na serveru DNS vytvořte zónu zpětného vyhledávání a přidejte do této zóny zpětného vyhledávání záznam ukazatele (PTR) hostitelského počítače služby AD. V opačném případě se vytvoření svazku se dvěma protokoly nezdaří.
-* Zajistěte, aby byl klient systému souborů NFS aktuální a běžel nejnovější aktualizace operačního systému.
+* Ujistěte se, že je klient NFS aktuální a že používá nejnovější aktualizace pro daný operační systém.
 * Ujistěte se, že je server služby Active Directory (AD) LDAP v provozu a funguje ve službě AD. Můžete to udělat tak, že nainstalujete a nakonfigurujete roli [Služba AD LDS (Active Directory Lightweight Directory Services) (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) na počítači AD.
 * Ujistěte se, že certifikační autorita (CA) je ve službě AD vytvořená pomocí role [služby AD CS (Active Directory Certificate Services)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) , která generuje a exportuje certifikát kořenové certifikační autority podepsané svým držitelem.   
 * Svazky s duálním protokolem momentálně nepodporují Azure Active Directory Domain Services (AADDS).  
@@ -58,7 +58,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
     ![Přejít na svazky](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  V okně vytvořit svazek klikněte na **vytvořit**a zadejte informace pro následující pole na kartě základy:   
+2.  V okně vytvořit svazek klikněte na **vytvořit** a zadejte informace pro následující pole na kartě základy:   
     * **Název svazku**      
         Zadejte název svazku, který vytváříte.   
 
@@ -100,7 +100,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
         ![Zobrazit rozšířený výběr](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-3. Klikněte na **protokol**a pak proveďte následující akce:  
+3. Klikněte na **protokol** a pak proveďte následující akce:  
     * Jako typ protokolu pro svazek vyberte **duální protokol (NFSv3 a SMB)** .   
 
     * V rozevíracím seznamu vyberte připojení **služby Active Directory** .  
@@ -135,7 +135,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
     ![Průvodce exportem certifikátu](../media/azure-netapp-files/certificate-export-wizard.png)
 
-4. Přejděte na účet NetApp svazku se dvěma protokoly, klikněte na **připojení služby Active Directory**a nahrajte certifikát kořenové certifikační autority pomocí okna **připojit se ke službě Active Directory** :  
+4. Přejděte na účet NetApp svazku se dvěma protokoly, klikněte na **připojení služby Active Directory** a nahrajte certifikát kořenové certifikační autority pomocí okna **připojit se ke službě Active Directory** :  
 
     ![Certifikát kořenové certifikační autority serveru](../media/azure-netapp-files/server-root-ca-certificate.png)
 
@@ -161,5 +161,5 @@ Postupujte podle pokynů v části [Konfigurace klienta NFS pro Azure NetApp Fil
 
 ## <a name="next-steps"></a>Další kroky  
 
-* [Nejčastější dotazy týkající se duálního protokolu](azure-netapp-files-faqs.md#dual-protocol-faqs)
 * [Konfigurace klienta NFS pro Azure NetApp Files](configure-nfs-clients.md)
+* [Řešení potíží se svazky se dvěma protokoly](troubleshoot-dual-protocol-volumes.md)

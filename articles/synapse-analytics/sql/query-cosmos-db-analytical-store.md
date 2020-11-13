@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f57d435134bffbb8e7576adffeacb92bf687124
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 087ee796fbd3c0563b8019a062acab9c7ad80bb1
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310299"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579381"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB ve fondu SQL bez serveru v odkazu Azure synapse (Preview)
 
@@ -42,7 +42,9 @@ OPENROWSET(
 Připojovací řetězec Azure Cosmos DB určuje Azure Cosmos DB název účtu, název databáze, hlavní klíč databázového účtu a nepovinný název oblasti, který má `OPENROWSET` fungovat. 
 
 > [!IMPORTANT]
-> Ujistěte se, že používáte alias po `OPENROWSET` . Existuje [známý problém](#known-issues) , který způsobí, že problém s připojením synapse koncový bod SQL bez serveru, pokud nezadáte alias po `OPENROWSET` funkci.
+> Ujistěte se, že používáte určitou databázovou kolaci UTF-8 (například `Latin1_General_100_CI_AS_SC_UTF8` ), protože řetězcové hodnoty v Cosmos DB analytických obchodech jsou kódované jako text v kódování UTF-8.
+> Neshoda mezi kódováním textu v souboru a kolaci může způsobit neočekávané chyby převodu textu.
+> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 Připojovací řetězec má následující formát:
 ```sql
@@ -338,8 +340,8 @@ V tomto příkladu je počet případů uložen buď jako `int32` , `int64` nebo
 
 ## <a name="known-issues"></a>Známé problémy
 
-- Po funkci **musí** být zadán alias `OPENROWSET` (například `OPENROWSET (...) AS function_alias` ). Vynechání aliasu může způsobit potíže s připojením a koncový bod SQL synapse bez serveru možná nebude dočasně k dispozici. Tento problém bude vyřešen v listopadu 2020.
 - Dotaz na možnosti, že fond SQL bez serveru poskytuje [Azure Cosmos DB úplných schémat přesnosti](#full-fidelity-schema) je dočasné chování, které se změní na základě zpětné vazby ve verzi Preview. Nespoléhá se na schéma, které `OPENROWSET` funkce bez `WITH` klauzule poskytuje během veřejné verze Preview, protože prostředí dotazů může být zarovnané podle dobře definovaného schématu na základě zpětné vazby od zákazníků. Pokud chcete poskytnout zpětnou vazbu, kontaktujte [produktový tým synapse Link](mailto:cosmosdbsynapselink@microsoft.com) .
+- Fond SQL bez serveru nebude vracet chybu při kompilaci, pokud `OPENROSET` kolace sloupce nemá kódování UTF-8. Výchozí kolaci pro všechny `OPENROWSET` funkce běžící v aktuální databázi můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 Možné chyby a akce při řešení potíží jsou uvedené v následující tabulce:
 

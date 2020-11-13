@@ -11,15 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b4dc222ed0fc350b680d2696c1faa16d44b84a02
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 496a38e43c7bd624c42f5c7a43ad9cf16f85d166
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358333"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579568"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
-
 
 V tomto článku se dozvíte, jak verze a sledování Azure Machine Learning datových sad pro reprodukovatelnost. Správa verzí datových sad je způsob, jak můžete založit stav vašich dat, abyste pro budoucí experimenty mohli použít konkrétní verzi datové sady.
 
@@ -116,11 +115,11 @@ dataset2.register(workspace = workspace,
 
 <a name="pipeline"></a>
 
-## <a name="version-a-pipeline-output-dataset"></a>Verze výstupní datové sady kanálu
+## <a name="version-an-ml-pipeline-output-dataset"></a>Verze výstupní datové sady kanálu ML
 
-Datovou sadu můžete použít jako vstup a výstup každého kroku Machine Learning kanálu. Při opětovném spuštění kanálů bude výstup každého kroku kanálu zaregistrován jako nová verze datové sady.
+Datovou sadu můžete použít jako vstup a výstup jednotlivých kroků [kanálu ml](concept-ml-pipelines.md) . Při opětovném spuštění kanálů bude výstup každého kroku kanálu zaregistrován jako nová verze datové sady.
 
-Vzhledem k tomu, že Machine Learning potrubí naplní výstup každého kroku do nové složky pokaždé, když se kanál znovu spustí, výstupní datové sady se správou verzí budou reprodukovatelné. Přečtěte si další informace o [datových sadách v kanálech](how-to-create-your-first-pipeline.md#steps).
+Kanály ML naplní výstup každého kroku do nové složky pokaždé, když se kanál znovu spustí. Toto chování umožňuje reprodukovat výstupní datové sady verzí. Přečtěte si další informace o [datových sadách v kanálech](how-to-create-your-first-pipeline.md#steps).
 
 ```Python
 from azureml.core import Dataset
@@ -154,9 +153,36 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datasets-in-experiments"></a>Sledovat datové sady v experimentech
+## <a name="track-datas-in-your-experiments"></a>Sledování dat v experimentech
 
-Pro každý Machine Learning experiment můžete snadno trasovat datové sady použité jako vstup prostřednictvím `Run` objektu experiment.
+Azure Machine Learning sleduje data v rámci experimentu jako vstupní a výstupní datové sady.  
+
+Následují scénáře, kdy jsou vaše data sledována jako **vstupní datová sada**. 
+
+* Jako `DatasetConsumptionConfig` objekt pomocí `inputs` `arguments` parametru nebo `ScriptRunConfig` objektu při odesílání experimentu. 
+
+* V případě, že jsou ve skriptu volány metody jako, get_by_name () nebo get_by_id (). V tomto případě je název přiřazený k datové sadě při jeho registraci do pracovního prostoru zobrazen. 
+
+Následují scénáře, kdy jsou vaše data sledována jako **výstupní datová sada**.  
+
+* Předání `OutputFileDatasetConfig` objektu buď pomocí `outputs` `arguments` parametru nebo při odesílání experimentu. `OutputFileDatasetConfig` objekty lze také použít k uchování dat mezi jednotlivými kroky kanálu. Viz [přesunutí dat mezi kroky kanálu ml.](how-to-move-data-in-out-of-pipelines.md)
+    > [!TIP]
+    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) je třída Public Preview obsahující [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) funkce verze Preview, které se můžou kdykoli změnit.
+
+* Zaregistrujte datovou sadu ve vašem skriptu. V tomto případě je název přiřazený k datové sadě při jeho registraci do pracovního prostoru zobrazen. V následujícím příkladu `training_ds` je název, který se zobrazí.
+
+    ```Python
+   training_ds = unregistered_ds.register(workspace = workspace,
+                                     name = 'training_ds',
+                                     description = 'training data'
+                                     )
+    ```
+
+* Odeslání podřízeného běhu s neregistrovanou datovou sadou ve skriptu Výsledkem je anonymní uložená datová sada.
+
+### <a name="trace-datasets-in-experiment-runs"></a>Trasovat datové sady v experimentových běhůch
+
+Pro každý Machine Learning experiment můžete snadno trasovat datové sady používané jako vstup s `Run` objektem experiment.
 
 Následující kód používá [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) metodu ke sledování, které vstupní datové sady byly použity při spuštění experimentu:
 
@@ -169,7 +195,7 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-Můžete také vyhledat `input_datasets` z experimentů pomocí https://ml.azure.com/ . 
+Můžete také vyhledat `input_datasets` z experimentů pomocí nástroje [Azure Machine Learning Studio](). 
 
 Následující obrázek ukazuje, kde najít vstupní datovou sadu experimentu v Azure Machine Learning Studiu. V tomto příkladu přejdete do podokna **experimenty** a otevřete kartu **vlastnosti** pro konkrétní spuštění experimentu `keras-mnist` .
 
@@ -183,7 +209,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Po registraci můžete zobrazit seznam modelů registrovaných s datovou sadou pomocí Pythonu nebo přejít na https://ml.azure.com/ .
+Po registraci můžete zobrazit seznam modelů registrovaných s datovou sadou pomocí Pythonu nebo přejít do [studia](https://ml.azure.com/).
 
 Následující zobrazení je z podokna datové **sady** v části **assety**. Vyberte datovou sadu a pak vyberte kartu **modely** pro seznam modelů, které jsou zaregistrované s datovou sadou. 
 

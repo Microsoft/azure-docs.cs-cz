@@ -1,6 +1,6 @@
 ---
 title: SCIM synchronizaci s Azure Active Directory
-description: Pokyny pro architekturu při dosahování tohoto vzoru synchronizace
+description: Pokyny pro architekturu k dosažení SCIM synchronizace s Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1dda465dd675e0f5f519f86289df2621be0b9bb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f957070ec94fc4c61089f31fe91261a2f52c4ee4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367852"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578854"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>SCIM synchronizaci s Azure Active Directory
 
@@ -35,13 +35,13 @@ Chcete automaticky zřídit informace o uživateli ze systému HCM do služby Az
 
 ## <a name="components-of-system"></a>Součásti systému 
 
-* **HCM System**: aplikace a technologie, které umožňují proces správy lidských zdrojů a postupy, které podporují a automatizují procesy pro personál v životním cyklu zaměstnanců. 
+* **HCM System** : aplikace a technologie, které umožňují proces správy lidských zdrojů a postupy, které podporují a automatizují procesy pro personál v životním cyklu zaměstnanců. 
 
-* **Služba zřizování Azure AD**: používá protokol SCIM 2,0 pro Automatické zřizování. Služba se připojí ke koncovému bodu SCIM pro aplikaci a pomocí schématu uživatelského objektu SCIM a rozhraní REST API automatizuje zřizování a zrušení zřizování uživatelů a skupin.  
+* **Služba zřizování Azure AD** : používá protokol SCIM 2,0 pro Automatické zřizování. Služba se připojí ke koncovému bodu SCIM pro aplikaci a pomocí schématu uživatelského objektu SCIM a rozhraní REST API automatizuje zřizování a zrušení zřizování uživatelů a skupin.  
 
-* **Azure AD**: úložiště uživatelů používané ke správě životního cyklu identit a jejich nároků. 
+* **Azure AD** : úložiště uživatelů používané ke správě životního cyklu identit a jejich nároků. 
 
-* **Cílový systém**: aplikace nebo systém, který má koncový bod SCIM a spolupracuje s zřizováním Azure AD za účelem umožnění automatického zřizování uživatelů a skupin.  
+* **Cílový systém** : aplikace nebo systém, který má koncový bod SCIM a spolupracuje s zřizováním Azure AD za účelem umožnění automatického zřizování uživatelů a skupin.  
 
 ## <a name="implement-scim-with-azure-ad"></a>Implementace SCIM s využitím Azure AD 
 

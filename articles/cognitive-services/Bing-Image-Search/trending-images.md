@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 9163868848f2fdbd535a6b601077be570b0b01bf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 20050cb373456296ef573368e6b289ec4b7d946d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076720"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591882"
 ---
 # <a name="get-trending-images-from-the-web"></a>Získat obrázky z vývoje z webu
 
@@ -44,7 +44,7 @@ Rozhraní API pro vývojové obrázky aktuálně podporuje jenom tyto trhy:
 - EN-AU (angličtina, Austrálie)  
 - zh-CN (čínština, Čína)
 
-Odpověď obsahuje objekt [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) , který obsahuje obrázky podle kategorie. `title`K seskupení imagí v uživatelském prostředí použijte kategorii. Kategorie se můžou každý den měnit.  
+Odpověď obsahuje objekt [TrendingImages](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) , který obsahuje obrázky podle kategorie. `title`K seskupení imagí v uživatelském prostředí použijte kategorii. Kategorie se můžou každý den měnit.  
 
 ```json
 {
@@ -93,9 +93,9 @@ Odpověď obsahuje objekt [TrendingImages](https://docs.microsoft.com/rest/api/c
 }  
 ```  
 
-Každá dlaždice obsahuje obrázek a možnosti pro získání souvisejících imagí. Chcete-li získat související image, můžete použít dotaz `text` pro volání [rozhraní API vyhledávání obrázků](./search-the-web.md) a zobrazení souvisejících imagí sami. Nebo můžete použít adresu URL v aplikaci `webSearchUrl` a převzít uživatele na stránku výsledků hledání imagí Bingu, která obsahuje související obrázky.
+Každá dlaždice obsahuje obrázek a možnosti pro získání souvisejících imagí. Chcete-li získat související image, můžete použít dotaz `text` pro volání [rozhraní API vyhledávání obrázků](./overview.md) a zobrazení souvisejících imagí sami. Nebo můžete použít adresu URL v aplikaci `webSearchUrl` a převzít uživatele na stránku výsledků hledání imagí Bingu, která obsahuje související obrázky.
 
-Pokud zavoláte rozhraní API Vyhledávání obrázků, abyste získali související image, nastavte parametr dotazu [ID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) na ID v `id` poli. Zadání ID zajistí, že odpověď obsahuje obrázek (Jedná se o první obrázek v odpovědi) a jeho související obrázky. Také nastavte parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) na text v `query` `text` poli objektu.
+Pokud zavoláte rozhraní API Vyhledávání obrázků, abyste získali související image, nastavte parametr dotazu [ID](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) na ID v `id` poli. Zadání ID zajistí, že odpověď obsahuje obrázek (Jedná se o první obrázek v odpovědi) a jeho související obrázky. Také nastavte parametr dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) na text v `query` `text` poli objektu.
 
 Následující příklad ukazuje, jak použít ID obrázku k získání souvisejících imagí Mr. Smith v předchozí reakci rozhraní API pro vývojové obrázky.
 
@@ -106,4 +106,4 @@ X-MSEdge-ClientIP: 999.999.999.999
 X-Search-Location: lat:47.60357;long:-122.3295;re:100  
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
-```  
+```

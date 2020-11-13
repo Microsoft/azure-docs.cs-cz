@@ -4,12 +4,12 @@ description: Odpovědi na některé z nejběžnějších otázek a scénářů p
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: d07484943f8ba85cc8e46737f3ef85b6e25d5187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538054"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578225"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Nejčastější dotazy týkající se sítě v Azure Functions
 
@@ -31,11 +31,9 @@ Mějte na paměti, že editor Azure Portal vyžaduje přímý přístup ke spuš
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Návody omezit aplikaci Function App na virtuální síť?
 
-**Příchozí** provoz pro aplikaci Function App můžete omezit na virtuální síť pomocí [koncových bodů služby](./functions-networking-options.md#private-site-access). Tato konfigurace pořád umožňuje, aby aplikace Functions provedla odchozí volání na Internet.
+**Příchozí** provoz pro aplikaci Function App můžete omezit na virtuální síť pomocí [koncových bodů služby](./functions-networking-options.md#use-service-endpoints). Tato konfigurace pořád umožňuje, aby aplikace Functions provedla odchozí volání na Internet.
 
-Jediným způsobem, jak úplně omezit funkci tak, aby všechny přenosy přes virtuální síť používaly interní App Service Environment s vyrovnáváním zatížení. Tato možnost nasadí váš web na vyhrazené infrastruktuře uvnitř virtuální sítě a pošle všechny aktivační události a přenosy přes virtuální síť. 
-
-Podrobné informace o použití App Service Environment začněte s článkem [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](../app-service/environment/create-ilb-ase.md).
+Pokud chcete úplně omezit funkci tak, aby všechny přenosy přes virtuální síť prošly, můžete použít [privátní koncové body](./functions-networking-options.md#private-endpoint-connections) s integrací virtuální sítě nebo App Service Environment.
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Jak můžu získat přístup k prostředkům ve virtuální síti z aplikace Function App?
 
@@ -47,7 +45,7 @@ Pomocí integrace virtuální sítě můžete získat přístup k prostředkům 
 
 ## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Jak můžu aktivovat funkci z prostředku ve virtuální síti?
 
-Můžete umožnit volání aktivačních událostí HTTP z virtuální sítě pomocí [koncových bodů služby](./functions-networking-options.md#private-site-access). 
+Můžete umožnit volání aktivačních událostí HTTP z virtuální sítě pomocí [koncových bodů služby](./functions-networking-options.md#use-service-endpoints) nebo [připojení privátního koncového bodu](./functions-networking-options.md#private-endpoint-connections). 
 
 Můžete také aktivovat funkci ze všech ostatních prostředků ve virtuální síti nasazením aplikace Function App do plánu Premium, App Service plánu nebo App Service Environment. Další informace najdete v tématu [triggery jiné virtuální sítě než http](./functions-networking-options.md#virtual-network-triggers-non-http) .
 

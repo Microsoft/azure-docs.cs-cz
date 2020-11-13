@@ -1,23 +1,23 @@
 ---
-title: Přehled služby Azure Stream Analytics
-description: Přečtěte si o Stream Analytics, spravované službě, která vám pomůže analyzovat streamovaná data z Internet věcí (IoT) v reálném čase.
+title: Úvod do Azure Stream Analytics
+description: Přečtěte si o Azure Stream Analytics, spravované službě, která vám pomůže analyzovat streamovaná data z Internet věcí (IoT) v reálném čase.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc, contperfq2
-ms.date: 11/03/2020
-ms.openlocfilehash: d81858db3f4d09b834a9199804a6f2631828496b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 11/12/2020
+ms.openlocfilehash: 0022e19e23b7808cd78da988fd3fdef2d537acf5
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342228"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579432"
 ---
-# <a name="what-is-azure-stream-analytics"></a>Co je Azure Stream Analytics?
+# <a name="welcome-to-azure-stream-analytics"></a>Vítá vás Azure Stream Analytics
 
-Azure Stream Analytics je analýza v reálném čase a komplexní modul pro zpracování událostí, který je určený k analýze a zpracování vysokého objemu rychlých streamování dat z více zdrojů současně. Modely a vztahy se dají identifikovat v informacích extrahovaných z řady vstupních zdrojů, včetně zařízení, senzorů, stránkáchů, informačních kanálů sociálních médií a aplikací. Pomocí těchto vzorů můžete aktivovat akce a iniciovat pracovní postupy, jako je vytváření výstrah, zakládání informací do nástroje pro generování sestav nebo ukládání transformovaných dat pro pozdější použití. Stream Analytics je také k dispozici v modulu Azure IoT Edge runtime a umožňuje zpracovávat data na zařízeních IoT. 
+Azure Stream Analytics je analýza v reálném čase a komplexní modul pro zpracování událostí, který je určený k analýze a zpracování vysokého objemu rychlých streamování dat z více zdrojů současně. Modely a vztahy se dají identifikovat v informacích extrahovaných z řady vstupních zdrojů, včetně zařízení, senzorů, stránkáchů, informačních kanálů sociálních médií a aplikací. Pomocí těchto vzorů můžete aktivovat akce a iniciovat pracovní postupy, jako je vytváření výstrah, zakládání informací do nástroje pro generování sestav nebo ukládání transformovaných dat pro pozdější použití. Stream Analytics je také k dispozici v modulu Azure IoT Edge runtime a umožňuje zpracovávat data na zařízeních IoT.
 
 Následující scénáře jsou příklady, kdy můžete použít Azure Stream Analytics:
 
@@ -26,6 +26,11 @@ Následující scénáře jsou příklady, kdy můžete použít Azure Stream An
 * Geoprostorová analýza pro správu vozového parku a vozidel bez řidiče
 * Vzdálené monitorování a prediktivní údržba prostředků s vysokou hodnotou
 * Analýza dat z prodejen v reálném čase pro účely zjišťování anomálií a řízení zásob
+
+Můžete vyzkoušet Azure Stream Analytics s bezplatným předplatným Azure.
+
+> [!div class="nextstepaction"]
+> [Zkuste Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
 
 ## <a name="how-does-stream-analytics-work"></a>Jak funguje Stream Analytics?
 
@@ -102,7 +107,7 @@ Stream Analytics může zpracovávat miliony událostí každou sekundu a může
 
 Teď máte přehled o službě Azure Stream Analytics. V dalším kroku se můžete do tématu ponořit hlouběji a vytvořit si svoji první úlohu Stream Analytics:
 
-* [Vytvořit úlohu Stream Analytics pomocí webu Azure Portal](stream-analytics-quick-create-portal.md)
-* [Vytvořte Stream Analyticsovou úlohu pomocí Azure PowerShell](stream-analytics-quick-create-powershell.md).
-* [Pomocí sady Visual Studio vytvořte Stream Analyticsovou úlohu](stream-analytics-quick-create-vs.md).
-* [Vytvořte Stream Analyticsovou úlohu pomocí Visual Studio Code](quick-create-visual-studio-code.md).
+* [Vytvoření Stream Analytics úlohy pomocí Azure Portal](stream-analytics-quick-create-portal.md)
+* [Vytvoření úlohy Stream Analytics pomocí Azure PowerShellu](stream-analytics-quick-create-powershell.md)
+* [Vytvoření úlohy Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
+* [Vytvoření Stream Analytics úlohy pomocí Visual Studio Code](quick-create-visual-studio-code.md)

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7e5a64a75ca6cde4172e49eb77dde42a44c06d5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b9896b62ab347ec3b4751eb517c00222f00ddb1c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321463"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579398"
 ---
 # <a name="query-csv-files"></a>Dotazování souborů CSV
 
@@ -45,6 +45,11 @@ from openrowset(
 ```
 
 Možnost `firstrow` slouží k přeskočení prvního řádku v souboru CSV, který představuje hlavičku v tomto případě. Ujistěte se, že máte přístup k tomuto souboru. Pokud je soubor chráněný klíčem SAS nebo vlastní identitou, bude potřeba nastavit [přihlašovací údaje na úrovni serveru pro přihlášení SQL](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
+
+> [!IMPORTANT]
+> Pokud soubor CSV obsahuje znaky znakové sady UTF-8, ujistěte se, že používáte určitou databázovou kolaci UTF-8 (například `Latin1_General_100_CI_AS_SC_UTF8` ).
+> Neshoda mezi kódováním textu v souboru a kolaci může způsobit neočekávané chyby při konverzi.
+> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>Využití zdroje dat
 
@@ -91,9 +96,15 @@ from openrowset(
 
 Čísla po datovém typu v `WITH` klauzuli reprezentují index sloupce v souboru CSV.
 
+> [!IMPORTANT]
+> Pokud Váš soubor CSV obsahuje znaky znakové sady UTF-8, ujistěte se, že jste explicilty určení některé kolace UTF-8 (například `Latin1_General_100_CI_AS_SC_UTF8` ) pro všechny sloupce v `WITH` klauzuli nebo nastavte určitou kolaci UTF-8 na úrovni databáze.
+> Neshoda mezi kódováním textu v souboru a kolaci může způsobit neočekávané chyby při konverzi.
+> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> Kolaci pro typy slo můžete snadno nastavit pomocí následující definice: `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8 8`
+
 V následujících částech se můžete podívat, jak se dotazovat na různé typy souborů CSV.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Prvním krokem je **Vytvoření databáze** , ve které budou vytvořeny tabulky. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 

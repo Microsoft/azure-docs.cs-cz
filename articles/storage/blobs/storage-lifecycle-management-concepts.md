@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: a4a338a4d13715ba1ff7cb30c011757d5050ba05
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 85577a428f803e31aa33468496d7efca77933835
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100065"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579307"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Optimalizujte náklady díky automatizaci úrovní přístupu Azure Blob Storage.
 
@@ -80,7 +80,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 
 1. Vyberte **základní objekty blob** a nastavte podmínky pro vaše pravidlo. V následujícím příkladu jsou objekty blob přesunuté do studeného úložiště, pokud se nezměnily po dobu 30 dnů.
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Správa životního cyklu přidat stránku podrobností pravidla v Azure Portal":::
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Stránka základních objektů BLOB správy životního cyklu v Azure Portal":::
 
    Možnost **posledního použití** je dostupná ve verzi Preview v následujících oblastech:
 
@@ -95,7 +95,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 
 1. Pokud jste vybrali možnost **omezit objekty BLOB s filtry** na stránce **Podrobnosti** , vyberte **Filtr sady** pro přidání volitelného filtru. Následující příklad filtruje objekty BLOB v kontejneru *mylifecyclecontainer* , které začínají na "protokol".
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Správa životního cyklu přidat stránku podrobností pravidla v Azure Portal":::
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Stránka sady filtru správy životního cyklu v Azure Portal":::
 
 1. Pokud chcete přidat novou zásadu, vyberte **Přidat** .
 
@@ -137,7 +137,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
    }
    ```
 
-1. Vyberte **Uložit** .
+1. Vyberte **Uložit**.
 
 1. Další informace o tomto příkladu JSON najdete v částech [zásady](#policy) a [pravidla](#rules) .
 
@@ -318,8 +318,8 @@ Filtry zahrnují:
 | Název filtru | Typ filtru | Poznámky | Je povinné |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Pole předdefinovaných hodnot výčtu. | Aktuální verze podporuje `blockBlob` a `appendBlob` . Pro se podporuje jenom odstranění `appendBlob` , nastavení úrovně se nepodporuje. | Yes |
-| prefixMatch | Pole řetězců, pro které mají být předpony spárovány. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly v rámci `https://myaccount.blob.core.windows.net/container1/foo/...` pravidla, prefixMatch je `container1/foo` . | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | No |
-| blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly s `Project = Contoso` v rámci `https://myaccount.blob.core.windows.net/` pro pravidlo, je blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | No |
+| prefixMatch | Pole řetězců, pro které mají být předpony spárovány. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly v rámci `https://myaccount.blob.core.windows.net/container1/foo/...` pravidla, prefixMatch je `container1/foo` . | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | Ne |
+| blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly s `Project = Contoso` v rámci `https://myaccount.blob.core.windows.net/` pro pravidlo, je blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | Ne |
 
 > [!NOTE]
 > Index objektu BLOB je ve verzi Public Preview a je dostupný v oblasti **Kanada – střed** , Kanada – **východ** , Francie – **střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
@@ -342,7 +342,7 @@ Správa životního cyklu podporuje vrstvení a mazání objektů blob, předcho
 
 Podmínky spuštění jsou založené na stáří. Základní objekty blob používají čas poslední změny, verze objektů BLOB používají čas vytvoření verze a snímky objektů BLOB používají čas vytvoření snímku ke sledování stáří.
 
-| Podmínka spuštění akce               | Hodnota podmínky                          | Description                                                                      |
+| Podmínka spuštění akce               | Hodnota podmínky                          | Popis                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Celočíselná hodnota označující stáří ve dnech | Podmínka pro základní akce objektů BLOB                                              |
 | daysAfterCreationGreaterThan       | Celočíselná hodnota označující stáří ve dnech | Podmínka pro akci snímku verze a objektu BLOB                         |
@@ -439,7 +439,7 @@ Sledování času posledního přístupu je k dispozici pro následující typy 
 
 Pokud je váš účet úložiště účet pro obecné účely V1, použijte Azure Portal k upgradu na účet pro obecné účely v2.
 
-Účty úložiště s hierarchickým oborem názvů povolené pro použití s Azure Data Lake Storage Gen2 ještě nejsou podporované.
+V současnosti se podporují účty úložiště s hierarchickým oborem názvů povoleným pro použití s Azure Data Lake Storage Gen2.
 
 #### <a name="pricing-and-billing"></a>Ceny a fakturace
 
