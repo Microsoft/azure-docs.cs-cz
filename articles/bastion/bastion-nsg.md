@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5bff5b341dcbdaa7ccae2b02e62e3e6bd4d115f9
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 822a90aa2bd3a19cf3459924e6b577cc416aa3a5
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594262"
+ms.locfileid: "94616820"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Práce s NSG přístupem a Azure bastionu
 
@@ -40,7 +40,7 @@ _ **Přenos příchozího přenosu dat:**
 
    * **Příchozí přenos dat z veřejného Internetu:** Azure bastionu vytvoří veřejnou IP adresu, která potřebuje port 443 povolený ve veřejné IP adrese pro přenos příchozích dat. Na AzureBastionSubnet se nevyžaduje otevřít port 3389/22.
    * **Příchozí přenos dat z roviny ovládacího prvku Azure bastionu:** Pro připojení řídicí roviny povolte port 443 příchozí ze značky služby **GatewayManager** . To umožňuje, aby řídicí plocha, kterou správce bran, mohla komunikovat se službou Azure bastionu.
-   * **Příchozí přenos z Azure pro vyrovnávání zatížení:** V případě sond stavu povolte port 443 příchozí ze značky služby **AzureLoadBalancer** . Díky tomu Nástroj pro vyrovnávání zatížení Azure detekuje problémy s připojením k back-endu.
+   * **Příchozí přenos dat z Azure Load Balancer:** V případě sond stavu povolte port 443 příchozí ze značky služby **AzureLoadBalancer** . To umožňuje Azure Load Balancer detekovat připojení. 
 
 
    :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Snímek obrazovky zobrazuje příchozí pravidla zabezpečení pro připojení Azure bastionu.":::
