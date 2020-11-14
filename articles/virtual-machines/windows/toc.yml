@@ -46,7 +46,7 @@
     - name: 13. Monitorování virtuálních počítačů
       href: tutorial-monitor.md
     - name: 14. Správa zabezpečení virtuálních počítačů
-      href: tutorial-azure-security.md
+      href: ../tutorial-azure-security.md
     - name: 15. Instalace zásobníku SQL\IIS\.NET
       href: tutorial-iis-sql.md
     - name: 16. Zabezpečení webového serveru pomocí SSL
@@ -648,8 +648,16 @@
         - name: Prohození disku operačního systému
           href: os-disk-swap.md
         - name: Označení virtuálního počítače
-          href: tag.md
-        - name: Časová synchronizace
+          items:
+            - name: Portál
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: Rozhraní příkazového řádku
+              href: ../tag-cli.md
+            - name: Template (Šablona)
+              href: ../tag-template.md
+            - name: Časová synchronizace
           href: time-sync.md
         - name: Spouštění skriptů na virtuálním počítači
           href: run-scripts-in-vm.md
@@ -691,7 +699,7 @@
           items:
             - name: Přehled
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Rozhraní příkazového řádku
+            - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -950,7 +958,7 @@
           href: ../../virtual-network/quick-create-portal.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Otevření portů k virtuálnímu počítači
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: nsg-quickstart-portal.md
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md

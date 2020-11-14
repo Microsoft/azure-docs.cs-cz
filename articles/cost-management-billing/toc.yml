@@ -122,6 +122,10 @@
           href: manage/azure-plan-subscription-transfer-partners.md
         - name: Začínáme na portálu Azure EA
           href: manage/ea-portal-get-started.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: Konfigurace správy nákladů a fakturace

@@ -45,7 +45,7 @@
     - name: 13. Monitorování virtuálních počítačů
       href: tutorial-monitor.md
     - name: 14. Správa zabezpečení virtuálních počítačů
-      href: tutorial-azure-security.md
+      href: ../tutorial-azure-security.md
     - name: 15a. Sestavení s využitím Jenkinse
       href: /azure/developer/jenkins/pipeline-with-github-and-docker
     - name: 15b. Integrace Jenkinse s Azure DevOps
@@ -687,7 +687,15 @@
         - name: Časová synchronizace
           href: time-sync.md
         - name: Označení virtuálního počítače
-          href: tag.md
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ../tag-cli.md
+            - name: Portál
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: Template (Šablona)
+              href: ../tag-template.md
         - name: Spouštění skriptů na virtuálním počítači
           href: run-scripts-in-vm.md
           items:
@@ -740,7 +748,7 @@
           items:
             - name: Přehled
               href: ../maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: Rozhraní příkazového řádku
+            - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
