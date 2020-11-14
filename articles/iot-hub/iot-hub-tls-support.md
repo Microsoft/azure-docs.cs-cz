@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/13/2020
 ms.author: jlian
-ms.openlocfilehash: 08ecb766a1a9bd7ff75bf97647be811577212eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9dd66fe9d71f0a857e4b0821190bceb5d6d4680
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90006036"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628794"
 ---
 # <a name="tls-support-in-iot-hub"></a>Podpora TLS v IoT Hub
 
@@ -94,11 +94,11 @@ Pomocí níže uvedených odkazů nakonfigurujte TLS 1,2 a povolená šifra v Io
 
 | Jazyk | Verze podporující TLS 1,2 | Dokumentace |
 |----------|------------------------------------|---------------|
-| C        | Tag 2019-12-11 nebo novější            | [Propojit](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Verze 2.0.0 nebo novější             | [Propojit](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Verze 1.21.4 nebo novější            | [Propojit](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Verze 1.19.0 nebo novější            | [Propojit](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Verze 1.12.2 nebo novější            | [Propojit](https://aka.ms/Tls_Node_SDK_IoT) |
+| C        | Tag 2019-12-11 nebo novější            | [Odkaz](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Verze 2.0.0 nebo novější             | [Odkaz](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Verze 1.21.4 nebo novější            | [Odkaz](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Verze 1.19.0 nebo novější            | [Odkaz](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Verze 1.12.2 nebo novější            | [Odkaz](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ## <a name="use-tls-12-in-your-iot-edge-setup"></a>Použití TLS 1,2 v nastavení IoT Edge
@@ -107,4 +107,4 @@ IoT Edge zařízení je možné nakonfigurovat tak, aby při komunikaci s IoT Hu
 
 ## <a name="device-authentication"></a>Ověřování zařízení
 
-Po úspěšném ověření TLS metodou handshake IoT Hub může ověřit zařízení pomocí symetrického klíče nebo certifikátu X. 509. Pro ověřování založené na certifikátech může to být libovolný certifikát X. 509, včetně ECC. IoT Hub ověří certifikát proti kryptografickému otisku nebo certifikační autoritě (CA), kterou zadáte. IoT Hub ještě nepodporuje vzájemné ověřování pomocí X. 509 (mTLS). Další informace najdete v tématu [podporované certifikáty X. 509](iot-hub-devguide-security.md#supported-x509-certificates).
+Po úspěšném ověření TLS metodou handshake IoT Hub může ověřit zařízení pomocí symetrického klíče nebo certifikátu X. 509. Pro ověřování založené na certifikátech může to být libovolný certifikát X. 509, včetně ECC. IoT Hub ověří certifikát proti kryptografickému otisku nebo certifikační autoritě (CA), kterou zadáte. Další informace najdete v tématu [podporované certifikáty X. 509](iot-hub-devguide-security.md#supported-x509-certificates).

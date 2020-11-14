@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "91277695"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
@@ -69,7 +69,7 @@ Pokud jste ještě nenakonfigurovali účet úložiště, Azure Portal zobrazí 
 Po propojení těchto dvou účtů může služba Batch automaticky nasadit balíčky uložené v propojeném účtu úložiště do vašich výpočetních uzlů.
 
 > [!IMPORTANT]
-> Balíčky aplikací se nedají použít s účty Azure Storage nakonfigurovanými s [pravidly brány firewall](../storage/common/storage-network-security.md)nebo s **hierarchickým oborem názvů** nastaveným na **povoleno** .
+> Balíčky aplikací se nedají použít s účty Azure Storage nakonfigurovanými s [pravidly brány firewall](../storage/common/storage-network-security.md)nebo s **hierarchickým oborem názvů** nastaveným na **povoleno**.
 
 Služba Batch používá Azure Storage k ukládání balíčků aplikací jako objektů blob bloku. Poplatky za data objektů blob bloku se [účtují jako normální](https://azure.microsoft.com/pricing/details/storage/) a velikost každého balíčku nemůže překročit maximální velikost objektu blob bloku. Další informace najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../storage/blobs/scalability-targets.md). Pro minimalizaci nákladů nezapomeňte zvážit velikost a počet balíčků aplikací a pravidelně odebírat zastaralé balíčky.
 
@@ -77,7 +77,7 @@ Služba Batch používá Azure Storage k ukládání balíčků aplikací jako o
 
 Pokud chcete zobrazit aplikace ve vašem účtu Batch, v levé navigační nabídce vyberte **aplikace** .
 
-:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Diagram znázorňující zobrazení aplikací a balíčků aplikací na vysoké úrovni.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Snímek obrazovky s položkou nabídky aplikace v Azure Portal":::
 
 Po výběru této možnosti nabídky se otevře okno **aplikace** . V tomto okně se zobrazuje ID jednotlivých aplikací ve vašem účtu a následující vlastnosti:
 
@@ -85,7 +85,7 @@ Po výběru této možnosti nabídky se otevře okno **aplikace** . V tomto okn�
 - **Výchozí verze** : Pokud je to možné, verze aplikace, která se nainstaluje, když při nasazování aplikace nebude zadána žádná verze
 - **Povolit aktualizace** : Určuje, jestli jsou povolené aktualizace balíčků a odstranění.
 
-Pokud chcete zobrazit [strukturu souborů](files-and-directories.md) balíčku aplikace na výpočetním uzlu, přejděte na účet Batch v Azure Portal. Vyberte **fondy** . pak vyberte fond, který obsahuje výpočetní uzel. Vyberte výpočetní uzel, na kterém je nainstalován balíček aplikace, a otevřete složku **aplikace** .
+Pokud chcete zobrazit [strukturu souborů](files-and-directories.md) balíčku aplikace na výpočetním uzlu, přejděte na účet Batch v Azure Portal. Vyberte **fondy**. pak vyberte fond, který obsahuje výpočetní uzel. Vyberte výpočetní uzel, na kterém je nainstalován balíček aplikace, a otevřete složku **aplikace** .
 
 ### <a name="view-application-details"></a>Zobrazit podrobnosti o aplikaci
 
@@ -99,9 +99,9 @@ Chcete-li zobrazit podrobnosti o aplikaci, vyberte ji v okně **aplikace** . Pro
 
 Chcete-li vytvořit novou aplikaci, přidejte balíček aplikace a zadejte jedinečné ID aplikace.
 
-V účtu Batch vyberte **aplikace** a pak vyberte **Přidat** .
+V účtu Batch vyberte **aplikace** a pak vyberte **Přidat**.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Diagram znázorňující zobrazení aplikací a balíčků aplikací na vysoké úrovni.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Snímek obrazovky procesu vytváření nové aplikace v Azure Portal.":::
 
 Zadejte následující informace:
 
@@ -116,19 +116,19 @@ ID a **verze** **aplikace** , které zadáte, musí splňovat tyto požadavky:
 - Musí být v rámci účtu Batch jedinečný.
 - V ID se nerozlišují velká a malá písmena.
 
-Až budete připraveni, vyberte **Odeslat** . Po nahrání souboru zip do účtu Azure Storage na portálu se zobrazí oznámení. V závislosti na velikosti souboru, který nahráváte, a rychlosti síťového připojení může to trvat delší dobu.
+Až budete připraveni, vyberte **Odeslat**. Po nahrání souboru zip do účtu Azure Storage na portálu se zobrazí oznámení. V závislosti na velikosti souboru, který nahráváte, a rychlosti síťového připojení může to trvat delší dobu.
 
 ### <a name="add-a-new-application-package"></a>Přidat nový balíček aplikace
 
-Pokud chcete přidat verzi balíčku aplikace pro existující aplikaci, vyberte aplikaci v části **aplikace** účtu Batch a pak vyberte **Přidat** .
+Pokud chcete přidat verzi balíčku aplikace pro existující aplikaci, vyberte aplikaci v části **aplikace** účtu Batch a pak vyberte **Přidat**.
 
-Stejně jako u nové aplikace zadejte **verzi** nového balíčku, nahrajte soubor. zip do pole **balíček aplikace** a pak vyberte **Odeslat** .
+Stejně jako u nové aplikace zadejte **verzi** nového balíčku, nahrajte soubor. zip do pole **balíček aplikace** a pak vyberte **Odeslat**.
 
 ### <a name="update-or-delete-an-application-package"></a>Aktualizace nebo odstranění balíčku aplikace
 
 Chcete-li aktualizovat nebo odstranit existující balíček aplikace, vyberte aplikaci v části **aplikace** účtu Batch. Vyberte tři tečky na řádku balíčku aplikace, který chcete upravit, a pak vyberte akci, kterou chcete provést.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Diagram znázorňující zobrazení aplikací a balíčků aplikací na vysoké úrovni.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Snímek obrazovky znázorňující možnosti aktualizace a odstranění pro balíčky aplikací v Azure Portal.":::
 
 Pokud vyberete možnost **aktualizovat** , budete moct nahrát nový soubor. zip. Tím se nahradí předchozí soubor zip, který jste nahráli pro danou verzi.
 
@@ -202,7 +202,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Například:
+V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Příklad:
 
 ```
 Linux:

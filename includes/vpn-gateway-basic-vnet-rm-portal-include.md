@@ -9,20 +9,20 @@ ms.date: 10/20/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a66596ecb926c1bf3c6b61cc99e1eb1b56e99158
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92328422"
 ---
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-1. Do **vyhledávacích prostředků, služeb a dokumentů (G +/)** zadejte *Virtual Network* .
+1. Do **vyhledávacích prostředků, služeb a dokumentů (G +/)** zadejte *Virtual Network*.
 
    ![Stránka pro vyhledání prostředku Virtual Network](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png "Stránka pro vyhledání prostředku virtuální sítě")
 1. Z výsledků **Marketplace** vyberte **Virtual Network** .
 
    ![Vybrat virtuální síť](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace-results.png "Stránka pro vyhledání prostředku virtuální sítě")
-1. Na stránce **Virtual Network** vyberte **vytvořit** .
+1. Na stránce **Virtual Network** vyberte **vytvořit**.
 
    ![Stránka virtuální síť](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png "Výběr možnosti Vytvořit")
 1. Jakmile vyberete **vytvořit** , otevře se stránka **vytvořit virtuální síť** .
@@ -48,4 +48,4 @@ ms.locfileid: "92328422"
    - **DDos Protection** : Basic
    - **Brána firewall** : zakázaná
 1. Vyberte **zkontrolovat + vytvořit** a ověřte nastavení virtuální sítě.
-1. Po ověření nastavení vyberte **vytvořit** .
+1. Po ověření nastavení vyberte **vytvořit**.

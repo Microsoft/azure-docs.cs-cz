@@ -8,16 +8,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 429d0b9c3a118061d713484a7db3aca376a24d04
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: aaf716b4ac4c49f1d852e917ba818a10ecb541c4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873179"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628029"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Kurz: Vytvoření aplikace serveru Blazor, která pro ověřování používá platformu Microsoft Identity Platform
 
-Blazor Server poskytuje podporu pro hostování komponent Razor na serveru v aplikaci ASP.NET Core. V tomto kurzu se naučíte implementovat ověřování a načíst data z Microsoft Graph v serverové aplikaci Blazor s využitím platformy Microsoft identity.
+Blazor Server poskytuje podporu pro hostování komponent Razor na serveru v aplikaci ASP.NET Core. V tomto kurzu se naučíte implementovat ověřování a načítat data z Microsoft Graph v aplikaci Blazor serveru pomocí platformy Microsoft identity a zaregistrujete aplikaci v Azure Active Directory (Azure AD).
+
+K dispozici je také kurz pro [BLAZOR WASM](tutorial-blazor-webassembly.md).
 
 V tomto kurzu se naučíte:
 
@@ -26,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Ověřování a autorizace pomocí Microsoft. identity. Web
 > * Načtěte data z chráněného webového rozhraní API Microsoft Graph
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - Tenant služby Azure AD, kde můžete zaregistrovat aplikaci. Pokud nemáte přístup k tenantovi služby Azure AD, můžete si ho zaregistrovat pomocí [vývojářského programu Microsoft 365](https://developer.microsoft.com/microsoft-365/dev-program) nebo vytvořením [bezplatného účtu Azure](https://azure.microsoft.com/free).
@@ -35,14 +37,14 @@ V tomto kurzu se naučíte:
 
 Každá aplikace, která používá Azure Active Directory (Azure AD) pro ověřování, musí být zaregistrovaná ve službě Azure AD. Postupujte podle pokynů v části [Registrace aplikace](quickstart-register-app.md) s těmito dodatky:
 
-- U **podporovaných typů účtů**vyberte **účty jenom v tomto organizačním adresáři**.
+- U **podporovaných typů účtů** vyberte **účty jenom v tomto organizačním adresáři**.
 - Rozevírací seznam **identifikátor URI přesměrování** nastavte na **Web** a zadejte `https://localhost:5001/signin-oidc` . Výchozí port pro aplikaci běžící na Kestrel je 5001. Pokud je aplikace k dispozici na jiném portu, zadejte číslo portu místo `5001` .
 
-V části **ověřování**  >  **implicitního udělení**zaškrtněte políčka pro **přístupové tokeny** a **tokeny ID**a pak vyberte tlačítko **Uložit** .
+V části **ověřování**  >  **implicitního udělení** zaškrtněte políčka pro **přístupové tokeny** a **tokeny ID** a pak vyberte tlačítko **Uložit** .
 
 Vzhledem k tomu, že aplikace volá chráněné rozhraní API (v tomto případě Microsoft Graph), potřebuje klientský klíč klienta, aby ověřil jeho identitu, když požádá o přístupový token pro volání rozhraní API.
 
-1. V rámci stejné registrace aplikace vyberte v části **Spravovat**možnost **certifikáty & tajných**kódů.
+1. V rámci stejné registrace aplikace vyberte v části **Spravovat** možnost **certifikáty & tajných** kódů.
 2. Vytvořte **nový tajný klíč klienta** , který nikdy nevyprší.
 3. Poznamenejte si **hodnotu** tajného klíče, protože ji budete používat v dalším kroku. Po opuštění tohoto podokna k němu nemůžete získat přístup znovu. V případě potřeby ho ale můžete znovu vytvořit.
 
@@ -91,9 +93,9 @@ Než začnete, odhlaste se od své aplikace, protože budete provádět změny p
 Teď aktualizujte registraci a kód vaší aplikace, abyste si vyžádají e-mail uživatele a zobrazili zprávy v aplikaci. Chcete-li to dosáhnout, nejprve zvětšete oprávnění registrace aplikace v Azure AD, aby bylo možné povolit přístup k e-mailovým datům. Potom do aplikace Blazor přidejte kód pro načtení a zobrazení těchto dat na jedné ze stránek.
 
 1. V Azure Portal vyberte svou aplikaci v **Registrace aplikací**.
-1. V části **Spravovat**vyberte **oprávnění rozhraní API**.
-1. Vyberte **Přidat**  >  **Microsoft Graph**oprávnění.
-1. Vyberte **delegovaná oprávnění**, vyhledejte a vyberte oprávnění **Pošta. číst** .
+1. V části **Spravovat** vyberte **oprávnění rozhraní API**.
+1. Vyberte **Přidat**  >  **Microsoft Graph** oprávnění.
+1. Vyberte **delegovaná oprávnění** , vyhledejte a vyberte oprávnění **Pošta. číst** .
 1. Vyberte **Přidat oprávnění**.
 
 V *appsettings.jsv* souboru aktualizujte kód tak, aby načetl příslušný token se správnými oprávněními. Přidejte "mail. Read" za obor "User. Read" v části "DownstreamAPI". Tím určíte, které obory (nebo oprávnění) aplikace bude vyžadovat přístup.

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
 ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92890144"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>Přidání dalších připojení S2S k virtuální síti: Azure Portal
@@ -41,24 +41,24 @@ Ověřte následující položky:
 
 1. V prohlížeči přejděte na portál [Azure Portal](https://portal.azure.com) a v případě potřeby se přihlaste pomocí účtu Azure.
 1. Vyberte **všechny prostředky** a vyhledejte **bránu virtuální sítě** ze seznamu prostředků a vyberte ji.
-1. Na stránce **Brána virtuální sítě** vyberte **připojení** .
+1. Na stránce **Brána virtuální sítě** vyberte **připojení**.
 
    :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connections.png" alt-text="Připojení brány VPN Gateway":::
-1. Na stránce **připojení** vyberte **+ Přidat** .
+1. Na stránce **připojení** vyberte **+ Přidat**.
 1. Tím otevřete stránku **Přidat připojení** .
 
-   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="Připojení brány VPN Gateway":::
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="Přidat stránku připojení":::
 1. Na stránce **Přidat připojení** vyplňte následující pole:
 
    * **Název:** Název, který chcete přidělit k lokalitě, ke které vytváříte připojení.
-   * **Typ připojení:** Vyberte **site-to-Site (IPSec)** .
+   * **Typ připojení:** Vyberte **site-to-Site (IPSec)**.
 
 ## <a name="add-a-local-network-gateway"></a><a name="local"></a>Přidat bránu místní sítě
 
 1. V poli **Brána místní sítě** vyberte **_zvolit bránu místní sítě_*_. Otevře se okno _* zvolit bránu místní sítě** .
 1. Výběrem **+ vytvořit nové** otevřete stránku **vytvořit bránu místní sítě** .
 
-   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="Připojení brány VPN Gateway":::
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="Stránka vytvořit bránu místní sítě":::
 1. Na stránce **vytvořit bránu místní sítě** vyplňte následující pole:
 
    * **Název:** Název, který chcete přidělit prostředku brány místní sítě.

@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "87088389"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikování webové aplikace v ASP.NET ve virtuálním počítači Azure ze sady Visual Studio
@@ -33,11 +33,11 @@ Následující část popisuje, jak publikovat stávající webovou aplikaci v A
 
 1. Otevřete řešení webové aplikace v aplikaci Visual Studio 2019.
 2. Klikněte pravým tlačítkem na projekt v Průzkumník řešení a vyberte **publikovat...**
-3. Pomocí šipky vpravo od stránky se posuňte mezi možnosti publikování, dokud nenajdete **Microsoft Azure Virtual Machines** .  
+3. Pomocí šipky vpravo od stránky se posuňte mezi možnosti publikování, dokud nenajdete **Microsoft Azure Virtual Machines**.  
 
    ![Stránka pro publikování – šipka doprava]
 
-4. Vyberte ikonu **Microsoft Azure Virtual Machines** a vyberte **publikovat** .
+4. Vyberte ikonu **Microsoft Azure Virtual Machines** a vyberte **publikovat**.
 
    ![Stránka pro publikování – ikona Microsoft Azure virtuálního počítače]
 
@@ -69,7 +69,7 @@ Následující část popisuje, jak publikovat stávající webovou aplikaci v A
 
 11. Pokud publikování proběhlo úspěšně, spustí se prohlížeč a otevře se adresa URL nově publikovaného webu.
 
-**Nástup!**
+**Výborně!**
 
 Vaše webová aplikace se teď úspěšně publikovala na virtuálním počítači Azure.
 
@@ -87,7 +87,7 @@ Chcete-li publikovat aktualizace webové aplikace, vyberte tlačítko **publikov
 
 ### <a name="modify-publish-profile-settings"></a>Upravit nastavení profilu publikování
 
-Chcete-li zobrazit a upravit nastavení profilu publikování, vyberte **nastavení...** .  
+Chcete-li zobrazit a upravit nastavení profilu publikování, vyberte **nastavení...**.  
 
 ![Stránka pro publikování – tlačítko nastavení]
 

@@ -9,10 +9,10 @@ ms.date: 10/17/2018
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 2dcb8489d94b9afc3ae4df829b37dd9785383d85
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92208239"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurace režimu přenosu IPsec pro privátní partnerské vztahy ExpressRoute
@@ -43,7 +43,7 @@ Tento diagram zobrazuje tunely IPsec při přenosu v privátním partnerském vz
 ### <a name="working-with-ipsec-policy"></a>Práce se zásadami IPsec
 
 V systému Windows je k zásadám IPsec přidruženo šifrování. Zásady protokolu IPsec určují, který provoz IP je zabezpečený, a mechanismus zabezpečení, který se použije pro pakety protokolu IP.
-**Zásady protokolu IPSec** se skládají z následujících položek: **filtrovat seznamy** , **filtrovat akce** a **pravidla zabezpečení** .
+**Zásady protokolu IPSec** se skládají z následujících položek: **filtrovat seznamy** , **filtrovat akce** a **pravidla zabezpečení**.
 
 Při konfiguraci zásad protokolu IPsec je důležité pochopit následující terminologii zásad IPsec:
 
@@ -86,7 +86,7 @@ Ujistěte se, že splňujete následující požadavky:
 1. Vytvořte objekt zásad skupiny a přidružte ho k organizační jednotce.
 2. Definujte **akci filtru** protokolu IPSec.
 3. Definujte **seznam filtru** IPSec.
-4. Vytvořte zásadu IPsec s **pravidly zabezpečení** .
+4. Vytvořte zásadu IPsec s **pravidly zabezpečení**.
 5. Přiřaďte objekt zásad skupiny IPsec k organizační jednotce.
 
 ### <a name="example-values"></a>Příklady hodnot
@@ -101,10 +101,10 @@ Ujistěte se, že splňujete následující požadavky:
 
 ## <a name="1-create-a-gpo"></a><a name="creategpo"></a>1. vytvoření objektu zásad skupiny
 
-1. Chcete-li vytvořit nový objekt zásad skupiny propojený s organizační jednotkou, otevřete modul snap-in Správa Zásady skupiny a vyhledejte organizační jednotku, do které bude objekt zásad skupiny propojený. V příkladu má organizační jednotka název **IPSecOU** . 
+1. Chcete-li vytvořit nový objekt zásad skupiny propojený s organizační jednotkou, otevřete modul snap-in Správa Zásady skupiny a vyhledejte organizační jednotku, do které bude objekt zásad skupiny propojený. V příkladu má organizační jednotka název **IPSecOU**. 
 
    [![9]][9]
-2. V modulu snap-in Správa Zásady skupiny vyberte organizační jednotku a klikněte pravým tlačítkem myši. V rozevíracím seznamu klikněte na **vytvořit objekt zásad skupiny v této doméně a připojit ho sem** ...
+2. V modulu snap-in Správa Zásady skupiny vyberte organizační jednotku a klikněte pravým tlačítkem myši. V rozevíracím seznamu klikněte na **vytvořit objekt zásad skupiny v této doméně a připojit ho sem**...
 
    [![10]][10]
 3. Pojmenujte objekt zásad skupiny intuitivním názvem, abyste ho později mohli snadno najít. Kliknutím na tlačítko **OK** vytvořte objekt zásad skupiny a propojte ho.
@@ -116,38 +116,38 @@ Ujistěte se, že splňujete následující požadavky:
 Pokud chcete objekt zásad skupiny použít pro organizační jednotku, nesmí být objekt zásad skupiny propojený jenom s organizační jednotkou, musí ale taky být povolený odkaz.
 
 1. Vyhledejte objekt zásad skupiny, který jste vytvořili, klikněte pravým tlačítkem myši a v rozevíracím seznamu vyberte možnost **Upravit** .
-2. Pokud chcete objekt zásad skupiny použít pro organizační jednotku, vyberte **odkaz povoleno** .
+2. Pokud chcete objekt zásad skupiny použít pro organizační jednotku, vyberte **odkaz povoleno**.
 
    [![12]][12]
 
 ## <a name="3-define-the-ip-filter-action"></a><a name="filteraction"></a>3. Definujte akci filtru IP.
 
-1. V rozevíracím seznamu klikněte pravým tlačítkem na **zásady zabezpečení protokolu IP v Active Directory** a pak klikněte na **Spravovat seznamy filtrů IP adres a filtrovat akce...** .
+1. V rozevíracím seznamu klikněte pravým tlačítkem na **zásady zabezpečení protokolu IP v Active Directory** a pak klikněte na **Spravovat seznamy filtrů IP adres a filtrovat akce...**.
 
    [![15]][15]
-2. Na kartě **Spravovat akce filtru** klikněte na **Přidat** .
+2. Na kartě **Spravovat akce filtru** klikněte na **Přidat**.
 
    [![16]][16]
 
-3. V **Průvodci akcí filtru zabezpečení protokolu IP** klikněte na tlačítko **Další** .
+3. V **Průvodci akcí filtru zabezpečení protokolu IP** klikněte na tlačítko **Další**.
 
    [![17]][17]
-4. Pojmenujte tento filtr intuitivní název, abyste ho mohli najít později. V tomto příkladu má akce filtru název **myEncryption** . Můžete také přidat popis. Pak klikněte na tlačítko **Další** .
+4. Pojmenujte tento filtr intuitivní název, abyste ho mohli najít později. V tomto příkladu má akce filtru název **myEncryption**. Můžete také přidat popis. Pak klikněte na tlačítko **Další**.
 
    [![18]][18]
-5. **Vyjednávání zabezpečení** umožňuje definovat chování, pokud nelze protokol IPSec vytvořit s jiným počítačem. Vyberte **Vyjednat zabezpečení** a pak klikněte na **Další** .
+5. **Vyjednávání zabezpečení** umožňuje definovat chování, pokud nelze protokol IPSec vytvořit s jiným počítačem. Vyberte **Vyjednat zabezpečení** a pak klikněte na **Další**.
 
    [![19]][19]
-6. Na stránce **komunikace s počítači, které nepodporují protokol IPSec** vyberte možnost **Nepovolit nezabezpečenou komunikaci** a pak klikněte na tlačítko **Další** .
+6. Na stránce **komunikace s počítači, které nepodporují protokol IPSec** vyberte možnost **Nepovolit nezabezpečenou komunikaci** a pak klikněte na tlačítko **Další**.
 
    [![20]][20]
-7. Na stránce **provoz a zabezpečení protokolu IP** vyberte **vlastní** a pak klikněte na **nastavení...** .
+7. Na stránce **provoz a zabezpečení protokolu IP** vyberte **vlastní** a pak klikněte na **nastavení...**.
 
    [![21]][21]
-8. Na stránce **vlastní nastavení metody zabezpečení** vyberte možnost **Integrita dat a šifrování (ESP): SHA1, 3DES** . Pak klikněte na **OK** .
+8. Na stránce **vlastní nastavení metody zabezpečení** vyberte možnost **Integrita dat a šifrování (ESP): SHA1, 3DES**. Pak klikněte na **OK**.
 
    [![22]][22]
-9. Na stránce **Správa akcí filtru** vidíte, že byl filtr **myEncryption** úspěšně přidán. Klikněte na **Zavřít** .
+9. Na stránce **Správa akcí filtru** vidíte, že byl filtr **myEncryption** úspěšně přidán. Klikněte na **Zavřít**.
 
    [![23]][23]
 
@@ -155,28 +155,28 @@ Pokud chcete objekt zásad skupiny použít pro organizační jednotku, nesmí b
 
 Vytvořte seznam filtrů, který určuje šifrovaný provoz HTTP s cílovým portem 8080.
 
-1. K získání informací o tom, které typy přenosů musí být šifrované, použijte **seznam filtru IP adres** . Na kartě **Spravovat seznamy filtrů IP** klikněte na **Přidat** a přidejte nový seznam filtrů IP.
+1. K získání informací o tom, které typy přenosů musí být šifrované, použijte **seznam filtru IP adres**. Na kartě **Spravovat seznamy filtrů IP** klikněte na **Přidat** a přidejte nový seznam filtrů IP.
 
    [![24]][24]
-2. Do pole **Název:** zadejte název vašeho seznamu filtru IP adres. Například **Azure-premises-HTTP8080** . Pak klikněte na tlačítko **Přidat** .
+2. Do pole **Název:** zadejte název vašeho seznamu filtru IP adres. Například **Azure-premises-HTTP8080**. Pak klikněte na tlačítko **Přidat**.
 
    [![25]][25]
-3. Na stránce s **popisem filtru IP a zrcadlenou vlastností** vyberte možnost **Zrcadleno** . Zrcadlení nastavení odpovídá paketům v obou směrech, což umožňuje obousměrnou komunikaci. Potom klikněte na **Další** .
+3. Na stránce s **popisem filtru IP a zrcadlenou vlastností** vyberte možnost **Zrcadleno**. Zrcadlení nastavení odpovídá paketům v obou směrech, což umožňuje obousměrnou komunikaci. Potom klikněte na **Další**.
 
    [![26]][26]
-4. Na stránce **Zdroj přenosu IP** adres v rozevíracím seznamu **zdrojová adresa:** vyberte **konkrétní IP adresu nebo podsíť** . 
+4. Na stránce **Zdroj přenosu IP** adres v rozevíracím seznamu **zdrojová adresa:** vyberte **konkrétní IP adresu nebo podsíť**. 
 
    [![27]][27]
-5. Zadejte **IP adresu nebo podsíť** zdrojové adresy IP a potom klikněte na **Další** .
+5. Zadejte **IP adresu nebo podsíť** zdrojové adresy IP a potom klikněte na **Další**.
 
    [![28]][28]
-6. Zadejte **cílovou adresu:** IP adresa nebo podsíť. Pak klikněte na tlačítko **Další** .
+6. Zadejte **cílovou adresu:** IP adresa nebo podsíť. Pak klikněte na tlačítko **Další**.
 
    [![29]][29]
-7. Na stránce **typ protokolu IP** vyberte **TCP** . Pak klikněte na tlačítko **Další** .
+7. Na stránce **typ protokolu IP** vyberte **TCP**. Pak klikněte na tlačítko **Další**.
 
    [![30]][30]
-8. Na stránce **port protokolu IP** vyberte **libovolný port** a **na tento port:** . Do textového pole zadejte **8080** . Tato nastavení určují pouze přenosy HTTP na cílovém portu 8080 budou zašifrovány. Pak klikněte na tlačítko **Další** .
+8. Na stránce **port protokolu IP** vyberte **libovolný port** a **na tento port:**. Do textového pole zadejte **8080** . Tato nastavení určují pouze přenosy HTTP na cílovém portu 8080 budou zašifrovány. Pak klikněte na tlačítko **Další**.
 
    [![31]][31]
 9. Zobrazit seznam filtrů IP adres.  Konfigurace seznamu filtru IP adres **Azure-HTTP8080** spustí šifrování pro veškerý provoz, který odpovídá následujícím kritériím:
@@ -192,10 +192,10 @@ Vytvořte seznam filtrů, který určuje šifrovaný provoz HTTP s cílovým por
 
 Pokud chcete zašifrovat stejný typ provozu v opačném směru (z místního hostitele na virtuální počítač Azure), budete potřebovat druhý filtr IP adres. Proces nastavení nového filtru je stejný jako proces, který jste použili k nastavení prvního filtru IP adres. Jediným rozdílem je zdrojová podsíť a cílová podsíť.
 
-1. Pokud chcete přidat nový filtr IP adres do seznamu filtru IP adres, vyberte **Upravit** .
+1. Pokud chcete přidat nový filtr IP adres do seznamu filtru IP adres, vyberte **Upravit**.
 
    [![33]][33]
-2. Na stránce **seznam filtrů IP** klikněte na **Přidat** .
+2. Na stránce **seznam filtrů IP** klikněte na **Přidat**.
 
    [![34]][34]
 3. Vytvořte druhý filtr IP adres pomocí nastavení v následujícím příkladu:
@@ -211,16 +211,16 @@ Pokud se vyžaduje šifrování mezi místním umístěním a podsítí Azure k 
 
 Vytvořte zásadu IPsec s pravidly zabezpečení.
 
-1. Vyberte **zásady ipSecurity ve službě Active Directory** , která je přidružená k organizační jednotce. Klikněte pravým tlačítkem a vyberte **vytvořit zásadu zabezpečení protokolu IP** .
+1. Vyberte **zásady ipSecurity ve službě Active Directory** , která je přidružená k organizační jednotce. Klikněte pravým tlačítkem a vyberte **vytvořit zásadu zabezpečení protokolu IP**.
 
    [![37]][37]
-2. Pojmenujte zásady zabezpečení. Například **zásada – Azure-místní** . Pak klikněte na tlačítko **Další** .
+2. Pojmenujte zásady zabezpečení. Například **zásada – Azure-místní**. Pak klikněte na tlačítko **Další**.
 
    [![38]][38]
 3. Klikněte na tlačítko **Další** bez zaškrtnutí políčka.
 
    [![39]][39]
-4. Ověřte, zda je zaškrtnuto políčko **Upravit vlastnosti** , a potom klikněte na tlačítko **Dokončit** .
+4. Ověřte, zda je zaškrtnuto políčko **Upravit vlastnosti** , a potom klikněte na tlačítko **Dokončit**.
 
    [![40]][40]
 
@@ -228,10 +228,10 @@ Vytvořte zásadu IPsec s pravidly zabezpečení.
 
 Přidejte do zásady protokolu IPsec **seznam filtrů IP** a **akci filtru** , kterou jste předtím nakonfigurovali.
 
-1. Na kartě **pravidla** vlastností zásad protokolu HTTP klikněte na **Přidat** .
+1. Na kartě **pravidla** vlastností zásad protokolu HTTP klikněte na **Přidat**.
 
    [![41]][41]
-2. Na úvodní stránce klikněte na **Další** .
+2. Na úvodní stránce klikněte na **Další**.
 
    [![42]][42]
 3. Pravidlo nabízí možnost definovat režim protokolu IPsec: režim tunelového propojení nebo Přenosový režim.
@@ -240,22 +240,22 @@ Přidejte do zásady protokolu IPsec **seznam filtrů IP** a **akci filtru** , k
 
    * Transportní režim šifruje jenom datovou část a přípojné vozidlo ESP; Hlavička protokolu IP původního paketu není šifrovaná. V transportního režimu se IP adresa a cíl IP paketů nemění.
 
-   Vyberte **Toto pravidlo neurčuje tunel** a potom klikněte na tlačítko **Další** .
+   Vyberte **Toto pravidlo neurčuje tunel** a potom klikněte na tlačítko **Další**.
 
    [![43]][43]
-4. **Typ sítě** definuje, které síťové připojení přidruží k zásadám zabezpečení. Vyberte **všechna síťová připojení** a pak klikněte na **Další** .
+4. **Typ sítě** definuje, které síťové připojení přidruží k zásadám zabezpečení. Vyberte **všechna síťová připojení** a pak klikněte na **Další**.
 
    [![44]][44]
-5. Vyberte seznam filtrů IP, který jste předtím vytvořili,  **Azure-premises-HTTP8080** , a pak klikněte na **Další** .
+5. Vyberte seznam filtrů IP, který jste předtím vytvořili,  **Azure-premises-HTTP8080** , a pak klikněte na **Další**.
 
    [![45]][45]
 6. Vyberte existující akci filtru **myEncryption** , kterou jste vytvořili dříve.
 
    [![46]][46]
-7. Windows podporuje čtyři různé typy ověřování: Kerberos, certifikáty, NTLMv2 a předsdílený klíč. Vzhledem k tomu, že pracujete s hostiteli připojeným k doméně, vyberte možnost **výchozí nastavení služby Active Directory (protokol Kerberos V5)** a poté klikněte na tlačítko **Další** .
+7. Windows podporuje čtyři různé typy ověřování: Kerberos, certifikáty, NTLMv2 a předsdílený klíč. Vzhledem k tomu, že pracujete s hostiteli připojeným k doméně, vyberte možnost **výchozí nastavení služby Active Directory (protokol Kerberos V5)** a poté klikněte na tlačítko **Další**.
 
    [![47]][47]
-8. Nové zásady vytvoří pravidlo zabezpečení: **Azure-premises-HTTP8080** . Klikněte na **OK** .
+8. Nové zásady vytvoří pravidlo zabezpečení: **Azure-premises-HTTP8080**. Klikněte na **OK**.
 
    [![48]][48]
 
@@ -266,7 +266,7 @@ Zásada IPsec vyžaduje, aby všechna připojení HTTP na cílovém portu 8080 p
 1. Podívejte se na zásadu. Zásady skupiny zabezpečení jsou definované, ale ještě nejsou přiřazené.
 
    [![49]][49]
-2. Zásadu skupiny zabezpečení přiřadíte **IPSecOU** organizační jednotce tak, že kliknete pravým tlačítkem na zásadu zabezpečení a zvolíte **přiřadit** .
+2. Zásadu skupiny zabezpečení přiřadíte **IPSecOU** organizační jednotce tak, že kliknete pravým tlačítkem na zásadu zabezpečení a zvolíte **přiřadit**.
    Každý počítač THT patří do organizační jednotky, bude mít přiřazené zásady skupiny zabezpečení.
 
    [![50]][50]

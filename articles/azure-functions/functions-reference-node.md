@@ -3,14 +3,14 @@ title: Referenční dokumentace pro vývojáře JavaScriptu pro Azure Functions
 description: Naučte se vyvíjet funkce pomocí JavaScriptu.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b9ffdec83fb613b7df0b5a3227ca66c55e54fe9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9b920dc8a31967c9d8e1f05a6101fdfcc7a1304e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422548"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628828"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -508,12 +508,20 @@ Následující tabulka uvádí aktuální podporované verze Node.js pro každou
 | Verze funkcí | Verze uzlu (Windows) | Verze uzlu (Linux) |
 |---|---| --- |
 | verze | 6.11.2 (uzamčeno modulem runtime) | neuvedeno |
-| 2.x  | ~ 8<br/>~ 10 (doporučeno)<br/>~ 12<sup>*</sup> | ~ 8 (doporučeno)<br/>~ 10  |
-| 3.x | ~ 10<br/>~ 12 (doporučeno)  | ~ 10<br/>~ 12 (doporučeno) |
+| 2.x  | `~8`<br/>`~10` doporučil<br/>`~12` | `node|8`<br/>`node|10` doporučil  |
+| 3.x | `~10`<br/>`~12` doporučil<br/>`~14` Tisk  | `node|10`<br/>`node|12` doporučil<br/>`node|14` Tisk |
 
-<sup>*</sup>Uzel ~ 12 je aktuálně povolen pro verzi 2. x modulu runtime Functions. Pro nejlepší výkon ale doporučujeme použít modul runtime Functions verze 3. x s uzlem ~ 12. 
+Aktuální verzi, kterou modul runtime používá, můžete zobrazit protokolováním `process.version` z libovolné funkce.
 
-Aktuální verzi, kterou používá modul runtime, můžete zobrazit zkontrolováním výše uvedeného nastavení aplikace nebo tiskem `process.version` z libovolné funkce. Cílovou verzi v Azure můžete nastavit tak, že nastavíte [nastavení WEBSITE_NODE_DEFAULT_VERSION aplikace](functions-how-to-use-azure-function-app-settings.md#settings) na podporovanou verzi LTS, například `~10` .
+### <a name="setting-the-node-version"></a>Nastavení verze uzlu
+
+V případě aplikací funkcí Windows cílíte na verzi v Azure nastavením `WEBSITE_NODE_DEFAULT_VERSION` [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) na podporovanou verzi LTS, například `~12` .
+
+Pro aplikace se systémem Linux spusťte následující příkaz rozhraní příkazového řádku Azure, který aktualizuje verzi uzlu.
+
+```bash
+az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+```
 
 ## <a name="dependency-management"></a>Správa závislostí
 Aby bylo možné používat knihovny komunity v kódu JavaScriptu, jak je znázorněno v následujícím příkladu, je nutné zajistit, aby všechny závislosti byly nainstalovány v Function App v Azure.

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74be3f4218149f0cdb9f107c8aba0be76d8da27e
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 65c8baa101df5e24780e5e68b5a21b86985608a6
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593072"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628114"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Metody ověřování v Azure Active Directory Možnosti telefonu
 
@@ -56,6 +56,8 @@ Při ověřování pomocí telefonního hovoru během SSPR nebo Azure Multi-Fact
 
 Pokud máte problémy s ověřováním pomocí telefonu pro Azure AD, přečtěte si následující postup řešení potíží:
 
+* "Dosáhli jste limitu ověřovacích hovorů" nebo "při přihlašování jste dosáhli limitu pro ověřovací kódy textu".
+   * K dokončení ověřování použijte aplikaci Microsoft Authenticator nebo ověřovací kód, nebo to zkuste znovu později.
 * Blokované ID volajícího na jednom zařízení.
    * Zkontrolujte všechna blokovaná čísla nakonfigurovaná na zařízení.
 * Chybné telefonní číslo nebo nesprávné číslo země/oblasti nebo nejasnost mezi osobním telefonním číslem a pracovním telefonním číslem.

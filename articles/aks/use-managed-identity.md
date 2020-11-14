@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 20e255958cbd90aaddf060e42d7627c1e1ebec88
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f8cb98ea36fdad9a67eca26c6fbea7ede1f811a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371456"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94627876"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes
 
@@ -27,7 +27,6 @@ Musíte mít nainstalované následující prostředky:
 ## <a name="limitations"></a>Omezení
 
 * Clustery AKS se spravovanými identitami se dají povolit jenom během vytváření clusteru.
-* Existující clustery AKS se nedají migrovat na spravované identity.
 * Během operací s **upgradem** clusteru je spravovaná identita dočasně nedostupná.
 * Klienti se přesunou/nemigrují spravované clustery s povolenou identitou nejsou podporováni.
 * Pokud je cluster `aad-pod-identity` povolený, lusky NMI (Node Managed identity) upraví uzly na softwaru iptables tak, aby zachytil volání koncového bodu metadat instance Azure. Tato konfigurace znamená, že všechny požadavky na koncový bod metadat jsou zachyceny NMI i v případě, že pole pod nepoužívá `aad-pod-identity` . AzurePodIdentityException CRD je možné nakonfigurovat tak, aby informovala `aad-pod-identity` , že všechny požadavky na koncový bod metadat pocházející z objektu pod, který odpovídá popiskům definovaným v CRD, by měly být proxy bez jakéhokoli zpracování v NMI. Systém lusky s `kubernetes.azure.com/managedby: aks` návěštím v oboru názvů _Kube-System_ by měl být vyloučený v `aad-pod-identity` konfiguraci AzurePodIdentityException CRD. Další informace najdete v tématu [zakázání identity AAD-pod-identity pro konkrétního pod nebo aplikaci](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
@@ -106,6 +105,23 @@ Nakonec Získejte přihlašovací údaje pro přístup ke clusteru:
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
+## <a name="update-an-existing-service-principal-based-aks-cluster-to-managed-identities"></a>Aktualizovat existující cluster AKS založený na instančních objektech na spravované identity
+
+Cluster AKS se spravovanými identitami teď můžete aktualizovat pomocí následujících příkazů rozhraní příkazového řádku.
+
+Nejdřív aktualizujte identitu přiřazenou systémem:
+
+```azurecli-interactive
+az aks update -g <RGName> -n <AKSName> --enable-managed-identity
+```
+
+Pak aktualizujte identitu přiřazenou uživatelem:
+
+```azurecli-interactive
+az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
+```
+> [!NOTE]
+> Jakmile jsou přiřazené systémové identity nebo identity přiřazené uživatelem aktualizovány na spravovanou identitu, proveďte `az nodepool upgrade --node-image-only` ve svých uzlech aktualizaci spravované identity.
 
 ## <a name="bring-your-own-control-plane-mi-preview"></a>Přineste si vlastní plochu ovládacího prvku MI (Preview).
 Vlastní identita roviny ovládacího prvku umožňuje přístup k existující identitě před vytvořením clusteru. To umožňuje scénářům, jako je například použití vlastní virtuální sítě nebo outboundType UDR se spravovanou identitou.

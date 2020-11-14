@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: a14ccb74e6f0ac2454255d609662706cb53ede31
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129588"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628284"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Postup plánování nabídky virtuálního počítače
 
@@ -29,7 +29,7 @@ Proces navrhování, sestavování a testování nabídek trvá čas a vyžaduje
   - [Virtuální počítače s Linuxem](../virtual-machines/linux/tutorial-manage-vm.md)
   - [Virtuální počítače s Windows](../virtual-machines/windows/tutorial-manage-vm.md)
 
-- ukázky
+- Ukázky
   - [Ukázky v Azure CLI pro virtuální počítače se systémem Linux](../virtual-machines/linux/cli-samples.md)
   - [Azure PowerShell pro virtuální počítače se systémem Linux](../virtual-machines/linux/powershell-samples.md)
   - [Ukázky v Azure CLI pro virtuální počítače s Windows](../virtual-machines/windows/cli-samples.md)
@@ -100,7 +100,7 @@ Následující příklad ukazuje nabídku virtuálních počítačů v Azure Mar
 
 Můžete omezit zjišťování a nasazování virtuálního počítače na konkrétní skupinu zákazníků publikováním image a cen jako privátního plánu. Soukromé plány odemknou možnost vytvářet exkluzivní nabídky pro nejbližší zákazníky a nabízet přizpůsobený software a požadavky. Přizpůsobené výrazy vám umožňují zvýraznit celou řadu scénářů, včetně jejich využívání se specializovanými cenami a podmínkami, a také prvotním přístupem k omezenému softwaru pro vydání. Soukromé plány umožňují poskytovat konkrétní ceny nebo produkty omezené sadě zákazníků.
 
-Další informace najdete v tématu [plány a ceny pro komerční nabídky na webu Marketplace](plans-pricing.md) a [soukromé nabídky na Azure Marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).
+Další informace najdete v tématu [plány a ceny pro komerční nabídky na webu Marketplace](plans-pricing.md) a [soukromé nabídky na komerčním webu Microsoft Marketplace](private-offers.md).
 
 ## <a name="test-drives"></a>Testovací verze
 

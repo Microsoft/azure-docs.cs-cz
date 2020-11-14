@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: aahi
-ms.openlocfilehash: 122e44da7bbf4229f932eefdae4c70dc49f43bfe
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 247aea49d60c2d953d8b6dff37d22188a5442a1f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371272"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625213"
 ---
 Pomocí tohoto rychlého startu můžete vytvořit první hledání obrázků pomocí klientské knihovny Vyhledávání obrázků Bingu. 
 
@@ -44,9 +44,9 @@ Nejprve vytvořte novou konzolovou aplikaci v jazyce C#.
 1. Vytvořte nové řešení konzoly s názvem *BingImageSearch* v aplikaci Visual Studio.
     
 1. Přidání [balíčku pro rozpoznávání vyhledávání obrázků NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch)
-    1. V **Průzkumník řešení**klikněte pravým tlačítkem na svůj projekt.
+    1. V **Průzkumník řešení** klikněte pravým tlačítkem na svůj projekt.
     1. Vyberte **Spravovat balíčky NuGet**.
-    1. Vyhledejte a vyberte *Microsoft. Azure. cognitiveservices Account. Search. ImageSearch*a pak balíček nainstalujte.
+    1. Vyhledejte a vyberte *Microsoft. Azure. cognitiveservices Account. Search. ImageSearch* a pak balíček nainstalujte.
     
 # <a name="vs-code"></a>[VS Code](#tab/vscode)
 
@@ -129,12 +129,12 @@ if (imageResults != null)
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vyhledávání obrázků Bingu – kurz jednostránkové aplikace](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+> [Vyhledávání obrázků Bingu – kurz jednostránkové aplikace](../../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>Viz také
 
-* [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Co je Vyhledávání obrázků Bingu?](../../overview.md)  
 * [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [Ukázky .NET pro sadu Azure Cognitive Services SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
-* [Dokumentace k Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Dokumentace ke službě Azure Cognitive Services](../../../index.yml)
+* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

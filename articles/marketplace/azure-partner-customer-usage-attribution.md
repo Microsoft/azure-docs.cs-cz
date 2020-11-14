@@ -3,17 +3,17 @@ title: Obchodní partneři na webu Marketplace a přidělení zákaznického vyu
 description: Získejte přehled o sledování zákaznického využití pro Azure Marketplace řešení.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 95ac1abc1f286330bc5e7036f01faa6cf1b22d70
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 2c2b7de65e7ac22ebe648ce98633d5ae88818324
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337895"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628386"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Obchodní partneři na webu Marketplace a přidělení zákaznického využití
 
@@ -74,9 +74,9 @@ Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a reg
    * Partneři můžou registrovat víc identifikátorů GUID.
    * Partneři můžou registrovat GUID pro šablony řešení mimo Marketplace a nabídky.
 
-1. V pravém horním rohu vyberte ikonu ozubeného kola nastavení a pak vyberte **Nastavení vývojáře**.
+1. V pravém horním rohu > **Nastavení účtu** vyberte **Nastavení** (ikona ozubeného kolečka).
 
-1. Na **stránce nastavení účtu** vyberte **Přidat identifikátor GUID sledování.**
+1. V nabídce identifikátory **profilů organizace**  >  **Identifiers** vyberte **Přidat identifikátor GUID sledování**.
 
 1. Do pole **identifikátor GUID** zadejte identifikátor GUID sledování. Zadejte pouze identifikátor GUID bez `pid-` předpony. Do pole **Popis** zadejte název nebo popis vaší nabídky.
 
@@ -183,9 +183,10 @@ Pokud prostředky nasazujete prostřednictvím Azure PowerShell, přidejte svůj
 
 Když k připojení svého GUID použijete rozhraní příkazového řádku Azure CLI, nastavte proměnnou prostředí **AZURE_HTTP_USER_AGENT** . Tuto proměnnou můžete nastavit v rámci oboru skriptu. Pro rozsah prostředí můžete také nastavit proměnnou globálně:
 
-```
+```powershell
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
 Další informace najdete v tématu [Azure SDK pro go](/azure/developer/go/).
 
 ## <a name="use-terraform"></a>Použití Terraformu
@@ -206,7 +207,6 @@ Partneři, kteří chtějí získat své nasazení prostřednictvím Terraformuu
 
 * Vytvořte identifikátor GUID (identifikátor GUID by měl být přidán pro každou nabídku nebo SKU).
 * Aktualizujte svého poskytovatele Azure a nastavte hodnotu *partner_id* na identifikátor GUID (neopravte GUID pomocí "PID-", stačí ho nastavit na skutečný identifikátor GUID).
-
 
 ## <a name="verify-the-guid-deployment"></a>Ověření nasazení identifikátoru GUID
 
@@ -263,11 +263,11 @@ Partneři by měli informovat své zákazníky o nasazeních, která používaj�
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Oznámení pro nasazení šablon Správce prostředků
 
-Když tuto šablonu nasadíte, Microsoft dokáže identifikovat instalaci \<PARTNER> softwaru s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese https://www.microsoft.com/trustcenter .
+Když tuto šablonu nasadíte, Microsoft dokáže identifikovat instalaci \<PARTNER> softwaru s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese [https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) .
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>Oznámení pro nasazení SDK nebo rozhraní API
 
-Když nasadíte \<PARTNER> software, společnost Microsoft dokáže identifikovat instalaci \<PARTNER> softwaru s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese https://www.microsoft.com/trustcenter .
+Když nasadíte \<PARTNER> software, společnost Microsoft dokáže identifikovat instalaci \<PARTNER> softwaru s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese [https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) .
 
 ## <a name="get-support"></a>Získání podpory
 
@@ -282,6 +282,7 @@ Seznamte se s možnostmi podpory na komerčním tržišti v části [Podpora pro
     * Dokončete/zkontrolujte kontaktní údaje.
     * Informace o konzultacích můžou být předem vyplněné nebo si můžete vybrat z rozevíracích seznamu.
     * Zadejte název a popis problému (uveďte co nejvíc podrobností).
+
 1. Klikněte na Submit (Odeslat).
 
 Prohlédněte si podrobné pokyny k snímkům obrazovky s [použitím služeb technické služby předprodejní a nasazení](https://aka.ms/TechConsultInstructions).
@@ -290,7 +291,7 @@ Prohlédněte si podrobné pokyny k snímkům obrazovky s [použitím služeb te
 
 Obraťte se na partnera Microsoftu, který vám poskytne odborného technického konzultanta k nastavení volání podle rozsahu vašich potřeb.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Jaké jsou výhody přidání identifikátoru GUID do šablony?**
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 202f7fd065641f9921df5237fb83e7900819c8f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46bcfd48d8fdfb228670b87df166c1ad8de61e52
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563501"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626346"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrace ze systému Linux na nasazení do hybridního cloudu pomocí Azure File Sync
 
@@ -219,6 +219,6 @@ Pokud chcete řešit potíže s Azure File Sync problémy, podívejte se na odka
 
 K dispozici je více informací o sdílených složkách a Azure File Sync Azure. Následující články obsahují pokročilé možnosti, osvědčené postupy a pomoc při odstraňování potíží. Tyto články v případě potřeby odkazují na [dokumentaci ke sdílení souborů Azure](storage-files-introduction.md) .
 
-* [Přehled Azure File Sync](https://aka.ms/AFS)
+* [Přehled Azure File Sync](./storage-sync-files-planning.md)
 * [Průvodce nasazením Azure File Sync](storage-files-deployment-guide.md)
 * [Řešení potíží se službou Synchronizace souborů Azure](storage-sync-files-troubleshoot.md)

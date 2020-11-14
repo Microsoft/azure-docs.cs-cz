@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 75ba8e1e2037ba8ef249b548dfb38e5fd1618cb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ec8e4a945f8b8277d05c11bf3673d2e4ab15f9a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564181"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626788"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>Jak vytvořit sdílenou složku Azure Premium
 
@@ -24,8 +24,8 @@ V tomto článku se dozvíte, jak vytvořit tento nový typ účtu pomocí [Azur
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Pokud máte v úmyslu použít modul Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0).
+- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Pokud máte v úmyslu použít modul Azure PowerShell, [nainstalujte nejnovější verzi](/powershell/azure/install-az-ps?view=azps-4.6.0).
 
 ## <a name="create-a-filestorage-storage-account"></a>Vytvoření účtu úložiště úložiště
 
@@ -35,7 +35,7 @@ Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 Nyní jste připraveni vytvořit účet úložiště.
 
@@ -43,7 +43,7 @@ Nyní jste připraveni vytvořit účet úložiště.
 
     ![Azure Portal hlavní stránka – Výběr účtu úložiště](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
-1. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
+1. V okně **Účty úložiště** , které se zobrazí, zvolte **Přidat**.
 1. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
 1. Pod polem **Skupina prostředků** vyberte **Vytvořit novou**. Zadejte název nové skupiny prostředků, jak je znázorněno na následujícím obrázku.
 
@@ -58,7 +58,7 @@ Nyní jste připraveni vytvořit účet úložiště.
 
     ![Jak vytvořit účet úložiště pro sdílenou složku Premium](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
-1. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
+1. Vyberte **Zkontrolovat a vytvořit** , zkontrolujte nastavení účtu úložiště a vytvořte účet.
 1. Vyberte **Vytvořit**.
 
 Po vytvoření prostředku účtu úložiště přejděte na něj.

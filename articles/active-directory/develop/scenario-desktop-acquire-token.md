@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 11/04/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8608da33c747f76452a0106e4e2737849e06a75c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: cdda14bb579fc94414f9da89b8b1f1aa04ec3bf5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443224"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628097"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -183,7 +183,7 @@ V systému Android je také nutné zadat nadřazenou aktivitu pomocí `.WithPare
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-Uživatelské rozhraní je důležité, protože je interaktivní. `AcquireTokenInteractive` má jeden konkrétní volitelný parametr, který může určit, pro platformy, které ho podporují, nadřazené uživatelské rozhraní. Při použití v desktopové aplikaci `.WithParentActivityOrWindow` má jiný typ, který závisí na platformě. Alternativně můžete vynechat volitelný parametr nadřazeného okna a vytvořit tak okno, pokud nechcete ovládat, kde se přihlašovací dialog zobrazí na obrazovce. To se dá použít pro aplikace, které jsou založené na příkazovém řádku, které se používají k předávání volání do jakékoli jiné back-end služby a nepotřebují žádná okna pro interakci s uživatelem. 
+Uživatelské rozhraní je důležité, protože je interaktivní. `AcquireTokenInteractive` má jeden konkrétní volitelný parametr, který může určit, pro platformy, které ho podporují, nadřazené uživatelské rozhraní. Při použití v desktopové aplikaci `.WithParentActivityOrWindow` má jiný typ, který závisí na platformě. Alternativně můžete vynechat volitelný parametr nadřazeného okna a vytvořit tak okno, pokud nechcete ovládat, kde se přihlašovací dialog zobrazí na obrazovce. To se dá použít pro aplikace, které jsou založené na příkazovém řádku, které se používají k předávání volání do jakékoli jiné back-end služby a nepotřebují žádná okna pro interakci s uživatelem.
 
 ```csharp
 // net45
@@ -278,7 +278,7 @@ Tým MSAL.NET přepsal testy uživatelského rozhraní pro použití tohoto mech
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>Zajištění skvělých zkušeností s SystemWebViewOptions
 
-Z MSAL.NET 4,1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) můžete zadat:
+Z MSAL.NET 4,1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions) můžete zadat:
 
 - Identifikátor URI, který má jít na ( `BrowserRedirectError` ) nebo fragment HTML pro zobrazení ( `HtmlMessageError` ) v případě chyb přihlášení nebo souhlasu v systémovém webovém prohlížeči.
 - Identifikátor URI, který se má `BrowserRedirectSuccess` `HtmlMessageSuccess` v případě úspěšného přihlášení nebo vyjádření souhlasu zobrazit () nebo FRAGMENTu HTML
@@ -304,7 +304,7 @@ var result = app.AcquireTokenInteractive(scopes)
 
 #### <a name="other-optional-parameters"></a>Další nepovinné parametry
 
-Další informace o všech dalších volitelných parametrech pro `AcquireTokenInteractive` najdete v tématu [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
+Další informace o všech dalších volitelných parametrech pro `AcquireTokenInteractive` najdete v tématu [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -532,7 +532,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-Seznam možných modifikátorů v AcquireTokenByIntegratedWindowsAuthentication naleznete v tématu [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods).
+Seznam možných modifikátorů v AcquireTokenByIntegratedWindowsAuthentication naleznete v tématu [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -832,7 +832,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-Další informace o všech modifikátorech, které lze použít pro `AcquireTokenByUsernamePassword` , naleznete v tématu [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods).
+Další informace o všech modifikátorech, které lze použít pro `AcquireTokenByUsernamePassword` , naleznete v tématu [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -1387,6 +1387,10 @@ namespace CommonCacheMsalV3
  }
 }
 ```
+
+## <a name="advanced-accessing-the-users-cached-tokens-in-background-apps-and-services"></a>Upřesnit Přístup k tokenům v mezipaměti uživatele v aplikacích a službách na pozadí
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

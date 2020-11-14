@@ -1,23 +1,25 @@
 ---
 title: Kurz – přihlášení uživatelů a volání chráněného rozhraní API z aplikace Blazor WebAssembly
 titleSuffix: Microsoft identity platform
-description: V tomto kurzu se přihlaste uživatele a zavolejte chráněné rozhraní API s využitím platformy Microsoft Identity Platform v aplikaci Blazor WebAssembly.
+description: V tomto kurzu se přihlaste uživatele a zavolejte chráněné rozhraní API s využitím platformy Microsoft Identity Platform v aplikaci Blazor WebAssembly (WASM).
 author: knicholasa
 ms.author: nichola
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: ba3607c522191644ec0cc63db118de285d297c48
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f967b10d729c9c5486bbca9b643f48aaf558687c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223072"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628062"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Kurz: přihlášení uživatelů a volání chráněného rozhraní API z aplikace Blazor WebAssembly
 
-[Blazor WebAssembly](/aspnet/core/blazor#blazor-webassembly) je jediná stránka architektury aplikace pro vytváření interaktivních webových aplikací na straně klienta s .NET. V tomto kurzu vytvoříte aplikaci, která se přihlásí uživatelům a načítá data z chráněného rozhraní API z aplikace Blazor WebAssembly (Blazor WASM) s [platformou Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/).
+Blazor WebAssembly (WASM) je jednostránková architektura aplikací pro vytváření interaktivních webových aplikací na straně klienta s .NET. V tomto kurzu se naučíte implementovat ověřování a načítat data z Microsoft Graph v aplikaci Blazor WASM pomocí Microsoft Identity Platform a zaregistrujete svoji aplikaci v Azure Active Directory (Azure AD).
+
+K dispozici je také [kurz pro server Blazor](tutorial-blazor-server.md). 
 
 V tomto kurzu:
 
@@ -35,10 +37,10 @@ V tomto kurzu:
 
 Každá aplikace, která používá Azure Active Directory (Azure AD) pro ověřování, musí být zaregistrovaná ve službě Azure AD. Postupujte podle pokynů v části [Registrace aplikace](quickstart-register-app.md) s těmito specifikacemi:
 
-- U **podporovaných typů účtů**vyberte **účty jenom v tomto organizačním adresáři**.
+- U **podporovaných typů účtů** vyberte **účty jenom v tomto organizačním adresáři**.
 - Rozevírací seznam **identifikátor URI přesměrování** nastavte na **Web** a zadejte `https://localhost:5001/authentication/login-callback` . Výchozí port pro aplikaci běžící na Kestrel je 5001. Pokud je aplikace k dispozici na jiném portu, zadejte číslo portu místo `5001` .
 
-Po registraci zaškrtněte v části **ověřování**  >  **implicitní udělení oprávnění**zaškrtnutí políček pro **přístupové tokeny** a **tokeny ID**a pak vyberte tlačítko **Uložit** .
+Po registraci zaškrtněte v části **ověřování**  >  **implicitní udělení oprávnění** zaškrtnutí políček pro **přístupové tokeny** a **tokeny ID** a pak vyberte tlačítko **Uložit** .
 
 ## <a name="create-the-app-using-the-net-core-cli"></a>Vytvoření aplikace pomocí .NET Core CLI
 
@@ -83,12 +85,12 @@ Nyní aktualizujete registraci a kód vaší aplikace, aby vyčetla e-maily uži
 Nejdřív přidejte `Mail.Read` k registraci aplikace oprávnění rozhraní API, aby se služba Azure AD dozvěděla, že aplikace bude vyžadovat přístup k e-mailu svých uživatelů.
 
 1. V Azure Portal vyberte svou aplikaci v **Registrace aplikací**.
-1. V části **Spravovat**vyberte **oprávnění rozhraní API**.
-1. Vyberte **Přidat**  >  **Microsoft Graph**oprávnění.
-1. Vyberte **delegovaná oprávnění**, vyhledejte a vyberte oprávnění **Pošta. číst** .
+1. V části **Spravovat** vyberte **oprávnění rozhraní API**.
+1. Vyberte **Přidat**  >  **Microsoft Graph** oprávnění.
+1. Vyberte **delegovaná oprávnění** , vyhledejte a vyberte oprávnění **Pošta. číst** .
 1. Vyberte **Přidat oprávnění**.
 
-Dále do souboru *. csproj* projektu ve skupině **položek**netstandard 2.1 přidejte následující. To vám umožní vytvořit si vlastní HttpClient v dalším kroku.
+Dále do souboru *. csproj* projektu ve skupině **položek** netstandard 2.1 přidejte následující. To vám umožní vytvořit si vlastní HttpClient v dalším kroku.
 
 ```xml
 <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.7" />
@@ -239,5 +241,5 @@ Po udělení souhlasu přejděte na stránku načíst data a přečtěte si pár
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Osvědčené postupy a doporučení pro Microsoft Identity Platform](./identity-platform-integration-checklist.md)
-- [Úvod k nástroji ASP.NET Core Blazor](/aspnet/core/blazor)
+> [!div class="nextstepaction"]
+> [Osvědčené postupy a doporučení pro Microsoft Identity Platform](./identity-platform-integration-checklist.md)

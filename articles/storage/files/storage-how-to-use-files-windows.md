@@ -8,12 +8,12 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329342"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626890"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -24,15 +24,15 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 
 | Verze systému Windows        | Verze protokolu SMB | Možnost připojit na virtuálním počítači Azure | Místně připojit |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Yes | Yes |
-| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Yes |
-| Půlroční kanál Windows serveru<sup>2</sup> | SMB 3.0 | Yes | Yes |
-| Windows Server 2016 | SMB 3.0 | Yes | Yes |
-| Windows 8.1 | SMB 3.0 | Yes | Yes |
-| Windows Server 2012 R2 | SMB 3.0 | Yes | Yes |
-| Windows Server 2012 | SMB 3.0 | Yes | Yes |
-| Systém Windows 7<sup>3</sup> | SMB 2.1 | Yes | No |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | No |
+| Windows Server 2019 | SMB 3.0 | Ano | Ano |
+| Windows 10<sup>1</sup> | SMB 3.0 | Ano | Ano |
+| Půlroční kanál Windows serveru<sup>2</sup> | SMB 3.0 | Ano | Ano |
+| Windows Server 2016 | SMB 3.0 | Ano | Ano |
+| Windows 8.1 | SMB 3.0 | Ano | Ano |
+| Windows Server 2012 R2 | SMB 3.0 | Ano | Ano |
+| Windows Server 2012 | SMB 3.0 | Ano | Ano |
+| Systém Windows 7<sup>3</sup> | SMB 2.1 | Ano | Ne |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ano | Ne |
 
 <sup>1</sup> Windows 10, verze 1507, 1607, 1803, 1809, 1903, 1909 a 2004.  
 <sup>2</sup> . Windows Server, verze 1809, 1903, 1909, 2004.  
@@ -41,12 +41,12 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 > [!Note]  
 > Vždy doporučujeme získat nejnovější aktualizaci KB pro vaši verzi systému Windows.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Zkontrolujte, že je otevřený port 445: Protokol SMB vyžaduje otevřený port TCP 445. Pokud je port 445 zablokovaný, připojení selžou. Můžete zjistit, jestli brána firewall blokuje port 445 pomocí `Test-NetConnection` rutiny. Další informace o tom, jak obejít blokovaný port 445, najdete v části [Příčina 1: port 445 je blokován](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) v naší příručce pro řešení potíží s Windows.
 
 ## <a name="using-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
-Pokud chcete používat sdílenou složku Azure s Windows, musíte ji buď připojit, což znamená přiřadit jí písmeno jednotky nebo cestu k přípojnému bodu, nebo k ní přistupovat přes její [cestu UNC](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx). 
+Pokud chcete používat sdílenou složku Azure s Windows, musíte ji buď připojit, což znamená přiřadit jí písmeno jednotky nebo cestu k přípojnému bodu, nebo k ní přistupovat přes její [cestu UNC](/windows/win32/fileio/naming-a-file). 
 
 Tento článek používá klíč účtu úložiště pro přístup ke sdílené složce souborů. Klíč účtu úložiště je klíč správce pro účet úložiště, včetně oprávnění správce ke všem souborům a složkám v rámci sdílené složky, ke které přistupujete, a ke všem sdíleným složkám a dalším prostředkům úložiště (objektům blob, frontám, tabulkám atd.) obsaženým v účtu úložiště. Pokud to pro vaše zatížení nestačí, můžete použít [Azure File Sync](storage-sync-files-planning.md) , nebo můžete použít [ověřování na základě identity přes protokol SMB](storage-files-active-directory-overview.md).
 
@@ -58,21 +58,21 @@ Azure Portal vám poskytne skript, který můžete použít k připojení sdíle
 
 Postup získání tohoto skriptu:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Přejděte do účtu úložiště, který obsahuje sdílenou složku, kterou chcete připojit.
 1. Vyberte **Sdílené složky**.
 1. Vyberte sdílenou složku, kterou chcete připojit.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="případě":::
 
-1. Vyberte **Připojit**.
+1. Vyberte **Connect** (Připojit).
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="případě":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Snímek obrazovky ikony připojení pro sdílenou složku":::
 
 1. Vyberte písmeno jednotky, ke které se má sdílená složka připojit.
 1. Zkopírujte zadaný skript.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="případě":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Ukázkový text":::
 
 1. Vložte skript do prostředí v hostiteli, ke kterému chcete sdílenou složku připojit, a spusťte ji.
 
@@ -88,7 +88,7 @@ Teď máte připojenou sdílenou složku Azure.
     
     ![Snímek obrazovky s rozevírací nabídkou Připojit síťovou jednotku](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. Vyberte písmeno jednotky a zadejte cestu UNC, formát cesty UNC `\\<storageAccountName>.file.core.windows.net\<fileShareName>` . Například: `\\anexampleaccountname.file.core.windows.net\example-share-name`.
+1. Vyberte písmeno jednotky a zadejte cestu UNC, formát cesty UNC `\\<storageAccountName>.file.core.windows.net\<fileShareName>` . Příklad: `\\anexampleaccountname.file.core.windows.net\example-share-name`.
     
     ![Snímek obrazovky s dialogovým oknem Připojit síťovou jednotku](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 
@@ -196,11 +196,11 @@ Po vytvoření tohoto klíče registru musíte server restartovat, aby se protok
 ### <a name="smb-resources"></a>Zdroje informací k protokolu SMB
 - [Ukončení používání protokolu SMB 1](https://blogs.technet.microsoft.com/filecab/2016/09/16/stop-using-smb1/)
 - [Informační středisko k produktu SMB 1](https://blogs.technet.microsoft.com/filecab/2017/06/01/smb1-product-clearinghouse/)
-- [Zjišťování protokolu SMB 1 v prostředí pomocí DSCEA](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
-- [Zakázání protokolu SMB 1 prostřednictvím Zásad skupiny](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
+- [Zjišťování protokolu SMB 1 v prostředí pomocí DSCEA](/archive/blogs/ralphkyttle/discover-smb1-in-your-environment-with-dscea)
+- [Zakázání protokolu SMB 1 prostřednictvím Zásad skupiny](/archive/blogs/secguide/disabling-smbv1-through-group-policy)
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o službě Soubory Azure najdete na těchto odkazech:
 - [Plánování nasazení Azure Files](storage-files-planning.md)
-- [Nejčastější dotazy](../storage-files-faq.md)
-- [Řešení potíží ve Windows](storage-troubleshoot-windows-file-connection-problems.md)      
+- [Nejčastější dotazy](./storage-files-faq.md)
+- [Řešení potíží ve Windows](storage-troubleshoot-windows-file-connection-problems.md)
