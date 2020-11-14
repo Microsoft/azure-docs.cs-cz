@@ -1,7 +1,7 @@
 ---
 title: Vytvoření a spuštění kanálů ML
 titleSuffix: Azure Machine Learning
-description: Vytvořte a spusťte kanál strojového učení s Azure Machine Learning SDK pro Python. Pomocí kanálů ML můžete vytvářet a spravovat pracovní postupy, které spojí dohromady fáze strojového učení (ML). Tyto fáze zahrnují přípravu dat, školení modelů, nasazení modelu a odvození nebo bodování.
+description: Vytvářejte a spouštějte kanály strojového učení, abyste mohli vytvářet a spravovat pracovní postupy, které dohromady spojí fáze strojového učení (ML).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 76369d3bc3ed152bf9e0b13f7bf4b4386a974c33
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 452904e18a0910c2dd4781ca978042e0cdd4996d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322092"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630120"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
@@ -30,7 +30,7 @@ Kanály ML, které vytvoříte, jsou viditelné pro členy [pracovního prostoru
 
 Kanály ML se spouštějí na výpočetních cílech (viz [co jsou výpočetní cíle v Azure Machine Learning](./concept-compute-target.md)). Kanály můžou číst a zapisovat data do a z podporovaných [Azure Storage](../storage/index.yml) umístění.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Předpoklady
 

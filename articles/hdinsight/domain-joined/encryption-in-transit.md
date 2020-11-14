@@ -7,19 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: ac210adbc29075f27739b08dcf83eeedbeea3ed5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628979"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630358"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Šifrování IPSec při přenosu pro Azure HDInsight
 
 Tento článek popisuje implementaci šifrování při přenosu pro komunikaci mezi uzly clusteru Azure HDInsight.
-
-> [!Note]
-> Šifrování v přenosech je aktuálně povolené pro následující oblasti: Východní USA, Střed USA – jih, západ USA 2.
 
 ## <a name="background"></a>Pozadí
 
@@ -31,7 +28,7 @@ Azure HDInsight nabízí celou řadu funkcí zabezpečení pro zabezpečení pod
 
 ## <a name="enable-encryption-in-transit"></a>Povolit šifrování při přenosu
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Chcete-li vytvořit nový cluster se šifrováním při přenosu povoleno pomocí Azure Portal, proveďte následující kroky:
 
@@ -42,7 +39,7 @@ Chcete-li vytvořit nový cluster se šifrováním při přenosu povoleno pomoc�
 
 1. Na kartě **zabezpečení a sítě** zaškrtněte políčko **Povolit šifrování v cestě** .
 
-    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Vytvoření clusteru – karta zabezpečení a sítě.":::
+    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Vytvoření clusteru – povolí šifrování při přenosu.":::
 
 ### <a name="create-a-cluster-with-encryption-in-transit-enabled-through-the-azure-cli"></a>Vytvoření clusteru se šifrováním v přenosu povoleném prostřednictvím rozhraní příkazového řádku Azure
 

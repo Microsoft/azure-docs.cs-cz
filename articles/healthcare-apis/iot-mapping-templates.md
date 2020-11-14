@@ -8,15 +8,15 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 1702c17555d1d3c39a83fa16ca790d6f8f2b3344
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 63484361a6d5a331fd9dc646c53627918ce8b246
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394233"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630545"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Šablony mapování konektoru Azure IoT pro FHIR (Preview)
-Tento článek podrobně popisuje, jak nakonfigurovat Azure IoT Connector pro FHIR * pomocí mapovacích šablon.
+Tento článek podrobně popisuje, jak nakonfigurovat Azure IoT Connector pro rychlé interoperability zdravotnictví (FHIR&#174;) * pomocí mapování šablon.
 
 Konektor Azure IoT pro FHIR vyžaduje dva typy šablon mapování založených na JSON. Prvním typem je **mapování zařízení** , které zodpovídá za mapování datových částí zařízení odeslaných do `devicedata` koncového bodu centra událostí Azure. Extrahuje typy, identifikátory zařízení, datum a čas měření a hodnoty měření. Druhý typ, **mapování FHIR** , řídí mapování pro prostředek FHIR. Umožňuje konfiguraci délky období pozorování, datového typu FHIR, který slouží k ukládání hodnot, a kódů terminologie. 
 
@@ -567,6 +567,4 @@ Přečtěte si nejčastější dotazy ke službě Azure IoT Connector pro FHIR (
 >[!div class="nextstepaction"]
 >[Azure IoT Connector pro nejčastější dotazy k FHIR](fhir-faq.md)
 
-* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
-
-FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.
+* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview). FHIR je registrovaná ochranná známka změněného HL7 a používá se s oprávněním změněného HL7.

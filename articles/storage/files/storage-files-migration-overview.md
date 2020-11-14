@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 995ae176a8eec58f8dc9522e6fac6fd78170014d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785608"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628913"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrace do sdílených složek Azure
 
@@ -134,7 +134,7 @@ Tato část popisuje nástroje, které vám pomůžou naplánovat a spustit migr
 
 #### <a name="robocopy-from-microsoft-corporation"></a>Robocopy od společnosti Microsoft Corporation
 
-Robocopy je jedním z nástrojů, které jsou nejvíce použitelné pro migrace souborů. Je součástí systému Windows. Hlavní [dokumentace nástroje Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) je užitečným prostředkem pro mnoho možností tohoto nástroje.
+Robocopy je jedním z nástrojů, které jsou nejvíce použitelné pro migrace souborů. Je součástí systému Windows. Hlavní [dokumentace nástroje Robocopy](/windows-server/administration/windows-commands/robocopy) je užitečným prostředkem pro mnoho možností tohoto nástroje.
 
 #### <a name="treesize-from-jam-software-gmbh"></a>TreeSize od zaseknutí softwaru GmbH
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 128e4d0a421fc9ad4251f24f2cb37a217eeb1e31
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 046cca4e683a8f14893bf48ac8601b138a7c28a7
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322213"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630273"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Azure File Sync
 
@@ -45,7 +45,7 @@ Migrace do sdílených složek Azure ze svazků StorSimple prostřednictvím úl
 
 Sdílené složky Azure otevírají celou řadu příležitostí pro vytvoření struktury nasazení souborové služby. Sdílená složka Azure je jenom sdílená složka SMB v cloudu, kterou můžete nastavit tak, aby uživatelé měli přístup přímo přes protokol SMB se známým ověřováním protokolu Kerberos a stávajícími oprávněními NTFS (seznamy řízení přístupu (ACL) souborů a složek) pracující nativně. Přečtěte si další informace o [přístupu na základě identity ke sdíleným složkám Azure](storage-files-active-directory-overview.md).
 
-Alternativou k přímému přístupu je [Azure File Sync](https://aka.ms/AFS). Azure File Sync je přímým analogem pro schopnost StorSimple ukládat často používané soubory do mezipaměti v místním prostředí.
+Alternativou k přímému přístupu je [Azure File Sync](./storage-sync-files-planning.md). Azure File Sync je přímým analogem pro schopnost StorSimple ukládat často používané soubory do mezipaměti v místním prostředí.
 
 Azure File Sync je cloudová služba Microsoftu založená na dvou hlavních součástech:
 
@@ -56,7 +56,7 @@ Sdílené složky Azure uchovávají důležité aspekty souborů na uložených
 
 Tento článek se zaměřuje na kroky migrace. Pokud chcete získat další informace o Azure File Sync před migrací, přečtěte si následující články:
 
-* [Přehled Azure File Sync](https://aka.ms/AFS "Přehled")
+* [Přehled Azure File Sync](./storage-sync-files-planning.md "Přehled")
 * [Průvodce nasazením Azure File Sync](storage-sync-files-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>Šifrovací klíč dat služby StorSimple
@@ -385,7 +385,7 @@ Zaregistrovaná místní instance Windows serveru musí být pro tento proces p�
 * [Jak nakonfigurovat Windows P2S VPN](storage-files-configure-p2s-vpn-windows.md)
 * [Jak nakonfigurovat P2S síť VPN pro Linux](storage-files-configure-p2s-vpn-linux.md)
 * [Jak nakonfigurovat předávání DNS](storage-files-networking-dns.md)
-* [Konfigurace DFS – N](https://aka.ms/AzureFiles/Namespaces)
+* [Konfigurace DFS – N](/windows-server/storage/dfs-namespaces/dfs-overview)
    :::column-end:::
 :::row-end:::
 
@@ -413,7 +413,7 @@ Tento přístup k migraci vyžaduje pro uživatele a aplikace nějaké výpadky.
 
 Když pro sdílenou složku Azure použijete Azure File Sync, je důležité, abyste *před* spuštěním jakékoli místní složky Robocopy zjistili, že jste dokončili stahování celého oboru názvů na server. Doba potřebná ke stažení vašeho oboru názvů závisí na počtu položek ve sdílené složce Azure. Existují dva způsoby, jak určit, zda byl váš obor názvů plně doručen na server.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 Pomocí Azure Portal můžete zobrazit, kdy váš obor názvů plně dorazil.
 
@@ -535,7 +535,7 @@ Pokud používáte Azure File Sync, pravděpodobně budete muset vytvořit sdíl
 
 Pokud máte nasazení DFS-N, můžete DFN-Namespaces nasměrovat na nová umístění složky na serveru. Pokud nemáte nasazení DFS-N a vaše zařízení 8100 nebo 8600 jste nastavili místně s instancí Windows serveru, můžete tento server převzít mimo doménu. Pak se doména připojí k nové instanci Windows serveru s povolenou Azure File Sync. Během tohoto procesu dejte serveru stejný název serveru a sdílejte názvy jako starý server, aby oříznutí zůstalo transparentní pro uživatele, zásady skupiny a skripty.
 
-Přečtěte si další informace o [systému souborů DFS-N](https://aka.ms/AzureFiles/Namespaces).
+Přečtěte si další informace o [systému souborů DFS-N](/windows-server/storage/dfs-namespaces/dfs-overview).
 
 ## <a name="deprovision"></a>Zrušení zřízení
 
@@ -561,7 +561,7 @@ Migrace je hotová.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Získejte více znalostí [Azure File Sync: aka.MS/AFS](https://aka.ms/AFS).
+* Získejte více znalostí [Azure File Sync: aka.MS/AFS](./storage-sync-files-planning.md).
 * Seznamte se s flexibilitou zásad [cloudových vrstev](storage-sync-cloud-tiering.md) .
 * [Povolením Azure Backup](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) ve sdílených složkách Azure naplánujete snímky a definujete plány uchovávání záloh.
 * Pokud se zobrazí v Azure Portal, že některé soubory se trvale nesynchronizují, přečtěte si [Průvodce řešením potíží](storage-sync-files-troubleshoot.md) , kde najdete postup řešení těchto problémů.

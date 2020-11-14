@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/20/2020
-ms.openlocfilehash: bfd67688ce30b62002e26cea9f7be4df1cb6e622
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2ef80d26336ddbe3c015dfcde0c5ed29b762f39b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126443"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629712"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Postup vytvoření nabídky virtuálního počítače na Azure Marketplace
 
@@ -22,28 +22,30 @@ Než začnete, [Vytvořte si účet pro komerční tržiště v partnerském cen
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Pokud jste to ještě neudělali, přečtěte si téma [plánování nabídky virtuálních počítačů](marketplace-virtual-machines.md). Vysvětlete technické požadavky na váš virtuální počítač a seznam informací a prostředků, které budete potřebovat při vytváření vaší nabídky. 
+Pokud jste to ještě neudělali, přečtěte si téma [plánování nabídky virtuálních počítačů](marketplace-virtual-machines.md). Vysvětlete technické požadavky na váš virtuální počítač a seznam informací a prostředků, které budete potřebovat při vytváření vaší nabídky.
 
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V levém podokně vyberte přehled **komerčního tržiště**  >  **Overview** .
-3. Na stránce **Přehled** vyberte **Nový nabídka**  >  **virtuální počítač Azure** .
+2. V levém podokně vyberte přehled **komerčního tržiště**  >  **Overview**.
+3. Na stránce **Přehled** vyberte **+ Nová nabídka**  >  **virtuální počítač Azure**.
 
     ![Snímek obrazovky s možnostmi levého podokna v nabídce a tlačítkem Nová nabídka](./media/create-vm/new-offer-azure-virtual-machine.png)
 
 > [!NOTE]
 > Po publikování vaší nabídky se všechny úpravy, které provedete v partnerském centru, zobrazí Azure Marketplace až po opětovném publikování nabídky. Nezapomeňte vždy znovu publikovat nabídku po provedení změn.
 
-Zadejte **ID nabídky** . Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
+Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku Azure Marketplace a v Azure PowerShell a v Azure CLI, pokud je to možné.
 - Použijte při tom jenom malá písmena a číslice. ID může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezeno na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- ID nabídky nelze změnit po výběru možnost **vytvořit** .
+- ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
-Zadejte **alias nabídky** . Alias nabídky je název, který se používá pro nabídku v partnerském centru.
+Zadejte **alias nabídky**. Alias nabídky je název, který se používá pro nabídku v partnerském centru.
 
 - Tento název se nepoužívá na Azure Marketplace. Liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
+
+Vyberte **vytvořit** pro vygenerování nabídky a pokračování. Partnerské centrum otevře stránku **nastavení nabídky** .
 
 ## <a name="enable-a-test-drive-optional"></a>Povolit testovací jednotku (volitelné)
 
@@ -52,16 +54,14 @@ Testovací jednotka představuje skvělý způsob, jak předprezentovat vaši na
 > [!TIP]
 > Testovací jednotka se liší od bezplatné zkušební verze. Můžete nabízet buď testovací, bezplatnou zkušební verzi, nebo obojí. Poskytují zákazníkům s vaším řešením pevně stanovené časové období. Testovací jednotka ale taky obsahuje praktickou a samoobslužnou prohlídku klíčových funkcí vašeho produktu a výhod, které se provedou ve scénáři implementace reálného světa.
 
-**Povolení testovací jednotky**
-1.  V části **testovací jednotka** zaškrtněte políčko **Povolit testovací jednotku** .
-1.  V seznamu, který se zobrazí, vyberte typ testovacího disku.
+Chcete-li povolit testovací jednotku, zaškrtněte políčko **Povolit testovací jednotku** . Testovací jednotku budete konfigurovat později. V případě testovacích jednotek se vyžaduje konfigurace CRM (viz další oddíl).
 
-## <a name="configure-lead-management"></a>Konfigurace správy potenciálních zákazníků
+## <a name="configure-customer-leads-management"></a>Konfigurace správy zájemců zákazníků
 
-Když publikujete nabídku na komerční Marketplace s partnerským centrem, připojte ji k systému pro správu vztahů se zákazníky (CRM). To vám umožní získat kontaktní údaje zákazníka, jakmile někdo vyjádří zájem nebo použije váš produkt. Pokud chcete povolit testovací jednotku (viz předchozí část), vyžaduje se připojení k CRM. V opačném případě je připojení k CRM volitelné.
+Když publikujete nabídku na komerční tržišti s partnerským centrem, připojte ji k systému pro správu vztahů se zákazníky (CRM). To vám umožní získat kontaktní údaje zákazníka, jakmile někdo vyjádří zájem nebo použije váš produkt. Pokud chcete povolit testovací jednotku (viz předchozí část), vyžaduje se připojení k CRM. V opačném případě je připojení k CRM volitelné.
 
-1. v části **potenciální zákazníci** vyberte odkaz **připojit** .
-1. V dialogovém okně **Podrobnosti připojení** vyberte v seznamu cíl zájemce.
+1. V části **zájemci na zákazníky** vyberte odkaz **připojit** .
+1. V dialogovém okně **Podrobnosti připojení** vyberte cíl zájemce.
 1. Vyplňte pole, která se zobrazí. Podrobný postup najdete v následujících článcích:
 
    - [Konfigurace nabídky pro odesílání zájemců do tabulky Azure](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md#configure-your-offer-to-send-leads-to-the-azure-table)
@@ -71,15 +71,11 @@ Když publikujete nabídku na komerční Marketplace s partnerským centrem, př
    - [Konfigurace nabídky pro odesílání zájemců do Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
 1. Pokud chcete ověřit zadanou konfiguraci, vyberte odkaz **ověřit** .
-1. Pokud chcete dialogové okno zavřít, vyberte **OK** .
+1. Vyberte **Connect** (Připojit).
 
-## <a name="resell-through-csps"></a>Prodávejte dál prostřednictvím CSP
-
-Rozšiřte nabídku své nabídky tím, že ji zpřístupníte partnerům v programu [Cloud Solution Provider (CSP)](https://azure.microsoft.com/offers/ms-azr-0145p/) . K programu se automaticky přihlásí všechny plány BYOL (Přineste si vlastní licenci). Můžete se také rozhodnout, že se chcete vyjádřit k BYOL plánům.
-
-Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
+Než budete pokračovat na další kartu v nabídce vlevo na **Další, vyberte** **Uložit koncept** .
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace vlastností nabídky virtuálního počítače](azure-vm-create-properties.md)
+- [Postup konfigurace vlastností nabídky virtuálního počítače](azure-vm-create-properties.md)
 - [Osvědčené postupy nabídky](gtm-offer-listing-best-practices.md)

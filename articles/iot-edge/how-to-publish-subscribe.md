@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 941435e90f91a4c3a4e41c2869e35157da41d8b0
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: ef92895374f07c79f8ba8d626a0aab3d89733f40
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592171"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629644"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Publikování a přihlášení k odběru pomocí Azure IoT Edge
 
@@ -31,8 +31,10 @@ K publikování a odběru zpráv můžete použít zprostředkovatele Azure IoT 
 - **IoT Hub** SKU buď F1, S1, S2 nebo S3.
 - Mít **IoT Edge zařízení s verzí 1,2 nebo vyšší**. Vzhledem k tomu, že IoT Edge zprostředkovatel MQTT je aktuálně ve verzi Public Preview, nastavte následující proměnné prostředí na hodnotu true v kontejneru edgeHub pro povolení zprostředkovatele MQTT:
 
-    - experimentalFeatures__enabled
-    - mqttbroker__enabled
+   | Name | Hodnota |
+   | - | - |
+   | `experimentalFeatures__enabled` | `true` |
+   | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
 - **Mosquitto klienti** nainstalují na zařízení IoT Edge. V tomto článku se používají oblíbená Mosquitto klienti, kteří zahrnují [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) a [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html). Místo toho se dají použít jiní MQTT klienti. Pokud chcete nainstalovat klienty Mosquitto na zařízení Ubuntu, spusťte následující příkaz:
 
@@ -58,7 +60,7 @@ Pokud chcete protokol TLS zakázat, použijte port 1883 (MQTT) a navažte kontej
 
 Pokud chcete povolit protokol TLS, bude se iniciovat kanál TLS, pokud se klient připojí na portu 8883 (MQTTS) k zprostředkovateli MQTT. Zprostředkovatel odešle svůj řetěz certifikátů, který musí klient ověřit. Aby bylo možné ověřit řetěz certifikátů, musí být kořenový certifikát zprostředkovatele MQTT nainstalován jako důvěryhodný certifikát na klientovi. Pokud kořenový certifikát není důvěryhodný, klient služby MQTT odmítl knihovnu klienta s chybou ověřování certifikátu. Postup pro instalaci tohoto kořenového certifikátu zprostředkovatele na straně klienta je stejný jako v případě [transparentní brány](how-to-create-transparent-gateway.md) a je popsaný v dokumentaci [Příprava zařízení pro příjem dat](how-to-connect-downstream-device.md#prepare-a-downstream-device) .
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Aby se klient MQTT mohl sám ověřit, musí nejdřív odeslat paket připojení ke zprostředkovateli MQTT a iniciovat připojení v jeho názvu. Tento paket nabízí tři části ověřovacích informací: a `client identifier` , `username` a `password` :
 
@@ -329,7 +331,7 @@ Všimněte si, že v tomto prvním příkladu se používá port 1883 (MQTT), t�
 
 Klient **sub_client** MQTT je teď spuštěný a čeká na příchozí zprávy `test_topic` .
 
-#### <a name="publish"></a>Publikování
+#### <a name="publish"></a>Publikovat
 
 Připojte klienta **pub_client** MQTT ke zprostředkovateli MQTT a publikuje zprávu na stejném základě, a `test_topic` to spuštěním následujícího příkazu na zařízení IoT Edge z jiného terminálu:
 

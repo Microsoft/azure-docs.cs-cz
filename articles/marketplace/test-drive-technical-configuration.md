@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: 6faecdd561d7c434d2948e70886d6f1b19115d9f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: f628c2a4c2f8eb474bbc34ef2d3fd2f03f668992
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504828"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629899"
 ---
 # <a name="test-drive-technical-configuration"></a>Technická konfigurace testovací verze
 
@@ -98,5 +98,5 @@ Pokud momentálně vytváříte testovací jednotku v partnerském centru, vyber
 ## <a name="next-steps"></a>Další kroky
 
 - [Osvědčené postupy testovacích jednotek](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Přehled](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)(PDF; Ujistěte se, že je blokování automaticky otevíraných oken vypnuté)
+- [Přehled](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; Ujistěte se, že je blokování automaticky otevíraných oken vypnuté)
 - [Aktualizace stávající nabídky na komerčním webu Marketplace](partner-center-portal/update-existing-offer.md)

@@ -8,16 +8,16 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 961ba457136d20fbb63ae3315fe8143cffb56be2
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568467"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629304"
 ---
 # <a name="azure-file-share-protocols"></a>Protokoly sdílení souborů Azure
 
-Soubory Azure nabízí dva protokoly pro připojení a připojení ke sdíleným složkám Azure. [Protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) a [protokol NFS (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (Preview). Služba soubory Azure v současné době nepodporuje přístup s více protokoly, takže sdílená složka může být pouze sdílená složka systému souborů NFS nebo sdílená složka protokolu SMB. Z tohoto důvodu doporučujeme určit, který protokol nejlépe vyhovuje vašim potřebám před vytvořením sdílených složek Azure.
+Soubory Azure nabízí dva protokoly pro připojení a připojení ke sdíleným složkám Azure. [Protokol SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) a [protokol NFS (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (Preview). Služba soubory Azure v současné době nepodporuje přístup s více protokoly, takže sdílená složka může být pouze sdílená složka systému souborů NFS nebo sdílená složka protokolu SMB. Z tohoto důvodu doporučujeme určit, který protokol nejlépe vyhovuje vašim potřebám před vytvořením sdílených složek Azure.
 
 ## <a name="differences-at-a-glance"></a>Rozdíly na první pohled
 
@@ -27,7 +27,7 @@ Soubory Azure nabízí dva protokoly pro připojení a připojení ke sdíleným
 |Podporovaný operační systém     |Jádro Linux verze 4.3 +         |Windows 2008 R2 +, jádro Linux verze 4.11 +         |
 |[Dostupné úrovně](storage-files-planning.md#storage-tiers)     |Premium Storage         |Premium Storage, transakce optimalizovaná, horká, studená         |
 |[Redundance](storage-files-planning.md#redundancy)     |LRS         |LRS, ZRS, GRS         |
-|Authentication     |Pouze ověřování založené na hostiteli        |Ověřování na základě identity, ověřování uživatelů         |
+|Ověřování     |Pouze ověřování založené na hostiteli        |Ověřování na základě identity, ověřování uživatelů         |
 |Oprávnění     |Oprávnění ve stylu systému UNIX         |Oprávnění ve stylu NTFS         |
 |Sémantika systému souborů     |Kompatibilní s POSIX         |Není kompatibilní se standardem POSIX         |
 |Rozlišovat velká a malá písmena     |Malá a velká písmena se rozlišují.         |Nerozlišuje velká a malá písmena         |
@@ -64,7 +64,7 @@ Všechna data souborů Azure jsou v klidovém stavu zašifrovaná. Pro šifrová
 - [Soukromý koncový bod](storage-files-networking-overview.md#private-endpoints)
 - [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
     - [SÍŤ VPN typu Point-to-Site (P2S)](../../vpn-gateway/point-to-site-about.md)
-    - [Site-to-site](https://docs.microsoft.com/azure/vpn-gateway/design#s2smulti)
+    - [Site-to-site](../../vpn-gateway/design.md#s2smulti)
 - [ExpressRoute](../../expressroute/expressroute-introduction.md)
 - [Omezený veřejný koncový bod](storage-files-networking-overview.md#storage-account-firewall-settings)
 

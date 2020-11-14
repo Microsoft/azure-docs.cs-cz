@@ -8,12 +8,12 @@ ms.date: 09/19/2017
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2c80d741ca1cf0b4d66bc18488af8ef1da44fd14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 977777aff4aa32bf6876e1d573970d71ec71584e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462594"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629763"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Vývoj pro Soubory Azure pomocí Javy
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -29,7 +29,7 @@ V tomto kurzu se dozvíte základy použití jazyka Java k vývoji aplikací neb
 * Nahrání, stažení a odstranění souboru
 
 > [!Note]  
-> Vzhledem k tomu, že soubory Azure mohou být přístupné přes protokol SMB, je možné psát aplikace, které přistupují ke sdílené složce Azure pomocí standardních tříd v/v jazyka Java. Tento článek popisuje, jak psát aplikace, které používají sadu SDK Azure Storage Java, která používá [REST API souborů Azure](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) ke komunikaci se soubory Azure.
+> Vzhledem k tomu, že soubory Azure mohou být přístupné přes protokol SMB, je možné psát aplikace, které přistupují ke sdílené složce Azure pomocí standardních tříd v/v jazyka Java. Tento článek popisuje, jak psát aplikace, které používají sadu SDK Azure Storage Java, která používá [REST API souborů Azure](/rest/api/storageservices/file-service-rest-api) ke komunikaci se soubory Azure.
 
 ## <a name="create-a-java-application"></a>Vytvoření aplikace Java
 K sestavení ukázek budete potřebovat Java Development Kit (JDK) a [sadu SDK pro Azure Storage pro jazyk Java](https://github.com/Azure/azure-storage-java). Měli byste také vytvořit účet služby Azure Storage.
@@ -229,7 +229,7 @@ Pokud se chcete dozvědět víc o dalších rozhraních API služby Azure Storag
 * [Sada SDK služby Azure Storage pro Javu](https://github.com/azure/azure-storage-java)
 * [Sada Azure Storage SDK pro Android](https://github.com/azure/azure-storage-android)
 * [Referenční informace ke klientské sadě SDK služby Azure Storage](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
-* [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Blog týmu Azure Storage](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
-* [Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy.md)
+* [REST API služby Azure Storage](/rest/api/storageservices/)
+* [Blog týmu Azure Storage](/archive/blogs/windowsazurestorage/)
+* [Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy-v10.md)
 * [Řešení potíží se Soubory Azure – Windows](storage-troubleshoot-windows-file-connection-problems.md)

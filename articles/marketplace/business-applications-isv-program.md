@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 7/14/2020
-ms.openlocfilehash: 345b9447daa9fcb5f97ec5d8d00bcf5ea76d958c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 653e6aad7f57b4d683f2f71ed22e402ed5d1fca8
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126732"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630290"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Průvodce onboardingem programu Microsoft Business Applications ISV (Independent Software Vendor) Connect
 
@@ -38,10 +38,10 @@ Pokud chcete nastavit a spravovat účet pro program ISV Connect, proveďte krok
 > Tento krok vyžaduje roli *vlastníka* nebo *manažera* v partnerském centru, aby váš účet mohl podepsat právní smlouvy.
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard).
-1. Vyberte **Nastavení** (ikona ozubeného kolečka) a vyberte **Nastavení vývojáře** .
-1. Vyberte možnost **smlouvy** .
+1. Vyberte **Nastavení** (ikona ozubeného kolečka) a pak **nastavení pro vývojáře**.
+1. Vyberte možnost **smlouvy**.
 1. Vyberte odkaz verze a Prohlédněte si smlouvu.
-1. Pokud souhlasíte a souhlasíte se smlouvou, vyberte **přijmout smlouvu** .
+1. Pokud souhlasíte a souhlasíte se smlouvou, vyberte **přijmout smlouvu**.
 
 ## <a name="set-up-your-billing-information"></a>Nastavení fakturačních údajů
 
@@ -51,11 +51,12 @@ Nastavte informace o fakturaci pro Business Applications program ISV Connect.
 > Tento krok vyžaduje v partnerském centru roli *vlastníka* nebo *správce* , aby váš účet aktualizoval fakturační údaje.
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard).
-1. Vyberte **Nastavení** (ikona ozubeného kolečka) a vyberte **Nastavení vývojáře** .
-1. V části **účet** vyberte **profil fakturace** .
-1. Zkontrolujte primární kontaktní a fakturační informace, které jsou vyplněny z vaší právní entity, a proveďte potřebné aktualizace.
+1. Vyberte **Nastavení** (ikona ozubeného kolečka) a pak **nastavení pro vývojáře**.
+1. V části **Nastavení účtu** vyberte **profil fakturace**.
+1. Zkontrolujte primární kontakt a fakturační informace, které jsou vyplněny vaší právní entitou.
+1. Chcete-li provést změny, vyberte **aktualizovat**.
 1. V případě potřeby zadejte daňové ID/nastavení ID DPH.
-1. Změny můžete uložit kliknutím na **Save** (Uložit).
+1. Změny uložíte tak, že vyberete **aktualizovat**.
 
 > [!NOTE]
 > Fakturační profil můžete kdykoli aktualizovat. *Název společnosti* a fakturační adresa *země* se ale nedají později změnit.

@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 09/08/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 1e3101c8abcaef52c0ae9aaafef36b23aa45b586
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: f36d842e14c91850bfeba47e9fef61d4747c33a9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394505"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630562"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Rychlý Start: nasazení konektoru Azure IoT Connector pro FHIR (Preview) pomocí Azure Portal
 
-Azure IoT Connector pro FHIR * je volitelná funkce Azure API pro FHIR, která poskytuje schopnost ingestovat data ze zařízení s IoMT (internetem lékařských věcí). Ve fázi Preview je funkce Azure IoT Connector for FHIR dostupná zdarma. V tomto rychlém startu se naučíte:
+Azure IoT Connector pro rychlé provázání prostředků pro interoperabilitu zdravotní péče (FHIR&#174;) * je volitelná funkce Azure API pro FHIR, která poskytuje schopnost ingestovat data ze zařízení IoMT (Internet of lékařských věcí). Ve fázi Preview je funkce Azure IoT Connector for FHIR dostupná zdarma. V tomto rychlém startu se naučíte:
 - Nasazení a konfigurace konektoru Azure IoT pro FHIR pomocí Azure Portal
 - Použití simulovaného zařízení k posílání dat do služby Azure IoT Connector pro FHIR
 - Zobrazení prostředků vytvořených službou Azure IoT Connector pro FHIR v rozhraní API Azure pro FHIR
@@ -207,6 +207,4 @@ Naučte se konfigurovat konektor IoT pomocí šablon pro mapování zařízení 
 >[!div class="nextstepaction"]
 >[Azure IoT Connector pro šablony mapování FHIR](iot-mapping-templates.md)
 
-* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
-
-FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.
+* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview). FHIR je registrovaná ochranná známka změněného HL7 a používá se s oprávněním změněného HL7.

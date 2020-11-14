@@ -1,7 +1,7 @@
 ---
 title: Ladění & řešení potíží s kanály ML
 titleSuffix: Azure Machine Learning
-description: Ladění kanálů Azure Machine Learning v Pythonu Seznamte se s běžnými nástrah pro vývoj kanálů a tipů, které vám pomůžou ladit skripty před a během vzdáleného spouštění.
+description: Ladění kanálů Azure Machine Learning v Pythonu Seznamte se s běžnými nástrah a tipy, které vám pomůžou ladit skripty před a během vzdáleného spouštění.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python, contperfq2
-ms.openlocfilehash: 80bc5034e6e192c1b493a65e61b94ae1b785a430
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 13897f9881a8f505f0053443a218cf744d8edf8b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325593"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630103"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
 
@@ -176,7 +176,7 @@ Místní testování skriptů je skvělým způsobem, jak ladit hlavní fragment
 
 Následující tabulka poskytuje informace o různých možnostech ladění pro kanály. Nejedná se o vyčerpávající seznam, protože další možnosti existují kromě pouze Azure Machine Learning, Pythonu a OpenCensus, které jsou zde uvedeny.
 
-| Knihovna                    | Typ   | Příklad                                                          | Cíl                                  | Zdroje a prostředky                                                                                                                                                                                                                                                                                                                    |
+| Knihovna                    | Typ   | Příklad                                                          | Cíl                                  | Zdroje informací                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | Metrika | `run.log(name, val)`                                             | Uživatelské rozhraní portálu Azure Machine Learning             | [Jak sledovat experimenty](how-to-track-experiments.md)<br>[AzureML. Core. Run – třída](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)                                                                                                                                                 |
 | Tisk/protokolování v Pythonu    | Protokol    | `print(val)`<br>`logging.info(message)`                          | Protokoly ovladačů, Návrhář Azure Machine Learning | [Jak sledovat experimenty](how-to-track-experiments.md)<br><br>[Protokolování Pythonu](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7e703137b7954dd152f976069770a0c8c4a0f34c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6a88124397812f7599ce54b46b23d22e626cf520
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90564164"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629814"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí webu Azure Portal 
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows, Linux a macOS. Tato příručka vás provede základy práce se sdílenými složkami Azure pomocí webu [Azure Portal](https://portal.azure.com/).
@@ -33,10 +33,10 @@ Vytvoření sdílené složky Azure:
 4. Do pole **Název** zadejte *myshare*.
 5. Kliknutím na **OK** vytvořte sdílenou složku Azure.
 
-Názvy sdílených složek můžou obsahovat pouze malá písmena, číslice a spojovníky a nesmí začínat na spojovník. Kompletní informace o zadávání názvů sdílených složek a souborů najdete v tématu [Pojmenování a odkazování na sdílené složky, soubory a metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Názvy sdílených složek můžou obsahovat pouze malá písmena, číslice a spojovníky a nesmí začínat na spojovník. Kompletní informace o zadávání názvů sdílených složek a souborů najdete v tématu [Pojmenování a odkazování na sdílené složky, soubory a metadata](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
 ## <a name="use-your-azure-file-share"></a>Použití sdílené složky Azure
-Azure Files nabízí tři metody práce se soubory a složkami v rámci sdílené složky Azure: průmyslový standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx), protokol NFS (Network File System) (Preview) a [protokol REST (File REST Protocol](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api)). 
+Azure Files nabízí tři metody práce se soubory a složkami v rámci sdílené složky Azure: průmyslový standardní [protokol SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview), protokol NFS (Network File System) (Preview) a [protokol REST (File REST Protocol](/rest/api/storageservices/file-service-rest-api)). 
 
 Informace o připojení sdílené složky s využitím protokolu SMB najdete v následujících dokumentech v závislosti na vašem operačním systému:
 - [Windows](storage-how-to-use-files-windows.md)

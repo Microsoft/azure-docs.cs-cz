@@ -7,35 +7,35 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 2af96c0c2e850d8e1be67c23e71aa677773c1e03
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7030ffeb49c0a3919894f6dcf81e7252777267c5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283911"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629593"
 ---
 # <a name="how-to-configure-virtual-machine-offer-listing-details"></a>Postup konfigurace podrobností seznamu nabídky virtuálních počítačů
 
-Na stránce **seznam nabídek** můžete definovat podrobnosti nabídky, jako je název nabídky, popis, odkazy a kontakty.
+Na stránce **seznam nabídek** (vyberte z nabídky vlevo – navigace v partnerském centru) definujte podrobnosti nabídky, jako je název nabídky, popis, odkazy a kontakty.
 
 > [!NOTE]
-> Vaše nabídka obsahu, jako je popis, dokumenty, snímky obrazovky a podmínky použití, nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v nástroji \<non-English language> ." Můžete také zadat adresu URL pro odkaz na web, který nabízí obsah v jiném jazyce, než který je použit v obsahu nabídky.
+> Vaše nabídka obsahu, jako je popis, dokumenty, snímky obrazovky a podmínky použití, nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v nástroji \<non-English language> ." Můžete také zadat webovou adresu pro připojení k webu, který nabízí obsah v jiném jazyce, než který je použit v obsahu nabídky.
 
 ## <a name="marketplace-details"></a>Podrobnosti Marketplace
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
-Název, který zde zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole se vyplní názvem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit. Název:
+Název, který zde zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je automaticky vyplněno názvem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Název:
 
-- Může být ochranné známky. Můžete zahrnout symboly ochranné známky a autorských práv.
-- Nemůže obsahovat více než 50 znaků.
+- Může obsahovat symboly ochranných známek a autorských práv.
+- Musí mít 50 znaků nebo méně.
 - Nejde zahrnout emoji.
 
 ### <a name="search-results-summary"></a>Souhrn výsledků hledání
 
-Zadejte krátký popis vaší nabídky, který se zobrazí ve výsledcích hledání Azure Marketplace. Může obsahovat až 100 znaků.
+Zadejte krátký popis nabídky, která se zobrazí ve výsledcích hledání Azure Marketplace. Může obsahovat až 100 znaků.
 
-### <a name="long-summary"></a>Dlouhý souhrn
+### <a name="short-description"></a>Krátký popis
 
 Zadejte delší popis nabídky, která se zobrazí ve výsledcích hledání Azure Marketplace. Může obsahovat až 256 znaků.
 
@@ -53,10 +53,10 @@ Zadejte webovou adresu (URL) zásad ochrany osobních údajů vaší organizace.
 
 ## <a name="useful-links"></a>Užitečné odkazy
 
-Poskytněte dodatečné online dokumenty o vaší nabídce. Chcete-li přidat odkaz, vyberte možnost **Přidat odkaz**a poté vyplňte následující pole:
+Poskytněte dodatečné online dokumenty o vaší nabídce. Chcete-li přidat odkaz, vyberte možnost **Přidat odkaz** a vyplňte následující pole:
 
-- **Název**: zákazníci uvidí jméno na stránce s podrobnostmi.
-- **Odkaz (URL)**: zadejte odkaz, který zákazníkům umožní zobrazit online dokument.
+- **Název** : zákazníci uvidí jméno na stránce s podrobnostmi.
+- **Odkaz** : zadejte webovou adresu, která zákazníkům umožní zobrazit dokument online.
 
 ## <a name="customer-support-links"></a>Odkazy na zákaznickou podporu
 
@@ -67,21 +67,17 @@ Poskytněte web podpory, kde se zákazníci můžou připojit k vašemu týmu po
 
 ## <a name="partner-support-contact"></a>Kontakt na podporu partnerů
 
-Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, když vaši zákazníci otevřou lístek podpory. Tyto informace nejsou uvedené na Azure Marketplace.
-
-- Název
-- E-mail
-- Rozložení
+Zadejte **jméno** , **e-mail** a **telefon** pro partnery Microsoftu, kteří se použijí, když vaši zákazníci otevřou lístek podpory. Tyto informace nejsou uvedené na Azure Marketplace.
 
 ## <a name="engineering-contact"></a>Technický kontakt
 
-Poskytněte kontaktní informace Microsoftu pro použití v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tyto informace nejsou uvedené na Azure Marketplace.
+Zadejte **jméno** , **e-mail** a **telefon** pro společnost Microsoft, která se má použít v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tyto informace nejsou uvedené na Azure Marketplace.
 
-- Název
-- E-mail
-- Rozložení
+## <a name="cloud-solution-provider-program-contact"></a>Kontaktování programu poskytovatele Cloud Solution Provider
 
-## <a name="azure-marketplace-media"></a>Azure Marketplace média
+Zadejte **jméno** , **e-mail** a **telefon** osoby, která zpracovává váš program CSP (Pokud je k dispozici). Tyto informace nejsou uvedené na Azure Marketplace. Pro **marketingové materiály programu CSP** zadejte webovou adresu, kde partneři v tomto programu můžou zobrazit vaše marketingové materiály.
+
+## <a name="marketplace-media"></a>Média Marketplace
 
 Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazaný obraz způsobí odmítnutí odeslání.
 
@@ -90,7 +86,7 @@ Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všech
 >[!NOTE]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu, kterou používá Partnerské centrum.
 
-### <a name="azure-marketplace-logos"></a>Loga Azure Marketplace
+### <a name="logos"></a>Značk
 
 Zadejte soubor PNG pro logo **velké** velikosti. Partnerské centrum použije toto k vytvoření **malého** a **středního** loga. Případně je můžete později nahradit různými obrázky.
 
@@ -114,8 +110,8 @@ Přidejte až pět videí, která předvádí vaši nabídku. Videa by se měla 
 
 Další materiály k seznamům Marketplace najdete v tématu [osvědčené postupy pro výpisy nabídky na webu Marketplace](gtm-offer-listing-best-practices.md).
 
-Než budete pokračovat, vyberte **Uložit koncept** .
+Než budete pokračovat na další kartu v nabídce **vlevo, vyberte** možnost **Uložit koncept** .
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytváření plánů](azure-vm-create-plans.md)
+- [Vytvořit cílovou skupinu Preview](azure-vm-create-preview.md)

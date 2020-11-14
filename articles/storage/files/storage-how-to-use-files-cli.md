@@ -8,12 +8,12 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9c569e65546853c4e9c8c460d29041e4bb829c09
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d665ee11a0688c2a112858ce0c02d359ed86e973
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90564198"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629865"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí Azure CLI
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí Azure CLI. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB (Server Message Block), protokol NFS (Network File System) (verze Preview) a umožňuje sdílení souborů napříč několika počítači, aplikacemi a instancemi. 
@@ -73,7 +73,7 @@ export storageAccountKey=$(az storage account keys list \
 ```
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
-Nyní můžete vytvořit svou první sdílenou složku Azure. Sdílené složky vytvoříte pomocí příkazu [az storage share create](/cli/azure/storage/share). Tento příklad vytvoří sdílenou složku Azure s názvem *myshare*: 
+Nyní můžete vytvořit svou první sdílenou složku Azure. Sdílené složky vytvoříte pomocí příkazu [az storage share create](/cli/azure/storage/share). Tento příklad vytvoří sdílenou složku Azure s názvem *myshare* : 
 
 ```azurecli-interactive
 shareName="myshare"
@@ -87,10 +87,10 @@ az storage share create \
     --output none
 ```
 
-Názvy sdílených složek mohou obsahovat pouze malá písmena, číslice a spojovníky (nesmí ale spojovníkem začínat). Podrobné informace o pojmenovávání sdílených složek a souborů najdete v tématu [pojmenování a odkazování na sdílené složky, adresáře, soubory a metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Názvy sdílených složek mohou obsahovat pouze malá písmena, číslice a spojovníky (nesmí ale spojovníkem začínat). Podrobné informace o pojmenovávání sdílených složek a souborů najdete v tématu [pojmenování a odkazování na sdílené složky, adresáře, soubory a metadata](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
 ## <a name="use-your-azure-file-share"></a>Použití sdílené složky Azure
-Služba Soubory Azure nabízí dva způsoby práce se soubory a složkami ve sdílené složce Azure: standardní průmyslový [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) a [souborový protokol REST](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api). 
+Služba Soubory Azure nabízí dva způsoby práce se soubory a složkami ve sdílené složce Azure: standardní průmyslový [protokol SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) a [souborový protokol REST](/rest/api/storageservices/file-service-rest-api). 
 
 Informace o připojení sdílené složky s využitím protokolu SMB najdete v následujících dokumentech v závislosti na vašem operačním systému:
 - [Linux](storage-how-to-use-files-linux.md)
@@ -212,7 +212,7 @@ Další užitečnou úlohou, kterou se sdílenými složkami Azure můžete prov
 
 - Snímky [Správce logických svazků (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) pro systémy Linux.
 - Snímky [systému souborů Apple (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) v případě macOS.
-- [Služba Stínová kopie svazku (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) pro systémy souborů Windows, jako je třeba NTFS a ReFS.
+- [Služba Stínová kopie svazku (VSS)](/windows/desktop/VSS/volume-shadow-copy-service-portal) pro systémy souborů Windows, jako je třeba NTFS a ReFS.
  
 Snímek sdílené složky můžete vytvořit pomocí [`az storage share snapshot`](/cli/azure/storage/share) příkazu:
 

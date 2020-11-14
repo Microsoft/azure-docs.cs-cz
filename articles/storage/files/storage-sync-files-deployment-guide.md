@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 128a974c41b1c09196ecab2070136d9568b08f5d
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: d39f26d86792214c1ef0300bc39404bf6581826f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331783"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629474"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
 
 Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, abyste si přečetli [Plánování nasazení souborů Azure](storage-files-planning.md) a [Plánování nasazení Azure File Sync](storage-sync-files-planning.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -48,7 +48,7 @@ Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, a
     > [!Important]  
     > Pokud plánujete místo registrace přímo z PowerShellu použít uživatelské rozhraní pro registraci serveru, musíte použít PowerShell 5,1.
 
-1. Pokud jste se rozhodli použít PowerShell 5,1, ujistěte se, že je nainstalovaná aspoň .NET 4.7.2. Přečtěte si další informace o [.NET Framework verzích a závislostech](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) na vašem systému.
+1. Pokud jste se rozhodli použít PowerShell 5,1, ujistěte se, že je nainstalovaná aspoň .NET 4.7.2. Přečtěte si další informace o [.NET Framework verzích a závislostech](/dotnet/framework/migration-guide/versions-and-dependencies) na vašem systému.
 
     > [!Important]  
     > Pokud instalujete .NET 4.7.2 + na jádro Windows serveru, musíte nainstalovat s `quiet` příznaky a, jinak se `norestart` instalace nezdaří. Například při instalaci rozhraní .NET 4,8 by příkaz vypadal takto:
@@ -56,7 +56,7 @@ Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, a
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-1. Modul AZ PowerShell, který se dá nainstalovat, podle pokynů uvedených tady: [instalace a konfigurace Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+1. Modul AZ PowerShell, který se dá nainstalovat, podle pokynů uvedených tady: [instalace a konfigurace Azure PowerShell](/powershell/azure/install-Az-ps).
      
     > [!Note]  
     > Modul AZ. StorageSync se teď nainstaluje automaticky při instalaci modulu AZ PowerShellu.
@@ -573,7 +573,7 @@ Pokud ale změníte plán způsobem, který bude mít za následek dostupný sn�
 
 Výchozí maximální počet snímků služby VSS na svazek (64) a také výchozí plán, který je bude možné provést, má za následek maximálně 45 dní předchozích verzí, které může pracovník s informacemi obnovit v závislosti na tom, kolik snímků VSS můžete na svazku Uložit.
 
-Pokud maximální počet 64 snímků VSS na svazek není správným nastavením, můžete [tuto hodnotu změnit pomocí klíče registru](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
+Pokud maximální počet 64 snímků VSS na svazek není správným nastavením, můžete [tuto hodnotu změnit pomocí klíče registru](/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Aby se nový limit mohl projevit, musíte rutinu znovu spustit, aby se zajistila kompatibilita předchozí verze na všech dříve povolených svazcích s příznakem-Force, který zabere nový maximální počet snímků VSS na svazek v rámci účtu. Výsledkem bude nově vypočtený počet kompatibilních dnů. Upozorňujeme, že tato změna se projeví jenom u nově vrstvených souborů a přepíše všechna vlastní nastavení plánu VSS, který jste mohli udělat.
 
 <a id="proactive-recall"></a>
@@ -599,7 +599,7 @@ Globálně distribuovaná společnost obsahuje pobočky v USA a v Indii. V dopol
 
 # <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
 
-Vlastnosti koncového bodu serveru můžete upravit v PowerShellu pomocí rutiny [set-AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) .
+Vlastnosti koncového bodu serveru můžete upravit v PowerShellu pomocí rutiny [set-AzStorageSyncServerEndpoint](/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) .
 
 ```powershell
 # Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"

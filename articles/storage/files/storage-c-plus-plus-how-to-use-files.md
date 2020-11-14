@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb74ab16e51fbb3a157757353d5743e889f993dd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515390"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629695"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Vývoj pro soubory Azure pomocí C++
 
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak provádět základní operace se soubory Azure. P
 * Vytvořte sdílený přístupový podpis (klíč SAS) pro soubor, který používá zásady sdíleného přístupu definované ve sdílené složce.
 
 > [!Note]  
-> Vzhledem k tomu, že je možné získat přístup k souborům Azure přes protokol SMB, je možné psát jednoduché aplikace, které přistupují ke sdílené složce Azure pomocí standardních I/O tříd a funkcí jazyka C++. Tento článek popisuje, jak psát aplikace, které používají sadu Azure Storage C++ SDK, která používá [soubor REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) ke komunikaci se soubory Azure.
+> Vzhledem k tomu, že je možné získat přístup k souborům Azure přes protokol SMB, je možné psát jednoduché aplikace, které přistupují ke sdílené složce Azure pomocí standardních I/O tříd a funkcí jazyka C++. Tento článek popisuje, jak psát aplikace, které používají sadu Azure Storage C++ SDK, která používá [soubor REST API](/rest/api/storageservices/file-service-rest-api) ke komunikaci se soubory Azure.
 
 ## <a name="create-a-c-application"></a>Vytvoření aplikace C++
 
@@ -160,7 +160,7 @@ directory.delete_directory_if_exists();
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Zobrazení výčtu souborů a adresářů ve sdílené složce Azure
 
-Seznam souborů a adresářů ve sdílené složce je možné snadno provést voláním **list_files_and_directories** na **cloud_file_directory** referenci. Chcete-li získat přístup k bohatě se sadou vlastností a metod vrácených **list_file_and_directory_item**, je nutné volat metodu **list_file_and_directory_item. as _file** pro získání objektu **cloud_file** nebo metody **list_file_and_directory_item. as _directory** pro získání objektu **cloud_file_directory** .
+Seznam souborů a adresářů ve sdílené složce je možné snadno provést voláním **list_files_and_directories** na **cloud_file_directory** referenci. Chcete-li získat přístup k bohatě se sadou vlastností a metod vrácených **list_file_and_directory_item** , je nutné volat metodu **list_file_and_directory_item. as _file** pro získání objektu **cloud_file** nebo metody **list_file_and_directory_item. as _directory** pro získání objektu **cloud_file_directory** .
 
 Následující kód ukazuje, jak načíst a výstupní identifikátor URI každé položky v kořenovém adresáři sdílené složky.
 

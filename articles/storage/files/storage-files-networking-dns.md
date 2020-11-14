@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320264"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630188"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Konfigurace přesměrování DNS pro Azure Files
 Služba soubory Azure umožňuje vytvářet soukromé koncové body pro účty úložiště obsahující sdílené složky. I když je to užitečné pro mnoho různých aplikací, soukromé koncové body jsou obzvláště užitečné pro připojení ke sdíleným složkám Azure ze své místní sítě pomocí připojení VPN nebo ExpressRoute pomocí privátního partnerského vztahu. 
@@ -38,12 +38,12 @@ Konfigurace předávání DNS pro soubory Azure vyžaduje, aby virtuální poč�
 
 V této příručce se dozvíte, jak nakonfigurovat předávání DNS pro koncový bod služby Azure Storage, takže kromě souborů Azure se požadavky na překlad názvů DNS pro všechny ostatní služby Azure Storage (Azure Blob Storage, Azure Table Storage, Azure Queue Storage atd.) předají do privátní služby DNS Azure. Další koncové body pro ostatní služby Azure je možné přidat i v případě potřeby. Přesměrování DNS zpátky na místní servery DNS se taky nakonfigurují a povolí cloudové prostředky ve vaší virtuální síti (třeba serveru DFS-N) k překladu místních názvů počítačů. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než budete moct nastavit předávání DNS do služby soubory Azure, musíte provést následující kroky:
 
 - Účet úložiště, který obsahuje sdílenou složku Azure, se chcete připojit. Informace o tom, jak vytvořit účet úložiště a sdílenou složku Azure, najdete v tématu [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).
 - Privátní koncový bod pro účet úložiště. Informace o tom, jak vytvořit privátní koncový bod pro soubory Azure, najdete v tématu [Vytvoření privátního koncového bodu](storage-files-networking-endpoints.md#create-a-private-endpoint).
-- [Nejnovější verze](https://docs.microsoft.com/powershell/azure/install-az-ps) modulu Azure PowerShell.
+- [Nejnovější verze](/powershell/azure/install-az-ps) modulu Azure PowerShell.
 
 > [!Important]  
 > V tomto průvodci se předpokládá, že používáte server DNS v systému Windows Server v místním prostředí. Všechny kroky popsané v této příručce jsou možné u libovolného serveru DNS, nikoli jenom ze serveru DNS se systémem Windows.
@@ -110,7 +110,7 @@ New-AzDnsForwarder `
 
 Může vám také být užitečné, abyste mohli dodat několik dalších parametrů:
 
-| Název parametru | Typ | Description |
+| Název parametru | Typ | Popis |
 |----------------|------|-------------|
 | `DnsServerResourceGroupName` | `string` | Ve výchozím nastavení se servery DNS nasadí do stejné skupiny prostředků jako virtuální síť. Pokud to není žádoucí, tento parametr vám umožní vybrat alternativní skupinu prostředků, do které se mají nasadit. |
 | `DnsForwarderRootName` | `string` | Ve výchozím nastavení mají servery DNS, které jsou nasazené v Azure `DnsFwder-*` , názvy, kde je hvězdička naplněna iterátorem. Tento parametr změní kořen daného názvu (tj. `DnsFwder` ). |

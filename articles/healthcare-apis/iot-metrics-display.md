@@ -1,21 +1,21 @@
 ---
-title: Zobrazení a konfigurace služby Azure IoT Connector pro FHIR (Preview) metrik
+title: Zobrazení a konfigurace konektoru Azure IoT pro metriky FHIR (Preview)
 description: Tento článek vysvětluje, jak zobrazit a nakonfigurovat službu Azure IoT Connector pro FHIR (Preview) metriky.
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 9a4e2c4dfe8a9de28688afe0dd036cecb7ce2b39
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 79a7b18986f4bed503cd5493a7d74325a13fe535
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381214"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630511"
 ---
-# <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Zobrazení a konfigurace služby Azure IoT Connector pro FHIR (Preview) metrik 
+# <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Zobrazení a konfigurace konektoru Azure IoT pro metriky FHIR (Preview) 
 
 V tomto článku se dozvíte, jak zobrazit a nakonfigurovat službu Azure IoT Connector pro prostředky interoperability s rychlým zdravotním prostředím (FHIR&#174;) * metriky.
 
@@ -41,6 +41,9 @@ V tomto článku se dozvíte, jak zobrazit a nakonfigurovat službu Azure IoT Co
    :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="Snímek obrazovky s podoknem IoT Connector, který zobrazuje graf řádku časového období 1 hodiny pro ' Connector 1 '." lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
  
 ## <a name="metric-types-for-azure-iot-connector-for-fhir-preview"></a>Typy metrik pro Azure IoT Connector pro FHIR (Preview) 
+
+> [!TIP]
+> Další informace o toku dat ve službě Azure IoT Connector pro FHIR najdete v příručce [Azure IoT Connector for FHIR (Preview) Flow data Flow](./iot-data-flow.md) and the [Azure IoT Connector for FHIR (Preview)](./iot-troubleshoot-guide.md) , kde najdete další informace o chybových zprávách a opravách.
 
 Metriky IoT Connectoru, které můžete zobrazit, jsou uvedené v následující tabulce:
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fd8e845734169bcd73fa0e087c30c0f2fd6ef4f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d8d19256dfca21cc805c2689557099a6785f76b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85510301"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629202"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrace z úložiště připojení k síti (NAS) do hybridního nasazení v cloudu pomocí Azure File Sync
 
@@ -151,7 +151,7 @@ Pozadí
       /MIR
    :::column-end:::
    :::column span="1":::
-      Umožňuje několikrát spustit tento příkaz Robocopy na stejném cíli nebo cíli. Určuje, co se zkopírovalo dřív, a vynechá ho. Budou zpracovány pouze změny, přidání a "*odstranění*", k nimž došlo od posledního spuštění. Pokud příkaz neběžel dřív, nevynechá se nic. Příznak */Mir* je vynikající možností pro umístění zdrojů, která se pořád aktivně používají a mění.
+      Umožňuje několikrát spustit tento příkaz Robocopy na stejném cíli nebo cíli. Určuje, co se zkopírovalo dřív, a vynechá ho. Budou zpracovány pouze změny, přidání a " *odstranění* ", k nimž došlo od posledního spuštění. Pokud příkaz neběžel dřív, nevynechá se nic. Příznak */Mir* je vynikající možností pro umístění zdrojů, která se pořád aktivně používají a mění.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -208,13 +208,13 @@ Dokončili jste migraci sdílené složky nebo skupiny sdílených složek do sp
 Můžete zkusit spustit několik z těchto kopií paralelně. Doporučujeme, abyste v jednom okamžiku zpracovali obor jedné sdílené složky Azure.
 
 > [!WARNING]
-> Po přesunutí všech dat z vašeho serveru NAS do systému Windows Server a dokončení migrace se vraťte do ***všech***  skupin synchronizace v Azure Portal a nastavte procentuální hodnotu volného místa na úrovni cloudu tak, aby lépe vyhovovala využití mezipaměti, řekněme, že 20%. 
+> Po přesunutí všech dat z vašeho serveru NAS do systému Windows Server a dokončení migrace se vraťte do složky * **všechny** skupiny synchronizace v Azure Portal a nastavte procentuální hodnotu volného místa na úrovni cloudu na něco lépe využívaného pro využití mezipaměti, řekněme, že 20%. 
 
 Zásada pro volné místo svazku ve vrstvách cloudu funguje na úrovni svazku s potenciálně synchronizovanými koncovými body serveru. Pokud zapomenete upravit volné místo na jednom koncovém bodu serveru, bude synchronizace dál používat nejvíce omezující pravidlo a pokusí se zachovávat 99% volného místa na disku, takže místní mezipaměť nefunguje, protože byste mohli očekávat. Pokud se nejedná o váš cíl jenom pro svazek, který obsahuje jenom zřídka využívaný, archivní data a vy znovu zachováte zbývající část prostoru úložiště pro jiný scénář.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Nejpravděpodobnějším problémem, ke kterému můžete spustit, je, že příkaz Robocopy se na straně serveru Windows nezdařil s *názvem "svazek je plný"* . Vrstvení cloudu slouží jednou za hodinu k vyvádění obsahu z místního disku Windows serveru, který se synchronizuje. Jeho cílem je dosáhnout 99% volného místa na svazku.
+Nejpravděpodobnějším problémem, ke kterému můžete spustit, je, že příkaz Robocopy se na straně serveru Windows nezdařil s názvem "svazek je plný" *. Vrstvení cloudu slouží jednou za hodinu k vyvádění obsahu z místního disku Windows serveru, který se synchronizuje. Jeho cílem je dosáhnout 99% volného místa na svazku.
 
 Umožněte synchronizaci v průběhu a vrstvení cloudu uvolněte místo na disku. Můžete si všimnout, že v Průzkumníkovi souborů na vašem Windows serveru.
 
@@ -226,6 +226,6 @@ Pokud chcete řešit potíže s Azure File Sync problémy, podívejte se na odka
 
 K dispozici je více informací o sdílených složkách a Azure File Sync Azure. Následující články vám pomůžou pochopit pokročilé možnosti, osvědčené postupy a také pomoc při odstraňování potíží. Tyto články v případě potřeby odkazují na [dokumentaci ke sdílení souborů Azure](storage-files-introduction.md) .
 
-* [Přehled AFS](https://aka.ms/AFS)
+* [Přehled AFS](./storage-sync-files-planning.md)
 * [Průvodce nasazením pro AFS](storage-files-deployment-guide.md)
 * [Řešení potíží AFS](storage-sync-files-troubleshoot.md)

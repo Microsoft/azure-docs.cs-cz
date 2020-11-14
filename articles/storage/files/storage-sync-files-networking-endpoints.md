@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 747d03b228d41066cfc834b4a9c044b16c767622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 026f4f36986fa5fcfad4dac5186e9dc0b0997d72
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329359"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629406"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurace koncových bodů sítě pro Synchronizaci souborů Azure
 Soubory Azure a Azure File Sync poskytují dva hlavní typy koncových bodů pro přístup ke sdíleným složkám Azure: 
@@ -26,22 +26,22 @@ Tento článek se zaměřuje na konfiguraci koncových bodů sítě pro soubory 
 
 Před načtením tohoto průvodce doporučujeme přečíst si [informace o Azure File Syncch sítích](storage-sync-files-networking-overview.md) .
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 V tomto článku se předpokládá, že:
 - Máte předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Sdílenou složku Azure jste už vytvořili v účtu úložiště, ke kterému se chcete připojit z místního prostředí. Informace o tom, jak vytvořit sdílenou složku Azure, najdete v tématu [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).
 - Už jste vytvořili službu synchronizace úložiště a zaregistrovali jste souborový server s Windows. Další informace o nasazení Azure File Sync najdete v tématu [nasazení Azure File Sync](storage-sync-files-deployment-guide.md).
 
 Dále:
-- Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](/powershell/azure/install-az-ps).
+- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-the-private-endpoints"></a>Vytvoření privátních koncových bodů
 Při vytváření privátního koncového bodu pro prostředek Azure jsou nasazené tyto prostředky:
 
-- **Privátní koncový bod**: prostředek Azure, který představuje privátní koncový bod pro účet úložiště nebo službu synchronizace úložiště. Můžete si to představit jako prostředek, který připojuje vaše prostředky Azure a síťové rozhraní.
-- **Síťové rozhraní (nic)**: síťové rozhraní, které udržuje privátní IP adresu v zadané virtuální síti nebo podsíti. Jedná se o stejný prostředek, který se nasadí při nasazení virtuálního počítače, ale místo aby se přiřadil k VIRTUÁLNÍmu počítači, je vlastníkem privátního koncového bodu.
-- **Privátní zóna DNS**: Pokud jste ještě nikdy nasadili privátní koncový bod pro tuto virtuální síť, bude pro vaši virtuální síť nasazená nová privátní zóna DNS. Pro prostředek Azure v této zóně DNS se vytvoří i záznam DNS. Pokud jste už v této virtuální síti nasadili privátní koncový bod, přidá se do existující zóny DNS nový záznam A pro prostředek Azure. Nasazení zóny DNS je volitelné, ale důrazně se doporučuje, abyste zjednodušili potřebnou správu DNS.
+- **Privátní koncový bod** : prostředek Azure, který představuje privátní koncový bod pro účet úložiště nebo službu synchronizace úložiště. Můžete si to představit jako prostředek, který připojuje vaše prostředky Azure a síťové rozhraní.
+- **Síťové rozhraní (nic)** : síťové rozhraní, které udržuje privátní IP adresu v zadané virtuální síti nebo podsíti. Jedná se o stejný prostředek, který se nasadí při nasazení virtuálního počítače, ale místo aby se přiřadil k VIRTUÁLNÍmu počítači, je vlastníkem privátního koncového bodu.
+- **Privátní zóna DNS** : Pokud jste ještě nikdy nasadili privátní koncový bod pro tuto virtuální síť, bude pro vaši virtuální síť nasazená nová privátní zóna DNS. Pro prostředek Azure v této zóně DNS se vytvoří i záznam DNS. Pokud jste už v této virtuální síti nasadili privátní koncový bod, přidá se do existující zóny DNS nový záznam A pro prostředek Azure. Nasazení zóny DNS je volitelné, ale důrazně se doporučuje, abyste zjednodušili potřebnou správu DNS.
 
 > [!Note]  
 > Tento článek používá přípony DNS pro veřejné oblasti Azure `core.windows.net` pro účty úložiště a `afs.azure.net` služby synchronizace úložiště. Tento komentář platí také pro cloudy Azure svrchované jako Azure USA pro státní správu – stačí nahradit příslušné přípony vašeho prostředí.
@@ -130,7 +130,7 @@ Address: 192.168.0.5
 > Aby bylo možné používat privátní koncové body v prostředku služby synchronizace úložiště, je nutné použít agenta Azure File Sync verze 10,1 nebo vyšší. Verze agenta starší než 10,1 nepodporují privátní koncové body ve službě synchronizace úložiště. Všechny předchozí verze agenta podporují soukromé koncové body v prostředku účtu úložiště.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-Přejděte do **centra pro soukromé spojení** zadáním *privátního odkazu* do panelu hledání v horní části Azure Portal. V obsahu pro centrum privátních odkazů vyberte **privátní koncové body**a potom **+ Přidat** pro vytvoření nového privátního koncového bodu.
+Přejděte do **centra pro soukromé spojení** zadáním *privátního odkazu* do panelu hledání v horní části Azure Portal. V obsahu pro centrum privátních odkazů vyberte **privátní koncové body** a potom **+ Přidat** pro vytvoření nového privátního koncového bodu.
 
 [![Snímek obrazovky se soukromým centrem odkazů](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png)](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png#lightbox)
 
@@ -140,7 +140,7 @@ V okně **základy** vyberte požadovanou skupinu prostředků, název a oblast 
 
 ![Snímek obrazovky s oddílem základy oddílu Vytvoření privátního koncového bodu](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-1.png)
 
-V okně **prostředek** vyberte přepínač pro **připojení k prostředku Azure ve složce Můj adresář**. V části **typ prostředku**vyberte pro typ prostředku možnost **Microsoft. StorageSync/storageSyncServices** . 
+V okně **prostředek** vyberte přepínač pro **připojení k prostředku Azure ve složce Můj adresář**. V části **typ prostředku** vyberte pro typ prostředku možnost **Microsoft. StorageSync/storageSyncServices** . 
 
 Okno **Konfigurace** umožňuje vybrat konkrétní virtuální síť a podsíť, do které chcete přidat privátní koncový bod. Vyberte stejnou virtuální síť jako ta, kterou jste použili pro výše uvedený účet úložiště. Okno konfigurace obsahuje také informace pro vytvoření nebo aktualizaci privátní zóny DNS.
 

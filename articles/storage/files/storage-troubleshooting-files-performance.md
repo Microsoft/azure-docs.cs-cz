@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 4d89fb4bcedb58aa156e75aaefc87479797dcd37
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 3e6490babb5a4e68c1ecd931251ea4eb99d6c3f5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577968"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630137"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Řešení potíží s výkonem Azure File shares
 
@@ -22,7 +22,7 @@ V tomto článku jsou uvedené některé běžné problémy související se sd�
 
 ### <a name="cause-1-share-was-throttled"></a>Příčina 1: sdílená složka byla omezená.
 
-Požadavky jsou omezeny při dosažení vstupně-výstupních operací za sekundu (IOPS), příchozího přenosu dat nebo odchozích přenosů souborů pro sdílenou složku. Pokud chcete pochopit omezení pro sdílené složky Standard a Premium, přečtěte si téma [sdílení souborů a cíle škálování souborů](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets).
+Požadavky jsou omezeny při dosažení vstupně-výstupních operací za sekundu (IOPS), příchozího přenosu dat nebo odchozích přenosů souborů pro sdílenou složku. Pokud chcete pochopit omezení pro sdílené složky Standard a Premium, přečtěte si téma [sdílení souborů a cíle škálování souborů](./storage-files-scale-targets.md#file-share-and-file-scale-targets).
 
 Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete na portálu získat přístup a používat metriky Azure.
 
@@ -45,8 +45,8 @@ Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete na po
 
 ### <a name="solution"></a>Řešení
 
-- Pokud používáte standardní sdílení souborů, povolte ve svém účtu úložiště [velké sdílené složky](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) . Velké sdílené složky podporují až 10 000 vstupně-výstupních operací na sdílenou složku.
-- Pokud používáte prémiovou sdílenou složku, zvyšte velikost zřízené sdílené složky a zvyšte limit IOPS. Další informace najdete v části porozumění zřizování pro sdílené složky prémiových souborů v [příručce pro plánování souborů Azure](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares).
+- Pokud používáte standardní sdílení souborů, povolte ve svém účtu úložiště [velké sdílené složky](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) . Velké sdílené složky podporují až 10 000 vstupně-výstupních operací na sdílenou složku.
+- Pokud používáte prémiovou sdílenou složku, zvyšte velikost zřízené sdílené složky a zvyšte limit IOPS. Další informace najdete v části porozumění zřizování pro sdílené složky prémiových souborů v [příručce pro plánování souborů Azure](./storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>Příčina 2: silná úloha pro metadata nebo obor názvů
 
@@ -238,7 +238,7 @@ Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Pře
 
 Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 - [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)  
 - [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)  
 - [Nejčastější dotazy ke službě Azure Files](storage-files-faq.md)

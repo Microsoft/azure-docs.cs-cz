@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 21b407002adce01155b37321c068fb10d2c003f6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0196330df01f98e216c39bcc689eac2bde2f4cd9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319801"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629338"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -41,7 +41,7 @@ Soubory Azure poskytuje dva přístupy ke klientským aplikacím: protokol SMB (
 
 Rozhraní API | Kdy je použít | Poznámky
 ----|-------------|------
-[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Vaše aplikace: <ul><li>Musí číst/zapisovat soubory pomocí protokolu SMB.</li><li>Je spuštěná v zařízení, které má prostřednictvím portu 445 přístup k vašemu účtu služby Soubory Azure.</li><li>Nemusí spravovat žádná nastavení pro správu sdílené složky.</li></ul> | I/O souborů implementovaných pomocí služby Azure Files přes SMB je obvykle stejné jako u vstupu a výstupu pomocí libovolné síťové sdílené složky nebo místního úložného zařízení. Úvod do řady funkcí v rozhraní .NET, včetně vstupně-výstupních operací se soubory, najdete v kurzu [konzolové aplikace](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) .
+[System.IO](/dotnet/api/system.io) | Vaše aplikace: <ul><li>Musí číst/zapisovat soubory pomocí protokolu SMB.</li><li>Je spuštěná v zařízení, které má prostřednictvím portu 445 přístup k vašemu účtu služby Soubory Azure.</li><li>Nemusí spravovat žádná nastavení pro správu sdílené složky.</li></ul> | I/O souborů implementovaných pomocí služby Azure Files přes SMB je obvykle stejné jako u vstupu a výstupu pomocí libovolné síťové sdílené složky nebo místního úložného zařízení. Úvod do řady funkcí v rozhraní .NET, včetně vstupně-výstupních operací se soubory, najdete v kurzu [konzolové aplikace](/dotnet/csharp/tutorials/console-teleprompter) .
 [Azure. Storage. Files. shares](/dotnet/api/azure.storage.files.shares) | Vaše aplikace: <ul><li>K souborům Azure nelze přistupovat pomocí protokolu SMB na portu 445 z důvodu omezení brány firewall nebo poskytovatele internetových služeb.</li><li>Vyžaduje funkce pro správu, jako je například možnost nastavit kvótu sdílené složky nebo vytvořit sdílený přístupový podpis.</li></ul> | Tento článek ukazuje použití `Azure.Storage.Files.Shares` pro vstupně-výstupní operace se soubory pomocí REST místo SMB a správy sdílené složky.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>Vytvoření konzolové aplikace a získání sestavení
@@ -51,8 +51,8 @@ Knihovnu klienta soubory Azure můžete použít v jakémkoli typu aplikace .NET
 V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následující kroky ukazují, jak vytvořit konzolovou aplikaci v aplikaci Visual Studio 2019. Kroky u ostatních verzí sady Visual Studio jsou podobné.
 
 1. Spusťte aplikaci Visual Studio a vyberte možnost **vytvořit nový projekt**.
-1. V možnosti **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Framework)** pro C# a pak vyberte **Další**.
-1. V části **Konfigurace nového projektu**zadejte název aplikace a vyberte **vytvořit**.
+1. V možnosti **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Framework)** pro C# a pak vyberte **Další**.
+1. V části **Konfigurace nového projektu** zadejte název aplikace a vyberte **vytvořit**.
 
 Do `Program` třídy v souboru *program.cs* přidejte všechny příklady kódu v tomto článku.
 
@@ -69,8 +69,8 @@ Podívejte se na tyto balíčky v projektu:
 
 K získání balíčků můžete použít NuGet. Postupujte takto:
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
-1. V **nástroji Správce balíčků NuGet**vyberte **Procházet**. Pak vyhledejte a zvolte **Azure. Core**a pak vyberte **nainstalovat**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
+1. V **nástroji Správce balíčků NuGet** vyberte **Procházet**. Pak vyhledejte a zvolte **Azure. Core** a pak vyberte **nainstalovat**.
 
    Tento krok nainstaluje balíček a jeho závislosti.
 
@@ -89,8 +89,8 @@ K získání balíčků můžete použít NuGet. Postupujte takto:
 
 K získání balíčků můžete použít NuGet. Postupujte takto:
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
-1. V **nástroji Správce balíčků NuGet**vyberte **Procházet**. Pak vyhledejte a zvolte **Microsoft. Azure. Storage. blob**a pak vyberte **nainstalovat**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
+1. V **nástroji Správce balíčků NuGet** vyberte **Procházet**. Pak vyhledejte a zvolte **Microsoft. Azure. Storage. blob** a pak vyberte **nainstalovat**.
 
    Tento krok nainstaluje balíček a jeho závislosti.
 1. Vyhledejte a nainstalujte tyto balíčky:
@@ -103,7 +103,7 @@ K získání balíčků můžete použít NuGet. Postupujte takto:
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Uložení přihlašovacích údajů účtu úložiště do souboru App.config
 
-Potom uložte své přihlašovací údaje do souboru *App.config* projektu. V **Průzkumník řešení**dvakrát klikněte `App.config` a upravte soubor tak, aby byl podobný následujícímu příkladu.
+Potom uložte své přihlašovací údaje do souboru *App.config* projektu. V **Průzkumník řešení** dvakrát klikněte `App.config` a upravte soubor tak, aby byl podobný následujícímu příkladu.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -135,7 +135,7 @@ Nahraďte `myaccount` názvem svého účtu úložiště a `StorageAccountKeyEnd
 
 ## <a name="add-using-directives"></a>Přidání direktiv using
 
-V **Průzkumník řešení**otevřete soubor *program.cs* a na začátek souboru přidejte následující direktivy using.
+V **Průzkumník řešení** otevřete soubor *program.cs* a na začátek souboru přidejte následující direktivy using.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -316,7 +316,7 @@ Další informace o vytváření a používání sdílených přístupových pod
 
 Od verze 5. x klientské knihovny souborů Azure můžete zkopírovat soubor do jiného souboru, soubor do objektu BLOB nebo objekt blob do souboru.
 
-AzCopy můžete použít také ke kopírování jednoho souboru do jiného nebo ke zkopírování objektu blob do souboru nebo jiným způsobem. Viz Začínáme [s AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+AzCopy můžete použít také ke kopírování jednoho souboru do jiného nebo ke zkopírování objektu blob do souboru nebo jiným způsobem. Viz Začínáme [s AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
 
 > [!NOTE]
 > Pokud kopírujete objekt blob do souboru nebo soubor do objektu blob, musíte použít sdílený přístupový podpis (SAS) k ověření přístupu ze zdrojovému objektu, a to i když kopírujete v rámci jednoho účtu úložiště.
@@ -624,10 +624,10 @@ Další informace o službě soubory Azure najdete v následujících zdrojích 
 
 ### <a name="tooling-support-for-file-storage"></a>Podpora nástrojů pro úložiště File
 
-- [Začínáme s nástrojem AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-- [Řešení potíží se službou Azure Files ve Windows](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
+- [Začínáme s nástrojem AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)
+- [Řešení potíží se službou Azure Files ve Windows](./storage-troubleshoot-windows-file-connection-problems.md)
 
-### <a name="reference"></a>Referenční informace
+### <a name="reference"></a>Reference
 
 - [Rozhraní API služby Azure Storage pro .NET](/dotnet/api/overview/azure/storage)
 - [Rozhraní REST API služby File Service](/rest/api/storageservices/File-Service-REST-API)

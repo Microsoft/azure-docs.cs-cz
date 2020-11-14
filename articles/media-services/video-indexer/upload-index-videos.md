@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85c9111b0b16667e847aaf70d746e87fe524ef87
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 014c9759756a1da922a5141f064991827d593208
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592919"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630256"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -66,7 +66,7 @@ Pomocí rozhraní API pro [nahrání videa](https://api-portal.videoindexer.ai/d
 
 ### <a name="configurations-and-params"></a>Konfigurace a parametry
 
-Tato část popisuje některé volitelné parametry a kdy je vhodné je nastavit.
+Tato část popisuje některé volitelné parametry a kdy je vhodné je nastavit. Nejaktuálnější informace o parametrech najdete v tématu [nahrání](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) rozhraní API pro video.
 
 #### <a name="externalid"></a>externalID 
 
@@ -79,7 +79,7 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
 - Změna stavu indexování: 
     - Vlastnosti:    
     
-        |Název|Description|
+        |Název|Popis|
         |---|---|
         |id|ID videa|
         |state|Stav videa|  
@@ -87,7 +87,7 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
 - Osoba identifikovaná ve videu:
   - Vlastnosti
     
-      |Název|Description|
+      |Název|Popis|
       |---|---|
       |id| ID videa|
       |faceId|ID obličeje, které se zobrazí v indexu videa|
@@ -337,7 +337,7 @@ public class AccountContractSlim
 
 Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 
-|Stavový kód|ErrorType (v textu odpovědi)|Description|
+|Stavový kód|ErrorType (v textu odpovědi)|Popis|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
 |400|VIDEO_ALREADY_FAILED|V daném účtu se méně než před 2 hodinami nepodařilo zpracovat stejné video. Klienti rozhraní API by měli před dalším nahráním videa vyčkat minimálně 2 hodiny.|

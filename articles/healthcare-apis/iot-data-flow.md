@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 3cae648e3c2bddbafec555621d97575a007cfeb4
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 310be095af10f5ed5860c4f627caa0373be55835
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394862"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629661"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Tok dat konektoru Azure IoT pro FHIR (Preview)
 
-Tento článek poskytuje přehled toku dat ve službě Azure IoT Connector pro FHIR *. V rámci služby Azure IoT Connector se dozvíte víc o různých fázích zpracování dat pro FHIR, které transformují data zařízení do [pozorovacích](https://www.hl7.org/fhir/observation.html) prostředků založených na FHIR.
+Tento článek poskytuje přehled toku dat ve službě Azure IoT Connector pro zajištění rychlých prostředků interoperability zdravotní péče (FHIR&#174;) *. V rámci služby Azure IoT Connector se dozvíte víc o různých fázích zpracování dat pro FHIR, které transformují data zařízení do [pozorovacích](https://www.hl7.org/fhir/observation.html) prostředků založených na FHIR.
 
 ![Azure IoT Connector pro tok dat FHIR](media/concepts-iot-data-flow/iot-connector-data-flow.png)
 
@@ -36,7 +36,7 @@ Normalizace je další fáze, kdy se data zařízení načítají z výše uvede
 
 Proces normalizace nejen zjednodušuje zpracování dat v pozdějších fázích, ale také nabízí možnost projektu jedné vstupní zprávy do více normalizovaných zpráv. Zařízení může například odeslat několik důležitých příznaků pro teplotu textu, pulsní kmitočet, krevní tlak a respiration sazbu v jedné zprávě. Tato vstupní zpráva by vytvořila čtyři samostatné prostředky FHIR. Každý prostředek by představoval jiný nepodstatný podpis a vstupní zpráva se prokládá se čtyřmi různými normalizovanými zprávami.
 
-## <a name="group"></a>Group (Skupina)
+## <a name="group"></a>Skupina
 Skupina je další fáze, kde se normalizované zprávy dostupné z předchozí fáze seskupují pomocí tří různých parametrů: identita zařízení, typ měření a časové období.
 
 Seskupení typů identit a měření zařízení povoluje použití typu měření [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) . Tento typ poskytuje stručný způsob reprezentace časových řad měření ze zařízení v FHIR. A časové období řídí latenci, při které se prostředky sledování vygenerované službou Azure IoT Connector pro FHIR zapisují do Azure API pro FHIR.
@@ -64,6 +64,4 @@ Pokud chcete zjistit, jak vytvořit šablony mapování zařízení a FHIR, klik
 >[!div class="nextstepaction"]
 >[Azure IoT Connector pro šablony mapování FHIR](iot-mapping-templates.md)
 
-* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
-
-FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.
+* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview). FHIR je registrovaná ochranná známka změněného HL7 a používá se s oprávněním změněného HL7. 

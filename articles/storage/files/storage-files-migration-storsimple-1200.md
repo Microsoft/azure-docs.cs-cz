@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d9cf7b3cf996e41f90e3a40a6ee08d0fd51c8457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78c7953ef6432d37542a7a8b06f226a07f2b701f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85510332"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630477"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>Migrace StorSimple 1200 na Azure File Sync
 
@@ -32,7 +32,7 @@ Azure File Sync je cloudová služba Microsoftu založená na dvou hlavních sou
 
 Tento článek se zaměřuje na kroky migrace. Pokud před migrací chcete získat další informace o Azure File Sync, doporučujeme následující články:
 
-* [Azure File Sync – přehled](https://aka.ms/AFS "Přehled")
+* [Azure File Sync – přehled](./storage-sync-files-planning.md "Přehled")
 * [Průvodce nasazením Azure File Sync](storage-sync-files-deployment-guide.md)
 
 ## <a name="migration-goals"></a>Cíle migrace
@@ -155,7 +155,7 @@ Pozadí
       /MIR
    :::column-end:::
    :::column span="1":::
-      Umožňuje několikrát spustit tento příkaz Robocopy na stejném cíli nebo cíli. Určuje, co se zkopírovalo dřív, a vynechá ho. Budou zpracovány pouze změny, přidání a "*odstranění*", k nimž došlo od posledního spuštění. Pokud příkaz neběžel dřív, nevynechá se nic. Toto je vynikající možnost pro umístění zdrojů, která se pořád aktivně používají a mění.
+      Umožňuje několikrát spustit tento příkaz Robocopy na stejném cíli nebo cíli. Určuje, co se zkopírovalo dřív, a vynechá ho. Budou zpracovány pouze změny, přidání a " *odstranění* ", k nimž došlo od posledního spuštění. Pokud příkaz neběžel dřív, nevynechá se nic. Toto je vynikající možnost pro umístění zdrojů, která se pořád aktivně používají a mění.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -210,13 +210,13 @@ Dokončili jste migraci sdílené složky nebo skupiny sdílených složek do sp
 Můžete zkusit spustit několik z těchto kopií paralelně. Doporučujeme, abyste v jednom okamžiku zpracovali obor jedné sdílené složky Azure.
 
 > [!WARNING]
-> Po přesunutí všech dat StorSimple do Windows serveru a dokončení migrace se vraťte do ***všech***  skupin synchronizace v Azure Portal a nastavte hodnotu hlasitosti volného místa na úrovni cloudu na něco většího, než je procento využití mezipaměti, řekněme 20%. 
+> Po přesunutí všech dat StorSimple do Windows serveru a dokončení migrace se vraťte do složky * **všechny** synchronizační skupiny _ v Azure Portal a upravte Procentuální hodnotu volného místa na úrovni cloudu tak, aby lépe vyhovovala využití mezipaměti, řekněme, že 20%. 
 
 Zásada pro volné místo svazku ve vrstvách cloudu funguje na úrovni svazku s potenciálně synchronizovanými koncovými body serveru. Pokud zapomenete upravit volné místo na jednom koncovém bodu serveru, bude synchronizace dál používat nejvíce omezující pravidlo a pokusí se zachovávat 99% volného místa na disku, takže místní mezipaměť nefunguje, protože byste mohli očekávat. Pokud se nejedná o váš cíl jenom pro svazek, který obsahuje jenom zřídka používané, archivní data.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Nejpravděpodobnějším problémem, ke kterému můžete spustit, je, že příkaz Robocopy se na straně serveru Windows nezdařil s *názvem "svazek je plný"* . Pokud se jedná o tento případ, bude vaše rychlost stahování nejspíš lepší než rychlost nahrávání. Vrstvení cloudu slouží jednou za hodinu k vyvádění obsahu z místního disku Windows serveru, který se synchronizuje.
+Nejpravděpodobnějším problémem, ke kterému můžete spustit, je, že příkaz Robocopy se na straně serveru Windows nezdařil s názvem "svazek je plný" *. Pokud se jedná o tento případ, bude vaše rychlost stahování nejspíš lepší než rychlost nahrávání. Vrstvení cloudu slouží jednou za hodinu k vyvádění obsahu z místního disku Windows serveru, který se synchronizuje.
 
 Umožněte synchronizaci v průběhu a vrstvení cloudu uvolněte místo na disku. Můžete si všimnout, že v Průzkumníkovi souborů na vašem Windows serveru.
 
@@ -233,6 +233,6 @@ Obsah migrace:
 
 Azure File Sync obsah:
 
-* [Přehled AFS](https://aka.ms/AFS)
+* [Přehled AFS](./storage-sync-files-planning.md)
 * [Průvodce nasazením pro AFS](storage-files-deployment-guide.md)
 * [Řešení potíží AFS](storage-sync-files-troubleshoot.md)

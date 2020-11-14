@@ -1,7 +1,7 @@
 ---
 title: Kam ukládat soubory experimentů & Write
 titleSuffix: Azure Machine Learning
-description: Naučte se ukládat vstupní soubory experimentu a kde zapisovat výstupní soubory, aby se předešlo chybám omezení úložiště a latenci experimentu.
+description: Naučte se ukládat vstupní a výstupní soubory, abyste zabránili chybám omezení úložiště a latenci experimentů.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 0dab99c902269f7d598eedb8c2fa23bbed3948c4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49e1e9efbd6f59bd037a8033f83836bf7fc71c43
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325369"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630324"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Kam ukládat a zapisovat soubory pro Azure Machine Learning experimenty
 

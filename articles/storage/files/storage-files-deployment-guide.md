@@ -7,22 +7,22 @@ ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 08bcb41dd8d9f4643b03d855960d8632b778ff84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53111ccd634c516d0db10c0e2dd41768aba43f41
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034494"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629236"
 ---
 # <a name="how-to-deploy-azure-files"></a>Nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní průmyslový protokol SMB. V tomto článku se dozvíte, jak prakticky nasadit soubory Azure v rámci vaší organizace.
 
 Důrazně doporučujeme, abyste načetli [plánování pro nasazení souborů Azure](storage-files-planning.md) před provedením kroků v tomto článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že jste už dokončili následující kroky:
 
-- Vytvořili jste účet Azure Storage s požadovanými možnostmi odolnosti a šifrování v oblasti, kterou si přejete. Podrobné pokyny k vytvoření účtu úložiště najdete v tématu [Vytvoření účtu úložiště](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
+- Vytvořili jste účet Azure Storage s požadovanými možnostmi odolnosti a šifrování v oblasti, kterou si přejete. Podrobné pokyny k vytvoření účtu úložiště najdete v tématu [Vytvoření účtu úložiště](../common/storage-account-create.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) .
 - Vytvořili jste sdílenou složku Azure s požadovanou kvótou v účtu úložiště. Podrobné pokyny, jak vytvořit sdílenou složku, najdete v tématu věnovaném [Vytvoření sdílené složky](storage-how-to-create-file-share.md) .
 
 ## <a name="transfer-data-into-azure-files"></a>Přenos dat do souborů Azure
@@ -63,7 +63,7 @@ Následující kroky budou importovat data z místního umístění do sdílené
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    Může být zadáno více sdílených složek s účtem úložiště. Další informace najdete v tématu [Příprava souboru CSV s datovou sadou](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
+    Může být zadáno více sdílených složek s účtem úložiště. Další informace najdete v tématu [Příprava souboru CSV s datovou sadou](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) .
 
 5. Vytvořte soubor CSV driveset. V souboru CSV driveset jsou uvedené disky, které jsou k dispozici pro místního exportního agenta. Například následující driveset soubory CSV obsahují seznam `X:` , `Y:` a `Z:` jednotky, které mají být použity v místní úloze exportu:
 
@@ -74,7 +74,7 @@ Následující kroky budou importovat data z místního umístění do sdílené
     Z,Format,SilentMode,Encrypt,
     ```
     
-    Další informace najdete v tématu [Příprava souboru CSV driveset](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
+    Další informace najdete v tématu [Příprava souboru CSV driveset](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) .
 
 6. Pomocí [nástroje WAImportExport](https://www.microsoft.com/download/details.aspx?id=55280) zkopírujte data na jeden nebo více pevných disků.
 
@@ -88,7 +88,7 @@ Následující kroky budou importovat data z místního umístění do sdílené
 7. [Vytvořte úlohu importu](../common/storage-import-export-data-to-files.md#step-2-create-an-import-job).
     
 ### <a name="robocopy"></a>Robocopy
-Robocopy je dobře známý nástroj pro kopírování, který je dodáván s Windows a Windows serverem. Pomocí nástroje Robocopy můžete přenášet data do souborů Azure, a to tak, že sdílenou složku připojíte místně a potom v příkazu Robocopy použijete připojené umístění jako cíl. Použití nástroje Robocopy je poměrně jednoduché:
+Robocopy je známý nástroj pro kopírování, který je součástí Windows a Windows Serveru. Pomocí nástroje Robocopy můžete přenášet data do souborů Azure, a to tak, že sdílenou složku připojíte místně a potom v příkazu Robocopy použijete připojené umístění jako cíl. Použití nástroje Robocopy je poměrně jednoduché:
 
 1. [Připojte sdílenou složku Azure](storage-how-to-use-files-windows.md). Pro zajištění optimálního výkonu doporučujeme místní připojení sdílené složky Azure na serveru, který obsahuje data. V některých případech, například pokud souborový server, který obsluhuje data, je zařízení NAS, nemusí to být možné. V takovém případě je naprosto přijatelné připojit sdílenou složku Azure na počítači. V tomto příkladu `net use` se k připojení sdílené složky používá na příkazovém řádku:
 
@@ -102,12 +102,12 @@ Robocopy je dobře známý nástroj pro kopírování, který je dodáván s Win
     robocopy <path-to-local-share> <path-to-azure-file-share> /E /Z /MT:32
     ```
     
-    Robocopy má významný počet možností, jak upravit chování kopírování podle potřeby. Další informace najdete na stránce nástroje [Robocopy](https://technet.microsoft.com/library/cc733145.aspx) ručně.
+    Robocopy má významný počet možností, jak upravit chování kopírování podle potřeby. Další informace najdete na stránce nástroje [Robocopy](/windows-server/administration/windows-commands/robocopy) ručně.
 
 ### <a name="azcopy"></a>AzCopy
 AzCopy je nástroj příkazového řádku určený ke kopírování dat do a ze souborů Azure a také jako úložiště objektů BLOB v Azure pomocí jednoduchých příkazů s optimálním výkonem. Použití AzCopy je snadné:
 
-1. Stáhněte si [nejnovější verzi AzCopy v systému Windows](https://aka.ms/downloadazcopy) nebo [Linux](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux#download-and-install-azcopy).
+1. Stáhněte si [nejnovější verzi AzCopy v systému Windows](https://aka.ms/downloadazcopy) nebo [Linux](../common/storage-use-azcopy-v10.md?toc=/azure/storage/files/toc.json#download-azcopy).
 2. K `azcopy` přesunu dat do sdílené složky Azure použijte příkaz na příkazovém řádku. Syntaxe ve Windows je následující: 
 
     ```
@@ -120,7 +120,7 @@ AzCopy je nástroj příkazového řádku určený ke kopírování dat do a ze 
     azcopy --source <path-to-local-share> --destination https://<storage-account>.file.core.windows.net/<file-share>/ --dest-key <storage-account-key> --recursive
     ```
 
-    AzCopy má významný počet možností pro úpravu chování kopírování podle potřeby. Další informace najdete [v AzCopy v systému Windows](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a [AzCopy na platformě Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    AzCopy má významný počet možností pro úpravu chování kopírování podle potřeby. Další informace najdete v tématu [Začínáme s AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
 
 ## <a name="automatically-mount-on-needed-pcsservers"></a>Automaticky připojit k potřebným počítačům nebo serverům
 Pokud chcete nahradit místní sdílenou složku, je vhodné tyto sdílené složky předem připojit na počítačích, na kterých se bude používat. To lze provést automaticky v seznamu počítačů.

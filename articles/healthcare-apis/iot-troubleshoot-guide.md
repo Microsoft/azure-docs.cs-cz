@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 11/09/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 124c3b3667e847a5ee1bb8034ef01088c629d503
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 403b6656a47f56508682dcda2438a85d513fbfb1
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540939"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630494"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Azure IoT Connectorem pro FHIR (Preview)
 
-Tento článek popisuje kroky pro řešení běžných konektorů Azure IoT Connector pro FHIR * chybové zprávy a podmínky.  
+Tento článek popisuje kroky pro řešení běžných FHIRch informací o službě Azure IoT Connector pro rychlé interoperability zdravotní péče (&#174;) * chybové zprávy a podmínky.  
 
 Naučíte se také, jak vytvořit kopie konektoru Azure IoT Connector pro mapování konverze FHIR JSON (například zařízení a FHIR).  
 
@@ -31,14 +31,14 @@ V této části se dozvíte o procesu ověřování, který Azure IoT Connector 
 
 **Mapování zařízení**
 
-|Prvek|Vyžadováno|
+|Prvek|Povinné|
 |:-------|:------|
-|TypeName|Ano|
-|TypeMatchExpression|Ano|
-|DeviceIdExpression|Ano|
-|TimestampExpression|Ano|
-|Hodnoty []. Hodnoty|Ano|
-|Hodnoty []. ValueExpression|Ano|
+|TypeName|Pravda|
+|TypeMatchExpression|Pravda|
+|DeviceIdExpression|Pravda|
+|TimestampExpression|Pravda|
+|Hodnoty []. Hodnoty|Pravda|
+|Hodnoty []. ValueExpression|Pravda|
 
 > [!NOTE]
 > Hodnoty []. Hodnoty ValueName a Values []. ValueExpression
@@ -47,9 +47,9 @@ V této části se dozvíte o procesu ověřování, který Azure IoT Connector 
 
 **Mapování FHIR**
 
-|Prvek|Vyžadováno|
+|Prvek|Povinné|
 |:------|:-------|
-|TypeName|Ano|
+|TypeName|Pravda|
 
 > [!NOTE]
 > Toto je jediný povinný prvek mapování FHIR, který je v tuto chvíli ověřený.
@@ -191,6 +191,4 @@ Přečtěte si nejčastější dotazy k Azure IoT Connectoru pro FHIR.
 >[!div class="nextstepaction"]
 >[Azure IoT Connector pro nejčastější dotazy k FHIR](fhir-faq.md)
 
-* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
-
-FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.
+* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview). FHIR je registrovaná ochranná známka změněného HL7 a používá se s oprávněním změněného HL7.

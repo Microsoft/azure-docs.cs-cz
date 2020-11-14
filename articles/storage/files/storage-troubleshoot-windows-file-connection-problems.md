@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17b2ab53c0154a29f9084f9dd999a53bcf477b72
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b684123068889e422080605fb9c50ef9aed0cb76
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075122"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630154"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Řešení potíží se soubory Azure v systému Windows (SMB)
 
@@ -30,14 +30,14 @@ Když se pokusíte připojit sdílenou složku, může se zobrazit následujíc�
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Příčina 1: nešifrovaný komunikační kanál
 
-Z bezpečnostních důvodů se připojení ke sdíleným složkám Azure blokují, když komunikační kanál není šifrovaný a když k pokusu o připojení nedošlo ze stejného datacentra, ve kterém se sdílená složka Azure nachází. Nešifrovaná připojení ze stejného datacentra se můžou blokovat také v případě, že je pro účet úložiště povolené nastavení [Vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer). Šifrovaný komunikační kanál je k dispozici pouze v případě, že klientský operační systém uživatele podporuje šifrování protokolu SMB.
+Z bezpečnostních důvodů se připojení ke sdíleným složkám Azure blokují, když komunikační kanál není šifrovaný a když k pokusu o připojení nedošlo ze stejného datacentra, ve kterém se sdílená složka Azure nachází. Nešifrovaná připojení ze stejného datacentra se můžou blokovat také v případě, že je pro účet úložiště povolené nastavení [Vyžadovat zabezpečený přenos](../common/storage-require-secure-transfer.md). Šifrovaný komunikační kanál je k dispozici pouze v případě, že klientský operační systém uživatele podporuje šifrování protokolu SMB.
 
 Windows 8, Windows Server 2012 a novější verze těchto systémů vyjednávají požadavky zahrnující protokol SMB 3.0, který podporuje šifrování.
 
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
 1. Připojte se z klienta, který podporuje šifrování SMB (Windows 8, Windows Server 2012 nebo novější), nebo se připojte z virtuálního počítače ve stejném datovém centru jako účet Azure Storage, který se používá pro sdílenou složku Azure.
-2. Pokud klient nepodporuje šifrování protokolu SMB, ověřte, že je v účtu úložiště zakázané nastavení [Vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) .
+2. Pokud klient nepodporuje šifrování protokolu SMB, ověřte, že je v účtu úložiště zakázané nastavení [Vyžadovat zabezpečený přenos](../common/storage-require-secure-transfer.md) .
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Příčina 2: v účtu úložiště jsou povolená pravidla virtuální sítě nebo brány firewall. 
 
@@ -45,7 +45,7 @@ Pokud jsou pro účet úložiště nakonfigurovaná pravidla virtuální sítě 
 
 ### <a name="solution-for-cause-2"></a>Řešení 2. příčiny
 
-Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí** . Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí**. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](../common/storage-network-security.md).
 
 ### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>Příčina 3: oprávnění na úrovni sdílené složky nejsou při použití ověřování založeného na identitě správná
 
@@ -55,10 +55,10 @@ Pokud uživatelé přistupují ke sdílené složce Azure pomocí ověřování 
 
 Ověřte, jestli jsou oprávnění nakonfigurovaná správně:
 
-- **Active Directory (AD)** viz [přiřazení oprávnění na úrovni sdílení k identitě](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
+- **Active Directory (AD)** viz [přiřazení oprávnění na úrovni sdílení k identitě](./storage-files-identity-ad-ds-assign-permissions.md).
 
     Přiřazení oprávnění na úrovni sdílené složky se podporují u skupin a uživatelů synchronizovaných ze služby Active Directory (AD) na Azure Active Directory (Azure AD) pomocí Azure AD Connect.  Ověřte, že skupiny a uživatelé, kteří jsou přiřazená oprávnění na úrovni sdílené složky, nejsou nepodporované jenom pro cloudové skupiny.
-- **Azure Active Directory Domain Services (Azure služba AD DS)** najdete v tématu [Přiřazení přístupových oprávnění k identitě](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
+- **Azure Active Directory Domain Services (Azure služba AD DS)** najdete v tématu [Přiřazení přístupových oprávnění k identitě](./storage-files-identity-auth-active-directory-domain-service-enable.md?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Při připojení nebo odpojení sdílené složky Azure došlo k chybě 53, chyba 67 nebo chyba 87.
@@ -111,7 +111,7 @@ TcpTestSucceeded : True
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
 #### <a name="solution-1---use-azure-file-sync"></a>1. řešení – Použití Synchronizace souborů Azure
-Azure File Sync může transformovat místní Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Synchronizace souborů Azure funguje na portu 443 a proto ji můžou používat klienti se zablokovaným portem 445 jako alternativní způsob přístupu ke službě Azure Files. [Naučte se, jak nastavit Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
+Azure File Sync může transformovat místní Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Synchronizace souborů Azure funguje na portu 443 a proto ji můžou používat klienti se zablokovaným portem 445 jako alternativní způsob přístupu ke službě Azure Files. [Naučte se, jak nastavit Azure File Sync](./storage-sync-files-extend-servers.md).
 
 #### <a name="solution-2---use-vpn"></a>2. řešení – Použití sítě VPN
 Když nastavíte síť VPN na konkrétní účet úložiště, přenos přes Internet prochází zabezpečeným tunelovým propojením na rozdíl od Internetu. Pokud chcete získat přístup ke službě Azure Files z Windows, postupujte podle [pokynů k nastavení sítě VPN](storage-files-configure-p2s-vpn-windows.md).
@@ -120,7 +120,7 @@ Když nastavíte síť VPN na konkrétní účet úložiště, přenos přes Int
 Pracujte s vaším IT oddělením nebo poskytovatelem internetových služeb a otevřete port 445 odchozí do [rozsahů IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>4. řešení – Použití nástrojů založených na rozhraní REST API, jako jsou Průzkumník služby Storage nebo PowerShell
-Soubory Azure také kromě protokolu SMB podporují i REST. Přístup přes rozhraní REST funguje na portu 443 (standardní port TCP). Rozhraní REST API využívají různé nástroje, které nabízejí bohaté uživatelské rozhraní. [Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) je jeden z nich. [Stáhněte a nainstalujte si Průzkumníka služby Storage](https://azure.microsoft.com/features/storage-explorer/) a připojte se ke své sdílené složce využívající službu Azure Files. Můžete také použít [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) , který také REST API uživatel.
+Soubory Azure také kromě protokolu SMB podporují i REST. Přístup přes rozhraní REST funguje na portu 443 (standardní port TCP). Rozhraní REST API využívají různé nástroje, které nabízejí bohaté uživatelské rozhraní. [Průzkumník služby Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) je jeden z nich. [Stáhněte a nainstalujte si Průzkumníka služby Storage](https://azure.microsoft.com/features/storage-explorer/) a připojte se ke své sdílené složce využívající službu Azure Files. Můžete také použít [PowerShell](./storage-how-to-use-files-powershell.md) , který také REST API uživatel.
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>Příčina 2: ověřovací NTLMv1 je povolená.
 
@@ -130,7 +130,7 @@ Pokud chcete určit, jestli je toto příčinou chyby, ověřte, že je následu
 
 **HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel**
 
-Další informace najdete v tématu [LmCompatibilityLevel](https://technet.microsoft.com/library/cc960646.aspx) na webu TechNet.
+Další informace najdete v tématu [LmCompatibilityLevel](/previous-versions/windows/it-pro/windows-2000-server/cc960646(v=technet.10)) na webu TechNet.
 
 ### <a name="solution-for-cause-2"></a>Řešení 2. příčiny
 
@@ -143,18 +143,18 @@ V následujícím podklíči registru vraťte hodnotu **LmCompatibilityLevel** n
 
 ### <a name="cause"></a>Příčina
 
-K chybě 1816 dochází po dosažení horní meze souběžných otevřených popisovačů, které jsou povoleny pro soubor nebo adresář ve sdílené složce Azure. Další informace najdete v článku věnovaném [cílům škálování služby Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets).
+K chybě 1816 dochází po dosažení horní meze souběžných otevřených popisovačů, které jsou povoleny pro soubor nebo adresář ve sdílené složce Azure. Další informace najdete v článku věnovaném [cílům škálování služby Azure Files](./storage-files-scale-targets.md#azure-files-scale-targets).
 
 ### <a name="solution"></a>Řešení
 
-Snižte počet souběžných otevřených popisovačů uzavřením některých popisovačů a potom akci opakujte. Další informace najdete v tématu [Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+Snižte počet souběžných otevřených popisovačů uzavřením některých popisovačů a potom akci opakujte. Další informace najdete v tématu [Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage](../blobs/storage-performance-checklist.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
 
-Pokud chcete zobrazit otevřené popisovače pro sdílenou složku, adresář nebo soubor, použijte rutinu PowerShellu [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) .  
+Pokud chcete zobrazit otevřené popisovače pro sdílenou složku, adresář nebo soubor, použijte rutinu PowerShellu [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) .  
 
-Chcete-li zavřít otevřené popisovače pro sdílenou složku, adresář nebo soubor, použijte rutinu [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) prostředí PowerShell.
+Chcete-li zavřít otevřené popisovače pro sdílenou složku, adresář nebo soubor, použijte rutinu [Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) prostředí PowerShell.
 
 > [!Note]  
-> Rutiny Get-AzStorageFileHandle a Close-AzStorageFileHandle jsou součástí AZ PowerShell Module verze 2,4 nebo novější. Pokud chcete nainstalovat nejnovější modul AZ PowerShellu, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Rutiny Get-AzStorageFileHandle a Close-AzStorageFileHandle jsou součástí AZ PowerShell Module verze 2,4 nebo novější. Pokud chcete nainstalovat nejnovější modul AZ PowerShellu, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 <a id="noaaccessfailureportal"></a>
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Chyba "bez přístupu" při pokusu o přístup k sdílené složce Azure nebo její odstranění  
@@ -167,13 +167,13 @@ Kód chyby: 403
 
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
-Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí** . Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí**. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](../common/storage-network-security.md).
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>Příčina 2: váš uživatelský účet nemá přístup k účtu úložiště.
 
 ### <a name="solution-for-cause-2"></a>Řešení 2. příčiny
 
-Přejděte k účtu úložiště, kde se nachází sdílená složka Azure, klikněte na **řízení přístupu (IAM)** a ověřte, jestli má uživatelský účet přístup k účtu úložiště. Další informace najdete v tématu [zabezpečení účtu úložiště pomocí řízení přístupu na základě role Azure (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
+Přejděte k účtu úložiště, kde se nachází sdílená složka Azure, klikněte na **řízení přístupu (IAM)** a ověřte, jestli má uživatelský účet přístup k účtu úložiště. Další informace najdete v tématu [zabezpečení účtu úložiště pomocí řízení přístupu na základě role Azure (RBAC)](../blobs/security-recommendations.md#data-protection).
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nejde odstranit soubor nebo adresář ve sdílené složce Azure
@@ -199,15 +199,15 @@ I když obsluha souborů a zapůjčení slouží k důležitému účelu, někdy
 Řešení tohoto problému závisí na tom, jestli je to způsobeno osamoceným popisovačem nebo zapůjčením souborů. 
 
 ### <a name="cause-1"></a>Příčina 1
-Popisovač souboru brání v úpravě nebo odstranění souboru nebo adresáře. K zobrazení otevřených popisovačů můžete použít rutinu PowerShellu [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) . 
+Popisovač souboru brání v úpravě nebo odstranění souboru nebo adresáře. K zobrazení otevřených popisovačů můžete použít rutinu PowerShellu [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) . 
 
 Pokud všichni klienti SMB zavřeli otevřené popisovače v souboru nebo adresáři a problém přetrvává, můžete vynutit zavření popisovače souboru.
 
 ### <a name="solution-1"></a>Řešení 1
-Pokud chcete vynutit, aby se popisovač souboru zavřel, použijte rutinu [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) prostředí PowerShell. 
+Pokud chcete vynutit, aby se popisovač souboru zavřel, použijte rutinu [Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) prostředí PowerShell. 
 
 > [!Note]  
-> Rutiny Get-AzStorageFileHandle a Close-AzStorageFileHandle jsou součástí AZ PowerShell Module verze 2,4 nebo novější. Pokud chcete nainstalovat nejnovější modul AZ PowerShellu, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Rutiny Get-AzStorageFileHandle a Close-AzStorageFileHandle jsou součástí AZ PowerShell Module verze 2,4 nebo novější. Pokud chcete nainstalovat nejnovější modul AZ PowerShellu, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 ### <a name="cause-2"></a>Příčina 2
 Zapůjčení souborů brání v úpravě nebo odstranění souboru. Můžete zjistit, jestli soubor má zapůjčení souboru s následujícím PowerShellem, nahrazujete `<resource-group>` , `<storage-account>` , `<file-share>` a `<path-to-file>` s odpovídajícími hodnotami pro vaše prostředí:
@@ -262,8 +262,8 @@ Při pokusu o přenos souborů do služby Azure File Service se může zobrazit 
 - Pokud nemáte konkrétní minimální požadavky na vstupně-výstupní operace, doporučujeme použít 1 MiB jako velikost vstupně-výstupních operací pro zajištění optimálního výkonu.
 -   Pokud znáte konečnou velikost souboru, který rozšiřujete o zápisy, a váš software nemá problémy s kompatibilitou, pokud nezapsaný konec souboru obsahuje nuly, nastavte velikost souboru předem místo toho, aby každý zápis nastavil rozšíření zápisu.
 -   Použijte pravou metodu kopírování:
-    -   Použijte [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) pro jakýkoli přenos mezi dvěma sdílenými složkami souborů.
-    -   Použijte příkaz [Robocopy](/azure/storage/files/storage-files-deployment-guide#robocopy) mezi sdílenými složkami na místním počítači.
+    -   Použijte [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) pro jakýkoli přenos mezi dvěma sdílenými složkami souborů.
+    -   Použijte příkaz [Robocopy](./storage-files-deployment-guide.md#robocopy) mezi sdílenými složkami na místním počítači.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Předpoklady pro Windows 8.1 nebo Windows Server 2012 R2
 
@@ -290,7 +290,7 @@ Pokud namapujete sdílenou složku Azure jako správce pomocí příkazu net use
 Ve výchozím nastavení se Průzkumník souborů Windows nespouští jako správce. Pokud spouštíte NET USE z příkazového řádku pro správu, namapujete síťovou jednotku jako správce. Vzhledem k tomu, že mapované jednotky jsou orientované na uživatele, uživatelský účet, který je přihlášen, nezobrazí jednotky, pokud jsou připojeny pod jiným uživatelským účtem.
 
 ### <a name="solution"></a>Řešení
-Připojte sdílenou složku z příkazového řádku bez oprávnění správce. Případně můžete postupovat podle [tohoto tématu na TechNetu](https://technet.microsoft.com/library/ee844140.aspx) a nakonfigurovat hodnotu registru **EnableLinkedConnections** .
+Připojte sdílenou složku z příkazového řádku bez oprávnění správce. Případně můžete postupovat podle [tohoto tématu na TechNetu](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee844140(v=ws.10)) a nakonfigurovat hodnotu registru **EnableLinkedConnections** .
 
 <a id="netuse"></a>
 ## <a name="net-use-command-fails-if-the-storage-account-contains-a-forward-slash"></a>Příkaz NET USE se nezdařil, pokud účet úložiště obsahuje lomítko.
@@ -376,20 +376,20 @@ Můžete ho například nastavit na 0x100000 a zjistit, jestli se výkon zlepši
 
 ### <a name="cause"></a>Příčina
 
-K chybě AadDsTenantNotFound dojde při pokusu o [Povolení ověřování Azure Active Directory Domain Services (azure služba AD DS) na Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md) v účtu úložiště, kde [Služba Azure AD Domain Service (Azure služba AD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) není vytvořená v tenantovi Azure AD přidruženého předplatného.  
+K chybě AadDsTenantNotFound dojde při pokusu o [Povolení ověřování Azure Active Directory Domain Services (azure služba AD DS) na Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md) v účtu úložiště, kde [Služba Azure AD Domain Service (Azure služba AD DS)](../../active-directory-domain-services/overview.md) není vytvořená v tenantovi Azure AD přidruženého předplatného.  
 
 ### <a name="solution"></a>Řešení
 
-Povolte Azure služba AD DS v tenantovi Azure AD předplatného, na které je váš účet úložiště nasazený. K vytvoření spravované domény potřebujete oprávnění správce pro tenanta Azure AD. Pokud nejste správcem tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů, které vám [umožní Azure Active Directory Domain Services používání Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
+Povolte Azure služba AD DS v tenantovi Azure AD předplatného, na které je váš účet úložiště nasazený. K vytvoření spravované domény potřebujete oprávnění správce pro tenanta Azure AD. Pokud nejste správcem tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů pro [Vytvoření a konfiguraci Azure Active Directory Domain Services spravované domény](../../active-directory-domain-services/tutorial-create-instance.md).
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
 ## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Nepovedlo se připojit soubory Azure s přihlašovacími údaji služby AD 
 
 ### <a name="self-diagnostics-steps"></a>Kroky pro samočinnou diagnostiku
-Nejdřív se ujistěte, že jste provedli všechny čtyři kroky, abyste [mohli povolit ověřování Azure Files AD](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable).
+Nejdřív se ujistěte, že jste provedli všechny čtyři kroky, abyste [mohli povolit ověřování Azure Files AD](./storage-files-identity-auth-active-directory-enable.md).
 
-Za druhé zkuste připojit [sdílenou složku Azure s klíčem účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Pokud se nepovedlo připojit, Stáhněte si [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) , abyste vám pomohli ověřit spuštěné prostředí klienta, zjistit nekompatibilní konfiguraci klienta, která by způsobila selhání přístupu pro soubory Azure, nabízí doporučené pokyny k automatickým opravám a shromažďování diagnostických trasování.
+Za druhé zkuste připojit [sdílenou složku Azure s klíčem účtu úložiště](./storage-how-to-use-files-windows.md). Pokud se nepovedlo připojit, Stáhněte si [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) , abyste vám pomohli ověřit spuštěné prostředí klienta, zjistit nekompatibilní konfiguraci klienta, která by způsobila selhání přístupu pro soubory Azure, nabízí doporučené pokyny k automatickým opravám a shromažďování diagnostických trasování.
 
 Na třetí, můžete spustit rutinu Debug-AzStorageAccountAuth a provést sadu základních kontrol konfigurace služby AD s přihlášeným uživatelem služby AD. Tuto rutinu podporuje [AzFilesHybrid verze 0.1.2 nebo novější](https://github.com/Azure-Samples/azure-files-samples/releases). Tuto rutinu je potřeba spustit pod uživatelem AD, který má oprávnění vlastníka k cílovému účtu úložiště.  
 ```PowerShell
@@ -399,13 +399,13 @@ $StorageAccountName = "<storage-account-name-here>"
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 Tato rutina provádí následující kontroly v posloupnosti a poskytuje pokyny k selhání:
-1. CheckADObjectPasswordIsCorrect: Ujistěte se, že heslo nakonfigurované na identitě AD, které představuje účet úložiště, odpovídá účtu úložiště kerb1 nebo kerb2 Key. Pokud není heslo správné, můžete heslo resetovat spuštěním rutiny [Update-AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) . 
+1. CheckADObjectPasswordIsCorrect: Ujistěte se, že heslo nakonfigurované na identitě AD, které představuje účet úložiště, odpovídá účtu úložiště kerb1 nebo kerb2 Key. Pokud není heslo správné, můžete heslo resetovat spuštěním rutiny [Update-AzStorageAccountADObjectPassword](./storage-files-identity-ad-ds-update-password.md) . 
 2. CheckADObject: potvrďte, že ve službě Active Directory existuje objekt, který představuje účet úložiště, a má správný název SPN (hlavní název služby). Pokud hlavní název služby není správně nastavený, spusťte rutinu Set-AD vrácenou v rutině ladění a nakonfigurujte hlavní název služby (SPN).
-3. CheckDomainJoined: Ověřte, zda je klientský počítač připojen k doméně služby AD. Pokud Váš počítač není připojený k doméně AD, přečtěte si tento [článek](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) , kde najdete pokyny k připojení k doméně.
+3. CheckDomainJoined: Ověřte, zda je klientský počítač připojen k doméně služby AD. Pokud Váš počítač není připojený k doméně AD, přečtěte si tento [článek](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) , kde najdete pokyny k připojení k doméně.
 4. CheckPort445Connectivity: Ověřte, že je pro připojení SMB otevřený port 445. Pokud požadovaný port není otevřený, přečtěte si další informace o problémech s připojením se soubory Azure v tématu [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) nástroje pro řešení potíží.
 5. CheckSidHasAadUser: Ověřte, že se přihlášený uživatel služby AD synchronizuje do Azure AD. Pokud chcete vyhledat konkrétního uživatele služby AD, který je synchronizovaný s Azure AD, můžete ve vstupních parametrech zadat-UserName a-Domain. 
 6. CheckGetKerberosTicket: Pokuste se získat lístek protokolu Kerberos pro připojení k účtu úložiště. Pokud není k dispozici platný token protokolu Kerberos, spusťte rutinu příkaz Klist (získat CIFS/Storage-Account-Name. File. Core. Windows. NET a prověřte kód chyby pro hlavní-příčinu selhání načtení lístku.
-7. CheckStorageAccountDomainJoined: Ověřte, jestli je povolené ověřování AD a naplní se vlastnosti Active Directory účtu. Pokud ne, přečtěte si [tady](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable) pokyny, abyste povolili služba AD DS ověřování v souborech Azure. 
+7. CheckStorageAccountDomainJoined: Ověřte, jestli je povolené ověřování AD a naplní se vlastnosti Active Directory účtu. Pokud ne, přečtěte si [tady](./storage-files-identity-ad-ds-enable.md) pokyny, abyste povolili služba AD DS ověřování v souborech Azure. 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Nejde nakonfigurovat oprávnění na úrovni adresáře nebo souboru (seznamy řízení přístupu systému Windows) pomocí Průzkumníka souborů Windows.
 
@@ -417,7 +417,7 @@ Při pokusu o konfiguraci seznamů řízení přístupu k Windows pomocí Průzk
 
 ### <a name="solution"></a>Řešení
 
-Doporučujeme použít [nástroj Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) ke konfiguraci oprávnění na úrovni adresáře nebo souboru jako alternativní řešení. 
+Doporučujeme použít [nástroj Icacls](/windows-server/administration/windows-commands/icacls) ke konfiguraci oprávnění na úrovni adresáře nebo souboru jako alternativní řešení. 
 
 ## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>Chyby při spuštění rutiny Join-AzStorageAccountForAuth
 
@@ -431,7 +431,7 @@ Nejpravděpodobnější příčinou této chyby je chyba syntaxe v příkazu Joi
 
 ## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>Podpora ověřování pomocí služby Azure Files pro místní služba AD DS pro šifrování AES 256 Kerberos
 
-Zavedli jsme podporu šifrování Kerberos 256 pro Azure Files on-Prem služba AD DS ověřování pomocí [modulu AzFilesHybrid Module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Pokud jste povolili služba AD DS ověřování s verzí modulu nižší než v 0.2.2, budete si muset stáhnout nejnovější modul AzFilesHybrid (v 0.2.2 +) a spustit PowerShell níže. Pokud jste ještě nepovolili služba AD DS ověřování na účtu úložiště, můžete postupovat podle těchto [pokynů](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) . 
+Zavedli jsme podporu šifrování Kerberos 256 pro Azure Files on-Prem služba AD DS ověřování pomocí [modulu AzFilesHybrid Module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Pokud jste povolili služba AD DS ověřování s verzí modulu nižší než v 0.2.2, budete si muset stáhnout nejnovější modul AzFilesHybrid (v 0.2.2 +) a spustit PowerShell níže. Pokud jste ještě nepovolili služba AD DS ověřování na účtu úložiště, můžete postupovat podle těchto [pokynů](./storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module) . 
 
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"

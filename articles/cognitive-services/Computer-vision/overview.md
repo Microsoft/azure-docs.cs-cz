@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 11/13/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: počítačové zpracování obrazu, aplikace počítačové vidění, Služba Computer visioning Service
-ms.openlocfilehash: 851470971335f144ebe0f9b602a8adc7d5ee06cf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536213"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629746"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -27,19 +27,19 @@ ms.locfileid: "94536213"
 
 Služba Počítačové zpracování obrazu v Azure vám poskytuje přístup k pokročilým algoritmům, které zpracovávají obrázky a vracejí informace na základě vizuálních funkcí, které vás zajímají. Počítačové zpracování obrazu například může určit, jestli obrázek obsahuje obsah pro dospělé, najít konkrétní značky nebo objekty nebo najít lidské obličeje.
 
-Můžete vytvořit Počítačové zpracování obrazu aplikace prostřednictvím sady Client Library SDK nebo voláním REST API přímo. Tato stránka obsahuje širokou škálu toho, co můžete s Počítačové zpracování obrazu provádět.
+Můžete vytvořit Počítačové zpracování obrazu aplikace prostřednictvím [sady Client Library SDK](./quickstarts-sdk/client-library.md) nebo voláním [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) přímo. Tato stránka obsahuje širokou škálu toho, co můžete s Počítačové zpracování obrazu provádět.
+
+## <a name="optical-character-recognition-ocr"></a>optické rozpoznávání znaků (OCR),
+
+Počítačové zpracování obrazu obsahuje možnosti [optického rozpoznávání znaků (OCR)](concept-recognizing-text.md) . Nové rozhraní API pro čtení můžete použít k extrakci vytištěného a rukopisného textu z obrázků a dokumentů. Používá nejnovější modely a pracuje s textem na různých površích a na pozadí. Patří mezi ně příjmy, plakáty, vizitky, dopisy a tabule. Tato dvě rozhraní API pro optické rozpoznávání znaků podporují extrakci vytištěného textu v [několika jazycích](./language-support.md). Začněte pomocí [rychlého](./quickstarts-sdk/client-library.md) startu.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Počítačové zpracování obrazu pro správu digitálních prostředků
 
 Počítačové zpracování obrazu může výkon mnoha scénářů správy digitálních prostředků (přehradit). Přehradní je obchodní proces organizace, ukládání a načítání multimediálních prostředků a správu digitálních práv a oprávnění. Společnost může například chtít seskupit a identifikovat obrázky na základě viditelných log, plošek, objektů, barev a tak dále. Nebo můžete chtít automaticky [vygenerovat titulky pro obrázky](./Tutorials/storage-lab-tutorial.md) a připojit klíčová slova, aby je bylo možné prohledávat. Pro přehradní řešení all-in-One pomocí Cognitive Services, Azure Kognitivní hledání a inteligentního generování sestav si Projděte [příručku akcelerátoru řešení](https://github.com/Azure-Samples/azure-search-knowledge-mining) pro vyhledávání znalostí na GitHubu. Další příklady přehrad naleznete v tématu [počítačové zpracování obrazu – úložiště šablon řešení](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates) .
 
-## <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
-
-Počítačové zpracování obrazu obsahuje možnosti [optického rozpoznávání znaků (OCR)](concept-recognizing-text.md) . Nové rozhraní API pro čtení můžete použít k extrakci vytištěného a rukopisného textu z obrázků a dokumentů. Používá nejnovější modely a pracuje s textem na různých površích a na pozadí. Patří mezi ně příjmy, plakáty, vizitky, dopisy a tabule. Tato dvě rozhraní API pro optické rozpoznávání znaků podporují extrakci vytištěného textu v [několika jazycích](./language-support.md). Začněte pomocí [rychlého](#next-steps) startu.
-
 ## <a name="analyze-images-for-insight"></a>Analýza obrázků za účelem získání přehledu
 
-Obrázky můžete analyzovat a poskytnout tak přehled o jejich vizuálních funkcích a vlastnostech. Všechny funkce v tabulce níže jsou poskytovány rozhraním API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) . Začněte pomocí [rychlého](#next-steps) startu.
+Obrázky můžete analyzovat a poskytnout tak přehled o jejich vizuálních funkcích a vlastnostech. Všechny funkce v tabulce níže jsou poskytovány rozhraním API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) . Začněte pomocí [rychlého](./quickstarts-sdk/client-library.md) startu.
 
 
 ### <a name="tag-visual-features"></a>Označování vizuálních vlastností
@@ -113,8 +113,6 @@ Stejně jako u všech Cognitive Services by měli vývojáři, kteří používa
 
 ## <a name="next-steps"></a>Další kroky
 
-Začněte s Počítačové zpracování obrazu pomocí příručky pro rychlý Start:
+Začněte s Počítačové zpracování obrazu pomocí Průvodce rychlým startem v preferovaném vývojovém jazyce:
 
-- [Rychlý Start: Počítačové zpracování obrazu Klientská knihovna .NET](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-- [Rychlý Start: Počítačové zpracování obrazu knihovna klienta Pythonu](./quickstarts-sdk/client-library.md?pivots=programming-language-python)
-- [Rychlý Start: Počítačové zpracování obrazu Klientská knihovna Java](./quickstarts-sdk/client-library.md?pivots=programming-language-java)
+- [Rychlý Start: Počítačové zpracování obrazu Klientská knihovna](./quickstarts-sdk/client-library.md)

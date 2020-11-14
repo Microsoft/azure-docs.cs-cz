@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 69fdfea6768a895db1f85df4c2936936a2ffd3f5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 95139c862b82a85dbf7f50aef021ad71c5c8210f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675789"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629440"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync propojuje vaše místní servery se soubory Azure a povoluje funkce synchronizace více lokalit a vrstvení cloudu. V takovém případě musí být místní server připojený k Internetu. Správce IT musí určit nejlepší cestu pro server, který bude mít přístup k Azure Cloud Services.
@@ -154,7 +154,7 @@ V zájmu zajištění provozní kontinuity a zotavení po havárii (BCDR) jste p
 ### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Seznam povolených pro Azure File Sync IP adres
 Azure File Sync podporuje použití [značek služeb](../../virtual-network/service-tags-overview.md), které reprezentují skupinu předpon IP adres pro danou službu Azure. Pomocí značek služby můžete vytvořit pravidla brány firewall, která umožňují komunikaci s Azure File Sync službou. Označení služby pro Azure File Sync je `StorageSyncService` .
 
-Pokud používáte Azure File Sync v rámci Azure, můžete pro povolení provozu použít ve skupině zabezpečení sítě přímo název značky služby. Další informace o tom, jak to provést, najdete v tématu [skupiny zabezpečení sítě](../../virtual-network/security-overview.md).
+Pokud používáte Azure File Sync v rámci Azure, můžete pro povolení provozu použít ve skupině zabezpečení sítě přímo název značky služby. Další informace o tom, jak to provést, najdete v tématu [skupiny zabezpečení sítě](../../virtual-network/network-security-groups-overview.md).
 
 Pokud používáte Azure File Sync v místním prostředí, můžete k získání specifických rozsahů IP adres pro seznam povolených bran firewall použít rozhraní API tag služby. Existují dvě metody pro získání těchto informací:
 
@@ -164,9 +164,9 @@ Pokud používáte Azure File Sync v místním prostředí, můžete k získán�
     - [Azure (Čína)](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure (Německo)](https://www.microsoft.com/download/details.aspx?id=57064)
 - Rozhraní API zjišťování značek služby (Preview) umožňuje programové načtení aktuálního seznamu značek služeb. Ve verzi Preview může rozhraní API zjišťování značek služby vracet informace, které jsou méně aktuální než informace vrácené z dokumentů JSON publikovaných na webu Microsoft Download Center. Plochu rozhraní API můžete použít na základě preference automatizace:
-    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+    - [REST API](/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 Vzhledem k tomu, že se rozhraní API zjišťování značek služeb neaktualizuje tak často, jako dokumenty JSON publikované na webu Microsoft Download Center, doporučujeme k aktualizaci seznamu povolených místních bran firewall použít dokument JSON. Můžete to udělat takto:
 

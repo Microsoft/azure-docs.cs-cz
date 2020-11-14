@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 6c611d65c30cceba5fd6ff409ef71b906cd8674c
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 5acb8e347046780c84f0aa324b997abb5e2aa840
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330304"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629219"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Povolit a vytvořit velké sdílené složky souborů
 
@@ -22,8 +22,8 @@ Když ve svém účtu úložiště povolíte velké sdílené složky, sdílené
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Pokud máte v úmyslu použít modul Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0).
+- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Pokud máte v úmyslu použít modul Azure PowerShell, [nainstalujte nejnovější verzi](/powershell/azure/install-az-ps?view=azps-4.6.0).
 
 ## <a name="restrictions"></a>Omezení
 
@@ -65,7 +65,7 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Nejdřív [nainstalujte nejnovější verzi rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , abyste mohli povolit velké sdílené složky.
+Nejdřív [nainstalujte nejnovější verzi rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) , abyste mohli povolit velké sdílené složky.
 
 Pokud chcete vytvořit účet úložiště s povolenými velkými sdílenými soubory, použijte následující příkaz. Nahraďte `<yourStorageAccountName>` , `<yourResourceGroup>` a `<yourDesiredRegion>` informacemi.
 
@@ -76,7 +76,7 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Nejdřív [nainstalujte nejnovější verzi PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) , abyste mohli povolit velké sdílené složky.
+Nejdřív [nainstalujte nejnovější verzi PowerShellu](/powershell/azure/install-az-ps?view=azps-3.0.0) , abyste mohli povolit velké sdílené složky.
 
 Pokud chcete vytvořit účet úložiště s povolenými velkými sdílenými soubory, použijte následující příkaz. Nahraďte `<yourStorageAccountName>` , `<yourResourceGroup>` a `<yourDesiredRegion>` informacemi.
 

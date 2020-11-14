@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: bf75537c0baf029bc3fc63e320f6290a1f41a524
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7680e251d8411ce154e1f7dfb8af1d66514dd579
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738836"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629457"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Postup vytvoření sdílené složky systému souborů NFS
 
@@ -38,7 +38,7 @@ Sdílené složky Azure jsou plně spravované sdílené složky, které jsou v 
     - [Nakonfigurujte síť VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure](storage-files-configure-p2s-vpn-linux.md).
     - [Nakonfigurujte síť VPN typu Site-to-site pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
     - Nakonfigurujte [ExpressRoute](../../expressroute/expressroute-introduction.md).
-- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="register-the-nfs-41-protocol"></a>Registrace protokolu NFS 4,1
 
@@ -86,17 +86,17 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 
 Teď, když jste vytvořili účet úložiště souborů a nakonfigurovali síť, můžete vytvořit sdílenou složku NFS. Proces se podobá vytvoření sdílené složky SMB a při vytváření sdílené složky se místo **protokolu SMB** vybere **systém souborů NFS** .
 
-1. Přejděte do svého účtu úložiště a vyberte **sdílené složky** .
+1. Přejděte do svého účtu úložiště a vyberte **sdílené složky**.
 1. Pokud chcete vytvořit novou sdílenou složku, vyberte **+ Shared File** .
 1. Zadejte název sdílené složky a vyberte zřízenou kapacitu.
-1. V případě **protokolu** vyberte **systém souborů NFS (Preview)** .
+1. V případě **protokolu** vyberte **systém souborů NFS (Preview)**.
 1. Pro **kořenový "squash** udělejte výběr.
 
     - Root "squash (výchozí) – přístup pro vzdáleného uživatele (root) je namapován na UID (65534) a GID (65534).
     - Žádná kořenová "squash – vzdálený uživatel (root) obdrží přístup jako kořen.
     - Všechny "squash – přístup všech uživatelů je namapován na UID (65534) a GID (65534).
     
-1. Vyberte **Vytvořit** .
+1. Vyberte **Vytvořit**.
 
     :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="Snímek obrazovky okna pro vytvoření sdílené složky":::
 
@@ -110,7 +110,7 @@ Teď, když jste vytvořili účet úložiště souborů a nakonfigurovali síť
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   Pokud chcete upgradovat verzi PowerShellu, přečtěte si téma [upgrade existujícího prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) .
+   Pokud chcete upgradovat verzi PowerShellu, přečtěte si téma [upgrade existujícího prostředí Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) .
     
 1. Nainstalujte nejnovější verzi modulu PowershellGet.
 
@@ -120,13 +120,13 @@ Teď, když jste vytvořili účet úložiště souborů a nakonfigurovali síť
 
 1. Zavřete a znovu otevřete konzolu PowerShellu.
 
-1. Nainstalujte modul **AZ. Storage** Preview verze **2.5.2-Preview** .
+1. Nainstalujte modul **AZ. Storage** Preview verze **2.5.2-Preview**.
 
    ```powershell
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   Další informace o tom, jak nainstalovat moduly PowerShellu, najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) .
+   Další informace o tom, jak nainstalovat moduly PowerShellu, najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps?view=azps-3.0.0) .
    
 1. K vytvoření sdílené složky Premium pomocí modulu Azure PowerShell použijte rutinu [New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) .
 

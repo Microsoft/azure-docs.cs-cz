@@ -8,18 +8,48 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/07/2020
-ms.openlocfilehash: d8b36676c9b95992bdcf382c1f474b56e30ad3fb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3973e32fdc724bd3c0894d6aaf2eb06ad3ba3adc
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535548"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629933"
 ---
 # <a name="archived-release-notes"></a>Archivované poznámky k verzi
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky pro Open Source Apache Hadoop a Apache Spark analýzy v Azure.
+
+## <a name="release-date-10082020"></a>Datum vydání: 10/08/2020
+
+Tato verze se týká HDInsight 3,6 i HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
+
+### <a name="new-features"></a>Nové funkce
+#### <a name="hdinsight-private-clusters-with-no-public-ip-and-private-link-preview"></a>Privátní clustery HDInsight bez veřejné IP adresy a privátního propojení (Preview)
+HDInsight teď podporuje vytváření clusterů bez přístupu veřejných IP adres a privátních odkazů do clusterů ve verzi Preview. Zákazníci můžou pomocí nových pokročilých nastavení sítě vytvořit plně izolovaný cluster bez veřejné IP adresy a používat pro přístup ke clusteru vlastní privátní koncové body. 
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od této verze se služba postupně migruje na [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md). Celý proces může trvat měsíce. Po migraci vašich oblastí a předplatných se nově vytvořené clustery HDInsight spustí ve službě Virtual Machine Scale Sets bez akcí zákazníků. Neočekává se žádná neprůlomová změna.
+
+### <a name="deprecation"></a>Vyřazení
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>Vyřazení clusteru HDInsight 3,6 ML Services
+Typ clusteru HDInsight 3,6 ML Services bude na konci podpory od prosince 31 2020. Zákazníci nevytvoří nové clustery služby 3,6 ML. Existující clustery se spustí, a to bez podpory Microsoftu. [Tady](./hdinsight-component-versioning.md#available-versions)se podívejte na vypršení platnosti podpory pro verze a typy clusterů HDInsight.
+
+### <a name="behavior-changes"></a>Změny chování
+Žádná změna chování pro tuto verzi.
+
+### <a name="upcoming-changes"></a>Nadcházející změny
+V nadcházejících verzích dojde k následujícím změnám.
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Možnost výběru různých velikostí virtuálních počítačů s Zookeeper pro služby Spark, Hadoop a ML
+HDInsight dnes nepodporuje přizpůsobení velikosti uzlů Zookeeper pro typy clusterů Spark, Hadoop a ML. Ve výchozím nastavení se A2_v2/a2 velikosti virtuálních počítačů, které jsou poskytovány zdarma. V nadcházející verzi můžete vybrat velikost virtuálního počítače Zookeeper, která je pro váš scénář nejvhodnější. Budou se účtovat uzly Zookeeper s velikostí virtuálního počítače jinou než A2_v2/a2. Virtuální počítače A2_v2 a a2 jsou stále poskytovány zdarma.
+
+### <a name="bug-fixes"></a>Opravy chyb
+HDInsight nadále zdokonaluje spolehlivost a výkon clusteru. 
+
+### <a name="component-version-change"></a>Změna verze součásti
+Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](./hdinsight-component-versioning.md)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
 
 ## <a name="release-date-09282020"></a>Datum vydání: 09/28/2020
 
@@ -518,7 +548,7 @@ Služby Apache Storm a ML nejsou v HDInsight 4,0 dostupné.
 
 Nové aktualizace a možnosti spadají do následujících kategorií:
 
-*  ***Aktualizace Hadoop a další Open source projekty** _ – kromě 1000 a oprav chyb v rámci 20 a open source projektů obsahuje tato aktualizace novou verzi _ *Spark (2,3)* * a **Kafka (1,0)** .
+*  ***Aktualizace Hadoop a další Open source projekty** _ – kromě 1000 a oprav chyb v rámci 20 a open source projektů obsahuje tato aktualizace novou verzi _ *Spark (2,3)* * a **Kafka (1,0)**.
 
     a.  [**Nové funkce v Apache Spark 2,3**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
@@ -1418,7 +1448,7 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 | CHYBA-98655              | [RANGER-2066](https://issues.apache.org/jira/browse/RANGER-2066)                                                                                                                                                                                                               | HBA – přístup k rodině sloupců je autorizován pomocí tagovaného sloupce ve skupině sloupců.                                       |
 | CHYBA-99883              | [Podregistr-19073](https://issues.apache.org/jira/browse/HIVE-19073), [podregistr-19145](https://issues.apache.org/jira/browse/HIVE-19145)                                                                                                                                                 | StatsOptimizer může pozměněovat konstantní sloupce.                                                                             |
 
-**Jiné**
+**Další**
 
 | **ID chyby Hortonworks** | **Apache JIRA**                                                                                                                        | **Souhrn**                                                                                                                                |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|

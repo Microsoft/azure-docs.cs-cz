@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761137"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629168"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Třetí část: Konfigurace oprávnění adresářů a souborů přes SMB 
 
@@ -44,7 +44,7 @@ Následující tabulka obsahuje oprávnění Azure RBAC související s touto ko
 
 ## <a name="supported-permissions"></a>Podporovaná oprávnění
 
-Soubory Azure podporují úplnou sadu základních a rozšířených seznamů ACL pro Windows. Můžete zobrazit a nakonfigurovat seznamy řízení přístupu (ACL) systému Windows u adresářů a souborů ve sdílené složce Azure připojením sdílené složky a následným použitím Průzkumníka souborů Windows, spuštěním příkazu Windows [Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) nebo příkazu [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) . 
+Soubory Azure podporují úplnou sadu základních a rozšířených seznamů ACL pro Windows. Můžete zobrazit a nakonfigurovat seznamy řízení přístupu (ACL) systému Windows u adresářů a souborů ve sdílené složce Azure připojením sdílené složky a následným použitím Průzkumníka souborů Windows, spuštěním příkazu Windows [Icacls](/windows-server/administration/windows-commands/icacls) nebo příkazu [set-ACL](/powershell/module/microsoft.powershell.security/set-acl) . 
 
 Pokud chcete nakonfigurovat seznamy řízení přístupu (ACL) pomocí uživatelských oprávnění, musíte sdílenou složku připojit pomocí klíče účtu úložiště na VIRTUÁLNÍm počítači připojeném k doméně. Podle pokynů v následující části připojte sdílenou složku Azure z příkazového řádku a nakonfigurujte seznamy řízení přístupu (ACL) systému Windows.
 
@@ -85,7 +85,7 @@ else
 
 ```
 
-Pokud dochází k potížím s připojením k souborům Azure, přečtěte si [Nástroj pro řešení potíží, který jsme publikovali pro chyby připojení k souborům Azure ve Windows](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/). Poskytujeme také [pokyny](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) pro řešení scénářů při zablokování portu 445. 
+Pokud dochází k potížím s připojením k souborům Azure, přečtěte si [Nástroj pro řešení potíží, který jsme publikovali pro chyby připojení k souborům Azure ve Windows](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/). Poskytujeme také [pokyny](./storage-files-faq.md#on-premises-access) pro řešení scénářů při zablokování portu 445. 
 
 ## <a name="configure-windows-acls"></a>Konfigurace seznamů řízení přístupu systému Windows
 
@@ -104,7 +104,7 @@ Pomocí Průzkumníka souborů Windows udělte úplným oprávněním všem adre
 1. V okně příkazového řádku pro přidání nových uživatelů zadejte cílové uživatelské jméno, kterému chcete udělit oprávnění, do pole **Zadejte názvy objektů k výběru** a vyberte možnost **kontrolovat názvy** a vyhledejte úplný název UPN cílového uživatele.
 1.    Vyberte **OK**.
 1.    Na kartě **zabezpečení** vyberte všechna oprávnění, která chcete novému uživateli udělit.
-1.    Vyberte **Použít**.
+1.    Vyberte **Apply** (Použít).
 
 ### <a name="configure-windows-acls-with-icacls"></a>Konfigurace seznamů ACL pro Windows pomocí icacls
 
@@ -114,7 +114,7 @@ K udělení úplných oprávnění všem adresářům a souborům ve sdílené s
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-Další informace o tom, jak používat icacls k nastavení seznamů řízení přístupu (ACL) systému Windows a různých typů podporovaných oprávnění, najdete v tématu [Reference k příkazovému řádku pro icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
+Další informace o tom, jak používat icacls k nastavení seznamů řízení přístupu (ACL) systému Windows a různých typů podporovaných oprávnění, najdete v tématu [Reference k příkazovému řádku pro icacls](/windows-server/administration/windows-commands/icacls).
 
 ## <a name="next-steps"></a>Další kroky
 

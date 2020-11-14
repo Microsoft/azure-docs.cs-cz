@@ -7,22 +7,22 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 609f6d5fd0bf75b1a2056c01c8d22ae9e08ab9cb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1eddca26152f27ced20bbae66b3265639b97e64e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746835"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629491"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
-[Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) a [protokol NFS (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (verze Preview). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
+[Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) a [protokol NFS (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (verze Preview). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
 
 Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a funkcí služby Azure Files, včetně použití Azure File Sync se soubory Azure. Pokud nevidíte odpověď na svoji otázku, můžete nás kontaktovat prostřednictvím následujících kanálů (v pořadí eskalace):
 
 1. Část s poznámkami tohoto článku.
-2. [Microsoft Q&stránku s otázkou pro Azure Storage](https://docs.microsoft.com/answers/topics/azure-file-storage.html).
+2. [Microsoft Q&stránku s otázkou pro Azure Storage](/answers/topics/azure-file-storage.html).
 3. [Soubory Azure ve službě UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. podpora Microsoftu. Chcete-li vytvořit novou žádost o podporu, v Azure Portal na kartě **help** klikněte na tlačítko **pomoc a podpora** a pak vyberte **Nová žádost o podporu** .
+4. podpora Microsoftu. Chcete-li vytvořit novou žádost o podporu, v Azure Portal na kartě **help** klikněte na tlačítko **pomoc a podpora** a pak vyberte **Nová žádost o podporu**.
 
 ## <a name="general"></a>Obecné
 * <a id="why-files-useful"></a>
@@ -80,7 +80,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="file-locking"></a>
   **Podporují soubory Azure uzamykání souborů?**  
-    Ano, soubory Azure plně podporují uzamykání souborů ve stylu SMB/Windows. [Podrobnosti najdete v podrobnostech](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks).
+    Ano, soubory Azure plně podporují uzamykání souborů ve stylu SMB/Windows. [Podrobnosti najdete v podrobnostech](/rest/api/storageservices/managing-file-locks).
 
 * <a id="give-us-feedback"></a>
   **Ve skutečnosti chci zobrazit konkrétní funkci přidanou do služby soubory Azure. Můžete ho přidat?**  
@@ -107,7 +107,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
     Výkon se bude lišit v závislosti na nastaveních prostředí, konfiguraci a na tom, jestli se jedná o počáteční nebo trvalou synchronizaci. Další informace najdete v tématu [Azure File Sync metriky výkonu](storage-files-scale-targets.md#azure-file-sync-performance-metrics) .
 
 * <a id="afs-conflict-resolution"></a>**Pokud se stejný soubor na dvou serverech změní přibližně na stejný čas, co se stane?**  
-    Azure File Sync používá jednoduchou strategii řešení konfliktů: obě změny souborů, které se ve dvou koncových bodech změnily současně. Poslední zapsaná změna zachovává původní název souboru. Starší soubor (určený parametrem LastWriteTime) má název koncového bodu a číslo konfliktu připojené k názvu souboru. V případě koncových bodů serveru je názvem koncového bodu název serveru. V případě koncových bodů cloudu je název koncového bodu **Cloud** . Název následuje po této taxonomii: 
+    Azure File Sync používá jednoduchou strategii řešení konfliktů: obě změny souborů, které se ve dvou koncových bodech změnily současně. Poslední zapsaná změna zachovává původní název souboru. Starší soubor (určený parametrem LastWriteTime) má název koncového bodu a číslo konfliktu připojené k názvu souboru. V případě koncových bodů serveru je názvem koncového bodu název serveru. V případě koncových bodů cloudu je název koncového bodu **Cloud**. Název následuje po této taxonomii: 
    
     \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
@@ -158,7 +158,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
     
 * <a id="afs-resource-move"></a>
   **Můžu přesunout službu synchronizace úložiště nebo účet úložiště do jiné skupiny prostředků, předplatného nebo tenanta Azure AD?**  
-   Ano, služba synchronizace úložiště nebo účet úložiště se dají přesunout do jiné skupiny prostředků, předplatného nebo tenanta Azure AD. Po přesunu služby synchronizace úložiště nebo účtu úložiště musíte aplikaci Microsoft. StorageSync udělit přístup k účtu úložiště ( [Zkontrolujte, jestli Azure File Sync má přístup k účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+   Ano, služba synchronizace úložiště nebo účet úložiště se dají přesunout do jiné skupiny prostředků, předplatného nebo tenanta Azure AD. Po přesunu služby synchronizace úložiště nebo účtu úložiště musíte aplikaci Microsoft. StorageSync udělit přístup k účtu úložiště ( [Zkontrolujte, jestli Azure File Sync má přístup k účtu úložiště](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)).
 
     > [!Note]  
     > Při vytváření koncového bodu cloudu musí být služba synchronizace úložiště a účet úložiště ve stejném tenantovi Azure AD. Po vytvoření koncového bodu cloudu se služba synchronizace úložiště a účet úložiště můžou přesunout do různých tenantů Azure AD.
@@ -184,7 +184,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
     - Azure File Sync zachovává a replikuje všechny volitelné seznamy řízení přístupu (DACL) a seznamy DACL (ať už jsou založené na službě Active Directory nebo místní) na všechny koncové body serveru, na které se synchronizuje. 
     
-    V případě, že chcete mít k dispozici komplexní reprezentace všech protokolů podporovaných v Azure Storage Services, můžete použít odkaz pro [autorizaci Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) . 
+    V případě, že chcete mít k dispozici komplexní reprezentace všech protokolů podporovaných v Azure Storage Services, můžete použít odkaz pro [autorizaci Azure Storage](../common/storage-auth.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) . 
     
 * <a id="encryption-at-rest"></a>
 **Jak se dá zajistit, aby byla moje sdílená složka Azure šifrovaná v klidovém stavu?**  
@@ -209,14 +209,14 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="data-compliance-policies"></a>
 **Jaké zásady dodržování předpisů podporují soubory Azure?**  
 
-   Soubory Azure běží nad stejnou architekturou úložiště, která se používá v jiných službách úložiště v Azure Storage. Služba soubory Azure používá stejné zásady dodržování předpisů, které se používají v jiných službách úložiště Azure. Další informace o kompatibilitě dat Azure Storage najdete v tématu [Azure Storage nabídek dodržování předpisů](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)a na webu [Microsoft Trust Center](https://microsoft.com/trustcenter/default.aspx).
+   Soubory Azure běží nad stejnou architekturou úložiště, která se používá v jiných službách úložiště v Azure Storage. Služba soubory Azure používá stejné zásady dodržování předpisů, které se používají v jiných službách úložiště Azure. Další informace o kompatibilitě dat Azure Storage najdete v tématu [Azure Storage nabídek dodržování předpisů](../common/storage-compliance-offerings.md)a na webu [Microsoft Trust Center](https://microsoft.com/trustcenter/default.aspx).
 
 * <a id="file-auditing"></a>
 **Jak mohu Auditovat přístup k souborům a změny ve službě soubory Azure?**
 
   K dispozici jsou dvě možnosti, které poskytují funkce auditování pro služby soubory Azure:
-  - Pokud uživatelé přistupují ke sdílené složce Azure přímo, [Azure Storage protokoly (Preview)](https://docs.microsoft.com/azure/storage/common/monitor-storage?tabs=azure-powershell#logs-in-azure-monitor-preview) se dají použít ke sledování změn souborů a přístupu uživatelů. Tyto protokoly je možné použít pro účely řešení potíží a požadavky jsou protokolovány na základě nejlepšího úsilí.
-  - Pokud uživatelé přistupují ke sdílené složce Azure přes Windows Server s nainstalovaným agentem Azure File Sync, použijte [zásady auditu](https://docs.microsoft.com/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) nebo produkt třetích stran ke sledování změn souborů a přístupu uživatelů na Windows serveru. 
+  - Pokud uživatelé přistupují ke sdílené složce Azure přímo, [Azure Storage protokoly (Preview)](../blobs/monitor-blob-storage.md?tabs=azure-powershell#analyzing-logs) se dají použít ke sledování změn souborů a přístupu uživatelů. Tyto protokoly je možné použít pro účely řešení potíží a požadavky jsou protokolovány na základě nejlepšího úsilí.
+  - Pokud uživatelé přistupují ke sdílené složce Azure přes Windows Server s nainstalovaným agentem Azure File Sync, použijte [zásady auditu](/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) nebo produkt třetích stran ke sledování změn souborů a přístupu uživatelů na Windows serveru. 
    
 ### <a name="ad-ds--azure-ad-ds-authentication"></a>Služba AD DS & ověřování Azure služba AD DS
 * <a id="ad-support-devices"></a>
@@ -247,7 +247,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="ad-aad-smb-files"></a>
 **Jak můžu ověřit, jestli služba AD DS ověřování v účtu úložiště zapnuté a jak načíst informace o doméně?**
 
-    Pokyny najdete [tady](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account).
+    Pokyny najdete [tady](./storage-files-identity-ad-ds-enable.md#confirm-the-feature-is-enabled).
 
 * <a id=""></a>
 **Podporují Azure AD ověřování virtuálních počítačů se systémem Linux?**
@@ -288,19 +288,14 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
     Ano, ověřování AD můžete povolit pro sdílenou složku spravovanou službou Azure File Sync. Změny seznamů ACL adresáře nebo souborů NTFS na místních souborových serverech budou vrstveny do souborů Azure a naopak.
 
 * <a id="ad-aad-smb-files"></a>
-**Jak můžu ověřit, jestli je povolené ověřování AD na účtu úložiště a informace o doméně služby AD?**
-
-    Podle [zde](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) uvedených pokynů můžete ověřit, jestli je v účtu úložiště povolené ověřování Azure Files AD, a načíst informace o doméně AD.
-
-* <a id="ad-aad-smb-files"></a>
 **Je nějaký rozdíl v tom, že vytvoření účtu počítače nebo přihlašovacího účtu služby pro reprezentaci účtu úložiště ve službě AD?**
 
-    Vytvoření [účtu počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí) nebo [přihlašovacího účtu služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) nemá žádný rozdíl nad tím, jak ověřování funguje se soubory Azure. Můžete si vybrat, jak vyjádřit účet úložiště jako identitu ve vašem prostředí služby AD. Výchozí DomainAccountType sada v rutině Join-AzStorageAccountForAuth je počítačový účet. Doba vypršení platnosti hesla nakonfigurovaná ve vašem prostředí služby AD se ale může lišit pro účet počítače nebo přihlašovací účet služby a Vy musíte vzít v úvahu, abyste si [aktualizovali heslo své identity účtu úložiště ve službě AD](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password).
+    Vytvoření [účtu počítače](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí) nebo [přihlašovacího účtu služby](/windows/win32/ad/about-service-logon-accounts) nemá žádný rozdíl nad tím, jak ověřování funguje se soubory Azure. Můžete si vybrat, jak vyjádřit účet úložiště jako identitu ve vašem prostředí služby AD. Výchozí DomainAccountType sada v rutině Join-AzStorageAccountForAuth je počítačový účet. Doba vypršení platnosti hesla nakonfigurovaná ve vašem prostředí služby AD se ale může lišit pro účet počítače nebo přihlašovací účet služby a Vy musíte vzít v úvahu, abyste si [aktualizovali heslo své identity účtu úložiště ve službě AD](./storage-files-identity-ad-ds-update-password.md).
  
 * <a id="ad-support-rest-apis"></a>
 **Existují rozhraní REST API, která podporují seznamy ACL pro získání, nastavení/kopírování adresářů/souborů?**
 
-    Ano, podporujeme rozhraní REST API, která při použití REST API [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (nebo novější) k získání, nastavení nebo kopírování seznamů ACL systému souborů NTFS pro adresáře nebo soubory. Podporujeme také zachování seznamů ACL systému Windows v nástrojích založených na REST: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
+    Ano, podporujeme rozhraní REST API, která při použití REST API [2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (nebo novější) k získání, nastavení nebo kopírování seznamů ACL systému souborů NTFS pro adresáře nebo soubory. Podporujeme také zachování seznamů ACL systému Windows v nástrojích založených na REST: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
 
 ## <a name="network-file-system"></a>Systém souborů sítě
 
@@ -324,7 +319,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="port-445-blocked"></a>
 **Poskytovatel internetových služeb nebo IT blokuje port 445, který selhává při připojování souborů Azure. Co mám dělat?**
 
-    Další informace o [různých způsobech blokovaného alternativního řešení najdete na portu 445](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Soubory Azure umožňují připojení pomocí protokolu SMB 3,0 (s podporou šifrování) mimo oblast nebo Datacenter. Protokol SMB 3,0 zavedl mnoho funkcí zabezpečení, včetně šifrování kanálů, které je velmi bezpečné pro použití přes Internet. Je však možné, že port 445 byl zablokován z důvodu historických důvodů ohrožení zabezpečení zjištěných v nižších verzích protokolu SMB. V ideálním případě by měl být port zablokovaný jenom pro provoz SMB 1,0 a na všech klientech by měl být vypnutý protokol SMB 1,0.
+    Další informace o [různých způsobech blokovaného alternativního řešení najdete na portu 445](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked). Soubory Azure umožňují připojení pomocí protokolu SMB 3,0 (s podporou šifrování) mimo oblast nebo Datacenter. Protokol SMB 3,0 zavedl mnoho funkcí zabezpečení, včetně šifrování kanálů, které je velmi bezpečné pro použití přes Internet. Je však možné, že port 445 byl zablokován z důvodu historických důvodů ohrožení zabezpečení zjištěných v nižších verzích protokolu SMB. V ideálním případě by měl být port zablokovaný jenom pro provoz SMB 1,0 a na všech klientech by měl být vypnutý protokol SMB 1,0.
 
 * <a id="expressroute-not-required"></a>
 **Musím použít Azure ExpressRoute k připojení k souborům Azure nebo k používání Azure File Sync v místním prostředí?**  
@@ -339,7 +334,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Návody zálohovat sdílenou složku Azure?**  
-    Pro ochranu před náhodným odstraněním můžete použít periodické [snímky sdílené složky](storage-snapshots-files.md) . Můžete také použít nástroj pro zálohování AzCopy, Robocopy nebo třetí strany, který může zálohovat připojenou sdílenou složku. Azure Backup nabízí zálohu souborů Azure. Přečtěte si další informace o [Zálohování sdílených složek Azure pomocí Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
+    Pro ochranu před náhodným odstraněním můžete použít periodické [snímky sdílené složky](storage-snapshots-files.md) . Můžete také použít nástroj pro zálohování AzCopy, Robocopy nebo třetí strany, který může zálohovat připojenou sdílenou složku. Azure Backup nabízí zálohu souborů Azure. Přečtěte si další informace o [Zálohování sdílených složek Azure pomocí Azure Backup](../../backup/backup-afs.md).
 
 ## <a name="share-snapshots"></a>Sdílet snímky
 
@@ -450,11 +445,11 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 ## <a name="features-and-interoperability-with-other-services"></a>Funkce a interoperabilita s ostatními službami
 * <a id="cluster-witness"></a>
 **Můžu použít sdílenou složku Azure jako *určující sdílenou složku* pro cluster s podporou převzetí služeb při selhání v systému Windows Server?**  
-    V současné době není tato konfigurace pro sdílenou složku Azure podporována. Další informace o tom, jak nastavit tuto službu pro úložiště objektů BLOB v Azure, najdete v tématu [nasazení cloudového clusteru pro cluster s podporou převzetí služeb při selhání](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness).
+    V současné době není tato konfigurace pro sdílenou složku Azure podporována. Další informace o tom, jak nastavit tuto službu pro úložiště objektů BLOB v Azure, najdete v tématu [nasazení cloudového clusteru pro cluster s podporou převzetí služeb při selhání](/windows-server/failover-clustering/deploy-cloud-witness).
 
 * <a id="containers"></a>
 **Můžu připojit sdílenou složku Azure na instanci kontejneru Azure?**  
-    Ano, sdílené složky Azure jsou vhodné, pokud chcete zachovat informace po dobu životnosti instance kontejneru. Další informace najdete v tématu [připojení sdílené složky Azure ke službě Azure Container Instances](../../container-instances/container-instances-mounting-azure-files-volume.md).
+    Ano, sdílené složky Azure jsou vhodné, pokud chcete zachovat informace po dobu životnosti instance kontejneru. Další informace najdete v tématu [připojení sdílené složky Azure ke službě Azure Container Instances](../../container-instances/container-instances-volume-azure-files.md).
 
 * <a id="rest-rename"></a>
 **Existuje v REST API operace přejmenování?**  

@@ -1,30 +1,30 @@
 ---
 title: Volání aplikací logiky s využitím Azure Functions
-description: Vytvoření Azure Functions, které volají nebo spouštějí Logic Apps naslouchání Azure Service Bus
+description: Volání nebo spuštění Logic Apps pomocí Azure Functions a Azure Service Bus
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fcf7f1a27633c978c10f541d0a341225fbcb126d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013771"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629729"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Volání nebo spuštění Logic Apps pomocí Azure Functions a Azure Service Bus
 
-Můžete použít [Azure Functions](../azure-functions/functions-overview.md) pro aktivaci aplikace logiky, pokud potřebujete nasadit dlouhodobě spuštěný naslouchací proces nebo úlohu. Můžete například vytvořit funkci Azure, která naslouchá ve frontě [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) a hned spustí aplikaci logiky jako Trigger push.
+Můžete použít [Azure Functions](../azure-functions/functions-overview.md) pro aktivaci aplikace logiky, pokud potřebujete nasadit dlouhodobě spuštěný naslouchací proces nebo úlohu. Můžete například vytvořit funkci, která naslouchá ve frontě [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) a hned spustí aplikaci logiky jako Trigger push.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * Azure Service Bus obor názvů. Pokud obor názvů nemáte, [vytvořte nejprve obor názvů](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
-* Aplikace Azure Functions, což je kontejner pro Azure Functions. Pokud nemáte aplikaci Function App, [nejprve vytvořte aplikaci Function App](../azure-functions/functions-create-first-azure-function.md)a ujistěte se, že jste vybrali .NET jako zásobník modulu runtime.
+* Aplikace Function App, což je kontejner pro vaše funkce. Pokud nemáte aplikaci Function App, [nejprve vytvořte aplikaci Function App](../azure-functions/functions-create-first-azure-function.md)a ujistěte se, že jste vybrali .NET jako zásobník modulu runtime.
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -50,7 +50,7 @@ V tomto scénáři máte funkci spouštějící jednotlivé aplikace logiky, kte
 
    1. V triggeru žádosti vyberte **použít ukázkovou datovou část k vygenerování schématu**.
 
-   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte datovou část ukázky a potom vyberte **Hotovo**.
+   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON** zadejte datovou část ukázky a potom vyberte **Hotovo**.
 
       ![Zadat ukázkovou datovou část](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -94,7 +94,7 @@ V tomto scénáři máte funkci spouštějící jednotlivé aplikace logiky, kte
 
    ![Vygenerovaná adresa URL zpětného volání pro aktivační událost](./media/logic-apps-scenario-function-sb-trigger/callback-URL-for-trigger.png)
 
-## <a name="create-azure-function"></a>Vytvoření funkce Azure Functions
+## <a name="create-a-function"></a>Vytvoření funkce
 
 Dále vytvořte funkci, která funguje jako Trigger a naslouchat do fronty.
 

@@ -8,12 +8,12 @@ ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b494e7f7f99394c7337d663ea9a9c7e1f74dacf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 880eeb87d8727d65b2aaecdad8b0ed9ccaacea7a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612825"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629848"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Konfigurace koncových bodů sítě služby soubory Azure
 
@@ -27,11 +27,11 @@ Tento článek se zaměřuje na konfiguraci koncových bodů účtu úložiště
 
 Před načtením tohoto průvodce doporučujeme přečíst si [informace o sítích Azure Files](storage-files-networking-overview.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - V tomto článku se předpokládá, že jste už vytvořili předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - V tomto článku se předpokládá, že už máte vytvořenou sdílenou složku Azure v účtu úložiště, ke kterému se chcete připojit z místního prostředí. Informace o tom, jak vytvořit sdílenou složku Azure, najdete v tématu [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).
-- Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](/powershell/azure/install-az-ps).
 - Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli).
 
 ## <a name="endpoint-configurations"></a>Konfigurace koncových bodů
@@ -45,9 +45,9 @@ Můžete nakonfigurovat koncové body, aby se omezil síťový přístup k vaše
 
 Vytvořením privátního koncového bodu pro účet úložiště dojde k nasazení těchto prostředků Azure:
 
-- **Privátní koncový bod**: prostředek Azure, který představuje privátní koncový bod účtu úložiště. Můžete si to představit jako prostředek, který připojuje účet úložiště a síťové rozhraní.
-- **Síťové rozhraní (nic)**: síťové rozhraní, které udržuje privátní IP adresu v zadané virtuální síti nebo podsíti. Jedná se o stejný prostředek, který se nasadí při nasazení virtuálního počítače, ale místo aby se přiřadil k VIRTUÁLNÍmu počítači, je vlastníkem privátního koncového bodu.
-- **Privátní zóna DNS**: Pokud jste ještě nikdy nasadili privátní koncový bod pro tuto virtuální síť, bude pro vaši virtuální síť nasazená nová privátní zóna DNS. Pro účet úložiště v této zóně DNS se vytvoří i záznam DNS. Pokud jste již v této virtuální síti nasadili privátní koncový bod, bude do existující zóny DNS přidán záznam nového záznamu pro účet úložiště. Nasazení zóny DNS je volitelné, ale důrazně se doporučuje a vyžaduje se, pokud připojujete sdílené složky Azure k instančnímu objektu služby AD nebo pomocí rozhraní REST API.
+- **Privátní koncový bod** : prostředek Azure, který představuje privátní koncový bod účtu úložiště. Můžete si to představit jako prostředek, který připojuje účet úložiště a síťové rozhraní.
+- **Síťové rozhraní (nic)** : síťové rozhraní, které udržuje privátní IP adresu v zadané virtuální síti nebo podsíti. Jedná se o stejný prostředek, který se nasadí při nasazení virtuálního počítače, ale místo aby se přiřadil k VIRTUÁLNÍmu počítači, je vlastníkem privátního koncového bodu.
+- **Privátní zóna DNS** : Pokud jste ještě nikdy nasadili privátní koncový bod pro tuto virtuální síť, bude pro vaši virtuální síť nasazená nová privátní zóna DNS. Pro účet úložiště v této zóně DNS se vytvoří i záznam DNS. Pokud jste již v této virtuální síti nasadili privátní koncový bod, bude do existující zóny DNS přidán záznam nového záznamu pro účet úložiště. Nasazení zóny DNS je volitelné, ale důrazně se doporučuje a vyžaduje se, pokud připojujete sdílené složky Azure k instančnímu objektu služby AD nebo pomocí rozhraní REST API.
 
 > [!Note]  
 > Tento článek používá příponu DNS účtu úložiště pro veřejné oblasti Azure, `core.windows.net` . Tento komentář platí také pro cloudy Azure, jako je Cloud pro státní správu USA a Azure Čína, stačí nahradit příslušné přípony vašeho prostředí. 

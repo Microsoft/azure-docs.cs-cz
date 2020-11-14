@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da49d1c94584393bfef066d61c1caf360b249c3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6253deb53229172cd499a6aa14b8d8f19bc07b63
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515318"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629253"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure
 Pomocí připojení VPN typu Point-to-Site (P2S) můžete připojit sdílené složky Azure přes protokol SMB mimo Azure bez nutnosti otevírat port 445. Připojení VPN typu Point-to-site je připojení VPN mezi Azure a jednotlivými klienty. Pokud chcete použít připojení VPN P2S se soubory Azure, bude nutné nakonfigurovat připojení VPN P2S pro každého klienta, který se chce připojit. Pokud máte mnoho klientů, kteří se potřebují připojit ke sdíleným složkám Azure ze své místní sítě, můžete místo připojení typu Point-to-site pro každého klienta použít připojení VPN typu Site-to-Site (S2S). Další informace najdete v tématu [Konfigurace sítě Site-to-Site VPN pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
@@ -21,8 +21,8 @@ Důrazně doporučujeme, abyste si přečetli [požadavky na síť pro přímý 
 
 Tento článek podrobně popisuje postup konfigurace sítě VPN typu Point-to-site v systému Windows (klient Windows a Windows Server) pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat Azure File Sync provoz přes síť VPN, přečtěte si téma [Konfigurace nastavení proxy serveru Azure File Sync a brány firewall](storage-sync-files-firewall-and-proxy.md).
 
-## <a name="prerequisites"></a>Požadavky
-- Nejnovější verze modulu Azure PowerShell. Další informace o tom, jak nainstalovat Azure PowerShell, najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) a výběr operačního systému. Pokud dáváte přednost použití Azure CLI v systému Windows, může se stát, že následující pokyny jsou Azure PowerShell.
+## <a name="prerequisites"></a>Předpoklady
+- Nejnovější verze modulu Azure PowerShell. Další informace o tom, jak nainstalovat Azure PowerShell, najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps) a výběr operačního systému. Pokud dáváte přednost použití Azure CLI v systému Windows, může se stát, že následující pokyny jsou Azure PowerShell.
 
 - Sdílená složka Azure, kterou byste chtěli místně připojit. Sdílené složky Azure se nasazují v rámci účtů úložiště, což jsou konstrukce správy, které představují sdílený fond úložiště, ve kterém můžete nasazovat víc sdílených složek a další prostředky úložiště, jako jsou kontejnery nebo fronty objektů BLOB. Další informace o tom, jak nasadit sdílené složky Azure a účty úložiště, najdete v tématu [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).
 
@@ -212,7 +212,7 @@ Export-PfxCertificate `
 ```
 
 ## <a name="configure-the-vpn-client"></a>Konfigurace klienta VPN
-Brána virtuální sítě Azure vytvoří balíček ke stažení s konfiguračními soubory potřebnými k inicializaci připojení VPN na místním počítači s Windows. Nakonfigurujeme připojení VPN pomocí funkce [Always On VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) systému Windows 10/Windows Server 2016 +. Tento balíček také obsahuje spustitelné balíčky, které nakonfigurují starší verzi klienta VPN v systému Windows, pokud je to potřeba. Tato příručka používá rozhraní VPN Always On, nikoli starší klient VPN, protože klient VPN Always On umožňuje koncovým uživatelům připojit se k Azure VPN a odpojit se od něj bez oprávnění správce ke svému počítači. 
+Brána virtuální sítě Azure vytvoří balíček ke stažení s konfiguračními soubory potřebnými k inicializaci připojení VPN na místním počítači s Windows. Nakonfigurujeme připojení VPN pomocí funkce [Always On VPN](/windows-server/remote/remote-access/vpn/always-on-vpn/) systému Windows 10/Windows Server 2016 +. Tento balíček také obsahuje spustitelné balíčky, které nakonfigurují starší verzi klienta VPN v systému Windows, pokud je to potřeba. Tato příručka používá rozhraní VPN Always On, nikoli starší klient VPN, protože klient VPN Always On umožňuje koncovým uživatelům připojit se k Azure VPN a odpojit se od něj bez oprávnění správce ke svému počítači. 
 
 Následující skript nainstaluje klientský certifikát vyžadovaný k ověřování na bráně virtuální sítě, stáhne a nainstaluje balíček VPN. Nezapomeňte nahradit `<computer1>` a `<computer2>` pomocí požadovaných počítačů. Tento skript můžete spustit na tolik počítačů, kolik jich budete chtít, přidáním dalších relací PowerShellu do `$sessions` pole. Váš účet použití musí být správce na každém z těchto počítačů. Pokud je jedním z těchto počítačů místní počítač, ze kterého spouštíte skript, musíte spustit skript z relace PowerShellu se zvýšenými oprávněními. 
 

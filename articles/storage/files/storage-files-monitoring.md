@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f37fc8e19025b78475f706ff96c502cc6094d54f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8dc99cda4128635e619afec5ed725da16bbd81ed
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358418"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629882"
 ---
 # <a name="monitoring-azure-files"></a>Monitorování souborů Azure
 
@@ -28,7 +28,7 @@ Stránka **Přehled** v Azure Portal pro každý prostředek služby soubory Azu
 ## <a name="what-is-azure-monitor"></a>Co je Azure Monitor?
 Služba soubory Azure vytváří data monitorování pomocí [Azure monitor](../../azure-monitor/overview.md), což je plná služba monitorování zásobníku v Azure. Azure Monitor poskytuje kompletní sadu funkcí pro monitorování prostředků a prostředků Azure v jiných cloudech a v místním prostředí. 
 
-Začněte s článkem [monitorování prostředků Azure pomocí Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource), který popisuje následující informace:
+Začněte s článkem [monitorování prostředků Azure pomocí Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md), který popisuje následující informace:
 
 - Co je Azure Monitor?
 - Náklady spojené s monitorováním
@@ -44,7 +44,7 @@ Soubory Azure shromažďují stejný druh dat monitorování jako jiné prostře
 
 Podrobné informace o metrikách a protokolech, které vytváří služba soubory Azure, najdete v referenčních informacích k [datům monitorování souborů Azure](storage-files-monitoring-reference.md) .
 
-Metriky a protokoly v Azure Monitor podporují jenom účty úložiště Azure Resource Manager. Azure Monitor nepodporuje účty klasického úložiště. Pokud chcete používat metriky nebo protokoly v klasickém účtu úložiště, musíte migrovat na účet úložiště Azure Resource Manager. Viz [migrace na Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview).
+Metriky a protokoly v Azure Monitor podporují jenom účty úložiště Azure Resource Manager. Azure Monitor nepodporuje účty klasického úložiště. Pokud chcete používat metriky nebo protokoly v klasickém účtu úložiště, musíte migrovat na účet úložiště Azure Resource Manager. Viz [migrace na Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 ## <a name="collection-and-routing"></a>Shromažďování a směrování
 
@@ -58,7 +58,7 @@ Chcete-li shromáždit protokoly prostředků, je nutné vytvořit nastavení di
 | StorageWrite | Operace zápisu pro objekty. |
 | StorageDelete | Odstraní operace s objekty. |
 
-Seznam operací SMB a REST, které se protokolují, najdete v článku o [operacích protokolovaných úložiště a o stavových zprávách](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a referenčních informacích k [datům monitorování Azure Files](storage-files-monitoring-reference.md).
+Seznam operací SMB a REST, které se protokolují, najdete v článku o [operacích protokolovaných úložiště a o stavových zprávách](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a referenčních informacích k [datům monitorování Azure Files](storage-files-monitoring-reference.md).
 
 ## <a name="creating-a-diagnostic-setting"></a>Vytvoření nastavení diagnostiky
 
@@ -104,7 +104,7 @@ Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shroma�
 2. V rozevíracím seznamu **účet úložiště** vyberte účet úložiště, do kterého chcete archivovat protokoly, klikněte na tlačítko **OK** a potom klikněte na tlačítko **Uložit** .
 
    > [!NOTE]
-   > Než zvolíte účet úložiště jako cíl exportu, přečtěte si téma [archivace protokolů prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage) a pochopení požadavků v účtu úložiště.
+   > Než zvolíte účet úložiště jako cíl exportu, přečtěte si téma [archivace protokolů prostředků Azure](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) a pochopení požadavků v účtu úložiště.
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Streamování protokolů do Azure Event Hubs
 
@@ -140,7 +140,7 @@ Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shroma�
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archivace protokolů do účtu úložiště
 
-Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell spolu s `StorageAccountId` parametrem.
+Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell spolu s `StorageAccountId` parametrem.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -154,11 +154,11 @@ Tady je příklad:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-Popis jednotlivých parametrů najdete v tématu [archivace protokolů prostředků Azure prostřednictvím Azure PowerShell](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-azure-powershell).
+Popis jednotlivých parametrů najdete v tématu [archivace protokolů prostředků Azure prostřednictvím Azure PowerShell](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Streamování protokolů do centra událostí
 
-Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `EventHubAuthorizationRuleId` parametrem.
+Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `EventHubAuthorizationRuleId` parametrem.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -168,11 +168,11 @@ Tady je příklad:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-Popis jednotlivých parametrů najdete v tématu [streamovaná data, která se Event Hubs pomocí rutin PowerShellu](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-powershell-cmdlets).
+Popis jednotlivých parametrů najdete v tématu [streamovaná data, která se Event Hubs pomocí rutin PowerShellu](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
 
 #### <a name="send-logs-to-log-analytics"></a>Odesílání protokolů do Log Analytics
 
-Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `WorkspaceId` parametrem.
+Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `WorkspaceId` parametrem.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -182,11 +182,11 @@ Tady je příklad:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-Další informace najdete v tématu [streamování protokolů prostředků Azure do Log Analytics pracovního prostoru v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
+Další informace najdete v tématu [streamování protokolů prostředků Azure do Log Analytics pracovního prostoru v Azure monitor](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Nejdřív otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), nebo pokud jste rozhraní příkazového řádku Azure [nainstalovali](https://docs.microsoft.com/cli/azure/install-azure-cli) místně, otevřete konzolovou aplikaci, například Windows PowerShell.
+1. Nejdřív otevřete [Azure Cloud Shell](../../cloud-shell/overview.md), nebo pokud jste rozhraní příkazového řádku Azure [nainstalovali](/cli/azure/install-azure-cli) místně, otevřete konzolovou aplikaci, například Windows PowerShell.
 
 2. Pokud je vaše identita přidružená k více než jednomu předplatnému, nastavte své aktivní předplatné na předplatné účtu úložiště, pro který chcete povolit protokoly.
 
@@ -198,7 +198,7 @@ Další informace najdete v tématu [streamování protokolů prostředků Azure
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archivace protokolů do účtu úložiště
 
-Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -212,11 +212,11 @@ Tady je příklad:
 
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
-Popis jednotlivých parametrů najdete v tématu [archivní protokoly prostředků přes Azure CLI](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-the-azure-cli).
+Popis jednotlivých parametrů najdete v tématu [archivní protokoly prostředků přes Azure CLI](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Streamování protokolů do centra událostí
 
-Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -226,11 +226,11 @@ Tady je příklad:
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
-Popis jednotlivých parametrů najdete v tématu [streamovaná data, která se Event Hubs přes rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-azure-cli).
+Popis jednotlivých parametrů najdete v tématu [streamovaná data, která se Event Hubs přes rozhraní příkazového řádku Azure CLI](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
 
 #### <a name="send-logs-to-log-analytics"></a>Odesílání protokolů do Log Analytics
 
-Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
@@ -240,11 +240,11 @@ Tady je příklad:
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- Další informace najdete v tématu [streamování protokolů prostředků Azure do Log Analytics pracovního prostoru v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
+ Další informace najdete v tématu [streamování protokolů prostředků Azure do Log Analytics pracovního prostoru v Azure monitor](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
 
 ### <a name="template"></a>[Šablona](#tab/template)
 
-Chcete-li zobrazit šablonu Azure Resource Manager, která vytvoří nastavení diagnostiky, přečtěte si téma [nastavení diagnostiky pro Azure Storage](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage).
+Chcete-li zobrazit šablonu Azure Resource Manager, která vytvoří nastavení diagnostiky, přečtěte si téma [nastavení diagnostiky pro Azure Storage](../../azure-monitor/samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage).
 
 ---
 
@@ -257,7 +257,7 @@ Pro metriky, které podporují dimenze, můžete metriku filtrovat pomocí poža
 - Microsoft. Storage/storageAccounts
 - Microsoft. Storage/storageAccounts/služby
 
-Seznam Azure Monitor všech metrik podpory, které obsahují soubory Azure, najdete v tématu [Azure monitor podporovaných metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices).
+Seznam Azure Monitor všech metrik podpory, které obsahují soubory Azure, najdete v tématu [Azure monitor podporovaných metrik](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices).
 
 ### <a name="accessing-metrics"></a>Přístup k metrikám
 
@@ -268,7 +268,7 @@ Seznam Azure Monitor všech metrik podpory, které obsahují soubory Azure, najd
 
 #### <a name="list-the-metric-definition"></a>Výpis definice metriky
 
-Můžete vypsat definici metriky svého účtu úložiště nebo služby soubory Azure. Použijte rutinu [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition) .
+Můžete vypsat definici metriky svého účtu úložiště nebo služby soubory Azure. Použijte rutinu [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) .
 
 V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku celého účtu úložiště nebo ID prostředku služby soubory Azure.  Tato ID prostředků najdete na stránkách **vlastností** svého účtu úložiště v Azure Portal.
 
@@ -279,7 +279,7 @@ V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku ce
 
 #### <a name="reading-metric-values"></a>Čtení hodnot metriky
 
-Můžete číst hodnoty metriky na úrovni účtu účtu úložiště nebo služby soubory Azure. Použijte rutinu [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric) .
+Můžete číst hodnoty metriky na úrovni účtu účtu úložiště nebo služby soubory Azure. Použijte rutinu [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) .
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -290,7 +290,7 @@ Můžete číst hodnoty metriky na úrovni účtu účtu úložiště nebo služ
 
 #### <a name="list-the-account-level-metric-definition"></a>Výpis definice metriky na úrovni účtu
 
-Můžete vypsat definici metriky svého účtu úložiště nebo služby soubory Azure. Použijte příkaz [AZ monitor Metrics list-definitions](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) .
+Můžete vypsat definici metriky svého účtu úložiště nebo služby soubory Azure. Použijte příkaz [AZ monitor Metrics list-definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) .
  
 V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku celého účtu úložiště nebo ID prostředku služby soubory Azure. Tato ID prostředků najdete na stránkách **vlastností** svého účtu úložiště v Azure Portal.
 
@@ -300,7 +300,7 @@ V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku ce
 
 #### <a name="read-account-level-metric-values"></a>Číst hodnoty metrik na úrovni účtu
 
-Můžete si přečíst hodnoty metrik účtu úložiště nebo služby soubory Azure. Použijte příkaz [AZ monitor Metrics list](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list) .
+Můžete si přečíst hodnoty metrik účtu úložiště nebo služby soubory Azure. Použijte příkaz [AZ monitor Metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) .
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
@@ -312,7 +312,7 @@ Azure Monitor poskytuje [.NET SDK](https://www.nuget.org/packages/Microsoft.Azur
  
 V těchto příkladech nahraďte `<resource-ID>` zástupný symbol ID prostředku celého účtu úložiště nebo služby soubory Azure. Tato ID prostředků najdete na stránkách **vlastností** svého účtu úložiště v Azure Portal.
 
-Nahraďte `<subscription-ID>` proměnnou číslem ID vašeho předplatného. Pokyny k získání hodnot pro `<tenant-ID>` , `<application-ID>` a `<AccessKey>` najdete v tématu [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/). 
+Nahraďte `<subscription-ID>` proměnnou číslem ID vašeho předplatného. Pokyny k získání hodnot pro `<tenant-ID>` , `<application-ID>` a `<AccessKey>` najdete v tématu [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md). 
 
 #### <a name="list-the-account-level-metric-definition"></a>Výpis definice metriky na úrovni účtu
 
@@ -456,7 +456,7 @@ Není k dispozici.
 
 Protokoly prostředků můžete přistupovat buď jako objekt BLOB v účtu úložiště, jako data události, nebo prostřednictvím analytických dotazů log.
 
-Seznam operací SMB a REST, které se protokolují, najdete v článku o [operacích protokolovaných úložiště a o stavových zprávách](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a referenčních informacích k [datům monitorování Azure Files](storage-files-monitoring-reference.md).
+Seznam operací SMB a REST, které se protokolují, najdete v článku o [operacích protokolovaných úložiště a o stavových zprávách](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a referenčních informacích k [datům monitorování Azure Files](storage-files-monitoring-reference.md).
 
 > [!NOTE]
 > Protokoly Azure Storage v Azure Monitor jsou ve verzi Public Preview a jsou dostupné pro testování ve verzi Preview ve všech oblastech veřejného cloudu. Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [tuto stránku](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u). Tato verze Preview umožňuje protokoly pro objekty BLOB (včetně Azure Data Lake Storage Gen2), soubory, fronty, tabulky, účty Premium Storage pro obecné účely V1 a účty úložiště pro obecné účely v2. Klasické účty úložiště se nepodporují.
@@ -472,7 +472,7 @@ Položky protokolu jsou vytvořeny pouze v případě, že jsou zadány požadav
 - Požadavky, které používají sdílený přístupový podpis (SAS) nebo OAuth, včetně neúspěšných a úspěšných požadavků
 - Požadavky na analytické údaje (data protokolu Classic v kontejneru **$logs** a data metriky třídy v **$metricch** tabulkách)
 
-Požadavky samotné službou soubory Azure, jako je vytvoření nebo odstranění protokolu, nejsou protokolovány. Úplný seznam protokolů SMB a REST, které jsou protokolovány, najdete v tématu [operace protokolované úložiště a stavové zprávy](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [referenční informace o monitorování dat sledování služby Azure Files](storage-files-monitoring-reference.md).
+Požadavky samotné službou soubory Azure, jako je vytvoření nebo odstranění protokolu, nejsou protokolovány. Úplný seznam protokolů SMB a REST, které jsou protokolovány, najdete v tématu [operace protokolované úložiště a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [referenční informace o monitorování dat sledování služby Azure Files](storage-files-monitoring-reference.md).
 
 ### <a name="log-anonymous-requests"></a>Protokolování anonymních požadavků
 
@@ -501,20 +501,20 @@ Protokoly odeslané do centra událostí nejsou uloženy jako soubor, ale může
 
 ![Protokoly auditu](media/storage-files-monitoring/event-hub-log.png)
 
-Data protokolu, která se odesílají do centra událostí, můžete otevřít a číst pomocí nástrojů pro správu a správu událostí a monitorování událostí a informací o zabezpečení. Další informace najdete v tématu [co se dá dělat s daty monitorování odesílanými do mého centra událostí?](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub).
+Data protokolu, která se odesílají do centra událostí, můžete otevřít a číst pomocí nástrojů pro správu a správu událostí a monitorování událostí a informací o zabezpečení. Další informace najdete v tématu [co se dá dělat s daty monitorování odesílanými do mého centra událostí?](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Přístup k protokolům v pracovním prostoru Log Analytics
 
 K protokolům odesílaným do Log Analytics pracovního prostoru můžete přistupovat pomocí dotazů protokolu Azure Monitor. Data se ukládají do tabulky **StorageFileLogs** . 
 
-Další informace najdete v tématu [Začínáme s Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+Další informace najdete v tématu [Log Analytics kurzu](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
 #### <a name="sample-kusto-queries"></a>Ukázkové dotazy Kusto
 
-Tady jsou některé dotazy, které můžete zadat do panelu **hledání v protokolu** , abyste mohli monitorovat soubory Azure. Tyto dotazy fungují s [novým jazykem](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Tady jsou některé dotazy, které můžete zadat do panelu **hledání v protokolu** , abyste mohli monitorovat soubory Azure. Tyto dotazy fungují s [novým jazykem](../../azure-monitor/log-query/log-query-overview.md).
 
 > [!IMPORTANT]
-> Když vyberete **protokoly** z nabídky Skupina prostředků účtu úložiště, Log Analytics se otevře s oborem dotazu nastaveným na aktuální skupinu prostředků. To znamená, že dotazy protokolu budou zahrnovat jenom data z dané skupiny prostředků. Pokud chcete spustit dotaz, který zahrnuje data z jiných prostředků nebo dat z jiných služeb Azure, vyberte z nabídky **Azure monitor** **protokoly** . Podrobnosti najdete [v tématu Rozsah dotazů protokolu a časový rozsah v Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope/) .
+> Když vyberete **protokoly** z nabídky Skupina prostředků účtu úložiště, Log Analytics se otevře s oborem dotazu nastaveným na aktuální skupinu prostředků. To znamená, že dotazy protokolu budou zahrnovat jenom data z dané skupiny prostředků. Pokud chcete spustit dotaz, který zahrnuje data z jiných prostředků nebo dat z jiných služeb Azure, vyberte z nabídky **Azure monitor** **protokoly** . Podrobnosti najdete [v tématu Rozsah dotazů protokolu a časový rozsah v Azure Monitor Log Analytics](../../azure-monitor/log-query/scope.md) .
 
 Pomocí těchto dotazů vám pomůžou monitorovat sdílené složky Azure:
 
@@ -553,13 +553,13 @@ StorageFileLogs
 | render piechart
 ```
 
-Seznam názvů sloupců a popisů pro soubory Azure najdete v tématu [StorageFileLogs](https://docs.microsoft.com/azure/azure-monitor/reference/tables/storagefilelogs).
+Seznam názvů sloupců a popisů pro soubory Azure najdete v tématu [StorageFileLogs](/azure/azure-monitor/reference/tables/storagefilelogs).
 
-Další informace o tom, jak zapisovat dotazy, najdete v tématu [kurz: Začínáme s Log Analytics dotazy](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+Další informace o tom, jak zapisovat dotazy, najdete v tématu [Log Analytics kurzu](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
 ## <a name="alerts"></a>Výstrahy
 
-Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](/azure/azure-monitor/platform/alerts-metric-overview), [protokolech](/azure/azure-monitor/platform/alerts-unified-log)a [protokolu aktivit](/azure/azure-monitor/platform/activity-log-alerts). 
+Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](../../azure-monitor/platform/alerts-metric-overview.md), [protokolech](../../azure-monitor/platform/alerts-unified-log.md)a [protokolu aktivit](../../azure-monitor/platform/activity-log-alerts.md). 
 
 V následující tabulce jsou uvedeny příklady scénářů, které je třeba monitorovat, a správnou metriku pro použití výstrahy:
 
@@ -664,7 +664,7 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 - [Referenční informace o datech monitorování služby Azure Files](storage-files-monitoring-reference.md)
 - [Monitorování prostředků Azure pomocí Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Azure Storage migrace metrik](../common/storage-metrics-migration.md)
-- [Plánování nasazení Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-planning)
-- [Nasazení služby Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
-- [Řešení problémů se Soubory Azure ve Windows](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)
-- [Řešení problémů se Soubory Azure v Linuxu](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-linux-file-connection-problems)
+- [Plánování nasazení Azure Files](./storage-files-planning.md)
+- [Nasazení služby Azure Files](./storage-files-deployment-guide.md)
+- [Řešení problémů se Soubory Azure ve Windows](./storage-troubleshoot-windows-file-connection-problems.md)
+- [Řešení problémů se Soubory Azure v Linuxu](./storage-troubleshoot-linux-file-connection-problems.md)

@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: c809a1ae525fb7fab6dceebb3241e229e8a0284e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a30fe70943c5329b36cbe10b75d47cc0ee3827fc
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781834"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630409"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Plánování a Správa nákladů pro Azure Blob Storage
 
@@ -39,6 +39,9 @@ Pomocí [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculat
    Při změně hodnoty rozevíracího seznamu **typ** se změní také další možnosti, které se zobrazí v tomto listu. Pomocí odkazů v části **Další informace** se dozvíte víc o tom, co jednotlivé možnosti znamená a jak tyto možnosti ovlivňují cenu operací souvisejících s úložištěm. 
 
 4. Úpravou zbývajících možností zobrazíte jejich vliv na odhad.
+
+   > [!NOTE]
+   > Za poplatky za službu Azure Blob Storage můžete platit pomocí kreditu vašeho peněžního závazku Azure smlouva Enterprise. Kredity peněžních závazků ale nemůžete použít k placení poplatků za produkty a služby třetích stran, včetně těch z Azure Marketplace.
 
 ## <a name="optimize-costs"></a>Optimalizace nákladů
 
@@ -85,13 +88,13 @@ Při použití analýzy nákladů můžete zobrazit Azure Storage náklady v gra
 
 Postup zobrazení Azure Storagech nákladů při analýze nákladů:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 
-2. Otevřete okno **cost management + fakturace** , v nabídce vyberte možnost **Správa nákladů** a pak vyberte **Analýza nákladů** . V rozevíracím seznamu **Rozsah** pak můžete změnit obor pro konkrétní předplatné.
+2. Otevřete okno **cost management + fakturace** , v nabídce vyberte možnost **Správa nákladů** a pak vyberte **Analýza nákladů**. V rozevíracím seznamu **Rozsah** pak můžete změnit obor pro konkrétní předplatné.
 
    ![Snímek obrazovky znázorňující rozsah](./media/storage-plan-manage-costs/cost-analysis-pane.png)
 
-4. Chcete-li zobrazit pouze náklady na Azure Storage, vyberte možnost **Přidat filtr** a potom vyberte možnost **název služby** . Pak ze seznamu vyberte **úložiště** . 
+4. Chcete-li zobrazit pouze náklady na Azure Storage, vyberte možnost **Přidat filtr** a potom vyberte možnost **název služby**. Pak ze seznamu vyberte **úložiště** . 
 
    Tady je příklad, který ukazuje náklady jenom pro Azure Storage:
 
@@ -99,11 +102,15 @@ Postup zobrazení Azure Storagech nákladů při analýze nákladů:
 
 V předchozím příkladu vidíte aktuální náklady za službu. Také se zobrazí náklady podle oblastí Azure (umístění) a skupiny prostředků. Můžete přidat i další filtry (například: filtr pro zobrazení nákladů na konkrétní účty úložiště).
 
+## <a name="export-cost-data"></a>Export dat nákladů
+
+[Data nákladů](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) můžete také exportovat do účtu úložiště. To je užitečné v případě, že potřebujete nebo jiné provádět analýzu dat pro náklady. Například finanční týmy mohou analyzovat data pomocí aplikace Excel nebo Power BI. Náklady můžete exportovat na denní, týdenní nebo měsíční plán a nastavit vlastní rozsah kalendářních dat. Export nákladových dat je doporučený způsob, jak načíst datové sady nákladů.
+
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o správě nákladů pomocí [analýzy nákladů](../../cost-management-billing/costs/quick-acm-cost-analysis.md).
-
-Další informace o tom, jak ceny pracují s Azure Storage, najdete v následujících článcích:
-
-- [Azure Storage Přehled cen](https://azure.microsoft.com/pricing/details/storage/)
-- [Optimalizace nákladů na službu Blob Storage s využitím rezervované kapacity](../blobs/storage-blob-reserved-capacity.md)
+- Přečtěte si další informace o tom, jak ceny pracují s Azure Storage. Viz [Azure Storage Přehled cen](https://azure.microsoft.com/pricing/details/storage/).
+- [Optimalizujte náklady na úložiště objektů BLOB s využitím rezervované kapacity](../blobs/storage-blob-reserved-capacity.md).
+- Naučte se [optimalizovat investice do cloudu pomocí Azure cost management](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- Přečtěte si další informace o správě nákladů pomocí [analýzy nákladů](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- Přečtěte si, jak se [vyhnout neočekávaným nákladům](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- Využijte kurz učení s asistencí [cost management](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) .

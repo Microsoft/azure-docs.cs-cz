@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2019
+ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a50554c73958400f1f16348d3b8fb2bac88ac61b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e9811710971b411aaaed64ec0072dcf7b6b116d3
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340273"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630052"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Řešení potíží s synapse SQL ve službě Azure synapse Analytics
 
@@ -29,16 +29,22 @@ V tomto článku jsou uvedené běžné problémy s odstraňováním problémů 
 | Přihlášení uživatele NT AUTHORITY\ANONYMOUS LOGON selhalo. (Microsoft SQL Server, chyba: 18456) | K této chybě dojde, když se uživatel Azure AD pokusí připojit k hlavní databázi, ale nemá v hlavní větvi žádného uživatele.  Chcete-li tento problém vyřešit, zadejte vyhrazený fond SQL, ke kterému se chcete připojit v době připojení, nebo přidejte uživatele do hlavní databáze.  Další podrobnosti najdete v článku [Přehled zabezpečení](sql-data-warehouse-overview-manage-security.md) . |
 | Objekt zabezpečení serveru MyUserName nemůže v aktuálním kontextu zabezpečení získat přístup k databázi master. Výchozí databázi uživatele nelze otevřít. Přihlášení se nezdařilo. Nezdařilo se přihlášení pro uživatele myUserName. (Microsoft SQL Server, chyba: 916) | K této chybě dojde, když se uživatel Azure AD pokusí připojit k hlavní databázi, ale nemá v hlavní větvi žádného uživatele.  Chcete-li tento problém vyřešit, zadejte vyhrazený fond SQL, ke kterému se chcete připojit v době připojení, nebo přidejte uživatele do hlavní databáze.  Další podrobnosti najdete v článku [Přehled zabezpečení](sql-data-warehouse-overview-manage-security.md) . |
 | Chyba CTAIP                                                  | K této chybě může dojít, když bylo vytvořeno přihlášení v hlavní databázi SQL Database, ale ne v konkrétní databázi SQL.  Pokud se zobrazí tato chyba, přečtěte si článek [Přehled zabezpečení](sql-data-warehouse-overview-manage-security.md) .  Tento článek vysvětluje, jak vytvořit přihlašovací jméno a uživatele v hlavní databázi a jak vytvořit uživatele v databázi SQL. |
-| Blokováno bránou firewall                                          | vyhrazené fondy SQL jsou chráněné branami firewall, aby se zajistil přístup k databázi jenom známým IP adresám. Brány firewall jsou ve výchozím nastavení zabezpečené, což znamená, že před připojením musíte explicitně povolit a IP adresu nebo rozsah adres.  Pokud chcete bránu firewall nakonfigurovat pro přístup, postupujte podle pokynů v tématu [Konfigurace přístupu k bráně firewall serveru pro IP adresu vašeho klienta](create-data-warehouse-portal.md) v [pokynech k zřizování](create-data-warehouse-portal.md). |
+| – Blokováno bránou firewall                                          | vyhrazené fondy SQL jsou chráněné branami firewall, aby se zajistil přístup k databázi jenom známým IP adresám. Brány firewall jsou ve výchozím nastavení zabezpečené, což znamená, že před připojením musíte explicitně povolit a IP adresu nebo rozsah adres.  Pokud chcete bránu firewall nakonfigurovat pro přístup, postupujte podle pokynů v tématu [Konfigurace přístupu k bráně firewall serveru pro IP adresu vašeho klienta](create-data-warehouse-portal.md) v [pokynech k zřizování](create-data-warehouse-portal.md). |
 | Nejde se připojit pomocí nástroje nebo ovladače.                           | Vyhrazený fond SQL doporučuje používat [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [SSDT pro Visual Studio](sql-data-warehouse-install-visual-studio.md)nebo [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) k dotazování na data. Další informace o ovladačích a připojení k Azure synapse najdete v tématu [ovladače pro Azure synapse](sql-data-warehouse-connection-strings.md) a [připojení k Azure synapse](sql-data-warehouse-connect-overview.md) articles. |
 
 ## <a name="tools"></a>Nástroje
 
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Průzkumník objektů Visual studia nemá žádné uživatele Azure AD.           | Jde o známý problém.  Alternativním řešením je zobrazit uživatele v [Sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Další informace o použití Azure Active Directory s vyhrazeným fondem SQL najdete v tématu [ověřování do Azure synapse](sql-data-warehouse-authentication.md) . |
+| Průzkumník objektů Visual studia nemá žádné uživatele Azure AD.           | Jedná se o známý problém.  Alternativním řešením je zobrazit uživatele v [Sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Další informace o použití Azure Active Directory s vyhrazeným fondem SQL najdete v tématu [ověřování do Azure synapse](sql-data-warehouse-authentication.md) . |
 | Ruční skriptování, použití Průvodce skriptováním nebo připojení prostřednictvím SSMS je pomalé, nereaguje nebo produkuje chyby. | Zajistěte, aby byl uživatel vytvořen v hlavní databázi. V možnostech skriptování se ujistěte také, že je edice stroje nastavená na Microsoft Azure synapse Analytics Edition a typ modulu je "Microsoft Azure SQL Database". |
 | Generování skriptů v SSMS se nezdařilo                               | Pokud je možnost "vygenerovat skript pro závislé objekty" nastavena na hodnotu "true", generování skriptu pro vyhrazený fond SQL se nezdařilo. Alternativním řešením je, že uživatelé musí ručně přejít na **nástroje-> možnosti->Průzkumník objektů systému SQL Server – > vygenerovat skript pro závislé možnosti a nastavit na hodnotu NEPRAVDA** . |
+
+## <a name="data-ingestion-and-preparation"></a>Přijímání a příprava dat
+
+| Problém                                                        | Řešení                                                   |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| Export prázdných řetězců pomocí CETAS bude mít za následek hodnoty NULL v souborech Parquet a ORC. Poznámka: Pokud exportujete prázdné řetězce ze sloupců s omezeními bez hodnoty NULL, CETAS bude mít za následek zamítnuté záznamy a export může potenciálně selhat. | Odeberte prázdné řetězce nebo problematický sloupec v příkazu SELECT vaší CETAS. |
 
 ## <a name="performance"></a>Výkon
 
