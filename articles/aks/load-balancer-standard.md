@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 414ae3b2adb60b9442a69e3ebcc8b13b29c67cb7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 51cb79e942b9d92876bd4d0e2cc27bb5ee0337bf
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070499"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634867"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Použití veřejné Standard Load Balancer ve službě Azure Kubernetes (AKS)
 
-Azure Load Balancer je L4 modelu OSI (Open Systems proconnection), který podporuje scénáře příchozího i odchozího připojení. Distribuuje příchozí toky, které dorazí na front-end nástroje pro vyrovnávání zatížení do instancí fondu back-end.
+Azure Load Balancer se nachází v L4 modelu OSI (Open Systems proconnection), který podporuje scénáře příchozího i odchozího připojení. Distribuuje příchozí toky, které dorazí na front-end nástroje pro vyrovnávání zatížení do instancí fondu back-end.
 
 **Veřejné** Load Balancer při integraci s AKS slouží ke dvěma účelům:
 
@@ -93,13 +93,13 @@ Azure Load Balancer poskytuje kromě příchozího i odchozí připojení z virt
 
 Stejně jako všechna pravidla Load Balancer se odchozí pravidla řídí stejnou známou syntaxí jako vyrovnávání zatížení a příchozí pravidla překladu adres (NAT):
 
-***front-endové IP adresy + parametry + back-end fond***
+***front-endové IP adresy + parametry + fond back-endu** _
 
 Odchozí pravidlo konfiguruje odchozí překlad adres (NAT) pro všechny virtuální počítače identifikované fondem back-end pro překlad do front-endu. Parametry a poskytují další jemně odstupňovanou kontrolu nad odchozím algoritmem NAT.
 
 I když se odchozí pravidlo dá použít jenom s jednou veřejnou IP adresou, odchozí pravidla zjednodušují zátěž v konfiguraci pro škálování odchozího překladu adres (NAT). Pro plánování rozsáhlých scénářů můžete použít více IP adres a pomocí odchozích pravidel můžete zmírnit vzory náchylné k vyčerpání SNAT. Každá další IP adresa poskytovaná front-endu nabízí 64 dočasných portů, které Load Balancer použít jako porty SNAT. 
 
-Pokud používáte nástroj pro vyrovnávání zatížení *Standard* SKU se spravovanými odchozími veřejnými IP adresami, které se ve výchozím nastavení vytvoří, můžete pomocí parametru škálovat počet spravovaných odchozích veřejných IP adres **`load-balancer-managed-ip-count`** .
+Když použijete nástroj pro vyrovnávání zatížení _Standard * SKU se spravovanými odchozími veřejnými IP adresami, které se ve výchozím nastavení vytvoří, můžete pomocí parametru škálovat počet spravovaných odchozích veřejných IP adres **`load-balancer-managed-ip-count`** .
 
 Chcete-li aktualizovat existující cluster, spusťte následující příkaz. Tento parametr je také možné nastavit v době vytvoření clusteru a mít několik spravovaných odchozích veřejných IP adres.
 
@@ -229,7 +229,7 @@ Aby bylo možné bezpečně přejít nad 100 uzlů, je nutné přidat další IP
 > [!IMPORTANT]
 > *Abyste se* vyhnuli problémům s připojením nebo škálováním, musíte nejprve [Vypočítat požadovanou kvótu a ověřit požadavky][requirements] .
 
-Parametry můžete použít také **`load-balancer-outbound-ports`** při vytváření clusteru, ale musíte také zadat buď **`load-balancer-managed-outbound-ip-count`** , **`load-balancer-outbound-ips`** nebo **`load-balancer-outbound-ip-prefixes`** i.  Například:
+Parametry můžete použít také **`load-balancer-outbound-ports`** při vytváření clusteru, ale musíte také zadat buď **`load-balancer-managed-outbound-ip-count`** , **`load-balancer-outbound-ips`** nebo **`load-balancer-outbound-ip-prefixes`** i.  Příklad:
 
 ```azurecli-interactive
 az aks create \
@@ -266,7 +266,7 @@ Pokud očekáváte, že budete mít krátká krátkodobá připojení, a žádn�
  
 *outboundIPs* \* 64 000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
-Pokud máte například 3 *nodeVMs*a 50 000 *desiredAllocatedOutboundPorts*, musíte mít aspoň 3 *outboundIPs*. Doporučuje se, abyste zahrnuli Další odchozí IP kapacitu nad rámec toho, co potřebujete. Kromě toho musíte při výpočtu kapacity odchozí IP adresy účtu pro automatické škálování clusteru a možnost upgradů fondu uzlů. Pro automatické škálování clusteru Zkontrolujte aktuální počet uzlů a maximální počet uzlů a použijte vyšší hodnotu. Pro upgrade můžete pro každý fond uzlů, který umožňuje upgradování, přihlédnout k virtuálnímu počítači pro další uzly.
+Pokud máte například 3 *nodeVMs* a 50 000 *desiredAllocatedOutboundPorts* , musíte mít aspoň 3 *outboundIPs*. Doporučuje se, abyste zahrnuli Další odchozí IP kapacitu nad rámec toho, co potřebujete. Kromě toho musíte při výpočtu kapacity odchozí IP adresy účtu pro automatické škálování clusteru a možnost upgradů fondu uzlů. Pro automatické škálování clusteru Zkontrolujte aktuální počet uzlů a maximální počet uzlů a použijte vyšší hodnotu. Pro upgrade můžete pro každý fond uzlů, který umožňuje upgradování, přihlédnout k virtuálnímu počítači pro další uzly.
 
 - Při nastavování *IdleTimeoutInMinutes* na jinou hodnotu než výchozí hodnota 30 minut zvažte, jak dlouho budou vaše úlohy potřebovat odchozí připojení. Zvažte také výchozí hodnotu časového limitu pro nástroj pro vyrovnávání zatížení *Standard* SKU, který se používá mimo AKS, na 4 minuty. Hodnota *IdleTimeoutInMinutes* , která přesněji odráží konkrétní úlohu AKS, může přispět ke snížení vyčerpání SNAT způsobená vytvořením připojení, která se už nepoužívají.
 

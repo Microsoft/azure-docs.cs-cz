@@ -1,7 +1,7 @@
 ---
 title: Podpora jednotného přihlašování a zásad ochrany aplikací v mobilních aplikacích, které vyvíjíte | Azure
 titleSuffix: Microsoft identity platform
-description: Vysvětlení a Přehled vytváření mobilních aplikací, které podporují jednotné přihlašování a zásady ochrany aplikací
+description: Vysvětlení a Přehled vytváření mobilních aplikací, které podporují jednotné přihlašování a zásady ochrany aplikací pomocí platformy Microsoft identity a integrace s Azure Active Directory.
 services: active-directory
 author: knicholasa
 manager: CelesteDG
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331602"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634850"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Podpora jednotného přihlašování a zásad ochrany aplikací v mobilních aplikacích, které vyvíjíte
 
-Jednotné přihlašování (SSO) poskytuje uživatelům vaší aplikace jednoduché a zabezpečené přihlášení. Zásady ochrany aplikací (aplikace) umožňují podporu klíčových zásad zabezpečení, které udržují data uživatelů v bezpečí. Tyto funkce společně umožňují zabezpečená přihlášení uživatelů a správu dat vaší aplikace.
+Jednotné přihlašování (SSO) je klíčovou nabídkou platformy Microsoft identity a Azure Active Directory, která poskytuje snadné a zabezpečené přihlášení uživatelů vaší aplikace. Zásady ochrany aplikací (aplikace) navíc umožňují podporu klíčových zásad zabezpečení, které udržují data uživatelů v bezpečí. Tyto funkce společně umožňují zabezpečená přihlášení uživatelů a správu dat vaší aplikace.
 
 Tento článek vysvětluje, proč jednotné přihlašování a aplikace jsou důležité, a poskytuje pokyny pro vysokou úroveň vytváření mobilních aplikací, které tyto funkce podporují. To platí pro aplikace pro telefon i pro tablety. Pokud jste správce IT, který chce nasadit jednotné přihlašování v rámci tenanta Azure Active Directory vaší organizace, přečtěte si naše [pokyny k plánování nasazení jednotného přihlašování](../manage-apps/plan-sso-deployment.md) .
 
@@ -68,7 +68,7 @@ Kromě toho musíte pro ověřování použít aplikaci zprostředkovatele. Zpro
 
 Nakonec přidejte do své aplikace [Intune SDK](/mem/intune/developer/app-sdk-get-started) , abyste mohli povolit zásady ochrany aplikací. Sada SDK pro většinu částí sleduje model zachycení a automaticky použije zásady ochrany aplikací k určení, jestli jsou povolené akce, které aplikace přijímá. K dispozici jsou také rozhraní API, která můžete volat ručně a sdělit aplikaci, pokud existují určitá omezení pro určité akce.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Plánování nasazení s jednotným přihlašováním Azure Active Directory](../manage-apps/plan-sso-deployment.md)
 - [Postupy: Konfigurace jednotného přihlašování v macOS a iOS](single-sign-on-macos-ios.md)

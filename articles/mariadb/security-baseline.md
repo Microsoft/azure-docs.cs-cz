@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6071a3675b1ad6aa5d49395fb9050c941af9be0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 043a2481647076abb5a6e242ffa2ea8b3f282c4d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532743"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637162"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Základní hodnoty zabezpečení Azure pro Azure Database for MariaDB
 
@@ -818,9 +818,9 @@ Pochopení Azure Policych účinků: https://docs.microsoft.com/azure/governance
 
 **Doprovodné** materiály: Pokud používáte vlastní definice Azure Policy pro servery Azure Database for MariaDB a související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
 
-Jak ukládat kód v Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true
+[Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-Azure Repos dokumentaci: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=true
+[Dokumentace k Azure Repos](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
 
 **Monitorování Azure Security Center** : nelze použít
 

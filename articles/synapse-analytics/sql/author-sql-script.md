@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 3618ba28403882ee1f949a2bbc97e586674b3772
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3f3009799889bd6b118f586676e22338d821d37c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317619"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635281"
 ---
 # <a name="using-sql-scripts-in-azure-synapse-studio-preview"></a>Používání skriptů SQL v Azure synapse Studio (Preview)
 
@@ -73,6 +73,18 @@ Výběrem nabídky **Akce** v části data můžete vybrat několik akcí, jako 
 Prozkoumejte dostupný gesto kliknutím pravým tlačítkem myši na uzly databází SQL.
  
 ![Nová databáze skriptů](media/author-sql-script/new-script-database.png)
+
+## <a name="create-folders-and-move-sql-scripts-into-a-folder"></a>Vytváření složek a přesun skriptů SQL do složky
+
+V nabídce Akce v části vývoj skriptů SQL vyberte v nabídce Akce v části vývoj skriptů SQL možnost Nová složka. A zadejte název nové složky v automaticky otevíraném okně. 
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/new-sql-script-create-folder.png)
+
+Chcete-li přesunout skript SQL do složky, můžete vybrat skript SQL a v nabídce Akce vybrat možnost přesunout do. Pak vyhledejte cílovou složku v novém okně a přesuňte skript SQL do vybrané složky. Můžete také rychle přetáhnout skript SQL a umístit ho do složky.  
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/new-sql-script-move-folder.png)
 
 ## <a name="next-steps"></a>Další kroky
 

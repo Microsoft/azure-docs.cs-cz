@@ -4,12 +4,12 @@ description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete zí
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: dc33e9d8d613b9d0575da069d884e454d9930eac
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d603e130d4e65667edb34121a4c89b7b0e02b819
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555633"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636737"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace partnerů ve službě Azure Monitor
 
@@ -46,6 +46,16 @@ AppDynamics Application Performance Management (APM) umožňuje vlastníkům apl
 JIRA lístky můžete vytvářet na výstrahách Azure Monitor.
 
 [Dokumentace k Atlassian pro Azure Monitor](https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/)
+
+## <a name="bmc-helix"></a>Helix BMC
+
+![Logo BMC Helix](./media/partners/BMCHelix.png)
+
+BMC Helix je autonomní platforma pro podnikové služby a provoz SaaS. Integrovaná s 360 Intelligence přináší organizacím možnost proaktivně a prediktivní zjišťování, monitorování, poskytování služeb, napravení, optimalizace a poskytování omnich prostředí pro IT a obchodní oddělení.
+Kromě toho díky bezproblémové integraci ITSM a správy provozu IT (ITOM), BMC Helix umožňuje IT a obchodním uživatelům eliminovat siloy IT, dělat podniková rozhodnutí založená na datech a dodávat špičkové prostředí pro zákazníky.
+Zákazníci mohou nasadit platformu Helix BMC s nasazením cloudu podle svého výběru – veřejné, privátní nebo hybridní. Zákazníci navíc můžou zvolit řešení AI/ML, která se dají využít od špičkových poskytovatelů v oboru.
+
+[Další informace o Helix BMC](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
 
 ## <a name="botmetric"></a>Botmetric
 
@@ -301,15 +311,6 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy tím, že součas
 
 [Úvod do Turbonomic](https://turbonomic.com/)
 
-## <a name="bmc-helix"></a>Helix BMC
-
-![Logo BMC Helix](./media/partners/BMCHelix.png)
-
-BMC Helix je autonomní platforma pro podnikové služby a provoz SaaS. Integrovaná s 360 Intelligence přináší organizacím možnost proaktivně a prediktivní zjišťování, monitorování, poskytování služeb, napravení, optimalizace a poskytování omnich prostředí pro IT a obchodní oddělení.
-Kromě toho díky bezproblémové integraci ITSM a správy provozu IT (ITOM), BMC Helix umožňuje IT a obchodním uživatelům eliminovat siloy IT, dělat podniková rozhodnutí založená na datech a dodávat špičkové prostředí pro zákazníky.
-Zákazníci mohou nasadit platformu Helix BMC s nasazením cloudu podle svého výběru – veřejné, privátní nebo hybridní. Zákazníci navíc můžou zvolit řešení AI/ML, která se dají využít od špičkových poskytovatelů v oboru.
-
-[Další informace o Helix BMC](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
 
 ## <a name="next-steps"></a>Další kroky
 

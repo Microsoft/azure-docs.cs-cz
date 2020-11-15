@@ -6,18 +6,18 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 98d3beef72d314f93f6a2bc580b1dd5de5735f23
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 23b9774f28f915596abafbd8c1f6c38fc4f55748
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242462"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636261"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for PostgreSQL pro jeden server pomocí portálu
 
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení.  V tomto článku se naučíte, jak použít Azure Portal k vytvoření virtuálního počítače v Azure Virtual Network a Azure Database for PostgreSQL jednom serveru s privátním koncovým bodem Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > Funkce privátního odkazu je dostupná jenom pro Azure Database for PostgreSQL servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je databázový server v jedné z těchto cenových úrovní.
@@ -222,7 +222,7 @@ Po vytvoření **myVm** se k němu připojte z Internetu následujícím způsob
     Address:  10.1.3.4
     ```
 
-3. Otestujte připojení privátního propojení pro server PostgreSQL pomocí libovolného dostupného klienta. V následujícím příkladu jsem k provedení operace použili [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15) .
+3. Otestujte připojení privátního propojení pro server PostgreSQL pomocí libovolného dostupného klienta. V následujícím příkladu jsem k provedení operace použili [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) .
 
 4. V **nové připojení** zadejte nebo vyberte tyto informace:
 

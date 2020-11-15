@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 7679c613c4804f7df315918ee5d6946c07eb8b4f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 49a89228afd3b46f38afafb8ff16bc63a40dd35b
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787733"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635207"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Zabránit autorizaci sdíleného klíče pro účet Azure Storage (Preview)
 
@@ -47,12 +47,12 @@ Chcete-li sledovat, jak jsou požadavky na účet úložiště autorizovány, po
 
 Pomocí těchto kroků můžete vytvořit metriku, která bude sledovat požadavky vytvořené pomocí sdíleného klíče nebo SAS:
 
-1. Na webu Azure Portal přejděte na svůj účet úložiště. V části **monitorování** vyberte **metriky** .
-1. Vyberte **Přidat metriku** . V dialogovém okně **metrika** zadejte následující hodnoty:
+1. Na webu Azure Portal přejděte na svůj účet úložiště. V části **monitorování** vyberte **metriky**.
+1. Vyberte **Přidat metriku**. V dialogovém okně **metrika** zadejte následující hodnoty:
     1. Ponechte pole **obor** nastavené na název účtu úložiště.
-    1. Nastavte **obor názvů metriky** na hodnotu *account* . Tato metrika bude hlásit všechny požadavky na účet úložiště.
-    1. Nastavte pole **metrika** na hodnotu *Transactions* .
-    1. Nastavte **agregační** pole na *součet* .
+    1. Nastavte **obor názvů metriky** na hodnotu *account*. Tato metrika bude hlásit všechny požadavky na účet úložiště.
+    1. Nastavte pole **metrika** na hodnotu *Transactions*.
+    1. Nastavte **agregační** pole na *součet*.
 
     V nové metrikě se v daném časovém intervalu zobrazí součet počtu transakcí s účtem úložiště. Výsledná metrika se zobrazí, jak je znázorněno na následujícím obrázku:
 
@@ -60,14 +60,14 @@ Pomocí těchto kroků můžete vytvořit metriku, která bude sledovat požadav
 
 1. V dalším kroku vyberte tlačítko **Přidat filtr** a vytvořte filtr pro danou metriku pro typ autorizace.
 1. V dialogovém okně **Filtr** zadejte následující hodnoty:
-    1. Nastavte hodnotu **vlastnosti** na *ověřování* .
+    1. Nastavte hodnotu **vlastnosti** na *ověřování*.
     1. Nastavte pole **operátor** na znaménko rovná se (=).
-    1. V poli **hodnoty** vyberte *klíč účtu* a *SAS* .
+    1. V poli **hodnoty** vyberte *klíč účtu* a *SAS*.
 1. V pravém horním rohu vyberte časový rozsah, pro který chcete metriku zobrazit. Můžete také určit, jak podrobně má být agregace požadavků, zadáním intervalů kdekoli od 1 minuty po 1 měsíc. Nastavte například **časový rozsah** na 30 dní a **časové rozlišení** na 1 den, aby se v posledních 30 dnech zobrazily požadavky agregované za den.
 
 Po nakonfigurování metriky se v grafu začnou zobrazovat požadavky na váš účet úložiště. Následující obrázek znázorňuje žádosti, které byly autorizovány se sdíleným klíčem nebo vytvořené pomocí tokenu SAS. Žádosti se agregují za den za posledních třicet dnů.
 
-:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat metriku pro Shrnutí transakcí provedených se sdíleným klíčem nebo SAS":::
+:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="Snímek obrazovky znázorňující agregované požadavky s povoleným sdíleným klíčem":::
 
 Můžete také nakonfigurovat pravidlo výstrahy, které vás upozorní, když se v účtu úložiště vytvoří určitý počet požadavků, které jsou autorizované se sdíleným klíčem. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../../azure-monitor/platform/alerts-metric.md).
 
@@ -86,14 +86,14 @@ Pokud chcete protokolovat data Azure Storage pomocí Azure Monitor a analyzovat 
 1. Zaregistrujte se [Azure Storage přihlašování Azure monitor ve verzi Preview](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u).
 1. Vytvořte nový pracovní prostor Log Analytics v předplatném, které obsahuje účet Azure Storage, nebo použijte existující Log Analytics pracovní prostor. Po nakonfigurování protokolování účtu úložiště budou protokoly k dispozici v pracovním prostoru Log Analytics. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
 1. Na webu Azure Portal přejděte na svůj účet úložiště.
-1. V části monitorování vyberte **nastavení diagnostiky (Preview)** .
+1. V části monitorování vyberte **nastavení diagnostiky (Preview)**.
 1. Vyberte službu Azure Storage, pro kterou chcete protokolovat požadavky. Například vyberte **objekt BLOB** , který bude protokolovat požadavky do úložiště objektů BLOB.
-1. Vyberte **Přidat nastavení diagnostiky** .
+1. Vyberte **Přidat nastavení diagnostiky**.
 1. Zadejte název pro nastavení diagnostiky.
 1. V části **Podrobnosti o kategorii** v **části protokol** vyberte **StorageRead** , **StorageWrite** a **StorageDelete** a Zaprotokolujte všechny požadavky na data vybrané služby.
-1. V části **Podrobnosti o cíli** vyberte **Odeslat do Log Analytics** . Vyberte své předplatné a Log Analytics pracovní prostor, který jste vytvořili dříve, jak je znázorněno na následujícím obrázku.
+1. V části **Podrobnosti o cíli** vyberte **Odeslat do Log Analytics**. Vyberte své předplatné a Log Analytics pracovní prostor, který jste vytvořili dříve, jak je znázorněno na následujícím obrázku.
 
-    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat metriku pro Shrnutí transakcí provedených se sdíleným klíčem nebo SAS":::
+    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
 
 Pro každý typ Azure Storage prostředku v účtu úložiště můžete vytvořit nastavení diagnostiky.
 
@@ -118,9 +118,9 @@ Můžete také nakonfigurovat pravidlo výstrahy na základě tohoto dotazu, kte
 
 Po dokončení analýzy požadavků na účet úložiště můžete provést akci, abyste zabránili přístupu přes sdílený klíč. Nejdřív ale budete muset aktualizovat všechny aplikace, které používají autorizaci pomocí sdíleného klíče, a místo toho použít službu Azure AD. Můžete monitorovat protokoly a metriky, jak je popsáno v tématu [zjištění typu autorizace používaného klientskými aplikacemi](#detect-the-type-of-authorization-used-by-client-applications) ke sledování přechodu. Další informace o používání služby Azure AD s daty objektů BLOB a front najdete v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](storage-auth-aad.md).
 
-Pokud máte jistotu, že můžete bezpečně odmítat žádosti, které jsou autorizované se sdíleným klíčem, můžete nastavit vlastnost **AllowSharedKeyAccess** pro účet úložiště na **false** .
+Pokud máte jistotu, že můžete bezpečně odmítat žádosti, které jsou autorizované se sdíleným klíčem, můžete nastavit vlastnost **AllowSharedKeyAccess** pro účet úložiště na **false**.
 
-Vlastnost **AllowSharedKeyAccess** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje žádosti, které jsou autorizované se sdíleným klíčem, pokud má vlastnost hodnotu **null** nebo je-li nastavena hodnota **true** .
+Vlastnost **AllowSharedKeyAccess** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje žádosti, které jsou autorizované se sdíleným klíčem, pokud má vlastnost hodnotu **null** nebo je-li nastavena hodnota **true**.
 
 > [!WARNING]
 > Pokud má nějaký klient v současnosti přístup k datům ve vašem účtu úložiště se sdíleným klíčem, společnost Microsoft doporučuje, abyste tyto klienty migrovali do služby Azure AD ještě před tím, než zakážete přístup ke sdíleným klíčům k účtu úložiště.
@@ -131,9 +131,9 @@ Pokud chcete zakázat autorizaci sdíleného klíče pro účet úložiště v A
 
 1. Na webu Azure Portal přejděte na svůj účet úložiště.
 1. V části **Nastavení** vyhledejte nastavení **Konfigurace** .
-1. Nastavte možnost **Povolení přístupu ke sdíleným klíčům** na **zakázáno** .
+1. Nastavte možnost **Povolení přístupu ke sdíleným klíčům** na **zakázáno**.
 
-    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat metriku pro Shrnutí transakcí provedených se sdíleným klíčem nebo SAS":::
+    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Snímek obrazovky ukazující, jak zakázat přístup ke sdíleným klíčům pro účet":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -195,7 +195,7 @@ resources
 
 ## <a name="understand-how-disallowing-shared-key-affects-sas-tokens"></a>Informace o tom, jak zakázaný sdílený klíč ovlivňuje tokeny SAS
 
-Pokud je pro účet úložiště zakázaný sdílený klíč, Azure Storage zpracovává tokeny SAS na základě typu SAS a služby, na kterou cílí požadavek. Následující tabulka ukazuje, jak jednotlivé typy SAS mají autorizaci a jak Azure Storage tuto SAS pozastaví, pokud je vlastnost **AllowSharedKeyAccess** pro účet úložiště **nepravdivá** .
+Pokud je pro účet úložiště zakázaný sdílený klíč, Azure Storage zpracovává tokeny SAS na základě typu SAS a služby, na kterou cílí požadavek. Následující tabulka ukazuje, jak jednotlivé typy SAS mají autorizaci a jak Azure Storage tuto SAS pozastaví, pokud je vlastnost **AllowSharedKeyAccess** pro účet úložiště **nepravdivá**.
 
 | Typ SAS | Typ autorizace | Chování, pokud je AllowSharedKeyAccess false |
 |-|-|-|
@@ -213,10 +213,10 @@ Některé nástroje Azure nabízejí možnost použít pro přístup k Azure Sto
 
 | Nástroj Azure | Ověřování Azure AD pro Azure Storage |
 |-|-|
-| Azure Portal | Podporuje se. Informace o autorizaci účtu Azure AD z Azure Portal najdete v tématu [Volba způsobu autorizace přístupu k datům objektů BLOB v Azure Portal](../blobs/authorize-blob-access-portal.md). |
+| portál Azure | Podporuje se. Informace o autorizaci účtu Azure AD z Azure Portal najdete v tématu [Volba způsobu autorizace přístupu k datům objektů BLOB v Azure Portal](../blobs/authorize-data-operations-portal.md). |
 | AzCopy | Podporováno pro úložiště objektů BLOB. Informace o autorizaci operací AzCopy najdete v tématu [Volba způsobu poskytování přihlašovacích údajů pro autorizaci](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) v dokumentaci k AzCopy. |
 | Průzkumník služby Azure Storage | Podporováno pouze pro úložiště objektů BLOB a Azure Data Lake Storage Gen2. Přístup z Azure AD do úložiště Queue není podporovaný. Ujistěte se, že jste vybrali správného tenanta Azure AD. Další informace najdete v tématu [Začínáme s Průzkumník služby Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) . |
-| Azure PowerShell | Podporuje se. Informace o tom, jak autorizovat příkazy PowerShellu pro operace objektů BLOB a front s Azure AD, najdete v tématu [spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektů BLOB](../blobs/authorize-active-directory-powershell.md) nebo [spuštěním příkazů PowerShellu s přihlašovacími údaji služby Azure AD pro přístup k datům](../queues/authorize-active-directory-powershell.md) |
+| Azure PowerShell | Podporuje se. Informace o tom, jak autorizovat příkazy PowerShellu pro operace objektů BLOB a front s Azure AD, najdete v tématu [spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektů BLOB](../blobs/authorize-data-operations-powershell.md) nebo [spuštěním příkazů PowerShellu s přihlašovacími údaji služby Azure AD pro přístup k datům](../queues/authorize-data-operations-powershell.md) |
 | Azure CLI | Podporuje se. Informace o tom, jak autorizovat příkazy rozhraní příkazového řádku Azure pomocí Azure AD pro přístup k datům BLOB a Queue, najdete v tématu [spuštění příkazů rozhraní příkazového řádku Azure s přihlašovacími údaji Azure AD pro přístup k datům BLOB nebo Queue](authorize-data-operations-cli.md). |
 | Azure IoT Hub | Podporuje se. Další informace najdete v tématu [podpora IoT Hub pro virtuální sítě](../../iot-hub/virtual-network-support.md). |
 | Azure Cloud Shell | Azure Cloud Shell je integrované prostředí v Azure Portal. Azure Cloud Shell hostuje soubory pro trvalost ve sdílené složce Azure v účtu úložiště. Tyto soubory budou nepřístupné, pokud pro tento účet úložiště není povolená autorizace sdíleného klíče. Další informace najdete v tématu [připojení úložiště Microsoft Azurech souborů](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Pokud chcete spouštět příkazy v Azure Cloud Shell ke správě účtů úložiště, pro které je přístup ke sdíleným klíčům zakázaný, nejdřív se ujistěte, že jste k těmto účtům udělili potřebná oprávnění prostřednictvím řízení přístupu na základě role Azure (RBAC). Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md). |
@@ -237,7 +237,7 @@ Verze Preview obsahuje omezení popsaná v následujících částech.
 Metriky Azure a přihlašování Azure Monitor nerozlišuje mezi různými typy podpisů sdíleného přístupu ve verzi Preview. Filtr **SAS** v Azure Průzkumník metrik a pole **SAS** v Azure Storage přihlašování Azure monitor obě žádosti sestavy, které jsou autorizované s jakýmkoli typem SAS. Různé typy podpisů sdíleného přístupu se ale povolují různě a chovají se jinak, když je přístup ke sdíleným klíčům zakázaný:
 
 - Token SAS služby nebo token SAS účtu mají autorizaci se sdíleným klíčem a v případě, že je vlastnost **AllowSharedKeyAccess** nastavená na **hodnotu false** , nebude u požadavku na úložiště objektů BLOB povolený.
-- Přidružení zabezpečení uživatele je autorizováno pomocí Azure AD a bude povoleno na vyžádání úložiště objektů blob, pokud je vlastnost **AllowSharedKeyAccess** nastavena na **hodnotu false** .
+- Přidružení zabezpečení uživatele je autorizováno pomocí Azure AD a bude povoleno na vyžádání úložiště objektů blob, pokud je vlastnost **AllowSharedKeyAccess** nastavena na **hodnotu false**.
 
 Při vyhodnocování provozu do svého účtu úložiště Pamatujte na to, že metriky a protokoly, jak je popsáno v tématu [zjištění typu autorizace používané klientskými aplikacemi](#detect-the-type-of-authorization-used-by-client-applications) , můžou zahrnovat požadavky vytvořené pomocí SAS delegování uživatele. Další informace o tom, jak Azure Storage reaguje na SAS, pokud je vlastnost **AllowSharedKeyAccess** nastavená na **false** , najdete v tématu [Vysvětlení způsobu, jakým nepovoluje sdílený klíč vliv na tokeny SAS](#understand-how-disallowing-shared-key-affects-sas-tokens).
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21e69cf8d90f004d397778c2eeb6b5f774196574
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 99cad2a4218995ad10488d97ce19eeef36b642ae
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098735"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636992"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Základní hodnoty zabezpečení Azure pro Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -138,7 +138,7 @@ Další informace o použití značek služeb: https://docs.microsoft.com/azure/
 
 - Cosmos DB by měl používat koncový bod služby virtuální sítě
 
-Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role (RBAC) a zásady v jediné definici podrobného plánu. V rámci správy verzí můžete snadno použít podrobný plán na nová předplatná, prostředí a vyladit řízení a správu.
+Plány Azure můžete použít také ke zjednodušení rozsáhlých nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role Azure (Azure RBAC) a zásady v jediné definici podrobného plánu. V rámci správy verzí můžete snadno použít podrobný plán na nová předplatná, prostředí a vyladit řízení a správu.
 
 Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -285,15 +285,15 @@ Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor: 
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Doprovodné** materiály: podokno identita a řízení přístupu (IAM) můžete použít v Azure Portal ke konfiguraci řízení přístupu na základě role (RBAC) a udržování inventáře na Azure Cosmos DBch prostředcích. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role.
+**Doprovodné** materiály: podokno identita a řízení přístupu (IAM) můžete použít v Azure Portal ke konfiguraci řízení přístupu na základě role Azure (Azure RBAC) a udržování inventáře na Azure Cosmos DBch prostředcích. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role.
 
-Azure Cosmos DB poskytuje vestavěnou RBAC pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil ve Azure Active Directory (AD), může tyto role Azure přiřadit uživatelům, skupinám, instančním objektům nebo spravovaným identitám, aby mohl udělit nebo odepřít přístup k prostředkům a operacím s prostředky Azure Cosmos DB.
+Azure Cosmos DB poskytuje vestavěnou službu Azure RBAC pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil ve Azure Active Directory (AD), může tyto role Azure přiřadit uživatelům, skupinám, instančním objektům nebo spravovaným identitám, aby mohl udělit nebo odepřít přístup k prostředkům a operacím s prostředky Azure Cosmos DB.
 
 K vyhledání účtů, které jsou členy skupin pro správu, můžete také použít modul Azure AD PowerShell k provádění dotazů ad hoc. 
 
 Kromě toho mohou být některé akce v Azure Cosmos DB řízeny pomocí Azure Active Directory a primárních klíčů pro konkrétní účet.  K řízení přístupu ke klíčům použijte nastavení účtu disableKeyBasedMetadataWriteAccess.
 
-Principy řízení přístupu na základě rolí v Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+Pochopení řízení přístupu na základě role v Azure v Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
 Sestavujte vlastní role pomocí Azure Cosmos DBch akcí (Microsoft.Docobor názvů umentDB): https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
 
@@ -529,9 +529,9 @@ Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Doprovodné** materiály: Azure Cosmos DB poskytuje integrované řízení přístupu na základě role (RBAC) pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil v Azure Active Directory může přiřadit tyto role Azure uživatelům, skupinám, instančním objektům nebo spravovaným identitám pro udělení nebo odepření přístupu k prostředkům a operacím na Azure Cosmos DBch prostředcích. Přiřazování rolí je vymezené jenom na úrovni řízení a přístup, což zahrnuje přístup k účtům Azure Cosmos, databázím, kontejnerům a nabídkám (propustnost).
+**Doprovodné** materiály: Azure Cosmos DB poskytuje integrované řízení přístupu na základě role Azure (Azure RBAC) pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil v Azure Active Directory může přiřadit tyto role Azure uživatelům, skupinám, instančním objektům nebo spravovaným identitám pro udělení nebo odepření přístupu k prostředkům a operacím na Azure Cosmos DBch prostředcích. Přiřazování rolí je vymezené jenom na úrovni řízení a přístup, což zahrnuje přístup k účtům Azure Cosmos, databázím, kontejnerům a nabídkám (propustnost).
 
-Postup implementace RBAC v Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+Jak implementovat službu Azure RBAC v Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
 **Monitorování Azure Security Center** : nelze použít
 

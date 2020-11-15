@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 45f5a7e66c80dff5e78e575463becd95bcc7fca1
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b8aaebdd37f835201ef549e3f97e0c0b657e4fe9
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242173"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636193"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for PostgreSQL s jedním serverem pomocí rozhraní příkazového řádku
 
@@ -21,7 +21,7 @@ Privátní koncový bod je základním stavebním blokem privátního propojení
 > [!NOTE]
 > Funkce privátního odkazu je dostupná jenom pro Azure Database for PostgreSQL servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je databázový server v jedné z těchto cenových úrovní.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete projít tento průvodce, budete potřebovat:
 
@@ -67,6 +67,7 @@ az vm create \
   --name myVm \
   --image Win2019Datacenter
 ```
+
  Poznamenejte si veřejnou IP adresu virtuálního počítače. Tato adresa se použije k připojení k virtuálnímu počítači z Internetu v dalším kroku.
 
 ## <a name="create-an-azure-database-for-postgresql---single-server"></a>Vytvoření serveru Azure Database for PostgreSQL-Single 
@@ -99,6 +100,7 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>Konfigurovat zónu Privátní DNS 
 Vytvořte zónu Privátní DNS pro doménu serveru PostgreSQL a vytvořte odkaz na přidružení s Virtual Network. 
+
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.postgres.database.azure.com" 
@@ -126,30 +128,30 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 > [!NOTE]
 > V některých případech jsou Azure Database for PostgreSQL a VNet-Subnet v různých předplatných. V těchto případech je nutné zajistit následující konfigurace:
-> - Ujistěte se, že oba odběry mají zaregistrovaný poskytovatel prostředků **Microsoft. DBforPostgreSQL** . Další informace najdete v tématu [Resource-Manager – registrace][resource-manager-portal] .
+> - Ujistěte se, že oba odběry mají zaregistrovaný poskytovatel prostředků **Microsoft. DBforPostgreSQL** . Další informace najdete v tématu [poskytovatelé prostředků](../azure-resource-manager/management/resource-providers-and-types.md).
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
 Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způsobem:
 
-1. Na portálu zadejte na panelu hledání *myVm* .
+1. Na portálu zadejte na panelu hledání *myVm*.
 
-1. Klikněte na tlačítko **Připojit** . Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
+1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **Stáhnout soubor RDP** . Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP* ) a stáhne ho do vašeho počítače.
+1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP* ) a stáhne ho do vašeho počítače.
 
 1. Otevřete *stažený soubor. RDP* .
 
-    1. Pokud se zobrazí výzva, vyberte **Připojit** .
+    1. Pokud se zobrazí výzva, vyberte **Připojit**.
 
     1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
         > Možná budete muset vybrat **Další volby**  >  **použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
-1. Vyberte **OK** .
+1. Vyberte **OK**.
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění na certifikát, vyberte **Ano** nebo **Pokračovat** .
+1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění na certifikát, vyberte **Ano** nebo **Pokračovat**.
 
 1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.  
 
@@ -159,27 +161,28 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 2. Zadejte  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`. 
 
-    Zobrazí se zpráva podobná této:
-    ```azurepowershell
-    Server:  UnKnown
-    Address:  168.63.129.16
-    Non-authoritative answer:
-    Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
-    Address:  10.1.3.4
-    ```
+   Zobrazí se zpráva podobná této:
 
-3. Otestujte připojení privátního propojení pro server PostgreSQL pomocí libovolného dostupného klienta. V následujícím příkladu jsem k provedení operace použili [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15) .
+   ```azurepowershell
+   Server:  UnKnown
+   Address:  168.63.129.16
+   Non-authoritative answer:
+   Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
+   Address:  10.1.3.4
+   ```
+
+3. Otestujte připojení privátního propojení pro server PostgreSQL pomocí libovolného dostupného klienta. Následující příklad používá k provedení operace [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) .
 
 4. V **nové připojení** zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Typ serveru| Vyberte **PostgreSQL** .|
-    | Název serveru| Vybrat *mydemopostgresserver.privatelink.Postgres.Database.Azure.com* |
-    | Uživatelské jméno | Zadejte uživatelské jméno, username@servername které je k dispozici během vytváření PostgreSQL serveru. |
-    |Heslo |Zadejte heslo, které jste zadali během vytváření PostgreSQL serveru. |
-    |SSL|Vyberte možnost **požadováno** .|
-    ||
+   | Nastavení | Hodnota |
+   | ------- | ----- |
+   | Typ serveru| Vyberte **PostgreSQL**.|
+   | Název serveru| Vybrat *mydemopostgresserver.privatelink.Postgres.Database.Azure.com* |
+   | Uživatelské jméno | Zadejte uživatelské jméno, username@servername které je k dispozici během vytváření PostgreSQL serveru. |
+   |Heslo |Zadejte heslo, které jste zadali během vytváření PostgreSQL serveru. |
+   |SSL|Vyberte možnost **požadováno**.|
+   ||
 
 5. Vyberte Připojit.
 
@@ -198,6 +201,3 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [tom, co je privátní koncový bod Azure](../private-link/private-endpoint-overview.md)
-
-<!-- Link references, to text, Within this same GitHub repo. -->
-[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

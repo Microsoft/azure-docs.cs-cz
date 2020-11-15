@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f6d2b126cd9a0acbbbdb8d17ce7345bbf17b556
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903210"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635904"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Připojení a Správa clusteru Kubernetes přes kubectl na zařízení GPU Azure Stack Edge pro
 
@@ -44,7 +44,7 @@ Po vytvoření clusteru Kubernetes můžete k tomuto clusteru přistupovat, abys
 [!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 
-## <a name="configure-cluster-access-via-rbac"></a>Konfigurace přístupu k clusteru přes RBAC
+## <a name="configure-cluster-access-via-kubernetes-rbac"></a>Konfigurace přístupu k clusteru přes Kubernetes RBAC
 
 Po vytvoření clusteru Kubernetes můžete použít *kubectl* prostřednictvím funkce cmdline k přístupu ke clusteru. 
 
@@ -125,7 +125,7 @@ V tomto postupu vytvoříte obor názvů a uživatele. Pak přidružíte uživat
     Například pokud hlavní uzel Kubernetes běžel v 1.15.2, nainstalujte v 1.15.2 klienta.
 
     > [!IMPORTANT]
-    > Stáhněte si klienta, který nemá více než jednu dílčí verzi z hlavního serveru. Verze klienta, ale může vést k hlavnímu serveru až k jedné dílčí verzi. Například hlavní server v 1.3 by měl pracovat s uzly v 1.1, v 1.2 a v 1.3 a musí fungovat s klienty v 1.2, v 1.3 a v 1.4. Další informace o verzi klienta Kubernetes najdete v tématu [zásady podpory pro verzi Kubernetes a pro zkosení verzí](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew). Další informace o verzi Kubernetes serveru na Azure Stack Edge pro najdete na webu získání Kubernetes verze serveru.<!-- insert link-->
+    > Stáhněte si klienta, který se od hlavní verze neliší o více než jednu podverzi. Verze klienta, ale může vést k hlavnímu serveru až k jedné dílčí verzi. Například hlavní server v 1.3 by měl pracovat s uzly v 1.1, v 1.2 a v 1.3 a musí fungovat s klienty v 1.2, v 1.3 a v 1.4. Další informace o verzi klienta Kubernetes najdete v tématu [zásady podpory pro verzi Kubernetes a pro zkosení verzí](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew). Další informace o verzi Kubernetes serveru na Azure Stack Edge pro najdete na webu získání Kubernetes verze serveru.<!-- insert link-->
     > V některých případech `kubectl` je v systému předinstalována, pokud používáte Docker for Windows nebo jiné nástroje. Aby bylo možné pracovat s tímto clusterem Kubernetes, je důležité stáhnout konkrétní verzi nástroje `kubectl` , jak je uvedeno v této části. 
 
     Instalace trvá několik minut.
@@ -160,7 +160,7 @@ V tomto postupu vytvoříte obor názvů a uživatele. Pak přidružíte uživat
 Nyní můžete své aplikace nasadit v oboru názvů a pak je zobrazit v těchto aplikacích a jejich protokolech.
 
 > [!IMPORTANT]   
-> Existuje mnoho příkazů, které nebudete moci spustit, například příkazy, které vyžadují přístup správce. Můžete provádět pouze operace, které jsou povoleny v oboru názvů.
+> Existuje mnoho příkazů, které nebudete moci spustit, například příkazy, které vyžadují přístup správce. Můžete provádět pouze operace, které jsou v daném oboru názvů povolené.
 
 
 ## <a name="remove-kubernetes-cluster"></a>Odebrat cluster Kubernetes

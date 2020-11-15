@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 0d954123b0d48a4b78c0dcda98898b7ab539d502
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3f159a11dc9607daf479c13f6612cab0175dae0c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504499"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634884"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření účtu Video Indexer připojeného k Azure
 
@@ -25,7 +25,7 @@ Tento článek ukazuje, jak vytvořit účet Video Indexer propojený s předpla
 
 Pokud přecházíte ze *zkušební verze* na *placený* účet video indexer, můžete si vybrat, jestli chcete zkopírovat všechna videa a přizpůsobení modelu na nový účet, jak je popsáno v části [Import obsahu z zkušebního účtu](#import-your-content-from-the-trial-account) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure.
 
@@ -193,6 +193,10 @@ K automatizaci vytváření účtu se jedná o proces dvou kroků:
 
     Podívejte se na příklad [šablony pro vytvoření účtu Media Services](https://github.com/Azure-Samples/media-services-v3-arm-templates).
 1. [Pomocí Media Services a aplikace Azure AD zavolejte vytvořit účet](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Po dokončení tohoto kurzu odstraňte prostředky, které neplánujete použít.
 
 ## <a name="next-steps"></a>Další kroky
 

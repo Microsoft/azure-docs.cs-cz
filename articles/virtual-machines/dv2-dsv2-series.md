@@ -1,5 +1,5 @@
 ---
-title: Dv2 a Dsv2-Series – Azure Virtual Machines
+title: Dv2 a DSv2-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače s Dv2 a Dsv2-Series.
 author: joelpelley
 ms.service: virtual-machines
@@ -7,16 +7,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 785e72a47d68bf368e160b1f3bf2a6d762d1f100
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1bd2e0360b064a71dd91241d40513d8c37447bb
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649690"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635632"
 ---
 # <a name="dv2-and-dsv2-series"></a>Řada Dv2 a DSv2
 
-Dv2 a Dsv2-Series, následná na originální D-Series, má výkonnější procesor a optimální konfiguraci procesoru na paměť, která je vhodná pro většinu produkčních úloh. Dv2-Series má přibližně 35% rychlejší než řada D-Series. Dv2-Series běží na Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell), nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) s technologií Intel Turbo zvyšovat 2,0. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
+Dv2 a DSv2-Series, následná na originální D-Series, má výkonnější procesor a optimální konfiguraci procesoru na paměť, která je vhodná pro většinu produkčních úloh. Dv2-Series má přibližně 35% rychlejší než řada D-Series. Dv2-Series běží na Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell), nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) s technologií Intel Turbo zvyšovat 2,0. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
 
 ## <a name="dv2-series"></a>Dv2-series
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 852589e7ba1896ad493c5b8c300240490a516b64
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 51f02d9f059ef87f7c1627102508b8b2aa7f537a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518239"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636295"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
@@ -122,6 +122,14 @@ Vytvořte pravidlo skupiny zabezpečení sítě pomocí [AZ Network NSG Rule Cre
     --priority 200
 ```
 
+## <a name="create-backend-servers"></a>Vytvoření serverů back-end
+
+V této části vytvoříte:
+
+* Síťová rozhraní pro back-end servery.
+* Konfigurační soubor cloudu s názvem **cloud-init.txt** pro konfiguraci serveru.
+* Dva virtuální počítače, které se mají použít jako servery back-end pro nástroj pro vyrovnávání zatížení.
+
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>Vytvoření síťových rozhraní pro virtuální počítače
 
 Vytvořte dvě síťová rozhraní pomocí [AZ Network nic Create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create):
@@ -158,13 +166,6 @@ Vytvořte dvě síťová rozhraní pomocí [AZ Network nic Create](https://docs.
     --subnet myBackEndSubnet \
     --network-security-group myNSG
 ```
-
-## <a name="create-backend-servers"></a>Vytvoření serverů back-end
-
-V této části vytvoříte:
-
-* Konfigurační soubor cloudu s názvem **cloud-init.txt** pro konfiguraci serveru.
-* Dva virtuální počítače, které se mají použít jako servery back-end pro nástroj pro vyrovnávání zatížení.
 
 ### <a name="create-cloud-init-configuration-file"></a>Vytvoření konfiguračního souboru Cloud-init
 

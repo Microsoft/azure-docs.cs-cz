@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Naučte se řešit problémy a řešit běžné problémy při povolování a používání Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 42551443fb5af1bd3f783c33f708b231eea68907
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a30ae2d78d682427cf53c8f98b0ca70b441d72e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364163"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636805"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Řešení potíží s Azure Dev Spaces
 
@@ -28,7 +28,7 @@ V sadě Visual Studio nastavte `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` prom
 
 V rozhraní příkazového řádku můžete při provádění příkazu pomocí přepínače vymezit výstup dalších informací `--verbose` . Můžete také procházet podrobnější protokoly v nástroji `%TEMP%\Azure Dev Spaces` . V počítači Mac můžete *dočasný* adresář najít spuštěním `echo $TMPDIR` z okna terminálu. V počítači se systémem Linux je *dočasný* adresář obvykle `/tmp` . Dále ověřte, že je v [konfiguračním souboru Azure CLI](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)povolené protokolování.
 
-Azure Dev Spaces také funguje nejlépe při ladění jedné instance nebo pod. `azds.yaml`Soubor obsahuje nastavení *replicaCount*, které označuje počet lusků, které Kubernetes pro vaši službu spustí. Změníte-li *replicaCount* pro konfiguraci aplikace tak, aby spouštěla více lusků pro danou službu, ladicí program se připojí k prvnímu pod, pokud je uveden abecedně. Ladicí program se připojí k jinému pod při recyklování původní pod, což může vést k neočekávanému chování.
+Azure Dev Spaces také funguje nejlépe při ladění jedné instance nebo pod. `azds.yaml`Soubor obsahuje nastavení *replicaCount* , které označuje počet lusků, které Kubernetes pro vaši službu spustí. Změníte-li *replicaCount* pro konfiguraci aplikace tak, aby spouštěla více lusků pro danou službu, ladicí program se připojí k prvnímu pod, pokud je uveden abecedně. Ladicí program se připojí k jinému pod při recyklování původní pod, což může vést k neočekávanému chování.
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Běžné problémy při povolování Azure Dev Spaces
 
@@ -138,7 +138,7 @@ Streaming build container logs for service 'mywebapi' failed with: Timed out aft
 Container image build failed
 ```
 
-Výše uvedený příkaz ukazuje, že je uzel Service přiřazený k *virtuálnímu uzlu-ACI-Linux*, který je virtuálním uzlem.
+Výše uvedený příkaz ukazuje, že je uzel Service přiřazený k *virtuálnímu uzlu-ACI-Linux* , který je virtuálním uzlem.
 
 Pokud chcete tento problém vyřešit, aktualizujte graf Helm pro službu a odeberte všechny hodnoty *nodeSelector* nebo *tolerování* , které umožní službě běžet ve virtuálním uzlu. Tyto hodnoty jsou obvykle definovány v `values.yaml` souboru grafu.
 
@@ -217,7 +217,7 @@ azds up --verbose --output json
 
 V aplikaci Visual Studio:
 
-1. Otevřete **nástroje > možnosti** a v části **projekty a řešení**vyberte **vytvořit a spustit**.
+1. Otevřete **nástroje > možnosti** a v části **projekty a řešení** vyberte **vytvořit a spustit**.
 2. Změňte nastavení pro **Podrobnosti výstupu sestavení projektu MSBuild** na **podrobné** nebo **diagnostické**.
 
     ![Snímek obrazovky s dialogem možnosti nástrojů](media/common/VerbositySetting.PNG)
@@ -261,9 +261,9 @@ K této chybě dochází, protože Azure Dev Spaces v současné době nepodporu
 
 Při použití [Azure dev Spaces k připojení clusteru AKS k vývojovému počítači](https://code.visualstudio.com/docs/containers/bridge-to-kubernetes)se může vyskytnout problém, kdy se síťový provoz nepředává mezi vaším vývojovým počítačem a clusterem AKS.
 
-Při připojování vývojového počítače ke clusteru AKS Azure Dev Spaces předávány síťový provoz mezi clusterem AKS a vývojovým počítačem úpravou souboru vývojového počítače `hosts` . Azure Dev Spaces vytvoří položku `hosts` s adresou služby Kubernetes, kterou nahrazujete jako název hostitele. Tato položka se používá s předáváním portů pro přímý přenos síťového provozu mezi vývojovým počítačem a clusterem AKS. Je-li služba na vašem vývojovém počítači v konfliktu s portem služby Kubernetes, kterou nahrazujete, Azure Dev Spaces nemůže dopředt síťový provoz pro službu Kubernetes. Například služba *BranchCache systému Windows* je obvykle svázaná s *hodnotou 0.0.0.0:80*, což může způsobit konflikt pro port 80 na všech místních IP adresách.
+Při připojování vývojového počítače ke clusteru AKS Azure Dev Spaces předávány síťový provoz mezi clusterem AKS a vývojovým počítačem úpravou souboru vývojového počítače `hosts` . Azure Dev Spaces vytvoří položku `hosts` s adresou služby Kubernetes, kterou nahrazujete jako název hostitele. Tato položka se používá s předáváním portů pro přímý přenos síťového provozu mezi vývojovým počítačem a clusterem AKS. Je-li služba na vašem vývojovém počítači v konfliktu s portem služby Kubernetes, kterou nahrazujete, Azure Dev Spaces nemůže dopředt síťový provoz pro službu Kubernetes. Například služba *BranchCache systému Windows* je obvykle svázaná s *hodnotou 0.0.0.0:80* , což může způsobit konflikt pro port 80 na všech místních IP adresách.
 
-Chcete-li tento problém vyřešit, je třeba zastavit všechny služby nebo procesy, které jsou v konfliktu s portem služby Kubernetes, kterou se pokoušíte nahradit. Pomocí nástrojů, jako je například *netstat*, můžete zkontrolovat, které služby nebo procesy ve vývojovém počítači jsou v konfliktu.
+Chcete-li tento problém vyřešit, je třeba zastavit všechny služby nebo procesy, které jsou v konfliktu s portem služby Kubernetes, kterou se pokoušíte nahradit. Pomocí nástrojů, jako je například *netstat* , můžete zkontrolovat, které služby nebo procesy ve vývojovém počítači jsou v konfliktu.
 
 Chcete-li například zastavit a zakázat službu *Windows BranchCache* :
 * Spusťte `services.msc` z příkazového řádku.
@@ -420,7 +420,7 @@ Chcete-li tento problém vyřešit, aktualizujte `launch.json` soubor v `.vscode
 
 Tato chyba se může zobrazit při spuštění ladicího programu Visual Studio Code.
 
-Chcete-li tento problém vyřešit, zavřete a znovu otevřete Visual Studio Code. Restartujte ladicí program.
+Chcete-li tento problém vyřešit, zavřete a znovu otevřete Visual Studio Code. Znovu spusťte ladicí program.
 
 ### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Chyba "vnitřní kukátko se nezdařilo: Sledujte ENOSPC" při připojování ladění k aplikaci Node.js
 
@@ -459,7 +459,7 @@ az provider register --namespace Microsoft.DevSpaces
 
 ### <a name="new-pods-arent-starting"></a>Nová Luska se nespouští.
 
-Inicializátor Kubernetes nemůže použít PodSpec pro nové lusky z důvodu změn oprávnění RBAC do role *Správce clusteru* v clusteru. Nový objekt pod může mít také neplatnou PodSpec, například účet služby spojený s objektem pod již neexistuje. Chcete-li zobrazit lusky, které jsou ve stavu *čekání* v důsledku problému s inicializátorem, použijte `kubectl get pods` příkaz:
+Inicializátor Kubernetes nemůže použít PodSpec pro nové lusky z důvodu změn oprávnění Kubernetes RBAC do role *Správce clusteru* v clusteru. Nový objekt pod může mít také neplatnou PodSpec, například účet služby spojený s objektem pod již neexistuje. Chcete-li zobrazit lusky, které jsou ve stavu *čekání* v důsledku problému s inicializátorem, použijte `kubectl get pods` příkaz:
 
 ```bash
 kubectl get pods --all-namespaces --include-uninitialized
@@ -488,7 +488,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 Po opětovné instalaci kontroleru znovu nasaďte své lusky.
 
-### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Nesprávná oprávnění RBAC pro volání řadiče pro vývoj prostorů a rozhraní API
+### <a name="incorrect-azure-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Nesprávná oprávnění Azure RBAC pro volání řadiče pro vývoj prostorů a rozhraní API
 
 Uživatel, který přistupuje k řadiči Azure Dev Spaces, musí mít přístup, aby mohl číst *kubeconfig* správce v clusteru AKS. Toto oprávnění je například k dispozici v [předdefinované roli Správce clusteru služby Azure Kubernetes](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Uživatel, který přistupuje k řadiči Azure Dev Spaces, musí mít také roli *Přispěvatel* nebo *Owner* role Azure pro řadič. Další podrobnosti o aktualizaci oprávnění uživatele pro cluster AKS jsou k dispozici [zde](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group).
 
@@ -501,9 +501,9 @@ Aktualizace role uživatele Azure pro kontroler:
 1. Otevřete podokno *Access Control (IAM)* .
 1. Klikněte na kartu *přiřazení rolí* .
 1. Klikněte na *Přidat* a pak na *Přidat přiřazení role*.
-    * V případě *role*vyberte možnost *Přispěvatel* nebo *vlastník*.
-    * V případě *přiřazení přístupu k*vyberte možnost *uživatel, skupina nebo instanční objekt služby Azure AD*.
-    * V části *Vybrat*vyhledejte uživatele, kterému chcete udělit oprávnění.
+    * V případě *role* vyberte možnost *Přispěvatel* nebo *vlastník*.
+    * V případě *přiřazení přístupu k* vyberte možnost *uživatel, skupina nebo instanční objekt služby Azure AD*.
+    * V části *Vybrat* vyhledejte uživatele, kterému chcete udělit oprávnění.
 1. Klikněte na *Uložit*.
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Překlad názvů DNS se nezdařil pro veřejnou adresu URL přidruženou ke službě dev Spaces.
@@ -530,13 +530,13 @@ Pokud chcete tento problém vyřešit:
 Tato chyba se může zobrazit při pokusu o přístup ke službě. Například když v prohlížeči přejdete na adresu URL služby. Tato chyba znamená, že port kontejneru není k dispozici. To může být z následujících důvodů:
 
 * Kontejner se stále vytváří a nasazuje. K tomuto problému může dojít, pokud spustíte `azds up` nebo spustíte ladicí program a potom se pokusíte o přístup k kontejneru předtím, než se úspěšně nasadí.
-* Konfigurace portů není konzistentní v rámci _souboru Dockerfile_, grafu Helm a libovolného kódu serveru, který otevírá port.
+* Konfigurace portů není konzistentní v rámci _souboru Dockerfile_ , grafu Helm a libovolného kódu serveru, který otevírá port.
 
 Pokud chcete tento problém vyřešit:
 
 1. Pokud je kontejner v procesu sestavení/nasazení, můžete počkat 2-3 sekund a pokusit se o přístup ke službě znovu. 
 1. Ověřte konfiguraci portů v následujících zdrojích:
-    * ** [Graf Helm](https://docs.helm.sh):** Určené `service.port` `deployment.containerPort` hodnotami a v hodnotách. yaml vygenerované pomocí `azds prep` příkazu.
+    * **[Graf Helm](https://docs.helm.sh):** Určené `service.port` `deployment.containerPort` hodnotami a v hodnotách. yaml vygenerované pomocí `azds prep` příkazu.
     * Jakékoli porty, které jsou otevřeny v kódu aplikace, například v Node.js: `var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Název typu nebo oboru názvů "MyLibrary" se nenašel.
@@ -594,7 +594,7 @@ Aktualizujte bránu firewall nebo konfiguraci zabezpečení tak, aby povolovaly 
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Chyba: nepovedlo se najít cluster \<cluster\> v předplatném. \<subscriptionId\>
 
-Tato chyba se může zobrazit v případě, že váš soubor kubeconfig cílí na jiný cluster nebo předplatné, než se snažíte použít s Azure Dev Spaces nástrojů na straně klienta. Nástroje Azure Dev Spaces na straně klienta replikují chování *kubectl*, které používá [jeden nebo více souborů kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) k výběru a komunikaci s clusterem.
+Tato chyba se může zobrazit v případě, že váš soubor kubeconfig cílí na jiný cluster nebo předplatné, než se snažíte použít s Azure Dev Spaces nástrojů na straně klienta. Nástroje Azure Dev Spaces na straně klienta replikují chování *kubectl* , které používá [jeden nebo více souborů kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) k výběru a komunikaci s clusterem.
 
 Pokud chcete tento problém vyřešit:
 

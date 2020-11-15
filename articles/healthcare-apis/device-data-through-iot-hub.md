@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: ee286540d4fd740c5e7c1f8bd693fddd625eeae2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 6c364cf84bada2a951ef3f224ea836885f0e3c1e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398143"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636312"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Kurz: příjem dat ze zařízení prostřednictvím Azure IoT Hub
 
-Azure IoT Connector pro FHIR * nabízí možnost ingestovat data ze zařízení s IoMT (Internet of medicíny) do Azure API pro FHIR. [Nasazení Azure IoT Connectoru pro FHIR (Preview) pomocí Azure Portal](iot-fhir-portal-quickstart.md) rychlý Start ukazuje příklad zařízení spravovaného službou Azure IoT Central [odesílání telemetrie](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot) do Azure IoT Connector pro FHIR. Azure IoT Connector pro FHIR může také pracovat se zařízeními zřízenými a spravovanými prostřednictvím Azure IoT Hub. V tomto kurzu najdete postup připojení a směrování dat zařízení z Azure IoT Hub do služby Azure IoT Connector pro FHIR.
+Azure IoT Connector pro rychlé provázání prostředků pro interoperabilitu zdravotní péče (FHIR&#174;) * nabízí možnost ingestovat data ze zařízení IoMT (Internet of medicíny) do Azure API pro FHIR. [Nasazení Azure IoT Connectoru pro FHIR (Preview) pomocí Azure Portal](iot-fhir-portal-quickstart.md) rychlý Start ukazuje příklad zařízení spravovaného službou Azure IoT Central [odesílání telemetrie](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot) do Azure IoT Connector pro FHIR. Azure IoT Connector pro FHIR může také pracovat se zařízeními zřízenými a spravovanými prostřednictvím Azure IoT Hub. V tomto kurzu najdete postup připojení a směrování dat zařízení z Azure IoT Hub do služby Azure IoT Connector pro FHIR.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -113,6 +113,4 @@ Naučte se konfigurovat konektor IoT pomocí šablon pro mapování zařízení 
 >[!div class="nextstepaction"]
 >[Azure IoT Connector pro šablony mapování FHIR](iot-mapping-templates.md)
 
-* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
-
-FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.
+* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview). FHIR je registrovaná ochranná známka změněného HL7 a používá se s oprávněním změněného HL7.

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: eb2212d618d45187779b328c7ba164bbacc980a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 012df825f38d292d0b0549701ad90334e3e30bb0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088678"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637009"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -55,7 +55,7 @@ Zabezpečte provozní kontinuitu, 99,999% dostupnost a zabezpečení na podnikov
 - Azure Cosmos DB nabízí komplexní sadu [SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) , včetně špičkové dostupnosti v oboru po celém světě.
 - Snadná distribuce dat do libovolné oblasti Azure pomocí automatické replikace dat. Při použití silné konzistence užívejte v případě vysoké konzistence nenáročné zápisy na více oblastí nebo RPO 0.
 - Využijte místní šifrování na podnikové úrovni s klíčem, který se spravuje sami.
-- Řízení přístupu na základě role udržuje vaše data v bezpečí a nabízí jemně vyladěný ovládací prvek.
+- Řízení přístupu na základě role v Azure udržuje vaše data v bezpečí a nabízí jemně vyladěný ovládací prvek.
 
 ### <a name="fully-managed-and-cost-effective"></a>Plně spravovaná a nákladově efektivní
 

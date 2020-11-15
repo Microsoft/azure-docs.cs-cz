@@ -1,6 +1,6 @@
 ---
-title: Pochopení Access Control založeného na rolích na zařízení Azure Stack Edge pro Kubernetes | Microsoft Docs
-description: Popisuje, jak se Access Control na základě role na zařízení Azure Stack Edge pro Kubernetes.
+title: Principy řízení přístupu na základě role Kubernetes na zařízení Azure Stack Edge pro | Microsoft Docs
+description: Popisuje, jak Kubernetes řízení přístupu na základě role probíhá na zařízení Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a9625dcf40ae7d11e1154fc89b7f04652c8ca16
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320808"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635836"
 ---
-# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes Access Control na základě rolí na zařízení GPU pro Azure Stack Edge pro
+# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes řízení přístupu na základě role na zařízení GPU Azure Stack Edge pro
 
 
-Když nakonfigurujete výpočetní roli na zařízení Azure Stack Edge pro, vytvoří se cluster Kubernetes. K omezení přístupu k prostředkům clusteru v zařízení můžete použít řízení přístupu na základě role (RBAC) Kubernetes.
+Když nakonfigurujete výpočetní roli na zařízení Azure Stack Edge pro, vytvoří se cluster Kubernetes. Pomocí Kubernetes řízení přístupu založeného na rolích (Kubernetes RBAC) můžete omezit přístup k prostředkům clusteru v zařízení.
 
-Tento článek poskytuje přehled o systému RBAC, který poskytuje Kubernetes, a o tom, jak je Kubernetes RBAC implementováno na zařízení Azure Stack Edge pro. 
+V tomto článku najdete přehled systému Kubernetes RBAC, který poskytuje Kubernetes, a jak se Kubernetes RBAC implementuje na vašem zařízení Azure Stack Edge pro. 
 
-## <a name="rbac-for-kubernetes"></a>RBAC pro Kubernetes
+## <a name="kubernetes-rbac"></a>Kubernetes RBAC
 
 Kubernetes RBAC umožňuje přiřadit uživatele nebo skupiny uživatelů, oprávnění k provádění akcí, jako je vytváření nebo úpravy prostředků, nebo zobrazení protokolů ze spuštěných úloh aplikací. Tato oprávnění můžou být vymezená na jeden obor názvů nebo udělená napříč celým clusterem. 
 
@@ -61,21 +61,21 @@ Vaše zařízení Azure Stack Edge pro má následující obory názvů:
 
 V reálném světě je důležité rozdělit cluster na více oborů názvů. 
 
-- **Více uživatelů**: Pokud máte více uživatelů, pak více oborů názvů umožní těmto uživatelům nasazovat své aplikace a služby v jejich specifických oborech názvů v izolaci od sebe. 
-- **Jeden uživatel**: i když existuje jeden uživatel, více oborů názvů umožní, aby tento uživatel spouštěl více verzí aplikací ve stejném clusteru Kubernetes.
+- **Více uživatelů** : Pokud máte více uživatelů, pak více oborů názvů umožní těmto uživatelům nasazovat své aplikace a služby v jejich specifických oborech názvů v izolaci od sebe. 
+- **Jeden uživatel** : i když existuje jeden uživatel, více oborů názvů umožní, aby tento uživatel spouštěl více verzí aplikací ve stejném clusteru Kubernetes.
 
 ### <a name="roles-and-rolebindings"></a>Role a RoleBindings
 
 Kubernetes má koncept vazby role a role, který umožňuje udělit oprávnění uživateli nebo prostředkům na úrovni oboru názvů a na úrovni clusteru. 
 
-- **Role**: můžete definovat oprávnění pro uživatele jako **roli** a potom použít **role** k udělení oprávnění v rámci oboru názvů. 
-- **RoleBindings**: Pokud jste definovali role, můžete k přiřazení rolí pro daný obor názvů použít **RoleBindings** . 
+- **Role** : můžete definovat oprávnění pro uživatele jako **roli** a potom použít **role** k udělení oprávnění v rámci oboru názvů. 
+- **RoleBindings** : Pokud jste definovali role, můžete k přiřazení rolí pro daný obor názvů použít **RoleBindings** . 
 
 Tento přístup umožňuje logicky oddělit jeden Kubernetes cluster s uživateli, kteří mají jenom přístup k prostředkům aplikace v jejich přiřazeném oboru názvů. 
 
-## <a name="rbac-on-azure-stack-edge-pro"></a>RBAC na Azure Stack Edge pro
+## <a name="kubernetes-rbac-on-azure-stack-edge-pro"></a>Kubernetes RBAC na Azure Stack Edge pro
 
-V aktuální implementaci RBAC Azure Stack Edge pro umožňuje provést následující akce z prostředí PowerShell s omezeným přístupem:
+V aktuální implementaci Kubernetes RBAC umožňuje Azure Stack Edge pro provádět následující akce z prostředí PowerShell s omezeným přístupem:
 
 - Vytvořte obory názvů.  
 - Vytvořte další uživatele.
@@ -85,9 +85,9 @@ V aktuální implementaci RBAC Azure Stack Edge pro umožňuje provést následu
 
 Zařízení Azure Stack Edge pro má několik oborů názvů System a můžete vytvořit uživatelské obory názvů se `kubeconfig` soubory pro přístup k těmto oborům názvů. Uživatelé mají plnou kontrolu nad těmito obory názvů a můžou vytvářet nebo upravovat uživatele nebo udělovat přístup uživatelům. Pouze správce clusteru má plný přístup k systémovým oborům názvů a prostředkům celého clusteru. `aseuser`Má přístup jen pro čtení k systémovým oborům názvů.
 
-Tady je diagram, který znázorňuje implementaci RBAC na zařízeních Azure Stack Edge pro.
+Tady je diagram, který znázorňuje implementaci Kubernetes RBAC na zařízení Azure Stack Edge pro.
 
-![RBAC na zařízení Azure Stack Edge pro](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
+![Kubernetes RBAC na zařízení Azure Stack Edge pro](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
 
 V tomto diagramu mají Alice, Bob a Karel přístup pouze k přiřazeným oborům názvů uživatelů, což v tomto případě jsou `ns1` , `ns2` a `ns3` . V těchto oborech názvů mají přístup správce. Správce clusteru na druhé straně má přístup správce k systémovým oborům názvů a prostředkům v rámci clusteru.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 375dff1dacc949dd4373bbf26908feb504750224
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: c0333f9faeae99ee83beda381f77f4f95b0a9192
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372335"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636112"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -37,7 +37,8 @@ Aktualizace v listopadu zahrnují:
 
 - [29 doporučení verze Preview pro zvýšení pokrytí srovnávacích testů zabezpečení Azure](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [NIST SP 800 171 R2 přidáno do řídicího panelu dodržování předpisů pro Security Center](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
-
+- [Seznam doporučení nyní obsahuje filtry](#recommendations-list-now-includes-filters)
+- [Vylepšené a rozšířené prostředí pro Automatické zřizování](#auto-provisioning-experience-improved-and-expanded)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 doporučení verze Preview pro zvýšení pokrytí srovnávacích testů zabezpečení Azure
 
@@ -78,6 +79,30 @@ Pokud chcete použít standard pro vaše předplatná a průběžně monitorovat
 Další informace o tomto standardu dodržování předpisů najdete v tématu [NIST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final).
 
 
+### <a name="recommendations-list-now-includes-filters"></a>Seznam doporučení nyní obsahuje filtry
+
+Seznam doporučení zabezpečení teď můžete filtrovat podle rozsahu kritérií. V následujícím příkladu je seznam doporučení filtrovaný tak, aby zobrazoval doporučení, která:
+
+- jsou **všeobecně dostupné** (tj. není ve verzi Preview)
+- jsou pro **účty úložiště**
+- podpora **opravy rychlých oprav**
+
+:::image type="content" source="media/release-notes/recommendations-filters.png" alt-text="Filtry pro seznam doporučení":::
+
+
+### <a name="auto-provisioning-experience-improved-and-expanded"></a>Vylepšené a rozšířené prostředí pro Automatické zřizování
+
+Funkce automatického zřizování pomáhá snižovat režijní náklady díky instalaci požadovaných rozšíření na nové a stávající virtuální počítače Azure, aby mohla těžit z ochrany Security Center. 
+
+Jak Azure Security Center roste, vyvinuly se další rozšíření a Security Center můžou monitorovat větší seznam typů prostředků. Nástroje pro Automatické zřizování se teď rozšířily tak, aby podporovaly další rozšíření a typy prostředků, a to díky využití možností Azure Policy.
+
+Teď můžete nakonfigurovat automatické zřizování pro:
+
+- Agent Log Analytics
+- New Doplněk Azure Policy pro Kubernetes
+- New Microsoft Dependency Agent
+
+Další informace o [automatických zřizováních agentů a rozšíření od Azure Security Center](security-center-enable-data-collection.md).
 
 ## <a name="october-2020"></a>Říjen 2020
 
@@ -270,7 +295,7 @@ Pokud povolíte Azure Defender z oblasti **ceny a nastavení** Azure Security Ce
 - [Azure Defender pro servery](defender-for-servers-introduction.md)
 - [Azure Defender pro App Service](defender-for-app-service-introduction.md)
 - [Azure Defender pro úložiště](defender-for-storage-introduction.md)
-- [Azure Defender pro SQL](defender-for-sql-introduction.md)
+- [Azure Defender for SQL](defender-for-sql-introduction.md)
 - [Azure Defender pro trezor klíčů](defender-for-key-vault-introduction.md)
 - [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender pro registry kontejnerů](defender-for-container-registries-introduction.md)
@@ -518,7 +543,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 
 ##### <a name="before-august-2020"></a>Před srpna 2020
 
-|Doporučení|Rozsah|
+|Doporučení|Obor|
 |----|:----|
 |**Povolení integrovaného řešení posouzení ohrožení zabezpečení na virtuálních počítačích (používá se Qualys)**<br>Klíč: 550e890b-e652-4d22-8274-60b3bdb24c63|Integrované|
 |**Náprava ohrožení zabezpečení zjištěná na vašich virtuálních počítačích (používá se Qualys)**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Integrované|
@@ -527,7 +552,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 ||||
 
 
-|Zásady|Rozsah|
+|Zásady|Obor|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Integrované|
 |**Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.**<br>ID zásady: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
@@ -536,13 +561,13 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 
 ##### <a name="from-august-2020"></a>Od srpna 2020
 
-|Doporučení|Rozsah|
+|Doporučení|Obor|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené řešení posouzení ohrožení zabezpečení.**<br>Klíč: ffff0522-1e88-47fc-8382-2a80ba848f5d|Předdefinované + BYOL|
 |**Ohrožení zabezpečení ve vašich virtuálních počítačích by se mělo opravit.**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Předdefinované + BYOL|
 ||||
 
-|Zásady|Rozsah|
+|Zásady|Obor|
 |----|:----|
 |[**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Předdefinované + BYOL|
 ||||

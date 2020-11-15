@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 4bad3227e08c0fbe0d280967e45bbef9d477e1b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4b968d0d5e091d72cf718d58b11ade68ddf8c6
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569131"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637080"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Zpracování doporučení ve službě Azure Security Center
 
@@ -38,9 +38,16 @@ Po kontrole všech doporučení se rozhodněte, která z nich se má opravit jak
 
 ## <a name="quick-fix-remediation"></a>Rychlá oprava nápravy<a name="one-click"></a>
 
-Rychlá oprava vám umožní rychle opravit doporučení pro víc prostředků. Je dostupná jenom pro konkrétní doporučení. Rychlá oprava zjednodušuje nápravu a umožňuje rychle zvýšit zabezpečení vašeho prostředí.
+Rychlá oprava zjednodušuje nápravu a umožňuje rychle zvýšit zabezpečení vašeho prostředí.
 
-Postup implementace rychlé nápravy opravy:
+Rychlá oprava vám umožní rychle opravit doporučení pro víc prostředků. 
+
+> [!TIP]
+> Rychlá oprava je dostupná jenom pro konkrétní doporučení. Pokud chcete najít doporučení s možností rychlé opravy, použijte vyhrazený filtr v horní části seznamu doporučení:
+> 
+> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="Pomocí filtrů nad seznamem doporučení najdete doporučení s možností Rychlá oprava.":::
+
+Implementace rychlé nápravy opravy:
 
 1. Ze seznamu doporučení, která obsahují **rychlou opravu!** popisek, klikněte na doporučení.
 

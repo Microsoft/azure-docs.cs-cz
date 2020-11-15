@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16ac28e46e9231918f433c0e9eb077cb0d8cf230
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 21b563bf383dce486de86bc51913feac7863d8e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791167"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635156"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Autorizace přístupu k datům BLOB a Queue pomocí spravovaných identit pro prostředky Azure
 
@@ -165,4 +165,4 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 - [Spravujte přístupová práva k datům úložiště pomocí Azure RBAC](./storage-auth-aad-rbac-portal.md).
 - [Používejte Azure AD s aplikacemi pro úložiště](storage-auth-aad-app.md).
-- [Spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektu BLOB](../blobs/authorize-active-directory-powershell.md)
+- [Spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektu BLOB](../blobs/authorize-data-operations-powershell.md)

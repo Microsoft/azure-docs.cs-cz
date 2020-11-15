@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: d5958ea947f6b786e9fbc6c44ab914ea895d6e08
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096797"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637111"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Práce s daty s využitím průzkumníka Azure Cosmos 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,21 +26,21 @@ Azure Cosmos DB Explorer je samostatné webové rozhraní, které umožňuje zob
 
 ## <a name="access-azure-cosmos-db-explorer"></a>Přístup k Azure Cosmos DB Exploreru
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). 
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/). 
 
-2. V části **všechny prostředky** vyhledejte a přejděte na účet Azure Cosmos DB, vyberte klíče a zkopírujte **primární připojovací řetězec** .  
+2. V části **všechny prostředky** vyhledejte a přejděte na účet Azure Cosmos DB, vyberte klíče a zkopírujte **primární připojovací řetězec**.  
 
-3. Přejít na https://cosmos.azure.com/ , vložte připojovací řetězec a vyberte **připojit** . Pomocí připojovacího řetězce můžete získat přístup k Průzkumníku Azure Cosmos DB bez jakýchkoli časových omezení.  
+3. Přejít na https://cosmos.azure.com/ , vložte připojovací řetězec a vyberte **připojit**. Pomocí připojovacího řetězce můžete získat přístup k Průzkumníku Azure Cosmos DB bez jakýchkoli časových omezení.  
 
    Pokud chcete jiným uživatelům poskytnout dočasný přístup k vašemu Azure Cosmos DB účtu, můžete k tomu použít adresy URL pro čtení i zápis a přístup pro čtení. 
 
-4. Otevřete okno **Průzkumník dat** vyberte otevřít na **celé obrazovce** . V místním dialogovém okně můžete zobrazit dvě adresy URL pro přístup – čtení i **zápis** a **čtení** . Tyto adresy URL umožňují dočasně sdílet Azure Cosmos DB účet s ostatními uživateli. Přístup k účtu vyprší během 24 hodin, po kterém se můžete znovu připojit pomocí nové adresy URL pro přístup nebo připojovacího řetězce. 
+4. Otevřete okno **Průzkumník dat** vyberte otevřít na **celé obrazovce**. V místním dialogovém okně můžete zobrazit dvě adresy URL pro přístup – čtení i **zápis** a **čtení**. Tyto adresy URL umožňují dočasně sdílet Azure Cosmos DB účet s ostatními uživateli. Přístup k účtu vyprší během 24 hodin, po kterém se můžete znovu připojit pomocí nové adresy URL pro přístup nebo připojovacího řetězce. 
 
    **Čtení i zápis** – při sdílení adresy URL Read-Write s ostatními uživateli můžou zobrazit a upravit databáze, kolekce, dotazy a další prostředky, které jsou přidružené k tomuto konkrétnímu účtu.
 
    **Číst** – když sdílíte adresu URL jen pro čtení s ostatními uživateli, můžou si Zobrazit databáze, kolekce, dotazy a další prostředky, které jsou přidružené k tomuto konkrétnímu účtu. Pokud třeba chcete sdílet výsledky dotazu s ostatními týmu, kteří nemají přístup k Azure Portal nebo vašemu účtu Azure Cosmos DB, můžete je zadat pomocí této adresy URL.
 
-   Vyberte typ přístupu, se kterým chcete účet otevřít, a klikněte na **otevřít** . Po otevření Průzkumníka je prostředí stejné jako při použití karty Průzkumník dat v Azure Portal.
+   Vyberte typ přístupu, se kterým chcete účet otevřít, a klikněte na **otevřít**. Po otevření Průzkumníka je prostředí stejné jako při použití karty Průzkumník dat v Azure Portal.
 
    :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Otevřít Azure Cosmos DB Explorer":::
 
@@ -50,7 +50,7 @@ Aktuálně otevřené prostředí na **celé obrazovce** , které vám umožní 
 
 V současné době není v Průzkumník dat podporováno zobrazení dokumentů, které obsahují identifikátor UUID. To nemá vliv na načítání kolekcí, zobrazení pouze jednotlivých dokumentů nebo dotazů, které obsahují tyto dokumenty. Chcete-li zobrazit a spravovat tyto dokumenty, měli by uživatelé nadále používat nástroj, který byl původně použit k vytvoření těchto dokumentů.
 
-Zákazníci, kteří získají chyby HTTP-401, můžou být kvůli nedostatečným oprávněním RBAC pro účet Azure zákazníka, zejména v případě, že má účet vlastní roli RBAC. `Microsoft.DocumentDB/databaseAccounts/listKeys/*`Pokud se přihlašujete pomocí přihlašovacích údajů Azure Active Directory, musí mít všechny vlastní role akci pro použití Průzkumník dat.
+Zákazníci, kteří získají chyby HTTP-401, můžou být kvůli nedostatečným oprávněním Azure RBAC pro účet Azure zákazníka, zejména v případě, že má účet vlastní roli. `Microsoft.DocumentDB/databaseAccounts/listKeys/*`Pokud se přihlašujete pomocí přihlašovacích údajů Azure Active Directory, musí mít všechny vlastní role akci pro použití Průzkumník dat.
 
 ## <a name="next-steps"></a>Další kroky
 

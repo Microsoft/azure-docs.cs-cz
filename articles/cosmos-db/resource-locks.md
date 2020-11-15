@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5243419d8e2c4780708e9bdee0d57f2734fe78b2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1c8c766208132aec115e1fbeb15af3a057c3de3e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341956"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636686"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>Zabránit odstranění nebo změně prostředků Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,7 +26,7 @@ Jako správce možná budete muset Uzamknout účet Azure Cosmos, databázi nebo
 
 Když použijete zámek v nadřazeném oboru, všechny prostředky v tomto oboru zdědí stejný zámek. I prostředky, které později přidáte, zdědí zámek nadřazeného objektu. Nejvíce omezující zámek v dědičnosti má přednost.
 
-Na rozdíl od řízení přístupu na základě role slouží zámky správy k nastavení daného omezení u všech uživatelů a rolí. Další informace o RBAC pro Azure Cosmos DB najdete [v tématu řízení přístupu na základě role v Azure Cosmos DB](role-based-access-control.md).
+Na rozdíl od řízení přístupu na základě role Azure použijete zámky pro správu k použití omezení napříč všemi uživateli a rolemi. Další informace o službě Azure RBAC pro Azure Cosmos DB najdete [v tématu řízení přístupu na základě role Azure v Azure Cosmos DB](role-based-access-control.md).
 
 Zámky služby Resource Manager se vztahují jen na operace, které probíhají v rovině správy, tedy operace odesílané na https://management.azure.com. Tyto zámky nijak neomezují, jak prostředky vykonávají své vlastní funkce. Omezené jsou změny prostředků, ale ne jejich operace. Například zámek jen pro čtení na kontejneru Azure Cosmos vám znemožní odstranit nebo upravit kontejner. Nebrání v vytváření, aktualizaci nebo odstraňování dat v kontejneru. Datové transakce jsou povolené, protože tyto operace se neodesílají na https://management.azure.com.
 
@@ -73,7 +73,7 @@ az lock create --name $lockName \
     --resource $accountName
 ```
 
-### <a name="template"></a>Šablona
+### <a name="template"></a>Template (Šablona)
 
 Při použití zámku na prostředek Azure Cosmos DB použijte následující formáty:
 

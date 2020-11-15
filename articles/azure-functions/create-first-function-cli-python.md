@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 17edd0a402fc6db2b3690074bdc0c652b107c7d0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b4c14417a31f28ea5d6475b3f84ee079d990dd6b
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541381"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637060"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce Pythonu v Azure z příkazového řádku
 
@@ -250,7 +250,8 @@ Tyto položky vytvoříte pomocí následujících příkazů. Podporují se roz
     New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -FunctionsVersion 3 -RuntimeVersion 3.8 -Runtime python -Location 'West Europe'
     ```
     
-    <a name="the-new-azfunctionapp-cmdlet-creates-the-function-app-in-azure-if-youre-using-python-37-or-36-change--runtimeversion-to-37-or-36-respectively"></a>Rutina [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) vytvoří aplikaci Function App v Azure. Pokud používáte Python 3,7 nebo 3,6, změňte `-RuntimeVersion` na `3.7` nebo `3.6` v uvedeném pořadí.
+    Rutina [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) vytvoří aplikaci Function App v Azure. Pokud používáte Python 3,7 nebo 3,6, změňte `-RuntimeVersion` na `3.7` nebo `3.6` v uvedeném pořadí.
+
     ---
     
     V předchozím příkladu nahraďte `<STORAGE_NAME>` názvem účtu, který jste použili v předchozím kroku, a nahraďte `<APP_NAME>` globálně jedinečným názvem vhodným pro vás.  `<APP_NAME>` je také výchozí doména DNS pro aplikaci funkcí. 

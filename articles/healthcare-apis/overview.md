@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: matjazl
-ms.openlocfilehash: 12635979d90dcc4be5b45bf7d64ceb602119faf7
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 3bb168cf3f642d22096c54b3f35c7833afaff769
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394760"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635139"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Co je Azure API pro FHIR &reg; ?
 
@@ -84,7 +84,7 @@ Pro případy použití, které vyžadují rozšíření nebo přizpůsobení se
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector pro FHIR (Preview)
 
-Azure IoT Connector pro FHIR * je volitelná funkce Azure API pro FHIR, která poskytuje schopnost ingestovat data ze zařízení s IoMT (internetem lékařských věcí). Internet lékařských věcí je kategorie zařízení IoT, která zachycují a vyměňují si stav & wellness data s jinými systémy IT v oblasti zdravotnictví přes síť. Mezi příklady zařízení IoMT patří vhodnost a klinické wearables, sledovací senzory, sledování aktivit, veřejné terminály nebo dokonce inteligentní klid. Funkce konektoru Azure IoT pro FHIR vám umožňuje rychle nastavit službu pro ingestování IoMT dat do Azure API pro FHIR ve škálovatelném, zabezpečeném a kompatibilním způsobem.
+Azure IoT Connector pro rychlé provázání prostředků pro interoperabilitu zdravotní péče (FHIR&#174;) * je volitelná funkce Azure API pro FHIR, která poskytuje schopnost ingestovat data ze zařízení IoMT (Internet of lékařských věcí). Internet lékařských věcí je kategorie zařízení IoT, která zachycují a vyměňují si stav & wellness data s jinými systémy IT v oblasti zdravotnictví přes síť. Mezi příklady zařízení IoMT patří vhodnost a klinické wearables, sledovací senzory, sledování aktivit, veřejné terminály nebo dokonce inteligentní klid. Funkce konektoru Azure IoT pro FHIR vám umožňuje rychle nastavit službu pro ingestování IoMT dat do Azure API pro FHIR ve škálovatelném, zabezpečeném a kompatibilním způsobem.
 
 Azure IoT Connector pro FHIR může přijmout jakékoli zprávy založené na JSON, které zařízení IoMT odesílá. Tato data se nejdřív transformují na příslušné FHIR prostředky pro [pozorování](https://www.hl7.org/fhir/observation.html) a pak se uloží do Azure API pro FHIR. Logika transformace dat je definována pomocí páru mapování nakonfigurovaných šablon na základě schématu zprávy a FHIR požadavků. Data zařízení je možné přímo do Azure IoT Connectoru nabízet FHIR nebo bez problémů používat ve vzájemné součinnosti s dalšími řešeními Azure IoT ([azure IoT Hub](../iot-hub/index.yml) a [Azure IoT Central](../iot-central/index.yml)). Azure IoT Connector pro FHIR poskytuje zabezpečený datový kanál a současně umožňuje řešení Azure IoT spravovat zřizování a údržbu fyzických zařízení.
 
@@ -108,6 +108,4 @@ Pokud si chcete vyzkoušet funkci Azure IoT Connector for FHIR, přečtěte si r
 >[!div class="nextstepaction"]
 >[Nasazení služby Azure IoT Connector pro FHIR](iot-fhir-portal-quickstart.md)
 
-* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
-
-FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.
+* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview). FHIR je registrovaná ochranná známka změněného HL7 a používá se s oprávněním změněného HL7. 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b29f4034b12ce43e6c051e454601f196365469f3
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745800"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636976"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Použití ovladačů rozhraní pro kontejnerové úložiště Azure Files ve službě Azure Kubernetes (AKS) (Preview)
 
@@ -229,7 +229,7 @@ az provider register --namespace Microsoft.Storage
 [Vytvořit `Premium_LRS` Účet služby Azure Storage](../storage/files/storage-how-to-create-premium-fileshare.md) s následujícími konfiguracemi pro podporu sdílených složek NFS:
 - druh účtu: úložiště
 - je vyžadován zabezpečený přenos (povolit pouze provoz HTTPS): false
-- Vyberte virtuální síť uzlů agentů v bránách firewall a virtuálních sítích.
+- Vyberte virtuální síť uzlů agentů v bránách firewall a virtuálních sítích, takže můžete chtít vytvořit účet úložiště ve skupině prostředků MC_.
 
 ### <a name="create-nfs-file-share-storage-class"></a>Vytvoření souborové třídy úložiště sdílené složky systému souborů NFS
 
@@ -239,7 +239,7 @@ Uložte `nfs-sc.yaml` soubor s manifestem níže úpravou příslušných zástu
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: azurefile-csi
+  name: azurefile-csi-nfs
 provisioner: file.csi.azure.com
 parameters:
   resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
@@ -275,6 +275,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-556606f5da38  100G     0  100G   0% /mnt/azurefile
 ...
 ```
+
+>[!NOTE]
+> Vzhledem k tomu, že se sdílená složka NFS nachází v účtu Premium, minimální velikost sdílené složky je 100 GB. Pokud vytvoříte virtuální okruh (PVC) s malým množstvím úložiště, může dojít k chybě při vytváření sdílené složky... velikost (5)... ".
+
 
 ## <a name="windows-containers"></a>Kontejnery Windows
 

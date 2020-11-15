@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 089476980ff3e8b2d3b72cb2d229934cf7850c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f67a36ac4ccb27d7b955158b7e4a9cf4f5185d0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899246"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636914"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes na zařízení GPU pro Azure Stack Edge pro
 
@@ -67,7 +67,7 @@ Jakmile budou k dispozici nové verze Kubernetes, cluster se dá upgradovat pomo
 
 ## <a name="access-monitoring"></a>Přístup, monitorování
 
-Cluster Kubernetes na vašem zařízení Azure Stack Edge pro umožňuje řízení přístupu na základě role (RBAC). Další informace najdete v tématu [řízení přístupu na základě role pro cluster Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-rbac.md).
+Cluster Kubernetes na vašem zařízení Azure Stack Edge pro umožňuje Kubernetes řízení přístupu na základě role (Kubernetes RBAC). Další informace najdete v tématu [Kubernetes řízení přístupu na základě role na zařízení GPU Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-rbac.md).
 
 Stav clusteru a prostředků můžete také monitorovat prostřednictvím řídicího panelu Kubernetes. K dispozici jsou také protokoly kontejneru. Další informace najdete v tématu [Použití řídicího panelu Kubernetes k monitorování stavu clusteru Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md).
 

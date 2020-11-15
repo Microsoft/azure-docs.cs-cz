@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
-ms.openlocfilehash: 036629bd72f8219c2d7b1877dd1672291ed3d98a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: b87408669dbb9268d6e3cd47b410b888ef1a19c2
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425059"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637145"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce jazyka C# v Azure z příkazového řádku
 
@@ -28,6 +28,8 @@ K dispozici je také [Visual Studio Codeá verze](create-first-function-vs-code-
 Než začnete, musíte mít následující:
 
 + Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
++ [.NET Core SDK 3,1](https://www.microsoft.com/net/download)
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) verze 3. x.
 
@@ -49,6 +51,8 @@ Ověřte požadavky, které závisí na tom, jestli pro vytváření prostředk�
 
 + Spusťte `az login` , abyste se přihlásili do Azure a ověřili aktivní předplatné.
 
++ Spusťte `dotnet --list-sdks` , pokud chcete ověřit, že je nainstalovaná .NET Core SDK verze 3.1. x.
+
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 + V terminálu nebo příkazovém okně spusťte příkaz `func --version` a ověřte, zda Azure Functions Core Tools mají verzi 3. x.
@@ -56,6 +60,8 @@ Ověřte požadavky, které závisí na tom, jestli pro vytváření prostředk�
 + Spusťte `(Get-Module -ListAvailable Az).Version` a ověřte verze 5,0 nebo novější. 
 
 + Spusťte `Connect-AzAccount` , abyste se přihlásili do Azure a ověřili aktivní předplatné.
+
++ Spusťte `dotnet --list-sdks` , pokud chcete ověřit, že je nainstalovaná .NET Core SDK verze 3.1. x.
 
 ---
 

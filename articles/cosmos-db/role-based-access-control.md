@@ -1,22 +1,22 @@
 ---
-title: Řízení přístupu na základě role ve službě Azure Cosmos DB
-description: Přečtěte si, jak Azure Cosmos DB poskytuje ochranu databáze pomocí integrace služby Active Directory (RBAC).
+title: Řízení přístupu na základě role v Azure v Azure Cosmos DB
+description: Přečtěte si, jak Azure Cosmos DB poskytuje ochranu databází pomocí integrace služby Active Directory (Azure RBAC).
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9f0d42e2e3dfb7e11d3c74ad1280bb867a85e2f8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 950a3c03d5c2c76ad417634833c473ee65adb9b9
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085458"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636635"
 ---
-# <a name="role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role ve službě Azure Cosmos DB
+# <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role v Azure v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB poskytuje integrované řízení přístupu na základě role (RBAC) pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil v Azure Active Directory může přiřadit tyto role Azure uživatelům, skupinám, instančním objektům nebo spravovaným identitám pro udělení nebo odepření přístupu k prostředkům a operacím na Azure Cosmos DBch prostředcích. Přiřazování rolí je vymezené jenom na úrovni řízení a přístup, což zahrnuje přístup k účtům Azure Cosmos, databázím, kontejnerům a nabídkám (propustnost).
+Azure Cosmos DB poskytuje integrované řízení přístupu na základě role Azure (Azure RBAC) pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil v Azure Active Directory může přiřadit tyto role Azure uživatelům, skupinám, instančním objektům nebo spravovaným identitám pro udělení nebo odepření přístupu k prostředkům a operacím na Azure Cosmos DBch prostředcích. Přiřazování rolí je vymezené jenom na úrovni řízení a přístup, což zahrnuje přístup k účtům Azure Cosmos, databázím, kontejnerům a nabídkám (propustnost).
 
 ## <a name="built-in-roles"></a>Vestavěné role
 
@@ -30,11 +30,11 @@ Níže jsou uvedené předdefinované role podporované nástrojem Azure Cosmos 
 |[Operátor Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Může zřídit účty, databáze a kontejnery služby Azure Cosmos. Nelze získat přístup k žádným datům ani použít Průzkumník dat.|
 
 > [!IMPORTANT]
-> Podpora RBAC v Azure Cosmos DB se vztahuje pouze na operace řízení roviny. Operace roviny dat se zabezpečují pomocí primárních klíčů nebo tokenů prostředků. Další informace najdete v tématu [zabezpečený přístup k datům v Azure Cosmos DB](secure-access-to-data.md)
+> Podpora Azure RBAC v Azure Cosmos DB platí jenom pro řízení operací roviny. Operace roviny dat se zabezpečují pomocí primárních klíčů nebo tokenů prostředků. Další informace najdete v tématu [zabezpečený přístup k datům v Azure Cosmos DB](secure-access-to-data.md)
 
 ## <a name="identity-and-access-management-iam"></a>Správa identit a přístupu (IAM)
 
-Podokno **řízení přístupu (IAM)** v Azure Portal slouží ke konfiguraci řízení přístupu na základě role v prostředcích Azure Cosmos. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role. Následující snímek obrazovky ukazuje integraci služby Active Directory (RBAC) pomocí řízení přístupu (IAM) v Azure Portal:
+Podokno **řízení přístupu (IAM)** v Azure Portal slouží ke konfiguraci řízení přístupu na základě role Azure v prostředcích Azure Cosmos. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role. Následující snímek obrazovky ukazuje integraci služby Active Directory (Azure RBAC) pomocí řízení přístupu (IAM) v Azure Portal:
 
 :::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze":::
 

@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73318d1ee14894f5d22f7c4d2e61418e3b1038c1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604066"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636873"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -37,7 +37,12 @@ Stáhnout| [Stáhněte si Azure AD Connect](https://go.microsoft.com/fwlink/?Lin
 >[!NOTE]
 >Vydání nové verze Azure AD Connect je proces, který vyžaduje několik kroků řízení kvality, aby se zajistila funkčnost této služby. při tomto procesu se ale aktualizuje číslo verze nové verze a stav verze se aktualizuje tak, aby odrážela nejnovější stav.
 I když procházíme tímto procesem, číslo verze vydaných verzí se zobrazí s číslem "X" v umístění vedlejší verze, jako v "1.3. X. 0" – to znamená, že poznámky k verzi v tomto dokumentu jsou platné pro všechny verze začínající znakem "1,3". Po dokončení procesu vydávání verzí bude číslo vydané verze aktualizováno na nejnovější vydanou verzi a stav vydání bude aktualizován na hodnotu Vydáno ke stažení a automatický upgrade.
-Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect. Stav vydání označuje, zda je vydaná verze dostupná pro automatický upgrade nebo pouze pro stažení. Pokud byl na Azure AD Connect serveru povolen automatický upgrade, server se automaticky upgraduje na nejnovější verzi Azure AD Connect vydanou pro automatický upgrade. Všimněte si, že ne všechny konfigurace Azure AD Connect mají nárok na automatický upgrade. Další informace o [automatickém upgradu](how-to-connect-install-automatic-upgrade.md) získáte pomocí tohoto odkazu.
+Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect. Stav vydání označuje, zda je vydaná verze dostupná pro automatický upgrade nebo pouze pro stažení. Pokud byl na Azure AD Connect serveru povolen automatický upgrade, server se automaticky upgraduje na nejnovější verzi Azure AD Connect vydanou pro automatický upgrade. Všimněte si, že ne všechny konfigurace Azure AD Connect mají nárok na automatický upgrade. 
+
+Chcete-li objasnit použití automatického upgradu, je třeba, abyste na vás zaznamenali všechny důležité aktualizace a důležité opravy. To nemusí nutně být nejnovější verze, protože ne všechny verze budou vyžadovat nebo zahrnují opravu kritického bezpečnostního problému (jenom jeden příklad mnoha). Takový problém by byl vyřešen novou verzí poskytnutou prostřednictvím automatického upgradu. Pokud neexistují žádné takové problémy, aktualizace se neodesílají pomocí automatického upgradu a obecně platí, že pokud používáte nejnovější verzi automatického upgradu, měli byste být dobrá.
+Pokud byste ale chtěli mít všechny nejnovější funkce a aktualizace, nejlepším způsobem, jak zjistit, jestli je tato stránka k dispozici, je to, abyste si tuto stránku zkontrolovali a nainstalovali podle potřeby. 
+
+Další informace o [automatickém upgradu](how-to-connect-install-automatic-upgrade.md) získáte pomocí tohoto odkazu.
 
 >[!IMPORTANT]
 > Od 1. listopadu 2020 zahájíme implementaci procesu vyřazení, přičemž verze Azure AD Connect vydané před více než 18 měsíci budou zastaralé. V tuto chvíli zahájíme tento proces tím, že vyřadíme všechny verze Azure AD Connect s verzí 1.3.20.0 (které byly vydané na 4/24/2019) a starší, a budeme pokračovat, abychom vyhodnotili vyřazení starších verzí Azure AD Connect pokaždé, když dojde k vydání nových verzí.

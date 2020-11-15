@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 683fc553e7712e2a760a0af1b601207cb20f2f55
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0feaf4a984f40ddee7a30291fe0a8f671b6512a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092802"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636839"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Postup při auditování operací roviny ovládacího prvku Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -28,7 +28,7 @@ Následuje několik ukázkových scénářů, ve kterých je užitečné objedn�
 
 ## <a name="disable-key-based-metadata-write-access"></a>Zakázat přístup pro zápis metadat založených na klíčích
 
-Před auditem operací řízení roviny v Azure Cosmos DB zakažte na svém účtu přístup k zápisu metadat na základě klíčů. Pokud je zakázaný přístup pro zápis metadat založených na klíčích, klienti připojující se k účtu Azure Cosmos prostřednictvím klíčů účtu nemají přístup k účtu. Přístup pro zápis můžete zakázat nastavením `disableKeyBasedMetadataWriteAccess` vlastnosti na hodnotu true. Po nastavení této vlastnosti se můžou změny libovolného prostředku vyskytnout od uživatele, který má správnou roli řízení přístupu na základě role (RBAC) a přihlašovací údaje. Další informace o tom, jak tuto vlastnost nastavit, najdete v článku [prevence změn ze sad SDK](role-based-access-control.md#prevent-sdk-changes) . 
+Před auditem operací řízení roviny v Azure Cosmos DB zakažte na svém účtu přístup k zápisu metadat na základě klíčů. Pokud je zakázaný přístup pro zápis metadat založených na klíčích, klienti připojující se k účtu Azure Cosmos prostřednictvím klíčů účtu nemají přístup k účtu. Přístup pro zápis můžete zakázat nastavením `disableKeyBasedMetadataWriteAccess` vlastnosti na hodnotu true. Po nastavení této vlastnosti se můžou změny libovolného prostředku vyskytnout od uživatele, který má správnou roli a přihlašovací údaje Azure. Další informace o tom, jak tuto vlastnost nastavit, najdete v článku [prevence změn ze sad SDK](role-based-access-control.md#prevent-sdk-changes) . 
 
 `disableKeyBasedMetadataWriteAccess`Když je tato funkce zapnutá, klienti na bázi sady SDK spouštějí operace vytvořit nebo aktualizovat, protože se vrátí chyba *"post" na prostředku "ContainerNameorDatabaseName Azure Cosmos DB"* . Musíte zapnout přístup k takovým operacím pro váš účet nebo provádět operace vytvoření/aktualizace prostřednictvím Azure Resource Manager, Azure CLI nebo Azure PowerShell. Pokud chcete přejít zpátky, nastavte disableKeyBasedMetadataWriteAccess na **hodnotu false** pomocí rozhraní příkazového řádku Azure, jak je popsané v článku [prevence změn ze sady Cosmos SDK](role-based-access-control.md#prevent-sdk-changes) . Nezapomeňte změnit hodnotu `disableKeyBasedMetadataWriteAccess` na false namísto true.
 
@@ -70,17 +70,17 @@ Po zapnutí protokolování použijte následující postup ke sledování opera
 
 Když se u účtu Azure Cosmos změní úroveň konzistence, zachytí následující snímky obrazovky.
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Povolit protokolování požadavků na řídicí rovinu":::
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Řízení protokolů roviny při přidání virtuální sítě":::
 
 Následující snímky obrazovky zaznamenávají protokoly, když se vytvoří místo na disku nebo tabulka Cassandra účtu a když se aktualizuje propustnost. Protokoly roviny ovládacího prvku pro operace vytvoření a aktualizace v databázi a kontejner jsou protokolovány samostatně, jak je znázorněno na následujícím snímku obrazovky:
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Povolit protokolování požadavků na řídicí rovinu":::
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Řízení protokolů roviny při aktualizaci propustnosti":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Identifikace identity přidružené k určité operaci
 
 Pokud chcete ladit další, můžete určit konkrétní operace v **protokolu aktivit** pomocí ID aktivity nebo časového razítka operace. Časové razítko se používá pro některé klienty Správce prostředků, kde ID aktivity není explicitně předáno. Protokol aktivit obsahuje podrobné informace o identitě, se kterou byla operace iniciována. Následující snímek obrazovky ukazuje, jak použít ID aktivity a najít k němu přidružené operace v protokolu aktivit:
 
-:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Povolit protokolování požadavků na řídicí rovinu":::
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Použijte ID aktivity a najděte operace.":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Řízení operací roviny pro účet Azure Cosmos
 

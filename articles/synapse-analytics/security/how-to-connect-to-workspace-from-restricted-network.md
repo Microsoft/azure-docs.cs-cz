@@ -1,6 +1,6 @@
 ---
-title: Připojení k prostředku pracovního prostoru synapse Studio z omezené sítě
-description: Tento článek vás seznámí s tím, jak se připojit k prostředkům pracovního prostoru Azure synapse Studio z omezené sítě.
+title: Připojení k prostředkům pracovního prostoru v Azure synapse Analytics studia z omezené sítě
+description: Tento článek vás seznámí s tím, jak se připojit k prostředkům pracovního prostoru z omezené sítě.
 author: xujxu
 ms.service: synapse-analytics
 ms.topic: how-to
@@ -8,112 +8,119 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: d94ee3145fb073dae982019fd4096cc2ceb7cd86
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 7cff2d8245095489fbba3b7af24b416885995e4d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578327"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637128"
 ---
-# <a name="connect-to-synapse-studio-workspace-resources-from-a-restricted-network"></a>Připojení k prostředkům pracovního prostoru synapse Studio z omezené sítě
+# <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Připojení k prostředkům pracovního prostoru z omezené sítě
 
-Cílový čtenář tohoto článku je firemní správce, který spravuje omezenou síť společnosti. Správce IT se chystá povolit síťové připojení mezi službou Azure synapse Studio a pracovní stanicí v rámci této omezené sítě.
+Předpokládejme, že jste správcem IT, který spravuje omezenou síť vaší organizace. Chcete povolit síťové připojení mezi Azure synapse Analytics Studio a pracovní stanicí v rámci této omezené sítě. V tomto článku se dozvíte, jak.
 
-V tomto článku se dozvíte, jak se připojit k pracovnímu prostoru Azure synapse z omezeného síťového prostředí. 
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure** : Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Pracovní prostor Azure synapse** : Pokud nemáte synapse Studio, vytvořte pracovní prostor synapse z Azure synapse Analytics. Název pracovního prostoru bude potřeba v následujícím kroku 4.
-* **Omezená síť** : omezená síť je spravovaná správcem IT společnosti. správce IT má oprávnění ke konfiguraci zásad sítě. Název virtuální sítě a jeho podsíť budou potřeba v následujícím kroku 3.
+* **Pracovní prostor analýzy Azure synapse** : můžete si ho vytvořit z Azure synapse Analytics. V kroku 4 budete potřebovat název pracovního prostoru.
+* **Omezená síť** : správce IT udržuje omezenou síť pro organizaci a má oprávnění ke konfiguraci zásad sítě. V kroku 3 budete potřebovat název virtuální sítě a její podsíť.
 
 
 ## <a name="step-1-add-network-outbound-security-rules-to-the-restricted-network"></a>Krok 1: Přidání odchozích pravidel zabezpečení sítě do omezené sítě
 
-Budete muset přidat čtyři pravidla pro odchozí síť sítě se čtyřmi značkami služby. Další informace o [přehledu značek služeb](/azure/virtual-network/service-tags-overview) 
+Budete muset přidat čtyři pravidla pro odchozí síť sítě se čtyřmi značkami služby. 
 * AzureResourceManager
 * AzureFrontDoor. front-end
 * Azureactivedirectory selhala
-* AzureMonitor (volitelné. Tento typ pravidla přidejte pouze v případě, že chcete data sdílet s Microsoftem.)
+* AzureMonitor (Tento typ pravidla je nepovinný. Přidejte ho jenom v případě, že chcete data sdílet s Microsoftem.)
 
-**Azure Resource Manager** podrobnosti odchozího pravidla, jak je uvedeno níže. Když vytváříte další tři pravidla, nahraďte hodnotu " **jmenovka cílové služby** " volbou názvu značky služby " **AzureFrontDoor. front** ", " **azureactivedirectory selhala** ", " **AzureMonitor** " ze seznamu rozevíracích seznamů pro výběr.
+Následující snímek obrazovky ukazuje podrobnosti Azure Resource Manager odchozí pravidlo.
 
-![AzureResourceManager](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
+![Obrazovka podrobností značek Azure Resource Manager služby](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
 
+Když vytváříte další tři pravidla, nahraďte hodnotu **cílové značky služby** pomocí **AzureFrontDoor. front** - **azureactivedirectory selhala** nebo **AzureMonitor** ze seznamu.
 
-## <a name="step-2-create-azure-synapse-analytics-private-link-hubs"></a>Krok 2: vytvoření služby Azure synapse Analytics (centra privátních odkazů)
+Další informace najdete v tématu [Přehled značek služeb](/azure/virtual-network/service-tags-overview.md).
 
-Z Azure Portal budete muset vytvořit Azure synapse Analytics (centra privátních odkazů). Vyhledejte " **Azure synapse Analytics" (centra privátních propojení)** "prostřednictvím Azure Portal a potom vyplňte potřebné pole a vytvořte ho. 
+## <a name="step-2-create-private-link-hubs"></a>Krok 2: vytvoření rozbočovačů privátního propojení
 
-> [!Note]
-> Oblast by měla být stejná jako ta, ve které je váš pracovní prostor synapse.
-
-![Vytváření Synapsech privátních Link Analytics](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
-
-## <a name="step-3-create-private-endpoint-for-synapse-studio-gateway"></a>Krok 3: Vytvoření privátního koncového bodu pro bránu synapse Studio
-
-Pokud chcete získat přístup k bráně synapse Studio, budete muset vytvořit privátní koncový bod z Azure Portal. Vyhledejte " **soukromé propojení** " prostřednictvím Azure Portal. V části " **soukromé linkové centrum** " vyberte **vytvořit privátní koncový bod** a pak vyplňte požadované pole a vytvořte ho. 
+Pak z Azure Portal vytvořte rozbočovače privátních odkazů. Pokud to chcete najít na portálu, vyhledejte službu *Azure synapse Analytics (centra privátních odkazů)* a pak ji vytvořte zadáním požadovaných informací. 
 
 > [!Note]
-> Oblast by měla být stejná jako ta, ve které je váš pracovní prostor synapse.
+> Ujistěte se, že hodnota **oblasti** je stejná jako ta, ve které je váš pracovní prostor Azure synapse Analytics.
 
-![Vytváření privátního koncového bodu pro synapse Studio 1](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-1.png)
+![Snímek obrazovky s vytvořením centra privátních odkazů pro synapse](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
 
-Na další kartě " **prostředek** " Vyberte centrum privátních odkazů, které bylo vytvořeno v kroku 2 výše.
+## <a name="step-3-create-a-private-endpoint-for-your-gateway"></a>Krok 3: Vytvoření privátního koncového bodu pro bránu
 
-![Vytváření privátního koncového bodu pro synapse Studio 2](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-2.png)
+Pokud chcete získat přístup k bráně Azure synapse Analytics Studio, musíte z Azure Portal vytvořit privátní koncový bod. Pokud to chcete najít na portálu, vyhledejte *privátní odkaz*. V **centru privátních odkazů** vyberte **vytvořit privátní koncový bod** a pak zadáním požadovaných informací vytvořte. 
 
-Na další kartě " **Konfigurace** ", 
-* Vyberte název omezené virtuální sítě, který je k dispozici pro " **virtuální síť** ".
-* Vyberte podsíť omezené virtuální sítě pro " **podsíť** ". 
-* Vyberte **Ano** pro **integraci s privátní zónou DNS**.
+> [!Note]
+> Ujistěte se, že hodnota **oblasti** je stejná jako ta, ve které je váš pracovní prostor Azure synapse Analytics.
 
-![Vytvoření privátního koncového bodu pro synapse Studio 3](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-3.png)
+![Snímek obrazovky s vytvořením privátního koncového bodu, karta základy](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-1.png)
 
-Po vytvoření koncového bodu privátního propojení můžete získat přístup k přihlašovací stránce webového nástroje synapse Studio. Nemůžete ale k prostředkům v pracovním prostoru synapse přistupovat, dokud nebudete muset dokončit další krok.
+Na kartě **prostředek** vyberte centrum privátních odkazů, které jste vytvořili v kroku 2.
 
-## <a name="step-4-create-private-endpoints-for-synapse-studio-workspace-resource"></a>Krok 4: vytvoření privátních koncových bodů pro prostředek pracovního prostoru synapse Studio
+![Snímek obrazovky s vytvořením privátního koncového bodu, prostředku karty](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-2.png)
 
-Pokud chcete získat přístup k prostředkům v rámci svého prostředku pracovního prostoru synapse Studio, budete muset vytvořit alespoň jeden koncový bod privátního propojení s typem " **vývoj** " **cílového dílčího prostředku** "a dva další nepovinné koncové body privátních odkazů s typy" **SQL** "nebo" **SqlOnDemand** "závisí na tom, k jakým prostředkům v pracovním prostoru synapse Studio Chcete získat přístup. Vytváření tohoto koncového bodu privátního propojení pro pracovní prostor synapse Studio je podobné jako při vytváření koncového bodu.  
+Na kartě **Konfigurace** : 
+* V poli **virtuální síť** vyberte omezený název virtuální sítě.
+* V poli **podsíť** vyberte podsíť omezené virtuální sítě. 
+* V případě **integrace s privátní zónou DNS** vyberte **Ano**.
 
-Věnujte pozornost níže uvedeným oblastem na kartě " **prostředek** ":
-* Pro **typ prostředku** vyberte **Microsoft. synapse/pracovní prostory**.
-* Vyberte " **YourWorkSpaceName** " do " **prostředku** ", který jste vytvořili dříve.
-* V části **cílový dílčí prostředek** vyberte typ koncového bodu:
-  * **SQL** : je pro spuštění dotazu SQL ve fondu SQL.
-  * **SqlOnDemand** : je určeno pro provádění předdefinovaného dotazu SQL.
-  * **Vývoj** : slouží pro přístup k všechno ostatnímu v pracovních prostorech synapse studia. Pro tento typ je třeba vytvořit alespoň koncový bod privátního propojení.
+![Snímek obrazovky s vytvořením privátního koncového bodu, karty konfigurace](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-3.png)
 
-![Vytváření privátního koncového bodu pro pracovní prostor synapse Studio](./media/how-to-connect-to-workspace-from-restricted-network/plinks-endpoint-ws-1.png)
+Po vytvoření koncového bodu privátního propojení můžete získat přístup k přihlašovací stránce webového nástroje pro Azure synapse Analytics Studio. Nemůžete ale ještě přistupovat k prostředkům v pracovním prostoru. V takovém případě je potřeba dokončit další krok.
+
+## <a name="step-4-create-private-endpoints-for-your-workspace-resource"></a>Krok 4: vytvoření privátních koncových bodů pro prostředek pracovního prostoru
+
+Pokud chcete získat přístup k prostředkům v rámci svého prostředku pracovního prostoru Azure synapse Analytics Studio, musíte vytvořit následující:
+
+- Nejméně jeden koncový bod privátního propojení s typem **vývoje** **target cílového dílčího prostředku**.
+- Dva další nepovinné koncové body privátních propojení s typy **SQL** nebo **SqlOnDemand** podle toho, k jakým prostředkům v pracovním prostoru chcete přistupovat.
+
+Vytváření je podobné jako při vytváření koncového bodu v předchozím kroku.  
+
+Na kartě **prostředek** :
+
+* Jako **typ prostředku** vyberte **Microsoft. synapse/pracovní prostory**.
+* Jako **prostředek** vyberte název pracovního prostoru, který jste vytvořili dříve.
+* Jako **cílový dílčí prostředek** vyberte typ koncového bodu:
+  * **SQL** je pro provádění dotazů SQL ve fondu SQL.
+  * **SqlOnDemand** je pro integrované provádění dotazů SQL.
+  * **Vývoj** je pro přístup ke všem ostatním v pracovních prostorech Azure synapse Analytics Studio. Je nutné vytvořit alespoň jeden koncový bod privátního propojení tohoto typu.
+
+![Snímek obrazovky s vytvořením privátního koncového bodu, karty prostředků, pracovního prostoru](./media/how-to-connect-to-workspace-from-restricted-network/plinks-endpoint-ws-1.png)
 
 
-## <a name="step-5-create-private-endpoints-for-synapse-studio-workspace-linked-storage"></a>Krok 5: vytvoření privátních koncových bodů pro propojené úložiště synapse Studio v pracovním prostoru
+## <a name="step-5-create-private-endpoints-for-workspace-linked-storage"></a>Krok 5: vytvoření privátních koncových bodů pro propojené úložiště v pracovním prostoru
 
-Pokud chcete získat přístup k propojenému úložišti pomocí Průzkumníka služby Storage v pracovním prostoru synapse Studio, budete muset vytvořit jeden privátní koncový bod s podobným postupem, který je uvedený výše v kroku 3. 
+Pokud chcete získat přístup k propojenému úložišti pomocí Průzkumníka služby Storage v pracovním prostoru Azure synapse Analytics Studio, musíte vytvořit jeden privátní koncový bod. Postup je podobný jako u kroku 3. 
 
-Věnujte pozornost níže uvedeným oblastem na kartě " **prostředek** ":
-* Pro **typ prostředku** vyberte **Microsoft. synapse/storageAccounts**.
-* Vyberte " **YourWorkSpaceName** " do " **prostředku** ", který jste vytvořili dříve.
-* V části **cílový dílčí prostředek** vyberte typ koncového bodu:
-  * **objekt BLOB** : slouží pro úložiště objektů BLOB v Azure.
-  * **DFS** : je určen pro Azure Data Lake Storage Gen2.
+Na kartě **prostředek** :
+* Jako **typ prostředku** vyberte **Microsoft. synapse/storageAccounts**.
+* Jako **prostředek** vyberte název účtu úložiště, který jste předtím vytvořili.
+* Jako **cílový dílčí prostředek** vyberte typ koncového bodu:
+  * **objekt BLOB** je pro Azure Blob Storage.
+  * **DFS** je pro Azure Data Lake Storage Gen2.
 
-![Vytváření privátního koncového bodu pro propojené úložiště synapse Studio](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-storage.png)
+![Snímek obrazovky s vytvořením privátního koncového bodu, karty prostředku a úložiště](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-storage.png)
 
-Teď můžete získat přístup k prostředku propojeného úložiště z Průzkumníka služby Storage v pracovním prostoru synapse Studio v rámci virtuální sítě.
+Teď máte přístup k prostředku propojeného úložiště. V rámci vaší virtuální sítě můžete v pracovním prostoru Azure synapse Analytics Studio použít Průzkumníka služby Storage k přístupu k prostředku propojeného úložiště.
 
-Pokud má váš pracovní prostor " **Povolit spravovanou virtuální síť** " během vytváření pracovního prostoru, jak je uvedeno níže,
+Pro svůj pracovní prostor můžete povolit spravovanou virtuální síť, jak je znázorněno na tomto snímku obrazovky:
 
-![Vytváření privátního koncového bodu pro propojené úložiště synapse Studio v pracovním prostoru 1](./media/how-to-connect-to-workspace-from-restricted-network/ws-network-config.png)
+![Snímek obrazovky s vytvořením pracovního prostoru synapse se zvýrazněnou možností povolit spravovanou virtuální síť.](./media/how-to-connect-to-workspace-from-restricted-network/ws-network-config.png)
 
-A chcete Poznámkový blok získat přístup k prostředkům propojeného úložiště v rámci určitého účtu úložiště, musíte do synapse studia přidat " **spravované privátní koncové body** ". **Název účtu úložiště** by měl být ten, ke kterému Poznámkový blok potřebuje přístup. Seznamte se s podrobnými kroky z části [vytvoření spravovaného privátního koncového bodu pro zdroj dat](./how-to-create-managed-private-endpoints.md).
+Pokud chcete, aby váš Poznámkový blok měl přístup k prostředkům propojeného úložiště v rámci určitého účtu úložiště, přidejte do Azure synapse Analytics studia spravované soukromé koncové body. Název účtu úložiště musí být ten, který potřebuje přístup k vašemu poznámkovému bloku. Další informace najdete v tématu [vytvoření spravovaného privátního koncového bodu pro zdroj dat](./how-to-create-managed-private-endpoints.md).
 
-Po vytvoření tohoto koncového bodu bude " **stav schválení** " "čeká na **vyřízení** ". musíte požádat vlastníka tohoto účtu úložiště, aby ho schválil na kartě " **připojení privátního koncového bodu** " tohoto účtu úložiště v Azure Portal. Po schválení bude mít váš Poznámkový blok přístup k prostředkům propojených úložiště v rámci tohoto účtu úložiště.
+Po vytvoření tohoto koncového bodu stav schválení zobrazí stav **čeká na vyřízení**. Požadavek schválí od vlastníka tohoto účtu úložiště na kartě **připojení privátního koncového bodu** tohoto účtu úložiště v Azure Portal. Po schválení bude mít váš Poznámkový blok přístup k prostředkům propojených úložiště v rámci tohoto účtu úložiště.
 
-Nyní všechno je nastavené. K prostředku pracovního prostoru aplikace synapse Studio můžete přistupovat.
+Nyní všechno je nastavené. Můžete získat přístup k vašemu prostředku pracovního prostoru Azure synapse Analytics Studio.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [spravovaném pracovním prostoru Virtual Network](./synapse-workspace-managed-vnet.md)
+Přečtěte si další informace o [virtuální síti spravovaného pracovního prostoru](./synapse-workspace-managed-vnet.md).
 
-Další informace o [spravovaných privátních koncových bodech](./synapse-workspace-managed-private-endpoints.md)
+Přečtěte si další informace o [spravovaných soukromých koncových bodech](./synapse-workspace-managed-private-endpoints.md).

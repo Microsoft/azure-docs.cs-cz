@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2bbdbc7a0ed71634522bd68dbf0807264a409525
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1d63d21f4c49e3c7aef035208477ac9fc79f2e51
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101693"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637179"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>Konfigurace přístupu k Azure Cosmos DB z virtuálních sítí (VNet)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -40,17 +40,17 @@ Následující části popisují, jak nakonfigurovat koncový bod služby virtu�
 
 1. V okně **všechny prostředky** Najděte Azure Cosmos DB účet, který chcete zabezpečit.
 
-1. V nabídce nastavení vyberte možnost **brány firewall a virtuální sítě** a zvolte možnost povolení přístupu z **vybraných sítí** .
+1. V nabídce nastavení vyberte možnost **brány firewall a virtuální sítě** a zvolte možnost povolení přístupu z **vybraných sítí**.
 
-1. Pokud chcete udělit přístup k podsíti existující virtuální sítě, vyberte v části **virtuální sítě** možnost **Přidat existující virtuální síť Azure** .
+1. Pokud chcete udělit přístup k podsíti existující virtuální sítě, vyberte v části **virtuální sítě** možnost **Přidat existující virtuální síť Azure**.
 
-1. Vyberte **předplatné** , ze kterého chcete přidat virtuální síť Azure. Vyberte **virtuální sítě** a **podsítě** Azure, které chcete poskytnout přístup k vašemu Azure Cosmos DB účtu. V dalším kroku vyberte **Povolit** a povolte vybrané sítě s koncovými body služby pro Microsoft. AzureCosmosDB. Až se dokončí, vyberte **Přidat** .
+1. Vyberte **předplatné** , ze kterého chcete přidat virtuální síť Azure. Vyberte **virtuální sítě** a **podsítě** Azure, které chcete poskytnout přístup k vašemu Azure Cosmos DB účtu. V dalším kroku vyberte **Povolit** a povolte vybrané sítě s koncovými body služby pro Microsoft. AzureCosmosDB. Až se dokončí, vyberte **Přidat**.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="Vybrat virtuální síť a podsíť":::
 
 1. Až bude účet Azure Cosmos DB povolený pro přístup z virtuální sítě, povolí provoz jenom z této zvolené podsítě. Virtuální síť a podsíť, kterou jste přidali, by se měla zobrazit, jak je znázorněno na následujícím snímku obrazovky:
 
-   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="Vybrat virtuální síť a podsíť":::
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="Virtuální síť a podsíť se úspěšně nakonfigurovaly.":::
 
 > [!NOTE]
 > K povolení koncových bodů služby virtuální sítě budete potřebovat následující oprávnění předplatného:
@@ -64,15 +64,15 @@ Tady jsou pokyny pro registraci předplatného u poskytovatele prostředků.
 
 1. V okně **všechny prostředky** Najděte Azure Cosmos DB účet, který chcete zabezpečit.  
 
-1. V nabídce nastavení vyberte **brány firewall a Azure Virtual Networks** a zvolte možnost povolení přístupu z **vybraných sítí** .  
+1. V nabídce nastavení vyberte **brány firewall a Azure Virtual Networks** a zvolte možnost povolení přístupu z **vybraných sítí**.  
 
-1. Pokud chcete udělit přístup k nové službě Azure Virtual Network, vyberte v části **virtuální sítě** možnost **Přidat novou virtuální síť** .  
+1. Pokud chcete udělit přístup k nové službě Azure Virtual Network, vyberte v části **virtuální sítě** možnost **Přidat novou virtuální síť**.  
 
-1. Zadejte podrobnosti požadované k vytvoření nové virtuální sítě a pak vyberte **vytvořit** . Podsíť se vytvoří s koncovým bodem služby pro Microsoft. AzureCosmosDB, který je povolený.
+1. Zadejte podrobnosti požadované k vytvoření nové virtuální sítě a pak vyberte **vytvořit**. Podsíť se vytvoří s koncovým bodem služby pro Microsoft. AzureCosmosDB, který je povolený.
 
-   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Vybrat virtuální síť a podsíť":::
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Vyberte virtuální síť a podsíť pro novou virtuální síť.":::
 
-Pokud váš Azure Cosmos DB účet používají jiné služby Azure, jako je Azure Kognitivní hledání nebo ke kterému se přistupuje ze služby Stream Analytics nebo Power BI, povolíte přístup tak, že **v globálním datacentru Azure vyberete přijímat připojení** .
+Pokud váš Azure Cosmos DB účet používají jiné služby Azure, jako je Azure Kognitivní hledání nebo ke kterému se přistupuje ze služby Stream Analytics nebo Power BI, povolíte přístup tak, že **v globálním datacentru Azure vyberete přijímat připojení**.
 
 Abyste měli jistotu, že máte přístup k Azure Cosmos DB metriky z portálu, musíte povolit možnost **Povolit přístup z možností Azure Portal** . Další informace o těchto možnostech najdete v článku [Konfigurace brány firewall protokolu IP](how-to-configure-firewall.md) . Po povolení přístupu vyberte **Uložit** a uložte nastavení.
 
@@ -82,9 +82,9 @@ Abyste měli jistotu, že máte přístup k Azure Cosmos DB metriky z portálu, 
 
 1. V nabídce nastavení vyberte možnost **brány firewall a virtuální sítě** .  
 
-1. Chcete-li odebrat virtuální síť nebo pravidlo podsítě, vyberte **...** vedle virtuální sítě nebo podsítě a vyberte možnost **Odebrat** .
+1. Chcete-li odebrat virtuální síť nebo pravidlo podsítě, vyberte **...** vedle virtuální sítě nebo podsítě a vyberte možnost **Odebrat**.
 
-   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Vybrat virtuální síť a podsíť":::
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Odebrání virtuální sítě":::
 
 1. Vyberte **Uložit** , aby se tyto změny použily.
 
@@ -322,7 +322,7 @@ V současné době se [Mongo prostředí PowerShellu](https://devblogs.microsoft
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Můžu v účtu Azure Cosmos zadat jak koncový bod služby virtuální sítě, tak i zásady řízení přístupu IP? 
 
-V účtu Azure Cosmos můžete povolit koncový bod služby virtuální sítě a zásadu řízení přístupu IP (neboli bránu firewall). Tyto dvě funkce jsou doplňující a společně zajišťují izolaci a zabezpečení účtu Azure Cosmos. Použití brány firewall protokolu IP zajišťuje, že ke svému účtu budou mít přístup statické IP adresy. 
+V účtu Azure Cosmos můžete povolit koncový bod služby virtuální sítě a zásadu řízení přístupu IP (označovanou taky jako brána firewall). Tyto dvě funkce jsou doplňující a společně zajišťují izolaci a zabezpečení účtu Azure Cosmos. Použití brány firewall protokolu IP zajišťuje, že ke svému účtu budou mít přístup statické IP adresy. 
 
 ### <a name="how-do-i-limit-access-to-subnet-within-a-virtual-network"></a>Návody omezit přístup k podsíti v rámci virtuální sítě? 
 
@@ -336,7 +336,7 @@ Když se přidají pravidla přístupu k bránám firewall nebo k virtuální s�
 
 Jakmile je koncový bod služby pro Azure Cosmos DB v podsíti povolený, zdroj provozu, který přiblíží účtu, se přepne z veřejné IP adresy do virtuální sítě a podsítě. Pokud má váš účet Azure Cosmos jenom bránu firewall založenou na protokolu IP, provoz z podsítě s povolenými službami už nebude odpovídat pravidlům brány firewall protokolu IP a proto se odmítne. Přečtěte si postup plynule migrace z brány firewall založené na protokolu IP na řízení přístupu na základě virtuální sítě.
 
-### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Jsou pro účty Azure Cosmos s koncovými body služby virtuální sítě potřeba další oprávnění RBAC?
+### <a name="are-additional-azure-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Jsou pro účty Azure Cosmos s koncovými body služby virtuální sítě potřeba další oprávnění Azure RBAC?
 
 Po přidání koncových bodů služby virtuální sítě do účtu Azure Cosmos budete potřebovat přístup k `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` akci pro všechny virtuální sítě nakonfigurované na vašem účtu Azure Cosmos. Toto oprávnění je povinné, protože proces autorizace ověřuje přístup k prostředkům (například k prostředkům databáze a virtuální sítě) před vyhodnocením jakýchkoli vlastností.
  

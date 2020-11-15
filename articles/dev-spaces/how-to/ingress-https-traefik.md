@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Naučte se nakonfigurovat Azure Dev Spaces k použití vlastního kontroleru traefik příchozího přenosu dat a konfiguraci HTTPS pomocí tohoto kontroleru příchozího přenosu dat.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fb45c310d306813dc10b667db6ce36048eccf217
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2dcb549078f1f0f5f7168960864d564fd0c169fc
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746110"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636822"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Použití vlastního kontroleru traefik příchozího přenosu dat a konfigurace HTTPS
 
@@ -53,7 +53,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 Vytvořte Kubernetes obor názvů pro kontroler traefik pro příchozí přenos dat a nainstalujte ho pomocí `helm` .
 
 > [!NOTE]
-> Pokud v clusteru AKS není povolena funkce RBAC, odeberte parametr *--set RBAC. Enabled = true* .
+> Pokud v clusteru AKS není povolená Kubernetes RBAC, odeberte parametr *--set RBAC. Enabled = true* .
 
 ```console
 kubectl create ns traefik
@@ -102,7 +102,7 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 Otevřete [hodnoty. yaml][values-yaml] a proveďte následující aktualizace:
-* Nahradí všechny výskyty *<REPLACE_ME_WITH_HOST_SUFFIX>* pomocí *traefik. MY_CUSTOM_DOMAIN* používání vaší domény pro *MY_CUSTOM_DOMAIN* . 
+* Nahradí všechny výskyty *<REPLACE_ME_WITH_HOST_SUFFIX>* pomocí *traefik. MY_CUSTOM_DOMAIN* používání vaší domény pro *MY_CUSTOM_DOMAIN*. 
 * Nahraďte *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-Specific* to *Kubernetes.IO/Ingress.Class: traefik # Custom* příchozí příchozí přenos dat. 
 
 Níže je příklad aktualizovaného `values.yaml` souboru:
@@ -212,7 +212,7 @@ spec:
 ```
 
 > [!NOTE]
-> Pro účely testování je k dispozici také [přípravný Server][letsencrypt-staging-issuer] , který můžete použít pro *ClusterIssuer* .
+> Pro účely testování je k dispozici také [přípravný Server][letsencrypt-staging-issuer] , který můžete použít pro *ClusterIssuer*.
 
 Použijte `kubectl` k použití `letsencrypt-clusterissuer.yaml` .
 
@@ -223,7 +223,7 @@ kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 Odeberte předchozí *traefik* *ClusterRole* a *ClusterRoleBinding* a potom upgradujte TRAEFIK, aby bylo možné používat protokol HTTPS pomocí `helm` .
 
 > [!NOTE]
-> Pokud v clusteru AKS není povolena funkce RBAC, odeberte parametr *--set RBAC. Enabled = true* .
+> Pokud v clusteru AKS není povolená Kubernetes RBAC, odeberte parametr *--set RBAC. Enabled = true* .
 
 ```console
 kubectl delete ClusterRole traefik
@@ -262,7 +262,7 @@ az network dns record-set a remove-record \
     --ipv4-address PREVIOUS_EXTERNAL_IP
 ```
 
-Výše uvedený příklad aktualizuje záznam *A* v zóně DNS *MY_CUSTOM_DOMAIN* pro použití *PREVIOUS_EXTERNAL_IP* .
+Výše uvedený příklad aktualizuje záznam *A* v zóně DNS *MY_CUSTOM_DOMAIN* pro použití *PREVIOUS_EXTERNAL_IP*.
 
 Aktualizujte [hodnoty. yaml][values-yaml] tak, aby obsahovaly podrobné informace o použití *certifikátů – Manager* a HTTPS. Níže je příklad aktualizovaného `values.yaml` souboru:
 
@@ -312,7 +312,7 @@ Všimněte si také, že se stránka načítá, ale v prohlížeči se zobrazuj�
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-Pokud chcete tuto chybu opravit, aktualizujte [BikeSharingWeb/azds. yaml][azds-yaml] tak, aby používaly *traefik* pro *Kubernetes.IO/Ingress.Class* a vlastní doménu pro *$ (hostSuffix)* . Příklad:
+Pokud chcete tuto chybu opravit, aktualizujte [BikeSharingWeb/azds. yaml][azds-yaml] tak, aby používaly *traefik* pro *Kubernetes.IO/Ingress.Class* a vlastní doménu pro *$ (hostSuffix)*. Příklad:
 
 ```yaml
 ...

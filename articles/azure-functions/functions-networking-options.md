@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 6b082801a89450e34056be8be88a96fe26b7eeec
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578810"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636465"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -97,8 +97,8 @@ Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s úč
 1. Vytvořte nebo nakonfigurujte jiný účet úložiště.  Toto je účet úložiště, který se zabezpečuje s koncovými body služby a spojíme naši funkci.
 1. [Vytvořte sdílenou složku](../storage/files/storage-how-to-create-file-share.md#create-file-share) v účtu zabezpečeného úložiště.
 1. Povolte koncové body služby nebo privátní koncový bod pro účet úložiště.  
-    * Pokud používáte koncový bod služby, ujistěte se, že jste povolili podsíť vyhrazenou pro vaše aplikace Function App.
-    * Nezapomeňte vytvořit záznam DNS a nakonfigurovat aplikaci tak, aby [fungovala s koncovými body privátního koncového bodu](#azure-dns-private-zones) , pokud používáte privátní koncový bod.  Účet úložiště bude potřebovat privátní koncový bod pro `file` `blob` subprostředky a.  Pokud používáte některé možnosti, jako je Durable Functions, budete potřebovat `queue` a `table` přistupovat přes připojení privátního koncového bodu.
+    * Pokud používáte připojení privátního koncového bodu, bude účet úložiště potřebovat soukromý koncový bod `file` pro `blob` subprostředky a.  Pokud používáte některé možnosti, jako je Durable Functions, budete potřebovat `queue` a `table` přistupovat přes připojení privátního koncového bodu.
+    * Pokud používáte koncové body služby, povolte pro účty úložiště podsíť vyhrazenou pro vaše aplikace Function App.
 1. Volitelné Zkopírujte soubor a obsah objektu BLOB z účtu úložiště Function App do zabezpečeného účtu úložiště a sdílené složky.
 1. Zkopírujte připojovací řetězec pro tento účet úložiště.
 1. Aktualizujte **nastavení aplikace** v části **Konfigurace** pro aplikaci Function App na následující:
@@ -106,6 +106,9 @@ Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s úč
     - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` do připojovacího řetězce pro zabezpečený účet úložiště.
     - `WEBSITE_CONTENTSHARE` na název sdílené složky vytvořené v zabezpečeném účtu úložiště.
     - Vytvořte nové nastavení s názvem `WEBSITE_CONTENTOVERVNET` a hodnotou `1` .
+    - Pokud účet úložiště používá připojení privátního koncového bodu, ověřte nebo přidejte následující nastavení.
+        - `WEBSITE_VNET_ROUTE_ALL` s hodnotou `1` .
+        - `WEBSITE_DNS_SERVER` s hodnotou `168.63.129.16` 
 1. Uložte nastavení aplikace.  
 
 Aplikace Function App se restartuje a bude teď připojená k zabezpečenému účtu úložiště.

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 449f0a59cc8428ce8e19535d5cf0417bf4cf7ad0
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5c8993bdf892ceb7d9886d0d2b97063dedec720c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425058"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635547"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce Java v Azure z příkazového řádku
 
@@ -163,11 +163,23 @@ Aplikace Function App a související prostředky se vytvoří v Azure při prvn
 > [!TIP]
 > Chcete-li vytvořit aplikaci Function App běžící na systému Linux namísto systému Windows, změňte `runtime.os` prvek v souboru pom.xml z `windows` na `linux` . V [těchto oblastech](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)se podporuje spuštění Linux v plánu spotřeby. Nemůžete mít aplikace spuštěné v systému Linux a aplikace, které běží ve Windows ve stejné skupině prostředků.
 
-1. Než budete moct nasadit, přihlaste se k předplatnému Azure pomocí příkazu [AZ Login](/cli/azure/authenticate-azure-cli) Azure CLI. 
+1. Než budete moct nasadit, přihlaste se k předplatnému Azure pomocí rozhraní příkazového řádku Azure CLI nebo Azure PowerShell. 
 
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
     az login
     ```
+
+    Příkaz [AZ Login](/cli/azure/reference-index#az-login) vás přihlásí k účtu Azure.
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+    Rutina [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) vás přihlásí k účtu Azure.
+
+    ---
 
 1. K nasazení projektu do nové aplikace Function App použijte následující příkaz.
 

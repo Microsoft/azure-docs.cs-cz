@@ -5,14 +5,14 @@ author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: overview
-ms.date: 04/24/2020
+ms.date: 11/13/2020
 ms.custom: mvc
-ms.openlocfilehash: a3bdc3673474b778aa7c1003e48e215bac6d05bf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dbc0f34e57297b9879a865511f6e7b4ed7ca2a3c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82628516"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636890"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -33,6 +33,10 @@ Pro zlepšení zabezpečení a správy vám Azure Red Hat OpenShift umožňuje i
 ## <a name="cluster-and-node"></a>Clustery a uzly
 
 Uzly Azure Red Hat OpenShift běží na virtuálních počítačích Azure. Úložiště můžete připojit k uzlům a luskům a upgradovat součásti clusteru.
+
+## <a name="service-level-agreement"></a>smlouva SLA
+
+Azure Red Hat OpenShift nabízí smlouva SLA k zajištění, že služba bude k dispozici 99,95% času. Další podrobnosti o smlouvě SLA najdete v tématu věnovaném [smlouvě SLA pro Azure Red Hat OpenShift](https://azure.microsoft.com/en-au/support/legal/sla/openshift/v1_0/).
 
 ## <a name="next-steps"></a>Další kroky
 
