@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 11/12/2020
+ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: e25b8af3dd56078a3febe436b74af8f94cdcc485
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 7d96b03598f90b45b7ecf88027be7408d8f161ea
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635974"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638763"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatické zřizování agentů a rozšíření z Azure Security Center
 
@@ -24,7 +24,7 @@ Shromažďování dat je nutné, aby poskytovala přehled o chybějících aktua
 Data se shromažďují pomocí:
 
 - **Agent Log Analytics** , který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do vašeho pracovního prostoru pro účely analýzy. Příklady takových dat: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel.
-- **Rozšíření virtuálních počítačů** , jako je [Azure Policy doplněk pro Kubernetes](../governance/policy/concepts/policy-for-kubernetes.md), která mohou také poskytovat data Security Center týkající se specializovaných typů prostředků.
+- **Rozšíření zabezpečení** , jako je [Azure Policy doplněk pro Kubernetes](../governance/policy/concepts/policy-for-kubernetes.md), která také poskytují data Security Center týkající se specializovaných typů prostředků.
 
 > [!TIP]
 > Jak Security Center vzrostly, byly také vypěstovány typy prostředků, které lze monitorovat. Počet rozšíření se také zvětšil. Automatické zřizování se rozšířilo na podporu dalších typů prostředků, a to díky využití možností Azure Policy.

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6fd0ba19739b75e72541ac84d6b1696ab2819dee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317437"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638865"
 ---
 # <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Osvědčené postupy pro SQL fond bez serveru (Preview) ve službě Azure synapse Analytics
 
@@ -127,13 +127,17 @@ Pokud uložená data nejsou rozdělená na oddíly, zvažte jejich dělení. Tí
 
 Při dotazování na soubory CSV můžete použít analyzátor optimalizovaný pro výkon. Podrobnosti najdete v tématu [PARSER_VERSION](develop-openrowset.md).
 
+## <a name="manually-create-statistics-for-csv-files"></a>Ruční vytváření statistik pro soubory CSV
+
+Fond SQL bez serveru spoléhá na statistiku pro generování optimálních plánů spouštění dotazů. V případě potřeby budou statistiky automaticky vytvořeny pro sloupce v souborech Parquet. V současné době se Statistika nevytvoří automaticky pro sloupce v souborech CSV a měli byste je vytvořit ručně pro sloupce, které používáte v dotazech, zejména ty, které se používají v DISTINCT, spojení, kde, ORDER BY a GROUP BY. Podrobnosti najdete [v statistikách fondu SQL bez serveru](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview) .
+
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Použití CETAS ke zvýšení výkonu a spojení dotazů
 
 [CETAS](develop-tables-cetas.md) je jednou z nejdůležitějších funkcí dostupných v neserverovém fondu SQL. CETAS je paralelní operace, která vytváří externí metadata tabulky a exportuje výsledky dotazu SELECT do sady souborů v účtu úložiště.
 
 Pomocí CETAS můžete ukládat často používané části dotazů, jako jsou připojené referenční tabulky, do nové sady souborů. Pak se můžete k této jedné externí tabulce připojit místo opakujících se běžných spojení ve více dotazech.
 
-Když CETAS generuje soubory Parquet, Statistika se automaticky vytvoří, když první dotaz cílí na tuto externí tabulku, což vede k lepšímu výkonu.
+Když CETAS generuje soubory Parquet, Statistika se automaticky vytvoří, když se první dotaz zaměřuje na tuto externí tabulku, což vede k lepšímu výkonu pro následující dotazy cílené na tabulku vygenerované pomocí CETAS.
 
 ## <a name="azure-ad-pass-through-performance"></a>Předávací výkon Azure AD
 

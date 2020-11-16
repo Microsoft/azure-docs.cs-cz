@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2020
+ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 315183040515110a6a21afcd00e12d1b12313170
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 2ea9fdcb11bd88755c0972fa166d1d94068ce60e
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341834"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638788"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -91,7 +91,7 @@ Umístění výchozího pracovního prostoru závisí na vaší oblasti Azure:
 Úplný seznam aplikací a služeb monitorovaných agentem najdete v tématu [co je monitorované pomocí Azure monitor?](../azure-monitor/monitor-reference.md#azure-services).
 
 > [!IMPORTANT]
-> Pamatujte na to, že u některých služeb, jako je například Azure Firewall, pokud jste povolili protokolování a vybrali prostředek konverzace, které se mají protokolovat (například nastavením protokolu na *verbose*), může se stát, že se v Log Analytics potřebuje úložiště pracovních prostorů významné dopady. 
+> Pamatujte na to, že u některých služeb, jako je například Azure Firewall, pokud jste povolili protokolování a vybrali prostředek konverzace, které se mají protokolovat (například nastavením protokolu na *verbose* ), může se stát, že se v Log Analytics potřebuje úložiště pracovních prostorů významné dopady. 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Můžu odstranit výchozí pracovní prostory vytvořené pomocí Security Center?
@@ -109,14 +109,19 @@ Můžete vybrat existující pracovní prostor Log Analytics pro ukládání dat
 
 Vyberte existující pracovní prostor Log Analytics:
 
-1. V části **zásady zabezpečení – shromažďování dat**vyberte **použít jiný pracovní prostor**.
+1. V nabídce Security Center vyberte **cenové & nastavení**.
+1. Vyberte příslušné předplatné.
+1. Otevřít stránku **automatického zřizování** , s
+1. U Log Analytics agenta vyberte **Upravit konfiguraci**. 
 
-    ![Použít jiný pracovní prostor][4]
+    :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="Konfigurace agenta Log Analytics, který se má použít při použití automatického nasazení" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::
 
-1. V rozevírací nabídce vyberte pracovní prostor pro ukládání shromážděných dat.
+1. Vyberte **připojit virtuální počítače Azure k jinému pracovnímu prostoru** a vyberte svůj stávající pracovní prostor.
 
-    > [!NOTE]
-    > V nabídce vyžádané replikace se zobrazí pouze pracovní prostory, ke kterým máte přístup a které jsou v rámci vašeho předplatného Azure.
+    :::image type="content" source="./media/security-center-enable-data-collection/choose-workspace.png" alt-text="Výběr jiného než výchozího pracovního prostoru, do kterého má agent Log Analytics nahlásit" lightbox="./media/security-center-enable-data-collection/choose-workspace.png":::
+
+    > [!TIP]
+    > Seznam obsahuje pouze pracovní prostory, ke kterým máte přístup a které jsou ve vašem předplatném Azure.
 
 1. Vyberte **Uložit**. Zobrazí se dotaz, jestli chcete překonfigurovat monitorované virtuální počítače.
 
@@ -124,9 +129,8 @@ Vyberte existující pracovní prostor Log Analytics:
     - Vyberte **Ano** , pokud chcete, aby se nové nastavení pracovního prostoru **projevilo na všech virtuálních počítačích**. Kromě toho se každý virtuální počítač připojený k Security Center vytvořenému pracovnímu prostoru znovu připojí k novému cílovému pracovnímu prostoru.
 
     > [!NOTE]
-    > Pokud vyberete **Ano**, neodstraňujte žádné pracovní prostory vytvořené pomocí Security Center, dokud se všechny virtuální počítače znovu nepřipojí k novému cílovému pracovnímu prostoru. Tato operace se nezdařila, pokud je pracovní prostor odstraněn příliš brzy.
+    > Pokud vyberete **Ano** , neodstraňujte žádné pracovní prostory vytvořené pomocí Security Center, dokud se všechny virtuální počítače znovu nepřipojí k novému cílovému pracovnímu prostoru. Tato operace se nezdařila, pokud je pracovní prostor odstraněn příliš brzy.
 
-    - Chcete-li operaci zrušit, vyberte možnost **Zrušit**.
 
 ## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>Co když už je agent Log Analytics na virtuálním počítači nainstalovaný jako rozšíření?<a name="mmaextensioninstalled"></a>
 
@@ -164,12 +168,17 @@ Pokud odeberete rozšíření Microsoft Monitoring, Security Center nebude moct 
 
 Automatické zřizování pro vaše předplatná můžete vypnout v zásadách zabezpečení, ale nedoporučuje se to. Vypnutí automatických omezení zřizování Security Center doporučení a výstrah. Zakázání automatického zřizování:
 
-1. Pokud je u vašeho předplatného Azure Defender povolený, otevřete pro toto předplatné zásadu zabezpečení a vyberte **Azure Defender vypnuto**.
+1. V nabídce Security Center vyberte **cenové & nastavení**.
+1. Vyberte příslušné předplatné.
+1. Pokud má vaše předplatné povolený program Azure Defender, otevřete **plány Azure Defenderu** a vyberte **Azure Defender vypnuto**.
 
     :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Povolit nebo zakázat Azure Defender":::
 
-1. V dalším kroku vypnout automatické zřizování výběrem možnosti **vypnuto** na stránce **zásady zabezpečení – shromažďování dat** .
-   ![Shromažďování dat][2]
+1. Na stránce **Automatické zřizování** vyberte možnost pero a vypněte Automatické zřizování na stránce  **zásady zabezpečení – shromažďování dat** .
+
+    :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="Povolit automatické nasazení pro agenta Log Analytics":::
+
+1. Vyberte **Uložit**.
 
 
 ## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>Doporučuje se odhlásit z automatické instalace agenta a vytvoření pracovního prostoru?
@@ -232,18 +241,16 @@ Automatické zřizování se důrazně doporučuje, aby se získaly výstrahy za
 
 Pokud jste ho povolili, ale teď ho chcete zakázat:
 
-1. Z [Azure Portal](https://portal.azure.com)otevřete **Security Center** a vyberte **zásady zabezpečení**.
+1. Z [Azure Portal](https://portal.azure.com)otevřete **Security Center** a vyberte **ceny a nastavení**.
 
 1. Vyberte předplatné, pro které chcete zakázat Automatické zřizování.
 
-    **Zásady zabezpečení – otevře se shromažďování dat** .
-
-1. V části **Automatické zřizování**vyberte **vypnuto**.
+1. V části **Automatické zřizování** vypněte přepínač pro agenta Log Analytics.
 
 
 ## <a name="how-do-i-enable-data-collection"></a>Návody Povolit shromažďování dat?
 
-V zásadách zabezpečení můžete v rámci svého předplatného Azure Povolit shromažďování dat. Pro povolení shromažďování dat. [Přihlaste se k Azure Portal](https://portal.azure.com), vyberte **procházet**, vyberte **Security Center**a vyberte **zásady zabezpečení**. Vyberte předplatné, pro které chcete povolit Automatické zřizování. Když vyberete zásadu zabezpečení předplatného, otevře se **kolekce dat** . V části **Automatické zřizování**vyberte **zapnuto**.
+V zásadách zabezpečení můžete v rámci svého předplatného Azure Povolit shromažďování dat. Pro povolení shromažďování dat. [Přihlaste se k Azure Portal](https://portal.azure.com), vyberte **procházet** , vyberte **Security Center** a vyberte **zásady zabezpečení**. Vyberte předplatné, pro které chcete povolit Automatické zřizování. Když vyberete zásadu zabezpečení předplatného, otevře se **kolekce dat** . V části **Automatické zřizování** vyberte **zapnuto**.
 
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>Co se stane, když je povolené shromažďování dat?

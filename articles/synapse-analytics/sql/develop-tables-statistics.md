@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cf85b0ea658ae6459644dd710630a30f78ad99aa
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b3e1c4b8dec0e62bb2a77939a36e38b61837033a
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339389"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638848"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistika v synapse SQL
 
@@ -173,7 +173,7 @@ CREATE STATISTICS [statistics_name]
     ON [schema_name].[table_name]([column_name]);
 ```
 
-Například:
+Příklad:
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -190,7 +190,7 @@ CREATE STATISTICS [statistics_name]
     WITH FULLSCAN;
 ```
 
-Například:
+Příklad:
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -403,7 +403,7 @@ K aktualizaci konkrétního objektu statistiky použijte následující syntax:
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Například:
+Příklad:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -419,7 +419,7 @@ Jednoduchá metoda aktualizace všech objektů statistiky v tabulce je:
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-Například:
+Příklad:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
@@ -506,7 +506,7 @@ AND     st.[user_created] = 1
 
 Příkaz DBCC SHOW_STATISTICS () zobrazuje data uchovávaná v rámci objektu statistiky. Tato data jsou dodávána se třemi částmi:
 
-- Záhlaví
+- Hlavička
 - Vektor hustoty
 - Histogram
 
@@ -522,7 +522,7 @@ Tento jednoduchý příklad ukazuje všechny tři části objektu statistiky:
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Například:
+Příklad:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
@@ -537,7 +537,7 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
     WITH stat_header, histogram, density_vector
 ```
 
-Například:
+Příklad:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
@@ -812,6 +812,74 @@ A vytvořte statistiky:
 CREATE STATISTICS sState
     on census_external_table (STATENAME)
     WITH FULLSCAN, NORECOMPUTE
+```
+
+### <a name="statistics-metadata"></a>Statistika – metadata
+
+K dispozici je několik systémových zobrazení a funkcí, které můžete použít k vyhledání informací o statistice. Například můžete zjistit, zda je objekt statistiky pravděpodobně zastaralý, pomocí funkce STATS_DATE (). STATS_DATE () umožňuje zobrazit, kdy byla statistika naposledy vytvořena nebo aktualizována.
+
+> [!NOTE]
+> Metadata statistiky jsou k dispozici pouze pro sloupce externí tabulky. Metadata statistik nejsou k dispozici pro sloupce OPENROWSET.
+
+#### <a name="catalog-views-for-statistics"></a>Zobrazení katalogu pro statistiku
+
+Tato systémová zobrazení obsahují informace o statistice:
+
+| Zobrazení katalogu                                                 | Popis                                                  |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Jeden řádek pro každý sloupec.                                     |
+| [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Jeden řádek pro každý objekt v databázi.                     |
+| [sys. schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Jeden řádek pro každé schéma v databázi.                     |
+| [sys. stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Jeden řádek pro každý objekt statistiky.                          |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Jeden řádek pro každý sloupec v objektu statistiky. Vrátí odkazy zpět na sys. Columns. |
+| [sys. Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Jeden řádek pro každou tabulku (zahrnuje externí tabulky).           |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Jeden řádek pro každý datový typ.                                  |
+
+#### <a name="system-functions-for-statistics"></a>Systémové funkce pro statistiku
+
+Tyto systémové funkce jsou užitečné pro práci s statistikami:
+
+| Systémová funkce                                              | Popis                                  |
+| :----------------------------------------------------------- | :------------------------------------------- |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Datum poslední aktualizace objektu statistiky |
+
+#### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Kombinovat statistické sloupce a funkce do jednoho zobrazení
+
+Toto zobrazení přináší sloupce, které se vztahují ke statistikám a výsledkům funkce STATS_DATE () společně.
+
+```sql
+CREATE VIEW dbo.vstats_columns
+AS
+SELECT
+        sm.[name]                           AS [schema_name]
+,       tb.[name]                           AS [table_name]
+,       st.[name]                           AS [stats_name]
+,       st.[filter_definition]              AS [stats_filter_definition]
+,       st.[has_filter]                     AS [stats_is_filtered]
+,       STATS_DATE(st.[object_id],st.[stats_id])
+                                            AS [stats_last_updated_date]
+,       co.[name]                           AS [stats_column_name]
+,       ty.[name]                           AS [column_type]
+,       co.[max_length]                     AS [column_max_length]
+,       co.[precision]                      AS [column_precision]
+,       co.[scale]                          AS [column_scale]
+,       co.[is_nullable]                    AS [column_is_nullable]
+,       co.[collation_name]                 AS [column_collation_name]
+,       QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])
+                                            AS two_part_name
+,       QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])
+                                            AS three_part_name
+FROM    sys.objects                         AS ob
+JOIN    sys.stats           AS st ON    ob.[object_id]      = st.[object_id]
+JOIN    sys.stats_columns   AS sc ON    st.[stats_id]       = sc.[stats_id]
+                            AND         st.[object_id]      = sc.[object_id]
+JOIN    sys.columns         AS co ON    sc.[column_id]      = co.[column_id]
+                            AND         sc.[object_id]      = co.[object_id]
+JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
+JOIN    sys.tables          AS tb ON    co.[object_id]      = tb.[object_id]
+JOIN    sys.schemas         AS sm ON    tb.[schema_id]      = sm.[schema_id]
+WHERE   st.[user_created] = 1
+;
 ```
 
 ## <a name="next-steps"></a>Další kroky

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: e04d7fa1f319ca3969d8acdc0235e2838bb3a88d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19ad45eec78d53261bf1781808339152c69a0136
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995740"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638831"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Import analýzy hrozeb do Azure Sentinelu
 
@@ -34,17 +34,17 @@ Do služby Azure Sentinel můžete integrovat analýzu hrozeb (ČŘ) prostředni
 - Pomocí **datových konektorů** k různým platformám ČŘ importujte do Azure Sentinel [Intelligence](./connect-threat-intelligence.md) .
 - Zobrazení a Správa importovaných informací o hrozbách v **protokolech** a v oblasti nová **Analýza hrozeb** v rámci služby Azure Sentinel.
 - Pomocí integrovaných šablon pravidel **analýzy** můžete vygenerovat výstrahy zabezpečení a incidenty pomocí importované analýzy hrozeb.
-- Pomocí **sešitu analýzy hrozeb**Vizualizujte klíčové informace o vaší analýze hrozeb v Azure Sentinel.
+- Pomocí **sešitu analýzy hrozeb** Vizualizujte klíčové informace o vaší analýze hrozeb v Azure Sentinel.
 
-Analýza hrozeb taky poskytuje užitečný kontext v rámci jiných prostředí s Sentinelou v Azure, jako jsou například **lovecké** a **poznámkové bloky**, a i když tento článek není popsaný v tomto článku, tato prostředí se řeší v [tomto skvělém příspěvku na blogu Ian Hellen](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)v článku Sentinel, který pokrývá použití cti v poznámkových blocích.
+Analýza hrozeb taky poskytuje užitečný kontext v rámci jiných prostředí s Sentinelou v Azure, jako jsou například **lovecké** a **poznámkové bloky** , a i když tento článek není popsaný v tomto článku, tato prostředí se řeší v [tomto skvělém příspěvku na blogu Ian Hellen](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)v článku Sentinel, který pokrývá použití cti v poznámkových blocích.
 
 ## <a name="azure-sentinel-data-connectors-for-threat-intelligence"></a>Datové konektory Azure Sentinel pro analýzu hrozeb
 
-Stejně jako u všech ostatních dat událostí ve službě Azure Sentinel se indikátory hrozeb importují pomocí datových konektorů. Ve službě Azure Sentinel existují dva datové konektory, které jsou určené konkrétně pro indikátory hrozeb, pro **TAXII** a **analytické platformy**pro analýzy hrozeb. V závislosti na tom, kde vaše organizace má indikátory ohrožení zdrojů, můžete použít buď samostatné konektory dat, nebo oba konektory současně. Pojďme se na každou z datových konektorů spojit.
+Stejně jako u všech ostatních dat událostí ve službě Azure Sentinel se indikátory hrozeb importují pomocí datových konektorů. Ve službě Azure Sentinel existují dva datové konektory, které jsou určené konkrétně pro indikátory hrozeb, pro **TAXII** a **analytické platformy** pro analýzy hrozeb. V závislosti na tom, kde vaše organizace má indikátory ohrožení zdrojů, můžete použít buď samostatné konektory dat, nebo oba konektory současně. Pojďme se na každou z datových konektorů spojit.
 
 ### <a name="adding-threat-indicators-to-azure-sentinel-with-the-threat-intelligence-platforms-data-connector"></a>Přidání indikátorů hrozeb do Azure Sentinel s datovým konektorem pro datové platformy pro analýzu hrozeb
 
-Mnoho organizací využívá řešení pro analýzu hrozeb (Threat Intelligence Platform) k agregaci kanálů indikátorů hrozeb z nejrůznějších zdrojů, ke využívání dat v rámci platformy a k výběru, které indikátory hrozeb se mají použít u různých řešení zabezpečení, jako jsou síťová zařízení, rozšířená řešení ochrany před internetovými útoky nebo systémů Siem, jako je například Azure Sentinel. Pokud vaše organizace využívá integrované řešení TIP, například MISP, anomálie ThreatStream, ThreatConnect nebo Palo Alto Networks, umožňuje **konektor dat pro platformy pro analýzu hrozeb** použít váš tip k importu indikátorů hrozeb do Azure Sentinel. Vzhledem k tomu, že konektor spolupracuje s [rozhraním api Microsoft Graph Security tiIndicators](https://docs.microsoft.com/graph/api/resources/tiindicator) , konektor se dá použít i v jakékoli vlastní platformě pro analýzu hrozeb, pomocí které můžete využít rozhraní tiIndicators API k posílání ukazatelů do Azure Sentinel (a dalších řešení Microsoftu, jako je třeba ATP v Defenderu).
+Mnoho organizací využívá řešení pro analýzu hrozeb (Threat Intelligence Platform) k agregaci kanálů indikátorů hrozeb z nejrůznějších zdrojů, ke využívání dat v rámci platformy a k výběru, které indikátory hrozeb se mají použít u různých řešení zabezpečení, jako jsou síťová zařízení, rozšířená řešení ochrany před internetovými útoky nebo systémů Siem, jako je například Azure Sentinel. Pokud vaše organizace využívá integrované řešení TIP, jako je MISP, anomálie ThreatStream, ThreatConnect, EclecticIQ Platform, ThreatQ Intelligence Intelligence Platform nebo Palo Alto Networks, umožňuje **konektor data Intelligence** pro analýzy hrozeb použít k importu indikátorů hrozeb do služby Azure Sentinel. Vzhledem k tomu, že konektor spolupracuje s [rozhraním api Microsoft Graph Security tiIndicators](https://docs.microsoft.com/graph/api/resources/tiindicator) , konektor se dá použít i v jakékoli vlastní platformě pro analýzu hrozeb, pomocí které můžete využít rozhraní tiIndicators API k posílání ukazatelů do Azure Sentinel (a dalších řešení Microsoftu, jako je třeba ATP v Defenderu).
 
 :::image type="content" source="media/import-threat-intelligence/threat-intel-import-path.png" alt-text="Cesta pro import Intelligence Threat":::
 
@@ -78,7 +78,7 @@ Tyto informace se vždycky dodávají z vašeho Azure Active Directory pomocí p
 
 1. Zvolte název registrace vaší aplikace, vyberte přepínač **jednoho tenanta** a vyberte **Registrovat**.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="Cesta pro import Intelligence Threat":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="Registrace aplikace":::
 
 1. Z výsledné obrazovky zkopírujte hodnoty ID **aplikace (klienta)** a **ID adresáře (tenant)** . Toto jsou první dvě informace, které později budete potřebovat ke konfiguraci tipu nebo vlastního řešení pro odesílání indikátorů hrozeb do Azure Sentinel.
 
@@ -96,13 +96,13 @@ Tyto informace se vždycky dodávají z vašeho Azure Active Directory pomocí p
 
 1. Vyberte **ThreatIndicators. OwnedBy.** Pokud chcete přidat toto oprávnění do seznamu oprávnění vaší aplikace, vyberte **Přidat oprávnění** .
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-1.png" alt-text="Cesta pro import Intelligence Threat":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-1.png" alt-text="Určení oprávnění":::
 
 **Získat souhlas od vaší organizace, aby udělil tato oprávnění**
 
 1. Pokud chcete udělit souhlas, budete potřebovat globálního správce Azure Active Directory pro výběr tlačítka **udělit souhlas správce pro vašeho tenanta** na stránce oprávnění rozhraní API vaší aplikace. Pokud ve svém účtu nemáte roli globálního správce, toto tlačítko nebude k dispozici a vy budete muset požádat globálního správce z vaší organizace, aby tento krok provedl.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="Cesta pro import Intelligence Threat":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="Udělit souhlas":::
 
 1. Po udělení souhlasu vaší aplikaci by se měla zobrazit zelená značka zaškrtnutí pod položkou **stav**.
  
@@ -114,9 +114,9 @@ Teď, když je vaše aplikace registrovaná a máte udělená oprávnění, mů�
 
 1. V nabídce vyberte **certifikáty & tajné klíče** a kliknutím na tlačítko **nový tajný klíč klienta** Získejte tajný klíč (klíč rozhraní API) pro vaši aplikaci.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="Cesta pro import Intelligence Threat":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="Získat tajný klíč klienta":::
 
-1. Klikněte na tlačítko **Přidat** a **Nezapomeňte zkopírovat tajný klíč klienta**, protože tento tajný klíč nemůžete znovu načíst, když opustíte tuto stránku. Tuto hodnotu budete potřebovat při konfiguraci vašeho tipu nebo vlastního řešení.
+1. Klikněte na tlačítko **Přidat** a **Nezapomeňte zkopírovat tajný klíč klienta** , protože tento tajný klíč nemůžete znovu načíst, když opustíte tuto stránku. Tuto hodnotu budete potřebovat při konfiguraci vašeho tipu nebo vlastního řešení.
 
 #### <a name="input-this-information-into-your-tip-solution-or-custom-application"></a>Zadejte tyto informace do svého řešení nebo vlastní aplikace.
 
@@ -145,7 +145,7 @@ Během několika minut by se měly indikátory hrozby začít přesměrovat do t
 
 Nejpoužívanějším oborovým standardem pro přenos analýzy hrozeb je [kombinace formátu dat Stix a protokolu TAXII](https://oasis-open.github.io/cti-documentation/). Pokud vaše organizace získá indikátory hrozeb z řešení, která podporují aktuální verzi STIX/TAXII (2,0 nebo 2,1), můžete pomocí konektoru data **Intelligence – TAXII** data Connector přenést své indikátory hrozeb do Azure Sentinel. TAXII data Connector umožňuje integrovanému TAXII klientovi ve službě Azure Sentinel pro import analýzy hrozeb ze serverů TAXII 2. x.
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="Cesta pro import Intelligence Threat":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="Cesta pro import TAXII":::
  
 Pomocí těchto kroků importujte STIX naformátované indikátory hrozeb do Azure Sentinel ze serveru TAXII:
 
@@ -285,9 +285,9 @@ Pokud chcete naimportovat indikátory hrozeb do Azure Sentinel ze serveru TAXII,
 
 1. V nabídce vyberte **datové konektory** , z Galerie konektorů vyberte **Threat Intelligence-TAXII** a klikněte na tlačítko **otevřít stránku konektoru** .
 
-1. Zadejte **název** pro tuto kolekci serveru TAXII, **adresu URL kořenového adresáře rozhraní API**, **ID kolekce**, **uživatelské jméno** (Pokud se vyžaduje) a **heslo** (Pokud se vyžaduje) a klikněte na tlačítko **Přidat** .
+1. Zadejte **název** pro tuto kolekci serveru TAXII, **adresu URL kořenového adresáře rozhraní API** , **ID kolekce** , **uživatelské jméno** (Pokud se vyžaduje) a **heslo** (Pokud se vyžaduje) a klikněte na tlačítko **Přidat** .
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="Cesta pro import Intelligence Threat":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="Konfigurace serverů TAXII":::
  
 Měli byste obdržet potvrzení, že připojení k TAXII serveru bylo úspěšně navázáno, a můžete opakovat krok (4) výše, kolikrát je potřeba se připojit k více kolekcím ze stejných nebo různých serverů TAXII.
 
@@ -307,7 +307,7 @@ Teď, když jste úspěšně naimportovali indikátory hrozeb do Azure Sentinel 
 
 Výsledky by měly vypadat podobně jako na indikátoru ukázkové hrozby uvedené níže:
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-sample-query.png" alt-text="Cesta pro import Intelligence Threat":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-sample-query.png" alt-text="Ukázková data dotazů":::
  
 ## <a name="manage-your-threat-indicators-in-the-new-threat-intelligence-area-of-azure-sentinel"></a>Správa indikátorů hrozeb v oblasti nová Analýza hrozeb v Azure Sentinel
 
@@ -322,21 +322,21 @@ Pojďme se podívat na dva nejběžnější úkoly a vytvořit nové indikátory
 
 1. V horní nabídce stránky vyberte tlačítko **Přidat nový** .
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-add-new-indicator.png" alt-text="Cesta pro import Intelligence Threat" lightbox="media/import-threat-intelligence/threat-intel-add-new-indicator.png":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-add-new-indicator.png" alt-text="Přidat nový indikátor hrozby" lightbox="media/import-threat-intelligence/threat-intel-add-new-indicator.png":::
 
 1. Zvolte typ indikátoru a potom vyplňte požadovaná pole označená červenou hvězdičkou (*) na **novém panelu indikátoru** .
 
-1. Vyberte **Použít**. Indikátor se přidá do mřížky ukazatelů a pošle se taky do tabulky ThreatIntelligenceIndicator v **protokolech**.
+1. Vyberte **Apply** (Použít). Indikátor se přidá do mřížky ukazatelů a pošle se taky do tabulky ThreatIntelligenceIndicator v **protokolech**.
 
 Označování indikátorů hrozeb je jednoduchý způsob, jak je seskupit dohromady, aby bylo snazší je najít. Obvykle můžete použít značku na indikátory týkající se konkrétního incidentu nebo indikátory reprezentující hrozby z konkrétního známého objektu actor nebo známé kampaně se známým útokem. Můžete označit indikátory hrozeb jednotlivě nebo indikátory vícenásobného výběru a označit je všechny najednou. Níže je uveden příklad označování více indikátorů s ID incidentu. Vzhledem k tomu, že označení je zdarma, doporučuje se vytvořit standardní konvence pojmenování pro značky indikátoru hrozeb. U každého indikátoru můžete použít více značek.
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="Cesta pro import Intelligence Threat" lightbox="media/import-threat-intelligence/threat-intel-tagging-indicators.png":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="Použít značky na indikátory hrozeb" lightbox="media/import-threat-intelligence/threat-intel-tagging-indicators.png":::
 
 ## <a name="analytics-puts-your-threat-indicators-to-work-detecting-potential-threats"></a>Analýza přináší indikátory hrozeb pro práci s detekcí potenciálních hrozeb.
 
-Máte indikátory hrozeb, které jsou zadávány do Azure Sentinel; Viděli jste, jak je zobrazit a spravovat. Teď uvidíte, co můžou dělat za vás. Nejdůležitější případ použití pro indikátory hrozeb v řešeních SIEM, jako je Azure Sentinel, je pravidla Power Analytics.  Tato pravidla založené na ukazateli porovnávají nezpracované události ze zdrojů dat se svými indikátory hrozeb a zjišťují bezpečnostní hrozby ve vaší organizaci. V Azure Sentinel **Analytics**vytvoříte analytická pravidla, která se spouštějí na základě plánu a generují výstrahy zabezpečení. Tato pravidla jsou založená na dotazech spolu s konfiguracemi, které určují, jak často se má pravidlo spouštět, jaký druh výsledků dotazu by měl generovat výstrahy zabezpečení a všechny automatizované odezvy, které se aktivují, když se generují výstrahy.
+Máte indikátory hrozeb, které jsou zadávány do Azure Sentinel; Viděli jste, jak je zobrazit a spravovat. Teď uvidíte, co můžou dělat za vás. Nejdůležitější případ použití pro indikátory hrozeb v řešeních SIEM, jako je Azure Sentinel, je pravidla Power Analytics.  Tato pravidla založené na ukazateli porovnávají nezpracované události ze zdrojů dat se svými indikátory hrozeb a zjišťují bezpečnostní hrozby ve vaší organizaci. V Azure Sentinel **Analytics** vytvoříte analytická pravidla, která se spouštějí na základě plánu a generují výstrahy zabezpečení. Tato pravidla jsou založená na dotazech spolu s konfiguracemi, které určují, jak často se má pravidlo spouštět, jaký druh výsledků dotazu by měl generovat výstrahy zabezpečení a všechny automatizované odezvy, které se aktivují, když se generují výstrahy.
 
-I když můžete vždy vytvořit nová analytická pravidla od začátku, Azure Sentinel poskytuje sadu předdefinovaných šablon pravidla vytvořených inženýry zabezpečení společnosti Microsoft, které můžete použít tak, jak jsou, nebo upravit tak, aby vyhovovaly vašim potřebám. Můžete snadno identifikovat šablony pravidel, které používají indikátory hrozeb, protože jsou všechny s názvem od "**ČŘ map**...". Všechny tyto šablony pravidel fungují podobně, přičemž jediným rozdílem je, že se používá typ indikátorů hrozeb (doména, e-mail, hodnota hash souboru, IP adresa nebo adresa URL) a odpovídající typ události. Každá šablona obsahuje seznam požadovaných zdrojů dat potřebných k tomu, aby pravidlo fungovalo, takže se můžete podívat na první pohled v případě, že už máte naimportované nezbytné události v rámci Azure Sentinel.
+I když můžete vždy vytvořit nová analytická pravidla od začátku, Azure Sentinel poskytuje sadu předdefinovaných šablon pravidla vytvořených inženýry zabezpečení společnosti Microsoft, které můžete použít tak, jak jsou, nebo upravit tak, aby vyhovovaly vašim potřebám. Můžete snadno identifikovat šablony pravidel, které používají indikátory hrozeb, protože jsou všechny s názvem od " **ČŘ map**...". Všechny tyto šablony pravidel fungují podobně, přičemž jediným rozdílem je, že se používá typ indikátorů hrozeb (doména, e-mail, hodnota hash souboru, IP adresa nebo adresa URL) a odpovídající typ události. Každá šablona obsahuje seznam požadovaných zdrojů dat potřebných k tomu, aby pravidlo fungovalo, takže se můžete podívat na první pohled v případě, že už máte naimportované nezbytné události v rámci Azure Sentinel.
 
 Pojďme se podívat na jednu z těchto šablon pravidel a podíváme se, jak povolit a nakonfigurovat pravidlo pro generování výstrah zabezpečení pomocí indikátorů hrozeb, které jste naimportovali do Azure Sentinel. V tomto příkladu použijeme šablonu pravidla nazvanou **entity IP adresy ČŘ na AzureActivity**. Toto pravidlo bude odpovídat jakémukoli indikátoru hrozby typu IP adresa a všem událostem aktivity Azure. Pokud je nalezena shoda, bude vygenerována **Výstraha** a také odpovídající **incident** pro šetření v rámci vašeho týmu zabezpečení provozu. Toto pravidlo analýzy bude fungovat úspěšně jenom v případě, že jste povolili jeden nebo oba datové konektory pro **analýzu hrozeb** (pro import indikátorů hrozeb) a konektor dat **aktivit Azure** (pro import událostí na úrovni předplatného Azure).
 
@@ -350,11 +350,11 @@ Pojďme se podívat na jednu z těchto šablon pravidel a podíváme se, jak pov
 
 1. Přejděte na pravidlo s názvem **entita mapování IP adresy ČŘ na AzureActivity** a ujistěte se, že jste provedli propojení všech požadovaných zdrojů dat, jak je uvedeno níže.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-required-data-sources.png" alt-text="Cesta pro import Intelligence Threat":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-required-data-sources.png" alt-text="Požadované zdroje dat":::
 
-1. Vyberte toto pravidlo a klikněte na tlačítko **vytvořit pravidlo** . Tím se otevře Průvodce pro konfiguraci pravidla. Dokončete nastavení a vyberte tlačítko **Další: nastavit >logiky pravidla ** .
+1. Vyberte toto pravidlo a klikněte na tlačítko **vytvořit pravidlo** . Tím se otevře Průvodce pro konfiguraci pravidla. Dokončete nastavení a vyberte tlačítko **Další: nastavit >logiky pravidla** .
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-create-analytics-rule.png" alt-text="Cesta pro import Intelligence Threat":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-create-analytics-rule.png" alt-text="Vytvořit analytické pravidlo":::
 
 1. Část s logikou pravidla v průvodci obsahuje:
     - Dotaz, který se použije v pravidle.
@@ -374,7 +374,7 @@ Pojďme se podívat na jednu z těchto šablon pravidel a podíváme se, jak pov
 
 Můžete ponechat výchozí nastavení nebo změnit některý z nich tak, aby splňoval vaše požadavky. Po dokončení vyberte tlačítko **Další: automatizovaná odpověď >.**
 
-1. Tento krok průvodce vám umožní nakonfigurovat jakoukoli automatizaci, kterou byste chtěli aktivovat při vygenerování výstrahy zabezpečení z tohoto pravidla analýzy. Automatizace ve službě Azure Sentinel se provádí pomocí **playbooky**, která využívá Azure Logic Apps. Další informace najdete v tomto [kurzu: nastavení automatických odpovědí na hrozby v Azure Sentinel](./tutorial-respond-threats-playbook.md). V tomto příkladu vybereme tlačítko **Další: >zkontrolovat ** , aby bylo možné pokračovat.
+1. Tento krok průvodce vám umožní nakonfigurovat jakoukoli automatizaci, kterou byste chtěli aktivovat při vygenerování výstrahy zabezpečení z tohoto pravidla analýzy. Automatizace ve službě Azure Sentinel se provádí pomocí **playbooky** , která využívá Azure Logic Apps. Další informace najdete v tomto [kurzu: nastavení automatických odpovědí na hrozby v Azure Sentinel](./tutorial-respond-threats-playbook.md). V tomto příkladu vybereme tlačítko **Další: >zkontrolovat** , aby bylo možné pokračovat.
 
 1. Tento poslední krok ověří nastavení v pravidle. Až budete připraveni pravidlo Povolit, vyberte tlačítko **vytvořit** a Vy jste hotovi.
 
@@ -397,7 +397,7 @@ Podívejme se, jak najít sešit s přehledem hrozeb, který je k dispozici v Az
 
 1. Přejděte do sešitu s názvem **Threat Intelligence** a ověřte, že máte data v tabulce **ThreatIntelligenceIndicator** , jak je znázorněno níže.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-verify-data.png" alt-text="Cesta pro import Intelligence Threat":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-verify-data.png" alt-text="Ověření dat":::
  
 1. Vyberte tlačítko **Uložit** a zvolte umístění Azure pro uložení sešitu. Tento krok je nutný, pokud budete sešit upravovat jakýmkoli způsobem a uložíte změny.
 
@@ -417,7 +417,7 @@ Podívejme se, jak najít sešit s přehledem hrozeb, který je k dispozici v Az
 
 1. Vyberte tlačítko **Hotovo pro úpravy** . Vytvořili jste nový graf pro sešit.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Cesta pro import Intelligence Threat":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Pruhový graf":::
 
 Pracovní sešity poskytují výkonné interaktivní řídicí panely, které vám poskytnou přehled o všech aspektech Azure Sentinel. Existuje celá řada, kterou můžete dělat se sešity, a zatímco poskytnuté šablony jsou skvělým výchozím bodem, pravděpodobně budete chtít podrobně a přizpůsobit tyto šablony, nebo můžete vytvořit nové řídicí panely, které kombinují mnoho různých zdrojů dat, abyste data mohli vizualizovat jedinečnými způsoby. Vzhledem k tomu, že jsou sešity Sentinel v Azure založené na Azure Monitor sešitech, už je dostupná rozsáhlá dokumentace a mnoho dalších šablon. Dobrým místem, kde začít, je tento článek o [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../azure-monitor/platform/workbooks-overview.md). 
 
