@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je služba Stream Analytics?
+    - name: Vítá vás Stream Analytics
       href: stream-analytics-introduction.md
     - name: Cluster Stream Analytics
       href: cluster-overview.md

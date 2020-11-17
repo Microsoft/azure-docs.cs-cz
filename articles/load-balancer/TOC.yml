@@ -67,9 +67,9 @@
       href: load-balancer-ha-ports-overview.md
     - name: Několik front-endů
       href: load-balancer-multivip-overview.md
-    - name: Odchozí proxy server
+    - name: SNAT pro odchozí připojení k internetu
       href: load-balancer-outbound-connections.md
-    - name: Pravidla odchozích přenosů
+    - name: Konfigurace pravidel odchozích přenosů
       href: outbound-rules.md
     - name: Časový limit resetování při nečinnosti TCP
       href: load-balancer-tcp-reset.md

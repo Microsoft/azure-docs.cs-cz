@@ -6,7 +6,7 @@ ms.author: dbradish
 manager: barbkess
 ms.openlocfilehash: 40f243ce0044b8e1172fb03a1366f37314a0c550
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
 ms.locfileid: "85367800"
@@ -31,4 +31,4 @@ Pokud chcete spustit kód uvedený v tomto článku ve službě Azure Cloud Shel
 
 1. Vložte kód do relace Cloud Shell pomocí kláves **Ctrl**+**Shift**+**V** ve Windows a Linuxu nebo pomocí kláves **Cmd**+**Shift**+**V** v systému macOS.
 
-1. Spusťte kód stisknutím klávesy **Enter** .
+1. Spusťte kód stisknutím klávesy **Enter**.

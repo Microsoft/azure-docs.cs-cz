@@ -143,10 +143,12 @@
               href: azure-vm-create-properties.md
             - name: Konfigurace výpisu nabídek virtuálních počítačů
               href: azure-vm-create-listing.md
-            - name: Vytváření plánů pro virtuální počítače
-              href: azure-vm-create-plans.md
             - name: Přidání cílové skupiny pro verzi Preview
               href: azure-vm-create-preview.md
+            - name: Vytváření plánů pro virtuální počítače
+              href: azure-vm-create-plans.md
+            - name: Prodej prostřednictvím partnerů CSP
+              href: azure-vm-create-resell-csp.md
             - name: Vytvoření technických prostředků virtuálního počítače
               items:
                 - name: Vytvoření virtuálního počítače ze schválené báze

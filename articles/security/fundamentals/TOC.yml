@@ -38,6 +38,21 @@
           href: infrastructure-integrity.md
         - name: Ochrana dat
           href: protection-customer-data.md
+    - name: Zabezpečení a integrita platformy
+      href: platform.md
+      items:
+        - name: Zabezpečení firmwaru
+          href: firmware.md
+        - name: Zabezpečené spouštění
+          href: secure-boot.md
+        - name: Ověřované spouštění a ověření identity hostitele
+          href: measured-boot-host-attestation.md
+        - name: Project Cerberus
+          href: project-cerberus.md
+        - name: Šifrování neaktivních uložených dat
+          href: encryption-atrest.md
+        - name: Zabezpečení hypervisoru
+          href: hypervisor.md
     - name: Izolace v cloudu Azure
       href: isolation-choices.md
 - name: Správa identit

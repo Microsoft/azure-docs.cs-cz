@@ -47,8 +47,6 @@
           href: customize-person-model-overview.md
 - name: Průvodce postupy
   items:
-    - name: Připojení k Azure
-      href: connect-to-azure.md
     - name: Správa účtu připojeného k Azure
       href: manage-account-connected-to-azure.md
     - name: Nahrávání a indexování videí

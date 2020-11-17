@@ -130,6 +130,8 @@
             - name: Řešení potíží s připojením funkce Synapse Studio
               href: troubleshoot/troubleshoot-synapse-studio-powershell.md
               displayname: powershell
+            - name: Řešení potíží s připojením mezi službou Synapse Studio a úložištěm
+              href: troubleshoot/troubleshoot-synapse-studio-and-storage-connectivity.md
     - name: Návody
       items:
         - name: Zabezpečení

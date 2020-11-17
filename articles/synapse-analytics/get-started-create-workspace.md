@@ -30,7 +30,7 @@ K dokončení kroků tohoto kurzu potřebujete mít přístup ke skupině prost�
 1. Otevřete [Azure Portal](https://portal.azure.com)a v horní části vyhledejte **synapse**.
 1. Ve výsledcích hledání v části **služby** vyberte **Azure synapse Analytics (pracovní prostory verze Preview)**.
 1. Vyberte **Přidat** a vytvořte pracovní prostor.
-1. V oblasti **základy** zadejte preferované **předplatné** , **skupinu prostředků** , **oblast** a pak zvolte název pracovního prostoru. V tomto kurzu použijeme **MyWorkspace**.
+1. V oblasti **základy** zadejte preferované **předplatné**, **skupinu prostředků**, **oblast** a pak zvolte název pracovního prostoru. V tomto kurzu použijeme **MyWorkspace**.
 1. Přejděte k **výběru Data Lake Storage Gen 2**. 
 1. Klikněte na **vytvořit nový** a pojmenujte ho **contosolake**.
 1. Klikněte na **systém souborů** a pojmenujte ho **Uživatelé**. Tím se vytvoří kontejner s názvem **Uživatelé** .

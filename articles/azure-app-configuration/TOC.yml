@@ -106,8 +106,10 @@
           href: concept-disaster-recovery.md
 - name: Návody
   items:
-    - name: Povolení funkce pro podmnožinu uživatelů
+    - name: Povolení funkce pro určité procento uživatelů
       href: howto-feature-filters-aspnet-core.md
+    - name: Povolení funkce pro zadané uživatele/skupiny
+      href: howto-targetingfilter-aspnet-core.md
     - name: Použití popisků pro konfiguraci pro jednotlivá prostředí
       href: howto-labels-aspnet-core.md
     - name: Import nebo export konfiguračních dat

@@ -180,6 +180,21 @@
               href: app/pricing.md
             - name: Protokolování nákladů a využití dat
               href: platform/manage-cost-storage.md
+    - name: Metriky Azure Monitoru
+      items:
+        - name: Přehled
+          displayname: Metrics
+          href: platform/data-platform-metrics.md
+        - name: Průzkumník metrik
+          items:
+            - name: Začínáme s Průzkumníkem metrik
+              href: platform/metrics-getting-started.md
+            - name: Pokročilé funkce Průzkumníku metrik
+              href: platform/metrics-charts.md
+            - name: Příklady grafů metrik
+              href: platform/metric-chart-samples.md
+            - name: Řešení potíží s grafy metrik
+              href: platform/metrics-troubleshoot.md
     - name: Protokoly služby Azure Monitor
       items:
         - name: Přehled
@@ -262,21 +277,10 @@
               href: platform/logs-export-logic-app.md
             - name: Dotazování na vyexportovaná data s využitím Data Exploreru
               href: platform/azure-data-explorer-query-storage.md
-    - name: Metriky Azure Monitoru
-      items:
-        - name: Přehled
-          displayname: Metrics
-          href: platform/data-platform-metrics.md
-        - name: Průzkumník metrik
-          items:
-            - name: Začínáme s Průzkumníkem metrik
-              href: platform/metrics-getting-started.md
-            - name: Pokročilé funkce Průzkumníku metrik
-              href: platform/metrics-charts.md
-            - name: Příklady grafů metrik
-              href: platform/metric-chart-samples.md
-            - name: Řešení potíží s grafy metrik
-              href: platform/metrics-troubleshoot.md
+            - name: Odeslání do Excelu
+              href: log-query/log-excel.md
+            - name: Odeslání do Power BI
+              href: log-query/log-powerbi.md
     - name: Protokoly platformy
       items:
         - name: Přehled
@@ -575,12 +579,16 @@
                   displayname: 'ilogger, logging, log'
                   href: app/ilogger.md
             - name: ASP.NET
-              displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
-              href: app/asp-net.md
+              items:
+                - name: Monitorování aplikací v ASP.NET
+                  displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
+                  href: app/asp-net.md
+                - name: Řešení potíží s ASP.NET
+                  href: app/asp-net-troubleshoot-no-data.md
             - name: Aplikace jiného typu než HTTP nebo aplikace na pozadí
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: Konzola .NET
+            - name: Konzola ASP.NET
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
             - name: Java
@@ -590,18 +598,10 @@
                   href: app/java-get-started.md
                 - name: Trasování protokolů
                   href: app/java-trace-logs.md
-                - name: Unixové metriky
-                  href: app/java-collectd.md
                 - name: Závislosti
                   href: app/java-agent.md
                 - name: Filtrování telemetrie
                   href: app/java-filter-telemetry.md
-                - name: Metriky v mikrometrech
-                  displayname: java
-                  href: app/micrometer-java.md
-                - name: Aplikace Spring Boot
-                  displayname: java
-                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
                 - name: Řešení potíží
                   href: app/java-troubleshoot.md
             - name: Node.js
@@ -637,8 +637,6 @@
             - name: Souhrn rozhraní API Application Insights
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
-            - name: Řešení potíží s ASP.NET
-              href: app/asp-net-troubleshoot-no-data.md
             - name: Odebrání Application Insights
               href: app/remove-application-insights.md
         - name: Monitorování bez kódu
@@ -1241,6 +1239,8 @@
               href: app/release-notes.md
             - name: Rozšíření webové aplikace
               href: app/web-app-extension-release-notes.md
+            - name: Ladicí program snímků
+              href: app/snapshot-collector-release-notes.md
         - name: Datový model
           items:
             - name: Přehled
@@ -1323,6 +1323,11 @@
           href: platform/resource-logs-blob-format.md
         - name: Key Vault Analytics (zastaralé)
           href: insights/azure-key-vault-deprecated.md
+        - name: Unixové metriky
+          href: app/java-collectd.md
+        - name: Metriky v mikrometrech
+          displayname: java
+          href: app/micrometer-java.md
         - name: Zobrazení
           items:
             - name: Návrhář zobrazení

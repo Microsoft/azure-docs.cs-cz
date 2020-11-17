@@ -28,8 +28,6 @@
       items:
         - name: Změna zdrojového jazyka rozpoznávání řeči
           href: how-to-specify-source-language.md
-        - name: Zlepšení přesnosti s využitím služby Custom Speech
-          href: how-to-custom-speech.md
         - name: Použití komprimovaných formátů zvukového vstupu
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
@@ -45,20 +43,18 @@
           href: tutorial-tenant-model.md
     - name: Přizpůsobení
       items:
+        - name: Co je Custom Speech?
+          href: custom-speech-overview.md
         - name: Testování modelu s využitím zvukových souborů v sadě Speech Studio
           href: quickstarts/speech-studio-test-model.md
         - name: Příprava dat pro službu Custom Speech
           href: how-to-custom-speech-test-and-train.md
         - name: Kontrola dat služby Custom Speech
           href: how-to-custom-speech-inspect-data.md
-        - name: Vyhodnocení přesnosti služby Custom Speech
+        - name: Vyhodnocení a vylepšení přesnosti služby Custom Speech
           href: how-to-custom-speech-evaluate-data.md
-        - name: Vylepšení přesnosti služby Custom Speech
-          href: how-to-custom-speech-improve-accuracy.md
-        - name: Trénování modelu pro Custom Speech
+        - name: Trénování a nasazení modelu Custom Speech
           href: how-to-custom-speech-train-model.md
-        - name: Nasazení vlastního modelu
-          href: how-to-custom-speech-deploy-model.md
         - name: CI/CD pro Custom Speech
           href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: Vytváření přepisů pořízených lidmi
@@ -391,6 +387,10 @@
                       href: how-to-custom-commands-setup-web-endpoints.md
                     - name: Export aplikace Vlastní příkazy jako dovednost
                       href: how-to-custom-commands-integrate-remote-skills.md
+                    - name: Aktualizace příkazu z klientské aplikace
+                      href: how-to-custom-commands-update-command-from-client.md
+                    - name: Aktualizace příkazu z webového koncového bodu
+                      href: how-to-custom-commands-update-command-from-web-endpoint.md
                 - name: Nasazení
                   items:
                     - name: Průběžné nasazování s využitím Azure DevOps

@@ -2,6 +2,8 @@
   href: cut-planes.md
 - name: Ladění vykreslování
   href: debug-rendering.md
+- name: Fresnelův efekt
+  href: fresnel-effect.md
 - name: Přepsání hierarchického stavu
   href: override-hierarchical-state.md
 - name: Camera
