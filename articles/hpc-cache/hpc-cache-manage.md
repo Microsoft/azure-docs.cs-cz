@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 067b12d4dcfd5ba2b730204ef680b900d79f1b72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613035"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648068"
 ---
 # <a name="manage-your-cache"></a>Správa mezipaměti
 
@@ -58,7 +58,7 @@ Chcete-li znovu aktivovat zastavenou mezipaměť, klikněte na tlačítko **Star
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
 Dočasně pozastavíte mezipaměť pomocí příkazu [AZ HPC-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) . Tato akce je platná jenom v případě, že stav mezipaměti je **v pořádku** nebo je **degradováný**.
 
@@ -113,7 +113,7 @@ Pokud chcete mezipaměť vyprázdnit, klikněte na tlačítko **vyprázdnit** a 
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
 Pomocí [AZ HPC-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) vynutíte mezipaměť zapisovat všechna změněná data do cílů úložiště.
 
@@ -161,7 +161,7 @@ Kliknutím na tlačítko **upgradovat** zahájíte aktualizaci softwaru. Stav me
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
 V rozhraní příkazového řádku Azure CLI jsou nové informace o softwaru součástí na konci sestavy o stavu mezipaměti. (K ověření použijte [AZ HPC-cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) .) Ve zprávě vyhledejte řetězec "upgradeStatus".
 
@@ -225,7 +225,7 @@ Po zastavení mezipaměti kliknutím na tlačítko **Odstranit** trvale odeberet
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
 Pomocí příkazu rozhraní příkazového řádku Azure [AZ HPC-cache Delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) trvale odeberte mezipaměť.
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: badf10da8af0ed3829deb2498b51b5d5c8ce6a93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56b6638462acaf43b6353787495e5b7993acb413
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604319"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648272"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Kroky pro přidání přiřazení role
 
@@ -26,7 +26,7 @@ Nejdřív je potřeba určit, kdo potřebuje přístup. Roli můžete přiřadit
 
 ![Objekt zabezpečení pro přiřazení role](./media/shared/rbac-security-principal.png)
 
-- Uživatel – jednotlivec, který má profil ve službě Azure Active Directory. Můžete také přiřadit role uživatelům v jiných tenantech. Informace o uživatelích v jiných organizacích najdete v článku o [B2B ve službě Azure Active Directory](../active-directory/b2b/what-is-b2b.md).
+- Uživatel – jednotlivec, který má profil ve službě Azure Active Directory. Můžete také přiřadit role uživatelům v jiných tenantech. Informace o uživatelích v jiných organizacích najdete v článku o [B2B ve službě Azure Active Directory](../active-directory/external-identities/what-is-b2b.md).
 - Skupina – skupina uživatelů vytvořená ve službě Azure Active Directory. Když přiřadíte roli skupině, budou mít danou roli všichni její uživatelé. 
 - Instanční objekt – identita zabezpečení, kterou používají aplikace nebo služby pro přístup ke konkrétním prostředkům Azure. Můžete si ji představit jako *identitu uživatele* (uživatelské jméno a heslo nebo certifikát) pro aplikaci.
 - Spravovaná identita – identita v Azure Active Directory, kterou automaticky spravuje Azure. [Spravované identity](../active-directory/managed-identities-azure-resources/overview.md) obvykle používáte při vývoji cloudových aplikací pro správu přihlašovacích údajů pro ověřování ve službách Azure.

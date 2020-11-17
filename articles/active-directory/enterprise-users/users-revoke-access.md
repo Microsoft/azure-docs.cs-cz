@@ -3,22 +3,22 @@ title: Odvolání přístupu uživatele v nouzi v Azure Active Directory | Micro
 description: Jak odvolat veškerý přístup pro uživatele v Azure Active Directory
 services: active-directory
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
 author: curtand
 ms.author: curtand
 manager: daveba
 ms.reviewer: krbain
-ms.date: 07/15/2020
+ms.date: 11/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16577c3509c9d3d9b02ead5e69832bacc7d083bb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e12d08acdd9fc869ed766a1bbd78f35eb371cc8a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92374793"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649683"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Odvolání přístupu uživatele v Azure Active Directory
 
@@ -113,7 +113,7 @@ Jako správce v Azure Active Directory otevřete PowerShell, spusťte ``Connect-
 
 Jakmile správci přijmou výše uvedené kroky, uživatel nemůže získat nové tokeny pro žádnou aplikaci vázanou na Azure Active Directory. Uplynulý čas mezi zrušením a uživatelem, který ztratí přístup, závisí na tom, jak aplikace uděluje přístup:
 
-- U **aplikací využívajících přístupové tokeny**ztratí uživatel přístup po vypršení platnosti přístupového tokenu.
+- U **aplikací využívajících přístupové tokeny** ztratí uživatel přístup po vypršení platnosti přístupového tokenu.
 
 - U **aplikací, které používají tokeny relací**, se stávající relace ukončí ihned po vypršení platnosti tokenu. Pokud je zakázaný stav uživatele synchronizovaný s aplikací, může aplikace automaticky odvolat existující relace uživatele, pokud je to tak nakonfigurované.  Doba, kterou trvá, závisí na četnosti synchronizace mezi aplikací a službou Azure AD.
 

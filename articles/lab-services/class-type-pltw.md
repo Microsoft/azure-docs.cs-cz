@@ -3,12 +3,12 @@ title: Nastavit vedoucímu projektu způsob, jakým Labs Azure Lab Services
 description: Naučte se, jak nastavit testovací prostředí, aby projekt pomohly povést jako třídy.
 ms.topic: article
 ms.date: 10/28/2020
-ms.openlocfilehash: 8585d09759319eef04da5ed68fec603cfa390093
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e3783ae4fa07bf783841022903c4bcf3ab6fbe23
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496890"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648000"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>Nastavení testovacích prostředí pro projekt vedoucí způsob, jakým třídy
 
@@ -53,12 +53,12 @@ ms.locfileid: "94496890"
 [Úplný seznam softwaru](https://www.pltw.org/pltw-software) pro každou třídu najdete v webu PLTW.
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
-K nastavení Labs pro PLTW potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v kurzu [jak nastavit účet testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account). Můžete použít i existující účet testovacího prostředí.
+K nastavení Labs pro PLTW potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete. Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v kurzu [jak nastavit účet testovacího prostředí](./tutorial-setup-lab-account.md). Můžete použít i existující účet testovacího prostředí.
 
 Jakmile budete mít účet testovacího prostředí, měli byste vytvořit samostatné laboratoře pro každou relaci třídy PLTW, kterou nabízí vaše škola.  Doporučujeme také vytvořit samostatné image pro každý typ třídy PLTW.  Další informace o tom, jak strukturovat laboratoře a image, najdete v blogovém příspěvku: [Přechod z fyzického prostředí na Azure Lab Services](https://techcommunity.microsoft.com/t5/azure-lab-services/moving-from-a-physical-lab-to-azure-lab-services/ba-p/1654931).
 
 ### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
-Pro účet testovacího prostředí povolte nastavení popsaná v následující tabulce. Další informace o tom, jak povolit image Marketplace, najdete v článku o [tom, jak zadat image z Marketplace dostupné pro tvůrce testovacích prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
+Pro účet testovacího prostředí povolte nastavení popsaná v následující tabulce. Další informace o tom, jak povolit image Marketplace, najdete v článku o [tom, jak zadat image z Marketplace dostupné pro tvůrce testovacích prostředí](./specify-marketplace-images.md).
 
 | Nastavení účtu testovacího prostředí | Pokyny |
 | -------------------- | ----- |
@@ -73,26 +73,26 @@ Velikost virtuálního počítače, který doporučujeme použít pro třídy PL
 |Velikost virtuálního počítače| **Velký**.  Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti.  Tuto velikost doporučujeme použít pro následující třídy PLTW: Úvod k technickým návrhům, principům strojírenství, počítačových vědeckých Essentials, principům pro počítačové vědy a počítačové vědy a.
 
 ### <a name="licensing-server"></a>Licenční server
-Většina softwaru používaného ve výše uvedených třídách PLTW do * *_Not_* _ vyžaduje přístup k licenčnímu serveru.  Budete ale muset získat přístup k licenčnímu serveru, pokud plánujete používat model licencování sítě společnosti Autodesk pro následující software:
+Většina softwaru používaného ve výše uvedených třídách PLTW do **_Not_* _ vyžaduje přístup k licenčnímu serveru.  Budete ale muset získat přístup k licenčnímu serveru, pokud plánujete používat model licencování sítě společnosti Autodesk pro následující software:
 -   Revit
 -   Skladové
 -   VAČKa zásob
 
 Pokud chcete používat licencování sítě se softwarem společnosti Autodesk, [PLTW poskytuje podrobné kroky](https://www.pltw.org/pltw-software) pro instalaci správce licencí společnosti Autodesk na licenční server.  Tento licenční server se obvykle nachází v místní síti nebo je hostovaný na virtuálním počítači Azure v rámci služby Azure Virtual Network (VNet).
 
-Po nastavení licenčního serveru budete muset [virtuální síť](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) navázat na svůj [účet testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account). Partnerský vztah k síti musí být dokončen _before * vytváření testovacího prostředí, aby virtuální počítače testovacího prostředí měly přístup k licenčnímu serveru a jiným způsobem.
+Po nastavení licenčního serveru budete muset [virtuální síť](./how-to-connect-peer-virtual-network.md) navázat na svůj [účet testovacího prostředí](./tutorial-setup-lab-account.md). Partnerský vztah k síti musí být dokončen _before * vytváření testovacího prostředí, aby virtuální počítače testovacího prostředí měly přístup k licenčnímu serveru a jiným způsobem.
 
 Soubory s licencí generované společnosti Autodesk vloží adresu MAC licenčního serveru.  Pokud se rozhodnete hostovat licenční server pomocí virtuálního počítače Azure, je důležité se ujistit, že se adresa MAC licenčního serveru nemění.   V opačném případě se při změně adresy MAC bude nutné znovu vygenerovat soubory s licencí.  Pokud chcete zabránit změně adresy MAC, postupujte podle těchto tipů:
 
-- [Nastavte statickou privátní IP adresu a adresu MAC](https://docs.microsoft.com/azure/lab-services/how-to-create-a-lab-with-shared-resource#static-private-ip-and-mac-address) pro virtuální počítač Azure, který je hostitelem vašeho licenčního serveru.
+- [Nastavte statickou privátní IP adresu a adresu MAC](./how-to-create-a-lab-with-shared-resource.md#static-private-ip-and-mac-address) pro virtuální počítač Azure, který je hostitelem vašeho licenčního serveru.
 - Ujistěte se, že jste nastavili účet testovacího prostředí i virtuální síť licenčního serveru v region\location, která má dostatečnou kapacitu virtuálního počítače, takže nemusíte tyto prostředky přesunout na nové region\location později.
 
-Další informace najdete také v článku o [Nastavení licenčního serveru jako sdíleného prostředku](https://docs.microsoft.com/azure/lab-services/how-to-create-a-lab-with-shared-resource) .
+Další informace najdete také v článku o [Nastavení licenčního serveru jako sdíleného prostředku](./how-to-create-a-lab-with-shared-resource.md) .
 
 ### <a name="template-machine"></a>Počítač šablony
 Některé instalační soubory, které potřebujete pro PLTW, jsou velké a při jejich stažení na počítač se šablonou testovacího prostředí se nemusejí trvat delší dobu.
 
-Místo stahování instalačních souborů do počítače s šablonou a instalace všech těchto součástí doporučujeme vytvořit PLTW image ve vašem fyzickém prostředí.  Pak můžete bitové kopie importovat do galerie sdílených imagí, abyste je mohli použít k vytvoření cvičení.  Podrobnosti najdete v následujícím článku: [Nahrajte si vlastní image do galerie sdílených imagí](https://docs.microsoft.com/azure/lab-services/upload-custom-image-shared-image-gallery).
+Místo stahování instalačních souborů do počítače s šablonou a instalace všech těchto součástí doporučujeme vytvořit PLTW image ve vašem fyzickém prostředí.  Pak můžete bitové kopie importovat do galerie sdílených imagí, abyste je mohli použít k vytvoření cvičení.  Podrobnosti najdete v následujícím článku: [Nahrajte si vlastní image do galerie sdílených imagí](./upload-custom-image-shared-image-gallery.md).
 
 V rámci tohoto doporučení jsou zde uvedené hlavní úlohy pro nastavení testovacího prostředí:
 
@@ -103,11 +103,11 @@ V rámci tohoto doporučení jsou zde uvedené hlavní úlohy pro nastavení tes
     > [!NOTE]    
     > Když nainstalujete aplikace Autodesk, počítač, na který instalujete Autodesk, musí být schopný komunikovat s vaším licenčním serverem (Průvodce instalací společnosti Autodesk vás vyzve k zadání názvu počítače, na kterém je licenční server hostovaný).  Pokud svůj licenční server Hostujte na VIRTUÁLNÍm počítači Azure, možná budete muset počkat na instalaci Autodesk na počítač šablony testovacího prostředí, aby mohl Průvodce instalací společnosti Autodesk získat přístup k licenčnímu serveru.
 
-    b.  [Nainstalujte a nakonfigurujte OneDrive](https://docs.microsoft.com/azure/lab-services/how-to-prepare-windows-template#install-and-configure-onedrive) (nebo jiné možnosti zálohování, které může vaše škola používat).
+    b.  [Nainstalujte a nakonfigurujte OneDrive](./how-to-prepare-windows-template.md#install-and-configure-onedrive) (nebo jiné možnosti zálohování, které může vaše škola používat).
     
-    c.  [Instalace a konfigurace aktualizací Windows](https://docs.microsoft.com/azure/lab-services/how-to-prepare-windows-template#install-and-configure-updates).
+    c.  [Instalace a konfigurace aktualizací Windows](./how-to-prepare-windows-template.md#install-and-configure-updates).
 
-1.  Nahrajte vlastní image do [Galerie sdílených imagí, která je připojená k vašemu účtu testovacího prostředí](https://docs.microsoft.com/azure/lab-services/how-to-attach-detach-shared-image-gallery).
+1.  Nahrajte vlastní image do [Galerie sdílených imagí, která je připojená k vašemu účtu testovacího prostředí](./how-to-attach-detach-shared-image-gallery.md).
 
 1.  Vytvořte testovací prostředí a vyberte vlastní image, kterou jste nahráli v předchozím kroku.
 
@@ -118,9 +118,9 @@ V rámci tohoto doporučení jsou zde uvedené hlavní úlohy pro nastavení tes
 ## <a name="student-devices"></a>Zařízení studenta
 Vaši studenti se můžou připojit ke svým testovacím virtuálním počítačům z počítačů s Windows\Mac a Chromebooks.  Tady jsou odkazy na pokyny pro každou z těchto možností:
 
-- [Připojení z Windows](https://docs.microsoft.com/azure/lab-services/how-to-use-classroom-lab#connect-to-the-vm)
-- [Připojení z Mac](https://docs.microsoft.com/azure/lab-services/connect-virtual-machine-mac-remote-desktop)
-- [Připojení z Chromebook](https://docs.microsoft.com/azure/lab-services/connect-virtual-machine-chromebook-remote-desktop)
+- [Připojení z Windows](./how-to-use-classroom-lab.md#connect-to-the-vm)
+- [Připojení z Mac](./connect-virtual-machine-mac-remote-desktop.md)
+- [Připojení z Chromebook](./connect-virtual-machine-chromebook-remote-desktop.md)
 
 ## <a name="cost"></a>Cost
 Pojďme pokrýt možné náklady na výše uvedené třídy PLTW.  Tento odhad nezahrnuje náklady na provozování licenčního serveru nebo použití Galerie sdílených imagí.  Použijeme třídu 25 studentů.  Naplánovaný čas třídy je 20 hodin.  Každý student také získá kvótu 10 hodin pro domácí nebo přiřazení mimo plánovaný čas třídy.  U **velkých** i **malých formátů GPU (vizualizace)** najdete níže odhadované náklady.
@@ -145,4 +145,4 @@ Další kroky jsou běžné pro nastavení testovacího prostředí:
 - [Přidávání uživatelů](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Nastavit kvótu](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Nastavit plán](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Odkazy na registraci e-mailu studentům](how-to-configure-student-usage.md#send-invitations-to-users). 
+- [Odkazy na registraci e-mailu studentům](how-to-configure-student-usage.md#send-invitations-to-users).

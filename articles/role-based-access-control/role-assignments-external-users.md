@@ -16,18 +16,18 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: a891830d876bfa99d29087278dd5b870ae7e2866
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 846e1a83f3cba5f87210ae4f825b5fac4f1569c6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368379"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648374"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí Azure pro externí uživatele typu Host pomocí Azure Portal
 
-[Řízení přístupu na základě role Azure (Azure RBAC)](overview.md) umožňuje lepší správu zabezpečení pro velké organizace a malé a středně velké firmy pracující s externími spolupracovníky, dodavateli nebo prodejci, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale ne nutně k celé infrastruktuře nebo k žádným oborům souvisejícím s fakturací. Funkce v [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) můžete využít ke spolupráci s externími uživateli typu Host a můžete použít Azure RBAC k udělení pouze oprávnění, která uživatelé v prostředí potřebují.
+[Řízení přístupu na základě role Azure (Azure RBAC)](overview.md) umožňuje lepší správu zabezpečení pro velké organizace a malé a středně velké firmy pracující s externími spolupracovníky, dodavateli nebo prodejci, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale ne nutně k celé infrastruktuře nebo k žádným oborům souvisejícím s fakturací. Funkce v [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) můžete využít ke spolupráci s externími uživateli typu Host a můžete použít Azure RBAC k udělení pouze oprávnění, která uživatelé v prostředí potřebují.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
@@ -49,13 +49,13 @@ Nativní členové adresáře (členové uživatelů) mají různá oprávnění
 
 Pomocí těchto kroků přidáte uživatele typu Host do adresáře pomocí stránky Azure Active Directory.
 
-1. Ujistěte se, že jsou nakonfigurovaná externí nastavení spolupráce vaší organizace, aby bylo možné pozvat hosty. Další informace najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../active-directory/b2b/delegate-invitations.md).
+1. Ujistěte se, že jsou nakonfigurovaná externí nastavení spolupráce vaší organizace, aby bylo možné pozvat hosty. Další informace najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../active-directory/external-identities/delegate-invitations.md).
 
 1. V Azure Portal klikněte na **Azure Active Directory**  >  **Uživatelé**  >  **Nový uživatel typu Host**.
 
     ![Nová funkce uživatele typu Host v Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
-1. Pokud chcete přidat nového uživatele typu Host, postupujte podle pokynů. Další informace najdete v tématu [přidání Azure Active Directory uživatelů spolupráce B2B v Azure Portal](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory).
+1. Pokud chcete přidat nového uživatele typu Host, postupujte podle pokynů. Další informace najdete v tématu [přidání Azure Active Directory uživatelů spolupráce B2B v Azure Portal](../active-directory/external-identities/add-users-administrator.md#add-guest-users-to-the-directory).
 
 Po přidání uživatele typu Host do adresáře můžete buď Odeslat uživateli typu Host přímý odkaz na sdílenou aplikaci, nebo uživatel typu Host může kliknout na adresu URL pro uplatnění v e-mailu s pozvánkou.
 
@@ -65,7 +65,7 @@ Aby mohl uživatel typu Host získat přístup k adresáři, musí dokončit pro
 
 ![Oprávnění pro kontrolu pozvání uživatele typu Host](./media/role-assignments-external-users/invite-review-permissions.png)
 
-Další informace o procesu pozvánky najdete v tématu [Azure Active Directory uplatnění pozvánky B2B pro spolupráci](../active-directory/b2b/redemption-experience.md).
+Další informace o procesu pozvánky najdete v tématu [Azure Active Directory uplatnění pozvánky B2B pro spolupráci](../active-directory/external-identities/redemption-experience.md).
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>Přidání přiřazení role pro uživatele typu Host
 
@@ -73,7 +73,7 @@ V Azure RBAC pro udělení přístupu přiřadíte roli. Chcete-li přidat při�
 
 1. Na webu Azure Portal klikněte na **Všechny služby**.
 
-1.  Vyberte sadu prostředků, na které se vztahuje přístup, označovaný také jako obor. Můžete například vybrat **skupiny pro správu**, **předplatná**, **skupiny prostředků**nebo prostředek.
+1.  Vyberte sadu prostředků, na které se vztahuje přístup, označovaný také jako obor. Můžete například vybrat **skupiny pro správu**, **předplatná**, **skupiny prostředků** nebo prostředek.
 
 1. Klikněte na konkrétní prostředek.
 
@@ -111,7 +111,7 @@ Pokud uživatel typu Host ještě není ve vašem adresáři, můžete uživatel
 
 1. Na webu Azure Portal klikněte na **Všechny služby**.
 
-1.  Vyberte sadu prostředků, na které se vztahuje přístup, označovaný také jako obor. Můžete například vybrat **skupiny pro správu**, **předplatná**, **skupiny prostředků**nebo prostředek.
+1.  Vyberte sadu prostředků, na které se vztahuje přístup, označovaný také jako obor. Můžete například vybrat **skupiny pro správu**, **předplatná**, **skupiny prostředků** nebo prostředek.
 
 1. Klikněte na konkrétní prostředek.
 
@@ -145,7 +145,7 @@ Pokud uživatel typu Host ještě není ve vašem adresáři, můžete uživatel
 
 1. Odešlete odkaz na pozvánku uživateli typu Host, aby bylo možné dokončit proces pozvánky.
 
-    Další informace o procesu pozvánky najdete v tématu [Azure Active Directory uplatnění pozvánky B2B pro spolupráci](../active-directory/b2b/redemption-experience.md).
+    Další informace o procesu pozvánky najdete v tématu [Azure Active Directory uplatnění pozvánky B2B pro spolupráci](../active-directory/external-identities/redemption-experience.md).
 
 ## <a name="remove-a-guest-user-from-your-directory"></a>Odebrání uživatele typu host z adresáře
 
@@ -183,7 +183,7 @@ Uživatelé typu Host mají omezená oprávnění k adresáři. Uživatel typu H
 
 ![Uživatel typu Host nemůže procházet uživatele v adresáři.](./media/role-assignments-external-users/directory-no-users.png)
 
-Pokud uživatel typu Host potřebuje v adresáři další oprávnění, můžete uživateli typu Host přiřadit roli adresáře. Pokud opravdu chcete, aby měl uživatel typu Host úplný přístup pro čtení do vašeho adresáře, můžete přidat uživatele typu Host do role [čtenáři adresáře](../active-directory/roles/permissions-reference.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
+Pokud uživatel typu Host potřebuje v adresáři další oprávnění, můžete uživateli typu Host přiřadit roli adresáře. Pokud opravdu chcete, aby měl uživatel typu Host úplný přístup pro čtení do vašeho adresáře, můžete přidat uživatele typu Host do role [čtenáři adresáře](../active-directory/roles/permissions-reference.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/external-identities/add-guest-to-role.md).
 
 ![Přiřadit roli čtenářů adresáře](./media/role-assignments-external-users/directory-roles.png)
 
@@ -193,27 +193,27 @@ Uživatelé typu Host mají omezená oprávnění k adresáři. I v případě, 
 
 ![Uživatel typu Host nemůže procházet objekty zabezpečení a přiřazovat role.](./media/role-assignments-external-users/directory-no-browse.png)
 
-Pokud uživatel typu Host ví v adresáři přesně přihlašovací jméno uživatele, může udělit přístup. Pokud opravdu chcete, aby měl uživatel typu Host úplný přístup pro čtení do vašeho adresáře, můžete přidat uživatele typu Host do role [čtenáři adresáře](../active-directory/roles/permissions-reference.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
+Pokud uživatel typu Host ví v adresáři přesně přihlašovací jméno uživatele, může udělit přístup. Pokud opravdu chcete, aby měl uživatel typu Host úplný přístup pro čtení do vašeho adresáře, můžete přidat uživatele typu Host do role [čtenáři adresáře](../active-directory/roles/permissions-reference.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/external-identities/add-guest-to-role.md).
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>Uživatel typu Host nemůže registrovat aplikace nebo vytvářet instanční objekty.
 
-Uživatelé typu Host mají omezená oprávnění k adresáři. Pokud uživatel typu Host potřebuje mít možnost Registrovat aplikace nebo vytvářet instanční objekty, můžete přidat uživatele typu Host do role [vývojář aplikace](../active-directory/roles/permissions-reference.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
+Uživatelé typu Host mají omezená oprávnění k adresáři. Pokud uživatel typu Host potřebuje mít možnost Registrovat aplikace nebo vytvářet instanční objekty, můžete přidat uživatele typu Host do role [vývojář aplikace](../active-directory/roles/permissions-reference.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/external-identities/add-guest-to-role.md).
 
 ![Uživatel typu Host nemůže registrovat aplikace.](./media/role-assignments-external-users/directory-access-denied.png)
 
 ### <a name="guest-user-does-not-see-the-new-directory"></a>Uživatel typu Host nevidí nový adresář
 
-Pokud má uživatel typu Host přístup k adresáři, ale nevidí nový adresář uvedený v Azure Portal, když se pokusí přepnout v podokně **adresáře a předplatného** , ujistěte se, že uživatel typu Host dokončil proces pozvánky. Další informace o procesu pozvánky najdete v tématu [Azure Active Directory uplatnění pozvánky B2B pro spolupráci](../active-directory/b2b/redemption-experience.md).
+Pokud má uživatel typu Host přístup k adresáři, ale nevidí nový adresář uvedený v Azure Portal, když se pokusí přepnout v podokně **adresáře a předplatného** , ujistěte se, že uživatel typu Host dokončil proces pozvánky. Další informace o procesu pozvánky najdete v tématu [Azure Active Directory uplatnění pozvánky B2B pro spolupráci](../active-directory/external-identities/redemption-experience.md).
 
 ### <a name="guest-user-does-not-see-resources"></a>Uživatel typu Host nevidí prostředky.
 
-Pokud uživateli typu Host byl udělen přístup k adresáři, ale nevidí jim prostředky, kterým byl udělen přístup v Azure Portal, ujistěte se, že uživatel typu host vybral správný adresář. Uživatel typu Host může mít přístup k několika adresářům. Chcete-li přepnout adresáře, klikněte v levém horním rohu na **adresář + předplatné**a pak klikněte na příslušný adresář.
+Pokud uživateli typu Host byl udělen přístup k adresáři, ale nevidí jim prostředky, kterým byl udělen přístup v Azure Portal, ujistěte se, že uživatel typu host vybral správný adresář. Uživatel typu Host může mít přístup k několika adresářům. Chcete-li přepnout adresáře, klikněte v levém horním rohu na **adresář + předplatné** a pak klikněte na příslušný adresář.
 
 ![Podokno adresáře a odběry v Azure Portal](./media/role-assignments-external-users/directory-subscription.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal](../active-directory/b2b/add-users-administrator.md)
-- [Vlastnosti Azure Active Directoryho uživatele spolupráce B2B](../active-directory/b2b/user-properties.md)
-- [Prvky e-mailu s pozvánkou pro spolupráci B2B Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
+- [Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal](../active-directory/external-identities/add-users-administrator.md)
+- [Vlastnosti Azure Active Directoryho uživatele spolupráce B2B](../active-directory/external-identities/user-properties.md)
+- [Prvky e-mailu s pozvánkou pro spolupráci B2B Azure Active Directory](../active-directory/external-identities/invitation-email-elements.md)
 - [Přidání uživatele typu Host jako spolupracujícího správce](classic-administrators.md#add-a-guest-user-as-a-co-administrator)

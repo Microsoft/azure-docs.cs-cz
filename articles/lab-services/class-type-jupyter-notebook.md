@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4034f889334bcf1e4eaa3710a32db60b6a9936b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533516"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648017"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Nastavení testovacího prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter
 Tento článek popisuje, jak nastavit virtuální počítač šablony (VM) v testovacích službách pomocí nástrojů, které jsou potřeba pro učení studentů, jak používat [notebooky Jupyter](http://jupyter-notebook.readthedocs.io/)a jak se můžou studenti připojit ke svým notebookům na svých virtuálních počítačích.
@@ -20,7 +20,7 @@ Jupyter Poznámkový blok je open source projekt, který umožňuje snadno kombi
 ## <a name="set-up-the-lab"></a>Nastavení testovacího prostředí
 
 ### <a name="lab-configuration"></a>Konfigurace testovacího prostředí
-K nastavení tohoto testovacího prostředí potřebujete přístup k předplatnému Azure a účtu testovacího prostředí. Prodiskutujte se správcem vaší organizace a zjistěte, jestli můžete získat přístup k existujícímu předplatnému Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+K nastavení tohoto testovacího prostředí potřebujete přístup k předplatnému Azure a účtu testovacího prostředí. Prodiskutujte se správcem vaší organizace a zjistěte, jestli můžete získat přístup k existujícímu předplatnému Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 
 Jakmile budete mít předplatné Azure, vytvořte nový účet testovacího prostředí v Azure Lab Services podle pokynů v tomto kurzu: [Nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md). Můžete použít i existující účet testovacího prostředí.
 
@@ -29,7 +29,7 @@ Povolte nastavení popsaná v následující tabulce pro účet testovacího pro
 
 | Nastavení účtu testovacího prostředí | Pokyny |
 | ------------------- | ------------ |
-| Obrázek Marketplace | V rámci účtu testovacího prostředí povolte jeden z Azure Marketplace imagí na základě potřeb vašeho operačního systému: <br/><ul><li>Data Science Virtual Machine – Windows Server 2019</li><li>Data Science Virtual Machine – Ubuntu 18,04</li></ul> |
+| Image z Marketplace | V rámci účtu testovacího prostředí povolte jeden z Azure Marketplace imagí na základě potřeb vašeho operačního systému: <br/><ul><li>Data Science Virtual Machine – Windows Server 2019</li><li>Data Science Virtual Machine – Ubuntu 18,04</li></ul> |
 
 > [!NOTE]
 > Tento článek používá image virtuálních počítačů pro datové vědy, které jsou dostupné na webu Azure Marketplace, protože jsou předem nakonfigurované s Jupyter Notebook. Tyto obrázky ale také obsahují mnoho dalších nástrojů pro vývoj a modelování pro datové vědy. Pokud nechcete, aby tyto další nástroje a nemusely mít zjednodušenou instalaci se pouze Jupyter poznámkami, vytvořte vlastní image virtuálního počítače. Příklad [instalace JupyperHub v Azure](http://tljh.jupyter.org/en/latest/install/azure.html). Jakmile je vlastní image vytvořená, můžete ji nahrát do galerie sdílených imagí a použít tak image v Azure Lab Services. Přečtěte si další informace o [použití Galerie sdílených imagí v Azure Lab Services](how-to-attach-detach-shared-image-gallery.md). 
@@ -86,7 +86,7 @@ Pokud jste poskytli studenty s virtuálními počítači se systémem Linux, mů
 Následující části obsahují podrobné informace o těchto způsobech, jak se připojit k poznámkovým blokům Jupyter. 
 
 #### <a name="ssh-to-virtual-machine"></a>SSH k virtuálnímu počítači
-Studenti se můžou přes relaci Terminálové služby připojit přes SSH k virtuálním počítačům Linux. Podrobný postup najdete v tématu [Jak získat přístup k prostředí učebny](how-to-use-classroom-lab.md). Pokud používají klientský počítač se systémem Windows, bude muset povolit klienta SSH stažením [výstupu](https://www.putty.org/) nebo povolením [OpenSSH ve Windows](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse) do SSH z příkazového řádku. 
+Studenti se můžou přes relaci Terminálové služby připojit přes SSH k virtuálním počítačům Linux. Podrobný postup najdete v tématu [Jak získat přístup k prostředí učebny](how-to-use-classroom-lab.md). Pokud používají klientský počítač se systémem Windows, bude muset povolit klienta SSH stažením [výstupu](https://www.putty.org/) nebo povolením [OpenSSH ve Windows](/windows-server/administration/openssh/openssh_install_firstuse) do SSH z příkazového řádku. 
 
 1.  Spusťte virtuální počítač.
 2.  Jakmile je virtuální počítač spuštěný, klikněte na **připojit**. tím se zobrazí dialogové okno s řetězcem příkazu SSH, který bude vypadat jako v následující ukázce:

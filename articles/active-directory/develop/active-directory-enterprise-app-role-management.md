@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 8ec87a8d78f73af48b662c5971dfe1803717f88a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 376086d0fc84e04645215b26ba896cf22f3f9c57
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704544"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647881"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace
 
@@ -62,16 +62,16 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
       ![Tlačítko změnit oprávnění](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
 
+    >[!NOTE]
+    >Role správce cloudové aplikace a Správce aplikací nebudou v tomto scénáři fungovat, protože pro čtení a zápis do adresáře vyžadujeme oprávnění globálního správce.
+
     c. Vyberte ze seznamu následující oprávnění (Pokud je ještě nemáte) a vyberte **změnit oprávnění**.
 
       ![Seznam oprávnění a tlačítko změnit oprávnění](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
 
-    > [!Note]
-    > Role správce cloudové aplikace a Správce aplikací nebudou v tomto scénáři fungovat, protože pro čtení a zápis do adresáře vyžadujeme oprávnění globálního správce.
-
     d. Přijměte souhlas. Přihlásili jste se k systému znovu.
 
-    e. Změňte verzi na **beta**a načtěte seznam instančních objektů z vašeho tenanta pomocí následujícího dotazu:
+    e. Změňte verzi na **beta** a načtěte seznam instančních objektů z vašeho tenanta pomocí následujícího dotazu:
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -79,9 +79,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
       ![Průzkumník grafů s dotazem na načtení instančních objektů](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
-      > [!Note]
-      > V tuto chvíli už probíhá upgrade rozhraní API, aby se zákazníci mohli ve službě setkat s přerušením.
-
+      
     f. V seznamu načtených instančních objektů získejte tu, kterou potřebujete upravit. Můžete také použít kombinaci kláves CTRL + F a vyhledat aplikaci ze všech uvedených objektů služby. Vyhledejte ID objektu, které jste zkopírovali ze stránky **vlastnosti** , a použijte následující dotaz k získání objektu služby:
 
       `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
@@ -92,8 +90,8 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
       ![Podrobnosti vlastnosti appRoles](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
-      > [!Note]
-      > Pokud používáte vlastní aplikaci (ne aplikaci Azure Marketplace), zobrazí se dvě výchozí role: uživatel a msiam_access. Pro aplikaci Marketplace je msiam_access jedinou výchozí rolí. Nemusíte dělat žádné změny ve výchozích rolích.
+      
+      Pokud používáte vlastní aplikaci (ne aplikaci Azure Marketplace), zobrazí se dvě výchozí role: uživatel a msiam_access. Pro aplikaci Marketplace je msiam_access jedinou výchozí rolí. Nemusíte dělat žádné změny ve výchozích rolích.
 
     h. Vygenerujte nové role pro vaši aplikaci.
 
@@ -128,8 +126,8 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
       }
       ```
 
-      > [!Note]
-      > Po msiam_access pro operaci patch můžete přidat pouze nové role. Také můžete přidat tolik rolí podle potřeb vaší organizace. Azure AD pošle hodnotu těchto rolí jako hodnotu deklarace v odpovědi SAML. Aby se vygenerovaly hodnoty GUID pro ID nových rolí, použijte webové nástroje jako [tyto](https://www.guidgenerator.com/) .
+      
+      Po msiam_access pro operaci patch můžete přidat pouze nové role. Také můžete přidat tolik rolí podle potřeb vaší organizace. Azure AD pošle hodnotu těchto rolí jako hodnotu deklarace v odpovědi SAML. Aby se vygenerovaly hodnoty GUID pro ID nových rolí, použijte webové nástroje jako [tyto](https://www.guidgenerator.com/) .
 
     i. Vraťte se do Průzkumníka graphu a změňte metodu z možnosti **získat** na **opravu**. Opravte objekt instančního objektu tak, aby měl požadované role, a to tak, že aktualizuje vlastnost **appRoles** , jako je ta uvedená v předchozím příkladu. Výběrem **Spustit dotaz** spusťte operaci patch. Zpráva o úspěchu potvrzuje vytvoření role.
 
@@ -143,8 +141,8 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
     ![Podokno upravit přiřazení a podokno vybrat roli](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
 
-    > [!Note]
-    > Pokud chcete zobrazit nové role, musíte aktualizovat svou relaci v Azure Portal.
+    
+    Pokud chcete zobrazit nové role, musíte aktualizovat svou relaci v Azure Portal.
 
 8. Aktualizujte tabulku **atributů** a definujte vlastní mapování deklarace identity role.
 
@@ -154,8 +152,8 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
     | -------------- | ----------------|
     | Název role  | User. assignedroles |
 
-    >[!NOTE]
-    >Pokud je hodnota deklarace identity role null, služba Azure AD tuto hodnotu v tokenu nepošle a je to výchozí nastavení pro jednotlivé návrhy.
+    
+    Pokud je hodnota deklarace identity role null, služba Azure AD tuto hodnotu v tokenu nepošle a je to výchozí nastavení pro jednotlivé návrhy.
 
     a. Kliknutím na ikonu **Upravit** otevřete **atributy uživatele &** dialogovém okně deklarace.
 
@@ -185,7 +183,7 @@ Chcete-li aktualizovat existující roli, proveďte následující kroky:
 
 2. Přihlaste se k webu Průzkumník grafů pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho tenanta.
 
-3. Změňte verzi na **beta**a načtěte seznam instančních objektů z vašeho tenanta pomocí následujícího dotazu:
+3. Změňte verzi na **beta** a načtěte seznam instančních objektů z vašeho tenanta pomocí následujícího dotazu:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -223,7 +221,7 @@ Chcete-li odstranit existující roli, proveďte následující kroky:
 
 2. Přihlaste se k webu Průzkumník grafů pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho tenanta.
 
-3. Změňte verzi na **beta**a načtěte seznam instančních objektů z vašeho tenanta pomocí následujícího dotazu:
+3. Změňte verzi na **beta** a načtěte seznam instančních objektů z vašeho tenanta pomocí následujícího dotazu:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -253,15 +251,15 @@ Chcete-li odstranit existující roli, proveďte následující kroky:
 
     d. Vyberte **Spustit dotaz**.
 
-    > [!NOTE]
-    > Ujistěte se, že máte roli msiam_access a ID odpovídá vygenerované roli.
+    
+    Ujistěte se, že máte roli msiam_access a ID odpovídá vygenerované roli.
 
-7. Po zakázání role odstraňte tento blok role z oddílu **appRoles** . Tuto metodu ponechte jako **opravu**a vyberte **Spustit dotaz**.
+7. Po zakázání role odstraňte tento blok role z oddílu **appRoles** . Tuto metodu ponechte jako **opravu** a vyberte **Spustit dotaz**.
 
 8. Po spuštění dotazu se role odstraní.
 
-    > [!NOTE]
-    > Aby bylo možné roli odebrat, je nutné ji zakázat.
+    
+    Aby bylo možné roli odebrat, je nutné ji zakázat.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,19 +3,19 @@ title: Příručka pro řízení chování při vypínání Windows v Azure Lab 
 description: Postup automatického vypnutí nečinného virtuálního počítače s Windows a odebrání příkazu pro vypnutí systému Windows.
 ms.topic: article
 ms.date: 09/29/2020
-ms.openlocfilehash: c6021131787dde4fe23ec4caad107bda2e20158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 248bbeabaf704ba636e2f82c7a93d0ee90a09f22
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541556"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647694"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Průvodce řízením chování při vypínání Windows
 
 Azure Lab Services poskytuje několik řízení nákladů, které zajistí, že virtuální počítače s Windows nejsou neočekávaně spuštěné:
- - [Nastavit plán](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
- - [Nastavit kvóty pro uživatele](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)
- - [Povolení automatického vypnutí při odpojení](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
+ - [Nastavit plán](./tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+ - [Nastavit kvóty pro uživatele](./how-to-configure-student-usage.md#set-quotas-for-users)
+ - [Povolení automatického vypnutí při odpojení](./how-to-enable-shutdown-disconnect.md)
 
 I s těmito ovládacími prvky nákladů existují situace, kdy se virtuální počítač s Windows může nečekaně spustit; a v důsledku toho odečte z kvóty studenta:
 
@@ -25,7 +25,7 @@ I s těmito ovládacími prvky nákladů existují situace, kdy se virtuální p
 
 - **Příkaz pro vypnutí systému Windows slouží k vypnutí virtuálního počítače.**
   
-    Student může použít příkaz pro vypnutí systému Windows nebo jiné mechanismy vypnutí poskytované v rámci systému Windows k vypnutí virtuálního počítače místo použití [tlačítka zastavit Azure Lab Services](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-classroom-lab#start-or-stop-the-vm).  V takovém případě se virtuální počítač stále používá v perspektivě Azure Lab Services.
+    Student může použít příkaz pro vypnutí systému Windows nebo jiné mechanismy vypnutí poskytované v rámci systému Windows k vypnutí virtuálního počítače místo použití [tlačítka zastavit Azure Lab Services](./how-to-use-classroom-lab.md#start-or-stop-the-vm).  V takovém případě se virtuální počítač stále používá v perspektivě Azure Lab Services.
     
 V této příručce najdete kroky pro automatické vypnutí nečinného virtuálního počítače s Windows a odebrání příkazu pro vypnutí Windows z nabídky **Start** .  
 
@@ -44,13 +44,13 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 Nebo se můžete rozhodnout, že budete postupovat podle těchto ručních kroků pomocí šablony VM:
 
-1. Stiskněte klávesu Windows, zadejte **gpedit**a pak vyberte **upravit zásady skupiny (ovládací panely)**.
+1. Stiskněte klávesu Windows, zadejte **gpedit** a pak vyberte **upravit zásady skupiny (ovládací panely)**.
 
 1. Přejděte na **Konfigurace počítače > Šablony pro správu > nabídce Start a na hlavním panelu**.  
 
     ![Editor místních zásad skupiny](./media/how-to-windows-shutdown/group-policy-shutdown.png)
 
-1. Klikněte pravým tlačítkem na **Odebrat a zabraňte přístup k příkazům pro vypnutí, restartování, spánku a hibernaci**a klikněte na **Upravit**.
+1. Klikněte pravým tlačítkem na **Odebrat a zabraňte přístup k příkazům pro vypnutí, restartování, spánku a hibernaci** a klikněte na **Upravit**.
 
 1. Vyberte nastavení **povoleno** a pak klikněte na **OK**:
  

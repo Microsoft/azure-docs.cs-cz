@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 3569ae130813eb0aaf14ec3d8d4e5cfac3e98c6f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 95ca4933b97199ba6d8ac1bed7587af5d3bd559f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095643"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648119"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Ukončení protokolu TLS s certifikáty Key Vault
 
@@ -71,7 +71,9 @@ Application Gateway integrace s Key Vault vyžaduje proces konfigurace se třemi
 
 1. **Nakonfigurujte aplikační bránu**
 
-   Po dokončení obou předchozích kroků můžete nastavit nebo upravit existující Aplikační bránu tak, aby používala uživatelsky přiřazenou spravovanou identitu. Certifikát TLS/SSL naslouchacího procesu HTTP můžete nakonfigurovat také tak, aby odkazoval na úplný identifikátor URI Key Vault certifikátu nebo tajného ID.
+   Po dokončení obou předchozích kroků můžete nastavit nebo upravit existující Aplikační bránu tak, aby používala uživatelsky přiřazenou spravovanou identitu. Další informace najdete v tématu [set-AzApplicationGatewayIdentity](/powershell/module/az.network/set-azapplicationgatewayidentity).
+
+   Certifikát TLS/SSL naslouchacího procesu HTTP můžete nakonfigurovat také tak, aby odkazoval na úplný identifikátor URI Key Vault certifikátu nebo tajného ID.
 
    ![Certifikáty trezoru klíčů](media/key-vault-certs/ag-kv.png)
 

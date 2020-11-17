@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
-ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75f2eb90e2418b57e5e0a358fbd6282b20ddc9e7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597660"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648357"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure CLI
 
@@ -26,7 +26,7 @@ ms.locfileid: "91597660"
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
 - `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
-- [Bash v Azure Cloud Shell](/azure/cloud-shell/overview) nebo [Azure CLI](/cli/azure)
+- [Bash v Azure Cloud Shell](../cloud-shell/overview.md) nebo [Azure CLI](/cli/azure)
 
 ## <a name="steps-to-add-a-role-assignment"></a>Kroky pro přidání přiřazení role
 
@@ -362,4 +362,4 @@ az role assignment delete --assignee "alain@example.com" \
 ## <a name="next-steps"></a>Další kroky
 
 - [Vypsání přiřazení rolí Azure pomocí Azure CLI](role-assignments-list-cli.md)
-- [Použití rozhraní příkazového řádku Azure ke správě prostředků a skupin prostředků Azure](../azure-resource-manager/cli-azure-resource-manager.md)
+- [Použití rozhraní příkazového řádku Azure ke správě prostředků a skupin prostředků Azure](../azure-resource-manager/management/manage-resources-cli.md)

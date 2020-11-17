@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: e337cef9121dc5992f87b9996cfd01d16d9cc188
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cf8c8e7d56f4eff351361edd148f91e81a07bfbb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309367"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649139"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -156,7 +156,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. Subscription](#microsoftsubscription) |
 | **Intune** |
 | [Microsoft.Intune](#microsoftintune) |
-| **Jiné** |
+| **Další** |
 | [Microsoft. BingMaps](#microsoftbingmaps) |
 | [Microsoft. DigitalTwins](#microsoftdigitaltwins) |
 
@@ -792,7 +792,7 @@ Služba Azure: virtuální síť modelu nasazení Classic
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure bastionu](../bastion/index.yml), [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md), [Azure DNS](../dns/index.yml), [Azure ExpressRoute](../expressroute/index.yml), [Azure Firewall](../firewall/index.yml), [azure front-dveří](../frontdoor/index.yml), [privátní propojení Azure](../private-link/index.yml), [Load Balancer](../load-balancer/index.yml), [Network Watcher](../network-watcher/index.yml), [Traffic Manager](../traffic-manager/index.yml), [Virtual Network](../virtual-network/index.yml), [Virtual WAN](../virtual-wan/index.yml), [VPN Gateway](../vpn-gateway/index.yml)
+Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure bastionu](../bastion/index.yml), [Azure DDoS Protection](../ddos-protection/ddos-protection-overview.md), [Azure DNS](../dns/index.yml), [Azure ExpressRoute](../expressroute/index.yml), [Azure Firewall](../firewall/index.yml), [azure front-dveří](../frontdoor/index.yml), [privátní propojení Azure](../private-link/index.yml), [Load Balancer](../load-balancer/index.yml), [Network Watcher](../network-watcher/index.yml), [Traffic Manager](../traffic-manager/index.yml), [Virtual Network](../virtual-network/index.yml), [Virtual WAN](../virtual-wan/index.yml), [VPN Gateway](../vpn-gateway/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -1343,7 +1343,7 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/vpnsites/DELETE | Odstraní prostředek sítě VPN. |
 > | Microsoft. Network/vpnSites/vpnSiteLinks/Read | Získá odkaz na síť VPN. |
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 ### <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
@@ -3850,7 +3850,7 @@ Služba Azure: [Azure Cosmos DB](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL Managed instance](../azure-sql/managed-instance/index.yml), [azure synapse Analytics (dřív SQL Data Warehouse)](../sql-data-warehouse/index.yml)
+Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL Managed instance](../azure-sql/managed-instance/index.yml), [azure synapse Analytics (dřív SQL Data Warehouse)](../synapse-analytics/sql-data-warehouse/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -4331,7 +4331,7 @@ Služba Azure: [Azure Analysis Services](../analysis-services/index.yml)
 
 ### <a name="microsoftdatabricks"></a>Cihly Microsoft.
 
-Služba Azure: [Azure Databricks](https://docs.microsoft.com/azure/databricks/)
+Služba Azure: [Azure Databricks](/azure/databricks/)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -4619,7 +4619,7 @@ Služba Azure: [azure Průzkumník dat](/azure/data-explorer/)
 
 ### <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
 
-Služba Azure: [Power BI Embedded](https://docs.microsoft.com/azure/power-bi-embedded/)
+Služba Azure: [Power BI Embedded](/azure/power-bi-embedded/)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -4712,7 +4712,7 @@ Služba Azure: [Služba Azure blockchain](../blockchain/workbench/index.yml)
 
 ### <a name="microsoftbotservice"></a>Microsoft. BotService
 
-Služba Azure: [Azure bot Service](https://docs.microsoft.com/azure/bot-service/)
+Služba Azure: [Azure bot Service](/azure/bot-service/)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -6187,7 +6187,7 @@ Služba Azure: [Logic Apps](../logic-apps/index.yml)
 
 ### <a name="microsoftrelay"></a>Microsoft. Relay
 
-Služba Azure: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
+Služba Azure: [Azure Relay](../azure-relay/relay-what-is-it.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -6257,7 +6257,7 @@ Služba Azure: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 
 ### <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-Služba Azure: [Service Bus](../service-bus/index.md)
+Služba Azure: [Service Bus](../service-bus-messaging/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -6957,7 +6957,7 @@ Služba Azure: [Azure Lab Services](../lab-services/index.yml)
 
 ### <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
 
-Služba Azure: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
+Služba Azure: [Azure DevOps](/azure/devops/)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -8924,7 +8924,7 @@ Služba Azure: [Azure ARC](../azure-arc/index.yml)
 
 ### <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
-Služba Azure: [Kubernetes s povoleným ARC Azure](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)
+Služba Azure: [Kubernetes s povoleným ARC Azure](../azure-arc/kubernetes/overview.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -9677,7 +9677,7 @@ Služba Azure: přehledy monitorování Microsoftu
 
 ### <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
-Služba Azure: [mapy Bing](https://docs.microsoft.com/BingMaps/)
+Služba Azure: [mapy Bing](/BingMaps/)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |

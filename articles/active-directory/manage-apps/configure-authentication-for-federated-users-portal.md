@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 873a87ed2c75d41e0a249bde4b6a29921b7e5ce5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763580"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648051"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurace chování přihlášení Azure Active Directory pro aplikace pomocí zásad zjišťování domovské sféry
 
@@ -207,7 +207,7 @@ Pokud chcete zásady HRD použít po jejím vytvoření, můžete ji přiřadit 
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Krok 2: Vyhledání instančního objektu, ke kterému se má zásada přiřadit  
 Potřebujete **ID** objektu služby, ke kterému chcete zásadu přiřadit. Existuje několik způsobů, jak najít **objectID** objektů služby.    
 
-Můžete použít portál nebo můžete zadat dotaz na [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta). Můžete také přejít na [Nástroj Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) a přihlásit se k účtu služby Azure AD, abyste viděli všechny instanční objekty vaší organizace. 
+Můžete použít portál nebo můžete zadat dotaz na [Microsoft Graph](/graph/api/resources/serviceprincipal?view=graph-rest-beta). Můžete také přejít na [Nástroj Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) a přihlásit se k účtu služby Azure AD, abyste viděli všechny instanční objekty vaší organizace. 
 
 Vzhledem k tomu, že používáte PowerShell, můžete použít následující rutinu pro výpis objektů služby a jejich ID.
 
@@ -267,6 +267,6 @@ Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -P
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>Další kroky
-- Další informace o tom, jak ověřování funguje v Azure AD, najdete v tématu [scénáře ověřování pro Azure AD](../develop/authentication-scenarios.md).
+- Další informace o tom, jak ověřování funguje v Azure AD, najdete v tématu [scénáře ověřování pro Azure AD](../develop/authentication-vs-authorization.md).
 - Další informace o jednotném přihlašování uživatelů najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](what-is-single-sign-on.md).
 - Přehled veškerého obsahu souvisejícího s vývojářem najdete na [platformě Microsoft Identity](../develop/v2-overview.md) .

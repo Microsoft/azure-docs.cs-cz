@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 0d72ea23b74137e7e57f892b831b0be1b4a89de5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b1a2f87498d7869b21e6a8ab44fc1f9660456ad
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735517"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648289"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>Kurz: udělení přístupu skupině k prostředkům Azure pomocí Azure PowerShell
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Výpis přístupu
 > * Odebrání přístupu
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 Pro absolvování tohoto kurzu potřebujete:
 
 - Oprávnění vytvářet skupiny v Azure Active Directory (nebo existující skupinu)
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)
+- [Azure Cloud Shell](../cloud-shell/quickstart-powershell.md)
 
 ## <a name="role-assignments"></a>Přiřazení rolí
 
@@ -48,8 +48,8 @@ Když ve službě Azure RBAC udělíte přístup, vytvoříte přiřazení role.
 
 | Objekt zabezpečení | Definice role | Rozsah |
 | --- | --- | --- |
-| Group (Skupina)<br>(RBAC Tutorial Group) | [Čtenář](built-in-roles.md#reader) | Předplatné |
-| Group (Skupina)<br>(RBAC Tutorial Group)| [Přispěvatel](built-in-roles.md#contributor) | Skupina prostředků<br>(rbac-tutorial-resource-group) |
+| Skupina<br>(RBAC Tutorial Group) | [Čtenář](built-in-roles.md#reader) | Předplatné |
+| Skupina<br>(RBAC Tutorial Group)| [Přispěvatel](built-in-roles.md#contributor) | Skupina prostředků<br>(rbac-tutorial-resource-group) |
 
    ![Přiřazení rolí pro skupinu](./media/tutorial-role-assignments-group-powershell/rbac-role-assignments.png)
 

@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 659d136695943d846fe57986d4b64a37f0d8f30e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 677c9c0123c174fdf2cf8e94f9c8110656d21306
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89300115"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649394"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: odstranění aplikace z klienta služby Azure Active Directory (Azure AD)
 
 V tomto rychlém startu se pomocí Azure Portal odstraní aplikace, která se přidala do tenanta Azure Active Directory (Azure AD).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete odstranit aplikaci z tenanta Azure AD, budete potřebovat:
 
@@ -42,10 +42,10 @@ Odstranění aplikace z tenanta Azure AD:
 
 1. Na portálu Azure AD vyberte **podnikové aplikace**. Pak vyhledejte a vyberte aplikaci, kterou chcete odstranit. V tomto případě jsme odstranili aplikaci **GitHub_test** , kterou jsme přidali v předchozím rychlém startu.
 1. V části **Spravovat** v levém podokně vyberte možnost **vlastnosti**.
-1. Vyberte **Odstranit**a potom kliknutím na **Ano** potvrďte, že chcete aplikaci odstranit z tenanta Azure AD.
+1. Vyberte **Odstranit** a potom kliknutím na **Ano** potvrďte, že chcete aplikaci odstranit z tenanta Azure AD.
 
 > [!TIP]
-> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](/graph/application-saml-sso-configure-api).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

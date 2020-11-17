@@ -15,16 +15,16 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bd6ddf58b3a6e8eb8c618ded335c699fc93328c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dfa7530617830de99d752edcf4545300525ddbe8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362361"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649207"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Postup konfigurace přiřazení samoobslužné aplikace
 
-Předtím, než budou moct vaši uživatelé sami vyhledávat aplikace ze svých aplikací, je nutné povolit **Samoobslužný přístup** k aplikacím, u kterých chcete uživatelům umožnit, aby si mohli sami vyhledat a vyžádat přístup k aplikaci. Tato funkce je k dispozici pro aplikace, které byly přidány z [Galerie Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app), [Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) nebo byly přidány prostřednictvím [souhlasu uživatele nebo správce](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience). 
+Předtím, než budou moct vaši uživatelé sami vyhledávat aplikace ze svých aplikací, je nutné povolit **Samoobslužný přístup** k aplikacím, u kterých chcete uživatelům umožnit, aby si mohli sami vyhledat a vyžádat přístup k aplikaci. Tato funkce je k dispozici pro aplikace, které byly přidány z [Galerie Azure AD](./add-application-portal.md), [Azure proxy aplikací služby AD](./application-proxy.md) nebo byly přidány prostřednictvím [souhlasu uživatele nebo správce](../develop/application-consent-experience.md). 
 
 Tato funkce je skvělým způsobem, jak ušetřit čas a peníze jako skupinu IT a důrazně se doporučuje jako součást nasazení moderních aplikací s Azure Active Directory.
 
@@ -70,12 +70,12 @@ Pokud chcete aplikaci povolit Samoobslužný přístup k aplikacím, postupujte 
 
 8. **Volitelné: u aplikací, které používají jenom jednotné přihlašování,** aby mohli obchodní schvalovatelé zadat hesla, která se do této aplikace odesílají pro schválené uživatele, nastavte možnost **udělit schvalovatelům, aby se pro tuto aplikaci nastavila hesla uživatele?** přepněte na **Ano**.
 
-9. **Volitelné:** Chcete-li určit obchodní schvalovatele, kteří mají oprávnění schvalovat přístup k **této aplikaci,** klikněte na **Vybrat schvalovatelé**a potom vyberte až 10 individuálních obchodních schvalovatelů. Pak klikněte na **Vybrat**.
+9. **Volitelné:** Chcete-li určit obchodní schvalovatele, kteří mají oprávnění schvalovat přístup k **této aplikaci,** klikněte na **Vybrat schvalovatelé** a potom vyberte až 10 individuálních obchodních schvalovatelů. Pak klikněte na **Vybrat**.
 
     >[!NOTE]
     >Skupiny se nepodporují. Můžete vybrat až 10 individuálních obchodních schvalovatelů. Pokud zadáte více schvalovatelů, může jeden schvalovatel žádost o přístup schválit.
 
-10. **Volitelné:** **u aplikací, které zveřejňují role**, aby bylo možné přiřadit uživatele samoobslužné služby k roli, vedle možnosti, **které by se měly přiřazovat uživatelům v této aplikaci?** klikněte na **Vybrat roli**a pak zvolte roli, ke které se tito uživatelé mají přiřadit. Pak klikněte na **Vybrat**.
+10. **Volitelné:** **u aplikací, které zveřejňují role**, aby bylo možné přiřadit uživatele samoobslužné služby k roli, vedle možnosti, **které by se měly přiřazovat uživatelům v této aplikaci?** klikněte na **Vybrat roli** a pak zvolte roli, ke které se tito uživatelé mají přiřadit. Pak klikněte na **Vybrat**.
 
 11. Kliknutím na tlačítko **Uložit** v horní části podokna dokončíte.
 

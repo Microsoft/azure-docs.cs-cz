@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.openlocfilehash: 3d95d2551f8e078f4252a19dc850345793c040d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4664bdd515c815dbd742c0d4e05f1e5c03978526
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420451"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649183"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Správa souhlasu s aplikacemi a vyhodnocení žádostí o souhlas
 
-Microsoft [doporučuje](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#restrict-user-consent-operations) zakázat pro aplikace souhlas s koncovým uživatelem. Tím se soustřeďuje rozhodovací proces na tým zabezpečení a správce identit ve vaší organizaci.
+Microsoft [doporučuje](../../security/fundamentals/steps-secure-identity.md#restrict-user-consent-operations) zakázat pro aplikace souhlas s koncovým uživatelem. Tím se soustřeďuje rozhodovací proces na tým zabezpečení a správce identit ve vaší organizaci.
 
 Po zákazu nebo omezení souhlasu koncového uživatele je k dispozici několik důležitých informací, které zajistí, že vaše organizace zůstane zabezpečená a zároveň umožňuje použití důležitých podnikových aplikací. Tyto kroky jsou zásadní pro minimalizaci dopadu na tým podpory vaší organizace a správce IT a zároveň zabraňují používání nespravovaných účtů v aplikacích třetích stran.
 
@@ -35,13 +35,13 @@ Po zákazu nebo omezení souhlasu koncového uživatele je k dispozici několik 
 
 ## <a name="auditing-and-monitoring"></a>Auditování a sledování
 
-1. [Auditujte aplikace a udělená oprávnění](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#audit-apps-and-consented-permissions) ve vaší organizaci, abyste zajistili, že přístup k datům předtím udělil žádné neoprávněné nebo podezřelé aplikace.
+1. [Auditujte aplikace a udělená oprávnění](../../security/fundamentals/steps-secure-identity.md#audit-apps-and-consented-permissions) ve vaší organizaci, abyste zajistili, že přístup k datům předtím udělil žádné neoprávněné nebo podezřelé aplikace.
 
-2. Projděte si téma [zjištění a náprava nezákonných grantů souhlasu v Office 365](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) , kde najdete další osvědčené postupy a bezpečnostní opatření proti podezřelým aplikacím, které požadují
+2. Projděte si téma [zjištění a náprava nezákonných grantů souhlasu v Office 365](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) , kde najdete další osvědčené postupy a bezpečnostní opatření proti podezřelým aplikacím, které požadují
 
 3. Pokud má vaše organizace odpovídající licenci:
 
-    * Použijte další [funkce auditování aplikace OAuth v Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth).
+    * Použijte další [funkce auditování aplikace OAuth v Microsoft Cloud App Security](/cloud-app-security/investigate-risky-oauth).
     * Pomocí [Azure monitor sešity můžete monitorovat oprávnění a související aktivity související se souhlasem](../reports-monitoring/howto-use-azure-monitor-workbooks.md) . Sešit s *informacemi o souhlasu* nabízí zobrazení aplikací podle počtu neúspěšných žádostí o souhlas. To může být užitečné k určení priorit aplikací pro správce, kteří si můžou prohlédnout a rozhodnout, jestli mají udělit souhlas správce.
 
 ### <a name="additional-considerations-for-reducing-friction"></a>Další požadavky pro snížení tření
@@ -75,7 +75,7 @@ Následující seznam uvádí doporučení, která je potřeba vzít v úvahu p�
 
 * **Pochopení požadovaných oprávnění**
 
-   Oprávnění požadovaná aplikací jsou uvedena na stránce s výzvou k [vyjádření souhlasu](../develop/application-consent-experience.md). Při rozbalení názvu oprávnění se zobrazí popis oprávnění. Popis oprávnění aplikace bude obecně končit "bez přihlášeného uživatele". Popis delegovaných oprávnění bude obecně končit "jménem přihlášeného uživatele". Oprávnění pro rozhraní Microsoft Graph API jsou popsána v [referenčních informacích k Microsoft Graph oprávnění](https://docs.microsoft.com/graph/permissions-reference) – informace o dalších rozhraních API najdete v dokumentaci pro pochopení oprávnění, která zveřejňuje.
+   Oprávnění požadovaná aplikací jsou uvedena na stránce s výzvou k [vyjádření souhlasu](../develop/application-consent-experience.md). Při rozbalení názvu oprávnění se zobrazí popis oprávnění. Popis oprávnění aplikace bude obecně končit "bez přihlášeného uživatele". Popis delegovaných oprávnění bude obecně končit "jménem přihlášeného uživatele". Oprávnění pro rozhraní Microsoft Graph API jsou popsána v [referenčních informacích k Microsoft Graph oprávnění](/graph/permissions-reference) – informace o dalších rozhraních API najdete v dokumentaci pro pochopení oprávnění, která zveřejňuje.
 
    Pokud nerozumíte požadovanému oprávnění, *neudělí souhlas*.
 
@@ -97,15 +97,15 @@ Následující seznam uvádí doporučení, která je potřeba vzít v úvahu p�
 Podrobné pokyny pro udělení souhlasu správce na úrovni tenanta od Azure Portal, pomocí Azure AD PowerShellu nebo ze samotného výzvy k vyjádření souhlasu najdete v tématu [udělení souhlasu správce pro celou aplikaci](grant-admin-consent.md) .
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Udělení souhlasu jménem konkrétního uživatele
-Místo udělení souhlasu celé organizaci může správce použít [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) k udělení souhlasu pro delegovaná oprávnění jménem jednoho uživatele. Další informace najdete v tématu [získání přístupu jménem uživatele](https://docs.microsoft.com/graph/auth-v2-user).
+Místo udělení souhlasu celé organizaci může správce použít [rozhraní Microsoft Graph API](/graph/use-the-api) k udělení souhlasu pro delegovaná oprávnění jménem jednoho uživatele. Další informace najdete v tématu [získání přístupu jménem uživatele](/graph/auth-v2-user).
 
 ## <a name="limiting-user-access-to-applications"></a>Omezení přístupu uživatelů k aplikacím
-Přístup uživatelů k aplikacím se pořád může omezit i v případě, že je udělený souhlas správce na úrovni tenanta. Další informace o tom, jak vyžadovat přiřazení uživatele k aplikaci, najdete v tématu [metody přiřazení uživatelů a skupin](methods-for-assigning-users-and-groups.md).
+Přístup uživatelů k aplikacím se pořád může omezit i v případě, že je udělený souhlas správce na úrovni tenanta. Další informace o tom, jak vyžadovat přiřazení uživatele k aplikaci, najdete v tématu [metody přiřazení uživatelů a skupin](./assign-user-or-group-access-portal.md).
 
 Další informace, včetně toho, jak zvládnout další složité scénáře, najdete v tématu [používání služby Azure AD pro správu přístupu k aplikacím](what-is-access-management.md).
 
 ## <a name="disable-all-future-user-consent-operations-to-any-application"></a>Zakažte všechny operace souhlasu uživatele s ostatními aplikacemi.
-Zákaz souhlasu uživatele pro celý adresář zabrání koncovým uživatelům v posílání do libovolné aplikace. Správci mohou i nadále souhlasit jménem uživatele. Chcete-li získat další informace o souhlasu aplikace a o tom, proč můžete nebo nebudete chtít souhlas, přečtěte si článek [porozumění souhlasu uživatele a správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
+Zákaz souhlasu uživatele pro celý adresář zabrání koncovým uživatelům v posílání do libovolné aplikace. Správci mohou i nadále souhlasit jménem uživatele. Chcete-li získat další informace o souhlasu aplikace a o tom, proč můžete nebo nebudete chtít souhlas, přečtěte si článek [porozumění souhlasu uživatele a správce](../develop/howto-convert-app-to-be-multi-tenant.md).
 
 Pokud chcete zakázat všechny operace souhlasu uživatele s ostatními uživateli v celém adresáři, postupujte podle následujících kroků:
 1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
@@ -116,7 +116,7 @@ Pokud chcete zakázat všechny operace souhlasu uživatele s ostatními uživate
 6.  Zakažte všechny operace souhlasu s ostatními uživateli tím, že nastavením **uživatelů umožníte aplikacím přístup k jejich** přepínači **ne** a klikněte na tlačítko **Uložit** .
 
 ## <a name="next-steps"></a>Další kroky
-* [Pět kroků pro zabezpečení infrastruktury identity](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+* [Pět kroků pro zabezpečení infrastruktury identity](../../security/fundamentals/steps-secure-identity.md#before-you-begin-protect-privileged-accounts-with-mfa)
 * [Konfigurace pracovního postupu pro vyjádření souhlasu správce](configure-admin-consent-workflow.md)
 * [Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi](configure-user-consent.md)
-* [Oprávnění a souhlas na platformě Microsoft identity](../develop/active-directory-v2-scopes.md)
+* [Oprávnění a souhlas na platformě Microsoft identity](../develop/v2-permissions-and-consent.md)

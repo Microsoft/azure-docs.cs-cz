@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8fc26b00214106aa08e0e6e4c41f9f05aca9344d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073967"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648034"
 ---
 # <a name="understand-linked-sign-on"></a>Principy propojených přihlášení
 
-V [řadě rychlých startů](view-applications-portal.md) při správě aplikací jste zjistili, jak používat Azure AD jako zprostředkovatele identity (IDP) pro aplikaci. V průvodci rychlým startem můžete nakonfigurovat jednotné přihlašování založené na SAML nebo OIDC. Je **propojena**jiná možnost. V tomto článku najdete další podrobnosti o možnosti propojeno.
+V [řadě rychlých startů](view-applications-portal.md) při správě aplikací jste zjistili, jak používat Azure AD jako zprostředkovatele identity (IDP) pro aplikaci. V průvodci rychlým startem můžete nakonfigurovat jednotné přihlašování založené na SAML nebo OIDC. Je **propojena** jiná možnost. V tomto článku najdete další podrobnosti o možnosti propojeno.
 
 Možnost **propojit** umožňuje nakonfigurovat cílové umístění, když uživatel vybere aplikaci v [mých aplikacích](https://myapps.microsoft.com/) nebo na portálu Office 365 vaší organizace.
 
@@ -40,7 +40,7 @@ Možnost **propojený** neposkytuje funkci přihlašování prostřednictvím sl
 > [!IMPORTANT] 
 > Existují některé scénáře, kdy možnost **jednotného přihlašování** nebude v navigaci pro aplikaci v **podnikových aplikacích**. 
 >
-> Pokud byla aplikace zaregistrovaná pomocí nástroje **Registrace aplikací** pak je funkce jednotného přihlašování nastavená tak, aby ve výchozím nastavení používala protokol OAuth OIDC. V takovém případě se možnost **jednotného přihlašování** nezobrazí v části **podnikové aplikace**v navigaci. Když použijete **Registrace aplikací** k přidání vlastní aplikace, nakonfigurujete možnosti v souboru manifestu. Další informace o souboru manifestu naleznete v tématu [Azure Active Directory manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). Další informace o standardech jednotného přihlašování najdete v tématu [ověřování a autorizace pomocí platformy Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform). 
+> Pokud byla aplikace zaregistrovaná pomocí nástroje **Registrace aplikací** pak je funkce jednotného přihlašování nastavená tak, aby ve výchozím nastavení používala protokol OAuth OIDC. V takovém případě se možnost **jednotného přihlašování** nezobrazí v části **podnikové aplikace** v navigaci. Když použijete **Registrace aplikací** k přidání vlastní aplikace, nakonfigurujete možnosti v souboru manifestu. Další informace o souboru manifestu naleznete v tématu [Azure Active Directory manifest aplikace](../develop/reference-app-manifest.md). Další informace o standardech jednotného přihlašování najdete v tématu [ověřování a autorizace pomocí platformy Microsoft Identity Platform](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform). 
 >
 > Další scénáře, kdy v navigaci chybí **jednotné přihlašování** , patří mezi ně, pokud je aplikace hostovaná v jiném tenantovi nebo pokud váš účet nemá požadovaná oprávnění (globální správce, správce cloudové aplikace, Správce aplikací nebo vlastník instančního objektu). Oprávnění mohou také způsobit situaci, kdy můžete otevřít **jednotné přihlašování** , ale nebudete je moci uložit. Další informace o rolích pro správu Azure AD najdete v tématu ( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 
@@ -52,5 +52,5 @@ Po nakonfigurování aplikace přiřaďte k ní uživatele a skupiny. Když při
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md)
+- [Přiřazení uživatelů nebo skupin k aplikaci](./assign-user-or-group-access-portal.md)
 - [Konfigurace automatického zřizování uživatelských účtů](../app-provisioning/configure-automatic-user-provisioning-portal.md)

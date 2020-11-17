@@ -3,12 +3,12 @@ title: Změnit nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků infrastruktury, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: fbd6c9503e409473a87c58202eb88d77716441f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a83d24b4badd78750756a3cb4564b1e53fd30593
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055116"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648221"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení nastavení clusteru Service Fabric
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery přizpůsobíte nastavení tím, že aktualizujete *ClusterConfig.jsna* soubor a provádíte upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -243,7 +243,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je MaxValue. |Static|Zadejte časový interval v sekundách. QuorumLossWaitDuration pro FaultAnalysisService. |
 |ReplicaDropWaitDurationInSeconds|int, výchozí hodnota je 600|Static|Tento parametr se používá v případě, že je voláno rozhraní API pro ztrátu dat. Určuje, jak dlouho bude systém čekat na vyřazení repliky po jejím interním vyvolání odebrání repliky. |
 |ReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je 60 minut.|Static|Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro FaultAnalysisService. |
-|StandByReplicaKeepDuration| Čas v sekundách, výchozí hodnota je (60*24*7) min. |Static|Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro FaultAnalysisService. |
+|StandByReplicaKeepDuration| Čas v sekundách, výchozí hodnota je (60 *24* 7) min. |Static|Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro FaultAnalysisService. |
 |StoredActionCleanupIntervalInSeconds | Int, výchozí hodnota je 3600 |Static|To je postup, jak často se bude obchod vyčistit. Pouze akce ve stavu terminálu; a které byly dokončeny alespoň před CompletedActionKeepDurationInSeconds, budou odebrány. |
 |StoredChaosEventCleanupIntervalInSeconds | Int, výchozí hodnota je 3600 |Static|To je postup, jak často bude úložiště auditováno pro vyčištění. Pokud je počet událostí vyšší než 30000; Vyčištění bude vykázat. |
 |TargetReplicaSetSize |Int, výchozí hodnota je 0 |Static|NOT_PLATFORM_UNIX_START TargetReplicaSetSize pro FaultAnalysisService. |
@@ -423,14 +423,14 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |AzureStorageMaxConnections | Int, výchozí hodnota je 5000 |Dynamická|Maximální počet souběžných připojení ke službě Azure Storage. |
 |AzureStorageMaxWorkerThreads | Int, výchozí hodnota je 25. |Dynamická|Maximální počet paralelně spuštěných pracovních vláken. |
 |AzureStorageOperationTimeout | Čas v sekundách, výchozí hodnota je 6000. |Dynamická|Zadejte časový interval v sekundách. Vypršel časový limit pro dokončení operace xstore. |
-|CleanupApplicationPackageOnProvisionSuccess|logická hodnota, výchozí hodnota je FALSE. |Dynamická|Povolí nebo zakáže automatické čištění balíčku aplikace při úspěšném zřízení.
-
-*Osvědčeným postupem je použití `true` .* | | CleanupUnusedApplicationTypes | Bool, výchozí hodnota je FALSE | Dynamický | Tato konfigurace, pokud je povolená, umožňuje automaticky odregistrovat nepoužívané verze typu aplikace, které přeskočí nejnovější tři nepoužívané verze, a tím vystřihuje místo na disku obsazené úložištěm imagí. Automatické čištění se spustí na konci úspěšného zřízení pro daný typ aplikace a také bude pravidelně spouštět jednou denně pro všechny typy aplikací. Počet nepoužívaných verzí, které se mají přeskočit, se dá konfigurovat pomocí parametru "MaxUnusedAppTypeVersionsToKeep". 
-
-*Osvědčeným postupem je použití `true` .*
-| | DisableChecksumValidation | Bool, výchozí hodnota je false | Static | Tato konfigurace umožňuje povolit nebo zakázat ověření kontrolního součtu během zřizování aplikace. | | DisableServerSideCopy | Bool, výchozí hodnota je false | Static | Tato konfigurace povolí nebo zakáže kopii balíčku aplikace na straně serveru na úložiště bitových kopií během zřizování aplikace. | | ImageCachingEnabled | Bool, výchozí hodnota je true | Static | Tato konfigurace nám umožňuje povolit nebo zakázat ukládání do mezipaměti. | | ImageStoreConnectionString | SecureString | Static | Připojovací řetězec do kořenového adresáře pro úložiště bitových kopií. | | ImageStoreMinimumTransferBPS | Int, výchozí hodnota je 1024 | Dynamický | Minimální přenosová rychlost mezi clusterem a úložiště bitových kopií. Tato hodnota se používá k určení časového limitu při přístupu k externímu úložiště bitových kopií. Tuto hodnotu změňte jenom v případě, že latence mezi clusterem a úložiště bitových kopií je vysoká, aby se cluster mohl stáhnout z externího úložiště bitových kopií. | | MaxUnusedAppTypeVersionsToKeep | Int, výchozí hodnota je 3 | Dynamický | Tato konfigurace definuje počet nepoužitých verzí typu aplikace, které mají být vynechány pro vyčištění. Tento parametr je použitelný pouze v případě, že je povolen parametr CleanupUnusedApplicationTypes.
-
-*Obecný osvědčený postup je použít výchozí ( `3` ).*|
+|CleanupApplicationPackageOnProvisionSuccess|logická hodnota, výchozí hodnota je FALSE. |Dynamická|Povolí nebo zakáže automatické čištění balíčku aplikace při úspěšném zřízení.<br/> *Osvědčeným postupem je použití `true` .*
+|CleanupUnusedApplicationTypes|Logická hodnota, výchozí hodnota je FALSE. |Dynamická|Tato konfigurace, pokud je povolená, umožňuje automaticky odregistrovat nepoužívané verze typu aplikace, které přeskočí nejnovější tři nepoužívané verze, a tím vystřihuje místo na disku obsazené úložištěm imagí. Automatické čištění se spustí na konci úspěšného zřízení pro daný typ aplikace a také bude pravidelně spouštět jednou denně pro všechny typy aplikací. Počet nepoužívaných verzí, které se mají přeskočit, se dá konfigurovat pomocí parametru "MaxUnusedAppTypeVersionsToKeep". <br/> *Osvědčeným postupem je použití `true` .*
+|DisableChecksumValidation | Logická hodnota, výchozí hodnota je false. |Static| Tato konfigurace umožňuje povolit nebo zakázat ověření kontrolního součtu během zřizování aplikace. |
+|DisableServerSideCopy | Logická hodnota, výchozí hodnota je false. |Static|Tato konfigurace povolí nebo zakáže kopii balíčku aplikace na straně serveru na úložiště bitových kopií během zřizování aplikace. |
+|ImageCachingEnabled | Logická hodnota, výchozí hodnota je true. |Static|Tato konfigurace nám umožňuje povolit nebo zakázat ukládání do mezipaměti. |
+|ImageStoreConnectionString |SecureString |Static|Připojovací řetězec do kořenového adresáře pro úložiště bitových kopií. |
+|ImageStoreMinimumTransferBPS | Int, výchozí hodnota je 1024 |Dynamická|Minimální přenosová rychlost mezi clusterem a úložiště bitových kopií. Tato hodnota se používá k určení časového limitu při přístupu k externímu úložiště bitových kopií. Tuto hodnotu změňte jenom v případě, že latence mezi clusterem a úložiště bitových kopií je vysoká, aby se cluster mohl stáhnout z externího úložiště bitových kopií. |
+|MaxUnusedAppTypeVersionsToKeep | Int, výchozí hodnota je 3 |Dynamická|Tato konfigurace definuje počet nepoužitých verzí typu aplikace, které mají být vynechány pro vyčištění. Tento parametr je použitelný pouze v případě, že je povolen parametr CleanupUnusedApplicationTypes. <br/>*Obecný osvědčený postup je použít výchozí ( `3` ). Hodnoty menší než 1 jsou neplatné.*|
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
@@ -585,8 +585,8 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |GracefulReplicaShutdownMaxDuration|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (120)|Dynamická|Zadejte časový interval v sekundách. Doba, po kterou systém počká, než se ukončí hostitelé služby s replikami, které jsou zablokované v Zavřít. Pokud je tato hodnota nastavená na 0, repliky se nedají pokyn zavřít.|
 |NodeDeactivationMaxReplicaCloseDuration | Čas v sekundách, výchozí hodnota je 900. |Dynamická|Zadejte časový interval v sekundách. Doba, po kterou systém počká, než se ukončí hostitelé služby s replikami, které jsou zablokované v zavření během deaktivace uzlu. |
 |PeriodicApiSlowTraceInterval | Čas v sekundách, výchozí hodnota je 5 minut. |Dynamická| Zadejte časový interval v sekundách. PeriodicApiSlowTraceInterval definuje interval, za který se budou přesledovat pomalá volání rozhraní API monitorováním rozhraní API. |
-|ReplicaChangeRoleFailureRestartThreshold|int, výchozí hodnota je 10.|Dynamická| Čísla. Zadejte počet selhání rozhraní API při primární promoakci, po kterém se použije akce automatického zmírnění (restart repliky). |
-|ReplicaChangeRoleFailureWarningReportThreshold|int, výchozí hodnota je 2147483647|Dynamická| Čísla. Zadejte počet selhání rozhraní API při primární promoakci, po kterém bude vyvolána zpráva o stavu upozornění.|
+|ReplicaChangeRoleFailureRestartThreshold|int, výchozí hodnota je 10.|Dynamická| Integer: Zadejte počet selhání rozhraní API při primární promoakci, po kterém se použije akce automatického zmírnění (restart repliky). |
+|ReplicaChangeRoleFailureWarningReportThreshold|int, výchozí hodnota je 2147483647|Dynamická| Integer: Zadejte počet selhání rozhraní API při primární promoakci, po kterém bude vyvolána zpráva o stavu upozornění.|
 |ServiceApiHealthDuration | Čas v sekundách, výchozí hodnota je 30 minut. |Dynamická| Zadejte časový interval v sekundách. ServiceApiHealthDuration definuje, jak dlouho čekáme na spuštění rozhraní API služby předtím, než pošleme zprávu, že není v pořádku. |
 |ServiceReconfigurationApiHealthDuration | Čas v sekundách, výchozí hodnota je 30. |Dynamická| Zadejte časový interval v sekundách. ServiceReconfigurationApiHealthDuration definuje, jak dlouho čekáme na spuštění rozhraní API služby předtím, než nahlásíme, že není v pořádku. To platí pro volání rozhraní API, která mají vliv na dostupnost.|
 
@@ -758,7 +758,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |PropertyWriteBatch |řetězec, výchozí hodnota je admin. |Dynamická|Konfigurace zabezpečení pro operace zápisu vlastností pojmenování. |
 |ProvisionApplicationType |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro zřizování typu aplikace. |
 |ProvisionFabric |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro clustery MSI a/nebo zřizování manifestu clusteru. |
-|Dotaz |řetězec, výchozí hodnota je "admin \| \| User" |Dynamická| Konfigurace zabezpečení pro dotazy. |
+|Dotazy |řetězec, výchozí hodnota je "admin \| \| User" |Dynamická| Konfigurace zabezpečení pro dotazy. |
 |RecoverPartition |řetězec, výchozí hodnota je admin. | Dynamická|Konfigurace zabezpečení pro obnovování oddílu. |
 |Operace recoverpartitions |řetězec, výchozí hodnota je admin. | Dynamická|Konfigurace zabezpečení pro obnovování oddílů. |
 |RecoverServicePartitions |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro obnovování oddílů služby. |
@@ -890,7 +890,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |PlacementConstraints | řetězec, výchozí hodnota je "" |Static| PlacementConstraints pro UpgradeOrchestrationService. |
 |QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je MaxValue. |Static| Zadejte časový interval v sekundách. QuorumLossWaitDuration pro UpgradeOrchestrationService. |
 |ReplicaRestartWaitDuration | Čas v sekundách, výchozí hodnota je 60 minut.|Static| Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro UpgradeOrchestrationService. |
-|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 60*24*7 minut. |Static| Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro UpgradeOrchestrationService. |
+|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 60 *24* 7 minut. |Static| Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro UpgradeOrchestrationService. |
 |TargetReplicaSetSize |Int, výchozí hodnota je 0 |Static |TargetReplicaSetSize pro UpgradeOrchestrationService. |
 |UpgradeApprovalRequired | Logická hodnota, výchozí hodnota je false. | Static|Nastavení pro provedení upgradu kódu vyžaduje schválení správcem, než budete pokračovat. |
 

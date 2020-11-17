@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 9c35c08889892e877ecfac20910607ddf85b2282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9b66d7b37397fe509cce5c66d30da0a3ae63465
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735483"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648255"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-azure-powershell"></a>Kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure PowerShell
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Výpis přístupu
 > * Odebrání přístupu
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 Pro absolvování tohoto kurzu potřebujete:
 
 - Oprávnění vytvářet uživatele v Azure Active Directory (nebo existujícího uživatele)
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)
+- [Azure Cloud Shell](../cloud-shell/quickstart-powershell.md)
 
 ## <a name="role-assignments"></a>Přiřazení rolí
 

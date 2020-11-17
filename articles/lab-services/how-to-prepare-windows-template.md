@@ -5,12 +5,12 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 216dc843b31eac355e1d818014f3d70b2ef83132
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396684"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647898"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Průvodce nastavením počítače se šablonou Windows v Azure Lab Services
 
@@ -47,7 +47,7 @@ Write-Host "Installing OneDrive..."
 
 ### <a name="onedrive-customizations"></a>Přizpůsobení OneDrivu
 
-[Na OneDrivu se dá udělat](https://docs.microsoft.com/onedrive/use-group-policy)spousta úprav. Pojďme se pokrývat s některými častými vlastními úpravami.
+[Na OneDrivu se dá udělat](/onedrive/use-group-policy)spousta úprav. Pojďme se pokrývat s některými častými vlastními úpravami.
 
 #### <a name="silently-move-windows-known-folders-to-onedrive"></a>Bezobslužné přesunutí známých složek Windows na OneDrive
 
@@ -61,7 +61,7 @@ Pokud jste na počítači, který nepoužívá službu Active Directory, mohou u
 
 Pokud je váš virtuální počítač připojený ke službě Active Directory, můžete nastavit, aby počítač s šablonou automaticky vyzval své studenty a přesunuli známé složky na OneDrive.  
 
-Nejdřív budete muset načíst ID vaší organizace.  Další pokyny najdete v tématu [Vyhledání ID vaší Microsoft 365 organizace](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).  ID organizace můžete také získat pomocí následujícího prostředí PowerShell.
+Nejdřív budete muset načíst ID vaší organizace.  Další pokyny najdete v tématu [Vyhledání ID vaší Microsoft 365 organizace](/onedrive/find-your-office-365-tenant-id).  ID organizace můžete také získat pomocí následujícího prostředí PowerShell.
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -137,7 +137,7 @@ Pokud Váš počítač šablony potřebuje sadu Office, doporučujeme nainstalov
 
 ### <a name="change-the-microsoft-365-update-channel"></a>Změna kanálu aktualizace Microsoft 365
 
-Pomocí nástroje Konfigurace Office můžete nastavit, jak často Office dostávají aktualizace. Pokud ale potřebujete změnit, jak často Office obdrží aktualizace po instalaci, můžete změnit adresu URL kanálu aktualizace. Adresy URL kanálu aktualizace se dají najít při [změně kanálu aktualizace Microsoft 365 Apps pro zařízení ve vaší organizaci](https://docs.microsoft.com/deployoffice/change-update-channels). Následující příklad ukazuje, jak nastavit Microsoft 365 pro použití měsíčního aktualizačního kanálu.
+Pomocí nástroje Konfigurace Office můžete nastavit, jak často Office dostávají aktualizace. Pokud ale potřebujete změnit, jak často Office obdrží aktualizace po instalaci, můžete změnit adresu URL kanálu aktualizace. Adresy URL kanálu aktualizace se dají najít při [změně kanálu aktualizace Microsoft 365 Apps pro zařízení ve vaší organizaci](/deployoffice/change-update-channels). Následující příklad ukazuje, jak nastavit Microsoft 365 pro použití měsíčního aktualizačního kanálu.
 
 ```powershell
 # Update to the Microsoft 365 Monthly Channel
@@ -188,7 +188,7 @@ Pomocí prostředí PowerShell můžete také aktualizovat Microsoft Store aplik
 
 ### <a name="stop-automatic-windows-updates"></a>Zastavit automatické aktualizace Windows
 
-Po aktualizaci Windows na nejnovější verzi můžete zvážit zastavení aktualizací Windows.  Automatické aktualizace můžou narušit naplánovaný čas třídy.  Pokud je váš kurz delší než jeden, zvažte, jestli studenti budou ručně vyhledávat aktualizace nebo nastavovat automatické aktualizace po dobu mimo plánované hodiny třídy.  Další informace o možnostech přizpůsobení pro web Windows Update najdete v tématu [Správa dalších nastavení web Windows Update](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings).
+Po aktualizaci Windows na nejnovější verzi můžete zvážit zastavení aktualizací Windows.  Automatické aktualizace můžou narušit naplánovaný čas třídy.  Pokud je váš kurz delší než jeden, zvažte, jestli studenti budou ručně vyhledávat aktualizace nebo nastavovat automatické aktualizace po dobu mimo plánované hodiny třídy.  Další informace o možnostech přizpůsobení pro web Windows Update najdete v tématu [Správa dalších nastavení web Windows Update](/windows/deployment/update/waas-wu-settings).
 
 Automatické aktualizace Windows se můžou zastavit pomocí následujícího skriptu PowerShellu.
 

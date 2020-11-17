@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 189eaf3a08ce0e8411ce67170fdf1a895cbc56d2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375847"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647711"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Odstranění tenanta v Azure Active Directory
 
@@ -73,7 +73,7 @@ Předplatné můžete vložit do stavu **zrušeno zřízení** , který bude ods
 
    ![Náhled nového prostředí centra pro správu M365](./media/directory-delete-howto/preview-toggle.png)
 
-3. Po povolení nového centra pro správu je potřeba předplatné zrušit, aby ho bylo možné odstranit. Vyberte **fakturace** a vyberte **produkty & Services**a pak vyberte **zrušit předplatné** u předplatného, které chcete zrušit. Zobrazí se stránka s názory.
+3. Po povolení nového centra pro správu je potřeba předplatné zrušit, aby ho bylo možné odstranit. Vyberte **fakturace** a vyberte **produkty & Services** a pak vyberte **zrušit předplatné** u předplatného, které chcete zrušit. Zobrazí se stránka s názory.
 
    ![Vyberte předplatné, které chcete zrušit.](./media/directory-delete-howto/cancel-choose-subscription.png)
 
@@ -121,7 +121,7 @@ Můžete vložit samoobslužný produkt pro registraci, jako je Microsoft Power 
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který je globálním správcem v organizaci. Pokud se pokoušíte odstranit organizaci "contoso", která má počáteční výchozí doménu contoso.onmicrosoft.com, přihlaste se pomocí hlavního názvu uživatele (UPN), jako je například admin@contoso.onmicrosoft.com .
 
-2. Vyberte **licence**a pak vyberte **samoobslužné registrace produktů**. Všechny samoobslužné produkty pro registraci se zobrazí odděleně od předplatných založených na pracovních stanicích. Vyberte produkt, který chcete trvale odstranit. Tady je příklad v Microsoft Power BI:
+2. Vyberte **licence** a pak vyberte **samoobslužné registrace produktů**. Všechny samoobslužné produkty pro registraci se zobrazí odděleně od předplatných založených na pracovních stanicích. Vyberte produkt, který chcete trvale odstranit. Tady je příklad v Microsoft Power BI:
 
     ![Snímek obrazovky zobrazující stránku licence – samoobslužné registrace produktů.](./media/directory-delete-howto/licenses-page.png)
 

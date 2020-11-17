@@ -3,12 +3,12 @@ title: Povolit grafický vzdálenou plochu pro Linux v Azure Lab Services | Micr
 description: Přečtěte si, jak povolit vzdálenou plochu pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34c940fec388bb0e79ab5e1db9be6d52fb223873
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251605"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647949"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Povolení grafické vzdálené plochy pro virtuální počítače se systémem Linux v Azure Lab Services
 V tomto článku se dozvíte, jak provádět následující úlohy:
@@ -38,7 +38,7 @@ X2Go používá stejný port, který je už povolený pro SSH.  V důsledku toho
 > V některých případech, například s Ubuntu LTS 18,04, poskytuje X2Go lepší výkon.  Pokud při interakci s grafickým prostředím plochy používáte latenci protokolu RDP a upozornění, zvažte možnost vyzkoušet si X2Go, protože může zvýšit výkon.
 
 > [!IMPORTANT]
->  Na některých imagích Marketplace už máte nainstalované grafické prostředí plochy a server pro vzdálenou plochu.  Například [Data Science Virtual Machine pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) už má [nainstalovaný desktop Xfce a server X2Go a je nakonfigurovaný tak, aby přijímal připojení klienta](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro#x2go).
+>  Na některých imagích Marketplace už máte nainstalované grafické prostředí plochy a server pro vzdálenou plochu.  Například [Data Science Virtual Machine pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) už má [nainstalovaný desktop Xfce a server X2Go a je nakonfigurovaný tak, aby přijímal připojení klienta](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#x2go).
 
 ## <a name="enable-remote-desktop-connection-for-rdp"></a>Povolit připojení ke vzdálené ploše pro RDP
 
@@ -73,7 +73,7 @@ Pomocí následujících kroků nastavte virtuální počítač šablony:
     ![Připojovací řetězec SSH](./media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
 
 4. Nainstalujte buď RDP, nebo X2Go spolu s grafickým prostředím, které jste si vybrali.  Přečtěte si následující pokyny:
-    - [Instalace a konfigurace protokolu RDP](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)
+    - [Instalace a konfigurace protokolu RDP](../virtual-machines/linux/use-remote-desktop.md)
     - [Instalace a konfigurace X2Go](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/X2GoRemoteDesktop)
 
 ## <a name="connect-to-the-template-vm-via-the-gui"></a>Připojení k virtuálnímu počítači šablony prostřednictvím grafického uživatelského rozhraní
@@ -82,7 +82,7 @@ Po nastavení virtuálního počítače šablony se může instruktor připojit 
 
 ### <a name="microsoft-remote-desktop-rdp-client"></a>Klient Vzdálená plocha Microsoft (RDP)
 
-Klient Vzdálená plocha Microsoft (RDP) se používá pro připojení k virtuálnímu počítači šablony s nakonfigurovaným protokolem RDP.  Klient vzdálené plochy se dá použít na Windows, Chromebooks, Mac a dalších.  Další podrobnosti najdete v článku o [klientech vzdálené plochy](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) .
+Klient Vzdálená plocha Microsoft (RDP) se používá pro připojení k virtuálnímu počítači šablony s nakonfigurovaným protokolem RDP.  Klient vzdálené plochy se dá použít na Windows, Chromebooks, Mac a dalších.  Další podrobnosti najdete v článku o [klientech vzdálené plochy](/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) .
 
 Postupujte podle následujících kroků v závislosti na typu počítače použitého pro připojení k VIRTUÁLNÍmu počítači šablony:
 
@@ -106,5 +106,5 @@ Klient X2Go se používá pro připojení k virtuálnímu počítači šablony s
 ## <a name="next-steps"></a>Další kroky
 Jakmile instruktor nastaví RDP nebo X2Go na svém virtuálním počítači šablony a publikuje, studenti se můžou připojit ke svým virtuálním počítačům přes vzdálenou plochu GUI nebo SSH.
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
  - [Připojení k virtuálnímu počítači s Linuxem](how-to-use-remote-desktop-linux-student.md)

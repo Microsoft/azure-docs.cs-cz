@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bcf45cdfbadbf16f48f8f2ac3bd0c6320a2803f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605120"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649224"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Prostředí koncových uživatelů pro aplikace v Azure Active Directory
 
@@ -37,13 +37,13 @@ Ve výchozím nastavení jsou všechny aplikace uvedeny společně na jedné str
 
 Moje aplikace jsou oddělené od Azure Portal a nevyžadují, aby uživatelé měli předplatné Azure nebo Microsoft 365 předplatné.
 
-Další informace o službě Azure AD moje aplikace najdete v tématu [Úvod do mých aplikací](../user-help/active-directory-saas-access-panel-introduction.md).
+Další informace o službě Azure AD moje aplikace najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="microsoft-365-application-launcher"></a>Microsoft 365 spouštěč aplikace
 
 Pro organizace, které nasadily Microsoft 365, se aplikace přiřazené uživatelům prostřednictvím služby Azure AD zobrazí také na portálu Office 365 na adrese [https://portal.office.com/myapps](https://portal.office.com/myapps) . To usnadňuje uživatelům v organizaci, aby mohli spouštět své aplikace, aniž by museli používat druhý portál a je doporučené řešení pro spouštění aplikací pro organizace, které používají Microsoft 365.
 
-Další informace o spouštěčech aplikací Office 365 najdete v tématu o tom, že [se vaše aplikace zobrazuje ve Spouštěči aplikací office 365](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher).
+Další informace o spouštěčech aplikací Office 365 najdete v tématu o tom, že [se vaše aplikace zobrazuje ve Spouštěči aplikací office 365](/previous-versions/office/office-365-api/).
 
 ## <a name="direct-sign-on-to-federated-apps"></a>Přímé přihlášení k federovaným aplikacím
 

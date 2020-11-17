@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 873bebc462ce4756d38f966a87edda167bd49501
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 23a620f8031335e5a950df96427b11251f0ec042
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506375"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649309"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -114,7 +114,7 @@ Spravovaná instance SQL nemůže přistupovat ke sdíleným složkám souborů 
 
 Viz [Vytvoření certifikátu](/sql/t-sql/statements/create-certificate-transact-sql) a [záložního certifikátu](/sql/t-sql/statements/backup-certificate-transact-sql). 
  
-**Alternativní řešení** : místo vytváření zálohy certifikátu a obnovení zálohy [Získejte binární obsah certifikátu a privátní klíč, uložte ho jako soubor. SQL a vytvořte ho z binárního souboru](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
+**Alternativní řešení**: místo vytváření zálohy certifikátu a obnovení zálohy [Získejte binární obsah certifikátu a privátní klíč, uložte ho jako soubor. SQL a vytvořte ho z binárního souboru](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  
@@ -517,12 +517,11 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 ### <a name="failover-groups"></a>Skupiny převzetí služeb při selhání
 Systémové databáze nejsou replikovány do sekundární instance ve skupině převzetí služeb při selhání. Proto by scénáře závislé na objektech ze systémových databází nemohly být na sekundární instanci možné, pokud nejsou objekty ručně vytvořeny na sekundárním objektu.
 
-### <a name="failover-groups"></a>Skupiny převzetí služeb při selhání
-Systémové databáze nejsou replikovány do sekundární instance ve skupině převzetí služeb při selhání. Proto by scénáře závislé na objektech ze systémových databází nemohly být na sekundární instanci možné, pokud nejsou objekty ručně vytvořeny na sekundárním objektu.
-
 ### <a name="tempdb"></a>DATABÁZE
-
-Maximální velikost souboru `tempdb` nemůže být větší než 24 GB na jádro na úrovni pro obecné účely. Maximální `tempdb` velikost vrstvy pro důležité obchodní informace je omezená velikostí úložiště spravované instance SQL. `Tempdb` velikost souboru protokolu je omezena na 120 GB na úrovni Pro obecné účely. Některé dotazy mohou vracet chybu, pokud vyžadují více než 24 GB na jádro v `tempdb` nebo pokud vydávají více než 120 GB dat protokolu.
+- Maximální velikost souboru `tempdb` nemůže být větší než 24 GB na jádro na úrovni pro obecné účely. Maximální `tempdb` velikost vrstvy pro důležité obchodní informace je omezená velikostí úložiště spravované instance SQL. `Tempdb` velikost souboru protokolu je omezena na 120 GB na úrovni Pro obecné účely. Některé dotazy mohou vracet chybu, pokud vyžadují více než 24 GB na jádro v `tempdb` nebo pokud vydávají více než 120 GB dat protokolu.
+- `Tempdb` je vždy rozdělen do 12 datových souborů: 1 primární, označovaný také jako Master, datový soubor a 11 neprimárních datových souborů. Strukturu souborů nelze změnit a nelze do ní přidat nové soubory `tempdb` . 
+- [Paměťově optimalizovaná `tempdb` metadata](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata), nová funkce databáze SQL Server 2019 v paměti, není podporována.
+- Objekty vytvořené v databázi modelů nelze automaticky vytvořit v nástroji `tempdb` po restartování nebo převzetí služeb při selhání, protože `tempdb` nezíská svůj počáteční seznam objektů z replikované databáze modelu. 
 
 ### <a name="msdb"></a>MSDB
 

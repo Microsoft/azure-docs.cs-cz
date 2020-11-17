@@ -12,16 +12,16 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: df50231b03f71008f967c4f09ce09c5b5890802f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d5c42675b182fbc34354c75778214463adfe491f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427643"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648136"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Konfigurace souhlasu vlastníka skupiny u aplikací, které přistupují k datům skupiny
 
-Vlastníci skupiny a týmu můžou autorizovat aplikace, jako jsou například aplikace publikované dodavateli třetích stran, pro přístup k datům vaší organizace, které jsou přidružené ke skupině. Vlastník týmu v Microsoft Teams může například dovolit aplikaci číst všechny týmy v týmu nebo zobrazit základní profil členů skupiny. Další informace najdete v článku o [souhlasu týkajícím se konkrétního prostředku v Microsoft Teams](https://docs.microsoft.com/microsoftteams/resource-specific-consent) .
+Vlastníci skupiny a týmu můžou autorizovat aplikace, jako jsou například aplikace publikované dodavateli třetích stran, pro přístup k datům vaší organizace, které jsou přidružené ke skupině. Vlastník týmu v Microsoft Teams může například dovolit aplikaci číst všechny týmy v týmu nebo zobrazit základní profil členů skupiny. Další informace najdete v článku o [souhlasu týkajícím se konkrétního prostředku v Microsoft Teams](/microsoftteams/resource-specific-consent) .
 
 ## <a name="manage-group-owner-consent-to-apps"></a>Správa souhlasu vlastníka skupiny s aplikacemi
 
@@ -32,7 +32,7 @@ Můžete nakonfigurovat, kteří uživatelé mají povolen souhlas s aplikacemi,
 Pomocí těchto kroků můžete spravovat souhlas vlastníka skupiny s přístupem k datům skupiny v aplikacích:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator).
-2. Vyberte **Azure Active Directory**  >  souhlasu**podnikových aplikací**  >  **a**  >  **nastavení souhlasu uživatele**.
+2. Vyberte **Azure Active Directory**  >  souhlasu **podnikových aplikací**  >  **a**  >  **nastavení souhlasu uživatele**.
 3. V části **souhlas vlastníka skupiny pro přístup k datům** vyberte možnost, kterou chcete povolit.
 4. Vyberte **Uložit** a uložte nastavení.
 
@@ -42,9 +42,9 @@ V tomto příkladu můžou všichni vlastníci skupiny udělit souhlas s aplikac
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pomocí modulu Azure AD PowerShell Preview, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)můžete povolit nebo zakázat vlastníkům skupin souhlas s aplikacemi, které přistupují k datům vaší organizace pro skupiny, které vlastní.
+Pomocí modulu Azure AD PowerShell Preview, [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)můžete povolit nebo zakázat vlastníkům skupin souhlas s aplikacemi, které přistupují k datům vaší organizace pro skupiny, které vlastní.
 
-1. Ujistěte se, že používáte modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) . Tento krok je důležitý, pokud jste nainstalovali modul [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) i modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) ).
+1. Ujistěte se, že používáte modul [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) . Tento krok je důležitý, pokud jste nainstalovali modul [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) i modul [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) ).
 
     ```powershell
     Remove-Module AzureAD
@@ -121,7 +121,7 @@ Další informace najdete v tématech:
 * [Konfigurace pracovního postupu pro vyjádření souhlasu správce](configure-admin-consent-workflow.md)
 * [Naučte se spravovat souhlas s aplikacemi a hodnotit žádosti o souhlas.](manage-consent-requests.md)
 * [Udělení souhlasu správce v rámci celého tenanta aplikaci](grant-admin-consent.md)
-* [Oprávnění a souhlas na platformě Microsoft identity](../develop/active-directory-v2-scopes.md)
+* [Oprávnění a souhlas na platformě Microsoft identity](../develop/v2-permissions-and-consent.md)
 
 Pokud chcete získat nápovědu nebo najít odpovědi na své otázky:
 * [Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

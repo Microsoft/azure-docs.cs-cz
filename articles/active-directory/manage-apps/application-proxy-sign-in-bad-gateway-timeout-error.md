@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18c3b0397a0ad3e9e368d1a14e20a999ced5545b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0339e9f7688555b4d99c2d3255461b5675f642ff
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88690268"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649547"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Při použití aplikace proxy aplikací nejde získat přístup k této podnikové aplikaci.
 
@@ -64,13 +64,13 @@ Pokud ověříte, že je uživatel přiřazený k aplikaci v Azure, zkontrolujte
 
 ## <a name="check-the-applications-internal-url"></a>Ověřit interní adresu URL aplikace
 
-V prvním rychlém kroku dvakrát zkontrolujte a opravte interní adresu URL tak, že aplikaci otevřete prostřednictvím **podnikových aplikací**a pak vyberete nabídku **proxy aplikací** . Ověřte, jestli interní adresa URL je ta, kterou používá vaše místní síť pro přístup k aplikaci.
+V prvním rychlém kroku dvakrát zkontrolujte a opravte interní adresu URL tak, že aplikaci otevřete prostřednictvím **podnikových aplikací** a pak vyberete nabídku **proxy aplikací** . Ověřte, jestli interní adresa URL je ta, kterou používá vaše místní síť pro přístup k aplikaci.
 
 ## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Ověřte, že je aplikace přiřazená do skupiny pracovních konektorů.
 
 Chcete-li ověřit, zda je aplikace přiřazena ke skupině pracovních konektorů:
 
-1. Otevřete aplikaci na portálu tak, že přejdete na **Azure Active Directory**, kliknete na **podnikové aplikace**a pak na **všechny aplikace.** Otevřete aplikaci a v nabídce vlevo vyberte **proxy aplikace** .
+1. Otevřete aplikaci na portálu tak, že přejdete na **Azure Active Directory**, kliknete na **podnikové aplikace** a pak na **všechny aplikace.** Otevřete aplikaci a v nabídce vlevo vyberte **proxy aplikace** .
 1. Podívejte se do pole Skupina konektoru. Pokud ve skupině nejsou žádné aktivní konektory, zobrazí se upozornění. Pokud se nezobrazí žádná upozornění, přejděte na a ověřte, jestli jsou povolené všechny [požadované porty](application-proxy-add-on-premises-application.md) .
 1. Pokud se zobrazuje nesprávná skupina konektorů, vyberte v rozevíracím seznamu správnou skupinu a potvrďte, že se už nezobrazí žádná upozornění. Pokud se zobrazí zamýšlená skupina konektorů, klikněte na zprávu upozornění a otevřete stránku se správou konektoru.
 1. Tady je několik způsobů, jak podrobněji prozkoumat:
@@ -87,7 +87,7 @@ Ověřte, že jsou otevřené všechny požadované porty. Požadované porty na
 
 ## <a name="check-for-other-connector-errors"></a>Vyhledat další chyby konektoru
 
-Pokud žádný z výše uvedeného problému nevyřešil, je dalším krokem hledání problémů nebo chyb pomocí samotného konektoru. V [dokumentu řešení potíží](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)se můžete podívat na některé běžné chyby.
+Pokud žádný z výše uvedeného problému nevyřešil, je dalším krokem hledání problémů nebo chyb pomocí samotného konektoru. V [dokumentu řešení potíží](./application-proxy-troubleshoot.md#connector-errors)se můžete podívat na některé běžné chyby.
 
 Můžete se také podívat přímo na protokoly konektoru a identifikovat případné chyby. Mnohé z chybových zpráv sdílejí konkrétní doporučení pro opravy. Informace o tom, jak zobrazit protokoly, najdete v [dokumentaci ke konektorům](application-proxy-connectors.md#under-the-hood).
 

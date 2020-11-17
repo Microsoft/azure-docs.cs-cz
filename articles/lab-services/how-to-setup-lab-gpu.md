@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cbca82ba88baf5ddda2a6d7a6cdd35b62f28b8e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404778"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647932"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Nastavení testovacího prostředí s virtuálními počítači GPU
 
@@ -28,16 +28,16 @@ V tomto procesu máte možnost vybrat buď **vizualizaci** , nebo **výpočetní
 
 Jak je popsáno v následující tabulce, *Výpočet* velikosti GPU procesorů je určený pro aplikace náročné na výpočetní výkon.  Například [obsáhlý Learning v typu třídy zpracování přirozeného jazyka](./class-type-deep-learning-natural-language-processing.md) používá velikost **malého GPU (COMPUTE)** .  Výpočetní procesor je vhodný pro tento typ třídy, protože studenti využívají architektury hloubkového učení a nástroje, které jsou k dispozici v [Data Science Virtual Machine image](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) , k výuce modelů pro obsáhlý Learning s velkými sadami dat.
 
-| Velikost | Cores | Paměť RAM | Description | 
+| Velikost | Cores | Paměť RAM | Popis | 
 | ---- | ----- | --- | ----------- | 
-| Malý grafický procesor (COMPUTE) | -&nbsp;6 &nbsp; jader<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon, jako je například umělá logika (AI) a obsáhlý Learning. |
+| Malý grafický procesor (COMPUTE) | -&nbsp;6 &nbsp; jader<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](../virtual-machines/nc-series.md) |Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon, jako je například umělá logika (AI) a obsáhlý Learning. |
 
 Velikosti GPU pro *vizualizaci* jsou určené pro aplikace náročné na grafiku.  Například [typ třídy SolidWorks Engineering](./class-type-solidworks.md) ukazuje použití velikosti **malého GPU (vizualizace)** .  Grafický procesor vizualizace je vhodný pro tento typ třídy, protože studenti pracují s prostředím SOLIDWORKS 3D Computer-to design (CAD) pro modelování a vizualizaci tuhých objektů.
 
-| Velikost | Cores | Paměť RAM | Description | 
+| Velikost | Cores | Paměť RAM | Popis | 
 | ---- | ----- | --- | ----------- | 
-| Malý grafický procesor (vizualizace) | -&nbsp;6 &nbsp; jader<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
-| Střední GPU (vizualizace) | -&nbsp;12 &nbsp; jader<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
+| Malý grafický procesor (vizualizace) | -&nbsp;6 &nbsp; jader<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](../virtual-machines/nv-series.md) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
+| Střední GPU (vizualizace) | -&nbsp;12 &nbsp; jader<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
 
 > [!NOTE]
 > Některé z těchto velikostí virtuálních počítačů se v seznamu nemusí zobrazovat při vytváření testovacího prostředí učebny. Seznam se naplní na základě aktuální kapacity umístění testovacího prostředí. Pokud tvůrce účtu testovacího prostředí [umožňuje tvůrcům testovacího prostředí vybrat umístění pro testovací prostředí](allow-lab-creator-pick-lab-location.md), můžete zkusit zvolit jiné umístění pro testovací prostředí a zjistit, jestli je velikost virtuálního počítače dostupná. Dostupnost virtuálních počítačů najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/?products=virtual-machines).
@@ -76,7 +76,7 @@ Chcete-li ručně nainstalovat ovladače pro velikost procesoru výpočetní GPU
 1. Po instalaci ovladačů a dalšího softwaru, který je pro vaši třídu nutný, vyberte **publikovat** a vytvořte virtuální počítače studentů.
 
 > [!NOTE]
-> Pokud používáte bitovou kopii systému Linux, po stažení instalačního programu nainstalujte ovladače podle pokynů v tématu [install CUDA Drivers on Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup?toc=/azure/virtual-machines/linux/toc.json#install-cuda-drivers-on-n-series-vms).
+> Pokud používáte bitovou kopii systému Linux, po stažení instalačního programu nainstalujte ovladače podle pokynů v tématu [install CUDA Drivers on Linux](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#install-cuda-drivers-on-n-series-vms).
 
 #### <a name="install-the-visualization-gpu-drivers"></a>Instalace ovladačů GPU pro vizualizaci
 
@@ -85,8 +85,8 @@ Chcete-li ručně nainstalovat ovladače pro velikost grafického procesoru vizu
 1. V Průvodci vytvořením testovacího prostředí při [vytváření testovacího](./how-to-manage-classroom-labs.md)prostředí zakažte nastavení **nainstalovat ovladače GPU** .
 1. Po vytvoření testovacího prostředí se připojte k virtuálnímu počítači šablony a nainstalujte příslušné ovladače.
 1. Nainstalujte ovladače mřížky poskytované Microsoftem na VIRTUÁLNÍm počítači šablony podle pokynů pro váš operační systém:
-   -  [Ovladače Windows NVIDIA GRID](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)
-   -  [Ovladače pro MŘÍŽKu NVIDIA pro Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup?toc=/azure/virtual-machines/linux/toc.json#nvidia-grid-drivers)
+   -  [Ovladače Windows NVIDIA GRID](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)
+   -  [Ovladače pro MŘÍŽKu NVIDIA pro Linux](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#nvidia-grid-drivers)
   
 1. Restartujte šablonu virtuálního počítače.
 1. Podle pokynů v části [ověření nainstalovaných ovladačů](how-to-setup-lab-gpu.md#validate-the-installed-drivers) ověřte, jestli jsou ovladače správně nainstalované.
@@ -96,9 +96,9 @@ Chcete-li ručně nainstalovat ovladače pro velikost grafického procesoru vizu
 Tato část popisuje, jak ověřit, jestli jsou ovladače GPU správně nainstalované.
 
 #### <a name="windows-images"></a>Bitové kopie systému Windows
-1.  Postupujte podle pokynů v části "ověřit instalaci ovladače" v tématu [instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation).
+1.  Postupujte podle pokynů v části "ověřit instalaci ovladače" v tématu [instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series s Windows](../virtual-machines/windows/n-series-driver-setup.md#verify-driver-installation).
 1.  Pokud používáte grafický procesor *vizualizace* , můžete také:
-    - Zobrazení a úprava nastavení GPU v Ovládacích panelech NVIDIA. Provedete to tak, že v **Ovládacích panelech systému Windows**vyberete **hardware**a pak vyberete **ovládací panel NVIDIA**.
+    - Zobrazení a úprava nastavení GPU v Ovládacích panelech NVIDIA. Provedete to tak, že v **Ovládacích panelech systému Windows** vyberete **hardware** a pak vyberete **ovládací panel NVIDIA**.
 
       ![Snímek obrazovky s ovládacím panelem Windows zobrazující odkaz na ovládací panel NVIDIA](./media/how-to-setup-gpu/control-panel-nvidia-settings.png) 
 
@@ -110,7 +110,7 @@ Tato část popisuje, jak ověřit, jestli jsou ovladače GPU správně nainstal
       > Nastavení ovládacího panelu NVIDIA lze použít pouze pro grafické procesory *vizualizace* .  Pokud se pokusíte otevřít ovládací panel NVIDIA pro výpočetní procesor (GPU), zobrazí se následující chyba: "nastavení zobrazení NVIDIA nejsou k dispozici.  V tuto chvíli nepoužíváte zobrazení připojené k GPU NVIDIA. "  Podobně informace o výkonu GPU ve Správci úloh jsou k dispozici pouze pro grafické procesory vizualizace.
 
 #### <a name="linux-images"></a>Image Linux
-Postupujte podle pokynů v části "ověřit instalaci ovladače" v tématu [instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#verify-driver-installation).
+Postupujte podle pokynů v části "ověřit instalaci ovladače" v tématu [instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux](../virtual-machines/linux/n-series-driver-setup.md#verify-driver-installation).
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
@@ -118,6 +118,3 @@ Viz následující články:
 - [Vytváření a správa testovacích prostředí v učebnách](how-to-manage-classroom-labs.md)
 - [Typ třídy SOLIDWORKS počítačového návrhu (CAD)](class-type-solidworks.md)
 - [Typ třídy MATLAB (maticová laboratoř)](class-type-matlab.md)
-
-
-

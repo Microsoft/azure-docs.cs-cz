@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9559e22a8396de93bbe46f20b76855d9ff00f753
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa74424dddd7577eb942f72f038f5bd56854abac
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763716"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648187"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Neočekávaná výzva k vyjádření souhlasu při přihlášení k aplikaci
 
@@ -39,7 +39,7 @@ Další výzvy můžete očekávat v různých scénářích:
 
 * Uživatel, který byl původně odsouhlasen do aplikace, byl správcem, ale nesouhlasí se jménem celé organizace.
 
-* Aplikace používá [přírůstkové a dynamické vyjádření](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) k vyžádání dalších oprávnění po prvním udělení souhlasu. Tato možnost se často používá v případě, že volitelné funkce aplikace vyžadují oprávnění kromě těch, které jsou potřeba pro základní funkce.
+* Aplikace používá [přírůstkové a dynamické vyjádření](../azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) k vyžádání dalších oprávnění po prvním udělení souhlasu. Tato možnost se často používá v případě, že volitelné funkce aplikace vyžadují oprávnění kromě těch, které jsou potřeba pro základní funkce.
 
 * Po prvním udělení souhlasu byl souhlas odvolán.
 
@@ -47,8 +47,6 @@ Další výzvy můžete očekávat v různých scénářích:
 
 ## <a name="next-steps"></a>Další kroky
 
--   [Aplikace, oprávnění a souhlas v Azure Active Directory (koncový bod 1.0)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
+-   [Aplikace, oprávnění a souhlas v Azure Active Directory (koncový bod 1.0)](../develop/quickstart-register-app.md)
 
--   [Rozsahy, oprávnění a souhlas v Azure Active Directory (koncový bod verze 2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
-
-
+-   [Rozsahy, oprávnění a souhlas v Azure Active Directory (koncový bod verze 2.0)](../develop/v2-permissions-and-consent.md)

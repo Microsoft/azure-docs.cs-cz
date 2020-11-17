@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94cf1f34db590abeb084c5e95367781e50c85efc
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226943"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650089"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Řešení potíží se zřizováním cloudu
 
@@ -43,15 +43,15 @@ Tyto položky lze ověřit v Azure Portal a na místním serveru, na kterém je 
 
 Pokud chcete ověřit, jestli je agent v Azure a je v pořádku, postupujte podle těchto kroků.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 1. Na levé straně vyberte **Azure Active Directory**  >  **Azure AD Connect**. V centru vyberte **Spravovat zřizování (Preview)**.
 1. Na obrazovce **Azure AD zřizování (Preview)** vyberte **zkontrolovat všechny agenty**.
 
-   ![Zkontrolovat všechny agenty](media/how-to-install/install7.png)</br>
+   ![Zkontrolovat všechny agenty](media/how-to-install/install-7.png)</br>
  
 1. Na obrazovce místní **zřizovací agenti** uvidíte agenty, které jste nainstalovali. Ověřte, jestli je na něm daný agent a označený jako *dobrý*.
 
-   ![Obrazovka místních zřizovacích agentů](media/how-to-install/install8.png)</br>
+   ![Obrazovka místních zřizovacích agentů](media/how-to-install/install-8.png)</br>
 
 ### <a name="verify-the-port"></a>Ověření portu
 
@@ -59,14 +59,14 @@ Ověřte, že Azure naslouchá na portu 443 a že s ním může komunikovat agen
 
 Tento test ověřuje, jestli můžou vaši agenti komunikovat s Azure přes port 443. Otevřete prohlížeč a na serveru, na kterém je nainstalovaný agent, se dostanete na předchozí adresu URL.
 
-![Ověření dostupnosti portů](media/how-to-install/verify2.png)
+![Ověření dostupnosti portů](media/how-to-install/verify-2.png)
 
 ### <a name="on-the-local-server"></a>Na místním serveru
 
 Pokud chcete ověřit, jestli je agent spuštěný, postupujte podle těchto kroků.
 
 1. Na serveru s nainstalovaným agentem otevřete **služby** , a to tak, že k němu přejdete, nebo když přejdete na **Start**  >  **Spustit**  >  **Services. msc**.
-1. V části **služby**se ujistěte, že je k dispozici aktualizace **agenta Microsoft Azure AD Connect** a **Microsoft Azure AD připojení zřizování** , a jejich stav je *spuštěný*.
+1. V části **služby** se ujistěte, že je k dispozici aktualizace **agenta Microsoft Azure AD Connect** a **Microsoft Azure AD připojení zřizování** , a jejich stav je *spuštěný*.
 
    ![Obrazovka služby](media/how-to-troubleshoot/troubleshoot1.png)
 
@@ -86,7 +86,7 @@ Chcete-li tento problém vyřešit, postupujte podle následujících kroků.
 
 1. Přihlaste se k serveru pomocí účtu správce.
 1. Otevřete **služby** tak, že k němu přejdete, nebo když přejdete na **Spustit**  >  **Spustit**  >  **Services. msc**.
-1. V části **služby**dvakrát klikněte na **Microsoft Azure AD připojit zřizovacího agenta**.
+1. V části **služby** dvakrát klikněte na **Microsoft Azure AD připojit zřizovacího agenta**.
 1. Na kartě **přihlášení** změňte **Tento účet** na správce domény. Pak službu restartujte. 
 
    ![Karta přihlášení](media/how-to-troubleshoot/troubleshoot3.png)
@@ -122,7 +122,7 @@ K tomuto problému obvykle dochází v důsledku toho, že agent nedokáže spus
 
 Chcete-li tento problém vyřešit, změňte zásady spouštění prostředí PowerShell na serveru. Je nutné, aby byly zásady počítače a uživatele nastaveny jako *nedefinované* nebo *RemoteSigned*. Pokud jsou nastavené jako *neomezená*, zobrazí se tato chyba. Další informace najdete v tématu [zásady spouštění prostředí PowerShell](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
 
-### <a name="log-files"></a>Soubory protokolů
+### <a name="log-files"></a>Soubory protokolu
 
 Ve výchozím nastavení agent generuje minimální množství chybových zpráv a informací o trasování zásobníku. Tyto protokoly trasování najdete ve složce *C:\ProgramData\Microsoft\Azure zřizování služby AD Connect Agent\Trace*.
 

@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: c1c0c3038c687b7f91d3c75d8c4c9589c5e245a3
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1617015d6d4a026d5dadda667dcd03447a20c288
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427631"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649496"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi
 
@@ -49,15 +49,15 @@ Výběrem zásad pro vyjádření souhlasu s aplikacemi pro všechny uživatele 
 Konfigurace nastavení souhlasu uživatele prostřednictvím Azure Portal:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator).
-1. Vyberte **Azure Active Directory**  >  souhlasu**podnikových aplikací**  >  **a**  >  **nastavení souhlasu uživatele**.
-1. V části **souhlas uživatele u aplikací**vyberte, které nastavení souhlasu se má nakonfigurovat pro všechny uživatele.
+1. Vyberte **Azure Active Directory**  >  souhlasu **podnikových aplikací**  >  **a**  >  **nastavení souhlasu uživatele**.
+1. V části **souhlas uživatele u aplikací** vyberte, které nastavení souhlasu se má nakonfigurovat pro všechny uživatele.
 1. Vyberte **Uložit** a uložte nastavení.
 
 :::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="Nastavení souhlasu uživatele":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Můžete použít nejnovější modul Azure AD PowerShell Preview [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)a vybrat, které zásady souhlasu aplikací řídí souhlas uživatele pro aplikace.
+Můžete použít nejnovější modul Azure AD PowerShell Preview [AzureADPreview](/powershell/azure/active-directory/install-adv2?preserve-view=true&view=azureadps-2.0-preview)a vybrat, které zásady souhlasu aplikací řídí souhlas uživatele pro aplikace.
 
 #### <a name="disable-user-consent"></a>Zakázat souhlas uživatele
 
@@ -101,7 +101,7 @@ Set-AzureADMSAuthorizationPolicy `
 
 ## <a name="risk-based-step-up-consent"></a>Souhlas se krokem na základě rizika
 
-Souhlasu krokování na základě rizika pomáhá omezit vystavení uživatelů škodlivým aplikacím, které by vedly k neoprávněným [žádostem o souhlas](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants). Pokud společnost Microsoft zjistí rizikové žádosti o souhlas koncového uživatele, bude místo toho vyžadovat "krokování" na základě souhlasu správce. Tato funkce je ve výchozím nastavení povolená, ale při povolení souhlasu koncového uživatele bude mít za následek změnu chování.
+Souhlasu krokování na základě rizika pomáhá omezit vystavení uživatelů škodlivým aplikacím, které by vedly k neoprávněným [žádostem o souhlas](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants). Pokud společnost Microsoft zjistí rizikové žádosti o souhlas koncového uživatele, bude místo toho vyžadovat "krokování" na základě souhlasu správce. Tato funkce je ve výchozím nastavení povolená, ale při povolení souhlasu koncového uživatele bude mít za následek změnu chování.
 
 Při zjištění rizikové žádosti o souhlas se zobrazí výzva k zadání souhlasu s oznámením, že je požadováno schválení správcem. Pokud je povolen [pracovní postup žádosti o souhlas správce](configure-admin-consent-workflow.md) , může uživatel odeslat požadavek správci pro další kontrolu přímo z výzvy k zadání souhlasu. Pokud není povolený, zobrazí se následující zpráva:
 
@@ -114,9 +114,9 @@ V takovém případě se událost auditu bude protokolovat jako kategorie "Appli
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Zakázání nebo opětovné povolení souhlasu na základě rizik pomocí PowerShellu
 
-Můžete použít modul Azure AD PowerShell Preview [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)a zakázat krok do souhlasu správce, který je vyžadován v případech, kdy Microsoft zjistí riziko nebo ho znovu povolit, pokud byl dříve zakázán.
+Můžete použít modul Azure AD PowerShell Preview [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)a zakázat krok do souhlasu správce, který je vyžadován v případech, kdy Microsoft zjistí riziko nebo ho znovu povolit, pokud byl dříve zakázán.
 
-1. Ujistěte se, že používáte modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) . Tento krok je důležitý, pokud jste nainstalovali modul [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) i modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) ).
+1. Ujistěte se, že používáte modul [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) . Tento krok je důležitý, pokud jste nainstalovali modul [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) i modul [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) ).
 
     ```powershell
     Remove-Module AzureAD
@@ -182,7 +182,7 @@ Další informace najdete v tématech:
 * [Konfigurace pracovního postupu pro vyjádření souhlasu správce](configure-admin-consent-workflow.md)
 * [Naučte se spravovat souhlas s aplikacemi a hodnotit žádosti o souhlas.](manage-consent-requests.md)
 * [Udělení souhlasu správce v rámci celého tenanta aplikaci](grant-admin-consent.md)
-* [Oprávnění a souhlas na platformě Microsoft identity](../develop/active-directory-v2-scopes.md)
+* [Oprávnění a souhlas na platformě Microsoft identity](../develop/v2-permissions-and-consent.md)
 
 Pokud chcete získat nápovědu nebo najít odpovědi na své otázky:
 * [Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

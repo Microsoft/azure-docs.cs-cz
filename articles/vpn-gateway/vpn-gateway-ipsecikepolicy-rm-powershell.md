@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 6039eeed2e1bcb348920be986e72089164c614ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392646"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649258"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurace zásad IPsec/IKE pro připojení S2S VPN nebo připojení typu VNet-to-VNet
 
@@ -34,9 +34,8 @@ Tento článek poskytuje pokyny k vytvoření a konfiguraci zásad IPsec/IKE a p
 
 > [!IMPORTANT]
 > 1. Zásady IPsec/IKE fungují jenom na následujících SKU brány:
->    * ***VpnGw1, VpnGw2, VpnGw3*** (směrování založené na trasách)
->    * ***Standard*** a ***HighPerformance*** (směrování založené na trasách)
-> 2. Pro jedno připojení můžete zadat pouze ***jednu*** kombinaci zásad.
+>    * ***VpnGw1, VpnGw2, VpnGw3** _ (směrování založené na trasách) _ ***standardní** _ a _*_HighPerformance_*_ (směrování založené na trasách)
+> 2. Pro dané připojení můžete zadat jenom _*_jednu_*_ kombinaci zásad.
 > 3. Je nutné zadat všechny algoritmy a parametry pro protokol IKE (hlavní režim) i pro protokol IPsec (rychlý režim). Zadání částečných zásad není povoleno.
 > 4. Pokud chcete zajistit, aby se zásady na místních zařízeních VPN podporovaly, kontaktujte specifikace dodavatele zařízení VPN. Připojení S2S nebo VNet-to-VNet nelze nastavit, pokud jsou zásady nekompatibilní.
 
@@ -56,7 +55,7 @@ Pokyny v tomto článku vám pomůžou nastavit a nakonfigurovat zásady IPsec/I
 
 Následující tabulka uvádí podporované kryptografické algoritmy a síly klíče, které můžou zákazníci konfigurovat:
 
-| **IPsec/IKEv2**  | **Možnosti**    |
+| _ *IPSec/IKEv2**  | **Možnosti**    |
 | ---  | --- 
 | Šifrování protokolem IKEv2 | AES256, AES192, AES128, DES3, DES  
 | Integrita protokolu IKEv2  | SHA384, SHA256, SHA1, MD5  |
@@ -153,7 +152,7 @@ $LNGIP6        = "131.107.72.22"
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Připojte se k předplatnému a vytvořte novou skupinu prostředků.
 
-Ujistěte se, že jste přešli do režimu prostředí PowerShell, aby bylo možné používat rutiny Resource Manageru. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
+Ujistěte se, že jste přešli do režimu prostředí PowerShell, aby bylo možné používat rutiny Resource Manageru. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../azure-resource-manager/management/manage-resources-powershell.md).
 
 Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
