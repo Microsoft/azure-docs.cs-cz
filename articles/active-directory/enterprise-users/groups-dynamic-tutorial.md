@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: tutorial
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf911a240456871275abbd7f1e7313a1d2289b98
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ba6ba2bccf45f7f18e26fb073a2b992167a5c9be
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379043"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647320"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Kurz: Automatické přidávání nebo odebírání členů skupin
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tato funkce vyžaduje jednu licenci Azure AD Premium pro vás jako globální správce organizace. Pokud ho nemáte, v Azure AD vyberte **licence**  >  **produkty**  >  **vyzkoušet/koupit**.
 
@@ -55,7 +55,7 @@ Nejprve vytvoříte skupinu pro uživatele typu host, kteří jsou všichni z je
 4. Vyberte **vlastníci** a v okně **Přidat vlastníky** vyhledejte požadované vlastníky. Klikněte na požadované vlastníky a přidejte je do výběru.
 5. Kliknutím na **Vybrat** zavřete okno **Přidat vlastníky** .  
 6. V poli **dynamické uživatelské členy** vyberte **Upravit dynamický dotaz** .
-7. V okně**Pravidla dynamického členství**:
+7. V okně **Pravidla dynamického členství**:
 
    * V poli **vlastnost** klikněte na existující hodnotu a vyberte možnost **userType**. 
    * Ověřte, zda je pole **operátoru** **stejné** jako vybrané.  

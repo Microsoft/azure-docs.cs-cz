@@ -87,7 +87,7 @@
       href: security-center-powershell-onboarding.md
     - name: Povolení služby Security Center pro skupinu pro správu
       href: onboard-management-group.md
-    - name: Konfigurace shromažďování dat
+    - name: Konfigurace automatického zřizování
       href: security-center-enable-data-collection.md
     - name: Nastavení e-mailových oznámení
       href: security-center-provide-security-contact-details.md

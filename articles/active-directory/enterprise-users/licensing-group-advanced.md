@@ -9,18 +9,18 @@ manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 08/13/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56f16dea1f81f7f6a35409d8481550fd000864b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c4f298cf7487e00f6ee6a8aa8913fd32f8c6beee
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374893"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647099"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory
 
@@ -28,7 +28,7 @@ Následující informace a příklady vám pomůžou získat pokročilejší pri
 
 ## <a name="usage-location"></a>Umístění použití
 
-Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než může být licence přiřazena uživateli, musí správce zadat vlastnost **umístění používání** u uživatele. V [Azure Portal](https://portal.azure.com)můžete určit umístění použití v **User** &gt; **Profile** &gt; **Nastavení**profilu uživatele.
+Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než může být licence přiřazena uživateli, musí správce zadat vlastnost **umístění používání** u uživatele. V [Azure Portal](https://portal.azure.com)můžete určit umístění použití v **User** &gt; **Profile** &gt; **Nastavení** profilu uživatele.
 
 Pro přiřazení licence skupiny budou mít všichni uživatelé bez zadaného umístění v adresáři k dispozici umístění adresáře. Pokud máte uživatele ve více umístěních, nezapomeňte se před přidáním uživatelů do skupin s licencemi správně projevit v svých uživatelských zdrojích.
 
@@ -108,9 +108,9 @@ Tady je příklad toho, co může tento proces vypadat takto:
 
 1. Původně jste přiřadili produkt *Office 365 Enterprise E5* do několika skupin. Jedna z těchto skupin, označovaná jako *O365 E5-Exchange* , byla navržena tak, aby pro své členy povolovala pouze službu *Exchange Online (plán 2)* .
 
-2. Obdrželi jste oznámení od společnosti Microsoft, že produkt E5 bude rozšířen o novou *Microsoft Stream*služby. Jakmile bude služba k dispozici ve vaší organizaci, můžete provést následující akce:
+2. Obdrželi jste oznámení od společnosti Microsoft, že produkt E5 bude rozšířen o novou *Microsoft Stream* služby. Jakmile bude služba k dispozici ve vaší organizaci, můžete provést následující akce:
 
-3. V okně [**Azure Active Directory > licence > všechny produkty**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) vyberte možnost *Office 365 Enterprise E5*a potom vyberte **licencované skupiny** , abyste zobrazili seznam všech skupin s tímto produktem.
+3. V okně [**Azure Active Directory > licence > všechny produkty**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) vyberte možnost *Office 365 Enterprise E5* a potom vyberte **licencované skupiny** , abyste zobrazili seznam všech skupin s tímto produktem.
 
 4. Klikněte na skupinu, kterou chcete zkontrolovat (v tomto případě *O365 E5-Exchange*). Tím se otevře karta **licence** . Po kliknutí na licenci E5 se otevře okno se seznamem všech povolených služeb.
    > [!NOTE]

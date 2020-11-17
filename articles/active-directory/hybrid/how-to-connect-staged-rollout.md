@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d7208b068bee4b0a4cc30adfd98d2422718bbcc
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 24eb7ac7c4490c8d27d141f6417ae157a7a9c65b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628896"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646572"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
@@ -33,7 +33,7 @@ Přehled této funkce najdete v tomto tématu Azure Active Directory: co je post
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -   Máte tenanta Azure Active Directory (Azure AD) se federovanémi doménami.
 
@@ -73,7 +73,7 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
 
 - Správci mohou zavést cloudové ověřování pomocí skupin zabezpečení. Abyste se vyhnuli latenci při použití místních skupin zabezpečení služby Active Directory, doporučujeme, abyste používali skupiny zabezpečení cloudu. Platí následující podmínky:
 
-    - Na jednu funkci můžete použít maximálně 10 skupin. To znamená, že můžete použít 10 skupin pro každou *synchronizaci hodnot hash hesel* , *předávací ověřování* a *bezproblémové jednotné přihlašování*.
+    - Na jednu funkci můžete použít maximálně 10 skupin. To znamená, že můžete použít 10 skupin pro každou *synchronizaci hodnot hash hesel*, *předávací ověřování* a *bezproblémové jednotné přihlašování*.
     - Vnořené skupiny se *nepodporují*. Tento obor platí i pro Public Preview.
     - Pro fáze zavedení se *nepodporují* dynamické skupiny.
     - Objekty kontaktu uvnitř skupiny zablokují přidávání skupiny.
@@ -117,7 +117,7 @@ Pokud chcete testovat *předávací ověřování* při přihlášení pomocí p
 
 1. Ujistěte se, že jste správně nakonfigurovali [Nastavení inteligentního uzamčení](../authentication/howto-password-smart-lockout.md) . Díky tomu je možné zajistit, aby účty uživatelů místní služby Active Directory nebyly uzamčeny nesprávnými aktéry.
 
-Doporučujeme, abyste povolili *bezproblémové přihlašování* bez ohledu na způsob přihlašování ( *synchronizace hodnot hash hesel* nebo *předávací ověřování* ), který jste vybrali pro připravené zavedení. Pokud chcete povolit *bezproblémové jednotné přihlašování* , postupujte podle pokynů v následující části.
+Doporučujeme, abyste povolili *bezproblémové přihlašování* bez ohledu na způsob přihlašování (*synchronizace hodnot hash hesel* nebo *předávací ověřování*), který jste vybrali pro připravené zavedení. Pokud chcete povolit *bezproblémové jednotné přihlašování*, postupujte podle pokynů v následující části.
 
 ## <a name="pre-work-for-seamless-sso"></a>Předběžná práce pro bezproblémové přihlašování
 
@@ -149,7 +149,7 @@ Pomocí následujícího postupu povolte *bezproblémové přihlašování* :
 
 ## <a name="enable-staged-rollout"></a>Povolit připravené zavedení
 
-Pokud chcete zavést konkrétní funkci ( *předávací ověřování* , *synchronizaci hodnot hash hesel* nebo *bezproblémové přihlašování* ) k výběru skupiny uživatelů ve skupině, postupujte podle pokynů v dalších částech.
+Pokud chcete zavést konkrétní funkci (*předávací ověřování*, *synchronizaci hodnot hash hesel* nebo *bezproblémové přihlašování*) k výběru skupiny uživatelů ve skupině, postupujte podle pokynů v dalších částech.
 
 ### <a name="enable-a-staged-rollout-of-a-specific-feature-on-your-tenant"></a>Povolit dvoufázové zavedení konkrétní funkce ve vašem tenantovi
 
@@ -165,7 +165,7 @@ Postupujte následovně:
 
 2. Vyberte odkaz **povolit dvoufázové zavedení pro přihlášení ke spravovanému uživateli (Preview)** .
 
-   Chcete-li například povolit *možnost a* , posuňte **synchronizaci hodnot hash hesel** a **bezproblémové jednotné přihlašování** na **zapnuto** , jak je znázorněno na následujících obrázcích.
+   Chcete-li například povolit *možnost a*, posuňte **synchronizaci hodnot hash hesel** a **bezproblémové jednotné přihlašování** na **zapnuto**, jak je znázorněno na následujících obrázcích.
 
    ![Stránka Azure AD Connect](./media/how-to-connect-staged-rollout/sr4.png)
 
@@ -178,12 +178,13 @@ Postupujte následovně:
    >[!NOTE]
    >Členové ve skupině jsou automaticky povoleni pro připravené zavedení. Vnořené a dynamické skupiny se pro připravené zavedení nepodporují.
    >Při přidávání nové skupiny budou uživatelé v této skupině (až 200 uživatelů pro novou skupinu) aktualizováni tak, aby používali spravované ověřování immidiatly. Úprava skupiny (přidávání nebo odebírání uživatelů) může trvat až 24 hodin, než se změny projeví.
+   >Bezproblémové jednotné přihlašování se bude vztahovat jenom v případě, že jsou uživatelé ve skupině bezproblémové jednotné přihlašování a také v PTA nebo KOSMETICE.
 
 ## <a name="auditing"></a>Auditování
 
 Povolili jsme události auditu pro různé akce, které provedeme pro připravené zavedení:
 
-- Událost auditu, když povolíte dvoufázové zavedení pro *synchronizaci hodnot hash hesel* , *předávací ověřování* nebo *bezproblémové jednotné přihlašování*.
+- Událost auditu, když povolíte dvoufázové zavedení pro *synchronizaci hodnot hash hesel*, *předávací ověřování* nebo *bezproblémové jednotné přihlašování*.
 
   >[!NOTE]
   >Událost auditu je zaznamenána v případě, že je zapnuté *bezproblémové jednotné přihlašování* pomocí připraveného zavedení.
@@ -192,7 +193,7 @@ Povolili jsme události auditu pro různé akce, které provedeme pro připraven
 
   ![Karta vlastnosti pro vytvoření zásady zavedení pro funkci – změněné vlastnosti](./media/how-to-connect-staged-rollout/sr8.png)
 
-- Událost auditu při přidání skupiny do *synchronizace hodnot hash hesel* , *předávacího ověřování* nebo *bezproblémového přihlašování*
+- Událost auditu při přidání skupiny do *synchronizace hodnot hash hesel*, *předávacího ověřování* nebo *bezproblémového přihlašování*
 
   >[!NOTE]
   >Událost auditu se zaprotokoluje, když se do *synchronizace hodnot hash hesel* pro připravené zavedení přidá skupina.
@@ -217,7 +218,7 @@ Pokud chcete otestovat přihlášení pomocí *synchronizace hodnot hash hesel* 
 
 1. Zajistěte, aby se přihlášení úspěšně zobrazilo v [sestavě aktivit přihlášení Azure AD](../reports-monitoring/concept-sign-ins.md) pomocí filtrování pomocí třídy userPrincipalName.
 
-Testování přihlášení pomocí *bezproblémového jednotného přihlašování* :
+Testování přihlášení pomocí *bezproblémového jednotného přihlašování*:
 
 1. V intranetu přejděte na [stránku aplikace](https://myapps.microsoft.com) v privátní relaci prohlížeče a pak zadejte hodnotu USERPRINCIPALNAME (UPN) uživatelského účtu, který je vybraný pro připravené zavedení.
 
@@ -239,7 +240,7 @@ Odpověď: Ano, tuto funkci můžete použít ve vašem provozním tenantovi, al
 
 **Otázka: Tato funkce se dá použít k údržbě trvalé "společné existence", kde někteří uživatelé používají federované ověřování a jiní používají cloudové ověřování?**
 
-Odpověď: Ne, tato funkce je navržena pro migraci z federovaných do cloudového ověřování ve fázích a pak na jejich následné vyjmutí do cloudového ověřování. Nedoporučujeme používat trvalý smíšený stav, protože tento přístup by mohl vést k neočekávaným tokům ověřování.
+Odpověď: Ne, tato funkce je navržena pro testování cloudového ověřování. Po úspěšném otestování několika skupin uživatelů byste měli vyjmout přístup do cloudového ověřování. Nedoporučujeme používat trvalý smíšený stav, protože tento přístup by mohl vést k neočekávaným tokům ověřování.
 
 **Otázka: mohu použít PowerShell k provedení připraveného zavedení?**
 

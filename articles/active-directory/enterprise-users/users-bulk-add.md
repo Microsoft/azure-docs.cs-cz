@@ -4,21 +4,21 @@ description: Hromadné přidání uživatelů do centra pro správu Azure AD v A
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 08/11/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8e6ab8fd726eaba309f0949020139901dd3712f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 42e26e9b1e3548d3caeff58079ec489c2d282a63
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374837"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646878"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Hromadné vytvoření uživatelů v Azure Active Directory
 
@@ -51,7 +51,7 @@ Stáhněte si a vyplňte šablonu CSV hromadného nahrání, která vám umožn�
 - Požadované sloupce jsou uvedeny jako první.
 - Nedoporučujeme přidávat do šablony nové sloupce. Všechny další sloupce, které přidáte, se ignorují a nezpracovávají.
 - Doporučujeme si stáhnout nejnovější verzi šablony CSV, jak je to možné.
-- Nezapomeňte zkontrolovat, že není k dispozici žádný nezamýšlený prázdný znak před nebo za libovolným polem. V případě **hlavního názvu uživatele**by tyto prázdné znaky způsobily selhání importu.
+- Nezapomeňte zkontrolovat, že není k dispozici žádný nezamýšlený prázdný znak před nebo za libovolným polem. V případě **hlavního názvu uživatele** by tyto prázdné znaky způsobily selhání importu.
 
 ## <a name="to-create-users-in-bulk"></a>Hromadné vytváření uživatelů
 
@@ -85,7 +85,7 @@ Potom můžete zjistit, že uživatelé, které jste vytvořili, existují v org
 1. [Přihlaste se k centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci.
 1. V navigačním podokně vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Uživatelé**.
-1. V části **Zobrazit**vyberte možnost **Všichni uživatelé** a ověřte, že jsou uživatelé, které jste vytvořili, uvedeni.
+1. V části **Zobrazit** vyberte možnost **Všichni uživatelé** a ověřte, že jsou uživatelé, které jste vytvořili, uvedeni.
 
 ### <a name="verify-users-with-powershell"></a>Ověření uživatelů pomocí PowerShellu
 

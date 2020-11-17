@@ -7,20 +7,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7529d72c3d94e3c7bef58c6a26af62b97ac92d9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bd61a33bdcc0d18dee7dba651f097f7cd49e7149
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374845"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647029"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikace a řešení problémů s přiřazením licencí pro skupinu v Azure Active Directory
 
@@ -42,7 +42,7 @@ Pokud používáte licencování na základě skupin, může dojít k těmto chy
 
    ![seznam uživatelů v chybovém stavu licencování skupin](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-1. Pokud chcete najít všechny skupiny, které obsahují alespoň jednu chybu, v okně **Azure Active Directory** vyberte **licence**a pak vyberte **Přehled**. Informační pole se zobrazí, když skupiny vyžadují vaši pozornost.
+1. Pokud chcete najít všechny skupiny, které obsahují alespoň jednu chybu, v okně **Azure Active Directory** vyberte **licence** a pak vyberte **Přehled**. Informační pole se zobrazí, když skupiny vyžadují vaši pozornost.
 
    ![Přehled a informace o skupinách v chybovém stavu](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
@@ -58,7 +58,7 @@ V následujících částech najdete popis každého potenciálního problému a
 
 Pokud chcete zjistit, kolik licencí je dostupných, přejděte na **Azure Active Directory**  >  **licence**  >  **všechny produkty**.
 
-Pokud chcete zjistit, kteří uživatelé a skupiny pracují s licencemi, vyberte produkt. V části **licencovaní uživatelé**se zobrazí seznam všech uživatelů, kteří mají licence přiřazené přímo nebo přes jednu nebo více skupin. V části **licencované skupiny**se zobrazí všechny skupiny, které mají přiřazené produkty.
+Pokud chcete zjistit, kteří uživatelé a skupiny pracují s licencemi, vyberte produkt. V části **licencovaní uživatelé** se zobrazí seznam všech uživatelů, kteří mají licence přiřazené přímo nebo přes jednu nebo více skupin. V části **licencované skupiny** se zobrazí všechny skupiny, které mají přiřazené produkty.
 
 **PowerShell:** Rutiny prostředí PowerShell hlásí tuto chybu jako _CountViolation_.
 
@@ -87,7 +87,7 @@ Chcete-li tento problém vyřešit, je nutné zajistit, aby byl požadovaný pl�
 
 ## <a name="usage-location-isnt-allowed"></a>Umístění použití není povolené.
 
-**Problém:** Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních z důvodu místních zákonů a předpisů. Než budete moct přiřadit licenci k uživateli, musíte zadat vlastnost **umístění využití** pro uživatele. Umístění můžete zadat v **User**  >  **Profile**  >  části**Upravit** profil uživatele v Azure Portal.
+**Problém:** Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních z důvodu místních zákonů a předpisů. Než budete moct přiřadit licenci k uživateli, musíte zadat vlastnost **umístění využití** pro uživatele. Umístění můžete zadat v **User**  >  **Profile**  >  části **Upravit** profil uživatele v Azure Portal.
 
 Když se Azure AD pokusí přiřadit licenci skupiny uživateli, jehož umístění využívání není podporované, dojde k chybě a zaznamená chybu pro uživatele.
 
@@ -165,13 +165,13 @@ Od této chvíle budou všichni uživatelé přidaní do této skupiny využíva
 
 V závislosti na tom, jaké kroky jste udělali k vyřešení chyb, může být nutné ručně aktivovat zpracování skupiny, aby se aktualizoval stav uživatele.
 
-Pokud například uvolníte některé licence odebráním přímých přiřazení licencí od uživatelů, musíte aktivovat zpracování skupin, které dříve nedokázaly plně licencovat všechny členy uživatelů. Chcete-li znovu zpracovat skupinu, v podokně skupiny otevřete položku **licence**a pak na panelu nástrojů vyberte tlačítko znovu **zpracovat** .
+Pokud například uvolníte některé licence odebráním přímých přiřazení licencí od uživatelů, musíte aktivovat zpracování skupin, které dříve nedokázaly plně licencovat všechny členy uživatelů. Chcete-li znovu zpracovat skupinu, v podokně skupiny otevřete položku **licence** a pak na panelu nástrojů vyberte tlačítko znovu **zpracovat** .
 
 ## <a name="force-user-license-processing-to-resolve-errors"></a>Vynuťte zpracování uživatelských licencí pro řešení chyb.
 
 V závislosti na tom, jaké kroky jste udělali k vyřešení chyb, může být nutné ručně aktivovat zpracování uživatele, aby se aktualizoval stav uživatele.
 
-Například po vyřešení problému duplicitních adres proxy serveru pro ovlivněného uživatele je třeba aktivovat zpracování uživatele. Chcete-li uživatele znovu zpracovat, v podokně uživatele otevřete položku **licence**a pak vyberte tlačítko znovu **zpracovat** na panelu nástrojů.
+Například po vyřešení problému duplicitních adres proxy serveru pro ovlivněného uživatele je třeba aktivovat zpracování uživatele. Chcete-li uživatele znovu zpracovat, v podokně uživatele otevřete položku **licence** a pak vyberte tlačítko znovu **zpracovat** na panelu nástrojů.
 
 ## <a name="next-steps"></a>Další kroky
 

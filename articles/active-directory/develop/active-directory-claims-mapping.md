@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: c300faf33f57518d26f82234bdff94a37235cd66
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275785"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647592"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -239,6 +239,9 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 
 Chcete-li určit, jaké deklarace identity jsou emitovány a odkud data pocházejí, použijte vlastnosti zásady mapování deklarací identity. Pokud zásada není nastavená, systém vydá tokeny, které zahrnují základní sadu deklarací identity, základní sadu deklarací identity a všechny [volitelné deklarace identity](active-directory-optional-claims.md) , které se aplikace rozhodla přijmout.
 
+> [!NOTE]
+> Deklarace identity v základních deklaracích jsou přítomny v každém tokenu bez ohledu na to, jaká vlastnost je nastavená na.
+
 ### <a name="include-basic-claim-set"></a>Zahrnout základní sadu deklarací identity
 
 **Řetězec:** IncludeBasicClaimSet
@@ -250,8 +253,7 @@ Chcete-li určit, jaké deklarace identity jsou emitovány a odkud data pocháze
 - Pokud je nastavená hodnota true, všechny deklarace v základní sadě deklarací identity se vysílají v tokenech ovlivněných touto zásadou.
 - Pokud je hodnota nastavena na false, deklarace v základní sadě deklarací identity nejsou v tokenech, pokud se nepřidaly do vlastnosti schématu deklarací ve stejné zásadě.
 
-> [!NOTE]
-> Deklarace identity v základních deklaracích jsou přítomny v každém tokenu bez ohledu na to, jaká vlastnost je nastavená na.
+
 
 ### <a name="claims-schema"></a>Schéma deklarací identity
 
@@ -260,7 +262,7 @@ Chcete-li určit, jaké deklarace identity jsou emitovány a odkud data pocháze
 **Datový typ:** Objekt BLOB JSON s jednou nebo více položkami schématu deklarace identity
 
 **Shrnutí:** Tato vlastnost určuje, které deklarace identity jsou k dispozici v tokenech ovlivněných touto zásadou, kromě základní sady deklarací identity a základní sady deklarací identity.
-Pro každou položku schématu deklarace identity definovanou v této vlastnosti se vyžadují určité informace. Určete, kam data přicházejí (**hodnota**, **dvojice identifikátoru zdroje/ID**nebo **ExtensionID**) a která deklarace identity se vygeneruje (**typ deklarace identity**).
+Pro každou položku schématu deklarace identity definovanou v této vlastnosti se vyžadují určité informace. Určete, kam data přicházejí (**hodnota**, **dvojice identifikátoru zdroje/ID** nebo **ExtensionID**) a která deklarace identity se vygeneruje (**typ deklarace identity**).
 
 ### <a name="claim-schema-entry-elements"></a>Prvky položky schématu deklarace identity
 
@@ -439,10 +441,9 @@ Zásady mapování deklarací lze přiřadit pouze objektům instančních objek
 
 V Azure AD je mnoho scénářů možné, když můžete přizpůsobit deklarace identity vydávané v tokenech pro konkrétní instanční objekty. V této části se seznámíme s několika běžnými scénáři, které vám pomůžou naučit se používat typ zásad mapování deklarací identity.
 
-> [!NOTE]
-> Při vytváření zásad mapování deklarací identity můžete také vygenerovat deklaraci identity z atributu rozšíření schématu adresáře v tokenech. Použijte *ExtensionID* pro atribut Extension namísto *ID* v `ClaimsSchema` elementu.  Další informace o atributech rozšíření najdete v tématu [použití atributů rozšíření schématu adresáře](active-directory-schema-extensions.md).
+Při vytváření zásad mapování deklarací identity můžete také vygenerovat deklaraci identity z atributu rozšíření schématu adresáře v tokenech. Použijte *ExtensionID* pro atribut Extension namísto *ID* v `ClaimsSchema` elementu.  Další informace o atributech rozšíření najdete v tématu [použití atributů rozšíření schématu adresáře](active-directory-schema-extensions.md).
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.
 

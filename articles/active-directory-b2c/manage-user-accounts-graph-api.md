@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8132eb72b3e448d7ae830b29ccb7dc51528c1250
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a9323cc92567d681ee8c73a62e0b89c17c22b1e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921397"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647609"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph
 
@@ -60,7 +60,7 @@ Uživatel s účtem zákazníka se může přihlásit s více identitami. Např�
 
 V rozhraní Microsoft Graph API jsou místní i federované identity uloženy v `identities` atributu uživatele, který je typu [objectIdentity][graph-objectIdentity]. `identities`Kolekce představuje sadu identit, které se používají pro přihlášení k uživatelskému účtu. Tato kolekce umožňuje uživateli přihlásit se k uživatelskému účtu pomocí kterékoli z jeho přidružených identit.
 
-| Vlastnost   | Typ |Description|
+| Vlastnost   | Typ |Popis|
 |:---------------|:--------|:----------|
 |signInType|řetězec| Určuje typy přihlašování uživatelů v adresáři. Pro místní účet:  `emailAddress` , `emailAddress1` , `emailAddress2` , `emailAddress3` ,  `userName` nebo jakýkoli jiný typ, který chcete. Účet sociálních sítí musí být nastavený na  `federated` .|
 |issuer|řetězec|Určuje vystavitele identity. U místních účtů (kde **signInType** není `federated` ) Tato vlastnost je výchozí název domény místního B2C tenanta, například `contoso.onmicrosoft.com` . Pro sociální identity (kde **signInType** je  `federated` ) hodnota je název vystavitele, například `facebook.com`|
@@ -145,7 +145,7 @@ Po získání ukázky kódu ji nakonfigurujte pro vaše prostředí a pak Sestav
 1. Spusťte aplikaci pomocí `dotnet` příkazu:
 
     ```console
-    dotnet bin/Debug/netcoreapp3.0/b2c-ms-graph.dll
+    dotnet bin/Debug/netcoreapp3.1/b2c-ms-graph.dll
     ```
 
 Aplikace zobrazí seznam příkazů, které lze spustit. Můžete například získat všechny uživatele, získat jednoho uživatele, odstranit uživatele, aktualizovat heslo uživatele a hromadný import.

@@ -112,12 +112,22 @@
   items:
     - name: Ověřování
       href: authentication.md
-    - name: Seznam bezpečných adres URL
-      href: safe-url-list.md
     - name: Prostředí Windows Virtual Desktop
       href: environment-setup.md
-    - name: Určení latence připojení uživatele
-      href: connection-latency.md
+    - name: Připojení k síti
+      items:
+        - name: Principy připojení k síti
+          href: network-connectivity.md
+        - name: RDP stručně
+          href: shortpath.md
+        - name: Implementace technologie QoS (Quality of Service)
+          href: rdp-quality-of-service-qos.md
+        - name: Seznam bezpečných adres URL
+          href: safe-url-list.md
+        - name: Aspekty šířky pásma
+          href: rdp-bandwidth.md
+        - name: Určení latence připojení uživatele
+          href: connection-latency.md
     - name: Delegovaný přístup ve Windows Virtual Desktop
       href: delegated-access-virtual-desktop.md
     - name: Metody vyrovnávání zatížení fondu hostitelů
@@ -168,8 +178,6 @@
       href: linux-overview.md
     - name: Podporovaná nastavení souboru RDP
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
-    - name: Doprovodné materiály k sítím
-      href: /windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context
     - name: Doprovodné materiály k určení velikosti virtuálního počítače
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Rozhraní příkazového řádku Azure (CLI)

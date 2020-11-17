@@ -4,7 +4,7 @@ description: Vytváření a Správa skupin zabezpečení nebo skupin Microsoft 3
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1730507c022d57495efa56c98215ff72d07e180
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 6425809cfa6dde20b8ef2b1f6d4cfaf04cbef6e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578174"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647082"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Nastavení samoobslužné správy skupin v Azure Active Directory 
 
@@ -49,8 +49,8 @@ Skupiny vytvořené v | Výchozí chování skupiny zabezpečení | Výchozí ch
 1. Nastavte **omezení přístupu ke skupinám na přístupovém panelu** na **ne**.
 1. Pokud nastavíte **možnost Uživatelé můžou vytvářet skupiny zabezpečení na portálech Azure** nebo **Uživatelé můžou na portálech azure vytvářet skupiny Microsoft 365** na
 
-    - **Ano** : všichni uživatelé v organizaci Azure AD můžou vytvářet nové skupiny zabezpečení a přidávat do těchto skupin členy. Tyto nové skupiny se zobrazí také všem ostatním uživatelům na přístupovém panelu. Pokud to nastavení zásad skupiny umožňuje, můžou jiní uživatelé vytvářet žádosti o připojení k těmto skupinám.
-    - **Ne** : uživatelé nemůžou vytvářet skupiny a nemůžou měnit existující skupiny, pro které jsou vlastníci. Můžou však stále spravovat členství v těchto skupinách a schvalovat žádosti o členství od jiných uživatelů.
+    - **Ano**: všichni uživatelé v organizaci Azure AD můžou vytvářet nové skupiny zabezpečení a přidávat do těchto skupin členy. Tyto nové skupiny se zobrazí také všem ostatním uživatelům na přístupovém panelu. Pokud to nastavení zásad skupiny umožňuje, můžou jiní uživatelé vytvářet žádosti o připojení k těmto skupinám.
+    - **Ne**: uživatelé nemůžou vytvářet skupiny a nemůžou měnit existující skupiny, pro které jsou vlastníci. Můžou však stále spravovat členství v těchto skupinách a schvalovat žádosti o členství od jiných uživatelů.
 
 Můžete také použít **vlastníky, kteří můžou členům přiřadit členy jako vlastníci skupiny v Azure Portal** a dosáhnout tak přesnější řízení přístupu pro uživatele samoobslužné správy skupin.
 

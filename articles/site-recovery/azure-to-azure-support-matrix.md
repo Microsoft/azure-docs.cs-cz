@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: b73a6b8c024cfa5ed7188bbf3fed2bbb7142a2a0
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: c54c4608f04c8f98e21309ca531452ae0a34fdf2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186633"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646368"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -131,7 +131,7 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 18,04 LTS | [9,36](https://support.microsoft.com/help/4578241/) | 4.15.0-20 – obecný pro 4.15.0-112 – obecné </br> 4.18.0-13 – Obecné pro 4.18.0-25 – obecné </br> 5.0.0-15 – obecný pro 5.0.0-58 – obecné </br> 5.3.0-19 – obecný pro 5.3.0-65 – obecný </br> 5.4.0-37 – obecný pro 5.4.0-42 – obecné</br> 4.15.0-1009 – Azure do 4.15.0-1092 – Azure </br> 4.18.0-1006 – Azure až 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure do 5.0.0-1036 – Azure </br> 5.3.0-1007 – Azure do 5.3.0-1032 – Azure </br> 5.4.0-1020 – Azure do 5.4.0-1022 – Azure </br> 5.0.0-60-Generic & 5.3.0-1035-Azure až 9,36 oprava hotfix * *|
 18,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 4.15.0-20 – obecný pro 4.15.0-108 – obecné </br> 4.18.0-13 – Obecné pro 4.18.0-25 – obecné </br> 5.0.0-15 – obecný pro 5.0.0 – 52 – obecné </br> 5.3.0-19 – Obecné k 5.3.0 – 61 – obecné </br> 4.15.0-1009 – Azure do 4.15.0-1089 – Azure </br> 4.18.0-1006 – Azure až 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure do 5.0.0-1036 – Azure </br> 5.3.0-1007 – Azure do 5.3.0-1031 – Azure </br> 4.15.0-109-Generic, 5.0.0-53-Generic, 5.3.0-62-Generic, 4.15.0-1091-Azure & 5.3.0-1032-Azure až 9,35 oprava hotfix patch * *|
 |||
-20,04 LTS |[9,38](https://support.microsoft.com/help/4590304/) | 5.4.0-26 – obecný pro 5.4.0-48 </br> -Generic 5.4.0-1010-Azure to 5.4.0-1026-Azure </br> 5.4.0-51-Generic, 5.4.0-52-Generic, 5.8.0-23-Generic, 5.4.0-1031-Azure až 9,38 oprava hotfix * *
+20,04 LTS |[9,38](https://support.microsoft.com/help/4590304/) | 5.4.0-26 – obecný pro 5.4.0-48 </br> -Generic 5.4.0-1010-Azure to 5.4.0-1026-Azure </br> 5.4.0-51-Generic, 5.4.0-52-Generic, 5.8.0-23-Generic, 5.8.0-25-Generic, 5.4.0-1031-Azure až 9,38 oprava hotfix * *
 20,04 LTS |[9,37](https://support.microsoft.com/help/4582666/) | 5.4.0-26 – obecný pro 5.4.0-45 </br> -Generic 5.4.0-1010-Azure to 5.4.0-1023-Azure </br> 5.4.0-47-Generic, 5.4.0-48-Generic, 5.4.0-1025-Azure, 5.4.0-1026-Azure až 9,37 oprava hotfix * *
 20,04 LTS |[9,36](https://support.microsoft.com/help/4578241/) | 5.4.0-26 – obecný pro 5.4.0-42 </br> -Generic 5.4.0-1010-Azure to 5.4.0-1022-Azure
 
@@ -146,7 +146,7 @@ Debian 7 |  [9,34](https://support.microsoft.com/help/4570609), [9,35](https://s
 Debian 8 | [9,35](https://support.microsoft.com/help/4573888/, ), [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/), [9,38](https://support.microsoft.com/help/4590304/) | 3.16.0-4-amd64 až 3.16.0-11-AMD64, 4.9.0 -0. BPO. 4-amd64 na 4.9.0 -0. BPO. 11 – amd64 |
 Debian 8 | [9,34](https://support.microsoft.com/help/4570609) | 3.16.0-4-amd64 pro 3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-amd64 na 4.9.0 -0. BPO. 11 – amd64 |
 |||
-Debian 9,1 | [9,38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 až 4.9.0-13-amd64 </br> 4.19.0 -0. BPO. 1-AMD64 pro 4.19.0 -0. BPO. 11 – amd64 </br> 4.19.0 -0. BPO. 1-Cloud-amd64 až 4.19.0 -0. BPO. 11 – Cloud – amd64 </br> 
+Debian 9,1 | [9,38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 až 4.9.0-13-amd64 </br> 4.19.0 -0. BPO. 1-AMD64 pro 4.19.0 -0. BPO. 11 – amd64 </br> 4.19.0 -0. BPO. 1-Cloud-amd64 až 4.19.0 -0. BPO. 11 – Cloud – amd64 </br> 4.9.0-14-AMD64, 4.19.0 -0. BPO. 12-AMD64, 4.19.0 -0. BPO. 12-Cloud-amd64 až 9,38 oprava hotfix * *
 Debian 9,1 | [9,37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-amd64 až 4.9.0-13-AMD64, 4.19.0 -0. BPO. 6-amd64 až 4.19.0 -0. BPO. 10-AMD64, 4.19.0 -0. BPO. 6-Cloud-amd64 na 4.19.0 -0. BPO. 10-Cloud-amd64
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra SUSE Linux Enterprise Server 12 pro virtuální počítače Azure
@@ -280,7 +280,7 @@ Interní nástroj pro vyrovnávání zatížení | Podporováno | Přidružte p�
 Veřejná IP adresa | Podporováno | Přidružte existující veřejnou IP adresu k síťovému rozhraní. Případně vytvořte veřejnou IP adresu a přidružte ji k síťovému rozhraní pomocí skriptu Azure Automation v plánu obnovení.
 NSG na síťové kartě | Podporováno | Přidružte NSG k síťovému rozhraní pomocí skriptu Azure Automation v plánu obnovení.
 NSG v podsíti | Podporováno | Přidružte NSG k podsíti pomocí skriptu Azure Automation v plánu obnovení.
-Rezervovaná (statická) IP adresa | Podporováno | Pokud má síťová karta ve zdrojovém virtuálním počítači statickou IP adresu a cílová podsíť má stejnou IP adresu, je přiřazená k virtuálnímu počítači, u kterého došlo k převzetí služeb při selhání.<br/><br/> Pokud cílová podsíť nemá k dispozici stejnou IP adresu, jedna z dostupných IP adres v podsíti je vyhrazena pro virtuální počítač.<br/><br/> Můžete také zadat pevnou IP adresu a podsíť v nastavení **replikované položky**  >  **Nastavení**  >  **výpočetních a síťových**  >  **síťových rozhraní** .
+Rezervovaná (statická) IP adresa | Podporováno | Pokud má síťová karta ve zdrojovém virtuálním počítači statickou IP adresu a cílová podsíť má stejnou IP adresu, je přiřazená k virtuálnímu počítači, u kterého došlo k převzetí služeb při selhání.<br/><br/> Pokud cílová podsíť nemá k dispozici stejnou IP adresu, jedna z dostupných IP adres v podsíti je vyhrazena pro virtuální počítač.<br/><br/> Můžete také zadat pevnou IP adresu a podsíť v nastavení **replikované položky**  >  **Nastavení**  >  **výpočetních a síťových**  >  **síťových rozhraní**.
 Dynamická IP adresa | Podporováno | Pokud má síťová karta ve zdroji dynamické přidělování IP adres, síťové rozhraní ve virtuálním počítači převzetí služeb při selhání je ve výchozím nastavení také dynamické.<br/><br/> V případě potřeby ho můžete v případě potřeby upravit na pevně stanovenou IP adresu.
 Několik IP adres | Nepodporováno | Při převzetí služeb při selhání virtuálního počítače, který má síťové rozhraní s více IP adresami, zůstane zachována pouze primární IP adresa síťového adaptéru ve zdrojové oblasti. Pokud chcete přiřadit více IP adres, můžete přidat virtuální počítače do [plánu obnovení](recovery-plan-overview.md) a připojit skript pro přiřazení dalších IP adres k plánu, nebo můžete změnu provést ručně nebo pomocí skriptu po převzetí služeb při selhání.
 Traffic Manager     | Podporováno | Můžete předem nakonfigurovat Traffic Manager tak, aby se provoz směroval do koncového bodu ve zdrojové oblasti v pravidelných intervalech, a v případě převzetí služeb při selhání do koncového bodu v cílové oblasti.

@@ -5,14 +5,14 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 11/13/2020
 ms.author: duau
-ms.openlocfilehash: 44813a7662420ab4dedcd0bf99cc1eec7e9d9d2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55eefe7a7490df050aa7ebc2bb41fbadcc8d8279
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819075"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646334"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Onboarding kořenové nebo vrcholové domény ve službě Front Door
 Přední dveře Azure pomocí záznamů CNAME ověří vlastnictví domény pro připojování vlastních domén. Přední dveře nevystavují IP adresu front-endu přidruženou k profilu front-dveří. Proto nemůžete mapovat svoji doménu vrcholu na IP adresu, pokud je vaším záměrem připojit se k Azure na přední dveře.
@@ -34,15 +34,15 @@ Můžete použít Azure Portal k zaregistrování domény vrcholu na vašich fro
 
 1. Vytvoří nebo upraví záznam pro vrchol zóny.
 
-1. Vyberte **typ** *záznamu jako záznam* a pak pro **sadu záznamů aliasů**vyberte *Ano* . **Typ aliasu** by měl být nastaven na *prostředek Azure*.
+1. Vyberte **typ** *záznamu jako záznam* a pak pro **sadu záznamů aliasů** vyberte *Ano* . **Typ aliasu** by měl být nastaven na *prostředek Azure*.
 
 1. Vyberte předplatné Azure, ve kterém se má profil front-dveří hostovat. Pak vyberte prostředek front-dveří z rozevíracího seznamu **prostředků Azure** .
 
 1. Kliknutím na **tlačítko OK** odešlete změny.
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-apex-alias-record.png" alt-text="Záznam aliasu pro vrchol zóny&quot;:::
+    :::image type="content" source="./media/front-door-apex-domain/front-door-apex-alias-record.png" alt-text="Záznam aliasu pro vrchol zóny":::
 
-1. Výše uvedený krok vytvoří záznam vrcholu zóny ukazující na prostředek front-dveří a také mapování záznamů CNAME &quot;afdverify" (příklad- `afdverify.contosonews.com` ) na to, které se bude používat pro připojování domény do profilu front-dveří.
+1. Výše uvedený krok vytvoří záznam vrcholu zóny ukazující na prostředek front-dveří a také mapování záznamů CNAME "afdverify" (příklad- `afdverify.contosonews.com` ) na to, které se bude používat pro připojování domény do profilu front-dveří.
 
 ## <a name="onboard-the-custom-domain-on-your-front-door"></a>Zprovoznění vlastní domény na předních dveřích
 
@@ -54,19 +54,15 @@ Můžete použít Azure Portal k zaregistrování domény vrcholu na vašich fro
 
 1. Vyberte **Uložit** a odešlete změny.
 
-   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="Záznam aliasu pro vrchol zóny&quot;:::
-
-1. Výše uvedený krok vytvoří záznam vrcholu zóny ukazující na prostředek front-dveří a také mapování záznamů CNAME &quot;afdverify":::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="Nabídka Vlastní domény":::
 
 ## <a name="enable-https-on-your-custom-domain"></a>Povolení HTTPS pro vlastní doménu
 
-1. Vyberte vlastní doménu, kterou jste přidali, a v části **vlastní doména https**změňte stav na **povoleno**.
+1. Vyberte vlastní doménu, kterou jste přidali, a v části **vlastní doména https** změňte stav na **povoleno**.
 
 1. Vyberte  **typ správy certifikátů** použít vlastní *certifikát*.
 
-   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="Záznam aliasu pro vrchol zóny&quot;:::
-
-1. Výše uvedený krok vytvoří záznam vrcholu zóny ukazující na prostředek front-dveří a také mapování záznamů CNAME &quot;afdverify":::    
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="Nastavení HTTPS vlastní domény":::    
 
    > [!WARNING]
    > Typ správy certifikátů na předních dveřích se v současné době pro vrcholy nebo kořenové domény nepodporuje. Jediná možnost, která je k dispozici pro povolení protokolu HTTPS ve vrcholu nebo kořenové doméně pro přední dveře, používá vlastní certifikát TLS/SSL hostovaný na Azure Key Vault.

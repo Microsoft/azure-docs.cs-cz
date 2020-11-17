@@ -4,21 +4,21 @@ description: Hromadné přidání uživatelů do centra pro správu Azure.
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/16/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec712d2f58c3028aa11d0b12132669648351bfb1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 59327b33a228dfde2c303b63393a372b12370a05
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375595"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647405"
 ---
 # <a name="bulk-download-members-of-a-group-in-azure-active-directory"></a>Hromadné stažení členů skupiny v Azure Active Directory
 

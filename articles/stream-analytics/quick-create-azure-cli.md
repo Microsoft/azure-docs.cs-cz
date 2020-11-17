@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 8c2e7b6a02c0a0fea32fb1effb30b682971c3f6f
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fa7919f54663387ddef811d02137da6d3ffb9d9b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348768"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646623"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí Azure CLI
 
@@ -23,41 +23,11 @@ V tomto rychlém startu použijete rozhraní příkazového řádku Azure CLI k 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prepare-your-environment"></a>Příprava prostředí
-
-1. Přihlaste se.
-
-   Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [az login](/cli/azure/reference-index#az-login).
-
-    ```azurecli
-    az login
-    ```
-
-    Dokončete proces ověřování podle kroků zobrazených v terminálu.
-
-2. Nainstalujte rozšíření Azure CLI.
-
-   Když pracujete s odkazy na rozšíření rozhraní příkazového řádku Azure (Azure CLI), musíte nejdřív rozšíření nainstalovat.  Rozšíření rozhraní příkazového řádku Azure poskytují přístup k experimentálním a předběžným příkazům, které ještě nebyly dodány jako součást základního rozhraní příkazového řádku.  Další informace o rozšířeních, včetně aktualizace a odinstalace, najdete v tématu [Využití rozšíření v Azure CLI](/cli/azure/azure-cli-extensions-overview).
-
-   [Rozšíření pro Stream Analytics](/cli/azure/ext/stream-analytics/stream-analytics) nainstalujete spuštěním následujícího příkazu:
-
-    ```azurecli
-    az extension add --name stream-analytics
-    ```
-
-   [Rozšíření pro Azure IoT](/cli/azure/ext/azure-iot) nainstalujete spuštěním následujícího příkazu:
-
-    ```azurecli
-    az extension add --name azure-iot
-    ```
-
-3. Vytvořte skupinu prostředků.
-
-   Všechny prostředky Azure musí být nasazené do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
+- Vytvořte skupinu prostředků. Všechny prostředky Azure musí být nasazené do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
 
    V tomto rychlém startu vytvořte skupinu prostředků s názvem *streamanalyticsrg* v umístění *eastus* pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az-group-create) :
 
@@ -270,7 +240,7 @@ az stream-analytics job start
 
 Odstraňte skupinu prostředků, úlohu streamování a všechny související prostředky, pokud je už nepotřebujete. Odstraněním úlohy se zabrání zaúčtování jednotek streamování, které daná úloha spotřebovává. Pokud máte v plánu tuto úlohu ještě někdy používat, nemusíte ji odstraňovat a prozatím ji jenom zastavte. Pokud nebudete tuto úlohu nadále používat, odstraňte všechny prostředky vytvořené tímto rychlým startem spuštěním následující rutiny:
 
-```powershell
+```azurecli
 az group delete \
     --name streamanalyticsrg \
     --no-wait

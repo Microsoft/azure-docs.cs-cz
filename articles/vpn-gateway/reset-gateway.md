@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: e39884f6d62fc43943f892aed0dac650a01d6c40
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cd25c7638bd7e178cdb963ba528cccefde6b9eca
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462910"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646470"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetování brány VPN Gateway
 
@@ -52,7 +52,7 @@ Správce prostředků VPN Gateway můžete resetovat pomocí Azure Portal. Pokud
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Rutina pro **resetování brány je resetována – AzVirtualNetworkGateway**. Před provedením resetu se ujistěte, že máte nejnovější verzi [PowerShellu AZ rutins](https://docs.microsoft.com/powershell/module/az.network). Následující příklad obnoví bránu virtuální sítě s názvem VNet1GW ve skupině prostředků TestRG1:
+Rutina pro **resetování brány je resetována – AzVirtualNetworkGateway**. Před provedením resetu se ujistěte, že máte nejnovější verzi [PowerShellu AZ rutins](/powershell/module/az.network). Následující příklad obnoví bránu virtuální sítě s názvem VNet1GW ve skupině prostředků TestRG1:
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
@@ -65,7 +65,7 @@ Když obdržíte výsledek vrácení, můžete předpokládat, že resetování 
 
 ### <a name="classic-deployment-model"></a><a name="resetclassic"></a>Model nasazení Classic
 
-Rutina pro **resetování brány je resetována – AzureVNetGateway**. Rutiny Azure PowerShell pro správu služeb musí být nainstalované místně na vašem počítači. Nemůžete použít Azure Cloud Shell. Před provedením resetu se ujistěte, že máte nejnovější verzi [rutin PowerShellu pro správu služeb (SM)](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps#azure-service-management-cmdlets). Při použití tohoto příkazu se ujistěte, že používáte úplný název virtuální sítě. Klasické virtuální sítě vytvořené pomocí portálu mají dlouhý název, který se vyžaduje pro PowerShell. Dlouhý název můžete zobrazit pomocí příkazu Get-AzureVNetConfig-ExportToFile C:\Myfoldername\NetworkConfig.xml.
+Rutina pro **resetování brány je resetována – AzureVNetGateway**. Rutiny Azure PowerShell pro správu služeb musí být nainstalované místně na vašem počítači. Nemůžete použít Azure Cloud Shell. Před provedením resetu se ujistěte, že máte nejnovější verzi [rutin PowerShellu pro správu služeb (SM)](/powershell/azure/servicemanagement/install-azure-ps#azure-service-management-cmdlets). Při použití tohoto příkazu se ujistěte, že používáte úplný název virtuální sítě. Klasické virtuální sítě vytvořené pomocí portálu mají dlouhý název, který se vyžaduje pro PowerShell. Dlouhý název můžete zobrazit pomocí příkazu Get-AzureVNetConfig-ExportToFile C:\Myfoldername\NetworkConfig.xml.
 
 Následující příklad obnoví bránu pro virtuální síť s názvem "Group TestRG1 virtuální sítě testvnet1" (která na portálu představuje jednoduše "virtuální sítě testvnet1"):
 
@@ -86,7 +86,7 @@ StatusCode     : OK
 
 ## <a name="azure-cli"></a><a name="cli"></a>Azure CLI
 
-Bránu resetujete tak, že použijete příkaz [AZ Network VNet-Gateway Reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway) . Následující příklad obnoví bránu virtuální sítě s názvem VNet5GW ve skupině prostředků TestRG5:
+Bránu resetujete tak, že použijete příkaz [AZ Network VNet-Gateway Reset](/cli/azure/network/vnet-gateway) . Následující příklad obnoví bránu virtuální sítě s názvem VNet5GW ve skupině prostředků TestRG5:
 
 ```azurecli
 az network vnet-gateway reset -n VNet5GW -g TestRG5

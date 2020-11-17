@@ -10,18 +10,18 @@ editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 07/07/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50915aebc9cb76c7bb67235e40564ff32ce656b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8ec9a215d25ce1177b015b392c4f36d7547be521
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374885"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647014"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Změna přiřazení licencí pro uživatele nebo skupinu v Azure Active Directory
 
@@ -46,7 +46,7 @@ Před aktualizací přiřazení licencí je důležité ověřit, jestli jsou n�
 Pokud vidíte, že některá zaškrtávací políčka nejsou k dispozici, na stránce **aktualizace přiřazení licencí** se zobrazí služby, které nelze změnit, protože jsou zděděny z licence skupiny.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce licencí ve vaší organizaci Azure AD.
-1. Vyberte **Azure Active Directory**  >  **Uživatelé**a potom otevřete stránku **profil** pro uživatele.
+1. Vyberte **Azure Active Directory**  >  **Uživatelé** a potom otevřete stránku **profil** pro uživatele.
 1. Vyberte **licence**.
 1. Vyberte **přiřazení** pro úpravu přiřazení licence pro uživatele nebo skupinu. Na stránce **přiřazení** můžete vyřešit konflikty přiřazení licencí.
 1. Zaškrtněte políčko pro Office 365 E3 a ujistěte se, že je vybrána možnost minimálně všechny služby E1, které jsou přiřazeny uživateli.
@@ -61,7 +61,7 @@ Azure AD použije nové licence a současně odebere staré licence, aby bylo mo
 ## <a name="change-group-license-assignments"></a>Změna přiřazení licencí skupin
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce licencí ve vaší organizaci Azure AD.
-1. Vyberte **Azure Active Directory**  >  **skupiny**a potom otevřete stránku **Přehled** pro skupinu.
+1. Vyberte **Azure Active Directory**  >  **skupiny** a potom otevřete stránku **Přehled** pro skupinu.
 1. Vyberte **licence**.
 1. Vyberte příkaz **přiřazení** pro úpravu přiřazení licence pro uživatele nebo skupinu.
 1. Zaškrtněte políčko pro Office 365 E3. Aby se zachovala kontinuita provozu, ujistěte se, že jste vybrali všechny služby E1, které jsou už k tomuto uživateli přiřazené.

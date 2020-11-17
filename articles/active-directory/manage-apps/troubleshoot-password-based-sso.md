@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 0534c85548b1d8b6203aaac4911dc851dd49d81a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1823de88597756ba3db9aee0dc29501b1ba914a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460350"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646232"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Řešení potíží s jednotným přihlašováním založeném na heslech v Azure AD
 
@@ -36,7 +36,7 @@ K tomuto problému obvykle dochází v případě, že dodavatel aplikace změni
 
 I když má společnost Microsoft technologie, aby automaticky zjistily, kdy integrace přeruší, nemusí být možné tyto problémy najít hned, jinak problémy vyřeší. V případě, že některá z těchto integrací nefunguje správně, otevřete případ podpory, aby bylo možné je opravit co nejrychleji.
 
-**Pokud se obrátíte na dodavatele této aplikace,** pošlete jim náš způsob, aby Microsoft mohl s nimi pracovat, aby nativně integroval svou aplikaci s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../azuread-dev/howto-app-gallery-listing.md) , abyste je mohli začít.
+**Pokud se obrátíte na dodavatele této aplikace,** pošlete jim náš způsob, aby Microsoft mohl s nimi pracovat, aby nativně integroval svou aplikaci s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../develop/v2-howto-app-gallery-listing.md) , abyste je mohli začít.
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Přihlašovací údaje jsou vyplněné a odeslané, ale stránka indikuje, že přihlašovací údaje nejsou správné.
 
@@ -62,7 +62,7 @@ V případě, že předchozí návrhy nefungují, může to být případ, kdy d
 
 I když má společnost Microsoft technologie, aby automaticky zjistily, kdy integrace aplikace přeruší, nemusí být možné tyto problémy najít hned, jinak může opravit problémy. Pokud integrace nefunguje správně, můžete otevřít případ podpory, abyste ho mohli co nejrychleji opravit. 
 
-V případě, že se **s dodavatelem této aplikace obrátíte,** **pošlete je našemu způsobu** , abychom s nimi mohli s nimi pracovat nativně integrací aplikace s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../azuread-dev/howto-app-gallery-listing.md) , abyste je mohli začít.
+V případě, že se **s dodavatelem této aplikace obrátíte,** **pošlete je našemu způsobu** , abychom s nimi mohli s nimi pracovat nativně integrací aplikace s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../develop/v2-howto-app-gallery-listing.md) , abyste je mohli začít.
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Zkontroluje, jestli se přihlašovací stránka aplikace v poslední době změnila, nebo jestli vyžaduje další pole.
 
@@ -70,7 +70,7 @@ Pokud se přihlašovací stránka aplikace významně změnila, někdy to způso
 
 I když má společnost Microsoft technologie, aby automaticky zjistily, kdy integrace aplikace přeruší, nemusí být možné tyto problémy najít hned, jinak může opravit problémy. Pokud integrace nefunguje správně, můžete otevřít případ podpory, abyste ho mohli co nejrychleji opravit. 
 
-V případě, že se **s dodavatelem této aplikace obrátíte,** **pošlete je našemu způsobu** , abychom s nimi mohli s nimi pracovat nativně integrací aplikace s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../azuread-dev/howto-app-gallery-listing.md) , abyste je mohli začít.
+V případě, že se **s dodavatelem této aplikace obrátíte,** **pošlete je našemu způsobu** , abychom s nimi mohli s nimi pracovat nativně integrací aplikace s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../develop/v2-howto-app-gallery-listing.md) , abyste je mohli začít.
 
 ## <a name="capture-sign-in-fields-for-an-app"></a>Zaznamenání přihlašovacích polí pro aplikaci
 
@@ -103,7 +103,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování založené na heslech pom
 
 ### <a name="manually-capture-sign-in-fields-for-an-app"></a>Ruční zachytávání přihlašovacích polí pro aplikaci
 
-Pokud chcete ručně zachytit pole přihlašování, musíte mít nainstalované rozšíření prohlížeče moje aplikace. Prohlížeč také nemůže běžet ve službě *InPrivate*, *anonymním*nebo *privátním* režimu.
+Pokud chcete ručně zachytit pole přihlašování, musíte mít nainstalované rozšíření prohlížeče moje aplikace. Prohlížeč také nemůže běžet ve službě *InPrivate*, *anonymním* nebo *privátním* režimu.
 
 Pokud chcete pro aplikaci nakonfigurovat jednotné přihlašování na základě hesla pomocí ručního zachycení pole pro přihlášení, postupujte podle těchto kroků:
 1. Otevřete web [Azure Portal](https://portal.azure.com/). Přihlaste se jako globální správce nebo spolusprávce.
@@ -117,7 +117,7 @@ Pokud chcete pro aplikaci nakonfigurovat jednotné přihlašování na základě
 7. Po načtení aplikace vyberte v navigačním podokně na levé straně **jednotné přihlašování** .
 8. Vyberte režim **přihlašování založený na hesle** .
 9. Zadejte **přihlašovací adresu URL**, což je stránka, kde uživatelé zadají své uživatelské jméno a heslo, aby se mohli přihlásit. Ujistěte se *, že jsou na stránce zobrazena přihlašovací pole pro adresu URL, kterou zadáte*.
-10. Vyberte **Konfigurovat nastavení jednotného přihlašování pro heslo * &lt; AppName &gt; * **.
+10. Vyberte **Konfigurovat nastavení jednotného přihlašování pro heslo *&lt; AppName &gt;***.
 11. Vyberte možnost **ručně zjišťovat přihlašovací pole**.
 14. Vyberte **OK**.
 15. Vyberte **Uložit**.
@@ -145,11 +145,11 @@ V případě, že ruční zjišťování nefunguje, můžete sledovat následuj�
 - Zdá se, že ruční zachycení funguje, ale SSO se nestane, když uživatelé přejdou do aplikace z mých aplikací.
 
 Pokud se setkáte s některým z těchto problémů, proveďte následující akce:
-- Ujistěte se, že máte *nainstalovanou a povolenou*nejnovější verzi rozšíření prohlížeče moje aplikace.
-- Ujistěte se, že během procesu zachycení není váš prohlížeč v *anonymním*, *InPrivate*nebo *privátním* režimu. Rozšíření moje aplikace se v těchto režimech nepodporuje.
-- Ujistěte se, že se uživatelé nesnaží přihlašovat k aplikaci z mých aplikací v *anonymním*, *InPrivate*nebo v *privátním režimu*.
+- Ujistěte se, že máte *nainstalovanou a povolenou* nejnovější verzi rozšíření prohlížeče moje aplikace.
+- Ujistěte se, že během procesu zachycení není váš prohlížeč v *anonymním*, *InPrivate* nebo *privátním* režimu. Rozšíření moje aplikace se v těchto režimech nepodporuje.
+- Ujistěte se, že se uživatelé nesnaží přihlašovat k aplikaci z mých aplikací v *anonymním*, *InPrivate* nebo v *privátním režimu*.
 - Zkuste znovu zpracovat proces ručního zachycení. Ujistěte se, že červené značky jsou nad správnými poli.
-- Pokud se zdá, že proces ručního zachytávání přestane reagovat nebo stránka pro přihlášení nereaguje, zkuste proces ručního zachytávání zopakovat. Tentokrát ale po dokončení procesu stiskněte klávesu F12 a otevřete konzolu pro vývojáře v prohlížeči. Vyberte kartu **Konzola** . zadejte **window. Location = "* &lt; přihlašovací adresa URL, kterou jste zadali při konfiguraci aplikace &gt; ***, a potom stiskněte klávesu ENTER. Tím se vynutí přesměrování stránky, které ukončí proces zachytávání a uloží pole, která byla zachycena.
+- Pokud se zdá, že proces ručního zachytávání přestane reagovat nebo stránka pro přihlášení nereaguje, zkuste proces ručního zachytávání zopakovat. Tentokrát ale po dokončení procesu stiskněte klávesu F12 a otevřete konzolu pro vývojáře v prohlížeči. Vyberte kartu **Konzola** . zadejte **window. Location = "*&lt; přihlašovací adresa URL, kterou jste zadali při konfiguraci aplikace &gt;***, a potom stiskněte klávesu ENTER. Tím se vynutí přesměrování stránky, které ukončí proces zachytávání a uloží pole, která byla zachycena.
 
 ## <a name="request-support"></a>Požádat o podporu 
 Pokud se zobrazí chybová zpráva, když nastavíte jednotné přihlašování a přiřadíte uživatele, otevřete lístek podpory. Co je možné zahrnout co nejvíc následujících informací:

@@ -8,19 +8,19 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 10/23/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0e2ce094b792d6f3f7e5f8fe1920d87a9cceea2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d0136f7677aa722e578ac54c4f7d34338e47b0f7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517171"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646606"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Vylepšení správy uživatelů (Preview) v Azure Active Directory
 
@@ -88,7 +88,7 @@ Ve výchozím nastavení se zobrazují některé sloupce. Chcete-li přidat dal�
 Vyberte položku ve sloupci **vystavitele identity** , pro libovolného uživatele zobrazíte další podrobnosti o vystaviteli, včetně typu přihlášení a ID přiřazeného vystavitele. Položky ve sloupci **vystavitele identity** můžou být vícehodnotové. Pokud je k dispozici více vystavitelů identity uživatele, zobrazí se ve sloupci **vystavitele identity** na **všech uživatelích** a **odstraněných uživatelích** slovo více a v podokně podrobností se zobrazí seznam všech vystavitelů.
 
 > [!NOTE]
-> **Zdrojový** sloupec je nahrazen více sloupci včetně **typu vytvoření**, **synchronizace adresáře**a **vystavitele identity** pro podrobnější filtrování.
+> **Zdrojový** sloupec je nahrazen více sloupci včetně **typu vytvoření**, **synchronizace adresáře** a **vystavitele identity** pro podrobnější filtrování.
 
 ## <a name="user-list-search"></a>Hledání v seznamu uživatelů
 

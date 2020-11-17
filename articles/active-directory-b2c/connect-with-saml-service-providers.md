@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6f7888e978fd4eb19232c156ce65b6e4967d9c5a
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 80ecd02f9aebbca66169d64d6c6d0302d58ca439
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575964"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647660"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -101,7 +101,7 @@ Potom do Azure AD B2C nahrajte kontrolní výraz SAML a podpisový certifikát o
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyhledejte Azure AD B2C tenanta.
 1. V části **zásady** vyberte možnost **Architektura prostředí identity** a pak **klíče zásad**.
 1. Vyberte **Přidat** a pak vybrat **Možnosti**  >  **nahrát**.
-1. Zadejte **název** , například *SamlIdpCert*. *B2C_1A_* předpony se automaticky přidají do názvu vašeho klíče.
+1. Zadejte **název**, například *SamlIdpCert*. *B2C_1A_* předpony se automaticky přidají do názvu vašeho klíče.
 1. Nahrajte certifikát pomocí ovládacího prvku nahrát soubor.
 1. Zadejte heslo certifikátu.
 1. Vyberte **Vytvořit**.
@@ -131,7 +131,7 @@ Můžete změnit hodnotu `IssuerUri` metadat. Toto je identifikátor URI vystavi
       <OutputTokenFormat>SAML2</OutputTokenFormat>
       <Metadata>
         <!-- The issuer contains the policy name; it should be the same name as configured in the relying party application. B2C_1A_signup_signin_SAML is used below. -->
-        <!--<Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>-->
+        <!--<Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml</Item>-->
       </Metadata>
       <CryptographicKeys>
         <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
@@ -260,7 +260,7 @@ Konečný soubor zásad předávající strany by měl vypadat jako následujíc
 
 Uložte změny a nahrajte nový soubor zásad. Po nahrání obou zásad (rozšíření a souborů předávající strany) otevřete webový prohlížeč a přejděte na metadata zásad.
 
-Metadata IDP zásad Azure AD B2C jsou informace, které se používají v protokolu SAML k vystavení konfigurace zprostředkovatele identity SAML. Metadata definují umístění služeb, jako je například přihlášení a odhlášení, certifikáty, metoda přihlašování a další. Metadata zásad Azure AD B2C jsou k dispozici na následující adrese URL. Nahraďte `tenant-name` názvem vašeho tenanta Azure AD B2C a `policy-name` názvem (ID) zásady, například.../B2C_1A_SAML2_signup_signin/SAMLP/metadata:
+Metadata IDP zásad Azure AD B2C jsou informace, které se používají v protokolu SAML k vystavení konfigurace zprostředkovatele identity SAML. Metadata definují umístění služeb, jako je například přihlášení a odhlášení, certifikáty, metoda přihlašování a další. Metadata zásad Azure AD B2C jsou k dispozici na následující adrese URL. Nahraďte `tenant-name` názvem vašeho tenanta Azure AD B2C a `policy-name` názvem (ID) zásady, například.../B2C_1A_signup_signin_saml/SAMLP/metadata:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -270,7 +270,7 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 zaregistrovat aplikaci v Azure AD B2C
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací** a pak vyberte **Nová registrace**.
@@ -339,10 +339,10 @@ Metadata můžete nakonfigurovat ve vašem poskytovateli služeb jako "statická
 
 Obvykle jsou potřeba některé z těchto možností:
 
-* **Metadata** : `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Vystavitel** : hodnota požadavku SAML se `issuer` musí shodovat s jedním z identifikátorů URI nakonfigurovaných v `identifierUris` elementu manifestu registrace aplikace. Pokud název požadavku SAML `issuer` v `identifierUris` elementu neexistuje, [přidejte ho do manifestu registrace aplikace](#identifieruris). Například, `https://contoso.onmicrosoft.com/app-name`. 
-* **Přihlašovací adresa URL/koncový bod SAML/adresa URL SAML** : ověřte hodnotu v souboru metadat zásad Azure AD B2C SAML pro `<SingleSignOnService>` element XML.
-* **Certifikát** : toto je *B2C_1A_SamlIdpCert* , ale bez privátního klíče. Získání veřejného klíče certifikátu:
+* **Metadata**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Vystavitel**: hodnota požadavku SAML se `issuer` musí shodovat s jedním z identifikátorů URI nakonfigurovaných v `identifierUris` elementu manifestu registrace aplikace. Pokud název požadavku SAML `issuer` v `identifierUris` elementu neexistuje, [přidejte ho do manifestu registrace aplikace](#identifieruris). Například, `https://contoso.onmicrosoft.com/app-name`. 
+* **Přihlašovací adresa URL/koncový bod SAML/adresa URL SAML**: ověřte hodnotu v souboru metadat zásad Azure AD B2C SAML pro `<SingleSignOnService>` element XML.
+* **Certifikát**: toto je *B2C_1A_SamlIdpCert*, ale bez privátního klíče. Získání veřejného klíče certifikátu:
 
     1. Přejít na adresu URL metadat uvedenou výše.
     1. Zkopírujte hodnotu v `<X509Certificate>` elementu.
@@ -428,7 +428,7 @@ Poskytujeme kompletní ukázkovou zásadu, kterou můžete použít pro testová
 
 1. Stáhnout [ukázkovou zásadu přihlášení iniciované SAML-SP](https://github.com/azure-ad-b2c/saml-sp/tree/master/policy/SAML-SP-Initiated)
 1. Aktualizujte `TenantId` tak, aby odpovídaly názvu tenanta, například *contoso.b2clogin.com*
-1. Ponechte název zásady *B2C_1A_SAML2_signup_signin*
+1. Ponechte název zásady *B2C_1A_signup_signin_saml*
 
 ## <a name="supported-and-unsupported-saml-modalities"></a>Podporované a nepodporované postupy SAML
 

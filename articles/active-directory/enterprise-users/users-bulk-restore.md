@@ -5,20 +5,20 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/27/2020
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4031356c3a2ff51f6f3da8b53dd0dcc9fd5a426
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d141637286ed931701e82d29088186de32ff9f9c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374805"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646776"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Hromadné obnovení odstraněných uživatelů v Azure Active Directory
 
@@ -57,7 +57,7 @@ Stáhněte si a vyplňte šablonu sdíleného svazku clusteru, která vám umož
 
     :::image type="content" source="./media/users-bulk-restore/upload-button.png" alt-text="Vyberte místní soubor CSV, ve kterém chcete zobrazit seznam uživatelů, které chcete přidat.":::
 
-1. Na stránce **hromadné obnovení** v části **nahrát soubor CSV**přejděte k souboru. Když vyberete soubor a kliknete na **Odeslat**, spustí se ověření souboru CSV.
+1. Na stránce **hromadné obnovení** v části **nahrát soubor CSV** přejděte k souboru. Když vyberete soubor a kliknete na **Odeslat**, spustí se ověření souboru CSV.
 1. Když se obsah souboru ověří, zobrazí se soubor se **úspěšně nahrál**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.
 1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která uživatele obnoví.
 1. Po dokončení operace obnovení se zobrazí oznámení, že hromadná operace byla úspěšná.
@@ -77,7 +77,7 @@ V dalším kroku můžete zjistit, že uživatelé, které jste obnovili, existu
 1. [Přihlaste se k centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci.
 1. V navigačním podokně vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Uživatelé**.
-1. V části **Zobrazit**vyberte možnost **Všichni uživatelé** a ověřte, že jsou v seznamu uvedeni uživatelé, které jste obnovili.
+1. V části **Zobrazit** vyberte možnost **Všichni uživatelé** a ověřte, že jsou v seznamu uvedeni uživatelé, které jste obnovili.
 
 ### <a name="view-users-with-powershell"></a>Zobrazení uživatelů pomocí PowerShellu
 

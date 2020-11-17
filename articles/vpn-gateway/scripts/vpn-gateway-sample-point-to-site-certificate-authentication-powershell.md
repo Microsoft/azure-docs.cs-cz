@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/10/2020
 ms.author: alzam
-ms.openlocfilehash: a76cad8cb89e016d231566089ce30a337ea91d8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b691e4621d50f8578ebe095ed184cbdb4397ce10
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086961"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646419"
 ---
 # <a name="configure-a-point-to-site-vpn-using-native-azure-certificate-authentication"></a>Konfigurace sítě VPN typu Point-to-site s použitím nativního ověřování certifikátů Azure
 
@@ -114,8 +114,8 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Vytvoří virtuální síť. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Vytvoří veřejnou IP adresu. |
 | [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Vytvoří novou konfiguraci protokolu IP brány. |
-| [New-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgateway) | Vytvoří bránu sítě VPN. |
-| [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate?view=win10-ps) | Vytvoří nový kořenový certifikát podepsaný svým držitelem. |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Vytvoří bránu sítě VPN. |
+| [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate?view=win10-ps) | Vytvoří nový kořenový certifikát podepsaný svým držitelem. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Nastaví konfiguraci podsítě pro virtuální síť. |
 
