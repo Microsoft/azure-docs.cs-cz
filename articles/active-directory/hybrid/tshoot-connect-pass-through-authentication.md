@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91741189"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652514"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s předávacím ověřováním služby Azure Active Directory
 
@@ -34,7 +34,7 @@ Tento článek vám pomůže najít informace o řešení běžných problémů 
 
 ### <a name="check-status-of-the-feature-and-authentication-agents"></a>Zkontroluje stav agentů a funkcí ověřování.
 
-Ujistěte se, že je ve vašem tenantovi stále **povolená** funkce předávacího ověřování a že stav agentů ověřování zobrazuje **aktivní**a není **neaktivní**. Stav můžete ověřit tak, že v [centru pro správu Azure Active Directory](https://aad.portal.azure.com/)kliknete na okno **Azure AD Connect** .
+Ujistěte se, že je ve vašem tenantovi stále **povolená** funkce předávacího ověřování a že stav agentů ověřování zobrazuje **aktivní** a není **neaktivní**. Stav můžete ověřit tak, že v [centru pro správu Azure Active Directory](https://aad.portal.azure.com/)kliknete na okno **Azure AD Connect** .
 
 ![Centrum pro správu Azure Active Directory – okno Azure AD Connect](./media/tshoot-connect-pass-through-authentication/pta7.png)
 
@@ -156,6 +156,8 @@ Chyby související s instalací najdete v protokolech Azure AD Connect v **prot
 V případě chyb souvisejících s agentem ověřování otevřete Prohlížeč událostí aplikace na serveru a zaškrtněte v části **Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
 
 Pro podrobnou analýzu Povolte protokol "session" (klikněte pravým tlačítkem myši v aplikaci Prohlížeč událostí, abyste našli tuto možnost). Nespouštějte agenta ověřování s tímto protokolem povoleným během normálního provozu. používá se jenom pro řešení potíží. Obsah protokolu se zobrazí až po opětovném zakázání protokolu.
+
+Manifest události agenta PTA najdete [tady](https://msazure.visualstudio.com/One/_git/AD-AppProxy?path=%2Fsrc%2FProduct%2FMUC%2FPTADiagnosticsResource%2FPTADiagnosticsResource%2FPTAConnectorDiagnosticsResource%2FPTAConnectorEventManifest.man&_a=contents&version=GBmaster).
 
 ### <a name="detailed-trace-logs"></a>Podrobné protokoly trasování
 
