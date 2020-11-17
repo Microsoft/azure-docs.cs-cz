@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 65e1b1b5e84c3344a082b73b7768935d788a3394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 668976e9777b35e514746070f0f4039a12b4e02b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707403"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651715"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Vzdálený přístup k místním aplikacím prostřednictvím Proxy aplikací služby Azure AD
 
@@ -36,7 +36,7 @@ Proxy aplikací je funkce služby Azure AD, která uživatelům umožňuje pří
 Proxy aplikace funguje s:
 
 * Webové aplikace, které pro ověřování používají [integrované ověřování systému Windows](application-proxy-configure-single-sign-on-with-kcd.md)
-* Webové aplikace, které používají formulář nebo přístup [na základě hlaviček](application-proxy-configure-single-sign-on-with-ping-access.md)
+* Webové aplikace, které používají formulář nebo přístup [na základě hlaviček](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers)
 * Webová rozhraní API, která chcete zpřístupnit pro rozšířené aplikace na různých zařízeních
 * Aplikace hostované za [Brána vzdálené plochy](application-proxy-integrate-with-remote-desktop-services.md)
 * Bohatých klientských aplikací integrovaných do knihovny Microsoft Authentication Library (MSAL)
@@ -74,4 +74,3 @@ Následující diagram ukazuje, jak služba Azure AD a proxy aplikací společn�
 
 ## <a name="next-steps"></a>Další kroky
 Pokud chcete začít používat proxy aplikace, přečtěte si téma [kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikací](application-proxy-add-on-premises-application.md).
-

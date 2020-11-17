@@ -10,18 +10,18 @@ editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 179ad1e552899f8fa92b8191fe78223458f87104
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f202bebd2c9ab6147d8a37fc6109b915065068aa
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374856"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650338"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Postup migrace uživatelů s jednotlivými licencemi do skupin pro licencování
 
@@ -57,13 +57,13 @@ Postup migrace by měl vypadat takto:
 
 1. Pomocí Azure Portal přiřaďte licenci Office 365 E3 skupině **Všichni uživatelé** ve službě Azure AD.
 
-1. Potvrďte, že přiřazení licence bylo dokončeno pro všechny uživatele. Pro skupinu klikněte na stránku Přehled, vyberte **licence**a v horní části okna **licence** zaškrtněte stav zpracování.
+1. Potvrďte, že přiřazení licence bylo dokončeno pro všechny uživatele. Pro skupinu klikněte na stránku Přehled, vyberte **licence** a v horní části okna **licence** zaškrtněte stav zpracování.
 
    - Vyhledejte "poslední změny licencí byly aplikovány na všechny uživatele" pro potvrzení dokončení zpracování.
 
    - Vyhledejte oznámení v horní části o všech uživatelích, pro které se licence pravděpodobně úspěšně nepřiřadily. Vyčerpali jsme licence pro některé uživatele? Mají někteří uživatelé konfliktní licenční plány, které jim brání v dědění skupinových licencí?
 
-1. Pokud si chcete ověřit, že se používají přímé i skupinové licence, zkontrolujte, jestli někteří uživatelé mají. Přejít na stránku profil pro uživatele, vyberte **licence**a prověřte stav licencí.
+1. Pokud si chcete ověřit, že se používají přímé i skupinové licence, zkontrolujte, jestli někteří uživatelé mají. Přejít na stránku profil pro uživatele, vyberte **licence** a prověřte stav licencí.
 
    - Toto je očekávaný stav uživatele při migraci:
 

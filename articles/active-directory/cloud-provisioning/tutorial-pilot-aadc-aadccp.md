@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a8e6948b9912061801fefaa63d2f49611014aa
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266492"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651698"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
 
@@ -24,7 +24,7 @@ Tento kurz vás provede pilotním zřizováním cloudu pro testovací doménovou
 
 ![Vytvořit](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
 1. Ujistěte se, že jste obeznámeni se základy zřizování cloudu. 
 2. Ujistěte se, že používáte Azure AD Connect Sync verze 1.4.32.0 nebo novější a že jste nakonfigurovali pravidla synchronizace podle zdokumentovaného postupu. Při pilotním nasazení budete z rozsahu Azure AD Connect synchronizace odebírat testovací organizační jednotku nebo skupinu. Přesunutí objektů z oboru vede k odstranění těchto objektů ve službě Azure AD. V případě uživatelských objektů se objekty ve službě Azure AD odpouštějí a dají se obnovit. V případě objektů skupin se objekty ve službě Azure AD neodstraní a nelze je obnovit. V Azure AD Connect synchronizaci se zavedl nový typ odkazu, který zabrání odstranění v případě pilotního scénáře. 
@@ -35,7 +35,7 @@ Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
 
 4. Toto je pokročilý scénář. Ujistěte se, že postup je přesně popsaný v tomto kurzu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Testovací prostředí s Azure AD Connect synchronizace verze 1.4.32.0 nebo novější
 - Organizační jednotka nebo skupina, která je v rozsahu synchronizace a kterou lze použít pro pilotní nasazení. Doporučujeme začít s malou sadou objektů.
@@ -50,8 +50,8 @@ Jako minimum byste měli mít [službu Azure AD Connect](https://www.microsoft.c
 Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místním adresáři, pomocí plánovače. Chcete-li upravit a přidat vlastní pravidla, je třeba zakázat Plánovač, aby při práci na tomto procesu neběžely synchronizace.  Použijte k tomu následující postup:
 
 1.  Na serveru se spuštěným Azure AD Connect synchronizace otevřete PowerShell s oprávněními správce.
-2.  Spusťte příkaz `Stop-ADSyncSyncCycle`.  Stiskněte ENTER.
-3.  Spusťte příkaz `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+2.  Spusťte `Stop-ADSyncSyncCycle`.  Stiskněte ENTER.
+3.  Spusťte `Set-ADSyncScheduler -SyncCycleEnabled $false`.
 
 >[!NOTE] 
 >Pokud používáte vlastní Plánovač pro Azure AD Connect synchronizaci, zakažte prosím Plánovač. 
@@ -122,17 +122,17 @@ Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stej
 2. Stáhněte si tohoto Azure AD Connectho agenta zřizování cloudu pomocí kroků uvedených [tady](how-to-install.md#install-the-agent).
 3. Spuštění zřizování cloudu Azure AD Connect (AADConnectProvisioningAgent. Installer)
 3. Na úvodní obrazovce **přijměte** licenční podmínky a klikněte na **nainstalovat**.</br>
-![Snímek obrazovky s úvodní obrazovkou "Microsoft Azure A D Connect zřizovací agent.](media/how-to-install/install1.png)</br>
+![Snímek obrazovky s úvodní obrazovkou "Microsoft Azure A D Connect zřizovací agent.](media/how-to-install/install-1.png)</br>
 
 4. Po dokončení této operace se spustí Průvodce konfigurací nástroje.  Přihlaste se pomocí účtu globálního správce služby Azure AD.
 5. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce služby Active Directory.  Tato operace přidá váš místní adresář.  Klikněte na **Next** (Další).</br>
-![Snímek obrazovky, který zobrazuje obrazovku "připojit službu Active Directory" se zadanou hodnotou adresáře.](media/how-to-install/install3.png)</br>
+![Snímek obrazovky, který zobrazuje obrazovku "připojit službu Active Directory" se zadanou hodnotou adresáře.](media/how-to-install/install-3.png)</br>
 
 6. Na obrazovce **Konfigurace byla dokončena** klikněte na **Potvrdit**.  Tato operace provede registraci a restart agenta.</br>
-![Snímek obrazovky zobrazující obrazovku "konfigurace dokončena" s vybraným tlačítkem potvrdit.](media/how-to-install/install4.png)</br>
+![Snímek obrazovky zobrazující obrazovku "konfigurace dokončena" s vybraným tlačítkem potvrdit.](media/how-to-install/install-4a.png)</br>
 
 7. Po dokončení této operace by se měla zobrazit oznámení, že **vaše ověření bylo úspěšné.**  Můžete kliknout na tlačítko **konec**.</br>
-![Obrazovka Vítejte](media/how-to-install/install5.png)</br>
+![Obrazovka Vítejte](media/how-to-install/install-5.png)</br>
 8. Pokud se stále zobrazuje úvodní úvodní obrazovka, klikněte na **Zavřít**.
 
 ## <a name="verify-agent-installation"></a>Ověřit instalaci agenta
@@ -141,14 +141,14 @@ K ověření agenta dochází v Azure Portal a na místním serveru, na kterém 
 ### <a name="azure-portal-agent-verification"></a>Ověřování agenta Azure Portal
 Pokud chcete ověřit, že se agent zobrazuje v Azure, postupujte podle těchto kroků:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Na levé straně vyberte **Azure Active Directory**, klikněte na **Azure AD Connect** a ve středu vyberte **Spravovat zřizování (Preview)**.</br>
-![Azure Portal](media/how-to-install/install6.png)</br>
+![Azure Portal](media/how-to-install/install-6.png)</br>
 
 3.  Na obrazovce **zřizování Azure AD (Preview)** klikněte na **zkontrolovat všechny agenty**.
-![Zřizování Azure AD](media/how-to-install/install7.png)</br>
+![Zřizování Azure AD](media/how-to-install/install-7.png)</br>
  
-4. Na **obrazovce místní zřizovací agenti** se zobrazí agenti, které jste nainstalovali.  Ověřte, že je na něm daný agent a že je označený jako **zakázaný**.  Agent je ve výchozím nastavení zakázaný. ![](media/how-to-install/verify1.png)</br>
+4. Na **obrazovce místní zřizovací agenti** se zobrazí agenti, které jste nainstalovali.  Ověřte, že je na něm daný agent a že je označený jako **zakázaný**.  Agent je ve výchozím nastavení zakázaný. ![](media/how-to-install/verify-1.png)</br>
 
 ### <a name="on-the-local-server"></a>Na místním serveru
 Pokud chcete ověřit, jestli je agent spuštěný, postupujte takto:
@@ -156,7 +156,7 @@ Pokud chcete ověřit, jestli je agent spuštěný, postupujte takto:
 1.  Přihlaste se k serveru pomocí účtu správce.
 2.  Otevřete **služby** tak, že k němu přejdete nebo přejdete na Start/Run/Services. msc.
 3.  V části **služby** se ujistěte, že **Microsoft Azure AD připojit** nástroj aktualizace agenta a že je spuštěný **Agent Microsoft Azure AD připojení zřizování** a že je ve stavu **spuštěno**.
-![Služby](media/how-to-troubleshoot/troubleshoot1.png)
+![Služby](media/how-to-install/troubleshoot-1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>Konfigurace zřizování cloudu Azure AD Connect
 Při konfiguraci zřizování použijte následující postup:
@@ -170,7 +170,7 @@ Při konfiguraci zřizování použijte následující postup:
   ![ snímek obrazovky konfigurace na obrazovce zřizování služby Azure AD (Preview) s zvýrazněným odkazem nová konfigurace.](media/tutorial-single-forest/configure1.png)</br>
  6.  Na obrazovce konfigurace zadejte **e-mailové oznámení**, přesuňte selektor, který chcete **Povolit** , a klikněte na **Uložit**.
  ![Obrazovka Konfigurace obrazovky s vyplněným e-mailem oznámení a vybraným povolením](media/tutorial-single-forest/configure2.png)</br>
- 7. V části **Konfigurovat**vyberte možnost **Všichni uživatelé** a změňte rozsah pravidla konfigurace.
+ 7. V části **Konfigurovat** vyberte možnost **Všichni uživatelé** a změňte rozsah pravidla konfigurace.
  ![Snímek obrazovky s konfigurací "Všichni uživatelé", který je zvýrazněný vedle možnosti "uživatelé oboru".](media/how-to-configure/scope2.png)</br>
  8. Napravo změňte obor tak, aby zahrnoval konkrétní organizační jednotku, kterou jste právě vytvořili "OU = procesory, DC = contoso, DC = com".
  ![Snímek obrazovky s oborem, ve kterém se zvýrazní rozsah, který se změnil na organizační jednotku, kterou jste vytvořili.](media/tutorial-existing-forest/scope2.png)</br>

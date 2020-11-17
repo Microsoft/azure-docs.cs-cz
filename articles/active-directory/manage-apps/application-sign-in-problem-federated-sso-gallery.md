@@ -12,20 +12,20 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e75669c70c67d55c94642a0f6dbe3c9dbc3376e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357908"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651545"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémy s přihlašováním k aplikacím nakonfigurovaným pomocí jednotného přihlašování založené na SAML
 Chcete-li vyřešit potíže s přihlášením, doporučujeme následující postup, který vám umožní lépe diagnostikovat a automatizovat kroky řešení:
 
-- Pokud chcete zajistit lepší diagnostiku a řešení při použití zkušebního prostředí v Azure Portal, nainstalujte [rozšíření prohlížeče moje aplikace](access-panel-extension-problem-installing.md) na pomoc Azure Active Directory (Azure AD).
-- Reprodukuje chybu pomocí prostředí testování na stránce konfigurace aplikace v Azure Portal. Další informace o [ladění aplikací jednotného přihlašování založeného na SAML](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- Pokud chcete zajistit lepší diagnostiku a řešení při použití zkušebního prostředí v Azure Portal, nainstalujte [rozšíření prohlížeče moje aplikace](./access-panel-deployment-plan.md) na pomoc Azure Active Directory (Azure AD).
+- Reprodukuje chybu pomocí prostředí testování na stránce konfigurace aplikace v Azure Portal. Další informace o [ladění aplikací jednotného přihlašování založeného na SAML](./debug-saml-sso-issues.md)
 
-Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle následujících pokynů pro otevření konfigurační stránky jednotného přihlašování založené na SAML.
+Pokud používáte prostředí pro [testování](./debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle následujících pokynů pro otevření konfigurační stránky jednotného přihlašování založené na SAML.
 
 Otevření konfigurační stránky jednotného přihlašování založené na SAML:
 1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce**.
@@ -88,7 +88,7 @@ Azure AD nepodporuje požadavek SAML, který aplikace odeslala pro jednotné př
 
 **Řešení**
 
-1. Zachytit požadavek SAML. V tomto kurzu se dozvíte, jak pomocí [SAML ladit jednotné přihlašování k aplikacím ve službě Azure AD](../azuread-dev/howto-v1-debug-saml-sso-issues.md) a Naučte se zachytit požadavek SAML.
+1. Zachytit požadavek SAML. V tomto kurzu se dozvíte, jak pomocí [SAML ladit jednotné přihlašování k aplikacím ve službě Azure AD](./debug-saml-sso-issues.md) a Naučte se zachytit požadavek SAML.
 1. Obraťte se na dodavatele aplikace a podělte se s ním o následující informace:
     - Požadavek SAML
     - [Požadavky protokolu SAML jednotného přihlašování Azure AD](../develop/single-sign-on-saml-protocol.md)
@@ -174,5 +174,5 @@ Porovnejte prostředek, ke kterému požadujete přístup, v kódu s nakonfiguro
 
 ## <a name="next-steps"></a>Další kroky
 - [Série rychlý Start při správě aplikací](add-application-portal-assign-users.md)
-- [Jak ladit jednotné přihlašování založené na SAML pro aplikace v Azure AD](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
-- [Požadavky protokolu SAML jednotného přihlašování Azure AD](../develop/active-directory-single-sign-on-protocol-reference.md)
+- [Jak ladit jednotné přihlašování založené na SAML pro aplikace v Azure AD](./debug-saml-sso-issues.md)
+- [Požadavky protokolu SAML jednotného přihlašování Azure AD](../develop/single-sign-on-saml-protocol.md)

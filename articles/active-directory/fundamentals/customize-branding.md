@@ -13,18 +13,18 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: bb138ade0f579a7545c0910646b6adfb7d5ac02a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "89565850"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650219"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidání brandingu na přihlašovací stránku Azure Active Directory vaší organizace
 Použijte logo vaší organizace a vlastní barevná schémata k zajištění konzistentního vzhledu na přihlašovacích stránkách Azure Active Directory (Azure AD). Přihlašovací stránky se zobrazí, když se uživatelé přihlásí k webovým aplikacím vaší organizace, jako je například Microsoft 365, který jako poskytovatele identity používá službu Azure AD.
 
 >[!NOTE]
->Přidání vlastního brandingu vyžaduje, abyste použili edice Azure Active Directory Premium 1, Premium 2 nebo Basic nebo aby Microsoft 365 licenci. Další informace o licencování a edicích najdete v tématu [Registrace pro Azure AD Premium](active-directory-get-started-premium.md).<br><br>Edice Premium a Basic služby Azure AD jsou zákazníkům v Číně dostupné prostřednictvím celosvětové instance služby Azure Active Directory. Edice Premium a Basic služby Azure AD v současnosti nejsou podporované ve službě Azure provozované v Číně společností 21Vianet. Můžete se na nás obrátit na [fóru služby Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/), kde se dozvíte další informace.
+>Přidání vlastního brandingu vyžaduje, abyste měli licence Azure Active Directory Premium 1 nebo Premium 2. Další informace o licencování a edicích najdete v tématu [Registrace pro Azure AD Premium](active-directory-get-started-premium.md).<br><br>Edice Azure AD Premium jsou k dispozici pro zákazníky v Číně pomocí celosvětové instance služby Azure Active Directory. Edice Azure AD Premium se v současnosti nepodporují ve službě Azure provozované společností 21Vianet v Číně. Můžete se na nás obrátit na [fóru služby Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/), kde se dozvíte další informace.
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Přizpůsobení přihlašovací stránky Azure AD
 Můžete přizpůsobit přihlašovací stránky služby Azure AD, které se zobrazí, když se uživatelé přihlásí k aplikacím specifickým pro tenanta, jako `https://outlook.com/contoso.com` je například nebo při předávání proměnné domény, například `https://passwordreset.microsoftonline.com/?whr=contoso.com` .
@@ -86,12 +86,12 @@ Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na 
     
         - **Obrázek čtvercového loga, tmavý motiv** Stejné jako u obrázku čtvercového loga výše. Tento obrázek loga při použití s tmavým pozadím získá místo obrázku čtvercového loga, jako jsou obrazovky připojené ke službě Azure AD s Windows 10 během spouštěného spouštěného prostředí (OOBE).  Pokud vaše logo vypadá dobře na bílém, tmavém a černém pozadí, nemusíte tento obrázek přidávat. 
         
-        - **Zobrazit možnost zůstat přihlášeni.** Můžete zvolit, aby vaši uživatelé měli zůstat přihlášení ke službě Azure AD, dokud se explicitně odhlásíte. Pokud zvolíte **ne** , tato možnost bude skrytá a uživatelé se musí přihlašovat pokaždé, když se prohlížeč zavře a znovu otevře.
+        - **Zobrazit možnost zůstat přihlášeni.** Můžete zvolit, aby vaši uživatelé měli zůstat přihlášení ke službě Azure AD, dokud se explicitně odhlásíte. Pokud zvolíte **ne**, tato možnost bude skrytá a uživatelé se musí přihlašovat pokaždé, když se prohlížeč zavře a znovu otevře.
 
             Tato funkce je k dispozici pouze na výchozím objektu brandingu a nikoli na objektu specifickém pro daný jazyk. Další informace o konfiguraci a řešení potíží s možnostmi zůstat přihlášené najdete v tématu [Konfigurace "zůstat přihlášeného?" pro účty Azure AD](keep-me-signed-in.md) .
         
             >[!NOTE]
-            >Některé funkce služeb SharePoint Online a Office 2010 závisí na tom, jestli mají uživatelé možnost zůstat přihlášení. Pokud nastavíte **Ne** , můžou se vašim uživatelům zobrazovat další neočekávané výzvy k přihlášení.
+            >Některé funkce služeb SharePoint Online a Office 2010 závisí na tom, jestli mají uživatelé možnost zůstat přihlášení. Pokud nastavíte **Ne**, můžou se vašim uživatelům zobrazovat další neočekávané výzvy k přihlášení.
    
 
 3. Až dokončíte přidávání brandingu, vyberte **Uložit**.

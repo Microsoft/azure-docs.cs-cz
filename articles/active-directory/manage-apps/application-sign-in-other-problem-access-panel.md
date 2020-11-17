@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: e03598ab53a9061a59e18041b2f3f4dc04e1b110
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 8cbc683f06b809ec4d9c63a61d73a0c731a92cd7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424534"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651614"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Řešení potíží s přihlášením k aplikaci z Azure AD moje aplikace
 
@@ -100,8 +100,8 @@ Pokud chcete resetovat heslo uživatele, postupujte podle těchto kroků:
 
 ### <a name="enable-self-service-password-reset"></a>Povolení samoobslužného resetování hesel
 Pokud chcete povolit samoobslužné resetování hesla, postupujte podle těchto kroků nasazení:
--   [Povolit uživatelům resetovat hesla Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
--   [Povolit uživatelům resetovat nebo změnit místní hesla služby Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Povolit uživatelům resetovat hesla Azure Active Directory](../authentication/tutorial-enable-sspr.md)
+-   [Povolit uživatelům resetovat nebo změnit místní hesla služby Active Directory](../authentication/tutorial-enable-sspr.md)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>Zkontroluje stav vícefaktorového ověřování uživatele.
 Chcete-li zjistit stav vícefaktorového ověřování uživatele, postupujte takto:
@@ -113,7 +113,7 @@ Chcete-li zjistit stav vícefaktorového ověřování uživatele, postupujte ta
 6. V horní části podokna vyberte tlačítko **Multi-Factor Authentication** .
 7. Po načtení **portálu pro správu Multi-Factor Authentication** se ujistěte, že jste na kartě **Uživatelé** .
 8. Vyhledejte uživatele v seznamu uživatelů hledáním, filtrováním nebo řazením.
-9. Vyberte uživatele ze seznamu uživatelů a podle potřeby povolte, **zakažte** **nebo** **vypněte**službu Multi-Factor Authentication.
+9. Vyberte uživatele ze seznamu uživatelů a podle potřeby povolte, **zakažte** **nebo** **vypněte** službu Multi-Factor Authentication.
    >[!NOTE]
    >Pokud je uživatel v **vykonatelném** stavu, můžete ho nastavit tak, aby se dočasně **zakázal** , aby se mohl vrátit ke svému účtu. Až budou zpátky, můžete změnit jejich stav na **povoleno** , aby bylo možné znovu zaregistrovat své kontaktní údaje při příštím přihlášení. Případně můžete postupovat podle pokynů v [kontaktních informacích k ověření uživatele](#check-a-users-authentication-contact-info) a ověřit nebo nastavit tato data.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: f49377743521e27c2312e95491762ca48d8448c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55934e8c33b74740b7398be1ae18a3ef899aee74
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604321"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651273"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Správa přiřazování uživatelů pro aplikaci v Azure Active Directory
 
@@ -58,7 +58,7 @@ Vyžadování přiřazení uživatele pro aplikaci:
 Další informace o tom, jak přiřadit nebo zrušit přiřazení uživatele nebo skupiny pomocí Azure Portal, najdete v části [rychlý start série při správě aplikací](add-application-portal-assign-users.md).
 
 ## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-graph-api"></a>Přiřazení nebo zrušení přiřazení uživatelů a skupin pro aplikaci pomocí Graph API
-K přiřazení nebo zrušení přiřazení uživatelů a skupin pro aplikaci můžete použít Graph API. Další informace najdete v tématu [přiřazení rolí aplikace](https://docs.microsoft.com/graph/api/resources/approleassignment).
+K přiřazení nebo zrušení přiřazení uživatelů a skupin pro aplikaci můžete použít Graph API. Další informace najdete v tématu [přiřazení rolí aplikace](/graph/api/resources/approleassignment).
 
 ## <a name="assign-users-and-groups-to-an-app-using-powershell"></a>Přiřazení uživatelů a skupin k aplikaci pomocí prostředí PowerShell
 1. Otevřete příkazový řádek Windows PowerShellu se zvýšenými oprávněními.
@@ -81,11 +81,11 @@ K přiřazení nebo zrušení přiřazení uživatelů a skupin pro aplikaci mů
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
-Další informace o tom, jak přiřadit uživatele k roli aplikace, najdete v dokumentaci k [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0).
+Další informace o tom, jak přiřadit uživatele k roli aplikace, najdete v dokumentaci k [New-AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0).
 
 Chcete-li přiřadit skupinu k podnikové aplikaci, je nutné nahradit `Get-AzureADUser` `Get-AzureADGroup` a nahradit `New-AzureADUserAppRoleAssignment` `New-AzureADGroupAppRoleAssignment` .
 
-Další informace o tom, jak přiřadit skupinu k roli aplikace, najdete v dokumentaci k [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0).
+Další informace o tom, jak přiřadit skupinu k roli aplikace, najdete v dokumentaci k [New-AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0).
 
 ### <a name="example"></a>Příklad
 
@@ -154,6 +154,6 @@ Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workpla
 ## <a name="next-steps"></a>Další kroky
 
 - [Zobrazit všechny moje skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace](remove-user-or-group-access-portal.md)
+- [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace]()
 - [Zakázání přihlášení uživatelů pro podnikovou aplikaci](disable-user-sign-in-portal.md)
-- [Změna názvu nebo loga podnikové aplikace](change-name-or-logo-portal.md)
+- [Změna názvu nebo loga podnikové aplikace](./add-application-portal-configure.md)

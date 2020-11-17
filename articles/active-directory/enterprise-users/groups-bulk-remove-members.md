@@ -4,21 +4,21 @@ description: Odeberte členy skupiny v hromadných operacích v centru pro sprá
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5da3da152fa8d0f568ee0f4075dafb8da8c3bf8a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 83b905faa892cc338b5bdf4f998ad95f7b8a484e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375546"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650848"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Hromadné odebrání členů skupiny v Azure Active Directory
 
@@ -59,7 +59,7 @@ Pokud chcete úspěšně přidat členy skupiny Azure AD hromadně, Stáhněte a
 
     :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="Soubor CSV obsahuje jména a ID členů skupiny, které se mají odebrat.":::
 
-1. Na stránce **hromadné odebrání členů skupiny** v části **nahrát soubor CSV**přejděte k souboru. Po výběru souboru se spustí ověření souboru CSV.
+1. Na stránce **hromadné odebrání členů skupiny** v části **nahrát soubor CSV** přejděte k souboru. Po výběru souboru se spustí ověření souboru CSV.
 1. Po ověření obsahu souboru se zobrazí stránka hromadného importu **úspěšně nahrané soubory**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.
 1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která odebere členy skupiny ze skupiny.
 1. Po dokončení operace odebrání se zobrazí oznámení, že hromadná operace byla úspěšná.
@@ -70,7 +70,7 @@ Na stránce **výsledků hromadných operací** můžete zobrazit stav všech va
 
 [![Stav kontroly na stránce výsledků hromadných operací](./media/groups-bulk-remove-members/bulk-center.png)](./media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
-Chcete-li zobrazit podrobnosti o jednotlivých položkách řádku v rámci hromadné operace, vyberte hodnoty ve sloupcích **# úspěch**, **# selhání**nebo **Celkový počet požadavků** . Pokud dojde k chybám, zobrazí se důvody selhání.
+Chcete-li zobrazit podrobnosti o jednotlivých položkách řádku v rámci hromadné operace, vyberte hodnoty ve sloupcích **# úspěch**, **# selhání** nebo **Celkový počet požadavků** . Pokud dojde k chybám, zobrazí se důvody selhání.
 
 ## <a name="bulk-removal-service-limits"></a>Omezení služby hromadného odebrání
 

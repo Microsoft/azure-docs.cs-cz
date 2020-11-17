@@ -9,18 +9,18 @@ manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 04/29/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1b61ca00b83d4c6b43fb5ade68dfb1228f0e0d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 732a92aea321bac0bc9cea4d3eee5a3979a469b1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374860"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650576"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Přiřazení licencí uživatelům podle členství ve skupině v Azure Active Directory
 
@@ -39,7 +39,7 @@ V tomto příkladu organizace Azure AD obsahuje skupinu zabezpečení nazvanou *
 
 1. Výběrem možnosti **licence** otevřete stránku, kde můžete zobrazit a spravovat všechny produkty pro vystavování licencí v organizaci.
 
-1. V části **všechny produkty**vyberte možnost Office 365 Enterprise E5 a Enterprise mobility + Security E3 výběrem názvů produktů. Pokud chcete spustit přiřazení, vyberte v horní části stránky **přiřadit** .
+1. V části **všechny produkty** vyberte možnost Office 365 Enterprise E5 a Enterprise mobility + Security E3 výběrem názvů produktů. Pokud chcete spustit přiřazení, vyberte v horní části stránky **přiřadit** .
 
    ![Vybrat produkty k přiřazení licencí](./media/licensing-groups-assign/licenses-all-products-assign.png)
   
@@ -47,7 +47,7 @@ V tomto příkladu organizace Azure AD obsahuje skupinu zabezpečení nazvanou *
 
 1. Vyberte uživatele nebo skupinu a pak použijte tlačítko **Vybrat** v dolní části stránky k potvrzení výběru.
 
-1. Na stránce **přiřadit licenci** klikněte na **možnosti přiřazení**, které zobrazí všechny plány služby zahrnuté do dvou produktů, které jsme vybrali dřív. Najděte si **Yammer Enterprise** a vypněte **ji,** aby se tato služba z licence na produkt zakázala. Kliknutím na **OK** v dolní části **možností licence**potvrďte.
+1. Na stránce **přiřadit licenci** klikněte na **možnosti přiřazení**, které zobrazí všechny plány služby zahrnuté do dvou produktů, které jsme vybrali dřív. Najděte si **Yammer Enterprise** a vypněte **ji,** aby se tato služba z licence na produkt zakázala. Kliknutím na **OK** v dolní části **možností licence** potvrďte.
 
    ![vybrat plány služeb pro licence](./media/licensing-groups-assign/assignment-options.png)
   
@@ -81,7 +81,7 @@ Když přiřadíte licence ke skupině, Azure AD zpracuje všechny stávající 
 
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Krok 3: vyhledání problémů s licencí a jejich řešení
 
-1. Přejít na **Azure Active Directory**  >  **skupiny**a vyhledat skupinu, ke které byly licence přiřazené.
+1. Přejít na **Azure Active Directory**  >  **skupiny** a vyhledat skupinu, ke které byly licence přiřazené.
 1. Na stránce skupina vyberte **licence**. Oznámení v horní části stránky ukazuje, že je k dispozici 10 uživatelů, kterým nebylo možné přiřazovat licence. Otevřete ho a zobrazí se seznam všech uživatelů v chybovém stavu licencování této skupiny.
 1. Sloupec **nezdařené přiřazení** nám oznamuje, že se k uživatelům nepovedlo přiřadit licence k licenci. Sloupec **nejvyšší příčiny selhání** obsahuje příčinu selhání. V tomto případě se jedná o **konfliktní plány služeb**.
 

@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0dcf05f829cfcdc79fcd7be903b96fb601c095a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7a594d42485510a525ce4e3c7f03b432554100f8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379089"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650593"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Rychlý start: Zásady pojmenování pro skupiny v Azure Active Directory
 
@@ -34,7 +34,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 ## <a name="configure-the-group-naming-policy-in-the-azure-portal"></a>Konfigurace zásady pojmenování skupin v Azure Portal
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu správce uživatele.
-1. Vyberte **skupiny**a pak výběrem **zásady pojmenování** otevřete stránku zásady pojmenování.
+1. Vyberte **skupiny** a pak výběrem **zásady pojmenování** otevřete stránku zásady pojmenování.
 
     ![Otevřete stránku zásady pojmenování v centru pro správu.](./media/groups-quickstart-naming-policy/policy.png)
 
@@ -51,7 +51,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
     ![seznam blokovaných slov pro úpravy a nahrání pro zásady pojmenování](./media/groups-quickstart-naming-policy/blockedwords.png)
 
-1. Výběrem položky **Stáhnout**zobrazíte nebo upravíte aktuální seznam vlastních blokovaných slov.
+1. Výběrem položky **Stáhnout** zobrazíte nebo upravíte aktuální seznam vlastních blokovaných slov.
 1. Kliknutím na ikonu souboru Nahrajte nový seznam vlastních blokovaných slov.
 1. Vyberte **Uložit** pro změny zásady, aby se projevily.
 

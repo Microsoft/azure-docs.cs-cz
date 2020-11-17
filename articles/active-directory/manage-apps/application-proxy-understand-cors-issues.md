@@ -11,18 +11,18 @@ ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8836295e9f54260c4e9ff6c1da333ef2a86d58fb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84759925"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651851"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Pochopení a řešení potíží s Proxy aplikací služby Azure Active Directory CORS
 
-[Sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/)   v některých případech může docházet k problémům s aplikacemi a rozhraními API, která publikujete prostřednictvím Proxy aplikací služby Azure Active Directory. Tento článek popisuje problémy a řešení pro Azure Proxy aplikací služby AD CORS.
+[Sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/) může někdy představovat výzvy pro aplikace a rozhraní API, které publikujete prostřednictvím proxy aplikací služby Azure Active Directory. Tento článek popisuje problémy a řešení pro Azure Proxy aplikací služby AD CORS.
 
-Zabezpečení prohlížeče obvykle brání webové stránce v provádění požadavků AJAX na jinou doménu. Toto omezení se nazývá *zásady stejného původu*a brání škodlivému webu v čtení citlivých dat z jiné lokality. V některých případech však můžete chtít povolit jiným webům volat vaše webové rozhraní API. CORS je standard W3C, který umožňuje serveru zmírnit zásady stejného původce a při zamítnutí dalších požadavků umožnit některé žádosti mezi zdroji.
+Zabezpečení prohlížeče obvykle brání webové stránce v provádění požadavků AJAX na jinou doménu. Toto omezení se nazývá *zásady stejného původu* a brání škodlivému webu v čtení citlivých dat z jiné lokality. V některých případech však můžete chtít povolit jiným webům volat vaše webové rozhraní API. CORS je standard W3C, který umožňuje serveru zmírnit zásady stejného původce a při zamítnutí dalších požadavků umožnit některé žádosti mezi zdroji.
 
 ## <a name="understand-and-identify-cors-issues"></a>Pochopení a identifikace problémů s CORS
 
@@ -66,7 +66,7 @@ Předchozí problém CORS můžete vyřešit některým z několika způsobů.
 
 ### <a name="option-1-set-up-a-custom-domain"></a>Možnost 1: nastavení vlastní domény
 
-Použijte [vlastní doménu](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) Azure proxy aplikací služby AD k publikování ze stejného původu, aniž byste museli dělat změny v původních aplikacích, kódu nebo hlavičkách. 
+Použijte [vlastní doménu](./application-proxy-configure-custom-domain.md) Azure proxy aplikací služby AD k publikování ze stejného původu, aniž byste museli dělat změny v původních aplikacích, kódu nebo hlavičkách. 
 
 ### <a name="option-2-publish-the-parent-directory"></a>Možnost 2: publikování nadřazeného adresáře
 
@@ -117,4 +117,4 @@ Některé problémy CORS nelze vyřešit, například když vaše aplikace přes
 ## <a name="see-also"></a>Viz také
 - [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md) 
 - [Naplánování nasazení proxy aplikací služby Azure AD](application-proxy-deployment-plan.md) 
-- [Vzdálený přístup k místním aplikacím prostřednictvím Proxy aplikací služby Azure Active Directory](application-proxy.md) 
+- [Vzdálený přístup k místním aplikacím prostřednictvím Proxy aplikací služby Azure Active Directory](application-proxy.md)

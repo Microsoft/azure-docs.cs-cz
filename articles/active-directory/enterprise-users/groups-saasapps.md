@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c78b61798e72d87ec245082a5822bcfc58a1b61
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 58d5cc64b21207efbdefdafe020248212eed7efe
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375738"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650559"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>Použití skupiny ke správě přístupu k aplikacím SaaS
 
@@ -34,8 +34,8 @@ Pomocí služby Azure Active Directory (Azure AD) s licenčním plánem Azure AD
 
 1. V [centru pro správu Azure AD](https://aad.portal.azure.com)vyberte **podnikové aplikace**.
 2. Vyberte aplikaci, kterou jste přidali z Galerie aplikací, a otevřete ji.
-3. Vyberte **Uživatelé a skupiny**a pak vyberte **Přidat uživatele**.
-4. V části **Přidat přiřazení**vyberte **Uživatelé a skupiny** a otevřete seznam **uživatelů a skupin** .
+3. Vyberte **Uživatelé a skupiny** a pak vyberte **Přidat uživatele**.
+4. V části **Přidat přiřazení** vyberte **Uživatelé a skupiny** a otevřete seznam **uživatelů a skupin** .
 6. Vyberte tolik skupin nebo uživatelů, kolik chcete, a pak klikněte nebo klepněte na **Vybrat** a přidejte je do seznamu **Přidat přiřazení** . Uživateli v této fázi můžete také přiřadit roli.
 7. Vyberte **přiřadit** a přiřaďte uživatele nebo skupiny k vybrané podnikové aplikaci.
 

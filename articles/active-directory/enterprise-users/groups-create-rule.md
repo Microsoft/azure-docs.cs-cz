@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a94d1a4fa717bbee9974f7218e704ba06dad530d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f9fcdd2ce17e967be432f8edc910dcf2fcdbed3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375835"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650899"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Vytvoření nebo aktualizace dynamické skupiny v Azure Active Directory
 
@@ -48,7 +48,7 @@ Příklady syntaxe, podporovaných vlastností, operátorů a hodnot pravidla č
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který se nachází v roli globální správce, Správce služby Intune nebo Správce uživatelů v organizaci Azure AD.
 1. Vyhledejte a vyberte **skupiny**.
-1. Vyberte možnost **všechny skupiny**a vyberte možnost **Nová skupina**.
+1. Vyberte možnost **všechny skupiny** a vyberte možnost **Nová skupina**.
 
    ![Vyberte příkaz pro přidání nové skupiny.](./media/groups-create-rule/create-new-group-azure-active-directory.png)
 
@@ -99,10 +99,10 @@ Pro stav **zpracování členství** lze zobrazit následující stavové zpráv
 Pro stav **Poslední aktualizace členství** se můžou zobrazit tyto stavové zprávy:
 
 - &lt;**Datum a čas** &gt; : čas poslední aktualizace členství.
-- **Probíhá: aktuálně**probíhá aktualizace.
+- **Probíhá: aktuálně** probíhá aktualizace.
 - **Neznámé**: čas poslední aktualizace se nedá načíst. Tato skupina může být nová.
 
-Pokud při zpracovávání pravidla členství pro určitou skupinu dojde k chybě, zobrazí se v horní části **stránky přehled** pro danou skupinu výstraha. Pokud se pro všechny skupiny v organizaci po dobu delší než 24 hodin nedají zpracovat žádné nedokončené dynamické aktualizace členství, zobrazí se v horní části **všech skupin**výstraha.
+Pokud při zpracovávání pravidla členství pro určitou skupinu dojde k chybě, zobrazí se v horní části **stránky přehled** pro danou skupinu výstraha. Pokud se pro všechny skupiny v organizaci po dobu delší než 24 hodin nedají zpracovat žádné nedokončené dynamické aktualizace členství, zobrazí se v horní části **všech skupin** výstraha.
 
 ![zpracování upozornění na chybové zprávy](./media/groups-create-rule/processing-error.png)
 

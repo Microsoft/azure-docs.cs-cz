@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d70676e117a71fbd194e921b4755ba5d196871c7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375925"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650304"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrace připojení k účtu LinkedIn v Azure Active Directory
 
@@ -42,7 +42,7 @@ Připojení k účtu LinkedIn můžete povolit jenom pro uživatele, kterým chc
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/) pomocí účtu, který je globálním správcem pro organizaci Azure AD.
 1. Vyberte **Uživatelé**.
 1. Na stránce **Uživatelé** vyberte **nastavení uživatele**.
-1. V části **připojení k účtu LinkedInu**Umožněte uživatelům připojit své účty pro přístup k jejich připojením LinkedIn v některých aplikacích Microsoftu. Žádná data nejsou sdílená, dokud uživatel nesouhlasí připojit své účty.
+1. V části **připojení k účtu LinkedInu** Umožněte uživatelům připojit své účty pro přístup k jejich připojením LinkedIn v některých aplikacích Microsoftu. Žádná data nejsou sdílená, dokud uživatel nesouhlasí připojit své účty.
 
     * Vyberte **Ano** , pokud chcete službu povolit pro všechny uživatele ve vaší organizaci.
     * Výběrem **vybrané skupiny** povolíte službu jenom pro skupinu vybraných uživatelů ve vaší organizaci.

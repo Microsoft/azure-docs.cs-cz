@@ -1,5 +1,5 @@
 ---
-title: Model identity
+title: Model identit
 titleSuffix: An Azure Communication Services concept
 description: Další informace o identitách a přístupových tokenech
 author: tomaschladek
@@ -9,43 +9,59 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 996f138a14923319381738e7a55cd7ba4e8c4320
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: f172bfcb6e4f11520eb9082052968626efe6fecb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517763"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651239"
 ---
-# <a name="identity-model"></a>Model identity
+# <a name="identity-model"></a>Model identit
 
-Komunikační služby Azure jsou služby identity nezávislá. Tento návrh má několik výhod:
-- Opětovné použití existujících identit ze systému správy identit
-- Flexibilita pro scénáře integrace
-- Vaše identity se udržují soukromě ke komunikačním službám Azure.
+Komunikační služby Azure jsou služby identity – nezávislá. Tento návrh nabízí několik výhod:
 
-Místo duplikace stávajících informací v systému zachováte vztah mapování, který je specifický pro váš obchodní případ. Například mapování identit 1:1, 1: N, N:1, N:M. Externí identifikátory (například telefonní čísla, uživatelé, zařízení, aplikace, GUID) nejde použít jako identitu komunikace Azure. Přístupové tokeny generované pro identitu služby Azure Communication Service se používají pro přístup k primitivním, jako je konverzace nebo volání. 
+- Znovu používat stávající identity ze systému správy identit
+- Poskytuje flexibilitu pro scénáře integrace
+- Vaše identity jsou v komunikačních službách Azure soukromé.
+
+Místo duplikace informací v systému zachováte vztah mapování, který váš obchodní případ vyžaduje. Můžete například mapovat identity 1:1, 1: N, N:1, N:M. Externí identifikátory, jako jsou telefonní čísla, uživatelé, zařízení, aplikace a identifikátory GUID, se nedají použít k identifikaci v komunikačních službách Azure. Přístupové tokeny, které se generují pro identitu komunikačních služeb Azure, se používají pro přístup k primitivním objektům, jako je konverzace nebo volání.
 
 ## <a name="identity"></a>Identita
 
-Identity se vytvářejí pomocí knihovny pro správu služby Azure Communication Service. Identita slouží jako identifikátor v konverzacích a slouží k vytváření přístupových tokenů. Stejná identita se může účastnit několika souběžných relací napříč různými zařízeními. Identita může mít několik aktivních přístupových tokenů současně. Odstranění identity, prostředku nebo předplatného způsobí neplatnost všech přístupových tokenů a odstranění všech dat uložených pro tuto identitu. Odstraněná identita nemůže vydat nové přístupové tokeny, ani přístup k dříve uloženým datům (například zprávy chatu). 
+Identity můžete vytvořit pomocí knihovny pro správu služby Azure Communication Services. Identita slouží jako identifikátor v konverzacích. Používá se k vytváření přístupových tokenů. Stejná identita se může účastnit několika souběžných relací napříč různými zařízeními. Identita může mít několik aktivních přístupových tokenů současně. 
 
-Neúčtují se vám podle počtu identit, které máte, ale s využitím primitivních hodnot. Počet identit nemusíte omezovat, jak namapovat identity vaší aplikace na identity komunikačních služeb Azure. Pokud je volnost mapování v souladu s podmínkami ochrany osobních údajů, bude to mít za následek. Když chce uživatel vaší aplikace odstranit ze systému, je nutné odstranit všechny identity, které byly přidruženy k tomuto uživateli.
+Odstranění identity, prostředku nebo předplatného zruší platnost všech přístupových tokenů. Tato akce také odstraní všechna data uložená pro danou identitu. Odstraněná identita nemůže vytvářet nové přístupové tokeny nebo získávat přístup k dříve uloženým datům (například zprávy chatu). 
 
-Komunikační služby Azure neposkytují speciální identity pro anonymní uživatele. Neudržuje mapování mezi uživateli a identitami, ale nerozumí, jestli je identita anonymní. Koncept můžete navrhnout tak, aby vyhovoval vašim požadavkům. Naším doporučením je vytvořit novou identitu pro anonymního uživatele aplikace. Při držení platného přístupového tokenu může kdokoli získat přístup k neodstraněnému obsahu identity. Například zprávy chatu odeslané uživatelem. Přístup je omezený jenom na obory, které jsou součástí přístupového tokenu. Další podrobnosti o oborech jsou v *přístupovém tokenu* oddílu.
+Neúčtují se vám poplatky za počet identit. Místo toho se vám účtuje použití primitivních hodnot. Počet vašich identit nemusí omezovat, jak namapovat identity aplikace na identity komunikačních služeb Azure. 
 
-### <a name="mapping-of-identities"></a>Mapování identit
+Díky svobodě mapování se dostane odpovědnost za ochranu osobních údajů. Pokud se chce uživatel z vašeho systému odstranit, musíte odstranit všechny identity přidružené k tomuto uživateli.
 
-Komunikační služby Azure nereplikují funkce IMS. Neposkytuje zákazníkům způsob, jak používat identity specifické pro zákazníka. Například telefonní číslo nebo e-mailová adresa. Místo toho poskytuje jedinečné identifikátory, které můžete přiřadit k identitám vaší aplikace. Komunikační služby Azure neukládají žádný druh informací, které by mohly odhalit skutečnou identitu vašich uživatelů.
+Komunikační služby Azure neposkytují speciální identity pro anonymní uživatele. Neudržuje mapování mezi uživateli a identitami a nemůže určit, jestli je identita anonymní. Koncept identity můžete navrhnout tak, aby vyhovoval vašim potřebám. Naším doporučením je vytvořit novou identitu pro každého anonymního uživatele v každé aplikaci. 
 
-Místo duplikace doporučujeme navrhnout, jak budou uživatelé z vaší domény identity namapováni na identity služby Azure Communication Service. Můžete postupovat podle jakéhokoli druhu vzoru 1:1, 1: N, N:1 nebo M:N.. Můžete rozhodnout, zda je jeden uživatel namapován na jedinou identitu nebo na více identit. Při vytvoření nové identity doporučujeme uložit mapování této identity uživateli nebo uživatelům vaší aplikace. Jelikož identity vyžadují přístupové tokeny pro použití primitivních rozhraní, musí být identita pro uživatele nebo uživatele vaší aplikace známa.
+Kdokoli, kdo má platný přístupový token, má přístup k aktuálnímu obsahu identity. Uživatelé můžou například získat přístup k odeslaným zprávám chatu. Přístup je omezený jenom na obory, které jsou součástí přístupového tokenu. Další informace najdete v části [přístupové tokeny](#access-tokens) v tomto článku.
 
-Pokud používáte relační databázi pro ukládání uživatelů, implementace se může lišit v závislosti na vašem scénáři mapování. U scénářů s mapováním 1:1 nebo N:1 můžete do tabulky přidat sloupec *CommunicationServicesId* , který bude ukládat vaši identitu služby Azure Communication Services. Ve scénářích s relací 1: N nebo N:M můžete zvážit vytvoření samostatné tabulky v relační databázi.
+### <a name="identity-mapping"></a>Mapování identit
 
-## <a name="access-token"></a>Přístupový token
+Komunikační služby Azure nereplikují funkce systému Azure Identity Management. Neposkytuje zákazníkům způsob, jak používat identity specifické pro zákazníka. Zákazníci například nemohou použít telefonní číslo nebo e-mailovou adresu. Místo toho poskytují komunikační služby Azure jedinečné identifikátory. K identitám vaší aplikace můžete přiřadit tyto jedinečné identifikátory. Komunikační služby Azure neukládají žádné typy informací, které by mohly odhalit skutečnou identitu vašich uživatelů.
 
-Přístupový token je token JWT, který se dá použít k získání přístupu k primitivním adresářům služby Azure Communication. Vydaný přístupový token má ochranu integrity, jeho deklarace se po jeho vydání nedají změnit. To znamená, že ruční změna vlastností, jako jsou identity, vypršení platnosti nebo obory, nastaví přístupový token jako neplatný. Použití primitivních hodnot s neověřenými tokeny vede k odepření přístupu k primitivnímu. 
+Abyste se vyhnuli duplicitě informací v systému, naplánujte, jak namapovat uživatele z vaší domény identity na identity komunikačních služeb Azure. Můžete postupovat podle jakéhokoli druhu vzoru. Můžete například použít 1:1, 1: N, N:1 nebo M:N. Rozhodněte, zda je jeden uživatel namapován na jedinou identitu nebo na více identit. 
 
-Vlastnosti přístupového tokenu jsou: *identita, vypršení platnosti* a *rozsahy*. Přístupový token je vždycky platný po dobu 24 hodin. Po skončení platnosti přístupového tokenu se nepůjde použít pro přístup k žádné primitivní. Identita musí mít způsob, jak požádat o nový přístupový token ze služby na straně serveru. *Rozsah* parametrů definuje neprázdnou sadu primitivních elementů, které lze použít. Komunikační služby Azure podporují následující obory pro přístupové tokeny:
+Při vytvoření nové identity uložte své mapování na uživatele nebo uživatele vaší aplikace. Vzhledem k tomu, že identity vyžadují přístupové tokeny, aby používaly primitivní prvky, musí být identita známa uživateli nebo uživatelům vaší aplikace.
+
+Pokud k ukládání informací o uživatelích používáte relační databázi, můžete upravit návrh podle vašeho scénáře mapování. V případě scénářů, které mapují 1:1 nebo N:1, můžete chtít do `CommunicationServicesId` tabulky přidat sloupec pro uložení vaší identity služby Azure Communication Services. Ve scénářích používajících relaci 1: N nebo N:M můžete zvážit vytvoření samostatné tabulky v relační databázi.
+
+## <a name="access-tokens"></a>Přístupové tokeny
+
+Přístupový token je JSON Web Token (JWT), který se dá použít k získání přístupu k primitivám komunikační služby Azure. Přístupový token, který je vydaný, má ochranu integrity. To znamená, že jeho deklarace se po jeho vydání nedají změnit. V důsledku ruční změny vlastností, jako jsou identity, vypršení platnosti nebo obory, dojde k zrušení platnosti přístupového tokenu. Pokud se pro neověřené tokeny používají primitivní prvky, přístup k primitivním elementům se odmítne. 
+
+Vlastnosti přístupového tokenu jsou:
+* Odcizen.
+* Vypršení platnosti.
+* Oboru.
+
+Přístupový token je vždycky platný po dobu 24 hodin. Po vypršení platnosti je přístupový token neověřený a nedá se použít pro přístup k žádné primitivní. 
+
+Identita vyžaduje způsob, jak požádat o nový přístupový token ze služby na straně serveru. Parametr *Scope* definuje neprázdnou sadu primitivních elementů, které lze použít. Komunikační služby Azure podporují následující obory pro přístupové tokeny.
 
 |Název|Popis|
 |---|---|
@@ -53,15 +69,20 @@ Vlastnosti přístupového tokenu jsou: *identita, vypršení platnosti* a *rozs
 |VoIP|  Udělí možnost volat identity a telefonní čísla.|
 
 
-Pokud chcete token přístupu odvolat před vypršením jeho platnosti, můžete k tomu použít knihovnu pro správu služby Azure Communication Service. Odvolání tokenu není okamžité a trvá až 15 minut, než se rozšíří. Odebrání identity, prostředku nebo předplatného způsobí odvolání všech přístupových tokenů. Pokud chcete odebrat možnost uživatele pro přístup k určitým funkcím, Odvolejte všechny přístupové tokeny. Pak vydejte nový přístupový token s více omezenými množinami oborů.
-Rotace přístupových klíčů služby Azure Communication Service způsobí zrušení všech aktivních přístupových tokenů vytvořených pomocí předchozího přístupového klíče. Všechny identity ztratí přístup ke komunikační službě Azure a jsou potřeba k vydávání nových přístupových tokenů. 
+K odvolání přístupového tokenu před jeho časem vypršení platnosti použijte knihovnu pro správu služby Azure Communication Services. Odvolání tokenu není okamžité. Rozšíření bude trvat až 15 minut. Odebrání identity, prostředku nebo předplatného odvolá všechny přístupové tokeny. 
 
-V rámci serverové služby doporučujeme vystavovat přístupové tokeny, které se v aplikaci klienta nevyskytují. Důvodem je, že vydávání vyžaduje přístupový klíč nebo zda má být spravovaná identita. Nedoporučuje se z bezpečnostních důvodů sdílet přístupové klíče s aplikací klienta. Klientská aplikace by měla používat koncový bod důvěryhodné služby, který může ověřit vaše klienty a vystavit přístupový token jménem uživatele. Další podrobnosti o architektuře najdete [tady](./client-and-server-architecture.md).
+Pokud chcete odebrat možnost uživatele pro přístup k určitým funkcím, Odvolejte všechny přístupové tokeny. Pak vydejte nový přístupový token, který má více omezené sady oborů.
 
-Pokud ukládáte do mezipaměti přístupové tokeny do záložního úložiště, doporučujeme použít šifrování. Přístupový token je citlivý na data a dá se použít na škodlivou aktivitu, pokud není chráněná. Pomocí přístupového tokenu můžete inicializovat sadu SDK a získat přístup k rozhraní API. Dostupné rozhraní API je omezené jenom na základě oborů, které má přístupový token. Doporučujeme vystavovat přístupové tokeny jenom s obory, které jsou povinné.
+V komunikačních službách Azure zavolá rotace přístupových klíčů všechny aktivní přístupové tokeny, které byly vytvořené pomocí předchozího přístupového klíče. Všechny identity ztratí přístup ke komunikačním službám Azure a musí vydávat nové přístupové tokeny. 
+
+V rámci serverové služby doporučujeme vystavovat přístupové tokeny, které se v aplikaci klienta nevyskytují. Důvodem je, že vydávání vyžaduje přístupový klíč nebo spravovanou identitu. Z bezpečnostních důvodů se nedoporučuje sdílení přístupových klíčů s aplikací klienta. 
+
+Klientská aplikace by měla používat koncový bod důvěryhodné služby, který může ověřit vaše klienty. Koncový bod by měl svým jménem vystavovat přístupové tokeny. Další informace najdete v tématu [Architektura klienta a serveru](./client-and-server-architecture.md).
+
+Pokud ukládáte do mezipaměti přístupové tokeny do záložního úložiště, doporučujeme použít šifrování. Přístupový token je citlivý na data. Dá se použít pro škodlivou aktivitu, pokud není chráněná. Uživatel, který má přístupový token, může sadu SDK spustit a získat přístup k rozhraní API. Dostupné rozhraní API je omezené jenom na základě oborů, které má přístupový token. Doporučujeme vystavovat přístupové tokeny, které mají pouze požadované obory.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do správy přístupových tokenů najdete v tématu [Vytvoření a Správa přístupových tokenů](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens) .
-* Úvodní informace k ověřování najdete v tématu [ověřování ve službě Azure Communication Services](https://docs.microsoft.com/azure/communication-services/concepts/authentication) .
-* Úvod k zaregistrování a ochraně osobních údajů najdete v tématu [dostupnost oblasti a](https://docs.microsoft.com/azure/communication-services/concepts/privacy) zaregistrování dat.
+* Úvod do správy přístupových tokenů najdete v tématu [vytváření a Správa přístupových tokenů](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
+* Úvodní informace k ověřování najdete v tématu [ověřování ve službě Azure Communication Services](https://docs.microsoft.com/azure/communication-services/concepts/authentication).
+* Úvod k zaregistrování a ochraně osobních údajů najdete v tématu [dostupnost oblasti a](https://docs.microsoft.com/azure/communication-services/concepts/privacy)zaregistrování dat.

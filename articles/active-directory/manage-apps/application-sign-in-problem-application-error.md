@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c826a679c1c64e113beb6b2cc5ffd29f82b55a3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 779286a43f8b20ce9a9a528e14eaa930763d82b4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84759534"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651579"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Stránka aplikace zobrazuje chybovou zprávu, až se uživatel přihlásí.
 
@@ -29,7 +29,7 @@ V tomto scénáři Azure Active Directory (Azure AD) přihlásí uživatele v. A
 
 Existuje několik možných důvodů, proč aplikace nepřijala odpověď z Azure AD. Pokud chybová zpráva jasně neidentifikuje, co v odpovědi chybí, vyzkoušejte následující:
 
--   Pokud je aplikace Galerie Azure AD, ověřte, že jste postupovali podle kroků v tématu [Postup ladění jednotného přihlašování založeného na SAML k aplikacím v Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
+-   Pokud je aplikace Galerie Azure AD, ověřte, že jste postupovali podle kroků v tématu [Postup ladění jednotného přihlašování založeného na SAML k aplikacím v Azure AD](./debug-saml-sso-issues.md).
 
 -   K zachycení požadavku, odpovědi a tokenu SAML použijte nástroj, jako je [Fiddler](https://www.telerik.com/fiddler) .
 
@@ -60,7 +60,7 @@ Chcete-li přidat atribut v konfiguraci služby Azure AD, který bude odeslán v
 
    Přidání atributu:
 
-   1. Vyberte **Přidat atribut**. Zadejte **název**a v rozevíracím seznamu vyberte **hodnotu** .
+   1. Vyberte **Přidat atribut**. Zadejte **název** a v rozevíracím seznamu vyberte **hodnotu** .
 
    1.  Vyberte **Uložit**. V tabulce se zobrazí nový atribut.
 
@@ -72,7 +72,7 @@ Chcete-li přidat atribut v konfiguraci služby Azure AD, který bude odeslán v
 
 Přihlášení k aplikaci se nepovede, protože v odpovědi SAML chybí atribut, jako je například role. Nebo se nezdařila, protože aplikace očekává jiný formát nebo hodnotu atributu **NameId** (uživatelský identifikátor).
 
-Pokud používáte [automatizované zřizování uživatelů Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) k vytváření, údržbě a odebírání uživatelů v aplikaci, ověřte, jestli je uživatel zřízený do aplikace SaaS. Další informace najdete v článku o tom, že [se žádní uživatelé nezřídí do aplikace Galerie Azure AD](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md).
+Pokud používáte [automatizované zřizování uživatelů Azure AD](../app-provisioning/user-provisioning.md) k vytváření, údržbě a odebírání uživatelů v aplikaci, ověřte, jestli je uživatel zřízený do aplikace SaaS. Další informace najdete v článku o tom, že [se žádní uživatelé nezřídí do aplikace Galerie Azure AD](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md).
 
 ## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>Přidání atributu do konfigurace aplikace Azure AD
 
@@ -95,13 +95,13 @@ Chcete-li změnit hodnotu identifikátoru uživatele, použijte následující p
 
 7. Po načtení aplikace vyberte v navigačním podokně **jednotné přihlašování** .
 
-8. V části **atributy uživatele**vyberte jedinečný identifikátor uživatele z rozevíracího seznamu **identifikátor uživatele** .
+8. V části **atributy uživatele** vyberte jedinečný identifikátor uživatele z rozevíracího seznamu **identifikátor uživatele** .
 
 ## <a name="change-the-nameid-format"></a>Změna formátu NameID
 
-Pokud aplikace očekává jiný formát atributu **NameId** (uživatelský identifikátor), přečtěte si článek [Úprava NameId](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) a změňte formát NameId.
+Pokud aplikace očekává jiný formát atributu **NameId** (uživatelský identifikátor), přečtěte si článek [Úprava NameId](../develop/active-directory-saml-claims-customization.md#editing-nameid) a změňte formát NameId.
 
-Azure AD vybere formát pro atribut **NameId** (identifikátor uživatele) na základě hodnoty, která je vybrána, nebo formátu, který požaduje aplikace v AuthRequest SAML. Další informace najdete v části "NameIDPolicy" tématu [protokol SAML jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy).
+Azure AD vybere formát pro atribut **NameId** (identifikátor uživatele) na základě hodnoty, která je vybrána, nebo formátu, který požaduje aplikace v AuthRequest SAML. Další informace najdete v části "NameIDPolicy" tématu [protokol SAML jednotného přihlašování](../develop/single-sign-on-saml-protocol.md#nameidpolicy).
 
 ## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>Aplikace očekává pro odpověď SAML jinou metodu podpisu.
 
@@ -124,7 +124,7 @@ Chcete-li změnit, které části tokenu SAML jsou digitálně podepsány služb
 
 7. Po načtení aplikace vyberte v navigačním podokně **jednotné přihlašování** .
 
-8. V části **podpisový certifikát SAML**vyberte  **Zobrazit upřesňující nastavení podepisování certifikátů**.
+8. V části **podpisový certifikát SAML** vyberte  **Zobrazit upřesňující nastavení podepisování certifikátů**.
 
 9. Vyberte **možnost podepisování** , kterou aplikace očekává mezi tyto možnosti:
 
@@ -157,11 +157,11 @@ Chcete-li změnit podpisový algoritmus, použijte následující postup:
 
 7. Po načtení aplikace vyberte v navigačním podokně na levé straně aplikace **jednotné přihlašování** .
 
-8. V části **podpisový certifikát SAML**vyberte **Zobrazit upřesňující nastavení podepisování certifikátů**.
+8. V části **podpisový certifikát SAML** vyberte **Zobrazit upřesňující nastavení podepisování certifikátů**.
 
-9. Jako **podpisový algoritmus**vyberte **SHA-1** .
+9. Jako **podpisový algoritmus** vyberte **SHA-1** .
 
    Až se uživatel příště přihlásí k aplikaci, služba Azure AD podepíše token SAML pomocí algoritmu SHA-1.
 
 ## <a name="next-steps"></a>Další kroky
-[Jak ladit jednotné přihlašování založené na SAML pro aplikace ve službě Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
+[Jak ladit jednotné přihlašování založené na SAML pro aplikace ve službě Azure AD](./debug-saml-sso-issues.md).

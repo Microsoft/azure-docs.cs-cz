@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
-ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e3b6802bab2c5fae97be8e55c8d5c11ff570f78
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588684"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651308"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Udržujte si přehled o datech během přilovu k Azure Sentinel
 
@@ -56,7 +56,7 @@ Také ve verzi Preview můžete vizualizovat data v záložkách kliknutím na t
 
 6. Napravo můžete v podokně **Přidat záložek** volitelně aktualizovat název záložky, přidat značky a poznámky, které vám pomůžou zjistit, co bylo pro danou položku zajímavé.
 
-7. V části **informace o dotazu** můžete pomocí rozevíracích seznamů extrahovat informace z výsledků dotazu pro typ entity **účet**, **hostitele**a **IP adresy** . Tato akce mapuje vybraný typ entity na konkrétní sloupec z výsledku dotazu. Například:
+7. V části **informace o dotazu** můžete pomocí rozevíracích seznamů extrahovat informace z výsledků dotazu pro typ entity **účet**, **hostitele** a **IP adresy** . Tato akce mapuje vybraný typ entity na konkrétní sloupec z výsledku dotazu. Například:
     
     > [!div class="mx-imgBorder"]
     > ![Mapování typů entit pro lovecké záložky](./media/bookmarks/map-entity-types-bookmark.png)
@@ -88,9 +88,9 @@ Také ve verzi Preview můžete vizualizovat data v záložkách kliknutím na t
 > Tyto funkce se poskytují bez smlouvy o úrovni služeb a nedoporučují se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. V Azure Portal přejděte na kartu **Sentinel**  >  **Threat Management**–  >  karta**lovecké**  >  **záložky** a vyberte záložku nebo záložky, které chcete prozkoumat.
+1. V Azure Portal přejděte na kartu **Sentinel**  >  **Threat Management**–  >  karta **lovecké**  >  **záložky** a vyberte záložku nebo záložky, které chcete prozkoumat.
 
-2. V podrobnostech záložky se ujistěte, že je namapovaná aspoň jedna entita. Například u **entit**se zobrazí položky pro **IP adresu**, **počítač**nebo **účet**.
+2. V podrobnostech záložky se ujistěte, že je namapovaná aspoň jedna entita. Například u **entit** se zobrazí položky pro **IP adresu**, **počítač** nebo **účet**.
 
 3. Kliknutím na **prozkoumat** Zobrazte záložku v grafu šetření.
 
@@ -103,7 +103,7 @@ Pokyny k používání grafu šetření najdete v tématu [použití grafu šet�
 > Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. V Azure Portal přejděte na kartu **Sentinel**  >  **Threat Management**–  >  karta**lovecké**  >  **záložky** a vyberte záložku nebo záložky, které chcete přidat k incidentu.
+1. V Azure Portal přejděte na kartu **Sentinel**  >  **Threat Management**–  >  karta **lovecké**  >  **záložky** a vyberte záložku nebo záložky, které chcete přidat k incidentu.
 
 2. Na panelu příkazů vyberte **Akce incidentu (Preview)** :
     
@@ -115,10 +115,10 @@ Pokyny k používání grafu šetření najdete v tématu [použití grafu šet�
     - Pro nový incident: volitelně aktualizujte podrobnosti incidentu a potom vyberte **vytvořit**.
     - Přidání záložky do existujícího incidentu: vyberte jeden incident a pak vyberte **Přidat**. 
 
-Zobrazení záložky v rámci incidentu: přejděte na incidenty se správou hrozeb s **ověřovacími**  >  **hrozbami**  >  **Incidents** a vyberte incident s vaší záložkou. Vyberte **Zobrazit úplné podrobnosti**a potom vyberte kartu **záložky** .
+Zobrazení záložky v rámci incidentu: přejděte na incidenty se správou hrozeb s **ověřovacími**  >  **hrozbami**  >  **Incidents** a vyberte incident s vaší záložkou. Vyberte **Zobrazit úplné podrobnosti** a potom vyberte kartu **záložky** .
 
 > [!TIP]
-> Jako alternativu k možnosti **Akce incidentu (Preview)** na panelu příkazů můžete použít kontextovou nabídku (**...**) pro jednu nebo více záložek a vybrat možnosti pro **Vytvoření nového incidentu**, **přidání do existujícího incidentu**a **Odebrat z incidentu**. 
+> Jako alternativu k možnosti **Akce incidentu (Preview)** na panelu příkazů můžete použít kontextovou nabídku (**...**) pro jednu nebo více záložek a vybrat možnosti pro **Vytvoření nového incidentu**, **přidání do existujícího incidentu** a **Odebrat z incidentu**. 
 
 ## <a name="view-bookmarked-data-in-logs"></a>Zobrazit data v záložkách v protokolech
 
@@ -128,19 +128,19 @@ Pokud chcete zobrazit záložky, výsledky nebo jejich historii, vyberte zálož
 
 - **Zobrazením protokolů záložky** zobrazíte všechna metadata záložky, včetně toho, kdo provedl aktualizaci, aktualizované hodnoty a čas, kdy k aktualizaci došlo.
 
-Nezpracované data záložky pro všechny záložky můžete zobrazit také tak, že na panelu příkazů na kartě **lovecké**záložky vyberete možnost **protokoly záložek**  >  **Bookmarks** :
+Nezpracované data záložky pro všechny záložky můžete zobrazit také tak, že na panelu příkazů na kartě **lovecké** záložky vyberete možnost **protokoly záložek**  >  **Bookmarks** :
 
 > [!div class="mx-imgBorder"]
 > ![Protokoly záložek](./media/bookmarks/bookmark-logs.png)
 
-V tomto zobrazení se zobrazují všechny záložky s přidruženými metadaty. Pomocí dotazů jazyka KQL ( [klíč Query Language](https://docs.microsoft.com/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) ) můžete filtrovat dolů na nejnovější verzi konkrétní záložky, kterou hledáte.
+V tomto zobrazení se zobrazují všechny záložky s přidruženými metadaty. Pomocí dotazů jazyka KQL ( [klíč Query Language](/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) ) můžete filtrovat dolů na nejnovější verzi konkrétní záložky, kterou hledáte.
 
 > [!NOTE]
 > Mezi časem vytvoření záložky a jejím zobrazením na kartě **záložky** může být významná prodleva (měřeno v minutách).
 
 ## <a name="delete-a-bookmark"></a>Odstranění záložky
  
-1.  V Azure Portal přejděte na kartu **Sentinel**  >  **Threat Management**–  >  karta**lovecké**  >  **záložky** a vyberte záložku nebo záložky, které chcete odstranit. 
+1.  V Azure Portal přejděte na kartu **Sentinel**  >  **Threat Management**–  >  karta **lovecké**  >  **záložky** a vyberte záložku nebo záložky, které chcete odstranit. 
 
 2. Klikněte pravým tlačítkem na své výběry a vyberte možnost odstranění záložky nebo záložek. Pokud jste například vybrali jenom jednu záložku, **odstraňte záložku** , a pokud jste vybrali dvě záložky, odstraňte **2 záložky** .
     
