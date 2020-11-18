@@ -4,15 +4,15 @@ description: Vysvětlení použití aktivačních událostí časovače v Azure 
 author: craigshoemaker
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
-ms.date: 09/08/2018
+ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6baebdab06a72d3a4af05b4d2e04bc9eee6acb60
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d9852659801040d64fe4143f024fd52ffec16ee
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833006"
+ms.locfileid: "94874079"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions
 
@@ -299,11 +299,11 @@ Každé pole může mít jeden z následujících typů hodnot:
 
 |Typ  |Příklad  |Při aktivaci  |
 |---------|---------|---------|
-|Konkrétní hodnota |<nobr>"0 5 * * * *"</nobr>|v hh: 05:00, kde HH je každou hodinu (jednou za hodinu)|
-|Všechny hodnoty ( `*` )|<nobr>"0 * 5 * * *"</nobr>|5: mm: 00 každý den, kde mm je každou minutu hodiny (60 časů během zadané hodiny)|
-|Rozsah ( `-` operátor)|<nobr>"5-7 * * * * *"</nobr>|v hh: mm: 05, hh: mm: 06 a hh: mm: 07, kde hh: mm je každou minutu každou hodinu (3 hodiny za minutu)|
-|Sada hodnot ( `,` operator)|<nobr>"5, 8, 10 * * * * *"</nobr>|v hh: mm: 05, hh: mm: 08 a hh: mm: 10, kde hh: mm je každou minutu každou hodinu (3 hodiny za minutu)|
-|Hodnota intervalu ( `/` operátor)|<nobr>"0 */5 * * * *"</nobr>|v hh: 00:00, hh: 05:00, hh: 10:00, a tak dále až hh: 55:00, kde HH je každou hodinu (12 hodin za hodinu)|
+|Konkrétní hodnota |<nobr>`0 5 * * * *`</nobr>| Jednou za hodinu dne v minutě 5 každé hodiny |
+|Všechny hodnoty ( `*` )|<nobr>`0 * 5 * * *`</nobr>| V každou minutu v hodině, počínaje hodinou 5 |
+|Rozsah ( `-` operátor)|<nobr>`5-7 * * * * *`</nobr>| Třikrát minutu v řádu 5 až 7 v každé minutě každého dne |
+|Sada hodnot ( `,` operator)|<nobr>`5,8,10 * * * * *`</nobr>| Třikrát minutu v sekundách 5, 8 a 10 v každé minutě každého dne |
+|Hodnota intervalu ( `/` operátor)|<nobr>`0 */5 * * * *`</nobr>| 12 hodin za hodinu v každé 5. den každé hodiny každého dne |
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -311,18 +311,18 @@ Každé pole může mít jeden z následujících typů hodnot:
 
 Tady je několik příkladů NCRONTAB výrazů, které můžete použít pro aktivační událost časovače v Azure Functions.
 
-|Příklad|Při aktivaci  |
-|---------|---------|
-|`"0 */5 * * * *"`|každých pět minut|
-|`"0 0 * * * *"`|jednou na začátku každé hodiny|
-|`"0 0 */2 * * *"`|každé dvě hodiny|
-|`"0 0 9-17 * * *"`|jednou za hodinu od 9:00 do 5 odp.|
-|`"0 30 9 * * *"`|každý den v 9:30.|
-|`"0 30 9 * * 1-5"`|v 9:30. každý den v týdnu|
-|`"0 30 9 * Jan Mon"`|v 9:30 ráno každé pondělí v lednu|
+| Příklad            | Při aktivaci                     |
+|--------------------|------------------------------------|
+| `0 */5 * * * *`    | každých pět minut            |
+| `0 0 * * * *`      | jednou na začátku každé hodiny      |
+| `0 0 */2 * * *`    | každé dvě hodiny               |
+| `0 0 9-17 * * *`   | jednou za hodinu od 9:00 do 5 odp.  |
+| `0 30 9 * * *`     | každý den v 9:30.               |
+| `0 30 9 * * 1-5`   | v 9:30. každý den v týdnu           |
+| `0 30 9 * Jan Mon` | v 9:30 ráno každé pondělí v lednu |
 
 > [!NOTE]
-> Výraz NCRONTAB vyžaduje **šest formát pole** . V Azure se nepodporuje cron výrazy s pěti poli.
+> Výraz NCRONTAB vyžaduje formát **pole Six** . Šestá pozice pole je hodnota pro sekundy, která je umístěna na začátku výrazu. V Azure se nepodporuje cron výrazy s pěti poli.
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB časová pásma
 

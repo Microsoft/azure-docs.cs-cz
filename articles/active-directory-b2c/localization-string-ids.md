@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7819c934ab97d597d52d4809c11e5c59fb87c89a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4fa0f4d87567bd77faacfd2373dba0d2b8996446
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840660"
+ms.locfileid: "94873365"
 ---
 # <a name="localization-string-ids"></a>ID řetězců lokalizací
 
@@ -64,7 +64,7 @@ Následující identifikátory se používají pro definici obsahu s ID `api.sig
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na přihlašovací stránce nebo na přihlašovací stránce:
 
-![Prvky uživatelského rozhraní pro registraci nebo přihlašovací stránku](./media/localization-string-ids/localization-susi-2.png)
+:::image type="content" source="./media/localization-string-ids/localization-susi-2.png" alt-text="Snímek obrazovky zobrazující registrační nebo přihlašovací stránku U X prvků":::
 
 ### <a name="sign-up-or-sign-in-identity-providers"></a>Poskytovatelé přihlašovacích nebo přihlašování identity
 

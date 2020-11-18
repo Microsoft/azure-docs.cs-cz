@@ -2,19 +2,19 @@
 title: Konfigurace aplikací pro Linux Python
 description: Naučte se konfigurovat kontejner Pythonu, ve kterém jsou webové aplikace spuštěné, pomocí Azure Portal a Azure CLI.
 ms.topic: quickstart
-ms.date: 11/06/2020
+ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 9e0e9098959231d4283608e8191081ae2df6737a
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 149f8deb8839b3adce3555300c94b8ebdf587100
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425911"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873841"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
-Tento článek popisuje, jak [Azure App Service](overview.md) spouští aplikace v Pythonu a jak můžete v případě potřeby přizpůsobit chování App Service. Aplikace Python musí být nasazené se všemi požadovanými moduly [PIP](https://pypi.org/project/pip/) .
+Tento článek popisuje, jak [Azure App Service](overview.md) spouští aplikace v Pythonu, jak můžete migrovat stávající aplikace do Azure a jak můžete v případě potřeby přizpůsobit chování App Service. Aplikace Python musí být nasazené se všemi požadovanými moduly [PIP](https://pypi.org/project/pip/) .
 
 Modul pro nasazení App Service automaticky aktivuje virtuální prostředí a `pip install -r requirements.txt` při nasazení [úložiště Git](deploy-local-git.md)nebo [balíčku zip](deploy-zip.md)se spustí za vás.
 
@@ -24,7 +24,7 @@ Pro konfiguraci můžete použít buď [Azure Portal](https://portal.azure.com) 
 
 - **Azure Portal** použijte **Settings**  >  **konfigurační** stránku nastavení aplikace, jak je popsáno v tématu [Konfigurace App Service aplikace v Azure Portal](configure-common.md).
 
-- **Azure CLI** : máte dvě možnosti.
+- **Azure CLI**: máte dvě možnosti.
 
     - Spusťte příkazy v [Azure Cloud Shell](../cloud-shell/overview.md).
     - Spusťte příkazy místně pomocí instalace nejnovější verze rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)a pak se přihlaste k Azure pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login).
@@ -34,9 +34,9 @@ Pro konfiguraci můžete použít buď [Azure Portal](https://portal.azure.com) 
 
 ## <a name="configure-python-version"></a>Konfigurace verze Pythonu
 
-- **Azure Portal** : na stránce **Konfigurace** použijte kartu **Obecné nastavení** , jak je popsáno v tématu [Konfigurace obecných nastavení](configure-common.md#configure-general-settings) pro kontejnery Linux.
+- **Azure Portal**: na stránce **Konfigurace** použijte kartu **Obecné nastavení** , jak je popsáno v tématu [Konfigurace obecných nastavení](configure-common.md#configure-general-settings) pro kontejnery Linux.
 
-- Rozhraní příkazového **řádku Azure** :
+- Rozhraní příkazového **řádku Azure**:
 
     -  Zobrazit aktuální verzi Pythonu pomocí [AZ WebApp config show](/cli/azure/webapp/config#az_webapp_config_show):
     
@@ -68,7 +68,7 @@ Nepodporovanou verzi Pythonu můžete spustit místo toho vytvořením vlastní 
 App Service systém sestavení s názvem Oryx provede následující kroky při nasazení aplikace pomocí balíčků Git nebo zip:
 
 1. Spusťte vlastní skript před sestavením, pokud je určen `PRE_BUILD_COMMAND` nastavením.
-1. Spusťte příkaz `pip install -r requirements.txt`. Soubor *requirements.txt* musí být přítomen v kořenové složce projektu. V opačném případě sestaví proces sestavení zprávu Chyba: "nepovedlo se najít setup.py nebo requirements.txt; Není spuštěná instalace PIP.
+1. Spusťte `pip install -r requirements.txt`. Soubor *requirements.txt* musí být přítomen v kořenové složce projektu. V opačném případě sestaví proces sestavení zprávu Chyba: "nepovedlo se najít setup.py nebo requirements.txt; Není spuštěná instalace PIP.
 1. Pokud se *Manage.py* najde v kořenovém adresáři úložiště (indikuje Django aplikaci), spusťte *Manage.py collectstatic*. Pokud `DISABLE_COLLECTSTATIC` je ale nastavení `true` , tento krok se přeskočí.
 1. Spusťte vlastní skript po sestavení, pokud je určen `POST_BUILD_COMMAND` nastavením.
 
@@ -92,9 +92,33 @@ Další informace o tom, jak App Service spouští a vytváří aplikace v Pytho
 > Nastavení s názvem `SCM_DO_BUILD_DURING_DEPLOYMENT` , pokud obsahuje `true` nebo 1, aktivuje Oryx Build během nasazování. Nastavení platí při nasazení pomocí Gitu, příkazu Azure CLI `az webapp up` a Visual Studio Code.
 
 > [!NOTE]
-> Vždy používejte relativní cesty ve všech skriptech před a po sestavení, protože kontejner sestavení, ve kterém běží Oryx, se liší od běhového kontejneru, ve kterém je aplikace spuštěná. Nikdy nespoléhá na přesné umístění složky projektu aplikace v rámci kontejneru (například na to, že je umístěn pod položkou *site/wwwroot* ).
+> Vždy používejte relativní cesty ve všech skriptech před a po sestavení, protože kontejner sestavení, ve kterém běží Oryx, se liší od běhového kontejneru, ve kterém je aplikace spuštěná. Nikdy nespoléhá na přesné umístění složky projektu aplikace v rámci kontejneru (například na to, že je umístěn pod položkou *site/wwwroot*).
 
-## <a name="production-settings-for-django-apps"></a>Nastavení produkce pro aplikace Django
+## <a name="migrate-existing-applications-to-azure"></a>Migrace stávajících aplikací do Azure
+
+Existující webové aplikace je možné znovu nasadit do Azure následujícím způsobem:
+
+1. **Zdrojové úložiště**: Udržujte svůj zdrojový kód v vhodném úložišti, jako je GitHub, což vám umožní nastavit průběžné nasazování později v tomto procesu.
+    1. Soubor *requirements.txt* musí být v kořenovém adresáři vašeho úložiště, aby se App Service automaticky nainstalovaly potřebné balíčky.    
+
+1. **Databáze**: Pokud aplikace závisí na databázi, zajistěte také potřebné prostředky v Azure. Viz [kurz: nasazení webové aplikace v Django s PostgreSQL – vytvoření databáze](tutorial-python-postgresql-app.md#create-postgres-database-in-azure) pro příklad.
+
+1. **Prostředky služby App Service**: Vytvořte skupinu prostředků, App Service plán a App Service webovou aplikaci pro hostování vaší aplikace. To nejsnadněji provedete provedením počátečního nasazení kódu prostřednictvím příkazu Azure CLI `az webapp up` , jak je znázorněno v [kurzu: nasazení webové aplikace v Django s PostgreSQL – nasazení kódu](tutorial-python-postgresql-app.md#deploy-the-code-to-azure-app-service). Nahraďte názvy skupiny prostředků, App Service plánu a webové aplikace tak, aby byly pro vaši aplikaci vhodnější.
+
+1. **Proměnné prostředí**: Pokud vaše aplikace vyžaduje nějaké proměnné prostředí, vytvořte ekvivalentní [App Service nastavení aplikace](configure-common.md#configure-app-settings). Tato App Service nastavení se zobrazí jako proměnné prostředí v kódu, jak je popsáno v tématu [přístup k proměnným prostředí](#access-app-settings-as-environment-variables).
+    - Databázová připojení se například často spravují prostřednictvím takového nastavení, jak je znázorněno v [kurzu: nasazení webové aplikace v Django s postgresql – Nakonfigurujte proměnné pro připojení databáze](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database).
+    - Konkrétní nastavení pro typické aplikace Django najdete v tématu [Nastavení výroby pro aplikace Django](#production-settings-for-django-apps) .
+
+1. **Spuštění aplikace**: Další informace o tom, jak se App Service pokusy o spuštění vaší aplikace, najdete v části, [spouštěcím procesu kontejneru](#container-startup-process) dále v tomto článku. Ve výchozím nastavení používá App Service webový server Gunicorn, který musí být schopný najít objekt aplikace nebo složku *WSGI.py* . V případě potřeby můžete [Upravit spouštěcí příkaz](#customize-startup-command).
+
+1. **Průběžné** nasazování: nastavte průběžné nasazování, jak je popsáno v tématu [průběžné](deploy-continuous-deployment.md) nasazování Azure App Service při použití nasazení Azure Pipelines nebo Kudu, nebo [nasazení do App Service pomocí akcí GitHubu](deploy-github-actions.md) , pokud používáte akce GitHubu.
+
+1. **Vlastní akce**: Pokud chcete provádět akce v rámci kontejneru App Service, který hostuje vaši aplikaci, jako je třeba migrace databáze Django, můžete [se k kontejneru připojit přes SSH](configure-linux-open-ssh-session.md). Příklad spuštění migrace databáze Django najdete v tématu [kurz: nasazení webové aplikace v Django pomocí PostgreSQL – spusťte migrace databáze](tutorial-python-postgresql-app.md#run-django-database-migrations).
+    - Při použití průběžného nasazování můžete provádět tyto akce pomocí příkazů po sestavení, jak je popsáno výše v části [přizpůsobení automatizace sestavení](#customize-build-automation).
+
+Po dokončení těchto kroků byste měli být schopni potvrdit změny ve zdrojovém úložišti a nechat tyto aktualizace automaticky nasazeny do App Service.
+
+### <a name="production-settings-for-django-apps"></a>Nastavení produkce pro aplikace Django
 
 V případě produkčního prostředí, jako je Azure App Service, by měly aplikace Django následovat po [kontrolním seznamu nasazení](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/) Django (djangoproject.com).
 
@@ -146,7 +170,7 @@ Služba App Service hledá pro aplikace Django soubory se jménem `wsgi.py` v k�
 gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
 
-Pokud chcete mít konkrétnější kontrolu nad spouštěcím příkazem, použijte [vlastní spouštěcí příkaz](#customize-startup-command), nahraďte `<module>` názvem složky, která obsahuje *WSGI.py* , a přidejte `--chdir` argument, pokud tento modul není v kořenovém adresáři projektu. Pokud se například vaše *WSGI.py* nachází v kořenovém adresáři projektu v *knboard/back/end/config* , použijte argumenty `--chdir knboard/backend config.wsgi` .
+Pokud chcete mít konkrétnější kontrolu nad spouštěcím příkazem, použijte [vlastní spouštěcí příkaz](#customize-startup-command), nahraďte `<module>` názvem složky, která obsahuje *WSGI.py*, a přidejte `--chdir` argument, pokud tento modul není v kořenovém adresáři projektu. Pokud se například vaše *WSGI.py* nachází v kořenovém adresáři projektu v *knboard/back/end/config* , použijte argumenty `--chdir knboard/backend config.wsgi` .
 
 Chcete-li povolit protokolování výroby, `--access-logfile` přidejte `--error-logfile` parametry a, jak je znázorněno v příkladech pro [vlastní spouštěcí příkazy](#customize-startup-command).
 
@@ -178,15 +202,15 @@ Pokud očekáváte, že se místo výchozí aplikace zobrazí nasazená aplikace
 
 Jak bylo uvedeno výše v tomto článku, můžete zadat konfigurační nastavení pro Gunicorn prostřednictvím souboru *Gunicorn.conf.py* v kořenovém adresáři projektu, jak je popsáno v tématu [Přehled konfigurace Gunicorn](https://docs.gunicorn.org/en/stable/configure.html#configuration-file).
 
-Pokud taková konfigurace není dostatečná, můžete řídit chování kontejneru tím, že v souboru spouštěcího příkazu zadáte buď vlastní spouštěcí příkaz, nebo několik příkazů. Soubor spouštěcích příkazů může používat libovolný název, který si zvolíte, například *Startup.sh* , *Startup. cmd* , *startup.txt* a tak dále.
+Pokud taková konfigurace není dostatečná, můžete řídit chování kontejneru tím, že v souboru spouštěcího příkazu zadáte buď vlastní spouštěcí příkaz, nebo několik příkazů. Soubor spouštěcích příkazů může používat libovolný název, který si zvolíte, například *Startup.sh*, *Startup. cmd*, *startup.txt* a tak dále.
 
 Všechny příkazy musí pro kořenovou složku projektu použít relativní cesty.
 
 Zadání spouštěcího příkazu nebo souboru příkazů:
 
-- **Azure Portal** : vyberte stránku **Konfigurace** aplikace a pak vyberte **Obecné nastavení**. V poli **spouštěcí příkaz** umístěte buď celý text spouštěcího příkazu, nebo název souboru spouštěcího příkazu. Pak vyberte **Uložit** , aby se změny projevily. Viz [Konfigurace obecných nastavení](configure-common.md#configure-general-settings) pro kontejnery Linux.
+- **Azure Portal**: vyberte stránku **Konfigurace** aplikace a pak vyberte **Obecné nastavení**. V poli **spouštěcí příkaz** umístěte buď celý text spouštěcího příkazu, nebo název souboru spouštěcího příkazu. Pak vyberte **Uložit** , aby se změny projevily. Viz [Konfigurace obecných nastavení](configure-common.md#configure-general-settings) pro kontejnery Linux.
 
-- **Azure CLI** : k nastavení spouštěcího příkazu nebo souboru použijte příkaz [AZ WebApp config set](/cli/azure/webapp/config#az_webapp_config_set) s `--startup-file` parametrem:
+- **Azure CLI**: k nastavení spouštěcího příkazu nebo souboru použijte příkaz [AZ WebApp config set](/cli/azure/webapp/config#az_webapp_config_set) s `--startup-file` parametrem:
 
     ```azurecli
     az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -198,7 +222,7 @@ App Service ignoruje všechny chyby, ke kterým došlo při zpracování vlastn�
 
 ### <a name="example-startup-commands"></a>Příklady spouštěcích příkazů
 
-- **Přidané argumenty Gunicorn** : Následující příklad přidá `--workers=4` do příkazového řádku Gunicorn pro spuštění aplikace Django: 
+- **Přidané argumenty Gunicorn**: Následující příklad přidá `--workers=4` do příkazového řádku Gunicorn pro spuštění aplikace Django: 
 
     ```bash
     # <module-path> is the relative path to the folder that contains the module
@@ -208,7 +232,7 @@ App Service ignoruje všechny chyby, ke kterým došlo při zpracování vlastn�
 
     Další informace najdete v [Running Gunicorn (Spuštění serveru Gunicorn)](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-- **Povolit protokolování výroby pro Django** : přidejte `--access-logfile '-'` argumenty a `--error-logfile '-'` do příkazového řádku:
+- **Povolit protokolování výroby pro Django**: přidejte `--access-logfile '-'` argumenty a `--error-logfile '-'` do příkazového řádku:
 
     ```bash    
     # '-' for the log files means stdout for --access-logfile and stderr for --error-logfile.
@@ -219,7 +243,7 @@ App Service ignoruje všechny chyby, ke kterým došlo při zpracování vlastn�
 
     Další informace najdete v tématu [protokolování Gunicorn](https://docs.gunicorn.org/en/stable/settings.html#logging) (docs.Gunicorn.org).
     
-- **Hlavní modul vlastní baňky** : ve výchozím nastavení App Service předpokládá, že hlavní modul aplikace v baňce je *Application.py* nebo *App.py*. Pokud váš hlavní modul používá jiný název, musíte upravit spouštěcí příkaz. Například YF máte aplikaci v baňce, jejíž hlavní modul je *Hello.py* a objekt aplikace baňky v tomto souboru je pojmenován `myapp` , příkaz je následující:
+- **Hlavní modul vlastní baňky**: ve výchozím nastavení App Service předpokládá, že hlavní modul aplikace v baňce je *Application.py* nebo *App.py*. Pokud váš hlavní modul používá jiný název, musíte upravit spouštěcí příkaz. Například YF máte aplikaci v baňce, jejíž hlavní modul je *Hello.py* a objekt aplikace baňky v tomto souboru je pojmenován `myapp` , příkaz je následující:
 
     ```bash
     gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -231,7 +255,7 @@ App Service ignoruje všechny chyby, ke kterým došlo při zpracování vlastn�
     gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
     ```
     
-- **Použít jiný server než Gunicorn** : Pokud chcete použít jiný webový server, jako je třeba [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), použijte jako spouštěcí příkaz nebo v souboru spouštěcího příkazu příslušný příkaz:
+- **Použít jiný server než Gunicorn**: Pokud chcete použít jiný webový server, jako je třeba [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), použijte jako spouštěcí příkaz nebo v souboru spouštěcího příkazu příslušný příkaz:
 
     ```bash
     python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -288,7 +312,7 @@ Prvním krokem při řešení potíží je obecně použití diagnostiky App Ser
 
 1. V Azure Portal webové aplikace vyberte v nabídce vlevo možnost **diagnostikovat a vyřešit problémy** .
 1. Vyberte **dostupnost a výkon**.
-1. Projděte si informace v části **protokoly aplikací** , **selhání kontejneru** a možnosti **problémů kontejneru** , kde se zobrazí nejběžnější problémy.
+1. Projděte si informace v části **protokoly aplikací**, **selhání kontejneru** a možnosti **problémů kontejneru** , kde se zobrazí nejběžnější problémy.
 
 Dále prověřte [protokoly nasazení](#access-deployment-logs) a [protokoly aplikací](#access-diagnostic-logs) pro všechny chybové zprávy. Tyto protokoly často identifikují konkrétní problémy, které můžou bránit nasazení aplikace nebo spuštění aplikace. Sestavení může například selhat, pokud váš *requirements.txt* soubor má nesprávný název souboru nebo není přítomen v kořenové složce projektu.
 
@@ -326,19 +350,19 @@ Následující části poskytují další pokyny pro konkrétní problémy.
 
 #### <a name="could-not-find-setuppy-or-requirementstxt"></a>Nepovedlo se najít setup.py nebo requirements.txt.
 
-- **Stream protokolu zobrazuje "nepovedlo se najít Setup.py nebo requirements.txt; Nespouští se instalace PIP. "** : procesu sestavení Oryx se nepovedlo najít soubor *requirements.txt* .
+- **Stream protokolu zobrazuje "nepovedlo se najít Setup.py nebo requirements.txt; Nespouští se instalace PIP. "**: procesu sestavení Oryx se nepovedlo najít soubor *requirements.txt* .
 
     - Připojte se ke kontejneru webové aplikace přes [SSH](#open-ssh-session-in-browser) a ověřte, jestli je *requirements.txt* správně pojmenovaná a jestli existuje přímo v *lokalitě/wwwroot*. Pokud neexistuje, zajistěte, aby soubor v úložišti existoval a byl zahrnutý v nasazení. Pokud existuje v samostatné složce, přesuňte ji do kořenového adresáře.
 
 #### <a name="other-issues"></a>Další problémy
 
-- **Při zadání se hesla nezobrazují v relaci SSH** : z bezpečnostních důvodů udržuje relace SSH při psaní skryté heslo. Tyto znaky jsou však zaznamenávány, takže zadejte heslo jako obvykle a po dokončení stiskněte klávesu **ENTER** .
+- **Při zadání se hesla nezobrazují v relaci SSH**: z bezpečnostních důvodů udržuje relace SSH při psaní skryté heslo. Tyto znaky jsou však zaznamenávány, takže zadejte heslo jako obvykle a po dokončení stiskněte klávesu **ENTER** .
 
 - Zdá se, že se **příkazy v relaci SSH** odbalí: Editor možná nemá příkazy pro zalamování slov, ale přesto by měly fungovat správně.
 
-- **Statické prostředky se neobjevují v aplikaci Django** : Ujistěte se, že jste povolili [modul whitenoise](http://whitenoise.evans.io/en/stable/django.html) .
+- **Statické prostředky se neobjevují v aplikaci Django**: Ujistěte se, že jste povolili [modul whitenoise](http://whitenoise.evans.io/en/stable/django.html) .
 
-- **Zobrazí se zpráva "vyžaduje se závažné připojení SSL"** : Zkontrolujte všechna uživatelská jména a hesla, která se používají pro přístup k prostředkům (například databází) v rámci aplikace.
+- **Zobrazí se zpráva "vyžaduje se závažné připojení SSL"**: Zkontrolujte všechna uživatelská jména a hesla, která se používají pro přístup k prostředkům (například databází) v rámci aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

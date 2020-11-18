@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/25/2020
 ms.author: zhshang
-ms.openlocfilehash: be26fdafe0a8a52669fe41fd5514c808f10df745
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1f28058a766144ada3326b3ee4ce09ca503d1896
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91369123"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873875"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Rychlý Start: vytvoření chatovací místnosti pomocí Azure Functions a služby signalizace pomocí jazyka C\#
 
@@ -27,21 +27,21 @@ Tento kurz můžete spustit také na příkazovém řádku (macOS, Windows nebo 
 
 Pokud ještě nemáte předplatné Azure, [vytvořte ho zdarma](https://azure.microsoft.com/free/dotnet) ještě před tím, než začnete.
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qscsharp)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qscsharp)prosím o tom.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí svého účtu Azure.
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qscsharp)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qscsharp)prosím o tom.
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qscsharp)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qscsharp)prosím o tom.
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qscsharp)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qscsharp)prosím o tom.
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Konfigurace a spuštění aplikace funkcí Azure
 
@@ -55,7 +55,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 1. Vyberte a zkopírujte primární připojovací řetězec.
 
-1. Zpět v aplikaci Visual Studio – **Průzkumník řešení**přejmenovat *local.settings.sample.jsna* na *local.settings.jszapnuto*.
+1. Zpět v aplikaci Visual Studio – **Průzkumník řešení** přejmenovat *local.settings.sample.jsna* na *local.settings.jszapnuto*.
 
 1. V souboru *local.settings.json* vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
 
@@ -75,15 +75,15 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
         ```bash
         func start
         ```
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qscsharp)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qscsharp)prosím o tom.
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qscsharp)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qscsharp)prosím o tom.
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qscsharp)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qscsharp)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -92,4 +92,3 @@ V tomto rychlém startu jste vytvořili a spustili aplikaci bez serveru v reáln
 > [!div class="nextstepaction"]
 > [Vývoj Azure Functions pomocí sady Visual Studio](../azure-functions/functions-develop-vs.md)
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qscsharp)

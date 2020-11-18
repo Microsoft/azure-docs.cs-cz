@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: fa7919f54663387ddef811d02137da6d3ffb9d9b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4e50560d2f090c99d1f354ebbc11ab2357dd61e8
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646623"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874725"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí Azure CLI
 
@@ -155,7 +155,7 @@ Na místním počítači vytvořte soubor s názvem `serialization.json` a přid
 Potom spusťte rutinu `az stream-analytics input create`. Nezapomeňte nahradit hodnotu `datasource` proměnné cestou, kam jste uložili soubor JSON definice vstupu úlohy, a hodnotou `serialization` proměnné s cestou, kam jste ULOŽILI soubor JSON serializace.
 
 ```azurecli
-az stream-analytics input create 
+az stream-analytics input create \
     --resource-group streamanalyticsrg 
     --job-name streamanalyticsjob \
     --name asaiotinput \
@@ -191,7 +191,7 @@ Na místním počítači vytvořte soubor s názvem `datasink.json` a přidejte 
 Potom spusťte rutinu `az stream-analytics output`. Nezapomeňte nahradit hodnotu `datasource` proměnné cestou, kam jste uložili soubor JSON s definicí výstupu úlohy, a hodnotou `serialization` proměnné s cestou, kam jste ULOŽILI soubor JSON serializace.
 
 ```azurecli
-az stream-analytics output create 
+az stream-analytics output create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name asabloboutput \
@@ -206,7 +206,7 @@ Přidejte transformaci úlohy pomocí rutiny [AZ Stream-Analytics Transform Crea
 Spusťte `az stream-analytics transformation create` rutinu.
 
 ```azurecli
-az stream-analytics transformation create 
+az stream-analytics transformation create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name Transformation \
@@ -230,7 +230,7 @@ Spusťte úlohu pomocí rutiny [AZ Stream-Analytics Start](/cli/azure/ext/stream
 Jakmile spustíte následující rutinu, vrátí jako výstup hodnotu `True`, pokud se úloha spustí. V kontejneru úložiště se vytvoří výstupní složku s transformovanými daty.
 
 ```azurecli
-az stream-analytics job start 
+az stream-analytics job start \
     --resource-group streamanalyticsrg \
     --name streamanalyticsjob \
     --output-start-mode JobStartTime

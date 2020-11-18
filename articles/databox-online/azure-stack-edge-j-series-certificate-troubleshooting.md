@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 09/29/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18e90bcfe7238ae998ac677a9d7eebef0ffa8939
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568348"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874249"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Řešení chyb certifikátů
 
@@ -26,7 +26,7 @@ V následující tabulce jsou uvedeny běžné chyby certifikátů a podrobné i
 > [!NOTE]
 > Výskyty &#8220;{0} , {1} ,..., {n} &#8221; označují poziční parametry. Poziční parametry převezmou hodnoty v závislosti na certifikátech, které používáte.
 
-| Kód chyby | Description |
+| Kód chyby | Popis |
 |---|---|
 | CertificateManagement_UntrustedCertificate | Certifikát s názvem subjektu {0} má Porušený řetěz certifikátů. Před nahráním tohoto certifikátu Nahrajte certifikát podpisového řetězce.|
 | CertificateManagement_DeviceNotRegistered| Vaše zařízení není aktivované. Certifikát podpory můžete nahrát až po aktivaci.|
@@ -46,6 +46,7 @@ V následující tabulce jsou uvedeny běžné chyby certifikátů a podrobné i
 | CertificateManagement_MissingServerOid | Certifikát s názvem subjektu neobsahuje {0} identifikátor OID ověřování serveru. Ověřte vlastnosti certifikátu a v případě potřeby přepněte do nového certifikátu.|
 | CertificateManagement_NameMismatch | Neshoda typu certifikátu. Byl nalezen očekávaný rozsah: {0} , nalezeno {1} . Nahrajte příslušný certifikát.|
 | CertificateManagement_NoPrivateKeyPresent | V certifikátu s názvem subjektu není {0} přítomen žádný privátní klíč. Nahrajte certifikát. pfx s privátním klíčem.|
+| CertificateManagement_NoRSACryptoPrivateKey | Privátní klíč pro certifikát s názvem subjektu není {0} přístupný. Ujistěte se, že používáte podporovaný certifikát. Podporován je pouze zprostředkovatel kryptografických služeb Microsoft RSA/SChannel. |
 | CertificateManagement_NotSelfSignedCertificate | Certifikát s názvem subjektu není {0} podepsaný svým vlastníkem. Kořenové certifikáty by měly být podepsané svým vlastníkem |
 | CertificateManagement_NotSupportedOnVirtualAppliance | Tato operace není ve virtuálním zařízení podporovaná. Tato chyba znamená, že podepisování proběhne pouze u Data Box Gateway spuštěného v cloudovém zařízení taktické. K této chybě dochází při správě zařízení prostřednictvím prostředí Windows PowerShell.|
 | CertificateManagement_SelfSignedCertificate | Certifikát s názvem subjektu {0} je podepsaný svým jménem. Nahrajte certifikát, který je správně podepsaný.|
@@ -57,6 +58,8 @@ V následující tabulce jsou uvedeny běžné chyby certifikátů a podrobné i
 | CertificateImportFailure | Certifikát s kryptografickým otiskem {0} nebyl naimportován na uzlu {1} . Pokud potíže potrvají, obraťte se na podpora Microsoftu. |
 | CertificateApplyFailure | Certifikát s kryptografickým otiskem se {0} na uzlu nepoužil {1} . Pokud potíže potrvají, obraťte se na podpora Microsoftu.|
 | NodeNotReachable | Nepovedlo se ověřit certifikát na {0} . Prohlédněte si stav hardwaru systému a softwaru.|
+| ZÍSKAT KÓD CHYBY | Privátní klíč pro tento certifikát není přístupný. Ujistěte se, že používáte podporovaný certifikát. Podporován je pouze zprostředkovatel kryptografických služeb Microsoft RSA/SChannel. |
+
 
 ## <a name="next-steps"></a>Další kroky
 

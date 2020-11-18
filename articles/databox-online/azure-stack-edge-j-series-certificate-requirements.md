@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de41bd030ea73ac68bfac5fbfbd03ae14cf7980f
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891372"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874232"
 ---
 # <a name="certificate-requirements"></a>Požadavky na certifikáty
 
@@ -30,12 +30,13 @@ Požadavky na vystavování certifikátů jsou následující:
 * Vydaná položka certifikátu *pro:* pole nesmí být shodná s polem *vydaným:* s výjimkou certifikátů kořenových certifikačních autorit.
 
 
-
 ## <a name="certificate-algorithms"></a>Algoritmy certifikátů
 
 Algoritmy certifikátů musí splňovat následující požadavky:
 
 * Certifikáty musí používat algoritmus RSA Key.
+
+* Podporují se jenom certifikáty RSA se zprostředkovatelem kryptografických služeb Microsoft RSA/SChannel.
 
 * Algoritmus podpisu certifikátu nemůže být SHA1.
 
@@ -74,13 +75,15 @@ Certifikáty PFX nainstalované na zařízení Azure Stack Edge pro by měly spl
 
 * Šifrování PFX certifikátu by mělo být 3DES. Toto je výchozí šifrování používané při exportu z úložiště certifikátů klienta Windows 10 nebo Windows serveru 2016. Další informace týkající se 3DES najdete v části [Triple DES](https://en.wikipedia.org/wiki/Triple_DES).
 
-* Soubory PFX certifikátu musí mít platný *digitální podpis* a hodnoty *KeyEncipherment* ve svém poli *použití klíče* .
+* Soubory PFX certifikátu musí mít v poli *použití klíče* platný *digitální podpis* a hodnoty *KeyEncipherment* .
 
 * Soubory PFX certifikátu musí mít v poli *použití rozšířeného klíče* k dispozici hodnoty *ověřování serveru (1.3.6.1.5.5.7.3.1)* a *ověřování klientů (1.3.6.1.5.5.7.3.2)* .
 
 * Pokud používáte nástroj pro kontrolu připravenosti Azure Stack, musí být hesla pro všechny soubory PFX certifikátu v době nasazení stejná. Další informace najdete v tématu [Vytvoření certifikátů pro Azure Stack Edge pro pomocí nástroje pro kontrolu připravenosti centra Azure Stack](azure-stack-edge-j-series-create-certificates-tool.md).
 
 * Heslo k certifikátu PFX musí být složité heslo. Toto heslo si poznamenejte, protože se používá jako parametr nasazení.
+
+* Používejte jenom certifikáty RSA se zprostředkovatelem kryptografických služeb Microsoft RSA/SChannel.
 
 Další informace najdete v tématu [export certifikátů PFX s privátním klíčem](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
 

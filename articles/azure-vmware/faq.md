@@ -4,12 +4,12 @@ description: Obsahuje odpovědi na některé běžné dotazy týkající se ře�
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 2d71c30d2fb08629674c352ae812d8890463abfe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f2b46b37fc8c773062402c52f2903a7a10acc2c4
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695097"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874708"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -253,12 +253,12 @@ VMware HCX Enterprise Edition (EE) je k dispozici v rámci řešení Azure VMwar
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Jak Návody požádat o zvýšení kvóty hostitele pro řešení Azure VMware?
 
-U předplatných spravovaných poskytovatelem CSP musí zákazník požádat partnera a Partnerský tým se zapojí se společností Microsoft, aby získal zvýšení kvóty pro předplatné. Další informace najdete v [článku Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md) pro podrobnosti. 
+U předplatných spravovaných poskytovatelem CSP musí zákazník odeslat žádost partnerovi. Partnerský tým se potom zavazuje Microsoftu, aby zvýšil kvótu pro předplatné. Podrobnosti najdete v [článku Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md) . 
 
-U předplatných EA musí zákazník postupovat podle tohoto postupu.
+Pro předplatná EA použijte následující postup. Nejdřív budete potřebovat:
 
-* Budete potřebovat [Azure smlouva Enterprise (EA)](../cost-management-billing/manage/ea-portal-agreements.md) s Microsoftem.
-* Budete potřebovat účet Azure v předplatném Azure.
+* [Azure smlouva Enterprise (EA)](../cost-management-billing/manage/ea-portal-agreements.md) s Microsoftem.
+* Účet Azure v předplatném Azure.
 
 Před vytvořením prostředku řešení Azure VMware je nutné odeslat lístek podpory pro přidělení uzlů. Ověření žádosti a přidělení uzlů trvá až pět pracovních dnů. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více uzlů, Projděte si stejný postup.
 
@@ -298,11 +298,15 @@ Před vytvořením prostředku řešení Azure VMware je nutné odeslat lístek 
 
 #### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
 
-Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
+Yes. CSP can purchase reserved instances for their customers. For more information, see the [Save costs with a reserved instance](reserved-instance.md) article. 
 
 #### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
 
-No. Currently Azure VMware Solution does not offer multi-tenancy.
+No. Currently Azure VMware Solution doesn't offer multi-tenancy.
+
+#### Will traffic between on-premises and Azure VMware Solution over ExpressRoute incur any outbound data transfer charge in the metered data plan?
+
+Traffic in the Azure VMware Solution ExpressRoute circuit isn't metered in any way. Traffic from your ExpressRoute circuit connecting to your on-premises to Azure is charged according to ExpressRoute pricing plans.
 
 
 ## Customer communication

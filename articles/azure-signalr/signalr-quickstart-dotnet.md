@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: da91a5a7c077eb14d12a711b8b308d7045c88f4a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c39ef505b0cea0ad0c03b81683db8441077cd0d2
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150995"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874538"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rychlý Start: vytvoření chatovací místnosti pomocí služby ASP.NET and Signal Service
 
@@ -32,13 +32,13 @@ V tomto rychlém startu se dozvíte, jak začít s ASP.NET a službou Azure Sign
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
 * [ASP.NET – signál 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsnet)prosím o tom.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Azure.
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsnet)prosím o tom.
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
@@ -46,7 +46,7 @@ Pro aplikace signalizace ASP.NET se nepodporuje režim bez *serveru* . Pro insta
 
 Prostředky Azure používané v tomto rychlém startu můžete vytvořit také pomocí [skriptu vytvořit skript služby Signal](scripts/signalr-cli-create-service.md).
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsnet)prosím o tom.
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
@@ -60,7 +60,7 @@ Zatímco probíhá nasazování služby, pojďme se podívat na práci s kódem.
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsnet)prosím o tom.
 
 ## <a name="configure-and-run-chat-room-web-app"></a>Konfigurace a spuštění webové aplikace chatovací místnosti
 
@@ -106,14 +106,14 @@ Zatímco probíhá nasazování služby, pojďme se podívat na práci s kódem.
 
 1. Stisknutím klávesy <kbd>F5</kbd> spusťte projekt v režimu ladění. Můžete vidět, že se aplikace spouští místně. Místo hostování modulu runtime signálu pomocí samotné aplikace se nyní připojí ke službě Azure Signal.
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsnet)prosím o tom.
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+Přihlaste se na web [Azure Portal](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
 Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto rychlém startu se používala skupina prostředků *SignalRTestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 
@@ -121,7 +121,7 @@ Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny pros
 
 Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsnet)prosím o tom.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -129,5 +129,3 @@ V tomto rychlém startu jste vytvořili nový prostředek služby signalizace Az
 
 > [!div class="nextstepaction"]
 > [Služba signalizace Azure pomocí ASP.NET Core](./signalr-quickstart-dotnet-core.md)
-
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)

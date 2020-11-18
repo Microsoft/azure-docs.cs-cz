@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e0625fd257ed9995fb567785ce07dcb0b0422c61
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ed4e47cf946827e2e4b9aaeb14d9668e96aeaa5
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311632"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873773"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -48,7 +48,7 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 `speak` je kořenový prvek a je **vyžadován** pro všechny dokumenty SSML. `speak`Element obsahuje důležité informace, jako je verze, jazyk a definice slovníku označení.
 
-**Syntax**
+**Syntaxe**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
@@ -58,15 +58,15 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `version` | Určuje verzi specifikace SSML, která se používá k interpretaci značek dokumentu. Aktuální verze je 1,0. | Povinné |
-| `xml:lang` | Určuje jazyk kořenového dokumentu. Hodnota může obsahovat malé písmeno, kód jazyka se dvěma písmeny (například `en` ), kód jazyka a zemi/oblast (například `en-US` ). | Povinné |
-| `xmlns` | Určuje identifikátor URI dokumentu, který definuje slovník značek (typy prvků a názvy atributů) dokumentu SSML. Aktuální identifikátor URI je http://www.w3.org/2001/10/synthesis . | Povinné |
+| `version` | Určuje verzi specifikace SSML, která se používá k interpretaci značek dokumentu. Aktuální verze je 1,0. | Vyžadováno |
+| `xml:lang` | Určuje jazyk kořenového dokumentu. Hodnota může obsahovat malé písmeno, kód jazyka se dvěma písmeny (například `en` ), kód jazyka a zemi/oblast (například `en-US` ). | Vyžadováno |
+| `xmlns` | Určuje identifikátor URI dokumentu, který definuje slovník značek (typy prvků a názvy atributů) dokumentu SSML. Aktuální identifikátor URI je http://www.w3.org/2001/10/synthesis . | Vyžadováno |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>Volba hlasu pro převod textu na řeč
 
 `voice`Element je povinný. Slouží k určení hlasu, který se používá pro převod textu na řeč.
 
-**Syntax**
+**Syntaxe**
 
 ```xml
 <voice name="string">
@@ -78,7 +78,7 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Povinné |
+| `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Vyžadováno |
 
 **Příklad**
 
@@ -101,7 +101,7 @@ V rámci `speak` elementu můžete zadat více hlasů pro výstup textu na řeč
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Povinné |
+| `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Vyžadováno |
 
 > [!IMPORTANT]
 > Více hlasů je nekompatibilních s funkcí hranice slova. Aby bylo možné použít více hlasů, je třeba zakázat funkci hranice slova.
@@ -200,25 +200,46 @@ V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu spe
 * `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
+* `zh-CN-YunxiNeural` Tisk
+* `zh-CN-XiaohanNeural` Tisk
+* `zh-CN-XiaomoNeural` Tisk
+* `zh-CN-XiaoxuanNeural` Tisk
+* `zh-CN-XiaoruiNeural` Tisk
 
-Změny se aplikují na úrovni věty a styly se liší podle hlasu. Pokud styl není podporován, služba vrátí řeč ve výchozím stylu neutrálního mluveného slova. Můžete zadat dotaz na styly podporované každým hlasem prostřednictvím [rozhraní API pro seznam hlasu](rest-text-to-speech.md#get-a-list-of-voices).
+Intenzita stylu projevování může být dále změněna, aby lépe vyhovovala vašemu případu použití. Můžete zadat silnější nebo měkčí styl s `styledegree` cílem usnadnit tak vyjádření a subdued řeči. 
 
-U čínských hlasových XiaoxiaoNeural se intenzita mluveného stylu dá dál změnit, aby lépe vyhovovala vašemu případu použití. Můžete zadat silnější nebo měkčí styl s `styledegree` cílem usnadnit tak vyjádření a subdued řeči.
+V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu speaking:
+* `zh-CN-XiaoxiaoNeural`
 
-**Syntax**
+Kromě úprav stylů a stylu mluveného projevu můžete také upravit `role` parametr tak, aby hlas byl jiný a pohlaví. Například samcský hlas může zvýšit rozteč a změnit rozmocninu k napodobenině ženského hlasu.
 
+V současné době jsou úpravy role-přehrávání podporovány pro tyto hlasy neuronové:
+* `zh-CN-XiaomoNeural`
+* `zh-CN-XiaoxuanNeural`
+
+Výše uvedené změny se aplikují na úrovni věty a styly a aktéry rolí se liší podle hlasu. Pokud styl nebo role-Play není podporován, služba vrátí rozpoznávání řeči ve výchozím nastavení neutrální speaking. Můžete si prohlédnout, jaké styly a role-Play jsou podporovány pro každý hlas prostřednictvím [rozhraní API pro seznam hlasu](rest-text-to-speech.md#get-a-list-of-voices) nebo prostřednictvím platformy pro [vytváření obsahu pro zvuk](https://aka.ms/audiocontentcreation) bez kódu.
+
+**Syntaxe**
+
+```xml
+<mstts:express-as style="string"></mstts:express-as>
+```
 ```xml
 <mstts:express-as style="string" styledegree="value"></mstts:express-as>
 ```
+```xml
+<mstts:express-as role="string" style="string"></mstts:express-as>
+```
 > [!NOTE]
-> V tuto chvíli `styledegree` podporuje jenom XiaoxiaoNeural. 
+> V tuto chvíli `styledegree` podporuje jenom zh-CN-XiaoxiaoNeural. `role` podporuje pouze zh-CN-XiaomoNeural a zh-CN-XiaoxuanNeural.
 
 **Atributy**
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `style` | Určuje styl speaking. V současné době jsou styly mluvené řeči specifické pro hlas. | Vyžaduje se, když se upraví styl speakování pro neuronové hlas. Pokud používáte `mstts:express-as` , musí být zadán styl. Pokud je zadána neplatná hodnota, bude tento prvek ignorován. |
-| `styledegree` | Určuje intenzitu stylu speaking. **Přijaté hodnoty** : 0,01 až 2 včetně. Výchozí hodnota je 1, což znamená, že předdefinovaná intenzita stylu. Minimální jednotka je 0,01, což má za následek trochu tendenci pro cílový styl. Hodnota 2 má za následek zdvojnásobení výchozí intenzity stylu.  | Volitelné (v tomto okamžiku `styledegree` podporuje jenom XiaoxiaoNeural.)|
+| `styledegree` | Určuje intenzitu stylu speaking. **Přijaté hodnoty**: 0,01 až 2 včetně. Výchozí hodnota je 1, což znamená, že předdefinovaná intenzita stylu. Minimální jednotka je 0,01, což má za následek trochu tendenci pro cílový styl. Hodnota 2 má za následek zdvojnásobení výchozí intenzity stylu.  | Volitelné (v současné době `styledegree` podporuje jenom zh-CN-XiaoxiaoNeural.)|
+| `role` | Určuje speaking Role-Play. Hlas bude fungovat jako jiný věk a pohlaví.  | Volitelné (v současné době `role` podporuje jenom zh-CN-XiaomoNeural a zh-CN-XiaoxuanNeural.)|
 
 Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý neuronové hlas podporovány.
 
@@ -250,6 +271,52 @@ Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý ne
 |                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |   
 |                         | `style="lyrical"`         | Vyjadřuje emoce v Melodic a Sentimental         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  | 
+| `zh-CN-YunxiNeural`    | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
+|                         | `style="sad"`             | Vyjadřuje sorrowful tón s vyšší roztečí, nižší intenzitou a nižší spotřebou r. Běžné indikátory tohoto emoce by byly během řeči whimpers nebo Crying.            |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+|                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
+|                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.    |
+|                         | `style="depressed"`       | Vyjadřuje melancholic a despondent tón s nižší roztečí a energií.    |
+|                         | `style="embarrassed"`     | Vyjadřuje nejistý a váhají tón, když je mluvčí Uncomfortable.   |
+| `zh-CN-XiaohanNeural`   | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
+|                         | `style="sad"`             | Vyjadřuje sorrowful tón s vyšší roztečí, nižší intenzitou a nižší spotřebou r. Běžné indikátory tohoto emoce by byly během řeči whimpers nebo Crying.            |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+|                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
+|                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.    |
+|                         | `style="embarrassed"`     | Vyjadřuje nejistý a váhají tón, když je mluvčí Uncomfortable.   |
+|                         | `style="affectionate"`    | Vyjadřuje teplý a affectionate tón s vyšší roztečí a spotřebou r. Mluvčí je ve stavu, ve kterém se přilákat na pozornost naslouchacího procesu. Osobní preference mluvčího je často endearingá.          |     
+|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |   
+| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+|                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
+|                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.    |
+|                         | `style="depressed"`       | Vyjadřuje melancholic a despondent tón s nižší roztečí a energií.    |
+|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |  
+| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+|                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
+|                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.    |
+|                         | `style="depressed"`       | Vyjadřuje melancholic a despondent tón s nižší roztečí a energií.    |
+|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |   
+| `zh-CN-XiaoruiNeural`    | `style="sad"`             | Vyjadřuje sorrowful tón s vyšší roztečí, nižší intenzitou a nižší spotřebou r. Běžné indikátory tohoto emoce by byly během řeči whimpers nebo Crying.            |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+
+Pomocí této tabulky můžete určit, které role se u každého hlasu neuronové podporují.
+
+| Hlas                   | Role                       | Popis                                                 |
+|-------------------------|----------------------------|-------------------------------------------------------------|
+| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | Hlasový hovor je napodoben od mladých dospělých samic.                 |
+|                         | `role="OlderAdultMale"`    | Tento hlas je napodoben na starší dospělé samci.                   |
+|                         | `role="Girl"`              | Hlasový vstup je napodoben na Girl.                               |
+|                         | `role="Boy"`               | Hlasový vstup je napodoben na Boy.                                |
+| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | Hlasový hovor je napodoben od mladých dospělých samic.                 |
+|                         | `role="OlderAdultFemale"`  | Tento hlas je napodoben na starší dospělého ženského pohlaví.                 |
+|                         | `role="OlderAdultMale"`    | Tento hlas je napodoben na starší dospělé samci.                   |
 
 **Příklad**
 
@@ -278,6 +345,23 @@ Tento fragment SSML ukazuje, jak se `styledegree` atribut používá ke změně 
 </speak>
 ```
 
+Tento fragment SSML ukazuje, jak se `role` atribut používá ke změně Role-Play pro XiaomoNeural.
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaomoNeural">
+        女儿看见父亲走了进来，问道：
+        <mstts:express-as role="YoungAdultFemale" style="calm">
+            “您来的挺快的，怎么过来的？”
+        </mstts:express-as>
+        父亲放下手提包，说：
+        <mstts:express-as role="OlderAdultMale" style="calm">
+            “刚打车过来的，路上还挺顺畅。”
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
 ## <a name="add-or-remove-a-breakpause"></a>Přidat nebo odebrat přerušení/pozastavení
 
 Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraňte automatickému přidání do služby převodu textu na řeč.
@@ -285,7 +369,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 > [!NOTE]
 > Pomocí tohoto prvku můžete přepsat výchozí chování převodu textu na řeč (TTS) pro slovo nebo frázi v případě, že syntetizované rozpoznávání řeči pro toto slovo nebo frázi nepřirozeně zvuk. Nastavte `strength` na `none` , aby nedocházelo k přerušení Prozodický předěl, které je automaticky vložené službou pro převod textu na řeč.
 
-**Syntax**
+**Syntaxe**
 
 ```xml
 <break strength="string" />
@@ -297,7 +381,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>žádné</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silnější</li><li>x – silné</li></ul> | Volitelné |
-| `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách. Příklady platných hodnot jsou `2s` a. `500` | Volitelné |
+| `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách, tato hodnota by měla být nastavena na hodnotu menší než 5000ms. Příklady platných hodnot jsou `2s` a. `500ms` | Volitelné |
 
 | Obsahem                      | Popis |
 |-------------------------------|-------------|
@@ -317,6 +401,37 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
     </voice>
 </speak>
 ```
+## <a name="add-silence"></a>Přidat tichou
+
+Použijte `mstts:silence` element pro vložení pauz před nebo za text nebo mezi 2 sousedícími větami. 
+
+> [!NOTE]
+>Rozdíl mezi `mstts:silence` a `break` je, který `break` lze přidat na libovolné místo v textu, ale ticha funguje pouze na začátku nebo konci vstupního textu nebo na hranici 2 sousedících vět.  
+
+
+**Syntaxe**
+
+```xml
+<mstts:silence  type="string"  value="string"/>
+```
+
+**Atributy**
+
+| Atribut | Popis | Požadováno/volitelné |
+|-----------|-------------|---------------------|
+| `type` | Určuje umístění tichého navýšení: <ul><li>Přední – na začátku textu </li><li>Zakončení – na konci textu </li><li>Sentenceboundary – mezi sousedními větami </li></ul> | Vyžadováno |
+| `Value` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách, tato hodnota by měla být nastavena na hodnotu menší než 5000ms. Příklady platných hodnot jsou `2s` a. `500ms` | Vyžadováno |
+
+**Příklad** V tomto příkladu `mtts:silence` se používá k přidání 200 MS ticha mezi dvěma větami.
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
+<voice name="en-US-AriaNeural"> 
+<mstts:silence  type="Sentenceboundary" value="200ms"/> 
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
+</voice> 
+</speak> 
+```
 
 ## <a name="specify-paragraphs-and-sentences"></a>Zadat odstavce a věty
 
@@ -326,7 +441,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 
 `s`Element může obsahovat text a následující prvky: `audio` , `break` , `phoneme` , `prosody` , `say-as` , `mstts:express-as` a `sub` .
 
-**Syntax**
+**Syntaxe**
 
 ```XML
 <p></p>
@@ -356,7 +471,10 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 
 Fonetické abecedy se skládají z telefonů, které jsou tvořeny písmeny, číslicemi nebo znaky, někdy v kombinaci. Každý telefon popisuje jedinečný zvuk řeči. To je na rozdíl od abecedy latinky, kde jakékoli písmeno může představovat více mluvených zvuků. Vezměte v úvahu různé výslovnosti písmena "c" ve slově "Candy" a "pozastaveno", nebo na rozdíl od kombinace písmen "th" v slovech "věc" a "ty".
 
-**Syntax**
+> [!NOTE]
+> Značka fonémy se pro tyto 5 hlasy nepodporuje (et-EE-AnuNeural, GA-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural a MT-MT-GarceNeural).
+
+**Syntaxe**
 
 ```XML
 <phoneme alphabet="string" ph="string"></phoneme>
@@ -402,7 +520,11 @@ Někdy může služba převod textu na řeč přesně vyslovit slovo. Napříkla
 > [!NOTE]
 > Vlastní lexikon aktuálně podporuje kódování UTF-8. 
 
-**Syntax**
+> [!NOTE]
+> Vlastní lexikon se pro tyto 5 hlasy nepodporuje (et-EE-AnuNeural, GA-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural a MT-MT-GarceNeural).
+
+
+**Syntaxe**
 
 ```XML
 <lexicon uri="string"/>
@@ -525,7 +647,7 @@ Další informace o fonetické abecedě hlasové služby pro rozpoznávání ře
 
 Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci široké škály lišit, překladač řeči interpretuje přiřazené hodnoty jako návrh toho, co by měly být aktuální hodnoty Prozodický předěl vybraného hlasu. Služba převod textu na řeč omezuje nebo nahrazuje hodnoty, které nejsou podporovány. Příklady nepodporovaných hodnot jsou výškou 1 MHz nebo 120.
 
-**Syntax**
+**Syntaxe**
 
 ```XML
 <prosody pitch="value" contour="value" range="value" rate="value" duration="value" volume="value"></prosody>
@@ -608,7 +730,7 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
 
 `say-as` je volitelný prvek, který určuje typ obsahu (například číslo nebo datum) textu elementu. V této části najdete pokyny k vyslovení textu v modulu Shrnutí řeči.
 
-**Syntax**
+**Syntaxe**
 
 ```XML
 <say-as interpret-as="string" format="digit string" detail="string"> <say-as>
@@ -618,7 +740,7 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `interpret-as` | Určuje typ obsahu textu elementu. Seznam typů naleznete v následující tabulce. | Povinné |
+| `interpret-as` | Určuje typ obsahu textu elementu. Seznam typů naleznete v následující tabulce. | Vyžadováno |
 | `format` | Poskytuje další informace o přesném formátování textu elementu pro typy obsahu, které mohou mít dvojznačné formáty. SSML definuje formáty pro typy obsahu, které je používají (viz tabulka níže). | Volitelné |
 | `detail` | Určuje úroveň podrobností, které se mají vymluvené. Tento atribut například může vyžadovat, aby se v modulu Shrnutí řeči vyhodnotily interpunkční znaménka. Nejsou definovány žádné standardní hodnoty pro `detail` . | Volitelné |
 
@@ -631,7 +753,7 @@ Níže jsou podporované typy obsahu pro `interpret-as` `format` atributy a. Atr
 | `address` | | Text se používá jako adresa. Vysloví se modul Shrnutí řeči:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Jako "jsem jsem na 150thm soudu sever – východ Redmond – Washington." |
 | `cardinal`, `number` | | Text se hovoří jako číslo mohutnosti. Vysloví se modul Shrnutí řeči:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />Stejně jako existují tři alternativy. |
 | `characters`, `spell-out` | | Text se hovoří jako jednotlivá písmena (vypsaný). Vysloví se modul Shrnutí řeči:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />Jako "T E S T". |
-| `date` | DMY, mdy, YMD, není, YM, my, MD, DM, d, m, y | Text se hovoří jako datum. `format`Atribut určuje formát data ( *d = den, m = měsíc a y = rok* ). Vysloví se modul Shrnutí řeči:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />Jako "dnes je Nineteenth 2016. října" |
+| `date` | DMY, mdy, YMD, není, YM, my, MD, DM, d, m, y | Text se hovoří jako datum. `format`Atribut určuje formát data (*d = den, m = měsíc a y = rok*). Vysloví se modul Shrnutí řeči:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />Jako "dnes je Nineteenth 2016. října" |
 | `digits`, `number_digit` | | Text se hlasuje jako sekvence jednotlivých číslic. Vysloví se modul Shrnutí řeči:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />Jako "1 2 3 4 5 6 7 8 9". |
 | `fraction` | | Text se hlasuje jako desetinné číslo. Vysloví se modul Shrnutí řeči:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />Jako tři osmá palce. |
 | `ordinal` | | Text se hlasuje jako ordinální číslo. Vysloví se modul Shrnutí řeči:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />Jako vyberte třetí možnost. |
@@ -670,7 +792,7 @@ Libovolný zvuk zahrnutý v dokumentu SSML musí splňovat tyto požadavky:
 * Celková celková doba pro všechny textové a zvukové soubory v jedné odpovědi nesmí překročit 90 (90) sekund.
 * MP3 nesmí obsahovat žádné informace specifické pro zákazníka nebo jiné citlivé informace.
 
-**Syntax**
+**Syntaxe**
 
 ```xml
 <audio src="string"/></audio>
@@ -706,7 +828,7 @@ Pokud je zadaný zvuk na pozadí kratší než převod textu na řeč nebo zesla
 
 V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete však `audio` v rámci `voice` elementu doplnit značky přidáním dalšího zvuku do dokumentu SSML.
 
-**Syntax**
+**Syntaxe**
 
 ```XML
 <mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
@@ -717,9 +839,9 @@ V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete vš
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `src` | Určuje umístění nebo adresu URL zvukového souboru na pozadí. | Vyžaduje se, pokud v dokumentu SSML používáte zvuk na pozadí. |
-| `volume` | Určuje hlasitost zvukového souboru na pozadí. **Přijaté hodnoty** : `0` na `100` včetně Výchozí hodnota je `1`. | Volitelné |
-| `fadein` | Určuje dobu, po kterou se bude zvuk na pozadí zobrazovat jako milisekundy. Výchozí hodnota je `0` , což je ekvivalent bez zmizení. **Přijaté hodnoty** : `0` na `10000` včetně  | Volitelné |
-| `fadeout` | Určuje dobu, po kterou se má zvuk na pozadí rozmizet v milisekundách. Výchozí hodnota je `0` , což je ekvivalent bez zmizení. **Přijaté hodnoty** : `0` na `10000` včetně  | Volitelné |
+| `volume` | Určuje hlasitost zvukového souboru na pozadí. **Přijaté hodnoty**: `0` na `100` včetně Výchozí hodnota je `1`. | Volitelné |
+| `fadein` | Určuje dobu, po kterou se bude zvuk na pozadí zobrazovat jako milisekundy. Výchozí hodnota je `0` , což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` na `10000` včetně  | Volitelné |
+| `fadeout` | Určuje dobu, po kterou se má zvuk na pozadí rozmizet v milisekundách. Výchozí hodnota je `0` , což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` na `10000` včetně  | Volitelné |
 
 **Příklad**
 

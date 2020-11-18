@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9b061a6d3d7d2a6598d8ed7c48428d756db6e97d
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 93a5d17ce5ea5ec60c67604efe5081d2b3425a84
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126271"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873688"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Referenční architektura propojeného monitorování odpadů 
 
@@ -39,10 +39,10 @@ Zařízení používaná v otevřených prostředích, jako jsou odpadní přihr
 Azure IoT Central je aplikační platforma IoT, která vám umožní rychle začít pracovat v řešení IoT. Vaše řešení můžete označit, přizpůsobit a integrovat s službami třetích stran.
 Po připojení inteligentních zařízení k IoT Central získáte příkazy a ovládání zařízení, monitorování a upozorňování, uživatelské rozhraní s integrovanými RBACmi, konfigurovatelnými řídicími panely a možnostmi rozšiřitelnosti. 
 
-## <a name="extensibility-and-integrations"></a>Rozšiřitelnost a integrace 
+## <a name="extensibility-and-integrations"></a>Rozšiřitelnost a integrace
 Aplikaci IoT můžete v IoT Central zvětšit a volitelně:
-* pomocí průběžného exportu dat z aplikace IoT Central můžete transformovat a integrovat data IoT pro pokročilé analýzy, například školení modelů strojového učení. 
-* automatizace pracovních postupů v jiných systémech aktivací akcí pomocí Microsoft Flow nebo webhooků z aplikace IoT Central
+* pomocí průběžného exportu dat z aplikace IoT Central můžete transformovat a integrovat data IoT pro pokročilé analýzy, například školení modelů strojového učení.
+* automatizace pracovních postupů v jiných systémech aktivací akcí pomocí Power automatu nebo webhooků z IoT Central aplikace
 * programově se k vaší aplikaci IoT v IoT Central prostřednictvím rozhraní API IoT Central.
 
 ## <a name="business-applications"></a>Obchodní aplikace 

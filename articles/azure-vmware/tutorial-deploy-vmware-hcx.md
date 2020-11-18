@@ -3,12 +3,12 @@ title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 11/23/2020
-ms.openlocfilehash: 5ee5390ef45e71baf3843cadc815de2f7e06bdac
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 35cc87d7f3f1345972a7f27cecaeb96c6fa687dc
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842336"
+ms.locfileid: "94873909"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
@@ -88,9 +88,7 @@ Než virtuální zařízení nasadíte do místního serveru vCenter, musíte si
 
 1. Vyberte **Administration**  >  **aktualizace systému** pro správu a pak vyberte **odkaz pro stažení požadavku**.
 
-1. Vyberte možnost, kterou chcete stáhnout soubor s VAJÍČKy VMware HCX Connectoru.
-
-   :::image type="content" source="media/tutorial-vmware-hcx/vmware-hcx-download-link.png" alt-text="odkaz na stažení žádosti" lightbox="media/tutorial-vmware-hcx/vmware-hcx-download-link.png":::
+1. Vyberte možnost podle vašeho výběru a Stáhněte si soubor s VAJÍČKy VMware HCX Connectoru.
 
 ## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>Nasazení vajíček konektoru VMware HCX v místním prostředí
 
@@ -162,7 +160,7 @@ Po nasazení vajíček konektoru VMware HCX do místního prostředí a spuště
    > [!NOTE]
    > Po restartu se budete muset setkat po restartování, než se zobrazí výzva k dalšímu kroku.
 
-Po restartování služby musíte na zobrazené obrazovce zobrazit zelenou obrazovku. VCenter i SSO musí mít odpovídající parametry konfigurace, které by měly být stejné jako na předchozí obrazovce.
+Po restartování služeb se na obrazovce, která se zobrazí, zobrazí položka vCenter se zobrazuje zeleně. VCenter i SSO musí mít odpovídající parametry konfigurace, které by měly být stejné jako na předchozí obrazovce.
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="Snímek obrazovky řídicího panelu se stavem zelených vCenter" lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
@@ -179,11 +177,7 @@ Můžete se připojit (spárovat) správce cloudu VMware HCX v řešení Azure V
 
 1. Přihlaste se k místnímu serveru vCenter a v části **Domů** vyberte **HCX**.
 
-   :::image type="content" source="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png" alt-text="Snímek obrazovky klienta vCenter s HCX vybranými mezi zástupci" lightbox="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png":::
-
 1. V části **infrastruktura** vyberte **párování lokalit** a potom vyberte možnost **připojit ke vzdálené lokalitě** (uprostřed obrazovky). 
-
-   :::image type="content" source="media/tutorial-vmware-hcx/connect-remote-site.png" alt-text="Snímek obrazovky s výběrem pro vytvoření vzdálené lokality" lightbox="media/tutorial-vmware-hcx/connect-remote-site.png":::
 
 1. Zadejte adresu URL nebo IP adresu řešení Azure VMware HCX, kterou jste si poznamenali dříve, řešení Azure VMware cloudadmin \@ vSphere. Local username a heslo. Potom vyberte **Připojit**.
 
@@ -224,7 +218,7 @@ Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: vid
 
 ### <a name="create-a-compute-profile"></a>Vytvořit výpočetní profil
 
-1. Vyberte **výpočetní profily**  >  **vytvořit výpočetní profil**.
+1. V části **infrastruktura** vyberte **Interconnect**  >  **výpočetní profily** propojení  >  **vytvořit výpočetní profil**.
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-create.png" alt-text="Snímek obrazovky, který zobrazuje výběry pro začátek vytváření výpočetního profilu." lightbox="media/tutorial-vmware-hcx/compute-profile-create.png":::
 
@@ -347,7 +341,7 @@ Kompletní přehled tohoto postupu najdete v článku [Řešení Azure VMware:](
 
 Pokud chcete z místního prostředí do řešení Azure VMware Rozmístit všechny sítě, postupujte takto:
 
-1. V části **služby** vyberte **rozšíření sítě** a potom vyberte **vytvořit rozšíření sítě**.
+1. V části **služby** vyberte **rozšíření sítě**  >  **vytvořit rozšíření sítě**.
 
    :::image type="content" source="media/tutorial-vmware-hcx/create-network-extension.png" alt-text="Snímek obrazovky zobrazující výběry pro začátek vytvoření síťového rozšíření." lightbox="media/tutorial-vmware-hcx/create-network-extension.png":::
 

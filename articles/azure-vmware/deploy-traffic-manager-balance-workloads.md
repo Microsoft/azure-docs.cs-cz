@@ -3,12 +3,12 @@ title: Nasazení Traffic Manager pro vyrovnávání zatížení Azure VMware Sol
 description: Naučte se integrovat Traffic Manager se službou Azure VMware Solution (AVS) pro vyrovnávání zatížení aplikací napříč několika koncovými body v různých oblastech.
 ms.topic: how-to
 ms.date: 08/14/2020
-ms.openlocfilehash: 076d9c77d68df3d8acb7b531b3dfbea40fb3cedd
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: ed74bb0dfc533abadd50af32afc06c9cb4106193
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593114"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874278"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Nasazení Traffic Manager pro vyrovnávání zatížení Azure VMware Solution (AVS)
 
@@ -30,9 +30,9 @@ Jak je znázorněno na následujícím obrázku, Azure Traffic Manager poskytuje
 
 Připojení k virtuální síti mezi dvěma oblastmi privátního cloudu služby AVS, Západní USA a Západní Evropa a místním serverem v Východní USA používá bránu ExpressRoute.   
 
-![Diagram architektury Traffic Manager integrace s řešením Azure VMware](media/traffic-manager/traffic-manager-topology.png)
+:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="Diagram architektury Traffic Manager integrace s řešením Azure VMware" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Tři virtuální počítače nakonfigurované jako servery Microsoft IIS spuštěné v různých oblastech služby AVS: Západní USA, Západní Evropa a místní. 
 
@@ -75,7 +75,7 @@ V našem scénáři je segment NSX-T nakonfigurovaný v prostředí služby AVS,
 
 1. Vyberte **segmenty** pro zobrazení konfigurovaných segmentů. V tomto případě uvidíme, že contoso-SEGMENT1 je připojený k bráně contoso-T01, což je flexibilní směrovač úrovně 1.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Snímek obrazovky zobrazující profily segmentů ve Správci NSX-T":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Snímek obrazovky zobrazující profily segmentů ve Správci NSX-T" lightbox="media/traffic-manager/nsx-t-segment-avs.png":::    
 
 2. Vyberte **brány úrovně 1** , abyste viděli seznam bran-1 s počtem propojených segmentů. Vyberte segment propojený s contoso-T01. Otevře se okno znázorňující logické rozhraní nakonfigurované na směrovači vrstvy 1. Slouží jako brána k virtuálnímu počítači back-end fondu připojenému k segmentu.
 
@@ -83,7 +83,7 @@ V našem scénáři je segment NSX-T nakonfigurovaný v prostředí služby AVS,
 
 3. V klientovi vSphere virtuálního počítače vyberte virtuální počítač, na kterém chcete zobrazit jeho podrobnosti. Všimněte si, že IP adresa se shoduje s tím, co jsme viděli v kroku 3 předchozí části: 172.29.1.10.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Snímek obrazovky zobrazující podrobnosti o virtuálním počítači v klientovi VSphere":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Snímek obrazovky zobrazující podrobnosti o virtuálním počítači v klientovi VSphere" lightbox="media/traffic-manager/nsx-t-vm-details.png":::    
 
 4. Vyberte virtuální počítač a pak klikněte na **akce > upravit nastavení** a ověřte připojení k segmentu NSX-T.
 
@@ -103,7 +103,7 @@ V našem scénáři je segment NSX-T nakonfigurovaný v prostředí služby AVS,
 
 3. Vyberte **Přehled**. Zkopírujte adresu URL v části **název DNS**.
 
-   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Snímek obrazovky s přehledem Traffic Managerho koncového bodu se zvýrazněným názvem DNS"::: 
+   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Snímek obrazovky s přehledem Traffic Managerho koncového bodu se zvýrazněným názvem DNS" lightbox="media/traffic-manager/traffic-manager-endpoints.png"::: 
 
 4. Vložte adresu URL názvu DNS do prohlížeče. Následující snímek obrazovky ukazuje provoz, který směruje do Západní Evropa oblasti.
 

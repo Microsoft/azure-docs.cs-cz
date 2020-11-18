@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dd88f6e8eb2ce95c1aa68c63f3d14a14e079d19
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 9055bb9689895a9b74f3d6b5affa325a3b594d65
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396511"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874674"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -233,7 +233,7 @@ Uživatelé v této roli můžou číst nastavení a informace pro správu např
 >- [Centrum pro správu OneDrivu](https://admin.onedrive.com/) – centrum pro správu OneDrive nepodporuje roli globálního čtecího modulu.
 >- [Centrum pro správu M365](https://admin.microsoft.com/Adminportal/Home#/homepage) – globální Čtenář nemůže přečíst žádosti o bezpečnostní modul zákazníka. V levém podokně centra pro správu M365 nenajdete kartu **žádosti o bezpečnostní modul pro zákazníky** v části **Podpora** .
 >- [Office Security & – centrum dodržování předpisů](https://sip.protection.office.com/homepage) – globální Čtenář nemůže číst protokoly auditu SCC, provádět hledání obsahu nebo se podívat na zabezpečené skóre.
->- [Centrum pro správu týmů](https://admin.teams.microsoft.com) – globální Čtenář nemůže přečíst **životní cyklus týmů** , **analýzu & sestav** , **správu IP adres zařízení** a **Katalog aplikací**.
+>- [Centrum pro správu týmů](https://admin.teams.microsoft.com) – globální Čtenář nemůže přečíst **životní cyklus týmů**, **analýzu & sestav**, **správu IP adres zařízení** a **Katalog aplikací**.
 >- [Privileged Access Management (pam)](/office365/securitycompliance/privileged-access-management-overview) nepodporuje roli globálního čtecího modulu.
 >- [Azure Information Protection](/azure/information-protection/what-is-information-protection) – globální čtečka se podporuje jenom [pro centrální vytváření sestav](/azure/information-protection/reports-aip) a když vaše organizace Azure AD není na [jednotné platformě pro označování](/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform).
 >
@@ -311,7 +311,7 @@ Uživatelé v této roli můžou monitorovat oznámení a poradenské aktualizac
 
 Nepoužívat. Tato role se automaticky přiřadí z obchodu a není určená ani podporovaná pro jiné použití. Níže najdete podrobnosti.
 
-Role uživatele moderního obchodování poskytuje určitým uživatelům oprávnění k přístupu k centru pro správu Microsoft 365 a zobrazení levého navigačního panelu pro **domovskou stránku** , **fakturaci** a **podporu**. Obsah, který je dostupný v těchto oblastech, se řídí [rolemi specifickými pro obchod](../../cost-management-billing/manage/understand-mca-roles.md) , které jsou přiřazené uživatelům pro správu produktů, které si koupili pro sebe nebo vaši organizaci. To může zahrnovat úkoly, jako jsou platby za účty, nebo přístup k fakturačním účtům a profilům fakturace. 
+Role uživatele moderního obchodování poskytuje určitým uživatelům oprávnění k přístupu k centru pro správu Microsoft 365 a zobrazení levého navigačního panelu pro **domovskou stránku**, **fakturaci** a **podporu**. Obsah, který je dostupný v těchto oblastech, se řídí [rolemi specifickými pro obchod](../../cost-management-billing/manage/understand-mca-roles.md) , které jsou přiřazené uživatelům pro správu produktů, které si koupili pro sebe nebo vaši organizaci. To může zahrnovat úkoly, jako jsou platby za účty, nebo přístup k fakturačním účtům a profilům fakturace. 
 
 Uživatelé s uživatelskou rolí moderního obchodování mají obvykle oprávnění správce v dalších nákupních systémech Microsoftu, ale nemají role globálního správce nebo správce fakturace používané pro přístup do centra pro správu. 
 
@@ -489,7 +489,7 @@ Uživatelé s touto rolí můžou spravovat [zařízení s certifikací pro tým
 
 Uživatelé v této roli můžou spravovat všechny aspekty úloh Microsoft Teams prostřednictvím Microsoft Teams & centra pro správu Skypu pro firmy a příslušné moduly PowerShellu. Mezi další oblasti patří i všechny nástroje pro správu, které se týkají telefonního subsystému, zasílání zpráv, schůzek a týmů. Tato role navíc uděluje možnost vytvářet a spravovat všechny Microsoft 365 skupiny, spravovat lístky podpory a monitorovat stav služby.
 
-### <a name="user-administrator"></a>[Správce uživatelů](#user-administrator-permissions)
+### <a name="user-administrator"></a>[Správce uživatele](#user-administrator-permissions)
 
 Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny aspekty uživatelů s některými omezeními (viz tabulku) a můžou aktualizovat zásady vypršení platnosti hesla. Uživatelé s touto rolí můžou navíc vytvářet a spravovat všechny skupiny. Tato role také zahrnuje možnost vytvářet a spravovat zobrazení uživatelů, spravovat lístky podpory a monitorovat stav služby. Správci uživatelů nemají oprávnění ke správě některých uživatelských vlastností pro uživatele ve většině rolí správce. Uživatel s touto rolí nemá oprávnění ke správě vícefaktorového ověřování. Role, které jsou výjimkou tohoto omezení, jsou uvedeny v následující tabulce.
 
@@ -1513,7 +1513,7 @@ Může spravovat všechny aspekty Power BI produktu.
 
 ### <a name="power-platform-administrator-permissions"></a>Oprávnění správce Power Platform
 
-Může vytvářet a spravovat všechny aspekty Microsoft Dynamics 365, PowerApps a Microsoft Flow. 
+Může vytvářet a spravovat všechny aspekty Microsoft Dynamics 365, PowerApps a Power automatizuje.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
@@ -1524,7 +1524,7 @@ Může vytvářet a spravovat všechny aspekty Microsoft Dynamics 365, PowerApps
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
 | Microsoft. dynamics365/allEntities/allTasks | Umožňuje spravovat všechny aspekty Dynamics 365. |
-| Microsoft. Flow/allEntities/allTasks | Umožňuje spravovat všechny aspekty Microsoft Flow. |
+| Microsoft. Flow/allEntities/allTasks | Spravujte všechny aspekty Power automatizuje. |
 | Microsoft. powerApps/allEntities/allTasks | Umožňuje spravovat všechny aspekty PowerApps. |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |

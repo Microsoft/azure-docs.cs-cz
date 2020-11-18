@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2468bde9dd969ad604f96835a3dc0bfad06c1cd2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8f2498dbb3a555db262c591c9badacbe0e4e2548
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844655"
+ms.locfileid: "94874657"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Základní hodnoty zabezpečení Azure pro Azure Machine Learning
 
@@ -529,6 +529,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 **Pokyny**: Azure Machine Learning podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Machine Learning prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) Azure k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instančního objektu aplikace.
 
 - [Správa přístupu k pracovnímu prostoru služby Azure Machine Learning](how-to-assign-roles.md)
+- [Použití Azure RBAC pro autorizaci Kubernetes](../aks/manage-azure-rbac.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -911,6 +912,8 @@ Azure Machine Learning plně podporuje úložiště Git pro sledování práce; 
 - [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 - [Přehled Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md)
+
+- [Použití Azure RBAC pro autorizaci Kubernetes](../aks/manage-azure-rbac.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

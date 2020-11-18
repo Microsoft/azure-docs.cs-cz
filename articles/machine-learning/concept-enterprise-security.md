@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: fb1f1d098970927ba04c840e77ec0a0b8d76ca02
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a9ad018980784a1f809ad28a77dacf9f0328fffa
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561314"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873892"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Podnikové zabezpečení a zásady správného řízení pro Azure Machine Learning
 
@@ -30,8 +30,8 @@ Když použijete cloudovou službu, osvědčeným postupem je omezit přístup j
 
 Většina ověřování pro Azure Machine Learning prostředky používá pro ověřování Azure Active Directory (Azure AD) a řízení přístupu na základě role (Azure RBAC) pro autorizaci. Výjimkou jsou tyto výjimky:
 
-* __SSH__ : můžete povolit přístup přes SSH k některým výpočetním prostředkům, jako je například Azure Machine Learning výpočetní instance. Přístup SSH používá ověřování na základě klíčů. Další informace o vytváření klíčů SSH najdete v tématu [vytváření a Správa klíčů ssh](../virtual-machines/linux/create-ssh-keys-detailed.md). Informace o povolení přístupu přes SSH najdete v tématu [Vytvoření a správa Azure Machine Learning výpočetní instance](how-to-create-manage-compute-instance.md).
-* __Modely nasazené jako webové služby__ : nasazení webové služby může používat __klíč__ nebo řízení přístupu na základě __tokenu__. Klíče jsou statické řetězce. Tokeny se načítají pomocí účtu Azure AD. Další informace najdete v tématu [Konfigurace ověřování pro modely nasazené jako webové služby](how-to-authenticate-web-service.md).
+* __SSH__: můžete povolit přístup přes SSH k některým výpočetním prostředkům, jako je například Azure Machine Learning výpočetní instance. Přístup SSH používá ověřování na základě klíčů. Další informace o vytváření klíčů SSH najdete v tématu [vytváření a Správa klíčů ssh](../virtual-machines/linux/create-ssh-keys-detailed.md). Informace o povolení přístupu přes SSH najdete v tématu [Vytvoření a správa Azure Machine Learning výpočetní instance](how-to-create-manage-compute-instance.md).
+* __Modely nasazené jako webové služby__: nasazení webové služby může používat __klíč__ nebo řízení přístupu na základě __tokenu__. Klíče jsou statické řetězce. Tokeny se načítají pomocí účtu Azure AD. Další informace najdete v tématu [Konfigurace ověřování pro modely nasazené jako webové služby](how-to-authenticate-web-service.md).
 
 Konkrétní služby, které Azure Machine Learning spoléhá na službu Azure Data Storage, mají vlastní metody ověřování a autorizace. Další informace o ověřování služeb úložiště najdete v tématu [připojení ke službám úložiště](how-to-access-data.md).
 
@@ -75,6 +75,8 @@ V následující tabulce jsou uvedené některé hlavní operace Azure Machine L
 | Volání webové služby | ✓ | ✓ | ✓ |
 
 Pokud předdefinované role nevyhovují vašim potřebám, můžete vytvořit vlastní role. Vlastní role řídí všechny operace v pracovním prostoru, například vytváření výpočetních prostředků, odesílání a registraci úložiště dat nebo nasazení modelu. Vlastní role můžou mít oprávnění ke čtení, zápisu a odstraňování různých prostředků pracovního prostoru, jako jsou clustery, úložiště dat, modely a koncové body. Role může být dostupná na konkrétní úrovni pracovního prostoru, na konkrétní úrovni skupiny prostředků nebo na konkrétní úrovni předplatného. Další informace najdete v tématu [Správa uživatelů a rolí v pracovním prostoru Azure Machine Learning](how-to-assign-roles.md).
+
+Další informace o používání RBAC s Kubernetes najdete v tématu [Azure Role-Based Access Control pro autorizaci Kubernetes](../aks/manage-azure-rbac.md).
 
 > [!IMPORTANT]
 > Azure Machine Learning závisí na dalších službách Azure, jako je Azure Blob Storage a Azure Kubernetes Services. Každá služba Azure má vlastní konfigurace služby Azure RBAC. Abyste dosáhli požadované úrovně řízení přístupu, možná budete muset použít konfiguraci Azure RBAC pro Azure Machine Learning i pro služby, které se používají s Azure Machine Learning.
@@ -125,7 +127,7 @@ Při používání služeb, jako jsou například automatizované Machine Learni
 
 Můžete také chtít šifrovat [diagnostické informace zaznamenané z nasazeného koncového bodu](how-to-enable-app-insights.md) do instance služby Azure Application Insights.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 K dispozici je několik scénářů monitorování, které se Azure Machine Learning v závislosti na roli a co se sleduje.
 
@@ -146,7 +148,7 @@ Můžete sledovat experimenty spouštěné v Azure Machine Learning, včetně in
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-Metriky Azure Monitor můžete použít k zobrazení a monitorování metrik pro pracovní prostor Azure Machine Learning. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor a pak vyberte **metriky** :
+Metriky Azure Monitor můžete použít k zobrazení a monitorování metrik pro pracovní prostor Azure Machine Learning. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor a pak vyberte **metriky**:
 
 [![Snímek obrazovky znázorňující ukázkovou metriku pro pracovní prostor](media/concept-enterprise-security/workspace-metrics.png)](media/concept-enterprise-security/workspace-metrics-expanded.png#lightbox)
 
@@ -185,8 +187,8 @@ Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou 
 
 [Azure Policy](../governance/policy/index.yml) je nástroj zásad správného řízení, který vám umožní zajistit, aby prostředky Azure vyhovovaly vašim zásadám. Pomocí Azure Machine Learning můžete přiřadit následující zásady:
 
-* **Klíč spravovaný zákazníkem** : audit nebo vymáhání, jestli musí pracovní prostory používat klíč spravovaný zákazníkem.
-* **Privátní odkaz** : Audituje, jestli pracovní prostory používají privátní koncový bod ke komunikaci s virtuální sítí.
+* **Klíč spravovaný zákazníkem**: audit nebo vymáhání, jestli musí pracovní prostory používat klíč spravovaný zákazníkem.
+* **Privátní odkaz**: Audituje, jestli pracovní prostory používají privátní koncový bod ke komunikaci s virtuální sítí.
 
 Další informace o Azure Policy najdete v dokumentaci k [Azure Policy](../governance/policy/overview.md).
 

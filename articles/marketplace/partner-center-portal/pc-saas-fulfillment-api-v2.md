@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 06a2a5bbe637cd2366dbdf218c0278cd683635df
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c2679be2ca1db9017cbc37219402fa4e1c0666a5
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130030"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874419"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>Rozhraní API pro splnění SaaS verze 2 na komerčním webu Marketplace
 
@@ -28,7 +28,7 @@ Zobrazí se stavy předplatného SaaS a příslušné akce.
 
 ![Životní cyklus předplatného SaaS na webu Marketplace](./media/saas-subscription-lifecycle-api-v2.png)
 
-#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>Koupeno, ale ještě Neaktivováno ( *PendingFulfillmentStart* )
+#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>Koupeno, ale ještě Neaktivováno (*PendingFulfillmentStart*)
 
 Jakmile koncový zákazník (nebo CSP) koupí nabídku SaaS na webu Marketplace, měl by se Vydavatel informovat o nákupu, takže se na straně vydavatele vytvoří nový účet SaaS a nakonfiguruje se pro koncového zákazníka.
 
@@ -82,11 +82,14 @@ Aktualizovat se dá jenom aktivní předplatné. I když se předplatné aktuali
 
 ##### <a name="update-initiated-from-the-marketplace"></a>Aktualizace iniciovaná z webu Marketplace
 
-V tomto toku zákazník změní plán předplatného nebo množství stanic z centra pro správu M365.  
+V tomto toku zákazník změní plán předplatného nebo množství stanic z centra pro správu Azure Portal nebo M365.  
 
 1. Po zadání aktualizace Microsoft zavolá adresu URL Webhooku vydavatele, nakonfigurovanou v poli **Webhook připojení** v partnerském centru, s odpovídající hodnotou pro *akci* a další relevantní parametry.  
 1. Strana vydavatele by měla provést požadované změny služby SaaS a informovat společnost Microsoft o dokončení změny voláním [stavu aktualizace rozhraní API pro provoz](#update-the-status-of-an-operation).
 1. Pokud je oprava odeslána se stavem selhání, proces aktualizace nebude dokončen na straně Microsoftu.  Předplatné SaaS bude ponecháno na stávajícím plánu a množství stanic.
+
+> [!NOTE]
+> Po přijetí oznámení Webhooku by měl Vydavatel vyvolat opravu pro [aktualizaci stavu rozhraní API operace](#update-the-status-of-an-operation) s odpovědí na selhání nebo úspěšnost *během 10 sekund okna* . Pokud se do 10 sekund neobdrží oprava stavu operace, plán změny se *automaticky opraví jako úspěšný*. 
 
 Posloupnost volání rozhraní API pro scénář aktualizace iniciované na webu Marketplace je uvedená níže.
 
@@ -106,9 +109,9 @@ Sekvence volání rozhraní API pro scénář aktualizace iniciované na straně
 
 ![Volání rozhraní API pro aktualizaci iniciované na straně vydavatele](./media/saas-update-status-api-v2-calls-publisher-side.png)
 
-#### <a name="suspended-suspended"></a>Pozastaveno ( *pozastaveno* )
+#### <a name="suspended-suspended"></a>Pozastaveno (*pozastaveno*)
 
-Tento stav indikuje, že platba zákazníka za službu SaaS nebyla přijata. Vydavatel bude upozorněn na tuto změnu ve stavu předplatného SaaS od Microsoftu. Oznámení se provádí prostřednictvím volání Webhooku s parametrem *Action* nastaveným na *pozastaveno* .
+Tento stav indikuje, že platba zákazníka za službu SaaS nebyla přijata. Vydavatel bude upozorněn na tuto změnu ve stavu předplatného SaaS od Microsoftu. Oznámení se provádí prostřednictvím volání Webhooku s parametrem *Action* nastaveným na *pozastaveno*.
 
 Vydavatel může nebo nemusí provádět změny ve službě SaaS na straně vydavatele. Doporučujeme, aby tento vydavatel zpřístupňuje tyto informace pozastavenému zákazníkovi a omezí nebo zablokuje přístup zákazníka ke službě SaaS.  Existuje pravděpodobnost, že platba nebude nikdy přijata.
 
@@ -119,7 +122,7 @@ Microsoft uděluje zákazníkovi 30denní dobu odkladu před automatickým zruš
 
 Stav předplatného se změní na pozastaveno na straně Microsoftu předtím, než vydavatel provede jakoukoli akci. Pozastavit lze pouze aktivní odběry.
 
-#### <a name="reinstated-suspended"></a>Obnovené ( *pozastavené* )
+#### <a name="reinstated-suspended"></a>Obnovené (*pozastavené*)
 
 Předplatné je obnoveno.
 
@@ -135,7 +138,7 @@ Pokud je oprava odeslána se stavem selhání, proces obnovení nebude dokončen
 
 Obnovit lze pouze pozastavené předplatné.  I když je předplatné SaaS obnoveno, zůstane jeho stav pozastaveno.  Po dokončení této operace se stav předplatného stane aktivní.
 
-#### <a name="renewed-subscribed"></a>Obnoveno ( *odebírané* )
+#### <a name="renewed-subscribed"></a>Obnoveno (*odebírané*)
 
 Na konci období předplatného (po měsíci nebo roce) se předplatné SaaS automaticky obnovuje Microsoftem.  Výchozí nastavení pro automatické obnovení je *pravdivé* pro všechna předplatná SaaS. Aktivní předplatná SaaS se budou v pravidelných tempoch i nadále obnovovat. Společnost Microsoft neoznamuje vydavateli, když se předplatné obnovuje. Zákazník může vypnout automatické obnovení předplatného SaaS prostřednictvím portálu pro správu M365 nebo prostřednictvím Azure Portal.  V tomto případě se předplatné SaaS na konci aktuálního fakturačního období automaticky zruší.  Zákazníci mohou také předplatné SaaS kdykoli zrušit.
 
@@ -143,7 +146,7 @@ Automaticky se obnoví pouze aktivní odběry.  Předplatná zůstávají aktivn
 
 Pokud se automatické obnovení nezdaří kvůli problému s platbou, předplatné se pozastaví.  Vydavatel bude upozorněn.
 
-#### <a name="canceled-unsubscribed"></a>Zrušeno ( *odhlášeno* ) 
+#### <a name="canceled-unsubscribed"></a>Zrušeno (*odhlášeno*) 
 
 Odběry dosáhnou tohoto stavu v reakci na explicitní akci zákazníka nebo CSP zrušením předplatného z webu vydavatele, Azure Portal nebo centra pro správu M365.  Předplatné je také možné implicitně zrušit z důvodu nedoplatku poplatků po dobu 30 dnů po pozastaveném stavu.
 
@@ -788,9 +791,9 @@ Kód: 500 interní chyba serveru. Opakujte volání rozhraní API.  Pokud chyba 
 
 #### <a name="get-operation-status"></a>Získat stav operace
 
-Povolí vydavateli sledovat stav zadané asynchronní operace:  **zrušit odběr** , **ChangePlan** nebo **ChangeQuantity** .
+Povolí vydavateli sledovat stav zadané asynchronní operace:  **zrušit odběr**, **ChangePlan** nebo **ChangeQuantity**.
 
-`operationId`Pro toto volání rozhraní API se dá načíst z hodnoty vrácené **umístěním Operation-to-Location** , získat nevyřízené volání rozhraní API nebo `<id>` hodnoty parametru přijatého ve volání Webhooku.
+`operationId`Pro toto volání rozhraní API se dá načíst z hodnoty vrácené **umístěním Operation-to-Location**, získat nevyřízené volání rozhraní API nebo `<id>` hodnoty parametru přijatého ve volání Webhooku.
 
 ##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Čtěte `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -850,7 +853,7 @@ Kód: 500 interní chyba serveru.  Opakujte volání rozhraní API.  Pokud chyba
 
 Aktualizujte stav operace, která čeká na vyřízení, a určete tak úspěch nebo neúspěch operace na straně vydavatele.
 
-`operationId`Pro toto volání rozhraní API se dá načíst z hodnoty vrácené **umístěním Operations-Location** , získat nevyřízené volání rozhraní API nebo `<id>` hodnoty parametru přijatého ve volání Webhooku.
+`operationId`Pro toto volání rozhraní API se dá načíst z hodnoty vrácené **umístěním Operations-Location**, získat nevyřízené volání rozhraní API nebo `<id>` hodnoty parametru přijatého ve volání Webhooku.
 
 ##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Použita `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -962,7 +965,7 @@ Když je Vydavatel připravený na koncové testování:
 
 Tok nákupu se dá aktivovat z Azure Portal nebo Microsoft AppSourcech lokalit v závislosti na tom, kde se nabídka publikuje.
 
-Akce *změnit plán* , *změnit množství* a *zrušit odběr* jsou testovány na straně vydavatele.  Na straně Microsoftu se může *zrušit odběr* z Azure Portal i z centra pro správu (portál, ve kterém se spravují nákupy Microsoft AppSource).  *Změna množství a plánu* se dá aktivovat jenom z centra pro správu.
+Akce *změnit plán*, *změnit množství* a *zrušit odběr* jsou testovány na straně vydavatele.  Na straně Microsoftu se může *zrušit odběr* z Azure Portal i z centra pro správu (portál, ve kterém se spravují nákupy Microsoft AppSource).  *Změna množství a plánu* se dá aktivovat jenom z centra pro správu.
 
 ## <a name="get-support"></a>Získání podpory
 

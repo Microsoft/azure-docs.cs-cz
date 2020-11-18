@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 11/09/2020
-ms.openlocfilehash: 62621a36955808ec3f2c796681fe660e6e8524bc
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 11/18/2020
+ms.openlocfilehash: 7bfd951d7cec27e0b8264aaabf9bc3a17875256a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443377"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873518"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -23,9 +23,11 @@ Před konfigurací doporučujeme zkontrolovat níže uvedená [omezení a omezen
 
 [Šifrování v klidovém umístění](../../security/fundamentals/encryption-atrest.md) je běžným požadavkem na ochranu osobních údajů a zabezpečení v organizacích. Azure vám umožní plně spravovat šifrování v klidovém režimu, zatímco máte k dispozici různé možnosti, jak pečlivě spravovat šifrovací a šifrovací klíče.
 
-Azure Monitor zajistí, že všechna data a uložené dotazy budou v klidovém stavu zašifrované pomocí klíčů spravovaných Microsoftem (MMK). Azure Monitor taky nabízí možnost šifrování pomocí vlastního klíče, který je uložený v [Azure Key Vault](../../key-vault/general/overview.md) a používaný úložištěm pro šifrování dat. Klíčem může být [software nebo hardware-HSM Protected](../../key-vault/general/overview.md). Azure Monitor použití šifrování je stejné jako způsob, jakým [Azure Storage šifrování](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) funguje.
+Azure Monitor zajistí, že všechna data a uložené dotazy budou v klidovém stavu zašifrované pomocí klíčů spravovaných Microsoftem (MMK). Azure Monitor taky nabízí možnost šifrování pomocí vlastního klíče, který je uložený v [Azure Key Vault](../../key-vault/general/overview.md) a poskytuje vám kontrolu nad tím, že přístup k datům odvolá. Azure Monitor použití šifrování je stejné jako způsob, jakým [Azure Storage šifrování](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) funguje.
 
-Klíčové funkce spravované zákazníkem se doručují na vyhrazené Log Analytics clustery. Umožňuje chránit data pomocí ovládacího prvku [bezpečnostní modul](#customer-lockbox-preview) a poskytuje ovládacímu prvku možnost kdykoli odvolat přístup k vašim datům. Data ingestovaná za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato data zůstávají zašifrovaná pomocí klíčů Microsoftu bez ohledu na konfiguraci klíče spravované zákazníkem, ale vaše kontrola nad daty SSD dodržuje [odvolání klíčů](#key-revocation). Pracujeme na tom, aby data SSD zašifrovaná pomocí Customer-Managed klíč v první polovině 2021.
+Customer-Managed klíč se doručuje na vyhrazené Log Analytics clustery, které poskytují vyšší úroveň ochrany a řízení. Data ingestovaná do vyhrazených clusterů se dvakrát šifrují – jednou na úrovni služby pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem a jednou na úrovni infrastruktury pomocí dvou různých šifrovacích algoritmů a dvou různých klíčů. [Dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) chrání proti scénáři, kdy může dojít k ohrožení jednoho z šifrovacích algoritmů nebo klíčů. V takovém případě bude další vrstva šifrování nadále chránit vaše data. Vyhrazený cluster také umožňuje chránit data pomocí ovládacího prvku [bezpečnostní modul](#customer-lockbox-preview) .
+
+Data ingestovaná za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato data zůstávají zašifrovaná pomocí klíčů Microsoftu bez ohledu na konfiguraci klíče spravované zákazníkem, ale vaše kontrola nad daty SSD dodržuje [odvolání klíčů](#key-revocation). Pracujeme na tom, aby data SSD zašifrovaná pomocí Customer-Managed klíč v první polovině 2021.
 
 [Cenový model Log Analytics clusterů](./manage-cost-storage.md#log-analytics-dedicated-clusters) používá rezervace kapacity počínaje úrovní 1000 GB/den.
 
@@ -74,77 +76,18 @@ Konfigurace Customer-Managed klíčů není podporovaná v Azure Portal a zřizo
 
 ### <a name="asynchronous-operations-and-status-check"></a>Asynchronní operace a kontroly stavu
 
-Některé kroky konfigurace běží asynchronně, protože je nepůjde rychle dokončit. Když v konfiguraci použijete žádosti REST, odpověď zpočátku po přijetí vrátí stavový kód HTTP 200 (OK) a záhlaví s vlastností *Azure-AsyncOperation* :
+Některé kroky konfigurace běží asynchronně, protože je nepůjde rychle dokončit. Při použití REST odpověď zpočátku po přijetí vrátí stavový kód HTTP 200 (OK) a záhlaví s vlastností *Azure-AsyncOperation* :
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
 
-Pak můžete zjistit stav asynchronní operace odesláním žádosti o získání do hodnoty v hlavičce *Azure-AsyncOperation* :
+Stav asynchronní operace můžete zjistit odesláním žádosti o získání do hodnoty v hlavičce *Azure-AsyncOperation* :
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
-Odpověď obsahuje informace o operaci a její *stavu*. Může to být jedna z následujících:
-
-Probíhá operace.
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "InProgress", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-}
-```
-
-Probíhá operace aktualizace identifikátoru klíče.
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Updating", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-Probíhá odstraňování clusteru – při odstraňování clusteru s propojenými pracovními prostory se operace zrušení propojení provede pro každý z těchto pracovních prostorů asynchronně a operace může chvíli trvat.
-Tato funkce není relevantní při odstranění clusteru bez propojených pracovních prostorů – v tomto případě se cluster okamžitě odstraní.
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Deleting", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-Operace je dokončená.
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Succeeded", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-Operace se nezdařila
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Failed", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-    "error" : { 
-        "code": "error-code",  
-        "message": "error-message" 
-    }
-}
-```
+`status`V odpovědi může být jedna z následujících: ' InProgress ', ' aktualizace ', ' odstranění ', ' úspěch nebo ' neúspěch ' včetně kódu chyby.
 
 ### <a name="allowing-subscription"></a>Povoluje se předplatné
 
@@ -476,7 +419,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
   - *cluster* (výchozí) – fakturace je přidělená předplatnému hostujícímu váš prostředek clusteru.
   - *pracovní prostory* – fakturace je úměrná předplatným hostujícím vaše pracovní prostory.
   
-  Postupujte podle [aktualizovaného clusteru](#update-cluster-with-key-identifier-details) a zadejte novou hodnotu billingType. Všimněte si, že nemusíte zadávat úplný text žádosti REST a měla by obsahovat *billingType* :
+  Postupujte podle [aktualizovaného clusteru](#update-cluster-with-key-identifier-details) a zadejte novou hodnotu billingType. Všimněte si, že nemusíte zadávat úplný text žádosti REST a měla by obsahovat *billingType*:
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -568,7 +511,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
 - Odkaz na pracovní prostor na cluster se nezdaří, pokud je propojený s jiným clusterem.
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 - Chování při Key Vault dostupnosti
   - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.
@@ -595,7 +538,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
   1. Pokud používáte REST, zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
   2. Odešlete požadavek GET do clusteru nebo pracovního prostoru a sledujte odpověď. Například nepropojený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
 
-- Pro podporu a nápovědu týkající se spravovaného klíče zákazníka použijte své kontakty do Microsoftu.
+- Pro clustery vytvořené z října 2020 se pro clustery vytvořené v říjnu nakonfigurovalo [dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) , pokud se v oblasti použilo dvojité šifrování Pokud vytvoříte cluster a obdržíte chybu "<název oblasti> nepodporuje dvojité šifrování pro clustery.", cluster stále můžete vytvořit, ale je zakázané dvojité šifrování. Po vytvoření clusteru se nedá zapnout nebo vypnout. Pokud chcete vytvořit cluster, pokud se v oblasti nepodporují šifrování, přidejte `"properties": {"isDoubleEncryptionEnabled": false}` do textu žádosti REST.
 
 - Chybové zprávy
   

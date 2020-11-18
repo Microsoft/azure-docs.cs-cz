@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e5cb077868a224620d1a23e1ff1aac9c8d9f095
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891083"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874470"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Vytvoření certifikátů pro Azure Stack Edge pro pomocí nástroje pro kontrolu připravenosti centra Azure Stack 
 
@@ -37,12 +37,12 @@ K vyžádání následujících certifikátů můžete použít nástroj pro kon
 - Certifikát sítě VPN
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete vytvořit zástupce pro nasazení zařízení Azure Stack Edge pro, ujistěte se, že: 
 
 - Máte klienta se systémem Windows 10 nebo Windows Server 2016 nebo novějším. 
-- Stáhli jste nástroj pro kontrolu připravenosti centra Microsoft Azure Stack 1.2002.1133.85 [z Galerie prostředí PowerShell](https://aka.ms/AzsReadinessChecker) v tomto systému. Možná budete muset tento balíček vyhledat. Jenom tato verze nástroje může vytvářet certifikáty pro zařízení Azure Stack Edge pro.
+- Stáhli jste nástroj pro kontrolu připravenosti centra Microsoft Azure Stack [z Galerie prostředí PowerShell](https://aka.ms/AzsReadinessChecker) v tomto systému.
 - Pro certifikáty máte k dispozici následující informace:
   - Název zařízení
   - Sériové číslo uzlu
@@ -56,7 +56,7 @@ Pomocí těchto kroků Připravte certifikáty zařízení Azure Stack Edge pro:
 2. Nainstalujte nástroj pro kontrolu připravenosti centra Azure Stack. Do příkazového řádku PowerShellu zadejte: 
 
     ```azurepowershell
-    Install-Module -Name Microsoft.AzureStack.ReadinessChecker -RequiredVersion 1.2002.1133.85 -Force
+    Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
     Nainstalovanou verzi ověříte tak, že zadáte:  
@@ -73,7 +73,7 @@ Pomocí těchto kroků Připravte certifikáty zařízení Azure Stack Edge pro:
     
 4. Pokud chcete vytvořit žádost o certifikát, zadejte následující informace. Pokud vygenerujete certifikát sítě VPN, některé z těchto vstupů se nevztahují. 
     
-    |Vstup |Description  |
+    |Vstup |Popis  |
     |---------|---------|
     |`OutputRequestPath`|Cesta k souboru v místním klientovi, kde chcete vytvořit žádosti o certifikát.        |
     |`DeviceName`|Název zařízení na stránce **zařízení** v místním webovém uživatelském rozhraní vašeho zařízení. <br> Toto pole není vyžadováno pro certifikát sítě VPN.         |

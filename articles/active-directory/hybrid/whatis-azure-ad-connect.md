@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 338f957d3e881a76b39b0b7c00288ae2ebf2be59
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74a6c816979732e21813a0f2024167c68ca1c5dc
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90018607"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874096"
 ---
 # <a name="what-is-azure-ad-connect"></a>Co je Azure AD Connect?
 
@@ -59,7 +59,7 @@ Klíčové výhody a osvědčené postupy:
 |-----|-----|
 |Posílené zabezpečení|[Trendy uzamčení extranetu](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Sestava neúspěšných přihlášení](how-to-connect-health-adfs-risky-ip.md)</br>[V souladu s ochranou osobních údajů](reference-connect-health-user-privacy.md)|
 |Získání upozornění na [všechny kritické problémy systému služby ADFS](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)|Konfigurace serveru a dostupnost</br>[Výkon a možnosti připojení](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>Pravidelná údržba|
-|Snadné nasazení a Správa|[Rychlá instalace agenta](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>Automatický upgrade agenta na nejnovější verzi</br>Dostupnost dat na portálu během několika minut|
+|Snadné nasazení a Správa|[Rychlá instalace agenta](how-to-connect-health-agent-install.md#install-the-agent-for-ad-fs)</br>Automatický upgrade agenta na nejnovější verzi</br>Dostupnost dat na portálu během několika minut|
 Detailní [metriky využití](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|Využití nejčastějších aplikací</br>Umístění v síti a připojení TCP</br>Žádosti o tokeny pro každý server|
 |Skvělé uživatelské prostředí|Styl řídicího panelu z webu Azure Portal</br>[Upozornění prostřednictvím e-mailů](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
 

@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: d6bcb9125cdfc07eb249353cb85b40a22d3e468c
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: f2b9f79f0914e645c736f8a577c46baa42587332
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397361"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874606"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Řešení běžných otázek nebo potíží s řadičem příchozího přenosu dat
 
 [Azure Cloud Shell](https://shell.azure.com/) je nejpohodlnější způsob, jak řešit problémy s instalací nástroje AKS a AGIC. Spusťte prostředí z [Shell.Azure.com](https://shell.azure.com/) nebo kliknutím na odkaz:
 
-[![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
+[![Vložené spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
 
 
 ## <a name="test-with-a-simple-kubernetes-app"></a>Testování pomocí jednoduché aplikace Kubernetes
@@ -292,7 +292,7 @@ armAuth:
 #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
 
 ################################################################################
-# Specify if the cluster is RBAC enabled or not
+# Specify if the cluster is Kubernetes RBAC enabled or not
 rbac:
     enabled: false # true/false
 

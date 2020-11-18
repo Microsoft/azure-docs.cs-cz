@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 29c378d40e3a4f92852f433677125a9e8a6d1133
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1a7204fea1a77dbca57ffc7d512f81e46c4d3b5f
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540123"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873385"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Vytváření a Správa pracovních prostorů Azure Machine Learning 
 
@@ -23,7 +23,7 @@ V tomto článku vytvoříte, zobrazíte a odstraníte [**Azure Machine Learning
 
 Jak se vaše potřeby mění nebo jsou požadavky na automatizaci, můžete také vytvořit a odstranit pracovní prostory [pomocí rozhraní](reference-azure-machine-learning-cli.md)příkazového řádku nebo [pomocí rozšíření vs Code](tutorial-setup-vscode-extension.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * Pokud používáte sadu SDK Python, [nainstalujte sadu SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
@@ -131,8 +131,12 @@ Pokud máte problémy s přístupem k předplatnému, přečtěte si téma [nast
    Předplatné |Vyberte předplatné Azure, které chcete použít.
    Skupina prostředků | Použijte stávající skupinu prostředků, kterou máte v předplatném, nebo zadejte název a vytvořte novou skupinu prostředků. Skupina prostředků obsahuje související prostředky pro řešení Azure. V tomto příkladu používáme **docs-AML**. Chcete-li použít existující skupinu prostředků, potřebujete roli *Přispěvatel* nebo *vlastník* .  Další informace o přístupu najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
    Oblast | Vyberte oblast Azure, která je nejblíže vašim uživatelům a datovým prostředkům k vytvoření pracovního prostoru.
+   | Účet úložiště | Výchozí účet úložiště pro pracovní prostor. Ve výchozím nastavení se vytvoří nový. |
+   | Key Vault | Azure Key Vault používané pracovním prostorem. Ve výchozím nastavení se vytvoří nový. |
+   | Application Insights | Instance Application Insights pro pracovní prostor. Ve výchozím nastavení se vytvoří nový. |
+   | Container Registry | Azure Container Registry pracovního prostoru Ve výchozím nastavení se pro tento pracovní _prostor poprvé_ nevytvoří nový. Místo toho se vytvoří, až ho budete potřebovat při vytváření image Docker během školení nebo nasazení. |
 
-    ![Konfigurace pracovního prostoru](./media/how-to-manage-workspace/create-workspace-form.png)
+   :::image type="content" source="media/how-to-manage-workspace/create-workspace-form.png" alt-text="Nakonfigurujte svůj pracovní prostor.":::
 
 1. Po dokončení konfigurace pracovního prostoru vyberte **zkontrolovat + vytvořit**. Volitelně můžete pomocí oddílů [sítě](#networking) a [Upřesnit](#advanced) nakonfigurovat další nastavení pracovního prostoru.
 
@@ -159,7 +163,7 @@ Sada Azure Machine Learning Python SDK poskytuje třídu [PrivateEndpointConfig]
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Výchozí konfigurací sítě je použití __veřejného koncového bodu__ , který je přístupný na veřejném Internetu. Pokud chcete omezit přístup k vašemu pracovnímu prostoru na Virtual Network Azure, kterou jste vytvořili, můžete místo toho vybrat jako __metodu připojení__ __privátní koncový bod__ (Preview) a pak pomocí __+ Přidat__ nakonfigurovat koncový bod.   
+1. Výchozí konfigurací sítě je použití __veřejného koncového bodu__, který je přístupný na veřejném Internetu. Pokud chcete omezit přístup k vašemu pracovnímu prostoru na Virtual Network Azure, kterou jste vytvořili, můžete místo toho vybrat jako __metodu připojení__ __privátní koncový bod__ (Preview) a pak pomocí __+ Přidat__ nakonfigurovat koncový bod.   
 
    :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Výběr privátního koncového bodu":::  
 
@@ -189,7 +193,7 @@ Další informace najdete v tématu [Konfigurace DNS privátního koncového bod
 
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Měli byste Azure Security Center, abyste mohli kontrolovat prostředky a dodržovat doporučení. Další informace najdete v tématu  [Azure Container Registry prověřování imagí Security Center](../security-center/defender-for-container-registries-introduction.md) a [Azure Kubernetes Services integration with Security Center](../security-center/defender-for-kubernetes-introduction.md).
 
-### <a name="advanced"></a>Upřesnit
+### <a name="advanced"></a>Pokročilý
 
 Ve výchozím nastavení se metadata pro pracovní prostor ukládají do Azure Cosmos DB instance, kterou společnost Microsoft udržuje. Tato data se šifrují pomocí klíčů spravovaných Microsoftem.
 

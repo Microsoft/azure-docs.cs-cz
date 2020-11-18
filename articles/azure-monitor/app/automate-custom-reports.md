@@ -4,12 +4,12 @@ description: Automatizace vlastních denních, týdenních nebo měsíčních se
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f35b7cbde7b719a91b23b19481ab704c445485cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d465666ce5d631a234644d1adc85afcf6e3c1e27
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827740"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873706"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatizace vlastních sestav pomocí Azure Application Insights dat
 
@@ -31,7 +31,7 @@ Každá organizace má své jedinečné požadavky na vytváření sestav, jako 
 
 [Pomocí programového dotazování](https://dev.applicationinsights.io/) na data Application Insights můžete vytvářet vlastní sestavy podle plánu. Následující možnosti vám pomůžou rychle začít:
 
-* [Automatizace sestav pomocí Microsoft Flow](../platform/logicapp-flow-connector.md)
+* [Automatizace sestav s využitím Power automatizovat](../platform/logicapp-flow-connector.md)
 * [Automatizace sestav pomocí Logic Apps](automate-with-logic-apps.md)
 * V scénáři monitorování použijte šablonu [Azure Functions](../../azure-functions/functions-create-first-azure-function.md) "Application Insights naplánovaný výtah". Tato funkce používá SendGrid k doručování e-mailů. 
 
@@ -112,7 +112,7 @@ availabilityResults
 
      ![Snímek obrazovky výstupu](./media/automate-custom-reports/integrate.png)
 
-9. V **nastavení aplikace SendGridAPI Key**vyberte nově vytvořené nastavení aplikace pro **SendGridAPI**.
+9. V **nastavení aplikace SendGridAPI Key** vyberte nově vytvořené nastavení aplikace pro **SendGridAPI**.
 
      ![Spustit Function App snímek obrazovky](./media/automate-custom-reports/sendgrid-output.png)
 

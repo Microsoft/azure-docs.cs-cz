@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2afe53ade9106fa5e1ebb9ec43492a86bd9fc213
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1c4cc7f5440aca27be085c238179cd0ab20b226a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127314"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874045"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>Referenční architektura monitorování kvality vody 
 
@@ -41,10 +41,10 @@ Zařízení použitá v inteligentních vodách budou obecně připojena prostř
 Azure IoT Central je aplikační platforma IoT, která vám umožní rychle začít pracovat v řešení IoT. Vaše řešení můžete označit, přizpůsobit a integrovat s službami třetích stran.
 Po připojení inteligentních zařízení k IoT Central získáte příkazy a ovládání zařízení, monitorování a upozorňování, uživatelské rozhraní s integrovanými RBACmi, konfigurovatelnými řídicími panely a možnostmi rozšiřitelnosti. 
 
-## <a name="extensibility-and-integrations"></a>Rozšiřitelnost a integrace 
+## <a name="extensibility-and-integrations"></a>Rozšiřitelnost a integrace
 Aplikaci IoT můžete v IoT Central zvětšit a volitelně:
 * Transformujte a Integrujte data IoT pro pokročilé analýzy, například školení modelů strojového učení, prostřednictvím průběžného exportu dat z aplikace IoT Central.
-* automatizace pracovních postupů v jiných systémech aktivací akcí pomocí Microsoft Flow nebo webhooků z aplikace IoT Central
+* automatizace pracovních postupů v jiných systémech aktivací akcí pomocí Power automatu nebo webhooků z IoT Central aplikace
 * programově přístup k aplikaci IoT v IoT Central prostřednictvím rozhraní API IoT Central
 
 ## <a name="business-applications"></a>Obchodní aplikace 

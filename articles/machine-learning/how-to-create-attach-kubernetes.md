@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 9b14ba12c9f9b679d1d63008d31825647f42619d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c8b3ab965c5a85bd6f25e5325fdca24026aec787
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318052"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873824"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Vytvoření a připojení clusteru služby Azure Kubernetes
 
@@ -54,7 +54,7 @@ Azure Machine Learning můžou nasazovat školicí modely strojového učení do
    
  - Pokud chcete nasadit modely do uzlů **GPU** nebo **FPGAch** uzlů (nebo jakékoli konkrétní SKU), musíte vytvořit cluster s konkrétní SKU. Neexistuje žádná podpora pro vytváření fondu sekundárních uzlů v existujícím clusteru a nasazování modelů do fondu sekundárních uzlů.
  
-- Při vytváření nebo připojování clusteru můžete vybrat, jestli se má cluster vytvořit pro __vývoj a testování__ nebo pro __produkční__ prostředí. Pokud chcete vytvořit cluster AKS pro __vývoj__ , __ověřování__ a __testování__ namísto produkčního prostředí, nastavte __účel clusteru__ na __dev-test__. Pokud neurčíte účel clusteru, vytvoří se __produkční__ cluster. 
+- Při vytváření nebo připojování clusteru můžete vybrat, jestli se má cluster vytvořit pro __vývoj a testování__ nebo pro __produkční__ prostředí. Pokud chcete vytvořit cluster AKS pro __vývoj__, __ověřování__ a __testování__ namísto produkčního prostředí, nastavte __účel clusteru__ na __dev-test__. Pokud neurčíte účel clusteru, vytvoří se __produkční__ cluster. 
 
     > [!IMPORTANT]
     > Cluster pro __vývoj a testování__ není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám.
@@ -124,7 +124,7 @@ Result
 1.16.13
 ```
 
-Pokud byste chtěli **programově kontrolovat dostupné verze** , použijte [orchestraci seznamu klient-seznam klienta služby Container Service](/rest/api/container-service/container%20service%20client/listorchestrators) REST API. Pokud chcete zjistit dostupné verze, podívejte se na položky, kde `orchestratorType` je `Kubernetes` . Přidružené `orchestrationVersion` položky obsahují dostupné verze, které je možné **připojit** k vašemu pracovnímu prostoru.
+Pokud byste chtěli **programově kontrolovat dostupné verze**, použijte [orchestraci seznamu klient-seznam klienta služby Container Service](/rest/api/container-service/container%20service%20client/listorchestrators) REST API. Pokud chcete zjistit dostupné verze, podívejte se na položky, kde `orchestratorType` je `Kubernetes` . Přidružené `orchestrationVersion` položky obsahují dostupné verze, které je možné **připojit** k vašemu pracovnímu prostoru.
 
 Pokud chcete najít výchozí verzi, která se používá při **vytváření** clusteru prostřednictvím Azure Machine Learning, Najděte položku, kde `orchestratorType` je `Kubernetes` a `default` `true` . Přidružená `orchestratorVersion` hodnota je výchozí verze. Následující fragment kódu JSON ukazuje příklad položky:
 
@@ -147,7 +147,7 @@ Pokud chcete najít výchozí verzi, která se používá při **vytváření** 
 
 ## <a name="create-a-new-aks-cluster"></a>Vytvoření nového clusteru AKS
 
-**Časový odhad** : přibližně 10 minut.
+**Časový odhad**: přibližně 10 minut.
 
 Vytvoření nebo připojení clusteru AKS je jednorázový proces pro váš pracovní prostor. Tento cluster můžete použít pro více nasazení. Pokud odstraníte cluster nebo skupinu prostředků, která ho obsahuje, musíte při příštím nasazení vytvořit nový cluster. K vašemu pracovnímu prostoru můžete připojit více clusterů AKS.
 
@@ -306,5 +306,6 @@ V Azure Machine Learning Studiu vyberte __výpočetní__ prostředí, __odvozen�
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Použití Azure RBAC pro autorizaci Kubernetes](../aks/manage-azure-rbac.md)
 * [Jak a kde nasadit model](how-to-deploy-and-where.md)
 * [Nasazení modelu do clusteru služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md)
