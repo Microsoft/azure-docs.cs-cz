@@ -3,12 +3,12 @@ title: Postup vytváření zásad konfigurace hosta pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 325b00ac1cc747555d38b4c250709638f5e74d95
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: ea9b40006deefbac2c253082eda4ef2da12149a4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348878"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700673"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytváření zásad konfigurace hosta pro Windows
 
@@ -169,7 +169,7 @@ Mezi příklady patří úložiště GitHub, úložiště Azure nebo Azure Stora
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Krok za krokem – vytvoření vlastní zásady auditu konfigurace hosta pro Windows
 
-Vytvořte konfiguraci DSC pro auditování nastavení. Následující příklad skriptu PowerShellu vytvoří konfiguraci s názvem **AuditBitLocker** , importuje modul prostředků **PsDscResources** a použije `Service` prostředek k auditování spuštěné služby. Konfigurační skript se dá spustit z počítače s Windows nebo macOS.
+Vytvořte konfiguraci DSC pro auditování nastavení. Následující příklad skriptu PowerShellu vytvoří konfiguraci s názvem **AuditBitLocker**, importuje modul prostředků **PsDscResources** a použije `Service` prostředek k auditování spuštěné služby. Konfigurační skript se dá spustit z počítače s Windows nebo macOS.
 
 ```powershell
 # Add PSDscResources module to environment
@@ -202,9 +202,9 @@ Jakmile je soubor MOF zkompilován, podpůrné soubory musí být zabaleny dohro
 
 `New-GuestConfigurationPackage`Rutina vytvoří balíček. Moduly, které jsou potřebné pro konfiguraci, musí být k dispozici v `$Env:PSModulePath` . Parametry `New-GuestConfigurationPackage` rutiny při vytváření obsahu Windows:
 
-- **Název** : název konfiguračního balíčku hosta.
-- **Konfigurace** : kompilovaná úplná cesta dokumentu konfigurace DSC.
-- **Cesta** : cesta ke výstupní složce. Tento parametr je volitelný. Pokud není zadaný, balíček se vytvoří v aktuálním adresáři.
+- **Název**: název konfiguračního balíčku hosta.
+- **Konfigurace**: kompilovaná úplná cesta dokumentu konfigurace DSC.
+- **Cesta**: cesta ke výstupní složce. Tento parametr je volitelný. Pokud není zadaný, balíček se vytvoří v aktuálním adresáři.
 
 Spuštěním následujícího příkazu vytvořte balíček pomocí konfigurace uvedené v předchozím kroku:
 
@@ -220,9 +220,9 @@ Vzhledem k tomu, že agent ve skutečnosti vyhodnocuje místní prostředí, ve 
 
 Parametry `Test-GuestConfigurationPackage` rutiny:
 
-- **Název** : název zásad konfigurace hostů.
-- **Parametr** : parametry zásad, které jsou k dispozici ve formátu zatřiďovací tabulky.
-- **Cesta** : úplná cesta k balíčku pro konfiguraci hosta.
+- **Název**: název zásad konfigurace hostů.
+- **Parametr**: parametry zásad, které jsou k dispozici ve formátu zatřiďovací tabulky.
+- **Cesta**: úplná cesta k balíčku pro konfiguraci hosta.
 
 Spusťte následující příkaz, který otestuje balíček vytvořený předchozím krokem:
 
@@ -247,13 +247,13 @@ Po vytvoření a nahrání balíčku vlastní zásady konfigurace hosta se vytvo
 
 Parametry `New-GuestConfigurationPolicy` rutiny:
 
-- **ContentUri** : veřejné http (s) URI balíčku obsahu konfigurace hosta.
-- **DisplayName** : zobrazovaný název zásad.
-- **Popis** : popis zásady.
-- **Parametr** : parametry zásad, které jsou k dispozici ve formátu zatřiďovací tabulky.
-- **Verze** : verze zásad
-- **Cesta** : cílová cesta, kde jsou vytvořeny definice zásad.
-- **Platforma** : cílová platforma (Windows/Linux) pro zásady konfigurace hosta a balíček obsahu.
+- **ContentUri**: veřejné http (s) URI balíčku obsahu konfigurace hosta.
+- **DisplayName**: zobrazovaný název zásad.
+- **Popis**: popis zásady.
+- **Parametr**: parametry zásad, které jsou k dispozici ve formátu zatřiďovací tabulky.
+- **Verze**: verze zásad
+- **Cesta**: cílová cesta, kde jsou vytvořeny definice zásad.
+- **Platforma**: cílová platforma (Windows/Linux) pro zásady konfigurace hosta a balíček obsahu.
 - **Tag** přidá do definice zásady jeden nebo více filtrů značek.
 - **Kategorie** nastaví pole metadata kategorie v definici zásady.
 
@@ -474,10 +474,10 @@ Podpůrné soubory musí být zabaleny dohromady. Dokončený balíček použív
 
 `New-GuestConfigurationPackage`Rutina vytvoří balíček. Pro obsah třetích stran přidejte do balíčku obsah INSPEC pomocí parametru **FilesToInclude** . Nemusíte zadávat **ChefProfilePath** jako balíčky pro Linux.
 
-- **Název** : název konfiguračního balíčku hosta.
-- **Konfigurace** : úplná cesta k kompilované konfiguraci dokumentu.
-- **Cesta** : cesta ke výstupní složce. Tento parametr je volitelný. Pokud není zadaný, balíček se vytvoří v aktuálním adresáři.
-- **FilesoInclude** : úplná cesta k profilu INSPEC.
+- **Název**: název konfiguračního balíčku hosta.
+- **Konfigurace**: úplná cesta k kompilované konfiguraci dokumentu.
+- **Cesta**: cesta ke výstupní složce. Tento parametr je volitelný. Pokud není zadaný, balíček se vytvoří v aktuálním adresáři.
+- **FilesoInclude**: úplná cesta k profilu INSPEC.
 
 Spuštěním následujícího příkazu vytvořte balíček pomocí konfigurace uvedené v předchozím kroku:
 
@@ -496,9 +496,9 @@ Pokud chcete vydat aktualizaci zásady, existují tři pole, která vyžadují p
 > [!NOTE]
 > `version`Vlastnost přiřazení konfigurace hosta má jenom balíčky, které hostuje Microsoft. Osvědčeným postupem pro správu verzí vlastního obsahu je zahrnutí verze do názvu souboru.
 
-- **Verze** : když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované.
-- **contentUri** : když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat identifikátor URI do umístění balíčku. Zahrnutí verze balíčku do názvu souboru zajistí, že se hodnota této vlastnosti změní v každé vydané verzi.
-- **contentHash** : Tato vlastnost je automaticky aktualizována `New-GuestConfigurationPolicy` rutinou. Jedná se o hodnotu hash balíčku, kterou vytvořil `New-GuestConfigurationPackage` . Vlastnost musí být správná pro `.zip` soubor, který publikujete. Pokud se aktualizuje jenom vlastnost **contentUri** , rozšíření nepřijme balíček obsahu.
+- **Verze**: když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované.
+- **contentUri**: když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat identifikátor URI do umístění balíčku. Zahrnutí verze balíčku do názvu souboru zajistí, že se hodnota této vlastnosti změní v každé vydané verzi.
+- **contentHash**: Tato vlastnost je automaticky aktualizována `New-GuestConfigurationPolicy` rutinou. Jedná se o hodnotu hash balíčku, kterou vytvořil `New-GuestConfigurationPackage` . Vlastnost musí být správná pro `.zip` soubor, který publikujete. Pokud se aktualizuje jenom vlastnost **contentUri** , rozšíření nepřijme balíček obsahu.
 
 Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat postup popsaný v tomto článku a zadat aktualizované číslo verze. Tento proces zaručuje, že všechny vlastnosti jsou správně aktualizované.
 
@@ -518,8 +518,8 @@ Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindo
 
 Parametry `Protect-GuestConfigurationPackage` rutiny:
 
-- **Cesta** : úplná cesta k balíčku pro konfiguraci hosta.
-- **Certifikát** : certifikát pro podepsání kódu pro podepsání balíčku. Tento parametr je podporován pouze při podepisování obsahu pro systém Windows.
+- **Cesta**: úplná cesta k balíčku pro konfiguraci hosta.
+- **Certifikát**: certifikát pro podepsání kódu pro podepsání balíčku. Tento parametr je podporován pouze při podepisování obsahu pro systém Windows.
 
 Agent GuestConfiguration očekává, že se veřejný klíč certifikátu nachází v počítačích se systémem Windows v části Důvěryhodné kořenové certifikační autority a v cestě `/usr/local/share/ca-certificates/extra` k počítačům se systémem Linux. Aby mohl uzel ověřit podepsaný obsah, nainstalujte na počítači veřejný klíč certifikátu a pak použijte vlastní zásady. Tento proces se dá provést pomocí jakékoli techniky v rámci virtuálního počítače nebo pomocí Azure Policy. [Tady je uvedena](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)Ukázková šablona.
 Zásady přístupu Key Vault musí umožňovat poskytovateli výpočetních prostředků přístup k certifikátům během nasazení. Podrobný postup najdete v tématu [nastavení Key Vault pro virtuální počítače v Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
@@ -532,12 +532,6 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
 Po publikování obsahu přidejte značku s názvem `GuestConfigPolicyCertificateValidation` a hodnotou `enabled` do všech virtuálních počítačů, kde by mělo být požadováno podepisování kódu. Podívejte se na [ukázky značek](../samples/built-in-policies.md#tags) , jak mohou být značky doručovány ve velkém rozsahu pomocí Azure Policy. Jakmile je tato značka nastavená, definice zásady vytvořená pomocí `New-GuestConfigurationPolicy` rutiny povolí požadavek prostřednictvím rozšíření konfigurace hosta.
-
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Řešení potíží s přiřazením zásad konfigurace hosta (Preview)
-
-Nástroj je k dispozici ve verzi Preview, který vám pomůže při řešení potíží s Azure Policy přiřazení konfigurace hostů. Nástroj je ve verzi Preview a byl publikován do Galerie prostředí PowerShell jako název modulu [Poradce při potížích s konfigurací hosta](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
-
-Další informace o rutinách v tomto nástroji získáte pomocí příkazu Get-Help v prostředí PowerShell k zobrazení integrovaných pokynů. Jak nástroj načítá časté aktualizace, což je nejlepší způsob, jak získat nejnovější informace.
 
 ## <a name="next-steps"></a>Další kroky
 

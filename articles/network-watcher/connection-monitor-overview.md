@@ -1,6 +1,6 @@
 ---
-title: Monitorování připojení (Preview) | Microsoft Docs
-description: Naučte se používat monitorování připojení (Preview) k monitorování síťové komunikace v distribuovaném prostředí.
+title: Monitorování připojení | Microsoft Docs
+description: Naučte se používat monitorování připojení k monitorování síťové komunikace v distribuovaném prostředí.
 services: network-watcher
 documentationcenter: na
 author: vinynigam
@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 80934dca73d7f8a205c62a49c418828cab1820e7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5dbb8d508fe824d0264043625c988f43092f3f78
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447603"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699232"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Monitorování připojení k síti pomocí monitorování připojení (Preview)
+# <a name="network-connectivity-monitoring-with-connection-monitor"></a>Monitorování připojení k síti pomocí monitorování připojení
 
-Monitorování připojení (Preview) nabízí sjednocené monitorování připojení v Azure Network Watcher. Funkce monitorování připojení (Preview) podporuje hybridní nasazení v cloudu a Azure. Network Watcher poskytuje nástroje pro monitorování, diagnostiku a zobrazení metrik souvisejících s připojením pro vaše nasazení Azure.
+Monitorování připojení nabízí sjednocené monitorování připojení v Azure Network Watcher. Funkce monitorování připojení podporuje hybridní a cloudová nasazení Azure. Network Watcher poskytuje nástroje pro monitorování, diagnostiku a zobrazení metrik souvisejících s připojením pro vaše nasazení Azure.
 
-Tady jsou některé případy použití pro monitorování připojení (Preview):
+Tady jsou některé případy použití pro monitorování připojení:
 
 - Virtuální počítač s front-end webovým serverem komunikuje s virtuálním počítačem s databázovým serverem v vícevrstvé aplikaci. Chcete kontrolovat síťové připojení mezi těmito dvěma virtuálními počítači.
 - Chcete, aby se virtuální počítače v oblasti Východní USA v oblasti Střed USA vyy na virtuální počítače s příkazy pro otestování a chcete porovnat latence sítě mezi oblastmi.
@@ -34,9 +34,9 @@ Tady jsou některé případy použití pro monitorování připojení (Preview)
 - Vaše hybridní aplikace potřebuje připojení ke koncovému bodu Azure Storage. Vaše místní lokalita a vaše aplikace Azure se připojí ke stejnému koncovému bodu Azure Storage. Chcete porovnat latence místního serveru s latencí aplikace Azure.
 - Chcete kontrolovat konektivitu mezi místními nastaveními a virtuálními počítači Azure, které hostují vaši cloudovou aplikaci.
 
-V této fázi Preview spojuje monitorování připojení nejlepší ze dvou funkcí: funkce [monitorování připojení](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) Network Watcher a monitorování připojení [služby](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity)Network Performance Monitor (npm), [monitorování ExpressRoute](https://docs.microsoft.com/azure/expressroute/how-to-npm)a [monitorování výkonu](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) .
+Monitorování připojení spojuje nejlepší ze dvou funkcí: funkce [monitorování připojení Network Watcher (Classic)](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) a služba Network Performance Monitor (npm) pro monitorování [připojení služby](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity), [monitorování ExpressRoute](https://docs.microsoft.com/azure/expressroute/how-to-npm)a funkce [monitorování výkonu](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) .
 
-Zde jsou některé výhody monitorování připojení (Preview):
+Tady jsou některé výhody monitorování připojení:
 
 * Jednotné a intuitivní prostředí pro potřeby Azure a hybridní monitorování
 * Monitorování připojení mezi jednotlivými oblastmi a mezi jednotlivými pracovními prostory
@@ -47,7 +47,7 @@ Zde jsou některé výhody monitorování připojení (Preview):
 
 ![Diagram znázorňující, jak monitorování připojení spolupracuje s virtuálními počítači Azure, hostiteli mimo Azure, koncovými body a umístěními úložiště dat](./media/connection-monitor-2-preview/hero-graphic.png)
 
-Pokud chcete začít používat monitorování připojení (Preview) ke sledování, postupujte podle těchto kroků: 
+Pokud chcete začít používat monitorování připojení pro monitorování, postupujte podle těchto kroků: 
 
 1. Nainstalujte agenty monitorování.
 1. Povolte Network Watcher v předplatném.
@@ -59,7 +59,7 @@ Následující části obsahují podrobné informace o těchto krocích.
 
 ## <a name="install-monitoring-agents"></a>Instalace agentů monitorování
 
-Monitorování připojení spoléhá na zjednodušené spustitelné soubory, aby se spouštěly kontroly připojení.  Podporuje kontroly připojení z prostředí Azure i místních prostředí. Spustitelný soubor, který použijete, závisí na tom, jestli je váš virtuální počítač hostovaný v Azure nebo v místním prostředí.
+Monitorování připojení spoléhá na zjednodušené spustitelné soubory, aby se spouštěly kontroly připojení. Podporuje kontroly připojení z prostředí Azure i místních prostředí. Spustitelný soubor, který použijete, závisí na tom, jestli je váš virtuální počítač hostovaný v Azure nebo v místním prostředí.
 
 ### <a name="agents-for-azure-virtual-machines"></a>Agenti pro virtuální počítače Azure
 
@@ -89,19 +89,19 @@ Monitorování připojení monitoruje komunikaci v pravidelných intervalech. In
 
 Zdroji můžou být virtuální počítače Azure nebo místní počítače, které mají nainstalovaného agenta monitorování. Cílovými koncovými body můžou být Microsoft 365 adresy URL, adresy URL Dynamics 365, vlastní adresy URL, ID prostředků virtuálních počítačů Azure, IPv4, IPv6, plně kvalifikovaný název domény nebo libovolný název domény.
 
-### <a name="access-connection-monitor-preview"></a>Monitor připojení pro přístup (Preview)
+### <a name="access-connection-monitor"></a>Monitorování připojení přístupu
 
 1. Na domovské stránce Azure Portal přejít na **Network Watcher**.
-1. Na levé straně v části **monitorování** vyberte **monitorování připojení (Preview)**.
-1. Zobrazí se všechna monitorování připojení, která byla vytvořena v monitorování připojení (Preview). Chcete-li zobrazit monitory připojení vytvořené v klasickém prostředí monitorování připojení, přejděte na kartu **monitorování připojení** .
+1. Na levé straně v části **monitorování** vyberte **monitorování připojení**.
+1. Zobrazí se všechna monitorování připojení, která byla vytvořena v monitorování připojení. Chcete-li zobrazit monitory připojení vytvořené v klasickém prostředí monitorování připojení, přejděte na kartu **monitorování připojení** .
     
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Snímek obrazovky zobrazující monitory připojení, které byly vytvořeny v monitorování připojení (Preview)" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Snímek obrazovky zobrazující monitory připojení, které byly vytvořeny v monitorování připojení" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
 
 ### <a name="create-a-connection-monitor"></a>Vytvoření monitorování připojení
 
-Ve sledováních připojení, které vytvoříte v monitorování připojení (Preview), můžete přidat místní počítače a virtuální počítače Azure jako zdroje. Tato sledování připojení také mohou monitorovat připojení k koncovým bodům. Koncové body můžou být na Azure nebo na jakékoli jiné adrese URL nebo IP adrese.
+V okně Sledování připojení, které vytvoříte v monitorování připojení, můžete přidat místní počítače a virtuální počítače Azure jako zdroje. Tato sledování připojení také mohou monitorovat připojení k koncovým bodům. Koncové body můžou být na Azure nebo na jakékoli jiné adrese URL nebo IP adrese.
 
-Monitorování připojení (Preview) obsahuje následující entity:
+Monitorování připojení zahrnuje následující entity:
 
 * **Prostředek sledování připojení** – prostředek Azure specifický pro oblast. Všechny následující entity jsou vlastnosti prostředku monitorování připojení.
 * **Koncový bod** – zdroj nebo cíl, který se účastní kontrol připojení. Mezi příklady koncových bodů patří virtuální počítače Azure, místní agenti, adresy URL a IP adresy.
@@ -111,7 +111,7 @@ Monitorování připojení (Preview) obsahuje následující entity:
 
  ![Diagram znázorňující monitorování připojení, definování vztahu mezi testovacími skupinami a testy](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-Můžete vytvořit náhled monitorování připojení pomocí [Azure Portal](connection-monitor-preview-create-using-portal.md) nebo [ARMClient](connection-monitor-preview-create-using-arm-client.md)
+Monitorování připojení můžete vytvořit pomocí [Azure Portal](connection-monitor-preview-create-using-portal.md) nebo [ARMClient](connection-monitor-preview-create-using-arm-client.md)
 
 Všechny zdroje, cíle a konfigurace testu, které přidáte do testovací skupiny, se rozdělují na jednotlivé testy. Tady je příklad rozdělení zdrojů a cílů:
 
@@ -151,7 +151,7 @@ Po vytvoření monitorování připojení zdroje kontrolují připojení k cíl�
 
 ### <a name="checks-in-a-test"></a>Zkontroluje test.
 
-Na základě protokolu, který jste zvolili v konfiguraci testu, se v monitorování připojení (Preview) spustí série kontrol dvojice zdroj-cíl. Kontroly se spustí podle četnosti testů, kterou jste zvolili.
+Na základě protokolu, který jste zvolili v konfiguraci testu, monitor připojení spouští sérii kontrol pro dvojici zdrojového a cílového umístění. Kontroly se spustí podle četnosti testů, kterou jste zvolili.
 
 Pokud používáte protokol HTTP, služba vypočítá počet odpovědí HTTP, které vrátily platný kód odpovědi. Platné kódy odpovědí je možné nastavit pomocí PowerShellu a rozhraní příkazového řádku. Výsledek určuje procento neúspěšných kontrol. Pro výpočet času RTT služba měří čas mezi voláním HTTP a odpovědí.
 
@@ -164,14 +164,14 @@ Na základě dat, která kontroly vrací, můžou testy obsahovat následující
 * **Pass** – skutečné hodnoty pro Procento neúspěšných kontrol a RTT jsou v rámci zadaných prahových hodnot.
 * **Selhání** – skutečné hodnoty pro Procento neúspěšných kontrol nebo RTT překročily zadané prahové hodnoty. Pokud není zadána žádná prahová hodnota, test dosáhne stavu selhání, pokud je procento neúspěšných kontrol 100.
 * **Upozornění** – 
-     * Pokud je zadaná prahová hodnota a monitor připojení (Preview) sleduje kontroly, které selhaly procento více než 80% prahové hodnoty, test je označený jako upozornění.
-     * Pokud neexistují zadané prahové hodnoty, monitor připojení (Preview) automaticky přiřadí prahovou hodnotu. Při překročení této prahové hodnoty se stav testu změní na upozornění.Pro dobu odezvy v testech TCP nebo ICMP je prahová hodnota 750msec. Pro kontroly, které selhaly, je prahová hodnota 10%. 
+     * Pokud je zadána prahová hodnota a monitor připojení sleduje kontroly, které selhaly procento více než 80% prahové hodnoty, test je označený jako upozornění.
+     * Pokud neexistují zadané prahové hodnoty, monitor připojení automaticky přiřadí prahovou hodnotu. Při překročení této prahové hodnoty se stav testu změní na upozornění.Pro dobu odezvy v testech TCP nebo ICMP je prahová hodnota 750msec. Pro kontroly, které selhaly, je prahová hodnota 10%. 
 * **Neurčitelné**   – V pracovním prostoru Log Analytics nejsou žádná data.Kontrolovat metriky. 
 * **Nespuštěno**   – Zakázáno zakázáním testovací skupiny  
 
 ### <a name="data-collection-analysis-and-alerts"></a>Shromažďování, analýza a výstrahy dat
 
-Data, která jsou shromažďována pro monitorování připojení (Preview), jsou uložena v pracovním prostoru Log Analytics. Tento pracovní prostor nastavíte při vytváření monitorování připojení. 
+Data, která monitorování připojení shromažďuje, se ukládají v pracovním prostoru Log Analytics. Tento pracovní prostor nastavíte při vytváření monitorování připojení. 
 
 Data monitorování jsou také k dispozici v Azure Monitor metriky. Pomocí Log Analytics můžete uchovávat data o monitorování, pokud chcete. Ve výchozím nastavení Azure Monitor ukládá metriky pouze 30 dnů. 
 
@@ -181,7 +181,7 @@ Data monitorování jsou také k dispozici v Azure Monitor metriky. Pomocí Log 
 
 Na řídicích panelech monitorování se zobrazí seznam monitorů připojení, ke kterým můžete získat přístup pro vaše předplatná, oblasti, časová razítka, zdroje a cílové typy.
 
-Když přejdete na monitorování připojení (Preview) z Network Watcher, můžete zobrazit data podle těchto údajů:
+Když přejdete na monitorování připojení z Network Watcher, můžete zobrazit data podle těchto údajů:
 
 * **Monitorování připojení** – seznam všech monitorování připojení vytvořených pro vaše předplatná, oblasti, časová razítka, zdroje a cílové typy. Toto zobrazení je výchozí.
 * **Testovací skupiny** – seznam všech testovacích skupin vytvořených pro vaše předplatná, oblasti, časová razítka, zdroje a cílové typy. Tyto testovací skupiny nejsou filtrovány podle monitorování připojení.
@@ -197,20 +197,20 @@ Seznam můžete filtrovat podle:
 * **Filtry založené na stavu** – filtrujte podle stavu monitorování připojení, testovací skupiny nebo testu. Viz Box 2 na následujícím obrázku.
 * **Filtr založený na výstrahách** : filtrování podle výstrah vyvolaných v prostředku monitorování připojení. Viz Box 3 na následujícím obrázku.
 
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="Snímek obrazovky ukazující, jak filtrovat zobrazení monitorování připojení, testovacích skupin a testů v monitorování připojení (Preview)" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="Snímek obrazovky ukazující, jak filtrovat zobrazení monitorování připojení, testovacích skupin a testů v monitorování připojení " lightbox="./media/connection-monitor-2-preview/cm-view.png":::
     
-Pokud například chcete zobrazit všechny testy v monitorování připojení (Preview), kde je zdrojová IP adresa 10.192.64.56:
+Chcete-li například prohlédnout všechny testy v monitorování připojení, kde je zdrojová adresa IP 10.192.64.56:
 1. Změňte zobrazení na **test**.
 1. Do vyhledávacího pole zadejte *10.192.64.56*
 1. V **oblasti** filtr na nejvyšší úrovni vyberte **zdroje**.
 
-Chcete-li zobrazit pouze neúspěšné testy v monitorování připojení (Preview), kde je zdrojová adresa IP 10.192.64.56:
+Chcete-li zobrazit pouze neúspěšné testy v monitorování připojení, kde je zdrojová adresa IP 10.192.64.56:
 1. Změňte zobrazení na **test**.
 1. U filtru založeného na stavu vyberte **selhání**.
 1. Do vyhledávacího pole zadejte *10.192.64.56*
 1. V **oblasti** filtr na nejvyšší úrovni vyberte **zdroje**.
 
-Chcete-li zobrazit pouze neúspěšné testy v monitorování připojení (Preview), kde je cíl outlook.office365.com:
+Chcete-li zobrazit pouze neúspěšné testy v monitorování připojení, kde je cíl outlook.office365.com:
 1. Změňte zobrazení na **test**.
 1. U filtru založeného na stavu vyberte **selhání**.
 1. Do vyhledávacího pole zadejte *Outlook.office365.com*
@@ -265,9 +265,9 @@ Pomocí Log Analytics můžete vytvořit vlastní zobrazení dat monitorování.
 
 #### <a name="metrics-in-azure-monitor"></a>Metriky na platformě Azure Monitor
 
-Ve sledováních připojení, které byly vytvořeny před zobrazením připojení (Preview), jsou k dispozici všechny čtyři metriky:% PROBE selhaly, AverageRoundtripMs, ChecksFailedPercent (Preview) a RoundTripTimeMs (Preview). V zobrazeních připojení, která byla vytvořena v prostředí monitorování připojení (Preview), jsou data k dispozici pouze pro metriky, které jsou označeny pomocí *(Preview)*.
+V monitorováních připojení vytvořených před prostředím monitorování připojení jsou k dispozici všechny čtyři metriky:% PROBE selhaly, AverageRoundtripMs, ChecksFailedPercent (Preview) a RoundTripTimeMs (Preview). V monitorováních připojení vytvořených v prostředí monitorování připojení jsou data dostupná jenom pro metriky, které jsou označené jako *(Preview)*.
 
-  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Snímek obrazovky zobrazující metriky v monitorování připojení (Preview)" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Snímek obrazovky znázorňující metriky v monitorování připojení" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 Když použijete metriky, nastavte typ prostředku jako Microsoft. Network/networkWatchers/connectionMonitors.
 
@@ -282,18 +282,18 @@ Když použijete metriky, nastavte typ prostředku jako Microsoft. Network/netwo
 
 Výstrahy metriky můžete pro monitorování připojení vytvořit pomocí níže uvedených metod. 
 
-1. V monitorování připojení (Preview) během vytváření monitorování připojení [pomocí Azure Portal](connection-monitor-preview-create-using-portal.md#) 
-1. Z monitorování připojení (Preview) pomocí příkazu konfigurovat výstrahy na řídicím panelu 
+1. Z monitorování připojení během vytváření monitorování připojení [pomocí Azure Portal](connection-monitor-preview-create-using-portal.md#) 
+1. Z monitorování připojení pomocí možnosti konfigurovat výstrahy na řídicím panelu 
 1. Z Azure Monitor – Chcete-li vytvořit výstrahu v Azure Monitor: 
-    1. Vyberte prostředek sledování připojení, který jste vytvořili v části monitorování připojení (Preview).
+    1. Vyberte prostředek sledování připojení, který jste vytvořili v monitorování připojení.
     1. Zajistěte, aby se **metrika** zobrazila jako typ signálu pro monitorování připojení.
     1. V části **Přidat podmínku** pro **Název signálu** vyberte **ChecksFailedPercent (Preview)** nebo **RoundTripTimeMs (Preview)**.
     1. Jako **typ signálu** vyberte **metriky**. Vyberte například **ChecksFailedPercent (Preview)**.
     1. V seznamu jsou uvedeny všechny dimenze metriky. Vyberte název dimenze a hodnotu dimenze. Vyberte například možnost **zdrojová adresa** a poté zadejte IP adresu libovolného zdroje v monitoru připojení.
     1. V **logice výstrahy** zadejte následující podrobnosti:
-        * **Typ podmínky** : **static**.
+        * **Typ podmínky**: **static**.
         * **Podmínka** a **prahová hodnota**.
-        * **Členitost agregace a frekvence hodnocení** : monitorování připojení (Preview) aktualizuje data každou minutu.
+        * **Členitost agregace a frekvence hodnocení**: monitorování připojení aktualizuje data každou minutu.
     1. V **Možnosti akce** vyberte skupinu akcí.
     1. Zadejte podrobnosti výstrahy.
     1. Vytvořte pravidlo výstrahy.
@@ -302,7 +302,7 @@ Výstrahy metriky můžete pro monitorování připojení vytvořit pomocí ní�
 
 ## <a name="diagnose-issues-in-your-network"></a>Diagnostikujte problémy ve vaší síti
 
-Sledování připojení (Preview) pomáhá diagnostikovat problémy v monitorování připojení a v síti. Problémy ve vaší hybridní síti zjistí agenti Log Analytics, které jste předtím nainstalovali. Problémy v Azure se zjišťují pomocí rozšíření Network Watcher. 
+Monitorování připojení pomáhá diagnostikovat problémy v monitorování připojení a v síti. Problémy ve vaší hybridní síti zjistí agenti Log Analytics, které jste předtím nainstalovali. Problémy v Azure se zjišťují pomocí rozšíření Network Watcher. 
 
 Problémy v síti Azure můžete zobrazit v síťové topologii.
 
@@ -348,5 +348,5 @@ Pro sítě, jejichž zdroje jsou virtuálními počítači Azure, se dají zjist
 
 ## <a name="next-steps"></a>Další kroky
     
-   * Zjistěte [, jak vytvořit monitorování připojení (Preview) pomocí Azure Portal](connection-monitor-preview-create-using-portal.md)  
-   * Informace [o tom, jak vytvořit monitorování připojení (Preview) pomocí ARMClient](connection-monitor-preview-create-using-arm-client.md)  
+   * Naučte [se vytvářet monitorování připojení pomocí Azure Portal](connection-monitor-preview-create-using-portal.md)  
+   * Naučte [se vytvářet monitorování připojení pomocí ARMClient](connection-monitor-preview-create-using-arm-client.md) .  

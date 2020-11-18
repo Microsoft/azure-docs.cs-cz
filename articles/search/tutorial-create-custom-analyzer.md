@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: ac7cee2c1d72b4102fb397aa8093c2d38686fc88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90d60a20bb464936d04662b0b9286bd7aaac9e74
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397262"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700167"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Kurz: Vytvoření vlastního analyzátoru pro telefonní čísla
 
@@ -51,7 +51,7 @@ V dalším kroku budete muset znát název vyhledávací služby a jejího klí�
 
 Potom spusťte post a importujte kolekci, kterou jste stáhli z [Azure-Samples/Azure-Search-post-Samples](https://github.com/Azure-Samples/azure-search-postman-samples).
 
-Pokud chcete kolekci importovat, pokračujte na **Files**  >  **Import**souborů a pak vyberte soubor kolekce, který chcete importovat.
+Pokud chcete kolekci importovat, pokračujte na **Files**  >  **Import** souborů a pak vyberte soubor kolekce, který chcete importovat.
 
 Pro každý požadavek budete potřebovat:
 
@@ -59,9 +59,9 @@ Pro každý požadavek budete potřebovat:
 
 1. Nahraďte `<YOUR-ADMIN-API-KEY>` primárním nebo sekundárním klíčem vaší vyhledávací služby.
 
-  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Adresa URL a záhlaví žádosti post" border="false":::
+  :::image type="content" source="media/search-get-started-rest/postman-url.png" alt-text="Adresa URL a záhlaví žádosti post" border="false":::
 
-Pokud nejste obeznámeni s nástrojem post, přečtěte si téma [prozkoumání rozhraní REST API služby Azure kognitivní hledání pomocí služby post](search-get-started-postman.md).
+Pokud nejste obeznámeni s nástrojem post, přečtěte si téma [prozkoumávání rozhraní REST API pro Azure kognitivní hledání](search-get-started-rest.md).
 
 ## <a name="3---create-an-initial-index"></a>3. vytvoření počátečního indexu
 
@@ -160,7 +160,7 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basi
 
 S daty v indexu jsme připraveni začít hledat.
 
-### <a name="search"></a>Hledání
+### <a name="search"></a>Hledat
 
 Aby bylo hledání intuitivní, doporučujeme, abyste uživatelům neočekávali formátování dotazů konkrétním způsobem. Uživatel může hledat `(425) 555-0100` v jakémkoli z formátů, které jsme ukázali výše, a pořád očekává, že budou vráceny výsledky. V tomto kroku otestujeme několik ukázkových dotazů, abyste zjistili, jak se provádějí.
 
@@ -239,11 +239,11 @@ Analyzátory se skládají ze tří součástí:
 
 V následujícím diagramu vidíte, jak budou tyto tři komponenty spolupracovat, aby tokenizovat větu:
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Adresa URL a záhlaví žádosti post":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Diagram procesu analyzátoru, který tokenizovat větu":::
 
 Tyto tokeny se pak ukládají v obráceném indexu, který umožňuje rychlé fulltextové vyhledávání.  Obrácený index umožňuje fulltextové vyhledávání podle mapování všech jedinečných podmínek extrahovaných během lexikální analýzy do dokumentů, ve kterých se vyskytují. Příklad můžete vidět v následujícím diagramu:
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Adresa URL a záhlaví žádosti post":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Příklad obráceného indexu":::
 
 Při hledání podmínek uložených v obráceném indexu se objeví vše hledání. Když uživatel vydá dotaz:
 
@@ -251,7 +251,7 @@ Při hledání podmínek uložených v obráceném indexu se objeví vše hledá
 1. Obrácený index pak vyhledá dokumenty s vyhovujícími podmínkami.
 1. Nakonec jsou načtené dokumenty seřazeny podle [algoritmu podobnosti](index-ranking-similarity.md).
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Adresa URL a záhlaví žádosti post":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Diagram podobnosti pořadí procesů analyzátoru":::
 
 Pokud se výrazy dotazu neshodují s podmínkami v obráceném indexu, výsledky se nevrátí. Další informace o tom, jak dotazy fungují, najdete v tomto článku pro [fulltextové vyhledávání](search-lucene-query-architecture.md).
 

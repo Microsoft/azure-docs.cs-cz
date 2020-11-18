@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
-ms.openlocfilehash: 04da4d6466d450d04d7008332e32ea3d59cd0252
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 8d7fde6661a4a133f689016559f010767c662417
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555528"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699742"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Přesunutí pracovního prostoru Log Analytics do jiného předplatného nebo skupiny prostředků
 
@@ -30,7 +30,7 @@ Zdrojové a cílové odběry pracovního prostoru musí existovat v rámci stejn
 
 ## <a name="workspace-move-considerations"></a>Požadavky na přesun v pracovním prostoru
 - Spravovaná řešení, která jsou nainstalovaná v pracovním prostoru, se přesunou pomocí operace přesunu pracovního prostoru Log Analytics. 
-- Klíče pracovního prostoru se znovu generují s přesunem pracovního prostoru (primárním a sekundárním). Pokud klíč vašeho pracovního prostoru vytvoříte jako trezor, aktualizujte je pomocí nových vygenerovaných klíčů. 
+- Klíče pracovního prostoru (primární i sekundární) se znovu generují pomocí operace přesunu pracovního prostoru. Pokud uchováváte kopii klíčů pracovního prostoru v trezoru klíčů, aktualizujte je pomocí nových klíčů vygenerovaných po přesunu pracovního prostoru. 
 - Připojení agenti zůstanou připojeni a po přesunutí budou data v pracovním prostoru posílat. 
 - Vzhledem k tomu, že operace přesunutí vyžaduje, aby z pracovního prostoru neexistovaly žádné propojené služby, je nutné odebrat řešení, která spoléhají na tento odkaz, aby bylo možné pracovní prostor přesunout. Řešení, která je potřeba odebrat, než budete moct zrušit propojení svého účtu Automation:
   - Update Management

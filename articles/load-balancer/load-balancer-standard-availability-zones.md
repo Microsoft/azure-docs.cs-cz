@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 541aa7da3e804931c1793e455bcbfca83c809dae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fca6b40f4bd871041d14d119eb44e8366d8562ee
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669190"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700456"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
@@ -151,11 +151,11 @@ Prostředky v zónách neovlivněné selháním budou k dispozici. Vaše kapacit
   - Pokud dojde k selhání zóny, vaše služba porozuměla této chybě a pokud dojde ke ztrátě stavu, jak budete obnovovat?
   - Když se zóna vrátí, aplikace porozumí, jak bezpečně konvergovat?
 
-Projděte si [vzory návrhu cloudu Azure](https://docs.microsoft.com/azure/architecture/patterns/) , abyste vylepšili odolnost vaší aplikace vůči scénářům selhání.
+Projděte si [vzory návrhu cloudu Azure](/azure/architecture/patterns/) , abyste vylepšili odolnost vaší aplikace vůči scénářům selhání.
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [zóny dostupnosti](../availability-zones/az-overview.md)
-- Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md)
-- Přečtěte si, jak [vyrovnávat zatížení virtuálních počítačů v rámci zóny pomocí Standard Load Balancer s oblastí front-endu](load-balancer-standard-public-zonal-cli.md) .
-- Přečtěte si, jak [vyrovnávat zatížení virtuálních počítačů napříč zónami pomocí Standard Load Balancer s frontou redundantním front-endu](load-balancer-standard-public-zone-redundant-cli.md)
-- Přečtěte si o [vzorcích návrhu Azure pro Cloud](https://docs.microsoft.com/azure/architecture/patterns/) , abyste vylepšili odolnost vaší aplikace vůči scénářům selhání.
+- Další informace o [Load Balanceru úrovně Standard](./load-balancer-overview.md)
+- Přečtěte si, jak [vyrovnávat zatížení virtuálních počítačů v rámci zóny pomocí Standard Load Balancer s oblastí front-endu](./quickstart-load-balancer-standard-public-cli.md) .
+- Přečtěte si, jak [vyrovnávat zatížení virtuálních počítačů napříč zónami pomocí Standard Load Balancer s frontou redundantním front-endu](./quickstart-load-balancer-standard-public-cli.md)
+- Přečtěte si o [vzorcích návrhu Azure pro Cloud](/azure/architecture/patterns/) , abyste vylepšili odolnost vaší aplikace vůči scénářům selhání.

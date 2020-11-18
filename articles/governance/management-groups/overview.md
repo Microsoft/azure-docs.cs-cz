@@ -1,15 +1,15 @@
 ---
 title: Uspořádání prostředků pomocí skupin pro správu – zásady správného řízení Azure
 description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
-ms.date: 09/22/2020
+ms.date: 11/17/2020
 ms.topic: overview
 ms.custom: contperfq1
-ms.openlocfilehash: be3369369f28930fd1ecad295a4dad4d14e75cd3
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: c48361e7f3d67c6d3eec40d5acb47917f7835db5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951872"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699589"
 ---
 # <a name="what-are-azure-management-groups"></a>Co jsou skupiny pro správu Azure?
 
@@ -95,9 +95,9 @@ Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 |Vlastník                       | X      | X      | X        | X      | X             | X             | X     |
 |Přispěvatel                 | X      | X      | X        | X      |               |               | X     |
 |G Přispěvatel\*            | X      | X      | X        | X      |               |               | X     |
-|Čtenář                      |        |        |          |        |               |               | ×     |
-|Čtečka MG\*                 |        |        |          |        |               |               | ×     |
-|Přispěvatel zásad prostředků |        |        |          |        |               | ×             |       |
+|Čtenář                      |        |        |          |        |               |               | X     |
+|Čtečka MG\*                 |        |        |          |        |               |               | X     |
+|Přispěvatel zásad prostředků |        |        |          |        |               | X             |       |
 |Správce uživatelských přístupů   |        |        |          |        | X             | X             |       |
 
 \*: MG čtenář a g Reader umožňují uživatelům provádět tyto akce pouze v oboru skupiny pro správu.  
@@ -150,7 +150,7 @@ Definice rolí se přiřadí oboru kdekoli v rámci hierarchie skupiny pro sprá
 
 Řekněme například, že se podíváme na malou část hierarchie pro vizuál.
 
-:::image type="complex" source="./media/subtree.png" alt-text="Diagram ukázkové hierarchie skupin pro správu" border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="Diagram podmnožiny hierarchie vzorových skupin pro správu." border="false":::
    Diagram se zaměřuje na kořenovou skupinu pro správu s podřízenými a marketingovými skupinami pro správu. Skupina pro správu I T má jednu podřízenou skupinu pro správu s názvem produkční, zatímco skupina pro správu marketingu má dvě bezplatné zkušební verze předplatného.
 :::image-end:::
 
@@ -171,7 +171,11 @@ Existují určitá omezení, která existují při použití vlastních rolí ve
  - V oborech přiřazení nové role můžete definovat jenom jednu skupinu pro správu. Toto omezení je zavedeno, aby se snížil počet situací, kdy se odpojí definice rolí a přiřazení rolí. K této situaci dochází, když se předplatné nebo skupina pro správu s přiřazením role přesune na jiný nadřazený prvek, který nemá definici role.  
  - Akce roviny dat poskytovatele prostředků nelze definovat ve vlastních rolích skupiny pro správu. Toto omezení je zavedeno, protože došlo k potížím s latencí při aktualizaci poskytovatelů prostředků datové roviny.
    Tato latence se právě zpracovává a tyto akce budou z definice role zakázané, aby se snížila rizika.
- - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role. Pokud je v seznamu uvedeno překlep nebo nesprávné ID skupiny pro správu, bude definice role stále vytvořena.  
+ - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role. Pokud je v seznamu uvedeno překlep nebo nesprávné ID skupiny pro správu, bude definice role stále vytvořena.
+
+> [!IMPORTANT]
+> Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí.
+> Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="moving-management-groups-and-subscriptions"></a>Přesun skupin pro správu a předplatných 
 
@@ -194,7 +198,7 @@ Pokud je role vlastníka v předplatném zděděná z aktuální skupiny pro spr
 
 Skupiny pro správu se podporují v rámci [protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md). Můžete hledat všechny události, ke kterým dochází ve skupině pro správu ve stejném centrálním umístění jako ostatní prostředky Azure. Pro konkrétní skupinu pro správu si můžete si zobrazit všechny změny přiřazení zásad nebo přiřazení rolí.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Diagram ukázkové hierarchie skupin pro správu" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Snímek obrazovky protokolů aktivit a operací vztahujících se k vybrané skupině pro správu." border="false":::
 
 Pokud se chcete na skupiny pro správu dotazovat mimo Azure Portal, cílový obor pro skupiny pro správu vypadá takto: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 

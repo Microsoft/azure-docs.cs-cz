@@ -1,7 +1,7 @@
 ---
-title: Vytvoření náhledu monitorování připojení – Azure Portal
+title: Vytvořit monitorování připojení – Azure Portal
 titleSuffix: Azure Network Watcher
-description: Tento článek popisuje, jak vytvořit monitorování ve verzi Preview monitorování připojení pomocí Azure Portal.
+description: Tento článek popisuje, jak vytvořit monitorování v monitorování připojení pomocí Azure Portal.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 97d20f2b6b7b355ea5c810ad46b084f42b9bd6d1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8c4df64334957a78fcf05c11625335214f8e032a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447614"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699368"
 ---
-# <a name="create-a-monitor-in-connection-monitor-preview-by-using-the-azure-portal"></a>Vytvoření monitorování ve verzi Preview monitorování připojení pomocí Azure Portal
+# <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Vytvoření monitorování v monitorování připojení pomocí Azure Portal
 
-Naučte se používat Preview monitorování připojení k monitorování komunikace mezi prostředky. Tento článek popisuje, jak vytvořit monitorování pomocí Azure Portal. Monitorování připojení podporuje hybridní a cloudová nasazení Azure.
+Naučte se používat monitorování připojení k monitorování komunikace mezi prostředky. Tento článek popisuje, jak vytvořit monitorování pomocí Azure Portal. Monitorování připojení podporuje hybridní a cloudová nasazení Azure.
 
 ## <a name="before-you-begin"></a>Než začnete 
 
-V okně Sledování připojení, které vytvoříte pomocí nástroje Connection monitor Preview, můžete přidat místní počítače a virtuální počítače Azure jako zdroje. Tato sledování připojení také mohou monitorovat připojení k koncovým bodům. Koncové body můžou být v Azure nebo na jakékoli jiné adrese URL nebo IP adrese.
+V okně monitorování připojení, které vytvoříte pomocí monitorování připojení, můžete přidat místní počítače a virtuální počítače Azure jako zdroje. Tato sledování připojení také mohou monitorovat připojení k koncovým bodům. Koncové body můžou být v Azure nebo na jakékoli jiné adrese URL nebo IP adrese.
 
 Tady jsou některé definice, které vám pomohou začít:
 
@@ -47,25 +47,25 @@ Tady jsou některé definice, které vám pomohou začít:
 
 ## <a name="create-a-connection-monitor"></a>Vytvoření monitorování připojení
 
-Postup vytvoření monitorování ve verzi Preview monitorování připojení pomocí Azure Portal:
+Postup vytvoření monitorování v monitorování připojení pomocí Azure Portal:
 
 1. Na domovské stránce Azure Portal přejít na **Network Watcher**.
-1. V levém podokně v části **monitorování** vyberte možnost **monitorování připojení (Preview)**.
+1. V levém podokně v části **monitorování** vyberte **monitorování připojení**.
 
-   Zobrazí se všechna monitorování připojení, která byla vytvořena ve verzi Preview monitorování připojení. Pokud chcete zobrazit monitory připojení vytvořené v monitorování klasického připojení, přejděte na kartu **monitorování připojení** .
+   Zobrazí se všechna monitorování připojení, která byla vytvořena v monitorování připojení. Pokud chcete zobrazit monitory připojení vytvořené v monitorování klasického připojení, přejděte na kartu **monitorování připojení** .
 
-   :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Snímek obrazovky zobrazující monitory připojení vytvořené v nástroji Connection monitor Preview":::
+   :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Snímek obrazovky zobrazující monitory připojení vytvořené v monitorování připojení":::
    
     
-1. V řídicím panelu **monitorování připojení (Preview)** v levém horním rohu vyberte **vytvořit**.
+1. V řídicím panelu **monitorování připojení** v levém horním rohu vyberte **vytvořit**.
 
    
 
 1. Na kartě **základy** zadejte informace pro monitor připojení: 
-   * **Název monitorování připojení** : zadejte název monitoru připojení. Použijte standardní pravidla pojmenování pro prostředky Azure.
-   * **Předplatné** : vyberte předplatné pro monitorování připojení.
-   * **Oblast** : Vyberte oblast pro monitorování připojení. Můžete vybrat jenom zdrojové virtuální počítače, které jsou vytvořené v této oblasti.
-   * **Konfigurace pracovního prostoru** : vyberte vlastní pracovní prostor nebo výchozí pracovní prostor. Váš pracovní prostor obsahuje data monitorování.
+   * **Název monitorování připojení**: zadejte název monitoru připojení. Použijte standardní pravidla pojmenování pro prostředky Azure.
+   * **Předplatné**: vyberte předplatné pro monitorování připojení.
+   * **Oblast**: Vyberte oblast pro monitorování připojení. Můžete vybrat jenom zdrojové virtuální počítače, které jsou vytvořené v této oblasti.
+   * **Konfigurace pracovního prostoru**: vyberte vlastní pracovní prostor nebo výchozí pracovní prostor. Váš pracovní prostor obsahuje data monitorování.
        * Chcete-li použít výchozí pracovní prostor, zaškrtněte políčko. 
        * Chcete-li zvolit vlastní pracovní prostor, zrušte zaškrtnutí políčka. Pak vyberte předplatné a oblast pro vlastní pracovní prostor. 
 
@@ -86,13 +86,13 @@ Postup vytvoření monitorování ve verzi Preview monitorování připojení po
 1. Na kartě **Revize + vytvořit** si přečtěte základní informace a skupiny testů před vytvořením monitorování připojení. Pokud potřebujete upravit monitorování připojení, můžete to udělat tak, že přejdete zpátky na příslušné karty. 
    :::image type="content" source="./media/connection-monitor-2-preview/review-create-cm.png" alt-text="Snímek obrazovky zobrazující kartu Revize + vytvořit v monitorování připojení":::
    > [!NOTE] 
-   > Na kartě **Revize + vytvořit** se zobrazují náklady za měsíc během fáze Preview monitorování připojení. V současné době se ve sloupci **aktuální náklady/měsíc** zobrazuje bez poplatků. Když je monitorování připojení všeobecně dostupné, v tomto sloupci se zobrazí měsíční poplatek. 
+   > Na kartě **Revize + vytvořit** se zobrazují náklady za měsíc během fáze monitorování připojení. V současné době se ve sloupci **aktuální náklady/měsíc** zobrazuje bez poplatků. Když je monitorování připojení všeobecně dostupné, v tomto sloupci se zobrazí měsíční poplatek. 
    > 
-   > I během fáze Preview monitorování připojení platí Log Analytics poplatky za ingestování.
+   > I během fáze monitorování připojení se platí Log Analytics poplatky za ingestování.
 
 1. Až budete připraveni vytvořit monitorování připojení, v dolní části karty **Revize + vytvořit** vyberte **vytvořit**.
 
-Connection monitor Preview vytvoří prostředek monitorování připojení na pozadí.
+Monitorování připojení vytvoří prostředek monitorování připojení na pozadí.
 
 ## <a name="create-test-groups-in-a-connection-monitor"></a>Vytvoření testovacích skupin v monitorování připojení
 
@@ -100,9 +100,9 @@ Každá testovací skupina v monitorování připojení zahrnuje zdroje a cíle,
 
 V Azure Portal pro vytvoření testovací skupiny v monitorování připojení zadáte hodnoty pro následující pole:
 
-* **Zakázat testovací skupinu** : Toto políčko můžete zaškrtnout, pokud chcete zakázat monitorování pro všechny zdroje a cíle, které určuje skupina testů. Ve výchozím nastavení je tento výběr vymazán.
-* **Název** : pojmenujte testovací skupinu.
-* **Zdroje** : Pokud jsou agenti nainstalováni, můžete zadat jak virtuální počítače Azure, tak i místní počítače jako zdroje. Informace o instalaci agenta pro zdroj najdete v tématu [Instalace agentů monitorování](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
+* **Zakázat testovací skupinu**: Toto políčko můžete zaškrtnout, pokud chcete zakázat monitorování pro všechny zdroje a cíle, které určuje skupina testů. Ve výchozím nastavení je tento výběr vymazán.
+* **Název**: pojmenujte testovací skupinu.
+* **Zdroje**: Pokud jsou agenti nainstalováni, můžete zadat jak virtuální počítače Azure, tak i místní počítače jako zdroje. Informace o instalaci agenta pro zdroj najdete v tématu [Instalace agentů monitorování](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
    * Pokud chcete vybrat agenty Azure, vyberte kartu **koncové body Azure** . Tady vidíte jenom virtuální počítače, které jsou svázané s oblastí, kterou jste zadali při vytváření monitorování připojení. Ve výchozím nastavení jsou virtuální počítače seskupené do předplatného, ke kterému patří. Tyto skupiny jsou sbaleny. 
    
        Můžete přejít k podrobnostem z úrovně **předplatného** na jiné úrovně v hierarchii:
@@ -127,7 +127,7 @@ V Azure Portal pro vytvoření testovací skupiny v monitorování připojení z
    
    * Po dokončení nastavení zdrojů vyberte **Hotovo** v dolní části karty. Základní vlastnosti, jako je název koncového bodu, můžete i nadále upravovat tak, že v zobrazení **vytvořit skupinu testů** vyberete koncový bod. 
 
-* **Cílová umístění** : můžete monitorovat připojení k virtuálnímu počítači Azure, místnímu počítači nebo libovolnému koncovému bodu (veřejné IP adresy, adrese URL nebo plně kvalifikovanému názvu domény), a to tak, že ho zadáte jako cíl. V jedné skupině testů můžete přidat virtuální počítače Azure, místní počítače, adresy URL pro Office 365, adresy URL Dynamics 365 a vlastní koncové body.
+* **Cílová umístění**: můžete monitorovat připojení k virtuálnímu počítači Azure, místnímu počítači nebo libovolnému koncovému bodu (veřejné IP adresy, adrese URL nebo plně kvalifikovanému názvu domény), a to tak, že ho zadáte jako cíl. V jedné skupině testů můžete přidat virtuální počítače Azure, místní počítače, adresy URL pro Office 365, adresy URL Dynamics 365 a vlastní koncové body.
 
     * Pokud chcete zvolit virtuální počítače Azure jako cíle, vyberte kartu **koncové body Azure** . Ve výchozím nastavení se virtuální počítače Azure seskupují do hierarchie předplatného, která je v oblasti vybrané v části **vytvořit monitorování připojení** na kartě **základy** . Můžete změnit oblast a zvolit virtuální počítače Azure z nové oblasti. Pak můžete přejít k podrobnostem z úrovně **předplatného** na jiné úrovně v hierarchii, stejně jako při nastavování zdrojových koncových bodů Azure.
 
@@ -155,17 +155,17 @@ V Azure Portal pro vytvoření testovací skupiny v monitorování připojení z
     * Pokud chcete zvolit naposledy použité koncové body, otevřete na kartě **Poslední koncový bod**   .
     * Po dokončení výběru možnosti cíle vyberte **Hotovo**. Základní vlastnosti, jako je název koncového bodu, můžete i nadále upravovat tak, že v zobrazení **vytvořit skupinu testů** vyberete koncový bod. 
 
-* **Konfigurace testů** : můžete přidat jednu nebo více konfigurací testu do testovací skupiny. Vytvořte novou konfiguraci testu pomocí karty **Nová konfigurace** . Nebo přidejte konfiguraci testu z jiné testovací skupiny v rámci stejného monitorování připojení z karty **Vybrat existující** .
+* **Konfigurace testů**: můžete přidat jednu nebo více konfigurací testu do testovací skupiny. Vytvořte novou konfiguraci testu pomocí karty **Nová konfigurace** . Nebo přidejte konfiguraci testu z jiné testovací skupiny v rámci stejného monitorování připojení z karty **Vybrat existující** .
 
-    * **Název konfigurace testu** : název konfigurace testu.
-    * **Protokol** : vyberte **TCP** , **ICMP** nebo **http**. Pokud chcete změnit protokol HTTP na HTTPS, jako protokol vyberte **http** a pak jako port vyberte **443** .
-        * **Vytvořit konfiguraci testu TCP** : Toto zaškrtávací políčko se zobrazí jenom v případě, že jste v seznamu **protokol** vybrali **http** . Toto políčko zaškrtněte, pokud chcete vytvořit další konfiguraci testu, která bude používat stejné zdroje a cíle, které jste zadali jinde v konfiguraci. Nová konfigurace testu má název **\<name of test configuration> _networkTestConfig**.
-        * **Zakázat traceroute** : Toto zaškrtávací políčko se použije, pokud je protokol TCP nebo ICMP. Toto políčko zaškrtněte, pokud chcete zastavit zdroje z vyhledávání topologie a času směrování po směrování.
-    * **Cílový port** : můžete zadat cílový port, který si zvolíte.
-        * **Naslouchat na portu** : Toto zaškrtávací políčko se použije, když je protokol TCP. Zaškrtnutím tohoto políčka otevřete vybraný port TCP, pokud ještě není otevřený. 
-    * **Frekvence testování** : v tomto seznamu určete, jak často se budou zdroje testovat na základě protokolu a portu, které jste zadali. Můžete zvolit 30 sekund, 1 minutu, 5 minut, 15 minut nebo 30 minut. Vyberte možnost **vlastní** a zadejte jinou frekvenci mezi 30 sekundami a 30 minutami. Zdroje budou testovat připojení k cílům na základě hodnoty, kterou zvolíte. Pokud například vyberete 30 sekund, zdroje budou kontrolovat připojení k cílovému umístění nejméně jednou za každých 30 sekund.
-    * **Prahová hodnota úspěšnosti** : můžete nastavit prahové hodnoty u těchto síťových parametrů:
-       * **Kontroly se nezdařily** : nastavte procento kontrol, které mohou selhat, když zdroje kontrolují připojení k cílům pomocí zadaných kritérií. V případě protokolu TCP nebo ICMP může být Procento neúspěšných kontrol rovno procentům ztráty paketů. V případě protokolu HTTP tato hodnota představuje procento požadavků HTTP, které neobdržely odpověď.
+    * **Název konfigurace testu**: název konfigurace testu.
+    * **Protokol**: vyberte **TCP**, **ICMP** nebo **http**. Pokud chcete změnit protokol HTTP na HTTPS, jako protokol vyberte **http** a pak jako port vyberte **443** .
+        * **Vytvořit konfiguraci testu TCP**: Toto zaškrtávací políčko se zobrazí jenom v případě, že jste v seznamu **protokol** vybrali **http** . Toto políčko zaškrtněte, pokud chcete vytvořit další konfiguraci testu, která bude používat stejné zdroje a cíle, které jste zadali jinde v konfiguraci. Nová konfigurace testu má název **\<name of test configuration> _networkTestConfig**.
+        * **Zakázat traceroute**: Toto zaškrtávací políčko se použije, pokud je protokol TCP nebo ICMP. Toto políčko zaškrtněte, pokud chcete zastavit zdroje z vyhledávání topologie a času směrování po směrování.
+    * **Cílový port**: můžete zadat cílový port, který si zvolíte.
+        * **Naslouchat na portu**: Toto zaškrtávací políčko se použije, když je protokol TCP. Zaškrtnutím tohoto políčka otevřete vybraný port TCP, pokud ještě není otevřený. 
+    * **Frekvence testování**: v tomto seznamu určete, jak často se budou zdroje testovat na základě protokolu a portu, které jste zadali. Můžete zvolit 30 sekund, 1 minutu, 5 minut, 15 minut nebo 30 minut. Vyberte možnost **vlastní** a zadejte jinou frekvenci mezi 30 sekundami a 30 minutami. Zdroje budou testovat připojení k cílům na základě hodnoty, kterou zvolíte. Pokud například vyberete 30 sekund, zdroje budou kontrolovat připojení k cílovému umístění nejméně jednou za každých 30 sekund.
+    * **Prahová hodnota úspěšnosti**: můžete nastavit prahové hodnoty u těchto síťových parametrů:
+       * **Kontroly se nezdařily**: nastavte procento kontrol, které mohou selhat, když zdroje kontrolují připojení k cílům pomocí zadaných kritérií. V případě protokolu TCP nebo ICMP může být Procento neúspěšných kontrol rovno procentům ztráty paketů. V případě protokolu HTTP tato hodnota představuje procento požadavků HTTP, které neobdržely odpověď.
        * **Doba** odezvy: nastavte čas RTT (v milisekundách), jak dlouho můžou zdroje trvat pro připojení k cíli prostřednictvím konfigurace testu.
        
    :::image type="content" source="./media/connection-monitor-2-preview/add-test-config.png" alt-text="Snímek obrazovky, který ukazuje, kde nastavit konfiguraci testu v monitorování připojení":::
@@ -176,17 +176,17 @@ Můžete nastavit výstrahy na testy, které selžou na základě prahových hod
 
 V Azure Portal chcete vytvořit výstrahy pro monitorování připojení, zadejte hodnoty pro tato pole: 
 
-- **Vytvořit výstrahu** : Toto políčko můžete zaškrtnout, pokud chcete vytvořit upozornění metriky v Azure monitor. Když zaškrtnete toto políčko, ostatní pole budou povolena pro úpravy. Další poplatky za výstrahu se použijí na základě [cen pro výstrahy](https://azure.microsoft.com/pricing/details/monitor/). 
+- **Vytvořit výstrahu**: Toto políčko můžete zaškrtnout, pokud chcete vytvořit upozornění metriky v Azure monitor. Když zaškrtnete toto políčko, ostatní pole budou povolena pro úpravy. Další poplatky za výstrahu se použijí na základě [cen pro výstrahy](https://azure.microsoft.com/pricing/details/monitor/). 
 
-- **Rozsah**  >  **Prostředek**  >  **Hierarchie** : tyto hodnoty jsou automaticky vyplněny na základě hodnot zadaných na kartě **základy** .
+- **Rozsah**  >  **Prostředek**  >  **Hierarchie**: tyto hodnoty jsou automaticky vyplněny na základě hodnot zadaných na kartě **základy** .
 
-- **Název podmínky** : výstraha se vytvoří u `Test Result(preview)` metriky. Pokud výsledek testu monitorování připojení selže, pravidlo výstrahy se aktivuje. 
+- **Název podmínky**: výstraha se vytvoří u `Test Result(preview)` metriky. Pokud výsledek testu monitorování připojení selže, pravidlo výstrahy se aktivuje. 
 
-- **Název skupiny akcí** : můžete zadat přímo svůj e-mail nebo můžete vytvořit upozornění prostřednictvím skupin akcí. Pokud přímo zadáte svůj e-mail, vytvoří se skupina akcí, která má vytvořenou skupinu akcí s názvem **npm e-mail** . ID e-mailu se přidá do této skupiny akcí. Pokud se rozhodnete použít skupiny akcí, je nutné vybrat dříve vytvořenou skupinu akcí. Informace o tom, jak vytvořit skupinu akcí, najdete v tématu [Vytvoření skupin akcí v Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups). Po vytvoření výstrahy můžete [Spravovat výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal). 
+- **Název skupiny akcí**: můžete zadat přímo svůj e-mail nebo můžete vytvořit upozornění prostřednictvím skupin akcí. Pokud přímo zadáte svůj e-mail, vytvoří se skupina akcí, která má vytvořenou skupinu akcí s názvem **npm e-mail** . ID e-mailu se přidá do této skupiny akcí. Pokud se rozhodnete použít skupiny akcí, je nutné vybrat dříve vytvořenou skupinu akcí. Informace o tom, jak vytvořit skupinu akcí, najdete v tématu [Vytvoření skupin akcí v Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups). Po vytvoření výstrahy můžete [Spravovat výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal). 
 
-- **Název pravidla výstrahy** : název monitorování připojení.
+- **Název pravidla výstrahy**: název monitorování připojení.
 
-- **Povolit pravidlo při vytváření** : Zaškrtnutím tohoto políčka povolíte pravidlo výstrahy na základě podmínky. Toto políčko zakažte, pokud chcete vytvořit pravidlo bez jeho povolení. 
+- **Povolit pravidlo při vytváření**: Zaškrtnutím tohoto políčka povolíte pravidlo výstrahy na základě podmínky. Toto políčko zakažte, pokud chcete vytvořit pravidlo bez jeho povolení. 
 
 :::image type="content" source="./media/connection-monitor-2-preview/create-alert-filled.png" alt-text="Snímek obrazovky, který zobrazuje kartu vytvořit výstrahu v monitorování připojení.":::
 

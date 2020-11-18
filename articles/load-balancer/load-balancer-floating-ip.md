@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: e15aab3ebfe82fa97f5716769b5ff9675b4b3dc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01cca2f2233ed5cdfb3003bb44c40f481bcf9bda
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91637272"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699402"
 ---
 # <a name="azure-load-balancer-floating-ip-configuration"></a>Azure Load Balancer konfigurace plovoucí IP adresy
 
@@ -45,4 +45,4 @@ Bez plovoucí IP adresy poskytuje Azure tradiční schéma mapování IP adres p
 - Přečtěte si další informace o [Azure Load Balancer](load-balancer-overview.md).
 - Seznamte se s [sondami stavu](load-balancer-custom-probe-overview.md).
 - Další informace o [diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md).
-- Přečtěte si další informace o [skupinách zabezpečení sítě](../virtual-network/security-overview.md).
+- Přečtěte si další informace o [skupinách zabezpečení sítě](../virtual-network/network-security-groups-overview.md).

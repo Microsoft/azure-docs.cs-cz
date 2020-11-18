@@ -1,7 +1,7 @@
 ---
-title: Vytvoření náhledu monitorování připojení – ARMClient
+title: Vytvoření monitorování připojení – ARMClient
 titleSuffix: Azure Network Watcher
-description: Naučte se vytvářet monitorování připojení (Preview) pomocí ARMClient.
+description: Naučte se vytvářet monitorování připojení pomocí nástroje ARMClient.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 5a351e550cac9edcc8ce1c54fbe5c57d012ee607
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 929a2feeb53e8903d675644dcb72b422eceb2858
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447594"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699096"
 ---
-# <a name="create-a-connection-monitor-preview-using-the-armclient"></a>Vytvoření monitorování připojení (Preview) pomocí ARMClient
+# <a name="create-a-connection-monitor-using-the-armclient"></a>Vytvoření monitorování připojení pomocí ARMClient
 
-Naučte se vytvořit monitorování připojení (Preview) a monitorovat komunikaci mezi prostředky pomocí nástroje ARMClient. Podporuje hybridní nasazení cloudu a Azure.
+Naučte se vytvářet monitorování připojení, abyste mohli monitorovat komunikaci mezi prostředky pomocí nástroje ARMClient. Podporuje hybridní nasazení cloudu a Azure.
 
 ## <a name="before-you-begin"></a>Než začnete 
 
-Ve sledováních připojení, které vytvoříte v monitorování připojení (Preview), můžete přidat místní počítače a virtuální počítače Azure jako zdroje. Tato sledování připojení také mohou monitorovat připojení k koncovým bodům. Koncové body můžou být na Azure nebo na jakékoli jiné adrese URL nebo IP adrese.
+V okně Sledování připojení, které vytvoříte v monitorování připojení, můžete přidat místní počítače a virtuální počítače Azure jako zdroje. Tato sledování připojení také mohou monitorovat připojení k koncovým bodům. Koncové body můžou být na Azure nebo na jakékoli jiné adrese URL nebo IP adrese.
 
-Monitorování připojení (Preview) obsahuje následující entity:
+Monitorování připojení zahrnuje následující entity:
 
 * **Prostředek sledování připojení** – prostředek Azure specifický pro oblast. Všechny následující entity jsou vlastnosti prostředku monitorování připojení.
 * **Koncový bod** – zdroj nebo cíl, který se účastní kontrol připojení. Mezi příklady koncových bodů patří virtuální počítače Azure, místní agenti, adresy URL a IP adresy.
@@ -359,7 +359,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 * Koncové body
     * název – jedinečný název pro každý koncový bod
-    * resourceId – pro koncové body Azure ID prostředku odkazuje na ID prostředku Azure Resource Manageru pro virtuální počítače. U koncových bodů mimo Azure odkazuje ID prostředku na ID prostředku Azure Resource Manageru pro Log Analytics pracovní prostor propojený s agenty mimo Azure.
+    * resourceId – pro koncové body Azure ID prostředku odkazuje na ID prostředku Azure Resource Manager pro virtuální počítače. U koncových bodů mimo Azure odkazuje ID prostředku na ID prostředku Azure Resource Manager pro pracovní prostor Log Analytics propojený s agenty mimo Azure.
     * Adresa – platí pouze v případě, že buď není zadáno ID prostředku, nebo pokud je ID prostředku Log Analytics pracovního prostoru. Pokud se používá s ID prostředku Log Analytics, odkazuje se na plně kvalifikovaný název domény agenta, který se dá použít k monitorování. Pokud se používá bez ID prostředku, může to být adresa URL nebo IP adresa libovolného veřejného koncového bodu.
     * filtr – pro koncové body mimo Azure použijte filtr k výběru agentů z Log Analytics pracovního prostoru, který se použije pro monitorování v prostředku monitorování připojení. Pokud nejsou filtry nastavené, můžete k monitorování použít všechny agenty patřící do Log Analyticsho pracovního prostoru.
         * typ – nastavte typ jako "adresa agenta".

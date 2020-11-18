@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 336f58635465f77c60d04c53bb1893cb60f5f35f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ab87dfdeb18f97265c3bb2f34616c942a345c1e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791218"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698943"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v jazyce Java pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -25,17 +25,17 @@ ms.locfileid: "92791218"
 > * [Azure Portal](search-get-started-portal.md)
 > * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
 Vytvořte konzolovou aplikaci Java, která vytvoří, načte a dotazuje index vyhledávání pomocí [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/)a [REST API Azure kognitivní hledání](/rest/api/searchservice/). Tento článek poskytuje podrobné pokyny k vytvoření aplikace. Případně můžete [Stáhnout a spustit kompletní aplikaci](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro sestavování a testování tohoto rychlého startu jsme použili následující software a služby:
 
-+ [IntelliJ IDEA](https://www.jetbrains.com/idea/)
++ [IntelliJ nápad](https://www.jetbrains.com/idea/)
 
 + [Sada SDK pro Java 11](/java/azure/jdk/)
 
@@ -63,11 +63,11 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-1. Otevřete nápad IntelliJ a vyberte **vytvořit nový projekt** .
-1. Vyberte **Maven** .
+1. Otevřete nápad IntelliJ a vyberte **vytvořit nový projekt**.
+1. Vyberte **Maven**.
 1. V seznamu **SDK projektu** vyberte sadu SDK Java 11.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Vytvoření projektu Maven" border="false":::
 
 1. Pro ID **skupiny** a **ArtifactId** zadejte `AzureSearchQuickstart` .
 1. Přijměte zbývající výchozí hodnoty pro otevření projektu.
@@ -75,10 +75,10 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 ### <a name="specify-maven-dependencies"></a>Zadat závislosti Maven
 
 1. Vyberte **File**  >  **Nastavení** souboru.
-1. V okně **Nastavení** vyberte **sestavení, spouštění,**  >  **Nástroje sestavení** nasazení  >  **Maven**  >  **Import** .
+1. V okně **Nastavení** vyberte **sestavení, spouštění,**  >  **Nástroje sestavení** nasazení  >  **Maven**  >  **Import**.
 1. Zaškrtněte políčko  **importovat projekty Maven automaticky** a kliknutím na tlačítko **OK** okno zavřete. Moduly plug-in Maven a další závislosti se teď automaticky synchronizují při aktualizaci souboru pom.xml v dalším kroku.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="Možnosti importu Maven v nastavení IntelliJ" border="false":::
 
 1. Otevřete soubor pom.xml a nahraďte jeho obsah následujícími podrobnostmi konfigurace Maven. Patří sem odkazy na [modul plug-in exec Maven](https://www.mojohaus.org/exec-maven-plugin/) a [rozhraní API rozhraní JSON](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) .
 
@@ -133,14 +133,14 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="set-up-the-project-structure"></a>Nastavení struktury projektu
 
-1. Vyberte **Souborová**  >  **struktura projektu** .
+1. Vyberte **Souborová**  >  **struktura projektu**.
 1. Vyberte **moduly** a rozbalte zdrojový strom pro přístup k obsahu `src`  >   `main` složky.
 1. Ve `src`  >   `main`  >  `java` složce přidejte `app` `service` složky a. Provedete to tak, že vyberete `java` složku, stisknete ALT + INSERT a pak zadáte název složky.
 1. Ve `src`  >   `main`  > `resources` složce přidejte `app` `service` složky a.
 
     Až skončíte, strom projektu by měl vypadat podobně jako na následujícím obrázku.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Adresářová struktura projektu" border="false":::
 
 1. Kliknutím na tlačítko **OK** zavřete toto okno.
 
@@ -373,10 +373,10 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 1. Ověřte, zda má projekt následující strukturu.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Třídy adresářové struktury a třídy projektu" border="false":::
 
 1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven: `verify exec:java` 
- :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
+ :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Spusťte Maven cíl: ověřit exec: Java" border="false":::
 
 Po dokončení zpracování vyhledejte zprávu o úspěchu sestavení následovaný nulou (0) ukončovacím kódem.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: a26228b33a7d90df558de2ecdf4686910e606a54
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 526947c4d2db9fd87727fdd60c33bcaa9e75c6ff
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413288"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699861"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 
@@ -30,7 +30,7 @@ Tento článek popisuje některé z možností, které Azure nabízí v oblasti 
 
 * Sítě Azure
 * Řízení přístupu k síti
-* Brána Azure Firewall
+* Azure Firewall
 * Zabezpečený vzdálený přístup a připojení mezi místními sítěmi
 * Dostupnost
 * Překlad adres
@@ -81,7 +81,7 @@ Další informace:
 
 #### <a name="asc-just-in-time-vm-access"></a>Přístup k virtuálnímu počítači v čase ASC
 
-[Azure Security Center](../../security-center/security-center-introduction.md) může spravovat skupin zabezpečení sítě na virtuálních počítačích a uzamknout přístup k virtuálnímu počítači, dokud uživatel s [příslušnými oprávněními pro](../../role-based-access-control/overview.md) řízení přístupu na základě role nepožaduje přístup. Po úspěšném ověření uživatele ASC provede úpravy skupin zabezpečení sítě k povolení přístupu k vybraným portům po určenou dobu. Po vypršení časového limitu se skupin zabezpečení sítě obnoví na předchozí zabezpečený stav.
+[Azure Security Center](../../security-center/security-center-introduction.md) může spravovat skupin zabezpečení sítě na virtuálních počítačích a uzamknout přístup k virtuálnímu počítači, dokud uživatel s příslušnou rolí Azure na řízení přístupu na základě role [Azure RBAC](../../role-based-access-control/overview.md) nepožaduje přístup. Po úspěšném ověření uživatele ASC provede úpravy skupin zabezpečení sítě k povolení přístupu k vybraným portům po určenou dobu. Po vypršení časového limitu se skupin zabezpečení sítě obnoví na předchozí zabezpečený stav.
 
 Další informace:
 
@@ -130,7 +130,7 @@ Vaše požadavky na zabezpečení můžou například zahrnovat:
 
 K těmto rozšířeným funkcím zabezpečení sítě můžete přistupovat pomocí partnerského řešení Azure. Nejaktuálnější řešení zabezpečení pro Azure Partner Network najdete na [Azure Marketplace](https://azure.microsoft.com/marketplace/)a vyhledáte "zabezpečení" a "zabezpečení sítě".
 
-## <a name="azure-firewall"></a>Brána Azure Firewall
+## <a name="azure-firewall"></a>Azure Firewall
 
 Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Jde o plně stavovou bránu firewall poskytovanou jako služba s integrovanou vysokou dostupností a neomezenou cloudovou škálovatelností. Mezi tyto funkce patří:
 

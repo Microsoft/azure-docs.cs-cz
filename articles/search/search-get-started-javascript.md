@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5ccbe1035c5cc73993e069c7683d6b15ae18e21c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 0e1b7aa0eb56d5668b6561b36a0f63e719974573
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795942"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698892"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání pomocí sady JavaScript SDK
 > [!div class="op_single_selector"]
@@ -24,10 +24,10 @@ ms.locfileid: "92795942"
 > * [Azure Portal](search-get-started-portal.md)
 > * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
 
-Pomocí [JavaScriptu/TYPSCRIPT SDK pro Azure kognitivní hledání](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) vytvořit aplikaci Node.js v JavaScriptu, která vytvoří, načte a dotazuje index vyhledávání.
+Pomocí [JavaScriptu/TYPSCRIPT SDK pro Azure kognitivní hledání](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme) vytvořit aplikaci Node.js v JavaScriptu, která vytvoří, načte a dotazuje index vyhledávání.
 
 Tento článek ukazuje, jak vytvořit aplikaci krok za krokem. Alternativně můžete [stáhnout zdrojový kód a data](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) a spustit aplikaci z příkazového řádku.
 
@@ -58,7 +58,7 @@ Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro ka
 
 2. V části **Nastavení**  >  **klíče** Získejte klíč správce pro úplná práva ke službě, který je vyžadován při vytváření nebo odstraňování objektů. Existují dva zaměnitelné primární a sekundární klíče. Můžete použít jednu z těchto.
 
-   ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
+   ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-rest/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
@@ -80,7 +80,7 @@ Začněte tím, že otevřete VS Code a jeho [integrovaný terminál](https://co
     ```
      Přijměte výchozí hodnoty, s výjimkou licence, kterou byste měli nastavit na hodnotu MIT. 
 
-3. Nainstalujte `@azure/search-documents` [sadu SDK pro Azure kognitivní hledání v jazyce JavaScript/Typscript](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest).
+3. Nainstalujte `@azure/search-documents` [sadu SDK pro Azure kognitivní hledání v jazyce JavaScript/Typscript](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme).
 
     ```cmd
     npm install @azure/search-documents
@@ -169,7 +169,7 @@ V takovém případě jsme připraveni vytvořit index.
 
 ## <a name="1---create-index"></a>1. vytvoření indexu 
 
-Vytvořte soubor **hotels_quickstart_index.jsv** .  Tento soubor definuje, jak Azure Kognitivní hledání pracuje s dokumenty, které budete načítat v dalším kroku. Jednotlivá pole budou identifikována `name` a zadána `type` . Každé pole má také řadu atributů indexu, které určují, zda může Azure Kognitivní hledání Hledat, filtrovat, třídit a omezující vlastnosti na poli. Většina polí je jednoduchý datový typ, ale některé, jako `AddressType` jsou komplexní typy, které umožňují vytvářet struktury s bohatou datovou strukturou v indexu.  Můžete si přečíst další informace o [podporovaných datových typech](/rest/api/searchservice/supported-data-types) a [atributech indexu](./search-what-is-an-index.md#index-attributes). 
+Vytvořte soubor **hotels_quickstart_index.jsv**.  Tento soubor definuje, jak Azure Kognitivní hledání pracuje s dokumenty, které budete načítat v dalším kroku. Jednotlivá pole budou identifikována `name` a zadána `type` . Každé pole má také řadu atributů indexu, které určují, zda může Azure Kognitivní hledání Hledat, filtrovat, třídit a omezující vlastnosti na poli. Většina polí je jednoduchý datový typ, ale některé, jako `AddressType` jsou komplexní typy, které umožňují vytvářet struktury s bohatou datovou strukturou v indexu.  Můžete si přečíst další informace o [podporovaných datových typech](/rest/api/searchservice/supported-data-types) a [atributech indexu](./search-what-is-an-index.md#index-attributes). 
 
 Přidejte následující **hotels_quickstart_index.js** nebo [Stáhněte soubor](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/v11/hotels_quickstart_index.json). 
 

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 133e6b533a3d87ef519d0f586ea59db1bbce28b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96be79a349478db7d0452cae1ff07ee1c48aaa3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83744483"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700082"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Nastavení aplikace Microsoft Authenticator jako metody ověřování
 
@@ -45,6 +45,11 @@ Metody bezpečnostních údajů se používají pro ověřování dvou faktorů 
 ## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>Nastavení aplikace Microsoft Authenticator ze stránky bezpečnostní údaje
 
 V závislosti na nastaveních vaší organizace možná budete moct použít ověřovací aplikaci jako jednu z vašich metod bezpečnostních údajů. Nemusíte používat aplikaci Microsoft Authenticator a během procesu nastavování můžete zvolit jinou aplikaci. Tento článek však používá aplikaci Microsoft Authenticator.
+
+>[!Important]
+> Pokud jste nastavili Microsoft Authenticator aplikace na 5 různých zařízeních nebo 5 hardwarových tokenech, nebudete schopni nastavit šest a může se zobrazit následující chybová zpráva.
+> 
+> **Nemůžete nastavit Microsoft Authenticator, protože už máte pět ověřovacích aplikací nebo hardwarových tokenů. Pokud chcete odstranit jednu z vašich ověřovacích aplikací nebo hardwarových tokenů, kontaktujte prosím správce.**
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>Nastavení aplikace Microsoft Authenticator
 
@@ -117,7 +122,7 @@ Pokud už nechcete, aby se aplikace ověřovatele používala jako metoda bezpe�
 
 2. Pokud chcete ověřovací aplikaci odstranit, vyberte v potvrzovacím poli možnost **Ano** . Po odstranění ověřovací aplikace se odstraní z bezpečnostních údajů a zmizí ze stránky **bezpečnostní údaje** . Pokud je aplikace ověřovatele výchozí metodou, výchozí nastavení se změní na jinou dostupnou metodu.
 
-3. Otevřete ověřovací aplikaci na mobilním zařízení, vyberte **Upravit účty**a pak z ověřovací aplikace odstraňte svůj pracovní nebo školní účet.
+3. Otevřete ověřovací aplikaci na mobilním zařízení, vyberte **Upravit účty** a pak z ověřovací aplikace odstraňte svůj pracovní nebo školní účet.
 
     Váš účet je zcela odebrán z ověřovací aplikace pro dvojúrovňové ověřování a žádosti o resetování hesla.
 
