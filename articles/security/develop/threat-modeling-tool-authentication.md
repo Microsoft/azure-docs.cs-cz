@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: e9a1afd1d998fcb3ba715c890cc4deac1f0a7da5
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ee4dd70faab9ed44b1aa6ca8ca0ec517c7746f66
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517712"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832526"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Rámec zabezpečení: ověřování | Hrozeb
 
@@ -30,7 +30,7 @@ ms.locfileid: "94517712"
 | **Webová aplikace**    | <ul><li>[Zvažte použití mechanismu standardního ověřování pro ověření u webové aplikace](#standard-authn-web-app)</li><li>[Aplikace musí bezpečně zpracovávat scénáře neúspěšného ověření.](#handle-failed-authn)</li><li>[Povolit krokování nebo adaptivní ověřování](#step-up-adaptive-authn)</li><li>[Zajistěte, aby byla rozhraní pro správu náležitě uzamčena.](#admin-interface-lockdown)</li><li>[Zabezpečená implementace funkcí zapomenutého hesla](#forgot-pword-fxn)</li><li>[Ujistěte se, že jsou implementované zásady hesel a účtů.](#pword-account-policy)</li><li>[Implementace ovládacích prvků, aby se zabránilo výčtu uživatelského jména](#controls-username-enum)</li></ul> |
 | **Databáze** | <ul><li>[Pokud je to možné, použijte ověřování systému Windows pro připojení k SQL Server](#win-authn-sql)</li><li>[Pokud je to možné, použijte Azure Active Directory ověřování pro připojení k SQL Database](#aad-authn-sql)</li><li>[Při použití režimu ověřování SQL se ujistěte, že je na SQL serveru vynutila zásada účtu a hesla.](#authn-account-pword)</li><li>[Nepoužívat ověřování SQL v obsažených databázích](#autn-contained-db)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Použití přihlašovacích údajů pro ověřování zařízení pomocí tokenů SaS](#authn-sas-tokens)</li></ul> |
-| **Hranice důvěry Azure** | <ul><li>[Povolení služby Azure Multi-Factor Authentication pro správce Azure](#multi-factor-azure-admin)</li></ul> |
+| **Hranice důvěry Azure** | <ul><li>[Povolení služby Azure AD Multi-Factor Authentication pro správce Azure](#multi-factor-azure-admin)</li></ul> |
 | **Service Fabric hranice důvěryhodnosti** | <ul><li>[Omezení anonymního přístupu na cluster Service Fabric](#anon-access-cluster)</li><li>[Ujistěte se, že Service Fabric certifikát klienta na uzel se liší od certifikátu Node-to-Node.](#fabric-cn-nn)</li><li>[Použití AAD k ověřování klientů v clusterech Service Fabric](#aad-client-fabric)</li><li>[Zajistěte, aby se certifikáty Service Fabric získaly od schválené certifikační autority (CA).](#fabric-cert-ca)</li></ul> |
 | **Server identit** | <ul><li>[Použití standardních scénářů ověřování podporovaných serverem identity](#standard-authn-id)</li><li>[Přepsat výchozí mezipaměť tokenů serveru identity pomocí škálovatelné alternativy](#override-token)</li></ul> |
 | **Hranice důvěryhodnosti počítače** | <ul><li>[Zajistěte, aby byly binární soubory nasazené aplikace digitálně podepsané.](#binaries-signed)</li></ul> |
@@ -173,7 +173,7 @@ ms.locfileid: "94517712"
 | **Reference**              | [Přehled ověřování a modelu zabezpečení Event Hubs](../../event-hubs/authenticate-shared-access-signature.md) |
 | **Kroky** | <p>Model zabezpečení Event Hubs je založen na kombinaci tokenů sdíleného přístupového podpisu (SAS) a vydavatelů událostí. Název vydavatele představuje DeviceID, který obdrží token. To by pomohlo přidružit tokeny vygenerované příslušnému zařízení.</p><p>Všechny zprávy jsou označeny pomocí původce na straně služby, což umožňuje detekci pokusů o falšování zdroje v datové části. Při ověřování zařízení vygenerujte token SaS vázaný na zařízení, které je v oboru jedinečného vydavatele.</p>|
 
-## <a name="enable-azure-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>Povolení služby Azure Multi-Factor Authentication pro správce Azure
+## <a name="enable-azure-ad-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>Povolení služby Azure AD Multi-Factor Authentication pro správce Azure
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -181,7 +181,7 @@ ms.locfileid: "94517712"
 | **Fáze SDL**               | Nasazení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Co je Azure Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md) |
+| **Reference**              | [Co je Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md) |
 | **Kroky** | <p>Multi-Factor Authentication (MFA) je metoda ověřování, která vyžaduje více než jednu metodu ověřování a přidává kritickou druhou vrstvu zabezpečení pro přihlášení a transakce uživatele. Funguje tak, že vyžaduje některou ze dvou nebo více následujících metod ověřování:</p><ul><li>Něco, co znáte (obvykle heslo)</li><li>Něco, co máte (důvěryhodné zařízení, které není jednoduše duplikováno, jako je telefon)</li><li>Něco, co používáte (biometrika)</li><ul>|
 
 ## <a name="restrict-anonymous-access-to-service-fabric-cluster"></a><a id="anon-access-cluster"></a>Omezení anonymního přístupu na cluster Service Fabric

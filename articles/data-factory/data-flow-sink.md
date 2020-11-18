@@ -4,17 +4,16 @@ description: Naučte se konfigurovat transformaci jímky v mapování toku dat.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
-manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/02/2020
-ms.openlocfilehash: 2e26028c47e8c96f8c1adabc468ee6f03e3cb19c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.date: 11/17/2020
+ms.openlocfilehash: d45f5d5d1d61372ed959334519aa865c22d70748
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427271"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832479"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformace jímky v toku dat mapování
 
@@ -65,13 +64,9 @@ Následující video vysvětluje řadu různých možností jímky pro typy soub
 
 ![Snímek obrazovky, který zobrazuje nastavení jímky.](media/data-flow/sink-settings.png "Snímek obrazovky, který zobrazuje nastavení jímky.")
 
-**Posun schématu** : [posun schématu](concepts-data-flow-schema-drift.md) je schopnost Data Factory nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců. Povolit možnost **Povolit posun schématu** pro zápis dalších sloupců nad to, co je definováno ve schématu dat jímky.
+**Posun schématu**: [posun schématu](concepts-data-flow-schema-drift.md) je schopnost Data Factory nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců. Povolit možnost **Povolit posun schématu** pro zápis dalších sloupců nad to, co je definováno ve schématu dat jímky.
 
-**Ověřit schéma** : Pokud je vybraná možnost ověřit schéma, tok dat selže, pokud se ve zdrojové projekci nenajde žádný sloupec pro příchozí zdrojové schéma, nebo pokud se datové typy neshodují. Pomocí tohoto nastavení můžete vynutilit, aby zdrojová data splňovala kontrakt vaší definované projekce. To je užitečné ve scénářích zdrojové databáze k signalizaci, že se změnily názvy nebo typy sloupců.
-
-**Použít databázi tempdb:** Ve výchozím nastavení Data Factory použije globální dočasnou tabulku k ukládání dat v rámci procesu načítání. Případně můžete zrušit možnost použít databázi TempDB a místo toho požádat Data Factory uložit dočasnou tabulku do uživatelské databáze nacházející se v databázi, která se používá pro tuto jímku.
-
-![Použít dočasnou databázi](media/data-flow/tempdb.png "Použít dočasnou databázi")
+**Ověřit schéma**: Pokud je vybraná možnost ověřit schéma, tok dat selže, pokud se ve zdrojové projekci nenajde žádný sloupec pro příchozí zdrojové schéma, nebo pokud se datové typy neshodují. Pomocí tohoto nastavení můžete vynutilit, aby zdrojová data splňovala kontrakt vaší definované projekce. To je užitečné ve scénářích zdrojové databáze k signalizaci, že se změnily názvy nebo typy sloupců.
 
 ## <a name="cache-sink"></a>Jímka mezipaměti
 
@@ -109,9 +104,14 @@ Ve výchozím nastavení jsou data zapisována do více umyvadel v nedeterminist
 
 ![Vlastní řazení jímky](media/data-flow/cache-2.png "Vlastní řazení jímky")
 
+## <a name="error-row-handling"></a>Zpracování chybového řádku
+
+Při zápisu do databází může dojít k selhání některých řádků dat z důvodu omezení nastavených cílem. Ve výchozím nastavení selže spuštění toku dat při první chybě, kterou získá. V určitých konektorech můžete zvolit pokračování při **chybě** , která umožňuje dokončení toku dat, i když jednotlivé řádky obsahují chyby. V současné době je tato funkce dostupná pouze v Azure SQL Database. Další informace najdete v tématu [Chyba zpracování řádků v Azure SQL DB](connector-azure-sql-database.md#error-row-handling).
+
 ## <a name="data-preview-in-sink"></a>Náhled dat v jímky
 
 Při načítání náhledu dat v clusteru ladění nebudou do jímky zapsána žádná data. Vrátí se snímek toho, co budou data vypadat, ale do svého cíle se nezapisují žádné údaje. Pokud chcete testovat zápis dat do jímky, spusťte ladění kanálu z plátna kanálu.
 
 ## <a name="next-steps"></a>Další kroky
+
 Teď, když jste vytvořili tok dat, přidejte [do svého kanálu aktivitu toku dat](concepts-data-flow-overview.md).

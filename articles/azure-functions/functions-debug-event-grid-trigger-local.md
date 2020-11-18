@@ -1,22 +1,22 @@
 ---
 title: Azure Functions Event Grid místní ladění
-description: Naučte se místně ladit služby Azure Functions aktivované událostmi Event Grid.
+description: Naučte se místně ladit Azure Functions aktivované událostí Event Grid
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: fdd046a855c4e2114e96e7911a928165f808710c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be05d237d2799404c3fd8b5733464e23eeb49aa3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530540"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833057"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Funkce Azure Function Event Grid aktivovat místní ladění
 
 Tento článek ukazuje, jak ladit místní funkci, která zpracovává událost Azure Event Grid vyvolanou účtem úložiště. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vytvoření nebo použití existující aplikace Function App
 - Vytvoření nebo použití existujícího účtu úložiště

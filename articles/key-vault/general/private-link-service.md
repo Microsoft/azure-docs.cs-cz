@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 74669036a40048ca21aae56856981197defe1c35
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a41eb5b38b741f8bdde59f8a4f1e8de2b4767903
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286540"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832768"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrace služby Key Vault se službou Azure Private Link
 
@@ -44,7 +44,7 @@ Pak můžete buď vytvořit nový trezor klíčů, nebo vytvořit připojení ty
 
 ### <a name="create-a-new-key-vault-and-establish-a-private-link-connection"></a>Vytvoření nového trezoru klíčů a navázání připojení k privátnímu propojení
 
-Nový trezor klíčů můžete vytvořit podle kroků v části [nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](../secrets/quick-create-portal.md)
+Azure Key Vault můžete vytvořit pomocí [Azure Portal](../general/quick-create-portal.md), [Azure CLI](../general/quick-create-cli.md)nebo [Azure PowerShell](../general/quick-create-powershell.md).
 
 Po nakonfigurování základních informací o trezoru klíčů vyberte kartu síť a postupujte podle těchto kroků:
 
@@ -270,13 +270,13 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 > [!NOTE]
 > Počet trezorů klíčů s povolenými soukromými koncovými body pro každé předplatné je upravitelný limit. Níže uvedený limit je nastaven jako výchozí. Pokud chcete pro vaši službu požádat o zvýšení limitu, pošlete prosím e-mail na adresu akv-privatelink@microsoft.com . Tyto žádosti schválíme na základě případu.
 
-**Ceny** : informace o cenách najdete v tématu [ceny za privátní propojení Azure](https://azure.microsoft.com/pricing/details/private-link/).
+**Ceny**: informace o cenách najdete v tématu [ceny za privátní propojení Azure](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Omezení** : privátní koncový bod pro Azure Key Vault je k dispozici jenom ve veřejných oblastech Azure.
+**Omezení**: privátní koncový bod pro Azure Key Vault je k dispozici jenom ve veřejných oblastech Azure.
 
-**Maximální počet privátních koncových bodů na Key Vault** : 64.
+**Maximální počet privátních koncových bodů na Key Vault**: 64.
 
-**Výchozí počet trezorů klíčů s privátními koncovými body na předplatné** : 400.
+**Výchozí počet trezorů klíčů s privátními koncovými body na předplatné**: 400.
 
 Další informace najdete v tématu [Služba privátního propojení Azure: omezení](../../private-link/private-link-service-overview.md#limitations)
 

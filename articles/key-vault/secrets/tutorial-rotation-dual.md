@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 5da31d45e068f414c8afa38bcb46cdf1f790a9e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a061cf493fba99c518448acd9c4bf4bd5949eb98
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843273"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831803"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>Automatizace rotace tajného klíče pro prostředky se dvěma sadami ověřovacích přihlašovacích údajů
 
@@ -35,7 +35,7 @@ Ve výše uvedeném řešení Azure Key Vault ukládá jednotlivé přístupové
 1. Aplikace Function App identifikuje alternativní klíč (jiný než poslední) a volá účet úložiště, který ho znovu vygeneruje.
 1. Aplikace Function App přidá nový znovu vygenerovaný klíč, který bude Azure Key Vault jako nová verze tajného kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Azure Key Vault
 * Dva účty Azure Storage
@@ -44,7 +44,7 @@ Pokud nemáte existující Trezor klíčů a účty úložiště, můžete použ
 
 [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. V části **Skupina prostředků**vyberte **vytvořit novou**. Pojmenujte skupinu **akvrotation** a klikněte na **OK**.
+1. V části **Skupina prostředků** vyberte **vytvořit novou**. Pojmenujte skupinu **akvrotation** a klikněte na **OK**.
 1. Vyberte **zkontrolovat + vytvořit**.
 1. Vyberte **Vytvořit**.
 
@@ -67,8 +67,6 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 ```
 
 ## <a name="create-and-deploy-storage-account-key-rotation-function"></a>Vytvoření a nasazení funkce pro otočení klíče účtu úložiště
-> [!IMPORTANT]
-> Pod šablonou se vyžaduje Key Vault, účet Azure Storage a funkce Azure, aby byly ve stejné skupině prostředků.
 
 Dále vytvořte aplikaci funkcí s identitou spravovanou systémem, kromě dalších požadovaných součástí a nasaďte funkce pro rotaci klíčů účtu úložiště.
 
@@ -85,11 +83,13 @@ Funkce rotace aplikace funkcí vyžadují tyto komponenty a konfiguraci:
    [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
 1. V seznamu **Skupina prostředků** vyberte **akvrotation**.
-1. Do pole **název účtu úložiště**zadejte název účtu úložiště s přístupovými klíči, které se mají otočit.
-1. Do **Key Vault název**zadejte název trezoru klíčů.
-1. Do **Function App název**zadejte název aplikace Function App.
-1. Do **název tajného klíče**zadejte tajný název, kde se budou ukládat přístupové klíče.
-1. Do pole **Adresa URL úložiště**zadejte umístění GitHubu pro kód funkce umístění ( **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** ).
+1. V **RG účtu úložiště** zadejte název skupiny prostředků, ve které existuje účet úložiště. Pokud váš účet úložiště již existuje ve stejné skupině prostředků, ve které nasadíte funkci rotace klíčů, ponechte výchozí hodnotu **[resourceName (). name]** .
+1. Do pole **název účtu úložiště** zadejte název účtu úložiště a přístupové klávesy, které se mají otočit.
+1. V **Key Vault RG** zadejte název skupiny prostředků, ve které existuje váš Trezor klíčů. Pokud váš Trezor klíčů už existuje ve stejné skupině prostředků, ve které nasadíte funkci rotace klíčů, ponechte výchozí hodnotu **[resourceName (). name]** .
+1. Do **Key Vault název** zadejte název trezoru klíčů.
+1. Do **Function App název** zadejte název aplikace Function App.
+1. Do **název tajného klíče** zadejte tajný kód, kde budou uložené přístupové klíče.
+1. Do pole **Adresa URL úložiště** zadejte umístění GitHubu () pro kód funkce **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** .
 1. Vyberte **zkontrolovat + vytvořit**.
 1. Vyberte **Vytvořit**.
 
@@ -159,10 +159,10 @@ Přidání dalších klíčů účtu úložiště pro otočení do existující 
    [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json)
 
 1. V seznamu **Skupina prostředků** vyberte **akvrotation**.
-1. Do pole **název účtu úložiště**zadejte název účtu úložiště s přístupovými klíči, které se mají otočit.
-1. Do **Key Vault název**zadejte název trezoru klíčů.
-1. Do **Function App název**zadejte název aplikace Function App.
-1. Do **název tajného klíče**zadejte tajný název, kde se budou ukládat přístupové klíče.
+1. Do pole **název účtu úložiště** zadejte název účtu úložiště s přístupovými klíči, které se mají otočit.
+1. Do **Key Vault název** zadejte název trezoru klíčů.
+1. Do **Function App název** zadejte název aplikace Function App.
+1. Do **název tajného klíče** zadejte tajný název, kde se budou ukládat přístupové klíče.
 1. Vyberte **zkontrolovat + vytvořit**.
 1. Vyberte **Vytvořit**.
 

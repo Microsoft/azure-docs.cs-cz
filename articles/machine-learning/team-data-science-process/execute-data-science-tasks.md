@@ -7,19 +7,19 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cbe822b75368a1ab72bcd7f73419770b291d2508
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e47dad8498c48a5da5307517efe493fa5c1aa590
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321155"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94748059"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Provádění úloh pro datové vědy: průzkum, modelování a nasazení
 
-Mezi typické úlohy pro datové vědy patří zkoumání, modelování a nasazení dat. V tomto článku se dozvíte, jak používat interaktivní nástroje pro **zkoumání a analýzu dat a vytváření sestav (** **AMAR)** k dokončení několika běžných úloh vědeckého zpracování dat, jako jsou interaktivní zkoumání dat, analýza dat, generování sestav a vytváření modelů. Možnosti nasazení modelu do produkčního prostředí můžou zahrnovat:
+Mezi typické úlohy pro datové vědy patří zkoumání, modelování a nasazení dat. Tento článek popisuje úlohy k dokončení několika běžných úkolů pro datové vědy, jako jsou interaktivní zkoumání dat, analýza dat, generování sestav a vytváření modelů. Možnosti nasazení modelu do produkčního prostředí můžou zahrnovat:
 
 - [Azure Machine Learning](../index.yml)
 - [SQL Server se službami ML](/sql/advanced-analytics/r/r-services)
@@ -32,43 +32,11 @@ Odborník na data může provádět průzkum a vytváření sestav různými zp�
 
 Produkty jako Azure Machine Learning také poskytují [pokročilou přípravu dat](../how-to-create-register-datasets.md) pro tahání a zkoumání dat, včetně vytváření funkcí. Uživatel by se měl rozhodnout o nástrojích, knihovnách a balíčcích, které nejlépe vyhovují jejich potřebám. 
 
-Doručení na konci této fáze je sestava zkoumání dat. Zpráva by měla poskytnout poměrně komplexní pohled na data, která se mají použít k modelování, a posouzení, jestli jsou data vhodná pro pokračování v kroku modelování. Nástroje týmu pro vědecké zpracování dat (TDSP) popsané v následujících částech pro poloautomatické zkoumání, modelování a vytváření sestav také poskytují standardizované sestavy pro zkoumání a modelování dat. 
-
-### <a name="interactive-data-exploration-analysis-and-reporting-using-the-idear-utility"></a>Interaktivní zkoumání dat, analýza a vytváření sestav pomocí nástroje myšlenku
-
-Tento nástroj založený na poznámkovém bloku R Markdownu nebo Python poskytuje flexibilní a interaktivní nástroj pro vyhodnocení a prozkoumání datových sad. Uživatelé mohou rychle generovat sestavy z datové sady s minimálním kódováním. Uživatelé mohou kliknout na tlačítka a exportovat výsledky průzkumu v interaktivním nástroji do konečné sestavy, kterou lze doručit klientům nebo použít k rozhodnutí o tom, které proměnné mají být zahrnuty v následném kroku modelování.
-
-V tuto chvíli nástroj funguje jenom pro datové rámce v paměti. K určení parametrů dat, které se má prozkoumat, se vyžaduje soubor YAML. Další informace najdete v tématu [nápad v TDSP pro datové vědy](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
-
+Doručení na konci této fáze je sestava zkoumání dat. Zpráva by měla poskytnout poměrně komplexní pohled na data, která se mají použít k modelování, a posouzení, jestli jsou data vhodná pro pokračování v kroku modelování. 
 
 ## <a name="2--modeling"></a>2. <a name='ModelingUtility-2'></a> modelování
 
 K dispozici je řada nástrojů a balíčků pro školicí modely v různých jazycích. Odborníci na data by měli mít volnost v používání, které někdy jsou vhodné, pokud jsou splněny požadavky na výkon týkající se přesnosti a latence pro příslušné případy podnikového použití a produkční scénáře.
-
-V další části se dozvíte, jak používat nástroj TDSP založený na jazyce R pro částečně automatizované modelování. Tento nástroj AMAR se dá použít ke snadnému vygenerování základních modelů a také k parametrům, které je potřeba vyladit, aby bylo možné model lépe provádět.
-V následující části Správa modelů se dozvíte, jak mít systém pro registraci a správu více modelů.
-
-
-### <a name="model-training-modeling-and-reporting-using-the-amar-utility"></a>Školení modelů: modelování a vytváření sestav pomocí nástroje AMAR
-
-[Nástroj pro automatizované modelování a vytváření sestav (AMAR)](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling) nabízí přizpůsobitelný, poloautomatický Nástroj pro vytváření modelů s možností vyrovnávání pomocí technologie Hyper-v a pro porovnání přesnosti těchto modelů. 
-
-Nástroj pro vytváření modelů je R Markdown soubor, který se dá spustit, aby se vytvořil vlastní výstup HTML s obsahem, který umožňuje snadnou navigaci prostřednictvím různých oddílů. Při spuštění souboru Markdownu (spojit) se spustí tři algoritmy: pravidelná regrese pomocí balíčku glmnet, náhodná doménová struktura pomocí balíčku randomForest a posílení stromů pomocí balíčku xgboost). Každý z těchto algoritmů vytváří trained model. Je pak porovnána přesnost těchto modelů a jsou hlášeny důležité funkce, které jsou k disměrnému prvku. V současné době existují dva pomůcky: jeden pro úlohu binární klasifikace a jeden pro regresní úlohu. Hlavním rozdílem mezi nimi je způsob, jakým jsou pro tyto úkoly učení zadány parametry ovládacího prvku a metriky přesnosti. 
-
-Soubor YAML se používá k zadání:
-
-- datový vstup (zdroj dat SQL nebo soubor R-data) 
-- jaká část dat se používá pro školení a k čemu k testování
-- které algoritmy se mají spustit 
-- Volba řídicích parametrů pro optimalizaci modelu:
-    - křížové ověření 
-    - zavádění
-    - skládání křížového ověřování
-- sady parametrů technologie Hyper-v pro každý algoritmus. 
-
-V souboru YAML je také možné upravit počet algoritmů, počet skládání pro optimalizaci, parametry technologie Hyper-v a počet sad parametrů technologie Hyper-v, aby se modely spouštěly rychle. Lze je například spustit s nižším počtem přeložení CV, což je nižší počet sad parametrů. Pokud je to oprávněné, mohou být také spuštěny společně s vyšším počtem přeložení CV nebo větším počtem sad parametrů.
-
-Další informace najdete v tématu [automatizované modelování a nástroj pro vytváření sestav v TDSP nástrojů pro datové vědy](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling).
 
 ### <a name="model-management"></a>Správa modelů
 Po vytvoření více modelů je obvykle potřeba mít systém pro registraci a správu modelů. Obvykle potřebujete kombinaci skriptů nebo rozhraní API a back-end databáze nebo systému správy verzí. Pro tyto úlohy správy můžete zvážit několik možností:

@@ -3,12 +3,12 @@ title: host.jsna referenci pro Azure Functions 1. x
 description: Referenční dokumentace pro Azure Functions host.jsv souboru s modulem Runtime v1.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 32848c725d5c99e3814e86447d604839502054c0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 588ab6723015f34d15e4a46ec4f7324302b13b81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167712"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832819"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.jsna referenci pro Azure Functions 1. x
 
@@ -93,7 +93,8 @@ Následující vzor *host.js* souborů má všechny možné možnosti.
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     },
     "singleton": {
       "lockPeriod": "00:00:15",
@@ -194,7 +195,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 |healthCheckThreshold|6|Maximální počet neúspěšných kontrol stavu před zahájením recyklace hostitele.| 
 |counterThreshold|0,80|Prahová hodnota, při které bude čítač výkonu považován za špatný.| 
 
-## <a name="http"></a>HTTP
+## <a name="http"></a>http
 
 Nastavení konfigurace [aktivačních událostí a vazeb HTTP](functions-bindings-http-webhook.md).
 
@@ -286,6 +287,7 @@ Nastavení konfigurace pro [výstupní vazbu SendGrind](functions-bindings-sendg
     "sendGrid": {
         "from": "Contoso Group <admin@contoso.com>"
     }
+}    
 ```
 
 |Vlastnost  |Výchozí | Popis |
@@ -301,7 +303,8 @@ Nastavení konfigurace pro [aktivační události Service Bus a vazby](functions
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     }
 }
 ```
@@ -310,7 +313,8 @@ Nastavení konfigurace pro [aktivační události Service Bus a vazby](functions
 |---------|---------|---------| 
 |maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo iniciovat čerpadlo zpráv. Ve výchozím nastavení aplikace runtime Functions zpracovává více zpráv souběžně. Pokud chcete modul runtime nasměrovat tak, aby zpracovával jenom jednu frontu nebo zprávu o tématu, nastavte `maxConcurrentCalls` na hodnotu 1. | 
 |prefetchCount|neuvedeno|Výchozí PrefetchCount, které bude používat základní MessageReceiver.| 
-|autoRenewTimeout|00:05:00|Maximální doba, během které bude zámek zprávy obnoven automaticky.| 
+|autoRenewTimeout|00:05:00|Maximální doba, během které bude zámek zprávy obnoven automaticky.|
+|Zobrazovat|true|V případě hodnoty true bude aktivační událost po úspěšném provedení operace dokončit zpracování zprávy automaticky. Je-li hodnota false, je odpovědností funkce k dokončení zprávy před vrácením.|
 
 ## <a name="singleton"></a>singleton
 

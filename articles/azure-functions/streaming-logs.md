@@ -3,13 +3,13 @@ title: Protokoly spuštění streamu v Azure Functions
 description: 115-145 znaků včetně mezer Tento souhrn se zobrazí ve výsledcích vyhledávání.
 ms.date: 9/1/2020
 ms.topic: how-to
-ms.custom: contperfq2
-ms.openlocfilehash: 61756afb5111da3d5573e967a6ca13f25354aef5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperfq2, devx-track-azurecli
+ms.openlocfilehash: 68b9d567fe0f2959c809a25c3669b9529cf093b8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216092"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832875"
 ---
 # <a name="enable-streaming-execution-logs-in-azure-functions"></a>Povolit protokoly spouštění streamování v Azure Functions
 
@@ -29,7 +29,7 @@ Oba typy datových proudů protokolů můžete zobrazit na portálu.
 
 ### <a name="built-in-log-streaming"></a>Integrované streamování protokolů
 
-Pokud chcete zobrazit protokoly streamování na portálu, vyberte v aplikaci Function App kartu **funkce platformy** . Pak v části **monitorování**zvolte **streamování protokolů**.
+Pokud chcete zobrazit protokoly streamování na portálu, vyberte v aplikaci Function App kartu **funkce platformy** . Pak v části **monitorování** zvolte **streamování protokolů**.
 
 ![Povolit streamování protokolů na portálu](./media/functions-monitoring/enable-streaming-logs-portal.png)
 
@@ -39,7 +39,7 @@ Tím se vaše aplikace připojí ke službě streamování protokolů a protokol
 
 ### <a name="live-metrics-stream"></a>Live Metrics Stream
 
-Pokud chcete zobrazit Live Metrics Stream pro vaši aplikaci, vyberte kartu **Přehled** aplikace Function App. Když Application Insights povolíte, zobrazí se v části **nakonfigurované funkce**odkaz **Application Insights** . Tento odkaz vás přesměruje na stránku Application Insights vaší aplikace.
+Pokud chcete zobrazit Live Metrics Stream pro vaši aplikaci, vyberte kartu **Přehled** aplikace Function App. Když Application Insights povolíte, zobrazí se v části **nakonfigurované funkce** odkaz **Application Insights** . Tento odkaz vás přesměruje na stránku Application Insights vaší aplikace.
 
 V Application Insights vyberte **Live Metrics Stream**. [Ukázkové položky protokolu](configure-monitoring.md#configure-sampling) se zobrazují v části **ukázková telemetrie**.
 

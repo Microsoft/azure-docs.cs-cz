@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 886597e5490acb94f43d840dc5a3d22092e45849
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698752"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832598"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení správy identit a řízení přístupu v Azure
 
@@ -157,7 +157,7 @@ Pokud máte více tenantů nebo chcete uživatelům umožnit, aby [obnovili vlas
 
 Doporučujeme, abyste pro všechny uživatele vyžadovali dvoustupňové ověřování. To zahrnuje správce a jiné ve vaší organizaci, kteří můžou mít významný dopad na to, jestli je jejich účet ohrožený (například finanční důstojníci).
 
-K dispozici je více možností pro Vyžadování dvoustupňového ověřování. Nejlepší možnost závisí na vašich cílech, edici Azure AD, kterou používáte, a na licenčním programu. Podívejte se, [jak vyžadovat dvoustupňové ověřování pro uživatele](../../active-directory/authentication/howto-mfa-userstates.md) , abyste mohli určit nejlepší možnost pro vás. Další informace o licencích a cenách najdete na stránce s cenami [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) a [Azure Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) .
+K dispozici je více možností pro Vyžadování dvoustupňového ověřování. Nejlepší možnost závisí na vašich cílech, edici Azure AD, kterou používáte, a na licenčním programu. Podívejte se, [jak vyžadovat dvoustupňové ověřování pro uživatele](../../active-directory/authentication/howto-mfa-userstates.md) , abyste mohli určit nejlepší možnost pro vás. Další informace o licencích a cenách najdete na stránce s cenami [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) a [Azure AD Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) .
 
 Níže jsou uvedené možnosti a výhody pro povolení dvoustupňové ověřování:
 
@@ -170,14 +170,14 @@ Níže jsou uvedené možnosti a výhody pro povolení dvoustupňové ověřová
 Tato metoda je dostupná pro všechny úrovně licencování, ale nemůže být smíšená se stávajícími zásadami podmíněného přístupu. Další informace najdete ve [výchozím nastavení zabezpečení Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) .
 
 **Možnost 2**: [Povolení Multi-Factor Authentication změnou stavu uživatele](../../active-directory/authentication/howto-mfa-userstates.md).   
-**Zvýhodnění**: Jedná se o tradiční metodu pro Vyžadování dvoustupňového ověřování. Funguje s [azure Multi-Factor Authentication v cloudu i v azure Multi-Factor Authentication Server](../../active-directory/authentication/concept-mfa-howitworks.md). Použití této metody vyžaduje, aby uživatelé prováděli dvoustupňové ověřování pokaždé, když se přihlásí, a přepíše zásady podmíněného přístupu.
+**Zvýhodnění**: Jedná se o tradiční metodu pro Vyžadování dvoustupňového ověřování. Funguje s [Azure AD Multi-Factor Authentication v cloudu i v azure Multi-Factor Authentication Server](../../active-directory/authentication/concept-mfa-howitworks.md). Použití této metody vyžaduje, aby uživatelé prováděli dvoustupňové ověřování pokaždé, když se přihlásí, a přepíše zásady podmíněného přístupu.
 
-Pokud chcete zjistit, kde Multi-Factor Authentication musí být povolená, podívejte [se, jakou verzi Azure MFA je pro moji organizaci nejvhodnější?](../../active-directory/authentication/concept-mfa-howitworks.md).
+Pokud chcete zjistit, kde Multi-Factor Authentication musí být povolený, podívejte [se, která verze Azure AD MFA je pro moji organizaci pravá?](../../active-directory/authentication/concept-mfa-howitworks.md).
 
 **Možnost 3**: [Povolení Multi-Factor Authentication s využitím zásad podmíněného přístupu](../../active-directory/authentication/howto-mfa-getstarted.md)
 **Zvýhodnění**: Tato možnost vám umožní zobrazit dotaz na dvoustupňové ověřování za určitých podmínek pomocí [podmíněného přístupu](../../active-directory/conditional-access/concept-conditional-access-policy-common.md). Konkrétní podmínky se můžou přihlašovat uživateli z různých umístění, nedůvěryhodných zařízení nebo aplikací, které považujete za rizikové. Definování specifických podmínek, které vyžadují dvoustupňové ověřování, vám umožní vyhnout se tak neustálým dotazům pro uživatele, což může být nepříjemný zážitek uživatele.
 
-Toto je nejpružnější způsob, jak povolit dvoustupňové ověřování pro vaše uživatele. Povolení zásad podmíněného přístupu funguje jenom pro Azure Multi-Factor Authentication v cloudu a je funkcí Premium služby Azure AD. Další informace o této metodě najdete v [nasazení cloudové Multi-Factor Authentication Azure](../../active-directory/authentication/howto-mfa-getstarted.md).
+Toto je nejpružnější způsob, jak povolit dvoustupňové ověřování pro vaše uživatele. Povolení zásad podmíněného přístupu funguje jenom pro Azure AD Multi-Factor Authentication v cloudu a je funkcí Premium služby Azure AD. Další informace o této metodě najdete v [nasazení cloudové Multi-Factor Authentication Azure AD na základě služby](../../active-directory/authentication/howto-mfa-getstarted.md).
 
 **Možnost 4**: povolení Multi-Factor Authentication se zásadami podmíněného přístupu vyhodnocením [zásad podmíněného přístupu na základě rizika](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md).   
 **Výhody**: Tato možnost umožňuje:
@@ -269,7 +269,7 @@ Vyhodnoťte účty, které jsou přiřazeny nebo mají nárok na roli globální
 **Osvědčený postup**: vyžadovat, aby všechny kritické účty správců byly bez hesla (preferované), nebo vyžadovat Multi-Factor Authentication.
 **Podrobnosti**: pomocí [aplikace Microsoft Authenticator](../../active-directory/authentication/howto-authentication-passwordless-phone.md) se přihlaste k jakémukoli účtu Azure AD bez použití hesla. Stejně jako ve [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification)používá Microsoft Authenticator k povolení přihlašovacích údajů uživatele, které jsou svázané se zařízením, a používá biometrické ověřování nebo PIN kód.
 
-Vyžadovat Multi-Factor Authentication Azure při přihlášení pro všechny uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, správce privilegovaných rolí, správce Exchange Online a správce SharePointu Online. Povolte [Multi-Factor Authentication pro účty správců](../../active-directory/authentication/howto-mfa-userstates.md) a zajistěte, aby se zaregistrovali uživatelé účtu správce.
+Vyžadovat Multi-Factor Authentication Azure AD při přihlašování pro všechny uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, správce privilegovaných rolí, správce Exchange Online a správce SharePointu Online. Povolte [Multi-Factor Authentication pro účty správců](../../active-directory/authentication/howto-mfa-userstates.md) a zajistěte, aby se zaregistrovali uživatelé účtu správce.
 
 **Osvědčený postup**: u důležitých účtů správců máte pracovní stanici správce, kde nejsou provozní úlohy povolené (například procházení a e-mail). Tím se budou chránit účty správců před vektory útoku, které používají procházení a e-maily, a výrazně snižuje riziko závažného incidentu.
 **Podrobnosti**: použijte pracovní stanici správce. Vyberte úroveň zabezpečení pracovní stanice:

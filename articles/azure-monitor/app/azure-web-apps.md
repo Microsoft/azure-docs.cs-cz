@@ -4,12 +4,12 @@ description: Sledování výkonu aplikací pro Azure App Services. Zatížení g
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: c78a43f9efb263c08dad21218636f21121b9732c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f46d00f97dab18b0c7c1d4a5742a87308f814e9e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377798"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832890"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -36,7 +36,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
 
 ## <a name="enable-agent-based-monitoring"></a>Povolit monitorování na základě agentů
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="aspnet"></a>[ASP.NET](#tab/net)
 
 > [!NOTE]
 > Kombinace APPINSIGHTS_JAVASCRIPT_ENABLED a urlCompression není podporována. Další informace najdete v tématu Vysvětlení v [části Poradce při potížích](#troubleshooting).
@@ -59,7 +59,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
  
  Níže je uveden souhrn dat shromažďovaných pro každou trasu:
         
-| Data | Kolekce .NET úrovně Basic | .NET – doporučená kolekce |
+| Data | Kolekce ASP.NET úrovně Basic | ASP.NET Doporučené shromažďování |
 | --- | --- | --- |
 | Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Yes |Yes |
 | Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Yes |Yes |
@@ -73,11 +73,11 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
 
     * Seznam podporovaných nastavení procesoru telemetrie pro adaptivní vzorkování můžete zobrazit v [kódu](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs) a v [související dokumentaci](./sampling.md).
 
-# <a name="net-core"></a>[.NET Core](#tab/netcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-Podporovány jsou následující verze rozhraní .NET Core: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0, ASP.NET Core 3,1
+Podporovány jsou následující verze ASP.NET Core: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0, ASP.NET Core 3,1
 
-Použití cílení na úplné rozhraní z rozhraní .NET Core, samostatného nasazení a aplikací založených na systému Linux není v současné době **podporováno** monitorováním na základě agentů nebo rozšíření. ([Ruční instrumentace](./asp-net-core.md) přes kód bude fungovat ve všech předchozích scénářích.)
+Cílení na úplné rozhraní z ASP.NET Core, samostatného nasazení a aplikací založených na systému Linux se v současnosti **nepodporují** pomocí monitorování založeného na agentech nebo rozšíření. ([Ruční instrumentace](./asp-net-core.md) přes kód bude fungovat ve všech předchozích scénářích.)
 
 1. **Vyberte Application Insights** v Ovládacích panelech Azure pro vaši službu App Service.
 
@@ -90,7 +90,7 @@ Použití cílení na úplné rozhraní z rozhraní .NET Core, samostatného nas
 
      ![Používejte webovou aplikaci.](./media/azure-web-apps/create-resource-01.png)
 
-2. Jakmile určíte, který prostředek se má použít, můžete zvolit způsob, jakým má Application Insights shromažďovat data na platformu pro vaši aplikaci. .NET Core nabízí **doporučenou kolekci** nebo **zakázanou** pro ASP.NET Core 2,1, 2,2, 3,0 a 3,1.
+2. Jakmile určíte, který prostředek se má použít, můžete zvolit způsob, jakým má Application Insights shromažďovat data na platformu pro vaši aplikaci. ASP.NET Core nabízí **doporučenou kolekci** nebo **zakázanou** pro ASP.NET Core 2,1, 2,2, 3,0 a 3,1.
 
     ![Zvolit možnosti na platformu](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -111,12 +111,12 @@ Webové aplikace založené na Pythonu App Service v současné době nepodporuj
 
 ## <a name="enable-client-side-monitoring"></a>Povolit monitorování na straně klienta
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="aspnet"></a>[ASP.NET](#tab/net)
 
 Monitorování na straně klienta je výslovný souhlas pro ASP.NET. Postup při povolování monitorování na straně klienta:
 
 * **Nastavení** **>** **Konfigurace**
-   * V části nastavení aplikace vytvořte **nové nastavení aplikace** :
+   * V části nastavení aplikace vytvořte **nové nastavení aplikace**:
 
      Název: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -126,14 +126,14 @@ Monitorování na straně klienta je výslovný souhlas pro ASP.NET. Postup při
 
 Chcete-li zakázat monitorování na straně klienta, buď z nastavení aplikace odeberte dvojici hodnoty klíče, nebo hodnotu nastavte na hodnotu NEPRAVDA.
 
-# <a name="net-core"></a>[.NET Core](#tab/netcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-Monitorování na straně klienta je **ve výchozím nastavení povolené** pro aplikace .NET Core s **doporučovanou kolekcí** bez ohledu na to, jestli je přítomné nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED.
+Monitorování na straně klienta je **ve výchozím nastavení povolené** pro ASP.NET Core aplikace se **doporučenou kolekcí** bez ohledu na to, jestli je přítomné nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED.
 
 Pokud z nějakého důvodu chcete vypnout monitorování na straně klienta:
 
 * **Nastavení** **>** **Konfigurace**
-   * V části nastavení aplikace vytvořte **nové nastavení aplikace** :
+   * V části nastavení aplikace vytvořte **nové nastavení aplikace**:
 
      Jméno: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -348,7 +348,7 @@ Pokud je upgrade proveden z verze před aplikací 2.5.1, zkontrolujte, zda jsou 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorování rozšíření/na základě agentů pro aplikace založené na platformě .NET a .NET Core běžící na Azure App Services.
+Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorování rozšíření/na základě agentů pro aplikace založené na ASP.NET a ASP.NET Core, které běží na Azure App Services.
 
 > [!NOTE]
 > Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro [Application Insights agenta Java 3,0](./java-in-process-agent.md).
@@ -372,16 +372,31 @@ Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorov�
 
     * Potvrďte, že nejsou k dispozici žádné položky pro `AppAlreadyInstrumented` , `AppContainsDiagnosticSourceAssembly` a `AppContainsAspNetTelemetryCorrelationAssembly` .
         * Pokud existuje kterákoli z těchto položek, odeberte z aplikace následující balíčky:, a `Microsoft.ApplicationInsights` `System.Diagnostics.DiagnosticSource` `Microsoft.AspNet.TelemetryCorrelation` .
+        * Pouze pro ASP.NET Core aplikace: v případě, že vaše aplikace odkazuje na jakékoli Application Insights balíčky, například pokud jste předtím instrumentoval (nebo se pokusili instrumentovat) aplikaci pomocí [sady ASP.NET Core SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), povolení integrace App Service se nemusí projevit a data se nemusí zobrazit v Application Insights. Pokud chcete problém vyřešit, na portálu zapněte "spolupráci s Application Insights SDK" a začnete zobrazovat data v Application Insights 
+        > [!IMPORTANT]
+        > Tato funkce je ve verzi Preview. 
+
+        ![Povolit nastavení existující aplikace](./media/azure-web-apps/netcore-sdk-interop.png)
+
+        Data se teď budou posílat pomocí přístupu bez kódu, i když se původně použila Application Insights SDK nebo se pokusila o použití.
+
+        > [!IMPORTANT]
+        > Pokud aplikace použila k odeslání jakékoli telemetrie Application Insights SDK, bude taková telemetrie zakázaná – jinými slovy, vlastní telemetrie – Pokud nějaká existuje, například metody Track * () a jakékoli vlastní nastavení, jako je vzorkování, bude zakázané. 
+
+
+### <a name="php-and-wordpress-are-not-supported"></a>PHP a WordPress nejsou podporované.
+
+Weby PHP a WordPress nejsou podporovány. V současnosti není k dispozici žádná oficiálně podporovaná sada SDK/Agent pro monitorování těchto úloh na straně serveru. Ruční instrumentování transakcí na straně klienta na webu PHP nebo WordPress je však možné provést přidáním JavaScriptu na straně klienta na webové stránky pomocí [sady JavaScript SDK](./javascript.md).
 
 Následující tabulka obsahuje podrobnější vysvětlení toho, co tyto hodnoty znamenají, jejich základní příčiny a Doporučené opravy:
 
 |Hodnota problému|Vysvětlení|Oprava
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Tato hodnota označuje, že rozšíření zjistilo, že některé aspekty sady SDK už v aplikaci existují a že se bude zálohovat. Důvodem může být odkaz na `System.Diagnostics.DiagnosticSource` ,  `Microsoft.AspNet.TelemetryCorrelation` , nebo `Microsoft.ApplicationInsights`  | Odeberte odkazy. Některé z těchto odkazů jsou ve výchozím nastavení přidány z určitých šablon sady Visual Studio a starší verze sady Visual Studio mohou přidat odkazy na `Microsoft.ApplicationInsights` .
-|`AppAlreadyInstrumented:true` | Pokud je aplikace cílena na rozhraní .NET Core 2,1 nebo 2,2 a odkazuje na soubor [Microsoft. AspNetCore. All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta-package, pak Application Insights a rozšíření bude zase vypnuto. | Pro zákazníky s .NET Core 2.1, 2.2 se místo toho [doporučuje](https://github.com/aspnet/Announcements/issues/287) použít meta-package Microsoft. AspNetCore. app.|
+|`AppAlreadyInstrumented:true` | Pokud je aplikace cílena na ASP.NET Core 2,1 nebo 2,2, tato hodnota označuje, že rozšíření zjistilo, že některé aspekty sady SDK již v aplikaci existují a že se bude zálohovat. | Pro zákazníky s .NET Core 2.1, 2.2 se místo toho [doporučuje](https://github.com/aspnet/Announcements/issues/287) použít meta-package Microsoft. AspNetCore. app. Navíc na portálu zapněte "interoperabilitu s Application Insights SDK" (viz výše uvedené pokyny).|
 |`AppAlreadyInstrumented:true` | Tato hodnota může být také způsobena přítomností výše uvedených knihoven DLL ve složce aplikace z předchozího nasazení. | Vyčistěte složku aplikace, abyste měli jistotu, že se odeberou tyto knihovny DLL. Ověřte adresář Bin místní aplikace a adresář wwwroot na App Service. (Pokud chcete kontrolovat adresář wwwroot vaší App Service webové aplikace: Rozšířené nástroje (Kudu) > ladit konzolu > CMD > home\site\wwwroot).
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | Tato hodnota označuje, že rozšíření zjistilo odkazy na `Microsoft.AspNet.TelemetryCorrelation` v aplikaci a bude se přepínat. | Odeberte odkaz.
-|`AppContainsDiagnosticSourceAssembly**:true`|Tato hodnota označuje, že rozšíření zjistilo odkazy na `System.Diagnostics.DiagnosticSource` v aplikaci a bude se přepínat.| Odeberte odkaz.
+|`AppContainsDiagnosticSourceAssembly**:true`|Tato hodnota označuje, že rozšíření zjistilo odkazy na `System.Diagnostics.DiagnosticSource` v aplikaci a bude se přepínat.| Pro ASP.NET odeberte odkaz. 
 |`IKeyExists:false`|Tato hodnota označuje, že klíč instrumentace není přítomen v AppSetting, `APPINSIGHTS_INSTRUMENTATIONKEY` . Možné příčiny: tyto hodnoty se možná omylem odeberou, zapomněli jste nastavit hodnoty v automatizačním skriptu atd. | Ujistěte se, že se nastavení nachází v nastavení aplikace App Service.
 
 ### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED a urlCompression se nepodporují.
@@ -397,13 +412,9 @@ Nejnovější informace o Application Insights agenta nebo rozšíření najdete
 
 ### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>Výchozí web nasazený pomocí Web Apps nepodporuje automatické monitorování na straně klienta.
 
-Při vytváření webové aplikace s `ASP.NET` `.NET Core` modulem runtime nebo v Azure App Services nasadí jednu STATICKOU stránku HTML jako úvodní web. Statická webová stránka také načte webovou část spravovanou rozhraním .NET ve službě IIS. To umožňuje testovat monitorování na straně serveru bez kódu, ale nepodporuje automatické monitorování na straně klienta.
+Při vytváření webové aplikace s `ASP.NET` `ASP.NET Core` modulem runtime nebo v Azure App Services nasadí jednu STATICKOU stránku HTML jako úvodní web. Statická webová stránka také načte spravovanou webovou část ASP.NET ve službě IIS. To umožňuje testovat monitorování na straně serveru bez kódu, ale nepodporuje automatické monitorování na straně klienta.
 
 Pokud chcete testovat server bez kódu a monitorování na straně klienta pro ASP.NET nebo ASP.NET Core ve webové aplikaci Azure App Services, doporučujeme, abyste si vyzkoušeli oficiální Příručky k [vytvoření ASP.NET Core webové aplikace](../../app-service/quickstart-dotnetcore.md) a [Vytvoření webové aplikace v ASP.NET Framework](../../app-service/quickstart-dotnet-framework.md) , a pak pomocí pokynů v aktuálním článku povolíte monitorování.
-
-### <a name="php-and-wordpress-are-not-supported"></a>PHP a WordPress nejsou podporované.
-
-Weby PHP a WordPress nejsou podporovány. V současnosti není k dispozici žádná oficiálně podporovaná sada SDK/Agent pro monitorování těchto úloh na straně serveru. Ruční instrumentování transakcí na straně klienta na webu PHP nebo WordPress je však možné provést přidáním JavaScriptu na straně klienta na webové stránky pomocí [sady JavaScript SDK](./javascript.md).
 
 ### <a name="connection-string-and-instrumentation-key"></a>Připojovací řetězec a klíč instrumentace
 

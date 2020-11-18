@@ -3,13 +3,13 @@ title: Konfigurace monitorování pro Azure Functions
 description: Naučte se, jak připojit aplikaci Function App k Application Insights ke sledování a jak konfigurovat shromažďování dat.
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.custom: contperfq2
-ms.openlocfilehash: 50705eeedf9c985a053600a8c0b27c823231e9a3
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperfq2, devx-track-azurecli
+ms.openlocfilehash: f5b1b00c534abf1e7f82d2aca69dd4763b40d5ad
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217180"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833074"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Postup konfigurace monitorování pro Azure Functions
 
@@ -245,7 +245,7 @@ Když zvolíte **vytvořit**, vytvoří se prostředek Application Insights s ap
 
 Pokud se ve vaší aplikaci Function App nevytvořily prostředky Application Insights, vytvořte prostředek pomocí následujícího postupu. Potom můžete do aplikace Function app přidat klíč instrumentace z tohoto prostředku jako [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) .
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **aplikace Function App**a pak zvolte aplikaci Function App. 
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **aplikace Function App** a pak zvolte aplikaci Function App. 
 
 1. Vyberte v horní části okna banner **Služba Application Insights není nakonfigurovaná**. Pokud se vám nápis nezobrazuje, může být aplikace již Application Insights povolena.
 
@@ -258,13 +258,13 @@ Pokud se ve vaší aplikaci Function App nevytvořily prostředky Application In
     | **Nový název prostředku** | Jedinečný název aplikace | Nejjednodušší je použít stejný název, jako má vaše aplikace funkcí, který musí být ve vašem předplatném jedinečný. | 
     | **Umístění** | Západní Evropa | Pokud je to možné, použijte stejnou [oblast](https://azure.microsoft.com/regions/), jakou má vaše aplikace funkcí, nebo tu, která je blízko této oblasti. |
 
-    :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="Povolení služby Application Insights z portálu":::
+    :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="Vytvoření prostředku Application Insights":::
 
 1. Vyberte **Použít**. 
 
    Prostředek Application Insights se vytvoří ve stejné skupině prostředků a předplatném jako vaše aplikace funkcí. Po vytvoření prostředku zavřete okno Application Insights.
 
-1. Ve vaší aplikaci Function App vyberte v části **Nastavení**položku **Konfigurace** a pak vyberte **nastavení aplikace**. Pokud se zobrazí nastavení s názvem `APPINSIGHTS_INSTRUMENTATIONKEY`, je pro vaši aplikaci funkcí běžící v Azure povolena integrace Application Insights. Pokud z nějakého důvodu toto nastavení neexistuje, přidejte ho jako hodnotu pomocí Application Insights klíč instrumentace.
+1. Ve vaší aplikaci Function App vyberte v části **Nastavení** položku **Konfigurace** a pak vyberte **nastavení aplikace**. Pokud se zobrazí nastavení s názvem `APPINSIGHTS_INSTRUMENTATIONKEY`, je pro vaši aplikaci funkcí běžící v Azure povolena integrace Application Insights. Pokud z nějakého důvodu toto nastavení neexistuje, přidejte ho jako hodnotu pomocí Application Insights klíč instrumentace.
 
 > [!NOTE]
 > Dřívější verze funkcí používaly integrované monitorování, které se už nedoporučuje. Když povolíte integraci Application Insights pro takovou aplikaci Function App, musíte taky [zakázat integrované protokolování](#disable-built-in-logging).  

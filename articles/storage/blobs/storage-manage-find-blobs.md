@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 8f1ea67605be3aee6257c293aea3db617d885645
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3174dbd36d9bb39ce606ec12f88397f795e91526
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370249"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832428"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Správa a hledání dat objektů BLOB v Azure pomocí značek indexu objektů BLOB (Preview)
 
@@ -327,13 +327,14 @@ Tato část popisuje známé problémy a podmínky ve verzi Public Preview znač
 - Pokud je filtrování vymezeno na jeden kontejner, `@container` lze předat pouze v případě, že všechny značky indexu ve výrazu filtru jsou kontroly rovnosti (Key = hodnota).
 - Při použití operátoru Range s `AND` podmínkou lze zadat pouze stejný název klíče značky indexu ( `"Age" > '013' AND "Age" < '100'` ).
 - Správa verzí a index objektů BLOB se nepodporuje. Značky indexu objektu BLOB jsou uchovány pro verze, ale nejsou předány modulu indexu objektů BLOB.
+- Neexistuje žádné rozhraní API k určení, zda jsou rejstříkové štítky indexovány.
 - Převzetí služeb při selhání účtu se nepodporuje. Index objektu BLOB se po převzetí služeb při selhání nemusí správně aktualizovat.
 - Správa životního cyklu podporuje jenom kontroly rovnosti se shodou indexu objektů BLOB.
 - `Copy Blob` nekopíruje značky indexu objektů BLOB ze zdrojového objektu blob do nového cílového objektu BLOB. V průběhu operace kopírování můžete zadat značky, které chcete použít pro cílový objekt BLOB.
 - `Copy Blob` (Asynchronní kopírování) z jiného účtu úložiště s použitými značkami v cílovém objektu BLOB způsobí, že modul indexu objektů BLOB nevrátí objekt BLOB a jeho značky v sadě filtrů. Použijte `Copy Blob` z adresy URL (Synchronization Copy).
 - Značky jsou při vytváření snímku trvalé. Zvýšení úrovně snímku ale není podporované a výsledkem může být prázdná sada značek.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Může vám index objektu BLOB pomáhat při filtrování a dotazování obsahu uvnitř objektů BLOB?**
 

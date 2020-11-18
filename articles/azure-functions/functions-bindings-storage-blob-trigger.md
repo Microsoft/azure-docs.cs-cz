@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 67e1f1dff43939ce7ef279db57bee4b18bd12dc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45393f116149f6cf16763d2d7033f8425df235bf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213952"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832989"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Aktivační událost Azure Blob Storage pro Azure Functions
 
@@ -20,6 +20,16 @@ Trigger služby Blob Storage spustí funkci při zjištění nového nebo aktual
 Aktivační událost Azure Blob Storage vyžaduje účet úložiště pro obecné účely. Jsou podporovány také účty úložiště verze 2 s [oborem názvů hierarchická](../storage/blobs/data-lake-storage-namespace.md) . Pokud chcete použít účet jen pro objekt blob, nebo pokud vaše aplikace má specializované potřeby, přečtěte si alternativy k použití této aktivační události.
 
 Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](./functions-bindings-storage-blob.md).
+
+## <a name="polling"></a>Cyklické dotazování
+
+Cyklické dotazování funguje jako hybrid mezi kontrolou protokolů a spouštěním pravidelného prohledávání kontejnerů. Objekty BLOB se prohledávají ve skupinách po 10 000 s tokenem pokračování použitým mezi intervaly.
+
+> [!WARNING]
+> [Protokoly úložiště se navíc vytvářejí na základě nejlepšího úsilí](/rest/api/storageservices/About-Storage-Analytics-Logging) . Není zaručeno, že budou zachyceny všechny události. Za určitých podmínek můžou být protokoly zmeškané.
+> 
+> Pokud potřebujete rychlejší nebo spolehlivější zpracování objektů blob, zvažte vytvoření [zprávy fronty](../storage/queues/storage-dotnet-how-to-use-queues.md) při vytváření objektu BLOB. Pak použijte [aktivační událost Queue](functions-bindings-storage-queue.md) namísto triggeru objektu BLOB ke zpracování objektu BLOB. Další možností je použít Event Grid; Podívejte se na kurz [Automatizace změny velikosti nahraných imagí pomocí Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
+>
 
 ## <a name="alternatives"></a>Alternativy
 
@@ -275,7 +285,7 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `BlobTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový** | neuvedeno | Musí být nastaven na hodnotu `blobTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr** | neuvedeno | Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. Výjimky jsou uvedeny v části [použití](#usage) . |
@@ -349,7 +359,7 @@ Chcete-li vyhledat složené závorky v názvech souborů, vydejte závorky pomo
 "path": "images/{{20140101}}-{name}",
 ```
 
-Pokud je objekt BLOB pojmenovaný * {20140101}-soundfile.mp3*, `name` hodnota proměnné v kódu funkce je *soundfile.mp3*.
+Pokud je objekt BLOB pojmenovaný *{20140101}-soundfile.mp3*, `name` hodnota proměnné v kódu funkce je *soundfile.mp3*.
 
 ## <a name="metadata"></a>Metadata
 
@@ -386,7 +396,7 @@ Modul runtime Azure Functions zajišťuje, aby se žádná funkce triggeru objek
 
 Azure Functions ukládá příjem objektů BLOB v kontejneru s názvem *Azure-WebJobs – hostitelé* v účtu úložiště Azure pro vaši aplikaci Function App (definované nastavením aplikace `AzureWebJobsStorage` ). Příjem objektů BLOB obsahuje následující informace:
 
-* Aktivovaná funkce (* &lt; název aplikace funkce>*. POZVYHLEDAT. * &lt; název funkce>*", například:" MyFunctionApp. Functions. CopyBlob ")
+* Aktivovaná funkce (*&lt; název aplikace funkce>*. POZVYHLEDAT. *&lt; název funkce>*", například:" MyFunctionApp. Functions. CopyBlob ")
 * Název kontejneru
 * Typ objektu BLOB ("BlockBlob" nebo "PageBlob")
 * Název objektu BLOB
@@ -400,7 +410,7 @@ Pokud se funkce triggeru objektu BLOB pro daný objekt BLOB nezdařila, Azure Fu
 
 Pokud dojde k selhání všech 5 pokusů, Azure Functions přidá zprávu do fronty úložiště s názvem *WebJobs-blobtrigger-otrav*. Maximální počet opakovaných pokusů lze konfigurovat. Stejné nastavení MaxDequeueCount se používá pro zpracování poškozeného objektu BLOB a zpracování zpráv z fronty otrav. Zpráva fronty pro poškozené objekty BLOB je objekt JSON, který obsahuje následující vlastnosti:
 
-* FunctionId (v * &lt; názvu aplikace funkce Format>*. POZVYHLEDAT. * &lt; název funkce>*)
+* FunctionId (v *&lt; názvu aplikace funkce Format>*. POZVYHLEDAT. *&lt; název funkce>*)
 * BlobType ("BlockBlob" nebo "PageBlob")
 * ContainerName
 * BlobName
@@ -413,16 +423,6 @@ Trigger objektu BLOB používá interně frontu, takže maximální počet soub�
 [Plán spotřeby](functions-scale.md#how-the-consumption-and-premium-plans-work) omezuje aplikaci funkcí na jednom virtuálním počítači na 1,5 GB paměti. Paměť je používána každou souběžně spuštěnou instancí funkce a samotným modulem runtime Functions. Pokud funkce aktivovaná objektem BLOB načte celý objekt blob do paměti, maximální velikost paměti, kterou tato funkce používá jenom pro objekty blob, je 24 * maximální velikost objektu BLOB. Například aplikace funkcí se třemi funkcemi aktivovanými pro objekty BLOB a výchozími nastaveními může být maximální souběžnost na virtuálním počítači 3 * 24 = 72 volání funkcí.
 
 Funkce JavaScriptu a Java načtou celý objekt blob do paměti a funkce jazyka C# to uděláte, když vytváříte vazby na `string` , nebo `Byte[]` .
-
-## <a name="polling"></a>Cyklické dotazování
-
-Cyklické dotazování funguje jako hybrid mezi kontrolou protokolů a spouštěním pravidelného prohledávání kontejnerů. Objekty BLOB se prohledávají ve skupinách po 10 000 s tokenem pokračování použitým mezi intervaly.
-
-> [!WARNING]
-> [Protokoly úložiště se navíc vytvářejí na základě nejlepšího úsilí](/rest/api/storageservices/About-Storage-Analytics-Logging) . Není zaručeno, že budou zachyceny všechny události. Za určitých podmínek můžou být protokoly zmeškané.
-> 
-> Pokud potřebujete rychlejší nebo spolehlivější zpracování objektů blob, zvažte vytvoření [zprávy fronty](../storage/queues/storage-dotnet-how-to-use-queues.md) při vytváření objektu BLOB. Pak použijte [aktivační událost Queue](functions-bindings-storage-queue.md) namísto triggeru objektu BLOB ke zpracování objektu BLOB. Další možností je použít Event Grid; Podívejte se na kurz [Automatizace změny velikosti nahraných imagí pomocí Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
->
 
 ## <a name="next-steps"></a>Další kroky
 

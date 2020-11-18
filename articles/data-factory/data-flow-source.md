@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2020
-ms.openlocfilehash: a8890db90fa9f76b676a5fb944f74a773b00c8cd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 80280702748040e12d1d3d048644e6a16c926256
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737505"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832373"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Transformace zdroje v toku dat mapování
 
@@ -50,6 +50,7 @@ Mapování toku dat sleduje přístup k extrakci, načítání a transformaci (E
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Spravovaná instance Azure SQL (Preview)](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Hive](connector-hive.md#mapping-data-flow-properties) | | -/✓ | 
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
 Nastavení specifická pro tyto konektory jsou umístěna na kartě **Možnosti zdrojového kódu** . Příklady skriptu informace a toku dat v těchto nastaveních se nachází v dokumentaci konektoru.
@@ -64,13 +65,13 @@ Hodnoty vývoje pro parametry datové sady lze konfigurovat v [nastavení laděn
 
 ![Snímek obrazovky zobrazující kartu Nastavení zdroje](media/data-flow/source1.png "Snímek obrazovky zobrazující kartu Nastavení zdroje")
 
-**Název výstupního datového proudu** : Název transformace zdroje.
+**Název výstupního datového proudu**: Název transformace zdroje.
 
-**Typ zdroje** : vyberte, zda chcete použít vloženou datovou sadu nebo existující objekt DataSet.
+**Typ zdroje**: vyberte, zda chcete použít vloženou datovou sadu nebo existující objekt DataSet.
 
-**Test připojení** : Otestujte, jestli se může služba Spark datového toku úspěšně připojit k propojené službě použité ve zdrojové datové sadě. Aby bylo možné tuto funkci povolit, musí být zapnutý režim ladění.
+**Test připojení**: Otestujte, jestli se může služba Spark datového toku úspěšně připojit k propojené službě použité ve zdrojové datové sadě. Aby bylo možné tuto funkci povolit, musí být zapnutý režim ladění.
 
-**Posun schématu** : [posun schématu](concepts-data-flow-schema-drift.md) je schopnost Data Factory nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců.
+**Posun schématu**: [posun schématu](concepts-data-flow-schema-drift.md) je schopnost Data Factory nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců.
 
 * Zaškrtněte políčko pro **Povolení posunu schématu** , pokud se zdrojové sloupce často mění. Toto nastavení umožňuje, aby všechna vstupní pole zdroje prošla transformacemi do jímky.
 
@@ -78,9 +79,9 @@ Hodnoty vývoje pro parametry datové sady lze konfigurovat v [nastavení laděn
 
 **Ověřit schéma:** Pokud je vybraná možnost **ověřit schéma** , tok dat se nepodaří spustit, pokud příchozí zdrojová data neodpovídají definovanému schématu datové sady.
 
-**Přeskočit počet řádků** : pole **Přeskočit počet** řádků určuje, kolik řádků se má na začátku datové sady ignorovat.
+**Přeskočit počet řádků**: pole **Přeskočit počet** řádků určuje, kolik řádků se má na začátku datové sady ignorovat.
 
-**Vzorkování** : Povolte **vzorkování** pro omezení počtu řádků ze zdroje. Toto nastavení použijte při testování nebo vzorkování dat ze zdroje pro účely ladění.
+**Vzorkování**: Povolte **vzorkování** pro omezení počtu řádků ze zdroje. Toto nastavení použijte při testování nebo vzorkování dat ze zdroje pro účely ladění.
 
 Pokud chcete ověřit, že je váš zdroj správně nakonfigurovaný, zapněte režim ladění a načtěte data ve verzi Preview. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
 

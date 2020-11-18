@@ -9,12 +9,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 939c36cd62dab4362232aef0da8701b34a88c6ff
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 96e10bc19d59b60824a908c67816a21ca80326d0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202952"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832802"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Ověřování ve službě Azure Communication Services
 
@@ -72,11 +72,11 @@ Pokud nepoužíváte klientskou knihovnu k provádění požadavků HTTP na rozh
 
 Tokeny přístupu uživatele umožňují klientským aplikacím ověřování přímo proti komunikačním službám Azure. K dosažení tohoto problému byste měli nastavit důvěryhodnou službu, která ověřuje vaše uživatele aplikace a vydává tokeny přístupu uživatele pomocí klientské knihovny pro správu. Další informace o našich možnostech architektury najdete v Koncepční dokumentaci [architektury klienta a serveru](./client-and-server-architecture.md) .
 
-`CommunicationClientCredential`Třída obsahuje logiku pro poskytnutí přihlašovacích údajů tokenu uživatele k klientským knihovnám a správě jejich životního cyklu.
+`CommunicationUserCredential`Třída obsahuje logiku pro poskytnutí přihlašovacích údajů tokenu uživatele k klientským knihovnám a správě jejich životního cyklu.
 
 ### <a name="initialize-the-client-libraries"></a>Inicializace klientských knihoven
 
-Pokud chcete inicializovat klientské knihovny Azure Communications, které vyžadují ověřování pomocí tokenu přístupu uživatele, musíte nejdřív vytvořit instanci `CommunicationClientCredential` třídy a pak ji použít k inicializaci klienta rozhraní API.
+Pokud chcete inicializovat klientské knihovny Azure Communications, které vyžadují ověřování pomocí tokenu přístupu uživatele, musíte nejdřív vytvořit instanci `CommunicationUserCredential` třídy a pak ji použít k inicializaci klienta rozhraní API.
 
 Následující fragmenty kódu ukazují, jak inicializovat knihovnu klienta chatu pomocí přístupového tokenu uživatele:
 

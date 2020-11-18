@@ -8,18 +8,18 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050858"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831562"
 ---
 # <a name="examine-the-video-indexer-output"></a>Kontrola výstupu Video Indexer
 
-Když je video indexované, Video Indexer poduces obsah JSON, který obsahuje podrobnosti o zadaných videích Insights. Přehledy zahrnují: přepisy, OCRs, obličeje, témata, bloky atd. Každý typ Insight zahrnuje instance časových rozsahů, které ukazují, kdy se ve videu zobrazí přehled. 
+Když je video indexované, Video Indexer vytvoří obsah JSON, který obsahuje podrobnosti o zadaných videích Insights. Přehledy zahrnují: přepisy, OCRs, obličeje, témata, bloky atd. Každý typ Insight zahrnuje instance časových rozsahů, které ukazují, kdy se ve videu zobrazí přehled. 
 
 Přehledné přehledy videa můžete vizuálně prohlédnout kliknutím na tlačítko **Přehrát** na videu na webu [video indexer](https://www.videoindexer.ai/) . 
 
@@ -58,7 +58,7 @@ Další informace najdete v tématu [zobrazení a Úprava videí s přehledem](v
 |accountId|ID účtu v seznamu testů|
 |id|ID seznamu testů.|
 |name|Název seznamu stop|
-|Popis|Popis seznamu testů.|
+|description|Popis seznamu testů.|
 |userName|Jméno uživatele, který vytvořil seznam testů.|
 |vytvářejí|Čas vytvoření seznamu testů.|
 |privacyMode|Režim ochrany osobních údajů seznamu testů (Private/Public).|
@@ -187,6 +187,7 @@ Ploška může mít ID, název, miniaturu, další metadata a seznam jeho dočas
 |textualContentModeration|Přehled [textualContentModeration](#textualcontentmoderation)|
 |emoce| Přehled [emoce](#emotions)|
 |popisující|[Témata](#topics) přehled.|
+|mluvčích|Přehled [mluvčích](#speakers) .|
 
 Příklad:
 
@@ -222,36 +223,45 @@ instance|Seznam časových rozsahů tohoto bloku|
 |---|---|
 |id|ID řádku|
 |text|Samotný přepis.|
+|spolehlivost|Spolehlivost přesnosti přepisu.|
+|speakerId|ID mluvčího.|
 |language|Jazyk přepisu. Má sloužit k podpoře přepisu, kde každý řádek může mít jiný jazyk.|
 |instance|Seznam časových rozsahů, ve kterých se zobrazil tento řádek Pokud je instance přepisu, bude mít pouze jednu instanci.|
 
 Příklad:
 
 ```json
-"transcript": [
+"transcript":[
 {
-    "id": 0,
-    "text": "Hi I'm Doug from office.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    }
-    ]
+  "id":1,
+  "text":"Well, good morning everyone and welcome to",
+  "confidence":0.8839,
+  "speakerId":1,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
 },
 {
-    "id": 1,
-    "text": "I have a guest. It's Michelle.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:02.7200000",
-        "end": "00:00:03.9600000"
-    }
-    ]
-}
-] 
+  "id":2,
+  "text":"ignite 2016. Your mission at Microsoft is to empower every",
+  "confidence":0.8944,
+  "speakerId":2,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
 ```
 
 #### <a name="ocr"></a>OCR
@@ -331,7 +341,7 @@ Pokud jsou k dispozici plošky (ne animované znaky), Video Indexer používá F
 |id|ID obličeje|
 |name|Název obličeje. Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
 |spolehlivost|Spolehlivost identifikace obličeje.|
-|Popis|Popis celebrit. |
+|description|Popis celebrit. |
 |thumbnailId|ID miniatury této plochy.|
 |knownPersonId|Pokud se jedná o známého uživatele, jeho interní ID.|
 |referenceId|Pokud se jedná o celebrit Bingu, jeho ID Bingu.|
@@ -519,7 +529,7 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 |name|Název značek.|
 |referenceId | Přípona adresy URL Wikipedii značky Například "Target_Corporation" je přípona [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) .
 |referenceUrl | Adresa URL Wikipedii značky, pokud existuje. Příklad: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
-|Popis|Popis značek|
+|description|Popis značek|
 |tags|Seznam předdefinovaných značek, které byly přidruženy k této značce.|
 |spolehlivost|Hodnota spolehlivosti Video Indexerho detektoru značky (0-1).|
 |instance|Seznam časových rozsahů této značky. Každá instance má brandType, který označuje, zda se tato značka objevila v přepisu nebo v OCR.|
@@ -827,6 +837,42 @@ Video Indexer vytváří odvození hlavních témat z přepisů. Pokud je to mo�
 . . .
 ```
 
+#### <a name="speakers"></a>mluvčích
+
+|Název|Popis|
+|---|---|
+|id|ID mluvčího.|
+|name|Název mluvčího ve formě "mluvčího", *<number>* například: "mluvčí #1".|
+|instance |Seznam časových rozsahů, ve kterých se tento mluvčí objevil.|
+
+```json
+"speakers":[
+{
+  "id":1,
+  "name":"Speaker #1",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
+},
+{
+  "id":2,
+  "name":"Speaker #2",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
+` ` `
+```
 ## <a name="next-steps"></a>Další kroky
 
 [Portál pro vývojáře Video Indexer](https://api-portal.videoindexer.ai)
