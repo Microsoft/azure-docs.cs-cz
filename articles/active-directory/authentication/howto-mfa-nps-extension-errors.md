@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s rozšířením Azure MFA NPS – Azure Active Directory
-description: Získejte pomoc s řešením problémů s rozšířením NPS pro Azure Multi-Factor Authentication
+title: Řešení potíží s rozšířením NPS pro Azure AD MFA – Azure Active Directory
+description: Získejte pomoc s řešením problémů s rozšířením NPS pro Azure AD Multi-Factor Authentication
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 406b53f833edabafe620b05ccb6acfadffabf5ae
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 03736f468148ee633aff22718dc000220ab7efe4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964362"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839025"
 ---
-# <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication
+# <a name="resolve-error-messages-from-the-nps-extension-for-azure-ad-multi-factor-authentication"></a>Řešení chybových zpráv z rozšíření serveru NPS pro Azure AD Multi-Factor Authentication
 
-Pokud dojde k chybám s rozšířením NPS pro Azure Multi-Factor Authentication, použijte tento článek k rychlejšímu dosažení řešení. Protokoly rozšíření NPS se nacházejí v Prohlížeč událostí v části **vlastní zobrazení**  >  **role serveru**  >  **zásady sítě a přístup** na serveru, na kterém je nainstalovaná přípona NPS.
+Pokud dojde k chybám s rozšířením NPS pro Azure AD Multi-Factor Authentication, použijte tento článek k rychlejšímu dosažení řešení. Protokoly rozšíření NPS se nacházejí v Prohlížeč událostí v části **vlastní zobrazení**  >  **role serveru**  >  **zásady sítě a přístup** na serveru, na kterém je nainstalovaná přípona NPS.
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>Postup řešení běžných chyb
 
@@ -30,12 +30,12 @@ Pokud dojde k chybám s rozšířením NPS pro Azure Multi-Factor Authentication
 | **CONTACT_SUPPORT** | [Obraťte](#contact-microsoft-support)se na podporu a uveďte seznam kroků pro shromažďování protokolů. Poskytněte co nejvíce informací o tom, co se stalo před chybou, včetně ID tenanta a hlavního názvu uživatele (UPN). |
 | **CLIENT_CERT_INSTALL_ERROR** | Může se jednat o problém s tím, jak byl klientský certifikát nainstalován nebo přidružen k vašemu tenantovi. Postupujte podle pokynů v tématu [řešení potíží s rozšířením MFA NPS](howto-mfa-nps-extension.md#troubleshooting) a prozkoumejte problémy s certifikátem klienta. |
 | **ESTS_TOKEN_ERROR** | Postupujte podle pokynů v tématu [řešení potíží s rozšířením MFA NPS](howto-mfa-nps-extension.md#troubleshooting) a prozkoumejte problémy klienta a tokenu ADAL. |
-| **HTTPS_COMMUNICATION_ERROR** | Server NPS nemůže přijmout odpovědi z Azure MFA. Ověřte, že brány firewall jsou otevřené obousměrně pro provoz do a z. https://adnotifications.windowsazure.com |
+| **HTTPS_COMMUNICATION_ERROR** | Server NPS nemůže přijmout odpovědi z Azure AD MFA. Ověřte, že brány firewall jsou otevřené obousměrně pro provoz do a z. https://adnotifications.windowsazure.com |
 | **HTTP_CONNECT_ERROR** | Na serveru, na kterém je spuštěno rozšíření serveru NPS, ověřte, že máte přístup k  `https://adnotifications.windowsazure.com` a `https://login.microsoftonline.com/` . Pokud se tyto lokality nenačte, vyřešte potíže s připojením na tomto serveru. |
-| **Rozšíření serveru NPS pro Azure MFA:** <br> Rozšíření serveru NPS pro Azure MFA provádí sekundární ověřování pouze pro žádosti RADIUS ve stavu AccessAccept. Byl přijat požadavek na uživatelské jméno uživatele se stavem odpovědi AccessReject, ignorování požadavku. | Tato chyba obvykle odráží selhání ověřování ve službě AD nebo to, že server NPS nemůže přijímat odpovědi z Azure AD. Ověřte, že brány firewall jsou pro přenos do a z `https://adnotifications.windowsazure.com` a `https://login.microsoftonline.com` pomocí portů 80 a 443 obousměrné. Je také důležité ověřit, že na kartě Telefonické připojení v části oprávnění k přístupu k síti je nastavení nastaveno na možnost řídit přístup prostřednictvím zásad sítě NPS. Tato chyba se může také aktivovat, pokud uživatel nemá přiřazenou licenci. |
+| **Rozšíření serveru NPS pro Azure AD MFA:** <br> Rozšíření serveru NPS pro Azure AD MFA provádí sekundární ověřování pouze pro žádosti RADIUS ve stavu AccessAccept. Byl přijat požadavek na uživatelské jméno uživatele se stavem odpovědi AccessReject, ignorování požadavku. | Tato chyba obvykle odráží selhání ověřování ve službě AD nebo to, že server NPS nemůže přijímat odpovědi z Azure AD. Ověřte, že brány firewall jsou pro přenos do a z `https://adnotifications.windowsazure.com` a `https://login.microsoftonline.com` pomocí portů 80 a 443 obousměrné. Je také důležité ověřit, že na kartě Telefonické připojení v části oprávnění k přístupu k síti je nastavení nastaveno na možnost řídit přístup prostřednictvím zásad sítě NPS. Tato chyba se může také aktivovat, pokud uživatel nemá přiřazenou licenci. |
 | **REGISTRY_CONFIG_ERROR** | V registru aplikace chybí klíč, což může být způsobeno tím, že se [powershellový skript](howto-mfa-nps-extension.md#install-the-nps-extension) po instalaci nespustil. Chybová zpráva by měla obsahovat chybějící klíč. Ujistěte se, že máte klíč pod HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> Požadavek protokolu RADIUS neobsahuje povinný atribut userName\Identifier protokolu RADIUS. Ověření, že server NPS přijímá žádosti RADIUS | Tato chyba obvykle odráží problém instalace. Rozšíření serveru NPS musí být nainstalováno na servery NPS, které mohou přijímat žádosti RADIUS. Servery NPS, které se instalují jako závislosti pro služby, jako je RDG a RRAS, neobdrží žádosti RADIUS. Rozšíření serveru NPS nefunguje při instalaci těchto instalací a chybách, protože nemůže přečíst podrobnosti žádosti o ověření. |
-| **REQUEST_MISSING_CODE** | Ujistěte se, že šifrovací protokol hesel mezi servery NPS a servery NAS podporuje sekundární metodu ověřování, kterou používáte. Protokol **PAP** podporuje všechny metody ověřování Azure MFA v cloudu: telefonní hovor, jednosměrná textová zpráva, oznámení o mobilní aplikaci a ověřovací kód mobilní aplikace. Protokol **CHAPv2** a **EAP** podporují telefonní hovor a oznámení mobilní aplikace. |
+| **REQUEST_MISSING_CODE** | Ujistěte se, že šifrovací protokol hesel mezi servery NPS a servery NAS podporuje sekundární metodu ověřování, kterou používáte. Protokol **PAP** podporuje všechny metody ověřování Azure AD MFA v cloudu: telefonní hovor, jednosměrná textová zpráva, oznámení mobilní aplikace a ověřovací kód mobilní aplikace. Protokol **CHAPv2** a **EAP** podporují telefonní hovor a oznámení mobilní aplikace. |
 | **USERNAME_CANONICALIZATION_ERROR** | Ověřte, zda se uživatel nachází v místní instanci služby Active Directory a zda má služba NPS oprávnění pro přístup k tomuto adresáři. Pokud používáte vztahy důvěryhodnosti mezi doménovými strukturami, [požádejte](#contact-microsoft-support) o další pomoc podporu. |
 
 ### <a name="alternate-login-id-errors"></a>Chyby alternativního přihlašovacího ID
@@ -55,7 +55,7 @@ Pokud dojde k chybám s rozšířením NPS pro Azure Multi-Factor Authentication
 | **AuthenticationMethodNotSupported** | Zadaná metoda ověřování není podporována. | Shromážděte všechny protokoly, které obsahují tuto chybu, a [obraťte](#contact-microsoft-support)se na podporu. Když se obrátíte na podporu, zadejte uživatelské jméno a sekundární metodu ověřování, která aktivovala chybu. |
 | **BecAccessDenied** | Volání MSODS BEC vrátilo přístup odepřeno, pravděpodobně uživatelské jméno není v tenantovi definované. | Uživatel se nachází ve službě Active Directory místně, ale není synchronizovaný do Azure AD pomocí služby AD Connect. Nebo, pro tenanta chybí uživatel. Přidejte uživatele do Azure AD a požádejte ho o přidání metod ověřování podle pokynů v tématu [Správa nastavení pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-manage-settings.md). |
 | **InvalidFormat** nebo **StrongAuthenticationServiceInvalidParameter** | Telefonní číslo je v nerozpoznatelném formátu. | Uživatel musí opravit telefonní čísla pro ověření. |
-| **InvalidSession** | Zadaná relace je neplatná nebo vypršela její platnost. | Dokončení relace trvalo déle než tři minuty. Ověřte, že uživatel zadává ověřovací kód, nebo odpoví na oznámení aplikace do tří minut od zahájení žádosti o ověření. Pokud se tím problém nevyřeší, ověřte, že mezi klientem, serverem NAS, serverem NPS a koncovým bodem Azure MFA nedochází k žádné latenci sítě.  |
+| **InvalidSession** | Zadaná relace je neplatná nebo vypršela její platnost. | Dokončení relace trvalo déle než tři minuty. Ověřte, že uživatel zadává ověřovací kód, nebo odpoví na oznámení aplikace do tří minut od zahájení žádosti o ověření. Pokud se tím problém nevyřeší, ověřte, že mezi klientem, serverem NAS, serverem NPS a koncovým bodem Azure AD MFA nedochází k žádné latenci sítě.  |
 | **NoDefaultAuthenticationMethodIsConfigured** | Pro uživatele se nenakonfigurovala žádná výchozí metoda ověřování. | Přidejte nebo ověřte své metody ověřování podle pokynů v tématu [Správa nastavení pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-manage-settings.md). Ověřte, že uživatel zvolil výchozí metodu ověřování a pro svůj účet nakonfigurovali tuto metodu. |
 | **OathCodePinIncorrect** | Byl zadán nesprávný kód a kód PIN. | Tato chyba se v rozšíření serveru NPS neočekává. Pokud k tomu dojde, obraťte se na [podporu](#contact-microsoft-support) pro pomoc s řešením potíží. |
 | **ProofDataNotFound** | Pro zadanou metodu ověřování nebyla konfigurována data kontroly. | Požádejte uživatele, aby si vyzkoušeli jinou metodu ověřování, nebo přidejte nové metody ověřování podle pokynů v tématu [Správa nastavení pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-manage-settings.md). Pokud uživatel tuto chybu stále uvidí po potvrzení, že je správně nastavená metoda ověřování, obraťte se na [podporu](#contact-microsoft-support). |
@@ -99,7 +99,7 @@ Pokud uživatelé mají [problémy se dvoustupňové ověřováním](../user-hel
 
 ### <a name="health-check-script"></a>Skript kontroly stavu
 
-[Skript kontroly stavu rozšíření Azure MFA NPS](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) provede základní kontrolu stavu při řešení potíží s rozšířením NPS. Spusťte skript a vyberte možnost 3.
+[Skript kontroly stavu rozšíření Azure AD MFA NPS](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) provede základní kontrolu stavu při řešení potíží s rozšířením NPS. Spusťte skript a vyberte možnost 3.
 
 ### <a name="contact-microsoft-support"></a>Obraťte se na podporu Microsoftu
 

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e44cb38435ca86ad7cd4709d5e99f5cf41fcf91
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 20b51cc747d3a24b1437eda988397a2e999f6ab3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366322"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837477"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
 
@@ -73,7 +73,7 @@ V případě, že se seznámíte s podmíněným přístupem, můžou být užit
 * [Jak nasadit podmíněný přístup?](https://youtu.be/c_izIRNJNuk)
 * [Jak zavést zásady certifikační autority pro koncové uživatele?](https://youtu.be/0_Fze7Zpyvc)
 * [Podmíněný přístup pomocí ovládacích prvků zařízení](https://youtu.be/NcONUf-jeS4)
-* [Podmíněný přístup pomocí Azure MFA](https://youtu.be/Tbc-SU97G-w)
+* [Podmíněný přístup s Azure AD MFA](https://youtu.be/Tbc-SU97G-w)
 * [Podmíněný přístup v Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)
 
 
@@ -376,7 +376,7 @@ Některé organizace mají pro tento účel testovací klienty. Může však bý
 
 Testovací plán je důležitý pro porovnání očekávaných výsledků a skutečných výsledků. Před testováním byste měli vždycky očekávat. Následující tabulka popisuje příklady testovacích případů. Upravte scénáře a očekávané výsledky na základě toho, jak jsou nakonfigurované zásady certifikační autority.
 
-| Zásada| Scénář| Očekávaný výsledek |
+| Zásady| Scénář| Očekávaný výsledek |
 | - | - | - |
 | [Vyžadovat MFA, pokud není v práci](untrusted-networks.md)| Autorizovaný uživatel se přihlásí do aplikace v důvěryhodném umístění/v práci.| Uživatel není vyzván k MFA. |
 | [Vyžadovat MFA, pokud není v práci](untrusted-networks.md)| Autorizovaný uživatel se přihlásí do aplikace, když není v důvěryhodném umístění/v práci.| Uživatel je vyzván k ověřování MFA a úspěšně se může přihlásit. |

@@ -11,19 +11,19 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0c5093fc1dab69e0502b8ed1efe42fa63f1eb9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363721"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838073"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Plánování nasazení samoobslužného resetování hesla Azure Active Directory
 
 > [!IMPORTANT]
 > Tento plán nasazení nabízí doprovodné materiály a osvědčené postupy pro nasazení samoobslužného resetování hesla služby Azure AD (SSPR).
 >
-> **Pokud jste koncový uživatel a potřebujete se vrátit zpátky k účtu, pokračujte na [https://aka.ms/sspr](https://aka.ms/sspr) **.
+> **Pokud jste koncový uživatel a potřebujete se vrátit zpátky k účtu, pokračujte na [https://aka.ms/sspr](https://aka.ms/sspr)**.
 
 [Samoobslužné resetování hesla (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) je funkce Azure Active Directory (AD), která uživatelům umožňuje resetovat hesla bez kontaktování pracovníků oddělení IT o nápovědu. Uživatelé můžou rychle odblokovat a pokračovat v práci bez ohledu na to, kde jsou nebo jsou v denní době. Díky tomu, že si zaměstnanci můžou odblokovat vlastní odblokování, může vaše organizace snížit neproduktivní dobu a náklady na vysokou podporu pro nejčastější problémy související s heslem.
 
@@ -56,7 +56,7 @@ Klíčové výhody povolování SSPR jsou:
 
 * **Robustní auditování a sledování využití**. Organizace může zajistit, aby obchodní systémy zůstaly zabezpečené, zatímco její uživatelé resetují svoje vlastní hesla. Robustní protokoly auditu obsahují informace o každém kroku procesu resetování hesla. Tyto protokoly jsou k dispozici z rozhraní API a umožňují uživateli importovat data do SIEM (incidentu zabezpečení) podle vlastního výběru.
 
-### <a name="licensing"></a>Licencování
+### <a name="licensing"></a>Licensing
 
 Azure Active Directory je licence vázaná na každého uživatele, což znamená, že každý uživatel vyžaduje odpovídající licenci pro funkce, které používají. Pro SSPR doporučujeme licencování na základě skupin. 
 
@@ -73,7 +73,7 @@ Další informace o cenách najdete v tématu [Azure Active Directory ceny](http
 
 ### <a name="training-resources"></a>Školicí materiály
 
-| Zdroje a prostředky| Odkaz a popis |
+| Zdroje informací| Odkaz a popis |
 | - | - |
 | Videa| [Poskytněte uživatelům lepší škálovatelnost IT](https://youtu.be/g9RpRnylxS8) 
 | |[Co je samoobslužné resetování hesla?](https://youtu.be/hc97Yx5PJiM)|
@@ -86,7 +86,7 @@ Další informace o cenách najdete v tématu [Azure Active Directory ceny](http
 |Kurzy |[Dokončení zavedení pilotního resetování hesla samoobslužné služby Azure AD](./tutorial-enable-sspr.md) |
 | |[Povolení zpětného zápisu hesla](./tutorial-enable-sspr-writeback.md) |
 | |[Resetování hesla Azure AD z přihlašovací obrazovky pro Windows 10](./howto-sspr-windows.md) |
-| Nejčastější dotazy|[Nejčastější dotazy ke správě hesel](./active-directory-passwords-faq.md) |
+| Časté otázky|[Nejčastější dotazy ke správě hesel](./active-directory-passwords-faq.md) |
 
 
 ### <a name="solution-architecture"></a>Architektura řešení
@@ -115,7 +115,7 @@ Před nasazením SSPR se můžete rozhodnout, že určíte počet a průměrné 
 
 Společnost Microsoft doporučuje, aby organizace povolily kombinované prostředí registrace pro SSPR a vícefaktorové ověřování. Pokud povolíte toto kombinované registrační prostředí, uživatelé budou muset jenom jednou vybrat svoje registrační informace a povolit obě funkce.
 
-Kombinované možnosti registrace nevyžadují, aby organizace povolovaly SSPR i Azure Multi-Factor Authentication. Kombinovaná registrace poskytuje organizacím lepší uživatelské prostředí. Další informace najdete v tématu [o registraci kombinovaných zabezpečení](concept-registration-mfa-sspr-combined.md) .
+Kombinované možnosti registrace nevyžadují, aby organizace povolovaly Multi-Factor Authentication SSPR i Azure AD. Kombinovaná registrace poskytuje organizacím lepší uživatelské prostředí. Další informace najdete v tématu [o registraci kombinovaných zabezpečení](concept-registration-mfa-sspr-combined.md) .
 
 ## <a name="plan-the-deployment-project"></a>Plánování projektu nasazení
 
@@ -149,19 +149,19 @@ Chcete-li vytvořit skupinu, přečtěte si téma [Vytvoření skupiny a přidá
 
 K povolení SSPR spolu s doporučenými hodnotami jsou nutná následující nastavení.
 
-| Plošný | Nastavení | Hodnota |
+| Oblast | Nastavení | Hodnota |
 | --- | --- | --- |
 | **Vlastnosti SSPR** | Samoobslužné resetování hesla povoleno | **Vybraná** skupina pro pilotní/ **vše** pro produkci |
 | **Metody ověřování** | Metody ověřování vyžadované k registraci | Vždy 1, než je vyžadováno pro resetování |
 |   | Metody ověřování vyžadované k resetování | Jedna nebo dvě |
-| **Evidenc** | Při přihlášení vyžadovat registraci uživatelů | Ano |
+| **Evidenc** | Při přihlášení vyžadovat registraci uživatelů | Yes |
 |   | Počet dní před vyzváním uživatelů k potvrzení ověřovacích informací | 90 – 180 dnů |
-| **Oznámení** | Upozornit uživatele na resetování hesla | Ano |
-|   | Upozornit všechny správce na resetování hesla jiného správce | Ano |
-| **Přizpůsobení** | Přizpůsobení odkazu na helpdesk | Ano |
+| **Oznámení** | Upozornit uživatele na resetování hesla | Yes |
+|   | Upozornit všechny správce na resetování hesla jiného správce | Yes |
+| **Přizpůsobení** | Přizpůsobení odkazu na helpdesk | Yes |
 |   | E-mail nebo adresa URL vlastního helpdesku | Web podpory nebo e-mailová adresa |
-| **Místní integrace** | Zápis hesel zpátky do místní služby AD | Ano |
-|   | Povolí uživatelům odemknout účet bez resetování hesla. | Ano |
+| **Místní integrace** | Zápis hesel zpátky do místní služby AD | Yes |
+|   | Povolí uživatelům odemknout účet bez resetování hesla. | Yes |
 
 ### <a name="sspr-properties"></a>Vlastnosti SSPR
 
@@ -321,7 +321,7 @@ Protokoly auditu pro registraci a resetování hesla jsou k dispozici po dobu 30
 
 ### <a name="authentication-methods--usage-and-insights"></a>Metody ověřování – využití a přehledy
 
-[Využití a přehledy](./howto-authentication-methods-usage-insights.md) umožňují pochopit, jak metody ověřování pro funkce, jako je Azure MFA a SSPR, fungují ve vaší organizaci. Tato funkce vytváření sestav poskytuje vaší organizaci prostředky pro pochopení, jaké metody se registrují a jak je používat.
+[Využití a přehledy](./howto-authentication-methods-usage-insights.md) umožňují pochopit, jak metody ověřování pro funkce, jako je Azure AD MFA a SSPR, fungují ve vaší organizaci. Tato funkce vytváření sestav poskytuje vaší organizaci prostředky pro pochopení, jaké metody se registrují a jak je používat.
 
 ### <a name="troubleshoot"></a>Řešení potíží
 

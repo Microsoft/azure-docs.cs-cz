@@ -10,27 +10,27 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d0fcd57a71baec54fbed2dd41a936895ad9a462
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a120e015bd8ca38e32bd8cbef1fd48f4caef8e44
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966572"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837800"
 ---
-# <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Kurz: použití detekcí rizik pro přihlášení uživatelů k aktivaci Multi-Factor Authentication nebo změn hesel v Azure
+# <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-ad-multi-factor-authentication-or-password-changes"></a>Kurz: použití zjišťování rizik pro přihlášení uživatelů k aktivaci Multi-Factor Authentication nebo změny hesla služby Azure AD
 
-Pokud chcete chránit své uživatele, můžete nakonfigurovat zásady na základě rizik v Azure Active Directory (Azure AD), které automaticky reagují na rizikové chování. Zásady Azure AD Identity Protection můžou automaticky blokovat pokus o přihlášení nebo vyžadovat další akci, třeba vyžadovat změnu hesla nebo zobrazení výzvy pro Azure Multi-Factor Authentication. Tyto zásady pracují se stávajícími zásadami podmíněného přístupu Azure AD jako vyšší úrovně ochrany pro vaši organizaci. Uživatelé nemusí nikdy aktivovat rizikové chování v jedné z těchto zásad, ale vaše organizace je chráněná, pokud je proveden pokus o ohrožení zabezpečení.
+Pokud chcete chránit své uživatele, můžete nakonfigurovat zásady na základě rizik v Azure Active Directory (Azure AD), které automaticky reagují na rizikové chování. Zásady Azure AD Identity Protection můžou automaticky blokovat pokus o přihlášení nebo vyžadovat další akci, třeba vyžadovat změnu hesla nebo zobrazit výzvu pro Azure AD Multi-Factor Authentication. Tyto zásady pracují se stávajícími zásadami podmíněného přístupu Azure AD jako vyšší úrovně ochrany pro vaši organizaci. Uživatelé nemusí nikdy aktivovat rizikové chování v jedné z těchto zásad, ale vaše organizace je chráněná, pokud je proveden pokus o ohrožení zabezpečení.
 
 > [!IMPORTANT]
-> V tomto kurzu se dozvíte správce, jak povolit Multi-Factor Authentication Azure na základě rizik.
+> V tomto kurzu se dozvíte, jak povolit Multi-Factor Authentication služby Azure AD založené na rizicích.
 >
-> Pokud váš IT tým nepovolil možnost použít Azure Multi-Factor Authentication nebo máte problémy při přihlašování, obraťte se na helpdesk, kde najdete další pomoc.
+> Pokud váš IT tým nepovolil možnost používat Multi-Factor Authentication Azure AD nebo máte problémy při přihlašování, obraťte se na helpdesk, kde najdete další pomoc.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Pochopení dostupných zásad pro Azure AD Identity Protection
-> * Povolit registraci Multi-Factor Authentication v Azure
+> * Povolit registraci Multi-Factor Authentication služby Azure AD
 > * Zapnutí změn hesla na základě rizikové události
 > * Zapnutí vícefaktorového ověřování na základě rizikové události
 > * Testování zásad na základě rizik pro pokusy o přihlášení uživatelů
@@ -42,9 +42,9 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
 * Funkční tenant Azure AD s povolenou aspoň Azure AD Premium P2 nebo zkušební licencí.
     * V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Účet s oprávněními *globálního správce* .
-* Služba Azure AD konfigurovaná pro Samoobslužné resetování hesla a Azure Multi-Factor Authentication
+* Služba Azure AD konfigurovaná pro Samoobslužné resetování hesla a Azure AD Multi-Factor Authentication
     * V případě potřeby [dokončete kurz a povolte Azure AD SSPR](tutorial-enable-sspr.md).
-    * V případě potřeby [dokončete kurz a povolte službu Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+    * V případě potřeby [dokončete kurz, abyste povolili Multi-Factor Authentication služby Azure AD](tutorial-enable-azure-mfa.md).
 
 ## <a name="overview-of-azure-ad-identity-protection"></a>Přehled Azure AD Identity Protection
 
@@ -64,26 +64,26 @@ V Azure AD Identity Protection jsou k dispozici následující tři zásady pro 
 * Zásady rizik uživatelů
     * Identifikuje a reaguje na uživatelské účty, které by mohly ohrozit přihlašovací údaje. Může vyzvat uživatele k vytvoření nového hesla.
 * Zásady rizik přihlašování
-    * Identifikuje a reaguje na podezřelé pokusy o přihlášení. Může uživateli vyzvat k poskytnutí dalších forem ověřování pomocí služby Azure Multi-Factor Authentication.
+    * Identifikuje a reaguje na podezřelé pokusy o přihlášení. Může uživateli vyzvat k poskytnutí dalších forem ověřování pomocí Multi-Factor Authentication služby Azure AD.
 * Zásady registrace MFA
-    * Zajistí registraci uživatelů pro Azure Multi-Factor Authentication. Pokud se zásady rizik přihlašování zobrazí pro MFA, musí být uživatel už zaregistrovaný pro Azure Multi-Factor Authentication.
+    * Zajistí, aby se uživatelé zaregistrovali Multi-Factor Authentication služby Azure AD. Pokud se zásady rizik přihlašování zobrazí pro MFA, musí být uživatel už zaregistrovaný pro Azure AD Multi-Factor Authentication.
 
-Když zapnete zásadu pro uživatele nebo přihlašování rizikových zásad, můžete také zvolit prahovou hodnotu pro úroveň rizika – *nízká a vyšší*, *střední a vyšší*nebo *Vysoká*. Tato flexibilita vám umožní určit, jak agresivní mají být vynucovány jakékoli ovládací prvky pro podezřelé přihlašovací události.
+Když zapnete zásadu pro uživatele nebo přihlašování rizikových zásad, můžete také zvolit prahovou hodnotu pro úroveň rizika – *nízká a vyšší*, *střední a vyšší* nebo *Vysoká*. Tato flexibilita vám umožní určit, jak agresivní mají být vynucovány jakékoli ovládací prvky pro podezřelé přihlašovací události.
 
 Další informace o Azure AD Identity Protection najdete v tématu [co je Azure AD Identity Protection?](../identity-protection/overview-identity-protection.md)
 
 ## <a name="enable-mfa-registration-policy"></a>Povolit zásady registrace MFA
 
-Azure AD Identity Protection obsahuje výchozí zásady, které vám pomůžou získat uživatele zaregistrované pro Azure Multi-Factor Authentication. Pokud k ochraně přihlašovacích událostí použijete další zásady, budete potřebovat uživatele, kteří už mají zaregistrovaný účet pro MFA. Když tyto zásady povolíte, nevyžadují, aby uživatelé v každé události přihlášení prováděli MFA. Zásada pouze kontroluje stav registrace uživatele a v případě potřeby požaduje, aby se zaregistroval předem.
+Azure AD Identity Protection obsahuje výchozí zásadu, která vám může pomáhat získat uživatele zaregistrované pro Azure AD Multi-Factor Authentication. Pokud k ochraně přihlašovacích událostí použijete další zásady, budete potřebovat uživatele, kteří už mají zaregistrovaný účet pro MFA. Když tyto zásady povolíte, nevyžadují, aby uživatelé v každé události přihlášení prováděli MFA. Zásada pouze kontroluje stav registrace uživatele a v případě potřeby požaduje, aby se zaregistroval předem.
 
 Doporučuje se povolit zásady registrace MFA pro uživatele, u kterých chcete povolit další zásady Azure AD Identity Protection. Pokud chcete tuto zásadu povolit, proveďte následující kroky:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce.
-1. Vyhledejte a vyberte **Azure Active Directory**, vyberte **zabezpečení**a potom v části nabídky *chránit* zvolte možnost **ochrana identity**.
+1. Vyhledejte a vyberte **Azure Active Directory**, vyberte **zabezpečení** a potom v části nabídky *chránit* zvolte možnost **ochrana identity**.
 1. V nabídce na levé straně vyberte **zásadu registrace MFA** .
-1. Ve výchozím nastavení platí zásady pro *všechny uživatele*. V případě potřeby vyberte **přiřazení**a pak zvolte uživatele nebo skupiny, pro které chcete zásadu použít.
-1. V části *ovládací prvky*vyberte **přístup**. Ujistěte se, že je zaškrtnuta možnost *vyžadovat registraci Azure MFA* , a pak zvolte **Vybrat**.
-1. Nastavte **zásadu Vynutilit** na *zapnuto*a pak vyberte **Uložit**.
+1. Ve výchozím nastavení platí zásady pro *všechny uživatele*. V případě potřeby vyberte **přiřazení** a pak zvolte uživatele nebo skupiny, pro které chcete zásadu použít.
+1. V části *ovládací prvky* vyberte **přístup**. Ujistěte se, že je zaškrtnuta možnost *vyžadovat registraci Azure AD MFA* , a pak zvolte **Vybrat**.
+1. Nastavte **zásadu Vynutilit** na *zapnuto* a pak vyberte **Uložit**.
 
     ![Snímek obrazovky, jak vyžadovat, aby se uživatelé zaregistrovali pro vícefaktorové ověřování v Azure Portal](./media/tutorial-risk-based-sspr-mfa/enable-mfa-registration.png)
 
@@ -94,11 +94,11 @@ Microsoft spolupracuje při vyhledávání dvojic uživatelských jmen a hesel s
 Pokud chcete tuto zásadu povolit, proveďte následující kroky:
 
 1. V nabídce na levé straně vyberte **zásady rizik uživatelů** .
-1. Ve výchozím nastavení platí zásady pro *všechny uživatele*. V případě potřeby vyberte **přiřazení**a pak zvolte uživatele nebo skupiny, pro které chcete zásadu použít.
-1. V části *podmínky*zvolte  **Vybrat podmínky > vyberte úroveň rizika**a pak zvolte *střední a vyšší*.
-1. Klikněte na **Vybrat**a potom na **Hotovo**.
-1. V části *přístup*vyberte **přístup**. Ujistěte se, že je zaškrtnuta možnost **umožnit přístup** a *vyžadovat změnu hesla* , a pak zvolte **Vybrat**.
-1. Nastavte **zásadu Vynutilit** na *zapnuto*a pak vyberte **Uložit**.
+1. Ve výchozím nastavení platí zásady pro *všechny uživatele*. V případě potřeby vyberte **přiřazení** a pak zvolte uživatele nebo skupiny, pro které chcete zásadu použít.
+1. V části *podmínky* zvolte  **Vybrat podmínky > vyberte úroveň rizika** a pak zvolte *střední a vyšší*.
+1. Klikněte na **Vybrat** a potom na **Hotovo**.
+1. V části *přístup* vyberte **přístup**. Ujistěte se, že je zaškrtnuta možnost **umožnit přístup** a *vyžadovat změnu hesla* , a pak zvolte **Vybrat**.
+1. Nastavte **zásadu Vynutilit** na *zapnuto* a pak vyberte **Uložit**.
 
     ![Snímek obrazovky s postupem povolení zásad rizik uživatelů v Azure Portal](./media/tutorial-risk-based-sspr-mfa/enable-user-risk-policy.png)
 
@@ -109,11 +109,11 @@ Většina uživatelů má normální chování, které je možné sledovat. Poku
 Pokud chcete tuto zásadu povolit, proveďte následující kroky:
 
 1. V nabídce na levé straně vyberte **zásady rizik přihlašování** .
-1. Ve výchozím nastavení platí zásady pro *všechny uživatele*. V případě potřeby vyberte **přiřazení**a pak zvolte uživatele nebo skupiny, pro které chcete zásadu použít.
-1. V části *podmínky*zvolte  **Vybrat podmínky > vyberte úroveň rizika**a pak zvolte *střední a vyšší*.
-1. Klikněte na **Vybrat**a potom na **Hotovo**.
-1. V části *přístup*zvolte **vybrat ovládací prvek**. Ujistěte se, že je zaškrtnuta možnost **Povolení přístupu** a *vyžadovat službu Multi-Factor Authentication* , a pak zvolte **možnost vybrat**.
-1. Nastavte **zásadu Vynutilit** na *zapnuto*a pak vyberte **Uložit**.
+1. Ve výchozím nastavení platí zásady pro *všechny uživatele*. V případě potřeby vyberte **přiřazení** a pak zvolte uživatele nebo skupiny, pro které chcete zásadu použít.
+1. V části *podmínky* zvolte  **Vybrat podmínky > vyberte úroveň rizika** a pak zvolte *střední a vyšší*.
+1. Klikněte na **Vybrat** a potom na **Hotovo**.
+1. V části *přístup* zvolte **vybrat ovládací prvek**. Ujistěte se, že je zaškrtnuta možnost **Povolení přístupu** a *vyžadovat službu Multi-Factor Authentication* , a pak zvolte **možnost vybrat**.
+1. Nastavte **zásadu Vynutilit** na *zapnuto* a pak vyberte **Uložit**.
 
     ![Snímek obrazovky, jak povolit zásady pro rizikové přihlašování v Azure Portal](./media/tutorial-risk-based-sspr-mfa/enable-sign-in-risk-policy.png)
 
@@ -133,7 +133,7 @@ V tomto kurzu jste povolili zásady pro uživatele na základě rizik pro Azure 
 
 > [!div class="checklist"]
 > * Pochopení dostupných zásad pro Azure AD Identity Protection
-> * Povolit registraci Multi-Factor Authentication v Azure
+> * Povolit registraci Multi-Factor Authentication služby Azure AD
 > * Zapnutí změn hesla na základě rizikové události
 > * Zapnutí vícefaktorového ověřování na základě rizikové události
 > * Testování zásad na základě rizik pro pokusy o přihlášení uživatelů

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261a7033737e0d7be9974ca80ca6844b50a19973
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9959ce1c88fb595dedd4174a9185f801168ecb0d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968612"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838327"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Brána vzdálené plochy Azure Multi-Factor Authentication Server pomocí protokolu RADIUS
 
@@ -27,9 +27,9 @@ Vzhledem k tomu, že ověřování systému Windows pro terminálové služby ne
 Nainstalujte Multi-Factor Authentication Server na samostatném serveru, který bude směrovat požadavky protokolu RADIUS přes proxy server zpět na server NPS na serveru služby Brána vzdálené plochy. Když NPS ověří uživatelské jméno a heslo, vrátí odpověď Multi-Factor Authentication Serveru. Potom MFA Server provádí druhý faktor ověřování a vrátí výsledek bráně.
 
 > [!IMPORTANT]
-> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí během přihlašování vyžadovat vícefaktorové ověřování (MFA), by měli použít cloudové Multi-Factor Authentication Azure.
+> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat vícefaktorové ověřování (MFA) během přihlašovacích událostí, by měli používat cloudovou Multi-Factor Authentication Azure AD.
 >
-> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 >
 > Pokud používáte cloudové VÍCEFAKTOROVÉ ověřování, přečtěte si téma [integrace s ověřováním protokolu RADIUS pro Azure Multi-Factor Authentication](howto-mfa-nps-extension.md).
 >

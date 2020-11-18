@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d33721a70f0a9d4cfb26516d2f252424cc924f8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 6deb0c005b5ed7daf5b30bea8a65ee70d8b460c5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503806"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837460"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relací ověřování pomocí podmíněného přístupu
 
@@ -90,7 +90,7 @@ Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na pré
 > [!WARNING]
 > Pokud používáte funkci [existence konfigurovatelného tokenu](../develop/active-directory-configurable-token-lifetimes.md) , která je aktuálně ve verzi Public Preview, pamatujte, že nepodporujeme vytváření dvou různých zásad pro stejnou kombinaci uživatelů nebo aplikací: jednu s touto funkcí a další s funkcí konfigurovatelný životností tokenu. Microsoft plánuje vyřadit funkci životnosti konfigurovatelného tokenu pro životnost tokenů aktualizace a životnosti tokenů relace 30. ledna 2021 a nahradí ji funkcí správy relace ověřování pomocí podmíněného přístupu.  
 >
-> Než povolíte frekvenci přihlašování, ujistěte se, že je ve vašem tenantovi zakázané jiné nastavení pro opakované ověřování. Pokud je povolená možnost Zapamatovat MFA u důvěryhodných zařízení, nezapomeňte ji před použitím četnosti přihlášení zakázat, protože použití těchto dvou nastavení společně může vést k neočekávanému zobrazení výzvy uživatelů. Další informace o výzvách k opakovanému ověření a době platnosti relace najdete v článku věnovaném [optimalizaci výzev k opakovanému ověření a porozumění životnosti relace pro Azure Multi-Factor Authentication](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
+> Než povolíte frekvenci přihlašování, ujistěte se, že je ve vašem tenantovi zakázané jiné nastavení pro opakované ověřování. Pokud je povolená možnost Zapamatovat MFA u důvěryhodných zařízení, nezapomeňte ji před použitím četnosti přihlášení zakázat, protože použití těchto dvou nastavení společně může vést k neočekávanému zobrazení výzvy uživatelů. Další informace o výzvách k opakovanému ověření a době platnosti relace najdete v článku věnovaném [optimalizaci výzev k opakovanému ověření a porozumění životnosti relace pro Azure AD Multi-Factor Authentication](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Zásady 1: řízení četnosti přihlašování
 

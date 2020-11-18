@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3781a87bde283de3b798f840274db1dd5ea3ac7e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9c1b07534c702e509b2b664fbee585aa2cff69f6
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366492"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837596"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
@@ -41,7 +41,7 @@ Funkce Azure AD terms of use mají tyto možnosti:
 - Než budete moct získat přístup, je nutné, aby zaměstnanci nebo hosty přijali vaše podmínky použití.
 - Než se dostanete k přístupu, vyžadují zaměstnanci nebo hosty, aby na každém zařízení přijali vaše podmínky použití.
 - Požaduje, aby zaměstnanci nebo hosté přijali vaše podmínky použití podle opakovaného plánu.
-- Před registrací informací o zabezpečení v Azure Multi-Factor Authentication (MFA) vyžadovat, aby zaměstnanci nebo hosté přijali vaše podmínky použití.
+- Před registrací informací o zabezpečení v Azure AD Multi-Factor Authentication (MFA) vyžadovat, aby zaměstnanci nebo hosté přijali vaše podmínky použití.
 - Před registrací informací o zabezpečení ve službě Azure AD Samoobslužné resetování hesla (SSPR) vyžadovat, aby zaměstnanci přijali vaše podmínky použití.
 - Předběžných podmínek použití pro všechny uživatele ve vaší organizaci.
 - Prezentovat konkrétní podmínek použití na základě atributů uživatele (např. doktoři vs. sestry nebo místní vs. zahraniční pracovníci, a to pomocí [dynamických skupin](../enterprise-users/groups-dynamic-membership.md)).
@@ -82,17 +82,17 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
 1. Do pole **název** zadejte název podmínek použití, který bude použit v Azure Portal.
 1. Do pole **Zobrazovaný název** zadejte název, který se uživatelům zobrazí při přihlášení.
-1. V případě **podmínky použití dokumentu**přejděte k dokončeným podmínkám použití PDF a vyberte ji.
+1. V případě **podmínky použití dokumentu** přejděte k dokončeným podmínkám použití PDF a vyberte ji.
 1. Vyberte jazyk pro vaše dokumenty s podmínkami použití. Volba jazyka vám umožní nahrát různé jazykové verze podmínek použití. Verze podmínek použití, která se zobrazí koncovému uživateli, závisí na jeho předvolbách prohlížeče.
 1. Chcete-li, aby koncoví uživatelé před přijetím zobrazili podmínek použití, nastavte možnost **vyžadovat, aby uživatelé rozšířili podmínek použití** na **zapnuto**.
-1. Pokud chcete, aby koncoví uživatelé přijali vaše podmínky použití na každém zařízení, **ze kterého**přistupují, nastavte vyžadovat od **uživatelů souhlas na každém zařízení** . Pokud je tato možnost povolena, mohou být uživatelé vyzváni k instalaci dalších aplikací. Další informace najdete v tématu věnovaném [podmínkám použití v rámci zařízení](#per-device-terms-of-use).
+1. Pokud chcete, aby koncoví uživatelé přijali vaše podmínky použití na každém zařízení, **ze kterého** přistupují, nastavte vyžadovat od **uživatelů souhlas na každém zařízení** . Pokud je tato možnost povolena, mohou být uživatelé vyzváni k instalaci dalších aplikací. Další informace najdete v tématu věnovaném [podmínkám použití v rámci zařízení](#per-device-terms-of-use).
 1. Pokud chcete, aby vypršela platnost podmínek použití podle plánu, nastavte na **zapnuto** **vypršení platnosti** . Pokud je nastaveno na on, zobrazí se dvě další nastavení plánu.
 
    ![Nastavení souhlasu s vypršenou platností pro nastavení počátečního data, četnosti a trvání](./media/terms-of-use/expire-consents.png)
 
 1. Pokud chcete zadat plán pro **vyprší** platnosti podmínek použití, použijte nastavení **frekvence** od do. Následující tabulka ukazuje výsledek pro několik příkladů nastavení:
 
-   | Platnost začíná dnem | Frequency | Výsledek |
+   | Platnost začíná dnem | Frekvence | Výsledek |
    | --- | --- | --- |
    | Dnešní datum  | Měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití a pak každý měsíc znovu přijmout. |
    | Datum v budoucnosti  | Měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití. Když dojde k budoucímu datu, vyprší platnost souhlasu a pak se uživatelé musí každý měsíc znovu akceptovat.  |
@@ -113,11 +113,11 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
    Je možné použít potvrzení a dobu **platnosti vypršení platnosti** **před tím, než znovu přijme nastavení (dny)** , ale obvykle použijete jednu nebo druhou.
 
-1. V části **podmíněný přístup**použijte seznam **vykonat se šablonou zásad podmíněného přístupu** a vyberte šablonu, která vynutila podmínky použití.
+1. V části **podmíněný přístup** použijte seznam **vykonat se šablonou zásad podmíněného přístupu** a vyberte šablonu, která vynutila podmínky použití.
 
    ![Rozevírací seznam pro podmíněný přístup pro výběr šablony zásad](./media/terms-of-use/conditional-access-templates.png)
 
-   | Šablona | Popis |
+   | Template (Šablona) | Popis |
    | --- | --- |
    | **Přístup ke cloudovým aplikacím pro všechny hosty** | Vytvoří se zásada podmíněného přístupu pro všechny hosty a všechny cloudové aplikace. Tato zásada má vliv na Azure Portal. Po vytvoření budete možná muset odhlásit a přihlásit se. |
    | **Přístup ke cloudovým aplikacím pro všechny uživatele** | Vytvoří se zásada podmíněného přístupu pro všechny uživatele a všechny cloudové aplikace. Tato zásada má vliv na Azure Portal. Po vytvoření budete muset odhlásit a přihlásit se. |
@@ -225,7 +225,7 @@ Můžete upravit některé podrobnosti podmínek použití, ale nemůžete uprav
 
    ![Podokno úprav podmínek použití znázorňující možnosti název a rozbalení](./media/terms-of-use/edit-tou.png)
 
-1. Kliknutím na **Uložit** uložte změny.
+1. Kliknutím na **Uložit** změny uložte.
 
    Po uložení změn nebudou uživatelé tyto úpravy znovu přijímat.
 
@@ -253,12 +253,12 @@ Možnost **vyžadovat, aby uživatelé souhlasí s každým nastavením zaříze
 Tady je seznam podporovaných platforem a softwaru.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Android | Windows 10 | Jiné |
+> |  | iOS | Telefon | Windows 10 | Jiné |
 > | --- | --- | --- | --- | --- |
-> | **Native app** | Ano | Ano | Ano |  |
-> | **Microsoft Edge** | Ano | Ano | Ano |  |
-> | **Internet Explorer** | Ano | Ano | Ano |  |
-> | **Chrome (s příponou)** | Ano | Ano | Ano |  |
+> | **Native app** | Yes | Yes | Yes |  |
+> | **Microsoft Edge** | Yes | Yes | Yes |  |
+> | **Internet Explorer** | Yes | Yes | Yes |  |
+> | **Chrome (s příponou)** | Yes | Yes | Yes |  |
 
 Podmínky použití podle zařízení mají následující omezení:
 

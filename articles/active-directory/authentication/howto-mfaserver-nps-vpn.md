@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d28ecfeb9312a6bf5a0b37e07919f9d781de50ea
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1ba0d359079a8999b3c4f2a41f4beadb835ccacc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968578"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838225"
 ---
 # <a name="advanced-scenarios-with-azure-mfa-server-and-third-party-vpn-solutions"></a>Pokročilé scénáře s využitím Azure MFA serveru a řešení VPN jiných výrobců
 
 Azure Multi-Factor Authentication Server (Azure MFA Server) je možné využít k bezproblémovému připojení k různým řešením sítě VPN třetích stran. Tento článek se zaměřuje na &reg; zařízení VPN Cisco ASA, zařízení VPN Citrix NETSCALER SSL a zařízení Juniper sítě Secure SSL zabezpečeného přístupu/Pulse Secure Connect. Vytvořili jsme konfigurační příručky pro řešení těchto tří běžných zařízení. Azure MFA Server je taky možné integrovat s dalšími systémy, které pro AD FS používají ověřování pomocí protokolu RADIUS, LDAP, IIS nebo založené na deklaracích identity. Další podrobnosti najdete v [konfiguracích serveru Azure MFA](howto-mfaserver-deploy.md#next-steps).
 
 > [!IMPORTANT]
-> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí během přihlašování vyžadovat vícefaktorové ověřování (MFA), by měli použít cloudové Multi-Factor Authentication Azure.
+> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat vícefaktorové ověřování (MFA) během přihlašovacích událostí, by měli používat cloudovou Multi-Factor Authentication Azure AD.
 >
-> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 >
 > Pokud používáte cloudové vícefaktorové ověřování, přečtěte si téma [integrace vaší infrastruktury sítě VPN s využitím Azure MFA](howto-mfa-nps-extension-vpn.md).
 >

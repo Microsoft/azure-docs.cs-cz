@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f83d232874a7702598b6ea5fdd458c101e7e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7585c91e42b2d3591532756c1ead9ea60b7035e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266574"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837579"
 ---
 # <a name="custom-controls-preview"></a>Vlastní ovládací prvky (Preview)
 
@@ -35,7 +35,7 @@ Možnost vytvořit vlastní ovládací prvek je v části **Správa** na stránc
 
 ![Vlastní rozhraní ovládacích prvků v podmíněném přístupu](./media/controls/custom-controls-conditional-access.png)
 
-Kliknutím na **Nový vlastní ovládací prvek**otevře okno s textovým polem pro data JSON ovládacího prvku.  
+Kliknutím na **Nový vlastní ovládací prvek** otevře okno s textovým polem pro data JSON ovládacího prvku.  
 
 ![Nový vlastní ovládací prvek](./media/controls/new-custom-controls-conditional-access.png)
 
@@ -53,7 +53,7 @@ Chcete-li upravit vlastní ovládací prvek, je nutné odstranit aktuální ovl�
 
 ## <a name="known-limitations"></a>Známá omezení
 
-Vlastní ovládací prvky nejde používat s automatizací Identity Protection, která vyžaduje Azure Multi-Factor Authentication, Samoobslužné resetování hesla Azure AD (SSPR), dodržování požadavků deklarace identity na vícefaktorové ověřování, aby se v rámci registrace zařízení v Intune a připojení zařízení k Azure AD připojovaly role v Privileged identity Manageru (PIM).
+Vlastní ovládací prvky nejde používat s automatizací Identity Protection, která vyžaduje Azure AD Multi-Factor Authentication, Samoobslužné resetování hesla Azure AD (SSPR), dodržování požadavků deklarace identity na vícefaktorové ověřování, aby bylo možné zvyšovat role v Privileged identity Manageru (PIM) jako součást registrace zařízení v Intune, nebo při připojování zařízení ke službě Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 

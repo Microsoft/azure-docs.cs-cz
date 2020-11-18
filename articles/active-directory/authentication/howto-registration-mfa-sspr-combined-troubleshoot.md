@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae5995340640e9cda16634cf76b9953d7d663c2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b7ac03ff017f8beefe7cc487cdc32741ac1c5a35
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966657"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838174"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>Řešení potíží s kombinovanou registrací informací o zabezpečení
 
@@ -34,7 +34,7 @@ V následující tabulce jsou uvedeny všechny události auditu generované komb
 | --- | --- | --- | --- |
 | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Success | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Tato událost nastane, pokud uživatel úspěšně dokončil registraci.|
 | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Selhání | Uživatel zrušil registraci bezpečnostních údajů. | K této události dojde, když uživatel zruší registraci z režimu přerušení.|
-| Uživatel zaregistroval informace o zabezpečení | Success | *Metoda*registrovaná uživatelem | Tato událost nastane, když uživatel zaregistruje jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.| 
+| Uživatel zaregistroval informace o zabezpečení | Success | *Metoda* registrovaná uživatelem | Tato událost nastane, když uživatel zaregistruje jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.| 
 | Uživatel zkontroloval bezpečnostní informace. | Success | Uživatel úspěšně zkontroloval informace o zabezpečení. | K této události dojde, když uživatel vybere na stránce Kontrola bezpečnostních údajů **dobrý tvar** .|
 | Uživatel zkontroloval bezpečnostní informace. | Selhání | Uživateli se nepodařilo zkontrolovat informace o zabezpečení. | K této události dojde, když uživatel vybere na stránce Kontrola bezpečnostních údajů **dobrý tvar** , ale v back-endu dojde k nějakému problému.|
 | Uživatel odstranil informace o zabezpečení. | Success | Uživatel odstranil *metodu*. | Tato událost nastane, když uživatel odstraní jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.|
@@ -151,10 +151,10 @@ Chcete-li zakázat aktualizované možnosti pro uživatele, proveďte tyto kroky
 
 1. Přihlaste se k Azure Portal jako správce uživatele.
 2. Přejděte na **Azure Active Directory**  >  **uživatelské nastavení**  >  **Spravovat nastavení pro přístupové panely funkce verze Preview**.
-3. V části **Uživatelé můžou používat funkce verze Preview k registraci a správě bezpečnostních údajů**, nastavit selektor na **žádný**a pak vybrat **Uložit**.
+3. V části **Uživatelé můžou používat funkce verze Preview k registraci a správě bezpečnostních údajů**, nastavit selektor na **žádný** a pak vybrat **Uložit**.
 
 Uživatelé již nebudou vyzváni k registraci pomocí aktualizovaného prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o kombinované registraci pro Samoobslužné resetování hesla a Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)
+* [Další informace o kombinované registraci pro Samoobslužné resetování hesla a službu Azure AD Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)

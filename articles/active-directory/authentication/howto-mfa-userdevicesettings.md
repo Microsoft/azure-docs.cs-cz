@@ -1,6 +1,6 @@
 ---
-title: Správa metod ověřování pro Azure Multi-Factor Authentication-Azure Active Directory
-description: Přečtěte si, jak můžete nakonfigurovat Azure Active Directory nastavení uživatele pro Azure Multi-Factor Authentication
+title: Správa metod ověřování pro Azure AD Multi-Factor Authentication-Azure Active Directory
+description: Přečtěte si, jak můžete nakonfigurovat Azure Active Directory nastavení uživatelů pro Azure AD Multi-Factor Authentication
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6309ef6793858051ceaf3c3b33edb9f830b26710
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 1117b5194dae92a8025594ed71fc629670d875cf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378039"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838923"
 ---
-# <a name="manage-user-authentication-methods-for-azure-multi-factor-authentication"></a>Správa metod ověřování uživatelů pro Azure Multi-Factor Authentication
+# <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>Správa metod ověřování uživatelů pro Azure AD Multi-Factor Authentication
 
 Uživatelé v Azure AD mají dvě různé sady kontaktních údajů:  
 
 - Kontaktní informace pro veřejný profil, které jsou spravovány v profilu uživatele a viditelné pro členy vaší organizace. U uživatelů synchronizovaných z místní služby Active Directory se tyto informace spravují v místních Active Directory Domain Services Windows serveru.
 - Metody ověřování, které jsou vždycky zachované jako soukromé a používají se jenom pro ověřování, včetně služby Multi-Factor Authentication (MFA). Správci mohou spravovat tyto metody v okně metoda ověřování uživatele a uživatelé mohou spravovat své metody na stránce s informacemi o zabezpečení MyAccount.
 
-Při správě metod Azure Multi-Factor Authentication pro uživatele můžou správci ověřování provádět tyto akce: 
+Při správě metod Multi-Factor Authentication služby Azure AD pro vaše uživatele můžou správci ověřování provádět tyto akce: 
 
 1. Přidejte metody ověřování pro konkrétního uživatele, včetně telefonních čísel používaných pro MFA.
 1. Resetování hesla uživatele
@@ -49,7 +49,7 @@ Postup přidání metod ověřování pro uživatele prostřednictvím Azure Por
 1. Zvolte uživatele, pro kterého chcete přidat metodu ověřování, a vyberte **metody ověřování**.  
 1. V horní části okna vyberte **+ Přidat metodu ověřování**.
    1. Vyberte metodu (telefonní číslo nebo e-mail). E-mail se dá použít pro resetování hesla, ale ne pro ověřování. Když přidáváte telefonní číslo, vyberte typ telefonu a zadejte telefonní číslo s platným formátem (např. + 1 4255551234).
-   1. Vyberte **Add** (Přidat).
+   1. Vyberte **Přidat**.
 
 > [!NOTE]
 > Prostředí Preview umožňuje správcům přidat všechny dostupné metody ověřování pro uživatele, zatímco původní prostředí umožňuje aktualizovat jenom telefon a alternativní telefonní metody.
@@ -88,7 +88,7 @@ Metody ověřování se dají spravovat taky pomocí Microsoft Graph rozhraní A
 
 Pokud jste přiřadili roli *Správce ověřování* , můžete vyžadovat, aby uživatelé resetoval heslo, znovu zaregistrovali MFA nebo odvolali stávající relace MFA z jejich uživatelského objektu. Pokud chcete spravovat uživatelská nastavení, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vlevo vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
 1. Zvolte uživatele, u kterého chcete provést akci, a vyberte **metody ověřování**. V horní části okna vyberte jednu z následujících možností pro uživatele:
    - **Resetovat heslo** obnoví heslo uživatele a přiřadí dočasné heslo, které se musí při příštím přihlášení změnit.
@@ -107,15 +107,15 @@ Pro uživatele, kteří mají definovaná hesla aplikací, můžou správci taky
 
 Pokud chcete odstranit hesla aplikací uživatele, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na levé straně vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 1. Vyberte **Multi-Factor Authentication**. Pokud chcete zobrazit tuto možnost nabídky, možná se budete muset posunout doprava. Kliknutím na ukázkový snímek obrazovky zobrazíte celé Azure Portal okno a umístění nabídky: [ ![ Vyberte Multi-Factor Authentication z okna uživatelé ve službě Azure AD.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.
-1. Vyberte **Spravovat uživatelská nastavení** a potom zaškrtněte políčko **Odstranit všechna existující hesla aplikací vytvořená vybranými uživateli** , jak je znázorněno v následujícím příkladu: ![ Odstranit všechna existující hesla aplikací.](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. Vyberte **Spravovat uživatelská nastavení** a potom zaškrtněte políčko **Odstranit všechna existující hesla aplikací vytvořená vybranými uživateli**, jak je znázorněno v následujícím příkladu: ![ Odstranit všechna existující hesla aplikací.](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 1. Vyberte **Uložit** a pak **Zavřít**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek ukazuje, jak nakonfigurovat jednotlivá uživatelská nastavení. Pokud chcete nakonfigurovat celkové nastavení služby Azure Multi-Factor Authentication, přečtěte si téma [Konfigurace nastavení azure Multi-Factor Authentication](howto-mfa-mfasettings.md).
+Tento článek ukazuje, jak nakonfigurovat jednotlivá uživatelská nastavení. Pokud chcete nakonfigurovat celkové nastavení služby Azure AD Multi-Factor Authentication, přečtěte si téma [Konfigurace nastavení Multi-Factor Authentication Azure AD](howto-mfa-mfasettings.md).
 
-Pokud uživatelé potřebují nápovědu, přečtěte si [příručku pro uživatele pro Azure Multi-Factor Authentication](../user-help/multi-factor-authentication-end-user-first-time.md).
+Pokud uživatelé potřebují nápovědu, přečtěte si [příručku pro uživatele pro Azure AD Multi-Factor Authentication](../user-help/multi-factor-authentication-end-user-first-time.md).

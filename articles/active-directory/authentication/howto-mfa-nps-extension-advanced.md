@@ -1,5 +1,5 @@
 ---
-title: Konfigurace rozšíření Azure MFA NPS – Azure Active Directory
+title: Konfigurace rozšíření Azure AD MFA NPS – Azure Active Directory
 description: Po instalaci rozšíření serveru NPS použijte tento postup pro pokročilou konfiguraci, jako je povolený seznam IP adres a nahrazení UPN.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,29 +11,29 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a9156f84e5189b38a2c15f257bd6a47ac3db130
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 55c6457ec73c9fe9b39d607f26ffe2a577cc200d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964396"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839042"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Rozšířené možnosti konfigurace rozšíření NPS pro službu Multi-Factor Authentication
 
-Rozšíření serveru NPS (Network Policy Server) rozšiřuje vaše cloudové funkce Azure Multi-Factor Authentication do vaší místní infrastruktury. V tomto článku se předpokládá, že už máte nainstalované rozšíření, a teď chcete zjistit, jak se rozšíření přizpůsobí vašim potřebám. 
+Rozšíření serveru NPS (Network Policy Server) rozšiřuje vaše cloudové funkce Azure AD Multi-Factor Authentication do vaší místní infrastruktury. V tomto článku se předpokládá, že už máte nainstalované rozšíření, a teď chcete zjistit, jak se rozšíření přizpůsobí vašim potřebám. 
 
 ## <a name="alternate-login-id"></a>Alternativní ID přihlášení
 
 Vzhledem k tomu, že se rozšíření serveru NPS připojuje k místním i cloudovým adresářům, může dojít k potížím, když místní hlavní názvy uživatelů (UPN) se neshodují s názvy v cloudu. Pokud chcete tento problém vyřešit, použijte alternativní přihlašovací ID. 
 
-V rámci rozšíření serveru NPS můžete určit atribut služby Active Directory, který bude použit místo hlavního názvu uživatele (UPN) pro Azure Multi-Factor Authentication. Díky tomu můžete chránit místní prostředky pomocí dvoustupňového ověřování bez nutnosti úprav místních názvů UPN. 
+V rámci rozšíření serveru NPS můžete určit atribut služby Active Directory, který bude použit místo hlavního názvu uživatele (UPN) pro Azure AD Multi-Factor Authentication. Díky tomu můžete chránit místní prostředky pomocí dvoustupňového ověřování bez nutnosti úprav místních názvů UPN. 
 
 Pokud chcete nakonfigurovat alternativní přihlašovací ID, použijte `HKLM\SOFTWARE\Microsoft\AzureMfa` a upravte následující hodnoty registru:
 
 | Název | Typ | Výchozí hodnota | Popis |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | řetězec | Obsahovat | Místo hlavního názvu uživatele (UPN) určete název atributu služby Active Directory, který chcete použít. Tento atribut se používá jako atribut AlternateLoginId. Pokud je tato hodnota registru nastavena na [platný atribut služby Active Directory](/windows/win32/adschema/attributes-all) (například mail nebo DisplayName), pak se hodnota atributu používá místo hlavního názvu uživatele (UPN) pro ověřování. Pokud je tato hodnota registru prázdná nebo není nakonfigurovaná, je AlternateLoginId zakázaná a k ověřování se používá hlavní název uživatele (UPN). |
-| LDAP_FORCE_GLOBAL_CATALOG | boolean | Nepravda | Pomocí tohoto příznaku vynutíte při vyhledávání AlternateLoginId použití globálního katalogu pro hledání LDAP. Nakonfigurujte řadič domény jako globální katalog, přidejte do globálního katalogu atribut AlternateLoginId a pak tento příznak povolte. <br><br> Pokud je nakonfigurováno LDAP_LOOKUP_FORESTS (není prázdné), **bude tento příznak vynutil jako true**bez ohledu na hodnotu nastavení registru. V takovém případě rozšíření serveru NPS vyžaduje, aby byl globální katalog nakonfigurovaný s atributem AlternateLoginId pro jednotlivé doménové struktury. |
+| LDAP_FORCE_GLOBAL_CATALOG | boolean | Ne | Pomocí tohoto příznaku vynutíte při vyhledávání AlternateLoginId použití globálního katalogu pro hledání LDAP. Nakonfigurujte řadič domény jako globální katalog, přidejte do globálního katalogu atribut AlternateLoginId a pak tento příznak povolte. <br><br> Pokud je nakonfigurováno LDAP_LOOKUP_FORESTS (není prázdné), **bude tento příznak vynutil jako true** bez ohledu na hodnotu nastavení registru. V takovém případě rozšíření serveru NPS vyžaduje, aby byl globální katalog nakonfigurovaný s atributem AlternateLoginId pro jednotlivé doménové struktury. |
 | LDAP_LOOKUP_FORESTS | řetězec | Obsahovat | Zadejte středníkem oddělený seznam doménových struktur, které se mají hledat. Například *contoso. com; panel. com*. Pokud je tato hodnota registru nakonfigurovaná, rozšíření serveru NPS provede iterativní hledání všech doménových struktur v pořadí, ve kterém byly uvedené, a vrátí první úspěšnou hodnotu AlternateLoginId. Pokud tato hodnota registru není nakonfigurovaná, vyhledávání AlternateLoginId je omezené na aktuální doménu.|
 
 Pokud chcete řešit problémy s alternativními přihlašovacími ID, použijte doporučené kroky pro [alternativní chyby ID přihlášení](howto-mfa-nps-extension-errors.md#alternate-login-id-errors).
@@ -55,4 +55,4 @@ Pokud se žádost dostane z IP adresy, která existuje v rámci `IP_WHITELIST` ,
 
 ## <a name="next-steps"></a>Další kroky
 
-[řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)
+[Řešení chybových zpráv z rozšíření serveru NPS pro Azure AD Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)

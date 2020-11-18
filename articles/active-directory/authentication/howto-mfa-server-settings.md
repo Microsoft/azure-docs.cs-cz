@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70777c80cdee99f13050d7cd342f22d59da13d73
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3da7c3afa6b414e3d7df3bb58766d1ab7657dbc4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964105"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838957"
 ---
 # <a name="configure-mfa-server-settings"></a>Konfigurovat nastavení serveru MFA
 
 Tento článek vám pomůže se správou nastavení serveru Azure MFA v Azure Portal.
 
 > [!IMPORTANT]
-> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudovou Multi-Factor Authentication služby Azure AD. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 K dispozici jsou následující nastavení serveru MFA:
 
@@ -41,7 +41,7 @@ Funkce jednorázového přihlášení umožňuje uživateli jednorázové ověř
 Chcete-li vytvořit jednorázové přihlášení, proveďte následující kroky:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-1. Vyhledejte a vyberte **Azure Active Directory**a pak přejděte na **zabezpečení**  >  **MFA**  >  **jednorázového přihlášení**.
+1. Vyhledejte a vyberte **Azure Active Directory** a pak přejděte na **zabezpečení**  >  **MFA**  >  **jednorázového přihlášení**.
 1. Vyberte **Přidat**.
 1. V případě potřeby vyberte replikační skupinu pro vynechání.
 1. Zadejte uživatelské jméno jako `username\@domain.com` . Zadejte počet sekund, po které má být vynechání trvat, a důvod pro vynechání.
@@ -60,7 +60,7 @@ Ukládání do mezipaměti se primárně používá v případě, že místní s
 
 Pokud chcete nastavit ukládání do mezipaměti, proveďte následující kroky:
 
-1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **pravidel ukládání do mezipaměti**MFA.
+1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **pravidel ukládání do mezipaměti** MFA.
 1. Vyberte **Přidat**.
 1. Z rozevíracího seznamu vyberte **typ mezipaměti** . Zadejte maximální počet **sekund mezipaměti**.
 1. V případě potřeby vyberte typ ověřování a zadejte aplikaci.

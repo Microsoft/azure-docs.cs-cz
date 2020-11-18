@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb442a913ac8bde869144de1a75869a39b12398
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 53f7b0877c1b816bd41226f9207f7dc950eadfd1
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966895"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838514"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade na nejnovější server Azure Multi-Factor Authentication
 
@@ -25,9 +25,9 @@ Tento článek vás provede procesem upgradu serveru Azure Multi-Factor Authenti
 Pokud upgradujete z verze 6. x nebo starší na v7. x nebo novější, změní se všechny komponenty z .NET 2,0 na .NET 4,5. Všechny komponenty také vyžadují Microsoft Visual C++ 2015 Distribuovatelný Update 1 nebo novější. Instalační program serveru MFA nainstaluje verze x86 i x64 těchto komponent, pokud ještě nejsou nainstalované. Pokud se portál User Portal a webová služba mobilní aplikace spouští na samostatných serverech, musíte tyto balíčky nainstalovat ještě před upgradem těchto součástí. Nejnovější aktualizaci Microsoft Visual C++ 2015 Redistributable Update můžete vyhledat na [webu služby Stažení softwaru](https://www.microsoft.com/download/). 
 
 > [!IMPORTANT]
-> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí během přihlašování vyžadovat vícefaktorové ověřování (MFA), by měli použít cloudové Multi-Factor Authentication Azure.
+> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat vícefaktorové ověřování (MFA) během přihlašovacích událostí, by měli používat cloudovou Multi-Factor Authentication Azure AD.
 >
-> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 >
 > Stávající zákazníci, kteří si vyaktivovali MFA Server dřív než 1. července 2019, můžou stáhnout nejnovější verzi, budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 

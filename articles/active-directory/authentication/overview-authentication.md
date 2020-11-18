@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01751caba2b14f899588deba083a8c59c41d13ba
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 92ac495381f63e01d64c9a3d02777dca37ebb343
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964005"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837987"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Co je Azure Active Directory ověřování?
 
-Jednou z hlavních funkcí platformy identity je ověření, nebo *ověření*přihlašovacích údajů, když se uživatel přihlásí k zařízení, aplikaci nebo službě. V Azure Active Directory (Azure AD) ověřování zahrnuje víc než jenom ověření uživatelského jména a hesla. K vylepšení zabezpečení a omezení nutnosti pomoci helpdesku zahrnuje ověřování Azure AD následující komponenty:
+Jednou z hlavních funkcí platformy identity je ověření, nebo *ověření* přihlašovacích údajů, když se uživatel přihlásí k zařízení, aplikaci nebo službě. V Azure Active Directory (Azure AD) ověřování zahrnuje víc než jenom ověření uživatelského jména a hesla. K vylepšení zabezpečení a omezení nutnosti pomoci helpdesku zahrnuje ověřování Azure AD následující komponenty:
 
 * Samoobslužné resetování hesla
-* Azure Multi-Factor Authentication
+* Multi-Factor Authentication Azure AD
 * Hybridní integrace pro zápis změn hesel zpátky do místního prostředí
 * Hybridní integrace, která vynutila zásady ochrany hesel pro místní prostředí
 * Ověřování bez hesla
@@ -32,7 +32,7 @@ Jednou z hlavních funkcí platformy identity je ověření, nebo *ověření*p�
 
 Azure AD pomáhá chránit identitu uživatele a zjednodušuje jejich přihlašování. Funkce, jako je Samoobslužné resetování hesla, umožňují uživatelům aktualizovat nebo měnit hesla pomocí webového prohlížeče z libovolného zařízení. Tato funkce je užitečná hlavně v případě, že uživatel zapomněl heslo nebo je jeho účet uzamčený. Bez čekání na technickou podporu nebo správce o poskytnutí podpory může uživatel odblokovat sebe sama a pokračovat v práci.
 
-Azure Multi-Factor Authentication umožňuje uživatelům zvolit další formu ověřování během přihlašování, jako je například telefonní hovor nebo oznámení o mobilní aplikaci. Tato schopnost snižuje požadavek na jednu pevnou formu sekundárního ověřování, jako je hardwarový token. Pokud uživatel aktuálně nemá jednu formu dalšího ověřování, může zvolit jinou metodu a pokračovat v práci.
+Azure AD Multi-Factor Authentication umožňuje uživatelům při přihlašování zvolit další formu ověřování, jako je například telefonní hovor nebo oznámení o mobilní aplikaci. Tato schopnost snižuje požadavek na jednu pevnou formu sekundárního ověřování, jako je hardwarový token. Pokud uživatel aktuálně nemá jednu formu dalšího ověřování, může zvolit jinou metodu a pokračovat v práci.
 
 ![Metody ověřování používané na přihlašovací obrazovce](media/concept-authentication-methods/overview-login.png)
 
@@ -50,7 +50,7 @@ Samoobslužné resetování hesla funguje v následujících scénářích:
 
 Když uživatel aktualizuje nebo obnoví heslo pomocí samoobslužného resetování hesla, může se toto heslo také zapsat zpátky do místního prostředí Active Directory. Zpětný zápis hesla zajistí, že uživatel může ihned použít aktualizované přihlašovací údaje s místními zařízeními a aplikacemi.
 
-## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+## <a name="azure-ad-multi-factor-authentication"></a>Multi-Factor Authentication Azure AD
 
 Vícefaktorové ověřování je postup, ve kterém se uživateli při přihlašování zobrazí výzva k další formě prokázání totožnosti, třeba k zadání kódu na svém mobilním telefonu nebo k naskenování otisku prstu.
 
@@ -58,13 +58,13 @@ Pokud k ověření uživatele použijete jenom heslo, opustí pro útok nezabezp
 
 ![Koncepční obraz různých forem Multi-Factor Authentication](./media/concept-mfa-howitworks/methods.png)
 
-Azure Multi-Factor Authentication funguje tak, že vyžaduje dvě nebo víc z následujících metod ověřování:
+Služba Azure AD Multi-Factor Authentication funguje tak, že vyžaduje dvě nebo více následujících metod ověřování:
 
 * Něco, co znáte, obvykle heslo.
 * Něco, co máte, jako je například důvěryhodné zařízení, které není snadno duplikováno, jako je telefonní nebo hardwarový klíč.
 * Něco, co jste biometrika jako otisk prstu nebo vzhled obličeje.
 
-Uživatelé se můžou sami zaregistrovat pro Samoobslužné resetování hesla i pro Azure Multi-Factor Authentication v jednom kroku, aby se zjednodušilo připojování k provozu. Správci mohou definovat, jaké formuláře sekundárního ověřování lze použít. Azure Multi-Factor Authentication se může vyžadovat i v případě, že uživatel provede Samoobslužné resetování hesla pro další zabezpečení tohoto procesu.
+Uživatelé se můžou sami zaregistrovat pro Samoobslužné resetování hesla i pro Azure AD Multi-Factor Authentication v jednom kroku, aby se zjednodušila činnost na zprovoznění. Správci mohou definovat, jaké formuláře sekundárního ověřování lze použít. Azure AD Multi-Factor Authentication se může vyžadovat i v případě, že uživatel provede Samoobslužné resetování hesla pro další zabezpečení tohoto procesu.
 
 ## <a name="password-protection"></a>Ochrana hesel
 
@@ -76,7 +76,7 @@ Pro hybridní zabezpečení můžete integrovat ochranu hesel Azure AD pomocí m
 
 ## <a name="passwordless-authentication"></a>Ověřování bez hesla
 
-Koncovým cílem mnoha prostředí je odebrat použití hesel jako součást přihlašovacích událostí. Funkce, jako je Azure heslem Protection nebo Azure Multi-Factor Authentication, zlepšují zabezpečení, ale uživatelské jméno a heslo mají slabý tvar ověřování, který může být vystavený nebo útok hrubou silou.
+Koncovým cílem mnoha prostředí je odebrat použití hesel jako součást přihlašovacích událostí. Funkce, jako je Azure heslem Protection nebo Azure AD Multi-Factor Authentication pomáhá zlepšit zabezpečení, ale uživatelské jméno a heslo mají slabý tvar ověřování, který může být vystavený nebo útok hrubou silou.
 
 ![Zabezpečení a pohodlí v rámci procesu ověřování, který vede k bez hesla](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
@@ -86,11 +86,11 @@ Azure AD poskytuje možnosti nativně ověřit pomocí metod nezaložených na n
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak začít, najdete v [kurzu samoobslužného resetování hesla (SSPR)][tutorial-sspr] a [Azure Multi-Factor Authentication][tutorial-azure-mfa].
+Informace o tom, jak začít, najdete v [kurzu samoobslužného resetování hesla (SSPR)][tutorial-sspr] a [Azure AD Multi-Factor Authentication][tutorial-azure-mfa].
 
 Další informace o konceptech samoobslužného resetování hesla najdete v tématu [Jak funguje Samoobslužné resetování hesla služby Azure AD][concept-sspr].
 
-Další informace o konceptech služby Multi-Factor Authentication najdete v článku [Jak funguje Azure Multi-Factor Authentication][concept-mfa].
+Další informace o konceptech služby Multi-Factor Authentication najdete v tématu [Jak funguje Azure AD Multi-Factor Authentication][concept-mfa].
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

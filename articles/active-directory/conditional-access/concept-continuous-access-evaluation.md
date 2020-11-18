@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ca23c1503b01c1aa9523edc2576599d7b6ab458
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: daa3f3b1687b01005f32cbd2665c84b933c993b8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992802"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837613"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -126,7 +126,7 @@ V následujícím příkladu má správce podmíněného přístupu nakonfigurov
 ## <a name="enable-or-disable-cae-preview"></a>Povolit nebo zakázat CAE (Preview)
 
 1. Přihlaste se k **Azure Portal** jako správce podmíněného přístupu, správce zabezpečení nebo globální správce.
-1. Přejděte na **Azure Active Directory**  >  **Security**  >  **vyhodnocování průběžného přístupu**zabezpečení.
+1. Přejděte na **Azure Active Directory**  >  **Security**  >  **vyhodnocování průběžného přístupu** zabezpečení.
 1. Vyberte možnost **Povolit náhled**.
 
 Na této stránce můžete volitelně omezit uživatele a skupiny, které budou předmětem verze Preview.
@@ -140,11 +140,11 @@ Na této stránce můžete volitelně omezit uživatele a skupiny, které budou 
 V případě CAE máme přehledy o pojmenovaných umístěních založených na protokolu IP. Neposkytujeme žádné informace o dalších nastaveních umístění, jako jsou [důvěryhodné IP adresy MFA](../authentication/howto-mfa-mfasettings.md#trusted-ips) nebo umístění na bázi země. Když uživatel pochází z důvěryhodné IP adresy MFA nebo z důvěryhodných umístění, která zahrnují důvěryhodné IP adresy nebo umístění země, CAE se po přesunu uživatele do jiného umístění neuplatní. V těchto případech budeme vydávat 1 hodinový token CAE bez kontroly vynucení okamžité IP adresy.
 
 > [!IMPORTANT]
-> Při konfiguraci umístění pro vyhodnocení průběžného přístupu použijte jenom [podmínku umístění podmíněného přístupu na základě IP adresy](../conditional-access/location-condition.md#preview-features) a NAKONFIGURUJTE všechny IP adresy, **včetně IPv4 i IPv6**, které může vidět poskytovatel identity a poskytovatel prostředků. Nepoužívejte podmínky umístění země ani funkci důvěryhodných IP adres, která je k dispozici na stránce nastavení služby Azure Multi-Factor Authentication.
+> Při konfiguraci umístění pro vyhodnocení průběžného přístupu použijte jenom [podmínku umístění podmíněného přístupu na základě IP adresy](../conditional-access/location-condition.md#preview-features) a NAKONFIGURUJTE všechny IP adresy, **včetně IPv4 i IPv6**, které může vidět poskytovatel identity a poskytovatel prostředků. Nepoužívejte podmínky umístění země ani funkci důvěryhodných IP adres, která je k dispozici na stránce nastavení služby Azure AD Multi-Factor Authentication.
 
 ### <a name="ip-address-configuration"></a>Konfiguraci IP adresy
 
-Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Příklad:
+Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Například:
 
 - Poskytovatel identity uvidí jednu IP adresu z klienta.
 - Poskytovatel prostředků uvidí od klienta jinou IP adresu po předání prostřednictvím proxy serveru.

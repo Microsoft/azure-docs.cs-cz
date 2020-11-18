@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b763a1cda91886946bba211f589c37940e7c3ae1
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: a779fee89d52442207358cf90c8cf87e7ef221c2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042806"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837647"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -34,7 +34,7 @@ Blok je výkonný ovládací prvek, který by měl být wielded s odpovídajíc�
 
 Správci se můžou rozhodnout vyhovět jednomu nebo více ovládacím prvkům při udělení přístupu. Tyto ovládací prvky zahrnují následující možnosti: 
 
-- [Vyžadovat Multi-Factor Authentication (Azure Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
+- [Vyžadovat Multi-Factor Authentication (Azure AD Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
 - [Vyžadovat, aby zařízení bylo označené jako vyhovující (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [Vyžadovat zařízení připojené k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md)
 - [Vyžadovat klientskou aplikaci schválenou](app-based-conditional-access.md)
@@ -50,7 +50,7 @@ Ve výchozím nastavení podmíněný přístup vyžaduje všechny vybrané ovl�
 
 ### <a name="require-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication
 
-Zaškrtnutí tohoto políčka bude vyžadovat, aby uživatelé prováděli Multi-Factor Authentication Azure. Další informace o nasazení služby Azure Multi-Factor Authentication najdete v článku [plánování cloudového nasazení azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md).
+Zaškrtnutí tohoto políčka bude vyžadovat, aby uživatelé prováděli Multi-Factor Authentication služby Azure AD. Další informace o nasazení služby Azure AD Multi-Factor Authentication najdete v článku [Plánování nasazení cloudových Multi-Factor Authentication Azure AD](../authentication/howto-mfa-getstarted.md).
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>Vyžadovat, aby zařízení bylo označené jako vyhovující
 

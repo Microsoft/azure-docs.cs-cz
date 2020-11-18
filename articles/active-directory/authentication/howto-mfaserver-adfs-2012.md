@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85e8cb63cd06027754628dcf61aad0ac72b8233b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6fa06133c7793cd5f7d14ba587f9f50b523b0299
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967014"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838753"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Konfigurace serveru Azure Multi-Factor Authentication pro práci se službou AD FS ve Windows Serveru
 
@@ -25,11 +25,11 @@ Pokud používáte službu AD FS (Active Directory Federation Services) a chcete
 V tomto článku se podíváme na to, jak používat Azure Multi-Factor Authentication Server s AD FS v systému Windows Server 2012 R2 nebo Windows Server 2016. Další informace najdete v tématu [Zabezpečení cloudových a lokálních prostředků pomocí Microsoft Azure Multi-Factor Authentication Serveru s AD FS 2.0](howto-mfaserver-adfs-2.md).
 
 > [!IMPORTANT]
-> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí během přihlašování vyžadovat vícefaktorové ověřování (MFA), by měli použít cloudové Multi-Factor Authentication Azure.
+> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat vícefaktorové ověřování (MFA) během přihlašovacích událostí, by měli používat cloudovou Multi-Factor Authentication Azure AD.
 >
 > Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 >
-> Pokud používáte cloudové vícefaktorové ověřování, přečtěte si téma [zabezpečení cloudových prostředků pomocí Azure Multi-Factor Authentication a AD FS](howto-mfa-adfs.md).
+> Pokud používáte cloudové vícefaktorové ověřování, přečtěte si téma [zabezpečení cloudových prostředků pomocí Azure AD Multi-Factor Authentication a AD FS](howto-mfa-adfs.md).
 >
 > Stávající zákazníci, kteří si vyaktivovali MFA Server dřív než 1. července 2019, můžou stáhnout nejnovější verzi, budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
@@ -91,7 +91,7 @@ Postupujte podle těchto kroků a upravte soubor MultiFactorAuthenticationAdfsAd
 
 1. Uzel **UseWebServiceSdk** nastavte na **true**.  
 2. Hodnotu **WebServiceSdkUrl** nastavte na URL sady SDK webové služby pro Multi-Factor Authentication. Například: *https: \/ \/ contoso.com/ \<certificatename> /MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, kde *\<certificatename>* je název vašeho certifikátu.  
-3. Upravte skript Register-MultiFactorAuthenticationAdfsAdapter.ps1 přidáním `-ConfigurationFilePath &lt;path&gt;` na konec `Register-AdfsAuthenticationProvider` příkazu, kde * &lt; &gt; cesta* je úplná cesta k souboru MultiFactorAuthenticationAdfsAdapter.config.
+3. Upravte skript Register-MultiFactorAuthenticationAdfsAdapter.ps1 přidáním `-ConfigurationFilePath &lt;path&gt;` na konec `Register-AdfsAuthenticationProvider` příkazu, kde *&lt; &gt; cesta* je úplná cesta k souboru MultiFactorAuthenticationAdfsAdapter.config.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>Konfigurace sady SDK webové služby pomocí uživatelského jména a hesla
 

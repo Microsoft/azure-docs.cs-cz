@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66df1bbe531c072ff5aa2bebe7b197201e6931a2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0b0b34ce55a0896fb804a48779c9c1007c8c340f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077723"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838208"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Plánování a nasazení místní Azure Active Directory ochrany heslem
 
@@ -142,8 +142,8 @@ Služba aktualizace agenta Microsoft Azure AD Connect je nainstalovaná souběž
 
 Pro místní nasazení ochrany heslem Azure AD jsou k dispozici dvě požadované instalační programy:
 
-* Agent DC pro ochranu heslem Azure AD ( *AzureADPasswordProtectionDCAgentSetup.msi* )
-* Proxy ochrana heslem Azure AD ( *AzureADPasswordProtectionProxySetup.exe* )
+* Agent DC pro ochranu heslem Azure AD (*AzureADPasswordProtectionDCAgentSetup.msi*)
+* Proxy ochrana heslem Azure AD (*AzureADPasswordProtectionProxySetup.exe*)
 
 Stáhnout instalační programy z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071).
 
@@ -193,7 +193,7 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
     Get-Service AzureADPasswordProtectionProxy | fl
     ```
 
-    Výsledek by měl zobrazovat **stav** *spuštěno* .
+    Výsledek by měl zobrazovat **stav** *spuštěno*.
 
 1. Služba proxy je v počítači spuštěná, ale nemá přihlašovací údaje ke komunikaci se službou Azure AD. Pomocí rutiny Zaregistrujte proxy server ochrany heslem Azure AD pomocí služby Azure AD `Register-AzureADPasswordProtectionProxy` .
 
@@ -201,7 +201,7 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
 
     Po úspěšném provedení tohoto příkazu pro službu proxy ochrany heslem služby Azure AD je další vyvolání úspěšné, ale nepotřebujeme je.
 
-    `Register-AzureADPasswordProtectionProxy`Rutina podporuje následující tři režimy ověřování. První dva režimy podporují Azure Multi-Factor Authentication ale třetí režim ne.
+    `Register-AzureADPasswordProtectionProxy`Rutina podporuje následující tři režimy ověřování. První dva režimy podporují Azure AD Multi-Factor Authentication ale třetí režim ne.
 
     > [!TIP]
     > Před dokončením této rutiny pro konkrétního tenanta Azure může nastat znatelné zpoždění. Pokud není nahlášená chyba, nedělejte si starosti s touto prodlevou.
@@ -231,11 +231,11 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
         ```
 
         > [!NOTE]
-        > Tento režim se nezdařil, pokud pro váš účet potřebujete Azure Multi-Factor Authentication. V takovém případě použijte jeden z předchozích dvou režimů ověřování nebo místo toho použijte jiný účet, který nevyžaduje MFA.
+        > Tento režim se nezdařil, pokud je pro váš účet vyžadováno Multi-Factor Authentication služby Azure AD. V takovém případě použijte jeden z předchozích dvou režimů ověřování nebo místo toho použijte jiný účet, který nevyžaduje MFA.
         >
         > Je také možné, že se vyžaduje ověřování MFA, pokud je registrace zařízení Azure (která se používá v rámci zabezpečení Azure AD heslem) nakonfigurovaná tak, aby globálně vyžadovala MFA. Pokud chcete tento požadavek vyřešit, můžete použít jiný účet, který podporuje MFA s jedním z předchozích dvou režimů ověřování, nebo můžete také dočasně uvolnit požadavek MFA pro registraci zařízení Azure.
         >
-        > Tuto změnu provedete tak, že vyhledáte a vyberete **Azure Active Directory** v Azure Portal a pak vyberete **zařízení > nastavení zařízení** . Nastavte **vyžadovat vícefaktorové ověřování, aby se zařízení připojila** k *žádnému* . Nezapomeňte znovu nakonfigurovat toto nastavení zpět na *Ano* , jakmile se registrace dokončí.
+        > Tuto změnu provedete tak, že vyhledáte a vyberete **Azure Active Directory** v Azure Portal a pak vyberete **zařízení > nastavení zařízení**. Nastavte **vyžadovat vícefaktorové ověřování, aby se zařízení připojila** k *žádnému*. Nezapomeňte znovu nakonfigurovat toto nastavení zpět na *Ano* , jakmile se registrace dokončí.
         >
         > Pro účely testování doporučujeme vynechat požadavky na vícefaktorové ověřování.
 
@@ -252,7 +252,7 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
     
     Tento krok se spouští jednou pro každou doménovou strukturu.
 
-    `Register-AzureADPasswordProtectionForest`Rutina podporuje následující tři režimy ověřování. První dva režimy podporují Azure Multi-Factor Authentication ale třetí režim ne.
+    `Register-AzureADPasswordProtectionForest`Rutina podporuje následující tři režimy ověřování. První dva režimy podporují Azure AD Multi-Factor Authentication ale třetí režim ne.
 
     > [!TIP]
     > Před dokončením této rutiny pro konkrétního tenanta Azure může nastat znatelné zpoždění. Pokud není nahlášená chyba, nedělejte si starosti s touto prodlevou.
@@ -282,11 +282,11 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
         ```
 
         > [!NOTE]
-        > Tento režim se nezdařil, pokud pro váš účet potřebujete Azure Multi-Factor Authentication. V takovém případě použijte jeden z předchozích dvou režimů ověřování nebo místo toho použijte jiný účet, který nevyžaduje MFA.
+        > Tento režim se nezdařil, pokud je pro váš účet vyžadováno Multi-Factor Authentication služby Azure AD. V takovém případě použijte jeden z předchozích dvou režimů ověřování nebo místo toho použijte jiný účet, který nevyžaduje MFA.
         >
         > Je také možné, že se vyžaduje ověřování MFA, pokud je registrace zařízení Azure (která se používá v rámci zabezpečení Azure AD heslem) nakonfigurovaná tak, aby globálně vyžadovala MFA. Pokud chcete tento požadavek vyřešit, můžete použít jiný účet, který podporuje MFA s jedním z předchozích dvou režimů ověřování, nebo můžete také dočasně uvolnit požadavek MFA pro registraci zařízení Azure.
         >
-        > Tuto změnu provedete tak, že vyhledáte a vyberete **Azure Active Directory** v Azure Portal a pak vyberete **zařízení > nastavení zařízení** . Nastavte **vyžadovat vícefaktorové ověřování, aby se zařízení připojila** k *žádnému* . Nezapomeňte znovu nakonfigurovat toto nastavení zpět na *Ano* , jakmile se registrace dokončí.
+        > Tuto změnu provedete tak, že vyhledáte a vyberete **Azure Active Directory** v Azure Portal a pak vyberete **zařízení > nastavení zařízení**. Nastavte **vyžadovat vícefaktorové ověřování, aby se zařízení připojila** k *žádnému*. Nezapomeňte znovu nakonfigurovat toto nastavení zpět na *Ano* , jakmile se registrace dokončí.
         >
         > Pro účely testování doporučujeme vynechat požadavky na vícefaktorové ověřování.
 

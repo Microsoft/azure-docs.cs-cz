@@ -1,6 +1,6 @@
 ---
-title: Shromažďování uživatelských dat Azure MFA – Azure Active Directory
-description: Jaké informace slouží k usnadnění ověřování uživatelů pomocí Azure Multi-Factor Authentication?
+title: Shromažďování uživatelských dat Azure AD MFA – Azure Active Directory
+description: Jaké informace slouží k usnadnění ověřování uživatelů pomocí Multi-Factor Authentication Azure AD?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03ec8eddf55c6b3e90b56501a2e3b657bef6fc8c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ed0d4b754911dda49776379fb318390eae411000
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964192"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839008"
 ---
-# <a name="azure-multi-factor-authentication-user-data-collection"></a>Shromažďování uživatelských dat v Azure Multi-Factor Authentication
+# <a name="azure-ad-multi-factor-authentication-user-data-collection"></a>Shromažďování uživatelských dat Multi-Factor Authentication Azure AD
 
-Tento dokument vysvětluje, jak najít informace o uživateli shromažďované službou Azure Multi-Factor Authentication Server (MFA Server) a Azure MFA (v cloudu) v případě, že ji chcete odebrat.
+Tento dokument vysvětluje, jak najít informace o uživateli shromážděné službou Azure Multi-Factor Authentication Server (MFA Server) a Azure AD MFA (v cloudu) v případě, že ji chcete odebrat.
 
 [!INCLUDE [gdpr-hybrid-note](../../../includes/gdpr-hybrid-note.md)]
 
 ## <a name="information-collected"></a>Shromážděné informace
 
-Server MFA, rozšíření serveru NPS a Windows Server 2016 Azure MFA AD FS adaptér shromažďují a ukládají následující informace po dobu 90 dnů.
+Server MFA, rozšíření serveru NPS a Windows Server 2016 Azure AD MFA AD FS adaptér shromažďují a ukládají následující informace po dobu 90 dnů.
 
 Pokusy o ověření (používané pro vytváření sestav a řešení potíží):
 
@@ -89,7 +89,7 @@ Bloky (slouží k určení blokovaného stavu a pro vytváření sestav):
 - Kód země
 - Telefonní číslo
 - Formát telefonního čísla
-- Linka
+- Rozšíření
 - Vyčistit rozšíření
 - Blokované
 - Důvod blokování
@@ -98,7 +98,7 @@ Bloky (slouží k určení blokovaného stavu a pro vytváření sestav):
 - Uzamčení účtu
 - Výstraha týkající se podvodů
 - Výstraha týkající se podvodů není blokovaná.
-- Language
+- Jazyk
 
 Vynechané funkce (používané pro vytváření sestav):
 
@@ -109,7 +109,7 @@ Vynechané funkce (používané pro vytváření sestav):
 - Kód země
 - Telefonní číslo
 - Formát telefonního čísla
-- Linka
+- Rozšíření
 - Vyčistit rozšíření
 - Důvod pro obejití
 - Časové razítko dokončení
@@ -163,26 +163,26 @@ Pomocí [portálu ochrany osobních údajů Microsoftu](https://portal.azure.com
 
 - Úplné odebrání dat může trvat až 30 dnů.
 
-## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Shromáždění dat z Windows serveru 2016 Azure MFA AD FS Adapter
+## <a name="gather-data-from-windows-server-2016-azure-ad-mfa-ad-fs-adapter"></a>Shromáždění dat z Windows serveru 2016 Azure AD MFA AD FS Adapter
 
 K vytvoření žádosti o export použijte [portál ochrany osobních údajů společnosti Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) . 
 
 - Informace o MFA jsou zahrnuté do exportu, což může trvat hodiny nebo dny, než se dokončí.
 - Výskyty uživatelského jména v protokolech událostí trasování nebo ladění AD FS (Pokud je povoleno) se považují za provozní a duplikují se na informace uvedené v exportu.
 
-## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Odstranění dat z Windows serveru 2016 Azure MFA AD FS Adapter
+## <a name="delete-data-from-windows-server-2016-azure-ad-mfa-ad-fs-adapter"></a>Odstranění dat z Windows serveru 2016 Azure AD MFA AD FS Adapter
 
 Pomocí [portálu ochrany osobních údajů Microsoftu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvořte žádost o uzavření účtu a odstraňte všechny informace o cloudové službě MFA shromažďované pro tohoto uživatele.
 
 - Úplné odebrání dat může trvat až 30 dnů.
 
-## <a name="gather-data-for-azure-mfa"></a>Shromažďování dat pro Azure MFA
+## <a name="gather-data-for-azure-ad-mfa"></a>Shromažďování dat pro Azure AD MFA
 
 K vytvoření žádosti o export použijte [portál ochrany osobních údajů společnosti Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) .
 
 - Informace o MFA jsou zahrnuté do exportu, což může trvat hodiny nebo dny, než se dokončí.
 
-## <a name="delete-data-for-azure-mfa"></a>Odstranit data pro Azure MFA
+## <a name="delete-data-for-azure-ad-mfa"></a>Odstranit data pro Azure AD MFA
 
 Pomocí [portálu ochrany osobních údajů Microsoftu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvořte žádost o uzavření účtu a odstraňte všechny informace o cloudové službě MFA shromažďované pro tohoto uživatele.
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbbf1a6aebf54c7928fe0636262055f37d7f93bd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 59de3123dc991d0314cd9046d83712d17da53d9f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966538"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837817"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Kurz: povolení odemknutí účtu nebo resetování hesla uživateli pomocí samoobslužného resetování hesla Azure Active Directory
 
@@ -48,7 +48,7 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
 
 ## <a name="enable-self-service-password-reset"></a>Povolení samoobslužného resetování hesel
 
-Azure AD umožňuje povolit SSPR pro *žádné*, *vybrané*nebo *všechny* uživatele. Tato podrobná možnost umožňuje vybrat podmnožinu uživatelů k otestování procesu registrace a pracovního postupu SSPR. Až budete s tímto procesem spokojeni a můžete tyto požadavky sdělit širší skupině uživatelů, můžete vybrat skupinu uživatelů, které chcete povolit pro SSPR. Nebo můžete povolit SSPR pro všechny uživatele v tenantovi Azure AD.
+Azure AD umožňuje povolit SSPR pro *žádné*, *vybrané* nebo *všechny* uživatele. Tato podrobná možnost umožňuje vybrat podmnožinu uživatelů k otestování procesu registrace a pracovního postupu SSPR. Až budete s tímto procesem spokojeni a můžete tyto požadavky sdělit širší skupině uživatelů, můžete vybrat skupinu uživatelů, které chcete povolit pro SSPR. Nebo můžete povolit SSPR pro všechny uživatele v tenantovi Azure AD.
 
 > [!NOTE]
 >
@@ -57,8 +57,8 @@ Azure AD umožňuje povolit SSPR pro *žádné*, *vybrané*nebo *všechny* uživ
 V tomto kurzu nakonfigurujte SSPR pro skupinu uživatelů ve skupině testů. V následujícím příkladu se používá skupina *SSPR-test-Group* . Podle potřeby zadejte svou vlastní skupinu Azure AD:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu s oprávněními *globálního správce* .
-1. Vyhledejte a vyberte **Azure Active Directory**a potom v nabídce na levé straně zvolte **resetování hesla** .
-1. Na stránce **vlastnosti** v části možnost *Samoobslužné resetování hesla povoleno*vyberte **Vybrat skupinu** .
+1. Vyhledejte a vyberte **Azure Active Directory** a potom v nabídce na levé straně zvolte **resetování hesla** .
+1. Na stránce **vlastnosti** v části možnost *Samoobslužné resetování hesla povoleno* vyberte **Vybrat skupinu** .
 1. Vyhledejte a vyberte skupinu Azure AD, například *SSPR-test-Group*, a pak zvolte *Vybrat*.
 
     [![Vyberte skupinu v Azure Portal pro povolení samoobslužného resetování ](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png) hesla.](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
@@ -134,9 +134,9 @@ V následujícím kurzu tohoto seriálu nakonfigurujete zpětný zápis hesla. T
 
 Pokud už nechcete používat funkci SSPR, kterou jste nakonfigurovali v rámci tohoto kurzu, nastavte stav SSPR na **none** pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Vyhledejte a vyberte **Azure Active Directory**a potom v nabídce na levé straně zvolte **resetování hesla** .
-1. Na stránce **vlastnosti** v části možnost *Samoobslužné resetování hesla povoleno*vyberte možnost **žádná**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Vyhledejte a vyberte **Azure Active Directory** a potom v nabídce na levé straně zvolte **resetování hesla** .
+1. Na stránce **vlastnosti** v části možnost *Samoobslužné resetování hesla povoleno* vyberte možnost **žádná**.
 1. Pokud chcete použít změnu SSPR, vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
@@ -149,4 +149,4 @@ V tomto kurzu jste povolili Samoobslužné resetování hesla služby Azure AD p
 > * Testování procesu SSPR jako uživatel
 
 > [!div class="nextstepaction"]
-> [Povolení služby Azure Multi-Factor Authentication](./tutorial-enable-azure-mfa.md)
+> [Povolit Multi-Factor Authentication služby Azure AD](./tutorial-enable-azure-mfa.md)
