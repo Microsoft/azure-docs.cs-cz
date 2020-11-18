@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f99d57e084a6a765b8598ba7f8eebbd7ddb34d74
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7d9c4dff1e4a3ba7c7a2b11311e97eb5e66a1585
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964634"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839297"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Povolit přihlašování k bezpečnostnímu klíči s nezabezpečenými hesly (Preview)
 
@@ -29,7 +29,7 @@ Tento dokument se zaměřuje na povolení ověřování pomocí hesla založené
 
 ## <a name="requirements"></a>Požadavky
 
-- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Multi-Factor Authentication Azure AD](howto-mfa-getstarted.md)
 - Povolit [souhrnnou registraci informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md)
 - Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys)
 - Operace WebAuthN vyžaduje Windows 10 verze 1903 nebo vyšší * *
@@ -50,9 +50,9 @@ Funkce registrace pro metody ověřování nevyužívající hesla se spoléhaj�
 
 ### <a name="enable-fido2-security-key-method"></a>Povolit metodu klíče zabezpečení FIDO2
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory**  >  zásady**ověřování**  >  **metody**ověřování  >  **(Preview)**.
-1. V části **klíč zabezpečení FIDO2**metody vyberte následující možnosti:
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přejděte na **Azure Active Directory**  >  zásady **ověřování**  >  **metody** ověřování  >  **(Preview)**.
+1. V části **klíč zabezpečení FIDO2** metody vyberte následující možnosti:
    1. **Povolit** – Ano nebo ne
    1. **Cíl** – všichni uživatelé nebo vybrat uživatele
 1. **Uložte** konfiguraci.
@@ -62,8 +62,8 @@ Funkce registrace pro metody ověřování nevyužívající hesla se spoléhaj�
 1. Přejděte na [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
 1. Přihlaste se, pokud ještě není.
 1. Klikněte na **informace o zabezpečení**.
-   1. Pokud má uživatel již alespoň jednu zaregistrovanou metodu Azure Multi-Factor Authentication, může ihned zaregistrovat klíč zabezpečení FIDO2.
-   1. Pokud nemají zaregistrovanou alespoň jednu metodu služby Azure Multi-Factor Authentication, musí ji přidat.
+   1. Pokud má uživatel již alespoň jednu registrovanou metodu služby Azure AD Multi-Factor Authentication, může ihned zaregistrovat klíč zabezpečení FIDO2.
+   1. Pokud nemají zaregistrovanou alespoň jednu metodu služby Azure AD Multi-Factor Authentication, musí ji přidat.
 1. Přidejte klíč zabezpečení FIDO2, a to tak, že kliknete na **Přidat metodu** a zvolíte **klíč zabezpečení**.
 1. Vyberte **zařízení USB** nebo **zařízení NFC**.
 1. Připravte si klíč a klikněte na tlačítko **Další**.
@@ -105,4 +105,4 @@ Pracujeme na podpoře funkce, která umožňuje změnu UPN na hybridních připo
 
 [Další informace o registraci zařízení](../devices/overview.md)
 
-[Další informace o Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Další informace o Multi-Factor Authentication Azure AD](../authentication/howto-mfa-getstarted.md)

@@ -1,6 +1,6 @@
 ---
-title: Výzvy k Azure Multi-Factor Authentication a doba platnosti relace
-description: Přečtěte si o Doporučené konfiguraci pro výzvy k opakovanému ověření pomocí Azure Multi-Factor Authentication a o tom, jak se používá doba života relace.
+title: Výzvy Multi-Factor Authentication Azure AD a doba platnosti relace
+description: Přečtěte si o Doporučené konfiguraci pro výzvy k ověření pomocí služby Azure AD Multi-Factor Authentication a o tom, jak se používá doba života relace.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a759d4e686f43133716cc1c40237db74a015210
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 87b30b12e75a583ccee9780f97a6492961365cca
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964940"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839671"
 ---
-# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Vylepší výzvy k opakovanému ověření a pochopení životnosti relace pro Azure Multi-Factor Authentication
+# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Můžete optimalizovat výzvy k opakovanému ověření a pochopit dobu životnosti relace pro Azure AD Multi-Factor Authentication
 
 Azure Active Directory (Azure AD) má několik nastavení, která určují, jak často se uživatelé potřebují znovu ověřit. Toto opakované ověřování může být u prvního faktoru, jako je heslo, FIDO nebo Microsoft Authenticator bez hesla nebo provádění vícefaktorového ověřování (MFA). Tato nastavení opakovaného ověřování můžete nakonfigurovat podle potřeby vlastního prostředí a uživatelského prostředí, které chcete.
 
@@ -70,7 +70,7 @@ Když uživatel vybere možnost **Ano** na stránce *zůstat přihlášeni?* bě
 
 ![Snímek obrazovky s ukázkovou výzvou pro zůstat přihlášeni](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/stay-signed-in-prompt.png)
 
-Pokud máte licenci Azure AD Premium 1, doporučujeme pro *trvalou relaci prohlížeče*použít zásady podmíněného přístupu. Tato zásada přepíše nastavení *zůstat přihlášená* a poskytuje vylepšené uživatelské prostředí. Pokud nemáte licenci Azure AD Premium 1, doporučujeme, abyste povolili nastavení zůstat přihlášeni pro vaše uživatele.
+Pokud máte licenci Azure AD Premium 1, doporučujeme pro *trvalou relaci prohlížeče* použít zásady podmíněného přístupu. Tato zásada přepíše nastavení *zůstat přihlášená* a poskytuje vylepšené uživatelské prostředí. Pokud nemáte licenci Azure AD Premium 1, doporučujeme, abyste povolili nastavení zůstat přihlášeni pro vaše uživatele.
 
 Další informace o konfiguraci možnosti, která umožní uživatelům zůstat přihlášeni, najdete v tématu [přizpůsobení přihlašovací stránky Azure AD](../fundamentals/customize-branding.md#customize-your-azure-ad-sign-in-page).
 
@@ -105,20 +105,20 @@ Když teď víte, jak různá nastavení fungují, a doporučená konfigurace, j
 Pokud chcete nakonfigurovat nebo zkontrolovat možnost *zůstat přihlášeni* , proveďte následující kroky:
 
 1. Na portálu Azure AD vyhledejte a vyberte *Azure Active Directory*.
-1. Vyberte **Branding společnosti**a pak pro každé národní prostředí zvolte **Zobrazit možnost pro zůstat přihlášení**.
-1. Zvolte *Ano*a pak vyberte **Uložit**.
+1. Vyberte **Branding společnosti** a pak pro každé národní prostředí zvolte **Zobrazit možnost pro zůstat přihlášení**.
+1. Zvolte *Ano* a pak vyberte **Uložit**.
 
 Pokud chcete pamatovat nastavení vícefaktorového ověřování, proveďte následující kroky:
 
 1. Na portálu Azure AD vyhledejte a vyberte *Azure Active Directory*.
-1. Vyberte **zabezpečení**a pak **MFA**.
-1. V části **Konfigurovat**vyberte **Další cloudová nastavení MFA**.
+1. Vyberte **zabezpečení** a pak **MFA**.
+1. V části **Konfigurovat** vyberte **Další cloudová nastavení MFA**.
 1. Na stránce *nastavení služby Multi-Factor Authentication Service* přejděte na možnost **Zapamatovat si nastavení vícefaktorového ověřování**. Toto nastavení zakažte zrušením zaškrtnutí políčka.
 
 Pokud chcete nakonfigurovat zásady podmíněného přístupu pro četnost přihlášení a trvalou relaci prohlížeče, proveďte následující kroky:
 
 1. Na portálu Azure AD vyhledejte a vyberte *Azure Active Directory*.
-1. Vyberte **zabezpečení**a pak **podmíněný přístup**.
+1. Vyberte **zabezpečení** a pak **podmíněný přístup**.
 1. Nakonfigurujte zásady pomocí doporučených možností správy relací popsaných v tomto článku.
 
 Pokud chcete zkontrolovat životnost tokenů, [použijte Azure AD PowerShell k dotazování všech zásad Azure AD](../develop/configure-token-lifetimes.md#prerequisites). Zakažte všechny zásady, které jste na svém místě.
@@ -136,4 +136,4 @@ Následující tabulka shrnuje doporučení založená na licencích:
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít, dokončete tento kurz a [Zabezpečte události přihlašování uživatelů pomocí Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md) nebo [použijte detekci rizik pro přihlášení uživatelů, aby mohli aktivovat Azure Multi-Factor Authentication](tutorial-risk-based-sspr-mfa.md).
+Pokud chcete začít, dokončete tento kurz a [Zabezpečte události přihlašování uživatelů pomocí Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md) nebo [použijte detekci rizik pro přihlášení uživatelů pro aktivaci Multi-Factor Authentication Azure AD](tutorial-risk-based-sspr-mfa.md).

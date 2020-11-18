@@ -1,6 +1,6 @@
 ---
-title: Kombinovaná registrace pro SSPR a Azure Multi-Factor Authentication – Azure Active Directory
-description: Přečtěte si o kombinovaném prostředí registrace pro Azure Active Directory, aby se uživatelé mohli zaregistrovat pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla.
+title: Kombinovaná registrace pro SSPR a Azure AD Multi-Factor Authentication-Azure Active Directory
+description: Přečtěte si o kombinovaném prostředí registrace pro Azure Active Directory, aby se uživatelé mohli zaregistrovat pro Azure AD Multi-Factor Authentication a Samoobslužné resetování hesla.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e1036e63b4fdef241350786fa3a246946a9223c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 22f43c5f9848670b9df4b061c5abb6cc30912172
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378002"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839790"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Souhrnné informace o registraci informací o zabezpečení pro Azure Active Directory
 
-Před kombinovanou registrací uživatelé zaregistrovali metody ověřování pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) samostatně. Lidem se zaznamenalo, že podobné metody byly použity pro Multi-Factor Authentication a SSPR, ale musely se zaregistrovat pro obě funkce. Teď se při kombinované registraci můžou uživatelé zaregistrovat jednou a získat výhody Multi-Factor Authentication i SSPR.
+Před kombinovanou registrací uživatelé zaregistrovali metody ověřování pro Azure AD Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) samostatně. Lidem se zaznamenalo, že podobné metody byly použity pro Multi-Factor Authentication a SSPR, ale musely se zaregistrovat pro obě funkce. Teď se při kombinované registraci můžou uživatelé zaregistrovat jednou a získat výhody Multi-Factor Authentication i SSPR.
 
 > [!NOTE]
 > Od 15. srpna 2020 budou všichni noví klienti Azure AD automaticky povoleni pro kombinovanou registraci.
@@ -53,15 +53,15 @@ Kombinovaná registrace podporuje následující metody ověřování a akce:
 
 | Metoda | Registrovat | Změnit | Odstranit |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Ano (maximálně 5) | No | Yes |
-| Jiná ověřovací aplikace | Ano (maximálně 5) | No | Yes |
-| Hardwarový token | No | No | Yes |
+| Microsoft Authenticator | Ano (maximálně 5) | Ne | Yes |
+| Jiná ověřovací aplikace | Ano (maximálně 5) | Ne | Yes |
+| Hardwarový token | Ne | Ne | Yes |
 | Rozložení | Yes | Yes | Yes |
 | Alternativní telefon | Yes | Yes | Yes |
 | Telefon do kanceláře | Yes | Yes | Yes |
 | E-mail | Yes | Yes | Yes |
-| Bezpečnostní otázky | Yes | No | Yes |
-| Hesla aplikací | Yes | No | Yes |
+| Bezpečnostní otázky | Yes | Ne | Yes |
+| Hesla aplikací | Yes | Ne | Yes |
 | FIDO2 klíče zabezpečení<br />*Spravovaný režim pouze ze stránky [bezpečnostní údaje](https://mysignins.microsoft.com/security-info)*| Yes | Yes | Yes |
 
 > [!NOTE]
@@ -142,8 +142,8 @@ Uživatel, který dříve nainstaloval alespoň jednu metodu, kterou lze použí
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít, přečtěte si kurzy, jak [Povolit Samoobslužné resetování hesla](tutorial-enable-sspr.md) a [Povolit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+Informace o tom, jak začít, najdete v kurzech [Povolení samoobslužného resetování hesla](tutorial-enable-sspr.md) a [Povolení Multi-Factor Authentication služby Azure AD](tutorial-enable-azure-mfa.md).
 
 Naučte se, jak [Povolit kombinovanou registraci ve vašem tenantovi](howto-registration-mfa-sspr-combined.md) nebo [přinutit uživatele, aby znovu zaregistrovali metody ověřování](howto-mfa-userdevicesettings.md#manage-user-authentication-options).
 
-Můžete si také projít [dostupné metody pro Azure Multi-Factor Authentication a SSPR](concept-authentication-methods.md).
+Můžete si také prohlédnout [dostupné metody pro Azure AD Multi-Factor Authentication a SSPR](concept-authentication-methods.md).

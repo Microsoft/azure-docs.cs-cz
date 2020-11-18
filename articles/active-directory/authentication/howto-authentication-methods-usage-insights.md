@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03989e37ac05228dade2fdcda43856e8a5240865
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fe8a916f4c3ce8869b6b487e33dcdecc061f8cbf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964906"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839586"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Použití metod ověřování & Insights (Preview)
 
-Využití & Insights vám umožní pochopit, jak metody ověřování pro funkce, jako je Azure Multi-Factor Authentication a Samoobslužné resetování hesla, fungují ve vaší organizaci. Tato funkce vytváření sestav poskytuje vaší organizaci prostředky, které vám pomohou pochopit, jaké metody se registrují a jak se používají.
+Využití & Insights vám umožní pochopit, jak metody ověřování pro funkce, jako je Azure AD Multi-Factor Authentication a Samoobslužné resetování hesla, fungují ve vaší organizaci. Tato funkce vytváření sestav poskytuje vaší organizaci prostředky, které vám pomohou pochopit, jaké metody se registrují a jak se používají.
 
 ## <a name="permissions-and-licenses"></a>Oprávnění a licence
 
@@ -31,14 +31,14 @@ K využití a přehledům můžou získat přístup následující role:
 - Správce zabezpečení
 - Čtečka sestav
 
-Pro přístup k používání a přehledům nejsou potřeba žádné další licence. Informace o licencování služby Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) najdete na [webu Azure Active Directory s cenami](https://azure.microsoft.com/pricing/details/active-directory/).
+Pro přístup k používání a přehledům nejsou potřeba žádné další licence. Informace o licencování služby Azure AD Multi-Factor Authentication a samoobslužného resetování hesla (SSPR) najdete na [webu Azure Active Directory s cenami](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
 Přístup k používání metod ověřování a přehledům:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory**  >  používání**resetování hesla**  >  **& přehledy**.
+1. Přejděte na **Azure Active Directory**  >  používání **resetování hesla**  >  **& přehledy**.
 1. Z přehledů **registrace** nebo **využití** můžete zvolit otevření předem filtrovaných sestav, které se budou filtrovat podle vašich potřeb.
 
 ![Přehled využití & Insights](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
@@ -61,11 +61,11 @@ Pomocí ovládacího prvku v pravém horním rohu můžete změnit rozsah dat pr
 
 ### <a name="registration-details"></a>Podrobnosti registrace
 
-Kliknutím na **zaregistrované uživatele**, **povoleným uživatelům**nebo **uživatelům, kteří** můžou používat dlaždice nebo přehledy, vás přenese podrobnosti o registraci.
+Kliknutím na **zaregistrované uživatele**, **povoleným uživatelům** nebo **uživatelům, kteří** můžou používat dlaždice nebo přehledy, vás přenese podrobnosti o registraci.
 
 Sestava Podrobnosti o registraci zobrazuje pro každého uživatele následující informace:
 
-- Název
+- Name
 - Uživatelské jméno
 - Stav registrace (vše, registrováno, Neregistrováno)
 - Povolený stav (vše, povoleno, Nepovoleno)
@@ -80,7 +80,7 @@ Kliknutím na registrace nebo resetování grafů zobrazíte podrobnosti o reset
 
 Sestava obnovit podrobnosti zobrazuje události registrace a resetování za posledních 30 dní, včetně:
 
-- Název
+- Name
 - Uživatelské jméno
 - Funkce (vše, registrace, resetování)
 - Metoda ověřování (oznámení aplikace, kód aplikace, telefonní hovor, volání Office, SMS, E-mail, bezpečnostní otázky)
@@ -92,7 +92,7 @@ Pomocí ovládacích prvků v horní části seznamu můžete vyhledat uživatel
 
 Data zobrazená v těchto sestavách se budou zpozdit až o 60 minut. V Azure Portal existuje pole Poslední aktualizace, které vám umožní určit, jak se vaše data nacházejí.
 
-Data o využití a Insights nejsou náhradou za sestavy aktivit Azure Multi-Factor Authentication ani informace obsažené v sestavě přihlášení k Azure AD.
+Data o využití a Insights nejsou náhradou za sestavy aktivit Multi-Factor Authentication Azure AD ani informace obsažené v sestavě přihlášení k Azure AD.
 
 Sestavu nejde aktuálně filtrovat, aby vyloučila externí uživatele.
 

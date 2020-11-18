@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f0c19e33ab6f91e69f9c7dbc5bc29fef1fd53bb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0143da9c1961b4123467120210135f7db2c582c8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964872"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839569"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Plánování nasazení ověřování s neplatnými hesly v Azure Active Directory
 
@@ -67,9 +67,9 @@ Organizace musí před zahájením nasazení s neplatným heslem splňovat násl
 
 | Požadavek | Ověřovací aplikace | FIDO2 klíče zabezpečení |
 | --- | --- | --- |
-| Je povolená [Kombinovaná registrace pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR)](howto-registration-mfa-sspr-combined.md) . | √ | √ |
-| [Uživatelé můžou provádět ověřování Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | √ | √ |
-| [Uživatelé zaregistrovali pro Azure Multi-Factor Authentication a SSPR](howto-registration-mfa-sspr-combined.md) | √ | √ |
+| Je povolená [Kombinovaná registrace pro Azure AD Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR)](howto-registration-mfa-sspr-combined.md) . | √ | √ |
+| [Uživatelé můžou provádět Multi-Factor Authentication služby Azure AD.](howto-mfa-getstarted.md) | √ | √ |
+| [Uživatelé zaregistrovali pro Azure AD Multi-Factor Authentication a SSPR](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [Uživatelé zaregistrovali svoje mobilní zařízení Azure Active Directory](../devices/overview.md) | √ |   |
 | Windows 10 verze 1809 nebo vyšší s použitím podporovaného prohlížeče, jako je Microsoft Edge nebo Mozilla Firefox <br> (verze 67 nebo vyšší). <br> *Společnost Microsoft doporučuje pro nativní podporu verzi 1903 nebo vyšší*. |   | √ |
 | Kompatibilní klíče zabezpečení FIDO2 Ujistěte se, že používáte zařízení se zabezpečením [Microsoft testováno a ověřené](./concept-authentication-passwordless.md) FIDO2 nebo jiné kompatibilní zařízení zabezpečení FIDO2. |   | √ |
@@ -78,9 +78,9 @@ Organizace musí před zahájením nasazení s neplatným heslem splňovat násl
 
 Požadavky na Windows Hello jsou vysoce závislé na tom, jestli nasazujete v konfiguraci místních, hybridních nebo cloudových konfigurací. Další informace najdete v [úplném seznamu požadavků pro Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Multi-Factor Authentication Azure AD
 
-Uživatelé registrují svou metodu nejenom hesla jako součást toku registrace Azure Multi-Factor Authentication. Vícefaktorové ověřování s uživatelským jménem a heslem společně s jinou registrovanou metodou se dá použít jako záložní pro případ, že v některých scénářích nemůžou použít svůj telefon nebo bezpečnostní klíč.
+Uživatelé registrují svou metodu nejenom hesla jako součást toku registrace Multi-Factor Authentication služby Azure AD. Vícefaktorové ověřování s uživatelským jménem a heslem společně s jinou registrovanou metodou se dá použít jako záložní pro případ, že v některých scénářích nemůžou použít svůj telefon nebo bezpečnostní klíč.
 
 ### <a name="licensing"></a>Licensing 
 Pro ověřování bez hesla se neúčtují žádné další poplatky, i když některé předpoklady můžou vyžadovat předplatné Premium. Podrobné informace o funkcích a licencování najdete na [stránce Azure Active Directory licencování](https://azure.microsoft.com/pricing/details/active-directory/). 
@@ -93,7 +93,7 @@ Vezměte v úvahu své obchodní potřeby a případy použití pro jednotlivé 
 
 Následující tabulka popisuje případy použití, které mají být implementovány během tohoto projektu.
 
-| Plošný | Popis |
+| Oblast | Popis |
 | --- | --- |
 | **Přístup** | Přihlášení bez hesla je k dispozici v podnikovém nebo osobním zařízení v rámci podnikové sítě nebo mimo ni. |
 | **Auditování** | Data o využití jsou k dispozici správcům k zaznamenávání téměř v reálném čase. <br> Data o využití se stáhnou do podnikových systémů aspoň každých 29 dní nebo se použije nástroj SIEM Tool. |
@@ -140,7 +140,7 @@ Přepíná telefon s iOS nebo Androidem do silných přihlašovacích údajů be
 
 **AD FS Integration** – Pokud uživatel povolí Microsoft Authenticator přihlašovací údaje bez hesla, ověřování pro tohoto uživatele standardně posílá oznámení ke schválení. Uživatelům v hybridním tenantovi se zabrání v přesměrování na službu AD FS, aby se přihlásili, pokud nevyberou místo toho použít heslo. Tento proces také obchází všechny místní zásady podmíněného přístupu a předávací ověřovací toky. Pokud je však zadán *login_hint* , uživatel je předaný do služby ADFS a obejít možnost použití přihlašovacích údajů bez hesla.
 
-**Azure Multi-Factor Authentication Server** – koncoví uživatelé s povolenou službou Multi-Factor Authentication prostřednictvím místního Azure MFA serveru organizace můžou vytvořit a použít jenom jedno přihlašovací údaje pro přihlášení k telefonu bez hesla. Pokud se uživatel pokusí upgradovat více instalací (5 nebo více) Microsoft Authenticator s přihlašovacími údaji, může tato změna způsobit chybu.
+**Služba Azure AD Multi-Factor Authentication serveru** – koncoví uživatelé s povoleným ověřováním službou Multi-Factor Authentication prostřednictvím místního Azure MFA serveru organizace může vytvořit a použít jenom jedno přihlašovací údaje pro přihlášení k telefonu bez hesla. Pokud se uživatel pokusí upgradovat více instalací (5 nebo více) Microsoft Authenticator s přihlašovacími údaji, může tato změna způsobit chybu.
 
 **Registrace zařízení** : Pokud chcete používat ověřovací aplikaci pro ověřování bez hesla, musí být zařízení zaregistrované v TENANTOVI Azure AD a nemůže být sdíleným zařízením. Zařízení se dá zaregistrovat jenom v jednom tenantovi. Tento limit znamená, že pro přihlášení telefonem pomocí ověřovací aplikace se podporuje jenom jeden pracovní nebo školní účet.
 

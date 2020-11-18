@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b88b2ca0a420295a7a53608f02923e72045e1c44
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8fba2610b3343744c448e390bc2d713b38da481d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964736"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839467"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Povolení přihlášení k bezpečnostnímu klíči bez hesla pro zařízení s Windows 10 pomocí Azure Active Directory (Preview)
 
@@ -29,17 +29,17 @@ Tento dokument se zaměřuje na povolení ověřování bez hesla založeného n
 
 | Typ zařízení | Připojené k Azure AD | k hybridní službě Azure AD. |
 | --- | --- | --- |
-| [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
+| [Multi-Factor Authentication Azure AD](howto-mfa-getstarted.md) | X | X |
 | [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md) | X | X |
 | Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | Operace WebAuthN vyžaduje Windows 10 verze 1903 nebo vyšší. | X | X |
-| [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1909 nebo vyšší. | × |   |
-| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 verze 2004 nebo vyšší. |   | × |
-| Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | × |
-| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | × |
+| [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1909 nebo vyšší. | X |   |
+| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 verze 2004 nebo vyšší. |   | X |
+| Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | X |
+| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | X |
 | [Microsoft Intune](/intune/fundamentals/what-is-intune) (volitelné) | X | X |
 | Zřizovací balíček (volitelné) | X | X |
-| Zásady skupiny (volitelné) |   | × |
+| Zásady skupiny (volitelné) |   | X |
 
 ### <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
@@ -78,9 +78,9 @@ Organizace se můžou rozhodnout použít jednu nebo více následujících meto
 
 Pokud chcete povolit použití klíčů zabezpečení pomocí Intune, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Přejděte na **Microsoft Intune**  >  **registrace zařízení registrace zařízení**s  >  **Windows registrace**  >  **Windows Hello pro firmy**–  >  **vlastnosti**.
-1. V části **Nastavení**nastavte **možnost použít klíče zabezpečení pro přihlášení** a **Povolit**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přejděte na **Microsoft Intune**  >  **registrace zařízení registrace zařízení** s  >  **Windows registrace**  >  **Windows Hello pro firmy**–  >  **vlastnosti**.
+1. V části **Nastavení** nastavte **možnost použít klíče zabezpečení pro přihlášení** a **Povolit**.
 
 Konfigurace klíčů zabezpečení pro přihlášení nezávisí na konfiguraci Windows Hello pro firmy.
 
@@ -88,8 +88,8 @@ Konfigurace klíčů zabezpečení pro přihlášení nezávisí na konfiguraci 
 
 Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele přihlašovacích údajů, použijte následující vlastní nastavení přes Intune:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Přejděte na **Microsoft Intune**  >  **konfigurační**  >  **profily**zařízení  >  **vytvořit profil**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přejděte na **Microsoft Intune**  >  **konfigurační**  >  **profily** zařízení  >  **vytvořit profil**.
 1. Nakonfigurujte nový profil s následujícím nastavením:
    - Název: bezpečnostní klíče pro Windows Sign-In
    - Popis: povolí použití klíčů zabezpečení FIDO během přihlašování Windows.
@@ -117,7 +117,7 @@ Pro zařízení, která nespravuje služba Intune, je možné nainstalovat zřiz
 1. V nově vytvořeném projektu přejděte do **nastavení modulu runtime**  >  **WindowsHelloForBusiness**  >  **SecurityKeys**  >  **UseSecurityKeyForSignIn**.
 1. Nastavte **UseSecurityKeyForSignIn** na *povoleno*.
 1. Vyberte **exportovat**  >  **zřizovací balíček** .
-1. V okně **sestavení** ponechte výchozí nastavení v části **Popis zřizovacího balíčku**a pak vyberte **Další**.
+1. V okně **sestavení** ponechte výchozí nastavení v části **Popis zřizovacího balíčku** a pak vyberte **Další**.
 1. V okně **sestavení** v části **Vybrat podrobnosti zabezpečení pro zřizovací balíček** ponechte výchozí nastavení a vyberte **Další**.
 1. Poznamenejte si nebo změňte cestu v oknech **sestavení** v části **Vyberte místo, kde se má zřizovací balíček uložit** , a vyberte **Další**.
 1. Na stránce **sestavení balíčku pro zřizování** vyberte **sestavit** .
@@ -129,7 +129,7 @@ Pro zařízení, která nespravuje služba Intune, je možné nainstalovat zřiz
 
 ### <a name="enable-with-group-policy"></a>Povolit s Zásady skupiny
 
-Pro **zařízení připojená k hybridní službě Azure AD**můžou organizace nakonfigurovat následující nastavení zásady skupiny, aby se povolilo přihlášení k bezpečnostnímu klíči Fido. Toto nastavení najdete v části **Konfigurace počítače**  >  **šablony pro správu**přihlášení  >  **System**  >  **Logon**  >  **k nástroji zapnout bezpečnostní klíč**:
+Pro **zařízení připojená k hybridní službě Azure AD** můžou organizace nakonfigurovat následující nastavení zásady skupiny, aby se povolilo přihlášení k bezpečnostnímu klíči Fido. Toto nastavení najdete v části **Konfigurace počítače**  >  **šablony pro správu** přihlášení  >  **System**  >  **Logon**  >  **k nástroji zapnout bezpečnostní klíč**:
 
 - Nastavením této zásady na **povoleno** umožňuje uživatelům přihlašovat se pomocí bezpečnostních klíčů.
 - Nastavení této zásady na **zakázáno** nebo **Nenakonfigurováno** zabrání uživatelům v přihlašování pomocí bezpečnostních klíčů.
@@ -164,4 +164,4 @@ Pokud byste chtěli sdílet zpětnou vazbu nebo narazit na problémy při zobraz
 
 [Další informace o registraci zařízení](../devices/overview.md)
 
-[Další informace o Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Další informace o Multi-Factor Authentication Azure AD](../authentication/howto-mfa-getstarted.md)

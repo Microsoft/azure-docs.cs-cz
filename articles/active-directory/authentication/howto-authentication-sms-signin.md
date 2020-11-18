@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdc0dea825cb32275a2ada3a49d7d622180aa468
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a1da460933269a21afaf8ec7d805ec6f43fce926
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166623"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839401"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Konfigurace a povolení ověřování na základě serveru SMS pomocí Azure Active Directory (Preview)
 
@@ -45,7 +45,7 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 
 Během veřejné verze Preview ověřování založeného na serveru SMS platí následující omezení:
 
-* Ověřování pomocí serveru SMS není aktuálně kompatibilní s Azure Multi-Factor Authentication.
+* Ověřování pomocí serveru SMS není aktuálně kompatibilní s Multi-Factor Authentication Azure AD.
 * S výjimkou týmů nejsou ověřování pomocí serveru SMS v současnosti kompatibilní s nativními aplikacemi Office.
 * Ověřování pomocí serveru SMS se pro účty B2B nedoporučuje.
 * Federované uživatele se nebudou ověřovat v domovském tenantovi. Ověřují se jenom v cloudu.
@@ -79,28 +79,28 @@ Nejdřív pro vašeho tenanta Azure AD povolíme ověřování pomocí SMS.
 Při ověřování pomocí serveru SMS ve vašem tenantovi Azure AD teď vyberte nějaké uživatele nebo skupiny, kterým chcete tuto metodu ověřování povolit.
 
 1. V okně zásady ověřování textové zprávy nastavte **cíl** na *Vybrat uživatele*.
-1. Zvolte možnost **Přidat uživatele nebo skupiny**a pak vyberte testovacího uživatele nebo skupinu, například *uživatele contoso* nebo *Contoso SMS*.
+1. Zvolte možnost **Přidat uživatele nebo skupiny** a pak vyberte testovacího uživatele nebo skupinu, například *uživatele contoso* nebo *Contoso SMS*.
 
     [![Vyberte možnost Uživatelé nebo skupiny a povolte ověřování pomocí serveru SMS v Azure Portal.](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png)](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
 
-1. Když vyberete uživatele nebo skupiny, klikněte na **Vybrat**a **uložte** aktualizované zásady metody ověřování.
+1. Když vyberete uživatele nebo skupiny, klikněte na **Vybrat** a **uložte** aktualizované zásady metody ověřování.
 
 Každý uživatel, který je povolený v zásadě metody ověřování pomocí textové zprávy, musí mít licenci, a to i v případě, že ho nepoužívají. Ujistěte se, že máte příslušné licence pro uživatele, které povolíte v zásadách metody ověřování, zejména pokud tuto funkci povolíte pro velké skupiny uživatelů.
 
 ## <a name="set-a-phone-number-for-user-accounts"></a>Nastavení telefonního čísla pro uživatelské účty
 
-Pro uživatele jsou nyní povoleny ověřování pomocí serveru SMS, ale jejich telefonní číslo musí být přidruženo k profilu uživatele ve službě Azure AD, aby se mohli přihlásit. Uživatel může [toto telefonní číslo nastavit](../user-help/sms-sign-in-explainer.md) v *mém profilu*, nebo můžete toto telefonní číslo přiřadit pomocí Azure Portal. Telefonní čísla můžou nastavit *globální správci*, *Správci ověřování*nebo *Správci privilegovaného ověřování*.
+Pro uživatele jsou nyní povoleny ověřování pomocí serveru SMS, ale jejich telefonní číslo musí být přidruženo k profilu uživatele ve službě Azure AD, aby se mohli přihlásit. Uživatel může [toto telefonní číslo nastavit](../user-help/sms-sign-in-explainer.md) v *mém profilu*, nebo můžete toto telefonní číslo přiřadit pomocí Azure Portal. Telefonní čísla můžou nastavit *globální správci*, *Správci ověřování* nebo *Správci privilegovaného ověřování*.
 
-Pokud je telefonní číslo nastavené na znaménko SMS, je k dispozici také pro použití s [Azure Multi-Factor Authentication][tutorial-azure-mfa] a [Samoobslužné resetování hesla][tutorial-sspr].
+Pokud je telefonní číslo nastavené na znaménko SMS, je k dispozici také pro použití se službou [Azure AD Multi-Factor Authentication][tutorial-azure-mfa] a [Samoobslužné resetování hesla][tutorial-sspr].
 
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V navigační nabídce na levé straně okna Azure Active Directory vyberte **Uživatelé**.
 1. V předchozí části vyberte uživatele, kterého jste povolili pro ověřování pomocí serveru SMS, jako je například *uživatel společnosti Contoso*, a pak vyberte **metody ověřování**.
-1. Vyberte **+ Přidat metodu ověřování**a pak v rozevírací nabídce *zvolit metodu* zvolte **telefonní číslo**.
+1. Vyberte **+ Přidat metodu ověřování** a pak v rozevírací nabídce *zvolit metodu* zvolte **telefonní číslo**.
 
     Zadejte telefonní číslo uživatele, včetně kódu země, například *+ 1 XXXXXXXXX*. Azure Portal ověří, jestli je telefonní číslo ve správném formátu.
 
-    Pak z rozevírací nabídky *typ telefonu* vyberte *mobilní zařízení*, *alternativní mobilní zařízení*nebo *jiné* podle potřeby.
+    Pak z rozevírací nabídky *typ telefonu* vyberte *mobilní zařízení*, *alternativní mobilní zařízení* nebo *jiné* podle potřeby.
 
     :::image type="content" source="media/howto-authentication-sms-signin/set-user-phone-number.png" alt-text="Nastavení telefonního čísla pro uživatele v Azure Portal pro použití s ověřováním pomocí serveru SMS":::
 
@@ -108,14 +108,14 @@ Pokud je telefonní číslo nastavené na znaménko SMS, je k dispozici také pr
 
 1. Chcete-li použít telefonní číslo na účet uživatele, vyberte možnost **Přidat**.
 
-Po úspěšném zřízení se u *přihlašovacích práv SMS*zobrazí zaškrtnutí.
+Po úspěšném zřízení se u *přihlašovacích práv SMS* zobrazí zaškrtnutí.
 
 ## <a name="test-sms-based-sign-in"></a>Testování přihlášení pomocí serveru SMS
 
 Pokud chcete otestovat uživatelský účet, který je teď povolený pro přihlašování založené na SMS, proveďte následující kroky:
 
 1. Otevřete nové okno webového prohlížeče InPrivate nebo anonymním. [https://www.office.com][office]
-1. V pravém horním rohu vyberte **Přihlásit**se.
+1. V pravém horním rohu vyberte **Přihlásit** se.
 1. Na příkazovém řádku pro přihlášení zadejte telefonní číslo přidružené k uživateli v předchozí části a pak vyberte **Další**.
 
     ![Zadejte telefonní číslo na přihlašovací výzvu pro testovacího uživatele.](./media/howto-authentication-sms-signin/sign-in-with-phone-number.png)
@@ -132,9 +132,9 @@ Následující scénáře a postup řešení potíží se můžou použít, poku
 
 ### <a name="phone-number-already-set-for-a-user-account"></a>Telefonní číslo již bylo nastaveno pro uživatelský účet.
 
-Pokud již byl uživatel zaregistrován pro Azure Multi-Factor Authentication nebo Samoobslužné resetování hesla (SSPR), mají již telefonní číslo přidružené ke svému účtu. Toto telefonní číslo není k dispozici automaticky pro přihlášení pomocí serveru SMS.
+Pokud již byl uživatel zaregistrován pro Azure AD Multi-Factor Authentication nebo Samoobslužné resetování hesla (SSPR), již mají k účtu přidruženo telefonní číslo. Toto telefonní číslo není k dispozici automaticky pro přihlášení pomocí serveru SMS.
 
-Uživatel s telefonním číslem, který je už nastavený pro svůj účet, zobrazuje tlačítko, které na stránce **můj profil** *povolí přihlášení ke službě SMS* . Vyberte toto tlačítko a účet je povolený pro přihlašování založené na SMS a předchozí registraci Azure Multi-Factor Authentication nebo SSPR.
+Uživatel s telefonním číslem, který je už nastavený pro svůj účet, zobrazuje tlačítko, které na stránce **můj profil** *povolí přihlášení ke službě SMS* . Vyberte toto tlačítko a účet je povolený pro přihlášení pomocí SMS a předchozí Multi-Factor Authentication služby Azure AD a registraci SSPR.
 
 Další informace o činnosti koncového uživatele najdete v tématu [uživatelské prostředí přihlášení k serveru SMS pro telefonní číslo (Preview)](../user-help/sms-sign-in-explainer.md).
 

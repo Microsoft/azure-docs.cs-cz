@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 078b24e7fc3668e9b5832f0bfa46024db9b33848
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c154952d41db742c4d33899094a49a65fae72f26
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965552"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840096"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Nejčastější dotazy k samoobslužnému resetování hesla
 
@@ -36,12 +36,12 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
 
 * **Otázka: můžou moji uživatelé registrovat vlastní data pro resetování hesla?**
 
-  > **Odpověď:** Ano. Pokud je povolené resetování hesla a jsou licencované, můžou uživatelé přejít na registrační portál pro resetování hesla ( https://aka.ms/ssprsetup) k registraci ověřovacích informací). Uživatelé se také mohou registrovat prostřednictvím přístupového panelu ( https://myapps.microsoft.com) . Chcete-li provést registraci prostřednictvím přístupového panelu, je nutné vybrat profilový obrázek, vybrat **profil**a pak vybrat možnost **registrovat pro resetování hesla** .
+  > **Odpověď:** Ano. Pokud je povolené resetování hesla a jsou licencované, můžou uživatelé přejít na registrační portál pro resetování hesla ( https://aka.ms/ssprsetup) k registraci ověřovacích informací). Uživatelé se také mohou registrovat prostřednictvím přístupového panelu ( https://myapps.microsoft.com) . Chcete-li provést registraci prostřednictvím přístupového panelu, je nutné vybrat profilový obrázek, vybrat **profil** a pak vybrat možnost **registrovat pro resetování hesla** .
   >
-  > Pokud povolíte [kombinovanou registraci](concept-registration-mfa-sspr-combined.md), můžou se uživatelé zaregistrovat pro SSPR i pro Azure Multi-Factor Authentication ve stejnou dobu.
+  > Pokud povolíte [kombinovanou registraci](concept-registration-mfa-sspr-combined.md), můžou se uživatelé zaregistrovat jak pro SSPR, tak i pro Azure AD Multi-Factor Authentication.
 * **Otázka: Pokud povolím resetování hesla pro skupinu a potom se rozhodnete ji povolit pro všechny, je nutné znovu zaregistrovat své uživatele?**
 
-  > **Odpověď:** Ne. Uživatelům, kteří nastavili data ověřování, není nutné znovu registrovat.
+  > **A:** Ne. Uživatelům, kteří nastavili data ověřování, není nutné znovu registrovat.
   >
   >
 * **Otázka: můžu definovat data resetování hesla jménem uživatelů?**
@@ -61,7 +61,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   >
 * **Otázka: Mám uživatele zaregistrovat, aby mohli použít resetování hesla?**
 
-  > **Odpověď:** Ne. Pokud pro své jménem definujete dostatek ověřovacích informací, uživatelé se nebudou muset registrovat. Resetování hesla funguje, pokud máte správně naformátovaná data uložená v příslušných polích v adresáři.
+  > **A:** Ne. Pokud pro své jménem definujete dostatek ověřovacích informací, uživatelé se nebudou muset registrovat. Resetování hesla funguje, pokud máte správně naformátovaná data uložená v příslušných polích v adresáři.
   >
   >
 * **Otázka: mohu synchronizovat nebo nastavit pole telefon pro ověření, e-mail ověřování nebo alternativní ověřování jménem uživatelů?**
@@ -101,7 +101,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   > Pokud v tomto časovém rámci nedostanete oznámení, postupujte takto:
   > * Ověřte složku s nevyžádanou poštou.
   > * Ověřte, že číslo nebo e-mail, který je kontaktován, je ten, který jste očekávali.
-  > * Ověřte, zda jsou ověřovací data v adresáři správně formátována, například + 1 4255551234 nebo * \@ contoso.com uživatele*. 
+  > * Ověřte, zda jsou ověřovací data v adresáři správně formátována, například + 1 4255551234 nebo *\@ contoso.com uživatele*. 
 * **Otázka: Jaké jazyky podporuje resetování hesla?**
 
   > **A:** Uživatelské rozhraní pro resetování hesla, zprávy SMS a hlasové hovory jsou lokalizovány do stejných jazyků, které jsou podporovány v Microsoft 365.
@@ -159,7 +159,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   >
 * **Otázka: může uživatel zaregistrovat stejnou bezpečnostní otázku více než jednou?**
 
-  > **Odpověď:** Ne. Když uživatel zaregistruje konkrétní otázku, nepůjde na tuto otázku zaregistrovat podruhé.
+  > **A:** Ne. Když uživatel zaregistruje konkrétní otázku, nepůjde na tuto otázku zaregistrovat podruhé.
   >
   >
 * **Otázka: je možné nastavit minimální limit bezpečnostních otázek pro registraci a resetování?**

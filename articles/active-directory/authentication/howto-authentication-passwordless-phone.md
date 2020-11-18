@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05f3d422c9a504a0089290f3c2e1e68d809366ac
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 9da0c00bd8498e3f43d5f8258308fbc010a6a274
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592953"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839518"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)
 
@@ -32,11 +32,11 @@ Lidé, kteří povolili telefonické přihlášení z aplikace Microsoft Authent
 2. Zvolte **Schválit**.
 3. Zadejte kód PIN nebo biometrické údaje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat přihlášení bez hesla pro telefonickou práci s aplikací Microsoft Authenticator, musí být splněné následující předpoklady:
 
-- Azure Multi-Factor Authentication s nabízenými oznámeními, která jsou povolená jako metoda ověřování.
+- Multi-Factor Authentication Azure AD s nabízenými oznámeními, která jsou povolená jako metoda ověřování.
 - Na zařízeních se systémem iOS 8,0 nebo vyšším je nainstalovaná nejnovější verze Microsoft Authenticator nebo Android 6,0 nebo novější.
 
 > [!NOTE]
@@ -141,4 +141,4 @@ Další informace o ověřování Azure AD a metodách bez hesla najdete v násl
 
 - [Informace o tom, jak funguje ověřování heslem](concept-authentication-passwordless.md)
 - [Další informace o registraci zařízení](../devices/overview.md#getting-devices-in-azure-ad)
-- [Přečtěte si o Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+- [Přečtěte si o Multi-Factor Authentication Azure AD](../authentication/howto-mfa-getstarted.md)

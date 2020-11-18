@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4da1066166a3384ffb5f0f94599452829faed1b
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 026f45e715f6d442b27cdd0274f029a68330f7ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356582"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839824"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Eliminujte chybná hesla pomocí Azure Active Directory ochrany heslem.
 
@@ -24,7 +24,7 @@ Spousta pokynů k zabezpečení doporučuje, abyste nepoužívali stejné heslo 
 
 Díky ochraně hesel Azure AD se výchozí globální seznamy zakázaných hesel automaticky aplikují na všechny uživatele v tenantovi Azure AD. Pro podporu vlastních obchodních potřeb a zabezpečení můžete definovat položky v seznamu vlastního zakázaného hesla. Když uživatelé mění nebo resetují hesla, jsou tyto seznamy zakázaných hesel zaškrtnuté, aby vynutily používání silných hesel.
 
-Měli byste používat další funkce, jako je [Azure Multi-Factor Authentication](concept-mfa-howitworks.md). nespoléhá se jenom na silná hesla vynucená ochranou hesel Azure AD. Další informace o použití několika vrstev zabezpečení pro přihlašovací události najdete v tématu o tom, co je [to $Word PA](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
+Měli byste používat další funkce, jako je [Azure AD Multi-Factor Authentication](concept-mfa-howitworks.md). nespoléhá se jenom na silná hesla vynucená ochranou hesel Azure AD. Další informace o použití několika vrstev zabezpečení pro přihlašovací události najdete v tématu o tom, co je [to $Word PA](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
 
 > [!IMPORTANT]
 > Tento koncepční článek vysvětluje správce, jak funguje ochrana heslem Azure AD. Pokud už jste koncoví uživatelé zaregistrovali pro Samoobslužné resetování hesla a potřebujete se zpátky do svého účtu, pokračujte na [https://aka.ms/sspr](https://aka.ms/sspr) .

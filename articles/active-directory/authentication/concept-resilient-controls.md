@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6af2f65aa2e2052a79f4c5cffd7ff4a38a9fc838
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6b5b83d75df734c667c365f20fad2e1f62f997d7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366560"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839705"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvoření odolné strategie správy řízení přístupu pomocí Azure Active Directory
 
@@ -65,11 +65,11 @@ Chcete-li odemknout přístup správce k vašemu tenantovi, měli byste vytvoři
 
 Do stávajících zásad podmíněného přístupu pro organizaci zahrňte následující řízení přístupu:
 
-1. Zřizování více metod ověřování pro každého uživatele, který spoléhá na různé komunikační kanály, například na aplikaci Microsoft Authenticator (Internet), token OATH (generovaný na zařízení) a SMS (Telephonic). Následující skript prostředí PowerShell vám pomůže určit předem, které další metody by měly uživatelé zaregistrovat: [skript pro analýzu ověřovací metody Azure MFA](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
+1. Zřizování více metod ověřování pro každého uživatele, který spoléhá na různé komunikační kanály, například na aplikaci Microsoft Authenticator (Internet), token OATH (generovaný na zařízení) a SMS (Telephonic). Následující skript prostředí PowerShell vám pomůže určit předem, které další metody by měly uživatelé zaregistrovat: [skript pro analýzu metody ověřování Azure AD MFA](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
 2. Nasaďte Windows Hello pro firmy na zařízeních s Windows 10, abyste vyhověli požadavkům na MFA přímo ze zařízení pro přihlášení.
 3. Použijte důvěryhodná zařízení přes [hybridní připojení Azure AD](../devices/overview.md) nebo [Microsoft Intune spravovaná zařízení](/intune/planning-guide). Důvěryhodná zařízení vylepšit uživatelské prostředí, protože vlastní důvěryhodné zařízení může splnit požadavky zásad silného ověřování, aniž by museli uživateli vyvolávat výzvu MFA. Vícefaktorové ověřování se pak bude vyžadovat při registraci nového zařízení a při přístupu k aplikacím nebo prostředkům z nedůvěryhodných zařízení.
 4. Využijte zásady založené na riziku služby Azure AD Identity Protection, které zabraňují v přístupu, když se uživatel nebo přihlašování nejedná o riziko pevně stanovených zásad MFA.
-5. Pokud chráníte přístup k síti VPN pomocí rozšíření Azure MFA NPS, zvažte federování řešení VPN jako [aplikaci SAML](../manage-apps/view-applications-portal.md) a určete kategorii aplikace podle doporučení níže. 
+5. Pokud chráníte přístup k síti VPN pomocí rozšíření Azure AD MFA NPS, zvažte federování řešení VPN jako [aplikaci SAML](../manage-apps/view-applications-portal.md) a určete kategorii aplikace podle doporučení níže. 
 
 >[!NOTE]
 > Zásady založené na rizicích vyžadují [Azure AD Premium licence P2](https://azure.microsoft.com/pricing/details/active-directory/) .
@@ -112,7 +112,7 @@ Případně může vaše organizace také vytvářet pohotovostní zásady. Poku
 
 #### <a name="microsoft-recommendations"></a>Doporučení Microsoftu
 
-Pohotovostní zásada podmíněného přístupu je **zásada zálohování** , která nezahrnuje Azure MFA, vícefaktorové ověřování od jiných výrobců nebo řízení na základě zařízení. Aby se minimalizovalo neočekávané přerušení v případě, že je povolená zásada pro nepředvídané účely, zásada by měla zůstat v režimu pouze pro sestavy, pokud se nepoužívá. Správci můžou monitorovat potenciální dopad na své pohotovostní zásady pomocí sešitu pro podmíněný přístup. Pokud se vaše organizace rozhodne aktivovat svůj pohotovostní plán, správci můžou zásadu Povolit a zakázat běžné zásady založené na řízení.
+Pohotovostní zásada podmíněného přístupu je **zásada zálohování** , která vynechává Azure AD MFA, vícefaktorové ověřování od jiných výrobců nebo řízení na základě zařízení. Aby se minimalizovalo neočekávané přerušení v případě, že je povolená zásada pro nepředvídané účely, zásada by měla zůstat v režimu pouze pro sestavy, pokud se nepoužívá. Správci můžou monitorovat potenciální dopad na své pohotovostní zásady pomocí sešitu pro podmíněný přístup. Pokud se vaše organizace rozhodne aktivovat svůj pohotovostní plán, správci můžou zásadu Povolit a zakázat běžné zásady založené na řízení.
 
 >[!IMPORTANT]
 > Zakázáním zásad, které vynutily zabezpečení pro vaše uživatele, dojde k omezení stav zabezpečení i v případě, že je plán pohotovostní.
@@ -120,7 +120,7 @@ Pohotovostní zásada podmíněného přístupu je **zásada zálohování** , k
 * Nakonfigurujte sadu záložních zásad, pokud dojde k výpadku jednoho typu přihlašovacích údajů nebo jednoho mechanismu řízení přístupu, který má vliv na přístup k vašim aplikacím. Nakonfigurujte zásady ve stavu pouze sestavy, který vyžaduje připojení k doméně jako řízení, jako zálohu aktivní zásady, která vyžaduje poskytovatele vícefaktorového ověřování od jiného výrobce.
 * Pomocí postupů uvedených v dokumentu White Paper s [pokyny k heslům](https://aka.ms/passwordguidance) snížíte riziko chybných aktérů, které se týkají pokusů o hesla.
 * Nasaďte [Azure ad Self-Service resetování hesla (SSPR)](./tutorial-enable-sspr.md) a [ochranu heslem Azure AD](./howto-password-ban-bad-on-premises-deploy.md) , abyste se ujistili, že uživatelé nepoužívají běžné heslo a výrazy, které se rozhodnete zakázat.
-* Používejte zásady, které omezují přístup v rámci aplikací, Pokud nedosáhnete určité úrovně ověřování, místo toho, abyste museli jednoduše vracet přístup k úplnému přístupu. Příklad:
+* Používejte zásady, které omezují přístup v rámci aplikací, Pokud nedosáhnete určité úrovně ověřování, místo toho, abyste museli jednoduše vracet přístup k úplnému přístupu. Například:
   * Nakonfigurujte zásady zálohování, které odesílají deklaraci omezené relace na Exchange a SharePoint.
   * Pokud vaše organizace používá Microsoft Cloud App Security, zvažte návrat k zásadám, které MCAS a pak MCAS povolí přístup jen pro čtení, ale ne nahrávání.
 * Pojmenujte zásady, abyste se ujistili, že je budete moct snadno najít při přerušení. Do názvu zásady zahrňte tyto prvky:
@@ -138,7 +138,7 @@ Tato standardní pojmenování pro pohotovostní zásady bude následující:
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-Následující příklad: **příklad zásady CA s pohotovostním oprávněním pro obnovení přístupu k důležitým aplikacím pro spolupráci**, je typický podnikový pohotovostní. V tomto scénáři organizace obvykle vyžaduje MFA pro všechna přístup k Exchangi Online a SharePointu Online a přerušení v tomto případě je tím, že poskytovatel MFA pro zákazníka má výpadek (ať už jde o Azure MFA, místní poskytovatel MFA nebo vícefaktorové ověřování třetí strany). Tato zásada tento výpadek omezuje tím, že umožňuje konkrétním cílovým uživatelům přistupovat k těmto aplikacím z důvěryhodných zařízení s Windows jenom v případě, že k aplikaci přistupuje z důvěryhodné podnikové sítě. Z těchto omezení taky vyloučí účty v nouzi a základní správce. Cíloví uživatelé pak získají přístup k Exchangi Online a SharePointu Online, zatímco jiní uživatelé stále nebudou mít přístup k aplikacím z důvodu výpadku. Tento příklad bude vyžadovat pojmenované síťové umístění **CorpNetwork** a skupinu zabezpečení **ContingencyAccess** s cílovými uživateli, skupinou s názvem **CoreAdmins** a základními správci a skupinou s názvem **EmergencyAccess** s účty pro nouzový přístup. Pohotovostní modul vyžaduje pro poskytnutí požadovaného přístupu čtyři zásady. 
+Následující příklad: **příklad zásady CA s pohotovostním oprávněním pro obnovení přístupu k důležitým aplikacím pro spolupráci**, je typický podnikový pohotovostní. V tomto scénáři organizace obvykle vyžaduje MFA pro všechna přístup k Exchangi Online a SharePointu Online a přerušení v tomto případě je tím, že poskytovatel MFA pro zákazníka má výpadek (ať už jde o Azure AD MFA, místní poskytovatel MFA nebo MFA). Tato zásada tento výpadek omezuje tím, že umožňuje konkrétním cílovým uživatelům přistupovat k těmto aplikacím z důvěryhodných zařízení s Windows jenom v případě, že k aplikaci přistupuje z důvěryhodné podnikové sítě. Z těchto omezení taky vyloučí účty v nouzi a základní správce. Cíloví uživatelé pak získají přístup k Exchangi Online a SharePointu Online, zatímco jiní uživatelé stále nebudou mít přístup k aplikacím z důvodu výpadku. Tento příklad bude vyžadovat pojmenované síťové umístění **CorpNetwork** a skupinu zabezpečení **ContingencyAccess** s cílovými uživateli, skupinou s názvem **CoreAdmins** a základními správci a skupinou s názvem **EmergencyAccess** s účty pro nouzový přístup. Pohotovostní modul vyžaduje pro poskytnutí požadovaného přístupu čtyři zásady. 
 
 **Příklad zásad certifikační autority s pohotovostním přístupem pro obnovení přístupu ke klíčovým aplikacím pro spolupráci:**
 
@@ -208,7 +208,7 @@ Pořadí aktivace:
 
 ### <a name="contingencies-for-user-lockout-from-on-prem-resources-nps-extension"></a>Nepředvídané události pro uzamknutí uživatele z premch prostředků (rozšíření NPS)
 
-Pokud chráníte přístup k síti VPN pomocí rozšíření Azure MFA NPS, zvažte federování řešení VPN jako [aplikaci SAML](../manage-apps/view-applications-portal.md) a určete kategorii aplikace podle doporučení níže. 
+Pokud chráníte přístup k síti VPN pomocí rozšíření Azure AD MFA NPS, zvažte federování řešení VPN jako [aplikaci SAML](../manage-apps/view-applications-portal.md) a určete kategorii aplikace podle doporučení níže. 
 
 Pokud jste nasadili rozšíření Azure AD MFA NPS pro ochranu premch prostředků, jako jsou VPN a Brána vzdálené plochy s MFA – měli byste zvážit předem, pokud jste v případě nouze připraveni na zakázání vícefaktorového ověřování.
 
@@ -280,7 +280,7 @@ Pokud vaše organizace používá starší zásady vícefaktorového ověřován
  > Pokud rozpoznáváte důvěryhodné IP adresy na přístup odblokování, negenerují se detekce rizik přidružená k IP adresám (například nemožná cesta nebo neznámá umístění).
 
 >[!NOTE]
- > Konfigurace [důvěryhodných IP adres](./howto-mfa-mfasettings.md) pro Azure MFA je dostupná jenom pro [licence Azure AD Premium](./concept-mfa-licensing.md).
+ > Konfigurace [důvěryhodných IP adres](./howto-mfa-mfasettings.md) pro Azure AD MFA je dostupná jenom u [licencí Azure AD Premium](./concept-mfa-licensing.md).
 
 ## <a name="learn-more"></a>Další informace
 

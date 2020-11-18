@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b308b47ff813237bdf90637334f20ac6b5490a19
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: dbe22a1af8fbf61629fa9df1267416ca3822884b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992819"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840079"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Možnosti ověřování neheslem pro Azure Active Directory
 
 Funkce, jako je Multi-Factor Authentication (MFA), jsou skvělým způsobem, jak zabezpečit vaši organizaci, ale uživatelé často získají frustrovaní s dodatečnou vrstvou zabezpečení, která si musí pamatovat hesla. Metody ověřování bez hesla jsou pohodlnější, protože heslo se odebírá a nahrazuje něco, co máte, a něco vás nebo něco znáte.
 
-| Authentication  | Něco, co máte | Něco, co se vám nebo znáte |
+| Ověřování  | Něco, co máte | Něco, co se vám nebo znáte |
 | --- | --- | --- |
 | Bez hesla | Bezpečnostní klíč zařízení, telefonu nebo Windows 10 | Biometrika nebo PIN |
 
@@ -62,7 +62,7 @@ Můžete taky dovolit, aby se telefon od zaměstnance stal metodou ověřování
 
 Aplikace ověřovatele přepíná telefon s iOS nebo Androidem do silných přihlašovacích údajů bez hesla. Uživatelé se můžou přihlašovat k libovolné platformě nebo prohlížeči tím, že získají oznámení na telefonu, odpovídají číslu zobrazenému na obrazovce na telefonu a pak se pomocí jejich biometriky (dotyky nebo obličeje) nebo kódu PIN ověří. Podrobnosti o instalaci najdete [v tématu Stažení a instalace aplikace Microsoft Authenticator](../user-help/user-help-auth-app-download-install.md) .
 
-Přihlášení bez hesla pomocí aplikace Microsoft Authenticator do služby Azure AD je momentálně ve verzi Preview. Použití aplikace Microsoft Authenticator pro sekundární ověřování pro Azure Multi-Factor Authentication, Samoobslužné resetování hesla (SSPR) nebo tokeny OATH jsou GA. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+Přihlášení bez hesla pomocí aplikace Microsoft Authenticator do služby Azure AD je momentálně ve verzi Preview. Použití aplikace Microsoft Authenticator pro sekundární ověřování pro Multi-Factor Authentication Azure AD, Samoobslužné resetování hesla (SSPR) nebo softwarové tokeny OATH jsou GA. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Ověřování pomocí hesla s použitím ověřovací aplikace se řídí stejným základním vzorem jako Windows Hello pro firmy. Je to trochu složitější, protože je potřeba identifikovat uživatele, aby služba Azure AD mohla najít Microsoft Authenticator verzi aplikace, která se používá:
 
@@ -167,7 +167,7 @@ Tady je několik faktorů, které je potřeba vzít v úvahu při volbě technol
 ||**Windows Hello pro firmy**|**Přihlášení bez hesla pomocí aplikace Microsoft Authenticator**|**FIDO2 klíče zabezpečení**|
 |:-|:-|:-|:-|
 |**Před požadavky**| Windows 10 verze 1809 nebo novější<br>Azure Active Directory| Aplikace Microsoft Authenticator<br>Telefon (zařízení s iOS a Androidem se systémem Android 6,0 nebo vyšším)|Windows 10 verze 1903 nebo novější<br>Azure Active Directory|
-|**Mode**|Platforma|Software|Hardware|
+|**Režim**|Platforma|Software|Hardware|
 |**Systémy a zařízení**|POČÍTAČ s integrovaným čipem TPM (Trusted Platform Module)<br>Připnutí a biometrika rozpoznávání |Připnutí a biometrika rozpoznávání na telefonu|FIDO2 zabezpečení zařízení, která jsou kompatibilní s Microsoftem|
 |**Uživatelské prostředí**|Přihlaste se pomocí PIN nebo biometrického rozpoznávání (obličeje, Iris nebo otisk prstu) pomocí zařízení s Windows.<br>Ověřování Windows Hello je vázané na zařízení; pro přístup k firemním prostředkům potřebuje uživatel zařízení i přihlašovací komponentu, jako je PIN nebo biometrické faktor.|Přihlaste se pomocí mobilního telefonu pomocí skenování otisků prstů, obličeje nebo Iris nebo PIN kódu.<br>Uživatelé se přihlásí k pracovnímu nebo osobnímu účtu na svém počítači nebo mobilním telefonu.|Přihlášení pomocí zařízení zabezpečení FIDO2 (biometrika, PIN a NFC)<br>Uživatel může získat přístup k zařízení na základě organizačních ovládacích prvků a ověřování na základě kódu PIN, biometrika pomocí zařízení, jako jsou klíče zabezpečení USB a čipové karty, klíče nebo wearables s podporou NFC.|
 |**Povolené scénáře**| Heslo – bez možnosti použití zařízení s Windows<br>Platí pro vyhrazený pracovní počítač s možností jednotného přihlašování k zařízením a aplikacím.|Řešení bez hesla odkudkoli pomocí mobilního telefonu.<br>Platí pro přístup k pracovním nebo osobním aplikacím na webu z libovolného zařízení.|Prostředí bez hesla pro pracovní procesy s využitím biometrika, kódu PIN a NFC.<br>Platí pro sdílené počítače a v případě, že mobilní telefon není možnost životaschopnosti (například pro pracovníky helpdesku, veřejný terminál nebo tým v nemocnicích).|
