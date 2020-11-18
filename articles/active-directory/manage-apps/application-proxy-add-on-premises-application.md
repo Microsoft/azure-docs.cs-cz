@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 8b66a8ea3fcc6af62c872a6df6196b97ece2f55a
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 41955475f32fe674bcb3ef2d1b6e59c71a008b6b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240915"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656441"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -92,7 +92,7 @@ Povolení TLS 1,2:
 Začněte tím, že povolíte komunikaci s datovými centry Azure a připravíte své prostředí pro Azure Proxy aplikací služby AD. Pokud je v cestě brána firewall, ujistěte se, že je otevřená. Otevřená brána firewall umožňuje konektoru předávat žádosti pomocí protokolu HTTPS (TCP) na proxy aplikace.
 
 > [!IMPORTANT]
-> Pokud instalujete konektor pro Azure Government Cloud, postupujte podle [požadavků](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) a [pokynů k instalaci](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud). K tomu je potřeba povolit přístup k jiné sadě adres URL a další parametr ke spuštění instalace.
+> Pokud instalujete konektor pro Azure Government Cloud, postupujte podle [požadavků](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) a [pokynů k instalaci](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud). K tomu je potřeba povolit přístup k jiné sadě adres URL a další parametr ke spuštění instalace.
 
 ### <a name="open-ports"></a>Otevřené porty
 
@@ -127,16 +127,16 @@ Postup instalace konektoru:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce aplikace adresáře, který používá proxy aplikace. Pokud je například doména tenanta contoso.com, správce by měl být admin@contoso.com v této doméně nebo jiný alias správce.
 1. V pravém horním rohu vyberte své uživatelské jméno. Ověřte, že jste přihlášeni k adresáři, který používá proxy aplikace. Pokud potřebujete změnit adresáře, vyberte **Přepnout adresář** a zvolte adresář, který používá proxy aplikace.
-1. V levém navigačním panelu vyberte **Azure Active Directory** .
-1. V části **Spravovat** vyberte **proxy aplikace** .
-1. Vyberte **stáhnout službu konektoru** .
+1. V levém navigačním panelu vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **proxy aplikace**.
+1. Vyberte **stáhnout službu konektoru**.
 
     ![Stažení služby konektoru, aby se zobrazila podmínka služby](./media/application-proxy-add-on-premises-application/application-proxy-download-connector-service.png)
 
-1. Přečtěte si podmínek služby. Až budete připraveni, vyberte **přijmout podmínky & stáhnout** .
+1. Přečtěte si podmínek služby. Až budete připraveni, vyberte **přijmout podmínky & stáhnout**.
 1. V dolní části okna vyberte **Spustit** pro instalaci konektoru. Otevře se Průvodce instalací aplikace.
 1. Podle pokynů v průvodci nainstalujte službu. Až budete vyzváni k registraci konektoru u proxy aplikace pro vašeho tenanta Azure AD, zadejte přihlašovací údaje správce aplikace.
-    - V případě aplikace Internet Explorer (IE), pokud je **Konfigurace rozšířeného zabezpečení aplikace Internet** Explorer nastavena **na zapnuto** , se nemusí zobrazit registrační obrazovka. Chcete-li získat přístup, postupujte podle pokynů v chybové zprávě. Ujistěte se, že je **Konfigurace rozšířeného zabezpečení aplikace Internet Explorer** nastavena na **vypnuto** .
+    - V případě aplikace Internet Explorer (IE), pokud je **Konfigurace rozšířeného zabezpečení aplikace Internet** Explorer nastavena **na zapnuto**, se nemusí zobrazit registrační obrazovka. Chcete-li získat přístup, postupujte podle pokynů v chybové zprávě. Ujistěte se, že je **Konfigurace rozšířeného zabezpečení aplikace Internet Explorer** nastavena na **vypnuto**.
 
 ### <a name="general-remarks"></a>Obecné poznámky
 
@@ -168,23 +168,23 @@ Další nápovědu k instalaci konektoru najdete v tématu [problém instalace k
 
 Chcete-li ověřit, zda byl konektor nainstalován a správně zaregistrován:
 
-1. Spusťte Správce služeb systému Windows kliknutím na klíč **systému Windows** a zadáním příkazu *Services. msc* .
+1. Spusťte Správce služeb systému Windows kliknutím na klíč **systému Windows** a zadáním příkazu *Services. msc*.
 1. Zkontrolujte, jestli je **spuštěný** stav těchto dvou služeb.
    - **Microsoft AAD Application proxy Connector** umožňuje připojení.
    - **Aktualizátor konektorů proxy aplikace služby Microsoft AAD** je služba automatizované aktualizace. Nástroj aktualizace kontroluje nové verze konektoru a podle potřeby aktualizuje konektor.
 
      ![Služby konektoru proxy aplikace – snímek obrazovky](./media/application-proxy-add-on-premises-application/app_proxy_services.png)
 
-1. Pokud stav služeb není **spuštěný** , klikněte pravým tlačítkem myši a vyberte každou službu a zvolte **Spustit** .
+1. Pokud stav služeb není **spuštěný**, klikněte pravým tlačítkem myši a vyberte každou službu a zvolte **Spustit**.
 
 ## <a name="add-an-on-premises-app-to-azure-ad"></a>Přidání místní aplikace do Azure AD
 
 Teď, když jste připravili prostředí a nainstalovali konektor, jste připraveni přidat místní aplikace do Azure AD.  
 
 1. Přihlaste se jako správce v [Azure Portal](https://portal.azure.com/).
-2. V levém navigačním panelu vyberte **Azure Active Directory** .
-3. Vyberte **podnikové aplikace** a pak vyberte **Nová aplikace** .
-4. V části místní **aplikace** vyberte **Přidat místní aplikaci** .
+2. V levém navigačním panelu vyberte **Azure Active Directory**.
+3. Vyberte **podnikové aplikace** a pak vyberte **Nová aplikace**.
+4. V části místní **aplikace** vyberte **Přidat místní aplikaci**.
 5. V části **Přidat vlastní místní aplikaci** zadejte následující informace o vaší aplikaci:
 
     | Pole | Popis |
@@ -193,20 +193,20 @@ Teď, když jste připravili prostředí a nainstalovali konektor, jste připrav
     | **Interní adresa URL** | Adresa URL pro přístup k aplikaci zevnitř vaší privátní sítě. Můžete zadat konkrétní cestu na beck-endovém serveru, kterou chcete publikovat, zatímco zbytek serveru publikovaný nebude. Tímto způsobem můžete publikovat různé weby na stejném serveru jako různé aplikace a dát každému z nich vlastní název a pravidla přístupu.<br><br>Pokud publikujete cestu, ujistěte se, že zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Pokud je vaše aplikace například na https: \/ /yourapp/App a používá Image umístěné v protokolu https: \/ /yourapp/Media, měli byste jako cestu publikovat https: \/ /yourapp/. Tato interní adresa URL nemusí být cílovou stránkou, kterou uživatelé uvidí. Další informace najdete v tématu [nastavení vlastní domovské stránky pro publikované aplikace](application-proxy-configure-custom-home-page.md). |
     | **Externí adresa URL** | Adresa pro uživatele, kteří budou mít přístup k aplikaci mimo vaši síť. Pokud nechcete používat výchozí doménu proxy aplikace, přečtěte si o [vlastních doménách v Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md).|
     | **Předběžné ověření** | Jak proxy aplikace ověřuje uživatele před tím, než jim poskytne přístup k vaší aplikaci.<br><br>**Azure Active Directory** – proxy aplikací přesměruje uživatele na přihlášení pomocí služby Azure AD, která ověřuje jejich oprávnění pro adresář a aplikaci. Tuto možnost doporučujeme ponechat jako výchozí, abyste mohli využívat funkce zabezpečení Azure AD, jako je podmíněný přístup a Multi-Factor Authentication. **Azure Active Directory** se vyžaduje pro monitorování aplikace s Microsoft Cloud zabezpečení aplikací.<br><br>**Passthrough** – uživatelé nemusejí pro přístup k aplikaci ověřovat přes Azure AD. Požadavky na ověřování můžete nastavit i pro back-end. |
-    | **Skupina konektorů** | Konektory zpracovávají vzdálený přístup k vaší aplikaci a skupiny konektorů vám pomůžou organizovat konektory a aplikace podle oblastí, sítě nebo účelu. Pokud ještě nemáte vytvořené žádné skupiny konektorů, vaše aplikace se přiřadí **výchozímu** .<br><br>Pokud vaše aplikace používá k připojení objekty WebSockets, musí být všechny konektory ve skupině verze 1.5.612.0 nebo novější.|
+    | **Skupina konektorů** | Konektory zpracovávají vzdálený přístup k vaší aplikaci a skupiny konektorů vám pomůžou organizovat konektory a aplikace podle oblastí, sítě nebo účelu. Pokud ještě nemáte vytvořené žádné skupiny konektorů, vaše aplikace se přiřadí **výchozímu**.<br><br>Pokud vaše aplikace používá k připojení objekty WebSockets, musí být všechny konektory ve skupině verze 1.5.612.0 nebo novější.|
 
-6. V případě potřeby nakonfigurujte **Další nastavení** . U většiny aplikací byste měli tato nastavení zachovat ve svých výchozích stavech. 
+6. V případě potřeby nakonfigurujte **Další nastavení**. U většiny aplikací byste měli tato nastavení zachovat ve svých výchozích stavech. 
 
     | Pole | Popis |
     | :---- | :---------- |
     | **Časový limit aplikace back-endu** | Nastavte tuto hodnotu na **Long** , jenom pokud se vaše aplikace pomalu ověřuje a připojuje. Ve výchozím nastavení má časový limit aplikace back-end délku 85 sekund. Když se nastaví na Long, časový limit pro back-end se zvýší na 180 sekund. |
-    | **Použít soubor cookie HTTP-Only** | Nastavte tuto hodnotu na **Ano** , pokud chcete, aby soubory cookie proxy aplikací zahrnovaly příznak HttpOnly v hlavičce HTTP Response. Pokud používáte službu Vzdálená plocha, nastavte tuto hodnotu na **ne** .|
+    | **Použít soubor cookie HTTP-Only** | Nastavte tuto hodnotu na **Ano** , pokud chcete, aby soubory cookie proxy aplikací zahrnovaly příznak HttpOnly v hlavičce HTTP Response. Pokud používáte službu Vzdálená plocha, nastavte tuto hodnotu na **ne**.|
     | **Použít zabezpečený soubor cookie**| Nastavte tuto hodnotu na **Ano** , pokud chcete přenášet soubory cookie přes zabezpečený kanál, jako je třeba ŠIFROVANÝ požadavek https.
-    | **Použít trvalý soubor cookie**| Nechte tuto hodnotu nastavenou na **ne** . Toto nastavení použijte jenom pro aplikace, které nemůžou sdílet soubory cookie mezi procesy. Další informace o nastavení souborů cookie najdete v tématu [nastavení souborů cookie pro přístup k místním aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings).
+    | **Použít trvalý soubor cookie**| Nechte tuto hodnotu nastavenou na **ne**. Toto nastavení použijte jenom pro aplikace, které nemůžou sdílet soubory cookie mezi procesy. Další informace o nastavení souborů cookie najdete v tématu [nastavení souborů cookie pro přístup k místním aplikacím v Azure Active Directory](./application-proxy-configure-cookie-settings.md).
     | **Přeložit adresy URL v hlavičkách** | Tuto hodnotu nechte jako **Ano** , pokud vaše aplikace nevyžadovala v žádosti o ověření hlavičku původního hostitele. |
     | **Přeložit adresy URL v těle aplikace** | Tuto hodnotu nechte jako **ne** , pokud jste nepevně zakódovanéi odkazy HTML na jiné místní aplikace a nepoužíváte vlastní domény. Další informace najdete v tématu [Překlad propojení pomocí proxy aplikace](application-proxy-configure-hard-coded-link-translation.md).<br><br>Tuto hodnotu nastavte na **Ano** , pokud plánujete monitorovat tuto aplikaci pomocí Microsoft Cloud App Security (MCAS). Další informace najdete v tématu [Konfigurace monitorování přístupu aplikace v reálném čase pomocí Microsoft Cloud App Security a Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. Vyberte **Add** (Přidat).
+7. Vyberte možnost **Přidat**.
 
 ## <a name="test-the-application"></a>Testování aplikace
 
@@ -219,17 +219,17 @@ Před přidáním uživatele do aplikace ověřte, zda uživatelský účet již
 Chcete-li přidat testovacího uživatele:
 
 1. Vyberte **podnikové aplikace** a pak vyberte aplikaci, kterou chcete testovat.
-2. Vyberte **Začínáme** a pak vyberte **přiřadit uživatele pro testování** .
-3. V části **Uživatelé a skupiny** vyberte **Přidat uživatele** .
-4. V části **Přidat přiřazení** vyberte **Uživatelé a skupiny** . Zobrazí se část **uživatel a skupiny** .
+2. Vyberte **Začínáme** a pak vyberte **přiřadit uživatele pro testování**.
+3. V části **Uživatelé a skupiny** vyberte **Přidat uživatele**.
+4. V části **Přidat přiřazení** vyberte **Uživatelé a skupiny**. Zobrazí se část **uživatel a skupiny** .
 5. Vyberte účet, který chcete přidat.
-6. Zvolte **Vybrat** a pak vybrat **přiřadit** .
+6. Zvolte **Vybrat** a pak vybrat **přiřadit**.
 
 ### <a name="test-the-sign-on"></a>Otestování přihlášení
 
 Otestování přihlášení k aplikaci:
 
-1. Z aplikace, kterou chcete testovat, vyberte **proxy aplikace** .
+1. Z aplikace, kterou chcete testovat, vyberte **proxy aplikace**.
 2. V horní části stránky vyberte **test aplikace** , aby se spustila test aplikace a kontrolovaly se případné problémy s konfigurací.
 3. Nezapomeňte nejdřív spustit aplikaci, abyste otestovali přihlášení k aplikaci, a pak si stáhněte diagnostickou zprávu, kde najdete pokyny k vyřešení všech zjištěných problémů.
 

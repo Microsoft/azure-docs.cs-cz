@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: a88696ba69fdf53f5c7e15d174b126d69f4230ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7701fc6d90fd9ebc7ec29f0ffdd7d050c58c036c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85555428"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655659"
 ---
 # <a name="connect-your-domain-name-server"></a>Připojit váš názvový server domény
 
@@ -43,14 +43,14 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | **Připojený zdroj** | **Podpora** | **Popis** |
 | --- | --- | --- |
-| [Agenti systému Windows](../azure-monitor/platform/agent-windows.md) | Yes | Řešení shromažďuje informace o DNS z agentů Windows. |
+| [Agenti systému Windows](../azure-monitor/platform/agent-windows.md) | Ano | Řešení shromažďuje informace o DNS z agentů Windows. |
 | [Agenti systému Linux](../azure-monitor/learn/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
-| [Skupina pro správu nástroje System Center Operations Manager](../azure-monitor/platform/om-agents.md) | Yes | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
-| [Účet úložiště Azure](../azure-monitor/platform/collect-azure-metrics-logs.md) | No | Řešení Azure Storage se v řešení nepoužívá. |
+| [Skupina pro správu nástroje System Center Operations Manager](../azure-monitor/platform/om-agents.md) | Ano | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| [Účet úložiště Azure](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) | No | Řešení Azure Storage se v řešení nepoužívá. |
 
 ### <a name="data-collection-details"></a>Podrobnosti shromažďování dat
 
-Řešení shromažďuje data o inventáři DNS a událostech DNS ze serverů DNS, na kterých je nainstalovaný agent Log Analytics. Data související s inventářem, jako je třeba počet serverů DNS, zón a záznamů prostředků, se shromažďují spuštěním rutin služby DNS PowerShell. Data se aktualizují po každém dvou dnech. Data související s událostmi se shromažďují prakticky v reálném čase z [protokolů analýzy a auditu](https://technet.microsoft.com/library/dn800669.aspx#enhanc) , které nabízí rozšířené protokolování a diagnostika DNS ve Windows Serveru 2012 R2.
+Řešení shromažďuje data o inventáři DNS a událostech DNS ze serverů DNS, na kterých je nainstalovaný agent Log Analytics. Data související s inventářem, jako je třeba počet serverů DNS, zón a záznamů prostředků, se shromažďují spuštěním rutin služby DNS PowerShell. Data se aktualizují po každém dvou dnech. Data související s událostmi se shromažďují prakticky v reálném čase z [protokolů analýzy a auditu](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc) , které nabízí rozšířené protokolování a diagnostika DNS ve Windows Serveru 2012 R2.
 
 
 ## <a name="connect-your-dns-appliance"></a>Připojení zařízení DNS
@@ -65,7 +65,7 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 2. Pokud Váš počítač DNS není virtuální počítač Azure:
     1. Klikněte na **instalovat agenta na počítačích mimo Azure**.
     1. V okně **přímý agent** vyberte buď možnost **Stáhnout agenta pro Windows (64 bitů)** , nebo **stáhnout agenta pro Windows (32 bitů)**.
-    1. Nainstalujte agenta na počítač DNS. Zkopírujte **ID pracovního prostoru**, **primární klíč**a **sekundární klíč** a použijte je při zobrazení výzvy během instalace.
+    1. Nainstalujte agenta na počítač DNS. Zkopírujte **ID pracovního prostoru**, **primární klíč** a **sekundární klíč** a použijte je při zobrazení výzvy během instalace.
 
 3. Pokud chcete pro protokoly DNS použít příslušné schéma v Log Analytics, vyhledejte **DnsEvents**.
 
@@ -76,10 +76,10 @@ V Log Analytics vyhledejte **DnsEvents** schématu a ujistěte se, že existují
 ## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se vyhledávací dotazy nezobrazují ve službě Azure Sentinel, postupujte podle těchto kroků, aby se dotazy zobrazovaly správně:
-1. Zapněte [DNS Analytics protokoly na serverech](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)).
+1. Zapněte [DNS Analytics protokoly na serverech](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)).
 2. Ujistěte se, že se DNSEvents zobrazí v seznamu kolekce Log Analytics.
 3. Zapněte [Azure DNS Analytics](../azure-monitor/insights/dns-analytics.md).
-4. V Azure DNS Analytics v části **Konfigurace**změňte nastavení, uložte ho a pak ho znovu změňte, pokud potřebujete, a pak ho znovu uložte.
+4. V Azure DNS Analytics v části **Konfigurace** změňte nastavení, uložte ho a pak ho znovu změňte, pokud potřebujete, a pak ho znovu uložte.
 5. Zkontrolujte Azure DNS Analytics a ujistěte se, že jsou dotazy nyní zobrazovány.
 
 ## <a name="next-steps"></a>Další kroky

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2020
 ms.author: yelevin
-ms.openlocfilehash: 161e2d424611661619b99ecac3515aac6a8464e0
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 7d52b76601a617f62ae5b10fa38841ef2608bf49
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428658"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656986"
 ---
 # <a name="monitor-the-health-of-your-data-connectors-with-this-azure-sentinel-workbook"></a>Monitorování stavu datových konektorů pomocí tohoto sešitu Sentinel v Azure
 
@@ -42,12 +42,12 @@ V tomto sešitu jsou tři oddíly s kartami:
 
 1. Karta **Přehled** zobrazuje celkový stav příjmu dat ve vybraném pracovním prostoru: měření svazku, míry EPS a čas posledního přijetí protokolu.
 
-1. Karta **anomálie kolekce dat** vám pomůže detekovat anomálie v procesu shromažďování dat podle tabulky a zdroje dat. Každá karta zobrazuje anomálie pro konkrétní tabulku (karta **Obecné** obsahuje kolekci tabulek). Anomálie se počítají pomocí funkce **series_decompose_anomalies ()** , která vrací **skóre anomálií**. [Přečtěte si další informace o této funkci](https://docs.microsoft.com/azure/data-explorer/kusto/query/series-decompose-anomaliesfunction?WT.mc_id=Portal-fx). Nastavte následující parametry pro funkci, která se má vyhodnotit:
+1. Karta **anomálie kolekce dat** vám pomůže detekovat anomálie v procesu shromažďování dat podle tabulky a zdroje dat. Každá karta zobrazuje anomálie pro konkrétní tabulku (karta **Obecné** obsahuje kolekci tabulek). Anomálie se počítají pomocí funkce **series_decompose_anomalies ()** , která vrací **skóre anomálií**. [Další informace o této funkci](/azure/data-explorer/kusto/query/series-decompose-anomaliesfunction?WT.mc_id=Portal-fx) Nastavte následující parametry pro funkci, která se má vyhodnotit:
 
-    - **AnomaliesTimeRange** : Tento časový výběr se vztahuje pouze na zobrazení anomálií sběru dat.
-    - **SampleInterval** : časový interval, ve kterém jsou data v zadaném časovém rozsahu vzorkovaná. Skóre anomálií se počítá jenom s daty posledního intervalu.
-    - **PositiveAlertThreshold** : Tato hodnota určuje pozitivní prahovou hodnotu skóre anomálií. Přijímá desítkové hodnoty.
-    - **NegativeAlertThreshold** : Tato hodnota definuje zápornou prahovou hodnotu skóre anomálií. Přijímá desítkové hodnoty.
+    - **AnomaliesTimeRange:** Tento výběr času se vztahuje jenom na zobrazení anomálií shromažďování dat.
+    - **SampleInterval:** Časový interval, ve kterém jsou data v zadaném časovém rozsahu vzorkovaná. Skóre anomálií se počítá jenom pro data z posledního intervalu.
+    - **PositiveAlertThreshold:** Tato hodnota definuje kladnou prahovou hodnotu skóre anomálií. Přijímá desítkové hodnoty.
+    - **NegativeAlertThreshold:** Tato hodnota definuje zápornou prahovou hodnotu skóre anomálií. Přijímá desítkové hodnoty.
 
         :::image type="content" source="media/monitor-data-connector-health/data-health-workbook-2.png" alt-text="Stránka s monitorováním stavu datových konektorů v sešitu" lightbox="media/monitor-data-connector-health/data-health-workbook-2.png":::
 

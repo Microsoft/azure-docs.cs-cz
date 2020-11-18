@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 090e3f93d025fe87ad5b89a98193574595f3d632
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a39b6973767b72e69a82750ab8d0d487c733eda0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614578"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657104"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Nastavení agregovaného oboru názvů
 
@@ -57,7 +57,7 @@ Z Azure Portal načtěte stránku nastavení **oboru názvů** . Z této stránk
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
 Při použití rozhraní příkazového řádku Azure je při vytváření cíle úložiště nutné přidat cestu k oboru názvů. Podrobnosti najdete v tématu [Přidání nového cíle služby Azure Blob Storage](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target) .
 
@@ -119,7 +119,7 @@ Zadejte tyto hodnoty pro každou cestu oboru názvů:
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
 Při použití rozhraní příkazového řádku Azure je při vytváření cíle úložiště nutné přidat alespoň jednu cestu k oboru názvů. Podrobnosti najdete v tématu [Přidání nového cíle úložiště NFS](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) .
 

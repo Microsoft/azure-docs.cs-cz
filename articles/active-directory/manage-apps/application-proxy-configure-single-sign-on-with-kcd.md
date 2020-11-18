@@ -12,12 +12,12 @@ ms.date: 08/13/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 860d29d3fff2187e770a5ff00b7145fc188a497c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e43ad9dedf4212e9b30a08f0c978cb8d1a86776c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426500"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657410"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování (SSO) k vašim aplikacím pomocí proxy aplikací
 
@@ -42,9 +42,9 @@ Tento diagram vysvětluje tok, když se uživatel pokusí o přístup k místní
 ## <a name="prerequisites"></a>Požadavky
 Než začnete s jednotným přihlašováním pro aplikace IWA, ujistěte se, že je vaše prostředí připravené s následujícími nastaveními a konfiguracemi:
 
-* Vaše aplikace, jako jsou webové aplikace SharePoint, jsou nastavené na používání integrovaného ověřování systému Windows. Další informace najdete v tématu [Povolení podpory pro ověřování protokolem Kerberos](https://technet.microsoft.com/library/dd759186.aspx)nebo pro SharePoint v tématu [Plánování ověřování protokolem Kerberos v SharePointu 2013](https://technet.microsoft.com/library/ee806870.aspx).
+* Vaše aplikace, jako jsou webové aplikace SharePoint, jsou nastavené na používání integrovaného ověřování systému Windows. Další informace najdete v tématu [Povolení podpory pro ověřování protokolem Kerberos](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd759186(v=ws.11))nebo pro SharePoint v tématu [Plánování ověřování protokolem Kerberos v SharePointu 2013](/SharePoint/security-for-sharepoint-server/kerberos-authentication-planning).
 * Všechny vaše aplikace mají [hlavní názvy služeb](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx).
-* Server, na kterém je spuštěný konektor, a server, na kterém je spuštěná aplikace, jsou připojené k doméně a součástí stejné domény nebo důvěřujících domén. Další informace o připojení k doméně najdete v tématu [připojení počítače k doméně](https://technet.microsoft.com/library/dd807102.aspx).
+* Server, na kterém je spuštěný konektor, a server, na kterém je spuštěná aplikace, jsou připojené k doméně a součástí stejné domény nebo důvěřujících domén. Další informace o připojení k doméně najdete v tématu [připojení počítače k doméně](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dd807102(v=ws.11)).
 * Server, na kterém je spuštěn konektor, má přístup ke čtení atributu TokenGroupsGlobalAndUniversal pro uživatele. Toto výchozí nastavení může být ovlivněné zabezpečením v prostředí.
 
 ### <a name="configure-active-directory"></a>Konfigurace Active Directory
@@ -61,7 +61,7 @@ Konfigurace služby Active Directory se liší v závislosti na tom, jestli je k
    ![Konektor – počítače okno Vlastnosti snímek obrazovky](./media/application-proxy-configure-single-sign-on-with-kcd/properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Konektor a aplikační server v různých doménách
-1. Seznam požadavků pro práci s KCD napříč doménami najdete v tématu [omezené delegování protokolu Kerberos napříč doménami](https://technet.microsoft.com/library/hh831477.aspx).
+1. Seznam požadavků pro práci s KCD napříč doménami najdete v tématu [omezené delegování protokolu Kerberos napříč doménami](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831477(v=ws.11)).
 2. `principalsallowedtodelegateto`Pro povolení delegování ověřování protokolem Kerberos z proxy aplikace (konektor) použijte vlastnost účtu služby (počítač nebo vyhrazený uživatelský účet) webové aplikace. Aplikační server běží v kontextu `webserviceaccount` a delegování serveru je `connectorcomputeraccount` . Spusťte níže uvedené příkazy na řadiči domény (se spuštěným systémem Windows Server 2012 R2 nebo novějším) v doméně nástroje `webserviceaccount` . Pro oba účty použijte ploché názvy (jiné než UPN).
 
    Pokud `webserviceaccount` je účet počítače, použijte tyto příkazy:
@@ -153,4 +153,3 @@ V některých případech se ale požadavek úspěšně pošle do back-endu apli
 
 * [Postup konfigurace aplikace proxy aplikací pro použití omezeného delegování protokolu Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Řešení potíží s proxy aplikace](application-proxy-troubleshoot.md)
-

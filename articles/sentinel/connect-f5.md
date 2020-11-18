@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 63e20467750e9a4b0c85de33180d4fa51831e59b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a0f0e01827c48518f2eb1fba062e9e6536d9df
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85555414"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655693"
 ---
 # <a name="connect-f5-asm-to-azure-sentinel"></a>Připojit F5 ASM k Azure Sentinel
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak pomocí konektoru nástroje F5 ASM snadno nač
    - Nastavte **typ vzdáleného úložiště** na **CEF**.
    - Nastavte **protokol** na **TCP**.
    - Nastavte **IP adresu** na IP adresu serveru syslog.
-   - Nastavte **číslo portu** na **514**nebo port, který nastavíte pro použití v agentovi.
+   - Nastavte **číslo portu** na **514** nebo port, který nastavíte pro použití v agentovi.
    - Můžete nastavit **maximální velikost řetězce dotazu** na velikost, kterou jste nastavili v agentovi.
 
 1. Pokud chcete použít příslušné schéma v Log Analytics pro události CEF, vyhledejte `CommonSecurityLog` .
@@ -43,6 +43,5 @@ V tomto článku se dozvíte, jak pomocí konektoru nástroje F5 ASM snadno nač
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit F5 ASM ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](./tutorial-detect-threats-built-in.md).
 - [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.
-

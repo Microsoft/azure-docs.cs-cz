@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 0a25d910b694968802e853a81c16e34dd0539f7a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9ea4ec748ca37f93e9711970b10746a009543d00
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203496"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656594"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: nastavení jednotného přihlašování (SSO) založeného na OIDC pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)
 
@@ -54,13 +54,13 @@ Nastavení jednotného přihlašování pro aplikaci:
 
 3. Po úspěšném ověření se zobrazí dialogové okno s výzvou k vyjádření souhlasu správce. Vyberte **souhlas jménem vaší organizace** a pak vyberte **přijmout**. 
 
-    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Snímek obrazovky se zobrazí možnost jednotného přihlašování a přihlašovací tlačítko." lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
+    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Snímek obrazovky s informacemi o souhlasu aplikace" lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
 4. Aplikace se přidá do vašeho tenanta a zobrazí se Domovská stránka aplikace.
 
 
 > [!TIP]
-> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](/graph/application-saml-sso-configure-api).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

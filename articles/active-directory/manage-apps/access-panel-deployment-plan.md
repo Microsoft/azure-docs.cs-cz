@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: cc36fccf84807621b8b3a186979ccfd000fe48f3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8e345b27fdb2604c0c3264d6935cb9cff8aeec9c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372476"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656730"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Plánování nasazení Azure Active Directory moje aplikace
 
@@ -54,10 +54,10 @@ Výhody služby Azure AD moje aplikace představují tyto firmy:
 
 Moje aplikace je zdarma a nevyžaduje žádné licence k použití na základní úrovni. Nicméně počet objektů ve vašem adresáři a další funkce, které chcete nasadit, můžou vyžadovat další licence. Mezi běžné scénáře služby Azure AD, které mají požadavky na licencování, patří následující funkce zabezpečení:
 
-* [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
-* [Členství na základě skupin](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-* [Samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
-* [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+* [Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Členství na základě skupin](../fundamentals/active-directory-manage-groups.md)
+* [Samoobslužné resetování hesla](../authentication/tutorial-enable-sspr.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
 
 Seznamte se s [úplnými licencemi pro Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -65,14 +65,14 @@ Seznamte se s [úplnými licencemi pro Azure AD](https://azure.microsoft.com/pri
 
 Před zahájením tohoto projektu dokončete následující předpoklady:
 
-* [Integrace jednotného přihlašování k aplikaci](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
-* [Správa infrastruktury uživatelů a skupin Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
+* [Integrace jednotného přihlašování k aplikaci](./plan-sso-deployment.md)
+* [Správa infrastruktury uživatelů a skupin Azure AD](../fundamentals/active-directory-manage-groups.md)
 
 ## <a name="plan-azure-ad-my-apps-deployment"></a>Plánování nasazení Azure AD moje aplikace
 
 Následující tabulka popisuje klíčové případy použití pro nasazení moje aplikace:
 
-| Plošný| Popis |
+| Oblast| Popis |
 | - | - |
 | Access| Portál moje aplikace je přístupný z firemních i osobních zařízení v podnikové síti. |
 |Access | Portál moje aplikace je přístupný z firemních zařízení mimo podnikovou síť. |
@@ -166,23 +166,23 @@ Pro dosažení co nejlepších zkušeností se stránkou moje aplikace Začněte
 
 Používejte federované jednotné přihlašování se službou Azure AD (OpenID Connect/SAML), když ji aplikace podporuje místo jednotného přihlašování založeného na heslech a ADFS.
 
-Další informace o tom, jak nasadit a nakonfigurovat aplikace SaaS, najdete v [plánu nasazení SaaS SSO](https://aka.ms/deploymentplans/sso).
+Další informace o tom, jak nasadit a nakonfigurovat aplikace SaaS, najdete v [plánu nasazení SaaS SSO](./plan-sso-deployment.md).
 
 #### <a name="plan-to-deploy-the-my-apps-browser-extension"></a>Plánování nasazení rozšíření prohlížeče moje aplikace
 
-Když se uživatelé přihlásí k aplikacím jednotného přihlašování na základě hesla, musí nainstalovat a použít rozšíření pro zabezpečené přihlašování k aplikacím. Toto rozšíření spustí skript, který přenáší heslo do formuláře pro přihlášení k aplikaci. Uživatelům se zobrazí výzva k instalaci rozšíření při prvním spuštění aplikace jednotného přihlašování založeného na heslech. Další informace o rozšíření najdete v této dokumentaci o [instalaci rozšíření prohlížeče moje aplikace](access-panel-extension-problem-installing.md).
+Když se uživatelé přihlásí k aplikacím jednotného přihlašování na základě hesla, musí nainstalovat a použít rozšíření pro zabezpečené přihlašování k aplikacím. Toto rozšíření spustí skript, který přenáší heslo do formuláře pro přihlášení k aplikaci. Uživatelům se zobrazí výzva k instalaci rozšíření při prvním spuštění aplikace jednotného přihlašování založeného na heslech. Další informace o rozšíření najdete v této dokumentaci o [instalaci rozšíření prohlížeče moje aplikace]().
 
-Pokud potřebujete integrovat aplikace jednotného přihlašování založené na heslech, měli byste definovat mechanismus nasazení rozšíření ve velkém měřítku s [podporovanými prohlížeči](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Mezi možnosti patří:
+Pokud potřebujete integrovat aplikace jednotného přihlašování založené na heslech, měli byste definovat mechanismus nasazení rozšíření ve velkém měřítku s [podporovanými prohlížeči](../user-help/my-apps-portal-end-user-access.md). Vaše možnosti jsou:
 
-* [Zásady skupiny pro Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-* [Configuration Manager pro Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-* [Stažení a konfigurace na základě uživatele pro Chrome, Firefox, Microsoft Edge nebo IE](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+* [Zásady skupiny pro Internet Explorer]()
+* [Configuration Manager pro Internet Explorer](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Stažení a konfigurace na základě uživatele pro Chrome, Firefox, Microsoft Edge nebo IE](../user-help/my-apps-portal-end-user-access.md)
 
 Pro uživatele, kteří nepoužívají aplikace jednotného přihlašování založené na heslech, je také výhoda rozšíření. Mezi tyto výhody patří možnost spuštění libovolné aplikace z panelu hledání, vyhledání přístupu k nedávno používaným aplikacím a odkaz na stránku Moje aplikace.
 
 #### <a name="plan-for-mobile-access"></a>Plánování mobilního přístupu
 
-Prohlížeč chráněný zásadami Intune (Microsoft Edge nebo Intune Managed Browser) je nutný pro mobilní uživatele, kteří spouštějí aplikace jednotného přihlašování založené na heslech. Prohlížeč chráněný zásadami povoluje přenos hesla uloženého pro aplikaci. Microsoft Edge nebo Managed Browser poskytují sadu funkcí ochrany webových dat. Na zařízeních s iOS a Androidem můžete také používat Microsoft Edge pro podnikové scénáře. Microsoft Edge podporuje stejné scénáře správy jako Intune Managed Browser a zlepšuje činnost koncového uživatele. Další informace: [Správa webového přístupu pomocí Microsoft Intune prohlížeče chráněného zásadami](https://docs.microsoft.com/intune/app-configuration-managed-browser).
+Prohlížeč chráněný zásadami Intune (Microsoft Edge nebo Intune Managed Browser) je nutný pro mobilní uživatele, kteří spouštějí aplikace jednotného přihlašování založené na heslech. Prohlížeč chráněný zásadami povoluje přenos hesla uloženého pro aplikaci. Microsoft Edge nebo Managed Browser poskytují sadu funkcí ochrany webových dat. Na zařízeních s iOS a Androidem můžete také používat Microsoft Edge pro podnikové scénáře. Microsoft Edge podporuje stejné scénáře správy jako Intune Managed Browser a zlepšuje činnost koncového uživatele. Další informace: [Správa webového přístupu pomocí Microsoft Intune prohlížeče chráněného zásadami](/intune/app-configuration-managed-browser).
 
 ## <a name="plan-your-my-apps-deployment"></a>Plánování nasazení mých aplikací
 
@@ -248,7 +248,7 @@ V rámci auditování, vytváření sestav a záloh zotavení po havárii si poz
 
 Po nakonfigurování aplikace pro jednotné přihlašování se skupinám přiřadí přístup. Uživatelé v přiřazených skupinách budou mít přístup a uvidí aplikaci ve složce Moje aplikace a ve spouštěči aplikace Microsoft 365.
 
-Viz [přiřazení uživatelů a skupin k aplikaci ve službě Active Directory](methods-for-assigning-users-and-groups.md).
+Viz [přiřazení uživatelů a skupin k aplikaci ve službě Active Directory](./assign-user-or-group-access-portal.md).
 
 Pokud při testování nebo nasazení chcete přidat skupiny, ale ještě nechcete, aby se aplikace zobrazovaly ve složkách moje aplikace, přečtěte si téma [skrytí aplikace od uživatele v Azure Active Directory](hide-application-from-user-portal.md).
 
@@ -294,7 +294,7 @@ Následující testy by se měly provádět u zařízení vlastněných společn
 
 ### <a name="rollback-steps"></a>Kroky vrácení zpět
 
-Je důležité, abyste naplánovali, co dělat, pokud nasazení neprojde jako plánované. Pokud během nasazení dojde k chybě v konfiguraci jednotného přihlašování, musíte pochopit, jak [řešit problémy s jednotným PŘIhlašováním](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso) a snížit dopad na uživatele. V extrémních případech možná budete muset [vrátit jednotné přihlašování](../manage-apps/plan-sso-deployment.md#rollback-process).
+Je důležité, abyste naplánovali, co dělat, pokud nasazení neprojde jako plánované. Pokud během nasazení dojde k chybě v konfiguraci jednotného přihlašování, musíte pochopit, jak [řešit problémy s jednotným PŘIhlašováním](../hybrid/tshoot-connect-sso.md) a snížit dopad na uživatele. V extrémních případech možná budete muset [vrátit jednotné přihlašování](../manage-apps/plan-sso-deployment.md#rollback-process).
 
 
 ## <a name="manage-your-implementation"></a>Správa implementace
@@ -312,4 +312,4 @@ K provedení požadované úlohy v Azure Active Directory použijte nejnižší 
 Pomocí [Privileged Identity Management](../privileged-identity-management/pim-configure.md) můžete spravovat své role, abyste měli k dispozici další auditování, řízení a kontrolu přístupu pro uživatele s oprávněními k adresáři.
 
 ## <a name="next-steps"></a>Další kroky
-[Plánování nasazení Azure Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa)
+[Plánování nasazení Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

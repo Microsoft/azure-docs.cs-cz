@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 9ff70e7c05ca8de49f560fba3d59f0609785b8c4
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 9ac4aa9e93ac296913d7a62e83b182d673015bae
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636771"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655965"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Připojení virtuálních počítačů služby Azure Stack hub k Azure Sentinel
 
@@ -34,8 +34,8 @@ Po připojení Azure Stack hub vyberte z Galerie řídicích panelů, které na 
 
 Přidejte rozšíření **Azure monitor, Update a Správa konfigurace** virtuálního počítače do virtuálních počítačů spuštěných v centru Azure Stack. 
 
-1. Na nové kartě prohlížeče se přihlaste k [portálu Azure Stack hub](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal).
-2. Přejít na stránku **virtuální počítače** , vyberte virtuální počítač, který chcete chránit pomocí služby Azure Sentinel. Informace o tom, jak vytvořit virtuální počítač v centru Azure Stack, najdete v tématu Vytvoření virtuálního počítače [s Windows serverem pomocí portálu centra Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) nebo [Vytvoření virtuálního počítače se systémem Linux pomocí portálu služby Azure Stack hub](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal).
+1. Na nové kartě prohlížeče se přihlaste k [portálu Azure Stack hub](/azure-stack/user/azure-stack-use-portal#access-the-portal).
+2. Přejít na stránku **virtuální počítače** , vyberte virtuální počítač, který chcete chránit pomocí služby Azure Sentinel. Informace o tom, jak vytvořit virtuální počítač v centru Azure Stack, najdete v tématu Vytvoření virtuálního počítače [s Windows serverem pomocí portálu centra Azure Stack](/azure-stack/user/azure-stack-quick-windows-portal) nebo [Vytvoření virtuálního počítače se systémem Linux pomocí portálu služby Azure Stack hub](/azure-stack/user/azure-stack-quick-linux-portal).
 3. Vyberte **Rozšíření**. Zobrazí se seznam rozšíření virtuálních počítačů nainstalovaných na tomto virtuálním počítači.
 4. Klikněte na kartu **Přidat** . Otevře se okno nabídky **nový prostředek** a zobrazí se seznam dostupných rozšíření virtuálních počítačů. 
 5. Vyberte rozšíření **pro správu Azure monitor, aktualizace a konfigurace** a klikněte na **vytvořit**. Otevře se okno **instalovat konfiguraci rozšíření** .
@@ -62,7 +62,7 @@ Odebrání rozšíření:
 
 1. Otevřete **portál centra Azure Stack**.
 2. Na stránce přejít na **virtuální počítače** vyberte virtuální počítač, ze kterého chcete rozšíření odebrat.
-3. Vyberte **rozšíření** , vyberte rozšíření **Microsoft. EnterpriseCloud. Monitoring**.
+3. Vyberte **rozšíření**, vyberte rozšíření **Microsoft. EnterpriseCloud. Monitoring**.
 4. Klikněte na **odinstalovat** a potvrďte výběr.
 
 ## <a name="next-steps"></a>Další kroky

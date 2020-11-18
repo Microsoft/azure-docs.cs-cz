@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 7fe47289dcc6b6d6af4d13b36b5c3b1dae3baaf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 247abafd7abec38e43794b76268ee52538aee508
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89663907"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655676"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Použití Logstash k připojení zdrojů dat k Sentinel Azure
 
 > [!IMPORTANT]
 > Přijímání dat pomocí modulu plug-in Logstash Output je momentálně ve verzi Public Preview. Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Pomocí nového výstupního modulu plug-in Azure Sentinel pro **modul pro shromažďování dat Logstash**teď můžete poslat libovolný typ protokolu prostřednictvím Logstash přímo do vašeho pracovního prostoru Log Analytics ve službě Azure Sentinel. Vaše protokoly se odešlou do vlastní tabulky, kterou budete definovat pomocí modulu plug-in výstup.
+Pomocí nového výstupního modulu plug-in Azure Sentinel pro **modul pro shromažďování dat Logstash** teď můžete poslat libovolný typ protokolu prostřednictvím Logstash přímo do vašeho pracovního prostoru Log Analytics ve službě Azure Sentinel. Vaše protokoly se odešlou do vlastní tabulky, kterou budete definovat pomocí modulu plug-in výstup.
 
 Další informace o práci s modulem pro shromažďování dat Logstash najdete v tématu [Začínáme s Logstash](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html).
 
@@ -48,8 +48,8 @@ Modul Logstash se skládá ze tří součástí:
 
 Modul plug-in Azure Sentinel Output pro Logstash odesílá data ve formátu JSON do vašeho pracovního prostoru Log Analytics pomocí Log Analytics REST API kolekce dat HTTP. Data se ingestují do vlastních protokolů.
 
-- Přečtěte si další informace o [REST API Log Analytics](https://docs.microsoft.com/rest/api/loganalytics/create-request).
-- Přečtěte si další informace o [vlastních protokolech](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-custom-logs).
+- Přečtěte si další informace o [REST API Log Analytics](/rest/api/loganalytics/create-request).
+- Přečtěte si další informace o [vlastních protokolech](../azure-monitor/platform/data-sources-custom-logs.md).
 
 ## <a name="deploy-the-azure-sentinel-output-plugin-in-logstash"></a>Nasazení modulu plug-in Azure Sentinel Output v Logstash
 
@@ -57,7 +57,7 @@ Modul plug-in Azure Sentinel Output pro Logstash odesílá data ve formátu JSON
 
 Modul plug-in Azure Sentinel Output je k dispozici v kolekci Logstash.
 
-- Pokud chcete nainstalovat modul plug-in ***Microsoft-Logstash-Output-Azure-loganalytics*** , postupujte podle pokynů v dokumentu Logstash [Working with plugins](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) .
+- Pokud chcete nainstalovat modul plug-in *_Microsoft-Logstash-Output-Azure-loganalytics_* _, postupujte podle pokynů v dokumentu Logstash [Working with plugins](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) .
    
 - Pokud váš systém Logstash nemá přístup k Internetu, připravte a použijte offline balíček modulu plug-in pomocí pokynů v dokumentu [správy modulu plug-in](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) Logstash. (To bude vyžadovat, abyste vytvořili jiný Logstash systém s přístupem k Internetu.)
 
@@ -65,11 +65,11 @@ Modul plug-in Azure Sentinel Output je k dispozici v kolekci Logstash.
 
 Použijte informace ze struktury Logstash dokumentu [konfiguračního souboru](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) a přidejte do konfigurace modul plug-in Azure Sentinel Output s následujícími klíči a hodnotami. (Správná syntaxe konfiguračního souboru se zobrazí za tabulkou.)
 
-| Název pole | Datový typ | Description |
+| Název pole | Datový typ | Popis |
 |----------------|---------------|-----------------|
-| `workspace_id` | řetězec | Zadejte identifikátor GUID ID vašeho pracovního prostoru. * |
+| `workspace_id` | řetězec | Zadejte identifikátor GUID ID vašeho pracovního prostoru. _ |
 | `workspace_key` | řetězec | Zadejte identifikátor GUID primárního klíče pracovního prostoru. * |
-| `custom_log_table_name` | řetězec | Nastavte název tabulky, do které budou přijímány protokoly. Pro každý výstupní modul plug-in se dá nakonfigurovat jenom jeden název tabulky. V části **protokoly**v **tabulkách** v kategorii **vlastní protokoly** se jako přípona zobrazí tabulka protokolu Azure Sentinel `_CL` . |
+| `custom_log_table_name` | řetězec | Nastavte název tabulky, do které budou přijímány protokoly. Pro každý výstupní modul plug-in se dá nakonfigurovat jenom jeden název tabulky. V části **protokoly** v **tabulkách** v kategorii **vlastní protokoly** se jako přípona zobrazí tabulka protokolu Azure Sentinel `_CL` . |
 | `endpoint` | řetězec | Volitelné pole. Ve výchozím nastavení je to koncový bod Log Analytics. Pomocí tohoto pole můžete nastavit alternativní koncový bod. |
 | `time_generated_field` | řetězec | Volitelné pole. Tato vlastnost přepisuje výchozí pole **TimeGenerated** v Log Analytics. Zadejte název pole časového razítka ve zdroji dat. Data v poli musí odpovídat formátu ISO 8601 ( `YYYY-MM-DDThh:mm:ssZ` ). |
 | `key_names` | array | Zadejte seznam Log Analytics výstupních polí schématu. Každá položka seznamu by měla být uzavřena do jednoduchých uvozovek a položek oddělených čárkami a celým seznamem uzavřeným v hranatých závorkách. Viz následující příklad. |
@@ -162,7 +162,7 @@ Tady je několik ukázkových konfigurací, které používají několik různý
 
 1. Chcete-li zobrazit záznamy v tabulce, proveďte dotaz na tabulku pomocí názvu tabulky jako schématu.
 
-   :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="Snímek obrazovky s vlastními protokoly pro dočasné ukládání protokolu":::
+   :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="Snímek obrazovky s dotazem vlastního protokolu pro dočasné ukládání protokolů":::
 
 ## <a name="monitor-output-plugin-audit-logs"></a>Monitorování protokolů auditu výstupního modulu plug-in
 

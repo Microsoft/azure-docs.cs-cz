@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d32728c1f388e9013b922d1f60d30e65d350bbc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f5aaf4bbff4c093872228d647d3850667fb9777
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642431"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656403"
 ---
 # <a name="application-management-best-practices"></a>Osvědčené postupy pro správu aplikací
 
@@ -30,7 +30,7 @@ Tento článek obsahuje doporučení a osvědčené postupy pro správu aplikac�
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>Doporučení pro cloudovou aplikaci a jednotné přihlašování
 | Doporučení | Komentáře |
 | --- | --- |
-| Podívejte se na galerii aplikací Azure AD pro aplikace  | Azure AD obsahuje galerii obsahující tisíce předem integrovaných aplikací, které jsou povolené s podnikovým jednotným přihlašováním (SSO). Pokyny k instalaci pro konkrétní aplikaci najdete v [seznamu výukových kurzů](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)pro aplikace SaaS.  | 
+| Podívejte se na galerii aplikací Azure AD pro aplikace  | Azure AD obsahuje galerii obsahující tisíce předem integrovaných aplikací, které jsou povolené s podnikovým jednotným přihlašováním (SSO). Pokyny k instalaci pro konkrétní aplikaci najdete v [seznamu výukových kurzů](../saas-apps/tutorial-list.md)pro aplikace SaaS.  | 
 | Použití federovaného jednotného přihlašování založené na SAML  | Když ji aplikace podporuje, použijte federované jednotné přihlašování založené na SAML s Azure AD místo jednotného přihlašování založeného na heslech a ADFS.  | 
 | Použití SHA-256 pro podepsání certifikátu  | Služba Azure AD ve výchozím nastavení používá algoritmus SHA-256 k podepsání odpovědi SAML. Použijte SHA-256, pokud aplikace nevyžaduje SHA-1 (viz [možnosti podepisování certifikátů](certificate-signing-options.md) a [problém s přihlášením aplikací](application-sign-in-problem-application-error.md).)  | 
 | Vyžadovat přiřazení uživatele  | Ve výchozím nastavení mají uživatelé přístup k podnikovým aplikacím bez jejich přiřazení. Pokud však aplikace zveřejňuje role nebo pokud chcete, aby se aplikace zobrazila na mých aplikacích uživatele, vyžadovat přiřazení uživatele. (Další informace najdete v tématu [pokyny pro vývojáře při integraci aplikací](developer-guidance-for-integrating-applications.md).)  | 
@@ -41,7 +41,7 @@ Tento článek obsahuje doporučení a osvědčené postupy pro správu aplikac�
 ## <a name="provisioning-recommendations"></a>Doporučení pro zřizování
 | Doporučení | Komentáře |
 | --- | --- |
-| Použití kurzů k nastavení zřizování pro cloudové aplikace | Podrobné pokyny ke konfiguraci zřizování pro aplikaci Galerie, kterou chcete přidat, najdete v [seznamu kurzů aplikací SaaS](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) . |
+| Použití kurzů k nastavení zřizování pro cloudové aplikace | Podrobné pokyny ke konfiguraci zřizování pro aplikaci Galerie, kterou chcete přidat, najdete v [seznamu kurzů aplikací SaaS](../saas-apps/tutorial-list.md) . |
 | Ke sledování stavu použijte protokoly zřizování (Preview). | [Protokoly zřizování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) poskytují podrobné informace o všech akcích prováděných službou zřizování, včetně stavu pro jednotlivé uživatele. |
 | Přiřazení distribuční skupiny k e-mailu s oznámením zřizování | Chcete-li zvýšit viditelnost kritických výstrah odesílaných službou zřizování, přiřaďte distribuční skupinu k nastavení e-mailů s oznámením. |
 

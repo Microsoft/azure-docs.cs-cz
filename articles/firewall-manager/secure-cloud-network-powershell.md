@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
-ms.openlocfilehash: d9d9da9cd01b4bb9b3cabcf069990cd3cbd38d38
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e2bcdf947db60fb50b44abba9d6a224768840b28
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92429310"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656135"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>Kurz: zabezpečení virtuálního centra pomocí Azure PowerShell
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 - PowerShell 7
 
-   Tento kurz vyžaduje, abyste v prostředí PowerShell 7 spustili Azure PowerShell místně. Pokud chcete nainstalovat PowerShell 7, přečtěte si téma [migrace z Windows powershellu 5,1 do PowerShellu 7](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7).
+   Tento kurz vyžaduje, abyste v prostředí PowerShell 7 spustili Azure PowerShell místně. Pokud chcete nainstalovat PowerShell 7, přečtěte si téma [migrace z Windows powershellu 5,1 do PowerShellu 7](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7).
 - AZ. Network Version 3.2.0
 
     Pokud máte AZ. Network Version 3.4.0 nebo novější, budete muset downgradovat na použití některých příkazů v tomto kurzu. Verzi modulu AZ. Network můžete ověřit pomocí příkazu `Get-InstalledModule -Name Az.Network` . Pokud chcete odinstalovat modul AZ. Network, spusťte příkaz `Uninstall-Module -name az.network` . Pokud chcete nainstalovat modul AZ. Network 3.2.0, spusťte příkaz `Install-Module az.network -RequiredVersion 3.2.0 -force` .

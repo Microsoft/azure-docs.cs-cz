@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 2e5c588db6f372a50b2a80afd8a2a023ece34502
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 235c5c19c9a6e587106b3fd41691a3f775caa84f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203616"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656611"
 ---
 # <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: nastavení jednotného přihlašování založeného na SAML (SSO) pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)
 
@@ -53,17 +53,17 @@ Nastavení jednotného přihlašování pro aplikaci:
 
 1. Vyberte **SAML** a otevřete stránku konfigurace jednotného přihlašování. V tomto příkladu je aplikace, kterou konfigurujeme pro jednotné přihlašování, GitHub. Po nastavení GitHubu se uživatelé můžou přihlásit k GitHubu pomocí svých přihlašovacích údajů z vašeho tenanta Azure AD.
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="Snímek obrazovky zobrazující konfigurační stránku jednotného přihlašování na portálu Azure AD.":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="Snímek obrazovky se zobrazením konfigurační stránky jednotného přihlašování na GitHubu.":::
 
-1. Proces konfigurace aplikace pro použití Azure AD pro jednotné přihlašování založené na SAML se liší v závislosti na aplikaci. K dispozici je odkaz na pokyny pro GitHub. Pokyny pro další aplikace najdete v tématu [kurzy pro integraci SaaSch aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/).
+1. Proces konfigurace aplikace pro použití Azure AD pro jednotné přihlašování založené na SAML se liší v závislosti na aplikaci. K dispozici je odkaz na pokyny pro GitHub. Pokyny pro další aplikace najdete v tématu [kurzy pro integraci SaaSch aplikací s Azure Active Directory](/azure/active-directory/saas-apps/).
 1. Postupujte podle pokynů průvodce pro nastavení jednotného přihlašování pro aplikaci. Mnoho aplikací má specifické požadavky na odběr pro funkce jednotného přihlašování. Například GitHub vyžaduje předplatné Enterprise.
     > [!TIP]
     > Další informace o možnostech konfigurace SAML najdete v tématu [Konfigurace jednotného přihlašování založeného na SAML](configure-saml-single-sign-on.md).
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Snímek obrazovky zobrazující konfigurační stránku jednotného přihlašování na portálu Azure AD.":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Snímek obrazovky s možností jednotného přihlašování v podnikovém předplatném na stránce s cenami GitHubu.":::
 
 > [!TIP]
-> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](/graph/application-saml-sso-configure-api).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

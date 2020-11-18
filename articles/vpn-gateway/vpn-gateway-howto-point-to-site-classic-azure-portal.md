@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: a66b76350da6f3b3804dac73a7aeb9f54d2e34eb
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 42b0945de55775f55f20cefdeb547cb5d6492c06
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938368"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657070"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurace připojení typu Point-to-site pomocí ověřování certifikátů (Classic)
 
@@ -114,7 +114,7 @@ Pokud používáte certifikáty podepsané svým držitelem, musí se vytvořit 
 Po vytvoření brány nahrajte soubor. cer (obsahující informace o veřejném klíči) důvěryhodného kořenového certifikátu do serveru Azure. Nenahrávat privátní klíč pro kořenový certifikát. Po nahrání certifikátu ho Azure používá k ověřování klientů, kteří mají nainstalovaný klientský certifikát vygenerovaný z důvěryhodného kořenového certifikátu. Později můžete v případě potřeby nahrávat další soubory důvěryhodných kořenových certifikátů (až 20).
 
 1. Přejděte do virtuální sítě, kterou jste vytvořili.
-1. V části **Nastavení**vyberte **připojení Point-to-site**.
+1. V části **Nastavení** vyberte **připojení Point-to-site**.
 1. Vyberte **Spravovat certifikát**.
 1. Vyberte **Nahrát**.
 1. V podokně **nahrát certifikát** vyberte ikonu složky a přejděte k certifikátu, který chcete nahrát.
@@ -137,7 +137,7 @@ V každém klientském počítači můžete použít stejný konfigurační bal�
 
 1. Azure vytvoří balíček s konkrétním nastavením, které klient vyžaduje. Pokaždé, když provedete změny virtuální sítě nebo brány, potřebujete stáhnout nový balíček pro konfiguraci klienta a nainstalovat ho do klientských počítačů.
 1. Po vygenerování balíčku vyberte **Stáhnout**.
-1. Nainstalujte balíček pro konfiguraci klienta do klientského počítače. Pokud se při instalaci zobrazí automaticky otevírané okno SmartScreen s informacemi o tom, že systém Windows chráněný vaším počítačem, vyberte **Další informace**a pak vyberte **přesto spustit**. Můžete také balíček uložit k instalaci na další klientské počítače.
+1. Nainstalujte balíček pro konfiguraci klienta do klientského počítače. Pokud se při instalaci zobrazí automaticky otevírané okno SmartScreen s informacemi o tom, že systém Windows chráněný vaším počítačem, vyberte **Další informace** a pak vyberte **přesto spustit**. Můžete také balíček uložit k instalaci na další klientské počítače.
 
 ### <a name="install-a-client-certificate"></a>Instalace klientského certifikátu
 
@@ -153,7 +153,7 @@ Při instalaci klientského certifikátu budete potřebovat heslo, které bylo v
 
 1. V klientském počítači přejít na nastavení sítě VPN.
 1. Vyberte síť VPN, kterou jste vytvořili. Pokud jste použili příklad nastavení, připojení bude označeno jako **Skupina TestRG VNet1**.
-1. Vyberte **Připojit**.
+1. Vyberte **Connect** (Připojit).
 1. V poli Windows Azure Virtual Network vyberte **připojit**. Pokud se zobrazí automaticky otevíraná zpráva o certifikátu, vyberte **pokračovat** , pokud chcete přijímat změny konfigurace, a **Ano** .
 1. Po úspěšném připojení se zobrazí **připojené** oznámení.
 
@@ -202,23 +202,23 @@ Běžnou praxí je použití kořenového certifikátu pro řízení přístupu 
 
 Klientský certifikát můžete odvolat tím, že přidáte jeho kryptografický otisk do seznamu odvolaných certifikátů.
 
-1. Načtěte kryptografický otisk klientského certifikátu. Další informace najdete v tématu [Postup: Načtení kryptografického otisku certifikátu](https://msdn.microsoft.com/library/ms734695.aspx).
+1. Načtěte kryptografický otisk klientského certifikátu. Další informace najdete v tématu [Postup: Načtení kryptografického otisku certifikátu](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate).
 1. Zkopírujte informace do textového editoru a odstraňte mezery, aby se jedná o souvislý řetězec.
-1. Přejděte na **připojení VPN typu Point-to-site**a pak vyberte **Spravovat certifikát**.
+1. Přejděte na **připojení VPN typu Point-to-site** a pak vyberte **Spravovat certifikát**.
 1. Vyberte **seznam odvolaných certifikátů** a otevřete stránku **seznam odvolaných certifikátů** .
-1. V části **kryptografický otisk**vložte kryptografický otisk certifikátu jako jeden souvislý řádek textu bez mezer.
+1. V části **kryptografický otisk** vložte kryptografický otisk certifikátu jako jeden souvislý řádek textu bez mezer.
 1. Vyberte **+ Přidat k seznamu** a přidejte tak kryptografický otisk do seznamu odvolaných certifikátů (CRL).
 
 Po dokončení aktualizace už nebude možné certifikát použít k připojení. Klientům, kteří se pokusí připojit pomocí tohoto certifikátu, se zobrazí zpráva s informací o tom, že certifikát již není platný.
 
-## <a name="faq"></a><a name="faq"></a>Časté otázky
+## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-point-to-site-classic-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-* Po dokončení připojení můžete virtuální počítače přidat do svých virtuálních sítí. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/).
+* Po dokončení připojení můžete virtuální počítače přidat do svých virtuálních sítí. Další informace najdete v tématu [Virtuální počítače](../index.yml).
 
-* Další informace o síťových a virtuálních počítačích se systémem Linux najdete v tématu [Přehled sítě virtuálních počítačů Azure a Linux](../virtual-machines/linux/network-overview.md).
+* Další informace o síťových a virtuálních počítačích se systémem Linux najdete v tématu [Přehled sítě virtuálních počítačů Azure a Linux](../virtual-machines/network-overview.md).
 
 * Informace o odstraňování potíží s P2S najdete v článku [Poradce při potížích s připojeními Azure typu point-to-site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: a385a339122197b7055ef6f54b8e37edea8eae4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0682115727068c928418d97fbf92ed32897c39d4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88078933"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656747"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integrace se službou Azure Proxy aplikací služby AD na serveru služby zápisu síťových zařízení (NDES)
 
@@ -26,7 +26,7 @@ Proxy aplikace Azure Active Directory (AD) umožňuje publikování aplikací v 
 
 Pokud s Azure začínáte Proxy aplikací služby AD a chcete získat další informace, přečtěte si téma [vzdálený přístup k místním aplikacím prostřednictvím Azure proxy aplikací služby AD](application-proxy.md).
 
-Azure Proxy aplikací služby AD je postavená na Azure. Nabízí obrovské množství šířky pásma sítě a serverové infrastruktury pro lepší ochranu před distribuovanými útoky na útoky DDOS (Denial of Service) a vynikající dostupností. Kromě toho není nutné otevírat Externí porty brány firewall v místní síti a není vyžadován žádný DMZ Server. Veškerý provoz pochází z příchozího. Úplný seznam odchozích portů najdete v tématu [kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment).
+Azure Proxy aplikací služby AD je postavená na Azure. Nabízí obrovské množství šířky pásma sítě a serverové infrastruktury pro lepší ochranu před distribuovanými útoky na útoky DDOS (Denial of Service) a vynikající dostupností. Kromě toho není nutné otevírat Externí porty brány firewall v místní síti a není vyžadován žádný DMZ Server. Veškerý provoz pochází z příchozího. Úplný seznam odchozích portů najdete v tématu [kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
 > Azure Proxy aplikací služby AD je funkce, která je dostupná jenom v případě, že používáte edice Premium nebo Basic sady Azure Active Directory. Další informace najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/). 
 > Pokud máte licence pro sadu Enterprise Mobility Suite (EMS), máte nárok na použití tohoto řešení.
@@ -37,7 +37,7 @@ Azure Proxy aplikací služby AD je postavená na Azure. Nabízí obrovské mno�
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce aplikace adresáře, který používá proxy aplikace. Pokud je například doména tenanta contoso.com, správce by měl být admin@contoso.com v této doméně nebo jiný alias správce.
 1. V pravém horním rohu vyberte své uživatelské jméno. Ověřte, že jste přihlášeni k adresáři, který používá proxy aplikace. Pokud potřebujete změnit adresáře, vyberte **Přepnout adresář** a zvolte adresář, který používá proxy aplikace.
 1. V levém navigačním panelu vyberte **Azure Active Directory**.
-1. V části **Spravovat**vyberte **proxy aplikace**.
+1. V části **Spravovat** vyberte **proxy aplikace**.
 1. Vyberte **stáhnout službu konektoru**.
 
     ![Stažení služby konektoru, aby se zobrazila podmínka služby](./media/active-directory-app-proxy-protect-ndes/application-proxy-download-connector-service.png)
@@ -70,9 +70,9 @@ Azure Proxy aplikací služby AD je postavená na Azure. Nabízí obrovské mno�
 
    ![Ujistěte se, že máte na pravé strany.](./media/active-directory-app-proxy-protect-ndes/azure-active-directory-enterprise-applications.png)
 
-1. Vyberte **+ Nová aplikace**a pak vyberte místní **aplikace**. 
+1. Vyberte **+ Nová aplikace** a pak vyberte místní **aplikace**. 
 
-1. V části **Přidat vlastní místní aplikaci**nakonfigurujte následující pole:
+1. V části **Přidat vlastní místní aplikaci** nakonfigurujte následující pole:
 
    * **Název**: zadejte název aplikace.
    * **Interní adresa URL**: zadejte interní adresu URL nebo plně kvalifikovaný název domény serveru NDES, na kterém jste konektor nainstalovali.
@@ -96,4 +96,4 @@ Azure Proxy aplikací služby AD je postavená na Azure. Nabízí obrovské mno�
 
 ## <a name="next-steps"></a>Další kroky
 
-S Azure Proxy aplikací služby AD integrována se službou NDES, publikujte aplikace pro uživatele, kteří budou mít přístup. Další informace najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application).
+S Azure Proxy aplikací služby AD integrována se službou NDES, publikujte aplikace pro uživatele, kteří budou mít přístup. Další informace najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](./application-proxy-add-on-premises-application.md).

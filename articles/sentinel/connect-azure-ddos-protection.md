@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e8e44f69965af1987bd5f023644d966b3caf1c77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5d98a834ed4f87fb95a13e666967a7b2d80975d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505819"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656050"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>Připojení dat z Azure DDoS Protection
 
@@ -22,15 +22,15 @@ ms.locfileid: "89505819"
 > Konektor dat Azure DDoS Protection v Azure Sentinel je aktuálně ve verzi Public Preview.
 > Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Služba DDoS (Distributed DOS) se pokouší vyčerpat prostředky aplikace, takže aplikace nebude k dispozici oprávněným uživatelům. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet. [Ochrana Azure DDoS](../virtual-network/ddos-protection-overview.md)v kombinaci s osvědčenými postupy pro návrh aplikací poskytuje robustní ochranu před útoky DDoS. Protokoly Azure DDoS Protection můžete připojit ke službě Azure Sentinel a umožnit vám zobrazovat data protokolu v sešitech, použít je k vytváření vlastních výstrah a začlenit je k vylepšení šetření. 
+Služba DDoS (Distributed DOS) se pokouší vyčerpat prostředky aplikace, takže aplikace nebude k dispozici oprávněným uživatelům. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet. [Ochrana Azure DDoS](../ddos-protection/ddos-protection-overview.md)v kombinaci s osvědčenými postupy pro návrh aplikací poskytuje robustní ochranu před útoky DDoS. Protokoly Azure DDoS Protection můžete připojit ke službě Azure Sentinel a umožnit vám zobrazovat data protokolu v sešitech, použít je k vytváření vlastních výstrah a začlenit je k vylepšení šetření. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 - V pracovním prostoru Azure Sentinel musíte mít oprávnění ke čtení a zápisu.
 
-- Musíte mít nakonfigurovaný plán služby [Azure DDoS Standard Protection](../virtual-network/manage-ddos-protection.md#create-a-ddos-protection-plan).
+- Musíte mít nakonfigurovaný plán služby [Azure DDoS Standard Protection](../ddos-protection/manage-ddos-protection.md#create-a-ddos-protection-plan).
 
-- Musíte mít nakonfigurovanou [virtuální síť s povolenou službou Azure DDoS Standard](../virtual-network/manage-ddos-protection.md#enable-ddos-for-a-new-virtual-network).
+- Musíte mít nakonfigurovanou [virtuální síť s povolenou službou Azure DDoS Standard](../ddos-protection/manage-ddos-protection.md#enable-ddos-protection-for-a-new-virtual-network).
 
 ## <a name="connect-to-azure-ddos-protection"></a>Připojení k Azure DDoS Protection
     
@@ -49,7 +49,7 @@ Služba DDoS (Distributed DOS) se pokouší vyčerpat prostředky aplikace, tak�
 
        - Zaškrtněte políčko **Odeslat do Log Analytics** . Pod ní se zobrazí dvě nová pole. Vyberte relevantní **předplatné** a **Log Analytics pracovní prostor** (kde se nachází Azure Sentinel).
 
-       - Zaškrtněte políčka u typů pravidel, jejichž protokoly chcete ingestovat. Doporučujeme **DDoSProtectionNotifications**, **DDoSMitigationFlowLogs**a **DDoSMitigationReports**.
+       - Zaškrtněte políčka u typů pravidel, jejichž protokoly chcete ingestovat. Doporučujeme **DDoSProtectionNotifications**, **DDoSMitigationFlowLogs** a **DDoSMitigationReports**.
 
     1. V horní části obrazovky klikněte na **Uložit** . Tento postup opakujte pro všechny další brány firewall (veřejné IP adresy), pro které jste povolili DDoS Protection.
 

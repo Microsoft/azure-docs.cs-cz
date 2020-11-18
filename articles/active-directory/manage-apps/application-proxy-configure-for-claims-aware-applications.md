@@ -15,15 +15,15 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97def0608251f65aa222e13760877d4287135d08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5c840722ae6b03a0b8a7fa44e5999e14730d4f3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386975"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656271"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Práce s aplikacemi pracujícími s deklaracemi v proxy aplikací
-[Aplikace pracující s deklaracemi](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) provádějí přesměrování na službu tokenů zabezpečení (STS). Služba STS požaduje přihlašovací údaje od uživatele v Exchangi pro token a pak uživatele přesměruje na aplikaci. Existuje několik způsobů, jak povolit proxy aplikace pro práci s těmito přesměrování. V tomto článku můžete nakonfigurovat nasazení pro aplikace pracující s deklaracemi. 
+[Aplikace pracující s deklaracemi](/previous-versions/windows/desktop/legacy/bb736227(v=vs.85)) provádějí přesměrování na službu tokenů zabezpečení (STS). Služba STS požaduje přihlašovací údaje od uživatele v Exchangi pro token a pak uživatele přesměruje na aplikaci. Existuje několik způsobů, jak povolit proxy aplikace pro práci s těmito přesměrování. V tomto článku můžete nakonfigurovat nasazení pro aplikace pracující s deklaracemi. 
 
 ## <a name="prerequisites"></a>Požadavky
 Ujistěte se, že služba STS, na kterou pracují deklarace, je k dispozici mimo místní síť. Službu STS můžete zpřístupnit tím, že ji vystavíte prostřednictvím proxy serveru nebo pokud povolíte vnější připojení. 
@@ -32,7 +32,7 @@ Ujistěte se, že služba STS, na kterou pracují deklarace, je k dispozici mimo
 
 1. Publikujte aplikaci podle pokynů popsaných v tématu [publikování aplikací pomocí proxy aplikací](application-proxy-add-on-premises-application.md).
 2. Na portálu přejděte na stránku aplikace a vyberte **jednotné přihlašování**.
-3. Pokud jste jako **metodu předběžného ověření**zvolili **Azure Active Directory** , vyberte jako **metodu interního ověřování**možnost **jednotné přihlašování Azure AD** . Pokud jste jako **metodu předběžného ověření**zvolili možnost **Passthrough** , nemusíte nic měnit.
+3. Pokud jste jako **metodu předběžného ověření** zvolili **Azure Active Directory** , vyberte jako **metodu interního ověřování** možnost **jednotné přihlašování Azure AD** . Pokud jste jako **metodu předběžného ověření** zvolili možnost **Passthrough** , nemusíte nic měnit.
 
 ## <a name="configure-adfs"></a>Konfigurace služby ADFS
 
@@ -49,12 +49,10 @@ Pokud jsou všechny interní adresy URL pro vaše aplikace plně kvalifikované 
 
    ![Vztahy důvěryhodnosti předávající strany klikněte pravým tlačítkem myši na název aplikace – snímek obrazovky](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
 
-3. Na kartě **koncové body** v části **Typ koncového bodu**vyberte **WS-Federation**.
-4. V části **důvěryhodná adresa URL**zadejte adresu URL, kterou jste zadali v proxy aplikaci v oblasti **externí adresa URL** , a klikněte na **OK**.  
+3. Na kartě **koncové body** v části **Typ koncového bodu** vyberte **WS-Federation**.
+4. V části **důvěryhodná adresa URL** zadejte adresu URL, kterou jste zadali v proxy aplikaci v oblasti **externí adresa URL** , a klikněte na **OK**.  
 
    ![Přidání koncového bodu – nastavit důvěryhodnou hodnotu adresy URL – snímek obrazovky](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>Další kroky
 * [Povolit nativním klientským aplikacím pracovat s proxy aplikacemi](application-proxy-configure-native-client-application.md)
-
-

@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 81a735966b2a0ebdd7c8fcd9e9aa467d68aac354
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2d041782e8df795acb120ba1357cec5ef204dc28
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792748"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656323"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
 
@@ -179,7 +179,7 @@ Při prvotním řešení potíží proveďte následující kroky:
    ![Služba konektoru Azure Proxy aplikací služby AD v Services. msc](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
 1. Spusťte analyzátor zpráv jako správce.
-1. Vyberte **Spustit místní trasování** .
+1. Vyberte **Spustit místní trasování**.
 1. Spusťte službu konektoru Azure Proxy aplikací služby AD.
 1. Zastavte síťové zachycení.
 
@@ -189,7 +189,7 @@ Při prvotním řešení potíží proveďte následující kroky:
 
 Pokud jste proxy server aplikace nakonfigurovali tak, aby se nepoužívaly proxy servery a připojili se přímo k proxy službě aplikace, chcete se podívat na síťové zachycení pro neúspěšné pokusy o připojení TCP.
 
-Tyto pokusy Identifikujte pomocí filtru analyzátoru zpráv. `property.TCPSynRetransmit`Do pole Filtr zadejte a vyberte **použít** .
+Tyto pokusy Identifikujte pomocí filtru analyzátoru zpráv. `property.TCPSynRetransmit`Do pole Filtr zadejte a vyberte **použít**.
 
 Paket SYN je první paket odeslaný k navázání připojení TCP. Pokud tento paket nevrátí odpověď, dojde k pokusu o SYN. K zobrazení všech přenesených SYNs můžete použít předchozí filtr. Pak můžete ověřit, zda tyto SYNs odpovídají jakýmkoli přenosům spojeným s konektorem.
 
@@ -208,4 +208,4 @@ Pokud vidíte další kódy odpovědí, například 407 nebo 502, znamená to, �
 ## <a name="next-steps"></a>Další kroky
 
 * [Vysvětlení konektorů Azure Proxy aplikací služby AD](application-proxy-connectors.md)
-* Pokud máte problémy s připojením konektoru, zeptejte se na stránku s [dotazem na Microsoft Q&pro Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html) nebo vytvořte lístek s týmem podpory.
+* Pokud máte problémy s připojením konektoru, zeptejte se na stránku s [dotazem na Microsoft Q&pro Azure Active Directory](/answers/topics/azure-active-directory.html) nebo vytvořte lístek s týmem podpory.

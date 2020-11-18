@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7680c7ad4b2c5c8b8c1c13fb2344575659eda140
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 346536f5797841a850ef97dc4667110eafa721a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91892817"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656952"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Vytvoření připojení typu Site-to-Site pomocí webu Azure Portal (Classic)
 
@@ -73,14 +73,14 @@ Pokud vytváříte virtuální síť pro použití k připojení typu Site-to-Si
 
 Místní lokalita obvykle odkazuje na vaše místní umístění. Obsahuje IP adresu zařízení VPN, ke kterému vytvoříte připojení, a rozsah IP adres, které budou do tohoto zařízení VPN směrovány přes bránu VPN.
 
-1. Na stránce pro virtuální síť v části **Nastavení**vyberte **připojení Site-to-site**.
+1. Na stránce pro virtuální síť v části **Nastavení** vyberte **připojení Site-to-site**.
 1. Na stránce připojení Site-to-site vyberte **+ Přidat**.
-1. Na stránce **Konfigurovat připojení k síti VPN a bránu** pro **Typ připojení**ponechte vybranou možnost **site-to-site** . Pro účely tohoto cvičení budete muset použít kombinaci [ukázkových hodnot](#values) a vašich vlastních hodnot.
+1. Na stránce **Konfigurovat připojení k síti VPN a bránu** pro **Typ připojení** ponechte vybranou možnost **site-to-site** . Pro účely tohoto cvičení budete muset použít kombinaci [ukázkových hodnot](#values) a vašich vlastních hodnot.
 
    * **IP adresa brány VPN:** Toto je veřejná IP adresa zařízení VPN pro vaši místní síť. Zařízení VPN vyžaduje veřejnou IP adresu IPv4. Zadejte platnou veřejnou IP adresu pro zařízení VPN, ke kterému se chcete připojit. Musí být dosažitelný pomocí Azure. Pokud neznáte IP adresu zařízení VPN, pořád můžete použít zástupnou hodnotu (pokud je ve formátu platné veřejné IP adresy) a změnit ji později.
 
    * **Klientský adresní prostor:** Vypište rozsahy IP adres, které chcete přes tuto bránu směrovat do místní sítě. Můžete přidat více různých rozsahů adres. Ujistěte se, že se zde zadané rozsahy nepřekrývají s rozsahy jiných sítí, ke kterým se vaše virtuální síť připojuje, nebo s rozsahy adres samotné virtuální sítě.
-1. V dolní části stránky nevybírejte možnost zkontrolovat + vytvořit. Místo toho vyberte **Další:>brány **.
+1. V dolní části stránky nevybírejte možnost zkontrolovat + vytvořit. Místo toho vyberte **Další:>brány**.
 
 ### <a name="to-configure-the-virtual-network-gateway"></a><a name="sku"></a>Konfigurace brány virtuální sítě
 
@@ -135,7 +135,7 @@ Pokud máte potíže s připojením, podívejte se do části **Řešení potí�
 
 ## <a name="how-to-reset-a-vpn-gateway"></a><a name="reset"></a>Resetování brány VPN
 
-Resetování brány Azure VPN je užitečné v případě ztráty připojení VPN mezi lokalitami na jednom nebo více tunelech VPN typu Site-to-Site. V této situaci vaše místní zařízení VPN fungují správně, ale nejsou schopná vytvořit tunelová propojení prostřednictvím protokolu IPsec s branami Azure VPN. Pokyny najdete v tématu [Resetování brány VPN](vpn-gateway-resetgw-classic.md#resetclassic).
+Resetování brány Azure VPN je užitečné v případě ztráty připojení VPN mezi lokalitami na jednom nebo více tunelech VPN typu Site-to-Site. V této situaci vaše místní zařízení VPN fungují správně, ale nejsou schopná vytvořit tunelová propojení prostřednictvím protokolu IPsec s branami Azure VPN. Pokyny najdete v tématu [Resetování brány VPN](./reset-gateway.md#resetclassic).
 
 ## <a name="how-to-change-a-gateway-sku"></a><a name="changesku"></a>Změna skladové položky brány
 
@@ -143,5 +143,5 @@ Postup změny SKU brány najdete v tématu [Změna velikosti skladové položky 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/).
+* Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](../index.yml).
 * Informace o vynuceném tunelování najdete v tématu [o vynuceném tunelování](vpn-gateway-about-forced-tunneling.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 319e0d29ef297f2a675128d498820a2d5b8ac42e
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b0cafcbc9fa6f0fcb31f44b44dfbe4fc3e10c17d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579517"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656067"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Připojení dat z programu Microsoft Defender k identitě (dříve Rozšířená ochrana před internetovými útoky Azure)
 
@@ -27,7 +27,7 @@ ms.locfileid: "94579517"
 > Microsoft Defender pro data Connector ve službě Azure Sentinel je momentálně ve verzi Public Preview.
 > Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Pomocí jediného kliknutí můžete streamovat protokoly z [Microsoft Defenderu pro identitu](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) do Azure Sentinel.
+Pomocí jediného kliknutí můžete streamovat protokoly z [Microsoft Defenderu pro identitu](/azure-advanced-threat-protection/what-is-atp) do Azure Sentinel.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,7 +36,7 @@ Pomocí jediného kliknutí můžete streamovat protokoly z [Microsoft Defenderu
 
 ## <a name="connect-to-microsoft-defender-for-identity"></a>Připojení k programu Microsoft Defender pro identitu
 
-Ujistěte se, že je [ve vaší síti povolená](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1)verze Preview programu Microsoft Defender for identity.
+Ujistěte se, že je [ve vaší síti povolená](/azure-advanced-threat-protection/install-atp-step1)verze Preview programu Microsoft Defender for identity.
 Pokud je program Microsoft Defender pro identitu nasazený a ingestuje vaše data, můžou být podezřelé výstrahy snadno streamované do Azure Sentinel. Může trvat až 24 hodin, než se výstrahy spustí streamování do Azure Sentinel.
 
 
@@ -57,4 +57,3 @@ Pokud je program Microsoft Defender pro identitu nasazený a ingestuje vaše dat
 V tomto dokumentu jste zjistili, jak připojit Microsoft Defender k identitě do Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
-

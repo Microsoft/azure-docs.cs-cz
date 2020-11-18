@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 867cfa1321106c24354b29ea803a4fb914a6778d
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 77bd5e3b7a258ef83e5de4ec645ea70578fb9dfb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341376"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657087"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Vytvoření mezipaměti prostředí Azure HPC
 
@@ -31,7 +31,7 @@ Kliknutím na obrázek níže si můžete přehrát [ukázku](https://azure.micr
 
 V části **Project Details (podrobnosti projektu**) vyberte předplatné a skupinu prostředků, které budou hostovat mezipaměť.
 
-V části **Podrobnosti o službě**nastavte název mezipaměti a tyto ostatní atributy:
+V části **Podrobnosti o službě** nastavte název mezipaměti a tyto ostatní atributy:
 
 * Umístění – vyberte jednu z [podporovaných oblastí](hpc-cache-overview.md#region-availability).
 * Virtuální síť – můžete vybrat existující virtuální síť nebo vytvořit novou.
@@ -102,10 +102,10 @@ Po dokončení vytváření se zobrazí oznámení s odkazem na novou instanci m
 
 ## <a name="create-the-cache-with-azure-cli"></a>Vytvoření mezipaměti pomocí Azure CLI
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
 > [!NOTE]
-> Rozhraní příkazového řádku Azure v současné době nepodporuje vytváření mezipaměti pomocí šifrovacích klíčů spravovaných zákazníkem. Použijete Azure Portal
+> Rozhraní příkazového řádku Azure v současné době nepodporuje vytváření mezipaměti pomocí šifrovacích klíčů spravovaných zákazníkem. Použijte Azure Portal.
 
 Pomocí příkazu [AZ HPC-cache Create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) vytvořte novou mezipaměť prostředí Azure HPC.
 
@@ -208,7 +208,7 @@ Install-Module -Name Az.HPCCache
 ## <a name="create-the-cache-with-azure-powershell"></a>Vytvoření mezipaměti pomocí Azure PowerShell
 
 > [!NOTE]
-> Azure PowerShell v současné době nepodporuje vytváření mezipaměti pomocí šifrovacích klíčů spravovaných zákazníkem. Použijete Azure Portal
+> Azure PowerShell v současné době nepodporuje vytváření mezipaměti pomocí šifrovacích klíčů spravovaných zákazníkem. Použijte Azure Portal.
 
 Pomocí rutiny [New-AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) vytvořte novou mezipaměť prostředí Azure HPC.
 

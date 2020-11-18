@@ -9,16 +9,16 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: b1188e533039b0137cebb22652d9921418c41deb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b37675d46d501fc43446eafc83d6c0a02f238177
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659644"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655948"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>Připojit data výstrah v programu Azure Defender z Azure Security Center
 
-Pomocí konektoru výstrah v programu Azure Defender ingestujte výstrahy Azure Defenderu od [Azure Security Center](../security-center/security-center-intro.md) a Streamujte je do Azure Sentinel. 
+Pomocí konektoru výstrah v programu Azure Defender ingestujte výstrahy Azure Defenderu od [Azure Security Center](../security-center/security-center-introduction.md) a Streamujte je do Azure Sentinel. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,9 +32,9 @@ Pomocí konektoru výstrah v programu Azure Defender ingestujte výstrahy Azure 
 
 1. Z Galerie datových konektorů vyberte **výstrahy v Azure Defenderu od ASC** (může se dál volat Azure Security Center) a klikněte na tlačítko **otevřít stránku konektoru** .
 
-1. V části **Konfigurace**klikněte na **připojit** vedle každého předplatného, jehož výstrahy chcete streamovat do Azure Sentinel. Tlačítko připojit bude k dispozici pouze v případě, že máte požadovaná oprávnění.
+1. V části **Konfigurace** klikněte na **připojit** vedle každého předplatného, jehož výstrahy chcete streamovat do Azure Sentinel. Tlačítko připojit bude k dispozici pouze v případě, že máte požadovaná oprávnění.
 
-1. Můžete vybrat, jestli chcete, aby upozornění z Azure Defenderu automaticky generovala incidenty ve službě Azure Sentinel. V části **vytvořit incidenty**vyberte **povoleno** , pokud chcete zapnout výchozí analytické pravidlo, které automaticky vytvoří incidenty z výstrah. Toto pravidlo pak můžete upravit v části **Analýza**na kartě  **aktivní pravidla** .
+1. Můžete vybrat, jestli chcete, aby upozornění z Azure Defenderu automaticky generovala incidenty ve službě Azure Sentinel. V části **vytvořit incidenty** vyberte **povoleno** , pokud chcete zapnout výchozí analytické pravidlo, které automaticky vytvoří incidenty z výstrah. Toto pravidlo pak můžete upravit v části **Analýza** na kartě  **aktivní pravidla** .
 
 1. Pokud chcete použít příslušné schéma v Log Analytics pro výstrahy Azure Defenderu, vyhledejte **SecurityAlert**.
 

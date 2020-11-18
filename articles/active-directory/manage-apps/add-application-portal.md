@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 2946590cbb4c5e8f495a1f6ee4aac65929cd4d0e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fd81e5f87aaf4a28676b79863df60b71707849e9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91305723"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656509"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: Přidání aplikace do tenanta Azure Active Directory (Azure AD)
 
@@ -27,7 +27,7 @@ Po přidání aplikace do tenanta Azure AD můžete:
 - Umožňuje spravovat přístup uživatelů k aplikaci pomocí zásad podmíněného přístupu.
 - Nakonfigurujte jednotné přihlašování, aby se uživatelé mohli přihlašovat do aplikace pomocí svých přihlašovacích údajů Azure AD.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete přidat aplikaci do tenanta Azure AD, budete potřebovat:
 
@@ -46,7 +46,7 @@ Přidání aplikace do tenanta služby Azure AD:
 2. V podokně **Azure Active Directory** vyberte možnost **podnikové aplikace**. Otevře se podokno **všechny aplikace** a zobrazí se náhodná ukázka aplikací v TENANTOVI Azure AD.
 3. V podokně **podnikové aplikace** vyberte **Nová aplikace**. 
     ![Vyberte Nová aplikace a přidejte do svého tenanta aplikaci Galerie.](media/add-application-portal/new-application.png)
-4. Přepněte na nové prostředí verze Preview: v banneru v horní části **stránky přidat aplikaci**vyberte odkaz, který uvádí, jestli **chcete vyzkoušet novou a vylepšenou galerii aplikací kliknutím sem**.
+4. Přepněte na nové prostředí verze Preview: v banneru v horní části **stránky přidat aplikaci** vyberte odkaz, který uvádí, jestli **chcete vyzkoušet novou a vylepšenou galerii aplikací kliknutím sem**.
 5. Otevře se podokno **Procházet Azure AD Gallery (Preview)** a zobrazí dlaždice pro cloudové platformy, místní aplikace a doporučené aplikace. Aplikace uvedené v části **vybrané aplikace** obsahují ikony, které označují, jestli podporují federované jednotné přihlašování (SSO) a zřizování. 
     ![Hledání aplikace podle názvu nebo kategorie](media/add-application-portal/browse-gallery.png)
 6. Můžete procházet galerii pro aplikaci, kterou chcete přidat, nebo vyhledat aplikaci zadáním jejího názvu do vyhledávacího pole. Pak vyberte aplikaci z výsledků. 
@@ -55,10 +55,10 @@ Přidání aplikace do tenanta služby Azure AD:
     :::image type="content" source="media/add-application-portal/sso-types.png" alt-text="Snímek obrazovky se zobrazí jako selektor typů jednotného přihlašování." lightbox="media/add-application-portal/sso-types.png":::
 
     - Pokud vývojář aplikace použil **Standard OIDC** pro jednotné přihlašování, vyberte **zaregistrovat**. Zobrazí se stránka instalace. V dalším kroku přejdete k rychlému startu při nastavování jednotného přihlašování založeného na OIDC.
-    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="Snímek obrazovky se zobrazí jako selektor typů jednotného přihlašování.":::
+    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="Snímek obrazovky ukazuje přidání aplikace jednotného přihlašování založeného na OIDC.":::
 
     - Pokud vývojář aplikace použil **Standard SAML** pro jednotné přihlašování, vyberte **vytvořit**. Zobrazí se stránka Začínáme s možnostmi konfigurace aplikace pro vaši organizaci. Ve formuláři můžete upravit název aplikace tak, aby odpovídala potřebám vaší organizace. V dalším kroku přejdete k rychlému startu při nastavování jednotného přihlašování založeného na SAML.
-    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="Snímek obrazovky se zobrazí jako selektor typů jednotného přihlašování.":::
+    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="Snímek obrazovky ukazuje přidání aplikace jednotného přihlašování založeného na SAML.":::
 
 
 > [!IMPORTANT]
@@ -69,7 +69,7 @@ Pokud aplikace, kterou hledáte, není v galerii, pak můžete vybrat odkaz **vy
 Dokončili jste přidávání aplikace. V dalším rychlém startu se dozvíte, jak změnit logo a upravit další vlastnosti aplikace.
 
 > [!TIP]
-> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](/graph/application-saml-sso-configure-api).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

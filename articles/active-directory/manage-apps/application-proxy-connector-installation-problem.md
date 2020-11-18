@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 7babe23426cafe01cadc7a5557f91896aa9bbae4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 0b7fee330f93097b561714ecc938eaf3fee8f2b5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108197"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657325"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Potíže při instalaci konektoru agenta proxy aplikací
 
@@ -39,7 +39,7 @@ V případě selhání instalace konektoru je hlavní příčinou obvykle jedna 
 
 **Cíl:** Ověřte, že se počítač konektoru může připojit ke koncovému bodu registrace proxy aplikace a také k přihlašovací stránce Microsoftu.
 
-1.  Na serveru konektoru spusťte test portu pomocí [protokolu Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) nebo jiného nástroje pro testování portů, abyste ověřili, že jsou otevřené porty 443 a 80.
+1.  Na serveru konektoru spusťte test portu pomocí [protokolu Telnet](/windows-server/administration/windows-commands/telnet) nebo jiného nástroje pro testování portů, abyste ověřili, že jsou otevřené porty 443 a 80.
 
 2.  Pokud některý z těchto portů neproběhne úspěšně, ověřte, zda má server firewall nebo back-end proxy přístup k požadovaným doménám a portům v tématu [Příprava místního prostředí](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
@@ -77,8 +77,8 @@ Ověřte kryptografický otisk aktuálního certifikátu klienta. Úložiště c
 Možné hodnoty **IsInUserStore** jsou **true** a **false**. Hodnota **true** znamená, že se automaticky obnovený certifikát uloží do osobního kontejneru v úložišti certifikátů uživatele síťové služby. Hodnota **false** znamená, že klientský certifikát byl vytvořen během instalace nebo registrace iniciované příkazem Register-AppProxyConnector a je uložen v osobním kontejneru v úložišti certifikátů místního počítače.
 
 Pokud je hodnota **true**, ověřte certifikát pomocí těchto kroků:
-1. Stáhnout [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools)
-2. Z příkazového řádku se zvýšenými oprávněními rozbalte [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) z balíčku a spusťte **PsExec-i-u "NT authority\network Service" cmd.exe** .
+1. Stáhnout [PsTools.zip](/sysinternals/downloads/pstools)
+2. Z příkazového řádku se zvýšenými oprávněními rozbalte [PsExec](/sysinternals/downloads/psexec) z balíčku a spusťte **PsExec-i-u "NT authority\network Service" cmd.exe** .
 3. Spusťte **certmgr. msc** na nově zobrazeném příkazovém řádku.
 4. V konzole pro správu rozbalte osobní kontejner a klikněte na certifikáty.
 5. Vyhledejte certifikát vydaný pomocí **connectorregistrationca.msappproxy.NET**
@@ -101,7 +101,7 @@ Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
 
-Další informace o příkazu Register-AppProxyConnector najdete v tématu [Vytvoření skriptu bezobslužné instalace pro konektor Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell) .
+Další informace o příkazu Register-AppProxyConnector najdete v tématu [Vytvoření skriptu bezobslužné instalace pro konektor Azure proxy aplikací služby AD](./application-proxy-register-connector-powershell.md) .
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Ověření, že se k instalaci konektoru používá správce
 

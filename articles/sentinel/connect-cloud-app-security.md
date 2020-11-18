@@ -1,6 +1,6 @@
 ---
 title: Připojit Cloud App Security dat ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se používat konektor Microsoft Cloud App Security (MCAS) ke streamování výstrah a Cloud Discovery protokolů z MCAS do Azure Sentinel. 
+description: Naučte se používat konektor Microsoft Cloud App Security (MCAS) ke streamování výstrah a Cloud Discovery protokolů z MCAS do Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 5c67f517ffd3704644fbe8041f3ac1e7b0d1f09c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9827e93f793ef47a835aa0a5fb2005e2830a0824
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904563"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655710"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Připojení dat z Microsoft Cloud App Security 
 
-Konektor [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) umožňuje streamovat výstrahy a [protokoly Cloud Discovery](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) z MCAS do služby Azure Sentinel. To vám umožní získat přehled o vašich cloudových aplikacích, získávat sofistikované analýzy, které vám pomůžou identifikovat a bojovat proti týká kybernetických hrozeb a řídit, jak se data cestují.
+Konektor [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) umožňuje streamovat výstrahy a [protokoly Cloud Discovery](/cloud-app-security/tutorial-shadow-it) z MCAS do služby Azure Sentinel. To vám umožní získat přehled o vašich cloudových aplikacích, získávat sofistikované analýzy, které vám pomůžou identifikovat a bojovat proti týká kybernetických hrozeb a řídit, jak se data cestují.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Váš uživatel musí mít v pracovním prostoru oprávnění ke čtení a zápisu.
 - Váš uživatel musí mít oprávnění globálního správce nebo správce zabezpečení v tenantovi pracovního prostoru.
-- Pokud chcete streamovat Cloud Discovery protokoly do Azure Sentinel, [Povolte jako Siem v Microsoft Cloud App Security možnost Sentinel Azure](https://aka.ms/AzureSentinelMCAS).
+- Pokud chcete streamovat Cloud Discovery protokoly do Azure Sentinel, [Povolte jako Siem v Microsoft Cloud App Security možnost Sentinel Azure](/cloud-app-security/siem-sentinel).
 
 > [!IMPORTANT]
 > Přijímání protokolů Cloud Discovery je v současnosti ve verzi Public Preview.
@@ -38,7 +38,7 @@ Konektor [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-sec
  
 ## <a name="connect-to-cloud-app-security"></a>Připojení k Cloud App Security
 
-Pokud už máte Cloud App Security, ujistěte se, že je [ve vaší síti povolená](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security).
+Pokud už máte Cloud App Security, ujistěte se, že je [ve vaší síti povolená](/cloud-app-security/getting-started-with-cloud-app-security).
 Pokud je Cloud App Security nasazená a ingestují vaše data, můžou se data výstrah do Azure Sentinel snadno streamovat.
 
 
@@ -48,7 +48,7 @@ Pokud je Cloud App Security nasazená a ingestují vaše data, můžou se data v
 
 1. Klikněte na **použít změny**.
 
-1. Můžete vybrat, jestli chcete, aby v Azure Defenderu byly při automatickém generování incidentů ve službě Azure Sentinel výstrahy z Azure Security Center. V části **vytvořit incidenty**vyberte **povoleno** , pokud chcete zapnout výchozí analytické pravidlo, které automaticky vytvoří incidenty z výstrah. Toto pravidlo pak můžete upravit v části **Analýza**na kartě  **aktivní pravidla** .
+1. Můžete vybrat, jestli chcete, aby v Azure Defenderu byly při automatickém generování incidentů ve službě Azure Sentinel výstrahy z Azure Security Center. V části **vytvořit incidenty** vyberte **povoleno** , pokud chcete zapnout výchozí analytické pravidlo, které automaticky vytvoří incidenty z výstrah. Toto pravidlo pak můžete upravit v části **Analýza** na kartě  **aktivní pravidla** .
 
 1. Pokud chcete použít příslušné schéma v Log Analytics pro Cloud App Security výstrahy, zadejte `SecurityAlert` do okna dotazu. Do pole Cloud Discovery protokoly schématu zadejte `McasShadowItReporting` .
 
@@ -60,4 +60,4 @@ Pokud je Cloud App Security nasazená a ingestují vaše data, můžou se data v
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit Microsoft Cloud App Security ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte s detekcí hrozeb pomocí služby Azure Sentinel a pomocí [předdefinovaných](tutorial-detect-threats.md) nebo [vlastních](tutorial-detect-threats-custom.md) pravidel.
+- Začněte s detekcí hrozeb pomocí služby Azure Sentinel a pomocí [předdefinovaných](./tutorial-detect-threats-built-in.md) nebo [vlastních](tutorial-detect-threats-custom.md) pravidel.
