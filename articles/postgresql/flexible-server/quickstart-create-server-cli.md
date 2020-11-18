@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/22/2020
-ms.custom: mvc
-ms.openlocfilehash: 75d76c64c10bf3ecc28c32452618048119bb9a59
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: d43fab43b05ccfd88308390f58ba48ff9111b295
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547618"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842817"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-flexible-server-using-azure-cli"></a>Rychlý Start: vytvoření Azure Database for PostgreSQL flexibilního serveru pomocí Azure CLI
 
@@ -30,7 +30,7 @@ Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém ho
 
 Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
 
@@ -79,7 +79,7 @@ Pokud se chcete připojit k serveru, budete muset zadat informace o hostiteli a 
 az postgres flexible-server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **administratorLogin** .
+Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **administratorLogin**.
 
 <!--FIXME-->
 ```json
@@ -112,7 +112,7 @@ Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **
 
 ## <a name="connect-using-postgresql-command-line-client"></a>Připojit pomocí klienta příkazového řádku PostgreSQL
 
-Protože se flexibilní Server vytvořil s *privátním přístupem (Integration VNET)* , budete se muset připojit k serveru z prostředku ve stejné virtuální síti jako váš server. Můžete vytvořit virtuální počítač a přidat ho do vytvořené virtuální sítě. 
+Protože se flexibilní Server vytvořil s *privátním přístupem (Integration VNET)*, budete se muset připojit k serveru z prostředku ve stejné virtuální síti jako váš server. Můžete vytvořit virtuální počítač a přidat ho do vytvořené virtuální sítě. 
 
 Po vytvoření virtuálního počítače se můžete na počítač SSH a nainstalovat nástroj příkazového řádku **[psql](https://www.postgresql.org/download/)** .
 

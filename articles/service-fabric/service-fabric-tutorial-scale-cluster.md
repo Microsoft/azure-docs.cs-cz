@@ -3,13 +3,13 @@ title: Škálování clusteru Service Fabric v Azure
 description: V tomto kurzu se dozvíte, jak škálovat Cluster Service Fabric v Azure na úrovni a jak vyčistit prostředky zbylé.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 7f92ca28afd9d1894867aaa2c18df3a02ee0bd79
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716873"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842681"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování clusteru Service Fabric v Azure
 
@@ -33,7 +33,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -68,7 +68,7 @@ Po vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-crea
 
 1. V [Azure Portal](https://portal.azure.com)přejdete do skupiny prostředků obsahující cluster (**sfclustertutorialgroup**, pokud budete postupovat podle tohoto kurzu). 
 
-2. V levém podokně vyberte **nasazení**nebo vyberte odkaz v části **nasazení**. 
+2. V levém podokně vyberte **nasazení** nebo vyberte odkaz v části **nasazení**. 
 
 3. Vyberte ze seznamu poslední úspěšné nasazení.
 
@@ -80,7 +80,7 @@ Změna velikosti a zmenšení nebo horizontální škálování mění počet uz
 
 ### <a name="update-the-template"></a>Aktualizace šablony
 
-[Exportujte šablonu a soubor parametrů](#export-the-template-for-the-resource-group) ze skupiny prostředků pro nejnovější nasazení.  Otevřete *parameters.jsv* souboru.  Pokud jste nasadili cluster pomocí [ukázkové šablony][template] v tomto kurzu, existují tři typy uzlů v clusteru a tři parametry, které nastaví počet uzlů pro každý typ uzlu: *nt0InstanceCount*, *nt1InstanceCount*a *nt2InstanceCount*.  Parametr *nt1InstanceCount* například nastaví počet instancí pro druhý typ uzlu a nastaví počet virtuálních počítačů v přidružené sadě škálování virtuálního počítače.
+[Exportujte šablonu a soubor parametrů](#export-the-template-for-the-resource-group) ze skupiny prostředků pro nejnovější nasazení.  Otevřete *parameters.jsv* souboru.  Pokud jste nasadili cluster pomocí [ukázkové šablony][template] v tomto kurzu, existují tři typy uzlů v clusteru a tři parametry, které nastaví počet uzlů pro každý typ uzlu: *nt0InstanceCount*, *nt1InstanceCount* a *nt2InstanceCount*.  Parametr *nt1InstanceCount* například nastaví počet instancí pro druhý typ uzlu a nastaví počet virtuálních počítačů v přidružené sadě škálování virtuálního počítače.
 
 Pokud tedy aktualizujete hodnotu *nt1InstanceCount* , změníte počet uzlů v druhém typu uzlu.  Nezapomeňte, že nemůžete škálovat typ uzlu na více než 100 uzlů.  Neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů. Neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
 

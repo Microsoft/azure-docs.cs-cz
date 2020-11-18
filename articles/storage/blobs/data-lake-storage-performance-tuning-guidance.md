@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 82220a63cfe470344951e4276bc9eaccd9600428
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8bfe6f07fead700ae71bba1c28ccb13aa700513c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677350"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842766"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimalizuje Azure Data Lake Storage Gen2 pro výkon.
 
@@ -45,9 +45,9 @@ Po vyřešení výše uvedených slabých míst zdrojového hardwaru a síťové
 
 | Nástroj               | Nastavení     | Další podrobnosti                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| DistCp            | -m (mapovač)   | [Odkaz](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| parallelCopies    | [Odkaz](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. Size,-m (Mapper)    |   [Odkaz](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| DistCp            | -m (mapovač)   | [Propojit](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| parallelCopies    | [Propojit](../../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. Block. Size,-m (Mapper)    |   [Propojit](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Struktura sady dat
 
@@ -57,7 +57,7 @@ Když jsou data uložená v Data Lake Storage Gen2, velikost souboru, počet sou
 
 Analytické stroje, jako je HDInsight a Azure Data Lake Analytics, obvykle mají režii vázané na soubor. Pokud uložíte data jako mnoho malých souborů, může to negativně ovlivnit výkon. Obecně je vhodné uspořádat data do souborů s větší velikostí, aby se zajistil vyšší výkon (256 MB až 100 GB velikosti). Některé moduly a aplikace mohou mít potíže efektivně se zpracováním souborů, které jsou větší než 100 GB velikost.
 
-Někdy mají datové kanály omezenou kontrolu nad nezpracovaná data, která mají velké množství malých souborů. Doporučuje se mít "vaření" proces, který generuje větší soubory pro použití pro podřízené aplikace.
+Někdy mají datové kanály omezenou kontrolu nad nezpracovaná data, která mají velké množství malých souborů. Obecně doporučujeme, aby váš systém měl nějaký proces pro agregaci malých souborů na větší počet pro použití v aplikacích pro příjem dat.
 
 ### <a name="organizing-time-series-data-in-folders"></a>Uspořádání dat časových řad ve složkách
 

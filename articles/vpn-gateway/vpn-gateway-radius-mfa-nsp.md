@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: e5456c53ca891a7c88797f9661a6a3b9b9935e08
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 208e99f61694f5a81a98dbc649e2a6035f57891b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660903"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842579"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrujte ověřování RADIUS brány Azure VPN Gateway se serverem NPS pro Multi-Factor Authentication 
 
@@ -49,9 +49,9 @@ Aby bylo možné vícefaktorové ověřování povolit, musí být uživatelé v
 
 
  
-### <a name="step-2-configure-the-nps-for-azure-mfa"></a>Krok 2 konfigurace NPS pro Azure MFA
+### <a name="step-2-configure-the-nps-for-azure-ad-mfa"></a>Krok 2 konfigurace NPS pro Azure AD MFA
 
-1. Na serveru NPS [nainstalujte rozšíření serveru NPS pro Azure MFA](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
+1. Na serveru NPS [nainstalujte rozšíření NPS pro Azure AD MFA](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
 2. Otevřete konzolu NPS, klikněte pravým tlačítkem na **Klienti RADIUS** a pak vyberte **Nový**. Vytvořte klienta protokolu RADIUS zadáním následujících nastavení:
 
     - **Popisný název**: zadejte libovolný název.
@@ -81,5 +81,5 @@ Aby bylo možné vícefaktorové ověřování povolit, musí být uživatelé v
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
-- [Integrace vaší stávající infrastruktury NPS se službou Multi-Factor Authentication](../active-directory/authentication/howto-mfa-nps-extension.md)
+- [Multi-Factor Authentication Azure AD](../active-directory/authentication/concept-mfa-howitworks.md)
+- [Integrace stávající infrastruktury serveru NPS s Azure AD Multi-Factor Authentication](../active-directory/authentication/howto-mfa-nps-extension.md)

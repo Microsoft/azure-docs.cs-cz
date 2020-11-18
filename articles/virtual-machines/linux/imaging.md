@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 61c21aed76cfaac5621b234b32c90877ef6faa9f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966317"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842613"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Zavedení a vytváření imagí pro Linux v Azure
 
@@ -83,7 +83,7 @@ Spravované Image je možné použít pro vývojová a testovací prostředí, k
 - Globální replikace imagí.
 - Správa verzí a seskupování imagí pro snadnější správu.
 - Vysoce dostupné image s zónou redundantního úložiště (ZRS), v oblastech, které podporují Zóny dostupnosti. ZRS nabízí lepší odolnost proti chybám v rámci oblast.
-- Sdílení mezi předplatnými a dokonce i mezi klienty služby Active Directory (AD), a to pomocí RBAC.
+- Sdílení mezi předplatnými a dokonce i mezi klienty služby Active Directory (AD), a to pomocí Azure RBAC.
 - Škálování nasazení pomocí replik imagí v jednotlivých oblastech.
 
 Na nejvyšší úrovni vytvoříte SIG a skládá se z těchto:

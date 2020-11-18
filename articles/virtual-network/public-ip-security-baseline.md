@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d90384644c58938bfc8a37ec1231b0d12fd60057
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 788c52490a97bb5d5aee0656bbdd09731d767d85
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90058696"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842596"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Základní hodnota zabezpečení Azure pro veřejnou IP adresu Azure
 
@@ -124,7 +124,7 @@ V inventáři nebo dotazování předem definovaných předdefinovaných rolí A
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
-**Doprovodné**materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu. 
+**Doprovodné** materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu. 
 
 Povolený přístup za běhu pomocí Azure Active Directory (Azure AD) Privileged Identity Management (PIM) a Azure Resource Manager. 
 
@@ -136,7 +136,7 @@ Povolený přístup za běhu pomocí Azure Active Directory (Azure AD) Privilege
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Doprovodné**materiály: povolte Azure Active Directory Multi-Factor Authentication a sledujte Security Center doporučení pro správu identit a přístupu.
+**Doprovodné** materiály: povolte Azure Active Directory Multi-Factor Authentication a sledujte Security Center doporučení pro správu identit a přístupu.
 
 - [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -148,11 +148,11 @@ Povolený přístup za běhu pomocí Azure Active Directory (Azure AD) Privilege
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
 
-**Pokyny**: použití pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) s povolenou službou Azure Multi-Factor Authentication (MFA) pro přihlášení a konfiguraci prostředků souvisejících s ověřováním v Azure.
+**Pokyny**: použití pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) s povolenou službou azure AD Multi-Factor Authentication (MFA) pro přihlášení a konfiguraci prostředků souvisejících s ověřováním v Azure.
 
 - [Pracovní stanice s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Plánování cloudového nasazení Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Plánování nasazení služby Azure AD založené na cloudu Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -160,7 +160,7 @@ Povolený přístup za běhu pomocí Azure Active Directory (Azure AD) Privilege
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: protokolovat a upozornit na podezřelé aktivity z účtů pro správu
 
-**Doprovodné**materiály: použijte Azure Active Directory (Azure AD) PRIVILEGED Identity Management (PIM) pro generování protokolů a výstrah v případě, že v prostředí dojde k podezřelé nebo nebezpečné aktivitě.
+**Doprovodné** materiály: použijte Azure Active Directory (Azure AD) PRIVILEGED Identity Management (PIM) pro generování protokolů a výstrah v případě, že v prostředí dojde k podezřelé nebo nebezpečné aktivitě.
 
 Zkontrolujte a vyakčníte zjišťování rizik Azure AD pro výstrahy a sestavy týkající se rizikového chování uživatelů.
 
@@ -194,7 +194,7 @@ Zkontrolujte a vyakčníte zjišťování rizik Azure AD pro výstrahy a sestavy
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Doprovodné**materiály: Objevte zastaralé účty pomocí protokolů v Azure Active Directory (Azure AD). 
+**Doprovodné** materiály: Objevte zastaralé účty pomocí protokolů v Azure Active Directory (Azure AD). 
 
 Pomocí kontrol přístupu Azure identity můžete efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů je možné pravidelně kontrolovat a ujistit se, že uživatelé mají schválení a pokračování v přístupu.
 
@@ -219,7 +219,7 @@ Zjednodušte tento proces vytvořením nastavení diagnostiky pro uživatelské 
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
-**Doprovodné**materiály: použití funkcí ochrany identity Azure Active Directory (Azure AD) ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce související s identitami uživatelů. Ingestování dat do Azure Sentinel pro další šetření podle potřeby a na základě podnikových požadavků.
+**Doprovodné** materiály: použití funkcí ochrany identity Azure Active Directory (Azure AD) ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce související s identitami uživatelů. Ingestování dat do Azure Sentinel pro další šetření podle potřeby a na základě podnikových požadavků.
 - [Jak zobrazit rizikové přihlašování Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
 
 - [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
@@ -252,7 +252,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
-**Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
+**Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
 - [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -262,7 +262,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
-**Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků Azure. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
+**Doprovodné** materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků Azure. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, a to pomocí těchto integrovaných definic zásad:
 
@@ -281,7 +281,7 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
-**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných.
+**Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných.
 
 Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v rámci svých předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
@@ -295,7 +295,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
-**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
+**Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
 - Žádné povolené typy prostředků
 - Povolené typy prostředků
@@ -336,7 +336,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
 
-**Doprovodné**materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.
+**Doprovodné** materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -348,7 +348,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
-**Doprovodné**materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
+**Doprovodné** materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
 - [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -372,7 +372,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: Implementujte automatizované monitorování konfigurace pro prostředky Azure.
 
-**Doprovodné**materiály: použijte předdefinované definice Azure Policy a také Azure Policy aliasy v oboru názvů Microsoft. Network a vytvořte tak vlastní definice Azure Policy pro upozornění, audit a vymáhání systémových konfigurací. K automatickému vymáhání konfigurací pro prostředky Azure použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje].
+**Doprovodné** materiály: použijte předdefinované definice Azure Policy a také Azure Policy aliasy v oboru názvů Microsoft. Network a vytvořte tak vlastní definice Azure Policy pro upozornění, audit a vymáhání systémových konfigurací. K automatickému vymáhání konfigurací pro prostředky Azure použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje].
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -402,7 +402,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
-**Doprovodné**materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
+**Doprovodné** materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
 Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure.
 
@@ -416,7 +416,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
-**Doprovodné**materiály: proveďte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
+**Doprovodné** materiály: proveďte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
 - [Přečtěte si téma publikace NIST: Průvodce testováním, školením a cvičením programů pro plány a možnosti IT](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
@@ -426,7 +426,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
-**Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka přistupovala protiprávní nebo neoprávněná strana. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
+**Doprovodné** materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka přistupovala protiprávní nebo neoprávněná strana. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
 - [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
@@ -436,7 +436,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
-**Doprovodné**materiály: vyexportujte výstrahy a doporučení Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
+**Doprovodné** materiály: vyexportujte výstrahy a doporučení Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
 
 - [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 
@@ -448,7 +448,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
-**Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
+**Doprovodné** materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 
 - [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
@@ -462,7 +462,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
-**Doprovodné**materiály: postupujte podle pravidel pro testování průniku Microsoft Cloud, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft. 
+**Doprovodné** materiály: postupujte podle pravidel pro testování průniku Microsoft Cloud, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft. 
 
 - [Pravidla testování průniku pro zapojení](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 

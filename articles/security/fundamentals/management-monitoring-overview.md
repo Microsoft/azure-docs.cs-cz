@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 3520cbafc0e9eebfd6057fe92579a45873b25734
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698748"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842749"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Přehled správy a monitorování zabezpečení Azure
 Tento článek obsahuje přehled funkcí a služeb zabezpečení, které Azure poskytuje, aby vám pomohly při správě a monitorování cloudových služeb a virtuálních počítačů Azure.
@@ -54,15 +54,15 @@ Další informace:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication je metoda ověřování, která vyžaduje použití více než jedné metody ověřování. Přičítá se kritická druhá vrstva zabezpečení pro přihlášení a transakce uživatelů.
+Azure AD Multi-Factor Authentication je metoda ověřování, která vyžaduje použití více než jedné metody ověřování. Přičítá se kritická druhá vrstva zabezpečení pro přihlášení a transakce uživatelů.
 
 Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně plnit požadavky uživatelů na jednoduchý proces přihlašování. Zajišťuje silné ověřování prostřednictvím řady možností ověřování (telefonní hovor, textová zpráva nebo oznámení mobilní aplikace nebo ověřovací kód) a tokeny OATH třetích stran.
 
 Další informace:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Co je Azure Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Jak funguje Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Co je Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Jak funguje Multi-Factor Authentication služby Azure AD](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 

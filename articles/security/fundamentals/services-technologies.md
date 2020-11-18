@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 553cfe0c1a5e7d569c127f23a11f25f4d150b0bc
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: a4cc6e31e49243af8fa52ac568bcbba660bcde7e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700755"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842732"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Služby a technologie zabezpečení dostupné v Azure
 
@@ -71,7 +71,7 @@ V průběhu času se tento seznam změní a rozroste stejně jako Azure. Nezapom
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|Cloudové úložiště ověřování, které podporuje víceklientské cloudové adresáře a služby více služeb správy identit v rámci Azure.  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|Služba správy identit, která umožňuje řídit, jak se můžou zákazníci přihlašovat, přihlašovat a spravovat jejich profily při používání aplikací založených na Azure.   |
 | [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)| Cloudová a spravovaná verze Active Directory Domain Services. |
-| [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| Zřizování zabezpečení, které využívá několik různých forem ověřování a ověření před tím, než povolí přístup k zabezpečeným informacím. |
+| [Multi-Factor Authentication Azure AD](../../active-directory/authentication/concept-mfa-howitworks.md)| Zřizování zabezpečení, které využívá několik různých forem ověřování a ověření před tím, než povolí přístup k zabezpečeným informacím. |
 
 ## <a name="backup-and-disaster-recovery"></a>Zálohování a zotavení po havárii
 |Služba|Popis|

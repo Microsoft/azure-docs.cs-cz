@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 09e0b3bbac0bdc1d268aa7f24741aeb12a7d366d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f96365bcdf64d19dc0b894f2f1230233b3137bc7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462577"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842647"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Nasazení nástroje pro správu virtuálních ploch Windows (Classic) pomocí šablony Azure Resource Manager
 
@@ -36,7 +36,7 @@ Pro následující prohlížeče jsou kompatibilní s nástrojem pro správu:
 
 Před nasazením nástroje pro správu budete potřebovat uživatele Azure Active Directory (Azure AD) k vytvoření registrace aplikace a nasazení uživatelského rozhraní pro správu. Tento uživatel musí:
 
-- Máte zakázanou službu Azure Multi-Factor Authentication (MFA)
+- Máte zakázanou službu Azure AD Multi-Factor Authentication (MFA)
 - Mít oprávnění k vytváření prostředků ve vašem předplatném Azure
 - Mít oprávnění k vytvoření aplikace služby Azure AD. Pomocí těchto kroků zkontrolujete, jestli má uživatel požadovaná oprávnění, podle pokynů v tématu [požadovaná oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
@@ -52,7 +52,7 @@ Pomocí těchto pokynů nasaďte šablonu Azure Resource Management:
 2. Nasaďte šablonu do Azure.
     - Pokud nasazujete v podnikovém předplatném, přejděte dolů a vyberte **nasadit do Azure**.
     - Pokud nasazujete v rámci předplatného poskytovatele Cloud Solution Provider, při nasazení do Azure postupujte podle těchto pokynů:
-        1. Posuňte se dolů a klikněte pravým tlačítkem myši na **nasadit do Azure**a pak vyberte **Kopírovat umístění odkazu**.
+        1. Posuňte se dolů a klikněte pravým tlačítkem myši na **nasadit do Azure** a pak vyberte **Kopírovat umístění odkazu**.
         2. Otevřete textový editor, jako je Poznámkový blok, a vložte odkaz sem.
         3. Hned za <https://portal.azure.com/> a před hashtagem (#) zadejte znak hvězdička (@) následovaný názvem domény klienta. Tady je příklad formátu: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/> .
         4. Přihlaste se k Azure Portal jako uživatel s oprávněním správce/Přispěvatel k předplatnému poskytovatele Cloud Solution Provider.
@@ -60,7 +60,7 @@ Pomocí těchto pokynů nasaďte šablonu Azure Resource Management:
 3. Při zadávání parametrů udělejte toto:
     - Pro parametr **isServicePrincipal** vyberte false ( **NEPRAVDA**).
     - Pro přihlašovací údaje zadejte svoje přihlašovací údaje služby Azure AD se zakázaným ověřováním službou Multi-Factor Authentication. Tyto přihlašovací údaje budou použity k vytvoření aplikace služby Azure AD a prostředků Azure. Další informace najdete v tématu [co potřebujete k nasazení nástroje pro správu](#what-you-need-to-deploy-the-management-tool).
-    - Pro **ApplicationName**použijte jedinečný název aplikace, který se zaregistruje ve vašem Azure Active Directory. Tento název se použije taky pro adresu URL webové aplikace. Můžete například použít název, například "Apr3UX".
+    - Pro **ApplicationName** použijte jedinečný název aplikace, který se zaregistruje ve vašem Azure Active Directory. Tento název se použije taky pro adresu URL webové aplikace. Můžete například použít název, například "Apr3UX".
 4. Jakmile zadáte parametry, přijměte podmínky a zvolte **koupit**.
 
 ## <a name="provide-consent-for-the-management-tool"></a>Poskytnutí souhlasu pro nástroj pro správu

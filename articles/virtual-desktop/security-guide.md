@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc39c1e43580c5cf302e85664783dba4509889af
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002292"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842630"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -35,10 +35,10 @@ Tady jsou požadavky na zabezpečení, na které zodpovídáte při nasazení vi
 |Operační systém hostitele relace|Yes|
 |Konfigurace nasazení|Yes|
 |Správa sítě|Yes|
-|Rovina řízení virtualizace|No|
-|Fyzičtí hostitelé|No|
-|Fyzická síť|No|
-|Fyzické datacentrum|No|
+|Rovina řízení virtualizace|Ne|
+|Fyzičtí hostitelé|Ne|
+|Fyzická síť|Ne|
+|Fyzické datacentrum|Ne|
 
 Zabezpečení vyžaduje, aby zákazník nezodpovědný za zpracování Microsoftem.
 
@@ -70,7 +70,7 @@ Virtuální počítač s Windows má mnoho vestavěných ovládacích prvků zab
 
 ### <a name="require-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication
 
-Vyžadování služby Multi-Factor Authentication pro všechny uživatele a správce ve virtuálním počítači s Windows vylepšuje zabezpečení celého nasazení. Další informace najdete v tématu [Povolení služby Azure Multi-Factor Authentication pro virtuální počítač s Windows](set-up-mfa.md).
+Vyžadování služby Multi-Factor Authentication pro všechny uživatele a správce ve virtuálním počítači s Windows vylepšuje zabezpečení celého nasazení. Další informace najdete v tématu [Povolení služby Azure AD Multi-Factor Authentication pro virtuální počítače s Windows](set-up-mfa.md).
 
 ### <a name="enable-conditional-access"></a>Povolit podmíněný přístup
 
