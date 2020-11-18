@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 08/02/2020
-ms.openlocfilehash: 1745a2bf83cb704c8cc73e9d3bf0eba8245329b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/17/2020
+ms.openlocfilehash: 49b7b855a7608b6426d0bda50330dbe1a3b5ced7
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924261"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741565"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Vytvoření úložiště znalostí pomocí REST a předzálohovacího
 
@@ -63,7 +63,7 @@ Nainstalujte a nastavte post.
 1. Stáhněte [zdrojový kód kolekce po](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json).
 1. Vyberte **File**  >  **importovat** soubor a importujte zdrojový kód do metody post.
 1. Vyberte kartu **kolekce** a pak klikněte na tlačítko **...** (tři tečky).
-1. Vyberte **Upravit**. 
+1. Vyberte **Edit** (Upravit). 
    
    ![Pozálohovací aplikace ukazující navigaci](media/knowledge-store-create-rest/postman-edit-menu.png "Přejít do nabídky upravit v poli post")
 1. V dialogovém okně **Upravit** vyberte kartu **proměnné** . 
@@ -85,7 +85,7 @@ Pokud chcete získat hodnotu pro `admin-key` , přejděte do služby Azure kogni
 | `search-service-name` | Název služby Azure Kognitivní hledání. Adresa URL je `https://{{search-service-name}}.search.windows.net` . | 
 | `skillset-name` | Ponechte jako **hotelové recenze – SS**. | 
 | `storage-account-name` | Název účtu úložiště. | 
-| `storage-connection-string` | V účtu úložiště na kartě **přístupové klíče** vyberte **key1**  >  **připojovací řetězec**klíč1. | 
+| `storage-connection-string` | V účtu úložiště na kartě **přístupové klíče** vyberte **key1**  >  **připojovací řetězec** klíč1. | 
 | `storage-container-name` | Ponechte jako **hotelové recenze**. | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Kontrola kolekce požadavků v poli pro odeslání

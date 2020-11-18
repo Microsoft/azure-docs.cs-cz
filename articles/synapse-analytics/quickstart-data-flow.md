@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start pro transformaci dat pomocí toku dat mapování
+title: 'Rychlý Start: transformace dat pomocí toku dat mapování'
 description: V tomto kurzu najdete podrobné pokyny pro použití analýzy Azure Synapse k transformaci dat pomocí toku dat s mapováním.
 author: djpmsft
 ms.author: daperlov
@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/03/2020
-ms.openlocfilehash: 0bf1611dee2b3f7f9a3059e3118ddbf08c00f886
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 207679ad5b508b687c9cad372d144839fcaa501d
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342940"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743843"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>Rychlý Start: transformace dat pomocí toků mapování dat
 
-V tomto rychlém startu použijete Azure synapse Analytics k vytvoření kanálu, který transformuje data Azure Data Lake Storage ze zdroje Gen2 (ADLS) do ADLS Gen2 jímky pomocí mapování toku dat. Konfigurační vzor v tomto rychlém startu se dá rozbalit při transformaci dat pomocí toku dat mapování.
+V tomto rychlém startu použijete Azure synapse Analytics k vytvoření kanálu, který transformuje data ze zdroje Azure Data Lake Storage Gen2 (ADLS Gen2) na ADLS Gen2 jímka pomocí mapování toku dat. Konfigurační vzor v tomto rychlém startu se dá rozbalit při transformaci dat pomocí toku dat mapování.
 
 V tomto rychlém startu provedete následující kroky:
 
@@ -30,8 +30,8 @@ V tomto rychlém startu provedete následující kroky:
 ## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Pracovní prostor Azure synapse** : Vytvořte pracovní prostor Synapse pomocí Azure Portal podle pokynů v tématu [rychlý Start: vytvoření pracovního prostoru synapse](quickstart-create-workspace.md).
-* **Účet úložiště Azure** : jako úložiště dat o *zdrojovém* a *jímky* použijte úložiště adls. Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md), kde najdete postup jeho vytvoření.
+* **Pracovní prostor Azure synapse**: Vytvořte pracovní prostor Synapse pomocí Azure Portal podle pokynů v tématu [rychlý Start: vytvoření pracovního prostoru synapse](quickstart-create-workspace.md).
+* **Účet úložiště Azure**: jako úložiště dat o *zdrojovém* a *jímky* použijte úložiště adls. Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md), kde najdete postup jeho vytvoření.
 
     Soubor, který v tomto kurzu transformuje, je MoviesDB.csv, který najdete [tady](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv). Pokud chcete načíst soubor z GitHubu, zkopírujte obsah do textového editoru, který si zvolíte, a uložte ho místně jako soubor. csv. Postup nahrání souboru do účtu úložiště najdete v tématu [nahrání objektů BLOB pomocí Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). Příklady budou odkazovat na kontejner s názvem Sample-data.
 
@@ -39,7 +39,7 @@ V tomto rychlém startu provedete následující kroky:
 
 Po vytvoření pracovního prostoru Azure synapse máte dva způsoby, jak otevřít synapse Studio:
 
-* Otevřete pracovní prostor synapse ve [Azure Portal](https://ms.portal.azure.com/#home). V horní části přehledu vyberte **Spustit synapse Studio**.
+* Otevřete pracovní prostor synapse ve [Azure Portal](https://ms.portal.azure.com/#home). V části Začínáme vyberte **otevřít** na kartě otevřít synapse Studio.
 * Otevřete [Azure synapse Analytics](https://web.azuresynapse.net/) a přihlaste se ke svému pracovnímu prostoru.
 
 V tomto rychlém startu používáme jako příklad pracovní prostor s názvem "adftest2020". Automaticky vás přejde na domovskou stránku synapse studia.

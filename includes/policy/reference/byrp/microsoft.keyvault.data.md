@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 93025cbc59dc00557ffb8e82b571b09280451375
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 10e765108f355cd1ab580b16d3506a3e2efe77ab
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309989"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94746620"
 ---
-|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Certifikáty by měly být vydány zadanou integrovanou certifikační autoritou](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e826246-c976-48f6-b03e-619bb92b3d82) |Spravujte požadavky na dodržování předpisů vaší organizace zadáním integrovaných certifikačních autorit Azure, které můžou vystavovat certifikáty ve vašem trezoru klíčů, jako je DigiCert nebo GlobalSign. |audit, zamítnutí, zakázáno |[2.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_SupportedCAs.json) |
 |[Certifikáty by měly být vydány zadanou neintegrovanou certifikační autoritou.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa22f4a40-01d3-4c7d-8071-da157eeff341) |Určete své požadavky na dodržování předpisů vaší organizace zadáním vlastních nebo interních certifikačních autorit, které můžou vystavovat certifikáty ve vašem trezoru klíčů. |audit, zamítnutí, zakázáno |[2.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_CustomCAs.json) |

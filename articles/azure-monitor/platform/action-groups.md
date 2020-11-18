@@ -1,28 +1,28 @@
 ---
-title: Vytváření a správa skupin akcí na webu Azure Portal
+title: Vytváření a Správa skupin akcí v Azure Portal
 description: Naučte se vytvářet a spravovat skupiny akcí v Azure Portal.
 author: dkamstra
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: cbe3ef7080397b135ea0fb17cd50de9b1ccfdf09
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a5d685e49d941d7b6febbc220cdbfbcb631c4496
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336115"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94746359"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
 
 V tomto článku se dozvíte, jak vytvořit a spravovat skupiny akcí v Azure Portal.
 
 Každá akce se skládá z následujících vlastností:
 
-* **Typ** : oznámení nebo akce provedena. Mezi příklady patří odesílání hlasových hovorů, SMS, e-mailu; nebo spouštějí různé typy automatizovaných akcí. Další informace najdete v části typy dále v tomto článku.
-* **Název** : jedinečný identifikátor v rámci skupiny akcí.
-* **Podrobnosti** : odpovídající podrobnosti, které se liší podle *typu*.
+* **Typ**: oznámení nebo akce provedena. Mezi příklady patří odesílání hlasových hovorů, SMS, e-mailu; nebo spouštějí různé typy automatizovaných akcí. Další informace najdete v části typy dále v tomto článku.
+* **Název**: jedinečný identifikátor v rámci skupiny akcí.
+* **Podrobnosti**: odpovídající podrobnosti, které se liší podle *typu*.
 
 Informace o použití šablon Azure Resource Manager ke konfiguraci skupin akcí naleznete v tématu [Group action správce prostředků Templates](./action-groups-create-resource-manager-template.md).
 
@@ -40,11 +40,11 @@ Informace o použití šablon Azure Resource Manager ke konfiguraci skupin akcí
 
 ### <a name="configure-basic-action-group-settings"></a>Konfigurovat základní nastavení skupiny akcí
 
-V části **Podrobnosti o projektu** :
+V části **Podrobnosti o projektu**:
 
 Vyberte **předplatné** a **skupinu prostředků** , ve které se skupina akcí uloží.
 
-V části **Podrobnosti instance** :
+V části **Podrobnosti instance**:
 
 1. Zadejte **název skupiny akcí**.
 
@@ -59,15 +59,15 @@ V části **Podrobnosti instance** :
 
 1. Umožňuje definovat seznam oznámení, která se mají odeslat, když se aktivuje výstraha. Pro každé oznámení zadejte následující:
 
-    a. **Typ oznámení** : Vyberte typ oznámení, které chcete odeslat. Dostupné jsou následující možnosti:
+    a. **Typ oznámení**: Vyberte typ oznámení, které chcete odeslat. Dostupné jsou následující možnosti:
       * Role e-mailu Azure Resource Manager – odešle e-mail uživatelům, kteří jsou přiřazeni k určitým rolím ARM na úrovni předplatného.
       * E-mail/SMS/nabízený/hlas – odešlete tyto typy oznámení konkrétním příjemcům.
     
-    b. **Název** : Zadejte jedinečný název pro oznámení.
+    b. **Název**: Zadejte jedinečný název pro oznámení.
 
-    c. **Podrobnosti** : na základě vybraného typu oznámení zadejte e-mailovou adresu, telefonní číslo atd.
+    c. **Podrobnosti**: na základě vybraného typu oznámení zadejte e-mailovou adresu, telefonní číslo atd.
     
-    d. **Běžné schéma výstrah** : můžete si vybrat, že se má povolit [společné schéma výstrah](./alerts-common-schema.md), které poskytuje jedinou rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure monitor.
+    d. **Běžné schéma výstrah**: můžete si vybrat, že se má povolit [společné schéma výstrah](./alerts-common-schema.md), které poskytuje jedinou rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure monitor.
 
     ![Karta oznámení](./media/action-groups/action-group-2-notifications.png)
     
@@ -77,13 +77,13 @@ V části **Podrobnosti instance** :
 
 1. Umožňuje definovat seznam akcí, které se aktivují při aktivaci výstrahy. Pro každou akci zadejte následující:
 
-    a. **Typ akce** : vyberte Runbook automatizace, funkce Azure, ITSM, aplikaci logiky, zabezpečený Webhook, Webhook.
+    a. **Typ akce**: vyberte Runbook automatizace, funkce Azure, ITSM, aplikaci logiky, zabezpečený Webhook, Webhook.
     
-    b. **Název** : Zadejte jedinečný název pro akci.
+    b. **Název**: Zadejte jedinečný název pro akci.
 
-    c. **Podrobnosti** : na základě typu akce zadejte identifikátor URI Webhooku, aplikaci Azure, připojení ITSM nebo Runbook Automation. Pro akci ITSM zadejte také **pracovní položku** a další pole, které nástroj ITSM vyžaduje.
+    c. **Podrobnosti**: na základě typu akce zadejte identifikátor URI Webhooku, aplikaci Azure, připojení ITSM nebo Runbook Automation. Pro akci ITSM zadejte také **pracovní položku** a další pole, které nástroj ITSM vyžaduje.
     
-    d. **Běžné schéma výstrah** : můžete si vybrat, že se má povolit [společné schéma výstrah](./alerts-common-schema.md), které poskytuje jedinou rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure monitor.
+    d. **Běžné schéma výstrah**: můžete si vybrat, že se má povolit [společné schéma výstrah](./alerts-common-schema.md), které poskytuje jedinou rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure monitor.
     
     ![Karta akce](./media/action-groups/action-group-3-actions.png)
 
@@ -266,22 +266,108 @@ Webhooky se zpracovávají pomocí následujících pravidel.
 - Druhé a třetí pokusy budou čekat 30 sekund na odpověď.
 - Po 3 pokusech o volání Webhooku se nezdařila žádná skupina akcí, která bude volat koncový bod po dobu 15 minut.
 
-Zdrojové rozsahy IP adres
- - 13.72.19.232
- - 13.106.57.181
- - 13.106.54.3
- - 13.106.54.19
- - 13.106.38.142
- - 13.106.38.148
- - 13.106.57.196
- - 13.106.57.197
- - 52.244.68.117
- - 52.244.65.137
- - 52.183.31.0
- - 52.184.145.166
- - 51.4.138.199
- - 51.5.148.86
- - 51.5.149.19
+Rozsahy zdrojových IP adres:
+
+ - 13.66.60.119/32
+ - 13.66.143.220/30
+ - 13.66.202.14/32
+ - 13.66.248.225/32
+ - 13.66.249.211/32
+ - 13.67.10.124/30
+ - 13.69.109.132/30
+ - 13.71.199.112/30
+ - 13.77.53.216/30
+ - 13.77.172.102/32
+ - 13.77.183.209/32
+ - 13.78.109.156/30
+ - 13.84.49.247/32
+ - 13.84.51.172/32
+ - 13.84.52.58/32
+ - 13.86.221.220/30
+ - 13.106.38.142/32
+ - 13.106.38.148/32
+ - 13.106.54.3/32
+ - 13.106.54.19/32
+ - 13.106.57.181/32
+ - 13.106.57.196/31
+ - 20.38.149.132/30
+ - 20.42.64.36/30
+ - 20.43.121.124/30
+ - 20.44.17.220/30
+ - 20.45.123.236/30
+ - 20.72.27.152/30
+ - 20.150.172.228/30
+ - 20.192.238.124/30
+ - 20.193.202.4/30
+ - 40.68.195.137/32
+ - 40.68.201.58/32
+ - 40.68.201.65/32
+ - 40.68.201.206/32
+ - 40.68.201.211/32
+ - 40.68.204.18/32
+ - 40.115.37.106/32
+ - 40.121.219.215/32
+ - 40.121.221.62/32
+ - 40.121.222.201/32
+ - 40.121.223.186/32
+ - 51.104.9.100/30
+ - 52.183.20.244/32
+ - 52.183.31.0/32
+ - 52.183.94.59/32
+ - 52.184.145.166/32
+ - 191.233.50.4/30
+ - 191.233.207.64/26
+ - 2603:1000:4:402::178/125
+ - 2603:1000:104:402::178/125
+ - 2603:1010:6:402::178/125
+ - 2603:1010:101:402::178/125
+ - 2603:1010:304:402::178/125
+ - 2603:1010:404:402::178/125
+ - 2603:1020:5:402::178/125
+ - 2603:1020:206:402::178/125
+ - 2603:1020:305:402::178/125
+ - 2603:1020:405:402::178/125
+ - 2603:1020:605:402::178/125
+ - 2603:1020:705:402::178/125
+ - 2603:1020:805:402::178/125
+ - 2603:1020:905:402::178/125
+ - 2603:1020: A04:402:: 178/125
+ - 2603:1020: B04:402:: 178/125
+ - 2603:1020: C04:402:: 178/125
+ - 2603:1020: D04:402:: 178/125
+ - 2603:1020: E04:402:: 178/125
+ - 2603:1020: F04:402:: 178/125
+ - 2603:1020:1004:800:: F8/125
+ - 2603:1020:1104:400::178/125
+ - 2603:1030: f:400:: 978/125
+ - 2603:1030:10:402::178/125
+ - 2603:1030:104:402::178/125
+ - 2603:1030:107:400:: F0/125
+ - 2603:1030:210:402::178/125
+ - 2603:1030:40B: 400:: 978/125
+ - 2603:1030:40C: 402:: 178/125
+ - 2603:1030:504:802:: F8/125
+ - 2603:1030:608:402::178/125
+ - 2603:1030:807:402::178/125
+ - 2603:1030: A07:402:: 8f8/125
+ - 2603:1030: B04:402:: 178/125
+ - 2603:1030: c06:400:: 978/125
+ - 2603:1030: F05:402:: 178/125
+ - 2603:1030:1005:402::178/125
+ - 2603:1040:5:402::178/125
+ - 2603:1040:207:402::178/125
+ - 2603:1040:407:402::178/125
+ - 2603:1040:606:402::178/125
+ - 2603:1040:806:402::178/125
+ - 2603:1040:904:402::178/125
+ - 2603:1040: A06:402:: 178/125
+ - 2603:1040: B04:402:: 178/125
+ - 2603:1040: c06:402:: 178/125
+ - 2603:1040: D04:800:: F8/125
+ - 2603:1040: F05:402:: 178/125
+ - 2603:1040:1104:400::178/125
+ - 2603:1050:6:402::178/125
+ - 2603:1050:403:400:: 1F8/125
 
 Chcete-li dostávat aktualizace o změnách těchto IP adres, doporučujeme nakonfigurovat Service Health výstrahu, která sleduje informační oznámení o službě skupin akcí.
 

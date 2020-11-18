@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 11/06/2020
+ms.date: 11/17/2020
 ms.author: aahi
-ms.openlocfilehash: 0efb278c217ede94f67b47250633622501a24414
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ba51776942ad28fc8d4b0db7dd2d0e162e5322b5
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412540"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743333"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Značky imagí a poznámky k verzi služby Azure Cognitive Services Container
 
@@ -574,6 +574,39 @@ Image kontejneru [neuronové textu na řeč][sp-ntts] se dá najít v `mcr.micro
 
 Tato image kontejneru má k dispozici následující značky. Můžete také najít úplný seznam [značek na MCR](https://mcr.microsoft.com/v2/azure-cognitive-services/speechservices/neural-text-to-speech/tags/list).
 
+
+# <a name="latest-version"></a>[Nejnovější verze](#tab/current)
+
+Poznámky k verzi pro `v1.3.0` :
+* Kontejner textu na řeč neuronové je teď všeobecně dostupný. 
+
+| Značky obrázku                                  | Poznámky                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `latest`                                    | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaNeural` hlasem      |
+| `1.3.0-amd64-<locale-and-voice>`    | Nahraďte `<locale>` některou z dostupných národních prostředí, která jsou uvedená níže. Příklad: `1.3.0-amd64-en-us-arianeural`. |
+
+
+| Národní prostředí a hlasy v 1.3.0           | Poznámky                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `de-de-katjaneural`                 | Obrázek kontejneru s `de-DE` národním prostředím a `de-DE-KatjaNeural` hlasem     |
+| `en-au-natashaneural`               | Obrázek kontejneru s `en-AU` národním prostředím a `en-AU-NatashaNeural` hlasem   |
+| `en-ca-claraneural`                 | Obrázek kontejneru s `en-CA` národním prostředím a `en-CA-ClaraNeural` hlasem     |
+| `en-gb-libbyneural`                 | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-LibbyNeural` hlasem     |
+| `en-gb-mianeural`                   | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-MiaNeural` hlasem       |
+| `en-us-arianeural`                  | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaNeural` hlasem      |
+| `en-us-guyneural`                   | Obrázek kontejneru s `en-US` národním prostředím a `en-US-GuyNeural` hlasem       |
+| `es-es-elviraneural`                | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-ElviraNeural` hlasem    |
+| `es-mx-dalianeural`                 | Obrázek kontejneru s `es-MX` národním prostředím a `es-MX-DaliaNeural` hlasem     |
+| `fr-ca-sylvieneural`                | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-SylvieNeural` hlasem    |
+| `fr-fr-deniseneural`                | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-DeniseNeural` hlasem    |
+| `it-it-elsaneural`                  | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-ElsaNeural` hlasem      |
+| `ja-jp-nanamineural`                | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-NanamiNeural` hlasem    |
+| `ko-kr-sunhineural`                 | Obrázek kontejneru s `ko-KR` národním prostředím a `ko-KR-SunHiNeural` hlasem     |
+| `pt-br-franciscaneural`             | Obrázek kontejneru s `pt-BR` národním prostředím a `pt-BR-FranciscaNeural` hlasem |
+| `zh-cn-xiaoxiaoneural`              | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-XiaoxiaoNeural` hlasem  |
+
+# <a name="previous-version"></a>[Předchozí verze](#tab/previous)
+
 | Značky obrázku                                  | Poznámky                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaNeural` hlasem      |
@@ -599,6 +632,8 @@ Tato image kontejneru má k dispozici následující značky. Můžete také naj
 | `ko-kr-sunhineural-preview`                 | Obrázek kontejneru s `ko-KR` národním prostředím a `ko-KR-SunHiNeural` hlasem     |
 | `pt-br-franciscaneural-preview`             | Obrázek kontejneru s `pt-BR` národním prostředím a `pt-BR-FranciscaNeural` hlasem |
 | `zh-cn-xiaoxiaoneural-preview`              | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-XiaoxiaoNeural` hlasem  |
+
+---
 
 ## <a name="speech-language-detection"></a>Rozpoznávání mluveného jazyka
 

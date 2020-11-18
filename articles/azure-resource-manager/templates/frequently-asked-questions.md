@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f4238035a6fccb0addb9a481287b31732bd2662
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333116"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744531"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Nejčastější dotazy týkající se šablon ARM
 
@@ -68,7 +68,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Můžu vytvořit předplatné v šabloně ARM?**
 
-  Ještě ne, ale pracujeme na tom.
+  Ano, další informace najdete v tématu [Programové vytvoření předplatných Azure s nejnovějšími rozhraními API](../../cost-management-billing/manage/programmatically-create-subscription.md).
 
 * **Jak můžu otestovat šablonu před nasazením?**
 
@@ -104,13 +104,13 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 ## <a name="template-specs"></a>Specifikace šablon
 
-* **Jak se můžu zapojit do verze Preview specifikací šablon?**
+* **Jak můžu začít s verzí Preview specifikací šablon?**
 
-  [Připojte se k seznamu čekání](https://aka.ms/templateSpecsWaitlist) pro specifikace šablon.
+  Nainstalujte nejnovější verzi PowerShellu nebo rozhraní příkazového řádku Azure CLI. Pro Azure PowerShell použijte [verzi 5.0.0 nebo novější](/powershell/azure/install-az-ps). Pro rozhraní příkazového řádku Azure použijte [verzi 2.14.2 nebo novější](/cli/azure/install-azure-cli).
 
 * **Jak se týkají specifikace šablon a plány Azure?**
 
-  Azure modrotisky budou ve své implementaci používat specifikace šablon nahrazením `blueprint definition` prostředku objektem `template spec` . Poskytneme cestu migrace k převedení definice podrobného plánu na specifikaci šablony, ale rozhraní API definice podrobného plánu bude i nadále podporováno. V prostředku nejsou žádné změny `blueprint assignment` . Plány budou mít za následek uživatelské prostředí pro vytvoření prostředí v Azure, které se řídí.
+  Azure modrotisky budou ve své implementaci používat specifikace šablon nahrazením `blueprint definition` prostředku objektem `template spec` . Poskytneme cestu migrace pro převod definice podrobného plánu na specifikaci šablony, ale rozhraní API definice podrobného plánu bude i nadále podporováno. V prostředku nejsou žádné změny `blueprint assignment` . Plány budou mít za následek uživatelské prostředí pro vytvoření prostředí v Azure, které se řídí.
 
 * **Nahradí se v nich specifikace šablony propojené šablony?**
 

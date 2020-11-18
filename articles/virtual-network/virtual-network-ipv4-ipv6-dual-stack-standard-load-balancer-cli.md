@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: d709bd1c68608720e5fa354b23d2b457e99b1ade
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4676ec54165c94663ec5ad76d4c43d7fabfc717
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087388"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94742245"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli"></a>Nasazení aplikace s duálním zásobníkem IPv6 ve službě Azure Virtual Network – rozhraní příkazového řádku
 
 V tomto článku se dozvíte, jak nasadit aplikaci duálního zásobníku (IPv4 + IPv6) pomocí Standard Load Balancer v Azure, která zahrnuje virtuální síť s duálním zásobníkem s podsítí duálního zásobníku, Standard Load Balancer s front-end konfiguracemi Dual (IPv4 + IPv6), virtuální počítače se síťovými kartami, které mají konfiguraci s duálním nastavením protokolu IP, pravidla skupiny zabezpečení sítě a duální veřejné IP adresy.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.49 nebo novější. Pokud chcete najít nainstalovanou verzi, spusťte příkaz `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.49 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

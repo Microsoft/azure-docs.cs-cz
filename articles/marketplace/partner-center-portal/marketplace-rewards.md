@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 4d307b2a16262645919423ef89c0d87636639bf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b99ec4158b1df5ab558026c05b9ec1024fb0722e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378708"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94742568"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -21,7 +21,7 @@ Ceny na webu Marketplace vám v konkrétní fázi růstu a od aktivit pro sledov
 
 Program vytvoří pozitivní smyčku zpětné vazby: výhody v každé fázi růstu vám pomůžou s průběhem další fáze, což vám pomůže rozšířit vaši firmu na zákazníky Microsoftu, pole Microsoftu a prostřednictvím kanálu Microsoftu, a to prostřednictvím komerčního tržiště jako platformy.
 
-Vaše výhody se liší v závislosti na tom, jestli je vaše nabídka [seznam, zkušební verze nebo transakční](../determine-your-listing-type.md#choose-a-listing-option).
+Vaše výhody se liší v závislosti na tom, jestli vaše nabídka [kontaktuje, bezplatnou zkušební verzi nebo Transact](../determine-your-listing-type.md).
 
 Na základě vašich nároků vám bude kontaktován člen týmu útraty, pokud vaše nabídka bude živá.
 

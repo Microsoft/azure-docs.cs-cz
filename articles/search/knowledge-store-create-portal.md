@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/30/2020
-ms.openlocfilehash: df6da5ce1dcd5213b3e54abe54c087bfdd8480c5
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.date: 11/17/2020
+ms.openlocfilehash: 3225013f09abd326c619b67caf77918889a64859
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379969"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741803"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání Knowledge Store v Azure Portal
 
@@ -23,7 +23,7 @@ Kanál přijímá nestrukturované textové a obrázkové obsahy, aplikuje AI s 
 
 V tomto rychlém startu spojíte služby a data v cloudu Azure a vytvoříte úložiště znalostí. Jakmile bude vše na svém místě, spustíte průvodce **importem dat** na portálu, aby se všechno načetlo dohromady. Konečným výsledkem je původní textový obsah a obsah generovaný AI, který můžete zobrazit na portálu ([Průzkumník služby Storage](knowledge-store-view-storage-explorer.md)).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte mít následující:
 
@@ -70,7 +70,7 @@ Nyní jste připraveni na přesun průvodce **importem dat** .
 
 ### <a name="step-1-create-a-data-source"></a>Krok 1: Vytvoření zdroje dat
 
-1. V části **připojit k vašim datům** vyberte **úložiště objektů BLOB v Azure** , vyberte účet a kontejner, který jste vytvořili. 
+1. V části **připojit k vašim datům** vyberte **úložiště objektů BLOB v Azure**, vyberte účet a kontejner, který jste vytvořili. 
 
 1. Jako **název** zadejte `hotel-reviews-ds` .
 
@@ -109,7 +109,7 @@ V tomto kroku průvodce vytvoříte dovednosti s obohacením vnímání dovednos
 
 1. Rozbalte položku **Uložit obohacení do úložiště znalostí**.
 
-1. Vyberte tyto **projekce tabulky Azure** :
+1. Vyberte tyto **projekce tabulky Azure**:
     + **Dokumenty**
     + **Stránky**
     + **Klíčové fráze**

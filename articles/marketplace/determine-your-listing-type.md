@@ -1,103 +1,156 @@
 ---
-title: Určení možnosti publikování – komerční tržiště Microsoftu
-description: Tento článek popisuje kritéria způsobilosti a požadavky pro publikování nabídek Microsoft AppSource a Azure Marketplace.
+title: Seznámení s možnostmi výpisu – komerční tržiště Microsoftu
+description: Tento článek popisuje možnosti výpisu pro nabídky publikované Microsoft AppSource a Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 09/04/2020
-ms.openlocfilehash: 17b53d656d0344e4178b3034a972e26d6aa0bc15
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/16/2020
+ms.openlocfilehash: 38f65253791f28d9ae9806bea1264e594b769b19
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94492102"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741905"
 ---
-# <a name="determine-your-publishing-option"></a>Určení možnosti publikování
+# <a name="introduction-to-listing-options"></a>Úvod k možnostem výpisu
 
-Možnost publikování, kterou si zvolíte pro vaši nabídku, se vztahuje přímo na požadavky na způsobilost i na GTM výhody pro komerční tržiště. Důležitější je, že výběr možnosti publikování a typu nabídky definuje způsob, jakým uživatelé budou pracovat s vaší nabídkou komerčního tržiště.
+Dostupné _Možnosti výpisu_ ze komerčního tržiště můžete použít k zapojení potenciálních zákazníků různými způsoby. Po publikování vaší nabídky se možnosti pro výpisy, které jste si zvolili pro vaši nabídku, zobrazí jako tlačítko v levém horním rohu stránky se seznamem vaší nabídky v online obchodech. Například následující snímek obrazovky ukazuje stránku se seznamem nabídek v Microsoft AppSource online obchodu s tlačítky pro **kontaktování** a **testování testovacích jednotek** .
 
-Pokud chcete konfigurovat vaši nabídku, budete muset pochopit následující klíčové koncepty komerčního tržiště: možnosti publikování, typy nabídek a konfigurace a možnosti výpisu, které určují, jak a kde se nabídka zobrazuje v online obchodech s komerčním Marketplace.
+:::image type="content" source="./media/listing-options.png" alt-text="Znázorňuje stránku se seznamem pro nabídku. Zobrazí se tlačítka kontaktní osoba a testovací jednotka.":::
 
-V tomto článku se dozvíte:
+## <a name="available-listing-options-by-offer-type"></a>Dostupné možnosti výpisu podle typu nabídky
 
-- Jak určit odpovídající online obchod s vaším řešením.
-- Možnosti publikování a možnosti výpisu jsou dostupné v každém online obchodě.
-- Které typy nabídek jsou k dispozici pro jednotlivé možnosti publikování.
+Při vytváření typu nabídky zvolíte jednu nebo více možností výpisu. Tyto možnosti určují, kteří tlačítka uvidí na stránce seznam nabídek v online obchodech. Možnosti výpisu zahrnují _bezplatnou zkušební verzi_, _testovací_ verzi, _kontaktování na mě_ a _Získejte ji hned teď_.
 
-## <a name="commercial-marketplace-publishing-options"></a>Možnosti publikování na komerční web Marketplace
+Tato tabulka obsahuje seznam dostupných možností pro každý typ nabídky.
 
-V následující tabulce jsou uvedeny možnosti publikování pro typy nabídek v Microsoft AppSource a Azure Marketplace.
+| Typ nabídky | Bezplatná zkušební verze | Testovací verze | Kontaktujte mě | Získat hned (v transakčním režimu) |
+| ------------ | ------------- | ------------- | ------------- | ------------- |
+| Aplikace Azure (spravovaná aplikace) |   | &#10004; |   | &#10004; |
+| Aplikace Azure (šablona řešení) |  |  |  |  |
+| Konzultační služba |  |  | &#10004; |  |
+| Kontejner Azure |  |  |  |  |
+| Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; |  |
+| Dynamics 365 Customer Engagement & PowerApps | &#10004; | &#10004; | &#10004; |  |
+| Dynamics 365 pro operace | &#10004; | &#10004; | &#10004; |  |
+| Modul IoT Edge |  |  |  |  |
+| Spravovaná služba |  |  |  |  |
+| Aplikace Power BI |  |  |  |  |
+| Virtuální počítač Azure | &#10004; | &#10004; |  | &#10004; |
+| Software jako služba | &#10004; | &#10004; | &#10004; | &#10004; |
+||||||
 
-|   | **Seznam (kontakt)**  | **Seznam (zkušební verze)**  | **Free** | **BYOL** | **Transakce**|
-| :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
-| **Virtuální počítač** |  |  |  | Azure Marketplace |  Azure Marketplace |
-| **Aplikace Azure (pro více virtuálních počítačů)** |  |  | Azure Marketplace | Azure Marketplace | Azure Marketplace  |
-| **Obrázek kontejneru** |  |  | Azure Marketplace | Azure Marketplace |   |
-| **Modul IoT Edge** |  |  | Azure Marketplace | Azure Marketplace |   |
-| **Spravované služby** |  |  |  | Azure Marketplace |   |
-| **Konzultační služby** | Online obchody |  |  |  |   |
-| **Aplikace SaaS** | Online obchody | Online obchody | Online obchody |  | Online obchody * |
-| **Aplikace Microsoft 365** | AppSource | AppSource |  |  | AppSource * *  |
-| **Doplněk pro Dynamics 365** |  AppSource | AppSource |  |  |   |
-| **PowerApps** | AppSource |AppSource  |  |  |   |
+### <a name="free-trial"></a>Bezplatná zkušební verze
 
-&#42; SaaS aplikace v režimu Transact v Microsoft AppSource jsou momentálně pouze kreditními kartami.
+Pomocí komerčního tržiště Vylepšete možnosti zjistitelnosti a automatizujte zřizování zkušební verze vašeho řešení. To umožňuje potenciálním zákazníkům používat váš software jako službu (SaaS), IaaS nebo prostředí Microsoft v aplikacích bez nákladů od 30 dnů do šesti měsíců v závislosti na typu nabídky.
 
-Nabídky &#42;&#42; Microsoft 365 jsou zdarma a je možné je můžou finančně zhodnocovat prostřednictvím SaaS nabídky jako licenční služba. Další informace najdete v tématu [monetizovat Microsoft 365ho doplňku prostřednictvím komerčního tržiště Microsoftu](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+Zákazníci používají tlačítko _bezplatné zkušební verze_ na stránce se seznamem vaší nabídky k vyzkoušení vaší nabídky. Pokud zadáte bezplatnou zkušební verzi v rámci stejné nabídky, zákazníci můžou přejít na bezplatnou zkušební verzi jiného plánu, ale zkušební období se nerestartuje.
 
-## <a name="choose-a-listing-option"></a>Zvolit možnost výpisu
+U nabídek virtuálních počítačů se zákazníkům účtují náklady na infrastrukturu Azure za použití nabídky během zkušebního období. Po vypršení zkušebního období se zákazníkům automaticky účtují poplatky za poslední plán, který vyzkoušel na základě standardních sazeb, pokud se zruší před koncem zkušebního období.
 
-Možnosti výpisu, které jsou k dispozici, nabízejí časově rozlišenou zákaznickou zapojení a poskytují přístup k výhodám sdílení potenciálních zákazníků a [komerčních Marketplace](./gtm-your-marketplace-benefits.md). Všimněte si možností výpisu, které odpovídají možnosti publikování:
+### <a name="test-drive"></a>Testovací verze
 
-| **Možnost publikování**    | **Popis**  |
-| :------------------- | :-------------------|
-| **Seznam** | Jednoduchý seznam vaší aplikace nebo služby, který umožňuje uživateli na webu Marketplace požádat o připojení k zákazníkovi prostřednictvím možností pro seznam **kontaktů** . |
-| **Zkušební verze** | Pomocí komerčního tržiště Vylepšete možnosti zjistitelnosti a automatizujte zřizování zkušebního prostředí vašeho řešení. umožníte tak potenciálním uživatelům používat vaše SaaS, IaaS nebo prostředí v aplikaci od Microsoftu zdarma po určitou dobu, než se nakupují. Možnosti výpisu, které se používají pro možnost publikování zkušební verze, jsou buď **bezplatné zkušební verze** , nebo **testovací jednotka**. |
-| **BYOL** | Pomocí komerčního tržiště Vylepšete zjistitelnost a automatizujte zřizování vašich řešení a dokončete finanční transakci samostatně. Typy nabídek BYOL jsou ideální pro migrace z místního prostředí do cloudu. Možnost výpisu se **teď získá**.
-| **Transakce** | Nabídky Transact jsou prodávány prostřednictvím komerčního tržiště. Společnost Microsoft zodpovídá za fakturaci a kolekce. Možnost výpisu se **teď získá**.|
+Zákazníci na stránce se seznamem vaší nabídky použijí tlačítko _testovací jednotka_ a získat tak pro určitý počet hodin přístup k předkonfigurovanému prostředí. Další informace o testovacích jednotkách najdete v tématu [co je testovací jednotka?](what-is-test-drive.md) .
 
-> [!Note]
-> Při použití možnosti publikování v transakčním systému je důležité pochopit důležité informace o cenách, fakturaci, fakturaci a výběru před výběrem typu nabídky a vytvořením nabídky. Pokud se chcete dozvědět víc, přečtěte si článek [Možnosti Transact](./marketplace-commercial-transaction-capabilities-and-considerations.md)-The pro obchod na webu.
+> [!TIP]
+> Testovací jednotka se liší od bezplatné zkušební verze. Můžete nabízet testovací, bezplatnou zkušební verzi nebo obojí. Poskytují zákazníkům vaše řešení po dobu určitou dobu. Testovací jednotka ale taky obsahuje praktickou a samoobslužnou prohlídku klíčových funkcí vašeho produktu a výhod, které se provedou ve scénáři implementace reálného světa.
 
-## <a name="selecting-an-online-store"></a>Výběr online obchodu
+### <a name="contact-me"></a>Kontaktujte mě
 
-Každý online obchod slouží pro obchodní a IT řešení různé požadavky zákazníků. Typ vaší nabídky, možnosti jazyka Transact a kategorie určí, kde bude vaše nabídka publikována. Kategorie a podkategorie jsou namapovány na každý online obchod na základě typu publikovaného řešení:
+Jednoduchý seznam vaší aplikace nebo služby. Zákazníci na stránce se seznamem vaší nabídky použijí tlačítko _kontaktovat mi_ a požádat ho, aby se k vaší nabídce připojil.
 
-**Microsoft AppSource** nabízí podniková řešení, jako jsou například Oborová řešení a konzultační služby, pro Dynamics 365, Microsoft 365 a Power Platform.
+### <a name="get-it-now"></a>Získat hned
 
-**Azure Marketplace** nabízí IT řešení vytvořená pro nebo v Azure, jakož i konzultační služby, které urychlují používání Azure vašimi zákazníky.
+Tato možnost výpisu zahrnuje příkazy, které je možné aktualizovat (předplatná a ceny založené na uživateli), přineste si vlastní licence a získáte je hned (zdarma). Nabídky s podporou transakcí se prodávají prostřednictvím komerčního tržiště. Společnost Microsoft zodpovídá za fakturaci a kolekce. Zákazníci si tuto nabídku získali pomocí _tlačítka získat IT_ .
 
-Vyberte kategorii a podkategorii, které nejlépe odpovídají vašemu typu řešení. Například firewall webových aplikací je řešení IT, které by mělo být Publikováno do Azure Marketplace pod kategorií zabezpečení. Aplikace pro správu smluv je obchodní řešení, které by se mělo publikovat do AppSource v kategorii Sales (prodej). Výběr nesprávné kategorie nebo podkategorie může mít za následek publikování vaší nabídky do nesprávného online obchodu.
+Možnost získat seznam nyní může zahrnovat následující cenové možnosti v závislosti na typu nabídky:
 
-### <a name="publishing-to-both-online-stores-saas-offers-only"></a>Publikování do online obchodů (jenom SaaS nabídky)
+- Získat hned (zdarma)
+- Používání vlastní licence (BYOL)
+- Předplatné
+- Ceny na základě využití
 
-Nabídky SaaS mohou být publikovány do Azure Marketplace nebo AppSource. Pokud vaše nabídka SaaS je řešení IT (Azure Marketplace *) i obchodní* řešení (AppSource), vyberte kategorii a podkategorii, které platí pro každý online obchod. Nabídky publikované na obou obchodech online by měly mít jako řešení IT *a* obchodní řešení hodnotu Proposition.
+Tato tabulka uvádí, které typy nabídek podporují další cenové možnosti, které jsou součástí možnosti získat nyní výpis.
 
-> [!IMPORTANT]
-> Nabídky SaaS s [měřenou fakturací](partner-center-portal/saas-metered-billing.md) jsou k dispozici prostřednictvím Azure Marketplace a Azure Portal. SaaS nabízí pouze soukromé plány, které jsou k dispozici prostřednictvím Azure Portal.
+| Typ nabídky | Získat hned (zdarma) | BYOL | Předplatné | Ceny na základě využití |
+| ------------ | ------------- | ------------- | ------------- | ------------- |
+| Aplikace Azure (spravovaná aplikace) |   |   | &#10004; | &#10004; |
+| Aplikace Azure (šablona řešení) | &#10004; |   |   |   |
+| Konzultační služba |   |   |   |   |
+| Kontejner Azure | &#10004;<sup>1</sup> | &#10004;<sup>1</sup> |   |   |
+| Dynamics 365 Business Central | &#10004; |   |   |   |
+| Dynamics 365 Customer Engagement & PowerApps | &#10004; |   |   |   |
+| Dynamics 365 pro operace | &#10004; |   |   |   |
+| Modul IoT Edge | &#10004;<sup>1</sup> | &#10004;<sup>1</sup> |   |   |
+| Spravovaná služba |   | &#10004; |   |   |
+| Aplikace Power BI | &#10004; |   |   |   |
+| Virtuální počítač Azure |   | &#10004; |   | &#10004;<sup>2</sup> |
+| Software jako služba | &#10004; |   | &#10004; | &#10004; |
+||||||
 
-| Měřené fakturace | Veřejný plán | Soukromý plán | K dispozici v: |
-|---|---|---|---|
-| Yes             | Yes         | No           | Azure Marketplace a Azure Portal |
-| Yes             | Yes         | Yes          | Azure Marketplace a Azure Portal * |
-| Yes             | No          | Yes          | Pouze Azure Portal |
-| No              | No          | Yes          | Pouze Azure Portal |
+**Legenda**
 
-&#42; soukromý plán této nabídky bude k dispozici pouze prostřednictvím Azure Portal
+<sup>1</sup> sloupec **cenového modelu** na kartě **Přehled plánu** zobrazuje _volné_ nebo _BYOL_ , ale nedá se vybrat.
 
-Zákazníci v Azure Portal zakoupí například nabídku s měřením fakturace a soukromým plánem (žádný veřejný plán). Přečtěte si další informace o [privátních nabídkách na komerčním webu Microsoft Marketplace](private-offers.md).
+<sup>2</sup> cena za hodinu a fakturovaná měsíčně.
 
-### <a name="categories"></a>Kategorie
+#### <a name="get-it-now-free"></a>Získat hned (zdarma)
 
-Kategorie a podkategorie jsou namapovány na každý online obchod na základě typu řešení. Vyberte kategorie a podkategorie, které nejlépe odpovídají vašemu řešení. Můžete vybrat:
+Pomocí této možnosti výpisu můžete aplikaci zdarma nabídnout. Zákazníci získají bezplatnou nabídku pomocí tlačítka _získat nyní_ .
 
-- Aspoň jedna a až dvě kategorie. Můžete zvolit primární a sekundární kategorii.
-- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud nevyberete žádnou podkategorii, vaše nabídka bude i nadále zjistitelná v rámci vybrané kategorie.
+#### <a name="byol"></a>BYOL
 
-[!INCLUDE [categories and subcategories](./includes/categories.md)]
+Pomocí komerčního tržiště Vylepšete možnosti zjistitelnosti, Automatizujte zřizování vašeho řešení a dokončete finanční transakci od Marketplace. Možnost uvést vlastní licenci (BYOL) je ideální pro migrace z místního prostředí do cloudu. Zákazníci používají k nákupu nabídky možnost _získat IT_ , a to s využitím licence, kterou si předem koupili.
+
+#### <a name="subscription"></a>Předplatné
+
+Paušální poplatek můžete účtovat pro tyto typy nabídek:
+
+- Aplikace Azure (spravovaná aplikace) nabízí podporu měsíčních předplatných.
+- SaaS nabízí podporu měsíčních i ročních předplatných.
+
+#### <a name="usage-based-pricing"></a>Ceny na základě využití
+
+Ceny na základě využití podporují následující typy nabídek:
+
+- Nabídka aplikace Azure (spravovaná aplikace) podporuje účtované podle objemu. Další podrobnosti najdete v tématu [spravovaná aplikace účtované podle objemu](./partner-center-portal/azure-app-metered-billing.md).
+- SaaS nabídky podporují ceny účtované podle objemu a na uživatele (za pracovní stanici). Další informace o účtovaných fakturách najdete v tématu [měřené fakturace pro SaaS pomocí komerční služby měření na webu Marketplace](./partner-center-portal/saas-metered-billing.md).
+- Virtuální počítač Azure nabízí podporu podle počtu jader, podle základní velikosti a ceny za trh a základní velikosti. Cenové možnosti jsou ceny za hodinu a účtují se měsíčně.
+
+Při vytváření nabídky s podporou transakcí je důležité pochopit informace o cenách, fakturaci, fakturaci a výběru před výběrem typu nabídky a vytvořením nabídky. Další informace najdete v článku [online obchody pro obchod na webu Marketplace](overview.md#commercial-marketplace-online-stores).
+
+## <a name="listing-and-pricing-options-by-online-store"></a>Seznam a cenové možnosti pro online obchod
+
+Na základě různých kritérií určíme, jestli je vaše nabídka uvedená na Azure Marketplace, Microsoft AppSource nebo obou online obchodech. Další informace o rozdílech mezi dvěma online obchody najdete v článku [online obchody pro obchod na webu Marketplace](overview.md#commercial-marketplace-online-stores).
+
+V následující tabulce jsou uvedeny možnosti, které jsou k dispozici pro různé typy nabídek a doplňky a na kterých online obchody máte na seznamu.
+
+| Typy nabídek a doplňky | Kontaktujte mě | Bezplatná zkušební verze | Získat hned (zdarma) | BYOL | Získat hned (Transact) |
+| ------------ | ------------- | ------------- | ------------- | ------------- | ------------- |
+| Virtuální počítač Azure |   |   |   | Azure Marketplace | Azure Marketplace |
+| Azure Application |   |   | Azure Marketplace | Azure Marketplace | Azure Marketplace |
+| Kontejner Azure  |   |   | Azure Marketplace | Azure Marketplace |   |
+| Modul IoT Edge |   |   | Azure Marketplace | Azure Marketplace |   |
+| Spravovaná služba |   |   |   | Azure Marketplace |   |
+| Konzultační služba | Online obchody |   |   |   |   |
+| SaaS  | Online obchody | Online obchody | Online obchody |   | Online obchody &#42; |
+| Aplikace Microsoft 365 | AppSource | AppSource |   |   | AppSource &#42;&#42; |
+| Dynamics 365 Business Central | AppSource | AppSource |   |   |   |
+| Dynamics 365 pro zákaznická zapojení & PowerApps | AppSource | AppSource |   |   |   |
+| Dynamics 365 pro operace | AppSource | AppSource |   |   |   |
+| Aplikace Power BI |   |   | AppSource |   |   |
+|||||||
+
+SaaS příkazy, které lze využít v AppSource, jsou momentálně pouze kreditními kartami. &#42;
+
+&#42;&#42; Microsoft 365 doplňky je zdarma nainstalovat a je možné je můžou finančně zhodnocovat pomocí nabídky SaaS. Další informace najdete v tématu [monetizovat vašeho doplňku pro Office 365 prostřednictvím komerčního tržiště Microsoftu](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace.md).
+
+## <a name="marketplace-rewards"></a>Ceny Marketplace
+
+Vaše ceny na webu Marketplace se liší v závislosti na zvolené možnosti výpisu. Další informace najdete v tématu [výhody komerčního tržiště](gtm-your-marketplace-benefits.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Jakmile se rozhodnete pro možnost publikování, přečtěte si téma [Průvodce publikováním podle typu nabídky](./publisher-guide-by-offer-type.md).
+- Chcete-li zvolit typ nabídky, kterou chcete vytvořit, přečtěte si téma [Průvodce publikováním podle typu nabídky](./publisher-guide-by-offer-type.md).

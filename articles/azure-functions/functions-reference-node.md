@@ -3,14 +3,14 @@ title: Referenční dokumentace pro vývojáře JavaScriptu pro Azure Functions
 description: Naučte se vyvíjet funkce pomocí JavaScriptu.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b920dc8a31967c9d8e1f05a6101fdfcc7a1304e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d32c63332c530ec05eb9f93661a8f2a0c5d8264c
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628828"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743316"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -325,10 +325,10 @@ Kromě výchozí úrovně jsou k dispozici následující metody protokolování
 
 | Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
-| **Chyba ( _zpráva_ )**   | Zapíše událost na úrovni chyby do protokolů.   |
-| **upozornit ( _zpráva_ )**    | Zapíše událost úrovně upozornění do protokolů. |
-| **informace ( _zpráva_ )**    | Provede zápis do protokolování na úrovni informací nebo nižší.    |
-| **verbose ( _zpráva_ )** | Zapisuje do protokolování na úrovni podrobností.           |
+| **Chyba (_zpráva_)**   | Zapíše událost na úrovni chyby do protokolů.   |
+| **upozornit (_zpráva_)**    | Zapíše událost úrovně upozornění do protokolů. |
+| **informace (_zpráva_)**    | Provede zápis do protokolování na úrovni informací nebo nižší.    |
+| **verbose (_zpráva_)** | Zapisuje do protokolování na úrovni podrobností.           |
 
 Následující příklad zapíše stejný protokol na úrovni trasování upozornění místo úrovně info:
 
@@ -563,21 +563,42 @@ Existují dva způsoby, jak nainstalovat balíčky do Function App:
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-V funkcích jsou [nastavení aplikace](functions-app-settings.md), jako jsou například připojovací řetězce služby, vystavena jako proměnné prostředí během provádění. K těmto nastavením můžete přistupovat pomocí `process.env` , jak je znázorněno v druhé a třetí volání do `context.log()` protokolu `AzureWebJobsStorage` a `WEBSITE_SITE_NAME` proměnné prostředí a:
+Přidejte vlastní proměnné prostředí do aplikace Function App v místním i cloudovém prostředí, jako jsou provozní tajné klíče (připojovací řetězce, klíče a koncové body) nebo nastavení prostředí (například proměnné profilace). K tomuto nastavení se dostanete pomocí `process.env` kódu funkce.
+
+### <a name="in-local-development-environment"></a>V místním vývojovém prostředí
+
+Při místním spuštění zahrnuje projekt Functions [ `local.settings.json` soubor](/functions-run-local.md?tabs=node#local-settings-file), kde ukládáte proměnné prostředí do `Values` objektu. 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "translatorTextEndPoint": "https://api.cognitive.microsofttranslator.com/",
+    "translatorTextKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "languageWorkers__node__arguments": "--prof"
+  }
+}
+```
+
+### <a name="in-azure-cloud-environment"></a>V cloudovém prostředí Azure
+
+Při spuštění v Azure vám aplikace Function App umožňuje nastavit použití [nastavení aplikace](functions-app-settings.md), jako jsou například připojovací řetězce služby, a zpřístupňuje tato nastavení jako proměnné prostředí během provádění. 
+
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+### <a name="access-environment-variables-in-code"></a>Přístup k proměnným prostředí v kódu
+
+Přístup k nastavení aplikace jako proměnné prostředí pomocí `process.env` , jak je znázorněno v druhé a třetí volání do `context.log()` protokolu `AzureWebJobsStorage` a `WEBSITE_SITE_NAME` proměnné prostředí a:
 
 ```javascript
 module.exports = async function (context, myTimer) {
-    var timeStamp = new Date().toISOString();
 
-    context.log('Node.js timer trigger function ran!', timeStamp);
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
 };
 ```
-
-[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
-
-Při místním spuštění jsou nastavení aplikace načítána z [local.settings.jsv](functions-run-local.md#local-settings-file) souboru projektu.
 
 ## <a name="configure-function-entry-point"></a>Konfigurovat vstupní bod funkce
 

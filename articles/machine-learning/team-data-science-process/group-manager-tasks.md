@@ -7,15 +7,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc4262d0190084064103aeabe48bec806213ea7f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7ab6d6511d1e2cec82b321003c9d663249ddcf49
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321223"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94740222"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Úlohy správce skupin procesů týmu pro data vědeckého zpracování
 
@@ -65,9 +65,9 @@ Otevře se stránka **Souhrn** projektu **GroupCommon** . Adresa URL stránky je
 
 Azure Repos hostuje následující typy úložišť pro skupinu:
 
-- **Seskupit společná úložiště** : úložiště pro obecné účely, které může pro mnoho projektů pro datové vědy přijmout více týmů v rámci datové vědy. 
-- **Týmová úložiště** : úložiště pro konkrétní týmy v rámci datové vědy jednotky. Tato úložiště jsou specifická pro potřeby týmu a můžou se používat pro více projektů v rámci tohoto týmu, ale nejsou dostatečně obecné, aby je bylo možné používat v rámci více týmů v rámci datové vědy jednotky.
-- Úložiště **projektů** : úložiště pro konkrétní projekty. Taková úložiště nemusí být dostatečně všeobecně pro více projektů v rámci týmu nebo pro jiné týmy v datové vědy jednotce.
+- **Seskupit společná úložiště**: úložiště pro obecné účely, které může pro mnoho projektů pro datové vědy přijmout více týmů v rámci datové vědy. 
+- **Týmová úložiště**: úložiště pro konkrétní týmy v rámci datové vědy jednotky. Tato úložiště jsou specifická pro potřeby týmu a můžou se používat pro více projektů v rámci tohoto týmu, ale nejsou dostatečně obecné, aby je bylo možné používat v rámci více týmů v rámci datové vědy jednotky.
+- Úložiště **projektů**: úložiště pro konkrétní projekty. Taková úložiště nemusí být dostatečně všeobecně pro více projektů v rámci týmu nebo pro jiné týmy v datové vědy jednotce.
 
 Chcete-li nastavit společné úložiště skupin ve vašem projektu, postupujte takto: 
 - Přejmenujte výchozí úložiště **GroupCommon** na **GroupProjectTemplate** .
@@ -75,7 +75,7 @@ Chcete-li nastavit společné úložiště skupin ve vašem projektu, postupujte
 
 ### <a name="rename-the-default-project-repository-to-groupprojecttemplate"></a>Přejmenujte výchozí úložiště projektu na GroupProjectTemplate.
 
-Chcete-li přejmenovat výchozí úložiště projektu **GroupCommon** na **GroupProjectTemplate** :
+Chcete-li přejmenovat výchozí úložiště projektu **GroupCommon** na **GroupProjectTemplate**:
 
 1. Na stránce **Souhrn** projektu **GroupCommon** **Vyberte úložiště**. Tato akce přejde do výchozího úložiště **GroupCommon** projektu GroupCommon, který je aktuálně prázdný.
    
@@ -126,8 +126,6 @@ Import úložišť týmu TDSP:
    ![Importovat týmový úložiště Microsoft TDSP](./media/group-manager-tasks/import-repo-2.png)
    
 1. V horní části stránky **úložišť** rozbalte rozevírací seznam a vyberte úložiště **GroupUtilities** .
-   
-1. Opakujte proces importu pro import obsahu úložiště nástrojů Microsoft TDSP Team **Utility** , *https: \/ /GitHub.com/Azure/Azure-TDSP-Utilities.Git* , do úložiště **GroupUtilities** . 
    
 Každé ze dvou úložišť skupin teď obsahuje všechny soubory kromě těch, které jsou v adresáři *. Git* , z odpovídajícího úložiště týmu Microsoft TDSP. 
 

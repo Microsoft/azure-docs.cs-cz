@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: devx-track-js
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 5ca225f136b0c3a6fc8b47d00ff64064fe17d4ee
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d9344d8b97d9a6ba361a337e0c6165438c04897
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281760"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745084"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Použití dlaždice Markdownu na řídicích panelech Azure pro zobrazení vlastního obsahu
 
@@ -31,7 +31,7 @@ Dlaždici Markdownu můžete přidat do řídicích panelů Azure a zobrazit tak
 
    ![Snímek obrazovky zobrazující zobrazení pro úpravy řídicího panelu](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-1. V **galerii dlaždic**Najděte dlaždici s názvem **Markdownu** a vyberte **Přidat**. Dlaždice se přidá na řídicí panel a otevře se podokno **Upravit Markdownu** .
+1. V **galerii dlaždic** Najděte dlaždici s názvem **Markdownu** a vyberte **Přidat**. Dlaždice se přidá na řídicí panel a otevře se podokno **Upravit Markdownu** .
 
 1. Zadejte hodnoty pro **název** a **podnadpis**, které se zobrazí na dlaždici po přesunu do jiného pole.
 
@@ -48,7 +48,7 @@ Dlaždici Markdownu můžete přidat do řídicích panelů Azure a zobrazit tak
       ![Snímek obrazovky ukazující zadání adresy URL](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > Pro zvýšení zabezpečení můžete vytvořit soubor Markdownu a uložit ho do [objektu BLOB účtu úložiště Azure, kde je šifrování povolené](../storage/common/storage-service-encryption.md), a pak na soubor odkazovat pomocí možnosti adresa URL. Obsah Markdownu je zašifrovaný prostřednictvím možností šifrování účtu úložiště. Obsah Markdownu na řídicím panelu můžou zobrazit jenom uživatelé s oprávněními k tomuto souboru. Nastavte pravidlo sdílení prostředků mezi zdroji (CORS) v účtu úložiště tak, aby Azure Portal ( _https://portal.azure.com/_ ) mohl získat přístup k souboru Markdownu v objektu BLOB.
+      > Pro zvýšení zabezpečení můžete vytvořit soubor Markdownu a uložit ho do [objektu BLOB účtu úložiště Azure, kde je šifrování povolené](../storage/common/storage-service-encryption.md), a pak na soubor odkazovat pomocí možnosti adresa URL. Obsah Markdownu je zašifrovaný prostřednictvím možností šifrování účtu úložiště. Obsah Markdownu na řídicím panelu můžou zobrazit jenom uživatelé s oprávněními k tomuto souboru. V účtu úložiště možná budete muset nastavit pravidlo [sdílení prostředků mezi zdroji (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) , aby Azure Portal ( _https://portal.azure.com/_ ) mohl získat přístup k souboru Markdownu v objektu BLOB.
 
 1. Výběrem **Hotovo** zavřete podokno **Upravit Markdownu** . Obsah se zobrazí na dlaždici Markdownu, kterou můžete změnit přetažením úchytu v pravém dolním rohu.
 

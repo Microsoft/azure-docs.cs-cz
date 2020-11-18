@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: místní, Docker, kontejner
-ms.openlocfilehash: f91d96732c872c6f93ee2de4c5c3eba5fe5ffbc4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ad3f73276a2a965032fd2acf368bce4a0c146632
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412234"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744167"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API služby pro rozpoznávání řeči 
 
@@ -31,11 +31,11 @@ Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplik
 > * Standardní převod řeči na text
 > * Custom Speech na text
 > * Standardní převod textu na řeč
-> 
+> * Neuronové převodu textu na řeč
+>
 > Následující kontejnery řeči jsou v ověřovaném náhledu.
 > * Vlastní převod textu na řeč
 > * Rozpoznávání jazyka řeči 
-> * Neuronové převodu textu na řeč
 >
 > Chcete-li použít kontejnery řeči, musíte odeslat online žádost a nechat ji schválit. Další informace najdete v části **schválení žádosti v níže uvedeném kontejneru spustit kontejner** .
 
@@ -46,7 +46,7 @@ Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplik
 | Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.8.0 |
 | Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.8.0 |
 | Rozpoznávání jazyka řeči | Zjišťuje jazyk používaný v zvukových souborech. | 1,0 |
-| Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.2.0 |
+| Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.3.0 |
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
@@ -58,7 +58,7 @@ Před použitím kontejnerů řeči je nutné splnit následující předpoklady
 |--|--|
 | Docker Engine | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows** musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
 | Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů. |
-| Prostředek řeči | Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého klíče rozhraní API a identifikátoru URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách s přehledem a klíči pro Azure Portal **řeči** . Oba jsou nutné ke spuštění kontejneru.<br><br>**{API_KEY}** : jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : koncový bod uvedený na stránce **Přehled** |
+| Prostředek řeči | Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého klíče rozhraní API a identifikátoru URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách s přehledem a klíči pro Azure Portal **řeči** . Oba jsou nutné ke spuštění kontejneru.<br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}**: koncový bod uvedený na stránce **Přehled** |
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -244,13 +244,13 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-tex
 Všechny značky s výjimkou `latest` jsou v následujícím formátu a rozlišují velká a malá písmena:
 
 ```
-<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>
 ```
 
 Následující značka je příkladem formátu:
 
 ```
-1.2.0-amd64-en-us-arianeural-preview
+1.3.0-amd64-en-us-arianeural
 ```
 
 Pro všechna podporovaná národní prostředí a odpovídající hlasy kontejneru **text-řeč neuronové** se podívejte na [značky obrázků neuronové pro převod textu na](../containers/container-image-tags.md#neural-text-to-speech)řeč.
@@ -322,7 +322,7 @@ Počínaje v v 2.6.0 kontejneru převodů textu na text byste měli místo verze
 > [!NOTE]
 > Rozhraní Analýza textu `v3.0` API není zpětně kompatibilní s analýza textu `v3.0-preview.1` . Pokud chcete získat nejnovější podporu funkcí mínění, použijte `v2.6.0` Image kontejneru převodu řeči na text a analýza textu `v3.0` .
 
-Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Zde je příklad: 
+Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Například: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -351,7 +351,7 @@ Počínaje v v 2.6.0 kontejneru převodu řeči na text můžete získat výstup
 
 * "Toto je věta **, kterou vysoké je, že** je to další věta."
 
-Chcete-li nakonfigurovat seznam frází, je nutné přidat vlastní fráze při volání. Zde je příklad:
+Chcete-li nakonfigurovat seznam frází, je nutné přidat vlastní fráze při volání. Například:
 
 ```python
     phrase="the tall man"
@@ -420,7 +420,7 @@ Tento příkaz:
 
 
 #### <a name="base-model-download-on-the-custom-speech-to-text-container"></a>Stažení základního modelu na vlastní kontejner řeči na text  
-Počínaje v v 2.6.0 vlastního kontejneru řeči a textu můžete získat dostupné informace o základním modelu pomocí možnosti `BaseModelLocale=<locale>` . Tato možnost vám poskytne seznam dostupných základních modelů v tomto národním prostředí v rámci vašeho fakturačního účtu. Zde je příklad:
+Počínaje v v 2.6.0 vlastního kontejneru řeči a textu můžete získat dostupné informace o základním modelu pomocí možnosti `BaseModelLocale=<locale>` . Tato možnost vám poskytne seznam dostupných základních modelů v tomto národním prostředí v rámci vašeho fakturačního účtu. Například:
 
 ```bash
 docker run --rm -it \
@@ -436,7 +436,7 @@ Tento příkaz:
 * Spustí kontejner *Custom Speech-to-text* z image kontejneru.
 * Zkontroluje a vrátí dostupné základní modely cílového národního prostředí.
 
-Výstup poskytuje seznam základních modelů s informacemi o národním prostředí, ID modelu a datum a čas vytvoření. Pomocí ID modelu můžete stáhnout a používat konkrétní základní model, který dáváte přednost. Zde je příklad:
+Výstup poskytuje seznam základních modelů s informacemi o národním prostředí, ID modelu a datum a čas vytvoření. Pomocí ID modelu můžete stáhnout a používat konkrétní základní model, který dáváte přednost. Například:
 ```
 Checking available base model for en-us
 2020/10/30 21:54:20 [Info] Searching available base models for en-us
