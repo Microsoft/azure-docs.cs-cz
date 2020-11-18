@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: c37c0e9b914854ff41053526740d3454c5c23f90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b75c85b85674def84d9fcee62549a6458abf9174
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628991"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684832"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> Řešení potíží s chybami odchozích připojení
 
@@ -63,7 +63,7 @@ Například dva virtuální počítače ve fondu back-end budou mít 1024 až a�
 Pokud nakonfigurujete horizontální navýšení úrovně velikosti fondu back-end, je možné, že některá z vašich odchozích připojení vyprší časový limit, pokud je potřeba znovu přidělit přidělené porty.  Pokud používáte jenom některé z vašich portů SNAT, horizontální navýšení kapacity v nejbližší větší velikosti fondu back-endu je bezvýznamnými.  Po každém přesunu na další úroveň fondu back-end se existující porty znovu přidělí.  Pokud nechcete, aby to bylo provedeno, je nutné nasazovat nasazení na velikost vrstvy.  Nebo se ujistěte, že se vaše aplikace může v případě potřeby detekovat a opakovat.  Možnost udržení protokolu TCP může pomoci při detekci, kdy porty SNAT již nefungují, protože se znovu přidělují.
 
 ## <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a><a name="idletimeout"></a>Obnovení odchozího nečinného časového limitu pomocí kontroly stavu
-Odchozí připojení mají časový limit nečinnosti 4 minut. Tento časový limit je přizpůsobitelný prostřednictvím [odchozích pravidel](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout). K aktualizaci toku nečinnosti můžete také použít přenos (například kontroly stavu protokolu TCP) nebo obnovení aplikační vrstvy a v případě potřeby resetovat časový limit nečinnosti.  
+Odchozí připojení mají časový limit nečinnosti 4 minut. Tento časový limit je přizpůsobitelný prostřednictvím [odchozích pravidel](outbound-rules.md). K aktualizaci toku nečinnosti můžete také použít přenos (například kontroly stavu protokolu TCP) nebo obnovení aplikační vrstvy a v případě potřeby resetovat časový limit nečinnosti.  
 
 Při použití kontroly udržení protokolu TCP je stačí povolit je na jedné straně připojení. Například stačí, abyste je povolili na straně serveru pouze k resetování časovače nečinnosti toku a není nutné, aby obě strany iniciovaly kontroly stavu protokolu TCP.  Pro aplikační vrstvu, včetně konfigurací klient-server databáze, existují podobné koncepty.  Na straně serveru můžete zjistit, jaké možnosti se v případě kontroly a nastavení pro konkrétní aplikaci existují.
 

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 23a620f8031335e5a950df96427b11251f0ec042
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 610ab649d64351b0897ef7358cdaf9280fe3ba55
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649309"
+ms.locfileid: "94684914"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -521,7 +521,7 @@ Systémové databáze nejsou replikovány do sekundární instance ve skupině p
 - Maximální velikost souboru `tempdb` nemůže být větší než 24 GB na jádro na úrovni pro obecné účely. Maximální `tempdb` velikost vrstvy pro důležité obchodní informace je omezená velikostí úložiště spravované instance SQL. `Tempdb` velikost souboru protokolu je omezena na 120 GB na úrovni Pro obecné účely. Některé dotazy mohou vracet chybu, pokud vyžadují více než 24 GB na jádro v `tempdb` nebo pokud vydávají více než 120 GB dat protokolu.
 - `Tempdb` je vždy rozdělen do 12 datových souborů: 1 primární, označovaný také jako Master, datový soubor a 11 neprimárních datových souborů. Strukturu souborů nelze změnit a nelze do ní přidat nové soubory `tempdb` . 
 - [Paměťově optimalizovaná `tempdb` metadata](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata), nová funkce databáze SQL Server 2019 v paměti, není podporována.
-- Objekty vytvořené v databázi modelů nelze automaticky vytvořit v nástroji `tempdb` po restartování nebo převzetí služeb při selhání, protože `tempdb` nezíská svůj počáteční seznam objektů z replikované databáze modelu. 
+- Objekty vytvořené v databázi modelů nelze automaticky vytvořit v nástroji `tempdb` po restartování nebo převzetí služeb při selhání, protože `tempdb` nezíská svůj počáteční seznam objektů z databáze modelů. Objekty musíte `tempdb` po každém restartování nebo převzetí služeb při selhání vytvořit ručně.
 
 ### <a name="msdb"></a>MSDB
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: b0b19eaa86269feff28c73275e4db4a3d332b3df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f6d5b5ef816127fe5f0c689132326f6157731d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664869"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684406"
 ---
 # <a name="high-availability-ports-overview"></a>Přehled portů vysoké dostupnosti
 
@@ -66,7 +66,7 @@ Funkce porty vysoké dostupnosti je dostupná ve všech globálních oblastech A
 
 Tato konfigurace je základní konfigurace portů HA. Pomocí následujícího postupu můžete nakonfigurovat pravidlo vyrovnávání zatížení portů HA pro jednu front-end IP adresu:
 1. Při konfiguraci Standard Load Balancer zaškrtněte políčko **porty ha** v konfiguraci Load Balancer pravidla.
-2. V případě **plovoucí IP adresy**vyberte **zakázáno**.
+2. V případě **plovoucí IP adresy** vyberte **zakázáno**.
 
 Tato konfigurace nepovoluje žádnou jinou konfiguraci pravidla vyrovnávání zatížení v aktuálním prostředku nástroje pro vyrovnávání zatížení. Pro danou sadu back-endové instance taky neumožňuje žádnou jinou konfiguraci prostředků interního nástroje pro vyrovnávání zatížení.
 
@@ -99,5 +99,4 @@ Můžete nakonfigurovat *jeden* prostředek veřejného Standard Load Balancer p
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Naučte se konfigurovat porty ha pro váš interního nástroje prostřednictvím portálu](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule), [PowerShellu](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), rozhraní příkazového [řádku](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)nebo [šablon](quickstart-load-balancer-standard-internal-template.md).
-- [Informace o Standard Load Balancer](load-balancer-standard-overview.md)
+- [Informace o Standard Load Balancer](load-balancer-overview.md)

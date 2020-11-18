@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7f2df005a8d3211ba53aadb16370624c4f530eb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 95ac4ed83a4486665ce378972ea7d6423c2482d5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575862"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682906"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat v Azure Kognitivní hledání
 
@@ -46,7 +46,7 @@ Pokud používáte jinou oblast nebo službu vytvořenou před 1. srpna, bude š
 V tomto scénáři se používají následující nástroje a služby.
 
 + [Azure kognitivní hledání](search-create-service-portal.md) na [Fakturovatelné úrovni](search-sku-tier.md#tiers) (Basic nebo vyšší, v libovolné oblasti).
-+ [Azure Key Vault](../key-vault/secrets/quick-create-portal.md#create-a-vault) ve stejném předplatném jako Azure kognitivní hledání. V trezoru klíčů musí být povolená **Ochrana před** **příčtením a odstraněním** .
++ [Azure Key Vault](../key-vault/general/overview.md)můžete Trezor klíčů vytvořit pomocí [Azure Portal](../key-vault//general/quick-create-portal.md), rozhraní příkazového [řádku Azure](../key-vault//general/quick-create-cli.md)nebo [Azure PowerShell](../key-vault//general/quick-create-powershell.md). ve stejném předplatném jako Azure Kognitivní hledání. V trezoru klíčů musí být povolená **Ochrana před** **příčtením a odstraněním** .
 + [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md). Pokud ho nemáte, [nastavte nového tenanta](../active-directory/develop/quickstart-create-new-tenant.md).
 
 Měli byste mít vyhledávací aplikaci, která může vytvořit zašifrovaný objekt. Do tohoto kódu odkazujete na klíč trezoru klíčů a registrační informace služby Active Directory. Tento kód může být pracovní aplikace nebo kód prototypu, jako je například [kód C# DotNetHowToEncryptionUsingCMK Sample](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK).
@@ -116,7 +116,7 @@ Tento krok přeskočte, pokud již máte v Azure Key Vault klíč.
 
 1. Vyberte **vytvořit** a spusťte nasazení.
 
-1. Poznamenejte si identifikátor klíče – skládá se z **identifikátoru URI hodnoty klíče** , **názvu klíče** a **verze klíče**. Tento identifikátor budete potřebovat k definování šifrovaného indexu v Azure Kognitivní hledání.
+1. Poznamenejte si identifikátor klíče – skládá se z **identifikátoru URI hodnoty klíče**, **názvu klíče** a **verze klíče**. Tento identifikátor budete potřebovat k definování šifrovaného indexu v Azure Kognitivní hledání.
 
    :::image type="content" source="media/search-manage-encryption-keys/cmk-key-identifier.png" alt-text="Vytvoří nový klíč trezoru klíčů.":::
 
@@ -158,7 +158,7 @@ Přístupová oprávnění by mohla být v daném okamžiku odvolána. Po odvol�
 
    :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="Výběr objektu zásad přístupu trezoru klíčů":::
 
-1. V možnosti **klíčová oprávnění** vyberte *získat* , *Rozbalit klíč* a *zabalit klíč*.
+1. V možnosti **klíčová oprávnění** vyberte *získat*, *Rozbalit klíč* a *zabalit klíč*.
 
 1. V **oprávnění ke tajným klíčům** vyberte *získat*.
 

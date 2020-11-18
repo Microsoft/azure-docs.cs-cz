@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: d9f25fc419a92d125dffe5c14b9b4c19cd795c6e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 30b09d43cbe510318ac4f48e0655d5483491c215
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318452"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682770"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Nastavení klíčů spravovaných zákazníkem k šifrování dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps
 
@@ -21,7 +21,7 @@ Když vytvoříte [prostředí ISE (Integration Service Environment)](../logic-a
 
 V tomto tématu se dozvíte, jak nastavit a zadat vlastní šifrovací klíč, který se použije při vytváření ISE pomocí REST API Logic Apps. Obecné kroky k vytvoření ISE prostřednictvím Logic Apps REST API najdete v tématu [vytvoření prostředí ISE (Integration Service Environment) pomocí REST API Logic Apps](../logic-apps/create-integration-service-environment-rest-api.md).
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 
 * V tuto chvíli je podpora klíčových zákaznických služeb pro ISE dostupná jenom v těchto oblastech Azure: Západní USA 2, Východní USA a Střed USA – jih
 
@@ -33,13 +33,13 @@ V tomto tématu se dozvíte, jak nastavit a zadat vlastní šifrovací klíč, k
 
 * Do *30 minut* poté, co odešlete požadavek https PUT, který vytvoří vaše ISE, musíte [dát trezoru klíčů přístup k identitě PŘIŘAZENÉ systému vaší ISE](#identity-access-to-key-vault). V opačném případě ISE vytvoření selže a vyvolá chybu oprávnění.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Stejné [požadavky](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) a [požadavky pro povolení přístupu pro ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jako při vytváření ISE v Azure Portal
 
 * Trezor klíčů Azure s povolenými vlastnostmi **obnovitelného odstranění** a **nevyprázdnění**
 
-  Další informace o tom, jak tyto vlastnosti povolit, najdete v tématu [Azure Key Vault obnovitelné odstranění – přehled](../key-vault/general/soft-delete-overview.md) a [konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md). Pokud s Azure Key Vault začínáte, přečtěte si, [jak vytvořit Trezor klíčů](../key-vault/secrets/quick-create-portal.md#create-a-vault) pomocí Azure Portal nebo pomocí příkazu Azure PowerShell [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault).
+  Další informace o tom, jak tyto vlastnosti povolit, najdete v tématu [Azure Key Vault obnovitelné odstranění – přehled](../key-vault/general/soft-delete-overview.md) a [konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md). Pokud s [Azure Key Vault](../key-vault/general/overview.md)začínáte, přečtěte si, jak vytvořit Trezor klíčů pomocí [Azure Portal](../key-vault/general/quick-create-portal.md), [Azure CLI](../key-vault/general/quick-create-cli.md)nebo [Azure PowerShell](../key-vault/general/quick-create-powershell.md).
 
 * V trezoru klíčů se vytvoří klíč, který je vytvořený pomocí těchto hodnot vlastností:
 
@@ -47,7 +47,7 @@ V tomto tématu se dozvíte, jak nastavit a zadat vlastní šifrovací klíč, k
   |----------|-------|
   | **Typ klíče** | RSA |
   | **Velikost klíče RSA** | 2 048 |
-  | **Povoleno** | Ano |
+  | **Povoleno** | Yes |
   |||
 
   ![Vytvoření šifrovacího klíče spravovaného zákazníkem](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
@@ -219,7 +219,7 @@ Pro tuto úlohu můžete použít buď příkaz Azure PowerShell [set-AzKeyVault
 
       ![Vyberte možnost Správa klíčů > klíčová oprávnění.](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. V případě **Vyberte objekt zabezpečení**vyberte možnost **není vybráno**. Po otevření podokna **zabezpečení** vyhledejte v poli hledání a vyberte své ISE. Až budete hotovi, zvolte **Vybrat**  >  **Přidat**.
+   1. V případě **Vyberte objekt zabezpečení** vyberte možnost **není vybráno**. Po otevření podokna **zabezpečení** vyhledejte v poli hledání a vyberte své ISE. Až budete hotovi, zvolte **Vybrat**  >  **Přidat**.
 
       ![Vyberte ISE, které chcete použít jako objekt zabezpečení.](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 

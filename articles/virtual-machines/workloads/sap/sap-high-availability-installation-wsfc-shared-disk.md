@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5126ae94d8c751952964aaf4df0736a5e546ff36
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c914afb3a72ccac4753a1942b6c4303850654a2e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963631"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682634"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Instalace SAP NetWeaver HA do clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro instanci SAP ASCS/SCS v Azure
 
@@ -147,12 +147,12 @@ ms.locfileid: "91963631"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-Tento článek popisuje, jak nainstalovat a nakonfigurovat systém SAP s vysokou dostupností v Azure pomocí clusteru s podporou převzetí služeb při selhání Windows serveru a sdíleného disku clusteru pro clustering instance SAP ASCS/SCS. Jak je popsáno v [Průvodci architekturou: vytvoření instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdíleného disku clusteru][sap-high-availability-guide-wsfc-shared-disk], pro *sdílený disk clusteru*existují dvě alternativy:
+Tento článek popisuje, jak nainstalovat a nakonfigurovat systém SAP s vysokou dostupností v Azure pomocí clusteru s podporou převzetí služeb při selhání Windows serveru a sdíleného disku clusteru pro clustering instance SAP ASCS/SCS. Jak je popsáno v [Průvodci architekturou: vytvoření instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdíleného disku clusteru][sap-high-availability-guide-wsfc-shared-disk], pro *sdílený disk clusteru* existují dvě alternativy:
 
-- [Sdílené disky Azure](../../windows/disks-shared.md)
+- [Sdílené disky Azure](../../disks-shared.md)
 - Vytvoření zrcadleného úložiště s využitím s využitím s využitím s [DataKeeper Edition](https://us.sios.com/products/datakeeper-cluster/) pro simulaci sdíleného disku v clusteru 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s instalací, přečtěte si tyto dokumenty:
 
@@ -250,7 +250,7 @@ Pomocí funkce testu interního nástroje pro vyrovnávání zatížení můžet
 To ale v některých konfiguracích clusteru nebude fungovat, protože je aktivní jenom jedna instance. Druhá instance je pasivní a nemůže přijmout žádnou z úloh. Funkce sondy pomáhá, když interní nástroj pro vyrovnávání zatížení Azure zjistí, která instance je aktivní a jenom cílí na aktivní instanci.  
 
 > [!IMPORTANT]
-> V tomto příkladu konfigurace je **ProbePort** nastaven na 620**Nr**. V případě instance SAP ASCS s číslem **00** je 620**00**. Bude nutné upravit konfiguraci tak, aby odpovídala číslům instancí SAP a vašemu protokolu SAP SID.
+> V tomto příkladu konfigurace je **ProbePort** nastaven na 620 **Nr**. V případě instance SAP ASCS s číslem **00** je 620 **00**. Bude nutné upravit konfiguraci tak, aby odpovídala číslům instancí SAP a vašemu protokolu SAP SID.
 
 Pokud chcete přidat port testu, spusťte tento modul PowerShellu na jednom z virtuálních počítačů clusteru:
 

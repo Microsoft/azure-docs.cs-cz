@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 3854e7f3c19f1724a2df1508c9fa519809e07ba9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2c5c017ac0faf443a38fc43dfd27c7e776cb52a0
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658668"
+ms.locfileid: "94683333"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Podpora vysokého provozu služby Application Gateway
 
@@ -30,6 +30,8 @@ Je důležité škálovat Application Gateway v závislosti na provozu a bitové
 ### <a name="set-your-instance-count-based-on-your-peak-cpu-usage"></a>Nastavte počet instancí na základě špičkového využití procesoru.
 Pokud používáte bránu SKU V1, budete mít možnost nastavit Application Gateway až 32 instancí pro škálování. Prohlédněte si využití CPU Application Gateway v minulosti za jeden měsíc pro všechny špičky nad 80%, je k dispozici jako metrika, kterou můžete monitorovat. Doporučujeme, abyste nastavili počet instancí podle vašeho špičkového využití a od 10% do 20% dodatečné vyrovnávací paměti pro všechny špičky provozu.
 
+:::image type="content" source="./media/application-gateway-covid-guidelines/v1-cpu-utilization-inline.png" alt-text="Metriky využití procesoru v1" lightbox="./media/application-gateway-covid-guidelines/v1-cpu-utilization-exp.png":::
+
 ### <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Pro své možnosti automatického škálování a výhody výkonu použijte SKU verze V2 přes v1.
 SKU verze 2 nabízí automatické škálování, aby bylo zajištěno, že se vaše Application Gateway může vertikálně škálovat při zvyšování provozu. Nabízí taky další významné výkonnostní výhody, jako je pětinásobné lepší výkon při snižování zátěže TLS, rychlejší nasazení a časy aktualizace, redundance zóny a další v porovnání s v1. Další informace najdete v dokumentaci k verzi [v2](./application-gateway-autoscaling-zone-redundant.md) a v [dokumentaci k migraci](./migrate-v1-v2.md) V1 na v2 se dozvíte, jak migrovat stávající brány SKU V1 na verzi v2 SKU. 
 
@@ -41,6 +43,8 @@ V případě SKU Application Gateway v2 je nastavení maximální počet instanc
 
 Zkontrolujte velikost podsítě a dostupný počet IP adres v podsíti a nastavte maximální počet instancí na základě těchto hodnot. Pokud vaše podsíť nemá dost místa pro vyžádání, bude nutné znovu vytvořit bránu ve stejné nebo jiné podsíti, která má dostatečnou kapacitu. 
 
+:::image type="content" source="./media/application-gateway-covid-guidelines/v2-autoscaling-max-instances-inline.png" alt-text="V2 konfigurace automatického škálování" lightbox="./media/application-gateway-covid-guidelines/v2-autoscaling-max-instances-exp.png":::
+
 ### <a name="set-your-minimum-instance-count-based-on-your-average-compute-unit-usage"></a>Nastavte minimální počet instancí na základě průměrného využití výpočetních jednotek.
 
 U SKU Application Gateway v2 má automatické škálování trvat šest až sedm minut, než se horizontální navýšení kapacity a zřídí další sada instancí připravených k přenosu provozu. Až pak dojde k krátké špičkě v provozu, vaše existující instance brány můžou dosáhnout zátěže a to může způsobit neočekávanou latenci nebo ztrátu provozu. 
@@ -48,6 +52,8 @@ U SKU Application Gateway v2 má automatické škálování trvat šest až sedm
 Doporučuje se nastavit minimální počet instancí na optimální úroveň. Pokud například požadujete, aby se instance 50 pro zpracování provozu při vrcholu zátěže, pak nastavení minimálního počtu 25 až 30 je dobré nápad místo na <10, takže i v případě, že dojde k krátkým nárůstům provozu, Application Gateway by je bylo možné zpracovat a poskytnout dostatek času na reakci a projevení.
 
 Podívejte se na metriku výpočetní jednotky za uplynulý měsíc. Metrika výpočetních jednotek je reprezentace využití procesoru vaší brány a na základě špičky vydělené 10 můžete nastavit minimální počet požadovaných instancí. Všimněte si, že 1 instance služby Application Gateway může zpracovat minimálně 10 výpočetních jednotek.
+
+:::image type="content" source="./media/application-gateway-covid-guidelines/compute-unit-metrics-inline.png" alt-text="Verze V2 – metriky výpočetní jednotky" lightbox="./media/application-gateway-covid-guidelines/compute-unit-metrics-exp.png":::
 
 ## <a name="manual-scaling-for-application-gateway-v2-sku-standard_v2waf_v2"></a>Ruční škálování pro SKU Application Gateway v2 (Standard_v2/WAF_v2)
 
@@ -79,6 +85,17 @@ Vytvořit výstrahu, když Application Gateway stav odpovědi je 4xx nebo 5xx. K
 
 Vytvořit výstrahu v případě, že metrika neúspěšných požadavků překračuje prahovou hodnotu Bránu v produkčním prostředí byste měli sledovat, pokud chcete určit statickou prahovou hodnotu nebo pro výstrahu použít dynamickou prahovou hodnotu.
 
+### <a name="example-setting-up-an-alert-for-more-than-100-failed-requests-in-the-last-5-minutes"></a>Příklad: nastavení výstrahy pro více než 100 neúspěšných žádostí za posledních 5 minut
+
+Tento příklad ukazuje, jak použít Azure Portal k nastavení výstrahy v případě, že počet neúspěšných žádostí za posledních 5 minut je větší než 100.
+1. Přejděte na **Application Gateway**.
+2. Na levém panelu vyberte na kartě **monitorování** možnost **metriky** . 
+3. Přidejte metriku pro **neúspěšné žádosti**.
+4. Klikněte na **nové pravidlo výstrahy** a definujte podmínku a akce.
+5. Kliknutím na **vytvořit pravidlo výstrahy** vytvoříte a povolíte výstrahu.
+
+:::image type="content" source="./media/application-gateway-covid-guidelines/create-alerts-inline.png" alt-text="V2 vytvořit výstrahy" lightbox="./media/application-gateway-covid-guidelines/create-alerts-exp.png":::
+
 ## <a name="alerts-for-application-gateway-v2-sku-standard_v2waf_v2"></a>Výstrahy pro SKU Application Gateway v2 (Standard_v2/WAF_v2)
 
 ### <a name="alert-if-compute-unit-utilization-crosses-75-of-average-usage"></a>Výstraha, pokud využití výpočetní jednotky překračuje 75% průměrného využití 
@@ -91,9 +108,9 @@ V tomto příkladu se dozvíte, jak použít Azure Portal k nastavení upozorně
 1. Přejděte na **Application Gateway**.
 2. Na levém panelu vyberte na kartě **monitorování** možnost **metriky** . 
 3. Přidejte metriku pro **průměrné aktuální výpočetní jednotky**. 
-![Nastavení metriky WAF](./media/application-gateway-covid-guidelines/waf-setup-metrics.png)
 4. Pokud jste nastavili minimální počet instancí, který bude odpovídat průměrnému využití, pokračujte a nastavte výstrahu, když se vaše minimální instance 75% využije. Pokud je například průměrné využití 10 kapacitní jednotky, nastavte upozornění na 7,5 kapacitní jednotky. Tato výstraha vás upozorní, pokud se využití zvyšuje a poskytuje čas na odpověď. Pokud si myslíte, že se tento provoz bude zabývat, budete moct upozornit na to, že se provoz může zvýšit. 
-![Nastavení upozornění WAF](./media/application-gateway-covid-guidelines/waf-setup-monitoring-alert.png)
+
+:::image type="content" source="./media/application-gateway-covid-guidelines/compute-unit-alert-inline.png" alt-text="V2 výstrahy výpočetních jednotek v2" lightbox="./media/application-gateway-covid-guidelines/compute-unit-alert-exp.png":::
 
 > [!NOTE]
 > V závislosti na tom, jakým způsobem chcete mít k dispozici možnosti provozu, můžete nastavit, aby se tato výstraha nastavila na nižší nebo vyšší procento využití.
@@ -122,8 +139,8 @@ Tato metrika indikuje časový interval mezi zahájením navázání připojení
 
 Toto je interval od času, kdy Application Gateway obdrží první bajt požadavku HTTP na čas, kdy byl klientovi odeslán poslední bajt odpovědi. By měl vytvořit výstrahu, pokud je latence odezvy back-endu větší než určitá prahová hodnota od obvyklého. Například může nastavit, aby se zobrazila výstraha v případě, že celková latence roste o více než 30% z běžné hodnoty.
 
-## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>Nastavení WAF s využitím pro infiltrování a ochranu robota k zastavení útoků
-Pokud chcete před aplikací použít další vrstvu zabezpečení, použijte Application Gateway WAF_v2 SKU pro funkce WAF. SKLADOVOU položku v2 můžete nakonfigurovat tak, aby povolovala přístup pouze k vašim aplikacím z dané země nebo oblasti nebo zemí/oblastí. Nastavili jste vlastní pravidlo WAF k explicitnímu povolení nebo blokování provozu na základě geografického umístění. Další informace najdete v tématu věnovaném [infiltrování vlastních pravidel](../web-application-firewall/ag/geomatch-custom-rules.md) a [způsobu konfigurace vlastních pravidel pro Application Gateway WAF_v2 SKU prostřednictvím PowerShellu](../web-application-firewall/ag/configure-waf-custom-rules.md).
+## <a name="set-up-waf-with-geo-filtering-and-bot-protection-to-stop-attacks"></a>Nastavení WAF pomocí geografického filtrování a ochrany robotů k zastavení útoků
+Pokud chcete před aplikací použít další vrstvu zabezpečení, použijte Application Gateway WAF_v2 SKU pro funkce WAF. SKLADOVOU položku v2 můžete nakonfigurovat tak, aby povolovala přístup pouze k vašim aplikacím z dané země nebo oblasti nebo zemí/oblastí. Nastavíte vlastní pravidlo WAF k explicitnímu povolení nebo blokování provozu na základě geografického umístění. Další informace najdete v tématech [vlastní pravidla geografického filtrování](../web-application-firewall/ag/geomatch-custom-rules.md) a [Postup konfigurace vlastních pravidel pro Application Gateway WAF_v2 SKU prostřednictvím PowerShellu](../web-application-firewall/ag/configure-waf-custom-rules.md).
 
 Povolí ochranu robotů blokující známé chybné roboty. To by mělo snížit objem provozu, který se bude připravovat do vaší aplikace. Další informace najdete v tématu [ochrana robota s pokyny k instalaci](../web-application-firewall/ag/configure-waf-custom-rules.md).
 

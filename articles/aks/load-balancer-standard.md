@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: b42a952b096f533f916879a11fdb6b6583fa8592
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5da7f2a11be7562313b709a8af72ccd709165cfa
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660351"
+ms.locfileid: "94684198"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Použití veřejné Standard Load Balancer ve službě Azure Kubernetes (AKS)
 
@@ -225,7 +225,7 @@ az aks update \
     --load-balancer-outbound-ports 4000
 ```
 
-V tomto příkladu by vám 4000 přidělené odchozí porty pro každý uzel v clusteru a s 7 IP adresami, které byste měli mít *4000 portů na uzel * 100 uzly = 400 tisíc celkový počet portů < = 448k celkový počet portů = 7 IP × 64 KB portů na IP adresu*. To vám umožní bezpečně škálovat na uzly 100 a mít výchozí operaci upgradu. Je důležité přidělit dostatečné porty pro další uzly, které jsou potřeba pro upgrade a jiné operace. AKS ve výchozím nastavení jeden uzel vyrovnávací paměti pro upgrade, v tomto příkladu vyžaduje 4000 bezplatných portů v libovolném časovém okamžiku. Při použití [hodnot maxSurge](upgrade-cluster.md#customize-node-surge-upgrade-preview)vynásobte Odchozí porty na uzel hodnotou maxSurge.
+V tomto příkladu by vám 4000 přidělené odchozí porty pro každý uzel v clusteru a s 7 IP adresami, které byste měli mít *4000 portů na uzel * 100 uzly = 400 tisíc celkový počet portů < = 448k celkový počet portů = 7 IP × 64 KB portů na IP adresu*. To vám umožní bezpečně škálovat na uzly 100 a mít výchozí operaci upgradu. Je důležité přidělit dostatečné porty pro další uzly, které jsou potřeba pro upgrade a jiné operace. AKS ve výchozím nastavení jeden uzel vyrovnávací paměti pro upgrade, v tomto příkladu vyžaduje 4000 bezplatných portů v libovolném časovém okamžiku. Při použití [hodnot maxSurge](upgrade-cluster.md#customize-node-surge-upgrade)vynásobte Odchozí porty na uzel hodnotou maxSurge.
 
 Aby bylo možné bezpečně přejít nad 100 uzlů, je nutné přidat další IP adresy.
 

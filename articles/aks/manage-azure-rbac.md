@@ -1,5 +1,5 @@
 ---
-title: Správa RBAC v Kubernetes z Azure
+title: Správa služby Azure RBAC v Kubernetes z Azure
 titleSuffix: Azure Kubernetes Service
 description: Naučte se používat Azure RBAC pro autorizaci Kubernetes se službou Azure Kubernetes Service (AKS).
 services: container-service
@@ -7,23 +7,23 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 3f878389f22f3928bc1fc8c89b04353583326da6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346039"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684215"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Použití Azure RBAC pro autorizaci Kubernetes (Preview)
 
 Dnes už můžete využít [integrované ověřování mezi Azure Active Directory (Azure AD) a AKS](managed-aad.md). Pokud je tato integrace povolená, umožňuje zákazníkům používat pro uživatele, skupiny nebo instanční objekty Azure AD jako předměty v Kubernetes RBAC další [informace.](azure-ad-rbac.md)
-Tato funkce uvolní, abyste nemuseli samostatně spravovat identity uživatelů a přihlašovací údaje pro Kubernetes. Pořád ale musíte nastavit a spravovat službu Azure RBAC a Kubernetes RBAC samostatně. Další podrobnosti o ověřování, autorizaci a RBAC na AKS najdete [tady](concepts-identity.md).
+Tato funkce uvolní, abyste nemuseli samostatně spravovat identity uživatelů a přihlašovací údaje pro Kubernetes. Pořád ale musíte nastavit a spravovat službu Azure RBAC a Kubernetes RBAC samostatně. Další podrobnosti o ověřování a autorizaci pomocí RBAC na AKS najdete [tady](concepts-identity.md).
 
 Tento dokument popisuje nový přístup, který umožňuje jednotnou správu a řízení přístupu napříč prostředky Azure, AKS a Kubernetes prostředky.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Možnost spravovat RBAC pro prostředky Kubernetes z Azure vám dává možnost spravovat RBAC pro prostředky clusteru, a to buď pomocí Azure, nebo nativních mechanismů Kubernetes. Pokud je povoleno, objekty zabezpečení Azure AD budou ověřovány výhradně pomocí Azure RBAC, zatímco pravidelné Kubernetes uživatele a účty služeb jsou exkluzivně ověřovány Kubernetes RBAC. Další podrobnosti o ověřování, autorizaci a RBAC na AKS najdete [tady](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview).
+Možnost spravovat RBAC pro prostředky Kubernetes z Azure vám dává možnost spravovat RBAC pro prostředky clusteru, a to buď pomocí Azure, nebo nativních mechanismů Kubernetes. Pokud je povoleno, objekty zabezpečení Azure AD budou ověřovány výhradně pomocí Azure RBAC, zatímco pravidelné Kubernetes uživatele a účty služeb jsou exkluzivně ověřovány Kubernetes RBAC. Další podrobnosti o ověřování a autorizaci pomocí RBAC na AKS najdete [tady](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview).
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -272,7 +272,7 @@ az group delete -n MyResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o ověřování AKS, autorizaci [a RBAC.](concepts-identity.md)
+- Přečtěte si další informace o ověřování AKS, autorizaci, Kubernetes RBAC a Azure [RBAC.](concepts-identity.md)
 - Přečtěte si další informace o Azure RBAC [tady](../role-based-access-control/overview.md).
 - Přečtěte si další informace o všech akcích, které můžete použít k podrobnému definování vlastních rolí Azure [pro autorizaci](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)Kubernetes.
 

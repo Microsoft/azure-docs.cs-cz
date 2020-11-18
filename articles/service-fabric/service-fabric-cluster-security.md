@@ -4,12 +4,12 @@ description: Přečtěte si o scénářích zabezpečení pro cluster Azure Serv
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 8d6f3e94a735a6a8880d726890f1eb7ac346c755
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 642356f08a946cae5d2b2d395aaddd8e4dad27ed
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946191"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682787"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric scénáře zabezpečení clusteru
 
@@ -19,7 +19,7 @@ Tento článek představuje přehled scénářů zabezpečení pro clustery Azur
 
 * Zabezpečení mezi uzly
 * Zabezpečení klient-uzel
-* Řízení přístupu na základě role (RBAC)
+* Service Fabric řízení přístupu na základě role
 
 ## <a name="node-to-node-security"></a>Zabezpečení mezi uzly
 
@@ -60,7 +60,7 @@ Clustery běžící v Azure a samostatné clustery, které běží v systému Wi
 
 Nastavte zabezpečení certifikátu klienta na uzel při vytváření clusteru, a to buď v Azure Portal, pomocí Správce prostředků šablony, nebo pomocí samostatné šablony JSON. Certifikát vytvoříte tak, že zadáte certifikát klienta správce nebo klientský certifikát uživatele. Osvědčeným postupem je, že je třeba zadat klientské certifikáty pro správce a uživatele, které zadáte, se liší od primárních a sekundárních certifikátů, které zadáte pro [zabezpečení](#node-to-node-security)mezi uzly. Certifikáty clusteru mají stejná práva jako certifikáty správce klienta. Měli byste je ale používat jenom v clusterech a ne prostřednictvím administrativních uživatelů jako osvědčený postup zabezpečení.
 
-Klienti, kteří se připojují ke clusteru pomocí certifikátu správce, mají úplný přístup k možnostem správy. Klienti, kteří se připojují ke clusteru pomocí klientského certifikátu jen pro čtení, mají přístup jen pro čtení k funkcím pro správu. Tyto certifikáty se používají pro RBAC, který je popsán dále v tomto článku.
+Klienti, kteří se připojují ke clusteru pomocí certifikátu správce, mají úplný přístup k možnostem správy. Klienti, kteří se připojují ke clusteru pomocí klientského certifikátu jen pro čtení, mají přístup jen pro čtení k funkcím pro správu. Tyto certifikáty se používají pro Service Fabric RBAC, která je popsána dále v tomto článku.
 
 Informace o tom, jak nastavit zabezpečení certifikátů v clusteru pro Azure, najdete v tématu [Nastavení clusteru pomocí šablony Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
 
@@ -85,13 +85,13 @@ U clusterů Service Fabric nasazených ve veřejné síti hostované v Azure dop
 
 V případě samostatných clusterů Windows serveru, pokud máte Windows Server 2012 R2 a Windows Active Directory, doporučujeme, abyste používali zabezpečení systému Windows se skupinovými účty spravované služby. V opačném případě použijte zabezpečení systému Windows s účty systému Windows.
 
-## <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
+## <a name="service-fabric-role-based-access-control"></a>Service Fabric řízení přístupu na základě role
 
 Řízení přístupu můžete použít k omezení přístupu k určitým operacím clusteru pro různé skupiny uživatelů. To pomáhá zvýšit zabezpečení clusteru. Pro klienty, kteří se připojují ke clusteru, jsou podporovány dva typy řízení přístupu: role správce a role uživatele.
 
 Uživatelé, kteří mají přiřazenou roli správce, mají plný přístup k funkcím správy, včetně funkcí pro čtení a zápis. Uživatelům, kteří mají přiřazenou roli uživatele, mají ve výchozím nastavení přístup jen pro čtení k funkcím pro správu (například možnosti dotazů). Můžou také řešit aplikace a služby.
 
-Nastavte role správce a uživatele klienta při vytváření clusteru. Přiřaďte role poskytnutím samostatných identit (například pomocí certifikátů nebo Azure AD) pro každý typ role. Další informace o výchozím nastavení řízení přístupu a o tom, jak změnit výchozí nastavení, najdete v tématu [Access Control na základě rolí pro klienty Service Fabric](service-fabric-cluster-security-roles.md).
+Nastavte role správce a uživatele klienta při vytváření clusteru. Přiřaďte role poskytnutím samostatných identit (například pomocí certifikátů nebo Azure AD) pro každý typ role. Další informace o výchozím nastavení řízení přístupu a o tom, jak změnit výchozí nastavení, najdete v tématu [Service Fabric řízení přístupu na základě role pro klienty Service Fabric](service-fabric-cluster-security-roles.md).
 
 ## <a name="x509-certificates-and-service-fabric"></a>Certifikáty X. 509 a Service Fabric
 

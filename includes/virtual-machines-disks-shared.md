@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6f819d9b6ba4d74612da304aafea0118f9094bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7831eaaa478a3f28ff158d5c9599abaf8a107c15
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91451546"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684427"
 ---
 Azure Shared disks je nová funkce pro služby Azure Managed disks, která umožňuje současně připojit spravovaný disk k několika virtuálním počítačům (VM). Připojení spravovaného disku k několika virtuálním počítačům vám umožní nasadit do Azure nové nebo migrovat existující clusterové aplikace.
 
@@ -54,9 +54,9 @@ Mezi některé oblíbené aplikace využívající službu WSFC patří:
 ### <a name="linux"></a>Linux
 
 Sdílené disky Azure jsou podporované na:
-- [SUSE SLE for SAP and SUSE SLE HA 15 SP1 a vyšší](https://documentation.suse.com/sle-ha/15-SP1/single-html/SLE-HA-guide/index.html)
+- [SUSE SLE for SAP and SUSE SLE HA 15 SP1 a vyšší](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
 - [Ubuntu 18,04 a novější](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
-- [RHEL Developer Preview na všech RHEL ve verzi 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_high_availability_clusters/index)
+- [RHEL Developer Preview na všech RHEL ve verzi 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/deploying_red_hat_enterprise_linux_8_on_public_cloud_platforms/index?lb_target=production#azure-configuring-shared-block-storage_configuring-rhel-high-availability-on-azure)
 - [Oracle Enterprise Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
 
 Clustery se systémem Linux můžou využívat Správce clusterů, jako je [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker). Pacemaker se vytváří na [Corosync](http://corosync.github.io/corosync/)a povoluje komunikaci clusteru pro aplikace nasazené v prostředích s vysokou dostupností. Mezi běžné Clusterové systémy souborů patří [OCFS2](https://oss.oracle.com/projects/ocfs2/) a [GFS2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). Pro arbitrating přístup k disku můžete použít modely clusteringu založené na trvalé rezervaci (SCSI PR) nebo STONITH Block Device (SBD). Při použití SCSI PR můžete manipulovat s rezervacemi a registrací pomocí nástrojů, jako jsou [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) a [sg_persist](https://linux.die.net/man/8/sg_persist).
@@ -131,19 +131,19 @@ V následujících příkladech je znázorněno několik scénářů, které uka
 
 Následuje příklad dvou uzlů služby WSFC pomocí clusterovaných sdílených svazků. V této konfiguraci mají oba virtuální počítače souběžný přístup pro zápis na disk. Výsledkem je, že se `ReadWrite` omezení rozděluje mezi tyto dva virtuální počítače a `ReadOnly` omezení se nepoužívá.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Obrázek tabulky, která znázorňuje přístup &quot;ReadOnly&quot; nebo &quot;čtení/zápisu&quot; pro rezervovaného držitele, registraci a další.":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Ultra example v CSV – dva uzly":::
 
 ##### <a name="two-node-cluster-without-cluster-share-volumes"></a>Cluster se dvěma uzly bez sdílených svazků clusteru
 
 Níže je uveden příklad služby WSFC se dvěma uzly, který nepoužívá clusterované sdílené svazky. V této konfiguraci má disk přístup pro zápis jenom na jednom virtuálním počítači. Výsledkem je `ReadWrite` omezení používané výhradně pro primární virtuální počítač a omezení, které `ReadOnly` používá sekundární.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="Obrázek tabulky, která znázorňuje přístup &quot;ReadOnly&quot; nebo &quot;čtení/zápisu&quot; pro rezervovaného držitele, registraci a další.":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="Sdílený svazek clusteru – dva uzly žádný příklad CSV Ultra disk":::
 
 ##### <a name="four-node-linux-cluster"></a>Cluster se čtyřmi uzly Linux
 
 Následuje příklad clusteru se čtyřmi uzly v systému Linux s jedním zapisovačem a třemi čtecími nástroji pro horizontální navýšení kapacity. V této konfiguraci má disk přístup pro zápis jenom na jednom virtuálním počítači. To vede k tomu, že se `ReadWrite` omezení používá výhradně pro primární virtuální počítač a `ReadOnly` omezuje se jejich rozdělení na sekundární virtuální počítače.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Obrázek tabulky, která znázorňuje přístup &quot;ReadOnly&quot; nebo &quot;čtení/zápisu&quot; pro rezervovaného držitele, registraci a další.":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Příklad omezení míry Ultra na čtyři uzly":::
 
 #### <a name="ultra-pricing"></a>Ceny pro Ultra
 

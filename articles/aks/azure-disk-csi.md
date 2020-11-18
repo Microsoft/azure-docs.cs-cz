@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 260631e36d113b6ccd190f66ce61caa7ba1b187b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 2dba9fbcbddbc7a66763636986f3d98f4f95332c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900893"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683127"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Použití ovladačů rozhraní Azure disk Container Storage (CSI) ve službě Azure Kubernetes Service (AKS) (Preview)
 Ovladač rozhraní Azure disk Container Storage (CSI) je ovladač kompatibilní se [specifikací CSI](https://github.com/container-storage-interface/spec/blob/master/spec.md), který používá služba Azure Kubernetes Service (AKS) ke správě životního cyklu disků Azure.
@@ -275,7 +275,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ## <a name="shared-disk"></a>Sdílený disk
 
-[Sdílené disky Azure](../virtual-machines/windows/disks-shared.md) jsou funkce služby Azure Managed disks, která umožňuje současně připojit uzly disku Azure k uzlům agenta. Připojení spravovaného disku k několika uzlům agentů vám umožní například nasadit nové nebo migrovat existující clusterované aplikace do Azure.
+[Sdílené disky Azure](../virtual-machines/disks-shared.md) jsou funkce služby Azure Managed disks, která umožňuje současně připojit uzly disku Azure k uzlům agenta. Připojení spravovaného disku k několika uzlům agentů vám umožní například nasadit nové nebo migrovat existující clusterované aplikace do Azure.
 
 > [!IMPORTANT] 
 > Ovladač Azure disk CSI v současné době podporuje jenom nezpracované blokové zařízení ( `volumeMode: Block` ). Aplikace by měly spravovat koordinaci a kontrolu nad zápisy, čtením, zámky, mezipamětí, připojeními a ukládáním do vyrovnávací paměti na sdíleném disku, který je vystavený jako nezpracované blokové zařízení.

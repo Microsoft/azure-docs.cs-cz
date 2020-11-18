@@ -3,13 +3,13 @@ title: Upgrade clusteru Azure Kubernetes Service (AKS)
 description: Zjistěte, jak upgradovat cluster Azure Kubernetes Service (AKS), abyste získali nejnovější funkce a aktualizace zabezpečení.
 services: container-service
 ms.topic: article
-ms.date: 10/21/2020
-ms.openlocfilehash: 046c010cdd811b53ef8ef35624ed41a673af43d3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 11/17/2020
+ms.openlocfilehash: 262905c9f840850795ba9555912e81eca61369d1
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461443"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683229"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 > [!NOTE]
 > Pokud upgradujete podporovaný cluster AKS, nelze podverze Kubernetes vynechat. Například upgrady mezi *1.12. x*  ->  *1.13. x* nebo *1.13. x*  ->  *1.14. x* jsou povoleny, ale *1.12. x*  ->  *1.14. x* není.
 >
-> Chcete-li provést upgrade, z *1.12. x*  ->  *1.14. x*, nejprve upgradujte z *1.12. x*  ->  *1.13. x*a potom proveďte upgrade z *1.13. x*  ->  *1.14. x*.
+> Chcete-li provést upgrade, z *1.12. x*  ->  *1.14. x*, nejprve upgradujte z *1.12. x*  ->  *1.13. x* a potom proveďte upgrade z *1.13. x*  ->  *1.14. x*.
 >
 > Přeskočení více verzí lze provést pouze při upgradu z nepodporované verze zpět do podporované verze. Například upgradujte z nepodporovaného prvku *1.10. x* --> podporovanou *1.15. x* je možné dokončit.
 
@@ -51,7 +51,7 @@ Pokud upgrade není k dispozici, zobrazí se:
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
 
-## <a name="customize-node-surge-upgrade-preview"></a>Přizpůsobení upgradu uzlu přepětí (Preview)
+## <a name="customize-node-surge-upgrade"></a>Přizpůsobení upgradu uzlu přepětí
 
 > [!Important]
 > Pro každou operaci upgradu se u uzlů přepětí vyžaduje kvóta předplatného pro požadovaný maximální počet přepětí. Například cluster s pěti fondy uzlů, každý s počtem 4 uzly, má celkem 20 uzlů. Pokud má každý fond uzlů hodnotu maximálního nárůstu 50%, pro dokončení upgradu se vyžaduje další výpočetní a IP kvóta 10 uzlů (2 uzly * 5 fondů).
@@ -66,21 +66,7 @@ AKS přijímá jak celočíselné hodnoty, tak i procentuální hodnotu pro maxi
 
 Během upgradu může být maximální hodnota přepětí minimálně 1 a maximální hodnota se rovná počtu uzlů ve fondu uzlů. Můžete nastavit větší hodnoty, ale maximální počet uzlů, které se mají použít pro maximální nárůst, nebude vyšší než počet uzlů ve fondu v době upgradu.
 
-### <a name="set-up-the-preview-feature-for-customizing-node-surge-upgrade"></a>Nastavení funkce Preview pro přizpůsobení upgradu uzlu přepětí
-
-```azurecli-interactive
-# register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "MaxSurgePreview"
-```
-
-Registrace bude trvat několik minut. Pomocí níže uvedeného příkazu ověřte, že je funkce zaregistrovaná:
-
-```azurecli-interactive
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MaxSurgePreview')].{Name:name,State:properties.state}"
-```
-
-Během období Preview budete potřebovat rozšíření CLI *AKS-Preview* pro použití maximálního nárůstu. Použijte příkaz [AZ Extension Add][az-extension-add] a potom vyhledejte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] :
+Až 2.16.0 verze CLI +, budete potřebovat rozšíření CLI *AKS-Preview* pro použití maximálního nárůstu. Použijte příkaz [AZ Extension Add][az-extension-add] a potom vyhledejte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] :
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -107,7 +93,7 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>Upgrade clusteru AKS
 
-Seznam dostupných verzí pro cluster AKS můžete upgradovat pomocí příkazu [AZ AKS upgrade][az-aks-upgrade] . Během procesu upgradu AKS přidá nový uzel vyrovnávací paměti (nebo tolik uzlů, jak jsou nakonfigurované v [maximálním](#customize-node-surge-upgrade-preview)přetečení) do clusteru, na kterém je spuštěná zadaná verze Kubernetes. Pak bude [Cordon a vyprázdnit][kubernetes-drain] jeden ze starých uzlů, aby se minimalizovalo přerušení spuštěných aplikací (Pokud používáte max. nárůst, [Cordon a vyprázdní][kubernetes-drain] tolik uzlů ve stejnou dobu jako počet zadaných uzlů vyrovnávací paměti). Když je starý uzel úplně vyprázdněný, obnoví se jeho image, aby se získala Nová verze, a ta se stane uzlem vyrovnávací paměti pro upgrade následujícího uzlu. Tento proces se opakuje, dokud nebudou upgradovány všechny uzly v clusteru. Na konci procesu se odstraní poslední vyprázdnující uzel a zachová se stávající počet uzlů agentů.
+Seznam dostupných verzí pro cluster AKS můžete upgradovat pomocí příkazu [AZ AKS upgrade][az-aks-upgrade] . Během procesu upgradu AKS přidá nový uzel vyrovnávací paměti (nebo tolik uzlů, jak jsou nakonfigurované v [maximálním](#customize-node-surge-upgrade)přetečení) do clusteru, na kterém je spuštěná zadaná verze Kubernetes. Pak bude [Cordon a vyprázdnit][kubernetes-drain] jeden ze starých uzlů, aby se minimalizovalo přerušení spuštěných aplikací (Pokud používáte max. nárůst, [Cordon a vyprázdní][kubernetes-drain] tolik uzlů ve stejnou dobu jako počet zadaných uzlů vyrovnávací paměti). Když je starý uzel úplně vyprázdněný, obnoví se jeho image, aby se získala Nová verze, a ta se stane uzlem vyrovnávací paměti pro upgrade následujícího uzlu. Tento proces se opakuje, dokud nebudou upgradovány všechny uzly v clusteru. Na konci procesu se odstraní poslední vyprázdnující uzel a zachová se stávající počet uzlů agentů.
 
 ```azurecli-interactive
 az aks upgrade \

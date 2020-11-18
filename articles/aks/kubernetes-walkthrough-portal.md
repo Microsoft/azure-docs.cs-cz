@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 10/06/2020
 ms.custom: mvc, seo-javascript-october2019, devx-track-azurecli
-ms.openlocfilehash: 30c00b1dfda3e30f047faf0deed7151aaf8c3fae
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 606de7c07f2760ca678563ccf1900fc1bb915c1a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745773"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684878"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) pomocí Azure Portal
 
@@ -33,31 +33,31 @@ Cluster AKS vytvoříte takto:
 
 1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Create a resource** (Vytvořit prostředek).
 
-2. Vyberte **Containers** (Kontejnery)  >   **Kubernetes Service** .
+2. Vyberte **Containers** (Kontejnery)  >   **Kubernetes Service**.
 
 3. Na kartě **Basics** (Základy) nakonfigurujte následující možnosti:
-    - **Podrobnosti o projektu** : vyberte **předplatné** Azure a pak vyberte nebo vytvořte **skupinu prostředků** Azure, například *myResourceGroup* .
-    - **Podrobnosti o clusteru** : zadejte **název clusteru Kubernetes** , například *myAKSCluster* . Vyberte **oblast** a **verzi KUBERNETES** pro cluster AKS.
-    - **Fond primárních uzlů** : vyberte **Velikost uzlu** virtuálního počítače pro uzly AKS. Velikost virtuálního počítače se po nasazení clusteru AKS *nedá* změnit.
-            -Vyberte počet uzlů, které mají být do clusteru nasazeny. Pro účely tohoto rychlého startu nastavte **Počet uzlů** na hodnotu *1* . Počet uzlů *jde* upravit po nasazení clusteru.
+    - **Podrobnosti o projektu**: vyberte **předplatné** Azure a pak vyberte nebo vytvořte **skupinu prostředků** Azure, například *myResourceGroup*.
+    - **Podrobnosti o clusteru**: zadejte **název clusteru Kubernetes**, například *myAKSCluster*. Vyberte **oblast** a **verzi KUBERNETES** pro cluster AKS.
+    - **Fond primárních uzlů**: vyberte **Velikost uzlu** virtuálního počítače pro uzly AKS. Velikost virtuálního počítače se po nasazení clusteru AKS *nedá* změnit.
+            -Vyberte počet uzlů, které mají být do clusteru nasazeny. Pro účely tohoto rychlého startu nastavte **Počet uzlů** na hodnotu *1*. Počet uzlů *jde* upravit po nasazení clusteru.
     
     ![Vytvoření clusteru AKS – zadání základních informací](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
     Po dokončení vyberte **Další: fondy uzlů** .
 
-4. Na stránce **fondy uzlů** ponechte výchozí možnosti. V dolní části obrazovky klikněte na **Další: ověřování** .
+4. Na stránce **fondy uzlů** ponechte výchozí možnosti. V dolní části obrazovky klikněte na **Další: ověřování**.
     > [!CAUTION]
     > Vytváření nových objektů služby AAD může trvat několik minut, než se rozšíří a stane se k dispozici, což způsobí, že se instanční objekt nenalezne chyby a chyby ověřování v Azure Portal. Pokud se [dostanete k tomuto](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) problému, navštivte prosím tento článek, abyste se mohli zmírnit.
 
 5. Na kartě **Authentication** (Ověřování) nakonfigurujte následující možnosti:
     - Vytvořte nový instanční objekt tak, že v poli **Service Principal** (Instanční objekt) ponecháte možnost **(new) default service principal** ((nové) výchozí instanční objekt). Můžete také zvolit *Configure service principal* (Nakonfigurovat instanční objekt) a použít existující instanční objekt. Pokud použijete existující, budete muset zadat ID a tajný klíč klienta SPN.
-    - U služby Kubernetes povolte možnost řízení přístupu na základě role (RBAC). Tím si zajistíte podrobnější kontrolu nad přístupem k prostředkům Kubernetes nasazeným v clusteru AKS.
+    - Povolte možnost Kubernetes řízení přístupu na základě role (Kubernetes RBAC). Tím si zajistíte podrobnější kontrolu nad přístupem k prostředkům Kubernetes nasazeným v clusteru AKS.
 
     Alternativně můžete místo instančního objektu použít spravovanou identitu. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md) .
 
 Ve výchozím nastavení se používá *základní* sítě a Azure monitor pro kontejnery jsou povoleny. Klikněte na **Review + create** (Zkontrolovat a vytvořit) a po dokončení ověření na **Create** (Vytvořit).
 
-Vytvoření clusteru AKS bude trvat několik minut. Po dokončení nasazení klikněte na **Přejít k prostředku** nebo přejděte do skupiny prostředků clusteru AKS, jako je třeba *myResourceGroup* , a vyberte prostředek AKS, jako je třeba *myAKSCluster* . Zobrazí se řídicí panel clusteru AKS, jako v tomto příkladu:
+Vytvoření clusteru AKS bude trvat několik minut. Po dokončení nasazení klikněte na **Přejít k prostředku** nebo přejděte do skupiny prostředků clusteru AKS, jako je třeba *myResourceGroup*, a vyberte prostředek AKS, jako je třeba *myAKSCluster*. Zobrazí se řídicí panel clusteru AKS, jako v tomto příkladu:
 
 ![Příklad řídicího panelu AKS na webu Azure Portal](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
@@ -69,7 +69,7 @@ Pomocí `>_` tlačítka v horní části Azure Portal otevřete Cloud Shell.
 
 ![Portál s otevřenou službou Azure Cloud Shell](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 
-Pomocí příkazu [az aks get-credentials][az-aks-get-credentials] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití. Následující příklad získá přihlašovací údaje pro název clusteru *myAKSCluster* ve skupině prostředků *myResourceGroup* :
+Pomocí příkazu [az aks get-credentials][az-aks-get-credentials] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití. Následující příklad získá přihlašovací údaje pro název clusteru *myAKSCluster* ve skupině prostředků *myResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -81,7 +81,7 @@ Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl get][
 kubectl get nodes
 ```
 
-Následující příklad výstupu ukazuje jeden uzel vytvořený v předchozích krocích. Ujistěte se, že stav uzlu je *připravený* :
+Následující příklad výstupu ukazuje jeden uzel vytvořený v předchozích krocích. Ujistěte se, že stav uzlu je *připravený*:
 
 ```output
 NAME                       STATUS    ROLES     AGE       VERSION
@@ -207,7 +207,7 @@ Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` mů�
 kubectl get service azure-vote-front --watch
 ```
 
-Zpočátku je *externí IP adresa* pro službu *Azure-hlas-front-end* zobrazená jako *nevyřízená* .
+Zpočátku je *externí IP adresa* pro službu *Azure-hlas-front-end* zobrazená jako *nevyřízená*.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -228,14 +228,14 @@ Pokud chcete zobrazit hlasovou aplikaci Azure v akci, otevřete webový prohlí�
 
 Při vytváření clusteru byla povolena Azure Monitor pro kontejnery. Tato funkce monitorování poskytuje metriky stavu clusteru AKS i podů spuštěných na tomto clusteru.
 
-Naplnění těchto dat na webu Azure Portal může trvat několik minut. Pokud chcete zobrazit aktuální stav, dobu provozu a využití prostředků pro pody Azure Vote, na webu Azure Portal přejděte zpět k prostředku AKS, například *myAKSCluster* . Přístup ke stavu potom získáte následujícím způsobem:
+Naplnění těchto dat na webu Azure Portal může trvat několik minut. Pokud chcete zobrazit aktuální stav, dobu provozu a využití prostředků pro pody Azure Vote, na webu Azure Portal přejděte zpět k prostředku AKS, například *myAKSCluster*. Přístup ke stavu potom získáte následujícím způsobem:
 
 1. V části **monitorování** na levé straně vyberte **přehledy** .
 1. V horní části zvolte **+ Přidat filtr**
 1. Jako vlastnost vyberte *obor názvů* a pak zvolte *\<All but kube-system\>*
-1. Vyberte zobrazení **Kontejnery** .
+1. Vyberte zobrazení **Kontejnery**.
 
-Zobrazí se kontejnery *azure-vote-back* a *azure-vote-front* , jak ukazuje následující příklad:
+Zobrazí se kontejnery *azure-vote-back* a *azure-vote-front*, jak ukazuje následující příklad:
 
 ![Zobrazení stavu spuštěných kontejnerů v AKS](media/kubernetes-walkthrough-portal/monitor-containers.png)
 

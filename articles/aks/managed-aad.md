@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: fdbef15bb7831fedd7c375d565e0cde10f9b9a9e
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: f229075d0bad4f9522e02e30bdabc1d42bb086cf
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380428"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684181"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Integrace Azure Active Directory spravovaná v AKS
 
@@ -18,14 +18,14 @@ Integrace služby Azure AD spravovaná pomocí AKS je navržená tak, aby zjedno
 
 ## <a name="azure-ad-authentication-overview"></a>Přehled ověřování Azure AD
 
-Správci clusteru můžou nakonfigurovat řízení přístupu na základě role (RBAC) Kubernetes na základě identity uživatele nebo členství ve skupině adresáře. Ověřování Azure AD je k dispozici pro clustery AKS s OpenID Connect. OpenID Connect je vrstva identity postavená nad protokolem OAuth 2,0. Další informace o OpenID připojení najdete v dokumentaci k [otevřenému ID Connect][open-id-connect].
+Správci clusteru můžou nakonfigurovat řízení přístupu na základě role Kubernetes (Kubernetes RBAC) na základě identity uživatele nebo členství ve skupině adresáře. Ověřování Azure AD je k dispozici pro clustery AKS s OpenID Connect. OpenID Connect je vrstva identity postavená nad protokolem OAuth 2,0. Další informace o OpenID připojení najdete v dokumentaci k [otevřenému ID Connect][open-id-connect].
 
 Přečtěte si další informace o službě Azure AD Integration flow v [dokumentaci k koncepcím Azure Active Directory Integration](concepts-identity.md#azure-active-directory-integration).
 
 ## <a name="limitations"></a>Omezení 
 
 * Integraci služby Azure AD spravovanou v AKS nejde zakázat.
-* pro integraci služby Azure AD spravovanou v AKS se nepodporují clustery s podporou nerbac.
+* clustery s povolenými neKubernetesmi RBAC se nepodporují pro integraci Azure AD spravovaná AKS.
 * Změna tenanta Azure AD přidruženého k integraci Azure AD spravované v AKS se nepodporuje.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -136,7 +136,7 @@ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster 
 
 ## <a name="enable-aks-managed-azure-ad-integration-on-your-existing-cluster"></a>Povolit integraci služby Azure AD spravovanou v AKS na vašem existujícím clusteru
 
-Integraci služby Azure AD spravovanou v AKS můžete povolit na svém existujícím clusteru s povoleným RBAC. Ujistěte se, že jste nastavili skupinu pro správu tak, aby zůstala v clusteru přístup.
+Integraci služby Azure AD spravovanou v AKS můžete povolit na svém existujícím clusteru s povoleným Kubernetes RBAC. Ujistěte se, že jste nastavili skupinu pro správu tak, aby zůstala v clusteru přístup.
 
 ```azurecli-interactive
 az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad --aad-admin-group-object-ids <id-1> [--aad-tenant-id <id>]

@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak nastavit zobrazení protokolů kontejn
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4966ab0d64745c36ee53f27ba4063714f18e35da
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6fdd2d0a97357a2126ff37c0840b1f7da2859da5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648102"
+ms.locfileid: "94682668"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Jak nastavit funkci živých dat (Preview)
 
@@ -136,7 +136,7 @@ Aby bylo možné získat přístup k funkci živá data (Preview), musí mít ka
 >[!IMPORTANT]
 >Pokud se uživateli, kterému udělíte vazbu RBAC, nachází ve stejném tenantovi Azure AD, přiřaďte oprávnění na základě třídy userPrincipalName. Pokud je uživatel v jiném tenantovi služby Azure AD, dotaz na a použijte vlastnost objectId.
 
-Další nápovědu ke konfiguraci **ClusterRoleBinding** clusteru AKS najdete v tématu [vytvoření vazby RBAC](../../aks/azure-ad-integration-cli.md#create-rbac-binding).
+Další nápovědu ke konfiguraci **ClusterRoleBinding** clusteru AKS najdete v tématu [vytvoření vazby Kubernetes RBAC](../../aks/azure-ad-integration-cli.md#create-kubernetes-rbac-binding).
 
 ## <a name="next-steps"></a>Další kroky
 

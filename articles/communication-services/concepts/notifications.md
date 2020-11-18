@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3e68e65a5c2ed73a8fb6d8e5d01c645e05ca5157
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b368048e5ea34ebfc073b1ae239cbb40724ae393
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320707"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684368"
 ---
 # <a name="communication-services-notifications"></a>Oznámení služby Communication Services
 
@@ -36,7 +36,7 @@ Přečtěte si další informace o [zpracování událostí v komunikačních sl
 
 Centrum oznámení Azure můžete připojit ke zdroji komunikačních služeb, aby bylo možné automaticky odesílat nabízená oznámení do mobilního zařízení uživatele, když obdrží příchozí volání. Tato nabízená oznámení byste měli použít k probuzení aplikace z uživatelského rozhraní na pozadí a zobrazovaného uživatelského rozhraní, které umožňuje uživateli přijmout nebo odmítnout volání. 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Diagram znázorňující, jak se komunikační služby integrují s Event Grid.":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Diagram znázorňující, jak se komunikační služby integrují do centra oznámení Azure.":::
 
 Komunikační služby využívají Azure Notification hub jako předávací službu ke komunikaci s různými službami nabízených oznámení specifických pro konkrétní platformu pomocí rozhraní API pro [přímé odesílání](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) . Díky tomu můžete znovu použít stávající prostředky a konfigurace centra oznámení Azure pro zajištění nízké latence a spolehlivého volání oznámení vašim aplikacím.
 
@@ -53,7 +53,8 @@ Pokud chcete odesílat nabízená oznámení do klientských zařízení pomocí
 Jakmile je vaše centrum oznámení nakonfigurované, můžete ho přidružit k vašemu prostředku komunikačních služeb zadáním připojovacího řetězce pro centrum pomocí klienta Azure Resource Manager nebo prostřednictvím Azure Portal. Připojovací řetězec by měl obsahovat oprávnění Send (Odeslat). Doporučujeme vytvořit další zásadu přístupu s oprávněním Send jenom pro vaše centrum. Další informace o [Notification Hubs zásadách zabezpečení a přístupu](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security)
 
 > [!IMPORTANT]
-> Aby bylo možné povolit Apple Push Notification Service oznámení VOIP, musíte nastavit název vašeho centra oznámení tak, aby se stal IDENTIFIKÁTORem vašeho aplikačního kompletu s `.voip` příponou. Viz [použití služby APN VoIP prostřednictvím Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
+> To platí jenom pro režim ověřování tokenu. Režim ověřování certifikátu není nyní podporován.  
+Aby bylo možné povolit oznámení služby APN VOIP, je nutné nastavit hodnotu ID sady prostředků při konfiguraci centra oznámení tak, aby se staly IDENTIFIKÁTORem aplikačního sady s `.voip` příponou. Další podrobnosti najdete v tématu [použití služby APN VoIP prostřednictvím Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/voip-apns) .
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Konfigurace centra oznámení pomocí klienta Azure Resource Manager
 
@@ -73,7 +74,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 Na portálu přejděte do svého prostředku služby Azure Communication Services. V rámci prostředku služby Communications Services vyberte nabízená oznámení v levé nabídce stránky komunikační služby a připojte centrum oznámení, které jste zřídili dříve. Sem budete muset zadat připojovací řetězec a ID prostředku:
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Diagram znázorňující, jak se komunikační služby integrují s Event Grid.":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Snímek obrazovky s nastavením nabízených oznámení na webu Azure Portal":::
 
 > [!NOTE]
 > Pokud je připojovací řetězec centra oznámení Azure aktualizovaný, je nutné aktualizovat také prostředek komunikačních služeb.

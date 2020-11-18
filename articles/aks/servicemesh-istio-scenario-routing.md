@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 69541ec652188bc3826b7829fbc5c182193d6ba9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d66f3099ba225fbdd2bfc3d54db56ffd8ed2c43f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670936"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684028"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Použití inteligentního směrování a Kanárských verzí s Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -33,13 +33,13 @@ V tomto článku získáte informace o těchto tématech:
 > [!NOTE]
 > Tento scénář byl testován proti verzi Istio `1.3.2` .
 
-Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a vyšší s povoleným RBAC) a navázali jste `kubectl` připojení ke clusteru. Ve svém clusteru budete taky muset nainstalovat Istio.
+Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a vyšší s povoleným KUBERNETES RBAC) a navázali jste `kubectl` připojení ke clusteru. Ve svém clusteru budete taky muset nainstalovat Istio.
 
 Pokud potřebujete pomoc s kteroukoli z těchto položek, přečtěte si [rychlý Start AKS][aks-quickstart] a [nainstalujte Istio v][istio-install] tématu pokyny pro AKS.
 
 ## <a name="about-this-application-scenario"></a>O tomto scénáři aplikace
 
-Ukázková hlasovací aplikace AKS poskytuje uživatelům dvě možnosti hlasování ( **kočky** nebo **psi** ). Existuje součást úložiště, která uchovává počet hlasů pro jednotlivé možnosti. Kromě toho existuje analytická komponenta, která poskytuje podrobné informace o přetypování hlasů pro jednotlivé možnosti.
+Ukázková hlasovací aplikace AKS poskytuje uživatelům dvě možnosti hlasování (**kočky** nebo **psi**). Existuje součást úložiště, která uchovává počet hlasů pro jednotlivé možnosti. Kromě toho existuje analytická komponenta, která poskytuje podrobné informace o přetypování hlasů pro jednotlivé možnosti.
 
 V tomto scénáři aplikace začnete nasazením verze `1.0` hlasovací aplikace a verze `1.0` součásti Analytics. Komponenta Analytics poskytuje pro počet hlasů jednoduché počty. Komponenta pro hlasovací aplikace a analýzy spolupracuje s verzí `1.0` komponenty úložiště, která je zajištěná Redis.
 

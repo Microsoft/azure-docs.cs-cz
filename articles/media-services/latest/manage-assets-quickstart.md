@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 6b4373efc4979900e676257cc0b2748145165499
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0793c8abee27ca415feba313efb029daf092bec9
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91261409"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683008"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Rychlý Start: nahrání, kódování a streamování obsahu pomocí portálu
 
@@ -27,7 +27,7 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
 * Pokud chcete začít spravovat, šifrovat, kódovat, analyzovat a streamovat mediální obsah v Azure, musíte vytvořit účet Media Services a nahrát vysoce kvalitní digitální mediální soubor do **assetu**. 
     
     > [!NOTE]
-    > Pokud se vaše video dřív nahrálo na účet Media Services pomocí rozhraní Media Services V3 API nebo se obsah vygeneroval na základě živého výstupu, neuvidíte v Azure Portal tlačítka **kódování**, **Analýza**ani **šifrování** . K provedení těchto úloh použijte rozhraní API Media Services V3.
+    > Pokud se vaše video dřív nahrálo na účet Media Services pomocí rozhraní Media Services V3 API nebo se obsah vygeneroval na základě živého výstupu, neuvidíte v Azure Portal tlačítka **kódování**, **Analýza** ani **šifrování** . K provedení těchto úloh použijte rozhraní API Media Services V3.
 
     Zkontrolujte následující: 
 
@@ -40,7 +40,7 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
         V současné době při použití Azure Portal můžete provést následující: vygenerujte soubory titulků TTML a WebVTT. Soubory v těchto formátech lze použít k zpřístupnění zvukových souborů a videosouborů lidem s postižením sluchu. Můžete také extrahovat klíčová slova z vašeho obsahu.
 
         Pro bohatou práci, která umožňuje extrahovat přehledy z vašich videosouborů a zvukových souborů, použijte přednastavení Media Services V3 (jak je popsáno v tématu [kurz: analýza videí pomocí Media Services V3](analyze-videos-tutorial-with-api.md)). <br/>Pokud potřebujete podrobnější přehled, použijte [video indexer](../video-indexer/index.yml) přímo.    
-* Po zpracování obsahu můžete multimediální obsah doručovat přehrávačům klientů. Chcete-li zpřístupnit video výstupnímu prostředku pro klienty pro přehrávání, je nutné vytvořit **Lokátor streamování**. Při vytváření **lokátoru streamování**je potřeba zadat **zásady streamování**. **Zásady streamování** umožňují definovat protokoly streamování a možnosti šifrování (pokud existují) pro vaše **Lokátory streamování**.
+* Po zpracování obsahu můžete multimediální obsah doručovat přehrávačům klientů. Chcete-li zpřístupnit video výstupnímu prostředku pro klienty pro přehrávání, je nutné vytvořit **Lokátor streamování**. Při vytváření **lokátoru streamování** je potřeba zadat **zásady streamování**. **Zásady streamování** umožňují definovat protokoly streamování a možnosti šifrování (pokud existují) pro vaše **Lokátory streamování**.
     
     Zrevidujte
 
@@ -50,11 +50,11 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
     * [Filtry](filters-concept.md)
 * Svůj obsah můžete chránit šifrováním pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo/a kteréhokoliv ze tří hlavních systémů DRM: Microsoft PlayReady, Google Widevine a Apple FairPlay. [Šifrování obsahu pomocí Azure Portal](encrypt-content-quickstart.md) rychlý Start ukazuje, jak nakonfigurovat ochranu obsahu.
         
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[Vytvoření účtu Media Services](create-account-howto.md#use-the-azure-portal)
+[Vytvoření účtu Media Services](create-account-howto.md)
 
 ## <a name="upload"></a>Nahrávání
 

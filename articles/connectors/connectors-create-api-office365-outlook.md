@@ -1,39 +1,36 @@
 ---
-title: Připojení k Office 365 Outlooku
+title: Integrace s Office 365 Outlookem
 description: Automatizace úloh a pracovních postupů, které spravují e-maily, kontakty a kalendáře v Office 365 Outlooku pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 9b10778e665675e9e033953e2a8b9df16dd636d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9caf69a7f78c7872f0a5f8a2ed07bdc749a29023
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400770"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682991"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Správa e-mailů, kontaktů a kalendářů v Office 365 Outlooku s využitím Azure Logic Apps
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Office 365 Outlook](/connectors/office365connector/)můžete vytvářet automatizované úlohy a pracovní postupy, které spravují svůj pracovní nebo školní účet pomocí vytváření Logic Apps. Tyto úlohy můžete automatizovat například takto:
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Office 365 Outlook](/connectors/office365connector/)můžete vytvářet automatizované úlohy a pracovní postupy, které spravují svůj pracovní nebo školní účet pomocí vytváření Logic Apps. Můžete automatizovat třeba tyto úlohy:
 
-* Získání, odeslání a odpověď na e-mail. 
+* Získání, odeslání a odpověď na e-mail.
 * Naplánujte schůzky v kalendáři.
-* Přidávání a úpravy kontaktů. 
+* Přidávání a úpravy kontaktů.
 
-Libovolný Trigger můžete použít ke spuštění pracovního postupu, například při přijetí nového e-mailu, při aktualizaci položky kalendáře nebo při výskytu události v rozdílové službě, jako je například Salesforce. Můžete použít akce, které reagují na událost triggeru, například odeslat e-mail nebo vytvořit novou událost v kalendáři. 
-
-> [!NOTE]
-> K automatizaci úloh pro @outlook.com @hotmail.com účet nebo použijte [konektor Outlook.com](../connectors/connectors-create-api-outlook.md).
+Libovolný Trigger můžete použít ke spuštění pracovního postupu, například při přijetí nového e-mailu, při aktualizaci položky kalendáře nebo při výskytu události v rozdílové službě, jako je například Salesforce. Můžete použít akce, které reagují na událost triggeru, například odeslat e-mail nebo vytvořit novou událost v kalendáři.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Účet Outlooku, ke kterému se přihlašujete pomocí [pracovního nebo školního účtu](https://www.office.com/). Pokud máte @outlook.com @hotmail.com účet nebo, použijte místo toho [konektor Outlook.com](../connectors/connectors-create-api-outlook.md) . Pokud se chcete připojit k Outlooku pomocí jiného uživatelského účtu, jako je třeba účet služby, přečtěte si téma [připojení pomocí dalších účtů](#connect-using-other-accounts).
 
-* [Pracovní nebo školní účet](https://www.office.com/)
+* Účet a předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Aplikace logiky, ke které chcete získat přístup k pracovnímu nebo školnímu účtu. Abyste mohli pracovní postup spustit pomocí triggeru Office 365 Outlooku, musíte mít [prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Chcete-li do pracovního postupu přidat akci sady Office 365 Outlook, aplikace logiky musí mít již Trigger.
+* Aplikace logiky, ke které chcete získat přístup k účtu Outlook. Abyste mohli pracovní postup spustit pomocí triggeru Office 365 Outlooku, musíte mít [prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Chcete-li do pracovního postupu přidat akci sady Office 365 Outlook, aplikace logiky musí mít již Trigger.
 
 ## <a name="add-a-trigger"></a>Přidání triggeru
 
@@ -45,7 +42,7 @@ Libovolný Trigger můžete použít ke spuštění pracovního postupu, napří
    
    ![Výběr triggeru pro spuštění aplikace logiky](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
-1. Pokud se zobrazí výzva k přihlášení, zadejte své pracovní nebo školní přihlašovací údaje, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech triggeru.
+1. Pokud nemáte aktivní připojení k účtu Outlooku, budete vyzváni k přihlášení a vytvoření tohoto připojení. Pokud se chcete připojit k Outlooku pomocí jiného uživatelského účtu, jako je třeba účet služby, přečtěte si téma [připojení pomocí dalších účtů](#connect-using-other-accounts). V opačném případě zadejte informace o vlastnostech triggeru.
 
    > [!NOTE]
    > Vaše připojení nevyprší, dokud nebude zrušeno, a to ani v případě, že změníte přihlašovací údaje pro přihlášení. Další informace najdete v tématu [konfigurovatelné životnosti tokenů v Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md).
@@ -56,7 +53,7 @@ Libovolný Trigger můžete použít ke spuštění pracovního postupu, napří
 
 1. V aktivační události nastavte hodnoty **frekvence** a **interval** . Chcete-li přidat další dostupné vlastnosti triggeru, jako je například **časové pásmo**, vyberte tyto vlastnosti ze seznamu **Přidat nový parametr** .
 
-   Například pokud chcete, aby Trigger kontroloval kalendář každých 15 minut, nastavte **četnost** na **minuty**a nastavte **interval** na `15` . 
+   Například pokud chcete, aby Trigger kontroloval kalendář každých 15 minut, nastavte **četnost** na **minuty** a nastavte **interval** na `15` . 
 
    ![Nastavte četnost a interval pro aktivační událost.](./media/connectors-create-api-office365-outlook/calendar-settings.png)
 
@@ -78,7 +75,7 @@ Teď přidejte akci, která se spustí po aktivování triggeru. Můžete např�
 
    ![Vyberte akci, která se má spustit v aplikaci logiky.](./media/connectors-create-api-office365-outlook/office365-actions.png) 
 
-1. Pokud se zobrazí výzva k přihlášení, zadejte své pracovní nebo školní přihlašovací údaje, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech akce.
+1. Pokud nemáte aktivní připojení k účtu Outlooku, budete vyzváni k přihlášení a vytvoření tohoto připojení. Pokud se chcete připojit k Outlooku pomocí jiného uživatelského účtu, jako je třeba účet služby, přečtěte si téma [připojení pomocí dalších účtů](#connect-using-other-accounts). V opačném případě zadejte informace o vlastnostech akce.
 
    > [!NOTE]
    > Vaše připojení nevyprší, dokud nebude zrušeno, a to ani v případě, že změníte přihlašovací údaje pro přihlášení. Další informace najdete v tématu [konfigurovatelné životnosti tokenů v Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md).
@@ -90,6 +87,28 @@ Teď přidejte akci, která se spustí po aktivování triggeru. Můžete např�
    Chcete-li přidat další dostupné vlastnosti akce, vyberte tyto vlastnosti ze seznamu **Přidat nový parametr** .
 
 1. Na panelu nástrojů návrháře vyberte **Uložit**.
+
+<a name="connect-using-other-accounts"></a>
+
+## <a name="connect-using-other-accounts"></a>Připojení pomocí jiných účtů
+
+Pokud se pokusíte připojit k Outlooku pomocí jiného účtu, než který je aktuálně přihlášený k Azure, může dojít k chybám [jednotného přihlašování (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) . K tomuto problému dochází, když se přihlásíte k Azure Portal pomocí jednoho účtu, ale k vytvoření připojení použijete jiný účet. Návrhář aplikace logiky očekává použití účtu, který je přihlášený k Azure. K vyřešení tohoto problému máte tyto možnosti:
+
+* Nastavte druhý účet jako **Přispěvatel** na skupinu prostředků vaší aplikace logiky.
+
+  1. V nabídce skupiny prostředků vaší aplikace logiky vyberte **řízení přístupu (IAM)**. Nastavte druhý účet pomocí role **Přispěvatel** . Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
+
+  1. Pokud jste se k Azure Portal přihlásili pomocí svého pracovního nebo školního účtu, odhlaste se a znovu se přihlaste pomocí svého jiného účtu. Nyní můžete vytvořit připojení k aplikaci Outlook pomocí druhého účtu.
+
+* Nastavte druhý účet tak, aby váš pracovní nebo školní účet měl oprávnění Odeslat jako.
+
+   Pokud máte oprávnění správce, v poštovní schránce účtu služby nastavte svůj pracovní nebo školní účet s oprávněním **Odeslat** nebo **Odeslat jménem** . Další informace najdete v tématu [udělení oprávnění k poštovní schránce pro jinou nápovědu pro správce uživatele](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user). Pak můžete vytvořit připojení pomocí svého pracovního nebo školního účtu. Nyní můžete v aktivačních událostech nebo akcích, kde můžete zadat odesílatele, použít e-mailovou adresu účtu služby.
+
+   Například akce **Odeslat e-mail** má volitelný parametr **from (Odeslat jako)**, který můžete přidat do akce a jako odesílatele použít e-mailovou adresu účtu služby. Chcete-li přidat tento parametr, postupujte podle následujících kroků:
+
+   1. V akci **Odeslat e-mail** otevřete seznam **Přidat parametr** a vyberte parametr **od (Odeslat jako)** .
+
+   1. Po zobrazení parametru v akci zadejte e-mailovou adresu účtu služby.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 

@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro postup správy zabezpečen
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 9cb51cb0f5b902553bda0b881c8392d74905c4bc
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 9ef019e682511e13af46194d26aec48c1555f70e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073627"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683297"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení a upgrady clusterů ve službě Azure Kubernetes Service (AKS)
 
@@ -19,7 +19,7 @@ Při správě clusterů ve službě Azure Kubernetes Service (AKS) je důležit�
 Tento článek se zaměřuje na zabezpečení clusteru AKS. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Použití Azure Active Directory a řízení přístupu na základě role (RBAC) k zabezpečení přístupu k serveru rozhraní API
+> * Použití Azure Active Directory a Kubernetes řízení přístupu na základě role (Kubernetes RBAC) k zabezpečení přístupu k serveru rozhraní API
 > * Zabezpečený přístup k prostředkům uzlů v kontejneru
 > * Upgrade clusteru AKS na nejnovější verzi Kubernetes
 > * Udržování uzlů v aktuálním stavu a automatické použití oprav zabezpečení
@@ -30,7 +30,7 @@ Můžete si také přečíst osvědčené postupy pro [správu imagí kontejner�
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Zabezpečený přístup k serveru rozhraní API a uzlům clusteru
 
-**Pokyny k osvědčeným postupům** – zabezpečení přístupu k Kubernetes API-Server je jedním z nejdůležitějších věcí, které můžete provést pro zabezpečení clusteru. Integrujte Kubernetes řízení přístupu na základě role (RBAC) s Azure Active Directory k řízení přístupu k serveru rozhraní API. Tyto ovládací prvky vám umožní zabezpečit AKS stejným způsobem jako při zabezpečení přístupu k předplatným Azure.
+**Pokyny k osvědčeným postupům** – zabezpečení přístupu k Kubernetes API-Server je jedním z nejdůležitějších věcí, které můžete provést pro zabezpečení clusteru. Integrujte Kubernetes řízení přístupu založeného na rolích (Kubernetes RBAC) s Azure Active Directory k řízení přístupu k serveru rozhraní API. Tyto ovládací prvky vám umožní zabezpečit AKS stejným způsobem jako při zabezpečení přístupu k předplatným Azure.
 
 Server Kubernetes API poskytuje jeden spojovací bod pro požadavky na provádění akcí v rámci clusteru. Pokud chcete zabezpečit a auditovat přístup k serveru rozhraní API, omezte přístup a poskytněte minimální požadovaná oprávnění přístupu. Tento přístup není jedinečný pro Kubernetes, ale je obzvláště důležitý, když je cluster AKS logicky izolovaný pro víceklientské použití.
 
@@ -38,11 +38,11 @@ Azure Active Directory (AD) poskytuje řešení pro správu identit připravené
 
 ![Integrace Azure Active Directory pro clustery AKS](media/operator-best-practices-cluster-security/aad-integration.png)
 
-Použijte Kubernetes RBAC a Azure AD – Integration Server rozhraní API a poskytněte minimální počet oprávnění vyžadovaných pro množinu prostředků, jako je například jeden obor názvů. Různým uživatelům nebo skupinám ve službě Azure AD se dají udělit různé role RBAC. Tato podrobná oprávnění umožňují omezit přístup k serveru rozhraní API a poskytnout jasný záznam pro audit provedených akcí.
+Použijte Kubernetes RBAC a Azure AD – Integration Server rozhraní API a poskytněte minimální počet oprávnění vyžadovaných pro množinu prostředků, jako je například jeden obor názvů. Různým uživatelům nebo skupinám ve službě Azure AD se dají udělit různé role Kubernetes. Tato podrobná oprávnění umožňují omezit přístup k serveru rozhraní API a poskytnout jasný záznam pro audit provedených akcí.
 
-Doporučený postup je použít skupiny k poskytnutí přístupu k souborům a složkám proti jednotlivým identitám. členství ve *skupině* Azure AD můžete použít ke svázání uživatelů s rolemi RBAC, nikoli jednotlivými *uživateli*. Jako změny členství ve skupinách uživatelů se jejich přístupová oprávnění v clusteru AKS mění odpovídajícím způsobem. Pokud uživatele svážete přímo s rolí, může se změnit jeho funkce úlohy. Členství ve skupině Azure AD by se aktualizovalo, ale oprávnění v clusteru AKS to nereflektují. V tomto scénáři se uživateli ukončí udělování dalších oprávnění, než kolik jich uživatel vyžaduje.
+Doporučený postup je použít skupiny k poskytnutí přístupu k souborům a složkám proti jednotlivým identitám. členství ve *skupině* Azure AD můžete použít ke svázání uživatelů s rolemi Kubernetes, nikoli jednotlivými *uživateli*. Jako změny členství ve skupinách uživatelů se jejich přístupová oprávnění v clusteru AKS mění odpovídajícím způsobem. Pokud uživatele svážete přímo s rolí, může se změnit jeho funkce úlohy. Členství ve skupině Azure AD by se aktualizovalo, ale oprávnění v clusteru AKS to nereflektují. V tomto scénáři se uživateli ukončí udělování dalších oprávnění, než kolik jich uživatel vyžaduje.
 
-Další informace o integraci a RBAC služby Azure AD najdete v tématu [osvědčené postupy pro ověřování a autorizaci v AKS][aks-best-practices-identity].
+Další informace o integraci Azure AD, Kubernetes RBAC a Azure RBAC najdete v tématu [osvědčené postupy pro ověřování a autorizaci v AKS][aks-best-practices-identity].
 
 ## <a name="secure-container-access-to-resources"></a>Zabezpečený přístup k prostředkům kontejneru
 
@@ -53,7 +53,7 @@ Stejným způsobem, jako byste měli udělit uživatelům nebo skupinám nejmen�
 Pro podrobnější kontrolu nad akcemi kontejneru můžete použít také integrované funkce zabezpečení pro Linux, jako je *AppArmor* a *seccomp*. Tyto funkce jsou definovány na úrovni uzlu a následně implementovány prostřednictvím manifestu pod. Integrované funkce zabezpečení pro Linux jsou dostupné jenom v uzlech a luskech systému Linux.
 
 > [!NOTE]
-> Prostředí Kubernetes, v AKS nebo jinde, nejsou zcela bezpečná pro nepřátelský využití více tenantů. Další funkce zabezpečení, jako jsou *AppArmor*, *seccomp*, *pod, zásady zabezpečení*nebo podrobnější řízení přístupu na základě role (RBAC) pro uzly, jsou zneužití obtížnější. Pro skutečné zabezpečení při spouštění nepřátelských úloh s více klienty však je hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se bude nacházet v celém clusteru, nikoli v jednotlivých uzlech. U těchto typů nepřátelských úloh s více klienty byste měli použít fyzicky izolované clustery.
+> Prostředí Kubernetes, v AKS nebo jinde, nejsou zcela bezpečná pro nepřátelský využití více tenantů. Další funkce zabezpečení, jako jsou *AppArmor*, *seccomp*, *pod, zásady zabezpečení* nebo pokročilejší řízení přístupu na základě role Kubernetes (Kubernetes RBAC) pro uzly, jsou zneužití obtížnější. Pro skutečné zabezpečení při spouštění nepřátelských úloh s více klienty však je hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se bude nacházet v celém clusteru, nikoli v jednotlivých uzlech. U těchto typů nepřátelských úloh s více klienty byste měli použít fyzicky izolované clustery.
 
 ### <a name="app-armor"></a>Obraně aplikace
 
@@ -117,7 +117,7 @@ Další informace o AppArmor najdete v tématu [profily AppArmor v Kubernetes][k
 
 ### <a name="secure-computing"></a>Zabezpečené výpočetní prostředí
 
-I když AppArmor funguje pro libovolnou aplikaci pro Linux, na úrovni procesu funguje [seccomp (*sec*urovat *comp*uting)][seccomp] . Seccomp je také modul zabezpečení jádra pro Linux a nativně se podporuje za běhu Docker, který používají uzly AKS. V seccomp proces volá tyto kontejnery, které mohou být provedeny. Vytvoříte filtry, které definují akce, které se mají povolit nebo zakázat, a pak pomocí poznámek v rámci manifestu pod YAML přiřadíte k filtru seccomp. To je v souladu s osvědčeným postupem pouze pro udělení minimálních oprávnění, která jsou potřeba ke spuštění, a žádné další.
+I když AppArmor funguje pro libovolnou aplikaci pro Linux, na úrovni procesu funguje [seccomp (*sec* urovat *comp* uting)][seccomp] . Seccomp je také modul zabezpečení jádra pro Linux a nativně se podporuje za běhu Docker, který používají uzly AKS. V seccomp proces volá tyto kontejnery, které mohou být provedeny. Vytvoříte filtry, které definují akce, které se mají povolit nebo zakázat, a pak pomocí poznámek v rámci manifestu pod YAML přiřadíte k filtru seccomp. To je v souladu s osvědčeným postupem pouze pro udělení minimálních oprávnění, která jsou potřeba ke spuštění, a žádné další.
 
 Chcete-li zobrazit seccomp v akci, vytvořte filtr, který zabrání změně oprávnění k souboru. [SSH][aks-ssh] na uzel AKS a pak vytvořte filtr seccomp s názvem */var/lib/kubelet/seccomp/Prevent-chmod* a vložte následující obsah:
 

@@ -8,22 +8,18 @@ ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 1efd4baf80c9ba30b1d1ea35390386bc4e7659d3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 661d4ba575eafa4e261a1c92c1112a259b95eac7
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747785"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683587"
 ---
 # <a name="enable-shared-disk"></a>Povolení sdíleného disku
 
 Tento článek popisuje, jak povolit funkci sdílené disky pro službu Azure Managed disks. Sdílené disky Azure jsou novou funkcí pro služby Azure Managed disks, která umožňuje současně připojit spravovaný disk k několika virtuálním počítačům (VM). Připojení spravovaného disku k několika virtuálním počítačům vám umožní nasadit do Azure nové nebo migrovat existující clusterové aplikace. 
 
-Pokud hledáte koncepční informace o spravovaných discích, které mají povolené sdílené disky, přečtěte si téma:
-
-* Pro Linux: [sdílené disky Azure](linux/disks-shared.md)
-
-* Pro Windows: [sdílené disky Azure](windows/disks-shared.md)
+Pokud hledáte koncepční informace o spravovaných discích, které mají povolené sdílené disky, přečtěte si téma [sdílené disky Azure](disks-shared.md).
 
 ## <a name="limitations"></a>Omezení
 

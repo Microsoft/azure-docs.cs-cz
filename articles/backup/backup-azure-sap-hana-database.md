@@ -3,12 +3,12 @@ title: Zálohování databáze SAP HANA do Azure s využitím Azure Backup
 description: V tomto článku se dozvíte, jak zálohovat databázi SAP HANA do virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 28c9716bfb2dd0a6ac380d9ffd6dcd7fd5eb4978
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f7957670b3ba98c640ebc53c6427273ca75a4e6d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649431"
+ms.locfileid: "94682841"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -144,7 +144,7 @@ Nastavení zásad určete následujícím způsobem:
 1. Do pole **Název zásad** zadejte název nových zásad.
 
    ![Zadejte název zásady.](./media/backup-azure-sap-hana-database/policy-name.png)
-2. V části **Zásady úplného zálohování** vyberte **frekvenci zálohování** – zvolte **Denní** nebo **Týdenní**.
+1. V části **Zásady úplného zálohování** vyberte **frekvenci zálohování** – zvolte **Denní** nebo **Týdenní**.
    * **Denně**: vyberte hodinu a časové pásmo, ve kterém se spustí úloha zálohování.
        * Musíte spustit úplnou zálohu. Tuto možnost nemůžete vypnout.
        * Zásady zobrazíte výběrem možnosti **Úplné zálohování**.
@@ -153,16 +153,16 @@ Nastavení zásad určete následujícím způsobem:
 
    ![Vybrat četnost zálohování](./media/backup-azure-sap-hana-database/backup-frequency.png)
 
-3. V části **Rozsah uchování** nakonfigurujte nastavení uchovávání pro úplnou zálohu.
+1. V části **Rozsah uchování** nakonfigurujte nastavení uchovávání pro úplnou zálohu.
     * Ve výchozím nastavení jsou vybrány všechny možnosti. Vymažte všechny limity rozsahu uchování, které nechcete používat, a nastavte ty, které chcete provést.
     * Minimální doba uchování pro jakýkoli typ zálohy (úplný/rozdíl/protokol) je sedm dní.
     * Body obnovení se označují pro uchovávání na základě jejich rozsahu uchovávání. Například pokud vyberete denní úplné zálohování, každý den se aktivuje pouze jedno úplné zálohování.
     * Záloha pro určitý den je označená a zachovaná na základě rozsahu a nastavení týdenního uchování.
     * Měsíční a roční rozsahy uchovávání se chovají podobným způsobem.
 
-4. V nabídce **Zásady úplného zálohování** výběrem možnosti **OK** přijměte nastavení.
-5. Pokud chcete přidat rozdílové zásady, vyberte **rozdílové zálohování** .
-6. V části **Zásady rozdílového zálohování** výběrem možnosti **Povolit** otevřete ovládací prvky frekvence a uchovávání.
+1. V nabídce **Zásady úplného zálohování** výběrem možnosti **OK** přijměte nastavení.
+1. Pokud chcete přidat rozdílové zásady, vyberte **rozdílové zálohování** .
+1. V části **Zásady rozdílového zálohování** výběrem možnosti **Povolit** otevřete ovládací prvky frekvence a uchovávání.
     * Maximálně můžete aktivovat jedno rozdílové zálohování za den.
     * Rozdílové zálohy je možné uchovávat maximálně po dobu 180 dnů. Pokud potřebujete delší dobu uchovávání, musíte použít úplné zálohování.
 
@@ -170,22 +170,22 @@ Nastavení zásad určete následujícím způsobem:
 
     > [!NOTE]
     > Přírůstkové zálohování se teď ve verzi Public Preview podporuje. Můžete zvolit buď rozdílovou, nebo přírůstkovou, jako denní zálohu, ale ne obojí.
-7. V části **zásady přírůstkového zálohování** vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování.
+1. V části **zásady přírůstkového zálohování** vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování.
     * Ve většině případů můžete aktivovat jednu přírůstkovou zálohu za den.
     * Přírůstkové zálohování lze uchovávat maximálně po dobu 180 dnů. Pokud potřebujete delší dobu uchovávání, musíte použít úplné zálohování.
 
     ![Zásady přírůstkového zálohování](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
 
-7. Výběrem možnosti **OK** zásady uložte a vraťte se do hlavní nabídky **Zásady zálohování**.
-8. Vyberte **zálohování protokolu** a přidejte zásady zálohování transakčního protokolu.
+1. Výběrem možnosti **OK** zásady uložte a vraťte se do hlavní nabídky **Zásady zálohování**.
+1. Vyberte **zálohování protokolu** a přidejte zásady zálohování transakčního protokolu.
     * V případě **zálohování protokolu** vyberte **Povolit**.  Toto nejde zakázat, protože SAP HANA spravuje všechny zálohy protokolů.
     * Nastavte četnost a ovládací prvky uchování.
 
     > [!NOTE]
     > Zálohy protokolu se začnou přesměrovat až po úspěšném úplném zálohování.
 
-9. Výběrem možnosti **OK** zásady uložte a vraťte se do hlavní nabídky **Zásady zálohování**.
-10. Po dokončení definování zásad zálohování vyberte **OK**.
+1. Výběrem možnosti **OK** zásady uložte a vraťte se do hlavní nabídky **Zásady zálohování**.
+1. Po dokončení definování zásad zálohování vyberte **OK**.
 
 > [!NOTE]
 > Každá záloha protokolu je zřetězena k předchozí úplné záloze, aby mohla tvořit řetěz obnovení. Tato úplná záloha se zachová, dokud neuplyne doba uchovávání poslední zálohy protokolu. To může znamenat, že úplná záloha se uchovává po dobu dalších let, aby se zajistilo, že se všechny protokoly mají obnovit. Řekněme, že uživatel má týdenní úplnou zálohu, denní rozdílovou a 2 hodinový protokol. Všechny z nich se uchovávají po dobu 30 dnů. Ale každý týden plný může být skutečně vyčištěn nebo odstraněn až po nejbližším úplném zálohování, tj. po dobu 30 až 7 dnů. Například týdenní úplné zálohování nastane na 16. listopadu. Podle zásad uchovávání informací by se měla uchovávat až do prosince 16. Poslední záloha protokolu pro tuto úplnou zálohu proběhne před dalším naplánovaným úplným 22. listopadu. Dokud nebude tento protokol k dispozici do prosince 22, nelze odstranit jeho plný 16. To znamená, že do prosince 22 se zachovají až do 16. listopadu.

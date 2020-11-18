@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1af2e741b2ab8a6a0aa6257272798961f5962c43
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 4538654b255aad99ff00477134c9eeb5845e50d6
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167334"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682753"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Příprava infrastruktury Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS
 
@@ -165,7 +165,7 @@ ms.locfileid: "92167334"
 Tento článek popisuje kroky, které můžete provést při přípravě infrastruktury Azure pro instalaci a konfiguraci instance SAP ASCS/SCS s vysokou dostupností v clusteru Windows s podporou převzetí služeb při selhání pomocí *sdíleného disku clusteru* jako možnosti CLUSTERINGU instance SAP ASCS.
 V dokumentaci se zobrazí dvě alternativy pro *sdílený disk clusteru* :
 
-- [Sdílené disky Azure](../../windows/disks-shared.md)
+- [Sdílené disky Azure](../../disks-shared.md)
 - Vytvoření zrcadleného úložiště s využitím s využitím s využitím s [DataKeeper Edition](https://us.sios.com/products/datakeeper-cluster/) pro simulaci sdíleného disku v clusteru 
 
 Uvedená konfigurace se spoléhá na [skupiny umístění v blízkosti Azure (PPG)](./sap-proximity-placement-scenarios.md) , aby dosáhly optimální latence sítě pro úlohy SAP. Dokumentace nepokrývá databázovou vrstvu.  
@@ -174,7 +174,7 @@ Uvedená konfigurace se spoléhá na [skupiny umístění v blízkosti Azure (PP
 > Skupiny umístění v blízkosti Azure jsou předpokladem pro použití sdíleného disku Azure.
  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s instalací, přečtěte si tento článek:
 
@@ -213,16 +213,16 @@ Následující seznam uvádí konfiguraci nástroje pro vyrovnávání zatížen
 - Konfigurace back-endu  
     Přidejte všechny virtuální počítače, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH. V tomto příkladu jsou virtuální počítače **PR1-ASCS-10** a **PR1-ASCS-11**.
 - Port testu paměti
-    - Port 620**Nr** opouští výchozí možnost protokolu (TCP), intervalu (5), prahové hodnoty v pořádku (2)
+    - Port 620 **Nr** opouští výchozí možnost protokolu (TCP), intervalu (5), prahové hodnoty v pořádku (2)
 - Pravidla vyrovnávání zatížení
     - Pokud používáte Standard Load Balancer, vyberte porty HA.
     - Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
-        - 32**Nr** TCP
-        - 36**Nr** TCP
-        - 39**Nr** TCP
-        - 81**Nr** TCP
-        - 5**Nr**13 TCP
-        - 5**Nr**14 TCP
+        - 32 **Nr** TCP
+        - 36 **Nr** TCP
+        - 39 **Nr** TCP
+        - 81 **Nr** TCP
+        - 5 **Nr** 13 TCP
+        - 5 **Nr** 14 TCP
         - 5 **.** 16 TCP
 
     - Ujistěte se, že časový limit nečinnosti (v minutách) je nastavený na maximální hodnotu 30 a že je povolená plovoucí IP adresa (přímá odpověď serveru).
@@ -237,16 +237,16 @@ Jako cluster replikace ERS2 (Replication Server 2) je také nutné nakonfigurova
   Virtuální počítače se už přidaly do back-endu interního nástroje fondu.  
 
 - druhý port testu paměti
-    - Port 621**Nr**  
+    - Port 621 **Nr**  
     Ponechte výchozí možnost protokolu (TCP), interval (5), mezní hodnota není v pořádku (2).
 
 - Druhá pravidla vyrovnávání zatížení
     - Pokud používáte Standard Load Balancer, vyberte porty HA.
     - Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
-        - 32**Nr** TCP
-        - 33**Nr** TCP
-        - 5**Nr**13 TCP
-        - 5**Nr**14 TCP
+        - 32 **Nr** TCP
+        - 33 **Nr** TCP
+        - 5 **Nr** 13 TCP
+        - 5 **Nr** 14 TCP
         - 5 **.** 16 TCP
 
     - Ujistěte se, že časový limit nečinnosti (v minutách) je nastavený na maximální hodnotu 30 a že je povolená plovoucí IP adresa (přímá odpověď serveru).

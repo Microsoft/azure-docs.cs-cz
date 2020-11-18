@@ -1,19 +1,19 @@
 ---
 title: Průvodce odstraňováním potíží pro službu Azure SignalR Service
-description: Informace
+description: Zjistěte, jak řešit běžné problémy.
 author: YanJin
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 5b8360134ace3852fb3c7fbe458ca2572f45b624
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 11ea348a80bc226b6a96bea1e7c023ee9c06b13a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663590"
+ms.locfileid: "94684113"
 ---
-# <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
+# <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Průvodce odstraňováním potíží pro běžné problémy služby signalizace Azure
 
 V těchto pokynech je vhodné použít Průvodce odstraňováním potíží na základě běžných problémů, které zákazníci splní a vyřešili v posledních letech.
 
@@ -347,3 +347,9 @@ Vezměte například ASP.NET Core jeden příklad (ASP.NET One je podobný):
 
     * [Klient ASP.NET JavaScript](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
 
+## <a name="next-steps"></a>Další kroky
+
+V této příručce jste se dozvěděli o tom, jak řešit běžné problémy. Můžete si také přečíst obecnější metody řešení potíží. 
+
+> [!div class="nextstepaction"]
+> [Řešení potíží s připojením a doručováním zpráv](./signalr-howto-troubleshoot-method.md)

@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešit problémy a řešit běžné problémy 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: d15e381baf3abdb77f63b17cbd1d33b24f5d3321
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aefb33325c1a5bf8e94d47106147d4c7c4f0f1ca
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286774"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684164"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -46,7 +46,7 @@ V následujících třech případech dojde k chybě nedostatečné velikosti po
    1. Pokud používáte Kubenet, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of buffer nodes needed to upgrade` .
    1. Pokud používáte Azure CNI, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
    
-   Ve výchozím nastavení jsou clustery AKS nastavené na hodnotu maximálního nárůstu (vyrovnávací paměti pro upgrade) jednoho (1), ale toto chování při upgradu se dá přizpůsobit nastavením [maximální hodnoty přetečení fondu uzlů](upgrade-cluster.md#customize-node-surge-upgrade-preview) , která zvýší počet dostupných IP adres potřebných k dokončení upgradu.
+   Ve výchozím nastavení jsou clustery AKS nastavené na hodnotu maximálního nárůstu (vyrovnávací paměti pro upgrade) jednoho (1), ale toto chování při upgradu se dá přizpůsobit nastavením [maximální hodnoty přetečení fondu uzlů](upgrade-cluster.md#customize-node-surge-upgrade) , která zvýší počet dostupných IP adres potřebných k dokončení upgradu.
 
 1. AKS Create nebo AKS Nodepool Add
    1. Pokud používáte Kubenet, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of nodes requested for the node pool` .
@@ -86,13 +86,13 @@ AKS má řídicí plochy vysoké úrovně, které se vertikálně škálují pod
 
 Tyto časové limity můžou souviset s vnitřním přenosem mezi blokovanými uzly. Ověřte, že tento provoz není blokovaný, například [skupiny zabezpečení sítě](concepts-security.md#azure-network-security-groups) v podsíti pro uzly clusteru.
 
-## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>V existujícím clusteru se snažím povolit Role-Based Access Control (RBAC). Jak to můžu udělat?
+## <a name="im-trying-to-enable-kubernetes-role-based-access-control-kubernetes-rbac-on-an-existing-cluster-how-can-i-do-that"></a>V existujícím clusteru se snažím Povolit řízení přístupu na základě role (Kubernetes RBAC) Kubernetes. Jak to můžu udělat?
 
-Povolení řízení přístupu na základě role (RBAC) na existujících clusterech se v tuto chvíli nepodporuje, musí se nastavit při vytváření nových clusterů. Při použití rozhraní příkazového řádku, portálu nebo verze rozhraní API je ve výchozím nastavení povolena RBAC `2020-03-01` .
+Povolení řízení přístupu na základě role (Kubernetes RBAC) v existujících clusterech se v tuto chvíli nepodporuje, musí se nastavit při vytváření nových clusterů. Kubernetes RBAC je ve výchozím nastavení povolena při použití rozhraní příkazového řádku, portálu nebo verze API novější než `2020-03-01` .
 
-## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Vytvořili jste cluster s povoleným RBAC a teď jsem na řídicím panelu Kubernetes spousta upozornění. Řídicí panel, který se používá pro práci bez upozornění. Co bych měl/a dělat?
+## <a name="i-created-a-cluster-with-kubernetes-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Vytvořil (a) jsem cluster s povoleným Kubernetes RBAC a v řídicím panelu Kubernetes se teď zobrazuje spousta upozornění. Řídicí panel, který se používá pro práci bez upozornění. Co bych měl/a dělat?
 
-Důvodem upozornění je, že cluster má zapnutou RBAC a přístup k řídicímu panelu je teď ve výchozím nastavení omezený. Obecně platí, že tento přístup je dobrým zvykem, protože výchozí expozicí řídicího panelu všem uživatelům clusteru může vést k bezpečnostním hrozbám. Pokud přesto chcete řídicí panel povolit, postupujte podle kroků v [tomto blogovém příspěvku](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
+Důvodem upozornění je, že cluster má povolený Kubernetes RBAC a přístup k řídicímu panelu je teď ve výchozím nastavení omezený. Obecně platí, že tento přístup je dobrým zvykem, protože výchozí expozicí řídicího panelu všem uživatelům clusteru může vést k bezpečnostním hrozbám. Pokud přesto chcete řídicí panel povolit, postupujte podle kroků v [tomto blogovém příspěvku](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nemůžu získat protokoly pomocí protokolů kubectl nebo se nemůžu připojit k serveru rozhraní API. Zobrazuje se chyba ze serveru: Chyba při vytáčení back-endu: vytočit TCP... Co bych měl/a dělat?
 
@@ -154,7 +154,7 @@ Abyste mohli správně vytvořit cluster *AKS, postupujte* podle pokynů v pří
 Omezení pojmenování jsou implementovaná platformou Azure i AKS. Pokud název prostředku nebo parametr zruší jedno z těchto omezení, bude vrácena chyba s výzvou k zadání jiného vstupu. Platí následující obecné pokyny pro pojmenovávání:
 
 * Názvy clusterů musí být 1-63 znaků. Jediné povolené znaky jsou písmena, číslice, pomlčky a podtržítka. První a poslední znak musí být písmeno nebo číslo.
-* Název skupiny prostředků AKS uzel/ *MC_* kombinuje název skupiny prostředků a název prostředku. Automaticky vygenerovaná syntaxe `MC_resourceGroupName_resourceName_AzureRegion` nesmí být větší než 80 znaků. V případě potřeby snižte délku názvu skupiny prostředků nebo názvu clusteru AKS. Můžete také [přizpůsobit název skupiny prostředků uzlu](cluster-configuration.md#custom-resource-group-name) .
+* Název skupiny prostředků AKS uzel/*MC_* kombinuje název skupiny prostředků a název prostředku. Automaticky vygenerovaná syntaxe `MC_resourceGroupName_resourceName_AzureRegion` nesmí být větší než 80 znaků. V případě potřeby snižte délku názvu skupiny prostředků nebo názvu clusteru AKS. Můžete také [přizpůsobit název skupiny prostředků uzlu](cluster-configuration.md#custom-resource-group-name) .
 * *Pole dnsprefix* musí začínat a končit alfanumerickými hodnotami a musí mít 1-54 znaků. Mezi platné znaky patří alfanumerické hodnoty a spojovníky (-). *Pole dnsprefix* nemůže obsahovat speciální znaky, jako je například tečka (.).
 * Názvy fondů uzlů AKS musí mít malými písmeny a musí mít 1-11 znaků pro fondy uzlů Linux a 1-6 znaků pro fondy uzlů Windows. Název musí začínat písmenem a jediným povoleným znakem jsou písmena a číslice.
 * *Uživatelské jméno* správce, které nastavuje uživatelské jméno správce pro uzly Linux, musí začínat písmenem, může obsahovat jenom písmena, číslice, spojovníky a podtržítka a maximální délka 64 znaků.
@@ -167,7 +167,7 @@ Operace clusteru jsou omezené, když stále probíhá předchozí operace. Chce
 
 Na základě výstupu stavu clusteru:
 
-* Pokud je cluster v jakémkoli stavu zřizování než *úspěšný* nebo *neúspěšný* , počkejte, než se dokončí operace ( *upgrade/aktualizace/vytvoření/škálování/odstranění/migrace* ). Po dokončení předchozí operace zkuste zopakovat svoji nejnovější operaci clusteru.
+* Pokud je cluster v jakémkoli stavu zřizování než *úspěšný* nebo *neúspěšný*, počkejte, než se dokončí operace (*upgrade/aktualizace/vytvoření/škálování/odstranění/migrace*). Po dokončení předchozí operace zkuste zopakovat svoji nejnovější operaci clusteru.
 
 * Pokud dojde k selhání upgradu clusteru, postupujte podle kroků uvedených v části mi dochází k [chybám, že můj cluster je ve stavu selhání a upgrade nebo škálování nebude fungovat, dokud nebude opraveno](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
 
@@ -365,7 +365,7 @@ Doporučené nastavení:
 | 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 a novější | 0777 |
 
-Možnosti připojení lze zadat u objektu třídy úložiště. Následující příklad nastaví *0777* :
+Možnosti připojení lze zadat u objektu třídy úložiště. Následující příklad nastaví *0777*:
 
 ```yaml
 kind: StorageClass
@@ -388,7 +388,7 @@ parameters:
 Některá další užitečná nastavení *mountOptions* :
 
 * *mfsymlinks* provede podporu protokolu CIFS (Azure Files Mount), která podporuje symbolické odkazy.
-* *nobrl* zabrání odeslání požadavků na zámek rozsahu bajtů do serveru. Toto nastavení je nezbytné pro některé aplikace, které jsou přerušeny pomocí stylu CIFS povinných zámků rozsahu bajtů. Většina serverů CIFS ještě nepodporují požadavky na zámky rozsahu v poradním bajtech. Pokud nepoužíváte *nobrl* , můžou aplikace, které mají přerušení s povinnými zámky rozsahu bajtů, způsobit chybové zprávy podobné:
+* *nobrl* zabrání odeslání požadavků na zámek rozsahu bajtů do serveru. Toto nastavení je nezbytné pro některé aplikace, které jsou přerušeny pomocí stylu CIFS povinných zámků rozsahu bajtů. Většina serverů CIFS ještě nepodporují požadavky na zámky rozsahu v poradním bajtech. Pokud nepoužíváte *nobrl*, můžou aplikace, které mají přerušení s povinnými zámky rozsahu bajtů, způsobit chybové zprávy podobné:
     ```console
     Error: SQLITE_BUSY: database is locked
     ```

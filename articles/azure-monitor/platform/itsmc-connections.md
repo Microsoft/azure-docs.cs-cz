@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 69c8f9f01241100a81ddd1707dbd226e6bf56c2f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a75dd24769a4f1af018981ffcec279afc2a88b5a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089011"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682414"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](./itsmc-overview.md).
@@ -32,7 +32,7 @@ Podporují se tyto ITSM produkty nebo služby. Výběrem produktu zobrazíte pod
 
 Následující části obsahují podrobné informace o tom, jak připojit System Center Service Manager produkt k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -53,11 +53,11 @@ K připojení instance System Center Service Manager k ITSMC použijte následuj
 
 1. V Azure Portal přejít na **všechny prostředky** a vyhledejte **partnera (YourWorkspaceName)** .
 
-2.  V části **zdroje dat pracovního prostoru** klikněte na **připojení ITSM** .
+2.  V části **zdroje dat pracovního prostoru** klikněte na **připojení ITSM**.
 
     ![Nové připojení](media/itsmc-connections/add-new-itsm-connection.png)
 
-3. V horní části pravého podokna klikněte na **Přidat** .
+3. V horní části pravého podokna klikněte na **Přidat**.
 
 4. Zadejte informace, jak je popsáno v následující tabulce, a kliknutím na tlačítko **OK** vytvořte připojení.
 
@@ -68,17 +68,17 @@ K připojení instance System Center Service Manager k ITSMC použijte následuj
 | **Pole** | **Popis** |
 | --- | --- |
 | **Název připojení**   | Zadejte název instance System Center Service Manager, ke které se chcete připojit pomocí ITSMC.  Tento název použijete později při konfiguraci pracovních položek v této instanci nebo zobrazení podrobné Log Analytics. |
-| **Typ partnera**   | Vyberte **System Center Service Manager** . |
+| **Typ partnera**   | Vyberte **System Center Service Manager**. |
 | **Adresa URL serveru**   | Zadejte adresu URL Service Manager webové aplikace. Další informace o Service Manager webové aplikace [najdete tady](#create-and-deploy-service-manager-web-app-service).
 | **ID klienta**   | Zadejte ID klienta, které jste vygenerovali (pomocí automatického skriptu) pro ověření webové aplikace. Další informace o automatizovaném skriptu [najdete tady.](./itsmc-service-manager-script.md)|
 | **Tajný kód klienta**   | Zadejte tajný klíč klienta generovaný pro toto ID.   |
 | **Synchronizovat data**   | Vyberte Service Manager pracovní položky, které chcete synchronizovat pomocí ITSMC.  Tyto pracovní položky jsou importovány do Log Analytics. **Možnosti:**  Incidenty, žádosti o změnu.|
-| **Rozsah synchronizace dat** | Zadejte počet uplynulých dní, z nichž mají být data. **Maximální limit** : 120 dní. |
-| **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvořit položky konfigurace v produktu ITSM. Když se tato možnost vybere, Log Analytics v podporovaném systému ITSM vytvoří ovlivněné položky konfigurace pro SNS (v případě neexistujícího modelu SNS). **Výchozí** : zakázáno. |
+| **Rozsah synchronizace dat** | Zadejte počet uplynulých dní, z nichž mají být data. **Maximální limit**: 120 dní. |
+| **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvořit položky konfigurace v produktu ITSM. Když se tato možnost vybere, Log Analytics v podporovaném systému ITSM vytvoří ovlivněné položky konfigurace pro SNS (v případě neexistujícího modelu SNS). **Výchozí**: zakázáno. |
 
 ![Připojení k Service Manageru](media/itsmc-connections/service-manager-connection.png)
 
-**Po úspěšném připojení a synchronizaci** :
+**Po úspěšném připojení a synchronizaci**:
 
 - Vybrané pracovní položky z Service Manager jsou importovány do Azure **Log Analytics.** Souhrn těchto pracovních položek můžete zobrazit na dlaždici konektoru pro IT služby IT.
 
@@ -108,14 +108,14 @@ Spusťte skript zadáním následujících požadovaných podrobností:
 - Předpona názvu webu pro vaši webovou aplikaci
 - Obor názvů ServiceBus
 
-Skript vytvoří webovou aplikaci s názvem, který jste zadali (spolu s několika dalšími řetězci pro její jedinečné nastavení). Vygeneruje **adresu URL webové aplikace** , **ID klienta** a **tajný klíč klienta** .
+Skript vytvoří webovou aplikaci s názvem, který jste zadali (spolu s několika dalšími řetězci pro její jedinečné nastavení). Vygeneruje **adresu URL webové aplikace**, **ID klienta** a **tajný klíč klienta**.
 
 Uložte hodnoty, které použijete při vytváření připojení pomocí ITSMC.
 
 **Ověření instalace webové aplikace**
 
-1. Přejít na **Azure Portal**  >  **prostředky** .
-2. Vyberte webovou aplikaci, klikněte na **Nastavení**  >  **aplikace nastavení** .
+1. Přejít na **Azure Portal**  >  **prostředky**.
+2. Vyberte webovou aplikaci, klikněte na **Nastavení**  >  **aplikace nastavení**.
 3. Potvrďte informace o instanci Service Manager, kterou jste zadali v době nasazení aplikace prostřednictvím skriptu.
 
 ### <a name="configure-the-hybrid-connection"></a>Konfigurace hybridního připojení
@@ -123,33 +123,33 @@ Uložte hodnoty, které použijete při vytváření připojení pomocí ITSMC.
 Následující postup slouží ke konfiguraci hybridního připojení, které spojuje instanci Service Manager s ITSMC v Azure.
 
 1. V části **prostředky Azure** Najděte Service Manager webovou aplikaci.
-2. Klikněte na **Nastavení**  >  **sítě** .
-3. V části **Hybrid Connections** klikněte na **Konfigurovat koncové body hybridního připojení** .
+2. Klikněte na **Nastavení**  >  **sítě**.
+3. V části **Hybrid Connections** klikněte na **Konfigurovat koncové body hybridního připojení**.
 
     ![Sítě hybridního připojení](media/itsmc-connections/itsmc-hybrid-connection-networking-and-end-points.png)
-4. V okně **Hybrid Connections** klikněte na **Přidat hybridní připojení** .
+4. V okně **Hybrid Connections** klikněte na **Přidat hybridní připojení**.
 
     ![Přidat hybridní připojení](media/itsmc-connections/itsmc-new-hybrid-connection-add.png)
 
-5. V okně **přidat Hybrid Connections** klikněte na **vytvořit nové hybridní připojení** .
+5. V okně **přidat Hybrid Connections** klikněte na **vytvořit nové hybridní připojení**.
 
     ![Nové hybridní připojení](media/itsmc-connections/itsmc-create-new-hybrid-connection.png)
 
 6. Zadejte následující hodnoty:
 
-   - **Název koncového bodu** : zadejte název nového hybridního připojení.
-   - **Hostitel koncového bodu** : plně kvalifikovaný název domény Management Server Service Manager.
-   - **Port koncového bodu** : typ 5724
-   - **ServiceBus obor názvů** : použijte existující obor názvů ServiceBus nebo vytvořte nový.
-   - **Umístění** : vyberte umístění.
-   - **Název** : zadejte název ServiceBus, pokud ho vytváříte.
+   - **Název koncového bodu**: zadejte název nového hybridního připojení.
+   - **Hostitel koncového bodu**: plně kvalifikovaný název domény Management Server Service Manager.
+   - **Port koncového bodu**: typ 5724
+   - **ServiceBus obor názvů**: použijte existující obor názvů ServiceBus nebo vytvořte nový.
+   - **Umístění**: vyberte umístění.
+   - **Název**: zadejte název ServiceBus, pokud ho vytváříte.
 
      ![Hodnoty hybridního připojení](media/itsmc-connections/itsmc-new-hybrid-connection-values.png)
 6. Kliknutím na **OK** zavřete okno **vytvořit hybridní připojení** a začněte vytvářet hybridní připojení.
 
     Po vytvoření hybridního připojení se zobrazí v okně.
 
-7. Po vytvoření hybridního připojení vyberte připojení a klikněte na **Přidat vybrané hybridní připojení** .
+7. Po vytvoření hybridního připojení vyberte připojení a klikněte na **Přidat vybrané hybridní připojení**.
 
     ![Nové hybridní připojení](media/itsmc-connections/itsmc-new-hybrid-connection-added.png)
 
@@ -165,7 +165,7 @@ Pomocí následujícího postupu můžete nakonfigurovat nastavení naslouchací
 
 3. Přihlaste se pomocí svých přihlašovacích údajů Azure a vyberte předplatné, ve kterém se hybridní připojení vytvořilo.
 
-4. Klikněte na **Uložit** .
+4. Klikněte na **Uložit**.
 
 Vaše hybridní připojení se úspěšně připojilo.
 
@@ -182,14 +182,15 @@ Následující vzorový obrázek ukazuje podrobné informace o úspěšném při
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt ServiceNow k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Ujistěte se, že jsou splněné následující předpoklady:
 - ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-overview.md#add-it-service-management-connector).
 - Podporované verze ServiceNow: Orlandu, New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Ženeva.
+- V současné době se výstrahy odesílané z Azure Monitor můžou vytvořit v ServiceNow jednom z následujících prvků: události, Incedents nebo výstrahy.
 > [!NOTE]
 > ITSMC podporuje nyní jenom oficiální nabídku SaaS ze služby. Soukromá nasazení služby teď nejsou podporovaná. 
 
-**Správci ServiceNow musí v rámci své instance ServiceNow provádět následující** :
+**Správci ServiceNow musí v rámci své instance ServiceNow provádět následující**:
 - Vygenerujte ID klienta a tajný klíč klienta pro produkt ServiceNow. Informace o tom, jak vygenerovat ID a tajný kód klienta, najdete v následujících informacích:
 
     - [Nastavení OAuth pro Orlandu](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
@@ -224,10 +225,10 @@ K vytvoření připojení ServiceNow použijte následující postup:
 
 1. V Azure Portal přejít na **všechny prostředky** a vyhledejte **partnera (YourWorkspaceName)** .
 
-2.  V části **zdroje dat pracovního prostoru** klikněte na **připojení ITSM** .
+2.  V části **zdroje dat pracovního prostoru** klikněte na **připojení ITSM**.
     ![Nové připojení](media/itsmc-connections/add-new-itsm-connection.png)
 
-3. V horní části pravého podokna klikněte na **Přidat** .
+3. V horní části pravého podokna klikněte na **Přidat**.
 
 4. Zadejte informace, jak je popsáno v následující tabulce, a kliknutím na tlačítko **OK** vytvořte připojení.
 
@@ -238,19 +239,19 @@ K vytvoření připojení ServiceNow použijte následující postup:
 | **Pole** | **Popis** |
 | --- | --- |
 | **Název připojení**   | Zadejte název instance ServiceNow, ke které se chcete připojit pomocí ITSMC.  Tento název použijete později v Log Analytics, když konfigurujete pracovní položky v tomto ITSM/zobrazení podrobné Log Analytics. |
-| **Typ partnera**   | Vyberte **ServiceNow** . |
+| **Typ partnera**   | Vyberte **ServiceNow**. |
 | **Uživatelské jméno**   | Zadejte uživatelské jméno pro integraci, které jste vytvořili v aplikaci ServiceNow, aby se podporovalo připojení k ITSMC. Další informace: [vytvoření role uživatele aplikace ServiceNow](#create-integration-user-role-in-servicenow-app)|
-| **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka** : uživatelské jméno a heslo se používají jenom k vytváření tokenů ověřování a nejsou uložené kdekoli v rámci služby ITSMC.  |
+| **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka**: uživatelské jméno a heslo se používají jenom k vytváření tokenů ověřování a nejsou uložené kdekoli v rámci služby ITSMC.  |
 | **Adresa URL serveru**   | Zadejte adresu URL instance ServiceNow, ke které se chcete připojit ITSMC. Adresa URL by měla ukazovat na podporovanou verzi SaaS s příponou. servicenow.com.|
 | **ID klienta**   | Zadejte ID klienta, které chcete použít pro OAuth2 ověřování, které jste vygenerovali dříve.  Další informace o generování ID klienta a tajného klíče:   [instalace OAuth](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
 | **Tajný kód klienta**   | Zadejte tajný klíč klienta generovaný pro toto ID.   |
 | **Rozsah synchronizace dat**   | Vyberte ServiceNow pracovní položky, které chcete synchronizovat s Azure Log Analytics prostřednictvím ITSMC.  Vybrané hodnoty se importují do Log Analytics.   **Možnosti:**  Incidenty a žádosti o změnu.|
-| **Synchronizovat data** | Zadejte počet uplynulých dní, z nichž mají být data. **Maximální limit** : 120 dní. |
-| **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvořit položky konfigurace v produktu ITSM. Pokud je tato možnost vybrána, ITSMC vytvoří v podporovaném systému ITSM v případě neexistujícího systému služby CI ovlivněné položky konfigurace. **Výchozí** : zakázáno. |
+| **Synchronizovat data** | Zadejte počet uplynulých dní, z nichž mají být data. **Maximální limit**: 120 dní. |
+| **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvořit položky konfigurace v produktu ITSM. Pokud je tato možnost vybrána, ITSMC vytvoří v podporovaném systému ITSM v případě neexistujícího systému služby CI ovlivněné položky konfigurace. **Výchozí**: zakázáno. |
 
 ![Připojení ServiceNow](media/itsmc-connections/itsm-connection-servicenow-connection-latest.png)
 
-**Po úspěšném připojení a synchronizaci** :
+**Po úspěšném připojení a synchronizaci**:
 
 - Vybrané pracovní položky z instance ServiceNow se importují do Azure **Log Analytics.** Souhrn těchto pracovních položek můžete zobrazit na dlaždici konektoru pro IT služby IT.
 
@@ -271,12 +272,12 @@ Uživatel následující postup:
    >[!NOTE]
    >V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se v OMS teď označuje jako Log Analytics.     
 2. Po instalaci navštivte levý navigační panel instance ServiceNow, vyhledejte a vyberte Microsoft OMS integrátor.  
-3. Klikněte na **Kontrolní seznam instalace** .
+3. Klikněte na **Kontrolní seznam instalace**.
 
    Stav se zobrazí jako  **nedokončený** , pokud je role uživatele stále vytvořena.
 
 4. Do textových polí vedle pole **vytvořit uživatele integrace** zadejte uživatelské jméno pro uživatele, který se může připojit k ITSMC v Azure.
-5. Zadejte heslo pro tohoto uživatele a klikněte na tlačítko **OK** .  
+5. Zadejte heslo pro tohoto uživatele a klikněte na tlačítko **OK**.  
 
 > [!NOTE]
 > 
@@ -284,7 +285,7 @@ Uživatel následující postup:
 
 Nově vytvořený uživatel se zobrazí s přiřazenými výchozími rolemi.
 
-**Výchozí role** :
+**Výchozí role**:
 - personalize_choices
 - import_transformer
 -   x_mioms_microsoft. User
@@ -311,7 +312,7 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 > Od 1. října 2020 inITSM inprov-s výstrahou Azure už nebude pro nové zákazníky povolená. Nová připojení ITSM se nepodporují. 
 > Existující připojení ITSM budou podporována.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -327,10 +328,10 @@ Pomocí následujícího postupu vytvořte připojení k prokázání:
 
 1. V Azure Portal přejít na **všechny prostředky** a vyhledejte **partnera (YourWorkspaceName)** .
 
-2.  V části **zdroje dat pracovního prostoru** klikněte na **připojení ITSM** .
+2.  V části **zdroje dat pracovního prostoru** klikněte na **připojení ITSM**.
     ![Nové připojení](media/itsmc-connections/add-new-itsm-connection.png)
 
-3. V horní části pravého podokna klikněte na **Přidat** .
+3. V horní části pravého podokna klikněte na **Přidat**.
 
 4. Zadejte informace, jak je popsáno v následující tabulce, a kliknutím na tlačítko **OK** vytvořte připojení.
 
@@ -341,18 +342,18 @@ Pomocí následujícího postupu vytvořte připojení k prokázání:
 | **Pole** | **Popis** |
 | --- | --- |
 | **Název připojení**   | Zadejte název instance pro prov, ke kterému se chcete připojit pomocí ITSMC.  Tento název použijete později při konfiguraci pracovních položek v tomto ITSM/zobrazení podrobné Log Analytics. |
-| **Typ partnera**   | Vyberte **prov** . |
+| **Typ partnera**   | Vyberte **prov**. |
 | **Uživatelské jméno**   | Zadejte uživatelské jméno, které se může připojit k ITSMC.    |
 | **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka:** Uživatelské jméno a heslo slouží pouze k vytváření tokenů ověřování a nejsou uloženy kdekoli v rámci ITSMC service._|
 | **Adresa URL serveru**   | Zadejte adresu URL vaší instance prov, ke které se chcete připojit ITSMC. |
 | **ID klienta**   | Zadejte ID klienta pro ověřování tohoto připojení, které jste vygenerovali v instanci prokázání.  Další informace o ID klienta najdete v tématu [Konfigurace ověřování služby Active Directory](../../app-service/configure-authentication-provider-aad.md). |
 | **Rozsah synchronizace dat**   | Pomocí ITSMC vyberte pracovní položky prov, které chcete synchronizovat s Azure Log Analytics.  Tyto pracovní položky se importují do Log Analytics.   **Možnosti:**   Incidenty, žádosti o změnu.|
-| **Synchronizovat data** | Zadejte počet uplynulých dní, z nichž mají být data. **Maximální limit** : 120 dní. |
-| **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvořit položky konfigurace v produktu ITSM. Pokud je tato možnost vybrána, ITSMC vytvoří v podporovaném systému ITSM v případě neexistujícího systému služby CI ovlivněné položky konfigurace. **Výchozí** : zakázáno.|
+| **Synchronizovat data** | Zadejte počet uplynulých dní, z nichž mají být data. **Maximální limit**: 120 dní. |
+| **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvořit položky konfigurace v produktu ITSM. Pokud je tato možnost vybrána, ITSMC vytvoří v podporovaném systému ITSM v případě neexistujícího systému služby CI ovlivněné položky konfigurace. **Výchozí**: zakázáno.|
 
 ![Snímek obrazovky, který zvýrazní název připojení a seznam partnerských typů.](media/itsmc-connections/itsm-connections-provance-latest.png)
 
-**Po úspěšném připojení a synchronizaci** :
+**Po úspěšném připojení a synchronizaci**:
 
 - Vybrané pracovní položky z této instance prov se importují do Azure **Log Analytics.** Souhrn těchto pracovních položek můžete zobrazit na dlaždici konektoru pro IT služby IT.
 
@@ -369,7 +370,7 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 > Od 1. října 2020 Cherwell ITSM Integration s Azure Alert nebude už pro nové zákazníky povolený. Nová připojení ITSM se nepodporují. 
 > Existující připojení ITSM budou podporována.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -383,10 +384,10 @@ K vytvoření připojení Cherwell použijte následující postup:
 
 1. V Azure Portal přejít na **všechny prostředky** a vyhledejte **partnera (YourWorkspaceName)** .
 
-2.  V části **zdroje dat pracovního prostoru** klikněte na **připojení ITSM** .
+2.  V části **zdroje dat pracovního prostoru** klikněte na **připojení ITSM**.
     ![Nové připojení](media/itsmc-connections/add-new-itsm-connection.png)
 
-3. V horní části pravého podokna klikněte na **Přidat** .
+3. V horní části pravého podokna klikněte na **Přidat**.
 
 4. Zadejte informace, jak je popsáno v následující tabulce, a kliknutím na tlačítko **OK** vytvořte připojení.
 
@@ -403,13 +404,13 @@ K vytvoření připojení Cherwell použijte následující postup:
 | **Adresa URL serveru**   | Zadejte adresu URL instance Cherwell, ke které se chcete připojit ITSMC. |
 | **ID klienta**   | Zadejte ID klienta pro ověřování tohoto připojení, které jste vygenerovali v instanci Cherwell.   |
 | **Rozsah synchronizace dat**   | Vyberte Cherwell pracovní položky, které chcete synchronizovat prostřednictvím ITSMC.  Tyto pracovní položky se importují do Log Analytics.   **Možnosti:**  Incidenty, žádosti o změnu. |
-| **Synchronizovat data** | Zadejte počet uplynulých dní, z nichž mají být data. **Maximální limit** : 120 dní. |
-| **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvořit položky konfigurace v produktu ITSM. Pokud je tato možnost vybrána, ITSMC vytvoří v podporovaném systému ITSM v případě neexistujícího systému služby CI ovlivněné položky konfigurace. **Výchozí** : zakázáno. |
+| **Synchronizovat data** | Zadejte počet uplynulých dní, z nichž mají být data. **Maximální limit**: 120 dní. |
+| **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvořit položky konfigurace v produktu ITSM. Pokud je tato možnost vybrána, ITSMC vytvoří v podporovaném systému ITSM v případě neexistujícího systému služby CI ovlivněné položky konfigurace. **Výchozí**: zakázáno. |
 
 
 ![Připojení k přikázání](media/itsmc-connections/itsm-connections-cherwell-latest.png)
 
-**Po úspěšném připojení a synchronizaci** :
+**Po úspěšném připojení a synchronizaci**:
 
 - Vybrané pracovní položky z této instance Cherwell se importují do Azure **Log Analytics.** Souhrn těchto pracovních položek můžete zobrazit na dlaždici konektoru pro IT služby IT.
 
@@ -422,7 +423,7 @@ Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](./it
 K vygenerování ID klienta/klíče pro Cherwell použijte následující postup:
 
 1. Přihlaste se ke své instanci Cherwell jako správce.
-2. Klikněte na **zabezpečení**  >  **Upravit REST API nastavení klienta** .
+2. Klikněte na **zabezpečení**  >  **Upravit REST API nastavení klienta**.
 3. Vyberte **vytvořit nový**  >  **tajný klíč** klienta klienta.
 
     ![ID uživatele Cherwell](media/itsmc-connections/itsmc-cherwell-client-id.png)

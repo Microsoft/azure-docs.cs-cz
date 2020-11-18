@@ -1,27 +1,27 @@
 ---
 title: Řešení potíží s certifikacem virtuálních počítačů pro Azure Marketplace
-description: Tento článek popisuje témata týkající se řešení běžných pro testování a certifikaci imagí virtuálních počítačů pro Azure Marketplace.
+description: Řešení běžných problémů souvisejících s testováním a Certifikováním imagí virtuálních počítačů pro Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: f065b1bc98eab86542ecff73e1471e4d90cd4182
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5124e7084a8e878e54e594424ec0926410f002ca
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339529"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682481"
 ---
-# <a name="vm-certification-troubleshooting"></a>Řešení potíží s certifikacemi virtuálních počítačů
+# <a name="troubleshoot-virtual-machine-certification"></a>Řešení potíží s certifikací virtuálního počítače
 
-Když publikujete image virtuálního počítače do Azure Marketplace, tým Azure je ověří, aby zajistil, že se jedná o možnosti spouštění, zabezpečení a kompatibility Azure. Pokud některý z testů s vysokou kvalitou selže, publikování se nezdaří a zobrazí se chybová zpráva s popisem problému.
+Když publikujete image virtuálního počítače do Azure Marketplace, tým Azure je ověří, aby zajistil, že je spustitelný, zabezpečený a kompatibilní s Azure. Pokud vaše image virtuálního počítače neprojde jakýmkoli testem vysoce kvalitních testů, nebude se publikovat. Zobrazí se chybová zpráva s popisem problému.
 
 Tento článek vysvětluje běžné chybové zprávy během publikování imagí virtuálních počítačů společně se souvisejícími řešeními.
 
 > [!NOTE]
-> Pokud máte dotazy nebo připomínky ke zlepšení, kontaktujte prosím [podporu](https://aka.ms/marketplacepublishersupport)partnerského centra.
+> Pokud máte dotazy k tomuto článku nebo návrhy na vylepšení, obraťte se na [podporu partnerského centra](https://aka.ms/marketplacepublishersupport).
 
 ## <a name="approved-base-image"></a>Schválená základní image
 
@@ -35,34 +35,32 @@ Chcete-li tento problém vyřešit, načtěte obrázek z Azure Marketplace a pro
 - [Bitové kopie systému Windows](azure-vm-create-using-approved-base.md)
 
 > [!Note]
-> Pokud používáte základní bitovou kopii systému Linux, která se nepoužívá Azure Marketplace, můžete posunout první oddíl o 2048 KB. To umožňuje, aby se neformátované místo používalo k přidávání nových fakturačních informací, a umožňuje Azure přejít k publikování virtuálního počítače do Azure Marketplace.  
-
-> [!Note]
-> Pokud používáte základní image Linux, která není z webu Marketplace, můžete posunout první oddíl o 2048 KB. To umožňuje, aby neformátované místo bylo možné použít k přidání nových fakturačních informací, a umožní službě Azure začít s publikováním virtuálního počítače na Marketplace.  
+> Pokud používáte základní bitovou kopii systému Linux, která se nepoužívá Azure Marketplace, můžete posunout první oddíl o 2048 KB. To umožňuje, aby se neformátované místo použilo k přidávání nových fakturačních informací, a umožní Azure pokračovat v publikování virtuálního počítače Azure Marketplace.  
 
 ## <a name="vm-extension-failure"></a>Selhání rozšíření virtuálního počítače
 
 Zkontrolujte, jestli vaše image podporuje rozšíření virtuálních počítačů.
 
-Pokud chcete povolit rozšíření virtuálních počítačů, udělejte toto:
+Povolení rozšíření virtuálních počítačů:
 
 1. Vyberte virtuální počítač se systémem Linux.
 1. Přejít na **nastavení diagnostiky**.
 1. Pomocí aktualizace **účtu úložiště** povolte základní matice.
 1. Vyberte **Uložit**.
 
-   ![Povolení sledování na úrovni hosta](./media/create-vm/vm-certification-issues-solutions-1.png)
+   ![Snímek obrazovky, který ukazuje, jak povolit monitorování na úrovni hosta.](./media/create-vm/vm-certification-issues-solutions-1.png)
 
-Pokud chcete ověřit, jestli jsou rozšíření virtuálních počítačů správně aktivované, udělejte toto:
+Ověření, jestli jsou rozšíření virtuálních počítačů správně aktivované:
 
 1. Na virtuálním počítači vyberte kartu **rozšíření virtuálního počítače** a pak ověřte stav **rozšíření Linux Diagnostics**.
-1. 
-    * Pokud je stav *zřizování úspěšné* , předává testovací případ rozšíření.  
-    * Pokud se stav *zřizování nezdařil* , testový případ rozšíření se nezdařil a je nutné nastavit zpřísněný příznak.
+1. Ověřte stav zřizování.
 
-      ![Snímek obrazovky zobrazující, že zřizování bylo úspěšné](./media/create-vm/vm-certification-issues-solutions-2.png)
+   - Pokud je stav *zřizování úspěšné*, předává testovací případ rozšíření.  
+   - Pokud se stav *zřizování nezdařil*, testový případ rozšíření se nezdařil a je nutné nastavit zpřísněný příznak.
 
-      Pokud se rozšíření virtuálního počítače nepovede, přečtěte si téma [použití diagnostického rozšíření systému Linux k monitorování metrik a protokolů](../virtual-machines/extensions/diagnostics-linux.md) , které chcete povolit. Pokud nechcete, aby bylo rozšíření virtuálního počítače povolené, obraťte se na tým podpory a požádejte ho, aby ho zakázal.
+   ![Snímek obrazovky zobrazující, že zřizování bylo úspěšné](./media/create-vm/vm-certification-issues-solutions-2.png)
+
+   Pokud se rozšíření virtuálního počítače nepovede, přečtěte si téma [použití diagnostického rozšíření systému Linux k monitorování metrik a protokolů](../virtual-machines/extensions/diagnostics-linux.md) , které chcete povolit. Pokud nechcete, aby bylo rozšíření virtuálního počítače povolené, obraťte se na tým podpory a požádejte ho, aby ho zakázal.
 
 ## <a name="vm-provisioning-issue"></a>Problém zřizování virtuálních počítačů
 
@@ -75,7 +73,6 @@ Problémy zřizování můžou zahrnovat tyto scénáře selhání:
 |1|Neplatný virtuální pevný disk (VHD)|Pokud je zadaná hodnota souboru cookie v zápatí VHD nesprávná, bude virtuální pevný disk považován za neplatný.|Znovu vytvořte bitovou kopii a odešlete žádost.|
 |2|Neplatný typ objektu BLOB|Zřizování virtuálního počítače se nezdařilo, protože použitý blok je typ objektu BLOB místo typu stránky.|Znovu vytvořte bitovou kopii a odešlete žádost.|
 |3|Časový limit zřizování nebo není správně zobecněný|Došlo k potížím s generalizací virtuálních počítačů.|Znovu vytvořte bitovou kopii pomocí generalizace a odešlete žádost.|
-|
 
 > [!NOTE]
 > Další informace o generalizaci virtuálních počítačů najdete v těchto tématech:
@@ -86,9 +83,10 @@ Problémy zřizování můžou zahrnovat tyto scénáře selhání:
 ## <a name="vhd-specifications"></a>Specifikace VHD
 
 ### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix soubor cookie a další specifikace VHD
-Řetězec ' conectix ' je součástí specifikace VHD a je definován jako 8 bajtů ' cookie ' v zápatí VHD níže, které identifikuje tvůrce souboru. Tento soubor cookie mají všechny soubory VHD vytvořené Microsoftem. 
 
-Objekt BLOB ve formátu VHD by měl mít 512 bajt; Toto je formát zápatí VHD:
+Řetězec ' conectix ' je součástí specifikace VHD. Je definovaný jako soubor cookie o velikosti 8 bajtů v zápatí VHD, který identifikuje tvůrce souboru. Tento soubor cookie mají všechny soubory VHD vytvořené Microsoftem. 
+
+Objekt BLOB ve formátu VHD by měl mít formát 512-byte v tomto formátu:
 
 |Pole zápatí pevného disku|Velikost (v bajtech)|
 |---|---|
@@ -111,41 +109,42 @@ Vyhrazené|427
 
 
 ### <a name="vhd-specifications"></a>Specifikace VHD
-Aby se zajistilo bezproblémové prostředí pro publikování, ujistěte se, že **virtuální pevný disk splňuje následující kritéria:**
-* Soubor cookie musí obsahovat řetězec "conectix".
-* Typ disku musí být pevný.
-* Virtuální disk VHD má minimálně 20MB
-* Virtuální pevný disk je zarovnán (tj. virtuální velikost musí být násobkem 1 MB).
-* Délka objektu BLOB VHD = virtuální velikost + délka zápatí VHD (512)
 
-Specifikaci VHD si můžete stáhnout [tady.](https://www.microsoft.com/download/details.aspx?id=23850)
+Aby se zajistilo hladké prostředí pro publikování, ujistěte se, že virtuální pevný disk splňuje následující kritéria:
 
+- Soubor cookie obsahuje řetězec "conectix".
+- Typ disku je pevný.
+- Virtuální pevný disk má velikost alespoň 20 MB.
+- Virtuální pevný disk je zarovnán. Virtuální velikost musí být násobkem 1 MB.
+- Délka objektu BLOB VHD se rovná virtuální velikosti a délce zápatí VHD (512).
+
+Stáhněte si [specifikaci VHD](https://www.microsoft.com/download/details.aspx?id=23850).
 
 ## <a name="software-compliance-for-windows"></a>Kompatibilita softwaru pro Windows
 
-Pokud se vaše žádost o bitovou kopii systému Windows zamítla z důvodu problému s kompatibilitou softwaru, možná jste vytvořili bitovou kopii systému Windows s nainstalovanou instancí SQL serveru místo toho, aby se z Azure Marketplace přestala příslušná základní image verze SQL.
+Pokud se vaše žádost o image Windows zamítla kvůli problému s kompatibilitou softwaru, možná jste vytvořili image Windows s nainstalovanou instancí SQL Server. Místo toho musíte z Azure Marketplace použít příslušnou základní image verze SQL Server.
 
-Nevytvářejte vlastní image Windows s nainstalovaným SQL serverem. Místo toho použijte z Azure Marketplace schválené základní image SQL (Enterprise/Standard/Web).
+Nevytvářejte vlastní image Windows s nainstalovanou SQL Server. Použijte schválené základní image SQL Server (Enterprise/Standard/Web) z Azure Marketplace.
 
 Pokud se pokoušíte nainstalovat sadu Visual Studio nebo jakýkoli produkt licencovaný pro Office, obraťte se na tým podpory, který vám poskytne předchozí schválení.
 
 Další informace o výběru schválené základní třídy najdete v tématu [Vytvoření virtuálního počítače ze schválené základny](azure-vm-create-using-approved-base.md).
 
-## <a name="tool-kit-test-case-execution-failed"></a>Spuštění testovacího případu sady nástrojů se nezdařilo
+## <a name="toolkit-test-case-execution-failed"></a>Spuštění testovacího případu sady nástrojů se nezdařilo.
 
 Sada nástrojů Microsoft Certification Toolkit vám může pomáhat při spouštění testovacích případů a ověření, že je váš virtuální pevný disk nebo Image kompatibilní s prostředím Azure.
 
 Stáhněte si [sadu nástrojů Microsoft Certification Toolkit](azure-vm-image-test.md).
 
-## <a name="linux-test-cases"></a>Testovací případy pro Linux
+### <a name="linux-test-cases"></a>Testovací případy pro Linux
 
 V následující tabulce jsou uvedeny testovací případy pro Linux, které sada nástrojů spustí. Ověření testu je uvedeno v popisu.
 
-|Scénář|Testovací případ|Popis|
+|Scénář|Testovací případ|Description|
 |---|---|---|
 |1|Bash historii|Před vytvořením image virtuálního počítače by se měly vymazat soubory historie bash.|
 |2|Verze agenta pro Linux|Je potřeba nainstalovat agenta Azure Linux 2.2.41 nebo novější.|
-|3|Požadované parametry jádra|Ověřuje, že jsou nastavené následující parametry jádra: <br>Konzola = ttyS0<br>earlyprintk = ttyS0<br>rootdelay = 300|
+|3|Požadované parametry jádra|Ověřuje, že jsou nastavené následující parametry jádra: <br>Konzola = ttyS0<br>earlyprintk = ttyS0<br>rootdelay = 300 |
 |4|Odkládací oddíl na disku s operačním systémem|Ověřuje, že se na disku s operačním systémem odkládací oddíly nevytváří.|
 |5|Kořenový oddíl na disku s operačním systémem|Vytvořte jeden kořenový oddíl pro disk s operačním systémem.|
 |6|Verze OpenSSL|Verze OpenSSL by měla být v 0.9.8 nebo novější.|
@@ -154,22 +153,23 @@ V následující tabulce jsou uvedeny testovací případy pro Linux, které sad
 |9|Architektura operačního systému|Podporují se jen 64bitové operační systémy.|
 |10|Automatická aktualizace|Určuje, jestli je povolená Automatická aktualizace agenta pro Linux.|
 
-### <a name="common-errors-found-while-executing-previous-test-cases"></a>Při provádění předchozích testovacích případů se našly běžné chyby.
+### <a name="common-test-case-errors"></a>Běžné chyby testovacího případu
 
-V následující tabulce jsou uvedeny běžné chyby, které byly nalezeny při provádění předchozích testovacích případů:
- 
-|Scénář|Testovací případ|Chyba|Řešení|
-|---|---|---|---|
-|1|Testovací případ verze agenta pro Linux|Minimální verze agenta pro Linux je 2.2.41 nebo novější. Tento požadavek byl povinný od 1. května 2020.|Aktualizujte prosím verzi agenta pro Linux a měla by být 2,241 nebo novější. Další informace najdete na [stránce aktualizace verze agenta pro Linux](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).|
-|2|Testovací případ historie bash|Pokud je velikost historie bash v odeslaném obrázku větší než 1 kilobajt (KB), zobrazí se chyba. Velikost je omezená na 1 KB, aby se zajistilo, že v souboru historie bash nejsou zachyceny žádné potenciálně citlivé informace.|Pokud chcete tento problém vyřešit, připojte VHD k jakémukoli jinému pracovnímu virtuálnímu počítači a proveďte požadované změny (například odstraňte soubory historie *. bash* ), aby se snížila velikost menší nebo rovna 1 KB.|
-|3|Požadovaný parametr jádra pro testovací případ|Tato chyba se zobrazí, pokud hodnota pro **konzolu** není nastavená na **ttyS0**. Kontrolou spusťte následující příkaz:<br>`cat /proc/cmdline`|Nastavte hodnotu **Console** na **ttyS0** a odešlete požadavek znovu.|
-|4|Testovací případ intervalu ClientAlive|Pokud výsledek sady nástrojů poskytne neúspěšný výsledek pro tento testovací případ, existuje nevhodná hodnota pro **ClientAliveInterval**.|Nastavte hodnotu parametru **ClientAliveInterval** na hodnotu menší nebo rovnou hodnotě 235 a potom požadavek odešlete znovu.|
+V následující tabulce najdete běžné chyby, které se můžou zobrazit při spuštění testovacích případů:
+
+| Scénář | Testovací případ | Chyba | Řešení |
+| --- | --- | --- | --- |
+| 1 | Testovací případ verze agenta pro Linux | Minimální verze agenta pro Linux je 2.2.41 nebo novější. Tento požadavek byl povinný od 1. května 2020. | Aktualizujte verzi agenta pro Linux. Měl by být 2,241 nebo novější. Další informace najdete na [stránce aktualizace verze agenta pro Linux](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support). |
+| 2 | Testovací případ historie bash | Pokud je velikost historie bash v odeslaném obrázku větší než 1 kilobajt (KB), dojde k chybě. Velikost je omezená na 1 KB, aby se zajistilo, že soubor historie bash neobsahuje žádné potenciálně citlivé informace. | Vyřešte připojením virtuálního pevného disku k jinému pracovnímu virtuálnímu počítači a proveďte změny a zmenšete velikost na 1 KB nebo méně. Odstraňte například `.bash` soubory historie. |
+| 3 | Požadovaný parametr jádra pro testovací případ | Tato chyba se zobrazí, pokud hodnota pro `console` není nastavená na `ttyS0` . Kontrolou spusťte následující příkaz: <br /> `cat /proc/cmdline` | Nastavte hodnotu pro `console` na a `ttyS0` odešlete požadavek znovu. |
+| 4 | Testovací případ intervalu ClientAlive | Pokud sada nástrojů poskytuje pro tento testovací případ neúspěšný výsledek, existuje nevhodná hodnota pro `ClientAliveInterval` . | Nastavte hodnotu pro `ClientAliveInterval` na hodnotu menší nebo rovnou 235 a potom žádost znovu odešlete. |
+
 
 ### <a name="windows-test-cases"></a>Testovací případy Windows
 
 V následující tabulce jsou uvedeny testovací případy systému Windows, které sada nástrojů spustí, spolu s popisem ověření testu:
 
-|Scénář |Testovací případy|Popis|
+|Scénář |Testovací případy|Description|
 |---|---|---|---|
 |1|Architektura operačního systému|Azure podporuje jenom 64 operačních systémů.|
 |2|Závislost uživatelského účtu|Spuštění aplikace by nemělo být závislé na účtu správce.|
@@ -188,13 +188,12 @@ V následující tabulce jsou uvedeny testovací případy systému Windows, kte
 |15|Služby SNMP|Funkce služeb SNMP (Simple Network Management Protocol) se zatím nepodporuje. Aplikace by neměla být závislá na této funkci.|
 |16|Služba Windows Internet Name Service|Služba Windows Internet Name Service. Tato funkce serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 |17|Služba bezdrátové sítě LAN|Služba bezdrátové sítě LAN. Tato funkce serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
-|
 
-Pokud jste pocházeli při jakémkoli selhání s předchozími testovacími případy, přečtěte si sloupec **Popis** v tabulce pro řešení. Pokud potřebujete další informace, obraťte se na tým podpory. 
+Pokud jste pocházeli při jakémkoli selhání s předchozími testovacími případy, přečtěte si sloupec **Popis** v tabulce pro řešení. Pokud chcete získat další informace, obraťte se na tým podpory. 
 
 ## <a name="data-disk-size-verification"></a>Ověření velikosti datového disku
 
-Pokud je velikost jakékoli žádosti odeslané s datovým diskem větší než 1023 gigabajtů (GB), požadavek se neschválí. Toto pravidlo se vztahuje na systémy Linux a Windows.
+Požadavky na datový disk o velikosti větší než 1023 gigabajty (GB) nebudou schváleny. Toto pravidlo se vztahuje na systémy Linux a Windows.
 
 Požadavek odešlete znovu o velikost menší nebo rovnou 1023 GB.
 
@@ -206,29 +205,24 @@ Omezení velikosti disku operačního systému najdete v následujících pravid
 |---|---|
 |Linux|30 GB až 1023 GB|
 |Windows|30 GB až 250 GB|
-|
 
-Protože virtuální počítače umožňují přístup k základnímu operačnímu systému, zajistěte, aby velikost virtuálního pevného disku byla pro virtuální pevný disk dostatečně velká. Vzhledem k tomu, že disky nejsou rozšiřitelné bez výpadků, použijte velikost disku z 30 GB do 50 GB.
+Protože virtuální počítače umožňují přístup k základnímu operačnímu systému, zajistěte, aby velikost virtuálního pevného disku byla pro virtuální pevný disk dostatečně velká. Disky nejsou rozšiřitelné bez výpadků. Použijte velikost disku od 30 GB do 50 GB.
 
 |Velikost virtuálního pevného disku|Skutečná obsazená velikost|Řešení|
 |---|---|---|
 |>500 tebibytes (TiB)|neuvedeno|Obraťte se na tým podpory se schválením výjimky.|
 |250-500 TiB|Rozdíl velikosti objektu BLOB v >200 gibibajtech (GiB)|Obraťte se na tým podpory se schválením výjimky.|
-|
 
 > [!NOTE]
-> Větší velikosti disků účtují vyšší náklady a během procesu instalace a replikace se bude účtovat zpoždění. Z důvodu tohoto zpoždění a nákladů může tým podpory vyhledat odůvodnění pro schválení výjimky.
+> Větší velikosti disků účtují vyšší náklady a během procesu instalace a replikace budou mít za následek zpoždění. Z důvodu tohoto zpoždění a nákladů může tým podpory vyhledat odůvodnění pro schválení výjimky.
 
 ## <a name="wannacry-patch-verification-test-for-windows"></a>Test ověření WannaCry opravy pro Windows
 
 Aby se zabránilo potenciálnímu útoku souvisejícímu s virem WannaCry, zajistěte, aby všechny požadavky na image Windows byly aktualizované pomocí nejnovější opravy.
 
-Chcete-li zjistit podrobnosti o operačním systému pro opravu Windows serveru a minimální verzi, kterou bude podporovat, přečtěte si následující tabulku: 
+Verzi souboru bitové kopie můžete ověřit z `C:\windows\system32\drivers\srv.sys` nebo `srv2.sys` .
 
-Verzi souboru bitové kopie lze ověřit z `C:\windows\system32\drivers\srv.sys` nebo `srv2.sys` .
-
-> [!NOTE]
-> Windows Server 2019 nemá žádné požadavky na povinnou verzi.
+Následující tabulka uvádí minimální opravenou verzi Windows serveru: 
 
 |Operační systém|Verze|
 |---|---|
@@ -237,7 +231,9 @@ Verzi souboru bitové kopie lze ověřit z `C:\windows\system32\drivers\srv.sys`
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
 |Windows Server 2019|Není k dispozici|
-|
+
+> [!NOTE]
+> Windows Server 2019 nemá žádné požadavky na povinnou verzi.
 
 ## <a name="sack-vulnerability-patch-verification"></a>Ověření opravy ohrožení zabezpečení pro parametr
 
@@ -295,142 +291,172 @@ Pokud bitová kopie není nainstalovaná s některou z následujících verzí j
 ||Roztáhnout (zabezpečení)|4.9.168-1 + deb9u3|
 ||Debian GNU/Linux 10 (Buster)|Debian 6.3.0 – 18 a deb9u1|
 ||Buster, SID (porty roztažení)|4.19.37-5|
-|
 
 ## <a name="image-size-should-be-in-multiples-of-megabytes"></a>Velikost obrázku musí být v násobcích megabajtů.
 
 Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnané na násobky 1 megabajtu (MB). Pokud váš virtuální pevný disk neodpovídá doporučené virtuální velikosti, váš požadavek může být zamítnutý.
 
-Při převodu z nezpracovaného disku na VHD postupujte podle pokynů a ujistěte se, že velikost nezpracovaného disku je násobkem 1 MB. Další informace najdete v tématu [informace o neschválených distribucích](../virtual-machines/linux/create-upload-generic.md).
+Při převodu z nezpracovaného disku na VHD postupujte podle pokynů. Ujistěte se, že velikost nezpracovaného disku je násobkem 1 MB. Další informace najdete v tématu [informace o neschválených distribucích](../virtual-machines/linux/create-upload-generic.md).
 
 ## <a name="vm-access-denied"></a>Přístup k virtuálnímu počítači byl odepřen
 
-Pokud při spuštění testovacích případů na virtuálním počítači postupujete mezi problémy s odepřeným přístupem, může to být kvůli nedostatečným oprávněním ke spuštění testovacích případů.
+Problém s _odepřením přístupu_ pro spuštění testovacího případu na virtuálním počítači může být způsoben nedostatečnými oprávněními.
 
-Zkontrolujte, zda je pro účet, na kterém běží vlastní testové případy, povolen správný přístup. Pokud přístup povolen není, povolte ho pro spuštění testovacích případů. Pokud nechcete povolit přístup, můžete sdílet výsledky pro samočinný test případu s týmem podpory.
+Zkontrolujte, zda jste povolili správný přístup k účtu, na kterém jsou spuštěny vlastní testovací případy. Povolit přístup pro spuštění testovacích případů, pokud není povolen. Pokud nechcete povolit přístup, můžete sdílet výsledky pro samočinný test případu s týmem podpory.
 
-Pokud chcete odeslat žádost s imagí zakázaného procesu SSH pro certifikaci, postupujte prosím podle následujících kroků.
+Odeslání žádosti s imagí zakázaného SSH pro proces certifikace:
 
-1. Spusťte na své imagi sadu nástrojů Azure. (Stáhněte si [nejnovější sadu nástrojů](https://aka.ms/AzureCertificationTestTool)
+1. Spusťte [nejnovější nástroj pro testování certifikace pro virtuální počítače Azure](https://aka.ms/AzureCertificationTestTool) na imagi.
 
-2. Vyvolejte [lístek podpory](https://aka.ms/marketplacepublishersupport), připojte sestavu sady nástrojů a poskytněte podrobnosti nabídky – název nabídky, název vydavatele, ID/SKU a verzi.
+2. Vyvolejte [lístek podpory](https://aka.ms/marketplacepublishersupport). Nezapomeňte připojit sestavu sady nástrojů a poskytnout podrobnosti nabídky:
+   - Název nabídky
+   - Název vydavatele
+   - ID/SKU a verze plánu
 
-3. Odešlete prosím znovu žádost o certifikaci...
-
+3. Odešlete žádost o certifikaci znovu.
 
 ## <a name="download-failure"></a>Chyba stahování
     
-V následující tabulce najdete případné problémy, které vznikají při stahování image virtuálního počítače pomocí adresy URL sdíleného přístupového podpisu (SAS).
+V následující tabulce najdete případné problémy, které vznikají při stažení image virtuálního počítače s adresou URL sdíleného přístupového podpisu (SAS).
 
 |Scénář|Chyba|Důvod|Řešení|
 |---|---|---|---|
 |1|Objekt BLOB se nenašel.|Virtuální pevný disk může být buď odstraněn, nebo přesunut ze zadaného umístění.|| 
-|2|Používaný objekt BLOB|VHD používá jiný interní proces.|Virtuální pevný disk by měl být v používaném stavu, když ho stáhnete pomocí adresy URL SAS.|
+|2|Používaný objekt BLOB|VHD používá jiný interní proces.|Virtuální pevný disk by měl být v používaném stavu, když ho stáhnete s adresou URL SAS.|
 |3|Neplatná adresa URL SAS|Přidružená adresa URL SAS pro virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
 |4|Neplatný podpis|Přidružená adresa URL SAS pro virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
 |6|Podmíněná hlavička HTTP|Adresa URL SAS není platná.|Získejte správnou adresu URL SAS.|
-|7|Neplatný název VHD|Zkontrolujte, zda nějaké speciální znaky, například znak procenta (%) nebo uvozovky (") existují v názvu VHD.|Přejmenujte soubor VHD odebráním speciálních znaků.|
-|
+|7|Neplatný název VHD|Zkontrolujte, jestli v názvu VHD existují nějaké speciální znaky, jako je například znak procenta `%` nebo uvozovky `"` .|Přejmenujte soubor VHD odebráním speciálních znaků.|
 
-## <a name="first-mb-2048-kb-partition-only-for-linux"></a>Prvních MB (2048 KB) oddíl (pouze pro Linux)
+## <a name="first-mb-2048-kb-partition-linux-only"></a>Prvních MB (2048 KB) oddíl (pouze Linux)
 
-Když odešlete VHD, ujistěte se, že první 2048 KB virtuálního pevného disku je prázdné. V opačném případě se vaše žádost nezdařila *.
-
->[!NOTE]
->* U určitých speciálních imagí, jako jsou ty, které jsou postavené na základních imagích Azure pro Windows a které se vycházejí z Azure Marketplace, zkontrolujeme fakturační značku a ignorujte oddíl MB, pokud se fakturační značka vyskytuje a odpovídá našim hodnotám, které jsou k dispozici.
-
-
-## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-on-an-empty-vhd"></a>Postup vytvoření prvních MB (2048 KB) oddílu (jenom pro Linux) na prázdném virtuálním pevném disku
-
-Krok 1: Vytvořte libovolný typ virtuálního počítače (příklad: Ubuntu, cent OS atd.). Vyplňte požadovaná pole a klikněte na další: disky> \
-![Další: příkaz disky](./media/create-vm/vm-certification-issues-solutions-15.png)
-
-Krok 2: Vytvořte nespravovaný disk pro výše uvedený virtuální počítač.
-![Vytvoření nespravovaného disku](./media/create-vm/vm-certification-issues-solutions-16.png)
-
-Upozorňujeme, že buď můžete přejít na výchozí hodnoty, nebo zadat libovolnou hodnotu pro pole, jako jsou síťová karta, NSG a veřejná IP adresa.
-
-Krok 3: po vytvoření virtuálního počítače klikněte na disky, které se nachází na levé straně, jak je vidět níže. ![ klikněte na disky.](./media/create-vm/vm-certification-issues-solutions-17.png)
-
-Krok 4: Připojte svůj VHD jako datový disk k výše uvedenému virtuálnímu počítači, abyste mohli vytvořit tabulku oddílů, jak je uvedeno níže.
-![Připojit virtuální pevný disk](./media/create-vm/vm-certification-issues-solutions-18.png)
-
-Klikněte na Přidat datadisk – > existující objekt BLOB – > procházet svůj účet úložiště VHD – > kontejner – > vybrat VHD-> klikněte na OK, jak je uvedeno níže.
-![Vybrat VHD](./media/create-vm/vm-certification-issues-solutions-19.png)
-
-Váš VHD se přidá jako datový disk LUN 0 a po přidání disku znovu spusťte virtuální počítač.
-
-Krok 5: po opětovném spuštění virtuálního počítače se přihlaste k virtuálnímu počítači pomocí výstupu (nebo jiného klienta) a spuštěním příkazu "sudo-i" Získejte přístup root.
-
-![Přihlášení k virtuálnímu počítači](./media/create-vm/vm-certification-issues-solutions-20.png)
-
-Krok 6: Postup vytvoření oddílu na virtuálním pevném disku podle následujících kroků
-
-a) typ Fdisk/dev/sdb Command
-
-b) pro zobrazení existujícího seznamu oddílů z vašeho virtuálního pevného disku zadejte p
-
-c) zadejte d pro odstranění veškerého stávajícího oddílu dostupného ve vašem virtuálním pevném disku (Tento krok můžete přeskočit, pokud není potřeba) ![ Odstranit veškerý existující oddíl.](./media/create-vm/vm-certification-issues-solutions-21.png)
-
-d) zadejte n pro vytvoření nového oddílu a vyberte p pro (primární oddíl).
-
-e) zadejte 2048 jako hodnotu "první sektor" a můžete opustit "poslední sektor", protože bude mít výchozí hodnotu. Všimněte si, že všechna data budou vymazána až 2048 KB.
-           
->[!NOTE]
->* Upozorňujeme, že vytvořením oddílu jako výše se 2048 vymažou všechna existující data, proto se před provedením výše uvedeného příkazu doporučuje vytvořit zálohu virtuálního pevného disku.
-
-Najděte prosím následující snímek obrazovky pro svůj odkaz.
-![Vymazat data](./media/create-vm/vm-certification-issues-solutions-22.png)
-
-f) typ w potvrďte vytvoření oddílu. 
-
-![Vytvoření oddílu](./media/create-vm/vm-certification-issues-solutions-23.png)
-
-g) tabulku oddílů můžete ověřit spuštěním příkazu n Fdisk/dev/sdb a zadáním p, pak uvidíte, jak je uvedeno níže, je tento oddíl vytvořen s hodnotou posunu 2048. 
-
- ![posun 2048](./media/create-vm/vm-certification-issues-solutions-24.png)
-
-Krok 7: odpojte prosím virtuální pevný disk od virtuálního počítače a odstraňte virtuální počítač.
-
-         
-## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-by-moving-the-existing-data-on-vhd"></a>Postup vytvoření prvních MB (2048 KB) oddílu (jenom pro Linux) přesunutím stávajících dat na VHD
-
-Krok 1: Vytvořte libovolný typ virtuálního počítače (příklad: Ubuntu, cent OS atd.). Vyplňte požadovaná pole a klikněte na další: disky> \
-![Klikněte na další: disky>.](./media/create-vm/vm-certification-issues-solutions-15.png)
-
-Krok 2: Vytvořte nespravovaný disk pro výše uvedený virtuální počítač.
-![Vytvoření nespravovaného disku](./media/create-vm/vm-certification-issues-solutions-16.png)
-
-Upozorňujeme, že buď můžete přejít na výchozí hodnoty, nebo zadat libovolnou hodnotu pro pole, jako jsou síťová karta, NSG a veřejná IP adresa.
-
-Krok 3: po vytvoření virtuálního počítače klikněte na disky, které se nachází na levé straně, jak je vidět níže. ![ klikněte na disky.](./media/create-vm/vm-certification-issues-solutions-17.png)
-
-Krok 4: Připojte svůj VHD jako datový disk k výše uvedenému virtuálnímu počítači, abyste mohli vytvořit tabulku oddílů, jak je uvedeno níže.
-![Tabulka oddílů](./media/create-vm/vm-certification-issues-solutions-18.png)
-
-Klikněte na Přidat datadisk – > existující objekt BLOB – > procházet svůj účet úložiště VHD – > kontejner – > vybrat VHD-> klikněte na OK, jak je uvedeno níže.
-![Vybrat VHD](./media/create-vm/vm-certification-issues-solutions-19.png)
-
-Váš VHD se přidá jako datový disk LUN 0 a po přidání disku znovu spusťte virtuální počítač.
-
-Krok 5: po opětovném spuštění virtuálního počítače se přihlaste k virtuálnímu počítači pomocí výstupu a spuštěním příkazu "sudo-i" Získejte přístup root. \
-![Přihlášení po restartování](./media/create-vm/vm-certification-issues-solutions-20.png)
-
-Krok 6: excute příkazu echo ' + 1M, ' | sfdisk--Move-data/dev/sdc-N 1 ![ příkaz Execute](./media/create-vm/vm-certification-issues-solutions-25.png)
+Když odešlete VHD, ujistěte se, že první 2048 KB virtuálního pevného disku je prázdné. V opačném případě se vaše žádost nezdaří.
 
 >[!NOTE]
->* Upozorňujeme, že dokončení výše uvedeného příkazu může trvat delší dobu, protože závisí na velikosti disku.
+>U určitých speciálních imagí, jako jsou ty, které jsou postavené na základních imagích Azure pro Windows a které se vycházejí z Azure Marketplace, zkontrolujeme fakturační značku a ignorujte oddíl MB, pokud se fakturační značka nachází a odpovídá našim hodnotám, které jsou k dispozici.
 
-Krok 7: odpojte prosím virtuální pevný disk od virtuálního počítače a odstraňte virtuální počítač.
+### <a name="create-a-first-mb-2048-kb-partition-on-an-empty-vhd"></a>Vytvoření prvního oddílu MB (2048 KB) na prázdném virtuálním pevném disku
+
+Tyto kroky platí jenom pro Linux.
+
+1. Vytvořte libovolný typ virtuálního počítače se systémem Linux, například Ubuntu, cent OS nebo jiné. Vyplňte požadovaná pole a vyberte **Další: disky >**.
+
+   ![Snímek obrazovky, který ukazuje stránku vytvořit virtuální počítač s zvýrazněným tlačítkem Další: disky.](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+1. Vytvořte pro virtuální počítač nespravovaný disk.
+
+   Buď použijte výchozí hodnoty, nebo zadejte libovolnou hodnotu pro pole jako síťové rozhraní, NSG a veřejnou IP adresu.
+
+   ![Obrázek obrazovky stránky datové disky v toku vytvořit virtuální počítač.](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+1. Po vytvoření virtuálního počítače v levém podokně vyberte **disky** .
+
+   ![Snímek obrazovky ukazující, jak vybrat disky pro virtuální počítač](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+1. Připojte virtuální pevný disk jako datový disk k VIRTUÁLNÍmu počítači pro vytvoření tabulky oddílů.
+
+   1. Vyberte **Přidat**  >  **existující objekt BLOB** datadisk.
+
+      ![Snímek obrazovky ukazující, jak přidat datový disk do virtuálního pevného disku.](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+   1. Najděte svůj účet úložiště VHD.
+   1. Vyberte **kontejner** a pak vyberte svůj virtuální pevný disk.
+   1. Vyberte **OK**.
+
+      ![Snímek obrazovky se stránkou připojit nespravovaný disk](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+      Virtuální pevný disk se přidá jako datový disk LUN 0.
+
+   1. Restartujte virtuální počítač.
+
+1. Po restartování virtuálního počítače se přihlaste k virtuálnímu počítači pomocí výstupu nebo jiného klienta a spuštěním `sudo  -i` příkazu získáte přístup ke kořenu.
+
+   ![Snímek obrazovky s příkazovým řádkem klienta výstupu ukazujícím sudo-i](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+1. Vytvořte oddíl na virtuálním pevném disku.
+
+   1. Zadejte `fdisk /dev/sdb` příkaz.
+   1. Pokud chcete zobrazit existující seznam oddílů z virtuálního pevného disku, zadejte `p` .
+   1. Zadejte `d` , pokud chcete odstranit všechny existující oddíly dostupné ve vašem virtuálním pevném disku. Pokud není to nutné, můžete tento krok přeskočit.
+
+      ![Snímek obrazovky s příkazovým řádkem klienta pro výstup ukazující příkazy pro odstranění existujících oddílů.](./media/create-vm/vm-certification-issues-solutions-21.png)
+
+   1. Zadejte pro `n` Vytvoření nového oddílu a vyberte možnost `p` pro (primární oddíl).
+
+   1. Jako hodnotu _prvního sektoru_ zadejte 2048. Jako výchozí hodnotu můžete opustit _poslední sektor_ .
+
+      >[!IMPORTANT]
+      >Všechna existující data budou vymazána až 2048 KB. Zálohování virtuálního pevného disku před vytvořením nového oddílu.
+
+      ![Snímek obrazovky s příkazovým řádkem klienta výstupu znázorňující příkazy a výstup pro vymazané data.](./media/create-vm/vm-certification-issues-solutions-22.png)
+
+   1. Zadáním `w` potvrďte vytváření oddílů. 
+
+      ![Snímek obrazovky s příkazovým řádkem klienta pro výstup ukazující příkazy pro vytvoření oddílu](./media/create-vm/vm-certification-issues-solutions-23.png)
+
+   1. Tabulku oddílů můžete ověřit spuštěním příkazu `n fdisk /dev/sdb` a zadáním `p` . Uvidíte, že je vytvořen oddíl s hodnotou posunu 2048. 
+
+      ![Snímek obrazovky s příkazovým řádkem klienta výstupu znázorňující příkazy pro vytvoření posunu 2048.](./media/create-vm/vm-certification-issues-solutions-24.png)
+
+1. Odpojte virtuální pevný disk od virtuálního počítače a odstraňte virtuální počítač.
+
+### <a name="create-a-first-mb-2048-kb-partition-by-moving-existing-data-on-vhd"></a>Vytvoření prvního oddílu MB (2048 KB) přesunutím stávajících dat na VHD
+
+Tyto kroky platí jenom pro Linux.
+
+1. Vytvořte libovolný typ virtuálního počítače se systémem Linux, například Ubuntu, cent OS nebo jiné. Vyplňte požadovaná pole a vyberte **Další: disky >**.
+
+   ![Snímek obrazovky, který ukazuje stránku vytvořit virtuální počítač s zvýrazněným tlačítkem Další: disky.](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+1. Vytvořte pro virtuální počítač nespravovaný disk.
+
+   ![Obrázek obrazovky stránky datové disky v toku vytvořit virtuální počítač.](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+   Buď použijte výchozí hodnoty, nebo zadejte libovolnou hodnotu pro pole jako síťové rozhraní, NSG a veřejnou IP adresu.
+
+1. Po vytvoření virtuálního počítače v levém podokně vyberte **disky** .
+
+   ![Snímek obrazovky ukazující, jak vybrat disky pro virtuální počítač](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+1. Připojte virtuální pevný disk jako datový disk k VIRTUÁLNÍmu počítači pro vytvoření tabulky oddílů.
+
+   1. Připojte virtuální pevný disk jako datový disk k VIRTUÁLNÍmu počítači pro vytvoření tabulky oddílů.
+
+   1. Vyberte **Přidat**  >  **existující objekt BLOB** datadisk.
+
+      ![Snímek obrazovky ukazující, jak přidat datový disk do virtuálního pevného disku.](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+   1. Najděte svůj účet úložiště VHD.
+   1. Vyberte **kontejner** a pak vyberte svůj virtuální pevný disk.
+   1. Vyberte **OK**.
+
+      ![Snímek obrazovky se stránkou připojit nespravovaný disk](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+      Virtuální pevný disk se přidá jako datový disk LUN 0.
+
+   1. Restartujte virtuální počítač.
+
+1. Přihlaste se k virtuálnímu počítači pomocí výstupu nebo jiného klienta a spusťte `sudo  -i` příkaz pro získání přístupu root.
+
+   ![Snímek obrazovky s příkazovým řádkem klienta výstupu ukazující přihlášení a sudo-i](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+1. Spusťte příkaz `echo '+1M,' | sfdisk --move-data /dev/sdc -N 1`.
+
+   ![Snímek obrazovky příkazového řádku klienta pro výstup ukazující spuštění příkazů](./media/create-vm/vm-certification-issues-solutions-25.png)
+
+   >[!NOTE]
+   >Dokončení tohoto příkazu může trvat delší dobu, protože závisí na velikosti disku.
+
+1. Odpojte virtuální pevný disk od virtuálního počítače a odstraňte virtuální počítač.
 
 
 ## <a name="default-credentials"></a>Výchozí pověření
 
-Vždy zajistěte, aby se výchozí pověření neodesílala u odeslaného virtuálního pevného disku. Přidání výchozích přihlašovacích údajů způsobí, že virtuální pevný disk bude více zranitelný vůči bezpečnostním hrozbám Místo toho vytvořte při odeslání VHD vlastní přihlašovací údaje.
+Nikdy Neodesílat výchozí pověření pomocí odeslaného virtuálního pevného disku. Přidání výchozích přihlašovacích údajů způsobí, že virtuální pevný disk bude více zranitelný vůči bezpečnostním hrozbám Místo toho vytvořte při odeslání VHD vlastní přihlašovací údaje.
   
 ## <a name="datadisk-mapped-incorrectly"></a>Nesprávně mapované datadisk
 
-Pokud je žádost odeslána s více datovými disky, ale jejich pořadí není v pořadí, považuje se za problém s mapováním. Například pokud existují tři datové disky, pořadí číslování musí být *0, 1, 2*. Jakékoli jiné pořadí se považuje za problém s mapováním.
+K problémům s mapováním může dojít, když je žádost odeslána s více datovými disky, které nejsou v sekvenci. Například pořadí číslování pro tři datové disky musí být *0, 1, 2*. Jakékoli jiné pořadí se považuje za problém s mapováním.
 
 Odešlete žádost znovu se správným pořadím datových disků.
 
@@ -444,11 +470,11 @@ Pokud se mají znovu použít všechny image z Azure Marketplace, musí být vir
 
 * Pro **Linux** následující proces GENERALIZUJE virtuální počítač Linux a znovu ho nasadí jako samostatný virtuální počítač.
 
-  V okně SSH zadejte následující příkaz: `sudo waagent -deprovision+user`
+  V okně SSH zadejte následující příkaz: `sudo waagent -deprovision+user` .
 
 * Pro **Windows** můžete zobecnit bitové kopie systému Windows pomocí nástroje `sysreptool` .
 
-Další informace o tomto nástroji najdete v tématu [Přehled nástroje pro přípravu systému (Sysprep)]( https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+  Další informace o tomto `sysreptool` nástroji najdete v tématu [Přehled nástroje pro přípravu systému (Sysprep)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
 ## <a name="datadisk-errors"></a>Chyby datadisk
 
@@ -456,114 +482,119 @@ Pro řešení chyb souvisejících s datovým diskem použijte následující ta
 
 |Chyba|Důvod|Řešení|
 |---|---|---|
-|`DataDisk- InvalidUrl:`|K této chybě mohlo dojít z důvodu neplatného čísla logické jednotky (LUN) při odeslání nabídky.|Ověřte, že je pořadí čísel LUN pro datový disk v partnerském centru.|
-|`DataDisk- NotFound:`|K této chybě může dojít kvůli tomu, že datový disk není umístěný na zadané adrese URL SAS.|Ověřte, že je datový disk umístěný na adrese URL SAS, která je zadaná v požadavku.|
-|
+|`DataDisk- InvalidUrl:`|K této chybě může dojít při odeslání nabídky z důvodu neplatné logické jednotky (LUN).|Ověřte, že je pořadí čísel LUN pro datový disk v partnerském centru.|
+|`DataDisk- NotFound:`|K této chybě může dojít, protože datový disk není umístěný na zadané adrese URL SAS.|Ověřte, že je datový disk umístěný na zadané adrese URL SAS.|
 
 ## <a name="remote-access-issue"></a>Problém se vzdáleným přístupem
 
-Pokud v imagi Windows není povolená možnost protokol RDP (Remote Desktop Protocol) (RDP), zobrazí se tato chyba. 
+Tato chyba se zobrazí, pokud není možnost protokol RDP (Remote Desktop Protocol) (RDP) pro bitovou kopii systému Windows povolena.
 
 Než je odešlete, povolte přístup k protokolu RDP pro image Windows.
 
 ## <a name="bash-history-failed"></a>Nepovedlo se Bashovat historii
 
-Tato chyba se zobrazí, pokud je velikost historie bash v odeslaném obrázku větší než 1 kilobajt (KB). Velikost je omezená na 1 KB, aby se zajistilo, že v souboru historie bash nejsou zachyceny žádné potenciálně citlivé informace.
+Tato chyba se zobrazí, pokud je velikost historie bash v odeslaném obrázku větší než 1 kilobajt (KB). Velikost je omezena na 1 KB, aby bylo možné soubor omezit obsahující potenciálně citlivé informace.
 
-Níže jsou uvedené kroky, jak odstranit historii bash.
+Odstranění historie bash:
 
-Krok 1. Nasaďte virtuální počítač a klikněte na možnost spustit příkaz na Azure Portal.
-![Spustit příkaz na Azure Portal](./media/create-vm/vm-certification-issues-solutions-3.png)
+1. Nasaďte virtuální počítač a na Azure Portal vyberte možnost **Spustit příkaz** .
 
-Krok 2. Vyberte první možnost "RunShellScript" a spusťte následující příkaz.
+   ![Snímek obrazovky Azure Portal s možností ' Run Command ' v levém podokně.](./media/create-vm/vm-certification-issues-solutions-3.png)
 
-Příkaz: CAT/dev/null > ~/.bash_history && History-c " ![ bash historie příkazu on Azure Portal](./media/create-vm/vm-certification-issues-solutions-4.png)
+1. Vyberte první možnost **RunShellScript** a pak spusťte příkaz: `cat /dev/null > ~/.bash_history && history -c` .
 
-Krok 3. Po úspěšném provedení příkazu restartujte virtuální počítač.
+   ![Snímek obrazovky se stránkou Run Command Script na Azure Portal](./media/create-vm/vm-certification-issues-solutions-4.png)
 
-Krok 4: Generalizujte virtuální počítač, povezměte virtuální pevný disk image a zastavte virtuální počítač.
+1. Po úspěšném spuštění příkazu restartujte virtuální počítač.
 
-Krok 5. Re-Submit generalizovaná bitová kopie.
+1. Generalizujte virtuální počítač, povezměte virtuální pevný disk image a virtuální počítač zastavte.
 
-## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Požadavky na výjimky (vlastní šablony) na image virtuálních počítačů pro selektivní testy
+1. Znovu odešlete zobecněnou bitovou kopii.
+
+## <a name="request-an-exception-on-vm-images-for-select-tests"></a>Vyžádat výjimku z imagí virtuálních počítačů pro vybrané testy
 
 Vydavatelé můžou vyžádat výjimky pro několik testů provedených během certifikace virtuálních počítačů. Výjimky jsou k dispozici ve výjimečných případech, pokud Vydavatel poskytuje důkaz pro podporu žádosti. Certifikační tým si vyhrazuje právo odepřít nebo schválit výjimky kdykoli.
 
-V níže uvedených částech budeme pohovořit o hlavních scénářích, kde jsou požadovány výjimky a jak si ji vyžádat.
+Tato část popisuje obecné scénáře, ve kterých vydavatelé požadují výjimku a jak si ji vyžádat.
 
 ### <a name="scenarios-for-exception"></a>Scénáře pro výjimku
 
-Existují všeobecně tři scénáře a případy, kdy vydavatel vyžádá výjimky.
+Vydavatelé obecně vyžadují výjimky v následujících případech:
 
-- **Výjimka pro jeden nebo více testovacích případů** – vydavatelé: kontaktuje [podporu](https://aka.ms/marketplacepublishersupport) partnerského centra, aby vyžádala výjimky pro testovací případy.
+- **Výjimka pro jeden nebo více testovacích případů**. Kontaktujte [podporu partnerského centra](https://aka.ms/marketplacepublishersupport) a vyžádejte si výjimky pro testovací případy.
 
-- **Uzamčené virtuální počítače/žádný kořenový přístup** – někteří vydavatelé mají scénáře, ve kterých se virtuální počítače musí zamknout, protože mají na virtuálním počítači nainstalovaný software, jako jsou třeba brány firewall. V tomto případě mohou vydavatelé stáhnout [Nástroj Certified test Tool](https://aka.ms/AzureCertificationTestTool) a odeslat zprávu na [podporu](https://aka.ms/marketplacepublishersupport)partnerského centra.
+- **Uzamčené virtuální počítače/žádný kořenový přístup**. Někteří vydavatelé mají scénáře, kde je potřeba zamknout virtuální počítače, protože mají na virtuálním počítači nainstalovaný software, jako jsou třeba brány firewall. V takovém případě si stáhněte [certifikovaný testovací nástroj](https://aka.ms/AzureCertificationTestTool) a odešlete sestavu na [podporu partnerského centra](https://aka.ms/marketplacepublishersupport).
 
-- **Vlastní šablony** – někteří vydavatelé publikují image virtuálních počítačů, které pro nasazení virtuálních počítačů vyžadují vlastní šablonu ARM. V takovém případě by vydavatelé měli odeslat vlastní šablony v partnerském [centru, aby je mohl použít](https://aka.ms/marketplacepublishersupport) Certifikační tým k ověření.
+- **Vlastní šablony**. Někteří vydavatelé publikují image virtuálních počítačů, které pro nasazení virtuálních počítačů vyžadují vlastní šablonu Azure Resource Manager (ARM). V takovém případě odešlete vlastní šablony na [podporu partnerského centra](https://aka.ms/marketplacepublishersupport) , aby ji Certifikační tým mohl použít k ověření.
 
 ### <a name="information-to-provide-for-exception-scenarios"></a>Informace, které je potřeba poskytnout pro scénáře výjimek
 
-Vydavatelé by měli kontaktovat [podporu](https://aka.ms/marketplacepublishersupport) partnerského centra pro vyžádání výjimek pro výše uvedený scénář s dalšími následujícími informacemi:
+Obraťte se na [podporu partnerského centra](https://aka.ms/marketplacepublishersupport) a požádejte o výjimku pro jeden z těchto scénářů a uveďte následující informace:
 
-   1. ID vydavatele – ID vydavatele na portálu partnerského centra
-   2. ID nabídky/název – ID nabídky/název, pro který se požaduje výjimka
-   3. ID SKU/plánu – ID/SKU nabídky virtuálních počítačů, pro které se požaduje výjimka
-   4. Verze – verze nabídky virtuálních počítačů, pro kterou je požadována výjimka
-   5. Typ výjimky – testy, uzamčený virtuální počítač, vlastní šablony
-   6. Důvod žádosti – důvod pro tuto výjimku a informace o testech, které mají být vyloučeny
-   7. Časová osa – datum, do kterého byla tato výjimka požadována
-   8. Příloha – připojte všechny dokumenty legitimace podle důležitosti. Pro zamčené virtuální počítače připojte testovací sestavu a pro vlastní šablony zadejte vlastní šablonu ARM jako přílohu. Nepovedlo se připojit sestavu pro zamčené virtuální počítače a vlastní šablonu ARM pro vlastní šablony. výsledkem bude odepření žádosti.
+- **ID vydavatele** Zadejte ID vydavatele centrálního portálu partnera.
+- **ID nabídky/název** Zadejte ID nabídky nebo název.
+- **ID SKU/plánu**. Zadejte ID nebo SKU plánu nabídky VM.
+- **Verze:** Zadejte verzi nabídky virtuálního počítače, která vyžaduje výjimku.
+- **Typ výjimky**. Vyberte si z testů, uzamčených virtuálních počítačů nebo vlastních šablon.
+- **Důvod žádosti** Zahrňte důvod žádosti o výjimku a veškeré informace o výjimkách testu.
+- **Časová osa**. Zadejte koncové datum pro vaši výjimku.
+- **Příloha**. Přiložené důležité dokumenty k legitimaci:
 
-## <a name="address-a-vulnerability-or-exploit-in-a-vm-offer"></a>Řešení ohrožení zabezpečení nebo zneužití v nabídce virtuálních počítačů
+  - Pro zamčené virtuální počítače připojte testovací sestavu.
+  - Pro vlastní šablony zadejte vlastní šablonu ARM jako přílohu.
 
-Tato část popisuje, jak poskytnout novou bitovou kopii virtuálního počítače, když se v jedné z vašich imagí virtuálních počítačů zjistí ohrožení zabezpečení nebo zneužití. To platí jenom pro nabídky Azure Virtual Machine publikované na Azure Marketplace.
+  Pokud tyto přílohy neuvedete, bude vaše žádost zamítnutá.
+
+## <a name="address-a-vulnerability-or-an-exploit-in-a-vm-offer"></a>Řešení ohrožení zabezpečení nebo zneužití v nabídce virtuálních počítačů
+
+Tato část popisuje, jak poskytnout novou bitovou kopii virtuálního počítače, když se v jedné z vašich imagí virtuálních počítačů zjistí ohrožení zabezpečení nebo zneužití. Týká se jenom nabídek virtuálních počítačů Azure publikovaných na Azure Marketplace.
 
 > [!NOTE]
 > Poslední bitovou kopii virtuálního počítače nemůžete odebrat z plánu nebo zrušit prodej posledního plánu pro nabídku.
 
-Proveďte některou z následujících akcí:
+Proveďte jednu z následujících akcí:
 
-- Pokud máte novou image virtuálního počítače, která by nahradila zranitelnou bitovou kopii virtuálního počítače, přečtěte si část [zadání pevné image virtuálního počítače](#provide-a-fixed-vm-image) níže.
+- Pokud máte novou image virtuálního počítače, která by nahradila zranitelnou bitovou kopii virtuálního počítače, přečtěte si téma [poskytnutí pevné image virtuálního počítače](#provide-a-fixed-vm-image).
 - Pokud nemáte novou image virtuálního počítače, která by nahradila jedinou image virtuálního počítače v plánu, nebo pokud jste s plánem hotovi, [zastavíte prodej tohoto plánu](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan).
 - Pokud v nabídce nehodláte nahradit jedinou image virtuálního počítače, doporučujeme [tuto nabídku přestat prodávat](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan).
 
 ### <a name="provide-a-fixed-vm-image"></a>Zadání pevné image virtuálního počítače
 
-K poskytnutí pevné image virtuálního počítače, která by nahradila image virtuálního počítače s chybou zabezpečení nebo zneužití, udělejte toto:
+Poskytnutí pevné image virtuálního počítače k nahrazení image virtuálního počítače, která má ohrožení zabezpečení nebo zneužití:
 
 1. Zadejte novou image virtuálního počítače pro řešení ohrožení zabezpečení nebo zneužití.
-2. Odstraňte image virtuálního počítače s chybou zabezpečení nebo zneužití.
-3. Znovu publikujte nabídku.
+1. Odstraňte image virtuálního počítače s chybou zabezpečení nebo zneužití.
+1. Znovu publikujte nabídku.
 
 #### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>Zadejte novou image virtuálního počítače pro řešení ohrožení zabezpečení nebo zneužití.
 
-K provedení těchto kroků budete potřebovat připravit technické prostředky pro image virtuálního počítače, kterou chcete přidat. Další informace najdete v tématu [Vytvoření virtuálního počítače pomocí schválené základny](azure-vm-create-using-approved-base.md) nebo [Vytvoření virtuálního počítače pomocí vlastní image](azure-vm-create-using-own-image.md)a [vygenerování identifikátoru URI SAS pro vaši image virtuálního počítače](azure-vm-get-sas-uri.md).
+Chcete-li provést tento postup, připravte technické prostředky pro bitovou kopii virtuálního počítače, kterou chcete přidat. Další informace najdete v tématu [Vytvoření virtuálního počítače pomocí schválené základny](azure-vm-create-using-approved-base.md)nebo [Vytvoření virtuálního počítače pomocí vlastní image](azure-vm-create-using-own-image.md) a [vygenerování identifikátoru URI SAS pro vaši image virtuálního počítače](azure-vm-get-sas-uri.md).
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled**.
-3. Ve sloupci **alias nabídky** vyberte nabídku.
-4. Na kartě **Přehled plánu** ve sloupci **název** vyberte plán, do kterého chcete virtuální počítač přidat.
-5. Na kartě **Technická konfigurace** v části **image virtuálních počítačů** vyberte **+ Přidat image virtuálního počítače**.
+1. V levém podokně vyberte přehled **komerčního tržiště**  >  **Overview**.
+1. Ve sloupci **alias nabídky** vyberte nabídku.
+1. Na kartě **Přehled plánu** ve sloupci **název** vyberte příslušný plán.
+1. Na kartě **Technická konfigurace** v části **image virtuálních počítačů** vyberte **+ Přidat image virtuálního počítače**.
 
-> [!NOTE]
-> V jednom okamžiku můžete přidat jenom jednu image virtuálního počítače do jednoho plánu. Pokud chcete přidat víc imagí virtuálních počítačů, před přidáním další image virtuálního počítače publikujte nejdřív jednu živou.
+   > [!NOTE]
+   > V jednom okamžiku můžete přidat jenom jednu image virtuálního počítače do jednoho plánu. Chcete-li přidat více imagí virtuálních počítačů, před přidáním další image virtuálního počítače nejprve publikujte první z nich.
 
-6. V zobrazených oknech zadejte novou verzi disku a image virtuálního počítače.
-7. Vyberte **Uložit koncept**.
+1. V zobrazených oknech zadejte novou verzi disku a image virtuálního počítače.
+1. Vyberte **Uložit koncept**.
 
-Pokračujte další částí níže a odstraňte image virtuálního počítače s chybou zabezpečení.
+Dále odeberte image virtuálního počítače s chybou zabezpečení.
 
 #### <a name="remove-the-vm-image-with-the-security-vulnerability-or-exploit"></a>Odebrání image virtuálního počítače s chybou zabezpečení nebo zneužitím
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled**.
+2. V levém podokně vyberte přehled **komerčního tržiště**  >  **Overview**.
 3. Ve sloupci **alias nabídky** vyberte nabídku.
-4. Na kartě **Přehled plánu** ve sloupci **název** vyberte plán s virtuálním počítačem, který chcete odebrat.
+4. Na kartě **Přehled plánu** ve sloupci **název** vyberte příslušný plán.
 5. Na kartě **Technická konfigurace** v části **image virtuálních počítačů** vedle image virtuálního počítače, kterou chcete odebrat, vyberte **Odebrat image virtuálního počítače**.
-6. V dialogovém okně, které se zobrazí, vyberte **pokračovat**.
+6. V dialogovém okně vyberte **pokračovat**.
 7. Vyberte **Uložit koncept**.
 
-Pokračujte další částí níže, aby se nabídka znovu publikovala.
+Potom nabídku znovu publikujte.
 
 #### <a name="republish-the-offer"></a>Opětovné publikování nabídky
 
@@ -577,4 +608,4 @@ Chcete-li dokončit proces publikování, přečtěte si téma [Revize a publiko
 
 - [Konfigurace vlastností nabídek virtuálních počítačů](azure-vm-create-properties.md)
 - [Ceny aktivního tržiště](partner-center-portal/marketplace-rewards.md)
-- Pokud máte dotazy nebo připomínky ke zlepšení, obraťte se na [podporu](https://aka.ms/marketplacepublishersupport)partnerského centra.
+- Pokud máte dotazy nebo připomínky ke zlepšení, obraťte se na [podporu partnerského centra](https://aka.ms/marketplacepublishersupport).

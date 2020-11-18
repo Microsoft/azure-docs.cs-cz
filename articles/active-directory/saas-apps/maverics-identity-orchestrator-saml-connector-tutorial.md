@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: a9d5988f25b833480c4809ba116c48022566b7a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f4fe368e9a56e5ac4c9dfa2648ce4af15a1b5ac0
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458179"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684402"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Kurz: Integrace jednotného přihlašování Azure AD s Maverics identity Orchestrator konektorem SAML
 
@@ -157,8 +157,8 @@ secrets:
 Trezor klíčů Azure můžete nastavit buď pomocí Azure Portal, nebo pomocí Azure CLI.
 
 **Použití webu Azure Portal**
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. [Vytvořte nový trezor klíčů](../../key-vault/secrets/quick-create-portal.md#create-a-vault).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. [Vytvořte nový trezor klíčů](../../key-vault/general/quick-create-portal.md).
 1. [Přidejte tajné klíče do trezoru klíčů](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 1. [Registrace aplikace ve službě Azure AD](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
 1. [Autorizovat aplikaci pro použití tajného klíče](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
@@ -201,11 +201,11 @@ Trezor klíčů Azure můžete nastavit buď pomocí Azure Portal, nebo pomocí 
 
 ## <a name="configure-your-application-in-azure-ad-for-saml-based-sso"></a>Konfigurace aplikace ve službě Azure AD pro jednotné přihlašování založené na SAML
 
-1. V tenantovi služby Azure AD klikněte na **podnikové aplikace**, vyhledejte **konektor Maverics identity Orchestrator**a pak ho vyberte.
+1. V tenantovi služby Azure AD klikněte na **podnikové aplikace**, vyhledejte **konektor Maverics identity Orchestrator** a pak ho vyberte.
 
 1. V podokně **vlastností** konektoru Maverics identity Orchestrator, nastavte **přiřazení uživatele jako požadované?** na **ne** , aby aplikace mohla fungovat pro nově migrované uživatele.
 
-1. V podokně **Přehled** konektoru Maverics identity Orchestrator Orchestrator vyberte **nastavit jednotné přihlašování**a pak vyberte **SAML**.
+1. V podokně **Přehled** konektoru Maverics identity Orchestrator Orchestrator vyberte **nastavit jednotné přihlašování** a pak vyberte **SAML**.
 
 1. V podokně přihlášení Maverics identity Orchestrator konektor SAML s odkazem na **bázi SAML** upravte **základní konfiguraci SAML** tak, že vyberete tlačítko **Upravit** (ikona tužky).
 
@@ -219,7 +219,7 @@ Trezor klíčů Azure můžete nastavit buď pomocí Azure Portal, nebo pomocí 
 
 1. Vyberte **Uložit**.
 
-1. V části **podpisový certifikát SAML** vyberte tlačítko **Kopírovat** a zkopírujte **adresu URL federačních metadat aplikace**a pak ji uložte do svého počítače.
+1. V části **podpisový certifikát SAML** vyberte tlačítko **Kopírovat** a zkopírujte **adresu URL federačních metadat aplikace** a pak ji uložte do svého počítače.
 
     ![Snímek obrazovky s tlačítkem pro kopírování podpisového certifikátu SAML](common/copy-metadataurl.png)
 
@@ -283,7 +283,7 @@ Pomocí této konfigurace můžete postupně migrovat uživatele z produktu pro 
 
 1. V **konektoru Maverics identity Orchestrator pro identitu | V podokně oprávnění rozhraní API** vyberte **Přidat oprávnění** a potom v podokně **oprávnění API pro žádosti** vyberte oprávnění **Microsoft Graph** a **aplikace**. 
 
-1. Na další obrazovce vyberte **User. celoobrazovkového. All**a pak vyberte **Přidat oprávnění**. 
+1. Na další obrazovce vyberte **User. celoobrazovkového. All** a pak vyberte **Přidat oprávnění**. 
 
 1. Zpátky v podokně **oprávnění rozhraní API** vyberte **udělit souhlas správce**.
 

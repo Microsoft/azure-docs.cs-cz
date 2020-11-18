@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 231a3eb377c32d422efc39833bf0fe00af105ff1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 818ae0b90b71b61c3b33676d81d9c783c577bdcc
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546513"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683892"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Základní hodnoty zabezpečení Azure pro Azure Kubernetes Service
 
@@ -40,13 +40,13 @@ Můžete implementovat privátní cluster AKS, abyste zajistili, že síťový p
 
 - [Vytvoření privátního clusteru služby Azure Kubernetes](private-clusters.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuálních sítí, podsítí a síťových karet
 
-**Pokyny** : použijte Security Center a postupujte podle doporučení pro ochranu sítě a zabezpečte síťové prostředky používané clustery Azure Kubernetes Service (AKS). 
+**Pokyny**: použijte Security Center a postupujte podle doporučení pro ochranu sítě a zabezpečte síťové prostředky používané clustery Azure Kubernetes Service (AKS). 
 
 Povolte protokolování toku skupin zabezpečení sítě a odešlete protokoly do účtu Azure Storage k auditování. Protokoly toku můžete také odeslat do pracovního prostoru Log Analytics a potom pomocí Analýza provozu poskytnout přehled o vzorech provozu v cloudu Azure, abyste mohli vizualizovat síťovou aktivitu, identifikovat aktivní body a bezpečnostní hrozby, pochopit vzorce toku přenosů dat a odhalit nesprávné konfigurace sítě.
 
@@ -56,13 +56,13 @@ Povolte protokolování toku skupin zabezpečení sítě a odešlete protokoly d
 
 - [Postup povolení a použití Analýza provozu](../network-watcher/traffic-analytics.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
-**Pokyny** : k zajištění další úrovně zabezpečení pomocí filtrování příchozího provozu do webových aplikací použijte firewall webové aplikace s podporou služby Azure Application Gateway (WAF). Azure WAF používá sadu pravidel, která je k dispozici v otevřeném projektu OWASP (Web Application Security), pro útoky, jako je například skriptování mezi lokalitami nebo poškození souborů cookie proti tomuto provozu. 
+**Pokyny**: k zajištění další úrovně zabezpečení pomocí filtrování příchozího provozu do webových aplikací použijte firewall webové aplikace s podporou služby Azure Application Gateway (WAF). Azure WAF používá sadu pravidel, která je k dispozici v otevřeném projektu OWASP (Web Application Security), pro útoky, jako je například skriptování mezi lokalitami nebo poškození souborů cookie proti tomuto provozu. 
 
 Použijte bránu API pro ověřování, autorizaci, omezování, ukládání do mezipaměti, transformaci a monitorování rozhraní API používaných ve vašem prostředí AKS. Brána API slouží jako přední dveře ke mikroslužbám, odděluje klienty od vašich mikroslužeb a snižuje složitost vašich mikroslužeb tím, že odstraňuje zatížení, které zpracovává obavy z hlediska vzájemného průřezu.
 
@@ -72,9 +72,9 @@ Použijte bránu API pro ověřování, autorizaci, omezování, ukládání do 
 
 - [Použití Azure API Management s mikroslužbami nasazenými ve službě Azure Kubernetes](../api-management/api-management-kubernetes.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
 
@@ -87,9 +87,9 @@ Vyberte možnost povolit nebo zakázat provoz na základě nastavení, jako jsou
 
 - [Jak nakonfigurovat DDoS Protection](../virtual-network/manage-ddos-protection.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="15-record-network-packets"></a>1,5: zaznamenání síťových paketů
 
@@ -99,9 +99,9 @@ Při vytváření nebo aktualizaci virtuální sítě v rámci předplatného je
 
 - [Postup povolení Network Watcher](../network-watcher/network-watcher-create.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
@@ -113,9 +113,9 @@ Pokud zjišťování nebo prevence vniknutí není v závislosti na kontrole dat
 
 - [Jak nasadit Azure Application Gateway (Azure WAF)](../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
 
@@ -129,13 +129,13 @@ Použijte plně kvalifikované značky domény (FQDN) pro aplikace, které je mo
 
 - [Jak nasadit Azure Application Gateway (Azure WAF)](../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : netýká se
+**Odpovědnost**: netýká se
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
 
-**Pokyny** : pomocí značek služby virtuální sítě můžete definovat řízení přístupu k síti u skupin zabezpečení sítě přidružených k instancím služby Azure Kubernetes Service (AKS). Značky služeb lze použít místo konkrétních IP adres při vytváření pravidel zabezpečení pro povolení nebo zamítnutí provozu pro odpovídající službu zadáním názvu značky služby. 
+**Pokyny**: pomocí značek služby virtuální sítě můžete definovat řízení přístupu k síti u skupin zabezpečení sítě přidružených k instancím služby Azure Kubernetes Service (AKS). Značky služeb lze použít místo konkrétních IP adres při vytváření pravidel zabezpečení pro povolení nebo zamítnutí provozu pro odpovídající službu zadáním názvu značky služby. 
 
 Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
@@ -147,13 +147,13 @@ Použijte značku Azure pro fondy uzlů v clusteru AKS. Liší se od značek slu
 
 - [Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)](limit-egress-traffic.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
 
-**Pokyny** : definování a implementace standardních konfigurací zabezpečení pomocí Azure Policy pro síťové prostředky přidružené k vašim clusterům Azure Kubernetes Service (AKS). Pomocí aliasů Azure Policy v oborech názvů Microsoft. ContainerService a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě vašich clusterů AKS. 
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pomocí Azure Policy pro síťové prostředky přidružené k vašim clusterům Azure Kubernetes Service (AKS). Pomocí aliasů Azure Policy v oborech názvů Microsoft. ContainerService a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě vašich clusterů AKS. 
 
 Můžete také použít předdefinované definice zásad týkající se AKS, například:
 
@@ -167,9 +167,9 @@ Můžete také použít předdefinované definice zásad týkající se AKS, nap
 
 - [Ukázky Azure Policy pro sítě](../governance/policy/samples/built-in-policies.md#network)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
@@ -184,13 +184,13 @@ Zvolte, že chcete povolit nebo zamítnout konkrétní síťové cesty v rámci 
 
 - [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: pomocí automatizovaných nástrojů monitorujte konfigurace síťových prostředků a zjišťují změny.
 
-**Pokyny** : pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků souvisejících s clustery Azure Kubernetes Service (AKS). 
+**Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků souvisejících s clustery Azure Kubernetes Service (AKS). 
 
 Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích. Jakékoli položky z AzureContainerService uživatele v protokolech aktivit se zaznamenávají jako akce platformy. 
 
@@ -202,9 +202,9 @@ Protokoly Azure Monitor můžete použít k povolení a dotazování protokolů 
 
 - [Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)](view-master-logs.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
@@ -212,15 +212,15 @@ Protokoly Azure Monitor můžete použít k povolení a dotazování protokolů 
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
-**Pokyny** : uzly služby Azure Kubernetes Service (AKS) používají NTP.Ubuntu.com pro synchronizaci času spolu s portem UDP 123 a protokolem NTP (Network Time Protocol). 
+**Pokyny**: uzly služby Azure Kubernetes Service (AKS) používají NTP.Ubuntu.com pro synchronizaci času spolu s portem UDP 123 a protokolem NTP (Network Time Protocol). 
 
 Pokud používáte vlastní servery DNS, ujistěte se, že uzly clusteru mají přístup k serverům NTP. 
 
 - [Principy požadavků na doménu a porty NTP pro uzly clusteru AKS](limit-egress-traffic.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurace centrální správy protokolů zabezpečení
 
@@ -246,13 +246,13 @@ Povolte a zapněte tato data do Azure Sentinel nebo SIEM třetí strany na zákl
 
 - [Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)](view-master-logs.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 
-**Pokyny** : pomocí protokolů aktivit můžete monitorovat akce v prostředcích Azure Kubernetes Service (AKS) a zobrazit všechny aktivity a jejich stav. Určete, jaké operace byly provedeny u prostředků ve vašem předplatném pomocí protokolů aktivit: kdo tuto operaci zahájil.
+**Pokyny**: pomocí protokolů aktivit můžete monitorovat akce v prostředcích Azure Kubernetes Service (AKS) a zobrazit všechny aktivity a jejich stav. Určete, jaké operace byly provedeny u prostředků ve vašem předplatném pomocí protokolů aktivit: kdo tuto operaci zahájil.
 
 Při výskytu operace
 
@@ -274,9 +274,9 @@ Zapněte také další protokoly auditu, jako je Kube-audit.
 
 - [Jak povolit a zkontrolovat protokoly hlavního uzlu Kubernetes v AKS](view-master-logs.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: shromáždění protokolů zabezpečení z operačních systémů
 
@@ -286,9 +286,9 @@ Shromažďování dat je nutné, aby poskytovala přehled o chybějících aktua
 
 - [Postup povolení automatického zřizování agenta Log Analytics](../security-center/security-center-enable-data-collection.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
@@ -296,15 +296,15 @@ Shromažďování dat je nutné, aby poskytovala přehled o chybějících aktua
 
 - [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
 
 **Doprovodné** materiály: zprovoznění instancí služby Azure KUBERNETES (AKS) pro Azure monitor a konfigurace nastavení diagnostiky pro váš cluster. 
 
-Pomocí Log Analytics pracovního prostoru Azure Monitor můžete prohlížet protokoly a provádět dotazy na data protokolu. Protokoly Azure Monitor jsou povolené a spravované v Azure Portal nebo prostřednictvím rozhraní příkazového řádku a pracují s clustery řízení přístupu na základě role (Azure RBAC) a s povolenými AKS clustery bez RBAC.
+Pomocí Log Analytics pracovního prostoru Azure Monitor můžete prohlížet protokoly a provádět dotazy na data protokolu. Protokoly Azure Monitor jsou povolené a spravované v Azure Portal nebo prostřednictvím rozhraní příkazového řádku a pracují s Kubernetesmi clustery řízení přístupu na základě role (Kubernetes RBAC), Azure RBAC a s povolenými AKSmi clustery.
 
 Podívejte se na protokoly generované hlavními komponentami AKS (Kube-apiserver a Kube-controllermanager) pro řešení potíží s aplikací a službami. Povolte a připojte data do Azure Sentinel nebo SIEM třetí strany pro centralizovanou správu protokolů a monitorování.
 
@@ -314,21 +314,21 @@ Podívejte se na protokoly generované hlavními komponentami AKS (Kube-apiserve
 
 - [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: povolení výstrah pro aktivity neobvyklé
 
-**Pokyny** : pomocí služby Azure Kubernetes Service (AKS) společně s Security Center získáte hlubší přehled o AKS uzlech. Zkontrolujte Security Center upozornění na hrozby a škodlivou aktivitu zjištěnou na hostiteli a na úrovni clusteru. Security Center implementuje průběžnou analýzu nezpracovaných událostí zabezpečení, ke kterým došlo v clusteru AKS, jako jsou síťová data, vytváření procesů a protokol auditu Kubernetes. Určete, zda má tato aktivita očekávané chování nebo zda se aplikace nechová. Pomocí metrik a protokolů v Azure Monitor doložit vaše závěry. 
+**Pokyny**: pomocí služby Azure Kubernetes Service (AKS) společně s Security Center získáte hlubší přehled o AKS uzlech. Zkontrolujte Security Center upozornění na hrozby a škodlivou aktivitu zjištěnou na hostiteli a na úrovni clusteru. Security Center implementuje průběžnou analýzu nezpracovaných událostí zabezpečení, ke kterým došlo v clusteru AKS, jako jsou síťová data, vytváření procesů a protokol auditu Kubernetes. Určete, zda má tato aktivita očekávané chování nebo zda se aplikace nechová. Pomocí metrik a protokolů v Azure Monitor doložit vaše závěry. 
 
 - [Pochopení integrace služby Azure Kubernetes Services pomocí Security Center](../security-center/defender-for-kubernetes-introduction.md)
 
 - [Postup povolení Azure Security Center úrovně Standard](../security-center/security-center-get-started.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
 
@@ -340,33 +340,33 @@ Podívejte se na protokoly generované hlavními komponentami AKS (Kube-apiserve
 
 - [Výstrahy pro kontejnery – clustery služby Azure Kubernetes](../security-center/alerts-reference.md#alerts-akscluster)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="29-enable-dns-query-logging"></a>2,9: povolení protokolování dotazů DNS
 
-**Pokyny** : Služba Azure Kubernetes Service (AKS) používá projekt CoreDNS pro správu a řešení DNS clusteru.
+**Pokyny**: Služba Azure Kubernetes Service (AKS) používá projekt CoreDNS pro správu a řešení DNS clusteru.
 
 Povolte protokolování dotazů DNS tak, že v coredns vlastní ConfigMap použijete dokumentovaný konfiguraci. 
 
 - [Přizpůsobení CoreDNS pomocí služby Azure Kubernetes Service](coredns-custom.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="210-enable-command-line-audit-logging"></a>2,10: povolení protokolování auditu příkazového řádku
 
-**Pokyny** : pomocí kubectl a klienta příkazového řádku ve službě Azure Kubernetes Service (AKS) můžete spravovat cluster Kubernetes a získat jeho protokoly z uzlu AKS pro účely řešení potíží. Kubectl je již nainstalován, pokud používáte Azure Cloud Shell. Pokud chcete nainstalovat kubectl místně, použijte rutinu Install-AzAksKubectl.
+**Pokyny**: pomocí kubectl a klienta příkazového řádku ve službě Azure Kubernetes Service (AKS) můžete spravovat cluster Kubernetes a získat jeho protokoly z uzlu AKS pro účely řešení potíží. Kubectl je již nainstalován, pokud používáte Azure Cloud Shell. Pokud chcete nainstalovat kubectl místně, použijte rutinu Install-AzAksKubectl.
 
 - [Rychlý Start – nasazení clusteru služby Azure Kubernetes pomocí prostředí PowerShell](kubernetes-walkthrough-powershell.md)
 
 - [Získání protokolů kubelet z uzlů clusteru Azure Kubernetes Service (AKS)](kubelet-logs.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
@@ -386,25 +386,25 @@ Použijte Azure CLI pro operace, jako je získání přihlašovacích údajů pr
 
 - [Jak monitorovat identitu a přístup pomocí Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
-**Pokyny** : Služba Azure KUBERNETES (AKS) neobsahuje koncept běžných výchozích hesel a neposkytuje řešení pro správu identit, ve kterém je možné ukládat běžné uživatelské účty a hesla. Díky integraci služby Azure Active Directory (Azure AD) můžete udělit přístup na základě role k prostředkům AKS v rámci oboru názvů nebo napříč clusterem. 
+**Pokyny**: Služba Azure KUBERNETES (AKS) neobsahuje koncept běžných výchozích hesel a neposkytuje řešení pro správu identit, ve kterém je možné ukládat běžné uživatelské účty a hesla. Díky integraci služby Azure Active Directory (Azure AD) můžete udělit přístup na základě role k prostředkům AKS v rámci oboru názvů nebo napříč clusterem. 
 
 Provádění dotazů ad hoc pro zjišťování účtů, které jsou členy skupin pro správu AKS, pomocí modulu Azure AD PowerShell
 
 - [Pochopení možností přístupu a identit pro AKS](concepts-identity.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
-**Pokyny** : Integrujte ověřování uživatelů pro clustery Azure Kubernetes Service (AKS) s Azure Active Directory (Azure AD). Přihlaste se ke clusteru AKS pomocí ověřovacího tokenu Azure AD. Nakonfigurujte Kubernetes řízení přístupu na základě role (RBAC) pro přístup správce k informacím a oprávněním pro správu (kubeconfig) a k prostředkům, oborům názvů a prostředkům clusteru. 
+**Pokyny**: Integrujte ověřování uživatelů pro clustery Azure Kubernetes Service (AKS) s Azure Active Directory (Azure AD). Přihlaste se ke clusteru AKS pomocí ověřovacího tokenu Azure AD. Konfigurace řízení přístupu na základě role Kubernetes (Kubernetes RBAC) pro přístup pro správu k informacím a oprávněním pro správu Kubernetes konfigurace (kubeconfig), obory názvů a prostředků clusteru. 
 
 Vytvořte zásady a postupy týkající se používání vyhrazených účtů pro správu. Implementujte Security Center doporučení pro správu identit a přístupu.
 
@@ -414,23 +414,23 @@ Vytvořte zásady a postupy týkající se používání vyhrazených účtů pr
 
 - [Použití řízení přístupu na základě role v Azure](control-kubeconfig-access.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
-**Pokyny** : použití jednotného přihlašování pro službu Azure Kubernetes Service (AKS) Azure Active Directory s integrovaným ověřováním služby Azure AD pro cluster AKS.
+**Pokyny**: použití jednotného přihlašování pro službu Azure Kubernetes Service (AKS) Azure Active Directory s integrovaným ověřováním služby Azure AD pro cluster AKS.
 
 - [Jak zobrazit protokoly Kubernetes, události a metriky pod v reálném čase](../azure-monitor/insights/container-insights-livedata-overview.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Pokyny** : integrace ověřování pro službu Azure Kubernetes Service (AKS) s Azure Active Directory (Azure AD). 
+**Pokyny**: integrace ověřování pro službu Azure Kubernetes Service (AKS) s Azure Active Directory (Azure AD). 
 
 Povolte Azure AD Multi-Factor Authentication (MFA) a sledujte doporučení pro správu identit a přístupu Security Center.
 
@@ -438,9 +438,9 @@ Povolte Azure AD Multi-Factor Authentication (MFA) a sledujte doporučení pro s
 
 - [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md) 
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
 
@@ -449,9 +449,9 @@ Povolte Azure AD Multi-Factor Authentication (MFA) a sledujte doporučení pro s
 
 - [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: protokolovat a upozornit na podezřelé aktivity z účtů pro správu
 
@@ -461,13 +461,13 @@ Povolte Azure AD Multi-Factor Authentication (MFA) a sledujte doporučení pro s
 
 - [Jak monitorovat aktivitu identity uživatelů a přístupu v Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
 
-**Pokyny** : pomocí pojmenovaných umístění podmíněného přístupu Umožněte přístup ke clusterům Azure Kubernetes Service (AKS) jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí. K tomu je potřeba integrované ověřování pro AKS s Azure Active Directory (Azure AD).
+**Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu Umožněte přístup ke clusterům Azure Kubernetes Service (AKS) jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí. K tomu je potřeba integrované ověřování pro AKS s Azure Active Directory (Azure AD).
 
 Omezte přístup k serveru rozhraní AKS API z omezené sady rozsahů IP adres, protože přijímá požadavky na provádění akcí v clusteru k vytváření prostředků nebo škálování počtu uzlů. 
 
@@ -475,9 +475,9 @@ Omezte přístup k serveru rozhraní AKS API z omezené sady rozsahů IP adres, 
 
 - [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
@@ -491,9 +491,9 @@ Použití předdefinovaných rolí AKS s řízením přístupu na základě role
 
 - [Integrace služby Azure AD spravované AKS](managed-aad.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
@@ -509,24 +509,24 @@ Uvědomte si role používané pro účely podpory nebo řešení potíží. Nap
 
 - [Postup sledování aktivity identity a přístupu uživatele v Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: sledování pokusů o přístup k deaktivovaným přihlašovacím údajům
 
-**Pokyny** : Integrujte ověřování uživatelů pro službu Azure Kubernetes Service (AKS) s Azure Active Directory (Azure AD). Vytvořte nastavení diagnostiky pro Azure AD a odešlete protokoly auditu a přihlašování do pracovního prostoru Azure Log Analytics. Nakonfigurujte požadované výstrahy (například při pokusu o přihlášení k deaktivovanému účtu) v pracovním prostoru Azure Log Analytics.
+**Pokyny**: Integrujte ověřování uživatelů pro službu Azure Kubernetes Service (AKS) s Azure Active Directory (Azure AD). Vytvořte nastavení diagnostiky pro Azure AD a odešlete protokoly auditu a přihlašování do pracovního prostoru Azure Log Analytics. Nakonfigurujte požadované výstrahy (například při pokusu o přihlášení k deaktivovanému účtu) v pracovním prostoru Azure Log Analytics.
 - [Jak integrovat protokoly aktivit Azure do Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Jak vytvářet, zobrazovat a spravovat výstrahy protokolu pomocí Azure Monitor](../azure-monitor/platform/alerts-log.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
-**Pokyny** : Integrujte ověřování uživatelů pro službu Azure Kubernetes Service (AKS) s Azure Active Directory (Azure AD). Pomocí funkce zjišťování rizik a Identity Protection pro Azure AD můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů. Ingestujte data do Azure Sentinel pro další šetření na základě obchodních potřeb.
+**Pokyny**: Integrujte ověřování uživatelů pro službu Azure Kubernetes Service (AKS) s Azure Active Directory (Azure AD). Pomocí funkce zjišťování rizik a Identity Protection pro Azure AD můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů. Ingestujte data do Azure Sentinel pro další šetření na základě obchodních potřeb.
 
 - [Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -534,18 +534,18 @@ Uvědomte si role používané pro účely podpory nebo řešení potíží. Nap
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
 
 **Doprovodné** materiály: neplatí pro službu Azure Kubernetes Service (AKS), protože není podporovaná Customer Lockbox.
 - [Seznam podporovaných služeb Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : netýká se
+**Odpovědnost**: netýká se
 
 ## <a name="data-protection"></a>Ochrana dat
 
@@ -559,13 +559,13 @@ Uvědomte si role používané pro účely podpory nebo řešení potíží. Nap
 
 - [Aktualizace značek pro spravované clustery](/rest/api/aks/managedclusters/updatetags)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny** : logicky izolujte týmy a úlohy ve stejném clusteru se službou Azure Kubernetes Service (AKS), aby poskytovaly nejnižší počet oprávnění vymezených na prostředky, které každý tým vyžaduje. 
+**Pokyny**: logicky izolujte týmy a úlohy ve stejném clusteru se službou Azure Kubernetes Service (AKS), aby poskytovaly nejnižší počet oprávnění vymezených na prostředky, které každý tým vyžaduje. 
 
 Použijte obor názvů v Kubernetes k vytvoření logické hranice izolace. Zvažte implementaci dalších funkcí Kubernetes pro izolaci a víceklientské architektury, jako je například plánování, sítě, ověřování/autorizace a kontejnery.
 
@@ -577,9 +577,9 @@ Implementujte samostatné odběry nebo skupiny pro správu pro vývoj, testován
 
 - [Vysvětlení osvědčených postupů pro připojení k síti a zabezpečení v AKS](operator-best-practices-network.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
 
@@ -593,13 +593,13 @@ Microsoft spravuje základní platformu a považuje veškerý obsah zákazníka 
 
 - [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
-**Pokyny** : Vytvořte kontroler příchozího přenosu HTTPS a použijte vlastní certifikáty TLS (případně Zašifrujte) pro nasazení služby Azure KUBERNETES (AKS). 
+**Pokyny**: Vytvořte kontroler příchozího přenosu HTTPS a použijte vlastní certifikáty TLS (případně Zašifrujte) pro nasazení služby Azure KUBERNETES (AKS). 
 
 Ve výchozím nastavení je Kubernetes výstupní přenos dat zašifrovaný přes HTTPS/TLS. Projděte si potenciálně nešifrovaný provoz odchozího přenosu dat z vašich AKS instancí, abyste mohli další monitorování. To může zahrnovat přenos dat NTP, přenosy DNS, přenosy HTTP pro načítání aktualizací v některých případech. 
 
@@ -609,26 +609,26 @@ Ve výchozím nastavení je Kubernetes výstupní přenos dat zašifrovaný pře
 
 - [Seznam potenciálních portů a protokolů, které používá AKS](limit-egress-traffic.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
 
-**Pokyny** : funkce pro identifikaci, klasifikaci a ochranu před únikem informací ještě nejsou k dispozici pro Azure Storage nebo výpočetní prostředky. Implementujte řešení třetích stran, pokud je to potřeba pro účely dodržování předpisů.
+**Pokyny**: funkce pro identifikaci, klasifikaci a ochranu před únikem informací ještě nejsou k dispozici pro Azure Storage nebo výpočetní prostředky. Implementujte řešení třetích stran, pokud je to potřeba pro účely dodržování předpisů.
 Microsoft spravuje základní platformu a považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. 
 
 Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
 - [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: ke správě přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny** : použití autorizačního systému řízení přístupu na základě role Azure (Azure RBAC), který je založený na Azure Resource Manager k zajištění jemně odstupňované správy přístupu prostředků Azure.
+**Pokyny**: použití autorizačního systému řízení přístupu na základě role Azure (Azure RBAC), který je založený na Azure Resource Manager k zajištění jemně odstupňované správy přístupu prostředků Azure.
 
 Nakonfigurujte službu Azure Kubernetes Service (AKS), aby používala Azure Active Directory (Azure AD) pro ověřování uživatelů. Přihlaste se ke clusteru AKS pomocí ověřovacího tokenu Azure AD pomocí této konfigurace. 
 
@@ -636,24 +636,24 @@ Použití předdefinovaných rolí AKS s Azure RBAC – přispěvatelem a vlastn
 
 - [Jak řídit přístup k prostředkům clusteru pomocí Azure RBAC a identit Azure AD v AKS](azure-ad-rbac.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
 
-**Pokyny** : funkce pro identifikaci, klasifikaci a ochranu před únikem informací ještě nejsou k dispozici pro Azure Storage nebo výpočetní prostředky. Implementujte řešení třetích stran, pokud je to potřeba pro účely dodržování předpisů.
+**Pokyny**: funkce pro identifikaci, klasifikaci a ochranu před únikem informací ještě nejsou k dispozici pro Azure Storage nebo výpočetní prostředky. Implementujte řešení třetích stran, pokud je to potřeba pro účely dodržování předpisů.
 Microsoft spravuje základní platformu a považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
 - [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
 
-**Pokyny** : dva primární typy úložiště poskytované pro svazky ve službě Azure Kubernetes Service (AKS) se zálohují na disky Azure nebo soubory Azure. Oba typy úložiště používají rozhraní SSE (Azure Storage Service Encryption), které zašifruje data v klidovém prostředí a zvyšuje zabezpečení. Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem.
+**Pokyny**: dva primární typy úložiště poskytované pro svazky ve službě Azure Kubernetes Service (AKS) se zálohují na disky Azure nebo soubory Azure. Oba typy úložiště používají rozhraní SSE (Azure Storage Service Encryption), které zašifruje data v klidovém prostředí a zvyšuje zabezpečení. Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem.
 
 Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem je k dispozici pro šifrování operačního systému i datových disků v clusterech AKS pro další kontrolu nad šifrovacími klíči. Zákazníci, kteří mají odpovědnost za aktivity správy klíčů, jako je například zálohování a rotace klíčů. Disky se momentálně nedají šifrovat pomocí Azure Disk Encryption na úrovni uzlu AKS.
 
@@ -661,13 +661,13 @@ Microsoft spravuje základní platformu a považuje veškerý obsah zákazníka 
 
 - [Přineste si vlastní klíče (BYOK) s disky Azure ve službě Azure Kubernetes Service (AKS).](azure-disk-customer-managed-keys.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
-**Pokyny** : pomocí Azure monitor pro kontejnery monitorujte výkon úloh kontejneru nasazených na spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). 
+**Pokyny**: pomocí Azure monitor pro kontejnery monitorujte výkon úloh kontejneru nasazených na spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). 
 
 Nakonfigurujte výstrahy pro proaktivní oznamování nebo vytváření protokolů, když využití procesoru a paměti na uzlech nebo kontejnerech překročí definované prahové hodnoty, nebo když v clusteru dojde ke změně stavu v infrastruktuře nebo souhrnu stavu uzlů. 
 
@@ -679,9 +679,9 @@ Pomocí protokolu aktivit Azure můžete monitorovat clustery AKS a souvisejíc�
 
 - [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
@@ -689,7 +689,7 @@ Pomocí protokolu aktivit Azure můžete monitorovat clustery AKS a souvisejíc�
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
-**Pokyny** : pomocí Security Center můžete monitorovat Azure Container Registry včetně instancí služby Azure Kubernetes Service (AKS) pro ohrožení zabezpečení. Povolte sadu registrů kontejnerů v nástroji Security Center, aby bylo zajištěno, že Security Center je připravená na skenování imagí, které se připravují do registru.
+**Pokyny**: pomocí Security Center můžete monitorovat Azure Container Registry včetně instancí služby Azure Kubernetes Service (AKS) pro ohrožení zabezpečení. Povolte sadu registrů kontejnerů v nástroji Security Center, aby bylo zajištěno, že Security Center je připravená na skenování imagí, které se připravují do registru.
 
 Když se na řídicím panelu Security Center objeví problémy po Security Center zkontroluje Image pomocí Qualys. Funkce svazku Container Registry poskytuje hlubší přehled o chybách zabezpečení imagí používaných v registrech založených na Azure Resource Manager. 
 
@@ -701,9 +701,9 @@ Použijte Security Center pro užitečná doporučení pro každou chybu zabezpe
 
 - [Vysvětlení integrace registru kontejneru s Azure Security Center](../security-center/defender-for-container-registries-introduction.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
 
@@ -717,29 +717,29 @@ Všimněte si, že proces udržování uzlů Windows serveru v aktuálním stavu
 
 - [Upgrade imagí uzlu služby Azure Kubernetes Service (AKS)](node-image-upgrade.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5,3: nasazení automatizované řešení pro správu oprav pro softwarové tituly třetích stran
 
-**Pokyny** : implementace ručního procesu k zajištění, aby aplikace třetích stran uzlu clusteru služby Azure KUBERNETES (AKS) zůstaly opravené po dobu životnosti clusteru. To může vyžadovat povolení automatických aktualizací, monitorování uzlů nebo provádění pravidelných restartování.
+**Pokyny**: implementace ručního procesu k zajištění, aby aplikace třetích stran uzlu clusteru služby Azure KUBERNETES (AKS) zůstaly opravené po dobu životnosti clusteru. To může vyžadovat povolení automatických aktualizací, monitorování uzlů nebo provádění pravidelných restartování.
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: porovnání kontrol zabezpečení back-to-back
 
-**Pokyny** : exportovat Security Center výsledky kontroly v konzistentních intervalech a porovnat výsledky a ověřit, zda byly chyby zabezpečení opraveny. 
+**Pokyny**: exportovat Security Center výsledky kontroly v konzistentních intervalech a porovnat výsledky a ověřit, zda byly chyby zabezpečení opraveny. 
 
 Pomocí rutiny PowerShellu Get-AzSecurityTask můžete automatizovat načítání úloh zabezpečení, které Security Center doporučuje, abyste mohli posílit své výsledky kontroly ohrožení zabezpečení stav a nápravy.
 
 - [Jak pomocí PowerShellu zobrazit chyby zjištěné v Azure Security Center](/powershell/module/az.security/get-azsecuritytask?view=azps-3.3.0)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných ohrožení zabezpečení
 
@@ -747,9 +747,9 @@ Pomocí rutiny PowerShellu Get-AzSecurityTask můžete automatizovat načítán�
 
 Pokud používáte integrovaný nástroj pro posouzení ohrožení zabezpečení (například Qualys nebo Rapid7, který nabízí Azure), použijte běžný systém pro vyhodnocování chyb (CVSS) (nebo jiné systémy bodování poskytované skenovacím nástrojem).
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
@@ -757,7 +757,7 @@ Pokud používáte integrovaný nástroj pro posouzení ohrožení zabezpečení
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
-**Pokyny** : pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazovat nebo zjišťovat všechny prostředky (například výpočetní prostředky, úložiště, síť atd.). Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků.
+**Pokyny**: pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazovat nebo zjišťovat všechny prostředky (například výpočetní prostředky, úložiště, síť atd.). Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků.
 
 I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky založené na Azure Resource Manager, které budou předány.
 
@@ -767,9 +767,9 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
@@ -777,9 +777,9 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
@@ -799,17 +799,17 @@ Značky, štítky nebo značky lze použít k pravidelnému sjednocení inventá
 
 - [Určení značky, značky nebo značky pro fond uzlů](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: definování a údržba inventáře schválených prostředků Azure
 
 **Doprovodné** materiály: Definujte seznam schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky na základě obchodních potřeb organizace.
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
@@ -824,9 +824,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 - [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
 
@@ -838,9 +838,9 @@ Sledujte konfigurace vašich počítačů, které vám pomůžou odhalit provozn
 
 - [Jak povolit inventář virtuálních počítačů Azure](../automation/automation-tutorial-installed-software.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: Odeberte neschválené prostředky Azure a softwarové aplikace
 
@@ -856,9 +856,9 @@ Sledujte konfigurace vašich počítačů, které vám pomůžou odhalit provozn
 
 - [Pochopení Change Tracking Azure](../automation/change-tracking/overview.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
 
@@ -876,9 +876,9 @@ Povolte adaptivní analýzu aplikací v Security Center pro aplikace, které exi
 Jak používat Azure Security Center adaptivní aplikace
 - [Ovládací prvky](../security-center/security-center-adaptive-application.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
@@ -896,32 +896,32 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 - [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: udržování inventáře schválených softwarových titulů
 
-**Pokyny** : použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných pomocí integrovaných definic zásad.
+**Pokyny**: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných pomocí integrovaných definic zásad.
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: Omezte schopnost uživatelů pracovat s Azure Resource Manager
 
-**Pokyny** : pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management.
+**Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management.
 - [Postup konfigurace podmíněného přístupu pro blokování přístupu k Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6,12: Omezte schopnost uživatelů spouštět skripty ve výpočetních prostředcích.
 
-**Pokyny** : Služba Azure Kubernetes Service (AKS) sama o sobě neposkytuje řešení pro správu identit, ve kterém jsou uložené běžné uživatelské účty a hesla. Místo toho použijte jako integrované řešení identit pro clustery AKS Azure Active Directory (Azure AD). 
+**Pokyny**: Služba Azure Kubernetes Service (AKS) sama o sobě neposkytuje řešení pro správu identit, ve kterém jsou uložené běžné uživatelské účty a hesla. Místo toho použijte jako integrované řešení identit pro clustery AKS Azure Active Directory (Azure AD). 
 
 Udělte uživatelům nebo skupinám přístup k prostředkům Kubernetes v rámci oboru názvů nebo napříč clusterem pomocí integrace služby Azure AD. 
 
@@ -939,13 +939,13 @@ Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťov
 
 - [Jak monitorovat identitu a přístup pomocí Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
 
-**Pokyny** : použití funkcí služby Azure Kubernetes Service (AKS) k logické izolaci týmů a úloh ve stejném clusteru pro nejnižší počet oprávnění vymezených na prostředky, které každý tým vyžaduje. 
+**Pokyny**: použití funkcí služby Azure Kubernetes Service (AKS) k logické izolaci týmů a úloh ve stejném clusteru pro nejnižší počet oprávnění vymezených na prostředky, které každý tým vyžaduje. 
 
 Implementujte obor názvů v Kubernetes k vytvoření logické hranice izolace. Pomocí aliasů Azure Policy v oboru názvů Microsoft. ContainerService můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace instancí Azure Kubernetes Service (AKS). 
 
@@ -959,9 +959,9 @@ Přečtěte si a implementujte další Kubernetes funkce a požadavky pro izolac
 
 - [Vysvětlení osvědčených postupů pro připojení k síti a zabezpečení v AKS](operator-best-practices-network.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
@@ -969,7 +969,7 @@ Přečtěte si a implementujte další Kubernetes funkce a požadavky pro izolac
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Pokyny** : pomocí aliasů Azure Policy v oboru názvů Microsoft. ContainerService můžete vytvořit vlastní zásady pro auditování nebo prosazování konfigurace instancí Azure Kubernetes Service (AKS). Použijte předdefinované definice Azure Policy.
+**Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. ContainerService můžete vytvořit vlastní zásady pro auditování nebo prosazování konfigurace instancí Azure Kubernetes Service (AKS). Použijte předdefinované definice Azure Policy.
 
 Příklady předdefinovaných definic zásad pro AKS zahrnují:
 
@@ -977,7 +977,7 @@ Příklady předdefinovaných definic zásad pro AKS zahrnují:
 
 • Pro služby Kubernetes by měly být definované rozsahy povolených IP adres.
 
-• Role-Based Access Control (RBAC) by se mělo používat pro služby Kubernetes Services.
+• Řízení přístupu na základě role (RBAC) by se mělo používat pro služby Kubernetes Services.
 
 • Zajistěte, aby v clusteru Kubernetes byly jenom povolené image kontejnerů.
 
@@ -987,9 +987,9 @@ Exportujte šablonu konfigurace AKS v JavaScript Object Notation (JSON) s Azure 
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
 
@@ -1001,9 +1001,9 @@ Azure používá každodenní opravy (včetně oprav zabezpečení) k AKS hostit
 
 - [Principy posílení zabezpečení v hostitelích virtuálních počítačů s AKS](security-hardened-vm-host-image.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
 
@@ -1023,13 +1023,13 @@ Vytvářejte vlastní definice Azure Policy pomocí aliasů z následujících o
 
 - [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
 
-**Pokyny** : clustery Azure Kubernetes Service (AKS) se nasazují na virtuální počítače hostitele s OPTIMALIZOVANÝM operačním systémem pro zabezpečení. Hostitelský operační systém má další kroky pro posílení zabezpečení, které jsou v něm obsažené, aby se snížila plocha oblasti útoku a aby bylo možné zabezpečené nasazení kontejnerů. 
+**Pokyny**: clustery Azure Kubernetes Service (AKS) se nasazují na virtuální počítače hostitele s OPTIMALIZOVANÝM operačním systémem pro zabezpečení. Hostitelský operační systém má další kroky pro posílení zabezpečení, které jsou v něm obsažené, aby se snížila plocha oblasti útoku a aby bylo možné zabezpečené nasazení kontejnerů. 
 
 Přečtěte si seznam ovládacích prvků centra pro Internet Security (CIS), které jsou součástí hostitelského operačního systému.  
 
@@ -1039,9 +1039,9 @@ Přečtěte si seznam ovládacích prvků centra pro Internet Security (CIS), kt
 
 - [Principy posílení zabezpečení v hostitelích virtuálních počítačů s AKS](security-hardened-vm-host-image.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
@@ -1057,17 +1057,17 @@ security-hardened-vm-host-image.md
 
 - [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
 **Doprovodné** materiály: neplatí pro službu Azure KUBERNETES (AKS). AKS poskytuje standardně optimalizovaný hostitelský operační systém (OS). K dispozici není žádná aktuální možnost pro výběr alternativního nebo vlastního operačního systému.
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: nasazení nástrojů pro správu konfigurace pro prostředky Azure
 
@@ -1079,13 +1079,13 @@ Vytvořte vlastní zásady pro audit a vynuťte konfiguraci systému. Vývoj pro
 
 - [Jak používat aliasy](../governance/policy/concepts/definition-structure.md#aliases)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: nasazení nástrojů pro správu konfigurace pro operační systémy
 
-**Pokyny** : clustery Azure Kubernetes Service (AKS) se nasazují na virtuální počítače hostitele s OPTIMALIZOVANÝM operačním systémem pro zabezpečení. Hostitelský operační systém má další kroky pro posílení zabezpečení, které jsou v něm obsažené, aby se snížila plocha oblasti útoku a aby bylo možné zabezpečené nasazení kontejnerů. 
+**Pokyny**: clustery Azure Kubernetes Service (AKS) se nasazují na virtuální počítače hostitele s OPTIMALIZOVANÝM operačním systémem pro zabezpečení. Hostitelský operační systém má další kroky pro posílení zabezpečení, které jsou v něm obsažené, aby se snížila plocha oblasti útoku a aby bylo možné zabezpečené nasazení kontejnerů. 
 
 Přečtěte si seznam ovládacích prvků centra pro Internet Security (CIS), které jsou součástí AKS hostitelů.  
 
@@ -1095,9 +1095,9 @@ Přečtěte si seznam ovládacích prvků centra pro Internet Security (CIS), kt
 
 - [Principy konfigurace stavu clusterů AKS](concepts-clusters-workloads.md#control-plane)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: Implementujte automatizované monitorování konfigurace pro prostředky Azure.
 
@@ -1105,9 +1105,9 @@ Přečtěte si seznam ovládacích prvků centra pro Internet Security (CIS), kt
 
 - [Jak opravit doporučení v Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
 
@@ -1115,9 +1115,9 @@ Přečtěte si seznam ovládacích prvků centra pro Internet Security (CIS), kt
 
 - [Porozumění doporučení týkajících se kontejnerů Azure Security Center](../security-center/container-security.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
 
@@ -1131,13 +1131,13 @@ Vyhněte se použití pevných nebo sdílených přihlašovacích údajů.
 
 - [Použití Key Vault s clusterem AKS](developer-best-practices-pod-security.md#limit-credential-exposure)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Pokyny** : v kódu aplikace nedefinujte přihlašovací údaje jako osvědčený postup zabezpečení. Využijte spravované identity prostředků Azure, aby se mohl sám ověřit na jakékoli službě v Azure, která to podporuje, včetně Azure Key Vault. Pod je přiřazena identita Azure pro ověření pro Azure Active Directory (Azure AD) a příjem digitálního tokenu, který se dá předkládat ostatním službám Azure, které kontrolují, jestli má oprávnění k přístupu ke službě a provádění požadovaných akcí. 
+**Pokyny**: v kódu aplikace nedefinujte přihlašovací údaje jako osvědčený postup zabezpečení. Využijte spravované identity prostředků Azure, aby se mohl sám ověřit na jakékoli službě v Azure, která to podporuje, včetně Azure Key Vault. Pod je přiřazena identita Azure pro ověření pro Azure Active Directory (Azure AD) a příjem digitálního tokenu, který se dá předkládat ostatním službám Azure, které kontrolují, jestli má oprávnění k přístupu ke službě a provádění požadovaných akcí. 
 
 Upozorňujeme, že pod spravovanými identitami jsou určené jenom pro systémy Linux a image kontejnerů. Zřídí Azure Key Vault ukládání a načítání digitálních klíčů a přihlašovacích údajů. Klíče, jako jsou ty, které slouží k šifrování disků s operačním systémem, můžou AKS data clusteru ukládat v Azure Key Vault.
 
@@ -1147,13 +1147,13 @@ Instanční objekty se dají používat taky v clusterech AKS. Clustery s použi
 
 - [Identita Azure Active Directory pod](https://github.com/Azure/aad-pod-identity)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
 
-**Pokyny** : implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Kontrola přihlašovacích údajů také podporuje přesun zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault s doporučeními.
+**Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Kontrola přihlašovacích údajů také podporuje přesun zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault s doporučeními.
 
 Omezte vystavení přihlašovacích údajů tím, že v kódu aplikace nedefinujete přihlašovací údaje. a nepoužívejte sdílené přihlašovací údaje. Azure Key Vault by se měly používat k ukládání a načítání digitálních klíčů a přihlašovacích údajů. Pomocí spravovaných identit pro prostředky Azure umožněte, aby váš odkaz vyžádal přístup k dalším prostředkům. 
 
@@ -1161,9 +1161,9 @@ Omezte vystavení přihlašovacích údajů tím, že v kódu aplikace nedefinuj
 
 - [Osvědčené postupy pro vývojáře pod zabezpečením](developer-best-practices-pod-security.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
@@ -1179,9 +1179,9 @@ Omezte vystavení přihlašovacích údajů tím, že v kódu aplikace nedefinuj
 
 - [AKS sdílené zodpovědnosti a sady démonů](support-policies.md#shared-responsibility)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: předběžná kontrola souborů, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
 
@@ -1189,9 +1189,9 @@ Omezte vystavení přihlašovacích údajů tím, že v kódu aplikace nedefinuj
 
 - [Vysvětlení detekce hrozeb Azure Security Center pro datové služby](../security-center/azure-defender.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="83-ensure-antimalware-software-and-signatures-are-updated"></a>8,3: Ujistěte se, že antimalwarový software a signatury jsou aktualizované
 
@@ -1203,9 +1203,9 @@ Omezte vystavení přihlašovacích údajů tím, že v kódu aplikace nedefinuj
 
 - [AKS sdílené zodpovědnosti a sady démonů](support-policies.md#shared-responsibility)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ## <a name="data-recovery"></a>Obnovení dat
 
@@ -1213,7 +1213,7 @@ Omezte vystavení přihlašovacích údajů tím, že v kódu aplikace nedefinuj
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
-**Pokyny** : Zálohujte svá data pomocí vhodného nástroje pro typ úložiště, jako je například Velero, který může zálohovat trvalé svazky spolu s dalšími prostředky a konfiguracemi clusteru. Pravidelně Ověřte integritu a zabezpečení těchto záloh. 
+**Pokyny**: Zálohujte svá data pomocí vhodného nástroje pro typ úložiště, jako je například Velero, který může zálohovat trvalé svazky spolu s dalšími prostředky a konfiguracemi clusteru. Pravidelně Ověřte integritu a zabezpečení těchto záloh. 
 
 Před zálohováním odeberte stav z vašich aplikací. V případech, kdy to nejde udělat, zálohujte data z trvalých svazků a pravidelně testujte operace obnovení, abyste ověřili integritu dat a požadované procesy.
 
@@ -1225,13 +1225,13 @@ Před zálohováním odeberte stav z vašich aplikací. V případech, kdy to ne
 
 - [Nastavení Velero v Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny klíče spravované zákazníkem.
 
-**Pokyny** : Zálohujte svá data pomocí vhodného nástroje pro typ úložiště, jako je například Velero, který může zálohovat trvalé svazky spolu s dalšími prostředky a konfiguracemi clusteru. 
+**Pokyny**: Zálohujte svá data pomocí vhodného nástroje pro typ úložiště, jako je například Velero, který může zálohovat trvalé svazky spolu s dalšími prostředky a konfiguracemi clusteru. 
 
 Příkazy PowerShellu umožňují pravidelné automatizované zálohování Key Vault certifikátů, klíčů, spravovaných účtů úložiště a tajných kódů. 
 
@@ -1249,9 +1249,9 @@ Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorag
 
 - [Postup povolení Azure Backup](../backup/index.yml)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: ověření všech záloh včetně klíčů spravovaných zákazníkem
 
@@ -1273,13 +1273,13 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 - [Postup obnovení souborů ze zálohy virtuálního počítače Azure](../backup/backup-azure-restore-files-from-vm.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
-**Pokyny** : Zálohujte svá data pomocí vhodného nástroje pro typ úložiště, jako je například Velero, který může zálohovat trvalé svazky spolu s dalšími prostředky a konfiguracemi clusteru. 
+**Pokyny**: Zálohujte svá data pomocí vhodného nástroje pro typ úložiště, jako je například Velero, který může zálohovat trvalé svazky spolu s dalšími prostředky a konfiguracemi clusteru. 
 
 Povolí Soft-Delete v Key Vault k ochraně klíčů před náhodným nebo škodlivým odstraněním, pokud se Azure Key Vault používá s nasazeními AKS (Azure Kubernetes Service).
 
@@ -1287,9 +1287,9 @@ Povolí Soft-Delete v Key Vault k ochraně klíčů před náhodným nebo škodl
 
 - [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
@@ -1297,7 +1297,7 @@ Povolí Soft-Delete v Key Vault k ochraně klíčů před náhodným nebo škodl
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
-**Pokyny** : Vytvoření Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů z detekce až po přezkoumání po jednotlivých událostech.
+**Pokyny**: Vytvoření Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů z detekce až po přezkoumání po jednotlivých událostech.
 
 - [Postup konfigurace automatizace pracovních postupů v rámci služby Azure Security Center](../security-center/security-center-planning-and-operations-guide.md)
 
@@ -1307,18 +1307,18 @@ Povolí Soft-Delete v Key Vault k ochraně klíčů před náhodným nebo škodl
 
 - [Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače v NIST, aby mohl pomoci při vytváření vlastního plánu reakce na incidenty.](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
 **Doprovodné** materiály: Určete, které výstrahy je třeba nejprve prozkoumat s Security Center přiřazení závažnosti k výstrahám. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 Jasně označte předplatná (například produkci, neprodukční) a vytvořte názvový systém, který bude jasně identifikovat a kategorizovat prostředky Azure.
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
@@ -1326,9 +1326,9 @@ Jasně označte předplatná (například produkci, neprodukční) a vytvořte n
 
 - [Průvodce testováním, školením a cvičením programů pro plány a možnosti IT](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
@@ -1336,21 +1336,21 @@ Jasně označte předplatná (například produkci, neprodukční) a vytvořte n
 
 - [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
-**Pokyny** : exportujte výstrahy Security Center a doporučení pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Můžete také zvolit datový konektor Security Center pro streamování výstrah do Azure Sentinel podle obchodních požadavků organizace.
+**Pokyny**: exportujte výstrahy Security Center a doporučení pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Můžete také zvolit datový konektor Security Center pro streamování výstrah do Azure Sentinel podle obchodních požadavků organizace.
 
 - [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 
 - [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
@@ -1358,9 +1358,9 @@ Jasně označte předplatná (například produkci, neprodukční) a vytvořte n
 
 - [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
@@ -1372,9 +1372,9 @@ Jasně označte předplatná (například produkci, neprodukční) a vytvořte n
 
 - [V této části najdete další informace o strategii Microsoftu a provádění testování v rámci červeného seskupování a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: 33aed32c30f298fd3432f4cebcc28b9c20974545
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309061"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685167"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Monitorování Media Services metrik a diagnostických protokolů pomocí Azure Monitor
 
@@ -44,7 +44,7 @@ Media Services podporuje monitorování metrik pro následující prostředky:
 
 Můžete monitorovat následující metriky účtu.
 
-|Název metriky|Zobrazované jméno|Popis|
+|Název metriky|Zobrazované jméno|Description|
 |---|---|---|
 |AssetCount|Počet assetů|Prostředky ve vašem účtu.|
 |AssetQuota|Kvóta prostředků|Kvóta prostředků ve vašem účtu.|
@@ -62,13 +62,13 @@ Měli byste taky zkontrolovat [kvóty a omezení účtu](limits-quotas-constrain
 
 Jsou podporovány následující Media Services metriky [koncových bodů streamování](/rest/api/media/streamingendpoints) :
 
-|Název metriky|Zobrazované jméno|Popis|
+|Název metriky|Zobrazované jméno|Description|
 |---|---|---|
 |Žádosti|Žádosti|Poskytuje celkový počet požadavků HTTP poskytovaných koncovým bodem streamování.|
 |Výchozí přenos dat|Výchozí přenos dat|Celkový počet odchozích bajtů za minutu na koncový bod streamování.|
 |SuccessE2ELatency|Koncová latence úspěch|Doba trvání od okamžiku, kdy koncový bod streamování přijal požadavek na odeslání posledního bajtu odpovědi.|
-|Využití procesoru| Využití procesoru pro koncové body streamování Premium Tato data nejsou k dispozici pro standardní koncové body streamování. |
-|Šířka pásma pro výstup | Šířka pásma pro odchozí přenosy v bitech za sekundu|
+|Využití procesoru| | Využití procesoru pro koncové body streamování Premium Tato data nejsou k dispozici pro standardní koncové body streamování. |
+|Šířka pásma pro výstup | | Šířka pásma pro odchozí přenosy v bitech za sekundu|
 
 ### <a name="metrics-are-useful"></a>Metriky jsou užitečné
 
@@ -98,7 +98,7 @@ Media Services podporuje následující diagnostické protokoly:
 
 ### <a name="key-delivery"></a>Doručení klíče
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |Požadavek služby doručení klíčů|Protokoly, které zobrazují informace o požadavku služby doručování klíčů Další informace najdete v tématu [schémata](media-services-diagnostic-logs-schema.md).|
 

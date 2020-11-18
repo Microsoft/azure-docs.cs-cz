@@ -3,12 +3,12 @@ title: Přehled samostatných clusterů Service Fabric
 description: Clustery Service Fabric běží na Windows serveru a Linux, což znamená, že budete moct nasazovat a hostovat Service Fabric aplikace kdekoli, kde můžete používat Windows Server nebo Linux.
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: c57d1ef6db295400ad986adadb804fb942a723e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3162a3d02510ce8efab6c5bcac0f1fdd2b2539b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841063"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683994"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Přehled samostatných clusterů Service Fabric
 
@@ -43,10 +43,10 @@ Kromě klientských certifikátů je možné Azure Active Directory taky nakonfi
 
 Další informace najdete v článku [zabezpečení mezi klienty a uzly](service-fabric-cluster-security.md#client-to-node-security) .
 
-### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
+### <a name="service-fabric-role-based-access-control"></a>Service Fabric řízení přístupu na základě role
 Service Fabric také podporuje řízení přístupu pro omezení přístupu k určitým operacím clusteru pro různé skupiny uživatelů. To pomáhá zvýšit zabezpečení clusteru. Pro klienty, kteří se připojují ke clusteru, jsou podporovány dva typy řízení přístupu: role správce a role uživatele.  
 
-Další informace najdete v [Access Control na základě rolí (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
+Další informace najdete v [Service Fabric řízení přístupu na základě role](service-fabric-cluster-security.md#service-fabric-role-based-access-control).
 
 ## <a name="scaling"></a>Škálování
 
