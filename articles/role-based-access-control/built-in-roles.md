@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: 2ffa5d65675b8fe6eeecbcc71c49d7aa8ebb7eaf
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a48a13fa18025254ee31344868d10181ae87c65e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657767"
+ms.locfileid: "94685473"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role v Azure
 
@@ -27,7 +27,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 ## <a name="all"></a>Vše
 
 > [!div class="mx-tableFixed"]
-> | Předdefinovaná role | Popis | ID |
+> | Předdefinovaná role | Description | ID |
 > | --- | --- | --- |
 > | **Obecné** |  |  |
 > | [Přispěvatel](#contributor) | Udělí úplný přístup ke správě všech prostředků, ale neumožňuje přiřadit role v Azure RBAC. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -393,7 +393,7 @@ Umožňuje spravovat přístup uživatelů k prostředkům Azure. [Další infor
 }
 ```
 
-## <a name="compute"></a>Výpočetní prostředky
+## <a name="compute"></a>Compute
 
 
 ### <a name="classic-virtual-machine-contributor"></a>Přispěvatel klasických virtuálních počítačů
@@ -7618,7 +7618,7 @@ Umožňuje vytvořit novou laboratoř v rámci účtů Azure Lab. [Další infor
 }
 ```
 
-## <a name="monitor"></a>Monitorování
+## <a name="monitor"></a>Monitor
 
 
 ### <a name="application-insights-component-contributor"></a>Přispěvatel Application Insights komponent
@@ -7760,8 +7760,7 @@ Může číst všechna data monitorování a upravovat nastavení monitorování
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/sharedKeys/Action | Načte sdílené klíče pracovního prostoru. Tyto klíče se používají k připojení agentů Microsoft Operational Insights k pracovnímu prostoru. |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/storageinsightconfigs/* | Čtení, zápis a odstraňování konfigurací Log Analytics úložiště |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
-> | [Microsoft. monitor zátěže byl](resource-provider-operations.md#microsoftworkloadmonitor)/Monitors/* |  |
-> | [Microsoft. monitor zátěže byl](resource-provider-operations.md#microsoftworkloadmonitor)/notificationSettings/* |  |
+> | [Microsoft. monitor zátěže byl](resource-provider-operations.md#microsoftworkloadmonitor)/Monitors/* | Získejte informace o monitorování stavu virtuálního počítače hosta.  |
 > | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartDetectorAlertRules/* |  |
 > | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/actionRules/* |  |
 > | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartGroups/* |  |
@@ -7812,7 +7811,6 @@ Může číst všechna data monitorování a upravovat nastavení monitorování
         "Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*",
         "Microsoft.Support/*",
         "Microsoft.WorkloadMonitor/monitors/*",
-        "Microsoft.WorkloadMonitor/notificationSettings/*",
         "Microsoft.AlertsManagement/smartDetectorAlertRules/*",
         "Microsoft.AlertsManagement/actionRules/*",
         "Microsoft.AlertsManagement/smartGroups/*"
@@ -9493,7 +9491,7 @@ Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entit�
 }
 ```
 
-## <a name="other"></a>Ostatní
+## <a name="other"></a>Jiné
 
 
 ### <a name="azure-digital-twins-data-owner"></a>Vlastník dat digitálních vláken Azure

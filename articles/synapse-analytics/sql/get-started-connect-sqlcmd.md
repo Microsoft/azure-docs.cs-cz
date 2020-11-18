@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 10f15ec2108e897164206543358d7a9e7bd40f64
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 43fae026f91e4430fbce0d01141a86a913db089d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316488"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686136"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>Připojení k synapse SQL pomocí sqlcmd
 
@@ -97,7 +97,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 "SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
 ```
 
-### <a name="use-serverless-sql-pool"></a>Použít fond SQL bez serveru
+### <a name="use-serverless-sql-pool"></a>Použití bezserverového fondu SQL
 
 Po připojení můžete z instance vydat všechny podporované příkazy [jazyka Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL).  V následujícím příkladu jsou dotazy odesílány v interaktivním režimu:
 

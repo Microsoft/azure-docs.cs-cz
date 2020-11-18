@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: b81b592cf35d0ca13d1c7bd2281ce35cce827a3c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 1adf8370f55a0f6131eb4140c58fa4618e08127b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057854"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686017"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes (AKS)
 
@@ -36,7 +36,7 @@ V AKS jsou hlavní komponenty Kubernetes součástí spravované služby, kterou
 
 Ve výchozím nastavení používá server Kubernetes API veřejnou IP adresu a plně kvalifikovaný název domény (FQDN). Přístup ke koncovému bodu serveru rozhraní API můžete omezit pomocí [rozsahů povolených IP][authorized-ip-ranges]adres. Můžete také vytvořit plně [soukromý cluster][private-clusters] pro omezení přístupu serveru API k vaší virtuální síti.
 
-Přístup k serveru rozhraní API můžete řídit pomocí Kubernetes řízení přístupu na základě role (RBAC) a Azure Active Directory. Další informace najdete v tématu věnovaném [integraci Azure AD s AKS][aks-aad].
+Přístup k serveru rozhraní API můžete řídit pomocí Kubernetes řízení přístupu založeného na rolích (Kubernetes RBAC) a Azure RBAC. Další informace najdete v tématu věnovaném [integraci Azure AD s AKS][aks-aad].
 
 ## <a name="node-security"></a>Zabezpečení uzlů
 
@@ -50,7 +50,7 @@ Uzly jsou nasazeny do podsítě privátní virtuální sítě bez přiřazených
 
 K poskytnutí úložiště používají uzly Azure Managed Disks. Pro většinu velikostí uzlů virtuálních počítačů se jedná o prémiové disky zajištěné vysokým výkonem SSD. Data uložená na spravovaných discích se v rámci platformy Azure automaticky šifrují v klidovém stavu. Kvůli vylepšení redundance jsou tyto disky také bezpečně replikovány v datovém centru Azure.
 
-Prostředí Kubernetes, v AKS nebo jinde, aktuálně nejsou zcela bezpečná pro nepřátelský využití více tenantů. Další funkce zabezpečení, jako jsou například *zásady zabezpečení*nebo pokročilejší řízení přístupu na základě role (RBAC) pro uzly, zneužití se obtížně využívají. Pro skutečné zabezpečení při spouštění nepřátelských úloh s více klienty však je hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se bude nacházet v celém clusteru, nikoli v jednotlivých uzlech. U těchto typů nepřátelských úloh s více klienty byste měli použít fyzicky izolované clustery. Další informace o způsobech izolace úloh najdete v tématu [osvědčené postupy pro izolaci clusteru v AKS][cluster-isolation].
+Prostředí Kubernetes, v AKS nebo jinde, aktuálně nejsou zcela bezpečná pro nepřátelský využití více tenantů. Další funkce zabezpečení, jako jsou například *zásady zabezpečení* nebo podrobnější Kubernetes řízení přístupu na základě role (Kubernetes RBAC) pro uzly, zneužití se obtížně využívají. Pro skutečné zabezpečení při spouštění nepřátelských úloh s více klienty však je hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se bude nacházet v celém clusteru, nikoli v jednotlivých uzlech. U těchto typů nepřátelských úloh s více klienty byste měli použít fyzicky izolované clustery. Další informace o způsobech izolace úloh najdete v tématu [osvědčené postupy pro izolaci clusteru v AKS][cluster-isolation].
 
 ### <a name="compute-isolation"></a>Izolace výpočtů
 

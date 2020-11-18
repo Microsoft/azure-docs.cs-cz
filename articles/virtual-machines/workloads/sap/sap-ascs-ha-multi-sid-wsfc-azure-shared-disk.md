@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8116f3e00d13c0bd1e5f075a7fbe3264f337079
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: df611e01fefacd22f4dc026a819d4c71ede6e7e3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970397"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686085"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>Vysoká dostupnost služby SAP ASCS/SCS instance multi-SID s využitím clusteringu s podporou převzetí služeb při selhání Windows serveru a sdíleného disku Azure
 
@@ -35,12 +35,12 @@ Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do 
 V současné době můžete pro instanci SAP ASCS/SCS použít disky Azure SSD úrovně Premium jako sdílený disk Azure. Jsou zavedena tato omezení:
 
 -  [Azure Ultra disk](../../disks-types.md#ultra-disk) se nepodporuje jako sdílený disk Azure pro úlohy SAP. V současné době není možné umístit virtuální počítače Azure pomocí Azure Ultra disk v sadě dostupnosti.
--  [Sdílený disk Azure](../../windows/disks-shared.md) s SSD úrovně Premium disky se podporuje jenom s virtuálními počítači ve skupině dostupnosti. V nasazení Zóny dostupnosti se nepodporuje. 
+-  [Sdílený disk Azure](../../disks-shared.md) s SSD úrovně Premium disky se podporuje jenom s virtuálními počítači ve skupině dostupnosti. V nasazení Zóny dostupnosti se nepodporuje. 
 -  Hodnota sdíleného disku Azure [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) určuje, kolik uzlů clusteru může používat sdílený disk. V případě instance SAP ASCS/SCS nakonfigurujete dva uzly v clusteru s podporou převzetí služeb při selhání systému Windows, takže hodnota vlastnosti `maxShares` musí být nastavena na hodnotu dvě.
 -  Všechny virtuální počítače s clustery SAP ASCS/SCS musí být nasazené ve stejné [skupině umístění služby Azure Proximity](../../windows/proximity-placement-groups.md).   
    I když můžete nasadit virtuální počítače clusterů Windows ve skupině dostupnosti se sdíleným diskem Azure bez PPG, PPG zajistí uzavření fyzické blízkosti sdílených disků Azure a virtuálních počítačů clusteru, čímž se dosáhne nižší latence mezi virtuálními počítači a vrstvou úložiště.    
 
-Další podrobnosti o omezeních pro sdílený disk Azure najdete v části s [omezeními](../../linux/disks-shared.md#limitations) v dokumentaci ke sdíleným diskům Azure.  
+Další podrobnosti o omezeních pro sdílený disk Azure najdete v části s [omezeními](../../disks-shared.md#limitations) v dokumentaci ke sdíleným diskům Azure.  
 
 > [!IMPORTANT]
 > Při nasazování clusteru SAP ASCS/SCS Windows s podporou převzetí služeb při selhání se sdíleným diskem Azure Pamatujte na to, že nasazení bude pracovat s jedním sdíleným diskem v jednom úložném clusteru. Vaše instance SAP ASCS/SCS bude ovlivněna v případě problémů s clusterem úložiště, kde je nasazen sdílený disk Azure.  
@@ -95,7 +95,7 @@ V konfiguraci s více identifikátory SID jsou podporovány oba servery replikac
 
 ## <a name="infrastructure-preparation"></a>Příprava infrastruktury
 
-Kromě **existující instance clusteru** SAP **PR1** ASCS/SCS budeme instalovat nové **PR2**SAP SID.  
+Kromě **existující instance clusteru** SAP **PR1** ASCS/SCS budeme instalovat nové **PR2** SAP SID.  
 
 ### <a name="host-names-and-ip-addresses"></a>Názvy hostitelů a IP adresy
 
@@ -121,17 +121,17 @@ Do existujícího nástroje pro vyrovnávání zatížení budete muset přidat 
 - Konfigurace back-endu  
     Již je na místě – virtuální počítače byly již přidány do back-endového fondu, zatímco konfigurace SAP SID **PR1**
 - Port testu paměti
-    - Port 620**Nr** [**62002**] ponechá výchozí možnost protokolu (TCP), intervalu (5), prahové hodnoty v pořádku (2).
+    - Port 620 **Nr** [**62002**] ponechá výchozí možnost protokolu (TCP), intervalu (5), prahové hodnoty v pořádku (2).
 - Pravidla vyrovnávání zatížení
     - Pokud používáte Standard Load Balancer, vyberte porty HA.
     - Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
-        - 32**Nr** TCP [**3202**]
-        - 36**Nr** TCP [**3602**]
-        - 39**Nr** TCP [**3902**]
-        - 81**Nr** TCP [**8102**]
-        - 5**Nr**13 TCP [**50213**]
-        - 5**Nr**14 TCP [**50214**]
-        - 5**Nr**16 TCP [**50216**]
+        - 32 **Nr** TCP [**3202**]
+        - 36 **Nr** TCP [**3602**]
+        - 39 **Nr** TCP [**3902**]
+        - 81 **Nr** TCP [**8102**]
+        - 5 **Nr** 13 TCP [**50213**]
+        - 5 **Nr** 14 TCP [**50214**]
+        - 5 **Nr** 16 TCP [**50216**]
         - Přidružte se k IP adrese front-endu **PR2** ASCS, stavu a stávajícímu back-end fondu.  
 
     - Ujistěte se, že je časový limit nečinnosti (minuty) nastavený na maximální hodnotu 30 a že je povolená plovoucí IP adresa (přímá návratová hodnota serveru).
@@ -146,16 +146,16 @@ Jako cluster replikace ERS2 (Replication Server 2) je také nutné nakonfigurova
   Virtuální počítače se už přidaly do back-endu interního nástroje fondu.  
 
 - Nový port testu paměti
-    - Port 621**Nr**  [**62112**] ponechá výchozí možnost protokolu (TCP), intervalu (5), prahové hodnoty v pořádku (2).
+    - Port 621 **Nr**  [**62112**] ponechá výchozí možnost protokolu (TCP), intervalu (5), prahové hodnoty v pořádku (2).
 
 - Nová pravidla vyrovnávání zatížení
     - Pokud používáte Standard Load Balancer, vyberte porty HA.
     - Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
-        - 32**Nr** TCP [**3212**]
-        - 33**Nr** TCP [**3312**]
-        - 5**Nr**13 TCP [**51212**]
-        - 5**Nr**14 TCP [**51212**]
-        - 5**Nr**16 TCP [**51212**]
+        - 32 **Nr** TCP [**3212**]
+        - 33 **Nr** TCP [**3312**]
+        - 5 **Nr** 13 TCP [**51212**]
+        - 5 **Nr** 14 TCP [**51212**]
+        - 5 **Nr** 16 TCP [**51212**]
         - Přidružte se ke sondu stavu **PR2** ERS2 front-endu a stavu a stávajícímu back-end fondu.  
 
     - Ujistěte se, že časový limit nečinnosti (v minutách) je nastavený na maximální hodnotu, třeba 30, a že je povolená plovoucí IP adresa (přímá návratová hodnota serveru).
@@ -293,7 +293,7 @@ Pomocí funkce testu interního nástroje pro vyrovnávání zatížení můžet
 To ale v některých konfiguracích clusteru nebude fungovat, protože je aktivní jenom jedna instance. Druhá instance je pasivní a nemůže přijmout žádnou z úloh. Funkce sondy pomáhá, když interní nástroj pro vyrovnávání zatížení Azure zjistí, která instance je aktivní a jenom cílí na aktivní instanci.  
 
 > [!IMPORTANT]
-> V tomto příkladu konfigurace je **ProbePort** nastaven na 620**Nr**. V případě instance SAP ASCS s číslem **02** je 620**02**.
+> V tomto příkladu konfigurace je **ProbePort** nastaven na 620 **Nr**. V případě instance SAP ASCS s číslem **02** je 620 **02**.
 > Bude nutné upravit konfiguraci tak, aby odpovídala číslům instancí SAP a vašemu protokolu SAP SID.
 
 Pokud chcete přidat port testu, spusťte tento modul PowerShellu na jednom z virtuálních počítačů clusteru:

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 5845a3bdc4b86fbbe44c92779e5aae95044eb6b2
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d5bd2fc150ee1d35127eeb9dbf3dc1eeffdc9659
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556359"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685932"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instance clusteru s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,30 +40,30 @@ Instance clusteru s podporou převzetí služeb při selhání s SQL Server v Az
 Další informace najdete v tématu [osvědčené postupy pro kvorum s SQL Servermi virtuálními počítači v Azure](hadr-cluster-best-practices.md#quorum). 
 
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 V tradičních místních clusterovaných prostředích používá cluster s podporou převzetí služeb při selhání systému Windows síť SAN (Storage Area Network), která je přístupná v obou uzlech jako sdílené úložiště. SQL Server soubory jsou hostované na sdíleném úložišti a přístup k souborům je možné jenom v aktivním uzlu. 
 
 SQL Server na virtuálních počítačích Azure nabízí různé možnosti jako řešení sdíleného úložiště pro nasazení SQL Server instancí clusteru s podporou převzetí služeb při selhání: 
 
-||[Sdílené disky Azure](../../../virtual-machines/windows/disks-shared.md)|[Soubory ke sdílení souborů úrovně Premium](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Prostory úložiště s přímým přístupem (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Sdílené disky Azure](../../../virtual-machines/disks-shared.md)|[Soubory ke sdílení souborů úrovně Premium](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Prostory úložiště s přímým přístupem (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**Minimální verze operačního systému**| Vše |Windows Server 2012|Windows Server 2016|
 |**Minimální verze SQL Server**|Vše|SQL Server 2012|SQL Server 2016|
 |**Podporovaná dostupnost virtuálního počítače** |Skupiny dostupnosti se skupinami umístění blízkých souborů |Skupiny dostupnosti a zóny dostupnosti|Skupiny dostupnosti |
-|**Podporuje FileStream**|Yes|Ne|Yes |
-|**Mezipaměť objektů BLOB v Azure**|Ne|Ne|Yes|
+|**Podporuje FileStream**|Yes|No|Yes |
+|**Mezipaměť objektů BLOB v Azure**|No|No|Yes|
 
 Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností úložiště, které jsou dostupné pro SQL Server na virtuálních počítačích Azure. 
 
 ### <a name="azure-shared-disks"></a>Sdílené disky Azure
 
-[Sdílené disky Azure](../../../virtual-machines/windows/disks-shared.md) jsou funkcí služby [Azure Managed disks](../../../virtual-machines/managed-disks-overview.md). Clustering s podporou převzetí služeb při selhání ve Windows serveru podporuje použití sdílených disků Azure s instancí clusteru s podporou převzetí 
+[Sdílené disky Azure](../../../virtual-machines/disks-shared.md) jsou funkcí služby [Azure Managed disks](../../../virtual-machines/managed-disks-overview.md). Clustering s podporou převzetí služeb při selhání ve Windows serveru podporuje použití sdílených disků Azure s instancí clusteru s podporou převzetí 
 
-**Podporovaný operační systém** : vše   
-**Podporovaná verze SQL** : vše     
+**Podporovaný operační systém**: vše   
+**Podporovaná verze SQL**: vše     
 
-**Výhody** : 
+**Výhody**: 
 - Užitečné pro aplikace, které se chtějí migrovat do Azure a současně zachovat jejich architekturu s vysokou dostupností a zotavení po havárii (HADR). 
 - Může migrovat clusterové aplikace do Azure, protože je to kvůli podpoře trvalých rezervací SCSI (SCSI PR). 
 - Podporuje sdílené SSD úrovně Premium Azure a úložiště Azure Ultra disk.
@@ -71,7 +71,7 @@ Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností 
 - Podporuje FileStream.
 
 
-**Omezení** : 
+**Omezení**: 
 - Virtuální počítače musí být umístěné ve stejné skupině dostupnosti a skupině umístění blízkosti.
 - Zóny dostupnosti se nepodporují.
 - Mezipaměť SSD úrovně Premium disku není podporována.
@@ -82,8 +82,8 @@ Pokud chcete začít, přečtěte si téma [SQL Server instance clusteru s podpo
 
 [Prostory úložiště s přímým přístupem](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) je funkce Windows serveru, která je podporovaná s clusteringem s podporou převzetí služeb při selhání ve službě Azure Virtual Machines. Poskytuje softwarovou virtuální síť SAN.
 
-**Podporovaný operační systém** : Windows Server 2016 a novější   
-**Podporovaná verze SQL** : SQL Server 2016 a novější   
+**Podporovaný operační systém**: Windows Server 2016 a novější   
+**Podporovaná verze SQL**: SQL Server 2016 a novější   
 
 
 **Výhodnější** 
@@ -104,8 +104,8 @@ Chcete-li začít, přečtěte si téma [SQL Server prostory úložiště s př�
 
 [Sdílené složky Premium](../../../storage/files/storage-how-to-create-premium-fileshare.md) jsou funkcí služby [soubory Azure](../../../storage/files/index.yml). Soubory úrovně Premium jsou back-SSD a mají konzistentně nízkou latenci. Jsou plně podporované pro použití s instancemi clusteru s podporou převzetí služeb při selhání pro SQL Server 2012 nebo novější v systému Windows Server 2012 nebo novějším. Prémiové sdílené složky poskytují větší flexibilitu, protože je možné změnit velikost sdílené složky a škálovat ji bez výpadků.
 
-**Podporovaný operační systém** : Windows Server 2012 a novější   
-**Podporovaná verze SQL** : SQL Server 2012 a novější   
+**Podporovaný operační systém**: Windows Server 2012 a novější   
+**Podporovaná verze SQL**: SQL Server 2012 a novější   
 
 **Výhodnější** 
 - Jenom sdílené řešení úložiště pro virtuální počítače se šíří přes několik zón dostupnosti. 
@@ -122,8 +122,8 @@ Pokud chcete začít, přečtěte si téma [SQL Server instance clusteru s podpo
 
 Existují řešení partnerských clusterů s podporovaným úložištěm. 
 
-**Podporovaný operační systém** : vše   
-**Podporovaná verze SQL** : vše   
+**Podporovaný operační systém**: vše   
+**Podporovaná verze SQL**: vše   
 
 V jednom příkladu se jako úložiště používá s datakeep. Další informace najdete v tématu [Clustering s podporou převzetí služeb při selhání](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)v záznamech blogu a s datakeeping.
 
@@ -131,8 +131,8 @@ V jednom příkladu se jako úložiště používá s datakeep. Další informac
 
 Pomocí Azure ExpressRoute můžete také zveřejnit úložiště sdíleného bloku cíle iSCSI. 
 
-**Podporovaný operační systém** : vše   
-**Podporovaná verze SQL** : vše   
+**Podporovaný operační systém**: vše   
+**Podporovaná verze SQL**: vše   
 
 Například NetApp Private Storage (NPS) zveřejňuje cíl iSCSI prostřednictvím ExpressRoute s Equinix do virtuálních počítačů Azure.
 

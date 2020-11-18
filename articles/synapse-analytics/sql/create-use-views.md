@@ -7,20 +7,20 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d578529839afb5393dd013cb10f48c755f08addd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 302cf97db7c1d2ba489a84b6be912816d20f6091
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316239"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685558"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Vytváření a používání zobrazení pomocí SQL fondu bez serveru (Preview) ve službě Azure synapse Analytics
 
 V této části se dozvíte, jak vytvářet a používat zobrazení k zabalení dotazů na SQL fond bez serveru (Preview). Zobrazení vám umožní tyto dotazy znovu použít. Zobrazení jsou nutná také v případě, že chcete používat nástroje, jako je například Power BI, společně s fondem SQL bez serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Prvním krokem je vytvoření databáze, ve které se zobrazení vytvoří, a inicializace objektů potřebných k ověření v Azure Storage spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Všechny dotazy v tomto článku se spustí v ukázkové databázi.
 

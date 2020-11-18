@@ -3,17 +3,17 @@ title: Azure Defender pro SQL – výhody a funkce
 description: Přečtěte si o výhodách a funkcích Azure Defenderu pro SQL.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 11/17/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 220f9fffd6c0f9b959230964a9ec79f4e209bd54
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b4f046339c027a5ae66f7f7510d8d2b311abd6df
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372523"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693456"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Seznámení se službou Azure Defender pro SQL
 
@@ -25,8 +25,8 @@ Azure Defender pro SQL zahrnuje dva plány Azure Defenderu, které rozšiřuje [
 |----|:----|
 |Stav vydaných verzí:|**Azure Defender pro servery Azure SQL Database** – všeobecně dostupné (GA)<br>**Azure Defender pro SQL servery na počítačích** – Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Stanov|Dva plány, které tvoří **Azure Defender pro SQL** , se účtují, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
-|Chráněné verze SQL:|Azure SQL Database <br>Spravovaná instance Azure SQL<br>Azure Synapse Analytics (dříve SQL DW)<br>SQL Server (všechny podporované verze)|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Chráněné verze SQL:|Azure SQL Database <br>Spravovaná instance Azure SQL<br>Vyhrazený fond SQL ve službě Azure synapse (dřív SQL DW)<br>SQL Server (všechny podporované verze)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>Co je Azure Defender pro SQL Protect?
@@ -36,7 +36,7 @@ Azure Defender pro SQL zahrnuje dva plány Azure Defenderu, které rozšiřuje [
 - **Azure Defender pro servery Azure SQL Database** chrání:
   - [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)
   - [Spravovaná instance Azure SQL](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
-  - [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+  - [Vyhrazený fond SQL ve službě Azure synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)
 
 - **Azure Defender pro SQL servery na počítačích (ve verzi Preview)** rozšiřuje ochranu vašich serverů SQL Azure Native, aby plně podporovala hybridní prostředí a chránila SQL servery (všechny podporované verze) hostované v Azure, v jiných cloudových prostředích a i v místních počítačích.
 

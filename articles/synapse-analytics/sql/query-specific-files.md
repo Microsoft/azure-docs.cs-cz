@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b4755d1d2e14b8ce3b05cfef6d30d7f6102905d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e3f0a9f0b7fdef26cf1ef2b145ede1826fda6ebd
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318817"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685592"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>Použití metadat souboru v neserverových dotazech na fond SQL
 
@@ -24,11 +24,11 @@ V některých případech možná budete muset zjistit, který zdroj souborů ne
 
 Pomocí funkce a můžete `filepath` `filename` vracet názvy souborů nebo cestu v sadě výsledků dotazu. Můžete je také použít k filtrování dat na základě názvu souboru nebo cesty ke složce. Tyto funkce jsou popsány v oddílu syntaxe [filename](query-data-storage.md#filename-function) a funkce [FilePath](query-data-storage.md#filepath-function). V následujících částech najdete krátké popisy podél vzorků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Prvním krokem je **Vytvoření databáze** se zdrojem dat, který odkazuje na účet úložiště. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 ### <a name="filename"></a>Bitmap
 

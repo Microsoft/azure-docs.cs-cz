@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 8a7fa295bdc8881c0c1ba58c95872a9380231b81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1a8238cf9ddae57d73438d43daa54294ce6860
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85558036"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686221"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Použití spravovaných identit v Azure API Management
 
@@ -123,9 +123,9 @@ Při vytvoření instance má následující další vlastnosti:
 > [!NOTE]
 > Instance API Management může současně mít přiřazené i uživatelsky přiřazené identity. V tomto případě `type` by vlastnost byla `SystemAssigned,UserAssigned` .
 
-### <a name="supported-scenarios"></a>Podporované scénáře
+## <a name="supported-scenarios-using-system-assigned-identity"></a>Podporované scénáře využívající identitu přiřazenou systémem
 
-#### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>Získání vlastního certifikátu TLS/SSL pro instanci API Management z Azure Key Vault
+### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>Získání vlastního certifikátu TLS/SSL pro instanci API Management z Azure Key Vault
 K načtení vlastních certifikátů TLS/SSL uložených v Azure Key Vault můžete použít identitu instance API Management přiřazenou systémem. Tyto certifikáty pak můžete přiřadit k vlastním doménám v instanci API Management. Upozorňujeme na tyto skutečnosti:
 
 - Typ obsahu tajného kódu musí být *Application/x-PKCS12*.
@@ -262,7 +262,7 @@ Následující příklad ukazuje šablonu Azure Resource Manager, která obsahuj
 }
 ```
 
-#### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>Ověřování pro back-end pomocí API Management identity
+### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>Ověřování pro back-end pomocí API Management identity
 
 Identitu přiřazenou systémem můžete použít k ověření do back-endu prostřednictvím zásad [ověřování spravované-identity](api-management-authentication-policies.md#ManagedIdentity) .
 
@@ -279,9 +279,9 @@ Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte inst
 1. Na portálu vytvořte instanci API Management, normálně by to bylo. Přejděte na portál na portálu.
 2. Vyberte **spravované identity**.
 3. Na kartě **přiřazený uživatel** vyberte **Přidat**.
-4. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Vyberte **Přidat**.
+4. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Vyberte možnost **Přidat**.
 
-   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Výběry pro povolení spravované identity přiřazené systémem" border="true":::
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Výběry pro povolení spravované identity přiřazené uživatelem" border="true":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -387,9 +387,32 @@ Když je služba vytvořená, má následující další vlastnosti:
 > [!NOTE]
 > Instance API Management může současně mít přiřazené i uživatelsky přiřazené identity. V tomto případě `type` by vlastnost byla `SystemAssigned,UserAssigned` .
 
-### <a name="supported-scenarios"></a>Podporované scénáře
+## <a name="supported-scenarios-using-user-assigned-managed-identity"></a>Podporované scénáře použití spravované identity přiřazené uživatelem
 
-#### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Ověřování v back-endu pomocí uživatelsky přiřazené identity
+### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault-ua"></a>Získání vlastního certifikátu TLS/SSL pro instanci API Management z Azure Key Vault
+K navázání vztahu důvěryhodnosti mezi API Management instancí a trezorem klíčů můžete použít libovolnou uživatelskou identitu. Tento vztah důvěryhodnosti pak můžete použít k načtení vlastních certifikátů TLS/SSL uložených v Azure Key Vault. Tyto certifikáty pak můžete přiřadit k vlastním doménám v instanci API Management. 
+
+Upozorňujeme na tyto skutečnosti:
+
+- Typ obsahu tajného kódu musí být *Application/x-PKCS12*.
+- Použijte koncový bod tajného certifikátu Key Vault, který obsahuje tajný klíč.
+
+> [!Important]
+> Pokud neposkytnete verzi objektu certifikátu, API Management bude automaticky získávat novější verzi certifikátu do čtyř hodin poté, co se aktualizuje v Key Vault.
+
+Úplnou šablonu najdete v tématu [API Management s protokolem SSL založeném na trezoru klíčů pomocí identity přiřazené uživatelem](https://github.com/Azure/azure-quickstart-templates/blob/master/101-api-management-key-vault-create/azuredeploy.json).
+
+V této šabloně nasadíte:
+
+* Azure API Management
+* Identita přiřazená ke spravovanému uživateli Azure
+* Azure webrecovery pro uložení certifikátu SSL/TLS
+
+Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-api-management-key-vault-create%2Fazuredeploy.json)
+
+### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Ověřování v back-endu pomocí uživatelsky přiřazené identity
 
 K ověření v back-endu pomocí zásad [ověřování spravovaného pomocí identity](api-management-authentication-policies.md#ManagedIdentity) můžete použít uživatelem přiřazenou identitu.
 

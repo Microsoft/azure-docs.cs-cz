@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3fd3a94efd6e7870ae3919a011fc24f66b97c559
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c7a8fb63f775a76342849957f070861fd200a9d3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310958"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685660"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Dotazování souborů úložiště s SQL fondem bez serveru (Preview) ve službě Azure synapse Analytics
 
@@ -65,7 +65,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 K dispozici jsou některé další možnosti, které lze použít k úpravě pravidel analýzy na vlastní formát CSv:
 - ESCAPE_CHAR = char určuje znak v souboru, který se používá k zaznamenání samotného řídicího panelu a všech hodnot oddělovače v souboru. Je-li řídicí znak následován jinou hodnotou než samotnou nebo kteroukoli z hodnot oddělovače, je řídicí znak při čtení hodnoty vynechán.
 Parametr ESCAPE_CHAR bude použit bez ohledu na to, jestli je FIELDQUOTE nebo není povolený. Nepoužije se k řídicímu znaku pro uvozovky. Znak Quota musí být uvozen jiným znakem pro quotování. Znak quotace se může objevit v rámci hodnoty sloupce jenom v případě, že je hodnota zapouzdřená pomocí znaků quote.
-- FIELDTERMINATOR = ' field_terminator ' Určuje ukončovací znak pole, který se má použít. Výchozí ukončovací znak pole je čárka ( **,** ).
+- FIELDTERMINATOR = ' field_terminator ' Určuje ukončovací znak pole, který se má použít. Výchozí ukončovací znak pole je čárka (**,**).
 - ROWTERMINATOR = ' row_terminator ' Určuje ukončovací znak řádku, který má být použit. Výchozí ukončovací znak řádku je znak nového řádku: **\r\n**.
 
 ## <a name="file-schema"></a>Schéma souboru
@@ -248,7 +248,7 @@ Ukázková data obsahují následující sady dat:
 - Ukázkové soubory Parquet s vnořenými sloupci
 - Knihy ve formátu JSON
 
-| Cesta ke složce                                                  | Popis                                                  |
+| Cesta ke složce                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Formát                                                        | Nadřazená složka pro data ve formátu CSV                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Složky s datovými soubory populace v různých formátech CSV. |

@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3a7d750caed297dfa364e2f1ef176ee19ad35480
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: eed1a3d403a6012e2010a6b9a47a60f815044565
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654202"
+ms.locfileid: "94685898"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Vysoce výkonná obsluha s odvozeným serverem Triton (Preview) 
 
@@ -50,6 +50,17 @@ Než se pokusíte použít Triton pro svůj vlastní model, je důležité pocho
 * Požadavky na odvození používají __identifikátor URI pro vyhodnocování__. Například, `https://myserevice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Diagram architektury pro nasazení Normal, non-Triton,":::
+
+### <a name="setting-the-number-of-workers"></a>Nastavení počtu pracovních procesů
+
+Chcete-li nastavit počet pracovních procesů v nasazení, nastavte proměnnou prostředí `WORKER_COUNT` . Vzhledem k tomu, že máte objekt [prostředí](https://docs.microsoft.compython/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) s názvem `env` , můžete provést následující akce:
+
+```{py}
+env.environment_variables["WORKER_COUNT"] = "1"
+```
+
+Díky tomu bude Azure ML informovat o tom, kolik pracovníků zadáte.
+
 
 **Odvození nasazení konfigurace pomocí Triton**
 

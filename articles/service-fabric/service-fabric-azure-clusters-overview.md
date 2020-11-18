@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 7c5e6fe92ce5ac118de204e43eb443b4aab3b698
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 25e6854491f35dd0aa46b5de218d312f57854760
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320511"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685813"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Přehled clusterů Service Fabric v Azure
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se označuje jako uzel clusteru. Clustery se můžou škálovat na tisíce uzlů. Pokud do clusteru přidáte nové uzly, Service Fabric rebilance repliky oddílů služby a instance napříč rostoucím počtem uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů a instance napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na jednotlivých uzlech.
@@ -45,10 +45,10 @@ Sady škálování můžete použít k nasazení a správě kolekce virtuálníc
 
 Další informace najdete v [Service Fabric typech uzlů a virtuálních počítačů Scale Sets](service-fabric-cluster-nodetypes.md).
 
-### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
-Instance virtuálních počítačů jsou připojené za [Nástroj pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-overview.md), který je přidružený k [veřejné IP adrese](../virtual-network/public-ip-addresses.md) a popisku DNS.  Když zřizujete cluster s názvem * &lt; &gt; název_clusteru*, název DNS, * &lt; název_clusteru &gt; . &lt; Location &gt; . cloudapp.Azure.com* je popisek DNS přidružený k nástroji pro vyrovnávání zatížení před nastavenou stupnicí.
+### <a name="azure-load-balancer"></a>Azure Load Balancer
+Instance virtuálních počítačů jsou připojené za [Nástroj pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-overview.md), který je přidružený k [veřejné IP adrese](../virtual-network/public-ip-addresses.md) a popisku DNS.  Když zřizujete cluster s názvem *&lt; &gt; název_clusteru*, název DNS, *&lt; název_clusteru &gt; . &lt; Location &gt; . cloudapp.Azure.com* je popisek DNS přidružený k nástroji pro vyrovnávání zatížení před nastavenou stupnicí.
 
-Virtuální počítače v clusteru mají jenom [privátní IP adresy](../virtual-network/private-ip-addresses.md).  Provoz správy a provoz služeb jsou směrovány prostřednictvím veřejného nástroje pro vyrovnávání zatížení.  Síťový provoz se směruje na tyto počítače prostřednictvím pravidel NAT (klienti se připojují ke konkrétním uzlům/instancím) nebo pravidel vyrovnávání zatížení (provoz směřuje do virtuálních počítačů kruhového dotazování).  Nástroj pro vyrovnávání zatížení má přidruženou veřejnou IP adresu s názvem DNS ve formátu: * &lt; název_clusteru &gt; . &lt; Location &gt; . cloudapp.Azure.com*.  Veřejná IP adresa je další prostředek Azure ve skupině prostředků.  Pokud v clusteru definujete více typů uzlů, vytvoří se nástroj pro vyrovnávání zatížení pro každou sadu typů nebo škálování uzlu. Nebo můžete nastavit jeden nástroj pro vyrovnávání zatížení pro více typů uzlů.  Typ primárního uzlu má název * &lt; klastru DNS &gt; . &lt; Location &gt; . cloudapp.Azure.com*, jiné typy uzlů mají název clusteru DNS * &lt; &gt; - &lt; NodeType &gt; . &lt; Location &gt; . cloudapp.Azure.com*.
+Virtuální počítače v clusteru mají jenom [privátní IP adresy](../virtual-network/private-ip-addresses.md).  Provoz správy a provoz služeb jsou směrovány prostřednictvím veřejného nástroje pro vyrovnávání zatížení.  Síťový provoz se směruje na tyto počítače prostřednictvím pravidel NAT (klienti se připojují ke konkrétním uzlům/instancím) nebo pravidel vyrovnávání zatížení (provoz směřuje do virtuálních počítačů kruhového dotazování).  Nástroj pro vyrovnávání zatížení má přidruženou veřejnou IP adresu s názvem DNS ve formátu: *&lt; název_clusteru &gt; . &lt; Location &gt; . cloudapp.Azure.com*.  Veřejná IP adresa je další prostředek Azure ve skupině prostředků.  Pokud v clusteru definujete více typů uzlů, vytvoří se nástroj pro vyrovnávání zatížení pro každou sadu typů nebo škálování uzlu. Nebo můžete nastavit jeden nástroj pro vyrovnávání zatížení pro více typů uzlů.  Typ primárního uzlu má název *&lt; klastru DNS &gt; . &lt; Location &gt; . cloudapp.Azure.com*, jiné typy uzlů mají název clusteru DNS *&lt; &gt; - &lt; NodeType &gt; . &lt; Location &gt; . cloudapp.Azure.com*.
 
 ### <a name="storage-accounts"></a>Účty úložiště
 Každý typ uzlu clusteru je podporovaný účtem služby [Azure Storage](../storage/common/storage-introduction.md) a spravovanými disky.
@@ -68,12 +68,12 @@ Kromě klientských certifikátů je možné Azure Active Directory taky nakonfi
 
 Další informace najdete v článku [zabezpečení mezi klienty a uzly](service-fabric-cluster-security.md#client-to-node-security) .
 
-### <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
-Role-Based Access Control (RBAC) umožňuje v prostředcích Azure přiřadit jemně odstupňované ovládací prvky přístupu.  K předplatným, skupinám prostředků a prostředkům můžete přiřadit různá pravidla přístupu.  Pravidla RBAC jsou zděděna v hierarchii prostředků, pokud nejsou přepsána na nižší úrovni.  Můžete přiřadit všechny uživatele nebo skupiny uživatelů ve službě AAD s pravidly RBAC, aby mohli vlastní určení uživatelé a skupiny upravovat cluster.  Další informace najdete v tématu [Přehled Azure RBAC](../role-based-access-control/overview.md).
+### <a name="role-based-access-control"></a>Řízení přístupu na základě role
+Řízení přístupu na základě role Azure (Azure RBAC) umožňuje v prostředcích Azure přiřadit jemně odstupňované ovládací prvky přístupu.  K předplatným, skupinám prostředků a prostředkům můžete přiřadit různá pravidla přístupu.  Pravidla Azure RBAC jsou zděděná v hierarchii prostředků, pokud nejsou přepsána na nižší úrovni.  Můžete přiřadit všechny uživatele nebo skupiny uživatelů ve službě AAD s pravidly Azure RBAC, aby mohli určení clusterů upravovat určené uživatele a skupiny.  Další informace najdete v tématu [Přehled Azure RBAC](../role-based-access-control/overview.md).
 
 Service Fabric také podporuje řízení přístupu pro omezení přístupu k určitým operacím clusteru pro různé skupiny uživatelů. To pomáhá zvýšit zabezpečení clusteru. Pro klienty, kteří se připojují ke clusteru, jsou podporovány dva typy řízení přístupu: role správce a role uživatele.  
 
-Další informace najdete v článku [Service Fabric Role-Based Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
+Další informace najdete v [Service Fabric řízení přístupu na základě role](service-fabric-cluster-security.md#service-fabric-role-based-access-control).
 
 ### <a name="network-security-groups"></a>Skupiny zabezpečení sítě 
 Skupiny zabezpečení sítě (skupin zabezpečení sítě) řízení příchozího a odchozího provozu podsítě, virtuálního počítače nebo konkrétního síťového adaptéru.  Ve výchozím nastavení platí, že pokud je více virtuálních počítačů umístěno ve stejné virtuální síti, mohou vzájemně komunikovat prostřednictvím libovolného portu.  Pokud chcete omezit komunikaci mezi počítači, můžete definovat skupin zabezpečení sítě k segmentaci sítě nebo izolaci virtuálních počítačů od sebe navzájem.  Pokud máte v clusteru více typů uzlů, můžete použít skupin zabezpečení sítě na podsítě, abyste zabránili vzájemné komunikaci počítačů, které patří různým typům uzlů.  

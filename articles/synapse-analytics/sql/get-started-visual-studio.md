@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 098256c3174f5a737bec4f6a62cb1d2af99e6f4f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a284e453a621860c0aebf68bef13d30e77971f88
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311070"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686153"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Připojení k synapse SQL pomocí sady Visual Studio a SSDT
 
@@ -32,7 +32,7 @@ Pomocí sady Visual Studio se můžete dotazovat na vyhrazený fond SQL pomocí 
 > [!NOTE]
 > SSDT není podporován fondem SQL serveru (Preview).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li použít tento kurz, musíte mít následující komponenty:
 
@@ -52,9 +52,9 @@ Chcete-li použít tento kurz, musíte mít následující komponenty:
    
     ![Připojení k serveru](./media/get-started-visual-studio/connection-dialog.png)
    
-   * **Název serveru** : zadejte **název serveru** , který jste předtím identifikovali.
-   * **Ověřování** : vyberte **ověřování SQL Server** nebo **integrované ověřování služby Active Directory** :
-   * **Uživatelské jméno** a **heslo** : pokud jste výše vybrali SQL Server ověřování, zadejte své uživatelské jméno a heslo.
+   * **Název serveru**: zadejte **název serveru** , který jste předtím identifikovali.
+   * **Ověřování**: vyberte **ověřování SQL Server** nebo **integrované ověřování služby Active Directory**:
+   * **Uživatelské jméno** a **heslo**: pokud jste výše vybrali SQL Server ověřování, zadejte své uživatelské jméno a heslo.
    * Klikněte na **Připojit**.
 5. Pokud chcete SQL server Azure prozkoumat, rozbalte ho. Můžete se podívat, které databáze jsou k tomuto serveru přidružené. Rozbalte položku AdventureWorksDW a podívejte se na tabulky v ukázkové databázi.
    

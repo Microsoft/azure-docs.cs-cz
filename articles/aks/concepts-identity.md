@@ -1,25 +1,25 @@
 ---
 title: Koncepty – přístup a identita ve službě Azure Kubernetes Services (AKS)
-description: Přečtěte si o přístupu a identitě ve službě Azure Kubernetes (AKS), včetně Integrace Azure Active Directory, řízení přístupu na základě role (RBAC) a rolí a vazeb.
+description: Přečtěte si o přístupu a identitě ve službě Azure Kubernetes (AKS), včetně Integrace Azure Active Directory, řízení přístupu na základě role Kubernetes (Kubernetes RBAC) a rolí a vazeb.
 services: container-service
 ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 5013f8b7dd88340e397fd3d4d4cd93d4b911fbbb
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: ca167a2ae313c29581d40fe921a8742b9b6b61fe
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378223"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686051"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
-Existují různé způsoby ověřování, řízení přístupu, autorizaci a zabezpečení clusterů Kubernetes. Pomocí Kubernetes řízení přístupu na základě role (RBAC) můžete uživatelům, skupinám a účtům služeb udělit přístup pouze k potřebným prostředkům. Pomocí služby Azure Kubernetes Service (AKS) můžete dál zdokonalit strukturu zabezpečení a oprávnění pomocí Azure Active Directory a Azure RBAC. Tyto přístupy vám pomůžou zabezpečit přístup ke clusteru a poskytnout jenom minimální požadovaná oprávnění vývojářům a operátorům.
+Existují různé způsoby ověřování, řízení přístupu, autorizaci a zabezpečení clusterů Kubernetes. Pomocí Kubernetes řízení přístupu založeného na rolích (Kubernetes RBAC) můžete uživatelům, skupinám a účtům služeb udělit přístup pouze k potřebným prostředkům. Pomocí služby Azure Kubernetes Service (AKS) můžete dál zdokonalit strukturu zabezpečení a oprávnění pomocí Azure Active Directory a Azure RBAC. Tyto přístupy vám pomůžou zabezpečit přístup ke clusteru a poskytnout jenom minimální požadovaná oprávnění vývojářům a operátorům.
 
 V tomto článku se seznámíte se základními koncepty, které vám pomůžou ověřit a přiřadit oprávnění v AKS:
 
-- [Kubernetes řízení přístupu na základě role (RBAC)](#kubernetes-role-based-access-control-rbac)
+- [Kubernetes řízení přístupu na základě role (Kubernetes RBAC)](#kubernetes-role-based-access-control-kubernetes-rbac)
   - [Role a ClusterRoles](#roles-and-clusterroles)
   - [RoleBindings a ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
   - [Účty služby Kubernetes](#kubernetes-service-accounts)
@@ -29,11 +29,11 @@ V tomto článku se seznámíte se základními koncepty, které vám pomůžou 
   - [Azure RBAC pro autorizaci Kubernetes (Preview)](#azure-rbac-for-kubernetes-authorization-preview)
 
 
-## <a name="kubernetes-role-based-access-control-rbac"></a>Kubernetes řízení přístupu na základě role (RBAC)
+## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes řízení přístupu na základě role (Kubernetes RBAC)
 
-Kubernetes používá řízení přístupu na základě rolí (RBAC) k zajištění podrobného filtrování akcí, které mohou uživatelé provádět. Tento řídicí mechanismus umožňuje přiřadit uživatele nebo skupiny uživatelů, oprávnění k provádění akcí, jako je vytváření nebo úpravy prostředků, nebo zobrazení protokolů ze spuštěných úloh aplikací. Tato oprávnění můžou být vymezená na jeden obor názvů nebo udělená v rámci celého clusteru AKS. Pomocí Kubernetes RBAC vytvoříte *role* pro definování oprávnění a pak jim přiřadíte tyto role uživatelům s *vazbami rolí*.
+K zajištění podrobného filtrování akcí, které mohou uživatelé provádět, Kubernetes používá řízení přístupu na základě role Kubernetes (Kubernetes RBAC). Tento řídicí mechanismus umožňuje přiřadit uživatele nebo skupiny uživatelů, oprávnění k provádění akcí, jako je vytváření nebo úpravy prostředků, nebo zobrazení protokolů ze spuštěných úloh aplikací. Tato oprávnění můžou být vymezená na jeden obor názvů nebo udělená v rámci celého clusteru AKS. Pomocí Kubernetes RBAC vytvoříte *role* pro definování oprávnění a pak jim přiřadíte tyto role uživatelům s *vazbami rolí*.
 
-Další informace najdete v tématu [použití autorizace RBAC][kubernetes-rbac].
+Další informace najdete v tématu [použití autorizace KUBERNETES RBAC][kubernetes-rbac].
 
 
 ### <a name="roles-and-clusterroles"></a>Role a ClusterRoles
@@ -46,7 +46,7 @@ ClusterRole funguje stejným způsobem jako udělení oprávnění k prostředk�
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBindings a ClusterRoleBindings
 
-Jakmile jsou role definované pro udělení oprávnění k prostředkům, přiřaďte tato oprávnění Kubernetes RBAC k *RoleBinding*. Pokud se váš cluster AKS [integruje s Azure Active Directory](#azure-active-directory-integration), vazby jsou tím, jakým způsobem mají uživatelé služby Azure AD udělená oprávnění k provádění akcí v rámci clusteru, v tématu Jak [řídit přístup k prostředkům clusteru pomocí řízení přístupu na základě rolí a Azure Active Directory identit](azure-ad-rbac.md).
+Jakmile jsou role definované pro udělení oprávnění k prostředkům, přiřaďte tato oprávnění Kubernetes RBAC k *RoleBinding*. Pokud se váš cluster AKS [integruje s Azure Active Directory](#azure-active-directory-integration), vazby jsou tím, jak jsou těmto uživatelům služby Azure AD udělena oprávnění k provádění akcí v rámci clusteru, viz jak v [řízení přístupu k prostředkům clusteru pomocí řízení přístupu založeného na rolích Kubernetes a Azure Active Directory identit](azure-ad-rbac.md).
 
 Vazby role slouží k přiřazení rolí pro daný obor názvů. Tento přístup umožňuje logicky oddělit jeden AKS cluster s uživateli, kteří mají jenom přístup k prostředkům aplikace v jejich přiřazeném oboru názvů. Pokud potřebujete navazovat role napříč celým clusterem nebo prostředky clusteru mimo daný obor názvů, můžete místo toho použít *ClusterRoleBindings*.
 
@@ -101,13 +101,13 @@ Azure RBAC je autorizačním systémem postaveným na [Azure Resource Manager](.
 
  Služba Azure RBAC je navržená tak, aby fungovala s prostředky v rámci vašeho předplatného Azure, zatímco Kubernetes RBAC je navržená pro práci na Kubernetesch prostředcích v rámci 
 
-Pomocí Azure RBAC můžete vytvořit *definici role* , která bude mít přehled o oprávněních, která se mají použít. Uživateli nebo skupině se pak přiřadí tato definice role prostřednictvím *přiřazení role* pro konkrétní *obor* , což může být individuální prostředek, skupina prostředků nebo celé předplatné.
+Pomocí Azure RBAC můžete vytvořit *definici role* , která bude mít přehled o oprávněních, která se mají použít. Uživateli nebo skupině se pak přiřadí tato definice role prostřednictvím *přiřazení role* pro konkrétní *obor*, což může být individuální prostředek, skupina prostředků nebo celé předplatné.
 
 Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?][azure-rbac]
 
 Existují dvě úrovně přístupu, které jsou potřeba k plnému provozu clusteru AKS: 
 1. [Přístup k prostředku AKS ve vašem předplatném Azure](#azure-rbac-to-authorize-access-to-the-aks-resource). Tento proces vám umožní řídit, jak škálovat nebo upgradovat cluster pomocí rozhraní AKS API, a také načíst vaše kubeconfig.
-2. Přístup k rozhraní Kubernetes API. Tento přístup se řídí buď [KUBERNETES RBAC](#kubernetes-role-based-access-control-rbac) (tradičně), nebo [integrací Azure RBAC s AKS pro autorizaci Kubernetes](#azure-rbac-for-kubernetes-authorization-preview) .
+2. Přístup k rozhraní Kubernetes API. Tento přístup se řídí buď [KUBERNETES RBAC](#kubernetes-role-based-access-control-kubernetes-rbac) (tradičně), nebo [integrací Azure RBAC s AKS pro autorizaci Kubernetes](#azure-rbac-for-kubernetes-authorization-preview) .
 
 ### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>Azure RBAC pro autorizaci přístupu k prostředku AKS
 

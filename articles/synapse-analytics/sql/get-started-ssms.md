@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4337d6bb108042a909250b3d87d13ab60357cfec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4239b5400e919621dfff001ca7e6cb9de1626658
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311122"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686204"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Připojení k synapse SQL pomocí SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "93311122"
 > [!NOTE]
 > Pokud má přihlášení AAD otevřené připojení po dobu delší než 1 hodinu, dotaz, který se spoléhá na AAD, selže. To zahrnuje dotazování na úložiště pomocí předávacího a příkazového příkazu AAD, které komunikují s AAD (třeba vytvoření externího poskytovatele). To má vliv na všechny nástroje, které udržují připojení otevřené, jako v editoru dotazů v SSMS a REKLAMách. Nástroje, které otevřou nové připojení k provedení dotazu, nejsou ovlivněné, například synapse Studio.
 > Pokud chcete tento problém zmírnit, můžete restartovat SSMS nebo připojení a odpojení v REKLAMách. .
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující požadavky:  
 
@@ -43,20 +43,20 @@ Než začnete, ujistěte se, že máte následující požadavky:
 * Pro vyhrazený fond SQL potřebujete existující datový sklad. Pokud ho chcete vytvořit, přečtěte si téma [vytvoření vyhrazeného fondu SQL](../quickstart-create-sql-pool-portal.md). Pro fond SQL bez serveru je už ve vašem pracovním prostoru v době vytváření zřízen vestavěný název. 
 * Plně kvalifikovaný název SQL Server. Tento název najdete v tématu [připojení k synapse SQL](connect-overview.md).
 
-## <a name="connect"></a>Připojení
+## <a name="connect"></a>Připojit
 
 ### <a name="dedicated-sql-pool"></a>Vyhrazený fond SQL
 
 Pokud se chcete připojit k SQL synapse pomocí vyhrazeného fondu SQL, postupujte podle těchto kroků: 
 
 1. Otevřete SQL Server Management Studio (SSMS). 
-1. V dialogovém okně **připojit k serveru** vyplňte pole a pak vyberte **připojit** : 
+1. V dialogovém okně **připojit k serveru** vyplňte pole a pak vyberte **připojit**: 
   
     ![Připojit k serveru 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **Název serveru** : zadejte **název serveru** , který jste předtím identifikovali.
-   * **Ověřování** : Vyberte typ ověřování, například **SQL Server ověřování** nebo **integrované ověřování služby Active Directory**.
-   * **Uživatelské jméno** a **heslo** : pokud jste výše vybrali SQL Server ověřování, zadejte své uživatelské jméno a heslo.
+   * **Název serveru**: zadejte **název serveru** , který jste předtím identifikovali.
+   * **Ověřování**: Vyberte typ ověřování, například **SQL Server ověřování** nebo **integrované ověřování služby Active Directory**.
+   * **Uživatelské jméno** a **heslo**: pokud jste výše vybrali SQL Server ověřování, zadejte své uživatelské jméno a heslo.
 
 1. Rozšiřte SQL Server Azure v **Průzkumník objektů**. Můžete zobrazit databáze přidružené k serveru, jako je například ukázková databáze AdventureWorksDW. Chcete-li zobrazit tabulky, můžete rozšířit databázi:
    
@@ -68,13 +68,13 @@ Pokud se chcete připojit k SQL synapse pomocí vyhrazeného fondu SQL, postupuj
 Pokud se chcete připojit k synapse SQL pomocí neserveru SQL fondu, postupujte takto: 
 
 1. Otevřete SQL Server Management Studio (SSMS).
-1. V dialogovém okně **připojit k serveru** vyplňte pole a pak vyberte **připojit** : 
+1. V dialogovém okně **připojit k serveru** vyplňte pole a pak vyberte **připojit**: 
    
     ![Připojit k serveru 2](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **Název serveru** : zadejte **název serveru** , který jste předtím identifikovali.
-   * **Ověřování** : Vyberte typ ověřování, například **SQL Server ověřování** nebo **integrované ověřování služby Active Directory** :
-   * **Uživatelské jméno** a **heslo** : pokud jste výše vybrali SQL Server ověřování, zadejte své uživatelské jméno a heslo.
+   * **Název serveru**: zadejte **název serveru** , který jste předtím identifikovali.
+   * **Ověřování**: Vyberte typ ověřování, například **SQL Server ověřování** nebo **integrované ověřování služby Active Directory**:
+   * **Uživatelské jméno** a **heslo**: pokud jste výše vybrali SQL Server ověřování, zadejte své uživatelské jméno a heslo.
    * Vyberte **Connect** (Připojit).
 
 4. Pokud chcete SQL server Azure prozkoumat, rozbalte ho. Můžete se podívat, které databáze jsou k tomuto serveru přidružené. Rozbalením *ukázky* zobrazíte obsah ve vzorové databázi.
@@ -104,7 +104,7 @@ Teď, když je navázáno připojení k databázi, můžete zadávat dotazy na d
    
     ![Výsledky dotazu 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
-### <a name="serverless-sql-pool"></a>Fond SQL bez serveru
+### <a name="serverless-sql-pool"></a>Bezserverový fond SQL
 
 Teď, když jste navázali připojení k databázi, můžete zadávat dotazy na data.
 

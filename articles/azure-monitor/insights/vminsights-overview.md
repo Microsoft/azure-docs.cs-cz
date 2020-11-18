@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: 5c3cb13d0b2da9370f402083d82397679f2c9343
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5eaf2d7075ca09aeb3cfaa2dfea81fd0f8d65ad
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022492"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685303"
 ---
-# <a name="what-is-azure-monitor-for-vms"></a>Co je Azure Monitor pro virtuální počítače?
+# <a name="overview-of-azure-monitor-for-vms"></a>Přehled služby Azure Monitor pro virtuální počítače
 
 Azure Monitor pro virtuální počítače monitoruje výkon a stav virtuálních počítačů a sady škálování virtuálních počítačů, včetně jejich spuštěných procesů a závislostí na jiných prostředcích. Může přispět k předvídatelnému výkonu a dostupnosti důležitých aplikací tím, že identifikují problémová místa výkonu a problémy se sítí a také vám pomůže pochopit, jestli problém souvisí s jinými závislostmi.
 
@@ -26,8 +26,6 @@ Azure Monitor pro virtuální počítače podporuje operační systémy Windows 
 - Virtuální počítače hostované v jiném cloudovém prostředí
   
 
-
-
 Azure Monitor pro virtuální počítače ukládá data v protokolech Azure Monitor, což umožňuje poskytovat výkonnou agregaci a filtrování a analyzovat trendy dat v čase. Tato data můžete zobrazit v jednom virtuálním počítači přímo z virtuálního počítače nebo můžete použít Azure Monitor pro doručení agregovaného zobrazení více virtuálních počítačů.
 
 ![Perspektiva analýzy virtuálních počítačů v Azure Portal](media/vminsights-overview/vminsights-azmon-directvm.png)
@@ -37,6 +35,7 @@ Azure Monitor pro virtuální počítače ukládá data v protokolech Azure Moni
 Pro Azure Monitor pro virtuální počítače se neúčtují žádné přímé náklady, ale v pracovním prostoru Log Analytics se vám účtuje jeho aktivita. Na základě cen, které jsou publikovány na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/), se Azure monitor pro virtuální počítače účtuje takto:
 
 - Data ingestovaná z agentů a uložená v pracovním prostoru.
+- Data o stavu shromážděná z stavu hosta (Preview)
 - Pravidla výstrah na základě dat protokolů a stavu.
 - Oznámení se odesílají z pravidel výstrah.
 

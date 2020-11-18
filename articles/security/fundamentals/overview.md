@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: db7d9e99de8a4ee67e49f8b7568700fc07b1e2fd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 749c32091ed10d5bb39d7b67c8b737e002fc9909
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536504"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693728"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -138,11 +138,11 @@ V konzoli Application Diagnostics lze zobrazit události seskupené následují
 -   Chyby aplikace (Zobrazí se události související s výjimkami.)
 -   Výkon (Zobrazí se události související s výkonem.)
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 V části najdete další informace týkající se klíčových funkcí zabezpečení Azure Storage a souhrnné informace o těchto funkcích.
 
-### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
-Svůj účet úložiště můžete zabezpečit pomocí Role-Based Access Control (RBAC). Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a [minimálních](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení oprávnění je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou udělována přiřazením příslušné role Azure do skupin a aplikací v určitém oboru. K přiřazení oprávnění uživatelům můžete použít [předdefinované role Azure](../../role-based-access-control/built-in-roles.md), jako je Přispěvatel účtu úložiště. Přístup k klíčům úložiště pro účet úložiště pomocí modelu [Azure Resource Manager](../../storage/blobs/security-recommendations.md) lze ovládat pomocí Role-Based Access Control (RBAC).
+### <a name="azure-role-based-access-control-azure-rbac"></a>Řízení přístupu na základě role Azure (Azure RBAC)
+Svůj účet úložiště můžete zabezpečit pomocí řízení přístupu na základě role v Azure (Azure RBAC). Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a [minimálních](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení oprávnění je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou udělována přiřazením příslušné role Azure do skupin a aplikací v určitém oboru. K přiřazení oprávnění uživatelům můžete použít [předdefinované role Azure](../../role-based-access-control/built-in-roles.md), jako je Přispěvatel účtu úložiště. Přístup k klíčům úložiště pro účet úložiště pomocí modelu [Azure Resource Manager](../../storage/blobs/security-recommendations.md) můžete ovládat prostřednictvím Azure RBAC.
 
 ### <a name="shared-access-signature"></a>Sdílený přístupový podpis
 [Sdílený přístupový podpis (SAS)](../../storage/common/storage-sas-overview.md) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. SAS znamená, že můžete klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po určitou dobu a se zadanou sadou oprávnění. Tato omezená oprávnění můžete udělit bez nutnosti sdílení přístupových klíčů k účtu.
@@ -336,7 +336,7 @@ Microsoft používá pro správu identit a přístupu více postupů a technolog
 
 -   [Ověřování na základě tokenu](../../active-directory/develop/authentication-vs-authorization.md) umožňuje ověřování prostřednictvím Azure Active Directory.
 
--   [Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/built-in-roles.md) umožňuje udělit přístup na základě přiřazené role uživatele, což usnadňuje uživatelům poskytnout jenom množství přístupu, které potřebují k provedení svých pracovních povinností. RBAC můžete přizpůsobit podle obchodního modelu a tolerance rizik vaší organizace.
+-   [Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/built-in-roles.md) umožňuje udělit přístup na základě přiřazené role uživatele, což usnadňuje uživatelům poskytnout jenom množství přístupu, které potřebují k provedení svých pracovních povinností. Můžete přizpůsobit Azure RBAC podle obchodního modelu a tolerance rizik vaší organizace.
 
 -   [Integration Management (hybridní identita)](../../active-directory/hybrid/plan-hybrid-identity-design-considerations-overview.md) umožňuje udržovat řízení přístupu uživatelů mezi interní datacentry a cloudové platformy a vytvořit jednu identitu uživatele pro ověřování a autorizaci pro všechny prostředky.
 

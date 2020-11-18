@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b74baebd964ee43658f74e0050dff838e29f9b8a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bd69f239a1c65040c44da776186ab8d955f5e333
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409055"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693174"
 ---
 # <a name="security-control-network-security"></a>Řízení zabezpečení: zabezpečení sítě
 
@@ -148,7 +148,7 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 Definování a implementace standardních konfigurací zabezpečení pro síťové prostředky pomocí Azure Policy.
 
-Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manageru, ovládací prvky RBAC a zásady, a to v jediné definici podrobného plánu. Můžete použít podrobný plán na nová předplatná a vyladit řízení a správu prostřednictvím správy verzí.
+Pomocí Azure modrotisky můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou šablony Azure Resource Manageru, ovládací prvky a zásady služby Azure RBAC v rámci jedné definice podrobného plánu. Můžete použít podrobný plán na nová předplatná a vyladit řízení a správu prostřednictvím správy verzí.
 
 - [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 

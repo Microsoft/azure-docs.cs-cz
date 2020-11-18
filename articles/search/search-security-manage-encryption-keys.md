@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 95ac4ed83a4486665ce378972ea7d6423c2482d5
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b0871b6365d78129cd6fdaec82fee14e2b0a7a4b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682906"
+ms.locfileid: "94693439"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat v Azure Kognitivní hledání
 
@@ -41,7 +41,7 @@ Pro služby vytvořené od 1. srpna 2020 a v určitých oblastech zahrnuje rozsa
 
 Pokud používáte jinou oblast nebo službu vytvořenou před 1. srpna, bude šifrování CMK omezené jenom na datový disk, a to s výjimkou dočasných disků, které služba používá.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto scénáři se používají následující nástroje a služby.
 
@@ -52,7 +52,7 @@ V tomto scénáři se používají následující nástroje a služby.
 Měli byste mít vyhledávací aplikaci, která může vytvořit zašifrovaný objekt. Do tohoto kódu odkazujete na klíč trezoru klíčů a registrační informace služby Active Directory. Tento kód může být pracovní aplikace nebo kód prototypu, jako je například [kód C# DotNetHowToEncryptionUsingCMK Sample](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK).
 
 > [!TIP]
-> Můžete použít [post](search-get-started-postman.md) nebo [Azure PowerShell](./search-get-started-powershell.md) k volání rozhraní REST API, která vytvářejí indexy a mapy synonym, které obsahují parametr šifrovacího klíče. V tuto chvíli není k dispozici žádná podpora portálu pro přidání klíče do indexů nebo map synonym.
+> K volání rozhraní REST API, která vytvářejí indexy a mapy synonym, které obsahují parametr šifrovacího klíče, můžete použít [post nebo Visual Studio Code](search-get-started-rest.md)nebo [Azure PowerShell](./search-get-started-powershell.md). V tuto chvíli není k dispozici žádná podpora portálu pro přidání klíče do indexů nebo map synonym.
 
 ## <a name="1---enable-key-recovery"></a>1 – povolit obnovení klíče
 

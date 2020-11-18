@@ -5,16 +5,19 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/23/2020
-ms.openlocfilehash: be469ab3b05c54ebc5afa6bd6d129efd8d4ba692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: f582f0dc7547a607351fcfc4ff9d39e8c5a077df
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254801"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686173"
 ---
 # <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Jak vytvořit výstrahy z Azure Monitor pro virtuální počítače
 [Výstrahy v Azure monitor](../platform/alerts-overview.md) proaktivně upozorňují na zajímavá data a vzory v datech monitorování. Azure Monitor pro virtuální počítače nezahrnuje předem nakonfigurovaná pravidla výstrah, ale můžete vytvořit vlastní, a to na základě dat, která shromažďuje. Tento článek obsahuje pokyny týkající se vytváření pravidel výstrah, včetně sady ukázkových dotazů.
+
+> [!IMPORTANT]
+> Výstrahy popsané v tomto článku jsou založené na dotazech protokolu ze shromážděných dat Azure Monitor pro virtuální počítače. To se liší od výstrah vytvořených [Azure monitor pro stav hosta virtuálního počítače](vminsights-health-overview.md) , který je aktuálně ve verzi Public Preview. Vzhledem k tomu, že tato funkce je blízko obecné dostupnosti, se budou konsolidovat pokyny pro upozorňování.
 
 
 ## <a name="alert-rule-types"></a>Typy pravidel výstrah
@@ -29,11 +32,11 @@ Existují dva typy upozornění protokolu v Azure Monitor:
 ## <a name="alert-rule-walkthrough"></a>Návod pro pravidlo upozornění
 Tato část vás provede vytvořením pravidla výstrahy měření metriky pomocí údajů o výkonu z Azure Monitor pro virtuální počítače. Tento základní postup můžete použít u nejrůznějších dotazů protokolu pro upozornění na různé čítače výkonu.
 
-Začněte vytvořením nového pravidla výstrahy podle postupu v části [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor](../platform/alerts-log.md). V případě **prostředku**vyberte pracovní prostor Log Analytics, který Azure monitor virtuální počítače ve vašem předplatném používat. Vzhledem k tomu, že je cílový prostředek pro pravidla upozornění protokolu vždycky Log Analytics pracovním prostorem, dotaz protokolu musí zahrnovat jakýkoliv filtr pro konkrétní virtuální počítače nebo sady škálování virtuálních počítačů. 
+Začněte vytvořením nového pravidla výstrahy podle postupu v části [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor](../platform/alerts-log.md). V případě **prostředku** vyberte pracovní prostor Log Analytics, který Azure monitor virtuální počítače ve vašem předplatném používat. Vzhledem k tomu, že je cílový prostředek pro pravidla upozornění protokolu vždycky Log Analytics pracovním prostorem, dotaz protokolu musí zahrnovat jakýkoliv filtr pro konkrétní virtuální počítače nebo sady škálování virtuálních počítačů. 
 
 Pro **podmínku** pravidla výstrahy použijte jeden z dotazů v [níže uvedené části](#sample-alert-queries) jako **vyhledávací dotaz**. Dotaz musí vracet číselnou vlastnost s názvem *AggregatedValue*. Měla by data sumarizovat podle počítačů, abyste mohli vytvořit samostatnou výstrahu pro každý virtuální počítač, který překračuje prahovou hodnotu.
 
-V **logice výstrahy**vyberte **měření metriky** a pak zadejte **prahovou hodnotu**. V okně **Výstraha aktivační události na základě**zadejte, kolikrát musí být prahová hodnota překročena, než bude vytvořena výstraha. Například se vám pravděpodobně nemusíte starat, pokud procesor překročí prahovou hodnotu jednou a potom se vrátí na normální, ale budete mít pozor, pokud bude nadále překračovat prahovou hodnotu nad několik po sobě jdoucích měření.
+V **logice výstrahy** vyberte **měření metriky** a pak zadejte **prahovou hodnotu**. V okně **Výstraha aktivační události na základě** zadejte, kolikrát musí být prahová hodnota překročena, než bude vytvořena výstraha. Například se vám pravděpodobně nemusíte starat, pokud procesor překročí prahovou hodnotu jednou a potom se vrátí na normální, ale budete mít pozor, pokud bude nadále překračovat prahovou hodnotu nad několik po sobě jdoucích měření.
 
 **Vyhodnocený** oddíl definuje, jak často se dotaz spouští, a časový interval pro dotaz. V níže uvedeném příkladu se dotaz spustí každých 15 minut a vyhodnotí se hodnoty výkonu shromážděné během předchozích 15 minut.
 

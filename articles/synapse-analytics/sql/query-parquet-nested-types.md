@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3463e4dfc423a3f12ce7a42cb0def36574bcb2d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 426c95638422fa4260508aa81bb47a7c9565e6eb
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312007"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685711"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Dotazování vnořených typů v souborech Parquet a JSON pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics
 
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > V tomto příkladu se používá soubor z otevřené datové sady COVID-19. [Tady si můžete prohlédnout licenci a strukturu dat](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Prvním krokem je vytvoření databáze, ve které se vytvoří zdroj dat. Pak inicializujete objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v databázi. Skript instalačního programu vytvoří zdroje dat, přihlašovací údaje v rozsahu databáze a formáty externích souborů, které jsou použity v ukázkách.
 

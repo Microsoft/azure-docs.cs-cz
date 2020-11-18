@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb4c7f8ba49cf701ef13cb57ab2b323a94c928cc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3af28ef575f770a5b8c3fb73ade1f9c53be66843
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323822"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685745"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Připojení k synapse SQL pomocí Azure Data Studio (Preview)
 
@@ -28,7 +28,7 @@ ms.locfileid: "93323822"
 
 K připojení a dotazování SQL synapse v Azure synapse Analytics můžete použít [Azure Data Studio (Preview)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . 
 
-## <a name="connect"></a>Připojení
+## <a name="connect"></a>Připojit
 
 Pokud se chcete připojit k synapse SQL, otevřete Azure Data Studio a vyberte **nové připojení**.
 
@@ -50,7 +50,7 @@ Připojení vyžaduje následující parametry:
 >
 > - `<Azure Synapse workspace name>`. sql.azuresynapse.net
 
-Jako **typ ověřování** vyberte možnost **ověřování systému Windows** , **Azure Active Directory** nebo **přihlášení SQL** .
+Jako **typ ověřování** vyberte možnost **ověřování systému Windows**, **Azure Active Directory** nebo **přihlášení SQL** .
 
 Pokud chcete jako typ ověřování použít **přihlášení SQL** , přidejte parametry uživatelského jména a hesla:
 
@@ -61,17 +61,17 @@ Chcete-li použít Azure Active Directory, je nutné vybrat požadovaný typ ov�
 
 ![Ověřování AAD](./media/get-started-azure-data-studio/3-aad-auth.png)
 
-Následující snímek obrazovky ukazuje **Podrobnosti o připojení** pro **ověřování systému Windows** :
+Následující snímek obrazovky ukazuje **Podrobnosti o připojení** pro **ověřování systému Windows**:
 
 ![Ověřování systému Windows](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-Následující snímek obrazovky ukazuje **Podrobnosti připojení** pomocí **přihlášení SQL** :
+Následující snímek obrazovky ukazuje **Podrobnosti připojení** pomocí **přihlášení SQL**:
 
 ![Přihlášení k SQL](./media/get-started-azure-data-studio/2-database-details.png)
 
 Po úspěšném přihlášení byste měli vidět řídicí panel podobný tomuto: ![ řídicí panel](./media/get-started-azure-data-studio/4-dashboard.png)
 
-## <a name="query"></a>Dotaz
+## <a name="query"></a>Dotazy
 
 Po připojení můžete dotazovat synapse SQL pomocí podporovaných příkazů [jazyka Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) na instanci. Začněte tím, že vyberete **Nový dotaz** v zobrazení řídicího panelu.
 

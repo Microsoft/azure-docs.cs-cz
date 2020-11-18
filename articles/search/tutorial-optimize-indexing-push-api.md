@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 13825422358fdddf6742353fbabaac0303b0c82e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d22ff5c863617a3feb2a08d4b1889d0a7c10cd3a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973440"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693391"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Kurz: optimalizace indexování pomocí rozhraní API push
 
@@ -31,9 +31,9 @@ Tento kurz používá jazyk C# a [sadu .NET SDK](/dotnet/api/overview/azure/sear
 > * Použití více vláken ke zvýšení rychlosti indexování
 > * Použití exponenciální strategie omezení rychlosti opakování k opakovanému pokusu o neúspěšné dokumenty
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu jsou vyžadovány následující služby a nástroje.
 
@@ -54,7 +54,7 @@ Při vkládání dat do indexu existuje několik klíčových důležitých info
 Šest klíčových faktorů, které je potřeba vzít v úvahu:
 
 + **Úroveň služby a počet oddílů/replik** – přidávání oddílů a zvýšení úrovně zvýší obě rychlosti indexování.
-+ **Schéma indexu** – přidávání polí a přidávání dalších vlastností do polí (například *prohledávatelné*, *plošky*nebo *filtrovatelné*) snižují rychlost indexování.
++ **Schéma indexu** – přidávání polí a přidávání dalších vlastností do polí (například *prohledávatelné*, *plošky* nebo *filtrovatelné*) snižují rychlost indexování.
 + **Velikost dávky** – optimální velikost dávky se liší v závislosti na schématu indexu a datové sadě.
 + **Počet vláken/pracovníků** – jedno vlákno nebude plně využívat rychlosti indexování.
 + **Strategie opakování** – pro optimalizaci indexování by se měla použít exponenciální strategie omezení rychlosti opakování.
@@ -71,9 +71,9 @@ Volání rozhraní API vyžadují adresu URL služby a přístupový klíč. Vyh
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-   ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
+   ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-rest/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 ## <a name="2---set-up-your-environment"></a>2. nastavení prostředí
 
@@ -90,7 +90,7 @@ Volání rozhraní API vyžadují adresu URL služby a přístupový klíč. Vyh
 
 ## <a name="3---explore-the-code"></a>3. Prozkoumejte kód
 
-Po aktualizaci *appsettings.jsv*nástroji by měl být vzorový program v **OptimizeDataIndexing. sln** připravený k sestavování a spouštění.
+Po aktualizaci *appsettings.jsv* nástroji by měl být vzorový program v **OptimizeDataIndexing. sln** připravený k sestavování a spouštění.
 
 Tento kód je odvozen z rychlého startu v [C#](search-get-started-dotnet.md). Podrobnější informace o základech práce se sadou .NET SDK najdete v tomto článku.
 
@@ -162,7 +162,7 @@ Schéma indexu může mít výrazný vliv na rychlosti indexování. Z důvodu t
 Azure Kognitivní hledání podporuje následující rozhraní API pro načtení jednoho nebo více dokumentů do indexu:
 
 + [Přidávání, aktualizace a odstraňování dokumentů (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ Třída [IndexDocumentsAction](/dotnet/api/azure.search.documents.models.indexdocumentsaction?view=azure-dotnet) nebo [Třída IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch?view=azure-dotnet)
++ Třída [IndexDocumentsAction](/dotnet/api/azure.search.documents.models.indexdocumentsaction) nebo [Třída IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch)
 
 Indexování dokumentů v dávkách významně vylepšuje výkon při indexování. Tyto dávky můžou mít až 1000 dokumentů nebo až o 16 MB na jednu dávku.
 

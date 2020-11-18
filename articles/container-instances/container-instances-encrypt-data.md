@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: d2cad98267ef1654c4f2d9ad2db75f769dbc0780
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b73ce5c994231a1c7b2f26ad702f2ad5880ba44
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091351"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686272"
 ---
 # <a name="encrypt-deployment-data"></a>Šifrování dat nasazení
 
@@ -59,7 +59,7 @@ V případě, že nemůžete úspěšně vytvořit instanční objekt:
 
 ### <a name="create-a-key-vault-resource"></a>Vytvoření prostředku Key Vault
 
-Vytvořte Azure Key Vault pomocí [Azure Portal](../key-vault/secrets/quick-create-portal.md#create-a-vault), [CLI](../key-vault/secrets/quick-create-cli.md)nebo [PowerShellu](../key-vault/secrets/quick-create-powershell.md). 
+Vytvořte Azure Key Vault pomocí [Azure Portal](../key-vault/general/quick-create-portal.md), [Azure CLI](../key-vault/general/quick-create-cli.md)nebo [Azure PowerShell](../key-vault/general/quick-create-powershell.md).
 
 Pro vlastnosti vašeho trezoru klíčů použijte následující pokyny: 
 * Název: Je potřeba zadat jedinečný název. 
@@ -73,7 +73,7 @@ Pro vlastnosti vašeho trezoru klíčů použijte následující pokyny:
 
 ### <a name="generate-a-new-key"></a>Vygenerovat nový klíč 
 
-Po vytvoření trezoru klíčů přejděte k prostředku v Azure Portal. V levé navigační nabídce okna prostředků v části Nastavení klikněte na **klíče** . Pokud chcete vygenerovat nový klíč, klikněte v zobrazení pro "klíče" na "vygenerovat/importovat". Pro tento klíč použijte libovolný jedinečný název a všechny další předvolby podle vašich požadavků. 
+Po vytvoření trezoru klíčů přejděte k prostředku v Azure Portal. V levé navigační nabídce okna prostředků v části Nastavení klikněte na **klíče**. Pokud chcete vygenerovat nový klíč, klikněte v zobrazení pro "klíče" na "vygenerovat/importovat". Pro tento klíč použijte libovolný jedinečný název a všechny další předvolby podle vašich požadavků. 
 
 ![Vygenerovat nový klíč](./media/container-instances-encrypt-data/generate-key.png)
 
@@ -81,8 +81,8 @@ Po vytvoření trezoru klíčů přejděte k prostředku v Azure Portal. V levé
 
 Vytvořte nové zásady přístupu, které umožní službě ACI přístup k vašemu klíči.
 
-* Po vygenerování klíče zpátky v okně prostředku trezoru klíčů v části Nastavení klikněte na **zásady přístupu** .
-* Na stránce zásady přístupu pro váš Trezor klíčů klikněte na **Přidat zásady přístupu** .
+* Po vygenerování klíče zpátky v okně prostředku trezoru klíčů v části Nastavení klikněte na **zásady přístupu**.
+* Na stránce zásady přístupu pro váš Trezor klíčů klikněte na **Přidat zásady přístupu**.
 * Nastavte *klíčová oprávnění* tak, aby zahrnovala oprávnění kláves **získat** a **Rozbalit** klíč sady klíčů. ![](./media/container-instances-encrypt-data/set-key-permissions.png)
 * V případě *Vyberte objekt zabezpečení* vyberte **Azure Container instance Service** .
 * V dolní části klikněte na **Přidat** . 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 402fc1b0b436e7e2061cb2e1a922a75c82ac5235
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 082408f357e97a2ed2153d43dbea459ff09ba704
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408052"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693175"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Osvědčené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí Azure Storage
 V tomto článku se zabýváme kolekcí Azure Storage osvědčených postupů zabezpečení pro zabezpečení vašich webových a mobilních aplikací PaaS (Platform as a Service). Tyto osvědčené postupy se odvozují z našich zkušeností s Azure a zkušeností zákazníků, jako je sami.
@@ -34,7 +34,7 @@ Azure Storage poskytuje následující čtyři služby: úložiště objektů bl
 Tento článek popisuje následující osvědčené postupy:
 
 - Sdílené přístupové podpisy (SAS)
-- Řízení přístupu na základě role (RBAC)
+- Řízení přístupu na základě role Azure (Azure RBAC)
 - Šifrování na straně klienta pro data s vysokou hodnotou
 - Šifrování služby Storage
 
@@ -55,16 +55,16 @@ Pomocí SAS můžete sdílet obsah tak, jak ho chcete sdílet, aniž byste musel
 
 Další informace o sdíleném přístupovém podpisu najdete v tématu [použití sdílených přístupových](../../storage/common/storage-sas-overview.md)podpisů. 
 
-## <a name="use-role-based-access-control"></a>Použití řízení přístupu na základě rolí
-Dalším způsobem, jak spravovat přístup, je použití [řízení přístupu na základě role Azure (RBAC)](../../role-based-access-control/overview.md). Pomocí RBAC se zaměříte na to, aby zaměstnanci měli přesně potřebná oprávnění, a to na základě nutnosti znát a nejnižší principy zabezpečení oprávnění. Příliš mnoho oprávnění může zpřístupnit účet pro útočníky. Příliš málo oprávnění znamená, že zaměstnanci nemůžou svou práci efektivně dělat. RBAC pomáhá vyřešit tento problém tím, že nabízí jemně odstupňovanou správu přístupu pro Azure. To je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům.
+## <a name="use-azure-role-based-access-control"></a>Použití řízení přístupu na základě role v Azure
+Dalším způsobem, jak spravovat přístup, je použití [řízení přístupu na základě role Azure (RBAC)](../../role-based-access-control/overview.md). Pomocí služby Azure RBAC se zaměříte na to, aby zaměstnanci měli přesně potřebná oprávnění, a to na základě nutnosti znát a nejnižší principy zabezpečení oprávnění. Příliš mnoho oprávnění může zpřístupnit účet pro útočníky. Příliš málo oprávnění znamená, že zaměstnanci nemůžou svou práci efektivně dělat. Služba Azure RBAC pomáhá vyřešit tento problém tím, že nabízí jemně odstupňovanou správu přístupu pro Azure. To je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům.
 
 K přiřazení oprávnění uživatelům můžete použít předdefinované role Azure v Azure. Například použijte Přispěvatel účtu úložiště pro operátory cloudu, kteří potřebují spravovat účty úložiště a roli Přispěvatel klasických účtů úložiště pro správu klasických účtů úložiště. Pro operátory cloudu, které potřebují spravovat virtuální počítače, ale ne virtuální síť nebo účet úložiště, ke kterým jsou připojené, je můžete přidat do role Přispěvatel virtuálních počítačů.
 
-Organizace, které vynutily řízení přístupu k datům pomocí možností, jako je RBAC, můžou udělit větší oprávnění, než je potřeba pro své uživatele. To může vést k ohrožení dat tím, že některým uživatelům umožní přístup k datům, která by neměla mít na prvním místě.
+Organizace, které vynutily řízení přístupu k datům pomocí možností, jako je Azure RBAC, můžou udělit větší oprávnění, než je potřeba pro své uživatele. To může vést k ohrožení dat tím, že některým uživatelům umožní přístup k datům, která by neměla mít na prvním místě.
 
-Další informace o RBAC najdete v těchto tématech:
+Další informace o službě Azure RBAC najdete v těchto tématech:
 
-- [Správa přístupu pomocí RBAC a portálu Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](../../role-based-access-control/role-assignments-portal.md)
 - [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md)
 - [Průvodce zabezpečením Azure Storage](../../storage/blobs/security-recommendations.md) 
 

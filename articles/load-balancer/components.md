@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 97b872c5fe0a155bb6e474f327f8d0c65e22b21f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d2cd05251e7bf1a0b0ebcd24e6d3d0202f277969
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317452"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685507"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer komponenty
 
 Azure Load Balancer obsahuje několik klíčových součástí. Tyto komponenty můžete nakonfigurovat v předplatném prostřednictvím:
 
-* Azure Portal
+* portál Azure
 * Azure CLI
 * Azure PowerShell
 * Šablony Resource Manageru
@@ -139,7 +139,7 @@ Load Balancer úrovně Basic nepodporuje odchozí pravidla.
 - Pokud chcete začít s používáním Load Balancer, přečtěte si téma [Vytvoření veřejné Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md) .
 - Přečtěte si další informace o [Azure Load Balancer](load-balancer-overview.md).
 - Informace o [veřejné IP adrese](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
-- Informace o [privátní IP adrese](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)
+- Informace o [privátní IP adrese](../virtual-network/private-ip-addresses.md)
 - Přečtěte si o používání [Standard Load Balancer a zóny dostupnosti](load-balancer-standard-availability-zones.md).
 - Další informace o [diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md).
 - Přečtěte si o [resetování protokolu TCP při nečinnosti](load-balancer-tcp-reset.md).

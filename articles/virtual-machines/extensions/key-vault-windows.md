@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f06c5f2b2938505380ea668a7c4113015c852b1d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7c5c536b95360c536998a5de87e9307918b15630
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913955"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685983"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault rozšíření virtuálního počítače pro Windows
 
@@ -27,7 +27,7 @@ Rozšíření VM Key Vault podporuje následující verze systému Windows:
 - Windows Server 2016
 - Windows Server 2012
 
-VIRTUÁLNÍ počítač Key Vault Extensio je také podporován na vlastním místním virtuálním počítači, který se nahraje a převede na specializovanou image pro použití v Azure pomocí instalace Windows serveru 2019 Core.
+Rozšíření virtuálního počítače Key Vault je podporované taky na vlastním místním virtuálním počítači, který se nahraje a převede na specializovanou image pro použití v Azure pomocí instalace Windows serveru 2019 Core.
 
 ### <a name="supported-certificate-content-types"></a>Podporované typy obsahu certifikátu
 
@@ -81,18 +81,18 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 > Důvodem je to `/secrets` , že cesta vrátí úplný certifikát, včetně privátního klíče, ale `/certificates` cesta ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](../../key-vault/general/about-keys-secrets-certificates.md) .
 
 > [!IMPORTANT]
-> Vlastnost ' authenticationSettings ' je **požadována** pouze pro virtuální počítače s **identitami přiřazenými uživatelem** .
+> Vlastnost ' authenticationSettings ' je **požadována** pouze pro virtuální počítače s **identitami přiřazenými uživatelem**.
 > Určuje identitu, která se má použít k Key Vault ověřování.
 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | date |
+| apiVersion | 2019-07-01 | datum |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
 | typ | KeyVaultForWindows | řetězec |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1,0 | int |
 | pollingIntervalInS | 3600 | řetězec |
 | certificateStoreName | MY | řetězec |
 | linkOnRenewal | false (nepravda) | boolean |

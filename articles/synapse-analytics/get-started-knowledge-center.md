@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 09/15/2020
-ms.openlocfilehash: 461fabd0dd9948e8967ac61919f77e3e23a981b9
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/16/2020
+ms.openlocfilehash: 57213e228359fd6c201d501d3bb75f7267054277
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331953"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685422"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Prozkoumejte centrum synapse Knowledge Center
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte používat centrum znalostí synapse Studio.
 
 Existují dva způsoby, jak najít centrum znalostí v synapse studiu:
 
-  1. V centru domů v části užitečné odkazy klikněte na první odkaz s názvem **Centrum znalostí**.
+  1. V domovském centru klikněte v pravém horním rohu stránky na **Další informace**.
   2. V řádku nabídek nahoře klikněte na **?** a pak  **Centrum znalostí**.
 
 Vyberte jednu z metod a otevřete **Centrum znalostí**.
@@ -39,7 +39,7 @@ Vyberte jednu z metod a otevřete **Centrum znalostí**.
 
 ## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>Prozkoumávání služby Blob Storage s neserverovým fondem SQL
 
-1. Přejděte do **centra znalostí** , klikněte na tlačítko **použít vzorky hned**
+1. Přejděte do **centra znalostí**, klikněte na tlačítko **použít vzorky hned**
 1. Vybrat **data dotazu pomocí SQL** 
 1. Kliknout na **použít ukázky hned**
 1. Vytvoří se nový skript SQL.
@@ -47,7 +47,7 @@ Vyberte jednu z metod a otevřete **Centrum znalostí**.
 1. Klikněte na Spustit. Spustí se vybraný text.
 
 ## <a name="loading-more-nyc-taxi-data"></a>Načítají se další data taxislužby NYC.
-1. Přejděte do **centra znalostí** , klikněte na **Procházet dostupné ukázky** . 
+1. Přejděte do **centra znalostí**, klikněte na **Procházet dostupné ukázky** . 
 1. Vyberte kartu **skripty SQL** v horní části.
 1. Vyberte **načíst datovou sadu taxislužby města New York** .
 1. V části **vstupy** zvolte **Vybrat existující fond** a pak vyberte **SQLDB1** .

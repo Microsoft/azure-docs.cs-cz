@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/19/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 73a5414a979742c4a7df16dcd2a5edda3748abef
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 64148cd8fd467be6a5f09ee723e230bdc8181d2d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315935"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685677"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Přístup k externímu úložišti pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics
 
@@ -178,7 +178,7 @@ Volající musí mít následující oprávnění pro čtení dat:
 
 V následující tabulce jsou uvedena požadovaná oprávnění pro výše uvedené operace.
 
-| Dotaz | Požadovaná oprávnění|
+| Dotazy | Požadovaná oprávnění|
 | --- | --- |
 | OPENROWSET (BULK) bez DataSource | `ADMINISTER BULK OPERATIONS``ADMINISTER DATABASE BULK OPERATIONS`přihlašovací údaje, nebo přihlášení SQL musí mít přihlašovací údaje:: \<URL> pro úložiště chráněné přes SAS. |
 | OPENROWSET (hromadné) se zdrojem dat bez přihlašovacích údajů | `ADMINISTER BULK OPERATIONS` nebo `ADMINISTER DATABASE BULK OPERATIONS` , |

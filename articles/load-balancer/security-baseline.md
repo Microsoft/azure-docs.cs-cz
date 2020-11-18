@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2786a45ef779b9c66edda4c765a1cf2140f1bf9f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 37db72b2b5dadfba930ca003121140fd99c4736d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425285"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686068"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Základní hodnoty zabezpečení Azure pro Azure Load Balancer
 
@@ -30,7 +30,7 @@ Azure nabízí dva typy nabídek Load Balancer, Standard a Basic. Použijte Stan
 
 Použití Standard Load Balancer se doporučuje pro produkční úlohy a obvykle se základní Load Balancer používá jenom k testování, protože základní typ je otevřený pro připojení z Internetu ve výchozím nastavení a nevyžaduje pro tuto operaci skupiny zabezpečení sítě. 
 
-- [Odchozí připojení v Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#outboundrule)
+- [Odchozí připojení v Azure](load-balancer-outbound-connections.md)
 
 - [Upgrade veřejné Load Balancer Azure](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard)
 
@@ -40,7 +40,7 @@ Použití Standard Load Balancer se doporučuje pro produkční úlohy a obvykle
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuálních sítí, podsítí a síťových karet
 
-**Doprovodné**materiály: Load Balancer je průchozí služba, protože spoléhá na pravidla skupin zabezpečení sítě používaná u prostředků back-endu a nakonfigurovaná odchozí pravidla pro řízení přístupu k Internetu.
+**Doprovodné** materiály: Load Balancer je průchozí služba, protože spoléhá na pravidla skupin zabezpečení sítě používaná u prostředků back-endu a nakonfigurovaná odchozí pravidla pro řízení přístupu k Internetu.
 
 Zkontrolujte odchozí pravidla konfigurovaná pro váš Standard Load Balancer prostřednictvím okna odchozí pravidla v Load Balancer a okna pravidla vyrovnávání zatížení, kde můžete mít povolená implicitní odchozí pravidla.
 
@@ -66,7 +66,7 @@ Také odešlete protokoly toku do Log Analytics pracovního prostoru a potom pom
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
-**Doprovodné**materiály: explicitně definujte připojení k Internetu a platné zdrojové IP adresy prostřednictvím odchozích pravidel a skupin zabezpečení sítě s vaším Load Balancer, aby se pro ochranu vašich webových aplikací používala Analýza hrozeb Microsoftu.
+**Doprovodné** materiály: explicitně definujte připojení k Internetu a platné zdrojové IP adresy prostřednictvím odchozích pravidel a skupin zabezpečení sítě s vaším Load Balancer, aby se pro ochranu vašich webových aplikací používala Analýza hrozeb Microsoftu.
 
 - [Integrace Azure Firewall](https://docs.microsoft.com/azure/firewall/integrate-lb)
 
@@ -116,7 +116,7 @@ Použijte funkci adaptivního posílení sítě Security Center k doporučení k
 
 ### <a name="15-record-network-packets"></a>1,5: zaznamenání síťových paketů
 
-**Doprovodné**materiály: povolení zachytávání paketů Network Watcher pro zkoumání aktivit neobvyklé.
+**Doprovodné** materiály: povolení zachytávání paketů Network Watcher pro zkoumání aktivit neobvyklé.
 
 - [Postup vytvoření instance Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
 
@@ -126,7 +126,7 @@ Použijte funkci adaptivního posílení sítě Security Center k doporučení k
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
-**Doprovodné**materiály: Implementujte nabídku z Azure Marketplace, která podporuje funkce ID/IP adres s možnostmi kontroly zatížení pro prostředí vaší Load Balancer. 
+**Doprovodné** materiály: Implementujte nabídku z Azure Marketplace, která podporuje funkce ID/IP adres s možnostmi kontroly zatížení pro prostředí vaší Load Balancer. 
 
 Pokud kontrola datové části není požadavkem, použijte Azure Firewall analýzu hrozeb. Azure Firewall filtrování založené na základě logiky hrozeb slouží k upozorňování a zablokování provozu do a ze známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu.
 
@@ -188,7 +188,7 @@ Použijte podrobný plán na nová předplatná a dolaďte řízení a správu p
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
-**Doprovodné**materiály: používejte značky prostředků pro skupiny zabezpečení sítě a další prostředky, které se týkají zabezpečení sítě a toku provozu. 
+**Doprovodné** materiály: používejte značky prostředků pro skupiny zabezpečení sítě a další prostředky, které se týkají zabezpečení sítě a toku provozu. 
 
 Pomocí pole Popis můžete zdokumentovat pravidla, která umožňují provoz do/ze sítě pro jednotlivá pravidla skupiny zabezpečení sítě.
 
@@ -226,7 +226,7 @@ V Azure Monitor můžete vytvářet výstrahy, které vám upozorní na změnu d
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurace centrální správy protokolů zabezpečení
 
-**Doprovodné**materiály: Projděte si protokol aktivit ve vašich předplatných a zkontrolujte změny vašich odchozích pravidel a skupin zabezpečení sítě pro vaše nástroje pro vyrovnávání zatížení. 
+**Doprovodné** materiály: Projděte si protokol aktivit ve vašich předplatných a zkontrolujte změny vašich odchozích pravidel a skupin zabezpečení sítě pro vaše nástroje pro vyrovnávání zatížení. 
 
 Prohlédněte si protokoly interního hostitele, abyste zajistili zabezpečení back-end prostředků.
 
@@ -250,7 +250,7 @@ Povolte a zapněte tato data do Azure Sentinel nebo SIEM třetí strany na zákl
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 
-**Doprovodné**materiály: Projděte si informace o protokolování a auditování roviny správy zaznamenaných pomocí protokolů aktivit pro základní Load Balancer. Tato nastavení zachycení jsou ve výchozím nastavení povolená. 
+**Doprovodné** materiály: Projděte si informace o protokolování a auditování roviny správy zaznamenaných pomocí protokolů aktivit pro základní Load Balancer. Tato nastavení zachycení jsou ve výchozím nastavení povolená. 
 
 Pomocí protokolů aktivit můžete monitorovat akce v prostředcích a zobrazit všechny aktivity a jejich stav. 
 
@@ -290,7 +290,7 @@ Povolte a zapněte data do Azure Sentinel nebo SIEM třetí strany na základě 
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
-**Doprovodné**materiály: protokol aktivit je ve výchozím nastavení povolený a v úložišti protokolů událostí Azure se zachovává 90 dní. Nastavte dobu uchování Log Analytics pracovního prostoru podle předpisů pro dodržování předpisů vaší organizace v Azure Monitor. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
+**Doprovodné** materiály: protokol aktivit je ve výchozím nastavení povolený a v úložišti protokolů událostí Azure se zachovává 90 dní. Nastavte dobu uchování Log Analytics pracovního prostoru podle předpisů pro dodržování předpisů vaší organizace v Azure Monitor. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
 - [Zobrazení protokolů aktivit pro sledování akcí v článku o prostředcích](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)
 
@@ -338,7 +338,7 @@ Zasílat protokoly do centra událostí nebo do pracovního prostoru Log Analyti
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: povolení výstrah pro aktivity neobvyklé
 
-**Doprovodné**materiály: použijte Security Center s Log Analytics pracovním prostorem pro monitorování a upozorňování na aktivitu neobvyklé související se Load Balancer v protokolech zabezpečení a událostech.
+**Doprovodné** materiály: použijte Security Center s Log Analytics pracovním prostorem pro monitorování a upozorňování na aktivitu neobvyklé související se Load Balancer v protokolech zabezpečení a událostech.
 
 Povolte a zapněte data pro Azure Sentinel nebo nástroj SIEM třetí strany.
 
@@ -354,7 +354,7 @@ Povolte a zapněte data pro Azure Sentinel nebo nástroj SIEM třetí strany.
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
 
-**Doprovodné**materiály: neplatí pro Azure Load Balancer. Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: neplatí pro Azure Load Balancer. Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -362,7 +362,7 @@ Povolte a zapněte data pro Azure Sentinel nebo nástroj SIEM třetí strany.
 
 ### <a name="29-enable-dns-query-logging"></a>2,9: povolení protokolování dotazů DNS
 
-**Doprovodné**materiály: nejde použít jako Azure Load Balancer je základní síťová služba, která neprovádí dotazy DNS.
+**Doprovodné** materiály: nejde použít jako Azure Load Balancer je základní síťová služba, která neprovádí dotazy DNS.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -370,7 +370,7 @@ Povolte a zapněte data pro Azure Sentinel nebo nástroj SIEM třetí strany.
 
 ### <a name="210-enable-command-line-audit-logging"></a>2,10: povolení protokolování auditu příkazového řádku
 
-**Doprovodné**materiály: neplatí pro Azure Load Balancer, protože toto doporučení platí pro výpočetní prostředky.
+**Doprovodné** materiály: neplatí pro Azure Load Balancer, protože toto doporučení platí pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -410,7 +410,7 @@ Předem definované a předdefinované role pro určité prostředky pomocí ná
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
 
-**Doprovodné**materiály: Load Balancer je průchozí služba, která neukládá zákaznická data. Je součástí základní platformy, která je spravovaná Microsoftem. 
+**Doprovodné** materiály: Load Balancer je průchozí služba, která neukládá zákaznická data. Je součástí základní platformy, která je spravovaná Microsoftem. 
 
 Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a ztrátou dat zákazníků. 
 
@@ -454,7 +454,7 @@ Zajistěte, aby ve vašem tenantovi byla vhodná (číst) oprávnění a aby se 
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
-**Doprovodné**materiály: použití značek pro prostředky Azure s metadaty k logickému uspořádání podle taxonomie.
+**Doprovodné** materiály: použití značek pro prostředky Azure s metadaty k logickému uspořádání podle taxonomie.
 
 - [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -464,7 +464,7 @@ Zajistěte, aby ve vašem tenantovi byla vhodná (číst) oprávnění a aby se 
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
-**Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry tam, kde je to vhodné, k uspořádání a sledování prostředků. 
+**Doprovodné** materiály: Používejte označení, skupiny pro správu a samostatné odběry tam, kde je to vhodné, k uspořádání a sledování prostředků. 
 
 Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků ze svých předplatných.
 
@@ -480,7 +480,7 @@ Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: definování a údržba inventáře schválených prostředků Azure
 
-**Doprovodné**materiály: Vytvořte seznam schválených prostředků Azure podle potřeb vaší organizace, které můžete využít jako mechanizmus seznam povolených. Tím umožníte, aby vaše organizace zavedla nové dostupné služby Azure poté, co je formálně vyhodnocena a schválena typickými procesy hodnocení zabezpečení vaší organizace.
+**Doprovodné** materiály: Vytvořte seznam schválených prostředků Azure podle potřeb vaší organizace, které můžete využít jako mechanizmus seznam povolených. Tím umožníte, aby vaše organizace zavedla nové dostupné služby Azure poté, co je formálně vyhodnocena a schválena typickými procesy hodnocení zabezpečení vaší organizace.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -488,7 +488,7 @@ Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
-**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných.
+**Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných.
 
 Dotazování a zjišťování prostředků pomocí Azure Resource graphu v rámci vlastněných předplatných. 
 
@@ -514,7 +514,7 @@ Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí js
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
 
-**Doprovodné**materiály: software, který je vyžadován pro obchodní operace, ale může pro organizaci zvýšit riziko, že by se měl izolovat v rámci vlastního virtuálního počítače nebo virtuální sítě a dostatečně zabezpečený pomocí Azure firewall nebo skupiny zabezpečení sítě.
+**Doprovodné** materiály: software, který je vyžadován pro obchodní operace, ale může pro organizaci zvýšit riziko, že by se měl izolovat v rámci vlastního virtuálního počítače nebo virtuální sítě a dostatečně zabezpečený pomocí Azure firewall nebo skupiny zabezpečení sítě.
 
 - [Jak vytvořit virtuální síť](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
@@ -552,7 +552,7 @@ Implementujte doporučení z Security Center jako standardní hodnoty konfigurac
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
 
-**Doprovodné**materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.  Můžete také použít šablony Azure Resource Manager k údržbě konfigurace zabezpečení vašich prostředků Azure, které vaše organizace vyžaduje. 
+**Doprovodné** materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.  Můžete také použít šablony Azure Resource Manager k údržbě konfigurace zabezpečení vašich prostředků Azure, které vaše organizace vyžaduje. 
 
 - [Pochopení Azure Policych efektů](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
 
@@ -606,7 +606,7 @@ Udělení nebo odmítnutí oprávnění konkrétním uživatelům, vestavěným 
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
-**Doprovodné**materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. 
+**Doprovodné** materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. 
 
 Závažnost je založena na tom, jak se Security Center ve vyhledávání, nebo na analýze, která se používá k vystavení výstrahy, a také na úrovni spolehlivosti, u které došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
@@ -640,7 +640,7 @@ Využijte Security Center Data Connector pro streamování výstrah do Azure Sen
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
-**Doprovodné**materiály: použití funkce automatizace pracovního postupu v Security Center k automatickému spouštění odpovědí na výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
+**Doprovodné** materiály: použití funkce automatizace pracovního postupu v Security Center k automatickému spouštění odpovědí na výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
 
 - [Jak nakonfigurovat automatizaci pracovního postupu v zabezpečení zadejte](https://docs.microsoft.com/azure/security-center/workflow-automation)
 
@@ -654,7 +654,7 @@ Využijte Security Center Data Connector pro streamování výstrah do Azure Sen
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
-**Doprovodné**materiály: postupujte podle pravidel pro testování průniku Microsoft Cloud, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft. 
+**Doprovodné** materiály: postupujte podle pravidel pro testování průniku Microsoft Cloud, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft. 
 
 - [Pravidla testování průniku pro zapojení](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 

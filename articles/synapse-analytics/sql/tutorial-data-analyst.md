@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: cec16041edd10a57088df4ae9cfe0587906919eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 84fc49df2838a66969b449dee5b416c2a0f86f86
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309279"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685915"
 ---
 # <a name="tutorial-use-serverless-sql-pool-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Kurz: použití fondu SQL bez serveru k analýze otevřených datových sad Azure a vizualizaci výsledků v Azure synapse studiu
 
@@ -102,7 +102,7 @@ Následující fragment kódu ukazuje výsledek pro roční počet taxislužby j
 
 ![Roční počet fragmentů výsledku taxislužby jezdí](./media/tutorial-data-analyst/4.png)
 
-Data je možné vizuálně zobrazit v synapse studiu přepnutím z **tabulky** do zobrazení **grafu** . Můžete si vybrat mezi různými typy grafů, jako je **oblast** , **pruhový** , **sloupcový** , **spojnicový** , **výsečový** a **bodový**. V takovém případě znázorněte **sloupcový** graf se sloupcem **kategorie** nastaveným na **current_year** :
+Data je možné vizuálně zobrazit v synapse studiu přepnutím z **tabulky** do zobrazení **grafu** . Můžete si vybrat mezi různými typy grafů, jako je **oblast**, **pruhový**, **sloupcový**, **spojnicový**, **výsečový** a **bodový**. V takovém případě znázorněte **sloupcový** graf se sloupcem **kategorie** nastaveným na **current_year**:
 
 ![Sloupcový graf zobrazující jezdí za rok](./media/tutorial-data-analyst/5.png)
 

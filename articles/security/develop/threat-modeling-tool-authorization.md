@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d99295fbb355b3efa22a64c9adc04311508e474
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: b2ad38e518fa4b924992355990ea3eb06a338ebe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517559"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693154"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Rámec zabezpečení: autorizace | Hrozeb 
 | Produkt/služba | Článek |
@@ -32,11 +32,11 @@ ms.locfileid: "94517559"
 | **Cloudová brána IoT** | <ul><li>[Připojení ke cloudové bráně s použitím nejnižších privilegovaných tokenů](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Pro generování tokenů zařízení použít jenom klíč SAS s oprávněním pro odesílání](#sendonly-sas)</li><li>[Nepoužívejte přístupové tokeny, které poskytují přímý přístup k centru událostí.](#access-tokens-hub)</li><li>[Připojte se k centru událostí pomocí klíčů SAS, které mají minimální požadovaná oprávnění.](#sas-minimum-permissions)</li></ul> |
 | **Azure Document DB** | <ul><li>[Pokud je to možné, použijte k připojení Azure Cosmos DB tokeny prostředků.](#resource-docdb)</li></ul> |
-| **Hranice důvěry Azure** | <ul><li>[Povolení jemně odstupňovaného řízení přístupu k předplatnému Azure pomocí RBAC](#grained-rbac)</li></ul> |
-| **Service Fabric hranice důvěryhodnosti** | <ul><li>[Omezení přístupu klienta k operacím clusteru pomocí RBAC](#cluster-rbac)</li></ul> |
+| **Hranice důvěry Azure** | <ul><li>[Povolit jemně odstupňovanou správu přístupu k předplatnému Azure pomocí Azure RBAC](#grained-rbac)</li></ul> |
+| **Service Fabric hranice důvěryhodnosti** | <ul><li>[Omezení přístupu klienta k operacím clusteru pomocí Azure RBAC](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[V případě potřeby proveďte modelování zabezpečení a použijte zabezpečení na úrovni polí.](#modeling-field)</li></ul> |
 | **Portál Dynamics CRM** | <ul><li>[Provedete si modelování zabezpečení účtů portálu a mějte na paměti, že se model zabezpečení portálu liší od zbytku CRM.](#portal-security)</li></ul> |
-| **Azure Storage** | <ul><li>[Udělení jemně odstupňovaného oprávnění pro řadu entit v Azure Table Storage](#permission-entities)</li><li>[Povolení Role-Based Access Control (RBAC) pro účet úložiště Azure pomocí Azure Resource Manager](#rbac-azure-manager)</li></ul> |
+| **Azure Storage** | <ul><li>[Udělení jemně odstupňovaného oprávnění pro řadu entit v Azure Table Storage](#permission-entities)</li><li>[Povolení řízení přístupu na základě role Azure (Azure RBAC) na účet služby Azure Storage pomocí Azure Resource Manager](#rbac-azure-manager)</li></ul> |
 | **Mobilní klient** | <ul><li>[Implementovat implicitní jailbreaků nebo detekci kořene](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[Slabý odkaz na třídu ve WCF](#weak-class-wcf)</li><li>[WCF – implementace autorizačního řízení](#wcf-authz)</li></ul> |
 | **Webové rozhraní API** | <ul><li>[Implementace správného autorizačního mechanismu ve webovém rozhraní API ASP.NET](#authz-aspnet)</li></ul> |
@@ -229,7 +229,7 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Reference**              | –  |
 | **Kroky** | Token prostředku je přidružen k prostředku oprávnění Azure Cosmos DB a zachycuje vztah mezi uživatelem databáze a oprávněním, které má uživatel pro určitý prostředek Azure Cosmos DB aplikace (např. kolekce, dokument). Pro přístup k Azure Cosmos DB vždy použít token prostředku, pokud klienta nemůžete důvěřovat pomocí řídicího panelu nebo klíčů jen pro čtení, jako je aplikace koncového uživatele, jako je například mobilní klient nebo stolní počítač. Použijte hlavní klíč nebo klíče jen pro čtení z back-endu aplikací, které můžou tyto klíče bezpečně uložit.|
 
-## <a name="enable-fine-grained-access-management-to-azure-subscription-using-rbac"></a><a id="grained-rbac"></a>Povolení jemně odstupňovaného řízení přístupu k předplatnému Azure pomocí RBAC
+## <a name="enable-fine-grained-access-management-to-azure-subscription-using-azure-rbac"></a><a id="grained-rbac"></a>Povolit jemně odstupňovanou správu přístupu k předplatnému Azure pomocí Azure RBAC
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -237,10 +237,10 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md)  |
-| **Kroky** | Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí řízení přístupu na základě role v Azure můžete uživatelům poskytnout pouze takovou úroveň přístupu, kterou potřebují k provádění svých úloh.|
+| **Reference**              | [Přidání nebo odebrání přiřazení rolí Azure pro správu přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md)  |
+| **Kroky** | Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí Azure RBAC můžete udělit jenom množství přístupu, které uživatelé potřebují k provádění svých úloh.|
 
-## <a name="restrict-clients-access-to-cluster-operations-using-rbac"></a><a id="cluster-rbac"></a>Omezení přístupu klienta k operacím clusteru pomocí RBAC
+## <a name="restrict-clients-access-to-cluster-operations-using-service-fabric-rbac"></a><a id="cluster-rbac"></a>Omezení přístupu klienta k operacím clusteru pomocí Service Fabric RBAC
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -248,7 +248,7 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Prostředí – Azure |
-| **Reference**              | [Řízení přístupu na základě role pro klienty Service Fabric](../../service-fabric/service-fabric-cluster-security-roles.md) |
+| **Reference**              | [Service Fabric řízení přístupu na základě role pro klienty Service Fabric](../../service-fabric/service-fabric-cluster-security-roles.md) |
 | **Kroky** | <p>Azure Service Fabric podporuje pro klienty, kteří jsou připojení ke clusteru Service Fabric, dva různé typy řízení přístupu: správce a uživatel. Řízení přístupu umožňuje správci clusteru omezit přístup k určitým clusterovým operacím pro různé skupiny uživatelů a tím zvýšit zabezpečení clusteru.</p><p>Správci mají plný přístup k funkcím správy (včetně funkcí pro čtení a zápis). Uživatelé mají ve výchozím nastavení přístup jen pro čtení k funkcím pro správu (například možnosti dotazů) a možnost přeložit aplikace a služby.</p><p>V době vytváření clusteru určíte dvě role klienta (správce a klient), a to tak, že pro každý z nich poskytnete samostatné certifikáty.</p>|
 
 ## <a name="perform-security-modeling-and-use-field-level-security-where-required"></a><a id="modeling-field"></a>V případě potřeby proveďte modelování zabezpečení a použijte zabezpečení na úrovni polí.
@@ -284,7 +284,7 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Reference**              | [Jak delegovat přístup k objektům ve vašem účtu Azure Storage pomocí SAS](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **Kroky** | V některých obchodních scénářích může být pro Azure Table Storage nutné ukládat citlivá data, která jsou v různých stranách. Například citlivá data týkající se různých zemí nebo oblastí. V takových případech je možné signatury SAS vytvořit zadáním rozsahu klíče a rozsahů klíčů řádků, aby uživatel měl přístup k datům, která jsou specifická pro určitou zemi nebo oblast.| 
 
-## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Povolení Role-Based Access Control (RBAC) pro účet úložiště Azure pomocí Azure Resource Manager
+## <a name="enable-azure-role-based-access-control-azure-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Povolení řízení přístupu na základě role Azure (Azure RBAC) na účet služby Azure Storage pomocí Azure Resource Manager
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -292,7 +292,7 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Jak zabezpečit svůj účet úložiště pomocí Role-Based Access Control (RBAC)](../../storage/blobs/security-recommendations.md) |
+| **Reference**              | [Jak zabezpečit účet úložiště pomocí řízení přístupu na základě role Azure (RBAC)](../../storage/blobs/security-recommendations.md) |
 | **Kroky** | <p>Když vytváříte nový účet úložiště, vyberete model nasazení Classic nebo Azure Resource Manager. Klasický model vytváření prostředků v Azure umožňuje jenom přístup k předplatnému a k tomuto předplatnému a zároveň účet úložiště.</p><p>Pomocí modelu Azure Resource Manager umístíte účet úložiště do skupiny prostředků a řídíte přístup k rovině správy tohoto konkrétního účtu úložiště pomocí Azure Active Directory. Můžete například udělit konkrétním uživatelům přístup k klíčům účtu úložiště, zatímco jiní uživatelé mohou zobrazit informace o účtu úložiště, ale nemají přístup k klíčům účtu úložiště.</p>|
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>Implementovat implicitní jailbreaků nebo detekci kořene

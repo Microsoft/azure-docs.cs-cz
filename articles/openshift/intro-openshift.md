@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 11/13/2020
 ms.custom: mvc
-ms.openlocfilehash: dbc0f34e57297b9879a865511f6e7b4ed7ca2a3c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 1bf3141876ee56ee1361f19a67689ca3b2f4f89a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636890"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685286"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -28,7 +28,7 @@ Začněte tím, že dokončíte kurz [Vytvoření clusteru Azure Red Hat OpenShi
 
 ## <a name="access-security-and-monitoring"></a>Přístup, zabezpečení a sledování
 
-Pro zlepšení zabezpečení a správy vám Azure Red Hat OpenShift umožňuje integrovat s Azure Active Directory (Azure AD) a používat Kubernetes řízení přístupu na základě role (RBAC). Můžete také monitorovat stav vašeho clusteru a prostředků.
+Pro zlepšení zabezpečení a správy vám Azure Red Hat OpenShift umožňuje integrovat s Azure Active Directory (Azure AD) a používat Kubernetes řízení přístupu na základě role (Kubernetes RBAC). Můžete také monitorovat stav vašeho clusteru a prostředků.
 
 ## <a name="cluster-and-node"></a>Clustery a uzly
 

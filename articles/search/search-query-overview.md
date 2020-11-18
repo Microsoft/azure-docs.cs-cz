@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0c05db39e02a6bc2a7fa5d62b8b891626eb0d241
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 362f46290bbe2008f9fb862a8711577050050192
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675810"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693245"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Typy dotazů a jejich složení v Azure Kognitivní hledání
 
@@ -61,7 +61,7 @@ Pokud jste postupovali podle tohoto rychlého startu a [vytvořili ukázkový in
 
 Návrh indexu a návrh dotazu jsou úzce spojeny v Azure Kognitivní hledání. Základní fakt, jak předem zjistit, je, že *schéma indexu* s atributy v jednotlivých polích určuje druh dotazu, který můžete sestavit. 
 
-Atributy indexu v poli nastavily povolené operace – určuje, jestli je pole možné *Prohledávat* v indexu, *získat ve výsledcích* , *seřaditelné* , *filtrovatelné* a tak dále. V příkladu řetězce dotazu `"$orderby": "Rating"` funguje pouze to, protože pole hodnocení je ve schématu indexu označeno jako *seřaditelné* . 
+Atributy indexu v poli nastavily povolené operace – určuje, jestli je pole možné *Prohledávat* v indexu, *získat ve výsledcích* , *seřaditelné*, *filtrovatelné* a tak dále. V příkladu řetězce dotazu `"$orderby": "Rating"` funguje pouze to, protože pole hodnocení je ve schématu indexu označeno jako *seřaditelné* . 
 
 ![Definice indexu pro ukázku hotelu](./media/search-query-overview/hotel-sample-index-definition.png "Definice indexu pro ukázku hotelu")
 
@@ -78,8 +78,8 @@ Požadované prvky pro požadavek na dotaz obsahují následující komponenty:
 
 + Kolekce koncových dokumentů a dokumentů v rámci služby vyjádřené jako adresa URL obsahující pevné a uživatelem definované komponenty: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
 + **`api-version`** (Pouze REST) je nutné, protože je vždy k dispozici více než jedna verze rozhraní API. 
-+ **`api-key`** , buď dotaz nebo rozhraní API pro správu – klíč ověří požadavek vaší služby.
-+ **`queryType`** , a to buď jednoduché, nebo úplné, což může být vynecháno, pokud používáte vestavěnou výchozí jednoduchou syntaxi.
++ **`api-key`**, buď dotaz nebo rozhraní API pro správu – klíč ověří požadavek vaší služby.
++ **`queryType`**, a to buď jednoduché, nebo úplné, což může být vynecháno, pokud používáte vestavěnou výchozí jednoduchou syntaxi.
 + **`search`** nebo **`filter`** poskytuje kritéria shody, která je možné neurčit, pokud chcete provést prázdné vyhledávání. Oba typy dotazů jsou popsány v souvislosti s jednoduchým analyzátorem, ale i pokročilé dotazy vyžadují pro předávání složitých výrazů dotazů parametr Search.
 
 Všechny ostatní parametry hledání jsou volitelné. Úplný seznam atributů najdete v tématu [vytvoření indexu (REST)](/rest/api/searchservice/create-index). Bližší informace o tom, jak se používají parametry během zpracování, najdete [v tématu Jak funguje fulltextové vyhledávání v Azure kognitivní hledání](search-lucene-query-architecture.md).
@@ -91,7 +91,7 @@ Následující tabulka uvádí rozhraní API a postupy založené na nástrojíc
 | Metodologie | Popis |
 |-------------|-------------|
 | [Průzkumník vyhledávání (portál)](search-explorer.md) | Poskytuje panel hledání a možnosti pro indexování a výběry verzí rozhraní API. Výsledky se vrátí jako dokumenty JSON. Doporučuje se pro zkoumání, testování a ověřování. <br/>[Další informace](search-get-started-portal.md#query-index) | 
-| [Post nebo jiné nástroje REST](search-get-started-postman.md) | Nástroje pro testování webu jsou vynikající volbou pro formulování volání REST. REST API podporuje všechny možné operace v Azure Kognitivní hledání. V tomto článku se dozvíte, jak nastavit hlavičku a text požadavku HTTP pro odesílání požadavků do Azure Kognitivní hledání.  |
+| [Post nebo jiné nástroje REST](search-get-started-rest.md) | Nástroje pro testování webu jsou vynikající volbou pro formulování volání REST. REST API podporuje všechny možné operace v Azure Kognitivní hledání. V tomto článku se dozvíte, jak nastavit hlavičku a text požadavku HTTP pro odesílání požadavků do Azure Kognitivní hledání.  |
 | [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Klient, který se dá použít k dotazování indexu služby Azure Kognitivní hledání.  <br/>[Další informace](search-howto-dotnet-sdk.md)  |
 | [Hledat dokumenty (REST API)](/rest/api/searchservice/search-documents) | Metoda GET nebo POST pro index s použitím parametrů dotazu pro další vstup.  |
 
