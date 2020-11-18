@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69428898ca123bf5b5fa96cf041818cc15f5ac40
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: b0a62aafd8073b5f1a35ba340c48c80f498be2c2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378631"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834451"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -114,7 +114,7 @@ Vyhodnoťte účty, které jsou přiřazeny nebo mají nárok na roli globální
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Zapnutí vícefaktorového ověřování a registrace všech dalších vysoce privilegovaných účtů pro jednoho uživatele, kteří nejsou federované
 
-Vyžadovat Azure Multi-Factor Authentication (MFA) při přihlašování pro všechny jednotlivé uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, privilegovaný správce, správce Exchange a správce služby SharePoint. Pomocí průvodce povolte [vícefaktorové ověřování (MFA) pro účty správců](../authentication/howto-mfa-userstates.md) a zajistěte, aby všichni uživatelé byli zaregistrovaní v [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Další informace najdete v části Krok 2 a 3. krok příručky průvodce [chránit přístup k datům a službám v Microsoft 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Vyžadovat službu Azure AD Multi-Factor Authentication (MFA) při přihlašování pro všechny jednotlivé uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, privilegovaný správce, správce Exchange a správce služby SharePoint. Pomocí průvodce povolte [vícefaktorové ověřování (MFA) pro účty správců](../authentication/howto-mfa-userstates.md) a zajistěte, aby všichni uživatelé byli zaregistrovaní v [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Další informace najdete v části Krok 2 a 3. krok příručky průvodce [chránit přístup k datům a službám v Microsoft 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>Fáze 2: zmírnění často používaných útoků
 
@@ -135,7 +135,7 @@ Zvýšením možnosti "Přineste si vlastní zařízení" a práce z domácích 
 * Zajistěte, aby byly účty používané pro účely správy:
 
   * Mají připojené pracovní e-mailové adresy
-  * Registrováno pro Azure Multi-Factor Authentication nebo používá ověřování v místním prostředí
+  * Registrováno pro Azure AD Multi-Factor Authentication nebo používá vícefaktorové ověřování v místním prostředí
 * Požádejte uživatele o obchodní odůvodnění pro přístup pro správu.
 * Odeberte přístup správce pro ty jednotlivce a služby, které ho nepotřebují.
 
@@ -240,7 +240,7 @@ Doporučený postup:
 
 #### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>Pokračovat v zavedení silnějšího ověřování pro všechny uživatele
 
-Vyžadovat, aby vysoce vyexponované uživatelé měli moderní, silné ověřování, jako je Azure MFA nebo Windows Hello. Příklady vysoce exponovaných uživatelů zahrnují:
+Vyžadovat, aby vysoce vyexponované uživatelé měli moderní, silné ověřování, jako je Azure AD MFA nebo Windows Hello. Příklady vysoce exponovaných uživatelů zahrnují:
 
 * Vedení sady C-Suite
 * Manažeři vysoké úrovně

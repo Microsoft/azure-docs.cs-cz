@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: d9023579b6627e9dab9feac8dfaccd94dc9f5c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a002254995e42fc586b707e3cb373dac66e678ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798121"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834145"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>Zobrazení a hledání poslední přihlašovací aktivity na stránce moje přihlášení
 
@@ -46,7 +46,7 @@ Než zjistíte, že něco není správné, ujistěte se, že se nezobrazuje fale
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Pokud se zobrazí neúspěšné přihlášení
 
-Pokud se zobrazí neúspěšné přihlášení, může to znamenat, že jste zadali přihlašovací údaje chybně. Může to také znamenat, že se útočník pokouší uhodnout heslo. Pokud chcete na toto riziko odpovědět, nemusíte měnit heslo, ale doporučujeme, abyste se zaregistrovali pro Azure Multi-Factor Authentication (MFA). Při ověřování pomocí služby Multi-Factor Authentication, a to i v případě, že počítačový podvodník heslo vymění, nebude pro přístup k účtu dost místa.
+Pokud se zobrazí neúspěšné přihlášení, může to znamenat, že jste zadali přihlašovací údaje chybně. Může to také znamenat, že se útočník pokouší uhodnout heslo. Pokud chcete na toto riziko odpovědět, nemusíte měnit heslo, ale doporučujeme, abyste se zaregistrovali pro Azure AD Multi-Factor Authentication (MFA). Při ověřování pomocí služby Multi-Factor Authentication, a to i v případě, že počítačový podvodník heslo vymění, nebude pro přístup k účtu dost místa.
 
 ![Neúspěšná dlaždice přihlášení](media/my-account-portal-sign-ins-page/unsuccessful.png)
 

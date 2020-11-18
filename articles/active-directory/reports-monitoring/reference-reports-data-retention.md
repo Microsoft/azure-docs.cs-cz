@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98b9a2da11ad32e35704a49cfcf1788f95276dda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: bc5f902d75084d649f211d589e53041f1eb37f0e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393451"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834706"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Jak dlouho jsou data sestav služby Azure AD Store?
 
@@ -65,7 +65,7 @@ Pro bezpečnostní signály se proces shromažďování spustí, když se přihl
 | :--                    | :--           | :--                 | :--                 |
 | Protokoly auditu             | 7 dní        | 30 dní             | 30 dní             |
 | Přihlášení               | 7 dní        | 30 dní             | 30 dní             |
-| Využití Azure MFA        | 30 dní       | 30 dní             | 30 dní             |
+| Využití Azure AD MFA        | 30 dní       | 30 dní             | 30 dní             |
 
 Data aktivity auditu a přihlašování můžete uchovávat déle než výchozí doba uchování, která je uvedená výše, směrováním do účtu služby Azure Storage pomocí Azure Monitor. Další informace najdete v tématu [archivace protokolů služby Azure AD do účtu služby Azure Storage](quickstart-azure-monitor-route-logs-to-storage-account.md).
 
@@ -80,6 +80,6 @@ Data aktivity auditu a přihlašování můžete uchovávat déle než výchozí
 
 ### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Můžu zobrazit data z posledního měsíce po získání licence Azure AD Premium?
 
-**Ne** , nemůžete. Azure ukládá až sedm dní dat o aktivitách pro bezplatnou verzi. To znamená, že když přepnete ze bezplatné verze na verzi Premium, zobrazí se vám jenom 7 dní dat.
+**Ne**, nemůžete. Azure ukládá až sedm dní dat o aktivitách pro bezplatnou verzi. To znamená, že když přepnete ze bezplatné verze na verzi Premium, zobrazí se vám jenom 7 dní dat.
 
 ---

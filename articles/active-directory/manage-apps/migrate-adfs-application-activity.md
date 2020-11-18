@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ee1734e61ffe59fccf3ad35c1f0c607882f7f40
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1245010ae0b21c5bb8e3ebd93a9fe851d48c858b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659193"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835505"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Použití sestavy aktivity aplikace AD FS (Preview) k migraci aplikací do služby Azure AD
 
@@ -32,7 +32,7 @@ Sestava aktivita aplikace AD FS (Preview) v Azure Portal umožňuje rychle urči
 
 Data aktivity aplikace AD FS jsou k dispozici uživatelům, kteří mají přiřazenou některou z těchto rolí správce: globální správce, čtenář sestav, čtenář zabezpečení, správce aplikace nebo správce cloudové aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vaše organizace musí aktuálně používat AD FS k přístupu k aplikacím.
 * Azure AD Connect Health musí být ve vašem tenantovi Azure AD povolené.
@@ -76,7 +76,7 @@ V následující tabulce jsou uvedeny všechny testy konfigurace, které se prov
 
 |Výsledek  |Úspěch/upozornění/selhání  |Popis  |
 |---------|---------|---------|
-|Test-ADFSRPAdditionalAuthenticationRules <br> Pro AdditionalAuthentication se zjistilo aspoň jedno pravidlo, které není migrovat.       | Úspěch/upozornění          | Předávající strana obsahuje pravidla pro dotazování služby Multi-Factor Authentication (MFA). Pokud se chcete přesunout do služby Azure AD, přeložte tato pravidla na zásady podmíněného přístupu. Pokud používáte místní MFA, doporučujeme přejít na Azure MFA. [Přečtěte si další informace o podmíněném přístupu](../authentication/concept-mfa-howitworks.md).        |
+|Test-ADFSRPAdditionalAuthenticationRules <br> Pro AdditionalAuthentication se zjistilo aspoň jedno pravidlo, které není migrovat.       | Úspěch/upozornění          | Předávající strana obsahuje pravidla pro dotazování služby Multi-Factor Authentication (MFA). Pokud se chcete přesunout do služby Azure AD, přeložte tato pravidla na zásady podmíněného přístupu. Pokud používáte místní MFA, doporučujeme přejít na Azure AD MFA. [Přečtěte si další informace o podmíněném přístupu](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Předávající strana má AdditionalWSFedEndpoint nastavenou na hodnotu true.       | Úspěch/neúspěch          | Předávající strana v AD FS umožňuje více koncových bodů kontrolního výrazu pro WS-Fed.V současné době Azure AD podporuje jenom jeden.Pokud máte scénář, kde tento výsledek blokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
 |Test-ADFSRPAllowedAuthenticationClassReferences <br> Předávající strana má nastavenou AllowedAuthenticationClassReferences.       | Úspěch/neúspěch          | Toto nastavení v AD FS umožňuje určit, zda je aplikace nakonfigurována tak, aby povolovala pouze určité typy ověřování. K dosažení této možnosti doporučujeme použít podmíněný přístup. Pokud máte scénář, kde tento výsledek blokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695672-allow-in-azure-ad-to-specify-certain-authentication).  [Přečtěte si další informace o podmíněném přístupu](../authentication/concept-mfa-howitworks.md).          |
 |Test-ADFSRPAlwaysRequireAuthentication <br> AlwaysRequireAuthenticationCheckResult      | Úspěch/neúspěch          | Toto nastavení v AD FS umožňuje určit, jestli je aplikace nakonfigurovaná tak, aby ignorovala soubory cookie jednotného přihlašování, a **vždycky se dotázat na ověřování**. V Azure AD můžete spravovat relaci ověřování pomocí zásad podmíněného přístupu, abyste dosáhli podobného chování. [Přečtěte si další informace o konfiguraci správy relací ověřování pomocí podmíněného přístupu](../conditional-access/howto-conditional-access-session-lifetime.md).          |

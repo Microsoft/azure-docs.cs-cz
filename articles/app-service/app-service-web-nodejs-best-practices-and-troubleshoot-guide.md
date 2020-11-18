@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d826b80c11b700d753acc18f8d4c626a65510f93
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961886"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833805"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service Windows
 
@@ -121,13 +121,13 @@ Další podrobnosti o ladění najdete [v tématu ladění aplikací node.js v s
 
 Mnohé aplikace by chtěli v rámci své běžné operace vytvořit odchozí připojení. Například když je požadavek v, vaše aplikace Node by chtěla kontaktovat REST API jinde a získat nějaké informace pro zpracování žádosti. Při provádění volání http nebo https byste chtěli použít agenta Keep Alive. Při provádění těchto odchozích volání můžete použít modul agentkeepalive jako svého agenta Keep Alive.
 
-Modul agentkeepalive zajišťuje, že se na VIRTUÁLNÍm počítači Azure WebApp znovu používají sokety. Vytvořením nového soketu u každé odchozí žádosti přidáte do své aplikace režii. Když vaše aplikace znovu používá soket pro odchozí požadavky, zajistí, že vaše aplikace nebude přesáhnout maxSockets, které jsou přiděleny na virtuální počítač. Doporučením na Azure App Service je nastavení hodnoty maxSockets agentKeepAlive na celkem (4 instance node.exe \* 40 maxSockets/instance) 160 soketů na virtuální počítač.
+Modul agentkeepalive zajišťuje, že se na VIRTUÁLNÍm počítači Azure WebApp znovu používají sokety. Vytvořením nového soketu u každé odchozí žádosti přidáte do své aplikace režii. Když vaše aplikace znovu používá soket pro odchozí požadavky, zajistí, že vaše aplikace nebude přesáhnout maxSockets, které jsou přiděleny na virtuální počítač. Doporučením na Azure App Service je nastavení hodnoty maxSockets agentKeepAlive na celkem (4 instance node.exe \* 32 maxSockets/instance) 128 soketů na virtuální počítač.
 
 Příklad konfigurace [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) :
 
 ```nodejs
 let keepaliveAgent = new Agent({
-    maxSockets: 40,
+    maxSockets: 32,
     maxFreeSockets: 10,
     timeout: 60000,
     keepAliveTimeout: 300000

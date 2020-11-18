@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e483c5cdb7e5acc0677b0d0cf2b41c390eef0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fb23e60539c704dac457ab6e8706ec0cfe350ed9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371558"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835318"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Konfigurace vlastních rolí Azure AD v Privileged Identity Management
 
@@ -64,9 +64,9 @@ Můžete také zvolit jednu z těchto možností trvání *aktivních* přiřaze
 - **Povolení trvalého aktivního přiřazení**: Správci můžou přiřadit trvalé aktivní členství.
 - **Ukončit aktivní přiřazení po**: Správci můžou vyžadovat, aby u všech aktivních přiřazení bylo zadané počáteční a koncové datum.
 
-### <a name="require-azure-multi-factor-authentication"></a>Vyžadování služby Azure Multi-Factor Authentication
+### <a name="require-azure-ad-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication služby Azure AD
 
-Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure pro dva různé scénáře.
+Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure AD pro dva různé scénáře.
 
 - **Vyžadovat Multi-Factor Authentication aktivnímu přiřazení**
 
@@ -74,7 +74,7 @@ Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Au
 
 - **Vyžadovat Multi-Factor Authentication při aktivaci**
 
-  Můžete vyžadovat, aby se oprávnění uživatelé přiřazení k roli zaregistrovali v Azure Multi-Factor Authentication předtím, než se můžou aktivovat. Tento proces zajišťuje, že uživatel žádající o aktivaci je tím, kdo říkají, že má rozumnou jistotu. Vynucování této možnosti chrání důležité role v situacích, kdy mohlo dojít k ohrožení uživatelského účtu. Pro vyžadování oprávněného člena pro spuštění služby Azure Multi-Factor Authentication před aktivací zaškrtněte políčko **vyžadovat Multi-Factor Authentication na aktivaci** .
+  Můžete vyžadovat, aby se oprávnění uživatelé přiřazení k roli zaregistrovali v Azure AD Multi-Factor Authentication předtím, než se můžou aktivovat. Tento proces zajišťuje, že uživatel žádající o aktivaci je tím, kdo říkají, že má rozumnou jistotu. Vynucování této možnosti chrání důležité role v situacích, kdy mohlo dojít k ohrožení uživatelského účtu. Pro vyžadování oprávněného člena pro spuštění služby Azure AD Multi-Factor Authentication před aktivací zaškrtněte políčko **vyžadovat Multi-Factor Authentication na aktivaci** .
 
 Další informace naleznete v tématu [Multi-Factor Authentication a Privileged Identity Management](pim-how-to-require-mfa.md).
 

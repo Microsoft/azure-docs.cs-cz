@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 391d4d6cb925eec0ea7be19eb6fa6849aa38985e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0fadcf3f5aefa76ab03d6313643fc18df71f6c3b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369739"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835233"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role Azure AD v Privileged Identity Management
 
@@ -81,7 +81,7 @@ A můžete zvolit jednu z těchto **aktivních** možností trvání přiřazen�
 
 ## <a name="require-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication
 
-Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure pro dva různé scénáře.
+Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure AD pro dva různé scénáře.
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>Vyžadovat Multi-Factor Authentication aktivnímu přiřazení
 
@@ -91,7 +91,7 @@ Aby se zajistilo, že správce naplní přiřazení, říká, že jsou k němu p
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Vyžadovat Multi-Factor Authentication při aktivaci
 
-Můžete vyžadovat, aby uživatelé, kteří mají nárok na roli, prokázali, že používají Multi-Factor Authentication Azure, než se můžou aktivovat. Multi-Factor Authentication zajišťuje uživatelům, kteří říkají, že mají rozumnou jistotu. Vynucování této možnosti chrání kritické prostředky v situacích, kdy může dojít k ohrožení uživatelského účtu.
+Můžete vyžadovat, aby uživatelé, kteří mají nárok na roli, prokázali, kdo používají Multi-Factor Authentication Azure AD, než se můžou aktivovat. Multi-Factor Authentication zajišťuje uživatelům, kteří říkají, že mají rozumnou jistotu. Vynucování této možnosti chrání kritické prostředky v situacích, kdy může dojít k ohrožení uživatelského účtu.
 
 Chcete-li před aktivací vyžadovat službu Multi-Factor Authentication, zaškrtněte políčko **vyžadovat Multi-Factor Authentication při aktivaci** na kartě přiřazení v **nastavení upravit roli**.
 
@@ -167,8 +167,8 @@ Použijte přepínač **lístku incident/požadavek** , který vyžádá oprávn
 
 Pomocí přepínače **Multi-Factor Authentication** určete, jestli se má vyžadovat, aby uživatelé před aktivací svých rolí vyžadovali ověření své identity pomocí vícefaktorového ověřování. Musí jenom ověřit identitu jenom jednou pro každou relaci, a ne pokaždé, když se role aktivuje. Při povolování vícefaktorového ověřování je potřeba mít na paměti dvě tipy:
 
-- Uživatelé, kteří mají účty Microsoft pro své e-mailové adresy (obvykle @outlook.com ale ne vždycky), se nemůžou zaregistrovat pro Azure Multi-Factor Authentication. Pokud chcete přiřadit role uživatelům s účty Microsoft, měli byste je buď zaměnit, nebo zakázat službu Multi-Factor Authentication pro danou roli.
-- Nemůžete zakázat Azure Multi-Factor Authentication pro role s vysokou úrovní oprávnění pro Azure AD a Microsoft 365. Tato bezpečnostní funkce pomáhá chránit následující role:  
+- Uživatelé, kteří mají účty Microsoft pro své e-mailové adresy (obvykle @outlook.com ale ne vždycky), se nemůžou zaregistrovat pro Multi-Factor Authentication Azure AD. Pokud chcete přiřadit role uživatelům s účty Microsoft, měli byste je buď zaměnit, nebo zakázat službu Multi-Factor Authentication pro danou roli.
+- Nemůžete zakázat Multi-Factor Authentication Azure AD pro role s vysokou úrovní oprávnění pro Azure AD a Microsoft 365. Tato bezpečnostní funkce pomáhá chránit následující role:  
   
   - Správce Azure Information Protection
   - Správce fakturace

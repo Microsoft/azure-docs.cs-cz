@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5a01724bfefd50297182f998b46f99eacca5843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a46c272ee2f7aa2d6621e3dc2db81605ba0363f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325772"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833108"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Vstupní vazba Azure Blob Storage pro Azure Functions
 
@@ -175,6 +175,15 @@ V *function.jsv* souboru se `queueTrigger` vlastnost metadata používá k urče
 
 Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
 
+`dataType`Vlastnost určuje, která vazba se používá. K dispozici jsou následující hodnoty pro podporu různých strategií vazeb:
+
+| Hodnota vazby | Výchozí | Popis | Příklad |
+| --- | --- | --- | --- |
+| `undefined` | Y | Používá bohatou vazbu | `def main(input: func.InputStream)` |
+| `string` | N | Použije obecnou vazbu a přetypování vstupní typ jako `string` | `def main(input: str)` |
+| `binary` | N | Použije obecnou vazbu a přetypování vstupní objekt BLOB jako `bytes` objekt Pythonu. | `def main(input: bytes)` |
+
+
 Tady je kód Pythonu:
 
 ```python
@@ -302,13 +311,14 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Blob` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový** | neuvedeno | Musí být nastaven na hodnotu `blob` . |
 |**směr** | neuvedeno | Musí být nastaven na hodnotu `in` . Výjimky jsou uvedeny v části [použití](#usage) . |
 |**Jméno** | neuvedeno | Název proměnné, která představuje objekt BLOB v kódu funkce.|
 |**dílčí** |**Blobpath cestou** | Cesta k objektu BLOB |
 |**vázán** |**Připojení**| Název nastavení aplikace, které obsahuje [připojovací řetězec úložiště](../storage/common/storage-configure-connection-string.md) , který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage` .<br><br>Připojovací řetězec musí být pro účet úložiště pro obecné účely, nikoli [účet úložiště jen pro objekty blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**Programátor**| neuvedeno | Pro dynamicky typované jazyky určuje podkladový datový typ. Možné hodnoty jsou `string` , `binary` nebo `stream` . Další podrobnosti najdete v tématu věnovaném [konceptům triggerů a vazeb](functions-triggers-bindings.md?tabs=python#trigger-and-binding-definitions). |
 |neuvedeno | **Přístup** | Určuje, zda budete číst nebo zapisovat. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

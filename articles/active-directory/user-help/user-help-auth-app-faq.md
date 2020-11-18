@@ -12,18 +12,18 @@ ms.topic: end-user-help
 ms.date: 10/20/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 017898249f1ad32a37b7ccd6bce17fe3d32843f3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 65bd5a89d132a575817480d0609109a3f379e969
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480305"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833958"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
 Tento článek obsahuje odpovědi na běžné dotazy týkající se aplikace Microsoft Authenticator. Pokud nevidíte odpověď na svoji otázku, přejděte na [Fórum aplikace Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp).
 
-Aplikace Microsoft Authenticator nahradila Azure Authenticator aplikaci a při použití Azure Multi-Factor Authentication se jedná o doporučenou aplikaci. Aplikace Microsoft Authenticator je k dispozici pro [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) a [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
+Aplikace Microsoft Authenticator nahradila Azure Authenticator aplikaci a při použití Multi-Factor Authentication Azure AD se jedná o doporučenou aplikaci. Aplikace Microsoft Authenticator je k dispozici pro [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) a [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -31,19 +31,19 @@ Aplikace Microsoft Authenticator nahradila Azure Authenticator aplikaci a při p
 
 **Otázka**: zaregistruji zařízení, které přijímá přístup společnosti nebo služby k zařízení?
 
-Odpověď **: registrace**zařízení dává vašemu zařízení přístup ke službám vaší organizace a neumožňuje vaší organizaci přístup k vašemu zařízení.
+Odpověď **: registrace** zařízení dává vašemu zařízení přístup ke službám vaší organizace a neumožňuje vaší organizaci přístup k vašemu zařízení.
 
 ### <a name="legacy-apns-support-deprecated"></a>Starší verze podpory služby APNs je zastaralá.
 
 **Otázka**: protože starší verze binárního rozhraní pro službu Apple Push Notification Service je v listopadu 2020 zastaralá, jak můžu i nadále používat Microsoft Authenticator/Phone faktor pro přihlášení?
 
-**A**Odpověď: [Apple oznámil](https://developer.apple.com/news/?id=11042019a) vyřazení nabízených oznámení, která používají své binární rozhraní pro zařízení s iOS, jako jsou například ty, které používá telefonní faktor. Aby bylo možné nadále přijímat nabízená oznámení, doporučujeme, aby uživatelé aktualizovali svou ověřovací aplikaci na nejnovější verzi aplikace. Mezitím je můžete obejít ruční kontrolou oznámení v ověřovací aplikaci.
+**A** Odpověď: [Apple oznámil](https://developer.apple.com/news/?id=11042019a) vyřazení nabízených oznámení, která používají své binární rozhraní pro zařízení s iOS, jako jsou například ty, které používá telefonní faktor. Aby bylo možné nadále přijímat nabízená oznámení, doporučujeme, aby uživatelé aktualizovali svou ověřovací aplikaci na nejnovější verzi aplikace. Mezitím je můžete obejít ruční kontrolou oznámení v ověřovací aplikaci.
 
 ### <a name="app-lock-feature"></a>Funkce zámku aplikace
 
 **Otázka**: co je zámek aplikace a jak ho můžu použít k lepšímu zabezpečení?
 
-Odpověď **: zámek**aplikace pomáhá lépe zabezpečit vaše jednorázové ověřovací kódy, informace o aplikaci a nastavení aplikace. Když je povolen zámek aplikace, budete požádáni o ověření pomocí PIN kódu zařízení nebo biometriky pokaždé, když otevřete ověřovací data. Zámek aplikace také pomáhá zajistit, že jste jediným z nich, kdo může schvalovat oznámení pomocí výzvy k zadání kódu PIN nebo biometriky, kdykoli schválíte oznámení o přihlášení. Můžete zapnout nebo vypnout zámek aplikace na stránce nastavení ověřovatele. Ve výchozím nastavení je zámek aplikace zapnutý při nastavení PIN nebo biometriky na vašem zařízení.<br><br>Bohužel není nijak zaručeno, že zámek aplikace zabrání někomu v přístupu k ověřovacím údajům. Důvodem je, že k registraci zařízení může docházet v jiných umístěních mimo ověřovatel, například v nastavení účtu Android nebo v aplikaci Portál společnosti.
+Odpověď **: zámek** aplikace pomáhá lépe zabezpečit vaše jednorázové ověřovací kódy, informace o aplikaci a nastavení aplikace. Když je povolen zámek aplikace, budete požádáni o ověření pomocí PIN kódu zařízení nebo biometriky pokaždé, když otevřete ověřovací data. Zámek aplikace také pomáhá zajistit, že jste jediným z nich, kdo může schvalovat oznámení pomocí výzvy k zadání kódu PIN nebo biometriky, kdykoli schválíte oznámení o přihlášení. Můžete zapnout nebo vypnout zámek aplikace na stránce nastavení ověřovatele. Ve výchozím nastavení je zámek aplikace zapnutý při nastavení PIN nebo biometriky na vašem zařízení.<br><br>Bohužel není nijak zaručeno, že zámek aplikace zabrání někomu v přístupu k ověřovacím údajům. Důvodem je, že k registraci zařízení může docházet v jiných umístěních mimo ověřovatel, například v nastavení účtu Android nebo v aplikaci Portál společnosti.
 
 ### <a name="windows-mobile-retired"></a>Systém Windows Mobile vyřazen
 
@@ -55,7 +55,7 @@ Odpověď **: zámek**aplikace pomáhá lépe zabezpečit vaše jednorázové ov
 
 **Otázka**: mohu pořizovat snímky obrazovky pro kód jednorázového hesla (jednorázového hesla) v ověřovacích zařízeních s Androidem?
 
-Odpověď **: od**vydání verze 6.2003.1704 ověřování pro Android se ve výchozím nastavení všechny kódy jednorázového hesla skryjí, kdykoli se povede snímek obrazovky s ověřovacími daty. Pokud si chcete zobrazit kódy jednorázového hesla na snímcích obrazovky nebo pokud chcete, aby ostatní aplikace zachytí obrazovku ověřovatele, můžete. Stačí zapnout nastavení **zachycení obrazovky** v ověřovateli a restartovat aplikaci.
+Odpověď **: od** vydání verze 6.2003.1704 ověřování pro Android se ve výchozím nastavení všechny kódy jednorázového hesla skryjí, kdykoli se povede snímek obrazovky s ověřovacími daty. Pokud si chcete zobrazit kódy jednorázového hesla na snímcích obrazovky nebo pokud chcete, aby ostatní aplikace zachytí obrazovku ověřovatele, můžete. Stačí zapnout nastavení **zachycení obrazovky** v ověřovateli a restartovat aplikaci.
 
 ### <a name="delete-stored-data"></a>Odstranit uložená data
 
@@ -67,42 +67,42 @@ Odpověď: aplikace ověřovatele shromažďuje tři typy **informací:**<ul><li
 
 **Otázka**: Jaké jsou kódy v aplikaci pro?
 
-Odpověď **: když**otevřete ověřovací data, zobrazí se vaše přidané účty jako dlaždice. Vaše pracovní nebo školní účty a vaše osobní účty Microsoft budou mít šest nebo osm číslic, které se zobrazí v zobrazení celé obrazovky účtu (k němuž se dostanete klepnutím na dlaždici účet). U ostatních účtů se na stránce **účty** aplikace zobrazí šest nebo osm číslic.<br>Tyto kódy použijete jako heslo s jedním použitím, abyste ověřili, že jste se sami řekli. Po přihlášení pomocí uživatelského jména a hesla zadáte ověřovací kód, který je přidružený k tomuto účtu. Pokud se například Katy přihlašujete k účtu contoso, klepněte na dlaždici účtu a pak použijte ověřovací kód 895823. Pro účet Outlooku byste měli postupovat podle stejných kroků.<br>Klepněte na dlaždici účtu contoso.<br>![Dlaždice účtu v ověřovací aplikaci](media/user-help-auth-app-faq/katy-signin.png)<br>Po klepnutí na dlaždici účtu společnosti Contoso je ověřovací kód viditelný na celé obrazovce.<br>![Ověřovací kód na dlaždici účtu v Authenticator](media/user-help-auth-app-faq/verification-code.png)
+Odpověď **: když** otevřete ověřovací data, zobrazí se vaše přidané účty jako dlaždice. Vaše pracovní nebo školní účty a vaše osobní účty Microsoft budou mít šest nebo osm číslic, které se zobrazí v zobrazení celé obrazovky účtu (k němuž se dostanete klepnutím na dlaždici účet). U ostatních účtů se na stránce **účty** aplikace zobrazí šest nebo osm číslic.<br>Tyto kódy použijete jako heslo s jedním použitím, abyste ověřili, že jste se sami řekli. Po přihlášení pomocí uživatelského jména a hesla zadáte ověřovací kód, který je přidružený k tomuto účtu. Pokud se například Katy přihlašujete k účtu contoso, klepněte na dlaždici účtu a pak použijte ověřovací kód 895823. Pro účet Outlooku byste měli postupovat podle stejných kroků.<br>Klepněte na dlaždici účtu contoso.<br>![Dlaždice účtu v ověřovací aplikaci](media/user-help-auth-app-faq/katy-signin.png)<br>Po klepnutí na dlaždici účtu společnosti Contoso je ověřovací kód viditelný na celé obrazovce.<br>![Ověřovací kód na dlaždici účtu v Authenticator](media/user-help-auth-app-faq/verification-code.png)
 
 ### <a name="countdown-timer"></a>Časovač odpočítávání
 
 **Otázka**: Proč je číslo vedle kódu průběžně rozpočítáno?
 
-Odpověď: u aktivního ověřovacího **kódu se může**zobrazit výpočet časovače za 30 sekund. Tento časovač je, takže se nikdy přihlašujete pomocí stejného kódu dvakrát. Na rozdíl od hesla si nepřejete pamatovat si toto číslo. Nápad je, že váš kód zná jenom někdo s přístupem k vašemu telefonu.
+Odpověď: u aktivního ověřovacího **kódu se může** zobrazit výpočet časovače za 30 sekund. Tento časovač je, takže se nikdy přihlašujete pomocí stejného kódu dvakrát. Na rozdíl od hesla si nepřejete pamatovat si toto číslo. Nápad je, že váš kód zná jenom někdo s přístupem k vašemu telefonu.
 
 ### <a name="grayed-account-tile"></a>Dlaždice šedý účet
 
 **Otázka**: Proč je dlaždice můj účet šedá?
 
-Odpověď **: některé**organizace vyžadují, aby ověřovací data pracovala s jednotným přihlašováním a chránila prostředky organizace. V takové situaci se účet nepoužívá pro dvoustupňové ověřování a zobrazuje se jako šedý nebo neaktivní. Tento typ účtu se často označuje jako "Broker" účet.
+Odpověď **: některé** organizace vyžadují, aby ověřovací data pracovala s jednotným přihlašováním a chránila prostředky organizace. V takové situaci se účet nepoužívá pro dvoustupňové ověřování a zobrazuje se jako šedý nebo neaktivní. Tento typ účtu se často označuje jako "Broker" účet.
 
 ### <a name="device-registration"></a>Registrace zařízení
 
 **Otázka**: co je registrace zařízení?
-Odpověď **: vaše**organizace může vyžadovat, abyste si zaregistrovali zařízení, abyste mohli sledovat přístup k zabezpečeným prostředkům, například k souborům a aplikacím. Můžou taky zapnout podmíněný přístup, aby se snížilo riziko nechtěného přístupu k těmto prostředkům. V **Nastavení**můžete zrušit registraci zařízení, ale možná ztratíte přístup k e-mailům v Outlooku, souborům na OneDrivu a ztratíte možnost používat přihlášení telefonem.
+Odpověď **: vaše** organizace může vyžadovat, abyste si zaregistrovali zařízení, abyste mohli sledovat přístup k zabezpečeným prostředkům, například k souborům a aplikacím. Můžou taky zapnout podmíněný přístup, aby se snížilo riziko nechtěného přístupu k těmto prostředkům. V **Nastavení** můžete zrušit registraci zařízení, ale možná ztratíte přístup k e-mailům v Outlooku, souborům na OneDrivu a ztratíte možnost používat přihlášení telefonem.
 
 ### <a name="verification-codes-when-connected"></a>Ověřovací kódy při připojení
 
 **Otázka**: musím být připojeni k Internetu nebo má síť pro získání a používání ověřovacích kódů?
 
-Odpověď **: kódy**nevyžadují, abyste byli na internetu nebo jste připojeni k datům, takže nepotřebujete telefonickou službu pro přihlášení. Navíc vzhledem k tomu, že se aplikace přestane spouštět hned po jejím zavření, nevyprázdní baterii.
+Odpověď **: kódy** nevyžadují, abyste byli na internetu nebo jste připojeni k datům, takže nepotřebujete telefonickou službu pro přihlášení. Navíc vzhledem k tomu, že se aplikace přestane spouštět hned po jejím zavření, nevyprázdní baterii.
 
 ### <a name="no-notifications-when-app-is-closed"></a>Žádná oznámení, když je aplikace zavřená
 
 **Otázka**: Proč mohu dostávat oznámení jenom při otevření aplikace? Když je aplikace zavřená, neobdržím oznámení.
 
-Odpověď **: Pokud**obdržíte oznámení, ale ne upozornění, a to ani u vašeho vyzvánění na, měli byste si ověřit nastavení aplikace. Ujistěte se, že je aplikace zapnutá, aby se mohla používat zvuk nebo vibrace pro oznámení. Pokud se vám nezobrazují žádná oznámení, měli byste si ověřit následující podmínky:<ul><li>Je váš telefon v režimu Nerušit nebo tichý? Tyto režimy můžou zabránit aplikacím v posílání oznámení.</li><li>Můžete dostávat oznámení z jiných aplikací? Pokud ne, může se jednat o problém se síťovými připojeními na telefonu nebo s kanálem oznámení z Androidu nebo Apple. Můžete zkusit vyřešit síťová připojení prostřednictvím nastavení telefonu. Možná budete muset kontaktovat svého poskytovatele služeb a pomáhat s kanálem oznámení pro Android nebo Apple.</li><li>Můžete dostávat oznámení pro některé účty v aplikaci, ale ne jiné? Pokud ano, odeberte problematický účet z aplikace, znovu ho přidejte a umožněte oznámení a zjistěte, jestli tento problém vyřeší.</li></ul>Pokud jste si vyzkoušeli všechny tyto kroky a stále dochází k problémům, doporučujeme vám odeslat soubory protokolu pro diagnostiku. Otevřete aplikaci, vyhledejte v **nápovědě**a pak vyberte **Odeslat protokoly**. Potom přejdete na [Fórum aplikace Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) a řekněte nám, jak se vám zobrazuje problém, a kroky, které jste si vyzkoušeli.
+Odpověď **: Pokud** obdržíte oznámení, ale ne upozornění, a to ani u vašeho vyzvánění na, měli byste si ověřit nastavení aplikace. Ujistěte se, že je aplikace zapnutá, aby se mohla používat zvuk nebo vibrace pro oznámení. Pokud se vám nezobrazují žádná oznámení, měli byste si ověřit následující podmínky:<ul><li>Je váš telefon v režimu Nerušit nebo tichý? Tyto režimy můžou zabránit aplikacím v posílání oznámení.</li><li>Můžete dostávat oznámení z jiných aplikací? Pokud ne, může se jednat o problém se síťovými připojeními na telefonu nebo s kanálem oznámení z Androidu nebo Apple. Můžete zkusit vyřešit síťová připojení prostřednictvím nastavení telefonu. Možná budete muset kontaktovat svého poskytovatele služeb a pomáhat s kanálem oznámení pro Android nebo Apple.</li><li>Můžete dostávat oznámení pro některé účty v aplikaci, ale ne jiné? Pokud ano, odeberte problematický účet z aplikace, znovu ho přidejte a umožněte oznámení a zjistěte, jestli tento problém vyřeší.</li></ul>Pokud jste si vyzkoušeli všechny tyto kroky a stále dochází k problémům, doporučujeme vám odeslat soubory protokolu pro diagnostiku. Otevřete aplikaci, vyhledejte v **nápovědě** a pak vyberte **Odeslat protokoly**. Potom přejdete na [Fórum aplikace Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) a řekněte nám, jak se vám zobrazuje problém, a kroky, které jste si vyzkoušeli.
 
 ### <a name="switch-to-push-notifications"></a>Přepnout na nabízená oznámení
 
 **Otázka**: Používám ověřovacích kódů v aplikaci, ale jak můžu přepnout na nabízená oznámení?
 
-Odpověď **: můžete**nastavit oznámení pro svůj pracovní nebo školní účet (pokud to povoluje správce) nebo pro osobní účet Microsoft. Oznámení nebudou fungovat pro účty třetích stran, jako je Google nebo Facebook.<br>Pokud chcete přepnout svůj osobní účet na oznámení, budete muset zařízení znovu zaregistrovat k účtu. Klikněte na **Přidat účet**, vyberte **osobní účet Microsoft**a potom se přihlaste pomocí svého uživatelského jména a hesla.<br>U svého pracovního nebo školního účtu rozhodne vaše organizace, jestli povolíte oznámení jedním kliknutím.
+Odpověď **: můžete** nastavit oznámení pro svůj pracovní nebo školní účet (pokud to povoluje správce) nebo pro osobní účet Microsoft. Oznámení nebudou fungovat pro účty třetích stran, jako je Google nebo Facebook.<br>Pokud chcete přepnout svůj osobní účet na oznámení, budete muset zařízení znovu zaregistrovat k účtu. Klikněte na **Přidat účet**, vyberte **osobní účet Microsoft** a potom se přihlaste pomocí svého uživatelského jména a hesla.<br>U svého pracovního nebo školního účtu rozhodne vaše organizace, jestli povolíte oznámení jedním kliknutím.
 
 ### <a name="notifications-for-other-accounts"></a>Oznámení pro jiné účty
 
@@ -120,61 +120,61 @@ Odpověď **: ne**, oznámení fungují pouze s účty Microsoft a účty Azure 
 
 **Otázka**: ztratil jsem zařízení nebo bylo přesunuto do nového zařízení. Návody zajistěte, aby oznámení nepokračovala v přechodu na staré zařízení?
 
-Odpověď **: Přidání**ověřovatele do nového zařízení automaticky neodebere aplikaci ze starého zařízení. Ani odstranění aplikace ze starého zařízení není dostatečné. Musíte aplikaci odstranit ze starého zařízení a sdělit Microsoftu nebo vaší organizaci, aby zazapomněli a zrušili registraci starého zařízení.<ul><li>**Odebrání aplikace ze zařízení pomocí osobního účet Microsoft.** V rámci stránky [zabezpečení účtu](https://account.microsoft.com/security)v oblasti ověřování dvakrát na krok   proveďte možnost vypnutí ověřování starého zařízení.</li><li>**Pokud chcete aplikaci odebrat ze zařízení pomocí pracovní nebo školní účet Microsoft.** Chcete-li vypnout ověřování starého zařízení, v rámci své [stránky MyApp](https://myapps.microsoft.com/) nebo vlastního portálu ve vaší organizaci přepněte do oblasti ověřování dvěma kroky.</li></ul>
+Odpověď **: Přidání** ověřovatele do nového zařízení automaticky neodebere aplikaci ze starého zařízení. Ani odstranění aplikace ze starého zařízení není dostatečné. Musíte aplikaci odstranit ze starého zařízení a sdělit Microsoftu nebo vaší organizaci, aby zazapomněli a zrušili registraci starého zařízení.<ul><li>**Odebrání aplikace ze zařízení pomocí osobního účet Microsoft.** V rámci stránky [zabezpečení účtu](https://account.microsoft.com/security)v oblasti ověřování dvakrát na krok   proveďte možnost vypnutí ověřování starého zařízení.</li><li>**Pokud chcete aplikaci odebrat ze zařízení pomocí pracovní nebo školní účet Microsoft.** Chcete-li vypnout ověřování starého zařízení, v rámci své [stránky MyApp](https://myapps.microsoft.com/) nebo vlastního portálu ve vaší organizaci přepněte do oblasti ověřování dvěma kroky.</li></ul>
 
 ### <a name="remove-account-from-app"></a>Odebrat účet z aplikace
 
 **Otázka**: návody odebrat účet z aplikace?
 
-Odpověď **: klepněte**na dlaždici účtu pro účet, který chcete odebrat z aplikace, abyste zobrazili účet na celé obrazovce. Pokud chcete účet z aplikace odebrat, klepněte na **Odebrat účet** .<br>Pokud máte zařízení, které je zaregistrované ve vaší organizaci, možná budete potřebovat dodatečný krok k odebrání svého účtu. V těchto zařízeních se ověřovatel automaticky zaregistruje jako správce zařízení. Pokud chcete aplikaci úplně odinstalovat, musíte nejdřív zrušit registraci aplikace v nastavení aplikace.
+Odpověď **: klepněte** na dlaždici účtu pro účet, který chcete odebrat z aplikace, abyste zobrazili účet na celé obrazovce. Pokud chcete účet z aplikace odebrat, klepněte na **Odebrat účet** .<br>Pokud máte zařízení, které je zaregistrované ve vaší organizaci, možná budete potřebovat dodatečný krok k odebrání svého účtu. V těchto zařízeních se ověřovatel automaticky zaregistruje jako správce zařízení. Pokud chcete aplikaci úplně odinstalovat, musíte nejdřív zrušit registraci aplikace v nastavení aplikace.
 
 ### <a name="too-many-permissions"></a>Příliš mnoho oprávnění
 
 **Otázka**: Proč aplikace požaduje mnoho oprávnění?
 
-Odpověď **: zde**je úplný seznam oprávnění, která mohou být požádána o jejich použití v aplikaci. Konkrétní oprávnění, která vidíte, budou záviset na typu telefonu, který máte.<ul><li>**Použijte biometrického hardwaru.** Některé pracovní a školní účty vyžadují další kód PIN, kdykoli ověříte svoji identitu. Aplikace vyžaduje váš souhlas s použitím biometriky nebo rozpoznávání obličeje místo zadání kódu PIN.</li><li>**Kamery.** Používá se ke skenování kódů QR při přidávání pracovní, školní nebo neúčet Microsoft.</li><li>**Kontakty a telefon.** Aplikace vyžaduje toto oprávnění k hledání pracovních nebo školních účtů Microsoft na telefonu a jejich přidání do aplikace za vás.</li><li>**SMS.** Slouží k zajištění, že telefonní číslo odpovídá číslu záznamu při prvním přihlášení pomocí osobního účet Microsoft. Pošleme textovou zprávu na telefon, na který jste nainstalovali aplikaci, která obsahuje ověřovací kód 6-8 číslic. Nemusíte tento kód najít a zadat, protože ověřovatel ho v textové zprávě automaticky najde.</li><li>**Nakreslete přes jiné aplikace.** Oznámení, které ověřuje vaši identitu, se zobrazí také v jakékoli jiné spuštěné aplikaci.</li><li>**Příjem dat z Internetu.** Toto oprávnění je vyžadováno pro odesílání oznámení.</li><li>**Zabránit telefonu v režimu spánku.** Pokud zaregistrujete zařízení ve vaší organizaci, může vaše organizace tuto zásadu na telefonu změnit.</li><li>**Řízení vibrací.** Můžete zvolit, jestli chcete, aby se při každém přijetí oznámení k ověření vaší identity zobrazily vibrace.</li><li>**Použijte hardware otisku prstu.** Některé pracovní a školní účty vyžadují další kód PIN, kdykoli ověříte svoji identitu. Abychom to usnadnili, umožní vám místo zadávání kódu PIN používat otisk prstu.</li><li> **Zobrazit síťová připojení.** Když přidáte účet Microsoft, vyžaduje aplikace připojení k síti nebo Internetu.</li><li>**Přečtěte si obsah svého úložiště**. Toto oprávnění se používá jenom v případě, že budete Nahlásit technický problém prostřednictvím nastavení aplikace. K diagnostice tohoto problému se shromažďují nějaké informace z vašeho úložiště.</li><li>**Úplný přístup k síti** Toto oprávnění je vyžadováno k odesílání oznámení k ověření vaší identity.</li><li>**Spustit při spuštění.** Když restartujete telefon, toto oprávnění zajistí, že budete pokračovat v doručování oznámení, abyste ověřili svoji identitu.</li></ul>
+Odpověď **: zde** je úplný seznam oprávnění, která mohou být požádána o jejich použití v aplikaci. Konkrétní oprávnění, která vidíte, budou záviset na typu telefonu, který máte.<ul><li>**Použijte biometrického hardwaru.** Některé pracovní a školní účty vyžadují další kód PIN, kdykoli ověříte svoji identitu. Aplikace vyžaduje váš souhlas s použitím biometriky nebo rozpoznávání obličeje místo zadání kódu PIN.</li><li>**Kamery.** Používá se ke skenování kódů QR při přidávání pracovní, školní nebo neúčet Microsoft.</li><li>**Kontakty a telefon.** Aplikace vyžaduje toto oprávnění k hledání pracovních nebo školních účtů Microsoft na telefonu a jejich přidání do aplikace za vás.</li><li>**SMS.** Slouží k zajištění, že telefonní číslo odpovídá číslu záznamu při prvním přihlášení pomocí osobního účet Microsoft. Pošleme textovou zprávu na telefon, na který jste nainstalovali aplikaci, která obsahuje ověřovací kód 6-8 číslic. Nemusíte tento kód najít a zadat, protože ověřovatel ho v textové zprávě automaticky najde.</li><li>**Nakreslete přes jiné aplikace.** Oznámení, které ověřuje vaši identitu, se zobrazí také v jakékoli jiné spuštěné aplikaci.</li><li>**Příjem dat z Internetu.** Toto oprávnění je vyžadováno pro odesílání oznámení.</li><li>**Zabránit telefonu v režimu spánku.** Pokud zaregistrujete zařízení ve vaší organizaci, může vaše organizace tuto zásadu na telefonu změnit.</li><li>**Řízení vibrací.** Můžete zvolit, jestli chcete, aby se při každém přijetí oznámení k ověření vaší identity zobrazily vibrace.</li><li>**Použijte hardware otisku prstu.** Některé pracovní a školní účty vyžadují další kód PIN, kdykoli ověříte svoji identitu. Abychom to usnadnili, umožní vám místo zadávání kódu PIN používat otisk prstu.</li><li> **Zobrazit síťová připojení.** Když přidáte účet Microsoft, vyžaduje aplikace připojení k síti nebo Internetu.</li><li>**Přečtěte si obsah svého úložiště**. Toto oprávnění se používá jenom v případě, že budete Nahlásit technický problém prostřednictvím nastavení aplikace. K diagnostice tohoto problému se shromažďují nějaké informace z vašeho úložiště.</li><li>**Úplný přístup k síti** Toto oprávnění je vyžadováno k odesílání oznámení k ověření vaší identity.</li><li>**Spustit při spuštění.** Když restartujete telefon, toto oprávnění zajistí, že budete pokračovat v doručování oznámení, abyste ověřili svoji identitu.</li></ul>
 
 ### <a name="approve-requests-without-unlocking"></a>Schvalovat žádosti bez odemknutí
 
 **Otázka**: Proč ověřovatel umožňuje schválit požadavek bez odemknutí zařízení?
 
-**A**Odpověď: nemusíte odemykat zařízení, abyste mohli schvalovat žádosti o ověření, protože stačí, abyste se rozhodli, že máte telefon s vámi. Dvoustupňové ověřování vyžaduje, abyste provedli prokázání dvou věcí, a to věcí, kterou znáte, a věcí, kterou máte. To, co znáte, je vaše heslo. Věc, kterou máte, je váš telefon (nastavte s ověřovatelem a zaregistrujte se jako ověření služby Multi-Factor Authentication). Proto má telefon a schválení žádosti splňovat kritéria pro druhý faktor ověřování.
+**A** Odpověď: nemusíte odemykat zařízení, abyste mohli schvalovat žádosti o ověření, protože stačí, abyste se rozhodli, že máte telefon s vámi. Dvoustupňové ověřování vyžaduje, abyste provedli prokázání dvou věcí, a to věcí, kterou znáte, a věcí, kterou máte. To, co znáte, je vaše heslo. Věc, kterou máte, je váš telefon (nastavte s ověřovatelem a zaregistrujte se jako ověření služby Multi-Factor Authentication). Proto má telefon a schválení žádosti splňovat kritéria pro druhý faktor ověřování.
 
 ### <a name="activity-notifications"></a>Oznámení o aktivitách
 
 **Otázka**: Proč mi Získávám oznámení o aktivitě svého účtu?
 
-Odpověď **: oznámení o**aktivitách se odesílají do ověřovatele okamžitě, kdykoli dojde ke změně vašich osobních účtů Microsoft, což vám pomůže zajistit vyšší zabezpečení. Tato oznámení jsme poslali dřív prostřednictvím e-mailu a SMS. Další informace o těchto oznámeních o aktivitách najdete v tématu [co se stane, když máte k vašemu účtu neobvyklé přihlášení](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Pokud chcete změnit, kam dostávat oznámení, přihlaste se k webu, [kde vám můžeme kontaktovat stránku výstrahy](https://account.live.com/SecurityNotifications/Update) účtu, který není kritický.
+Odpověď **: oznámení o** aktivitách se odesílají do ověřovatele okamžitě, kdykoli dojde ke změně vašich osobních účtů Microsoft, což vám pomůže zajistit vyšší zabezpečení. Tato oznámení jsme poslali dřív prostřednictvím e-mailu a SMS. Další informace o těchto oznámeních o aktivitách najdete v tématu [co se stane, když máte k vašemu účtu neobvyklé přihlášení](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Pokud chcete změnit, kam dostávat oznámení, přihlaste se k webu, [kde vám můžeme kontaktovat stránku výstrahy](https://account.live.com/SecurityNotifications/Update) účtu, který není kritický.
 
 ### <a name="one-time-passcodes"></a>Jednorázová hesla
 
 **Otázka**: moje jednorázová hesla nefungují. Co bych měl/a dělat?
 
-Odpověď **: Ujistěte**se, že datum a čas v zařízení jsou správné a že jsou automaticky synchronizovány. Pokud je datum a čas chybné nebo není synchronizován, kód nebude fungovat.
+Odpověď **: Ujistěte** se, že datum a čas v zařízení jsou správné a že jsou automaticky synchronizovány. Pokud je datum a čas chybné nebo není synchronizován, kód nebude fungovat.
 
 ### <a name="windows-10-mobile"></a>Windows 10 Mobile
 
 **Otázka**: operační systém Windows 10 Mobile byl zastaralý v prosinci 2019. Budou Microsoft Authenticator v operačních systémech Windows Mobile i nadále zastaralé?
 
-Odpověď **: ověřovací**data ve všech operačních systémech Windows Mobile nebudou podporována po 28. únoru 2020. Uživatelé nebudou mít nárok na příjem jakýchkoli nových aktualizací do aplikace, aby vyúčtovali uvedené datum. Až 28. února 2020 služby společnosti Microsoft, které aktuálně podporují ověřování pomocí Microsoft Authenticator ve všech operačních systémech Windows Mobile, začnou svoji podporu vyřadit. Aby bylo možné ověřovat služby společnosti Microsoft, důrazně doporučujeme všem našim uživatelům, aby před tímto datem přešli na alternativní mechanismus ověřování.
+Odpověď **: ověřovací** data ve všech operačních systémech Windows Mobile nebudou podporována po 28. únoru 2020. Uživatelé nebudou mít nárok na příjem jakýchkoli nových aktualizací do aplikace, aby vyúčtovali uvedené datum. Až 28. února 2020 služby společnosti Microsoft, které aktuálně podporují ověřování pomocí Microsoft Authenticator ve všech operačních systémech Windows Mobile, začnou svoji podporu vyřadit. Aby bylo možné ověřovat služby společnosti Microsoft, důrazně doporučujeme všem našim uživatelům, aby před tímto datem přešli na alternativní mechanismus ověřování.
 
 ### <a name="default-mail-app"></a>Výchozí poštovní aplikace
 
 **Otázka**: když se přihlašujete k pracovnímu nebo školnímu účtu pomocí výchozí poštovní aplikace, která je součástí iOS, zobrazí se výzva ověřovatel pro informace o ověření zabezpečení. Po zadání těchto informací a návratu do e-mailové aplikace se zobrazí chyba. Co mám udělat?
 
-Odpověď: k tomuto problému **dochází, protože**vaše přihlašovací a poštovní aplikace se vyskytují ve dvou různých aplikacích, což způsobuje, že počáteční proces přihlašování na pozadí přestane fungovat a selže. Pokud se chcete pokusit tuto chybu opravit, doporučujeme při přihlášení k aplikaci pošty vybrat ikonu **Safari** na pravé dolní straně obrazovky. Přesunutím na Safari dojde k tomu, že se celý proces přihlašování stane v jedné aplikaci, takže se můžete úspěšně přihlásit k aplikaci.
+Odpověď: k tomuto problému **dochází, protože** vaše přihlašovací a poštovní aplikace se vyskytují ve dvou různých aplikacích, což způsobuje, že počáteční proces přihlašování na pozadí přestane fungovat a selže. Pokud se chcete pokusit tuto chybu opravit, doporučujeme při přihlášení k aplikaci pošty vybrat ikonu **Safari** na pravé dolní straně obrazovky. Přesunutím na Safari dojde k tomu, že se celý proces přihlašování stane v jedné aplikaci, takže se můžete úspěšně přihlásit k aplikaci.
 
 ### <a name="apple-watch-watchos-7"></a>Apple Watch watchOS 7
 
 **Otázka**: Proč mám problémy s Apple Watch na watchOS 7?
 
-Odpověď **: došlo**k potížím s schvalováním oznámení na watchOS 7 a pracujeme na tom, abychom to vyřešili. Mezitím by měla být všechna oznámení, která vyžadují aplikaci Microsoft Authenticator watchOS, schválená v telefonu.
+Odpověď **: došlo** k potížím s schvalováním oznámení na watchOS 7 a pracujeme na tom, abychom to vyřešili. Mezitím by měla být všechna oznámení, která vyžadují aplikaci Microsoft Authenticator watchOS, schválená v telefonu.
 
 ### <a name="apple-watch-doesnt-show-accounts"></a>Apple Watch nezobrazuje účty
 
 **Otázka**: Proč se při otevření ověřovacích dat na mém Apple Watch nezobrazí všechny moje účty?
 
-Odpověď **: ověřovatel**podporuje jenom osobní nebo školní účty Microsoftu s nabízenými oznámeními v doprovodné aplikaci Apple Watch. U ostatních účtů, jako je Google nebo Facebook, musíte otevřít ověřovací aplikaci na telefonu, abyste viděli ověřovací kódy.
+Odpověď **: ověřovatel** podporuje jenom osobní nebo školní účty Microsoftu s nabízenými oznámeními v doprovodné aplikaci Apple Watch. U ostatních účtů, jako je Google nebo Facebook, musíte otevřít ověřovací aplikaci na telefonu, abyste viděli ověřovací kódy.
 
 ### <a name="apple-watch-notifications"></a>Oznámení Apple Watch
 
@@ -186,19 +186,19 @@ Odpověď **: Nejdřív se ujistěte**, že jste upgradovali na 6.0.0 nebo nově
 
 **Otázka**: zobrazuje se chyba komunikace mezi Apple Watch a telefonem. Co můžu vyřešit?
 
-Odpověď: k této chybě **dochází, když**se obrazovka kukátka přepne do režimu spánku, než dokončí komunikaci s vaším telefonem.<br><b>Pokud k chybě dojde při instalaci:</b><br>Zkuste znovu spustit instalační program a ujistěte se, že vaše kukátko zůstane v provozu, dokud se proces nedokončí. Ve stejnou chvíli otevřete aplikaci na telefonu a odpovíte na všechny zobrazené výzvy.<br>Pokud váš telefon a sledování stále nekomunikuje, můžete vyzkoušet následující akce:<ol><li>Vynutit ukončení aplikace Microsoft Authenticator Phone a znovu ji otevřete na iPhonu.</li><li>Vynutit ukončení doprovodné aplikace v Apple Watch.<ol><li> Otevřete v kukátku aplikaci Microsoft Authenticator doprovodné aplikace</li><li>Držte tlačítko na pravé straně, dokud se nezobrazí obrazovka pro **vypnutí** .</li><li>Uvolněte postranní tlačítko a podržením Digital Crown vynutíte ukončení aktivní aplikace.</li></ol></li><li>Vypněte Bluetooth i Wi-Fi pro váš telefon i vaše kukátko a pak je znovu zapněte.</li><li>Restartujte iPhone a vaše kukátko.</li></ol><b>Pokud k chybě dojde při pokusu o schválení oznámení:</b><br>Při dalším pokusu o schválení oznámení na vašem Apple Watch ponechte obrazovku spuštěnou, dokud není žádost dokončena a uslyšíte zvuk, který indikuje, že byl úspěšný.
+Odpověď: k této chybě **dochází, když** se obrazovka kukátka přepne do režimu spánku, než dokončí komunikaci s vaším telefonem.<br><b>Pokud k chybě dojde při instalaci:</b><br>Zkuste znovu spustit instalační program a ujistěte se, že vaše kukátko zůstane v provozu, dokud se proces nedokončí. Ve stejnou chvíli otevřete aplikaci na telefonu a odpovíte na všechny zobrazené výzvy.<br>Pokud váš telefon a sledování stále nekomunikuje, můžete vyzkoušet následující akce:<ol><li>Vynutit ukončení aplikace Microsoft Authenticator Phone a znovu ji otevřete na iPhonu.</li><li>Vynutit ukončení doprovodné aplikace v Apple Watch.<ol><li> Otevřete v kukátku aplikaci Microsoft Authenticator doprovodné aplikace</li><li>Držte tlačítko na pravé straně, dokud se nezobrazí obrazovka pro **vypnutí** .</li><li>Uvolněte postranní tlačítko a podržením Digital Crown vynutíte ukončení aktivní aplikace.</li></ol></li><li>Vypněte Bluetooth i Wi-Fi pro váš telefon i vaše kukátko a pak je znovu zapněte.</li><li>Restartujte iPhone a vaše kukátko.</li></ol><b>Pokud k chybě dojde při pokusu o schválení oznámení:</b><br>Při dalším pokusu o schválení oznámení na vašem Apple Watch ponechte obrazovku spuštěnou, dokud není žádost dokončena a uslyšíte zvuk, který indikuje, že byl úspěšný.
 
 ### <a name="apple-watch-companion-app-not-syncing"></a>Apple Watch doprovodné aplikace se nesynchronizují.
 
 **Otázka**: Proč se nezobrazují aplikace Microsoft Authenticator companion pro Apple Watch synchronizaci nebo zobrazení na mém kukátku?
 
-Odpověď **: Pokud**se aplikace v kukátku nezobrazuje, zkuste provést následující akce: <ol><li>Ujistěte se, že vaše kukátko běží watchOS 4,0 nebo vyšší.</li><li>Znovu synchronizujte kukátko.</li></ol>
+Odpověď **: Pokud** se aplikace v kukátku nezobrazuje, zkuste provést následující akce: <ol><li>Ujistěte se, že vaše kukátko běží watchOS 4,0 nebo vyšší.</li><li>Znovu synchronizujte kukátko.</li></ol>
 
 ### <a name="apple-watch-companion-app-crashed"></a>Došlo k chybě doprovodné aplikace Apple Watch.
 
 **Otázka**: došlo k chybě doprovodné aplikace My Apple Watch. Můžu vám poslat svoje protokoly o chybách, abyste je mohli prozkoumat?
 
-Odpověď **: nejprve**se musíte ujistit, že jste zvolili sdílení vašich analýz s námi. Pokud jste uživatelem testovacího prostředí, už jste se zaregistrovali. V opačném případě můžete přejít na **nastavení > ochrany osobních údajů > Analytics** a vybrat možnost **sdílet iPhone & sledovat analýzy** a **sdílet s možnostmi vývojářů aplikací** .<br>Po registraci se můžete pokusit reprodukování chyby, aby byly protokoly chyb automaticky odesílány do nás pro účely šetření. Pokud ale nemůžete reprodukování svého selhání, můžete soubory protokolu ručně zkopírovat a odeslat je do nás.<ol><li>Otevřete aplikaci Watch na telefonu, přejděte na **nastavení > obecné**a potom klikněte na **Kopírovat sledovací analýzu**.</li><li>Najděte odpovídající chybu v části **nastavení > ochrany osobních údajů > analytics > analytické údaje**a pak ručně zkopírujte celý text.</li><li>Otevřete ověřovací data na telefonu a vložte zkopírovaný text do textového pole **sdílet s vývojáři aplikací** na stránce **Odeslat protokoly** .</li></ol>
+Odpověď **: nejprve** se musíte ujistit, že jste zvolili sdílení vašich analýz s námi. Pokud jste uživatelem testovacího prostředí, už jste se zaregistrovali. V opačném případě můžete přejít na **nastavení > ochrany osobních údajů > Analytics** a vybrat možnost **sdílet iPhone & sledovat analýzy** a **sdílet s možnostmi vývojářů aplikací** .<br>Po registraci se můžete pokusit reprodukování chyby, aby byly protokoly chyb automaticky odesílány do nás pro účely šetření. Pokud ale nemůžete reprodukování svého selhání, můžete soubory protokolu ručně zkopírovat a odeslat je do nás.<ol><li>Otevřete aplikaci Watch na telefonu, přejděte na **nastavení > obecné** a potom klikněte na **Kopírovat sledovací analýzu**.</li><li>Najděte odpovídající chybu v části **nastavení > ochrany osobních údajů > analytics > analytické údaje** a pak ručně zkopírujte celý text.</li><li>Otevřete ověřovací data na telefonu a vložte zkopírovaný text do textového pole **sdílet s vývojáři aplikací** na stránce **Odeslat protokoly** .</li></ol>
 
 ## <a name="next-steps"></a>Další kroky
 

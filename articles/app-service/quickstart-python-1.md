@@ -3,15 +3,15 @@ title: 'Rychlý Start: Vytvoření aplikace v Pythonu pro Linux'
 description: Začněte s Azure App Service nasazením aplikace v Pythonu do kontejneru Linux v App Service.
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.custom: seo-python-october2019, cli-validate, devx-track-python
+ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: 8fa349d719f93c8efda14556280da9d9b438f630
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: dc4c67437d6cc6d5eea87bf414058a676d7cd8a4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579109"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833683"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service pro Linux
 
@@ -100,7 +100,7 @@ Ukázka obsahuje kód specifický pro rozhraní, který Azure App Service rozpoz
 
 ## <a name="deploy-the-sample"></a>Nasazení ukázky
 
-Nasaďte kód do místní složky ( *Python-docs-Hello-World* ) pomocí `az webapp up` příkazu:
+Nasaďte kód do místní složky (*Python-docs-Hello-World*) pomocí `az webapp up` příkazu:
 
 ```azurecli
 az webapp up --sku F1 --name <app-name>
@@ -108,7 +108,7 @@ az webapp up --sku F1 --name <app-name>
 
 - Pokud `az` příkaz není rozpoznaný, ujistěte se, že máte nainstalované rozhraní příkazového řádku Azure, jak je popsané v tématu [Nastavení počátečního prostředí](#set-up-your-initial-environment).
 - Pokud `webapp` příkaz není rozpoznaný, protože verze Azure CLI je 2.0.80 nebo vyšší. Pokud ne, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli).
-- Nahraďte `<app_name>` názvem, který je jedinečný v rámci všech Azure ( *platné znaky jsou `a-z` , `0-9` a `-`* ). Dobrým vzorem je použití kombinace názvu vaší společnosti a identifikátoru aplikace.
+- Nahraďte `<app_name>` názvem, který je jedinečný v rámci všech Azure (*platné znaky jsou `a-z` , `0-9` a `-`*). Dobrým vzorem je použití kombinace názvu vaší společnosti a identifikátoru aplikace.
 - `--sku F1`Argument vytvoří webovou aplikaci na cenové úrovni Free. Vynechejte tento argument pro použití rychlejší úrovně Premium, což stojí za hodinu.
 - Volitelně můžete zahrnout argument `--location <location-name>` , kde `<location_name>` je dostupná oblast Azure. Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) příkazu.
 - Pokud se zobrazí chyba, "nebylo možné automaticky rozpoznat zásobník modulu runtime vaší aplikace", ujistěte se, že jste spustili příkaz ve složce *Python-docs-Hello-World* (baňka), nebo ve složce *Python-docs-Hello-Django* (Django), která obsahuje soubor *requirements.txt* . (Další informace najdete v tématu [řešení potíží při automatickém rozpoznávání potíží pomocí AZ WebApp up](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) (GitHub).)
@@ -150,7 +150,7 @@ Vzorový kód Pythonu spouští kontejner Linux v App Service pomocí integrovan
     flask run
     ```
     
-    Ve výchozím nastavení server předpokládá, že je modul vstupu aplikace v *App.py* , jak se používá v ukázce. (Pokud použijete jiný název modulu, nastavte `FLASK_APP` proměnnou prostředí na tento název.)
+    Ve výchozím nastavení server předpokládá, že je modul vstupu aplikace v *App.py*, jak se používá v ukázce. (Pokud použijete jiný název modulu, nastavte `FLASK_APP` proměnnou prostředí na tento název.)
 
 1. Otevřete webový prohlížeč a v části použijte ukázkovou aplikaci `http://localhost:5000/` . Aplikace zobrazí zprávu **Hello, World!**.
 

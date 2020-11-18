@@ -6,13 +6,13 @@ ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 1e6bace9652ff68bb4cc28d482016b7e7510154b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 86d0569d95df18924ed47682b75d7491c71d4483
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150194"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833550"
 ---
 # <a name="use-an-app-service-environment"></a>Použití prostředí App Service Environment
 
@@ -139,7 +139,7 @@ Postup při konfiguraci DNS v privátních zónách Azure DNS:
 1. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
 1. Vytvořte v této zóně záznam A, který odkazuje *. SCM na IP adresu interního nástroje.
 
-Nastavení DNS pro výchozí příponu vaší domény pro přístup k uživateli neomezuje vaše aplikace tak, aby byly dostupné jenom pro tyto názvy. V pomocném mechanismu interního nástroje můžete nastavit vlastní název domény bez ověřování v aplikacích. Pokud budete chtít vytvořit zónu s názvem *contoso.NET*, můžete to udělat a nasměrovat ji na interního nástroje IP adresu. Vlastní název domény funguje pro žádosti o aplikace, ale pro web SCM ne. Web SCM je k dispozici pouze na adrese * &lt; AppName &gt; . SCM. &lt; asename &gt; . appserviceenvironment.NET*. 
+Nastavení DNS pro výchozí příponu vaší domény pro přístup k uživateli neomezuje vaše aplikace tak, aby byly dostupné jenom pro tyto názvy. V pomocném mechanismu interního nástroje můžete nastavit vlastní název domény bez ověřování v aplikacích. Pokud budete chtít vytvořit zónu s názvem *contoso.NET*, můžete to udělat a nasměrovat ji na interního nástroje IP adresu. Vlastní název domény funguje pro žádosti o aplikace, ale pro web SCM ne. Web SCM je k dispozici pouze na adrese *&lt; AppName &gt; . SCM. &lt; asename &gt; . appserviceenvironment.NET*. 
 
 Zóna s názvem *. &lt; asename &gt; . appserviceenvironment.NET* je globálně jedinečný. Od května 2019 mohou zákazníci zadat příponu interního nástroje pomocného programu pro přístup k doméně. Pokud jste chtěli použít *. contoso.com* pro příponu domény, mohli byste tak učinit a zahrnovat web SCM. S tímto modelem byly problémy, včetně; Správa výchozího certifikátu SSL, nedostatečného jednotného přihlašování s webem SCM a požadavek na použití certifikátu se zástupnými znaky. Proces upgradu výchozího certifikátu interního nástroje pomocného programu pro pořízení byl také narušen a způsobil, že aplikace bude restartována. Aby bylo možné tyto problémy vyřešit, bylo chování pomocného programu interního nástroje změněno tak, aby používalo příponu domény na základě názvu pomocného programu a s příponou vlastněné společností Microsoft. Změna chování pomocného mechanismu interního nástroje má vliv pouze na interního nástroje služby ASE, které byly provedeny po 2019. května. Stávající interního nástroje služby ASE musí stále spravovat výchozí certifikát pro přihlašovací seznam a jejich konfiguraci DNS.
 
@@ -149,7 +149,7 @@ V rámci služby řízení přihlašování jako u víceklientské App Service m
 
 - Nasazení webu
 - FTP
-- Průběžná integrace (CI)
+- Kontinuální integrace (CI)
 - Přetažení v konzole Kudu
 - Integrované vývojové prostředí (IDE), jako je například Visual Studio, zatmění nebo IntelliJ nápad
 
@@ -218,7 +218,7 @@ Pokud používáte https://resources.azure.com , nastavte hodnotu **upgradePrefe
 1. Přejít na resources.azure.com a přihlaste se pomocí svého účtu Azure.
 1. Projděte si materiály k předplatným \/ \[ název předplatné \] \/ resourceGroups název \/ \[ skupiny prostředků \] \/ poskytovatelé název \/ Microsoft. Web \/ hostingEnvironments \/ \[ pomocné jméno \] .
 1. V horní části vyberte **čtení i zápis** .
-1. Vyberte **Upravit**.
+1. Vyberte **Edit** (Upravit).
 1. Nastavte **upgradePreference** na jednu ze tří hodnot, které chcete.
 1. Vyberte možnost **opravit**.
 

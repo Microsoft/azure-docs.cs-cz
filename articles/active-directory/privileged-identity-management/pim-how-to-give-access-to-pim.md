@@ -14,25 +14,25 @@ ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fba46ee5632f7411c433e4bba29201c59c552f21
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009558"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835199"
 ---
 # <a name="delegate-access-to-privileged-identity-management"></a>Delegovat přístup k Privileged Identity Management
 
 Pokud chcete delegovat přístup k Privileged Identity Management (PIM), globální správce může přiřadit jiné uživatele k roli správce privilegovaných rolí. Ve výchozím nastavení mají správci zabezpečení a čtenáři zabezpečení přístup jen pro čtení k Privileged Identity Management. Pokud chcete udělit přístup Privileged Identity Management, může první uživatel přiřadit jiné roli **správce privilegované role** . Role správce privilegované role se vyžaduje jenom pro správu rolí Azure AD. Oprávnění správce privilegované role nejsou nutná ke správě nastavení prostředků Azure.
 
 > [!NOTE]
-> Správa Privileged Identity Management vyžaduje Azure Multi-Factor Authentication. Vzhledem k tomu, že účty Microsoft se nemůžou registrovat pro Azure Multi-Factor Authentication, uživatel, který se přihlásí pomocí účet Microsoft, nemá přístup k Privileged Identity Management.
+> Správa Privileged Identity Management vyžaduje Multi-Factor Authentication Azure AD. Vzhledem k tomu, že účty Microsoft se nemůžou registrovat pro Multi-Factor Authentication Azure AD, uživatel, který se přihlásí pomocí účet Microsoft, nemá přístup k Privileged Identity Management.
 
 Zajistěte, aby v roli správce privilegované role existovaly vždycky aspoň dva uživatelé, pokud je jeden uživatel uzamčený nebo se jeho účet odstraní.
 
 ## <a name="delegate-access-to-manage-pim"></a>Delegovat přístup pro správu PIM
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. V Azure AD otevřete **Privileged Identity Management**.
 
@@ -70,7 +70,7 @@ Zajistěte, aby v roli správce privilegované role existovaly vždycky aspoň d
 
 Než odeberete někoho z role správce privilegované role, ujistěte se, že se k němu pořád přiřadí aspoň dva uživatelé.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 

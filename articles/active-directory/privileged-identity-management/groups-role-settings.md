@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c3cd91fb2a878567dc4b09fbddfcf448ec95edd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: abb7f93437cd45914d3824e9f557241ba0d71162
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368532"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835386"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>Konfigurace nastavení privilegovaných skupin přístupu (Preview) v Privileged Identity Management
 
@@ -92,7 +92,7 @@ A můžete zvolit jednu z těchto **aktivních** možností trvání přiřazen�
 
 ## <a name="require-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication
 
-Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure pro dva různé scénáře.
+Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure AD pro dva různé scénáře.
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>Vyžadovat Multi-Factor Authentication aktivnímu přiřazení
 
@@ -102,7 +102,7 @@ Chcete-li zajistit, že správce prostředků, který odpovídá přiřazení, �
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Vyžadovat Multi-Factor Authentication při aktivaci
 
-Můžete vyžadovat, aby uživatelé, kteří mají nárok na roli, prokázali, že používají Multi-Factor Authentication Azure, než se můžou aktivovat. Multi-Factor Authentication zajišťuje uživatelům, kteří říkají, že mají rozumnou jistotu. Vynucování této možnosti chrání kritické prostředky v situacích, kdy může dojít k ohrožení uživatelského účtu.
+Můžete vyžadovat, aby uživatelé, kteří mají nárok na roli, prokázali, kdo používají Multi-Factor Authentication Azure AD, než se můžou aktivovat. Multi-Factor Authentication zajišťuje uživatelům, kteří říkají, že mají rozumnou jistotu. Vynucování této možnosti chrání kritické prostředky v situacích, kdy může dojít k ohrožení uživatelského účtu.
 
 Chcete-li před aktivací vyžadovat službu Multi-Factor Authentication, zaškrtněte políčko **vyžadovat Multi-Factor Authentication při aktivaci** .
 

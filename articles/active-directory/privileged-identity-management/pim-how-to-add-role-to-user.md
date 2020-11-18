@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69884b9e07172e9b25f4c14884be8713da23cbdb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e0e230a975748fe2f737c4b8fe8491887351d387
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369824"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835369"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Přiřazení rolí Azure AD v Privileged Identity Management
 
@@ -137,7 +137,7 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli spr�
 
     ![Vyberte uživatele nebo skupinu, které chcete přiřadit.](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
-1. V části **Přidat spravované členy**vyberte **OK** a přidejte uživatele do role.
+1. V části **Přidat spravované členy** vyberte **OK** a přidejte uživatele do role.
 
 1. V seznamu rolí vyberte roli, kterou jste právě přiřadili, a zobrazte seznam členů.
 
@@ -147,7 +147,7 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli spr�
 
 1. Teď, když má uživatel nárok na roli, dejte jim jistotu, že ho můžou aktivovat podle pokynů v tématu [Aktivace rolí Azure AD v Privileged Identity Management](pim-how-to-activate-role.md).
 
-    Způsobilí správci jsou požádáni o registraci k Azure Multi-Factor Authentication během aktivace. Pokud se uživatel nemůže zaregistrovat pro MFA nebo používá účet Microsoft (například @outlook.com ), musíte je v všech svých rolích nastavit jako trvalé.
+    Způsobilí správci jsou během aktivace vyzváni k registraci pro Multi-Factor Authentication Azure AD. Pokud se uživatel nemůže zaregistrovat pro MFA nebo používá účet Microsoft (například @outlook.com ), musíte je v všech svých rolích nastavit jako trvalé.
 
 ## <a name="make-a-role-assignment-permanent"></a>Nastavit trvalé přiřazení role
 

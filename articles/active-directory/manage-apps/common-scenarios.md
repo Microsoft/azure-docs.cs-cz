@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9699f425b296f1c88162c78b8f86de74303747be
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2b78562bc3590bdf5b15e4061ba23e1284b07c16
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658328"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835488"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Centralizovaná správa aplikací pomocí Azure AD
 
@@ -62,7 +62,7 @@ Identita je linchpin pro zabezpečení. Pokud dojde k ohrožení identity, neuv�
 
 |Funkce  |Popis| Doporučení |
 |---------|---------| ---------|
-|Azure MFA|Azure Multi-Factor Authentication (MFA) je řešení dvoustupňového ověřování od Microsoftu. Pomocí metod ověřování schválených správcem Azure MFA pomáhá chránit přístup k vašim datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování.| [Povolte vícefaktorové ověřování](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124) pro vaše uživatele.  |
+|Azure AD MFA|Azure AD Multi-Factor Authentication (MFA) je řešení ověřování dvou kroků od Microsoftu. Pomocí metod ověřování schválených správcem Azure AD MFA pomáhá chránit přístup k vašim datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování.| [Povolte vícefaktorové ověřování](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124) pro vaše uživatele.  |
 |Podmíněný přístup|Pomocí podmíněného přístupu můžete implementovat automatizované rozhodnutí řízení přístupu, která budou mít přístup k vašim cloudovým aplikacím, a to na základě podmínek.| Projděte si [výchozí hodnoty zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md) a [běžné zásady](../conditional-access/concept-conditional-access-policy-common.md) používané zákazníky. | 
 |Identity Protection|Služba Identity Protection používá studijní materiály, které Microsoft získal od svého umístění v organizacích s Azure AD, uživatelským prostorem s účty Microsoft a na hraní her s Xbox k ochraně vašich uživatelů. Microsoft analyzuje 6 500 000 000 000 signálů za den k identifikaci a ochraně zákazníků před hrozbami.|Povolte [výchozí zásady ochrany identit](../identity-protection/concept-identity-protection-policies.md) poskytované naší službou. | 
 

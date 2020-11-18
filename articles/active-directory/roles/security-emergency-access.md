@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 966d264cc338487dd1a8c04f2efd0825dfccdef0
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 10d93b92f3bb0adfe734ad439079afdfcaa6270e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378750"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834434"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Správa účtů pro nouzový přístup v Azure AD
 
@@ -33,7 +33,7 @@ Tento článek poskytuje pokyny pro správu účtů pro nouzový přístup ve sl
 Organizace může potřebovat účet pro nouzový přístup v následujících situacích:
 
 - Uživatelské účty jsou federované a federace není aktuálně k dispozici z důvodu přerušení v síťové síti nebo při výpadku poskytovatele identity. Pokud například hostitel poskytovatele identity ve vašem prostředí zmizí, uživatelé se nemusí přihlašovat, když Azure AD přesměruje na svého zprostředkovatele identity.
-- Správci jsou zaregistrovaní prostřednictvím Azure Multi-Factor Authentication a všechna jejich individuální zařízení nejsou k dispozici nebo služba není k dispozici. Uživatelé možná nebudou moci dokončit Multi-Factor Authentication k aktivaci role. Například výpadek sítě mezi buňkami brání v zodpovězení telefonních hovorů nebo přijímání textových zpráv, ale pouze dvou mechanismů ověřování registrovaných pro své zařízení.
+- Správci jsou zaregistrovaní prostřednictvím služby Azure AD Multi-Factor Authentication a všechna jejich individuální zařízení nejsou k dispozici, nebo není služba k dispozici. Uživatelé možná nebudou moci dokončit Multi-Factor Authentication k aktivaci role. Například výpadek sítě mezi buňkami brání v zodpovězení telefonních hovorů nebo přijímání textových zpráv, ale pouze dvou mechanismů ověřování registrovaných pro své zařízení.
 - Uživatel, který má přístup k nejnovějšímu globálnímu správci, opustil organizaci. Služba Azure AD brání v odstranění posledního účtu globálního správce, ale nebrání tomu, aby se účet odstranil nebo zakázal místně. V obou případech může organizace účet obnovit.
 - Nepředvídatelné okolnosti, jako je třeba přírodní nouzové havárie, během kterých nemusí být mobilní telefon nebo jiné sítě k dispozici. 
 
@@ -44,7 +44,7 @@ Vytvořte dva nebo více účtů pro nouzový přístup. Tyto účty by měly b�
 Při konfiguraci těchto účtů je potřeba splnit tyto požadavky:
 
 - Účty pro nouzový přístup by neměly být přidruženy k žádnému individuálnímu uživateli v organizaci. Ujistěte se, že vaše účty nejsou propojené s žádnými mobilními telefony dodanými zaměstnanci, hardwarovými tokeny, které se cestují s jednotlivými zaměstnanci, nebo s jinými přihlašovacími údaji určenými zaměstnanci Tato preventivní opatření zahrnují případy, kdy je individuální zaměstnanec nedosažitelný, když je potřeba přihlašovací údaje. Je důležité zajistit, aby všechna registrovaná zařízení byla udržována ve známém a zabezpečeném umístění, které má více prostředků komunikace se službou Azure AD.
-- Mechanismus ověřování, který se používá pro účet pro nouzový přístup, by měl být odlišný od těch, které používá ostatní účty pro správu, včetně dalších účtů pro nouzový přístup.  Pokud například vaše normální přihlášení správce je prostřednictvím místního ověřování MFA, Azure MFA by byl jiný mechanismus.  Pokud je ale Azure MFA vaší primární součástí ověřování pro účty správců, zvažte pro ně jiný přístup, jako je například použití podmíněného přístupu se zprostředkovatelem MFA třetí strany prostřednictvím vlastních ovládacích prvků.
+- Mechanismus ověřování, který se používá pro účet pro nouzový přístup, by měl být odlišný od těch, které používá ostatní účty pro správu, včetně dalších účtů pro nouzový přístup.  Pokud například vaše normální přihlášení správce je prostřednictvím místního ověřování MFA, Azure AD MFA by byl jiný mechanismus.  Pokud je ale Azure AD MFA vaší primární součástí ověřování pro účty správců, zvažte pro ně jiný přístup, jako je například použití podmíněného přístupu se zprostředkovatelem VÍCEFAKTOROVÉHO ověřování třetí strany prostřednictvím vlastních ovládacích prvků.
 - Zařízení nebo přihlašovací údaje nesmí vypršet nebo být v oboru automatického čištění z důvodu nedostatku použití.  
 - Měli byste nastavit trvalé přiřazení role globálního správce pro účty pro nouzový přístup. 
 
@@ -87,7 +87,7 @@ Organizace by měly monitorovat aktivitu přihlášení a auditu z mimořádnýc
 ### <a name="create-an-alert-rule"></a>Vytvoření pravidla upozornění
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přiřazeného k roli Přispěvatel monitorování v Azure monitor.
-1. Vyberte **všechny služby** , do Hledat zadejte Log Analytics a pak vyberte **Log Analytics pracovní prostory**.
+1. Vyberte **všechny služby**, do Hledat zadejte Log Analytics a pak vyberte **Log Analytics pracovní prostory**.
 1. Vyberte pracovní prostor.
 1. V pracovním prostoru vyberte **výstrahy**  >  **nové pravidlo výstrahy**.
     1. V části **prostředek** ověřte, že se jedná o předplatné, se kterým chcete pravidlo výstrahy přidružit.

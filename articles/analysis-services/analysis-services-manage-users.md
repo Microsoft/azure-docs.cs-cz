@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 032b63700f2842826de916a8f077975689d56911
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b40be802f30bac8438f10c4ab60e1c196c9f7164
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014898"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833788"
 ---
 # <a name="authentication-and-user-permissions"></a>Ověřování a uživatelská oprávnění
 
@@ -22,7 +22,7 @@ Azure Analysis Services podporuje [spolupráci Azure AD B2B](../active-directory
 
 ![Azure Analysis Services Architektura ověřování](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Všechny klientské aplikace a nástroje používají k připojení k serveru jednu nebo více Analysis Services [klientských knihoven](/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO, MSOLAP, ADOMD). 
 
@@ -32,7 +32,7 @@ Klientské aplikace, jako je Excel a Power BI Desktop, a nástroje, jako je nap�
 
 V závislosti na klientské aplikaci nebo nástroji, které používáte, se typ ověřování a způsob, jakým se přihlašujete, může lišit. Každá aplikace může podporovat různé funkce pro připojení ke cloudovým službám, jako je Azure Analysis Services.
 
-Power BI Desktop, Visual Studio a SSMS podporují univerzální ověřování služby Active Directory, což je interaktivní metoda, která podporuje taky Azure Multi-Factor Authentication (MFA). Azure MFA pomáhá chránit přístup k datům a aplikacím a současně poskytuje jednoduchý proces přihlašování. Zajišťuje silné ověřování s několika možnostmi ověřování (telefonní hovor, textová zpráva, čipové karty s kódem PIN nebo oznámením v mobilní aplikaci). Interaktivní vícefaktorové ověřování pomocí Azure AD může mít za následek automaticky otevírané okno k ověření. **Doporučuje se univerzální ověřování**.
+Power BI Desktop, Visual Studio a SSMS podporují univerzální ověřování služby Active Directory, což je interaktivní metoda, která podporuje taky Azure AD Multi-Factor Authentication (MFA). Azure AD MFA pomáhá chránit přístup k datům a aplikacím a současně poskytuje jednoduchý proces přihlašování. Zajišťuje silné ověřování s několika možnostmi ověřování (telefonní hovor, textová zpráva, čipové karty s kódem PIN nebo oznámením v mobilní aplikaci). Interaktivní vícefaktorové ověřování pomocí Azure AD může mít za následek automaticky otevírané okno k ověření. **Doporučuje se univerzální ověřování**.
 
 Pokud se přihlašujete k Azure pomocí účtu systému Windows a univerzální ověřování není vybráno nebo není k dispozici (Excel), je požadováno [Active Directory Federation Services (AD FS) (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs) . Pomocí federace se uživatelé Azure AD a Microsoft 365 ověřují pomocí místních přihlašovacích údajů a můžou získat přístup k prostředkům Azure.
 
@@ -44,7 +44,7 @@ Servery Azure Analysis Services podporují připojení ze [SSMS v 17.1](/sql/ssm
 
 *  Podporuje uživatele hosta Azure B2B pozvaní do Azure jako tenant. Při připojování k serveru musí uživatelé typu Host při připojování k serveru vybrat univerzální ověřování služby Active Directory.
 
-*  Podporuje Multi-Factor Authentication (MFA). Azure MFA pomáhá chránit přístup k datům a aplikacím pomocí škály možností ověřování: telefonní hovor, textová zpráva, čipové karty a PIN kód nebo oznámení mobilní aplikace. Interaktivní vícefaktorové ověřování pomocí Azure AD může mít za následek automaticky otevírané okno k ověření.
+*  Podporuje Multi-Factor Authentication (MFA). Azure AD MFA pomáhá chránit přístup k datům a aplikacím pomocí škály možností ověřování: telefonní hovor, textová zpráva, čipové karty a PIN kód nebo mobilní aplikace oznámení. Interaktivní vícefaktorové ověřování pomocí Azure AD může mít za následek automaticky otevírané okno k ověření.
 
 ### <a name="visual-studio"></a>Visual Studio
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2d3f04777983d24d5219c55c5309b7d12c214594
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 2d0157f3e7ab0ef373235fcc6e188f9caa36eff4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070686"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833295"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Základní hodnoty zabezpečení Azure pro automatizaci
 
@@ -28,7 +28,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
-**Doprovodné**materiály: účet Azure Automation ještě nepodporuje privátní propojení Azure pro omezení přístupu ke službě prostřednictvím privátních koncových bodů. Sady Runbook, které se ověřují a spouštějí u prostředků v Azure, běží v izolovaném prostoru Azure a využívají sdílené back-endové prostředky, které Microsoft zodpovídá za izolaci od sebe. jejich síť není omezená a má přístup k veřejným prostředkům. Azure Automation aktuálně nemá integraci virtuální sítě pro privátní sítě nad rámec podpory pro procesy Hybrid Runbook Worker. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: účet Azure Automation ještě nepodporuje privátní propojení Azure pro omezení přístupu ke službě prostřednictvím privátních koncových bodů. Sady Runbook, které se ověřují a spouštějí u prostředků v Azure, běží v izolovaném prostoru Azure a využívají sdílené back-endové prostředky, které Microsoft zodpovídá za izolaci od sebe. jejich síť není omezená a má přístup k veřejným prostředkům. Azure Automation aktuálně nemá integraci virtuální sítě pro privátní sítě nad rámec podpory pro procesy Hybrid Runbook Worker. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Pokud chcete získat další izolaci pro své Runbooky, můžete použít hybridní pracovní procesy Runbooku běžící na virtuálních počítačích Azure. Když vytváříte virtuální počítač Azure, musíte vytvořit virtuální síť (VNet) nebo použít stávající virtuální síť a nakonfigurovat virtuální počítače s podsítí. Zajistěte, aby všechny nasazené podsítě používaly skupinu zabezpečení sítě s ovládacími prvky pro přístup k síti, které jsou specifické pro vaše aplikace a důvěryhodné porty a zdroje. Požadavky na konkrétní službu najdete v doporučení zabezpečení pro konkrétní službu.
 
@@ -50,7 +50,7 @@ Případně, pokud máte konkrétní požadavek, Azure Firewall mohou být použ
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuálních sítí, podsítí a síťových karet
 
-**Doprovodné**materiály: Azure Automation aktuálně nemá integraci virtuální sítě pro privátní sítě nad rámec podpory pro procesy Hybrid Runbook Worker. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: Azure Automation aktuálně nemá integraci virtuální sítě pro privátní sítě nad rámec podpory pro procesy Hybrid Runbook Worker. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Pokud používáte Hybrid Runbook Worker zálohovaný virtuálními počítači Azure, ujistěte se, že podsíť obsahující tyto pracovní procesy je povolená se skupinou zabezpečení sítě (NSG), a nakonfigurujte protokoly toku pro přeposílání protokolů do účtu úložiště pro audit provozu. Protokoly toku NSG můžete také přesměrovat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
@@ -66,7 +66,7 @@ I když se pravidla NSG a uživatelsky definované trasy nevztahují na soukrom�
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -74,7 +74,7 @@ I když se pravidla NSG a uživatelsky definované trasy nevztahují na soukrom�
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
 
-**Doprovodné**materiály: Azure Automation aktuálně nemá integraci virtuální sítě pro privátní sítě nad rámec podpory pro procesy Hybrid Runbook Worker. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: Azure Automation aktuálně nemá integraci virtuální sítě pro privátní sítě nad rámec podpory pro procesy Hybrid Runbook Worker. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěné virtuálními počítači Azure, zajistěte ve svých virtuálních sítích hostujících procesy Hybrid Runbook Worker (DDoS) standard Protection, abyste se mohli chránit před útoky DDoS. Pomocí Azure Security Center integrované analýzy hrozeb můžete komunikaci se známými škodlivými IP adresami odepřít. Nakonfigurujte Azure Firewall na všech segmentech Virtual Network, s povolenou funkcí Analýza hrozeb a nastavte **výstrahy a odmítnutí** pro škodlivý síťový provoz.
 
@@ -96,7 +96,7 @@ Přístup k síti pro virtuální počítače s Windows můžete omezit tak, že
 
 ### <a name="15-record-network-packets"></a>1,5: zaznamenání síťových paketů
 
-**Doprovodné**materiály: Azure Automation v současné době nemá integraci virtuální sítě pro privátní sítě, a to nad rámec podpory Hybrid Runbook Worker, tento ovládací prvek se nedá použít, pokud používáte službu Inbox bez hybridních pracovních procesů.
+**Doprovodné** materiály: Azure Automation v současné době nemá integraci virtuální sítě pro privátní sítě, a to nad rámec podpory Hybrid Runbook Worker, tento ovládací prvek se nedá použít, pokud používáte službu Inbox bez hybridních pracovních procesů.
 
 Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěné virtuálními počítači Azure, můžete nahrávat protokoly NSG Flow do účtu úložiště a vygenerovat záznamy toků pro Azure Virtual Machines, které fungují jako pracovní procesy Runbooku. Při zkoumání aktivity neobvyklé můžete povolit zachytávání paketů Network Watcher, aby bylo možné zkontrolovat síťový provoz pro neobvyklou a neočekávanou aktivitu.
 
@@ -110,7 +110,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěn�
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
-**Doprovodné**materiály: Azure Automation aktuálně nemá integraci virtuální sítě pro privátní sítě nad rámec podpory pro procesy Hybrid Runbook Worker. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: Azure Automation aktuálně nemá integraci virtuální sítě pro privátní sítě nad rámec podpory pro procesy Hybrid Runbook Worker. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Pokud používáte hybridní pracovní procesy Runbooku hostované na virtuálních počítačích Azure, můžete kombinovat zachycení paketů poskytovaná Network Watcher a open source ID pomocí nástrojů pro detekci neoprávněného vniknutí do sítě pro zajištění široké škály hrozeb pro tyto pracovní počítače. V případě potřeby můžete také nasadit Azure Firewall do segmentů Virtual Network, s povolenou funkcí Analýza hrozeb a nakonfigurovanou na "výstrahy a zamítnutí" pro škodlivý síťový provoz.
 
@@ -126,7 +126,7 @@ Pokud používáte hybridní pracovní procesy Runbooku hostované na virtuáln�
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -160,7 +160,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
-**Doprovodné**materiály: používejte značky pro skupin zabezpečení sítě a další prostředky, které se týkají zabezpečení sítě a toku provozu. U individuálních pravidel NSG použijte pole Popis k zadání obchodních potřeb a/nebo doby trvání (atd.) pro všechna pravidla, která umožňují provoz do/ze sítě.
+**Doprovodné** materiály: používejte značky pro skupin zabezpečení sítě a další prostředky, které se týkají zabezpečení sítě a toku provozu. U individuálních pravidel NSG použijte pole Popis k zadání obchodních potřeb a/nebo doby trvání (atd.) pro všechna pravidla, která umožňují provoz do/ze sítě.
 
 Použijte některou z předdefinovaných Azure Policy definic souvisejících s označováním, jako je "vyžadovat značku a její hodnotu", aby se zajistilo, že všechny prostředky budou vytvořeny pomocí značek, a upozorní vás na stávající neoznačené prostředky.
 
@@ -194,7 +194,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
-**Doprovodné**materiály: Microsoft udržuje časové zdroje pro prostředky Azure. Máte ale možnost spravovat nastavení synchronizace času pro všechny procesy Hybrid Runbook Worker běžící na virtuálních počítačích s Windows.
+**Doprovodné** materiály: Microsoft udržuje časové zdroje pro prostředky Azure. Máte ale možnost spravovat nastavení synchronizace času pro všechny procesy Hybrid Runbook Worker běžící na virtuálních počítačích s Windows.
 
 * [Jak nakonfigurovat časovou synchronizaci pro výpočetní prostředky Azure](../virtual-machines/windows/time-sync.md)
 
@@ -240,7 +240,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: shromáždění protokolů zabezpečení z operačních systémů
 
-**Doprovodné**materiály: při použití Azure Automation u více tenantů pracujících s klienty Runbooku tento ovládací prvek není k dispozici a platforma zpracovává základní virtuální počítače.
+**Doprovodné** materiály: při použití Azure Automation u více tenantů pracujících s klienty Runbooku tento ovládací prvek není k dispozici a platforma zpracovává základní virtuální počítače.
 
 Při použití funkce Hybrid Runbook Worker Azure Security Center poskytuje monitorování protokolu událostí zabezpečení pro virtuální počítače s Windows. Pokud by vaše organizace měla uchovávat data protokolu událostí zabezpečení, může být uložená v rámci úrovně shromažďování dat, v takovém případě se může dotazovat na Log Analytics. Existují různé úrovně: minimální, společné a všechny, které jsou podrobně popsané v následujícím odkazu.
 
@@ -252,7 +252,7 @@ Při použití funkce Hybrid Runbook Worker Azure Security Center poskytuje moni
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
-**Doprovodné**materiály: v rámci Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
+**Doprovodné** materiály: v rámci Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
 * [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -280,7 +280,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: povolení výstrah pro aktivity neobvyklé
 
-**Doprovodné**materiály: použijte Azure Security Center se Azure monitor pro monitorování a upozorňování na aktivitu neobvyklé nalezené v protokolech zabezpečení a událostech.
+**Doprovodné** materiály: použijte Azure Security Center se Azure monitor pro monitorování a upozorňování na aktivitu neobvyklé nalezené v protokolech zabezpečení a událostech.
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
@@ -296,7 +296,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
 
-**Doprovodné**materiály: při použití Azure Automation s více klienty Runbook Worker není tento ovládací prvek k dispozici a platforma zpracovává základní virtuální počítače.
+**Doprovodné** materiály: při použití Azure Automation s více klienty Runbook Worker není tento ovládací prvek k dispozici a platforma zpracovává základní virtuální počítače.
 
 Pokud ale používáte funkci Hybrid Runbook Worker, můžete použít Microsoft Anti-malware pro Azure Cloud Services a virtuální počítače. Nakonfigurujte virtuální počítače pro protokolování událostí na účet Azure Storage. Nakonfigurujte Log Analytics pracovní prostor pro ingestování událostí z účtů úložiště a v případě potřeby vytvořte výstrahy. Použijte doporučení v Azure Security Center: "COMPUTE &amp; Apps".
 
@@ -318,7 +318,7 @@ Pokud ale používáte funkci Hybrid Runbook Worker, můžete použít Microsoft
 
 ### <a name="210-enable-command-line-audit-logging"></a>2,10: povolení protokolování auditu příkazového řádku
 
-**Doprovodné**materiály: při použití Azure Automation u více tenantů pracujících s klienty Runbooku tento ovládací prvek není k dispozici a platforma zpracovává základní virtuální počítače.
+**Doprovodné** materiály: při použití Azure Automation u více tenantů pracujících s klienty Runbooku tento ovládací prvek není k dispozici a platforma zpracovává základní virtuální počítače.
 
 Při použití funkce Hybrid Runbook Worker ale Azure Security Center poskytuje monitorování protokolu událostí zabezpečení pro virtuální počítače Azure. Security Center zřídí agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a všechny nově vytvořené, pokud je povolené Automatické zřizování. Nebo můžete agenta nainstalovat ručně. Agent umožňuje událost vytvoření procesu 4688 a pole CommandLine v události 4688. Nové procesy vytvořené na virtuálním počítači jsou zaznamenané protokolem událostí a monitorují služby zjišťování Security Center.
 
@@ -334,7 +334,7 @@ Při použití funkce Hybrid Runbook Worker ale Azure Security Center poskytuje 
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Doprovodné**materiály: použijte Azure Active Directory předdefinované role správce, které se dají explicitně přiřadit a můžou se dotazovat. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu. Při každém použití účtů služby Automation jako účtu Spustit jako pro vaše Runbooky se ujistěte, že tyto instanční objekty jsou ve vašem inventáři sledovány, protože mají často čas se zvýšenými oprávněními. Odstraňte všechny nepoužívané účty Spustit jako pro minimalizaci vystaveného prostoru pro útoky.
+**Doprovodné** materiály: použijte Azure Active Directory předdefinované role správce, které se dají explicitně přiřadit a můžou se dotazovat. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu. Při každém použití účtů služby Automation jako účtu Spustit jako pro vaše Runbooky se ujistěte, že tyto instanční objekty jsou ve vašem inventáři sledovány, protože mají často čas se zvýšenými oprávněními. Odstraňte všechny nepoužívané účty Spustit jako pro minimalizaci vystaveného prostoru pro útoky.
 
 * [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -358,7 +358,7 @@ Při použití funkce Hybrid Runbook Worker ale Azure Security Center poskytuje 
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
-**Doprovodné**materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu. Při každém použití účtů služby Automation jako účtu Spustit jako pro vaše Runbooky se ujistěte, že tyto instanční objekty jsou ve vašem inventáři sledovány, protože mají často čas se zvýšenými oprávněními. Oborujte tyto identity s nejmenšími privilegovanými oprávněními, které potřebují, aby vaše Runbooky úspěšně prováděly automatizovaný proces. Odstraňte všechny nepoužívané účty Spustit jako pro minimalizaci vystaveného prostoru pro útoky.
+**Doprovodné** materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu. Při každém použití účtů služby Automation jako účtu Spustit jako pro vaše Runbooky se ujistěte, že tyto instanční objekty jsou ve vašem inventáři sledovány, protože mají často čas se zvýšenými oprávněními. Oborujte tyto identity s nejmenšími privilegovanými oprávněními, které potřebují, aby vaše Runbooky úspěšně prováděly automatizovaný proces. Odstraňte všechny nepoužívané účty Spustit jako pro minimalizaci vystaveného prostoru pro útoky.
 
 Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služby společnosti Microsoft a Azure Resource Manager můžete také povolit přístup za běhu nebo jen tolik.
 
@@ -374,7 +374,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
-**Doprovodné**materiály: kdykoli je to možné, použijte jednotné přihlašování s Azure Active Directory, ale nekonfigurujte jednotlivé samostatné přihlašovací údaje na službu. Použijte Azure Security Center doporučení pro správu identit a přístupu.
+**Doprovodné** materiály: kdykoli je to možné, použijte jednotné přihlašování s Azure Active Directory, ale nekonfigurujte jednotlivé samostatné přihlašovací údaje na službu. Použijte Azure Security Center doporučení pro správu identit a přístupu.
 
 * [Jednotné přihlašování k aplikacím v Azure Active Directory](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -388,7 +388,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Doprovodné**materiály: Povolte Azure AD Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
+**Doprovodné** materiály: Povolte Azure AD Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
 * [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -400,7 +400,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 ### <a name="36-use-dedicated-machines-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače pro všechny úlohy správy
 
-**Doprovodné**materiály: použití privilegovaným přístupem s ověřováním Multi-Factor Authentication je nakonfigurované pro přihlášení a konfiguraci prostředků účtů Azure Automation v produkčních prostředích.
+**Doprovodné** materiály: použití privilegovaným přístupem s ověřováním Multi-Factor Authentication je nakonfigurované pro přihlášení a konfiguraci prostředků účtů Azure Automation v produkčních prostředích.
 
 * [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -412,7 +412,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: protokolovat a upozornit na podezřelé aktivity z účtů pro správu
 
-**Doprovodné**materiály: Využijte zjišťování rizik Azure AD k zobrazení výstrah a sestav na základě rizikového chování uživatelů. V případě potřeby může zákazník přeposílat Azure Security Center výstrahy detekce rizik Azure Monitor a nakonfigurovat vlastní výstrahy a oznámení pomocí skupin akcí.
+**Doprovodné** materiály: Využijte zjišťování rizik Azure AD k zobrazení výstrah a sestav na základě rizikového chování uživatelů. V případě potřeby může zákazník přeposílat Azure Security Center výstrahy detekce rizik Azure Monitor a nakonfigurovat vlastní výstrahy a oznámení pomocí skupin akcí.
 
 * [Principy zjišťování rizik Azure Security Center (podezřelá aktivita)](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -426,7 +426,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
 
-**Doprovodné**materiály: doporučuje se používat pojmenovaná umístění podmíněného přístupu k povolení přístupu jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
+**Doprovodné** materiály: doporučuje se používat pojmenovaná umístění podmíněného přístupu k povolení přístupu jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
 
 * [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
@@ -448,7 +448,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Doprovodné**materiály: Azure AD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. Při každém použití účtů účtu Spustit jako pro vaše Runbooky zajistěte, aby tyto instanční objekty byly také sledovány ve vašem inventáři, protože mají často vyšší oprávnění. Odstraňte všechny nepoužívané účty Spustit jako pro minimalizaci vystaveného prostoru pro útoky.
+**Doprovodné** materiály: Azure AD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. Při každém použití účtů účtu Spustit jako pro vaše Runbooky zajistěte, aby tyto instanční objekty byly také sledovány ve vašem inventáři, protože mají často vyšší oprávnění. Odstraňte všechny nepoužívané účty Spustit jako pro minimalizaci vystaveného prostoru pro útoky.
 
 * [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
@@ -464,7 +464,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: sledování pokusů o přístup k deaktivovaným přihlašovacím údajům
 
-**Doprovodné**materiály: máte přístup k aktivitám přihlášení ke službě Azure AD, k auditu a rizikovým zdrojům protokolu událostí, které vám umožní integraci s jakýmkoli nástrojem Siem/monitoring.
+**Doprovodné** materiály: máte přístup k aktivitám přihlášení ke službě Azure AD, k auditu a rizikovým zdrojům protokolu událostí, které vám umožní integraci s jakýmkoli nástrojem Siem/monitoring.
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure Active Directory uživatelských účtů a odesláním protokolů auditu a protokolů přihlášení do pracovního prostoru Log Analytics. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics.
 
@@ -476,7 +476,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
-**Doprovodné**materiály: použití funkcí rizika a ochrany identity v Azure AD ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů v síťovém prostředku. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
+**Doprovodné** materiály: použití funkcí rizika a ochrany identity v Azure AD ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů v síťovém prostředku. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
 * [Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -490,7 +490,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
 
-**Doprovodné**materiály: u účtů Azure Automation může podpora Microsoftu přistupovat k metadatům prostředků platformy během otevřeného případu podpory bez použití jiného nástroje.
+**Doprovodné** materiály: u účtů Azure Automation může podpora Microsoftu přistupovat k metadatům prostředků platformy během otevřeného případu podpory bez použití jiného nástroje.
 
 Pokud ale použijete hybridní pracovní procesy Runbooku, které jsou zajištěné virtuálními počítači Azure a potřebujete získat přístup k zákaznickým datům (například během žádosti o podporu), použijte Customer Lockbox (Preview) pro virtuální počítače Azure a zkontrolujte a schvalte nebo odmítněte žádosti o přístup k datům zákazníků.
 
@@ -506,7 +506,7 @@ Pokud ale použijete hybridní pracovní procesy Runbooku, které jsou zajiště
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
-**Doprovodné**materiály: pomocí značek pomáhají při sledování Azure Automationch prostředků, které ukládají nebo zpracovávají citlivé informace.
+**Doprovodné** materiály: pomocí značek pomáhají při sledování Azure Automationch prostředků, které ukládají nebo zpracovávají citlivé informace.
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -538,7 +538,7 @@ Pokud ale použijete hybridní pracovní procesy Runbooku, které jsou zajiště
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
 
-**Doprovodné**materiály: při použití funkce Hybrid Runbook Worker použijte řešení třetích stran z Azure Marketplace na hraničních sítích, které monitorují neoprávněný přenos citlivých informací a zablokují tyto přenosy, a upozorní odborníky na zabezpečení informací.
+**Doprovodné** materiály: při použití funkce Hybrid Runbook Worker použijte řešení třetích stran z Azure Marketplace na hraničních sítích, které monitorují neoprávněný přenos citlivých informací a zablokují tyto přenosy, a upozorní odborníky na zabezpečení informací.
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft zpracovává veškerý obsah zákazníků jako citlivý a chráněný proti ztrátám a expozici zákaznických dat. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
@@ -550,7 +550,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft zpracová
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
-**Doprovodné**materiály: šifrování všech citlivých informací během přenosu. Ujistěte se, že všichni klienti připojující se k prostředkům Azure v Azure Virtual Networks můžou vyjednávat TLS 1,2 nebo vyšší. Azure Automation plně podporuje a vynutila přenosovou vrstvu (TLS) 1,2 a všechna volání klientů nebo novější verze všech externích koncových bodů HTPS (prostřednictvím webhooků, uzlů DSC, hybrid Runbook Worker).
+**Doprovodné** materiály: šifrování všech citlivých informací během přenosu. Ujistěte se, že všichni klienti připojující se k prostředkům Azure v Azure Virtual Networks můžou vyjednávat TLS 1,2 nebo vyšší. Azure Automation plně podporuje a vynutila přenosovou vrstvu (TLS) 1,2 a všechna volání klientů nebo novější verze všech externích koncových bodů HTPS (prostřednictvím webhooků, uzlů DSC, hybrid Runbook Worker).
 
 Pokud je to možné, postupujte podle Azure Security Center doporučení pro šifrování v klidovém režimu a šifrování.
 
@@ -586,7 +586,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
 
-**Doprovodné**materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače Runbooku pro více tenantů a tato činnost je zpracována platformou. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače Runbooku pro více tenantů a tato činnost je zpracována platformou. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěné virtuálními počítači Azure, musíte použít řešení ochrany před únikem informací od jiného výrobce, abyste vynutili řízení přístupu k vašim hostovaným Hybrid Runbook Worker virtuálním počítačům.
 
@@ -630,7 +630,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, virtuální disky na vi
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
-**Doprovodné**materiály: dodržujte doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení vašich prostředků Azure.
+**Doprovodné** materiály: dodržujte doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení vašich prostředků Azure.
 
 * [Doporučení zabezpečení v Azure Security Center](../security-center/security-center-recommendations.md)
 
@@ -642,7 +642,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, virtuální disky na vi
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
 
-**Doprovodné**materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače Runbooku pro více tenantů a tato činnost je zpracována platformou. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače Runbooku pro více tenantů a tato činnost je zpracována platformou. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěné virtuálními počítači Azure, použijte Azure Update Management ke správě aktualizací a oprav pro virtuální počítače. Update Management spoléhá na místně nakonfigurované úložiště aktualizací, které opraví podporované systémy Windows. Nástroje, jako je System Center Updates Publisher (Updates Publisher), umožňují publikovat vlastní aktualizace do Windows Server Update Services (WSUS). Tento scénář umožňuje Update Management opravit počítače, které používají Configuration Manager jako úložiště aktualizací se softwarem třetích stran.
 
@@ -656,7 +656,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěn�
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5,3: nasazení automatizovaného řešení pro správu oprav pro softwarové tituly třetích stran
 
-**Doprovodné**materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače Runbooku pro více tenantů a tato činnost je zpracována platformou. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače Runbooku pro více tenantů a tato činnost je zpracována platformou. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěné virtuálními počítači Azure, můžete pomocí Azure Update Management spravovat aktualizace a opravy pro virtuální počítače. Update Management spoléhá na místně nakonfigurované úložiště aktualizací, které opraví podporované systémy Windows. Nástroje, jako je System Center Updates Publisher (Updates Publisher), umožňují publikovat vlastní aktualizace do Windows Server Update Services (WSUS). Tento scénář umožňuje Update Management opravy počítačů, které používají Configuration Manager jako úložiště aktualizací se softwarem třetích stran.
 
@@ -678,7 +678,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěn�
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných ohrožení zabezpečení
 
-**Doprovodné**materiály: použijte výchozí hodnocení rizik (Secure skore) poskytované Azure Security Center, které vám pomůžou určit prioritu nápravy zjištěných chyb zabezpečení.
+**Doprovodné** materiály: použijte výchozí hodnocení rizik (Secure skore) poskytované Azure Security Center, které vám pomůžou určit prioritu nápravy zjištěných chyb zabezpečení.
 
 * [Pochopení Azure Security Center zabezpečeného skóre](../security-center/secure-score-security-controls.md)
 
@@ -706,7 +706,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěn�
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
-**Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
+**Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -716,7 +716,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěn�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
-**Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování Azure Automationch prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného. Odstraňte všechny nepoužívané účty Spustit jako pro minimalizaci vystaveného prostoru pro útoky.
+**Doprovodné** materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování Azure Automationch prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného. Odstraňte všechny nepoužívané účty Spustit jako pro minimalizaci vystaveného prostoru pro útoky.
 
 * [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
@@ -742,7 +742,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěn�
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
-**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
+**Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 - Žádné povolené typy prostředků
 - Povolené typy prostředků
 
@@ -760,7 +760,7 @@ K dotazování a zjišťování prostředků v rámci předplatných navíc pou�
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
 
-**Doprovodné**materiály: Nabídka Azure Automation aktuálně nezveřejňuje základní virtuální počítače Runbooku pro více tenantů, které jsou zpracovávány platformou. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez hybridních pracovních procesů. Je však možné instalovat, odebírat a spravovat prostředí PowerShell nebo moduly Pythonu, ke kterým mají Runbooky přístup prostřednictvím portálu nebo rutin. Neschválený nebo starý modul by měl být pro Runbooky odebrán nebo aktualizován.
+**Doprovodné** materiály: Nabídka Azure Automation aktuálně nezveřejňuje základní virtuální počítače Runbooku pro více tenantů, které jsou zpracovávány platformou. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez hybridních pracovních procesů. Je však možné instalovat, odebírat a spravovat prostředí PowerShell nebo moduly Pythonu, ke kterým mají Runbooky přístup prostřednictvím portálu nebo rutin. Neschválený nebo starý modul by měl být pro Runbooky odebrán nebo aktualizován.
 
 Pokud používáte hybridní pracovní procesy Runbooku, které zajišťuje Azure Virtual Machines, Azure Automation poskytuje úplnou kontrolu během nasazování, provozu a vyřazení úloh a prostředků z provozu. Využijte inventarizaci virtuálních počítačů Azure k automatizaci shromažďování informací o veškerém softwaru na Virtual Machines. Z Azure Portal je k dispozici název softwaru, verze, Vydavatel a čas aktualizace. Aby bylo možné získat přístup k datu instalace a dalším informacím, musí zákazník vyžadovat diagnostiku na úrovni hosta a přenést protokoly událostí systému Windows do Log Analytics pracovního prostoru.
 
@@ -788,7 +788,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, které zajišťuje Azur
 
 ### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
 
-**Doprovodné**materiály: při použití funkce Hybrid Runbook Worker můžete použít Azure Security Center Adaptivní řízení aplikací, abyste zajistili, že se spustí jenom autorizovaný software, a veškerý neoprávněný software se zablokuje spouštění na Azure Virtual Machines.
+**Doprovodné** materiály: při použití funkce Hybrid Runbook Worker můžete použít Azure Security Center Adaptivní řízení aplikací, abyste zajistili, že se spustí jenom autorizovaný software, a veškerý neoprávněný software se zablokuje spouštění na Azure Virtual Machines.
 
 * [Jak používat Azure Security Center Adaptivní řízení aplikací](../security-center/security-center-adaptive-application.md)
 
@@ -798,7 +798,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, které zajišťuje Azur
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
-**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
+**Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 - Žádné povolené typy prostředků
 - Povolené typy prostředků
 
@@ -812,7 +812,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, které zajišťuje Azur
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: udržování inventáře schválených softwarových titulů
 
-**Doprovodné**materiály: při použití funkce Hybrid Runbook Worker můžete použít funkci Azure Security Center Adaptivní řízení aplikací u virtuálních počítačů hybridního pracovního procesu.
+**Doprovodné** materiály: při použití funkce Hybrid Runbook Worker můžete použít funkci Azure Security Center Adaptivní řízení aplikací u virtuálních počítačů hybridního pracovního procesu.
 
 Adaptivní řízení aplikací je inteligentní, automatizované a ucelené řešení z Azure Security Center, které vám pomůže určit, které aplikace se můžou spouštět na počítačích Azure a mimo Azure (Windows a Linux). Implementujte řešení třetích stran, pokud to nevyhovuje požadavkům vaší organizace.
 
@@ -846,7 +846,7 @@ Adaptivní řízení aplikací je inteligentní, automatizované a ucelené ře�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
 
-**Doprovodné**materiály: aplikace s vysokým rizikem nasazené ve vašem prostředí Azure mohou být izolované pomocí různých síťových a kontejnerů prostředků pomocí konstrukcí, jako jsou virtuální sítě, podsíť, předplatná, skupiny pro správu, můžou být dostatečně zabezpečené buď pomocí Azure firewall, firewallu webových aplikací (WAF) nebo skupiny zabezpečení sítě (NSG).
+**Doprovodné** materiály: aplikace s vysokým rizikem nasazené ve vašem prostředí Azure mohou být izolované pomocí různých síťových a kontejnerů prostředků pomocí konstrukcí, jako jsou virtuální sítě, podsíť, předplatná, skupiny pro správu, můžou být dostatečně zabezpečené buď pomocí Azure firewall, firewallu webových aplikací (WAF) nebo skupiny zabezpečení sítě (NSG).
 
 * [Virtuální sítě a virtuální počítače v Azure](../virtual-machines/network-overview.md)
 
@@ -886,7 +886,7 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 * [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Doporučení zabezpečení – referenční příručka](../security-center/recommendations-reference.md)
+* [Doporučení k zabezpečení – Referenční příručka](../security-center/recommendations-reference.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -894,7 +894,7 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
 
-**Doprovodné**materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače a operační systémy pro více tenantů služby Runbook Worker. Tato platforma je zpracovávána platformou. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače a operační systémy pro více tenantů služby Runbook Worker. Tato platforma je zpracovávána platformou. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Pokud používáte funkci Hybrid Runbook Worker, použijte k údržbě konfigurací zabezpečení na virtuálních počítačích Azure Security Center doporučení [Oprava chyb zabezpečení v konfiguracích zabezpečení v Virtual Machines].
 
@@ -928,7 +928,7 @@ Pokud používáte funkci Hybrid Runbook Worker, použijte k údržbě konfigura
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
 
-**Doprovodné**materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače a operační systémy pro více tenantů pro klienty Runbook Worker, a to na platformě. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače a operační systémy pro více tenantů pro klienty Runbook Worker, a to na platformě. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Při použití funkce Hybrid Runbook Worker je k dispozici několik možností, jak spravovat zabezpečenou konfiguraci virtuálních počítačů Azure pro nasazení:
 
@@ -964,7 +964,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Doprovodné**materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače a operační systémy pro více tenantů pro klienty Runbook Worker, a to na platformě. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače a operační systémy pro více tenantů pro klienty Runbook Worker, a to na platformě. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Pokud používáte funkci Hybrid Runbook Worker, ujistěte se, že jste správně omezili přístup k vlastní imagi operačního systému ve vašem účtu úložiště, takže k imagi budou mít přístup jenom autorizovaní uživatelé.
 
@@ -992,7 +992,7 @@ Pokud používáte funkci Hybrid Runbook Worker, ujistěte se, že jste správn�
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: nasazení nástrojů pro správu konfigurace pro operační systémy
 
-**Doprovodné**materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače a operační systémy pro více tenantů pro klienty Runbook Worker, a to na platformě. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače a operační systémy pro více tenantů pro klienty Runbook Worker, a to na platformě. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Při použití funkce Hybrid Runbook Worker použijte konfiguraci stavu Azure Automation na Worker Worker, což je služba správy konfigurace pro uzly DSC (pro konfiguraci požadovaných stavů) v jakémkoli cloudu nebo v místním datacentru. Umožňuje snadnou a snadnou škálovatelnost v tisících počítačů z centrálního a bezpečného umístění. Můžete snadno připojit počítače, přiřazovat je k deklarativním konfiguracím a zobrazovat sestavy, které zobrazují kompatibilitu jednotlivých počítačů s požadovaným stavem, který jste zadali.
 
@@ -1004,7 +1004,7 @@ Při použití funkce Hybrid Runbook Worker použijte konfiguraci stavu Azure Au
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: Implementujte automatizované monitorování konfigurace pro prostředky Azure.
 
-**Doprovodné**materiály: pomocí Azure Policy pro upozornění a audit konfigurací prostředků Azure můžete použít zásady ke zjištění určitého prostředku, který není nakonfigurovaný s privátním koncovým bodem.
+**Doprovodné** materiály: pomocí Azure Policy pro upozornění a audit konfigurací prostředků Azure můžete použít zásady ke zjištění určitého prostředku, který není nakonfigurovaný s privátním koncovým bodem.
 
 Pokud používáte funkci Hybrid Runbook Worker, využijte Azure Security Center k provádění kontrol standardních hodnot pro virtuální počítače Azure. Další metody pro automatizovanou konfiguraci zahrnují konfiguraci stavu Azure Automation.
 
@@ -1022,7 +1022,7 @@ Pokud používáte funkci Hybrid Runbook Worker, využijte Azure Security Center
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
 
-**Doprovodné**materiály: Nabídka Azure Automation aktuálně nezveřejňuje základní virtuální počítače a operační systémy pro více tenantů pro klienty Runbook Worker, které tato platforma zpracovává. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez hybridních pracovních procesů.
+**Doprovodné** materiály: Nabídka Azure Automation aktuálně nezveřejňuje základní virtuální počítače a operační systémy pro více tenantů pro klienty Runbook Worker, které tato platforma zpracovává. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez hybridních pracovních procesů.
 
 Při použití funkce Hybrid Runbook Worker použijte konfiguraci Azure Automation stav pro pracovní procesy Runbooku, což je služba správy konfigurace pro uzly DSC (State Configuration Configuration) v jakémkoli cloudu nebo v místním datacentru. Umožňuje snadnou a snadnou škálovatelnost v tisících počítačů z centrálního a bezpečného umístění. Můžete snadno připojit počítače, přiřazovat je k deklarativním konfiguracím a zobrazovat sestavy, které zobrazují kompatibilitu jednotlivých počítačů s požadovaným stavem, který jste zadali.
 
@@ -1034,13 +1034,13 @@ Při použití funkce Hybrid Runbook Worker použijte konfiguraci Azure Automati
 
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
 
-**Doprovodné**materiály: použití identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy tajných kódů pro vaše cloudové aplikace.
+**Doprovodné** materiály: použití identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy tajných kódů pro vaše cloudové aplikace.
 
 * [Použití klíčů spravovaných zákazníkem pro účet Automation](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 * [Použití ověřování Runbooku u spravovaných identit](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
-* [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md)
+* [Vytvoření Key Vault](../key-vault/general/quick-create-portal.md)
 
 * [Ověření Key Vault](../key-vault/general/authentication.md)
 
@@ -1052,7 +1052,7 @@ Při použití funkce Hybrid Runbook Worker použijte konfiguraci Azure Automati
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Doprovodné**materiály: použití spravovaných identit k poskytování služeb Azure s automaticky spravovanou identitou ve službě Azure AD. Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
+**Doprovodné** materiály: použití spravovaných identit k poskytování služeb Azure s automaticky spravovanou identitou ve službě Azure AD. Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
 
 * [Postup konfigurace spravovaných identit](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
@@ -1078,7 +1078,7 @@ Při použití funkce Hybrid Runbook Worker použijte konfiguraci Azure Automati
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
 
-**Doprovodné**materiály: Nabídka Azure Automation aktuálně nezveřejňuje základní virtuální počítače a operační systémy pro více tenantů pro klienty Runbook Worker, které tato platforma zpracovává. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: Nabídka Azure Automation aktuálně nezveřejňuje základní virtuální počítače a operační systémy pro více tenantů pro klienty Runbook Worker, které tato platforma zpracovává. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Pokud používáte funkci Hybrid Runbook Worker, používejte k nepřetržitému monitorování a ochraně vašich prostředků Runbooku Worker službu Microsoft Anti-malware pro virtuální počítače Azure s Windows.
 
@@ -1090,7 +1090,7 @@ Pokud používáte funkci Hybrid Runbook Worker, používejte k nepřetržitému
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: předběžná kontrola souborů, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
 
-**Doprovodné**materiály: nepoužitelné; Azure Automation jako služba neukládá soubory. Microsoft Antimalware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure Automation), ale neběží na vašem obsahu.
+**Doprovodné** materiály: nepoužitelné; Azure Automation jako služba neukládá soubory. Microsoft Antimalware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure Automation), ale neběží na vašem obsahu.
 
 * [Pochopení Microsoft antimalwaru pro Azure Cloud Services a Virtual Machines](../security/fundamentals/antimalware.md)
 
@@ -1100,7 +1100,7 @@ Pokud používáte funkci Hybrid Runbook Worker, používejte k nepřetržitému
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: Ujistěte se, že antimalwarový software a signatury jsou aktualizované.
 
-**Doprovodné**materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače a operační systémy pro více tenantů pro klienty Runbook Worker, a to na platformě. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
+**Doprovodné** materiály: Azure Automation aktuálně nezveřejňuje podkladové virtuální počítače a operační systémy pro více tenantů pro klienty Runbook Worker, a to na platformě. Tento ovládací prvek se nedá použít, pokud používáte službu, která je součástí služby Box bez procesů Hybrid Runbook Worker.
 
 Při použití funkce Hybrid Runbook Worker použijte Microsoft Antimalware pro Azure k automatické instalaci nejnovější signatury, platformy a aktualizací stroje ve výchozím nastavení do pracovního procesu Runbook Worker. Použijte doporučení v Azure Security Center: "COMPUTE &amp; Apps", abyste zajistili aktuálnost všech koncových bodů s nejnovějšími podpisy. OPERAČNÍ systém Windows je možné dále chránit pomocí dalšího zabezpečení a omezit tak riziko útoků na virus nebo malware pomocí služby Microsoft Defender Advanced Threat Protection, která se integruje s Azure Security Center.
 
@@ -1172,7 +1172,7 @@ Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v úč
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: ověření všech záloh včetně klíčů spravovaných zákazníkem
 
-**Doprovodné**materiály: Zajistěte, aby v případě potřeby pravidelně prováděly nasazení Azure Resource Manager šablon pro izolované předplatné do izolovaného předplatného. Test obnovení zálohovaných klíčů spravovaných zákazníkem
+**Doprovodné** materiály: Zajistěte, aby v případě potřeby pravidelně prováděly nasazení Azure Resource Manager šablon pro izolované předplatné do izolovaného předplatného. Test obnovení zálohovaných klíčů spravovaných zákazníkem
 
 * [Nasazení prostředků pomocí šablon ARM a Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
@@ -1186,7 +1186,7 @@ Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v úč
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
-**Doprovodné**materiály: pomocí Azure DevOps bezpečně ukládejte a spravujte kód, jako je Azure Resource Manager šablon. K ochraně prostředků, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory, pokud jsou integrované s Azure DevOps nebo Active Directory, pokud jsou integrované s TFS.
+**Doprovodné** materiály: pomocí Azure DevOps bezpečně ukládejte a spravujte kód, jako je Azure Resource Manager šablon. K ochraně prostředků, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory, pokud jsou integrované s Azure DevOps nebo Active Directory, pokud jsou integrované s TFS.
 
 Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v účtu Automation udržovat v aktuálním stavu pomocí skriptů v úložišti správy zdrojových kódů.
 
@@ -1220,7 +1220,7 @@ Pomocí funkce integrace správy zdrojového kódu můžete své Runbooky v úč
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
-**Doprovodné**materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
+**Doprovodné** materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
 Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data. Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
 
@@ -1234,7 +1234,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
-**Doprovodné**materiály: proveďte cvičení k otestování funkcí reakce na incidenty na běžných tempo, které vám pomůžou ochránit vaše prostředky Azure. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
+**Doprovodné** materiály: proveďte cvičení k otestování funkcí reakce na incidenty na běžných tempo, které vám pomůžou ochránit vaše prostředky Azure. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
 * [Publikování v NIST – průvodce pro testování, školení a cvičení programů pro plány a možnosti IT](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
@@ -1244,7 +1244,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
-**Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
+**Doprovodné** materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
 * [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
@@ -1266,7 +1266,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
-**Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" pro výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
+**Doprovodné** materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" pro výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
 
 * [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
@@ -1280,7 +1280,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
-**Doprovodné**materiály: řiďte se pravidly společnosti Microsoft o zapojení, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft.
+**Doprovodné** materiály: řiďte se pravidly společnosti Microsoft o zapojení, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft.
 
 * [Pravidla testování průniku pro zapojení](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

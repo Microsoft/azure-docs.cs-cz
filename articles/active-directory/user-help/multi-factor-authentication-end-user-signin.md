@@ -13,17 +13,17 @@ ms.date: 04/02/2017
 ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.openlocfilehash: 51cfe2c448fde8c50f8b846979a4b35fa4be5ec1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f27dd7daf310e425b09db7905ad2f7c37fcff81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056024"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834162"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocí metody dvojúrovňové ověřování.
 
 > [!NOTE]
-> Účelem tohoto článku je projít si běžné prostředí pro přihlašování. Nápovědu k přihlašování nebo k řešení problémů najdete v článku o potížích [s Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
+> Účelem tohoto článku je projít si běžné prostředí pro přihlašování. Nápovědu k přihlašování nebo k řešení problémů najdete v článku o potížích [se službou Azure AD Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
 ## <a name="what-will-your-sign-in-experience-be"></a>K čemu se přihlašujete?
 Vaše přihlašovací možnosti se liší v závislosti na tom, co se rozhodnete použít jako druhý faktor: telefonní hovor, ověřovací aplikace nebo texty. Vyberte možnost, která nejlépe popisuje, co děláte:
@@ -83,7 +83,7 @@ Někdy nemáte telefon nebo zařízení, které jste nastavili jako upřednostň
    ![Použít alternativní metodu](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>Další kroky
-- Pokud máte problémy s přihlášením pomocí dvoustupňového ověřování, získáte další informace o potížích [s Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
+- Pokud máte problémy s přihlášením pomocí dvoustupňového ověřování, získáte další informace o potížích [se službou Azure AD Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
 - Naučte se [Spravovat nastavení dvou kroků ověřování](multi-factor-authentication-end-user-manage-settings.md).
 

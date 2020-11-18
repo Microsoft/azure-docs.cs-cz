@@ -3,13 +3,13 @@ title: Tempo opravy operačního systému a modulu runtime
 description: Přečtěte si, jak Azure App Service aktualizovat operační systém a moduly runtime, jaké moduly runtime a úroveň oprav mají vaše aplikace a jak můžete dostávat oznámení o aktualizacích.
 ms.topic: article
 ms.date: 02/02/2018
-ms.custom: seodec18
-ms.openlocfilehash: 831ba5f055b70e2f46cb8c6a941c0401df347dd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 31b2d39f5d0d125d2bf23ac72718d9b386b48923
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961512"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833482"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Opravy operačního systému a modulu runtime v Azure App Service
 
@@ -82,7 +82,7 @@ Následující tabulka ukazuje, jak verze Windows, tak jazykového modulu runtim
 | Verze .NET Core | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br> `dotnet --version` |
 | Verze PHP | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br> `php --version` |
 | Výchozí verze Node.js | V [Cloud Shell](../cloud-shell/overview.md)spusťte následující příkaz: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Verze Pythonu | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br> `python --version` |  
+| Python version (Verze Pythonu) | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br> `python --version` |  
 | Verze Java | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br> `java -version` |  
 
 > [!NOTE]  

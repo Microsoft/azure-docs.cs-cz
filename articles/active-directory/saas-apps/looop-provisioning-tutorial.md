@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 889972f7d94ab960354982275d45bdc5d5726d6e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 528003ac482da6f254bf437321c70c389d23844b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356820"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835012"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Kurz: Konfigurace Looop pro Automatické zřizování uživatelů
 
@@ -27,7 +27,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v Looop a Azu
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -81,11 +81,11 @@ Pokud chcete nakonfigurovat Looop pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Looop** , na panelu výsledků vyberte **Looop** . 
+4. Do vyhledávacího pole zadejte **Looop**, na panelu výsledků vyberte **Looop** . 
 
     ![Looop v seznamu výsledků](common/search-new-app.png)
 
-5. Vyberte tlačítko **zaregistrovat se k Looop** , které vás přesměruje na přihlašovací stránku Looop. 
+5. Vyberte tlačítko **zaregistrovat pro Looop** , které vás přesměruje na přihlašovací stránku Looop. 
 
     ![Looop OIDC přidat](media/looop-provisioning-tutorial/signup.png)
 
@@ -119,7 +119,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `https://<organisation_domain>.looop.co/scim/v2` **adresu URL tenanta**. Příklad: `https://demo.looop.co/scim/v2`. Zadejte hodnotu, kterou jste načetli a uložili dříve ze Looop v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Looop. Pokud se připojení nepovede, ujistěte se, že má váš účet Looop oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://<organisation_domain>.looop.co/scim/v2` **adresu URL tenanta**. Například, `https://demo.looop.co/scim/v2`. Zadejte hodnotu, kterou jste načetli a uložili dříve ze Looop v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Looop. Pokud se připojení nepovede, ujistěte se, že má váš účet Looop oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -135,7 +135,23 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Looop v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Looop pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Atributy uživatele Looop](media/looop-provisioning-tutorial/userattributes.png)
+   |Atribut|Typ|Podporováno pro filtrování|
+   |---|---|---|
+   |userName|Řetězec|&check;|
+   |active|Logická hodnota|
+   |emails[type eq "work"].value|Řetězec|
+   |name.givenName|Řetězec|
+   |name.familyName|Řetězec|
+   |externalId|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Looop: 2.0: uživatel: oblast|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Looop: 2.0: uživatel: custom_1|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Looop: 2.0: uživatel: custom_2|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Looop: 2.0: uživatel: custom_3|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Looop: 2.0: uživatel: oddělení|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Looop: 2.0: uživatel: employee_id|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Looop: 2.0: uživatel: umístění|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Looop: 2.0: uživatel: pozice|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Looop: 2.0: uživatel: startAt|Řetězec|
 
 10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny s konektorem meta Networks**.
 
@@ -143,7 +159,12 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 11. Zkontrolujte atributy skupiny, které jsou synchronizované z Azure AD do meta Networks Connectoru v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v části meta Networks Connector pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Looop – atributy skupiny](media/looop-provisioning-tutorial/groupattributes.png)
+    |Atribut|Typ|Podporováno pro filtrování|
+    |---|---|---|
+    |displayName|Řetězec|&check;|
+    |členy|Referenční informace|
+    |externalId|Řetězec|
+
 
 10. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

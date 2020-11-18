@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 6c768df964d46364a8ca501c078dbecaf1aaa21f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: e2432ca4cecb3c36d2fae19907c1ad17d9ef2505
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095556"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833499"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do App Service pomocí akcí GitHubu
 
@@ -71,12 +71,12 @@ Profil publikování je přihlašovací údaje na úrovni aplikace. Nastavte sv�
 
 1. V Azure Portal přejdete do služby App Service. 
 
-1. Na stránce **Přehled** vyberte **získat profil publikování** .
+1. Na stránce **Přehled** vyberte **získat profil publikování**.
 
 1. Stažený soubor uložte. Pomocí obsahu souboru vytvoříte tajný klíč GitHubu.
 
 > [!NOTE]
-> Od října 2020 budou webové aplikace pro Linux potřebovat nastavení aplikace `WEBSITE_WEBDEPLOY_USE_SCM` nastavené na hodnotu `true` **před stažením publikačního profilu** . Tento požadavek se v budoucnu odebere.
+> Od října 2020 budou webové aplikace pro Linux potřebovat nastavení aplikace `WEBSITE_WEBDEPLOY_USE_SCM` nastavené na hodnotu `true` **před stažením publikačního profilu**. Tento požadavek se v budoucnu odebere.
 
 # <a name="service-principal"></a>[Instanční objekt](#tab/userlevel)
 
@@ -110,7 +110,7 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
 
 # <a name="publish-profile"></a>[Publikovat profil](#tab/applevel)
 
-V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód** .
+V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód**.
 
 Pokud chcete použít [přihlašovací údaje na úrovni aplikace](#generate-deployment-credentials), vložte obsah staženého souboru publikačního profilu do pole hodnota tajného klíče. Pojmenujte tajný klíč `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
@@ -124,7 +124,7 @@ Když nakonfigurujete pracovní postup GitHubu, použijte `AZURE_WEBAPP_PUBLISH_
 
 # <a name="service-principal"></a>[Instanční objekt](#tab/userlevel)
 
-V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód** .
+V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód**.
 
 Pokud chcete použít [přihlašovací údaje na úrovni uživatele](#generate-deployment-credentials), vložte celý výstup JSON z příkazu Azure CLI do pole hodnota tajného klíče. Zadejte název tajného klíče `AZURE_CREDENTIALS` .
 

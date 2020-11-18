@@ -12,12 +12,12 @@ ms.date: 03/21/2019
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 6c148e673b8ada549a6543f8f35634aaf29abff0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5ae946f82590f2270719570e4b589d49542ffec8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123944"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833975"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Řešení problémů s portálem moje aplikace
 
@@ -51,7 +51,7 @@ Pokud máte potíže s přihlášením k portálu **Moje aplikace** , můžete v
 
 - Ujistěte se, že heslo je správné a že nevypršela jeho platnost. Další informace najdete v tématu [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md).
 
-- Ujistěte se, že jsou vaše ověřovací údaje aktuální a přesné. Další informace najdete v tématu [co znamená Azure Multi-Factor Authentication pro mě?](./multi-factor-authentication-end-user-first-time.md) nebo [Změna metod a informací o zabezpečení](./security-info-setup-auth-app.md).
+- Ujistěte se, že jsou vaše ověřovací údaje aktuální a přesné. Další informace najdete v tématu [co znamená Azure AD Multi-Factor Authentication pro mě?](./multi-factor-authentication-end-user-first-time.md) nebo [Změna metod a informací o zabezpečení](./security-info-setup-auth-app.md).
 
 - Přidejte adresu URL portálu **Moje aplikace** do **vlastností Internet > nastavení zabezpečení > důvěryhodných lokalit** .
 
@@ -75,7 +75,7 @@ Pokud se vám po spuštění aplikace z portálu **Moje aplikace** zobrazuje zpr
 
 - Ujistěte se, že heslo je správné a že nevypršela jeho platnost. Další informace najdete v tématu [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md).
 
-- Ujistěte se, že jsou vaše ověřovací údaje aktuální a přesné. Další informace najdete v tématu [co znamená Azure Multi-Factor Authentication pro mě?](./multi-factor-authentication-end-user-first-time.md) nebo [Změna metod a informací o zabezpečení](./security-info-setup-auth-app.md).
+- Ujistěte se, že jsou vaše ověřovací údaje aktuální a přesné. Další informace najdete v tématu [co znamená Azure AD Multi-Factor Authentication pro mě?](./multi-factor-authentication-end-user-first-time.md) nebo [Změna metod a informací o zabezpečení](./security-info-setup-auth-app.md).
 
 - Vymažte mezipaměť prohlížeče a zkuste se znovu přihlásit.
 

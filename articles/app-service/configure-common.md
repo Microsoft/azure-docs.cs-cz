@@ -5,13 +5,13 @@ keywords: Azure App Service, Webová aplikace, nastavení aplikace, proměnné p
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
-ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 86f9f227c0ea92b7b52a3037759426cc87f6d937
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
+ms.openlocfilehash: 1ab6f5e9c7b602ce124116c02584c5a48a3f597f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152068"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833652"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
@@ -21,7 +21,7 @@ Toto téma vysvětluje, jak nakonfigurovat společná nastavení pro webové apl
 
 V App Service jsou nastavení aplikace proměnné předány jako proměnné prostředí do kódu aplikace. U aplikací pro Linux a vlastních kontejnerů App Service předá nastavení aplikace kontejneru pomocí `--env` příznaku, který nastaví proměnnou prostředí v kontejneru.
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. 
+V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. 
 
 ![Hledat App Services](./media/configure-common/search-for-app-services.png)
 
@@ -112,7 +112,7 @@ Pomocí Azure CLI můžete vytvořit a spravovat nastavení z příkazového ř�
 
 ## <a name="configure-connection-strings"></a>Konfigurace připojovacích řetězců
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte nastavení **Konfigurace**  >  **aplikace**.
+V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte nastavení **Konfigurace**  >  **aplikace**.
 
 ![Nastavení aplikace](./media/configure-common/open-ui.png)
 
@@ -184,7 +184,7 @@ Připojovací řetězce mají následující formátování JSON:
 
 ## <a name="configure-general-settings"></a>Konfigurace obecných nastavení
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace**  >  **Obecné nastavení**.
+V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace**  >  **Obecné nastavení**.
 
 ![Obecná nastavení](./media/configure-common/open-general.png)
 
@@ -214,7 +214,7 @@ Tady můžete nakonfigurovat některá společná nastavení aplikace. Některá
 
 Toto nastavení platí jenom pro aplikace pro Windows.
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace**  >  **výchozí dokumenty**.
+V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace**  >  **výchozí dokumenty**.
 
 ![Výchozí dokumenty](./media/configure-common/open-documents.png)
 
@@ -224,7 +224,7 @@ Pokud aplikace používá moduly, které směrují na základě adresy URL namí
 
 ## <a name="configure-path-mappings"></a>Konfigurace mapování cest
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Configuration**  >  **mapování cest**konfigurace.
+V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Configuration**  >  **mapování cest** konfigurace.
 
 ![Mapování cest](./media/configure-common/open-path.png)
 
@@ -236,7 +236,7 @@ Pro aplikace pro Windows můžete přizpůsobit mapování obslužných rutin sl
 
 Mapování obslužných rutin umožňují přidat vlastní skriptové procesory, které budou zpracovávat požadavky na konkrétní přípony souborů. Chcete-li přidat vlastní obslužnou rutinu, klikněte na tlačítko **Nová obslužná rutina**. Nastavte obslužnou rutinu následujícím způsobem:
 
-- **Přípona**. Přípona souboru, kterou chcete zpracovat, například * \* . php* nebo *obslužných rutin. fcgi*.
+- **Přípona**. Přípona souboru, kterou chcete zpracovat, například *\* . php* nebo *obslužných rutin. fcgi*.
 - **Procesor skriptů**. Absolutní cesta k procesoru skriptu. Požadavky na soubory, které odpovídají příponám souborů, zpracovává procesor skriptu. Použijte cestu `D:\home\site\wwwroot` pro odkaz na kořenový adresář vaší aplikace.
 - **Argumenty**. Volitelné argumenty příkazového řádku pro procesor skriptu.
 
