@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8f1fa07b94072d37cf83320b6c8956d3b412f12
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948636"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701112"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonyma v Azure Kognitivní hledání
 
@@ -23,7 +23,7 @@ V Azure Kognitivní hledání je rozšíření synonym provedeno v době dotazu.
 
 ## <a name="create-synonyms"></a>Vytvořit synonyma
 
-Neexistuje žádná podpora portálu pro vytváření synonym, ale můžete použít sadu REST API nebo .NET SDK. Pokud chcete začít používat REST, doporučujeme [použít post](search-get-started-postman.md) a formulaci požadavků pomocí tohoto rozhraní API: [vytvořit mapy synonym](/rest/api/searchservice/create-synonym-map). Pro vývojáře v jazyce C# můžete začít [přidáním synonym v Azure rozpoznávání vyhledávání pomocí jazyka c#](search-synonyms-tutorial-sdk.md).
+Neexistuje žádná podpora portálu pro vytváření synonym, ale můžete použít sadu REST API nebo .NET SDK. Pokud chcete začít s REST, doporučujeme, abyste provedli [nebo Visual Studio Code](search-get-started-rest.md) a formulování požadavků pomocí tohoto rozhraní API: [vytvořit mapy synonym](/rest/api/searchservice/create-synonym-map). Pro vývojáře v jazyce C# můžete začít [přidáním synonym v Azure rozpoznávání vyhledávání pomocí jazyka c#](search-synonyms-tutorial-sdk.md).
 
 Pokud v případě, že používáte [klíče spravované zákazníkem](search-security-manage-encryption-keys.md) pro šifrování na straně služby, můžete použít i tuto ochranu na obsah vaší mapy synonym.
 

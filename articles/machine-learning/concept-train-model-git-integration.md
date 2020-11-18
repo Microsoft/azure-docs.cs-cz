@@ -1,20 +1,20 @@
 ---
 title: Integrace Gitu pro Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jak Azure Machine Learning integrovat s místním úložištěm Git. Při odesílání školicích běhů z místního adresáře, který je úložištěm Git, se jako součást běhu sledují informace o úložišti, větvi a aktuálním potvrzení.
+description: Přečtěte si, jak Azure Machine Learning integruje s místním úložištěm Git ke sledování úložiště, větve a aktuálních informací o potvrzení v rámci školicího běhu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 03/05/2020
-ms.openlocfilehash: f13773a8e3e78451dfb587e55c40a20d1b4b385c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: 989fc7cb66cf5381d174a3aad12f84f5b055aab8
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324760"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701632"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integrace Gitu pro Azure Machine Learning
 
@@ -150,7 +150,7 @@ Pokud vaše školicí soubory nejsou umístěny v úložišti Git ve vašem výv
 
 Informace Git se ukládají do vlastností pro školicí běh. Tyto informace můžete zobrazit pomocí Azure Portal, sady Python SDK a rozhraní příkazového řádku. 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1. Na [portálu Studio](https://ml.azure.com)vyberte svůj pracovní prostor.
 1. Vyberte __experimenty__ a pak vyberte jeden z experimentů.
@@ -184,7 +184,7 @@ Po odeslání školicího běhu se vrátí objekt [Run](/python/api/azureml-core
 run.properties['azureml.git.commit']
 ```
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>Rozhraní příkazového řádku
 
 `az ml run`Příkaz CLI lze použít k načtení vlastností z běhu. Například následující příkaz vrátí vlastnosti posledního spuštění v experimentu s názvem `train-on-amlcompute` :
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 43b28c9f2efc8ffe17e0bf21b1c395d64e89b6a8
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6e2df9168b880e565ea9b70c82c2c0c1b55b4db8
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660011"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737239"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Kurz: nasazení jarního cloudu Azure ve službě Azure Virtual Network (vkládání virtuální sítě)
 
@@ -26,11 +26,12 @@ Nasazení umožňuje:
 * Interakce jarního cloudu Azure se systémy v místních datových centrech nebo službách Azure v jiných virtuálních sítích
 * Podpora zákazníků pro řízení příchozí a odchozí síťové komunikace pro jarní cloud Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Musíte zaregistrovat poskytovatele prostředků cloudu Azure pro *Microsoft. AppPlatform* a *Microsoft. ContainerService* podle pokynů [v článku registrace poskytovatele prostředků v Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) nebo spuštěním následujícího příkazu AZ CLI:
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform
+az provider register --namespace Microsoft.ContainerService
 ```
 ## <a name="virtual-network-requirements"></a>Požadavky na virtuální síť
 Virtuální síť, do které nasazujete instanci služby jarní cloudová služba Azure, musí splňovat následující požadavky:
@@ -57,7 +58,7 @@ Pokud již máte virtuální síť pro hostování instance služby Azure jaře 
     |-----------------|--------------------------------------------------|
     |Předplatné     |Vyberte své předplatné.                         |
     |Skupina prostředků   |Vyberte skupinu prostředků nebo vytvořte novou.  |
-    |Název             |Přechod do *Azure-jaře-Cloud-VNet*                   |
+    |Name             |Přechod do *Azure-jaře-Cloud-VNet*                   |
     |Umístění         |Vyberte **východní USA**                                |
 
 1. Klikněte na **Další: IP adresy >**. 

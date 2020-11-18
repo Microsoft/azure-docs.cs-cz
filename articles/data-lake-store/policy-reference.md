@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Data Lake Storage Gen1
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Data Lake Storage Gen1. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: reference
 author: twooley
 ms.author: twooley
 ms.service: data-lake-store
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 4f8ed8bfd17a30dfaa4fe82f3ca8083ff803c151
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8f2e54a364d46670f39af1c5ac3d9ebf36b82f93
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314916"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94736882"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-lake-storage-gen1"></a>Azure Policy předdefinované definice pro Azure Data Lake Storage Gen1
 

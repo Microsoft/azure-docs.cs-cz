@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro zasílání zpráv Azure Service Bus
 description: Seznam Azure Policy integrovaných definic zásad pro zasílání zpráv Azure Service Bus. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: reference
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e957922a3401fa6e4645d187a2bc1feec1f99b3e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: cc298a606409d4bf50dacfc5965fe503235cb5ee
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329045"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94736621"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-service-bus-messaging"></a>Azure Policy předdefinované definice pro zasílání zpráv Azure Service Bus
 

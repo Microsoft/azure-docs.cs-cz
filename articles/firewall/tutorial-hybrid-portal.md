@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/19/2020
+ms.date: 11/17/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 89a6239a28c66ab24f423c19baf0d329f87b38d5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 78e934a90b8d4e8feccf18a5cada3ec4920e1642
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658600"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734445"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Kurz: nasazení a konfigurace Azure Firewall v hybridní síti pomocí Azure Portal
 
@@ -45,7 +45,7 @@ V tomto kurzu se naučíte:
 
 Pokud chcete použít Azure PowerShell k provedení tohoto postupu, přečtěte si téma [nasazení a konfigurace Azure firewall v hybridní síti pomocí Azure PowerShell](tutorial-hybrid-ps.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Hybridní síť používá model architektury hvězdicové a hvězdicové ke směrování provozu mezi Azure virtuální sítě a místními sítěmi. Architektura centra a paprsků má následující požadavky:
 
@@ -67,7 +67,7 @@ Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create
 >[!NOTE]
 >Provoz mezi přímo rovnocenným virtuální sítě je směrován přímo, i když jako výchozí bránu UDR body Azure Firewall. Aby bylo možné odeslat podsíť do brány firewall v tomto scénáři, musí UDR v obou podsítích explicitně obsahovat předponu sítě cílové podsítě.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>Vytvoření virtuální sítě centra firewallu
 
@@ -88,16 +88,17 @@ Nyní vytvořte virtuální síť:
 
 1. Na domovské stránce Azure Portal vyberte **vytvořit prostředek**.
 2. V části **sítě** vyberte **virtuální síť**.
-7. Jako **skupinu prostředků** vyberte **FW-Hybrid-test**.
+1. Vyberte **Vytvořit**.
+1. Jako **skupinu prostředků** vyberte **FW-Hybrid-test**.
 1. Jako **název** zadejte **VNet-hub**.
-2. Vyberte **Další: IP adresy**.
-3. V případě **adresního prostoru IPv4** zadejte **10.5.0.0/16**.
-6. V části **název podsítě** vyberte **výchozí**.
-7. jako **název** zadejte **AzureFirewallSubnet**. Brána firewall bude v této podsíti a název podsítě **musí** být AzureFirewallSubnet.
-8. Pro **Rozsah adres** zadejte **10.5.0.0/26**. 
-9. Vyberte **Uložit**.
-10. Vyberte **Zkontrolovat a vytvořit**.
-11. Vyberte **Vytvořit**.
+1. Vyberte **Další: IP adresy**.
+1. V případě **adresního prostoru IPv4** odstraňte výchozí adresu a zadejte **10.5.0.0/16**.
+1. V části **název podsítě** vyberte **Přidat podsíť**.
+1. Jako **název podsítě** zadejte **AzureFirewallSubnet**. Brána firewall bude v této podsíti a název podsítě **musí** být AzureFirewallSubnet.
+1. Jako **Rozsah adres podsítě** zadejte **10.5.0.0/26**. 
+1. Vyberte **Přidat**.
+1. Vyberte **Zkontrolovat a vytvořit**.
+1. Vyberte **Vytvořit**.
 
 ## <a name="create-the-spoke-virtual-network"></a>Vytvoření virtuální sítě paprsků
 
@@ -107,11 +108,11 @@ Nyní vytvořte virtuální síť:
 1. Jako **název** zadejte **VNet-paprsek**.
 2. V **oblasti oblast** vyberte **(US) východní USA**.
 3. Vyberte **Další: IP adresy**.
-4. V případě **adresního prostoru IPv4** zadejte **10.6.0.0/16**.
-6. V části **název podsítě** vyberte **výchozí**.
-7. jako **název** zadejte **sn-zatížení**.
-8. Pro **Rozsah adres** zadejte **10.6.0.0/24**. 
-9. Vyberte **Uložit**.
+4. V případě **adresního prostoru IPv4** odstraňte výchozí adresu a zadejte **10.6.0.0/16**.
+6. V části **název podsítě** vyberte **Přidat podsíť**.
+7. Jako **název podsítě** zadejte **sn-zatížení**.
+8. Jako **Rozsah adres podsítě** zadejte **10.6.0.0/24**. 
+9. Vyberte **Přidat**.
 10. Vyberte **Zkontrolovat a vytvořit**.
 11. Vyberte **Vytvořit**.
 
@@ -123,11 +124,11 @@ Nyní vytvořte virtuální síť:
 1. Jako **název** zadejte **VNet-OnPrem**.
 2. V **oblasti oblast** vyberte **(US) východní USA**.
 3. Vybrat **Další: IP adresy**
-4. V případě **adresního prostoru IPv4** zadejte **192.168.0.0/16**.
-5. V části **název podsítě** vyberte **výchozí**.
-7. jako **název** zadejte **sn-Corp**.
-8. Jako **Rozsah adres** zadejte **192.168.1.0/24**. 
-9. Vyberte **Uložit**.
+4. V případě **adresního prostoru IPv4** odstraňte výchozí adresu a zadejte **192.168.0.0/16**.
+5. V části **název podsítě** vyberte **Přidat podsíť**.
+7. Jako **název podsítě** zadejte **sn-Corp**.
+8. Jako **Rozsah adres podsítě** zadejte **192.168.1.0/24**. 
+9. Vyberte **Přidat**.
 10. Vyberte **Zkontrolovat a vytvořit**.
 11. Vyberte **Vytvořit**.
 
@@ -151,7 +152,7 @@ Teď nasaďte bránu firewall do virtuální sítě centra brány firewall.
    |---------|---------|
    |Předplatné     |\<your subscription\>|
    |Skupina prostředků     |**FW – Hybrid-test** |
-   |Název     |**AzFW01**|
+   |Name     |**AzFW01**|
    |Oblast     |**East US**|
    |Volba virtuální sítě     |**Použít existující**:<br> **Virtuální síť – centrum**|
    |Veřejná IP adresa     |Přidat nové: <br>**FW-PIP** |
@@ -192,7 +193,7 @@ Na řádku druhý pravidlo zadejte následující informace:
 5. Jako **typ cíle** vyberte **IP adresa**.
 6. Pro **cílovou adresu** zadejte **10.6.0.0/16** .
 7. V případě **cílových portů** zadejte **3389**.
-8. Vyberte možnost **Přidat**.
+8. Vyberte **Přidat**.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>Vytvoření a propojení bran VPN
 
@@ -240,7 +241,7 @@ V tomto kroku vytvoříte připojení z virtuální sítě rozbočovače k míst
 
 1. Otevřete skupinu prostředků- **Hybrid-test FW** a vyberte bránu **GS-hub** .
 2. V levém sloupci vyberte **připojení** .
-3. Vyberte možnost **Přidat**.
+3. Vyberte **Přidat**.
 4. Název připojení, typ **hub-to-OnPrem**.
 5. Pro **Typ připojení** vyberte **VNet-to-VNet** .
 6. Pro **druhou bránu virtuální sítě** vyberte **GS-OnPrem**.
@@ -251,7 +252,7 @@ Vytvořte připojení k virtuální síti z místního prostředí k rozbočova�
 
 1. Otevřete skupinu prostředků " **Hybrid-test FW** " a vyberte bránu **GS-OnPrem** .
 2. V levém sloupci vyberte **připojení** .
-3. Vyberte možnost **Přidat**.
+3. Vyberte **Přidat**.
 4. Do pole název připojení zadejte **OnPrem-to-hub**.
 5. Pro **Typ připojení** vyberte **VNet-to-VNet** .
 6. Pro **druhou bránu virtuální sítě** vyberte **GS-hub**.
@@ -271,22 +272,32 @@ Nyní můžete vytvořit partnerský vztah mezi virtuálními sítěmi hub a pap
 
 1. Otevřete skupinu prostředků " **Hybrid-test FW** " a vyberte virtuální síť **centra VNet** .
 2. V levém sloupci vyberte **partnerské vztahy**.
-3. Vyberte možnost **Přidat**.
-4. Jako **název** zadejte **HubtoSpoke**.
-5. Pro **virtuální síť** vyberte **VNet-paprsek** .
-6. Jako název partnerského vztahu z VNetSpoke do služby VNet-hub zadejte **SpoketoHub**.
-7. Vyberte možnost **povolení přenosu brány**.
-8. Vyberte **OK**.
+3. Vyberte **Přidat**.
+4. V rámci **této virtuální sítě**:
+ 
+   
+   |Název nastavení  |Hodnota  |
+   |---------|---------|
+   |Název propojení partnerského vztahu| HubtoSpoke|
+   |Provoz do vzdálené virtuální sítě|   Povoleno (výchozí)      |
+   |Přenos předaných ze vzdálené virtuální sítě    |   Povoleno (výchozí)      |
+   |Brána virtuální sítě     |  Použít bránu této virtuální sítě       |
+    
+5. V části **Vzdálená virtuální síť**:
 
-### <a name="configure-additional-settings-for-the-spoketohub-peering"></a>Konfigurace dalších nastavení pro partnerský vztah SpoketoHub
+   |Název nastavení  |Hodnota  |
+   |---------|---------|
+   |Název propojení partnerského vztahu | SpoketoHub|
+   |Model nasazení virtuální sítě| Resource Manager|
+   |Předplatné|\<your subscription\>|
+   |Virtuální síť| VNet-Spoke
+   |Provoz do vzdálené virtuální sítě     |   Povoleno (výchozí)      |
+   |Přenos předaných ze vzdálené virtuální sítě    |   Povoleno (výchozí)      |
+   |Brána virtuální sítě     |  Použít bránu vzdálené virtuální sítě       |
 
-V partnerském vztahu SpoketoHub budete muset povolit **předaný přenos s povoleným přenosem** .
+5. Vyberte **Přidat**.
 
-1. Otevřete skupinu prostředků **FW-Hybrid-test** a vyberte virtuální síť **VNet-paprsek** .
-2. V levém sloupci vyberte **partnerské vztahy**.
-3. Vyberte partnerský vztah **SpoketoHub** .
-4. V části **Povolit předaný přenos z VNet-hub do VNet-paprsek** vyberte **povoleno**.
-5. Vyberte **Uložit**.
+   :::image type="content" source="media/tutorial-hybrid-portal/firewall-peering.png" alt-text="Partnerský vztah virtuální sítě":::
 
 ## <a name="create-the-routes"></a>Vytvoření tras
 
@@ -306,7 +317,7 @@ Dále vytvořte několik tras:
 10. Vyberte **Vytvořit**.
 11. Po vytvoření směrovací tabulky vyberte ji a otevřete stránku směrovací tabulka.
 12. V levém sloupci vyberte možnost **trasy** .
-13. Vyberte možnost **Přidat**.
+13. Vyberte **Přidat**.
 14. Jako název trasy zadejte **ToSpoke**.
 15. Jako předponu adresy zadejte **10.6.0.0/16**.
 16. V poli Typ dalšího segmentu směrování vyberte **virtuální zařízení**.
@@ -335,7 +346,7 @@ Nyní vytvořte výchozí trasu z podsítě paprsků.
 6. Vyberte **Vytvořit**.
 7. Po vytvoření směrovací tabulky vyberte ji a otevřete stránku směrovací tabulka.
 8. V levém sloupci vyberte možnost **trasy** .
-9. Vyberte možnost **Přidat**.
+9. Vyberte **Přidat**.
 10. Jako název trasy zadejte **ToHub**.
 11. Jako předponu adresy zadejte **0.0.0.0/0**.
 12. V poli Typ dalšího segmentu směrování vyberte **virtuální zařízení**.

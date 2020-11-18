@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: babd40e0e3a3b7a254a8410313c5d4e3bb2832f0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 26e30b42906a3d8d7a3fcdc013537104a85f32fe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686770"
+ms.locfileid: "94701853"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Ukázky kódu Java pro Azure Kognitivní hledání
 
 Přečtěte si o ukázkách kódu Java, které ukazují funkce a funkce Azure Kognitivní hledání. Primární úložiště jsou následující:
 
-| Repository | Description |
+| Repository | Popis |
 |------------|-------------|
 | [Azure-SDK-for-Java/Tree/Master/SDK/Search/Azure-Search-Documents/src/Samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) | Ukázky vytvářené týmem Azure SDK, které se dodávají s klientskou knihovnou Azure.Search.Documents v sadě SDK Můžete si také projít [testy jednotek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/test) klientské knihovny, abyste viděli, jak jsou volána různá rozhraní API. |
 | [Azure-Samples/Azure-Search-Java-Samples](https://github.com/Azure-Samples/azure-search-java-samples) | Ukázky kódu, které doprovázejí články s postupy. **Ukázky v tomto úložišti ještě nejsou aktualizované na používání sady Azure SDK pro jazyk Java**. V současné době tyto ukázky volají rozhraní REST API v kódu Java.|
@@ -31,7 +31,7 @@ Přečtěte si o ukázkách kódu Java, které ukazují funkce a funkce Azure Ko
 
 Sada Azure SDK pro jazyk Java obsahuje mnoho ukázek a [úvodní stránku](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) , která pokrývá instalaci balíčku. Stránka také obsahuje řadu příkladů. Několik častých operací je níže uvedených pro vaše pohodlí.
 
-| ukázky | Description |
+| ukázky | Popis |
 |---------|-------------|
 | [Vytváření indexu vyhledávání](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) | Ukazuje, jak vytvořit [indexy vyhledávání](search-what-is-an-index.md). |
 | [Vytvoření synonyma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/SynonymMapsCreateExample.java) | Ukazuje, jak vytvořit [mapy synonym](search-synonyms.md).  |
@@ -45,7 +45,7 @@ Sada Azure SDK pro jazyk Java obsahuje mnoho ukázek a [úvodní stránku](https
 
 Následující ukázky mají přidružený článek v [dokumentaci k Azure kognitivní hledání](https://docs.microsoft.com/azure/search/).
 
-| ukázky | Description | 
+| ukázky | Popis | 
 |---------|-------------|
-| [rychlý Start](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/Quickstart) | Zdrojový kód pro [rychlý Start: vytvoření indexu vyhledávání](search-get-started-javascript.md). Tato ukázka volá rozhraní REST API. |
+| [rychlý Start](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/quickstart) | Zdrojový kód pro [rychlý Start: vytvoření indexu vyhledávání v jazyce Java](search-get-started-java.md). Tato ukázka volá rozhraní REST API. |
 | [Search-Java-indexer-demo](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/search-java-indexer-demo) | Ukazuje indexer Azure Cosmos DB v jazyce Java. Tato ukázka volá rozhraní REST API. |

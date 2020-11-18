@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 88c34be45a832f8944217630568927bc7d52fd88
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 572c657dd44db73b1401c72f0750fe8e000985ac
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660198"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734350"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Připojení počítačů mimo Azure k Security Center
 
@@ -21,7 +21,7 @@ Security Center můžou monitorovat stav zabezpečení počítačů mimo Azure, 
 
 Počítače mimo Azure můžete připojit některým z následujících způsobů:
 
-- Použití [servery s podporou Azure ARC (**doporučeno**)
+- Používání serverů s povoleným ARC Azure (**doporučeno**)
 - Ze stránek Security Center v Azure Portal (**Začínáme** a **inventář**)
 
 Každá z nich je popsána na této stránce.
@@ -127,7 +127,7 @@ Další informace o instalaci a konfiguraci agenta najdete v tématu [připojen�
 
 ## <a name="verifying"></a>Ověřoval
 
-Blahopřejeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto ikony rozlišují tyto typy:
+Gratulujeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto ikony rozlišují tyto typy:
 
   ![Ikona ASC pro počítač mimo Azure](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Počítač mimo Azure
 

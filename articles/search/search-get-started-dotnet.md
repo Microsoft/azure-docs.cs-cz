@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 53deb7dc853de969ad6b6679ee728a3f132b6309
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f3e43a6b72d8de25de3220a9a6ac4e0b3986a467
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759063"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701802"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Rychlý Start: vytvoření indexu vyhledávání pomocí klientské knihovny Azure.Search.Documents
 
@@ -50,9 +50,9 @@ Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro ka
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-2. V části **Nastavení**  >  **klíče**Získejte klíč správce pro úplná práva ke službě, který je vyžadován při vytváření nebo odstraňování objektů. Existují dva zaměnitelné primární a sekundární klíče. Můžete použít jednu z těchto.
+2. V části **Nastavení**  >  **klíče** Získejte klíč správce pro úplná práva ke službě, který je vyžadován při vytváření nebo odstraňování objektů. Existují dva zaměnitelné primární a sekundární klíče. Můžete použít jednu z těchto.
 
-   ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
+   ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-rest/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
@@ -60,7 +60,7 @@ Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odesla
 
 Po vytvoření projektu přidejte knihovnu klienta. [BalíčekAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) se skládá z jedné klientské knihovny, která poskytuje všechna rozhraní API používaná pro práci se službou vyhledávání v .NET.
 
-1. V **nabídce nástroje**  >  **Správce balíčků NuGet**vyberte **Spravovat balíčky NuGet pro řešení...**. 
+1. V **nabídce nástroje**  >  **Správce balíčků NuGet** vyberte **Spravovat balíčky NuGet pro řešení...**. 
 
 1. Klikněte na **Browse** (Procházet).
 
@@ -70,7 +70,7 @@ Po vytvoření projektu přidejte knihovnu klienta. [BalíčekAzure.Search.Docum
 
 ### <a name="create-a-search-client"></a>Vytvoření vyhledávacího klienta
 
-1. V **program.cs**změňte obor názvů na `AzureSearch.SDK.Quickstart.v11` a pak přidejte následující `using` direktivy.
+1. V **program.cs** změňte obor názvů na `AzureSearch.SDK.Quickstart.v11` a pak přidejte následující `using` direktivy.
 
    ```csharp
    using Azure;
@@ -106,7 +106,7 @@ V tomto příkladu se synchronní metody knihovny Azure.Search.Documents použí
 
 1. Přidejte do projektu prázdnou definici třídy: **Hotel.cs**
 
-1. V **Hotel.cs**definujte strukturu dokumentu hotelu.
+1. V **Hotel.cs** definujte strukturu dokumentu hotelu.
 
     ```csharp
     using System;
@@ -134,7 +134,7 @@ V tomto příkladu se synchronní metody knihovny Azure.Search.Documents použí
     }
     ```
 
-1. V **program.cs**vytvořte objekt [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) a pak zavolejte metodu [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) pro vyjádření indexu ve vyhledávací službě.
+1. V **program.cs** vytvořte objekt [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) a pak zavolejte metodu [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) pro vyjádření indexu ve vyhledávací službě.
 
    ```csharp
     // Define an index schema using SearchIndex
@@ -175,7 +175,7 @@ Ve službě Azure Kognitivní hledání vyhledávání dokumentů jsou datové s
 
 Při odesílání dokumentů je nutné použít objekt [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) . `IndexDocumentsBatch`Objekt obsahuje kolekci [akcí](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions), z nichž každá obsahuje dokument a vlastnost oznamuje službě Azure kognitivní hledání, jakou akci chcete provést ([nahrávání, sloučení, odstranění a mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
-1. V **program.cs**vytvořte pole dokumentů a indexových akcí a pak předejte pole do `IndexDocumentsBatch` . Níže uvedené dokumenty odpovídají indexu V11 pro hotely a rychlé zprovoznění, jak je definováno třídou hotelu.
+1. V **program.cs** vytvořte pole dokumentů a indexových akcí a pak předejte pole do `IndexDocumentsBatch` . Níže uvedené dokumenty odpovídají indexu V11 pro hotely a rychlé zprovoznění, jak je definováno třídou hotelu.
 
     ```csharp
     // Load documents (using a subset of fields for brevity)
@@ -212,7 +212,7 @@ V této části se přidávají dvě části funkčnosti: logika dotazů a výsl
 
 Třída [searchResults](/dotnet/api/azure.search.documents.models.searchresults-1) představuje výsledky.
 
-1. V **program.cs**vytvořte metodu WriteDocuments, která vytiskne výsledky hledání do konzoly.
+1. V **program.cs** vytvořte metodu WriteDocuments, která vytiskne výsledky hledání do konzoly.
 
     ```csharp
     private static void WriteDocuments(SearchResults<Hotel> searchResults)

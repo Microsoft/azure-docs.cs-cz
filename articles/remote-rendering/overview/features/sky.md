@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a193fdf82ed5e9a785c6c01db4931fb05e9aaac7
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 58c07654c174f5b94512574cb4c279d35897dc71
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205740"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701938"
 ---
 # <a name="sky-reflections"></a>Odrazy oblohy
 
@@ -26,7 +26,7 @@ Vzdálené vykreslování Azure využívá pro realistické výpočty světla *f
 
 Následující obrázky znázorňují výsledky osvětlení různých povrchů pouze s texturou nebe:
 
-| Hrubá  | 0                                        | 0,25                                          | 0.5                                          | 0,75                                          | 1                                          |
+| Hrubá  | 0                                        | 0,25                                          | 0,5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
 | Jiný než kov  | ![Dielectric, hrubosti = 0](media/dielectric-0.png)   | ![Dielectric, hrubosti = 0,25](media/dielectric-0.25.png)  | ![Dielectric, hrubosti = 0.5](media/dielectric-0.5.png)  | ![Dielectric, hrubosti = 0,75](media/dielectric-0.75.png)  | ![Dielectric, hrubosti = 1](media/dielectric-1.png)  |
 | Metal      | ![Kov, Hrubost = 0](media/metallic-0.png)  | ![Kov, Hrubost = 0,25](media/metallic-0.25.png)    | ![Kov, Hrubost = 0,5](media/metallic-0.5.png)    | ![Kov, Hrubost = 0,75](media/metallic-0.75.png)    | ![Kov, Hrubost = 1](media/metallic-1.png)    |
@@ -146,4 +146,3 @@ Vzdálené vykreslování Azure poskytuje několik předdefinovaných map prost�
 * [Světla](../../overview/features/lights.md)
 * [Materiály](../../concepts/materials.md)
 * [Textury](../../concepts/textures.md)
-* [Nástroj příkazového řádku TexConv](../../resources/tools/tex-conv.md)

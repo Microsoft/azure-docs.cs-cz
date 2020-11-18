@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b08e834233e1ce12392d940cb0ccc0bef7e96158
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 20003a91726e5ccee7f73d85b7c9a9389801e0ad
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337742"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701751"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Použití funkce OPENROWSET s použitím fondu SQL bez serveru (Preview) ve službě Azure synapse Analytics
 
@@ -84,7 +84,7 @@ OPENROWSET
     FORMAT = 'CSV'
     [ <bulk_options> ] }  
 )  
-WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })  
+WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })  
 [AS] table_alias(column_alias,...n)
  
 <bulk_options> ::=  
@@ -129,7 +129,7 @@ Níže najdete relevantní <storage account path> hodnoty, které budou propojen
 Určuje cestu v rámci úložiště, která odkazuje na složku nebo soubor, který chcete číst. Pokud cesta odkazuje na kontejner nebo složku, všechny soubory budou načteny z konkrétního kontejneru nebo složky. Soubory v podsložkách nebudou zahrnuty. 
 
 Můžete použít zástupné znaky k zacílení na více souborů nebo složek. Je povoleno použití více zástupných znaků nejdoucích po sobě.
-Níže je příklad, který čte všechny soubory *CSV* počínaje *plněním* ze všech složek začínajících na */CSV/Population* :  
+Níže je příklad, který čte všechny soubory *CSV* počínaje *plněním* ze všech složek začínajících na */CSV/Population*:  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 Pokud zadáte unstructured_data_path jako složku, dotaz na fond SQL bez serveru načte soubory z této složky. 
@@ -156,7 +156,7 @@ Klauzule WITH umožňuje zadat sloupce, které chcete ze souborů číst.
     > Názvy sloupců v souborech Parquet rozlišují velká a malá písmena. Pokud v souboru Parquet zadáte název sloupce, který se liší od názvu sloupce a velikost písmen, vrátí se pro tento sloupec hodnoty NULL.
 
 
-column_name = název výstupního sloupce. Pokud je tento název zadán, přepíše název sloupce ve zdrojovém souboru.
+column_name = název výstupního sloupce. Pokud je tento název zadán, přepíše název sloupce ve zdrojovém souboru a názvu sloupce zadaného v cestě JSON, pokud je nějaký. Pokud není zadaný json_path, automaticky se přidá jako $ .column_name. Pro chování ověřte json_path argument.
 
 column_type = datový typ pro výstupní sloupec. Sem bude proveden převod implicitního datového typu.
 
@@ -171,11 +171,16 @@ WITH (
 )
 ```
 
+json_path = [výraz cesty JSON](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) na vlastnost Column nebo Nested. Výchozí [režim cesty](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) je Lax.
+
+> [!NOTE]
+> Dotaz v striktním režimu se nezdaří s chybou, pokud zadaná cesta neexistuje. Dotaz v režimu LAX bude úspěšný a výraz cesty JSON se vyhodnotí na hodnotu NULL.
+
 **\<bulk_options>**
 
 FIELDTERMINATOR = ' field_terminator '
 
-Určuje ukončovací znak pole, který se má použít. Výchozí ukončovací znak pole je čárka (" **,** ").
+Určuje ukončovací znak pole, který se má použít. Výchozí ukončovací znak pole je čárka ("**,**").
 
 ROWTERMINATOR = ' row_terminator ' '
 
@@ -273,7 +278,7 @@ Soubory Parquet obsahují popisy typů pro každý sloupec. Následující tabul
 | UVEDENA |INT (8, false) |tinyint |
 | UVEDENA |INT (16, false) |int |
 | UVEDENA |INT (32, false) |bigint |
-| UVEDENA |DATE |date |
+| UVEDENA |DATE |datum |
 | UVEDENA |NOTACI |decimal |
 | UVEDENA |ČAS (LISOVNY)|time |
 | INT64 |INT (64; true) |bigint |
@@ -359,6 +364,32 @@ WITH (
     [stateName] VARCHAR (50),
     [population] bigint
 ) AS [r]
+```
+
+### <a name="specify-columns-using-json-paths"></a>Určení sloupců pomocí cest JSON
+
+Následující příklad ukazuje, jak lze použít [výrazy cesty JSON](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) v klauzuli with a ukazuje rozdíl mezi striktními a LAX cestami: 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    --lax path mode samples
+    [stateName] VARCHAR (50), -- this one works as column name casing is valid - it targets the same column as the next one
+    [stateName_explicit_path] VARCHAR (50) '$.stateName', -- this one works as column name casing is valid
+    [COUNTYNAME] VARCHAR (50), -- STATEname column will contain NULLs only because of wrong casing - it targets the same column as the next one
+    [countyName_explicit_path] VARCHAR (50) '$.COUNTYNAME', -- STATEname column will contain NULLS only because of wrong casing and default path mode being lax
+
+    --strict path mode samples
+    [population] bigint 'strict $.population' -- this one works as column name casing is valid
+    --,[population2] bigint 'strict $.POPULATION' -- this one fails because of wrong casing and strict path mode
+)
+AS [r]
 ```
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 84db7f58c292cf0a9d01cf90da4b847691f601fb
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 0c1e84695ce40b489fb1005325d501ea241cdaf1
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491626"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738097"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Monitorování virtuálních počítačů Azure pomocí Azure Monitor
 Tento článek popisuje, jak pomocí Azure Monitor shromažďovat a analyzovat data monitorování z virtuálních počítačů Azure a udržovat jejich stav. Virtuální počítače je možné monitorovat z hlediska dostupnosti a výkonu pomocí Azure Monitor jako u jakéhokoli [jiného prostředku Azure](monitor-azure-resource.md), ale jsou jedinečné od jiných prostředků, protože potřebujete také monitorovat hostovaný operační systém a systémy a úlohy, které jsou v něm spuštěné. 
@@ -170,7 +170,7 @@ Azure Monitor pro virtuální počítače umožňuje kolekci předem určené sa
 
 
 > [!NOTE]
-> Údaje o výkonu shromážděné agentem Log Analytics zapisuje do tabulky *perf* , zatímco Azure monitor pro virtuální počítače se shromáždí do tabulky *InsightsMetrics* . Jedná se o stejná data, ale tabulky mají jinou strukturu. Pokud máte dotazy na základě *výkonu* , bude nutné je přepsat, aby používaly *InsightsMetrics*.
+> Údaje o výkonu shromážděné agentem Log Analytics zapisuje do tabulky *perf* , zatímco Azure monitor pro virtuální počítače se shromáždí do tabulky *InsightsMetrics* . Jedná se o stejná data, ale tabulky mají jinou strukturu. Pokud máte dotazy na základě *výkonu*, bude nutné je přepsat, aby používaly *InsightsMetrics*.
 
 
 ## <a name="alerts"></a>Výstrahy
@@ -207,7 +207,7 @@ Chcete-li například vytvořit výstrahu, která kontroluje, zda jsou některé
 
 ```kusto
 Heartbeat
-| where TimeGenerated < ago(10m)
+| where TimeGenerated > ago(10m)
 | where ResourceGroup == "my-resource-group"
 | summarize max(TimeGenerated) by Computer
 ```
@@ -218,7 +218,7 @@ Chcete-li vytvořit výstrahu v případě, že došlo k nadměrnému počtu ne�
 
 ```kusto
 Event
-| where TimeGenerated < ago(1hr)
+| where TimeGenerated > ago(1hr)
 | where EventID == 4625
 ```
 

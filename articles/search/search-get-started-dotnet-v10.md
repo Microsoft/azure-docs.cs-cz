@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6dd64ae8b7b7307d7dcd510d1fdb877365c6f36
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8dc2eb898c12e374bc503c5a05f00eb20667443b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675955"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701836"
 ---
 # <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>Rychlý Start: vytvoření indexu vyhledávání pomocí starší verze Microsoft. Azure. Search Client Library v10 za účelem
 
@@ -55,7 +55,7 @@ Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro ka
 
    Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
-![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
+![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-rest/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
@@ -69,7 +69,7 @@ Začněte otevřením sady Visual Studio a vytvořením nového projektu konzolo
 
 Pro tento projekt použijte verzi 10 `Microsoft.Azure.Search` balíčku NuGet a nejnovější `Microsoft.Extensions.Configuration.Json` balíček NuGet.
 
-1. V **nabídce nástroje**  >  **Správce balíčků NuGet** vyberte **Spravovat balíčky NuGet pro řešení...** . 
+1. V **nabídce nástroje**  >  **Správce balíčků NuGet** vyberte **Spravovat balíčky NuGet pro řešení...**. 
 
 1. Klikněte na **Browse** (Procházet).
 
@@ -86,9 +86,9 @@ Pro tento projekt použijte verzi 10 `Microsoft.Azure.Search` balíčku NuGet a 
 
 1. V části Přidat novou položku vyhledejte "JSON" a vraťte seznam typů položek souvisejících s JSON.
 
-1. Vyberte **soubor JSON** , pojmenujte soubor appsettings.json a klikněte na **Přidat** . 
+1. Vyberte **soubor JSON**, pojmenujte soubor appsettings.json a klikněte na **Přidat**. 
 
-1. Přidejte soubor do výstupního adresáře. Klikněte pravým tlačítkem na appsettings.jsa vyberte **vlastnosti** . V **adresáři kopírovat do výstupního adresáře** vyberte možnost **Kopírovat, pokud je novější** .
+1. Přidejte soubor do výstupního adresáře. Klikněte pravým tlačítkem na appsettings.jsa vyberte **vlastnosti**. V **adresáři kopírovat do výstupního adresáře** vyberte možnost **Kopírovat, pokud je novější**.
 
 1. Zkopírujte následující kód JSON do nového souboru JSON. 
 

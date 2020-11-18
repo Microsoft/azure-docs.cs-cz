@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: aee3f5602d0bd1ff12717d903d662ce4605de61d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ee37ab90910058378172223a3435047346f5fe7c
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683756"
+ms.locfileid: "94701776"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop RDP ShortPath (Preview)
 
@@ -176,7 +176,7 @@ Pokud chcete ověřit, jestli připojení používají ShortPath RDP, otevřete 
 Ověření, že relace používá ShortPath přenos RDP:
 
 1. Připojte se k ploše virtuálního počítače pomocí klienta virtuální plochy Windows.
-2. Spusťte Prohlížeč událostí a přejděte do následujícího uzlu: **protokoly aplikací a služeb > Microsoft > Windows > RemoteDesktopServices-RdpCoreCDV > provozní**
+2. Spusťte Prohlížeč událostí a přejděte do následujícího uzlu: **protokoly aplikací a služeb > Microsoft > Windows > RemoteDesktopServices-RdpCoreCDV > Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV/Operational**
 3. Pokud chcete zjistit, jestli se používá přenos ShortPath RDP, vyhledejte událost s ID 131.
 
 ### <a name="using-log-analytics-to-verify-shortpath-connectivity"></a>Ověření připojení ShortPath pomocí Log Analytics

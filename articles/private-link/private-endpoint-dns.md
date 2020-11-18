@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: fe8f4229a2bc967f1368e263d2c055b153c3717d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bb1f4b5e37cecc33cef115f26c44ad6375c7e327
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369960"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734374"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Konfigurace DNS privátního koncového bodu v Azure
 
@@ -25,9 +25,11 @@ Pomocí následujících možností můžete nakonfigurovat nastavení DNS priv�
 - **Použijte soubor hostitele (doporučeno pouze pro testování)**. K přepsání DNS můžete použít soubor hostitele na virtuálním počítači.  
 - **Použijte privátní ZÓNU DNS**. [Privátní zóny DNS](../dns/private-dns-privatednszone.md) můžete použít k přepsání překladu DNS pro konkrétní soukromý koncový bod. Privátní zóna DNS se dá propojit s vaší virtuální sítí a vyřešit konkrétní domény.
 - **Použijte službu DNS pro přeposílání (volitelné)**. K přepsání překladu DNS pro konkrétní prostředek privátního propojení můžete použít server DNS pro přeposílání. Pokud je váš [Server DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) hostovaný ve virtuální síti, můžete vytvořit předávací pravidlo DNS pro použití privátní zóny DNS a zjednodušit tak konfiguraci všech prostředků privátního propojení.
- 
+
 > [!IMPORTANT]
 > Nedoporučuje se přepsat zónu, která je aktivně používána k řešení veřejných koncových bodů. Připojení k prostředkům nebude možné správně přeložit bez předávání DNS do veřejného serveru DNS. Pokud se chcete vyhnout problémům, vytvořte jiný název domény nebo použijte navrhovaný název pro každou službu níže. 
+
+
 
 ## <a name="azure-services-dns-zone-configuration"></a>Konfigurace zóny DNS služeb Azure
 Služba Azure ve veřejné službě DNS vytvoří záznam DNS kanonického názvu (CNAME), který přesměruje řešení na navrhovaný název privátní domény. Řešení můžete přepsat privátní IP adresou vašich privátních koncových bodů. 
@@ -93,6 +95,8 @@ V závislosti na vašich preferencích jsou k dispozici následující scénář
 - [Místní úlohy využívající službu DNS pro přeposílání](#on-premises-workloads-using-a-dns-forwarder)
 - [Virtuální síť a místní úlohy pomocí služby DNS pro přeposílání](#virtual-network-and-on-premises-workloads-using-a-dns-forwarder)
 
+> [!NOTE]
+> [Azure firewall DNS proxy serveru](../firewall/dns-settings.md#dns-proxy) se dá použít jako služba DNS pro překládání [v místních úlohách](#on-premises-workloads-using-a-dns-forwarder) a [ÚLOHÁCH virtuální sítě pomocí služby DNS pro přeposílání](#virtual-network-and-on-premises-workloads-using-a-dns-forwarder).
 
 ## <a name="virtual-network-workloads-without-custom-dns-server"></a>Úlohy virtuální sítě bez vlastního serveru DNS
 
@@ -123,7 +127,7 @@ Tento model se dá rozšířit na několik partnerských virtuálních sítí, k
 
 V tomto scénáři je k dispozici topologie sítě [rozbočovače a paprsku](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) se sítěmi paprsků, které sdílejí společný privátní koncový bod, a všechny virtuální sítě paprsků jsou propojeny se stejnou privátní zónou DNS. 
 
-:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Jedna virtuální síť a DNS poskytovaná službou Azure":::
+:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Centrum a Paprskový s DNS poskytovanou službou Azure":::
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>Místní úlohy využívající službu DNS pro přeposílání
 
@@ -144,7 +148,7 @@ Ke správné konfiguraci potřebujete tyto prostředky:
 
 Následující diagram znázorňuje sekvenci překladu DNS z místní sítě, která používá službu DNS pro přeposílání v Azure, kde se řešení provádí v privátní zóně DNS [propojené s virtuální sítí](../dns/private-dns-virtual-network-links.md):
 
-:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Jedna virtuální síť a DNS poskytovaná službou Azure":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Místně pomocí Azure DNS":::
 
 Tato konfigurace se dá prodloužit na místní síť, která už má řešení DNS. Místní řešení DNS je potřeba nakonfigurovat tak, aby přesměrovalo provoz DNS na Azure DNS prostřednictvím [podmíněného dodávaného](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) serveru, který odkazuje na službu pro překládání DNS nasazenou v Azure.
 
@@ -164,7 +168,7 @@ Následující diagram znázorňuje sekvenci překladu názvů DNS z místní s�
 > [!IMPORTANT]
 > Podmíněné přesměrování je nutné provést v doporučené [službě pro předávání veřejné zóny DNS](#azure-services-dns-zone-configuration). Například: `database.windows.net` místo **privatelink**. Database.Windows.NET.
 
-:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Jedna virtuální síť a DNS poskytovaná službou Azure":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Místní přesměrování na Azure DNS":::
 
 ## <a name="virtual-network-and-on-premises-workloads-using-a-dns-forwarder"></a>Virtuální síť a místní úlohy pomocí služby DNS pro přeposílání
 
@@ -191,7 +195,7 @@ Ke správné konfiguraci potřebujete tyto prostředky:
 
 Následující obrázek znázorňuje sekvenci překladu názvů DNS z místní a virtuální sítě, která používá službu DNS resolutioner nasazenou v Azure, kde je řešení prováděné privátní zónou DNS [propojenou s virtuální sítí](../dns/private-dns-virtual-network-links.md):
 
-:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="Jedna virtuální síť a DNS poskytovaná službou Azure":::
+:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="Hybridní scénář":::
 
 ## <a name="next-steps"></a>Další kroky
 - [Informace o privátních koncových bodech](private-endpoint-overview.md)

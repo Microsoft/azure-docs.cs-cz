@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27395fe377972f51c849f8a61f51a628612ed54d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b951dab1ad01187c7612fad047bc52eb6aa9700e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202663"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701870"
 ---
 # <a name="textures"></a>Textury
 
@@ -26,7 +26,7 @@ Různé typy textur mají různé případy použití:
 
 ## <a name="supported-texture-formats"></a>Podporované formáty textury
 
-Všechny textury, které má tato šipka mít, musí být ve [formátu dds](https://en.wikipedia.org/wiki/DirectDraw_Surface). Nejlépe s mipmapy a kompresí textur. Pokud chcete automatizovat proces převodu, přečtěte si [Nástroj příkazového řádku TexConv](../resources/tools/tex-conv.md) .
+Všechny textury, které má tato šipka mít, musí být ve [formátu dds](https://en.wikipedia.org/wiki/DirectDraw_Surface). Nejlépe s mipmapy a kompresí textur.
 
 ## <a name="loading-textures"></a>Načítání textur
 

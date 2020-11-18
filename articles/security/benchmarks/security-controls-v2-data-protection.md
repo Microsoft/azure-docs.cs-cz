@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bde95006865a2aab2da4a5d6d27ccccc14d74d12
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8e12a74ee689ba7b013b1c4a6881deac78680be0
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408918"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701044"
 ---
 # <a name="security-control-v2-data-protection"></a>Řízení zabezpečení v2: Ochrana dat
 
@@ -34,9 +34,9 @@ Pomocí Azure SQL Information Protection můžete pomoct při klasifikaci a ozna
 
 - [Implementace zjišťování dat SQL Azure](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -50,19 +50,19 @@ Pomocí Azure SQL Information Protection můžete pomoct při klasifikaci a ozna
 |--|--|--|--|
 | DP – 2 | 13,2, 2,10 | SC-7, AC-4 |
 
-Chraňte citlivá data omezením přístupu pomocí Access Control založeného na rolích Azure (Azure RBAC), řízení přístupu na základě sítě a specifických ovládacích prvků v rámci služeb Azure (například šifrování v SQL a dalších databázích). 
+Chraňte citlivá data omezením přístupu pomocí řízení přístupu založeného na rolích Azure (Azure RBAC), řízení přístupu na základě sítě a specifických ovládacích prvků ve službách Azure (například šifrování v SQL a dalších databázích). 
 
 Aby se zajistilo jednotné řízení přístupu, měly by být všechny typy řízení přístupu zarovnané na vaši strategii podnikového segmentace. Strategie segmentace podniku by měla být také informována o umístění citlivých nebo důležitých podnikových dat a systémů.
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a chrání před ztrátou a expozicí zákaznických dat. Aby bylo zajištěno, že zákaznická data v Azure zůstanou zabezpečená, Microsoft implementuje některé výchozí ovládací prvky a možnosti ochrany dat.
 
-- [Access Control na základě rolí Azure (RBAC)](../../role-based-access-control/overview.md)
+- [Řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md)
 
 - [Pochopení ochrany zákaznických dat v Azure](../fundamentals/protection-customer-data.md)
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -88,9 +88,9 @@ Pokud je to vyžadováno pro zajištění kompatibility ochrany před únikem in
 
 - [Povolit Azure Storage ATP](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security) 
 
@@ -116,9 +116,9 @@ Ve výchozím nastavení poskytuje Azure šifrování dat při přenosu mezi dat
 
 - [Dvojité šifrování pro Azure data při přenosu](../fundamentals/double-encryption.md#data-in-transit)
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -146,9 +146,9 @@ Azure ve výchozím nastavení poskytuje šifrování pro neaktivní data. U vys
 
 - [Data s dvojitým šifrováním v Azure](../fundamentals/double-encryption.md#data-at-rest)
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

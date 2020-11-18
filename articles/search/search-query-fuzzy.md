@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: faa98f1c52cfe2dd0e19f085f4d33dedb6f01851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac2690a5f18bb58c29b433f4a07e52096bbd268b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934884"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701581"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Nepřibližné vyhledávání pro opravu chybných pravopisů a překlepů
 
@@ -73,7 +73,7 @@ V Azure Kognitivní hledání kromě termínu a vzdálenosti (maximálně 2) nee
 
 ## <a name="testing-fuzzy-search"></a>Testování přibližného vyhledávání
 
-Pro jednoduché testování doporučujeme, abyste provedli příkaz [Průzkumník služby Search](search-explorer.md) nebo [publikování](search-get-started-postman.md) pro iteraci na výrazu dotazu. Oba nástroje jsou interaktivní, což znamená, že můžete rychle krokovat více variant termínu a vyhodnotit odpovědi, které se vrátí zpět.
+Pro jednoduché testování doporučujeme, abyste provedli příkaz [Průzkumník služby Search](search-explorer.md) nebo [publikování](search-get-started-rest.md) pro iteraci na výrazu dotazu. Oba nástroje jsou interaktivní, což znamená, že můžete rychle krokovat více variant termínu a vyhodnotit odpovědi, které se vrátí zpět.
 
 Pokud jsou výsledky dvojznačné, [zvýrazňování přístupů](search-pagination-page-layout.md#hit-highlighting) vám může pomáhat identifikovat shodu v odpovědi. 
 

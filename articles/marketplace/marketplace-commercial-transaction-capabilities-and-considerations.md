@@ -4,27 +4,27 @@ description: V tomto článku se dozvíte o cenách, fakturaci, fakturaci a výb
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: c6ce256db907589ace7e77157397257732564fb6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9a975ee863e81a9f542e717d734f12db850f749e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130319"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738318"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
 
-Tento článek popisuje cenové, fakturační, fakturační a výběrové požadavky na komerční tržiště Microsoftu. 
+Tento článek popisuje cenové, fakturační, fakturační a výběrové požadavky na komerční tržiště Microsoftu.
 
 ## <a name="transactions-by-listing-option"></a>Transakce podle možnosti výpis
 
-Vydavatel nebo Microsoft zodpovídá za správu transakcí softwarových licencí pro nabídky na komerčním tržišti. Možnost výpisu, kterou zvolíte pro vaši nabídku, určuje, kdo spravuje transakci. Viz volba [Možnosti výpisu](./determine-your-listing-type.md#choose-a-listing-option) dostupnosti a vysvětlení jednotlivých možností publikování.
+Vydavatel nebo Microsoft zodpovídá za správu transakcí softwarových licencí pro nabídky na komerčním tržišti. Možnost výpisu, kterou zvolíte pro vaši nabídku, určuje, kdo spravuje transakci. Dostupnost a vysvětlení jednotlivých možností publikování najdete v tématu [Úvod do možností výpisu](determine-your-listing-type.md) .
 
 ### <a name="contact-me-free-trial-and-byol-options"></a>Kontaktujte mě, bezplatné zkušební verze a BYOL možnosti
 
-Vydavatelé si můžou zvolit _kontaktní mě_ a _bezplatnou zkušební verzi_ , možnosti pro účely propagačního a nabývání uživatelů. U některých typů nabídek můžou vydavatelé zvolit možnost Přineste si vlastní licenci (BYOL), která zákazníkům umožní zakoupit si předplatné pro vaši nabídku pomocí licence, kterou si koupili přímo od vás. S těmito možnostmi se společnost Microsoft neúčastní přímo v transakcích licencí na software vydavatele a není k dispozici žádný související transakční poplatek. 
+Vydavatelé si můžou zvolit _kontaktní mě_ a _bezplatnou zkušební verzi_, možnosti pro účely propagačního a nabývání uživatelů. U některých typů nabídek můžou vydavatelé zvolit možnost Přineste si vlastní licenci (BYOL), která zákazníkům umožní zakoupit si předplatné pro vaši nabídku pomocí licence, kterou si koupili přímo od vás. S těmito možnostmi se společnost Microsoft neúčastní přímo v transakcích licencí na software vydavatele a není k dispozici žádný související transakční poplatek.
 
 Vydavatel zodpovídá za podporu všech aspektů transakce softwarové licence. To zahrnuje, ale není omezené na pořadí, splnění, měření, fakturaci, fakturaci, platby a shromažďování. Pomocí možnosti kontakt mi se seznam vydavatelů udržuje 100% licenčních poplatků za software vydavatele shromážděných od zákazníka.
 
@@ -84,7 +84,15 @@ V případě scénářů publikování v jazyce Transact můžete zpřístupnit 
 
 Kromě používání typů nabídek a modelů fakturace k monetizovatí nabídky můžete použít pro transakce soukromou nabídku, která se doplní s použitím vyjednané ceny, ceny specifické pro konkrétní obchodování nebo vlastní konfigurace. Soukromé nabídky jsou podporovány všemi třemi možnostmi publikování v transakčním režimu.
 
-Tato možnost umožňuje vyšší nebo nižší ceny než veřejně dostupná nabídka. Soukromé nabídky lze použít k zlevnění nebo přidání prémií do nabídky. Soukromé nabídky mohou být k dispozici jednomu nebo více zákazníkům na základě bílého seznamu předplatného Azure na úrovni nabídky.
+Tato možnost umožňuje vyšší nebo nižší ceny než veřejně dostupná nabídka. Soukromé nabídky můžete použít k zlevnění nebo přidání prémie do nabídky. K dispozici máte přístup k soukromým nabídkám pro jednoho nebo více zákazníků, a to bílým uvedením předplatného Azure na úrovni nabídky.
+
+### <a name="commercial-marketplace-service-fees"></a>Poplatky za služby komerčního tržiště
+
+Pokud si zákazníci koupí svou nabídku jazyka Transact z komerčního tržiště, účtujeme vám i 20% standardního poplatku za službu Store. Podrobnosti o tomto poplatku najdete v části 5c [smlouvy Microsoft Publisher](https://go.microsoft.com/fwlink/?LinkID=699560).
+
+U některých nabídek, které jsou publikovány na komerčním webu Marketplace, můžete získat nárok na omezený poplatek za službu úložiště o 10%. Aby byla nabídka oprávněná, musí ji Microsoft jmenovat jako spoluprodejní motivovaní Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn alespoň pět pracovních dnů před koncem každého kalendářního měsíce.
+
+Snížený poplatek za službu Marketplace se vztahuje na Azure IP spoluprodejní motivovaní SaaS, virtuální počítače, spravované aplikace a všechna další kvalifikovaná IaaS řešení, která jsou dostupná prostřednictvím komerčního tržiště. Placené nabídky SaaS jsou spojené s jednou aplikací Microsoft Teams nebo aspoň dvěma Microsoft 365mi doplňky (Excel, PowerPoint, Word, Outlook a SharePoint) a publikované do Microsoft AppSource také dostanou slevu.
 
 ### <a name="examples"></a>Příklady
 
@@ -143,10 +151,6 @@ V tomto scénáři Microsoft účtuje $100,00 pro softwarovou licenci a vyplatí
 |---------|---------|
 |Společnost Microsoft vám zaplatí 80% vašich licenčních nákladů. <br> \* Společnost Microsoft vám pro všechny kvalifikované aplikace SaaS zaplatí 90% nákladů na licenci.   |   $80,00 za měsíc <br> \* $90,00 za měsíc    |
 |Společnost Microsoft udržuje 20% vašich licenčních nákladů. <br> \* Pro všechny kvalifikované aplikace SaaS udržuje společnost Microsoft 10% nákladů na licenci.  |  $20,00 za měsíc <br> \* $10,00     |
-
-### <a name="reduced-service-fee"></a>Omezený poplatek za službu
-
-U některých nabídek, které publikujete na komerčním webu Marketplace, sníží společnost Microsoft svůj poplatek za službu Marketplace z 20% (jak je popsáno v tématu [smlouva Microsoft Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560)) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn alespoň pět pracovních dnů před koncem každého kalendářního měsíce. Snížený poplatek za službu Marketplace se vztahuje na Azure IP spoluprodejní motivovaní SaaS, virtuální počítače, spravované aplikace a jakékoli další kvalifikované transakční IaaSové nabídky, které jsou dostupné prostřednictvím komerčního tržiště. Placené SaaS nabídky spojené s jednou aplikací Microsoft Teams nebo alespoň dvěma Microsoft 365 doplňky (Excel, PowerPoint, Word, Outlook a SharePoint) a publikované v AppSource také obdrží tuto slevu.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Fakturace, platby, fakturace a kolekce zákazníků
 

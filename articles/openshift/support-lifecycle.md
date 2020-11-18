@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: c066931cece60d14767b86254020ea5ba4bad1be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b563fac9044dccd832aa42c0193eed24cad26754
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88854501"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737910"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Podpora životního cyklu pro Azure Red Hat OpenShift 4
 
@@ -97,12 +97,10 @@ Další informace najdete v následující příručce k [historii verzí v minu
 
 |OCP – verze|Verze nadřazeného softwaru|Azure Red Hat OpenShift – Obecná dostupnost|Konec života|
 |-|-|-|-|
-|4.3|Únor 2020|Květen 2020|Srpen 2020|
-|4.4|Květen 2020|Srpen 2020|4,6 GA|
-|4.5|Červenec 2020|Říjen 2020|4,7 GA
-|4,6|* Předčasný Q4, 2020|* Pozdní Q4, 2020|4,8 GA|
-
-\*_Čeká na nedokončené odesílání data vydání._
+|4.3|Leden 2020|Duben 2020| Srpen 2020|
+|4.4|Květen 2020|Červenec 2020|4,6 GA|
+|4.5|Červenec 2020| Listopad 2020|4,7 GA
+|4,6|Říjen 2020| Prosince 2020|4,8 GA|
 
 ## <a name="faq"></a>Časté otázky
 

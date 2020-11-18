@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f950cb63b5083a85ab5420434abdd9a720115b1a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76119614"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734544"
 ---
 # <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Řešení potíží s chybným virtuálním počítačem Azure pomocí vnořené virtualizace v Azure
 
 V tomto článku se dozvíte, jak vytvořit vnořené prostředí virtualizace v systému Microsoft Azure, abyste mohli připojit disk vadného virtuálního počítače na hostiteli Hyper-V (záchranný virtuální počítač) pro účely řešení potíží.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby bylo možné připojit poškozený virtuální počítač, musí záchranný virtuální počítač používat stejný typ účtu úložiště (Standard nebo Premium) jako vadný virtuální počítač.
 
@@ -60,7 +60,7 @@ Aby bylo možné připojit poškozený virtuální počítač, musí záchranný
 
 11. V případě potřeby zaškrtněte políčko pro restartování serveru.
 
-12. Vyberte **Nainstalovat**.
+12. Vyberte **Install** (Nainstalovat).
 
 13. Povolí serveru instalaci role Hyper-V. Tato akce trvá několik minut a server se automaticky restartuje.
 
@@ -72,7 +72,7 @@ Aby bylo možné připojit poškozený virtuální počítač, musí záchranný
 
 3.  Spusťte správu disků (diskmgmt. msc). Ujistěte se, že je disk vadného virtuálního počítače nastavený na **offline**.
 
-4.  Otevřete Správce technologie Hyper-V: v **Správce serveru**vyberte **roli technologie Hyper-v**. Pravým tlačítkem myši klikněte na server a pak vyberte **Správce technologie Hyper-V**.
+4.  Otevřete Správce technologie Hyper-V: v **Správce serveru** vyberte **roli technologie Hyper-v**. Pravým tlačítkem myši klikněte na server a pak vyberte **Správce technologie Hyper-V**.
 
 5.  Ve Správci technologie Hyper-V klikněte pravým tlačítkem na záchranný virtuální počítač a potom vyberte **Nový**  >  **virtuální počítač**  >  **Další**.
 
@@ -92,11 +92,11 @@ Aby bylo možné připojit poškozený virtuální počítač, musí záchranný
 
 12. Klikněte pravým tlačítkem na virtuální počítač, který jste vytvořili, a pak vyberte **Nastavení**.
 
-13. Vyberte možnost **řadič IDE 0**, vyberte možnost **pevný disk**a klikněte na tlačítko **Přidat**.
+13. Vyberte možnost **řadič IDE 0**, vyberte možnost **pevný disk** a klikněte na tlačítko **Přidat**.
 
     ![Obrázek týkající se přidání nového pevného disku](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-14. V části **fyzický pevný disk**vyberte disk vadného virtuálního počítače, který jste připojili k virtuálnímu počítači Azure. Pokud nevidíte žádné disky uvedené na seznamu, zkontrolujte, jestli je disk nastavený na offline pomocí správy disků.
+14. V části **fyzický pevný disk** vyberte disk vadného virtuálního počítače, který jste připojili k virtuálnímu počítači Azure. Pokud nevidíte žádné disky uvedené na seznamu, zkontrolujte, jestli je disk nastavený na offline pomocí správy disků.
 
     ![obrázek o připojení disku](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
@@ -111,7 +111,7 @@ Aby bylo možné připojit poškozený virtuální počítač, musí záchranný
 
 1.  Po opětovném obnovení virtuálního počítače do režimu online vypněte virtuální počítač ve Správci technologie Hyper-V.
 
-2.  [Odpojte a odpojte opravený disk s operačním systémem](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk
+2.  [Odpojte a odpojte opravený disk s operačním systémem](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-the-original-virtual-hard-disk
 ).
 3.  [Nahraďte disk s operačním systémem používaný virtuálním počítačem opraveným diskem s operačním systémem](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm
 ).

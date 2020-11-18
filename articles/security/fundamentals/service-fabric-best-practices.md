@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 93b25e65914ce603b4a969eda7fd7c048704e466
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: a7396c9a29c7d9f69dbe6a9cc5cd085c72ebafde
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410007"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700942"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Osvědčené postupy zabezpečení Azure Service Fabric
 Nasazení aplikace v Azure je rychlé, jednoduché a nákladově efektivní. Před nasazením cloudové aplikace do produkčního prostředí si Projděte náš seznam základních a doporučených osvědčených postupů pro implementaci zabezpečených clusterů ve vaší aplikaci.
@@ -60,7 +60,7 @@ Existují tři [scénáře](../../service-fabric/service-fabric-cluster-security
 -   Zabezpečení mezi uzly: Tento scénář zabezpečuje komunikaci mezi virtuálními počítači a počítači v clusteru. Tato forma zabezpečení zajišťuje, že aplikace a služby v clusteru můžou hostovat jenom ty počítače, které jsou autorizované pro připojení ke clusteru.
 V tomto scénáři můžou clustery spuštěné v Azure nebo samostatné clustery, které běží v systému Windows, používat [zabezpečení certifikátů](../../service-fabric/service-fabric-windows-cluster-x509-security.md) nebo [zabezpečení systému Windows](../../service-fabric/service-fabric-windows-cluster-windows-security.md) pro počítače se systémem Windows Server.
 -   Zabezpečení typu klient-uzel: Tento scénář zabezpečuje komunikaci mezi klientem Service Fabric a jednotlivými uzly v clusteru.
--   Role-Based Access Control (RBAC): Tento scénář používá samostatné identity (certifikáty, Azure AD atd.) pro každou roli správce a uživatele, která přistupuje ke clusteru. Identity role se určují při vytváření clusteru.
+-   Service Fabric řízení přístupu na základě role (Service Fabric RBAC): Tento scénář používá samostatné identity (certifikáty, Azure AD atd.) pro každou roli správce a klienta, která přistupuje ke clusteru. Identity role se určují při vytváření clusteru.
 
 >[!NOTE]
 >**Doporučení zabezpečení pro clustery Azure:** Použijte zabezpečení Azure AD k ověřování klientů a certifikátů pro zabezpečení mezi uzly.
@@ -132,7 +132,7 @@ Certifikát musí splňovat následující požadavky pro certifikáty SSL/TLS v
 -   Název subjektu certifikátu se musí shodovat s názvem domény, který se používá pro přístup ke cloudové službě.
 
     - Získejte vlastní název domény, který se použije pro přístup ke cloudové službě.
-    - Vyžádejte si certifikát od certifikační autority s názvem subjektu, který se shoduje s názvem vlastní domény vaší služby. Pokud například vlastní název domény je __Contoso__**. com** , měl by certifikát z vaší certifikační autority mít název subjektu **. contoso.com** nebo __www__**. contoso.com**.
+    - Vyžádejte si certifikát od certifikační autority s názvem subjektu, který se shoduje s názvem vlastní domény vaší služby. Pokud například vlastní název domény je __Contoso__**. com**, měl by certifikát z vaší certifikační autority mít název subjektu **. contoso.com** nebo __www__**. contoso.com**.
 
     >[!NOTE]
     >Nemůžete získat certifikát SSL/TLS z certifikační autority pro doménu __cloudapp__**.NET** .
@@ -172,7 +172,7 @@ Další informace o tom, jak nastavit Trezor klíčů, najdete v tématu [co je 
 Po vytvoření aplikací, které reprezentují váš cluster, přiřaďte uživatele k rolím, které jsou podporovány nástrojem Service Fabric: jen pro čtení a správce. Tyto role můžete přiřadit pomocí Azure Portal.
 
 >[!NOTE]
-> Další informace o použití rolí v Service Fabric najdete v tématu [Access Control na základě rolí pro Service Fabric klienty](../../service-fabric/service-fabric-cluster-security-roles.md).
+> Další informace o použití rolí v Service Fabric najdete v tématu [Service Fabric řízení přístupu na základě role pro Service Fabric klienty](../../service-fabric/service-fabric-cluster-security-roles.md).
 
 Azure Service Fabric podporuje dva typy řízení přístupu pro klienty, kteří jsou připojení ke [clusteru Service Fabric](../../service-fabric/service-fabric-cluster-creation-via-arm.md): správce a uživatel. Správce clusteru může pomocí řízení přístupu omezit přístup k určitým operacím clusteru pro různé skupiny uživatelů. Řízení přístupu zajišťuje bezpečnější cluster.
 

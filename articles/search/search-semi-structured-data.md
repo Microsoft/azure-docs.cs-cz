@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f501b9f4215b9eeb48aa8bc80d492d55cf940404
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c88aea6aff942cdcf5cbc022df8f07cfe0d4cce
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397381"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701275"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Kurz: indexování objektů BLOB JSON z Azure Storage pomocí REST
 
@@ -27,9 +27,9 @@ V tomto kurzu se používá post a [rozhraní API REST pro vyhledávání](/rest
 > * Konfigurace a spuštění indexeru pro čtení kontejneru a extrakce vyhledávaného obsahu z úložiště objektů BLOB v Azure
 > * Prohledávání právě vytvořeného indexu
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + [Azure Storage](../storage/common/storage-account-create.md)
 + [Desktopová aplikace Postman](https://www.getpostman.com/)
@@ -76,11 +76,11 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 1. Po vytvoření kontejneru ho otevřete a na panelu příkazů vyberte **nahrát** .
 
-   :::image type="content" source="media/search-semi-structured-data/upload-command-bar.png" alt-text="Vytvořit účet úložiště" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/upload-command-bar.png" alt-text="Nahrát na panel příkazů" border="false":::
 
 1. Přejděte do složky, která obsahuje ukázkové soubory. Vyberte všechny z nich a pak klikněte na **nahrát**.
 
-   :::image type="content" source="media/search-semi-structured-data/clinicalupload.png" alt-text="Vytvořit účet úložiště" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/clinicalupload.png" alt-text="Nahrání souborů" border="false":::
 
 Po dokončení nahrávání by se soubory měly zobrazit v samostatné podsložce uvnitř kontejneru dat.
 
@@ -96,21 +96,21 @@ Volání REST vyžadují pro každý požadavek adresu URL služby a přístupov
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="Vytvořit účet úložiště" border="false":::
+:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="Získání koncového bodu HTTP a přístupového klíče" border="false":::
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
 ## <a name="2---set-up-postman"></a>2 – nastavení post
 
-Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [prozkoumání rozhraní REST API služby Azure kognitivní hledání pomocí služby post](search-get-started-postman.md).
+Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [zkoumání rozhraní REST API pro Azure kognitivní hledání](search-get-started-rest.md).
 
 Metody žádosti pro každé volání v tomto kurzu jsou **post** a **Get**. K vytvoření zdroje dat, indexu a indexeru provedete tři volání rozhraní API vaší vyhledávací služby. Zdroj dat obsahuje ukazatel na váš účet úložiště a vaše data JSON. Vaše služba Search se připojí při načítání dat.
 
 V části hlavičky nastavte typ Content-Type na `application/json` a nastavte `api-key` na klíč rozhraní API pro správu služby Azure kognitivní hledání. Po nastavení hlaviček je můžete použít pro každý požadavek v tomto cvičení.
 
-  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Vytvořit účet úložiště" border="false":::
+  :::image type="content" source="media/search-get-started-rest/postman-url.png" alt-text="Adresa URL a záhlaví žádosti post" border="false":::
 
 Identifikátory URI musí určovat verzi rozhraní API a každé volání by mělo vrátit **vytvořenou 201**. Obecně dostupná verze API-Version pro použití polí JSON je `2020-06-30` .
 
@@ -315,11 +315,11 @@ Hledání můžete zahájit hned po načtení prvního dokumentu.
 
 1. Přidejte `$select` parametr dotazu pro omezení výsledků na méně polí: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true` .  Pro tento dotaz se 100 dokumentů shodují, ale ve výchozím nastavení Azure Kognitivní hledání vrátí do výsledků pouze 50.
 
-   :::image type="content" source="media/search-semi-structured-data/lastquery.png" alt-text="Vytvořit účet úložiště" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/lastquery.png" alt-text="Parameterizovaný dotaz" border="false":::
 
 1. Příklad složitějšího dotazu by zahrnoval `$filter=MinimumAge ge 30 and MaximumAge lt 75` , který vrací jenom výsledky, pokud je minimální hodnota parametru větší než nebo rovna 30 a maximální hodnota je menší než 75. Nahraďte `$select` výraz `$filter` výrazem.
 
-   :::image type="content" source="media/search-semi-structured-data/metadatashort.png" alt-text="Vytvořit účet úložiště" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/metadatashort.png" alt-text="Prohledávání částečně strukturovaných dat" border="false":::
 
 Můžete také použít logické operátory (and, NOT) a operátory porovnání (EQ, ne, gt, lt, GE, Le). Při porovnávání řetězců se rozlišují malá a velká písmena. Další informace a příklady najdete v tématu [Vytvoření jednoduchého dotazu](search-query-simple-examples.md).
 

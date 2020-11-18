@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e8eab3a1054541b1ef7fc6d2e65089f01f0df3c0
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ad3980db6348867e92664e314326d23b4274abcc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517151"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701564"
 ---
 # <a name="design-secure-applications-on-azure"></a>Návrh zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při návrhu aplikací pro Cloud. Pojednává o školicích materiálech spolu s bezpečnostními otázkami a koncepty, které je potřeba vzít v úvahu během fází vývoje požadavků a návrhů na [životní cyklus Microsoft Security Development (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k návrhu bezpečnější aplikace.
@@ -217,7 +217,7 @@ Místo vlastního kódu použijte mechanismy ověřování a autorizace dodané 
 
 Koncept [nejnižších oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) znamená, že uživatelé budou mít přesnou úroveň přístupu a ovládají jejich úlohy a ještě nic dalšího.
 
-Potřebuje vývojář softwaru práva správce domény? Má asistent pro správu přístup k administrativním ovládacím prvkům na svém osobním počítači? Vyhodnocení přístupu k softwaru se neliší. Pokud používáte [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) , abyste uživatelům poskytli různé možnosti a autority v aplikaci, nebudete mít přístup ke všemu všem. Omezením přístupu na to, co je potřeba pro jednotlivé role, můžete omezit riziko výskytu potíží se zabezpečením.
+Potřebuje vývojář softwaru práva správce domény? Má asistent pro správu přístup k administrativním ovládacím prvkům na svém osobním počítači? Vyhodnocení přístupu k softwaru se neliší. Pokud pomocí [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) udělíte uživatelům různé možnosti a autority v aplikaci, nebudete mít přístup ke všemu všem. Omezením přístupu na to, co je potřeba pro jednotlivé role, můžete omezit riziko výskytu potíží se zabezpečením.
 
 Ujistěte se, že vaše aplikace v celém vzoru přístupu vynutila [nejnižší oprávnění](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) .
 
@@ -233,7 +233,7 @@ Implementujte přístup za běhu (Just *-in-time* ) k dalšímu snížení doby 
 
 ### <a name="require-re-authentication-for-important-transactions"></a>Vyžadovat opakované ověření pro důležité transakce
 
-[Padělání požadavků napříč weby](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (označované také jako *XSRF* nebo *CSRF* ) představuje útok proti aplikacím hostovaným na webu, ve kterých škodlivá webová aplikace ovlivňuje interakci mezi klientským prohlížečem a webovou aplikací, která tento prohlížeč důvěřuje. Útoky na padělání žádostí mezi weby jsou možné, protože webové prohlížeče odesílají některé typy ověřovacích tokenů automaticky pomocí všech požadavků na web.
+[Padělání požadavků napříč weby](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (označované také jako *XSRF* nebo *CSRF*) představuje útok proti aplikacím hostovaným na webu, ve kterých škodlivá webová aplikace ovlivňuje interakci mezi klientským prohlížečem a webovou aplikací, která tento prohlížeč důvěřuje. Útoky na padělání žádostí mezi weby jsou možné, protože webové prohlížeče odesílají některé typy ověřovacích tokenů automaticky pomocí všech požadavků na web.
 Tato forma využití se označuje také jako útok s *jedním kliknutím* nebo při *jízdě relace* , protože útok využívá dřív ověřenou relaci uživatele.
 
 Nejlepším způsobem, jak chránit před tímto druhem útoku, je požádat uživatele o něco, co může jenom uživatel poskytnout před každou důležitou transakci, jako je nákup, deaktivace účtu nebo změna hesla. Můžete požádat uživatele, aby znovu zadal heslo, dokončili CAPTCHA nebo odeslali tajný token, který by měl mít jenom uživatel. Nejběžnějším přístupem je tajný token.
@@ -244,7 +244,7 @@ Ztráta klíčů a přihlašovacích údajů je běžný problém. Jediná věc,
 
 Klíče, certifikáty, tajné kódy a připojovací řetězce vždy umístěte do řešení správy klíčů. Můžete použít centralizované řešení, ve kterém klíče a tajné klíče jsou uložené v modulech hardwarového zabezpečení (HSM). Azure poskytuje modul HARDWAROVÉho zabezpečení v cloudu s [Azure Key Vault](../../key-vault/general/overview.md).
 
-Key Vault je *tajné úložiště* : Jedná se o centralizovanou cloudovou službu pro ukládání tajných klíčů aplikací. Key Vault udržuje bezpečí důvěrných dat tím, že zachovává tajné klíče aplikace v jediném, centrálním umístění a poskytuje zabezpečený přístup, řízení oprávnění a přístup k protokolování.
+Key Vault je *tajné úložiště*: Jedná se o centralizovanou cloudovou službu pro ukládání tajných klíčů aplikací. Key Vault udržuje bezpečí důvěrných dat tím, že zachovává tajné klíče aplikace v jediném, centrálním umístění a poskytuje zabezpečený přístup, řízení oprávnění a přístup k protokolování.
 
 Tajné kódy jsou uložené v jednotlivých *trezorech*. Každý trezor má vlastní konfiguraci a zásady zabezpečení pro řízení přístupu. K datům získáte přístup pomocí REST API nebo prostřednictvím klientské sady SDK, která je dostupná pro většinu programovacích jazyků.
 

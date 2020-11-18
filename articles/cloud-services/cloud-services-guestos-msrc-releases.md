@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/13/2020
+ms.date: 11/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: 8919ae8f43cd699b0ff79afc7ac39cbb39d2798e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5a5e448660583204d424358e571c4bfb74890e8d
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94626752"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737825"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
@@ -78,34 +78,31 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 
 ## <a name="october-2020-guest-os"></a>Října 2020 hostovaný operační systém
->[!NOTE] 
-
->Hostovaný operační systém v říjnu se v tuto chvíli zavádí na virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. V říjnu hostovaného operačního systému jsou zahrnuté následující opravy. Tento seznam se může změnit. 
 
 | Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 20-10 |  [4577010]  |  Kumulativní aktualizace IE | 2,103, 3,90, 4,83 | 8. září 2020 |
-|  Rel. 20-10 |  [4580325]  |  Aktualizace pro Flash | 3,90, 4,83, 5,48, 6,24 | 13. října 2020 |
-|  Rel. 20-10 |  [4577668]  |  Nejnovější kumulativní aktualizace | 6,24 | 13. října 2020 |
-|  Rel. 20-10 |  [4580346]  |  Nejnovější kumulativní aktualizace | 5,48 | 13. října 2020 |
-|  Rel. 20-10 |  [4580970]  |  Aktualizace servisního zásobníku | 2,103 | 13. října 2020 |
-|  Rel. 20-10 |  [4580345]  |  Měsíční souhrn | 2,103 | 13. října 2020 |
-|  Rel. 20-10 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3.5.1 | 2,103 | 13. října 2020 |
-|  Rel. 20-10 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 2,103 | 13. října 2020 |
-|  Rel. 20-10 |  [4566426]  |  Aktualizace servisního zásobníku | 3,90 | 14. července 2020 |
-|  Rel. 20-10 |  [4580382]  |  Měsíční souhrn | 3,90 | 13. října 2020 |
-|  Rel. 20-10 |  [4578950]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | 3,90 | 13. října 2020 |
-|  Rel. 20-10 |  [4578954]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 3,90 | 13. října 2020 |
-|  Rel. 20-10 |  [4566425]  |  Aktualizace servisního zásobníku | 4,83 | 14. července 2020 |
-|  Rel. 20-10 |  [4580347]  |  Měsíční souhrn | 4,83 | 13. října 2020 |
-|  Rel. 20-10 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | 4,83 | 13. října 2020 |
-|  Rel. 20-10 |  [4578956]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 4,83 | 13. října 2020 |
-|  Rel. 20-10 |  [4578013]  |  Samostatná aktualizace zabezpečení | 4,83 | 19. srpna 2020 |
-|  Rel. 20-10 |  [4576750]  |  Aktualizace servisního zásobníku | 5,48 | 8. září 2020 |
-|  Rel. 20-10 |  [4494175]  |  Vyžádal povolení mikrokódu | 5,48 | Od 1. září 2020 |
-|  Rel. 20-10 |  [4577667]  |  Aktualizace servisního zásobníku | 6,24 | 13. října 2020 |
-|  Rel. 20-10 |  [4578966]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | 6,24 | 13. října 2020 |
-|  Rel. 20-10 |  [4494174]  |  Vyžádal povolení mikrokódu | 6,24 | 3. září 2020 |
+|  Rel. 20-10 |  [4577010]  |  Kumulativní aktualizace IE | [2,103], [3,90], [4,83] | 8. září 2020 |
+|  Rel. 20-10 |  [4580325]  |  Aktualizace pro Flash | [3,90], [4,83], [5,48], [6,24] | 13. října 2020 |
+|  Rel. 20-10 |  [4577668]  |  Nejnovější kumulativní aktualizace | [6,24] | 13. října 2020 |
+|  Rel. 20-10 |  [4580346]  |  Nejnovější kumulativní aktualizace | [5,48] | 13. října 2020 |
+|  Rel. 20-10 |  [4580970]  |  Aktualizace servisního zásobníku | [2,103] | 13. října 2020 |
+|  Rel. 20-10 |  [4580345]  |  Měsíční souhrn | [2,103] | 13. října 2020 |
+|  Rel. 20-10 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3.5.1 | [2,103] | 13. října 2020 |
+|  Rel. 20-10 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [2,103] | 13. října 2020 |
+|  Rel. 20-10 |  [4566426]  |  Aktualizace servisního zásobníku | [3,90] | 14. července 2020 |
+|  Rel. 20-10 |  [4580382]  |  Měsíční souhrn | [3,90] | 13. října 2020 |
+|  Rel. 20-10 |  [4578950]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [3,90] | 13. října 2020 |
+|  Rel. 20-10 |  [4578954]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [3,90] | 13. října 2020 |
+|  Rel. 20-10 |  [4566425]  |  Aktualizace servisního zásobníku | [4,83] | 14. července 2020 |
+|  Rel. 20-10 |  [4580347]  |  Měsíční souhrn | [4,83] | 13. října 2020 |
+|  Rel. 20-10 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [4,83] | 13. října 2020 |
+|  Rel. 20-10 |  [4578956]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [4,83] | 13. října 2020 |
+|  Rel. 20-10 |  [4578013]  |  Samostatná aktualizace zabezpečení | [4,83] | 19. srpna 2020 |
+|  Rel. 20-10 |  [4576750]  |  Aktualizace servisního zásobníku | [5,48] | 8. září 2020 |
+|  Rel. 20-10 |  [4494175]  |  Vyžádal povolení mikrokódu | [5,48] | Od 1. září 2020 |
+|  Rel. 20-10 |  [4577667]  |  Aktualizace servisního zásobníku | [6,24] | 13. října 2020 |
+|  Rel. 20-10 |  [4578966]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | [6,24] | 13. října 2020 |
+|  Rel. 20-10 |  [4494174]  |  Vyžádal povolení mikrokódu | [6,24] | 3. září 2020 |
 
 
 [4577010]: https://support.microsoft.com/kb/4577010
@@ -130,6 +127,11 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4577667]: https://support.microsoft.com/kb/4577667
 [4578966]: https://support.microsoft.com/kb/4578966
 [4494174]: https://support.microsoft.com/kb/4494174
+[2,103]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,90]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,83]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,48]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,24]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="september-2020-guest-os"></a>Hostovaný operační systém od září 2020
@@ -1885,7 +1887,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS15 – 014 |[3004361] |Chyba zabezpečení v protokolu SMB by mohla dovolit obejít funkci zabezpečení |4,17, 3,24, 2,36 |– |
 | MS15 – 015 |[3031432] |Ohrožení zabezpečení v systému Microsoft Windows může umožnit zvýšení oprávnění |4,17, 3,24, 2,36 |– |
 | MS15 – 016 |[3029944] |Ohrožení zabezpečení v součásti Microsoft Graphics může umožnit vyzrazení informací. |4,17, 3,24, 2,36 |N/A |
-| N/A |[3004375] |Aktualizace pro zlepšení auditování příkazového řádku systému Windows<p/>**Poznámka** : Tato možnost je nainstalovaná, ale klíč registru, který ho povolí, je vypnutý. |4,17, 3,24, 2,36 |– |
+| N/A |[3004375] |Aktualizace pro zlepšení auditování příkazového řádku systému Windows<p/>**Poznámka**: Tato možnost je nainstalovaná, ale klíč registru, který ho povolí, je vypnutý. |4,17, 3,24, 2,36 |– |
 
 ## <a name="january-2015-guest-os"></a>Leden 2015 hostovaný operační systém
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |

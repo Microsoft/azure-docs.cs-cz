@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: overview
-ms.date: 1/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc9a5e604e6ac52eb0e853725123272ca924fa36
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4a341d33c957af8fe7423bda80f1d34a7f59cdd6
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91362227"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737995"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
 
@@ -100,7 +100,7 @@ Tady je příklad týmu pracujícího na více projektech a sdílení různých 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Nástroje a pomůcky pro provádění projektů
 
-Představujeme procesy ve většině organizací je náročné. Nástroje, které jsou k dispozici pro implementaci procesu a životního cyklu datové vědy, můžou snížit překážky a zvýšit konzistenci jejich přijetí. TDSP poskytuje počáteční sadu nástrojů a skriptů, které umožňují přecházet k zahájení přijetí TDSP v rámci týmu. Pomáhá také automatizovat některé běžné úkoly v životním cyklu pro datové vědy, jako je zkoumání dat a modelování směrného plánu. K dispozici je dobře definovaná struktura pro jednotlivce, které přispívat sdíleným nástrojům a nástrojům do úložiště se sdíleným kódem svého týmu. Tyto prostředky pak mohou využívat jiné projekty v rámci týmu nebo organizace. TDSP také plánuje povolit příspěvky nástrojů a nástrojů do celé komunity. Nástroje TDSP můžou být naklonované z [GitHubu](https://github.com/Azure/Azure-TDSP-Utilities).
+Představujeme procesy ve většině organizací je náročné. Nástroje, které jsou k dispozici pro implementaci procesu a životního cyklu datové vědy, můžou snížit překážky a zvýšit konzistenci jejich přijetí. TDSP poskytuje počáteční sadu nástrojů a skriptů, které umožňují přecházet k zahájení přijetí TDSP v rámci týmu. Pomáhá také automatizovat některé běžné úkoly v životním cyklu pro datové vědy, jako je zkoumání dat a modelování směrného plánu. K dispozici je dobře definovaná struktura pro jednotlivce, které přispívat sdíleným nástrojům a nástrojům do úložiště se sdíleným kódem svého týmu. Tyto prostředky pak mohou využívat jiné projekty v rámci týmu nebo organizace.  Společnost Microsoft poskytuje rozsáhlá nástroje v rámci [Azure Machine Learning](../index.yml) podporujících Open Source (Python, R, ONNX a běžné architektury hloubkového učení) a také vlastní nástroje společnosti Microsoft (AutoML).
 
 
 ## <a name="next-steps"></a>Další kroky

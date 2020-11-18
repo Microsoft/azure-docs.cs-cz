@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/13/2020
-ms.openlocfilehash: ac56aab233c9d07ea7e82a4eefc4918746e3bdbe
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 11/17/2020
+ms.openlocfilehash: 730178d974ba95db968332ac669f701486b513bd
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592511"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738522"
 ---
 # <a name="co-sell-partner-engagement"></a>Zapojení partnerů do společného prodeje
 
@@ -30,7 +30,7 @@ Program pro společný prodej je dostupný pro **software sestavený s duševní
 
 Nabídky, které dosahují **společného prodeje Azure IP motivovaní** stav získat tyto další výhody pro Marketplace:
 
-- Poplatek za službu Marketplace se snižuje z 20% na 10%. Tato sleva se vztahuje na vaši nabídku IaaS nebo SaaS prodanou prostřednictvím komerčního tržiště. Další informace najdete v tématu [omezený poplatek za službu](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) pro další podrobnosti.
+- Poplatek za službu Marketplace se snižuje z 20% na 10%. Tato sleva se vztahuje na vaši nabídku IaaS nebo SaaS prodanou prostřednictvím komerčního tržiště. Další informace najdete v tématu [poplatky za služby komerčního tržiště](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees) , kde najdete další podrobnosti.
 - Partneři poskytovatele Cloud Solution Provider (CSP) obdrží 10% pobídky k prodeji vaší nabídky IaaS nebo SaaS. Přečtěte si další informace o programu CSP v [programu Cloud Solution Provider](cloud-solution-providers.md).
 - Prodej vaší nabídky prostřednictvím komerčního tržiště přispěje ke svým zákaznickým závazkům za využití Azure. Způsobilí zákazníci uvidí nabídku označenou jako **"zvýhodněný přínos Azure"** v Azure Portal. Další podrobnosti najdete v tématu [zvýhodnění závazků za využití Azure](azure-consumption-commitment-benefit.md).
 - Nabídky, které dosahují motivovaní nebo **Business Applications spoluprodávajího motivovaní** ve spolupráci **Azure IP** , obdrží v prodejní místa **označení "upřednostňovaná řešení"** . Visačka podporuje kvalitu, výkon a možnost řešení potřeb zákazníků v určité odvětví vertikální nebo oblasti řešení. Přečtěte si další informace o [preferovaných řešeních v Microsoft AppSource a Azure Marketplace](preferred-solutions.md).
@@ -63,15 +63,15 @@ Svůj společný prodej přímo v partnerském centru začněte podle následuj�
 
     :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft.":::
 
-1. Poskytněte základní informace o seznamech, které pomůžou prodejcům Microsoftu rychle seřadit a zjistit vaši nabídku v oddílu **výpisu** . ( *Požadováno: všechna pole.* )
+1. Poskytněte základní informace o seznamech, které pomůžou prodejcům Microsoftu rychle seřadit a zjistit vaši nabídku v oddílu **výpisu** . (*Požadováno: všechna pole.*)
 
     :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="Tento obrázek ukazuje část výpis na kartě spoluprodej.":::  
 
-1. Zadejte podrobnosti o vaší nabídce a dokumentaci k odeslání do části **dokumenty** . Prodejci Microsoftu použijí tyto informace k doporučení a prodeji vaší nabídky. ( *Požadováno: zákaznická balíček One-pager a zákaznická prezentace.* )
+1. Zadejte podrobnosti o vaší nabídce a dokumentaci k odeslání do části **dokumenty** . Prodejci Microsoftu použijí tyto informace k doporučení a prodeji vaší nabídky. (*Požadováno: zákaznická balíček One-pager a zákaznická prezentace.*)
 
     :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Tento obrázek ukazuje část dokumenty na kartě spoluprodej.":::
 
-1. Odeslat prodejní kontaktní informace v části **Kontakty** . Prodejci Microsoftu mohou kontaktovat tyto kontakty a požádat o další informace o vaší nabídce. ( *Požadováno: kontakt pro každou zeměpisnou oblast, ve které je vaše nabídka dostupná.* )
+1. Odeslat prodejní kontaktní informace v části **Kontakty** . Prodejci Microsoftu mohou kontaktovat tyto kontakty a požádat o další informace o vaší nabídce. (*Požadováno: kontakt pro každou zeměpisnou oblast, ve které je vaše nabídka dostupná.*)
 
     :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Tento obrázek ukazuje část kontakty na kartě spoluprodej.":::
 

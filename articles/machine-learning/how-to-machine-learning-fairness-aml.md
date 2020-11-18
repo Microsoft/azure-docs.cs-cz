@@ -1,26 +1,24 @@
 ---
 title: Posouzení spravedlivosti modelů ML v Pythonu (Preview)
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jak vyhodnotit spravedlivost vašich modelů v Azure Machine Learning
+description: Naučte se hodnotit a zmírnit rizika vašich modelů strojového učení pomocí Fairlearn a sady Azure Machine Learning Python SDK.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: mesameki
 author: mesameki
 ms.reviewer: luquinta
-ms.date: 09/01/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: bf819e5cff8c6ef008b0e55e156ba3531936b489
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 3fbd4990fd330960bb8dbce2e2a8d1bcb578cf2a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337878"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701180"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Použití Azure Machine Learning s open source balíčkem Fairlearn k vyhodnocení spravedlivosti modelů ML (Preview)
-
-
 
 V této příručce se dozvíte, jak pomocí [Fairlearn](https://fairlearn.github.io/) Open Source balíčku Pythonu s Azure Machine Learning provádět následující úlohy:
 
@@ -306,7 +304,7 @@ Pokud vás zajímá porovnání více modelů a zjistíte, jak se jejich posouze
     ```
 
 
-    Podobně jako v předchozí části můžete sledovat jednu z výše popsaných cest (prostřednictvím **experimentů** nebo **modelů** ) v nástroji Azure Machine Learning Studio pro přístup k řídicímu panelu vizualizace a porovnat tyto dva modely z podmínek rovnosti a výkonu.
+    Podobně jako v předchozí části můžete sledovat jednu z výše popsaných cest (prostřednictvím **experimentů** nebo **modelů**) v nástroji Azure Machine Learning Studio pro přístup k řídicímu panelu vizualizace a porovnat tyto dva modely z podmínek rovnosti a výkonu.
 
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>Nahrajte si nezmírňované a zmírňované poznatky o rovnosti.

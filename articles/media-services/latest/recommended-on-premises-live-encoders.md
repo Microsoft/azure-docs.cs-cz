@@ -6,15 +6,15 @@ keywords: kódování; kodéry; média
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 08/31/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 3532032f8fd3ac6e673d3913fd13f7f83ae7759e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88de41ae62e3a81fdb51981afe42135649bf34b4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295355"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734306"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Ověřená místní kodéry živého streamování
 
@@ -50,6 +50,7 @@ Při streamování přes RTMPS zkontrolujte nastavení brány firewall nebo prox
 > Kodéry musí podporovat protokol TLS 1,2 při použití protokolů RTMPs.
 
 - Adobe Flash Media Live Encoder 3.2
+- [Antix digitální](http://www.antixdigital.com/) StreamZ Live (dřív představa Communications SelenioFlex Live)
 - [Blackmagic ATEM Mini a ATEM Mini PRO](https://www.blackmagicdesign.com/products/atemmini)
 - [Cambria Live 4,3](https://www.capellasystems.net/products/cambria-live/)
 - Element-Live (verze 2.14.15 a vyšší)
@@ -78,11 +79,11 @@ Media Services doporučuje použít jeden z následujících živých kodérů, 
 > Kodéry musí podporovat protokol TLS 1,2 při použití protokolů HTTPS.
 
 - Ateme TITAN Live
+- [Antix digitální](http://www.antixdigital.com/) StreamZ Live (dřív představa Communications SelenioFlex Live)
 - Cisco Digital Media Encoder 2200
 - Element-Live (verze 2.14.15 a vyšší z důvodu požadavku TLS 1,2)
 - Envivio 4Caster C4 Gen III 
 - [FFmpeg](https://www.ffmpeg.org)
-- Představte si Communications Selenio MCP3
 - Media Excel Hero Live a Hero 4K (UHD/HEVC)
 
 > [!TIP]

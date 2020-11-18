@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 53f10996a7f15e32261f151600163f41df4e58ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a080c3953c48227301052a0bb151c8cba96e515a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666768"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737315"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Správa exfiltrace dat pro Azure Storage účtů pomocí zásad koncového bodu služby virtuální sítě pomocí rozhraní příkazového řádku Azure
 
@@ -37,11 +37,11 @@ V tomto článku získáte informace o těchto tématech:
 * Potvrďte přístup k povolenému účtu úložiště z podsítě.
 * Potvrďte, že je přístup k nedovolenému účtu úložiště z podsítě odepřený.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -66,7 +66,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>Povolení koncového bodu služby 
 
-V tomto příkladu se pro *privátní*podsíť vytvoří koncový bod služby pro *Microsoft. Storage* : 
+V tomto příkladu se pro *privátní* podsíť vytvoří koncový bod služby pro *Microsoft. Storage* : 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -335,7 +335,7 @@ Zobrazí se `user@myVmPrivate:~$` výzva. Sdílená složka Azure se úspěšně
 
 ### <a name="confirm-access-is-denied-to-storage-account"></a>Ověření odepření přístupu k účtu úložiště
 
-Ze stejného *myVmPrivate*virtuálního počítače vytvořte adresář pro přípojný bod:
+Ze stejného *myVmPrivate* virtuálního počítače vytvořte adresář pro přípojný bod:
 
 ```bash
 sudo mkdir /mnt/MyAzureFileShare2

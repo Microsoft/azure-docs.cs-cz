@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190155"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701445"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen1
 
@@ -194,7 +194,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>Maska
 
-Jak je znázorněno v algoritmu kontroly přístupu, maska omezuje přístup pro **pojmenované uživatele**, **vlastnící skupinu**a **pojmenované skupiny**.  
+Jak je znázorněno v algoritmu kontroly přístupu, maska omezuje přístup pro **pojmenované uživatele**, **vlastnící skupinu** a **pojmenované skupiny**.  
 
 > [!NOTE]
 > Pro nový účet Data Lake Storage Gen1, maska pro přístup ACL kořenové složky ("/") má výchozí hodnotu RWX.
@@ -216,7 +216,7 @@ Při vytvoření nového souboru nebo složky v rámci existující složky se p
 
 ### <a name="umask"></a>umask
 
-Při vytváření souboru nebo složky se umask používá k úpravě způsobu nastavení výchozích seznamů ACL pro podřízenou položku. umask je 9 bitová hodnota u nadřazených složek, které obsahují hodnotu RWX pro **vlastnícího uživatele**, **vlastnící skupinu**a **Další**.
+Při vytváření souboru nebo složky se umask používá k úpravě způsobu nastavení výchozích seznamů ACL pro podřízenou položku. umask je 9 bitová hodnota u nadřazených složek, které obsahují hodnotu RWX pro **vlastnícího uživatele**, **vlastnící skupinu** a **Další**.
 
 Umask pro Azure Data Lake Storage Gen1 je konstantní hodnota nastavená na 007. Tato hodnota se převede na
 
@@ -280,7 +280,11 @@ Položky v seznamech ACL se ukládají jako identifikátory GUID odpovídající
 
 ### <a name="why-do-i-sometimes-see-guids-in-the-acls-when-im-using-the-azure-portal"></a>Proč se někdy na webu Azure Portal v seznamech ACL zobrazují identifikátory GUID?
 
-Identifikátor GUID se zobrazí v případě, že daný uživatel již ve službě Azure AD neexistuje. K tomu obvykle dochází, když uživatel opustí společnost nebo když je jeho účet odstraněn ve službě Azure AD.
+Identifikátor GUID se zobrazí v případě, že daný uživatel již ve službě Azure AD neexistuje. K tomu obvykle dochází, když uživatel opustí společnost nebo když je jeho účet odstraněn ve službě Azure AD. Také se ujistěte, že používáte správné ID pro nastavení seznamů ACL (níže uvedené podrobnosti).
+
+### <a name="when-using-service-principal-what-id-should-i-use-to-set-acls"></a>Jaké ID mám použít k nastavení seznamů ACL?
+
+Na webu Azure Portal přejít na **Azure Active Directory-> podnikové aplikace** a vyberte svou aplikaci. Karta **Přehled** by měla zobrazovat ID objektu a to je to, co byste měli použít při přidávání seznamů ACL pro přístup k datům (a nikoli pro ID aplikace).
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Podporuje Data Lake Storage Gen1 dědění seznamů ACL?
 

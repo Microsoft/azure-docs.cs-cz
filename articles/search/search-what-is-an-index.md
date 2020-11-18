@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: 3aa4a1917711f8997c282ba577c33e7a7f94472b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa7c06c3bad59bad11fa288631042cca86109706
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932878"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701129"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Vytvoření základního vyhledávacího indexu v Azure Kognitivní hledání
 
 V Azure Kognitivní hledání *vyhledávací rejstřík* ukládá prohledávatelný obsah, který se používá pro fulltextové a filtrované dotazy. Index je definován schématem a uložený do služby, přičemž import dat je uvedený jako druhý krok. 
 
-Indexy obsahují *dokumenty*. V koncepčním dokumentu je dokument jediná jednotka prohledávatelných dat v indexu. Prodejce může mít dokument pro každý produkt, organizace zpráv může mít dokument pro každý článek a tak dále. Mapování těchto konceptů na podrobnější ekvivalenty databáze: *Index vyhledávání* se rovná *tabulce*a *dokumenty* zhruba odpovídají *řádkům* v tabulce.
+Indexy obsahují *dokumenty*. V koncepčním dokumentu je dokument jediná jednotka prohledávatelných dat v indexu. Prodejce může mít dokument pro každý produkt, organizace zpráv může mít dokument pro každý článek a tak dále. Mapování těchto konceptů na podrobnější ekvivalenty databáze: *Index vyhledávání* se rovná *tabulce* a *dokumenty* zhruba odpovídají *řádkům* v tabulce.
 
 Fyzická struktura indexu je určena schématem s poli, která jsou označena jako "prohledávatelné", což má za následek obrácený index vytvořený pro toto pole. 
 
@@ -59,7 +59,7 @@ Doručení v konečném návrhu indexu je iterativní proces. Je běžné začí
 
    ![Přidat stránku indexu zobrazující atributy podle datového typu](media/search-what-is-an-index//field-definitions.png "Přidat stránku indexu zobrazující atributy podle datového typu")
 
-1. Stáhněte schéma indexu pomocí [Get index (REST API)](/rest/api/searchservice/get-index) a nástroje pro testování webu, jako je například [post](search-get-started-postman.md). Nyní máte reprezentaci JSON indexu, kterou můžete přizpůsobit pro kód.
+1. Stáhněte schéma indexu pomocí [Get index (REST API)](/rest/api/searchservice/get-index) a nástroje pro testování webu, jako je například [post](search-get-started-rest.md). Nyní máte reprezentaci JSON indexu, kterou můžete přizpůsobit pro kód.
 
 1. [Načtěte index s daty](search-what-is-data-import.md). Azure Kognitivní hledání přijímá dokumenty JSON. Chcete-li načíst data prostřednictvím kódu programu, můžete použít příkaz post s dokumenty JSON v datové části požadavku. Pokud vaše data nejsou snadno vyjádřena jako JSON, bude tento krok nejvíce náročný na práci. 
 
@@ -70,7 +70,7 @@ Doručení v konečném návrhu indexu je iterativní proces. Je běžné začí
 Během vývoje si naplánujte časté časté sestavování. Vzhledem k tomu, že se ve službě vytvářejí fyzické struktury, je nutné vyřadit [a znovu vytvořit indexy](search-howto-reindex.md) pro většinu úprav existující definice pole. Můžete uvažovat o práci s podmnožinou vašich dat, aby bylo možné znovu sestavit nové sestavení. 
 
 > [!Tip]
-> Pro práci na návrhu indexu a importu dat se doporučuje kód spíše než přístup k portálu. Jako alternativu jsou nástroje, jako je například [post a REST API](search-get-started-postman.md) , užitečné pro testování zkušebního prostředí, když jsou vývojové projekty stále v rané fázi. V těle žádosti můžete provádět přírůstkové změny definice indexu a potom odeslat požadavek službě, aby se index znovu vytvořil pomocí aktualizovaného schématu.
+> Pro práci na návrhu indexu a importu dat se doporučuje kód spíše než přístup k portálu. Jako alternativu jsou nástroje, jako je například [post a Visual Studio Code](search-get-started-rest.md) , užitečné při testování testování konceptů, pokud jsou vývojové projekty stále v rané fázi. V těle žádosti můžete provádět přírůstkové změny definice indexu a potom odeslat požadavek službě, aby se index znovu vytvořil pomocí aktualizovaného schématu.
 
 ## <a name="index-schema"></a>Schéma indexu
 
@@ -169,7 +169,7 @@ Pole mají název, typ, který klasifikuje uložená data a atributy, které ur�
 
 ### <a name="data-types"></a>Typy dat
 
-| Typ | Description |
+| Typ | Popis |
 |------|-------------|
 | Edm.String |Text, který lze volitelně použít pro fulltextové vyhledávání (dělení slov, odvozování a tak dále). |
 | Collection(Edm.String) |Seznam řetězců, které jde volitelně tokenizovat k fulltextovému hledání. Ačkoli neexistuje žádné teoretické omezení počtu položek v kolekci, na kolekce se vztahuje 16MB omezení velikosti datové části. |

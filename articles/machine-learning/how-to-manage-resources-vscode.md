@@ -1,7 +1,7 @@
 ---
 title: Vytvoření a Správa prostředků VS Code rozšíření (Preview)
 titleSuffix: Azure Machine Learning
-description: Vytváření a Správa prostředků pomocí rozšíření VS Code
+description: Naučte se vytvářet a spravovat Azure Machine Learning prostředky pomocí rozšíření Azure Machine Learning Visual Studio Code.
 services: machine-learning
 author: luisquintanilla
 ms.author: luquinta
@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 09/30/2020
-ms.openlocfilehash: 2e410cbc7813031929ea040b2cc4fb2967b99c1b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: f8eb18b190b72381f1a93575eb39b3d19d8d431b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319351"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701411"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Správa prostředků Azure Machine Learning s rozšířením VS Code (Preview)
 
@@ -56,8 +56,8 @@ Mezi alternativní metody vytvoření pracovního prostoru patří:
 1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
 1. Klikněte pravým tlačítkem na pracovní prostor, který chcete odebrat.
 1. Vyberte, zda chcete odebrat:
-    - *Pouze pracovní prostor* : Tato možnost odstraní **pouze** prostředek pracovního prostoru Azure. Skupina prostředků, účty úložiště a všechny další prostředky, ke kterým byl pracovní prostor připojen, jsou stále v Azure.
-    - *S přidruženými prostředky* : Tato možnost odstraní pracovní prostor **a** všechny přidružené prostředky.
+    - *Pouze pracovní prostor*: Tato možnost odstraní **pouze** prostředek pracovního prostoru Azure. Skupina prostředků, účty úložiště a všechny další prostředky, ke kterým byl pracovní prostor připojen, jsou stále v Azure.
+    - *S přidruženými prostředky*: Tato možnost odstraní pracovní prostor **a** všechny přidružené prostředky.
 
 ## <a name="datastores"></a>Úložiště dat
 
@@ -80,7 +80,7 @@ Další informace najdete v tématu [úložiště dat](concept-data.md#datastore
     1. Vyberte typ úložiště dat.
     1. Vyberte prostředek úložiště. Můžete buď zvolit prostředek úložiště, který je přidružený k vašemu pracovnímu prostoru, nebo ho vybrat z libovolného platného prostředku úložiště v předplatných Azure.
     1. Vyberte kontejner, ve kterém jsou vaše data uvnitř dříve vybraného prostředku úložiště.
-1. V VS Code se zobrazí konfigurační soubor. Pokud jste se souborem konfigurace spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů ( **zobrazení > paleta příkazů** ) a zadejte **Azure ml: Uložit a pokračovat**.
+1. V VS Code se zobrazí konfigurační soubor. Pokud jste se souborem konfigurace spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů (**zobrazení > paleta příkazů**) a zadejte **Azure ml: Uložit a pokračovat**.
 
 ### <a name="manage-a-datastore"></a>Správa úložiště dat
 
@@ -96,8 +96,8 @@ Další informace najdete v tématu [úložiště dat](concept-data.md#datastore
 
 Rozšíření aktuálně podporuje následující typy datových sad:
 
-- *Tabulková* : umožňuje vyhodnotit data do datového rámce (PANDAS nebo PySpark).
-- *Soubor* : soubor nebo kolekce souborů. Umožňuje stahovat nebo připojovat soubory do výpočetních prostředků.
+- *Tabulková*: umožňuje vyhodnotit data do datového rámce (PANDAS nebo PySpark).
+- *Soubor*: soubor nebo kolekce souborů. Umožňuje stahovat nebo připojovat soubory do výpočetních prostředků.
 
 Další informace najdete v tématu [datové sady](concept-data.md#datasets) .
 
@@ -159,12 +159,12 @@ Další informace najdete v tématu [prostředí](concept-environments.md).
 1. Na příkazovém řádku:
     1. Zadejte název vašeho prostředí.
     1. Definujte konfiguraci prostředí:
-        - Podaná *prostředí* : předkonfigurovaná prostředí v Azure Machine Learning. Prostředí můžete dále upravit úpravou `dependencies` vlastnosti v souboru JSON. Přečtěte si další informace o spravovaných [prostředích](resource-curated-environments.md).
-        - *Soubor závislostí conda* : pro prostředí Anaconda je možné zadat soubor obsahující definici prostředí.
-        - *Soubor požadavků PIP* : pro prostředí PIP se dá zadat soubor obsahující definici vašeho prostředí.
-        - *Existující prostředí conda* : Tato možnost vyhledá prostředí conda v místním počítači a pokusí se vytvořit prostředí z vybraného prostředí.
-        - *Vlastní* : definování vlastních kanálů a závislostí
-    1. V editoru se otevře konfigurační soubor. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů ( **zobrazení > paleta příkazů** ) a zadejte **Azure ml: Uložit a pokračovat**.
+        - Podaná *prostředí*: předkonfigurovaná prostředí v Azure Machine Learning. Prostředí můžete dále upravit úpravou `dependencies` vlastnosti v souboru JSON. Přečtěte si další informace o spravovaných [prostředích](resource-curated-environments.md).
+        - *Soubor závislostí conda*: pro prostředí Anaconda je možné zadat soubor obsahující definici prostředí.
+        - *Soubor požadavků PIP*: pro prostředí PIP se dá zadat soubor obsahující definici vašeho prostředí.
+        - *Existující prostředí conda*: Tato možnost vyhledá prostředí conda v místním počítači a pokusí se vytvořit prostředí z vybraného prostředí.
+        - *Vlastní*: definování vlastních kanálů a závislostí
+    1. V editoru se otevře konfigurační soubor. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů (**zobrazení > paleta příkazů**) a zadejte **Azure ml: Uložit a pokračovat**.
 
 ### <a name="view-environment-configurations"></a>Zobrazit konfigurace prostředí
 
@@ -182,7 +182,7 @@ Postup úpravy závislostí a konfigurací pro konkrétní prostředí v rozší
 1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
 1. Rozbalte uzel **prostředí** do svého pracovního prostoru.
 1. Klikněte pravým tlačítkem na prostředí, které chcete zobrazit, a vyberte **Upravit prostředí**.
-1. Pokud jste se změnou vaší konfigurace spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů ( **zobrazení > paleta příkazů** ) a zadejte **Azure ml: Uložit a pokračovat**.
+1. Pokud jste se změnou vaší konfigurace spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů (**zobrazení > paleta příkazů**) a zadejte **Azure ml: Uložit a pokračovat**.
 
 ## <a name="experiments"></a>Experimenty
 
@@ -307,7 +307,7 @@ Další informace najdete v tématu [výpočetní cíle](concept-compute-target.
 1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
 1. Rozbalte uzel **výpočetní clustery** do vašeho pracovního prostoru.
 1. Klikněte pravým tlačítkem na výpočetní výkon, který chcete upravit, a vyberte **Upravit výpočetní** prostředky.
-1. V editoru se otevře konfigurační soubor pro výpočetní výkon. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů ( **zobrazení > paleta příkazů** ) a zadejte **Azure ml: Uložit a pokračovat**.
+1. V editoru se otevře konfigurační soubor pro výpočetní výkon. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů (**zobrazení > paleta příkazů**) a zadejte **Azure ml: Uložit a pokračovat**.
 
 ### <a name="delete-compute"></a>Odstranit výpočetní prostředky
 
@@ -327,15 +327,15 @@ Postup vytvoření konfigurace spuštění v rozšíření:
     1. Vyberte nebo vytvořte nové prostředí.
     1. Zadejte název skriptu, který chcete spustit, nebo stiskněte klávesu **ENTER** do prohlížeče pro skript na místním počítači.
     1. Volitelné Zvolte, zda chcete vytvořit odkaz na data pro váš školicí běh. V takovém případě se zobrazí výzva k definování datové sady v konfiguraci spuštění.
-        1. Vyberte jednu z registrovaných datových sad, které chcete propojit s konfigurací spuštění. otevře se konfigurační soubor pro datovou sadu v editoru. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů ( **zobrazení > paleta příkazů** ) a zadejte **Azure ml: Uložit a pokračovat**.
-    1. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů ( **zobrazení > paleta příkazů** ) a zadejte **Azure ml: Uložit a pokračovat**.
+        1. Vyberte jednu z registrovaných datových sad, které chcete propojit s konfigurací spuštění. otevře se konfigurační soubor pro datovou sadu v editoru. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů (**zobrazení > paleta příkazů**) a zadejte **Azure ml: Uložit a pokračovat**.
+    1. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů (**zobrazení > paleta příkazů**) a zadejte **Azure ml: Uložit a pokračovat**.
 
 ### <a name="edit-run-configuration"></a>Upravit konfiguraci spuštění
 
 1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
 1. V uzlu **výpočetní clustery** pracovního prostoru rozbalte uzel Compute Cluster.
 1. Klikněte pravým tlačítkem na konfiguraci spuštění, kterou chcete upravit, a vyberte **Upravit konfiguraci spuštění**.
-1. V editoru se otevře konfigurační soubor pro vaši konfiguraci spuštění. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů ( **zobrazení > paleta příkazů** ) a zadejte **Azure ml: Uložit a pokračovat**.
+1. V editoru se otevře konfigurační soubor pro vaši konfiguraci spuštění. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů (**zobrazení > paleta příkazů**) a zadejte **Azure ml: Uložit a pokračovat**.
 
 ### <a name="delete-run-configuration"></a>Odstranit konfiguraci spuštění
 
@@ -357,7 +357,7 @@ Další informace najdete v tématu [modely](concept-azure-machine-learning-arch
     1. Zadejte název pro svůj model.
     1. Vyberte, jestli je váš model soubor nebo složka.
     1. Najděte model na svém místním počítači.
-    1. Konfigurační soubor pro model v editoru. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů ( **zobrazení > paleta příkazů** ) a zadejte **Azure ml: Uložit a pokračovat**.
+    1. Konfigurační soubor pro model v editoru. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů (**zobrazení > paleta příkazů**) a zadejte **Azure ml: Uložit a pokračovat**.
 
 ### <a name="view-model-properties"></a>Zobrazit vlastnosti modelu
 
@@ -401,7 +401,7 @@ Další informace najdete v tématu [koncové body webové služby](concept-azur
     1. Zadejte název pro svůj model.
     1. Zadejte skript, který se má spustit při bodování modelu.
     1. Zadejte soubor conda závislostí.
-    1. V editoru se zobrazí konfigurační soubor pro vaše nasazení. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů ( **zobrazení > paleta příkazů** ) a zadejte **Azure ml: Uložit a pokračovat**.
+    1. V editoru se zobrazí konfigurační soubor pro vaše nasazení. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů (**zobrazení > paleta příkazů**) a zadejte **Azure ml: Uložit a pokračovat**.
 
 > [!NOTE]
 > Případně můžete kliknout pravým tlačítkem na registrovaný model v uzlu *modely* a vybrat **nasadit službu z registrovaného modelu**.
@@ -421,7 +421,7 @@ Kromě vytváření a odstraňování nasazení můžete zobrazit a upravit nast
 1. Rozbalte uzel **koncové body** v pracovním prostoru.
 1. Klikněte pravým tlačítkem na nasazení, které chcete spravovat:
     - Pokud chcete upravit nastavení, vyberte **Upravit službu**.
-        - V editoru se zobrazí konfigurační soubor pro vaše nasazení. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů ( **zobrazení > paleta příkazů** ) a zadejte **Azure ml: Uložit a pokračovat**.
+        - V editoru se zobrazí konfigurační soubor pro vaše nasazení. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů (**zobrazení > paleta příkazů**) a zadejte **Azure ml: Uložit a pokračovat**.
     - Chcete-li zobrazit nastavení konfigurace nasazení, vyberte možnost **Zobrazit vlastnosti služby**.
 
 ## <a name="next-steps"></a>Další kroky

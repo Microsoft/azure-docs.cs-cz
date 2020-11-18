@@ -7,28 +7,34 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 07/15/2020
-ms.openlocfilehash: e9d438349f3a080f52050f22a0f991140b3e6b4d
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 11/17/2020
+ms.openlocfilehash: 21f0d141567f17c470732088c6a93a2ae7ed3c67
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699134"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738046"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití REST a AI k vygenerování prohledávatelných obsahu z objektů blob Azure
 
-Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrázky, [kanál pro rozšíření AI](cognitive-search-concept-intro.md) může extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat image, tento kurz se zaměřuje na text, používá se pro detekci jazyka a zpracování přirozeného jazyka a vytváří nová pole, která můžete využít v dotazech, omezujících objektech a filtrech.
+Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrázky, [kanál pro rozšíření AI](cognitive-search-concept-intro.md) může extrahovat informace a vytvořit nový obsah z objektů blob, které jsou užitečné pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat image, tento kurz se zaměřuje na text, používá se pro detekci jazyka a zpracování přirozeného jazyka a vytváří nová pole, která můžete využít v dotazech, omezujících objektech a filtrech.
 
 V tomto kurzu se používá post a [rozhraní API REST pro vyhledávání](/rest/api/searchservice/) k provádění následujících úloh:
 
 > [!div class="checklist"]
-> * Začněte s celými dokumenty (nestrukturovaný text), například PDF, HTML, DOCX a PPTX v úložišti objektů BLOB v Azure.
-> * Definujte kanál, který extrahuje text, detekuje jazyk, rozpoznává entity a detekuje klíčové fráze.
-> * Definujte index pro uložení výstupu (nezpracovaný obsah, plus páry název-hodnota vygenerované kanály).
-> * Spusťte kanál, abyste mohli začít transformovat a analyzovat a vytvořit a načíst index.
+> * Nastavte služby a kolekci po ní.
+> * Vytvořte kanál pro obohacení, který extrahuje text, detekuje jazyk, rozpoznává entity a detekuje klíčové fráze.
+> * Vytvoří index pro uložení výstupu (nezpracovaný obsah, plus páry název-hodnota vygenerované kanály).
+> * Spusťte kanál, který provede transformaci a analýzu a načte index.
 > * Prozkoumejte výsledky pomocí fulltextového vyhledávání a bohatou syntaxí dotazu.
 
 Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+## <a name="overview"></a>Přehled
+
+V tomto kurzu se používá C# a rozhraní REST API služby Azure Kognitivní hledání k vytvoření zdroje dat, indexu, indexeru a dovednosti. V úložišti objektů BLOB v Azure začnete s celými dokumenty (nestrukturovaný text), jako je PDF, HTML, DOCX a PPTX, a pak je spouštíte pomocí dovednosti, který extrahuje entity, klíčové fráze a další text v souborech obsahu.
+
+Tento dovednosti využívá integrované dovednosti založené na rozhraní API služeb Cognitive Services. Mezi kroky v kanálu patří detekce jazyka pro text, extrakci klíčových frází a rozpoznávání entit (organizace). Nové informace jsou uloženy v nových polích, která lze využít v dotazech, omezujících vlastnostech a filtrech.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -44,6 +50,8 @@ Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https
 1. Otevřete tuto [složku OneDrive](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) a v levém horním rohu klikněte na **Stáhnout** a zkopírujte soubory do počítače. 
 
 1. Klikněte pravým tlačítkem na soubor zip a vyberte **Extrahovat vše**. Existuje 14 souborů různých typů. Pro toto cvičení budete používat 7.
+
+V případě potřeby můžete také stáhnout zdrojový kód a soubor kolekce post pro tento kurz. Zdrojový kód najdete na adrese [https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Tutorial](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Tutorial) .
 
 ## <a name="1---create-services"></a>1. vytvoření služeb
 
@@ -107,7 +115,7 @@ Třetí součástí je Azure Kognitivní hledání, kterou můžete vytvořit na
 
 Stejně jako u služby Azure Blob Storage si pro získání přístupového klíče chvíli počkejte. Když při zahájení strukturování požadavků začnete, budete muset zadat koncový bod a klíč rozhraní API pro správu, který se použije k ověření každého požadavku.
 
-### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Získání klíčového rozhraní API pro správu a adresy URL pro Azure Kognitivní hledání
+### <a name="copy-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Kopírování klíče rozhraní API pro správu a adresy URL pro Azure Kognitivní hledání
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla adresa URL koncového bodu `https://mydemo.search.windows.net` , název vaší služby by byl `mydemo` .
 
@@ -131,7 +139,7 @@ V části hlavičky nastavte typ Content-Type na `application/json` a nastavte `
 
 ## <a name="3---create-the-pipeline"></a>3. vytvoření kanálu
 
-Ve službě Azure Kognitivní hledání se při indexování (nebo ingestování dat) objevuje zpracování AI. Tato část návodu vytvoří čtyři objekty: zdroj dat, index definice, dovednosti, indexer. 
+V Azure Kognitivní hledání dojde k rozšíření při indexování (nebo příjmu dat). Tato část návodu vytvoří čtyři objekty: zdroj dat, index definice, dovednosti, indexer. 
 
 ### <a name="step-1-create-a-data-source"></a>Krok 1: Vytvoření zdroje dat
 
@@ -350,7 +358,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
     ```json
     {
-      "name":"cog-search-demo-idxr",    
+      "name":"cog-search-demo-idxr",
       "dataSourceName" : "cog-search-demo-ds",
       "targetIndexName" : "cog-search-demo-idx",
       "skillsetName" : "cog-search-demo-ss",

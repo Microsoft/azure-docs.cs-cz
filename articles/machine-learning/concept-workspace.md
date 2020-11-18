@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 65cdf444386d1b10cf225010c55170e5b47b3eb4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7acb555ddde20d6512119af85a8db055bcd9eeed
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541347"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701649"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
 
@@ -89,7 +89,7 @@ Můžete také provádět následující úlohy správy pracovního prostoru:
 Existuje několik způsobů, jak vytvořit pracovní prostor:  
 
 * Pomocí [Azure Portal](how-to-manage-workspace.md?tabs=azure-portal#create-a-workspace) pro rozhraní Point-to-Click vás provede jednotlivé kroky.
-* Použití [sady SDK Azure Machine Learning pro Python](how-to-manage-workspace.md?tabs=python#create-a-workspace) k vytvoření pracovního prostoru ze skriptů Pythonu nebo poznámkových bloků Jupiter
+* Použití [sady SDK Azure Machine Learning pro Python](how-to-manage-workspace.md?tabs=python#create-a-workspace) k vytvoření pracovního prostoru ze skriptů Pythonu nebo poznámkových bloků Jupyter
 * Pokud potřebujete automatizovat nebo přizpůsobovat vytváření pomocí standardů podnikových zabezpečení, použijte [šablonu Azure Resource Manager](how-to-create-workspace-template.md) nebo [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) .
 * Pokud pracujete v Visual Studio Code, použijte [rozšíření vs Code](how-to-manage-resources-vscode.md#create-a-workspace).
 

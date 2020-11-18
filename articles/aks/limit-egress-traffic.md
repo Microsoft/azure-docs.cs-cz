@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a1d045e66771026d2b4cf7ad44fd6943d2d407f4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380207"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701598"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -209,8 +209,10 @@ Pro clustery AKS s povoleným Azure Policy jsou vyžadována následující pln�
 
 | FQDN                                          | Port      | Použití      |
 |-----------------------------------------------|-----------|----------|
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Tato adresa se používá pro správnou operaci Azure Policy. (aktuálně ve verzi Preview v AKS) |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Tato adresa se používá k vyžádání předdefinovaných zásad z GitHubu, aby bylo zajištěno správné fungování Azure Policy. (aktuálně ve verzi Preview v AKS) |
+| **`data.policy.core.windows.net`** | **`HTTPS:443`** | Tato adresa se používá k vyžádání zásad Kubernetes a k hlášení stavu dodržování předpisů clusteru službě zásad. |
+| **`store.policy.core.windows.net`** | **`HTTPS:443`** | Tato adresa se používá k vyžádání artefaktů integrovaných zásad na serveru gatekeeper. |
+| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Tato adresa se používá pro správnou operaci Azure Policy.  |
+| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Tato adresa se používá k vyžádání předdefinovaných zásad z GitHubu, aby bylo zajištěno správné fungování Azure Policy. |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy doplněk, který odesílá data telemetrie do koncového bodu Application Insights. |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Omezení odchozího provozu pomocí brány Azure firewall
