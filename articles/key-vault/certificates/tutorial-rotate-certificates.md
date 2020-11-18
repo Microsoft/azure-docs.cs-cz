@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 2d981e902f829eb0fa8283b6a38ae376a780bcc9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 591d71e8cd6af2801540f5a1a41ad88b1f538e81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289738"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844484"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Kurz: Konfigurace automatického rotace certifikátů v Key Vault
 
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Než začnete, přečtěte si téma [Key Vault Basic koncepty](../general/basic-concepts.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -41,7 +41,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Vytvoření trezoru
 
-Vytvořte Trezor klíčů nebo vyberte existující trezor pro provádění operací (viz [Postup vytvoření trezoru klíčů](../secrets/quick-create-portal.md)). V tomto příkladu je název trezoru klíčů **příkladem trezoru**.
+Vytvořte Azure Key Vault pomocí [Azure Portal](../general/quick-create-portal.md), [Azure CLI](../general/quick-create-cli.md)nebo [Azure PowerShell](../general/quick-create-powershell.md). V tomto příkladu je název trezoru klíčů **příkladem trezoru**.
 
 ![Výstup po dokončení vytvoření trezoru klíčů](../media/certificates/tutorial-import-cert/vault-properties.png)
 
@@ -77,8 +77,8 @@ Key Vault automaticky otočí certifikáty prostřednictvím zavedených partner
 1. Vyberte **Generovat/importovat**.
 1. Na obrazovce **vytvořit certifikát** aktualizujte následující hodnoty:
 
-   - **Doba platnosti** : zadejte hodnotu (v měsících). Vytváření krátkodobých certifikátů je doporučeným postupem zabezpečení. Ve výchozím nastavení je hodnota platnosti nově vytvořeného certifikátu 12 měsíců.
-   - **Typ akce životního cyklu** : vyberte akci automatického obnovení a upozornění certifikátu a pak aktualizujte **procentuální hodnotu životnosti** nebo **počet dní před vypršením platnosti**. Ve výchozím nastavení je automatické obnovení certifikátu nastavené na 80% své životnosti. V rozevírací nabídce vyberte jednu z následujících možností.
+   - **Doba platnosti**: zadejte hodnotu (v měsících). Vytváření krátkodobých certifikátů je doporučeným postupem zabezpečení. Ve výchozím nastavení je hodnota platnosti nově vytvořeného certifikátu 12 měsíců.
+   - **Typ akce životního cyklu**: vyberte akci automatického obnovení a upozornění certifikátu a pak aktualizujte **procentuální hodnotu životnosti** nebo **počet dní před vypršením platnosti**. Ve výchozím nastavení je automatické obnovení certifikátu nastavené na 80% své životnosti. V rozevírací nabídce vyberte jednu z následujících možností.
 
         |  Automaticky obnovit v daném čase| Poslat všem kontaktům e-mail v daném čase |
         |-----------|------|
@@ -99,8 +99,8 @@ Key Vault automaticky otočí certifikáty prostřednictvím zavedených partner
 
 1. Na obrazovce **zásady vystavování** aktualizujte následující hodnoty:
 
-   - **Doba platnosti** : Aktualizujte hodnotu (v měsících).
-   - **Typ akce životního cyklu** : vyberte akci automatického obnovení a upozorňování certifikátu a potom aktualizujte **procentuální hodnotu životnosti** nebo **počet dnů před vypršením platnosti**.
+   - **Doba platnosti**: Aktualizujte hodnotu (v měsících).
+   - **Typ akce životního cyklu**: vyberte akci automatického obnovení a upozorňování certifikátu a potom aktualizujte **procentuální hodnotu životnosti** nebo **počet dnů před vypršením platnosti**.
 
    ![Vlastnosti certifikátu](../media/certificates/tutorial-rotate-cert/cert-policy-change.png)
 

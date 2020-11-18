@@ -3,13 +3,13 @@ title: Práce s rozsáhlými datovými sadami
 description: Seznamte se s tím, jak ve velkých datových sadách získat záznamy, které se mají při práci se službou Azure Resource Graph získávat, formátovat, stránkovat a přeskakovat.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.custom: devx-track-csharp
-ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 6054d2cd2cf012c21f451ece87db672897fa0398
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578491"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843345"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s velkými sadami dat prostředků Azure
 
@@ -22,7 +22,7 @@ Pokyny k práci s dotazy s vysokou frekvencí najdete v tématu [doprovodné mat
 Ve výchozím nastavení graf prostředků omezuje všechny dotazy na vrácení pouze **100** záznamů. Tento ovládací prvek chrání uživatele i službu před neúmyslnými dotazy, které by mohly vést k rozsáhlým datovým sadám. K této události nejčastěji dochází, když zákazník experimentuje s dotazy, aby vyhledal a vyfiltroval prostředky způsobem, který vyhovuje jejich konkrétním potřebám. Tento ovládací prvek se liší od použití [horních](/azure/kusto/query/topoperator) nebo [Omezení](/azure/kusto/query/limitoperator) operátorů jazyka Azure Průzkumník dat k omezení výsledků.
 
 > [!NOTE]
-> Při použití **prvního**se doporučuje seřadit výsledky alespoň v jednom sloupci pomocí `asc` nebo `desc` . Bez řazení jsou vrácené výsledky náhodné a nelze je opakovat.
+> Při použití **prvního** se doporučuje seřadit výsledky alespoň v jednom sloupci pomocí `asc` nebo `desc` . Bez řazení jsou vrácené výsledky náhodné a nelze je opakovat.
 
 Výchozí omezení lze přepsat všemi metodami interakce s diagramem prostředků. Následující příklady ukazují, jak změnit omezení velikosti datové sady na _200_:
 
@@ -48,7 +48,7 @@ V současné době **má aktuálně maximální** povolenou hodnotu _5000_, kter
 Další možností pro práci s velkými sadami dat je ovládací prvek **Skip** . Tento ovládací prvek umožňuje vašemu dotazu přeskočit nebo přeskočit definovaný počet záznamů před vrácením výsledků. Funkce **Skip** je užitečná pro dotazy, které seřadí výsledky smysluplně, kde je záměrem získat záznamy někam uprostřed sady výsledků dotazu. Pokud jsou požadované výsledky na konci vrácené datové sady, je efektivnější použít jinou konfiguraci řazení a načíst výsledky z horní části sady dat.
 
 > [!NOTE]
-> Při použití příkazu **Přeskočit**doporučujeme seřazení výsledků alespoň v jednom sloupci pomocí `asc` nebo `desc` . Bez řazení jsou vrácené výsledky náhodné a nelze je opakovat. Pokud `limit` `take` jsou v dotazu nebo použity, **přeskočení** je ignorováno.
+> Při použití příkazu **Přeskočit** doporučujeme seřazení výsledků alespoň v jednom sloupci pomocí `asc` nebo `desc` . Bez řazení jsou vrácené výsledky náhodné a nelze je opakovat. Pokud `limit` `take` jsou v dotazu nebo použity, **přeskočení** je ignorováno.
 
 Následující příklady ukazují, jak přeskočit prvních _10_ záznamů, které dotaz by měl mít za následek, že se místo toho spustí vrácená sada výsledků s jedenáctým záznamem:
 

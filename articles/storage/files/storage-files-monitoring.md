@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 8dc99cda4128635e619afec5ed725da16bbd81ed
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 5357a1f2d1f042f9dab01edf205926992e4225d0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629882"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843821"
 ---
 # <a name="monitoring-azure-files"></a>Monitorování souborů Azure
 
@@ -575,7 +575,7 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 
 2. Klikněte na **výstrahy** a pak klikněte na **+ nové pravidlo výstrahy**.
 
-3. Klikněte na **Upravit prostředek** , vyberte **typ prostředku** a pak klikněte na **Hotovo**. 
+3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** a pak klikněte na **Hotovo**. 
 
 4. Klikněte na **vybrat podmínku** a zadejte pro tuto výstrahu následující informace: 
 
@@ -585,7 +585,7 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 
 5. Klikněte na **Vybrat skupinu akcí** a přidejte do ní skupinu akcí (E-mail, SMS atd.), a to buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
 
-6. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy** , **Popis** a **závažnost**.
+6. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
 
 7. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
 
@@ -596,14 +596,14 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 
 1. V **Azure Portal** přejít na svůj **účet úložiště** .
 2. V části **monitorování** klikněte na **výstrahy** a pak klikněte na **+ nové pravidlo výstrahy**.
-3. Klikněte na **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště `contoso` , vyberte `contoso/file` prostředek.
+3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště `contoso` , vyberte `contoso/file` prostředek.
 4. Kliknutím na **vybrat podmínku** přidáte podmínku.
 5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, vyberte metriku **transakcí** .
 6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **typ odpovědi**.
 7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte **SUCCESSWITHTHROTTLING** (pro SMB) nebo **ClientThrottlingError** (pro REST).
 
    > [!NOTE]
-   > Pokud není uvedená hodnota dimenze SuccessWithThrottling nebo ClientThrottlingError, znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnotu dimenze, klikněte na tlačítko **Přidat vlastní hodnotu** vedle rozevíracího seznamu **hodnoty dimenzí** , zadejte **SuccessWithThrottling** nebo **ClientThrottlingError** , klikněte na tlačítko **OK** a poté opakujte krok #7.
+   > Pokud není uvedená hodnota dimenze SuccessWithThrottling nebo ClientThrottlingError, znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnotu dimenze, klikněte na tlačítko **Přidat vlastní hodnotu** vedle rozevíracího seznamu **hodnoty dimenzí** , zadejte **SuccessWithThrottling** nebo **ClientThrottlingError**, klikněte na tlačítko **OK** a poté opakujte krok #7.
 
 8. Klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
 9. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
@@ -617,14 +617,14 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
     > Pokud používáte statickou prahovou hodnotu, graf metriky může pomoci určit rozumnou prahovou hodnotu, pokud je sdílená složka momentálně omezená. Pokud používáte dynamickou prahovou hodnotu, v grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat.
 
 11. Kliknutím na **Vybrat skupinu akcí** přidejte **skupinu akcí** (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy** , * * popis a **závažnost**.
+12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, * * popis a **závažnost**.
 13. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-size-is-80-of-capacity"></a>Jak vytvořit výstrahu, pokud je velikost sdílené složky Azure 80% kapacity
 
 1. V **Azure Portal** přejít na svůj **účet úložiště** .
 2. V části **monitorování** klikněte na možnost **výstrahy** a potom klikněte na tlačítko **+ nové pravidlo výstrahy**.
-3. Klikněte na **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště `contoso` , vyberte `contoso/file` prostředek.
+3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště `contoso` , vyberte `contoso/file` prostředek.
 4. Kliknutím na **vybrat podmínku** přidáte podmínku.
 5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, a vyberte metriku **kapacity souboru** .
 6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
@@ -636,14 +636,14 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 8. Zadejte **prahovou hodnotu** v bajtech. Pokud je například velikost sdílené složky 100 TiB a chcete dostat upozornění, když je velikost sdílené složky 80% kapacity, prahová hodnota v bajtech je 87960930222080.
 9. Definujte zbytek **parametrů výstrahy** (členitost agregace a četnost vyhodnocení) a klikněte na **Hotovo**.
 10. Kliknutím na vybrat skupinu akcí přidejte skupinu akcí (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-11. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy** , * * popis a **závažnost**.
+11. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, * * popis a **závažnost**.
 12. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-egress-has-exceeded-500-gib-in-a-day"></a>Jak vytvořit výstrahu v případě, že výstup Azure File Share přesáhl 500 GiB za den
 
 1. V **Azure Portal** přejít na svůj **účet úložiště** .
 2. V části monitorování klikněte na možnost **výstrahy** a potom klikněte na tlačítko **+ nové pravidlo výstrahy**.
-3. Klikněte na **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
+3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
 4. Kliknutím na **vybrat podmínku** přidáte podmínku.
 5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, a vyberte **výstupní** metriku.
 6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
@@ -656,7 +656,7 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 9. Klikněte na rozevírací seznam **členitosti agregace** a vyberte **24 hodin**.
 10. Vyberte **frekvenci hodnocení** a **klikněte na Hotovo**.
 11. Kliknutím na **Vybrat skupinu akcí** přidejte **skupinu akcí** (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy** , * * popis a **závažnost**.
+12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, * * popis a **závažnost**.
 13. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
 
 ## <a name="next-steps"></a>Další kroky

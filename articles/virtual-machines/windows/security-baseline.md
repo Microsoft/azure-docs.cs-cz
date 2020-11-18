@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e52c09e6fc3d5e3d4210e213e0eb6af4e473559
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 385f747999bbdb408dd1c5d2f5f12717834e94da
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205024"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844212"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Základní hodnoty zabezpečení Azure pro Windows Virtual Machines
 
@@ -58,7 +58,7 @@ Případně, pokud máte konkrétní případ použití pro centralizovanou brá
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
-**Doprovodné**materiály: Pokud používáte virtuální počítač k hostování webových aplikací, použijte v podsíti virtuálního počítače skupinu zabezpečení sítě (NSG), abyste omezili, jaký síťový provoz, porty a protokoly můžou komunikovat. Při konfiguraci skupin zabezpečení sítě postupujte podle nejnižšího privilegovaného přístupu k síti, aby bylo možné do aplikace pouze vyžadovat požadovaný provoz.
+**Doprovodné** materiály: Pokud používáte virtuální počítač k hostování webových aplikací, použijte v podsíti virtuálního počítače skupinu zabezpečení sítě (NSG), abyste omezili, jaký síťový provoz, porty a protokoly můžou komunikovat. Při konfiguraci skupin zabezpečení sítě postupujte podle nejnižšího privilegovaného přístupu k síti, aby bylo možné do aplikace pouze vyžadovat požadovaný provoz.
 
 Můžete také nasadit Firewall webových aplikací Azure (WAF) před kritickými webovými aplikacemi pro další kontrolu příchozího provozu. Povolte nastavení diagnostiky pro protokoly WAF a ingestování do účtu úložiště, centra událostí nebo Log Analytics pracovního prostoru.
 
@@ -72,7 +72,7 @@ Můžete také nasadit Firewall webových aplikací Azure (WAF) před kritickým
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
 
-**Doprovodné**materiály: ve virtuálních sítích povolte distribuovanou službu DOS (DDoS) standard Protection, abyste se mohli chránit před útoky DDoS. Pomocí Azure Security Center integrované analýzy hrozeb můžete sledovat komunikaci se známými škodlivými IP adresami. Nakonfigurujte odpovídající Azure Firewall na každém z vašich Virtual Network segmentů, s povolenou funkcí Analýza hrozeb a nakonfigurovanou na "výstrahy a zamítnutí" pro škodlivý síťový provoz.
+**Doprovodné** materiály: ve virtuálních sítích povolte distribuovanou službu DOS (DDoS) standard Protection, abyste se mohli chránit před útoky DDoS. Pomocí Azure Security Center integrované analýzy hrozeb můžete sledovat komunikaci se známými škodlivými IP adresami. Nakonfigurujte odpovídající Azure Firewall na každém z vašich Virtual Network segmentů, s povolenou funkcí Analýza hrozeb a nakonfigurovanou na "výstrahy a zamítnutí" pro škodlivý síťový provoz.
 
 K omezení rizika Windows Virtual Machines na schválené IP adresy po omezenou dobu můžete použít Azure Security Center jenom v čase. Pomocí Azure Security Center adaptivního posílení zabezpečení sítě můžete také doporučit konfigurace NSG, které omezují porty a zdrojové IP adresy na základě skutečného provozu a analýzy hrozeb.
 
@@ -104,7 +104,7 @@ K omezení rizika Windows Virtual Machines na schválené IP adresy po omezenou 
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
-**Doprovodné**materiály: kombinací zachycení paketů, které poskytuje Network Watcher a nástroje Open Source ID, můžete zjišťovat neoprávněné vniknutí do sítě pro nejrůznější hrozby. V případě potřeby můžete také nasadit Azure Firewall na segmenty Virtual Network, s povolenou funkcí Analýza hrozeb a nakonfigurovanou na "výstrahy a zamítnutí" pro škodlivý síťový provoz.
+**Doprovodné** materiály: kombinací zachycení paketů, které poskytuje Network Watcher a nástroje Open Source ID, můžete zjišťovat neoprávněné vniknutí do sítě pro nejrůznější hrozby. V případě potřeby můžete také nasadit Azure Firewall na segmenty Virtual Network, s povolenou funkcí Analýza hrozeb a nakonfigurovanou na "výstrahy a zamítnutí" pro škodlivý síťový provoz.
 
 * [Zjišťování neoprávněných vniknutí k síti pomocí Network Watcher a open source nástrojů](../../network-watcher/network-watcher-intrusion-detection-open-source-tools.md)
 
@@ -118,7 +118,7 @@ K omezení rizika Windows Virtual Machines na schválené IP adresy po omezenou 
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
 
-**Doprovodné**materiály: službu Azure Application Gateway můžete nasadit pro webové aplikace s POVOLENým protokolem HTTPS/SSL pro důvěryhodné certifikáty. V případě Azure Application Gateway nasměrujete webový provoz aplikace na konkrétní prostředky přiřazením posluchačů k portům, vytvořením pravidel a přidáním prostředků do back-endového fondu, jako jsou třeba virtuální počítače s Windows.
+**Doprovodné** materiály: službu Azure Application Gateway můžete nasadit pro webové aplikace s POVOLENým protokolem HTTPS/SSL pro důvěryhodné certifikáty. V případě Azure Application Gateway nasměrujete webový provoz aplikace na konkrétní prostředky přiřazením posluchačů k portům, vytvořením pravidel a přidáním prostředků do back-endového fondu, jako jsou třeba virtuální počítače s Windows.
 
 * [Postup nasazení Application Gateway](../../application-gateway/quick-create-portal.md)
 
@@ -132,7 +132,7 @@ K omezení rizika Windows Virtual Machines na schválené IP adresy po omezenou 
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
 
-**Doprovodné**materiály: použití značek Virtual Network služby k definování řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall nakonfigurovaných pro virtuální počítače Azure. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. ApiManagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
+**Doprovodné** materiály: použití značek Virtual Network služby k definování řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall nakonfigurovaných pro virtuální počítače Azure. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. ApiManagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
 * [Pochopení a používání značek služeb](../../virtual-network/service-tags-overview.md)
 
@@ -156,7 +156,7 @@ K omezení rizika Windows Virtual Machines na schválené IP adresy po omezenou 
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
-**Doprovodné**materiály: můžete použít značky pro skupiny zabezpečení sítě (NSG) a další prostředky související se zabezpečením sítě a tokem provozu nakonfigurovanými pro vaše virtuální počítače s Windows. Pro jednotlivá pravidla NSG použijte pole Popis a určete obchodní potřebu nebo dobu trvání pro všechna pravidla, která umožňují provoz do/ze sítě.
+**Doprovodné** materiály: můžete použít značky pro skupiny zabezpečení sítě (NSG) a další prostředky související se zabezpečením sítě a tokem provozu nakonfigurovanými pro vaše virtuální počítače s Windows. Pro jednotlivá pravidla NSG použijte pole Popis a určete obchodní potřebu nebo dobu trvání pro všechna pravidla, která umožňují provoz do/ze sítě.
 
 * [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
@@ -212,7 +212,7 @@ Použijte Azure Policy k ověření (nebo nápravě) konfigurací síťových pr
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 
-**Doprovodné**materiály: protokoly aktivit se dají použít k auditování operací a akcí prováděných s prostředky virtuálního počítače. Protokol aktivit obsahuje všechny operace zápisu (PUT, POST, DELETE) pro vaše prostředky s výjimkou operací čtení (GET). Protokoly aktivit se dají použít k nalezení chyby při odstraňování potíží nebo sledování, jak uživatel ve vaší organizaci změnil prostředek.
+**Doprovodné** materiály: protokoly aktivit se dají použít k auditování operací a akcí prováděných s prostředky virtuálního počítače. Protokol aktivit obsahuje všechny operace zápisu (PUT, POST, DELETE) pro vaše prostředky s výjimkou operací čtení (GET). Protokoly aktivit se dají použít k nalezení chyby při odstraňování potíží nebo sledování, jak uživatel ve vaší organizaci změnil prostředek.
 
 Povolte shromažďování diagnostických dat hostovaného operačního systému nasazením diagnostického rozšíření na vašem Virtual Machines (VM). Pomocí diagnostického rozšíření můžete shromažďovat diagnostická data, jako jsou protokoly aplikací nebo čítače výkonu z virtuálního počítače Azure.
 
@@ -236,7 +236,7 @@ Kromě toho povolte Azure Monitor pro přístup k protokolům auditu a aktivitá
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: shromáždění protokolů zabezpečení z operačních systémů
 
-**Doprovodné**materiály: použijte Azure Security Center k poskytnutí monitorování protokolu událostí zabezpečení pro Azure Virtual Machines. Daný objem dat, který protokol událostí zabezpečení generuje, není ve výchozím nastavení uložen.
+**Doprovodné** materiály: použijte Azure Security Center k poskytnutí monitorování protokolu událostí zabezpečení pro Azure Virtual Machines. Daný objem dat, který protokol událostí zabezpečení generuje, není ve výchozím nastavení uložen.
 
 Pokud vaše organizace chce zachovat data protokolu událostí zabezpečení z virtuálního počítače, může být uložená v pracovním prostoru Log Analytics v požadované vrstvě shromažďování dat nakonfigurované v rámci Azure Security Center.
 
@@ -262,7 +262,7 @@ Pokud vaše organizace chce zachovat data protokolu událostí zabezpečení z v
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
 
-**Doprovodné**materiály: povolte agenta Log Analytics, označovaného také jako Microsoft Monitoring Agent (MMA), a nakonfigurujte ho tak, aby odesílal protokoly do log Analyticsho pracovního prostoru. Agent pro Windows odesílá shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definované v řešení monitorování.
+**Doprovodné** materiály: povolte agenta Log Analytics, označovaného také jako Microsoft Monitoring Agent (MMA), a nakonfigurujte ho tak, aby odesílal protokoly do log Analyticsho pracovního prostoru. Agent pro Windows odesílá shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definované v řešení monitorování.
 
 Analyzujte a monitorujte protokoly pro neobvyklé chování a pravidelně kontrolujte výsledky. Pomocí Azure Monitor můžete zkontrolovat protokoly a provádět dotazy na data protokolu.
 
@@ -284,7 +284,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: povolení výstrah pro aktivity neobvyklé
 
-**Doprovodné**materiály: použijte Azure Security Center nakonfigurované s Log Analytics pracovním prostorem pro monitorování a upozorňování na aktivitu neobvyklé nalezené v protokolech zabezpečení a událostech pro Azure Virtual Machines.
+**Doprovodné** materiály: použijte Azure Security Center nakonfigurované s Log Analytics pracovním prostorem pro monitorování a upozorňování na aktivitu neobvyklé nalezené v protokolech zabezpečení a událostech pro Azure Virtual Machines.
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany a nastavit upozornění pro aktivitu neobvyklé.
 
@@ -334,7 +334,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Doprovodné**materiály: i když je Azure Active Directory doporučená metoda pro správu uživatelského přístupu, můžou mít Azure Virtual Machines místní účty. Místní i doménové účty by měly být přezkoumány a spravovány, normálně s minimálními nároky. Kromě toho využijte Azure Privileged Identity Management pro účty pro správu, které se používají pro přístup k prostředkům virtuálních počítačů.
+**Doprovodné** materiály: i když je Azure Active Directory doporučená metoda pro správu uživatelského přístupu, můžou mít Azure Virtual Machines místní účty. Místní i doménové účty by měly být přezkoumány a spravovány, normálně s minimálními nároky. Kromě toho využijte Azure Privileged Identity Management pro účty pro správu, které se používají pro přístup k prostředkům virtuálních počítačů.
 
 * [Informace pro místní účty jsou k dispozici na adrese](../../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
@@ -346,7 +346,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
-**Doprovodné**materiály: Windows Virtual Machines a Azure Active Directory nemají koncept výchozích hesel. Zákazník zodpovědný za aplikace třetích stran a služby Marketplace, které mohou používat výchozí hesla.
+**Doprovodné** materiály: Windows Virtual Machines a Azure Active Directory nemají koncept výchozích hesel. Zákazník zodpovědný za aplikace třetích stran a služby Marketplace, které mohou používat výchozí hesla.
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -354,7 +354,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
-**Doprovodné**materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu, které mají přístup k vašim virtuálním počítačům. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu. Všechny účty správců používané pro přístup k prostředkům virtuálního počítače Azure můžete spravovat taky pomocí Azure Privileged Identity Management (PIM). Azure Privileged Identity Management poskytuje několik možností, jako je například zvýšení úrovně v čase, vyžadování Multi-Factor Authentication před předpokladem role a možností delegování, aby oprávnění byla k dispozici pouze pro určité časové rámce a vyžadovala schvalovatele.
+**Doprovodné** materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu, které mají přístup k vašim virtuálním počítačům. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu. Všechny účty správců používané pro přístup k prostředkům virtuálního počítače Azure můžete spravovat taky pomocí Azure Privileged Identity Management (PIM). Azure Privileged Identity Management poskytuje několik možností, jako je například zvýšení úrovně v čase, vyžadování Multi-Factor Authentication před předpokladem role a možností delegování, aby oprávnění byla k dispozici pouze pro určité časové rámce a vyžadovala schvalovatele.
 
 * [Pochopení Azure Security Center identity a přístupu](../../security-center/security-center-identity-access.md)
 
@@ -366,7 +366,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: použijte Azure Active Directory jednotné přihlašování (SSO).
 
-**Doprovodné**materiály: zákazníci, kteří používají jednotné přihlašování (SSO), se Azure Active Directory místo konfigurace jednotlivých samostatných přihlašovacích údajů na službu. Použijte Azure Security Center doporučení pro správu identit a přístupu.
+**Doprovodné** materiály: zákazníci, kteří používají jednotné přihlašování (SSO), se Azure Active Directory místo konfigurace jednotlivých samostatných přihlašovacích údajů na službu. Použijte Azure Security Center doporučení pro správu identit a přístupu.
 
 * [Jednotné přihlašování k aplikacím v Azure Active Directory](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -378,7 +378,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Doprovodné**materiály: Povolte Azure AD MFA a sledujte Azure Security Center doporučení pro správu identit a přístupu.
+**Doprovodné** materiály: Povolte Azure AD MFA a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
 * [Jak povolit vícefaktorové ověřování v Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -390,7 +390,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3,6: Používejte zabezpečené pracovní stanice spravované Azure pro úlohy správy
 
-**Doprovodné**materiály: použití privilegovaným přístupem (privilegovaných pracovních stanic) s MFA nakonfigurovaným pro přihlášení a konfiguraci prostředků Azure.
+**Doprovodné** materiály: použití privilegovaným přístupem (privilegovaných pracovních stanic) s MFA nakonfigurovaným pro přihlášení a konfiguraci prostředků Azure.
 
 * [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -440,7 +440,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Doprovodné**materiály: Azure AD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Kromě toho můžete pomocí Azure Active Directory kontroly přístupu k identitám efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatele se může pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. Při používání virtuálních počítačů Azure budete muset zkontrolovat místní skupiny zabezpečení a uživatele, abyste se ujistili, že neexistují žádné neočekávané účty, které by mohly ohrozit systém.
+**Doprovodné** materiály: Azure AD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Kromě toho můžete pomocí Azure Active Directory kontroly přístupu k identitám efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatele se může pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. Při používání virtuálních počítačů Azure budete muset zkontrolovat místní skupiny zabezpečení a uživatele, abyste se ujistili, že neexistují žádné neočekávané účty, které by mohly ohrozit systém.
 
 * [Jak používat recenze Azure identity Access](../../active-directory/governance/access-reviews-overview.md)
 
@@ -466,7 +466,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3,12: výstraha při odchylce chování při přihlašování k účtu
 
-**Doprovodné**materiály: použití funkcí rizika a ochrany Identity v Azure Active Directory ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce související s prostředky vašeho účtu úložiště. Pomocí služby Azure Sentinel byste měli povolit automatizované odezvy pro implementaci reakcí zabezpečení vaší organizace.
+**Doprovodné** materiály: použití funkcí rizika a ochrany Identity v Azure Active Directory ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce související s prostředky vašeho účtu úložiště. Pomocí služby Azure Sentinel byste měli povolit automatizované odezvy pro implementaci reakcí zabezpečení vaší organizace.
 
 * [Jak zobrazit rizikové přihlašování Azure AD](../../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -494,7 +494,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
-**Doprovodné**materiály: používejte značky, které pomáhají při sledování virtuálních počítačů Azure, které ukládají nebo zpracovávají citlivé informace.
+**Doprovodné** materiály: používejte značky, které pomáhají při sledování virtuálních počítačů Azure, které ukládají nebo zpracovávají citlivé informace.
 
 * [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
@@ -526,7 +526,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
 
-**Doprovodné**materiály: implementace řešení třetí strany na hraničních sítích, které monitorují neoprávněný přenos citlivých informací a blokují takové přenosy při upozornění na odborníky na zabezpečení informací.
+**Doprovodné** materiály: implementace řešení třetí strany na hraničních sítích, které monitorují neoprávněný přenos citlivých informací a blokují takové přenosy při upozornění na odborníky na zabezpečení informací.
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý, aby se mohl chránit před ztrátou a ztrátou dat zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
@@ -538,7 +538,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
-**Doprovodné**materiály: data přenášená do, z a mezi Virtual Machines (VM), která používají systém Windows, se šifrují mnoha různými způsoby v závislosti na povaze připojení, jako je třeba připojení k virtuálnímu počítači v relaci RDP nebo SSH.
+**Doprovodné** materiály: data přenášená do, z a mezi Virtual Machines (VM), která používají systém Windows, se šifrují mnoha různými způsoby v závislosti na povaze připojení, jako je třeba připojení k virtuálnímu počítači v relaci RDP nebo SSH.
 
 Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při cestování mezi Cloud Services a zákazníky.
 
@@ -578,7 +578,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
 
-**Doprovodné**materiály: virtuální disky na Windows Virtual Machines (VM) jsou v klidovém stavu zašifrované, a to buď pomocí šifrování na straně serveru, nebo pomocí služby Azure Disk Encryption (ADE). Azure Disk Encryption využívá funkci nástroje BitLocker systému Windows k šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem v rámci virtuálního počítače hosta. Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem se zlepšuje v ADE tím, že vám umožní používat pro vaše virtuální počítače jakékoli typy operačních systémů a image šifrováním dat ve službě úložiště.
+**Doprovodné** materiály: virtuální disky na Windows Virtual Machines (VM) jsou v klidovém stavu zašifrované, a to buď pomocí šifrování na straně serveru, nebo pomocí služby Azure Disk Encryption (ADE). Azure Disk Encryption využívá funkci nástroje BitLocker systému Windows k šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem v rámci virtuálního počítače hosta. Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem se zlepšuje v ADE tím, že vám umožní používat pro vaše virtuální počítače jakékoli typy operačních systémů a image šifrováním dat ve službě úložiště.
 
 * [Šifrování disků spravovaných službou Azure na straně serveru](./disk-encryption.md)
 
@@ -590,13 +590,13 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
-**Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy změny probíhají na virtuálních počítačích a souvisejících prostředcích.
+**Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy změny probíhají na virtuálních počítačích a souvisejících prostředcích.
 
 * [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/platform/alerts-activity-log.md)
 
 * [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/platform/alerts-activity-log.md)
 
-* [Protokolování Analýzy úložiště Azure](../../storage/common/storage-analytics-logging.md)
+* [Protokolování analýz služby Azure Storage](../../storage/common/storage-analytics-logging.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -608,7 +608,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
-**Doprovodné**materiály: dodržujte doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení ve službě Azure Virtual Machines. Použijte doporučené řešení zabezpečení Azure nebo řešení třetí strany pro provádění posouzení ohrožení zabezpečení vašich virtuálních počítačů.
+**Doprovodné** materiály: dodržujte doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení ve službě Azure Virtual Machines. Použijte doporučené řešení zabezpečení Azure nebo řešení třetí strany pro provádění posouzení ohrožení zabezpečení vašich virtuálních počítačů.
 
 * [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -630,7 +630,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5,3: nasazení automatizovaného řešení pro správu oprav pro softwarové tituly třetích stran
 
-**Doprovodné**materiály: můžete použít řešení pro správu oprav třetích stran. Pomocí řešení Azure Update Management můžete spravovat aktualizace a opravy pro virtuální počítače. Update Management spoléhá na místně nakonfigurované úložiště aktualizací, které opraví podporované systémy Windows. Nástroje, jako je System Center Updates Publisher (Updates Publisher), umožňují publikovat vlastní aktualizace do Windows Server Update Services (WSUS). Tento scénář umožňuje Update Management opravit počítače, které používají Configuration Manager jako úložiště aktualizací se softwarem třetích stran.
+**Doprovodné** materiály: můžete použít řešení pro správu oprav třetích stran. Pomocí řešení Azure Update Management můžete spravovat aktualizace a opravy pro virtuální počítače. Update Management spoléhá na místně nakonfigurované úložiště aktualizací, které opraví podporované systémy Windows. Nástroje, jako je System Center Updates Publisher (Updates Publisher), umožňují publikovat vlastní aktualizace do Windows Server Update Services (WSUS). Tento scénář umožňuje Update Management opravit počítače, které používají Configuration Manager jako úložiště aktualizací se softwarem třetích stran.
 
 * [Řešení Update Management v Azure](../../automation/update-management/update-mgmt-overview.md)
 
@@ -650,7 +650,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných ohrožení zabezpečení
 
-**Doprovodné**materiály: použijte výchozí hodnocení rizik (zabezpečené skóre) poskytované Azure Security Center.
+**Doprovodné** materiály: použijte výchozí hodnocení rizik (zabezpečené skóre) poskytované Azure Security Center.
 
 * [Pochopení Azure Security Center zabezpečeného skóre](../../security-center/secure-score-security-controls.md)
 
@@ -678,7 +678,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
-**Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání v závislosti na taxonomii.
+**Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání v závislosti na taxonomii.
 
 * [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
@@ -688,7 +688,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
-**Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování virtuálních počítačů a souvisejících prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
+**Doprovodné** materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování virtuálních počítačů a souvisejících prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 * [Vytvoření dalších předplatných Azure](../../cost-management-billing/manage/create-subscription.md)
 
@@ -702,7 +702,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6,4: definování a údržba inventáře schválených prostředků Azure
 
-**Doprovodné**materiály: měli byste vytvořit inventarizaci schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky. Můžete také použít adaptivní řízení aplikací, což je funkce Azure Security Center, která vám umožní definovat sadu aplikací, které se můžou spouštět na konfigurovaných skupinách počítačů. Tato funkce je k dispozici pro Azure i mimo Azure Windows (všechny verze, Classic nebo Azure Resource Manager) a počítače se systémem Linux.
+**Doprovodné** materiály: měli byste vytvořit inventarizaci schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky. Můžete také použít adaptivní řízení aplikací, což je funkce Azure Security Center, která vám umožní definovat sadu aplikací, které se můžou spouštět na konfigurovaných skupinách počítačů. Tato funkce je k dispozici pro Azure i mimo Azure Windows (všechny verze, Classic nebo Azure Resource Manager) a počítače se systémem Linux.
 
          
 
@@ -714,7 +714,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
-**Doprovodné**materiály: pomocí Azure Policy můžete klást omezení typů prostředků, které se dají vytvořit v zákaznických předplatných, a to pomocí těchto integrovaných definic zásad:
+**Doprovodné** materiály: pomocí Azure Policy můžete klást omezení typů prostředků, které se dají vytvořit v zákaznických předplatných, a to pomocí těchto integrovaných definic zásad:
 - Žádné povolené typy prostředků
 - Povolené typy prostředků
 
@@ -730,7 +730,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
 
-**Doprovodné**materiály: Azure Automation poskytuje úplnou kontrolu během nasazení, operací a vyřazení úloh a prostředků z provozu. Využijte inventarizaci virtuálních počítačů Azure k automatizaci shromažďování informací o veškerém softwaru na Virtual Machines. Poznámka: název softwaru, verze, Vydavatel a čas aktualizace jsou dostupné z Azure Portal. Aby bylo možné získat přístup k datu instalace a dalším informacím, musí zákazník vyžadovat diagnostiku na úrovni hosta a přenést protokoly událostí systému Windows do Log Analytics pracovního prostoru.
+**Doprovodné** materiály: Azure Automation poskytuje úplnou kontrolu během nasazení, operací a vyřazení úloh a prostředků z provozu. Využijte inventarizaci virtuálních počítačů Azure k automatizaci shromažďování informací o veškerém softwaru na Virtual Machines. Poznámka: název softwaru, verze, Vydavatel a čas aktualizace jsou dostupné z Azure Portal. Aby bylo možné získat přístup k datu instalace a dalším informacím, musí zákazník vyžadovat diagnostiku na úrovni hosta a přenést protokoly událostí systému Windows do Log Analytics pracovního prostoru.
 
 Kromě použití Change Tracking ke sledování softwarových aplikací, adaptivní řízení aplikací v Azure Security Center pomocí strojového učení můžete analyzovat aplikace běžící na vašich počítačích a vytvořit z tohoto inteligentního seznamu povolený seznam. Tato funkce značně zjednodušuje proces konfigurace a správy zásad seznamu povolených aplikací a umožňuje vyhnout se nechtěnému softwaru ve vašem prostředí. Můžete nakonfigurovat režim auditování nebo režim vymáhání. Režim auditování Audituje pouze aktivitu na chráněných virtuálních počítačích. Režim vynutilosti vynutil pravidla a zajišťuje, aby aplikace, které nejsou povolené ke spuštění, byly blokované.
 
@@ -746,7 +746,7 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: Odeberte neschválené prostředky Azure a softwarové aplikace
 
-**Doprovodné**materiály: Azure Automation poskytuje úplnou kontrolu během nasazení, operací a vyřazení úloh a prostředků z provozu. K identifikaci veškerého softwaru nainstalovaného v Virtual Machines můžete použít Change Tracking. Můžete implementovat vlastní proces nebo použít konfiguraci Azure Automation stav pro odebrání neautorizovaného softwaru.
+**Doprovodné** materiály: Azure Automation poskytuje úplnou kontrolu během nasazení, operací a vyřazení úloh a prostředků z provozu. K identifikaci veškerého softwaru nainstalovaného v Virtual Machines můžete použít Change Tracking. Můžete implementovat vlastní proces nebo použít konfiguraci Azure Automation stav pro odebrání neautorizovaného softwaru.
 
 * [Seznámení se službou Azure Automation](../../automation/automation-intro.md)
 
@@ -760,7 +760,7 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 
 ### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
 
-**Doprovodné**materiály: použijte Azure Security Center Adaptivní řízení aplikací, abyste zajistili, že se spustí jenom autorizovaný software, a veškerý neoprávněný software se zablokuje spouštění na Azure Virtual Machines.
+**Doprovodné** materiály: použijte Azure Security Center Adaptivní řízení aplikací, abyste zajistili, že se spustí jenom autorizovaný software, a veškerý neoprávněný software se zablokuje spouštění na Azure Virtual Machines.
 
 * [Jak používat Azure Security Center Adaptivní řízení aplikací](../../security-center/security-center-adaptive-application.md)
 
@@ -783,7 +783,7 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: udržování inventáře schválených softwarových titulů
 
-**Doprovodné**materiály: Adaptivní řízení aplikací je inteligentní, automatizované a ucelené řešení od Azure Security Center, které vám pomůže určit, které aplikace se můžou spouštět na počítačích Azure a mimo Azure (Windows a Linux). Implementujte řešení třetích stran, pokud to nevyhovuje požadavkům vaší organizace.
+**Doprovodné** materiály: Adaptivní řízení aplikací je inteligentní, automatizované a ucelené řešení od Azure Security Center, které vám pomůže určit, které aplikace se můžou spouštět na počítačích Azure a mimo Azure (Windows a Linux). Implementujte řešení třetích stran, pokud to nevyhovuje požadavkům vaší organizace.
 
 * [Jak používat Azure Security Center Adaptivní řízení aplikací](../../security-center/security-center-adaptive-application.md)
 
@@ -803,7 +803,7 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: Omezte schopnost uživatelů spouštět skripty ve výpočetních prostředcích.
 
-**Doprovodné**materiály: v závislosti na typu skriptů můžete pomocí konfigurací specifických pro operační systém nebo prostředků třetích stran omezit schopnost uživatelů spouštět skripty v rámci výpočetních prostředků Azure. Můžete také využít Azure Security Center Adaptivní řízení aplikací, abyste zajistili, že se spustí jenom autorizovaný software, a veškerý neautorizovaný software bude zablokovaný na Azure Virtual Machines.
+**Doprovodné** materiály: v závislosti na typu skriptů můžete pomocí konfigurací specifických pro operační systém nebo prostředků třetích stran omezit schopnost uživatelů spouštět skripty v rámci výpočetních prostředků Azure. Můžete také využít Azure Security Center Adaptivní řízení aplikací, abyste zajistili, že se spustí jenom autorizovaný software, a veškerý neautorizovaný software bude zablokovaný na Azure Virtual Machines.
 
 * [Řízení spouštění skriptu PowerShellu v prostředích Windows](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
@@ -815,7 +815,7 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
 
-**Doprovodné**materiály: vysoce rizikové aplikace nasazené ve vašem prostředí Azure mohou být izolované pomocí virtuální sítě, podsítě, předplatných, skupin pro správu atd. a dostatečně zabezpečených pomocí Azure firewall, firewallu webových aplikací (WAF) nebo skupiny zabezpečení sítě (NSG).
+**Doprovodné** materiály: vysoce rizikové aplikace nasazené ve vašem prostředí Azure mohou být izolované pomocí virtuální sítě, podsítě, předplatných, skupin pro správu atd. a dostatečně zabezpečených pomocí Azure firewall, firewallu webových aplikací (WAF) nebo skupiny zabezpečení sítě (NSG).
 
 * [Virtuální sítě a virtuální počítače v Azure](../network-overview.md)
 
@@ -879,7 +879,7 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
 
-**Doprovodné**materiály: existuje několik možností, jak spravovat zabezpečenou konfiguraci pro Azure Virtual Machines (VM) pro nasazení:
+**Doprovodné** materiály: existuje několik možností, jak spravovat zabezpečenou konfiguraci pro Azure Virtual Machines (VM) pro nasazení:
 
 1. Azure Resource Manager šablony: Jedná se o soubory založené na formátu JSON, které slouží k nasazení virtuálního počítače z Azure Portal, a je třeba zachovat vlastní šablonu. Společnost Microsoft provádí údržbu základních šablon.
 
@@ -901,7 +901,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
-**Doprovodné**materiály: Používejte Azure Repos pro bezpečné ukládání a správu kódu, jako jsou vlastní zásady Azure, šablony Azure Resource Manager, požadované konfigurační skripty stavu atd. Chcete-li získat přístup k prostředkům, které spravujete v Azure DevOps, jako je například váš kód, sestavení a sledování práce, musíte mít oprávnění pro tyto konkrétní prostředky. Většina oprávnění je poskytována prostřednictvím integrovaných skupin zabezpečení, jak je popsáno v tématu oprávnění a přístup. Můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps nebo Active Directory, pokud jsou integrované s TFS.
+**Doprovodné** materiály: Používejte Azure Repos pro bezpečné ukládání a správu kódu, jako jsou vlastní zásady Azure, šablony Azure Resource Manager, požadované konfigurační skripty stavu atd. Chcete-li získat přístup k prostředkům, které spravujete v Azure DevOps, jako je například váš kód, sestavení a sledování práce, musíte mít oprávnění pro tyto konkrétní prostředky. Většina oprávnění je poskytována prostřednictvím integrovaných skupin zabezpečení, jak je popsáno v tématu oprávnění a přístup. Můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps nebo Active Directory, pokud jsou integrované s TFS.
 
 * [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -913,7 +913,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Doprovodné**materiály: Pokud používáte vlastní image (např. virtuální pevný disk), použijte řízení přístupu na základě role Azure (Azure RBAC) a zajistěte, aby k nim měli přístup jenom autorizovaní uživatelé.
+**Doprovodné** materiály: Pokud používáte vlastní image (např. virtuální pevný disk), použijte řízení přístupu na základě role Azure (Azure RBAC) a zajistěte, aby k nim měli přístup jenom autorizovaní uživatelé.
 
 * [Pochopení Azure RBAC](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 
@@ -925,7 +925,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: nasazení nástrojů pro správu konfigurace pro prostředky Azure
 
-**Doprovodné**materiály: využijte Azure Policy k oznamování, auditu a prosazování systémových konfigurací pro virtuální počítače. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
+**Doprovodné** materiály: využijte Azure Policy k oznamování, auditu a prosazování systémových konfigurací pro virtuální počítače. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
 * [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -935,7 +935,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: nasazení nástrojů pro správu konfigurace pro operační systémy
 
-**Doprovodné**materiály: konfigurace stavu Azure Automation je služba správy konfigurace pro požadované uzly Konfigurace stavu (DSC) v jakémkoli cloudovém nebo místním datacentru. Umožňuje snadnou a snadnou škálovatelnost v tisících počítačů z centrálního a bezpečného umístění. Můžete snadno připojit počítače, přiřazovat je k deklarativním konfiguracím a zobrazovat sestavy, které zobrazují kompatibilitu jednotlivých počítačů s požadovaným stavem, který jste zadali.
+**Doprovodné** materiály: konfigurace stavu Azure Automation je služba správy konfigurace pro požadované uzly Konfigurace stavu (DSC) v jakémkoli cloudovém nebo místním datacentru. Umožňuje snadnou a snadnou škálovatelnost v tisících počítačů z centrálního a bezpečného umístění. Můžete snadno připojit počítače, přiřazovat je k deklarativním konfiguracím a zobrazovat sestavy, které zobrazují kompatibilitu jednotlivých počítačů s požadovaným stavem, který jste zadali.
 
 * [Připojování počítačů pro správu podle konfigurace stavu Azure Automation](../../automation/automation-dsc-onboarding.md)
 
@@ -945,7 +945,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: Implementujte automatizované monitorování konfigurace pro prostředky Azure.
 
-**Doprovodné**materiály: využijte Azure Security Center k provádění kontrol standardních hodnot vašich virtuálních počítačů Azure. Mezi další metody pro automatizovanou konfiguraci patří použití konfigurace stavu Azure Automation.
+**Doprovodné** materiály: využijte Azure Security Center k provádění kontrol standardních hodnot vašich virtuálních počítačů Azure. Mezi další metody pro automatizovanou konfiguraci patří použití konfigurace stavu Azure Automation.
 
 * [Jak opravit doporučení v Azure Security Center](../../security-center/security-center-remediate-recommendations.md)
 
@@ -957,7 +957,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
 
-**Doprovodné**materiály: konfigurace stavu Azure Automation je služba správy konfigurace pro požadované uzly Konfigurace stavu (DSC) v jakémkoli cloudovém nebo místním datacentru. Umožňuje snadnou a snadnou škálovatelnost v tisících počítačů z centrálního a bezpečného umístění. Můžete snadno připojit počítače, přiřazovat je k deklarativním konfiguracím a zobrazovat sestavy, které zobrazují kompatibilitu jednotlivých počítačů s požadovaným stavem, který jste zadali.
+**Doprovodné** materiály: konfigurace stavu Azure Automation je služba správy konfigurace pro požadované uzly Konfigurace stavu (DSC) v jakémkoli cloudovém nebo místním datacentru. Umožňuje snadnou a snadnou škálovatelnost v tisících počítačů z centrálního a bezpečného umístění. Můžete snadno připojit počítače, přiřazovat je k deklarativním konfiguracím a zobrazovat sestavy, které zobrazují kompatibilitu jednotlivých počítačů s požadovaným stavem, který jste zadali.
 
 * [Připojování počítačů pro správu podle konfigurace stavu Azure Automation](../../automation/automation-dsc-onboarding.md)
 
@@ -967,11 +967,11 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
 
-**Doprovodné**materiály: použití identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy tajných kódů pro vaše cloudové aplikace.
+**Doprovodné** materiály: použití identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy tajných kódů pro vaše cloudové aplikace.
 
 * [Postup při integraci s Azure-Managed identitami](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-* [Vytvoření Key Vault](../../key-vault/secrets/quick-create-portal.md)
+* [Vytvoření Key Vault](../../key-vault/general/quick-create-portal.md)
 
 * [Ověření Key Vault](../../key-vault/general/authentication.md)
 
@@ -983,7 +983,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Doprovodné**materiály: použití spravovaných identit k poskytování služeb Azure s automaticky spravovanou identitou ve službě Azure AD. Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
+**Doprovodné** materiály: použití spravovaných identit k poskytování služeb Azure s automaticky spravovanou identitou ve službě Azure AD. Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
 
 * [Postup konfigurace spravovaných identit](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
@@ -1017,7 +1017,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: předběžná kontrola souborů, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
 
-**Doprovodné**materiály: neplatí pro virtuální počítače Azure, protože se jedná o výpočetní prostředek.
+**Doprovodné** materiály: neplatí pro virtuální počítače Azure, protože se jedná o výpočetní prostředek.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1041,7 +1041,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
-**Doprovodné**materiály: povolení Azure Backup a konfigurace virtuálních počítačů Azure (VM) a požadované frekvence a doby uchování pro automatické zálohování.
+**Doprovodné** materiály: povolení Azure Backup a konfigurace virtuálních počítačů Azure (VM) a požadované frekvence a doby uchování pro automatické zálohování.
 
 * [Přehled zálohování virtuálních počítačů Azure](../../backup/backup-azure-vms-introduction.md)
 
@@ -1053,7 +1053,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny klíče spravované zákazníkem.
 
-**Doprovodné**materiály: Vytvořte snímky virtuálních počítačů Azure nebo spravované disky připojené k těmto instancím pomocí prostředí PowerShell nebo rozhraní REST API. Zálohujte všechny klíče spravované zákazníkem v rámci Azure Key Vault.
+**Doprovodné** materiály: Vytvořte snímky virtuálních počítačů Azure nebo spravované disky připojené k těmto instancím pomocí prostředí PowerShell nebo rozhraní REST API. Zálohujte všechny klíče spravované zákazníkem v rámci Azure Key Vault.
 
 Povolte Azure Backup a cílovou službu Azure Virtual Machines (VM) a také požadovanou frekvenci a dobu uchování. To zahrnuje kompletní zálohu stavu systému. Pokud používáte Azure Disk Encryption, zálohování virtuálních počítačů Azure automaticky zpracovává zálohu klíčů spravovaných zákazníkem.
 
@@ -1071,7 +1071,7 @@ Povolte Azure Backup a cílovou službu Azure Virtual Machines (VM) a také pož
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: ověření všech záloh včetně klíčů spravovaných zákazníkem
 
-**Doprovodné**materiály: Zajistěte, aby bylo možné pravidelně provádět obnovování dat v rámci Azure Backup. V případě potřeby proveďte test obsahu obnovení do izolované virtuální sítě nebo předplatného. Zákazník testuje obnovení zálohovaných klíčů spravovaných zákazníkem.
+**Doprovodné** materiály: Zajistěte, aby bylo možné pravidelně provádět obnovování dat v rámci Azure Backup. V případě potřeby proveďte test obsahu obnovení do izolované virtuální sítě nebo předplatného. Zákazník testuje obnovení zálohovaných klíčů spravovaných zákazníkem.
 
 Pokud používáte Azure Disk Encryption, můžete virtuální počítač Azure obnovit pomocí klíčů pro šifrování disku. Při použití šifrování disku můžete virtuální počítač Azure obnovit pomocí klíčů pro šifrování disku.
 
@@ -1119,7 +1119,7 @@ Pokud používáte Azure Disk Encryption, můžete virtuální počítač Azure 
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
-**Doprovodné**materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
+**Doprovodné** materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
 Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data. Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
 
@@ -1133,7 +1133,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
-**Doprovodné**materiály: proveďte cvičení k otestování funkcí reakce na incidenty na běžných tempo, které vám pomůžou ochránit vaše prostředky Azure. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
+**Doprovodné** materiály: proveďte cvičení k otestování funkcí reakce na incidenty na běžných tempo, které vám pomůžou ochránit vaše prostředky Azure. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
 * [Přečtěte si téma publikace NIST: Průvodce testováním, školením a cvičením programů pro plány a možnosti IT](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
@@ -1143,7 +1143,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
-**Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
+**Doprovodné** materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
 * [Jak nastavit kontakt zabezpečení Azure Security Center](../../security-center/security-center-provide-security-contact-details.md)
 
@@ -1165,7 +1165,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
-**Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" pro výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
+**Doprovodné** materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" pro výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
 
 * [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../../security-center/workflow-automation.md)
 
@@ -1179,7 +1179,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
-**Doprovodné**materiály: řiďte se pravidly společnosti Microsoft o zapojení, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft.
+**Doprovodné** materiály: řiďte se pravidly společnosti Microsoft o zapojení, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft.
 
 * [Pravidla testování průniku pro zapojení](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

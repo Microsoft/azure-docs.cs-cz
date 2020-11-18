@@ -3,12 +3,12 @@ title: Export Jupyter Notebook projektu z Azure Notebooks Preview
 description: Rychle exportujte Jupyter Notebook projekt.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: 3153247b9d15167ab437d6c46142bbd41f8e4b23
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea16bd61b542217fb6f2d5ba1d926a0bc19d4cce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90030442"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844416"
 ---
 # <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Rychlý Start: Export Jupyter Notebook projektu v Azure Notebooks Preview
 
@@ -34,7 +34,7 @@ Existující projekt Azure Notebooks.
 
 Po stažení souborů projektu je můžete použít s jinými řešeními Jupyter Notebook. Některé možnosti jsou popsané v následujících částech: 
 - [Visual Studio Code](#use-notebooks-in-visual-studio-code)
-- [Codespaces GitHubu](#use-notebooks-in-github-codespaces)
+- [GitHub Codespaces](#use-notebooks-in-github-codespaces)
 - [Azure Machine Learning](#use-notebooks-with-azure-machine-learning)
 - [Azure Lab Services](#use-azure-lab-services)
 - [GitHub](#use-github)
@@ -79,7 +79,7 @@ Azure Machine Learning poskytuje ucelenou platformu pro strojové učení, kter�
 1. Pomocí panelu navigace na levé straně vyberte **poznámkové bloky**.
 1. Klikněte na tlačítko **nahrát soubory** a nahrajte soubory projektu, které jste stáhli z Azure Notebooks.
 
-Pokud chcete získat další informace o Azure ML a spuštění poznámkových bloků Jupyter, můžete si projít [dokumentaci](../machine-learning/how-to-run-jupyter-notebooks.md) nebo si v Microsoft Learn vyzkoušet [úvodní a Machine Learning](https://docs.microsoft.com/learn/modules/intro-to-azure-machine-learning-service/) modul.
+Pokud chcete získat další informace o Azure ML a spuštění poznámkových bloků Jupyter, můžete si projít [dokumentaci](../machine-learning/how-to-run-jupyter-notebooks.md) nebo si v Microsoft Learn vyzkoušet [úvodní a Machine Learning](/learn/modules/intro-to-azure-machine-learning-service/) modul.
 
 
 ## <a name="use-azure-lab-services"></a>Použít Azure Lab Services

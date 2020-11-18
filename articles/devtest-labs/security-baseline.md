@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 98f6ce7eee799b1baf29782d7eca11d62cf62353
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207287"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843192"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -62,7 +62,7 @@ Další informace najdete v následujících článcích:
 **Zodpovědnost:** Zákazníka
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
-***Doprovodné materiály:** V Azure Monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim Azure DevTest Labs instancí podle předpisů pro dodržování předpisů vaší organizace.
+**_Doprovodné materiály:_* V Azure Monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim Azure DevTest Labs instancí podle předpisů pro dodržování předpisů vaší organizace.
 
 Další informace najdete v následujícím článku: [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) .
 
@@ -175,9 +175,9 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 - [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Monitorování Azure Security Center:*** Ano
+**Monitorování Azure Security Center:** _ Ano
 
-**Zodpovědnost:** Zákazníka
+_ *Zodpovědnost:** zákazník
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
@@ -387,7 +387,7 @@ Microsoft provádí správu ohrožení zabezpečení na podkladových zdrojích,
 **Zodpovědnost:** Zákazníka
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: nasazení automatizovaného řešení pro správu oprav softwaru třetí strany
-***Doprovodné materiály:*** Jako správce testovacího prostředí můžete použít [artefakty DevTest Labs](add-artifact-vm.md) k automatizaci aktualizací vlastních imagí testovacího prostředí, včetně oprav zabezpečení a dalších aktualizací. 
+**_Doprovodné materiály:_* _ jako správce testovacího prostředí můžete použít [artefakty DevTest Labs](add-artifact-vm.md) k automatizaci aktualizací vlastních imagí testovacího prostředí, včetně oprav zabezpečení a dalších aktualizací. 
 
 Přečtěte si další informace o [objektu pro vytváření imagí DevTest Labs](image-factory-create.md), což je řešení pro konfiguraci s kódováním, které vytváří a distribuuje image automaticky v pravidelných intervalech se všemi požadovanými konfiguracemi. 
 
@@ -396,7 +396,7 @@ Jako správce předplatného můžete také pomocí řešení Azure Update Manag
 - [Řešení Update Management v Azure](../automation/update-management/update-mgmt-overview.md)
 - [Správa aktualizací a oprav pro virtuální počítače](../automation/update-management/update-mgmt-overview.md)
 
-**Monitorování Azure Security Center:** Nelze použít
+_ *Azure Security Center monitorování:** nelze použít
 
 **Zodpovědnost:** Zákazníka
 
@@ -692,7 +692,7 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 
 - [Konfigurace spravované identity pro nasazení Azure Resource Manager prostředí v DevTest Labs](use-managed-identities-environments.md)
 - [Konfigurace spravované identity pro nasazení virtuálních počítačů v DevTest Labs](enable-managed-identities-lab-vms.md)
-- [Vytvoření trezoru klíčů](../key-vault/secrets/quick-create-portal.md)
+- [Vytvoření trezoru klíčů](../key-vault/general/quick-create-portal.md)
 - [Ověření Key Vault](../key-vault/general/authentication.md)
 - [Postup přiřazení zásady přístupu Key Vault](../key-vault/general/assign-access-policy-portal.md)
 

@@ -3,12 +3,12 @@ title: Přehled Azure Notebooks Preview
 description: Spusťte poznámkové bloky Jupyter v cloudu pomocí bezplatné služby Azure Notebooks Preview, kde není potřeba žádné nastavení nebo konfigurace.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d59faaf85a1fdbad776e954e974bafa300f93d85
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85831399"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845131"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Přehled Azure Notebooks Preview
 
@@ -111,4 +111,4 @@ Pokud chcete diskutovat o Azure Notebooks, zapište problém do [úložiště Gi
   - [Předložení prezentace](present-jupyter-notebooks-slideshow.md)
   - [Práce s datovými soubory](work-with-project-data-files.md)
   - [Přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
-  - [Používání Azure Machine Learningu](use-machine-learning-services-jupyter-notebooks.md)
+  - [Používání Azure Machine Learningu](../machine-learning/samples-notebooks.md)

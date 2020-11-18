@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: bc16dde7d3156df08b946a15012a201054cd8e0a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 11/17/2020
+ms.openlocfilehash: ae7b15bf2e2efd72184110a105f68815516569ab
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592596"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843906"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analýza dat pomocí vyhrazených fondů SQL
 
@@ -71,7 +71,7 @@ Azure synapse Analytics poskytuje možnost analyzovat data pomocí vyhrazeného 
     )
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
-1. Spuštění tohoto skriptu bude trvat přibližně 1 minutu. Načte 2 000 000 řádků taxislužby dat NYC do tabulky nazvané **dbo. Cesta**
+1. Tento skript se dokončí přibližně po 60 sekundách. Načte 2 000 000 řádků taxislužby dat NYC do tabulky nazvané **dbo. Cesta**
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Prozkoumat data taxislužby NYC ve vyhrazeném fondu SQL
 

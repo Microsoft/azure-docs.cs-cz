@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: b9b72e8340722f8ddc97b3769ce22e607974a508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4f232d87209a3a5676cac22e67a38b17af6917
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297395"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844314"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k Media Services V3 API – .NET
 
@@ -27,7 +27,7 @@ ms.locfileid: "89297395"
 
 V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .NET SDK pomocí metody Login objektu služby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services
 - Nainstalujte nástroj, který byste chtěli použít pro vývoj pro .NET. Postup v tomto článku ukazuje, jak používat [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Můžete použít Visual Studio Code, viz [práce s jazykem C#](https://code.visualstudio.com/docs/languages/csharp). Nebo můžete použít jiný Editor kódu.
@@ -43,18 +43,22 @@ V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .
 
 Ukázková aplikace v tomto tématu cílí na cíle `netcoreapp2.0` . Kód používá Async Main, který je k dispozici počínaje jazykem C# 7,1. Další podrobnosti najdete v tomto [blogu](/archive/blogs/benwilli/async-main-is-available-but-hidden) .
 
-## <a name="add-required-nuget-packages"></a>Přidat požadované balíčky NuGet
+## <a name="add-required-nuget-packagesassemblies"></a>Přidat požadované balíčky a sestavení NuGet
 
 1. V aplikaci Visual Studio vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce NuGet**.
 2. V okně **konzoly Správce balíčků** `Install-Package` přidejte následující balíčky NuGet pomocí příkazu. Například, `Install-Package Microsoft.Azure.Management.Media`.
 
-|Balíček|Description|
+|Balíček|Popis|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Abyste měli jistotu, že používáte nejnovější balíček Azure Media Services, zkontrolujte [Microsoft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
-|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|Knihovna ověřování ADAL pro sadu Azure SDK pro NET|
-|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Čtení hodnot konfigurace z proměnných prostředí a místních souborů JSON|
-|`Microsoft.Extensions.Configuration.Json`|Čtení hodnot konfigurace z proměnných prostředí a místních souborů JSON
-|`WindowsAzure.Storage`|Sada SDK pro úložiště|
+
+### <a name="other-required-assemblies"></a>Další požadovaná sestavení
+
+- Azure. Storage. BLOBs
+- Microsoft.Extensions.Configuration
+- Microsoft.Extensions.Configuration. EnvironmentVariables
+- Microsoft.Extensions.Configuration.Jsna
+- Microsoft. REST. ClientRuntime. Azure. Authentication
 
 ## <a name="create-and-configure-the-app-settings-file"></a>Vytvoření a konfigurace souboru nastavení aplikace
 
@@ -136,9 +140,9 @@ namespace ConsoleApp1
             get { return new Uri(_config["ArmEndpoint"]); }
         }
 
-        public string Region
+        public string Location
         {
-            get { return _config["Region"]; }
+            get { return _config["Location"]; }
         }
     }
 }
@@ -245,5 +249,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>Viz také
 
-* [Reference k .NET](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [Reference k .NET](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet&preserve-view=true)
 * Další příklady kódu naleznete v tématu úložiště [ukázek sady .NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) .

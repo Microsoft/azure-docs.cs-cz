@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 3141d9937591467870ee4a88d16a96cbdb24a05b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c06fb0830ae709918b668ed60efbaaf47a63ce84
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696213"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842834"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 
@@ -90,7 +90,7 @@ Mezi další možnosti Azure Active Directory patří:
 
 - Azure AD poskytuje identitu jako službu prostřednictvím federace pomocí [Active Directory Federation Services (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs), synchronizace a replikace s místními adresáři.
 
-- [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) je služba Multi-Factor Authentication, která vyžaduje, aby uživatelé ověřili přihlášení pomocí mobilní aplikace, telefonního hovoru nebo textové zprávy. Dá se použít s Azure AD k zabezpečení místních prostředků pomocí serveru Azure Multi-Factor Authentication a také s vlastními aplikacemi a adresáři pomocí sady SDK.
+- [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) je služba Multi-Factor Authentication, která vyžaduje, aby uživatelé ověřili přihlášení pomocí mobilní aplikace, telefonního hovoru nebo textové zprávy. Dá se použít s Azure AD k zabezpečení místních prostředků pomocí serveru Azure Multi-Factor Authentication a také s vlastními aplikacemi a adresáři pomocí sady SDK.
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) umožňuje připojit virtuální počítače Azure k doméně služby Active Directory bez nasazení řadičů domény. K těmto virtuálním počítačům se můžete přihlásit pomocí svých podnikových přihlašovacích údajů Active Directory a spravovat virtuální počítače připojené k doméně pomocí Zásady skupiny pro vymáhání standardních hodnot zabezpečení na všech virtuálních počítačích Azure.
 

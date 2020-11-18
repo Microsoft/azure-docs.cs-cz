@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: a33b702209bf2724098b7a0db907b1b7237ceccf
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 07537e26b169414e3f8ec35cc32945c20f7eb7ce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592613"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843277"
 ---
 # <a name="analyze-with-apache-spark"></a>Analýza pomocí Apache Spark
 
@@ -23,7 +23,7 @@ ms.locfileid: "94592613"
 
 V tomto kurzu se seznámíte se základními kroky pro načtení a analýzu dat pomocí Apache Spark pro Azure synapse.
 
-1. V **datovém** centru klikněte na **Přidat nový prostředek (další** tlačítko plus **propojený** )  >> **Procházet ukázky**. 
+1. V **datovém** centru klikněte na **Přidat nový prostředek (další** tlačítko plus **propojený**)  >> **Procházet ukázky**. 
 1. Vyhledejte **NYC taxislužby & Limousine provize – žluté taxislužby** a klikněte na ni. 
 1. V dolní části stránky stiskněte **pokračovat** a potom **přidejte datovou sadu**. 
 1. Nyní v centru **dat** pod **odkazem** klikněte pravým tlačítkem myši na **Azure Blob Storage >> ukázkové datové sady >> nyc_tlc_yellow** a vyberte **Nový Poznámkový blok** .
@@ -60,8 +60,8 @@ K dispozici jsou data v tabulce v **SQLPOOL1**. Načtěte ho do databáze Spark 
 
 1. Přejděte do centra **dat** , klikněte pravým tlačítkem na **databáze** a pak vyberte **aktualizovat**. Tyto databáze by se měly zobrazit:
 
-    - **SQLPOOL1** (vyhrazený fond SQL)
-    - **nyctaxi** (fond Apache Sparkho serveru)
+    - **SQLPOOL1 (SQL)**
+    - **nyctaxi (Spark)**
 
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analýza dat taxislužby NYC pomocí Sparku a poznámkových bloků
 

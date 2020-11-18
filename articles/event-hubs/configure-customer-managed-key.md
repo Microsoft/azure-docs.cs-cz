@@ -3,12 +3,12 @@ title: Konfigurace vlastního klíče pro šifrování dat služby Azure Event H
 description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování služby Azure Event Hubs data REST.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f073c42373e75fc1cb34d1c752350f9d2c61872
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537254"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843209"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal
 Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Event Hubs spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
@@ -23,7 +23,7 @@ Povolení funkce BYOK je jednorázovým procesem nastavení v oboru názvů.
 
 Pomocí Azure Key Vault můžete spravovat klíče a auditovat používání klíčů. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../key-vault/general/overview.md)
 
-V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí Azure Portal. Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](../key-vault/secrets/quick-create-portal.md).
+V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí Azure Portal. Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: vytvoření Azure Key Vault pomocí Azure Portal](../key-vault/general/quick-create-portal.md).
 
 > [!IMPORTANT]
 > Použití klíčů spravovaných zákazníkem v Azure Event Hubs vyžaduje, aby měl Trezor klíčů nakonfigurované dvě požadované vlastnosti. Jsou to:  **obnovitelné odstranění** a **Nemazat**. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
@@ -53,7 +53,7 @@ Po povolení klíčů spravovaných zákazníkem je potřeba přidružit spravov
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
     ```
 1. Pomocí následujících kroků vytvořte klíče:
-    1. Pokud chcete vytvořit nový klíč, vyberte v nabídce **klíče** v části **Nastavení**možnost **Generovat/importovat** .
+    1. Pokud chcete vytvořit nový klíč, vyberte v nabídce **klíče** v části **Nastavení** možnost **Generovat/importovat** .
         
         ![Vybrat tlačítko pro vygenerování/import](./media/configure-customer-managed-key/select-generate-import.png)
     1. Nastavte **Možnosti** , které se mají **vygenerovat** , a zadejte název klíče.
@@ -80,7 +80,7 @@ Nastavení protokolů diagnostiky pro obory názvů s povoleným BYOK poskytuje 
 Pomocí těchto kroků povolte protokoly pro klíče spravované zákazníkem.
 
 1. V Azure Portal přejděte na obor názvů, který má povolenou možnost BYOK.
-1. V části **monitorování**vyberte **nastavení diagnostiky** .
+1. V části **monitorování** vyberte **nastavení diagnostiky** .
 
     ![Vybrat nastavení diagnostiky](./media/configure-customer-managed-key/select-diagnostic-settings.png)
 1. Vyberte **+ Přidat nastavení diagnostiky**. 

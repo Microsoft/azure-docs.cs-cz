@@ -6,28 +6,28 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: dab065f4d2b025fa15966d81b66b41acb12c54b3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 11/17/2020
+ms.openlocfilehash: 68c211608cfceedaa9d13a595be6d1e5de17f1d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027121"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844998"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Použití vzorů sloupců v mapování toku dat
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Několik transformací toku dat mapování vám umožní odkazovat na sloupce šablon na základě vzorů namísto pevně kódovaných názvů sloupců. Tato shoda se označuje jako *vzory sloupců* . Můžete definovat vzory, které odpovídají sloupcům na základě názvu, datového typu, datového proudu, zdroje nebo pozice místo vyžadování přesných názvů polí. Existují dva scénáře, kdy jsou vhodné vzory sloupců:
+Několik transformací toku dat mapování vám umožní odkazovat na sloupce šablon na základě vzorů namísto pevně kódovaných názvů sloupců. Tato shoda se označuje jako *vzory sloupců*. Můžete definovat vzory, které odpovídají sloupcům na základě názvu, datového typu, datového proudu, zdroje nebo pozice místo vyžadování přesných názvů polí. Existují dva scénáře, kdy jsou vhodné vzory sloupců:
 
 * Pokud se pole příchozího zdroje často mění, například případ změny sloupců v textových souborech nebo NoSQL databázích. Tento scénář je známý jako [posun schématu](concepts-data-flow-schema-drift.md).
 * Pokud chcete provést běžnou operaci pro velkou skupinu sloupců. Například, chcete-li přetypování každého sloupce, který má "Total" v názvu sloupce na hodnotu Double.
 
-Vzory sloupců jsou aktuálně k dispozici v odvozeném sloupci, agregace, výběru a transformaci jímky.
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4Iui1]
 
 ## <a name="column-patterns-in-derived-column-and-aggregate"></a>Vzory sloupců v odvozeném sloupci a agregace
 
-Chcete-li přidat vzorek sloupce do odvozeného sloupce, agregace nebo transformace okna, klikněte na tlačítko **Přidat** nad seznamem sloupců nebo ikonu se symbolem plus vedle existujícího odvozeného sloupce. Vyberte možnost **přidat model sloupce** .
+Chcete-li přidat vzorek sloupce do odvozeného sloupce, agregace nebo transformace okna, klikněte na tlačítko **Přidat** nad seznamem sloupců nebo ikonu se symbolem plus vedle existujícího odvozeného sloupce. Vyberte možnost **přidat model sloupce**.
 
 ![Snímek obrazovky zobrazuje ikonu Plus pro přidání vzoru sloupce.](media/data-flow/add-column-pattern.png "Vzory sloupců")
 
@@ -43,11 +43,17 @@ Pokud chcete ověřit, jestli je vaše shoda podmínky správná, můžete ově�
 
 ![Snímek obrazovky se zobrazí na kartě výstupní schéma.](media/data-flow/columnpattern3.png "Vzory sloupců")
 
+### <a name="hierarchical-pattern-matching"></a>Hierarchické porovnávání vzorů
+
+Můžete také sestavit porovnávání vzorů uvnitř složitých hierarchických struktur. Rozbalte část, `Each MoviesStruct that matches` ve které se zobrazí výzva k zadání jednotlivých hierarchií v datovém proudu. Pak můžete sestavit odpovídající vzory pro vlastnosti v rámci této zvolené hierarchie.
+
+![Snímek obrazovky znázorňující model hierarchického sloupce.](media/data-flow/patterns-hierarchy.png "Vzory sloupců v hierarchiích")
+
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Mapování na základě pravidel pro výběr a jímku
 
 Při mapování sloupců ve zdroji a výběru transformací můžete přidat buď pevné mapování, nebo mapování na základě pravidel. Odpovídá na základě `name` sloupců, `type` , `stream` , `origin` a `position` . Můžete mít libovolnou kombinaci s pevným mapováním a mapování na základě pravidel. Ve výchozím nastavení budou všechny projekce s více než 50 sloupci standardně mapování na základě pravidel, které se shoduje s každým sloupcem a výstupem zadaného názvu. 
 
-Chcete-li přidat mapování na základě pravidla, klikněte na tlačítko **Přidat mapování** a vyberte **mapování na základě pravidel** .
+Chcete-li přidat mapování na základě pravidla, klikněte na tlačítko **Přidat mapování** a vyberte **mapování na základě pravidel**.
 
 ![Snímek obrazovky zobrazuje mapování na základě pravidel vybrané z mapování přidat.](media/data-flow/rule2.png "Mapování na základě pravidel")
 
@@ -77,7 +83,7 @@ Výše uvedený příklad se shoduje se všemi podsloupci komplexního sloupce `
 
 ## <a name="pattern-matching-expression-values"></a>Hodnoty výrazů pro porovnávání vzorů.
 
-* `$$` překládá se za název nebo hodnotu každé shody v době běhu.
+* `$$` překládá se za název nebo hodnotu každé shody v době běhu. Představte si `$$` jako ekvivalent `this` .
 * `name` představuje název každého příchozího sloupce.
 * `type` představuje datový typ každého příchozího sloupce.
 * `stream` představuje název spojený s každým datovým proudem nebo transformaci v toku.

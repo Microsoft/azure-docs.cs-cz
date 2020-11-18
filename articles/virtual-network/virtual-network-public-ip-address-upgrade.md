@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: blehr
-ms.custom: references_regions
-ms.openlocfilehash: a1bd303390626eaea71e588e325fedbd2d8fa4b9
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.custom: references_regions , devx-track-azurecli
+ms.openlocfilehash: 0c248149694c2bf66b8c94e9c0a29a8f7da9f4e4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353352"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843736"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Upgrade veřejných IP adres
 
@@ -100,7 +100,7 @@ Pokud chcete využívat nové funkce v Azure Resource Manager, můžete migrovat
 
 Následující příklad předpokládá předchozí vytvoření klasického **MyReservedIP** Azure vyhrazená IP adresa v **myResourceGroup**. Další podmínkou pro migraci je zajistit, aby bylo předplatné služby Azure Resource Manager zaregistrované pro migraci. Tento postup je popsaný v podrobnostech o krocích 3 a 4 [této stránky](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-ps).
 
-Aby bylo možné migrovat Vyhrazená IP adresa, spusťte následující příkazy pomocí prostředí PowerShell.  Poznámka: Pokud IP adresa není přidružená k žádné službě (pod ní je služba s názvem **mojesluzba** ), tento krok se dá přeskočit.
+Aby bylo možné migrovat Vyhrazená IP adresa, spusťte následující příkazy pomocí prostředí PowerShell.  Poznámka: Pokud IP adresa není přidružená k žádné službě (pod ní je služba s názvem **mojesluzba**), tento krok se dá přeskočit.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -118,13 +118,13 @@ Předchozí příkaz zobrazí všechna upozornění a chyby, které blokují mig
 Move-AzureReservedIP -ReservedIPName $name -Prepare
 Move-AzureReservedIP -ReservedIPName $name -Commit
 ```
-V Azure Resource Manager se vytvoří nová skupina prostředků s použitím názvu migrovaného Vyhrazená IP adresa (v předchozím příkladu se jedná o skupinu prostředků **myReservedIP-migrováno** ).
+V Azure Resource Manager se vytvoří nová skupina prostředků s použitím názvu migrovaného Vyhrazená IP adresa (v předchozím příkladu se jedná o skupinu prostředků **myReservedIP-migrováno**).
 
 # <a name="reserved-to-basic---cli"></a>[**Vyhrazeno pro základní-CLI**](#tab/option-migrate-cli)
 
 Následující příklad předpokládá předchozí vytvoření klasického **MyReservedIP** Azure vyhrazená IP adresa v **myResourceGroup**. Další podmínkou pro migraci je zajistit, aby bylo předplatné služby Azure Resource Manager zaregistrované pro migraci. Tento postup je popsaný v podrobnostech o krocích 3 a 4 [této stránky](https://docs.microsoft.com/azure/virtual-machines/linux/migration-classic-resource-manager-cli).
 
-Aby bylo možné migrovat Vyhrazená IP adresa, spusťte níže uvedené příkazy pomocí Azure CLI.  Poznámka: Pokud IP adresa není přidružená k žádné službě (pod ní je služba s názvem **mojesluzba** and Deployment **myDeployment** ), tento krok se dá přeskočit.
+Aby bylo možné migrovat Vyhrazená IP adresa, spusťte níže uvedené příkazy pomocí Azure CLI.  Poznámka: Pokud IP adresa není přidružená k žádné službě (pod ní je služba s názvem **mojesluzba** and Deployment **myDeployment**), tento krok se dá přeskočit.
 
 ```azurecli-interactive
 ## Variables for the command ##
@@ -142,30 +142,20 @@ Předchozí příkaz zobrazí všechna upozornění a chyby, které blokují mig
 azure network reserved-ip prepare-migration $name
 azure network reserved-ip commit-migration $name
 ```
-V Azure Resource Manager se vytvoří nová skupina prostředků s použitím názvu migrovaného Vyhrazená IP adresa (v předchozím příkladu se jedná o skupinu prostředků **myReservedIP-migrováno** ).
+V Azure Resource Manager se vytvoří nová skupina prostředků s použitím názvu migrovaného Vyhrazená IP adresa (v předchozím příkladu se jedná o skupinu prostředků **myReservedIP-migrováno**).
 
 ---
 
 ## <a name="limitations"></a>Omezení
 
-* Tato funkce je v tuto chvíli dostupná jenom v těchto oblastech:<br>
-USA – středozápad<br>
-USA – středosever<br>
-USA – západ<br>
-Západní USA 2<br>
-Norsko – východ<br>
-Jižní Afrika – sever<br>
-East US<br>
-Severní Evropa<br>
-Jižní Korea – střed<br>
-Indie – střed<br>
-USA – východ 2<br>
-Švýcarsko – sever<br>
-Indie – západ<br>
-Německo – sever<br>
-Střední Kanada<br>
-Francie – jih<br>
-Indie – západ
+* Tato funkce není aktuálně k dispozici v následujících oblastech:<br>
+USA (Gov) – Virginia<br>
+US DoD – východ<br>
+US DoD – střed<br>
+Čína – východ<br>
+Čína – východ 2<br>
+Čína – sever<br>
+Čína – sever 2
 
 * Aby bylo možné upgradovat základní veřejnou IP adresu, nelze ji přidružit k žádnému prostředku Azure.  Přečtěte si prosím [tuto stránku](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) , kde najdete další informace, jak zrušit přidružení veřejných IP adres.  Podobně, aby bylo možné migrovat Vyhrazená IP adresa, nelze je přidružit k žádné cloudové službě.  Další informace o tom, jak zrušit přidružení rezervovaných IP adres, najdete na [této stránce](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) .  
 * Veřejné IP adresy upgradované z úrovně Basic na standard SKU budou mít i nadále žádné [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) , a proto se nedají přidružit k prostředku Azure, který je buď redundantní v zóně nebo v oblasti.  Všimněte si, že to platí jenom pro oblasti, které nabízí zóny dostupnosti.

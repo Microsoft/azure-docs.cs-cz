@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 28b3bc5adfc3c2e83de658947193b6046a455c32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00594c3ec060076ad249af7e93e0a3d5a1eccdb4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231499"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845148"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Základní hodnoty zabezpečení Azure pro Network Watcher
 
@@ -28,7 +28,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
-**Doprovodné**materiály: nepoužitelné; Network Watcher má možnost monitorovat připojení mezi koncovým bodem a virtuálním počítačem, ale nemůže být zabezpečená virtuální sítí, skupinou zabezpečení sítě ani Azure Firewall.
+**Doprovodné** materiály: nepoužitelné; Network Watcher má možnost monitorovat připojení mezi koncovým bodem a virtuálním počítačem, ale nemůže být zabezpečená virtuální sítí, skupinou zabezpečení sítě ani Azure Firewall.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -36,7 +36,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuálních sítí, podsítí a síťových karet
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher umožňuje analyzovat protokoly toků a poskytovat bohatou vizualizaci dat, ale Network Watcher sám o sobě nevytváří protokoly toku ani capturable pakety.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher umožňuje analyzovat protokoly toků a poskytovat bohatou vizualizaci dat, ale Network Watcher sám o sobě nevytváří protokoly toku ani capturable pakety.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -44,7 +44,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -52,7 +52,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher není zdrojem s potenciálním ozářením pro veřejné sítě, které je potřeba chránit před škodlivými přenosy.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher není zdrojem s potenciálním ozářením pro veřejné sítě, které je potřeba chránit před škodlivými přenosy.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -60,7 +60,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="15-record-network-packets"></a>1,5: zaznamenání síťových paketů
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher umožňuje analyzovat protokoly toků a poskytovat bohatou vizualizaci dat, ale Network Watcher sám o sobě nevytváří protokoly toku ani capturable pakety.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher umožňuje analyzovat protokoly toků a poskytovat bohatou vizualizaci dat, ale Network Watcher sám o sobě nevytváří protokoly toku ani capturable pakety.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -68,7 +68,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher není zdrojem s potenciálním ozářením pro veřejné sítě, které je potřeba chránit před škodlivými přenosy.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher není zdrojem s potenciálním ozářením pro veřejné sítě, které je potřeba chránit před škodlivými přenosy.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -76,7 +76,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -84,7 +84,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher umožňuje analyzovat protokoly toků a poskytovat bohatou vizualizaci dat, ale Network Watcher sama o sobě není koncový bod, kde můžete filtrovat nebo povolit provoz pomocí značek služeb nebo skupin zabezpečení sítě.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher umožňuje analyzovat protokoly toků a poskytovat bohatou vizualizaci dat, ale Network Watcher sama o sobě není koncový bod, kde můžete filtrovat nebo povolit provoz pomocí značek služeb nebo skupin zabezpečení sítě.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -108,7 +108,7 @@ Network Watcher by měl být povolený.
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
-**Doprovodné**materiály: nepoužitelné; i když Azure Network Watcher podporuje značky, Network Watcher sám o sobě neřídí tok síťového provozu.
+**Doprovodné** materiály: nepoužitelné; i když Azure Network Watcher podporuje značky, Network Watcher sám o sobě neřídí tok síťového provozu.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -132,7 +132,7 @@ Network Watcher by měl být povolený.
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
-**Doprovodné**materiály: nepoužitelné; Microsoft udržuje čas používaný pro prostředky Azure, jako je například Azure Network Watcher, pro časová razítka v protokolech.
+**Doprovodné** materiály: nepoužitelné; Microsoft udržuje čas používaný pro prostředky Azure, jako je například Azure Network Watcher, pro časová razítka v protokolech.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -164,7 +164,7 @@ Network Watcher by měl být povolený.
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: shromáždění protokolů zabezpečení z operačních systémů
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -172,7 +172,7 @@ Network Watcher by měl být povolený.
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
-**Doprovodné**materiály: v Azure monitor nastavte dobu uchování protokolu pro Log Analytics pracovní prostory, které jsou přidružené k Azure Network Watcher na základě předpisů pro dodržování předpisů vaší organizace.
+**Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro Log Analytics pracovní prostory, které jsou přidružené k Azure Network Watcher na základě předpisů pro dodržování předpisů vaší organizace.
 
 * [Postup nastavení parametrů uchovávání protokolů](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
@@ -194,7 +194,7 @@ Network Watcher by měl být povolený.
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: povolení výstrah pro aktivity neobvyklé
 
-**Doprovodné**materiály: můžete nakonfigurovat, aby přijímaly výstrahy na základě protokolů aktivit souvisejících s Azure Network Watcher. Azure Monitor umožňuje nakonfigurovat výstrahu pro odesílání e-mailových oznámení, volání Webhooku nebo vyvolání aplikace logiky Azure.
+**Doprovodné** materiály: můžete nakonfigurovat, aby přijímaly výstrahy na základě protokolů aktivit souvisejících s Azure Network Watcher. Azure Monitor umožňuje nakonfigurovat výstrahu pro odesílání e-mailových oznámení, volání Webhooku nebo vyvolání aplikace logiky Azure.
 
 * [Správa výstrah v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
 
@@ -204,7 +204,7 @@ Network Watcher by měl být povolený.
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher nezpracovává ani nevytváří protokoly související s malwarem.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher nezpracovává ani nevytváří protokoly související s malwarem.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -212,7 +212,7 @@ Network Watcher by měl být povolený.
 
 ### <a name="29-enable-dns-query-logging"></a>2,9: povolení protokolování dotazů DNS
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher nezpracovává ani nevytváří protokoly související s DNS.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher nezpracovává ani nevytváří protokoly související s DNS.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -220,7 +220,7 @@ Network Watcher by měl být povolený.
 
 ### <a name="210-enable-command-line-audit-logging"></a>2,10: povolení protokolování auditu příkazového řádku
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -232,7 +232,7 @@ Network Watcher by měl být povolený.
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Doprovodné**materiály: udržování inventáře uživatelských účtů, které mají přístup správce k řídicí rovině (například Azure Portal) Azure Network Watcher. Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlašujete do Azure, musí být přiřazený k předdefinovaným rolím vlastník, přispěvatele nebo přispěvatele sítě nebo přiřazený k vlastní roli, která je přiřazená k akcím uvedeným pro konkrétní Network Watcher možnosti.
+**Doprovodné** materiály: udržování inventáře uživatelských účtů, které mají přístup správce k řídicí rovině (například Azure Portal) Azure Network Watcher. Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlašujete do Azure, musí být přiřazený k předdefinovaným rolím vlastník, přispěvatele nebo přispěvatele sítě nebo přiřazený k vlastní roli, která je přiřazená k akcím uvedeným pro konkrétní Network Watcher možnosti.
 
 K nakonfigurování řízení přístupu na základě role Azure (Azure RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory.
 
@@ -246,7 +246,7 @@ K nakonfigurování řízení přístupu na základě role Azure (Azure RBAC) m�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
-**Doprovodné**materiály: Azure AD nemá koncept výchozích hesel. Další prostředky Azure, které vyžadují heslo, vynutí vytvoření hesla s požadavky na složitost a minimální délkou hesla, která se liší v závislosti na službě. Zodpovídáte za aplikace třetích stran a služby Marketplace, které mohou používat výchozí hesla.
+**Doprovodné** materiály: Azure AD nemá koncept výchozích hesel. Další prostředky Azure, které vyžadují heslo, vynutí vytvoření hesla s požadavky na složitost a minimální délkou hesla, která se liší v závislosti na službě. Zodpovídáte za aplikace třetích stran a služby Marketplace, které mohou používat výchozí hesla.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -254,7 +254,7 @@ K nakonfigurování řízení přístupu na základě role Azure (Azure RBAC) m�
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
-**Doprovodné**materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu.
+**Doprovodné** materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu.
 
 Kromě toho můžete použít doporučení z Azure Security Center nebo integrovaných zásad Azure, jako je například:
 - K vašemu předplatnému by měl být přiřazený víc než jeden vlastník.
@@ -271,7 +271,7 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
-**Doprovodné**materiály: nepoužitelné; jednotné přihlašování (SSO) zvyšuje zabezpečení a pohodlí, když se uživatelé přihlásí k vlastním aplikacím v Azure Active Directory (AD). Přístup k Azure Network Watcher je už integrovaný s Azure Active Directory a je přístupný prostřednictvím Azure Portal a také Azure Resource Manager REST API.
+**Doprovodné** materiály: nepoužitelné; jednotné přihlašování (SSO) zvyšuje zabezpečení a pohodlí, když se uživatelé přihlásí k vlastním aplikacím v Azure Active Directory (AD). Přístup k Azure Network Watcher je už integrovaný s Azure Active Directory a je přístupný prostřednictvím Azure Portal a také Azure Resource Manager REST API.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -279,7 +279,7 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Doprovodné**materiály: povolte Azure Active Directory Multi-Factor Authentication a sledujte Azure Security Center doporučení pro správu identit a přístupu.
+**Doprovodné** materiály: povolte Azure Active Directory Multi-Factor Authentication a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
 * [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
@@ -291,11 +291,11 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
 
-**Pokyny**: použití pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) s povolenou službou Azure Multi-Factor Authentication (MFA) pro přihlášení a konfiguraci prostředků souvisejících s ověřováním v Azure.
+**Pokyny**: použití pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) s povolenou službou azure AD Multi-Factor Authentication (MFA) pro přihlášení a konfiguraci prostředků souvisejících s ověřováním v Azure.
 
 * [Pracovní stanice s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Plánování cloudového nasazení Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Plánování nasazení služby Azure AD založené na cloudu Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -337,7 +337,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Doprovodné**materiály: Azure Active Directory (AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
+**Doprovodné** materiály: Azure Active Directory (AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
 * [Pochopení sestav Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
 
@@ -349,7 +349,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: sledování pokusů o přístup k deaktivovaným přihlašovacím údajům
 
-**Doprovodné**materiály: použití Azure Active Directory (AD) jako centrálního ověřování a autorizačního systému pro Azure Network Watcher. Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
+**Doprovodné** materiály: použití Azure Active Directory (AD) jako centrálního ověřování a autorizačního systému pro Azure Network Watcher. Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
 Máte přístup ke zdrojům přihlašovacích aktivit, auditování a rizikových protokolů událostí Azure AD, které vám umožní integrovat s ověřováním Azure Sentinel nebo SIEM třetí strany.
 
@@ -365,7 +365,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
-**Doprovodné**materiály: pro odchylku chování přihlášení k účtu na rovině ovládacího prvku (např. Azure Portal) použijte funkce Azure AD Identity Protection a detekce rizik ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
+**Doprovodné** materiály: pro odchylku chování přihlášení k účtu na rovině ovládacího prvku (např. Azure Portal) použijte funkce Azure AD Identity Protection a detekce rizik ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
 * [Jak zobrazit rizikové přihlášení ke službě Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
@@ -379,7 +379,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
 
-**Doprovodné**materiály: nepoužitelné; Customer Lockbox se nedá použít pro Azure Network Watcher.
+**Doprovodné** materiály: nepoužitelné; Customer Lockbox se nedá použít pro Azure Network Watcher.
 
 * [Seznam služeb podporovaných Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
 
@@ -393,7 +393,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
-**Doprovodné**materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
+**Doprovodné** materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
 * [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -415,7 +415,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
 
-**Doprovodné**materiály: Společnost Microsoft spravuje základní infrastrukturu pro Azure Network Watcher a související prostředky a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
+**Doprovodné** materiály: Společnost Microsoft spravuje základní infrastrukturu pro Azure Network Watcher a související prostředky a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
 * [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -437,7 +437,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher sám o sobě nedrží žádná zákaznická data.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher sám o sobě nedrží žádná zákaznická data.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -459,7 +459,7 @@ Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlaš
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Microsoft spravuje základní infrastrukturu pro Azure Network Watcher a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Microsoft spravuje základní infrastrukturu pro Azure Network Watcher a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
 * [Ochrana zákaznických dat Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -469,7 +469,7 @@ Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlaš
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher sám o sobě nedrží žádná zákaznická data. Network Watcher ukládá protokoly a další informace v Azure Storage, kde jsou data v klidovém stavu zašifrovaná.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher sám o sobě nedrží žádná zákaznická data. Network Watcher ukládá protokoly a další informace v Azure Storage, kde jsou data v klidovém stavu zašifrovaná.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -491,7 +491,7 @@ Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlaš
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
-**Doprovodné**materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Network Watcher.
+**Doprovodné** materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Network Watcher.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -499,7 +499,7 @@ Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlaš
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -507,7 +507,7 @@ Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlaš
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5,3: nasazení automatizovaného řešení pro správu oprav pro softwarové tituly třetích stran
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -515,7 +515,7 @@ Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlaš
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: porovnání kontrol zabezpečení back-to-back
 
-**Doprovodné**materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Network Watcher.
+**Doprovodné** materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Network Watcher.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -523,7 +523,7 @@ Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlaš
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných ohrožení zabezpečení
 
-**Doprovodné**materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Network Watcher.
+**Doprovodné** materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Network Watcher.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -551,7 +551,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
-**Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
+**Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
 * [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -561,7 +561,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
-**Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků Azure. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
+**Doprovodné** materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků Azure. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných zákazníka pomocí následujících integrovaných definic zásad:
 - Žádné povolené typy prostředků
@@ -579,7 +579,7 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: definování a údržba inventáře schválených prostředků Azure
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -587,7 +587,7 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
-**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných.
+**Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných.
 
 Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v rámci svých předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
@@ -601,7 +601,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -609,7 +609,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: Odeberte neschválené prostředky Azure a softwarové aplikace
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -617,7 +617,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -625,7 +625,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
-**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
+**Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 - Žádné povolené typy prostředků
 - Povolené typy prostředků
 
@@ -639,7 +639,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: udržování inventáře schválených softwarových titulů
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -657,7 +657,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: Omezte schopnost uživatelů spouštět skripty ve výpočetních prostředcích.
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -665,7 +665,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -691,7 +691,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -699,7 +699,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
 
-**Doprovodné**materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.
+**Doprovodné** materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.
 
 * [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -711,7 +711,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -719,7 +719,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
-**Doprovodné**materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
+**Doprovodné** materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
 * [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -731,7 +731,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -755,7 +755,7 @@ Další zdroje informací:
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: nasazení nástrojů pro správu konfigurace pro operační systémy
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -763,7 +763,7 @@ Další zdroje informací:
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: Implementujte automatizované monitorování konfigurace pro prostředky Azure.
 
-**Doprovodné**materiály: použijte předdefinované definice Azure Policy a také Azure Policy aliasy v oboru názvů Microsoft. Network a vytvořte tak vlastní definice Azure Policy pro upozornění, audit a vymáhání systémových konfigurací. K automatickému vymáhání konfigurací pro prostředky Azure použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje].
+**Doprovodné** materiály: použijte předdefinované definice Azure Policy a také Azure Policy aliasy v oboru názvů Microsoft. Network a vytvořte tak vlastní definice Azure Policy pro upozornění, audit a vymáhání systémových konfigurací. K automatickému vymáhání konfigurací pro prostředky Azure použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje].
 
 * [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -773,7 +773,7 @@ Další zdroje informací:
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -781,7 +781,7 @@ Další zdroje informací:
 
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
 
-**Doprovodné**materiály: nepoužitelné; nejsou k dispozici žádná hesla, tajné klíče ani klíče přidružené k Azure Network Watcher.
+**Doprovodné** materiály: nepoužitelné; nejsou k dispozici žádná hesla, tajné klíče ani klíče přidružené k Azure Network Watcher.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -789,7 +789,7 @@ Další zdroje informací:
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher nevyužívá spravované identity.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher nevyužívá spravované identity.
 
 * [Služby Azure, které podporují spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
 
@@ -813,7 +813,7 @@ Další zdroje informací:
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky. Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure App Service), ale neběží na zákaznickém obsahu.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky. Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure App Service), ale neběží na zákaznickém obsahu.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -821,7 +821,7 @@ Další zdroje informací:
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: předběžná kontrola souborů, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
 
-**Doprovodné**materiály: nelze použít. Network Watcher nefunguje u uživatelem nahraných dat.
+**Doprovodné** materiály: nelze použít. Network Watcher nefunguje u uživatelem nahraných dat.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -829,7 +829,7 @@ Další zdroje informací:
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: Ujistěte se, že antimalwarový software a signatury jsou aktualizované.
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure, ale neběží na zákaznickém obsahu.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure, ale neběží na zákaznickém obsahu.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -841,7 +841,7 @@ Další zdroje informací:
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher sám o sobě nedrží žádná zákaznická data.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher sám o sobě nedrží žádná zákaznická data.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -849,7 +849,7 @@ Další zdroje informací:
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny klíče spravované zákazníkem.
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher sám o sobě nedrží žádná zákaznická data.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher sám o sobě nedrží žádná zákaznická data.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -857,7 +857,7 @@ Další zdroje informací:
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: ověření všech záloh včetně klíčů spravovaných zákazníkem
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher sám o sobě nedrží žádná zákaznická data.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher sám o sobě nedrží žádná zákaznická data.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -865,7 +865,7 @@ Další zdroje informací:
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
-**Doprovodné**materiály: nepoužitelné; Azure Network Watcher sám o sobě nedrží žádná zákaznická data.
+**Doprovodné** materiály: nepoužitelné; Azure Network Watcher sám o sobě nedrží žádná zákaznická data.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -893,7 +893,7 @@ Další zdroje informací:
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
-**Doprovodné**materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
+**Doprovodné** materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
 Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure.
 
@@ -903,7 +903,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
-**Doprovodné**materiály: proveďte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
+**Doprovodné** materiály: proveďte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
 * [Přečtěte si téma publikace NIST: Průvodce testováním, školením a cvičením programů pro plány a možnosti IT](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
@@ -913,7 +913,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
-**Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka přistupovala protiprávní nebo neoprávněná strana. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
+**Doprovodné** materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka přistupovala protiprávní nebo neoprávněná strana. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
 * [Jak nastavit kontakt zabezpečení Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
 
@@ -923,7 +923,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
-**Doprovodné**materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
+**Doprovodné** materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
 
 * [Postup konfigurace průběžného exportu](https://docs.microsoft.com/azure/security-center/continuous-export)
 
@@ -935,7 +935,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
-**Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
+**Doprovodné** materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 
 * [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
 

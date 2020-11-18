@@ -2,19 +2,19 @@
 title: Nejčastější dotazy k Azure synapse Analytics (pracovní prostory Preview)
 description: Nejčastější dotazy ke službě Azure synapse Analytics (pracovní prostory verze Preview)
 services: synapse-analytics
-author: ArnoMicrosoft
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d7e8ea231dd6db9eab6cf9115f6ce2e62893371a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 530ebe09ee0ca44b0a5fbd4b8da2784e2c7ae7ea
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305408"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843889"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure synapse Analytics (pracovní prostory ve verzi Preview)
 
@@ -101,8 +101,6 @@ Odpověď: Ano, můžete použít obchodní aplikace třetích stran, jako je Ta
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
-- [Použití sady Synapse Studio](quickstart-synapse-studio.md)
-- [Vytvoření vyhrazeného fondu SQL](quickstart-create-sql-pool-portal.md)
-- [Použít fond SQL bez serveru](quickstart-sql-on-demand.md)
-- [Vytvoření fondu Apache Spark bez serveru](quickstart-create-apache-spark-pool-portal.md) 
+* [Začínáme s Azure synapse Analytics](get-started.md)
+* [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
+* [Použití bezserverového fondu SQL](quickstart-sql-on-demand.md)

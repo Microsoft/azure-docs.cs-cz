@@ -3,13 +3,13 @@ title: Rychlý Start – sestavení image kontejneru na vyžádání v Azure
 description: Použijte Azure Container Registry příkazy k rychlému sestavení, vložení a spuštění image kontejneru Docker na vyžádání v cloudu Azure.
 ms.topic: quickstart
 ms.date: 09/25/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 1b4dcc05747ceae52c649c366c3faf437e77b560
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: contperfq1, devx-track-azurecli
+ms.openlocfilehash: adb63b716172c979ca31f1ef70bf1523ff1ad5cc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098905"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845046"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Rychlý Start: sestavení a spuštění image kontejneru pomocí Azure Container Registrych úloh
 
@@ -27,7 +27,7 @@ Po tomto rychlém startu se seznámíte s pokročilejšími funkcemi úloh ACR s
 
 Pokud ještě nemáte registr kontejnerů, vytvořte nejprve skupinu prostředků pomocí příkazu [AZ Group Create][az-group-create] . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus* .
+Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

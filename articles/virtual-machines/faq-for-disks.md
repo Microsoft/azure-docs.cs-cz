@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3d199ae202cbe99176f3ca5d0ae82ecdeec84ca4
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d6cf0ba06293a073fc8fbe26e2386f1852429002
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684504"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843991"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disků virtuálních počítačů Azure IaaS a spravovaných a nespravovaných disků Premium
 
@@ -76,7 +76,7 @@ V závislosti na oblasti, ve které se nachází skupina dostupnosti, která pou
 
 Nastavíte privátní účet úložiště pro diagnostiku virtuálních počítačů.
 
-**Jaký druh podpory Role-Based Access Control je pro Managed Disks k dispozici?**
+**Jaký druh podpory řízení přístupu na základě role Azure je k dispozici pro Managed Disks?**
 
 Managed Disks podporuje tři výchozí role klíče:
 

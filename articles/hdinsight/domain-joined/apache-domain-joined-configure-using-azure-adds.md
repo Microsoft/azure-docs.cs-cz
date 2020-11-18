@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperfq2
 ms.date: 10/30/2020
-ms.openlocfilehash: ed2ce13ab10c09dc738e522566742078819e8341
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 4c0d12e4c37476b9ae71962251105ef92aa39120
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148384"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845199"
 ---
 # <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>Konfigurace clusterů HDInsight pro integraci služby Active Directory s Balíček zabezpečení podniku
 
@@ -48,9 +48,9 @@ Když je povolená služba Azure služba AD DS, všechny uživatele a objekty se
 
 Název domény, který používáte se službou Azure služba AD DS, musí mít 39 znaků nebo méně, aby bylo možné pracovat se službou HDInsight.
 
-Můžete se rozhodnout synchronizovat jenom skupiny, které potřebují přístup ke clusterům HDInsight. Tato možnost synchronizace pouze některých skupin se nazývá *rozsah synchronizace* . Pokyny najdete v tématu [Konfigurace vymezené synchronizace z Azure AD do spravované domény](../../active-directory-domain-services/scoped-synchronization.md).
+Můžete se rozhodnout synchronizovat jenom skupiny, které potřebují přístup ke clusterům HDInsight. Tato možnost synchronizace pouze některých skupin se nazývá *rozsah synchronizace*. Pokyny najdete v tématu [Konfigurace vymezené synchronizace z Azure AD do spravované domény](../../active-directory-domain-services/scoped-synchronization.md).
 
-Pokud povolujete zabezpečený protokol LDAP, zadejte název domény do pole název subjektu. A alternativní název subjektu v certifikátu. Pokud je název domény *contoso100.onmicrosoft.com* , ujistěte se, že v názvu subjektu certifikátu a alternativním názvu subjektu existuje přesný název. Další informace najdete v tématu [Konfigurace protokolu Secure LDAP pro spravovanou doménu Azure služba AD DS](../../active-directory-domain-services/tutorial-configure-ldaps.md).
+Pokud povolujete zabezpečený protokol LDAP, zadejte název domény do pole název subjektu. A alternativní název subjektu v certifikátu. Pokud je název domény *contoso100.onmicrosoft.com*, ujistěte se, že v názvu subjektu certifikátu a alternativním názvu subjektu existuje přesný název. Další informace najdete v tématu [Konfigurace protokolu Secure LDAP pro spravovanou doménu Azure služba AD DS](../../active-directory-domain-services/tutorial-configure-ldaps.md).
 
 Následující příklad vytvoří certifikát podepsaný svým držitelem. Název domény *contoso100.onmicrosoft.com* je v obou `Subject` (název subjektu) i v `DnsName` alternativním názvu subjektu.
 
@@ -62,7 +62,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 ```
 
 > [!NOTE]  
-> Oprávnění k povolení služby Azure služba AD DS mají pouze správci klientů. Pokud je úložiště clusteru Azure Data Lake Storage Gen1 nebo Gen2, musíte zakázat Azure Multi-Factor Authentication jenom pro uživatele, kteří budou potřebovat přístup ke clusteru pomocí základního ověřování pomocí protokolu Kerberos.
+> Oprávnění k povolení služby Azure služba AD DS mají pouze správci klientů. Pokud je úložiště clusteru Azure Data Lake Storage Gen1 nebo Gen2, musíte zakázat Azure AD Multi-Factor Authentication jenom pro uživatele, kteří budou potřebovat přístup ke clusteru pomocí základního ověřování pomocí protokolu Kerberos.
 >
 > Pomocí [důvěryhodných IP adres](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) nebo [podmíněného přístupu](../../active-directory/conditional-access/overview.md) můžete Multi-Factor Authentication pro konkrétní uživatele zakázat *jenom* v případě, že přistupují k rozsahu IP adres pro virtuální síť clusteru HDInsight. Pokud používáte podmíněný přístup, ujistěte se, že koncový bod služby Active Directory je ve virtuální síti HDInsight povolený.
 >
@@ -99,11 +99,11 @@ Správce Azure služba AD DS může například přiřadit tuto roli ke skupině
 > [!NOTE]  
 > Azure služba AD DS musí být nasazené ve virtuální síti založené na Azure Resource Manager. Klasické virtuální sítě se pro Azure služba AD DS nepodporují. Další informace najdete v tématu [povolení Azure Active Directory Domain Services pomocí Azure Portal](../../active-directory-domain-services/tutorial-create-instance-advanced.md#create-and-configure-the-virtual-network).
 
-Povolte Azure služba AD DS. Místní server DNS (Domain Name System) se pak spouští na virtuálních počítačích služby Active Directory. Nakonfigurujte virtuální síť Azure služba AD DS tak, aby používala tyto vlastní servery DNS. Pokud chcete najít správné IP adresy, vyberte v kategorii **Spravovat** možnost **vlastnosti** a podívejte se **na IP adresa ve virtuální síti** .
+Povolte Azure služba AD DS. Místní server DNS (Domain Name System) se pak spouští na virtuálních počítačích služby Active Directory. Nakonfigurujte virtuální síť Azure služba AD DS tak, aby používala tyto vlastní servery DNS. Pokud chcete najít správné IP adresy, vyberte v kategorii **Spravovat** možnost **vlastnosti** a podívejte se **na IP adresa ve virtuální síti**.
 
 ![Vyhledání IP adres pro místní servery DNS](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
 
-Změňte konfiguraci serverů DNS ve virtuální síti Azure služba AD DS. Pokud chcete použít tyto vlastní IP adresy, vyberte **servery DNS** v kategorii **Nastavení** . Pak vyberte možnost **vlastní** , do textového pole zadejte první IP adresu a vyberte **Uložit** . Pomocí stejných kroků přidejte další IP adresy.
+Změňte konfiguraci serverů DNS ve virtuální síti Azure služba AD DS. Pokud chcete použít tyto vlastní IP adresy, vyberte **servery DNS** v kategorii **Nastavení** . Pak vyberte možnost **vlastní** , do textového pole zadejte první IP adresu a vyberte **Uložit**. Pomocí stejných kroků přidejte další IP adresy.
 
 ![Aktualizuje se konfigurace DNS virtuální sítě.](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
 
@@ -136,11 +136,11 @@ Po povolení protokolu ESP se automaticky zjišťují a ověřují běžné chyb
 
 Když vytvoříte cluster HDInsight s protokolem ESP, je nutné dodat následující parametry:
 
-* **Uživatel s rolí správce clusteru** : Vyberte správce pro váš cluster z synchronizované instance služby Azure služba AD DS. Tento doménový účet už musí být synchronizovaný a dostupný v Azure služba AD DS.
+* **Uživatel s rolí správce clusteru**: Vyberte správce pro váš cluster z synchronizované instance služby Azure služba AD DS. Tento doménový účet už musí být synchronizovaný a dostupný v Azure služba AD DS.
 
-* **Skupiny přístupu clusteru** : skupiny zabezpečení, jejichž uživatelé chcete synchronizovat a mají přístup ke clusteru, by měly být k dispozici v Azure služba AD DS. Příkladem je skupina HiveUsers. Další informace najdete v tématu [Vytvoření skupiny a přidání členů v Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+* **Skupiny přístupu clusteru**: skupiny zabezpečení, jejichž uživatelé chcete synchronizovat a mají přístup ke clusteru, by měly být k dispozici v Azure služba AD DS. Příkladem je skupina HiveUsers. Další informace najdete v tématu [Vytvoření skupiny a přidání členů v Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-* **Adresa URL LDAPS** : příklad je `ldaps://contoso.com:636` .
+* **Adresa URL LDAPS**: příklad je `ldaps://contoso.com:636` .
 
 Spravovanou identitu, kterou jste vytvořili, si můžete vybrat z rozevíracího seznamu **uživatelsky přiřazené spravované identity** při vytváření nového clusteru.
 

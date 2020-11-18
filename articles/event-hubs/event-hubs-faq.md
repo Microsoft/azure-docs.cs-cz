@@ -3,12 +3,12 @@ title: Nejčastější dotazy – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje seznam nejčastějších dotazů pro Azure Event Hubs a jejich odpovědí.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 3b55521c9f90192891b450e3e161607a334c3a00
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 41b010315adaf5a0eca2939b1d42fe4d7c159628
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909705"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843039"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
@@ -59,10 +59,10 @@ Event Hubs emituje vyčerpávající metriky, které poskytují stav vašich pro
 Azure Event Hubs ukládá zákaznická data. Tato data se automaticky ukládají Event Hubs v jedné oblasti, takže tato služba automaticky splňuje požadavky na umístění dat v oblasti, včetně těch, které jsou uvedené v [Centru zabezpečení](https://azuredatacentermap.azurewebsites.net/).
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty potřebuji v bráně firewall otevřít? 
-K posílání a přijímání zpráv můžete použít následující protokoly s Azure Service Bus:
+Pomocí následujících protokolů se službou Azure Event Hubs můžete posílat a přijímat události:
 
-- AMQP
-- HTTP
+- Rozšířený protokol řízení front zpráv (AMQP) 1,0 (AMQP)
+- Http (Hypertext Transfer Protocol 1,1) s protokolem TLS (HTTPS)
 - Apache Kafka
 
 V následující tabulce najdete Odchozí porty, které musíte otevřít, abyste mohli tyto protokoly používat ke komunikaci s Azure Event Hubs. 
@@ -70,8 +70,21 @@ V následující tabulce najdete Odchozí porty, které musíte otevřít, abyst
 | Protokol | Porty | Podrobnosti | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 a 5672 | Viz [Průvodce protokolem AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) . | 
-| HTTP, HTTPS | 80, 443 |  |
+| HTTPS | 443 | Tento port se používá pro HTTP/REST API a pro sokety AMQP-over-Web. |
 | Kafka | 9093 | Viz [použití Event Hubs z aplikací Kafka](event-hubs-for-kafka-ecosystem-overview.md) .
+
+Port HTTPS se vyžaduje pro odchozí komunikaci, i když se AMQP používá přes port 5671, protože klientské sady SDK prováděly různé operace správy, které provádějí klientské sady SDK, a získání tokenů z Azure Active Directory (Pokud se používá) se spouští přes protokol HTTPS. 
+
+Oficiální sady Azure SDK obecně používají protokol AMQP pro posílání a příjem událostí z Event Hubs. Možnost protokolu AMQP-over-WebSockets se spouští přes port TCP 443 stejně jako rozhraní HTTP API, ale je jinak funkčně identická s prostým AMQP. Tato možnost má vyšší latenci počátečního připojení, protože dodatečné metody handshake jsou rychlejší a mírně větší režijní náklady na sdílení portu HTTPS. Pokud je vybrán tento režim, je pro komunikaci dostačující port TCP 443. Následující možnosti povolují výběr režimu jednoduchých AMQP nebo AMQP WebSockets:
+
+| Jazyk | Možnost   |
+| -------- | ----- |
+| .NET     | [EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) – vlastnost s [EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) nebo [EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) |
+| Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. TransportType](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) s [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) nebo [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
+| Node  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) má `webSocketOptions` vlastnost. |
+| Python | [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) s [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) nebo [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) |
+
+
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>Jaké IP adresy potřebuji povolit?
 Pokud chcete najít správné IP adresy, které se mají přidat do seznamu povolených připojení, postupujte takto:
@@ -148,7 +161,7 @@ security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXX";
 ```
-Poznámka: Pokud sasl.jaas.config ve vašem rozhraní není podporovaná konfigurace, vyhledejte konfigurace používané k nastavení uživatelského jména a hesla SASL a použijte je. Nastavte uživatelské jméno na $ConnectionString a heslo pro připojovací řetězec Event Hubs.
+Poznámka: Pokud sasl.jaas.config ve vašem rozhraní není podporovaná konfigurace, najděte konfigurace používané k nastavení uživatelského jména a hesla SASL a používejte je místo toho. Nastavte uživatelské jméno na $ConnectionString a heslo pro připojovací řetězec Event Hubs.
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Jaká je velikost zprávy nebo události pro Event Hubs?
 Maximální povolená velikost zprávy pro Event Hubs je 1 MB.
@@ -194,8 +207,8 @@ Při vytváření oboru názvů Basic nebo Standard úrovně v Azure Portal mů�
 1. Na stránce **obor názvů sběrnice událostí** vyberte v nabídce vlevo možnost **Nová žádost o podporu** . 
 1. Na stránce **Nová žádost o podporu** proveďte tyto kroky:
     1. Pro **Shrnutí** Popište problém několika slovy. 
-    1. Jako **typ problému** vyberte **kvóta** . 
-    1. V případě **podtypu problému** vyberte **požadavek na zvýšení nebo snížení jednotky propustnosti** . 
+    1. Jako **typ problému** vyberte **kvóta**. 
+    1. V případě **podtypu problému** vyberte **požadavek na zvýšení nebo snížení jednotky propustnosti**. 
     
         :::image type="content" source="./media/event-hubs-faq/support-request-throughput-units.png" alt-text="Stránka Support request":::
 
@@ -230,14 +243,14 @@ Můžete požádat o zvýšení počtu oddílů na 40 (přesně) tím, že odeš
 1. Na stránce **obor názvů sběrnice událostí** vyberte v nabídce vlevo možnost **Nová žádost o podporu** . 
 1. Na stránce **Nová žádost o podporu** proveďte tyto kroky:
     1. Pro **Shrnutí** Popište problém několika slovy. 
-    1. Jako **typ problému** vyberte **kvóta** . 
-    1. Pro **podtyp problému** vyberte **požadavek na změnu oddílu** . 
+    1. Jako **typ problému** vyberte **kvóta**. 
+    1. Pro **podtyp problému** vyberte **požadavek na změnu oddílu**. 
     
-        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="Stránka Support request":::
+        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="Zvýšit počet oddílů":::
 
 Počet oddílů se dá zvýšit přesně na 40. V takovém případě je potřeba zvýšit počet počet propustnosti také na 40. Pokud se později rozhodnete snížit limit hodnoty v hodnotě <= 20, limit maximálního počtu oddílů se také sníží na 32. 
 
-Zmenšení oddílů neovlivní existující centra událostí, protože oddíly se aplikují na úrovni centra událostí a po vytvoření centra nejsou proměnlivé. 
+Zmenšení oddílů neovlivní existující centra událostí, protože oddíly se aplikují na úrovni centra událostí a po vytvoření centra jsou neměnné. 
 
 ## <a name="pricing"></a>Ceny
 
@@ -257,7 +270,7 @@ Celková velikost všech uložených událostí, včetně jakékoli interní re�
 
 Každá událost odeslaná do centra událostí se počítá jako fakturovatelná zpráva. *Událost* příchozího přenosu dat je definovaná jako jednotka dat, která je menší nebo rovna 64 KB. Jakákoli událost, která je menší nebo rovna 64 KB, se považuje za jednu fakturovatelnou událost. Pokud je událost větší než 64 KB, počítá se počet fakturovaných událostí podle velikosti události v násobcích 64 KB. Například událost 8 KB odeslaná do centra událostí se účtuje jako jedna událost, ale zpráva 96-KB odeslaná do centra událostí se účtuje jako dvě události.
 
-Události spotřebované z centra událostí, stejně jako operace správy a řídicích volání, jako jsou kontrolní body, se nepočítají jako Fakturovatelné události příchozího přenosu dat, ale budou se účtovat až do snížení počtu jednotek propustnosti.
+Události spotřebované z centra událostí a operace správy a řídicí volání, jako jsou kontrolní body, se nepočítají jako Fakturovatelné události příchozího přenosu dat, ale narůstá na rezervu jednotek propustnosti.
 
 ### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Vztahují se na Event Hubs poplatky za zprostředkované připojení?
 

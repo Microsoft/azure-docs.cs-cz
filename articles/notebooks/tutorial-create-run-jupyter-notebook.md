@@ -4,12 +4,12 @@ description: Naučte se, jak vytvořit a spustit Jupyter Notebook v Azure Notebo
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47e9a07c7b8abffc06bfd30a792af46ba04adf5c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589247"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844467"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Kurz: vytvoření a spuštění Jupyter Notebook pomocí Pythonu
 
@@ -56,7 +56,7 @@ Model lineární regrese, který vytvoříte v poznámkovém bloku, nakreslí da
 ### <a name="upload-the-data-file"></a>Nahrát datový soubor
 
 1. Na řídicím panelu projektu v Azure Notebooks vyberte **Odeslat**  >  **z adresy URL** .
-1. V místní nabídce zadejte do pole **Adresa URL souboru** následující adresu url a *cricket_chirps.csv* v poli **název souboru**a potom vyberte **Hotovo**.
+1. V místní nabídce zadejte do pole **Adresa URL souboru** následující adresu url a *cricket_chirps.csv* v poli **název souboru** a potom vyberte **Hotovo**.
 
     ```url
     https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
@@ -111,7 +111,7 @@ V rámci poznámkového bloku můžete vždy použít příkazy jako `!pip insta
 
 1. Na řídicím panelu projekt vyberte **nastavení projektu**.
 1. V místní nabídce, která se zobrazí, vyberte kartu **prostředí** a pak vyberte **+ Přidat**.
-1. V prvním ovládacím prvku rozevíracího seznamu (operace) v části **nastavení prostředí**vyberte možnost **Requirements.txt**.
+1. V prvním ovládacím prvku rozevíracího seznamu (operace) v části **nastavení prostředí** vyberte možnost **Requirements.txt**.
 1. V druhém ovládacím prvku rozevírací seznam (název souboru) vyberte možnost *requirements.txt* (soubor, který jste vytvořili).
 1. V třetím ovládacím prvku rozevíracího seznamu (verze Pythonu) vyberte **Python verze 3,6**.
 1. Vyberte **Uložit**.
@@ -134,7 +134,7 @@ S připraveným datovým souborem a nastavením prostředí projektu teď může
 
 ## <a name="tour-the-notebook-interface"></a>Prohlídka rozhraní poznámkového bloku
 
-Pomocí poznámkového bloku, který běží, můžete přidat kód a Markdownu buňky, spouštět tyto buňky a spravovat operace poznámkového bloku. Nejdřív ale stačí pár minut seznámit se s rozhraním. Úplnou dokumentaci **získáte pomocí**  >  příkazu nabídky**help poznámkového bloku** .
+Pomocí poznámkového bloku, který běží, můžete přidat kód a Markdownu buňky, spouštět tyto buňky a spravovat operace poznámkového bloku. Nejdřív ale stačí pár minut seznámit se s rozhraním. Úplnou dokumentaci **získáte pomocí**  >  příkazu nabídky **help poznámkového bloku** .
 
 V horní části okna se zobrazí následující položky:
 
@@ -155,10 +155,10 @@ Skupiny příkazů nabídky jsou následující:
 | Nabídka | Popis |
 | --- | --- |
 | File | Příkazy pro správu souboru poznámkového bloku, včetně příkazů pro vytváření a kopírování poznámkových bloků, zobrazení náhledu tisku a stažení poznámkového bloku v nejrůznějších formátech. |
-| Edit | Typické příkazy pro vyjímání, kopírování a vkládání buněk, hledání a nahrazování hodnot, správu příloh buněk a vkládání obrázků.  |
+| Upravit | Typické příkazy pro vyjímání, kopírování a vkládání buněk, hledání a nahrazování hodnot, správu příloh buněk a vkládání obrázků.  |
 | Zobrazit | Příkazy pro řízení viditelnosti různých částí uživatelského rozhraní Jupyter. |
 | Vložit | Příkazy pro vložení nové buňky nad nebo pod aktuální buňku. Tyto příkazy použijete často při vytváření poznámkového bloku. |
-| Mobilní telefon | Různé příkazy **spuštění** spouštějí jednu nebo více buněk v různých kombinacích. Příkazy **typu buňky** mění typ buňky mezi **kódem**, **Markdownu**a **nezpracovaným NBConvert** (prostý text). Příkazy **aktuální výstupy** a **všechny výstupy** řídí způsob, jakým se zobrazuje výstup z kódu spuštění, a obsahuje příkaz pro vymazání všech výstupů. |
+| Mobilní telefon | Různé příkazy **spuštění** spouštějí jednu nebo více buněk v různých kombinacích. Příkazy **typu buňky** mění typ buňky mezi **kódem**, **Markdownu** a **nezpracovaným NBConvert** (prostý text). Příkazy **aktuální výstupy** a **všechny výstupy** řídí způsob, jakým se zobrazuje výstup z kódu spuštění, a obsahuje příkaz pro vymazání všech výstupů. |
 | jádro | Příkazy pro správu způsobu spouštění kódu v jádru spolu s **jádrem Change** pro změnu jazyka nebo verze Pythonu používané ke spuštění poznámkového bloku. |
 | Data | Příkazy pro nahrání a stažení souborů z projektu nebo relace. Viz [práce s datovými soubory projektu](work-with-project-data-files.md) |
 | Widgety | Příkazy pro správu [widgetů Jupyter](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html), které poskytují další možnosti pro vizualizaci, mapování a vykreslování.|
@@ -174,7 +174,7 @@ K naplnění poznámkového bloku v následujících částech použijete někol
 
     ![Rozevírací seznam panelu nástrojů typu buňky](media/tutorial/tutorial-cell-type-drop-down.png)
 
-1. Pomocí rozevíracího seznamu na panelu nástrojů změňte typ buňky na **Markdownu** ; Alternativně použijte **Cell**  >  příkaz Markdownu nabídky**typ buňky**  >  **Markdown** :
+1. Pomocí rozevíracího seznamu na panelu nástrojů změňte typ buňky na **Markdownu** ; Alternativně použijte **Cell**  >  příkaz Markdownu nabídky **typ buňky**  >  **Markdown** :
 
     ![Příkaz nabídky pro typ buňky](media/tutorial/tutorial-cell-type-menu.png)
 
@@ -240,7 +240,7 @@ Jak je vysvětleno v předchozí buňce Markdownu, můžete zahrnout příkazy p
 
     ![Indikátor zaneprázdněnosti pro jádro poznámkového bloku](media/tutorial/tutorial-kernel-busy.png)
 
-1. I když se všechny `pip install` příkazy spouštějí a protože jste už tyto balíčky nainstalovali do prostředí projektu (a protože jsou taky zahrnuté ve výchozím nastavení Azure Notebooks), zobrazí se spousta zpráv, které si přečtou požadavek, který je už spokojen. Všechny tyto výstupy je možné vizuálně odvolávat, takže vyberte tuto buňku (pomocí jediného kliknutí) a pak použijte **Cell**  >  **přepínač výstupy**buňky buňky  >  **Toggle** pro skrytí výstupu. Výstup můžete zcela odebrat také pomocí příkazu **clear** v této nabídce.
+1. I když se všechny `pip install` příkazy spouštějí a protože jste už tyto balíčky nainstalovali do prostředí projektu (a protože jsou taky zahrnuté ve výchozím nastavení Azure Notebooks), zobrazí se spousta zpráv, které si přečtou požadavek, který je už spokojen. Všechny tyto výstupy je možné vizuálně odvolávat, takže vyberte tuto buňku (pomocí jediného kliknutí) a pak použijte **Cell**  >  **přepínač výstupy** buňky buňky  >  **Toggle** pro skrytí výstupu. Výstup můžete zcela odebrat také pomocí příkazu **clear** v této nabídce.
 
     Příkaz **přepínání** skrývá pouze poslední výstup z buňky; Pokud znovu spustíte tuto buňku, výstup se znovu zobrazí.
 
@@ -259,7 +259,7 @@ K naplnění zbytku poznámkového bloku můžete dál vytvořit řadu Markdownu
 
 I když můžete počkat na spuštění poznámkového bloku po vytvoření každé buňky, je zajímavou pro spuštění každé buňky při jejím vytváření. Ne všechny buňky zobrazují výstup; Pokud se nezobrazí žádné chyby, Předpokládejme, že buňka běžela normálně.
 
-Každá buňka kódu závisí na kódu, který byl spuštěn v předchozích buňkách, a pokud ponecháte spustit jednu z buněk, mohou další buňky způsobit chyby. Pokud zjistíte, že jste zapomněli spustit buňku, zkuste před spuštěním aktuální buňky použít **buňku**, která je  >  dřív**spuštěna** .
+Každá buňka kódu závisí na kódu, který byl spuštěn v předchozích buňkách, a pokud ponecháte spustit jednu z buněk, mohou další buňky způsobit chyby. Pokud zjistíte, že jste zapomněli spustit buňku, zkuste před spuštěním aktuální buňky použít **buňku**, která je  >  dřív **spuštěna** .
 
 Pokud se zobrazí neočekávané výsledky (což pravděpodobně budete mít!), zkontrolujte, zda je v případě potřeby každá buňka nastavena na "Code" nebo "Markdownu". Například chyba "Neplatná syntaxe" obvykle nastane, pokud jste zadali Markdownu do buňky kódu.
 
@@ -407,9 +407,9 @@ Zkuste teď znovu spustit celý Poznámkový blok:
 
 Během úprav poznámkového bloku můžete jeho aktuální stav uložit pomocí příkazu Uložit **soubor**  >  **a kontrolní bod** nebo tlačítko Uložit na panelu nástrojů. Kontrolní bod vytvoří snímek, ke kterému se můžete kdykoli vrátit během relace. Kontrolní body umožňují provést řadu experimentálních změn, a pokud tyto změny nefungují, můžete se vrátit k kontrolnímu bodu pomocí příkazu vrátit **se změnami**  >  **do kontrolního bodu** . Alternativním přístupem je vytvořit nadbytečné buňky a komentovat libovolný kód, který nechcete spouštět; Jak funguje.
 
-**File**  >  K vytvoření kopie aktuálního stavu poznámkového bloku do nového souboru v projektu můžete použít také příkaz soubor**vytvořit kopii** . Toto kopírování se automaticky otevře na nové kartě prohlížeče.
+**File**  >  K vytvoření kopie aktuálního stavu poznámkového bloku do nového souboru v projektu můžete použít také příkaz soubor **vytvořit kopii** . Toto kopírování se automaticky otevře na nové kartě prohlížeče.
 
-Až budete s poznámkovým blokem hotovi **File**, použijte  >  příkaz**Zavřít a zastavit** soubor, který zavře Poznámkový blok a ukončí jádro, na kterém je spuštěný. Azure Notebooks pak automaticky zavře kartu prohlížeče.
+Až budete s poznámkovým blokem hotovi **File**, použijte  >  příkaz **Zavřít a zastavit** soubor, který zavře Poznámkový blok a ukončí jádro, na kterém je spuštěný. Azure Notebooks pak automaticky zavře kartu prohlížeče.
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>Ladění poznámkových bloků pomocí Visual Studio Code
 
@@ -433,4 +433,4 @@ Další funkce Visual Studio Code pro notebooky Jupyter také najdete v tématu 
 - [Předložení prezentace](present-jupyter-notebooks-slideshow.md)
 - [Práce s datovými soubory](work-with-project-data-files.md)
 - [Přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
-- [Používání Azure Machine Learningu](use-machine-learning-services-jupyter-notebooks.md)
+- [Používání Azure Machine Learningu](../machine-learning/samples-notebooks.md)

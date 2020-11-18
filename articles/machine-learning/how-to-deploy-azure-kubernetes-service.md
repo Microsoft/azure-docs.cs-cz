@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperfq1, deploy
+ms.custom: how-to, contperfq1, deploy, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: b98d3ea69286fe7c23b6c2978b71699ba7eb0e00
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f2ac565b8c6dfce52daeadd20cf3357bc22cd281
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325197"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843804"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 
@@ -95,7 +95,7 @@ Při horizontálním navýšení kapacity a při jejich zmenšování se použí
 
 ## <a name="deploy-to-aks"></a>Nasazení do AKS
 
-Pokud chcete nasadit model do služby Azure Kubernetes, vytvořte __konfiguraci nasazení__ , která popisuje potřebné výpočetní prostředky. Například počet jader a paměti. Potřebujete také __konfiguraci odvození__ , která popisuje prostředí potřebné pro hostování modelu a webové služby. Další informace o vytvoření konfigurace odvození najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
+Pokud chcete nasadit model do služby Azure Kubernetes, vytvořte __konfiguraci nasazení__ , která popisuje potřebné výpočetní prostředky. Například počet jader a paměti. Potřebujete také __konfiguraci odvození__, která popisuje prostředí potřebné pro hostování modelu a webové služby. Další informace o vytvoření konfigurace odvození najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
 > [!NOTE]
 > Počet modelů, které se mají nasadit, je omezený na 1 000 modelů na jedno nasazení (na kontejner).
@@ -154,7 +154,7 @@ Komponenta, která zpracovává automatické škálování pro nasazení modelů
 > [!IMPORTANT]
 > * **Pro nasazení modelů nepovolujte Kubernetes horizontálně pod autoscaleer (hPa)**. To by vedlo k tomu, že se dvě součásti automatického škálování vzájemně konkurují. Služba AzureML-FE je navržená tak, aby automaticky škáloval modely nasazené službou Azure ML, kde HPA by musela odhadnout nebo přibližná využití modelu z obecné metriky, jako je využití procesoru nebo konfigurace vlastní metriky.
 > 
-> * **AzureML-FE neškáluje počet uzlů v clusteru AKS** , protože to může vést k neočekávaným nákladům. Místo toho **škáluje počet replik modelu** v rámci hranic fyzického clusteru. Pokud potřebujete škálovat počet uzlů v rámci clusteru, můžete ručně škálovat cluster nebo [nakonfigurovat modul automatického škálování clusteru AKS](../aks/cluster-autoscaler.md).
+> * **AzureML-FE neškáluje počet uzlů v clusteru AKS**, protože to může vést k neočekávaným nákladům. Místo toho **škáluje počet replik modelu** v rámci hranic fyzického clusteru. Pokud potřebujete škálovat počet uzlů v rámci clusteru, můžete ručně škálovat cluster nebo [nakonfigurovat modul automatického škálování clusteru AKS](../aks/cluster-autoscaler.md).
 
 Automatické škálování se dá řídit nastavením `autoscale_target_utilization` , `autoscale_min_replicas` a `autoscale_max_replicas` pro webovou službu AKS. Následující příklad ukazuje, jak povolit automatické škálování:
 

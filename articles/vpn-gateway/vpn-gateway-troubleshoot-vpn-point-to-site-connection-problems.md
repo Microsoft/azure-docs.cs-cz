@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 908602dff3be2f392bc595f0074db7f95b8936a9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c316aaf02979008b9d2ebc691d54c0fb95a5a52d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660980"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845029"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Řešení potíží: problémy s připojením k bodům Azure Point-to-site
 
@@ -317,7 +317,7 @@ K této chybě dochází, pokud server RADIUS, který jste použili pro ověřov
 
 ### <a name="solution"></a>Řešení
 
-Ujistěte se, že je server RADIUS správně nakonfigurovaný. Další informace najdete v tématu [integrace ověřování pomocí protokolu RADIUS s Azure Multi-Factor Authentication Server](../active-directory/authentication/howto-mfaserver-dir-radius.md).
+Ujistěte se, že je server RADIUS správně nakonfigurovaný. Další informace najdete v tématu [integrace ověřování pomocí protokolu RADIUS s Azure AD Multi-Factor Authentication Server](../active-directory/authentication/howto-mfaserver-dir-radius.md).
 
 ## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>"Chyba 405" při stažení kořenového certifikátu z VPN Gateway
 

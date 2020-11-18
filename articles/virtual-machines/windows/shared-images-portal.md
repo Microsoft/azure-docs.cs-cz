@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e10b1955d50450e43d1dbb180f4d533b6b6ae8b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 57cebed8ac229ed54945d75786b84b3cd2a36252
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978050"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844195"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Vytvoření galerie sdílených imagí Azure pomocí portálu
 
@@ -21,7 +21,7 @@ ms.locfileid: "91978050"
 
 Galerie sdílených imagí umožňuje sdílet vlastní image virtuálních počítačů s ostatními uživateli ve vaší organizaci v rámci oblastí nebo napříč nimi v rámci tenanta AAD. Vyberte, které Image chcete sdílet, které oblasti mají být v nástroji dostupné a které chcete sdílet s. Můžete vytvořit několik galerií, abyste mohli logicky seskupovat sdílené image. 
 
-Galerie je prostředek nejvyšší úrovně, který poskytuje úplné řízení přístupu na základě role (RBAC). Bitové kopie můžou být ve verzi a můžete se rozhodnout pro replikaci každé verze image na jinou sadu oblastí Azure. Galerie funguje pouze se spravovanými bitovými kopiemi.
+Galerie je prostředek na nejvyšší úrovni, který poskytuje úplné řízení přístupu na základě role Azure (Azure RBAC). Bitové kopie můžou být ve verzi a můžete se rozhodnout pro replikaci každé verze image na jinou sadu oblastí Azure. Galerie funguje pouze se spravovanými bitovými kopiemi.
 
 Funkce Galerie sdílených imagí má více typů prostředků. V tomto článku budeme používat nebo sestavovat tyto:
 
@@ -38,18 +38,18 @@ Při práci s tímto článkem nahraďte názvy skupin prostředků a virtuáln�
  
 ## <a name="create-vms"></a>Vytvoření virtuálních počítačů
 
-Nyní můžete vytvořit jeden nebo více nových virtuálních počítačů. Tento příklad vytvoří virtuální počítač s názvem *myVM*v *myResourceGroup*v datovém centru *východní USA* .
+Nyní můžete vytvořit jeden nebo více nových virtuálních počítačů. Tento příklad vytvoří virtuální počítač s názvem *myVM* v *myResourceGroup* v datovém centru *východní USA* .
 
 1. Přejít k definici image. Pomocí filtru prostředků můžete zobrazit všechny dostupné definice obrázků.
 1. Na stránce definice image vyberte v nabídce v horní části stránky **vytvořit virtuální počítač** .
-1. V poli **Skupina prostředků**vyberte **vytvořit novou** a jako název zadejte *myResourceGroup* .
-1. Do **název virtuálního počítače**zadejte *myVM*.
-1. V **oblasti oblast**vyberte *východní USA*.
-1. U **možností dostupnosti**ponechte výchozí možnost *bez nutnosti redundance infrastruktury*.
+1. V poli **Skupina prostředků** vyberte **vytvořit novou** a jako název zadejte *myResourceGroup* .
+1. Do **název virtuálního počítače** zadejte *myVM*.
+1. V **oblasti oblast** vyberte *východní USA*.
+1. U **možností dostupnosti** ponechte výchozí možnost *bez nutnosti redundance infrastruktury*.
 1. Hodnota pro **Image** se automaticky vyplní `latest` verzí image, pokud jste začali ze stránky pro definici image.
-1. Jako **Velikost**zvolte velikost virtuálního počítače ze seznamu dostupných velikostí a pak zvolte **Vybrat**.
-1. V části **účet správce**je v případě, že byla bitová kopie zobecněna, nutné zadat uživatelské jméno, například *azureuser* a heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm). Pokud byla vaše image specializovaná, pole uživatelského jména a hesla se zobrazí šedě, protože se používá uživatelské jméno a heslo pro zdrojový virtuální počítač.
-1. Pokud chcete povolit vzdálený přístup k virtuálnímu počítači, vyberte v části **veřejné příchozí porty**možnost **Povolit vybrané porty** a v rozevíracím seznamu vyberte **RDP (3389)** . Pokud nechcete povolit vzdálený přístup k virtuálnímu počítači, nechte **žádné** vybrané pro **veřejné příchozí porty**.
+1. Jako **Velikost** zvolte velikost virtuálního počítače ze seznamu dostupných velikostí a pak zvolte **Vybrat**.
+1. V části **účet správce** je v případě, že byla bitová kopie zobecněna, nutné zadat uživatelské jméno, například *azureuser* a heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm). Pokud byla vaše image specializovaná, pole uživatelského jména a hesla se zobrazí šedě, protože se používá uživatelské jméno a heslo pro zdrojový virtuální počítač.
+1. Pokud chcete povolit vzdálený přístup k virtuálnímu počítači, vyberte v části **veřejné příchozí porty** možnost **Povolit vybrané porty** a v rozevíracím seznamu vyberte **RDP (3389)** . Pokud nechcete povolit vzdálený přístup k virtuálnímu počítači, nechte **žádné** vybrané pro **veřejné příchozí porty**.
 1. Po dokončení vyberte tlačítko **Revize + vytvořit** v dolní části stránky.
 1. Jakmile virtuální počítač projde ověřením, v dolní části stránky vyberte **vytvořit** a spusťte nasazení.
 

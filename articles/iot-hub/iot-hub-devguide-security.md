@@ -16,12 +16,13 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: 93b692574588396f776c4d62bd24072382ae8471
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+- devx-track-azurecli
+ms.openlocfilehash: 8627681d843d15658882529424375486a4cdb1b9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912136"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845165"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -43,7 +44,7 @@ Musíte mít příslušná oprávnění pro přístup ke všem koncovým bodům 
 
 [Oprávnění](#iot-hub-permissions) můžete udělit následujícími způsoby:
 
-* **Zásady sdíleného přístupu na úrovni IoT Hub** . Zásady sdíleného přístupu můžou udělit libovolnou kombinaci [oprávnění](#iot-hub-permissions). Můžete definovat zásady v [Azure Portal](https://portal.azure.com)programově pomocí [rozhraní API REST IoT Hub prostředků](/rest/api/iothub/iothubresource)nebo pomocí rozhraní příkazového řádku [AZ IoT Hub Policy](/cli/azure/iot/hub/policy) . Nově vytvořené centrum IoT má následující výchozí zásady:
+* **Zásady sdíleného přístupu na úrovni IoT Hub**. Zásady sdíleného přístupu můžou udělit libovolnou kombinaci [oprávnění](#iot-hub-permissions). Můžete definovat zásady v [Azure Portal](https://portal.azure.com)programově pomocí [rozhraní API REST IoT Hub prostředků](/rest/api/iothub/iothubresource)nebo pomocí rozhraní příkazového řádku [AZ IoT Hub Policy](/cli/azure/iot/hub/policy) . Nově vytvořené centrum IoT má následující výchozí zásady:
   
   | Zásady sdíleného přístupu | Oprávnění |
   | -------------------- | ----------- |
@@ -53,7 +54,7 @@ Musíte mít příslušná oprávnění pro přístup ke všem koncovým bodům 
   | registryRead | **RegistryRead** oprávnění |
   | registryReadWrite | **RegistryRead** a **RegistryWrite** oprávnění |
 
-* **Zabezpečovací přihlašovací údaje pro jednotlivá zařízení** . Každý IoT Hub obsahuje [registr identit](iot-hub-devguide-identity-registry.md) pro každé zařízení v tomto registru identity, můžete nakonfigurovat přihlašovací údaje zabezpečení, které udělí **DeviceConnect** oprávnění vymezená na odpovídající koncové body zařízení.
+* **Zabezpečovací přihlašovací údaje pro jednotlivá zařízení**. Každý IoT Hub obsahuje [registr identit](iot-hub-devguide-identity-registry.md) pro každé zařízení v tomto registru identity, můžete nakonfigurovat přihlašovací údaje zabezpečení, které udělí **DeviceConnect** oprávnění vymezená na odpovídající koncové body zařízení.
 
 Například v typickém řešení IoT:
 
@@ -65,7 +66,7 @@ Například v typickém řešení IoT:
 > [!NOTE]
 > Podrobné informace najdete v tématu [oprávnění](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Azure IoT Hub udělí přístup koncovým bodům, když ověří token podle zásad sdíleného přístupu a bezpečnostních přihlašovacích údajů v registru identit.
 
@@ -116,7 +117,7 @@ Při použití SASL PLAIN s AMQP může klient připojující se ke službě IoT
 
 ## <a name="scope-iot-hub-level-credentials"></a>Rozsah přihlašovacích údajů na úrovni IoT Hub
 
-Vytvářením tokenů s omezeným identifikátorem URI prostředků můžete nastavit rozsah zásad zabezpečení na úrovni centra IoT. Například koncový bod pro posílání zpráv typu zařízení-Cloud ze zařízení je **/Devices/{deviceId}/Messages/Events** . Zásady sdíleného přístupu na úrovni služby IoT Hub můžete použít také k podepsání tokenu, jehož resourceURI **DeviceConnect** je **/Devices/{deviceId}** . Tento přístup vytvoří token, který je možné použít jenom pro posílání zpráv jménem zařízení **deviceId** .
+Vytvářením tokenů s omezeným identifikátorem URI prostředků můžete nastavit rozsah zásad zabezpečení na úrovni centra IoT. Například koncový bod pro posílání zpráv typu zařízení-Cloud ze zařízení je **/Devices/{deviceId}/Messages/Events**. Zásady sdíleného přístupu na úrovni služby IoT Hub můžete použít také k podepsání tokenu, jehož resourceURI **DeviceConnect** je **/Devices/{deviceId}**. Tento přístup vytvoří token, který je možné použít jenom pro posílání zpráv jménem zařízení **deviceId**.
 
 Tento mechanismus je podobný [zásadě Event Hubs vydavateli](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)a umožňuje implementovat vlastní metody ověřování.
 
@@ -144,13 +145,13 @@ Tady jsou očekávané hodnoty:
 
 | Hodnota | Popis |
 | --- | --- |
-| označení |Řetězec pro podpis HMAC-SHA256 ve formátu: `{URL-encoded-resourceURI} + "\n" + expiry` . **Důležité** : klíč se dekóduje z formátu Base64 a používá se jako klíč k provedení výpočtu HMAC-SHA256. |
+| označení |Řetězec pro podpis HMAC-SHA256 ve formátu: `{URL-encoded-resourceURI} + "\n" + expiry` . **Důležité**: klíč se dekóduje z formátu Base64 a používá se jako klíč k provedení výpočtu HMAC-SHA256. |
 | resourceUri |Předpona URI (podle segmentu) koncových bodů, ke kterým se dá dostat s tímto tokenem, počínaje názvem hostitele centra IoT (bez protokolu). Například `myHub.azure-devices.net/devices/device1`. |
 | vypršení platnosti |Řetězce UTF8 po dobu v sekundách od epocha 00:00:00 UTC dne 1. ledna 1970. |
 | {URL-Encoded-resourceURI} |Malá adresa URL – kódování identifikátoru URI pro malý případ prostředku |
 | PolicyName |Název zásad sdíleného přístupu, na který tento token odkazuje Chybí, pokud token odkazuje na přihlašovací údaje registru zařízení. |
 
-**Poznámka k předponě** : PŘEDPONa identifikátoru URI je vypočítána segmentem a nikoli znakem. Například `/a/b` je prefix pro `/a/b/c` , ale ne pro `/a/bc` .
+**Poznámka k předponě**: PŘEDPONa identifikátoru URI je vypočítána segmentem a nikoli znakem. Například `/a/b` je prefix pro `/a/b/c` , ale ne pro `/a/bc` .
 
 Následující fragment Node.js ukazuje funkci nazvanou **generateSasToken** , která vypočítá token ze vstupů `resourceUri, signingKey, policyName, expiresInMins` . Další části podrobně popisují, jak inicializovat různé vstupy pro různé případy použití tokenu.
 
@@ -377,11 +378,11 @@ K ověření zařízení s IoT Hub můžete použít libovolný certifikát X. 5
 
 Mezi podporované certifikáty patří:
 
-* **Existující certifikát X. 509** . K zařízení již může být přidružen certifikát X. 509. Zařízení může tento certifikát použít k ověření pomocí IoT Hub. Funguje buď s kryptografickým otiskem, nebo s ověřováním CA. 
+* **Existující certifikát X. 509**. K zařízení již může být přidružen certifikát X. 509. Zařízení může tento certifikát použít k ověření pomocí IoT Hub. Funguje buď s kryptografickým otiskem, nebo s ověřováním CA. 
 
-* **Certifikát X. 509 podepsaný certifikační autoritou** . Pokud chcete identifikovat zařízení a ověřit ho pomocí IoT Hub, můžete použít certifikát X. 509 generovaný a podepsaný certifikační autoritou (CA). Funguje buď s kryptografickým otiskem, nebo s ověřováním CA.
+* **Certifikát X. 509 podepsaný certifikační autoritou**. Pokud chcete identifikovat zařízení a ověřit ho pomocí IoT Hub, můžete použít certifikát X. 509 generovaný a podepsaný certifikační autoritou (CA). Funguje buď s kryptografickým otiskem, nebo s ověřováním CA.
 
-* **Samostatně generovaný certifikát X-509 podepsaný svým držitelem** . Výrobce zařízení nebo interní nástroj pro nasazení může tyto certifikáty vygenerovat a uložit odpovídající privátní klíč (a certifikát) na zařízení. K tomuto účelu můžete použít nástroje, jako je [OpenSSL](https://www.openssl.org/) a nástroj [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) Utility. Funguje pouze s ověřováním pomocí kryptografického otisku.
+* **Samostatně generovaný certifikát X-509 podepsaný svým držitelem**. Výrobce zařízení nebo interní nástroj pro nasazení může tyto certifikáty vygenerovat a uložit odpovídající privátní klíč (a certifikát) na zařízení. K tomuto účelu můžete použít nástroje, jako je [OpenSSL](https://www.openssl.org/) a nástroj [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) Utility. Funguje pouze s ověřováním pomocí kryptografického otisku.
 
 Zařízení může buď použít certifikát X. 509, nebo token zabezpečení pro ověřování, ale ne obojí. Při ověřování pomocí certifikátu X. 509 se ujistěte, že máte zavedenou strategii pro zpracování změny certifikátu, když vyprší platnost existujícího certifikátu.
 

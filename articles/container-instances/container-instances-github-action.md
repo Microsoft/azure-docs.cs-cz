@@ -3,13 +3,13 @@ title: Akce nasazení instance kontejneru podle GitHubu
 description: Nakonfigurujte akci GitHubu, která automatizuje kroky k sestavení, vložení a nasazení image kontejneru pro Azure Container Instances
 ms.topic: article
 ms.date: 08/20/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: c01075bcb64aa9b91869daba2e995957da74daf4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: 221ecbe5fbe2cdea4105362c43a5765bcc298d46
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019184"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843651"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Konfigurace akce GitHubu pro vytvoření instance kontejneru
 
@@ -31,7 +31,7 @@ Tento článek ukazuje dva způsoby, jak nastavit pracovní postup:
 > [!IMPORTANT]
 > Akce GitHub pro Azure Container Instances je momentálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Účet GitHub** – vytvořte účet https://github.com , pokud ho ještě nemáte.
 * **Azure CLI** – k dokončení kroků rozhraní PŘÍKAZového řádku Azure můžete použít Azure Cloud Shell nebo místní instalaci rozhraní PŘÍKAZového řádku Azure. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
@@ -45,7 +45,7 @@ Tento článek ukazuje dva způsoby, jak nastavit pracovní postup:
 
   ![Snímek obrazovky s tlačítkem forku (zvýrazněným) v GitHubu](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* Ujistěte se, že jsou pro vaše úložiště povolené akce. Přejděte do rozvětvené úložiště a vyberte **Settings**  >  **Akce**nastavení. V **oprávnění akce**zajistěte, aby byla vybrána **možnost Povolit místní akce a akci třetích stran pro toto úložiště** .
+* Ujistěte se, že jsou pro vaše úložiště povolené akce. Přejděte do rozvětvené úložiště a vyberte **Settings**  >  **Akce** nastavení. V **oprávnění akce** zajistěte, aby byla vybrána **možnost Povolit místní akce a akci třetích stran pro toto úložiště** .
 
 ## <a name="configure-github-workflow"></a>Konfigurace pracovního postupu GitHubu
 
@@ -128,7 +128,7 @@ az role assignment create \
 
 1. V uživatelském rozhraní GitHubu vyberte **Akce**  >  **nový pracovní postup**.
 1. Vyberte **nastavit pracovní postup sami**.
-1. V části **Upravit nový soubor**vložte následující obsah YAML k přepsání ukázkového kódu. Přijměte výchozí název souboru `main.yml` nebo zadejte název souboru, který zvolíte.
+1. V části **Upravit nový soubor** vložte následující obsah YAML k přepsání ukázkového kódu. Přijměte výchozí název souboru `main.yml` nebo zadejte název souboru, který zvolíte.
 1. Vyberte možnost **Spustit potvrzení**, volitelně zadejte krátké a rozšířené popisy potvrzení a vyberte **Potvrdit nový soubor**.
 
 ```yml

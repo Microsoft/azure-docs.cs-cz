@@ -1,5 +1,5 @@
 ---
-title: Konfigurace šifrování pomocí klíčů spravovaných zákazníkem uložených v Azure Key Vault
+title: Konfigurace šifrování s použitím klíčů spravovaných zákazníkem uložených v Azure Key Vault
 titleSuffix: Azure Storage
 description: Naučte se konfigurovat Azure Storage šifrování pomocí klíčů spravovaných zákazníkem, které jsou uložené v Azure Key Vault pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 services: storage
@@ -10,15 +10,15 @@ ms.date: 09/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 219fe82f16dd9bbc887c9b17b067c706230c63dd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 02661c9c2a581ab21a2ae9dc31e5da95426c0edd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782378"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843379"
 ---
-# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Konfigurace šifrování pomocí klíčů spravovaných zákazníkem uložených v Azure Key Vault
+# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Konfigurace šifrování s použitím klíčů spravovaných zákazníkem uložených v Azure Key Vault
 
 Azure Storage šifruje všechna data v účtu úložiště v klidovém umístění. Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem. Pro další kontrolu nad šifrovacími klíči můžete spravovat vlastní klíče. Klíče spravované zákazníkem musí být uložené ve Azure Key Vault nebo Key Vault spravovaném modelu hardwarového zabezpečení (HSM) (ve verzi Preview).
 
@@ -35,15 +35,15 @@ Použití klíčů spravovaných zákazníkem s šifrováním Azure Storage vyž
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: vytvoření trezoru klíčů pomocí Azure Portal](../../key-vault/general/quick-create-portal.md). Při vytváření trezoru klíčů vyberte **Povolit ochranu vyprázdnění** , jak je znázorněno na následujícím obrázku.
+Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: vytvoření trezoru klíčů pomocí Azure Portal](../../key-vault/general/quick-create-portal.md). Při vytváření trezoru klíčů vyberte **Povolit ochranu vyprázdnění**, jak je znázorněno na následujícím obrázku.
 
 :::image type="content" source="media/customer-managed-keys-configure-key-vault/configure-key-vault-portal.png" alt-text="Snímek obrazovky ukazující, jak povolit ochranu vyprázdnit při vytváření trezoru klíčů":::
 
 Pokud chcete povolit ochranu vyprázdnění pro existující Trezor klíčů, postupujte takto:
 
 1. V Azure Portal přejděte do svého trezoru klíčů.
-1. V části **Nastavení** vyberte **vlastnosti** .
-1. V části **Vymazat ochranu** vyberte možnost **Povolit ochranu vyprázdnění** .
+1. V části **Nastavení** vyberte **vlastnosti**.
+1. V části **Vymazat ochranu** vyberte možnost **Povolit ochranu vyprázdnění**.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -175,12 +175,12 @@ Azure Storage může automaticky aktualizovat klíč spravovaný zákazníkem, k
 Pokud chcete konfigurovat klíče spravované zákazníkem pomocí automatických aktualizací verze klíče v Azure Portal, postupujte takto:
 
 1. Přejděte na svůj účet úložiště.
-1. V okně **Nastavení** pro účet úložiště klikněte na **šifrování** . Vyberte možnost **spravované klíče zákazníka** , jak je znázorněno na následujícím obrázku.
+1. V okně **Nastavení** pro účet úložiště klikněte na **šifrování**. Vyberte možnost **spravované klíče zákazníka** , jak je znázorněno na následujícím obrázku.
 
     ![Snímek obrazovky portálu ukazující možnost šifrování](./media/customer-managed-keys-configure-key-vault/portal-configure-encryption-keys.png)
 
 1. Zvolte možnost **vybrat z Key Vault** .
-1. Vyberte **možnost vyberte Trezor klíčů a klíč** .
+1. Vyberte **možnost vyberte Trezor klíčů a klíč**.
 1. Vyberte Trezor klíčů obsahující klíč, který chcete použít.
 1. Vyberte klíč z trezoru klíčů.
 
@@ -190,7 +190,7 @@ Pokud chcete konfigurovat klíče spravované zákazníkem pomocí automatickýc
 
 Po zadání klíče Azure Portal indikuje, že je povolená Automatická aktualizace verze klíče, a zobrazuje verzi klíče, která se právě používá pro šifrování.
 
-:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="Snímek obrazovky ukazující, jak povolit ochranu vyprázdnit při vytváření trezoru klíčů":::
+:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="Snímek obrazovky s automatickou aktualizací aktivované verze klíče":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

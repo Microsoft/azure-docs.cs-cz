@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2a1396f67c94b34b4fdef0bdaf7e01770da91246
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ccc39513505f299e85cbc270e2daeafeac6ca6fd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331511"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845182"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Základní hodnoty zabezpečení Azure pro Event Grid
 
@@ -24,7 +24,7 @@ Základní hodnota zabezpečení Azure pro Microsoft Azure Event Grid obsahuje d
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
-**Doprovodné**materiály: soukromé koncové body můžete použít k povolení příchozího přenosu událostí přímo z vaší virtuální sítě do vašich Event Gridch témat a domén zabezpečených prostřednictvím privátního propojení, aniž byste museli procházet veřejným internetem. Když vytvoříte privátní koncový bod pro Event Grid téma nebo doménu, zajistíte zabezpečenou konektivitu mezi klienty ve vaší virtuální síti a vaším prostředkem Event Grid. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a službou Event Grid používá zabezpečený privátní odkaz.
+**Doprovodné** materiály: soukromé koncové body můžete použít k povolení příchozího přenosu událostí přímo z vaší virtuální sítě do vašich Event Gridch témat a domén zabezpečených prostřednictvím privátního propojení, aniž byste museli procházet veřejným internetem. Když vytvoříte privátní koncový bod pro Event Grid téma nebo doménu, zajistíte zabezpečenou konektivitu mezi klienty ve vaší virtuální síti a vaším prostředkem Event Grid. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a službou Event Grid používá zabezpečený privátní odkaz.
 
 Azure Event Grid také podporuje řízení přístupu na základě veřejných IP adres pro publikování do témat a domén. Pomocí ovládacích prvků založených na protokolu IP můžete omezit vydavatele na téma nebo doménu jenom na sadu schválených sad počítačů a cloudových služeb. Tato funkce doplňuje mechanismy ověřování podporované nástrojem Event Grid. 
 
@@ -44,7 +44,7 @@ Azure Event Grid také podporuje řízení přístupu na základě veřejných I
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuálních sítí, podsítí a síťových karet
 
-**Doprovodné**materiály: použijte Azure Security Center a sledujte doporučení pro ochranu sítě, která vám pomůžou zabezpečit prostředky Event Grid v Azure. Pokud k přístupu k prostředkům Event Grid používáte virtuální počítače Azure, povolte protokoly toku NSG (Network Security Group) a posílat protokoly do účtu úložiště pro provoz.
+**Doprovodné** materiály: použijte Azure Security Center a sledujte doporučení pro ochranu sítě, která vám pomůžou zabezpečit prostředky Event Grid v Azure. Pokud k přístupu k prostředkům Event Grid používáte virtuální počítače Azure, povolte protokoly toku NSG (Network Security Group) a posílat protokoly do účtu úložiště pro provoz.
 
 ověřen.
 
@@ -58,7 +58,7 @@ ověřen.
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -66,7 +66,7 @@ ověřen.
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
 
-**Doprovodné**materiály: můžete nakonfigurovat bránu firewall protokolu IP pro prostředek Event Grid, abyste omezili přístup přes veřejný Internet jenom z vybrané sady IP adres nebo rozsahů IP adres.
+**Doprovodné** materiály: můžete nakonfigurovat bránu firewall protokolu IP pro prostředek Event Grid, abyste omezili přístup přes veřejný Internet jenom z vybrané sady IP adres nebo rozsahů IP adres.
 
 Privátní koncové body můžete nakonfigurovat tak, aby omezily přístup jenom z vybraných virtuálních sítí.
 
@@ -102,7 +102,7 @@ Pokud je to nutné pro prošetření aktivity neobvyklé, povolte zachytávání
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
-**Doprovodné**materiály: vyberte nabídku z Azure Marketplace, která podporuje funkce ID/IP adresy s možnostmi kontroly zatížení.  Pokud kontrola datové části není požadavkem, je možné použít Azure Firewall analýzy hrozeb. Azure Firewall filtrování založené na základě logiky hrozeb slouží k upozorňování a zablokování provozu do a ze známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu.
+**Doprovodné** materiály: vyberte nabídku z Azure Marketplace, která podporuje funkce ID/IP adresy s možnostmi kontroly zatížení.  Pokud kontrola datové části není požadavkem, je možné použít Azure Firewall analýzy hrozeb. Azure Firewall filtrování založené na základě logiky hrozeb slouží k upozorňování a zablokování provozu do a ze známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu.
 
 Nasaďte řešení brány firewall podle svého výběru na základě hranic sítě vaší organizace za účelem detekce a blokování škodlivého provozu.
 
@@ -118,7 +118,7 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -126,7 +126,7 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
 
-**Doprovodné**materiály: u prostředků ve virtuálních sítích, které potřebují přístup k vašim prostředkům Azure Event Grid, použijte značky služby Virtual Network a definujte řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (například AzureEventGrid) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
+**Doprovodné** materiály: u prostředků ve virtuálních sítích, které potřebují přístup k vašim prostředkům Azure Event Grid, použijte značky služby Virtual Network a definujte řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (například AzureEventGrid) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
 - [Jak používat tag služby pro Azure Event Grid](network-security.md#service-tags)
 
@@ -151,7 +151,7 @@ Můžete také využít integrované definice zásad týkající se Azure Event 
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
-**Doprovodné**materiály: používejte značky pro síťové prostředky přidružené k vašim Azure Event Grid prostředkům, aby je bylo možné logicky uspořádat do taxonomie.
+**Doprovodné** materiály: používejte značky pro síťové prostředky přidružené k vašim Azure Event Grid prostředkům, aby je bylo možné logicky uspořádat do taxonomie.
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -189,7 +189,7 @@ Můžete také využít integrované definice zásad týkající se Azure Event 
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 
-**Doprovodné**materiály: nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit protokoly selhání publikování a doručení v účtu úložiště, v centru událostí nebo v pracovním prostoru Log Analytics.
+**Doprovodné** materiály: nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit protokoly selhání publikování a doručení v účtu úložiště, v centru událostí nebo v pracovním prostoru Log Analytics.
 
 - [Povolení diagnostických protokolů pro témata nebo domény služby Azure Event Grid](enable-diagnostic-logs-topic.md)
 
@@ -199,7 +199,7 @@ Můžete také využít integrované definice zásad týkající se Azure Event 
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: shromáždění protokolů zabezpečení z operačních systémů
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -207,7 +207,7 @@ Můžete také využít integrované definice zásad týkající se Azure Event 
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
-**Doprovodné**materiály: v Azure monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim Azure Event Grid prostředkům podle předpisů pro dodržování předpisů vaší organizace.
+**Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim Azure Event Grid prostředkům podle předpisů pro dodržování předpisů vaší organizace.
 
 - [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -237,7 +237,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: povolení výstrah pro aktivity neobvyklé
 
-**Doprovodné**materiály: povolením nastavení diagnostiky v rámci služby Event Grid získáte přístup k publikování a doručování protokolů selhání. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky. Protokoly můžete odesílat do Log Analytics pracovního prostoru. Pro monitorování a upozorňování na aktivitu neobvyklé nalezené v protokolech zabezpečení a událostech použijte Azure Security Center s Log Analytics. 
+**Doprovodné** materiály: povolením nastavení diagnostiky v rámci služby Event Grid získáte přístup k publikování a doručování protokolů selhání. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky. Protokoly můžete odesílat do Log Analytics pracovního prostoru. Pro monitorování a upozorňování na aktivitu neobvyklé nalezené v protokolech zabezpečení a událostech použijte Azure Security Center s Log Analytics. 
 
 Můžete také vytvořit upozornění na Azure Event Grid metrik a operace protokolu aktivit. Můžete vytvářet upozornění na metriky publikování i doručování pro Azure Event Grid prostředky (témata a domény). 
 
@@ -259,7 +259,7 @@ Kromě toho můžete pracovní prostor Log Analytics připojit do Azure Sentinel
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
 
-**Doprovodné**materiály: nepoužitelné; Azure Event Grid nezpracovává ani nevytváří protokoly související s malwarem.
+**Doprovodné** materiály: nepoužitelné; Azure Event Grid nezpracovává ani nevytváří protokoly související s malwarem.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -267,7 +267,7 @@ Kromě toho můžete pracovní prostor Log Analytics připojit do Azure Sentinel
 
 ### <a name="29-enable-dns-query-logging"></a>2,9: povolení protokolování dotazů DNS
 
-**Doprovodné**materiály: nepoužitelné; Azure Event Grid nezpracovává ani nevytváří protokoly související se službou DNS.
+**Doprovodné** materiály: nepoužitelné; Azure Event Grid nezpracovává ani nevytváří protokoly související se službou DNS.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -275,7 +275,7 @@ Kromě toho můžete pracovní prostor Log Analytics připojit do Azure Sentinel
 
 ### <a name="210-enable-command-line-audit-logging"></a>2,10: povolení protokolování auditu příkazového řádku
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -287,7 +287,7 @@ Kromě toho můžete pracovní prostor Log Analytics připojit do Azure Sentinel
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Doprovodné**materiály: Azure Event Grid umožňuje řídit úroveň přístupu daným různým uživatelům a provádět různé operace správy, jako jsou odběry událostí seznamu, vytváření nových a generování klíčů. Event Grid používá řízení přístupu na základě role v Azure (Azure RBAC). Event Grid podporuje předdefinované role i vlastní role.
+**Doprovodné** materiály: Azure Event Grid umožňuje řídit úroveň přístupu daným různým uživatelům a provádět různé operace správy, jako jsou odběry událostí seznamu, vytváření nových a generování klíčů. Event Grid používá řízení přístupu na základě role v Azure (Azure RBAC). Event Grid podporuje předdefinované role i vlastní role.
 
 Řízení přístupu na základě role Azure (Azure RBAC) umožňuje spravovat přístup k prostředkům Azure prostřednictvím přiřazení rolí. Tyto role můžete přiřadit uživatelům, skupinám instančních objektů a spravovaným identitám. Pro určité prostředky jsou předem definované předdefinované role a tyto role můžou být v inventáři nebo prostřednictvím nástrojů, jako je Azure CLI, Azure PowerShell nebo Azure Portal.
 
@@ -311,7 +311,7 @@ Kromě toho můžete pracovní prostor Log Analytics připojit do Azure Sentinel
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
-**Doprovodné**materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu.
+**Doprovodné** materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu.
 
 Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity Management a Azure Resource Manager.
 
@@ -329,7 +329,7 @@ Event Grid může povolit identitu spravované služby pro témata nebo domény 
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
-**Doprovodné**materiály: nepoužitelné; Služba Event Grid nepodporuje jednotné přihlašování.
+**Doprovodné** materiály: nepoužitelné; Služba Event Grid nepodporuje jednotné přihlašování.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -337,7 +337,7 @@ Event Grid může povolit identitu spravované služby pro témata nebo domény 
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Doprovodné**materiály: nepoužitelné; Služba Event Grid nepoužívá službu Multi-Factor Authentication
+**Doprovodné** materiály: nepoužitelné; Služba Event Grid nepoužívá službu Multi-Factor Authentication
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -345,7 +345,7 @@ Event Grid může povolit identitu spravované služby pro témata nebo domény 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
 
-**Doprovodné**materiály: nepoužitelné; žádné scénáře Event Grid nevyžadují privilegovaný přístup k pracovním stanicím. 
+**Doprovodné** materiály: nepoužitelné; žádné scénáře Event Grid nevyžadují privilegovaný přístup k pracovním stanicím. 
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -353,7 +353,7 @@ Event Grid může povolit identitu spravované služby pro témata nebo domény 
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: protokolovat a upozornit na podezřelé aktivity z účtů pro správu
 
-**Doprovodné**materiály: použití sestav a monitorování zabezpečení Azure Active Directory k detekci, kdy dojde k podezřelé nebo nebezpečné aktivitě v prostředí. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
+**Doprovodné** materiály: použití sestav a monitorování zabezpečení Azure Active Directory k detekci, kdy dojde k podezřelé nebo nebezpečné aktivitě v prostředí. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
 
 - [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -365,7 +365,7 @@ Event Grid může povolit identitu spravované služby pro témata nebo domény 
 
 ### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
 
-**Doprovodné**materiály: nelze použít. Event Grid nepoužívá službu Azure AD k ověřování klientů pro publikování událostí; podporuje ověřování prostřednictvím klíčů SAS.
+**Doprovodné** materiály: nelze použít. Event Grid nepoužívá službu Azure AD k ověřování klientů pro publikování událostí; podporuje ověřování prostřednictvím klíčů SAS.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -389,7 +389,7 @@ Event Grid může povolit identitu spravované služby pro témata nebo domény 
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Doprovodné**materiály: Azure AD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. K efektivní správě členství ve skupinách, přístupu k podnikovým aplikacím a přiřazování rolí můžete navíc použít kontroly identity a přístupu v Azure AD. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. 
+**Doprovodné** materiály: Azure AD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. K efektivní správě členství ve skupinách, přístupu k podnikovým aplikacím a přiřazování rolí můžete navíc použít kontroly identity a přístupu v Azure AD. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. 
  
 Pro generování protokolů a výstrah v případě, že dojde k podezřelé nebo nebezpečné aktivitě v prostředí, použijte Azure Active Directory (AD) Privileged Identity Management (PIM).
 
@@ -405,7 +405,7 @@ Pro generování protokolů a výstrah v případě, že dojde k podezřelé neb
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: sledování pokusů o přístup k deaktivovaným přihlašovacím údajům
 
-**Doprovodné**materiály: máte přístup ke zdrojům přihlašovacích aktivit, auditem a rizikovým protokolům událostí Azure AD, které vám umožní integraci s jakýmkoli nástrojem Siem/monitoring.
+**Doprovodné** materiály: máte přístup ke zdrojům přihlašovacích aktivit, auditem a rizikovým protokolům událostí Azure AD, které vám umožní integraci s jakýmkoli nástrojem Siem/monitoring.
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics.
 
@@ -433,7 +433,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
 
-**Doprovodné**materiály: nepoužitelné; Služba Event Grid nepodporuje aktuálně Customer Lockbox.
+**Doprovodné** materiály: nepoužitelné; Služba Event Grid nepodporuje aktuálně Customer Lockbox.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -445,7 +445,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
-**Doprovodné**materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
+**Doprovodné** materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
  
  
  
@@ -471,7 +471,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
 
-**Doprovodné**materiály: pro základní platformu, která je spravovaná Microsoftem, Microsoft zpracovává veškerý obsah zákazníků jako citlivý a směřuje k velkým délkám, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
+**Doprovodné** materiály: pro základní platformu, která je spravovaná Microsoftem, Microsoft zpracovává veškerý obsah zákazníků jako citlivý a směřuje k velkým délkám, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
 - [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -481,7 +481,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
-**Doprovodné**materiály: Azure Event Grid vyžaduje HTTPS pro publikování a podporuje protokol HTTPS pro doručování událostí do koncového bodu Webhooku. Ve službě Azure Global Event Grid podporuje protokol TLS verze 1,1 i 1,2, ale důrazně doporučujeme použít verzi 1,2. V národních cloudech, jako je Azure Government a Azure provozovaný společností 21Vianet v Číně, Event Grid podporuje jenom 1,2 verze TLS. 
+**Doprovodné** materiály: Azure Event Grid vyžaduje HTTPS pro publikování a podporuje protokol HTTPS pro doručování událostí do koncového bodu Webhooku. Ve službě Azure Global Event Grid podporuje protokol TLS verze 1,1 i 1,2, ale důrazně doporučujeme použít verzi 1,2. V národních cloudech, jako je Azure Government a Azure provozovaný společností 21Vianet v Číně, Event Grid podporuje jenom 1,2 verze TLS. 
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -489,7 +489,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
 
-**Doprovodné**materiály: funkce pro identifikaci, klasifikaci a ochranu před únikem informací ještě nejsou k dispozici pro Azure Event Grid. Pokud je to nutné pro účely dodržování předpisů, implementujte řešení třetích stran.
+**Doprovodné** materiály: funkce pro identifikaci, klasifikaci a ochranu před únikem informací ještě nejsou k dispozici pro Azure Event Grid. Pokud je to nutné pro účely dodržování předpisů, implementujte řešení třetích stran.
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
@@ -525,7 +525,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5,3: nasazení automatizované řešení pro správu oprav pro softwarové tituly třetích stran
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -533,7 +533,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: porovnání kontrol zabezpečení back-to-back
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -541,7 +541,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných ohrožení zabezpečení
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -553,7 +553,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -561,7 +561,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
-**Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
+**Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -571,7 +571,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
-**Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry tam, kde je to vhodné, k uspořádání a sledování prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
+**Doprovodné** materiály: Používejte označení, skupiny pro správu a samostatné odběry tam, kde je to vhodné, k uspořádání a sledování prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
  
  
  
@@ -587,7 +587,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: definování a údržba inventáře schválených prostředků Azure
 
-**Doprovodné**materiály: Vytvořte inventarizaci schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky podle potřeb vaší organizace.
+**Doprovodné** materiály: Vytvořte inventarizaci schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky podle potřeb vaší organizace.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -595,7 +595,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
-**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
+**Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
 * Žádné povolené typy prostředků
 * Povolené typy prostředků
@@ -611,7 +611,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -619,7 +619,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: Odeberte neschválené prostředky Azure a softwarové aplikace
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -627,7 +627,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 ### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -635,7 +635,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
-**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
+**Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
 * Žádné povolené typy prostředků
 * Povolené typy prostředků
@@ -652,7 +652,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: udržování inventáře schválených softwarových titulů
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -672,7 +672,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6,12: Omezte schopnost uživatelů spouštět skripty ve výpočetních prostředcích.
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -680,7 +680,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -706,7 +706,7 @@ Azure Resource Manager má možnost Exportovat šablonu do JavaScript Object Not
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -714,7 +714,7 @@ Azure Resource Manager má možnost Exportovat šablonu do JavaScript Object Not
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
 
-**Doprovodné**materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure. Kromě toho můžete použít šablony Azure Resource Manager k údržbě konfigurace zabezpečení vašich prostředků Azure, které vaše organizace vyžaduje. 
+**Doprovodné** materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure. Kromě toho můžete použít šablony Azure Resource Manager k údržbě konfigurace zabezpečení vašich prostředků Azure, které vaše organizace vyžaduje. 
 
 - [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
@@ -728,7 +728,7 @@ Azure Resource Manager má možnost Exportovat šablonu do JavaScript Object Not
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -748,7 +748,7 @@ Azure Resource Manager má možnost Exportovat šablonu do JavaScript Object Not
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -768,7 +768,7 @@ Azure Resource Manager má možnost Exportovat šablonu do JavaScript Object Not
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: nasazení nástrojů pro správu konfigurace pro operační systémy
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -786,7 +786,7 @@ Azure Resource Manager má možnost Exportovat šablonu do JavaScript Object Not
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -802,7 +802,7 @@ Spravované identity používejte společně s Azure Key Vault k zjednodušení 
 
 - [Jak používat spravované identity pro prostředky Azure](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md)
+- [Vytvoření Key Vault](../key-vault/general/quick-create-portal.md)
 
 - [Ověření Key Vault](../key-vault/general/authentication.md)
 
@@ -852,7 +852,7 @@ Je vaše zodpovědnost za to, že se veškerý obsah nahrává do prostředků A
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
-**Doprovodné**materiály: Event Grid má automatické obnovení geografického zotavení po havárii (GeoDR) meta-data nejenom pro nové, ale všechny existující domény, témata a odběry událostí. Pokud dojde k výpadku celé oblasti Azure, Event Grid už budou všechna metadata infrastruktury související s událostmi synchronizovaná do spárované oblasti.
+**Doprovodné** materiály: Event Grid má automatické obnovení geografického zotavení po havárii (GeoDR) meta-data nejenom pro nové, ale všechny existující domény, témata a odběry událostí. Pokud dojde k výpadku celé oblasti Azure, Event Grid už budou všechna metadata infrastruktury související s událostmi synchronizovaná do spárované oblasti.
 
 - [Geografické zotavení po havárii na straně serveru v Azure Event Grid](geo-disaster-recovery.md)
 
@@ -862,7 +862,7 @@ Je vaše zodpovědnost za to, že se veškerý obsah nahrává do prostředků A
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny klíče spravované zákazníkem.
 
-**Doprovodné**materiály: Event Grid má automatické obnovení geografického zotavení po havárii (GeoDR) meta-data nejenom pro nové, ale všechny existující domény, témata a odběry událostí. Pokud dojde k výpadku celé oblasti Azure, Event Grid už budou všechna metadata infrastruktury související s událostmi synchronizovaná do spárované oblasti.
+**Doprovodné** materiály: Event Grid má automatické obnovení geografického zotavení po havárii (GeoDR) meta-data nejenom pro nové, ale všechny existující domény, témata a odběry událostí. Pokud dojde k výpadku celé oblasti Azure, Event Grid už budou všechna metadata infrastruktury související s událostmi synchronizovaná do spárované oblasti.
 
 V současné době Event Grid nepodporuje klíče spravované zákazníkem. 
 
@@ -874,7 +874,7 @@ V současné době Event Grid nepodporuje klíče spravované zákazníkem.
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: ověření všech záloh včetně klíčů spravovaných zákazníkem
 
-**Doprovodné**materiály: Event Grid má automatické obnovení geografického zotavení po havárii (GeoDR) meta-data nejenom pro nové, ale všechny existující domény, témata a odběry událostí. Pokud dojde k výpadku celé oblasti Azure, Event Grid už budou všechna metadata infrastruktury související s událostmi synchronizovaná do spárované oblasti.
+**Doprovodné** materiály: Event Grid má automatické obnovení geografického zotavení po havárii (GeoDR) meta-data nejenom pro nové, ale všechny existující domény, témata a odběry událostí. Pokud dojde k výpadku celé oblasti Azure, Event Grid už budou všechna metadata infrastruktury související s událostmi synchronizovaná do spárované oblasti.
 
 V současné době Event Grid nepodporuje klíče spravované zákazníkem. 
 
@@ -886,7 +886,7 @@ V současné době Event Grid nepodporuje klíče spravované zákazníkem.
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
-**Doprovodné**materiály: povolení ochrany před náhodným odstraněním a vyprázdněním v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění. 
+**Doprovodné** materiály: povolení ochrany před náhodným odstraněním a vyprázdněním v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění. 
  
 
 V současné době Event Grid nepodporuje klíče spravované zákazníkem. 
@@ -917,7 +917,7 @@ V současné době Event Grid nepodporuje klíče spravované zákazníkem.
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
-**Doprovodné**materiály: Azure Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
+**Doprovodné** materiály: Azure Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
  
  
@@ -934,7 +934,7 @@ V současné době Event Grid nepodporuje klíče spravované zákazníkem.
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
-**Doprovodné**materiály: proveďte cvičení k otestování funkcí reakce na incidenty na běžných tempo, které vám pomůžou ochránit vaše prostředky Azure. Identifikujte slabá místa a mezery a pak podle potřeby upravte plán odpovědí.
+**Doprovodné** materiály: proveďte cvičení k otestování funkcí reakce na incidenty na běžných tempo, které vám pomůžou ochránit vaše prostředky Azure. Identifikujte slabá místa a mezery a pak podle potřeby upravte plán odpovědí.
  
  
  
@@ -946,7 +946,7 @@ V současné době Event Grid nepodporuje klíče spravované zákazníkem.
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
-**Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
+**Doprovodné** materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
  
  
  
@@ -970,7 +970,7 @@ V současné době Event Grid nepodporuje klíče spravované zákazníkem.
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
-**Doprovodné**materiály: použití funkce automatizace pracovních postupů Azure Security Center k automatickému spouštění odpovědí na výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
+**Doprovodné** materiály: použití funkce automatizace pracovních postupů Azure Security Center k automatickému spouštění odpovědí na výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
 
 - [Jak nakonfigurovat automatizaci pracovního postupu v Security Center](../security-center/workflow-automation.md)
 
@@ -984,7 +984,7 @@ V současné době Event Grid nepodporuje klíče spravované zákazníkem.
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
-**Doprovodné**materiály: postupujte podle pravidel pro testování průniku Microsoft Cloud, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft.
+**Doprovodné** materiály: postupujte podle pravidel pro testování průniku Microsoft Cloud, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft.
 
 - [Pravidla testování průniku pro zapojení](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

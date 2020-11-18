@@ -3,12 +3,12 @@ title: Vytváření a klonování Jupyter poznámkových bloků – Azure Notebo
 description: Projekty Azure Notebooks ve verzi Preview spravují kolekci poznámkových bloků a souvisejících souborů, které můžete vytvořit nebo klonovat z jiného zdroje.
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e5930178b7951ff5f701228cee4ea7cb5f0e6da
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86181488"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844382"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Vytváření a klonování projektů v Azure Notebooks Preview
 
@@ -26,7 +26,7 @@ Na řídicím panelu **Moje projekty** v `https://notebooks.azure.com/<userID>/p
 
 To, co můžete na řídicím panelu udělat, závisí na tom, jestli jste přihlášení pomocí účtu, který vlastní ID uživatele:
 
-| Příkaz | K dispozici pro | Description |
+| Příkaz | K dispozici pro | Popis |
 | --- | --- | --- |
 | **Spustit** | Vlastník | Spustí projektový Server a otevře složku projektu v Jupyter. (Častěji přejděte do složky projektu a pak z ní začněte Poznámkový blok.) |
 | **Stáhnout** | Kdokoliv | Stáhne kopii vybraného projektu jako soubor ZIP. |
@@ -57,11 +57,11 @@ Pokud nemáte Azure Notebooks projekt, můžete vytvořit odkaz, který klonuje 
 
 Při použití příkazu **+ Nový projekt** Azure Notebooks zobrazí místní nabídku **vytvořit nový projekt** . V tomto překryvném okně zadejte následující informace a pak vyberte **vytvořit**:
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | Název projektu | Popisný název projektu, který Azure Notebooks používá pro účely zobrazení. Například "projekt na Poznámkový blok". |
 | ID projektu | Vlastní identifikátor, který se stal součástí adresy URL, kterou používáte pro sdílení projektu (formulář je `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Toto ID může obsahovat pouze písmena, číslice a spojovníky, které jsou omezeny na 30 znaků a nesmí se jednat o [REZERVOVANÉ ID projektu](#reserved-project-ids). Pokud si nejste jistí, co použít, obvyklá konvence je použití malé verze názvu projektu, kde jsou mezery převedeny na spojovníky, například "My-Poznámkový projekt" (zkráceně, pokud je to nutné pro přizpůsobení limitu délky). |
-| Public | Pokud je nastaveno, umožňuje komukoli s odkazem přístup k projektu. Při vytváření privátního projektu zrušte zaškrtnutí tohoto políčka. |
+| Veřejná | Pokud je nastaveno, umožňuje komukoli s odkazem přístup k projektu. Při vytváření privátního projektu zrušte zaškrtnutí tohoto políčka. |
 | Inicializovat tento projekt pomocí souboru READme | Pokud je nastaveno, vytvoří výchozí soubor *Readme.MD* v projektu. Soubor *Readme.MD* je místo, kde v případě potřeby poskytnete dokumentaci pro svůj projekt. |
 
 ### <a name="reserved-project-ids"></a>ID rezervovaných projektů
@@ -104,13 +104,13 @@ Vzhledem k tomu, že ID projektu je také součástí adresy URL projektu, můž
 
 Můžete snadno importovat celé veřejné úložiště GitHub jako projekt, včetně všech datových a *Readme.MD* souborů. Použijte příkaz **nahrát úložiště GitHub** , v překryvném okně zadejte následující podrobnosti a pak vyberte **importovat**:
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | Úložiště GitHub | Název zdrojového úložiště v github.com. Pokud například chcete klonovat Jupyter poznámkové bloky pro Azure Cognitive Services v [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) , zadejte "Microsoft/vnímání-Services-poznámkové bloky".  |
 | Rekurzivní klonování | Úložiště GitHub můžou obsahovat několik podřízených úložišť. Tuto možnost nastavte, pokud chcete klonovat nadřazené úložiště a všechny jeho podřízené objekty. Vzhledem k tomu, že je možné, že úložiště má mnoho podřízených objektů, nechte tuto možnost nevyjasná, pokud víte, že ji nepotřebujete. |
 | Název projektu | Popisný název projektu, který Azure Notebooks používá pro účely zobrazení. |
 | ID projektu | Vlastní identifikátor, který se stal součástí adresy URL, kterou používáte pro sdílení projektu (formulář je `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Toto ID může obsahovat pouze písmena, číslice a spojovníky, které jsou omezeny na 30 znaků a nesmí se jednat o [REZERVOVANÉ ID projektu](#reserved-project-ids). Pokud si nejste jistí, co použít, obvyklá konvence je použití malé verze názvu projektu, kde jsou mezery převedeny na spojovníky, například "My-Poznámkový projekt" (zkráceně, pokud je to nutné pro přizpůsobení limitu délky). |
-| Public | Pokud je nastaveno, umožňuje komukoli s odkazem přístup k projektu. Při vytváření privátního projektu zrušte zaškrtnutí tohoto políčka. |
+| Veřejná | Pokud je nastaveno, umožňuje komukoli s odkazem přístup k projektu. Při vytváření privátního projektu zrušte zaškrtnutí tohoto políčka. |
 
 Import úložiště z GitHubu také importuje historii. Pomocí standardních příkazů git z terminálu můžete potvrdit nové změny, přijímat změny z GitHubu a tak dále.
 
@@ -138,4 +138,4 @@ Naklonování projektu:
 - [Postupy: zobrazení prezentace](present-jupyter-notebooks-slideshow.md)
 - [Postupy: práce s datovými soubory](work-with-project-data-files.md)
 - [Postupy: přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
-- [Postupy: použití Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)
+- [Postupy: použití Azure Machine Learning](../machine-learning/samples-notebooks.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9ded8e989572d83b4761dfaaaa681505952b375d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 095a97d27439c54e2ade96e3a40349a0d95b9c11
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754383"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843090"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Základní hodnoty zabezpečení Azure pro Site Recovery
 
@@ -30,9 +30,9 @@ Pokud chcete zjistit, jak Site Recovery kompletně mapuje srovnávací test zabe
 
 - [Podpora privátních odkazů Azure Site Recovery](azure-to-azure-how-to-enable-replication-private-endpoints.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
 
@@ -40,9 +40,9 @@ Pokud chcete zjistit, jak Site Recovery kompletně mapuje srovnávací test zabe
 
 - [Odchozí připojení pomocí značek služeb](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
@@ -58,9 +58,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledat nebo provádět akce s
 
 - [Postup filtrování síťového provozu pomocí pravidel skupiny zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: pomocí automatizovaných nástrojů monitorujte konfigurace síťových prostředků a zjišťují změny.
 
@@ -70,9 +70,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledat nebo provádět akce s
 
 - [Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
@@ -92,9 +92,9 @@ Ingestování Site Recovery protokolů v Azure Monitor k agregaci generovaných 
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Monitorování Azure Security Center** : aktuálně není k dispozici.
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 
@@ -110,19 +110,19 @@ Ingestování Site Recovery protokolů pomocí Azure Monitor k agregaci generova
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Monitorování Azure Security Center** : aktuálně není k dispozici.
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
-**Pokyny** : Nastavte dobu uchování protokolu pro Log Analytics pracovní prostory přidružené k vašim trezorům Azure Recovery Services pomocí Azure monitor podle předpisů pro dodržování předpisů vaší organizace. 
+**Pokyny**: Nastavte dobu uchování protokolu pro Log Analytics pracovní prostory přidružené k vašim trezorům Azure Recovery Services pomocí Azure monitor podle předpisů pro dodržování předpisů vaší organizace. 
 
 - [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
 
@@ -136,9 +136,9 @@ Provádějte dotazy v Log Analytics k hledání podmínek, identifikujte trendy,
 
 - [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](../azure-monitor/platform/activity-log.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: povolení výstrah pro aktivity neobvyklé
 
@@ -152,9 +152,9 @@ Vizualizujte a Dotazujte výsledky protokolu a nakonfigurujte výstrahy tak, aby
 
 - [Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor](../azure-monitor/platform/alerts-log.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
@@ -168,9 +168,9 @@ Vizualizujte a Dotazujte výsledky protokolu a nakonfigurujte výstrahy tak, aby
 
 - [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
@@ -189,13 +189,13 @@ Vytvořte proces, ve kterém můžete sledovat identitu a řízení přístupu p
 
 - [Jak používat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
-**Pokyny** : pomocí registrace aplikací Azure s instančním objektem načtěte token, který se použije k interakci s Recovery Servicesmi trezory prostřednictvím volání rozhraní API.
+**Pokyny**: pomocí registrace aplikací Azure s instančním objektem načtěte token, který se použije k interakci s Recovery Servicesmi trezory prostřednictvím volání rozhraní API.
 
 - [Volání rozhraní Azure REST API](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
@@ -203,20 +203,20 @@ Vytvořte proces, ve kterém můžete sledovat identitu a řízení přístupu p
 
 - [Informace o rozhraní API pro Azure Recovery Services](/rest/api/recoveryservices)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
 **Doprovodné** materiály: Povolte službu Azure AD, vícefaktorové ověřování a postupujte podle doporučení Security Center identity a přístupu. 
-- [Plánování nasazení služby Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Plánování nasazení Multi-Factor Authentication služby Azure AD](../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Monitorování identity a přístupu](../security-center/security-center-identity-access.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
 
@@ -224,11 +224,11 @@ Vytvořte proces, ve kterém můžete sledovat identitu a řízení přístupu p
 
 - [Pracovní stanice s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Plánování cloudového nasazení Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Plánování nasazení služby Azure AD založené na cloudu Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: protokolovat a upozornit na podezřelé aktivity z účtů pro správu
 
@@ -239,32 +239,32 @@ Podívejte se na výstrahy a sestavy týkající se rizikového chování uživa
 
 - [Vysvětlení zjišťování rizik Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
 
-**Pokyny** : pomocí pojmenovaných umístění podmíněného přístupu povolíte přístup k Azure Portal jenom z konkrétních logických skupin rozsahů IP adres, oblastí nebo zemí.
+**Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu povolíte přístup k Azure Portal jenom z konkrétních logických skupin rozsahů IP adres, oblastí nebo zemí.
 - [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
-**Pokyny** : použití Azure AD jako centrálního ověřování a autorizačního systému pro Site Recovery. Azure AD chrání data pomocí silného šifrování dat v klidovém provozu, při přenosu a také solí, hodnot hash a bezpečně ukládá přihlašovací údaje uživatele. 
+**Pokyny**: použití Azure AD jako centrálního ověřování a autorizačního systému pro Site Recovery. Azure AD chrání data pomocí silného šifrování dat v klidovém provozu, při přenosu a také solí, hodnot hash a bezpečně ukládá přihlašovací údaje uživatele. 
 
 - [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Pokyny** : pomocí protokolů služby Azure AD můžete zjistit zastaralé účty. 
+**Pokyny**: pomocí protokolů služby Azure AD můžete zjistit zastaralé účty. 
 
 Efektivně spravujte členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí s využitím kontrol identit a přístupů služby Azure AD. 
 
@@ -274,13 +274,13 @@ Vytvořte proces, který pravidelně kontroluje přístup uživatelů, aby bylo 
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: sledování pokusů o přístup k deaktivovaným přihlašovacím údajům
 
-**Pokyny** : jako centrální ověřování a systém autorizací použijte Azure AD pro Site Recovery prostředky. Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data a také soli, hodnoty hash a bezpečně ukládá přihlašovací údaje uživatele.
+**Pokyny**: jako centrální ověřování a systém autorizací použijte Azure AD pro Site Recovery prostředky. Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data a také soli, hodnoty hash a bezpečně ukládá přihlašovací údaje uživatele.
 
 Máte přístup ke zdrojům aktivit přihlašování, auditu a rizikových událostí služby Azure AD, které vám umožní jejich integraci s ověřováním Azure Sentinel nebo jakýmkoli SIEM nebo monitorovacím nástrojem dostupným v Azure Marketplace.
 
@@ -290,13 +290,13 @@ Tento proces můžete ještě víc zjednodušit vytvořením nastavení diagnost
 
 - [Postup zprovoznění služby Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
-**Pokyny** : jako centrální ověřování a systém autorizací pro vaše Recovery Services trezory použijte službu Azure AD. 
+**Pokyny**: jako centrální ověřování a systém autorizací pro vaše Recovery Services trezory použijte službu Azure AD. 
 
 Využití funkcí ochrany identit Azure AD pro detekci chování přihlášení k účtu a konfigurace automatizovaných odpovědí na zjištěné podezřelé akce, které se týkají identit uživatelů. Také ingestujte data do Azure Sentinel pro další šetření.
 
@@ -306,9 +306,9 @@ Využití funkcí ochrany identit Azure AD pro detekci chování přihlášení 
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="data-protection"></a>Ochrana dat
 
@@ -320,9 +320,9 @@ Využití funkcí ochrany identit Azure AD pro detekci chování přihlášení 
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
@@ -336,13 +336,13 @@ Vypněte virtuální počítače, které ukládají nebo zpracovávají citlivá
 
 - [Přehled Site Recovery](site-recovery-overview.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
 
-**Pokyny** : pomocí privátního odkazu nebo privátního koncového bodu, skupin zabezpečení sítě a značek služeb můžete zmírnit případné příležitosti pro exfiltrace dat z virtuálních počítačů s povoleným Site Recovery.
+**Pokyny**: pomocí privátního odkazu nebo privátního koncového bodu, skupin zabezpečení sítě a značek služeb můžete zmírnit případné příležitosti pro exfiltrace dat z virtuálních počítačů s povoleným Site Recovery.
 
 Společnost Microsoft spravuje základní platformu, kterou používá Site Recovery a který zpracovává veškerý obsah zákazníka jako citlivý a ochrana před ztrátou a únikem dat zákazníků. Společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat, aby se zajistilo zabezpečení zákaznických dat v Azure. 
 
@@ -352,21 +352,21 @@ Společnost Microsoft spravuje základní platformu, kterou používá Site Reco
 
 - [Replikace virtuálních počítačů pomocí značek služby Azure Site Recovery](azure-to-azure-about-networking.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
-**Pokyny** : Site Recovery používá zabezpečený kanál https šifrovaný pomocí standard AES (Advanced Encryption Standard) (AES 256), ze serverů Azure pro úlohy do služeb Site Recovery služby hostované v Recovery Services trezoru.
+**Pokyny**: Site Recovery používá zabezpečený kanál https šifrovaný pomocí standard AES (Advanced Encryption Standard) (AES 256), ze serverů Azure pro úlohy do služeb Site Recovery služby hostované v Recovery Services trezoru.
 
 Aktuální verze TLS podporované pro Site Recovery jsou TLS 1,0, TLS 1,1, TLS 1,2 v oblastech, které byly na konci 2019 živé. Protokol TLS 1.2 je jedinou podporovanou verzí TLS pro všechny nové oblasti.
 
 - [Principy šifrování při přenosu pro Azure Site Recovery](physical-azure-set-up-source.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
 
@@ -378,13 +378,13 @@ Společnost Microsoft spravuje základní platformu, kterou používá Site Reco
 
 - [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
-**Monitorování Azure Security Center** : aktuálně není k dispozici.
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: ke správě přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny** : pomocí řízení přístupu na základě role Azure (Azure RBAC) můžete spravovat přístup k datům a prostředkům souvisejícím s site Recoverymi prostředky. 
+**Pokyny**: pomocí řízení přístupu na základě role Azure (Azure RBAC) můžete spravovat přístup k datům a prostředkům souvisejícím s site Recoverymi prostředky. 
 
 Oddělte pracovní cla pomocí Azure RBAC a udělte jim odpovídající přístup. Pro řízení operací správy Site Recovery použijte předdefinované role Site Recovery.
 
@@ -392,9 +392,9 @@ Oddělte pracovní cla pomocí Azure RBAC a udělte jim odpovídající přístu
 
 - [Ke správě Azure Site Recovery použijte Role-Based Access Control](site-recovery-role-based-linked-access-control.md)
 
-**Monitorování Azure Security Center** : aktuálně není k dispozici.
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
 
@@ -406,18 +406,18 @@ K šifrovacímu klíči má přístup jenom zákazník při použití trezoru Re
 
 - [Podpora spravovaných klíčů Customer pro Azure Site Recovery](azure-to-azure-how-to-enable-replication-cmk-disks.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
-**Pokyny** : pomocí Azure monitor s protokoly aktivit Azure můžete vytvářet výstrahy, když se změny projeví u kritických prostředků. Tyto prostředky můžou zahrnovat produkční instance Recovery Servicesch trezorů, prostředků služby Site Recovery a souvisejících prostředků.
+**Pokyny**: pomocí Azure monitor s protokoly aktivit Azure můžete vytvářet výstrahy, když se změny projeví u kritických prostředků. Tyto prostředky můžou zahrnovat produkční instance Recovery Servicesch trezorů, prostředků služby Site Recovery a souvisejících prostředků.
 - [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
@@ -425,7 +425,7 @@ K šifrovacímu klíči má přístup jenom zákazník při použití trezoru Re
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
-**Pokyny** : pomocí Azure Resource graphu můžete v rámci svých předplatných dotazovat nebo zjišťovat všechny prostředky, včetně trezorů Recovery Services. Zajistěte, aby ve vašem tenantovi byla příslušná oprávnění ke čtení a aby se v rámci předplatných mohli vytvořit výčet všech předplatných Azure
+**Pokyny**: pomocí Azure Resource graphu můžete v rámci svých předplatných dotazovat nebo zjišťovat všechny prostředky, včetně trezorů Recovery Services. Zajistěte, aby ve vašem tenantovi byla příslušná oprávnění ke čtení a aby se v rámci předplatných mohli vytvořit výčet všech předplatných Azure
 
 I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager, které budou předány.
 
@@ -435,18 +435,18 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
 **Doprovodné** materiály: použijte značky pro Recovery Services trezory a další související prostředky, které používá Site Recovery s metadaty k jejich logickému uspořádání do taxonomie.
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
@@ -465,17 +465,17 @@ Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: definování a údržba inventáře schválených prostředků Azure
 
-**Pokyny** : Vytvoření inventáře schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky na základě požadavků organizace zákazníka.
+**Pokyny**: Vytvoření inventáře schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky na základě požadavků organizace zákazníka.
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
@@ -490,9 +490,9 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 - [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
@@ -507,19 +507,19 @@ Pochopení způsobu, jakým se v Azure vytvářejí a spravují zásady, je důl
 
 - [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: Omezte schopnost uživatelů pracovat s Azure Resource Manager
 
-**Pokyny** : pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management. To může zabránit vytváření a změnám prostředků v rámci vysoce zabezpečeného prostředí.
+**Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management. To může zabránit vytváření a změnám prostředků v rámci vysoce zabezpečeného prostředí.
 
 - [Postup konfigurace podmíněného přístupu pro blokování přístupu k Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
@@ -527,16 +527,16 @@ Pochopení způsobu, jakým se v Azure vytvářejí a spravují zásady, je důl
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Pokyny** : definování a implementace standardních konfigurací zabezpečení pro Recovery Services trezor pomocí Azure Policy. 
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Recovery Services trezor pomocí Azure Policy. 
 
 Pomocí aliasů Azure Policy v oboru názvů Microsoft. RecoveryServices můžete vytvořit vlastní zásady pro audit nebo vynutili konfiguraci Recovery Services úložiště Site Recovery služby.
 - [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
 
@@ -545,9 +545,9 @@ Pomocí aliasů Azure Policy v oboru názvů Microsoft. RecoveryServices můžet
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
@@ -557,9 +557,9 @@ Pomocí aliasů Azure Policy v oboru názvů Microsoft. RecoveryServices můžet
 
 - [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: nasazení nástrojů pro správu konfigurace pro prostředky Azure
 
@@ -569,9 +569,9 @@ Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: Implementujte automatizované monitorování konfigurace pro prostředky Azure.
 
@@ -580,15 +580,15 @@ Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 Použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje] efekty pro automatické vymáhání konfigurací pro prostředky Azure.
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
 
-**Pokyny** : zákazník by měl spravovat Site Recovery tajných kódů integrovaných s trezorem klíčů Azure a zároveň povolit zotavení po havárii pro virtuální počítače s podporou Azure Disk Encryption. 
+**Pokyny**: zákazník by měl spravovat Site Recovery tajných kódů integrovaných s trezorem klíčů Azure a zároveň povolit zotavení po havárii pro virtuální počítače s podporou Azure Disk Encryption. 
 
-- [Vytvoření trezoru klíčů](../key-vault/secrets/quick-create-portal.md)
+- [Vytvoření trezoru klíčů](../key-vault/general/quick-create-portal.md)
 
 - [Ověření v trezoru klíčů](../key-vault/general/authentication.md)
 
@@ -596,9 +596,9 @@ Použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje] efekty pr
 
 - [Jak povolit DR pro virtuální počítače s podporou Azure Disk Encryption pomocí Site Recovery](azure-to-azure-how-to-enable-replication-ade-vms.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
@@ -612,19 +612,19 @@ Spravované identity vám umožňují ověřit jakoukoli službu, která podporu
 
 - [Postup povolení identity spravované systémem v trezoru Recovery Services](azure-to-azure-how-to-enable-replication-private-endpoints.md#enable-the-managed-identity-for-the-vault)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
 
-**Pokyny** : implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
+**Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
 
 - [Jak nastavit skener přihlašovacích údajů](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
@@ -632,7 +632,7 @@ Spravované identity vám umožňují ověřit jakoukoli službu, která podporu
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: předběžná kontrola souborů, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
 
-**Pokyny** : Microsoft Antimalware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Site Recovery), ale neběží na vašem obsahu. Předem Prohledejte všechny soubory nahrané do nevýpočetních prostředků Azure, jako jsou App Service, Data Lake Storage a Blob Storage.
+**Pokyny**: Microsoft Antimalware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Site Recovery), ale neběží na vašem obsahu. Předem Prohledejte všechny soubory nahrané do nevýpočetních prostředků Azure, jako jsou App Service, Data Lake Storage a Blob Storage.
 
 K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Security Center pro datové služby.
 
@@ -640,9 +640,9 @@ K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Se
 
 - [Vysvětlení detekce hrozeb Azure Security Center pro datové služby](/azure/security-center/threat-protection)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="data-recovery"></a>Obnovení dat
 
@@ -658,19 +658,19 @@ Nejedná se o obor zákazníka a Site Recovery se tým postará o interní oddě
 
 - [Postup zálohování klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: ověření všech záloh včetně klíčů spravovaných zákazníkem
 
-**Pokyny** : pravidelné testování obnovení zálohovaných klíčů spravovaných zákazníkem.
+**Pokyny**: pravidelné testování obnovení zálohovaných klíčů spravovaných zákazníkem.
 
 - [Postup obnovení klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
@@ -678,9 +678,9 @@ Nejedná se o obor zákazníka a Site Recovery se tým postará o interní oddě
 
 - [Jak povolit obnovitelné odstranění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview?tabs=azure-portal)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
@@ -688,7 +688,7 @@ Nejedná se o obor zákazníka a Site Recovery se tým postará o interní oddě
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
-**Pokyny** : Vytvoření Průvodce odpověďmi na incidenty pro vaši organizaci. 
+**Pokyny**: Vytvoření Průvodce odpověďmi na incidenty pro vaši organizaci. 
 
 Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují všechny role pracovníků, a také fáze zpracování incidentů nebo správy z detekce po kontrolu incidentu.
 
@@ -700,9 +700,9 @@ Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které defi
 
 - [Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače v NIST, aby mohl pomoci při vytváření vlastního plánu reakce na incidenty.](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
@@ -714,9 +714,9 @@ Označení předplatných jasně (například produkční, neprodukční) a vytv
 
 - [Používání značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
@@ -724,9 +724,9 @@ Označení předplatných jasně (například produkční, neprodukční) a vytv
 
 - [Přečtěte si průvodce publikováním v NIST – příručka pro testování, školení a cvičení programů pro plány a možnosti IT](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
@@ -736,9 +736,9 @@ Vytvořte proces pro kontrolu incidentů, vystavení výskytu a zajištění vy�
 
 - [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
@@ -749,18 +749,18 @@ Pomocí konektoru Security Center Data můžete v případě potřeby streamovat
 
 - [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
 **Doprovodné** materiály: použití funkce automatizace pracovního postupu v Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 - [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
@@ -772,9 +772,9 @@ Pomocí konektoru Security Center Data můžete v případě potřeby streamovat
 
 - [V této části najdete další informace o strategii Microsoftu a provádění testování v rámci červeného seskupování a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ## <a name="next-steps"></a>Další kroky
 

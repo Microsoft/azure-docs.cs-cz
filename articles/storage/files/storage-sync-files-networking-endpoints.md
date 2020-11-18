@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 026f4f36986fa5fcfad4dac5186e9dc0b0997d72
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 02d9e65f5422b7b12900d051f01c1d6f55e8685b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629406"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844672"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurace koncových bodů sítě pro Synchronizaci souborů Azure
 Soubory Azure a Azure File Sync poskytují dva hlavní typy koncových bodů pro přístup ke sdíleným složkám Azure: 
@@ -39,9 +39,9 @@ Dále:
 ## <a name="create-the-private-endpoints"></a>Vytvoření privátních koncových bodů
 Při vytváření privátního koncového bodu pro prostředek Azure jsou nasazené tyto prostředky:
 
-- **Privátní koncový bod** : prostředek Azure, který představuje privátní koncový bod pro účet úložiště nebo službu synchronizace úložiště. Můžete si to představit jako prostředek, který připojuje vaše prostředky Azure a síťové rozhraní.
-- **Síťové rozhraní (nic)** : síťové rozhraní, které udržuje privátní IP adresu v zadané virtuální síti nebo podsíti. Jedná se o stejný prostředek, který se nasadí při nasazení virtuálního počítače, ale místo aby se přiřadil k VIRTUÁLNÍmu počítači, je vlastníkem privátního koncového bodu.
-- **Privátní zóna DNS** : Pokud jste ještě nikdy nasadili privátní koncový bod pro tuto virtuální síť, bude pro vaši virtuální síť nasazená nová privátní zóna DNS. Pro prostředek Azure v této zóně DNS se vytvoří i záznam DNS. Pokud jste už v této virtuální síti nasadili privátní koncový bod, přidá se do existující zóny DNS nový záznam A pro prostředek Azure. Nasazení zóny DNS je volitelné, ale důrazně se doporučuje, abyste zjednodušili potřebnou správu DNS.
+- **Privátní koncový bod**: prostředek Azure, který představuje privátní koncový bod pro účet úložiště nebo službu synchronizace úložiště. Můžete si to představit jako prostředek, který připojuje vaše prostředky Azure a síťové rozhraní.
+- **Síťové rozhraní (nic)**: síťové rozhraní, které udržuje privátní IP adresu v zadané virtuální síti nebo podsíti. Jedná se o stejný prostředek, který se nasadí při nasazení virtuálního počítače, ale místo aby se přiřadil k VIRTUÁLNÍmu počítači, je vlastníkem privátního koncového bodu.
+- **Privátní zóna DNS**: Pokud jste ještě nikdy nasadili privátní koncový bod pro tuto virtuální síť, bude pro vaši virtuální síť nasazená nová privátní zóna DNS. Pro prostředek Azure v této zóně DNS se vytvoří i záznam DNS. Pokud jste už v této virtuální síti nasadili privátní koncový bod, přidá se do existující zóny DNS nový záznam A pro prostředek Azure. Nasazení zóny DNS je volitelné, ale důrazně se doporučuje, abyste zjednodušili potřebnou správu DNS.
 
 > [!Note]  
 > Tento článek používá přípony DNS pro veřejné oblasti Azure `core.windows.net` pro účty úložiště a `afs.azure.net` služby synchronizace úložiště. Tento komentář platí také pro cloudy Azure svrchované jako Azure USA pro státní správu – stačí nahradit příslušné přípony vašeho prostředí.

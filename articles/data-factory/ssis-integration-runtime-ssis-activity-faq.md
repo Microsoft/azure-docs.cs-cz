@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 4c817194bbe0e4cf211992920bad9deb40bf05f4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632205"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844178"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Řešení potíží se spuštěním balíčku v prostředí SSIS Integration runtime
 
@@ -121,14 +121,14 @@ K této chybě dojde, když prostředí Integration runtime SSIS nemá přístup
 
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Chybová zpráva: poskytovatel Microsoft OLE DB pro Analysis Services. HRESULT: 0x80004005 Popis: ' Chyba modelu COM: Chyba COM: mscorlib; Cíl vyvolání způsobil výjimku.
 
-Jednou z možných příčin je, že uživatelské jméno nebo heslo s povoleným Azure Multi-Factor Authentication je nakonfigurované pro ověřování Azure Analysis Services. Toto ověřování není podporováno v prostředí SSIS Integration runtime. Zkuste použít instanční objekt pro Azure Analysis Services ověřování:
+Jednou z možných příčin je, že uživatelské jméno nebo heslo s povoleným Azure AD Multi-Factor Authentication je nakonfigurované pro ověřování Azure Analysis Services. Toto ověřování není podporováno v prostředí SSIS Integration runtime. Zkuste použít instanční objekt pro Azure Analysis Services ověřování:
 
 1. Připravte instanční objekt, jak je popsáno v tématu [automatizace s instančními objekty](../analysis-services/analysis-services-service-principal.md).
-2. V programu Správce připojení nakonfigurujte **použití konkrétního uživatelského jména a hesla** : jako uživatelské jméno nastavte **AppID** a jako heslo **clientSecret** .
+2. V programu Správce připojení nakonfigurujte **použití konkrétního uživatelského jména a hesla**: jako uživatelské jméno nastavte **AppID** a jako heslo **clientSecret** .
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Chybová zpráva: "zdroji ADONET se nepodařilo získat připojení {GUID} pomocí následující chybové zprávy: přihlášení uživatele ' NT AUTHORITY\ANONYMOUS LOGON ' při použití spravované identity se nezdařilo.
 
-Pokud má parametr *ConnectUsingManagedIdentity* **hodnotu true** , ujistěte se, že jste nenakonfigurovali metodu ověřování Správce připojení jako **ověřování hesla služby Active Directory** . Místo toho ho můžete nakonfigurovat jako **ověřování SQL** , které se ignoruje, pokud je nastavená možnost *ConnectUsingManagedIdentity* .
+Pokud má parametr *ConnectUsingManagedIdentity* **hodnotu true**, ujistěte se, že jste nenakonfigurovali metodu ověřování Správce připojení jako **ověřování hesla služby Active Directory** . Místo toho ho můžete nakonfigurovat jako **ověřování SQL** , které se ignoruje, pokud je nastavená možnost *ConnectUsingManagedIdentity* .
 
 ### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>Chybová zpráva: 0xC020801F na..., zdroj OData [...]: nejde získat spravované připojení ze Správce připojení za běhu.
 

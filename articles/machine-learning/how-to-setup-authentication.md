@@ -11,23 +11,23 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: adc0547e36e9cf996a87c2683b4830541b8cd360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7fa6beacf4456145e312494a72dad321dfef3754
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442102"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843923"
 ---
-# <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
+# <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro prostředky a pracovní postupy služby Azure Machine Learning
 
 
 Přečtěte si, jak nastavit ověřování pro váš pracovní prostor Azure Machine Learning. Ověřování do vašeho pracovního prostoru Azure Machine Learning je založené na __Azure Active Directory__ (Azure AD) pro většinu věcí. Obecně platí tři pracovní postupy pro ověřování, které můžete použít při připojování k pracovnímu prostoru:
 
-* __Interaktivní__ : účet můžete použít v Azure Active Directory k přímému ověření nebo k získání tokenu, který se používá k ověřování. Interaktivní ověřování se používá během _experimentů a iterativního vývoje_. Interaktivní ověřování umožňuje řídit přístup k prostředkům (například webové službě) na základě jednotlivých uživatelů.
+* __Interaktivní__: účet můžete použít v Azure Active Directory k přímému ověření nebo k získání tokenu, který se používá k ověřování. Interaktivní ověřování se používá během _experimentů a iterativního vývoje_. Interaktivní ověřování umožňuje řídit přístup k prostředkům (například webové službě) na základě jednotlivých uživatelů.
 
-* __Instanční objekt__ : v Azure Active Directory vytvoříte hlavní účet služby a použijete ho k ověření nebo získání tokenu. Instanční objekt se používá v případě, že potřebujete _automatizovaný proces ověřování_ ke službě bez nutnosti zásahu uživatele. Například skript průběžné integrace a nasazení, který na vlaky a testuje model pokaždé, když se kód školení změní.
+* __Instanční objekt__: v Azure Active Directory vytvoříte hlavní účet služby a použijete ho k ověření nebo získání tokenu. Instanční objekt se používá v případě, že potřebujete _automatizovaný proces ověřování_ ke službě bez nutnosti zásahu uživatele. Například skript průběžné integrace a nasazení, který na vlaky a testuje model pokaždé, když se kód školení změní.
 
-* __Spravovaná identita__ : při použití sady Azure Machine Learning SDK _na virtuálním počítači Azure_ můžete spravovat spravovanou identitu pro Azure. Tento pracovní postup umožňuje virtuálnímu počítači připojit se k pracovnímu prostoru pomocí spravované identity, aniž byste museli ukládat přihlašovací údaje v kódu Pythonu nebo vyzvat uživatele k ověření. Azure Machine Learning výpočetní clustery je taky možné nakonfigurovat tak, aby pro přístup k pracovnímu prostoru používaly spravovanou identitu při _výuce modelů_.
+* __Spravovaná identita__: při použití sady Azure Machine Learning SDK _na virtuálním počítači Azure_ můžete spravovat spravovanou identitu pro Azure. Tento pracovní postup umožňuje virtuálnímu počítači připojit se k pracovnímu prostoru pomocí spravované identity, aniž byste museli ukládat přihlašovací údaje v kódu Pythonu nebo vyzvat uživatele k ověření. Azure Machine Learning výpočetní clustery je taky možné nakonfigurovat tak, aby pro přístup k pracovnímu prostoru používaly spravovanou identitu při _výuce modelů_.
 
 > [!IMPORTANT]
 > Bez ohledu na použitou pracovní postup ověřování se řízení přístupu na základě role Azure (Azure RBAC) používá k vymezení úrovně přístupu (autorizace) povoleného pro prostředky. Například správce nebo proces automatizace může mít přístup k vytvoření výpočetní instance, ale ne k jeho použití, zatímco ho pracovník IT může použít, ale nemůže ho odstranit ani vytvořit. Další informace najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
@@ -141,7 +141,7 @@ Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovn
 
 1. Povolte [na virtuálním počítači spravovanou identitu přiřazenou systémem pro prostředky Azure](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity).
 
-1. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor a pak vyberte __Access Control (IAM)__ , __Přidat přiřazení role__ a vyberte __virtuální počítač__ v rozevíracím seznamu __přiřadit přístup k__ . Nakonec vyberte identitu svého virtuálního počítače.
+1. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor a pak vyberte __Access Control (IAM)__, __Přidat přiřazení role__ a vyberte __virtuální počítač__ v rozevíracím seznamu __přiřadit přístup k__ . Nakonec vyberte identitu svého virtuálního počítače.
 
 1. Vyberte roli, kterou chcete přiřadit k této identitě. Například přispěvatel nebo vlastní role. Další informace najdete v tématu [řízení přístupu k prostředkům](how-to-assign-roles.md).
 
@@ -154,7 +154,7 @@ Další informace najdete v tématu [nastavení spravované identity pro výpoč
 ## <a name="use-interactive-authentication"></a>Použít interaktivní ověřování
 
 > [!IMPORTANT]
-> Interaktivní ověřování používá prohlížeč a vyžaduje soubory cookie (včetně souborů cookie třetích stran). Pokud jste soubory cookie vypnuli, může se zobrazit chyba, například "Nemůžeme vás přihlásit". K této chybě může dojít také v případě, že jste povolili [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md).
+> Interaktivní ověřování používá prohlížeč a vyžaduje soubory cookie (včetně souborů cookie třetích stran). Pokud jste soubory cookie vypnuli, může se zobrazit chyba, například "Nemůžeme vás přihlásit". K této chybě může dojít také v případě, že jste povolili [Multi-Factor Authentication služby Azure AD](../active-directory/authentication/concept-mfa-howitworks.md).
 
 Většina příkladů v dokumentaci a vzorcích používá interaktivní ověřování. Například při použití sady SDK jsou k dispozici dvě volání funkcí, která vás automaticky vyzve k vytvoření toku ověřování založeného na uživatelském rozhraní:
 
@@ -403,4 +403,4 @@ ws = Workspace(subscription_id="your-sub-id",
 
 * [Způsob používání tajných kódů při školení](how-to-use-secrets-in-runs.md).
 * [Jak nakonfigurovat ověřování pro modely nasazené jako webovou službu](how-to-authenticate-web-service.md).
-* [Využití modelu Azure Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md).
+* [Využívání modelu služby Azure Machine Learning nasazeného jako webová služba](how-to-consume-web-service.md)

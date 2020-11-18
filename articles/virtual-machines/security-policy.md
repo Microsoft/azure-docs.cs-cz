@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 83d291ae72e79ec3600015fac07ee4ab80fe5df4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977744"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843549"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zásady zabezpečení a používání virtuálních počítačů v Azure
 
@@ -67,7 +67,7 @@ Tento problém řeší funkce spravovaných identit prostředků Azure v Azure A
 
 [Zásady Azure](../governance/policy/overview.md) se dají použít k definování požadovaného chování pro [virtuální počítače s Windows](./windows/policy.md) a [virtuální počítače](./linux/policy.md)se systémem Linux. Pomocí zásad může organizace vyhovět různým konvencím a pravidlům v celém podniku. Vynucování požadovaného chování může přispět k zmírnění rizika při přispívání na úspěch organizace.
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 
 Pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md)můžete oddělit povinnosti v rámci svého týmu a udělit uživatelům jenom přístup k vašemu virtuálnímu počítači, který potřebují k provádění svých úloh. Místo udělení všech neomezených oprávnění na virtuálním počítači můžete použít jenom určité akce. Řízení přístupu pro virtuální počítač můžete nakonfigurovat v [Azure Portal](../role-based-access-control/role-assignments-portal.md)pomocí rozhraní příkazového [řádku Azure](/cli/azure/role)nebo[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 

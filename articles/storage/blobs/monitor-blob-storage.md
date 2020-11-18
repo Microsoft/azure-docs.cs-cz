@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: cdd5a8b518a374340af35d5f866d51d016e5ac79
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: cb6680482466018f86779d9c0318bbfe4e749be1
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745189"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843141"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Monitorování služby Azure Blob Storage
 
@@ -80,14 +80,14 @@ Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shroma�
 
 2. Přejděte na svůj účet úložiště.
 
-3. V části **monitorování** klikněte na **nastavení diagnostiky (Preview)** .
+3. V části **monitorování** klikněte na **nastavení diagnostiky (Preview)**.
 
    > [!div class="mx-imgBorder"]
    > ![portál – diagnostické protokoly](media/monitor-blob-storage/diagnostic-logs-settings-pane.png)   
 
 4. Jako typ úložiště, pro který chcete povolit protokoly, vyberte **objekt BLOB** .
 
-5. Klikněte na **Přidat nastavení diagnostiky** .
+5. Klikněte na **Přidat nastavení diagnostiky**.
 
    > [!div class="mx-imgBorder"]
    > ![portál – protokoly prostředků – přidání nastavení diagnostiky](media/monitor-blob-storage/diagnostic-logs-settings-pane-2.png)
@@ -581,7 +581,7 @@ Tyto dotazy vám pomůžou monitorovat účty Azure Storage:
     | sort by count_ desc 
     | render piechart
     ```
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Podporuje Azure Storage metriky pro Managed Disks nebo nespravované disky?**
 

@@ -6,12 +6,12 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 291f1ac093568f50ad6146b70fa1ef69263b7b5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d65a39c1a1d302e565b59db1644af2c08befb6b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85830298"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843158"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Použití Virtual Machines pro datové vědy v Azure
 
@@ -24,7 +24,7 @@ Ve výchozím nastavení jsou projekty spouštěny na **bezplatné výpočetní*
 
 ## <a name="create-a-dsvm-instance"></a>Vytvoření instance DSVM
 
-Pokud chcete vytvořit novou instanci DSVM, postupujte podle pokynů v tématu [Vytvoření Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Další informace, včetně podrobností o cenách, najdete v článku [Virtual Machines pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
+Pokud chcete vytvořit novou instanci DSVM, postupujte podle pokynů v tématu [Vytvoření Ubuntu Data Science VM](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md). Další informace, včetně podrobností o cenách, najdete v článku [Virtual Machines pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
 ## <a name="connect-to-the-dsvm"></a>Připojení k DSVM
 
@@ -68,4 +68,4 @@ Pokud DSVM sdílí více uživatelů, můžete se vyhnout blokování tím, že 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o DSVMs o [Seznámení s Azure Data věda Virtual Machines](/azure/machine-learning/data-science-virtual-machine/overview).
+Přečtěte si další informace o DSVMs o [Seznámení s Azure Data věda Virtual Machines](../machine-learning/data-science-virtual-machine/overview.md).

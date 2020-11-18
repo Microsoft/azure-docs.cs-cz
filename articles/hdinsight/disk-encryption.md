@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 9afab87e0d7f0e7a9e5c05b36ace1dfc09c9aa9f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548026"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844740"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Dvojité šifrování Azure HDInsight pro neaktivní neaktivní data
 
@@ -71,17 +71,17 @@ Konkrétní kroky najdete v tématu [Vytvoření spravované identity přiřazen
 
 ### <a name="create-azure-key-vault"></a>Vytvořit Azure Key Vault
 
-Vytvořte trezor klíčů. Konkrétní postup najdete v tématu věnovaném [vytvoření Azure Key Vault](../key-vault/secrets/quick-create-portal.md) .
+Vytvořte trezor klíčů. Konkrétní postup najdete v tématu věnovaném [vytvoření Azure Key Vault](../key-vault/general/quick-create-portal.md) .
 
 HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů, můžete klíče importovat do Azure Key Vault. Nezapomeňte, že Trezor klíčů musí mít povolené **obnovitelné odstranění** . Další informace o importu existujících klíčů najdete v [informacích o klíčích, tajných klíčích a certifikátech](../key-vault/general/about-keys-secrets-certificates.md).
 
 ### <a name="create-key"></a>Vytvořit klíč
 
-1. V novém trezoru klíčů přejděte na **Nastavení**  >  **klíče**  >  **+ Generovat/importovat** .
+1. V novém trezoru klíčů přejděte na **Nastavení**  >  **klíče**  >  **+ Generovat/importovat**.
 
     ![Vygenerovat nový klíč v Azure Key Vault](./media/disk-encryption/create-new-key.png "Vygenerovat nový klíč v Azure Key Vault")
 
-1. Zadejte název a pak vyberte **vytvořit** . Udržujte výchozí **typ klíče** **RSA** .
+1. Zadejte název a pak vyberte **vytvořit**. Udržujte výchozí **typ klíče** **RSA**.
 
     ![vygeneruje název klíče.](./media/disk-encryption/create-key.png "Vygenerovat název klíče")
 
@@ -95,7 +95,7 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
 ### <a name="create-access-policy"></a>Vytvořit zásady přístupu
 
-1. V novém trezoru klíčů přejděte na **Nastavení**  >  **zásady přístupu**  >  **+ Přidat zásady přístupu** .
+1. V novém trezoru klíčů přejděte na **Nastavení**  >  **zásady přístupu**  >  **+ Přidat zásady přístupu**.
 
     ![Vytvořit nové zásady přístupu Azure Key Vault](./media/disk-encryption/key-vault-access-policy.png)
 
@@ -103,15 +103,15 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
     |Vlastnost |Popis|
     |---|---|
-    |Klíčová oprávnění|Vyberte **získat** , **Rozbalit klíč** a **zalomit klíč** .|
-    |Tajná oprávnění|Vyberte **získat** , **nastavit** a **Odstranit** .|
+    |Klíčová oprávnění|Vyberte **získat**, **Rozbalit klíč** a **zalomit klíč**.|
+    |Tajná oprávnění|Vyberte **získat**, **nastavit** a **Odstranit**.|
     |Vybrat objekt zabezpečení|Vyberte uživatelem přiřazenou spravovanou identitu, kterou jste vytvořili dříve.|
 
     ![Nastavení výběru objektu zabezpečení pro zásady Azure Key Vaultho přístupu](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. Vyberte **Přidat** .
+1. Vyberte **Přidat**.
 
-1. Vyberte **Uložit** .
+1. Vyberte **Uložit**.
 
     ![Uložit zásady přístupu Azure Key Vault](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
@@ -121,7 +121,7 @@ Nyní jste připraveni vytvořit nový cluster HDInsight. Klíče spravované z�
 
 #### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-Během vytváření clusteru zadejte úplný **identifikátor klíče** , včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Musíte také přiřadit spravovanou identitu ke clusteru a zadat identifikátor URI klíče.
+Během vytváření clusteru zadejte úplný **identifikátor klíče**, včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Musíte také přiřadit spravovanou identitu ke clusteru a zadat identifikátor URI klíče.
 
 ![Vytvořit nový cluster](./media/disk-encryption/create-cluster-portal.png)
 
@@ -359,7 +359,7 @@ Můžou nastat situace, kdy budete možná chtít změnit šifrovací klíče po
 
 #### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-K otočení klíče potřebujete identifikátor URI trezoru základního klíče. Až to uděláte, přejděte do části vlastnosti clusteru HDInsight na portálu a klikněte na **změnit klíč** pod **adresou URL klíče pro šifrování disku** . Zadejte novou adresu URL klíče a odešlete pro otočení klíče.
+K otočení klíče potřebujete identifikátor URI trezoru základního klíče. Až to uděláte, přejděte do části vlastnosti clusteru HDInsight na portálu a klikněte na **změnit klíč** pod **adresou URL klíče pro šifrování disku**. Zadejte novou adresu URL klíče a odešlete pro otočení klíče.
 
 ![otočit šifrovací klíč disku](./media/disk-encryption/change-key.png)
 
@@ -403,7 +403,7 @@ Vzhledem k tomu, že se podporují jenom klíče s povoleným obnovitelném odst
 
 **Pokud je cluster škálovatelný, budou nové uzly bezproblémově podporovat klíče spravované zákazníky?**
 
-Yes. Cluster potřebuje během horizontálního navýšení kapacity přístup k klíči v trezoru klíčů. Stejný klíč se používá k šifrování spravovaných disků i disků prostředků v clusteru.
+Ano. Cluster potřebuje během horizontálního navýšení kapacity přístup k klíči v trezoru klíčů. Stejný klíč se používá k šifrování spravovaných disků i disků prostředků v clusteru.
 
 **Jsou v mém umístění dostupné klíče spravované zákazníky?**
 

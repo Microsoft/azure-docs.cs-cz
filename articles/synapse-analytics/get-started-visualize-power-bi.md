@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: business-intelligence
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 64a87df4e4fea9fb29e787ab3420f1a62f41323d
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: b72d083216b7cd0ae7a588bfd721d8981829bfc7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592409"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844363"
 ---
 # <a name="visualize-data-with-power-bi"></a>Vizualizace dat pomocí Power BI
 
@@ -48,7 +48,7 @@ Pracovní prostor Power BI můžete propojit s pracovním prostorem Azure synaps
 1. Přejít na **NYCTaxiWorkspace1**  >  **Power BI datových sad** a vyberte **Nový Power BI datová sada**.
 1. Najeďte myší na databázi **SQLDB1** a vyberte **Stáhnout soubor. pbids**.
 1. Otevřete stažený soubor **. pbids** . Power BI Desktop se otevře a automaticky se připojí k **SQLDB1** v pracovním prostoru Azure synapse.
-1. Pokud se zobrazí dialogové okno s názvem **databáze SQL serveru** :
+1. Pokud se zobrazí dialogové okno s názvem **databáze SQL serveru**:
     1. Vyberte **účet Microsoft**.
     1. Vyberte **Přihlásit** se a přihlaste se ke svému účtu.
     1. Vyberte **Connect** (Připojit).
@@ -60,7 +60,7 @@ Pracovní prostor Power BI můžete propojit s pracovním prostorem Azure synaps
     1. Přetáhněte sloupce **SumTripDistance** a **AvgTripDistance** na hodnoty **vizualizace**  >  **Values**.
 1. Na kartě **Domů** vyberte **publikovat**.
 1. Vyberte **Uložit** a uložte tak provedené změny.
-1. Zvolte název souboru **PassengerAnalysis. pbix** a pak vyberte Save ( **Uložit** ).
+1. Zvolte název souboru **PassengerAnalysis. pbix** a pak vyberte Save ( **Uložit**).
 1. V **možnosti vybrat cíl** zvolte možnost **NYCTaxiWorkspace1** a pak klikněte na tlačítko **Vybrat**.
 1. Počkejte na dokončení publikování.
 
@@ -82,11 +82,7 @@ Pracovní prostor Power BI můžete propojit s pracovním prostorem Azure synaps
     * V části **NYCTaxiWorkspace1**  >  **Power BI sestavy** se zobrazí nová sestava s názvem **PassengerAnalysis**.
 1. Vyberte sestavu **PassengerAnalysis** . Sestava se otevře a můžete ji přímo v synapse studiu upravovat.
 
-## <a name="monitor-activities"></a>Monitorování aktivit
 
-1. V synapse studiu přejdete do centra **monitorování** .
-1. V tomto umístění uvidíte historii všech aktivit prováděných v pracovním prostoru a ty, které jsou teď aktivní.
-1. Prozkoumejte **spuštění kanálu** , **Apache Spark aplikace** a **požadavky SQL** , abyste viděli, co jste už v pracovním prostoru provedli.
 
 ## <a name="next-steps"></a>Další kroky
 

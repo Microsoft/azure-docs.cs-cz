@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/29/2020
+ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: ca8d359638d97f77377f02d47d824fa216acdcc8
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: e3a517497a480995b8ce63d36d0427e3bfadfe43
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928106"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844054"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -48,6 +48,21 @@ Pro neúspěšné aktivity běžící v místním prostředí IR/Shared IR Azure
 
 ## <a name="self-hosted-ir-general-failure-or-error"></a>Obecné selhání nebo chyba místního prostředí IR
 
+### <a name="out-of-memory-issue"></a>Nedostatek paměti – problém
+
+#### <a name="symptoms"></a>Příznaky
+
+K problému "OutOfMemoryException" dochází při pokusu o spuštění aktivity vyhledávání s propojeným IR nebo místním prostředím IR.
+
+#### <a name="cause"></a>Příčina
+
+Nová aktivita se může naplnit s problémem OOM (OutOfMemory), pokud počítač s infračerveným signálem momentálně využívá vysoké využití paměti. Příčinou může být velký rozsah souběžného spouštění aktivit a chyba je záměrné.
+
+#### <a name="resolution"></a>Řešení
+
+Zkontrolujte využití prostředků a souběžné spouštění aktivit v uzlu IR. Upravte interní a aktivační čas spuštění aktivit, aby nedocházelo k příliš velkému spouštění na stejném uzlu IR.
+
+
 ### <a name="tlsssl-certificate-issue"></a>Problém s certifikátem TLS/SSL
 
 #### <a name="symptoms"></a>Příznaky
@@ -65,14 +80,14 @@ Jedná se o známý problém s technologií WCF: Při ověřování TLS/SSL tech
 #### <a name="resolution"></a>Řešení
 
 Certifikáty se zástupnými znaky se podporují v místním prostředí IR služby Azure Data Factory v2. K tomuto problému obvykle dochází kvůli nesprávnému certifikátu SSL. Poslední název DNS v síti SAN musí být platný. Při ověřování postupujte následovně. 
-1.  Otevřete konzolu pro správu, v podrobnostech certifikátu překontrolujte *alternativní název* *subjektu i* předmět. V takovém případě není například poslední položka v *alternativním názvu předmětu* , která je "DNS Name = Microsoft.com.com", legitimní.
+1.  Otevřete konzolu pro správu, v podrobnostech certifikátu překontrolujte *alternativní název* *subjektu i* předmět. V takovém případě není například poslední položka v *alternativním názvu předmětu*, která je "DNS Name = Microsoft.com.com", legitimní.
 2.  Požádejte společnost o problém s certifikátem, aby odstranila nesprávný název DNS.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Problém s limitem souběžných úloh
 
 #### <a name="symptoms"></a>Příznaky
 
-Při pokusu o zvýšení limitu souběžných úloh v uživatelském rozhraní Azure Data Factory dojde k trvalému zablokování ve stavu *Probíhá aktualizace* .
+Při pokusu o zvýšení limitu souběžných úloh v uživatelském rozhraní Azure Data Factory dojde k trvalému zablokování ve stavu *Probíhá aktualizace*.
 Maximální hodnota počtu souběžných úloh byla nastavená na 24 a chcete tento počet navýšit, aby se úlohy mohly spouštět rychleji. Minimální hodnota, kterou můžete zadat, je 3 a maximální hodnota, kterou můžete zadat, je 32. Zvýšili jste hodnotu z 24 na 32 a kliknete na tlačítko *aktualizovat* v uživatelském rozhraní, které se zablokovalo při *aktualizaci* , jak vidíte níže. Po aktualizaci se zákazníkovi stále zobrazuje hodnota 24 a aktualizace na hodnotu 32 neproběhla.
 
 ![Stav aktualizace](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
@@ -102,7 +117,7 @@ Při řešení případů souvisejících s ověřováním SSL/TLS metodou hands
 
 - Tady je rychlý a intuitivní způsob řešení potíží při sestavení řetězu certifikátů X. 509.
  
-    1. Exportujte certifikát, který je potřeba ověřit. Přejděte do správy certifikátů počítače, vyhledejte certifikát, který chcete zkontrolovat, a klikněte pravým tlačítkem na **Všechny úlohy** -> **Exportovat** .
+    1. Exportujte certifikát, který je potřeba ověřit. Přejděte do správy certifikátů počítače, vyhledejte certifikát, který chcete zkontrolovat, a klikněte pravým tlačítkem na **Všechny úlohy** -> **Exportovat**.
     
         ![Exportovat úlohy](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
@@ -138,7 +153,7 @@ Při řešení případů souvisejících s ověřováním SSL/TLS metodou hands
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. Pak se otevře **nástroj pro načtení adresy URL** . Certifikáty od AIA, CDP a OCSP můžete ověřit kliknutím na tlačítko **Načíst** .
+    1. Pak se otevře **nástroj pro načtení adresy URL**. Certifikáty od AIA, CDP a OCSP můžete ověřit kliknutím na tlačítko **Načíst**.
 
         ![Tlačítko pro načtení](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
@@ -152,7 +167,7 @@ Při řešení případů souvisejících s ověřováním SSL/TLS metodou hands
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
-Příklad: 
+Například: 
 
 `Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
 
@@ -165,7 +180,7 @@ Pokud převezmete monitorování procesů, můžete zobrazit následující výs
 > [!TIP] 
 > Filtr můžete nastavit tak, jak je znázorněno na obrázku obrazovky.
 > Oznamujeme, že knihovna DLL **System. ValueTuple** není umístěná ve složce v mezipaměti GAC nebo v adresáři *c:\Program Files\microsoft Integration Runtime\4.0\Gateway* nebo ve složce *c:\Program Files\Microsoft integr Runtime\4.0\Shared* .
-> V zásadě platí, že se soubor DLL nejprve načítá ze složky *GAC* , pak ze složky *Shared* a nakonec ze složky *Gateway* . Proto můžete soubor DLL umístit do libovolné složky, což může být užitečné.
+> V zásadě platí, že se soubor DLL nejprve načítá ze složky *GAC*, pak ze složky *Shared* a nakonec ze složky *Gateway*. Proto můžete soubor DLL umístit do libovolné složky, což může být užitečné.
 
 ![Nastavení filtrů](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
@@ -210,7 +225,7 @@ Pokud se nepoužijí žádné z výše uvedených příčin, můžete přejít d
 
 #### <a name="symptoms"></a>Příznaky
 
-Po vytvoření místních prostředí IR pro zdrojové i cílové úložiště dat chcete tato dvě prostředí IR propojit a dokončit kopírování. Pokud jsou úložiště dat nakonfigurovaná v různých virtuální sítě nebo nemůžou pochopit mechanismus brány, dojde k chybám, jako je: *ovladač zdroje nejde najít v cíli IR* ; k *zdroji není přistupující cílovým IR* .
+Po vytvoření místních prostředí IR pro zdrojové i cílové úložiště dat chcete tato dvě prostředí IR propojit a dokončit kopírování. Pokud jsou úložiště dat nakonfigurovaná v různých virtuální sítě nebo nemůžou pochopit mechanismus brány, dojde k chybám, jako je: *ovladač zdroje nejde najít v cíli IR*; k *zdroji není přistupující cílovým IR*.
  
 #### <a name="cause"></a>Příčina
 
@@ -288,14 +303,14 @@ Chcete-li zjistit chybu, vyhledejte v protokolu událostí Integration Runtime.
 
 ![Protokol událostí IR](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
 
-Pokud se chyba zobrazí jako výše *UnauthorizedAccessException* , postupujte podle následujících pokynů:
+Pokud se chyba zobrazí jako výše *UnauthorizedAccessException*, postupujte podle následujících pokynů:
 
 
 1. Ověřte účet přihlašovací služby *DIAHostService* na panelu služby systému Windows.
 
     ![Účet přihlašovací služby](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-2. Ověřte, zda má účet přihlašovací služby oprávnění R/W pro složku: *%ProgramData%\Microsoft\DataTransfer\DataManagementGateway* .
+2. Ověřte, zda má účet přihlašovací služby oprávnění R/W pro složku: *%ProgramData%\Microsoft\DataTransfer\DataManagementGateway*.
 
     - Ve výchozím nastavení platí, že pokud se účet přihlášení služby nezměnil, měl by mít oprávnění k R/W.
 
@@ -305,7 +320,7 @@ Pokud se chyba zobrazí jako výše *UnauthorizedAccessException* , postupujte p
         1. Vyčistit odinstalujte aktuálně místně hostovaný IR.
         1. Nainstalujte prostředí IR pro místní hostování.
         1. Chcete-li změnit účet služby, postupujte podle pokynů níže: 
-            1. Přejděte do složky selfhosted IR pro instalaci, přejděte do složky: *Microsoft Integration Runtime\4.0\Shared* .
+            1. Přejděte do složky selfhosted IR pro instalaci, přejděte do složky: *Microsoft Integration Runtime\4.0\Shared*.
             1. Spusťte příkazový řádek s oprávněním vyšší úrovně. Nahraďte *\<user>* a *\<password>* vlastním uživatelským jménem a heslem a pak spusťte následující příkaz:
                        
                 ```
@@ -325,7 +340,7 @@ Pokud se chyba zobrazí jako výše *UnauthorizedAccessException* , postupujte p
             1. Pro přihlašovací účet služby IR můžete použít místní/doménový uživatel.            
         1. Zaregistrujte Integration Runtime.
 
-Pokud se chyba zobrazí jako: *služba Integration runtime služby (DIAHostService) se nepodařilo spustit. Ověřte, zda máte dostatečná oprávnění pro spouštění systémových služeb* , postupujte podle následujících pokynů:
+Pokud se chyba zobrazí jako: *služba Integration runtime služby (DIAHostService) se nepodařilo spustit. Ověřte, zda máte dostatečná oprávnění pro spouštění systémových služeb*, postupujte podle následujících pokynů:
 
 1. Ověřte účet přihlašovací služby *DIAHostService* na panelu služby systému Windows.
    
@@ -404,6 +419,47 @@ Instalace závisí na službě Instalační služba systému Windows. K dispozic
 - Některé systémové soubory nebo registry byly neúmyslně změněny.
 
 
+### <a name="ir-service-account-failed-to-fetch-certificate-access"></a>Účtu služby IR se nepodařilo načíst přístup k certifikátu.
+
+#### <a name="symptoms"></a>Příznaky
+
+Při instalaci prostředí IR v místním prostředí pomocí Microsoft Integration Runtime Configuration Manageru se vygeneruje certifikát s důvěryhodnou certifikační autoritou. Certifikát nebylo možné použít k šifrování komunikace mezi dvěma uzly. 
+
+Informace o chybě jsou uvedené níže: 
+
+`Failed to change Intranet communication encryption mode: Failed to grant Integration Runtime service account the access of to the certificate 'XXXXXXXXXX'. Error code 103`
+
+![Nepovedlo se udělit přístup k certifikátu účtu služby IR](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png)
+
+#### <a name="cause"></a>Příčina
+
+Certifikát používá klíč KSP (Zprostředkovatel úložiště klíčů), což ještě není podporováno. SHIR podporuje teprve zatím certifikát CSP (Cryptographic Service Provider).
+
+#### <a name="resolution"></a>Řešení
+
+Pro tento případ se doporučuje certifikát CSP.
+
+**Řešení 1:** K importu certifikátu použijte následující příkaz:
+
+```
+Certutil.exe -CSP "CSP or KSP" -ImportPFX FILENAME.pfx 
+```
+
+![Použití příkazu certutil](media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png)
+
+**Řešení 2:** Převod certifikátů:
+
+OpenSSL PKCS12-in .\xxxx.pfx. \ xxxx_new. pem-Password Pass:*\<EnterPassword>*
+
+OpenSSL PKCS12-export-in. \ xxxx_new. pem-out xxxx_new. pfx
+
+Před a po převodu:
+
+![Před změnou certifikátu](media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png)
+
+![Po změně certifikátu](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
+
+
 ## <a name="self-hosted-ir-connectivity-issues"></a>Problémy s připojením IR v místním prostředí
 
 ### <a name="self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Místní prostředí Integration runtime se nemůže připojit ke cloudové službě.
@@ -431,7 +487,7 @@ Místní prostředí Integration runtime se nemůže připojit ke službě Data 
     ```
         
    > [!NOTE]     
-   > Adresa URL služby se může lišit v závislosti na umístění Data Factory. Adresu URL služby najdete v části připojení k **uživatelským rozhraním ADF**  >  **Connections**  >  **Integration modul runtime** upravit uzly v místním prostředí  >  **IR**  >  **Nodes**  >  **Zobrazit adresy URL služby** .
+   > Adresa URL služby se může lišit v závislosti na umístění Data Factory. Adresu URL služby najdete v části připojení k **uživatelským rozhraním ADF**  >  **Connections**  >  **Integration modul runtime** upravit uzly v místním prostředí  >  **IR**  >  **Nodes**  >  **Zobrazit adresy URL služby**.
             
     Očekává se následující odpověď:
             
@@ -569,7 +625,7 @@ Netmon trasování a proveďte další analýzu.
  
     *Síťový balíček ze systému Linux A s hodnotou TTL 64-> B TTL 64 minus 1 = 63-> C TTL 63 minus 1 = 62-> TTL 62 minus 1 = 61 v místním prostředí IR*
 
-- V ideálním případě bude hodnota TTL 128, což znamená, že systém Windows spouští naši Data Factory. Jak je znázorněno v následujícím příkladu, *128 – 107 = 21 směrování* , což znamená, že 21 směrování pro balíček bylo odesláno z Data Factory do místního prostředí IR během ověřování TCP 3.
+- V ideálním případě bude hodnota TTL 128, což znamená, že systém Windows spouští naši Data Factory. Jak je znázorněno v následujícím příkladu, *128 – 107 = 21 směrování*, což znamená, že 21 směrování pro balíček bylo odesláno z Data Factory do místního prostředí IR během ověřování TCP 3.
  
     ![HODNOTA TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
@@ -587,11 +643,11 @@ Když se pokusíte o **8.8.8.8 888** s shromažďovaným trasováním Netmon, zo
 ![Netmon trasování 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
  
 
-To znamená, že nemůžete na straně serveru **8.8.8.8** vytvořit připojení TCP na základě portu **888** , takže uvidíte dva další balíčky **SynReTransmit** . Vzhledem k tomu, že source **hostitel2** se nepovedlo vytvořit připojení k **8.8.8.8** v prvním balíčku, zůstane při vytváření připojení.
+To znamená, že nemůžete na straně serveru **8.8.8.8** vytvořit připojení TCP na základě portu **888**, takže uvidíte dva další balíčky **SynReTransmit** . Vzhledem k tomu, že source **hostitel2** se nepovedlo vytvořit připojení k **8.8.8.8** v prvním balíčku, zůstane při vytváření připojení.
 
 > [!TIP]
-> - Můžete kliknout na možnost **Load Filter**  ->  **Standard Filter**  ->  **adresy**  ->  **IPv4** .
-> - Zadejte **IPv4. Address = = 8.8.8.8** as Filter a klikněte na **použít** . Pak se zobrazí jenom komunikace z místního počítače do cílového **8.8.8.8** .
+> - Můžete kliknout na možnost **Load Filter**  ->  **Standard Filter**  ->  **adresy**  ->  **IPv4**.
+> - Zadejte **IPv4. Address = = 8.8.8.8** as Filter a klikněte na **použít**. Pak se zobrazí jenom komunikace z místního počítače do cílového **8.8.8.8**.
 
 ![filtrovat adresy 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
         

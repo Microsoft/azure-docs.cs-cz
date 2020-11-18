@@ -4,12 +4,12 @@ description: Přečtěte si, jak získat přístup k souborům, rozhraním REST 
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: b2254e6d966ca3281cd9c8b0771cb77fb6dede33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a833ff914c1ee53f024147371977ac1caa3800dc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87846611"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842868"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Přístup ke cloudovým datům v poznámkovém bloku
 
@@ -46,7 +46,7 @@ if response.status_code == 200:
 
 K databázím v SQL Database nebo spravované instanci SQL získáte přístup pomocí knihoven pyodbc nebo pymssql.
 
-[Použití Pythonu k dotazování databáze SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) vám poskytne pokyny k vytvoření databáze v SQL Database obsahující data AdventureWorks a ukazuje, jak tato data dotazovat. Stejný kód se zobrazí v ukázkovém poznámkovém bloku tohoto článku.
+[Použití Pythonu k dotazování databáze SQL Azure](../azure-sql/database/connect-query-python.md) vám poskytne pokyny k vytvoření databáze v SQL Database obsahující data AdventureWorks a ukazuje, jak tato data dotazovat. Stejný kód se zobrazí v ukázkovém poznámkovém bloku tohoto článku.
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -61,11 +61,11 @@ Ukázkový Poznámkový blok znázorňuje práci s tabulkami a objekty blob, vč
 
 Azure Cosmos DB poskytuje plně indexované úložiště NoSQL pro dokumenty JSON. Následující články poskytují řadu různých způsobů, jak pracovat s Cosmos DB z Pythonu:
 
-- [Vytvoření aplikace API SQL pomocí Pythonu](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [Sestavení aplikace v baňce s rozhraním API Azure Cosmos DB pro MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
-- [Vytvoření databáze grafu pomocí Pythonu a rozhraní Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [Vytvoření aplikace Cassandra pomocí Pythonu a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [Vytvoření aplikace rozhraní API pro tabulky pomocí Pythonu a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [Vytvoření aplikace API SQL pomocí Pythonu](../cosmos-db/create-sql-api-python.md)
+- [Sestavení aplikace v baňce s rozhraním API Azure Cosmos DB pro MongoDB](../cosmos-db/create-mongodb-flask.md)
+- [Vytvoření databáze grafu pomocí Pythonu a rozhraní Gremlin API](../cosmos-db/create-graph-python.md)
+- [Vytvoření aplikace Cassandra pomocí Pythonu a Azure Cosmos DB](../cosmos-db/create-cassandra-python.md)
+- [Vytvoření aplikace rozhraní API pro tabulky pomocí Pythonu a Azure Cosmos DB](../cosmos-db/table-storage-how-to-use-python.md)
 
 Při práci s Cosmos DB můžete použít knihovnu [Azure-cosmosdb-Table](https://pypi.org/project/azure-cosmosdb-table/) .
 
@@ -73,9 +73,9 @@ Při práci s Cosmos DB můžete použít knihovnu [Azure-cosmosdb-Table](https:
 
 Azure poskytuje řadu dalších typů databází, které můžete použít. Níže uvedené články poskytují pokyny pro přístup k těmto databázím z Pythonu:
 
-- [Azure Database for PostgreSQL: Použití Pythonu k připojení a dotazování dat](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [Rychlý start: Použití Azure Redis Cache s Pythonem](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [Azure Database for MySQL: Použití Pythonu k připojení a dotazování dat](https://docs.microsoft.com/azure/mysql/connect-python)
+- [Azure Database for PostgreSQL: Použití Pythonu k připojení a dotazování dat](../postgresql/connect-python.md)
+- [Rychlý start: Použití Azure Redis Cache s Pythonem](../azure-cache-for-redis/cache-python-get-started.md)
+- [Azure Database for MySQL: Použití Pythonu k připojení a dotazování dat](../mysql/connect-python.md)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Průvodce kopírováním pro Azure Data Factory](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 

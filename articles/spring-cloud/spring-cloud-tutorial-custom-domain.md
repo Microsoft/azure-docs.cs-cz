@@ -6,13 +6,13 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.custom: devx-track-java
-ms.openlocfilehash: ea0887dd1d28bb958b27813df7f4c7a221470bac
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: d06a6eb8b504f2c5dd09de70d79f50a3ed5d89a3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088750"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844723"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mapování stávající vlastní domény na jarní cloud Azure
 
@@ -62,7 +62,7 @@ Vytvořte soubor _mergedcertificate.crt_ pro sloučený certifikát. V textovém
 
 Exportujte sloučený certifikát TLS/SSL s privátním klíčem, se kterým se vygenerovala vaše žádost o certifikát.
 
-Pokud jste žádost o certifikát vygenerovali pomocí OpenSSL, vytvořili jste i soubor privátního klíče. Exportujte certifikát do formátu PFX spuštěním následujícího příkazu. Nahraďte zástupné symboly _ &lt; Private-Key-File>_ a _ &lt; merge-Certificate-File>_ cestami k vašemu privátnímu klíči a souboru sloučeného certifikátu.
+Pokud jste žádost o certifikát vygenerovali pomocí OpenSSL, vytvořili jste i soubor privátního klíče. Exportujte certifikát do formátu PFX spuštěním následujícího příkazu. Nahraďte zástupné symboly _&lt; Private-Key-File>_ a _&lt; merge-Certificate-File>_ cestami k vašemu privátnímu klíči a souboru sloučeného certifikátu.
 
 ```bash
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
@@ -79,9 +79,9 @@ Postup nahrání certifikátu do trezoru klíčů:
 1. Přejít do instance trezoru klíčů.
 1. V levém navigačním podokně klikněte na **certifikáty**.
 1. V horní nabídce klikněte na možnost **Generovat/importovat**.
-1. V dialogovém okně **vytvořit certifikát** v části **Metoda vytvoření certifikátu**vyberte `Import` .
-1. V části **nahrát soubor certifikátu**přejděte do umístění certifikátu a vyberte ho.
-1. V části **heslo**zadejte privátní klíč certifikátu.
+1. V dialogovém okně **vytvořit certifikát** v části **Metoda vytvoření certifikátu** vyberte `Import` .
+1. V části **nahrát soubor certifikátu** přejděte do umístění certifikátu a vyberte ho.
+1. V části **heslo** zadejte privátní klíč certifikátu.
 1. Klikněte na **Vytvořit**.
 
     ![Importovat certifikát 1](./media/custom-dns-tutorial/import-certificate-a.png)
@@ -212,7 +212,7 @@ Po úspěšném přidání vazby SSL bude stav domény zabezpečený: **v pořá
 ## <a name="enforce-https"></a>Vynucení protokolu HTTPS
 Ve výchozím nastavení může kdokoli k vaší aplikaci přistupovat pomocí protokolu HTTP, ale můžete přesměrovat všechny požadavky HTTP na port HTTPS.
 #### <a name="portal"></a>[Azure Portal](#tab/Azure-portal)
-Na stránce aplikace v levém navigačním panelu vyberte **vlastní doména**. Potom nastavte **pouze https**na *hodnotu true*.
+Na stránce aplikace v levém navigačním panelu vyberte **vlastní doména**. Potom nastavte **pouze https** na *hodnotu true*.
 
 ![Přidat vazbu SSL 3](./media/custom-dns-tutorial/enforce-http.png)
 

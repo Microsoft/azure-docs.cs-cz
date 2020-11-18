@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: 779330d7881040026f45a031f95f44d770f39a56
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e9eabc73c244526f0ea15b9c72b5377545f662b2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412761"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844859"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
 Předplatitelé služby Azure mohou svoje cloudová prostředí spravovat z více zařízení. Můžou k tomu využívat pracovní stanice, počítače vývojářů a dokonce i privilegovaná zařízení koncových uživatelů, která mají oprávnění ke konkrétním úlohám. V některých případech se funkce správy provádějí prostřednictvím webových konzol, například [portálu Azure](https://azure.microsoft.com/features/azure-portal/). V ostatních případech můžou existovat přímá připojení k Azure z místních systémů prostřednictvím virtuálních privátních sítí (VPN), terminálových služeb, protokolů klientských aplikací nebo (v kódu) rozhraní API pro správu služby Azure (SMAPI). Kromě toho můžou být koncové body klienta buď připojené k doménám nebo izolované a nespravované, jako například tablety nebo smartphony.
@@ -112,7 +112,7 @@ Brána vzdálené plochy je proxy služba protokolu RDP založená na zásadách
 * Připojte bránu VP ke stejné [doméně pro správu](/previous-versions/windows/it-pro/windows-2000-server/bb727085(v=technet.10)) jako pracovní stanice správce. Je to nezbytné, když používáte VPN typu site-to-site s protokolem IPsec nebo ExpressRoute v rámci domény, která má jednosměrný vztah důvěryhodnosti k Azure AD, nebo pokud federujete přihlašovací údaje mezi místní instancí AD DS a Azure AD.
 * Pokud chcete, aby brána VP ověřila platnost názvu klientského počítače (propojení s doménou) a povolila přístup k webu Azure Portal, na konfigurujte [zásady autorizace připojení klienta](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753324(v=ws.11)).
 * Protokol IPsec pro [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) slouží k ochraně před odposloucháváním provozu správy a před odcizením tokenu. Popřípadě zvažte použití izolovaného internetového odkazu prostřednictvím [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
-* Povolte vícefaktorové ověřování (prostřednictvím služby [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)) nebo ověřování pomocí čipové karty, aby ho mohli používat správci, kteří se připojují prostřednictvím brány VP.
+* Povolte vícefaktorové ověřování (prostřednictvím [služby Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)) nebo ověřování pomocí čipové karty pro správce, kteří se přihlašují prostřednictvím Brána VP.
 * Pokud chcete minimalizovat počet povolených koncových bodů pro správu, nakonfigurujte v Azure [omezení IP adres](https://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) nebo [skupiny zabezpečení sítě](../../virtual-network/network-security-groups-overview.md) prostředku.
 
 ## <a name="security-guidelines"></a>Pokyny pro zabezpečení

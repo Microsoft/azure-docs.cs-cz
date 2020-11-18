@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d36c6e8ebbb86f9027a4822daa4481b5481523c2
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 50f2515cee92ead8018ffaaf4b4574905f8007d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289535"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844501"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrace služby Key Vault s certifikační autoritou DigiCert
 
@@ -27,13 +27,13 @@ Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certi
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení této příručky musíte mít následující prostředky.
 * Trezor klíčů. Můžete použít existující Trezor klíčů nebo vytvořit nový pomocí následujících kroků v jednom z těchto rychlých startů:
-   - [Vytvoření trezoru klíčů pomocí Azure CLI](../secrets/quick-create-cli.md)
-   - [Vytvoření trezoru klíčů pomocí Azure PowerShell](../secrets/quick-create-powershell.md)
-   - [Vytvořte Trezor klíčů pomocí Azure Portal](../secrets/quick-create-portal.md).
+   - [Vytvoření trezoru klíčů pomocí Azure CLI](../general/quick-create-cli.md)
+   - [Vytvoření trezoru klíčů pomocí Azure PowerShell](../general/quick-create-powershell.md)
+   - [Vytvořte Trezor klíčů pomocí Azure Portal](../general/quick-create-portal.md).
 *   Musíte aktivovat účet DigiCert CertCentral. [Zaregistrujte](https://www.digicert.com/account/signup/) si účet CertCentral.
 *   Oprávnění na úrovni správce v účtech.
 
@@ -48,7 +48,7 @@ Ujistěte se, že máte následující informace užitečné z účtu DigiCert C
 ## <a name="adding-certificate-authority-in-key-vault"></a>Přidání certifikační autority v Key Vault 
 Po shromáždění výše uvedených informací z účtu DigiCert CertCentral teď můžete přidat DigiCert do seznamu certifikačních autorit v trezoru klíčů.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1.  Pokud chcete přidat certifikační autoritu DigiCert, přejděte do trezoru klíčů, do kterého chcete přidat DigiCert. 
 2.  Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
@@ -56,11 +56,11 @@ Po shromáždění výše uvedených informací z účtu DigiCert CertCentral te
 4.  Vyberte **Přidat** možnost.
  ![Přidat certifikační autority](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  Na obrazovce **Vytvoření certifikační autority** vyberte následující hodnoty:
-    -   **Název** : Přidejte název vystavitele, který chcete identifikovat. Příklad DigicertCA
-    -   **Zprostředkovatel** : z nabídky vyberte DigiCert.
-    -   **ID účtu** : Zadejte ID účtu DigiCert CertCentral.
-    -   **Heslo účtu** : Zadejte klíč rozhraní API, který jste vygenerovali v účtu DigiCert CertCentral.
-    -   **ID organizace** : zadejte OrgID shromážděné z účtu DigiCert CertCentral 
+    -   **Název**: Přidejte název vystavitele, který chcete identifikovat. Příklad DigicertCA
+    -   **Zprostředkovatel**: z nabídky vyberte DigiCert.
+    -   **ID účtu**: Zadejte ID účtu DigiCert CertCentral.
+    -   **Heslo účtu**: Zadejte klíč rozhraní API, který jste vygenerovali v účtu DigiCert CertCentral.
+    -   **ID organizace**: zadejte OrgID shromážděné z účtu DigiCert CertCentral 
     -   Klikněte na **Vytvořit**.
    
 6.  Uvidíte, že v seznamu certifikačních autorit se teď přidalo DigicertCA.

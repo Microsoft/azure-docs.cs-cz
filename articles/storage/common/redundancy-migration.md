@@ -10,13 +10,13 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6f5eab8f53fb4c9e15606223707292261b4615e0
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 228595bf633ef0545a13abe19308e49da82cf75a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330287"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844008"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Změna způsobu replikace účtu úložiště
 
@@ -125,16 +125,16 @@ Migraci za provozu si můžete vyžádat prostřednictvím [portálu podpory Azu
 
 1. Vyberte **novou žádost o podporu**.
 2. Dokončete **základy** na základě informací o účtu: 
-    - **Typ problému** : vyberte **technický**.
-    - **Služba** : vyberte **moje služby** a **správu účtu úložiště**.
-    - **Prostředek** : Vyberte prostředek, který chcete převést na ZRS.
+    - **Typ problému**: vyberte **technický**.
+    - **Služba**: vyberte **moje služby** a **správu účtu úložiště**.
+    - **Prostředek**: Vyberte prostředek, který chcete převést na ZRS.
 3. Vyberte **Další**.
 4. V části **problém** zadejte následující hodnoty:
-    - **Závažnost** : ponechte výchozí hodnotu tak, jak je.
-    - **Typ problému** : vyberte **migrace dat**.
-    - **Kategorie** : vyberte **migrovat do ZRS**.
-    - **Title** : zadejte popisný název, například **migrace účtu ZRS**.
-    - **Podrobnosti** : v poli **podrobností** zadejte další podrobnosti, například přejete si migrovat na ZRS z [LRS, GRS] v \_ \_ oblasti.
+    - **Závažnost**: ponechte výchozí hodnotu tak, jak je.
+    - **Typ problému**: vyberte **migrace dat**.
+    - **Kategorie**: vyberte **migrovat do ZRS**.
+    - **Title**: zadejte popisný název, například **migrace účtu ZRS**.
+    - **Podrobnosti**: v poli **podrobností** zadejte další podrobnosti, například přejete si migrovat na ZRS z [LRS, GRS] v \_ \_ oblasti.
 5. Vyberte **Další**.
 6. Ověřte, že kontaktní informace jsou správné v okně **kontaktní údaje** .
 7. Vyberte **Vytvořit**.
@@ -165,7 +165,7 @@ Pokud chcete data účtu ZRS ručně migrovat do nebo z klasického účtu LRS, 
 
 # <a name="portal"></a>[Azure Portal](#tab/portal)
 
-Pokud chcete upgradovat na ZRS v Azure Portal, přejděte do nastavení **Konfigurace** účtu a vyberte **upgradovat** :
+Pokud chcete upgradovat na ZRS v Azure Portal, přejděte do nastavení **Konfigurace** účtu a vyberte **upgradovat**:
 
 ![Upgrade ze ZRS Classic na ZRS na portálu](media/redundancy-migration/portal-zrs-classic-upgrade.png)
 

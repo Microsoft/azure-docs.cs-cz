@@ -12,14 +12,14 @@ ms.date: 09/02/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání mluvčího, Voice biometry
-ms.openlocfilehash: 2c5b73b93c22ef27d7b68455f5e1e5108f25c984
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5001ac166b37f3a3852bc14261a5b5d199d778cd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397255"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844557"
 ---
-# <a name="what-is-speaker-recognition"></a>Co je rozpoznávání mluvčího?
+# <a name="what-is-speaker-recognition-preview"></a>Co je rozpoznávání mluvčího (Preview)?
 
 Služba rozpoznávání mluvčího poskytuje algoritmy pro ověřování a identifikaci mluvčích podle jejich jedinečných hlasových charakteristik pomocí služby Voice biometry. Rozpoznávání mluvčího slouží k zodpovězení otázky "kdo se mluví?". Zadáváte data o školeních zvuku pro jeden mluvčí, který vytváří profil zápisu na základě jedinečných vlastností hlasu mluvčího. Potom můžete zkontrolovat ukázky zvukového hlasu proti tomuto profilu, abyste ověřili, že je mluvčí stejná osoba (ověření mluvčího), nebo ukázky zvukového hlasu pro *skupinu* zaregistrovaných profilů mluvčího, abyste viděli, jestli se shoduje s jakýmkoli profilem ve skupině (identifikace mluvčího). Naproti tomu [mluvčí Diarization](batch-transcription.md#speaker-separation-diarization) seskupuje segmenty zvuků pomocí mluvčího v operaci Batch.
 
@@ -67,7 +67,7 @@ Stejně jako u všech Cognitive Servicesch prostředků musí vývojáři, kteř
 | Jaký je rozdíl mezi ověřováním závislým na textu a nezávislým na textu? | Ověřování závislé na textu vyžaduje konkrétní předávací frázi pro zápis i rozpoznávání. Ověřování nezávislé na textu vyžaduje pro registraci delší ukázku hlasu, ale může se jednat o cokoli, co je třeba při rozpoznávání.|
 | Jaké jazyky se podporují? | Angličtina, francouzština, španělština, italština, němčina, italština, japonština a portugalština |
 | Jaké oblasti Azure jsou podporované? | Rozpoznávání mluvčího je služba ve verzi Preview, která je aktuálně dostupná jenom v Západní USA oblasti.|
-| Jaké formáty zvuku jsou podporovány? | Mono 16 bitů, 16kHz WAV s kódováním PCM |
+| Jaké jsou podporované zvukové formáty? | Mono 16 bitů, 16kHz WAV s kódováním PCM |
 | Odpovědi **přijmout** a **odmítnout** nejsou přesné, jak tuto prahovou hodnotu vyladit? | Vzhledem k tomu, že se optimální prahová hodnota značně liší u scénářů, rozhraní API rozhoduje, jestli se má "přijmout" nebo "zamítnout" jednoduše na základě výchozí prahové hodnoty 0,5. Pokročilým uživatelům se doporučuje přepsat výchozí rozhodnutí a vyladit výsledek na základě vašeho vlastního scénáře. |
 | Můžete jeden mluvčí zaregistrovat několikrát? | Ano, u ověřování závislého na textu můžete zaregistrovat mluvčí až 50 časů. V případě ověření nezávislého na textu nebo identifikace mluvčího se můžete zaregistrovat až po 300 sekund zvuk. |
 | Jaká data jsou uložená v Azure? | Zvuk registrace je uložený ve službě, dokud se hlasový profil [neodstraní](speaker-recognition-basics.md#deleting-voice-profile-enrollments). Zvukové vzorky rozpoznávání nejsou uchovávány nebo uloženy. |

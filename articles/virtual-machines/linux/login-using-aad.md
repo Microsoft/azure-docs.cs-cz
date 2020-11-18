@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 882df9d0dcb01d6321455b845fed087a5e14ccc6
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002320"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843071"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
 
@@ -138,7 +138,7 @@ az role assignment create \
 
 Další informace o tom, jak pomocí Azure RBAC spravovat přístup k prostředkům předplatného Azure, najdete v tématu použití rozhraní příkazového [řádku Azure](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)nebo [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
-Službu Azure AD můžete také nakonfigurovat tak, aby vyžadovala službu Multi-Factor Authentication pro konkrétního uživatele, aby se přihlásil k virtuálnímu počítači se systémem Linux. Další informace najdete v tématu [Začínáme s Azure Multi-Factor Authentication v cloudu](../../active-directory/authentication/howto-mfa-getstarted.md).
+Službu Azure AD můžete také nakonfigurovat tak, aby vyžadovala službu Multi-Factor Authentication pro konkrétního uživatele, aby se přihlásil k virtuálnímu počítači se systémem Linux. Další informace najdete v tématu [Začínáme se službou Azure AD Multi-Factor Authentication v cloudu](../../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Přihlášení k virtuálnímu počítači se systémem Linux
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4362b579b7f01570a2b5fd072bf53ad495797cd8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fb91a490083629101470565a630b659c090e071b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783772"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843362"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Použití klíčů spravovaných zákazníkem v Azure Key Vault pro službu import/export
 
@@ -33,7 +33,7 @@ Než začnete, ujistěte se, že:
     - [Vytvoří úlohu importu pro soubory](storage-import-export-data-to-files.md).
     - [Vytvoření úlohy exportu pro objekty blob](storage-import-export-data-from-blobs.md)
 
-2. Máte existující Azure Key Vault s klíčem, který můžete použít k ochraně klíče nástroje BitLocker. Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](../../key-vault/secrets/quick-create-portal.md).
+2. Máte existující Azure Key Vault s klíčem, který můžete použít k ochraně klíče nástroje BitLocker. Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: vytvoření Azure Key Vault pomocí Azure Portal](../../key-vault/general/quick-create-portal.md).
 
     - **Obnovitelné odstranění** a **nevyprázdnit** se nastaví na stávající Key Vault. Tyto vlastnosti nejsou ve výchozím nastavení povolené. Pokud chcete tyto vlastnosti povolit, přečtěte si část s názvem **Povolení obnovitelného odstranění** a **Povolení vyprázdnit ochranu** v jednom z následujících článků:
 
@@ -48,7 +48,7 @@ Než začnete, ujistěte se, že:
 Konfigurace klíče spravovaného zákazníkem pro službu import/export je volitelná. Ve výchozím nastavení používá služba import/export k ochraně klíče nástroje BitLocker spravovaný klíč společnosti Microsoft. Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupujte následovně:
 
 1. Přejít na okno **Přehled** pro vaši úlohu importu.
-2. V pravém podokně vyberte možnost **zvolit způsob šifrování klíčů BitLockeru** .
+2. V pravém podokně vyberte možnost **zvolit způsob šifrování klíčů BitLockeru**.
 
     ![Zvolit možnost šifrování](./media/storage-import-export-encryption-key-portal/encryption-key-1.png)
 
@@ -56,7 +56,7 @@ Konfigurace klíče spravovaného zákazníkem pro službu import/export je voli
 
     ![Zobrazit klíč BitLockeru](./media/storage-import-export-encryption-key-portal/encryption-key-2.png)
 
-4. Máte možnost zadat spravovaný klíč zákazníka. Po výběru klíče spravovaného zákazníkem **Vyberte Trezor klíčů a klíč** .
+4. Máte možnost zadat spravovaný klíč zákazníka. Po výběru klíče spravovaného zákazníkem **Vyberte Trezor klíčů a klíč**.
 
     ![Vybrat spravovaný klíč zákazníka](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
 
@@ -64,11 +64,11 @@ Konfigurace klíče spravovaného zákazníkem pro službu import/export je voli
 
     ![Vyberte nebo vytvořte Azure Key Vault](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
 
-6. Můžete také vybrat **vytvořit nové** a vytvořit nový trezor klíčů. V okně **vytvořit Trezor klíčů** zadejte skupinu prostředků a název trezoru klíčů. Přijměte všechny ostatní výchozí hodnoty. Vyberte **zkontrolovat + vytvořit** .
+6. Můžete také vybrat **vytvořit nové** a vytvořit nový trezor klíčů. V okně **vytvořit Trezor klíčů** zadejte skupinu prostředků a název trezoru klíčů. Přijměte všechny ostatní výchozí hodnoty. Vyberte **zkontrolovat + vytvořit**.
 
     ![Vytvořit nový Azure Key Vault](./media/storage-import-export-encryption-key-portal/encryption-key-5.png)
 
-7. Zkontrolujte informace spojené s vaším trezorem klíčů a vyberte **vytvořit** . Počkejte pár minut, než se vytváření trezoru klíčů dokončí.
+7. Zkontrolujte informace spojené s vaším trezorem klíčů a vyberte **vytvořit**. Počkejte pár minut, než se vytváření trezoru klíčů dokončí.
 
     ![Vytvořit Azure Key Vault](./media/storage-import-export-encryption-key-portal/encryption-key-6.png)
 
@@ -80,11 +80,11 @@ Konfigurace klíče spravovaného zákazníkem pro službu import/export je voli
 
     Pokud při vytváření trezoru klíčů nejsou zapnutá ochrana před odstraněním a vyprázdněním klíče, Trezor klíčů se aktualizuje, aby byla zapnutá ochrana proti odstranění a vyprázdnění.
 
-10. Zadejte název pro svůj klíč, Přijměte ostatní výchozí hodnoty a vyberte **vytvořit** .
+10. Zadejte název pro svůj klíč, Přijměte ostatní výchozí hodnoty a vyberte **vytvořit**.
 
     ![Vytvořit nový klíč](./media/storage-import-export-encryption-key-portal/encryption-key-8.png)
 
-11. Vyberte **verzi** a pak zvolte **Vybrat** . Zobrazí se oznámení o vytvoření klíče v trezoru klíčů.
+11. Vyberte **verzi** a pak zvolte **Vybrat**. Zobrazí se oznámení o vytvoření klíče v trezoru klíčů.
 
     ![Nový klíč vytvořený v trezoru klíčů](./media/storage-import-export-encryption-key-portal/encryption-key-9.png)
 

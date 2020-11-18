@@ -3,12 +3,12 @@ title: Doporučené postupy zabezpečení
 description: Při používání Azure Lighthouse je důležité vzít v úvahu zabezpečení a řízení přístupu.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 097611837e3bba2d1a44ec521862e03cc467d707
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef2c41cf052e5f79ecf4abf01c8f3fab3dd1de14
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399376"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843719"
 ---
 # <a name="recommended-security-practices"></a>Doporučené postupy zabezpečení
 
@@ -17,11 +17,11 @@ Při používání [Azure Lighthouse](../overview.md)je důležité vzít v úva
 > [!TIP]
 > Tato doporučení se vztahují také na podniky, které [spravují víc tenantů](enterprise.md) pomocí Azure Lighthouse.
 
-## <a name="require-azure-multi-factor-authentication"></a>Vyžadování služby Azure Multi-Factor Authentication
+## <a name="require-azure-ad-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication služby Azure AD
 
-[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (označované také jako dvoustupňové ověřování) pomáhá zabránit útočníkům v získání přístupu k účtu tím, že vyžaduje více kroků ověřování. Měli byste vyžadovat Multi-Factor Authentication pro všechny uživatele ve vašem spravovaném tenantovi, včetně uživatelů, kteří budou mít přístup k delegovaným zákaznickým prostředkům.
+[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (označované také jako dvoustupňové ověřování) pomáhají zabránit útočníkům v získání přístupu k účtu tím, že vyžadují více kroků ověřování. Měli byste vyžadovat Multi-Factor Authentication pro všechny uživatele ve vašem spravovaném tenantovi, včetně uživatelů, kteří budou mít přístup k delegovaným zákaznickým prostředkům.
 
-Doporučujeme, abyste zákazníkům požádali o implementaci Azure Multi-Factor Authentication ve svých klientech.
+Doporučujeme, abyste zákazníkům požádali o implementaci Azure AD Multi-Factor Authentication ve svých klientech.
 
 ## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Přiřazení oprávnění skupinám pomocí principu nejnižší úrovně oprávnění
 
@@ -47,5 +47,5 @@ Mějte na paměti, že když zakoupíte [zákazníky prostřednictvím veřejné
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nasazení Azure Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
+- [Nasazení služby Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
 - Přečtěte si o [prostředích pro správu mezi klienty](cross-tenant-management-experience.md).

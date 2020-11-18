@@ -3,13 +3,13 @@ title: Použití vyhrazeného fondu ke spuštění úlohy – úkoly
 description: Pokud chcete spustit úlohu Azure Container Registry, nastavte v registru vyhrazený fond výpočetních prostředků (fond agentů).
 ms.topic: article
 ms.date: 10/12/2020
-ms.custom: references_regions
-ms.openlocfilehash: 86c539c3b34ca0e54d65f15c4d9d01a99f9b31c6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 94956af14aad2b62e6455f443329bcd3232095c0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997277"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844910"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>Spuštění úlohy ACR ve vyhrazeném fondu agentů
 
@@ -35,7 +35,7 @@ Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . 
 - Pro každý registr je výchozí celková kvóta vCPU (jádro) 16 pro všechny standardní fondy agentů a pro izolované fondy agentů je 0. Otevřete [žádost o podporu][open-support-ticket] pro další přidělení.
 - V tuto chvíli nemůžete zrušit běh úlohy ve fondu agentů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * K používání kroků Azure CLI v tomto článku se vyžaduje Azure CLI verze 2.3.1 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli]. Nebo spusťte v [Azure Cloud Shell](../cloud-shell/quickstart.md).
 * Pokud ještě nemáte registr kontejnerů, vytvořte si [ho][create-reg-cli] (je potřeba Premium úrovně) v oblasti verze Preview.
@@ -93,13 +93,13 @@ az acr agentpool update \
 
 Fondy agentů úloh vyžadují přístup k následujícím službám Azure. Následující pravidla brány firewall musí být přidána do stávajících skupin zabezpečení sítě nebo tras definovaných uživatelem.
 
-| Směr | Protokol | Zdroj         | Zdrojový port | Cíl          | Cílový port | Pro    |
+| Směr | Protokol | Zdroj         | Zdrojový port | Cíl          | Cílový port | Použito    |
 |-----------|----------|----------------|-------------|----------------------|-----------|---------|
-| Odchozí  | TCP      | VirtualNetwork | Všechny         | AzureKeyVault        | 443       | Výchozí |
-| Odchozí  | TCP      | VirtualNetwork | Všechny         | Storage              | 443       | Výchozí |
-| Odchozí  | TCP      | VirtualNetwork | Všechny         | Centrum událostí             | 443       | Výchozí |
-| Odchozí  | TCP      | VirtualNetwork | Všechny         | Azureactivedirectory selhala | 443       | Výchozí |
-| Odchozí  | TCP      | VirtualNetwork | Všechny         | AzureMonitor         | 443       | Výchozí |
+| Odchozí  | TCP      | VirtualNetwork | Libovolný         | AzureKeyVault        | 443       | Výchozí |
+| Odchozí  | TCP      | VirtualNetwork | Libovolný         | Storage              | 443       | Výchozí |
+| Odchozí  | TCP      | VirtualNetwork | Libovolný         | Centrum událostí             | 443       | Výchozí |
+| Odchozí  | TCP      | VirtualNetwork | Libovolný         | Azureactivedirectory selhala | 443       | Výchozí |
+| Odchozí  | TCP      | VirtualNetwork | Libovolný         | AzureMonitor         | 443       | Výchozí |
 
 > [!NOTE]
 > Pokud vaše úkoly vyžadují další prostředky z veřejného Internetu, přidejte odpovídající pravidla. Například další pravidla jsou nutná ke spuštění úlohy sestavení Docker, která načte základní image z Docker Hub nebo obnoví balíček NuGet.

@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
-ms.custom: mvc
-ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 426cf59c9fb9d88039231ed441b2ffc7246716c7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537928"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844433"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Kurz: Vytvoření aplikace PHP (Laravel) a MySQL flexibilního serveru (Preview) v Azure App Service
 
@@ -22,7 +22,7 @@ ms.locfileid: "92537928"
 
 [Azure App Service](../../app-service/overview.md) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto kurzu se dozvíte, jak v Azure vytvořit aplikaci PHP a připojit ji k databázi MySQL. Až budete hotovi, budete mít aplikaci [Laravel](https://laravel.com/) běžící na Azure App Service v systému Linux.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Nastavení aplikace PHP (Laravel) s místním MySQL
 > * Vytvoření flexibilního serveru MySQL (Preview)
@@ -33,7 +33,7 @@ V tomto kurzu:
 
 Pokud ještě nemáte [předplatné Azure](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -96,7 +96,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>Konfigurace připojení k MySQL
 
-V kořenovém adresáři úložiště vytvořte soubor *.env* . Zkopírujte do souboru *.env* následující proměnné. Zástupný text _&lt;>root_password_ nahraďte heslem kořenového uživatele MySQL.
+V kořenovém adresáři úložiště vytvořte soubor *.env*. Zkopírujte do souboru *.env* následující proměnné. Zástupný text _&lt;>root_password_ nahraďte heslem kořenového uživatele MySQL.
 
 ```txt
 APP_ENV=local
@@ -110,7 +110,7 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-Informace o tom, jak Laravel používá soubor _.env_ , najdete v článku [Laravel Environment Configuration](https://laravel.com/docs/5.4/configuration#environment-configuration) (Konfigurace prostředí Laravel).
+Informace o tom, jak Laravel používá soubor _.env_, najdete v článku [Laravel Environment Configuration](https://laravel.com/docs/5.4/configuration#environment-configuration) (Konfigurace prostředí Laravel).
 
 ### <a name="run-the-sample-locally"></a>Spuštění ukázky v místním prostředí
 
@@ -134,7 +134,7 @@ php artisan serve
 
 V prohlížeči přejděte na `http://localhost:8000`. Na stránce přidejte několik úkolů.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Webová aplikace PHP v Azure s flexibilním serverem":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Úspěšné připojení aplikace PHP k MySQL":::
 
 Pokud chcete zastavit PHP, zadejte v terminálu `Ctrl + C`.
 
@@ -196,7 +196,7 @@ V tomto kroku připojíte aplikaci PHP k databázi MySQL, kterou jste vytvořili
 
 ### <a name="configure-the-database-connection"></a>Konfigurace připojení k databázi
 
-V kořenovém adresáři úložiště vytvořte soubor _.env.production_ a zkopírujte do něj následující proměnné. Nahraďte zástupný symbol _&lt; MySQL-Server-Name>_ v *DB_HOST* i *DB_USERNAME* .
+V kořenovém adresáři úložiště vytvořte soubor _.env.production_ a zkopírujte do něj následující proměnné. Nahraďte zástupný symbol _&lt; MySQL-Server-Name>_ v *DB_HOST* i *DB_USERNAME*.
 
 ```
 APP_ENV=production
@@ -257,7 +257,7 @@ Přejděte na adresu `http://localhost:8000`. Pokud se stránka načte bez chyb,
 
 Na stránce přidejte několik úkolů.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Webová aplikace PHP v Azure s flexibilním serverem":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Úspěšné připojení aplikace PHP k Azure Database for MySQL":::
 
 Pokud chcete zastavit PHP, zadejte v terminálu `Ctrl + C`.
 
@@ -336,7 +336,7 @@ Vytvořili jste novou prázdnou webovou aplikaci s povoleným nasazením Gitu.
 
 Ve službě App Service můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set).
 
-Následující příkaz nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Nahraďte zástupné symboly _&lt; název aplikace>_ a _&lt; mysql-Server-Name>_ .
+Následující příkaz nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Nahraďte zástupné symboly _&lt; název aplikace>_ a _&lt; mysql-Server-Name>_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
@@ -359,13 +359,13 @@ Pro přístup k nastavení můžete použít metodu PHP [getenv](https://www.php
 
 Laravel potřebuje ve službě App Service klíč aplikace. Můžete ho nakonfigurovat pomocí nastavení aplikace.
 
-V okně místního terminálu pomocí příkazu `php artisan` vygenerujte nový klíč aplikace, aniž byste ho ukládali do souboru _.env_ .
+V okně místního terminálu pomocí příkazu `php artisan` vygenerujte nový klíč aplikace, aniž byste ho ukládali do souboru _.env_.
 
 ```bash
 php artisan key:generate --show
 ```
 
-V Cloud Shell nastavte klíč aplikace v aplikaci App Service pomocí [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) příkazu. Nahraďte zástupné symboly _&lt; název aplikace>_ a _&lt; outputofphpartisankey: Generate>_ .
+V Cloud Shell nastavte klíč aplikace v aplikaci App Service pomocí [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) příkazu. Nahraďte zástupné symboly _&lt; název aplikace>_ a _&lt; outputofphpartisankey: Generate>_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -387,7 +387,7 @@ Zpět v okně místního terminálu přidejte vzdálené úložiště Azure do m
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Když vám správce přihlašovacích údajů Git vyzve k zadání přihlašovacích údajů, ujistěte se, že jste zadali přihlašovací údaje, které jste vytvořili v části **Konfigurace uživatele nasazení** , a ne přihlašovací údaje, které používáte k přihlášení k Azure Portal.
+Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Když vám správce přihlašovacích údajů Git vyzve k zadání přihlašovacích údajů, ujistěte se, že jste zadali přihlašovací údaje, které jste vytvořili v části **Konfigurace uživatele nasazení**, a ne přihlašovací údaje, které používáte k přihlášení k Azure Portal.
 
 ```bash
 git push azure master
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 Přejděte na adresu `http://<app-name>.azurewebsites.net` a přidejte do seznamu několik úkolů.
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Webová aplikace PHP v Azure s flexibilním serverem":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Webová aplikace PHP v Azure":::
 
 Blahopřejeme! Teď máte ve službě Azure App Service spuštěnou aplikaci PHP řízenou daty.
 
@@ -466,11 +466,11 @@ V okně místního terminálu spusťte migrace databáze Laravel, aby se změna 
 php artisan migrate
 ```
 
-Na základě [konvence pojmenování Laravel](https://laravel.com/docs/5.4/eloquent#defining-models) model `Task` (viz _app/Task.php_ ) ve výchozím nastavení provádí mapování na tabulku `tasks`.
+Na základě [konvence pojmenování Laravel](https://laravel.com/docs/5.4/eloquent#defining-models) model `Task` (viz _app/Task.php_) ve výchozím nastavení provádí mapování na tabulku `tasks`.
 
 ### <a name="update-application-logic"></a>Aktualizace logiky aplikace
 
-Otevřete soubor *routes/web.php* . V něm aplikace definuje své trasy a obchodní logiku.
+Otevřete soubor *routes/web.php*. V něm aplikace definuje své trasy a obchodní logiku.
 
 Na konec souboru přidejte trasu s následujícím kódem:
 
@@ -493,7 +493,7 @@ Předchozí kód provede jednoduchou aktualizaci datového modelu tím, že pře
 
 ### <a name="update-the-view"></a>Aktualizace zobrazení
 
-Otevřete soubor *resources/views/tasks.blade.php* . Vyhledejte počáteční značku `<tr>` a nahraďte ji:
+Otevřete soubor *resources/views/tasks.blade.php*. Vyhledejte počáteční značku `<tr>` a nahraďte ji:
 
 ```html
 <tr class="{{ $task->complete ? 'success' : 'active' }}" >
@@ -534,7 +534,7 @@ php artisan serve
 
 Pokud chcete vidět změnu stavu úkolu, přejděte na adresu `http://localhost:8000` a zaškrtněte políčko.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="Webová aplikace PHP v Azure s flexibilním serverem":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="U úkolu přibylo zaškrtávací políčko":::
 
 Pokud chcete zastavit PHP, zadejte v terminálu `Ctrl + C`.
 
@@ -556,7 +556,7 @@ git push azure master
 
 Až `git push` to bude hotové, přejděte do aplikace Azure a vyzkoušejte nové funkce.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Webová aplikace PHP v Azure s flexibilním serverem":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Změny modelu a databáze publikované v Azure":::
 
 Pokud jste přidali nějaké úkoly, zůstanou v databázi. Aktualizace schématu dat nechávají existující data netknutá.
 

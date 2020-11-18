@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9630919b71afd0219a2e82a86e0f89106e8a0ac2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ccfc290df64417bf0504849a83dbe68efcbddefe
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424058"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843702"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Základní hodnoty zabezpečení Azure pro Logic Apps
 
@@ -28,7 +28,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
-**Doprovodné**materiály: konektory, které běží v globálním, víceklientské Logic Apps službě, jsou nasazené a spravované Microsoftem. Tyto konektory poskytují triggery a akce pro přístup ke cloudovým službám, místním systémům nebo obojímu, včetně Office 365, Azure Blob Storage, SQL Server, Dynamics, Salesforce, SharePoint a dalších. Značku služby AzureConnectors můžete použít při zadávání pravidel ve skupině zabezpečení sítě nebo Azure Firewall pro povolení přístupu k souvisejícím prostředkům.
+**Doprovodné** materiály: konektory, které běží v globálním, víceklientské Logic Apps službě, jsou nasazené a spravované Microsoftem. Tyto konektory poskytují triggery a akce pro přístup ke cloudovým službám, místním systémům nebo obojímu, včetně Office 365, Azure Blob Storage, SQL Server, Dynamics, Salesforce, SharePoint a dalších. Značku služby AzureConnectors můžete použít při zadávání pravidel ve skupině zabezpečení sítě nebo Azure Firewall pro povolení přístupu k souvisejícím prostředkům.
 
 Pro Logic Apps, které potřebují přímý přístup k prostředkům ve službě Azure Virtual Network, můžete vytvořit prostředí ISE (Integration Service Environment), kde můžete vytvářet, nasazovat a spouštět aplikace logiky na vyhrazených prostředcích. Některé virtuální sítě Azure používají pro poskytování přístupu ke službám Azure PaaS, jako jsou například Azure Storage, Azure Cosmos DB, Azure SQL Database, partnerské služby nebo služby zákazníkům hostované v Azure, privátní koncové body (privátní propojení Azure). Pokud vaše aplikace logiky potřebují přístup k virtuálním sítím, které používají privátní koncové body, musíte tyto aplikace logiky vytvořit, nasadit a spustit v rámci ISE.
 
@@ -62,7 +62,7 @@ Ujistěte se, že všechna nasazení podsítí virtuální sítě související 
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuálních sítí, podsítí a síťových rozhraní
 
-**Doprovodné**materiály: Pokud spouštíte Logic Apps v prostředí ISE (Integration Service Environment), které používá externí přístupový bod, můžete ke snížení rizika exfiltrace dat použít skupinu zabezpečení sítě (NSG). Povolte protokoly toku NSG a odešlete protokoly do účtu Azure Storage pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
+**Doprovodné** materiály: Pokud spouštíte Logic Apps v prostředí ISE (Integration Service Environment), které používá externí přístupový bod, můžete ke snížení rizika exfiltrace dat použít skupinu zabezpečení sítě (NSG). Povolte protokoly toku NSG a odešlete protokoly do účtu Azure Storage pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
 - [Principy přístupu ke koncovému bodu ISE](connect-virtual-network-vnet-isolated-environment-overview.md#ise-endpoint-access)
 
@@ -76,7 +76,7 @@ Ujistěte se, že všechna nasazení podsítí virtuální sítě související 
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -84,7 +84,7 @@ Ujistěte se, že všechna nasazení podsítí virtuální sítě související 
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
 
-**Doprovodné**materiály: Pokud vaše aplikace logiky používá Trigger založený na požadavku, který přijímá příchozí volání nebo požadavky, jako je například požadavek nebo Trigger Webhooku, můžete omezit přístup tak, aby vaše aplikace logiky mohla volat jenom autorizovaní klienti.
+**Doprovodné** materiály: Pokud vaše aplikace logiky používá Trigger založený na požadavku, který přijímá příchozí volání nebo požadavky, jako je například požadavek nebo Trigger Webhooku, můžete omezit přístup tak, aby vaše aplikace logiky mohla volat jenom autorizovaní klienti.
 
 Pokud spouštíte Logic Apps v prostředí ISE (Integration Service Environment), DDoS Protection Povolte ve virtuální síti, která je přidružená k ISE, možnost standard, abyste se mohli chránit před útoky DDoS. K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
@@ -114,7 +114,7 @@ Pomocí Azure Security Center adaptivního posílení zabezpečení sítě dopor
 
 ### <a name="15-record-network-packets"></a>1,5: zaznamenání síťových paketů
 
-**Doprovodné**materiály: Pokud spouštíte Logic Apps v prostředí ISE (Integration Service Environment), které používá externí přístupový bod, můžete k omezení rizika exfiltrace dat použít skupinu zabezpečení sítě (NSG). Povolte protokoly toku NSG a odešlete protokoly do účtu Azure Storage pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
+**Doprovodné** materiály: Pokud spouštíte Logic Apps v prostředí ISE (Integration Service Environment), které používá externí přístupový bod, můžete k omezení rizika exfiltrace dat použít skupinu zabezpečení sítě (NSG). Povolte protokoly toku NSG a odešlete protokoly do účtu Azure Storage pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
 Chcete-li zajistit další ochranu a informace o síťovém provozu, můžete se podívat na protokoly přístupu, které jsou generovány pouze v případě, že jsou povoleny v každé instanci Application Gateway. Pomocí tohoto protokolu můžete zobrazit vzory přístupu Application Gateway a analyzovat důležité informace. Patří sem IP adresa volajícího, požadovaná adresa URL, latence odpovědi, návratový kód a bajtů.
 
@@ -136,7 +136,7 @@ V opačném případě můžete z webu Marketplace využít řešení třetí st
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
-**Doprovodné**materiály: vyberte nabídku z Azure Marketplace, která podporuje funkce ID/IP adres s možnostmi kontroly zatížení.  Pokud zjišťování neoprávněných vniknutí nebo prevence na základě kontroly zatížení není požadavkem, je možné použít Azure Firewall s analýzou hrozeb. Azure Firewall filtrování na základě logiky hrozeb může upozorňovat a zamítnout provoz do a ze známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu.
+**Doprovodné** materiály: vyberte nabídku z Azure Marketplace, která podporuje funkce ID/IP adres s možnostmi kontroly zatížení.  Pokud zjišťování neoprávněných vniknutí nebo prevence na základě kontroly zatížení není požadavkem, je možné použít Azure Firewall s analýzou hrozeb. Azure Firewall filtrování na základě logiky hrozeb může upozorňovat a zamítnout provoz do a ze známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu.
 
 Nasaďte řešení brány firewall podle svého výběru na základě hranic sítě vaší organizace za účelem detekce nebo odepření škodlivého provozu.
 
@@ -152,7 +152,7 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
 
-**Doprovodné**materiály: Pokud spouštíte Logic Apps v prostředí ISE (Integration Service Environment), nasaďte Azure Application Gateway.
+**Doprovodné** materiály: Pokud spouštíte Logic Apps v prostředí ISE (Integration Service Environment), nasaďte Azure Application Gateway.
 
 - [Jak integrovat API Management do interní virtuální sítě s Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
@@ -166,7 +166,7 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
 
-**Doprovodné**materiály: u prostředků, které potřebují přístup k instancím Azure Logic Apps, použijte značky služby virtuální sítě a definujte řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. LogicApps, LogicAppsManagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
+**Doprovodné** materiály: u prostředků, které potřebují přístup k instancím Azure Logic Apps, použijte značky služby virtuální sítě a definujte řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. LogicApps, LogicAppsManagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
 - [Další informace o použití značek služeb](../virtual-network/service-tags-overview.md)
 
@@ -194,7 +194,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
-**Doprovodné**materiály: u individuálních pravidel NSG použijte pole Popis k zadání obchodních potřeb a/nebo doby trvání (atd.) pro všechna pravidla, která umožňují přenos do/ze sítě.
+**Doprovodné** materiály: u individuálních pravidel NSG použijte pole Popis k zadání obchodních potřeb a/nebo doby trvání (atd.) pro všechna pravidla, která umožňují přenos do/ze sítě.
 
 Použijte některou z předdefinovaných Azure Policy definic souvisejících s označováním, jako je "vyžadovat značku a její hodnotu", aby se zajistilo, že všechny prostředky budou vytvořeny pomocí značek, a upozorní vás na stávající neoznačené prostředky.
 
@@ -270,7 +270,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: shromáždění protokolů zabezpečení z operačních systémů
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -278,7 +278,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
-**Doprovodné**materiály: po vytvoření a spuštění aplikace logiky můžete kontrolovat stav spuštění aplikace logiky, historii spuštění, historii aktivačních událostí a výkon. Pro monitorování událostí v reálném čase a bohatší ladění nastavte protokolování diagnostiky pro vaši aplikaci logiky pomocí protokolů Azure Monitor. Tato služba Azure vám pomůže monitorovat cloudové a místní prostředí, abyste mohli snadněji udržovat jejich dostupnost a výkon. Pak můžete najít a zobrazit události, jako jsou události triggeru, události spuštění a události akcí. Uložením těchto informací v protokolech Azure Monitor můžete vytvořit dotazy protokolu, které vám pomůžou najít a analyzovat tyto informace. Tato diagnostická data můžete také použít s jinými službami Azure, například Azure Storage a Azure Event Hubs.
+**Doprovodné** materiály: po vytvoření a spuštění aplikace logiky můžete kontrolovat stav spuštění aplikace logiky, historii spuštění, historii aktivačních událostí a výkon. Pro monitorování událostí v reálném čase a bohatší ladění nastavte protokolování diagnostiky pro vaši aplikaci logiky pomocí protokolů Azure Monitor. Tato služba Azure vám pomůže monitorovat cloudové a místní prostředí, abyste mohli snadněji udržovat jejich dostupnost a výkon. Pak můžete najít a zobrazit události, jako jsou události triggeru, události spuštění a události akcí. Uložením těchto informací v protokolech Azure Monitor můžete vytvořit dotazy protokolu, které vám pomůžou najít a analyzovat tyto informace. Tato diagnostická data můžete také použít s jinými službami Azure, například Azure Storage a Azure Event Hubs.
 
 V Azure Monitor nastavte dobu uchování protokolu pro protokoly přidružené k vašim Azure Logic Apps instancí podle předpisů pro dodržování předpisů vaší organizace.
 
@@ -292,7 +292,7 @@ V Azure Monitor nastavte dobu uchování protokolu pro protokoly přidružené k
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
 
-**Doprovodné**materiály: Chcete-li nastavit protokolování pro aplikaci logiky, můžete povolit Log Analytics při vytváření aplikace logiky nebo můžete řešení pro správu Logic Apps nainstalovat do pracovního prostoru Log Analytics pro existující aplikace logiky. Toto řešení poskytuje agregované informace pro vaše spuštění aplikace logiky a zahrnuje konkrétní podrobnosti, jako je stav, doba provádění, stav opětovného odeslání a ID korelace. Pokud pak chcete povolit protokolování a vytváření dotazů pro tyto informace, nastavte protokoly Azure Monitor.
+**Doprovodné** materiály: Chcete-li nastavit protokolování pro aplikaci logiky, můžete povolit Log Analytics při vytváření aplikace logiky nebo můžete řešení pro správu Logic Apps nainstalovat do pracovního prostoru Log Analytics pro existující aplikace logiky. Toto řešení poskytuje agregované informace pro vaše spuštění aplikace logiky a zahrnuje konkrétní podrobnosti, jako je stav, doba provádění, stav opětovného odeslání a ID korelace. Pokud pak chcete povolit protokolování a vytváření dotazů pro tyto informace, nastavte protokoly Azure Monitor.
 
 Můžete také povolit nastavení diagnostiky protokolu aktivit Azure a odesílat protokoly do pracovního prostoru Log Analytics. Pomocí dotazů v Log Analytics můžete vyhledávat hledané výrazy, identifikovat trendy, analyzovat vzorce a poskytovat spoustu dalších přehledů na základě dat protokolu aktivit, která se mohla shromažďovat pro Azure Logic Apps.
 
@@ -312,7 +312,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: povolení výstrah pro aktivity neobvyklé
 
-**Doprovodné**materiály: použijte Azure Security Center se Log Analytics pro monitorování a upozorňování na aktivitu neobvyklé nalezené v protokolech zabezpečení a událostech.
+**Doprovodné** materiály: použijte Azure Security Center se Log Analytics pro monitorování a upozorňování na aktivitu neobvyklé nalezené v protokolech zabezpečení a událostech.
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
@@ -328,7 +328,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
 
-**Doprovodné**materiály: nepoužitelné; Azure Logic Apps nezpracovává ani nevytváří protokoly související s malwarem.
+**Doprovodné** materiály: nepoužitelné; Azure Logic Apps nezpracovává ani nevytváří protokoly související s malwarem.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -336,7 +336,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 ### <a name="29-enable-dns-query-logging"></a>2,9: povolení protokolování dotazů DNS
 
-**Doprovodné**materiály: nepoužitelné; Azure Logic Apps nezpracovává ani nevytváří protokoly související s DNS.
+**Doprovodné** materiály: nepoužitelné; Azure Logic Apps nezpracovává ani nevytváří protokoly související s DNS.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -344,7 +344,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 ### <a name="210-enable-command-line-audit-logging"></a>2,10: povolení protokolování auditu příkazového řádku
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -356,7 +356,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Doprovodné**materiály: Azure Active Directory (AD) mají předdefinované role, které se musí explicitně přiřadit a které jsou Queryable. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu.
+**Doprovodné** materiály: Azure Active Directory (AD) mají předdefinované role, které se musí explicitně přiřadit a které jsou Queryable. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu.
 
 Pro snadný přístup k dalším prostředkům, které jsou chráněné Azure Active Directory (Azure AD) a ověřují vaši identitu bez přihlašování, může vaše aplikace logiky používat spravovanou identitu (dřív Identita spravované služby nebo MSI) místo přihlašovacích údajů nebo tajných kódů. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani vyměňovat tajné kódy.
 
@@ -376,7 +376,7 @@ Každý koncový bod žádosti v aplikaci logiky má v adrese URL koncového bod
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
-**Doprovodné**materiály: Azure Active Directory a Azure Logic Apps nemají koncept výchozích hesel.
+**Doprovodné** materiály: Azure Active Directory a Azure Logic Apps nemají koncept výchozích hesel.
 
 Pokud se používá základní ověřování, budete muset zadat uživatelské jméno a heslo. Při vytváření těchto přihlašovacích údajů se ujistěte, že nakonfigurujete silné heslo pro ověřování.
 
@@ -384,7 +384,7 @@ Pokud používáte infrastrukturu jako kód, neukládejte hesla do kódu a míst
 
 - [Zabezpečení a přístup k datům v Logic Apps](logic-apps-securing-a-logic-app.md)
 
-- [Jak nastavit a načíst tajný klíč z Azure Key Vault](../key-vault/secrets/quick-create-portal.md)
+- [Jak nastavit a načíst tajný klíč z Azure Key Vault](../key-vault/general/quick-create-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -392,7 +392,7 @@ Pokud používáte infrastrukturu jako kód, neukládejte hesla do kódu a míst
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
-**Doprovodné**materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu.
+**Doprovodné** materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu.
 
 Kromě toho můžete použít doporučení z Azure Security Center nebo integrovaných zásad Azure, jako je například:
 
@@ -430,7 +430,7 @@ Pro konektory, které používají Azure Active Directory (Azure AD) OAuth, vytv
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Doprovodné**materiály: Povolte Azure Active Directory (AD) Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
+**Doprovodné** materiály: Povolte Azure Active Directory (AD) Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
 - [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -482,11 +482,11 @@ Každý koncový bod žádosti v aplikaci logiky navíc má v adrese URL koncov�
 
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
-**Doprovodné**materiály: jako centrální ověřování a systém autorizací pro vaše Azure Logic Apps instance použijte Azure Active Directory (AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
+**Doprovodné** materiály: jako centrální ověřování a systém autorizací pro vaše Azure Logic Apps instance použijte Azure Active Directory (AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
 Pokud je v Logic Apps podporovaná podpora, využijte spravovanou identitu pro snadný přístup k dalším prostředkům, které jsou chráněné Azure Active Directory (Azure AD), a ověřte svoji identitu bez přihlašování, ale přihlašovacích údajů nebo tajných kódů. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani vyměňovat tajné kódy.
 
-Azure Logic Apps podporuje spravované identity přiřazené systémem i uživatelem. Aplikace logiky může používat buď identitu přiřazenou systémem, nebo jedinou identitu přiřazenou uživatelem, kterou můžete sdílet ve skupině aplikací logiky, ale nikoli obojí. V současné době pouze konkrétní vestavěné triggery a akce podporují spravované identity, nikoli spravované konektory nebo připojení, například:
+Azure Logic Apps podporuje spravované identity přiřazené systémem i uživatelem. Aplikace logiky může používat buď identitu přiřazenou systémem, nebo jedinou identitu přiřazenou uživatelem, kterou můžete sdílet ve skupině aplikací logiky, ale nikoli obojí. V současné době podporují spravované identity pouze specifické předdefinované triggery a akce, nikoli spravované konektory nebo připojení, jako například:
 
 -  HTTP
 
@@ -506,7 +506,7 @@ Azure Logic Apps podporuje spravované identity přiřazené systémem i uživat
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Doprovodné**materiály: Azure Active Directory (AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. 
+**Doprovodné** materiály: Azure Active Directory (AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. 
 
 - [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
@@ -518,7 +518,7 @@ Azure Logic Apps podporuje spravované identity přiřazené systémem i uživat
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: sledování pokusů o přístup k deaktivovaným přihlašovacím údajům
 
-**Doprovodné**materiály: jako centrální ověřování a systém autorizací pro vaše Azure Logic Apps instance použijte Azure Active Directory (AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
+**Doprovodné** materiály: jako centrální ověřování a systém autorizací pro vaše Azure Logic Apps instance použijte Azure Active Directory (AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
 Máte přístup ke zdrojům přihlašovacích aktivit, auditování a rizikových protokolů událostí Azure AD, které vám umožní integrovat s ověřováním Azure Sentinel nebo SIEM třetí strany.
 
@@ -534,7 +534,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3,12: výstraha při odchylce chování při přihlašování k účtu
 
-**Doprovodné**materiály: použití funkcí rizika a ochrany identity v Azure AD ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření. 
+**Doprovodné** materiály: použití funkcí rizika a ochrany identity v Azure AD ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření. 
 
 - [Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md) 
 
@@ -548,7 +548,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
 
-**Doprovodné**materiály: aktuálně není k dispozici; Customer Lockbox ještě není pro Azure Logic Apps podporovaná.
+**Doprovodné** materiály: aktuálně není k dispozici; Customer Lockbox ještě není pro Azure Logic Apps podporovaná.
 
 - [Seznam služeb podporovaných Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
@@ -562,7 +562,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
-**Doprovodné**materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
+**Doprovodné** materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -572,7 +572,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Doprovodné**materiály: konektory, které běží v globálním, víceklientské Logic Apps službě, jsou nasazené a spravované Microsoftem. Tyto konektory poskytují triggery a akce pro přístup ke cloudovým službám, místním systémům nebo obojímu, včetně Office 365, Azure Blob Storage, SQL Server, Dynamics, Salesforce, SharePoint a dalších.
+**Doprovodné** materiály: konektory, které běží v globálním, víceklientské Logic Apps službě, jsou nasazené a spravované Microsoftem. Tyto konektory poskytují triggery a akce pro přístup ke cloudovým službám, místním systémům nebo obojímu, včetně Office 365, Azure Blob Storage, SQL Server, Dynamics, Salesforce, SharePoint a dalších.
 
 Pro Logic Apps, které potřebují přímý přístup k prostředkům ve službě Azure Virtual Network, můžete vytvořit prostředí ISE (Integration Service Environment), kde můžete vytvářet, nasazovat a spouštět aplikace logiky na vyhrazených prostředcích. Některé virtuální sítě Azure používají pro poskytování přístupu ke službám Azure PaaS, jako jsou například Azure Storage, Azure Cosmos DB nebo Azure SQL Database, partnerské služby nebo služby zákazníkům hostované v Azure, privátní koncové body (privátní propojení Azure). Pokud vaše aplikace logiky potřebují přístup k virtuálním sítím, které používají privátní koncové body, musíte tyto aplikace logiky vytvořit, nasadit a spustit v rámci ISE.
 
@@ -596,7 +596,7 @@ Kromě toho implementujte izolaci pomocí samostatných předplatných a skupin 
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
 
-**Doprovodné**materiály: aktuálně není k dispozici; pro Azure Logic Apps ještě nejsou dostupné funkce pro identifikaci, klasifikaci a ochranu před únikem informací.
+**Doprovodné** materiály: aktuálně není k dispozici; pro Azure Logic Apps ještě nejsou dostupné funkce pro identifikaci, klasifikaci a ochranu před únikem informací.
 
 Využijte řešení třetích stran z Azure Marketplace na hraničních sítích, které monitorují neoprávněný přenos citlivých informací a zablokují tyto přenosy, a upozorní odborníky na zabezpečení informací. 
 
@@ -610,7 +610,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a 
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
-**Doprovodné**materiály: šifrování všech citlivých informací během přenosu. V Azure Logic Apps se všechna data během přenosu aplikace logiky šifrují během přenosu pomocí protokolu TLS (Transport Layer Security) a v klidovém stavu. Když si zobrazíte historii spuštění vaší aplikace logiky, Logic Apps ověří váš přístup a pak poskytuje odkazy na vstupy a výstupy pro žádosti a odpovědi pro každé spuštění. U akcí, které zpracovávají všechna hesla, tajné klíče, klíče nebo jiné citlivé informace, ale chcete ostatním uživatelům zabránit v prohlížení těchto dat a přístupu k nim. Například pokud vaše aplikace logiky získá tajný kód z Azure Key Vault, který se má použít při ověřování akce HTTP, chcete tento tajný klíč skrýt ze zobrazení.
+**Doprovodné** materiály: šifrování všech citlivých informací během přenosu. V Azure Logic Apps se všechna data během přenosu aplikace logiky šifrují během přenosu pomocí protokolu TLS (Transport Layer Security) a v klidovém stavu. Když si zobrazíte historii spuštění vaší aplikace logiky, Logic Apps ověří váš přístup a pak poskytuje odkazy na vstupy a výstupy pro žádosti a odpovědi pro každé spuštění. U akcí, které zpracovávají všechna hesla, tajné klíče, klíče nebo jiné citlivé informace, ale chcete ostatním uživatelům zabránit v prohlížení těchto dat a přístupu k nim. Například pokud vaše aplikace logiky získá tajný kód z Azure Key Vault, který se má použít při ověřování akce HTTP, chcete tento tajný klíč skrýt ze zobrazení.
 
 Aktivační událost žádosti podporuje pro příchozí požadavky pouze zabezpečení TLS (Transport Layer Security) 1,2. Ujistěte se, že všichni klienti, kteří se připojují k prostředkům Azure, můžou vyjednávat TLS 1,2 nebo vyšší. Odchozí volání pomocí konektoru HTTP podporují protokol TLS (Transport Layer Security) 1,0, 1,1 a 1,2. 
 
@@ -632,7 +632,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
 
-**Doprovodné**materiály: v Azure Logic Apps mnoho triggerů a akcí má nastavení, které můžete povolit pro zabezpečení vstupů, výstupů nebo obojího zakrytím těchto dat z historie spuštění aplikace logiky.
+**Doprovodné** materiály: v Azure Logic Apps mnoho triggerů a akcí má nastavení, které můžete povolit pro zabezpečení vstupů, výstupů nebo obojího zakrytím těchto dat z historie spuštění aplikace logiky.
 
 Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
@@ -646,7 +646,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a 
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Doprovodné**materiály: můžete povolit pouze konkrétní uživatele nebo skupiny, aby mohli spouštět konkrétní úkoly, jako je správa, úpravy a zobrazení Logic Apps. Pokud chcete řídit svá oprávnění, použijte řízení přístupu na základě role Azure (Azure RBAC), abyste členům v rámci předplatného Azure mohli přiřadit přizpůsobené nebo předdefinované role:
+**Doprovodné** materiály: můžete povolit pouze konkrétní uživatele nebo skupiny, aby mohli spouštět konkrétní úkoly, jako je správa, úpravy a zobrazení Logic Apps. Pokud chcete řídit svá oprávnění, použijte řízení přístupu na základě role Azure (Azure RBAC), abyste členům v rámci předplatného Azure mohli přiřadit přizpůsobené nebo předdefinované role:
 
 - Přispěvatel aplikace logiky: umožňuje spravovat Logic Apps, ale nemůžete pro ně měnit přístup.
 - Operátor aplikace logiky: umožňuje číst, povolit a zakázat Logic Apps, ale nemůžete je upravovat ani aktualizovat.
@@ -661,7 +661,7 @@ Pokud chcete ostatním uživatelům zabránit ve změně nebo odstranění vaš�
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
 - [Ochrana zákaznických dat Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -671,7 +671,7 @@ Pokud chcete ostatním uživatelům zabránit ve změně nebo odstranění vaš�
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
 
-**Doprovodné**materiály: Azure Logic Apps spoléhá na Azure Storage ukládání a automatické šifrování dat v klidovém umístění. Toto šifrování chrání vaše data a pomáhá splnit závazky zabezpečení vaší organizace a dodržování předpisů. Ve výchozím nastavení používá Azure Storage k šifrování vašich dat klíče spravované Microsoftem.
+**Doprovodné** materiály: Azure Logic Apps spoléhá na Azure Storage ukládání a automatické šifrování dat v klidovém umístění. Toto šifrování chrání vaše data a pomáhá splnit závazky zabezpečení vaší organizace a dodržování předpisů. Ve výchozím nastavení používá Azure Storage k šifrování vašich dat klíče spravované Microsoftem.
 
 Když vytvoříte prostředí ISE (Integration Service Environment) pro hostování aplikací logiky a potřebujete větší kontrolu nad šifrovacími klíči používanými Azure Storage, můžete nastavit, používat a spravovat vlastní klíč pomocí Azure Key Vault. Tato funkce se také označuje jako "Bring Your Own Key" (BYOK) a váš klíč se nazývá klíč spravovaný zákazníkem.
 
@@ -683,7 +683,7 @@ Když vytvoříte prostředí ISE (Integration Service Environment) pro hostová
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
-**Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na změny v Azure Logic Apps a také na jiné důležité nebo související prostředky.
+**Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na změny v Azure Logic Apps a také na jiné důležité nebo související prostředky.
 
 - [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -697,7 +697,7 @@ Když vytvoříte prostředí ISE (Integration Service Environment) pro hostová
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
-**Doprovodné**materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Logic Apps.
+**Doprovodné** materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Logic Apps.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -705,7 +705,7 @@ Když vytvoříte prostředí ISE (Integration Service Environment) pro hostová
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -713,7 +713,7 @@ Když vytvoříte prostředí ISE (Integration Service Environment) pro hostová
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5,3: nasazení automatizovaného řešení pro správu oprav pro softwarové tituly třetích stran
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -721,7 +721,7 @@ Když vytvoříte prostředí ISE (Integration Service Environment) pro hostová
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: porovnání kontrol zabezpečení back-to-back
 
-**Doprovodné**materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Logic Apps.
+**Doprovodné** materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Logic Apps.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -729,7 +729,7 @@ Když vytvoříte prostředí ISE (Integration Service Environment) pro hostová
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných ohrožení zabezpečení
 
-**Doprovodné**materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Logic Apps.
+**Doprovodné** materiály: nepoužitelné; Microsoft provádí správu ohrožení zabezpečení v základních systémech, které podporují Azure Logic Apps.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -757,7 +757,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
-**Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
+**Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -767,7 +767,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
-**Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků Azure. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
+**Doprovodné** materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků Azure. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných zákazníka pomocí následujících integrovaných definic zásad:
 
@@ -802,7 +802,7 @@ Poznámka: vzhledem k zásadám ochrany osobních údajů a ochraně osobních �
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
-**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit ve vašich předplatných. 
+**Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit ve vašich předplatných. 
 
 Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazovat nebo zjišťovat prostředky.  Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
@@ -816,7 +816,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -824,7 +824,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: Odeberte neschválené prostředky Azure a softwarové aplikace
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -832,7 +832,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 ### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -840,7 +840,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
-**Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
+**Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
 - Žádné povolené typy prostředků
 - Povolené typy prostředků
@@ -855,7 +855,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: udržování inventáře schválených softwarových titulů
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -873,7 +873,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: Omezte schopnost uživatelů spouštět skripty ve výpočetních prostředcích.
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -881,7 +881,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
 
-**Doprovodné**materiály: prostředky související s vaším Logic Apps, které jsou nutné pro obchodní operace, ale mohou být pro organizaci vyšší rizika, měli byste je izolovat v rámci svého vlastního virtuálního počítače nebo virtuální sítě a dostatečně zabezpečit pomocí Azure firewall nebo skupiny zabezpečení sítě.
+**Doprovodné** materiály: prostředky související s vaším Logic Apps, které jsou nutné pro obchodní operace, ale mohou být pro organizaci vyšší rizika, měli byste je izolovat v rámci svého vlastního virtuálního počítače nebo virtuální sítě a dostatečně zabezpečit pomocí Azure firewall nebo skupiny zabezpečení sítě.
 
 Logic Apps, které jsou potřeba pro obchodní operace, ale můžou pro organizaci zvýšit riziko, měli byste je všude, kde to jde, kdykoli je to možné, přes samostatné skupiny prostředků s konkrétními oprávněními a hranicemi Azure RBAC.
 
@@ -929,7 +929,7 @@ K ochraně citlivých dat a tajných kódů taky používejte zabezpečené para
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -937,7 +937,7 @@ K ochraně citlivých dat a tajných kódů taky používejte zabezpečené para
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
 
-**Doprovodné**materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.
+**Doprovodné** materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.
 
 Definujte a Implementujte standardní konfigurace zabezpečení pro Azure Logic Apps instance pomocí Azure Policy. Použijte aliasy Azure Policy v oboru názvů Microsoft. Logic, abyste vytvořili vlastní zásady pro auditování nebo prosazování konfigurace vašich Logic Appsch instancí. Například můžete jiným uživatelům zabránit v vytváření a používání připojení k prostředkům, ke kterým chcete omezit přístup.
 
@@ -967,7 +967,7 @@ Také se ujistěte, že zabezpečíte data v historii spouštění pomocí zmate
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -975,7 +975,7 @@ Také se ujistěte, že zabezpečíte data v historii spouštění pomocí zmate
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
-**Doprovodné**materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
+**Doprovodné** materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
 Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScript Object Notation (JSON), která by měla být přezkoumána, aby se zajistilo, že konfigurace splňují nebo překračují požadavky zabezpečení vaší organizace.
 
@@ -991,7 +991,7 @@ Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScri
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -999,7 +999,7 @@ Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScri
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: nasazení nástrojů pro správu konfigurace pro prostředky Azure
 
-**Doprovodné**materiály: použijte předdefinované definice Azure Policy a také Azure Policy aliasy v oboru názvů "Microsoft. Logic" k vytváření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. Pomocí aliasů Azure Policy můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace sítě vašich prostředků Azure. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
+**Doprovodné** materiály: použijte předdefinované definice Azure Policy a také Azure Policy aliasy v oboru názvů "Microsoft. Logic" k vytváření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. Pomocí aliasů Azure Policy můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace sítě vašich prostředků Azure. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -1009,7 +1009,7 @@ Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScri
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: nasazení nástrojů pro správu konfigurace pro operační systémy
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1017,7 +1017,7 @@ Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScri
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: Implementujte automatizované monitorování konfigurace pro prostředky Azure.
 
-**Doprovodné**materiály: použijte předdefinované definice Azure Policy a také Azure Policy aliasy v oboru názvů "Microsoft. Logic" k vytváření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. K automatickému vymáhání konfigurací pro prostředky Azure použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje].
+**Doprovodné** materiály: použijte předdefinované definice Azure Policy a také Azure Policy aliasy v oboru názvů "Microsoft. Logic" k vytváření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. K automatickému vymáhání konfigurací pro prostředky Azure použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje].
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -1027,7 +1027,7 @@ Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScri
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1035,7 +1035,7 @@ Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScri
 
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
 
-**Doprovodné**materiály: zabezpečení vstupů a výstupů v historii spuštění aplikace logiky pomocí zmatenosti. Pokud nasazujete v různých prostředích, zvažte parametrizaceí hodnot v definici pracovního postupu vaší aplikace logiky, které se liší v závislosti na těchto prostředích. Tímto způsobem se můžete vyhnout pevně zakódovaným datům pomocí šablony Azure Resource Manager k nasazení aplikace logiky, ochraně citlivých dat definováním zabezpečených parametrů a předání těchto dat jako samostatných vstupů prostřednictvím parametrů šablony pomocí souboru parametrů. Pomocí Key Vault můžete ukládat citlivá data a používat zabezpečené parametry šablon, které tyto hodnoty načítají z Key Vault při nasazení. Pak můžete odkazovat na Trezor klíčů a tajné klíče v souboru parametrů. 
+**Doprovodné** materiály: zabezpečení vstupů a výstupů v historii spuštění aplikace logiky pomocí zmatenosti. Pokud nasazujete v různých prostředích, zvažte parametrizaceí hodnot v definici pracovního postupu vaší aplikace logiky, které se liší v závislosti na těchto prostředích. Tímto způsobem se můžete vyhnout pevně zakódovaným datům pomocí šablony Azure Resource Manager k nasazení aplikace logiky, ochraně citlivých dat definováním zabezpečených parametrů a předání těchto dat jako samostatných vstupů prostřednictvím parametrů šablony pomocí souboru parametrů. Pomocí Key Vault můžete ukládat citlivá data a používat zabezpečené parametry šablon, které tyto hodnoty načítají z Key Vault při nasazení. Pak můžete odkazovat na Trezor klíčů a tajné klíče v souboru parametrů. 
 
 Když vytvoříte prostředí ISE (Integration Service Environment) pro hostování aplikací logiky a potřebujete větší kontrolu nad šifrovacími klíči používanými Azure Storage, můžete nastavit, používat a spravovat vlastní klíč pomocí Azure Key Vault. Tato funkce se také označuje jako "Bring Your Own Key" (BYOK) a váš klíč se nazývá klíč spravovaný zákazníkem.
 
@@ -1055,9 +1055,9 @@ Když vytvoříte prostředí ISE (Integration Service Environment) pro hostová
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Doprovodné**materiály: pro snadný přístup k dalším prostředkům, které jsou chráněné službou Azure Active Directory (Azure AD) a ověřují vaši identitu bez přihlašování, může vaše aplikace logiky používat spravovanou identitu (dřív identita spravované služby nebo MSI) místo přihlašovacích údajů nebo tajných kódů. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani vyměňovat tajné kódy.
+**Doprovodné** materiály: pro snadný přístup k dalším prostředkům, které jsou chráněné službou Azure Active Directory (Azure AD) a ověřují vaši identitu bez přihlašování, může vaše aplikace logiky používat spravovanou identitu (dřív identita spravované služby nebo MSI) místo přihlašovacích údajů nebo tajných kódů. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani vyměňovat tajné kódy.
 
-V současné době pouze konkrétní vestavěné triggery a akce podporují spravované identity, nikoli spravované konektory nebo připojení, například:
+V současné době podporují spravované identity pouze specifické předdefinované triggery a akce, nikoli spravované konektory nebo připojení, jako například:
 
 - HTTP
 - Azure Functions
@@ -1072,7 +1072,7 @@ V současné době pouze konkrétní vestavěné triggery a akce podporují spra
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
 
-**Doprovodné**materiály: zabezpečení vstupů a výstupů v historii spuštění aplikace logiky pomocí zmatenosti. Pokud nasazujete v různých prostředích, zvažte parametrizaceí hodnot v definici pracovního postupu vaší aplikace logiky, které se liší v závislosti na těchto prostředích. Tímto způsobem se můžete vyhnout pevně zakódovaným datům pomocí šablony Azure Resource Manager k nasazení aplikace logiky, ochraně citlivých dat definováním zabezpečených parametrů a předání těchto dat jako samostatných vstupů prostřednictvím parametrů šablony pomocí souboru parametrů. Pomocí Key Vault můžete ukládat citlivá data a používat zabezpečené parametry šablon, které tyto hodnoty načítají z Key Vault při nasazení. Pak můžete odkazovat na Trezor klíčů a tajné klíče v souboru parametrů. 
+**Doprovodné** materiály: zabezpečení vstupů a výstupů v historii spuštění aplikace logiky pomocí zmatenosti. Pokud nasazujete v různých prostředích, zvažte parametrizaceí hodnot v definici pracovního postupu vaší aplikace logiky, které se liší v závislosti na těchto prostředích. Tímto způsobem se můžete vyhnout pevně zakódovaným datům pomocí šablony Azure Resource Manager k nasazení aplikace logiky, ochraně citlivých dat definováním zabezpečených parametrů a předání těchto dat jako samostatných vstupů prostřednictvím parametrů šablony pomocí souboru parametrů. Pomocí Key Vault můžete ukládat citlivá data a používat zabezpečené parametry šablon, které tyto hodnoty načítají z Key Vault při nasazení. Pak můžete odkazovat na Trezor klíčů a tajné klíče v souboru parametrů. 
 
 Můžete také implementovat kontrolu přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault. 
 
@@ -1096,7 +1096,7 @@ Můžete také implementovat kontrolu přihlašovacích údajů pro identifikaci
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použijte centrálně spravovaný antimalwarový software
 
-**Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure Logic Apps), ale neběží na zákaznickém obsahu.
+**Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure Logic Apps), ale neběží na zákaznickém obsahu.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1120,7 +1120,7 @@ K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Az
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: Ujistěte se, že antimalwarový software a signatury jsou aktualizované.
 
-**Doprovodné**materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
+**Doprovodné** materiály: nepoužitelné; Tyto zásady jsou určené pro výpočetní prostředky.
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1170,7 +1170,7 @@ Každý koncový bod žádosti v aplikaci logiky má v adrese URL koncového bod
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: ověření všech záloh včetně klíčů spravovaných zákazníkem
 
-**Doprovodné**materiály: vaše strategie zotavení po havárii by se měla zaměřit na nastavení vaší primární aplikace logiky pro převzetí služeb při selhání v pohotovostní nebo zálohovací aplikaci v alternativním umístění, kde je dostupná i Azure Logic Apps. Tímto způsobem, pokud primární utrpí ztráty, přerušení nebo selhání, může sekundární aplikace trvat. Tato strategie vyžaduje, aby vaše sekundární aplikace logiky a závislé prostředky byly nasazené a připravené v alternativním umístění.
+**Doprovodné** materiály: vaše strategie zotavení po havárii by se měla zaměřit na nastavení vaší primární aplikace logiky pro převzetí služeb při selhání v pohotovostní nebo zálohovací aplikaci v alternativním umístění, kde je dostupná i Azure Logic Apps. Tímto způsobem, pokud primární utrpí ztráty, přerušení nebo selhání, může sekundární aplikace trvat. Tato strategie vyžaduje, aby vaše sekundární aplikace logiky a závislé prostředky byly nasazené a připravené v alternativním umístění.
 
 Test obnovení zálohovaných klíčů spravovaných zákazníkem Všimněte si, že to platí jenom pro Logic Apps běžící na prostředí ISE (Integration Service Environment).
 
@@ -1186,7 +1186,7 @@ Test obnovení zálohovaných klíčů spravovaných zákazníkem Všimněte si,
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
-**Doprovodné**materiály: vaše strategie zotavení po havárii by se měla zaměřit na nastavení vaší primární aplikace logiky pro převzetí služeb při selhání v pohotovostní nebo zálohovací aplikaci v alternativním umístění, kde je dostupná i Azure Logic Apps. Tímto způsobem, pokud primární utrpí ztráty, přerušení nebo selhání, může sekundární aplikace trvat. Tato strategie vyžaduje, aby vaše sekundární aplikace logiky a závislé prostředky byly nasazené a připravené v alternativním umístění. 
+**Doprovodné** materiály: vaše strategie zotavení po havárii by se měla zaměřit na nastavení vaší primární aplikace logiky pro převzetí služeb při selhání v pohotovostní nebo zálohovací aplikaci v alternativním umístění, kde je dostupná i Azure Logic Apps. Tímto způsobem, pokud primární utrpí ztráty, přerušení nebo selhání, může sekundární aplikace trvat. Tato strategie vyžaduje, aby vaše sekundární aplikace logiky a závislé prostředky byly nasazené a připravené v alternativním umístění. 
 
 Ochrana zálohovaných klíčů spravovaných zákazníkem. Všimněte si, že to platí jenom pro Logic Apps běžící na prostředí ISE (Integration Service Environment).
 
@@ -1222,7 +1222,7 @@ Povolit Soft-Delete a vyprázdnit ochranu v Key Vault a chránit tak klíče pro
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
-**Doprovodné**materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění. 
+**Doprovodné** materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění. 
 
 Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data.  Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
 
@@ -1236,7 +1236,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
-**Doprovodné**materiály: proveďte cvičení k otestování funkcí reakce na incidenty na běžných tempo, které vám pomůžou ochránit vaše prostředky Azure. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
+**Doprovodné** materiály: proveďte cvičení k otestování funkcí reakce na incidenty na běžných tempo, které vám pomůžou ochránit vaše prostředky Azure. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
 - [Publikování v NIST – průvodce pro testování, školení a cvičení programů pro plány a možnosti IT](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
@@ -1246,7 +1246,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
-**Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
+**Doprovodné** materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
 - [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
@@ -1268,7 +1268,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
-**Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" pro výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
+**Doprovodné** materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" pro výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
 
 - [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
@@ -1282,7 +1282,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
-**Doprovodné**materiály: řiďte se pravidly společnosti Microsoft o zapojení, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft.
+**Doprovodné** materiály: řiďte se pravidly společnosti Microsoft o zapojení, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft.
 
 - [Pravidla testování průniku pro zapojení](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

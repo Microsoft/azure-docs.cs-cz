@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 48d0483247f610a1e8c7491e13ea86883bf8f341
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2c7d51da361816841ff556c1da696a48d2ce6a06
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410364"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843685"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení služby Azure Identity Management
 
@@ -79,13 +79,13 @@ Další informace:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication je metoda ověřování, která vyžaduje použití více než jedné metody ověřování a přidává kritickou druhou vrstvu zabezpečení pro přihlášení a transakce uživatelů. Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně plnit požadavky uživatelů na jednoduchý proces přihlašování. Poskytuje silné ověřování prostřednictvím řady možností ověřování: telefonní hovory, textové zprávy nebo oznámení mobilní aplikace nebo ověřovací kódy a tokeny OAuth třetích stran.
+Azure AD Multi-Factor Authentication je metoda ověřování, která vyžaduje použití více než jedné metody ověřování a přidává kritickou druhou vrstvu zabezpečení pro přihlášení a transakce uživatelů. Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně plnit požadavky uživatelů na jednoduchý proces přihlašování. Poskytuje silné ověřování prostřednictvím řady možností ověřování: telefonní hovory, textové zprávy nebo oznámení mobilní aplikace nebo ověřovací kódy a tokeny OAuth třetích stran.
 
 Další informace:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Co je Azure Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Jak funguje Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Co je Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Jak funguje Multi-Factor Authentication služby Azure AD](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="azure-rbac"></a>Azure RBAC
 
@@ -107,11 +107,11 @@ Monitorování zabezpečení, výstrahy a sestavy založené na strojovém učen
 
 Sestavy v Azure Portal spadají do následujících kategorií:
 
-* **Sestavy anomálií** : obsahují události přihlášení, které jsme zjistili, že jsou neobvyklé. Naším cílem je, abyste věděli o takové činnosti a bylo možné určit, jestli je událost podezřelá.
-* **Integrované sestavy aplikací** : poskytují přehled o tom, jak se ve vaší organizaci používají cloudové aplikace. Azure AD nabízí integraci s tisíci cloudových aplikací.
-* **Zprávy o chybách** : označuje chyby, které mohou nastat při zřizování účtů pro externí aplikace.
-* **Sestavy specifické pro uživatele** : zobrazení dat aktivit přihlašování zařízení pro určitého uživatele.
-* **Protokoly aktivit** : obsahují záznam všech auditovaných událostí za posledních 24 hodin, posledních 7 dní nebo posledních 30 dnů, a změny aktivity skupiny a aktivity resetování hesla a registrace.
+* **Sestavy anomálií**: obsahují události přihlášení, které jsme zjistili, že jsou neobvyklé. Naším cílem je, abyste věděli o takové činnosti a bylo možné určit, jestli je událost podezřelá.
+* **Integrované sestavy aplikací**: poskytují přehled o tom, jak se ve vaší organizaci používají cloudové aplikace. Azure AD nabízí integraci s tisíci cloudových aplikací.
+* **Zprávy o chybách**: označuje chyby, které mohou nastat při zřizování účtů pro externí aplikace.
+* **Sestavy specifické pro uživatele**: zobrazení dat aktivit přihlašování zařízení pro určitého uživatele.
+* **Protokoly aktivit**: obsahují záznam všech auditovaných událostí za posledních 24 hodin, posledních 7 dní nebo posledních 30 dnů, a změny aktivity skupiny a aktivity resetování hesla a registrace.
 
 Další informace:
 
