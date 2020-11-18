@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f35adcc797e903bb44852e9ba52e1a023f51a0d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292127"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659518"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Příprava virtuálního počítače se SLES nebo openSUSE pro Azure
 
@@ -32,7 +32,7 @@ V tomto článku se předpokládá, že jste už nainstalovali operační systé
 
 Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE také publikuje image BYOS (Přineste si vlastní odběr) pro SLES v [VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf).
 
-## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>Příprava SUSE Linux Enterprise Server 11 SP4
+## <a name="prepare-suse-linux-enterprise-server-for-azure"></a>Příprava SUSE Linux Enterprise Server pro Azure
 1. V prostředním podokně Správce technologie Hyper-V vyberte virtuální počítač.
 2. Kliknutím na **připojit** otevřete okno pro virtuální počítač.
 3. Zaregistrujte systém SUSE Linux Enterprise, aby mohl stahovat aktualizace a instalovat balíčky.
@@ -41,57 +41,53 @@ Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE tak
     ```console
     # sudo zypper update
     ```
-
-1. Instalace agenta Azure Linux z úložiště SLES (SLE11-Public-Cloud-Module):
+    
+5. Nainstalovat agenta Azure Linux a Cloud-init
 
     ```console
+    # SUSEConnect -p sle-module-public-cloud/15.2/x86_64  (SLES 15 SP2)
     # sudo zypper install python-azure-agent
+    # sudo zypper install cloud-init
     ```
 
-1. V chkconfig ověřte, zda je waagent nastaven na zapnuto, a pokud ne, povolte ho pro automatické spuštění:
+6. Povolit waagent & Cloud-init spustit při spuštění
 
     ```console
     # sudo chkconfig waagent on
+    # systemctl enable cloud-init-local.service
+    # systemctl enable cloud-init.service
+    # systemctl enable cloud-config.service
+    # systemctl enable cloud-final.service
+    # systemctl daemon-reload
+    # cloud-init clean
     ```
 
-7. Ověřte, jestli je spuštěná služba waagent, a pokud ne, spusťte ji: 
+7. Aktualizace waagent a konfigurace Cloud-init
 
     ```console
-    # sudo service waagent start
+    # sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    # sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+    # sudo sh -c 'printf "datasource:\n  Azure:" > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg'
+    # sudo sh -c 'printf "reporting:\n  logging:\n    type: log\n  telemetry:\n    type: hyperv" > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg'
     ```
 
-8. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Uděláte to tak, že v textovém editoru otevřete "/boot/grub/menu.lst" a zajistěte, aby výchozí jádro zahrnovalo následující parametry:
+8. Úpravou souboru/etc/default/grub zajistěte, aby byly protokoly konzoly odesílány do sériového portu, a pak aktualizujte hlavní konfigurační soubor pomocí grub2-mkconfig-o/Boot/grub2/grub.cfg
 
     ```config-grub
     console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     ```
-
     Tím se zajistí, že se všechny zprávy konzoly odešlou na první sériový port, což může pomoct podpoře Azure s problémy ladění.
-9. Potvrďte, že/boot/grub/menu.lst a/etc/fstab odkazují na disk pomocí jeho UUID (by UUID) místo ID disku (podle ID). 
-   
-    Získat UUID disku
-
-    ```console
-    # ls /dev/disk/by-uuid/
-    ```
-
-    Pokud se používá/dev/disk/by-ID/, aktualizujte/boot/grub/menu.lst i/etc/fstab tak, že hodnota je správná hodnotou identifikátoru UUID.
-   
-    Před změnou
-   
-    `root=/dev/disk/by-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1`
-   
-    Po změně
-   
-    `root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
-
+    
+9. Zajistěte, aby soubor/etc/fstab odkazoval na disk pomocí jeho UUID (by UUID).
+         
 10. Upravte pravidla udev, abyste se vyhnuli generování statických pravidel pro rozhraní sítě Ethernet. Tato pravidla můžou způsobit problémy při klonování virtuálního počítače v Microsoft Azure nebo Hyper-V:
 
     ```console
     # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
     # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
     ```
-
+   
 11. Doporučuje se upravit soubor "/etc/sysconfig/Network/DHCP" a změnit `DHCLIENT_SET_HOSTNAME` parametr na následující:
 
     ```config
@@ -105,7 +101,8 @@ Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE tak
     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
     ```
 
-13. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění.  Obvykle se jedná o výchozí nastavení.
+13. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění. Obvykle se jedná o výchozí nastavení.
+
 14. Nevytvářejte odkládací místo na disku s operačním systémem.
     
     Agent Azure Linux může automaticky nakonfigurovat odkládací prostor pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že místní disk prostředků je *dočasný* disk a při zrušení zřízení virtuálního počítače může dojít k jeho vyprázdnění. Po instalaci agenta Azure Linux (viz předchozí krok) upravte odpovídajícím způsobem následující parametry v/etc/waagent.conf:
@@ -133,11 +130,11 @@ Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE tak
 2. Kliknutím na **připojit** otevřete okno pro virtuální počítač.
 3. V prostředí spusťte příkaz `zypper lr` . Pokud tento příkaz vrátí výstup podobný následujícímu, pak jsou úložiště konfigurována podle očekávání – nejsou nutné žádné úpravy (Všimněte si, že čísla verzí se mohou lišit):
 
-   | # | Alias                 | Name                  | Povoleno | Aktualizovat
+   | # | Alias                 | Název                  | Povoleno | Aktualizovat
    | - | :-------------------- | :-------------------- | :------ | :------
-   | 1 | Cloud: Tools_13.1      | Cloud: Tools_13.1      | Yes     | Yes
-   | 2 | openSUSE_13 openSUSE_13.1_OSS     | openSUSE_13 openSUSE_13.1_OSS     | Yes     | Yes
-   | 3 | openSUSE_13 openSUSE_13.1_Updates | openSUSE_13 openSUSE_13.1_Updates | Yes     | Yes
+   | 1 | Cloud: Tools_13.1      | Cloud: Tools_13.1      | Ano     | Ano
+   | 2 | openSUSE_13 openSUSE_13.1_OSS     | openSUSE_13 openSUSE_13.1_OSS     | Ano     | Ano
+   | 3 | openSUSE_13 openSUSE_13.1_Updates | openSUSE_13 openSUSE_13.1_Updates | Ano     | Ano
 
     Pokud příkaz vrátí "žádná úložiště nebyla definována..." pak pomocí následujících příkazů přidejte tato úložišť:
 

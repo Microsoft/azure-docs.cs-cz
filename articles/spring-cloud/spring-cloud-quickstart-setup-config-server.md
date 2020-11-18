@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 55e47b09ac4a6256a125a75c8a0f856e867e7c0e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 906aeaf87bfd71202064fae856a86985637985eb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337767"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659535"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Rychlý Start: nastavení serveru pro konfiguraci jarního cloudu Azure
 
@@ -57,9 +57,19 @@ Následující postup nastaví konfigurační server pomocí Azure Portal k nasa
 
 2. V části **výchozí úložiště** nastavte možnost **URI** na " https://github.com/Azure-Samples/piggymetrics-config ".
 
-3. Výběrem možnosti **Použít** změny uložte.
+3. Klikněte na tlačítko **ověřit**.
 
-    ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![Přejít na konfigurační server](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+
+4. Po dokončení ověřování klikněte na **použít** , aby se změny uložily.
+
+    ![Ověřování konfiguračního serveru](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
+
+5. Aktualizace konfigurace může trvat několik minut.
+ 
+    ![Aktualizace konfiguračního serveru](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+6. Po dokončení konfigurace byste měli obdržet oznámení.
 
 #### <a name="cli"></a>[Rozhraní příkazového řádku](#tab/Azure-CLI)
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fc2f9e5408dd760b48fc63c4021230446fe40de9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3a96a7116c83bf9ea2c3798c335c6cefcbdbc36d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542314"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659484"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>Osvědčené postupy pro správu clusteru HDInsight
 
@@ -49,7 +49,7 @@ Seznamte se s osvědčenými postupy pro správu clusterů HDInsight.
 
 | Chyba | Další informace |
 |---|---|
-| Žádná kvóta | Existují kvóty pro počet kvót, které můžete v rámci předplatného vytvořit v každé oblasti. Další informace najdete v tématu [plánování kapacity: kvóty](./hdinsight-capacity-planning.md). |
+| Žádná kvóta | Existují kvóty pro počet jader, které můžete v rámci předplatného vytvořit v každé oblasti. Další informace najdete v tématu [plánování kapacity: kvóty](./hdinsight-capacity-planning.md). |
 | Nejsou k dispozici žádné další IP adresy. | Každá virtuální síť má omezený počet IP adres. Při vytváření clusteru HDInsight každý uzel (včetně uzlů Zookeeper a bran) používá některé z těchto přidělených IP adres. V případě, že se používají všechny IP adresy, dojde k této chybě.  |
 | Pravidla skupiny zabezpečení sítě (NSG) neumožňují komunikaci s poskytovateli prostředků HDInsight. | Pokud k řízení příchozího provozu do clusteru HDInsight používáte skupin zabezpečení sítě nebo uživatelsky definované trasy (udr), musíte zajistit, aby váš cluster mohl komunikovat s důležitými službami stavu a správy Azure. Další informace najdete v tématu [značky služby skupiny zabezpečení sítě (NSG) pro Azure HDInsight](./hdinsight-service-tags.md) . |
 | Opětovné použití názvu clusteru | Pokud použijete název clusteru, který jste použili dříve, je nutné před opětovným vytvořením clusteru počkat X počet minut. V opačném případě se zobrazí zpráva, že prostředek již existuje. |

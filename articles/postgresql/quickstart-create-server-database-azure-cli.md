@@ -8,38 +8,33 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1ddc8c2b9531dd78c1c6746e28b8ff5864af563e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d174e410aaef876dfe97af62750322641de95fd3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331943"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659450"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure
 
 V tomto rychlém startu se dozvíte, jak pomocí příkazů rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli) v [Azure Cloud Shell](https://shell.azure.com) vytvořit jeden Azure Database for PostgreSQL Server během pěti minut. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-> [!TIP]
-> Zvažte použití jednoduššího příkazu [AZ Postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI, který je aktuálně ve verzi Preview. Vyzkoušejte si [rychlý Start](./quickstart-create-server-up-azure-cli.md).
+- Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-## <a name="prerequisites"></a>Předpoklady
-Tento článek vyžaduje, abyste místně spustili Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+    > [!TIP]
+    >  Zvažte použití jednoduššího příkazu [AZ Postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI, který je aktuálně ve verzi Preview. Vyzkoušejte si [rychlý Start](./quickstart-create-server-up-azure-cli.md).
 
-Ke svému účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure. 
+- Pomocí příkazu  [AZ Account set](/cli/azure/account) vyberte v rámci svého účtu konkrétní ID předplatného.
 
-```azurecli-interactive
-az login
-```
+    - Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. 
 
-Pomocí příkazu  [AZ Account set](/cli/azure/account) vyberte v rámci svého účtu konkrétní ID předplatného. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. 
+        ```azurecli
+        az account set --subscription <subscription id>
+        ```
 
-```azurecli
-az account set --subscription <subscription id>
-```
-
-Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat všechna předplatná, použijte příkaz [AZ Account list](/cli/azure/account#az-account-list).
+    - Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat všechna předplatná, použijte příkaz [AZ Account list](/cli/azure/account#az-account-list).
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Vytvoření serveru Azure Database for PostgreSQL
 
@@ -61,9 +56,9 @@ Zde jsou uvedeny podrobnosti o předchozích argumentech:
 name | mydemoserver | Jedinečný název, který identifikuje váš Azure Database for PostgreSQL Server. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí obsahovat 3 až 63 znaků. Další informace najdete v tématu [Azure Database for PostgreSQL pravidla pro pojmenování](../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql).
 resource-group | myresourcegroup | Název skupiny prostředků Azure.
 location | westus | Umístění Azure pro server.
-admin-user | myadmin | Uživatelské jméno pro přihlášení správce Nemůže to být **azure_superuser** , **admin** , **Administrator** , **root** , **Guest** ani **Public**.
+admin-user | myadmin | Uživatelské jméno pro přihlášení správce Nemůže to být **azure_superuser**, **admin**, **Administrator**, **root**, **Guest** ani **Public**.
 admin-password | *bezpečné heslo* | Heslo uživatele správce. Musí obsahovat 8 až 128 znaků ze tří z následujících kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
-sku-name|GP_Gen5_2| Název cenové úrovně a konfigurace výpočtů. V zkrácených způsobech použijte konvenci {cenová úroveň} _{COMPUTE_ } {virtuální jádra}. Další informace najdete v tématu [Azure Database for PostgreSQL ceny](https://azure.microsoft.com/pricing/details/postgresql/server/).
+sku-name|GP_Gen5_2| Název cenové úrovně a konfigurace výpočtů. V zkrácených způsobech použijte konvenci {cenová úroveň}_{COMPUTE_} {virtuální jádra}. Další informace najdete v tématu [Azure Database for PostgreSQL ceny](https://azure.microsoft.com/pricing/details/postgresql/server/).
 
 >[!IMPORTANT] 
 >- Výchozí verze PostgreSQL serveru je 9,6. Pokud chcete zobrazit všechny podporované verze, přečtěte si článek [podporované hlavní verze PostgreSQL](./concepts-supported-versions.md).
