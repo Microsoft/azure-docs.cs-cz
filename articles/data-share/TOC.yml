@@ -19,8 +19,10 @@
   items:
     - name: Sdílení dat
       href: share-your-data.md
+      displayName: 'Azure CLI, az datashare account create, az datashare create'
     - name: Přijetí a získání dat
       href: subscribe-to-data-share.md
+      displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: Koncepty
   items:
     - name: Terminologie služby Azure Data Share
