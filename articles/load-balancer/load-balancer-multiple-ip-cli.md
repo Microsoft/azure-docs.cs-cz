@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: bc1e477882f3d065dfe89e8511259732129cec30
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 06dfa65236bf1aa5cfde626c5574ffdf487eb045
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746029"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698355"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Vyrovnávání zatížení u více konfigurací IP pomocí Azure CLI
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak použít Azure Load Balancer s více IP adresami na
 
 Chcete-li dosáhnout scénáře popsaného v tomto článku, proveďte následující kroky:
 
-1. [Nainstalujte a nakonfigurujte rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) podle kroků v propojeném článku a přihlaste se k účtu Azure.
+1. [Nainstalujte a nakonfigurujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) podle kroků v propojeném článku a přihlaste se k účtu Azure.
 2. [Vytvořte skupinu prostředků s](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) názvem *contosofabrikam* následujícím způsobem:
 
     ```azurecli
@@ -43,14 +43,14 @@ Chcete-li dosáhnout scénáře popsaného v tomto článku, proveďte následuj
     az vm availability-set create --resource-group contosofabrikam --location westcentralus --name myAvailabilitySet
     ```
 
-4. [Vytvořte virtuální síť s](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet) názvem *myVNet* a podsíť s názvem *mySubnet* :
+4. [Vytvořte virtuální síť s](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet) názvem *myVNet* a podsíť s názvem *mySubnet*:
 
     ```azurecli
     az network vnet create --resource-group contosofabrikam --name myVnet --address-prefixes 10.0.0.0/16  --location westcentralus --subnet-name MySubnet --subnet-prefix 10.0.0.0/24
 
     ```
 
-5. [Vytvořte Nástroj pro vyrovnávání zatížení s](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) názvem *mylb* :
+5. [Vytvořte Nástroj pro vyrovnávání zatížení s](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) názvem *mylb*:
 
     ```azurecli
     az network lb create --resource-group contosofabrikam --location westcentralus --name mylb
@@ -71,7 +71,7 @@ Chcete-li dosáhnout scénáře popsaného v tomto článku, proveďte následuj
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp2 --name fabrkamfe
     ```
 
-8. Vytvořte své fondy back-end adres – *contosopool* a *fabrikampool* , [test](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)  -  *http* a vaše pravidla vyrovnávání zatížení – *HTTPc* a *HTTPf* :
+8. Vytvořte své fondy back-end adres – *contosopool* a *fabrikampool*, [test](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)  -  *http* a vaše pravidla vyrovnávání zatížení – *HTTPc* a *HTTPf*:
 
     ```azurecli
     az network lb address-pool create --resource-group contosofabrikam --lb-name mylb --name contosopool

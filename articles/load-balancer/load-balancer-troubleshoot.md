@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 22922972049ec78cc26f4d060fa1981d1f23a3ce
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a1a8df6d503ec5f5bf9c1e739e5ecf6486a85776
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912442"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697416"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
 
@@ -35,7 +35,7 @@ Když externí klienti back-end virtuálních počítačů procházejí nástroj
 
 **Ověření a rozlišení**
 
-Standardní ILBs jsou **ve výchozím nastavení zabezpečené** . Základní ILBs povoluje připojení k Internetu prostřednictvím *skryté* veřejné IP adresy. To není doporučeno pro produkční úlohy, protože IP adresa není ani statická ani uzamčená prostřednictvím skupin zabezpečení sítě, kterou vlastníte. Pokud jste v nedávné době přesunuli ze základní interního nástroje na standardní interního nástroje, měli byste vytvořit veřejnou IP adresu explicitně prostřednictvím [odchozí jenom odchozí](egress-only.md) konfigurace, která uzamkne IP přes skupin zabezpečení sítě. V podsíti můžete také použít [bránu NAT](../virtual-network/nat-overview.md) .
+Standardní ILBs jsou **ve výchozím nastavení zabezpečené**. Základní ILBs povoluje připojení k Internetu prostřednictvím *skryté* veřejné IP adresy. To není doporučeno pro produkční úlohy, protože IP adresa není ani statická ani uzamčená prostřednictvím skupin zabezpečení sítě, kterou vlastníte. Pokud jste v nedávné době přesunuli ze základní interního nástroje na standardní interního nástroje, měli byste vytvořit veřejnou IP adresu explicitně prostřednictvím [odchozí jenom odchozí](egress-only.md) konfigurace, která uzamkne IP přes skupin zabezpečení sítě. V podsíti můžete také použít [bránu NAT](../virtual-network/nat-overview.md) .
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Příznak: virtuální počítače za Load Balancer nereagují na sondy stavu.
 Aby se servery back-end účastnily sady nástroje pro vyrovnávání zatížení, musí projít kontrolu sondy. Další informace o sondách stavu najdete v tématu [principy Load Balancer sondy](load-balancer-custom-probe-overview.md). 
@@ -60,8 +60,8 @@ Pokud je virtuální počítač v pořádku, ale nereaguje na test, pak může b
 1. Přihlaste se k virtuálnímu počítači back-end. 
 2. Otevřete příkazový řádek a spuštěním následujícího příkazu ověřte, že aplikace naslouchá na portu sondy:   
             netstat – a
-3. Pokud stav portu není uveden jako **naslouchání** , nakonfigurujte správný port. 
-4. Případně vyberte jiný port, který je uveden jako **naslouchání** , a odpovídajícím způsobem aktualizujte konfiguraci nástroje pro vyrovnávání zatížení.              
+3. Pokud stav portu není uveden jako **naslouchání**, nakonfigurujte správný port. 
+4. Případně vyberte jiný port, který je uveden jako **naslouchání**, a odpovídajícím způsobem aktualizujte konfiguraci nástroje pro vyrovnávání zatížení.              
 
 ### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Příčina 3: Brána firewall nebo skupina zabezpečení sítě blokuje port ve virtuálních počítačích back-endu fondu nástroje pro vyrovnávání zatížení.  
 Pokud brána firewall na virtuálním počítači blokuje port sondy nebo jednu nebo více skupin zabezpečení sítě nakonfigurovaných v podsíti nebo na virtuálním počítači, nepovoluje testům přístup k portu, virtuální počítač nemůže odpovědět na sondu stavu.          
@@ -87,7 +87,7 @@ Pokud se zdá, že se všechny předchozí příčiny ověřují a správně vy�
         - Pokud se na virtuálním počítači s back-end fondem nepozorovany žádné příchozí pakety, může se stát, že se zablokuje přenos pomocí skupin zabezpečení sítě nebo UDR MIS. 
         - Pokud na virtuálním počítači fondu back-end nejsou žádné odchozí pakety, musí být virtuální počítač zkontrolován na případné nesouvisející problémy (například aplikace blokující port testu). 
     - Před dosažením nástroje pro vyrovnávání zatížení ověřte, zda jsou pakety sondy vynuceny do jiného cílového umístění (případně prostřednictvím nastavení UDR). To může způsobit, že se přenosy nikdy nedostanou do back-endu virtuálního počítače. 
-* Změňte typ sondy (například HTTP na TCP) a nakonfigurujte odpovídající port v seznamech ACL skupin zabezpečení sítě a bránu firewall, abyste ověřili, jestli se jedná o problém s konfigurací odezvy testu. Další informace o konfiguraci sondy stavu najdete v tématu [Konfigurace sondy stavu služby Vyrovnávání zatížení koncového bodu](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
+* Změňte typ sondy (například HTTP na TCP) a nakonfigurujte odpovídající port v seznamech ACL skupin zabezpečení sítě a bránu firewall, abyste ověřili, jestli se jedná o problém s konfigurací odezvy testu. Další informace o konfiguraci sondy stavu najdete v tématu [Konfigurace sondy stavu služby Vyrovnávání zatížení koncového bodu](/archive/blogs/mast/endpoint-load-balancing-heath-probe-configuration-details).
 
 ## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Příznak: virtuální počítače za Load Balancer nereagují na provoz na nakonfigurovaném datovém portu.
 
@@ -133,7 +133,7 @@ Pokud se vaše aplikace hostovaná na virtuálním počítači back-endu Load Ba
 
 Pokud je interní Load Balancer nakonfigurovaný v rámci virtuální sítě a jeden z back-end účastníka se snaží získat přístup k internímu front-endu Load Balancer, můžou se selhání vyskytnout, když se tok namapuje na původní virtuální počítač. Takový scénář se nepodporuje.
 
-**Řešení** Existuje několik způsobů, jak tento scénář odblokovat, včetně použití proxy serveru. Vyhodnoťte Application Gateway nebo jiné proxy servery třetích stran (například Nginx nebo HAProxy). Další informace o Application Gateway najdete v tématu [přehled Application Gateway](../application-gateway/application-gateway-introduction.md)
+**Řešení** Existuje několik způsobů, jak tento scénář odblokovat, včetně použití proxy serveru. Vyhodnoťte Application Gateway nebo jiné proxy servery třetích stran (například Nginx nebo HAProxy). Další informace o Application Gateway najdete v tématu [přehled Application Gateway](../application-gateway/overview.md)
 
 **Podrobnosti o** Interní nástroje pro vyrovnávání zatížení nepřevádějí odchozí vytvořená připojení na front-end interního Load Balancer, protože obě jsou v privátním adresním prostoru IP adres. Veřejné nástroje pro vyrovnávání zatížení poskytují [odchozí připojení](load-balancer-outbound-connections.md) z privátních IP adres uvnitř virtuální sítě k veřejným IP adresám. U interních nástrojů pro vyrovnávání zatížení tento přístup zabraňuje možnému vyčerpání portů SNAT v rámci jedinečného interního adresního prostoru IP adres, kde není požadován překlad.
 
@@ -143,7 +143,7 @@ Když se tok mapuje zpátky na sebe samé, zdá se, že odchozí tok pochází z
 
 Příznakem pro tento scénář je přerušovaná prodleva připojení, když se tok vrátí ke stejnému back-endu, který daný tok vytvořil. K běžným řešením patří vložení vrstvy proxy za interní Load Balancer a použití pravidel stylu "přímé vrácení serveru (DSR)". Další informace najdete v tématu [více front-endu pro Azure Load Balancer](load-balancer-multivip-overview.md).
 
-Interní Load Balancer můžete kombinovat s jakýmkoli proxy třetích stran nebo použít interní [Application Gateway](../application-gateway/application-gateway-introduction.md) pro scénáře proxy pomocí protokolu HTTP/HTTPS. I když můžete použít veřejný Load Balancer k zmírnění tohoto problému, je výsledný scénář náchylný k [vyčerpání SNAT](load-balancer-outbound-connections.md). Vyhněte se tomuto druhému přístupu, pokud se pečlivě nespravuje.
+Interní Load Balancer můžete kombinovat s jakýmkoli proxy třetích stran nebo použít interní [Application Gateway](../application-gateway/overview.md) pro scénáře proxy pomocí protokolu HTTP/HTTPS. I když můžete použít veřejný Load Balancer k zmírnění tohoto problému, je výsledný scénář náchylný k [vyčerpání SNAT](load-balancer-outbound-connections.md). Vyhněte se tomuto druhému přístupu, pokud se pečlivě nespravuje.
 
 ## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>Příznak: nejde změnit back-end port pro stávající pravidlo pro vyrovnávání zatížení, které má ve fondu back-end nasazenou službu VM Scale set. 
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Příčina: port back-endu nejde upravit pro pravidlo vyrovnávání zatížení, které používá sonda stavu pro nástroj pro vyrovnávání zatížení, na který odkazuje sada škálování virtuálního počítače.
@@ -172,4 +172,3 @@ Pokud se rozhodnete otevřít případ podpory, shromážděte při rychlejším
 ## <a name="next-steps"></a>Další kroky
 
 Pokud předchozí kroky problém nevyřeší, otevřete [lístek podpory](https://azure.microsoft.com/support/options/).
-

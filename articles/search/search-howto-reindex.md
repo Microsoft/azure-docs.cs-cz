@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 10c7d4146d61f5b589b29bc8faad5fa8e60a293a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae8fd7f405beb20d516835ccb80b86e769fd0393
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924023"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697080"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Postup opětovného sestavení indexu v Azure Kognitivní hledání
 
@@ -37,7 +37,7 @@ Pokud neměníte strukturu indexu, můžete index aktualizovat pomocí stejných
 
 Pokud platí kterákoli z následujících podmínek, vyřaďte index a vytvořte ho znovu. 
 
-| Stav | Description |
+| Stav | Popis |
 |-----------|-------------|
 | Změna definice pole | Kontrola názvu pole, datového typu nebo konkrétních [atributů indexu](/rest/api/searchservice/create-index) (prohledávatelné, filtrovatelné, seřaditelné, plošky) vyžadují úplné opětovné sestavení. |
 | Přiřazení analyzátoru k poli | [Analyzátory](search-analyzers.md) se definují v indexu a pak se přiřazují k polím. Novou definici analyzátoru můžete kdykoli přidat do indexu, ale když je pole Vytvořeno, můžete k němu *přiřadit* pouze analyzátor. To platí jak pro vlastnosti **analyzátoru** , tak pro **indexAnalyzer** . Vlastnost **searchAnalyzer** je výjimka (tuto vlastnost můžete přiřadit existujícímu poli). |
@@ -91,7 +91,7 @@ Při načtení indexu se převedený index každého pole vyplní všemi jedine�
 
 Můžete zahájit dotazování indexu, jakmile se načte první dokument. Pokud znáte ID dokumentu, [vyhledávací dokument REST API](/rest/api/searchservice/lookup-document) vrátí konkrétní dokument. Pro širší testování byste měli počkat, až se index zcela načte, a pak použít dotazy k ověření kontextu, který očekáváte, abyste viděli.
 
-K vyhledání aktualizovaného obsahu můžete použít [Průzkumníka služby Search](search-explorer.md) nebo nástroj pro testování webu, jako je například [post](search-get-started-postman.md) .
+K vyhledání aktualizovaného obsahu můžete použít [Průzkumníka služby Search](search-explorer.md) nebo nástroj pro testování webu, jako je například [post nebo Visual Studio Code](search-get-started-rest.md) .
 
 Pokud jste přidali nebo přejmenovali pole, použijte [$Select](search-query-odata-select.md) k vrácení tohoto pole: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 

@@ -15,12 +15,12 @@ ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b87af4a08c5a796d96d853ca63e50e335b9731fb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 18f0627b809f56b813052cc763e6ff961f31aa02
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362769"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697131"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
@@ -36,6 +36,8 @@ Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro �
 
 - Azure AD Premium P2
 - Globální správce nebo Správce uživatelů
+- Tisk Vlastníci prostředků Microsoft 365 skupin můžou vytvářet recenze pro Microsoft 365 skupiny, které vlastní.
+- Tisk Vlastníci prostředků skupin zabezpečení služby Azure AD můžou vytvářet recenze pro skupiny zabezpečení Azure AD, které vlastní.
 
 Další informace najdete v tématu [licenční požadavky](access-reviews-overview.md#license-requirements).
 
@@ -57,7 +59,7 @@ Další informace najdete v tématu [licenční požadavky](access-reviews-overv
 
     ![Vytvoření kontroly přístupu – počáteční a koncové datum](./media/create-access-review/start-end-dates.png)
 
-1. Chcete-li provést opakované kontroly přístupu, změňte nastavení **frekvence** od **jednoho** na **týdně**, **měsíčně**, **čtvrtletně**, **částečně ročně**nebo **ročně**. Pomocí posuvníku **Trvání** nebo textového pole můžete definovat, kolik dní bude každá revize opakujících se řad otevřená pro vstup od revidujících. Například maximální doba, kterou můžete nastavit pro měsíční revizi, je 27 dní, aby se předešlo překrývání recenzí.
+1. Chcete-li provést opakované kontroly přístupu, změňte nastavení **frekvence** od **jednoho** na **týdně**, **měsíčně**, **čtvrtletně**, **částečně ročně** nebo **ročně**. Pomocí posuvníku **Trvání** nebo textového pole můžete definovat, kolik dní bude každá revize opakujících se řad otevřená pro vstup od revidujících. Například maximální doba, kterou můžete nastavit pro měsíční revizi, je 27 dní, aby se předešlo překrývání recenzí.
 
 1. Pomocí nastavení **konec** určete, jak se má ukončit řada kontroly opakovaného přístupu. Řada může končit třemi způsoby: 
     1. Průběžně spouští recenze na neomezenou dobu.

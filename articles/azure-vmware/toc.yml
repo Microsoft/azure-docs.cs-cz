@@ -44,6 +44,8 @@
       href: concepts-identity.md
     - name: Řízení přístupu na základě role
       href: concepts-role-based-access-control.md
+    - name: Monitorování a oprava privátních cloudů
+      href: concepts-monitor-repair-private-cloud.md
     - name: Upgrady privátních cloudů
       href: concepts-upgrades.md
 - name: Návody

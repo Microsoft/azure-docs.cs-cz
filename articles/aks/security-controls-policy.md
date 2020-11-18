@@ -1,20 +1,20 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro službu Azure Kubernetes Service (AKS)
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou k dispozici pro službu Azure Kubernetes Service (AKS). Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 52d60c3fa471960e6949b0169928280f3ac59e56
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 13fc6e177248794eddd64e2a406980d59e2d37d2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636591"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697787"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>Azure Policy kontroly dodržování předpisů pro službu Azure Kubernetes Service (AKS)
 
-[Dodržování legislativních předpisů v Azure Policy](../governance/policy/concepts/regulatory-compliance.md) poskytuje definice Microsoftem vytvořeného a spravovaného podnětu, označované jako _předdefinované_ , pro **domény dodržování předpisů** a **bezpečnostní prvky zabezpečení** související s různými standardy dodržování předpisů. Tato stránka obsahuje seznam **domén dodržování předpisů** a **řízení zabezpečení** pro službu Azure Kubernetes Service (AKS).
+[Dodržování legislativních předpisů v Azure Policy](../governance/policy/concepts/regulatory-compliance.md) poskytuje definice Microsoftem vytvořeného a spravovaného podnětu, označované jako _předdefinované_, pro **domény dodržování předpisů** a **bezpečnostní prvky zabezpečení** související s různými standardy dodržování předpisů. Tato stránka obsahuje seznam **domén dodržování předpisů** a **řízení zabezpečení** pro službu Azure Kubernetes Service (AKS).
 Můžete jim přiřadit předdefinované **ovládací prvky zabezpečení** , které vám pomůžou zajistit, aby prostředky Azure vyhovovaly konkrétnímu standardu.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]

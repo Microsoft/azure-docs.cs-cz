@@ -2,13 +2,13 @@
 title: Poskytovatelé prostředků podle služeb Azure
 description: Vypíše všechny obory názvů poskytovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: f9e31f902d36cf84fc559337f3c69529cf1c014b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/17/2020
+ms.openlocfilehash: c447a08b4422929f042315370b5888f3db0626e4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949118"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697726"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
 | Microsoft. fakturace<sup>1</sup> | [Cost Management a fakturace](/azure/billing/) |
-| Microsoft. BingMaps | [Mapy Bing](/BingMaps/#pivot=main&panel=BingMapsAPI) |
+| Microsoft. BingMaps | [Mapy Bingu](/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft. blockchain | [Služba Azure Blockchain](../../blockchain/workbench/index.yml) |
 | Microsoft. BlockchainTokens | [Azure Blockchain Tokens](https://azure.microsoft.com/services/blockchain-tokens/) |
 | Microsoft. detail | [Azure Blueprint](../../governance/blueprints/index.yml) |
@@ -107,7 +107,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Trezor Microsoft. | [Key Vault](../../key-vault/index.yml) |
 | Microsoft. Kubernetes | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
 | Microsoft. KubernetesConfiguration | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
-| Microsoft.Kusto | [Průzkumník dat Azure](/azure/data-explorer/) |
+| Microsoft.Kusto | [Azure Data Explorer](/azure/data-explorer/) |
 | Microsoft. LabServices | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft. Logic | [Logic Apps](../../logic-apps/index.yml) |
 | Microsoft. MachineLearning | [Machine Learning Studio](../../machine-learning/classic/index.yml) |
@@ -150,8 +150,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. SaaS | Core |
 | Microsoft. Scheduler | [Scheduler](../../scheduler/index.yml) |
 | Microsoft. Search | [Azure Cognitive Search](../../search/index.yml) |
-| Microsoft.Security | [Security Center](../../security-center/index.yml) |
-| Microsoft. SecurityGraph | [Security Center](../../security-center/index.yml) |
+| Microsoft.Security | [Centrum zabezpečení](../../security-center/index.yml) |
 | Microsoft. SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
 | Microsoft. SerialConsole<sup>1</sup> | [Sériová konzola Azure pro Windows](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
@@ -162,7 +161,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. SoftwarePlan | Licence |
 | Microsoft. Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Spravovaná instance Azure SQL](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
-| Microsoft. SqlVirtualMachine | [SQL Server v Azure Virtual Machines](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
+| Microsoft. SqlVirtualMachine | [SQL Server na Azure Virtual Machines](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
 | Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Microsoft. StorageCache | [Azure HPC Cache](../../hpc-cache/index.yml) |
 | Microsoft. StorageSync | [Storage](../../storage/index.yml) |
@@ -174,10 +173,10 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. TimeSeriesInsights | [Azure Time Series Insights](../../time-series-insights/index.yml) |
 | Microsoft. token | Token |
 | Microsoft. VirtualMachineImages | [Azure Image Builder](../../virtual-machines/linux/image-builder-overview.md) |
-| Microsoft. VisualStudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
+| Microsoft. VisualStudio | [Azure DevOps](/azure/devops/) |
 | Microsoft. VMware | [Azure VMware Solution](../../azure-vmware/index.yml) |
 | Microsoft. VMwareCloudSimple | [Azure VMware Solution by CloudSimple](../../vmware-cloudsimple/index.md) |
-| Microsoft. VSOnline | [Azure DevOps](/azure/devops/?view=azure-devops) |
+| Microsoft. VSOnline | [Azure DevOps](/azure/devops/) |
 | Microsoft. Web | [App Service](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
 | Microsoft. WindowsDefenderATP | [Rozšířená ochrana před internetovými útoky v programu Microsoft Defender](../../security-center/security-center-wdatp.md) |
 | Microsoft. WindowsESU | Rozšířené aktualizace zabezpečení |

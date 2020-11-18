@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: e2c6f627c69316b8f146d3ac82b8d29801ec3902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 834e4fe8c7b3923f40a07c02c0310200db222308
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740679"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697250"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Vytvoření jednoduchého dotazu ve službě Azure Kognitivní hledání
 
@@ -27,13 +27,13 @@ Alternativná syntaxe dotazu je [Úplná Lucene](query-lucene-syntax.md), která
 
 Následující příklady využívají index vyhledávání úloh NYC sestávající z úloh, které jsou k dispozici na základě datové sady poskytované [městem OpenData iniciativy z New Yorku](https://nycopendata.socrata.com/) . Tato data by se neměla považovat za aktuální nebo kompletní. Index je ve službě izolovaného prostoru, kterou poskytuje Microsoft, což znamená, že k tomu, abyste tyto dotazy zkusili, nepotřebujete předplatné Azure ani Azure Kognitivní hledání.
 
-K tomu, co potřebujete, je odeslání nebo ekvivalent nástroje pro vystavení požadavku HTTP na GET. Další informace najdete v tématu [rychlý Start: Prozkoumejte Azure Kognitivní hledání REST API pomocí post](search-get-started-postman.md).
+K tomu, co potřebujete, je odeslání nebo ekvivalent nástroje pro vystavení požadavku HTTP na GET. Další informace najdete v tématu [rychlý Start: Prozkoumejte Azure Kognitivní hledání REST API](search-get-started-rest.md).
 
 ### <a name="set-the-request-header"></a>Nastavit hlavičku požadavku
 
 1. V hlavičce požadavku nastavte **typ obsahu** na `application/json` .
 
-2. Přidejte **klíč API-Key**a nastavte jej na tento řetězec: `252044BE3886FE4A8E3BAA4F595114BB` . Toto je klíč dotazu pro vyhledávací službu izolovaného prostoru (sandbox), která hostuje index úloh NYC.
+2. Přidejte **klíč API-Key** a nastavte jej na tento řetězec: `252044BE3886FE4A8E3BAA4F595114BB` . Toto je klíč dotazu pro vyhledávací službu izolovaného prostoru (sandbox), která hostuje index úloh NYC.
 
 Po zadání hlavičky žádosti ji můžete znovu použít pro všechny dotazy v tomto článku, přičemž se odkládá jenom řetězec **Search =** String. 
 
@@ -43,7 +43,7 @@ Po zadání hlavičky žádosti ji můžete znovu použít pro všechny dotazy v
 
 Request je příkaz GET spárováný s adresou URL, která obsahuje koncový bod Azure Kognitivní hledání a hledaný řetězec.
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Hlavička žádosti post-GET" border="false":::
 
 Složení adresy URL má následující prvky:
 
@@ -97,7 +97,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 Odpověď pro tento dotaz by měla vypadat podobně jako na následujícím snímku obrazovky.
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Ukázková odpověď po ukázce" border="false":::
 
 Možná jste si všimli skóre hledání v odpovědi. Rovnoměrné skóre 1 nastane, pokud není k dispozici žádný rozměr, protože hledání nevrátilo fulltextové vyhledávání, nebo vzhledem k tomu, že se nepoužila žádná kritéria. Pro prázdné vyhledávání bez kritérií se řádky vrátí v libovolném pořadí. Pokud zahrnete skutečná kritéria, uvidíte, že výsledky hledání se budou vyvíjet na smysluplné hodnoty.
 
@@ -133,7 +133,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 
 Při použití společně se filtr použije jako první pro celý index a pak se provede hledání na základě výsledků filtru. Používání filtrů tak může být užitečné pro zlepšení výkonu dotazů zmenšením sady dokumentů, které musí dotaz vyhledávání zpracovat.
 
-  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Filtrovat odpověď dotazu" border="false":::
 
 Pokud si to chcete vyzkoušet v příspěvku pomocí GET, můžete vložit do tohoto řetězce:
 
@@ -167,7 +167,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
       "count": "true"
     }
 ```
-  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Filtr rozsahu pro číselné rozsahy" border="false":::
 
 
 ```http
@@ -181,7 +181,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     }
 ```
 
-  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Filtr rozsahu pro textové rozsahy" border="false":::
 
 Můžete je také vyzkoušet v příspěvku pomocí GET:
 
@@ -251,14 +251,14 @@ Při použití výchozího searchMode (any) se vrátí 2800 dokumentů: těch, k
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="libovolný režim hledání" border="false":::
 
 Změna searchMode k `all` vykonání kumulativního efektu pro kritéria a vrátí menší sadu výsledků dotazu-21 dokumentů, které obsahují dokumenty obsahující celou frázi "Požární oddělení", a tyto úlohy se na adrese MetroTech centra minus.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="vše v režimu hledání" border="false":::
 
 ## <a name="example-8-structuring-results"></a>Příklad 8: strukturování výsledků
 

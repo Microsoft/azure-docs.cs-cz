@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: d41146b01b6b81804cdba31fbbf2541ba7ae0f03
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: a3c44d667b6baaf16e109dfb88c22c16a1ea2ce1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372368"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697199"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indexování objektů BLOB JSON pomocí indexeru objektů BLOB v Azure Kognitivní hledání
 
@@ -49,11 +49,11 @@ Na stránce Přehled služby Search můžete [Spustit Průvodce](search-import-d
 
 ### <a name="3---set-the-data-source"></a>3 – nastavení zdroje dat
 
-Na stránce **zdroj dat** musí být ve zdroji **BLOB Storage Azure** , a to s následujícími specifikacemi:
+Na stránce **zdroj dat** musí být ve zdroji **BLOB Storage Azure**, a to s následujícími specifikacemi:
 
 + **Data, která se mají extrahovat** , by měla být *obsah a metadata*. Výběrem této možnosti umožníte průvodci odvodit schéma indexu a namapovat pole pro import.
    
-+ **Režim analýzy** by měl být nastaven na *JSON* , *pole JSON* nebo *řádky JSON*. 
++ **Režim analýzy** by měl být nastaven na *JSON*, *pole JSON* nebo *řádky JSON*. 
 
   *JSON* kloubuje každý objekt BLOB jako jeden vyhledávací dokument, který ve výsledcích vyhledávání zobrazuje jako nezávislou položku. 
 
@@ -108,7 +108,7 @@ Můžete použít REST API k indexování objektů BLOB JSON, a to za pracovní 
 
 Na konci této části si můžete prohlédnout [ukázkový kód REST](#rest-example) , který ukazuje, jak vytvořit všechny tři objekty. Tato část obsahuje také podrobnosti o [režimech analýzy JSON](#parsing-modes), samostatných objektech [BLOB](#parsing-single-blobs), [polích JSON](#parsing-arrays)a [vnořených polích](#nested-json-arrays).
 
-Pro indexování JSON založené na kódu použijte příkaz [post](search-get-started-postman.md) a REST API k vytvoření těchto objektů:
+Pro indexování JSON založené na kódu použijte [post nebo Visual Studio Code](search-get-started-rest.md) a REST API k vytvoření těchto objektů:
 
 + [indexovacím](/rest/api/searchservice/create-index)
 + [zdroj dat](/rest/api/searchservice/create-data-source)
@@ -126,7 +126,7 @@ Objekty blob JSON ve službě Azure Blob Storage jsou obvykle buď jedním dokum
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1. sestavování vstupů pro požadavek
 
-Pro každý požadavek musíte zadat název služby a klíč správce pro Azure Kognitivní hledání (v hlavičce POST) a název účtu úložiště a klíč pro úložiště objektů BLOB. K posílání požadavků HTTP do Azure Kognitivní hledání můžete použít [post](search-get-started-postman.md) .
+Pro každý požadavek musíte zadat název služby a klíč správce pro Azure Kognitivní hledání (v hlavičce POST) a název účtu úložiště a klíč pro úložiště objektů BLOB. K odeslání požadavků HTTP do Azure Kognitivní hledání můžete použít [testovací nástroj webového rozhraní API](search-get-started-rest.md) .
 
 Do poznámkového bloku zkopírujte následující čtyři hodnoty, abyste je mohli vložit do žádosti:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 351503db52e4c62414cd5dcbae1f750032a37eb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eea3c8525d31a3ca551e9cbc7d21d7dde163b5cc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542270"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697981"
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy k Azure API Management
 Získejte odpovědi na běžné otázky, vzory a osvědčené postupy pro Azure API Management.
@@ -71,18 +71,7 @@ Ano, API Management můžete spravovat programově pomocí:
 * Rutiny PowerShellu [pro](/powershell/azure/servicemanagement/overview) [nasazení](/powershell/module/wds) a správu služeb.
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Jak přidám uživatele do skupiny správců?
-Zde je postup, jak můžete přidat uživatele do skupiny Administrators:
-
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. Přejít do skupiny prostředků, která obsahuje instanci API Management, kterou chcete aktualizovat.
-3. V API Management přiřaďte uživateli roli **Přispěvatel služby API Management** .
-
-Nově přidaný Přispěvatel teď může používat [rutiny](/powershell/azure/)Azure PowerShell. Tady je postup, jak se přihlásit jako správce:
-
-1. Přihlaste se pomocí `Connect-AzAccount` rutiny.
-2. Nastavte kontext na předplatné, které má službu pomocí nástroje `Set-AzContext -SubscriptionID <subscriptionGUID>` .
-3. K získání adresy URL jednotného přihlašování použijte `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` .
-4. Použijte adresu URL pro přístup k portálu pro správu.
+Skupiny správců jsou neměnné systémové skupiny. Správci předplatného Azure jsou členy této skupiny. Do této skupiny nemůžete přidat uživatele. Další informace najdete v tématu [Vytvoření a používání skupin pro správu vývojářských účtů v Azure API Management](./api-management-howto-create-groups.md) .
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Proč je zásada, kterou chci přidat k dispozici v editoru zásad?
 Pokud se zásada, kterou chcete přidat, zobrazuje v editoru zásad šedě nebo je vystínovaná, ujistěte se, že jste ve správném rozsahu pro danou zásadu. Jednotlivé příkazy zásad jsou navržené tak, aby je bylo možné použít v určitých oborech a oddílech zásad. Pokud chcete zkontrolovat oddíly a obory zásad, přečtěte si část použití zásad v tématu [zásady API Management](./api-management-policies.md).

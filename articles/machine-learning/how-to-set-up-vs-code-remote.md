@@ -1,7 +1,7 @@
 ---
 title: Připojení k výpočetní instanci v Visual Studio Code (Preview)
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jak se připojit k Azure Machine Learning výpočetní instanci v Visual Studio Code
+description: Naučte se připojit k Azure Machine Learning výpočetní instanci v Visual Studio Code a spustit interaktivní Jupyter Notebook a vzdálené vývojové úlohy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 09/03/2020
-ms.openlocfilehash: 6ac116b315d4a11b51b37c5b51edf35aa0676713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/16/2020
+ms.openlocfilehash: 2abad31173992a891e908bdbb61c37e905907d69
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708369"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697574"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Připojení k Azure Machine Learning výpočetní instance v Visual Studio Code (Preview)
 
@@ -130,7 +130,7 @@ Host azmlci1
 
 Zde jsou některé podrobnosti o polích:
 
-|Pole|Description|
+|Pole|Popis|
 |----|---------|
 |Hostitel|Použijte libovolné zkratky, které chcete použít pro instanci služby Compute. |
 |Název hostitele|Toto je IP adresa instance Compute. |

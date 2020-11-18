@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d93a43a44a9ccff4e7918e556b9d759e270d2f42
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072080"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698066"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
@@ -78,27 +78,28 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 
 Pokud chcete vytvořit fondy uzlů s imagí AKS Ubuntu 16,04, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
 
+## <a name="container-runtime-configuration"></a>Konfigurace modulu runtime kontejneru
 
-## <a name="container-runtime-configuration-preview"></a>Konfigurace modulu runtime kontejneru (Preview)
+Modul runtime kontejneru je software, který spouští kontejnery a spravuje image kontejneru na uzlu. Modul runtime pomáhá abstraktním funkcím sys-Call nebo Operating System (OS) spouštět kontejnery v systému Linux nebo Windows. Clustery AKS s využitím fondů uzlů Kubernetes verze 1,19 a větším využitím `containerd` jako modul runtime kontejneru. Clustery AKS využívající Kubernetes před a v 1.19 pro fondy uzlů používají jako svůj modul runtime kontejneru [Moby](https://mobyproject.org/) (nadřazený Docker).
 
-Modul runtime kontejneru je software, který spouští kontejnery a spravuje image kontejneru na uzlu. Modul runtime pomáhá abstraktním funkcím sys-Call nebo Operating System (OS) spouštět kontejnery v systému Linux nebo Windows. V dnešní době AKS používá [Moby](https://mobyproject.org/) (nadřazený Docker) jako svůj modul runtime kontejneru. 
-    
 ![Docker CRI 1](media/cluster-configuration/docker-cri.png)
 
-[`Containerd`](https://containerd.io/) je modul runtime základního kontejneru kompatibilního s rozhraním [OCI](https://opencontainers.org/) (Open container Initiative), který poskytuje minimální sadu požadovaných funkcí pro spouštění kontejnerů a správu imagí na uzlu. V březnu [2017 byl tento](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) Cloud Native COMPUTE Foundation (CNCF). Aktuální verze Moby, kterou AKS používá ještě dnes, je postavená na začátku `containerd` , jak je uvedeno výše. 
+[`Containerd`](https://containerd.io/) je modul runtime základního kontejneru kompatibilního s rozhraním [OCI](https://opencontainers.org/) (Open container Initiative), který poskytuje minimální sadu požadovaných funkcí pro spouštění kontejnerů a správu imagí na uzlu. V březnu [2017 byl tento](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) Cloud Native COMPUTE Foundation (CNCF). Aktuální verze Moby, kterou používá AKS, již využívá a je postavená nad `containerd` , jak je uvedeno výše.
 
-U kontejnerů uzlů a fondů uzlů, které se nemluví s `dockershim` , bude kubelet komunikovat přímo s `containerd` modulem plug-in CRI (rozhraní Container Runtime) a při porovnání s implementací Docker CRI odstraní nadbytečné segmenty směrování v toku. V takovém případě se zobrazí lepší latence při spuštění a menší využití prostředků (CPU a paměti).
+V `containerd` případě fondů uzlů a uzlů se `dockershim` kubelet bude komunikovat přímo s `containerd` modulem plug-in CRI (rozhraní Container Runtime) a odebrat nadbytečné segmenty směrování v toku ve srovnání s implementací Docker CRI. V takovém případě se zobrazí lepší latence při spuštění a menší využití prostředků (CPU a paměti).
 
 Díky použití `containerd` pro uzly AKS zlepšuje latence při spuštění a snižuje spotřebu prostředků v modulu runtime kontejneru. Tato vylepšení jsou povolená touto novou architekturou, ve které kubelet mluví přímo s modulem `containerd` Plug-in CRI v době, kdy se v architektuře Moby/Docker kubelet `dockershim` před dosažením domluví k modulu a Docker `containerd` , takže bude mít další směrování v toku.
 
 ![Docker CRI 2](media/cluster-configuration/containerd-cri.png)
 
-`Containerd` funguje na všech Kubernetes verze GA v AKS a v každé nadřazené Kubernetes verzi výše v 1,10 a podporuje všechny funkce Kubernetes a AKS.
+`Containerd` funguje na všech Kubernetes verze GA v AKS a v každé nadřazené Kubernetes verzi výše v 1.19 a podporuje všechny funkce Kubernetes a AKS.
 
 > [!IMPORTANT]
-> Až `containerd` bude všeobecně k dispozici na AKS, bude to výchozí a dostupná jenom možnost pro modul runtime kontejneru v nových clusterech. Můžete nadále používat Moby nodepools a clustery ve starších podporovaných verzích, dokud tyto nespadají do podpory. 
+> Clustery s fondy uzlů vytvořenými ve výchozím nastavení Kubernetes v 1.19 nebo vyšší `containerd` pro modul runtime kontejneru. Clustery s fondy uzlů v podporované verzi Kubernetes, která je nižší než 1,19 `Moby` , obdrží pro svůj modul runtime kontejneru, ale `ContainerD` po aktualizaci verze Kubernetes fondu uzlů na hodnotu v 1.19 nebo novějším se aktualizují. `Moby`Fondy uzlů a clustery můžete stále používat ve starších podporovaných verzích, dokud tyto nespadají do podpory.
 > 
-> `containerd`Před upgradem nebo vytvořením nových clusterů s tímto modulem runtime kontejneru doporučujeme testovat úlohy ve fondech uzlů.
+> Důrazně doporučujeme testovat úlohy ve fondech uzlů AKS s `containerD` před použitím clusterů na 1,19 nebo vyšší.
+
+V následující části se dozvíte, jak můžete používat a testovat AKS s `containerD` clustery, které ještě nepoužívají Kubernetes verze 1,19 nebo vyšší, nebo byly vytvořené před tím, než se tato funkce všeobecně k dispozici, pomocí ukázky konfigurace modulu runtime kontejneru.
 
 ### <a name="use-containerd-as-your-container-runtime-preview"></a>Použijte `containerd` jako modul runtime kontejneru (Preview)
 
