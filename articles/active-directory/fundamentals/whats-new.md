@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74cb1e021049b7c36c4c23f2e9a6a7512fba1110
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 71726724e7c018f34b1175f323d0c8e55b604931
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146126"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836474"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -457,7 +457,7 @@ S touto novou rolí budete mít k výhodu nejmenších oprávnění potřebných
 **Kategorie služby:** Privileged Identity Management  
 **Schopnost produktu:** Privileged Identity Management
  
-Dříve vyžadovala připojení uživatele k Privileged Identity Management (PIM) a postup připojování v okně PIM, které zahrnovalo registraci v Azure MFA. Díky nedávné integraci PIM v okně role a správci služby Azure AD odebíráme toto prostředí. Každý tenant s platnou licencí P2 se automaticky připojí k PIM.
+V minulosti byl vyžadován souhlas uživatele s připojováním k Privileged Identity Management (PIM) a postup připojování v okně PIM, které zahrnovalo registraci v Azure AD MFA. Díky nedávné integraci PIM v okně role a správci služby Azure AD odebíráme toto prostředí. Každý tenant s platnou licencí P2 se automaticky připojí k PIM.
 
 Připojování k PIM nemá žádný přímý negativní dopad na vašeho tenanta. Můžete očekávat následující změny:
 - Další možnosti přiřazení, jako je aktivní vs. s nárokem v podobě počátečního a koncového času, když provedete přiřazení v okně role PIM nebo Azure AD a správci. 

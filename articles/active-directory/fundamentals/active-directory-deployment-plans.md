@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd2f49f009a8bd71d8cfc9f442e579bb1ad396b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c2a7c2813919321227bfcdc4ee43ca15186b89df
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371881"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836814"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plány nasazení Azure Active Directory
 Hledáte kompletní pokyny k nasazení funkcí Azure Active Directory (Azure AD)? Plány nasazení Azure AD vás seznámí s obchodní hodnotou, požadavky na plánování a provozními postupy potřebnými k úspěšnému nasazení běžných funkcí služby Azure AD.
@@ -40,13 +40,13 @@ Role můžou zahrnovat následující:
 
 **Úrovně zapojení můžou zahrnovat:**
 
-- Esponsible **R**pro implementaci plánu a výsledku projektu 
+- Esponsible **R** pro implementaci plánu a výsledku projektu 
 
-- **Pproval plánu**a výsledku projektu 
+- **Pproval plánu** a výsledku projektu 
 
 - Ontributor plánování a výsledek projektu **C** 
 
-- **Nformed plán**a výsledek projektu
+- **Nformed plán** a výsledek projektu
 
 
 ## <a name="best-practices-for-a-pilot"></a>Osvědčené postupy pro pilotní nasazení
@@ -61,7 +61,7 @@ Rozšiřování zavedení na větší skupiny uživatelů by mělo být proveden
 
 | Schopnost | Description|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure Multi-Factor Authentication (MFA) je řešení dvoustupňového ověřování od Microsoftu. Pomocí metod ověřování schválených správcem Azure MFA pomáhá chránit přístup k vašim datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování. |
+| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) je řešení ověřování dvou kroků od Microsoftu. Pomocí metod ověřování schválených správcem Azure AD MFA pomáhá chránit přístup k vašim datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování. |
 | [Podmíněný přístup](../conditional-access/plan-conditional-access.md)| Pomocí podmíněného přístupu můžete implementovat automatizované rozhodnutí řízení přístupu, která budou mít přístup k vašim cloudovým aplikacím, a to na základě podmínek. |
 | [Samoobslužné resetování hesla](../authentication/howto-sspr-deployment.md)| Samoobslužné resetování hesla pomáhá uživatelům resetovat hesla bez zásahu správce, kdy a kde potřebují. |
 | [Bez hesla](../authentication/howto-authentication-passwordless-deployment.md) | Implementace ověřování pomocí hesla pomocí Microsoft Authenticator aplikace nebo klíčů zabezpečení FIDO2 ve vaší organizaci |

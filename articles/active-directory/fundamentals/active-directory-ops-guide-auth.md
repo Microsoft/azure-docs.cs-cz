@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f91928812dd2f9f850b5e4c3af16ce5c82608e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: baa0aa01c94c4deb35db8a59f7b4f81224ae1fd3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371048"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836984"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka operací správy ověřování Azure Active Directory
 
@@ -31,7 +31,7 @@ Tato část [Referenční příručka k operacím Azure AD](active-directory-ops
 
 Správa Azure Active Directory vyžaduje průběžné provádění klíčových provozních úloh a procesů, které nemusí být součástí projektu zavedení. Stále je důležité, abyste nastavili tyto úlohy pro optimalizaci prostředí. Mezi klíčové úlohy a jejich Doporučené vlastníky patří:
 
-| Úloha | Vlastník |
+| Úkol | Vlastník |
 | :- | :- |
 | Správa životního cyklu konfigurace jednotného přihlašování (SSO) ve službě Azure AD | Provozní tým IAM |
 | Návrh zásad podmíněného přístupu pro aplikace Azure AD | Tým architektury InfoSec |
@@ -95,7 +95,7 @@ Hesla samy o sebe nejsou dostatečně zabezpečená, aby nedocházelo k špatný
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>Odolnost ověřování při místním výpadku
 
-Kromě výhod jednoduchosti a povolení detekce nevrácených přihlašovacích údajů, synchronizace hodnot hash hesel služby Azure AD (KOSMETICE) a Azure MFA umožňuje uživatelům přístup k aplikacím SaaS a Microsoft 365, a to i v důsledku místního výpadku z důvodu kyberútokům jako [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/). KOSMETICE je také možné povolit ve spojení s federaci. Povolení KOSMETICE umožňuje použití záložního ověřování v případě, že nejsou k dispozici federační služby.
+Kromě výhod jednoduchosti a povolení detekce nevrácených přihlašovacích údajů, synchronizace hodnot hash hesel služby Azure AD (KOSMETICE) a Azure AD MFA umožňuje uživatelům přístup k aplikacím SaaS a Microsoft 365i navzdory místnímu výpadku z důvodu kyberútokům, jako je [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/). KOSMETICE je také možné povolit ve spojení s federaci. Povolení KOSMETICE umožňuje použití záložního ověřování v případě, že nejsou k dispozici federační služby.
 
 Pokud v místní organizaci chybí strategie odolnosti proti výpadkům nebo má jednu, která není integrovaná se službou Azure AD, měli byste nasadit Azure AD KOSMETICE a definovat plán zotavení po havárii, který obsahuje KOSMETICE. Povolení služby Azure AD KOSMETICE umožní uživatelům ověřování ve službě Azure AD, pokud vaše místní služba Active Directory nebude k dispozici.
 
@@ -309,7 +309,7 @@ Níže najdete seznam aplikací s oprávněními, které byste mohli chtít poř
 | | Pošta. Read. Shared |
 | | Pošta. v zápisu |
 
-- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Příklad:
+- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Například:
 
 |Prostředek | Oprávnění |
 | :- | :- |
@@ -372,7 +372,7 @@ Přístup k aktivitě přihlašování, auditům a rizikovým událostem pro Azu
 - [Reference k rozhraní API aktivity správy Office 365](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [Jak používat balíček obsahu Azure Active Directory Power BI Content Pack](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Zabezpečená infrastruktura identity má 12 aspektů. Tento seznam vám pomůže lépe zabezpečit a spravovat přihlašovací údaje, definovat možnosti ověřování, přiřazení delegáta, využití měr a definovat zásady přístupu na základě podnikového zabezpečení stav.
 

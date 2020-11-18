@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 457910f30830db06f148282a32551a400255f7e1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3f2b059bb6ae63d7f427ce970b2538da922e2dec
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965909"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837259"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co je primární obnovovací token?
 
@@ -85,7 +85,7 @@ PRT se obnovuje dvěma různými způsoby:
 * **Modul plug-in Azure AD CloudAP každé 4 hodiny**: modul plug-in CloudAP obnovuje PRT každé 4 hodiny během přihlašování Windows. Pokud uživatel nemá během této doby připojení k Internetu, modul plug-in CloudAP obnoví PRT po připojení zařízení k Internetu.
 * **Modul plug-in Azure AD WAM během žádosti o tokeny aplikace**: modul plug-in WAM umožňuje jednotné přihlašování na zařízeních s Windows 10 povolením požadavků na tiché tokeny Modul plug-in WAM může obnovit PRT během těchto požadavků na tokeny dvěma různými způsoby:
    * Aplikace požaduje u přístupového tokenu služby WAM v tichém režimu, ale pro tuto aplikaci není k dispozici žádný obnovovací token. V tomto případě WAM používá PRT k vyžádání tokenu pro aplikaci a vrátí nový PRT v odpovědi.
-   * Aplikace požaduje službu WAM pro přístupový token, ale PRT je neplatná nebo služba Azure AD vyžaduje další autorizaci (například Azure Multi-Factor Authentication). V tomto scénáři vytvoří WAM interaktivní přihlášení, které vyžaduje opětovné ověření uživatele nebo poskytnutí dalšího ověřování a nové PRT se vydá po úspěšném ověření.
+   * Aplikace požaduje službu WAM pro přístupový token, ale PRT je neplatná nebo služba Azure AD vyžaduje další autorizaci (například Azure AD Multi-Factor Authentication). V tomto scénáři vytvoří WAM interaktivní přihlášení, které vyžaduje opětovné ověření uživatele nebo poskytnutí dalšího ověřování a nové PRT se vydá po úspěšném ověření.
 
 V prostředí AD FS není pro obnovení PRT nutná přímá čára pohledu na řadič domény. Obnovení PRT vyžaduje, aby byl na proxy serveru povolen pouze koncový bod/ADFS/Services/Trust/2005/usernamemixed a/ADFS/Services/Trust/13/usernamemixed pomocí protokolu WS-Trust.
 

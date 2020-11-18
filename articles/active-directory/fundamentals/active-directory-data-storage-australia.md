@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7ed1d4c49c46673f1a1c2b5cb08b2467490acae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 498b75a6541da97e57e23465ae6eb23a6c854727
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565114"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836950"
 ---
 # <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Úložiště dat identity pro zákazníky Austrálie a Nového Zélandu v Azure Active Directory
 
@@ -28,13 +28,13 @@ Data identity ukládá služba Azure AD v geografickém umístění na základě
 
 Pro zákazníky, kteří získali adresu v Austrálii nebo na Novém Zélandu, služba Azure AD uchovává data o identitě pro tyto služby v rámci Datacenter v australském centru: 
 - Správa adresáře služby Azure AD 
-- Authentication
+- Ověřování
 
 Všechny ostatní služby Azure AD ukládají zákaznická data v globálních datových centrech. Pokud chcete najít datacentrum pro službu, přečtěte si téma [Azure Active Directory – kde se nacházejí vaše data?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure Multi-Factor Authentication (MFA)
+## <a name="microsoft-azure-ad-multi-factor-authentication-mfa"></a>Multi-Factor Authentication Microsoft Azure AD (MFA)
 
-MFA ukládá data o zákaznících identity v globálních datových centrech. Další informace o informacích o uživateli shromažďovaných a uložených pomocí cloudových Azure MFA a Azure MFA serveru najdete v tématu [shromažďování uživatelských dat v azure Multi-Factor Authentication](../authentication/concept-mfa-data-residency.md).
+MFA ukládá data o zákaznících identity v globálních datových centrech. Další informace o tom, jak se shromažďují informace o uživateli shromažďované a ukládané cloudovou službou Azure AD MFA a Azure MFA serverem, najdete v článku [shromažďování uživatelských dat v azure Multi-Factor Authentication](../authentication/concept-mfa-data-residency.md).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o všech funkcích a funkcích popsaných výše najdete v těchto článcích:

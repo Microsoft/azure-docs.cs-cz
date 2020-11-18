@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a8b013723707c4a3a087a90674227c3d41c5108
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395885"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836933"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Úložiště dat identity pro evropské zákazníky v Azure Active Directory
 Data identity ukládá služba Azure AD v geografickém umístění na základě adresy poskytnuté vaší organizací při přihlášení k odběru online služby Microsoftu, jako je Microsoft 365 a Azure. Informace o tom, kde jsou uložená data identity, můžete najít v části [umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v centru zabezpečení Microsoftu.
 
 Pro zákazníky, kteří získali adresu v Evropě, uchovává Azure AD většinu dat identity v rámci evropských datových center. Tento dokument poskytuje informace o všech datech, která jsou uložená mimo Evropu službami Azure AD.
 
-## <a name="microsoft-azure-multi-factor-authentication"></a>Microsoft Azure Multi-Factor Authentication
+## <a name="microsoft-azure-ad-multi-factor-authentication"></a>Microsoft Azure AD Multi-Factor Authentication
 
-Pro cloudové Multi-Factor Authentication Azure se ověřování dokončí v nejbližším datacentru pro uživatele. Datová centra pro Azure Multi-Factor Authentication existují v Severní Amerika, Evropě a Asie a Tichomoří.
+Pro cloudové Multi-Factor Authentication Azure AD se ověřování dokončí v nejbližším datacentru pro uživatele. Datová centra pro Azure AD Multi-Factor Authentication existují v Severní Amerika, Evropě a Asie a Tichomoří.
 
 * Multi-Factor Authentication využívající telefonní hovory pocházející z Datacenter USA a jsou směrováni globálními poskytovateli.
 * Multi-Factor Authentication pomocí SMS je směrováni globálními poskytovateli.
@@ -34,7 +34,7 @@ Pro cloudové Multi-Factor Authentication Azure se ověřování dokončí v nej
     * Služby specifické pro dodavatele zařízení, jako např. nabízená oznámení Apple, můžou být mimo Evropu.
 * Žádosti o vícefaktorové ověřování pomocí kódů OATH, které pocházejí z datových center EU, se ověřují v EU.
 
-Další informace o tom, jaké informace o uživateli shromažďuje služba Azure Multi-Factor Authentication Server (MFA Server) a cloudová služba Azure MFA, najdete v článku [shromažďování uživatelských dat v azure Multi-Factor Authentication](../authentication/howto-mfa-reporting-datacollection.md).
+Další informace o tom, jaké informace o uživateli shromažďuje služba Azure Multi-Factor Authentication Server (MFA Server) a cloudová služba Azure AD MFA, najdete v článku [shromažďování uživatelských dat v azure Multi-Factor Authentication](../authentication/howto-mfa-reporting-datacollection.md).
 
 ## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Jeden Sign-On pro podnikové aplikace založený na heslech
  

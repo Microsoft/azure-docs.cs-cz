@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e427a68751cc348a7b0024fb01402bd15ca87d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df70891ef090d44769aadbc235273e3193bc780e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705720"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837205"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s nastavením Enterprise State Roaming v Azure Active Directory
 
@@ -76,7 +76,7 @@ Enterprise State Roaming vyžaduje, aby zařízení bylo zaregistrované ve slu�
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming a Multi-Factor Authentication 
 
-Za určitých podmínek může Enterprise State Roaming selhat při synchronizaci dat, pokud je nakonfigurovaná Azure Multi-Factor Authentication. Další informace o těchto symptomech najdete v dokumentu podpory [KB3193683](https://support.microsoft.com/kb/3193683). 
+Za určitých podmínek může Enterprise State Roaming selhat při synchronizaci dat, pokud je nakonfigurovaná Multi-Factor Authentication Azure AD. Další informace o těchto symptomech najdete v dokumentu podpory [KB3193683](https://support.microsoft.com/kb/3193683). 
 
 **Potenciální problém**: Pokud je vaše zařízení nakonfigurované tak, aby vyžadovalo Multi-Factor Authentication na portále Azure Active Directory, nemůžete při přihlašování k zařízení s Windows 10 pomocí hesla nakonfigurovat jeho nastavení. Tento typ konfigurace Multi-Factor Authentication slouží k ochraně účtu správce Azure. Uživatelé s rolí správce můžou pořád synchronizovat přihlášením ke svým zařízením s Windows 10 a jejich Microsoft Passport for Work kódem PIN nebo doplněním Multi-Factor Authentication při přístupu k jiným službám Azure, jako je Microsoft 365.
 

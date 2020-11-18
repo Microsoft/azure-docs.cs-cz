@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6db477a288ef41c2946cd550af6ff87999eff2f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb9d9e7c60344a2a4c538c6d3bf59e337e4569c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461270"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836321"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: nejčastější dotazy
 
@@ -37,7 +37,7 @@ Předávací ověřování je bezplatná funkce. Nepotřebujete žádné placen�
 
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Pracuje [podmíněný přístup](../conditional-access/overview.md) s předávacím ověřováním?
 
-Ano. Všechny funkce podmíněného přístupu, včetně Azure Multi-Factor Authentication, fungují s předávacím ověřováním.
+Ano. Všechny funkce podmíněného přístupu, včetně Multi-Factor Authentication Azure AD, fungují s předávacím ověřováním.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Podporuje předávací ověřování "alternativní ID" jako uživatelské jméno místo "userPrincipalName"?
 Ano, přihlaste se pomocí nestandardní hodnoty (UPN), jako je například alternativní e-mail, se podporuje jak předávací ověřování (PTA), tak i synchronizace hodnot hash hesel (KOSMETICE). Další informace o [alternativním přihlašovacím ID](../authentication/howto-authentication-use-email-signin.md)

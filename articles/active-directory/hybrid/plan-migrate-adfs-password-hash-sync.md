@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5a22c904d72f09656480be6009e3832fde72b89
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 4c058f74bb4e390fe7a5003d6ab5d963c56ef2d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408630"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836372"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
@@ -89,8 +89,8 @@ Ověření nastavení přihlášení aktuálního uživatele:
    ![Snímek obrazovky s možností zobrazit aktuální konfiguraci vybranou na stránce další úlohy](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image2.png)<br />
 3. Na stránce **Kontrola řešení** si poznamenejte stav **synchronizace hodnoty hash hesla** .<br /> 
 
-   * Pokud je **synchronizace hodnot hash hesel** nastavená na **disabled** , proveďte kroky v tomto článku, abyste je povolili.
-   * Pokud je **synchronizace hodnot hash hesel** nastavená na **povoleno** , můžete přeskočit část **Krok 1: povolení synchronizace hodnot hash hesel** v tomto článku.
+   * Pokud je **synchronizace hodnot hash hesel** nastavená na **disabled**, proveďte kroky v tomto článku, abyste je povolili.
+   * Pokud je **synchronizace hodnot hash hesel** nastavená na **povoleno**, můžete přeskočit část **Krok 1: povolení synchronizace hodnot hash hesel** v tomto článku.
 4. Na stránce **Kontrola řešení** přejděte na **Active Directory Federation Services (AD FS) (AD FS)**.<br />
 
    * Pokud se v této části objeví konfigurace AD FS, můžete bezpečně předpokládat, že AD FS byla původně nakonfigurovaná pomocí Azure AD Connect. Domény můžete převést z federované identity na spravovanou identitu pomocí možnosti Azure AD Connect **změnit přihlašování uživatele** . Tento proces je podrobně popsán v části **možnost A: přepnutí z federace na synchronizaci hodnot hash hesel pomocí Azure AD Connect**.
@@ -110,7 +110,7 @@ Příklad:
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 ```
 
-Ověřte všechna nastavení, která mohla být přizpůsobená pro návrh federace a dokumentaci k nasazení. Konkrétně hledejte vlastní nastavení v **PreferredAuthenticationProtocol** , **SupportsMfa** a **PromptLoginBehavior**.
+Ověřte všechna nastavení, která mohla být přizpůsobená pro návrh federace a dokumentaci k nasazení. Konkrétně hledejte vlastní nastavení v **PreferredAuthenticationProtocol**, **SupportsMfa** a **PromptLoginBehavior**.
 
 Další informace najdete v těchto článcích:
 
@@ -118,9 +118,9 @@ Další informace najdete v těchto článcích:
 * [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
-> Pokud je **SupportsMfa** nastavené na **hodnotu true** , použijete místní řešení Multi-Factor Authentication k vložení výzvy ke čtení druhého faktoru do toku ověřování uživatele. Po převedení této domény z federovaného na spravované ověřování už nebude tato instalace fungovat pro scénáře ověřování Azure AD. Po zakázání federace narušíte vztah k vaší místní federaci a k tomu patří místní adaptéry MFA. 
+> Pokud je **SupportsMfa** nastavené na **hodnotu true**, použijete místní řešení Multi-Factor Authentication k vložení výzvy ke čtení druhého faktoru do toku ověřování uživatele. Po převedení této domény z federovaného na spravované ověřování už nebude tato instalace fungovat pro scénáře ověřování Azure AD. Po zakázání federace narušíte vztah k vaší místní federaci a k tomu patří místní adaptéry MFA. 
 >
-> Místo toho použijte službu Azure Multi-Factor Authentication Cloud-based Service k provedení stejné funkce. Než budete pokračovat, pečlivě vyhodnoťte požadavky služby Multi-Factor Authentication. Před převodem domén se ujistěte, že rozumíte tomu, jak používat Azure Multi-Factor Authentication, dopad na licencování a proces registrace uživatelů.
+> Místo toho použijte službu Azure AD Multi-Factor Authentication Cloud-based Service k provedení stejné funkce. Než budete pokračovat, pečlivě vyhodnoťte požadavky služby Multi-Factor Authentication. Před převodem domén se ujistěte, že rozumíte tomu, jak používat Multi-Factor Authentication Azure AD, dopad na licencování a proces registrace uživatelů.
 
 #### <a name="back-up-federation-settings"></a>Zálohování nastavení federace
 
@@ -145,7 +145,7 @@ Před převedením z federované identity na spravovanou identitu si pečlivě p
 | Plánujete dál používat AD FS s jinými aplikacemi (kromě Azure AD a Microsoft 365). | Po převedení domén budete používat AD FS i Azure AD. Vezměte v úvahu činnost koncového uživatele. V některých scénářích se uživatelé můžou muset ověřit dvakrát: jednou do Azure AD (kde uživatel získá přístup SSO k ostatním aplikacím, třeba Microsoft 365), a znovu pro všechny aplikace, které jsou pořád vázané na AD FS jako vztah důvěryhodnosti předávající strany. |
 | Vaše instance AD FS je silně přizpůsobená a spoléhá na konkrétní nastavení přizpůsobení v souboru onload.js (například pokud jste změnili přihlašovací prostředí tak, aby uživatelé jako uživatelské jméno používali jenom formát **sAMAccountName** , a ne hlavní název uživatele (UPN), nebo vaše organizace intenzivně přihlásila vaše prostředí. Soubor onload.js nejde duplikovat v Azure AD. | Než budete pokračovat, musíte ověřit, že služba Azure AD dokáže splnit vaše aktuální požadavky na vlastní nastavení. Další informace a pokyny najdete v částech AD FS brandingu a AD FS přizpůsobení.|
 | K blokování starších verzí ověřovacích klientů slouží AD FS.| Zvažte nahrazení AD FS ovládacích prvků, které blokují starší verze ověřování klientů pomocí kombinace [ovládacích prvků podmíněného přístupu](../conditional-access/concept-conditional-access-conditions.md) a [pravidel přístupu klienta Exchange Online](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules). |
-| Požadujete, aby uživatelé prováděli vícefaktorové ověřování proti místnímu řešení Multi-Factor Authentication serveru, když se uživatelé ověřují AD FS.| Ve spravované doméně identity nemůžete do toku ověřování vložit výzvu Multi-Factor Authentication prostřednictvím místního řešení Multi-Factor Authentication. Po převodu domény ale můžete službu Azure Multi-Factor Authentication použít pro službu Multi-Factor Authentication.<br /><br /> Pokud uživatelé aktuálně nepoužívají Multi-Factor Authentication Azure, je nutný krok registrace uživatele jednorázová. Musíte připravit na a sdělit plánované registrace vašim uživatelům. |
+| Požadujete, aby uživatelé prováděli vícefaktorové ověřování proti místnímu řešení Multi-Factor Authentication serveru, když se uživatelé ověřují AD FS.| Ve spravované doméně identity nemůžete do toku ověřování vložit výzvu Multi-Factor Authentication prostřednictvím místního řešení Multi-Factor Authentication. Po převodu domény ale můžete službu Azure AD Multi-Factor Authentication použít pro službu Multi-Factor Authentication.<br /><br /> Pokud uživatelé aktuálně nepoužívají Multi-Factor Authentication služby Azure AD, je nutný krok registrace uživatele jednorázová. Musíte připravit na a sdělit plánované registrace vašim uživatelům. |
 | V tuto chvíli používáte k řízení přístupu k Microsoft 365 zásady řízení přístupu (pravidla AuthZ) v AD FS.| Zvažte nahrazení zásad odpovídajícími [zásadami podmíněného přístupu](../conditional-access/overview.md) Azure AD a [pravidly přístupu klienta Exchange Online](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules).|
 
 ### <a name="common-ad-fs-customizations"></a>Společná přizpůsobení AD FS
@@ -320,7 +320,7 @@ Nejprve změňte metodu přihlašování:
 
 7. Na portálu Azure AD vyberte **Azure Active Directory**  >  **Azure AD Connect**.
 8. Ověřte tato nastavení:
-   * **Federace** je nastavená na **disabled (zakázáno** ).
+   * **Federace** je nastavená na **disabled (zakázáno**).
    * **Bezproblémové jednotné přihlašování** je nastavené na **povoleno**.
    * **Synchronizace hesla** je nastavená na **povoleno**.<br /> 
 

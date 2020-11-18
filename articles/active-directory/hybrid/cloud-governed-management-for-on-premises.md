@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f717e14e5abe62aafffdeef841889ea2458fa8b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5374dc2ef4c736535b218d8cd67521e83a24a40b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413441"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836457"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Jak Azure AD nabízí cloudovou správu pro místní úlohy
 
@@ -39,7 +39,7 @@ Tento dokument popisuje strategii Microsoftu pro hybridní IDaaS a popisuje, jak
 
 ## <a name="the-azure-ad-approach-to-cloud-governed-identity-management"></a>Přístup Azure AD k řízení identit v cloudu, který řídí.
 
-Protože organizace přecházejí do cloudu, potřebují ujištění, že mají kontrolu nad jejich kompletním prostředím – lepší zabezpečení a lepší přehled o aktivitách, které podporuje automatizace a proaktivní přehledy. " **Správa řízená v cloudu** " popisuje, jak organizace spravují a řídí své uživatele, aplikace, skupiny a zařízení z cloudu.
+Protože organizace přecházejí do cloudu, potřebují ujištění, že mají kontrolu nad jejich kompletním prostředím – lepší zabezpečení a lepší přehled o aktivitách, které podporuje automatizace a proaktivní přehledy. "**Správa řízená v cloudu**" popisuje, jak organizace spravují a řídí své uživatele, aplikace, skupiny a zařízení z cloudu.
 
 V tomto moderním světě je potřeba, aby organizace byly schopné efektivně spravovat ve velkém měřítku, a to z důvodu rozšiřování aplikací SaaS a rostoucí role spolupráce a externích identit. Nové riziko v cloudu znamená, že organizace musí být delší reagovat – škodlivý objekt actor, který by mohl ohrozit cloudový uživatel, by mohl ovlivnit cloudové a místní aplikace.
 
@@ -89,7 +89,7 @@ Když je organizace připravena přesunout aplikaci integrovanou se službou Act
 
 ## <a name="cloud-governed-management-for-on-premises-federation-based-applications"></a>Správa založená na cloudu pro místní federační aplikace
 
-V organizaci, která už používá místního zprostředkovatele identity, umožňuje přesouvání aplikací do Azure AD bezpečnější přístup a jednodušší administrativní prostředí pro správu federace. Azure AD umožňuje konfigurovat podrobné řízení přístupu k jednotlivým aplikacím, včetně Azure Multi-Factor Authentication, pomocí podmíněného přístupu Azure AD. Azure AD podporuje další možnosti, včetně podpisových certifikátů tokenů specifických pro aplikace a konfigurovatelného data vypršení platnosti certifikátu. Tyto možnosti, nástroje a pokyny umožňují organizacím vyřadit své místní zprostředkovatele identity. Vlastní IT společnost od Microsoftu přesunula například 17 987 aplikací z interního Active Directory Federation Services (AD FS) (AD FS) Microsoftu do Azure AD.
+V organizaci, která už používá místního zprostředkovatele identity, umožňuje přesouvání aplikací do Azure AD bezpečnější přístup a jednodušší administrativní prostředí pro správu federace. Azure AD umožňuje konfigurovat podrobné řízení přístupu k jednotlivým aplikacím, včetně Azure AD Multi-Factor Authentication, pomocí podmíněného přístupu Azure AD. Azure AD podporuje další možnosti, včetně podpisových certifikátů tokenů specifických pro aplikace a konfigurovatelného data vypršení platnosti certifikátu. Tyto možnosti, nástroje a pokyny umožňují organizacím vyřadit své místní zprostředkovatele identity. Vlastní IT společnost od Microsoftu přesunula například 17 987 aplikací z interního Active Directory Federation Services (AD FS) (AD FS) Microsoftu do Azure AD.
 
 ![Vývoj pro Azure AD](media/cloud-governed-management-for-on-premises/image5.png)
 
@@ -111,7 +111,7 @@ Organizace můžou proces životního cyklu přístupu automatizovat prostředni
 
 ## <a name="future-directions"></a>Budoucí pokyny
 
-V hybridních prostředích má strategie Microsoftu možnost povolit nasazení, kde **Cloud je řídicí plocha pro identitu** , a místní adresáře a jiné systémy identit, jako je služba Active Directory a další místní aplikace, jsou cílem zřizování uživatelů s přístupem. Tato strategie bude nadále zajišťovat práva, identity a přístup v těchto aplikacích a úlohách, které je spoléhají na ně. V tomto konečném stavu budou organizace moci řídit produktivitu koncových uživatelů výhradně z cloudu.
+V hybridních prostředích má strategie Microsoftu možnost povolit nasazení, kde **Cloud je řídicí plocha pro identitu**, a místní adresáře a jiné systémy identit, jako je služba Active Directory a další místní aplikace, jsou cílem zřizování uživatelů s přístupem. Tato strategie bude nadále zajišťovat práva, identity a přístup v těchto aplikacích a úlohách, které je spoléhají na ně. V tomto konečném stavu budou organizace moci řídit produktivitu koncových uživatelů výhradně z cloudu.
 
 ![Architektura Azure AD](media/cloud-governed-management-for-on-premises/image6.png)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ecc23e2969ce4ce26eef7b9a3a485389d08ce0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266778"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837103"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
 
@@ -27,7 +27,7 @@ ms.locfileid: "89266778"
 **A:** Zařízení s Windows 10, která jsou připojená k hybridní službě Azure AD, se nezobrazí v části **uživatelská zařízení**.
 V Azure Portal použijte zobrazení **všechna zařízení** . Můžete také použít rutinu PowerShellu [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) .
 
-V části **uživatelská zařízení**jsou uvedena pouze následující zařízení:
+V části **uživatelská zařízení** jsou uvedena pouze následující zařízení:
 
 - Všechna osobní zařízení, která nejsou připojená k hybridní službě Azure AD. 
 - Všechna zařízení s jiným systémem než Windows 10 nebo Windows Server 2016.
@@ -51,7 +51,7 @@ V části **uživatelská zařízení**jsou uvedena pouze následující zaříz
 
 ### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>Otázka: v Azure Portal se v informacích o uživateli zobrazuje záznam o zařízení. Zobrazuje se stav registrovaný na zařízení. Je správně nastavené používání podmíněného přístupu?
 
-**A:** Stav připojení zařízení zobrazený v **deviceID**se musí shodovat se stavem ve službě Azure AD a splňovat všechna kritéria hodnocení pro podmíněný přístup. Další informace najdete v tématu [vyžadování spravovaných zařízení pro cloudovou aplikaci přístup s podmíněným přístupem](../conditional-access/require-managed-devices.md).
+**A:** Stav připojení zařízení zobrazený v **deviceID** se musí shodovat se stavem ve službě Azure AD a splňovat všechna kritéria hodnocení pro podmíněný přístup. Další informace najdete v tématu [vyžadování spravovaných zařízení pro cloudovou aplikaci přístup s podmíněným přístupem](../conditional-access/require-managed-devices.md).
 
 ---
 
@@ -134,7 +134,7 @@ Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
 
 ### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>Otázka: Proč jsou zařízení označená jako "čeká" v rámci zaregistrovaného sloupce v Azure Portal?
 
-Odpověď **: čeká na**zaznamenání, že zařízení není registrováno. Tento stav indikuje, že se zařízení synchronizovaly pomocí Azure AD Connect z místní služby AD a je připravené na registraci zařízení. U těchto zařízení je typ připojení nastaven na možnost "připojené k hybridní službě Azure AD". Přečtěte si další informace o [Plánování implementace služby hybrid Azure Active Directory JOIN](hybrid-azuread-join-plan.md).
+Odpověď **: čeká na** zaznamenání, že zařízení není registrováno. Tento stav indikuje, že se zařízení synchronizovaly pomocí Azure AD Connect z místní služby AD a je připravené na registraci zařízení. U těchto zařízení je typ připojení nastaven na možnost "připojené k hybridní službě Azure AD". Přečtěte si další informace o [Plánování implementace služby hybrid Azure Active Directory JOIN](hybrid-azuread-join-plan.md).
 
 >[!NOTE]
 >Zařízení se může také změnit z registrovaného stavu na čeká na vyřízení.
@@ -198,7 +198,7 @@ Změny UPN se podporují s aktualizací Windows 10 2004 Update. Uživatelé na z
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Otázka: Proč někteří uživatelé nezískali na zařízeních připojených k Azure AD výzvy Multi-Factor Authentication?
+### <a name="q-why-dont-some-of-my-users-get-azure-ad-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Otázka: Proč někteří uživatelé neobdrželi Multi-Factor Authentication výzvy k zobrazení výzev k Azure AD na zařízeních připojených k Azure AD?
 
 **A:** Uživatel se může ke službě Azure AD připojit nebo zaregistrovat zařízení pomocí Multi-Factor Authentication. Pak se samotné zařízení bude pro daného uživatele jednat o důvěryhodný druhý faktor. Když se stejný uživatel přihlásí k zařízení a přistupuje k aplikaci, služba Azure AD považuje zařízení za druhý faktor. Umožňuje tomuto uživateli bezproblémově přistupovat k aplikacím bez dalších výzev Multi-Factor Authentication. 
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85bbdff2f7e67434a3e21aaf51af96c1e851eb0d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 134148fa3ea73212d85393cc433d60f7ddeecd17
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740184"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837120"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -81,12 +81,12 @@ Přihlašovací údaje služby Azure AD můžete povolit pro image virtuálních
 
 Vytvoření virtuálního počítače s Windows serverem 2019 Datacenter v Azure s přihlášením pomocí Azure AD: 
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)s účtem, který má přístup k vytváření virtuálních počítačů, a vyberte **+ vytvořit prostředek** .
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)s účtem, který má přístup k vytváření virtuálních počítačů, a vyberte **+ vytvořit prostředek**.
 1. Do vyhledávacího panelu webu Marketplace zadejte **Windows Server** .
    1. Klikněte na **Windows Server** a zvolte **Windows Server 2019 Datacenter** v rozevíracím seznamu vybrat plán softwaru.
-   1. Klikněte na **vytvořit** .
-1. Na kartě Správa povolte možnost **Přihlásit se pomocí přihlašovacích údajů AAD (Preview)** v části Azure Active Directory z možností vypnuto na **zapnuto** .
-1. Ujistěte se, že je v části Identita nastavená **spravovaná identita systému** **na zapnuto** . Tato akce by se měla provést automaticky po povolení přihlášení s přihlašovacími údaji Azure AD.
+   1. Klikněte na **vytvořit**.
+1. Na kartě Správa povolte možnost **Přihlásit se pomocí přihlašovacích údajů AAD (Preview)** v části Azure Active Directory z možností vypnuto na **zapnuto**.
+1. Ujistěte se, že je v části Identita nastavená **spravovaná identita systému** **na zapnuto**. Tato akce by se měla provést automaticky po povolení přihlášení s přihlašovacími údaji Azure AD.
 1. Projděte si zbytek zkušeností při vytváření virtuálního počítače. V této verzi Preview budete muset vytvořit uživatelské jméno a heslo správce pro virtuální počítač.
 
 ![Přihlášení pomocí přihlašovacích údajů Azure AD vytvoření virtuálního počítače](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-login-with-azure-ad.png)
@@ -146,8 +146,8 @@ az vm extension set \
 
 Teď, když jste vytvořili virtuální počítač, musíte nakonfigurovat zásadu Azure RBAC, abyste zjistili, kdo se může přihlásit k virtuálnímu počítači. K autorizaci přihlášení k virtuálnímu počítači se používají dvě role Azure:
 
-- **Přihlášení správce virtuálního počítače** : uživatelé s touto rolí se můžou přihlašovat k virtuálnímu počítači Azure s oprávněními správce.
-- **Přihlášení uživatele k virtuálnímu počítači** : uživatelé s touto rolí se můžou přihlašovat k virtuálnímu počítači Azure s pravidelnými uživatelskými oprávněními.
+- **Přihlášení správce virtuálního počítače**: uživatelé s touto rolí se můžou přihlašovat k virtuálnímu počítači Azure s oprávněními správce.
+- **Přihlášení uživatele k virtuálnímu počítači**: uživatelé s touto rolí se můžou přihlašovat k virtuálnímu počítači Azure s pravidelnými uživatelskými oprávněními.
 
 > [!NOTE]
 > Pokud chcete uživateli dovolit, aby se přihlásil k VIRTUÁLNÍmu počítači přes RDP, musíte přiřadit buď roli přihlášení správce virtuálního počítače, nebo přihlašovací údaje uživatele virtuálního počítače. Uživatel Azure s rolemi vlastník nebo přispěvatel přiřazený k virtuálnímu počítači nemá automaticky oprávnění k přihlášení k virtuálnímu počítači přes RDP. Slouží k zajištění prověřeného oddělení mezi sadou osob, které ovládají virtuální počítače a sadou lidí, kteří mají přístup k virtuálním počítačům.
@@ -163,8 +163,8 @@ Konfigurace přiřazení rolí pro virtuální počítače Windows serveru 2019 
 
 1. Přejít na stránku Přehled konkrétního virtuálního počítače
 1. Z možností nabídky vyberte **řízení přístupu (IAM)** .
-1. Výběrem **Přidat** , **Přidat přiřazení role** otevřete podokno přidat přiřazení role.
-1. V rozevíracím seznamu **role** vyberte roli, například **přihlašovací jméno správce virtuálního počítače** nebo **přihlášení uživatele k virtuálnímu počítači** .
+1. Výběrem **Přidat**, **Přidat přiřazení role** otevřete podokno přidat přiřazení role.
+1. V rozevíracím seznamu **role** vyberte roli, například **přihlašovací jméno správce virtuálního počítače** nebo **přihlášení uživatele k virtuálnímu počítači**.
 1. V poli **Vybrat** vyberte uživatele, skupinu, instanční objekt nebo spravovanou identitu. Pokud se objekt zabezpečení v seznamu nezobrazí, pomocí pole **Vybrat** můžete v adresáři prohledat zobrazované názvy, e-mailové adresy a identifikátory objektů.
 1. Vyberte **Uložit** a přiřaďte roli.
 
@@ -203,7 +203,7 @@ Před autorizací přístupu k virtuálním počítačům s Windows v Azure, kte
 > Pokud použijete "vyžadovat vícefaktorové ověřování" jako udělení řízení přístupu pro vyžádání přístupu k aplikaci pro přihlášení k virtuálnímu počítači Azure s Windows, musíte jako součást klienta zadat službu Multi-Factor Authentication, která inicializuje relaci RDP k cílovému virtuálnímu počítači s Windows v Azure. Jediným způsobem, jak toho dosáhnout na klientovi s Windows 10, je použít PIN kód Windows Hello pro firmy nebo biometrické ověřování s klientem RDP. Do klienta RDP v systému Windows 10 verze 1809 byla přidána podpora biometrického ověřování. Ověřování pomocí Windows Hello pro firmy na vzdálené ploše je dostupné jenom pro nasazení, která používají model důvěryhodnosti certifikátů a aktuálně nejsou k dispozici pro model vztahu důvěryhodnosti klíče.
 
 > [!WARNING]
-> Pro přihlášení k VIRTUÁLNÍm počítačům se nepodporují Azure Multi-Factor Authentication s povoleným/vydaným uživatelem.
+> Pro přihlášení k virtuálnímu počítači se nepodporuje Multi-Factor Authentication služby Azure AD, které jsou povolené nebo vyžadované pro uživatele.
 
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Přihlášení pomocí přihlašovacích údajů Azure AD k virtuálnímu počítači s Windows
 
@@ -214,7 +214,7 @@ Přihlášení k virtuálnímu počítači s Windows serverem 2019 pomocí Azure
 
 1. Přejděte na stránku Přehled virtuálního počítače, který je povolený s přihlášením pomocí Azure AD.
 1. Kliknutím na **připojit** otevřete okno připojit k virtuálnímu počítači.
-1. Vyberte **Stáhnout soubor RDP** .
+1. Vyberte **Stáhnout soubor RDP**.
 1. Vyberte **otevřít** a spusťte klienta připojení ke vzdálené ploše.
 1. Vyberte **připojit** a spusťte přihlašovací dialog Windows.
 1. Přihlaste se pomocí přihlašovacích údajů Azure AD.

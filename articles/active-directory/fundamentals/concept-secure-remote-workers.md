@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b883cac7b970488a30116bc06efc8663766629
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5c4301a61a79ab2351c18af0c76cccc3d07dd202
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370198"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836678"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Rychlá reakce na zabezpečení identit pomocí Azure AD
 
@@ -38,7 +38,7 @@ Tento kontrolní seznam vám pomůže rychle nasadit kritické doporučené akce
 
 V tomto průvodci se předpokládá, že už jste v Azure AD navázali jenom cloudové nebo hybridní identity. Nápovědu k výběru typu identity najdete v článku. [Zvolte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity](../hybrid/choose-ad-authn.md) . 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Existuje mnoho aspektů zabezpečené infrastruktury identity, ale tento kontrolní seznam se zaměřuje na bezpečnou a zabezpečenou infrastrukturu identity, která umožňuje uživatelům pracovat vzdáleně. Zabezpečení vaší identity je jenom součástí vašeho bezpečnostního scénáře, měli byste taky zvážit ochranu dat, aplikací a zařízení.
 
@@ -75,7 +75,7 @@ Následující tabulka má zvýraznit klíčové akce pro následující licenč
 
 | Doporučená akce | Podrobnosti |
 | --- | --- |
-| [Povolit kombinované možnosti registrace pro Azure MFA a SSPR a zjednodušit tak možnosti registrace uživatelů](../authentication/howto-registration-mfa-sspr-combined.md) | Umožněte uživatelům, aby se zaregistrovali z jednoho společného prostředí pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla. |
+| [Povolit kombinované možnosti registrace pro Azure AD MFA a SSPR a zjednodušit tak možnosti registrace uživatelů](../authentication/howto-registration-mfa-sspr-combined.md) | Umožněte uživatelům, aby se zaregistrovali z jednoho společného prostředí pro Azure AD Multi-Factor Authentication a Samoobslužné resetování hesla. |
 | [Konfigurace nastavení vícefaktorového ověřování pro vaši organizaci](../authentication/howto-mfa-getstarted.md) | Zajištění ochrany účtů před ohrožením službou Multi-Factor Authentication |
 | [Povolení samoobslužného resetování hesel](../authentication/tutorial-enable-sspr.md) | Tato možnost omezuje volání helpdesku a ztrátu produktivity, když se uživatel nemůže přihlásit k zařízení nebo aplikaci. |
 | [Implementace zpětného zápisu hesla](../authentication/tutorial-enable-sspr-writeback.md) (Pokud se používají hybridní identity) | Povolí zpětný zápis změn hesel v cloudu do místního prostředí Active Directory Windows serveru. |
@@ -105,11 +105,11 @@ Následující tabulka má zvýraznit klíčové akce pro následující licenč
 
 | Doporučená akce | Podrobnosti |
 | --- | --- |
-| [Povolit kombinované možnosti registrace pro Azure MFA a SSPR a zjednodušit tak možnosti registrace uživatelů](../authentication/howto-registration-mfa-sspr-combined.md) | Umožněte uživatelům, aby se zaregistrovali z jednoho společného prostředí pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla. |
+| [Povolit kombinované možnosti registrace pro Azure AD MFA a SSPR a zjednodušit tak možnosti registrace uživatelů](../authentication/howto-registration-mfa-sspr-combined.md) | Umožněte uživatelům, aby se zaregistrovali z jednoho společného prostředí pro Azure AD Multi-Factor Authentication a Samoobslužné resetování hesla. |
 | [Konfigurace nastavení vícefaktorového ověřování pro vaši organizaci](../authentication/howto-mfa-getstarted.md) | Zajištění ochrany účtů před ohrožením službou Multi-Factor Authentication |
 | [Povolení samoobslužného resetování hesel](../authentication/tutorial-enable-sspr.md) | Tato možnost omezuje volání helpdesku a ztrátu produktivity, když se uživatel nemůže přihlásit k zařízení nebo aplikaci. |
 | [Implementace zpětného zápisu hesla](../authentication/tutorial-enable-sspr-writeback.md) (Pokud se používají hybridní identity) | Povolí zpětný zápis změn hesel v cloudu do místního prostředí Active Directory Windows serveru. |
-| [Povolením zásad ochrany identit vynutili registraci MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) | Spravujte zavedení Azure Multi-Factor Authentication (MFA). |
+| [Povolením zásad ochrany identit vynutili registraci MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) | Spravujte zavedení služby Azure AD Multi-Factor Authentication (MFA). |
 | [Povolení zásad pro uživatele a přihlašování k riziku Identity Protection](../identity-protection/howto-identity-protection-configure-risk-policies.md) | Povolte zásady uživatele a přihlášení identity. Doporučené zásady přihlašování jsou cílené na středně rizikové přihlášení a vyžadují MFA. Pro zásady uživatele by se mělo zaměřit na uživatele s vysokým rizikem, který vyžaduje akci změny hesla. |
 | Vytvoření a povolení zásad podmíněného přístupu | [MFA pro správce k ochraně účtů, kterým jsou přiřazena oprávnění správce.](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [Zablokuje starší protokoly ověřování z důvodu zvýšeného rizika spojeného se staršími protokoly ověřování.](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [Vyžadovat VÍCEFAKTOROVÉ ověřování pro správu Azure, aby chránila vaše privilegované prostředky tím, že vyžaduje vícefaktorové ověřování pro všechny uživatele přistupující k prostředkům Azure.](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [Povolit synchronizaci hodnot hash hesel](../hybrid/how-to-connect-password-hash-synchronization.md) (Pokud používáte hybridní identity) | Poskytněte redundanci pro ověřování a zlepšení zabezpečení (včetně inteligentního uzamčení, uzamčení protokolu IP a možnosti zjišťování nevrácených přihlašovacích údajů). |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2de3f78b58e10a4fbf65bb00d516448a089f85b6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d5a8fe4192c3778e259ed18239a4198398d8807b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370946"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836831"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Přehled Azure Active Directory obecné provozní příručky
 
@@ -31,7 +31,7 @@ Tato část [Referenční příručka operací Azure AD](active-directory-ops-gu
 
 Správa Azure Active Directory vyžaduje průběžné provádění klíčových provozních úloh a procesů, které nemusí být součástí projektu zavedení. Stále je důležité, abyste nastavili tyto úlohy pro optimalizaci prostředí. Mezi klíčové úlohy a jejich Doporučené vlastníky patří:
 
-| Úloha | Vlastník |
+| Úkol | Vlastník |
 | :- | :- |
 | Vylepšení hodnocení bezpečného skóre identity | Provozní tým InfoSec |
 | Údržba serverů Azure AD Connect | Provozní tým IAM |
@@ -43,7 +43,7 @@ Správa Azure Active Directory vyžaduje průběžné provádění klíčových 
 | Monitorování hybridních protokolů: předávací agenti ověřování | Provozní tým IAM |
 | Monitorování hybridních protokolů: služba zpětného zápisu hesla | Provozní tým IAM |
 | Monitorování hybridních protokolů: místní brána ochrany heslem | Provozní tým IAM |
-| Monitorování hybridních protokolů: rozšíření Azure MFA NPS (Pokud je k dispozici) | Provozní tým IAM |
+| Monitorování hybridních protokolů: rozšíření Azure AD MFA NPS (Pokud je k dispozici) | Provozní tým IAM |
 
 Při revizi seznamu se můžete setkat s tím, že budete muset buď přiřadit vlastníka pro úlohy, u kterých chybí vlastník, nebo upravit vlastnictví pro úlohy s vlastníky, které nejsou zarovnané na výše uvedená doporučení.
 
@@ -86,7 +86,7 @@ Když monitorete stav svého prostředí, musíte okamžitě vyřešit jakékoli
 
 ### <a name="on-premises-agents-logs"></a>Protokoly místních agentů
 
-Některá služba pro správu identit a přístupu vyžaduje, aby místní agenti povolili hybridní scénáře. Mezi příklady patří resetování hesla, předávací ověřování (PTA), Azure Proxy aplikací služby AD a rozšíření Azure MFA NPS. Jedná se o klíč, který Operations prochází a monitoruje stav těchto komponent tím, že archivuje a analyzuje protokoly agenta komponent pomocí řešení, jako je System Center Operations Manager nebo SIEM. Je stejně důležité, aby provozní tým INFOSEC nebo oddělení technické podpory pochopil, jak řešit problémy se vzory chyb.
+Některá služba pro správu identit a přístupu vyžaduje, aby místní agenti povolili hybridní scénáře. Mezi příklady patří resetování hesla, předávací ověřování (PTA), Azure Proxy aplikací služby AD a Azure AD MFA NPS Extension. Jedná se o klíč, který Operations prochází a monitoruje stav těchto komponent tím, že archivuje a analyzuje protokoly agenta komponent pomocí řešení, jako je System Center Operations Manager nebo SIEM. Je stejně důležité, aby provozní tým INFOSEC nebo oddělení technické podpory pochopil, jak řešit problémy se vzory chyb.
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>Doporučené čtení v protokolech místních agentů
 
@@ -94,7 +94,7 @@ Některá služba pro správu identit a přístupu vyžaduje, aby místní agent
 - [Řešení potíží s samoobslužným resetem hesla – Azure Active Directory](../authentication/troubleshoot-sspr.md)
 - [Vysvětlení konektorů Azure Proxy aplikací služby AD](../manage-apps/application-proxy-connectors.md)
 - [Azure AD Connect: řešení potíží s předávacím ověřováním](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
-- [Řešení potíží s kódy chyb pro rozšíření Azure MFA NPS](../authentication/howto-mfa-nps-extension-errors.md)
+- [Řešení potíží s kódy chyb pro rozšíření Azure AD MFA NPS](../authentication/howto-mfa-nps-extension-errors.md)
 
 ### <a name="on-premises-agents-management"></a>Správa místních agentů
 
@@ -172,7 +172,7 @@ Model vrstvy správy služby Active Directory byl navržený tak, aby chránil s
 
 Přístup k místním komponentám identity, jako jsou Azure AD Connect, AD FS a SQL Services, můžete uzamknout stejným způsobem jako u řadičů domény.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Zabezpečená infrastruktura identity má sedm aspektů. Tento seznam vám pomůže najít akce, které byste měli provést k optimalizaci operací pro Azure Active Directory (Azure AD).
 

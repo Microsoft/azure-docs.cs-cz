@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0edda2a01d6b17aebba3fbe4dbf039bf1d2f2c5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1257c783ffeae68bf338b21a5d2f6bba72ea25b3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411112"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836423"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrace z federace na předávací ověřování pro Azure Active Directory
 
@@ -98,7 +98,7 @@ Příklad:
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 ```
 
-Ověřte všechna nastavení, která mohla být přizpůsobená pro návrh federace a dokumentaci k nasazení. Konkrétně hledejte vlastní nastavení v **PreferredAuthenticationProtocol** , **SupportsMfa** a **PromptLoginBehavior**.
+Ověřte všechna nastavení, která mohla být přizpůsobená pro návrh federace a dokumentaci k nasazení. Konkrétně hledejte vlastní nastavení v **PreferredAuthenticationProtocol**, **SupportsMfa** a **PromptLoginBehavior**.
 
 Další informace najdete v těchto článcích:
 
@@ -106,9 +106,9 @@ Další informace najdete v těchto článcích:
 * [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
-> Pokud je **SupportsMfa** nastavené na **hodnotu true** , použijete místní řešení Multi-Factor Authentication k vložení výzvy ke čtení druhého faktoru do toku ověřování uživatele. Tato instalace už nefunguje pro scénáře ověřování Azure AD. 
+> Pokud je **SupportsMfa** nastavené na **hodnotu true**, použijete místní řešení Multi-Factor Authentication k vložení výzvy ke čtení druhého faktoru do toku ověřování uživatele. Tato instalace už nefunguje pro scénáře ověřování Azure AD. 
 >
-> Místo toho použijte službu Azure Multi-Factor Authentication Cloud-based Service k provedení stejné funkce. Než budete pokračovat, pečlivě vyhodnoťte požadavky služby Multi-Factor Authentication. Před převodem domén se ujistěte, že rozumíte tomu, jak používat Azure Multi-Factor Authentication, dopad na licencování a proces registrace uživatelů.
+> Místo toho použijte službu Azure AD Multi-Factor Authentication Cloud-based Service k provedení stejné funkce. Než budete pokračovat, pečlivě vyhodnoťte požadavky služby Multi-Factor Authentication. Před převodem domén se ujistěte, že rozumíte tomu, jak používat Multi-Factor Authentication Azure AD, dopad na licencování a proces registrace uživatelů.
 
 #### <a name="back-up-federation-settings"></a>Zálohování nastavení federace
 
@@ -133,7 +133,7 @@ Před převedením z federované identity na spravovanou identitu si pečlivě p
 | Plánujete dál používat AD FS s jinými aplikacemi (kromě Azure AD a Microsoft 365). | Po převedení domén budete používat AD FS i Azure AD. Vezměte v úvahu činnost koncového uživatele. V některých scénářích se uživatelé můžou muset ověřit dvakrát: jednou do Azure AD (kde uživatel získá přístup SSO k ostatním aplikacím, třeba Microsoft 365), a znovu pro všechny aplikace, které jsou pořád vázané na AD FS jako vztah důvěryhodnosti předávající strany. |
 | Vaše instance AD FS je silně přizpůsobená a spoléhá na konkrétní nastavení přizpůsobení v souboru onload.js (například pokud jste změnili přihlašovací prostředí tak, aby uživatelé jako uživatelské jméno používali jenom formát **sAMAccountName** , a ne hlavní název uživatele (UPN), nebo vaše organizace intenzivně přihlásila vaše prostředí. Soubor onload.js nejde duplikovat v Azure AD. | Než budete pokračovat, musíte ověřit, že služba Azure AD dokáže splnit vaše aktuální požadavky na vlastní nastavení. Další informace a pokyny najdete v částech AD FS brandingu a AD FS přizpůsobení.|
 | K blokování starších verzí ověřovacích klientů slouží AD FS.| Zvažte nahrazení AD FS ovládacích prvků, které blokují starší verze ověřování klientů pomocí kombinace [ovládacích prvků podmíněného přístupu](../conditional-access/concept-conditional-access-conditions.md) a [pravidel přístupu klienta Exchange Online](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules). |
-| Požadujete, aby uživatelé prováděli vícefaktorové ověřování proti místnímu řešení Multi-Factor Authentication serveru, když se uživatelé ověřují AD FS.| Ve spravované doméně identity nemůžete do toku ověřování vložit výzvu Multi-Factor Authentication prostřednictvím místního řešení Multi-Factor Authentication. Po převodu domény ale můžete službu Azure Multi-Factor Authentication použít pro službu Multi-Factor Authentication.<br /><br /> Pokud uživatelé aktuálně nepoužívají Multi-Factor Authentication Azure, je nutný krok registrace uživatele jednorázová. Musíte připravit na a sdělit plánované registrace vašim uživatelům. |
+| Požadujete, aby uživatelé prováděli vícefaktorové ověřování proti místnímu řešení Multi-Factor Authentication serveru, když se uživatelé ověřují AD FS.| Ve spravované doméně identity nemůžete do toku ověřování vložit výzvu Multi-Factor Authentication prostřednictvím místního řešení Multi-Factor Authentication. Po převodu domény ale můžete službu Azure AD Multi-Factor Authentication použít pro službu Multi-Factor Authentication.<br /><br /> Pokud uživatelé aktuálně nepoužívají Multi-Factor Authentication služby Azure AD, je nutný krok registrace uživatele jednorázová. Musíte připravit na a sdělit plánované registrace vašim uživatelům. |
 | V tuto chvíli používáte k řízení přístupu k Microsoft 365 zásady řízení přístupu (pravidla AuthZ) v AD FS.| Zvažte nahrazení zásad odpovídajícími [zásadami podmíněného přístupu](../conditional-access/overview.md) Azure AD a [pravidly přístupu klienta Exchange Online](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules).|
 
 ### <a name="common-ad-fs-customizations"></a>Společná přizpůsobení AD FS
@@ -264,7 +264,7 @@ Nejprve změňte metodu přihlašování:
    ![Snímek obrazovky připraveno ke konfiguraci stránky](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
 7. Na portálu Azure AD vyberte **Azure Active Directory** a pak vyberte **Azure AD Connect**.
 8. Ověřte tato nastavení:
-   * **Federace** je nastavená na **disabled (zakázáno** ).
+   * **Federace** je nastavená na **disabled (zakázáno**).
    * **Bezproblémové jednotné přihlašování** je nastavené na **povoleno**.
    * **Předávací ověřování** je nastavené na **povoleno**.<br />
 
@@ -316,7 +316,7 @@ Nejdřív povolte předávací ověřování:
 6. Na stránce **připraveno ke konfiguraci** se ujistěte, že je zaškrtnuté políčko **spustit proces synchronizace po dokončení konfigurace** . Pak vyberte **Konfigurovat**.<br />
 
    ![Snímek obrazovky, který ukazuje stránku připravenou ke konfiguraci a tlačítko konfigurovat](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image18.png)<br />
-   Pokud vyberete **Konfigurovat** , dojde k následujícím krokům:
+   Pokud vyberete **Konfigurovat**, dojde k následujícím krokům:
 
    1. Je nainstalován první agent předávacího ověřování.
    2. Funkce předávacího předávání je povolena.
@@ -364,7 +364,7 @@ Dokončete převod pomocí modulu Azure AD PowerShell:
  
 3. Na portálu Azure AD vyberte **Azure Active Directory**  >  **Azure AD Connect**.
 4. Po převedení všech federovaných domén ověřte tato nastavení:
-   * **Federace** je nastavená na **disabled (zakázáno** ).
+   * **Federace** je nastavená na **disabled (zakázáno**).
    * **Bezproblémové jednotné přihlašování** je nastavené na **povoleno**.
    * **Předávací ověřování** je nastavené na **povoleno**.<br />
 

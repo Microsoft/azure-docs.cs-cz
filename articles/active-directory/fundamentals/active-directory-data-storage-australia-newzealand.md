@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 7/21/2020
 ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 812abe141f8130a198178668dc4f212f373d9bcd
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 4d7c37e64e4f1b339ae66fe3d9135b1874476eb3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334937"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836967"
 ---
 # <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Úložiště zákaznických dat pro australské zákazníky Austrálie a Nového Zélandu v Azure Active Directory 
 
@@ -27,7 +27,7 @@ Informace o tom, kde se nachází Azure AD a další data služeb Microsoftu, na
 
 Od 26. února 2020 společnost Microsoft zahájila ukládání zákaznických dat služby Azure AD pro nové klienty pomocí fakturační adresy Austrálie nebo Nového Zélandu v rámci australského datacentra. Od 1. května 2020 do 31. března 2021 Microsoft migruje stávající klienty, kteří mají fakturační adresu Austrálie nebo Nového Zélandu, do australského datacentra, aniž by to vyžadovalo akci zákazníka. Proces migrace nezahrnuje žádné výpadky pro zákazníky a nebude mít vliv na funkčnost tenanta během migrace.
 
-Kromě toho některé funkce služby Azure AD ještě nepodporují ukládání zákaznických dat v Austrálii. Konkrétní informace o funkcích najdete v [mapě dat služby Azure AD](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9). Například Microsoft Azure Multi-Factor Authentication ukládá zákaznická data v USA a globálně je zpracovává. Podívejte [se na data o zaregistrování dat a zákaznických datech pro Azure Multi-Factor Authentication](../authentication/concept-mfa-data-residency.md).
+Kromě toho některé funkce služby Azure AD ještě nepodporují ukládání zákaznických dat v Austrálii. Konkrétní informace o funkcích najdete v [mapě dat služby Azure AD](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9). Například Microsoft Azure AD Multi-Factor Authentication ukládá zákaznická data v USA a globálně je zpracovává. Prohlédněte si data o zaregistrování [dat a zákaznických datech pro Azure AD Multi-Factor Authentication](../authentication/concept-mfa-data-residency.md).
 
 > [!NOTE]
 > Produkty, služby a aplikace třetích stran, které se integrují se službou Azure AD, mají přístup k zákaznickým datům. Vyhodnoťte jednotlivé produkty, služby a aplikace, které používáte k určení toho, jak se budou zákaznická data zpracovávat pomocí konkrétního produktu, služby a aplikace, a jestli splňují požadavky na úložiště dat vaší společnosti. Další informace o rezidenci dat služeb Microsoftu najdete v části [Jaké je umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v Centru zabezpečení Microsoftu.

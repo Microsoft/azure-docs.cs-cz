@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 2c056bd4d5fa9037ce00588269c0da2937ff57ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c26cbf55c1e3883605d4c65659511af20cf02c7f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705329"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836763"
 ---
 # <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
 Správa zabezpečení může být obtížné díky běžným útokům souvisejícím s identitou, jako je například postřik hesla, přehrávání a útoky phishing. Výchozí hodnoty zabezpečení usnadňují ochranu vaší organizace před těmito útoky pomocí předem nakonfigurovaných nastavení zabezpečení:
 
-- Vyžaduje se, aby se všichni uživatelé zaregistrovali pro Azure Multi-Factor Authentication.
+- Vyžaduje se, aby se všichni uživatelé zaregistrovali Multi-Factor Authentication služby Azure AD.
 - Vyžadování správců k provádění vícefaktorového ověřování.
 - Blokování protokolů pro ověřování starší verze.
 - Vyžaduje, aby uživatelé v případě potřeby prováděli službu Multi-Factor Authentication.
@@ -52,13 +52,13 @@ Microsoft zpřístupňuje výchozí nastavení zabezpečení všem uživatelům.
 
 ### <a name="unified-multi-factor-authentication-registration"></a>Registrace sjednocené Multi-Factor Authentication
 
-Všichni uživatelé ve vašem tenantovi musí zaregistrovat službu Multi-Factor Authentication (MFA) ve formě Multi-Factor Authentication Azure. Uživatelé mají po 14 dnech registraci k Azure Multi-Factor Authentication pomocí aplikace Microsoft Authenticator. Po uplynutí 14 dnů se uživatel nebude moct přihlásit, dokud se nedokončí registrace. Po dobu 14 dní uživatele začíná po prvním úspěšném interaktivním přihlášení po povolení výchozích hodnot zabezpečení.
+Všichni uživatelé ve vašem tenantovi musí zaregistrovat službu Multi-Factor Authentication (MFA) ve formě Multi-Factor Authentication služby Azure AD. Uživatelé mají po 14 dnech registraci k Azure AD Multi-Factor Authentication pomocí aplikace Microsoft Authenticator. Po uplynutí 14 dnů se uživatel nebude moct přihlásit, dokud se nedokončí registrace. Po dobu 14 dní uživatele začíná po prvním úspěšném interaktivním přihlášení po povolení výchozích hodnot zabezpečení.
 
 ### <a name="protecting-administrators"></a>Ochrana správců
 
 Uživatelé s privilegovaným přístupem mají větší přístup k vašemu prostředí. Vzhledem k napájení těchto účtů byste je měli považovat za zvláštní péči. Jednou z běžných metod, jak zlepšit ochranu privilegovaných účtů, je vyžadovat pro přihlášení silnější formu ověření účtu. V Azure AD můžete získat silnější ověření účtu tím, že budete vyžadovat vícefaktorové ověřování.
 
-Po dokončení registrace v Azure Multi-Factor Authentication se při každém přihlášení budou vyžadovat následující devět rolí správce Azure AD:
+Po dokončení registrace ve službě Azure AD Multi-Factor Authentication bude nutné při každém přihlášení provést následující devět rolí správce Azure AD:
 
 - Globální správce
 - Správce SharePointu
@@ -120,22 +120,22 @@ K nasazení výchozích hodnot zabezpečení se vztahují následující další
 
 ### <a name="authentication-methods"></a>Metody ověřování
 
-Tato bezplatná výchozí nastavení zabezpečení umožňují registraci a používání Azure Multi-Factor Authentication **jenom pomocí Microsoft Authenticator aplikace s využitím oznámení**. Podmíněný přístup umožňuje použití libovolné metody ověřování, kterou správce zvolí k povolení.
+Tato bezplatná výchozí nastavení zabezpečení umožňují registraci a používání služby Azure AD Multi-Factor Authentication **jenom pomocí Microsoft Authenticator aplikace**. Podmíněný přístup umožňuje použití libovolné metody ověřování, kterou správce zvolí k povolení.
 
 | Metoda | Výchozí nastavení zabezpečení | Podmíněný přístup |
 | --- | --- | --- |
 | Oznámení prostřednictvím mobilní aplikace | X | X |
-| Ověřovací kód z mobilní aplikace nebo hardwarového tokenu | × * * | × |
-| Textová zpráva na telefon |   | × |
-| Zavolat na telefon |   | × |
-| Hesla aplikací |   | × * * * |
+| Ověřovací kód z mobilní aplikace nebo hardwarového tokenu | × * * | X |
+| Textová zpráva na telefon |   | X |
+| Zavolat na telefon |   | X |
+| Hesla aplikací |   | X * * _ |
 
-- * * Uživatelé můžou používat ověřovací kódy z aplikace Microsoft Authenticator, ale můžou se registrovat jenom pomocí možnosti oznámení.
-- Hesla aplikací jsou k dispozici pouze v případě MFA pro jednotlivé uživatele se staršími scénáři ověřování, pokud jsou povolena správci.
+- _ * Uživatelé můžou použít ověřovací kódy z aplikace Microsoft Authenticator, ale můžou se zaregistrovat jenom pomocí možnosti oznámení.
+- * * _ Hesla aplikací jsou k dispozici pouze v případě MFA pro jednotlivé uživatele se staršími scénáři ověřování, pokud jsou povolena správci.
 
 ### <a name="disabled-mfa-status"></a>Stav zakázaného MFA
 
-Pokud je vaše organizace předchozím uživatelem Multi-Factor Authentication Azure založeném na uživatelích, nemusíte se na stránku s **povoleným** nebo **vynutilým** stavem zobrazovat upozornění, pokud se podíváte na stránku se stavem Multi-Factor auth. **Disabled (zakázáno** ) je odpovídající stav pro uživatele, kteří používají výchozí hodnoty zabezpečení nebo Multi-Factor Authentication Azure založené na podmíněném přístupu.
+Pokud je vaše organizace předchozím uživatelem Multi-Factor Authentication Azure AD, který je založený na uživatelích, nebudete budíkem, aby neviděli uživatele v *Enabled* případě, že se podíváte na **stránku stavu multi** -Factor auth. **Disabled (zakázáno** ) je odpovídající stav pro uživatele, kteří používají výchozí hodnoty zabezpečení nebo Multi-Factor Authentication Azure AD založené na podmíněném přístupu.
 
 ### <a name="conditional-access"></a>Podmíněný přístup
 
@@ -149,7 +149,7 @@ Tady jsou podrobné návody, jak pomocí podmíněného přístupu nakonfigurova
 - [Vyžadování MFA pro správu Azure](../conditional-access/howto-conditional-access-policy-azure-management.md)
 - [Blokování starší verze ověřování](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [Vyžadování MFA pro všechny uživatele](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [Vyžadovat registraci Azure MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – vyžaduje Azure AD Identity Protection část Azure AD Premium P2.
+- [Vyžadovat registraci Azure AD MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – vyžaduje Azure AD Identity Protection část Azure AD Premium P2.
 
 ## <a name="enabling-security-defaults"></a>Povolení výchozích hodnot zabezpečení
 

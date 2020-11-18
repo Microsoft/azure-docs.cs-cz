@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24eb7ac7c4490c8d27d141f6417ae157a7a9c65b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2a79ec9a54ae597bc7e9795029dc4292c2c82345
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646572"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836389"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
-Příprava na přípravu umožňuje selektivně testovat skupiny uživatelů s možnostmi cloudového ověřování, jako je Azure Multi-Factor Authentication (MFA), podmíněný přístup, ochrana identity pro nevrácená pověření, řízení identit a další, a to ještě před vyjmutím z domén.  Tento článek popisuje, jak provést tento přepínač. Než začnete postupovat podle fáze zavedení, měli byste zvážit důsledky, pokud je splněna jedna nebo více z následujících podmínek:
+Příprava na přípravu umožňuje selektivně testovat skupiny uživatelů s možnostmi cloudového ověřování, jako je Azure AD Multi-Factor Authentication (MFA), podmíněný přístup, ochrana identity pro nevrácená pověření, řízení identit a další, a to před vyjmutím z domén.  Tento článek popisuje, jak provést tento přepínač. Než začnete postupovat podle fáze zavedení, měli byste zvážit důsledky, pokud je splněna jedna nebo více z následujících podmínek:
     
 -  Aktuálně používáte místní Multi-Factor Authentication Server. 
 -  Pro ověřování používáte čipové karty. 
@@ -33,7 +33,7 @@ Přehled této funkce najdete v tomto tématu Azure Active Directory: co je post
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 -   Máte tenanta Azure Active Directory (Azure AD) se federovanémi doménami.
 
@@ -45,7 +45,7 @@ Přehled této funkce najdete v tomto tématu Azure Active Directory: co je post
 
 -   Pro uživatele, kteří se migrují do cloudového ověřování, jste nakonfigurovali všechny příslušné zásady klienta a zásad podmíněného přístupu, které potřebujete.
 
--   Pokud plánujete použít Azure Multi-Factor Authentication, doporučujeme použít [kombinovanou registraci pro Samoobslužné resetování hesla (SSPR) a Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) , aby vaši uživatelé mohli své metody ověřování registrovat jednou. Poznámka: při použití SSPR k resetování hesla nebo změně hesla pomocí stránky MyProfile ve fázi zavedení Azure AD Connect nutné synchronizovat novou hodnotu hash hesla, která může po resetování trvat až 2 minuty.
+-   Pokud plánujete použít Multi-Factor Authentication služby Azure AD, doporučujeme použít [kombinovanou registraci pro Samoobslužné resetování hesla (SSPR) a Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) , aby si uživatelé mohli své metody ověřování registrovat jednou. Poznámka: při použití SSPR k resetování hesla nebo změně hesla pomocí stránky MyProfile ve fázi zavedení Azure AD Connect nutné synchronizovat novou hodnotu hash hesla, která může po resetování trvat až 2 minuty.
 
 -   Pokud chcete použít funkci dvoufázové zavedení, musíte být globálním správcem vašeho tenanta.
 

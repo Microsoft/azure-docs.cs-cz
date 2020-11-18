@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aebe6fafea7cbbb0b37469a13262529b568e342
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 92d1e5b8ac6492b0b1d819431e4616d32a092cc8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077961"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836916"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Průvodce nasazením funkcí Azure Active Directory
 
@@ -41,7 +41,7 @@ Další informace o licencování najdete na následujících stránkách:
 
 V této fázi můžou správci ve službě Azure AD před importem nebo vytvořením normálních uživatelských účtů vytvořit bezpečnější a snadno ovladatelné základní funkce zabezpečení. Tato základní fáze vám zajistí, aby se od začátku nastavilější stav a aby se koncoví uživatelé museli do nových konceptů zavádět jenom jednou.
 
-| Úloha | Podrobnosti | Požadovaná licence |
+| Úkol | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
 | [Určení více než jednoho globálního správce](../roles/security-emergency-access.md) | Pokud je to možné, přiřaďte alespoň dva trvalé účty globálního správce jenom v cloudu. Tyto účty se nepoužívají denně a měly by mít dlouhá a složitá hesla. | Azure AD Free |
 | [Pokud je to možné, používejte jiné než globální role správy](../roles/permissions-reference.md) | Poskytněte správcům jenom přístup, který potřebují jenom pro oblasti, ke kterým potřebují přístup. Ne všichni správci musí být globální správci. | Azure AD Free |
@@ -57,13 +57,13 @@ V této fázi můžou správci ve službě Azure AD před importem nebo vytvoře
 | [Nasazení Multi-Factor Authentication Azure AD pomocí zásad podmíněného přístupu](../authentication/howto-mfa-getstarted.md) | Vyžaduje, aby uživatelé prováděli dvoustupňové ověřování při přístupu k citlivým aplikacím pomocí zásad podmíněného přístupu. | Azure AD Premium P1 |
 | [Povolit Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) | Povolte sledování rizikových přihlášení a napadených přihlašovacích údajů uživatelům ve vaší organizaci. | Azure AD Premium P2 |
 | [Použití zjišťování rizik ke spuštění vícefaktorového ověřování a změn hesel](../authentication/tutorial-risk-based-sspr-mfa.md) | Povolte automatizaci, která může aktivovat události, jako je vícefaktorové ověřování, resetování hesla a blokování přihlášení na základě rizika. | Azure AD Premium P2 |
-| [Povolení kombinované registrace pro Samoobslužné resetování hesla a službu Azure AD Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) | Umožněte uživatelům, aby se zaregistrovali z jednoho společného prostředí pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla. | Azure AD Premium P1 |
+| [Povolení kombinované registrace pro Samoobslužné resetování hesla a službu Azure AD Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) | Umožněte uživatelům, aby se zaregistrovali z jednoho společného prostředí pro Azure AD Multi-Factor Authentication a Samoobslužné resetování hesla. | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>Fáze 2: import uživatelů, povolení synchronizace a Správa zařízení
 
 V dalším kroku přidáme do základu, která je ve fázi 1, importem uživatelů a povolením synchronizace, plánováním přístupu hostů a přípravou k podpoře dalších funkcí.
 
-| Úloha | Podrobnosti | Požadovaná licence |
+| Úkol | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
 | [Instalace služby Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md) | Připravte se na synchronizaci uživatelů ze stávajícího místního adresáře do cloudu. | Azure AD Free |
 | [Implementace synchronizace hodnot hash hesel](../hybrid/how-to-connect-password-hash-synchronization.md) | Synchronizuje hodnoty hash hesel, aby bylo možné replikovat změny hesel, chybnou detekci a nápravu hesla a nevrácené zprávy o přihlašovacích údajích. | Azure AD Free |
@@ -79,7 +79,7 @@ V dalším kroku přidáme do základu, která je ve fázi 1, importem uživatel
 
 Jak pokračujeme v sestavách v předchozích fázích, identifikujeme kandidátské aplikace pro migraci a integraci s Azure AD a dokončíte nastavení těchto aplikací.
 
-| Úloha | Podrobnosti | Požadovaná licence |
+| Úkol | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
 | Identifikujte své aplikace | Identifikujte aplikace používané ve vaší organizaci: místní, SaaS aplikace v cloudu a další obchodní aplikace. Určete, jestli tyto aplikace můžou a by měly být spravované pomocí Azure AD. | Není vyžadována žádná licence. |
 | [Integrace podporovaných aplikací SaaS v galerii](../manage-apps/add-application-portal.md) | Azure AD obsahuje galerii obsahující tisíce předem integrovaných aplikací. Některé aplikace, které vaše organizace používá, jsou pravděpodobně v galerii přístupné přímo z Azure Portal. | Azure AD Free |
@@ -89,7 +89,7 @@ Jak pokračujeme v sestavách v předchozích fázích, identifikujeme kandidát
 
 Fáze 4 se dohlíží k správcům, kteří vynucují zásady minimálního oprávnění pro správu, dokončují první kontroly přístupu a povolují automatizaci běžných úkolů životního cyklu uživatele.
 
-| Úloha | Podrobnosti | Požadovaná licence |
+| Úkol | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
 | [Vynutilo použití Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | Odeberte role pro správu z normálního denního uživatelského účtu. Uživatelé s právy pro správu mají nárok na používání své role po úspěšném ověření služby Multi-Factor Authentication, poskytování obchodního odůvodnění nebo žádosti o schválení od určených schvalovatelů. | Azure AD Premium P2 |
 | [Dokončení kontroly přístupu pro role adresáře Azure AD v PIM](../privileged-identity-management/pim-how-to-start-security-review.md) | Spolupracujte se svými týmy zabezpečení a vedoucími k vytvoření zásady kontroly přístupu ke kontrole přístupu pro správu na základě zásad vaší organizace. | Azure AD Premium P2 |

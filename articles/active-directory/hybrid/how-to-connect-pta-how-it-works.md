@@ -16,12 +16,12 @@ ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e794b66341d4e7c478fd526107cc35c7c745fa7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe92f761ac0b16da7c3cc3c69c1fa4b00f4e7579
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85358323"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836355"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory předávací ověřování: technický hluboký podrobně
 Tento článek představuje přehled způsobu, jakým funguje předávací ověřování Azure Active Directory (Azure AD). Podrobné technické a bezpečnostní informace najdete v článku o [podrobně zabezpečení](how-to-connect-pta-security-deep-dive.md) .
@@ -43,7 +43,7 @@ Když se uživatel pokusí přihlásit k aplikaci zabezpečené službou Azure A
 8. Agent ověří uživatelské jméno a heslo ke službě Active Directory pomocí standardních rozhraní API systému Windows, což je podobný mechanismus, který používá Active Directory Federation Services (AD FS) (AD FS). Uživatelské jméno může být buď místní výchozí uživatelské jméno, obvykle `userPrincipalName` nebo jiný atribut nakonfigurovaný v Azure AD Connect (známý jako `Alternate ID` ).
 9. Místní řadič domény (DC) služby Active Directory vyhodnocuje požadavek a vrátí příslušnou odpověď (úspěch, selhání, heslo vypršel nebo uživatel uzamkl) k agentovi.
 10. Agent ověřování zase vrátí tuto odpověď zpět do služby Azure AD.
-11. Azure AD vyhodnocuje odpověď a odpoví na uživatele podle potřeby. Například služba Azure AD buď podepisuje uživatele hned, nebo požadavky na Azure Multi-Factor Authentication.
+11. Azure AD vyhodnocuje odpověď a odpoví na uživatele podle potřeby. Například služba Azure AD buď podepisuje uživatele hned, nebo požadavky na Multi-Factor Authentication Azure AD.
 12. Pokud je přihlášení uživatele úspěšné, uživatel může získat přístup k aplikaci.
 
 Následující diagram znázorňuje všechny komponenty a postup, který je součástí:

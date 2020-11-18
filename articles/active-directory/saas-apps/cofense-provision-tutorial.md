@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: 69a9b9401f25893ec94b282f52730d92d372268d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b12a595c9b59b40ee6982f123baddaa818dd87ef
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355698"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836253"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>Kurz: Konfigurace synchronizace příjemců Cofense pro Automatické zřizování uživatelů
 
@@ -33,7 +33,7 @@ Tento kurz popisuje kroky, které je třeba provést v rámci synchronizace Cofe
 > * Odebrat uživatele v synchronizaci Cofense příjemcům, kteří už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi službou Azure AD a synchronizací příjemců Cofense
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -107,10 +107,10 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD a Cofense synchronizaci příjemců v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v synchronizaci příjemců Cofense pro operace aktualizace.  Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-   |Atribut|Typ|
-   |---|---|
+   |Atribut|Typ|Podporováno pro filtrování|
+   |---|---|---|
+   |externalId|Řetězec|&check;|
    |userName|Řetězec|
-   |externalId|Řetězec|
    |active|Logická hodnota|
    |displayName|Řetězec|
    |název. formátovaný|Řetězec|
@@ -141,7 +141,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |timezone|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Reference|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: costCenter|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Organization|Řetězec|
