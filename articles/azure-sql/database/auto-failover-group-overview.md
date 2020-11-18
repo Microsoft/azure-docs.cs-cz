@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 08/28/2020
-ms.openlocfilehash: c64112e30bdaf0da2218177bd2737c3ebe688b0c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/16/2020
+ms.openlocfilehash: 35856a0d414e288fcd184164733e9430a6bee296
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675290"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653738"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -97,14 +97,17 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 
 - **Zásady automatického převzetí služeb při selhání**
 
-  Ve výchozím nastavení je skupina převzetí služeb při selhání nakonfigurovaná se zásadami automatického převzetí služeb při selhání. Azure aktivuje převzetí služeb při selhání, po zjištění selhání a vypršení platnosti období odkladu. Systém musí ověřit, jestli se výpadek nedá zmírnit integrovanou [infrastrukturou vysoké dostupnosti](high-availability-sla.md) z důvodu rozsahu dopadu. Pokud chcete řídit pracovní postup převzetí služeb při selhání z aplikace, můžete automatické převzetí služeb při selhání vypnout.
+  Ve výchozím nastavení je skupina převzetí služeb při selhání nakonfigurovaná se zásadami automatického převzetí služeb při selhání. Azure aktivuje převzetí služeb při selhání, po zjištění selhání a vypršení platnosti období odkladu. Systém musí ověřit, jestli se výpadek nedá zmírnit integrovanou [infrastrukturou vysoké dostupnosti](high-availability-sla.md) z důvodu rozsahu dopadu. Pokud chcete řídit pracovní postup převzetí služeb při selhání z aplikace nebo ručně, můžete automatické převzetí služeb při selhání vypnout.
   
   > [!NOTE]
   > Vzhledem k tomu, že ověřování škály výpadku a jak rychle se dá zmírnit, zahrnuje lidské akce tým provozu, období odkladu nelze nastavit pod jednu hodinu. Toto omezení se vztahuje na všechny databáze ve skupině převzetí služeb při selhání bez ohledu na stav synchronizace dat.
 
 - **Zásada převzetí služeb při selhání jen pro čtení**
 
-  Ve výchozím nastavení je převzetí služeb při selhání naslouchacího procesu jen pro čtení zakázané. Zajišťuje, že výkon primárního z těchto primárních není ovlivněný, když je sekundární objekt v režimu offline. Ale také to znamená, že relace jen pro čtení se nebudou moci připojit až po obnovení sekundárního zařízení. Pokud nemůžete tolerovat výpadky v relacích jen pro čtení a jsou v pořádku, aby byly primární pro provoz jen pro čtení i pro čtení i zápis na úkor možného snížení výkonu primární služby, můžete povolit převzetí služeb při selhání pro naslouchací proces jen pro čtení konfigurací `AllowReadOnlyFailoverToPrimary` Vlastnosti. V takovém případě bude přenos, který je jen pro čtení, automaticky přesměrován na primární, pokud není k dispozici sekundární.
+  Ve výchozím nastavení je převzetí služeb při selhání naslouchacího procesu jen pro čtení zakázané. Zajišťuje, že výkon primárního z těchto primárních není ovlivněný, když je sekundární objekt v režimu offline. Ale také to znamená, že relace jen pro čtení se nebudou moci připojit až po obnovení sekundárního zařízení. Pokud nemůžete tolerovat výpadky u relací jen pro čtení a můžete použít primární pro provoz jen pro čtení i pro čtení i zápis na úkor možného snížení výkonu primární služby, můžete povolit převzetí služeb při selhání pro naslouchací proces jen pro čtení konfigurací `AllowReadOnlyFailoverToPrimary` Vlastnosti. V takovém případě bude přenos, který je jen pro čtení, automaticky přesměrován na primární, pokud není k dispozici sekundární.
+
+  > [!NOTE]
+  > `AllowReadOnlyFailoverToPrimary`Vlastnost má vliv pouze v případě, že je povolena zásada automatického převzetí služeb při selhání a služba Azure aktivovala automatické převzetí služeb při selhání. V takovém případě, pokud je vlastnost nastavena na hodnotu true, bude nová primární aplikace sloužit pouze pro čtení i zápis i relace jen pro čtení.
 
 - **Plánované převzetí služeb při selhání**
 
@@ -120,7 +123,7 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 
 - **Ruční převzetí služeb při selhání**
 
-  Převzetí služeb při selhání můžete kdykoli iniciovat ručně bez ohledu na konfiguraci automatického převzetí služeb při selhání. Pokud nejsou nakonfigurovány Zásady automatického převzetí služeb při selhání, je nutné ruční převzetí služeb při selhání pro obnovení databází ve skupině převzetí služeb při selhání na sekundární. Můžete iniciovat vynucené nebo popisné převzetí služeb při selhání (s úplnou synchronizací dat). Druhá by mohla být použita k přemístění primární do sekundární oblasti. Po dokončení převzetí služeb při selhání se záznamy DNS automaticky aktualizují, aby se zajistilo připojení k nové primární
+  Převzetí služeb při selhání můžete kdykoli iniciovat ručně bez ohledu na konfiguraci automatického převzetí služeb při selhání. Pokud nejsou nakonfigurovány Zásady automatického převzetí služeb při selhání, je nutné ruční převzetí služeb při selhání pro obnovení databází ve skupině převzetí služeb při selhání na sekundární. Můžete iniciovat vynucené nebo popisné převzetí služeb při selhání (s úplnou synchronizací dat). Druhá by mohla být použita k přemístění primární do sekundární oblasti. Po dokončení převzetí služeb při selhání se záznamy DNS automaticky aktualizují, aby se zajistilo připojení k nové primární službě.
 
 - **Období odkladu s ztrátou dat**
 
@@ -128,7 +131,7 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 
 - **Několik skupin převzetí služeb při selhání**
 
-  Můžete nakonfigurovat více skupin převzetí služeb při selhání pro stejnou dvojici serverů pro řízení škálování převzetí služeb při selhání. U každé skupiny dojde k selhání nezávisle. Pokud vaše aplikace pro více tenantů používá elastické fondy, můžete tuto možnost využít ke smíchání primárních a sekundárních databází v jednotlivých fondech. Tímto způsobem můžete snížit dopad výpadku jenom na polovinu klientů.
+  Můžete nakonfigurovat více skupin převzetí služeb při selhání pro stejnou dvojici serverů pro řízení rozsahu převzetí služeb při selhání. U každé skupiny dojde k selhání nezávisle. Pokud vaše aplikace pro více tenantů používá elastické fondy, můžete tuto možnost využít ke smíchání primárních a sekundárních databází v jednotlivých fondech. Tímto způsobem můžete snížit dopad výpadku jenom na polovinu klientů.
 
   > [!NOTE]
   > Spravovaná instance SQL nepodporuje více skupin převzetí služeb při selhání.
@@ -173,7 +176,7 @@ Při provádění operací OLTP použijte `<fog-name>.database.windows.net` jako
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>Použití naslouchacího procesu jen pro čtení pro úlohu jen pro čtení
 
-Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. V případě relací jen pro čtení použijte `<fog-name>.secondary.database.windows.net` jako adresu URL serveru a připojení se automaticky přesměruje na sekundární. Je také vhodné určit v úmyslu přečíst si v připojovacím řetězci pomocí `ApplicationIntent=ReadOnly` . Pokud chcete zajistit, že se po převzetí služeb při selhání může znovu připojit úloha jen pro čtení, nebo pokud sekundární server přejde do režimu offline, ujistěte se, že jste nakonfigurovali `AllowReadOnlyFailoverToPrimary` vlastnost zásady převzetí služeb při selhání.
+Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. V případě relací jen pro čtení použijte `<fog-name>.secondary.database.windows.net` jako adresu URL serveru a připojení se automaticky přesměruje na sekundární. Je také vhodné určit v úmyslu přečíst si v připojovacím řetězci pomocí `ApplicationIntent=ReadOnly` .
 
 ### <a name="preparing-for-performance-degradation"></a>Příprava na snížení výkonu
 
@@ -264,20 +267,20 @@ Při provádění operací OLTP použijte `<fog-name>.zone_id.database.windows.n
 Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. Chcete-li se připojit přímo k geograficky replikovanému sekundárnímu serveru, použijte `<fog-name>.secondary.<zone_id>.database.windows.net` jako adresu URL serveru a připojení se provede přímo na geograficky replikovanou sekundární hodnotu.
 
 > [!NOTE]
-> V některých úrovních služby SQL Database podporuje použití [replik jen pro čtení](read-scale-out.md) k vyrovnávání zatížení úloh dotazů jen pro čtení pomocí kapacity jedné repliky jen pro čtení a použitím `ApplicationIntent=ReadOnly` parametru v připojovacím řetězci. Pokud jste nakonfigurovali geograficky replikované sekundární umístění, můžete se s využitím této možnosti připojit k replice jen pro čtení v primárním umístění nebo v geograficky replikovaném umístění.
+> V úrovních služeb Premium, Pro důležité obchodní informace a škálování služby SQL Database podporuje použití [replik jen pro čtení](read-scale-out.md) ke spouštění úloh dotazů jen pro čtení pomocí kapacity jedné nebo více replik jen pro čtení, a to pomocí `ApplicationIntent=ReadOnly` parametru v připojovacím řetězci. Pokud jste nakonfigurovali geograficky replikované sekundární umístění, můžete se s využitím této možnosti připojit k replice jen pro čtení v primárním umístění nebo v geograficky replikovaném umístění.
 >
-> - Pokud se chcete připojit k replice jen pro čtení v primárním umístění, použijte `<fog-name>.<zone_id>.database.windows.net` .
-> - Pokud se chcete připojit k replice jen pro čtení v sekundárním umístění, použijte `<fog-name>.secondary.<zone_id>.database.windows.net` .
+> - Pokud se chcete připojit k replice jen pro čtení v primárním umístění, použijte `ApplicationIntent=ReadOnly` a `<fog-name>.<zone_id>.database.windows.net` .
+> - Chcete-li se připojit k replice jen pro čtení v sekundárním umístění, použijte `ApplicationIntent=ReadOnly` a `<fog-name>.secondary.<zone_id>.database.windows.net` .
 
 ### <a name="preparing-for-performance-degradation"></a>Příprava na snížení výkonu
 
-Typická aplikace Azure používá několik služeb Azure a skládá se z několika součástí. Automatické převzetí služeb při selhání ve skupině převzetí služeb při selhání se aktivuje v závislosti na stavu samotných komponent Azure SQL. Jiné služby Azure v primární oblasti nemusí být ovlivněny výpadkem a jejich komponenty mohou být v této oblasti stále dostupné. Jakmile se primární databáze přepne do oblasti zotavení po havárii, může se zvýšit latence mezi závislými komponentami. Aby se zabránilo dopadu vyšší latence na výkon aplikace, zajistěte redundanci všech komponent aplikace v oblasti zotavení po havárii a postupujte podle [pokynů pro zabezpečení sítě](#failover-groups-and-network-security).
+Typická aplikace Azure používá několik služeb Azure a skládá se z několika součástí. Automatické převzetí služeb při selhání ve skupině převzetí služeb při selhání se aktivuje v závislosti na stavu samotných komponent Azure SQL. Jiné služby Azure v primární oblasti nemusí být ovlivněny výpadkem a jejich komponenty mohou být v této oblasti stále dostupné. Po přepnutí primárních databází do sekundární oblasti se může zvýšit latence mezi závislými komponentami. Aby se zabránilo dopadu vyšší latence na výkon aplikace, zajistěte redundanci všech komponent aplikace v sekundární oblasti a převzetí služeb při selhání komponent aplikace společně s databází. V době konfigurace podle [pokynů pro zabezpečení sítě](#failover-groups-and-network-security) zajistěte připojení k databázi v sekundární oblasti.
 
 ### <a name="preparing-for-data-loss"></a>Příprava na ztrátu dat
 
-Pokud dojde k výpadku, aktivuje se převzetí služeb při selhání pro čtení a zápis, pokud dojde ke ztrátě dat, a to na nejlepší z našich znalostí. V opačném případě počkejte na období, které jste určili. V opačném případě počká na období, které jste určili `GracePeriodWithDataLossHours` . Pokud jste určili `GracePeriodWithDataLossHours` , připravte se na ztrátu dat. Obecně platí, že při výpadkech Azure upřednostňuje dostupnost. Pokud nemůžete zaručit ztrátu dat, nezapomeňte nastavit GracePeriodWithDataLossHours na dostatečně velké číslo, například 24 hodin.
+Pokud dojde k výpadku, aktivuje se převzetí služeb při selhání pro čtení a zápis, pokud dojde ke ztrátě dat, a to na nejlepší z našich znalostí. V opačném případě je převzetí služeb při selhání odložené po dobu, kterou zadáte pomocí `GracePeriodWithDataLossHours` . Pokud jste určili `GracePeriodWithDataLossHours` , připravte se na ztrátu dat. Obecně platí, že při výpadkech Azure upřednostňuje dostupnost. Pokud nemůžete zaručit ztrátu dat, nezapomeňte nastavit GracePeriodWithDataLossHours na dostatečně velké číslo, jako je 24 hodin, nebo zakázat automatické převzetí služeb při selhání.
 
-Aktualizace DNS naslouchacího procesu pro čtení a zápis proběhne hned po zahájení převzetí služeb při selhání. Tato operace nebude mít za následek ztrátu dat. Proces přepínání databázových rolí však může za normálních podmínek trvat až 5 minut. Až do dokončení, budou některé databáze v nové primární instanci pořád jen pro čtení. Pokud se převzetí služeb při selhání iniciuje pomocí PowerShellu, bude celá operace synchronní. Pokud je inicializována pomocí Azure Portal, uživatelské rozhraní bude označovat stav dokončení. Pokud je iniciována pomocí REST API, použijte mechanismus dotazování standardní Azure Resource Manager ke sledování dokončení.
+Aktualizace DNS naslouchacího procesu pro čtení a zápis proběhne hned po zahájení převzetí služeb při selhání. Tato operace nebude mít za následek ztrátu dat. Proces přepínání databázových rolí však může za normálních podmínek trvat až 5 minut. Až do dokončení, budou některé databáze v nové primární instanci pořád jen pro čtení. Pokud se převzetí služeb při selhání iniciuje pomocí PowerShellu, operace přepnutí role primární repliky je synchronní. Pokud je inicializována pomocí Azure Portal, uživatelské rozhraní bude označovat stav dokončení. Pokud je iniciována pomocí REST API, použijte mechanismus dotazování standardní Azure Resource Manager ke sledování dokončení.
 
 > [!IMPORTANT]
 > Ruční převzetí služeb při selhání můžete použít k přesunu primárních souborů zpátky do původního umístění. Pokud dojde ke zmírnění výpadku, který způsobil převzetí služeb při selhání, můžete primární databáze přesunout do původního umístění. K tomu je potřeba zahájit ruční převzetí služeb při selhání skupiny.

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b13a6944290f58f5ede239dee60610d67fff8b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e4a6d9180d2a9949cebc40cf30edffac73ef9d0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918464"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653534"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy ke kontejnerům služby Speech Service (FAQ)
 
@@ -43,7 +43,7 @@ Kromě toho jsme představili spustitelné soubory pro počítače se sadou inst
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-Nakonec můžete nastavit počet dekodérů, které chcete v *jednom* kontejneru, pomocí `DECODER MAX_COUNT` proměnné. Proto byste měli začít s vaší jednotkou SKU (procesor/paměť) a můžeme navrhnout, jak to máme nejlépe. Skvělý výchozí bod odkazuje na Doporučené specifikace prostředků hostitelského počítače.
+Pomocí proměnné můžete nastavit počet dekodérů, které chcete v *jednom* kontejneru `DECODER MAX_COUNT` . Proto byste měli začít s vaší jednotkou SKU (procesor/paměť) a můžeme navrhnout, jak to máme nejlépe. Skvělý výchozí bod odkazuje na Doporučené specifikace prostředků hostitelského počítače.
 
 <br>
 </details>
@@ -292,8 +292,8 @@ Mohli byste vám pomáhat s plněním následujících metrik testu, včetně to
 
 | Koncový bod                                                | Funkční test                                                   | Sada SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Text z syntezátoru (převod textu na řeč)                                  |     | Yes      |
-| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services koncový bod protokolu WebSocket pro diktování Prem v1        | Yes | No       |
+| `/speech/synthesize/cognitiveservices/v1`               | Text z syntezátoru (převod textu na řeč)                                  |     | Ano      |
+| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services koncový bod protokolu WebSocket pro diktování Prem v1        | Ano | No       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | Koncový bod Prem Interactive v1 WebSocket v Cognitive Services  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | Koncový bod WebSocket v Prem konverzaci v1 služby vnímání |     |          |
 
@@ -419,7 +419,7 @@ Kolik souběžných požadavků povede k 4 jádrům, 4 GB popisovače RAM? Pokud
 |-----------------------|---------------------|---------------------|
 | Vlastní převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 
-***
+**_
 
 - Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 - V případě souborů se omezuje omezení v sadě Speech SDK na 2x (prvních 5 sekund zvukového zvuku se neomezuje).
@@ -438,7 +438,7 @@ Například pro zpracování 1000 hodin za 24 hodin jsme zkusili nastavit virtu�
 <b>Podporuje kontejner řeči interpunkční znaménka?</b>
 </summary>
 
-**Odpověď:** V kontejneru on-Prem je k dispozici velká a malá písmena (vytvořené). Interpunkce je závislá na jazyku a není podporovaná pro některé jazyky, včetně čínských a japonských.
+_ *Odpověď:** v kontejneru on-Prem je k dispozici velká a malá písmena (vytvořené). Interpunkce je závislá na jazyku a není podporovaná pro některé jazyky, včetně čínských a japonských.
 
 Pro existující *kontejnery máme podporu* implicitních a základních interpunkčních znamének, ale `off` ve výchozím nastavení je to. To znamená, že můžete získat `.` znak v příkladu, ale ne `。` znak. Pokud chcete povolit tuto implicitní logiku, tady je příklad, jak to udělat v Pythonu pomocí naší sady Speech SDK (ta by byla podobná v jiných jazycích):
 
@@ -480,6 +480,16 @@ Content-Length: 0
 
 **Odpověď:** Nepodporujeme REST API v kontejneru pro převod řeči na text, podporujeme jenom WebSockets prostřednictvím sady Speech SDK. Vždy se podívejte na oficiální dokumentaci, přečtěte si téma [koncové body předpovědi dotazů](speech-container-howto.md#query-the-containers-prediction-endpoint).
 
+<br>
+</details>
+
+
+<details>
+<summary>
+<b> Proč je kontejner spuštěn jako uživatel, který není kořenový? K jakým problémům může docházet z tohoto důvodu?</b>
+</summary>
+
+**Odpověď:** Všimněte si, že výchozí uživatel uvnitř kontejneru je uživatel, který není kořenový. To poskytuje ochranu proti procesům, které se započítávají do kontejneru a získávají povýšená oprávnění na uzlu hostitele. Ve výchozím nastavení některé platformy, jako je třeba kontejnerová platforma OpenShift, to již provede spuštěním kontejnerů pomocí libovolného přiřazeného ID uživatele. U těchto platforem bude uživatel, který není kořenový, potřebovat oprávnění k zápisu do libovolného externě mapovaného svazku, který vyžaduje zápis. Například složka protokolování nebo složka pro stažení vlastního modelu.
 <br>
 </details>
 

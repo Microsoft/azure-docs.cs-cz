@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 7c011c55728db53f0c64ac063c3372a610ef8f2f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 10861438334bc804d1b1e4b9a669280f7e09ffde
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542452"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654005"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Správa aplikací: co je nového
 
@@ -70,7 +70,7 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 - [Co je jednotné přihlašování (SSO)?](what-is-single-sign-on.md)
 - [Provedení akce na privilegovaných nebo podezřelých aplikacích v Azure Active Directory](manage-application-permissions.md)
 - [Rychlý Start: Konfigurace vlastností aplikace ve vašem tenantovi Azure Active Directory (Azure AD)](add-application-portal-configure.md)
-- [Automatizace konfigurace aplikace jednotného přihlašování založeného na SAML pomocí rozhraní Microsoft Graph API](application-saml-sso-configure-api.md)
+- [Automatizace konfigurace aplikace jednotného přihlašování založeného na SAML pomocí rozhraní Microsoft Graph API](/graph/application-saml-sso-configure-api)
 
 
 ## <a name="july-2020"></a>Červenec 2020
