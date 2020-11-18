@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/20/2020
+ms.date: 11/11/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 7ecccd64921b2d95155318fe91c897725e340b7e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: c68f76e56f49f055466f7332d7751ac468e034d8
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334665"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616735"
 ---
 ::: zone target="docs"
 
@@ -74,11 +74,11 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
     ![Získání přihlašovacích údajů pro sdílené složky SMB](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Pokud heslo obsahuje speciální znaky, zadejte před něj a za něj dvojité uvozovky. Pak vyberte **OK**.
+2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Pak vyberte **OK**.
     
     ![Získání uživatelského jména a hesla pro sdílenou složku](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. Pokud chcete získat přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště ( *utsac1* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
+3. Pokud chcete získat přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště (*utsac1* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -87,11 +87,11 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     - Objekt blob stránky Azure – `\\10.126.76.138\utSAC1_202006051000_PageBlob`
     - Soubory Azure – `\\10.126.76.138\utSAC1_202006051000_AzFile`
 
-4. Po zobrazení výzvy zadejte heslo ke sdílené složce. Následující příklad ukazuje připojení ke sdílené složce pomocí předchozího příkazu.
+4. Po zobrazení výzvy zadejte heslo ke sdílené složce. Pokud heslo obsahuje speciální znaky, zadejte před něj a za něj dvojité uvozovky. Následující příklad ukazuje připojení ke sdílené složce pomocí předchozího příkazu.
 
     ```
     C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
-    Enter the password for 'testuser1' to connect to '10.126.76.138':
+    Enter the password for 'testuser1' to connect to '10.126.76.138': "ab1c2def$3g45%6h7i&j8kl9012345"
     The command completed successfully.
     ```
 

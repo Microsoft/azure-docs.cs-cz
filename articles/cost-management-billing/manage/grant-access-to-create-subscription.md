@@ -8,12 +8,12 @@ ms.reviewer: amberb
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: banders
-ms.openlocfilehash: 02919cf2e35fdd4d981f3fde53085c2174f11bd1
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: c13670df26e5d0f7774b5a2aac81f656de94c960
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132563"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844706"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Udělení přístupu pro vytváření předplatných Azure Enterprise (Preview)
 
@@ -23,7 +23,7 @@ Jako zákazník Azure se [smlouvou Enterprise (EA)](https://azure.microsoft.com/
 
 ## <a name="grant-access"></a>Udělení přístupu
 
-Pokud uživatelé chtějí [vytvářet předplatná v rámci registračního účtu](programmatically-create-subscription.md), musí pro tento účet mít [roli vlastníka Azure RBAC](../../role-based-access-control/built-in-roles.md#owner). Uživateli nebo skupině uživatelů můžete udělit roli vlastníka Azure RBAC pro registrační účet pomocí následujících kroků:
+Pokud uživatelé chtějí [vytvářet předplatná v rámci registračního účtu](programmatically-create-subscription-enterprise-agreement.md), musí pro tento účet mít [roli vlastníka Azure RBAC](../../role-based-access-control/built-in-roles.md#owner). Uživateli nebo skupině uživatelů můžete udělit roli vlastníka Azure RBAC pro registrační účet pomocí následujících kroků:
 
 1. Získejte ID objektu registračního účtu, pro který chcete udělit přístup:
 
@@ -174,7 +174,7 @@ Pokud uživatelé chtějí [vytvářet předplatná v rámci registračního ú�
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    Jakmile se uživatel stane vlastníkem Azure RBAC pro váš registrační účet, může v něm [programově vytvářet předplatná](programmatically-create-subscription.md). Předplatné vytvořené delegovaným uživatelem má jako správce služeb nadále původního vlastníka účtu, ale ve výchozím nastavení má také delegovaného uživatele jako vlastníka Azure RBAC.
+    Jakmile se uživatel stane vlastníkem Azure RBAC pro váš registrační účet, může v něm [programově vytvářet předplatná](programmatically-create-subscription-enterprise-agreement.md). Předplatné vytvořené delegovaným uživatelem má jako správce služeb nadále původního vlastníka účtu, ale ve výchozím nastavení má také delegovaného uživatele jako vlastníka Azure RBAC.
 
     ---
 
@@ -193,7 +193,7 @@ Pokud chcete toto rozhraní API pohodlně volat z příkazového řádku, vyzkou
 
 ## <a name="next-steps"></a>Další kroky
 
-* Teď když má uživatel nebo instanční objekt oprávnění k vytvoření předplatného, můžete tuto identitu použít k [programovému vytváření předplatných Azure Enterprise](programmatically-create-subscription.md).
+* Teď když má uživatel nebo instanční objekt oprávnění k vytvoření předplatného, můžete tuto identitu použít k [programovému vytváření předplatných Azure Enterprise](programmatically-create-subscription-enterprise-agreement.md).
 * Příklad vytváření předplatných pomocí rozhraní .NET najdete v [ukázkovém kódu na GitHubu](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
 * Další informace o Azure Resource Manageru a jeho rozhraních API najdete v tématu [Přehled Azure Resource Manageru](../../azure-resource-manager/management/overview.md).
 * Další informace o správě velkého počtu předplatných pomocí skupin pro správu najdete v tématu věnovaném [uspořádání prostředků pomocí skupin pro správu v Azure](../../governance/management-groups/overview.md).
