@@ -7,15 +7,15 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 532ada430e7ff2ae76eb0cfbc389792bb0d98209
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0897ca35dd5ae1b7209a36aee4bd5335d4ea4d25
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322648"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681527"
 ---
 # <a name="connect-to-synapse-sql"></a>Připojení k synapse SQL
 Připojte se k funkci synapse SQL ve službě Azure synapse Analytics.
@@ -36,7 +36,7 @@ Název serveru pro fond SQL bez serveru v následujícím příkladu: showdemowe
 
 Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 2. Vyberte v **pracovních prostorech synapse**.
 3. Vyberte pracovní prostor, ke kterému se chcete připojit.
 4. Přejít na přehled
@@ -46,7 +46,7 @@ Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
 ![Úplný název serveru](./media/connect-overview/server-connect-example.png)
 
-## <a name="serverless-sql-pool"></a>**fond SQL bez serveru**
+## <a name="serverless-sql-pool"></a>**Bezserverový fond SQL**
 
 ![Úplný fond SQL bez názvového serveru](./media/connect-overview/server-connect-example-sqlod.png)
 

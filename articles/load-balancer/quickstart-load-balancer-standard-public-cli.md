@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: a0903a1da02b1f187e6f12e35fcb4bc05cd82939
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 4da232569a0f490b7fd6c2e50b81be6508ac5933
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516777"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682073"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý start: Vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
@@ -467,7 +467,7 @@ Pomocí [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/netwo
 
 Pomocí [AZ Network Public-IP prefix Create](https://docs.microsoft.com/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) vytvořte předponu veřejné IP adresy pro odchozí připojení.
 
-Další informace o škálování odchozího NAT a odchozího připojení najdete v tématu [škálování odchozího překladu adres (NAT) s několika IP adresami](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scale).
+Další informace o škálování odchozího NAT a odchozího připojení najdete v tématu [škálování odchozího překladu adres (NAT) s několika IP adresami](load-balancer-outbound-connections.md).
 
 #### <a name="public-ip"></a>Veřejná IP adresa
 

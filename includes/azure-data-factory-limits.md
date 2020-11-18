@@ -5,15 +5,15 @@ services: data-factory
 author: chez-charlie
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/28/2020
+ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 4cbe179d015c71094e6813666a6fd0cee3e5e3c2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1e8d13e7cf302c486bab291ef6482216122b62a3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92909093"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681096"
 ---
 Azure Data Factory je víceklientské služba, která má následující výchozí omezení, aby se zajistilo, že předplatná zákazníka budou chráněná před jednotlivými úlohami. Pokud chcete zvýšit limity až do maximálního počtu pro vaše předplatné, obraťte se na podporu.
 
@@ -40,6 +40,7 @@ Azure Data Factory je víceklientské služba, která má následující výchoz
 | Maximální časový limit pro spuštění aktivit kanálu | 7 dní | 7 dní |
 | Počet bajtů na objekt pro objekty kanálu<sup>3</sup> | 200 KB | 200 KB |
 | Počet bajtů na objekt pro datovou sadu a objekty propojené služby<sup>3</sup> | 100 KB | 2 000 KB |
+| Počet bajtů na datovou část pro každou spuštěnou aktivitu<sup>4</sup> | 896 KB | 896 KB |
 | Jednotky pro integraci dat<sup>1</sup> na spuštění aktivity kopírování | 256 | 256 |
 | Zápis volání rozhraní API | 1200/h | 1200/h<br/><br/> Toto omezení je stanoveno Azure Resource Manager, nikoli Azure Data Factory. |
 | Číst volání rozhraní API | 12500/h | 12500/h<br/><br/> Toto omezení je stanoveno Azure Resource Manager, nikoli Azure Data Factory. |
@@ -60,6 +61,8 @@ Azure Data Factory je víceklientské služba, která má následující výchoz
 | Skupina oblastí 3 | Kanada – střed, Východní Asie, Francie – střed, Korea – střed, Velká Británie – jih |
 
 <sup>3</sup> kanály, datové sady a propojené objekty služby reprezentují logické seskupení vašich úloh. Omezení pro tyto objekty se nevztahují na množství dat, která můžete přesunout a zpracovat pomocí Azure Data Factory. Data Factory je navržená tak, aby zpracovávala petabajty data.
+
+<sup>4</sup> datová část každého spuštění aktivit zahrnuje konfiguraci aktivity, přidružené konfigurace datových sad a propojených služeb, pokud existují, a malou část vlastností systému generovaných na typ aktivity. Omezení této velikosti datové části nesouvisí s množstvím dat, která lze přesunout a zpracovat pomocí Azure Data Factory. Přečtěte si o [symptomech a doporučeních](../articles/data-factory/data-factory-troubleshoot-guide.md#payload-is-too-large) , pokud jste dosáhli tohoto limitu.
 
 ### <a name="version-1"></a>Verze 1
 

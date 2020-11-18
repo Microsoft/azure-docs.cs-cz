@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: d6995073ba7d283a30f7580456cd61573752f7cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2d2cda59f23ef0b961ccac60b119996423688e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051385"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682311"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurace režimu distribuce pro Azure Load Balancer
 
@@ -64,7 +64,7 @@ Dalším scénářem použití je nahrávání médií. Nahrávání dat probíh
 Konfiguraci režimu distribuce můžete změnit úpravou pravidla vyrovnávání zatížení na portálu.
 
 1. Přihlaste se k Azure Portal a vyhledejte skupinu prostředků obsahující nástroj pro vyrovnávání zatížení, který chcete změnit kliknutím na **skupiny prostředků**.
-2. Na obrazovce Přehled nástroje pro vyrovnávání zatížení klikněte v části **Nastavení**na **pravidla vyrovnávání zatížení** .
+2. Na obrazovce Přehled nástroje pro vyrovnávání zatížení klikněte v části **Nastavení** na **pravidla vyrovnávání zatížení** .
 3. Na obrazovce pravidla vyrovnávání zatížení klikněte na pravidlo vyrovnávání zatížení, u kterého chcete změnit režim distribuce.
 4. V rámci pravidla se režim distribuce změní změnou rozevíracího seznamu **trvalá relace** .  Dostupné jsou tyto možnosti:
     
@@ -201,6 +201,6 @@ Date: Thu, 16 Oct 2014 22:49:21 GMT
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled interních Load Balancer Azure](load-balancer-internal-overview.md)
+* [Azure Load Balancer – přehled](load-balancer-overview.md)
 * [Začínáme s konfigurací internetového nástroje pro vyrovnávání zatížení](quickstart-load-balancer-standard-public-powershell.md)
 * [Konfigurace nastavení časového limitu nečinnosti protokolu TCP pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md)

@@ -4,12 +4,12 @@ description: Tento článek poskytuje přehled správy aplikace Service Fabric A
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3968fde0222dcee8047e7490dba78879ab6110e2
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258734"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681682"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric model prostředku aplikace
 
@@ -55,7 +55,7 @@ Po vytvoření účtu úložiště vytvoříte kontejner objektů blob, kde mů�
 Prostředky v clusteru je možné zabezpečit nastavením úrovně veřejného přístupu na **Private**. Přístup můžete udělit několika způsoby:
 
 * Pomocí [Azure Active Directory](../storage/common/storage-auth-aad-app.md)autorizujte přístup k objektům blob a frontám.
-* Pomocí [RBAC v Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md)udělte přístup k datům objektů blob Azure a frontám.
+* Pomocí [Azure RBAC v Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md)udělte přístup k datům objektů blob Azure a frontám.
 * Delegovat přístup pomocí [sdíleného přístupového podpisu](/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
 Příklad na následujícím snímku obrazovky používá anonymní přístup pro čtení pro objekty blob.
@@ -76,7 +76,7 @@ V tomto kurzu používáme [hlasovací ukázkovou aplikaci](https://github.com/A
    ![Aplikace zip][ZipApplication]  
 1. Přejmenujte soubor pro změnu rozšíření z. zip na *. sfpkg*.
 
-1. V Azure Portal v kontejneru **aplikace** pro váš účet úložiště vyberte **Odeslat**a pak nahrajte **hlasovací. sfpkg**. 
+1. V Azure Portal v kontejneru **aplikace** pro váš účet úložiště vyberte **Odeslat** a pak nahrajte **hlasovací. sfpkg**. 
 
    ![Nahrát balíček aplikace][UploadAppPkg]
 

@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 97b611c449302c95d4b24c305ce50ee7683e85ea
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c26e2bd27c0c3187768252fd922c31a2cc23d735
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316470"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682084"
 ---
 # <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Připojení k fondu SQL bez serveru pomocí Power BI Professional
 
@@ -28,7 +28,7 @@ ms.locfileid: "93316470"
 
 V tomto kurzu provedeme kroky pro připojení Power BIho desktopu k fondu SQL bez serveru (Preview).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vystavování dotazů potřebujete následující nástroje:
 
@@ -75,7 +75,7 @@ Než budete moct spustit dotazy, musíme vytvořit přihlašovací údaje. Tato 
 > [!NOTE]
 > Musíte vytvořit přihlašovací údaje pro přístup k účtu úložiště. I když fond SQL bez serveru má přístup k úložišti z různých oblastí, úložiště a pracovní prostor Azure synapse ve stejné oblasti zajistí lepší výkon.
 
-**Fragment kódu při vytváření přihlašovacích údajů pro datové kontejnery pro sčítání** , spusťte:
+**Fragment kódu při vytváření přihlašovacích údajů pro datové kontejnery pro sčítání**, spusťte:
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')

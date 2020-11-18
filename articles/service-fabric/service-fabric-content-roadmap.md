@@ -3,12 +3,12 @@ title: Další informace o Azure Service Fabric
 description: Přečtěte si o základních konceptech a hlavních oblastech Azure Service Fabric. Poskytuje rozšířený přehled Service Fabric a vytváření mikroslužeb.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 6cbc99b56df18448add47a70b42742aa8dabbeb5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 07b41f10430592e6035bfe0179cb717d0bc5c8b0
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461494"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681733"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Chcete se dozvědět o Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má ale velkou oblast povrchu, ale máme spoustu informací.  Tento článek obsahuje stručný přehled Service Fabric a popisuje základní koncepty, programovací modely, životní cyklus aplikací, testování, clustery a monitorování stavu. Přečtěte si [Přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) Úvod do Service Fabric, jak se dá použít k vytváření mikroslužeb. Tento článek neobsahuje úplný seznam obsahu, ale obsahuje odkaz na přehled a zahájení práce pro každou oblast Service Fabric. 
@@ -66,7 +66,7 @@ Proč mají stavové mikroslužby spolu s bezstavovým mikroslužbami? Existují
 ## <a name="supported-programming-models"></a>Podporované programovací modely
 Service Fabric nabízí několik způsobů, jak psát a spravovat vaše služby. Služby mohou používat rozhraní Service Fabric API k plnému využití funkcí platformy a architektur aplikací. Služby také mohou být všechny zkompilované spustitelné programy napsané v jakémkoli jazyce a jsou hostovány v clusteru Service Fabric. Další informace najdete v tématu [podporované programovací modely](service-fabric-choose-framework.md).
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Kontejnery
 Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric mohou také nasazovat služby v [kontejnerech](service-fabric-containers-overview.md). Důležité je, že můžete kombinovat služby v procesech a službách v kontejnerech ve stejné aplikaci. Service Fabric podporuje nasazení kontejnerů Linux a kontejnerů Windows v systému Windows Server 2016. V kontejnerech můžete nasadit existující aplikace, bezstavové služby nebo stavové služby. 
 
 ### <a name="reliable-services"></a>Reliable Services
@@ -131,7 +131,7 @@ Clustery musí být zabezpečené, aby se zabránilo neautorizovaným uživatel�
 Scénáře zabezpečení clusteru jsou tyto:
 * Zabezpečení mezi uzly
 * Zabezpečení klient-uzel
-* Řízení přístupu na základě role (RBAC)
+* Service Fabric řízení přístupu na základě role
 
 Další informace najdete v článku [zabezpečení clusteru](service-fabric-cluster-security.md).
 

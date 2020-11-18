@@ -1,6 +1,6 @@
 ---
 title: Oprava poškozeného účtu Azure automanage
-description: Informace o tom, jak opravit poškozený účet automatické správy
+description: Pokud jste nedávno přesunuli předplatné, které obsahuje účet pro samoobslužné správu pro nového tenanta, budete ho muset znovu nakonfigurovat. V tomto článku se dozvíte, jak.
 author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
@@ -8,24 +8,24 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: ad54b37da8a4945162b507232f33083890ec1fff
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 226a23bfdacb0f7423c7dafb8cae36af7333699d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557674"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681835"
 ---
-# <a name="repair-a-broken-automanage-account"></a>Opravit poškozený účet automanage
-Účet pro automatické [spravování](./automanage-virtual-machines.md#automanage-account) je kontext zabezpečení nebo identita, pod kterou dojde k automatickým operacím. Pokud jste nedávno přesunuli předplatné obsahující účet pro správu do nového tenanta, budete muset znovu nakonfigurovat svůj účet pro správu. Pokud chcete znovu nakonfigurovat svůj účet pro správu, budete muset resetovat typ identity a přiřadit příslušné role pro tento účet.
+# <a name="repair-an-automanage-account"></a>Opravit účet pro autosprávu
+Vaším [účtem Azure automanage](./automanage-virtual-machines.md#automanage-account) je kontext zabezpečení nebo identita, pod kterou se automatizované operace vyskytují. Pokud jste nedávno přesunuli předplatné, které obsahuje účet pro autosprávu pro nového tenanta, je nutné znovu nakonfigurovat tento účet. Pokud ho chcete znovu nakonfigurovat, musíte obnovit typ identity a přiřadit příslušné role pro tento účet.
 
-## <a name="step-1-reset-automanage-account-identity-type"></a>Krok 1: resetování typu identity účtu pro správu
-Obnovte typ identity účtu automanage pomocí šablony Azure Resource Manager (ARM) níže. Uložte soubor místně jako `armdeploy.json` nebo podobný. Poznamenejte si název a umístění účtu automanage, protože tyto parametry jsou v šabloně ARM povinné.
+## <a name="step-1-reset-the-automanage-account-identity-type"></a>Krok 1: resetování typu identity účtu s možností automanage
+Obnovte typ identity účtu automanage pomocí následující šablony Azure Resource Manager (ARM). Uložte soubor místně jako armdeploy.jsnebo podobný název. Poznamenejte si název a umístění účtu vaší automanage, protože se jedná o požadované parametry v šabloně ARM.
 
-1. Vytvořte nové nasazení ARM pomocí níže uvedené šablony a použijte `identityType = None`
-    * Můžete to provést pomocí Azure CLI pomocí `az deployment sub create` . Přečtěte si další informace o `az deployment sub` příkazu. [here](https://docs.microsoft.com/cli/azure/deployment/sub)
-    * Můžete to také provést pomocí PowerShellu pomocí `New-AzDeployment` modulu. Další informace o `New AzDeployment` modulu najdete [tady](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment).
+1. Pomocí následující šablony vytvořte nasazení Správce prostředků. Použijte `identityType = None`.
+    * Nasazení můžete vytvořit v rozhraní příkazového řádku Azure pomocí `az deployment sub create` . Další informace najdete v tématu [AZ Deployment sub](https://docs.microsoft.com/cli/azure/deployment/sub).
+    * Nasazení můžete vytvořit v PowerShellu pomocí `New-AzDeployment` modulu. Další informace najdete v tématu [New-AzDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment).
 
-1. Spustit stejnou šablonu ARM znovu s `identityType = SystemAssigned`
+1. Spusťte stejnou šablonu ARM znovu s `identityType = SystemAssigned` .
 
 ```json
 {
@@ -59,24 +59,24 @@ Obnovte typ identity účtu automanage pomocí šablony Azure Resource Manager (
 ```
 
 ## <a name="step-2-assign-appropriate-roles-for-the-automanage-account"></a>Krok 2: přiřazení odpovídajících rolí účtu pro autosprávu
-Účet pro správu automanage vyžaduje role přispěvatele a přispěvatele zásad prostředků v předplatném, které obsahují virtuální počítače, které spravuje spravovaná Správa. Tyto role můžete přiřadit pomocí Azure Portal, šablon ARM nebo rozhraní příkazového řádku Azure CLI.
+Účet pro správu automanage vyžaduje role přispěvatele a zásad prostředků přispěvatele v předplatném, které obsahuje virtuální počítače, které spravuje spravovaná Správa. Tyto role můžete přiřadit pomocí Azure Portal, šablon ARM nebo rozhraní příkazového řádku Azure CLI.
 
-Pokud používáte šablonu ARM nebo rozhraní příkazového řádku Azure CLI, budete potřebovat hlavní ID (označované také jako ID objektu) vašeho účtu automanage (to není nutné, pokud používáte Azure Portal). ID objektu zabezpečení (ID objektu) účtu pro správu můžete najít pomocí následujících metod:
+Pokud používáte šablonu ARM nebo rozhraní příkazového řádku Azure CLI, budete potřebovat hlavní ID (označované také jako ID objektu) vašeho účtu automanage. (Toto ID nebudete potřebovat, pokud používáte Azure Portal.) Toto ID můžete najít pomocí těchto metod:
 
 - [Azure CLI](https://docs.microsoft.com/cli/azure/ad/sp): použijte příkaz `az ad sp list --display-name <name of your Automanage Account>` .
 
-- Azure Portal: přejděte do **Azure Active Directory** a vyhledejte účet automanage podle názvu. V části **podnikové aplikace** při zobrazení vyberte název účtu pro správu.
+- Azure Portal: Přejít na **Azure Active Directory** a vyhledat účet automanage podle názvu. V části **podnikové aplikace** vyberte při zobrazení název účtu pro správu znovu.
 
 ### <a name="azure-portal"></a>portál Azure
-1. V části **předplatná** přejděte k předplatnému, které obsahuje vaše spravované virtuální počítače.
+1. V části **předplatná** vyberte předplatné, které obsahuje vaše spravované virtuální počítače.
 1. Přejděte na **řízení přístupu (IAM)**.
-1. Klikněte na **Přidat přiřazení rolí**.
-1. Vyberte roli **Přispěvatel** a zadejte název svého účtu pro správu vašich rolí.
-1. Stiskněte **Uložit**.
-1. Opakujte kroky 3-5, tentokrát s rolí **Přispěvatel zásad prostředků** .
+1. Vyberte **Přidat přiřazení rolí**.
+1. Vyberte roli **Přispěvatel** a zadejte název vašeho účtu pro správu.
+1. Vyberte **Uložit**.
+1. Opakujte kroky 3 až 5 a tentokrát s rolí **Přispěvatel zásad prostředků** .
 
 ### <a name="arm-template"></a>Šablona ARM
-Spusťte následující šablonu ARM. Budete potřebovat hlavní ID vašeho účtu automatického spravování – kroky pro získání ID objektu zabezpečení výše. Po zobrazení výzvy zadejte.
+Spusťte následující šablonu ARM. Budete potřebovat ID objektu zabezpečení vašeho účtu pro správu. Na začátku této části je postup, jak ho získat. Až budete vyzváni, zadejte ID.
 
 ```json
 {
@@ -118,13 +118,13 @@ Spusťte následující šablonu ARM. Budete potřebovat hlavní ID vašeho úč
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-Spusťte následující příkazy:
+Spusťte tyto příkazy:
 
 ```azurecli
-az role assignment create --assignee-object-id <your Automanage Account's object id> --role "Contributor" --scope /subscriptions/<your subscription id>
+az role assignment create --assignee-object-id <your Automanage Account Object ID> --role "Contributor" --scope /subscriptions/<your subscription ID>
 
-az role assignment create --assignee-object-id <your Automanage Account's object id> --role "Resource Policy Contributor" --scope /subscriptions/<your subscription id>
+az role assignment create --assignee-object-id <your Automanage Account Object ID> --role "Resource Policy Contributor" --scope /subscriptions/<your subscription ID>
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o Azure automanage [najdete tady](./automanage-virtual-machines.md).
+[Další informace o službě Azure automanage](./automanage-virtual-machines.md)

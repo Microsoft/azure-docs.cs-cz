@@ -1,6 +1,6 @@
 ---
-title: Virtuální počítač nereaguje při čekání na správce místní relace
-description: Tento článek popisuje kroky pro řešení problémů, při kterých je hostovaný operační systém zablokovaný, čeká, než správce místních relací dokončí zpracování při spuštění virtuálního počítače Azure.
+title: Virtuální počítač nereaguje při čekání na službu Správce místních relací.
+description: Tento článek popisuje kroky pro řešení problémů, při kterých je hostovaný operační systém zablokovaný, čeká, než správce místních relací dokončí zpracování během spouštění virtuálního počítače Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mibufo
@@ -12,47 +12,43 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: f2f0177b5fe8bb97773d297319f6c9196d8178d2
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8af8d7695c48c6ac682109bb38935e98921fa9e4
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536230"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681903"
 ---
-# <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager"></a>Virtuální počítač nereaguje při čekání na správce místní relace
+# <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager-service"></a>Virtuální počítač nereaguje při čekání na službu Správce místních relací.
 
-Tento článek popisuje kroky pro řešení problémů, při kterých je hostovaný operační systém zablokovaný, čeká, než správce místních relací dokončí zpracování při spuštění virtuálního počítače Azure (VM).
+Tento článek popisuje kroky pro řešení problémů, při kterých hostovaný operační systém (hostovaný operační systém) zablokuje čekání na dokončení zpracování během spouštění virtuálního počítače Azure v rámci Správce místních relací.
 
 ## <a name="symptoms"></a>Příznaky
 
-Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje výzvu se zprávou: " *Počkejte prosím na správce místních relací* ".
+Když k zobrazení snímku výstupu virtuálního počítače použijete [diagnostiku spouštění](./boot-diagnostics.md) , uvidíte, že se na snímku obrazovky zobrazí výzva s výzvou, aby se zobrazila zpráva s upozorněním, že se správce místních relací zobrazuje.
 
-![Snímek obrazovky s operačním systémem hosta se zablokuje ve zprávě. Počkejte prosím na správce místních relací v systému Windows Server 2012 R2.](media/vm-unresponsive-wait-local-session-manager/vm-unresponsive-wait-local-session-manager-1.png)
+![Snímek obrazovky se zablokovaným hostovaným operačním systémem ve Windows Serveru 2012 R2 s "Počkejte prosím na správce místních relací".](media/vm-unresponsive-wait-local-session-manager/vm-unresponsive-wait-local-session-manager-1.png)
 
 ## <a name="cause"></a>Příčina
 
-Může existovat několik důvodů, proč virtuální počítač zablokuje čekání na správce místní relace. Pokud se čeká na trvalé vydání Správce místních relací, budete muset shromáždit výpis paměti pro účely analýzy.
+Je možné, že virtuální počítač bude zablokovat čekání na správce místní relace, může být několik důvodů. Pokud s tím budou dál problémy, budete muset shromáždit výpis paměti pro účely analýzy.
 
 ## <a name="solution"></a>Řešení
 
-V některých případech stačí počkat dostatečně dlouho, než se proces dokončí, aby se váš problém vyřešil. Pokud váš virtuální počítač neodpovídá a zůstane na obrazovce čekání po celou hodinu, měli byste shromáždit výpis paměti a pak kontaktovat podporu Microsoftu.
+V některých případech se tento problém vyřeší pouhým čekáním na dokončení procesu. Pokud váš virtuální počítač neodpovídá a zůstane na obrazovce čekání po dobu více než hodinu, měli byste shromáždit výpis paměti a pak kontaktovat podporu Microsoftu.
 
-### <a name="collect-the-memory-dump-file"></a>Shromáždit soubor výpisu paměti
+### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Připojit disk s operačním systémem k nové opravě virtuálního počítače
 
-Chcete-li tento problém vyřešit, nejprve je třeba shromáždit soubor výpisu paměti pro danou chybu a pak kontaktovat podporu pomocí souboru s výpisem paměti. Chcete-li shromáždit soubor s výpisem paměti, postupujte podle následujících kroků:
+1. Pokud chcete připravit opravný virtuální počítač, postupujte podle kroků 1-3 v [příkazech pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md).
+1. Připojte se k opravnému virtuálnímu počítači pomocí Připojení ke vzdálené ploše.
 
-#### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Připojit disk s operačním systémem k nové opravě virtuálního počítače
+### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Vyhledejte soubor s výpisem paměti a odešlete lístek podpory.
 
-1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
-2. Připojte se k opravnému virtuálnímu počítači pomocí Připojení ke vzdálené ploše.
+1. V části opravit virtuální počítač otevřete složku Windows na připojeném disku s operačním systémem. Pokud má například písmeno jednotky přiřazené k připojenému disku s operačním systémem označení *F*, přejít na `F:\Windows` .
+1. Vyhledejte soubor *Memory. dmp* a pak [odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) s připojeným souborem s výpisem paměti.
+1. Pokud máte potíže s umístěním souboru *Memory. dmp* , [vygenerujte soubor s výpisem stavu systému pomocí volání nemaskovatelné přerušení (NMI)](/windows/client-management/generate-kernel-or-complete-crash-dump).
 
-#### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Vyhledejte soubor s výpisem paměti a odešlete lístek podpory.
-
-1. V části opravit virtuální počítač otevřete složku Windows na připojeném disku s operačním systémem. Pokud je písmeno přiřazené k připojenému disku s operačním systémem označeno jako *F* , pak musíte přejít na `F:\Windows` .
-2. Vyhledejte soubor **Memory. dmp** a pak [odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se souborem s výpisem paměti.
-3. Pokud se vám nedaří najít soubor **Memory. dmp** , postupujte podle pokynů průvodce a [vygenerujte soubor s výpisem stavu systému pomocí volání nemaskovatelné přerušení (NMI)](/windows/client-management/generate-kernel-or-complete-crash-dump).
-
-Další informace o voláních NMI naleznete v tématu [volání NMI (nemaskovaná přerušení) v uživatelské příručce k sériové konzole](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) .
+Další informace o voláních NMI naleznete v tématu [volání NMI v uživatelské příručce ke službě Azure Serial Console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) .
 
 ## <a name="next-steps"></a>Další kroky
 

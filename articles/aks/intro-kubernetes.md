@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: ee709868cd7e78afbcc480913c4e4c8fd2acf832
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167181"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681546"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -26,11 +26,11 @@ Abyste mohli začít, projděte si rychlé spuštění AKS [na portálu Azure][a
 
 ## <a name="access-security-and-monitoring"></a>Přístup, zabezpečení a sledování
 
-Pro zlepšení zabezpečení a správy vám AKS umožňuje integrovat s Azure Active Directory a používat Kubernetes řízení přístupu na základě role (RBAC). Můžete také monitorovat stav vašeho clusteru a prostředků.
+Pro zlepšení zabezpečení a správy vám AKS umožňuje integrovat s Azure Active Directory a používat Kubernetes řízení přístupu na základě role (Kubernetes RBAC). Můžete také monitorovat stav vašeho clusteru a prostředků.
 
 ### <a name="identity-and-security-management"></a>Správa identit a zabezpečení
 
-Chcete-li omezit přístup k prostředkům clusteru, AKS podporuje [řízení přístupu na základě rolí (RBAC) Kubernetes][kubernetes-rbac]. RBAC umožňuje řídit přístup k prostředkům a oborům názvů Kubernetes a oprávnění k těmto prostředkům. Cluster AKS můžete také nakonfigurovat tak, aby se integroval s Azure Active Directory (AD). S integrací Azure AD je možné nakonfigurovat přístup ke Kubernetes na základě členství ve skupinách a identit. Vašim stávajícím uživatelům Azure AD a skupinám lze poskytnout přístup k prostředkům AKS a s integrovanou možností přihlašování.
+Aby AKS omezil přístup k prostředkům clusteru, podporuje [řízení přístupu na základě role (KUBERNETES RBAC) Kubernetes][kubernetes-rbac]. Kubernetes RBAC vám umožňuje řídit přístup k prostředkům a oborům názvů Kubernetes a oprávnění k těmto prostředkům. Cluster AKS můžete také nakonfigurovat tak, aby se integroval s Azure Active Directory (AD). S integrací Azure AD je možné nakonfigurovat přístup ke Kubernetes na základě členství ve skupinách a identit. Vašim stávajícím uživatelům Azure AD a skupinám lze poskytnout přístup k prostředkům AKS a s integrovanou možností přihlašování.
 
 Další informace o identitě najdete v tématu [Možnosti přístupu a identit pro AKS][concepts-identity].
 
@@ -146,7 +146,7 @@ Další informace o nasazení a správě AKS najdete v rychlých startech pro Az
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
 [conf-com-node]: ../confidential-computing/confidential-nodes-aks-overview.md

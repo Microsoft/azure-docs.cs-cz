@@ -5,12 +5,12 @@ description: Naučte se, jak nainstalovat a nakonfigurovat řadič NGINX přích
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: f8ea245444fa5e8e042644bd3f7a34ed021ccd1d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a70a1549e5c585694217b32c69ddae915c25ff71
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131033"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681478"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat protokolu HTTPS a použití vlastních certifikátů TLS ve službě Azure Kubernetes Service (AKS)
 
@@ -38,10 +38,10 @@ Pokud chcete vytvořit kontroler příchozího přenosu dat, použijte `Helm` k 
 Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu. V uzlech Windows Serveru by se kontroler příchozího přenosu dat neměl spouštět. Selektor uzlů se specifikuje pomocí parametru `--set nodeSelector`, aby plánovači Kubernetes oznámil, že má spustit kontroler příchozího přenosu dat NGINX v uzlu Linuxu.
 
 > [!TIP]
-> Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic* . Podle potřeby zadejte obor názvů pro vlastní prostředí. Pokud váš cluster AKS není RBAC povolený, přidejte `--set rbac.create=false` do příkazů Helm.
+> Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic*. Podle potřeby zadejte obor názvů pro vlastní prostředí. Pokud váš cluster AKS není Kubernetes RBAC povolený, přidejte `--set rbac.create=false` do příkazů Helm.
 
 > [!TIP]
-> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro* . Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat protokol TLS fungovat.
+> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro*. Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat protokol TLS fungovat.
 
 ```console
 # Create a namespace for your ingress resources
@@ -83,7 +83,7 @@ Zatím se nevytvořila žádná pravidla pro příchozí přenosy. Pokud přejde
 
 V tomto článku vygenerujeme certifikát podepsaný svým držitelem `openssl` . V případě produkčního použití byste měli požádat o důvěryhodný, podepsaný certifikát prostřednictvím poskytovatele nebo vlastní certifikační autority (CA). V dalším kroku vygenerujete *tajný klíč* Kubernetes pomocí certifikátu TLS a privátního klíče vygenerovaného pomocí OpenSSL.
 
-Následující příklad vygeneruje 2048 certifikát RSA x509 platný pro 365 dní s názvem *AKS-Ingress-TLS. CRT* . Soubor privátního klíče má název *AKS-Ingress-TLS. Key* . Tajný klíč Kubernetes TLS vyžaduje oba tyto soubory.
+Následující příklad vygeneruje 2048 certifikát RSA x509 platný pro 365 dní s názvem *AKS-Ingress-TLS. CRT*. Soubor privátního klíče má název *AKS-Ingress-TLS. Key*. Tajný klíč Kubernetes TLS vyžaduje oba tyto soubory.
 
 Tento článek spolupracuje s běžným názvem subjektu *demo.Azure.com* a nemusí se měnit. Pro produkční použití zadejte vlastní hodnoty organizace pro `-subj` parametr:
 
@@ -98,7 +98,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 
 Pokud chcete, aby Kubernetes mohl používat certifikát TLS a privátní klíč pro řadič příchozího přenosu dat, vytvoříte a použijete tajný klíč. Tajný kód je definován jednou a používá certifikát a soubor klíčů vytvořený v předchozím kroku. Pak se na tento tajný klíč odkazuje při definování směrování příchozího přenosu dat.
 
-Následující příklad vytvoří tajný název *AKS-příchozí-TLS* :
+Následující příklad vytvoří tajný název *AKS-příchozí-TLS*:
 
 ```console
 kubectl create secret tls aks-ingress-tls \
@@ -205,7 +205,7 @@ V následujícím příkladu je přenos do adresy `https://demo.azure.com/` smě
 > [!TIP]
 > Pokud se název hostitele zadaný během procesu žádosti o certifikát, název CN, neshoduje s hostitelem definovaným v trase příchozího přenosu dat, zobrazí se na řadiči příchozího upozornění *Kubernetes příchozí certifikát* . Zajistěte, aby se názvy hostitelů a certifikátů příchozího směrování shodovaly.
 
-Část *TLS* oznamuje trase příchozího přenosu dat s názvem *AKS-Inuse-tls* pro hostitele *demo.Azure.com* . Pro produkční použití zadejte svou vlastní adresu hostitele.
+Část *TLS* oznamuje trase příchozího přenosu dat s názvem *AKS-Inuse-tls* pro hostitele *demo.Azure.com*. Pro produkční použití zadejte svou vlastní adresu hostitele.
 
 Vytvořte soubor s názvem `hello-world-ingress.yaml` a zkopírujte ho do následujícího příkladu YAML.
 

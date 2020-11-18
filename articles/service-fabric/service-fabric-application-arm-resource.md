@@ -3,12 +3,12 @@ title: Nasazení a upgrade pomocí Azure Resource Manager
 description: Naučte se, jak nasadit aplikace a služby do clusteru Service Fabric pomocí šablony Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: a849bdff0d2719f02b6b5f2d7159b87ce664c13f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb866eb24fb1b286f496bad9845d1ee557baa221
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256505"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681665"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Správa aplikací a služeb jako Azure Resource Managerch prostředků
 
@@ -18,7 +18,7 @@ Toto je doporučený způsob, jak nasadit jakékoli aplikace pro správu, zásad
 
 V případě potřeby můžete své aplikace spravovat jako Správce prostředků prostředky pro zlepšení:
 * Záznam pro audit: Správce prostředků Audituje každou operaci a udržuje podrobný *Protokol aktivit* , který vám může pomáhat sledovat změny provedené v těchto aplikacích a clusteru.
-* Řízení přístupu na základě role (RBAC): Správa přístupu ke clusterům i aplikacím nasazeným v clusteru je možné provádět prostřednictvím stejné šablony Správce prostředků.
+* Řízení přístupu na základě role v Azure (Azure RBAC): Správa přístupu ke clusterům i aplikacím nasazeným v clusteru je možné provádět prostřednictvím stejné Správce prostředků šablony.
 * Azure Resource Manager (přes Azure Portal) se stane jedním zazastavením pro správu clusteru a důležitých nasazení aplikací.
 
 Následující fragment kódu ukazuje různé druhy prostředků, které lze spravovat pomocí šablony:

@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: a0fbcab194b90bbe89948fee1efb604266dbbb0f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7c6de17e4ed4f5666554908e9b13fb9e299b027a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311741"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682056"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Správa přístupu k pracovním prostorům, datům a kanálům
 
@@ -102,7 +102,7 @@ Když jste zřídili pracovní prostor, museli jste vybrat účet [Azure Data La
 > [!TIP]
 > Níže uvedené kroky musí být spuštěny pro **každou** databázi SQL, aby bylo možné udělit uživatelům přístup ke všem databázím SQL s výjimkou [oprávnění na úrovni serveru](#server-level-permission) , kde můžete přiřadit uživatele k roli sysadmin.
 
-### <a name="serverless-sql-pool"></a>Fond SQL bez serveru
+### <a name="serverless-sql-pool"></a>Bezserverový fond SQL
 
 V této části najdete příklady, jak udělit uživateli oprávnění ke konkrétní databázi nebo úplnému oprávnění serveru.
 

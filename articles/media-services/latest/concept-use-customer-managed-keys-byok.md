@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: a89ff56eb9e0f0a29b5b1fed7543c5f718425e51
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a56922c972efeb21c188413522bd05f83b74ca12
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92325997"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681818"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Přineste si vlastní klíč (klíče spravované zákazníky) pomocí Media Services
 
@@ -23,7 +23,7 @@ Bring Your Own Key (BYOK) je iniciativa pro Azure, která zákazníkům umožňu
 
 Pokud používáte rozhraní API Media Services 2020-05-01, můžete použít vlastní klíč s Media Services. Vytvoří se výchozí klíč účtu pro všechny účty, které jsou zašifrované pomocí systémového klíče, který patří Media Services. Když použijete vlastní klíč, klíč účtu se zašifruje s vaším klíčem. Klíče účtu šifrují klíče obsahu. Jsou také šifrované JobInputHttp adresy URL a ověřovací klíče symetrického tokenu.
 
-:::image type="content" source="./media/customer-managed-key/customer-managed-key.svg" alt-text="Klíč spravovaný zákazníkem nahrazuje klíč spravovaný systémem.&quot;:::
+:::image type="content" source="./media/customer-managed-key/customer-managed-key.svg" alt-text="Klíč spravovaný zákazníkem nahrazuje klíč spravovaný systémem.":::
 
 Media Services používá spravovanou identitu účtu Media Services ke čtení klíče z Key Vault, které vlastníte. Media Services vyžaduje, aby se Key Vault ve stejné oblasti jako účet a aby byla povolená ochrana proti odstranění a vyprázdnění.
 
@@ -35,11 +35,13 @@ Váš klíč může být 2048, 3072 nebo 4096 klíč RSA, přičemž klíče HSM
 Můžete zadat název klíče a verzi klíče nebo jenom název klíče. Když použijete jenom název klíče, Media Services použije nejnovější verzi klíče. Automaticky se zjišťují nové verze zákaznických klíčů a klíč účtu se znovu zašifruje.
 
 > [!WARNING]
-> Media Services monitoruje přístup k tomuto klíči zákazníka. Pokud je klíč zákazníka nepřístupný (například klíč byl odstraněn nebo byl odstraněn Key Vault nebo byl odebrán přístup), Media Services účet převede do stavu &quot;nepřístupný klíč zákazníka" (efektivně zakáže účet). Účet však lze v tomto stavu odstranit. Jedinými podporovanými operacemi je účet GET, LIST a DELETE; všechny ostatní požadavky (kódování, streamování atd.) selžou, dokud nebude obnoven přístup k klíči účtu.
+> Media Services monitoruje přístup k tomuto klíči zákazníka. Pokud je klíč zákazníka nepřístupný (například klíč byl odstraněn nebo byl odstraněn Key Vault nebo byl odebrán přístup), Media Services účet převede do stavu "nepřístupný klíč zákazníka" (efektivně zakáže účet). Účet však lze v tomto stavu odstranit. Jedinými podporovanými operacemi je účet GET, LIST a DELETE; všechny ostatní požadavky (kódování, streamování atd.) selžou, dokud nebude obnoven přístup k klíči účtu.
 
-## <a name="tutorial"></a>Kurz
-Vyzkoušejte si kurz [použití spravovaných klíčů zákazníků nebo Přineste si vlastní klíč (BYOK) s Media Services](tutorial-byok.md) , abyste se dozvěděli o nastavení a používání zákaznických klíčů pomocí služby post a Azure REST API.
+## <a name="tutorials"></a>Kurzy
+
+- [Použití Azure Portal k použití klíčů spravovaných zákazníkem nebo BYOK s Media Services](tutorial-byok-portal.md)
+- [Použití klíčů spravovaných zákazníkem nebo BYOK s využitím Media Services REST API](tutorial-byok-postman.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Kurz: použití zákaznických klíčů nebo Přineste si vlastní klíč (BYOK) s Media Services](tutorial-byok.md)
+[Ochrana obsahu pomocí Media Services dynamického šifrování](content-protection-overview.md)

@@ -7,12 +7,12 @@ author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 2b0078f1aff3ef81ee270f67de0fffddec3abab9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7730146f30487eb5d20f0d3138e9e5ba799daa99
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86255247"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681512"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kontrola osvědčených postupů Kubernetes v clusteru
 
@@ -29,7 +29,7 @@ Nástroj Kube-Advisor může vykazovat požadavky na prostředky a omezení chyb
 
 ## <a name="running-kube-advisor"></a>Spuštění Kube-Advisor
 
-Chcete-li spustit nástroj na clusteru, který je konfigurován pro [řízení přístupu na základě role (RBAC)](./azure-ad-integration-cli.md), použijte následující příkazy. První příkaz vytvoří účet služby Kubernetes. Druhý příkaz spustí nástroj ve vztahu pod tímto účtem služby a po jeho ukončení nakonfiguruje pole pod pro odstranění. 
+Pokud chcete spustit nástroj na clusteru, který je nakonfigurovaný pro [Kubernetes řízení přístupu na základě role (KUBERNETES RBAC)](./azure-ad-integration-cli.md), použijte následující příkazy. První příkaz vytvoří účet služby Kubernetes. Druhý příkaz spustí nástroj ve vztahu pod tímto účtem služby a po jeho ukončení nakonfiguruje pole pod pro odstranění. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
@@ -37,7 +37,7 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }" --namespace default
 ```
 
-Pokud nepoužíváte RBAC, můžete příkaz spustit takto:
+Pokud nepoužíváte Kubernetes RBAC, můžete příkaz spustit takto:
 
 ```bash
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never
@@ -59,13 +59,13 @@ Ve výchozím nastavení nejsou nastaveny žádné požadavky ani omezení na z�
 
 ## <a name="cleaning-up"></a>Vyčištění
 
-Pokud má váš cluster povolenou RBAC, můžete vyčistit `ClusterRoleBinding` po spuštění nástroje pomocí následujícího příkazu:
+Pokud má váš cluster povolený Kubernetes RBAC, můžete vyčistit `ClusterRoleBinding` po spuštění nástroje pomocí následujícího příkazu:
 
 ```bash
 kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
-Pokud nástroj spouštíte pro cluster, který není ve RBAC povolený, není nutné žádné vyčištění.
+Pokud nástroj spouštíte pro cluster, který není Kubernetes, není nutné žádné vyčištění.
 
 ## <a name="next-steps"></a>Další kroky
 
