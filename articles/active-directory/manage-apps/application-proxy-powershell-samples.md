@@ -12,19 +12,19 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57efd88b9d194442920496107d4c37ba2baf94d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efe71fd77e9e4edb7fc7df4c633ae8f81177097b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85554981"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657816"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Příklady Azure AD PowerShellu pro Azure Proxy aplikací služby AD
 
-Následující tabulka obsahuje odkazy na příklady skriptu PowerShellu pro Azure Proxy aplikací služby AD. Pokud není uvedeno jinak, vyžadují tyto ukázky pro [modul grafu AzureAD v2 PowerShell pro graf](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) nebo [pro verzi Preview AzureAD v2 PowerShellu](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview).
+Následující tabulka obsahuje odkazy na příklady skriptu PowerShellu pro Azure Proxy aplikací služby AD. Pokud není uvedeno jinak, vyžadují tyto ukázky pro [modul grafu AzureAD v2 PowerShell pro graf](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) nebo [pro verzi Preview AzureAD v2 PowerShellu](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview).
 
 
-Další informace o rutinách použitých v těchto ukázkách najdete v tématu Správa [aplikací proxy](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) aplikací a [Správa konektoru proxy aplikací](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management).
+Další informace o rutinách použitých v těchto ukázkách najdete v tématu Správa [aplikací proxy](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) aplikací a [Správa konektoru proxy aplikací](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management).
 
 | Odkaz | Popis |
 |---|---|
@@ -32,7 +32,7 @@ Další informace o rutinách použitých v těchto ukázkách najdete v tématu
 | [Seznam základních informací pro všechny aplikace proxy aplikací](scripts/powershell-get-all-app-proxy-apps-basic.md) | Uvádí základní informace o všech aplikacích proxy aplikací ve vašem adresáři (AppId, DisplayName, ObjId). |
 | [Zobrazit rozšířené informace pro všechny aplikace proxy aplikací](scripts/powershell-get-all-app-proxy-apps-extended.md) | Zobrazí seznam rozšířených informací (AppId, DisplayName, ExternalUrl, InternalUrl, ExternalAuthenticationType) o všech aplikacích proxy aplikací ve vašem adresáři.  |
 | [Vypsat všechny aplikace proxy aplikací podle skupiny konektorů](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | Obsahuje seznam informací o všech aplikacích proxy aplikací ve vašem adresáři a skupin konektorů, ke kterým jsou aplikace přiřazené. |
-| [Získat všechny aplikace proxy aplikací pomocí zásad životnosti tokenů](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Zobrazí všechny aplikace proxy aplikací ve vašem adresáři se zásadami životnosti tokenu a jeho podrobnostmi. Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro verzi Preview modulu graphu](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview). |
+| [Získat všechny aplikace proxy aplikací pomocí zásad životnosti tokenů](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Zobrazí všechny aplikace proxy aplikací ve vašem adresáři se zásadami životnosti tokenu a jeho podrobnostmi. Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro verzi Preview modulu graphu](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview). |
 |**Skupiny konektorů**||
 | [Získat všechny skupiny konektorů a konektory v adresáři](scripts/powershell-get-all-connectors.md) | Zobrazí seznam všech skupin konektorů a konektorů ve vašem adresáři. |
 | [Přesunout všechny aplikace přiřazené ke skupině konektorů do jiné skupiny konektorů](scripts/powershell-move-all-apps-to-connector-group.md) | Přesune všechny aktuálně přiřazené aplikace do skupiny konektorů do jiné skupiny konektorů. |

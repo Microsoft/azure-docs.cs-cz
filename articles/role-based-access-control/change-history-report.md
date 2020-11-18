@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 0ad60e72300e381b57deb00f3db010e69a006441
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 4ccd668fb6afa6787fadeda6ed92ebd954e2b892
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742942"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657801"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Zobrazení protokolů aktivit pro změny v Azure RBAC
 
@@ -35,7 +35,7 @@ Tady jsou operace související s Azure RBAC, které se zaznamenávají do proto
 - Vytvořit nebo aktualizovat definici vlastní role
 - Odstranit definici vlastní role
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
 Nejjednodušší způsob, jak začít, je zobrazit si protokoly aktivit přes Azure Portal. Následující snímek obrazovky ukazuje příklad operací přiřazení rolí v protokolu aktivit. Obsahuje taky možnost stahovat protokoly jako soubor CSV.
 
@@ -43,12 +43,12 @@ Nejjednodušší způsob, jak začít, je zobrazit si protokoly aktivit přes Az
 
 Protokol aktivit na portálu má několik filtrů. Tady jsou filtry vztahující se ke službě Azure RBAC:
 
-| Filtrovat | Hodnota |
+| Filtr | Hodnota |
 | --------- | --------- |
 | Kategorie události | <ul><li>Správcovské</li></ul> |
 | Operace | <ul><li>Vytvořit přiřazení role</li><li>Odstranit přiřazení role</li><li>Vytvořit nebo aktualizovat definici vlastní role</li><li>Odstranit definici vlastní role</li></ul> |
 
-Další informace o protokolech aktivit najdete v tématu [zobrazení protokolů aktivit pro monitorování akcí v prostředcích](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+Další informace o protokolech aktivit najdete v tématu [zobrazení protokolů aktivit pro monitorování akcí v prostředcích](../azure-resource-manager/management/view-activity-logs.md?toc=%252fazure%252fmonitoring-and-diagnostics%252ftoc.json).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -122,7 +122,7 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 ## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
-[Protokoly Azure monitor](../log-analytics/log-analytics-overview.md) jsou další nástroj, který můžete použít ke shromažďování a analýze změn ve službě Azure RBAC pro všechny prostředky Azure. Protokoly Azure Monitor mají následující výhody:
+[Protokoly Azure monitor](../azure-monitor/log-query/log-query-overview.md) jsou další nástroj, který můžete použít ke shromažďování a analýze změn ve službě Azure RBAC pro všechny prostředky Azure. Protokoly Azure Monitor mají následující výhody:
 
 - Zápis složitých dotazů a logiky
 - Integrace s výstrahami, Power BI a dalšími nástroji
@@ -133,13 +133,13 @@ Zde jsou základní kroky, jak začít:
 
 1. [Vytvořte pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
-1. [Nakonfigurujte řešení Activity Log Analytics](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution) pro váš pracovní prostor.
+1. [Nakonfigurujte řešení Activity Log Analytics](../azure-monitor/platform/activity-log.md#activity-log-analytics-monitoring-solution) pro váš pracovní prostor.
 
-1. [Zobrazení protokolů aktivit](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution). Rychlý způsob, jak přejít na stránku Přehled řešení Activity Log Analytics, je kliknout na možnost **protokoly** .
+1. [Zobrazení protokolů aktivit](../azure-monitor/platform/activity-log.md#activity-log-analytics-monitoring-solution). Rychlý způsob, jak přejít na stránku Přehled řešení Activity Log Analytics, je kliknout na možnost **protokoly** .
 
    ![Možnost protokolů Azure Monitor na portálu](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Volitelně můžete použít [Log Analytics Azure monitor](../azure-monitor/log-query/get-started-portal.md) k dotazování a zobrazení protokolů. Další informace najdete v tématu [Začínáme s Azure monitor dotazy protokolu](../azure-monitor/log-query/get-started-queries.md).
+1. Volitelně můžete použít [Log Analytics Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md) k dotazování a zobrazení protokolů. Další informace najdete v tématu [Začínáme s Azure monitor dotazy protokolu](../azure-monitor/log-query/get-started-queries.md).
 
 Tady je dotaz, který vrací přiřazení nových rolí uspořádaná podle poskytovatele cílových prostředků:
 
@@ -162,5 +162,5 @@ AzureActivity
 ![Protokoly aktivit pomocí portálu pro pokročilou analýzu – snímek obrazovky](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Další kroky
-* [Zobrazení událostí v protokolu aktivit](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Monitorování aktivit předplatného s protokolem aktivit Azure](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
+* [Zobrazení událostí v protokolu aktivit](../azure-resource-manager/management/view-activity-logs.md?toc=%252fazure%252fmonitoring-and-diagnostics%252ftoc.json)
+* [Monitorování aktivit předplatného s protokolem aktivit Azure](../azure-monitor/platform/platform-logs-overview.md)

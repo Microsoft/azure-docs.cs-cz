@@ -5,16 +5,16 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 11/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 016741606bad5536985a38b0e0664b39006e1df5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62ceafad0210065700e5c9734cfe9a055208ef35
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776557"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657886"
 ---
-# <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering-preview"></a>Konfigurace připojení VPN typu Site-to-site přes privátní partnerský vztah ExpressRoute (Preview)
+# <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>Konfigurace připojení VPN typu Site-to-site přes privátní partnerský vztah ExpressRoute
 
 Můžete nakonfigurovat síť VPN typu Site-to-site k bráně virtuální sítě přes privátní partnerský vztah ExpressRoute pomocí IP adresy RFC 1918. Tato konfigurace přináší následující výhody:
 
@@ -54,13 +54,13 @@ V případě provozu z místních sítí do Azure jsou předpony Azure inzerová
 
 • Jedna síť se směruje přímo přes ExpressRoute bez ochrany IPsec.
 
-Pokud chcete pro komunikaci použít šifrování, musíte se ujistit, že pro síť připojenou k síti VPN na **obrázku 1**jsou upřednostňovány trasy Azure přes místní BRÁNu VPN prostřednictvím přímé ExpressRoute cesty.
+Pokud chcete pro komunikaci použít šifrování, musíte se ujistit, že pro síť připojenou k síti VPN na **obrázku 1** jsou upřednostňovány trasy Azure přes místní BRÁNu VPN prostřednictvím přímé ExpressRoute cesty.
 
 ### <a name="traffic-from-azure-to-on-premises-networks"></a>Provoz z Azure do místních sítí
 
 Stejný požadavek se vztahuje na provoz z Azure do místních sítí. Chcete-li zajistit, aby byla cesta protokolu IPsec upřednostňována přes přímou cestu ExpressRoute (bez protokolu IPsec), máte dvě možnosti:
 
-• **Inzerovat konkrétnější předpony v relaci protokolu BGP sítě VPN pro síť připojenou**k síti VPN. Můžete inzerovat větší rozsah, který zahrnuje síť připojenou k síti VPN přes privátní partnerský vztah ExpressRoute, a pak v relaci protokolu BGP sítě VPN více konkrétních rozsahů. Můžete například inzerovat 10.0.0.0/16 přes ExpressRoute a 10.0.1.0/24 prostřednictvím sítě VPN.
+• **Inzerovat konkrétnější předpony v relaci protokolu BGP sítě VPN pro síť připojenou** k síti VPN. Můžete inzerovat větší rozsah, který zahrnuje síť připojenou k síti VPN přes privátní partnerský vztah ExpressRoute, a pak v relaci protokolu BGP sítě VPN více konkrétních rozsahů. Můžete například inzerovat 10.0.0.0/16 přes ExpressRoute a 10.0.1.0/24 prostřednictvím sítě VPN.
 
 • **Inzerujte nesouvislé předpony pro VPN a ExpressRoute**. Pokud jsou síťové rozsahy připojené k síti VPN nesouvislé z jiných sítí propojených s ExpressRoute, můžete předpony inzerovat v relacích VPN a ExpressRoute BGP. Můžete například inzerovat 10.0.0.0/24 přes ExpressRoute a 10.0.1.0/24 prostřednictvím sítě VPN.
 
@@ -76,14 +76,14 @@ V obou těchto příkladech pošle Azure provoz do 10.0.1.0/24 přes připojení
 
    Záložní sklady v zóně mají na konci SKU "AZ". Například **VpnGw1AZ**. Redundantní brány v zóně jsou dostupné jenom v oblastech, kde je služba zóny dostupnosti k dispozici. Informace o oblastech, ve kterých podporujeme zóny dostupnosti, najdete v tématu [oblasti, které podporují zóny dostupnosti](../availability-zones/az-region.md).
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="Obrázek 1":::
-1. Povolte v bráně privátní IP adresy. Vyberte **Konfigurace**a pak nastavte **soukromé IP adresy brány** na **povoleno**. Vyberte **Uložit** a uložte tak provedené změny.
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="Privátní IP adresy brány":::
+1. Povolte v bráně privátní IP adresy. Vyberte **Konfigurace** a pak nastavte **soukromé IP adresy brány** na **povoleno**. Vyberte **Uložit** a uložte tak provedené změny.
 1. Na stránce **Přehled** vyberte **Zobrazit další** a ZOBRAZTE tak soukromou IP adresu. Zapište tyto informace pro pozdější použití v krocích konfigurace.
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Obrázek 1" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
-1. Pokud chcete pro připojení povolit **používání privátní IP adresy Azure** , vyberte  **Konfigurace**. Nastavte **použít privátní IP adresu Azure** na **povoleno**a pak vyberte **Uložit**.
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Stránka Přehled" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
+1. Pokud chcete pro připojení povolit **používání privátní IP adresy Azure** , vyberte  **Konfigurace**. Nastavte **použít privátní IP adresu Azure** na **povoleno** a pak vyberte **Uložit**.
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="Obrázek 1":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="Privátní IP adresy brány – povoleno":::
 1. Z brány firewall pomocí příkazového testu otestujte privátní IP adresu, kterou jste vytvořili v kroku 3. Privátní IP adresa by měla být dosažitelná v rámci privátního partnerského vztahu ExpressRoute.
 1. Tato privátní IP adresa se používá jako Vzdálená IP adresa na místní bráně firewall k navázání tunelového propojení typu Site-to-site přes privátní partnerský vztah ExpressRoute.
 
