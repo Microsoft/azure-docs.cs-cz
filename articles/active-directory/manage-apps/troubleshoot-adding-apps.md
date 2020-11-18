@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: e9e97aec66d99d149320938540c48b9ad68eaf0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 714cbb06506cc3e0dffe74007712d9cbad072284
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90068026"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655064"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Řešení běžných potíží při přidávání nebo odebírání aplikace k Azure Active Directory
 Tento článek vám pomůže pochopit běžné problémy, které lidé čelí při přidávání nebo odebírání aplikace do Azure Active Directory.
@@ -31,9 +31,9 @@ Kvůli přechodným problémům, potížím se sítí nebo chybě se ale přidá
 Pokud při kliknutí na tlačítko **Přidat** dojde k chybě, zobrazí se **oznámení** v **chybovém** stavu. Pokud chcete získat další informace o chybě, abyste se seznámili s pracovníkem technické podpory nebo je mohli sdílet, můžete zobrazit další informace o chybě pomocí postupu uvedeného v části [jak zobrazit podrobnosti o oznámení na portálu](#how-to-see-the-details-of-a-portal-notification) .
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nevím, jak nastavit aplikaci, když ji přidáte
-Pokud potřebujete pomáhat se seznámení s aplikacemi, [Seznam kurzů, jak integrovat aplikace SaaS s Azure Active Directorym](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) článkem, je dobrým místem, kde začít.
+Pokud potřebujete pomáhat se seznámení s aplikacemi, [Seznam kurzů, jak integrovat aplikace SaaS s Azure Active Directorym](../saas-apps/tutorial-list.md) článkem, je dobrým místem, kde začít.
 
-Kromě toho [Knihovna dokumentů aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) pomáhá získat další informace o jednotném přihlašování pomocí služby Azure AD a o tom, jak to funguje.
+Kromě toho [Knihovna dokumentů aplikací Azure AD](./what-is-application-management.md) pomáhá získat další informace o jednotném přihlašování pomocí služby Azure AD a o tom, jak to funguje.
 
 ## <a name="i-want-to-delete-an-application-but-the-delete-button-is-disabled"></a>Chci odstranit aplikaci, ale tlačítko Odstranit je zakázané
 
@@ -43,7 +43,7 @@ Tlačítko Odstranit bude zakázáno v následujících scénářích:
 
 - V případě aplikace Microsoftu je nebudete moct odstranit z uživatelského rozhraní bez ohledu na vaši roli.
 
-- Pro servicePrincipals, které odpovídají spravované identitě. Objekty služby spravované identity se v okně podnikové aplikace nedají odstranit. Abyste ho mohli spravovat, musíte přejít do prostředku Azure. Vymazat Další informace o [spravované identitě](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+- Pro servicePrincipals, které odpovídají spravované identitě. Objekty služby spravované identity se v okně podnikové aplikace nedají odstranit. Abyste ho mohli spravovat, musíte přejít do prostředku Azure. Vymazat Další informace o [spravované identitě](../managed-identities-azure-resources/overview.md)
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>Jak zobrazit podrobnosti oznámení na portálu
 Podrobnosti o jakémkoli oznámení na portálu můžete zobrazit podle následujících kroků:

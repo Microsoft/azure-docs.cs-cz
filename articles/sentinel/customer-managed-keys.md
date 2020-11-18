@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: ecb4203c822f5b72068e11d0ad4b988d294aab0d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: bd85936c86656a8ae59a04ccdf53a62bd852368f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427050"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655268"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Nastavení klíče spravovaného zákazníkem Sentinel Azure
 
@@ -59,7 +59,7 @@ Při zřizování CMK postupujte takto:
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>Krok 1: vytvoření Azure Key Vault a uložení klíče
 
-1.  [Vytvořte prostředek Azure Key Vault](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal)a pak vygenerujte nebo importujte klíč, který se použije k šifrování dat.
+1.  [Vytvořte prostředek Azure Key Vault](/azure-stack/user/azure-stack-key-vault-manage-portal)a pak vygenerujte nebo importujte klíč, který se použije k šifrování dat.
     > [!NOTE]
     >  Aby bylo možné klíč a přístup chránit, Azure Key Vault musí být nakonfigurovány jako obnovitelné.
 
@@ -132,6 +132,5 @@ Pokud použijete stejný klíč ve službě Azure Sentinel a v Log Analytics, je
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak nastavit klíč spravovaný zákazníkem v rámci Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](./tutorial-detect-threats-built-in.md).
 - [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.
-

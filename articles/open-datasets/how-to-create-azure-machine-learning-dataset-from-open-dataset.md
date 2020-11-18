@@ -8,16 +8,16 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: a80559761c8a3eba6045db5cd99a7719dd041fa8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b9357c0fcf414c2575ca6966e8e5a3716015058
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704391"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654911"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Vytváření Azure Machine Learning datových sad z Azure Open DataSets
 
-V tomto článku se dozvíte, jak přenést data o obohacení do místních nebo vzdálených strojových kurzů pomocí [Azure Machine Learningch](../machine-learning/overview-what-is-azure-ml.md) datových sad a [otevřených datových sad Azure](https://docs.microsoft.com/azure/open-datasets/). 
+V tomto článku se dozvíte, jak přenést data o obohacení do místních nebo vzdálených strojových kurzů pomocí [Azure Machine Learningch](../machine-learning/overview-what-is-azure-ml.md) datových sad a [otevřených datových sad Azure](./index.yml). 
 
 Vytvořením [datové sady Azure Machine Learning](../machine-learning/how-to-create-register-datasets.md)vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. Vzhledem k tomu, že datové sady jsou vyhodnoceny laxně vytvářená a data zůstávají v jejím existujícím umístění, je
 * Neúčtují se žádné dodatečné náklady na úložiště.
@@ -45,20 +45,20 @@ Pro tento článek potřebujete:
 
 * [Pracovní prostor Azure Machine Learning](../machine-learning/how-to-manage-workspace.md).
 
-* [Sada Azure Machine Learning SDK pro Python je nainstalovaná](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true ), včetně `azureml-datasets` balíčku.
+* [Sada Azure Machine Learning SDK pro Python je nainstalovaná](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), včetně `azureml-datasets` balíčku.
 
     * Vytvořte [instanci služby Azure Machine Learning COMPUTE](../machine-learning/how-to-create-manage-compute-instance.md), což je plně nakonfigurované a spravované vývojové prostředí, které zahrnuje integrované poznámkové bloky a sadu SDK už je nainstalovaná.
 
     **OR**
 
-    * Pracujte ve vlastním prostředí Pythonu a nainstalujte sadu SDK sami pomocí [těchto pokynů](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true ).
+    * Pracujte ve vlastním prostředí Pythonu a nainstalujte sadu SDK sami pomocí [těchto pokynů](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 > [!NOTE]
-> Některé třídy DataSet mají závislosti na balíčku [AzureML-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) , který je kompatibilní pouze s 64-bitovým Pythonem. Pro uživatele se systémem Linux jsou tyto třídy podporovány pouze v následujících distribucích: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), Debian (8, 9) a CentOS (7).
+> Některé třídy DataSet mají závislosti na balíčku [AzureML-dataprep](/python/api/azureml-dataprep/) , který je kompatibilní pouze s 64-bitovým Pythonem. Pro uživatele se systémem Linux jsou tyto třídy podporovány pouze v následujících distribucích: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), Debian (8, 9) a CentOS (7).
 
 ## <a name="create-datasets-with-the-sdk"></a>Vytvoření datových sad pomocí sady SDK
 
-Pokud chcete vytvořit Azure Machine Learning datové sady prostřednictvím tříd Azure Open DataSets v sadě Python SDK, ujistěte se, že jste balíček nainstalovali pomocí nástroje `pip install azureml-opendatasets` . Jednotlivé diskrétní datové sady jsou reprezentovány vlastní třídou v sadě SDK a některé třídy jsou k dispozici jako Azure Machine Learning [ `TabularDataset` , `FileDataset` ](../machine-learning/how-to-create-register-datasets.md#dataset-types)nebo obojí. Úplný seznam tříd naleznete v [referenční dokumentaci](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py&preserve-view=true ) `opendatasets` .
+Pokud chcete vytvořit Azure Machine Learning datové sady prostřednictvím tříd Azure Open DataSets v sadě Python SDK, ujistěte se, že jste balíček nainstalovali pomocí nástroje `pip install azureml-opendatasets` . Jednotlivé diskrétní datové sady jsou reprezentovány vlastní třídou v sadě SDK a některé třídy jsou k dispozici jako Azure Machine Learning [ `TabularDataset` , `FileDataset` ](../machine-learning/how-to-create-register-datasets.md#dataset-types)nebo obojí. Úplný seznam tříd naleznete v [referenční dokumentaci](/python/api/azureml-opendatasets/azureml.opendatasets?preserve-view=true&view=azure-ml-py) `opendatasets` .
 
 Můžete načíst určité `opendatasets` třídy jako `TabularDataset` nebo `FileDataset` , což umožňuje pracovat přímo nebo stahovat soubory. Jiné třídy mohou získat datovou sadu **pouze** pomocí `get_tabular_dataset()` funkcí nebo `get_file_dataset()` z `Dataset` třídy v sadě Python SDK.
 
@@ -88,7 +88,7 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 
 Zaregistrujte datovou sadu Azure Machine Learning s vaším pracovním prostorem, abyste je mohli sdílet s ostatními a znovu je použít ve vašem pracovním prostoru. Když zaregistrujete datovou sadu Azure Machine Learning vytvořenou z otevřených datových sad, data se okamžitě nestáhnou, ale data budou k dispozici později, až se vyžádají (například během školení) z centrálního umístění úložiště.
 
-K registraci vašich datových sad pomocí pracovního prostoru použijte [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-&preserve-view=true ) metodu. 
+K registraci vašich datových sad pomocí pracovního prostoru použijte [`register()`](/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-&preserve-view=true ) metodu. 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,
                                  name='titanic_ds',
@@ -114,7 +114,7 @@ Můžete také vytvořit Azure Machine Learning datové sady z Azure Open DataSe
 
     ![Nastavení parametrů datové sady a vytvoření datové sady](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 
-    Datová sada je teď v pracovním prostoru v části datové **sady**dostupná. Můžete ji použít stejným způsobem jako jiné datové sady, které jste vytvořili.
+    Datová sada je teď v pracovním prostoru v části datové **sady** dostupná. Můžete ji použít stejným způsobem jako jiné datové sady, které jste vytvořili.
 
 
 ## <a name="access-datasets-for-your-experiments"></a>Přístup k datovým sadám pro vaše experimenty
@@ -132,6 +132,3 @@ Příklady a ukázky funkcí otevřít datové sady najdete v těchto [ukázkov�
 * [Výuka s datovými sadami](../machine-learning/how-to-train-with-datasets.md)
 
 * [Vytvořte datovou sadu Azure Machine Learning](../machine-learning/how-to-create-register-datasets.md).
-
-
-

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: d1de9270534a3550d8db043fdd6bcfe56ec31bda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72b2ba0ea444fb14ef9fc1bc3ea6aea3654677df
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90895600"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655523"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>Připojit výstrahy z programu Microsoft Defender pro koncový bod (dříve ATP. Microsoft Defender)
 
@@ -33,15 +33,15 @@ ms.locfileid: "90895600"
 > Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Konektor [Microsoft Defender pro koncové body](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) umožňuje streamovat výstrahy z Microsoft Defenderu na koncový bod do Azure Sentinel. To vám umožní lépe analyzovat události zabezpečení napříč vaší organizací a sestavovat playbooky pro efektivní a okamžitou reakci.
+Konektor [Microsoft Defender pro koncové body](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) umožňuje streamovat výstrahy z Microsoft Defenderu na koncový bod do Azure Sentinel. To vám umožní lépe analyzovat události zabezpečení napříč vaší organizací a sestavovat playbooky pro efektivní a okamžitou reakci.
 
 > [!NOTE]
 >
-> Chcete-li ingestovat nové protokoly nezpracovaných dat od programu Microsoft Defender pro [Pokročilé lov](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview)koncových bodů, použijte nový konektor pro Microsoft 365 Defender (dříve Microsoft Threat Protection, [Viz dokumentace](./connect-microsoft-365-defender.md)).
+> Chcete-li ingestovat nové protokoly nezpracovaných dat od programu Microsoft Defender pro [Pokročilé lov](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview)koncových bodů, použijte nový konektor pro Microsoft 365 Defender (dříve Microsoft Threat Protection, [Viz dokumentace](./connect-microsoft-365-defender.md)).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte mít platnou licenci pro Microsoft Defender pro koncový bod, jak je popsáno v tématu [Nastavení programu Microsoft Defender pro nasazení koncového bodu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing). 
+- Musíte mít platnou licenci pro Microsoft Defender pro koncový bod, jak je popsáno v tématu [Nastavení programu Microsoft Defender pro nasazení koncového bodu](/windows/security/threat-protection/microsoft-defender-atp/licensing). 
 
 - Musíte být globálním správcem nebo správcem zabezpečení v tenantovi Azure Sentinel.
 
@@ -53,9 +53,9 @@ Pokud je Microsoft Defender pro koncový bod nasazený a ingestuje vaše data, m
 
 1. Klikněte na **Připojit**. 
 
-1. Pro dotazování programu Microsoft Defender pro upozornění koncového bodu v **protokolech**zadejte **SecurityAlert** do okna dotazu a přidejte filtr, kde je **název poskytovatele** **MDATP**.
+1. Pro dotazování programu Microsoft Defender pro upozornění koncového bodu v **protokolech** zadejte **SecurityAlert** do okna dotazu a přidejte filtr, kde je **název poskytovatele** **MDATP**.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit Microsoft Defender ke koncovému bodu do Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](./tutorial-detect-threats-built-in.md).

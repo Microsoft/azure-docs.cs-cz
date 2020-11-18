@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: 5518da7d22d14de105c07e88b14e94d4b184269b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf7e389fc4a8a8dfa88691dc034611cae3471731
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883819"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655336"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>Připojení brány firewall v programu Windows Defender s pokročilým zabezpečením do Azure Sentinel
 
-[Firewall v programu Windows Defender s pokročilým zabezpečením](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) umožňuje službě Azure Sentinel snadno ingestovat firewall v programu Windows Defender s pokročilými protokoly zabezpečení z libovolného počítače s Windows ve vašem pracovním prostoru. Toto připojení umožňuje zobrazit a analyzovat události brány Windows Firewall v sešitech, abyste je mohli používat při vytváření vlastních výstrah, a začlenit je do vašeho bezpečnostního šetření, což vám poskytne lepší přehled o síti vaší organizace a zlepšuje možnosti zabezpečení provozu. 
+[Firewall v programu Windows Defender s pokročilým zabezpečením](/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) umožňuje službě Azure Sentinel snadno ingestovat firewall v programu Windows Defender s pokročilými protokoly zabezpečení z libovolného počítače s Windows ve vašem pracovním prostoru. Toto připojení umožňuje zobrazit a analyzovat události brány Windows Firewall v sešitech, abyste je mohli používat při vytváření vlastních výstrah, a začlenit je do vašeho bezpečnostního šetření, což vám poskytne lepší přehled o síti vaší organizace a zlepšuje možnosti zabezpečení provozu. 
 
 Řešení shromažďuje události brány Windows Firewall z počítačů se systémem Windows, na kterých je nainstalován agent Log Analytics. 
 
@@ -67,7 +67,7 @@ ms.locfileid: "90883819"
 
     1. V podokně **Správa agentů** vyberte buď možnost **Stáhnout agenta pro Windows (64 bitů)** , nebo **Stáhnout agenta pro Windows (bit 32) (** podle potřeby).
 
-    1. Zkopírujte řetězce **ID pracovního prostoru**, **primární klíč**a **sekundární klíč** do textového souboru. Zkopírujte tento soubor a stažený instalační soubor do počítače s Windows. Spusťte instalační soubor a po zobrazení výzvy zadejte ID a řetězce klíčů v textovém souboru během instalace.
+    1. Zkopírujte řetězce **ID pracovního prostoru**, **primární klíč** a **sekundární klíč** do textového souboru. Zkopírujte tento soubor a stažený instalační soubor do počítače s Windows. Spusťte instalační soubor a po zobrazení výzvy zadejte ID a řetězce klíčů v textovém souboru během instalace.
 
     1. Vraťte se do podokna **Brána firewall systému Windows** .
 
@@ -77,14 +77,13 @@ ms.locfileid: "90883819"
 
 - Seznamte se s dostupnými sešity a ukázkami dotazů, které jsou připojené k datovým konektorem **brány Windows Firewall** . získáte tak přehled o datech protokolu brány Windows Firewall.
 
-- K dotazování dat brány Windows Firewall v **protokolech**zadejte **WindowsFirewall** do okna dotazu.
+- K dotazování dat brány Windows Firewall v **protokolech** zadejte **WindowsFirewall** do okna dotazu.
 
 ## <a name="validate-connectivity"></a>Ověřit připojení
  
-Vzhledem k tomu, že protokoly brány Windows Firewall se odesílají do služby Azure Sentinel jenom v případě, že místní soubor protokolu dosáhne kapacity, ponechte v protokolu výchozí velikost 4096 KB, což pravděpodobně způsobí latenci vysokého sběru dat. Snížit latenci můžete snížením velikosti souboru protokolu. Přečtěte si pokyny ke [konfiguraci protokolu brány Windows Firewall](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/configure-the-windows-firewall-log). Počítejte s tím, že při definování minimální možné velikosti protokolu (1 KB) bude prakticky eliminovat latence shromažďování, ale může negativně ovlivnit výkon místního počítače. 
+Vzhledem k tomu, že protokoly brány Windows Firewall se odesílají do služby Azure Sentinel jenom v případě, že místní soubor protokolu dosáhne kapacity, ponechte v protokolu výchozí velikost 4096 KB, což pravděpodobně způsobí latenci vysokého sběru dat. Snížit latenci můžete snížením velikosti souboru protokolu. Přečtěte si pokyny ke [konfiguraci protokolu brány Windows Firewall](/windows/security/threat-protection/windows-firewall/configure-the-windows-firewall-log). Počítejte s tím, že při definování minimální možné velikosti protokolu (1 KB) bude prakticky eliminovat latence shromažďování, ale může negativně ovlivnit výkon místního počítače. 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit bránu Windows Firewall ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
-

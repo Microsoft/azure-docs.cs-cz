@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: d6b59de048cdf00d352c4f488ecb51bfdf83640f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d3e3615ede7406a3b581171ae759ec0ec53f13e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89178922"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655366"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Připojení protokolů Office 365 ke službě Azure Sentinel
 
-Konektor protokolu [Office 365](https://docs.microsoft.com/office/) přináší do Azure Sentinel informace o probíhajících činnostech uživatelů a správců v **Exchange** a **SharePointu** (včetně **OneDrivu**) a teď i v **týmech** . Tyto informace zahrnují podrobnosti o akcích, jako jsou třeba soubory ke stažení, odeslané požadavky na přístup, změny v událostech skupiny, operace poštovní schránky, týmové události (například události chatu, týmu, člena a kanálu) a také podrobnosti uživatele, který akce provedl. Připojení protokolů Office 365 k Azure Sentinel umožňuje zobrazit a analyzovat tato data v sešitech, dotazovat se na ně a vytvořit vlastní výstrahy a začlenit je ke zvýšení vašeho procesu šetření, což vám poskytne lepší přehled o zabezpečení sady Office 365.
+Konektor protokolu [Office 365](/office/) přináší do Azure Sentinel informace o probíhajících činnostech uživatelů a správců v **Exchange** a **SharePointu** (včetně **OneDrivu**) a teď i v **týmech** . Tyto informace zahrnují podrobnosti o akcích, jako jsou třeba soubory ke stažení, odeslané požadavky na přístup, změny v událostech skupiny, operace poštovní schránky, týmové události (například události chatu, týmu, člena a kanálu) a také podrobnosti uživatele, který akce provedl. Připojení protokolů Office 365 k Azure Sentinel umožňuje zobrazit a analyzovat tato data v sešitech, dotazovat se na ně a vytvořit vlastní výstrahy a začlenit je ke zvýšení vašeho procesu šetření, což vám poskytne lepší přehled o zabezpečení sady Office 365.
 
 > [!IMPORTANT]
 > Protokoly konektoru protokolu Office 365 **pro Microsoft Teams** Connector jsou momentálně ve verzi Public Preview.
@@ -38,9 +38,9 @@ Konektor protokolu [Office 365](https://docs.microsoft.com/office/) přináší 
 - Vaše nasazení Office 365 musí být ve stejném tenantovi jako váš pracovní prostor Azure Sentinel.
 
 > [!IMPORTANT]
-> - Aby mohl konektor získat přístup k datům prostřednictvím rozhraní API aktivity správy Office 365, musíte mít v nasazení sady Office 365 zapnuté **jednotné protokolování auditu** . V závislosti na typu licence Office 365/Microsoft 365, kterou máte, může nebo nemusí být ve výchozím nastavení povolená. V [Centru zabezpečení a dodržování předpisů pro Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center) zkontrolujte stav jednotného protokolování auditu podle typu vaší licence.
-> - Můžete také ručně povolit, zakázat a kontrolovat aktuální stav protokolu Unified audit pro Office 365. Pokyny najdete v tématu [Zapnutí nebo vypnutí prohledávání protokolu auditu systému Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
-> - Další informace najdete v referenčních informacích k [rozhraní API aktivity správy Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference).
+> - Aby mohl konektor získat přístup k datům prostřednictvím rozhraní API aktivity správy Office 365, musíte mít v nasazení sady Office 365 zapnuté **jednotné protokolování auditu** . V závislosti na typu licence Office 365/Microsoft 365, kterou máte, může nebo nemusí být ve výchozím nastavení povolená. V [Centru zabezpečení a dodržování předpisů pro Office 365](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center) zkontrolujte stav jednotného protokolování auditu podle typu vaší licence.
+> - Můžete také ručně povolit, zakázat a kontrolovat aktuální stav protokolu Unified audit pro Office 365. Pokyny najdete v tématu [Zapnutí nebo vypnutí prohledávání protokolu auditu systému Office 365](/office365/securitycompliance/turn-audit-log-search-on-or-off).
+> - Další informace najdete v referenčních informacích k [rozhraní API aktivity správy Office 365](/office/office-365-management-api/office-365-management-activity-api-reference).
 
 
    > [!NOTE]
@@ -52,9 +52,9 @@ Konektor protokolu [Office 365](https://docs.microsoft.com/office/) přináší 
 
 1. V navigační nabídce Azure Sentinel vyberte **datové konektory**.
 
-1. Z Galerie **datových konektorů** vyberte možnost **Office 365**a potom vyberte možnost **otevřít stránku konektoru** v podokně náhledu.
+1. Z Galerie **datových konektorů** vyberte možnost **Office 365** a potom vyberte možnost **otevřít stránku konektoru** v podokně náhledu.
 
-1. V části s názvem **Konfigurace**zaškrtněte políčka protokoly aktivit Office 365, které chcete připojit ke službě Azure Sentinel, a klikněte na **použít změny**. 
+1. V části s názvem **Konfigurace** zaškrtněte políčka protokoly aktivit Office 365, které chcete připojit ke službě Azure Sentinel, a klikněte na **použít změny**. 
 
    > [!NOTE]
    > Pokud jste dříve připojili více tenantů k Azure Sentinel pomocí starší verze konektoru sady Office 365, který to podporuje, budete moci zobrazit a upravit protokoly, které shromáždíte z každého tenanta. Nebudete moct přidávat další klienty, ale můžete odebrat dřív přidané klienty.
@@ -70,4 +70,3 @@ Konektor protokolu [Office 365](https://docs.microsoft.com/office/) přináší 
 V tomto dokumentu jste zjistili, jak připojit Office 365 ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se, jak [získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte s detekcí hrozeb pomocí služby Azure Sentinel a pomocí [předdefinovaných](tutorial-detect-threats-built-in.md) nebo [vlastních](tutorial-detect-threats-custom.md) pravidel.
-

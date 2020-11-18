@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: kenwith
-ms.openlocfilehash: 8544c35d77dfc32ece9b21a602f301ab15c22439
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 28b31d98f283dc957927ab2a35f0ab95bf066473
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288312"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654112"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Postup odebrání přístupu uživatele k aplikaci
 
@@ -23,11 +23,11 @@ Tento článek vám pomůže pochopit, jak odebrat přístup uživatele k aplika
 
 ## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>Chci odebrat přiřazení konkrétního uživatele nebo skupiny do aplikace
 
-Chcete-li odebrat přiřazení uživatele nebo skupiny k aplikaci, postupujte podle kroků uvedených v části [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) článku.
+Chcete-li odebrat přiřazení uživatele nebo skupiny k aplikaci, postupujte podle kroků uvedených v části [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace v Azure Active Directory](./assign-user-or-group-access-portal.md) článku.
 
 ## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>Chci zakázat veškerý přístup k aplikaci pro každého uživatele
 
-Pokud chcete zakázat přihlášení všech uživatelů k aplikaci, postupujte podle kroků uvedených v tématu [zakázání přihlášení uživatelů pro podnikovou aplikaci v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) článku.
+Pokud chcete zakázat přihlášení všech uživatelů k aplikaci, postupujte podle kroků uvedených v tématu [zakázání přihlášení uživatelů pro podnikovou aplikaci v Azure Active Directory](./disable-user-sign-in-portal.md) článku.
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>Chci úplně odstranit aplikaci
 
@@ -37,7 +37,7 @@ Pokud chcete zakázat přihlášení všech uživatelů k aplikaci, postupujte p
 
 Zákaz souhlasu uživatele pro celý adresář zabrání koncovým uživatelům v posílání do libovolné aplikace. Správci mohou i nadále souhlasit jménem uživatele. Další informace o souhlasu aplikace a o tom, proč můžete nebo nechcete, aby to bylo možné, najdete v článku [vysvětlení souhlasu uživatele a správce](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent). Viz také [oprávnění a souhlas](../develop/v2-permissions-and-consent.md).
 
-Pokud chcete **Zakázat všechny operace souhlasu uživatele s ostatními uživateli v celém adresáři** , postupujte podle těchto pokynů:
+Pokud chcete **Zakázat všechny operace souhlasu uživatele s ostatními uživateli v celém adresáři**, postupujte podle těchto pokynů:
 
 1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 

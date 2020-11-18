@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 5ac72c9861e06773ffab87dcbf4e730562b798fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5140bcd85606213f00185d4ba1f50dbe70dba63
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342444"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655490"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-office-365"></a>Připojit výstrahy z programu Microsoft Defender pro Office 365 
 
@@ -31,7 +31,7 @@ ms.locfileid: "91342444"
 >
 > - Ingestování výstrah programu Microsoft Defender pro Office 365 je momentálně ve verzi Public Preview. Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
-[Microsoft Defender pro Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description) chrání vaši organizaci proti nulovému a dalším pokročilým hrozbám, které představují neznámý malware v e-mailových zprávách, na škodlivých odkazech na adresy URL a v nástrojích pro spolupráci. Ingestování výstrah programu Microsoft Defender pro Office 365 do služby Azure Sentinel vám umožní využívat informace o hrozbách e-mailu, sdílení souborů a zabezpečení na základě adres URL v rámci bezpečnostních operací. Pak můžete lépe analyzovat události zabezpečení napříč vaší organizací a sestavovat playbooky pro efektivní a okamžitou reakci.
+[Microsoft Defender pro Office 365](/office365/servicedescriptions/office-365-advanced-threat-protection-service-description) chrání vaši organizaci proti nulovému a dalším pokročilým hrozbám, které představují neznámý malware v e-mailových zprávách, na škodlivých odkazech na adresy URL a v nástrojích pro spolupráci. Ingestování výstrah programu Microsoft Defender pro Office 365 do služby Azure Sentinel vám umožní využívat informace o hrozbách e-mailu, sdílení souborů a zabezpečení na základě adres URL v rámci bezpečnostních operací. Pak můžete lépe analyzovat události zabezpečení napříč vaší organizací a sestavovat playbooky pro efektivní a okamžitou reakci.
 
 Konektor importuje následující výstrahy:
 
@@ -55,7 +55,7 @@ Tyto výstrahy můžou vidět zákazníci Office v **Centru zabezpečení a dodr
 
 - Musíte být globálním správcem nebo správcem zabezpečení v tenantovi pracovního prostoru Azure Sentinel.
 
-- Musíte mít platnou licenci pro [office 365 ATP Plan 2](https://docs.microsoft.com/microsoft-365/security/office-365-security/office-365-atp#office-365-atp-plan-1-and-plan-2) (včetně licencí Office 365 E5, Office 365 A5 a Microsoft 365 E5 a k nákupu zvlášť). 
+- Musíte mít platnou licenci pro [office 365 ATP Plan 2](/microsoft-365/security/office-365-security/office-365-atp#office-365-atp-plan-1-and-plan-2) (včetně licencí Office 365 E5, Office 365 A5 a Microsoft 365 E5 a k nákupu zvlášť). 
 
 ## <a name="connect-to-microsoft-defender-for-office-365"></a>Připojit se k programu Microsoft Defender pro Office 365
 
@@ -77,4 +77,4 @@ Pokud se nasadí Microsoft Defender pro Office 365 a nakonfigurují zásady, mů
 
 V tomto dokumentu jste zjistili, jak připojit Microsoft Defender pro Office 365 ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](./tutorial-detect-threats-built-in.md).

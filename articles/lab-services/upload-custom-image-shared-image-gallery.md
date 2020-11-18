@@ -3,12 +3,12 @@ title: Azure Lab Services – nahrání vlastní image do galerie sdílených im
 description: Popisuje, jak nahrát vlastní image do galerie sdílených imagí. IT oddělení IT uvidí import imagí, obzvláště užitečné.
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: cd701215eb375b7f9b867ba05082afc7ed348ff7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b4141636b629168e9bb7a73e71a9fe4bfc39f5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91712390"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654639"
 ---
 # <a name="upload-a-custom-image-to-shared-image-gallery"></a>Nahrání vlastní image do Shared Image Gallery
 
@@ -35,31 +35,36 @@ Existuje mnoho možností pro vytvoření VHD z fyzického testovacího prostře
        
         :::image type="content" source="./media/upload-custom-image-shared-image-gallery/connect-virtual-hard-disk.png" alt-text="Připojit virtuální pevný disk":::   
     1. Image virtuálního počítače obvyklým způsobem.
-1. [Připojte se k virtuálnímu počítači a připravte ho pro Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
-    1. [Nastavení konfigurací Windows pro Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#set-windows-configurations-for-azure)
-    1. [Zkontrolujte služby systému Windows, které jsou potřeba k zajištění připojení virtuálního počítače.](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#check-the-windows-services)
-    1. [Aktualizovat nastavení registru vzdálené plochy](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#update-remote-desktop-registry-settings)
-    1. [Konfigurace pravidel brány Windows Firewall](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#configure-windows-firewall-rules)
+1. [Připojte se k virtuálnímu počítači a připravte ho pro Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md).
+    1. [Nastavení konfigurací Windows pro Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure)
+    1. [Zkontrolujte služby systému Windows, které jsou potřeba k zajištění připojení virtuálního počítače.](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services)
+    1. [Aktualizovat nastavení registru vzdálené plochy](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings)
+    1. [Konfigurace pravidel brány Windows Firewall](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)
     1. Nainstalovat aktualizace Windows
-    1. [Nainstalujte agenta virtuálního počítače Azure a další konfiguraci, jak je znázorněno zde.](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#complete-the-recommended-configurations) 
+    1. [Nainstalujte agenta virtuálního počítače Azure a další konfiguraci, jak je znázorněno zde.](../virtual-machines/windows/prepare-for-upload-vhd-image.md#complete-the-recommended-configurations) 
     
-    Výše uvedené kroky vytvoří specializovanou bitovou kopii. Pokud vytváříte zobecněnou bitovou kopii, budete také muset spustit [Nástroj Sysprep](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#determine-when-to-use-sysprep). <br/>
+    Výše uvedené kroky vytvoří specializovanou bitovou kopii. Pokud vytváříte zobecněnou bitovou kopii, budete také muset spustit [Nástroj Sysprep](../virtual-machines/windows/prepare-for-upload-vhd-image.md#determine-when-to-use-sysprep). <br/>
         Pokud chcete udržovat adresář uživatele (který může obsahovat soubory, informace o uživatelském účtu atd.), který je potřeba pro software obsažený v imagi, měli byste vytvořit specializovaný obrázek.
 1. Vzhledem k tomu, že **technologie Hyper-V** vytvoří ve výchozím nastavení soubor **VHDX** , budete ho muset převést na soubor VHD.
     1. Přejděte na **akci Správce technologie Hyper-V**  ->  **Action**  ->  **Upravit disk**.
     1. Tady budete mít možnost **převést** disk z VHDX na VHD.
     1. Když se pokusíte zvětšit velikost disku, ujistěte se, že nepřekračuje 128 GB.        
-        :::image type="content" source="./media/upload-custom-image-shared-image-gallery/choose-action.png" alt-text="Připojit virtuální pevný disk" Azure Portal. Jak už bylo zmíněno, velikost musí být > 128 GB.
+        :::image type="content" source="./media/upload-custom-image-shared-image-gallery/choose-action.png" alt-text="Zvolit akci":::   
+1. Nahráním virtuálního pevného disku do Azure se vytvoří spravovaný disk.
+    1. Z příkazového řádku můžete použít buď Průzkumník služby Storage nebo AzCopy, jak je popsáno v části [nahrání VHD do Azure nebo kopírování spravovaného disku do jiné oblasti](../virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md).        
+    Pokud počítač přejde do režimu spánku nebo zamkne, proces nahrávání se může přerušit a selhat.
+    1. Výsledkem tohoto kroku je, že teď máte spravovaný disk, který můžete vidět v Azure Portal. 
+        K výběru velikosti disku můžete použít kartu "Size\Performance" Azure Portal. Jak už bylo zmíněno, velikost musí být > 128 GB.
 1. Pořídit snímek spravovaného disku.
-    To se dá udělat buď z PowerShellu, pomocí Azure Portal, nebo v rámci Průzkumník služby Storage, jak je popsáno v tématu [vytvoření snímku pomocí portálu nebo PowerShellu](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+    To se dá udělat buď z PowerShellu, pomocí Azure Portal, nebo v rámci Průzkumník služby Storage, jak je popsáno v tématu [vytvoření snímku pomocí portálu nebo PowerShellu](../virtual-machines/windows/snapshot-copy-managed-disk.md).
 1. V galerii sdílených imagí vytvořte definici a verzi Image:
-    1. [Vytvořte definici obrázku](https://docs.microsoft.com/azure/virtual-machines/windows/shared-images-portal#create-an-image-definition).
+    1. [Vytvořte definici obrázku](../virtual-machines/windows/shared-images-portal.md#create-an-image-definition).
     1. Je nutné zadat také zde, zda vytváříte specializovanou a zobecněnou bitovou kopii.
 1. Vytvořte testovací prostředí v Azure Lab Services a vyberte vlastní image z Galerie sdílených imagí.
 
-    Pokud jste rozšířili disk po instalaci operačního systému na původní virtuální počítač Hyper-V, budete muset také rozšířit jednotku C v systému Windows tak, aby používala nepřidělené místo na disku. Pokud to chcete provést, přihlaste se k virtuálnímu počítači šablony po vytvoření testovacího prostředí a pak postupujte podle kroků uvedených v části [Rozšířené základní svazek](https://docs.microsoft.com/windows-server/storage/disk-management/extend-a-basic-volume). K tomu můžete využít tyto možnosti uživatelského rozhraní a také pomocí prostředí PowerShell.
+    Pokud jste rozšířili disk po instalaci operačního systému na původní virtuální počítač Hyper-V, budete muset také rozšířit jednotku C v systému Windows tak, aby používala nepřidělené místo na disku. Pokud to chcete provést, přihlaste se k virtuálnímu počítači šablony po vytvoření testovacího prostředí a pak postupujte podle kroků uvedených v části [Rozšířené základní svazek](/windows-server/storage/disk-management/extend-a-basic-volume). K tomu můžete využít tyto možnosti uživatelského rozhraní a také pomocí prostředí PowerShell.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled Galerie sdílených imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
+* [Přehled Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md)
 * [Jak používat galerii sdílených imagí](how-to-use-shared-image-gallery.md)

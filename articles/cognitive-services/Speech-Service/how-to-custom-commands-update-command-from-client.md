@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: 290f9ee9c23071ac56b1ff0c65ddc03decbc7344
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1bffb09d0f49bbd0059e8a528d67bfe215f0650d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94571183"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654339"
 ---
 # <a name="update-a-command-from-the-client"></a>Aktualizace příkazu z klienta
 
@@ -121,17 +121,30 @@ Zamyslete se například na situaci, kdy chcete poslat ID a název zařízení p
 K otestování tohoto scénáře vytvoříme nový příkaz v naší aktuální aplikaci.
 1. Vytvořte nový příkaz s názvem GetDeviceInfo.
 1. Přidejte ukázkovou větu s "získat informace o zařízení".
-1. V pravidle dokončení dokončeno přidejte akci odeslat odezvu na řeč.
+1. V pravidle dokončení dokončeno přidejte akci odeslat odezvu na řeč, která obsahuje atributy instance třídy ClientContext.
     > ![Odeslat odezvu řeči pomocí kontextu](media/custom-commands/send-speech-response-context.png)
-1. Uložte a prohlaste svoji aplikaci.
-1. Otestujte svoji aplikaci.
+1. Uložte, školení a otestujte svoji aplikaci.
+1. V okně testování odešlete aktivitu pro aktualizaci kontextu klienta.
+    > ```json
+    >{
+    >   "type": "event",
+    >   "name": "RemoteUpdate",
+    >   "value": {
+    >     "clientContext": {
+    >       "deviceId": "12345",
+    >       "deviceName": "My device"
+    >     },
+    >     "processTurn": false
+    >   }
+    >}
+    > ```
+1. Pošle text "získat informace o zařízení".
     > ![Aktivita odeslání kontextu klienta](media/custom-commands/send-client-context-activity.png)
 
 Všimněte si pár věcí.
 1. Tuto aktivitu musíte poslat jenom jednou (v ideálním případě hned po spuštění připojení).
 1. Pro instance třídy ClientContext můžete použít složité objekty.
 1. Instance třídy ClientContext můžete použít v odpovědích na řeč pro posílání aktivit a při volání webových koncových bodů.
-
 
 ## <a name="next-steps"></a>Další kroky
 

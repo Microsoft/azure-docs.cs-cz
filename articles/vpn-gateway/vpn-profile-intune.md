@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7105597ec34e804c2f2b85b01feb4824d63005c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63b1d7f95711017feba52cad97f05128d83734da
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578117"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655166"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>Vytvoření profilu Intune pro nasazení profilů klientů VPN
 
@@ -35,7 +35,7 @@ V následujících krocích použijeme ukázkový kód XML pro vlastní profil O
 * Automatické připojení ZAPNUTo
 * Bylo povoleno zjišťování důvěryhodných sítí.
 
-Další podporované možnosti najdete v článku [CSP pro podpora vpnv2](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp) .
+Další podporované možnosti najdete v článku [CSP pro podpora vpnv2](/windows/client-management/mdm/vpnv2-csp) .
 
 1. Stáhněte si profil sítě VPN z Azure Portal a extrahujte soubor *azurevpnconfig.xml* z balíčku.
 1. Zkopírujte a vložte text uvedený níže do nového souboru textového editoru.
@@ -69,25 +69,25 @@ V této části vytvoříte profil Microsoft Intune s vlastním nastavením.
 1. Přihlaste se k Intune a přejděte na **zařízení – > konfigurační profily**. Vyberte **+ vytvořit profil**.
 
    :::image type="content" source="./media/create-profile-intune/configuration-profile.png" alt-text="Konfigurační profily":::
-1. V části **platforma**vyberte **Windows 10 a novější**. Jako **profil**vyberte **vlastní**. Potom vyberte **Vytvořit**.
+1. V části **platforma** vyberte **Windows 10 a novější**. Jako **profil** vyberte **vlastní**. Potom vyberte **Vytvořit**.
 1. Zadejte název a popis profilu a pak vyberte **Další**.
 1. Na kartě **nastavení konfigurace** vyberte **Přidat**.
 
     * **Název:** Zadejte název konfigurace.
     * **Popis:** Volitelný popis.
-    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (tyto informace najdete v souboru azurevpnconfig.xml ve <name> </name> značce).
+    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (tyto informace najdete v souboru azurevpnconfig.xml ve <name></name> značce).
     * **Datový typ:** Řetězec (soubor XML).
 
-   Vyberte ikonu složky a vyberte soubor, který jste uložili v kroku 6 v krocích [XML](#xml) . Vyberte **Přidat**.
+   Vyberte ikonu složky a vyberte soubor, který jste uložili v kroku 6 v krocích [XML](#xml) . Vyberte možnost **Přidat**.
 
-   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="Konfigurační profily" lightbox="./media/create-profile-intune/configuration-settings.png":::
+   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="Nastavení konfigurace" lightbox="./media/create-profile-intune/configuration-settings.png":::
 1. Vyberte **Další**.
-1. V části **přiřazení**vyberte skupinu, do které chcete doručovat konfiguraci. Pak vyberte **Další**.
+1. V části **přiřazení** vyberte skupinu, do které chcete doručovat konfiguraci. Pak vyberte **Další**.
 1. Pravidla použitelnosti jsou volitelná. V případě potřeby definujte jakákoli pravidla a pak vyberte **Další**.
 1. Na stránce **Revize + vytvořit** vyberte **vytvořit**.
 
-    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Konfigurační profily":::
-1. Váš vlastní profil se teď vytvoří. Microsoft Intune postup nasazení tohoto profilu najdete v tématu [přiřazení profilů uživatelů a zařízení](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign).
+    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Vytvořit profil":::
+1. Váš vlastní profil se teď vytvoří. Microsoft Intune postup nasazení tohoto profilu najdete v tématu [přiřazení profilů uživatelů a zařízení](/mem/intune/configuration/device-profile-assign).
  
 ## <a name="next-steps"></a>Další kroky
 

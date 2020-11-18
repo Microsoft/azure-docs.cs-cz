@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: afa1d958e054a769ea0f19b82afdf55a94c3d0cf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3a7d750caed297dfa364e2f1ef176ee19ad35480
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309708"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654202"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Vysoce výkonná obsluha s odvozeným serverem Triton (Preview) 
 
@@ -32,7 +32,7 @@ Triton je rozhraní *optimalizované pro odvození*. Poskytuje lepší využití
 > [!TIP]
 > Fragmenty kódu v tomto dokumentu jsou pro ilustrativní účely a nemusí zobrazovat kompletní řešení. Pro pracovní příklad kódu si přečtěte [kompletní ukázky Triton v tématu Azure Machine Learning](https://github.com/Azure/azureml-examples/tree/main/tutorials).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 * Znalost [toho, jak a kde nasadit model](how-to-deploy-and-where.md) s Azure Machine Learning.
@@ -66,7 +66,11 @@ Pracovní postup pro použití Triton pro nasazení modelu:
 1. Ověřte, že můžete odesílat požadavky do modelu nasazeného v Triton.
 1. Zahrňte svůj kód specifický pro Triton do nasazení AML.
 
-## <a name="optional-define-a-model-config-file"></a>Volitelné Definování konfiguračního souboru modelu
+## <a name="verify-that-triton-can-serve-your-model"></a>Ověřte, že Triton může sloužit vašemu modelu.
+
+Nejprve postupujte podle následujících kroků a ověřte, zda může Triton odvozený Server sloužit vašemu modelu.
+
+### <a name="optional-define-a-model-config-file"></a>Volitelné Definování konfiguračního souboru modelu
 
 Konfigurační soubor modelu oznamuje, kolik vstupů očekává a jaké dimenze budou mít tyto vstupy. Další informace o vytvoření konfiguračního souboru najdete v dokumentaci ke NVIDIA v tématu [Konfigurace modelu](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_configuration.html) .
 
@@ -75,7 +79,7 @@ Konfigurační soubor modelu oznamuje, kolik vstupů očekává a jaké dimenze 
 > 
 > Další informace o této možnosti naleznete v tématu [vygenerovaná konfigurace modelu](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_configuration.html#generated-model-configuration) v dokumentaci NVIDIA.
 
-## <a name="directory-structure"></a>Adresářová struktura
+### <a name="use-the-correct-directory-structure"></a>Použití správné adresářové struktury
 
 Při registraci modelu pomocí Azure Machine Learning můžete zaregistrovat jednotlivé soubory nebo adresářové struktury. Aby bylo možné používat Triton, musí být registrace modelu pro adresářovou strukturu, která obsahuje adresář s názvem `triton` . Obecnou strukturou tohoto adresáře je:
 
@@ -93,7 +97,7 @@ models
 > [!IMPORTANT]
 > Tato adresářová struktura je úložiště modelů Triton a je vyžadováno pro to, aby vaše modely pracovaly s Triton. Další informace najdete v dokumentaci k rozhraní NVIDIA v tématu [úložiště modelu Triton](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_repository.html) .
 
-## <a name="test-with-triton-and-docker"></a>Testování pomocí Triton a Docker
+### <a name="test-with-triton-and-docker"></a>Testování pomocí Triton a Docker
 
 K otestování modelu, abyste se ujistili, že běží s Triton, můžete použít Docker. Následující příkazy stáhnou kontejner Triton do místního počítače a pak spustí Triton Server:
 
@@ -146,7 +150,7 @@ Kromě základní kontroly stavu můžete vytvořit klienta, který bude odesíl
 
 Další informace o spouštění Triton pomocí Docker najdete v tématu [spuštění Triton v systému s grafickým procesorem](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/run.html#running-triton-on-a-system-with-a-gpu) a [spuštění Triton v systému bez GPU](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/run.html#running-triton-on-a-system-without-a-gpu).
 
-## <a name="register-your-model"></a>Registrace modelu
+### <a name="register-your-model"></a>Registrace modelu
 
 Teď, když jste ověřili, že váš model spolupracuje s Triton, zaregistrujte ho pomocí Azure Machine Learning. Registrace modelu ukládá vaše soubory modelů v pracovním prostoru Azure Machine Learning a používá se při nasazení pomocí sady Python SDK a Azure CLI.
 
@@ -176,9 +180,9 @@ az ml model register --model-path='triton' \
 
 <a id="processing"></a>
 
-## <a name="add-pre-and-post-processing"></a>Přidání předběžného a následného zpracování
+## <a name="verify-you-can-call-into-your-model"></a>Ověření, že můžete volat do svého modelu
 
-Po ověření, že webová služba funguje, můžete přidat kód před a po zpracování definováním _skriptu pro vložení_. Tento soubor má název `score.py` . Další informace o vstupních skriptech najdete v tématu [Definování skriptu pro zadání](how-to-deploy-and-where.md#define-an-entry-script).
+Po ověření, že je Triton schopen zajišťovat váš model, můžete přidat kód před a po zpracování definováním _skriptu pro vložení_. Tento soubor má název `score.py` . Další informace o vstupních skriptech najdete v tématu [Definování skriptu pro zadání](how-to-deploy-and-where.md#define-an-entry-script).
 
 Dva hlavní kroky jsou k inicializaci klienta Triton HTTP v `init()` metodě a volání do tohoto klienta ve vaší `run()` funkci.
 

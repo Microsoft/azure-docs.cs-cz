@@ -6,55 +6,20 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7d0844e699c012d987c23a75e2b0874005cf535a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13f45c96a830110bd0f4a2d4a2b422921d7a2e31
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87097386"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654452"
 ---
 # <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Nastavení rozhraní příkazového řádku Azure pro Azure HPC Cache
 
 Pomocí těchto kroků Připravte prostředí před použitím Azure CLI k vytvoření nebo správě mezipaměti HPC Azure.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="install-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
-
-Mezipaměť prostředí Azure HPC vyžaduje verzi 2,7 nebo novější rozhraní příkazového řádku Azure CLI. Spusťte `az --version` a zjistěte verzi a závislé knihovny, které jsou nainstalované. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
-
-```azurecli-interactive
-az --version
-```
-
-### <a name="install-the-azure-hpc-cache-extension"></a>Instalace rozšíření mezipaměti HPC Azure
-
-Funkce mezipaměti HPC Azure nejsou součástí hlavního základu kódu, takže musíte také nainstalovat odkaz na rozšíření. Postupujte podle následujících pokynů.
-
-1. Přihlásit se
-
-   Přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) , pokud používáte místně nainstalovanou verzi rozhraní příkazového řádku.
-
-    ```azurecli
-    az login
-    ```
-
-    Dokončete proces ověřování podle kroků zobrazených v terminálu.
-
-   > [!TIP]
-   > Pokud máte více předplatných, musíte si vybrat jednu z nich. Vyberte ho při spuštění Cloud Shell relace na webu Azure Portal, nebo postupujte podle pokynů v tématu [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in) a nastavte své předplatné z příkazového řádku.
-
-2. Instalace rozšíření Azure CLI
-
-   Funkce mezipaměti HPC Azure jsou k dispozici jako rozšíření Azure CLI – zatím není součástí základního balíčku CLI. Musíte nainstalovat odkaz na rozšíření, abyste ho mohli použít.
-
-   Rozšíření Azure CLI poskytují přístup k experimentálním a předběžným příkazům. Další informace o rozšířeních, včetně aktualizace a odinstalace, najdete v tématu [použití rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
-
-   Nainstalujte rozšíření pro mezipaměť prostředí Azure HPC spuštěním následujícího příkazu:
-
-    ```azurecli-interactive
-    az extension add --name hpc-cache
-   ```
+ - Mezipaměť prostředí Azure HPC vyžaduje verzi 2,7 nebo novější rozhraní příkazového řádku Azure CLI. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="set-default-resource-group-optional"></a>Nastavit výchozí skupinu prostředků (volitelné)
 

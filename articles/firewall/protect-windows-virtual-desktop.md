@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: ae33d763bda49756e9f90a05feda5089b63ef28b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400152"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654979"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Ochrana nasazení virtuálních ploch s Windows pomocí Azure Firewallu
 
@@ -36,7 +36,7 @@ Další informace o prostředích virtuálních počítačů s Windows najdete v
 Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí mít přístup k podrobnějšímu fungování několika plně kvalifikovaných názvů domén (FQDN). Azure Firewall poskytuje pro zjednodušení této konfigurace značku plně kvalifikovaného názvu domény virtuálního počítače s Windows. Pro povolení odchozích přenosů platformy virtuálních počítačů s Windows použijte následující postup:
 
 - Nasaďte Azure Firewall a nakonfigurujte trasu (UDR) podsítě fondu virtuálních počítačů s Windows pro směrování veškerého provozu přes Azure Firewall. Vaše výchozí trasa teď odkazuje na bránu firewall.
-- Vytvořte kolekci pravidel aplikace a přidejte pravidlo, které povolí značku *WindowsVirtualDesktop* plně kvalifikovaného názvu domény. Zdrojový rozsah IP adres je virtuální síť fondu hostitelů, protokol je **https**a cíl je **WindowsVirtualDesktop**.
+- Vytvořte kolekci pravidel aplikace a přidejte pravidlo, které povolí značku *WindowsVirtualDesktop* plně kvalifikovaného názvu domény. Zdrojový rozsah IP adres je virtuální síť fondu hostitelů, protokol je **https** a cíl je **WindowsVirtualDesktop**.
 
 - Sada požadovaných účtů úložiště a služby Service Bus pro fond hostitelů virtuálních počítačů s Windows je specifická pro nasazení, takže ještě není zachycena ve značce WindowsVirtualDesktop plně kvalifikovaného názvu domény. Můžete to vyřešit jedním z následujících způsobů:
 
@@ -63,7 +63,7 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 
 V závislosti na potřebách vaší organizace možná budete chtít povolit zabezpečený odchozí přístup k Internetu koncovým uživatelům. V případech, kdy je seznam povolených cílů dobře definovaný (například [Microsoft 365 přístup](/microsoft-365/enterprise/microsoft-365-ip-web-service)), můžete pomocí Azure firewall aplikace a pravidel sítě nakonfigurovat požadovaný přístup. Tento postup směruje přenosy koncového uživatele přímo na Internet za účelem dosažení nejlepšího výkonu.
 
-Pokud chcete filtrovat odchozího internetového provozu pomocí existující místní zabezpečené webové brány, můžete nakonfigurovat webové prohlížeče nebo jiné aplikace běžící na fondu hostitelů virtuálních ploch Windows s explicitní konfigurací proxy serveru. Například viz [jak použít možnosti příkazového řádku Microsoft Edge ke konfiguraci nastavení proxy serveru](https://docs.microsoft.com/deployedge/edge-learnmore-cmdline-options-proxy-settings). Tato nastavení proxy mají vliv na přístup k Internetu koncovým uživatelům, což umožňuje, aby odchozí přenosy platformy virtuálních počítačů s Windows přímo prostřednictvím Azure Firewall.
+Pokud chcete filtrovat odchozího internetového provozu pomocí existující místní zabezpečené webové brány, můžete nakonfigurovat webové prohlížeče nebo jiné aplikace běžící na fondu hostitelů virtuálních ploch Windows s explicitní konfigurací proxy serveru. Například viz [jak použít možnosti příkazového řádku Microsoft Edge ke konfiguraci nastavení proxy serveru](/deployedge/edge-learnmore-cmdline-options-proxy-settings). Tato nastavení proxy mají vliv na přístup k Internetu koncovým uživatelům, což umožňuje, aby odchozí přenosy platformy virtuálních počítačů s Windows přímo prostřednictvím Azure Firewall.
 
 ## <a name="additional-considerations"></a>Další aspekty
 

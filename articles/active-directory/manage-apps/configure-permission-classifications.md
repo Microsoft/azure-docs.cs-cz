@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: d23ef7b78f5e97ee8a82f46794f37f3baf05ca49
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b72530868b2b12e5f95e79be6ad5a2d7ce170b62
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427659"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654673"
 ---
 # <a name="configure-permission-classifications"></a>Konfigurace klasifikací oprávnění
 
@@ -35,7 +35,7 @@ V současné době je podporována pouze klasifikace oprávnění "nízká dopad
 Pomocí následujících kroků můžete klasifikovat oprávnění pomocí Azure Portal:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator) .
-1. Vyberte **Azure Active Directory**  >  souhlasu**podnikových aplikací**  >  **a**  >  **klasifikace oprávnění**.
+1. Vyberte **Azure Active Directory**  >  souhlasu **podnikových aplikací**  >  **a**  >  **klasifikace oprávnění**.
 1. Zvolením možnosti **Přidat oprávnění** Klasifikujte jiné oprávnění jako "nízký dopad".
 1. Vyberte rozhraní API a pak vyberte delegovaná oprávnění.
 
@@ -45,7 +45,7 @@ V tomto příkladu jsme klasifikováni s minimální sadou oprávnění vyžadov
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-K klasifikaci oprávnění můžete použít nejnovější modul Azure AD PowerShell Preview, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true). Klasifikace oprávnění jsou nakonfigurovány na objektu **ServicePrincipal** rozhraní API, který publikuje oprávnění.
+K klasifikaci oprávnění můžete použít nejnovější modul Azure AD PowerShell Preview, [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview). Klasifikace oprávnění jsou nakonfigurovány na objektu **ServicePrincipal** rozhraní API, který publikuje oprávnění.
 
 #### <a name="list-the-current-permission-classifications-for-an-api"></a>Vypíše aktuální klasifikace oprávnění pro rozhraní API.
 
@@ -123,7 +123,7 @@ Další informace najdete v tématech:
 * [Konfigurace pracovního postupu pro vyjádření souhlasu správce](configure-admin-consent-workflow.md)
 * [Naučte se spravovat souhlas s aplikacemi a hodnotit žádosti o souhlas.](manage-consent-requests.md)
 * [Udělení souhlasu správce v rámci celého tenanta aplikaci](grant-admin-consent.md)
-* [Oprávnění a souhlas na platformě Microsoft identity](../develop/active-directory-v2-scopes.md)
+* [Oprávnění a souhlas na platformě Microsoft identity](../develop/v2-permissions-and-consent.md)
 
 Pokud chcete získat nápovědu nebo najít odpovědi na své otázky:
 * [Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 70f350204796099e02f7afe829a6e2e1fdf653c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b7bc87f83925baed15bc6a411f5b4e4f78df6cc
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613089"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654503"
 ---
 # <a name="edit-storage-targets"></a>Úprava cílů úložiště
 
@@ -40,7 +40,7 @@ Pokud chcete cíl úložiště odebrat, otevřete stránku **cíle úložiště*
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
 Pomocí [AZ HPC-cache Storage-Target Remove](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-remove) odstraňte cíl úložiště z mezipaměti.
 
@@ -79,7 +79,7 @@ Po provedení změn aktualizujte cíl úložiště kliknutím na tlačítko **OK
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
 Pokud chcete změnit obor názvů cíle služby Blob Storage pomocí Azure CLI, použijte příkaz [AZ HPC-cache BLOB-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update). `--virtual-namespace-path`Lze změnit pouze hodnotu.
 
@@ -117,7 +117,7 @@ Pro aktualizaci hodnot oboru názvů použijte stránku **oboru názvů** pro me
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
 Použijte ``--junction`` možnost v příkazu [AZ HPC-cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target) a změňte cestu k oboru názvů, export NFS nebo export podadresáře.
 
@@ -159,7 +159,7 @@ Pomocí rozevíracího selektoru vyberte nový model využití. Kliknutím na tl
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
 Použijte příkaz [AZ HPC-cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target?view=azure-cli-latest#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) .
 
