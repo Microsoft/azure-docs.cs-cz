@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e60c829831bde3b454ab180d1a39ec46cb346963
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069404"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658634"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
@@ -48,7 +48,7 @@ Pokud chcete použít Azure Portal k dokončení tohoto kurzu, přečtěte si t�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek vyžaduje, abyste spustili PowerShell místně. Musíte mít nainstalovaný modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
+Tento článek vyžaduje, abyste spustili PowerShell místně. Musíte mít nainstalovaný modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
 
 Předpokladem správného fungování tohoto scénáře jsou tři klíčové požadavky:
 
@@ -68,9 +68,9 @@ V části [Vytvoření tras](#create-the-routes) v tomto článku najdete inform
 >[!NOTE]
 >Provoz mezi přímo rovnocenným virtuální sítě je směrován přímo, i když jako výchozí bránu UDR body Azure Firewall. Aby bylo možné odeslat podsíť do brány firewall v tomto scénáři, musí UDR v obou podsítích explicitně obsahovat předponu sítě cílové podsítě.
 
-Chcete-li si projít referenční dokumentaci související Azure PowerShell, přečtěte si téma [Azure PowerShell reference](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
+Chcete-li si projít referenční dokumentaci související Azure PowerShell, přečtěte si téma [Azure PowerShell reference](/powershell/module/az.network/new-azfirewall).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="declare-the-variables"></a>Deklarování proměnných
 
@@ -463,7 +463,7 @@ Na webu Azure Portal se připojte k virtuálnímu počítači **VM-Onprem**.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-Otevřete webový prohlížeč na **virtuálním počítači-OnPrem**a přejděte na http:// \<VM-spoke-01 private IP\> .
+Otevřete webový prohlížeč na **virtuálním počítači-OnPrem** a přejděte na http:// \<VM-spoke-01 private IP\> .
 
 Měla by se zobrazit výchozí stránka Internetové informační služby.
 
@@ -496,4 +496,4 @@ Prostředky brány firewall si můžete ponechat pro další kurz, nebo můžete
 
 Dál můžete pokračovat monitorováním protokolů brány Azure Firewall.
 
-[Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)
+[Kurz: Monitorování protokolů brány Azure Firewall](./firewall-diagnostics.md)

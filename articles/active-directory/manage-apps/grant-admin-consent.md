@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9680c9bee6d0cf5c9605ce7b6009a500abd81ffb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7e56968250c10bb46553e618fd278df7d642683f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369093"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659076"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udělení souhlasu správce v rámci celého tenanta aplikaci
 
@@ -25,12 +25,12 @@ Naučte se, jak zjednodušit uživatelské prostředí tím, že aplikaci uděl�
 
 Další informace o tom, jak se předávají aplikacím, najdete v tématu [Azure Active Directory souhlasu Framework](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Udělení souhlasu správce pro celé tenanta vyžaduje, abyste se přihlásili jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator).
 
 > [!IMPORTANT]
-> Pokud se aplikaci udělí souhlas správce na úrovni tenanta, všichni uživatelé se budou moct k aplikaci přihlásit, pokud není nakonfigurovaná tak, aby vyžadovala přiřazení uživatele. Chcete-li omezit, kteří uživatelé se mohou přihlašovat k aplikaci, vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci. Další informace najdete v tématu [metody přiřazení uživatelů a skupin](methods-for-assigning-users-and-groups.md).
+> Pokud se aplikaci udělí souhlas správce na úrovni tenanta, všichni uživatelé se budou moct k aplikaci přihlásit, pokud není nakonfigurovaná tak, aby vyžadovala přiřazení uživatele. Chcete-li omezit, kteří uživatelé se mohou přihlašovat k aplikaci, vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci. Další informace najdete v tématu [metody přiřazení uživatelů a skupin](./assign-user-or-group-access-portal.md).
 >
 > Role globálního správce je nutná k poskytnutí souhlasu správce pro oprávnění aplikace Microsoft Graph API.
 
@@ -99,6 +99,6 @@ Jako vždy pečlivě zkontrolujte oprávnění, která aplikace požaduje, před
 
 [Konfigurace pracovního postupu pro vyjádření souhlasu správce](configure-admin-consent-workflow.md)
 
-[Oprávnění a souhlas na platformě Microsoft identity](../develop/active-directory-v2-scopes.md)
+[Oprávnění a souhlas na platformě Microsoft identity](../develop/v2-permissions-and-consent.md)
 
 [Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

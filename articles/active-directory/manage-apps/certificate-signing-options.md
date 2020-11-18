@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2625698ae1d76dbae3ed8a8855b88dd6ac7bb17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79bc43bb2fa99f95a462dcc4c68d27840199b45c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763682"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658532"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Rozšířené možnosti podepisování certifikátů v tokenu SAML pro aplikace Galerie v Azure Active Directory
 
@@ -69,11 +69,11 @@ V dalším kroku změňte možnosti podepsání certifikátu v tokenu SAML pro t
 
    ![Příklad: stránka podpisového certifikátu SAML](./media/certificate-signing-options/saml-signing-page.png)
 
-1. V rozevíracím seznamu **možnost podepisování vyberte možnost** **podepsat odpověď SAML**, **podepsat kontrolní výraz SAML**nebo **podepsat odpověď a kontrolní výraz SAML**. Popisy těchto možností se zobrazí výše v tomto článku v části [možnosti podepisování certifikátu](#certificate-signing-options).
+1. V rozevíracím seznamu **možnost podepisování vyberte možnost** **podepsat odpověď SAML**, **podepsat kontrolní výraz SAML** nebo **podepsat odpověď a kontrolní výraz SAML**. Popisy těchto možností se zobrazí výše v tomto článku v části [možnosti podepisování certifikátu](#certificate-signing-options).
 1. V rozevíracím seznamu **algoritmus podepisování** vyberte **SHA-1** nebo **SHA-256**. Popisy těchto možností se zobrazí výše v tomto článku v části [algoritmy podepisování certifikátů](#certificate-signing-algorithms) .
 1. Pokud jste s vašimi možnostmi spokojeni, vyberte **Uložit** a použijte tak nové nastavení podpisového certifikátu SAML. V opačném případě vyberte **X** , chcete-li změny zahodit.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](configure-federated-single-sign-on-non-gallery-applications.md)
-* [Řešení potíží s jednotným přihlašováním založeným na SAML](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](./configure-saml-single-sign-on.md)
+* [Řešení potíží s jednotným přihlašováním založeným na SAML](./debug-saml-sso-issues.md)

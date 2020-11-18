@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: addc3f091a2699079b0463b0d6e4d0cf097f3573
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb8375c4e6ef3af90d5f533bc608046802eec736
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88507072"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658838"
 ---
 # <a name="assign-a-user-to-a-specific-azure-ad-application-proxy-application"></a>Přiřazení uživatele ke konkrétní aplikaci Azure Proxy aplikací služby AD
 
@@ -28,7 +28,7 @@ Tento ukázkový skript PowerShellu vám umožní přiřadit uživatele ke konkr
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro modul Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) nebo [prostředí AzureAD v2 PowerShell pro verzi Preview modulu grafu](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
+Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro modul Graph](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) nebo [prostředí AzureAD v2 PowerShell pro verzi Preview modulu grafu](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -38,10 +38,10 @@ Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro modul Graph](https
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/new-azureaduserapproleassignment?view=azureadps-2.0) | Přiřadí uživatele k roli aplikace. |
+| [New-AzureADUserAppRoleAssignment](/powershell/module/AzureAD/new-azureaduserapproleassignment?view=azureadps-2.0) | Přiřadí uživatele k roli aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure AD PowerShell najdete v tématu [Přehled modulu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
+Další informace o modulu Azure AD PowerShell najdete v tématu [Přehled modulu Azure AD PowerShell](/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
 Další příklady PowerShellu pro proxy aplikací najdete v tématu [Azure AD PowerShell – příklady pro azure proxy aplikací služby AD](../application-proxy-powershell-samples.md).

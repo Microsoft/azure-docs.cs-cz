@@ -7,19 +7,20 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: a2b97bcc9fe902480364ade19efdae863556ac1e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 87fe02aed19ae7e5858715748a2b4c4da87a07b3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629423"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658566"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Vytvoření služby privátního propojení pomocí Azure CLI
 V tomto článku se dozvíte, jak vytvořit službu privátního propojení v Azure pomocí rozhraní příkazového řádku Azure CLI.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít nejnovější verzi rozhraní příkazového řádku Azure CLI. Pokud chcete najít nainstalovanou verzi, spusťte příkaz `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
+- Tento článek vyžaduje nejnovější verzi rozhraní příkazového řádku Azure CLI. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
+
 ## <a name="create-a-private-link-service"></a>Vytvoření služby privátního propojení
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -29,7 +30,7 @@ Než budete moct vytvořit virtuální síť, musíte vytvořit skupinu prostře
 az group create --name myResourceGroup --location westcentralus
 ```
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Tento příklad vytvoří výchozí virtuální síť s názvem *myVirtualNetwork* s jednou podsítí s názvem *mySubnet* :
+Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Tento příklad vytvoří výchozí virtuální síť s názvem *myVirtualNetwork* s jednou podsítí s názvem *mySubnet*:
 
 ```azurecli-interactive
 az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
@@ -62,7 +63,7 @@ Sonda stavu kontroluje všechny instance virtuálních počítačů a ověřuje,
 
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) vytvořte pravidlo nástroje pro vyrovnávání zatížení *myHTTPRule* pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool* , a to taky na portu 80. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) vytvořte pravidlo nástroje pro vyrovnávání zatížení *myHTTPRule* pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool*, a to taky na portu 80. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -111,7 +112,7 @@ V dalším kroku ukážeme, jak namapovat tuto službu na privátní koncový bo
 ## <a name="private-endpoints"></a>Soukromé koncové body
 
 ### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě 
-Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create). Tento příklad vytvoří virtuální síť s názvem  *myPEVNet*   ve skupině prostředků s názvem *myResourcegroup* : 
+Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create). Tento příklad vytvoří virtuální síť s názvem  *myPEVNet*   ve skupině prostředků s názvem *myResourcegroup*: 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +120,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>Vytvoření podsítě 
-Vytvořte podsíť ve virtuální síti pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). Tento příklad vytvoří podsíť s názvem  *mySubnet*   ve virtuální síti s názvem *myPEVnet* ve skupině prostředků s názvem *myResourcegroup* : 
+Vytvořte podsíť ve virtuální síti pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). Tento příklad vytvoří podsíť s názvem  *mySubnet*   ve virtuální síti s názvem *myPEVnet* ve skupině prostředků s názvem *myResourcegroup*: 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -152,7 +153,7 @@ az network private-endpoint create \
 --location westcentralus 
 ```
 Můžete získat *privátní připojení-Resource-ID* `az network private-link-service show` ve službě privátního propojení. ID bude vypadat takto:   
-/subscriptions/subID/resourceGroups/ *ResourceGroupName* /Providers/Microsoft.Network/privateLinkServices/ **privatelinkservicename** 
+/subscriptions/subID/resourceGroups/*ResourceGroupName*/Providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>Zobrazit připojení služby privátního propojení 
  

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 4f65cc79c972a48f97e794b4c2870c3fb6e68d31
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 6dbe97d615753f0a90c8ba80aa7afa6dafa15eb2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557669"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658464"
 ---
 # <a name="what-is-custom-speech"></a>Co je Custom Speech?
 
@@ -35,7 +35,7 @@ Tento diagram zvýrazňuje části, které tvoří [portál Custom Speech](https
 
 1. [Kontrola kvality rozpoznávání](how-to-custom-speech-inspect-data.md) – pomocí [Custom Speechového portálu](https://speech.microsoft.com/customspeech) můžete přehrát nahraný zvuk a zkontrolovat kvalitu rozpoznávání řeči vašich testovacích dat. Kvantitativní měření najdete v tématu [Kontrola dat](how-to-custom-speech-inspect-data.md).
 
-1. [Vyhodnotit a vylepšit přesnost](how-to-custom-speech-evaluate-data.md) – vyhodnotit a vylepšit přesnost modelu řeči na text. [Portál Custom Speech](https://speech.microsoft.com/customspeech) poskytne *Četnost chyb slov* , která se dá použít k určení, jestli je potřeba další školení. Pokud jste spokojeni s přesností, můžete použít rozhraní API služby Speech přímo. Pokud byste chtěli zlepšit přesnost relativních průměrů 5% až 20%, použijte na portálu kartu **školení** k nahrání dalších školicích dat, jako jsou přepisy popisků a související text.
+1. [Vyhodnotit a vylepšit přesnost](how-to-custom-speech-evaluate-data.md) – vyhodnotit a vylepšit přesnost modelu řeči na text. [Portál Custom Speech](https://speech.microsoft.com/customspeech) poskytne *Četnost chyb slov*, která se dá použít k určení, jestli je potřeba další školení. Pokud jste spokojeni s přesností, můžete použít rozhraní API služby Speech přímo. Pokud byste chtěli zlepšit přesnost relativních průměrů 5% až 20%, použijte na portálu kartu **školení** k nahrání dalších školicích dat, jako jsou přepisy popisků a související text.
 
 1. [Výuka a nasazení modelu](how-to-custom-speech-train-model.md) – Vylepšete přesnost vašeho modelu řeči na text tím, že zadáte písemné přepisy (10 – 1000 hodin) a související text (<200 MB) spolu s daty testovacího testu. Tato data pomáhají naučit model řeči na text. Po školení, opětovném testování a pokud jste s výsledkem spokojeni, můžete model nasadit do vlastního koncového bodu.
 
@@ -56,26 +56,26 @@ Po vytvoření účtu Azure a předplatného služby Speech se budete muset při
 
 Obsah, který je podobný datům, modelům, testům a koncovým bodům, je uspořádán do **projektů** na [portálu Custom Speech](https://speech.microsoft.com/customspeech). Každý projekt je specifický pro doménu a zemi/jazyk. Můžete například vytvořit projekt pro volání Center, která používají angličtinu v USA.
 
-Pokud chcete vytvořit svůj první projekt, vyberte **Speech-to-text/Custom Speech** a pak klikněte na **Nový projekt**. Postupujte podle pokynů průvodce a vytvořte projekt. Po vytvoření projektu by se vám měly zobrazit čtyři karty: **data** , **testování** , **školení** a **nasazení**. Pomocí odkazů uvedených v [následujících krocích](#next-steps) se dozvíte, jak používat jednotlivé karty.
+Pokud chcete vytvořit svůj první projekt, vyberte **Speech-to-text/Custom Speech** a pak klikněte na **Nový projekt**. Postupujte podle pokynů průvodce a vytvořte projekt. Po vytvoření projektu by se vám měly zobrazit čtyři karty: **data**, **testování**, **školení** a **nasazení**. Pomocí odkazů uvedených v [následujících krocích](#next-steps) se dozvíte, jak používat jednotlivé karty.
 
 > [!IMPORTANT]
 > [Portál Custom Speech](https://aka.ms/custom-speech) se nedávno aktualizoval. Pokud jste vytvořili předchozí data, modely, testy a publikované koncové body na portálu CRIS.ai nebo pomocí rozhraní API, je potřeba vytvořit nový projekt na novém portálu pro připojení k těmto starým entitám.
 
 ## <a name="model-lifecycle"></a>Životní cyklus modelu
 
-Vlastní řeč používá **základní modely** i **vlastní modely**. Každý jazyk má jeden nebo více **základních modelů**. Obecně platí, že když se do služby normálního rozpoznávání řeči uvolní nový model řeči, naimportuje se také do služby Custom Speech jako nový **základní model**. Jsou aktualizovány každých 3-6 měsíců a starší modely obvykle jsou méně užitečné v průběhu času, protože nejnovější model obvykle má podstatně vyšší přesnost.
+Vlastní řeč používá **základní modely** i **vlastní modely**. Každý jazyk má jeden nebo více **základních modelů**. Obecně platí, že když se do služby normálního rozpoznávání řeči uvolní nový model řeči, naimportuje se také do služby Custom Speech jako nový **základní model**. Obvykle se aktualizují každých 3-6 měsíců a starší modely se v průběhu času stanou méně užitečné, protože nejnovější model obvykle má vyšší přesnost.
 
-Naproti tomu **vlastní modely** se vytvářejí tak, že se vybraný základní model přizpůsobí konkrétnímu scénáři zákazníka. Můžete průběžně používat konkrétní vlastní model, jakmile se dodržíte na ten, který vyhovuje vašim potřebám, nebo v průběhu času pokračovat v práci s dalšími daty. 
+Naproti tomu **vlastní modely** se vytvářejí tak, že se vybraný základní model přizpůsobí konkrétnímu scénáři zákazníka. Až se vám dokončí vaše potřeby, můžete po delší dobu používat konkrétní vlastní model, ale doporučujeme, abyste pravidelně aktualizovali na nejnovější základní model a přepracovali s dalšími daty.
 
 K dalším klíčovým podmínkám souvisejícím s životním cyklem modelu patří:
 
-* **Přizpůsobení** : přebírání základního modelu a jeho přizpůsobení do vaší domény/scénáře pomocí textových dat nebo zvukových dat
-* **Dekódování** : použití modelu a provádění rozpoznávání řeči (dekódování zvuků do textu)
-* **Koncový bod** : uživatelsky specifické nasazení buď základního modelu, nebo vlastního modelu, který je přístupný *jenom* pro daného uživatele.
+* **Přizpůsobení**: přebírání základního modelu a jeho přizpůsobení do vaší domény/scénáře pomocí textových dat nebo zvukových dat
+* **Dekódování**: použití modelu a provádění rozpoznávání řeči (dekódování zvuků do textu)
+* **Koncový bod**: uživatelsky specifické nasazení buď základního modelu, nebo vlastního modelu, který je přístupný *jenom* pro daného uživatele.
 
 ### <a name="expiration-timeline"></a>Časová osa vypršení platnosti
 
-Změny základních modelů pro přidání nových funkcí a zlepšení výkonu mohou způsobovat problémy s zpětnou kompatibilitou pro starší modely a také způsobit změny přesnosti zjištěné u daného modelu v konkrétní testovací sadě dat. Chcete-li spravovat úsilí při údržbě modelů a koncových bodů, přečtěte si následující časové řádky časových os pro model a konec platnosti koncového bodu.
+Nové modely a nové funkce budou k dispozici a starší, ale méně přesné modely jsou vyřazeny, a to v následujících časových osách pro model a vypršení platnosti koncového bodu:
 
 **Základní modely** 
 
@@ -85,7 +85,7 @@ Změny základních modelů pro přidání nových funkcí a zlepšení výkonu 
 
 **Vlastní modely**
 
-* Dekódování: k dispozici po 2 letech po vytvoření modelu. To znamená, že můžete použít vlastní model po dobu 2 let (Batch/reálný/testování) po jeho vytvoření. Po 2 letech **byste měli svůj model přeškolit** , protože většina často základní model bude pro přizpůsobení zastaralá.  
+* Dekódování: k dispozici po 2 letech po vytvoření modelu. To znamená, že můžete použít vlastní model po dobu 2 let (Batch/reálný/testování) po jeho vytvoření. Po 2 letech **byste měli svůj model přeškolit**, protože většina často základní model bude pro přizpůsobení zastaralá.  
 * Koncové body: k dispozici na stejné časové ose jako dekódování
 
 Když vyprší platnost základního modelu nebo vlastního modelu, vždycky se vrátí k **nejnovější verzi základního modelu**. Vaše implementace proto nebude nikdy přerušena, ale může být méně přesné pro *vaše konkrétní data* , pokud je dosaženo vypršení vlastních modelů. Vypršení platnosti modelu můžete zobrazit na následujících místech na portálu Custom Speech:
@@ -94,7 +94,11 @@ Když vyprší platnost základního modelu nebo vlastního modelu, vždycky se 
 * Podrobnosti školení modelů
 * Souhrn nasazení
 * Podrobnosti o nasazení
- 
+
+Můžete také kontrolovat data vypršení platnosti přes [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) rozhraní API vlastního rozpoznávání řeči pod `deprecationDates` vlastností v odpovědi JSON.
+
+Všimněte si, že model můžete upgradovat na vlastní koncový bod řeči bez výpadků změnou modelu používaného koncovým bodem v části nasazení na vlastním portálu pro rozpoznávání řeči nebo prostřednictvím vlastního rozhraní Speech API.
+
 ## <a name="next-steps"></a>Další kroky
 
 * [Příprava a testování dat](how-to-custom-speech-test-data.md)

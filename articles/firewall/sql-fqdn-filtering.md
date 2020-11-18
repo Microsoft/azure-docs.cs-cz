@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 744fe22b6b2c9fbeb9b149760145267ccb6fa6f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7256f94b8e8376cf98a279d085a131a4ce84826f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89435208"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658618"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Konfigurace pravidel aplikace Azure Firewall s využitím plně kvalifikovaných názvů domén SQL
 
@@ -24,13 +24,13 @@ S využitím plně kvalifikovaných názvů domén SQL můžete filtrovat provoz
 - Z místního prostředí do Azure SQL Managed Instances nebo SQL IaaS spuštěné v virtuální sítě.
 - Od paprsku po paprsky až po Azure SQL Managed Instances nebo SQL IaaS spuštěné v virtuální sítě.
 
-Filtrování plně kvalifikovaného názvu domény SQL je podporováno pouze v [režimu proxy serveru](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) (port 1433). Pokud používáte SQL ve výchozím režimu přesměrování, můžete přístup filtrovat pomocí značky služby SQL jako součást [pravidel sítě](features.md#network-traffic-filtering-rules).
+Filtrování plně kvalifikovaného názvu domény SQL je podporováno pouze v [režimu proxy serveru](../azure-sql/database/connectivity-architecture.md#connection-policy) (port 1433). Pokud používáte SQL ve výchozím režimu přesměrování, můžete přístup filtrovat pomocí značky služby SQL jako součást [pravidel sítě](features.md#network-traffic-filtering-rules).
 Pokud pro provoz SQL IaaS používáte jiné než výchozí porty, můžete tyto porty nakonfigurovat v pravidlech aplikace brány firewall.
 
 ## <a name="configure-using-azure-cli"></a>Konfigurace pomocí Azure CLI
 
 1. Nasaďte [Azure firewall pomocí Azure CLI](deploy-cli.md).
-2. Pokud filtrujete provoz na Azure SQL Database, Azure synapse Analytics nebo spravované instance SQL, ujistěte se, že je režim připojení SQL nastavený na **proxy**. Pokud se chcete dozvědět, jak přepnout do režimu připojení SQL, přečtěte si téma [nastavení připojení Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli).
+2. Pokud filtrujete provoz na Azure SQL Database, Azure synapse Analytics nebo spravované instance SQL, ujistěte se, že je režim připojení SQL nastavený na **proxy**. Pokud se chcete dozvědět, jak přepnout do režimu připojení SQL, přečtěte si téma [nastavení připojení Azure SQL](../azure-sql/database/connectivity-settings.md#change-the-connection-policy-via-the-azure-cli).
 
    > [!NOTE]
    > Režim *proxy serveru* SQL může mít za následek větší latenci v porovnání s *přesměrování*. Pokud chcete pokračovat v používání režimu přesměrování, který je ve výchozím nastavení pro klienty připojující se v rámci Azure, můžete přístup filtrovat pomocí [značky služby](service-tags.md) SQL v [síťových pravidlech](tutorial-firewall-deploy-portal.md#configure-a-network-rule)brány firewall.
@@ -52,7 +52,7 @@ Pokud pro provoz SQL IaaS používáte jiné než výchozí porty, můžete tyto
 
 ## <a name="configure-using-the-azure-portal"></a>Konfigurace prostřednictvím portálu Azure Portal
 1. Nasaďte [Azure firewall pomocí Azure CLI](deploy-cli.md).
-2. Pokud filtrujete provoz na Azure SQL Database, Azure synapse Analytics nebo spravované instance SQL, ujistěte se, že je režim připojení SQL nastavený na **proxy**. Pokud se chcete dozvědět, jak přepnout do režimu připojení SQL, přečtěte si téma [nastavení připojení Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli).  
+2. Pokud filtrujete provoz na Azure SQL Database, Azure synapse Analytics nebo spravované instance SQL, ujistěte se, že je režim připojení SQL nastavený na **proxy**. Pokud se chcete dozvědět, jak přepnout do režimu připojení SQL, přečtěte si téma [nastavení připojení Azure SQL](../azure-sql/database/connectivity-settings.md#change-the-connection-policy-via-the-azure-cli).  
 
    > [!NOTE]
    > Režim *proxy serveru* SQL může mít za následek větší latenci v porovnání s *přesměrování*. Pokud chcete pokračovat v používání režimu přesměrování, který je ve výchozím nastavení pro klienty připojující se v rámci Azure, můžete přístup filtrovat pomocí [značky služby](service-tags.md) SQL v [síťových pravidlech](tutorial-firewall-deploy-portal.md#configure-a-network-rule)brány firewall.

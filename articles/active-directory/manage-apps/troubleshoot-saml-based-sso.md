@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 7f7f999c145903be5db3b20ab60bd0f5a18778ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e8508d4fceb1e7fb580350c726dd70eeaea31c6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463513"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658872"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Řešení jednotného přihlašování založeného na SAML v Azure Active Directory
-Pokud narazíte na problém při konfiguraci aplikace. Ověřte, že jste postupovali podle všech kroků v kurzu pro aplikaci. V konfiguraci aplikace máte vloženou dokumentaci týkající se konfigurace aplikace. Můžete také získat přístup k [seznamu kurzů, jak integrovat aplikace SaaS s Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) pro podrobné pokyny.
+Pokud narazíte na problém při konfiguraci aplikace. Ověřte, že jste postupovali podle všech kroků v kurzu pro aplikaci. V konfiguraci aplikace máte vloženou dokumentaci týkající se konfigurace aplikace. Můžete také získat přístup k [seznamu kurzů, jak integrovat aplikace SaaS s Azure Active Directory](../saas-apps/tutorial-list.md) pro podrobné pokyny.
 
 ## <a name="cant-add-another-instance-of-the-application"></a>Nejde přidat další instanci aplikace.
 Chcete-li přidat druhou instanci aplikace, je nutné mít tyto možnosti:
@@ -53,7 +53,7 @@ Pokud se hodnoty neshodují se vzorci předem konfigurovanými v Azure AD. Můž
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Kde mám nastavit formát EntityID (uživatelský identifikátor)
 Nebudete moct vybrat formát EntityID (uživatelský identifikátor), který Azure AD pošle do aplikace v reakci po ověření uživatele.
 
-Azure AD vyberte formát pro atribut NameID (identifikátor uživatele) na základě vybrané hodnoty nebo formátu, který požaduje aplikace v AuthRequest SAML. Další informace najdete v článku [jediný Sign-On protokol SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) v části NameIDPolicy,
+Azure AD vyberte formát pro atribut NameID (identifikátor uživatele) na základě vybrané hodnoty nebo formátu, který požaduje aplikace v AuthRequest SAML. Další informace najdete v článku [jediný Sign-On protokol SAML](../develop/single-sign-on-saml-protocol.md#authnrequest) v části NameIDPolicy,
 
 ## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>Nejde najít metadata Azure AD, aby se mohla dokončit konfigurace aplikace.
 Pokud chcete stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte takto:
@@ -70,7 +70,7 @@ Pokud chcete stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte
 Azure AD neposkytuje adresu URL pro získání metadat. Metadata lze načíst pouze jako soubor XML.
 
 ## <a name="customize-saml-claims-sent-to-an-application"></a>Přizpůsobení deklarací SAML odeslaných do aplikace
-Další informace o tom, jak přizpůsobit deklarace identity atributů SAML odeslané do vaší aplikace, najdete v tématu [mapování deklarací v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) .
+Další informace o tom, jak přizpůsobit deklarace identity atributů SAML odeslané do vaší aplikace, najdete v tématu [mapování deklarací v Azure Active Directory](../develop/active-directory-claims-mapping.md) .
 
 ## <a name="next-steps"></a>Další kroky
 * [Série rychlý Start při správě aplikací](view-applications-portal.md)

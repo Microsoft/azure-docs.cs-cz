@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7e72718e13106b9d895921a2335f1525a7b88c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe4e981782878ce4f86dd7dcb8ae635a60b2405a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763121"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658702"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>Konfigurace aplikace jedním kliknutím jednotného přihlašování
 
@@ -40,7 +40,7 @@ Funkce jednotného přihlašování jedním kliknutím je určená ke konfigurac
 ## <a name="prerequisites"></a>Požadavky
 
 - Aktivní předplatné aplikace, které se má nakonfigurovat pomocí jednotného přihlašování. Budete také potřebovat přihlašovací údaje správce.
-- **Rozšíření zabezpečené přihlašování aplikace** z Microsoftu nainstalované v prohlížeči Další informace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+- **Rozšíření zabezpečené přihlašování aplikace** z Microsoftu nainstalované v prohlížeči Další informace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="one-click-sso-configuration-steps"></a>Kroky pro konfiguraci jednotného přihlašování jedním kliknutím
 
@@ -59,7 +59,7 @@ Funkce jednotného přihlašování jedním kliknutím je určená ke konfigurac
 
    ![Nainstalovat zabezpečené přihlašovací rozšíření prohlížeče mých aplikací](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. Po přidání rozšíření do prohlížeče vyberte možnost **instalace \<Application Name\> **. Až budete přesměrováni na portál pro správu aplikací, přihlaste se jako správce.
+6. Po přidání rozšíření do prohlížeče vyberte možnost **instalace \<Application Name\>**. Až budete přesměrováni na portál pro správu aplikací, přihlaste se jako správce.
 
    ![Nastavit název aplikace](./media/one-click-sso-tutorial/setup-sso.png)
 
@@ -82,8 +82,7 @@ Funkce jednotného přihlašování jedním kliknutím je určená ke konfigurac
 
 11. Můžete vybrat **test** pro otestování jednotného přihlašování.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-* [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
-* [Jaké jsou rozšíření prohlížeče pro zabezpečené přihlašování k aplikacím?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
- 
+* [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](../saas-apps/tutorial-list.md)
+* [Jaké jsou rozšíření prohlížeče pro zabezpečené přihlašování k aplikacím?](../user-help/my-apps-portal-end-user-access.md)

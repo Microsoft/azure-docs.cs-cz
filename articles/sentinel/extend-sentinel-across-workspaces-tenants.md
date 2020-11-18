@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d13f401fab126f57d07d405ab5d6ce461c26e139
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578474"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658940"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Rozšíření Azure Sentinelu napříč pracovními prostory a tenanty
 
@@ -84,7 +84,7 @@ Azure Sentinel podporuje [zobrazení na více pracovních prostorů](./multiple-
 Sentinel Azure podporuje dotazování na [více pracovních prostorů v jednom dotazu](../azure-monitor/log-query/cross-workspace-query.md), což vám umožní vyhledávat a korelovat data z několika pracovních prostorů v jednom dotazu. 
 
 - Pomocí [výrazu pracovní prostor ()](../azure-monitor/log-query/workspace-expression.md) můžete odkazovat na tabulku v jiném pracovním prostoru. 
-- Použijte [operátor UNION](https://docs.microsoft.com/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) vedle výrazu pracovní prostor () a použijte dotaz napříč tabulkami ve více pracovních prostorech.
+- Použijte [operátor UNION](/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) vedle výrazu pracovní prostor () a použijte dotaz napříč tabulkami ve více pracovních prostorech.
 
 Uložené [funkce](../azure-monitor/log-query/functions.md) můžete použít k zjednodušení dotazů mezi jednotlivými pracovními prostory. Například pokud je odkaz na pracovní prostor dlouhý, může být vhodné uložit výraz `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` jako funkci s názvem `SecurityEventCustomerA` . Pak můžete napsat dotazy jako `SecurityEventCustomerA | where ...` .
 

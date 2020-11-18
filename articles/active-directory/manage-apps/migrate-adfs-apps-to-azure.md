@@ -14,16 +14,16 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a07130e55339ed689b65b48e6fd83e65f36d155e
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 1012ae32f679d23f16a7483415657596d027cc01
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280536"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658821"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Přesunutí ověřování aplikace z Active Directory Federation Services (AD FS) na Azure Active Directory
 
-[Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) nabízí univerzální platformu pro identitu, která poskytuje vašim lidem, partnerům a zákazníkům jedinou identitu pro přístup k aplikacím a spolupráci z libovolné platformy a zařízení. Azure AD má [plnou sadu funkcí pro správu identit](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis). Standardizace ověřování aplikací (App) a autorizace do Azure AD umožní výhodám, které tyto funkce poskytují.
+[Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) nabízí univerzální platformu pro identitu, která poskytuje vašim lidem, partnerům a zákazníkům jedinou identitu pro přístup k aplikacím a spolupráci z libovolné platformy a zařízení. Azure AD má [plnou sadu funkcí pro správu identit](../fundamentals/active-directory-whatis.md). Standardizace ověřování aplikací (App) a autorizace do Azure AD umožní výhodám, které tyto funkce poskytují.
 
 > [!TIP]
 > Tento článek je napsán pro vývojáře vývojářů. Vedoucí projektu a správci, kteří plánují přesun aplikace do služby Azure AD, by si měli zvážit, jak si přečtěte naše [migrace aplikace ověřování do Azure AD](https://aka.ms/migrateapps/whitepaper) White Paper (PDF).
@@ -49,11 +49,11 @@ Mnoho organizací má SaaS (software jako služba) nebo vlastní obchodní aplik
 
 Migrace všech ověřování aplikací do služby Azure AD je optimální, protože poskytuje jedinou řídicí plochu pro správu identit a přístupu.
 
-Vaše aplikace můžou k ověřování používat moderní nebo starší protokoly. Zvažte nejprve migraci aplikací, které používají moderní ověřovací protokoly (například SAML a Open ID Connect). Tyto aplikace je možné překonfigurovat pro ověřování pomocí Azure AD prostřednictvím integrovaného konektoru v naší galerii aplikací nebo registrací aplikace v Azure AD. Aplikace používající starší protokoly lze integrovat pomocí [aplikačního proxy serveru](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy).
+Vaše aplikace můžou k ověřování používat moderní nebo starší protokoly. Zvažte nejprve migraci aplikací, které používají moderní ověřovací protokoly (například SAML a Open ID Connect). Tyto aplikace je možné překonfigurovat pro ověřování pomocí Azure AD prostřednictvím integrovaného konektoru v naší galerii aplikací nebo registrací aplikace v Azure AD. Aplikace používající starší protokoly lze integrovat pomocí [aplikačního proxy serveru](./what-is-application-proxy.md).
 
-Další informace najdete v tématu [typy aplikací, které je možné integrovat se službou Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-management)?
+Další informace najdete v tématu [typy aplikací, které je možné integrovat se službou Azure AD](./what-is-application-management.md)?
 
-Můžete použít [sestavu aktivita aplikace AD FS k migraci aplikací do služby Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity) , pokud máte [povolený Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs).
+Můžete použít [sestavu aktivita aplikace AD FS k migraci aplikací do služby Azure AD](./migrate-adfs-application-activity.md) , pokud máte [povolený Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md).
 
 ### <a name="the-migration-process"></a>Proces migrace
 
@@ -88,38 +88,38 @@ Aktualizujte konfiguraci své produkční aplikace tak, aby odkazovala na produk
 
 ![Fáze 4 migrace ](media/migrate-adfs-apps-to-azure/stage4.jpg)
 
- Aplikace, které se ověřují pomocí AD FS, můžou pro oprávnění použít skupiny služby Active Directory. Než začnete s migrací, synchronizujte data identity mezi místním prostředím a službou Azure AD pomocí [Azure AD Connect synchronizace](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) . Před migrací ověřte tyto skupiny a členství, abyste mohli při migraci aplikace udělit přístup stejným uživatelům.
+ Aplikace, které se ověřují pomocí AD FS, můžou pro oprávnění použít skupiny služby Active Directory. Než začnete s migrací, synchronizujte data identity mezi místním prostředím a službou Azure AD pomocí [Azure AD Connect synchronizace](../hybrid/how-to-connect-sync-whatis.md) . Před migrací ověřte tyto skupiny a členství, abyste mohli při migraci aplikace udělit přístup stejným uživatelům.
 
 ### <a name="line-of-business-lob-apps"></a>Obchodní aplikace (LOB)
 
 Obchodní aplikace jsou vyvíjené interně ve vaší organizaci nebo dostupné jako standardní zabalený produkt, který je nainstalovaný v datovém centru. Mezi příklady patří aplikace založené na Windows Identity Foundation a aplikacích SharePoint (ne SharePoint Online).
 
-Obchodní aplikace, které používají OAuth 2,0, OpenID Connect nebo WS-Federation, se dají integrovat s Azure AD jako [Registrace aplikací](../develop/quickstart-register-app.md). Integrujte vlastní aplikace, které používají SAML 2,0 nebo WS-Federation jako [aplikace mimo galerii](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) na stránce podnikové aplikace v [Azure Portal](https://portal.azure.com/).
+Obchodní aplikace, které používají OAuth 2,0, OpenID Connect nebo WS-Federation, se dají integrovat s Azure AD jako [Registrace aplikací](../develop/quickstart-register-app.md). Integrujte vlastní aplikace, které používají SAML 2,0 nebo WS-Federation jako [aplikace mimo galerii](./add-application-portal.md) na stránce podnikové aplikace v [Azure Portal](https://portal.azure.com/).
 
 ## <a name="saml-based-single-sign-on"></a>Jednotné přihlašování založené na SAML
 
-Aplikace, které používají SAML 2,0 pro ověřování, lze nakonfigurovat pro [jednotné přihlašování založené na SAML](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (SSO-based SSO). Pomocí [jednotného přihlašování založeného na SAML](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)můžete mapovat uživatele na konkrétní aplikační role na základě pravidel definovaných v deklaracích SAML.
+Aplikace, které používají SAML 2,0 pro ověřování, lze nakonfigurovat pro [jednotné přihlašování založené na SAML](./what-is-single-sign-on.md) (SSO-based SSO). Pomocí [jednotného přihlašování založeného na SAML](./what-is-single-sign-on.md)můžete mapovat uživatele na konkrétní aplikační role na základě pravidel definovaných v deklaracích SAML.
 
-Konfigurace aplikace SaaS pro jednotné přihlašování založené na SAML najdete v tématu [Konfigurace jednotného přihlašování založené na SAML](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications).
+Konfigurace aplikace SaaS pro jednotné přihlašování založené na SAML najdete v tématu [Konfigurace jednotného přihlašování založené na SAML](./view-applications-portal.md).
 
 ![Snímky obrazovky uživatele SAML jednotného přihlašování ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
 
 
-Mnoho aplikací SaaS má [kurz specifický pro aplikaci](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) , který vás provede konfigurací jednotného přihlašování založeného na SAML.
+Mnoho aplikací SaaS má [kurz specifický pro aplikaci](../saas-apps/tutorial-list.md) , který vás provede konfigurací jednotného přihlašování založeného na SAML.
 
 ![kurz aplikace](media/migrate-adfs-apps-to-azure/app-tutorial.png)
 
-Migrace některých aplikací je snadná. Aplikace se složitějšími požadavky, jako jsou vlastní deklarace identity, můžou vyžadovat další konfiguraci ve službě Azure AD nebo Azure AD Connect. Informace o podporovaných mapováních deklarací identity najdete [v tématu Mapování deklarací identity v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping).
+Migrace některých aplikací je snadná. Aplikace se složitějšími požadavky, jako jsou vlastní deklarace identity, můžou vyžadovat další konfiguraci ve službě Azure AD nebo Azure AD Connect. Informace o podporovaných mapováních deklarací identity najdete [v tématu Mapování deklarací identity v Azure Active Directory](../develop/active-directory-claims-mapping.md).
 
 Při mapování atributů Pamatujte na následující omezení:
 
-* Ne všechny atributy, které se dají vystavovat v AD FS, se ve službě Azure AD zobrazí jako atributy pro generování tokenů SAML, a to i v případě, že se tyto atributy synchronizují. Při úpravách atributu se v rozevíracím seznamu hodnota zobrazí různé atributy, které jsou k dispozici ve službě Azure AD. Zkontrolujte konfiguraci [Azure AD Connect synchronizace](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) , aby se zajistilo, že se požadovaný atribut, například samAccountName--, synchronizuje do služby Azure AD. Atributy rozšíření můžete použít k vygenerování jakékoli deklarace identity, která není součástí standardního schématu uživatele ve službě Azure AD.
+* Ne všechny atributy, které se dají vystavovat v AD FS, se ve službě Azure AD zobrazí jako atributy pro generování tokenů SAML, a to i v případě, že se tyto atributy synchronizují. Při úpravách atributu se v rozevíracím seznamu hodnota zobrazí různé atributy, které jsou k dispozici ve službě Azure AD. Zkontrolujte konfiguraci [Azure AD Connect synchronizace](../hybrid/how-to-connect-sync-whatis.md) , aby se zajistilo, že se požadovaný atribut, například samAccountName--, synchronizuje do služby Azure AD. Atributy rozšíření můžete použít k vygenerování jakékoli deklarace identity, která není součástí standardního schématu uživatele ve službě Azure AD.
 
 * V nejběžnějších scénářích aplikace vyžaduje pouze deklaraci identity NameID a další běžné deklarace identity s identifikátorem uživatele. Pokud chcete zjistit, jestli se vyžadují nějaké další deklarace identity, Projděte si informace o deklaracích, které vystavujete z AD FS.
 
 * Ne všechny deklarace identity můžou být problémy, protože některé deklarace identity jsou chráněné v Azure AD.
 
-* Možnost používat šifrované tokeny SAML je teď ve verzi Preview. Viz [Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).
+* Možnost používat šifrované tokeny SAML je teď ve verzi Preview. Viz [Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](../develop/active-directory-saml-claims-customization.md).
 
 
 
@@ -127,13 +127,13 @@ Při mapování atributů Pamatujte na následující omezení:
 
 Pokud se uživatel přihlásí k SaaS aplikacím, jako je Salesforce, ServiceNow nebo Workday, a integruje se s AD FS, používáte federované přihlašování pro aplikace SaaS.
 
-Ve službě Azure AD už je možné nakonfigurovat většinu aplikací SaaS. Microsoft má mnoho předkonfigurovaných připojení k aplikacím SaaS v  [galerii aplikací Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps), což usnadňuje váš přechod. Aplikace SAML 2,0 je možné integrovat se službou Azure AD prostřednictvím Galerie aplikací Azure AD nebo jako [aplikace mimo galerii](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app).
+Ve službě Azure AD už je možné nakonfigurovat většinu aplikací SaaS. Microsoft má mnoho předkonfigurovaných připojení k aplikacím SaaS v  [galerii aplikací Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps), což usnadňuje váš přechod. Aplikace SAML 2,0 je možné integrovat se službou Azure AD prostřednictvím Galerie aplikací Azure AD nebo jako [aplikace mimo galerii](./add-application-portal.md).
 
-Podobným způsobem je možné integrovat se službou Azure AD aplikace, které používají OAuth 2.0 nebo OpenID Connect, jako [registrace aplikací](../develop/quickstart-register-app.md). Aplikace, které používají starší protokoly, můžou použít [azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) k ověřování pomocí Azure AD.
+Podobným způsobem je možné integrovat se službou Azure AD aplikace, které používají OAuth 2.0 nebo OpenID Connect, jako [registrace aplikací](../develop/quickstart-register-app.md). Aplikace, které používají starší protokoly, můžou použít [azure proxy aplikací služby AD](./application-proxy.md) k ověřování pomocí Azure AD.
 
 Pokud máte problémy s připojováním aplikací SaaS, můžete se obrátit na [alias podpory aplikace SaaS Integration support](mailto:SaaSApplicationIntegrations@service.microsoft.com).
 
-**Podpisové certifikáty SAML pro jednotné přihlašování** : podpisové certifikáty jsou důležitou součástí jakéhokoli nasazení jednotného přihlašování. Azure AD vytvoří podpisové certifikáty pro vytvoření federovaného jednotného přihlašování založeného na SAML pro aplikace SaaS. Jakmile přidáte buď galerii nebo jiné aplikace, nakonfigurujete přidanou aplikaci pomocí možnosti federované jednotné přihlašování. Viz [Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on).
+**Podpisové certifikáty SAML pro jednotné přihlašování**: podpisové certifikáty jsou důležitou součástí jakéhokoli nasazení jednotného přihlašování. Azure AD vytvoří podpisové certifikáty pro vytvoření federovaného jednotného přihlašování založeného na SAML pro aplikace SaaS. Jakmile přidáte buď galerii nebo jiné aplikace, nakonfigurujete přidanou aplikaci pomocí možnosti federované jednotné přihlašování. Viz [Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](./manage-certificates-for-federated-single-sign-on.md).
 
 ### <a name="apps-and-configurations-that-can-be-moved-today"></a>Aplikace a konfigurace, které se dají přesunout dnes
 
@@ -147,21 +147,21 @@ Mezi aplikace, které se dají snadno přesunout, patří aplikace SAML 2,0, kte
 
 * příjmení
 
-* Alternativní atribut jako SAML **NameID** , včetně atributu Azure AD mail, předpony atributu mail, ID zaměstnance, atributů rozšíření 1–15 nebo místního atributu **SamAccountName**. Další informace najdete v tématu [Úprava deklarace identity NameIdentifier](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).
+* Alternativní atribut jako SAML **NameID**, včetně atributu Azure AD mail, předpony atributu mail, ID zaměstnance, atributů rozšíření 1–15 nebo místního atributu **SamAccountName**. Další informace najdete v tématu [Úprava deklarace identity NameIdentifier](../develop/active-directory-saml-claims-customization.md).
 
 * Vlastní deklarace identity.
 
 Následující postup vyžaduje další kroky konfigurace pro migraci do služby Azure AD:
 
-* Pravidla pro vlastní autorizaci nebo Multi-Factor Authentication (MFA) v AD FS. Nakonfigurujete je pomocí funkce [podmíněného přístupu Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) .
+* Pravidla pro vlastní autorizaci nebo Multi-Factor Authentication (MFA) v AD FS. Nakonfigurujete je pomocí funkce [podmíněného přístupu Azure AD](../conditional-access/overview.md) .
 
 * Aplikace s více koncovými body adresy URL odpovědi Můžete je nakonfigurovat ve službě Azure AD pomocí prostředí PowerShell nebo rozhraní Azure Portal.
 
 * Aplikace WS-Federation, jako jsou aplikace SharePointu, které vyžadují tokeny SAML verze 1.1. Můžete je ručně nakonfigurovat pomocí PowerShellu. Z galerie můžete také přidat předem integrovanou obecnou šablonu pro aplikace SharePoint a SAML 1,1. Podporujeme protokol SAML 2,0.
 
 * Složitá vystavování deklarací identity transformací. Informace o podporovaných mapováních deklarací identity najdete v tématech:
-   *  [Mapování deklarací v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping)
-   * [Přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
+   *  [Mapování deklarací v Azure Active Directory](../develop/active-directory-claims-mapping.md)
+   * [Přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory](../develop/active-directory-saml-claims-customization.md)
 
 
 
@@ -180,7 +180,7 @@ Vzhledem k tom, že služba Azure AD vrátí token do koncových bodů, které j
 
 **Deklarace identity ve schopnostech tokenů**
 
-* Deklarace identity z jiných úložišť atributů než do adresáře služby Azure AD, pokud tato data nejsou synchronizovaná v Azure AD. Další informace najdete v tématu [Přehled rozhraní API pro synchronizaci Azure AD](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta).
+* Deklarace identity z jiných úložišť atributů než do adresáře služby Azure AD, pokud tato data nejsou synchronizovaná v Azure AD. Další informace najdete v tématu [Přehled rozhraní API pro synchronizaci Azure AD](/graph/api/resources/synchronization-overview?view=graph-rest-beta).
 
 * Vystavování atributů s více hodnotami adresáře. V tuto chvíli nemůžete například vystavovat deklaraci deklarace identity pro proxy adresy.
 
@@ -240,7 +240,7 @@ Aplikace SaaS musí znát, kam se mají odesílat žádosti o ověření a jak o
 | **Adresa URL pro odhlášení IdP**<p>Odhlašovací adresa URL IdP z pohledu aplikace (kde se uživatel přesměruje, když se rozhodne odhlásit z aplikace).| Adresa URL pro odhlášení je buď shodná s přihlašovací adresou URL, nebo stejnou adresou URL s připojenou "WA = wsignout 1.0". Příklad: `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| Nahraďte {tenant-ID} vaším ID tenanta.<p>Pro aplikace, které používají protokol SAML-P:<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> Pro aplikace, které používají protokol WS-Federation: [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
 | **Podpisový certifikát tokenu**<p>IdP používá k podepsání vydaných tokenů privátní klíč certifikátu. Ověřuje, že token pochází ze stejného zprostředkovatele identity, kterému aplikace podle konfigurace důvěřuje.| Podpisový certifikát tokenu AD FS se nachází ve správě služby AD FS v části **Certifikáty**.| Najdete ho v Azure Portal ve **vlastnostech jednotného přihlašování** aplikace pod hlavičkou **podpisového certifikátu SAML**. Tam můžete certifikát stáhnout, abyste ho mohli nahrát do aplikace.  <p>Pokud má aplikace více než jeden certifikát, můžete najít všechny certifikáty v souboru XML s federačními metadaty. |
 | **Identifikátor/Vystavitel**<p>Identifikátor IdP z pohledu aplikace (někdy se označuje jako "ID vystavitele").<p>V tokenu SAML se hodnota zobrazí jako element Issuer.| Identifikátor pro AD FS je obvykle identifikátor federační služby ve správě AD FS v části **služba > upravit služba FS (Federation Service) vlastnosti**. Příklad: `http://fs.contoso.com/adfs/services/trust`| Nahraďte {tenant-ID} vaším ID tenanta.<p>https: \/ /STS.Windows.NET/{tenant-ID}/ |
-| **IdP federačních metadat**<p>Umístění veřejně dostupných federačních metadat IdP. (Některé aplikace používají federační metadata jako alternativu ke konfiguraci adres URL, identifikátoru a podpisového certifikátu tokenu správcem.)| Ve správě AD FS v části **> koncových bodů služby AD FS metadata federačních metadat > metadata > typ: federační metadata**. Příklad: `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Odpovídající hodnota pro Azure AD se řídí vzorem [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) . Nahraďte {TenantDomainName} názvem vašeho tenanta ve formátu "contoso.onmicrosoft.com".   <p>Další informace najdete v tématu [Federační metadata](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata). |
+| **IdP federačních metadat**<p>Umístění veřejně dostupných federačních metadat IdP. (Některé aplikace používají federační metadata jako alternativu ke konfiguraci adres URL, identifikátoru a podpisového certifikátu tokenu správcem.)| Ve správě AD FS v části **> koncových bodů služby AD FS metadata federačních metadat > metadata > typ: federační metadata**. Příklad: `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Odpovídající hodnota pro Azure AD se řídí vzorem [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) . Nahraďte {TenantDomainName} názvem vašeho tenanta ve formátu "contoso.onmicrosoft.com".   <p>Další informace najdete v tématu [Federační metadata](../azuread-dev/azure-ad-federation-metadata.md). |
 
 
 ## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>Představuje AD FS zásady zabezpečení ve službě Azure AD.
@@ -269,7 +269,7 @@ V [Azure Portal](https://portal.azure.com/):
 
 
 * Možnost 2: na kartě Uživatelé a skupiny přiřaďte aplikaci k automatické skupině Všichni uživatelé. <p>
-V tenantovi Azure AD musíte [Povolit dynamické skupiny](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule) , aby byla dostupná výchozí skupina všichni uživatelé.
+V tenantovi Azure AD musíte [Povolit dynamické skupiny](../enterprise-users/groups-create-rule.md) , aby byla dostupná výchozí skupina všichni uživatelé.
 
    ![Moje aplikace SaaS ve službě Azure AD ](media/migrate-adfs-apps-to-azure/permit-access-to-all-users-3.png)
 
@@ -284,7 +284,7 @@ Explicitní autorizace skupiny v AD FS:
 
 Toto pravidlo se mapuje na Azure AD:
 
-V [Azure Portal](https://portal.azure.com/)nejprve [vytvoříte skupinu uživatelů](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal) , která odpovídá skupině uživatelů ze AD FS, a potom k této skupině přiřadíte oprávnění aplikace:
+V [Azure Portal](https://portal.azure.com/)nejprve [vytvoříte skupinu uživatelů](../fundamentals/active-directory-groups-create-azure-portal.md) , která odpovídá skupině uživatelů ze AD FS, a potom k této skupině přiřadíte oprávnění aplikace:
 
 ![Přidat přiřazení ](media/migrate-adfs-apps-to-azure/allow-a-group-explicitly-2.png)
 
@@ -304,7 +304,7 @@ V [Azure Portal](https://portal.azure.com/)přidejte uživatele do aplikace pomo
 
 ### <a name="map-multi-factor-authentication-rules"></a>Mapování Multi-Factor Authentication pravidel
 
-Místní nasazení [Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication) a AD FS bude po migraci stále fungovat, protože jste federované AD FS. Zvažte však migraci na integrované možnosti vícefaktorového ověřování Azure, které jsou svázané s pracovními postupy podmíněného přístupu služby Azure AD.
+Místní nasazení [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) a AD FS bude po migraci stále fungovat, protože jste federované AD FS. Zvažte však migraci na integrované možnosti vícefaktorového ověřování Azure, které jsou svázané s pracovními postupy podmíněného přístupu služby Azure AD.
 
 Následují příklady typů pravidel MFA v AD FS a způsob jejich mapování na Azure AD na základě různých podmínek:
 
@@ -320,7 +320,7 @@ Selektor uživatel/skupiny je pravidlo, které umožňuje vymáhat MFA pro jedno
 
 Zadejte pravidla MFA pro uživatele nebo skupinu ve službě Azure AD:
 
-1. Vytvořte [nové zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json).
+1. Vytvořte [nové zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json).
 
 2. Vyberte **přiřazení**. Přidejte uživatele nebo skupiny, pro které chcete vymáhat MFA.
 
@@ -333,7 +333,7 @@ Zadejte pravidla MFA pro uživatele nebo skupinu ve službě Azure AD:
 
 Zadejte pravidla MFA pro neregistrovaná zařízení ve službě Azure AD:
 
-1. Vytvořte [nové zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json).
+1. Vytvořte [nové zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json).
 
 2. Nastavte **přiřazení** pro **všechny uživatele**.
 
@@ -348,11 +348,11 @@ Když nastavíte možnost pro více ovládacích prvků tak, aby vyžadovala jed
 
 Zadejte pravidla MFA na základě umístění uživatele v Azure AD:
 
-1. Vytvořte [nové zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json).
+1. Vytvořte [nové zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json).
 
 1. Nastavte **přiřazení** pro **všechny uživatele**.
 
-1. [Nakonfigurujte pojmenovaná umístění ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) . v opačném případě je důvěryhodná z vaší podnikové sítě.
+1. [Nakonfigurujte pojmenovaná umístění ve službě Azure AD](../reports-monitoring/quickstart-configure-named-locations.md) . v opačném případě je důvěryhodná z vaší podnikové sítě.
 
 1. Nakonfigurujte **pravidla podmínek** tak, aby určovala umístění, pro která byste chtěli vymáhat MFA.
 
@@ -373,7 +373,7 @@ Tady je příklad, jak jsou atributy mapovány v AD FS:
 
 Toto pravidlo se mapuje na Azure AD:
 
-V [Azure Portal](https://portal.azure.com/)vyberte **podnikové aplikace** , **jednotné přihlašování** a přidejte **atributy tokenu SAML** , jak je znázorněno níže:
+V [Azure Portal](https://portal.azure.com/)vyberte **podnikové aplikace**, **jednotné přihlašování** a přidejte **atributy tokenu SAML** , jak je znázorněno níže:
 
 ![Snímek obrazovky zobrazuje stránku jednotného přihlašování pro vaši podnikovou aplikaci.](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-2.png)
 
@@ -386,7 +386,7 @@ AD FS 2016 obsahuje několik předdefinovaných zásad řízení přístupu, ze 
 ![Integrované řízení přístupu k Azure AD](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-1.png)
 
 
-K implementaci integrovaných zásad v Azure AD můžete použít [nové zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json) a nakonfigurovat řízení přístupu, nebo můžete použít vlastní návrháře zásad v AD FS 2016 ke konfiguraci zásad řízení přístupu. Editor pravidel má vyčerpávající seznam povolených a s výjimkou možností, které vám můžou usnadnit vytváření všech druhů permutací.
+K implementaci integrovaných zásad v Azure AD můžete použít [nové zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json) a nakonfigurovat řízení přístupu, nebo můžete použít vlastní návrháře zásad v AD FS 2016 ke konfiguraci zásad řízení přístupu. Editor pravidel má vyčerpávající seznam povolených a s výjimkou možností, které vám můžou usnadnit vytváření všech druhů permutací.
 
 ![Zásady řízení přístupu Azure AD](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-2.png)
 
@@ -397,8 +397,8 @@ V této tabulce uvádíme několik užitečných povolení a s výjimkou možnos
 
 | Možnost | Jak nakonfigurovat možnost povolit ve službě Azure AD?| Jak nakonfigurovat s výjimkou možnosti ve službě Azure AD? |
 | - | - | - |
-| Z určité sítě| Mapuje se k [pojmenovanému umístění](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) ve službě Azure AD.| Použití možnosti **vyloučit** pro [důvěryhodná umístění](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) |
-| Z konkrétních skupin| [Nastavení přiřazení uživatelů nebo skupin](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| Použití možnosti **vyloučit** v uživatelích a skupinách |
+| Z určité sítě| Mapuje se k [pojmenovanému umístění](../reports-monitoring/quickstart-configure-named-locations.md) ve službě Azure AD.| Použití možnosti **vyloučit** pro [důvěryhodná umístění](../conditional-access/location-condition.md) |
+| Z konkrétních skupin| [Nastavení přiřazení uživatelů nebo skupin](./assign-user-or-group-access-portal.md)| Použití možnosti **vyloučit** v uživatelích a skupinách |
 | Ze zařízení s určitou úrovní důvěryhodnosti| Tuto možnost nastavte v ovládacím prvku "stav zařízení" v části přiřazení – > podmínky.| Použijte možnost **vyloučit** v části stav zařízení podmínka a zahrnout **všechna zařízení** . |
 | Se specifickými deklaracemi v žádosti| Toto nastavení nejde migrovat.| Toto nastavení nejde migrovat. |
 
@@ -415,11 +415,11 @@ Příklad konfigurace možnosti vyloučit pro důvěryhodná umístění v Azure
 
 Když namapujete autorizační pravidla, aplikace, které ověřují pomocí AD FS, můžou pro oprávnění použít skupiny služby Active Directory. V takovém případě použijte [Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) k synchronizaci těchto skupin s Azure AD před migrací aplikací. Ujistěte se, že jste před migrací ověřili tyto skupiny a členství, abyste mohli při migraci aplikace udělit přístup stejným uživatelům.
 
-Další informace najdete v tématu [předpoklady pro používání atributů skupin synchronizovaných ze služby Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims).
+Další informace najdete v tématu [předpoklady pro používání atributů skupin synchronizovaných ze služby Active Directory](../hybrid/how-to-connect-fed-group-claims.md).
 
 ### <a name="setup-user-self-provisioning"></a>Nastavení samoobslužného zřizování uživatele
 
-Některé aplikace SaaS podporují možnost samoobslužně zřizovat uživatele při prvním přihlášení k aplikaci. V Azure Active Directory (Azure AD) pojem zřizování aplikací označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), ke kterým uživatelé potřebují přístup. Přenesené uživatele již budou mít v aplikaci SaaS účet. Všichni noví uživatelé přidaní po migraci budou muset zřídit. Otestujte [zřizování aplikace SaaS](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning) , jakmile se aplikace migruje.
+Některé aplikace SaaS podporují možnost samoobslužně zřizovat uživatele při prvním přihlášení k aplikaci. V Azure Active Directory (Azure AD) pojem zřizování aplikací označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), ke kterým uživatelé potřebují přístup. Přenesené uživatele již budou mít v aplikaci SaaS účet. Všichni noví uživatelé přidaní po migraci budou muset zřídit. Otestujte [zřizování aplikace SaaS](../app-provisioning/user-provisioning.md) , jakmile se aplikace migruje.
 
 ### <a name="sync-external-users-in-azure-ad"></a>Synchronizace externích uživatelů ve službě Azure AD
 
@@ -427,15 +427,15 @@ Stávající externí uživatelé se můžou v AD FS nastavit dvěma hlavními z
 
 #### <a name="external-users-with-a-local-account-within-your-organization"></a>Externí uživatelé s místním účtem v rámci vaší organizace
 
-Tyto účty budete moct dál používat stejným způsobem, jakým vaše interní uživatelské účty fungují. Tyto externí uživatelské účty mají ve vaší organizaci hlavní název, i když e-mailová adresa účtu může ukazovat externě. Při práci s migrací můžete využít výhody, které [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b) nabízí, a to migrací těchto uživatelů na používání vlastní podnikové identity, pokud je taková identita dostupná. Tím se zjednodušuje proces přihlášení pro tyto uživatele, protože jsou často přihlášeni pomocí vlastního podnikového přihlášení. Správa vaší organizace bude nesníží také, protože už nebudete muset spravovat účty externích uživatelů.
+Tyto účty budete moct dál používat stejným způsobem, jakým vaše interní uživatelské účty fungují. Tyto externí uživatelské účty mají ve vaší organizaci hlavní název, i když e-mailová adresa účtu může ukazovat externě. Při práci s migrací můžete využít výhody, které [Azure AD B2B](../external-identities/what-is-b2b.md) nabízí, a to migrací těchto uživatelů na používání vlastní podnikové identity, pokud je taková identita dostupná. Tím se zjednodušuje proces přihlášení pro tyto uživatele, protože jsou často přihlášeni pomocí vlastního podnikového přihlášení. Správa vaší organizace bude nesníží také, protože už nebudete muset spravovat účty externích uživatelů.
 
 #### <a name="federated-external-identities"></a>Federované externí identity
 
 Pokud aktuálně federování s externí organizací, máte k dispozici několik přístupů:
 
-* [Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator) Můžete aktivně odesílat pozvánky B2B pro spolupráci z portálu pro správu Azure AD do partnerské organizace pro jednotlivé členy, abyste mohli dál používat aplikace a prostředky, ke kterým se používají.
+* [Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal](../external-identities/add-users-administrator.md) Můžete aktivně odesílat pozvánky B2B pro spolupráci z portálu pro správu Azure AD do partnerské organizace pro jednotlivé členy, abyste mohli dál používat aplikace a prostředky, ke kterým se používají.
 
-* [Vytvořte pracovní postup pro samoobslužné registraci B2B](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal) , který vygeneruje žádost pro jednotlivé uživatele v partnerské organizaci pomocí rozhraní API pozvánky B2B.
+* [Vytvořte pracovní postup pro samoobslužné registraci B2B](../external-identities/self-service-portal.md) , který vygeneruje žádost pro jednotlivé uživatele v partnerské organizaci pomocí rozhraní API pozvánky B2B.
 
 Bez ohledu na to, jak se nakonfigurují stávající externí uživatelé, můžou mít pravděpodobně oprávnění, která jsou přidružená ke svému účtu, a to buď v členství ve skupině, nebo v konkrétních oprávněních. Vyhodnoťte, jestli se tato oprávnění musí migrovat nebo vyčistit. Účty v organizaci, které reprezentují externího uživatele, musí být po migraci uživatele na externí identitu zakázané. Proces migrace by se měl projednávat s vašimi obchodními partnery, protože může dojít k přerušení připojení k vašim prostředkům.
 
@@ -448,7 +448,7 @@ Pak přejdete na [Azure Portal](https://aad.portal.azure.com/) a otestujete, jes
 
 1. Vyberte **Spravovat**  >  **uživatele a skupiny** a přiřaďte aplikaci aspoň jednoho uživatele nebo skupinu.
 
-1. Vyberte **Spravovat**  >  **podmíněný přístup**. Zkontrolujte seznam zásad a ujistěte se, že neblokujete přístup k aplikaci pomocí [zásad podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal).
+1. Vyberte **Spravovat**  >  **podmíněný přístup**. Zkontrolujte seznam zásad a ujistěte se, že neblokujete přístup k aplikaci pomocí [zásad podmíněného přístupu](../conditional-access/overview.md).
 
 V závislosti na konfiguraci aplikace ověřte, že jednotné přihlašování funguje správně.
 
@@ -456,11 +456,11 @@ V závislosti na konfiguraci aplikace ověřte, že jednotné přihlašování f
 | - | - |
 | OAuth/OpenID Connect| Vyberte **podnikové aplikace > oprávnění** a ujistěte se, že jste souhlasili s tím, že jste aplikaci ve vaší organizaci použili v nastavení uživatele pro vaši aplikaci.
 ‎ |
-| Jednotné přihlašování založené na SAML| Použijte tlačítko [Test nastavení SAML](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) , které se nachází v části **jednotné přihlašování**.
+| Jednotné přihlašování založené na SAML| Použijte tlačítko [Test nastavení SAML](./debug-saml-sso-issues.md) , které se nachází v části **jednotné přihlašování**.
 ‎ |
-| Password-Based JEDNOTNÉHO PŘIHLAŠOVÁNÍ| Stáhněte a nainstalujte si rozšíření pro [zabezpečené přihlašování](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [aplikace](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)MyApp. Toto rozšíření vám pomůže začít používat cloudové aplikace vaší organizace, které vyžadují použití procesu jednotného přihlašování.
+| Password-Based JEDNOTNÉHO PŘIHLAŠOVÁNÍ| Stáhněte a nainstalujte si rozšíření pro [zabezpečené přihlašování](../user-help/my-apps-portal-end-user-access.md) [-](../user-help/my-apps-portal-end-user-access.md) [aplikace](../user-help/my-apps-portal-end-user-access.md)MyApp. Toto rozšíření vám pomůže začít používat cloudové aplikace vaší organizace, které vyžadují použití procesu jednotného přihlašování.
 ‎ |
-| Proxy aplikací| Ujistěte se, že váš konektor je spuštěný a přiřazený k vaší aplikaci. Další pomoc najdete v [Průvodci odstraňováním potíží s proxy aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) .
+| Proxy aplikací| Ujistěte se, že váš konektor je spuštěný a přiřazený k vaší aplikaci. Další pomoc najdete v [Průvodci odstraňováním potíží s proxy aplikací](./application-proxy-troubleshoot.md) .
 ‎ |
 
 > [!NOTE]
@@ -468,7 +468,7 @@ V závislosti na konfiguraci aplikace ověřte, že jednotné přihlašování f
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Pokud dojde k chybám z testu migrovaných aplikací, může být prvním krokem odstraňování potíží, než se vrátí stávajícím předávajícím stranám AD FS. Přečtěte si téma [Postup ladění jednotného přihlašování založeného na SAML pro aplikace v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/azuread-dev/howto-v1-debug-saml-sso-issues).
+Pokud dojde k chybám z testu migrovaných aplikací, může být prvním krokem odstraňování potíží, než se vrátí stávajícím předávajícím stranám AD FS. Přečtěte si téma [Postup ladění jednotného přihlašování založeného na SAML pro aplikace v Azure Active Directory](./debug-saml-sso-issues.md).
 
 ### <a name="rollback-migration"></a>Vrácení migrace zpět
 
@@ -491,6 +491,6 @@ Komunikace s externími uživateli: Tato skupina uživatelů je většinou v př
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si téma [migrace ověřování aplikace do služby Azure AD](https://aka.ms/migrateapps/whitepaper) .<p>
-Nastavení [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) a [vícefaktorového ověřování](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)
+Nastavení [podmíněného přístupu](../conditional-access/overview.md) a [vícefaktorového ověřování](../authentication/concept-mfa-howitworks.md)
 
 Vyzkoušejte si vzorový kód pro krok:[AD FS k Azure AD Application Migration PlayBook pro vývojáře](https://aka.ms/adfsplaybook)

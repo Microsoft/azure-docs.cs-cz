@@ -5,14 +5,14 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f03016c9a44968db49cd68bfec025c328861fc07
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 72d774b4ced6471ff7b355b2cb43c3c9127b5975
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286428"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658515"
 ---
 # <a name="supported-postgresql-major-versions"></a>Podporované hlavní verze PostgreSQL
 
@@ -32,11 +32,14 @@ Aktuální dílčí verze je 9.6.16. Další informace o vylepšeních a opravá
 ## <a name="postgresql-version-95"></a>PostgreSQL verze 9,5
 Aktuální dílčí verze je 9.5.20. Informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/9.5/static/release-9-5-20.html) .
 
+> [!NOTE]
+> V souladu se [zásadami správy verzí](https://www.postgresql.org/support/versioning/)komunity Postgres se Azure Database for PostgreSQL vyřazení Postgres verze 9,5 dne 11. února 2021. Další podrobnosti a omezení najdete v tématu [zásady správy verzí Azure Database for PostgreSQL](concepts-version-policy.md) .
+
 ## <a name="managing-upgrades"></a>Správa upgradů
 Projekt PostgreSQL pravidelně řeší nahlášené chyby v menších verzích. Azure Database for PostgreSQL automaticky opraví servery s podverzemi v rámci měsíčního nasazení služby. 
 
 Automatické místní upgrady pro hlavní verze se nepodporují. Pokud chcete upgradovat na další hlavní verzi, můžete 
-   * Viz [inovace hlavních verzí pomocí výpisu a obnovení](./how-to-upgrade-using-dump-and-restore.md)
+   * Viz různé metody, které provádějí [upgrady hlavní verze pomocí výpisu a obnovení](./how-to-upgrade-using-dump-and-restore.md) .
    * Použití [pg_dump a pg_restore](./howto-migrate-using-dump-and-restore.md) k přesunu databáze na server vytvořený pomocí nové verze modulu
    * Alternativně můžete upgradovat z PostgreSQL 10 na 11 pomocí [služby Azure Database Migration Service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) .
 

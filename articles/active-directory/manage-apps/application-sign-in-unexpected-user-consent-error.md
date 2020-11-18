@@ -16,16 +16,16 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 558c6dc24f6d0d17c9a82bbc79f39649f63dc7f4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874539"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658481"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při provádění souhlasu s aplikací
 
-Tento článek popisuje chyby, ke kterým může dojít během procesu souhlasu s aplikací. Pokud řešíte problémy s neočekávaným souhlasem, které neobsahují žádné chybové zprávy, přečtěte si téma [scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
+Tento článek popisuje chyby, ke kterým může dojít během procesu souhlasu s aplikací. Pokud řešíte problémy s neočekávaným souhlasem, které neobsahují žádné chybové zprávy, přečtěte si téma [scénáře ověřování pro Azure AD](../develop/authentication-vs-authorization.md).
 
 Mnoho aplikací, které jsou integrovány s Azure Active Directory, vyžaduje oprávnění k přístupu k jiným prostředkům, aby fungovaly. Pokud jsou tyto prostředky integrovány i Azure Active Directory, jsou oprávnění pro přístup k nim často požadována pomocí společného souhlasu architektury. Zobrazí se výzva k vyjádření souhlasu, která obvykle nastane při prvním použití aplikace, ale může se objevit i při dalším použití aplikace.
 
@@ -90,8 +90,6 @@ Koncoví uživatelé nebudou moci udělit souhlas aplikacím, které byly zjišt
 
 ## <a name="next-steps"></a>Další kroky 
 
-[Aplikace, oprávnění a souhlas v Azure Active Directory (koncový bod V1)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
+[Aplikace, oprávnění a souhlas v Azure Active Directory (koncový bod V1)](../develop/quickstart-register-app.md)<br>
 
-[Rozsahy, oprávnění a souhlas v Azure Active Directory (koncový bod verze 2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
-
-
+[Rozsahy, oprávnění a souhlas v Azure Active Directory (koncový bod verze 2.0)](../develop/v2-permissions-and-consent.md)

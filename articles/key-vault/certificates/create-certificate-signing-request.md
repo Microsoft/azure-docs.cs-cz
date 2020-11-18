@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: a85656909df5538f9f57e05d79ae768623d7eba6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c8f11f17c9e110509dcbcda291194f9b8d928c50
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289613"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658957"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Vytvoření a sloučení CSR v Key Vault
 
@@ -23,9 +23,17 @@ Azure Key Vault podporuje ukládání digitálního certifikátu vydaného jakou
 
 Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certifikátů](./about-certificates.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="adding-certificate-in-key-vault-issued-by-a-non-trusted-ca"></a>Přidání certifikátu v Key Vault vydaného nedůvěryhodnou certifikační autoritou
+## <a name="adding-certificate-in-key-vault-issued-by-partnered-ca"></a>Přidání certifikátu v Key Vault vydaném prostřednictvím partnerské certifikační autority
+Key Vault partneři s následujícími dvěma certifikačními autoritami pro zjednodušení vytváření certifikátů. 
+
+|Poskytovatel|Typ certifikátu|Nastavení konfigurace  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault nabízí certifikáty SSL OV nebo EV s DigiCert.| [Průvodce integrací](./how-to-integrate-certificate-authority.md)
+|GlobalSign|Key Vault nabízí certifikáty SSL OV nebo EV s GlobalSign.| [Průvodce integrací](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
+
+## <a name="adding-certificate-in-key-vault-issued-by-non-partnered-ca"></a>Přidání certifikátu v Key Vault vydaném nepartnerskou certifikační autoritou
 
 Následující kroky vám pomůžou vytvořit certifikát od certifikačních autorit, které nejsou partnerské Key Vault (například GoDaddy není certifikační autoritou důvěryhodného trezoru klíčů). 
 
@@ -59,7 +67,7 @@ Následující kroky vám pomůžou vytvořit certifikát od certifikačních au
 
     Žádost o certifikát se teď úspěšně sloučila.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1.  Pokud chcete vygenerovat CSR pro certifikační autoritu dle vašeho výběru, přejděte do trezoru klíčů, do kterého chcete certifikát přidat.
 2.  Na stránkách Key Vault vlastnosti vyberte **certifikáty**.

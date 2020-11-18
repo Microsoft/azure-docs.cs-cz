@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8000d07824c27f60dd5d8d6a457521691fe2b7d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210858"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658396"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure Proxy aplikací služby AD: Historie verzí
 V tomto článku jsou uvedeny verze a funkce služby Azure Active Directory (Azure AD) proxy aplikací, které byly vydány. Tým Azure AD pravidelně aktualizuje proxy aplikace s novými funkcemi a funkcemi. Konektory proxy aplikací se aktualizují automaticky, když se uvolní nová verze. 
@@ -38,7 +38,7 @@ Stažení konektoru služby Azure Proxy aplikací služby AD |  [Stáhněte si n
 22. července 2020: vydáno ke stažení Tato verze je k dispozici pouze pro instalaci prostřednictvím stránky pro stažení. Vydání této verze se automaticky aktualizuje na pozdější dobu.
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
--   Vylepšená podpora pro Azure Government cloudová prostředí. Postup, jak správně nainstalovat konektor pro Azure Government Cloud, najdete v části [požadavky](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) a [kroky instalace](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud).
+-   Vylepšená podpora pro Azure Government cloudová prostředí. Postup, jak správně nainstalovat konektor pro Azure Government Cloud, najdete v části [požadavky](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) a [kroky instalace](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud).
 - Podpora používání webového klienta služby Vzdálená plocha s proxy aplikací. Další podrobnosti najdete v tématu věnovaném [publikování vzdálené plochy pomocí Azure proxy aplikací služby AD](application-proxy-integrate-with-remote-desktop-services.md) .
 - Vylepšená vyjednávání rozšíření protokolu WebSocket. 
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 674b8ab8266921a4eef8bbf212f3c556b1e587d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86037830"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658345"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Řešení potíží: připojení VPN typu Site-to-Site VPN se nemůže připojit a přestane fungovat.
 
@@ -22,7 +22,7 @@ Po nakonfigurování připojení VPN typu Site-to-site mezi místní sítí a vi
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
-Problém vyřešíte tak, že se nejdřív pokusíte [resetovat bránu Azure VPN Gateway](vpn-gateway-resetgw-classic.md) a resetovat tunel z místního zařízení VPN. Pokud se problém opakuje, postupujte podle těchto kroků a Identifikujte příčinu problému.
+Problém vyřešíte tak, že se nejdřív pokusíte [resetovat bránu Azure VPN Gateway](./reset-gateway.md) a resetovat tunel z místního zařízení VPN. Pokud se problém opakuje, postupujte podle těchto kroků a Identifikujte příčinu problému.
 
 ### <a name="prerequisite-step"></a>Krok požadovaných součástí
 

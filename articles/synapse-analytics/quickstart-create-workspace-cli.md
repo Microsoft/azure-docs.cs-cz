@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: a5c9b47bf5d638f3c15416416a435653eeb68505
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 46ab1df1b776bf8dc9d6d917e5394c3efeec0de4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172044"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659382"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse pomocí Azure CLI
 
@@ -22,7 +22,7 @@ Azure CLI je prostředí příkazového řádku Azure pro správu prostředků A
 
 V tomto rychlém startu se naučíte vytvořit pracovní prostor synapse pomocí Azure CLI.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,28 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
     > [!IMPORTANT]
     > Pracovní prostor Azure synapse musí být schopný číst a zapisovat na vybraný ADLS Gen2 účet. Pro libovolný účet úložiště, který propojíte jako primární účet úložiště, je navíc nutné povolit **hierarchický obor názvů**  při vytváření účtu úložiště, jak je popsáno na stránce [Vytvoření Accout úložiště](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account) . 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="install-the-azure-cli-locally"></a>Místní instalace Azure CLI
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure v místním prostředí, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
-
-Pokud používáte Azure CLI místně, musíte se přihlásit a ověřit. Tento krok není nutný, pokud používáte Azure Cloud Shell. Pokud se chcete přihlásit ke službě Azure CLI, spusťte `az login` a ověřte v okně prohlížeče:
-
-```azurecli
-az login
-```
-
-Další informace o ověřování pomocí rozhraní příkazového řádku Azure najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
-
-## <a name="install-azure-synapse-extension-for-azure-cli"></a>Nainstalovat rozšíření Azure synapse pro Azure CLI
-
-```azurecli
-az extension add --name synapse
-```
-
-> [!WARNING]
-> Rozšíření Azure synapse pro rozhraní příkazového řádku Azure je ve verzi Preview.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-an-azure-synapse-workspace-using-the-azure-cli"></a>Vytvoření pracovního prostoru Azure synapse pomocí Azure CLI
 

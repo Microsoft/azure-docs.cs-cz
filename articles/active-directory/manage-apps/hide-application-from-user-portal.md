@@ -12,12 +12,12 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d2d6645bea6e99e9f62e36364adf8816329c26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0a103ac9b8e6d29830b5ecd6732cd19547014b0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601135"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659059"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Skrýt podnikové aplikace od koncových uživatelů v Azure Active Directory
 
@@ -36,7 +36,7 @@ Pomocí následujících kroků skryjte aplikaci z panelu MyApp a Microsoft 365 
 1.  Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce vašeho adresáře.
 2.  Vyberte **Azure Active Directory**.
 3.  Vyberte **podnikové aplikace**. Otevře se okno **podnikové aplikace – všechny aplikace** .
-4.  V části **Typ aplikace**vyberte **podnikové aplikace**, pokud ještě není vybraná.
+4.  V části **Typ aplikace** vyberte **podnikové aplikace**, pokud ještě není vybraná.
 5.  Vyhledejte aplikaci, kterou chcete skrýt, a klikněte na aplikaci.  Otevře se Přehled aplikace.
 6.  Klikněte na **Vlastnosti**. 
 7.  Aby se **uživatelé mohli zviditelnit?** klikněte na **ne**.
@@ -47,7 +47,7 @@ Pomocí následujících kroků skryjte aplikaci z panelu MyApp a Microsoft 365 
 
 ## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Použití Azure AD PowerShellu ke skrytí aplikace
 
-Chcete-li skrýt aplikaci z panelu MyApp, můžete ručně přidat značku HideApp do instančního objektu aplikace. Spusťte následující příkazy [prostředí PowerShell AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#service_principals) a nastavte vlastnost **Visible pro uživatele** na hodnotu **ne**. 
+Chcete-li skrýt aplikaci z panelu MyApp, můžete ručně přidat značku HideApp do instančního objektu aplikace. Spusťte následující příkazy [prostředí PowerShell AzureAD](/powershell/module/azuread/?view=azureadps-2.0#service_principals) a nastavte vlastnost **Visible pro uživatele** na hodnotu **ne**. 
 
 ```PowerShell
 Connect-AzureAD
@@ -67,13 +67,12 @@ Pomocí následujících kroků skryjte všechny Microsoft 365 aplikace z panelu
 2.  Vyberte **Azure Active Directory**.
 3.  Vyberte **Uživatelé**.
 4.  Vyberte **Uživatelská nastavení**.
-5.  V části **podnikové aplikace**klikněte na možnost **spravovat způsob, jak koncoví uživatelé spouštějí a zobrazují své aplikace.**
+5.  V části **podnikové aplikace** klikněte na možnost **spravovat způsob, jak koncoví uživatelé spouštějí a zobrazují své aplikace.**
 6.  **Uživatelé můžou na portálu office 365 zobrazit jenom aplikace Office 365**, klikněte na **Ano**.
 7.  Klikněte na **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 * [Zobrazit všechny moje skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](assign-user-or-group-access-portal.md)
-* [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace](remove-user-or-group-access-portal.md)
-* [Změna názvu nebo loga podnikové aplikace](change-name-or-logo-portal.md)
-
+* [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace](./assign-user-or-group-access-portal.md)
+* [Změna názvu nebo loga podnikové aplikace](./add-application-portal-configure.md)

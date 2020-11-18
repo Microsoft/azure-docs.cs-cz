@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: 07637a8be49fb2449c5c92c1a1ea4b2c7ace9a8d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4368f20171da0c1896e642361578580b1d958296
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442255"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659042"
 ---
 # <a name="manage-app-consent-policies"></a>Správa zásad souhlasu pro aplikace
 
@@ -31,7 +31,7 @@ Zásady pro vyjádření souhlasu aplikace, kde ID začíná řetězcem "Microso
 
 ## <a name="pre-requisites"></a>Požadavky
 
-1. Ujistěte se, že používáte modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) . Tento krok je důležitý, pokud jste nainstalovali modul [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) i modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) ).
+1. Ujistěte se, že používáte modul [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) . Tento krok je důležitý, pokud jste nainstalovali modul [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) i modul [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) ).
 
     ```powershell
     Remove-Module AzureAD -ErrorAction SilentlyContinue
@@ -133,7 +133,7 @@ Následující tabulka uvádí seznam podporovaných podmínek pro zásady pro v
 | Stav | Popis|
 |:---------------|:----------|
 | PermissionClassification | [Klasifikace oprávnění](configure-permission-classifications.md) pro udělená oprávnění nebo "vše", aby odpovídala libovolné klasifikaci oprávnění (včetně oprávnění, která nejsou klasifikována). Výchozí hodnota je All (vše). |
-| PermissionType | Typ oprávnění uděleného oprávnění Pro delegovaná oprávnění použijte "Application" pro oprávnění aplikací (např. role aplikace) nebo delegovaný. <br><br>**Poznámka** : hodnota "delegatedUserConsentable" označuje delegovaná oprávnění, která nenakonfiguroval Vydavatel rozhraní API, aby vyžadovala souhlas správce. Tato hodnota se dá použít v předdefinovaných zásadách udělení oprávnění, ale nedá se použít v zásadách udělení vlastních oprávnění. Povinná hodnota. |
+| PermissionType | Typ oprávnění uděleného oprávnění Pro delegovaná oprávnění použijte "Application" pro oprávnění aplikací (např. role aplikace) nebo delegovaný. <br><br>**Poznámka**: hodnota "delegatedUserConsentable" označuje delegovaná oprávnění, která nenakonfiguroval Vydavatel rozhraní API, aby vyžadovala souhlas správce. Tato hodnota se dá použít v předdefinovaných zásadách udělení oprávnění, ale nedá se použít v zásadách udělení vlastních oprávnění. Povinná hodnota. |
 | ResourceApplication | **AppID** aplikace prostředků (např. rozhraní API), pro kterou se uděluje oprávnění, nebo "any", aby odpovídala libovolné aplikaci prostředků nebo rozhraní API. Výchozí hodnota je Any. |
 | Oprávnění | Seznam identifikátorů oprávnění pro konkrétní oprávnění, se kterými se shodují, nebo seznam s jednou hodnotou All, která se má shodovat s libovolnými oprávněními Výchozí je jediná hodnota all. <ul><li>Delegovaná ID oprávnění se dají najít ve vlastnosti **OAuth2Permissions** objektu ServicePrincipal rozhraní API.</li><li>ID oprávnění aplikace najdete ve vlastnosti **AppRoles** objektu ServicePrincipal rozhraní API.</li></ol> |
 | ClientApplicationIds | Seznam hodnot **AppID** pro klientské aplikace, které se shodují s, nebo seznam s jednou hodnotou All, aby odpovídala všem klientským aplikacím. Výchozí je jediná hodnota all. |
@@ -149,7 +149,7 @@ Další informace najdete v tématech:
 * [Konfigurace pracovního postupu pro vyjádření souhlasu správce](configure-admin-consent-workflow.md)
 * [Naučte se spravovat souhlas s aplikacemi a hodnotit žádosti o souhlas.](manage-consent-requests.md)
 * [Udělení souhlasu správce v rámci celého tenanta aplikaci](grant-admin-consent.md)
-* [Oprávnění a souhlas na platformě Microsoft identity](../develop/active-directory-v2-scopes.md)
+* [Oprávnění a souhlas na platformě Microsoft identity](../develop/v2-permissions-and-consent.md)
 
 Pokud chcete získat nápovědu nebo najít odpovědi na své otázky:
 * [Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abe222ff783032c5d6d19a42bfb3d8aeffc284a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a157396318075522d5b3263c9cf0f749eafc2476
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90604117"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658804"
 ---
 # <a name="what-is-application-management"></a>Co je správa aplikací?
 
@@ -57,7 +57,7 @@ Azure AD zjednodušuje způsob správy aplikací tím, že poskytuje jeden syst�
 
 Existují čtyři hlavní typy aplikací, které můžete přidat do **podnikových aplikací** a spravovat je pomocí Azure AD:
 
-- **Aplikace Galerie Azure AD** – Azure AD obsahuje galerii obsahující tisíce aplikací, které jsou předem integrované pro jednotné přihlašování pomocí Azure AD. Galerie pravděpodobně obsahuje i některé aplikace, které využívá vaše organizace. [Přečtěte si, jak naplánovat integraci aplikací](plan-an-application-integration.md), nebo Získejte podrobné kroky integrace pro jednotlivé aplikace v [kurzech k aplikacím SaaS](https://docs.microsoft.com/azure/active-directory/saas-apps/).
+- **Aplikace Galerie Azure AD** – Azure AD obsahuje galerii obsahující tisíce aplikací, které jsou předem integrované pro jednotné přihlašování pomocí Azure AD. Galerie pravděpodobně obsahuje i některé aplikace, které využívá vaše organizace. [Přečtěte si, jak naplánovat integraci aplikací](plan-an-application-integration.md), nebo Získejte podrobné kroky integrace pro jednotlivé aplikace v [kurzech k aplikacím SaaS](/azure/active-directory/saas-apps/).
 
 - **Místní aplikace s proxy aplikací** – s Azure proxy aplikací služby AD můžete integrovat místní webové aplikace se službou Azure AD, aby podporovaly jednotné přihlašování. Pak koncoví uživatelé budou mít přístup k místním webovým aplikacím stejným způsobem jako přístup k Microsoft 365 a dalším aplikacím SaaS, najdete je v tématu [poskytnutí vzdáleného přístupu k místním aplikacím prostřednictvím proxy aplikací služby Azure AD](application-proxy.md).
 

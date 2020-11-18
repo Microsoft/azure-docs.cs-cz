@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 38bff38ebe44d9018299444b89d7743c4cc92b72
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ef38c5364a0df1df63be825e2c46009174840b72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424200"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658124"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -58,7 +58,7 @@ Doporučení najdete v tématu [Vysoká dostupnost a vyrovnávání zatížení 
 Konektor proxy aplikací provádí ověřování pomocí certifikátů v Azure. Ukončení protokolu TLS (kontrola TLS/HTTPS) ruší tuto metodu ověřování a není podporovaná. Přenos z konektoru do Azure musí obejít všechna zařízení, která provádějí ukončení protokolu TLS.  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>Vyžaduje se TLS 1,2 pro všechna připojení?
-Ano. Aby služba proxy aplikací poskytovala zákazníkům nejlepší šifrování, omezí přístup jenom na protokoly TLS 1,2. Tyto změny byly postupně nasazeny a platit od 31. srpna 2019. Zajistěte, aby byly všechny kombinace klienta a serveru a prohlížeče a serveru aktualizovány tak, aby používaly protokol TLS 1,2 pro zachování připojení ke službě proxy aplikací. Mezi ně patří klienti, kteří uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím proxy aplikací. Užitečné odkazy a prostředky najdete v tématu Příprava pro [TLS 1,2 v sadě Office 365](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) .
+Ano. Aby služba proxy aplikací poskytovala zákazníkům nejlepší šifrování, omezí přístup jenom na protokoly TLS 1,2. Tyto změny byly postupně nasazeny a platit od 31. srpna 2019. Zajistěte, aby byly všechny kombinace klienta a serveru a prohlížeče a serveru aktualizovány tak, aby používaly protokol TLS 1,2 pro zachování připojení ke službě proxy aplikací. Mezi ně patří klienti, kteří uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím proxy aplikací. Užitečné odkazy a prostředky najdete v tématu Příprava pro [TLS 1,2 v sadě Office 365](/microsoft-365/compliance/prepare-tls-1.2-in-office-365) .
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Můžu umístit dopředné proxy zařízení mezi servery konektoru a back-end aplikační server?
 Ano, tento scénář je podporován od verze konektoru 1.5.1526.0. Podívejte [se na téma práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md).
@@ -102,7 +102,7 @@ Výchozí délka je 85 sekund. Nastavení "Long" je 180 sekund. Časový limit n
 
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>Návody změnit cílovou stránku Moje aplikace se načte?
 
-Na stránce registrace aplikací můžete změnit adresu URL domovské stránky na požadovanou externí adresu URL cílové stránky. Zadaná stránka se načte při spuštění aplikace z mých aplikací nebo z portálu Office 365. Postup konfigurace najdete v tématu [nastavení vlastní domovské stránky pro publikované aplikace pomocí Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-home-page)
+Na stránce registrace aplikací můžete změnit adresu URL domovské stránky na požadovanou externí adresu URL cílové stránky. Zadaná stránka se načte při spuštění aplikace z mých aplikací nebo z portálu Office 365. Postup konfigurace najdete v tématu [nastavení vlastní domovské stránky pro publikované aplikace pomocí Azure proxy aplikací služby AD](./application-proxy-configure-custom-home-page.md)
 
 ### <a name="can-only-iis-based-applications-be-published-what-about-web-applications-running-on-non-windows-web-servers-does-the-connector-have-to-be-installed-on-a-server-with-iis-installed"></a>Můžou se publikovat jenom aplikace založené na službě IIS? Jaké webové aplikace běží na webových serverech s jiným systémem než Windows? Musí být konektor nainstalovaný na serveru s nainstalovanou službou IIS?
 
@@ -171,7 +171,7 @@ Další informace najdete [v tématu Povolení vzdáleného přístupu ke služb
 
 ### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>Můžu použít mobilní aplikaci SharePoint (iOS/Android) k přístupu k publikovanému serveru SharePoint?
 
-[Mobilní aplikace SharePoint](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) nepodporuje aktuálně Azure Active Directory předběžné ověřování.
+[Mobilní aplikace SharePoint](/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) nepodporuje aktuálně Azure Active Directory předběžné ověřování.
 
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Publikování Active Directory Federation Services (AD FS) (AD FS) 
 
@@ -193,7 +193,7 @@ Funkce (události protokolu, PowerShell a Vzdálená plocha) v centru pro správ
 
 Ano. Překlad propojení má vliv na výkon. Služba proxy aplikací vyhledá v aplikaci odkazy na pevně zakódované a nahradí je jejich příslušnými, publikovanými externími adresami URL. teprve potom je prezentuje uživateli. 
 
-Pro nejlepší výkon doporučujeme použít stejné interní a externí adresy URL konfigurací [vlastních domén](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain). Pokud není možné používat vlastní domény, můžete zlepšit výkon překladu propojení pomocí rozšíření zabezpečeného přihlašování k aplikacím nebo prohlížeče Microsoft Edge na mobilních zařízeních. Přečtěte si téma [přesměrování pevně zakódované odkazů pro aplikace publikované s Azure proxy aplikací služby AD](application-proxy-configure-hard-coded-link-translation.md).
+Pro nejlepší výkon doporučujeme použít stejné interní a externí adresy URL konfigurací [vlastních domén](./application-proxy-configure-custom-domain.md). Pokud není možné používat vlastní domény, můžete zlepšit výkon překladu propojení pomocí rozšíření zabezpečeného přihlašování k aplikacím nebo prohlížeče Microsoft Edge na mobilních zařízeních. Přečtěte si téma [přesměrování pevně zakódované odkazů pro aplikace publikované s Azure proxy aplikací služby AD](application-proxy-configure-hard-coded-link-translation.md).
 
 ## <a name="wildcards"></a>Zástupné znaky
 
@@ -204,5 +204,5 @@ Tento scénář se nepodporuje přímo. Pro tento scénář máte tyto možnosti
 1. Publikujte adresy URL HTTP i HTTPS jako samostatné aplikace se zástupnými znaky, ale poskytněte každé z nich jinou vlastní doménu. Tato konfigurace bude fungovat, protože má různé externí adresy URL.
 
 2. Publikujte adresu URL HTTPS prostřednictvím aplikace se zástupnými znaky. Publikujte aplikace HTTP samostatně pomocí těchto rutin PowerShellu pro proxy aplikace:
-   - [Správa aplikací proxy aplikací](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
-   - [Správa konektoru proxy aplikací](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)
+   - [Správa aplikací proxy aplikací](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
+   - [Správa konektoru proxy aplikací](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)

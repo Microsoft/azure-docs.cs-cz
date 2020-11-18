@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/16/2020
 ms.author: b-juche
-ms.openlocfilehash: d4e66511ce3017749076615f081a8fb56d8b8452
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 5409f9177116add1fd794ec1e72f276daf34e029
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591542"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659144"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -150,7 +150,7 @@ Ano, před nasazením svazku SMB musíte vytvořit připojení ke službě Activ
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Kolik připojení služby Active Directory je podporováno?
 
-Azure NetApp Files nepodporuje více připojení služby Active Directory (AD) v jedné *oblasti* , i když jsou připojení služby AD v různých účtech NetApp. V jednom *předplatném* ale můžete mít několik připojení AD, pokud jsou připojení služby AD v různých oblastech. Pokud potřebujete více připojení služby AD v jedné oblasti, můžete k tomu použít samostatné odběry. 
+Azure NetApp Files nepodporuje více připojení služby Active Directory (AD) v jedné *oblasti*, i když jsou připojení služby AD v různých účtech NetApp. V jednom *předplatném* ale můžete mít několik připojení AD, pokud jsou připojení služby AD v různých oblastech. Pokud potřebujete více připojení služby AD v jedné oblasti, můžete k tomu použít samostatné odběry. 
 
 Připojení AD je nakonfigurované na účet NetApp. připojení AD je viditelné jenom prostřednictvím účtu NetApp, ve kterém je vytvořený.
 
@@ -167,6 +167,10 @@ Azure NetApp Files podporuje verze Active Directory Domain Services Windows Serv
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Proč dostupné místo v klientovi SMB nezobrazuje zřízené velikosti?
 
 Velikost svazku hlášená klientem SMB je maximální velikost, na kterou může Azure NetApp Files svazek růst. Velikost Azure NetApp Filesho svazku, jak je znázorněno na klientovi SMB, se nereflektuje na kvótu nebo velikost svazku. Můžete získat velikost Azure NetApp Filesho svazku nebo kvótu prostřednictvím Azure Portal nebo rozhraní API.
+
+### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>Mám potíže s připojením ke sdílené složce SMB. Co bych měl/a dělat?
+
+Osvědčeným postupem je nastavit maximální toleranci pro synchronizaci hodin počítače na pět minut. Další informace najdete v tématu [Maximální tolerance synchronizace hodin počítače](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11)). 
 
 <!--
 ### Does Azure NetApp Files support LDAP signing? 

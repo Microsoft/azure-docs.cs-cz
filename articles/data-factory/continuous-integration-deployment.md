@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 629c27602df14c0b35e2063d8db2d0b13bbff99a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b31931af7b8d1442a66333622a23d017ab7fb5a9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635894"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658685"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -72,11 +72,11 @@ Následuje návod pro nastavení Azure Pipelines vydání, které automatizuje n
 
 1.  V [Azure DevOps](https://dev.azure.com/)otevřete projekt, který je nakonfigurovaný s vaší datovou továrnou.
 
-1.  Na levé straně stránky vyberte **kanály** a pak vyberte **vydané verze** .
+1.  Na levé straně stránky vyberte **kanály** a pak vyberte **vydané verze**.
 
     ![Výběr kanálů, vydání](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-1.  Vyberte **Nový kanál** , nebo pokud už máte kanály, vyberte **Nový** a pak **Nový kanál verze** .
+1.  Vyberte **Nový kanál**, nebo pokud už máte kanály, vyberte **Nový** a pak **Nový kanál verze**.
 
 1.  Vyberte **prázdnou šablonu úlohy** .
 
@@ -84,29 +84,29 @@ Následuje návod pro nastavení Azure Pipelines vydání, které automatizuje n
 
 1.  Do pole **název fáze** zadejte název vašeho prostředí.
 
-1.  Vyberte **Přidat artefakt** a pak vyberte úložiště Git nakonfigurované pro vaši vývojovou datovou továrnu. Vyberte [větev publikování](source-control.md#configure-publishing-settings) úložiště pro **výchozí větev** . Ve výchozím nastavení je tato větev publikování `adf_publish` . U **výchozí verze** vyberte možnost **nejnovější z výchozí větve** .
+1.  Vyberte **Přidat artefakt** a pak vyberte úložiště Git nakonfigurované pro vaši vývojovou datovou továrnu. Vyberte [větev publikování](source-control.md#configure-publishing-settings) úložiště pro **výchozí větev**. Ve výchozím nastavení je tato větev publikování `adf_publish` . U **výchozí verze** vyberte možnost **nejnovější z výchozí větve**.
 
     ![Přidání artefaktu](media/continuous-integration-deployment/continuous-integration-image7.png)
 
 1.  Přidat úlohu nasazení Azure Resource Manager:
 
-    a.  V zobrazení fáze vyberte možnost **Zobrazit úlohy fáze** .
+    a.  V zobrazení fáze vyberte možnost **Zobrazit úlohy fáze**.
 
     ![Zobrazení fáze](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  Vytvoří nový úkol. Vyhledejte **nasazení šablony ARM** a pak vyberte **Přidat** .
+    b.  Vytvoří nový úkol. Vyhledejte **nasazení šablony ARM** a pak vyberte **Přidat**.
 
     c.  V úloze nasazení vyberte předplatné, skupinu prostředků a umístění pro cílovou datovou továrnu. V případě potřeby zadejte přihlašovací údaje.
 
-    d.  V seznamu **Akce** vyberte **vytvořit nebo aktualizovat skupinu prostředků** .
+    d.  V seznamu **Akce** vyberte **vytvořit nebo aktualizovat skupinu prostředků**.
 
-    e.  Vyberte tlačítko se třemi tečkami ( **...** ) vedle pole **Šablona** . Vyhledejte šablonu Azure Resource Manager, která je generována ve větvi publikování v nakonfigurovaném úložišti Git. Vyhledejte soubor `ARMTemplateForFactory.json` ve <FactoryName> složce adf_publish větve.
+    e.  Vyberte tlačítko se třemi tečkami (**...**) vedle pole **Šablona** . Vyhledejte šablonu Azure Resource Manager, která je generována ve větvi publikování v nakonfigurovaném úložišti Git. Vyhledejte soubor `ARMTemplateForFactory.json` ve <FactoryName> složce adf_publish větve.
 
     f.  Vybrat **...** vedle pole **parametry šablony** pro výběr souboru parametrů. Vyhledejte soubor `ARMTemplateParametersForFactory.json` ve <FactoryName> složce adf_publish větve.
 
     například  Vybrat **...** vedle pole **parametry šablony přepsání** a zadejte požadované hodnoty parametrů pro cílovou datovou továrnu. Pro přihlašovací údaje pocházející z Azure Key Vault zadejte název tajného kódu mezi dvojité uvozovky. Pokud je například název tajného klíče cred1, zadejte pro tuto hodnotu **"$ (cred1)"** .
 
-    h. Vyberte **přírůstkový** **režim nasazení** .
+    h. Vyberte **přírůstkový** **režim nasazení**.
 
     > [!WARNING]
     > V režimu úplného nasazení se **odstraní** prostředky, které jsou ve skupině prostředků, ale nejsou zadané v nové šabloně správce prostředků. Další informace najdete v tématu [režimy nasazení Azure Resource Manager](../azure-resource-manager/templates/deployment-modes.md) .
@@ -115,7 +115,7 @@ Následuje návod pro nastavení Azure Pipelines vydání, které automatizuje n
 
 1.  Uložte kanál pro vydávání verzí.
 
-1. Pokud chcete aktivovat vydanou verzi, vyberte **vytvořit vydání** . Informace o automatizaci vytváření vydání najdete v tématu [triggery vydané verze Azure DevOps](/azure/devops/pipelines/release/triggers?view=azure-devops) .
+1. Pokud chcete aktivovat vydanou verzi, vyberte **vytvořit vydání**. Informace o automatizaci vytváření vydání najdete v tématu [triggery vydané verze Azure DevOps](/azure/devops/pipelines/release/triggers?view=azure-devops) .
 
    ![Vyberte vytvořit vydání.](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -189,7 +189,7 @@ Tým Data Factory poskytl [ukázkový skript před a po nasazení](#script) , kt
 
    ![Export šablony Správce prostředků](media/continuous-integration-deployment/continuous-integration-image1.png)
 
-1. V továrnách testovacích a produkčních dat vyberte **Importovat šablonu ARM** . Tato akce přejde do Azure Portal, kde můžete importovat exportovanou šablonu. Vyberte **vytvořit vlastní šablonu v editoru** a otevřete tak editor šablon Správce prostředků.
+1. V továrnách testovacích a produkčních dat vyberte **Importovat šablonu ARM**. Tato akce přejde do Azure Portal, kde můžete importovat exportovanou šablonu. Vyberte **vytvořit vlastní šablonu v editoru** a otevřete tak editor šablon Správce prostředků.
 
    ![Vytvoření vlastní šablony](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
@@ -225,7 +225,7 @@ Při exportu šablony Správce prostředků Data Factory přečte tento soubor z
 
 ### <a name="custom-parameter-syntax"></a>Vlastní syntaxe parametru
 
-Níže jsou uvedeny některé pokyny, které je třeba provést při vytváření souboru vlastních parametrů **arm-template-parameters-definition.jsv** . Soubor se skládá z oddílu pro každý typ entity: Trigger, kanál, propojená služba, datová sada, prostředí Integration runtime a tok dat.
+Níže jsou uvedeny některé pokyny, které je třeba provést při vytváření souboru vlastních parametrů **arm-template-parameters-definition.jsv**. Soubor se skládá z oddílu pro každý typ entity: Trigger, kanál, propojená služba, datová sada, prostředí Integration runtime a tok dat.
 
 * Zadejte cestu k vlastnosti pod odpovídajícím typem entity.
 * Nastavením názvu vlastnosti `*` určíte, že chcete parametrizovat všechny vlastnosti (pouze na první úrovni, ne rekurzivně). V této konfiguraci můžete také zadat výjimky.
@@ -633,19 +633,23 @@ Pokud nasadíte továrnu do produkčního prostředí a zjistíte chybu, kterou 
 
 10.   Přidejte změny z opravy hotfix do vývojové větve, aby pozdější verze neobsahovaly stejnou chybu.
 
+Podívejte se na video pod podrobným výukovým kurzem o tom, jak horká prostředí opravovat. 
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4I7fi]
+
 ## <a name="best-practices-for-cicd"></a>Osvědčené postupy pro CI/CD
 
 Pokud používáte integraci Git s datovou továrnou a máte kanál CI/CD, který přesouvá vaše změny z vývoje do testu a následně do produkčního prostředí, doporučujeme tyto osvědčené postupy:
 
--   **Integrace Gitu** . Nakonfigurujte jenom váš vývojový objekt pro vytváření dat s integrací Gitu. Změny v testovacích a produkčních prostředích se nasazují přes CI/CD a nepotřebují integraci Git.
+-   **Integrace Gitu**. Nakonfigurujte jenom váš vývojový objekt pro vytváření dat s integrací Gitu. Změny v testovacích a produkčních prostředích se nasazují přes CI/CD a nepotřebují integraci Git.
 
--   **Skript spouštěný předem a po nasazení** . Před krokem nasazení Správce prostředků v CI/CD je potřeba provést určité úlohy, jako je zastavení a restartování triggerů a provádění čištění. Doporučujeme používat skripty prostředí PowerShell před a po úloze nasazení. Další informace najdete v tématu [aktualizace aktivních aktivačních událostí](#updating-active-triggers). Tým Data Factory zadal [skript](#script) , který se má použít v dolní části této stránky.
+-   **Skript spouštěný předem a po nasazení**. Před krokem nasazení Správce prostředků v CI/CD je potřeba provést určité úlohy, jako je zastavení a restartování triggerů a provádění čištění. Doporučujeme používat skripty prostředí PowerShell před a po úloze nasazení. Další informace najdete v tématu [aktualizace aktivních aktivačních událostí](#updating-active-triggers). Tým Data Factory zadal [skript](#script) , který se má použít v dolní části této stránky.
 
--   **Prostředí Integration runtime a sdílení** . Prostředí Integration runtime se často nemění a jsou ve všech fázích CI/CD stejné. Takže Data Factory očekává, že budete mít stejný název a typ prostředí Integration runtime ve všech fázích CI/CD. Pokud chcete sdílet prostředí Integration runtime ve všech fázích, zvažte použití Ternární továrny jenom k zahrnutí sdílených prostředí Integration runtime. Tuto sdílenou továrnu můžete použít ve všech prostředích jako typ propojeného prostředí Integration runtime.
+-   **Prostředí Integration runtime a sdílení**. Prostředí Integration runtime se často nemění a jsou ve všech fázích CI/CD stejné. Takže Data Factory očekává, že budete mít stejný název a typ prostředí Integration runtime ve všech fázích CI/CD. Pokud chcete sdílet prostředí Integration runtime ve všech fázích, zvažte použití Ternární továrny jenom k zahrnutí sdílených prostředí Integration runtime. Tuto sdílenou továrnu můžete použít ve všech prostředích jako typ propojeného prostředí Integration runtime.
 
--   **Nasazení spravovaného privátního koncového bodu** . Pokud v továrně již existuje privátní koncový bod a pokusíte se nasadit šablonu ARM, která obsahuje privátní koncový bod se stejným názvem, ale se změněnými vlastnostmi, nasazení se nezdaří. Jinými slovy, můžete úspěšně nasadit soukromý koncový bod, pokud má stejné vlastnosti jako ten, který už v továrně existuje. Pokud je libovolná vlastnost odlišná mezi prostředími, můžete ji přepsat tím, že Parametrizace tuto vlastnost a při nasazení poskytnete příslušnou hodnotu.
+-   **Nasazení spravovaného privátního koncového bodu**. Pokud v továrně již existuje privátní koncový bod a pokusíte se nasadit šablonu ARM, která obsahuje privátní koncový bod se stejným názvem, ale se změněnými vlastnostmi, nasazení se nezdaří. Jinými slovy, můžete úspěšně nasadit soukromý koncový bod, pokud má stejné vlastnosti jako ten, který už v továrně existuje. Pokud je libovolná vlastnost odlišná mezi prostředími, můžete ji přepsat tím, že Parametrizace tuto vlastnost a při nasazení poskytnete příslušnou hodnotu.
 
--   **Key Vault** . Při použití propojených služeb, jejichž informace o připojení jsou uloženy v Azure Key Vault, se doporučuje uchovávat samostatné trezory klíčů pro různá prostředí. Pro každý Trezor klíčů můžete nakonfigurovat také samostatné úrovně oprávnění. Například nebudete chtít, aby členové týmu měli oprávnění k produkčním tajným klíčům. Pokud budete postupovat podle tohoto přístupu, doporučujeme, abyste zachovali stejné tajné názvy ve všech fázích. Pokud zachováte stejné tajné názvy, nemusíte v prostředích CI/CD parametrizovat jednotlivé připojovací řetězce, protože jediná změna je název trezoru klíčů, což je samostatný parametr.
+-   **Key Vault**. Při použití propojených služeb, jejichž informace o připojení jsou uloženy v Azure Key Vault, se doporučuje uchovávat samostatné trezory klíčů pro různá prostředí. Pro každý Trezor klíčů můžete nakonfigurovat také samostatné úrovně oprávnění. Například nebudete chtít, aby členové týmu měli oprávnění k produkčním tajným klíčům. Pokud budete postupovat podle tohoto přístupu, doporučujeme, abyste zachovali stejné tajné názvy ve všech fázích. Pokud zachováte stejné tajné názvy, nemusíte v prostředích CI/CD parametrizovat jednotlivé připojovací řetězce, protože jediná změna je název trezoru klíčů, což je samostatný parametr.
 
 -  **Pojmenovávání prostředků** Kvůli omezením šablony ARM můžou problémy v nasazení nastat, pokud vaše prostředky v názvu obsahují mezery. Tým Azure Data Factory doporučuje místo mezer pro prostředky používat znaky _ nebo-. Například ' Pipeline_1 ' by byl upřednostňovaným názvem přes ' kanál 1 '.
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14520c7c448231045b36e025c2c92332f9daac53
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603335"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658719"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotného přihlašování
 
@@ -39,7 +39,7 @@ Azure Marketplace má více než 3000 aplikací s předem integrovanými připoj
 
 ## <a name="plan-your-sso-team"></a>Plánování vašeho týmu jednotného přihlašování
 
-- **Zapojení správných zúčastněných stran** – když se technologické projekty nezdaří, je obvykle způsobeno neodpovídajícími očekáváními v souvislosti s dopadem, výsledky a odpovědnostmi. Abyste se vyhnuli těmto nástrah, [Ujistěte se, že jste přiuměli správným zúčastněným stranám](https://aka.ms/deploymentplans) a že zúčastněné strany porozuměl jejich rolí
+- **Zapojení správných zúčastněných stran** – když se technologické projekty nezdaří, je obvykle způsobeno neodpovídajícími očekáváními v souvislosti s dopadem, výsledky a odpovědnostmi. Abyste se vyhnuli těmto nástrah, [Ujistěte se, že jste přiuměli správným zúčastněným stranám](../fundamentals/active-directory-deployment-plans.md) a že zúčastněné strany porozuměl jejich rolí
 - **Plánování komunikace** – komunikace je zásadní pro úspěch jakékoli nové služby. Proaktivně komunikujte uživatelům o tom, jak se budou měnit, když se změní, a jak získat podporu, pokud dojde k problémům. Projděte si možnosti, [jak budou koncoví uživatelé přistupovat ke svým aplikacím s povoleným SSO](end-user-experiences.md)a že vaše komunikace bude odpovídat vašemu výběru. 
 
 ## <a name="plan-your-sso-protocol"></a>Plánování protokolu SSO
@@ -54,25 +54,25 @@ Existují dva základní způsoby, kterými můžete uživatelům umožnit jedno
 
 ### <a name="considerations-for-federation-based-sso"></a>Pokyny pro jednotné přihlašování na základě federace
 
-- **Pomocí OpenID Connect a OAuth** – Pokud aplikace, ke které se připojujete, používá metodu OIDC/OAuth 2,0 k povolení jednotného přihlašování k této aplikaci. Tato metoda vyžaduje méně konfigurace a umožňuje bohatší uživatelské prostředí. Další informace najdete v tématu [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md), [OpenID Connect 1,0](../develop/v2-protocols-oidc.md)a [Azure Active Directory příručka pro vývojáře](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+- **Pomocí OpenID Connect a OAuth** – Pokud aplikace, ke které se připojujete, používá metodu OIDC/OAuth 2,0 k povolení jednotného přihlašování k této aplikaci. Tato metoda vyžaduje méně konfigurace a umožňuje bohatší uživatelské prostředí. Další informace najdete v tématu [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md), [OpenID Connect 1,0](../develop/v2-protocols-oidc.md)a [Azure Active Directory příručka pro vývojáře](../develop/index.yml).
 - **Konfigurace koncových bodů pro jednotné přihlašování založené na SAML** – Pokud použijete SAML, vývojáři budou před konfigurací aplikace potřebovat konkrétní informace. Další informace najdete v tématu [Konfigurace jednotného přihlašování založeného na SAML](configure-saml-single-sign-on.md).
-- **Správa certifikátů pro jednotné přihlašování založené na SAML** – Pokud pro svou aplikaci povolíte federované jednotné přihlašování (SSO), Azure AD vytvoří certifikát, který je ve výchozím nastavení platný po dobu tří let. V případě potřeby můžete upravit datum vypršení platnosti tohoto certifikátu. Ujistěte se, že máte zavedené procesy pro obnovení certifikátů před jejich vypršením platnosti. Další informace najdete v tématu [Správa certifikátů v Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs).
+- **Správa certifikátů pro jednotné přihlašování založené na SAML** – Pokud pro svou aplikaci povolíte federované jednotné přihlašování (SSO), Azure AD vytvoří certifikát, který je ve výchozím nastavení platný po dobu tří let. V případě potřeby můžete upravit datum vypršení platnosti tohoto certifikátu. Ujistěte se, že máte zavedené procesy pro obnovení certifikátů před jejich vypršením platnosti. Další informace najdete v tématu [Správa certifikátů v Azure AD](./manage-certificates-for-federated-single-sign-on.md).
 
 ### <a name="considerations-for-password-based-sso"></a>Pokyny pro jednotné přihlašování založené na heslech
 
-Použití Azure AD pro jednotné přihlašování pomocí hesla vyžaduje nasazení rozšíření prohlížeče, které bude bezpečně získávat přihlašovací údaje a vyplní přihlašovací formuláře. Definujte mechanismus nasazení rozšíření ve velkém měřítku s využitím [podporovaných prohlížečů](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Mezi možnosti patří:
+Použití Azure AD pro jednotné přihlašování pomocí hesla vyžaduje nasazení rozšíření prohlížeče, které bude bezpečně získávat přihlašovací údaje a vyplní přihlašovací formuláře. Definujte mechanismus nasazení rozšíření ve velkém měřítku s využitím [podporovaných prohlížečů](../user-help/my-apps-portal-end-user-access.md). Vaše možnosti jsou:
 
-- [Zásady skupiny pro Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-- [Configuration Manager pro Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-- [Stažení a konfigurace řízená uživatelem pro Chrome, Firefox, Microsoft Edge nebo IE](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+- [Zásady skupiny pro Internet Explorer](./access-panel-deployment-plan.md)
+- [Configuration Manager pro Internet Explorer](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+- [Stažení a konfigurace řízená uživatelem pro Chrome, Firefox, Microsoft Edge nebo IE](../user-help/my-apps-portal-end-user-access.md)
 
-Další informace najdete v tématu [Postup konfigurace jednotného přihlašování k heslu](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
+Další informace najdete v tématu [Postup konfigurace jednotného přihlašování k heslu](./configure-password-single-sign-on-non-gallery-applications.md).
 
 #### <a name="capturing-login-forms-metadata-for-applications-that-arent-in-the-gallery"></a>Zachytávání metadat přihlašovacích formulářů pro aplikace, které nejsou v galerii
 
 Microsoft podporuje zachytávání metadat pro webovou aplikaci pro trezor hesel (zaznamenání polí uživatelské jméno a heslo). Při konfiguraci aplikace pro zachycení metadat formulářů přejděte na přihlašovací adresu URL. Zeptejte se vlastníka aplikace na přesnou adresu URL pro přihlášení. Tyto informace se používají během procesu přihlašování a mapují přihlašovací údaje Azure AD na aplikaci během přihlašování.
 
-Další informace najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí služby Azure AD? – jednotné přihlašování založené na heslech](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/).
+Další informace najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí služby Azure AD? – jednotné přihlašování založené na heslech](./what-is-single-sign-on.md).
 
 #### <a name="indications-that-metadata-in-forms-needs-to-be-recaptured"></a>Označení, že metadata ve formulářích je potřeba znovu zachytit
 
@@ -96,7 +96,7 @@ V perspektivě přihlašování se aplikace se sdílenými účty neliší od ap
 
 Volba správné metody ověřování je zásadním prvním rozhodnutím při nastavování řešení hybridní identity Azure AD. Implementujte metodu ověřování, která je nakonfigurovaná pomocí Azure AD Connect, která taky zřídí uživatele v cloudu.
 
-Pokud chcete zvolit metodu ověřování, musíte vzít v úvahu čas, stávající infrastrukturu, složitost a náklady na implementaci podle vašeho výběru. Tyto faktory jsou pro každou organizaci odlišné a můžou se v průběhu času měnit. Měli byste zvolit ten, který nejlépe odpovídá vašemu konkrétnímu scénáři. Další informace najdete v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
+Pokud chcete zvolit metodu ověřování, musíte vzít v úvahu čas, stávající infrastrukturu, složitost a náklady na implementaci podle vašeho výběru. Tyto faktory jsou pro každou organizaci odlišné a můžou se v průběhu času měnit. Měli byste zvolit ten, který nejlépe odpovídá vašemu konkrétnímu scénáři. Další informace najdete v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](../hybrid/choose-ad-authn.md).
 
 ## <a name="plan-your-security-and-governance"></a>Plánování zabezpečení a zásad správného řízení 
 
@@ -104,7 +104,7 @@ Identita je novým primárním Pivotem z hlediska zabezpečení a cenných papí
 
 ### <a name="plan-access-reviews"></a>Plánování kontrol přístupu
 
-Kontroly [přístupu](https://docs.microsoft.com/azure/active-directory/governance/create-access-review) umožňují organizacím efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Měli byste naplánovat pravidelné kontroly přístupu uživatelů, abyste měli jistotu, že budou mít přístup jenom přípravní uživatelé.
+Kontroly [přístupu](../governance/create-access-review.md) umožňují organizacím efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Měli byste naplánovat pravidelné kontroly přístupu uživatelů, abyste měli jistotu, že budou mít přístup jenom přípravní uživatelé.
 
 Mezi klíčová témata, která je potřeba naplánovat při nastavování kontrol přístupu, patří:
 
@@ -116,7 +116,7 @@ Mezi klíčová témata, která je potřeba naplánovat při nastavování kontr
 
 ### <a name="plan-auditing"></a>Plánování auditování
 
-Azure AD poskytuje [sestavy obsahující technické a obchodní přehledy](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/). 
+Azure AD poskytuje [sestavy obsahující technické a obchodní přehledy](../reports-monitoring/overview-reports.md). 
 
 K dispozici jsou jak sestavy zabezpečení, tak aktivity. Sestavy zabezpečení zobrazují uživatele označené příznakem rizika a rizikovým přihlášením. Sestavy aktivit vám pomohou pochopit chování uživatelů ve vaší organizaci tím, že se podrobí přihlašovací aktivity a poskytnou revizní záznamy o všech přihlášeních. Pomocí sestav můžete spravovat rizika, zvýšit produktivitu a monitorovat dodržování předpisů.
 
@@ -139,15 +139,15 @@ Nasazení MCAS vám umožní:
 - Pomocí Řízení podmíněného přístupu k aplikacím Protection získáte přehled a kontrolu nad přístupem a aktivitami v rámci cloudových aplikací v reálném čase.
 - Vám pomůže průběžně ovládat nastavení a pak průběžně vyladit zásady.
 
-Řízení relace MCAS (Microsoft Cloud Application Security) je k dispozici pro libovolný prohlížeč na libovolné hlavní platformě libovolného operačního systému. Mobilní aplikace a aplikace klasické pracovní plochy můžou být taky blokované nebo povolené. Díky nativně integraci s Azure AD můžou být podporované všechny aplikace nakonfigurované pomocí SAML nebo otevřené ID připojit aplikace s jednotným přihlašováním ve službě Azure AD, včetně [několika doporučených aplikací](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad).
+Řízení relace MCAS (Microsoft Cloud Application Security) je k dispozici pro libovolný prohlížeč na libovolné hlavní platformě libovolného operačního systému. Mobilní aplikace a aplikace klasické pracovní plochy můžou být taky blokované nebo povolené. Díky nativně integraci s Azure AD můžou být podporované všechny aplikace nakonfigurované pomocí SAML nebo otevřené ID připojit aplikace s jednotným přihlašováním ve službě Azure AD, včetně [několika doporučených aplikací](/cloud-app-security/proxy-intro-aad).
 
-Informace o MCAS najdete v tématu [přehled Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security). MCAS je služba pro předplatné založená na uživatelích. Podrobnosti o licencování najdete v [datovém listu licencování MCAS](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO).
+Informace o MCAS najdete v tématu [přehled Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security). MCAS je služba pro předplatné založená na uživatelích. Podrobnosti o licencování najdete v [datovém listu licencování MCAS](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO).
 
 ### <a name="use-conditional-access"></a>Používání podmíněného přístupu
 
 Pomocí podmíněného přístupu můžete automatizovat rozhodování o řízení přístupu na základě kritérií pro vaše cloudové aplikace.
 
-Zásady podmíněného přístupu se vynutily po dokončení prvního faktoru ověřování. Proto podmíněný přístup není určený jako ochrana první linky pro scénáře, jako jsou útoky DoS (Denial-of-Service), ale může k určení přístupu použít signály z těchto událostí. Můžete například použít úroveň rizika přihlašování, umístění žádosti a tak dále. Další informace o podmíněném přístupu najdete [v tématu Přehled](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access) a [plán nasazení](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access).
+Zásady podmíněného přístupu se vynutily po dokončení prvního faktoru ověřování. Proto podmíněný přístup není určený jako ochrana první linky pro scénáře, jako jsou útoky DoS (Denial-of-Service), ale může k určení přístupu použít signály z těchto událostí. Můžete například použít úroveň rizika přihlašování, umístění žádosti a tak dále. Další informace o podmíněném přístupu najdete [v tématu Přehled](../conditional-access/plan-conditional-access.md) a [plán nasazení](../conditional-access/plan-conditional-access.md).
 
 ## <a name="azure-sso-technical-requirements"></a>Technické požadavky pro jednotné přihlašování Azure
 
@@ -163,7 +163,7 @@ Pro všechny předem integrované aplikace SaaS poskytuje Microsoft kurz a nebud
 
 ### <a name="attribute-requirements"></a>Požadavky na atributy
 
-K dispozici je předem nakonfigurovaná sada atributů a mapování atributů mezi uživatelskými objekty Azure AD a všemi uživatelskými objekty aplikace v SaaS. Některé aplikace spravují jiné typy objektů, jako jsou skupiny. Naplánujte mapování uživatelských atributů z Azure AD do vaší aplikace a [Přizpůsobte výchozí mapování atributů](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) podle vašich obchodních potřeb.
+K dispozici je předem nakonfigurovaná sada atributů a mapování atributů mezi uživatelskými objekty Azure AD a všemi uživatelskými objekty aplikace v SaaS. Některé aplikace spravují jiné typy objektů, jako jsou skupiny. Naplánujte mapování uživatelských atributů z Azure AD do vaší aplikace a [Přizpůsobte výchozí mapování atributů](../app-provisioning/customize-application-attributes.md) podle vašich obchodních potřeb.
 
 ### <a name="certificate-requirements"></a>Požadavky na certifikáty
 
@@ -171,9 +171,9 @@ Certifikát pro aplikaci musí být aktuální nebo hrozí riziko, že uživatel
 
 Existují dva způsoby, jak spravovat certifikáty. 
 
-- **Automatická změna certifikátu** – Microsoft podporuje [podpisové klíče ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). I když se jedná o upřednostňovanou metodu pro správu certifikátů, ne všechny tyto scénáře tento scénář podporují všichni výrobci ISV.
+- **Automatická změna certifikátu** – Microsoft podporuje [podpisové klíče ve službě Azure AD](../develop/active-directory-signing-key-rollover.md). I když se jedná o upřednostňovanou metodu pro správu certifikátů, ne všechny tyto scénáře tento scénář podporují všichni výrobci ISV.
 
-- **Ruční aktualizace** – každá aplikace má svůj vlastní certifikát, jehož platnost vyprší na základě toho, jak se definuje. Než vyprší platnost certifikátu aplikace, vytvořte nový certifikát a odešlete ho k nezávislému výrobci softwaru. Tyto informace lze získat z federačních metadat. [Tady si můžete přečíst další informace o federačních metadatech.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-federation-metadata)
+- **Ruční aktualizace** – každá aplikace má svůj vlastní certifikát, jehož platnost vyprší na základě toho, jak se definuje. Než vyprší platnost certifikátu aplikace, vytvořte nový certifikát a odešlete ho k nezávislému výrobci softwaru. Tyto informace lze získat z federačních metadat. [Tady si můžete přečíst další informace o federačních metadatech.](../azuread-dev/azure-ad-federation-metadata.md)
 
 ## <a name="implement-sso"></a>Implementace jednotného přihlašování
 
@@ -189,11 +189,11 @@ K naplánování a nasazení vašeho řešení ve vaší organizaci použijte n�
 
 - **Konfigurace jednotného přihlašování**
 
-   V [seznamu aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)vyhledejte a otevřete kurz jednotného přihlašování pro vaši aplikaci a pak postupujte podle kroků kurzu v části pro úspěšnou konfiguraci aplikace SaaS.
+   V [seznamu aplikací](../saas-apps/tutorial-list.md)vyhledejte a otevřete kurz jednotného přihlašování pro vaši aplikaci a pak postupujte podle kroků kurzu v části pro úspěšnou konfiguraci aplikace SaaS.
 
-   Pokud nemůžete najít svou aplikaci, přečtěte si část [dokumentace k vlastní aplikaci](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery). To vás provede postupem, jak přidat aplikaci, která není umístěná v galerii Azure AD.
+   Pokud nemůžete najít svou aplikaci, přečtěte si část [dokumentace k vlastní aplikaci](./configure-saml-single-sign-on.md). To vás provede postupem, jak přidat aplikaci, která není umístěná v galerii Azure AD.
 
-   Volitelně můžete použít deklarace identity vydané v tokenu SAML pro podnikovou aplikaci pomocí [doprovodné dokumentace Microsoftu](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping). Zajistěte, aby se tato mapa namapovala na to, co očekáváte v odpovědi SAML pro vaši aplikaci. Pokud narazíte na problémy při konfiguraci, využijte naše pokyny, [jak ladit integraci jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging).
+   Volitelně můžete použít deklarace identity vydané v tokenu SAML pro podnikovou aplikaci pomocí [doprovodné dokumentace Microsoftu](../develop/active-directory-claims-mapping.md). Zajistěte, aby se tato mapa namapovala na to, co očekáváte v odpovědi SAML pro vaši aplikaci. Pokud narazíte na problémy při konfiguraci, využijte naše pokyny, [jak ladit integraci jednotného přihlašování](./debug-saml-sso-issues.md).
 
 ### <a name="provide-sso-change-communications-to-end-users"></a>Poskytněte koncovým uživatelům komunikaci se změnou jednotného přihlašování.
 
@@ -231,7 +231,7 @@ V této části najdete popis požadavků a doporučení pro úspěšnou správu
 
 ### <a name="required-administrative-roles"></a>Požadované role pro správu
 
-Vždy používejte roli s nejmenším oprávněním, která jsou k dispozici k provedení požadované úlohy v rámci Azure Active Directory. Společnost Microsoft doporučuje [zkontrolovat různé role, které jsou k dispozici,](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) a vybrat tu správnou roli, abyste mohli vaše potřeby pro tuto aplikaci vyřešit podle svých potřeb. Některé role může být potřeba použít dočasně a odebrat po dokončení nasazení.
+Vždy používejte roli s nejmenším oprávněním, která jsou k dispozici k provedení požadované úlohy v rámci Azure Active Directory. Společnost Microsoft doporučuje [zkontrolovat různé role, které jsou k dispozici,](../roles/permissions-reference.md) a vybrat tu správnou roli, abyste mohli vaše potřeby pro tuto aplikaci vyřešit podle svých potřeb. Některé role může být potřeba použít dočasně a odebrat po dokončení nasazení.
 
 | Nežádoucí| Role | Role Azure AD (v případě potřeby) |
 |--------|-------|-----------------------------|
@@ -241,7 +241,7 @@ Vždy používejte roli s nejmenším oprávněním, která jsou k dispozici k p
 | Správci infrastruktury | Vlastník změna certifikátu | Globální správce |
 | Vlastník/účastník společnosti | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádné |
 
-Pro správu rolí doporučujeme použít [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) a zajistit tak další auditování, řízení a kontrolu přístupu pro uživatele s oprávněními k adresáři.
+Pro správu rolí doporučujeme použít [Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) a zajistit tak další auditování, řízení a kontrolu přístupu pro uživatele s oprávněními k adresáři.
 
 ### <a name="sso-certificate-lifecycle-management"></a>Správa životního cyklu certifikátů jednotného přihlašování
 
@@ -265,7 +265,7 @@ Dostupnost metod ověřování v rámci aplikace určí vaši nejlepší strateg
 
 ### <a name="access-management"></a>Správa přístupu
 
-Při správě přístupu k prostředkům doporučujeme zvolit přístup s větší škálou. Mezi běžné přístupy patří použití místních skupin synchronizací prostřednictvím Azure AD Connect, [vytváření dynamických skupin ve službě Azure AD na základě atributů uživatele](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)nebo vytváření [skupin samoobslužných služeb](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) ve službě Azure AD spravované vlastníkem prostředku.
+Při správě přístupu k prostředkům doporučujeme zvolit přístup s větší škálou. Mezi běžné přístupy patří použití místních skupin synchronizací prostřednictvím Azure AD Connect, [vytváření dynamických skupin ve službě Azure AD na základě atributů uživatele](../enterprise-users/groups-dynamic-membership.md)nebo vytváření [skupin samoobslužných služeb](../enterprise-users/groups-self-service-management.md) ve službě Azure AD spravované vlastníkem prostředku.
 
 ### <a name="monitor-security"></a>Sledování zabezpečení
 
@@ -277,52 +277,52 @@ Následující odkazy představují scénáře řešení potíží. Možná bude
 
 #### <a name="consent-issues"></a>Problémy s vyjádřením souhlasu
 
-- [Neočekávaná chyba souhlasu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-prompt)
+- [Neočekávaná chyba souhlasu](./application-sign-in-unexpected-user-consent-prompt.md)
 
-- [Chyba souhlasu uživatele](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-error)
+- [Chyba souhlasu uživatele](./application-sign-in-unexpected-user-consent-error.md)
 
 #### <a name="sign-in-issues"></a>Problémy s přihlašováním
 
-- [Problémy s přihlašováním z vlastního portálu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
+- [Problémy s přihlašováním z vlastního portálu](./application-sign-in-other-problem-access-panel.md)
 
-- [Potíže s přihlašováním ze sekce Moje aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [Potíže s přihlašováním ze sekce Moje aplikace](./application-sign-in-other-problem-access-panel.md)
 
-- [Chyba na přihlašovací stránce aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
+- [Chyba na přihlašovací stránce aplikace](./application-sign-in-problem-application-error.md)
 
-- [Problém s přihlášením do aplikace Microsoftu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-first-party-microsoft)
+- [Problém s přihlášením do aplikace Microsoftu](./application-sign-in-problem-first-party-microsoft.md)
 
 #### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>Problémy jednotného přihlašování pro aplikace uvedené v galerii aplikací Azure
 
-- [Problém s heslem jednotného přihlašování pro aplikace uvedené v galerii aplikací Azure](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery) 
+- [Problém s heslem jednotného přihlašování pro aplikace uvedené v galerii aplikací Azure](./troubleshoot-password-based-sso.md) 
 
-- [Problém se federovaném přihlašováním k aplikacím, které jsou uvedené v galerii aplikací Azure](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-gallery)   
+- [Problém se federovaném přihlašováním k aplikacím, které jsou uvedené v galerii aplikací Azure](./application-sign-in-problem-federated-sso-gallery.md)   
 
 #### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>Problémy jednotného přihlašování pro aplikace, které nejsou uvedené v galerii aplikací Azure
 
-- [Problém s heslem jednotného přihlašování pro aplikace, které nejsou uvedené v galerii aplikací Azure](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-non-gallery) 
+- [Problém s heslem jednotného přihlašování pro aplikace, které nejsou uvedené v galerii aplikací Azure](./troubleshoot-password-based-sso.md) 
 
-- [Problém se federovaném přihlašováním k aplikacím, které nejsou uvedené v galerii aplikací Azure](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
+- [Problém se federovaném přihlašováním k aplikacím, které nejsou uvedené v galerii aplikací Azure](./application-sign-in-problem-federated-sso-gallery.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Ladění jednotného přihlašování založeného na SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+[Ladění jednotného přihlašování založeného na SAML](./debug-saml-sso-issues.md)
 
-[Mapování deklarací pro aplikace přes PowerShell](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
+[Mapování deklarací pro aplikace přes PowerShell](../develop/active-directory-claims-mapping.md)
 
-[Přizpůsobení deklarací identity vystavených v tokenu SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
+[Přizpůsobení deklarací identity vystavených v tokenu SAML](../develop/active-directory-saml-claims-customization.md)
 
-[Protokol SAML jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
+[Protokol SAML jednotného přihlašování](../develop/single-sign-on-saml-protocol.md)
 
-[Jeden Sign-Out protokol SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
+[Jeden Sign-Out protokol SAML](../develop/single-sign-out-saml-protocol.md)
 
-[Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (pro externí uživatele, jako jsou partneři a dodavatelé)
+[Azure AD B2B](../external-identities/what-is-b2b.md) (pro externí uživatele, jako jsou partneři a dodavatelé)
 
-[Podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+[Podmíněný přístup Azure AD](../conditional-access/overview.md)
 
-[Azure Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+[Azure Identity Protection](../identity-protection/overview-identity-protection.md)
 
-[Přístup s jednotným přihlašováním](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+[Přístup s jednotným přihlašováním](./what-is-single-sign-on.md)
 
-[Kurz jednotného přihlašování k aplikacím](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+[Kurz jednotného přihlašování k aplikacím](../saas-apps/tutorial-list.md)
 
 [Stažení dokumentu White Paper – plán nasazení s jednotným přihlašováním](https://aka.ms/SSODeploymentPlan)

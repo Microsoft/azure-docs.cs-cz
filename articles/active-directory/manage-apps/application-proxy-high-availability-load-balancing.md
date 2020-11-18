@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab3b340654fd6d824edef0a33d1ea363a913654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 403fa4cab94ad6149e388b10acccd9d5e7a2b7a8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764583"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658158"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Vysoká dostupnost a vyrovnávání zatížení konektorů a aplikací proxy aplikací
 
@@ -39,7 +39,7 @@ Konektory vytvářejí svá připojení na základě zásad pro vysokou dostupno
 
 1. Uživatel v klientském zařízení se pokusí o přístup k místní aplikaci publikované prostřednictvím proxy aplikací.
 2. Požadavek prochází Azure Load Balancer k určení, která instance služby proxy aplikace by měla požadavek přijmout. Pro každou oblast je k přijetí žádosti k dispozici desítka instancí. Tato metoda pomáhá rovnoměrně distribuovat provoz napříč instancemi služby.
-3. Požadavek se odešle do [Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/).
+3. Požadavek se odešle do [Service Bus](../../service-bus-messaging/index.yml).
 4. Service Bus signály k dostupnému konektoru. Konektor pak vybere požadavek od Service Bus.
    - V kroku 2 požadavky přecházejí na různé instance služby proxy aplikací, takže připojení jsou pravděpodobně vytvořena pomocí různých konektorů. V důsledku toho se konektory skoro v rámci skupiny používají téměř rovnoměrně.
 5. Konektor předá požadavek back-end serveru aplikace. Pak aplikace pošle odpověď zpátky do konektoru.
@@ -98,4 +98,4 @@ Informace o požadavcích na Vyrovnávání zatížení back-endové aplikace na
 - [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Povolit podmíněný přístup](application-proxy-integrate-with-sharepoint-server.md)
 - [Řešení potíží s proxy aplikace](application-proxy-troubleshoot.md)
-- [Přečtěte si, jak architektura Azure AD podporuje vysokou dostupnost](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)
+- [Přečtěte si, jak architektura Azure AD podporuje vysokou dostupnost](../fundamentals/active-directory-architecture.md)

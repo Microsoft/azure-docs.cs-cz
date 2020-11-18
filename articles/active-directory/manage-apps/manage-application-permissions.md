@@ -12,12 +12,12 @@ ms.date: 7/10/2020
 ms.author: mimart
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95e13cedc0cdbaedc8c00b9d855057da7e631c19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ff97d0a69efbe624e959f92f5320f921476a306
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510874"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658974"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Provedení akce na privilegovaných nebo podezřelých aplikacích v Azure Active Directory
 
@@ -29,7 +29,7 @@ Další informace o tom, jak se předávají aplikacím, najdete v tématu [Azur
 
 Chcete-li provést následující akce, musíte se přihlásit jako globální správce, správce aplikace nebo správce cloudové aplikace.
 
-Chcete-li omezit přístup k aplikacím, je nutné vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci.  Další informace najdete v tématu [metody přiřazení uživatelů a skupin](methods-for-assigning-users-and-groups.md).
+Chcete-li omezit přístup k aplikacím, je nutné vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci.  Další informace najdete v tématu [metody přiřazení uživatelů a skupin](./assign-user-or-group-access-portal.md).
 
 K portálu Azure AD můžete přistupovat a získat tak kontextové skripty PowerShellu k provedení těchto akcí.
  
@@ -48,8 +48,8 @@ Doporučujeme, abyste omezili přístup k aplikaci tak, že zapnete nastavení *
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
 3. Vyberte aplikaci, ke které chcete omezit přístup.
-4. Vyberte **vlastnosti**a pak nastavte **požadavky uživatele** na **Ano**.
-5. Vyberte **uživatele a skupiny**a potom odeberte nechtěné uživatele, kteří jsou přiřazeni k aplikaci.
+4. Vyberte **vlastnosti** a pak nastavte **požadavky uživatele** na **Ano**.
+5. Vyberte **uživatele a skupiny** a potom odeberte nechtěné uživatele, kteří jsou přiřazeni k aplikaci.
 6. Přiřaďte aplikaci uživatelům nebo skupinám.
 
 Volitelně můžete odebrat všechny uživatele, kteří jsou přiřazeni k aplikaci pomocí prostředí PowerShell.
@@ -66,7 +66,7 @@ Volitelně můžete aplikaci zakázat, aby uživatelé měli přístup k aplikac
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
 3. Vyberte aplikaci, ke které chcete omezit přístup.
-4. Vyberte **vlastnosti**a pak nastavte možnost **povoleno pro uživatele, aby se přihlásili?** na **ne**.
+4. Vyberte **vlastnosti** a pak nastavte možnost **povoleno pro uživatele, aby se přihlásili?** na **ne**.
 
 ## <a name="investigate-a-suspicious-application"></a>Prozkoumat podezřelou aplikaci
 
@@ -75,8 +75,8 @@ Doporučujeme, abyste omezili přístup k aplikaci tak, že zapnete nastavení *
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 3. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
 5. Vyberte aplikaci, ke které chcete omezit přístup.
-6. Vyberte **vlastnosti**a pak nastavte **požadavky uživatele** na **Ano**.
-7. Vyberte **oprávnění**a zkontrolujte oprávnění správce a uživatel se souhlasem.
+6. Vyberte **vlastnosti** a pak nastavte **požadavky uživatele** na **Ano**.
+7. Vyberte **oprávnění** a zkontrolujte oprávnění správce a uživatel se souhlasem.
 
 Volitelně můžete pomocí prostředí PowerShell:
 
@@ -94,7 +94,7 @@ Doporučujeme, abyste aplikaci zakázali, aby blokovala přístup uživatelů a 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
 3. Vyberte aplikaci, ke které chcete omezit přístup.
-4. Vyberte **vlastnosti**a pak zkopírujte ID objektu.
+4. Vyberte **vlastnosti** a pak zkopírujte ID objektu.
 
 ### <a name="powershell-commands"></a>Příkazy prostředí PowerShell
 
@@ -104,7 +104,7 @@ Načte ID instančního objektu služby.
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
 3. Vyberte aplikaci, ke které chcete omezit přístup.
-4. Vyberte **vlastnosti**a pak zkopírujte ID objektu.
+4. Vyberte **vlastnosti** a pak zkopírujte ID objektu.
 
 ```powershell
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"

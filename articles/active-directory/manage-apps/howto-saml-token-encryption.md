@@ -15,12 +15,12 @@ ms.date: 03/13/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779d1b73f45f9be5b4bd00d546987b7c1e0b6a43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 820e2cb0d422597f0e649e6934fd8bb11c1521db
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763342"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659025"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Postupy: Konfigurace šifrování tokenů SAML v Azure AD
 
@@ -78,7 +78,7 @@ Veřejný certifikát můžete přidat do konfigurace aplikace v rámci Azure Po
 
 ### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>Deaktivace šifrování tokenu v Azure Portal
 
-1. V Azure Portal klikněte na **Azure Active Directory > podnikové aplikace**a pak vyberte aplikaci s povoleným šifrováním tokenu SAML.
+1. V Azure Portal klikněte na **Azure Active Directory > podnikové aplikace** a pak vyberte aplikaci s povoleným šifrováním tokenu SAML.
 
 1. Na stránce aplikace vyberte **šifrování tokenu**, Najděte certifikát a potom vyberte možnost **...** . zobrazí se rozevírací nabídka.
 
@@ -124,7 +124,7 @@ Když konfigurujete přihlašovací údaje pomocí grafu, PowerShellu nebo v man
 
 1. K připojení k vašemu tenantovi použijte nejnovější modul Azure AD PowerShell.
 
-1. Nastavení šifrování tokenu nastavte pomocí příkazu **[set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** .
+1. Nastavení šifrování tokenu nastavte pomocí příkazu **[set-AzureApplication](/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** .
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>

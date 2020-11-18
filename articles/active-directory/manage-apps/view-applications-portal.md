@@ -12,18 +12,18 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.openlocfilehash: a79078977d25c55edfb4ad72bbd4602a073231f6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 281e408ca79697edbee308e15b70a2cf2055b212
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89277931"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658889"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Rychlý Start: zobrazení seznamu aplikací, které používají klienta služby Azure Active Directory (Azure AD) pro správu identit
 
 Začněte používat Azure AD jako systém pro správu identit a přístupu (IAM) pro aplikace, které vaše organizace používá. V tomto rychlém startu zobrazíte aplikace označované také jako aplikace, které už jsou nastavené tak, aby používaly vašeho tenanta Azure AD jako zprostředkovatele identity (IdP).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K zobrazení aplikací, které jsou zaregistrované ve vašem tenantovi Azure AD, potřebujete:
 
@@ -41,14 +41,14 @@ Zobrazení aplikací zaregistrovaných ve vašem tenantovi:
 1. Přihlaste se ke svému [Azure Portal](https://portal.azure.com).
 2. V levém navigačním panelu vyberte **Azure Active Directory**.
 3. V podokně **Azure Active Directory** vyberte možnost **podnikové aplikace**.
-4. Z rozevírací nabídky **Typ aplikace** vyberte **všechny aplikace**a zvolte **použít**. Zobrazí se náhodný vzorek aplikací vašeho tenanta.
+4. Z rozevírací nabídky **Typ aplikace** vyberte **všechny aplikace** a zvolte **použít**. Zobrazí se náhodný vzorek aplikací vašeho tenanta.
 5. Pokud chcete zobrazit víc aplikací, vyberte na konci seznamu **načíst další** . Pokud je ve vašem tenantovi mnoho aplikací, může být snazší vyhledat konkrétní aplikaci místo procházení seznamu. Hledání konkrétní aplikace je popsáno dále v tomto rychlém startu.
 
 ## <a name="select-viewing-options"></a>Výběr možností zobrazení
 
 Vyberte možnosti podle toho, co hledáte.
 
-1. Můžete zobrazit aplikace podle **typu aplikace**, **stavu aplikace**a **viditelnosti aplikace**.
+1. Můžete zobrazit aplikace podle **typu aplikace**, **stavu aplikace** a **viditelnosti aplikace**.
 2. V části **Typ aplikace** zvolte jednu z těchto možností:
     - **Podnikové aplikace:** Zobrazí se aplikace jiných výrobců než Microsoftu.
     - **Aplikace Microsoftu:** Zobrazí se aplikace Microsoftu.
@@ -61,7 +61,7 @@ Vyberte možnosti podle toho, co hledáte.
 
 Hledání konkrétní aplikace:
 
-1. V nabídce **Typ aplikace** vyberte možnost **všechny aplikace**a klikněte na tlačítko **použít**.
+1. V nabídce **Typ aplikace** vyberte možnost **všechny aplikace** a klikněte na tlačítko **použít**.
 2. Zadejte název aplikace, kterou chcete vyhledat. Pokud byla aplikace přidána do tenanta služby Azure AD, zobrazí se ve výsledcích hledání. Tento příklad ukazuje, že GitHub nebyl přidán do klientských aplikací.
     ![Příklad ukazuje, že aplikace nebyla přidána do tenanta.](media/view-applications-portal/search-for-tenant-application.png)
 3. Zkuste zadat několik počátečních písmen názvu aplikace. Tento příklad ukazuje všechny aplikace začínající na **Sales**.
@@ -69,7 +69,7 @@ Hledání konkrétní aplikace:
 
 
 > [!TIP]
-> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](/graph/application-saml-sso-configure-api).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

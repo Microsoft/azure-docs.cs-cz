@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 83d7ed6c937d515520058819636bc23c8de173fd
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 03e89b0da25a915a00c70a9a87bd0f675b8e12d6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015272"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658073"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování Vzdálené plochy pomocí Proxy aplikací služby Azure AD
 
@@ -28,7 +28,7 @@ Zamýšlenou cílovou skupinu pro tento článek:
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>Způsob, jakým se proxy aplikace vejde do standardního nasazení služby RDS
 
-Standardní nasazení služby RDS zahrnuje různé služby role Vzdálená plocha spuštěné v systému Windows Server. Při prohlížení [architektury vzdálené plochy](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture)je k dispozici několik možností nasazení. Na rozdíl od jiných možností nasazení RDS má [nasazení RDS s Azure proxy aplikací služby AD](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (zobrazené v následujícím diagramu) trvalé odchozí připojení ze serveru, na kterém je spuštěná služba konektoru. Další nasazení ponechají otevřená příchozí připojení prostřednictvím nástroje pro vyrovnávání zatížení.
+Standardní nasazení služby RDS zahrnuje různé služby role Vzdálená plocha spuštěné v systému Windows Server. Při prohlížení [architektury vzdálené plochy](/windows-server/remote/remote-desktop-services/Desktop-hosting-logical-architecture)je k dispozici několik možností nasazení. Na rozdíl od jiných možností nasazení RDS má [nasazení RDS s Azure proxy aplikací služby AD](/windows-server/remote/remote-desktop-services/Desktop-hosting-logical-architecture) (zobrazené v následujícím diagramu) trvalé odchozí připojení ze serveru, na kterém je spuštěná služba konektoru. Další nasazení ponechají otevřená příchozí připojení prostřednictvím nástroje pro vyrovnávání zatížení.
 
 ![Proxy aplikace se nachází mezi virtuálním počítačem RDS a veřejným internetem.](./media/application-proxy-integrate-with-remote-desktop-services/rds-with-app-proxy.png)
 
@@ -37,13 +37,13 @@ V nasazení služby Vzdálená plocha se webová role RD a role Brána VP spouš
 - Jakmile uživatel spustí připojení RDP, Brána VP do tohoto obrázku vloží. Brána VP zpracovává šifrovaný provoz protokolu RDP přicházející přes Internet a překládá ho na místní server, ke kterému se uživatel připojuje. V tomto scénáři provoz, který Brána VP přijímá, pochází z Azure Proxy aplikací služby AD.
 
 >[!TIP]
->Pokud jste službu Vzdálená plocha ještě neimplementovali nebo chcete další informace před zahájením práce, přečtěte si, jak [plynule nasadit službu Vzdálená plocha pomocí Azure Resource Manager a Azure Marketplace](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure).
+>Pokud jste službu Vzdálená plocha ještě neimplementovali nebo chcete další informace před zahájením práce, přečtěte si, jak [plynule nasadit službu Vzdálená plocha pomocí Azure Resource Manager a Azure Marketplace](/windows-server/remote/remote-desktop-services/rds-in-azure).
 
 ## <a name="requirements"></a>Požadavky
 
 - Webové a Brána VP koncové body webu VP musí být umístěny ve stejném počítači a se společným kořenem. Web a Brána VP VP jsou publikovány jako jediná aplikace s proxy aplikací, takže můžete mít k dispozici jednotné přihlašování mezi oběma aplikacemi.
 
-- Už byste měli mít [nasazený](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) [proxy aplikace](application-proxy-add-on-premises-application.md)RDS a Enabled.
+- Už byste měli mít [nasazený](/windows-server/remote/remote-desktop-services/rds-in-azure) [proxy aplikace](application-proxy-add-on-premises-application.md)RDS a Enabled.
 
 - Koncoví uživatelé musí použít kompatibilní prohlížeč pro připojení k webu RD Web nebo webovému klientovi RD. Další podrobnosti najdete v článku [Podpora pro konfigurace klientů](#support-for-other-client-configurations).
 
@@ -51,7 +51,7 @@ V nasazení služby Vzdálená plocha se webová role RD a role Brána VP spouš
 
 - Pokud používáte web RD v aplikaci Internet Explorer, bude nutné povolit doplněk RDS ActiveX.
 
-- Pokud používáte webového klienta služby Vzdálená plocha, budete muset použít konektor proxy aplikace [verze 1.5.1975 nebo novější](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-release-version-history).
+- Pokud používáte webového klienta služby Vzdálená plocha, budete muset použít konektor proxy aplikace [verze 1.5.1975 nebo novější](./application-proxy-release-version-history.md).
 
 - Pro tok předběžného ověřování Azure AD se uživatelé můžou k publikovaným prostředkům připojit jenom v podokně **aplikace RemoteApp a plochy** . Uživatelé se nemohou připojit k ploše pomocí podokna **připojit k VZDÁLENÉMU počítači** .
 
@@ -72,8 +72,8 @@ Po nastavení služby RDS a Azure Proxy aplikací služby AD pro vaše prostřed
    >[!Note]
    >Uživatelům se zobrazí výzva k ověření jednou pro Azure AD a jednorázově na webu RD Web, ale mají k Brána VP jednotné přihlašování.
 
-4. Vyberte **Azure Active Directory**a pak **Registrace aplikací**. Vyberte aplikaci ze seznamu.
-5. V části **Spravovat**vyberte **branding**.
+4. Vyberte **Azure Active Directory** a pak **Registrace aplikací**. Vyberte aplikaci ze seznamu.
+5. V části **Spravovat** vyberte **branding**.
 6. Aktualizujte pole **Adresa URL domovské stránky** tak, aby odkazovalo na webový koncový bod služby Vzdálená plocha (například `https://\<rdhost\>.com/RDWeb` ).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Přímý provoz RDS do proxy aplikace
@@ -96,7 +96,7 @@ Připojte se k nasazení služby Vzdálená plocha jako správce a změňte náz
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   **Příklad:**
+   **Například:**
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
@@ -111,7 +111,7 @@ Připojte se k nasazení služby Vzdálená plocha jako správce a změňte náz
 Teď, když jste nakonfigurovali vzdálenou plochu, Azure Proxy aplikací služby AD převzal jako internetovou komponentu služby RDS. Ostatní veřejné koncové body pro Internet můžete odebrat na webu a na počítačích s Brána VP.
 
 ### <a name="enable-the-rd-web-client"></a>Povolení webového klienta služby Vzdálená plocha
-Pokud chcete, aby uživatelé mohli použít webový klient služby Vzdálená plocha, postupujte podle kroků v [části nastavení webového klienta vzdálené plochy pro vaše uživatele](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin) , abyste mohli tuto možnost povolit.
+Pokud chcete, aby uživatelé mohli použít webový klient služby Vzdálená plocha, postupujte podle kroků v [části nastavení webového klienta vzdálené plochy pro vaše uživatele](/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin) , abyste mohli tuto možnost povolit.
 
 Webový klient vzdálené plochy umožňuje uživatelům přístup k infrastruktuře vzdálené plochy vaší organizace prostřednictvím webového prohlížeče kompatibilního s HTML5, jako je Microsoft Edge, Internet Explorer 11, Google Chrome, Safari nebo Mozilla Firefox (v 55.0 a novější).
 
@@ -130,7 +130,7 @@ Konfigurace, která je popsaný v tomto článku, je určena pro přístup k VP 
 
 | Metoda ověřování | Podporovaná konfigurace klienta |
 | --------------------- | ------------------------------ |
-| Předběžné ověřování    | RD Web-Windows 7/10 použití aplikace Internet Explorer nebo [Edge chrom v režimu IE](https://docs.microsoft.com/deployedge/edge-ie-mode) + doplněk RDS ActiveX |
+| Předběžné ověřování    | RD Web-Windows 7/10 použití aplikace Internet Explorer nebo [Edge chrom v režimu IE](/deployedge/edge-ie-mode) + doplněk RDS ActiveX |
 | Předběžné ověřování    | Webový klient služby Vzdálená plocha – webový prohlížeč kompatibilní s HTML5, jako je Microsoft Edge, Internet Explorer 11, Google Chrome, Safari nebo Mozilla Firefox (v 55.0 a novější) |
 | Předávací | Jakýkoli jiný operační systém, který podporuje aplikaci Vzdálená plocha Microsoft |
 
