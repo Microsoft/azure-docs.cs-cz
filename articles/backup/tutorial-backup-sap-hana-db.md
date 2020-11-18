@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 7bb836e92ce35869996725cb63f2d3808b570fa1
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 31a0a773096ec0f69e87bfd4a05f8ba98185e6cf
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684062"
+ms.locfileid: "94695210"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte, jak zálohovat SAP HANA databáze běžící na virtu
 >[!NOTE]
 >Od 1. srpna 2020 je SAP HANA zálohování pro RHEL (7,4, 7,6, 7,7 & 8,1) všeobecně dostupné.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před konfigurací zálohování se ujistěte, že jste provedli následující kroky:
 
@@ -71,7 +71,7 @@ Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *
 
 1. V části **Nastavení** vyberte **odchozí pravidla zabezpečení** .
 
-1. Vyberte možnost **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](../virtual-network/manage-network-security-group.md#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
+1. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](../virtual-network/manage-network-security-group.md#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
 
 1. Vyberte **Přidat**  a uložte nově vytvořené odchozí pravidlo zabezpečení.
 
@@ -227,11 +227,16 @@ Nastavení zásad určete následujícím způsobem:
    ![Zásady rozdílového zálohování](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >Přírůstkové zálohování není aktuálně podporováno.
+   >Přírůstkové zálohy jsou nyní k dispozici ve verzi Public Preview. Můžete zvolit buď rozdílovou, nebo přírůstkovou, jako denní zálohu, ale ne obojí.
    >
+7. V části **zásady přírůstkového zálohování** vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování.
+    * Ve většině případů můžete aktivovat jednu přírůstkovou zálohu za den.
+    * Přírůstkové zálohování lze uchovávat maximálně po dobu 180 dnů. Pokud potřebujete delší dobu uchovávání, musíte použít úplné zálohování.
 
-7. Výběrem možnosti **OK** zásady uložte a vraťte se do hlavní nabídky **Zásady zálohování**.
-8. Vyberte **zálohování protokolu** a přidejte zásady zálohování transakčního protokolu.
+    ![Zásady přírůstkového zálohování](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
+
+8. Výběrem možnosti **OK** zásady uložte a vraťte se do hlavní nabídky **Zásady zálohování**.
+9. Vyberte **zálohování protokolu** a přidejte zásady zálohování transakčního protokolu.
    * **Zálohování protokolu** je ve výchozím nastavení nastaveno na hodnotu **Povolit**. Toto nejde zakázat, protože SAP HANA spravuje všechny zálohy protokolů.
    * Nastavili jsme **2 hodiny** jako plán zálohování a **15 dní** doby uchování.
 
@@ -241,8 +246,8 @@ Nastavení zásad určete následujícím způsobem:
    > Zálohování protokolů začíná proudem až po úspěšném úplném úplném zálohování.
    >
 
-9. Výběrem možnosti **OK** zásady uložte a vraťte se do hlavní nabídky **Zásady zálohování**.
-10. Po dokončení definování zásad zálohování vyberte **OK**.
+10. Výběrem možnosti **OK** zásady uložte a vraťte se do hlavní nabídky **Zásady zálohování**.
+11. Po dokončení definování zásad zálohování vyberte **OK**.
 
 Úspěšně jste nakonfigurovali zálohy pro vaše SAP HANA databáze.
 

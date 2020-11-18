@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 7d952608a4850b840759e05a99bdd14cbe2a3a81
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1e417563b463d7033072b27bec505d10ef1adb47
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560957"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695737"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Rychlý Start: nasazení virtuálního počítače s důvěrnými výpočetními prostředími Azure v Azure Portal
 
@@ -22,7 +22,7 @@ Seznamte se s důvěrnými výpočetními prostředími Azure pomocí Azure Port
 Tento kurz se doporučuje, pokud vás zajímá nasazení důvěrného výpočetního virtuálního počítače s vlastní konfigurací. V opačném případě doporučujeme, abyste provedli [kroky nasazení důvěrného výpočetního virtuálního počítače pro komerční tržiště Microsoftu](quick-create-marketplace.md).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) před tím, než začnete.
 
@@ -53,16 +53,16 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
 1. Zadejte nebo vyberte tyto hodnoty:
 
-   * **Oblast** : Vyberte oblast Azure, která je pro vás nejvhodnější.
+   * **Oblast**: Vyberte oblast Azure, která je pro vás nejvhodnější.
 
         > [!NOTE]
         > Důvěrné výpočetní virtuální počítače se spouští jenom na specializovaném hardwaru dostupném v konkrétních oblastech. Nejnovější dostupné oblasti pro DCsv2-Series virtuálních počítačů najdete v části [dostupné oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
 1. Nakonfigurujte bitovou kopii operačního systému, kterou chcete použít pro virtuální počítač.
 
-    * **Zvolte obrázek** : pro tento kurz vyberte Ubuntu 18,04 LTS. Můžete také vybrat možnost Windows Server 2019, Windows Server 2016 nebo Ubuntu 16,04 LTS. Pokud se rozhodnete tak učinit, budete v tomto kurzu přesměrováni podle potřeby.
+    * **Zvolte obrázek**: pro tento kurz vyberte Ubuntu 18,04 LTS. Můžete také vybrat možnost Windows Server 2019, Windows Server 2016 nebo Ubuntu 16,04 LTS. Pokud se rozhodnete tak učinit, budete v tomto kurzu přesměrováni podle potřeby.
     
-    * **Přepněte obrázek pro Gen 2** : důvěrné výpočetní virtuální počítače běží jenom na imagí [generace 2](../virtual-machines/generation-2.md) . Ujistěte se, že vybraný obrázek je obrázek 2. generace. Klikněte na kartu **Upřesnit** nad místem, kde konfigurujete virtuální počítač. Posuňte se dolů, dokud nenajdete část s označením "generování virtuálního počítače". Vyberte Obecné 2 a potom se vraťte na kartu **základy** .
+    * **Přepněte obrázek pro Gen 2**: důvěrné výpočetní virtuální počítače běží jenom na imagí [generace 2](../virtual-machines/generation-2.md) . Ujistěte se, že vybraný obrázek je obrázek 2. generace. Klikněte na kartu **Upřesnit** nad místem, kde konfigurujete virtuální počítač. Posuňte se dolů, dokud nenajdete část s označením "generování virtuálního počítače". Vyberte Obecné 2 a potom se vraťte na kartu **základy** .
     
 
         ![Karta Upřesnit](media/quick-create-portal/advanced-tab-virtual-machine.png)
@@ -70,36 +70,36 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
         ![Generace virtuálního počítače](media/quick-create-portal/gen2-virtual-machine.png)
 
-    * **Návrat zpět na základní konfiguraci** : Vraťte se na kartu **základy** pomocí navigace v horní části.
+    * **Návrat zpět na základní konfiguraci**: Vraťte se na kartu **základy** pomocí navigace v horní části.
 
-1. Zvolte virtuální počítač s důvěrnými výpočetními funkcemi v selektoru velikosti výběrem možnosti **změnit velikost**. V nástroji pro výběr velikosti virtuálního počítače klikněte na **Vymazat všechny filtry**. Zvolte **Přidat filtr** , pro typ filtru vyberte **rodina** a pak vyberte jenom **důvěrné výpočetní** prostředky.
+1. Zvolte virtuální počítač s důvěrnými výpočetními funkcemi v selektoru velikosti výběrem možnosti **změnit velikost**. V nástroji pro výběr velikosti virtuálního počítače klikněte na **Vymazat všechny filtry**. Zvolte **Přidat filtr**, pro typ filtru vyberte **rodina** a pak vyberte jenom **důvěrné výpočetní** prostředky.
 
     ![DCsv2-Series virtuálních počítačů](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > Měli byste vidět velikosti **DC1s_v2** , **DC2s_v2** , **DC4s_V2** a **DC8_v2**. Toto jsou jediné velikosti virtuálních počítačů, které aktuálně podporují důvěrný výpočetní výkon. [Přečtěte si další informace](virtual-machine-solutions.md).
+    > Měli byste vidět velikosti **DC1s_v2**, **DC2s_v2**, **DC4s_V2** a **DC8_v2**. Toto jsou jediné velikosti virtuálních počítačů, které aktuálně podporují důvěrný výpočetní výkon. [Přečtěte si další informace](virtual-machine-solutions.md).
 
 1. Zadejte následující informace:
 
-   * **Typ ověřování** : Pokud VYTVÁŘÍTE virtuální počítač se systémem Linux, vyberte **veřejný klíč SSH** . 
+   * **Typ ověřování**: Pokud VYTVÁŘÍTE virtuální počítač se systémem Linux, vyberte **veřejný klíč SSH** . 
 
         > [!NOTE]
         > U ověřování máte na výběr mezi používáním veřejného klíče SSH nebo hesla. SSH je bezpečnější. Pokyny k vygenerování klíče SSH najdete v tématu [Vytvoření klíčů SSH v Linuxu a na Macu pro virtuální počítače s Linuxem v Azure](../virtual-machines/linux/mac-create-ssh-keys.md).
 
-    * **Uživatelské jméno** : Zadejte jméno správce pro virtuální počítač.
+    * **Uživatelské jméno**: Zadejte jméno správce pro virtuální počítač.
 
-    * **Veřejný klíč SSH** : Pokud je k dispozici, zadejte svůj veřejný klíč RSA.
+    * **Veřejný klíč SSH**: Pokud je k dispozici, zadejte svůj veřejný klíč RSA.
     
-    * **Heslo** : Pokud je to možné, zadejte heslo pro ověřování.
+    * **Heslo**: Pokud je to možné, zadejte heslo pro ověřování.
 
-    * **Veřejné příchozí porty** : zvolte **Povolit vybrané porty** a v seznamu **Vyberte veřejné příchozí porty** vyberte **SSH (22)** a **http (80)** . Pokud nasazujete virtuální počítač s Windows, vyberte **http (80)** a **RDP (3389)**. V tomto rychlém startu je tento krok nezbytný pro připojení k virtuálnímu počítači a dokončení konfigurace Open enklávy SDK. 
+    * **Veřejné příchozí porty**: zvolte **Povolit vybrané porty** a v seznamu **Vyberte veřejné příchozí porty** vyberte **SSH (22)** a **http (80)** . Pokud nasazujete virtuální počítač s Windows, vyberte **http (80)** a **RDP (3389)**. V tomto rychlém startu je tento krok nezbytný pro připojení k virtuálnímu počítači a dokončení konfigurace Open enklávy SDK. 
 
      ![Příchozí porty](media/quick-create-portal/inbound-port-virtual-machine.png)
 
 
 1. Proveďte změny na kartě **disky** .
 
-   * Pokud jste zvolili **DC1s_v2** , **DC2s_v2** **DC4s_V2** virtuální počítač, vyberte typ disku, který je buď **SSD úrovně Standard** nebo **SSD úrovně Premium**. 
+   * Pokud jste zvolili **DC1s_v2**, **DC2s_v2** **DC4s_V2** virtuální počítač, vyberte typ disku, který je buď **SSD úrovně Standard** nebo **SSD úrovně Premium**. 
    * Pokud jste zvolili **DC8_v2** virtuální počítač, zvolte **SSD úrovně Standard** jako typ disku.
 
 1. Proveďte všechny požadované změny nastavení na následujících kartách nebo ponechte výchozí nastavení.
@@ -168,7 +168,7 @@ wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add 
 ```bash
 sudo apt update
 sudo apt -y install dkms
-wget https://download.01.org/intel-sgx/sgx-dcap/1.4/linux/distro/ubuntuServer18.04/sgx_linux_x64_driver_1.21.bin -O sgx_linux_x64_driver.bin
+wget https://download.01.org/intel-sgx/sgx-dcap/1.9/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.36.2.bin -O sgx_linux_x64_driver.bin
 chmod +x sgx_linux_x64_driver.bin
 sudo ./sgx_linux_x64_driver.bin
 ```

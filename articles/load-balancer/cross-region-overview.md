@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 898b0d00fcad99a1059e01ad54ce13d192f1227f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 8b2f8e82cac1d26689659286a5a0f81f06fb68ca
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398007"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695057"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Nástroj pro vyrovnávání zatížení mezi oblastmi (Preview)
 
@@ -74,7 +74,7 @@ Nástroj pro vyrovnávání zatížení mezi oblastmi Azure používá algoritmu
 
 Nakonfigurovaný režim distribuce zatížení regionálních nástrojů pro vyrovnávání zatížení se používá pro rozhodování o konečném rozhodnutí o směrování, když se pro geografickou blízkosti používá několik regionálních nástrojů pro vyrovnávání zatížení.
 
-Další informace najdete v tématu [Konfigurace distribučního režimu pro Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-distribution-mode).
+Další informace najdete v tématu [Konfigurace distribučního režimu pro Azure Load Balancer](./load-balancer-distribution-mode.md).
 
 
 ### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>Možnost horizontálního navýšení nebo snížení kapacity za jeden koncový bod
@@ -84,7 +84,7 @@ Když zveřejňujete globální koncový bod nástroje pro vyrovnávání zatí�
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
 ### <a name="static-ip"></a>Statická IP adresa
-Nástroj pro vyrovnávání zatížení mezi oblastmi se dodává se statickou veřejnou IP adresou, která zajišťuje, že IP adresa zůstane stejná. Další informace o statické IP adrese najdete [tady](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#allocation-method) .
+Nástroj pro vyrovnávání zatížení mezi oblastmi se dodává se statickou veřejnou IP adresou, která zajišťuje, že IP adresa zůstane stejná. Další informace o statické IP adrese najdete [tady](../virtual-network/public-ip-addresses.md#allocation-method) .
 
 ### <a name="client-ip-preservation"></a>Zachování IP adresy klienta
 Nástroj pro vyrovnávání zatížení mezi oblastmi je průchozí síťový nástroj pro vyrovnávání zatížení vrstvy 4. Tento průchozí postup zachovává původní IP adresu paketu.  Původní IP adresa je k dispozici pro kód, který běží na virtuálním počítači. Toto uchování vám umožní použít logiku, která je specifická pro IP adresu.

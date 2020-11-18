@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 3113216b2d8a7572bcb864819a379de6823ee444
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 90aafad2a17b9535bde29f811e630112ccbd02e3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409871"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696094"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit vaše data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
@@ -156,9 +156,9 @@ Společnosti zaměřené na zabezpečení by se měly soustředit na to, aby zam
 
 ![Zabezpečený přístup k prostředkům](./media/technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
-Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce. Místo udělení všech neomezených oprávnění ve vašem předplatném Azure nebo prostředcích můžete povolení jenom určitých akcí. Například použijte RBAC a umožněte jednomu zaměstnanci spravovat virtuální počítače v rámci předplatného, zatímco jiný může spravovat databáze SQL v rámci stejného předplatného.
+Pomocí Azure RBAC můžete oddělit povinnosti v rámci týmu a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce. Místo udělení všech neomezených oprávnění ve vašem předplatném Azure nebo prostředcích můžete povolení jenom určitých akcí. Například pomocí Azure RBAC umožníte jednomu zaměstnanci spravovat virtuální počítače v rámci předplatného, zatímco jiný může spravovat databáze SQL v rámci stejného předplatného.
 
-![Zabezpečený přístup k prostředkům v Azure (RBAC)](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
+![Zabezpečený přístup k prostředkům pomocí Azure RBAC](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
 
 ## <a name="data-security-and-encryption"></a>Zabezpečení a šifrování dat
 
@@ -210,7 +210,7 @@ Organizace, které mají slabý nárok na [klasifikaci dat](https://download.mic
 ## <a name="secure-your-application"></a>Zabezpečení aplikace
 Zatímco Azure zodpovídá za zabezpečení infrastruktury a platformy, na které běží vaše aplikace, je vaše zodpovědnost za zabezpečení vaší aplikace. Jinými slovy, je nutné zajistit vývoj, nasazení a správu kódu a obsahu aplikace zabezpečeným způsobem. Bez toho může být kód aplikace nebo obsah stále zranitelný vůči hrozbám.
 
-### <a name="web-application-firewall"></a>Brána firewall webových aplikací
+### <a name="web-application-firewall"></a>Firewall webových aplikací
 [Firewall webových aplikací (WAF)](../../web-application-firewall/ag/ag-overview.md) je funkce [Application Gateway](../../application-gateway/overview.md) , která poskytuje centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení.
 
 Firewall webových aplikací je založený na základě [základní sady pravidel OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 nebo 2.2.9. Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tyto běžné typy zneužití patří mimo jiné například útoky prostřednictvím injektáže SQL nebo skriptování mezi weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování několika vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Stávající aplikační brány je možné jednoduše převést na aplikační brány doplněné webovým aplikačním firewallem.
@@ -422,7 +422,7 @@ Resource Manager poskytuje několik výhod:
 
 - Můžete definovat závislosti mezi prostředky, aby byly nasazeny ve správném pořadí.
 
-- Můžete využít řízení přístupu pro všechny služby ve vaší skupině prostředků, protože do platformy pro správu je nativně integrováno řízení přístupu na základě role (RBAC).
+- Řízení přístupu můžete použít pro všechny služby ve vaší skupině prostředků, protože řízení přístupu na základě role Azure (RBAC) je nativně integrované do platformy pro správu.
 
 - Můžete označit prostředky pomocí značek a logicky tak uspořádat všechny prostředky ve svém předplatném.
 

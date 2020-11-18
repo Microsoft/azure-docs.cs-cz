@@ -3,12 +3,12 @@ title: Jak povolit prostředek řešení Azure VMware
 description: Přečtěte si, jak odeslat žádost o podporu pro povolení prostředku řešení Azure VMware. Ve svém stávajícím privátním cloudu řešení Azure VMware si také můžete vyžádat další uzly.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 7c805e9e622f55593ff1fbb72a355d233b7e3618
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: c9c31d8ffbf62a511f4f2ab19f995b6bc0ee0ca4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576378"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695142"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Jak povolit prostředek řešení Azure VMware
 Přečtěte si, jak odeslat žádost o podporu pro povolení prostředku [Řešení Azure VMware](introduction.md) . Ve svém stávajícím privátním cloudu řešení Azure VMware si také můžete vyžádat další uzly.
@@ -63,6 +63,9 @@ Před vytvořením prostředku řešení Azure VMware budete muset odeslat líst
 
 Poskytovatelé CSP musí používat [Partnerské centrum Microsoftu](https://partner.microsoft.com) k povolení řešení Azure VMware pro své zákazníky. 
 
+   >[!IMPORTANT] 
+   >Služba řešení Azure VMware neposkytuje víceklientské prostředí, proto hostující partneři ještě nejsou podporované. 
+
 1. V **partnerském centru** vyberte **CSP** pro přístup k oblasti **Customers** .
 
    :::image type="content" source="media/enable-azure-vmware-solution/csp-customers-screen.png" alt-text="Oblast pro zákazníky partnerského centra Microsoftu" lightbox="media/enable-azure-vmware-solution/csp-customers-screen.png":::
@@ -75,7 +78,48 @@ Poskytovatelé CSP musí používat [Partnerské centrum Microsoftu](https://par
 
 1. Přečtěte si a dokončete Obecné nastavení předplatného Azure pro vaše zákazníky. Další informace najdete v [dokumentaci k Microsoft Partner Center](https://docs.microsoft.com/partner-center/azure-plan-manage).
 
-Po nakonfigurování plánu Azure a nastavení potřebných oprávnění RBAC jako CSP budou společnost Microsoft používat podobný postup pro povolení kvóty pro předplatné plánu Azure. Po přidání do plánu Azure může zákazník nebo Partnerský správce nasadit privátní cloud řešení Azure VMware prostřednictvím Azure Portal. 
+Po nakonfigurování plánu Azure a nastavení potřebných oprávnění RBAC jako CSP zahájíte Microsoftu, aby se povolila kvóta pro předplatné plánu Azure. Přístup k Azure Portal z partnerského centra pomocí procedury **správce jménem** (administrate).
+
+1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com).
+
+1. Vyberte **CSP** pro přístup k oblasti **Customers** .
+
+1. Rozbalte položku Podrobnosti o zákazníkovi a vyberte **portál pro správu Microsoft Azure**.
+
+1. V Azure Portal v části **pomoc a podpora** vytvořte **[novou žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support)** a zadejte pro lístek následující informace:
+   - **Typ problému:** Odbornou
+   - **Předplatné:** Vyberte své předplatné.
+   - **Služba:** Všechny služby > řešení Azure VMware
+   - **Prostředek:** Obecná otázka 
+   - **Shrnutí:** Potřebná kapacita
+   - **Typ problému:** Problémy se správou kapacity
+   - **Podtyp problému:** Požadavek zákazníka na další kvótu/kapacitu hostitele
+
+1. V **popisu** lístku podpory zadejte na kartě **Podrobnosti** :
+
+   - KONCEPCE nebo produkce 
+   - Název oblasti
+   - Počet uzlů
+   - Všechny další podrobnosti
+   - Je určeno k hostování více zákazníků?
+
+   >[!NOTE]
+   >Řešení Azure VMware doporučuje minimálně tři uzly, aby se vymíchoval váš privátní cloud a pro redundanci N + 1 uzlů. 
+
+1. Kliknutím na tlačítko **zkontrolovat + vytvořit** odešlete žádost.
+
+   Může trvat až pět pracovních dnů, než se zástupce podpory potvrdí vaší žádosti.
+
+   >[!IMPORTANT] 
+   >Pokud už máte nějaké řešení Azure VMware a požadujete další uzly, je potřeba si uvědomit, že k alokaci uzlů potřebujeme pět pracovních dnů. 
+
+1. Po přidání do plánu Azure a s povolenou kvótou může zákazník nebo Partnerská aplikace nasadit privátní cloud řešení Azure VMware prostřednictvím Azure Portal. Než budete moci zřídit své uzly, nezapomeňte zaregistrovat poskytovatele prostředků **Microsoft. AVS** v Azure Portal.  
+
+   ```azurecli-interactive
+   az provider register -n Microsoft.AVS --subscription <your subscription ID>
+   ```
+
+   Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
 
 ## <a name="next-steps"></a>Další kroky
 

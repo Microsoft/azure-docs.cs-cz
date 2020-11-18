@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 4a397a67c0e40de8be1d42ee56618357cf36c55f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 96c0242414c67d97fc324977b1259f63c27c3a26
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017722"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696808"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -32,7 +32,7 @@ Azure Load Balancer funguje ve vrstvě čtyř modelu propojení Open Systems (OS
 **[Interní (nebo soukromý) Nástroj pro vyrovnávání zatížení](./components.md#frontend-ip-configurations)** se používá, pokud jsou privátní IP adresy potřeba jenom na front-endu. Interní nástroje pro vyrovnávání zatížení se používají k vyrovnávání zatížení provozu v rámci virtuální sítě. Front-endu nástroje pro vyrovnávání zatížení je možné v hybridním scénáři použít z místní sítě.
 
 <p align="center">
-  <img src="./media/load-balancer-overview/load-balancer.svg" alt="Figure depicts both public and internal load balancers directing traffic to port 80 on multiple servers on a Web tier and port 443 on multiple servers on a business tier." width="512" title="Nástroj pro vyrovnávání zatížení Azure">
+  <img src="./media/load-balancer-overview/load-balancer.svg" alt="Figure depicts both public and internal load balancers directing traffic to port 80 on multiple servers on a Web tier and port 443 on multiple servers on a business tier." width="512" title="Azure Load Balancer">
 </p>
 
 *Obrázek: vyrovnávání vícevrstvých aplikací s využitím veřejného i interního Load Balancer*
@@ -44,29 +44,29 @@ Pomocí Standard Load Balancer můžete škálovat aplikace a vytvářet vysoce 
 
 Mezi klíčové scénáře, které můžete provádět pomocí Standard Load Balancer patří:
 
-- Vyrovnávání zatížení **[interního](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** a **[externího](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** provozu do virtuálních počítačů Azure.
+- Vyrovnávání zatížení **[interního](./quickstart-load-balancer-standard-internal-portal.md)** a **[externího](./tutorial-load-balancer-standard-manage-portal.md)** provozu do virtuálních počítačů Azure.
 
-- Zvyšte dostupnost díky distribuci prostředků **[v rámci](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** zón a **[mezi](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** nimi.
+- Zvyšte dostupnost díky distribuci prostředků **[v rámci](./tutorial-load-balancer-standard-public-zonal-portal.md)** zón a **[mezi](./tutorial-load-balancer-standard-public-zone-redundant-portal.md)** nimi.
 
-- Konfigurace **[odchozího připojení ](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** pro virtuální počítače Azure
+- Konfigurace **[odchozího připojení](./load-balancer-outbound-connections.md)** pro virtuální počítače Azure
 
-- Pomocí **[sond stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** můžete monitorovat prostředky s vyrovnáváním zatížení.
+- Pomocí **[sond stavu](./load-balancer-custom-probe-overview.md)** můžete monitorovat prostředky s vyrovnáváním zatížení.
 
-- Využívejte **[předávání portů](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)** pro přístup k virtuálním počítačům ve virtuální síti pomocí veřejné IP adresy a portu.
+- Využívejte **[předávání portů](./tutorial-load-balancer-port-forwarding-portal.md)** pro přístup k virtuálním počítačům ve virtuální síti pomocí veřejné IP adresy a portu.
 
-- Povolí podporu pro **[Vyrovnávání zatížení](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** **[IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)**.
+- Povolí podporu pro **[Vyrovnávání zatížení](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** **[IPv6](../virtual-network/ipv6-overview.md)**.
 
-- Standard Load Balancer poskytuje multidimenzionální metriky prostřednictvím [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).  Tyto metriky je možné filtrovat, seskupovat a rozdělit pro danou dimenzi.  Poskytují aktuální a historické poznatky o výkonu a stavu vaší služby.  Podporuje se taky Resource Health. Další podrobnosti najdete v **[diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md)** .
+- Standard Load Balancer poskytuje multidimenzionální metriky prostřednictvím [Azure monitor](../azure-monitor/overview.md).  Tyto metriky je možné filtrovat, seskupovat a rozdělit pro danou dimenzi.  Poskytují aktuální a historické poznatky o výkonu a stavu vaší služby.  Podporuje se taky Resource Health. Další podrobnosti najdete v **[diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md)** .
 
-- Vyrovnávání zatížení služeb na **[několika portech, několika IP adresách nebo obojím](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)**.
+- Vyrovnávání zatížení služeb na **[několika portech, několika IP adresách nebo obojím](./load-balancer-multivip-overview.md)**.
 
-- Přesuňte **[interní](https://docs.microsoft.com/azure/load-balancer/move-across-regions-internal-load-balancer-portal)** a **[externí](https://docs.microsoft.com/azure/load-balancer/move-across-regions-external-load-balancer-portal)** prostředky nástroje pro vyrovnávání zatížení napříč oblastmi Azure.
+- Přesuňte **[interní](./move-across-regions-internal-load-balancer-portal.md)** a **[externí](./move-across-regions-external-load-balancer-portal.md)** prostředky nástroje pro vyrovnávání zatížení napříč oblastmi Azure.
 
-- Vyrovnávání zatížení TCP a UDP na všech portech současně pomocí **[portů ha](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)**.
+- Vyrovnávání zatížení TCP a UDP na všech portech současně pomocí **[portů ha](./load-balancer-ha-ports-overview.md)**.
 
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>Zabezpečení ve výchozím nastavení
 
-Standard Load Balancer je ve svém jádru postavená na modelu zabezpečení nulové důvěryhodnosti sítě. Standard Load Balancer zabezpečení ve výchozím nastavení a je součástí vaší virtuální sítě. Virtuální síť je privátní a izolovaná síť.  To znamená, že standardní nástroje pro vyrovnávání zatížení a standardní veřejné IP adresy se do příchozích toků zavřou, pokud je neotevřou skupiny zabezpečení sítě. Skupin zabezpečení sítě se používají k explicitnímu povolení povoleného provozu.  Pokud nemáte NSG v podsíti nebo síťové kartě prostředku virtuálního počítače, přenosy nepovolují přístup k tomuto prostředku. Další informace o skupin zabezpečení sítě a o tom, jak je použít pro váš scénář, najdete v tématu [skupiny zabezpečení sítě](../virtual-network/security-overview.md).
+Standard Load Balancer je ve svém jádru postavená na modelu zabezpečení nulové důvěryhodnosti sítě. Standard Load Balancer zabezpečení ve výchozím nastavení a je součástí vaší virtuální sítě. Virtuální síť je privátní a izolovaná síť.  To znamená, že standardní nástroje pro vyrovnávání zatížení a standardní veřejné IP adresy se do příchozích toků zavřou, pokud je neotevřou skupiny zabezpečení sítě. Skupin zabezpečení sítě se používají k explicitnímu povolení povoleného provozu.  Pokud nemáte NSG v podsíti nebo síťové kartě prostředku virtuálního počítače, přenosy nepovolují přístup k tomuto prostředku. Další informace o skupin zabezpečení sítě a o tom, jak je použít pro váš scénář, najdete v tématu [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 Základní Load Balancer je ve výchozím nastavení otevřený pro Internet. Load Balancer navíc neukládají zákaznická data.
 
 ## <a name="pricing-and-sla"></a>Ceny a smlouvy SLA
@@ -84,4 +84,3 @@ Přihlaste se k odběru informačního kanálu RSS a zobrazte nejnovější Azur
 Pokud chcete začít používat nástroj pro vyrovnávání zatížení, přečtěte si téma [vytvoření veřejného standardního nástroje pro vyrovnávání zatížení](quickstart-load-balancer-standard-public-portal.md) .
 
 Další informace o omezeních Azure Load Balancer a součástech najdete v tématu [Azure Load Balancer Components](./components.md) a [Azure Load Balancer koncepty](./concepts.md) .
-

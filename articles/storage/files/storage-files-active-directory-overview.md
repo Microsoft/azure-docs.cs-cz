@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 93dd73b5a9149474be771537f47b448c5c4d7d8f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 0493b66928d944e251e6fe4abda4f1d3d8fb7e23
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629321"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695890"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Přehled možností ověřování na základě identity souborů Azure pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -21,7 +21,7 @@ Informace o tom, jak povolit místní ověřování Active Directory Domain Serv
 
 Informace o tom, jak povolit ověřování Azure služba AD DS pro sdílené složky Azure, najdete v tématu [povolení Azure Active Directory Domain Servicesho ověřování u souborů Azure](storage-files-identity-auth-active-directory-domain-service-enable.md).
 
-## <a name="glossary"></a>Slovníček 
+## <a name="glossary"></a>Glosář 
 Je užitečné pochopit některé klíčové podmínky týkající se ověřování služby Azure AD Domain Services přes SMB pro sdílené složky Azure:
 
 -   **Ověřování protokolu Kerberos**
@@ -34,7 +34,7 @@ Je užitečné pochopit některé klíčové podmínky týkající se ověřová
 
 -   **Azure Active Directory (Azure AD)**
 
-    Azure Active Directory (Azure AD) je víceklientské cloudové služby Microsoftu a služba pro správu identit založené na víceklientské architektuře. Azure AD kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identit do jediného řešení. Virtuální počítače s Windows připojené k Azure AD mají přístup ke sdíleným složkám Azure pomocí vašich přihlašovacích údajů Azure AD. Další informace najdete v tématu [co je Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
+    Azure Active Directory (Azure AD) je víceklientské cloudové služby Microsoftu a služba pro správu identit založené na víceklientské architektuře. Azure AD kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identit do jediného řešení. Virtuální počítače s Windows připojené ke službě Azure AD nemůžou přistupovat ke sdíleným složkám Azure pomocí vašich přihlašovacích údajů Azure AD. Další informace najdete v tématu [co je Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
 -   **Azure Active Directory Domain Services (Azure služba AD DS)**
 

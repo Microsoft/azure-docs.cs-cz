@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 66c56ae6730043022a0d8bf3c94f7c6ce14d9852
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd0617536147787f436e5817f3f2367a19ba6aa4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84809335"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696179"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Upgrade veřejné Load Balancer Azure
-[Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](https://docs.microsoft.com/azure/load-balancer/skus#skus).
+[Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](./skus.md#skus).
 
 V upgradu existují tři fáze:
 
@@ -34,7 +34,7 @@ K dispozici je skript Azure PowerShell, který provede následující akce:
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* Skript podporuje pouze upgrade veřejné Load Balancer. Pro interní základní Load Balancer upgrade najdete pokyny v [této stránce](https://docs.microsoft.com/azure/load-balancer/upgrade-basicinternal-standard) .
+* Skript podporuje pouze upgrade veřejné Load Balancer. Pro interní základní Load Balancer upgrade najdete pokyny v [této stránce](./upgrade-basicinternal-standard.md) .
 * Standard Load Balancer má novou veřejnou adresu. Je možné, že nebudete moct bez problémů přesunout IP adresy přidružené k existujícím základním Load Balancerm Standard Load Balancer, protože mají jiné SKU.
 * Pokud se standardní nástroj pro vyrovnávání zatížení vytvoří v jiné oblasti, nebudete moct k nově vytvořeným Standard Load Balancer přidružit virtuální počítače existující ve staré oblasti. Pokud chcete toto omezení obejít, nezapomeňte vytvořit nový virtuální počítač v nové oblasti.
 * Pokud vaše Load Balancer nemá front-end IP konfiguraci ani back-end fond, pravděpodobně při spuštění skriptu dojde k chybě. Ujistěte se prosím, že nejsou prázdné.
@@ -99,7 +99,7 @@ Tady je několik scénářů, jak můžete nakonfigurovat virtuální počítač
  
     1. V nabídce vlevo vyberte **všechny prostředky** a potom v seznamu prostředků vyberte **nově vytvořenou Standard Load Balancer** .
    
-    1. V části **Nastavení**vyberte **back-endové fondy**.
+    1. V části **Nastavení** vyberte **back-endové fondy**.
    
     1. Vyberte back-end fond, který se shoduje se back-end fondem základního Load Balancer, vyberte následující hodnotu: 
       - **Virtuální počítač**: rozevírací seznam a výběr virtuálních počítačů z odpovídajícího back-end fondu základní Load Balancer.
@@ -108,11 +108,11 @@ Tady je několik scénářů, jak můžete nakonfigurovat virtuální počítač
     >U virtuálních počítačů, které mají veřejné IP adresy, budete muset nejprve vytvořit standardní IP adresy, kde není zaručena stejná IP adresa. Zruší přidružení virtuálních počítačů ze základních IP adres a přidruží je k nově vytvořeným standardním IP adresám. Pak budete moct postupovat podle pokynů pro přidání virtuálních počítačů do back-endového fondu Standard Load Balancer. 
 
 * **Vytváření nových virtuálních počítačů pro přidání do back-endovéch fondů nově vytvořených standardních veřejných Load Balancer**.
-    * Další pokyny k vytvoření virtuálního počítače a jeho přidružení k Standard Load Balancer najdete [tady](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines).
+    * Další pokyny k vytvoření virtuálního počítače a jeho přidružení k Standard Load Balancer najdete [tady](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines).
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>Vytvoření odchozího pravidla pro odchozí připojení
 
-Postupujte podle [pokynů](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) pro vytvoření odchozího pravidla, abyste mohli
+Postupujte podle [pokynů](./quickstart-load-balancer-standard-public-powershell.md#create-outbound-rule-configuration) pro vytvoření odchozího pravidla, abyste mohli
 * Definice odchozího překladu adres (NAT) od začátku
 * Škálujte a optimalizujte chování stávajícího odchozího překladu adres (NAT).
 

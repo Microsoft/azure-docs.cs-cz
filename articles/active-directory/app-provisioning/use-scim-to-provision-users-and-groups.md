@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 0ec70963dd7f464ae4e72c3bf79e06ebfb5238fc
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 5e2f323f705a891f06cee1d25779351d02a91572
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616174"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695261"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Kurz – sestavení koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -154,6 +154,7 @@ V rámci [specifikace protokolu SCIM 2,0](http://www.simplecloud.info/#Specifica
 * Podporuje dotazování uživatelů nebo skupin podle části [3.4.2 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Ve výchozím nastavení jsou uživatelé načítáni pomocí `id` a dotazováni jejich `username` a a `externalId` skupiny jsou dotazovány nástrojem `displayName` .  
 * Podporuje dotazování uživatele podle ID a podle manažera podle části 3.4.2 protokolu SCIM.  
 * Podporuje dotazování skupin podle ID a členu podle části 3.4.2 protokolu SCIM.  
+* Podporuje filtr [excludedAttributes = Members](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group) při dotazování na prostředek skupiny, podle části 3.4.2.5 protokolu SCIM.
 * Přijme jeden nosný token pro ověřování a autorizaci služby Azure AD pro vaši aplikaci.
 * Podporuje obnovitelné odstranění uživatele `active=false` a obnovení uživatele `active=true` (objekt uživatele by měl být vrácen v požadavku bez ohledu na to, zda je uživatel aktivní). Jediným okamžikem, kdy by uživatel neměl být vrácen, je v případě, že je pevným smazán z aplikace. 
 
@@ -762,7 +763,7 @@ Open source [referenční kód](https://aka.ms/SCIMReferenceCode) .NET Core publ
 
 Řešení se skládá ze dvou projektů, _Microsoft. SCIM_ a _Microsoft. SCIM. WebHostSample_.
 
-Projekt _Microsoft. SCIM_ je knihovna, která definuje komponenty webové služby, které jsou v souladu se specifikací SCIM. Deklaruje rozhraní _Microsoft. SCIM. IProvider_ , požadavky jsou přeloženy do volání metod poskytovatele, která by byla naprogramována pro provoz v úložišti identit.
+Projekt _Microsoft. SCIM_ je knihovna, která definuje komponenty webové služby, které jsou v souladu se specifikací SCIM. Deklaruje rozhraní _Microsoft. SCIM. IProvider_, požadavky jsou přeloženy do volání metod poskytovatele, která by byla naprogramována pro provoz v úložišti identit.
 
 ![Rozpis: požadavek přeložený do volání metod poskytovatele](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
 
@@ -1149,7 +1150,7 @@ Aplikace, které podporují profil SCIM popsané v tomto článku, se dají při
 8. Pokud koncový bod SCIM vyžaduje token nosiče OAuth od jiného vydavatele než Azure AD, Zkopírujte požadovaný token Bearer OAuth do pole volitelného **tajného tokenu** . Pokud toto pole zůstane prázdné, Azure AD zahrnuje token nosiče OAuth vydaný z Azure AD s každým požadavkem. Aplikace, které používají Azure AD jako zprostředkovatel identity, můžou ověřit tento token vydaný službou Azure AD. 
    > [!NOTE]
    > *_* Nedoporučujeme_* toto pole nechat prázdné a spoléhat se na token generovaný službou Azure AD. Tato možnost je primárně k dispozici pro účely testování.
-9. Vyberte _ *test Connection* *, aby se Azure Active Directory pokus o připojení ke koncovému bodu SCIM. Pokud se pokus nezdaří, zobrazí se informace o chybě.  
+9. Vyberte _ *test Connection**, aby se Azure Active Directory pokus o připojení ke koncovému bodu SCIM. Pokud se pokus nezdaří, zobrazí se informace o chybě.  
 
     > [!NOTE]
     > **Test Connection** se dotazuje na koncový bod SCIM pro uživatele, který neexistuje, pomocí NÁHODNÉho identifikátoru GUID jako odpovídající vlastnosti vybrané v konfiguraci služby Azure AD. Očekávaná správná odpověď je HTTP 200 OK s prázdnou SCIM zprávou ListResponse.

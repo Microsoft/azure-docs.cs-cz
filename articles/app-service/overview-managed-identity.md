@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 73b09c006b11e7f57dd3833191dd381b7f42a709
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c734c0ceb9c4d5418edc51a2c3ad3c052637ad31
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145833"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696978"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -33,17 +33,17 @@ Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte apli
 
 1. Vytvořte aplikaci na portálu obvyklým způsobem. Přejděte na portál na portálu.
 
-2. Pokud používáte aplikaci Function App, přejděte k **funkcím platformy** . U ostatních typů aplikací se posuňte dolů ke skupině **Nastavení** v levém navigačním panelu.
+2. Pokud používáte aplikaci Function App, přejděte k **funkcím platformy**. U ostatních typů aplikací se posuňte dolů ke skupině **Nastavení** v levém navigačním panelu.
 
-3. Vyberte **Identita** .
+3. Vyberte **Identita**.
 
-4. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto** . Klikněte na **Uložit** .
+4. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto**. Klikněte na **Uložit**.
 
     ![Snímek obrazovky, který ukazuje, kde přepnout stav na zapnuto a pak vyberte Uložit.](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 
 > [!NOTE] 
-> Pokud chcete najít spravovanou identitu pro vaši webovou aplikaci nebo aplikaci slotu v Azure Portal v části **podnikové aplikace** , podívejte se do části **uživatelská nastavení** . Název slotu je obvykle podobný `<app name>/slots/<slot name>` .
+> Pokud chcete najít spravovanou identitu pro vaši webovou aplikaci nebo aplikaci slotu v Azure Portal v části **podnikové aplikace**, podívejte se do části **uživatelská nastavení** . Název slotu je obvykle podobný `<app name>/slots/<slot name>` .
 
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI
@@ -198,13 +198,13 @@ Nejdřív budete muset vytvořit prostředek identity přiřazené uživatelem.
 
 2. Vytvořte aplikaci na portálu obvyklým způsobem. Přejděte na portál na portálu.
 
-3. Pokud používáte aplikaci Function App, přejděte k **funkcím platformy** . U ostatních typů aplikací se posuňte dolů ke skupině **Nastavení** v levém navigačním panelu.
+3. Pokud používáte aplikaci Function App, přejděte k **funkcím platformy**. U ostatních typů aplikací se posuňte dolů ke skupině **Nastavení** v levém navigačním panelu.
 
-4. Vyberte **Identita** .
+4. Vyberte **Identita**.
 
-5. Na kartě **přiřazené uživatelem** klikněte na tlačítko **Přidat** .
+5. Na kartě **přiřazené uživatelem** klikněte na tlačítko **Přidat**.
 
-6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na **Přidat** .
+6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na **Přidat**.
 
     ![Spravovaná identita v App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -324,28 +324,28 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 
 **IDENTITY_ENDPOINT** je místní adresa URL, ze které vaše aplikace může žádat o tokeny. Pokud chcete získat token pro prostředek, udělejte požadavek HTTP GET na tento koncový bod, včetně následujících parametrů:
 
-> | Název parametru    | V     | Description                                                                                                                                                                                                                                                                                                                                |
+> | Název parametru    | V     | Popis                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | prostředek          | Dotaz  | Identifikátor URI prostředku Azure AD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.    |
-> | verze-api       | Dotaz  | Verze rozhraní API tokenu, která se má použít. Použijte prosím "2019-08-01" nebo novější (Pokud nepoužíváte spotřebu Linux, který aktuálně jenom nabízí "2017-09-01" – viz poznámku výše).                                                                                                                                                                                                                                                                 |
-> | X-IDENTITY – HLAVIČKA | Záhlaví | Hodnota proměnné prostředí IDENTITY_HEADER. Tato hlavička se používá ke zmírnění útoků na straně serveru (SSRF).                                                                                                                                                                                                    |
-> | client_id         | Dotaz  | Volitelné ID klienta, které má uživatel přiřazenou identitu použít. Nelze použít na žádost, která obsahuje `principal_id` , `mi_res_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                             |
-> | principal_id      | Dotaz  | Volitelné ID objektu zabezpečení přiřazené identity uživatele, která se má použít `object_id` je alias, který může být použit místo toho. Nelze použít pro požadavek, který obsahuje client_id, mi_res_id nebo object_id. Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem. |
-> | mi_res_id         | Dotaz  | Volitelné ID prostředku Azure pro uživatelem přiřazenou identitu, která se má použít. Nelze použít na žádost, která obsahuje `principal_id` , `client_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                      |
+> | prostředek          | Dotazy  | Identifikátor URI prostředku Azure AD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.    |
+> | verze-api       | Dotazy  | Verze rozhraní API tokenu, která se má použít. Použijte prosím "2019-08-01" nebo novější (Pokud nepoužíváte spotřebu Linux, který aktuálně jenom nabízí "2017-09-01" – viz poznámku výše).                                                                                                                                                                                                                                                                 |
+> | X-IDENTITY – HLAVIČKA | Hlavička | Hodnota proměnné prostředí IDENTITY_HEADER. Tato hlavička se používá ke zmírnění útoků na straně serveru (SSRF).                                                                                                                                                                                                    |
+> | client_id         | Dotazy  | Volitelné ID klienta, které má uživatel přiřazenou identitu použít. Nelze použít na žádost, která obsahuje `principal_id` , `mi_res_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                             |
+> | principal_id      | Dotazy  | Volitelné ID objektu zabezpečení přiřazené identity uživatele, která se má použít `object_id` je alias, který může být použit místo toho. Nelze použít pro požadavek, který obsahuje client_id, mi_res_id nebo object_id. Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem. |
+> | mi_res_id         | Dotazy  | Volitelné ID prostředku Azure pro uživatelem přiřazenou identitu, která se má použít. Nelze použít na žádost, která obsahuje `principal_id` , `client_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                      |
 
 > [!IMPORTANT]
 > Pokud se pokoušíte získat tokeny pro uživatelsky přiřazené identity, musíte zahrnout jednu z volitelných vlastností. V opačném případě se služba tokenů pokusí získat token pro identitu přiřazenou systémem, která může nebo nemusí existovat.
 
 Úspěšná odpověď 200 OK zahrnuje tělo JSON s následujícími vlastnostmi:
 
-> | Název vlastnosti | Description                                                                                                                                                                                                                                        |
+> | Název vlastnosti | Popis                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | Požadovaný přístupový token Volající webová služba může tento token použít k ověření pro přijímající webovou službu.                                                                                                                               |
 > | client_id     | ID klienta použité identity.                                                                                                                                                                                                       |
 > | expires_on    | Časový interval pro přístup k vypršení platnosti přístupového tokenu Datum se reprezentuje jako počet sekund od "1970-01-01T0:0: 0Z UTC" (odpovídá `exp` deklaraci identity tokenu).                                                                                |
 > | not_before    | Časové rozpětí, kdy se přístupový token projeví a lze jej přijmout. Datum se reprezentuje jako počet sekund od "1970-01-01T0:0: 0Z UTC" (odpovídá `nbf` deklaraci identity tokenu).                                                      |
 > | prostředek      | Prostředek, pro který byl požadován přístupový token, který odpovídá `resource` parametru řetězce dotazu žádosti.                                                                                                                               |
-> | token_type    | Určuje hodnotu typu tokenu. Jediným typem, který Azure AD podporuje, je FBearer. Další informace o nosných tokenech najdete v části [autorizační rozhraní OAuth 2,0: použití nosných tokenů (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+> | token_type    | Určuje hodnotu typu tokenu. Jediným typem, který podporuje Azure AD, je nosič. Další informace o nosných tokenech najdete v části [autorizační rozhraní OAuth 2,0: použití nosných tokenů (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
 Tato odpověď je stejná jako [odpověď pro žádost o přístup k tokenu služby Azure AD na službu](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 

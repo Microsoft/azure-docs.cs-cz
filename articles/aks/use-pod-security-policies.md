@@ -4,17 +4,17 @@ description: Naučte se řídit přístup pomocí PodSecurityPolicy ve službě 
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: a9f6ead7edea7a3a6240e116d3073ea01fa9f6bb
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 77c618429503caf9aa7bb6abda109504bbf68d71
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900108"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695992"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
 
 > [!WARNING]
-> **Funkce popsaná v tomto dokumentu, pod zásadou zabezpečení (Preview), je nastavena pro vyřazení a nebude již k dispozici po 1. února 2021** ve prospěch [Azure Policy pro AKS](use-pod-security-on-azure-policy.md). Datum vyřazení bylo prodlouženo od předchozího dne 15. října 2020.
+> **Funkce popsaná v tomto dokumentu, pod zásadou zabezpečení (Preview), je nastavena pro vyřazení a nebude již k dispozici po 31, 2021** ve prospěch [Azure Policy pro AKS](use-pod-security-on-azure-policy.md). Datum vyřazení bylo prodlouženo od předchozího dne 15. října 2020.
 >
 > Po použití zásady zabezpečení (Preview) je zastaralá. tuto funkci je třeba zakázat na všech stávajících clusterech pomocí zastaralé funkce, aby se prováděly budoucí upgrady clusteru a zůstaly v rámci podpory Azure.
 >
@@ -80,7 +80,7 @@ Pokud chcete zobrazit, jak výchozí zásady omezují podle nasazení, v tomto �
 
 ## <a name="enable-pod-security-policy-on-an-aks-cluster"></a>Povolit zásadu zabezpečení pod v clusteru AKS
 
-Pomocí příkazu [AZ AKS Update][az-aks-update] můžete povolit nebo zakázat zásadu zabezpečení pod. Následující příklad povolí zásady zabezpečení pro název clusteru *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup* .
+Pomocí příkazu [AZ AKS Update][az-aks-update] můžete povolit nebo zakázat zásadu zabezpečení pod. Následující příklad povolí zásady zabezpečení pro název clusteru *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*.
 
 > [!NOTE]
 > Pro reálné použití nepovolujte zásady zabezpečení pod, dokud nedefinujete vlastní zásady. V tomto článku aktivujete zásadu zabezpečení pod prvním krokem, abyste viděli, jak výchozí zásady omezují na pod nasazeními.
@@ -94,7 +94,7 @@ az aks update \
 
 ## <a name="default-aks-policies"></a>Výchozí zásady AKS
 
-Když zapnete zásadu zabezpečení pod, AKS vytvoří jednu výchozí zásadu s názvem *Privileged* . Neupravujte ani neodstraňujte výchozí zásady. Místo toho vytvořte vlastní zásady, které definují nastavení, které chcete ovládat. Nejdřív se podíváme na to, jak tyto výchozí zásady ovlivňují nasazení pod.
+Když zapnete zásadu zabezpečení pod, AKS vytvoří jednu výchozí zásadu s názvem *Privileged*. Neupravujte ani neodstraňujte výchozí zásady. Místo toho vytvořte vlastní zásady, které definují nastavení, které chcete ovládat. Nejdřív se podíváme na to, jak tyto výchozí zásady ovlivňují nasazení pod.
 
 Pokud chcete zobrazit dostupné zásady, použijte příkaz [kubectl Get PSP][kubectl-get] , jak je znázorněno v následujícím příkladu.
 
@@ -274,7 +274,7 @@ V poli se nedosáhnou fáze plánování, takže před přesunutím na neexistuj
 
 Teď, když jste se seznámili s chováním výchozích zásad zabezpečení pod, Pojďme dát *nesprávci* možnost, aby nedokázali naplánovat lusky.
 
-Pojďme vytvořit zásadu, která odmítne lusky, které požadují privilegovaný přístup. Další možnosti, například *runAsUser* nebo povolené *svazky* , nejsou výslovně omezeny. Tento typ zásady odepře požadavek na privilegovaný přístup, ale jinak umožňuje clusteru spustit požadované lusky.
+Pojďme vytvořit zásadu, která odmítne lusky, které požadují privilegovaný přístup. Další možnosti, například *runAsUser* nebo povolené *svazky*, nejsou výslovně omezeny. Tento typ zásady odepře požadavek na privilegovaný přístup, ale jinak umožňuje clusteru spustit požadované lusky.
 
 Vytvořte soubor s názvem `psp-deny-privileged.yaml` a vložte následující YAML manifest:
 
@@ -315,7 +315,7 @@ psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    R
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Povolí uživatelskému účtu používat vlastní zásady zabezpečení pod.
 
-V předchozím kroku jste vytvořili zásadu zabezpečení pod tím, že odmítnete lusky, které požadují privilegovaný přístup. Pokud chcete, aby se tato zásada použila, vytvořte *roli* nebo *ClusterRole* . Pak přidružíte jednu z těchto rolí pomocí *RoleBinding* nebo *ClusterRoleBinding* .
+V předchozím kroku jste vytvořili zásadu zabezpečení pod tím, že odmítnete lusky, které požadují privilegovaný přístup. Pokud chcete, aby se tato zásada použila, vytvořte *roli* nebo *ClusterRole*. Pak přidružíte jednu z těchto rolí pomocí *RoleBinding* nebo *ClusterRoleBinding*.
 
 V tomto příkladu vytvořte ClusterRole, který umožňuje *použít* zásadu *PSP-Deny-Privileged* vytvořenou v předchozím kroku. Vytvořte soubor s názvem `psp-deny-privileged-clusterrole.yaml` a vložte následující YAML manifest:
 
@@ -375,7 +375,7 @@ Když použijete vlastní zásadu zabezpečení pod a vytvoříte vazbu pro uži
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-V části se úspěšně naplánovalo. Když zkontrolujete stav pod, pomocí příkazu [kubectl Get lusky][kubectl-get] je *spuštěný* :
+V části se úspěšně naplánovalo. Když zkontrolujete stav pod, pomocí příkazu [kubectl Get lusky][kubectl-get] je *spuštěný*:
 
 ```
 $ kubectl-nonadminuser get pods
@@ -394,7 +394,7 @@ kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete zakázat zásadu zabezpečení pod, použijte znovu příkaz [AZ AKS Update][az-aks-update] . Následující příklad zakáže zásady zabezpečení v názvu clusteru *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup* :
+Pokud chcete zakázat zásadu zabezpečení pod, použijte znovu příkaz [AZ AKS Update][az-aks-update] . Následující příklad zakáže zásady zabezpečení v názvu clusteru *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
 az aks update \

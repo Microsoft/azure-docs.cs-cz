@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: fa2025fa31ac960eb6c61d03bafd582de4f0e55c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3141d9937591467870ee4a88d16a96cbdb24a05b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410571"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696213"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 
@@ -38,7 +38,7 @@ Každý adresář služby Azure AD je oddělený od ostatních adresářů služ
 
 ### <a name="azure-tenancy"></a>Architektura Azure
 
-Azure tenant (předplatné Azure) odkazuje na vztah "Customer/fakturace" a jedinečného [tenanta](../../active-directory/develop/quickstart-create-new-tenant.md) v [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md). Izolace na úrovni tenanta v Microsoft Azure se dosahuje pomocí Azure Active Directory a [ovládacích prvků založených na rolích](../../role-based-access-control/overview.md) , které nabízí. Každé předplatné Azure je přidruženo k jednomu Azure Active Directory (AD) adresáři.
+Azure tenant (předplatné Azure) odkazuje na vztah "Customer/fakturace" a jedinečného [tenanta](../../active-directory/develop/quickstart-create-new-tenant.md) v [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md). Izolace na úrovni tenanta v Microsoft Azure se dosahuje pomocí Azure Active Directory a [řízení přístupu na základě role v Azure](../../role-based-access-control/overview.md) , které nabízí. Každé předplatné Azure je přidruženo k jednomu Azure Active Directory (AD) adresáři.
 
 Uživatelé, skupiny a aplikace z tohoto adresáře mohou spravovat prostředky v rámci předplatného Azure. Tato přístupová práva můžete přiřadit pomocí Azure Portal, nástrojů příkazového řádku Azure a rozhraní API pro správu Azure. Tenant Azure AD je logicky izolovaný pomocí hranic zabezpečení, takže žádný zákazník nemůže získat přístup k spoluklientům nebo ho ohrozit, ať už škodlivě, nebo omylem. Služba Azure AD běží na holých serverech, které jsou izolované na odděleném segmentu sítě, kde jsou filtrování paketů na úrovni hostitele a brána Windows Firewall blokuje nežádoucí připojení a provoz.
 
@@ -52,7 +52,7 @@ Uživatelé, skupiny a aplikace z tohoto adresáře mohou spravovat prostředky 
 
 - Fyzický přístup k serverům, které tvoří službu Azure AD a má přímý přístup k systémům back-end služby Azure AD, je omezený.
 
-- Uživatelé Azure AD nemají přístup k fyzickým prostředkům nebo umístěním, a proto není možné obejít kontroly logických zásad RBAC uvedené níže.
+- Uživatelé Azure AD nemají přístup k fyzickým prostředkům nebo umístěním, a proto není možné obejít kontrolu logických zásad Azure RBAC, které jsou uvedené níže.
 
 V případě potřeby diagnostiky a údržby je provozní model, který využívá systém zvýšení oprávnění za běhu, vyžadován a používán. Azure AD Privileged Identity Management (PIM) zavádí koncept oprávněného správce. oprávnění [Správci](../../active-directory/privileged-identity-management/pim-configure.md) by měli být uživatelé, kteří potřebují privilegovaný přístup nyní, ale ne každý den. Dokud uživatel nepotřebuje přístup, je tato role neaktivní. Jakmile uživatel bude přístup potřebovat, dokončí proces aktivace a na předem určenou dobu se stane aktivním správcem.
 
@@ -80,7 +80,7 @@ Azure RBAC má tři základní role, které se vztahují na všechny typy prost�
 
 Zbývající role Azure v Azure umožňují správu konkrétních prostředků Azure. Role Přispěvatel virtuálních počítačů například uživateli umožňuje vytvářet a spravovat virtuální počítače. Neuděluje jim přístup k Virtual Network Azure ani k podsíti, ke které se virtuální počítač připojuje.
 
-[Předdefinované role RBAC](../../role-based-access-control/built-in-roles.md) uvádějí role dostupné v Azure. Určuje operace a rozsah, které jednotlivé předdefinované role udělují uživatelům. Pokud chcete definovat vlastní role pro ještě více ovládacích prvků, přečtěte si téma jak vytvořit [vlastní role v Azure RBAC](../../role-based-access-control/custom-roles.md).
+[Předdefinované role Azure](../../role-based-access-control/built-in-roles.md) uvádějí role dostupné v Azure. Určuje operace a rozsah, které jednotlivé předdefinované role udělují uživatelům. Pokud chcete definovat vlastní role pro ještě více ovládacích prvků, přečtěte si téma jak vytvořit [vlastní role v Azure RBAC](../../role-based-access-control/custom-roles.md).
 
 Mezi další možnosti Azure Active Directory patří:
 
@@ -273,7 +273,7 @@ Logické servery a databáze SQL jsou SQL Database specifických konceptech a js
 
 Servery v SQL Database nejsou fyzické nebo instance virtuálních počítačů, místo toho se jedná o kolekce databází, správu sdílení a zásady zabezpečení, které jsou uložené v, označované jako "logická hlavní" databáze.
 
-![Databáze SQL](./media/isolation-choices/azure-isolation-fig11.png)
+![SQL Database](./media/isolation-choices/azure-isolation-fig11.png)
 
 Mezi logické hlavní databáze patří:
 

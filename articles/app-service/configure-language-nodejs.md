@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7f925854f4ef09ccc74c0ec1e8fdcca6b71d1437
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8bdf637ab773e90a5eac42bcaa443cf6741db636
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744052"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696009"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Konfigurace aplikace Node.js pro Azure App Service
 
@@ -85,6 +85,36 @@ Toto nastavení určuje Node.js verzi, která se má použít, za běhu i při a
 
 ::: zone-end
 
+## <a name="get-port-number"></a>Získat číslo portu
+
+Node.js aplikace potřebuje naslouchat správnému portu pro příjem příchozích požadavků.
+
+::: zone pivot="platform-windows"  
+
+V App Service ve Windows se Node.js aplikace hostují s [IISNode](https://github.com/Azure/iisnode)a vaše Node.js aplikace by měla naslouchat portu zadanému v `process.env.PORT` proměnné. Následující příklad ukazuje, jak to provedete v jednoduché aplikaci Express:
+
+::: zone-end
+
+::: zone pivot="platform-linux"  
+
+App Service nastaví proměnnou prostředí `PORT` v kontejneru Node.js a přepošle příchozí požadavky do kontejneru s tímto číslem portu. Aby bylo možné přijímat žádosti, vaše aplikace by měla naslouchat tomuto portu pomocí `process.env.PORT` . Následující příklad ukazuje, jak to provedete v jednoduché aplikaci Express:
+
+::: zone-end
+
+```javascript
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
+```
+
 ::: zone pivot="platform-linux"
 
 ## <a name="customize-build-automation"></a>Přizpůsobení automatizace sestavení
@@ -123,7 +153,7 @@ Kontejnery Node.js jsou dodávány s [konfiguračního PM2](https://pm2.keymetri
 
 ### <a name="run-custom-command"></a>Spustit vlastní příkaz
 
-App Service může aplikaci spustit pomocí vlastního příkazu, jako je například spustitelný soubor, například *Run.sh* . Pokud třeba chcete spustit `npm run start:prod` , spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
+App Service může aplikaci spustit pomocí vlastního příkazu, jako je například spustitelný soubor, například *Run.sh*. Pokud třeba chcete spustit `npm run start:prod` , spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
@@ -131,7 +161,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>Spustit npm Start
 
-Pokud chcete aplikaci spustit pomocí `npm start` , stačí, když zajistěte, aby `start` byl skript v *package.js* souboru. Příklad:
+Pokud chcete aplikaci spustit pomocí `npm start` , stačí, když zajistěte, aby `start` byl skript v *package.js* souboru. Například:
 
 ```json
 {
@@ -164,7 +194,7 @@ Kontejner automaticky spustí vaši aplikaci s konfiguračního PM2, když se v 
 Můžete také nakonfigurovat vlastní spouštěcí soubor s následujícími příponami:
 
 - Soubor *. js*
-- [Soubor konfiguračního PM2](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) s příponou *. JSON* , *.config.js* , *. yaml* nebo *. yml*
+- [Soubor konfiguračního PM2](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) s příponou *. JSON*, *.config.js*, *. yaml* nebo *. yml*
 
 Chcete-li přidat vlastní spouštěcí soubor, spusťte následující příkaz v [Cloud Shell](https://shell.azure.com):
 
@@ -177,9 +207,9 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > [!NOTE]
 > Vzdálené ladění je aktuálně ve verzi Preview.
 
-Aplikaci Node.js můžete vzdáleně ladit v [Visual Studio Code](https://code.visualstudio.com/) Pokud ji nakonfigurujete tak, aby [běžela s konfiguračního PM2](#run-with-pm2), s výjimkou případů, kdy ji spustíte pomocí * .config.js, *. yml nebo *. yaml* .
+Aplikaci Node.js můžete vzdáleně ladit v [Visual Studio Code](https://code.visualstudio.com/) Pokud ji nakonfigurujete tak, aby [běžela s konfiguračního PM2](#run-with-pm2), s výjimkou případů, kdy ji spustíte pomocí * .config.js, *. yml nebo *. yaml*.
 
-Ve většině případů není pro vaši aplikaci nutná žádná další konfigurace. Pokud je vaše aplikace spuštěná s *process.jsv* souboru (výchozí nebo vlastní), musí mít `script` v kořenu JSON vlastnost. Příklad:
+Ve většině případů není pro vaši aplikaci nutná žádná další konfigurace. Pokud je vaše aplikace spuštěná s *process.jsv* souboru (výchozí nebo vlastní), musí mít `script` v kořenu JSON vlastnost. Například:
 
 ```json
 {
@@ -191,9 +221,9 @@ Ve většině případů není pro vaši aplikaci nutná žádná další konfig
 
 Chcete-li nastavit Visual Studio Code pro vzdálené ladění, nainstalujte [App Service rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Postupujte podle pokynů na stránce rozšíření a přihlaste se k Azure v Visual Studio Code.
 
-V Průzkumníku Azure Najděte aplikaci, kterou chcete ladit, klikněte na ni pravým tlačítkem myši a vyberte **Spustit vzdálené ladění** . Klikněte na **Ano** a povolte ji pro vaši aplikaci. App Service spustí proxy server tunelu za vás a připojí ladicí program. Pak můžete v aplikaci předávat žádosti a sledovat, že se ladicí program pozastavuje v bodech přerušení.
+V Průzkumníku Azure Najděte aplikaci, kterou chcete ladit, klikněte na ni pravým tlačítkem myši a vyberte **Spustit vzdálené ladění**. Klikněte na **Ano** a povolte ji pro vaši aplikaci. App Service spustí proxy server tunelu za vás a připojí ladicí program. Pak můžete v aplikaci předávat žádosti a sledovat, že se ladicí program pozastavuje v bodech přerušení.
 
-Po dokončení ladění ukončete ladicí program výběrem možnosti **Odpojit** . Po zobrazení výzvy klikněte na **Ano** , pokud chcete zakázat vzdálené ladění. Pokud ho chcete později zakázat, klikněte znovu pravým tlačítkem myši na aplikaci v Průzkumníkovi Azure a vyberte **Zakázat vzdálené ladění** .
+Po dokončení ladění ukončete ladicí program výběrem možnosti **Odpojit**. Po zobrazení výzvy klikněte na **Ano** , pokud chcete zakázat vzdálené ladění. Pokud ho chcete později zakázat, klikněte znovu pravým tlačítkem myši na aplikaci v Průzkumníkovi Azure a vyberte **Zakázat vzdálené ladění**.
 
 ::: zone-end
 
@@ -209,7 +239,7 @@ process.env.NODE_ENV
 
 Ve výchozím nastavení se App Service Automation Build spustí, `npm install --production` když rozpozná Node.js aplikace nasazené prostřednictvím nasazení Git nebo zip s povolenou automatizací sestavení. Pokud vaše aplikace vyžaduje některé z oblíbených nástrojů pro automatizaci, jako je grunt, Bower nebo Gulp, je potřeba pro její spuštění zadáním [vlastního skriptu nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) .
 
-Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Příklad:
+Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Například:
 
 ```json
 "dependencies": {
@@ -227,7 +257,7 @@ npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-Kořenový adresář úložiště má teď dva další soubory: *. Deployment* a *Deploy.sh* .
+Kořenový adresář úložiště má teď dva další soubory: *. Deployment* a *Deploy.sh*.
 
 Otevřete *Deploy.sh* a vyhledejte `Deployment` část, která vypadá takto:
 
@@ -317,7 +347,7 @@ if (req.secure) {
 Pokud se pracovní Node.js aplikace chová jinak v App Service nebo obsahuje chyby, zkuste následující:
 
 - [Přístup ke streamu protokolů](#access-diagnostic-logs).
-- Otestujte aplikaci místně v provozním režimu. App Service spouští aplikace Node.js v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v produkčním režimu v místním prostředí. Příklad:
+- Otestujte aplikaci místně v provozním režimu. App Service spouští aplikace Node.js v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v produkčním režimu v místním prostředí. Například:
     - V závislosti na vaší *package.js* se můžou v produkčním režimu ( `dependencies` vs.) nainstalovat různé balíčky `devDependencies` .
     - Některé webové architektury můžou nasazovat statické soubory odlišně v produkčním režimu.
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.

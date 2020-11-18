@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
-ms.openlocfilehash: 1f81285e869bd2c65cce29766de0b2bd39a627f6
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 766266edd663b75b893a5883e30bb48eed7bbfdf
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557725"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696111"
 ---
 # <a name="hypervisor-security-on-the-azure-fleet"></a>Zabezpečení hypervisoru v rámci loďstva Azure
 
@@ -26,7 +26,7 @@ Hypervisor Azure zachovává následující cíle zabezpečení:
 | Izolace | Zásady zabezpečení připravují žádné přenosy informací mezi virtuálními počítači. Toto omezení vyžaduje možnosti v Virtual Machine Manager (VMM) a hardwaru pro izolaci paměti, zařízení, sítě a spravovaných prostředků, jako jsou trvalá data. |
 | Integrita VMM | Pro zajištění celkové integrity systému je zajištěna a udržována integrita jednotlivých komponent hypervisoru. |
 | Integrita platformy | Integrita hypervisoru závisí na integritě hardwaru a softwaru, na kterém závisí. I když hypervisor nemá přímou kontrolu nad integritou platformy, Azure spoléhá na hardwarové a firmware mechanismy, jako je například čip [Cerberus](project-cerberus.md) , který chrání a detekuje základní integritu platformy. Pokud dojde k ohrožení integrity platformy, VMM a hosté se nebudou moci spouštět. |
-| Omezený přístup | Funkce správy jsou vykonávány jenom autorizovanými správci připojenými přes zabezpečená připojení. Principem nejnižší úrovně oprávnění je vynutilo mechanismy řízení přístupu na základě role (RBAC). |
+| Omezený přístup | Funkce správy jsou vykonávány jenom autorizovanými správci připojenými přes zabezpečená připojení. Principem minimálního oprávnění je vynutilo mechanismy řízení přístupu na základě role Azure (Azure RBAC). |
 | Auditování | Azure umožňuje auditovat a chránit data týkající se toho, co se stane v systému, aby bylo možné je později zkontrolovat. |
 
 Přístup Microsoftu k posílení hypervisoru Azure a subsystému virtualizace je možné rozdělit do následujících tří kategorií.
@@ -71,5 +71,5 @@ Další informace o tom, co máme k zajištění integrity a zabezpečení platf
 - [Zabezpečení firmwaru](firmware.md)
 - [Zabezpečené spouštění](secure-boot.md)
 - [Měřené ověření spouštění a ověřování hostitele](measured-boot-host-attestation.md)
-- [Cerberus projektu](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Šifrování neaktivních uložených dat](encryption-atrest.md)

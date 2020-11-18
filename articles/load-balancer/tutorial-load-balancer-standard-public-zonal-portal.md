@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: a714368fc0508149714eaa42f4741e1042376c52
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f91c9c0f401a455543b12af81eed48bd1a3349bd
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044951"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696434"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů v rámci zóny dostupnosti pomocí Standard Load Balanceru na webu Azure Portal
 
@@ -37,7 +37,7 @@ V tomto kurzu vytvoříte veřejnou [instanci Azure Standard Load Balanceru](htt
 
 Další informace o použití zón dostupnosti s Standard Load Balancer najdete v tématu [Standard Load Balancer a zóny dostupnosti](load-balancer-standard-availability-zones.md).
 
-K tomuto kurzu také můžete použít [Azure CLI](load-balancer-standard-public-zonal-cli.md).
+K tomuto kurzu také můžete použít [Azure CLI](./quickstart-load-balancer-standard-public-cli.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -100,28 +100,28 @@ V této části budete muset v krocích níže nahradit následující parametry
 V této části vytvoříte na webu Azure Portal pravidla NSG, která povolí příchozí připojení využívající protokoly HTTP a Microsoft Remote Desktop Protocol (RDP).
 
 1. Z nabídky na webu Azure Portal, která je úplně vlevo, vyberte **Všechny prostředky**. Najděte skupinu **myNetworkSecurityGroup** a vyberte ji. Virtuální počítač se nachází ve skupině prostředků **myResourceGroupZLB**.
-2. V části **Nastavení**vyberte **příchozí pravidla zabezpečení**. Pak vyberte **Přidat**.
+2. V části **Nastavení** vyberte **příchozí pravidla zabezpečení**. Pak vyberte **Přidat**.
 3. Zadejte tyto hodnoty pro příchozí pravidlo zabezpečení s názvem **myHTTPRule** a povolte příchozí připojení HTTP přes port 80:
-    - **Značka služby**pro **zdroj**
+    - **Značka služby** pro **zdroj**
     - **Značka zdrojové služby** – zadejte **Internet**.
-    - **80**pro **rozsahy cílových portů**.
+    - **80** pro **rozsahy cílových portů**.
     - **Protokol** – zadejte **vTCP**.
     - **Povoluje** **akci**.
-    - **100**pro **priority**.
-    - **myHTTPRule**pro **název**.
+    - **100** pro **priority**.
+    - **myHTTPRule** pro **název**.
     - Pro **Popis** **Povolte protokol HTTP**.
 4. Vyberte **OK**.
  
    ![Vytvoření pravidel skupiny zabezpečení sítě](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 
 5. Opakováním kroků 2–4 vytvořte další pravidlo s názvem **myRDPRule**. Toto pravidlo umožní příchozí připojení RDP, které používá port 3389 a má následující hodnoty:
-    - **Značka služby**pro **zdroj**
+    - **Značka služby** pro **zdroj**
     - **Značka zdrojové služby** – zadejte **Internet**.
-    - **3389**pro **rozsahy cílových portů**.
-    - Protokol **TCP**pro **protokol**.
+    - **3389** pro **rozsahy cílových portů**.
+    - Protokol **TCP** pro **protokol**.
     - **Povoluje** **akci**.
-    - **200**pro **priority**.
-    - **myRDPRule**pro **název**.
+    - **200** pro **priority**.
+    - **myRDPRule** pro **název**.
     - Pro **Popis** **Povolte protokol RDP**.
 
       ![Vytvoření pravidla RDP](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
@@ -129,7 +129,7 @@ V této části vytvoříte na webu Azure Portal pravidla NSG, která povolí p�
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
 1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **COMPUTE**  >  **Windows Server 2016 Datacenter**. Zadejte pro virtuální počítač tyto hodnoty:
-    - **myVM1**pro název virtuálního počítače.        
+    - **myVM1** pro název virtuálního počítače.        
     - **azureuser** – uživatelské jméno správce.    
     - **myResourceGroupZLB** – název **skupiny prostředků**. Vyberte **Použít existující** a pak vyberte **myResourceGroupZLB**.
 2. Vyberte **OK**.
@@ -175,11 +175,11 @@ V této části nakonfigurujete nastavení nástroje pro vyrovnávání zatíže
 Aby bylo možné distribuovat provoz do virtuálních počítačů, obsahuje fond back-endových adres IP adresy adaptérů virtuální sítě připojených k nástroji pro vyrovnávání zatížení. Vytvořte fond back-end adres **myBackendPool** , který bude zahrnovat **VM1** a **VM2**.
 
 1. V nabídce úplně vlevo vyberte **Všechny prostředky**. Ze seznamu prostředků vyberte **myLoadBalancer**.
-2. V části **Nastavení**vyberte **back-endové fondy**. Pak vyberte **Přidat**.
+2. V části **Nastavení** vyberte **back-endové fondy**. Pak vyberte **Přidat**.
 3. Na stránce **Přidat back-endový fond** proveďte tyto akce:
     - Jako název back-endového fondu zadejte **myBackEndPool**.
     - V rozevírací nabídce **Virtuální síť** vyberte **myVNet**. 
-    - Pro **virtuální počítač** a **IP adresu**přidejte **myVM1** a **myVM2** a jejich odpovídající veřejné IP adresy.
+    - Pro **virtuální počítač** a **IP adresu** přidejte **myVM1** a **myVM2** a jejich odpovídající veřejné IP adresy.
 4. Vyberte **Přidat**.
 5. Zkontrolujte, že se v nastavení back-endového fondu vašeho nástroje pro vyrovnávání zatížení zobrazují oba virtuální počítače (**myVM1** a **myVM2**).
  
@@ -192,9 +192,9 @@ Sonda stavu slouží monitorování stavu vaší aplikace nástrojem pro vyrovn�
 1. V nabídce úplně vlevo vyberte **Všechny prostředky**. Ze seznamu prostředků vyberte **myLoadBalancer**.
 2. V oblasti **Nastavení** vyberte **Sondy stavu**. Pak vyberte **Přidat**.
 3. K vytvoření sondy stavu použijte tyto hodnoty:
-    - **myHealthProbe**pro název sondy stavu.
-    - **Http**pro typ protokolu.
-    - **80**pro číslo portu.
+    - **myHealthProbe** pro název sondy stavu.
+    - **Http** pro typ protokolu.
+    - **80** pro číslo portu.
     - **15** – **interval** mezi pokusy o testování sondy v sekundách.
     - **2** – **prahová hodnota špatného stavu** neboli počet opakovaných selhání sondy, ke kterým musí dojít, aby byl virtuální počítač považován za poškozený.
 4. Vyberte **OK**.
@@ -209,11 +209,11 @@ Pravidlo nástroje pro vyrovnávání zatížení definuje, jak se provoz distri
 2. V oblasti **Nastavení** vyberte **Pravidla vyrovnávání zatížení**. Pak vyberte **Přidat**.
 3. Ke konfiguraci pravidla vyrovnávání zatížení použijte tyto hodnoty:
     - **myHTTPRule** – název pravidla vyrovnávání zatížení.
-    - **TCP**pro typ protokolu.
-    - **80**pro číslo portu.
+    - **TCP** pro typ protokolu.
+    - **80** pro číslo portu.
     - **80**, pro port back-end.
-    - **myBackendPool**pro název back-end fondu.
-    - **myHealthProbe**pro název sondy stavu.
+    - **myBackendPool** pro název back-end fondu.
+    - **myHealthProbe** pro název sondy stavu.
 4. Vyberte **OK**.
     
     ![Přidání pravidla vyrovnávání zatížení](./media/tutorial-load-balancer-standard-zonal-portal/load-balancing-rule.png)

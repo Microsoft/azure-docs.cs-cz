@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 82763842e6145b3883c46bcb9ddb45b7836c3cf2
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 605692d15a08246dd574b0724a550b4543a237a3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241816"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695516"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu Load Balanceru
 
@@ -121,7 +121,7 @@ Následující příklad ukazuje, jak můžete vyjádřit tento druh konfigurace
 ### <a name="http--https-probe"></a><a name="httpprobe"></a><a name="httpsprobe"></a>Test http/https
 
 >[!NOTE]
->Test HTTPS je dostupný jenom pro [Standard Load Balancer](load-balancer-standard-overview.md).
+>Test HTTPS je dostupný jenom pro [Standard Load Balancer](./load-balancer-overview.md).
 
 Testy HTTP a HTTPS se sestavují v testu TCP a vystavují HTTP GET se zadanou cestou. Obě tyto sondy podporují relativní cesty pro HTTP GET. Testy protokolu HTTPS jsou stejné jako testy HTTP s přidáním obálky TLS (Transport Layer Security), dříve označované jako SSL (Transport Layer Security). Sonda stavu je označena v případě, že instance reaguje se stavem HTTP 200 v rámci časového limitu.  Sonda stavu se ve výchozím nastavení pokusí ověřit nakonfigurovaný port sondy stavu každých 15 sekund. Minimální interval testu je 5 sekund. Celková doba trvání všech intervalů nesmí překročit 120 sekund.
 
@@ -169,7 +169,7 @@ Role cloudové služby (role pracovních procesů a webové role) používají p
 
 Sonda agenta hosta je kontrolou agenta hosta uvnitř virtuálního počítače. Pak naslouchá a reaguje s odpovědí HTTP 200 OK pouze v případě, že je instance ve stavu připraveno. (Ostatní stavy jsou zaneprázdněné, recyklované nebo zastavované.)
 
-Další informace najdete v tématu [Konfigurace definičního souboru služby (csdef) pro sondy stavu](https://msdn.microsoft.com/library/azure/ee758710.aspx) nebo [Začínáme vytvořením veřejného nástroje pro vyrovnávání zatížení pro cloudové služby](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services).
+Další informace najdete v tématu [Konfigurace definičního souboru služby (csdef) pro sondy stavu](/previous-versions/azure/reference/ee758710(v=azure.100)) nebo [Začínáme vytvořením veřejného nástroje pro vyrovnávání zatížení pro cloudové služby](/previous-versions/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services).
 
 Pokud Agent hosta přestane reagovat pomocí protokolu HTTP 200 OK, nástroj pro vyrovnávání zatížení označí instanci jako nereagující. Poté zastaví odesílání toků do této instance. Nástroj pro vyrovnávání zatížení pokračuje v kontrole instance. 
 
@@ -215,7 +215,7 @@ Pokud všechny sondy pro všechny instance v back-end fondu selžou, stávajíc�
 
 Load Balancer používá distribuovanou službu zjišťování pro svůj interní model stavu. Služba zjišťování se nachází na všech hostitelích, ve kterých se virtuální počítače můžou programovat na vyžádání a generovat sondy stavu podle konfigurace zákazníka. Provoz sondy stavu je přímo mezi službou probingu, která generuje sondu stavu a virtuální počítač zákazníka. Všechny sondy stavu Load Balancer pocházejí z IP adresy 168.63.129.16 jako svůj zdroj.  Můžete použít adresní prostor IP adres v rámci virtuální sítě, která není RFC1918 místo.  Při použití globálně rezervované IP adresy Microsoftu snižuje riziko konfliktu IP adres s adresním prostorem IP adres, který používáte ve virtuální síti.  Tato IP adresa je stejná ve všech oblastech a nemění se a nejedná se o bezpečnostní riziko, protože z této IP adresy může zdroj paketů nabývat jenom interní součástí platformy Azure. 
 
-Značka služby AzureLoadBalancer identifikuje tuto zdrojovou IP adresu ve [skupinách zabezpečení sítě](../virtual-network/security-overview.md) a ve výchozím nastavení povoluje provoz sondy stavu.
+Značka služby AzureLoadBalancer identifikuje tuto zdrojovou IP adresu ve [skupinách zabezpečení sítě](../virtual-network/network-security-groups-overview.md) a ve výchozím nastavení povoluje provoz sondy stavu.
 
 Kromě Load Balancer sond stavu tato [IP adresa používá následující operace](../virtual-network/what-is-ip-address-168-63-129-16.md):
 
@@ -233,15 +233,15 @@ Někdy může být užitečné, aby vaše aplikace vygenerovala odpověď stavov
 
 Pro vyrovnávání zatížení UDP byste měli z koncového bodu back-end vygenerovat vlastní signál sondy stavu a použít test stavu TCP, HTTP nebo HTTPS, který cílí na odpovídající naslouchací proces, aby odrážel stav vaší aplikace UDP.
 
-Pokud používáte [pravidla vyrovnávání zatížení s porty ha](load-balancer-ha-ports-overview.md) s [Standard Load Balancer](load-balancer-standard-overview.md), všechny porty jsou vyvážené vyrovnáváním zatížení a jedna odpověď na sondu stavu musí odrážet stav celé instance.
+Pokud používáte [pravidla vyrovnávání zatížení s porty ha](load-balancer-ha-ports-overview.md) s [Standard Load Balancer](./load-balancer-overview.md), všechny porty jsou vyvážené vyrovnáváním zatížení a jedna odpověď na sondu stavu musí odrážet stav celé instance.
 
 Neprovádějte překládání nebo proxy stav sondy prostřednictvím instance, která obdrží sondu stavu s jinou instancí ve vaší virtuální síti, protože tato konfigurace může způsobit kaskádové chyby ve vašem scénáři.  Vezměte v úvahu následující scénář: sada zařízení třetích stran je nasazená do back-endu Load Balancer prostředku, aby poskytovala škálování a redundanci pro zařízení, a sondu stavu je nakonfigurovaná tak, aby provedla test portu, který proxy zařízení třetí strany nebo překládá na jiné virtuální počítače za zařízením.  Pokud provedete test stejného portu, který používáte k překladu nebo proxy požadavků na jiné virtuální počítače za zařízením, označí jakákoli odezva z jednoho virtuálního počítače za zařízení jako nedoručitelné. Tato konfigurace může způsobit kaskádové selhání celého scénáře aplikace v důsledku jednoho koncového bodu back-endu za zařízením.  Triggerem může být přerušované selhání sondy, které způsobí, že Load Balancer označí původní cíl (instance zařízení), a pak může celý scénář aplikace vypnout. Místo toho se vyhledá stav samotného zařízení. Výběr sondy pro určení zdravotní signalizace je důležitým aspektem scénářů síťových virtuálních zařízení (síťové virtuální zařízení) a musíte požádat dodavatele aplikace o to, aby pro takové scénáře byl vhodný signál stavu.
 
 Pokud nepovolíte [zdrojovou IP adresu](#probesource) testu v zásadách brány firewall, sonda stavu selže, protože se nebude schopen spojit s vaší instancí.  Pak Load Balancer označí vaši instanci z důvodu selhání sondy stavu.  Tato Chybná konfigurace může způsobit selhání scénáře vaší aplikace s vyrovnáváním zatížení.
 
-Pokud chcete, aby se sonda stavu Load Balancera, aby se dala označit vaše instance, **musíte** tuto IP adresu nastavit v jakýchkoli [skupinách zabezpečení sítě](../virtual-network/security-overview.md) Azure a místních zásadách brány firewall.  Ve výchozím nastavení každá skupina zabezpečení sítě zahrnuje [značku služby](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer, která povoluje provoz sondy stavu.
+Pokud chcete, aby se sonda stavu Load Balancera, aby se dala označit vaše instance, **musíte** tuto IP adresu nastavit v jakýchkoli [skupinách zabezpečení sítě](../virtual-network/network-security-groups-overview.md) Azure a místních zásadách brány firewall.  Ve výchozím nastavení každá skupina zabezpečení sítě zahrnuje [značku služby](../virtual-network/network-security-groups-overview.md#service-tags) AzureLoadBalancer, která povoluje provoz sondy stavu.
 
-Pokud chcete otestovat selhání sondy stavu nebo označit jednotlivou instanci, můžete k explicitnímu blokování sondy stavu (cílového portu nebo [zdrojové IP adresy](#probesource)) použít [skupiny zabezpečení sítě](../virtual-network/security-overview.md) a simulovat selhání testu.
+Pokud chcete otestovat selhání sondy stavu nebo označit jednotlivou instanci, můžete k explicitnímu blokování sondy stavu (cílového portu nebo [zdrojové IP adresy](#probesource)) použít [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md) a simulovat selhání testu.
 
 Nekonfigurujte svou virtuální síť pomocí rozsahu IP adres vlastněných společností Microsoft, který obsahuje 168.63.129.16.  Takové konfigurace budou kolidovat s IP adresou sondy stavu a můžou způsobit selhání scénáře.
 
@@ -249,9 +249,9 @@ Pokud máte na svém VIRTUÁLNÍm počítači více rozhraní, musíte si být j
 
 Nepovolujte [Časová razítka TCP](https://tools.ietf.org/html/rfc1323).  Povolení časových razítek TCP může způsobit selhání sond stavu kvůli tomu, že pakety TCP jsou vyřazeny z hostovaného operačního systému hostovaného operačního systému virtuálního počítače. výsledkem Load Balancer označení příslušného koncového bodu.  Ve výchozím nastavení jsou časová razítka TCP zapnutá u imagí s posíleným zabezpečením virtuálních počítačů a musí být zakázaná.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
-Veřejné i interní [Standard Load Balancer](load-balancer-standard-overview.md) zveřejňují stav testu stavu koncového bodu na koncovém bodu a koncovým bodem back-end jako multidimenzionální metriky prostřednictvím Azure monitor. Tyto metriky můžou využívat jiné služby Azure nebo partnerské aplikace. 
+Veřejné i interní [Standard Load Balancer](./load-balancer-overview.md) zveřejňují stav testu stavu koncového bodu na koncovém bodu a koncovým bodem back-end jako multidimenzionální metriky prostřednictvím Azure monitor. Tyto metriky můžou využívat jiné služby Azure nebo partnerské aplikace. 
 
 Základní veřejné Load Balancer zveřejňuje stav sondy stavu pro každý back-end fond prostřednictvím protokolů Azure Monitor.  Protokoly Azure Monitor nejsou k dispozici pro interní základní nástroje pro vyrovnávání zatížení.  Pomocí [protokolů Azure monitor](load-balancer-monitor-log.md) můžete kontrolovat stav testu veřejného nástroje pro vyrovnávání zatížení a počet testů. Protokolování se dá použít s Power BI nebo Azure Operational Insights k poskytnutí statistik o stavu nástroje pro vyrovnávání zatížení.
 
@@ -262,7 +262,7 @@ Základní veřejné Load Balancer zveřejňuje stav sondy stavu pro každý bac
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md)
+- Další informace o [Load Balanceru úrovně Standard](./load-balancer-overview.md)
 - [Začínáme vytvářet veřejný Nástroj pro vyrovnávání zatížení v Správce prostředků pomocí prostředí PowerShell](quickstart-load-balancer-standard-public-powershell.md)
-- [REST API pro sondy stavu](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
+- [REST API pro sondy stavu](/rest/api/load-balancer/loadbalancerprobes/)
 - Vyžádejte si nové možnosti sondy stavu s [Load Balancer UserVoice](https://aka.ms/lbuservoice)

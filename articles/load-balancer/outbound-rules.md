@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 645be03df3c8ee2a1451b4bfea0327542c29aa38
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 98bc962c0c57716cee9339056b0793bfe4bcb0ea
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683110"
+ms.locfileid: "94694724"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Odchozí pravidla Azure Load Balancer
 
@@ -60,7 +60,7 @@ Každá další IP adresa poskytovaná front-endu poskytuje další 64 000 doča
 
 Pro plánování rozsáhlých scénářů použijte více IP adres. Pomocí odchozích pravidel můžete zmírnit [vyčerpání SNAT](troubleshoot-outbound-connection.md#snatexhaust). 
 
-Můžete také použít [předponu veřejné IP adresy](https://aka.ms/lbpublicipprefix) přímo s odchozím pravidlem. 
+Můžete také použít [předponu veřejné IP adresy](./load-balancer-outbound-connections.md#outboundrules) přímo s odchozím pravidlem. 
 
 Předpona veřejné IP adresy zvyšuje velikost vašeho nasazení. Předponu můžete přidat do seznamu povolených toků z vašich prostředků Azure. V nástroji pro vyrovnávání zatížení můžete nakonfigurovat konfiguraci protokolu IP front-endu, aby odkazovala na předponu veřejné IP adresy.  
 
@@ -74,7 +74,7 @@ Odchozí pravidla poskytují konfigurační parametr pro řízení časového li
 
 Výchozím chováním nástroje pro vyrovnávání zatížení je vyřazení toku v tichém režimu, pokud bylo dosaženo odchozího časového limitu nečinnosti. `enableTCPReset`Parametr umožňuje předvídatelné chování aplikace a řízení. Parametr určuje, zda má být odesláno obousměrné resetování TCP (TCP RST) v časovém limitu odchozího nečinnosti. 
 
-Zkontrolujte [časový limit nečinnosti protokolu TCP](https://aka.ms/lbtcpreset) pro podrobnosti, včetně dostupnosti oblasti.
+Zkontrolujte [časový limit nečinnosti protokolu TCP](./load-balancer-tcp-reset.md) pro podrobnosti, včetně dostupnosti oblasti.
 
 ## <a name="securing-and-controlling-outbound-connectivity-explicitly"></a><a name="preventoutbound"></a>Explicitní zabezpečení a řízení odchozího připojení
 
@@ -91,9 +91,9 @@ Operace Konfigurace odchozího pravidla se nezdaří, pokud se pokusíte změnit
 >[!IMPORTANT]
 > Pokud nastavíte tento parametr na hodnotu true a nemáte odchozí pravidlo pro definování odchozího připojení, váš virtuální počítač nebude mít odchozí připojení.  Některé operace virtuálního počítače nebo vaší aplikace můžou záviset na dostupnosti odchozího připojení. Ujistěte se, že rozumíte závislostem vašeho scénáře a že se tyto změny považují za důsledky.
 
-V některých případech je pro vytvoření odchozího toku na virtuálním počítači nežádoucí. Může se stát, že budete muset spravovat, které cíle obdrží odchozí toky, nebo které cíle začínají vstupními toky. Pomocí [skupin zabezpečení sítě](../virtual-network/security-overview.md) můžete spravovat cíle, které virtuální počítač dosáhne. Pomocí skupin zabezpečení sítě můžete spravovat, které veřejné cíle začínají příchozí toky.
+V některých případech je pro vytvoření odchozího toku na virtuálním počítači nežádoucí. Může se stát, že budete muset spravovat, které cíle obdrží odchozí toky, nebo které cíle začínají vstupními toky. Pomocí [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md) můžete spravovat cíle, které virtuální počítač dosáhne. Pomocí skupin zabezpečení sítě můžete spravovat, které veřejné cíle začínají příchozí toky.
 
-Když použijete NSG k virtuálnímu počítači s vyrovnáváním zatížení, věnujte pozornost [značkám služby](../virtual-network/security-overview.md#service-tags) a [výchozím pravidlům zabezpečení](../virtual-network/security-overview.md#default-security-rules). 
+Když použijete NSG k virtuálnímu počítači s vyrovnáváním zatížení, věnujte pozornost [značkám služby](../virtual-network/network-security-groups-overview.md#service-tags) a [výchozím pravidlům zabezpečení](../virtual-network/network-security-groups-overview.md#default-security-rules). 
 
 Ujistěte se, že virtuální počítač může přijímat požadavky na sondu stavu z Azure Load Balancer.
 
@@ -159,7 +159,7 @@ Nástroj pro vyrovnávání zatížení poskytuje porty [SNAT](load-balancer-out
 Pokud se pokusíte zadat více portů [SNAT](load-balancer-outbound-connections.md), než je k dispozici na základě počtu veřejných IP adres, je operace konfigurace odmítnuta. Pokud například udělíte porty 10 000 pro každý virtuální počítač a sedm virtuálních počítačů v back-endovém fondu, sdílí jednu veřejnou IP adresu, konfigurace se odmítne. 7 vynásobené 10 000 překračuje limit portu 64 000. Přidejte další veřejné IP adresy do front-endu odchozího pravidla, aby se tento scénář povolil. 
 
 
-Vraťte se k [výchozímu přidělení portu](load-balancer-outbound-connections.md#preallocatedports) zadáním 0 pro počet portů. První instance virtuálních počítačů 50 získají 1024 portů, 51-100 instancí virtuálních počítačů bude až do maximálního počtu instancí 512. Další informace o výchozím přidělování portů SNAT najdete v tématu [tabulka přidělení portů SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
+Vraťte se k [výchozímu přidělení portu](load-balancer-outbound-connections.md#preallocatedports) zadáním 0 pro počet portů. První instance virtuálních počítačů 50 získají 1024 portů, 51-100 instancí virtuálních počítačů bude až do maximálního počtu instancí 512. Další informace o výchozím přidělování portů SNAT najdete v tématu [tabulka přidělení portů SNAT](./load-balancer-outbound-connections.md#preallocatedports).
 
 
 ### <a name="scenario-3-enable-outbound-only"></a><a name="scenario3out"></a>Scénář 3: povolení pouze odchozího
@@ -211,7 +211,7 @@ Pro škálování portů [SNAT](load-balancer-outbound-connections.md)použijte 
 Odchozí připojení není k dispozici pro interní nástroj pro vyrovnávání zatížení, dokud není explicitně deklarované prostřednictvím veřejných IP adres na úrovni instance nebo Virtual Network překladem adres (NAT), nebo přidružením členů fondu back-end k konfiguraci nástroje pro vyrovnávání zatížení jen pro odchozí připojení. 
 
 
-Další informace najdete v tématu [Konfigurace nástroje pro vyrovnávání zatížení jen pro odchozí](https://docs.microsoft.com/azure/load-balancer/egress-only)připojení.
+Další informace najdete v tématu [Konfigurace nástroje pro vyrovnávání zatížení jen pro odchozí](./egress-only.md)připojení.
 
 
 
@@ -253,4 +253,3 @@ Když se používají jenom pravidla příchozího překladu adres (NAT), neposk
 
 - Další informace o [Azure Standard Load Balancer](load-balancer-overview.md)
 - Přečtěte si naše [Nejčastější dotazy týkající se Azure Load Balancer](load-balancer-faqs.md)
-

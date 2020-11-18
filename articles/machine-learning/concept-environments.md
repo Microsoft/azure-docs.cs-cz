@@ -1,23 +1,22 @@
 ---
 title: Informace o prostředích Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: V tomto článku se seznámíte s výhodami strojového učení, které umožňují reprodukovatelná, Auditovaná a přenosné definice závislostí strojového učení napříč různými výpočetními cíli.
+description: Přečtěte si o prostředích strojového učení, která umožňují reprodukovatelnou, auditovaný a & definice závislostí přenosného strojového učení pro různé výpočetní cíle.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
-ms.date: 07/08/2020
-ms.openlocfilehash: 9c554abc8aef89ca353e06c14b04fab2622d2827
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: 78f8d6d216659eaad01d512dd45696dd31035885
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322192"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695380"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Co jsou Azure Machine Learning prostředí?
-
 
 Azure Machine Learning prostředí jsou zapouzdření prostředí, ve kterém se vaše školení ve službě Machine Learning stane. Určují balíčky Pythonu, proměnné prostředí a nastavení softwaru kolem vašich školicích a vyhodnocovacích skriptů. Určují také časy spuštění (Python, Spark nebo Docker). Prostředí jsou spravovaná a entitami se správou verzí v rámci vašeho Machine Learning pracovního prostoru, které umožňují reprodukovatelné pracovní postupy, které lze auditovat a přenosné strojové učení napříč různými výpočetními cíli.
 
@@ -35,7 +34,7 @@ Prostředí, cíl výpočtů a školicí skript tvoří konfiguraci spuštění:
 
 ## <a name="types-of-environments"></a>Typy prostředí
 
-Prostředí se můžou v podstatě rozdělit do tří *kategorií: řízená* , *uživatelsky spravovaná* a *spravovaná systémem*.
+Prostředí se můžou v podstatě rozdělit do tří *kategorií: řízená*, *uživatelsky spravovaná* a *spravovaná systémem*.
 
 Dodaná prostředí jsou poskytována Azure Machine Learning a jsou ve výchozím nastavení k dispozici ve vašem pracovním prostoru. Určené k použití jako je, obsahují kolekce balíčků a nastavení Pythonu, které vám pomůžou začít s různými architekturami strojového učení. Tato předem vytvořená prostředí také umožňují rychlejší nasazení. Úplný seznam najdete v článku o zobrazených [prostředích](resource-curated-environments.md).
 

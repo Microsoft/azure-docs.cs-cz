@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 3d2172f76faecfc8347d7e0ca13fb506817f25de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae4dd8b82e40b46da52a1b1f396569fda1dfea2b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740696"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694622"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Použít úplnou syntaxi hledání Lucene (rozšířené dotazy v Azure Kognitivní hledání)
 
@@ -30,13 +30,13 @@ Analyzátor Lucene podporuje složité konstrukce dotazů, jako jsou dotazy v ob
 
 Následující příklady využívají index vyhledávání úloh NYC sestávající z úloh, které jsou k dispozici na základě datové sady poskytované [městem OpenData iniciativy z New Yorku](https://opendata.cityofnewyork.us/) . Tato data by se neměla považovat za aktuální nebo kompletní. Index je ve službě izolovaného prostoru, kterou poskytuje Microsoft, což znamená, že k tomu, abyste tyto dotazy zkusili, nepotřebujete předplatné Azure ani Azure Kognitivní hledání.
 
-K tomu, co potřebujete, je odeslání nebo ekvivalent nástroje pro vystavení požadavku HTTP na GET. Další informace najdete v tématu [prozkoumání pomocí klientů REST](search-get-started-postman.md).
+K tomu, co potřebujete, je odeslání nebo ekvivalent nástroje pro vystavení požadavku HTTP na GET. Další informace najdete v tématu [prozkoumání pomocí klientů REST](search-get-started-rest.md).
 
 ### <a name="set-the-request-header"></a>Nastavit hlavičku požadavku
 
 1. V hlavičce požadavku nastavte **typ obsahu** na `application/json` .
 
-2. Přidejte **klíč API-Key**a nastavte jej na tento řetězec: `252044BE3886FE4A8E3BAA4F595114BB` . Toto je klíč dotazu pro vyhledávací službu izolovaného prostoru (sandbox), která hostuje index úloh NYC.
+2. Přidejte **klíč API-Key** a nastavte jej na tento řetězec: `252044BE3886FE4A8E3BAA4F595114BB` . Toto je klíč dotazu pro vyhledávací službu izolovaného prostoru (sandbox), která hostuje index úloh NYC.
 
 Po zadání hlavičky žádosti ji můžete znovu použít pro všechny dotazy v tomto článku, přičemž se odkládá jenom řetězec **Search =** String. 
 
@@ -46,7 +46,7 @@ Po zadání hlavičky žádosti ji můžete znovu použít pro všechny dotazy v
 
 Request je příkaz GET spárováný s adresou URL, která obsahuje koncový bod Azure Kognitivní hledání a hledaný řetězec.
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Hlavička žádosti post-GET" border="false":::
 
 Složení adresy URL má následující prvky:
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  :::image type="content" source="media/search-query-lucene-examples/intrafieldfilter.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/intrafieldfilter.png" alt-text="Výraz pro hledání ukázkové odezvy po ukázce" border="false":::
 
 Můžete definovat operaci vyhledávání pomocí pole s syntaxí **NázevPole: searchExpression** , kde výraz vyhledávání může být jedno slovo nebo fráze nebo složitější výraz v závorkách, volitelně s logickými operátory. Mezi příklady patří následující:
 
@@ -199,7 +199,7 @@ V tomto dotazu pro úlohy s termínem "vedoucí analytik", kde je oddělený o v
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
-  :::image type="content" source="media/search-query-lucene-examples/proximity-before.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/proximity-before.png" alt-text="Dotaz na Proximity" border="false":::
 
 Zkuste to znovu a odstraňte slova mezi termínem "vedoucí analytik". Všimněte si, že pro tento dotaz jsou vraceny 8 dokumentů na rozdíl od 10 pro předchozí dotaz.
 
@@ -217,7 +217,7 @@ V tomto dotazu "před" vyhledejte úlohy pomocí programu *počítačový analyt
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
-  :::image type="content" source="media/search-query-lucene-examples/termboostingbefore.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/termboostingbefore.png" alt-text="Zvyšování skóre termínu před" border="false":::
 
 V případě dotazu "po" Opakujte hledání, tentokrát při zvyšování výsledků s výrazem *analytika* v termínu " *počítač* ", pokud obě slova neexistují. 
 
@@ -226,7 +226,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ```
 Lépe čitelná verze výše uvedeného dotazu je `search=business_title:computer analyst^2` . Pro funkční dotaz `^2` je zakódován jako `%5E2` , což je těžké vidět.
 
-  :::image type="content" source="media/search-query-lucene-examples/termboostingafter.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/termboostingafter.png" alt-text="Zvyšování termínu po" border="false":::
 
 Zvyšování termínů se liší od profilů vyhodnocování v tom, že profily vyhodnocování zvyšují určitá pole, nikoli konkrétní podmínky. Následující příklad pomáhá ilustrovat rozdíly.
 
@@ -253,7 +253,7 @@ V tomto dotazu vyhledejte úlohy, které mají termín vyšší nebo nižší: `
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
-  :::image type="content" source="media/search-query-lucene-examples/regex.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/regex.png" alt-text="Dotaz Regex" border="false":::
 
 > [!Note]
 > Dotazy regulárního výrazu nejsou [analyzovány](./search-lucene-query-architecture.md#stage-2-lexical-analysis). Jediná transformace provedená v neúplných výrazech dotazu je lowercasing.
@@ -275,7 +275,7 @@ V tomto dotazu vyhledejte úlohy, které obsahují předponu "program", která b
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
-  :::image type="content" source="media/search-query-lucene-examples/wildcard.png" alt-text="Parametry nastavení hlavičky žádosti post" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/wildcard.png" alt-text="Zástupný dotaz" border="false":::
 
 > [!Note]
 > Dotazy se zástupnými znaky nejsou [analyzovány](./search-lucene-query-architecture.md#stage-2-lexical-analysis). Jediná transformace provedená v neúplných výrazech dotazu je lowercasing.

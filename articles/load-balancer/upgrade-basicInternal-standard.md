@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: a6d2b69b0b498601497c4b33fb6bdfede87002df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59bf5eb22289238633b1f07c29a878bd0a9ae620
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500245"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696162"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Upgradovat interní Load Balancer Azure – nevyžaduje se žádné odchozí připojení.
-[Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](https://docs.microsoft.com/azure/load-balancer/skus#skus).
+[Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](./skus.md#skus).
 
 Tento článek představuje skript prostředí PowerShell, který vytvoří Standard Load Balancer se stejnou konfigurací jako základní Load Balancer a migrací provozu ze základní Load Balancer na Standard Load Balancer.
 
@@ -23,25 +23,25 @@ Tento článek představuje skript prostředí PowerShell, který vytvoří Stan
 
 K dispozici je skript Azure PowerShell, který provede následující akce:
 
-* Vytvoří standardní interní SKU Load Balancer v umístění, které zadáte. Všimněte si, že standardní interní Load Balancer nebude poskytovat žádné [odchozí připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) .
+* Vytvoří standardní interní SKU Load Balancer v umístění, které zadáte. Všimněte si, že standardní interní Load Balancer nebude poskytovat žádné [odchozí připojení](./load-balancer-outbound-connections.md) .
 * Bezproblémově kopíruje konfiguraci základní SKU Load Balancer do nově vytvořené Standard Load Balancer.
 * Můžete bez problémů přesunout privátní IP adresy ze základních Load Balancer do nově vytvořené Standard Load Balancer.
 * Virtuální počítače můžete bez problémů přesunout ze back-endu základního Load Balancer do fondu back-endu Standard Load Balancer
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* Skript podporuje pouze interní Load Balancer upgrade, pokud není nutné žádné odchozí připojení. Pokud jste pro některé z vašich virtuálních počítačů vyžádali [odchozí připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , přečtěte si prosím na této [stránce](upgrade-InternalBasic-To-PublicStandard.md) pokyny. 
+* Skript podporuje pouze interní Load Balancer upgrade, pokud není nutné žádné odchozí připojení. Pokud jste pro některé z vašich virtuálních počítačů vyžádali [odchozí připojení](./load-balancer-outbound-connections.md) , přečtěte si prosím na této [stránce](upgrade-InternalBasic-To-PublicStandard.md) pokyny. 
 * Základní Load Balancer musí být ve stejné skupině prostředků jako virtuální počítače back-end a síťové adaptéry.
 * Pokud se standardní nástroj pro vyrovnávání zatížení vytvoří v jiné oblasti, nebudete moct k nově vytvořeným Standard Load Balancer přidružit virtuální počítače existující ve staré oblasti. Pokud chcete toto omezení obejít, nezapomeňte vytvořit nový virtuální počítač v nové oblasti.
 * Pokud vaše Load Balancer nemá front-end IP konfiguraci ani back-end fond, pravděpodobně při spuštění skriptu dojde k chybě. Ujistěte se, že nejsou prázdné.
 
 ## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>Změňte metodu přidělování IP adres na statickou pro konfiguraci IP adresy front-endu (Tento krok ignorujte, pokud už je statický).
 
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte základní Load Balancer.
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky** a potom v seznamu prostředků vyberte základní Load Balancer.
 
-2. V části **Nastavení**vyberte **Konfigurace IP adresy front-endu**a vyberte první konfiguraci IP adresy front-endu. 
+2. V části **Nastavení** vyberte **Konfigurace IP adresy front-endu** a vyberte první konfiguraci IP adresy front-endu. 
 
-3. Jako **přiřazení**vyberte **static** .
+3. Jako **přiřazení** vyberte **static** .
 
 4. Opakujte krok 3 pro všechny konfigurace protokolu IP front-endu základní Load Balancer.
 

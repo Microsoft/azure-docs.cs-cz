@@ -12,20 +12,23 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 11/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 0904ac36a9453e51dbb1efc50eee2b9bf3c669c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e08b69271ba9d115c26418bc5e421ee6c94b031d
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708660"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695703"
 ---
 # <a name="delete-replications"></a>Odstranění replikací
 
 Odstraněním replikace svazku můžete ukončit připojení replikace mezi zdrojovým a cílovým svazkem. Operaci odstranění můžete provést buď ze zdrojového, nebo cílového svazku. Operace odstranění odebírá jenom autorizaci pro replikaci. neodebere zdrojový nebo cílový svazek. 
 
 ## <a name="steps"></a>Postup
+
+1. Před odstraněním replikace svazku se ujistěte, že partnerský vztah replikace byl přerušen.    
+    Podívejte se [na téma zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md) a [přerušení partnerského vztahu replikace](cross-region-replication-manage-disaster-recovery.md#break-replication-peering-to-activate-the-destination-volume).  
 
 1. Replikaci svazku odstraníte tak, že vyberete **replikaci** ze zdrojového nebo cílového svazku.  
 

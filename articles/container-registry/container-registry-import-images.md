@@ -3,12 +3,12 @@ title: Import imagí kontejnerů
 description: Naimportujte image kontejneru do služby Azure Container Registry pomocí rozhraní API Azure, aniž byste museli spouštět příkazy Docker.
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 2c99d3c32bf6dad3a1950da56b29f47d2a988161
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3950b9fb24b80db4d9654a615521c0eb82914499
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541573"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695601"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Import imagí kontejneru do registru kontejneru
 
@@ -36,7 +36,7 @@ Aby bylo možné importovat image kontejnerů, Tento článek vyžaduje, abyste 
 > Pokud potřebujete distribuovat identické image kontejneru napříč několika oblastmi Azure, Azure Container Registry podporuje taky [geografickou replikaci](container-registry-geo-replication.md). Když geograficky replikuje registr (vyžaduje se úroveň Premium Service), můžete zajišťovat více oblastí s identickými názvy obrázků a značek z jednoho registru.
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte službu Azure Container Registry, vytvořte registr. Postup najdete v tématu [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
 
@@ -144,7 +144,7 @@ az acr import \
   --source sourceregistry.azurecr.io/sourcerrepo:tag \
   --image targetimage:tag \
   --username <SP_App_ID> \
-  –-password <SP_Passwd>
+  --password <SP_Passwd>
 ```
 
 ## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>Import z Azure Container Registry v jiném tenantovi AD
@@ -157,7 +157,7 @@ az acr import \
   --source sourceregistry.azurecr.io/sourcerrepo:tag \
   --image targetimage:tag \
   --username <SP_App_ID> \
-  –-password <SP_Passwd>
+  --password <SP_Passwd>
 ```
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>Import z privátního registru kontejnerů mimo Azure

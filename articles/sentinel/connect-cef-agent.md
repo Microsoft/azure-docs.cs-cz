@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 512e5e0140038b27b7ffc9f2affb4a0e5b28b41b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5374871a51586a573e9ab41121f3f2dd95baf876
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655829"
+ms.locfileid: "94695244"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Krok 1: nasazení serveru pro překládání protokolů
 
@@ -34,7 +34,7 @@ V tomto kroku určíte a nakonfigurujete počítač se systémem Linux, který p
     - naslouchání zpráv syslog z řešení zabezpečení na portu TCP 514
     - předávání pouze zpráv, které identifikuje jako CEF agenta Log Analytics na localhost pomocí portu TCP 25226
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Na určeném počítači se systémem Linux musíte mít zvýšená oprávnění (sudo).
 
@@ -51,7 +51,7 @@ V tomto kroku určíte a nakonfigurujete počítač se systémem Linux, který p
 1. V části **1,2 instalace kolekce CEF na počítači se systémem Linux** zkopírujte odkaz, který je k dispozici v části **spuštění následujícího skriptu pro instalaci a použití kolekce CEF**, nebo z následujícího textu (místo zástupných symbolů použijte ID pracovního prostoru a primární klíč):
 
     ```bash
-    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
     ```
 
 1. Když je skript spuštěný, zkontrolujte, že nezískáváte žádné chybové zprávy ani upozornění.
@@ -82,7 +82,7 @@ Zvolením démona syslog zobrazíte příslušný popis.
     - Stáhne instalační skript pro agenta Log Analytics (OMS) Linux.
 
         ```bash
-        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
             onboard_agent.sh
         ```
 
@@ -97,7 +97,7 @@ Zvolením démona syslog zobrazíte příslušný popis.
     - Stáhne konfiguraci z úložiště GitHub agenta Log Analytics.
 
         ```bash
-        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+        wget -O /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
             https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
             omsagent.d/security_events.conf
         ```
@@ -148,7 +148,7 @@ Zvolením démona syslog zobrazíte příslušný popis.
     - Stáhne instalační skript pro agenta Log Analytics (OMS) Linux.
 
         ```bash
-        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
             onboard_agent.sh
         ```
 
@@ -163,7 +163,7 @@ Zvolením démona syslog zobrazíte příslušný popis.
     - Stáhne konfiguraci z úložiště GitHub agenta Log Analytics.
 
         ```bash
-        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+        wget -O /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
             https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
             omsagent.d/security_events.conf
         ```
@@ -208,8 +208,10 @@ Zvolením démona syslog zobrazíte příslušný popis.
         ```bash
         sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
+---
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto dokumentu jste zjistili, jak nasadit agenta Log Analytics pro připojení zařízení CEF ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](./tutorial-detect-threats-built-in.md).

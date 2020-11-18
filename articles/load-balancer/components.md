@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: d2cd05251e7bf1a0b0ebcd24e6d3d0202f277969
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: bf7a35e8cedbe62aafb29aa6d9dc8fcb42e90b2e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685507"
+ms.locfileid: "94693762"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer komponenty
 
@@ -128,7 +128,7 @@ Load Balancer úrovně Basic nepodporuje odchozí pravidla.
 
 ## <a name="limitations"></a>Omezení
 
-- Další informace o [omezeních](https://aka.ms/lblimits) Load Balancer 
+- Další informace o [omezeních](../azure-resource-manager/management/azure-subscription-service-limits.md) Load Balancer 
 - Nástroj pro vyrovnávání zatížení poskytuje vyrovnávání zatížení a přesměrování portů pro konkrétní protokoly TCP a UDP. Pravidla vyrovnávání zatížení a pravidla příchozího překladu adres (NAT) podporují protokoly TCP a UDP, ale ne jiné protokoly IP, včetně protokolu ICMP.
 - Odchozí tok z back-endu virtuálního počítače do front-endu interního Load Balancer se nezdaří.
 - Pravidlo nástroje pro vyrovnávání zatížení nemůže zahrnovat dvě virtuální sítě.  Front-endové a jejich instance back-endu se musí nacházet ve stejné virtuální síti.  
@@ -138,12 +138,12 @@ Load Balancer úrovně Basic nepodporuje odchozí pravidla.
 
 - Pokud chcete začít s používáním Load Balancer, přečtěte si téma [Vytvoření veřejné Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md) .
 - Přečtěte si další informace o [Azure Load Balancer](load-balancer-overview.md).
-- Informace o [veřejné IP adrese](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
+- Informace o [veřejné IP adrese](../virtual-network/virtual-network-public-ip-address.md)
 - Informace o [privátní IP adrese](../virtual-network/private-ip-addresses.md)
 - Přečtěte si o používání [Standard Load Balancer a zóny dostupnosti](load-balancer-standard-availability-zones.md).
 - Další informace o [diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md).
 - Přečtěte si o [resetování protokolu TCP při nečinnosti](load-balancer-tcp-reset.md).
 - Přečtěte si o [Standard Load Balancer s pravidly pro vyrovnávání zatížení portů vysoké dostupnosti](load-balancer-ha-ports-overview.md).
-- Přečtěte si další informace o [skupinách zabezpečení sítě](../virtual-network/security-overview.md).
-- Přečtěte si další informace o [limitech pro vyrovnávání zatížení](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer).
-- Přečtěte si informace o používání [přesměrování portů](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal).
+- Přečtěte si další informace o [skupinách zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
+- Přečtěte si další informace o [limitech pro vyrovnávání zatížení](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer).
+- Přečtěte si informace o používání [přesměrování portů](./tutorial-load-balancer-port-forwarding-portal.md).

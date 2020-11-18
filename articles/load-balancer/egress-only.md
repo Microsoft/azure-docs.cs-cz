@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
-ms.openlocfilehash: b44f626546b313299701687157b37b7df021bd61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88038205"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694989"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>Konfigurace nástroje pro vyrovnávání zatížení – pouze odchozí
 
@@ -65,13 +65,13 @@ Vytvořte virtuální počítač v nové virtuální síti.
 
 2. V levém horním rohu obrazovky vyberte **Vytvořit prostředek > Sítě > Virtuální síť** nebo do vyhledávacího pole zadejte **Virtuální síť**.
 
-2. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě **základy** :
+2. V části **vytvořit virtuální síť** zadejte nebo vyberte tyto informace na kartě **základy** :
 
     | **Nastavení**          | **Hodnota**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Resource Group   | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Zadejte **myResourceGroupLB**. </br> Vyberte **OK**. |
+    | Skupina prostředků   | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Zadejte **myResourceGroupLB**. </br> Vyberte **OK**. |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
     | Oblast           | Vyberte **východní USA 2** |
@@ -84,9 +84,9 @@ Vytvořte virtuální počítač v nové virtuální síti.
     |--------------------|----------------------------|
     | Adresní prostor protokolu IPv4 | Zadejte **10.1.0.0/16** |
 
-5. V části **název podsítě**vyberte slovo **výchozí**.
+5. V části **název podsítě** vyberte slovo **výchozí**.
 
-6. V **Upravit podsíť**zadejte tyto informace:
+6. V **Upravit podsíť** zadejte tyto informace:
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
@@ -97,13 +97,13 @@ Vytvořte virtuální počítač v nové virtuální síti.
 
 8. Vyberte kartu **zabezpečení** .
 
-9. V části **BastionHost**vyberte **Povolit**. Zadejte tyto informace:
+9. V části **BastionHost** vyberte **Povolit**. Zadejte tyto informace:
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
     | Název bastionu | Zadejte **myBastionHost** |
     | Adresní prostor AzureBastionSubnet | Zadejte **10.1.1.0/24** |
-    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myBastionIP**. </br> Vyberte **OK**. |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název** zadejte **myBastionIP**. </br> Vyberte **OK**. |
 
 
 8. Vyberte kartu **Revize + vytvořit** nebo vyberte tlačítko **Revize + vytvořit** .
@@ -112,15 +112,15 @@ Vytvořte virtuální počítač v nové virtuální síti.
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač**Compute. 
+1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač** Compute. 
    
-2. V části **vytvořit virtuální počítač**zadejte nebo vyberte hodnoty na kartě **základy** :
+2. V části **vytvořit virtuální počítač** zadejte nebo vyberte hodnoty na kartě **základy** :
 
     | Nastavení | Hodnota                                          |
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Resource Group | Vybrat **myResourceGroupLB** |
+    | Skupina prostředků | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM** |
     | Oblast | Vyberte **východní USA 2** |
@@ -136,7 +136,7 @@ Vytvořte virtuální počítač v nové virtuální síti.
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů** . |
     | Vyberte příchozí porty | Vybrat **RDP (3389)** |
 
-3. Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
+3. Vyberte kartu **síť** nebo vyberte **Další: disky** a **Další: síť**.
   
 4. Na kartě sítě vyberte nebo zadejte:
 
@@ -218,57 +218,57 @@ Přidejte vytvořený virtuální počítač do fondu back-end každého.  Pak n
    
 ### <a name="create-internal-backend-address-pool"></a>Vytvořit interní fond adres back-endu
 
-Vytvořte **myInternalBackendPool**fond adres back-end:
+Vytvořte **myInternalBackendPool** fond adres back-end:
 
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myInternalLoadBalancer** .
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky** a potom v seznamu prostředků vyberte **myInternalLoadBalancer** .
 
-2. V části **Nastavení**vyberte **back-end fondy**a pak vyberte **Přidat**.
+2. V části **Nastavení** vyberte **back-end fondy** a pak vyberte **Přidat**.
 
-3. Do pole název na stránce **Přidat fond back-end** serveru zadejte **myInternalBackendPool**jako název vašeho back-end fondu.
+3. Do pole název na stránce **Přidat fond back-end** serveru zadejte **myInternalBackendPool** jako název vašeho back-end fondu.
  
-4. Ve **virtuální síti**vyberte **myVNet**.
+4. Ve **virtuální síti** vyberte **myVNet**.
 
-5. V části **virtuální počítače**vyberte **Přidat** a zvolte **myVM**.
+5. V části **virtuální počítače** vyberte **Přidat** a zvolte **myVM**.
  
 6. Vyberte **Přidat**.
 
 ### <a name="create-public-backend-address-pool"></a>Vytvořit veřejný fond adres back-endu
 
-Vytvořte **myPublicBackendPool**fond adres back-end:
+Vytvořte **myPublicBackendPool** fond adres back-end:
 
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myPublicLoadBalancer** .
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky** a potom v seznamu prostředků vyberte **myPublicLoadBalancer** .
 
-2. V části **Nastavení**vyberte **back-end fondy**a pak vyberte **Přidat**.
+2. V části **Nastavení** vyberte **back-end fondy** a pak vyberte **Přidat**.
 
-3. Do pole název na stránce **Přidat fond back-end** serveru zadejte **myPublicBackendPool**jako název vašeho back-end fondu.
+3. Do pole název na stránce **Přidat fond back-end** serveru zadejte **myPublicBackendPool** jako název vašeho back-end fondu.
 
-4. Ve **virtuální síti**vyberte **myVNet**.
+4. Ve **virtuální síti** vyberte **myVNet**.
  
-5. V části **virtuální počítače**vyberte **Přidat** a zvolte **myVM**.
+5. V části **virtuální počítače** vyberte **Přidat** a zvolte **myVM**.
  
 6. Vyberte **Přidat**.
 
 ### <a name="test-connectivity-before-outbound-rule"></a>Před odchozím pravidlem testovat připojení
 
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředky vyberte **myVM** , která je umístěná ve skupině prostředků **myResourceGroupLB** .
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky** a potom v seznamu prostředky vyberte **myVM** , která je umístěná ve skupině prostředků **myResourceGroupLB** .
 
-2. Na stránce **Přehled** vyberte **připojit**a pak **bastionu**.
+2. Na stránce **Přehled** vyberte **připojit** a pak **bastionu**.
 
 4. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
-5. Vyberte **Připojit**.
+5. Vyberte **Connect** (Připojit).
 
 6. Otevřete Internet Explorer.
 
-7. **https://whatsmyip.org**Do adresního řádku zadejte.
+7. **https://whatsmyip.org** Do adresního řádku zadejte.
 
 8. Připojení by nemělo selhat. Standardní veřejný Nástroj pro vyrovnávání zatížení ve výchozím nastavení [neumožňuje odchozí přenosy bez definovaného odchozího pravidla](load-balancer-overview.md#securebydefault).
  
 ### <a name="create-a-public-load-balancer-outbound-rule"></a>Vytvoření odchozího pravidla veřejného nástroje pro vyrovnávání zatížení
 
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myPublicLoadBalancer** .
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky** a potom v seznamu prostředků vyberte **myPublicLoadBalancer** .
 
-2. V části **Nastavení**vyberte **odchozí pravidla**a pak vyberte **Přidat**.
+2. V části **Nastavení** vyberte **odchozí pravidla** a pak vyberte **Přidat**.
 
 3. Pomocí těchto hodnot nakonfigurujte odchozí pravidla:
 
@@ -285,17 +285,17 @@ Vytvořte **myPublicBackendPool**fond adres back-end:
 
 ### <a name="test-connectivity-after-outbound-rule"></a>Testovat připojení po odchozím pravidle
 
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředky vyberte **myVM** , která je umístěná ve skupině prostředků **myResourceGroupLB** .
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky** a potom v seznamu prostředky vyberte **myVM** , která je umístěná ve skupině prostředků **myResourceGroupLB** .
 
-2. Na stránce **Přehled** vyberte **připojit**a pak **bastionu**.
+2. Na stránce **Přehled** vyberte **připojit** a pak **bastionu**.
 
 4. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
-5. Vyberte **Připojit**.
+5. Vyberte **Connect** (Připojit).
 
 6. Otevřete Internet Explorer.
 
-7. **https://whatsmyip.org**Do adresního řádku zadejte.
+7. **https://whatsmyip.org** Do adresního řádku zadejte.
 
 8. Připojení by mělo být úspěšné.
 
@@ -316,4 +316,4 @@ Tato konfigurace umožňuje vyrovnávat zatížení příchozích interních př
 - Přečtěte si o [Azure Load Balancer](load-balancer-overview.md).
 - Přečtěte si o [odchozích připojeních v Azure](load-balancer-outbound-connections.md).
 - [Nejčastější dotazy](load-balancer-faqs.md)k nástroji pro vyrovnávání zatížení.
-- Další informace o [Azure bastionu](https://docs.microsoft.com/azure/bastion/bastion-overview)
+- Další informace o [Azure bastionu](../bastion/bastion-overview.md)

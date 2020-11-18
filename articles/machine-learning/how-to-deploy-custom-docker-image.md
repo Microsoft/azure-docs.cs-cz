@@ -1,22 +1,22 @@
 ---
 title: Nasazení modelů s vlastní imagí Docker
 titleSuffix: Azure Machine Learning
-description: Naučte se používat vlastní základní image Docker při nasazení Azure Machine Learningch modelů. I když Azure Machine Learning k dispozici výchozí základní image, můžete použít také vlastní základní image.
+description: Naučte se používat vlastní základní image Docker k nasazení modelů Azure Machine Learning. I když Azure Machine Learning k dispozici výchozí základní image, můžete použít také vlastní základní image.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
 ms.reviewer: larryfr
-ms.date: 09/09/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 63089e853be825f9399081f2d39845e22b18ed2a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1ff4d7693a7e493ccb736ab9363fd26c93017c79
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325167"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695346"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 
@@ -205,7 +205,7 @@ Pokud chcete použít vlastní image, potřebujete tyto informace:
     > [!IMPORTANT]
     > U vlastních imagí, které jste vytvořili, nezapomeňte zahrnout všechny značky, které se s imagí používaly. Například pokud se vaše image vytvořila s konkrétní značkou, jako je například `:v1` . Pokud jste při vytváření image nepoužili konkrétní značku, `:latest` použila se značka.
 
-* Pokud je obrázek v __privátním úložišti__ , budete potřebovat následující informace:
+* Pokud je obrázek v __privátním úložišti__, budete potřebovat následující informace:
 
     * __Adresa__ registru. Například, `myregistry.azureecr.io`.
     * __Uživatelské jméno__ a __heslo__ instančního objektu, které mají přístup pro čtení k registru.
@@ -234,7 +234,7 @@ Další informace najdete v tématu [Azure Machine Learning úložiště kontejn
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Použití obrázku s Azure Machine Learning SDK
 
-Pokud chcete použít image uloženou v **Azure Container registry pro váš pracovní prostor** nebo **kontejner kontejneru, který je veřejně přístupný** , nastavte následující atributy [prostředí](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) :
+Pokud chcete použít image uloženou v **Azure Container registry pro váš pracovní prostor** nebo **kontejner kontejneru, který je veřejně přístupný**, nastavte následující atributy [prostředí](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) :
 
 + `docker.enabled=True`
 + `docker.base_image`: Nastavte na registr a cestu k imagi.

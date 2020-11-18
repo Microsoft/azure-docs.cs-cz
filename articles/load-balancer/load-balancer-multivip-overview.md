@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2e27b168087966701fb53cc8df19d264861257d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c2072d13cab9839a276c0437747d7075918e78a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448099"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696876"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Několik front-endu pro Azure Load Balancer
 
 Azure Load Balancer umožňuje vyrovnávat zatížení služeb na několika portech, několika IP adresách nebo obojím. Můžete použít definice veřejného a interního nástroje pro vyrovnávání zatížení k vyrovnávání zatížení toků v rámci sady virtuálních počítačů.
 
-Tento článek popisuje základy této možnosti, důležitých konceptů a omezení. Pokud máte v úmyslu zveřejnit jenom služby na jedné IP adrese, můžete najít zjednodušené pokyny pro konfiguraci [veřejného](load-balancer-get-started-internet-portal.md) nebo [interního](load-balancer-get-started-ilb-arm-portal.md) nástroje pro vyrovnávání zatížení. Přidání více front-endu je přírůstkové na jednu konfiguraci front-endu. Pomocí konceptů v tomto článku můžete kdykoli rozšířit zjednodušenou konfiguraci.
+Tento článek popisuje základy této možnosti, důležitých konceptů a omezení. Pokud máte v úmyslu zveřejnit jenom služby na jedné IP adrese, můžete najít zjednodušené pokyny pro konfiguraci [veřejného](./quickstart-load-balancer-standard-public-portal.md) nebo [interního](./quickstart-load-balancer-standard-internal-portal.md) nástroje pro vyrovnávání zatížení. Přidání více front-endu je přírůstkové na jednu konfiguraci front-endu. Pomocí konceptů v tomto článku můžete kdykoli rozšířit zjednodušenou konfiguraci.
 
 Při definování Azure Load Balancer se s pravidly připojí front-end a konfigurace fondu back-endu. Sonda stavu, na kterou pravidlo odkazuje, se používá k určení toho, jak se nové toky odesílají do uzlu ve fondu back-endu. Front-end (označovaný také jako VIP) je definován třemi řazenými kolekcemi, které se skládají z IP adresy (veřejné nebo interní), přenosového protokolu (UDP nebo TCP) a čísla portu z pravidla vyrovnávání zatížení. Back-end fond je kolekcí konfigurací IP adres virtuálních počítačů (součást prostředku síťové karty), která odkazuje na Load Balancer fond back-endu.
 

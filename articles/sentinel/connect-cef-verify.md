@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 8bdc9d588e89f498b973db7d1de299b0b26a3d02
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 974418a1b3c1e7fe93b2f6839c16169e5bd5abc5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655727"
+ms.locfileid: "94696995"
 ---
 # <a name="step-3-validate-connectivity"></a>Krok 3: ověření připojení
 
 Po nasazení služby pro přeposílání protokolů (v kroku 1) a konfiguraci řešení zabezpečení pro posílání zpráv CEF (v kroku 2) postupujte podle těchto pokynů, abyste ověřili konektivitu mezi vaším řešením zabezpečení a službou Azure Sentinel. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - V počítači pro překládání protokolů musíte mít zvýšená oprávnění (sudo).
 
@@ -44,7 +44,7 @@ Počítejte s tím, že může trvat přibližně 20 minut, než se vaše protok
 1. Spusťte následující skript na serveru pro přeposílání protokolů (použití ID pracovního prostoru místo zástupného symbolu), abyste zkontrolovali možnosti připojení mezi řešením zabezpečení, serverem pro přeposílání protokolů a službou Azure Sentinel. Tento skript kontroluje, že démon naslouchá na správných portech, že předávání je správně nakonfigurované a že nic neblokuje komunikaci mezi démonem a agentem Log Analytics. Také pošle zprávy typu "TestCommonEventFormat" ke kontrole komplexního připojení. <br>
 
     ```bash
-    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
     ```
 
    - Může se vám zobrazit zpráva s přímým spuštěním příkazu pro opravu problému s **mapováním pole *počítač***. Podrobnosti najdete [v popisu v ověřovacím skriptu](#mapping-command) .
@@ -245,6 +245,7 @@ Ověřovací skript provede následující kontroly:
 ---
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto dokumentu jste zjistili, jak připojit zařízení CEF ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](./tutorial-detect-threats-built-in.md).

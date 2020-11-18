@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcfce06bb158888b56483a73ededd354c229a99b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855251"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696315"
 ---
 # <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>Řešení problémů s dostupností prostředků prostředků, front-endu a back-endu 
 
@@ -52,7 +52,7 @@ Další místo, co potřebujeme vyhledat, je naše metrika stavu sondy stavu, ab
   * Pokud najdete tento problém NSG, přesuňte stávající pravidlo povolení nebo vytvořte nové pravidlo s vysokou prioritou, které povolí přenos AzureLoadBalancer.
 * Ověřte operační systém. Ujistěte se, že vaše virtuální počítače naslouchají na portu sondy, a zkontrolujte jejich pravidla brány firewall operačního systému, abyste zajistili, že neblokují přenos sondy pocházející z IP adresy 168.63.129.16.
   * Naslouchací porty můžete kontrolovat spuštěním příkazu netstat-a pomocí příkazového řádku Windows nebo pomocí příkazu netstat-l v terminálu Linux.
-* Neumísťujte virtuální počítač brány firewall síťové virtuální zařízení do back-endu nástroje pro vyrovnávání zatížení, použijte [trasy definované uživatelem](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) ke směrování provozu do back-endu instancí přes bránu firewall.
+* Neumísťujte virtuální počítač brány firewall síťové virtuální zařízení do back-endu nástroje pro vyrovnávání zatížení, použijte [trasy definované uživatelem](../virtual-network/virtual-networks-udr-overview.md#user-defined) ke směrování provozu do back-endu instancí přes bránu firewall.
 * Ujistěte se, že používáte správný protokol, pokud použijete protokol HTTP k testování portu naslouchajícího pro aplikaci jiného typu než HTTP. test selže
 
 Pokud jste prošli obsahem tohoto kontrolního seznamu a pořád hledáte chyby sondy stavu, může dojít ke vzácným problémům s platformou, které mají vliv na službu sondy pro vaše instance. V tomto případě má Azure zpátky a do našeho týmu se pošle automatizovaná výstraha, která rychle vyřeší všechny problémy s platformou.
@@ -61,5 +61,3 @@ Pokud jste prošli obsahem tohoto kontrolního seznamu a pořád hledáte chyby 
 
 * [Další informace o testu stavu Azure Load Balancer](load-balancer-custom-probe-overview.md)
 * [Další informace o metrikách Azure Load Balancer](load-balancer-standard-diagnostics.md)
-
-

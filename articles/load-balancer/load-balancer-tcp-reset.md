@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: 060048bf786f424d5df6eb8fb4813877acb0fea0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d02b46345af13770f77a7dac452127a665e01fd
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823212"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696740"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer resetování TCP a časový limit nečinnosti
 
-Pomocí [Standard Load Balancer](load-balancer-standard-overview.md) můžete pro své scénáře vytvořit předvídatelné chování aplikace tím, že pro dané pravidlo povolíte resetování protokolu TCP pro nečinnost. Výchozím chováním Load Balancer je nejenom tiché vyřazení toků při dosažení časového limitu nečinnosti toku.  Povolení této funkce způsobí, že Load Balancer odesílat obousměrné resety TCP (TCP RST Packet) na časový limit nečinnosti.  Tím se informují koncové body vaší aplikace, ke kterým vypršel časový limit připojení a které už nejsou použitelné.  Koncové body můžou v případě potřeby okamžitě vytvořit nové připojení.
+Pomocí [Standard Load Balancer](./load-balancer-overview.md) můžete pro své scénáře vytvořit předvídatelné chování aplikace tím, že pro dané pravidlo povolíte resetování protokolu TCP pro nečinnost. Výchozím chováním Load Balancer je nejenom tiché vyřazení toků při dosažení časového limitu nečinnosti toku.  Povolení této funkce způsobí, že Load Balancer odesílat obousměrné resety TCP (TCP RST Packet) na časový limit nečinnosti.  Tím se informují koncové body vaší aplikace, ke kterým vypršel časový limit připojení a které už nejsou použitelné.  Koncové body můžou v případě potřeby okamžitě vytvořit nové připojení.
 
 ![Resetování protokolu TCP Load Balancer](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
  
 ## <a name="tcp-reset"></a>Resetování protokolu TCP
 
-Toto výchozí chování můžete změnit a povolit odesílání resetů TCP na časový limit nečinnosti u příchozích pravidel NAT, pravidel vyrovnávání zatížení a [odchozích pravidel](https://aka.ms/lboutboundrules).  Pokud je povoleno podle pravidla, Load Balancer odešle obousměrné resetování TCP (pakety TCP RST) do koncových bodů klienta i serveru v době nečinnosti u všech vyhovujících toků.
+Toto výchozí chování můžete změnit a povolit odesílání resetů TCP na časový limit nečinnosti u příchozích pravidel NAT, pravidel vyrovnávání zatížení a [odchozích pravidel](./load-balancer-outbound-connections.md#outboundrules).  Pokud je povoleno podle pravidla, Load Balancer odešle obousměrné resetování TCP (pakety TCP RST) do koncových bodů klienta i serveru v době nečinnosti u všech vyhovujících toků.
 
 Koncové body, které obdrží pakety TCP RST, okamžitě zavřou příslušný soket. To poskytuje okamžité oznámení koncovým bodům, k nimž došlo k vydání připojení, a veškerá budoucí komunikace se stejným připojením TCP selže.  Aplikace mohou vyprázdnit připojení v případě, že soket zavře a znovu vytvoří připojení podle potřeby, aniž by čekali na vypršení časového limitu připojení TCP.
 
@@ -48,7 +48,7 @@ Ve výchozím nastavení je nastaveno na 4 minuty. Pokud je období neaktivity d
 
 Po zavření připojení může klientská aplikace zobrazit následující chybovou zprávu: "základní připojení bylo zavřeno: připojení, které bylo očekáváno jako aktivní, bylo zavřeno serverem."
 
-Běžným postupem je používání udržování připojení TCP. Tento postup zachovává aktivní připojení po delší dobu. Další informace najdete v těchto [příkladech rozhraní .NET](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Když je povolená možnost Keep-Alive, pakety se odešlou během období nečinnosti na připojení. Pakety Keep-Alive zajišťují, že hodnota časového limitu nečinnosti není dosažena a připojení je udržováno po dlouhou dobu.
+Běžným postupem je používání udržování připojení TCP. Tento postup zachovává aktivní připojení po delší dobu. Další informace najdete v těchto [příkladech rozhraní .NET](/dotnet/api/system.net.servicepoint.settcpkeepalive). Když je povolená možnost Keep-Alive, pakety se odešlou během období nečinnosti na připojení. Pakety Keep-Alive zajišťují, že hodnota časového limitu nečinnosti není dosažena a připojení je udržováno po dlouhou dobu.
 
 Nastavení funguje jenom pro příchozí připojení. Aby nedošlo ke ztrátě připojení, nakonfigurujte udržování připojení TCP pomocí intervalu kratšího, než je nastavení časového limitu nečinnosti, nebo zvyšte hodnotu časového limitu nečinnosti. Pro podporu těchto scénářů byla přidána podpora konfigurovatelného časového limitu nečinnosti.
 
@@ -63,6 +63,6 @@ Udržování připojení TCP funguje ve scénářích, kdy životnost baterie ne
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [Standard Load Balancer](load-balancer-standard-overview.md).
-- Přečtěte si o [odchozích pravidlech](load-balancer-outbound-rules-overview.md).
+- Přečtěte si o [Standard Load Balancer](./load-balancer-overview.md).
+- Přečtěte si o [odchozích pravidlech](./load-balancer-outbound-connections.md#outboundrules).
 - [Konfigurace TCP RST pro časový limit nečinnosti](load-balancer-tcp-idle-timeout.md)

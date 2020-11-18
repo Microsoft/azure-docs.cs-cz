@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: b3924a563d8266cfa38f24106dbb84102031a182
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 5a2d7f9f60253916eae808a7f65bc4b4b289bd67
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331868"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694776"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Použití SNAT pro odchozí připojení
 
@@ -22,13 +22,13 @@ Front-endové IP adresy veřejného nástroje pro vyrovnávání zatížení se 
 SNAT umožňuje **maskování IP** instance back-endu. Tato maskování brání vnějším zdrojům, aby měly přímo adresu back-end instancí. Sdílení IP adresy mezi back-end instancemi snižuje náklady na statické veřejné IP adresy a podporuje scénáře, jako je například zjednodušení seznamů povolených IP adres, ze známých veřejných IP adres. 
 
 >[!Note]
-> Pro aplikace, které vyžadují velký počet odchozích připojení nebo podnikových zákazníků, kteří vyžadují jednu sadu IP adres, která se má použít z dané virtuální sítě, je doporučeným řešením [Virtual Network překlad adres (NAT)](https://docs.microsoft.com/azure/virtual-network/nat-overview) . Toto dynamické přidělení umožňuje jednoduchou konfiguraci a > nejúčinnější využití portů SNAT z každé IP adresy. Umožňuje také všem prostředkům ve virtuální síti sdílet sadu IP adres bez nutnosti sdílení > nástroje pro vyrovnávání zatížení.
+> Pro aplikace, které vyžadují velký počet odchozích připojení nebo podnikových zákazníků, kteří vyžadují jednu sadu IP adres, která se má použít z dané virtuální sítě, je doporučeným řešením [Virtual Network překlad adres (NAT)](../virtual-network/nat-overview.md) . Toto dynamické přidělení umožňuje jednoduchou konfiguraci a > nejúčinnější využití portů SNAT z každé IP adresy. Umožňuje také všem prostředkům ve virtuální síti sdílet sadu IP adres bez nutnosti sdílení > nástroje pro vyrovnávání zatížení.
 
 >[!Important]
 > I bez nakonfigurovaného odchozího SNAT budou účty Azure Storage v rámci stejné oblasti pořád dostupné a back-end prostředky budou mít i nadále přístup ke službám Microsoftu, jako jsou třeba aktualizace Windows.
 
 >[!NOTE] 
->Tento článek se zabývá jenom nasazeními Azure Resource Manager. Zkontrolujte [odchozí připojení (Classic)](load-balancer-outbound-connections-classic.md) pro všechny scénáře nasazení Classic v Azure.
+>Tento článek se zabývá jenom nasazeními Azure Resource Manager. Zkontrolujte [odchozí připojení (Classic)](/previous-versions/azure/load-balancer/load-balancer-outbound-connections-classic) pro všechny scénáře nasazení Classic v Azure.
 
 ## <a name="sharing-frontend-ip-address-across-backend-resources"></a><a name ="snat"></a> Sdílení IP adresy front-endu v prostředcích
 
@@ -48,7 +48,7 @@ Podle definice Každá IP adresa má 65 535 portů. Každý port lze použít pr
 >[!NOTE]
 > Každý port používaný pro pravidlo vyrovnávání zatížení nebo příchozí překlad adres (NAT) bude využívat rozsah osmi portů z těchto 64 000 portů, čímž se sníží počet portů, které mají nárok na SNAT. Pokud je vyrovnávání zatížení > nebo pravidlo překladu adres (NAT) ve stejném rozsahu, než je osm, bude spotřebovávat žádné další porty. 
 
-Prostřednictvím [odchozích pravidel](https://docs.microsoft.com/azure/load-balancer/outbound-rules) a pravidel vyrovnávání zatížení se tyto porty SNAT dají distribuovat do back-endu instancí, aby mohly sdílet veřejné IP adresy nástroje pro vyrovnávání zatížení pro odchozí připojení.
+Prostřednictvím [odchozích pravidel](./outbound-rules.md) a pravidel vyrovnávání zatížení se tyto porty SNAT dají distribuovat do back-endu instancí, aby mohly sdílet veřejné IP adresy nástroje pro vyrovnávání zatížení pro odchozí připojení.
 
 Pokud je nakonfigurován [scénář 2](#scenario2) níže, bude hostitel pro každou back-end instancí provádět až SNAT v paketech, které jsou součástí odchozího připojení. Při provádění protokolu SNAT u odchozího připojení z back-endu instance hostitel přepíše zdrojovou IP adresu do jedné z IP adres front-endu. Aby bylo možné zachovat jedinečné toky, hostitel přepíše zdrojový port každého odchozího paketu na jeden z portů SNAT přidělených pro instanci back-endu.
 
@@ -101,7 +101,7 @@ Pokud je nakonfigurován [scénář 2](#scenario2) níže, bude hostitel pro ka�
  Dočasné porty pro veřejnou IP adresu front-endu pro vyrovnávání zatížení se používají k odlišení jednotlivých toků pocházejících z virtuálního počítače. SNAT dynamicky používá [předpřidělené dočasné porty](#preallocatedports) při vytváření odchozích toků. 
 
 
- V tomto kontextu se dočasné porty používané pro SNAT nazývají porty SNAT. Důrazně doporučujeme, aby [odchozí pravidlo](https://docs.microsoft.com/azure/load-balancer/outbound-rules) bylo explicitně nakonfigurované. Pokud použijete výchozí SNAT prostřednictvím pravidla vyrovnávání zatížení, porty SNAT jsou předem přiděleny, jak je popsáno ve [výchozí tabulce alokace portů SNAT](#snatporttable).
+ V tomto kontextu se dočasné porty používané pro SNAT nazývají porty SNAT. Důrazně doporučujeme, aby [odchozí pravidlo](./outbound-rules.md) bylo explicitně nakonfigurované. Pokud použijete výchozí SNAT prostřednictvím pravidla vyrovnávání zatížení, porty SNAT jsou předem přiděleny, jak je popsáno ve [výchozí tabulce alokace portů SNAT](#snatporttable).
 
 
  ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>Scénář 3: virtuální počítač bez veřejné IP adresy a za základní Load Balancer
@@ -109,7 +109,7 @@ Pokud je nakonfigurován [scénář 2](#scenario2) níže, bude hostitel pro ka�
 
  | Přidružení | Metoda | Protokoly IP |
  | ------------ | ------ | ------------ |
- |Žádné </br> Základní nástroj pro vyrovnávání zatížení | [SNAT](#snat) s dynamickou IP adresou na úrovni instance| TCP </br> UDP | 
+ |Žádná </br> Základní nástroj pro vyrovnávání zatížení | [SNAT](#snat) s dynamickou IP adresou na úrovni instance| TCP </br> UDP | 
 
  #### <a name="description"></a>Popis
 
@@ -142,7 +142,7 @@ Bez různých cílových portů pro návratový provoz (port SNAT použitý k na
 
 Odchozí připojení se můžou rozpojovat. Instanci back-endu je možné přidělit nedostatečným portům. Bez povoleného **opětovného použití připojení** se zvyšuje riziko **vyčerpání portů** SNAT.
 
-Nová odchozí připojení k cílové IP adrese selžou, když dojde k vyčerpání portů. Po zpřístupnění portu budou připojení úspěšná. K této vyčerpání dojde, když se porty 64 000 z IP adresy šíří dynamicky napříč celou řadou back-end instancí. Pokyny ke zmírnění vyčerpání portů SNAT najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/load-balancer/troubleshoot-outbound-connection).  
+Nová odchozí připojení k cílové IP adrese selžou, když dojde k vyčerpání portů. Po zpřístupnění portu budou připojení úspěšná. K této vyčerpání dojde, když se porty 64 000 z IP adresy šíří dynamicky napříč celou řadou back-end instancí. Pokyny ke zmírnění vyčerpání portů SNAT najdete v [Průvodci odstraňováním potíží](./troubleshoot-outbound-connection.md).  
 
 Pro připojení TCP bude nástroj pro vyrovnávání zatížení používat pro každou cílovou IP adresu a port jeden port SNAT. Tento Multiuse umožňuje více připojení ke stejné cílové IP adrese se stejným portem SNAT. Tato Multiuse je omezená, pokud není připojení k různým cílovým portům.
 
@@ -194,6 +194,5 @@ Další informace o službě Azure Virtual Network NAT najdete v tématu [co je 
 
 ## <a name="next-steps"></a>Další kroky
 
-*   [Řešení selhání odchozího připojení kvůli vyčerpání SNAT](https://docs.microsoft.com/azure/load-balancer/troubleshoot-outbound-connection)
-*   [Projděte si metriky SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) a seznamte se se správným způsobem, jak je filtrovat, rozdělit a zobrazit.
-
+*   [Řešení selhání odchozího připojení kvůli vyčerpání SNAT](./troubleshoot-outbound-connection.md)
+*   [Projděte si metriky SNAT](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) a seznamte se se správným způsobem, jak je filtrovat, rozdělit a zobrazit.

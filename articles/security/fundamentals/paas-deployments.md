@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: f5ae1f7f84293fdf23b680a407a5a168316f3163
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0429eec2a84c22f3d998baa4dde4f543d4927f16
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94407984"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695329"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -73,19 +73,19 @@ Zásady a vzory pro hraniční sítě byly k dispozici po desetiletí. V takové
 
 Níže jsou uvedené osvědčené postupy pro správu hraničního řízení identity.
 
-**Osvědčený postup** : zabezpečení klíčů a přihlašovacích údajů pro zabezpečení nasazení PaaS.   
-**Podrobnosti** : neztráta klíčů a přihlašovacích údajů je běžný problém. Můžete použít centralizované řešení, kde klíče a tajné klíče mohou být uloženy v modulech hardwarového zabezpečení (HSM). [Azure Key Vault](../../key-vault/general/overview.md) chrání klíče a tajné kódy tím, že šifruje ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat, soubory PFX a hesla pomocí klíčů chráněných pomocí HSM.
+**Osvědčený postup**: zabezpečení klíčů a přihlašovacích údajů pro zabezpečení nasazení PaaS.   
+**Podrobnosti**: neztráta klíčů a přihlašovacích údajů je běžný problém. Můžete použít centralizované řešení, kde klíče a tajné klíče mohou být uloženy v modulech hardwarového zabezpečení (HSM). [Azure Key Vault](../../key-vault/general/overview.md) chrání klíče a tajné kódy tím, že šifruje ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat, soubory PFX a hesla pomocí klíčů chráněných pomocí HSM.
 
-**Osvědčený postup** : Neumísťujte přihlašovací údaje a další tajné kódy do zdrojového kódu nebo GitHubu.   
-**Podrobnosti** : jediná věc s neztrátou klíčů a přihlašovacích údajů má oprávnění k nim získat přístup neoprávněná osoba. Útočníci můžou využívat výhod technologií robota k nalezení klíčů a tajných kódů uložených v úložištích kódu, jako je GitHub. Neumísťujte klíč a tajné klíče do těchto veřejných úložišť kódu.
+**Osvědčený postup**: Neumísťujte přihlašovací údaje a další tajné kódy do zdrojového kódu nebo GitHubu.   
+**Podrobnosti**: jediná věc s neztrátou klíčů a přihlašovacích údajů má oprávnění k nim získat přístup neoprávněná osoba. Útočníci můžou využívat výhod technologií robota k nalezení klíčů a tajných kódů uložených v úložištích kódu, jako je GitHub. Neumísťujte klíč a tajné klíče do těchto veřejných úložišť kódu.
 
-**Osvědčený postup** : Chraňte rozhraní pro správu virtuálních počítačů na hybridních PaaS a IaaS službách pomocí rozhraní pro správu, které vám umožní přímo spravovat tyto virtuální počítače.   
-**Podrobnosti** : můžete použít protokoly vzdálené správy, jako jsou [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)a [Vzdálená komunikace PowerShellu](/powershell/module/microsoft.powershell.core/enable-psremoting) . Obecně doporučujeme, abyste nepovolili přímý vzdálený přístup k virtuálním počítačům z Internetu.
+**Osvědčený postup**: Chraňte rozhraní pro správu virtuálních počítačů na hybridních PaaS a IaaS službách pomocí rozhraní pro správu, které vám umožní přímo spravovat tyto virtuální počítače.   
+**Podrobnosti**: můžete použít protokoly vzdálené správy, jako jsou [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)a [Vzdálená komunikace PowerShellu](/powershell/module/microsoft.powershell.core/enable-psremoting) . Obecně doporučujeme, abyste nepovolili přímý vzdálený přístup k virtuálním počítačům z Internetu.
 
 Pokud je to možné, použijte alternativní přístupy, jako je použití virtuálních privátních sítí ve službě Azure Virtual Network. Pokud nejsou k dispozici alternativní přístupy, nezapomeňte použít složitá přístupová hesla a dvojúrovňové ověřování (například [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)).
 
-**Osvědčený postup** : Používejte silné ověřování a platformy pro autorizaci.   
-**Podrobnosti** : místo vlastních uživatelských úložišť používejte federované identity ve službě Azure AD. Pokud používáte federované identity, využijte výhod přístupu založeného na platformě a delegujete správu autorizovaných identit pro vaše partnery. Federovaný přístup k identitě je obzvláště důležitý, když se zaměstnanci ukončí a že je potřeba odrážet informace prostřednictvím několika identit a autorizačních systémů.
+**Osvědčený postup**: Používejte silné ověřování a platformy pro autorizaci.   
+**Podrobnosti**: místo vlastních uživatelských úložišť používejte federované identity ve službě Azure AD. Pokud používáte federované identity, využijte výhod přístupu založeného na platformě a delegujete správu autorizovaných identit pro vaše partnery. Federovaný přístup k identitě je obzvláště důležitý, když se zaměstnanci ukončí a že je potřeba odrážet informace prostřednictvím několika identit a autorizačních systémů.
 
 Místo vlastního kódu použijte mechanismy ověřování a autorizace dodané platformou. Důvodem je, že vývoj vlastního ověřovacího kódu může být náchylný k chybám. Většina vašich vývojářů není odborníkem na zabezpečení a pravděpodobně si nebude vědoma odlišností a nejnovějšího vývoje v ověřování a autorizaci. Komerční kód (například od společnosti Microsoft) je často široce prověřený zabezpečením.
 
@@ -112,20 +112,20 @@ V následující tabulce jsou uvedeny hrozby pro rozteč a jejich ukázková ome
 
 Níže jsou uvedené osvědčené postupy pro používání App Service.
 
-**Osvědčený postup** : [ověření prostřednictvím Azure Active Directory](../../app-service/overview-authentication-authorization.md).   
-**Podrobnosti** : App Service poskytuje službu OAuth 2,0 pro vašeho poskytovatele identity. OAuth 2,0 se zaměřuje na jednoduchost vývojáře v klientských počítačích a poskytuje konkrétní autorizační toky pro webové aplikace, desktopové aplikace a mobilní telefony. Azure AD používá OAuth 2,0, který vám umožní autorizovat přístup k mobilním a webovým aplikacím.
+**Osvědčený postup**: [ověření prostřednictvím Azure Active Directory](../../app-service/overview-authentication-authorization.md).   
+**Podrobnosti**: App Service poskytuje službu OAuth 2,0 pro vašeho poskytovatele identity. OAuth 2,0 se zaměřuje na jednoduchost vývojáře v klientských počítačích a poskytuje konkrétní autorizační toky pro webové aplikace, desktopové aplikace a mobilní telefony. Azure AD používá OAuth 2,0, který vám umožní autorizovat přístup k mobilním a webovým aplikacím.
 
-**Osvědčený postup** : Omezte přístup na základě nutnosti znát a nejnižší principy zabezpečení oprávnění.   
-**Podrobnosti** : omezení přístupu je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům. Pomocí RBAC můžete přiřadit oprávnění uživatelům, skupinám a aplikacím v určitém oboru. Další informace o tom, jak udělit uživatelům přístup k aplikacím, najdete v tématu [Začínáme se správou přístupu](../../role-based-access-control/overview.md).
+**Osvědčený postup**: Omezte přístup na základě nutnosti znát a nejnižší principy zabezpečení oprávnění.   
+**Podrobnosti**: omezení přístupu je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům. Pomocí služby Azure RBAC můžete přiřadit oprávnění uživatelům, skupinám a aplikacím v určitém oboru. Další informace o tom, jak udělit uživatelům přístup k aplikacím, najdete v tématu [Začínáme se správou přístupu](../../role-based-access-control/overview.md).
 
-**Osvědčený postup** : Chraňte své klíče.   
-**Podrobnosti** : Azure Key Vault pomáhá chránit kryptografické klíče a tajné kódy, které využívají cloudové aplikace a služby. Pomocí Key Vault můžete šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat). Soubory PFX a hesla) pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM). Pro zvýšené bezpečí můžete klíče importovat nebo generovat v modulech HSM. Další informace najdete v tématu [Azure Key Vault](../../key-vault/general/overview.md) . Pomocí Key Vault můžete také spravovat certifikáty TLS s automatickým obnovením.
+**Osvědčený postup**: Chraňte své klíče.   
+**Podrobnosti**: Azure Key Vault pomáhá chránit kryptografické klíče a tajné kódy, které využívají cloudové aplikace a služby. Pomocí Key Vault můžete šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat). Soubory PFX a hesla) pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM). Pro zvýšené bezpečí můžete klíče importovat nebo generovat v modulech HSM. Další informace najdete v tématu [Azure Key Vault](../../key-vault/general/overview.md) . Pomocí Key Vault můžete také spravovat certifikáty TLS s automatickým obnovením.
 
-**Osvědčený postup** : omezení příchozích zdrojových IP adres.   
-**Podrobnosti** : [App Service Environment](../../app-service/environment/intro.md) má funkci Integrace virtuální sítě, která vám pomůže omezit příchozí IP adresy příchozích dat prostřednictvím skupin zabezpečení sítě. Virtuální sítě umožňují umístit prostředky Azure do sítě, ve které není Internet, směrovatelný síť, ke které budete řídit přístup. Další informace najdete v tématu [integrace aplikace do služby Azure Virtual Network](../../app-service/web-sites-integrate-with-vnet.md).
+**Osvědčený postup**: omezení příchozích zdrojových IP adres.   
+**Podrobnosti**: [App Service Environment](../../app-service/environment/intro.md) má funkci Integrace virtuální sítě, která vám pomůže omezit příchozí IP adresy příchozích dat prostřednictvím skupin zabezpečení sítě. Virtuální sítě umožňují umístit prostředky Azure do sítě, ve které není Internet, směrovatelný síť, ke které budete řídit přístup. Další informace najdete v tématu [integrace aplikace do služby Azure Virtual Network](../../app-service/web-sites-integrate-with-vnet.md).
 
-**Osvědčený postup** : Sledujte stav zabezpečení vašich App Servicech prostředí.   
-**Podrobnosti** : pomocí Azure Security Center můžete monitorovat App Service prostředí. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří [doporučení](../../security-center/asset-inventory.md) , která vás provedou procesem konfigurace potřebných ovládacích prvků.
+**Osvědčený postup**: Sledujte stav zabezpečení vašich App Servicech prostředí.   
+**Podrobnosti**: pomocí Azure Security Center můžete monitorovat App Service prostředí. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří [doporučení](../../security-center/asset-inventory.md) , která vás provedou procesem konfigurace potřebných ovládacích prvků.
 
 > [!NOTE]
 > App Service monitorování je ve verzi Preview a je k dispozici pouze na [úrovni Standard](../../security-center/security-center-pricing.md) Security Center.

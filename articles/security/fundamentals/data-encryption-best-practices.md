@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 03035f0ddb2499fb922581855878bc061bf57946
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c88a2cf33cf1149a17af4a82dcf2858822f0c6d4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412846"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696145"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Osvědčené postupy šifrování a zabezpečení dat v Azure
 Tento článek popisuje osvědčené postupy pro zabezpečení a šifrování dat.
@@ -45,22 +45,22 @@ Azure Key Vault je navržena pro podporu klíčů a tajných klíčů aplikací.
 
 Níže jsou uvedené osvědčené postupy zabezpečení pro použití Key Vault.
 
-**Osvědčený postup** : udělení přístupu uživatelům, skupinám a aplikacím v konkrétním oboru.   
-**Podrobnosti** : použijte předdefinované role RBAC. Pokud například chcete uživateli udělit přístup ke správě trezorů klíčů, přiřadíte předdefinovanou roli [Key Vault přispěvateli](../../role-based-access-control/built-in-roles.md) tomuto uživateli v konkrétním oboru. Rozsah v tomto případě by byl předplatné, skupina prostředků nebo jenom určitý Trezor klíčů. Pokud předdefinované role nevyhovují vašim potřebám, můžete [definovat vlastní role](../../role-based-access-control/custom-roles.md).
+**Osvědčený postup**: udělení přístupu uživatelům, skupinám a aplikacím v konkrétním oboru.   
+**Podrobnosti**: použijte předdefinované role Azure RBAC. Pokud například chcete uživateli udělit přístup ke správě trezorů klíčů, přiřadíte předdefinovanou roli [Key Vault přispěvateli](../../role-based-access-control/built-in-roles.md) tomuto uživateli v konkrétním oboru. Rozsah v tomto případě by byl předplatné, skupina prostředků nebo jenom určitý Trezor klíčů. Pokud předdefinované role nevyhovují vašim potřebám, můžete [definovat vlastní role](../../role-based-access-control/custom-roles.md).
 
-**Osvědčený postup** : řízení přístupu uživatelů k.   
-**Podrobnosti** : přístup k trezoru klíčů se ovládá přes dvě samostatná rozhraní: rovina správy a rovina dat. Řízení přístupu roviny správy a roviny dat fungují nezávisle.
+**Osvědčený postup**: řízení přístupu uživatelů k.   
+**Podrobnosti**: přístup k trezoru klíčů se ovládá přes dvě samostatná rozhraní: rovina správy a rovina dat. Řízení přístupu roviny správy a roviny dat fungují nezávisle.
 
-Pro řízení přístupu uživatelů používejte RBAC. Pokud například chcete udělit aplikaci přístup k používání klíčů v trezoru klíčů, stačí udělit přístup k rovině dat jenom pomocí zásad přístupu trezoru klíčů a pro tuto aplikaci není potřeba přístup k rovině správy. A obráceně, pokud chcete, aby uživatel mohl číst vlastnosti a značky trezoru, ale neměl přístup k žádným klíčům, tajným kódům ani certifikátům, můžete tomuto uživateli udělit přístup pro čtení pomocí RBAC a není potřeba žádný přístup k rovině dat.
+Pomocí Azure RBAC můžete řídit, ke kterým uživatelům mají přístup. Pokud například chcete udělit aplikaci přístup k používání klíčů v trezoru klíčů, stačí udělit přístup k rovině dat jenom pomocí zásad přístupu trezoru klíčů a pro tuto aplikaci není potřeba přístup k rovině správy. Naopak, pokud chcete, aby uživatel mohl číst vlastnosti trezoru a značky, ale nemá přístup k klíčům, tajným klíčům nebo certifikátům, můžete tomuto uživateli udělit přístup pro čtení pomocí Azure RBAC a není nutné mít přístup k rovině dat.
 
-**Osvědčený postup** : uložení certifikátů v trezoru klíčů. Vaše certifikáty jsou vysoké hodnoty. V nesprávném případě může dojít k ohrožení zabezpečení vaší aplikace nebo zabezpečení vašich dat.   
-**Podrobnosti** : Azure Resource Manager může bezpečně nasadit certifikáty uložené v Azure Key Vault na virtuální počítače Azure při nasazení virtuálních počítačů. Když pro trezor klíčů nastavíte správné zásady přístupu, umožní vám to řídit také to, kdo získá přístup k vašemu certifikátu. Další výhodou je, že v Azure Key Vault můžete spravovat všechny certifikáty na jednom místě. Další informace najdete v tématu [nasazení certifikátů do virtuálních počítačů ze Key Vault spravovaných zákazníkem](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault) .
+**Osvědčený postup**: uložení certifikátů v trezoru klíčů. Vaše certifikáty jsou vysoké hodnoty. V nesprávném případě může dojít k ohrožení zabezpečení vaší aplikace nebo zabezpečení vašich dat.   
+**Podrobnosti**: Azure Resource Manager může bezpečně nasadit certifikáty uložené v Azure Key Vault na virtuální počítače Azure při nasazení virtuálních počítačů. Když pro trezor klíčů nastavíte správné zásady přístupu, umožní vám to řídit také to, kdo získá přístup k vašemu certifikátu. Další výhodou je, že v Azure Key Vault můžete spravovat všechny certifikáty na jednom místě. Další informace najdete v tématu [nasazení certifikátů do virtuálních počítačů ze Key Vault spravovaných zákazníkem](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault) .
 
-**Osvědčený postup** : Ujistěte se, že můžete obnovit odstranění trezorů klíčů nebo objektů trezoru klíčů.   
-**Podrobnosti** : odstranění trezorů klíčů nebo objektů trezoru klíčů může být neúmyslné nebo škodlivé. V Key Vaultu povolte funkce obnovitelného odstranění a ochrany před vymazáním, zejména pro klíče používané k šifrování neaktivních uložených dat. Odstranění těchto klíčů odpovídá ztrátě dat, takže v případě potřeby můžete odstraněné trezory a objekty trezoru obnovit. Praktická cvičení Key Vaultch operací obnovení.
+**Osvědčený postup**: Ujistěte se, že můžete obnovit odstranění trezorů klíčů nebo objektů trezoru klíčů.   
+**Podrobnosti**: odstranění trezorů klíčů nebo objektů trezoru klíčů může být neúmyslné nebo škodlivé. V Key Vaultu povolte funkce obnovitelného odstranění a ochrany před vymazáním, zejména pro klíče používané k šifrování neaktivních uložených dat. Odstranění těchto klíčů odpovídá ztrátě dat, takže v případě potřeby můžete odstraněné trezory a objekty trezoru obnovit. Praktická cvičení Key Vaultch operací obnovení.
 
 > [!NOTE]
-> Pokud má uživatel oprávnění role Přispěvatel (RBAC) k rovině správy trezoru klíčů, může sám sobě udělit i přístup k rovině dat nastavením zásad přístupu trezoru klíčů. Doporučujeme, abyste důkladně určili, kdo má Přispěvatel přístup k vašim trezorům klíčů, aby se zajistilo, že přístup k vašim trezorům klíčů, klíčům, tajným klíčům a certifikátům mají jenom autorizovaní uživatelé.
+> Pokud má uživatel oprávnění přispěvatele (Azure RBAC) k rovině správy trezoru klíčů, může sami udělit přístup k rovině dat nastavením zásad přístupu trezoru klíčů. Doporučujeme, abyste důkladně určili, kdo má Přispěvatel přístup k vašim trezorům klíčů, aby se zajistilo, že přístup k vašim trezorům klíčů, klíčům, tajným klíčům a certifikátům mají jenom autorizovaní uživatelé.
 >
 >
 
@@ -73,23 +73,23 @@ Pro řízení přístupu uživatelů používejte RBAC. Pokud například chcete
 
 Vzhledem k tomu, že velká většina útoků cílí na koncového uživatele, se koncový bod stal jedním z primárních bodů útoku. Útočník, který nabývá tohoto koncového bodu, může pomocí přihlašovacích údajů uživatele získat přístup k datům organizace. Většina útoků na koncové body využívá skutečnost, že uživatelé jsou správci v místních pracovních stanicích.
 
-**Osvědčený postup** : Použijte zabezpečenou pracovní stanici pro správu k ochraně citlivých účtů, úloh a dat.   
-**Podrobnosti** : k omezení prostoru pro útoky v pracovních stanicích použijte [pracovní stanici privilegovaný přístup](/windows-server/identity/securing-privileged-access/privileged-access-workstations) . Tato zabezpečená pracovní stanice pro správu vám můžou přispět k zmírnění některých těchto útoků a zajištění bezpečnosti vašich dat.
+**Osvědčený postup**: Použijte zabezpečenou pracovní stanici pro správu k ochraně citlivých účtů, úloh a dat.   
+**Podrobnosti**: k omezení prostoru pro útoky v pracovních stanicích použijte [pracovní stanici privilegovaný přístup](/windows-server/identity/securing-privileged-access/privileged-access-workstations) . Tato zabezpečená pracovní stanice pro správu vám můžou přispět k zmírnění některých těchto útoků a zajištění bezpečnosti vašich dat.
 
-**Osvědčený postup** : Ujistěte se, že je Endpoint Protection.   
-**Podrobnosti** : vynutili zásady zabezpečení ve všech zařízeních, která se používají ke zpracování dat bez ohledu na umístění dat (v cloudu nebo v místním prostředí).
+**Osvědčený postup**: Ujistěte se, že je Endpoint Protection.   
+**Podrobnosti**: vynutili zásady zabezpečení ve všech zařízeních, která se používají ke zpracování dat bez ohledu na umístění dat (v cloudu nebo v místním prostředí).
 
 ## <a name="protect-data-at-rest"></a>Ochrana neaktivních uložených dat
 
 [Šifrování dat v klidovém umístění](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) je povinný krok k ochraně dat, dodržování předpisů a suverenity dat.
 
-**Osvědčený postup** : použití šifrování disku k ochraně vašich dat.   
-**Podrobnosti** : použijte [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md). Umožňuje správcům IT šifrovat disky virtuálních počítačů s Windows a Linux IaaS. Šifrování disku kombinuje standardní funkci Windows BitLockeru a funkci Linux dm-crypt, která poskytuje šifrování svazku pro operační systém a datové disky.
+**Osvědčený postup**: použití šifrování disku k ochraně vašich dat.   
+**Podrobnosti**: použijte [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md). Umožňuje správcům IT šifrovat disky virtuálních počítačů s Windows a Linux IaaS. Šifrování disku kombinuje standardní funkci Windows BitLockeru a funkci Linux dm-crypt, která poskytuje šifrování svazku pro operační systém a datové disky.
 
 Ve výchozím nastavení se Azure Storage a Azure SQL Database šifrují data v klidovém stavu a mnoho služeb nabízí šifrování jako možnost. Ke kontrole nad klíči, které zajišťují přístup k vašim datům a jejich šifrování, můžete použít Azure Key Vault. Další informace najdete v tématu [Podpora modelu šifrování pro poskytovatele prostředků Azure](encryption-atrest.md#azure-resource-providers-encryption-model-support).
 
-**Osvědčené postupy** : pomocí šifrování můžete zmírnit rizika související s neoprávněným přístupem k datům.   
-**Podrobnosti** : Zašifrujte své jednotky předtím, než do nich zapíšete citlivá data.
+**Osvědčené postupy**: pomocí šifrování můžete zmírnit rizika související s neoprávněným přístupem k datům.   
+**Podrobnosti**: Zašifrujte své jednotky předtím, než do nich zapíšete citlivá data.
 
 Organizacím, které vynutily šifrování dat, jsou více vystaveny problémům s důvěrnými daty. Neoprávnění uživatelé můžou například ukrást data v ohrožených účtech nebo získat neoprávněný přístup k datům kódovaným v jasném formátu. Společnosti musí také prokázat, že jsou pečlivé vylaďování a používají správné bezpečnostní prvky pro zlepšení zabezpečení dat, aby byly dodrženy oborové předpisy.
 
@@ -101,17 +101,17 @@ U dat, která se přesouvají mezi vaší místní infrastrukturou a prostředí
 
 Níže jsou uvedené osvědčené postupy, které jsou specifické pro používání Azure VPN Gateway, SSL/TLS a HTTPS.
 
-**Osvědčený postup** : zabezpečený přístup z několika pracovních stanic místně umístěných do virtuální sítě Azure.   
-**Podrobnosti** : použijte [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+**Osvědčený postup**: zabezpečený přístup z několika pracovních stanic místně umístěných do virtuální sítě Azure.   
+**Podrobnosti**: použijte [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-**Osvědčený postup** : zabezpečený přístup z jednotlivých pracovních stanic místně umístěných do virtuální sítě Azure.   
-**Podrobnosti** : použijte [VPN typu Point-to-site](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md).
+**Osvědčený postup**: zabezpečený přístup z jednotlivých pracovních stanic místně umístěných do virtuální sítě Azure.   
+**Podrobnosti**: použijte [VPN typu Point-to-site](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md).
 
-**Osvědčený postup** : přesunutí větších datových sad pomocí vyhrazeného vysokorychlostního připojení WAN.   
-**Podrobnosti** : použijte [ExpressRoute](../../expressroute/expressroute-introduction.md). Pokud se rozhodnete použít ExpressRoute, můžete posílit ochranu šifrováním dat na úrovni aplikace pomocí SSL/TLS nebo jiných protokolů.
+**Osvědčený postup**: přesunutí větších datových sad pomocí vyhrazeného vysokorychlostního připojení WAN.   
+**Podrobnosti**: použijte [ExpressRoute](../../expressroute/expressroute-introduction.md). Pokud se rozhodnete použít ExpressRoute, můžete posílit ochranu šifrováním dat na úrovni aplikace pomocí SSL/TLS nebo jiných protokolů.
 
-**Osvědčený postup** : interakce s Azure Storage přes Azure Portal.   
-**Podrobnosti** : všechny transakce nastávají přes HTTPS. K interakci s [Azure Storage](https://azure.microsoft.com/services/storage/)můžete použít taky [Storage REST API](/rest/api/storageservices/) přes HTTPS.
+**Osvědčený postup**: interakce s Azure Storage přes Azure Portal.   
+**Podrobnosti**: všechny transakce nastávají přes HTTPS. K interakci s [Azure Storage](https://azure.microsoft.com/services/storage/)můžete použít taky [Storage REST API](/rest/api/storageservices/) přes HTTPS.
 
 Organizace, které neumožňují ochranu dat při přenosu, jsou náchylnější k [útokům](/previous-versions/office/skype-server-2010/gg195821(v=ocs.14))prostředníkem, [odposlouchávání](/previous-versions/office/skype-server-2010/gg195641(v=ocs.14))a zneužití relace. Tyto útoky mohou představovat první krok k získání přístupu k důvěrným datům.
 

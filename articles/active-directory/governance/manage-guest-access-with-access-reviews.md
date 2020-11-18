@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77c560ffd01fe6d0b93e18b963574136c086fdc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb9bc252c733f3445cbf8b27281c2f455d5f2f36
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783191"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696961"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu uživatelů typu host pomocí kontrol přístupu Azure AD
 
@@ -33,7 +33,7 @@ Můžete taky snadno zajistit, aby měli uživatelé typu Host odpovídající p
 > [!NOTE]
 > Tento dokument se zaměřuje na kontrolu přístupu uživatelů typu Host. Pokud chcete zkontrolovat přístup všech uživatelů, nikoli jenom hosté, přečtěte si téma [Správa přístupu uživatelů pomocí kontrol přístupu](manage-user-access-with-access-reviews.md). Pokud chcete zkontrolovat členství uživatelů v rolích pro správu, jako je například globální správce, přečtěte si téma [spuštění kontroly přístupu v Azure AD Privileged Identity Management](../privileged-identity-management/pim-how-to-start-security-review.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure AD Premium P2
 
@@ -41,7 +41,12 @@ Další informace najdete v [licenčních požadavcích](access-reviews-overview
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Vytvoření a provedení kontroly přístupu pro hosty
 
-Nejdřív jako globální správce nebo Správce uživatelů přejděte na [stránku zásad správného řízení identity](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) , abyste měli jistotu, že jsou recenze pro přístup připravené pro vaši organizaci.
+Nejdřív je potřeba přiřadit jednu z následujících rolí:
+- globální správce
+- Správce uživatelů
+- Tisk Vlastník skupiny zabezpečení M365 nebo AAD, která se má zkontrolovat
+
+Potom přejděte na [stránku zásad správného řízení identity](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) , abyste měli jistotu, že jsou recenze pro přístup připravené pro vaši organizaci.
 
 Azure AD umožňuje několik scénářů pro kontrolu uživatelů typu Host.
 

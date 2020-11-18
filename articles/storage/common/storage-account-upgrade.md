@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4cec356b8438952327624e71deebb5e23db281a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 10d9a74306fcdf3fe32db7019ba3b095727da4c0
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787801"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694542"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely verze 2
 
@@ -27,10 +27,10 @@ Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné úč
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Přejděte na svůj účet úložiště.
-3. V části **Nastavení** klikněte na **Konfigurace** .
-4. V části **Druh účtu** klikněte na **Upgradovat** .
+3. V části **Nastavení** klikněte na **Konfigurace**.
+4. V části **Druh účtu** klikněte na **Upgradovat**.
 5. V části **Potvrdit upgrade** zadejte název svého účtu.
 6. V dolní části okna klikněte na **upgradovat** .
 
@@ -45,7 +45,7 @@ Pokud chcete upgradovat účet pro obecné účely V1 na účet pro obecné úč
 Potom zavolejte následující příkaz pro upgrade účtu, kde nahradíte název skupiny prostředků, název účtu úložiště a požadovanou úroveň přístupu k účtu.
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
+Set-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -78,7 +78,7 @@ Upgrade účtu úložiště V1 na účet pro obecné účely v2 je zdarma. Běhe
 
 Všechny účty úložiště vycházejí z cenového modelu úložiště objektů blob založeného na úrovních jednotlivých objektů blob. Při použití účtu úložiště je potřeba vzít v úvahu tyto fakturační podmínky:
 
-* **Náklady na úložiště** : Kromě množství uložených dat se cena za ukládání dat liší v závislosti na úrovni přístupu úložiště. Pokud je úroveň chladnější, cena za gigabajt se snižuje.
+* **Náklady na úložiště**: Kromě množství uložených dat se cena za ukládání dat liší v závislosti na úrovni přístupu úložiště. Pokud je úroveň chladnější, cena za gigabajt se snižuje.
 
 * **Cena za přístup k datům:** Pokud je úroveň chladnější, cena za přístup k datům se zvyšuje. Pro data ve studené a archivní úrovni přístupového úložiště se účtují poplatky za přístup k datům za gigabajt.
 
@@ -86,9 +86,9 @@ Všechny účty úložiště vycházejí z cenového modelu úložiště objekt�
 
 * **Cena za přenosy dat geografické replikace:** Tento poplatek se vztahuje jen na účty s nastavenou geografickou replikací, jako třeba GRS a RA-GRS. Přenos dat geografické replikace je zpoplatněný podle sazby za GB.
 
-* **Cena za odchozí přenosy dat** : Odchozí přenosy dat (dat přenesených směrem z oblasti Azure) jsou zpoplatněné podle využití šířky pásma sazbou za GB, stejně jako je tomu u účtů úložiště pro obecné účely.
+* **Cena za odchozí přenosy dat**: Odchozí přenosy dat (dat přenesených směrem z oblasti Azure) jsou zpoplatněné podle využití šířky pásma sazbou za GB, stejně jako je tomu u účtů úložiště pro obecné účely.
 
-* **Změna úrovně přístupu úložiště** : Změna úrovně přístupu k úložišti účtů ze studené na horkou má poplatek, který se rovná čtení všech dat existujících v účtu úložiště. Změna úrovně přístupu k účtu z horké na studenou se ale účtuje za poplatek, který se rovná zápisu všech dat do studené úrovně (pouze účty GPv2).
+* **Změna úrovně přístupu úložiště**: Změna úrovně přístupu k úložišti účtů ze studené na horkou má poplatek, který se rovná čtení všech dat existujících v účtu úložiště. Změna úrovně přístupu k účtu z horké na studenou se ale účtuje za poplatek, který se rovná zápisu všech dat do studené úrovně (pouze účty GPv2).
 
 > [!NOTE]
 > Další informace o cenovém modelu pro účty úložišť najdete na stránce [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/). Další informace o poplatcích za odchozí přenosy dat najdete na stránce [Podrobné informace o cenách přenosů dat](https://azure.microsoft.com/pricing/details/data-transfers/).
@@ -141,12 +141,12 @@ Celková kapacita spotřebovaná uživatelskými daty a protokoly analýzy (poku
 
 #### <a name="transaction-costs"></a>Cena za transakce
 
-Součet *TotalBillableRequests* všech položek rozhraní API v tabulce metrik transakcí udává celkový počet transakcí daného rozhraní API. *Například* celkový počet transakcí *GetBlob* v daném časovém období se dá vypočítat jako celkový součet fakturovatelných požadavků všech položek s klíčem řádku *user;GetBlob* .
+Součet *TotalBillableRequests* všech položek rozhraní API v tabulce metrik transakcí udává celkový počet transakcí daného rozhraní API. *Například* celkový počet transakcí *GetBlob* v daném časovém období se dá vypočítat jako celkový součet fakturovatelných požadavků všech položek s klíčem řádku *user;GetBlob*.
 
 Pokud chcete pro účet Blob Storage odhadnout náklady za transakce, je potřeba rozdělit transakce do tří skupin, protože se cenově liší.
 
-* Transakce zápisu jako *PutBlob* , *PutBlock* , *PutBlockList* , *AppendBlock* , *ListBlobs* , *ListContainers* , *CreateContainer* , *SnapshotBlob* a *CopyBlob* .
-* Transakce odstranění jako *DeleteBlob* a *DeleteContainer* .
+* Transakce zápisu jako *PutBlob*, *PutBlock*, *PutBlockList*, *AppendBlock*, *ListBlobs*, *ListContainers*, *CreateContainer*, *SnapshotBlob* a *CopyBlob*.
+* Transakce odstranění jako *DeleteBlob* a *DeleteContainer*.
 * Veškeré ostatní transakce.
 
 Pokud chcete odhadnout náklady na transakce pro účet úložiště GPv1, je potřeba započítat všechny transakce bez ohledu na operaci nebo rozhraní API.
@@ -157,9 +157,9 @@ Analýza úložiště sice k účtu úložiště nevypíše množství přečten
 
 Pokud chcete pro účet Blob Storage odhadnout náklady za přístup k datům, je potřeba transakce rozdělit do dvou skupin.
 
-* Množství dat načtených z účtu úložiště lze odhadnout ze součtu *TotalEgress* především u operací *GetBlob* a *CopyBlob* .
+* Množství dat načtených z účtu úložiště lze odhadnout ze součtu *TotalEgress* především u operací *GetBlob* a *CopyBlob*.
 
-* Množství dat zapsaných do účtu úložiště lze odhadnout ze součtu *TotalIngress* především u operací *PutBlob* , *PutBlock* , *CopyBlob* a *AppendBlock* .
+* Množství dat zapsaných do účtu úložiště lze odhadnout ze součtu *TotalIngress* především u operací *PutBlob*, *PutBlock*, *CopyBlob* a *AppendBlock*.
 
 Také cena za přenos geograficky replikovaných dat účtů Blob Storage se v případě účtu úložiště typu GRS nebo RA-GRS dá vypočítat pomocí toho, že odhadnete množství zapsaných dat.
 

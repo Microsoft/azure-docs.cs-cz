@@ -4,12 +4,12 @@ description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro L
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 240f22a076b5f185ebe3028b201b66d187c9bb2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 1e81d1a5157cc5872ba2628c8d6cb408e35ab9c6
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346872"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694238"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytváření zásad konfigurace hosta pro Linux
 
@@ -163,10 +163,10 @@ Podpůrné soubory musí být zabaleny dohromady. Dokončený balíček použív
 
 `New-GuestConfigurationPackage`Rutina vytvoří balíček. Parametry `New-GuestConfigurationPackage` rutiny při vytváření obsahu pro Linux:
 
-- **Název** : název konfiguračního balíčku hosta.
-- **Konfigurace** : úplná cesta k kompilované konfiguraci dokumentu.
-- **Cesta** : cesta ke výstupní složce. Tento parametr je volitelný. Pokud není zadaný, balíček se vytvoří v aktuálním adresáři.
-- **ChefInspecProfilePath** : úplná cesta k profilu INSPEC. Tento parametr je podporován pouze při vytváření obsahu pro audit systému Linux.
+- **Název**: název konfiguračního balíčku hosta.
+- **Konfigurace**: úplná cesta k kompilované konfiguraci dokumentu.
+- **Cesta**: cesta ke výstupní složce. Tento parametr je volitelný. Pokud není zadaný, balíček se vytvoří v aktuálním adresáři.
+- **ChefInspecProfilePath**: úplná cesta k profilu INSPEC. Tento parametr je podporován pouze při vytváření obsahu pro audit systému Linux.
 
 Spuštěním následujícího příkazu vytvořte balíček pomocí konfigurace uvedené v předchozím kroku:
 
@@ -183,9 +183,9 @@ Vzhledem k tomu, že agent ve skutečnosti vyhodnocuje místní prostředí, ve 
 
 Parametry `Test-GuestConfigurationPackage` rutiny:
 
-- **Název** : název zásad konfigurace hostů.
-- **Parametr** : parametry zásad, které jsou k dispozici ve formátu zatřiďovací tabulky.
-- **Cesta** : úplná cesta k balíčku pro konfiguraci hosta.
+- **Název**: název zásad konfigurace hostů.
+- **Parametr**: parametry zásad, které jsou k dispozici ve formátu zatřiďovací tabulky.
+- **Cesta**: úplná cesta k balíčku pro konfiguraci hosta.
 
 Spusťte následující příkaz, který otestuje balíček vytvořený předchozím krokem:
 
@@ -210,13 +210,13 @@ Po vytvoření a nahrání balíčku vlastní zásady konfigurace hosta se vytvo
 
 Parametry `New-GuestConfigurationPolicy` rutiny:
 
-- **ContentUri** : veřejné http (s) URI balíčku obsahu konfigurace hosta.
-- **DisplayName** : zobrazovaný název zásad.
-- **Popis** : popis zásady.
-- **Parametr** : parametry zásad, které jsou k dispozici ve formátu zatřiďovací tabulky.
-- **Verze** : verze zásad
-- **Cesta** : cílová cesta, kde jsou vytvořeny definice zásad.
-- **Platforma** : cílová platforma (Windows/Linux) pro zásady konfigurace hosta a balíček obsahu.
+- **ContentUri**: veřejné http (s) URI balíčku obsahu konfigurace hosta.
+- **DisplayName**: zobrazovaný název zásad.
+- **Popis**: popis zásady.
+- **Parametr**: parametry zásad, které jsou k dispozici ve formátu zatřiďovací tabulky.
+- **Verze**: verze zásad
+- **Cesta**: cílová cesta, kde jsou vytvořeny definice zásad.
+- **Platforma**: cílová platforma (Windows/Linux) pro zásady konfigurace hosta a balíček obsahu.
 - **Tag** přidá do definice zásady jeden nebo více filtrů značek.
 - **Kategorie** nastaví pole metadata kategorie v definici zásady.
 
@@ -330,9 +330,9 @@ Pro vydání aktualizace do definice zásady existují tři pole, která vyžadu
 > [!NOTE]
 > `version`Vlastnost přiřazení konfigurace hosta má jenom balíčky, které hostuje Microsoft. Osvědčeným postupem pro správu verzí vlastního obsahu je zahrnutí verze do názvu souboru.
 
-- **Verze** : když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované.
-- **contentUri** : když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat identifikátor URI do umístění balíčku. Zahrnutí verze balíčku do názvu souboru zajistí, že se hodnota této vlastnosti změní v každé vydané verzi.
-- **contentHash** : Tato vlastnost je automaticky aktualizována `New-GuestConfigurationPolicy` rutinou. Jedná se o hodnotu hash balíčku, kterou vytvořil `New-GuestConfigurationPackage` . Vlastnost musí být správná pro `.zip` soubor, který publikujete. Pokud se aktualizuje jenom vlastnost **contentUri** , rozšíření nepřijme balíček obsahu.
+- **Verze**: když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované.
+- **contentUri**: když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat identifikátor URI do umístění balíčku. Zahrnutí verze balíčku do názvu souboru zajistí, že se hodnota této vlastnosti změní v každé vydané verzi.
+- **contentHash**: Tato vlastnost je automaticky aktualizována `New-GuestConfigurationPolicy` rutinou. Jedná se o hodnotu hash balíčku, kterou vytvořil `New-GuestConfigurationPackage` . Vlastnost musí být správná pro `.zip` soubor, který publikujete. Pokud se aktualizuje jenom vlastnost **contentUri** , rozšíření nepřijme balíček obsahu.
 
 Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat postup popsaný v tomto článku a zadat aktualizované číslo verze. Tento proces zaručuje, že všechny vlastnosti jsou správně aktualizované.
 
@@ -375,8 +375,8 @@ Chcete-li použít funkci ověřování podpisem, spusťte `Protect-GuestConfigu
 
 Parametry `Protect-GuestConfigurationPackage` rutiny:
 
-- **Cesta** : úplná cesta k balíčku pro konfiguraci hosta.
-- **PublicGpgKeyPath** : cesta k veřejnému klíči GPG. Tento parametr je podporován pouze při podepisování obsahu pro Linux.
+- **Cesta**: úplná cesta k balíčku pro konfiguraci hosta.
+- **PublicGpgKeyPath**: cesta k veřejnému klíči GPG. Tento parametr je podporován pouze při podepisování obsahu pro Linux.
 
 Dobrá Reference k vytváření GPG klíčů pro použití s počítači se systémem Linux je poskytována článkem na GitHubu, který [generuje nový klíč GPG](https://help.github.com/en/articles/generating-a-new-gpg-key).
 
@@ -384,12 +384,6 @@ Agent GuestConfiguration očekává, že se veřejný klíč certifikátu nachá
 Zásady přístupu Key Vault musí umožňovat poskytovateli výpočetních prostředků přístup k certifikátům během nasazení. Podrobný postup najdete v tématu [nastavení Key Vault pro virtuální počítače v Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
 Po publikování obsahu přidejte značku s názvem `GuestConfigPolicyCertificateValidation` a hodnotou `enabled` do všech virtuálních počítačů, kde by mělo být požadováno podepisování kódu. Podívejte se na [ukázky značek](../samples/built-in-policies.md#tags) , jak mohou být značky doručovány ve velkém rozsahu pomocí Azure Policy. Jakmile je tato značka nastavená, definice zásady vytvořená pomocí `New-GuestConfigurationPolicy` rutiny povolí požadavek prostřednictvím rozšíření konfigurace hosta.
-
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Řešení potíží s přiřazením zásad konfigurace hosta (Preview)
-
-Nástroj je k dispozici ve verzi Preview, který vám pomůže při řešení potíží s Azure Policy přiřazení konfigurace hostů. Nástroj je ve verzi Preview a byl publikován do Galerie prostředí PowerShell jako název modulu [Poradce při potížích s konfigurací hosta](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
-
-Další informace o rutinách v tomto nástroji získáte pomocí příkazu Get-Help v prostředí PowerShell k zobrazení integrovaných pokynů. Jak nástroj načítá časté aktualizace, což je nejlepší způsob, jak získat nejnovější informace.
 
 ## <a name="next-steps"></a>Další kroky
 

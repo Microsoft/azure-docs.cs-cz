@@ -4,12 +4,12 @@ description: Obsahuje odpovědi na některé běžné dotazy týkající se ře�
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 99e9e53693e42f907250331894f55ed0160f9e30
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 2d71c30d2fb08629674c352ae812d8890463abfe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577511"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695097"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -33,7 +33,7 @@ Všechny služby Azure budou dostupné pro zákazníky řešení Azure VMware. O
 
 #### <a name="do-i-use-the-same-tools-that-i-use-now-to-manage-private-cloud-resources"></a>Používají se stejné nástroje, které teď používám ke správě prostředků privátního cloudu?
 
-Yes. Azure Portal se používá pro nasazení a řadu operací správy. vCenter a NSX Manager se používají ke správě prostředků vSphere a NSX-T.
+Ano. Azure Portal se používá pro nasazení a řadu operací správy. vCenter a NSX Manager se používají ke správě prostředků vSphere a NSX-T.
 
 #### <a name="can-i-manage-a-private-cloud-with-my-on-premises-vcenter"></a>Můžu pomocí místního serveru vCenter spravovat privátní cloud?
 
@@ -45,7 +45,7 @@ Konkrétní integrace a případy použití mohou být vyhodnoceny případ od p
 
 #### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>Můžu migrovat virtuální počítače s vSphere z místního prostředí do privátních cloudů řešení Azure VMware?
 
-Yes. Migrace virtuálních počítačů a vMotion se dají použít k přesunu virtuálních počítačů do privátního cloudu, pokud jsou splněné standardní [požadavky na vMotion](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) pro architekturu vCenter.
+Ano. Migrace virtuálních počítačů a vMotion se dají použít k přesunu virtuálních počítačů do privátního cloudu, pokud jsou splněné standardní [požadavky na vMotion](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) pro architekturu vCenter.
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>Vyžaduje se v místních prostředích konkrétní verze vSphere?
 
@@ -192,11 +192,11 @@ Ne. Příchozí síťový provoz z Internetu přímo do privátních cloudů nen
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>Je potřeba omezit přístup k Internetu z virtuálních počítačů v logických sítích na Internet?
 
-Yes. Abyste mohli vytvořit bránu firewall, která omezuje přístup virtuálních počítačů k Internetu, budete muset použít Správce NSX-T.
+Ano. Abyste mohli vytvořit bránu firewall, která omezuje přístup virtuálních počítačů k Internetu, budete muset použít Správce NSX-T.
 
 
 #### <a name="can-azure-vmware-solution-use-azure-virtual-wan-hosted-expressroute-gateways"></a>Může řešení Azure VMware používat brány ExpressRoute hostované v Azure Virtual WAN?
-Yes.
+Ano.
 
 #### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>Dá se přes Azure Virtual WAN přes ExpressRoute Global Reach navázat připojení mezi místním prostředím a řešením Azure VMware?
 Služba Azure Virtual WAN neposkytuje přechodné směrování mezi dvěma připojenými okruhy ExpressRoute a nevirtuální bránou WAN ExpressRoute. Použití ExpressRoute Global Reach umožňuje připojení mezi místním prostředím a řešením Azure VMware, ale prostřednictvím globální sítě Microsoftu místo virtuálního centra WAN.
@@ -253,7 +253,7 @@ VMware HCX Enterprise Edition (EE) je k dispozici v rámci řešení Azure VMwar
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Jak Návody požádat o zvýšení kvóty hostitele pro řešení Azure VMware?
 
-U předplatných spravovaných poskytovatelem CSP musí zákazník požádat partnera a Partnerský tým se zapojí se společností Microsoft, aby získal zvýšení kvóty pro předplatné. 
+U předplatných spravovaných poskytovatelem CSP musí zákazník požádat partnera a Partnerský tým se zapojí se společností Microsoft, aby získal zvýšení kvóty pro předplatné. Další informace najdete v [článku Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md) pro podrobnosti. 
 
 U předplatných EA musí zákazník postupovat podle tohoto postupu.
 
@@ -299,6 +299,10 @@ Před vytvořením prostředku řešení Azure VMware je nutné odeslat lístek 
 #### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
 
 Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
+
+#### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
+
+No. Currently Azure VMware Solution does not offer multi-tenancy.
 
 
 ## Customer communication

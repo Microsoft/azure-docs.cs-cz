@@ -7,27 +7,31 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74754c973dbe11d954a1714e9a98d99de639acd4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6dbdd5153186ee47e37856637eac16d6d450cc5a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651137"
+ms.locfileid: "94695176"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Požadavky pro zřízení cloudu Azure AD Connect
 Tento článek poskytuje pokyny k výběru a používání Azure Active Directory (Azure AD) připojení cloudového zřizování jako řešení identity.
+
+
 
 ## <a name="cloud-provisioning-agent-requirements"></a>Požadavky na agenta zřizování cloudu
 Pro použití Azure AD Connectho zřizování cloudu potřebujete následující:
     
 - Účet správce hybridní identity pro vašeho tenanta Azure AD, který není uživatelem typu Host.
 - Místní server pro zřizovacího agenta se systémem Windows 2012 R2 nebo novějším.  Tento server by měl být serverem vrstvy 0, který je založený na [modelu vrstvy správy služby Active Directory](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
-- Přihlašovací údaje správce domény nebo správce podnikového správce k vytvoření Azure AD Connect gMSA Cloud Sync (skupinový účet spravované služby) pro spuštění služby agenta.
 - Místní konfigurace brány firewall.
+
+>[!NOTE]
+>Agent zřizování se momentálně dá nainstalovat jenom na anglické jazykové servery. Instalace anglické jazykové sady na neanglickém serveru nemá platné alternativní řešení a výsledkem bude selhání agenta při instalaci. 
 
 Ve zbývající části dokumentu najdete podrobné pokyny pro tyto požadavky.
 
@@ -53,9 +57,7 @@ Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](
         | --- | --- |
         | **80** | Při ověřování certifikátu TLS/SSL stáhne seznamy odvolaných certifikátů (CRL).  |
         | **443** | Zpracovává veškerou odchozí komunikaci se službou. |
-        |**8082**|Vyžaduje se pro instalaci a pokud chcete nakonfigurovat své rozhraní API pro správu.  Tento port lze odebrat po instalaci agenta a v případě, že neplánujete použití rozhraní API.   |
         | **8080** (volitelné) | Agenti hlásí svůj stav každých 10 minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. |
-   
      
    - Pokud brána firewall vynutila pravidla podle prvotních uživatelů, otevřete tyto porty pro provoz ze služeb systému Windows, které jsou spuštěny jako síťová služba.
    - Pokud vaše brána firewall nebo proxy server umožňují zadat bezpečné přípony, přidejte připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
@@ -64,17 +66,6 @@ Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](
 
 >[!NOTE]
 > Instalace agenta zřizování cloudu na Windows serveru Core není podporovaná.
-
-## <a name="group-managed-service-accounts"></a>Skupinové účty spravované služby
-Skupinový účet spravované služby je účet spravované domény, který poskytuje automatickou správu hesel, zjednodušenou správu hlavního názvu služby (SPN), schopnost delegovat správu na jiné správce a také rozšiřuje tuto funkci na více serverů.  Azure AD Connect synchronizace cloudu podporuje a používá gMSA ke spuštění agenta.  Během instalace budete vyzváni k zadání přihlašovacích údajů správce, aby bylo možné tento účet vytvořit.  Účet se zobrazí jako (domain\provAgentgMSA $).  Další informace o gMSA najdete v tématu [skupinový účet spravované služby](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) . 
-
-### <a name="prerequisites-for-gmsa"></a>Předpoklady pro gMSA:
-1.  Schéma služby Active Directory v doménové struktuře domény gMSA se musí aktualizovat na Windows Server 2012.
-2.  [Moduly PowerShellu pro vzdálenou správu](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) počítače v řadiči domény
-3.  Aspoň jeden řadič domény v doméně musí používat Windows Server 2012.
-4.  Server připojený k doméně, na kterém je agent nainstalovaný, musí být Windows Server 2012 nebo novější.
-
-Postup upgradu stávajícího agenta tak, aby používal účet gMSA, najdete v tématu [skupinový účet spravované služby](how-to-install.md#group-managed-service-accounts).
 
 
 ### <a name="additional-requirements"></a>Další požadavky
@@ -100,6 +91,24 @@ Pokud chcete povolit TLS 1,2, postupujte podle těchto kroků.
 
 1. Restartujte server.
 
+## <a name="known-limitations"></a>Známá omezení
+Toto jsou známá omezení:
+
+### <a name="delta-synchronization"></a>Rozdílová synchronizace
+
+- Filtrování oboru skupiny pro rozdílovou synchronizaci nepodporuje víc než 1500 členů.
+- Když odstraníte skupinu, která se používá jako součást filtru oboru skupiny, uživatelé, kteří jsou členy skupiny, se neodstraní. 
+- Při přejmenování organizační jednotky nebo skupiny, která je v oboru, nebude rozdílová synchronizace uživatele odebírat.
+
+### <a name="provisioning-logs"></a>Protokoly zřizování
+- Protokoly zřizování nejsou jasně odlišené mezi operacemi vytvoření a aktualizace.  Může se zobrazit operace vytvoření aktualizace a operace aktualizace pro vytvoření.
+
+### <a name="cross-domain-references"></a>Odkazy mezi doménami
+- Pokud máte uživatele s odkazy na členy v jiné doméně, nebudou synchronizovány jako součást aktuální synchronizace domény pro tohoto uživatele. 
+- (Příklad: Správce uživatele, který synchronizujete, je v doméně B a uživatel je v doméně A. Pokud synchronizujete doménu A a B, budou synchronizovány, ale uživatel – správce se nebude přenášet.)
+
+### <a name="group-re-naming-or-ou-re-naming"></a>Opětovné pojmenování skupin nebo opětovné pojmenovávání organizační jednotky
+- Pokud přejmenujete skupinu nebo organizační jednotku ve službě AD, která je v rozsahu pro danou konfiguraci, úloha zřizování cloudu nebude schopna rozpoznat změnu názvu ve službě AD. Úloha se nepřejde do karantény a zůstane v pořádku.
 
 
 

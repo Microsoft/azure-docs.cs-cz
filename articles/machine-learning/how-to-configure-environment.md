@@ -1,22 +1,22 @@
 ---
 title: Nastavení vývojového prostředí v jazyce Python
 titleSuffix: Azure Machine Learning
-description: Naučte se nastavit prostředí pro vývoj v Pythonu pro Azure Machine Learning. Používejte prostředí Conda, vytvářejte konfigurační soubory a nakonfigurujete svůj vlastní cloudový server, Poznámkový blok Jupyter, Azure Databricks, IDEs, editory kódu a Data Science Virtual Machine.
+description: Nastavte Azure Machine Learning vývojové prostředí Pythonu v poznámkových blocích Jupyter, Visual Studio Code, Azure Databricks a datové vědy Virtual Machines.
 services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 09/30/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 451ad33a9d041635c3f51e323539b423378d02d1
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 03d10f71b585090157eff164cc98246f50608fe1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422889"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695363"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Nastavení vývojového prostředí v Pythonu pro Azure Machine Learning
 
@@ -59,11 +59,11 @@ Chcete-li použít tento soubor z kódu, použijte [`Workspace.from_config`](/py
 
 Vytvořte konfigurační soubor pracovního prostoru jedním z následujících způsobů:
 
-* Azure Portal
+* portál Azure
 
-    **Stažení souboru** : v [Azure Portal](https://ms.portal.azure.com)vyberte  **Stáhnout config.jsv** části **Přehled** v pracovním prostoru.
+    **Stažení souboru**: v [Azure Portal](https://ms.portal.azure.com)vyberte  **Stáhnout config.jsv** části **Přehled** v pracovním prostoru.
 
-    ![Azure Portal](./media/how-to-configure-environment/configure.png)
+    ![portál Azure](./media/how-to-configure-environment/configure.png)
 
 * Azure Machine Learning Python SDK
 

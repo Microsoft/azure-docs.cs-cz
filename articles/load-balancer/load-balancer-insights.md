@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: d57dfd0a496e71c1f0e6ddea839723da35bc5f76
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686238"
+ms.locfileid: "94694877"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Monitorování a konfigurace Azure Load Balancer pomocí přehledů
 
@@ -26,7 +26,7 @@ Prostřednictvím Azure Monitor pro sítě jste pro vaše nástroje pro vyrovná
 >Všimněte si prosím, že tato funkce je ve verzi Preview a zobrazení funkční závislosti a předkonfigurovaný řídicí panel se může změnit, aby se zlepšilo toto prostředí.
 
 >[!IMPORTANT]
->Pro zobrazení metrik z oboru názvů Load Balancer v předem nakonfigurovaném řídicím panelu metriky se vyžaduje Standard Load Balancer. Pořád budete moct zobrazit metriky z virtuálního počítače, sady škálování virtuálních počítačů a oborů názvů monitorování připojení, ale doporučujeme [upgradovat na standard](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard) pro jakékoli provozní úlohy, abyste mohli využít robustní sadu Load Balancerch metrik.
+>Pro zobrazení metrik z oboru názvů Load Balancer v předem nakonfigurovaném řídicím panelu metriky se vyžaduje Standard Load Balancer. Pořád budete moct zobrazit metriky z virtuálního počítače, sady škálování virtuálních počítačů a oborů názvů monitorování připojení, ale doporučujeme [upgradovat na standard](./upgrade-basic-standard.md) pro jakékoli provozní úlohy, abyste mohli využít robustní sadu Load Balancerch metrik.
 
 ## <a name="functional-dependency-view"></a>Zobrazení funkční závislosti
 
@@ -40,7 +40,7 @@ U standardních nástrojů pro vyrovnávání zatížení jsou prostředky vaše
 
 ## <a name="metrics-dashboard"></a>Řídicí panel metrik
 
-V okně přehledy Load Balancer můžete vybrat podrobnější metriky a zobrazit předem nakonfigurovaný [Azure monitor sešit](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) obsahující vizuály metriky, které jsou relevantní pro konkrétní aspekty vašeho Load Balancer. Tento řídicí panel zobrazí stav Load Balancer a odkazy na příslušnou dokumentaci v horní části stránky.
+V okně přehledy Load Balancer můžete vybrat podrobnější metriky a zobrazit předem nakonfigurovaný [Azure monitor sešit](../azure-monitor/platform/workbooks-overview.md) obsahující vizuály metriky, které jsou relevantní pro konkrétní aspekty vašeho Load Balancer. Tento řídicí panel zobrazí stav Load Balancer a odkazy na příslušnou dokumentaci v horní části stránky.
 
 Nejprve se zobrazí karta Přehled. Můžete procházet dostupné karty, z nichž každý obsahuje vizuály relevantní pro konkrétní aspekty vašeho Load Balancer. Explicitní doprovodné materiály pro každý z nich jsou k dispozici na řídicím panelu v dolní části každé karty.
 
@@ -68,16 +68,16 @@ Karta propustnost dat vám umožní zkontrolovat příchozí a odchozí propustn
 ### <a name="flow-distribution"></a>Distribuce toků
 Karta distribuce toků vám pomůže vizualizovat a spravovat počet toků, které instance back-endu dostávají a produkují. Zobrazuje frekvenci vytváření toků a počet toků pro příchozí a odchozí provoz a také přenos síťových přenosů, které instance virtuálních počítačů a sady škálování virtuálních počítačů přijímají. 
 
-Tato zobrazení vám můžou sdělit svůj názor na to, jestli konfigurace Load Balancer nebo vzorce provozu vedou k nevyváženému provozu. Například pokud máte nakonfigurované spřažení relace a jeden klient provádí neúměrný počet požadavků. Také vám poskytne informace o tom, jestli se při přístupu k velikosti vašeho počítače blíží [limit toku pro virtuální počítače](https://docs.microsoft.com/azure/virtual-network/virtual-machine-network-throughput#flow-limits-and-recommendations) .
+Tato zobrazení vám můžou sdělit svůj názor na to, jestli konfigurace Load Balancer nebo vzorce provozu vedou k nevyváženému provozu. Například pokud máte nakonfigurované spřažení relace a jeden klient provádí neúměrný počet požadavků. Také vám poskytne informace o tom, jestli se při přístupu k velikosti vašeho počítače blíží [limit toku pro virtuální počítače](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) .
 
 ### <a name="connection-monitors"></a>Monitorování připojení
-Na kartě monitorování připojení se zobrazí latence odezvy na globální mapě pro všechna nakonfigurovaná [monitorování připojení](https://docs.microsoft.com/azure/network-watcher/connection-monitor)  . Tyto vizuály poskytují užitečné informace pro služby s přísnými nároky na latenci. Abyste splnili Vaše požadavky, možná budete muset přidat další oblastní nasazení nebo přejít na model [Vyrovnávání zatížení pro různé regiony](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) .
+Na kartě monitorování připojení se zobrazí latence odezvy na globální mapě pro všechna nakonfigurovaná [monitorování připojení](../network-watcher/connection-monitor.md)  . Tyto vizuály poskytují užitečné informace pro služby s přísnými nároky na latenci. Abyste splnili Vaše požadavky, možná budete muset přidat další oblastní nasazení nebo přejít na model [Vyrovnávání zatížení pro různé regiony](./cross-region-overview.md) .
 
 ### <a name="metric-definitions"></a>Definice metrik
-Karta definice metriky obsahuje všechny informace, které jsou uvedeny v [článku multidimenzionální metriky](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics).
+Karta definice metriky obsahuje všechny informace, které jsou uvedeny v [článku multidimenzionální metriky](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics).
 
 ## <a name="next-steps"></a>Další kroky
 * Pokud máte všechno, co se dá zlepšit, Projděte si řídicí panel a sdělte nám svůj názor pomocí níže uvedeného odkazu.
-* [Přečtěte si dokumentaci k metrikám a ujistěte se, že rozumíte tomu, jak se každá metrika počítá.](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics)
-* [Vytvoření monitorování připojení pro Load Balancer](https://docs.microsoft.com/azure/network-watcher/connection-monitor)
-* [Vytvořte si vlastní sešity](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview), můžete inspiraci kliknutím na tlačítko Upravit na podrobném řídicím panelu metriky.
+* [Přečtěte si dokumentaci k metrikám a ujistěte se, že rozumíte tomu, jak se každá metrika počítá.](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
+* [Vytvoření monitorování připojení pro Load Balancer](../network-watcher/connection-monitor.md)
+* [Vytvořte si vlastní sešity](../azure-monitor/platform/workbooks-overview.md), můžete inspiraci kliknutím na tlačítko Upravit na podrobném řídicím panelu metriky.
