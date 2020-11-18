@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 979ed3d21986ad43d805446a520a59333a6798ed
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 78600b7b57a7c30fc609434a700f13fa21e079ce
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149329"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659637"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Připojení podřízeného zařízení k bráně služby Azure IoT Edge
 
@@ -37,7 +37,7 @@ Tento článek pojednává o základních konceptech připojení k zařízením 
 
 V tomto článku se pojmem *brána brány* a brána *IoT Edge* odkazují na IoT Edge zařízení nakonfigurované jako transparentní brána.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * K vygenerování certifikátu certifikační autority zařízení v části [konfigurace IoT Edgeho zařízení, které budou fungovat jako transparentní brána](how-to-create-transparent-gateway.md) na vašem zařízení pro příjem dat, je třeba použít kořenový soubor certifikátu certifikační autority. Vaše zařízení pro příjem dat používá tento certifikát k ověření identity zařízení brány. Pokud jste použili ukázkové certifikáty, kořenový certifikát certifikační autority se nazývá **Azure-IoT-test-Only. root. ca. CERT. pem**.
 * Přidaný připojovací řetězec odkazuje na zařízení brány, jak je vysvětleno v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
@@ -109,7 +109,7 @@ import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorel
 Certifikáty můžete nainstalovat také pomocí nástroje **Certlm** :
 
 1. V nabídce Start vyhledejte a vyberte **spravovat certifikáty počítače**. Otevře se nástroj s názvem **Certlm** .
-2. Přejděte na **certifikáty –**  >  **Důvěryhodné kořenové certifikační autority**místního počítače.
+2. Přejděte na **certifikáty –**  >  **Důvěryhodné kořenové certifikační autority** místního počítače.
 3. Klikněte pravým tlačítkem na **certifikáty** a vyberte **všechny úkoly**  >  **importovat**. Průvodce importem certifikátu by se měl spustit.
 4. Postupujte podle pokynů jako směrovaný a importujte soubor certifikátu `<path>/azure-iot-test-only.root.ca.cert.pem` . Po dokončení by se měla zobrazit zpráva "úspěšně importováno".
 
@@ -168,11 +168,15 @@ V této části se seznámíte s ukázkovou aplikací pro připojení klienta za
 3. V souboru iotedge_downstream_device_sample. c aktualizujte proměnné **ConnectionString** a **edge_ca_cert_path** .
 4. Pokyny, jak spustit ukázku na vašem zařízení, najdete v dokumentaci k sadě SDK.
 
+
 Sada SDK pro zařízení Azure IoT pro jazyk C poskytuje možnost Registrovat certifikát certifikační autority při nastavování klienta. Tato operace neinstaluje certifikát kdekoli, ale místo toho používá formát řetězce certifikátu v paměti. Při navazování připojení se uložený certifikát poskytne základnímu zásobníku TLS.
 
 ```C
 (void)IoTHubDeviceClient_SetOption(device_handle, OPTION_TRUSTED_CERT, cert_string);
 ```
+
+>[!NOTE]
+> Metoda registrace certifikátu certifikační autority při nastavování klienta se může změnit, pokud se používá [spravovaný](https://github.com/Azure/azure-iot-sdk-c#packages-and-libraries) balíček nebo knihovna. Například [knihovna založená na IDE Arduino](https://github.com/azure/azure-iot-arduino) bude vyžadovat přidání certifikátu certifikační autority do pole certifikátů definovaného v souboru Global certs [. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) namísto použití `IoTHubDeviceClient_LL_SetOption` operace.  
 
 Pokud v hostitelích se systémem Windows nepoužíváte OpenSSL nebo jinou knihovnu TLS, použije sada SDK ve výchozím nastavení zprostředkovatele Schannel. Aby mohla zprostředkovatel Schannel fungovat, musí být v úložišti certifikátů Windows nainstalovaný certifikát certifikační autority IoT Edge root, který není nastavený pomocí této `IoTHubDeviceClient_SetOption` operace.
 

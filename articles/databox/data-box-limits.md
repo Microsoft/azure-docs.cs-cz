@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/01/2020
+ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: b193247fee843796da0cb2fcfc1a874b1a1b72fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00ba711661d69bbaf53ff51fb2cb833d9b1c1ae2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660917"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660419"
 ---
 # <a name="azure-data-box-limits"></a>Omezení Azure Data Box
 
@@ -28,7 +28,7 @@ Tato omezení zvažte při nasazení a provozu Data Box Microsoft Azure. Násled
 - Data Box může ukládat maximálně 500 000 000 souborů pro import i export.
 - Data Box podporuje maximálně 512 kontejnerů nebo sdílených složek v cloudu. Adresáře nejvyšší úrovně v rámci sdílené složky uživatele se stanou kontejnery nebo sdílené složky Azure v cloudu. 
 - Kapacita využití Data Box může být menší než 80 TB z důvodu využití místa metadat ReFS.
-- Data Box podporuje maximálně 5 připojení klientů současně ve sdílené složce systému souborů NFS. 
+- Data Box podporuje maximálně 10 připojení klientů současně ve sdílené složce systému souborů NFS.
 
 ## <a name="azure-storage-limits"></a>Omezení úložiště Azure
 

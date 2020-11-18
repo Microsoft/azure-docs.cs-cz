@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: philmea
-ms.openlocfilehash: bd87f15ff63edf1da447faf986cad2f9591610dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 201318a5a5680f248b831bb480888f106286fbe1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502962"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660028"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Správa IoT Central z Azure CLI
 
@@ -22,24 +22,11 @@ ms.locfileid: "87502962"
 
 Místo vytváření a správy aplikací IoT Central na webu [azure IoT Central Správce aplikací](https://aka.ms/iotcentral) můžete ke správě aplikací použít [Azure CLI](/cli/azure/) .
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-Pokud raději spustíte Azure CLI na místním počítači, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli). Když Azure CLI spouštíte místně, přihlaste se k Azure pomocí příkazu **AZ Login** , abyste se mohli pokusit použít příkazy v tomto článku.
-
-> [!TIP]
-> Pokud potřebujete spustit příkazy rozhraní příkazového řádku v jiném předplatném Azure, přečtěte si téma [Změna aktivního předplatného](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription).
-
-## <a name="install-the-extension"></a>Instalace rozšíření
-
-Příkazy v tomto článku jsou součástí rozšíření **Azure-IoT** CLI. Spusťte následující příkaz pro instalaci rozšíření:
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+ - Pokud potřebujete spustit příkazy rozhraní příkazového řádku v jiném předplatném Azure, přečtěte si téma [Změna aktivního předplatného](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription).
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
@@ -65,7 +52,7 @@ Tyto příkazy nejprve vytvoří skupinu prostředků v oblasti východní USA p
 | Parametr         | Popis |
 | ----------------- | ----------- |
 | resource-group    | Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků už musí existovat ve vašem předplatném. |
-| location          | Ve výchozím nastavení tento příkaz používá umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**, **USA**, **Spojené království**a **Japonsko** . |
+| location          | Ve výchozím nastavení tento příkaz používá umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**, **USA**, **Spojené království** a **Japonsko** . |
 | name              | Název aplikace v Azure Portal. |
 | subdomény         | Subdoména v adrese URL aplikace V tomto příkladu je adresa URL aplikace `https://mysubdomain.azureiotcentral.com` . |
 | skladové               | V současné době můžete použít buď **ST1** nebo **ST2**. Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: bce381ba4916bc58d2c7acf8d69b323dbdf972aa
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 64a4eb1b473c8944dadea4e1ee4323dfe4e9bcde
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544779"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661116"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-site k virtuální síti pomocí ověřování RADIUS: PowerShell
 
@@ -119,7 +119,7 @@ Následující kroky vytvoří skupinu prostředků a virtuální síť ve skupi
    ```azurepowershell-interactive
    New-AzResourceGroup -Name "TestRG" -Location "East US"
    ```
-2. Vytvořte konfigurace podsítí pro virtuální síť, podsítě pojmenujte *FrontEnd* , *BackEnd* a *GatewaySubnet* . Tyto předpony musí být součástí adresního prostoru virtuální sítě deklarovaného výše.
+2. Vytvořte konfigurace podsítí pro virtuální síť, podsítě pojmenujte *FrontEnd*, *BackEnd* a *GatewaySubnet*. Tyto předpony musí být součástí adresního prostoru virtuální sítě deklarovaného výše.
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
@@ -152,7 +152,7 @@ Před vytvořením a konfigurací brány virtuální sítě by měl být server 
 2. Nakonfigurujte bránu VPN jako klienta RADIUS na protokolu RADIUS. Při přidávání tohoto klienta protokolu RADIUS zadejte GatewaySubnet virtuální sítě, kterou jste vytvořili. 
 3. Po nastavení serveru RADIUS Získejte IP adresu serveru RADIUS a sdílený tajný klíč, který by klienti RADIUS měli používat ke komunikaci se serverem RADIUS. Pokud je server RADIUS ve virtuální síti Azure, použijte IP adresu certifikační autority virtuálního počítače serveru RADIUS.
 
-Článek [NPS (Network Policy Server)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) poskytuje pokyny ke konfiguraci serveru NPS (Windows RADIUS Server) pro ověřování domény AD.
+Článek [NPS (Network Policy Server)](/windows-server/networking/technologies/nps/nps-top) poskytuje pokyny ke konfiguraci serveru NPS (Windows RADIUS Server) pro ověřování domény AD.
 
 ## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"></a> Vytvoření brány VPN
 
@@ -252,13 +252,13 @@ Konfigurace klienta VPN umožňuje zařízením připojit se k virtuální síti
 
 ### <a name="connect-from-a-mac-vpn-client"></a>Připojení z klienta VPN Mac
 
-V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, a potom klikněte na **Připojit** .
+V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, a potom klikněte na **Připojit**.
 
   ![Připojení v systému Mac](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
 ## <a name="to-verify-your-connection"></a><a name="verify"></a>Ověření stavu připojení
 
-1. Chcete-li ověřit, zda je připojení VPN aktivní, v příkazovém řádku se zvýšenými oprávněními spusťte příkaz *ipconfig/all* .
+1. Chcete-li ověřit, zda je připojení VPN aktivní, v příkazovém řádku se zvýšenými oprávněními spusťte příkaz *ipconfig/all*.
 2. Zkontrolujte výsledky. Všimněte si, že IP adresa, kterou jste obdrželi, je jedna z adres z fondu adres klienta VPN připojení Point-to-Site, který jste určili během konfigurace. Výsledky jsou podobné tomuto příkladu:
 
    ```
@@ -292,4 +292,4 @@ Tyto nejčastější dotazy platí pro P2S pomocí ověřování RADIUS.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/). Bližší informace o sítích a virtuálních počítačích najdete v tématu s [přehledem sítě virtuálních počítačů s Linuxem v Azure](../virtual-machines/linux/azure-vm-network-overview.md).
+Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](../index.yml). Bližší informace o sítích a virtuálních počítačích najdete v tématu s [přehledem sítě virtuálních počítačů s Linuxem v Azure](../virtual-machines/network-overview.md).

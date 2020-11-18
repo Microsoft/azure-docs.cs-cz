@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 548393353d38082c175cde20eef1e93017cdd31a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: eef78ffefe8fe13e6f160e38a05405a80d6e46f8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94639205"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660946"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop RDP ShortPath (Preview)
 
@@ -112,7 +112,7 @@ Pokud chcete povolit příchozí síťový provoz pro ShortPath protokolu RDP, p
 2. V navigačním podokně vyberte **příchozí pravidla**.
 3. Vyberte **akci** a pak vyberte **nové pravidlo**.
 4. Na stránce **Typ pravidla** v Průvodci vytvořením nového příchozího pravidla vyberte možnost **vlastní** a poté vyberte možnost **Další**.
-5. Na stránce **program** vyberte možnost **cesta k programu** , zadejte příkaz% systemroot% \system32\svchost.exe a pak vyberte možnost **Další**.
+5. Na stránce **program** vyberte možnost **cesta k programu**, zadejte příkaz% systemroot% \system32\svchost.exe a pak vyberte možnost **Další**.
 6. Na stránce **protokol a porty** vyberte typ protokolu UDP. V **místním portu** vyberte konkrétní porty a zadejte 3390.
 7. Na stránce **Obor** můžete specifikovat, že pravidlo platí jen pro síťový provoz na IP adresy nebo z IP adres uvedených na této stránce. Nakonfigurujte podle potřeby návrh a pak vyberte **Další**.
 8. Na stránce **Akce** vyberte možnost **Povolení připojení** a pak vyberte možnost **Další**.
@@ -151,6 +151,7 @@ Pomocí [dokumentace skupiny zabezpečení sítě](../virtual-machines/windows/n
 
 * **Zdroj**  -  **Libovolný** rozsah IP adres, ve kterém se klienti nacházejí
 * **Zdrojové rozsahy portů** – * *\** _ _ **cíl**  -  **Any**
+* **Rozsahy**  -  cílových portů **3390**
 * **Protokol**  -  **Protokol UDP**
 * **Akce**  -  **Povolení**
 * Volitelně můžete změnit **prioritu**. Priorita má vliv na pořadí, ve kterém jsou použita pravidla: čím nižší je číselná hodnota, použije se předchozí pravidlo.
@@ -245,6 +246,11 @@ Pokud chcete zakázat ShortPath RDP pro konkrétního hostitele relace, můžete
 1. Na hostiteli relace spusťte **gpedit. msc**.
 2. Přejděte na **Konfigurace počítače > šablony pro správu > součásti systému Windows > > služby Vzdálená plocha připojení ke vzdálené ploše připojení k hostiteli >**.
 3. Nastavte nastavení **"Vyberte přenosové protokoly RDP"** **jenom na TCP** .
+
+## <a name="feedback"></a>Váš názor
+
+Rádi bychom od vás slyšeli o vašich zkušenostech s touto verzí Public Preview!
+* Pro otázky, požadavky, komentáře a další zpětnou vazbu [použijte tento formulář zpětné vazby](https://aka.ms/RDPShortpathFeedback).
 
 ## <a name="next-steps"></a>Další kroky
 

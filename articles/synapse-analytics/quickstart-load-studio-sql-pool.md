@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 05/06/2020
+ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2a4740699d70601591645aa0d3183531a6687be6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3b32e7a1df0dbbf4d43a73f1e3e409a904ab88a3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324931"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660079"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Rychlý Start: hromadné načítání pomocí synapse SQL
 
@@ -26,7 +26,7 @@ Teď můžete snadno hromadně načítat data pomocí vyhrazených fondů SQL, a
 
 - Soubor nebo složka z účtu služby Azure Storage připojeného k vašemu pracovnímu prostoru ![ kliknutím pravým tlačítkem myši na soubor nebo složku z účtu úložiště](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Tento průvodce vygeneruje příkaz COPY, který používá předávací službu Azure AD pro ověřování. Váš [uživatel Azure AD musí mít přístup](
 ./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md#d-azure-active-directory-authentication) k pracovnímu prostoru, který má aspoň roli Azure data BLOB úložiště pro účet adls Gen2. 
@@ -39,7 +39,8 @@ Teď můžete snadno hromadně načítat data pomocí vyhrazených fondů SQL, a
 
 ### <a name="steps"></a>Postup
 
-1. Z panelu umístění zdrojového úložiště vyberte účet úložiště a soubor nebo složku, které nahráváte: ![ Výběr zdrojového umístění.](./sql/media/bulk-load/bulk-load-source-location.png)
+1. V panelu umístění úložiště zdroje vyberte účet úložiště a soubor nebo složku, které nahráváte. Průvodce se automaticky pokusí zjistit soubory Parquet. Pokud se typ souboru Parquet nedá potvrdit, použije se ve výchozím nastavení text s oddělovači (CSV). 
+   ![Výběr zdrojového umístění](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. Vyberte nastavení formátu souboru včetně účtu úložiště, do kterého chcete zapsat odmítnuté řádky (soubor s chybou). V současné době jsou podporovány pouze soubory CSV a Parquet.
 
@@ -47,9 +48,14 @@ Teď můžete snadno hromadně načítat data pomocí vyhrazených fondů SQL, a
 
 3. Můžete vybrat možnost Ukázková data, abyste viděli, jak příkaz COPY analyzuje soubor, abyste mohli nakonfigurovat nastavení formátu souboru. Vyberte možnost Ukázková data pokaždé, když změníte nastavení formátu souboru, abyste viděli, jak příkaz COPY bude analyzovat soubor s aktualizovaným nastavením: ![ Náhled dat](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
+> [!NOTE]  
+>
+> - V Průvodci hromadnou zátěží není podporováno zobrazení náhledu dat pomocí koncových znaků polí s více znaky. Průvodce hromadnou zátěží zobrazí náhled dat v jednom sloupci, pokud je zadán ukončovací znak pole s více znaky. 
+> - V příkazu COPY se podporuje zadání zakončení řádků s více znaky. v průvodci hromadným zatížením to však není podporováno, pokud bude vyvolána chyba.
+
 4. Vyberte vyhrazený fond SQL, který používáte k načtení, včetně toho, jestli bude zatížení pro existující tabulku nebo novou tabulku: ![ Výběr cílového umístění.](./sql/media/bulk-load/bulk-load-target-location.png)
 
-5. Vyberte konfigurovat mapování sloupce a ujistěte se, že máte vhodné mapování sloupce. Pro nové tabulky je konfigurace mapování sloupce kritická pro aktualizaci datových typů cílového sloupce: ![ Konfigurace mapování sloupce](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. Vyberte konfigurovat mapování sloupce a ujistěte se, že máte vhodné mapování sloupce. Pokud je povolená možnost "odvodit názvy sloupců", názvy sloupců poznámky se automaticky zjistí. Pro nové tabulky je konfigurace mapování sloupce kritická pro aktualizaci datových typů cílového sloupce: ![ Konfigurace mapování sloupce](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
 
 6. Vyberte otevřít skript a skript T-SQL se vygeneruje příkazem COPY, který se má načíst ze služby Data Lake: ![ otevření skriptu SQL.](./sql/media/bulk-load/bulk-load-target-final-script.png)
 

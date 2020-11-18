@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: b33f3e58f82d52e77437c29f7e5219926b2578c3
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 21e0cfd56a37304d1ec333f8713894504282541f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106973"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660657"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý start: Zprovoznění služby Azure Sentinel
 
@@ -32,7 +32,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
 - Aktivní předplatné Azure, pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-- Log Analytics pracovní prostor. Naučte se, jak [vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md). Další informace o Log Analytics pracovních prostorech najdete v tématu [navrhování Azure Monitorch protokolů nasazení](../azure-monitor/platform/design-logs-deployment.md).
+- Log Analytics pracovní prostor. Naučte se, jak [vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md). Další informace o Log Analytics pracovních prostorech najdete v tématu [navrhování Azure Monitorch protokolů nasazení](../azure-monitor/platform/design-logs-deployment.md).
 
 - Pokud chcete povolit Azure Sentinel, potřebujete oprávnění přispěvatele k předplatnému, ve kterém se nachází pracovní prostor Azure Sentinel. 
 - Pokud chcete použít Azure Sentinel, potřebujete oprávnění Přispěvatel nebo čtenář ve skupině prostředků, do které pracovní prostor patří.
@@ -57,13 +57,13 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
 ## <a name="enable-azure-sentinel"></a>Povolit službu Azure Sentinel <a name="enable"></a>
 
-1. Přihlaste se k portálu Azure. Ujistěte se, že je zaškrtnuté políčko předplatné, ve kterém je Azure Sentinel vytvořeno.
+1. Přihlaste se k webu Azure Portal. Ujistěte se, že je zaškrtnuté políčko předplatné, ve kterém je Azure Sentinel vytvořeno.
 
 1. Vyhledejte a vyberte **Azure Sentinel**.
 
    ![Hledání služeb](./media/quickstart-onboard/search-product.png)
 
-1. Vyberte **Přidat**.
+1. Vyberte možnost **Přidat**.
 
 1. Vyberte pracovní prostor, který chcete použít, nebo vytvořte nový. Službu Azure Sentinel můžete spustit ve více než jednom pracovním prostoru, ale data jsou izolovaná do jednoho pracovního prostoru.
 

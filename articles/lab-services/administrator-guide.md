@@ -3,12 +3,12 @@ title: Azure Lab Services – příručka pro správce | Microsoft Docs
 description: Tato příručka pomáhá správcům, kteří vytvářejí a spravují účty testovacího prostředí pomocí Azure Lab Services.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 8670a9d56575dbfb6d3e565ec97191581dc612a8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b1fadc58926b00c75ab888dad86e45b181059a38
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491031"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659841"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – příručka pro správce
 Správcům informačních technologií (IT), kteří spravují cloudové prostředky vysoké školy, se obvykle zodpovídá za nastavení účtu testovacího prostředí pro svou školu. Po nastavení účtu testovacího prostředí můžou správci nebo pedagogy vytvářet laboratoře, které jsou obsažené v rámci účtu testovacího prostředí. Tento článek poskytuje podrobný přehled o prostředcích Azure a pokyny pro jejich vytváření.
@@ -19,7 +19,7 @@ Správcům informačních technologií (IT), kteří spravují cloudové prostř
 - Účty testovacího prostředí, Galerie sdílených imagí a verze imagí se hostují v rámci vašeho předplatného.
 - Můžete mít účet testovacího prostředí a galerii sdílených imagí ve stejné skupině prostředků. V tomto diagramu jsou v různých skupinách prostředků.
 
-Pokud chcete získat další informace o architektuře, přečtěte si článek [Základy architektury Labs](https://docs.microsoft.com/azure/lab-services/classroom-labs-fundamentals) .
+Pokud chcete získat další informace o architektuře, přečtěte si článek [Základy architektury Labs](./classroom-labs-fundamentals.md) .
 
 ## <a name="subscription"></a>Předplatné
 Vaše univerzita má jedno nebo několik předplatných Azure. Předplatné se používá ke správě fakturace a zabezpečení pro všechny služby Azure resources\services, které se v ní používají, včetně účtů testovacího prostředí.
@@ -58,7 +58,7 @@ Následující seznam popisuje scénáře, ve kterých může být výhodné ví
 
 - **Oddělit rozpočet podle účtu testovacího prostředí**
   
-    Místo vykazování všech nákladů testovacího prostředí prostřednictvím jednoho účtu testovacího prostředí budete možná potřebovat více jasně odděleného rozpočtu. Můžete například vytvořit účty testovacího prostředí pro oddělení IT, počítačové vědy a tak dále, abyste mohli rozdělit rozpočet mezi jednotlivá oddělení.  Náklady na jednotlivé účty testovacího prostředí pak můžete zobrazit pomocí [Azure cost management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview).
+    Místo vykazování všech nákladů testovacího prostředí prostřednictvím jednoho účtu testovacího prostředí budete možná potřebovat více jasně odděleného rozpočtu. Můžete například vytvořit účty testovacího prostředí pro oddělení IT, počítačové vědy a tak dále, abyste mohli rozdělit rozpočet mezi jednotlivá oddělení.  Náklady na jednotlivé účty testovacího prostředí pak můžete zobrazit pomocí [Azure cost management](../cost-management-billing/cost-management-billing-overview.md).
 
 - **Izolace pilotních cvičení z active\production Labs**
   
@@ -141,18 +141,18 @@ Umístění, v němž existuje testovací prostředí, se liší v závislosti n
 
   - **Účet testovacího prostředí je partnerský vztah k virtuální síti (VNet)**
   
-    Účet testovacího prostředí může mít [partnerský vztah s virtuální](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) sítí, pokud jsou ve stejné oblasti.  Když je účet testovacího prostředí v partnerském vztahu s virtuální sítí, laboratoře se automaticky vytvoří ve stejné oblasti jako účet testovacího prostředí i virtuální síť.
+    Účet testovacího prostředí může mít [partnerský vztah s virtuální](./how-to-connect-peer-virtual-network.md) sítí, pokud jsou ve stejné oblasti.  Když je účet testovacího prostředí v partnerském vztahu s virtuální sítí, laboratoře se automaticky vytvoří ve stejné oblasti jako účet testovacího prostředí i virtuální síť.
 
     > [!NOTE]
-    > Když je účet testovacího prostředí v partnerském vztahu s virtuální sítí, nastavení, které **Povolí autorovi testovacího prostředí vybrat umístění testovacího prostředí** , je zakázané. Další informace o tomto nastavení najdete v článku: [Povolení programu Lab Creator pro výběr umístění pro testovací prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location).
+    > Když je účet testovacího prostředí v partnerském vztahu s virtuální sítí, nastavení, které **Povolí autorovi testovacího prostředí vybrat umístění testovacího prostředí** , je zakázané. Další informace o tomto nastavení najdete v článku: [Povolení programu Lab Creator pro výběr umístění pro testovací prostředí](./allow-lab-creator-pick-lab-location.md).
     
-  - * * Žádná virtuální síť nemá partnerské vztahy * *_a_* _ tvůrci testovacího prostředí nemůžou vybírat testovací prostředí location_ *.
+  - * * Žádná virtuální síť nemá partnerské vztahy **_a_* _ tvůrci testovacího prostředí nemůžou vybírat testovací prostředí location_ *.
   
-    Pokud není k dispozici **žádná** síť VNet s partnerským vztahem k účtu testovacího prostředí *a* [tvůrci testovacího prostředí nemůžou vybrat umístění testovacího prostředí **not**](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), laboratoře se automaticky vytvoří v oblasti, která má dostupnou kapacitu virtuálního počítače.  Konkrétně Azure Lab Services vyhledá dostupnost v [oblastech, které se nacházejí ve stejné zeměpisné oblasti jako účet testovacího prostředí](https://azure.microsoft.com/global-infrastructure/regions).
+    Pokud není k dispozici **žádná** síť VNet s partnerským vztahem k účtu testovacího prostředí *a* [tvůrci testovacího prostředí nemůžou vybrat umístění testovacího prostředí **not**](./allow-lab-creator-pick-lab-location.md), laboratoře se automaticky vytvoří v oblasti, která má dostupnou kapacitu virtuálního počítače.  Konkrétně Azure Lab Services vyhledá dostupnost v [oblastech, které se nacházejí ve stejné zeměpisné oblasti jako účet testovacího prostředí](https://azure.microsoft.com/global-infrastructure/regions).
 
-  - * * Žádná virtuální síť není partnerským vztahem * *_a_* _ nemohou vybrat testovacího prostředí, location_ *
+  - * * Žádná virtuální síť není partnerským vztahem **_a_* _ nemohou vybrat testovacího prostředí, location_ *
        
-    Když není k dispozici **žádný** partnerský vztah virtuálních sítí a [tvůrci testovacího prostředí můžou vybrat umístění testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), budou umístění, která se dají vybrat v programu Lab Creator, vycházet z dostupné kapacity.
+    Když není k dispozici **žádný** partnerský vztah virtuálních sítí a [tvůrci testovacího prostředí můžou vybrat umístění testovacího prostředí](./allow-lab-creator-pick-lab-location.md), budou umístění, která se dají vybrat v programu Lab Creator, vycházet z dostupné kapacity.
 
 > [!NOTE]
 > Aby bylo zajištěno, že je pro oblast dostatečná kapacita virtuálních počítačů, je důležité, abyste si nejdřív vyžádali kapacitu prostřednictvím účtu testovacího prostředí nebo při vytváření testovacího prostředí.
@@ -169,18 +169,18 @@ Když správci nebo tvůrci testovacího prostředí vytvoří testovací prost�
 
 | Velikost | Specifikace | Řada | Navrhované použití |
 | ---- | ----- | ------ | ------------- |
-| Malá| <ul><li>2 jádra</li><li>3,5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost je nejvhodnější pro příkazový řádek, otevírá webový prohlížeč, webové servery s nízkým provozem, malé až střední databáze. |
-| Střední | <ul><li>4 jádra</li><li>7 GB PAMĚTI RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. |
-| Střední (vnořená virtualizace) | <ul><li>4 jádra</li><li>16 GB PAMĚTI RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy.
-| Velká | <ul><li>8 jader</li><li>16 GB PAMĚTI RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti.  Tato velikost také podporuje vnořenou virtualizaci. |
-| Velký (vnořená virtualizace) | <ul><li>8 jader</li><li>32 GB paměti RAM</li></ul>  | [Standard_D8s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti. |
-| Malý grafický procesor (vizualizace) | <ul><li>6 jader</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. |
-| Malý grafický procesor (COMPUTE) | <ul><li>6 jader</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Tato velikost nejlépe vyhovuje aplikacím náročným na počítač, jako je umělá a obsáhlá výuka. |
-| Střední GPU (vizualizace) | <ul><li>12 jader</li><li>112 GB RAM</li></ul>  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. |
+| Malá| <ul><li>2 jádra</li><li>3,5 GB RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Tato velikost je nejvhodnější pro příkazový řádek, otevírá webový prohlížeč, webové servery s nízkým provozem, malé až střední databáze. |
+| Střední | <ul><li>4 jádra</li><li>7 GB PAMĚTI RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. |
+| Střední (vnořená virtualizace) | <ul><li>4 jádra</li><li>16 GB PAMĚTI RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy.
+| Velká | <ul><li>8 jader</li><li>16 GB PAMĚTI RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti.  Tato velikost také podporuje vnořenou virtualizaci. |
+| Velký (vnořená virtualizace) | <ul><li>8 jader</li><li>32 GB paměti RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti. |
+| Malý grafický procesor (vizualizace) | <ul><li>6 jader</li><li>56 GB RAM</li>  | [Standard_NV6](../virtual-machines/nv-series.md) | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. |
+| Malý grafický procesor (COMPUTE) | <ul><li>6 jader</li><li>56 GB RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md) |Tato velikost nejlépe vyhovuje aplikacím náročným na počítač, jako je umělá a obsáhlá výuka. |
+| Střední GPU (vizualizace) | <ul><li>12 jader</li><li>112 GB RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. |
 
 ## <a name="manage-identity"></a>Správa identity
 
-Pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)se dají přiřadit následující role, které umožní přístup k účtům testovacího prostředí a Labs:
+Pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md)se dají přiřadit následující role, které umožní přístup k účtům testovacího prostředí a Labs:
 
 - **Vlastník účtu testovacího prostředí**
 
@@ -200,7 +200,7 @@ Pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](https://do
 
 - **Tvůrce testovacího prostředí**
 
-    Aby bylo možné vytvořit Labs v rámci účtu testovacího prostředí, musí být Educator členem role **testovacího prostředí** .  Když Educator vytvoří testovací prostředí, automaticky se přidá jako vlastník testovacího prostředí.  Informace o tom, jak [Přidat uživatele do role **testovacího prostředí**](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role), najdete v kurzu. 
+    Aby bylo možné vytvořit Labs v rámci účtu testovacího prostředí, musí být Educator členem role **testovacího prostředí** .  Když Educator vytvoří testovací prostředí, automaticky se přidá jako vlastník testovacího prostředí.  Informace o tom, jak [Přidat uživatele do role **testovacího prostředí**](./tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role), najdete v kurzu. 
 
 - **Testovací owner\contributor**
   
@@ -217,7 +217,7 @@ Pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](https://do
 Tady je několik tipů, které vám pomůžou s přiřazováním rolí:
    - Obvykle by měly být členy role **vlastníka** nebo **přispěvatele** účtu testovacího prostředí. můžete mít více než jeden owner\contributor..
    - Aby Educator mohli vytvářet nové laboratoře a spravovat laboratoře, které vytvořili, musíte přiřadit přístup pouze k roli **Tvůrce testovacího prostředí** .
-   - Aby Educator schopnost spravovat konkrétní cvičení, ale *ne* možnost vytvářet nové laboratoře; pro každou z cvičení, která budou spravována, byste měli udělit přístup buď k roli **vlastníka** , nebo k roli **přispěvatele** .  Můžete například chtít, aby profesor i Pomocník pro vzdělávání spoluvlastní testovací prostředí.  Informace o tom, jak [Přidat uživatele jako vlastníka do testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner), najdete v příručce.
+   - Aby Educator schopnost spravovat konkrétní cvičení, ale *ne* možnost vytvářet nové laboratoře; pro každou z cvičení, která budou spravována, byste měli udělit přístup buď k roli **vlastníka** , nebo k roli **přispěvatele** .  Můžete například chtít, aby profesor i Pomocník pro vzdělávání spoluvlastní testovací prostředí.  Informace o tom, jak [Přidat uživatele jako vlastníka do testovacího prostředí](./how-to-add-user-lab-owner.md), najdete v příručce.
 
 ## <a name="pricing"></a>Ceny
 
@@ -274,4 +274,3 @@ Další kroky běžné pro nastavení testovacího prostředí.
 - [Průvodce nastavením testovacího prostředí](setup-guide.md)
 - [Správa nákladů pro testovací prostředí](cost-management-guide.md)
 - [Používání Azure Lab Services v rámci týmů](lab-services-within-teams-overview.md)
-

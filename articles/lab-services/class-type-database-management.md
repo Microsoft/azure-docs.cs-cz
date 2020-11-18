@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 49f1528f1bb8b422374050512a9ae642ad129fac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bed43e586beff890f0aa8947140ae7d8e50439f3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85444008"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659824"
 ---
 # <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Nastavení testovacího prostředí pro správu databází pro relační databáze
 
@@ -20,15 +20,15 @@ V tomto článku ukážeme, jak nastavit šablonu virtuálního počítače v te
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).  Můžete použít i existující účet testovacího prostředí.
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete. Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).  Můžete použít i existující účet testovacího prostředí.
 
 ### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
 
-Pro účet testovacího prostředí povolte nastavení popsaná v následující tabulce. Další informace o tom, jak povolit image Marketplace, najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
+Pro účet testovacího prostředí povolte nastavení popsaná v následující tabulce. Další informace o tom, jak povolit image Marketplace, najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](./specify-marketplace-images.md).
 
 | Nastavení účtu testovacího prostředí | Pokyny |
 | ------------------- | ------------ |
-|Obrázek Marketplace| Pro použití v rámci vašeho účtu testovacího prostředí povolte image SQL Server 2019 Standard na Windows serveru 2019.|
+|Image z Marketplace| Pro použití v rámci vašeho účtu testovacího prostředí povolte image SQL Server 2019 Standard na Windows serveru 2019.|
 
 ### <a name="lab-settings"></a>Nastavení testovacího prostředí
 
@@ -41,7 +41,7 @@ Při nastavování testovacího prostředí učebny použijte nastavení v násl
 
 ## <a name="template-machine-configuration"></a>Konfigurace počítače šablony
 
-Pokud chcete nainstalovat MySQL na Windows Server 2019, můžete postupovat podle kroků uvedených v části [instalace a spuštění MySQL Community serveru na virtuálním počítači](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine).
+Pokud chcete nainstalovat MySQL na Windows Server 2019, můžete postupovat podle kroků uvedených v části [instalace a spuštění MySQL Community serveru na virtuálním počítači](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%252fazure%252fvirtual-machines%252fwindows%252fclassic%252ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine).
 
 V imagi virtuálního počítače, kterou jsme při vytváření nového testovacího prostředí zvolili, je předinstalovaná SQL Server 2019.
 

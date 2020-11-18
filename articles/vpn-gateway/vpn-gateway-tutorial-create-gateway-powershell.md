@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 91004b9cb545275746f75dbd6ad46981fe4b04d5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b70a3fe4884ef209e57fbb954c27aa83486b5c98
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461154"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660997"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Kurz: vytvoření a Správa služby VPN Gateway pomocí PowerShellu
 
@@ -133,7 +133,7 @@ Po dokončení vytváření brány můžete vytvořit propojení mezi vaší vir
 
 ## <a name="view-the-gateway-public-ip-address"></a>Zobrazení veřejné IP adresy brány
 
-Pokud znáte název veřejné IP adresy, použijte [příkaz Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) k zobrazení veřejné IP adresy přiřazené k bráně.
+Pokud znáte název veřejné IP adresy, použijte [příkaz Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) k zobrazení veřejné IP adresy přiřazené k bráně.
 
 Pokud vypršel časový limit relace, zkopírujte do nové relace společné síťové parametry od začátku tohoto kurzu a pokračujte a pokračujte.
 
@@ -162,11 +162,11 @@ $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 ```
 
-Další informace najdete v tématu [Resetování brány VPN](vpn-gateway-resetgw-classic.md).
+Další informace najdete v tématu [Resetování brány VPN](./reset-gateway.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud se chystáte o [Další kurz](vpn-gateway-tutorial-vpnconnection-powershell.md), budete chtít tyto prostředky zachovat, protože se jedná o požadavky.
+Pokud se chystáte o [Další kurz](./vpn-gateway-create-site-to-site-rm-powershell.md), budete chtít tyto prostředky zachovat, protože se jedná o požadavky.
 
 Pokud je ale brána součástí nasazení prototypu, testu nebo testování konceptu, můžete k odebrání skupiny prostředků, brány VPN a všech souvisejících prostředků použít příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) .
 

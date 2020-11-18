@@ -4,15 +4,15 @@ description: Řešení známých problémů s výkonem u sdílených složek Azu
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 09/15/2020
+ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 3e6490babb5a4e68c1ecd931251ea4eb99d6c3f5
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 6e4eb37477a335ae93b9982692c238d05c81000b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630137"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660283"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Řešení potíží s výkonem Azure File shares
 
@@ -35,8 +35,8 @@ Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete na po
 1. Jako metriku vyberte **transakce** .
 
 1. Přidejte filtr pro **typ odpovědi** a potom zkontrolujte, zda nějaké požadavky obsahují některý z následujících kódů odpovědí:
-   * **SuccessWithThrottling** : pro protokol SMB (Server Message Block)
-   * **ClientThrottlingError** : pro REST
+   * **SuccessWithThrottling**: pro protokol SMB (Server Message Block)
+   * **ClientThrottlingError**: pro REST
 
    ![Snímek obrazovky s možnostmi metriky pro sdílené složky úrovně Premium, která zobrazuje filtr vlastností "typ odpovědi".](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -83,10 +83,11 @@ Klientský virtuální počítač (VM) se může nacházet v jiné oblasti než 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Klientovi se nepovedlo dosáhnout maximální propustnosti, kterou síť podporuje.
 
 ### <a name="cause"></a>Příčina
-Jednou z možných příčin je nedostatečná podpora více kanálů SMB. Soubory Azure v současné době podporují jenom jeden kanál, takže existuje jenom jedno připojení z virtuálního počítače klienta k serveru. Toto jediné připojení je v klientském počítači klienta připojeno k jednomu jádru, takže maximální propustnost, kterou je možné z virtuálního počítače dosáhnout, je svázána s jedním jádrem.
+Jednou z možných příčin je nedostatečná podpora více kanálů pro standardní sdílení souborů v protokolu SMB. Soubory Azure v současné době podporují jenom jeden kanál, takže existuje jenom jedno připojení z virtuálního počítače klienta k serveru. Toto jediné připojení je v klientském počítači klienta připojeno k jednomu jádru, takže maximální propustnost, kterou je možné z virtuálního počítače dosáhnout, je svázána s jedním jádrem.
 
 ### <a name="workaround"></a>Alternativní řešení
 
+- V případě sdílených složek úrovně Premium [Povolte v účtu úložiště souborů možnost pro vícekanálový protokol SMB](storage-files-enable-smb-multichannel.md).
 - Získání virtuálního počítače s větším jádrem může pomoci zlepšit propustnost.
 - Při spuštění klientské aplikace z více virtuálních počítačů se zvýší propustnost.
 - Pokud je to možné, použijte rozhraní REST API.
@@ -170,18 +171,65 @@ Vyšší než očekávaná latence přístupu ke sdíleným složkám Azure pro 
 
 - Nainstalujte dostupnou [opravu hotfix](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1).
 
+## <a name="smb-multichannel-option-not-visible-under-file-share-settings"></a>Vícekanálový parametr SMB není zobrazený v nastavení sdílené složky. 
+
+### <a name="cause"></a>Příčina
+
+Buď není předplatné u této funkce zaregistrované, nebo oblast a typ účtu se nepodporují.
+
+### <a name="solution"></a>Řešení
+
+Ujistěte se, že vaše předplatné je zaregistrované ve službě SMB vícekanálových funkcí. V tématu [Začínáme](storage-files-enable-smb-multichannel.md#getting-started) se ujistěte, že druh účtu je Storage (Premium File Account) na stránce Přehled účtu. 
+
+## <a name="smb-multichannel-is-not-being-triggered"></a>Neaktivuje se funkce SMB vícekanálový.
+
+### <a name="cause"></a>Příčina
+
+Nedávné změny v nastaveních vícekanálové konfigurace protokolu SMB bez opětovného připojení.
+
+### <a name="solution"></a>Řešení
+ 
+-   Po jakýchkoli změnách nastavení konfigurace vícekanálového protokolu SMB klienta nebo účtu Windows SMB musíte odpojit sdílenou složku, počkat na 60 sekund a znovu připojit sdílenou složku, aby se spustila vícekanálový.
+-   Pro klientské operační systémy Windows vygenerujte vstupně-výstupní operace s vysokou hloubkou fronty vyslovením hloubka fronty = 8, například zkopírováním souboru můžete aktivovat protokol SMB vícekanálový.  U serverového operačního systému se s protokolem SMB vícekanálový spouští hloubka fronty = 1, což znamená, že se po spuštění jakékoli vstupně-výstupní operace ke sdílené položce spustí.
+
+## <a name="high-latency-on-web-sites-hosted-on-file-shares"></a>Vysoká latence u webů hostovaných ve sdílených složkách 
+
+### <a name="cause"></a>Příčina  
+
+Vysoké číslo oznámení změny souborů u sdílených složek může způsobit výrazné vysoké latence. K tomu obvykle dochází u webů hostovaných ve sdílených složkách s hlubokou vnořenou strukturou adresářů. Typickým scénářem je webová aplikace hostovaná službou IIS, kde je pro každý adresář ve výchozí konfiguraci nastaveno oznámení o změně souboru. Každá změna (ReadDirectoryChangesW) ve sdílené složce, která je klientem SMB registrována pro vložení oznámení o změně ze souborové služby do klienta, který přebírá systémové prostředky, a vystavuje zhoršený počet změn. To může způsobit omezení sdílení a proto má za následek vyšší latenci na straně klienta. 
+
+K potvrzení můžete použít metriky Azure na portálu – 
+
+1. V Azure Portal přejít na účet úložiště. 
+1. V nabídce vlevo v části monitorování vyberte metriky. 
+1. Jako obor názvů metriky pro rozsah svého účtu úložiště vyberte soubor. 
+1. Jako metriku vyberte transakce. 
+1. Přidejte filtr pro ResponseType a zkontrolujte, zda nějaké požadavky obsahují kód odpovědi SuccessWithThrottling (pro protokol SMB) nebo ClientThrottlingError (pro REST).
+
+### <a name="solution"></a>Řešení 
+
+- Pokud není použito oznámení o změně souboru, zakažte oznámení o změně souboru (upřednostňovaná).
+    - [Zakažte upozornění na změnu souboru](https://support.microsoft.com/help/911272/fix-asp-net-2-0-connected-applications-on-a-web-site-may-appear-to-sto) aktualizací FCNMode. 
+    - Aktualizujte interval dotazování pracovního procesu služby IIS (W3WP) na hodnotu 0 nastavením `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` v registru a restartujte proces W3wp. Další informace o tomto nastavení najdete v tématu [běžné klíče registru, které používá mnoho částí služby IIS](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp).
+- Zvýšit frekvenci intervalu dotazování na změnu souboru pro snížení objemu.
+    - Aktualizujte interval dotazování pracovního procesu W3WP na vyšší hodnotu (např. 10mins nebo 30mins) podle vašeho požadavku. Nastavte `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` [v registru](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp) a restartujte proces W3wp.
+- Pokud má váš web namapovaný fyzický adresář adresářové struktury, můžete zkusit omezit rozsah oznámení o změně souboru, aby se snížil objem oznámení.
+    - Služba IIS ve výchozím nastavení používá konfiguraci z Web.config souborů ve fyzickém adresáři, ke kterému je virtuální adresář namapován, a také v všech podřízených adresářích v tomto fyzickém adresáři. Pokud nechcete používat Web.config soubory v podřízených adresářích, zadejte pro atribut nastaveno allowsubdirconfig ve virtuálním adresáři hodnotu false. Další podrobnosti najdete [tady](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories). 
+
+Nastavením možnosti virtuální adresář služby IIS "nastaveno allowsubdirconfig" v Web.Config na hodnotu false pro vyloučení mapovaných fyzických podřízených adresářů z oboru.  
+
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Postup vytvoření výstrahy, pokud je sdílená složka omezená
 
 1. V Azure Portal přejít na účet úložiště.
 1. V části **monitorování** vyberte **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
-1. Vyberte **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a potom vyberte **Hotovo**. Pokud je třeba název účtu úložiště *Contoso* , vyberte prostředek contoso/File.
+1. Vyberte **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a potom vyberte **Hotovo**. Pokud je třeba název účtu úložiště *Contoso*, vyberte prostředek contoso/File.
 1. Vyberte **možnost vybrat podmínku** a přidejte podmínku.
 1. V seznamu signálů, které jsou podporované pro účet úložiště, vyberte metriku **transakcí** .
 1. V podokně **Konfigurovat logiku signálu** v rozevíracím seznamu **název dimenze** vyberte **typ odpovědi**.
 1. V rozevíracím seznamu **hodnoty dimenze** vyberte **SUCCESSWITHTHROTTLING** (pro SMB) nebo **ClientThrottlingError** (pro REST).
 
    > [!NOTE]
-   > Pokud není uvedena hodnota dimenze **SuccessWithThrottling** ani **ClientThrottlingError** , znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnotu dimenze, klikněte vedle rozevíracího seznamu **hodnoty dimenze** na **Přidat vlastní hodnotu** , zadejte **SuccessWithThrottling** nebo **ClientThrottlingError** , vyberte **OK** a pak opakujte krok 7.
+   > Pokud není uvedena hodnota dimenze **SuccessWithThrottling** ani **ClientThrottlingError** , znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnotu dimenze, klikněte vedle rozevíracího seznamu **hodnoty dimenze** na **Přidat vlastní hodnotu**, zadejte **SuccessWithThrottling** nebo **ClientThrottlingError**, vyberte **OK** a pak opakujte krok 7.
 
 1. V rozevíracím seznamu **název dimenze** vyberte **sdílení souborů**.
 1. V rozevíracím seznamu **hodnoty dimenze** vyberte sdílenou složku nebo sdílené složky, na kterých chcete upozornit.
@@ -189,13 +237,13 @@ Vyšší než očekávaná latence přístupu ke sdíleným složkám Azure pro 
    > [!NOTE]
    > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. V rozevíracím seznamu hodnoty dimenze není uveden seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky vázané na sdílení. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neidentifikuje, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou dostupné metriky vázané na sdílení, doporučujeme pro každý účet úložiště použít jednu sdílenou složku.
 
-1. Parametry výstrahy definujte zadáním **prahové hodnoty** , **operátoru** , **členitosti agregace** a **frekvence vyhodnocení** a potom vyberte **Hotovo**.
+1. Parametry výstrahy definujte zadáním **prahové hodnoty**, **operátoru**, **členitosti agregace** a **frekvence vyhodnocení** a potom vyberte **Hotovo**.
 
     > [!TIP]
     > Pokud používáte statickou prahovou hodnotu, graf metriky vám pomůže určit rozumnou prahovou hodnotu, pokud je sdílená složka momentálně omezená. Pokud používáte dynamickou prahovou hodnotu, graf metriky zobrazuje vypočtené prahové hodnoty na základě nejnovějších dat.
 
 1. Vyberte **možnost vybrat skupinu akcí** a potom do výstrahy přidejte skupinu akcí (například E-mail nebo SMS), a to buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-1. Zadejte podrobnosti výstrahy, jako je **název pravidla výstrahy** , **Popis** a **závažnost**.
+1. Zadejte podrobnosti výstrahy, jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
 1. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
 
 Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
@@ -204,7 +252,7 @@ Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Pře
 
 1. V Azure Portal přejít na účet úložiště.
 1. V části **monitorování** vyberte **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
-1. Vyberte **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a potom vyberte **Hotovo**. Pokud je třeba název účtu úložiště *Contoso* , vyberte prostředek contoso/File.
+1. Vyberte **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a potom vyberte **Hotovo**. Pokud je třeba název účtu úložiště *Contoso*, vyberte prostředek contoso/File.
 1. Vyberte **možnost vybrat podmínku** a přidejte podmínku.
 1. V seznamu signálů, které jsou podporované pro účet úložiště, vyberte metriku **odchozího** přenosu dat.
 
@@ -213,26 +261,26 @@ Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Pře
 
 1. Posuňte se dolů. V rozevíracím seznamu **název dimenze** vyberte **sdílení souborů**.
 1. V rozevíracím seznamu **hodnoty dimenze** vyberte sdílenou složku nebo sdílené složky, na kterých chcete upozornit.
-1. Parametry výstrahy definujte tak, že vyberete hodnoty v rozevíracích seznamech **operátor** , **prahová hodnota** , **členitost agregace** a **frekvence vyhodnocování** a pak vyberete **Hotovo**.
+1. Parametry výstrahy definujte tak, že vyberete hodnoty v rozevíracích seznamech **operátor**, **prahová hodnota**, **členitost agregace** a **frekvence vyhodnocování** a pak vyberete **Hotovo**.
 
    Metriky odchozího přenosu dat, příchozího přenosu dat a transakcí se vyjadřují za minutu, i když jste zřídili odchozí, příchozí a vstupně-výstupní operace za sekundu. Pokud máte například zřízený výstup 90 &nbsp; mebibytes za sekundu (MIB/s) a chcete, aby byla prahová hodnota 80 &nbsp; procent zřízeného odchozího přenosu, vyberte následující parametry výstrahy: 
-   - Pro **mezní hodnotu** : *75497472* 
-   - For **Operator** – operátor *větší než nebo rovno*
-   - Pro **typ agregace** : *průměr*
+   - Pro **mezní hodnotu**: *75497472* 
+   - For **Operator**– operátor *větší než nebo rovno*
+   - Pro **typ agregace**: *průměr*
    
    V závislosti na tom, jak chcete, aby vaše výstraha byla, můžete také vybrat hodnoty pro **členitost agregace** a **četnost vyhodnocení**. Pokud třeba chcete, aby se vaše výstraha zobrazila na průměrném počtu příchozích dat za dobu 1 hodiny, a chcete, aby se pravidlo upozornění spouštělo každou hodinu, vyberte následující:
-   - Pro **členitost agregace** : *1 hodina*
-   - **Frekvence hodnocení** : *1 hodina*
+   - Pro **členitost agregace**: *1 hodina*
+   - **Frekvence hodnocení**: *1 hodina*
 
 1. Vyberte **Vybrat skupinu akcí** a potom do výstrahy přidejte skupinu akcí (například E-mail nebo SMS), a to tak, že vyberete existující skupinu akcí nebo vytvoříte novou.
-1. Zadejte podrobnosti výstrahy, jako je **název pravidla výstrahy** , **Popis** a **závažnost**.
+1. Zadejte podrobnosti výstrahy, jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
 1. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
 
     > [!NOTE]
     > - Abyste byli informováni o tom, že se vaše rezerva vašich souborů na úrovni Premium blíží omezení *z důvodu zřízeného* příchozího přenosu dat, postupujte podle předchozích pokynů, ale s následující změnou:
     >    - V kroku 5 **Vyberte metriku** příchozího přenosu dat místo **odchozího** přenosu dat.
     >
-    > - Abyste byli informováni o tom, že se vaše prémiové sdílení souborů blíží omezení *vzhledem k zřízeným IOPS* , postupujte podle předchozích pokynů, ale s následujícími změnami:
+    > - Abyste byli informováni o tom, že se vaše prémiové sdílení souborů blíží omezení *vzhledem k zřízeným IOPS*, postupujte podle předchozích pokynů, ale s následujícími změnami:
     >    - V kroku 5 vyberte metriky **transakcí** místo **odchozího** přenosu dat.
     >    - V kroku 10 je jedinou možností pro **typ agregace** *Celková hodnota*. Proto prahová hodnota závisí na zvolené členitosti agregace. Například pokud chcete, aby byla prahová hodnota 80 &nbsp; procent zřízeného směrného plánu IOPS a pro **členitost** jste vybrali *1 hodinu* , bude **prahová hodnota** vaše základní iops (v bajtech) &times; &nbsp; 0,8 &times; &nbsp; 3600. 
 

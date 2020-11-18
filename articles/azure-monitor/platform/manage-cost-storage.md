@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/06/2020
+ms.date: 11/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 04c532ceb5f40e9a5b7fa5fd5b75f60182f54580
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 71a4fba177f5bbbaf9f8d991222b071d0da66d4d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427781"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660385"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -52,9 +52,9 @@ Log Analytics vyhrazené clustery jsou kolekce pracovních prostorů do jednoho 
 
 Existují dva režimy fakturace pro použití v clusteru. Tyto parametry mohou být zadány `billingType` parametrem při [konfiguraci clusteru](customer-managed-keys.md#customer-managed-key-operations). Tyto dva režimy: 
 
-1. **Cluster** : v tomto případě (což je výchozí nastavení) se fakturace pro ingestovaná data provádí na úrovni clusteru. Množství zpracovaných dat z každého pracovního prostoru přidruženého ke clusteru se agreguje za účelem výpočtu denního vyúčtování clusteru. Všimněte si, že přidělení na základě uzlů z [Azure Security Center](../../security-center/index.yml) se aplikují na úrovni pracovního prostoru před touto agregací agregovaných dat napříč všemi pracovními prostory v clusteru. 
+1. **Cluster**: v tomto případě (což je výchozí nastavení) se fakturace pro ingestovaná data provádí na úrovni clusteru. Množství zpracovaných dat z každého pracovního prostoru přidruženého ke clusteru se agreguje za účelem výpočtu denního vyúčtování clusteru. Všimněte si, že přidělení na základě uzlů z [Azure Security Center](../../security-center/index.yml) se aplikují na úrovni pracovního prostoru před touto agregací agregovaných dat napříč všemi pracovními prostory v clusteru. 
 
-2. **Pracovní prostory** : náklady na rezervaci kapacity pro váš cluster se úměrně připočítají k pracovním prostorům v clusteru (po zaúčtování pro přidělení podle uzlu z [Azure Security Center](../../security-center/index.yml) pro každý pracovní prostor.) Pokud je celkový objem dat zpracovaných v pracovním prostoru za den menší než rezervace kapacity, pak se každý pracovní prostor fakturuje za jeho ingestovaná data na základě sazby za nevyužitou kapacitu na GB tím, že je vyúčtováním zlomku kapacity rezervace a nevyužité části rezervace kapacity se účtují do prostředku clusteru. Pokud celkový objem dat, který se během dne ingestuje do pracovního prostoru, je větší než rezervace kapacity, pak se pro každý pracovní prostor účtuje zlomek kapacity na základě jeho zlomku a v každém pracovním prostoru se podílem přijatých dat nad rámec rezervace kapacity. K prostředku clusteru se nic neúčtuje, pokud je celkový objem dat ingestný do pracovního prostoru za den nad rezervací kapacity.
+2. **Pracovní prostory**: náklady na rezervaci kapacity pro váš cluster se úměrně připočítají k pracovním prostorům v clusteru (po zaúčtování pro přidělení podle uzlu z [Azure Security Center](../../security-center/index.yml) pro každý pracovní prostor.) Pokud je celkový objem dat zpracovaných v pracovním prostoru za den menší než rezervace kapacity, pak se každý pracovní prostor fakturuje za jeho ingestovaná data na základě sazby za nevyužitou kapacitu na GB tím, že je vyúčtováním zlomku kapacity rezervace a nevyužité části rezervace kapacity se účtují do prostředku clusteru. Pokud celkový objem dat, který se během dne ingestuje do pracovního prostoru, je větší než rezervace kapacity, pak se pro každý pracovní prostor účtuje zlomek kapacity na základě jeho zlomku a v každém pracovním prostoru se podílem přijatých dat nad rámec rezervace kapacity. K prostředku clusteru se nic neúčtuje, pokud je celkový objem dat ingestný do pracovního prostoru za den nad rezervací kapacity.
 
 V možnostech fakturace clusteru se uchovávání dat účtuje podle pracovního prostoru. Všimněte si, že při vytváření clusteru začíná fakturace clusteru bez ohledu na to, jestli byly pracovní prostory přidružené ke clusteru. Všimněte si také, že pracovní prostory přidružené k clusteru už nemají cenovou úroveň.
 
@@ -98,7 +98,7 @@ Pokud chcete změnit Log Analytics cenové úrovně vašeho pracovního prostoru
 
 ## <a name="legacy-pricing-tiers"></a>Starší cenové úrovně
 
-Předplatná, která měl Log Analytics pracovní prostor nebo prostředek Application Insights před 2. dubna 2018 nebo jsou propojená s smlouva Enterprise, která začala před 1. února 2019, bude i nadále mít přístup k používání starších cenových úrovní: **Free** , **Standalone (za GB)** a **per Node (OMS)**.  Pracovní prostory v bezplatné cenové úrovni budou mít denní příjem dat omezený na 500 MB (kromě datových typů zabezpečení shromažďovaných v [Azure Security Center](../../security-center/index.yml)) a uchovávání dat je omezeno na 7 dní. Cenová úroveň Free je určena pouze pro účely vyhodnocení. Pracovní prostory v cenové úrovni samostatného nebo počtu uzlů mají uživatelsky konfigurovatelné uchovávání dat od 30 do 730 dnů.
+Předplatná, která měl Log Analytics pracovní prostor nebo prostředek Application Insights před 2. dubna 2018 nebo jsou propojená s smlouva Enterprise, která začala před 1. února 2019, bude i nadále mít přístup k používání starších cenových úrovní: **Free**, **Standalone (za GB)** a **per Node (OMS)**.  Pracovní prostory v bezplatné cenové úrovni budou mít denní příjem dat omezený na 500 MB (kromě datových typů zabezpečení shromažďovaných v [Azure Security Center](../../security-center/index.yml)) a uchovávání dat je omezeno na 7 dní. Cenová úroveň Free je určena pouze pro účely vyhodnocení. Pracovní prostory v cenové úrovni samostatného nebo počtu uzlů mají uživatelsky konfigurovatelné uchovávání dat od 30 do 730 dnů.
 
 Využití na samostatné cenové úrovni se účtuje podle povrstveného objemu dat. Je hlášen ve službě **Log Analytics** a měřič se nazývá "Analýza dat". 
 
@@ -210,10 +210,10 @@ Můžete nakonfigurovat denní limit a omezit každodenní ingestování pro vá
 
 Každý pracovní prostor má denní limit, který se aplikuje na jinou hodinu dne. Nulová hodina se zobrazí na stránce **denní limit** (viz níže). Tuto hodinu resetování nelze nakonfigurovat. 
 
-Brzy po dosažení denního limitu se kolekce fakturovatelných datových typů zastaví pro zbytek dne. Latence vyplývající z použití denního limitu znamená, že se limit nepoužívá přesně na určenou denní úroveň Cap. V horní části stránky se zobrazí banner s upozorněním pro vybraný Log Analytics pracovní prostor a událost operace se odešle do tabulky *Operation* v kategorii **LogManagement** . Shromažďování dat se obnoví po uplynutí doby obnovení definované v rámci *denního limitu*. Doporučujeme definovat pravidlo výstrahy na základě této události operace, která je nakonfigurována tak, aby po dosažení denního limitu dat upozornila na oznámení. 
+Brzy po dosažení denního limitu se kolekce fakturovatelných datových typů zastaví pro zbytek dne. Latence vyplývající z použití denního limitu znamená, že se limit nepoužívá přesně na určenou denní úroveň Cap. V horní části stránky se zobrazí banner s upozorněním pro vybraný Log Analytics pracovní prostor a událost operace se odešle do tabulky *Operation* v kategorii **LogManagement** . Shromažďování dat se obnoví po uplynutí doby obnovení definované v rámci *denního limitu*. Doporučujeme definovat pravidlo výstrahy na základě této události operace, která se nakonfiguruje na upozorňování po dosažení denního limitu dat (viz [níže](#alert-when-daily-cap-reached)). 
 
 > [!NOTE]
-> Denní limit nemůže zastavit shromažďování dat přesně na zadané úrovni zakončení a je očekáváno několik přebytečných dat, zejména v případě, že pracovní prostor přijímá velké objemy dat.  
+> Denní limit nemůže zastavit shromažďování dat přesně na zadané úrovni zakončení a je očekáváno několik přebytečných dat, zejména v případě, že pracovní prostor přijímá velké objemy dat. [Níže](#view-the-effect-of-the-daily-cap) najdete dotaz, který je užitečný při studiu chování denního limitu. 
 
 > [!WARNING]
 > Denní limit nezastaví shromažďování dat z Azure Sentinal ani Azure Security Center, s výjimkou pracovních prostorů, ve kterých Azure Security Center byl nainstalován před 19. června 2017. 
@@ -233,6 +233,20 @@ Následující postup popisuje, jak nakonfigurovat limit pro správu objemu dat,
     ![Log Analytics konfiguraci omezení dat](media/manage-cost-storage/set-daily-volume-cap-01.png)
     
 Denní limit se dá nakonfigurovat přes ARM nastavením `dailyQuotaGb` parametru v části podle `WorkspaceCapping` popsaných v [pracovních prostorech – vytvořit nebo aktualizovat](/rest/api/loganalytics/workspaces/createorupdate#workspacecapping). 
+
+### <a name="view-the-effect-of-the-daily-cap"></a>Zobrazení účinku denního limitu
+
+Chcete-li zobrazit efekt denního limitu, je důležité se zařadit do datových typů zabezpečení, které nejsou zahrnuté do denního limitu, a nastavit hodinu pro váš pracovní prostor. Hodina resetování denního limitu se zobrazí na stránce **denní limit** .  Následující dotaz lze použít ke sledování datových svazků, které jsou předmětem denního limitu mezi denním obnovením limitu. V tomto příkladu je hodina resetu pracovního prostoru 14:00.  Budete ho muset pro svůj pracovní prostor aktualizovat.
+
+```kusto
+let DailyCapResetHour=14;
+Usage
+| where Type !in ("SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent")
+| extend TimeGenerated=datetime_add("hour",-1*DailyCapResetHour,TimeGenerated)
+| where TimeGenerated > startofday(ago(31d))
+| where IsBillable
+| summarize IngestedGbBetweenDailyCapResets=sum(_BilledSize)/1000. by day=bin(TimeGenerated, 1d) | render areachart  
+```
 
 ### <a name="alert-when-daily-cap-reached"></a>Výstraha při denním limitu
 
@@ -393,7 +407,7 @@ find where TimeGenerated > ago(24h) project _IsBillable, Computer
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Objem dat podle prostředku Azure, skupiny prostředků nebo předplatného
 
-Pro data z uzlů hostovaných v Azure můžete získat **Velikost** zpracovaných dat __na jeden počítač__ , použít [vlastnost](./log-standard-columns.md#_resourceid)_ResourceId, která poskytuje úplnou cestu k prostředku:
+Pro data z uzlů hostovaných v Azure můžete získat **Velikost** zpracovaných dat __na jeden počítač__, použít [vlastnost](./log-standard-columns.md#_resourceid)_ResourceId, která poskytuje úplnou cestu k prostředku:
 
 ```kusto
 find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
@@ -401,7 +415,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by BillableDataBytes nulls last
 ```
 
-Pro data z uzlů hostovaných v Azure můžete získat **Velikost** přijatých dat __pro každé předplatné Azure__ , získat ID předplatného `_ResourceId` jako tuto vlastnost:
+Pro data z uzlů hostovaných v Azure můžete získat **Velikost** přijatých dat __pro každé předplatné Azure__, získat ID předplatného `_ResourceId` jako tuto vlastnost:
 
 ```kusto
 find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
@@ -432,7 +446,7 @@ V případě potřeby můžete také `_ResourceId` plně analyzovat v případě
 > Tyto dotazy můžete použít `find` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](../log-query/query-optimization.md#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky v rámci předplatného, skupiny prostředků nebo názvu prostředku, pak dotaz na datový typ použití.
 
 > [!WARNING]
-> Některá pole datového typu použití, ale stále ve schématu, jsou zastaralá a jejich hodnoty se už neplní. Jedná se o **počítač** a pole související s ingestování ( **TotalBatches** , **BatchesWithinSla** , **BatchesOutsideSla** , **BatchesCapped** a **AverageProcessingTimeMs** ).
+> Některá pole datového typu použití, ale stále ve schématu, jsou zastaralá a jejich hodnoty se už neplní. Jedná se o **počítač** a pole související s ingestování (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** a **AverageProcessingTimeMs**).
 
 
 ### <a name="querying-for-common-data-types"></a>Dotazování na Common data types

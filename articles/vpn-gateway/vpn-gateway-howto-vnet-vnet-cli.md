@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 428c24236aad9a57a9d52eb0a6ff3a7aeb9fe541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9502f3fbd50aad756e15daa4db1badda2abf9ab
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442160"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660062"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí Azure CLI
 
@@ -134,7 +134,7 @@ V příkladech používáme následující hodnoty:
    ```azurecli
    az network vnet create -n TestVNet1 -g TestRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24
    ```
-3. Vytvořte další adresní prostor pro podsíť back-endu. Všimněte si, že v tomto kroku zadáváme jak adresní prostor, který jsme vytvořili dříve, tak i další adresní prostor, který chceme přidat. Důvodem je, že příkaz [az network vnet update](https://docs.microsoft.com/cli/azure/network/vnet) přepíše předchozí nastavení. Nezapomeňte při použití tohoto příkazu zadat všechny předpony adres.
+3. Vytvořte další adresní prostor pro podsíť back-endu. Všimněte si, že v tomto kroku zadáváme jak adresní prostor, který jsme vytvořili dříve, tak i další adresní prostor, který chceme přidat. Důvodem je, že příkaz [az network vnet update](/cli/azure/network/vnet) přepíše předchozí nastavení. Nezapomeňte při použití tohoto příkazu zadat všechny předpony adres.
 
    ```azurecli
    az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestRG1
@@ -214,10 +214,10 @@ Nyní máte dvě virtuální sítě s bránami VPN. Dalším krokem je vytvořen
    ```
    "activeActive": false, 
    "bgpSettings": { 
-    "asn": 65515, 
-    "bgpPeeringAddress": "10.12.255.30", 
-    "peerWeight": 0 
-   }, 
+    "asn": 65515, 
+    "bgpPeeringAddress": "10.12.255.30", 
+    "peerWeight": 0 
+   }, 
    "enableBgp": false, 
    "etag": "W/\"ecb42bc5-c176-44e1-802f-b0ce2962ac04\"", 
    "gatewayDefaultSite": null, 
@@ -356,7 +356,7 @@ Vzhledem k tomu, že brány patří do různých předplatných, je tento krok r
 
    Zkopírujte část výstupu uvedeného textem „id:“. E-mailem nebo jiným způsobem odešlete ID a název brány virtuální sítě (VNet5GW) správci předplatného 1.
 
-3. **[Předplatné 1]** V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 k virtuální síti TestVNet5. Pro sdílený klíč můžete použít vlastní hodnoty, ale sdílené klíče pro obě připojení se musí shodovat. Vytvoření připojení může nějakou dobu trvat.Ujistěte se, že jste připojeni k předplatnému 1.
+3. **[Předplatné 1]** V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 k virtuální síti TestVNet5. Pro sdílený klíč můžete použít vlastní hodnoty, ale sdílené klíče pro obě připojení se musí shodovat. Vytvoření připojení může nějakou dobu trvat. Ujistěte se, že jste připojeni k předplatnému 1.
 
    ```azurecli
    az network vpn-connection create -n VNet1ToVNet5 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
@@ -378,5 +378,5 @@ Vzhledem k tomu, že brány patří do různých předplatných, je tento krok r
 
 ## <a name="next-steps"></a>Další kroky
 
-* Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v [dokumentaci ke službě Virtual Machines](https://docs.microsoft.com/azure/).
+* Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v [dokumentaci ke službě Virtual Machines](../index.yml).
 * Informace o protokolu BGP najdete v tématech [Přehled protokolu BGP](vpn-gateway-bgp-overview.md) a [Postup při konfiguraci protokolu BGP](vpn-gateway-bgp-resource-manager-ps.md).

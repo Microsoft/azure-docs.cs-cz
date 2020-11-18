@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte o podporovaných scénářích a omeze
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: 641bba6b947731e0f55bc79828101f84d5b780fd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 181d006d0d1f0e5c2f099507be493ced2ce9280b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515776"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659739"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Matice podpory pro zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -30,7 +30,7 @@ Azure Backup podporuje zálohování databází SAP HANA do Azure. Tento článe
 | **Instance HANA**         | Jedna instance SAP HANA na jednom virtuálním počítači Azure – pouze horizontální navýšení kapacity | Několik instancí SAP HANA na jednom virtuálním počítači                  |
 | **Typy databází HANA**    | Kontejner Izolovaná databáze (SDC) na 1. x, kontejneru více databází (MDC) na 2. x | MDC v HANA 1. x                                              |
 | **Velikost databáze HANA**     | Databáze HANA velikosti <= 2 TB (nejedná se o velikost paměti systému HANA)               |                                                              |
-| **Typy zálohování**           | Úplné a rozdílové zálohy a zálohování protokolů                          | Přírůstkové, snímky                                       |
+| **Typy zálohování**           | Úplné, rozdílové, přírůstkové (Preview) a zálohy protokolů                          |  Snímky                                       |
 | **Typy obnovení**          | Informace o podporovaných typech obnovení najdete v SAP HANA poznámky [1642148](https://launchpad.support.sap.com/#/notes/1642148) . |                                                              |
 | **Omezení zálohování**          | Až 2 TB velikosti úplné zálohy na instanci SAP HANA (částečný limit)         |                                                              |
 | **Speciální konfigurace** |                                                              | SAP HANA + dynamické vrstvení <br>  Klonování prostřednictvím LaMa        |

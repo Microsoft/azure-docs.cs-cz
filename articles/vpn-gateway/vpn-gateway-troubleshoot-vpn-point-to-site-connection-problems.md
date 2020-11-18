@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: dbf0d096827ec1af16e6d38d405709e48175ae89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 908602dff3be2f392bc595f0074db7f95b8936a9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035941"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660980"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Řešení potíží: problémy s připojením k bodům Azure Point-to-site
 
@@ -35,7 +35,7 @@ K tomuto problému dochází, pokud certifikát klienta chybí v části **Certi
 
 Chcete-li tento problém vyřešit, postupujte podle následujících kroků:
 
-1. Otevřete Správce certifikátů: klikněte na **Start**, zadejte **Správa certifikátů počítačů**a pak ve výsledcích hledání klikněte na **spravovat certifikáty počítače** .
+1. Otevřete Správce certifikátů: klikněte na **Start**, zadejte **Správa certifikátů počítačů** a pak ve výsledcích hledání klikněte na **spravovat certifikáty počítače** .
 
 2. Ujistěte se, že tyto certifikáty jsou ve správném umístění:
 
@@ -137,7 +137,7 @@ K tomuto problému dochází kvůli nesprávnému typu brány.
 
 ### <a name="solution"></a>Řešení
 
-Typ brány VPN musí být **VPN**a typ VPN musí být **RouteBased**.
+Typ brány VPN musí být **VPN** a typ VPN musí být **RouteBased**.
 
 ## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>Chyba klienta VPN: nepovedl se vlastní skript Azure VPN. 
 
@@ -168,7 +168,7 @@ Rozbalte konfigurační balíček klienta VPN a vyhledejte soubor. cer. K instal
 1. Otevřete mmc.exe.
 2. Přidejte modul snap-in **certifikáty** .
 3. Vyberte účet **počítače** pro místní počítač.
-4. Klikněte pravým tlačítkem na uzel **Důvěryhodné kořenové certifikační autority** . Klikněte na **vše –**  >  **Import**úlohy a vyhledejte soubor. CER, který jste extrahovali z balíčku pro konfiguraci klienta VPN.
+4. Klikněte pravým tlačítkem na uzel **Důvěryhodné kořenové certifikační autority** . Klikněte na **vše –**  >  **Import** úlohy a vyhledejte soubor. CER, který jste extrahovali z balíčku pro konfiguraci klienta VPN.
 5. Restartujte počítač. 
 6. Zkuste nainstalovat klienta VPN.
 
@@ -178,7 +178,7 @@ Rozbalte konfigurační balíček klienta VPN a vyhledejte soubor. cer. K instal
 
 Při pokusu o uložení změn pro bránu VPN v Azure Portal se zobrazí následující chybová zpráva:
 
-**Nepovedlo se uložit &lt; *název brány*brány virtuální sítě &gt; . Data pro ID certifikátu certifikátu &lt; *certificate ID* &gt; nejsou platná.**
+**Nepovedlo se uložit &lt; *název brány* brány virtuální sítě &gt; . Data pro ID certifikátu certifikátu &lt; *certificate ID* &gt; nejsou platná.**
 
 ### <a name="cause"></a>Příčina 
 
@@ -215,7 +215,7 @@ e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
 
 Při pokusu o uložení změn pro bránu VPN v Azure Portal se zobrazí následující chybová zpráva: 
 
-**Nepovedlo se uložit &lt; *název brány*brány virtuální sítě &gt; . Název prostředku název &lt; *certifikátu, který se pokoušíte nahrát* , &gt; je neplatný**.
+**Nepovedlo se uložit &lt; *název brány* brány virtuální sítě &gt; . Název prostředku název &lt; *certifikátu, který se pokoušíte nahrát* , &gt; je neplatný**.
 
 ### <a name="cause"></a>Příčina
 
@@ -274,7 +274,7 @@ Odeberete připojení VPN typu Point-to-site a pak znovu nainstalujete klienta V
 
 ### <a name="solution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, odstraňte staré konfigurační soubory klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId> **a pak znovu spusťte instalační program klienta VPN.
+Pokud chcete tento problém vyřešit, odstraňte staré konfigurační soubory klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId>** a pak znovu spusťte instalační program klienta VPN.
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Klient VPN typu Point-to-site nemůže přeložit plně kvalifikovaný název domény prostředků v místní doméně.
 
@@ -298,7 +298,7 @@ K tomuto problému může dojít, když klient VPN nezíská trasy z Azure VPN G
 
 ### <a name="solution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, [resetujte službu Azure VPN Gateway](vpn-gateway-resetgw-classic.md). Pokud chcete zajistit, aby se nové trasy používaly, je potřeba po úspěšné konfiguraci partnerského vztahu virtuálních sítí stáhnout klienty VPN typu Point-to-site znovu.
+Pokud chcete tento problém vyřešit, [resetujte službu Azure VPN Gateway](./reset-gateway.md). Pokud chcete zajistit, aby se nové trasy používaly, je potřeba po úspěšné konfiguraci partnerského vztahu virtuálních sítí stáhnout klienty VPN typu Point-to-site znovu.
 
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Chyba: "funkce odvolání nemohla ověřit odvolání, protože server odvolání byl offline. (Error 0x80092013)
 
@@ -335,9 +335,9 @@ Ovladač síťové karty je zastaralý.
 
 Aktualizujte ovladač síťových adaptérů:
 
-1. Klikněte na **Start**, zadejte **Device Manager**a vyberte ho ze seznamu výsledků. Pokud se zobrazí výzva k zadání hesla správce nebo k potvrzení, zadejte heslo nebo zadejte potvrzení.
+1. Klikněte na **Start**, zadejte **Device Manager** a vyberte ho ze seznamu výsledků. Pokud se zobrazí výzva k zadání hesla správce nebo k potvrzení, zadejte heslo nebo zadejte potvrzení.
 2. V kategorii **síťové adaptéry** Najděte síťovou kartu, kterou chcete aktualizovat.  
-3. Dvakrát klikněte na název zařízení, vyberte **Aktualizovat ovladač**a **pro aktualizovaný software ovladače vyberte automaticky hledat**.
+3. Dvakrát klikněte na název zařízení, vyberte **Aktualizovat ovladač** a **pro aktualizovaný software ovladače vyberte automaticky hledat**.
 4. Pokud systém Windows nenalezne nový ovladač, zkuste ho vyhledat na webu výrobce zařízení a postupujte podle pokynů.
 5. Restartujte počítač a zkuste připojení znovu.
 
@@ -372,7 +372,7 @@ Tento problém může být způsoben předchozími instalacemi klienta VPN.
 
 ### <a name="solution"></a>Řešení
 
-Odstraňte staré konfigurační soubory klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId> ** a znovu spusťte instalační program klienta VPN. 
+Odstraňte staré konfigurační soubory klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId>** a znovu spusťte instalační program klienta VPN. 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>Po určité době hibernace nebo režim spánku klienta VPN
 

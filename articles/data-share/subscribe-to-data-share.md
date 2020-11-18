@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 11/12/2020
-ms.openlocfilehash: 17c3e9ee157cedd31be39f472f619a2df9ae32a6
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a225989f0670e9b62b00a35bac719c9357c8a130
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594177"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659603"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: Přijetí a získání dat prostřednictvím služby Azure Data Share  
 
@@ -96,21 +96,44 @@ Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](http
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="open-invitation"></a>Otevřít pozvánku
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Můžete otevřít pozvánku z e-mailu nebo přímo z Azure Portal. 
 
    Pokud chcete otevřít pozvánku z e-mailu, Projděte si doručenou poštu od poskytovatele dat. Pozvánka pochází z Microsoft Azure s názvem **pozvání Azure Data Share z <yourdataprovider@domain.com>**. Kliknutím na **Zobrazit pozvánku** zobrazíte pozvánku v Azure. 
 
-   Chcete-li otevřít pozvánku přímo z Azure Portal, vyhledejte v Azure Portal **pozvánky ke sdílení dat** . Tím přejdete do seznamu pozvání ke sdílení dat.
+   Chcete-li otevřít pozvánku přímo z Azure Portal, vyhledejte v Azure Portal **pozvánky ke sdílení dat** . Tato akce přejde do seznamu pozvání ke sdílení dat.
 
    ![Seznam pozvánek](./media/invitations.png "Seznam pozvánek") 
 
 1. Vyberte sdílenou složku, kterou chcete zobrazit. 
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Připravte prostředí Azure CLI a pak si prohlédněte své pozvánky.
+
+Začněte tím, že připravíte prostředí pro rozhraní příkazového řádku Azure:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Spuštěním příkazu [AZ datashare Consumer pozvánky](/cli/azure/ext/datashare/datashare/consumer/invitation#ext_datashare_az_datashare_consumer_invitation_list) zobrazíte vaše aktuální pozvánky:
+
+```azurecli
+az datashare consumer invitation list --subscription 11111111-1111-1111-1111-111111111111
+```
+
+Zkopírujte ID pozvánky pro použití v další části.
+
+---
+
 ## <a name="accept-invitation"></a>Přijmout pozvánku
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 1. Ujistěte se, že všechna pole jsou přezkoumána, včetně **podmínek použití**. Pokud souhlasíte s podmínkami použití, budete muset zaškrtnout políčko, abyste označili, že souhlasíte. 
 
    ![Podmínky použití](./media/terms-of-use.png "Podmínky použití") 
@@ -125,11 +148,27 @@ Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
    ![Přijmout možnosti](./media/accept-options.png "Přijmout možnosti") 
 
-   Tím přejdete na přijatý podíl v účtu pro sdílení dat. 
+   Tato akce přejde k přijaté sdílené složce v účtu pro sdílení dat. 
 
    Pokud nechcete pozvánku přijmout, vyberte *odmítnout*. 
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pomocí příkazu [AZ datashare Consumer Share-Subscription Create](/cli/azure/ext/datashare/datashare/consumer/share-subscription#ext_datashare_az_datashare_consumer_share_subscription_create) vytvořte sdílenou složku dat.
+
+```azurecli
+az datashare consumer share-subscription create --resource-group share-rg \
+  --name "Fabrikam Solutions" --account-name FabrikamDataShareAccount \
+  --invitation-id 89abcdef-0123-4567-89ab-cdef01234567 \
+  --source-share-location "East US 2" --subscription 11111111-1111-1111-1111-111111111111
+```
+
+---
+
 ## <a name="configure-received-share"></a>Konfigurace přijaté sdílené složky
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 Chcete-li nakonfigurovat, kde chcete přijímat data, postupujte podle následujících kroků.
 
 1. Vyberte kartu **datové sady** . Zaškrtněte políčko vedle datové sady, ke které chcete přiřadit cíl. Vyberte možnost **+ mapovat na cíl** a zvolte cílové úložiště dat. 
@@ -146,7 +185,97 @@ Chcete-li nakonfigurovat, kde chcete přijímat data, postupujte podle následuj
 
    ![Povolit plán snímků](./media/enable-snapshot-schedule.png "Povolit plán snímků")
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pomocí těchto příkazů můžete nakonfigurovat, kam chcete přijímat data.
+
+1. Spuštěním příkazu [AZ datashare Consumer Share-Subscription list-source-DataSet](/cli/azure/ext/datashare/datashare/consumer/share-subscription#ext_datashare_az_datashare_consumer_share_subscription_list_source_dataset) Získejte ID datové sady:
+
+   ```azurecli
+   az datashare consumer share-subscription list-source-dataset \
+     --resource-group "share-rg" --account-name "FabrikamDataShareAccount" \
+     --share-subscription-name "Fabrikam Solutions" \
+     --subscription 11111111-1111-1111-1111-111111111111 --query "[0].dataSetId"
+   ```
+
+1. Spuštěním příkazu [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) vytvořte účet úložiště pro tuto sdílenou složku dat:
+
+   ```azurecli
+   az storage account create --resource-group "share-rg" --name "FabrikamDataShareAccount" \
+     --subscription 11111111-1111-1111-1111-111111111111
+   ```
+
+1. Pomocí příkazu [AZ Storage Account show](/cli/azure/storage/account#az_storage_account_show) Získejte ID účtu úložiště:
+
+   ```azurecli
+   az storage account show --resource-group "share-rg" --name "FabrikamDataShareAccount" \
+     --subscription 11111111-1111-1111-1111-111111111111 --query "id"
+   ```
+
+1. ID objektu zabezpečení účtu získáte pomocí následujícího příkazu:
+
+   ```azurecli
+   az datashare account show --resource-group "share-rg" --name "cli_test_consumer_account" \
+     --subscription 11111111-1111-1111-1111-111111111111 --query "identity.principalId"
+   ```
+
+1. Pomocí příkazu [AZ role Assignment Create](/cli/azure/role/assignment#az_role_assignment_create) vytvořte přiřazení role pro hlavní povinný účet:
+
+   ```azurecli
+   az role assignment create --role "01234567-89ab-cdef-0123-456789abcdef" \
+     --assignee-object-id 6789abcd-ef01-2345-6789-abcdef012345 
+     --assignee-principal-type ServicePrincipal --scope 456789ab-cdef-0123-4567-89abcdef0123 \
+     --subscription 11111111-1111-1111-1111-111111111111
+   ```
+
+1. Vytvořte proměnnou pro mapování na základě ID datové sady:
+
+   ```azurecli
+   $mapping='{\"data_set_id\":\"' + $dataset_id + '\",\"container_name\":\"newcontainer\",
+     \"storage_account_name\":\"datashareconsumersa\",\"kind\":\"BlobFolder\",\"prefix\":\"consumer\"}'
+   ```
+
+1. Pomocí příkazu [AZ datashare Consumer DataSet-Mapping Create](/cli/azure/ext/datashare/datashare/consumer/dataset-mapping#ext_datashare_az_datashare_consumer_dataset_mapping_create) vytvořte mapování datové sady:
+
+   ```azurecli
+   az datashare consumer dataset-mapping create --resource-group "share-rg" \
+     --name "consumer-data-set-mapping" --account-name "FabrikamDataShareAccount" \
+     --share-subscription-name "Fabrikam Solutions" --mapping $mapping \
+     --subscription 11111111-1111-1111-1111-111111111111
+   ```
+
+1. Spuštěním příkazu [AZ datashare Consumer Share-Subscription Synchronization](/cli/azure/ext/datashare/datashare/consumer/share-subscription/synchronization#ext_datashare_az_datashare_consumer_share_subscription_synchronization_start) spusťte synchronizaci datových sad.
+
+   ```azurecli
+   az datashare consumer share-subscription synchronization start \
+     --resource-group "share-rg" --account-name "FabrikamDataShareAccount"  \
+     --share-subscription-name "Fabrikam Solutions" --synchronization-mode "Incremental" \
+     --subscription 11111111-1111-1111-1111-111111111111
+   ```
+
+   Spuštěním příkazu [AZ datashare Consumer Share-Subscription Synchronization list](/cli/azure/ext/datashare/datashare/consumer/share-subscription/synchronization#ext_datashare_az_datashare_consumer_share_subscription_synchronization_list) zobrazíte seznam synchronizací:
+
+   ```azurecli
+   az datashare consumer share-subscription synchronization list \
+     --resource-group "share-rg" --account-name "FabrikamDataShareAccount" \
+     --share-subscription-name "Fabrikam Solutions" \
+     --subscription 11111111-1111-1111-1111-111111111111
+   ```
+
+   Pomocí příkazu [AZ datashare Consumer Share-Subscription list-source-Share-Synchronization-](/cli/azure/ext/datashare/datashare/consumer/share-subscription#ext_datashare_az_datashare_consumer_share_subscription_list_source_share_synchronization_setting) Settings zobrazte nastavení synchronizace nastavené ve sdílené složce.
+
+   ```azurecli
+   az datashare consumer share-subscription list-source-share-synchronization-setting \
+     --resource-group "share-rg" --account-name "FabrikamDataShareAccount" \
+     --share-subscription-name "Fabrikam Solutions" --subscription 11111111-1111-1111-1111-111111111111
+   ```
+
+---
+
 ## <a name="trigger-a-snapshot"></a>Aktivace snímku
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 Tyto kroky platí pouze pro sdílení na základě snímků.
 
 1. Snímek můžete aktivovat výběrem karty **Podrobnosti** a **snímku triggeru**. Tady můžete aktivovat úplný nebo přírůstkový snímek dat. Pokud data od poskytovatele dat přijímáte poprvé, vyberte možnost úplné kopírování. 
@@ -156,6 +285,23 @@ Tyto kroky platí pouze pro sdílení na základě snímků.
 1. Po *úspěšném* stavu posledního spuštění přejdete do cílového úložiště dat a zobrazíte přijatá data. Vyberte **datové sady** a klikněte na odkaz v cílové cestě. 
 
    ![Datové sady příjemců](./media/consumer-datasets.png "Mapování datové sady příjemce") 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Spusťte příkaz [AZ datashare Consumer Trigger Create](/cli/azure/ext/datashare/datashare/consumer/trigger#ext_datashare_az_datashare_consumer_trigger_create) a aktivujte snímek:
+
+```azurecli
+az datashare consumer trigger create --resource-group "share-rg" \
+  --name "share_test_trigger" --account-name "FabrikamDataShareAccount" \
+  --share-subscription-name "Fabrikam Solutions" --recurrence-interval "Day" \
+  --synchronization-time "2020-04-23 18:00:00 +00:00" --kind ScheduleBased \
+  --subscription 11111111-1111-1111-1111-111111111111
+```
+
+> [!NOTE]
+> Tento příkaz použijte pouze pro sdílení na základě snímků.
+
+---
 
 ## <a name="view-history"></a>Zobrazení historie
 Tento krok platí jenom pro sdílení na základě snímků. Chcete-li zobrazit historii snímků, vyberte kartu **Historie** . Tady najdete historii všech snímků, které se vygenerovaly za posledních 30 dní.

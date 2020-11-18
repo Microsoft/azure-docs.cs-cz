@@ -3,12 +3,12 @@ title: Nejčastější dotazy – zálohování databází SAP HANA na virtuáln
 description: V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování SAP HANA databází pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d6012ec064b5ec582896ac3484161a6e25f2bf
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86513502"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659960"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Nejčastější dotazy – zálohování SAP HANA databází na virtuálních počítačích Azure
 
@@ -124,6 +124,43 @@ Informace o tom, jaké typy obnovení se aktuálně podporují, najdete v SAP HA
 ### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-an-rhel-hana-system-or-vice-versa"></a>Můžu k obnovení do systému RHEL HANA použít zálohu databáze běžící na SLES nebo naopak?
 
 Ano, zálohy streamování aktivované v databázi HANA běžící na SLES můžete použít k obnovení do systému RHEL HANA a naopak. To znamená, že při zálohování přes streamování je možné provést obnovení mezi různými operačními systémy. Budete ale muset zajistit, aby systém HANA, do kterého chcete obnovit, a systém HANA, který se používá k obnovení, byly kompatibilní pro obnovení podle SAP. Chcete-li zjistit, které typy obnovení jsou kompatibilní, přečtěte si SAP HANA Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) .
+
+## <a name="policy"></a>Zásada
+
+### <a name="different-options-available-during-creation-of-a-new-policy-for-sap-hana-backup"></a>Během vytváření nové zásady pro SAP HANA Backup jsou dostupné různé možnosti.
+
+Předtím, než vytvoříte zásadu, by jedna měla být jasná na požadavcích bodu RPO a RTO a na relevantních nákladových důsledcích.
+
+RPO (bod obnovení-cíl) indikuje, kolik ztrát dat je v pořádku pro uživatele nebo zákazníka. To závisí na četnosti zálohování protokolu. Častější zálohování protokolů indikuje nižší RPO a minimální hodnota podporovaná službou Azure Backup je 15 minut, tj. četnost zálohování protokolů může být 15 minut nebo vyšší.
+
+RTO (doba obnovení-cíl) indikuje, jak rychle mají být data obnovena do posledního dostupného bodu v čase po skončení ztráty dat. To závisí na strategii obnovení používané v HANA, která je obvykle závislá na tom, kolik souborů je potřeba k obnovení. To má vliv na náklady a následující tabulka by měla pomáhat při porozumění všem scénářům a jejich dopadům.
+
+|Zásady zálohování  |RTO  |Cost  |
+|---------|---------|---------|
+|Denní plný + protokol     |   Nejrychlejší vzhledem k tomu, že potřebujeme pro obnovení k bodu v čase pouze jednu úplnou kopii a požadované protokoly.      |    Možnost Costliest, protože úplné kopírování se provádí denně, takže se v back-endu nashromáždí více a další data, dokud doba uchování nedosáhne   |
+|Týdenní úplná + denní rozdílová + protokoly     |   Pomalejší než výše uvedená možnost, ale je rychlejší než níže, protože pro obnovení k časovému okamžiku vyžadujeme jednu úplnou kopii a jednu rozdílnou kopii + protokoly.      |    Levnější možnost, protože denní rozdíl je obvykle menší než úplný a úplné kopírování je prováděno pouze jednou za týden.      |
+|Týdenní úplná + denní přírůstková + protokoly     |  Nejpomalejší, protože pro obnovení k bodu v čase potřebujeme jedno úplné kopírování + ' n '.       |     Nejméně náročná možnost od denního přírůstku bude menší než rozdílová a celá kopie bude pocházet jenom týdně.    |
+
+> [!NOTE]
+> Výše uvedené možnosti jsou nejběžnější, ale ne jediné možnosti. Například jedna může mít týdenní úplnou zálohu + rozdíly dvakrát za týden + protokoly.
+
+Proto jeden může vybrat variantu zásady na základě cílů RPO a RTO a nákladů.
+
+### <a name="impact-of-modifying-a-policy"></a>Dopad změny zásady
+
+Při určování dopadu přepínání zásad zálohovaných položek ze zásad 1 (P1) na zásadu 2 (P2) nebo pro úpravu zásady 1 (P1) byste měli mít na paměti několik zásad.
+
+- Všechny změny se také aplikují zpětně. Nejnovější zásady zálohování se uplatní i pro body obnovení, které byly dříve odebrány. Předpokládejme například, že denní úplné uchovávání je 30 dní a 10 bodů obnovení bylo pořízeno v závislosti na aktuálně aktivní zásadě. Pokud se denní doba uchovávání změní na 10 dní, pak se čas vypršení platnosti předchozího bodu také přepočítá jako čas zahájení + 10 dnů a v případě vypršení platnosti se odstraní.
+- Rozsah změny zahrnuje také den zálohování, typ zálohy spolu s uchováním. Příklad: Pokud se zásada změní z denního intervalu na každý týden plný v neděli, všechna předchozí plná, která nejsou v neděli, se označí k odstranění.
+- Nadřazený objekt není odstraněn, dokud není aktivní nebo nevypršela platnost podřízeného objektu. U každého typu zálohování je čas vypršení platnosti podle aktuálně aktivních zásad. Ale typ úplné zálohy se považuje za nadřazený pro následné "diferenciály", "přírůstky" a "logs". ' Differential ' a ' log ' nejsou nadřazeny jiným uživatelům. "Přírůstková" může být nadřazeným objektem následného "přírůstkového". I když je nadřazený objekt označený k odstranění, ve skutečnosti se neodstraní, pokud nevypršela platnost podřízených rozdílových objektů nebo protokolů. Pokud se například zásada změní z denního rozsahu na každý týden plný v neděli, všechny předchozí plné verze, které nejsou v neděli, budou označeny k odstranění. Ale ve skutečnosti se neodstraní, dokud platnost protokolů, které uplynuly dříve, neprošly. Jinými slovy se uchovávají v závislosti na nejnovější době trvání protokolu. Jakmile vyprší platnost protokolů, odeberou se oba protokoly i všechny.
+
+V těchto principech může jeden z následujících tabulek přečíst informace o důsledcích změny zásad.
+
+|Stará zásada/nové zásady  |Denní úplný objem a protokoly  | Týdenní úplné a denní rozdíly + protokoly  |Týdenní úplné a denní přírůstky + protokoly  |
+|---------|---------|---------|---------|
+|Denní úplný objem a protokoly     |   -      |    Předchozí plná data, která nejsou ve stejném dnu v týdnu, jsou označena k odstranění, ale budou uchována až po dobu uchování protokolu.     |    Předchozí plná data, která nejsou ve stejném dnu v týdnu, jsou označena k odstranění, ale budou uchována až po dobu uchování protokolu.     |
+|Týdenní úplné a denní rozdíly + protokoly     |   Předchozí týdenní úplné uchovávání se přepočítá podle nejnovějších zásad. Předchozí rozdíly jsou okamžitě odstraněny.      |    -     |    Předchozí rozdíly jsou okamžitě odstraněny.     |
+|Týdenní úplné a denní přírůstky + protokoly     |     Předchozí týdenní úplné uchovávání se přepočítá podle nejnovějších zásad. Předchozí přírůstky jsou okamžitě odstraněny    |     Předchozí přírůstky jsou okamžitě odstraněny    |    -     |
 
 ## <a name="next-steps"></a>Další kroky
 

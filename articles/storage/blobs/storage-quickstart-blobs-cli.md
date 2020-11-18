@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 55cbf0a304bbf13d47fefad0981c0143c101bbb0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c9797024315a8fdc744d08863a42fba0b0b16420
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88520766"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660334"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI
 
@@ -23,23 +23,13 @@ Azure CLI je prostředí příkazového řádku Azure pro správu prostředků A
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-## <a name="install-the-azure-cli-locally"></a>Místní instalace Azure CLI
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít spuštěnou verzi Azure CLI 2.0.46 nebo novější. Svou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
-
-Pokud používáte Azure CLI místně, musíte se přihlásit a ověřit. Tento krok není nutný, pokud používáte Azure Cloud Shell. Pokud se chcete přihlásit ke službě Azure CLI, spusťte `az login` a ověřte v okně prohlížeče:
-
-```azurecli
-az login
-```
-
-Další informace o ověřování pomocí rozhraní příkazového řádku Azure najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.46 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="authorize-access-to-blob-storage"></a>Autorizace přístupu k úložišti objektů BLOB
 
@@ -111,7 +101,7 @@ Nejdřív vytvořte soubor, který se nahraje do objektu blob bloku. Pokud použ
 vi helloworld
 ```
 
-Po otevření souboru stiskněte **Vložit**. Zadejte *Hello World*a pak stiskněte klávesu **ESC**. Dále zadejte *: x*a potom stiskněte klávesu **ENTER**.
+Po otevření souboru stiskněte **Vložit**. Zadejte *Hello World* a pak stiskněte klávesu **ESC**. Dále zadejte *: x* a potom stiskněte klávesu **ENTER**.
 
 V tomto příkladu nahrajete objekt blob do kontejneru, který jste vytvořili v předchozím kroku, a to pomocí příkazu [az storage blob upload](/cli/azure/storage/blob). Není nutné zadávat cestu k souboru, protože soubor byl vytvořen v kořenovém adresáři. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 

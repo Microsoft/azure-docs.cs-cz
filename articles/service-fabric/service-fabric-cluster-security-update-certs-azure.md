@@ -3,12 +3,12 @@ title: Správa certifikátů v clusteru Azure Service Fabric
 description: Popisuje, jak přidat nové certifikáty, certifikát výměny a odebrat certifikát do nebo z Service Fabricho clusteru.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd4440d76bed9d110c13baab9f4e67b3a5c64c0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869741"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660895"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidání nebo odebrání certifikátů clusteru Service Fabric v Azure
 Doporučujeme, abyste se seznámili s tím, jak Service Fabric využívá certifikáty X. 509 a znáte [scénáře zabezpečení clusteru](service-fabric-cluster-security.md). Než budete pokračovat, musíte pochopit, co je certifikát clusteru a k čemu se používá.
@@ -18,7 +18,7 @@ Výchozí chování při načítání certifikátů v sadě SDK služby Azure Se
 Service Fabric umožňuje zadat dva certifikáty clusteru, primární a sekundární, když konfigurujete zabezpečení certifikátu během vytváření clusteru, kromě klientských certifikátů. Podrobnosti o jejich nastavení v době vytvoření najdete v tématu [Vytvoření clusteru Azure prostřednictvím portálu](service-fabric-cluster-creation-via-portal.md) nebo [Vytvoření clusteru Azure prostřednictvím Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) . Pokud zadáte pouze jeden certifikát clusteru v čase vytvoření, bude použit jako primární certifikát. Po vytvoření clusteru můžete přidat nový certifikát jako sekundární.
 
 > [!NOTE]
-> V případě zabezpečeného clusteru budete vždycky potřebovat aspoň jeden platný (odvolaný a neprošlý) certifikát clusteru (primární nebo sekundární) nasazený (Pokud ne, cluster přestane fungovat). 90 dní před vypršením platnosti všech platných certifikátů systém vygeneruje trasování upozornění a také událost stavu varování v uzlu. V tuto chvíli neexistují žádné e-maily ani žádná další oznámení, která Service Fabric od tohoto článku odesílají. 
+> V případě zabezpečeného clusteru budete vždycky potřebovat aspoň jeden platný (odvolaný a neprošlý) certifikát clusteru (primární nebo sekundární) nasazený (Pokud ne, cluster přestane fungovat). 90 dní před vypršením platnosti všech platných certifikátů systém vygeneruje trasování upozornění a událost stavu varování v uzlu. V současnosti se jedná o jediná oznámení, která Service Fabric posílá ohledně vypršení platnosti certifikátu.
 > 
 > 
 
@@ -26,7 +26,7 @@ Service Fabric umožňuje zadat dva certifikáty clusteru, primární a sekundá
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>Přidání certifikátu sekundárního clusteru pomocí portálu
-Certifikát sekundárního clusteru nelze přidat prostřednictvím Azure Portal, použijte prostředí Azure PowerShell. Tento postup je popsaný dále v tomto dokumentu.
+Sekundární certifikát clusteru nelze přidat prostřednictvím Azure Portal; Použijte Azure PowerShell. Tento postup je popsaný dále v tomto dokumentu.
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>Odebrání certifikátu clusteru pomocí portálu
 V případě zabezpečeného clusteru budete vždycky potřebovat alespoň jeden platný certifikát (nikoli odvolaný a neprošlý platnost). Certifikát nasazený s nejdálený do budoucího data vypršení platnosti se bude používat a jeho odebrání způsobí, že cluster přestane fungovat. Ujistěte se, že jste odebrali jenom certifikát, jehož platnost vypršela, nebo nepoužitý certifikát, jehož platnost brzy vyprší.

@@ -208,7 +208,7 @@
 - name: Referenční informace (novinka!)
   items:
     - name: Rozhraní REST API
-      href: 'https://docs.microsoft.com/rest/api/securityinsights/'
+      href: /rest/api/securityinsights/
     - name: Schéma normalizace sítě
       href: normalization-schema.md
 - name: Zdroje a prostředky
@@ -218,7 +218,7 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
     - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure'
-      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
+      href: /archive/blogs/azuresecurity/
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: Ceny

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: affefb302d602e9069a903fa5f6a0fbae78992b9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 26a29524e0bf329a368b3cd2281dd9b070b42a14
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516949"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660810"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Rychlý start: Začínáme se službou Azure Sentinel
 
@@ -54,7 +54,7 @@ Hlavní část stránky s přehledem poskytuje rychlý přehled o stavu zabezpe�
 
 Předdefinované sešity poskytují integrovaná data z připojených zdrojů dat a umožňují vám tak podrobně události vygenerované v těchto službách. Předdefinované sešity zahrnují Azure AD, události aktivit Azure a místní, což může být data z událostí systému Windows ze serverů, výstrahy od první strany, od jakékoli třetí strany, včetně protokolů přenosů z brány firewall, sady Office 365 a nezabezpečené protokoly založené na událostech systému Windows. Sešity jsou založené na Azure Monitor sešity, které vám poskytnou rozšířenou možnost úprav a flexibility při navrhování vlastního sešitu. Další informace najdete v tématu [sešity](../azure-monitor/platform/workbooks-overview.md).
 
-1. V části **Nastavení**vyberte **sešity**. V části **nainstalováno**uvidíte všechny nainstalované sešity. V části **vše**můžete zobrazit celou galerii vestavěných sešitů, které jsou k dispozici pro instalaci. 
+1. V části **Nastavení** vyberte **sešity**. V části **nainstalováno** uvidíte všechny nainstalované sešity. V části **vše** můžete zobrazit celou galerii vestavěných sešitů, které jsou k dispozici pro instalaci. 
 2. Vyhledáním konkrétního sešitu zobrazíte celý seznam a popis toho, co jednotlivé nabídky nabízí. 
 3. Za předpokladu, že používáte Azure AD, můžete začít pracovat se službou Azure Sentinel, doporučujeme nainstalovat alespoň následující sešity:
    - **Azure AD**: použijte jednu nebo obě z následujících možností:
@@ -66,7 +66,7 @@ Předdefinované sešity poskytují integrovaná data z připojených zdrojů da
       ![Řídicí panel Palo Alto](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Sešity můžete přizpůsobit úpravou ![ tlačítka pro úpravy hlavního dotazu dotazu ](./media/qs-get-visibility/edit-query-button.png) . Kliknutím na tlačítko Log Analytics tlačítko ![ ](./media/qs-get-visibility/go-to-la-button.png) přejdete na Log Analytics a [upravíte dotaz tam](../azure-monitor/log-query/get-started-portal.md)a můžete vybrat tři tečky (...) a vybrat **přizpůsobit data dlaždice**, což umožňuje upravit hlavní filtr času nebo odebrat konkrétní dlaždice ze sešitu.
+Sešity můžete přizpůsobit úpravou ![ tlačítka pro úpravy hlavního dotazu dotazu ](./media/qs-get-visibility/edit-query-button.png) . Kliknutím na tlačítko Log Analytics tlačítko ![ ](./media/qs-get-visibility/go-to-la-button.png) přejdete na Log Analytics a [upravíte dotaz tam](../azure-monitor/log-query/log-analytics-tutorial.md)a můžete vybrat tři tečky (...) a vybrat **přizpůsobit data dlaždice**, což umožňuje upravit hlavní filtr času nebo odebrat konkrétní dlaždice ze sešitu.
 
 Další informace o práci s dotazy najdete v tématu [kurz: vizuální data v Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
@@ -74,7 +74,7 @@ Další informace o práci s dotazy najdete v tématu [kurz: vizuální data v L
 
 Pokud chcete přidat novou dlaždici, můžete ji přidat do existujícího sešitu, který vytvoříte, nebo do předdefinovaného sešitu ověřovacího protokolu Azure. 
 1. V Log Analytics vytvořte dlaždici pomocí pokynů v tématu [kurz: vizuální data v Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
-2. Po vytvoření dlaždice vyberte v části **připnout**sešit, ve kterém se má dlaždice zobrazit.
+2. Po vytvoření dlaždice vyberte v části **připnout** sešit, ve kterém se má dlaždice zobrazit.
 
 ## <a name="create-new-workbooks"></a>Vytváření nových sešitů
 Můžete vytvořit nový sešit úplně od začátku nebo použít vestavěný sešit jako základ pro nový sešit.
@@ -129,4 +129,3 @@ Další informace o tom, jak získat připravená zjišťování, najdete v tém
 V tomto rychlém startu jste zjistili, jak začít používat Azure Sentinel. Pokračujte v tomto kurzu, kde [zjistíte hrozby](tutorial-detect-threats-built-in.md).
 > [!div class="nextstepaction"]
 > [Vytvářejte vlastní pravidla detekce hrozeb](tutorial-detect-threats-custom.md) pro automatizaci reakcí na hrozby.
-

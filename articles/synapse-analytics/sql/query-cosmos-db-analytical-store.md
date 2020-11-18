@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 087ee796fbd3c0563b8019a062acab9c7ad80bb1
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 2ffc524c14b9ba281d7e386f7f8c726093f11dbf
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579381"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661014"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB ve fondu SQL bez serveru v odkazu Azure synapse (Preview)
 
@@ -25,7 +25,7 @@ Pro dotazování Azure Cosmos DB je dostupná plocha kompletního [výběru](/sq
 V tomto článku se dozvíte, jak napsat dotaz s neserverovým fondem SQL, který bude dotazovat data z Azure Cosmos DB kontejnerů s povoleným odkazem synapse. Pak si můžete přečíst další informace o vytváření zobrazení fondu SQL bez serveru nad kontejnery Azure Cosmos DB a jejich propojením s Power BI modely v [tomto](./tutorial-data-analyst.md) kurzu. 
 
 > [!IMPORTANT]
-> V tomto kurzu se používá kontejner s [Azure Cosmos DB dobře definovaným schématem](../../cosmos-db/analytical-store-introduction.md#schema-representation). Dotazování fondu SQL bez serveru poskytuje [Azure Cosmos DB úplných schémat přesnosti](#full-fidelity-schema) je dočasné chování, které se změní v závislosti na zpětné vazbě ve verzi Preview. Nespoléhá se na schéma sady výsledků `OPENROWSET` funkce bez `WITH` klauzule, která čte data z kontejneru se schématem s úplnými zobrazeními, protože prostředí dotazů může být změněno a zarovnané pomocí dobře definovaného schématu. Pošlete nám svůj názor na [Fórum o zpětné vazbě Azure synapse Analytics](https://feedback.azure.com/forums/307516-azure-synapse-analytics) nebo kontaktujte [produktový tým synapse Link](mailto:cosmosdbsynapselink@microsoft.com) , abyste mohli poskytnout zpětnou vazbu.
+> V tomto kurzu se používá kontejner s [Azure Cosmos DB dobře definovaným schématem](../../cosmos-db/analytical-store-introduction.md#schema-representation). Dotaz na možnosti, že fond SQL bez serveru poskytuje [Azure Cosmos DB kompletní schéma přesnosti](#full-fidelity-schema) je dočasné chování, které se změní v závislosti na zpětné vazbě ve verzi Preview. Nespoléhá se na schéma sady výsledků `OPENROWSET` funkce bez `WITH` klauzule, která čte data z kontejneru se schématem s úplnými zobrazeními, protože prostředí dotazů může být zarovnáno se změnami a musí se měnit na základě dobře definovaného schématu. Pošlete svůj názor na [fórum pro zpětnou vazbu ke službě Azure synapse Analytics](https://feedback.azure.com/forums/307516-azure-synapse-analytics) nebo se obraťte na [tým s odkazem na synapse](mailto:cosmosdbsynapselink@microsoft.com) a sdělte nám svůj názor.
 
 ## <a name="overview"></a>Přehled
 

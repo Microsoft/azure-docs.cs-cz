@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 8c439113907c2eb28c41aed3c21c1d27398d5207
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5456c53ca891a7c88797f9661a6a3b9b9935e08
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84987077"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660903"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrujte ověřování RADIUS brány Azure VPN Gateway se serverem NPS pro Multi-Factor Authentication 
 
@@ -35,7 +35,7 @@ Aby bylo možné vícefaktorové ověřování povolit, musí být uživatelé v
 ### <a name="step-1-create-a-virtual-network-gateway"></a>Krok 1: Vytvoření brány virtuální sítě
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ve virtuální síti, která bude hostovat bránu virtuální sítě, vyberte **podsítě**a pak vyberte **podsíť brány** , aby se vytvořila podsíť. 
+2. Ve virtuální síti, která bude hostovat bránu virtuální sítě, vyberte **podsítě** a pak vyberte **podsíť brány** , aby se vytvořila podsíť. 
 
     ![Obrázek týkající se přidání podsítě brány](./media/vpn-gateway-radiuis-mfa-nsp/gateway-subnet.png)
 3. Vytvořte bránu virtuální sítě zadáním následujících nastavení:
@@ -52,11 +52,11 @@ Aby bylo možné vícefaktorové ověřování povolit, musí být uživatelé v
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>Krok 2 konfigurace NPS pro Azure MFA
 
 1. Na serveru NPS [nainstalujte rozšíření serveru NPS pro Azure MFA](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
-2. Otevřete konzolu NPS, klikněte pravým tlačítkem na **Klienti RADIUS**a pak vyberte **Nový**. Vytvořte klienta protokolu RADIUS zadáním následujících nastavení:
+2. Otevřete konzolu NPS, klikněte pravým tlačítkem na **Klienti RADIUS** a pak vyberte **Nový**. Vytvořte klienta protokolu RADIUS zadáním následujících nastavení:
 
     - **Popisný název**: zadejte libovolný název.
     - **Adresa (IP nebo DNS)**: zadejte podsíť brány, kterou jste vytvořili v kroku 1.
-    - **Sdílený tajný**klíč: zadejte libovolný tajný klíč a zapamatujte si ho pro pozdější použití.
+    - **Sdílený tajný** klíč: zadejte libovolný tajný klíč a zapamatujte si ho pro pozdější použití.
 
       ![Obrázek o nastavení klienta RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
@@ -65,13 +65,13 @@ Aby bylo možné vícefaktorové ověřování povolit, musí být uživatelé v
 
     ![Obrázek o rozšířených nastaveních klienta RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
-4. Přejděte na **zásady**  >  **sítě**zásady, dvakrát klikněte na **připojení k zásadě serveru Microsoft Routing and Remote Access** , vyberte **udělit přístup**a pak klikněte na **OK**.
+4. Přejděte na **zásady**  >  **sítě** zásady, dvakrát klikněte na **připojení k zásadě serveru Microsoft Routing and Remote Access** , vyberte **udělit přístup** a pak klikněte na **OK**.
 
 ### <a name="step-3-configure-the-virtual-network-gateway"></a>Krok 3 konfigurace brány virtuální sítě
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 2. Otevřete bránu virtuální sítě, kterou jste vytvořili. Ujistěte se, že typ brány je nastavený na **VPN** a že je typ sítě VPN **založený na směrování**.
-3. Klikněte na položku nastavit **konfiguraci lokality**  >  **nyní**a potom zadejte následující nastavení:
+3. Klikněte na položku nastavit **konfiguraci lokality**  >  **nyní** a potom zadejte následující nastavení:
 
     - **Fond adres**: zadejte podsíť brány, kterou jste vytvořili v kroku 1.
     - **Typ ověřování**: vyberte **ověřování RADIUS**.
@@ -81,5 +81,5 @@ Aby bylo možné vícefaktorové ověřování povolit, musí být uživatelé v
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)
+- [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
 - [Integrace vaší stávající infrastruktury NPS se službou Multi-Factor Authentication](../active-directory/authentication/howto-mfa-nps-extension.md)

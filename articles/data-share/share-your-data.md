@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 11/12/2020
-ms.openlocfilehash: 27d48ef8961aa0b7fde4a92195ea92a1ec20c3f0
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 89c2a725b853b5a2a7578dccc1fd503917e12962
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594194"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659620"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Kurz: Sdílení dat prostřednictvím služby Azure Data Share  
 
@@ -94,9 +94,11 @@ Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](http
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-share-account"></a>Vytvoření účtu pro sdílení dat
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
@@ -111,16 +113,60 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj účet pro sdílení dat.|
-    | Skupina prostředků | *test-Resource-Group* | Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků. |
+    | Skupina prostředků | *testresourcegroup* | Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků. |
     | Umístění | *USA – východ 2* | Vyberte oblast pro svůj účet pro sdílení dat.
-    | Name | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
+    | Název | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
     | | |
 
 1. Vyberte **zkontrolovat + vytvořit** a pak **vytvořte** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty nebo méně. 
 
 1. Po dokončení nasazení vyberte **Přejít k prostředku**.
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
+
+Začněte tím, že připravíte prostředí pro rozhraní příkazového řádku Azure:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+K vytvoření prostředku použijte tyto příkazy:
+
+1. Pomocí příkazu [AZ Account set](/cli/azure/account#az_account_set) nastavte předplatné na aktuální výchozí předplatné:
+
+   ```azurecli
+   az account set --subscription 00000000-0000-0000-0000-000000000000
+   ```
+
+1. Pro registraci poskytovatele prostředků spusťte příkaz [AZ Provider Register](/cli/azure/provider#az_provider_register) :
+
+   ```azurecli
+   az provider register --name "Microsoft.DataShare"
+   ```
+
+1. Spusťte příkaz [az group create](/cli/azure/group#az_group_create) a vytvořte skupinu prostředků, nebo použijte už existující skupinu prostředků:
+
+   ```azurecli
+   az group create --name testresourcegroup --location "East US 2"
+   ```
+
+1. Spuštěním příkazu [AZ datashare Account Create](/cli/azure/ext/datashare/datashare/account#ext_datashare_az_datashare_account_create) vytvořte účet pro sdílení dat:
+
+   ```azurecli
+   az datashare account create --resource-group testresourcegroup --name datashareaccount --location "East US 2" 
+   ```
+
+   Pomocí příkazu [AZ data Share Account list](/cli/azure/ext/datashare/datashare/account#ext_datashare_az_datashare_account_list) zobrazíte vaše účty pro sdílení dat:
+
+   ```azurecli
+   az datashare account list --resource-group testresourcegroup
+   ```
+
+---
+
 ## <a name="create-a-share"></a>Vytvoření sdílené složky
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Přejděte na stránku s přehledem sdílení dat.
 
@@ -163,6 +209,38 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 1. Vyberte **Pokračovat**.
 
 1. Na kartě Revize + vytvořit zkontrolujte obsah balíčku, nastavení, příjemce a nastavení synchronizace. Vyberte **Vytvořit**.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Spuštěním příkazu [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) vytvořte sdílenou složku dat:
+
+   ```azurecli
+   az storage account create --resource-group testresourcegroup --name ContosoMarketplaceAccount
+   ```
+
+1. Pomocí příkazu [AZ Storage Container Create](/cli/azure/storage/container#az_storage_container_create) vytvořte kontejner pro sdílenou složku v předchozím příkazu:
+
+   ```azurecli
+   az storage container create --name ContosoMarketplaceContainer --account-name ContosoMarketplaceAccount
+   ```
+
+1. Spuštěním příkazu [AZ datashare Create](/cli/azure/ext/datashare/datashare#ext_datashare_az_datashare_create) vytvořte sdílenou složku dat:
+
+   ```azurecli
+   az datashare create --resource-group testresourcegroup \
+     --name ContosoMarketplaceDataShare --account-name ContosoMarketplaceAccount \
+     --description "Data Share" --share-kind "CopyBased" --terms "Confidential"
+   ```
+
+1. Pomocí příkazu [AZ datashare Pozvánka Create](/cli/azure/ext/datashare/datashare/invitation#ext_datashare_az_datashare_invitation_create) vytvořte pozvánku pro zadanou adresu:
+
+   ```azurecli
+   az datashare invitation create --resource-group testresourcegroup \
+     --name DataShareInvite --share-name ContosoMarketplaceDataShare \
+     --account-name ContosoMarketplaceAccount --target-email "jacob@fabrikam"
+   ```
+
+---
 
 Vaše sdílená složka Azure je teď vytvořená a příjemce vaší sdílené složky je teď připravený přijmout vaše pozvání.
 

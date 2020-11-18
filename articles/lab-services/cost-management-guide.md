@@ -5,12 +5,12 @@ author: rbest
 ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: 98e04ba6bb1310935c4893a3616dfd68c2e99a55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29f6be5319c5a142ad3ea0d73deb2f95d8cb0d7a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797628"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659722"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Správa nákladů pro Azure Lab Services
 
@@ -31,7 +31,7 @@ Tento odhad nemusí zobrazit všechny možné náklady. Není zahrnutý pár pro
 
 ## <a name="analyze-the-previous-months-usage"></a>Analyzovat využití v předchozím měsíci
 
-Analýza nákladů slouží ke kontrole využití v předchozím měsíci, což vám pomůže určit případné úpravy testovacího prostředí. V části [Analýza nákladů předplatného](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis)můžete najít rozpis minulých nákladů. V Azure Portal můžete zadat **odběry** do vyhledávacího pole a pak vybrat možnost **předplatná** . 
+Analýza nákladů slouží ke kontrole využití v předchozím měsíci, což vám pomůže určit případné úpravy testovacího prostředí. V části [Analýza nákladů předplatného](../cost-management-billing/costs/quick-acm-cost-analysis.md)můžete najít rozpis minulých nákladů. V Azure Portal můžete zadat **odběry** do vyhledávacího pole a pak vybrat možnost **předplatná** . 
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky, který zobrazuje vyhledávací pole a možnost předplatných.](./media/cost-management-guide/subscription-search.png)
@@ -41,12 +41,12 @@ Vyberte konkrétní předplatné, které chcete zkontrolovat.
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky zobrazující výběr předplatného](./media/cost-management-guide/subscription-select.png)
 
-V levém podokně v části **cost management**vyberte **Analýza nákladů** .
+V levém podokně v části **cost management** vyberte **Analýza nákladů** .
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky zobrazující analýzu nákladů předplatného v grafu](./media/cost-management-guide/subscription-cost-analysis.png)
 
-Tento řídicí panel umožňuje podrobnou analýzu nákladů, včetně možnosti exportu do různých typů souborů podle plánu. Další informace najdete v tématu [cost management + Přehled fakturace](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview).
+Tento řídicí panel umožňuje podrobnou analýzu nákladů, včetně možnosti exportu do různých typů souborů podle plánu. Další informace najdete v tématu [cost management + Přehled fakturace](../cost-management-billing/cost-management-billing-overview.md).
 
 Můžete filtrovat podle typu prostředku. Pomocí `microsoft.labservices/labaccounts` se zobrazí jenom náklady spojené se službou Lab Services.
 
@@ -57,7 +57,7 @@ Následující snímek obrazovky je příkladem analýzy nákladů.
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky, který ukazuje příklad analýzy nákladů na předplatné.](./media/cost-management-guide/cost-analysis.png)
 
-Ve výchozím nastavení existuje šest sloupců: **prostředek**, **typ prostředku**, **umístění**, **název skupiny prostředků**, **značky**a **náklady**. Sloupec **prostředek** obsahuje informace o účtu testovacího prostředí, názvu testovacího prostředí a virtuálním počítači. Řádky, které zobrazují účet testovacího prostředí, název testovacího prostředí a výchozí (druhý a třetí řádek), jsou náklady na testovací prostředí. Využívané virtuální počítače mají náklady, které vidíte pro řádky, které zobrazují účet testovacího prostředí, název testovacího prostředí, výchozí nastavení a název virtuálního počítače. 
+Ve výchozím nastavení existuje šest sloupců: **prostředek**, **typ prostředku**, **umístění**, **název skupiny prostředků**, **značky** a **náklady**. Sloupec **prostředek** obsahuje informace o účtu testovacího prostředí, názvu testovacího prostředí a virtuálním počítači. Řádky, které zobrazují účet testovacího prostředí, název testovacího prostředí a výchozí (druhý a třetí řádek), jsou náklady na testovací prostředí. Využívané virtuální počítače mají náklady, které vidíte pro řádky, které zobrazují účet testovacího prostředí, název testovacího prostředí, výchozí nastavení a název virtuálního počítače. 
 
 V tomto příkladu přidáváme první a druhý řádek (začátek s **aaalab/dockerlab**) celkové náklady za testovací prostředí dockerlab v účtu testovacího prostředí "aaalab".
 
@@ -70,7 +70,7 @@ Chcete-li získat celkové náklady na galerii imagí, změňte typ prostředku 
 
 Některé univerzity používaly účet testovacího prostředí a skupinu prostředků jako způsob oddělení tříd. Každá třída má svůj vlastní účet testovacího prostředí a skupinu prostředků. 
 
-V podokně analýza nákladů přidejte filtr na základě názvu skupiny prostředků s odpovídajícím názvem skupiny prostředků pro danou třídu. Pak budou viditelné jenom náklady za tuto třídu. To umožňuje vymazat depřímení mezi třídami při prohlížení nákladů. Pomocí funkce [plánovaného exportu](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) analýzy nákladů můžete stáhnout náklady na jednotlivé třídy v samostatných souborech.
+V podokně analýza nákladů přidejte filtr na základě názvu skupiny prostředků s odpovídajícím názvem skupiny prostředků pro danou třídu. Pak budou viditelné jenom náklady za tuto třídu. To umožňuje vymazat depřímení mezi třídami při prohlížení nákladů. Pomocí funkce [plánovaného exportu](../cost-management-billing/costs/tutorial-export-acm-data.md) analýzy nákladů můžete stáhnout náklady na jednotlivé třídy v samostatných souborech.
 
 ## <a name="manage-costs"></a>Správa nákladů
 
@@ -90,7 +90,7 @@ Tato nastavení můžete nakonfigurovat na úrovni účtu testovacího prostřed
 > [!NOTE]
 > Toto nastavení je k dispozici pouze pro virtuální počítače s Windows.
 
-Když je zapnuté nastavení **Odpojit uživatele, když jsou virtuální počítače neaktivní** , je uživatel odpojený od všech počítačů v testovacím prostředí, když operační systém Windows považuje relaci za nečinné (včetně virtuálních počítačů šablony). [Definice operačního systému Windows pro nečinnost](https://docs.microsoft.com/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state) používá dvě kritéria: 
+Když je zapnuté nastavení **Odpojit uživatele, když jsou virtuální počítače neaktivní** , je uživatel odpojený od všech počítačů v testovacím prostředí, když operační systém Windows považuje relaci za nečinné (včetně virtuálních počítačů šablony). [Definice operačního systému Windows pro nečinnost](/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state) používá dvě kritéria: 
 
 * Absence uživatele: není zadána klávesnice ani myš.
 * Nedostatek spotřeby prostředků: všechny procesory a všechny disky byly po určitou procentuální době nečinné.
@@ -122,7 +122,7 @@ Virtuální počítače s Windows se automaticky ukončí 20 minut poté, co je 
 * Pro Linux je připojení SSH odpojeno.
  
 > [!NOTE]
-> Jsou podporovány pouze [konkrétní distribuce a verze systému Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#supported-linux-distributions) .
+> Jsou podporovány pouze [konkrétní distribuce a verze systému Linux](../virtual-machines/extensions/diagnostics-linux.md#supported-linux-distributions) .
  
 Můžete určit, jak dlouho by měly virtuální počítače čekat na opětovné připojení uživatele, než se automaticky vypíná. 
 

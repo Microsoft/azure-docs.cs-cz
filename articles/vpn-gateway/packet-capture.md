@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: 3be01f6d8e1fb1f6ba541f8d1cb0c92d2a43b0da
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c6aa2b63344ef629d55f5a4efb66e4ee0e55975e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073100"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661031"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>Konfigurace zachytávání paketů pro brány VPN
 
@@ -318,7 +318,7 @@ Následující příklady JSON a schématu JSON poskytují vysvětlení jednotli
 
 ## <a name="set-up-packet-capture-by-using-powershell"></a>Nastavení zachycení paketů pomocí prostředí PowerShell
 
-Následující příklady znázorňují příkazy prostředí PowerShell, které spouští a zakazují zachytávání paketů. Další informace o možnostech parametrů naleznete v tématu [Start-AzVirtualnetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
+Následující příklady znázorňují příkazy prostředí PowerShell, které spouští a zakazují zachytávání paketů. Další informace o možnostech parametrů naleznete v tématu [Start-AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>Spustit zachytávání paketů pro bránu sítě VPN
 
@@ -354,7 +354,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 - Navrhovaná minimální doba zachytávání paketů je 600 sekund. Kvůli problémům s synchronizací mezi několika součástmi na cestě nemusí být zachytávání paketů poskytovat úplná data.
 - Soubory dat zachycení paketů se generují ve formátu PCAP. K otevření souborů PCAP použijte Wireshark nebo jiné běžně dostupné aplikace.
 - Zachytávání paketů nejsou podporovány u bran založených na zásadách.
-- Pokud `SASurl` není parametr správně nakonfigurován, trasování může selhat s chybami úložiště. Příklady, jak správně vygenerovat `SASurl` parametr, naleznete v tématu [stop-AzVirtualNetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture).
+- Pokud `SASurl` není parametr správně nakonfigurován, trasování může selhat s chybami úložiště. Příklady, jak správně vygenerovat `SASurl` parametr, naleznete v tématu [stop-AzVirtualNetworkGatewayPacketCapture](/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture).
 
 
 

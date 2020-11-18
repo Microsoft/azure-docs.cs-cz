@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 9d8d0fc46a463bda31595988d807854ef146d333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 408913fed864ee5f966b96c81afbfee4b2dc8678
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88761712"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660725"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>Lepší správa SOC s využitím metrik pro incidenty
 
@@ -39,7 +39,7 @@ Tabulka **SecurityIncident** je integrovaná do Azure Sentinel. Najdete ho s ost
 
 Pokaždé, když vytvoříte nebo aktualizujete incident, bude do tabulky přidána nová položka protokolu. To vám umožňuje sledovat změny provedené u incidentů a umožňuje ještě výkonnější SOC metriky, ale při sestavování dotazů pro tuto tabulku musíte být vědomi, že budete možná potřebovat odebrat duplicitní položky pro incident (závisí na přesném dotazu, který používáte). 
 
-Pokud byste například chtěli vrátit seznam všech incidentů seřazených podle čísla incidentu, ale chtěli byste vrátit nejnovější protokol na incident, můžete to udělat pomocí [operátoru KQL sumarizace](https://docs.microsoft.com/azure/data-explorer/kusto/query/summarizeoperator) s `arg_max()` [agregační funkcí](https://docs.microsoft.com/azure/data-explorer/kusto/query/arg-max-aggfunction):
+Pokud byste například chtěli vrátit seznam všech incidentů seřazených podle čísla incidentu, ale chtěli byste vrátit nejnovější protokol na incident, můžete to udělat pomocí [operátoru KQL sumarizace](/azure/data-explorer/kusto/query/summarizeoperator) s `arg_max()` [agregační funkcí](/azure/data-explorer/kusto/query/arg-max-aggfunction):
 
 
 ```Kusto
@@ -82,9 +82,9 @@ Pokud chcete doplnit tabulku **SecurityIncidents** , poskytli jsme vám předem 
 
 Tuto novou šablonu sešitu můžete najít tak, že v navigační nabídce Azure Sentinel kliknete na možnost **sešity** a vyberete kartu **šablony** . Z Galerie vyberte možnost **efektivita operací zabezpečení** a klikněte na jedno z tlačítek **Zobrazit uložený sešit** a **Zobrazit šablonu** .
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="Tabulka incidentů zabezpečení":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="Galerie sešitů s incidenty zabezpečení":::
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="Tabulka incidentů zabezpečení":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="Sešit incidentů zabezpečení byl dokončen.":::
 
 Šablonu můžete použít k vytvoření vlastních sešitů přizpůsobených vašim konkrétním potřebám.
 

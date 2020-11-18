@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: 4783016e472907392f2d379efa0fed2d90ed21bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beb59674d678ed9c61c9ee0b425da7032794ca64
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595355"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660606"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Vzdálená práce: požadavky na síťové virtuální zařízení (síťové virtuální zařízení) pro vzdálenou práci
 
@@ -30,7 +30,7 @@ Všichni hlavní dodavatelé síťové virtuální zařízení v Azure Marketpla
 
 - **Kapacita a počet souběžných uživatelů** – toto číslo je zvláště důležité pro uživatele sítě VPN typu Point-to-site, protože každý připojený uživatel vytvoří jedno šifrované tunelové propojení (IPSec nebo SSL VPN).  
 - **Agregovaná propustnost** – jedná se o agregovanou šířku pásma, kterou budete potřebovat pro zajištění, že budete potřebovat vzdálený přístup.
-- **Velikost virtuálního počítače, kterou budete potřebovat** – měli byste vždycky používat velikosti virtuálních počítačů doporučené dodavatelem síťové virtuální zařízení.  V případě sítě VPN typu Point-to-site, pokud budete mít hodně souběžných uživatelských připojení, byste měli používat větší velikosti virtuálních počítačů, jako jsou virtuální počítače [Dv2 a DSv2 Series](https://docs.microsoft.com/azure/virtual-machines/dv2-dsv2-series "Řady Dv2 a Dsv2") . Tyto virtuální počítače mají za následek větší vCPU a můžou zpracovávat víc souběžných relací VPN.  Kromě virtuálních jader mají větší velikost virtuálních počítačů v Azure větší agregovanou kapacitu šířky pásma než menší velikosti virtuálních počítačů.
+- **Velikost virtuálního počítače, kterou budete potřebovat** – měli byste vždycky používat velikosti virtuálních počítačů doporučené dodavatelem síťové virtuální zařízení.  V případě sítě VPN typu Point-to-site, pokud budete mít hodně souběžných uživatelských připojení, byste měli používat větší velikosti virtuálních počítačů, jako jsou virtuální počítače [Dv2 a DSv2 Series](../virtual-machines/dv2-dsv2-series.md "Řady Dv2 a Dsv2") . Tyto virtuální počítače mají za následek větší vCPU a můžou zpracovávat víc souběžných relací VPN.  Kromě virtuálních jader mají větší velikost virtuálních počítačů v Azure větší agregovanou kapacitu šířky pásma než menší velikosti virtuálních počítačů.
     > **Důležité informace:** Každý dodavatel využívá prostředky odlišně.  Pokud není jasné, jaké velikosti instancí byste měli použít k uspokojení odhadovaného uživatelského zatížení, obraťte se na dodavatele softwaru přímo a požádejte ho o doporučení.
 - **Počet instancí** – Pokud očekáváte, že budete mít velký počet uživatelů a připojení, dojde k omezením toho, co může dosáhnout škálování velikosti instancí síťové virtuální zařízení.  Zvažte nasazení více instancí virtuálních počítačů.
 - **IPSec VPN vs SSL VPN** – v obecných implementacích IPSec VPN je lepší než implementace SSL VPN.  

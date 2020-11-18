@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ebf383c1a904027d3ff5a1864ea9f50e87a5fa8
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0bd2b295e5e4d4d5ea6e25869c8c109ff8bbbf38
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093289"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660759"
 ---
 # <a name="list-blobs-with-net"></a>Výpis objektů BLOB pomocí .NET
 
@@ -51,11 +51,7 @@ Přetížení těchto metod poskytují další možnosti pro správu způsobu, j
 
 ### <a name="manage-how-many-results-are-returned"></a>Spravujte, kolik výsledků se vrátí.
 
-Ve výchozím nastavení vrací operace výpisu po dobu až 5000 výsledků, ale můžete zadat počet výsledků, které mají vracet jednotlivé operace výpisu. Příklady uvedené v tomto článku vám ukážou, jak to udělat.
-
-Pokud operace výpisu vrátí více než 5000 objektů BLOB nebo pokud počet dostupných objektů BLOB překračuje zadaný počet, pak Azure Storage vrátí *token pro pokračování* se seznamem objektů BLOB. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
-
-V kódu zkontrolujte hodnotu tokenu pokračování a určete, zda má hodnotu null. Pokud má token pokračování hodnotu null, sada výsledků je dokončena. Pokud token pro pokračování není null, pak znovu spusťte operaci výpisu, která předá token pro pokračování pro načtení další sady výsledků, dokud token pro pokračování nemá hodnotu null.
+Ve výchozím nastavení vrací operace výpisu po dobu až 5000 výsledků, ale můžete zadat počet výsledků, které mají vracet jednotlivé operace výpisu. Příklady uvedené v tomto článku ukazují, jak vracet výsledky na stránkách.
 
 ### <a name="filter-results-with-a-prefix"></a>Filtrovat výsledky s předponou
 
@@ -63,7 +59,7 @@ Chcete-li filtrovat seznam objektů blob, zadejte řetězec pro `prefix` paramet
 
 ### <a name="return-metadata"></a>Návratová metadata
 
-Můžete vracet metadata objektu BLOB s výsledky. 
+Můžete vracet metadata objektu BLOB s výsledky.
 
 - Pokud používáte sadu .NET V12 SDK, zadejte hodnotu **metadat** pro výčet [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) .
 
@@ -90,6 +86,10 @@ Pokud jste na svém účtu povolili funkci hierarchického oboru názvů, adres�
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Pokud operace výpisu vrátí více než 5000 objektů BLOB nebo pokud počet dostupných objektů BLOB překračuje zadaný počet, pak Azure Storage vrátí *token pro pokračování* se seznamem objektů BLOB. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
+
+V kódu zkontrolujte hodnotu tokenu pokračování a určete, zda má hodnotu null. Pokud má token pokračování hodnotu null, sada výsledků je dokončena. Pokud token pro pokračování není null, pak znovu spusťte operaci výpisu, která předá token pro pokračování pro načtení další sady výsledků, dokud token pro pokračování nemá hodnotu null.
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)

@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Naučte se používat veřejný Nástroj pro vyrovnávání zatížení se standardní SKU k vystavování služeb pomocí Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 06/14/2020
+ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 51cb79e942b9d92876bd4d0e2cc27bb5ee0337bf
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: b42a952b096f533f916879a11fdb6b6583fa8592
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634867"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660351"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Použití veřejné Standard Load Balancer ve službě Azure Kubernetes (AKS)
 
@@ -87,6 +87,9 @@ Při použití veřejného nástroje pro vyrovnávání zatížení Standard SKU
 * Upravte počet přidělených odchozích portů na každý uzel clusteru.
 * Konfigurace nastavení časového limitu pro nečinné připojení
 
+> [!IMPORTANT]
+> V daném okamžiku může být použita pouze jedna možnost odchozí IP adresa (spravované IP adresy, uvést vlastní IP adresu nebo předponu IP).
+
 ### <a name="scale-the-number-of-managed-outbound-public-ips"></a>Škálování počtu spravovaných odchozích veřejných IP adres
 
 Azure Load Balancer poskytuje kromě příchozího i odchozí připojení z virtuální sítě. Odchozí pravidla usnadňují konfiguraci odchozího překladu síťových adres pro veřejné Standard Load Balancer.
@@ -120,10 +123,11 @@ Když použijete nástroj pro vyrovnávání zatížení *Standard* SKU, ve výc
 
 Veřejná IP adresa vytvořená pomocí AKS se považuje za spravovaný prostředek AKS. To znamená, že životní cyklus této veřejné IP adresy je určený ke správě pomocí AKS a nevyžaduje žádnou akci uživatele přímo na prostředku veřejné IP adresy. Alternativně můžete v době vytváření clusteru přiřadit vlastní předponu veřejné IP adresy nebo veřejné IP adresy. Vlastní IP adresy se taky dají aktualizovat ve vlastnostech nástroje pro vyrovnávání zatížení existujícího clusteru.
 
-> [!NOTE]
-> Vlastní veřejné IP adresy musí vytvořit a vlastnit uživatel. Spravované veřejné IP adresy vytvořené pomocí AKS se nedají znovu použít jako Přineste si vlastní IP adresu, protože může dojít ke konfliktům při správě.
+Požadavky na používání vlastní veřejné IP adresy nebo předpony:
 
-Než tuto operaci provedete, ujistěte se, že splňujete [požadavky a omezení](../virtual-network/public-ip-address-prefix.md#constraints) nutná ke konfiguraci odchozích IP adres nebo předpon odchozích IP adres.
+- Vlastní veřejné IP adresy musí vytvořit a vlastnit uživatel. Spravované veřejné IP adresy vytvořené pomocí AKS se nedají znovu použít jako Přineste si vlastní IP adresu, protože může dojít ke konfliktům při správě.
+- Musíte zajistit, aby identita clusteru AKS (instanční objekt nebo spravovaná identita) měla oprávnění pro přístup k odchozí IP adrese. Podle [seznamu požadovaných oprávnění veřejných IP adres](kubernetes-service-principal.md#networking).
+- Ujistěte se, že splňujete [požadavky a omezení](../virtual-network/public-ip-address-prefix.md#constraints) nutná ke konfiguraci odchozích IP adres nebo předpon odchozích IP adres.
 
 #### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>Aktualizujte cluster s vlastní odchozí veřejnou IP adresou.
 
@@ -229,7 +233,7 @@ Aby bylo možné bezpečně přejít nad 100 uzlů, je nutné přidat další IP
 > [!IMPORTANT]
 > *Abyste se* vyhnuli problémům s připojením nebo škálováním, musíte nejprve [Vypočítat požadovanou kvótu a ověřit požadavky][requirements] .
 
-Parametry můžete použít také **`load-balancer-outbound-ports`** při vytváření clusteru, ale musíte také zadat buď **`load-balancer-managed-outbound-ip-count`** , **`load-balancer-outbound-ips`** nebo **`load-balancer-outbound-ip-prefixes`** i.  Příklad:
+Parametry můžete použít také **`load-balancer-outbound-ports`** při vytváření clusteru, ale musíte také zadat buď **`load-balancer-managed-outbound-ip-count`** , **`load-balancer-outbound-ips`** nebo **`load-balancer-outbound-ip-prefixes`** i.  Například:
 
 ```azurecli-interactive
 az aks create \
@@ -266,7 +270,7 @@ Pokud očekáváte, že budete mít krátká krátkodobá připojení, a žádn�
  
 *outboundIPs* \* 64 000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
-Pokud máte například 3 *nodeVMs* a 50 000 *desiredAllocatedOutboundPorts* , musíte mít aspoň 3 *outboundIPs*. Doporučuje se, abyste zahrnuli Další odchozí IP kapacitu nad rámec toho, co potřebujete. Kromě toho musíte při výpočtu kapacity odchozí IP adresy účtu pro automatické škálování clusteru a možnost upgradů fondu uzlů. Pro automatické škálování clusteru Zkontrolujte aktuální počet uzlů a maximální počet uzlů a použijte vyšší hodnotu. Pro upgrade můžete pro každý fond uzlů, který umožňuje upgradování, přihlédnout k virtuálnímu počítači pro další uzly.
+Pokud máte například 3 *nodeVMs* a 50 000 *desiredAllocatedOutboundPorts*, musíte mít aspoň 3 *outboundIPs*. Doporučuje se, abyste zahrnuli Další odchozí IP kapacitu nad rámec toho, co potřebujete. Kromě toho musíte při výpočtu kapacity odchozí IP adresy účtu pro automatické škálování clusteru a možnost upgradů fondu uzlů. Pro automatické škálování clusteru Zkontrolujte aktuální počet uzlů a maximální počet uzlů a použijte vyšší hodnotu. Pro upgrade můžete pro každý fond uzlů, který umožňuje upgradování, přihlédnout k virtuálnímu počítači pro další uzly.
 
 - Při nastavování *IdleTimeoutInMinutes* na jinou hodnotu než výchozí hodnota 30 minut zvažte, jak dlouho budou vaše úlohy potřebovat odchozí připojení. Zvažte také výchozí hodnotu časového limitu pro nástroj pro vyrovnávání zatížení *Standard* SKU, který se používá mimo AKS, na 4 minuty. Hodnota *IdleTimeoutInMinutes* , která přesněji odráží konkrétní úlohu AKS, může přispět ke snížení vyčerpání SNAT způsobená vytvořením připojení, která se už nepoužívají.
 

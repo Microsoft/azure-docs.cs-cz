@@ -167,7 +167,7 @@
 - name: Referenční informace
   items:
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/labservices/'
+      href: /rest/api/labservices/
     - name: Modul PowerShellu Az.LabServices (Preview)
       href: reference-powershell-module.md
 - name: Zdroje a prostředky

@@ -8,17 +8,17 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 63484361a6d5a331fd9dc646c53627918ce8b246
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: f348a8d8755402d6426f19eabc432f54e3fb8e42
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630545"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659654"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Šablony mapování konektoru Azure IoT pro FHIR (Preview)
 Tento článek podrobně popisuje, jak nakonfigurovat Azure IoT Connector pro rychlé interoperability zdravotnictví (FHIR&#174;) * pomocí mapování šablon.
 
-Konektor Azure IoT pro FHIR vyžaduje dva typy šablon mapování založených na JSON. Prvním typem je **mapování zařízení** , které zodpovídá za mapování datových částí zařízení odeslaných do `devicedata` koncového bodu centra událostí Azure. Extrahuje typy, identifikátory zařízení, datum a čas měření a hodnoty měření. Druhý typ, **mapování FHIR** , řídí mapování pro prostředek FHIR. Umožňuje konfiguraci délky období pozorování, datového typu FHIR, který slouží k ukládání hodnot, a kódů terminologie. 
+Konektor Azure IoT pro FHIR vyžaduje dva typy šablon mapování založených na JSON. Prvním typem je **mapování zařízení**, které zodpovídá za mapování datových částí zařízení odeslaných do `devicedata` koncového bodu centra událostí Azure. Extrahuje typy, identifikátory zařízení, datum a čas měření a hodnoty měření. Druhý typ, **mapování FHIR**, řídí mapování pro prostředek FHIR. Umožňuje konfiguraci délky období pozorování, datového typu FHIR, který slouží k ukládání hodnot, a kódů terminologie. 
 
 Šablony mapování se skládají do dokumentu JSON na základě jejich typu. Tyto dokumenty JSON se pak přidají do vašeho konektoru Azure IoT Connector pro FHIR prostřednictvím Azure Portal. Dokument mapování zařízení se přidá prostřednictvím stránky **Konfigurace zařízení** mapování a dokumentu mapování FHIR prostřednictvím stránky **Konfigurace mapování FHIR** .
 
@@ -60,7 +60,7 @@ Samotná datová část obsahu je zpráva centra událostí Azure, která se skl
 ```
 
 ### <a name="mapping-with-json-path"></a>Mapování s cestou JSON
-Současné podporované typy šablon obsahu zařízení spoléhají na cestu JSON, aby odpovídaly požadované šabloně a extrahované hodnoty. Další informace o cestě JSON najdete [tady](https://goessner.net/articles/JsonPath/). Oba typy šablon používají [implementaci rozhraní JSON .NET](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm) pro překlad výrazů cesty JSON.
+Tři typy šablon obsahu zařízení, které se v současnosti podporují, spoléhají na cestu JSON, aby odpovídaly požadované šabloně a extrahované hodnoty. Další informace o cestě JSON najdete [tady](https://goessner.net/articles/JsonPath/). Všechny tři typy šablon používají [implementaci rozhraní JSON .NET](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm) pro překlad výrazů cesty JSON.
 
 #### <a name="jsonpathcontenttemplate"></a>JsonPathContentTemplate
 JsonPathContentTemplate umožňuje porovnání a extrakci hodnot z zprávy centra událostí pomocí cesty JSON.
@@ -71,8 +71,8 @@ JsonPathContentTemplate umožňuje porovnání a extrakci hodnot z zprávy centr
 |**TypeMatchExpression**|Výraz cesty JSON, který se vyhodnocuje s datovou částí centra událostí. Pokud se najde odpovídající JToken, šablona se považuje za shodu. Všechny následné výrazy jsou vyhodnocovány proti extrahovanému JToken, který se shoduje.|`$..[?(@heartRate)]`
 |**TimestampExpression**|Výraz cesty JSON pro extrakci hodnoty časového razítka pro OccurenceTimeUtc měření.|`$.endDate`
 |**DeviceIdExpression**|Výraz cesty JSON pro extrakci identifikátoru zařízení.|`$.deviceId`
-|**PatientIdExpression**|*Volitelné* : výraz cesty JSON pro extrakci identifikátoru pacienta.|`$.patientId`
-|**EncounterIdExpression**|*Volitelné* : výraz cesty JSON pro extrakci identifikátoru výskytu.|`$.encounterId`
+|**PatientIdExpression**|*Volitelné*: výraz cesty JSON pro extrakci identifikátoru pacienta.|`$.patientId`
+|**EncounterIdExpression**|*Volitelné*: výraz cesty JSON pro extrakci identifikátoru výskytu.|`$.encounterId`
 |**Hodnoty []. Hodnoty**|Název, který se má přidružit k hodnotě extrahované následným výrazem. Slouží k vytvoření vazby požadované hodnoty/komponenty v šabloně mapování FHIR. |`hr`
 |**Hodnoty []. ValueExpression**|Výraz cesty JSON pro extrakci požadované hodnoty.|`$.heartRate`
 |**Hodnoty []. Požadovanou**|Bude vyžadovat, aby byla hodnota přítomna v datové části.  Pokud se nenajde, měření se nevygeneruje a vyvolá se akce InvalidOperationException.|`true`
@@ -251,10 +251,12 @@ JsonPathContentTemplate umožňuje porovnání a extrakci hodnot z zprávy centr
     }
 }
 ```
+
 #### <a name="iotjsonpathcontenttemplate"></a>IotJsonPathContentTemplate
+
 IotJsonPathContentTemplate je podobný jako JsonPathContentTemplate s výjimkou DeviceIdExpression a TimestampExpression není vyžadováno.
 
-Předpokladem použití této šablony jsou vyhodnocené zprávy pomocí [sad SDK pro zařízení Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks). Pokud používáte tyto sady SDK, je identita zařízení (za předpokladu, že je identifikátor zařízení z Azure IoT Hub/Central registrovaný jako identifikátorem pro prostředek zařízení na cílovém serveru FHIR) a že se říká časové razítko zprávy. Pokud používáte sady SDK pro zařízení IoT Hub Azure, ale používáte vlastní vlastnosti v textu zprávy pro časové razítko pro identitu zařízení nebo měření, můžete i nadále používat JsonPathContentTemplate.
+Předpokladem použití této šablony jsou zprávy vyhodnocené pomocí [sad SDK pro zařízení azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) nebo  [Export dat (starší verze)](../iot-central/core/howto-export-data-legacy.md) [Azure IoT Central](../iot-central/core/overview-iot-central.md). Pokud používáte tyto sady SDK, je identita zařízení (za předpokladu, že je identifikátor zařízení z Azure IoT Hub/Central registrovaný jako identifikátorem pro prostředek zařízení na cílovém serveru FHIR) a že se říká časové razítko zprávy. Pokud používáte sady SDK pro zařízení IoT Hub Azure, ale používáte vlastní vlastnosti v textu zprávy pro časové razítko pro identitu zařízení nebo měření, můžete i nadále používat JsonPathContentTemplate.
 
 *Poznámka: při použití IotJsonPathContentTemplate by měl TypeMatchExpression překládat na celou zprávu jako na JToken. Podívejte se na následující příklady.* 
 ##### <a name="examples"></a>Příklady
@@ -329,6 +331,101 @@ Předpokladem použití této šablony jsou vyhodnocené zprávy pomocí [sad SD
             "valueName": "diastolic"
         }
     ]
+}
+```
+
+#### <a name="iotcentraljsonpathcontenttemplate"></a>IotCentralJsonPathContentTemplate
+
+IotCentralJsonPathContentTemplate také nevyžaduje DeviceIdExpression a TimestampExpression a používá se při vyhodnocování zpráv, které jsou odesílány prostřednictvím funkce [exportu dat](../iot-central/core/howto-export-data.md) služby [Azure IoT Central](../iot-central/core/overview-iot-central.md). Při použití této funkce se identita zařízení (za předpokladu, že je identifikátor zařízení z Azure IoT Central registrovaný jako identifikátorem pro prostředek zařízení na cílovém serveru FHIR) a že se říká časové razítko zprávy. Pokud používáte funkci exportu dat v Azure IoT Central, ale v textu zprávy pro časové razítko pro identitu zařízení nebo měření používáte vlastní vlastnosti, můžete i nadále používat JsonPathContentTemplate.
+
+*Poznámka: při použití IotCentralJsonPathContentTemplate by měl TypeMatchExpression překládat na celou zprávu jako na JToken. Podívejte se na následující příklady.* 
+##### <a name="examples"></a>Příklady
+---
+**Rychlost srdce**
+
+*Zpráva*
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "HeartRate": "88",
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
+}
+```
+*Šablona*
+```json
+{
+    "templateType": "IotCentralJsonPathContent",
+    "template": {
+        "typeName": "heartrate",
+        "typeMatchExpression": "$..[?(@telemetry.HeartRate)]",
+        "values": [
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.HeartRate",
+                "valueName": "hr"
+            }
+        ]
+    }
+}
+```
+---
+**Krevní tlak**
+
+*Zpráva*
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "BloodPressure": {
+            "Diastolic": "87",
+            "Systolic": "123"
+        }
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
+}
+```
+*Šablona*
+```json
+{
+    "templateType": "IotCentralJsonPathContent",
+    "template": {
+        "typeName": "bloodPressure",
+        "typeMatchExpression": "$..[?(@telemetry.BloodPressure.Diastolic && @telemetry.BloodPressure.Systolic)]",
+        "values": [
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.BloodPressure.Diastolic",
+                "valueName": "bp_diastolic"
+            },
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.BloodPressure.Systolic",
+                "valueName": "bp_systolic"
+            }
+        ]
+    }
 }
 ```
 

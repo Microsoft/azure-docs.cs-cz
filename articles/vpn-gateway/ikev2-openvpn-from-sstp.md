@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: c7f71d24ab516044a0ce48ad40f78bc659268866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59aa6f5560917651d8f60c667145b0953bf72ef5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442175"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660861"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Přechod na Protokol OpenVPN nebo IKEv2 z SSTP
 
@@ -58,9 +58,9 @@ Pokud si přejete, můžete povolit OpenVPN spolu s IKEv2. OpenVPN je založen n
 
 ![Point-to-site](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
 
-Po dokončení konfigurace brány se stávající klienti nebudou moct připojit, dokud neprovedete [nasazení a konfiguraci klientů OpenVPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients).
+Po dokončení konfigurace brány se stávající klienti nebudou moct připojit, dokud neprovedete [nasazení a konfiguraci klientů OpenVPN](./vpn-gateway-howto-openvpn-clients.md).
 
-Pokud používáte Windows 10, můžete použít také [klienta Azure VPN pro Windows](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client) .
+Pokud používáte Windows 10, můžete použít také [klienta Azure VPN pro Windows](./openvpn-azure-ad-client.md#to-download-the-azure-vpn-client) .
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: 93916bb1eb92447da45ebae7ccb2e61c5af1dd9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 168bb9e06c73ec27ec1304813023889c9549b8e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441574"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660691"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Přidání připojení typu Site-to-site k virtuální síti s existujícím připojením brány VPN (Classic)
 
@@ -71,8 +71,8 @@ Pokud už máte síť VPN typu Site-to-site s bránou dynamického směrování,
 2. Nakonfigurujte novou bránu a vytvořte tunel VPN. Pokyny najdete v tématu [určení typu SKU a sítě VPN](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Ujistěte se, že jste zadali typ směrování jako dynamický.
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Pokud nemáte virtuální síť typu Site-to-site:
-1. Pomocí těchto pokynů vytvořte virtuální síť Site-to-site: [vytvořte Virtual Network s připojením VPN typu Site-to-site](vpn-gateway-site-to-site-create.md).  
-2. Pomocí těchto pokynů nakonfigurujte bránu dynamického směrování: [nakonfigurujte VPN Gateway](vpn-gateway-configure-vpn-gateway-mp.md). Ujistěte se, že jste vybrali možnost **dynamické směrování** pro typ brány.
+1. Pomocí těchto pokynů vytvořte virtuální síť Site-to-site: [vytvořte Virtual Network s připojením VPN typu Site-to-site](./vpn-gateway-howto-site-to-site-classic-portal.md).  
+2. Pomocí těchto pokynů nakonfigurujte bránu dynamického směrování: [nakonfigurujte VPN Gateway](./vpn-gateway-howto-site-to-site-classic-portal.md). Ujistěte se, že jste vybrali možnost **dynamické směrování** pro typ brány.
 
 ## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. exportujte konfigurační soubor sítě.
 

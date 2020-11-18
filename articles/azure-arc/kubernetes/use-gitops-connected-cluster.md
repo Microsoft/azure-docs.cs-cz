@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps pro konfiguraci clusteru s podporou ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, Containers
-ms.openlocfilehash: 1a8839c2463494ba0e165bf9e1a5d22245fac8df
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ce6c754c308d2979db9b1b8eb36e7858e8a91c3c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371252"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659790"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC (Preview)
 
@@ -99,7 +99,7 @@ Tady jsou podporované scénáře pro parametr hodnota--úložiště-adresa URL.
 | Scénář | Formát | Popis |
 | ------------- | ------------- | ------------- |
 | Veřejné úložiště Git | http [s]://Server/repo.Git nebo git://server/repo.git   | Veřejné úložiště Git  |
-| Privátní úložiště Git – SSH – klíče vytvořené tokem | SSH://[user@] Server/úložiště. Git nebo [user@] Server: úložiště. Git | Veřejný klíč generovaný tokem musí být přidán do uživatelského účtu nebo úložiště ve vašem poskytovateli služby Git. Další podrobnosti najdete [tady](#apply-configuration-from-a-private-git-repository). |
+| Privátní úložiště Git – SSH – klíče vytvořené tokem | SSH://[user@] Server/úložiště. Git nebo [user@] Server: úložiště. Git | Veřejný klíč generovaný tokem musí být přidán do uživatelského účtu vašeho poskytovatele služby Git. Pokud se klíč nasazení přidá do úložiště místo uživatelského účtu, použijte `git@` místo `user@` . Další podrobnosti najdete [tady](#apply-configuration-from-a-private-git-repository). |
 
 Tyto scénáře jsou podporovány tokem, ale ne ještě pomocí sourceControlConfiguration.
 
@@ -220,18 +220,28 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 1. V Azure Portal přejděte na prostředek připojeného clusteru.
 2. Na stránce prostředek vyberte konfigurace a podívejte se na seznam konfigurací pro tento cluster.
 3. Vyberte konfiguraci, která používá soukromé úložiště Git.
-4. V kontextovém okně, které se otevře, zkopírujte **veřejný klíč úložiště**do dolní části okna.
+4. V kontextovém okně, které se otevře, zkopírujte **veřejný klíč úložiště** do dolní části okna.
 
-**Přidat veřejný klíč jako klíč nasazení do úložiště Git**
+Pokud používáte GitHub, použijte jednu z následujících dvou možností:
 
-1. Otevřete GitHub, přejděte do svého úložiště, do **Nastavení**a pak **Nasaďte klíče** .
+**Možnost 1: přidejte veřejný klíč do svého uživatelského účtu.**
+
+1. Otevřete GitHub, klikněte na ikonu profilu v pravém horním rohu stránky.
+2. Klikněte na **Nastavení** .
+3. Klikněte na **klíče SSH a GPG**
+4. Klikněte na **nový klíč SSH** .
+5. Zadejte název.
+6. Vložte veřejný klíč (mínus všechny okolní uvozovky).
+7. Klikněte na **Přidat klíč SSH** .
+
+**Možnost 2: přidejte veřejný klíč jako klíč nasazení do úložiště Git.**
+
+1. Otevřete GitHub, přejděte do svého úložiště, do **Nastavení** a pak **Nasaďte klíče** .
 2. Klikněte na **Přidat klíč nasazení** .
 3. Zadejte název.
 4. Ověřit **Povolení přístupu pro zápis**
 5. Vložte veřejný klíč (mínus všechny okolní uvozovky).
 6. Klikněte na **Přidat klíč** .
-
-Další informace o tom, jak tyto klíče spravovat, najdete v dokumentaci k GitHubu.
 
 **Pokud používáte úložiště Azure DevOps, přidejte klíč k klíčům SSH.**
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: e72acb532a33d0b3751bb8ad5051b1a3df4d7514
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 584e1e943f215aa4a69368fb71cb3053b1444a01
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491473"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660215"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -60,7 +60,7 @@ Způsoby použití vaší komerční nabídky na webu Marketplace závisí na to
 
 - Pro řešení, která poskytujete automaticky, ať už jsou placené, vlastní licence (BYOL) nebo bezplatné, se zákazníkům doporučuje *hned ho získat*.
 - Nabídky, které podporují testovací jednotku (demo), požadují od zákazníka *testování jednotky*. 
-- Software jako služba (SaaS) nabízí *bezplatnou zkušební verzi* , která poskytuje zkušební verzi mimo komerční web Marketplace.
+- Software jako služba (SaaS) nabízí *bezplatnou zkušební verzi*, která poskytuje zkušební verzi mimo komerční web Marketplace.
 - Jednoduché výpisy umožňují zákazníkovi požádat o *kontaktování*.
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Návody vytvořit nabídky pro komerční tržiště?
@@ -87,7 +87,7 @@ Komerční tržiště funguje pomocí modelu agentury. Zákazník si s námi pod
 
 Jako vydavatel nastavíte podmínky použití pro vaše softwarové řešení, které zákazníci musí přijmout jako součást toku nákupu. Abychom zjednodušili a urychlili věci, poskytujeme standardní kontrakt, který si můžete vybrat, abyste je mohli zahrnout do svých podmínek a ujednání. To umožňuje zákazníkům jednorázově kontrolovat standardní kontrakt, získat schválení od právních a nákupních týmů a pak se zaměřit na změny jednotlivých nabídek.
 
-Můžete vytvořit změny, které platí pro všechny zákazníky, nebo můžete provést změny specifické pro určité zákazníky. Můžete také plně přizpůsobit podmínky a ujednání, které lze zadat do textového pole nebo hostovat na webu, který se zobrazí jako webová adresa.
+Můžete vytvořit změny, které platí pro všechny zákazníky, nebo můžete provést změny specifické pro určité zákazníky. Můžete také plně přizpůsobit podmínky a ujednání, které lze zadat do textového pole v partnerském centru.
 
 Další informace najdete v tématu [standardní smlouva o komerčním tržišti společnosti Microsoft](standard-contract.md).
 
@@ -99,10 +99,10 @@ Ano, Azure Government Marketplace je k dispozici v rámci Azure Government oblas
 
 Existují čtyři relevantní role, které řídí přístup k partnerskému centru.
 
-- *Manager* : poskytuje oprávnění ke správě uživatelů partnerského centra v adresáři a k vytváření a aktualizaci nabídek.
-- *Vývojář* : umožňuje uživateli vytvářet a aktualizovat nabídky.
-- *Finanční Přispěvatel* : poskytuje oprávnění k zobrazení generování sestav výběr.
-- *Vlastník* : lze nastavit účet výběr a daňový profil. Uživatel, který přijal smlouvu vydavatele, se ve výchozím nastavení nastaví jako vlastník.
+- *Manager*: poskytuje oprávnění ke správě uživatelů partnerského centra v adresáři a k vytváření a aktualizaci nabídek.
+- *Vývojář*: umožňuje uživateli vytvářet a aktualizovat nabídky.
+- *Finanční Přispěvatel*: poskytuje oprávnění k zobrazení generování sestav výběr.
+- *Vlastník*: lze nastavit účet výběr a daňový profil. Uživatel, který přijal smlouvu vydavatele, se ve výchozím nastavení nastaví jako vlastník.
 
 Pro vytváření nových uživatelských účtů nebo pozvaní účtů hostů v podkladovém adresáři jsou nutná oprávnění *globálního správce* Azure Active Directory (Azure AD). Partnerský centrum používá Azure AD na model identity a instance Azure AD organizace je často spravovaná a řízená IT týmy IT nebo zabezpečením.
 

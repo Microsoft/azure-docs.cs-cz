@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4d1488d6dd2e5d08ae774ca88b7ab41b2020efe5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2726c8d416bee209f864f7e299403f589a767840
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000929"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659586"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>Rychlý Start: vytvoření spravovaného modulu HSM s Key Vault pomocí šablony Azure Resource Manager
 
@@ -23,9 +23,9 @@ Spravovaný modul HSM je plně spravovaná cloudová služba s vysokou dostupnos
 
 Tento rychlý Start se zaměřuje na proces nasazení šablony Správce prostředků pro vytvoření spravovaného modulu HSM.  [Šablona Resource Manageru](../../azure-resource-manager/templates/overview.md) je soubor JSON (JavaScript Object Notation), který definuje infrastrukturu a konfiguraci projektu. Tato šablona využívá deklarativní syntaxi, která umožňuje prohlásit, co máte v úmyslu vytvořit, aniž by k tomu bylo nutné psát sekvence programových příkazů. Pokud chcete získat další informace o vývoji šablon Resource Manageru, přečtěte si [dokumentaci k Resource Manageru](../../azure-resource-manager/index.yml) a [referenční informace k šablonám](/azure/templates/microsoft.keyvault/allversions).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku musíte mít následující položky:
 
@@ -79,7 +79,6 @@ Možná budete potřebovat i ID tenanta. Pokud ho chcete najít, použijte pří
     - **Skupina prostředků**: vyberte **vytvořit novou**, zadejte jedinečný název skupiny prostředků a pak klikněte na **OK**.
     - **Umístění**: vyberte umístění. Například **střed USA – jih**.
     - **managedHSMName**: zadejte název spravovaného HSM.
-    - **SKU**: zadejte název a rodinu spravovaného modulu HSM, který chcete vytvořit.  V tomto rychlém startu zadejte "Standard_B1" pro název a "B" pro rodinu.
     - **ID tenanta**: funkce šablony automaticky NAČTE vaše ID tenanta; neměňte výchozí hodnotu.  Pokud není žádná hodnota, zadejte ID tenanta, které jste získali v části [požadavky](#prerequisites).
     * **initialAdminObjectIds**: Zadejte ID objektu, který jste získali v části [požadavky](#prerequisites).
 

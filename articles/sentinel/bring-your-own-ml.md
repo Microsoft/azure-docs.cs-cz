@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 17c0ba7306ab4cc51fe8bbe3709d5b6bc85fa487
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a891a301d5869603a7d90d28bb9063d7d5bdb1d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344646"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660572"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Přineste si vlastní Machine Learning (ML) do Azure Sentinel
 
@@ -32,7 +32,7 @@ Modely detekce ML se můžou přizpůsobit individuálním prostředím a změn�
 
 ## <a name="what-is-the-bring-your-own-machine-learning-byo-ml-platform"></a>Jaká je vaše vlastní Platforma Machine Learning (vlastní-ML)?
 
-Pro organizace, které mají prostředky ML a chtějí sestavovat přizpůsobené modely ML pro své jedinečné obchodní potřeby, nabízíme **platformu vlastní-ml**. Platforma využívá [Azure Databricks](https://docs.microsoft.com/azure/databricks/scenarios/what-is-azure-databricks) / [Apache Spark](http://spark.apache.org/) prostředí a poznámkové bloky Jupyter k tvorbě prostředí ml. Poskytuje následující komponenty:
+Pro organizace, které mají prostředky ML a chtějí sestavovat přizpůsobené modely ML pro své jedinečné obchodní potřeby, nabízíme **platformu vlastní-ml**. Platforma využívá [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) / [Apache Spark](http://spark.apache.org/) prostředí a poznámkové bloky Jupyter k tvorbě prostředí ml. Poskytuje následující komponenty:
 
 - balíček vlastní-ML, který obsahuje knihovny, které vám pomůžou s přístupem k datům a nasdílení výsledků zpátky do Log Analytics (LA), abyste mohli výsledky integrovat s detekcí, šetřením a lovem. 
 
@@ -79,7 +79,7 @@ Pokud už máte datacihly nebo jiné prostředí Sparku a chcete raději použí
 
 Balíček vlastní ML obsahuje osvědčené postupy a výzkum Microsoftu na front-endu ML pro zabezpečení. V tomto balíčku poskytujeme následující seznam nástrojů, notebooků a šablon algoritmů pro problémy se zabezpečením.
 
-| Název souboru | Description |
+| Název souboru | Popis |
 | --------- | ----------- |
 | azure_sentinel_utilities. WHL | Obsahuje nástroje pro čtení objektů BLOB z Azure a zápis do Log Analytics. |
 | AnomalousRASampleData | Poznámkový blok znázorňuje použití modelu přístupu k prostředkům neobvyklé v Sentinel s vygenerovaným školením a testováním ukázkových dat. |
@@ -95,7 +95,7 @@ Teď, když jste se seznámili s klíčovými součástmi platformy vlastní-ML,
 
 ### <a name="setup-the-databricksspark-environment"></a>Nastavení prostředí datacihly/Spark
 
-Pokud ho ještě nemáte, budete muset nastavit vlastní prostředí datacihly. Pokyny najdete v dokumentu [rychlý Start pro datacihly](https://docs.microsoft.com/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal) .
+Pokud ho ještě nemáte, budete muset nastavit vlastní prostředí datacihly. Pokyny najdete v dokumentu [rychlý Start pro datacihly](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal) .
 
 ### <a name="auto-export-instruction"></a>Pokyn k automatickému exportu
 
@@ -103,7 +103,7 @@ Pokud chcete vytvořit vlastní modely ML na základě vašich vlastních dat v 
 
 V tomto příkladu budete potřebovat data školení pro protokol přístupu ke sdílené složce v úložišti objektů BLOB v Azure. Formát dat je popsán v poznámkovém bloku a v knihovnách.
 
-Data můžete automaticky exportovat z Log Analytics pomocí [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/monitor/log-analytics). 
+Data můžete automaticky exportovat z Log Analytics pomocí [rozhraní příkazového řádku Azure (CLI)](/cli/azure/monitor/log-analytics). 
 
 Aby bylo možné příkazy spustit, musíte mít přiřazenou roli **Přispěvatel** v pracovním prostoru Log Analytics, účtu úložiště a prostředku EventHub. 
 
@@ -159,13 +159,13 @@ Jakmile získáte hodnocení naplánované, můžete pomocí modulu v poznámkov
 
 Pokud se chcete podívat na výsledky skóre spolu s odpovídajícími podrobnostmi protokolu, vraťte se zpátky na svůj portál Sentinel Azure. V části **protokoly** > vlastní protokoly uvidíte výsledky v tabulce **AnomalousResourceAccessResult_CL** (nebo vlastní název tabulky). Tyto výsledky můžete použít k vylepšení šetření a loveckého prostředí.
 
-:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="Architektura strojového učení":::
+:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="protokoly přístupu k prostředkům neobvyklé":::
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>Sestavení vlastního pravidla analýzy pomocí ML výsledků
 
 Jakmile ověříte, že jsou výsledky ML v tabulce vlastních protokolů a Vy jste spokojeni s věrným skóre, můžete na základě výsledků vytvořit detekci. Z portálu Sentinel Azure můžete přejít na **analýzy** a [vytvořit nové pravidlo detekce](tutorial-detect-threats-custom.md). Níže je uveden příklad ukazující dotaz použitý k vytvoření detekce.
 
-:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="Architektura strojového učení":::
+:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="vytvořit vlastní pravidlo analýzy pro zjišťování B Y O M L":::
 
 ### <a name="view-and-respond-to-incidents"></a>Zobrazit incidenty a reagovat na ně
 Když nastavíte pravidlo analýzy na základě výsledků ML, pokud jsou výsledky nad prahovou hodnotou, kterou jste v dotazu nastavili, vygeneruje se incident a zobrazí se na stránce **incidenty** ve službě Azure Sentinel. 

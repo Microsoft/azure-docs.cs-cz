@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 723d93b9a5e986501278bdee35835cfa0c234711
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: fe0280e302882fd5e50830950b531ea9ca169618
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94555840"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660538"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí Azure Portal
 
@@ -74,58 +74,58 @@ V tomto článku se dozvíte, jak připojit virtuální sítě pomocí typu při
 **Hodnoty pro VNet1:**
 
 * **Nastavení virtuální sítě**
-  * **Název** : VNet1
-  * **Adresní prostor** : 10.1.0.0/16
-  * **Předplatné** : vyberte předplatné, které chcete použít.
-  * **Skupina prostředků** : TestRG1
-  * **Umístění** : východní USA
+  * **Název**: VNet1
+  * **Adresní prostor**: 10.1.0.0/16
+  * **Předplatné**: vyberte předplatné, které chcete použít.
+  * **Skupina prostředků**: TestRG1
+  * **Umístění**: východní USA
   * **Podsíť**
-    * **Název** : front-end
-    * **Rozsah adres** : 10.1.0.0/24
+    * **Název**: front-end
+    * **Rozsah adres**: 10.1.0.0/24
 
 * **Nastavení brány virtuální sítě**
-  * **Název** : VNet1GW
-  * **Skupina prostředků** : východní USA
-  * **Generování** : generace 1
-  * **Typ brány** : Vyberte **VPN**.
-  * **Typ sítě VPN** : vyberte **směrování * založené na**.
-  * **SKU** : VpnGw1
-  * **Virtuální síť** : VNet1
-  * **Rozsah adres podsítě brány** : 10.1.255.0/27
-  * **Veřejná IP adresa** : vytvořit nový
-  * **Název veřejné IP adresy** : VNet1GWpip
+  * **Název**: VNet1GW
+  * **Skupina prostředků**: východní USA
+  * **Generování**: generace 1
+  * **Typ brány**: Vyberte **VPN**.
+  * **Typ sítě VPN**: vyberte **směrování * založené na**.
+  * **SKU**: VpnGw1
+  * **Virtuální síť**: VNet1
+  * **Rozsah adres podsítě brány**: 10.1.255.0/27
+  * **Veřejná IP adresa**: vytvořit nový
+  * **Název veřejné IP adresy**: VNet1GWpip
 
 * **Připojení**
-  * **Název** : VNet1toVNet4
-  * **Sdílený klíč** : sdílený klíč můžete vytvořit sami. Když vytvoříte připojení mezi virtuální sítě, hodnoty se musí shodovat. Pro toto cvičení použijte abc123.
+  * **Název**: VNet1toVNet4
+  * **Sdílený klíč**: sdílený klíč můžete vytvořit sami. Když vytvoříte připojení mezi virtuální sítě, hodnoty se musí shodovat. Pro toto cvičení použijte abc123.
 
 **Hodnoty pro VNet4:**
 
 * **Nastavení virtuální sítě**
-  * **Název** : VNet4
-  * **Adresní prostor** : 10.41.0.0/16
-  * **Předplatné** : vyberte předplatné, které chcete použít.
-  * **Skupina prostředků** : TestRG4
-  * **Umístění** : západní USA
+  * **Název**: VNet4
+  * **Adresní prostor**: 10.41.0.0/16
+  * **Předplatné**: vyberte předplatné, které chcete použít.
+  * **Skupina prostředků**: TestRG4
+  * **Umístění**: západní USA
   * **Podsíť**
-  * **Název** : front-end
-  * **Rozsah adres** : 10.41.0.0/24
+  * **Název**: front-end
+  * **Rozsah adres**: 10.41.0.0/24
 
 * **Nastavení brány virtuální sítě**
-  * **Název** : VNet4GW
-  * **Skupina prostředků** : západní USA
-  * **Generování** : generace 1
-  * **Typ brány** : Vyberte **VPN**.
-  * **Typ sítě VPN** : vyberte **směrování založené na trasách**.
-  * **SKU** : VpnGw1
-  * **Virtuální síť** : VNet4
-  * **Rozsah adres podsítě brány** : 10.41.255.0/27
-  * **Veřejná IP adresa** : vytvořit nový
-  * **Název veřejné IP adresy** : VNet4GWpip
+  * **Název**: VNet4GW
+  * **Skupina prostředků**: západní USA
+  * **Generování**: generace 1
+  * **Typ brány**: Vyberte **VPN**.
+  * **Typ sítě VPN**: vyberte **směrování založené na trasách**.
+  * **SKU**: VpnGw1
+  * **Virtuální síť**: VNet4
+  * **Rozsah adres podsítě brány**: 10.41.255.0/27
+  * **Veřejná IP adresa**: vytvořit nový
+  * **Název veřejné IP adresy**: VNet4GWpip
 
 * **Připojení**
-  * **Název** : VNet4toVNet1
-  * **Sdílený klíč** : sdílený klíč můžete vytvořit sami. Když vytvoříte připojení mezi virtuální sítě, hodnoty se musí shodovat. Pro toto cvičení použijte abc123.
+  * **Název**: VNet4toVNet1
+  * **Sdílený klíč**: sdílený klíč můžete vytvořit sami. Když vytvoříte připojení mezi virtuální sítě, hodnoty se musí shodovat. Pro toto cvičení použijte abc123.
 
 ## <a name="create-and-configure-vnet1"></a>Vytvoření a konfigurace VNet1
 
@@ -157,7 +157,7 @@ Po nakonfigurování VNet1 vytvořte VNet4 a VNet4 bránu tak, že zopakujete p�
 
 Po dokončení bran virtuální sítě pro VNet1 i VNet4 můžete vytvořit připojení brány virtuální sítě. V této části vytvoříte připojení z VNet1 do VNet4. Tyto kroky fungují pouze u virtuálních sítí ve stejném předplatném. Pokud jsou vaše virtuální sítě v různých předplatných, musíte k vytvoření připojení použít [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) . Pokud se ale vaše virtuální sítě nacházejí v různých skupinách prostředků ve stejném předplatném, můžete je propojit pomocí portálu.
 
-1. V Azure Portal vyberte **všechny prostředky** , do vyhledávacího pole zadejte *Brána virtuální sítě* a potom přejděte k bráně virtuální sítě pro vaši virtuální síť. Například **VNet1GW**. Vyberte bránu, abyste otevřeli stránku **brány virtuální sítě** .
+1. V Azure Portal vyberte **všechny prostředky**, do vyhledávacího pole zadejte *Brána virtuální sítě* a potom přejděte k bráně virtuální sítě pro vaši virtuální síť. Například **VNet1GW**. Vyberte bránu, abyste otevřeli stránku **brány virtuální sítě** .
 1. Na stránce Brána otevřete **Nastavení->připojení**. Pak vyberte **+ Přidat**.
 
    :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="Stránka připojení":::
@@ -167,13 +167,13 @@ Po dokončení bran virtuální sítě pro VNet1 i VNet4 můžete vytvořit při
 
    Na stránce **Přidat připojení** vyplňte hodnoty pro vaše připojení:
 
-   * **Název** : zadejte název připojení. Například *VNet1toVNet4*.
+   * **Název**: zadejte název připojení. Například *VNet1toVNet4*.
 
-   * **Typ připojení** : v rozevíracím seznamu vyberte **VNet-to-VNet** .
+   * **Typ připojení**: v rozevíracím seznamu vyberte **VNet-to-VNet** .
 
-   * **První Brána virtuální sítě** : hodnota tohoto pole se vyplní automaticky, protože vytváříte připojení ze zadané brány virtuální sítě.
+   * **První Brána virtuální sítě**: hodnota tohoto pole se vyplní automaticky, protože vytváříte připojení ze zadané brány virtuální sítě.
 
-   * **Druhá Brána virtuální sítě** : Toto pole je branou virtuální sítě virtuální sítě, ke které chcete vytvořit připojení. Vyberte vybrat **jinou bránu virtuální sítě** a otevřete stránku **Vybrat bránu virtuální sítě** .
+   * **Druhá Brána virtuální sítě**: Toto pole je branou virtuální sítě virtuální sítě, ke které chcete vytvořit připojení. Vyberte vybrat **jinou bránu virtuální sítě** a otevřete stránku **Vybrat bránu virtuální sítě** .
 
       :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="Výběr brány":::
 
@@ -181,7 +181,7 @@ Po dokončení bran virtuální sítě pro VNet1 i VNet4 můžete vytvořit při
 
      * Vyberte bránu virtuální sítě, ke které se chcete připojit.
 
-   * **Shared Key (PSK)** : do tohoto pole zadejte sdílený klíč pro vaše připojení. Tento klíč si můžete vygenerovat nebo vytvořit sami. V případě připojení typu Site-to-site je klíč, který použijete, stejný pro vaše místní zařízení a připojení brány virtuální sítě. Tento koncept je podobný tomuto: s tím rozdílem, že místo připojení k zařízení VPN se připojujete k jiné bráně virtuální sítě.
+   * **Shared Key (PSK)**: do tohoto pole zadejte sdílený klíč pro vaše připojení. Tento klíč si můžete vygenerovat nebo vytvořit sami. V případě připojení typu Site-to-site je klíč, který použijete, stejný pro vaše místní zařízení a připojení brány virtuální sítě. Tento koncept je podobný tomuto: s tím rozdílem, že místo připojení k zařízení VPN se připojujete k jiné bráně virtuální sítě.
 1. Výběrem **OK** uložte změny.
 
 ## <a name="configure-the-vnet4-gateway-connection"></a>Konfigurace připojení brány VNet4
@@ -210,6 +210,6 @@ Projděte si Nejčastější dotazy, kde najdete další informace o propojeníc
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o tom, jak můžete omezit síťový provoz na prostředky ve virtuální síti, najdete v tématu [zabezpečení sítě](../virtual-network/security-overview.md).
+* Informace o tom, jak můžete omezit síťový provoz na prostředky ve virtuální síti, najdete v tématu [zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 
 * Informace o tom, jak Azure směruje provoz mezi Azure, místním prostředím a internetovými prostředky, najdete v tématu [Směrování provozu virtuální sítě](../virtual-network/virtual-networks-udr-overview.md).
