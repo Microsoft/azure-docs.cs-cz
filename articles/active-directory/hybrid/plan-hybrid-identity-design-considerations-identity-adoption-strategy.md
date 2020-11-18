@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f52e46ff9cab7d3d150af9fd7b4f1c432bec74b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294858"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836185"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definice strategie přijetí hybridní identity
 V této úloze definujete strategii přijetí hybridní identity pro vaše řešení hybridní identity, která bude vyhovovat obchodním požadavkům, které byly popsané v tématu:
@@ -176,7 +176,7 @@ Následující možnost není podporována a neměla by být vybrána jako imple
 > 
 
 ## <a name="define-multi-factor-authentication-strategy"></a>Definování strategie Multi-Factor Authentication
-V tomto úkolu definujete strategii Multi-Factor Authentication, která se bude používat.  Azure Multi-Factor Authentication se dodává ve dvou různých verzích.  Jedna je cloudová a druhá v místním prostředí založená na Azure MFA serveru.  Na základě hodnocení, které jste použili výše, můžete určit, které řešení je pro vaši strategii správné.  Pomocí následující tabulky určete, která možnost návrhu nejlépe splňuje požadavky zabezpečení vaší společnosti:
+V tomto úkolu definujete strategii Multi-Factor Authentication, která se bude používat.  Azure AD Multi-Factor Authentication se dodává ve dvou různých verzích.  Jedna je cloudová a druhá v místním prostředí založená na Azure MFA serveru.  Na základě hodnocení, které jste použili výše, můžete určit, které řešení je pro vaši strategii správné.  Pomocí následující tabulky určete, která možnost návrhu nejlépe splňuje požadavky zabezpečení vaší společnosti:
 
 Možnosti pro Multi-Factor design:
 

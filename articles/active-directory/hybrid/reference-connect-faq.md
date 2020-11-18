@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff2651d2fed9c307bbb90623572b4a74d750d3a4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014629"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836066"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy k Azure Active Directory Connect
 
@@ -65,7 +65,7 @@ Ne, víc konektorů pro stejnou doménu AD se nepodporuje.
 **Otázka: Mohu přesunout databázi Azure AD Connect z místní databáze do instance vzdáleného SQL Server?**   
 Ano, následující kroky poskytují obecné pokyny k tomu, jak to provést. V současné době pracujeme na podrobnějším dokumentu.
 1. Zálohujte databázi LocalDB ADSync.
-Nejjednodušší způsob, jak to provést, je použít SQL Server Management Studio nainstalované na stejném počítači jako Azure AD Connect. Připojte se k *(LocalDB) .\ADSync*a pak zálohujte databázi AdSync.
+Nejjednodušší způsob, jak to provést, je použít SQL Server Management Studio nainstalované na stejném počítači jako Azure AD Connect. Připojte se k *(LocalDB) .\ADSync* a pak zálohujte databázi AdSync.
 
 2. Obnovte databázi ADSync do instance vzdáleného SQL Server.
 
@@ -261,7 +261,7 @@ Pokud potřebujete pomoc s upgradem na novější verzi Azure AD Connect, otevř
 ## <a name="operational-best-practice"></a>Provozní osvědčený postup    
 Níže jsou uvedeny některé osvědčené postupy, které byste měli implementovat při synchronizaci mezi službou Windows Server Active Directory a Azure Active Directory.
 
-**Použít Multi-Factor Authentication u všech synchronizovaných účtů** Azure Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně zachovává jednoduchost uživatelů. Poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a zajišťuje silné ověřování prostřednictvím řady snadno použitelných metod ověřování. Na základě rozhodnutí týkajících se konfigurace, která správce provede, se uživatelé můžou nebo nemusí vyvolávat na MFA. Další informace o MFA získáte tady: https://www.microsoft.com/security/business/identity/mfa?rtc=1
+**Použít Multi-Factor Authentication u všech synchronizovaných účtů** Azure AD Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně zachovává jednoduchost uživatelů. Poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a zajišťuje silné ověřování prostřednictvím řady snadno použitelných metod ověřování. Na základě rozhodnutí týkajících se konfigurace, která správce provede, se uživatelé můžou nebo nemusí vyvolávat na MFA. Další informace o MFA získáte tady: https://www.microsoft.com/security/business/identity/mfa?rtc=1
 
 **Postupujte podle pokynů pro zabezpečení Azure AD Connect serveru** . Azure AD Connect Server obsahuje kritická data identity a měla by se považovat za součást vrstvy 0, jak je popsáno v [modelu vrstvy správy služby Active Directory](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material). Přečtěte si prosím naše [pokyny k zabezpečení AADConnect serveru](./how-to-connect-install-prerequisites.md#azure-ad-connect-server).
 

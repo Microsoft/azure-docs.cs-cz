@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eafeaf59757fcda978fa89b4bc2f9882b769e48
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84463752"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835896"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Simulace zjišťování rizik v Identity Protection
 
@@ -40,7 +40,7 @@ Další informace o jednotlivých detekcích rizik najdete v článku [co je to 
 Dokončení následujícího postupu vyžaduje, abyste použili:
 
 - [Prohlížeč mandátu](https://www.torproject.org/projects/torbrowser.html.en) pro simulaci anonymních IP adres. Je možné, že budete muset virtuální počítač použít, pokud vaše organizace omezuje používání prohlížeče pro prostředí.
-- Testovací účet, který ještě není zaregistrovaný pro Azure Multi-Factor Authentication.
+- Testovací účet, který ještě není zaregistrovaný pro Azure AD Multi-Factor Authentication.
 
 **Chcete-li simulovat přihlášení z anonymní IP adresy, proveďte následující kroky**:
 
@@ -61,7 +61,7 @@ Následující postup používá nově vytvořenou:
 Provedení následujícího postupu vyžaduje, abyste použili uživatelský účet, který má:
 
 - Aspoň 30 dní na historii přihlášení.
-- Azure Multi-Factor Authentication povolen.
+- Služba Azure AD Multi-Factor Authentication povolena.
 
 **Chcete-li simulovat přihlášení z neznámého umístění, proveďte následující kroky**:
 
@@ -93,7 +93,7 @@ V této části najdete postup testování uživatelů a zásad rizik přihlašo
 Chcete-li otestovat zásady zabezpečení rizik uživatelů, proveďte následující kroky:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory**  >  **Security**  >  **Přehled**zabezpečení Azure Active Directory.
+1. Přejděte na **Azure Active Directory**  >  **Security**  >  **Přehled** zabezpečení Azure Active Directory.
 1. Vyberte **Konfigurovat zásady rizik uživatelů**.
    1. V části **přiřazení**
       1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
@@ -113,7 +113,7 @@ Chcete-li otestovat zásady zabezpečení rizik uživatelů, proveďte následuj
 Chcete-li otestovat rizikové zásady přihlašování, proveďte následující kroky:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory**  >  **Security**  >  **Přehled**zabezpečení Azure Active Directory.
+1. Přejděte na **Azure Active Directory**  >  **Security**  >  **Přehled** zabezpečení Azure Active Directory.
 1. Vyberte **Konfigurovat zásady rizik přihlašování**.
    1. V části **přiřazení**
       1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.

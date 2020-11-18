@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ed8d645c5bedf6df087fa9c948415c6a1df24e9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 74cc5bb2b434e757e090bac45202704eb934a522
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783177"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835743"
 ---
 # <a name="what-is-identity-protection"></a>Co je ochrana identit?
 
@@ -39,9 +39,9 @@ V jeho [blogovém příspěvku v říjnu od 2018](https://techcommunity.microsof
 >
 > V Ignite minulý rok jsem na konci prvních 3 útoků na naše systémy identit. Toto je poslední objem těchto útoků.
 >   
->   - Opětovné **přehrání porušení** : 4.6 BN útoky zjištěné v květnu 2018
->   - **Sprej hesla** : 350K v dubnu 2018
->   - **Phishing** : těžko se naprosto kvantifikovat, ale v březnu 2018 jsme 23M rizikové události, mnoho z nich je v relaci phishing.
+>   - Opětovné **přehrání porušení**: 4.6 BN útoky zjištěné v květnu 2018
+>   - **Sprej hesla**: 350K v dubnu 2018
+>   - **Phishing**: těžko se naprosto kvantifikovat, ale v březnu 2018 jsme 23M rizikové události, mnoho z nich je v relaci phishing.
 
 ## <a name="risk-detection-and-remediation"></a>Detekce rizik a náprava
 
@@ -59,7 +59,7 @@ Identity Protection identifikuje rizika v následujících klasifikacích:
 
 Další podrobnosti o těchto rizicích a o tom, jak se počítají, najdete v článku [co je to riziko](concept-identity-protection-risks.md).
 
-Rizikové signály můžou aktivovat úsilí k nápravě, jako je třeba vyžadování uživatelů: provádět Azure Multi-Factor Authentication, resetovat heslo pomocí samoobslužného resetování hesla nebo zablokovat, dokud správce neprovede akci.
+Rizikové signály můžou aktivovat úsilí k nápravě, jako je třeba vyžadování uživatelů: provádět Multi-Factor Authentication služby Azure AD, resetovat heslo pomocí samoobslužného resetování hesla nebo zablokovat, dokud správce neprovede akci.
 
 ## <a name="risk-investigation"></a>Vyšetřování rizik
 
@@ -104,15 +104,15 @@ Správci podmíněného přístupu můžou také vytvářet zásady, které při
 
 | Schopnost | Podrobnosti  | Aplikace Azure AD Free/Microsoft 365 | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection)  | Ne | Ne |Ano | 
-| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup)  | Ne |  Ne |Ano |
-| Sestavy zabezpečení | Přehled |  Ne | Ne |Ano |
+| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection)  | Ne | Ne |Yes | 
+| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup)  | Ne |  Ne |Yes |
+| Sestavy zabezpečení | Přehled |  Ne | Ne |Yes |
 | Sestavy zabezpečení | Rizikoví uživatelé  | Omezené informace. Zobrazují se jenom uživatelé se středním a vysokým rizikem. Není k dispozici zásobník podrobností ani historie rizik. | Omezené informace. Zobrazují se jenom uživatelé se středním a vysokým rizikem. Není k dispozici zásobník podrobností ani historie rizik. | Full access|
 | Sestavy zabezpečení | Riziková přihlášení  | Omezené informace. Nezobrazuje se žádné podrobnosti o riziku ani úroveň rizika. | Omezené informace. Nezobrazuje se žádné podrobnosti o riziku ani úroveň rizika. | Full access|
 | Sestavy zabezpečení | Detekce rizik   | Ne | Omezené informace. Žádný zásobník podrobností| Full access|
-| Oznámení | Uživatelé s výstrahami zjištěnými riziky  | Ne | Ne |Ano |
-| Oznámení | Týdenní výtah| Ne | Ne | Ano | 
-| | Zásady registrace MFA | Ne | Ne | Ano |
+| Oznámení | Uživatelé s výstrahami zjištěnými riziky  | Ne | Ne |Yes |
+| Oznámení | Týdenní výtah| Ne | Ne | Yes | 
+| | Zásady registrace MFA | Ne | Ne | Yes |
 
 Další informace o těchto propracovaných sestavách najdete v článku [Postupy: šetření rizik](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 

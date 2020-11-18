@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8776ad915ff215eef143f62aaa9e242ff0354f3e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 28a9080ce878e262573adf0b3c79394079c09ca2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368787"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835964"
 ---
 # <a name="identity-protection-policies"></a>Zásad ochrany identit
 
@@ -24,11 +24,11 @@ Azure Active Directory Identity Protection obsahuje tři výchozí zásady, kter
 
 ![Zásad ochrany identit](./media/concept-identity-protection-policies/identity-protection-policies.png)
 
-## <a name="azure-mfa-registration-policy"></a>Zásady registrace pro Azure MFA
+## <a name="azure-ad-mfa-registration-policy"></a>Zásady registrace Azure AD MFA
 
-Identity Protection může organizacím pomoci při zavádění Azure Multi-Factor Authentication (MFA) pomocí zásad podmíněného přístupu, které vyžadují registraci při přihlášení. Povolení těchto zásad je skvělým způsobem, jak zajistit, aby noví uživatelé ve vaší organizaci měli svůj první den zaregistrovaným pro MFA. Multi-Factor Authentication je jednou z metod pro automatické opravy rizikových událostí v rámci Identity Protection. Vlastní náprava umožňuje uživatelům provádět akce podle svých vlastních potřeb pro omezení objemu volání helpdesku.
+Pomocí zásad podmíněného přístupu, které vyžadují registraci při přihlašování, může organizace Identity Protection pomáhat organizacím při zavádění Azure AD Multi-Factor Authentication (MFA). Povolení těchto zásad je skvělým způsobem, jak zajistit, aby noví uživatelé ve vaší organizaci měli svůj první den zaregistrovaným pro MFA. Multi-Factor Authentication je jednou z metod pro automatické opravy rizikových událostí v rámci Identity Protection. Vlastní náprava umožňuje uživatelům provádět akce podle svých vlastních potřeb pro omezení objemu volání helpdesku.
 
-Další informace o Azure Multi-Factor Authentication najdete v článku [jak to funguje: azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md).
+Další informace o Multi-Factor Authentication Azure AD najdete v článku [jak to funguje: Azure ad Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md).
 
 ## <a name="sign-in-risk-policy"></a>Zásady rizik přihlašování
 
@@ -37,7 +37,7 @@ Identity Protection analyzuje signály od každého přihlášení, v reálném 
 Pokud se zjistí riziko, můžou uživatelé provádět ověřování pomocí služby Multi-Factor Authentication a odstranit událost rizikového přihlašování a zabránit tak zbytečnému hluku správcům.
 
 > [!NOTE] 
-> Před aktivací zásad pro rizikové přihlašování musí být uživatelé předtím registrovaní pro Azure Multi-Factor Authentication.
+> Před aktivací zásad pro rizikové přihlašování musí být uživatelé předtím registrovaní pro Azure AD Multi-Factor Authentication.
 
 ### <a name="custom-conditional-access-policy"></a>Vlastní zásady podmíněného přístupu
 
@@ -58,8 +58,8 @@ Pokud se zjistí riziko, můžou uživatelé provést Samoobslužné resetován�
 
 - [Povolit Samoobslužné resetování hesla služby Azure AD](../authentication/howto-sspr-deployment.md)
 
-- [Povolení služby Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+- [Povolit Multi-Factor Authentication služby Azure AD](../authentication/howto-mfa-getstarted.md)
 
-- [Povolit zásady registrace pro Azure Multi-Factor Authentication](howto-identity-protection-configure-mfa-policy.md)
+- [Povolit zásady registrace Multi-Factor Authentication služby Azure AD](howto-identity-protection-configure-mfa-policy.md)
 
 - [Povolit přihlašování a zásady rizik uživatelů](howto-identity-protection-configure-risk-policies.md)

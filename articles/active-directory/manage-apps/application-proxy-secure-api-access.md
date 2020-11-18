@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e38d8261bf141248fd143f27c74e0761e54f73f9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: eaa4a8f92809dcf44969958573231ad37d908daa
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649326"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835693"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Zabezpečený přístup k místním rozhraním API pomocí Azure Proxy aplikací služby AD
 
@@ -36,9 +36,9 @@ Následující diagram ukazuje, jak můžete pomocí Azure Proxy aplikací služ
 
 Azure Proxy aplikací služby AD tvoří páteřní síť řešení, pracuje jako veřejný koncový bod pro přístup k rozhraní API a poskytuje ověřování a autorizaci. K rozhraním API můžete přistupovat z rozsáhlého pole platforem pomocí knihoven [Microsoft Authentication Library (MSAL)](../azuread-dev/active-directory-authentication-libraries.md) .
 
-Vzhledem k tomu, že služba Azure Proxy aplikací služby AD ověřování a autorizace jsou postaveny na službě Azure AD, můžete použít podmíněný přístup Azure AD a zajistit tak, aby přístup k rozhraním API publikovaným pomocí proxy aplikací mohli jenom důvěryhodná zařízení. Použijte službu Azure AD JOIN nebo službu Azure AD Hybrid připojenou pro stolní počítače a Intune spravovanou pro zařízení. Můžete také využít výhod Azure Active Directory Premium funkcí jako Azure Multi-Factor Authentication a na základě strojového učení – zabezpečení [Azure Identity Protection](../identity-protection/overview-identity-protection.md).
+Vzhledem k tomu, že služba Azure Proxy aplikací služby AD ověřování a autorizace jsou postaveny na službě Azure AD, můžete použít podmíněný přístup Azure AD a zajistit tak, aby přístup k rozhraním API publikovaným pomocí proxy aplikací mohli jenom důvěryhodná zařízení. Použijte službu Azure AD JOIN nebo službu Azure AD Hybrid připojenou pro stolní počítače a Intune spravovanou pro zařízení. Můžete také využít výhod Azure Active Directory Premium funkcí jako Azure AD Multi-Factor Authentication a na základě strojového učení – zabezpečení [Azure Identity Protection](../identity-protection/overview-identity-protection.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle tohoto návodu, budete potřebovat:
 

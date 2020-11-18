@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 8e345b27fdb2604c0c3264d6935cb9cff8aeec9c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656730"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835658"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Plánování nasazení Azure Active Directory moje aplikace
 
@@ -26,7 +26,7 @@ Pomocí služby Azure AD moje aplikace můžete:
 * Zjistěte a získejte přístup ke všem prostředkům propojeným s Azure AD, jako jsou aplikace připojené ke své společnosti.
 * Požádat o přístup k novým aplikacím a skupinám
 * Správa přístupu k těmto prostředkům pro ostatní
-* Správa resetování hesla samoobslužné služby a nastavení Azure Multi-Factor Authentication
+* Správa nastavení samoobslužného hesla a Multi-Factor Authentication služby Azure AD
 * Správa jejich zařízení
 
 Umožňuje správcům taky spravovat tyto možnosti:
@@ -54,7 +54,7 @@ Výhody služby Azure AD moje aplikace představují tyto firmy:
 
 Moje aplikace je zdarma a nevyžaduje žádné licence k použití na základní úrovni. Nicméně počet objektů ve vašem adresáři a další funkce, které chcete nasadit, můžou vyžadovat další licence. Mezi běžné scénáře služby Azure AD, které mají požadavky na licencování, patří následující funkce zabezpečení:
 
-* [Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Multi-Factor Authentication Azure AD](../authentication/concept-mfa-howitworks.md)
 * [Členství na základě skupin](../fundamentals/active-directory-manage-groups.md)
 * [Samoobslužné resetování hesla](../authentication/tutorial-enable-sspr.md)
 * [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
@@ -122,11 +122,11 @@ Následující tabulka uvádí několik důležitých konfigurací aplikace a ob
 | Určení pilotních skupin| Identifikujte skupinu zabezpečení Azure AD, která se má použít, a ujistěte se, že všichni pilotní členové jsou součástí skupiny. |
 | Určete skupinu nebo skupiny, které mají být povoleny v produkčním prostředí.| Identifikujte skupiny zabezpečení Azure AD nebo skupiny služby Active Directory synchronizované se službou Azure AD, které se mají použít. Zajistěte, aby všichni pilotní členové byli součástí skupiny. |
 | Umožňuje uživatelům používat jednotné přihlašování pro určité typy aplikací.| Federované jednotné přihlašování, OAuth, heslo jednotného přihlašování, App proxy |
-| Povolení uživatelům používat Samoobslužné resetování hesla | Ano |
-| Dovolit uživatelům používat Multi-Factor Authentication| Ano |
+| Povolení uživatelům používat Samoobslužné resetování hesla | Yes |
+| Dovolit uživatelům používat Multi-Factor Authentication| Yes |
 | Umožňuje uživatelům používat samoobslužnou správu skupin pro určité typy skupin.| Skupiny zabezpečení, Microsoft 365 skupiny |
-| Umožňuje uživatelům používat samoobslužnou správu aplikací.| Ano |
-| Umožňuje uživatelům používat kontroly přístupu.| Ano |
+| Umožňuje uživatelům používat samoobslužnou správu aplikací.| Yes |
+| Umožňuje uživatelům používat kontroly přístupu.| Yes |
 
 ### <a name="plan-consent-strategy"></a>Strategie souhlasu s plánem
 
@@ -303,13 +303,13 @@ K provedení požadované úlohy v Azure Active Directory použijte nejnižší 
 
 | Osoby| Role| Role Azure AD  |
 | - | -| -|
-| Správce helpdesku| Podpora vrstvy 1| Žádné |
+| Správce helpdesku| Podpora vrstvy 1| Žádná |
 | Správce identit| Konfigurace a ladění v případě problémů ovlivňujících službu Azure AD| Globální správce |
-| Správce aplikace| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádné |
+| Správce aplikace| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádná |
 | Správci infrastruktury| Vlastník změna certifikátu| Globální správce |
-| Vlastník/účastník společnosti| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádné |
+| Vlastník/účastník společnosti| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádná |
 
 Pomocí [Privileged Identity Management](../privileged-identity-management/pim-configure.md) můžete spravovat své role, abyste měli k dispozici další auditování, řízení a kontrolu přístupu pro uživatele s oprávněními k adresáři.
 
 ## <a name="next-steps"></a>Další kroky
-[Plánování nasazení Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Plánování nasazení Multi-Factor Authentication služby Azure AD](../authentication/howto-mfa-getstarted.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd918aef85deefc23771413c3eb7b92f1189d39
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776098"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835794"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>Oprava rizik a odblokování uživatelů
 
@@ -37,7 +37,7 @@ Správci můžou opravit tyto možnosti:
 
 ### <a name="self-remediation-with-risk-policy"></a>Zásady pro automatické nápravy pomocí zásad rizik
 
-Pokud uživatelům povolíte vlastní nápravu, s využitím Azure Multi-Factor Authentication (MFA) a samoobslužného resetování hesla (SSPR) ve svých zásadách rizik, můžou při zjištění rizika odblokovat. Tyto detekce se pak považují za zavřené. Uživatelé musí mít dřív zaregistrovaný pro Azure MFA a SSPR, aby je bylo možné použít, když se zjistí riziko.
+Pokud uživatelům povolíte samoobslužnou nápravu, s využitím Azure AD Multi-Factor Authentication (MFA) a samoobslužného resetování hesla (SSPR) ve svých zásadách rizik, můžou při zjištění rizika odblokovat. Tyto detekce se pak považují za zavřené. Uživatelé musí mít dřív zaregistrovaný pro Azure AD MFA a SSPR, aby je bylo možné použít, když se zjistí riziko.
 
 Některé detekce nemusí vyvolávat riziko pro úroveň, kde by se vyžadovala samostatná náprava uživatele, ale Správci by tyto detekce měli ještě vyhodnotit. Správci mohou určit, že jsou potřeba další míry, jako je [blokování přístupu z umístění](../conditional-access/howto-conditional-access-policy-location.md) nebo snížení přijatelného rizika v jejich zásadách.
 
@@ -49,7 +49,7 @@ Správcům se při resetování hesla pro uživatele přidávají dvě možnosti
 
 - **Vygenerovat dočasné heslo** – generováním dočasného hesla můžete okamžitě převést identitu zpátky do bezpečného stavu. Tato metoda vyžaduje kontaktování ovlivněných uživatelů, protože potřebují znát, co je dočasné heslo. Vzhledem k tomu, že je heslo dočasné, zobrazí se uživateli výzva ke změně hesla na něco nového při příštím přihlášení.
 
-- **Vyžadovat, aby uživatel resetoval heslo** – vyžaduje, aby uživatelé resetování hesla povolili automatické obnovení bez kontaktování helpdesku nebo správce. Tato metoda se vztahuje jenom na uživatele, kteří jsou zaregistrovaní pro Azure MFA a SSPR. Pro uživatele, kteří nejsou zaregistrovaní, tato možnost není k dispozici.
+- **Vyžadovat, aby uživatel resetoval heslo** – vyžaduje, aby uživatelé resetování hesla povolili automatické obnovení bez kontaktování helpdesku nebo správce. Tato metoda se vztahuje jenom na uživatele, kteří jsou zaregistrovaní pro Azure AD MFA a SSPR. Pro uživatele, kteří nejsou zaregistrovaní, tato možnost není k dispozici.
 
 ### <a name="dismiss-user-risk"></a>Zavřít riziko uživatele
 
