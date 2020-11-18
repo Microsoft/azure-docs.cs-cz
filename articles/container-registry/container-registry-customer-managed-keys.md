@@ -4,12 +4,12 @@ description: Přečtěte si o šifrování v klidovém prostředí služby Azure
 ms.topic: article
 ms.date: 09/30/2020
 ms.custom: ''
-ms.openlocfilehash: 6eaae5266277a6a65c7cecaa761b75e3a41ebe87
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ad81a94910cb1ed09634801f8706182e17947225
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940663"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842562"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Šifrování registru pomocí klíče spravovaného zákazníkem
 
@@ -31,7 +31,7 @@ Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . 
 > [!NOTE]
 > Pokud je přístup k trezoru klíčů Azure omezený pomocí virtuální sítě s [bránou Key Vault firewall](../key-vault/general/network-security.md), je potřeba provést další kroky konfigurace. Po vytvoření registru a povolení klíče spravovaného zákazníkem nastavte přístup k tomuto klíči pomocí spravované identity *přiřazené systémem* v registru a nakonfigurujete registr tak, aby vynechal bránu Key Vault firewall. Postupujte podle kroků v tomto článku a povolte šifrování pomocí klíče spravovaného zákazníkem a pak se podívejte na pokyny pro [pokročilý scénář: Key Vault firewall](#advanced-scenario-key-vault-firewall) dále v tomto článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít kroky Azure CLI v tomto článku, potřebujete Azure CLI verze 2.2.0 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
@@ -104,7 +104,7 @@ keyvaultID=$(az keyvault show --resource-group <resource-group-name> --name <key
 
 ### <a name="enable-key-vault-access"></a>Povolit přístup k trezoru klíčů
 
-Nakonfigurujte zásady pro Trezor klíčů, aby k němu měl přístup identita. V následujícím příkazu [AZ webtrezor set-Policy][az-keyvault-set-policy] předáte ID objektu zabezpečení spravované identity, kterou jste vytvořili, uloženou dříve v proměnné prostředí. Nastavte klíčová oprávnění na **Get**, **unwrapKey**a **wrapKey**.  
+Nakonfigurujte zásady pro Trezor klíčů, aby k němu měl přístup identita. V následujícím příkazu [AZ webtrezor set-Policy][az-keyvault-set-policy] předáte ID objektu zabezpečení spravované identity, kterou jste vytvořili, uloženou dříve v proměnné prostředí. Nastavte klíčová oprávnění na **Get**, **unwrapKey** a **wrapKey**.  
 
 ```azurecli
 az keyvault set-policy \
@@ -210,7 +210,7 @@ Název identity použijete v pozdějších krocích.
 
 ### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů.
 
-Postup vytvoření trezoru klíčů najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](../key-vault/secrets/quick-create-portal.md).
+Postup vytvoření trezoru klíčů najdete v tématu [rychlý Start: vytvoření Azure Key Vault pomocí Azure Portal](../key-vault/general/quick-create-portal.md).
 
 Při vytváření trezoru klíčů pro klíč spravovaný zákazníkem můžete na kartě **základy** povolit následující nastavení ochrany: **obnovitelné odstranění** a **vyprázdnit ochranu**. Tato nastavení pomůžou zabránit ztrátě dat způsobené náhodným odstraněním klíčů nebo trezoru klíčů.
 
@@ -222,9 +222,9 @@ Nakonfigurujte zásady pro Trezor klíčů, aby k němu měl přístup identita.
 
 1. Přejděte do svého trezoru klíčů.
 1. Vyberte **Nastavení**  >  **zásady přístupu > + přidat zásady přístupu**.
-1. Vyberte **klíčová oprávnění**a vyberte **získat**, **Rozbalit klíč**a **zabalit klíč**.
+1. Vyberte **klíčová oprávnění** a vyberte **získat**, **Rozbalit klíč** a **zabalit klíč**.
 1. Vyberte **Vybrat objekt zabezpečení** a vyberte název prostředku spravované identity přiřazené uživatelem.  
-1. Vyberte **Přidat**a pak vybrat **Uložit**.
+1. Vyberte **Přidat** a pak vybrat **Uložit**.
 
 ![Vytvoření zásad přístupu trezoru klíčů](./media/container-registry-customer-managed-keys/add-key-vault-access-policy.png)
 
@@ -247,18 +247,18 @@ Nakonfigurujte zásady pro Trezor klíčů, aby k němu měl přístup identita.
 
 ### <a name="create-azure-container-registry"></a>Vytvoření registru kontejneru Azure
 
-1. Vyberte **vytvořit**  >  **kontejnery**prostředků  >  **Container Registry**.
-1. Na kartě **základy** vyberte nebo vytvořte skupinu prostředků a zadejte název registru. V položce **SKU**vyberte **Premium**.
-1. Na kartě **šifrování** v poli **klíč spravovaný zákazníkem**vyberte **povoleno**.
-1. V části **Identita**vyberte spravovanou identitu, kterou jste vytvořili.
-1. V případě **šifrování**vyberte **vybrat z Key Vault**.
+1. Vyberte **vytvořit**  >  **kontejnery** prostředků  >  **Container Registry**.
+1. Na kartě **základy** vyberte nebo vytvořte skupinu prostředků a zadejte název registru. V položce **SKU** vyberte **Premium**.
+1. Na kartě **šifrování** v poli **klíč spravovaný zákazníkem** vyberte **povoleno**.
+1. V části **Identita** vyberte spravovanou identitu, kterou jste vytvořili.
+1. V případě **šifrování** vyberte **vybrat z Key Vault**.
 1. V okně **Vybrat klíč z Azure Key Vault** vyberte Trezor klíčů, klíč a verzi, které jste vytvořili v předchozí části.
 1. Na kartě **šifrování** vyberte **zkontrolovat + vytvořit**.
 1. Vyberte **vytvořit** a nasaďte instanci registru.
 
 ![Vytvoření registru kontejneru v Azure Portal](./media/container-registry-customer-managed-keys/create-encrypted-registry.png)
 
-Pokud chcete zobrazit stav šifrování vašeho registru na portálu, přejděte k registru. V části **Nastavení**vyberte  **šifrování**.
+Pokud chcete zobrazit stav šifrování vašeho registru na portálu, přejděte k registru. V části **Nastavení** vyberte  **šifrování**.
 
 ## <a name="enable-customer-managed-key---template"></a>Povolit zákaznickou šablonu pro správu klíčů
 
@@ -448,12 +448,12 @@ Pomocí nastavení **šifrování** v registru můžete aktualizovat klíčovou 
 Chcete-li například vygenerovat a nakonfigurovat novou verzi klíče:
 
 1. Na portálu přejděte do svého registru.
-1. V části **Nastavení**vyberte **Encryption**  >  **klíč pro změnu**šifrování.
+1. V části **Nastavení** vyberte **Encryption**  >  **klíč pro změnu** šifrování.
 1. Vyberte **Vybrat klíč** .
 
     ![Otočit klíč v Azure Portal](./media/container-registry-customer-managed-keys/rotate-key.png)
-1. V okně **Vybrat klíč z Azure Key Vault** vyberte Trezor klíčů a klíč, který jste nakonfigurovali dříve, a v části **verze**vyberte **vytvořit novou**.
-1. V okně **vytvořit klíč** vyberte **Generovat**a pak **vytvořit**.
+1. V okně **Vybrat klíč z Azure Key Vault** vyberte Trezor klíčů a klíč, který jste nakonfigurovali dříve, a v části **verze** vyberte **vytvořit novou**.
+1. V okně **vytvořit klíč** vyberte **Generovat** a pak **vytvořit**.
 1. Dokončete výběr klíče a vyberte **Uložit**.
 
 ## <a name="revoke-key"></a>Odvolat klíč
@@ -485,22 +485,22 @@ Povolení identity přiřazené systémem v registru na portálu:
 
 1. Na portálu přejděte do svého registru.
 1. Vyberte **Nastavení**  >   **Identita**.
-1. V části **přiřazený systém**nastavte **stav** na **zapnuto**. Vyberte **Uložit**.
+1. V části **přiřazený systém** nastavte **stav** na **zapnuto**. Vyberte **Uložit**.
 1. Zkopírujte **ID objektu** identity.
 
 Pokud chcete identitě udělit přístup k vašemu trezoru klíčů:
 
 1. Přejděte do svého trezoru klíčů.
 1. Vyberte **Nastavení**  >  **zásady přístupu > + přidat zásady přístupu**.
-1. Vyberte **klíčová oprávnění**a vyberte **získat**, **Rozbalit klíč**a **zabalit klíč**.
+1. Vyberte **klíčová oprávnění** a vyberte **získat**, **Rozbalit klíč** a **zabalit klíč**.
 1. Vyberte **Vybrat objekt zabezpečení** a vyhledejte ID objektu spravované identity přiřazené systémem nebo název registru.  
-1. Vyberte **Přidat**a pak vybrat **Uložit**.
+1. Vyberte **Přidat** a pak vybrat **Uložit**.
 
 Aktualizace nastavení šifrování registru pro použití identity:
 
 1. Na portálu přejděte do svého registru.
-1. V části **Nastavení**vyberte **Encryption**  >  **klíč pro změnu**šifrování.
-1. V položce **Identita**vyberte **přiřazeno systému**a vyberte **Uložit**.
+1. V části **Nastavení** vyberte **Encryption**  >  **klíč pro změnu** šifrování.
+1. V položce **Identita** vyberte **přiřazeno systému** a vyberte **Uložit**.
 
 ### <a name="enable-key-vault-bypass"></a>Povolit obcházení trezoru klíčů
 
@@ -525,7 +525,7 @@ Pokud se pokusíte odebrat uživatelem přiřazenou identitu z registru, který 
 Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
 ```
  
-Nebudete také moci změnit (otočit) šifrovací klíč. Pokud k tomuto problému dojde, napřed znovu přiřaďte identitu pomocí identifikátoru GUID zobrazeného v chybové zprávě. Příklad:
+Nebudete také moci změnit (otočit) šifrovací klíč. Pokud k tomuto problému dojde, napřed znovu přiřaďte identitu pomocí identifikátoru GUID zobrazeného v chybové zprávě. Například:
 
 ```azurecli
 az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx

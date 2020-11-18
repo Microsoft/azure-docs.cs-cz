@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c1b51792c86cfce15fa718040dfcbcc13997ee26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87ea77540e5fcaac0c4231403473d25ebae46aac
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85384953"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840249"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Řešení potíží s Azure AD B2C vlastní zásady a architektura prostředí identit
 
@@ -64,7 +64,7 @@ K běžným chybám ověření patří následující:
 
 * Chcete-li trasovat výměnu zpráv mezi prohlížečem klienta a Azure AD B2C, použijte [Fiddler](https://www.telerik.com/fiddler). Může vám získat informace o tom, kde se v krocích orchestrace vaše uživatelská cesta nedaří.
 
-* V **režimu vývoje**použijte [Application Insights](troubleshoot-with-application-insights.md) ke sledování aktivity cesty uživatele architektury identity Experience Framework. V **režimu vývoje**můžete sledovat výměnu deklarací identity mezi architekturou prostředí identit a různými poskytovateli deklarací identity, které jsou definovány technickými profily, jako jsou poskytovatelé identity, služby založené na rozhraní API, Azure AD B2C adresář uživatelů a další služby, jako je Azure Multi-Factor Authentication.
+* V **režimu vývoje** použijte [Application Insights](troubleshoot-with-application-insights.md) ke sledování aktivity cesty uživatele architektury identity Experience Framework. V **režimu vývoje** můžete sledovat výměnu deklarací identity mezi architekturou prostředí identit a různými poskytovateli deklarací identity, které jsou definovány technickými profily, jako jsou poskytovatelé identity, služby založené na rozhraní API, Azure AD B2C adresář uživatelů a další služby, jako je Azure AD Multi-Factor Authentication.
 
 ## <a name="recommended-practices"></a>Doporučené postupy
 

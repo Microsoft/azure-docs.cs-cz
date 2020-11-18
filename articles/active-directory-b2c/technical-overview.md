@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80ae79f73a55d5feb1aede7ccc7d3b2b64682a24
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 519e2da902e1121220bcbb28c4cb18a68001293b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364078"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840546"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technický přehled funkcí Azure Active Directory B2C
 
@@ -101,7 +101,7 @@ Můžete nakonfigurovat nastavení toku uživatele tak, aby bylo možné řídit
 
 * Typy účtů používané pro přihlášení, jako jsou například účty na Facebooku nebo místní účty, které používají e-mailovou adresu a heslo pro přihlášení
 * Atributy, které mají být shromažďovány od příjemce, jako je například křestní jméno, PSČ nebo země/oblast, kde sídlí
-* Azure Multi-Factor Authentication (MFA)
+* Multi-Factor Authentication Azure AD (MFA)
 * Přizpůsobení uživatelského rozhraní
 * Sada deklarací identity v tokenu, který vaše aplikace obdrží poté, co uživatel dokončí tok uživatele
 * Správa relací
@@ -115,7 +115,7 @@ Přečtěte si další informace o toku uživatelů v [toku uživatelů v Azure 
 
 Vlastní zásady odemkněte přístup k celému výkonu modulu pro orchestraci identit v architektuře IEF (identity Experience Framework). Díky vlastním zásadám můžete využít IEF k sestavení téměř všech ověřování, registrace uživatelů nebo možností úprav profilů, které si můžete představit.
 
-Rozhraní identity Experience Framework poskytuje možnost vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Příklad:
+Rozhraní identity Experience Framework poskytuje možnost vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Například:
 
 * Federovat s jinými zprostředkovateli identity
 * První a další výzvy k Multi-Factor Authentication (MFA) třetích stran

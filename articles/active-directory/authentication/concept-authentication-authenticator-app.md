@@ -10,16 +10,16 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c8fe6c7ead587d58775984854260bd071215e42
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: eab1a3f81666cd3bddea9954f210e5825a538356
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965569"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840113"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Metody ověřování v aplikaci Azure Active Directory-Microsoft Authenticator
 
-Microsoft Authenticator aplikace poskytuje další úroveň zabezpečení pro pracovní nebo školní účet služby Azure AD nebo vaši účet Microsoft a je dostupná pro [Android](https://go.microsoft.com/fwlink/?linkid=866594) a [iOS](https://go.microsoft.com/fwlink/?linkid=866594). S aplikací Microsoft Authenticator se uživatelé můžou během přihlašování ověřovat heslem bez hesla nebo jako další možnost ověření během samoobslužného resetování hesla (SSPR) nebo událostí Azure Multi-Factor Authentication.
+Microsoft Authenticator aplikace poskytuje další úroveň zabezpečení pro pracovní nebo školní účet služby Azure AD nebo vaši účet Microsoft a je dostupná pro [Android](https://go.microsoft.com/fwlink/?linkid=866594) a [iOS](https://go.microsoft.com/fwlink/?linkid=866594). S aplikací Microsoft Authenticator se uživatelé můžou během přihlašování ověřovat heslem bez hesla nebo jako další možnost ověřování během samoobslužného resetování hesla (SSPR) nebo Multi-Factor Authenticationch událostí služby Azure AD.
 
 Uživatelé mohou obdržet oznámení prostřednictvím mobilní aplikace, aby je schválili nebo zakázali, nebo pomocí aplikace ověřovatele vygenerovat ověřovací kód OATH, který lze zadat v přihlašovacím rozhraní. Pokud povolíte jak oznámení, tak ověřovací kód, můžou uživatelé, kteří si zaregistrují ověřovací aplikaci, použít kteroukoli z metod k ověření jejich identity.
 

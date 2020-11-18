@@ -3,12 +3,12 @@ title: Ovládací prvky podrobného řízení pro úlohy (ISO 27001)/řízení �
 description: Mapování ovládacího prvku podrobného plánu úloh App Service Environment/SQL Database ISO 27001 na Azure Policy a Azure RBAC.
 ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: 438f2af05e0c499e9f002b501b97e291705cee9a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4256f401e602a0641247dd06a1537289282f647b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420406"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842545"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Mapování ovládacího prvku ukázka ISO 27001 pomocného programu/úlohy SQL
 
@@ -82,7 +82,7 @@ Azure implementuje [řízení přístupu na základě role Azure (Azure RBAC)](.
 
 ## <a name="a942-secure-log-on-procedures"></a>Postupy zabezpečeného přihlašování. 9.4.2
 
-Tento podrobný plán přiřadí tři Azure Policy definice pro audit účtů, u kterých není povolené Multi-Factor Authentication. Azure Multi-Factor Authentication poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a zajišťuje silné ověřování. Monitorováním účtů bez povoleného ověřování službou Multi-Factor Authentication můžete identifikovat účty, jejichž zabezpečení může být pravděpodobnější.
+Tento podrobný plán přiřadí tři Azure Policy definice pro audit účtů, u kterých není povolené Multi-Factor Authentication. Azure AD Multi-Factor Authentication poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a zajišťuje silné ověřování. Monitorováním účtů bez povoleného ověřování službou Multi-Factor Authentication můžete identifikovat účty, jejichž zabezpečení může být pravděpodobnější.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
 - Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.

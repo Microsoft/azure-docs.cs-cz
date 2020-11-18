@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 32ff5a73494bac2cabcb9488f946673435173dd0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 517de5c4003655c5fea2f2e7949fb513b1a3c381
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489434"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842426"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění.
@@ -99,7 +99,7 @@ Nastavení diagnostiky můžete nakonfigurovat v Azure Portal, a to buď z nabí
 
 4. **Podrobnosti kategorie (co směrovat)** – zaškrtněte políčko u každé kategorie dat, která chcete odeslat do cílových umístění určených později. Seznam kategorií se u jednotlivých služeb Azure liší.
 
-     - **AllMetrics** směruje metriky platforem prostředku do úložiště protokolů Azure, ale ve formuláři protokolu. Tyto metriky jsou obvykle odesílány pouze do databáze časových řad Azure Monitor metriky. Posílání do úložiště protokolů Azure Monitor (které lze prohledávat prostřednictvím Log Analytics) k jejich integraci do dotazů, které hledají v jiných protokolech. Tato možnost nemusí být k dispozici pro všechny typy prostředků. Pokud je tato podpora podporovaná, [Azure monitor podporované metriky](metrics-supported.md) uvádí, jaké metriky se shromažďují pro typy prostředků.
+     - **AllMetrics** směruje metriky platforem prostředku do úložiště protokolů Azure, ale ve formuláři protokolu. Tyto metriky jsou obvykle odesílány pouze do databáze časových řad Azure Monitor metriky. Odeslání do úložiště protokolů Azure Monitor (které lze prohledávat prostřednictvím Log Analytics) vám pomůže je integrovat do dotazů, které hledají v jiných protokolech. Tato možnost nemusí být k dispozici pro všechny typy prostředků. Pokud je tato podpora podporovaná, [Azure monitor podporované metriky](metrics-supported.md) uvádí, jaké metriky se shromažďují pro typy prostředků.
 
        > [!NOTE]
        > V části omezení pro metriky směrování můžete Azure Monitor protokoly dříve v tomto článku.  

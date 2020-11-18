@@ -3,16 +3,16 @@ title: Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 description: Log Analytics data export umožňuje průběžně exportovat data vybraných tabulek z pracovního prostoru Log Analytics do účtu služby Azure Storage nebo do Azure Event Hubs v průběhu shromažďování.
 ms.subservice: logs
 ms.topic: conceptual
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 19d464f0148572f30ecd0c3ab1dcee7bd0315b87
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: adac986cfa1a975ced7ef579c088ed2739778bf5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427798"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841803"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -100,7 +100,7 @@ Následující poskytovatel prostředků Azure musí zaregistrovat pro vaše př
 
 - Microsoft. Insights
 
-Tento poskytovatel prostředků bude pravděpodobně již zaregistrován pro většinu Azure Monitorch uživatelů. Pokud to chcete ověřit, klikněte na **odběry** v Azure Portal. Vyberte své předplatné a pak klikněte na **poskytovatelé prostředků** v části **Nastavení** v nabídce. Vyhledejte **Microsoft. Insights**. Pokud je jeho stav **zaregistrován** , je již zaregistrován. V takovém případě ji zaregistrujte kliknutím na **Registrovat** .
+Tento poskytovatel prostředků bude pravděpodobně již zaregistrován pro většinu Azure Monitorch uživatelů. Pokud to chcete ověřit, klikněte na **odběry** v Azure Portal. Vyberte své předplatné a pak klikněte na **poskytovatelé prostředků** v části **Nastavení** v nabídce. Vyhledejte **Microsoft. Insights**. Pokud je jeho stav **zaregistrován**, je již zaregistrován. V takovém případě ji zaregistrujte kliknutím na **Registrovat** .
 
 K registraci poskytovatele prostředků můžete použít také kteroukoli z dostupných metod, jak je popsáno v tématu [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/management/resource-providers-and-types.md). Následuje ukázkový příkaz pomocí prostředí PowerShell:
 
@@ -271,7 +271,7 @@ Pokud pravidlo exportu dat obsahuje tabulku, která neexistuje, dojde k selhán�
 Podporované tabulky jsou aktuálně omezené na ty, které jsou uvedené níže. Všechna data z tabulky budou exportována, pokud nejsou zadána omezení. Tento seznam se bude aktualizovat, protože se přidá podpora dalších tabulek.
 
 
-| Tabulka | Omezení |
+| Table | Omezení |
 |:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |

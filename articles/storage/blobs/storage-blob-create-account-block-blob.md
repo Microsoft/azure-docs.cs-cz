@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 53033226702ea1033fe4ae94f60c62cacbae6596
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 65a60425f09e9cd7a3e06ca1624621ed8b9fdcbd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124964"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842052"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Vytvoření účtu BlockBlobStorage
 
@@ -88,9 +88,9 @@ az login
 ## <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Pokud chcete v Azure Portal vytvořit účet BlockBlobStorage, postupujte následovně:
 
-1. V Azure Portal vyberte **všechny služby** > kategorii **úložiště** > **účty úložiště** .
+1. V Azure Portal vyberte **všechny služby** > kategorii **úložiště** > **účty úložiště**.
 
-2. V části **účty úložiště** vyberte **Přidat** .
+2. V části **účty úložiště** vyberte **Přidat**.
 
 3. V poli **předplatné** vyberte předplatné, ve kterém chcete účet úložiště vytvořit.
 
@@ -108,19 +108,19 @@ Pokud chcete v Azure Portal vytvořit účet BlockBlobStorage, postupujte násle
 
    |Pole     |Hodnota  |
    |---------|---------|
-   |**Výkon**    |  Vyberte **Premium** .   |
-   |**Druh účtu**    | Vyberte **BlockBlobStorage** .      |
-   |**Replikace**    |  Ponechte výchozí nastavení **místně redundantního úložiště (LRS)** .      |
+   |**Výkon**    |  Vyberte **Premium**.   |
+   |**Druh účtu**    | Vyberte **BlockBlobStorage**.      |
+   |**Replikace**    |  Ponechte výchozí nastavení **místně redundantního úložiště (LRS)**.      |
 
    ![Zobrazuje uživatelské rozhraní portálu pro vytvoření účtu úložiště objektů blob bloku.](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
 8. Vyberte kartu **Upřesnit** .
 
-9. Pokud chcete optimalizovat účet úložiště pro analýzu dat, nastavte **hierarchický obor názvů** na **Enabled** . V opačném případě ponechte tuto možnost nastavenou na výchozí hodnotu. Když toto nastavení povolíte, váš účet BlockBlobStorage vám poskytne [úroveň Premium pro data Lake Storage](premium-tier-for-data-lake-storage.md).  Další informace o Data Lake Storage najdete v tématu [Úvod do Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
+9. Pokud chcete optimalizovat účet úložiště pro analýzu dat, nastavte **hierarchický obor názvů** na **Enabled**. V opačném případě ponechte tuto možnost nastavenou na výchozí hodnotu. Když toto nastavení povolíte, váš účet BlockBlobStorage vám poskytne [úroveň Premium pro data Lake Storage](premium-tier-for-data-lake-storage.md).  Další informace o Data Lake Storage najdete v tématu [Úvod do Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
 
 8. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte nastavení účtu úložiště.
 
-9. Vyberte **Vytvořit** .
+9. Vyberte **Vytvořit**.
 
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

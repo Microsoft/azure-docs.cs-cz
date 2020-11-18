@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/18/2019
-ms.openlocfilehash: 20045ce914a340ac36e4df8cbd0df38e872a1d38
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 387eb4f4c73b2103a7461c0d06c4d0e0562ec9db
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487326"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842460"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Použití strukturovaného streamování Apache Spark s Apache Kafka a Azure Cosmos DB
 
@@ -78,7 +78,7 @@ I když můžete vytvořit clustery Azure Virtual Network, Kafka a Spark ručně
 
     ![Hodnoty vlastního nasazení HDInsight](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
-1. Přečtěte si **podmínky a ujednání**a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
+1. Přečtěte si **podmínky a ujednání** a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
 
 1. Nakonec vyberte **koupit**. Vytvoření clusterů, virtuálních sítí a Cosmos DB účtu může trvat až 45 minut.
 

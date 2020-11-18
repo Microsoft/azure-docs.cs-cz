@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 578f3244381c94552a159589478781640629271f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c7a94a24bd825249859ff699ab82ce4d3ae8fce1
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788634"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842239"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,7 +62,7 @@ Pokud není uvedeno jinak, doporučujeme, abyste provedli všechny osvědčené 
 
 Chystáme se dál aktualizovat doporučení a osvědčené postupy, které jsou tady uvedené. Zadáním odkazu na **zpětnou vazbu** na konci tohoto článku zadejte nebo opravte tento dokument.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Database a spravovaná instance SQL podporují dva typy ověřování:
 
@@ -80,11 +80,11 @@ Centrální Správa identit nabízí následující výhody:
 - Zjednodušená a flexibilní Správa oprávnění.
 - Správa aplikací ve velkém měřítku.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Použijte ověřování pomocí Azure Active Directory (Azure AD) pro centralizovanou správu identit.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Vytvořte tenanta Azure AD a [Vytvořte uživatele, kteří](../../active-directory/fundamentals/add-users-azure-active-directory.md) budou představovat lidské uživatele, a vytvořit [instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md) , které budou představovat aplikace, služby a nástroje pro automatizaci. Instanční objekty jsou stejné jako účty služeb v systému Windows a Linux.
 
@@ -112,19 +112,19 @@ Centrální Správa identit nabízí následující výhody:
 > - Přístupový token Azure AD je uložený v mezipaměti na straně klienta a jeho životnost závisí na konfiguraci tokenu. Viz článek, [konfigurovatelné životnosti tokenů v Azure Active Directory](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)
 > - Pokyny k řešení potíží s ověřováním Azure AD najdete na následujícím blogu: [řešení potíží s Azure AD](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991).
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Multi-Factor Authentication Azure AD
 
 > Zmíněné v: #2 praxe metody OSA, ISO Access Control (AC)
 
-Azure Multi-Factor Authentication pomáhá zvýšit zabezpečení tím, že vyžaduje více než jednu formu ověřování.
+Služba Azure AD Multi-Factor Authentication pomáhá zvýšit zabezpečení tím, že vyžaduje více než jednu formu ověřování.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - [Povolte Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) ve službě Azure AD pomocí podmíněného přístupu a použijte interaktivní ověřování.
 
 - Alternativou je povolení Multi-Factor Authentication pro celou doménu služby Azure AD nebo AD.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Aktivujte podmíněný přístup ve službě Azure AD (vyžaduje předplatné Premium).
   - Projděte si článek [podmíněný přístup ve službě Azure AD](../../active-directory/conditional-access/overview.md).  
@@ -144,7 +144,7 @@ Azure Multi-Factor Authentication pomáhá zvýšit zabezpečení tím, že vyž
     - [nástroj BCP](/sql/tools/bcp-utility): možnost-G (interaktivní)
 
 - Implementujte své aplikace pro připojení k Azure SQL Database nebo spravované instanci Azure SQL pomocí interaktivního ověřování s podporou Multi-Factor Authentication.
-  - Projděte si článek [připojení k Azure SQL Database s využitím Azure Multi-Factor Authentication](active-directory-interactive-connect-azure-sql-db.md).
+  - Projděte si článek [připojení k Azure SQL Database se službou Azure AD Multi-Factor Authentication](active-directory-interactive-connect-azure-sql-db.md).
   > [!NOTE]
   > Tento režim ověřování vyžaduje identity založené na uživatelích. V případech, kdy se používá důvěryhodný model identity, který obchází individuální ověřování uživatelů Azure AD (třeba pomocí spravované identity pro prostředky Azure) Multi-Factor Authentication neplatí.
 
@@ -154,11 +154,11 @@ Azure Multi-Factor Authentication pomáhá zvýšit zabezpečení tím, že vyž
 
 Metody ověřování založené na heslech představují slabší formu ověřování. Přihlašovací údaje můžou být ohrožené nebo neuvedené omylem.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Použijte integrované ověřování Azure AD, které eliminuje používání hesel.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Použijte ověřování pomocí jednotného přihlašování s použitím přihlašovacích údajů Windows. Federovat místní doménu AD pomocí Azure AD a používejte integrované ověřování systému Windows (pro počítače připojené k doméně se službou Azure AD).
   - Přečtěte si článek [SSMS podpora integrovaného ověřování Azure AD](authentication-aad-configure.md#active-directory-integrated-authentication).
@@ -167,11 +167,11 @@ Metody ověřování založené na heslech představují slabší formu ověřov
 
 > Zmíněné v: #4 praxe metody OSA, ISO Access Control (AC)
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Povolte spravovanou identitu Azure. Můžete také použít integrované ověřování nebo ověřování založené na certifikátech.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Používejte [spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
   - [Spravovaná identita přiřazená systémem](../../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md)
@@ -188,11 +188,11 @@ Metody ověřování založené na heslech představují slabší formu ověřov
 
 V případě, že se hesla nedaří, ujistěte se, že jsou zabezpečená.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Pomocí Azure Key Vault můžete ukládat hesla a tajné kódy. Kdykoli je to možné, použijte Multi-Factor Authentication pro Azure SQL Database s uživateli Azure AD.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Pokud se nemůžete vyhnout heslům nebo tajným klíčům, ukládejte si uživatelská hesla a tajné klíče aplikace do Azure Key Vault a spravujte přístup prostřednictvím zásad Key Vault přístupu.
 
@@ -202,11 +202,11 @@ V případě, že se hesla nedaří, ujistěte se, že jsou zabezpečená.
 
 Ověřování SQL odkazuje na ověření uživatele při připojení k Azure SQL Database nebo spravované instanci SQL pomocí uživatelského jména a hesla. Přihlašování se bude muset vytvořit na každém serveru nebo ve spravované instanci a uživatel vytvořený v každé databázi.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Použijte ověřování SQL.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Jako správce serveru nebo instance Vytvořte přihlašovací jména a uživatele. Pokud nepoužíváte uživatelé databáze s omezením hesla, ukládají se všechna hesla do hlavní databáze.
   - Přečtěte si článek, [řízení a udělení přístupu k databázi SQL Database, spravované instanci SQL a Azure synapse Analytics](logins-create-manage.md).
@@ -221,7 +221,7 @@ Správa přístupu (označovaná taky jako autorizace) je proces řízení a spr
 
 Princip nejnižších oprávnění, která by uživatelé neměli mít více oprávnění, než je potřeba k dokončení svých úkolů. Další informace najdete v článku [jenom dostatečná Správa](/powershell/scripting/learn/remoting/jea/overview).
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 Přiřaďte pouze potřebná [oprávnění](/sql/relational-databases/security/permissions-database-engine) k dokončení požadovaných úloh:
 
@@ -236,7 +236,7 @@ Přiřaďte pouze potřebná [oprávnění](/sql/relational-databases/security/p
        - [ZMĚNIT ROLI](/sql/t-sql/statements/alter-role-transact-sql)
        - [ROLE SERVERU ALTER](/sql/t-sql/statements/alter-server-role-transact-sql)
     1. Pak přiřaďte oprávnění k rolím.
-       - [UDĚLIT](/sql/t-sql/statements/grant-transact-sql)
+       - [GRANT](/sql/t-sql/statements/grant-transact-sql)
   - Nezapomeňte nepřiřazovat uživatele k zbytečným rolím.
 
 - V Azure Resource Manager:
@@ -244,7 +244,7 @@ Přiřaďte pouze potřebná [oprávnění](/sql/relational-databases/security/p
     - [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md)
     - [Vlastní role Azure](../../role-based-access-control/custom-roles.md)
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 Následující osvědčené postupy jsou volitelné, ale výsledkem bude lepší správa a podpora vaší strategie zabezpečení:
 
@@ -265,7 +265,7 @@ Následující osvědčené postupy jsou volitelné, ale výsledkem bude lepší
 
 - Mějte na paměti, že oprávnění v databázovém stroji se dají použít v následujících oborech (menším rozsahem je menší dopad udělených oprávnění):
   - Server (speciální role v hlavní databázi) v Azure
-  - Databáze
+  - databáze
   - Schéma
     - Osvědčeným postupem je použití schémat k udělení oprávnění v rámci databáze. (viz také: [schéma – návrh: doporučení pro návrh schématu s ohledem na zabezpečení](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
   - Objekt (tabulka, zobrazení, procedura atd.)
@@ -281,7 +281,7 @@ Následující osvědčené postupy jsou volitelné, ale výsledkem bude lepší
 
 Oddělení povinností, označované také jako oddělení cel, popisuje nutnost rozdělit citlivé úkoly na více úkolů, které jsou přiřazeny různým uživatelům. Oddělení povinností pomáhá zabránit narušením dat.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Identifikujte požadovanou úroveň rozdělení povinností. Příklady:
   - Mezi vývojovým a testovacím a produkčním prostředím
@@ -308,7 +308,7 @@ Oddělení povinností, označované také jako oddělení cel, popisuje nutnost
   - Lidské intervence v procesech.
   - Záznamy auditu – Další informace o auditování najdete v tématu [Auditovat kritické události zabezpečení](#audit-critical-security-events).
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Zajistěte, aby se pro vývojové a testovací a produkční prostředí používaly různé účty. Různé účty vám pomůžou dodržovat oddělení testovacích a produkčních systémů.
 
@@ -352,7 +352,7 @@ Pro čtenáře, kteří chtějí podrobně hlouběji do SoD, doporučujeme násl
 
 Oddělení povinností není omezeno pouze na data v databázi, ale zahrnuje kód aplikace. Škodlivý kód může potenciálně obejít ovládací prvky zabezpečení. Před nasazením vlastního kódu do produkčního prostředí je důležité zkontrolovat, co se nasazuje.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Použijte databázový nástroj, jako je Azure Data Studio, který podporuje správu zdrojového kódu.
 
@@ -360,7 +360,7 @@ Oddělení povinností není omezeno pouze na data v databázi, ale zahrnuje kó
 
 - Před potvrzením hlavní větve musí osoba (jiná než Autor samotného kódu) kontrolovat kód pro potenciální zvýšení rizika oprávnění a také úpravy škodlivých dat pro ochranu před podvody a neautorizovaným přístupem. To lze provést pomocí mechanismů správy zdrojového kódu.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Standardizace: pomáhá implementovat standardní proceduru, která má být následována všemi aktualizacemi kódu.
 
@@ -395,12 +395,12 @@ Chrání data při přesunu dat mezi klientem a serverem. Přečtěte si téma [
 
 Šifrování v klidovém případě je kryptografická ochrana dat, když je trvalá v databázi, protokolu a souborech zálohy.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - [Transparentní šifrování databáze (TDE)](transparent-data-encryption-tde-overview.md) se spravovanými klíči služby je ve výchozím nastavení povolené pro všechny databáze vytvořené po 2017 Azure SQL Database a SQL Managed instance.
 - Pokud je ve spravované instanci databáze vytvořená z operace obnovení pomocí místního serveru, bude dodrženo nastavení TDE původní databáze. Pokud původní databáze nemá povolené TDE, doporučujeme, aby se pro spravovanou instanci TDE ručně aktivovaly.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Neukládejte data, která vyžadují šifrování v hlavní databázi. Hlavní databázi nelze zašifrovat pomocí TDE.
 
@@ -414,11 +414,11 @@ Použitá data jsou data uložená v paměti databázového systému během prov
 
 Zásady, které určují, která data jsou citlivá a zda musí být citlivá data šifrována v paměti a nejsou přístupná správcům ve formátu prostého textu, jsou specifická pro vaši organizaci a předpisy dodržování předpisů, které je třeba dodržovat. Podívejte se prosím na související požadavky: [identifikace a označení citlivých dat](#identify-and-tag-sensitive-data).
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Pomocí [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) zajistěte, aby citlivá data nebyla vystavena ve formátu prostého textu v Azure SQL Database nebo spravované instanci SQL, a to ani v paměti. Always Encrypted chrání data od správců databází (specializující) a cloudových správců (nebo špatných aktérů, které mohou zosobnit vysoce privilegovaných uživatelů) a poskytují větší kontrolu nad tím, kdo má přístup k vašim datům.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Always Encrypted není náhradou za zašifrování dat v klidovém režimu (TDE) nebo při přenosu (SSL/TLS). Always Encrypted by se neměla používat pro data, která nejsou citlivá, aby se minimalizoval dopad na výkon a funkčnost. Použití Always Encrypted ve spojení s TDE a protokolem TLS (Transport Layer Security) se doporučuje pro komplexní ochranu neaktivních dat, přenosů a používání.
 
@@ -446,7 +446,7 @@ Zásady, které určují, která data jsou citlivá a zda musí být citlivá da
 
 Šifrování lze použít jako způsob, jak zajistit, aby data mohla zobrazit nebo aktualizovat pouze konkrétní uživatelé aplikace, kteří mají přístup k kryptografickým klíčům.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Použijte šifrování na úrovni buňky (CLE). Podrobnosti najdete v článku o [šifrování sloupce dat](/sql/relational-databases/security/encryption/encrypt-a-column-of-data) .
 - Používejte Always Encrypted, ale mějte na paměti omezení. Omezení jsou uvedena níže.
@@ -472,14 +472,14 @@ Mějte na paměti, že Always Encrypted je primárně navržená tak, aby chrán
 
 Další způsob, jak zabránit neautorizovaným uživatelům v zobrazení dat, je zakrýt nebo maskovat data při zachování datových typů a formátů, abyste zajistili, že uživatelské aplikace budou moci pokračovat v manipulaci a zobrazovat data.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Pomocí [dynamického maskování dat](/sql/relational-databases/security/dynamic-data-masking) můžete vymezit sloupce tabulky.
 
 > [!NOTE]
 > Always Encrypted nepracuje s dynamickým maskování dat. Nelze zašifrovat a maskovat stejný sloupec, což znamená, že je třeba nastavit prioritu ochrany dat při použití vs. maskování dat pro uživatele aplikace pomocí dynamického maskování dat.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 > [!NOTE]
 > Dynamické maskování dat nelze použít k ochraně dat před uživateli s vysokou úrovní oprávnění. Zásady maskování se nevztahují na uživatele s přístupem správce, jako je db_owner.
@@ -499,11 +499,11 @@ Zabezpečení sítě odkazuje na řízení přístupu a osvědčené postupy pro
 
 Osvědčené postupy, jak zabránit klientským počítačům a aplikacím s dobře známými chybami zabezpečení (například pomocí starších protokolů TLS a šifrovacích sad) z připojení k Azure SQL Database a spravované instanci SQL.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Zajistěte, aby se klientské počítače připojující se Azure SQL Database a SQL Managed instance používaly protokol  [TLS (Transport Layer Security)](security-overview.md#transport-layer-security-encryption-in-transit).
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Konfigurace všech aplikací a nástrojů pro připojení k SQL Database se zapnutým šifrováním
   - Encrypt = on, TrustServerCertificate = off (nebo ekvivalent u ovladačů od jiných výrobců než od Microsoftu).
@@ -524,7 +524,7 @@ Minimalizujte počet funkcí, které mohou být napadeny uživatelem se zlými �
 
 > V tomto postupu jsou uvedené v: #5 postupů pro OSA
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 V SQL Database:
 
@@ -536,7 +536,7 @@ Ve spravované instanci SQL:
 
 - Postupujte podle pokynů v části [požadavky na síť](../managed-instance/connectivity-architecture-overview.md#network-requirements).
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Omezení přístupu k Azure SQL Database a spravované instanci SQL připojením k privátnímu koncovému bodu (například pomocí cesty privátních dat):
   - Spravovaná instance může být izolovaná v rámci virtuální sítě, aby se zabránilo externímu přístupu. Aplikace a nástroje, které jsou ve stejné oblasti nebo v partnerské virtuální síti, mají k ní přímý přístup. Aplikace a nástroje, které jsou v jiné oblasti, můžou k navázání připojení použít připojení Virtual-Network-to-Virtual-Network nebo peering okruhu ExpressRoute. Zákazník by měl používat skupiny zabezpečení sítě (NSG) k omezení přístupu přes port 1433 jenom na prostředky, které vyžadují přístup ke spravované instanci.
@@ -560,7 +560,7 @@ Ve spravované instanci SQL:
 
 ### <a name="configure-power-bi-for-secure-connections-to-sql-databasesql-managed-instance"></a>Konfigurace Power BI pro zabezpečená připojení k spravované instanci služby SQL Database/SQL
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - U Power BI Desktop používejte cestu k privátním datům, kdykoli to bude možné.
 
@@ -572,7 +572,7 @@ Ve spravované instanci SQL:
 
 ### <a name="configure-app-service-for-secure-connections-to-sql-databasesql-managed-instance"></a>Konfigurace App Service pro zabezpečená připojení k spravované instanci služby SQL Database/SQL
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - U jednoduchých webových aplikací, které se připojují přes Veřejný koncový bod, je nutné, aby nastavení **umožňovalo službám Azure** zapnuto.
 
@@ -586,7 +586,7 @@ Ve spravované instanci SQL:
 
 ### <a name="configure-azure-virtual-machine-hosting-for-secure-connections-to-sql-databasesql-managed-instance"></a>Konfigurace hostování virtuálních počítačů Azure pro zabezpečená připojení k spravované instanci SQL Database/SQL
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Použijte kombinaci pravidel povolení a odmítnutí na skupin zabezpečení sítě virtuálních počítačů Azure, abyste mohli řídit, které oblasti jsou dostupné z virtuálního počítače.
 
@@ -610,7 +610,7 @@ Ve spravované instanci SQL:
 
 > V tomto postupu jsou uvedené v: #9 postupů pro OSA
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 DDoS Protection se automaticky povolí jako součást platformy Azure. Zahrnuje nepřetržité monitorování provozu a zmírnění útoků na úrovni sítě u veřejných koncových bodů v reálném čase.
 
@@ -618,7 +618,7 @@ DDoS Protection se automaticky povolí jako součást platformy Azure. Zahrnuje 
 
 - Použití [rozšířené ochrany před internetovými útoky pro Azure SQL Database](threat-detection-overview.md) k detekci útoků DOS (Denial of Service) na databáze.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Postupujte podle postupů popsaných v části [minimalizace možností útoku](#minimize-attack-surface) , které pomáhají minimalizovat DDoS hrozby útoku.
 
@@ -637,7 +637,7 @@ V této části se dozvíte o funkcích, které vám pomůžou detekovat neobvyk
 
 Rozšířená ochrana před internetovými útoky umožňuje rozpoznávat a reagovat na potenciální hrozby, když k nim dojde, a poskytuje tak výstrahy zabezpečení pro aktivity neobvyklé.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Použití [rozšířené ochrany před internetovými útoky pro SQL](threat-detection-overview.md#alerts) ke zjištění neobvyklých a potenciálně škodlivých pokusů o přístup k databázím nebo jejich zneužití:
   - Útok prostřednictvím injektáže SQL.
@@ -645,7 +645,7 @@ Rozšířená ochrana před internetovými útoky umožňuje rozpoznávat a reag
   - Zneužití oprávnění
   - Exfiltrace dat.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Nakonfigurujte [Azure Defender pro SQL](azure-defender-for-sql.md)   pro konkrétní server nebo spravovanou instanci. Můžete také nakonfigurovat Azure Defender pro SQL pro všechny servery a spravované instance v rámci předplatného tak, že přepnete na [úroveň Azure Security Center úrovně Standard](../../security-center/security-center-pricing.md).
 
@@ -655,13 +655,13 @@ Rozšířená ochrana před internetovými útoky umožňuje rozpoznávat a reag
 
 Sledování událostí databáze pomáhá pochopit databázovou činnost. Můžete získat přehled o nesrovnalostech a anomáliích, které by mohly poukazovat na obavy z podnikání nebo na podezření na narušení zabezpečení. Také umožňuje a usnadňuje dodržování standardů dodržování předpisů.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Povolte auditování [SQL Database](../../azure-sql/database/auditing-overview.md) nebo [auditování spravované instance](../managed-instance/auditing-configure.md) ke sledování událostí databáze a jejich zápis do protokolu auditu ve vašem účtu Azure Storage, Log Analytics pracovní prostor (Preview) nebo Event Hubs (Preview).
 
 - Protokoly auditu se dají zapisovat do účtu Azure Storage, do Log Analytics pracovního prostoru pro spotřebu Azure Monitor protokoly nebo do centra událostí pro spotřebu pomocí centra událostí. Můžete nakonfigurovat libovolnou kombinaci těchto možností a protokoly auditu se zapíší do každého z nich.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Konfigurací [SQL Database auditování](../../azure-sql/database/auditing-overview.md) na serveru nebo [auditování spravované instance](../managed-instance/auditing-configure.md) pro auditované události budou auditovány všechny stávající a nově vytvořené databáze na tomto serveru.
 - Zásady auditování ve výchozím nastavení zahrnují všechny akce (dotazy, uložené procedury a úspěšná a neúspěšná přihlášení) proti databázím, což může vést k velkému objemu protokolů auditu. Zákazníkům se doporučuje [nakonfigurovat auditování pro různé typy akcí a skupin akcí pomocí PowerShellu](./auditing-overview.md#manage-auditing). Tato konfigurace vám pomůže řídit počet auditovaných akcí a minimalizuje riziko ztráty událostí. Vlastní konfigurace auditu umožňují zákazníkům zachytit jenom data auditu, která jsou potřeba.
@@ -670,7 +670,7 @@ Sledování událostí databáze pomáhá pochopit databázovou činnost. Může
 > [!NOTE]
 > Povolením auditování pro Log Analytics se účtují náklady na základě sazeb ingestování. Pomocí této [Možnosti](https://azure.microsoft.com/pricing/details/monitor/)si pamatujte na související náklady, nebo zvažte uložení protokolů auditu v účtu úložiště Azure.
 
-**Další zdroje informací** :
+**Další zdroje informací**:
 
 - [Auditování SQL Database](../../azure-sql/database/auditing-overview.md)
 - [Auditování SQL Server](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
@@ -679,12 +679,12 @@ Sledování událostí databáze pomáhá pochopit databázovou činnost. Může
 
 Omezte přístup k účtu úložiště za účelem podpory oddělení povinností a oddělení DBA od auditorů.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Když ukládáte protokoly auditu do Azure Storage, ujistěte se, že je přístup k účtu úložiště omezený na minimální principy zabezpečení. Řízení, kdo má přístup k účtu úložiště.
 - Další informace najdete v tématu [autorizace přístupu k Azure Storage](../../storage/common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Řízení přístupu k cíli auditu je klíčovým konceptem oddělení DBA od auditorů.
 
@@ -698,11 +698,11 @@ Tato část popisuje různé aspekty a osvědčené postupy pro správu zabezpe�
 
 Proaktivně Vylepšete zabezpečení databáze díky zjišťování a oprava potenciálních ohrožení zabezpečení databáze.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Povolit [posouzení ohrožení zabezpečení SQL](/sql/relational-databases/security/sql-vulnerability-assessment) (VA) k prohledávání databáze kvůli problémům se zabezpečením a automatické spouštění pravidelně v databázích.
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Nejdřív spusťte ve svých databázích a Iterujte opravami kontrolami, které nedodržují osvědčené postupy zabezpečení. Nastavte standardní hodnoty pro přijatelné _konfigurace, dokud se kontrola_ neobjeví, nebo všechny kontroly byly úspěšné.  
 
@@ -712,7 +712,7 @@ Proaktivně Vylepšete zabezpečení databáze díky zjišťování a oprava pot
 
 - Vyřešte kontroly a směrné plány aktualizací tam, kde je to relevantní. Vytvořte položky lístků pro řešení akcí a sledujte je, dokud nebudou vyřešeny.
 
-**Další zdroje informací** :
+**Další zdroje informací**:
 
 - [Posouzení ohrožení zabezpečení SQL](/sql/relational-databases/security/sql-vulnerability-assessment)
 - [Služba posouzení ohrožení zabezpečení SQL vám pomůže identifikovat slabá místa databáze.](sql-vulnerability-assessment.md)
@@ -721,14 +721,14 @@ Proaktivně Vylepšete zabezpečení databáze díky zjišťování a oprava pot
 
 Seznamte se se sloupci, které potenciálně obsahují citlivá data. To, co se považuje za citlivé údaje, je silně závislé na zákazníkovi, nařízení dodržování předpisů atd. a musí být vyhodnoceno uživateli na základě těchto dat. Klasifikace sloupců pro použití pokročilých scénářů auditování a ochrany na základě citlivosti.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Pomocí [zjišťování a klasifikace dat SQL](data-discovery-and-classification-overview.md) můžete zjišťovat, klasifikovat, označovat a chránit citlivá data ve vašich databázích.
   - Prohlédněte si doporučení klasifikace vytvořená automatizovaným zjišťováním na řídicím panelu pro zjišťování a klasifikaci dat SQL. Přijměte příslušné klasifikace, aby byly citlivé údaje trvale označené popisky klasifikace.
   - Ručně přidejte klasifikace pro všechna další citlivá datová pole, která nebyla zjištěna automatizovaným mechanismem.
 - Další informace najdete v tématu věnovaném [zjišťování a klasifikaci dat SQL](/sql/relational-databases/security/sql-data-discovery-and-classification).
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Pravidelně Sledujte řídicí panel klasifikace, aby bylo přesné posouzení stavu klasifikace databáze. Sestavu stavu klasifikace databáze lze exportovat nebo vytisknout pro účely dodržování předpisů a auditování.
 
@@ -740,12 +740,12 @@ Seznamte se se sloupci, které potenciálně obsahují citlivá data. To, co se 
 
 Monitor, který přistupuje k citlivým datům, a zachycuje dotazy na citlivá data v protokolech auditu.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Použijte kombinaci SQL Auditu a Klasifikace dat.
   - V protokolu [auditu SQL Database](../../azure-sql/database/auditing-overview.md) můžete sledovat přístup specificky pro citlivá data. Můžete také zobrazit informace, jako jsou data, ke kterým došlo, a popisek citlivosti. Další informace najdete v tématech [zjišťování a klasifikace dat](data-discovery-and-classification-overview.md) a [auditování přístupu k citlivým datům](data-discovery-and-classification-overview.md#audit-sensitive-data).
 
-**Osvědčené postupy** :
+**Osvědčené postupy**:
 
 - Viz osvědčené postupy pro oddíly auditování a klasifikace dat:
   - [Auditovat kritické události zabezpečení](#audit-critical-security-events)
@@ -755,7 +755,7 @@ Monitor, který přistupuje k citlivým datům, a zachycuje dotazy na citlivá d
 
 Využijte jednotný systém pro správu zabezpečení infrastruktury, který posílí stav zabezpečení vašich datových Center (včetně databází v SQL Database). Prohlédněte si seznam doporučení týkajících se zabezpečení vašich databází a stavu dodržování předpisů.
 
-**Jak implementovat** :
+**Jak implementovat**:
 
 - Monitorujte doporučení zabezpečení související s SQL a aktivní hrozby v [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/).
 
@@ -769,11 +769,11 @@ Exfiltrace dat je neoprávněné kopírování, přenos nebo načítání dat z 
 
 Připojení k serveru prostřednictvím veřejného koncového bodu představuje riziko exfiltrace dat, protože zákazníci si můžou své brány firewall otevřít na veřejné IP adresy.  
 
-**Scénář 1** : aplikace na virtuálním počítači Azure se připojuje k databázi v Azure SQL Database. Neautorizovaný objekt actor získá přístup k virtuálnímu počítači a dojde k jeho ohrožení. V tomto scénáři data exfiltrace znamená, že se externí entita, která používá neautorizovaný virtuální počítač, připojuje k databázi, kopíruje osobní data a ukládá je do úložiště objektů BLOB nebo jiné SQL Database v jiném předplatném.
+**Scénář 1**: aplikace na virtuálním počítači Azure se připojuje k databázi v Azure SQL Database. Neautorizovaný objekt actor získá přístup k virtuálnímu počítači a dojde k jeho ohrožení. V tomto scénáři data exfiltrace znamená, že se externí entita, která používá neautorizovaný virtuální počítač, připojuje k databázi, kopíruje osobní data a ukládá je do úložiště objektů BLOB nebo jiné SQL Database v jiném předplatném.
 
-**Scénář 2** : Rouge dBA. Tento scénář je často vyvolaný zákazníky citlivými z bezpečnostních důvodů ze regulovaných odvětví. V tomto scénáři může uživatel s vysokými oprávněními kopírovat data z Azure SQL Database do jiného předplatného, které neřídí vlastník dat.
+**Scénář 2**: Rouge dBA. Tento scénář je často vyvolaný zákazníky citlivými z bezpečnostních důvodů ze regulovaných odvětví. V tomto scénáři může uživatel s vysokými oprávněními kopírovat data z Azure SQL Database do jiného předplatného, které neřídí vlastník dat.
 
-**Potenciální rizika** :
+**Potenciální rizika**:
 
 V dnešní době se Azure SQL Database a SQL Managed instance nabízí následující techniky pro zmírnění hrozeb exfiltracech dat:
 

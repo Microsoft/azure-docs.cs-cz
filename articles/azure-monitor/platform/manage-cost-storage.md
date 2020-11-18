@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 71a4fba177f5bbbaf9f8d991222b071d0da66d4d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b66d0f20959d196fddeb8356d8171573f1243b58
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660385"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842273"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -627,7 +627,7 @@ Když obdržíte výstrahu, postupujte podle kroků uvedených v předchozích �
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>Poplatky za přenos dat pomocí Log Analytics
 
-Odesílání dat do Log Analytics může mít za následek poplatky za šířku pásma dat. Jak je popsáno na [stránce ceny za Azure šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/), přenos dat mezi službami Azure v rámci dvou oblastí se v normální sazbě účtuje jako odchozí přenos dat. Příchozí přenos dat je zdarma. Tento poplatek je však velmi malý (několik%) v porovnání s náklady na Log Analytics přijímání dat. V důsledku toho se řídí náklady na Log Analytics se musí soustředit na přijatý [objem dat](#understanding-ingested-data-volume). 
+Odesílání dat do Log Analytics může mít za následek poplatky za šířku pásma, ale to je omezené na Virtual Machines, kde je agent Log Analytics nainstalovaný a který se nepoužije při použití nastavení diagnostiky nebo s jinými konektory, které jsou integrované do Azure Sentinel. Jak je popsáno na [stránce ceny za Azure šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/), přenos dat mezi službami Azure v rámci dvou oblastí se v normální sazbě účtuje jako odchozí přenos dat. Příchozí přenos dat je zdarma. Tento poplatek je však velmi malý (několik%) v porovnání s náklady na Log Analytics přijímání dat. V důsledku toho se řídí náklady na Log Analytics se musí soustředit na přijatý [objem dat](#understanding-ingested-data-volume). 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Řešení potíží s tím, proč Log Analytics už neshromažďuje data

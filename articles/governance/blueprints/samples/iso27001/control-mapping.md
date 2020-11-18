@@ -3,12 +3,12 @@ title: Kontrola ukázkových ovládacích prvků ISO 27001
 description: Mapování ovládacího prvku ukázka ISO 27001. Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
 ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: 04e9863cd52c272cf74e2656df207f4ced7b4286
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0c1c20ae8b740ce019441dbee880f883947af160
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420225"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842494"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Mapování ovládacího prvku ukázka ISO 27001
 
@@ -84,7 +84,7 @@ Tento podrobný plán přiřadí tři [Azure Policy](../../../policy/overview.md
 
 ## <a name="a942-secure-log-on-procedures"></a>Postupy zabezpečeného přihlašování. 9.4.2
 
-Tento podrobný plán přiřadí tři Azure Policy definice pro audit účtů, u kterých není povolené Multi-Factor Authentication. Azure Multi-Factor Authentication poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a zajišťuje silné ověřování. Monitorováním účtů bez povoleného ověřování službou Multi-Factor Authentication můžete identifikovat účty, jejichž zabezpečení může být pravděpodobnější.
+Tento podrobný plán přiřadí tři Azure Policy definice pro audit účtů, u kterých není povolené Multi-Factor Authentication. Azure AD Multi-Factor Authentication poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a zajišťuje silné ověřování. Monitorováním účtů bez povoleného ověřování službou Multi-Factor Authentication můžete identifikovat účty, jejichž zabezpečení může být pravděpodobnější.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
 - Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.

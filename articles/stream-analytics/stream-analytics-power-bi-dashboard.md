@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/16/2020
-ms.openlocfilehash: 6dd855695a155e924f7c46bdb17449c5e6504ca6
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 4e3f31442c5fa645e27a640d8facf86aed20aa75
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745356"
+ms.locfileid: "94842477"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro streamovaná data
 
@@ -221,7 +221,7 @@ Tato konfigurace umožňuje změnit původní dotaz na následující:
 ```
 
 ### <a name="renew-authorization"></a>Obnovit autorizaci
-Pokud se heslo od vytvoření nebo posledního ověření úlohy změnilo, budete muset účet Power BI znovu ověřit. Pokud je Azure Multi-Factor Authentication nakonfigurovaný v tenantovi Azure Active Directory (Azure AD), musíte také obnovit Power BI autorizaci každé dva týdny. Pokud obnovení neprovedete, můžete se podívat na příznaky, jako je například nedostatek výstupu úlohy nebo `Authenticate user error` v protokolech operací.
+Pokud se heslo od vytvoření nebo posledního ověření úlohy změnilo, budete muset účet Power BI znovu ověřit. Pokud je v tenantovi Azure Active Directory (Azure AD) nakonfigurovaná služba Azure AD Multi-Factor Authentication, musíte také obnovit Power BI autorizaci každé dva týdny. Pokud obnovení neprovedete, můžete se podívat na příznaky, jako je například nedostatek výstupu úlohy nebo `Authenticate user error` v protokolech operací.
 
 Podobně platí, že pokud se úloha spustí po vypršení platnosti tokenu, dojde k chybě a úloha se nezdařila. Pokud chcete tento problém vyřešit, zastavte úlohu, která běží, a přejít na výstup Power BI. Aby nedošlo ke ztrátě dat, vyberte odkaz **obnovit autorizaci** a potom restartujte úlohu z **posledního pozastaveného času**.
 

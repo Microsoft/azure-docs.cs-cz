@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ba6ae9262fb0e55c53e1b1421c075e555fae8d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55e5ff2af62c903efeab5c4932eae0c9dc9b535c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87328168"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842307"
 ---
 # <a name="enable-azure-monitor-for-single-virtual-machine-or-virtual-machine-scale-set-in-the-azure-portal"></a>Povolit Azure Monitor pro jeden virtuální počítač nebo sadu škálování virtuálního počítače v Azure Portal
 Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítač nebo sadu škálování virtuálního počítače pomocí Azure Portal. Tento postup lze použít pro následující:
@@ -20,14 +20,14 @@ Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače p
 - Sada škálování virtuálních počítačů Azure
 - Hybridní virtuální počítač připojený pomocí ARC Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](vminsights-configure-workspace.md). Případně můžete vytvořit nový pracovní prostor během tohoto procesu.
 - V části [podporované operační systémy](vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
 
 ## <a name="enable-azure-monitor-for-vms"></a>Povolit Azure Monitor pro virtuální počítače
 
-Z Azure Portal vyberte **virtuální počítače**, **Virtual Machine Scale Sets**nebo **počítače – Azure ARC** a vyberte prostředek ze seznamu. V části **monitorování** v nabídce vyberte **přehledy** a pak **Povolit**. Následující příklad ukazuje virtuální počítač Azure, ale nabídka je podobná sadě Azure Virtual Machine Scale set nebo ARC Azure.
+Z Azure Portal vyberte **virtuální počítače**, **Virtual Machine Scale Sets** nebo **servery – Azure ARC** a vyberte prostředek ze seznamu. V části **monitorování** v nabídce vyberte **přehledy** a pak **Povolit**. Následující příklad ukazuje virtuální počítač Azure, ale nabídka je podobná sadě Azure Virtual Machine Scale set nebo ARC Azure.
 
 ![Povolení Azure Monitor pro virtuální počítače pro virtuální počítač](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 

@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: f7d89942ad5209b854b8df486ad3e59a3976edfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edbc944e77d2483d32574f8044c72fc3d1292e2a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259047"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840430"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci TypingDNA s využitím Azure Active Directory B2C
 
 V tomto návodu se dozvíte, jak integrovat ukázkovou online platební aplikaci v Azure Active Directory B2C s aplikací TypingDNA. Pomocí aplikace TypingDNA můžou zákazníci dodržovat požadavky Azure AD B2C na transakce 2 (PSD2) pro [platební služby](https://www.typingdna.com/use-cases/sca-strong-customer-authentication) prostřednictvím klávesových zkratek Dynamics a silného ověřování zákazníků. Další informace o TypingDNA najdete [tady](https://www.typingdna.com/).
 
- Azure AD B2C používá technologie TypingDNA k zachycení vlastností pro psaní uživatelů a jejich zaznamenávání a analyzování pro známé účely při každém ověřování. Tím přidáte vrstvu ochrany související s riskiness ověřování a vyhodnocujete úrovně rizika. Azure AD B2C může vyvolat jiné mechanismy, aby bylo možné zajistit další jistotu, že uživatel je vyvolán vyvoláním Azure MFA, vynucením ověřování e-mailu nebo jakékoli jiné vlastní logiky pro váš scénář.
+ Azure AD B2C používá technologie TypingDNA k zachycení vlastností pro psaní uživatelů a jejich zaznamenávání a analyzování pro známé účely při každém ověřování. Tím přidáte vrstvu ochrany související s riskiness ověřování a vyhodnocujete úrovně rizika. Azure AD B2C může vyvolat jiné mechanismy, které poskytují další jistotu, že uživatel je vyvolán tím, že vyvolá Azure AD MFA, vynutí ověření e-mailu nebo jakoukoliv jinou vlastní logiku pro váš scénář.
 
 >[!NOTE]
 > Tato ukázková zásada je založená na [SocialAndLocalAccountsWithMfa](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccountsWithMfa) Start Pack.
@@ -113,7 +113,7 @@ Tyto prahové hodnoty by měly být upraveny na vašem případu použití.
 
 - Po vyhodnocení rozhraní API `net_score` by měl vrátit logickou deklaraci identity na B2C- `promptMFA` .
 
-- `promptMFA`Deklarace identity se používá v rámci předběžného předpokladu k podmíněnému provádění Azure MFA.
+- `promptMFA`Deklarace identity se používá v rámci předběžného předpokladu k podmíněnému provádění vícefaktorového ověřování Azure AD.
 
 ```xml
 

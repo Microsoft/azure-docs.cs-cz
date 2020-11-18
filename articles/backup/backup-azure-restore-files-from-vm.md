@@ -4,25 +4,28 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 654ed7467410743e0db1abc2e51f1304b4f91a5d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b9d5c90634dac3229e756ad93c10db91b268080c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093714"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841154"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
 Azure Backup poskytuje možnost obnovení [virtuálních počítačů Azure a disků](./backup-azure-arm-restore-vms.md) ze záloh virtuálních počítačů Azure, označovaných také jako body obnovení. Tento článek vysvětluje, jak obnovit soubory a složky ze zálohy virtuálního počítače Azure. Obnovování souborů a složek je k dispozici pouze pro virtuální počítače Azure nasazené pomocí modelu Správce prostředků a chráněny do trezoru Recovery Services.
+
 
 > [!NOTE]
 > Tato funkce je k dispozici pro virtuální počítače Azure nasazené pomocí modelu Správce prostředků a chráněných do trezoru Recovery Services.
 > Obnovení souborů ze zašifrované zálohy virtuálního počítače se nepodporuje.
 >
 
-## <a name="mount-the-volume-and-copy-files"></a>Připojení svazku a zkopírování souborů
+![Pracovní postup obnovení složky souborů](./media/backup-azure-restore-files-from-vm/file-recovery-1.png)
 
-Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuální počítač a vyberte požadovaný bod obnovení.
+## <a name="step-1-generate-and-download-script-to-browse-and-recover-files"></a>Krok 1: vygenerování a stažení skriptu pro procházení a obnovení souborů
+
+Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuální počítač a proveďte následující kroky:
 
 1. Přihlaste se k [Azure Portal](https://portal.Azure.com) a v levém podokně vyberte **virtuální počítače**. V seznamu virtuálních počítačů vyberte virtuální počítač a otevřete tak řídicí panel tohoto virtuálního počítače.
 
@@ -40,7 +43,7 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 
 4. V rozevírací nabídce **Vyberte bod obnovení** vyberte bod obnovení, který obsahuje soubory, které chcete. Ve výchozím nastavení je již vybrán nejnovější bod obnovení.
 
-5. Pokud chcete stáhnout software, který se používá ke kopírování souborů z bodu obnovení, vyberte **stáhnout spustitelný soubor** (pro virtuální počítače s Windows Azure) nebo **stáhnout skript** (pro virtuální počítače se systémem Linux Azure se vygeneruje skript Pythonu).
+5. Vyberte **stáhnout spustitelný soubor** (pro virtuální počítače s Windows Azure) nebo **stáhnout skript** (pro virtuální počítače se systémem Linux se vygeneruje skript Pythonu), který stáhne software používaný ke kopírování souborů z bodu obnovení.
 
     ![Stáhnout spustitelný soubor](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
@@ -54,79 +57,145 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 
     ![Generované heslo](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
-7. Ujistěte se, že [máte správný počítač](#selecting-the-right-machine-to-run-the-script) pro spuštění skriptu. Pokud je pravý počítač stejný jako počítač, do kterého jste stáhli skript, můžete pokračovat do části ke stažení. Z umístění pro stahování (obvykle složky *stažené soubory* ) klikněte pravým tlačítkem na spustitelný soubor nebo skript a spusťte ho s přihlašovacími údaji správce. Po zobrazení výzvy zadejte heslo nebo vložte heslo z paměti a stiskněte klávesu **ENTER**. Po zadání platného hesla se skript připojí k bodu obnovení.
 
-    ![Spustitelný výstup](./media/backup-azure-restore-files-from-vm/executable-output.png)
+## <a name="step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script"></a>Krok 2: Ujistěte se, že počítač splňuje požadavky před spuštěním skriptu.
 
-8. Pro počítače se systémem Linux se vygeneruje skript Pythonu. Jeden potřebuje stáhnout skript a zkopírovat ho na relevantní/kompatibilní server Linux. Možná budete muset změnit oprávnění k provedení ```chmod +x <python file name>``` . Pak spusťte soubor Python s nástrojem ```./<python file name>``` .
+Po úspěšném stažení skriptu se ujistěte, že máte správný počítač pro spuštění tohoto skriptu. Virtuální počítač, u kterého plánujete skript spustit, by neměl mít žádnou z následujících nepodporovaných konfigurací. Pokud k tomu dojde, zvolte alternativní počítač nejlépe ze stejné oblasti, která splňuje požadavky.  
 
-V části [požadavky na přístup](#access-requirements) se ujistěte, že se skript úspěšně spouští.
+### <a name="dynamic-disks"></a>Dynamické disky
 
-### <a name="identifying-volumes"></a>Identifikace svazků
+Na virtuálním počítači nemůžete spustit spustitelný skript s žádnou z následujících vlastností:
 
-#### <a name="for-windows"></a>Pro Windows
+- Svazky, které jsou rozloženy na více discích (rozložené a prokládané svazky).
+- Svazky odolné proti chybám (zrcadlené svazky a svazky RAID-5) na dynamických discích.
+
+### <a name="windows-storage-spaces"></a>Prostory úložiště ve Windows
+
+Stažený spustitelný soubor nemůžete spustit na virtuálním počítači, který je nakonfigurovaný pro prostory úložiště Windows.
+
+### <a name="virtual-machine-backups-having-large-disks"></a>Zálohy virtuálních počítačů s velkými disky
+
+Pokud má zálohovaný počítač velký počet disků (>16) nebo velké disky (> 4 TB), nedoporučujeme spouštět skript na stejném počítači pro obnovení, protože bude mít významný dopad na virtuální počítač. Místo toho doporučujeme mít samostatný virtuální počítač jenom pro obnovení souborů (virtuální počítače Azure s D2v3) a pak ho vypnout, pokud není potřeba. 
+
+## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>Krok 3: požadavky na operační systém pro úspěšné spuštění skriptu
+
+Virtuální počítač, na kterém chcete spustit stažený skript, musí splňovat následující požadavky.
+
+### <a name="for-windows-os"></a>OPERAČNÍ systém Windows
+
+V následující tabulce je uvedena kompatibilita mezi operačním systémem serveru a počítače. Při obnovování souborů nemůžete obnovit soubory na předchozí nebo budoucí verzi operačního systému. Například nemůžete obnovit soubor z virtuálního počítače s Windows serverem 2016 na počítač se systémem Windows Server 2012 nebo Windows 8. Můžete obnovit soubory z virtuálního počítače na stejný serverový operační systém nebo do kompatibilního klientského operačního systému.
+
+|Operační systém serveru | Kompatibilní klientský operační systém  |
+| --------------- | ---- |
+| Windows Server 2019    | Windows 10 |
+| Windows Server 2016    | Windows 10 |
+| Windows Server 2012 R2 | Windows 8.1 |
+| Windows Server 2012    | Windows 8  |
+| Windows Server 2008 R2 | Windows 7   |
+
+### <a name="for-linux-os"></a>Pro Linux OS
+
+V systému Linux musí operační systém počítače používaného k obnovení souborů podporovat systém souborů chráněného virtuálního počítače. Když vyberete počítač pro spuštění skriptu, ujistěte se, že počítač má kompatibilní operační systém a používá jednu z verzí identifikovanou v následující tabulce:
+
+|Operační systém Linux | Verze  |
+| --------------- | ---- |
+| Ubuntu | 12,04 a vyšší |
+| CentOS | 6,5 a vyšší  |
+| RHEL | 6,7 a vyšší |
+| Debian | 7 a vyšší |
+| Oracle Linux | 6,4 a vyšší |
+| SLES | 12 a vyšší |
+| openSUSE | 42,2 a vyšší |
+
+> [!NOTE]
+> Zjistili jsme některé problémy s spuštěním skriptu pro obnovení souboru na počítačích s operačním systémem SLES 12 SP4 a prozkoumáme ho s týmem SLES.
+> V současné době spouštění skriptu pro obnovení souborů pracuje na počítačích s verzemi operačních systémů SLES 12 SP2 a SP3.
+>
+
+Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečně připojeny k bodu obnovení.
+
+|Součást | Verze  |
+| --------------- | ---- |
+| bash | 4 a vyšší |
+| python | 2.6.6 a vyšší  |
+| TLS | 1,2 by měla být podporovaná.  |
+
+## <a name="step-4-access-requirements-to-successfully-run-the-script"></a>Krok 4: požadavky na přístup pro úspěšné spuštění skriptu
+
+Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že máte přístup k těmto akcím:
+
+- `download.microsoft.com`
+- Adresy URL služby obnovení (GEO-NAME) odkazují na oblast, ve které se nachází trezor Recovery Services.)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Pro veřejné oblasti Azure)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Pro Azure Čína 21Vianet)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Pro státní správu USA Azure)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Pro Azure Německo)
+- Odchozí porty 53 (DNS), 443, 3260
+
+> [!NOTE]
+>
+> Soubor skriptu, který jste stáhli v [kroku 1,](#step-1-generate-and-download-script-to-browse-and-recover-files) bude mít v názvu souboru **geografickou příponu** . Tuto adresu URL můžete vyplnit pomocí tohoto **geografického názvu** . Název staženého skriptu bude začínat řetězcem: \' VMname name \' \_ \' \' _ \' GUID \' .<br><br>
+> Pokud je například název souboru skriptu *ContosoVM_wcus_12345678*, **geografická přípona** je *wcus* a adresa URL bude:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
+>
+
+Pro Linux skript vyžaduje pro připojení k bodu obnovení komponenty "Open-iSCSI" a "lshw". Pokud komponenty v počítači, na kterém je spuštěn skript, neexistují, skript si vyžádá oprávnění k instalaci součástí. Poskytněte souhlas pro instalaci nezbytných součástí.
+
+Přístup ke službě `download.microsoft.com` je vyžadován ke stažení komponent používaných k vytvoření zabezpečeného kanálu mezi počítačem, na kterém je skript spuštěn, a daty v bodu obnovení.
+
+
+## <a name="step-5-running-the-script-and-identifying-volumes"></a>Krok 5: spuštění skriptu a identifikace svazků
+
+### <a name="for-windows"></a>Pro Windows
+
+Po splnění všech požadavků uvedených v kroku 2 Krok 3 a 4 zkopírujte skript ze staženého umístění (obvykle složky Stažené soubory), klikněte pravým tlačítkem na spustitelný soubor nebo skript a spusťte ho s přihlašovacími údaji správce. Po zobrazení výzvy zadejte heslo nebo vložte heslo z paměti a stiskněte klávesu ENTER. Po zadání platného hesla se skript připojí k bodu obnovení.
+
+  ![Spustitelný výstup](./media/backup-azure-restore-files-from-vm/executable-output.png)
+
 
 Když spustíte spustitelný soubor, operační systém tyto nové svazky připojí a přiřadí písmena jednotek. K procházení těchto jednotek můžete použít Průzkumníka Windows nebo Průzkumníka souborů. Písmena jednotek přiřazená ke svazkům nemusí být shodná s písmeny, která jsou v původním virtuálním počítači. Název svazku se ale zachová. Pokud je například svazek na původním virtuálním počítači "datový disk (E: `\` )", může být tento svazek připojen v místním počítači jako datový disk (libovolné písmeno ': `\` ). Procházejte všemi svazky uvedenými ve výstupu skriptu, dokud nenajdete soubory nebo složku.  
 
    ![Připojené svazky pro obnovení](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-#### <a name="for-linux"></a>Pro Linux
+**Pro zálohované virtuální počítače s velkými disky (Windows)**
+
+Pokud proces obnovení souboru přestane reagovat po spuštění skriptu pro obnovení souborů (například pokud disky nejsou nikdy připojeny nebo jsou připojeny, ale svazky se nezobrazí), proveďte následující kroky:
+  
+1. Ujistěte se, že operační systém je WS 2012 nebo vyšší.
+2. Zajistěte, aby byly na serveru pro obnovení nastaveny klíče registru, jak je navrženo, a nezapomeňte restartovat server. Číslo vedle identifikátoru GUID může být v rozsahu od 0001-0005. V následujícím příkladu je to 0,0004. Procházejte cestou klíče registru do části Parameters (parametry).
+
+    ![Změny klíčů registru](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+
+```registry
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\EnableNOPOut – change this from 0 to 1
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
+```
+
+### <a name="for-linux"></a>Pro Linux
+
+Pro počítače se systémem Linux se vygeneruje skript Pythonu. Stáhněte si skript a zkopírujte ho na relevantní/kompatibilní server Linux. Možná budete muset změnit oprávnění k provedení ```chmod +x <python file name>``` . Pak spusťte soubor Python s nástrojem ```./<python file name>``` .
+
 
 V systému Linux jsou svazky bodu obnovení připojeny ke složce, ve které je skript spuštěn. Zobrazí se odpovídající připojené disky, svazky a odpovídající cesty připojení. Tyto cesty připojení jsou viditelné uživatelům, kteří mají přístup na úrovni root. Procházejte svazky uvedené ve výstupu skriptu.
 
   ![Nabídka obnovení souborů pro Linux](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
-## <a name="closing-the-connection"></a>Uzavírání připojení
 
-Po zjištění souborů a jejich jejich zkopírování do umístění místního úložiště odeberte (nebo odpojte) další jednotky. Chcete-li odpojit jednotky, vyberte v nabídce **obnovení souboru** v Azure Portal možnost **Odpojit disky**.
+**Pro zálohované virtuální počítače s velkými disky (Linux)**
 
-![Odpojit disky](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
+Pokud proces obnovení souboru přestane reagovat po spuštění skriptu pro obnovení souborů (například pokud disky nejsou nikdy připojeny nebo jsou připojeny, ale svazky se nezobrazí), proveďte následující kroky:
 
-Po odpojení disků se zobrazí zpráva. Aktualizace připojení může trvat několik minut, aby bylo možné disky odebrat.
+1. V souboru/etc/iSCSI/iscsid.conf změňte nastavení z:
+    - `node.conn[0].timeo.noop_out_timeout = 5`  schopn `node.conn[0].timeo.noop_out_timeout = 30`
+2. Po provedení výše uvedených změn znovu spusťte skript. Pokud dojde k přechodným selháním, zajistěte, aby mezi znovu běžela mezera 20 až 30 minut, aby nedocházelo k následným nárůstům požadavků, které mají vliv na cílovou přípravu. Tento interval mezi opakovanými spuštěními zajistí, že cíl je připravený pro připojení ze skriptu.
+3. Po obnovení souboru se vraťte na portál a vyberte Odpojit **disky** pro body obnovení, ve kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.
 
-V systému Linux se po navázání připojení k bodu obnovení neodstraní příslušné cesty připojení automaticky. Cesty pro připojení existují jako "osamocené" svazky a jsou viditelné, ale při přístupu k souborům a jejich zapisování vyvolávají chybu. Je možné je odebrat ručně. Skript při spuštění identifikuje všechny takové svazky existující z předchozích bodů obnovení a vyčistí je na základě souhlasu.
 
-> [!NOTE]
-> Ujistěte se, že připojení bylo po obnovení požadovaných souborů zavřeno. To je důležité, zejména v případě, kdy je počítač, ve kterém je spuštěný skript, nakonfigurovaný taky pro zálohování. Pokud je připojení stále otevřené, může následné zálohování selhat s chybou "UserErrorUnableToOpenMount". Důvodem je, že připojené jednotky nebo svazky se považují za dostupné a když k nim dojde, můžou selhat, protože základní úložiště, které je cílový server iSCSI, nemusí být k dispozici. Vymazáním připojení dojde k odebrání těchto jednotek a svazků, takže nebudou během zálohování k dispozici.
+#### <a name="lvmraid-arrays-for-linux-vms"></a>LVM/pole RAID (pro virtuální počítače se systémem Linux)
 
-## <a name="selecting-the-right-machine-to-run-the-script"></a>Výběr správného počítače ke spuštění skriptu
-
-Pokud byl skript úspěšně stažen, je dalším krokem ověření, zda je počítač, na kterém chcete skript spustit, pravý počítač. Níže jsou uvedené požadavky, které je třeba splnit v počítači.
-
-### <a name="original-backed-up-machine-versus-another-machine"></a>Původní zálohovaný počítač versus jiný počítač
-
-1. Pokud je zálohovaným počítačem velký virtuální počítač s velkým diskem – to znamená, že počet disků je větší než 16 disků nebo je každý disk větší než 4 TB, je **nutné skript spustit na jiném počítači** a [tyto požadavky](#file-recovery-from-virtual-machine-backups-having-large-disks) musí být splněny.
-1. I v případě, že zálohovaný počítač není virtuálním počítačem s velkým diskem, v [těchto scénářích](#special-configurations) se skript nedá spustit na stejném ZÁLOHOVANém virtuálním počítači.
-
-### <a name="os-requirements-on-the-machine"></a>Požadavky na operační systém v počítači
-
-Počítač, ve kterém se skript musí spustit, musí splňovat [tyto požadavky na operační systém](#system-requirements).
-
-### <a name="access-requirements-for-the-machine"></a>Požadavky na přístup k počítači
-
-Počítač, ve kterém musí být spuštěn skript, musí splňovat [tyto požadavky na přístup](#access-requirements).
-
-## <a name="special-configurations"></a>Speciální konfigurace
-
-### <a name="dynamic-disks"></a>Dynamické disky
-
-Pokud má chráněný virtuální počítač Azure svazky s jedním nebo oběma následujícími charakteristikami, nemůžete spustit spustitelný skript na stejném virtuálním počítači.
-
-- Svazky, které jsou rozloženy na více discích (rozložené a prokládané svazky)
-- Svazky odolné proti chybám (zrcadlené svazky a svazky RAID-5) na dynamických discích
-
-Místo toho spusťte spustitelný skript na jakémkoli jiném počítači s kompatibilním operačním systémem.
-
-### <a name="windows-storage-spaces"></a>Prostory úložiště ve Windows
-
-Prostory úložiště Windows jsou technologie systému Windows, která umožňuje Virtualizovat úložiště. Prostory úložiště Windows umožňují seskupit standardní disky do fondů úložiště. Pak použijete volné místo v těchto fondech úložiště k vytvoření virtuálních disků nazývaných prostory úložiště.
-
-Pokud chráněný virtuální počítač Azure používá prostory úložiště Windows, nemůžete spustit spustitelný skript na stejném virtuálním počítači. Místo toho spusťte spustitelný skript na jakémkoli jiném počítači s kompatibilním operačním systémem.
-
-### <a name="lvmraid-arrays"></a>LVM/pole RAID
-
-V systému Linux se ke správě logických svazků na více discích používají pole LVM (Logical Volume Manager) nebo software RAID. Pokud chráněný virtuální počítač se systémem Linux používá LVM a/nebo pole RAID, nemůžete skript spustit na stejném virtuálním počítači. Místo toho spusťte skript na jakémkoli jiném počítači s kompatibilním operačním systémem, který podporuje systém souborů chráněného virtuálního počítače.
-
+V systému Linux se ke správě logických svazků na více discích používají pole LVM (Logical Volume Manager) nebo software RAID. Pokud chráněný virtuální počítač se systémem Linux používá LVM a/nebo pole RAID, nemůžete skript spustit na stejném virtuálním počítači.<br>
+Místo toho spusťte skript na jakémkoli jiném počítači s kompatibilním operačním systémem, který podporuje systém souborů chráněného virtuálního počítače.<br>
 Následující výstup skriptu zobrazí disková pole LVM nebo RAID a svazky s typem oddílu.
 
    ![Nabídka výstup pro Linux LVM](./media/backup-azure-restore-files-from-vm/linux-LVMOutput.png)
@@ -256,111 +325,18 @@ mount [RAID Disk Path] [/mountpath]
 
 Pokud je v disku RAID nakonfigurovaný jiný LVM, použijte předchozí postup pro oddíly LVM, ale místo názvu disku RAID použijte název svazku.
 
-## <a name="system-requirements"></a>Požadavky na systém
+## <a name="step-6-closing-the-connection"></a>Krok 6: uzavření připojení
 
-### <a name="for-windows-os"></a>OPERAČNÍ systém Windows
+Po zjištění souborů a jejich jejich zkopírování do umístění místního úložiště odeberte (nebo odpojte) další jednotky. Chcete-li odpojit jednotky, vyberte v nabídce **obnovení souboru** v Azure Portal možnost **Odpojit disky**.
 
-V následující tabulce je uvedena kompatibilita mezi operačním systémem serveru a počítače. Při obnovování souborů nemůžete obnovit soubory na předchozí nebo budoucí verzi operačního systému. Například nemůžete obnovit soubor z virtuálního počítače s Windows serverem 2016 na počítač se systémem Windows Server 2012 nebo Windows 8. Můžete obnovit soubory z virtuálního počítače na stejný serverový operační systém nebo do kompatibilního klientského operačního systému.
+![Odpojit disky](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
-|Operační systém serveru | Kompatibilní klientský operační systém  |
-| --------------- | ---- |
-| Windows Server 2019    | Windows 10 |
-| Windows Server 2016    | Windows 10 |
-| Windows Server 2012 R2 | Windows 8.1 |
-| Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+Po odpojení disků se zobrazí zpráva. Aktualizace připojení může trvat několik minut, aby bylo možné disky odebrat.
 
-### <a name="for-linux-os"></a>Pro Linux OS
-
-V systému Linux musí operační systém počítače používaného k obnovení souborů podporovat systém souborů chráněného virtuálního počítače. Když vyberete počítač pro spuštění skriptu, ujistěte se, že počítač má kompatibilní operační systém a používá jednu z verzí identifikovanou v následující tabulce:
-
-|Operační systém Linux | Verze  |
-| --------------- | ---- |
-| Ubuntu | 12,04 a vyšší |
-| CentOS | 6,5 a vyšší  |
-| RHEL | 6,7 a vyšší |
-| Debian | 7 a vyšší |
-| Oracle Linux | 6,4 a vyšší |
-| SLES | 12 a vyšší |
-| openSUSE | 42,2 a vyšší |
+V systému Linux se po navázání připojení k bodu obnovení neodstraní příslušné cesty připojení automaticky. Cesty pro připojení existují jako "osamocené" svazky a jsou viditelné, ale při přístupu k souborům a jejich zapisování vyvolávají chybu. Je možné je odebrat ručně. Skript při spuštění identifikuje všechny takové svazky existující z předchozích bodů obnovení a vyčistí je na základě souhlasu.
 
 > [!NOTE]
-> Zjistili jsme některé problémy s spuštěním skriptu pro obnovení souboru na počítačích s operačním systémem SLES 12 SP4 a prozkoumáme ho s týmem SLES.
-> V současné době spouštění skriptu pro obnovení souborů pracuje na počítačích s verzemi operačních systémů SLES 12 SP2 a SP3.
->
-
-Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečně připojeny k bodu obnovení.
-
-|Součást | Verze  |
-| --------------- | ---- |
-| bash | 4 a vyšší |
-| python | 2.6.6 a vyšší  |
-| TLS | 1,2 by měla být podporovaná.  |
-
-## <a name="access-requirements"></a>Požadavky na přístup
-
-Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že máte přístup k těmto akcím:
-
-- `download.microsoft.com`
-- Adresy URL služby obnovení (GEO-NAME) odkazují na oblast, ve které se nachází trezor Recovery Services.)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Pro veřejné oblasti Azure)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Pro Azure Čína 21Vianet)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Pro státní správu USA Azure)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Pro Azure Německo)
-- Odchozí porty 53 (DNS), 443, 3260
-
-> [!NOTE]
->
-> Soubor skriptu, který jste stáhli v kroku 5 [výše](#mount-the-volume-and-copy-files) , bude mít v názvu souboru **geografickou příponu** . Tuto adresu URL můžete vyplnit pomocí tohoto **geografického názvu** . Název staženého skriptu bude začínat řetězcem: \' VMname name \' \_ \' \' _ \' GUID \' .<br><br>
-> Pokud je například název souboru skriptu *ContosoVM_wcus_12345678*, **geografická přípona** je *wcus* a adresa URL bude:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
->
-
-Pro Linux skript vyžaduje pro připojení k bodu obnovení komponenty "Open-iSCSI" a "lshw". Pokud komponenty v počítači, na kterém je spuštěn skript, neexistují, skript si vyžádá oprávnění k instalaci součástí. Poskytněte souhlas pro instalaci nezbytných součástí.
-
-Přístup ke službě `download.microsoft.com` je vyžadován ke stažení komponent používaných k vytvoření zabezpečeného kanálu mezi počítačem, na kterém je skript spuštěn, a daty v bodu obnovení.
-
-## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Obnovení souborů ze záloh virtuálních počítačů s velkými disky
-
-V této části se dozvíte, jak provést obnovení souborů ze záloh virtuálních počítačů Azure s více než 16 disky nebo pokud je velikost každého disku větší než 4 TB.
-
-Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy, když je použit velký počet disků (>16) nebo velké disky (> 4 TB), jsou doporučeny následující body akcí:
-
-- Pro obnovení souborů ponechte samostatný server pro obnovení (virtuální počítače Azure s D2v3). Tuto možnost můžete použít pouze pro obnovení souboru a pak ji vypnout, pokud to není nutné. Obnovení původního počítače se nedoporučuje, protože bude mít významný dopad na samotný virtuální počítač.
-- Pak skript spusťte jednou, abyste zkontrolovali, jestli je operace obnovení souborů úspěšná.
-- Pokud proces obnovení souboru přestane reagovat (disky se nikdy nepřipojují nebo jsou připojené, ale svazky se neobjeví), proveďte následující kroky.
-  - Pokud je server pro obnovení virtuální počítač s Windows:
-    - Ujistěte se, že operační systém je WS 2012 nebo vyšší.
-    - Zajistěte, aby byly na serveru pro obnovení nastaveny klíče registru, jak je navrženo, a nezapomeňte restartovat server. Číslo vedle identifikátoru GUID může být v rozsahu od 0001-0005. V následujícím příkladu je to 0,0004. Procházejte cestou klíče registru do části Parameters (parametry).
-
-    ![Změny klíčů registru](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
-
-```registry
-- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
-- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200
-- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\EnableNOPOut – change this from 0 to 1
-- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
-```
-
-- Pokud je server pro obnovení virtuálním počítačem se systémem Linux:
-  - V souboru/etc/iSCSI/iscsid.conf změňte nastavení z:
-    - `node.conn[0].timeo.noop_out_timeout = 5`  schopn `node.conn[0].timeo.noop_out_timeout = 30`
-- Po provedení změny výše spusťte skript znovu. U těchto změn je vysoce pravděpodobné, že obnovení souboru bude úspěšné.
-- Pokaždé, když uživatel stáhne skript, Azure Backup zahájí proces přípravy bodu obnovení ke stažení. U velkých disků bude tento proces trvat značnou dobu. Pokud dojde k následným nárůstům požadavků, cílová Příprava přejde ke stažení spirály. Proto se doporučuje stáhnout skript z portálu/PowerShell/CLI, počkat po 20-30 minut (Heuristická) a pak ji spustit. V tuto chvíli se očekává, že cíl bude připravený pro připojení ze skriptu.
-- Po obnovení souboru se vraťte na portál a vyberte Odpojit **disky** pro body obnovení, ve kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.
-
-## <a name="troubleshooting"></a>Řešení potíží
-
-Pokud máte při obnovování souborů z virtuálních počítačů problémy, další informace najdete v následující tabulce.
-
-| Chybová zpráva/scénář | Pravděpodobná příčina | Doporučená akce |
-| ------------------------ | -------------- | ------------------ |
-| Výstup exe: *zachytila se výjimka při připojování k cíli* . | Skript nemůže získat přístup k bodu obnovení.    | Ověřte, zda počítač splňuje [předchozí požadavky na přístup](#access-requirements). |  
-| Výstup exe: *cíl již byl přihlášen prostřednictvím relace iSCSI.* | Skript již byl spuštěn na stejném počítači a jednotky byly připojeny. | Svazky bodu obnovení již byly připojeny. Nemusí být připojené se stejnými písmeny jednotky původního virtuálního počítače. Procházejte všemi dostupnými svazky v Průzkumníkovi souborů pro váš soubor. |
-| Výstup z exe: *Tento skript je neplatný, protože disky byly odpojeny přes portál nebo překročily limit 12 hodin. Stáhněte si nový skript z portálu.* |    Disky byly odpojeny z portálu nebo byl překročen limit 12 hodin. | Tento konkrétní exe je teď neplatný a nedá se spustit. Pokud chcete získat přístup k souborům tohoto bodu obnovení v čase, přejděte na portál pro nový soubor exe.|
-| V počítači, kde je spuštěný exe: po kliknutí na tlačítko Odpojit se nové svazky nepřipojí. | Iniciátor iSCSI na počítači neodpovídá/nereaguje na aktualizace připojení k cíli a údržbě mezipaměti. |  Po kliknutí na **Odpojit**počkejte několik minut. Pokud se nové svazky odpojeny, procházejte všemi svazky. Procházení všech svazků vynutí, aby iniciátor aktualizoval připojení, a svazek je odpojený s chybovou zprávou, že disk není k dispozici.|
-| Výstup z exe: skript se úspěšně spustí, ale ve výstupu skriptu se nezobrazí "nové svazky připojené". |    Toto je přechodná chyba    | Svazky budou již připojeny. Otevřete Průzkumníka, který chcete procházet. Pokud používáte stejný počítač ke spouštění skriptů pokaždé, zvažte restartování počítače a seznam by se měl zobrazit v dalších spuštěních exe. |
-| Specifické pro Linux: nemůžete zobrazit požadované svazky | OPERAČNÍ systém počítače, ve kterém je spuštěný skript, nemusí rozpoznat podkladový systém souborů chráněného virtuálního počítače. | Ověřte, zda je bod obnovení konzistentní nebo konzistentní se souborem. Pokud je konzistentní soubor, spusťte skript na jiném počítači, jehož operační systém rozpozná chráněný virtuální počítač. |
-| Specifické pro systém Windows: nemůžete zobrazit požadované svazky | Disky jsou možná připojené, ale svazky nejsou nakonfigurované. | Na obrazovce Správa disků Identifikujte další disky týkající se bodu obnovení. Pokud je některý z těchto disků v režimu offline, zkuste je převést do režimu online tak, že kliknete pravým tlačítkem na disk a vyberete **online**.|
+> Ujistěte se, že připojení bylo po obnovení požadovaných souborů zavřeno. To je důležité, zejména v případě, kdy je počítač, ve kterém je spuštěný skript, nakonfigurovaný taky pro zálohování. Pokud je připojení stále otevřené, může následné zálohování selhat s chybou "UserErrorUnableToOpenMount". Důvodem je, že připojené jednotky nebo svazky se považují za dostupné a když k nim dojde, můžou selhat, protože základní úložiště, které je cílový server iSCSI, nemusí být k dispozici. Vymazáním připojení dojde k odebrání těchto jednotek a svazků, takže nebudou během zálohování k dispozici.
 
 ## <a name="security"></a>Zabezpečení
 
@@ -394,15 +370,15 @@ Pokud chcete procházet soubory a složky, používá skript iniciátor iSCSI v 
 
 Používáme mechanismus vzájemného ověřování CHAP, aby každá součást ověřovala druhou. To znamená, že u falešného iniciátoru se připojíte k cíli iSCSI a napsání falešného cíle se připojí k počítači, ve kterém se skript spouští.
 
-Tok dat mezi službou obnovení a počítačem je chráněný vytvořením zabezpečeného tunelu TLS přes TCP (v počítači, na kterém je spuštěný skript,[by se měl podporovat protokol tls 1,2](#system-requirements) ).
+Tok dat mezi službou obnovení a počítačem je chráněný vytvořením zabezpečeného tunelu TLS přes TCP (v počítači, na kterém je spuštěný skript,[by se měl podporovat protokol tls 1,2](#step-3-os-requirements-to-successfully-run-the-script) ).
 
 Jakýkoli seznam Access Control souborů (ACL), který se nachází v nadřazeném nebo zálohovaném virtuálním počítači, se zachová i v připojeném systému souborů.
 
 Skript poskytuje přístup jen pro čtení k bodu obnovení a je platný jenom 12 hodin. Pokud chcete přístup odebrat dříve, přihlaste se Azure Portal/PowerShell/CLI a proveďte **odpojování disků** pro konkrétní bod obnovení. Tento skript se okamžitě zruší.
 
+
 ## <a name="next-steps"></a>Další kroky
 
-- Jakékoli problémy při obnovování souborů najdete v části [věnované řešení potíží](#troubleshooting) .
 - Informace o tom, jak [obnovit soubory přes PowerShell](./backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup)
 - Informace o tom, jak [obnovit soubory prostřednictvím](./tutorial-restore-files.md) rozhraní příkazového řádku Azure
 - Po obnovení virtuálního počítače se dozvíte, jak [Spravovat zálohy](./backup-azure-manage-vms.md) .

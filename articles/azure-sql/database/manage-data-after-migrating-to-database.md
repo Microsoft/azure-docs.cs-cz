@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: f0f9d2affe39eaf74d4c0a537658d655a0c150d7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fe49dce276a15d9d7bc8ddaa5618c0e43dec62e9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789569"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841219"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nový DBA v cloudu – Správa Azure SQL Database po migraci
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,7 +38,7 @@ Tento článek popisuje některé základní charakteristiky Azure SQL Database 
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Monitorování databází na portálu Azure
 
-V [Azure Portal](https://portal.azure.com/)můžete monitorovat využití jednotlivých databází tak, že vyberete databázi a kliknete na graf **monitorování** . Zobrazí se okno **Metrika** , které můžete upravit kliknutím na **Upravit graf** . Přidejte následující metriky:
+V [Azure Portal](https://portal.azure.com/)můžete monitorovat využití jednotlivých databází tak, že vyberete databázi a kliknete na graf **monitorování** . Zobrazí se okno **Metrika**, které můžete upravit kliknutím na **Upravit graf**. Přidejte následující metriky:
 
 - Procento CPU
 - Procento DTU
@@ -49,7 +49,7 @@ Až tyto metriky přidáte, můžete je dál zobrazit v grafu **monitorování**
 
 ![Monitorování výkonu databáze v rámci úrovně služeb](./media/manage-data-after-migrating-to-database/sqldb_service_tier_monitoring.png)
 
-Můžete také nastavit upozornění na výkonové metriky. Klikněte na tlačítko **Přidat upozornění** v okně **Metrika** . Nastavte upozornění podle pokynů průvodce. Můžete určit, zda chcete být upozorněni na překročení zadané prahové hodnoty, nebo naopak když metrika poklesne pod zadanou mez.
+Můžete také nastavit upozornění na výkonové metriky. Klikněte na tlačítko **Přidat upozornění** v okně **Metrika**. Nastavte upozornění podle pokynů průvodce. Můžete určit, zda chcete být upozorněni na překročení zadané prahové hodnoty, nebo naopak když metrika poklesne pod zadanou mez.
 
 Například pokud očekáváte nárůst zatížení databáze, můžete nastavit e-mailové upozornění pro případ, že databáze překročí 80 % kterékoli výkonové metriky. Můžete ji použít jako počáteční upozornění, pokud budete muset přejít na další nejvyšší výpočetní velikost.
 
@@ -66,7 +66,7 @@ Nevytváříte zálohy na Azure SQL Database a je to proto, že je nemusíte mí
 |Úroveň služeb|Doba uchování ve dnech|
 |---|:---:|
 |Základní|7|
-|Standardní|35|
+|Standard|35|
 |Premium|35|
 |||
 
@@ -106,7 +106,7 @@ V SQL Database jsou k dispozici dvě metody ověřování:
 
 Tradiční ověřování systému Windows není podporováno. Azure Active Directory (Azure AD) je centralizovaná služba pro správu identit a přístupu. Díky tomu můžete snadno poskytnout přístup s jednotným přihlašováním (SSO) všem pracovníkům ve vaší organizaci. To znamená, že přihlašovací údaje se sdílejí napříč všemi službami Azure pro jednodušší ověřování. 
 
-Azure AD podporuje [azure Multi-Factor Authentication](authentication-mfa-ssms-overview.md) a [pár kliknutí](../../active-directory/hybrid/how-to-connect-install-express.md) na Azure AD se dá integrovat do služby Windows Server Active Directory. Ověřování SQL funguje stejně, jako byste ji používali v minulosti. Zadejte uživatelské jméno a heslo a můžete ověřovat uživatele na všech databázích na daném serveru. Tato možnost také umožňuje SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse) k poskytování Multi-Factor Authentication a uživatelských účtů hostů v doméně služby Azure AD. Pokud již máte místní službu Active Directory, můžete federovat adresář s Azure Active Directory pro rozšiřování adresáře do Azure.
+Azure AD podporuje [Multi-Factor Authentication Azure AD](authentication-mfa-ssms-overview.md) a [několik kliknutí](../../active-directory/hybrid/how-to-connect-install-express.md) na Azure AD se dá integrovat do služby Windows Server Active Directory. Ověřování SQL funguje stejně, jako byste ji používali v minulosti. Zadejte uživatelské jméno a heslo a můžete ověřovat uživatele na všech databázích na daném serveru. Tato možnost také umožňuje SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse) k poskytování Multi-Factor Authentication a uživatelských účtů hostů v doméně služby Azure AD. Pokud již máte místní službu Active Directory, můžete federovat adresář s Azure Active Directory pro rozšiřování adresáře do Azure.
 
 |**Pokud...**|**SQL Database/Azure synapse Analytics**|
 |---|---|
@@ -261,7 +261,7 @@ Tuto analýzu můžete zobrazit také v části poradce.
 
 V SQL Database můžete využít inteligentní přehledy platformy, abyste mohli monitorovat výkon a odpovídajícím způsobem ho optimalizovat. Využití výkonu a prostředků v SQL Database můžete monitorovat pomocí následujících metod:
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 Azure Portal zobrazuje využití databáze tak, že se vybere databáze a klikne na graf v podokně Přehled. Graf můžete upravit tak, aby zobrazoval více metrik, včetně procenta využití procesoru, procenta DTU, procentuální hodnoty v/v, procentu relací a procenta velikosti databáze.
 
@@ -320,11 +320,11 @@ SQL Database používá některé inteligentní techniky, které jim umožňují
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database-using-the-azure-portal"></a>Návody exportovat a importovat data jako soubory BACPAC z SQL Database pomocí Azure Portal
 
-- **Export** : databázi můžete exportovat v Azure SQL Database jako soubor BACPAC z Azure Portal
+- **Export**: databázi můžete exportovat v Azure SQL Database jako soubor BACPAC z Azure Portal
 
    ![Export databáze](./media/manage-data-after-migrating-to-database/database-export1.png)
 
-- **Import** : můžete také importovat data jako soubor BacPac do databáze v Azure SQL Database pomocí Azure Portal.
+- **Import**: můžete také importovat data jako soubor BacPac do databáze v Azure SQL Database pomocí Azure Portal.
 
    ![Import databáze](./media/manage-data-after-migrating-to-database/import1.png)
 

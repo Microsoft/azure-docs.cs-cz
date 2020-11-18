@@ -3,13 +3,13 @@ title: 'Kurz: odeslání Event Hubs dat do datového skladu – Event Grid'
 description: 'Kurz: popisuje, jak pomocí Azure Event Grid a Event Hubs migrovat data do služby Azure synapse Analytics. K načtení digitalizačního souboru používá funkci Azure Functions.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4fb26bf92e6af1fd9e97f3b9434b4ab5e76316b3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e6dfcac17d79edd417af07179224fdf922906c4e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305278"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841350"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: streamování velkých objemů dat do datového skladu
 Azure [Event Grid](overview.md) je inteligentní služba Směrování událostí, která umožňuje reagovat na oznámení (události) z aplikací a služeb. Například může aktivovat funkci Azure Functions pro zpracování Event Hubs dat zachycených do úložiště objektů BLOB v Azure nebo v Azure Data Lake Storage a migrovat data do jiných úložišť dat. V [ukázce Event Hubs a Event Grid Integration Sample](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) se dozvíte, jak používat Event Hubs se Event Grid k bezproblémové migraci zachycených Event Hubs dat z úložiště objektů blob do služby Azure synapse Analytics (dříve SQL Data Warehouse).
@@ -40,7 +40,7 @@ V tomto článku proveďte následující kroky:
 
 K dokončení tohoto kurzu potřebujete:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 * [Visual studio 2019](https://www.visualstudio.com/vs/) s pracovními postupy pro: vývoj desktopových aplikací pro .NET, vývoj pro Azure, vývoj pro ASP.NET a vývoj webů Node.js, vývoj a vývoj v Pythonu
 * Stáhněte si [vzorový projekt EventHubsCaptureEventGridDemo](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) do svého počítače.
 
@@ -56,14 +56,14 @@ V tomto kroku nasadíte požadovanou infrastrukturu pomocí [šablony Správce p
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Spustit Azure Cloud Shell v Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 2. V horní části vyberte tlačítko **Cloud Shell** .
 
-    ![Azure Portal](media/event-grid-event-hubs-integration/azure-portal.png)
+    ![portál Azure](media/event-grid-event-hubs-integration/azure-portal.png)
 3. V dolní části prohlížeče se zobrazí Cloud Shell otevřít.
 
     ![Cloud Shell](media/event-grid-event-hubs-integration/launch-cloud-shell.png) 
-4. Pokud se v Cloud Shell zobrazí možnost výběru mezi **bash** a **PowerShellem** , vyberte **bash**. 
+4. Pokud se v Cloud Shell zobrazí možnost výběru mezi **bash** a **PowerShellem**, vyberte **bash**. 
 5. Pokud Cloud Shell používáte poprvé, vytvořte účet úložiště tak, že vyberete **vytvořit úložiště**. Azure Cloud Shell vyžaduje účet úložiště Azure pro ukládání některých souborů. 
 
     ![Snímek obrazovky, který zobrazuje dialogové okno nemáte připojené k úložišti, s vybraným tlačítkem vytvořit úložiště](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)

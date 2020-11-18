@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d044be923e5d7a621b72a926db0b4ce9a09b72
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 096d771cbf6e02a67903da7d5ce495890cc6828d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122720"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840487"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Nastavte si registraci a přihlašování telefonem pomocí vlastních zásad v Azure AD B2C
 
@@ -35,7 +35,7 @@ Když se přihlásíte a přihlásíte telefon, uživatel se může přihlásit 
 > [!NOTE]
 > Důrazně doporučujeme, abyste zahrnuli informace o souhlasu do svého přihlašovacího a přihlašovacího prostředí, které je podobné následujícímu ukázkovému textu. Tento ukázkový text slouží pouze k informativním účelům. V tématu Stručná příručka k monitorování kódu na [webu CTIA](https://www.ctia.org/programs) a Projděte si své vlastní specialisty nebo odborníky na dodržování předpisů, které vám poradí s vaším konečným textem a konfigurací funkcí, aby splnily Vaše požadavky na dodržování předpisů:
 >
-> *Když zadáte telefonní číslo, vyjadřujete tím souhlas s přijetím jednorázového hesla odesílaného pomocí textové zprávy, které vám pomůžou přihlásit se a *&lt; Vložit: &gt; název vaší aplikace* . Mohou platit standardní zprávy a sazby dat.*
+> *Když zadáte telefonní číslo, vyjadřujete tím souhlas s přijetím jednorázového hesla odesílaného pomocí textové zprávy, které vám pomůžou přihlásit se a *&lt; Vložit: &gt; název vaší aplikace*. Mohou platit standardní zprávy a sazby dat.*
 >
 > *&lt;Vložit: odkaz na vaše prohlášení o zásadách ochrany osobních údajů&gt;*<br/>*&lt;vložení: odkaz na vaše podmínek služby&gt;*
 
@@ -56,27 +56,27 @@ Pokud chcete přidat vlastní informace o souhlasu, přizpůsobte si následují
 
 ### <a name="phone-sign-up-experience"></a>Přihlašovací možnosti pro telefon
 
-Pokud uživatel ještě nemá účet pro vaši aplikaci, může ho vytvořit kliknutím na odkaz **zaregistrovat** se. Zobrazí se stránka pro registraci, kde uživatel vybere svou **zemi** , zadá jejich telefonní číslo a vybere **Odeslat kód** .
+Pokud uživatel ještě nemá účet pro vaši aplikaci, může ho vytvořit kliknutím na odkaz **zaregistrovat** se. Zobrazí se stránka pro registraci, kde uživatel vybere svou **zemi**, zadá jejich telefonní číslo a vybere **Odeslat kód**.
 
 ![Uživatel spustí registraci telefonu.](media/phone-authentication/phone-signup-start.png)
 
-Do telefonního čísla uživatele se pošle jednorázový ověřovací kód. Uživatel zadá **ověřovací kód** na stránce pro registraci a pak vybere příkaz **ověřit kód** . (Pokud uživatel nedokázal načíst kód, může vybrat **Odeslat nový kód** .)
+Do telefonního čísla uživatele se pošle jednorázový ověřovací kód. Uživatel zadá **ověřovací kód** na stránce pro registraci a pak vybere příkaz **ověřit kód**. (Pokud uživatel nedokázal načíst kód, může vybrat **Odeslat nový kód**.)
 
 ![Uživatel ověřuje kód při registraci telefonu.](media/phone-authentication/phone-signup-verify-code.png)
 
- Uživatel zadá jakékoli další informace požadované na stránce pro registraci, například **zobrazované jméno** , **křestní jméno** a **příjmení** (země a telefonní číslo zůstávají naplněny). Pokud chce uživatel použít jiné telefonní číslo, může zvolit možnost **změnit číslo** a restartovat registraci. Po dokončení vybere uživatel **pokračovat** .
+ Uživatel zadá jakékoli další informace požadované na stránce pro registraci, například **zobrazované jméno**, **křestní jméno** a **příjmení** (země a telefonní číslo zůstávají naplněny). Pokud chce uživatel použít jiné telefonní číslo, může zvolit možnost **změnit číslo** a restartovat registraci. Po dokončení vybere uživatel **pokračovat**.
 
 ![Uživatel poskytuje další informace](media/phone-authentication/phone-signup-additional-info.png)
 
-V dalším kroku se uživateli zobrazí výzva k zadání e-mailu pro obnovení. Uživatel zadá svou e-mailovou adresu a pak vybere **Odeslat ověřovací kód** . Do e-mailové schránky uživatele se pošle kód, který se může načíst a zadat do pole **ověřovací kód** . Pak uživatel vybere **ověřit kód** . 
+V dalším kroku se uživateli zobrazí výzva k zadání e-mailu pro obnovení. Uživatel zadá svou e-mailovou adresu a pak vybere **Odeslat ověřovací kód**. Do e-mailové schránky uživatele se pošle kód, který se může načíst a zadat do pole **ověřovací kód** . Pak uživatel vybere **ověřit kód**. 
 
-Po ověření kódu uživatel vybere **vytvořit** a vytvoří svůj účet. Nebo pokud chce uživatel použít jinou e-mailovou adresu, můžou zvolit **změnit e-mail** .
+Po ověření kódu uživatel vybere **vytvořit** a vytvoří svůj účet. Nebo pokud chce uživatel použít jinou e-mailovou adresu, můžou zvolit **změnit e-mail**.
 
 ![Uživatel vytvoří účet](media/phone-authentication/email-verification.png)
 
 ### <a name="phone-sign-in-experience"></a>Přihlašovací prostředí pro telefonování
 
-Pokud má uživatel existující účet s telefonním číslem jako svůj identifikátor, uživatel zadá své telefonní číslo a vybere **pokračovat** . Po výběru možnosti **pokračovat** potvrdí zemi a telefonní číslo a na telefonu se pošle jednorázový ověřovací kód. Uživatel zadá ověřovací kód a vybere **pokračovat** pro přihlášení.
+Pokud má uživatel existující účet s telefonním číslem jako svůj identifikátor, uživatel zadá své telefonní číslo a vybere **pokračovat**. Po výběru možnosti **pokračovat** potvrdí zemi a telefonní číslo a na telefonu se pošle jednorázový ověřovací kód. Uživatel zadá ověřovací kód a vybere **pokračovat** pro přihlášení.
 
 ![Uživatelské prostředí přihlašování k telefonu](media/phone-authentication/phone-signin-screens.png)
 
@@ -106,15 +106,15 @@ V následujících krocích se předpokládá, že jste splnili [požadavky](#pr
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. V každém souboru nahraďte řetězec `yourtenant` názvem vašeho tenanta Azure AD B2C. Například pokud je název vašeho tenanta B2C *contosob2c* , všechny instance `yourtenant.onmicrosoft.com` se stanou `contosob2c.onmicrosoft.com` .
+1. V každém souboru nahraďte řetězec `yourtenant` názvem vašeho tenanta Azure AD B2C. Například pokud je název vašeho tenanta B2C *contosob2c*, všechny instance `yourtenant.onmicrosoft.com` se stanou `contosob2c.onmicrosoft.com` .
 
-1. Dokončete kroky v části [Přidání ID aplikací do vlastní zásady](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) [v tématu Začínáme s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md). V tomto případě aktualizujte `/phone-number-passwordless/` **`Phone_Email_Base.xml`** **ID aplikace (klienta)** dvou aplikací, které jste zaregistrovali při dokončování požadavků, *IdentityExperienceFramework* a *ProxyIdentityExperienceFramework* .
+1. Dokončete kroky v části [Přidání ID aplikací do vlastní zásady](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) [v tématu Začínáme s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md). V tomto případě aktualizujte `/phone-number-passwordless/` **`Phone_Email_Base.xml`** **ID aplikace (klienta)** dvou aplikací, které jste zaregistrovali při dokončování požadavků, *IdentityExperienceFramework* a *ProxyIdentityExperienceFramework*.
 
 ## <a name="upload-the-policy-files"></a>Nahrání souborů zásad
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do svého tenanta Azure AD B2C.
-1. V části **zásady** vyberte **Architektura prostředí identity** .
-1. Vyberte **Odeslat vlastní zásadu** .
+1. V části **zásady** vyberte **Architektura prostředí identity**.
+1. Vyberte **Odeslat vlastní zásadu**.
 1. Soubory zásad nahrajte v následujícím pořadí:
     1. *Phone_Email_Base.xml*
     1. *SignUpOrSignInWithPhone.xml*
@@ -128,7 +128,7 @@ Při nahrávání každého souboru Azure přidá předponu `B2C_1A_` .
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. V části **vlastní zásady** vyberte **B2C_1A_SignUpOrSignInWithPhone** .
+1. V části **vlastní zásady** vyberte **B2C_1A_SignUpOrSignInWithPhone**.
 1. V části **Vybrat aplikaci** vyberte aplikaci *WebApp1* , kterou jste zaregistrovali při dokončování požadavků.
 1. V **možnosti vybrat adresu URL odpovědi** zvolte `https://jwt.ms` .
 1. Vyberte **Spustit nyní** a zaregistrujte se pomocí e-mailové adresy nebo telefonního čísla.
@@ -153,7 +153,7 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 ## <a name="next-steps"></a>Další kroky
 
 V GitHubu můžete najít registrační sadu vlastních zásad pro registraci a přihlašování pro vlastní zásady (a další úvodní balíčky) na GitHubu: [Azure-Samples/Active-Directory-B2C-Custom-Policy-starterpack/scénáře/Phone-number-Password][starter-pack-phone] – soubory zásad sady počátečního ověřování a transformace deklarací v telefonním čísle:
-* [Definování technického profilu Azure Multi-Factor Authentication](multi-factor-auth-technical-profile.md)
+* [Definování technického profilu Multi-Factor Authentication služby Azure AD](multi-factor-auth-technical-profile.md)
 * [Definovat transformace deklarací telefonního čísla](phone-number-claims-transformations.md)
 
 <!-- LINKS - External -->

@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 2de48946088316e9070e13396f124148a4ff6099
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 094e40fe55e1ba51b0539d740ecb449a8327d6a6
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675014"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841236"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurace služby Multi-Factor Authentication pro SQL Server Management Studio a Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak používat službu Multi-Factor Authentication
 ## <a name="configuration-steps"></a>Postup konfigurace
 
 1. **Konfigurace Azure Active Directory** – Další informace najdete v tématu [Správa adresáře služby Azure AD](/previous-versions/azure/azure-services/hh967611(v=azure.100)), [Integrace místních identit s Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md), [Přidání vlastního názvu domény do Azure AD](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Microsoft Azure teď podporuje federaci s Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)a [Správa Azure AD pomocí Windows PowerShellu](/previous-versions/azure/jj151815(v=azure.100)).
-2. **Konfigurace MFA** – podrobné pokyny najdete v tématu [co je Azure Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md), [podmíněný přístup (MFA) s Azure SQL Database a datovým skladem](conditional-access-configure.md). (Úplný podmíněný přístup vyžaduje prémiové Azure Active Directory. Omezená MFA je k dispozici ve standardní službě Azure AD.)
+2. **Konfigurace MFA** – podrobné pokyny najdete v tématu [co je Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md), [podmíněný přístup (MFA) s Azure SQL Database a datovým skladem](conditional-access-configure.md). (Úplný podmíněný přístup vyžaduje prémiové Azure Active Directory. Omezená MFA je k dispozici ve standardní službě Azure AD.)
 3. **Konfigurace ověřování Azure AD** – podrobné pokyny najdete v tématu [připojení k SQL Database, Managed instance SQL nebo Azure Synapse pomocí ověřování Azure Active Directory](authentication-aad-overview.md).
 4. **Stáhněte si SSMS** – v klientském počítači stáhněte nejnovější verzi SSMS, ze [Stažení SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
 
@@ -81,4 +81,4 @@ Po dokončení ověření se SSMS připojuje obvykle k platným přihlašovacím
 - Přehled služby Multi-Factor Authentication najdete v tématech [univerzální ověřování pomocí SQL Database, spravovaná instance SQL a Azure synapse (podpora SSMS pro MFA)](../database/authentication-mfa-ssms-overview.md).  
 - Udělit ostatním přístup k vaší databázi: [SQL Database ověřování a autorizace: udělení přístupu](logins-create-manage.md)  
 - Zajistěte, aby se uživatelé mohli připojit přes bránu firewall: [Konfigurace pravidla brány firewall na úrovni serveru pomocí Azure Portal](./firewall-configure.md)  
-- Při používání **služby Active Directory – univerzální s** ověřováním MFA je k dispozici trasování ADAL od [SSMS 17,3](/sql/ssms/download-sql-server-management-studio-ssms). Ve výchozím nastavení můžete trasování ADAL zapnout pomocí nabídky **nástroje** , **Možnosti** , v části **služby Azure** , **cloud Azure** , **ADAL okno výstup úroveň trasování** a následným povolením **výstupu**  v nabídce **zobrazení** . Trasování jsou k dispozici v okně výstup při výběru **možnosti Azure Active Directory** .
+- Při používání **služby Active Directory – univerzální s** ověřováním MFA je k dispozici trasování ADAL od [SSMS 17,3](/sql/ssms/download-sql-server-management-studio-ssms). Ve výchozím nastavení můžete trasování ADAL zapnout pomocí nabídky **nástroje**, **Možnosti** , v části **služby Azure**, **cloud Azure**, **ADAL okno výstup úroveň trasování** a následným povolením **výstupu**  v nabídce **zobrazení** . Trasování jsou k dispozici v okně výstup při výběru **možnosti Azure Active Directory**.

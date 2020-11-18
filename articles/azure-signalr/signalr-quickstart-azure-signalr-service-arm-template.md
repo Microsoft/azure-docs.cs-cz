@@ -4,15 +4,15 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit službu Azure Si
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: a7e8183f21ab49fe4662470d30e52977dd89153a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4ab029048b37a4dcb44ef405249dcb9e20de70cf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289909"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841611"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Rychlý Start: použití šablony ARM k nasazení služby signalizace Azure
 
@@ -66,13 +66,13 @@ Na stránce **nasadit službu signalizace Azure** :
 
 1. Pokud chcete, změňte **předplatné** z výchozí hodnoty.
 
-2. V poli **Skupina prostředků** vyberte **vytvořit novou** , zadejte název nové skupiny prostředků a vyberte **OK**.
+2. V poli **Skupina prostředků** vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a vyberte **OK**.
 
 3. Pokud jste vytvořili novou skupinu prostředků, vyberte **oblast** pro skupinu prostředků.
 
-4. Pokud chcete, zadejte nový **název** a **umístění** (například **eastus2** ) služby Azure Signal. Pokud název nezadáte, automaticky se vygeneruje. Umístění služby signalizace Azure může být stejné nebo jiné než v oblasti skupiny prostředků. Pokud nezadáte umístění, bude nastaveno na stejnou oblast jako skupina prostředků.
+4. Pokud chcete, zadejte nový **název** a **umístění** (například **eastus2**) služby Azure Signal. Pokud název nezadáte, automaticky se vygeneruje. Umístění služby signalizace Azure může být stejné nebo jiné než v oblasti skupiny prostředků. Pokud nezadáte umístění, bude nastaveno na stejnou oblast jako skupina prostředků.
 
-5. Vyberte **cenovou úroveň** ( **Free_F1** nebo **Standard_S1** ), zadejte **kapacitu** (počet jednotek signalizace) a vyberte **režim** **výchozí** (vyžaduje server centrálního serveru), bez **serveru** (nepovoluje žádné připojení k serveru) nebo **Classic** (Přesměrováno na hub Server pouze v případě, že rozbočovač má připojení k serveru). Pak zvolte, jestli se mají **Povolit protokoly připojení** , nebo **Povolit protokoly zasílání zpráv**.
+5. Vyberte **cenovou úroveň** (**Free_F1** nebo **Standard_S1**), zadejte **kapacitu** (počet jednotek signalizace) a vyberte **režim** **výchozí** (vyžaduje server centrálního serveru), bez **serveru** (nepovoluje žádné připojení k serveru) nebo **Classic** (Přesměrováno na hub Server pouze v případě, že rozbočovač má připojení k serveru). Pak zvolte, jestli se mají **Povolit protokoly připojení** , nebo **Povolit protokoly zasílání zpráv**.
 
     > [!NOTE]
     > U **Free_F1** cenové úrovně je kapacita omezená na 1 jednotku.
@@ -92,12 +92,12 @@ Pomocí následujícího kódu nasaďte službu Azure Signal Service pomocí ša
 
 * Název a oblast nové služby signalizace Azure
 * Název a oblast nové skupiny prostředků
-* Cenová úroveň Azure ( **Free_F1** nebo **Standard_S1** )
+* Cenová úroveň Azure (**Free_F1** nebo **Standard_S1**)
 * Kapacita jednotky signálu (1, 2, 5, 10, 20, 50 nebo 100)
   > [!NOTE]
   > U **Free_F1** cenové úrovně je kapacita omezená na 1 jednotku.
 * Režim služby: ve **výchozím nastavení** vyžaduje server rozbočovače, bez **serveru** , který umožňuje zakázat žádné připojení k serveru, nebo **klasický** směr směrování na server hub jenom v případě, že má centrum připojení k serveru.
-* Jestli se mají povolit protokoly pro připojení nebo zasílání zpráv ( **true** nebo **false** )
+* Jestli se mají povolit protokoly pro připojení nebo zasílání zpráv (**true** nebo **false**)
 
 ```azurepowershell-interactive
 $serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR Service"
@@ -137,12 +137,12 @@ Pomocí následujícího kódu nasaďte službu Azure Signal Service pomocí ša
 
 * Název a oblast nové služby signalizace Azure
 * Název a oblast nové skupiny prostředků
-* Cenová úroveň Azure ( **Free_F1** nebo **Standard_S1** )
+* Cenová úroveň Azure (**Free_F1** nebo **Standard_S1**)
 * Kapacita jednotky signálu (1, 2, 5, 10, 20, 50 nebo 100)
     > [!NOTE]
     > U **Free_F1** cenové úrovně je kapacita omezená na 1 jednotku.
 * Režim služby: ve **výchozím nastavení** vyžaduje server rozbočovače, bez **serveru** , který umožňuje zakázat žádné připojení k serveru, nebo **klasický** směr směrování na server hub jenom v případě, že má centrum připojení k serveru.
-* Jestli se mají povolit protokoly pro připojení nebo zasílání zpráv ( **true** nebo **false** )
+* Jestli se mají povolit protokoly pro připojení nebo zasílání zpráv (**true** nebo **false**)
 
 ```azurecli-interactive
 read -p "Enter a name for the new Azure SignalR Service: " serviceName &&

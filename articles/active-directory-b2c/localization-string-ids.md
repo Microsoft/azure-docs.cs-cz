@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 45357092784bd9c8821a81b07ce3c381c4ce7989
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7819c934ab97d597d52d4809c11e5c59fb87c89a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410500"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840660"
 ---
 # <a name="localization-string-ids"></a>ID řetězců lokalizací
 
@@ -27,33 +27,44 @@ Element **Localization** umožňuje v zásadách pro cesty uživatelů podporova
 
 Následující identifikátory se používají pro definici obsahu s ID `api.signuporsignin` a [technickým profilem s vlastním uplatněním](self-asserted-technical-profile.md).
 
-| ID | Výchozí hodnota |
-| -- | ------------- |
-| **local_intro_email** | Přihlaste se pomocí svého existujícího účtu |
-| **logonIdentifier_email** | E-mailová adresa |
-| **requiredField_email** | Zadejte prosím svůj e-mail. |
-| **invalid_email** | Zadejte prosím platnou e-mailovou adresu. |
-| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' *+/=? ^ _ \` { \| } ~-] + @ [a-za-Z0-9-] + (?: \\ . [ a-zA-Z0-9-] +)*$ |
-| **local_intro_username** | Přihlaste se pomocí svého uživatelského jména. |
-| **logonIdentifier_username** | Uživatelské jméno |
-| **requiredField_username** | Zadejte prosím svoje uživatelské jméno. |
-| **heslo** | Heslo |
-| **requiredField_password** | Zadejte prosím svoje heslo. |
-| **invalid_password** | Heslo, které jste zadali, není v očekávaném formátu. |
-| **forgotpassword_link** | Forgot your password? |
-| **createaccount_intro** | Nemáte účet? |
-| **createaccount_link** | Zaregistrujte se |
-| **divider_title** | NEBO |
-| **cancel_message** | Uživatel zapomněl svoje heslo. |
-| **button_signin** | Přihlásit se |
-| **social_intro** | Přihlaste se pomocí účtu sociální sítě. |
-  **remember_me** |Zůstat přihlášeni. |
-| **unknown_error** | Máme potíže s přihlášením. Zkuste to později. |
+| ID | Výchozí hodnota | Verze rozložení stránky |
+| -- | ------------- | ------ |
+| **forgotpassword_link** | Forgot your password? | `All` |
+| **createaccount_intro** | Nemáte účet? | `All` |
+| **button_signin** | Přihlásit se | `All` |
+| **social_intro** | Přihlaste se pomocí účtu sociální sítě. | `All` |
+| **remember_me** |Zůstat přihlášeni. | `All` |
+| **unknown_error** | Máme potíže s přihlášením. Zkuste to později. | `All` |
+| **divider_title** | NEBO | `All` |
+| **local_intro_email** | Přihlaste se pomocí svého existujícího účtu | `< 2.0.0` |
+| **logonIdentifier_email** | E-mailová adresa | `< 2.0.0` |
+| **requiredField_email** | Zadejte prosím svůj e-mail. | `< 2.0.0` |
+| **invalid_email** | Zadejte prosím platnou e-mailovou adresu. | `< 2.0.0` |
+| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' \* +/=? ^ \_ \` { \| } ~-] + @ [a-za-Z0-9-] + (?: \\ . [ a-zA-Z0-9-] +) \* $ |`< 2.0.0` |
+| **local_intro_username** | Přihlaste se pomocí svého uživatelského jména. | `< 2.0.0` |
+| **logonIdentifier_username** | Uživatelské jméno | `< 2.0.0` |
+| **requiredField_username** | Zadejte prosím svoje uživatelské jméno. | `< 2.0.0` |
+| **heslo** | Heslo | `< 2.0.0` |
+| **requiredField_password** | Zadejte prosím svoje heslo. | `< 2.0.0` |
+| **createaccount_link** | Zaregistrujte se | `< 2.0.0` |
+| **cancel_message** | Uživatel zapomněl svoje heslo. | `< 2.0.0` |
+| **invalid_password** | Heslo, které jste zadali, není v očekávaném formátu. | `< 2.0.0` |
+| **createaccount_one_link** | Zaregistrujte se | `>= 2.0.0` |
+| **createaccount_two_links** | Zaregistrujte se pomocí {0} nebo {1} | `>= 2.0.0` |
+| **createaccount_three_links** | Zaregistrujte se pomocí {0} , {1} nebo {2} | `>= 2.0.0` |
+| **local_intro_generic** | Přihlaste se pomocí svého {0} | `>= 2.1.0` |
+| **requiredField_generic** | Zadejte prosím svoje {0} | `>= 2.1.0` |
+| **invalid_generic** | Zadejte prosím platný {0} | `>= 2.1.1` |
+| **Adresář** | Přihlásit se | `>= 2.1.1` |
+
+
+> [!NOTE]
+> * Zástupné symboly jako {0} budou automaticky doplněny `DisplayName` hodnotou `ClaimType` . 
+> * Další informace o lokalizaci najdete `ClaimType` v tématu [registrace a přihlášení – příklad](#signupsigninexample).
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na přihlašovací stránce nebo na přihlašovací stránce:
 
-![Prvky uživatelského rozhraní pro registraci nebo přihlašovací stránku](./media/localization-string-ids/localization-susi.png)
-
+![Prvky uživatelského rozhraní pro registraci nebo přihlašovací stránku](./media/localization-string-ids/localization-susi-2.png)
 
 ### <a name="sign-up-or-sign-in-identity-providers"></a>Poskytovatelé přihlašovacích nebo přihlašování identity
 
@@ -95,32 +106,28 @@ V následujícím příkladu je lokalizován poskytovatel identity Facebooku do 
 | **UserMessageIfUserAccountLocked** | Váš účet je dočasně zamčený, aby nedocházelo k neoprávněnému použití. Zkuste to později. |
 | **AADRequestsThrottled** | V tuto chvíli je moc velký počet požadavků. Chvíli prosím počkejte a zkuste to znovu. |
 
+<a name="signupsigninexample"></a>
 ### <a name="sign-up-or-sign-in-example"></a>Příklad registrace nebo přihlášení
 
 ```xml
 <LocalizedResources Id="api.signuporsignin.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="UxElement" StringId="logonIdentifier_email">Email Address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="requiredField_email">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="logonIdentifier_username">Username</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="password">Password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="createaccount_link">Sign up now</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="requiredField_username">Please enter your user name</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="createaccount_intro">Don't have an account?</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="cancel_message">The user has forgotten their password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email Address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="heading">Sign in</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="social_intro">Sign in with your social account</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="local_intro_generic">Sign in with your {0}</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="requiredField_password">Please enter your password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="invalid_password">The password you entered is not in the expected format.</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="local_intro_username">Sign in with your user name</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="local_intro_email">Sign in with your existing account</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="invalid_email">Please enter a valid email address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_generic">Please enter your {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_generic">Please enter a valid {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_one_link">Sign up now</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_two_links">Sign up with {0} or {1}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_three_links">Sign up with {0}, {1}, or {2}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="unknown_error">We are having trouble signing you in. Please try again later.</LocalizedString>
     <!-- Uncomment the remember_me only if the keep me signed in is activated. 
     <LocalizedString ElementType="UxElement" StringId="remember_me">Keep me signed in</LocalizedString> -->
-    <LocalizedString ElementType="UxElement" StringId="email_pattern">^[a-zA-Z0-9.!#$%&amp;’'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$</LocalizedString>
     <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Your password is incorrect.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfPasswordExpired">Your password has expired.</LocalizedString>
@@ -145,7 +152,7 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo l
 | **cancel_message** | Uživatel zrušil zadávání informací o vlastním vyhodnocení. |
 | **preloader_alt** | Počkejte prosím |
 | **ver_but_send** | Odeslat ověřovací kód |
-| **alert_yes** | Ano |
+| **alert_yes** | Yes |
 | **error_fieldIncorrect** | Některá pole jsou vyplněna nesprávně. Zkontrolujte prosím své položky a zkuste to znovu. |
 | **jednolet** | Year (Rok) |
 | **verifying_blurb** | Počkejte prosím, než zpracujeme vaše informace. |
@@ -433,9 +440,9 @@ Níže jsou uvedené identifikátory pro chybové zprávy [technického profilu 
 </LocalizedResources>
 ```
 
-## <a name="azure-mfa-error-messages"></a>Chybové zprávy Azure MFA
+## <a name="azure-ad-mfa-error-messages"></a>Chybové zprávy Azure AD MFA
 
-Níže jsou uvedené identifikátory pro chybové zprávy [Technical profilování Azure MFA](multi-factor-auth-technical-profile.md) :
+Níže jsou uvedené identifikátory pro chybové zprávy [technického profilu Azure AD MFA](multi-factor-auth-technical-profile.md) :
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
@@ -446,7 +453,7 @@ Níže jsou uvedené identifikátory pro chybové zprávy [Technical profilován
 |UserMessageIfThrottled | Vaše žádost byla omezená, zkuste to prosím znovu později.|
 |UserMessageIfWrongCodeEntered|Byl zadán nesprávný kód, zkuste to prosím znovu.|
 
-### <a name="azure-mfa-example"></a>Příklad Azure MFA
+### <a name="azure-ad-mfa-example"></a>Příklad Azure AD MFA
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">

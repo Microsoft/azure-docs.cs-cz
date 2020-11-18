@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7417e2d39371066a5c5e8576040cbe22e7632043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61471e07dda8fcf0c715dcffe85ad3e39ed8ac3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562872"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840368"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informace o technických profilech v Azure Active Directory B2C vlastních zásadách
 
@@ -30,7 +30,7 @@ Technický profil umožňuje tyto typy scénářů:
 
 - [Application Insights](application-insights-technical-profile.md) – odesílání dat události do [Application Insights](../azure-monitor/app/app-insights-overview.md).
 - [Azure Active Directory](active-directory-technical-profile.md) – poskytuje podporu pro správu uživatelů Azure Active Directory B2C.
-- [Azure Multi-Factor Authentication](multi-factor-auth-technical-profile.md) – poskytuje podporu pro ověření telefonního čísla pomocí Azure Multi-Factor Authentication (MFA). 
+- [Azure ad Multi-Factor Authentication](multi-factor-auth-technical-profile.md) – poskytuje podporu pro ověření telefonního čísla pomocí Azure AD Multi-Factor Authentication (MFA). 
 - [Transformace deklarací identity](claims-transformation-technical-profile.md) – volá výstupní transformace deklarací identity za účelem manipulace s hodnotami deklarací identity, ověřování deklarací identity nebo nastavení výchozích hodnot pro sadu výstupních deklarací.
 - [Pomocný parametr tokenu ID](id-token-hint.md) – ověřuje `id_token_hint` signaturu tokenu JWT, název vystavitele a cílovou skupinu tokenů a extrahuje deklaraci identity z příchozího tokenu.
 - [Vystavitel tokenu JWT](jwt-issuer-technical-profile.md) – vygeneruje token JWT, který se vrátí zpět do aplikace předávající strany.

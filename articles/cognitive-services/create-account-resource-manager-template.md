@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.custom: subject-armqs
-ms.openlocfilehash: 9ca92bf81acd72260d89404051f941b317ee3e1d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 4afaad77fdff7a1ba80a385e9f2c3d8ddef8ab96
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363387"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842103"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí šablony ARM
 
@@ -34,7 +34,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 [![Nasazení služby rozpoznávání do Azure](../media/template-deployments/deploy-to-azure.svg "Nasazení služby rozpoznávání do Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cognitive-services-universalkey%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud nemáte předplatné Azure, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services).
 
@@ -60,7 +60,7 @@ V této šabloně je definovaný jeden prostředek Azure:
     |Hodnota  |Popis  |
     |---------|---------|
     | **Předplatné** | Vyberte předplatné služby Azure. |
-    | **Skupina prostředků** | Vyberte **vytvořit nový** , zadejte jedinečný název skupiny prostředků a pak klikněte na **OK**. |
+    | **Skupina prostředků** | Vyberte **vytvořit nový**, zadejte jedinečný název skupiny prostředků a pak klikněte na **OK**. |
     | **Oblast** | Vyberte oblast.  Například **východní USA** |
     | **Název služby pro rozpoznávání** | Nahraďte jedinečným názvem prostředku. Při ověřování nasazení budete potřebovat název v další části. |
     | **Umístění** | Nahraďte výše použitou oblastí. |

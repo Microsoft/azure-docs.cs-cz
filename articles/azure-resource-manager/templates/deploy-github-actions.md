@@ -3,13 +3,13 @@ title: Nasazení šablon Správce prostředků pomocí akcí GitHubu
 description: Popisuje způsob nasazení Azure Resource Manager šablon pomocí akcí GitHubu.
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: 69974a8db30f12b255a4bab57ebfa32ba78f67ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: adb0b9d9a7da19c45904a5d222573e1880915b12
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746105"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841678"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Nasazení šablon Azure Resource Manager pomocí akcí GitHubu
 
@@ -75,7 +75,7 @@ Musíte vytvořit tajné kódy pro přihlašovací údaje Azure, skupinu prostř
 
 1. V [GitHubu](https://github.com/)přejděte do úložiště.
 
-1. Vyberte **nastavení > tajných klíčů > nový tajný kód** .
+1. Vyberte **nastavení > tajných klíčů > nový tajný kód**.
 
 1. Do pole hodnota tajného klíče vložte celý výstup JSON z příkazu Azure CLI. Zadejte název tajného klíče `AZURE_CREDENTIALS` .
 
@@ -95,12 +95,12 @@ Soubor můžete umístit kamkoli do úložiště. Ukázka pracovního postupu v 
 
 ## <a name="create-workflow"></a>Vytvoření pracovního postupu
 
-Soubor pracovního postupu musí být uložený ve složce **. GitHub/Workflows** v kořenovém adresáři úložiště. Přípona souboru pracovního postupu může být buď **. yml** nebo **. yaml** .
+Soubor pracovního postupu musí být uložený ve složce **. GitHub/Workflows** v kořenovém adresáři úložiště. Přípona souboru pracovního postupu může být buď **. yml** nebo **. yaml**.
 
 1. Z vašeho úložiště GitHub v horní nabídce vyberte **Akce** .
-1. Vyberte **nový pracovní postup** .
-1. Vyberte **nastavit pracovní postup sami** .
-1. Pokud upřednostňujete jiný název než **Main. yml** , přejmenujte soubor pracovního postupu. Příklad: **deployStorageAccount. yml** .
+1. Vyberte **nový pracovní postup**.
+1. Vyberte **nastavit pracovní postup sami**.
+1. Pokud upřednostňujete jiný název než **Main. yml**, přejmenujte soubor pracovního postupu. Příklad: **deployStorageAccount. yml**.
 1. Obsah souboru YML nahraďte následujícím kódem:
 
     ```yml
@@ -136,12 +136,12 @@ Soubor pracovního postupu musí být uložený ve složce **. GitHub/Workflows*
 
     První část souboru pracovního postupu obsahuje:
 
-    - **Name (název** ): název pracovního postupu.
-    - **zapnuto** : název událostí GitHubu, které aktivují pracovní postup. Pracovní postup se aktivuje, když je v hlavní větvi událost push, která upravuje aspoň jeden ze dvou zadaných souborů. Tyto dva soubory jsou pracovní postup a soubor šablony.
+    - **Name (název**): název pracovního postupu.
+    - **zapnuto**: název událostí GitHubu, které aktivují pracovní postup. Pracovní postup se aktivuje, když je v hlavní větvi událost push, která upravuje aspoň jeden ze dvou zadaných souborů. Tyto dva soubory jsou pracovní postup a soubor šablony.
 
-1. Vyberte **Spustit potvrzení** .
-1. Vyberte **potvrdit přímo do hlavní větve** .
-1. Vyberte **Potvrdit nový soubor** (nebo **potvrďte změny** ).
+1. Vyberte **Start commit** (Spustit zápis).
+1. Vyberte **potvrdit přímo do hlavní větve**.
+1. Vyberte **Potvrdit nový soubor** (nebo **potvrďte změny**).
 
 Vzhledem k tomu, že pracovní postup je nakonfigurován tak, aby se aktivoval buď pomocí souboru pracovního postupu, nebo aktualizovaného souboru šablony, pracovní postup se spustí hned po potvrzení změn.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: a75dd24769a4f1af018981ffcec279afc2a88b5a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f7980ca7bc6f23c383ea013c2b017b3bd61e2d25
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682414"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842290"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](./itsmc-overview.md).
@@ -32,7 +32,7 @@ Podporují se tyto ITSM produkty nebo služby. Výběrem produktu zobrazíte pod
 
 Následující části obsahují podrobné informace o tom, jak připojit System Center Service Manager produkt k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -41,6 +41,7 @@ Ujistěte se, že jsou splněné následující předpoklady:
 - Hybridní připojení se vytvořilo a nakonfigurovalo. Další informace: [Konfigurace hybridního připojení](#configure-the-hybrid-connection).
 - Podporované verze Service Manager: 2012 R2 nebo 2016.
 - Role uživatele: [operátor pokročilý](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))
+- V současné době se můžou výstrahy odeslané z Azure Monitor vytvářet v System Center Service Managerch incidentů.
 
 > [!NOTE]
 > 
@@ -182,11 +183,11 @@ Následující vzorový obrázek ukazuje podrobné informace o úspěšném při
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt ServiceNow k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Ujistěte se, že jsou splněné následující předpoklady:
 - ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-overview.md#add-it-service-management-connector).
 - Podporované verze ServiceNow: Orlandu, New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Ženeva.
-- V současné době se výstrahy odesílané z Azure Monitor můžou vytvořit v ServiceNow jednom z následujících prvků: události, Incedents nebo výstrahy.
+- V současné době se výstrahy odesílané z Azure Monitor můžou vytvořit v ServiceNow jednom z následujících prvků: události, incidenty nebo výstrahy.
 > [!NOTE]
 > ITSMC podporuje nyní jenom oficiální nabídku SaaS ze služby. Soukromá nasazení služby teď nejsou podporovaná. 
 
@@ -312,7 +313,7 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 > Od 1. října 2020 inITSM inprov-s výstrahou Azure už nebude pro nové zákazníky povolená. Nová připojení ITSM se nepodporují. 
 > Existující připojení ITSM budou podporována.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -370,7 +371,7 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 > Od 1. října 2020 Cherwell ITSM Integration s Azure Alert nebude už pro nové zákazníky povolený. Nová připojení ITSM se nepodporují. 
 > Existující připojení ITSM budou podporována.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jsou splněné následující předpoklady:
 

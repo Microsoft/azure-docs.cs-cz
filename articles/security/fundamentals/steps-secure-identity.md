@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 4fa5ba935e77055936b2abc4faab49b5d10cb5c0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 4703a76ff0a0b55a438f9f0d164cd7f2d3242a02
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410058"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842018"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
@@ -48,7 +48,7 @@ Doporučení v tomto dokumentu jsou zarovnaná se [známkou pro identitu identit
 
 Před zahájením tohoto kontrolního seznamu se ujistěte, že při čtení tohoto kontrolního seznamu nedošlo k ohrožení zabezpečení. Nejdřív musíte chránit privilegované účty.
 
-Útočníci, kteří získají kontrolu nad privilegovanými účty, můžou dělat obrovský škodu, takže je důležité tyto účty nejdřív chránit. Povolte a vyžadovat [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) pro všechny správce ve vaší organizaci pomocí [výchozích hodnot zabezpečení Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) nebo [podmíněného přístupu](../../active-directory/conditional-access/plan-conditional-access.md). Pokud jste neimplementovali MFA, udělejte to teď! Je to důležité.
+Útočníci, kteří získají kontrolu nad privilegovanými účty, můžou dělat obrovský škodu, takže je důležité tyto účty nejdřív chránit. Povolte a vyžadovat [Azure ad Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) pro všechny správce ve vaší organizaci pomocí [výchozích hodnot zabezpečení Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) nebo [podmíněného přístupu](../../active-directory/conditional-access/plan-conditional-access.md). Pokud jste neimplementovali MFA, udělejte to teď! Je to důležité.
 
 Vše nastavené? Pojďme začít v kontrolním seznamu.
 
@@ -59,9 +59,9 @@ Většina porušení podnikového zabezpečení pocházela z některého z něko
 
 ### <a name="make-sure-your-organization-uses-strong-authentication"></a>Ujistěte se, že vaše organizace používá silné ověřování.
 
-Vzhledem k tomu, že se četnost vyladěného, podvodného, odcizeného malwaru nebo opětovného použití znovu využije, je důležité, abyste heslo zálohovali pomocí nějaké formy silných přihlašovacích údajů – další informace o [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
+Vzhledem k tomu, že se četnost vyladěného, podvodného, odcizeného malwaru nebo opětovného použití znovu používá, je důležité, abyste heslo zálohovali pomocí nějaké formy silných přihlašovacích údajů – další informace o [Multi-Factor Authentication Azure AD](../../active-directory/authentication/concept-mfa-howitworks.md).
 
-Pokud chcete snadno povolit základní úroveň zabezpečení identity, můžete použít povolení jedním kliknutím s [výchozími nastaveními zabezpečení Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md). Výchozí nastavení zabezpečení vynutilo Azure MFA pro všechny uživatele v tenantovi a blokují přihlášení ze starších protokolů v celém tenantovi.
+Pokud chcete snadno povolit základní úroveň zabezpečení identity, můžete použít povolení jedním kliknutím s [výchozími nastaveními zabezpečení Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md). Výchozí nastavení zabezpečení vynutilo Azure AD MFA pro všechny uživatele v tenantovi a blokují přihlášení ze starších protokolů v celém tenantovi.
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Spustit zaměnit často hesla pro útoky a vypnout tradiční složitost a pravidla vypršení platnosti.
 

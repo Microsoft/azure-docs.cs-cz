@@ -11,12 +11,12 @@ ms.date: 05/06/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b7cc772e2a2e44a72af5e47a794c8b0f36aa9786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48c79306d376c2faa1089886881a7b5e9a792c86
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387639"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840538"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Správa uživatelských dat v Azure Active Directory B2C
 
@@ -52,7 +52,7 @@ Azure AD B2C uživatelských dat je omezeno na:
 
 V následujícím příkladu toku dat exportu může být postup, který je popsán v rámci aplikace, také proveden buď pomocí back-endu, nebo uživatelem s rolí správce v adresáři:
 
-1. Uživatel se přihlásí k aplikaci. Azure AD B2C vynutil ověřování pomocí Azure Multi-Factor Authentication v případě potřeby.
+1. Uživatel se přihlásí k aplikaci. Azure AD B2C vynutil ověřování pomocí služby Azure AD Multi-Factor Authentication v případě potřeby.
 2. Aplikace používá pověření uživatele k volání operace Microsoft Graph rozhraní API k načtení atributů uživatele. Rozhraní Microsoft Graph API poskytuje data atributů ve formátu JSON. V závislosti na schématu můžete nastavit obsah tokenu ID tak, aby zahrnoval všechna osobní údaje o uživateli.
 3. Aplikace načte aktivitu auditování uživatele. Rozhraní Microsoft Graph API poskytuje aplikaci data události.
 4. Aplikace agreguje data a zpřístupňuje je uživateli.

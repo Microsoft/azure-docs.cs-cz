@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 0812716ab9d952969ccfc14fc0a1e833fae1c9e1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b52cc38c40d8b6a39961ab28d9f0600ea7ee2201
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653789"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841899"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -81,7 +81,7 @@ Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumán�
 
 ### <a name="how-do-i-retrieve-log-data"></a>Návody načíst data protokolu?
 Všechna data se načítají z Log Analyticsho pracovního prostoru pomocí dotazu protokolu napsaného pomocí dotazovacího jazyka KQL (Kusto Query Language). Můžete napsat vlastní dotazy nebo využít řešení a přehledy, které obsahují dotazy protokolu pro konkrétní aplikaci nebo službu. Další informace najdete [v tématu Přehled dotazů protokolu v Azure monitor](log-query/log-query-overview.md).
-
+p
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Můžu odstranit data z Log Analyticsho pracovního prostoru?
 Data se z pracovního prostoru odeberou podle [doby jejich uchování](platform/manage-cost-storage.md#change-the-data-retention-period). Můžete odstranit konkrétní data z důvodů ochrany osobních údajů nebo dodržování předpisů. Další informace najdete v tématu [Jak exportovat a odstranit soukromá data](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
@@ -594,10 +594,6 @@ Kolektor OpenTelemetry je popsaný v [souboru Readme pro GitHub](https://github.
 
 
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
-
-### <a name="health-feature-is-in-private-preview"></a>Funkce Health je v privátní verzi Preview.
-
-Plánujeme vytvořit řadu změn pro přidání funkcí a řešení vašich názorů. Funkce Health přejde na konec června 2020 na verzi Private Preview a další informace najdete v [oznámení o aktualizacích Azure](https://azure.microsoft.com/updates/ci-health-limited-preview/).
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Co *jiné procesy* reprezentují v rámci zobrazení uzlu?
 

@@ -5,27 +5,27 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 802c126548a6fa7062a262e2f939c9a214480794
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 72af066cbff809521c34bb8db88ab0b3e5092fc4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789637"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841100"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Pravidla brány firewall pro Azure SQL Database a Azure synapse
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Když vytvoříte nový server v Azure SQL Database nebo v Azure synapse Analytics s názvem *MySQLServer* , brána firewall na úrovni serveru blokuje veškerý přístup k veřejnému koncovému bodu pro server (který je přístupný na *MySQLServer.Database.Windows.NET* ). Pro zjednodušení se *SQL Database* používá pro odkazování na SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse).
+Když vytvoříte nový server v Azure SQL Database nebo v Azure synapse Analytics s názvem *MySQLServer*, brána firewall na úrovni serveru blokuje veškerý přístup k veřejnému koncovému bodu pro server (který je přístupný na *MySQLServer.Database.Windows.NET*). Pro zjednodušení se *SQL Database* používá pro odkazování na SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse).
 
 > [!IMPORTANT]
-> Tento článek se *nevztahuje na* *spravovanou instanci SQL Azure* . Informace o konfiguraci sítě najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](../managed-instance/connect-application-instance.md).
+> Tento článek se *nevztahuje na* *spravovanou instanci SQL Azure*. Informace o konfiguraci sítě najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](../managed-instance/connect-application-instance.md).
 >
 > Azure synapse podporuje jenom pravidla brány firewall protokolu IP na úrovni serveru. Nepodporuje pravidla brány firewall protokolu IP na úrovni databáze.
 
@@ -63,11 +63,11 @@ Pokud je to možné, doporučujeme použít pravidla brány firewall na úrovni 
 
 *Mají být uživatelé jedné databáze plně izolované z jiné databáze?*
 
-Pokud *Ano* , použijte pravidla brány firewall IP na úrovni databáze pro udělení přístupu. Tato metoda zabraňuje použití pravidel brány firewall na úrovni serveru, která umožňují přístup přes bránu firewall do všech databází. To by snížilo hloubku obrany.
+Pokud *Ano*, použijte pravidla brány firewall IP na úrovni databáze pro udělení přístupu. Tato metoda zabraňuje použití pravidel brány firewall na úrovni serveru, která umožňují přístup přes bránu firewall do všech databází. To by snížilo hloubku obrany.
 
 *Potřebují uživatelé na IP adresách přístup ke všem databázím?*
 
-Pokud *Ano* , použijte pravidla brány firewall na úrovni serveru k omezení počtu pokusů o konfiguraci pravidel brány firewall protokolu IP.
+Pokud *Ano*, použijte pravidla brány firewall na úrovni serveru k omezení počtu pokusů o konfiguraci pravidel brány firewall protokolu IP.
 
 *Má osoba nebo tým, který konfiguruje pravidla brány firewall protokolu IP, přístup jenom prostřednictvím Azure Portal, PowerShellu nebo REST API?*
 
@@ -138,17 +138,17 @@ Chcete-li nastavit pravidlo brány firewall protokolu IP na úrovni serveru v Az
 
     Otevře se stránka **nastavení brány firewall** pro server.
 
-2. Na panelu nástrojů vyberte **Přidat IP adresu klienta** , abyste mohli přidat IP adresu počítače, který používáte, a pak vyberte **Uložit** . Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu.
+2. Na panelu nástrojů vyberte **Přidat IP adresu klienta** , abyste mohli přidat IP adresu počítače, který používáte, a pak vyberte **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu.
 
     ![Nastavení pravidla brány firewall protokolu IP na úrovni serveru](./media/firewall-configure/sql-database-server-firewall-settings.png)
 
 #### <a name="from-the-server-overview-page"></a>Na stránce Přehled serveru
 
-Otevře se stránka s přehledem pro váš server. Zobrazuje plně kvalifikovaný název serveru (například *mynewserver20170403.Database.Windows.NET* ) a nabízí možnosti pro další konfiguraci.
+Otevře se stránka s přehledem pro váš server. Zobrazuje plně kvalifikovaný název serveru (například *mynewserver20170403.Database.Windows.NET*) a nabízí možnosti pro další konfiguraci.
 
 1. Chcete-li nastavit pravidlo na úrovni serveru z této stránky, vyberte možnost **Brána firewall** v nabídce **Nastavení** na levé straně.
 
-2. Na panelu nástrojů vyberte **Přidat IP adresu klienta** , abyste mohli přidat IP adresu počítače, který používáte, a pak vyberte **Uložit** . Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu.
+2. Na panelu nástrojů vyberte **Přidat IP adresu klienta** , abyste mohli přidat IP adresu počítače, který používáte, a pak vyberte **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu.
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>Správa pravidel brány firewall protokolu IP pomocí jazyka Transact-SQL
 
@@ -157,8 +157,8 @@ Otevře se stránka s přehledem pro váš server. Zobrazuje plně kvalifikovan�
 | [sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database) |Server |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni serveru. |
 | [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database) |Server |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni serveru. |
 | [sp_delete_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database) |Server |Odebere pravidla brány firewall protokolu IP na úrovni serveru. |
-| [sys.database_firewall_rules](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database) |Databáze |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni databáze. |
-| [sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) |Databáze |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni databáze. |
+| [sys.database_firewall_rules](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database) |databáze |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni databáze. |
+| [sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) |databáze |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni databáze. |
 | [sp_delete_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database) |Databáze |Odebere pravidla brány firewall protokolu IP na úrovni databáze. |
 
 Následující příklad zkontroluje stávající pravidla, povolí rozsah IP adres na serveru *Contoso* a odstraní pravidlo brány firewall protokolu IP:
@@ -174,7 +174,7 @@ EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
    @start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
 ```
 
-Pokud chcete odstranit pravidlo brány firewall protokolu IP na úrovni serveru, spusťte uloženou proceduru *sp_delete_firewall_rule* . Následující příklad odstraní pravidlo *ContosoFirewallRule* :
+Pokud chcete odstranit pravidlo brány firewall protokolu IP na úrovni serveru, spusťte uloženou proceduru *sp_delete_firewall_rule* . Následující příklad odstraní pravidlo *ContosoFirewallRule*:
 
 ```sql
 EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'

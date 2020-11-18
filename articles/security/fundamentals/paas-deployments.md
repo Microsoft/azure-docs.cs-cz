@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0429eec2a84c22f3d998baa4dde4f543d4927f16
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 77a2a32b9a6358c39a14cfe37eeb44f7cb90af0a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695329"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841984"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -82,14 +82,14 @@ Níže jsou uvedené osvědčené postupy pro správu hraničního řízení ide
 **Osvědčený postup**: Chraňte rozhraní pro správu virtuálních počítačů na hybridních PaaS a IaaS službách pomocí rozhraní pro správu, které vám umožní přímo spravovat tyto virtuální počítače.   
 **Podrobnosti**: můžete použít protokoly vzdálené správy, jako jsou [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)a [Vzdálená komunikace PowerShellu](/powershell/module/microsoft.powershell.core/enable-psremoting) . Obecně doporučujeme, abyste nepovolili přímý vzdálený přístup k virtuálním počítačům z Internetu.
 
-Pokud je to možné, použijte alternativní přístupy, jako je použití virtuálních privátních sítí ve službě Azure Virtual Network. Pokud nejsou k dispozici alternativní přístupy, nezapomeňte použít složitá přístupová hesla a dvojúrovňové ověřování (například [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)).
+Pokud je to možné, použijte alternativní přístupy, jako je použití virtuálních privátních sítí ve službě Azure Virtual Network. Pokud nejsou k dispozici alternativní přístupy, nezapomeňte použít složitá přístupová hesla a dvojúrovňové ověřování (například [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)).
 
 **Osvědčený postup**: Používejte silné ověřování a platformy pro autorizaci.   
 **Podrobnosti**: místo vlastních uživatelských úložišť používejte federované identity ve službě Azure AD. Pokud používáte federované identity, využijte výhod přístupu založeného na platformě a delegujete správu autorizovaných identit pro vaše partnery. Federovaný přístup k identitě je obzvláště důležitý, když se zaměstnanci ukončí a že je potřeba odrážet informace prostřednictvím několika identit a autorizačních systémů.
 
 Místo vlastního kódu použijte mechanismy ověřování a autorizace dodané platformou. Důvodem je, že vývoj vlastního ověřovacího kódu může být náchylný k chybám. Většina vašich vývojářů není odborníkem na zabezpečení a pravděpodobně si nebude vědoma odlišností a nejnovějšího vývoje v ověřování a autorizaci. Komerční kód (například od společnosti Microsoft) je často široce prověřený zabezpečením.
 
-Používejte dvojúrovňové ověřování. Dvojúrovňové ověřování je aktuální standard pro ověřování a autorizaci, protože brání slabým místům zabezpečení vyplývajícím z uživatelského jména a hesla ověřování. Přístup k rozhraním pro správu Azure (portál nebo vzdálené prostředí PowerShell) a službám s přístupem k zákazníkům by měly být navržené a nakonfigurované pro používání [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
+Používejte dvojúrovňové ověřování. Dvojúrovňové ověřování je aktuální standard pro ověřování a autorizaci, protože brání slabým místům zabezpečení vyplývajícím z uživatelského jména a hesla ověřování. Přístup k rozhraním pro správu Azure (portál nebo vzdálené prostředí PowerShell) a službám orientovaným na zákazníky by měly být navržené a nakonfigurované tak, aby používaly [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
 
 Používejte standardní ověřovací protokoly, jako je OAuth2 a Kerberos. Tyto protokoly byly výrazně zkontrolovány a jsou pravděpodobně implementovány jako součást knihoven platforem pro ověřování a autorizaci.
 

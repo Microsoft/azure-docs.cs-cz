@@ -1,6 +1,6 @@
 ---
 title: Zabezpečený vzdálený přístup k virtuálnímu počítači v Azure AD Domain Services | Microsoft Docs
-description: Naučte se zabezpečit vzdálený přístup k virtuálním počítačům pomocí serveru NPS (Network Policy Server) a služby Azure Multi-Factor Authentication s nasazením vzdálené plochy ve Azure Active Directory Domain Services spravované doméně.
+description: Naučte se zabezpečit vzdálený přístup k virtuálním počítačům pomocí serveru NPS (Network Policy Server) a služby Azure AD Multi-Factor Authentication s nasazením vzdálené plochy ve Azure Active Directory Domain Services spravované doméně.
 services: active-directory-ds
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: 2964ca74a05ccbc61646f8a289fc950b46cdad47
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a08b5bf4fb575f0cd2098b3ef180860bb8fbd6e0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967779"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840232"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Zabezpečený vzdálený přístup k virtuálním počítačům v Azure Active Directory Domain Services
 
-K zabezpečení vzdáleného přístupu k virtuálním počítačům, které běží ve spravované doméně Azure Active Directory Domain Services (Azure služba AD DS), můžete použít službu Vzdálená plocha (RDS) a server NPS (Network Policy Server). Azure služba AD DS ověřuje uživatele při žádosti o přístup prostřednictvím prostředí RDS. Pro zvýšení zabezpečení můžete integrovat Azure Multi-Factor Authentication a poskytnout tak dodatečné výzvy k ověření během přihlašovacích událostí. Azure Multi-Factor Authentication k poskytnutí této funkce používá rozšíření pro server NPS.
+K zabezpečení vzdáleného přístupu k virtuálním počítačům, které běží ve spravované doméně Azure Active Directory Domain Services (Azure služba AD DS), můžete použít službu Vzdálená plocha (RDS) a server NPS (Network Policy Server). Azure služba AD DS ověřuje uživatele při žádosti o přístup prostřednictvím prostředí RDS. Pro zvýšení zabezpečení můžete integrovat Multi-Factor Authentication služby Azure AD a poskytnout tak dodatečné výzvy k ověření během přihlašovacích událostí. Azure AD Multi-Factor Authentication k poskytnutí této funkce používá rozšíření pro server NPS.
 
 > [!IMPORTANT]
 > Doporučený způsob, jak bezpečně se připojit k virtuálním počítačům ve spravované doméně Azure služba AD DS, je použití Azure bastionu, plně spravované služby PaaS spravované platformou, kterou zřizujete v rámci vaší virtuální sítě. Bastionu hostitel poskytuje zabezpečené a bezproblémové připojení protokol RDP (Remote Desktop Protocol) (RDP) k virtuálním počítačům přímo v Azure Portal přes SSL. Když se připojujete přes hostitele bastionu, virtuální počítače nepotřebují veřejnou IP adresu a nemusíte používat skupiny zabezpečení sítě k vystavení přístupu k protokolu RDP na portu TCP 3389.
@@ -28,7 +28,7 @@ K zabezpečení vzdáleného přístupu k virtuálním počítačům, které bě
 >
 > Další informace najdete v tématu [co je Azure bastionu?][bastion-overview].
 
-V tomto článku se dozvíte, jak nakonfigurovat službu Vzdálená plocha v Azure služba AD DS a volitelně použít rozšíření Azure Multi-Factor Authentication NPS.
+V tomto článku se dozvíte, jak nakonfigurovat službu Vzdálená plocha v Azure služba AD DS a volitelně použít rozšíření Azure AD Multi-Factor Authentication NPS.
 
 ![Služba Vzdálená plocha (RDS) – přehled](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
@@ -66,32 +66,32 @@ Nasazení prostředí VP obsahuje několik kroků. Existující Průvodce nasaze
 
 Když je služba Vzdálená plocha nasazená do spravované domény, můžete ji spravovat a používat stejně jako v místní doméně služba AD DS.
 
-## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>Nasazení a konfigurace serveru NPS a rozšíření služby NPS pro Azure MFA
+## <a name="deploy-and-configure-nps-and-the-azure-ad-mfa-nps-extension"></a>Nasazení a konfigurace serveru NPS a rozšíření Azure AD MFA NPS
 
-Pokud chcete zvýšit zabezpečení uživatelského přihlašovacího prostředí, můžete volitelně integrovat prostředí VP s Azure Multi-Factor Authentication. V případě této konfigurace obdrží uživatelé během přihlašování další výzvu k potvrzení jejich identity.
+Pokud chcete zvýšit zabezpečení uživatelského přihlašovacího prostředí, můžete volitelně integrovat prostředí VP s Azure AD Multi-Factor Authentication. V případě této konfigurace obdrží uživatelé během přihlašování další výzvu k potvrzení jejich identity.
 
-Aby tato funkce poskytovala tuto funkci, nainstaluje se do vašeho prostředí další server NPS (Network Policy Server) spolu s rozšířením Azure Multi-Factor Authentication NPS. Toto rozšíření se integruje s Azure AD a vyžádá a vrátí stav výzev služby Multi-Factor Authentication.
+Aby tato funkce poskytovala tuto funkci, nainstaluje se do vašeho prostředí další server NPS (Network Policy Server) spolu s rozšířením Azure AD Multi-Factor Authentication NPS. Toto rozšíření se integruje s Azure AD a vyžádá a vrátí stav výzev služby Multi-Factor Authentication.
 
-Aby bylo možné [používat Azure Multi-Factor Authentication][user-mfa-registration], které mohou vyžadovat další licence Azure AD, musí být uživatelé zaregistrovaní.
+Uživatelé musí být [zaregistrovaní, aby mohli používat Multi-Factor Authentication Azure AD][user-mfa-registration], což může vyžadovat další licence Azure AD.
 
-Pokud chcete integrovat Azure Multi-Factor Authentication do prostředí Azure služba AD DS vzdálené plochy, vytvořte server NPS a nainstalujte rozšíření:
+Pokud chcete integrovat Multi-Factor Authentication služby Azure AD do prostředí Azure služba AD DS vzdálené plochy, vytvořte server NPS a nainstalujte rozšíření:
 
 1. Vytvořte další virtuální počítač s Windows serverem 2016 nebo 2019, například *NPSVM01*, který je připojený k podsíti *úloh* v Azure služba AD DS Virtual Network. Připojte virtuální počítač k spravované doméně.
 1. Přihlaste se k virtuálnímu počítači NPS jako účet, který je součástí skupiny *správců řadičů domény Azure AD* , například *contosoadmin*.
-1. Z **Správce serveru**vyberte **Přidat role a funkce**a pak nainstalujte roli *služby síťové zásady a přístup* .
-1. Pomocí existujícího článku s návody [nainstalujte a nakonfigurujte rozšíření Azure MFA NPS][nps-extension].
+1. Z **Správce serveru** vyberte **Přidat role a funkce** a pak nainstalujte roli *služby síťové zásady a přístup* .
+1. Pomocí existujícího článku s návody [nainstalujte a nakonfigurujte rozšíření Azure AD MFA NPS][nps-extension].
 
-Když je nainstalované rozšíření serveru NPS a Azure Multi-Factor Authentication NPS, dokončete další část a nakonfigurujte ji pro použití s prostředím VP.
+Když je nainstalované rozšíření NPS server a Azure AD Multi-Factor Authentication NPS, dokončete další část a nakonfigurujte ji pro použití s prostředím VP.
 
-## <a name="integrate-remote-desktop-gateway-and-azure-multi-factor-authentication"></a>Integrace Brána vzdálené plochy a Azure Multi-Factor Authentication
+## <a name="integrate-remote-desktop-gateway-and-azure-ad-multi-factor-authentication"></a>Integrace Brána vzdálené plochy a Multi-Factor Authentication Azure AD
 
-Pokud chcete integrovat rozšíření Azure Multi-Factor Authentication NPS, použijte existující článek s postupem, který [integruje vaši Brána vzdálené plochy infrastrukturu pomocí rozšíření NPS (Network Policy Server) a Azure AD][azure-mfa-nps-integration].
+Pokud chcete integrovat rozšíření služby Azure AD Multi-Factor Authentication NPS, použijte existující článek s postupem, jak [integrovat vaši Brána vzdálené plochy infrastrukturu pomocí rozšíření NPS (Network Policy Server) a Azure AD][azure-mfa-nps-integration].
 
 Pro integraci se spravovanou doménou jsou potřeba následující další možnosti konfigurace:
 
 1. [Neregistrujte server NPS ve službě Active Directory][register-nps-ad]. Tento krok se v spravované doméně nezdařil.
 1. V [kroku 4 ke konfiguraci zásad sítě][create-nps-policy]zaškrtněte políčko pro **ignorování vlastností telefonického připojení uživatelského účtu**.
-1. Pokud používáte Windows Server 2019 pro rozšíření serveru NPS a Azure Multi-Factor Authentication NPS, spusťte následující příkaz, který aktualizuje zabezpečený kanál, aby server NPS mohl správně komunikovat:
+1. Pokud používáte Windows Server 2019 pro rozšíření serveru NPS a Azure AD Multi-Factor Authentication NPS, spusťte následující příkaz, který aktualizuje zabezpečený kanál, aby server NPS mohl správně komunikovat:
 
     ```powershell
     sc sidtype IAS unrestricted
@@ -103,7 +103,7 @@ Uživatelům se teď při přihlášení zobrazí výzva k dalšímu ověřovac�
 
 Další informace o vylepšení odolnosti při nasazení najdete v tématu [Služba Vzdálená plocha – vysoká dostupnost][rds-high-availability].
 
-Další informace o zabezpečení přihlašování uživatelů najdete v tématu [jak to funguje: Azure Multi-Factor Authentication][concepts-mfa].
+Další informace o zabezpečení přihlašování uživatelů najdete v tématu [jak to funguje: Azure AD Multi-Factor Authentication][concepts-mfa].
 
 <!-- INTERNAL LINKS -->
 [bastion-overview]: ../bastion/bastion-overview.md

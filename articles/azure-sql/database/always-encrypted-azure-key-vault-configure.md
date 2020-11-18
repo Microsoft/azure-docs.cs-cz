@@ -5,19 +5,19 @@ keywords: šifrování dat, šifrovací klíč, cloudové šifrování
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 11/02/2020
-ms.openlocfilehash: 45aca00adab8ef5b33a376af34642261c5e73255
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 257abf03994c7006b1c3789174f550515dcd309a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321625"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841457"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Konfigurace Always Encrypted pomocí Azure Key Vault 
 
@@ -55,7 +55,7 @@ Chcete-li získat ID a *klíč* *aplikace* , postupujte podle kroků v části [
 
 ## <a name="create-a-key-vault-to-store-your-keys"></a>Vytvoření trezoru klíčů pro ukládání klíčů
 
-Teď, když je nakonfigurovaná klientská aplikace a máte ID aplikace, je čas vytvořit Trezor klíčů a nakonfigurovat zásady přístupu, abyste vy a vaše aplikace mohli získat přístup k tajným tajným klíčům trezoru (Always Encrypted klíče). Pro vytvoření nového hlavního klíče sloupce a pro nastavení šifrování pomocí SQL Server Management Studio jsou nutná oprávnění *vytvořit* , *získat* , *Zobrazit* , *podepsat* , *ověřit* , *wrapKey* a *unwrapKey* .
+Teď, když je nakonfigurovaná klientská aplikace a máte ID aplikace, je čas vytvořit Trezor klíčů a nakonfigurovat zásady přístupu, abyste vy a vaše aplikace mohli získat přístup k tajným tajným klíčům trezoru (Always Encrypted klíče). Pro vytvoření nového hlavního klíče sloupce a pro nastavení šifrování pomocí SQL Server Management Studio jsou nutná oprávnění *vytvořit*, *získat*, *Zobrazit*, *podepsat*, *ověřit*, *wrapKey* a *unwrapKey* .
 
 Trezor klíčů můžete rychle vytvořit spuštěním následujícího skriptu. Podrobné vysvětlení těchto příkazů a další informace o vytváření a konfiguraci trezoru klíčů najdete v tématu [co je Azure Key Vault?](../../key-vault/general/overview.md).
 
@@ -151,7 +151,7 @@ SSMS poskytuje průvodce, který vám pomůže snadno nakonfigurovat Always Encr
 
     ![Snímek obrazovky, který zvýrazní sloupce šifrování... možnost nabídky](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
 
-Průvodce Always Encrypted obsahuje následující části: **Výběr sloupce** , **Konfigurace hlavního klíče** , **ověřování** a **Souhrn**.
+Průvodce Always Encrypted obsahuje následující části: **Výběr sloupce**, **Konfigurace hlavního klíče**, **ověřování** a **Souhrn**.
 
 ### <a name="column-selection"></a>Výběr sloupce
 
@@ -179,7 +179,7 @@ V tomto kurzu se dozvíte, jak ukládat klíče v Azure Key Vault.
 
 Nyní můžete šifrovat sloupce nebo uložit skript prostředí PowerShell pro pozdější spuštění. Pro tento kurz vyberte **pokračovat** a klikněte na **Další**.
 
-### <a name="summary"></a>Souhrn
+### <a name="summary"></a>Shrnutí
 
 Ověřte správnost nastavení a kliknutím na **Dokončit** dokončete instalaci pro Always Encrypted.
 
@@ -576,7 +576,7 @@ Můžete vidět, že šifrované sloupce neobsahují žádná data ve formátu p
 
    ![Snímek obrazovky, který ukazuje, že šifrované sloupce neobsahují žádná data ve formátu prostého textu.](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
-Pokud chcete pro přístup k datům ve formátu prostého textu používat SSMS, musíte nejdřív zajistit, aby měl uživatel správná oprávnění k Azure Key Vault: *Get* , *unwrapKey* a *verify*. Podrobné informace najdete v tématu [Vytvoření a uložení hlavních klíčů sloupce (Always Encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
+Pokud chcete pro přístup k datům ve formátu prostého textu používat SSMS, musíte nejdřív zajistit, aby měl uživatel správná oprávnění k Azure Key Vault: *Get*, *unwrapKey* a *verify*. Podrobné informace najdete v tématu [Vytvoření a uložení hlavních klíčů sloupce (Always Encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
 Pak během připojení přidejte parametr *nastavení šifrování sloupce = povoleno* .
 

@@ -3,19 +3,19 @@ title: Ručně iniciovat převzetí služeb při selhání ve spravované instan
 description: Přečtěte si, jak ručně převzetí služeb při selhání primárních a sekundárních replik na spravované instanci SQL Azure.
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: ebf36c99e6c4dd636c41086d4c72fd6761f6d5ca
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7bcdabdb4e49d198b9acb7a1c57312b31a5b4fff
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791626"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842222"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Uživatelsky iniciované ruční převzetí služeb při selhání na spravované instanci SQL
 
@@ -46,7 +46,7 @@ Uživatel, který iniciuje převzetí služeb při selhání, bude muset mít je
 - Vlastní role s následujícím oprávněním:
   - `Microsoft.Sql/managedInstances/failover/action`
 
-### <a name="using-powershell"></a>Použití PowerShellu
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 Minimální verze AZ. SQL musí být [v 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0). Zvažte použití [Azure Cloud Shell](../../cloud-shell/overview.md) z Azure Portal, které mají vždy k dispozici nejnovější verzi prostředí PowerShell. 
 
