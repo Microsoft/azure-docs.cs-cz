@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4f6e194f04789fbcaf24d69965dfa8ac61b20a38
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358605"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886324"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Kurz: Využití automatizovaného strojového učení k predikci ceny jízdy taxíkem
 
@@ -34,12 +34,14 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze](https://aka.ms/AMLFree) Azure Machine Learning dnes
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, dokončete [kurz instalace](tutorial-1st-experiment-sdk-setup.md) .
 * Po dokončení kurzu instalace otevřete Poznámkový blok *kurzy/Regression-automl-NYC-taxi-data/Regression-Automated-ml. ipynb* pomocí stejného serveru poznámkového bloku.
 
-Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete spustit ve vašem vlastním [místním prostředí](how-to-configure-environment.md#local). Spusťte `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` , abyste získali požadované balíčky.
+Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete spustit ve vašem vlastním [místním prostředí](how-to-configure-environment.md#local). Chcete-li získat požadované balíčky, 
+* [Nainstalujte úplného `automl` klienta](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment).
+* Spusťte `pip install azureml-opendatasets azureml-widgets` , abyste získali požadované balíčky.
 
 ## <a name="download-and-prepare-data"></a>Stažení a Příprava dat
 
@@ -182,7 +184,7 @@ ws = Workspace.from_config()
 
 ## <a name="split-the-data-into-train-and-test-sets"></a>Rozdělení dat do vlakových a testovacích sad
 
-Data rozdělte do školicích a testovacích sad pomocí `train_test_split` funkce v `scikit-learn` knihovně. Tato funkce oddělí data do sady dat x ( **Features** ) pro školení modelů a datovou sadu y ( **hodnoty pro předpověď** ) pro testování.
+Data rozdělte do školicích a testovacích sad pomocí `train_test_split` funkce v `scikit-learn` knihovně. Tato funkce oddělí data do sady dat x (**Features**) pro školení modelů a datovou sadu y (**hodnoty pro předpověď**) pro testování.
 
 `test_size`Parametr určuje procentuální hodnotu dat, která se mají přidělit pro testování. `random_state`Parametr nastaví počáteční hodnotu pro náhodný generátor, aby vaše výukové testy byly deterministické.
 

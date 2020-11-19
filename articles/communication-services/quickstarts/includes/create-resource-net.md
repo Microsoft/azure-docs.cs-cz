@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 258908ed1118b0463e8c824cd8c699fb460dfff2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a9f8fdda1bc853057f3eb858e85b938357397cd
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947009"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886094"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/dotnet/).
 - Nejnovější verze [klientské knihovny .NET Core](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém.
-- Získejte nejnovější verzi [klientské knihovny .NET identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet).
+- Získejte nejnovější verzi [klientské knihovny .NET identity](/dotnet/api/azure.identity?view=azure-dotnet).
 - Získejte nejnovější verzi [klientské knihovny pro správu .NET](../../concepts/sdk-options.md).
 
 ## <a name="installing-the-client-library"></a>Instalace klientské knihovny
@@ -44,13 +44,13 @@ Abyste mohli komunikovat s komunikačními službami Azure, musíte se nejdřív
 
 ### <a name="option-1-managed-identity"></a>Možnost 1: spravovaná identita
 
-Pokud je váš kód spuštěný jako služba v Azure, nejjednodušší způsob ověřování je získání spravované identity z Azure. Přečtěte si další informace o [spravovaných identitách](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Pokud je váš kód spuštěný jako služba v Azure, nejjednodušší způsob ověřování je získání spravované identity z Azure. Přečtěte si další informace o [spravovaných identitách](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-[Služby Azure, které podporují spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+[Služby Azure, které podporují spravované identity](../../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
-[Použití spravovaných identit pro App Service a Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+[Použití spravovaných identit pro App Service a Azure Functions](../../../app-service/overview-managed-identity.md?tabs=dotnet)
 
-#### <a name="system-assigned-managed-identity"></a>[Spravovaná identita přiřazená systémem](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
+#### <a name="system-assigned-managed-identity"></a>[Spravovaná identita přiřazená systémem](../../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
 
 ```csharp
 using Azure.Identity;
@@ -62,7 +62,7 @@ var subscriptionId = "AZURE_SUBSCRIPTION_ID";
 var acsClient = new CommunicationManagementClient(subscriptionId, new ManagedIdentityCredential());
 ```
 
-#### <a name="user-assigned-managed-identity"></a>[Spravovaná identita přiřazená uživatelem](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)
+#### <a name="user-assigned-managed-identity"></a>[Spravovaná identita přiřazená uživatelem](../../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity)
 
 ClientId spravované identity, kterou jste vytvořili, je nutné předat `ManagedIdentityCredential` explicitně.
 
@@ -79,7 +79,7 @@ var acsClient = new CommunicationManagementClient(subscriptionId, managedIdentit
 
 ### <a name="option-2-service-principal"></a>Možnost 2: instanční objekt
 
-Místo používání spravované identity můžete chtít provést ověření v Azure pomocí instančního objektu, který spravujete sami. Další informace najdete v dokumentaci k [vytváření a správě instančního objektu ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Místo používání spravované identity můžete chtít provést ověření v Azure pomocí instančního objektu, který spravujete sami. Další informace najdete v dokumentaci k [vytváření a správě instančního objektu ve službě Azure Active Directory](../../../active-directory/develop/howto-create-service-principal-portal.md).
 
 Po vytvoření instančního objektu budete muset z Azure Portal shromažďovat následující informace:
 
@@ -121,7 +121,7 @@ Teď, když jste ověřeni, můžete použít klienta pro správu k volání roz
 
 Pro každý z následujících příkladů budeme přiřazovat prostředky služby Communications do existující skupiny prostředků.
 
-Pokud potřebujete vytvořit skupinu prostředků, můžete to udělat pomocí [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) nebo [Azure Resource Manager klientské knihovny](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md).
+Pokud potřebujete vytvořit skupinu prostředků, můžete to udělat pomocí [Azure Portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) nebo [Azure Resource Manager klientské knihovny](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md).
 
 ### <a name="create-and-manage-a-communication-services-resource"></a>Vytvoření a Správa prostředku komunikačních služeb
 

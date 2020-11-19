@@ -25,6 +25,10 @@
       displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: Koncepty
   items:
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Terminologie služby Azure Data Share
       href: terminology.md
     - name: Role a požadavky

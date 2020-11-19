@@ -10,18 +10,18 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: 8b606108d0e33ba1dd49e37c0f407b0caa350f6b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a93ac3b5d988be33c0f27726a75b1006f990d1da
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667499"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886093"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Rychlý Start: vytvoření a Správa prostředků komunikačních služeb
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Začněte s komunikačními službami Azure tím, že zřizujete první prostředek komunikační služby. Prostředky komunikačních služeb lze zřídit prostřednictvím Azure Portal nebo pomocí klientské knihovny pro správu .NET. Klientská knihovna pro správu umožňuje vytvářet, konfigurovat, aktualizovat a odstraňovat prostředky a rozhraní pomocí [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview), služby Azure Deployment and Management Service. Všechny funkce, které jsou k dispozici v klientských knihovnách, jsou k dispozici v Azure Portal. 
+Začněte s komunikačními službami Azure tím, že zřizujete první prostředek komunikační služby. Prostředky komunikačních služeb lze zřídit prostřednictvím Azure Portal nebo pomocí klientské knihovny pro správu .NET. Klientská knihovna pro správu umožňuje vytvářet, konfigurovat, aktualizovat a odstraňovat prostředky a rozhraní pomocí [Azure Resource Manager](../../azure-resource-manager/management/overview.md), služby Azure Deployment and Management Service. Všechny funkce, které jsou k dispozici v klientských knihovnách, jsou k dispozici v Azure Portal. 
 
 > [!WARNING]
 > Upozorňujeme, že dostupnost komunikačních služeb se v rámci veřejné verze Preview omezuje na zeměpisnou oblast USA. Všimněte si také, že během veřejné verze Preview nejde přenést prostředky komunikace do jiného předplatného.
@@ -47,8 +47,8 @@ Po přechodu na prostředek služby Communication Services vyberte z navigační
 Klientské knihovny komunikačních služeb používají připojovací řetězce k autorizaci požadavků na komunikační služby. Máte několik možností pro uložení připojovacího řetězce:
 
 * Aplikace spuštěná na ploše nebo v zařízení může uložit připojovací řetězec do souboru **app.config** nebo **web.config** . Přidejte připojovací řetězec do oddílu **appSettings** v těchto souborech.
-* Aplikace spuštěná v Azure App Service může připojovací řetězec Uložit do [nastavení aplikace App Service](https://docs.microsoft.com/azure/app-service/configure-common). Přidejte připojovací řetězec do části **připojovací řetězce** na kartě nastavení aplikace v rámci portálu.
-* Připojovací řetězec můžete uložit v [Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault).
+* Aplikace spuštěná v Azure App Service může připojovací řetězec Uložit do [nastavení aplikace App Service](../../app-service/configure-common.md). Přidejte připojovací řetězec do části **připojovací řetězce** na kartě nastavení aplikace v rámci portálu.
+* Připojovací řetězec můžete uložit v [Azure Key Vault](../../data-factory/store-credentials-in-key-vault.md).
 * Pokud používáte aplikaci místně, můžete uložit připojovací řetězec do proměnné prostředí.
 
 ### <a name="store-your-connection-string-in-an-environment-variable"></a>Uložení připojovacího řetězce do proměnné prostředí
@@ -67,7 +67,7 @@ Po přidání proměnné prostředí možná bude nutné restartovat všechny sp
 
 #### <a name="macos"></a>[macOS](#tab/unix)
 
-Upravte **. zshrc**a přidejte proměnnou prostředí:
+Upravte **. zshrc** a přidejte proměnnou prostředí:
 
 ```bash
 export COMMUNICATION_SERVICES_CONNECTION_STRING="<yourconnectionstring>"
@@ -77,7 +77,7 @@ Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 
-Upravte **.bash_profile**a přidejte proměnnou prostředí:
+Upravte **.bash_profile** a přidejte proměnnou prostředí:
 
 ```bash
 export COMMUNICATION_SERVICES_CONNECTION_STRING="<yourconnectionstring>"

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f33d7efd1c136619767c3eadd93740442ae7239a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f0e69e3f62d3b9e4debb5761d877dcdfdd246f60
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762038"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886018"
 ---
 # <a name="chat-concepts"></a>Koncepce chatu
 
@@ -47,7 +47,7 @@ K dispozici jsou dvě základní součásti pro konverzaci: 1) klientská aplika
 Služba Communications Services chat sdílí uživatelem generované zprávy i zprávy generované systémem, které se nazývají **aktivity vláken**. Aktivity vlákna jsou generovány při aktualizaci vlákna chatu. Při volání `List Messages` nebo `Get Messages` v konverzačním vlákně bude výsledek obsahovat textové zprávy generované uživatelem a také systémové zprávy v chronologickém pořadí. To vám pomůže určit, kdy se člen přidal nebo odebral nebo když se aktualizovalo téma konverzačního vlákna. Podporované typy zpráv:  
 
  - `Text`: Skutečná zpráva vytvořená a odeslaná uživatelem jako součást konverzace chatu. 
- - `ThreadActivity/AddMember`: Systémová zpráva, která indikuje, že jeden nebo více členů bylo přidáno do konverzačního vlákna. Příklad:
+ - `ThreadActivity/AddMember`: Systémová zpráva, která indikuje, že jeden nebo více členů bylo přidáno do konverzačního vlákna. Například:
 
 ```xml
 
@@ -72,7 +72,7 @@ Služba Communications Services chat sdílí uživatelem generované zprávy i z
 
 ```  
 
-- `ThreadActivity/DeleteMember`: Systémová zpráva, která indikuje, že člen byl odebrán z konverzačního vlákna. Příklad:
+- `ThreadActivity/DeleteMember`: Systémová zpráva, která indikuje, že člen byl odebrán z konverzačního vlákna. Například:
 
 ```xml
 
@@ -92,7 +92,7 @@ Služba Communications Services chat sdílí uživatelem generované zprávy i z
 
 ```
 
-- `ThreadActivity/TopicUpdate`: Systémová zpráva, která indikuje, že téma bylo aktualizováno. Příklad:
+- `ThreadActivity/TopicUpdate`: Systémová zpráva, která indikuje, že téma bylo aktualizováno. Například:
 
 ```xml
 
@@ -120,7 +120,7 @@ Signalizace v reálném čase umožňuje uživatelům chatovat v reálném čase
 
 ## <a name="using-cognitive-services-with-chat-client-library-to-enable-intelligent-features"></a>Povolení inteligentních funkcí pomocí Cognitive Services s využitím klientské knihovny chatu
 
-[Rozhraní API pro rozpoznávání Azure](https://docs.microsoft.com/azure/cognitive-services/) můžete použít spolu s knihovnou klienta chat k přidání inteligentních funkcí do aplikací. Můžete například:
+[Rozhraní API pro rozpoznávání Azure](../../../cognitive-services/index.yml) můžete použít spolu s knihovnou klienta chat k přidání inteligentních funkcí do aplikací. Můžete například:
 
 - Umožněte uživatelům, aby v různých jazycích navzájemly konverzaci. 
 - Pomoc agentovi podpory určení priorit lístků pomocí zjištění negativního míněníu příchozího problému od zákazníka.
@@ -128,9 +128,9 @@ Signalizace v reálném čase umožňuje uživatelům chatovat v reálném čase
 
 Jedním ze způsobů, jak toho dosáhnout, je jednat o členství vaší důvěryhodné služby jako člena konverzačního vlákna. Řekněme, že chcete povolit převod jazyka. Tato služba bude zodpovědná za naslouchání zpráv vyměňovaných jinými členy [1], volání rozhraní API pro rozpoznávání obsahu pro překlad obsahu na požadovaný jazyk [2, 3] a odeslání přeloženého výsledku jako zprávy ve vlákně chatu [4]. 
 
-Historie zpráv tak bude obsahovat původní i přeložené zprávy. V klientské aplikaci můžete přidat logiku pro zobrazení původní nebo přeložené zprávy. V [tomto rychlém](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translator) startu se naučíte, jak používat rozpoznávání rozhraní API k překladu textu do různých jazyků. 
+Historie zpráv tak bude obsahovat původní i přeložené zprávy. V klientské aplikaci můžete přidat logiku pro zobrazení původní nebo přeložené zprávy. V [tomto rychlém](../../../cognitive-services/translator/quickstart-translator.md) startu se naučíte, jak používat rozpoznávání rozhraní API k překladu textu do různých jazyků. 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagram znázorňující architekturu chatu komunikačních služeb":::
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagram znázorňující Cognitive Services interakci s komunikačními službami.":::
 
 ## <a name="next-steps"></a>Další kroky
 

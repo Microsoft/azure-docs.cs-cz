@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 496a38e43c7bd624c42f5c7a43ad9cf16f85d166
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8c9beaca0fb3ee7881559ffcc955f171bc2ddd7b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579568"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886443"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
 
@@ -27,7 +27,7 @@ Typické scénáře správy verzí:
 * Když jsou nová data dostupná pro přeškolení
 * Při použití různých přístupů k přípravě dat nebo technickému řízení funkcí
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento kurz potřebujete:
 
@@ -153,7 +153,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datas-in-your-experiments"></a>Sledování dat v experimentech
+## <a name="track-data-in-your-experiments"></a>Sledování dat v experimentech
 
 Azure Machine Learning sleduje data v rámci experimentu jako vstupní a výstupní datové sady.  
 
