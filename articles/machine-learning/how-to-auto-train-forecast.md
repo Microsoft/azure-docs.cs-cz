@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 3be1d404d0cac7f9e5c9b1c2f7350cf05c5fe794
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0bbb18a82de508f79cd2fd5dde58c1cf33520950
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358112"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887395"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 
@@ -31,9 +31,9 @@ Uděláte to takto:
 
 Pro používání s nízkým kódem si přečtěte [kurz: Předpověď poptávky pomocí automatizovaného strojového učení s](tutorial-automated-ml-forecast.md) využitím automatizovaného strojového učení v [Azure Machine Learning Studiu](https://ml.azure.com/).
 
-Na rozdíl od metod klasických časových řad jsou v automatizovaných ML hodnotách časových řad "pivoted", aby se do regresory staly další dimenze společně s jinými koproměnnými. Tento přístup zahrnuje během školení více kontextových proměnných a jejich vztah mezi sebou. Vzhledem k tomu, že předpověď může ovlivnit několik faktorů, tato metoda se dobře zarovnává s scénáři reálného vývoje. Například při prognózování prodeje, interakcí s historickými trendy, směnného kurzu a ceny budou všechny společně řídit výsledek prodeje. 
+Na rozdíl od metod klasických časových řad jsou v automatizovaných ML hodnotách časových řad "pivoted", aby se do regresory staly další dimenze společně s jinými koproměnnými. Tento přístup zahrnuje během školení více kontextových proměnných a jejich vztah mezi sebou. Vzhledem k tomu, že předpověď může ovlivnit několik faktorů, tato metoda se dobře zarovnává s scénáři reálného vývoje. Například při prognózování prodejů, interakcí s historickými trendy, směnným kursem a cenou všech společně provedou všechny výsledky prodeje. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento článek potřebujete, 
 
@@ -131,14 +131,14 @@ Automatizované strojové učení automaticky zkouší různé modely a algoritm
 Modely| Popis | Výhody
 ----|----|---
 Prophet (Preview)|Prophet funguje nejlépe s časovou řadou, která má silné sezónní účinky a několik období historických dat. Pokud chcete tento model využít, nainstalujte ho místně pomocí `pip install fbprophet` . | Přesná & rychlá, robustní k vydaným hodnotám, chybějící data a výrazné změny v časové řadě.
-Auto-ARIMA (Preview)|Pokud jsou data stacionární, provede automaticky regresivní integrovaný klouzavý průměr (ARIMA). To znamená, že jeho statistické vlastnosti, jako je střední hodnota a rozptyl, jsou v celé sadě konstantní. Pokud například překlopete mince, pravděpodobnost, že se vám povede, je 50%, bez ohledu na překlopení dnes, zítra nebo příštího roku.| Skvělé pro univariate Series, protože minulé hodnoty se používají k předpovědi budoucích hodnot.
+Auto-ARIMA (Preview)|Pokud jsou data stacionární, provede automaticky regresivní integrovaný klouzavý průměr (ARIMA). To znamená, že jeho statistické vlastnosti, jako je střední hodnota a rozptyl, jsou v celé sadě konstantní. Například při překlopení mince je pravděpodobnost, že se vám povede k získání hlav, 50%, bez ohledu na to, jestli jste překlopi dnes, zítra nebo příštího roku.| Skvělé pro univariate Series, protože minulé hodnoty se používají k předpovědi budoucích hodnot.
 ForecastTCN (Preview)| ForecastTCN je neuronové síťový model navržený tak, aby se vypořádat s nejnáročnějšími úkoly prognózování, zachytávání nelineárních místních a globálních trendů ve vašich datech a také vztahů mezi časovými řadami.|Umožňuje využití složitých trendů ve vašich datech a umožňuje se snadno škálovat na největší z datových sad.
 
 ### <a name="configuration-settings"></a>Nastavení konfigurace
 
 Podobně jako u regresního problému definujete standardní parametry školení, jako je typ úkolu, počet iterací, školicích dat a počet křížových ověření. Pro úlohy prognózy existují další parametry, které musí být nastaveny, které mají vliv na experiment. 
 
-Následující tabulka shrnuje tyto další parametry. Vzory návrhu syntaxe najdete v [referenční dokumentaci](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) .
+Následující tabulka shrnuje tyto další parametry. Vzory návrhu syntaxe najdete v [referenční dokumentaci třídy ForecastingParameter](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) .
 
 | &nbsp;Název parametru | Popis | Povinné |
 |-------|-------|-------|
@@ -149,11 +149,11 @@ Následující tabulka shrnuje tyto další parametry. Vzory návrhu syntaxe naj
 |`target_lags`|Počet řádků pro prodlevu cílových hodnot na základě frekvence dat Prodleva je vyjádřena jako seznam nebo jedno celé číslo. Je nutné použít prodlevu v případě, že vztah mezi nezávislými proměnnými a závislou proměnnou se ve výchozím nastavení neshoduje nebo koreluje. ||
 |`feature_lags`| Funkce pro prodlevu se automaticky určí pomocí automatického ML, pokud `target_lags` jsou nastavené a `feature_lags` nastavené na `auto` . Povolení funkcí prodlevy může pomoci zlepšit přesnost. Funkce prodlevy jsou ve výchozím nastavení zakázané. ||
 |`target_rolling_window_size`|*n* historická období, která se mají použít ke generování předpokládaných hodnot, <= velikost sady školení Pokud tento parametr vynecháte, *n* je úplná velikost sady školení. Tento parametr zadejte, pokud chcete při výuce modelu vzít v úvahu jen určitou velikost historie. Přečtěte si další informace o [agregaci cílového souhrnného okna](#target-rolling-window-aggregation).||
-|`short_series_handling`| Umožňuje krátkou manipulaci s časovou řadou, aby nedocházelo k selhání během školení z důvodu nedostatečného množství dat. Ve výchozím nastavení je zpracování krátké řady nastaveno na hodnotu true.|
+|`short_series_handling_config`| Umožňuje krátkou manipulaci s časovou řadou, aby nedocházelo k selhání během školení z důvodu nedostatečného množství dat. Ve výchozím nastavení je zpracování krátkých řad nastaveno na hodnotu `auto` . Přečtěte si další informace o [zpracování krátkých řad](#short-series-handling).|
 
 
 Následující kód: 
-* Využívá `ForecastingParameters` třídu k definování parametrů předpovědi pro školení experimentů.
+* Využívá [`ForecastingParameters`](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) třídu k definování parametrů předpovědi pro školení experimentů.
 * Nastaví na `time_column_name` `day_datetime` pole v datové sadě. 
 * Definuje `time_series_id_column_names` parametr pro `"store"` . Tím se zajistí, že se pro data vytvoří **dvě samostatné skupiny časových řad** . jednu pro úložiště a a B.
 * Nastaví na `forecast_horizon` 50, aby bylo možné předpovědět celou sadu testů. 
@@ -164,13 +164,12 @@ Následující kód:
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
-forecasting_parameters = ForecastingParameters(
-    time_column_name='day_datetime', 
-    forecast_horizon=50,
-    time_series_id_column_names=["store"],
-    target_lags='auto',
-    target_rolling_window_size=10
-)
+forecasting_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                               forecast_horizon=50,
+                                               time_series_id_column_names=["store"],
+                                               target_lags='auto',
+                                               target_rolling_window_size=10)
+                                              
 ```
 
 Ty `forecasting_parameters` se pak předají do standardního `AutoMLConfig` objektu společně s `forecasting` typem úkolu, primární metrikou, kritériem ukončení a školicími daty. 
@@ -190,7 +189,7 @@ automl_config = AutoMLConfig(task='forecasting',
                              n_cross_validations=5,
                              enable_ensembling=False,
                              verbosity=logging.INFO,
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 
 ### <a name="featurization-steps"></a>Featurization kroky
@@ -226,12 +225,16 @@ Chcete-li přizpůsobit featurizations pomocí sady SDK, zadejte `"featurization
 
 ```python
 featurization_config = FeaturizationConfig()
+
 # `logQuantity` is a leaky feature, so we remove it.
 featurization_config.drop_columns = ['logQuantitity']
+
 # Force the CPWVOL5 feature to be of numeric type.
 featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+
 # Fill missing values in the target column, Quantity, with zeroes.
 featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+
 # Fill mising values in the `INCOME` column with median value.
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
@@ -260,7 +263,7 @@ Pokud chcete povolit hloubkové učení, nastavte `enable_dnn=True` v `AutoMLCon
 automl_config = AutoMLConfig(task='forecasting',
                              enable_dnn=True,
                              ...
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 > [!Warning]
 > Pokud povolíte DNN pro experimenty vytvořené pomocí sady SDK, [nejlepší vysvětlení modelů](how-to-machine-learning-interpretability-automl.md) jsou zakázané.
@@ -279,6 +282,35 @@ V tabulce je zobrazen výsledný inženýr funkcí, který nastane při použit�
 ![cílové posuvné okno](./media/how-to-auto-train-forecast/target-roll.svg)
 
 Podívejte se na příklad kódu Pythonu s využitím [agregované agregační funkce](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)pro souhrnné okno.
+
+### <a name="short-series-handling"></a>Zpracování krátkých řad
+
+Automatizované ML považuje časovou řadu za **krátkou řadu** , pokud není k dispozici dostatek datových bodů, aby bylo možné provádět fáze vlaků a ověření modelu vývoje. Počet datových bodů se u každého experimentu liší a závisí na max_horizon, počtu rozdělení křížového ověření a délce lookbackí modelu, což je maximální historie, která je potřeba k vytvoření funkcí časové řady. Přesný výpočet najdete v [dokumentaci short_series_handling_config reference](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
+
+Automatizované ML nabízí ve výchozím nastavení krátké zpracování řady s `short_series_handling_config` parametrem v `ForecastingParameters` objektu. 
+
+Aby bylo možné povolit krátkodobé zpracování řad, je `freq` nutné definovat i parametr. Chcete-li změnit výchozí chování, `short_series_handling_config = auto` , aktualizujte `short_series_handling_config` parametr v `ForecastingParameter` objektu.  
+
+```python
+from azureml.automl.core.forecasting_parameters import ForecastingParameters
+
+forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                            forecast_horizon=50,
+                                            short_series_handling_config='auto',
+                                            freq = 50
+                                            target_lags='auto')
+```
+Následující tabulka shrnuje dostupná nastavení pro `short_series_handling_config` .
+ 
+|Nastavení|Popis
+|---|---
+|`auto`| Toto je výchozí chování pro krátkodobé zpracování řad. <li> *Pokud jsou všechny řady krátké*, dosadí data. <br> <li> *Pokud ne všechny řady jsou krátké*, vyřaďte krátké řady. 
+|`pad`| Pokud `short_series_handling_config = pad` a pak automatizovaná ml přidá do každé krátké řady fiktivní hodnoty. Následující seznam uvádí typy sloupců a jejich čalounění: <li>Sloupce objektů s hodnoty NaN <li> Číselné sloupce s 0 <li> Logické a logické sloupce s hodnotou false <li> Cílový sloupec je doplněn náhodnými hodnotami se střední hodnotou nula a směrodatnou odchylku 1. 
+|`drop`| Pokud `short_series_handling_config = drop` je, pak automatizované ml ponechá krátkou řadu a nebude se používat pro školení nebo předpovědi. Předpovědi pro tyto řady vrátí NaN.
+|`None`| Žádná řada není doplněna nebo vyřazena.
+
+>[!WARNING]
+>Odsazení může mít vliv na přesnost výsledného modelu, protože zavádíme umělá data jenom k tomu, abyste získali minulé školení bez chyb. <br> <br> Pokud je mnoho z řad krátkých, může se také zobrazit nějaký dopad na výsledky vysvětlení.
 
 ## <a name="run-the-experiment"></a>Spusťte experiment. 
 

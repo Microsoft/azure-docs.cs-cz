@@ -3,12 +3,12 @@ title: Jak povolit prostředek řešení Azure VMware
 description: Přečtěte si, jak odeslat žádost o podporu pro povolení prostředku řešení Azure VMware. Ve svém stávajícím privátním cloudu řešení Azure VMware si také můžete vyžádat další uzly.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: c9c31d8ffbf62a511f4f2ab19f995b6bc0ee0ca4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8e1b891559cb2d01adc9fdf834ef3c9714fe1233
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695142"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888432"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Jak povolit prostředek řešení Azure VMware
 Přečtěte si, jak odeslat žádost o podporu pro povolení prostředku [Řešení Azure VMware](introduction.md) . Ve svém stávajícím privátním cloudu řešení Azure VMware si také můžete vyžádat další uzly.
@@ -78,7 +78,7 @@ Poskytovatelé CSP musí používat [Partnerské centrum Microsoftu](https://par
 
 1. Přečtěte si a dokončete Obecné nastavení předplatného Azure pro vaše zákazníky. Další informace najdete v [dokumentaci k Microsoft Partner Center](https://docs.microsoft.com/partner-center/azure-plan-manage).
 
-Po nakonfigurování plánu Azure a nastavení potřebných oprávnění RBAC jako CSP zahájíte Microsoftu, aby se povolila kvóta pro předplatné plánu Azure. Přístup k Azure Portal z partnerského centra pomocí procedury **správce jménem** (administrate).
+Po nakonfigurování plánu Azure a povolení oprávnění vSphere RBAC jako CSP zahájíte Microsoftu, aby se povolila kvóta pro předplatné plánu Azure. Přístup k Azure Portal z partnerského centra pomocí procedury **správce jménem** (administrate).
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com).
 

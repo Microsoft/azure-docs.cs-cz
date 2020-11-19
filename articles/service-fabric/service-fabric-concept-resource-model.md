@@ -4,12 +4,12 @@ description: Tento článek poskytuje přehled správy aplikace Service Fabric A
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 3968fde0222dcee8047e7490dba78879ab6110e2
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 886b7d6b40bebf6234064b0627017db1d8cfe31f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681682"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888823"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric model prostředku aplikace
 
@@ -91,6 +91,7 @@ Ukázková aplikace obsahuje [šablony Azure Resource Manager](https://github.co
 >
 >
 
+
 | Parametr              | Popis                                 | Příklad                                                      | Komentáře                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Název clusteru, do kterého nasazujete | SF – cluster123                                                |                                                              |
@@ -137,6 +138,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 ```
 
 ## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>Upgrade aplikace Service Fabric pomocí Správce prostředků
+
+
+> [!IMPORTANT]
+> Všechny služby nasazené přes definici JSON pro ARM se musí odebrat z oddílu DefaultServices odpovídajícího souboru ApplicationManifest.xml.
+
 
 Můžete upgradovat aplikaci, která je už nasazená do clusteru Service Fabric, z některého z těchto důvodů:
 

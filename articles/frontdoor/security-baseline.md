@@ -4,15 +4,15 @@ description: Základní hodnoty zabezpečení služby Azure front-Security posky
 author: msmbaldwin
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2b5995478d1c9e65916f76c70c8af374ce82ca54
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 9e9eca3bb230bbfc969a5a429f664e602ad0d78b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94631551"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888313"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Základní hodnoty zabezpečení Azure pro přední dveře Azure
 
@@ -24,31 +24,15 @@ Pokud chcete zjistit, jak se přední dveře Azure kompletně mapují k srovnáv
 
 *Další informace najdete v článku [srovnávací testy zabezpečení Azure: zabezpečení sítě](/azure/security/benchmarks/security-controls-v2-network-security).*
 
-### <a name="ns-2-connect-private-networks-together"></a>NS-2: spojování privátních sítí
-
-**Doprovodné** materiály: nepoužitelné; Přední dvířka Azure nejsou určená k nasazení do privátní sítě ani k jejich zabezpečení, je tento ovládací prvek určený k popisu připojení k síti a nevztahuje se na něj.
-
-**Monitorování Azure Security Center** : nelze použít
-
-**Zodpovědnost** : zrušit nastavení. Zadejte hodnotu do pole pracovní položky.
-
-### <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: vytvoření přístupu privátní sítě ke službám Azure
-
-**Doprovodné** materiály: není k dispozici, přední dvířka Azure nejsou navržena pro nasazení do privátní sítě ani zabezpečená virtuální sítí.
-
-**Monitorování Azure Security Center** : nelze použít
-
-**Zodpovědnost** : zrušit nastavení. Zadejte hodnotu do pole pracovní položky.
-
 ### <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4: Ochrana aplikací a služeb před útoky z externích sítí
 
-**Pokyny** : pomocí Azure PowerShell vytvořte zásadu geografického filtrování a přidružte ji k vašemu stávajícímu hostiteli front-endu Azure. Tato zásada geografického filtrování zablokuje žádosti z externích sítí, jako jsou ty z jiných zemí nebo oblastí s výjimkou USA.
+**Pokyny**: pomocí Azure PowerShell vytvořte zásadu geografického filtrování a přidružte ji k vašemu stávajícímu hostiteli front-endu Azure. Tato zásada geografického filtrování zablokuje žádosti z externích sítí, jako jsou ty z jiných zemí nebo oblastí s výjimkou USA.
 
 - [Kurz – jak nastavit geograficky filtrovací WAF zásady pro vaše přední dveře](front-door-tutorial-geo-filtering.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="ns-6-simplify-network-security-rules"></a>NS-6: zjednodušení pravidel zabezpečení sítě
 
@@ -58,9 +42,9 @@ Společnost Microsoft spravuje předpony adres, které jsou součástí značky 
 
 - [Pochopení a použití značek služeb](../virtual-network/service-tags-overview.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="identity-management"></a>Správa identit
 
@@ -72,9 +56,9 @@ Společnost Microsoft spravuje předpony adres, které jsou součástí značky 
 
 - [Kurz – jak nastavit geograficky filtrovací WAF zásady pro vaše přední dveře Azure](front-door-tutorial-geo-filtering.md)
 
-**Monitorování Azure Security Center** : aktuálně není k dispozici.
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="privileged-access"></a>Privilegovaný přístup
 
@@ -82,7 +66,7 @@ Společnost Microsoft spravuje předpony adres, které jsou součástí značky 
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: omezení přístupu pro správu na systémy kritické pro podnikání
 
-**Pokyny** : přední vrátka Azure používá řízení přístupu na základě role Azure (Azure RBAC) k izolaci přístupu k důležitým podnikovým systémům. Použijte službu Azure RBAC k omezení účtů, kterým je udělen privilegovaný přístup k předplatným a skupinám pro správu, kde se nacházejí.
+**Pokyny**: přední vrátka Azure používá řízení přístupu na základě role Azure (Azure RBAC) k izolaci přístupu k důležitým podnikovým systémům. Použijte službu Azure RBAC k omezení účtů, kterým je udělen privilegovaný přístup k předplatným a skupinám pro správu, kde se nacházejí.
 
 Zajistěte omezený přístup ke správě, identitám a systémům zabezpečení, které mají přístup pro správu k důležitým podnikovým systémům, jako jsou Doména služby Active Directory řadiče, nástroje zabezpečení a nástroje pro správu systému. Zarovnává všechny typy přístupových prvků k strategii segmentace vaší organizace pro průběžné a konzistentní implementace.
 
@@ -92,9 +76,9 @@ Zajistěte omezený přístup ke správě, identitám a systémům zabezpečení
 
 - [Správci předplatného Azure](../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ### <a name="pa-6-use-privileged-access-workstations"></a>PA-6: použití pracovních stanic s privilegovaným přístupem
 
@@ -106,9 +90,9 @@ Používejte vysoce zabezpečené pracovní stanice uživatelů s Azure bastionu
 
 - [Nasazení privilegované pracovní stanice přístupu](../active-directory/devices/howto-azure-managed-workstation.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7: sledování pouze dostatečné správy (princip nejnižší úrovně oprávnění) 
 
@@ -124,9 +108,9 @@ Pomocí integrovaných rolí můžete přidělit oprávnění a vytvářet pouze
 
 - [Jak používat kontroly identity a přístupu v Azure AD](../active-directory/governance/access-reviews-overview.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ## <a name="data-protection"></a>Ochrana dat
 
@@ -134,23 +118,25 @@ Pomocí integrovaných rolí můžete přidělit oprávnění a vytvářet pouze
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4: šifrování citlivých informací při přenosu
 
-**Doprovodné** materiály: použití šifrování k ochraně provozu na externích a veřejných sítích, protože je důležité pro ochranu dat. Dále:
+**Doprovodné** materiály: pro doplnění řízení přístupu by se data v přenosu měla chránit před útoky typu "vzdálené správy" (např. zachycení provozu) pomocí šifrování, aby útočníci mohli snadno číst nebo upravovat data.
 
-- Použití ovládacích prvků přístupu,
+Přední dvířka podporují protokol TLS verze 1,0, 1,1 a 1,2. TLS 1,3 není zatím podporován. Všechny profily front-dveří vytvořené po září 2019 jako výchozí minimum používají TLS 1,2.
 
-- Chraňte data při přenosu proti útokům typu "vzdálené správy" (například zachytávání přenosů) pomocí šifrování, abyste zajistili, že útočníci nemůžou data snadno číst nebo upravovat.
-- Ujistěte se, že všichni klienti připojující se k prostředkům Azure pro přenosy HTTP můžou vyjednávat TLS v 1.2 nebo vyšší.
-- Místo nešifrovaných protokolů použijte SSH (pro Linux) nebo RDP/TLS (pro Windows) pro vzdálenou správu.
+I když je to pro přenosy v privátních sítích volitelné, je to pro provoz v externích i veřejných sítích velmi důležité. U přenosů HTTP zajistěte, aby všichni klienti připojující se k prostředkům Azure mohli vyjednávat TLS v 1.2 nebo vyšší verzi. Pro vzdálenou správu použijte místo nešifrovaného protokolu SSH (pro Linux) nebo RDP/TLS (pro Windows). Zastaralé verze a protokoly SSL, TLS a SSH a slabé šifry by měly být zakázané.
 
-- Zakázat zastaralé verze, protokoly a slabé šifry protokolu SSL/TLS/SSH
-
-Ve výchozím nastavení poskytuje Azure data pro přenos dat mezi datovými centry Azure. 
+Ve výchozím nastavení poskytuje Azure šifrování dat při přenosu mezi datovými centry Azure.
 
 - [Kurz – jak nakonfigurovat HTTPS na vlastní doméně front-dveří](front-door-custom-domain-https.md)
 
-**Monitorování Azure Security Center** : Ano
+- [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
 
-**Odpovědnost** : sdílená
+- [Informace o zabezpečení TLS](/security/engineering/solving-tls1-problem) 
+
+- [Dvojité šifrování pro Azure data při přenosu](../security/fundamentals/double-encryption.md#data-in-transit)
+
+**Monitorování Azure Security Center**: Ano
+
+**Odpovědnost**: sdílená
 
 ## <a name="asset-management"></a>Správa aktiv
 
@@ -170,9 +156,9 @@ Poznámka: Tato další oprávnění se můžou vyžadovat pro přehlednost v ú
 
 - [Přehled služby Azure Skupiny pro správu](../governance/management-groups/overview.md)
 
-**Monitorování Azure Security Center** : aktuálně není k dispozici.
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>DOP. 2: Ujistěte se, že má tým zabezpečení přístup k inventáři prostředků a metadatům.
 
@@ -184,9 +170,9 @@ Poznámka: Tato další oprávnění se můžou vyžadovat pro přehlednost v ú
 
 - [Průvodce rozhodováním ohledně pojmenování a označování prostředků](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="am-3-use-only-approved-azure-services"></a>AM-3: Používejte jenom schválené služby Azure.
 
@@ -200,19 +186,19 @@ Pomocí Azure Monitor můžete vytvořit pravidla pro aktivaci výstrah při zji
 
 - [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>DOP. 4: zajištění zabezpečení správy životního cyklu prostředků
 
-**Doprovodné** materiály: nepoužitelné; Pro zajištění zabezpečení prostředků v procesu správy životního cyklu nelze použít přední dvířka Azure. Je zodpovědností zákazníka udržovat atributy a síťové konfigurace prostředků, které jsou považovány za vysoce ovlivněné. 
+**Pokyny**: je zodpovědností zákazníka udržovat atributy a síťové konfigurace prostředků front-dveří pro Azure, které jsou považovány za vysoce ovlivněné.
 
 Doporučuje se, aby zákazník vytvořil proces pro zachycení atributů a změny konfigurace sítě, jak je to možné, a to měření vlivu na změny a vytváření úloh.
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="logging-and-threat-detection"></a>Protokolování a detekce hrozeb
 
@@ -226,9 +212,9 @@ Přední dvířka Azure zapisuje všechny síťové přenosy, které IT zpracov�
 
 - [Kurz – jak nastavit sledování metrik a protokolů v frontách Azure](front-door-diagnostics.md)
 
-**Monitorování Azure Security Center** : aktuálně není k dispozici.
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: povolení protokolování pro prostředky Azure
 
@@ -242,9 +228,9 @@ Povolte protokoly prostředků Azure pro přední dveře Azure. Pomocí Azure Se
 
 - [Pochopení Azure Security Center shromažďování dat](../security-center/security-center-enable-data-collection.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
@@ -258,9 +244,9 @@ Povolte protokoly prostředků Azure pro přední dveře Azure. Pomocí Azure Se
 
 - [Referenční příručka k reakci na incidenty](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="ir-2-preparation--setup-incident-notification"></a>IR-2: Příprava – oznámení o nastavení incidentu
 
@@ -268,9 +254,9 @@ Povolte protokoly prostředků Azure pro přední dveře Azure. Pomocí Azure Se
 
 - [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
-**Monitorování Azure Security Center** : Ano
+**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="ir-3-detection-and-analysis--create-incidents-based-on-high-quality-alerts"></a>IR-3: detekce a analýza – vytvoření incidentů na základě výstrah s vysokou kvalitou
 
@@ -286,9 +272,9 @@ Vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce expor
 
 - [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Monitorování Azure Security Center** : aktuálně není k dispozici.
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="ir-4-detection-and-analysis--investigate-an-incident"></a>IR-4: detekce a analýza – prozkoumání incidentu
 
@@ -316,9 +302,9 @@ Azure Sentinel poskytuje rozsáhlou analýzu dat napříč všemi zdroji protoko
 
 - [Prozkoumat incidenty pomocí služby Azure Sentinel](../sentinel/tutorial-investigate-cases.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="ir-5-detection-and-analysis--prioritize-incidents"></a>IR-5: detekce a analýza – určení priorit incidentů
 
@@ -332,9 +318,9 @@ Navíc můžete označovat prostředky pomocí značek a vytvořit systém pojme
 
 - [Používání značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
 
-**Monitorování Azure Security Center** : aktuálně není k dispozici.
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="ir-6-containment-eradication-and-recovery--automate-the-incident-handling"></a>IR-6: zahrnutí, vyhubení a obnovení – automatizace zpracování incidentů
 
@@ -346,9 +332,9 @@ Navíc můžete označovat prostředky pomocí značek a vytvořit systém pojme
 
 - [Nastavení automatických odpovědí na hrozby v Azure Sentinel](../sentinel/tutorial-respond-threats-playbook.md)
 
-**Monitorování Azure Security Center** : aktuálně není k dispozici.
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="posture-and-vulnerability-management"></a>Stav a Správa ohrožení zabezpečení
 
@@ -356,15 +342,15 @@ Navíc můžete označovat prostředky pomocí značek a vytvořit systém pojme
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>Souč_hod-3: Vytvoření zabezpečených konfigurací pro výpočetní prostředky
 
-**Pokyny** : pomocí Azure Security Center a Azure Policy navažte zabezpečené konfigurace na všech výpočetních prostředcích, včetně Virtual Machines, kontejnerů a dalších.
+**Pokyny**: pomocí Azure Security Center a Azure Policy navažte zabezpečené konfigurace na všech výpočetních prostředcích, včetně Virtual Machines, kontejnerů a dalších.
 
 - [Jak monitorovat Azure Security Center doporučení](../security-center/security-center-recommendations.md) 
 
 - [Doporučení k zabezpečení – Referenční příručka](../security-center/recommendations-reference.md)
 
-**Monitorování Azure Security Center** : aktuálně není k dispozici.
+**Monitorování Azure Security Center**: aktuálně není k dispozici.
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ### <a name="pv-7-rapidly-and-automatically-remediate-software-vulnerabilities"></a>PV-7: rychlé a automatické napravení ohrožení zabezpečení softwaru
 
@@ -372,9 +358,9 @@ Navíc můžete označovat prostředky pomocí značek a vytvořit systém pojme
 
 Určete prioritu používání programu pro společné hodnocení rizik (například běžný systém pro vyhodnocování ohrožení zabezpečení) nebo výchozí hodnocení rizika poskytované skenovacím nástrojem jiného výrobce, který používáte. a přizpůsobte si prostředí pomocí kontextu, které aplikace prezentují vysoké riziko zabezpečení a které vyžadují vysokou dobu provozu.
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8: provedení pravidelné simulace útoků
 
@@ -387,9 +373,9 @@ Postupujte podle pravidel pro testování průniku Microsoft Cloud a zajistěte,
 
 - [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Odpovědnost** : sdílená
+**Odpovědnost**: sdílená
 
 ## <a name="governance-and-strategy"></a>Zásady správného řízení a strategie
 
@@ -425,9 +411,9 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Azure Security test – ochrana dat](/azure/security/benchmarks/security-benchmark-v2-data-protection)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2: definování strategie podnikové segmentace 
 
@@ -443,9 +429,9 @@ Zajistěte, aby se strategie segmentace implementovala konzistentně napříč t
 
 - [Sjednotit segmentaci sítě pomocí strategie segmentace v podniku](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="gs-3-define-security-posture-management-strategy"></a>GS-3: definování strategie správy stav zabezpečení
 
@@ -453,9 +439,9 @@ Zajistěte, aby se strategie segmentace implementovala konzistentně napříč t
 
 - [Azure Security test – stav a Správa ohrožení zabezpečení](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4: zarovnání rolí organizace, odpovědností a accountabilities
 
@@ -467,9 +453,9 @@ Zajistěte, aby se strategie segmentace implementovala konzistentně napříč t
 
 - [Osvědčené postupy zabezpečení Azure 3 – proces: přiřazení zodpovědnosti pro rozhodování o zabezpečení cloudu](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="gs-5-define-network-security-strategy"></a>GS-5: definování strategie zabezpečení sítě
 
@@ -497,9 +483,9 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Přehled zabezpečení sítě Azure](../security/fundamentals/network-overview.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6: definování strategie identity a privilegovaného přístupu
 
@@ -527,9 +513,9 @@ Další informace najdete v následujících odkazech:
 
 - [Přehled zabezpečení služby Azure Identity Management](../security/fundamentals/identity-management-overview.md)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ### <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7: definování strategie protokolování a reakce na hrozby
 
@@ -561,9 +547,9 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Průvodce rozhodnutím o přijetí, protokolování a vytváření sestav pro Azure](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting)
 
-**Monitorování Azure Security Center** : nelze použít
+**Monitorování Azure Security Center**: nelze použít
 
-**Zodpovědnost** : zákazník
+**Zodpovědnost**: zákazník
 
 ## <a name="next-steps"></a>Další kroky
 

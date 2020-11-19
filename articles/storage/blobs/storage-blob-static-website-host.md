@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36cdaa813e0eccb23563301052aee268ab61533a
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78330391"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888500"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace hostování statického webu
 > * Nasazení webu Hello World
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -39,7 +39,7 @@ V tomto kurzu se používá [Visual Studio Code](https://code.visualstudio.com/d
 Po instalaci Visual Studio Code nainstalujte rozšíření Azure Storage Preview. Toto rozšíření integruje Azure Storage funkce správy s Visual Studio Code. Pomocí tohoto rozšíření nasadíte svůj statický web na Azure Storage. Instalace rozšíření:
 
 1. Spusťte editor Visual Studio Code.
-2. Na panelu nástrojů klikněte na tlačítko **rozšíření**. Vyhledejte *Azure Storage*a v seznamu vyberte rozšíření **Azure Storage** . Pak klikněte na tlačítko **nainstalovat** a nainstalujte rozšíření.
+2. Na panelu nástrojů klikněte na tlačítko **rozšíření**. Vyhledejte *Azure Storage* a v seznamu vyberte rozšíření **Azure Storage** . Pak klikněte na tlačítko **nainstalovat** a nainstalujte rozšíření.
 
     ![Instalace rozšíření Azure Storage v VS Code](media/storage-blob-static-website-host/install-extension-vs-code.png)
 
@@ -77,14 +77,24 @@ Dále vytvořte webovou stránku Hello World s Visual Studio Code a nasaďte ji 
 1. V editoru otevřete *index.html* , do souboru vložte následující text a uložte ho:
 
     ```
-    <h1>Hello World!</h1>
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>Hello World!</h1>
+      </body>
+    </html>
     ```
 
 1. Vytvořte výchozí chybový soubor a pojmenujte ho *404.html*.
 1. V editoru otevřete *404.html* , do souboru vložte následující text a uložte ho:
 
     ```
-    <h1>404</h1>
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>404</h1>
+      </body>
+    </html>
     ```
 
 1. Klikněte pravým tlačítkem na složku *mywebsite* na panelu **Průzkumníka** a vyberte **nasadit na statický Web...** a nasaďte svůj web. Zobrazí se výzva, abyste se přihlásili k Azure a načetli seznam předplatných.

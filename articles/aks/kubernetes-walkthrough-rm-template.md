@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 09/11/2020
 ms.custom: mvc,subject-armqs, devx-track-azurecli
-ms.openlocfilehash: f0ef1c32035eed26c0717364bda030b6b7662b3e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 271913a731a2bdf5af94885b5fe4027c0334853c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740285"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887497"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) pomocí šablony ARM
 
@@ -22,19 +22,17 @@ Služba Azure Kubernetes Service (AKS) je spravovaná služba Kubernetes, která
 
 Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>Požadavky
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.61 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-
-Pokud chcete vytvořit cluster AKS pomocí šablony Správce prostředků, poskytnete veřejný klíč SSH a Azure Active Directory instančního objektu. Alternativně můžete pro oprávnění použít [spravovanou identitu](use-managed-identity.md) místo instančního objektu. Pokud potřebujete některý z těchto prostředků, přečtěte si následující část. v opačném případě přejděte k části [Kontrola šablony](#review-the-template) .
+- Pokud chcete vytvořit cluster AKS pomocí šablony Správce prostředků, poskytnete veřejný klíč SSH a Azure Active Directory instančního objektu. Alternativně můžete pro oprávnění použít [spravovanou identitu](use-managed-identity.md) místo instančního objektu. Pokud potřebujete některý z těchto prostředků, přečtěte si následující část. v opačném případě přejděte k části [Kontrola šablony](#review-the-template) .
 
 ### <a name="create-an-ssh-key-pair"></a>Vytvoření páru klíčů SSH
 
@@ -70,7 +68,7 @@ Výstup se podobá následujícímu příkladu:
 }
 ```
 
-Poznamenejte si *appId* a *password* . Tyto hodnoty se použijí v dalších krocích.
+Poznamenejte si *appId* a *password*. Tyto hodnoty se použijí v dalších krocích.
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
@@ -88,22 +86,22 @@ Další ukázky AKS najdete na webu [šablony pro rychlý Start AKS][aks-quickst
 
 2. Vyberte nebo zadejte následující hodnoty.
 
-    V tomto rychlém startu ponechte výchozí hodnoty pro *velikost disku operačního systému GB* , *počet agentů* , *Velikost virtuálního počítače agenta* , *typ operačního systému* a *verzi Kubernetes* . Zadejte vlastní hodnoty pro následující parametry šablony:
+    V tomto rychlém startu ponechte výchozí hodnoty pro *velikost disku operačního systému GB*, *počet agentů*, *Velikost virtuálního počítače agenta*, *typ operačního systému* a *verzi Kubernetes*. Zadejte vlastní hodnoty pro následující parametry šablony:
 
-    * **Předplatné** : vyberte předplatné Azure.
-    * **Skupina prostředků** : vyberte **vytvořit novou** . Zadejte jedinečný název pro skupinu prostředků, třeba *myResourceGroup* , a pak zvolte **OK** .
-    * **Umístění** : vyberte umístění, například **východní USA** .
-    * **Název clusteru** : Zadejte jedinečný název pro cluster AKS, jako je například *myAKSCluster* .
-    * **Předpona DNS** : Zadejte jedinečnou předponu DNS pro váš cluster, například *myakscluster* .
-    * **Uživatelské jméno správce systému Linux** : zadejte uživatelské jméno pro připojení pomocí protokolu SSH, například *azureuser* .
-    * **Veřejný klíč SSH RSA** : Zkopírujte a vložte *veřejnou* část páru klíčů ssh (ve výchozím nastavení obsah *~/.ssh/id_rsa. pub* ).
-    * **ID klienta instančního objektu** : Zkopírujte a vložte *appId* objektu služby z `az ad sp create-for-rbac` příkazu.
-    * **Tajný kód klienta instančního objektu** : Zkopírujte a vložte z příkazu *heslo* k instančnímu objektu `az ad sp create-for-rbac` .
-    * **Souhlasím s výše uvedenými podmínkami a ujednáními** : zaškrtněte toto políčko, aby bylo možné souhlasit.
+    * **Předplatné**: vyberte předplatné Azure.
+    * **Skupina prostředků**: vyberte **vytvořit novou**. Zadejte jedinečný název pro skupinu prostředků, třeba *myResourceGroup*, a pak zvolte **OK**.
+    * **Umístění**: vyberte umístění, například **východní USA**.
+    * **Název clusteru**: Zadejte jedinečný název pro cluster AKS, jako je například *myAKSCluster*.
+    * **Předpona DNS**: Zadejte jedinečnou předponu DNS pro váš cluster, například *myakscluster*.
+    * **Uživatelské jméno správce systému Linux**: zadejte uživatelské jméno pro připojení pomocí protokolu SSH, například *azureuser*.
+    * **Veřejný klíč SSH RSA**: Zkopírujte a vložte *veřejnou* část páru klíčů ssh (ve výchozím nastavení obsah *~/.ssh/id_rsa. pub*).
+    * **ID klienta instančního objektu**: Zkopírujte a vložte *appId* objektu služby z `az ad sp create-for-rbac` příkazu.
+    * **Tajný kód klienta instančního objektu**: Zkopírujte a vložte z příkazu *heslo* k instančnímu objektu `az ad sp create-for-rbac` .
+    * **Souhlasím s výše uvedenými podmínkami a ujednáními**: zaškrtněte toto políčko, aby bylo možné souhlasit.
 
     ![Správce prostředků šablonu pro vytvoření clusteru služby Azure Kubernetes na portálu](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
-3. Vyberte **Koupit** .
+3. Vyberte **Koupit**.
 
 Vytvoření clusteru AKS bude trvat několik minut. Než přejdete k dalšímu kroku, počkejte, než se cluster úspěšně nasadí.
 
@@ -129,7 +127,7 @@ Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl get][
 kubectl get nodes
 ```
 
-Následující příklad výstupu ukazuje uzly vytvořené v předchozích krocích. Ujistěte se, že stav všech uzlů je *připravený* :
+Následující příklad výstupu ukazuje uzly vytvořené v předchozích krocích. Ujistěte se, že stav všech uzlů je *připravený*:
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -257,7 +255,7 @@ Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` mů�
 kubectl get service azure-vote-front --watch
 ```
 
-Zpočátku je *externí IP adresa* pro službu *Azure-hlas-front-end* zobrazená jako *nevyřízená* .
+Zpočátku je *externí IP adresa* pro službu *Azure-hlas-front-end* zobrazená jako *nevyřízená*.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE

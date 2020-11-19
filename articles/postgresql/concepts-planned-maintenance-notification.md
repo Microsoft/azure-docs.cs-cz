@@ -6,14 +6,14 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 1ed2929dc5dc79c30f2a9583966e32d81b63ba2e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1803a0070321ff4d895203f027f839601bb726ee
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487904"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887140"
 ---
-# <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Oznámení o plánované údržbě v Azure Database for PostgreSQL – jeden server
+# <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Oznámení o plánované údržbě na jednoúčelovém serveru Azure Database for PostgreSQL
 
 Přečtěte si, jak připravit na plánované události údržby Azure Database for PostgreSQL.
 
@@ -21,7 +21,7 @@ Přečtěte si, jak připravit na plánované události údržby Azure Database 
 
 Služba Azure Database for PostgreSQL provádí automatizované opravy základního hardwaru, operačního systému a databázového stroje. Tato oprava zahrnuje nové funkce služby, zabezpečení a aktualizace softwaru. V případě stroje PostgreSQL jsou upgrady podverze automaticky a zahrnuty v rámci cyklu oprav. Pro opravy není nutná žádná akce uživatele nebo nastavení konfigurace. Oprava se důkladně testuje a zavádí se pomocí postupů bezpečného nasazení.
 
-Plánovaná údržba je časový interval pro správu a údržbu, když se tyto aktualizace služby nasazují na servery v dané oblasti Azure. Během plánované údržby se vytvoří událost oznámení, která zákazníkům informuje o nasazení aktualizace služby v oblasti Azure hostující jejich servery. Minimální doba mezi dvěma plánovanými údržbou je 30 dní. V dalším časovém intervalu pro správu a údržbu se dostanete předem 72 hodin.
+Plánovaná údržba je časový interval pro správu a údržbu, když se tyto aktualizace služby nasazují na servery v dané oblasti Azure. Během plánované údržby se vytvoří událost oznámení, která informuje zákazníky o nasazení aktualizace služeb v oblasti Azure, která je hostitelem jejich serverů. Minimální doba mezi dvěma plánovanými údržbou je 30 dní. Oznámení o dalším časovém období údržby obdržíte 72 hodin předem.
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>Plánovaná údržba – doba trvání a dopad na zákazníky
 
@@ -78,7 +78,7 @@ Přechodná chyba, označovaná také jako přechodná chyba, je chyba, která s
 
 ## <a name="next-steps"></a>Další kroky
 
-- V případě jakýchkoli otázek nebo návrhů, které byste mohli potřebovat při práci se Azure Database for PostgreSQL, pošlete e-mail týmu Azure Database for PostgreSQL na adrese *AskAzureDBforMySQL@service.microsoft.com* .
+- V případě jakýchkoli otázek nebo návrhů, které byste mohli potřebovat při práci se Azure Database for PostgreSQL, pošlete e-mail týmu Azure Database for PostgreSQL na adrese *AskAzureDBforPostgreSQL@service.microsoft.com* .
 - Pokyny k vytvoření výstrahy na metrikě najdete v tématu [Nastavení výstrah](howto-alert-on-metric.md) .
 - [Řešení potíží s připojením pro Azure Database for PostgreSQL – jeden server](howto-troubleshoot-common-connection-issues.md)
 - [Zpracování přechodných chyb a efektivní připojení k Azure Database for PostgreSQL – jeden server](concepts-connectivity.md)

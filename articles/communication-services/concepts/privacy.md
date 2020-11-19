@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6b8145666ab92432d01b2f039685afe5534f0958
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043583"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888636"
 ---
 # <a name="region-availability-and-data-residency"></a>Rezidence dat a dostupnost oblastí
 
@@ -37,13 +37,13 @@ Existují dvě kategorie dat služby Communication Service:
 
 ### <a name="identities"></a>Identity
 
-Komunikační služby Azure uchovávají adresář identit, k jejich odebrání slouží rozhraní [DeleteIdentity](https://docs.microsoft.com/rest/api/communication/communicationidentity/delete) API. Odstranění identity zruší všechny přidružené přístupové tokeny a odstraní jejich zprávy chatu. Další informace o tom, jak odebrat identitu, [najdete na této stránce](../quickstarts/access-tokens.md).
+Komunikační služby Azure uchovávají adresář identit, k jejich odebrání slouží rozhraní [DeleteIdentity](/rest/api/communication/communicationidentity/delete) API. Odstranění identity zruší všechny přidružené přístupové tokeny a odstraní jejich zprávy chatu. Další informace o tom, jak odebrat identitu, [najdete na této stránce](../quickstarts/access-tokens.md).
 
 - DeleteIdentity
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Pomocí Azure Portal nebo Azure Resource Manager rozhraní API s komunikačními službami může vytvořit osobní údaje. [Pomocí této stránky se naučíte spravovat osobní údaje v Azure Resource Managerch systémech.](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-manager-personal-data)
+Pomocí Azure Portal nebo Azure Resource Manager rozhraní API s komunikačními službami může vytvořit osobní údaje. [Pomocí této stránky se naučíte spravovat osobní údaje v Azure Resource Managerch systémech.](../../azure-resource-manager/management/resource-manager-personal-data.md)
 
 ### <a name="telephone-number-management"></a>Správa telefonního čísla
 
@@ -52,7 +52,7 @@ Komunikační služby Azure uchovávají adresář telefonních čísel přidru�
 
 ### <a name="chat"></a>Chat
 
-Vlákna a zprávy chatu se uchovávají, dokud je explicitně neodstraníte. Po 30 dnech se automaticky odstraní plně nečinné vlákno. K získání, vypsání, aktualizaci a odstranění zpráv použijte [rozhraní API chatu](https://docs.microsoft.com/rest/api/communication/chat/deletechatmessage/deletechatmessage) .
+Vlákna a zprávy chatu se uchovávají, dokud je explicitně neodstraníte. Po 30 dnech se automaticky odstraní plně nečinné vlákno. K získání, vypsání, aktualizaci a odstranění zpráv použijte [rozhraní API chatu](/rest/api/communication/chat/deletechatmessage/deletechatmessage) .
 
 - `Get Thread`
 - `Get Message`
@@ -73,10 +73,10 @@ Zvuková a obrazová komunikace je ephemerally zpracovávána službou a žádn�
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor a Log Analytics
 
-Komunikační služby Azure budou předávány do Azure Monitor dat protokolování pro porozumění provoznímu stavu a využití služby. Některé z těchto protokolů zahrnují identity komunikačních služeb a telefonní čísla jako data polí. Chcete-li odstranit všechny potenciálně osobní údaje, [použijte tyto postupy pro Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt). Můžete také chtít nakonfigurovat [výchozí dobu uchování pro Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage).
+Komunikační služby Azure budou předávány do Azure Monitor dat protokolování pro porozumění provoznímu stavu a využití služby. Některé z těchto protokolů zahrnují identity komunikačních služeb a telefonní čísla jako data polí. Chcete-li odstranit všechny potenciálně osobní údaje, [použijte tyto postupy pro Azure monitor](../../azure-monitor/platform/personal-data-mgmt.md). Můžete také chtít nakonfigurovat [výchozí dobu uchování pro Azure monitor](../../azure-monitor/platform/manage-cost-storage.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [Žádosti subjektu dat Azure pro GDPR a CCPA](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure?view=o365-worldwide&preserve-view=true)
+- [Žádosti subjektu dat Azure pro GDPR a CCPA](/microsoft-365/compliance/gdpr-dsr-azure?preserve-view=true&view=o365-worldwide)
 - [Centrum zabezpečení Microsoftu](https://www.microsoft.com/trust-center/privacy/data-location)
 - [Interaktivní mapa Azure – kde jsou moje zákaznická data?](https://azuredatacentermap.azurewebsites.net/)

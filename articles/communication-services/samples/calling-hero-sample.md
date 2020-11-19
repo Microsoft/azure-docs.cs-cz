@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 799c46ad2715e1edd3d2fba24a8350fd2608d3d8
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: c872c2a2799eee3ae9e39653b0046b70ca5d7e8b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233929"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887531"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Začínáme se skupinou volajícím Hero Sample
 
@@ -42,21 +42,21 @@ Ukázka vypadá takto:
 
 Po stisknutí tlačítka spustit volání načte webová aplikace token přístupu uživatele z aplikace na straně serveru. Tento token se pak použije k připojení klientské aplikace ke komunikačním službám Azure. Po načtení tokenu budete vyzváni k zadání fotoaparátu a mikrofonu, který chcete použít. Pomocí ovládacích prvků přepínací tlačítko budete moct zařízení zakázat nebo povolit.
 
-:::image type="content" source="./media/calling/pre-call.png" alt-text="Snímek obrazovky znázorňující cílovou stránku ukázkové aplikace":::
+:::image type="content" source="./media/calling/pre-call.png" alt-text="Snímek obrazovky znázorňující obrazovku před voláním ukázkové aplikace":::
 
 Jakmile nakonfigurujete své zobrazované jméno a zařízení, můžete se připojit k relaci volání. Nyní se zobrazí hlavní plátno volání, kde se nachází základní volající prostředí.
 
-:::image type="content" source="./media/calling/main-app.png" alt-text="Snímek obrazovky znázorňující cílovou stránku ukázkové aplikace":::
+:::image type="content" source="./media/calling/main-app.png" alt-text="Snímek obrazovky znázorňující hlavní obrazovku ukázkové aplikace":::
 
 Součásti hlavní volající obrazovky:
 
-1. **Galerie médií** : hlavní fáze, kde se zobrazují účastníci. Pokud má účastník zapnutou kameru, zobrazí se zde jeho video kanál. Každý účastník má jednotlivou dlaždici, která zobrazuje zobrazované jméno a datový proud videa (když je nějaký).
-2. **Záhlaví** : Zde jsou umístěny primární ovládací prvky volání pro přepínání nastavení a bočního panelu účastníka, zapnutí a vypnutí videa, sdílení obrazovky a opuštění volání.
-3. **Boční panel** : tady jsou informace o účastnících se účastníků a nastavení při přepínání pomocí ovládacích prvků v záhlaví. Komponenta se může v pravém horním rohu vynechává pomocí ' X '. Na bočním panelu účastníci se zobrazí seznam účastníků a odkaz pro pozvání více uživatelů k chatu. Postranní panel nastavení umožňuje konfigurovat nastavení mikrofonu a kamery.
+1. **Galerie médií**: hlavní fáze, kde se zobrazují účastníci. Pokud má účastník zapnutou kameru, zobrazí se zde jeho video kanál. Každý účastník má jednotlivou dlaždici, která zobrazuje zobrazované jméno a datový proud videa (když je nějaký).
+2. **Záhlaví**: Zde jsou umístěny primární ovládací prvky volání pro přepínání nastavení a bočního panelu účastníka, zapnutí a vypnutí videa, sdílení obrazovky a opuštění volání.
+3. **Boční panel**: tady jsou informace o účastnících se účastníků a nastavení při přepínání pomocí ovládacích prvků v záhlaví. Komponenta se může v pravém horním rohu vynechává pomocí ' X '. Na bočním panelu účastníci se zobrazí seznam účastníků a odkaz pro pozvání více uživatelů k chatu. Postranní panel nastavení umožňuje konfigurovat nastavení mikrofonu a kamery.
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v tématu [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 - [Node.js (12.18.4 a vyšší)](https://nodejs.org/en/download/)
@@ -116,4 +116,4 @@ Další informace najdete v následujících článcích:
 - [Redux](https://redux.js.org/) – Správa stavu na straně klienta
 - [FluentUI](https://aka.ms/fluent-ui) – knihovna rozhraní založená na Microsoftu
 - [Reagovat](https://reactjs.org/) – knihovna pro sestavování uživatelských rozhraní
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) – rozhraní pro vytváření webových aplikací
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) – rozhraní pro vytváření webových aplikací

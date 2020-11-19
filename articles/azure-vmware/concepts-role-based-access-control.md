@@ -1,16 +1,16 @@
 ---
-title: Koncepty – řízení přístupu na základě role (RBAC)
-description: Seznamte se s klíčovými možnostmi řízení přístupu na základě rolí pro řešení Azure VMware.
+title: Koncepty – vSphere řízení přístupu na základě role (vSphere RBAC)
+description: Přečtěte si o klíčových schopnostech vSphere řízení přístupu na základě rolí pro řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 6e1864fdfe397325a7c5ba601b625bcc1776174c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fbd5b48ce30a6612c45ebd97f08812efd29c50b3
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535482"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888398"
 ---
-# <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Řízení přístupu na základě role (RBAC) pro řešení Azure VMware
+# <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>vSphere řízení přístupu na základě role (vSphere RBAC) pro řešení Azure VMware
 
 V řešení Azure VMware má vCenter integrovaný místní uživatel s názvem cloudadmin a přiřazený k předdefinované roli CloudAdmin. Místní uživatel cloudadmin se používá k nastavení uživatelů ve službě AD. Obecně platí, že role CloudAdmin vytváří a spravuje úlohy v privátním cloudu. V řešení Azure VMware má role CloudAdmin oprávnění vCenter, která se liší od jiných cloudových řešení VMware.     
 

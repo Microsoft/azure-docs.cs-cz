@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 315dfcb10b11278401d6cc0abd42b40b5f55f72a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6efcadf85816bb6aa014893bb9b20476a0701990
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968357"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886749"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Monitorování a kontrola protokolů pro místní prostředí ochrany heslem služby Azure AD
 
@@ -66,15 +66,19 @@ Klíčovým událostem souvisejícím s ověřováním hesla jsou následující
 
 | Událost |Změna hesla |Heslo nastaveno|
 | --- | :---: | :---: |
-|Dána |10014 |10015|
+|Úspěšné absolvování |10014 |10015|
 |Selhání (kvůli zásadám hesel zákazníka)| 10016, 30002| 10017, 30003|
 |Selhání (kvůli zásadám hesel Microsoftu)| 10016, 30004| 10017, 30005|
 |Selhání (kvůli kombinovaným zásadám hesel Microsoftu a zákazníků)| 10016, 30026| 10017, 30027|
+|Selhání (kvůli uživatelskému jménu)| 10016, 30021| 10017, 30022|
 |Úspěšné pouze auditování (by se nezdařila zásada pro heslo zákazníka)| 10024, 30008| 10025, 30007|
 |Úspěch pouze proti auditu (by se nezdařila zásada hesla Microsoftu)| 10024, 30010| 10025, 30009|
 |Úspěšné pouze auditování (by se nezdařily kombinované zásady pro hesla Microsoftu a zákazníků)| 10024, 30028| 10025, 30029|
+|Předání pouze auditu (by nebylo úspěšné kvůli uživatelskému jménu)| 10016, 30024| 10017, 30023|
 
 Případy v tabulce výše, které odkazují na "kombinované zásady", odkazují na situace, ve kterých bylo nalezeno heslo uživatele, aby obsahovalo alespoň jeden token ze seznamu zakázaných hesel Microsoftu i ze seznamu zakázaných hesel zákazníka.
+
+Případy v tabulce výše, které odkazují na "uživatelské jméno", odkazují na situace, ve kterých bylo zjištěno, že heslo uživatele obsahuje buď název uživatelského účtu, nebo jeden z popisných názvů uživatele. V obou případech dojde k odmítnutí hesla uživatele, pokud je zásada nastavená tak, aby se vynutila, nebo jestli se tato zásada předala v režimu auditování.
 
 Je-li protokolována dvojice událostí, jsou obě události explicitně přidruženy pomocí stejného ID korelace.
 

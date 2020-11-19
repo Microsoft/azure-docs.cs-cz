@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 24e514208683d540f08818020238090583a1bc42
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ecc25af19694c0befdd24b041807e2067db4f13b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362463"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886936"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
@@ -39,7 +39,7 @@ Podnikové organizace často čelí problémům při správě přístupu zaměst
 - Uživatelé nemusí znát, jaký má mít přístup, a i když mají, můžou mít potíže při hledání příslušných jednotlivců ke schválení přístupu.
 - Jakmile uživatelé naleznou a získají přístup k prostředku, můžou mít přístup k delšímu, než je nutné pro obchodní účely.
 
-Tyto problémy jsou složené pro uživatele, kteří potřebují přístup z jiné organizace, jako jsou externí uživatelé, kteří pocházejí z organizací dodavatelských řetězců nebo jiných obchodních partnerů. Příklad:
+Tyto problémy jsou složené pro uživatele, kteří potřebují přístup z jiné organizace, jako jsou externí uživatelé, kteří pocházejí z organizací dodavatelských řetězců nebo jiných obchodních partnerů. Například:
 
 - Nikdo ze všech konkrétních jednotlivců v adresářích jiných organizací nemůže znát jejich pozvání.
 - I když byli schopni pozvat tyto uživatele, nikdo z těchto organizací nemusí pamatovat na správu všech přístupů uživatelů konzistentně.
@@ -75,7 +75,7 @@ Správa nároků zavádí do Azure AD koncept *balíčku pro přístup*. Balíč
 - Přiřazení k podnikovým aplikacím Azure AD, včetně aplikací SaaS a aplikací integrovaných s vlastními, které podporují federaci, jednotné přihlašování a/nebo zřizování
 - Členství na webech SharePointu Online
 
-Můžete také řídit přístup k dalším prostředkům, které spoléhají na skupiny zabezpečení Azure AD nebo Microsoft 365 skupiny.  Příklad:
+Můžete také řídit přístup k dalším prostředkům, které spoléhají na skupiny zabezpečení Azure AD nebo Microsoft 365 skupiny.  Například:
 
 - Uživatelům můžete udělit licence pro Microsoft 365 pomocí skupiny zabezpečení Azure AD v balíčku přístupu a konfigurací [licencování na základě skupin](../enterprise-users/licensing-groups-assign.md) pro tuto skupinu.
 - Uživatelům můžete udělit přístup ke správě prostředků Azure pomocí skupiny zabezpečení Azure AD v balíčku pro přístup a vytvoření [přiřazení role Azure](../../role-based-access-control/role-assignments-portal.md) pro tuto skupinu.
@@ -119,7 +119,7 @@ Přístupové balíčky nenahrazují jiné mechanismy pro přiřazení přístup
 
 Chcete-li lépe pochopit správu nároků a její dokumentaci, můžete se vrátit k následujícímu seznamu podmínek.
 
-| Období | Popis |
+| Termín | Popis |
 | --- | --- |
 | přístup k balíčku | Sada prostředků, které tým nebo projekt potřebuje a řídí se zásadami. Přístupový balíček je vždycky obsažený v katalogu. Vytvořili jste nový balíček pro přístup pro scénář, ve kterém uživatelé potřebují požádat o přístup.  |
 | žádost o přístup | Žádost o přístup k prostředkům v balíčku pro přístup Požadavek obvykle prochází schvalovacím pracovním postupem.  V případě schválení obdrží žádající uživatel přiřazení balíčku přístupu. |
@@ -144,17 +144,22 @@ Specializované cloudy, jako je Azure Německo a Azure Čína 21Vianet, nejsou a
 Zajistěte, aby měl váš adresář aspoň tolik licencí Azure AD Premium P2, kolik máte:
 
 - Uživatelé členů, kteří **můžou** požádat o přístup k balíčku.
-- Členové a uživatelé typu Host, kteří požadují balíček pro přístup
-- Členové a uživatelé typu Host, kteří schvalují žádosti o přístup k balíčku.
-- Členové a uživatelé typu Host, kteří mají přímé přiřazení k balíčku přístupu
+- Členové a uživatelé typu Host, kteří <u>požadují</u> balíček pro přístup
+- Členové a uživatelé typu Host, kteří <u>schvalují žádosti</u> o přístup k balíčku.
+- Uživatelé členů, kteří <u>kontrolují přiřazení</u> pro balíček přístupu 
+- Členové a uživatelé typu Host, kteří mají <u>přímé přiřazení</u> k balíčku přístupu
+
+Pro uživatele typu Host budou požadavky na licencování záviset na [modelu licencování](../external-identities/external-identities-pricing.md) , který používáte. Následující aktivity uživatelů typu Host se však považují za Azure AD Premium používání P2:
+- Uživatelé typu Host, kteří <u>požadují</u> balíček pro přístup 
+- Uživatelé typu Host, kteří <u>schvalují požadavky</u> na balíček pro přístup
+- Uživatelé typu Host, kteří <u>kontrolují přiřazení</u> balíčku pro přístup
+- Uživatelé typu Host, kteří mají <u>přímé přiřazení</u> k balíčku pro přístup 
 
 Licence Azure AD Premium P2 nejsou **požadovány** pro následující úlohy:
 
 - Pro uživatele s rolí globálního správce, kteří nastavují počáteční katalogy, balíčky přístupu a zásady a delegované úkoly správy pro ostatní uživatele, nejsou potřeba žádné licence.
 - Pro uživatele, kteří byli delegovani úlohy správy, jako je například tvůrce katalogu, vlastník katalogu a správce balíčků přístupu, nejsou vyžadovány žádné licence.
 - Pro hosty, kteří **můžou** žádat o přístup k balíčkům, nejsou potřeba žádné licence, ale **nevyžadují přístup** k balíčku.
-
-Ceny Azure AD External identity (uživatel typu Host) jsou založené na měsíčních aktivních uživatelích (MAU), což je počet jedinečných uživatelů s aktivitou ověřování v kalendářním měsíci. Tento model nahrazuje model účtování poměru 1:5, který povoluje až pět uživatelů typu Host pro každou licenci Azure AD Premium ve vašem tenantovi. Pokud je váš tenant propojený s předplatným a používáte funkce externích identit ke spolupráci s uživateli typu Host, bude se vám automaticky účtovat pomocí fakturačního modelu založeného na MAU. Další informace najdete v tématu Model fakturace pro [externí identity služby Azure AD](../external-identities/external-identities-pricing.md).
 
 Další informace o licencích najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
 
@@ -170,4 +175,4 @@ Tady je několik ukázkových scénářů licencí, které vám pomůžou určit
 ## <a name="next-steps"></a>Další kroky
 
 - [Kurz: vytvoření prvního balíčku pro přístup](entitlement-management-access-package-first.md)
-- [Typické scénáře](entitlement-management-scenarios.md)
+- [Obvyklé scénáře](entitlement-management-scenarios.md)

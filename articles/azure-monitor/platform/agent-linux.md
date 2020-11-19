@@ -1,19 +1,19 @@
 ---
-title: Instalace agenta Log Analytics do počítačů se systémem Linux
+title: Instalace agenta Log Analytics na počítačích s Linuxem
 description: Tento článek popisuje, jak propojit počítače se systémem Linux hostované v jiných cloudech nebo v místním prostředí, aby se Azure Monitor s agentem Log Analytics pro Linux.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 8b9fac51b5bdab20d7b082945ee594ac76c3e52a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e1dbf5e20aa206189397cab26e9b867f4942e1d5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332497"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886834"
 ---
-# <a name="install-log-analytics-agent-on-linux-computers"></a>Instalace agenta Log Analytics do počítačů se systémem Linux
+# <a name="install-log-analytics-agent-on-linux-computers"></a>Instalace agenta Log Analytics na počítačích s Linuxem
 Tento článek poskytuje podrobné informace o instalaci agenta Log Analytics v počítačích se systémem Linux pomocí následujících metod:
 
 * [Nainstalujte agenta pro Linux pomocí skriptu obálky](#install-the-agent-using-wrapper-script) hostovaného na GitHubu. Toto je doporučená metoda pro instalaci a upgrade agenta, pokud je počítač připojen k Internetu, a to přímo nebo prostřednictvím proxy server.
@@ -30,13 +30,17 @@ Seznam distribucí pro Linux podporovaný agentem Log Analytics najdete v témat
 
 >[!NOTE]
 >OpenSSL 1.1.0 se podporuje jenom na platformách x86_x64 (64 bitů) a OpenSSL starších než 1. x se na žádné platformě nepodporuje.
->
+
+>[!NOTE]
+>Spuštění agenta Log Analytics Linux v kontejnerech se nepodporuje. Pokud potřebujete monitorovat kontejnery, využijte prosím [řešení monitorování kontejnerů](../insights/containers.md) pro hostitele Docker nebo [Azure monitor pro kontejnery](../insights/container-insights-overview.md) pro Kubernetes.
+
 Od verzí vydaných po srpna 2018 provedeme následující změny modelu podpory:  
 
 * Podporovány jsou pouze verze serveru, nikoli klient.  
 * Zaměřte se na podporu kteréhokoli [distribuce schváleného pro Azure Linux](../../virtual-machines/linux/endorsed-distros.md). Všimněte si, že může dojít k prodlevě mezi novou distribuce/verzí, kterou systém Azure Linux schválil, a podporuje se pro agenta Log Analytics Linux.
 * Všechny dílčí verze jsou podporovány pro každou hlavní verzi uvedenou v seznamu.
-* Verze, které předaly datum ukončení podpory svého výrobce, nejsou podporovány.  
+* Verze, které předaly datum ukončení podpory svého výrobce, nejsou podporovány.
+* Podporují jenom image virtuálních počítačů. kontejnery, i ty, které jsou odvozeny od oficiálních imagí vydavatelů distribuce, nejsou podporovány.
 * Nové verze AMI se nepodporují.  
 * Podporují se jenom verze standardu SSL 1. x.
 
@@ -186,7 +190,7 @@ Agent Log Analytics pro Linux je k dispozici v balíčku skriptu pro samorozbalo
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    Pokud je vyžadováno ověření, je nutné zadat uživatelské jméno a heslo. Příklad: 
+    Pokud je vyžadováno ověření, je nutné zadat uživatelské jméno a heslo. Například: 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>

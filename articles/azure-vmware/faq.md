@@ -4,12 +4,12 @@ description: Obsahuje odpovědi na některé běžné dotazy týkající se ře�
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: f2b46b37fc8c773062402c52f2903a7a10acc2c4
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: f83413bc54164107b8e8a4e6010f8a826a5fe327
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874708"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888415"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -218,7 +218,7 @@ Budete mít CloudAdmin oprávnění skupiny. Další informace najdete v tématu
 
 #### <a name="what-privileges-and-permissions-will-i-have-on-the-nsx-t-manager"></a>Jaká oprávnění a oprávnění bude mít správce NSX-T?
 
-Budete mít úplná oprávnění správce NSX-T a mohli spravovat řízení přístupu na základě rolí, jako byste to měli v místním datovém centru NSX-T. Další informace najdete v tématu [Koncepty přístupu a identity](concepts-identity.md).
+Budete mít oprávnění správce s úplnými oprávněními na NSX-T a spravovat řízení přístupu na základě rolí vSphere, jako byste to měli v místním datovém centru NSX – T. Další informace najdete v tématu [Koncepty přístupu a identity](concepts-identity.md).
 
 > [!NOTE]
 > Vytvoří se a nakonfiguruje směrovač T0 v rámci nasazení privátního cloudu. Jakékoli změny tohoto logického směrovače nebo virtuálních počítačů NSX-T hraničních uzlů můžou mít vliv na připojení k vašemu privátnímu cloudu.

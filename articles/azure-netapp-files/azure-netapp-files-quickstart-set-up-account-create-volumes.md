@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 70441c3a1953fa1b6ebd69ef9cdb324d6cc04a5b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e31a1cef427062723adf4b45bd47cd8009630128
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336431"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888806"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS
 
@@ -26,14 +26,12 @@ V tomto rychlém startu vytvoříte následující položky:
 - Fond kapacit
 - Svazek NFS pro Azure NetApp Files
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Než začnete
 
 > [!IMPORTANT]
 > Je potřeba udělit přístup ke službě Azure NetApp Files. Chcete-li požádat o přístup ke službě, přečtěte si [stránku odeslání Azure NetApp Files pořadníku](https://aka.ms/azurenetappfiles).  Než budete pokračovat, musíte počkat na oficiální e-mail s potvrzením od Azure NetApp Files týmu.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ---
 
@@ -64,6 +62,10 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
     ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Připravte prostředí pro rozhraní příkazového řádku Azure CLI.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
@@ -176,7 +178,7 @@ Následující fragment kódu ukazuje, jak vytvořit účet NetApp v šabloně A
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. V okně Správa Azure NetApp Files vyberte účet NetApp ( **myaccount1** ).
+1. V okně Správa Azure NetApp Files vyberte účet NetApp (**myaccount1**).
 
     ![Vybrat účet NetApp](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)
 
@@ -260,7 +262,7 @@ Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně Az
 
 3. V okně vytvořit svazek zadejte informace o svazku:
    1. Jako název svazku zadejte **myvol1** .
-   2. Vyberte fond kapacit ( **mypool1** ).
+   2. Vyberte fond kapacit (**mypool1**).
    3. Pro kvótu použijte výchozí hodnotu.
    4. V části virtuální síť klikněte na **vytvořit novou** a vytvořte novou virtuální síť Azure (VNET).  Pak vyplňte následující informace:
        * Jako název virtuální sítě zadejte **myvnet1** .
@@ -269,7 +271,7 @@ Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně Az
        * Zadejte rozsah adres podsítě, například 10.7.0.0/24. Vyhrazenou podsíť nelze sdílet s jinými prostředky.
        * V případě delegování podsítě vyberte **Microsoft. NetApp/** Volumes (svazky).
        * Kliknutím na **OK** vytvořte virtuální síť.
-   5. V části podsíť vyberte nově vytvořenou virtuální síť ( **myvnet1** ) jako podsíť delegáta.
+   5. V části podsíť vyberte nově vytvořenou virtuální síť (**myvnet1**) jako podsíť delegáta.
 
       ![Vytvořit okno svazku](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)
 
@@ -278,7 +280,7 @@ Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně Az
 4. Klikněte na **protokol** a pak proveďte následující akce:
     * Jako typ protokolu pro svazek vyberte **systém souborů NFS** .
     * Jako cestu k souboru zadejte **myfilepath1** , který se použije k vytvoření cesty pro export pro daný svazek.
-    * Vyberte verzi systému souborů NFS ( **NFSv3** nebo **nfsv 4.1** ) pro svazek.
+    * Vyberte verzi systému souborů NFS (**NFSv3** nebo **nfsv 4.1**) pro svazek.
       Podívejte se na téma [posouzení](azure-netapp-files-create-volumes.md#considerations) a [osvědčené postupy](azure-netapp-files-create-volumes.md#best-practice) pro verze systému souborů NFS.
 
     ![Zadat protokol NFS pro rychlý Start](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)

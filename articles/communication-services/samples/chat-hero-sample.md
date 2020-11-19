@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fc757e1310369c48de24c0cc9253c668ca27495c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677409"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888568"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Začínáme s příkladem skupiny Hero chat
 
@@ -44,17 +44,17 @@ Ukázka vypadá takto:
 
 Po stisknutí tlačítka Spustit chat načte webová aplikace token přístupu uživatele z aplikace na straně serveru. Tento token se pak použije k připojení klientské aplikace ke komunikačním službám Azure. Po načtení tokenu se zobrazí výzva k zadání vašeho jména a Emoji, která bude představovat chat. 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="Snímek obrazovky s úvodní stránkou ukázkové aplikace":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="Snímek obrazovky s obrazovkou předběžného chatu aplikace":::
 
 Jakmile nakonfigurujete své zobrazované jméno a Emoji, můžete se připojit k relaci chatu. Teď se zobrazí hlavní plátno pro chat, kde se nachází v základním prostředí chatu.
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="Snímek obrazovky s úvodní stránkou ukázkové aplikace":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="Snímek obrazovky znázorňující hlavní obrazovku ukázkové aplikace":::
 
 Součásti hlavní obrazovky chatu:
 
-- **Hlavní oblast chatu** : Toto je základní prostředí pro chat, kde mohou uživatelé odesílat a přijímat zprávy. Chcete-li odesílat zprávy, můžete použít vstupní oblast a stisknout klávesu ENTER (nebo použít tlačítko Odeslat). Přijaté zprávy chatu jsou zařazeny do kategorie odesílatelem se správným názvem a emoji. V oblasti chatu se zobrazí dva typy oznámení: 1) psaní oznámení, když uživatel zadá a 2) odesílá a čte oznámení pro zprávy.
-- **Záhlaví** : uživateli se zobrazí název konverzačního vlákna a ovládací prvky pro přepnutí účastníků a nastavení a tlačítko opustit k ukončení relace chatu.
-- **Boční panel** : v tomto případě se zobrazí účastníci a informace o nastavení při přepínání pomocí ovládacích prvků v záhlaví. Boční panel účastníci obsahuje seznam účastníků v chatu a odkaz pro pozvání účastníků do relace chatu. Postranní panel nastavení vám umožní nakonfigurovat název vlákna chatu. 
+- **Hlavní oblast chatu**: Toto je základní prostředí pro chat, kde mohou uživatelé odesílat a přijímat zprávy. Chcete-li odesílat zprávy, můžete použít vstupní oblast a stisknout klávesu ENTER (nebo použít tlačítko Odeslat). Přijaté zprávy chatu jsou zařazeny do kategorie odesílatelem se správným názvem a emoji. V oblasti chatu se zobrazí dva typy oznámení: 1) psaní oznámení, když uživatel zadá a 2) odesílá a čte oznámení pro zprávy.
+- **Záhlaví**: uživateli se zobrazí název konverzačního vlákna a ovládací prvky pro přepnutí účastníků a nastavení a tlačítko opustit k ukončení relace chatu.
+- **Boční panel**: v tomto případě se zobrazí účastníci a informace o nastavení při přepínání pomocí ovládacích prvků v záhlaví. Boční panel účastníci obsahuje seznam účastníků v chatu a odkaz pro pozvání účastníků do relace chatu. Postranní panel nastavení vám umožní nakonfigurovat název vlákna chatu. 
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
@@ -118,4 +118,4 @@ Další informace najdete v následujících článcích:
 - [Redux](https://redux.js.org/) – Správa stavu na straně klienta
 - [FluentUI](https://aka.ms/fluent-ui) – knihovna rozhraní založená na Microsoftu
 - [Reagovat](https://reactjs.org/) – knihovna pro sestavování uživatelských rozhraní
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) – rozhraní pro vytváření webových aplikací
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) – rozhraní pro vytváření webových aplikací

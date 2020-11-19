@@ -2,14 +2,14 @@
 title: Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 description: Vlastní fondy imagí představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 4a41e8345bdb4c4e8761debe8e6b39f8588f5a8c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f0ba6270e6b6b4fcd258d8f5b3668931706f95b5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745528"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888347"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 
@@ -208,9 +208,9 @@ Pomocí následujících kroků můžete vytvořit fond ze sdílené image v Azu
 1. Otevřete web [Azure Portal](https://portal.azure.com).
 1. Přejít na **účty Batch** a vyberte svůj účet.
 1. Vyberte **fondy** a potom **Přidat** a vytvořte nový fond.
-1. V části **typ obrázku** vyberte **sdílená Galerie imagí** .
+1. V části **typ obrázku** vyberte **sdílená Galerie imagí**.
 1. Dokončete zbývající části s informacemi o spravované imagi.
-1. Vyberte **OK** .
+1. Vyberte **OK**.
 
 ![Vytvořte fond se ze sdílené image s portálem.](media/batch-sig-images/create-custom-pool.png)
 
@@ -218,7 +218,7 @@ Pomocí následujících kroků můžete vytvořit fond ze sdílené image v Azu
 
 Pokud máte v úmyslu vytvořit fond se stovkami nebo tisíci virtuálních počítačů nebo více pomocí sdílené image, postupujte podle následujících pokynů.
 
-- **Čísla repliky Galerie sdílených imagí**  Pro každý fond s až 600 instancemi doporučujeme, abyste zachovali aspoň jednu repliku. Pokud například vytváříte fond s 3000 virtuálními počítači, měli byste zachovat alespoň 5 replik vaší image. Vždycky Doporučujeme zachovat více replik než minimální požadavky pro lepší výkon.
+- **Čísla repliky Galerie sdílených imagí**  Pro každý fond s až 300 instancemi doporučujeme, abyste zachovali aspoň jednu repliku. Pokud například vytváříte fond s 3000 virtuálními počítači, měli byste zachovat aspoň 10 replik bitové kopie. Vždycky Doporučujeme zachovat více replik než minimální požadavky pro lepší výkon.
 
 - **Změnit časový limit.** Pokud fond obsahuje pevný počet uzlů (Pokud se nejedná o automatické škálování), zvětšete `resizeTimeout` vlastnost fondu v závislosti na velikosti fondu. U každého virtuálního počítače 1000 je doporučený časový limit pro změnu velikosti alespoň 15 minut. Například doporučený časový limit pro změnu velikosti pro fond s 2000 virtuálními počítači je nejméně 30 minut.
 

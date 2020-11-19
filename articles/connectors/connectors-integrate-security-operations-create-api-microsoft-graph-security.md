@@ -3,18 +3,18 @@ title: Integrace a Správa operací zabezpečení & zabezpečení Microsoft Grap
 description: Vylepšete ochranu před hrozbami, detekci a reakci vaší aplikace pomocí Microsoft Graph zabezpečení & Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: preetikr
+author: ecfan
 ms.author: preetikr
 ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: ea861dce23e50bc5fcae50116a3e71793d402f8f
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873314"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888534"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Zvyšte ochranu před hrozbami integrací operací zabezpečení pomocí Microsoft Graph zabezpečení & Azure Logic Apps
 
@@ -30,7 +30,7 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a konektoru [za
 
 Pracovní postup vaší aplikace logiky může používat akce, které získávají odpovědi z konektoru zabezpečení Microsoft Graph a zpřístupňují výstup ostatním akcím v pracovním postupu. V pracovním postupu můžete mít také další akce, které používají výstup z akcí Microsoft Graph Security Connector. Pokud například obdržíte upozornění s vysokou závažností prostřednictvím konektoru zabezpečení Microsoft Graph, můžete tyto výstrahy odeslat v e-mailové zprávě pomocí konektoru aplikace Outlook. 
 
-Další informace o Microsoft Graph zabezpečení najdete v tématu [Přehled rozhraní API pro Microsoft Graph zabezpečení](/graph/security-concept-overview). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Pokud hledáte Power Automate nebo PowerApps, přečtěte si téma [co je Power automatizuje?](https://flow.microsoft.com/) nebo [co je PowerApps?](https://powerapps.microsoft.com/)
+Další informace o Microsoft Graph zabezpečení najdete v tématu [Přehled rozhraní API pro Microsoft Graph zabezpečení](/graph/security-concept-overview). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Pokud hledáte Power Automate nebo PowerApps, přečtěte si téma [co je Power automat?](https://flow.microsoft.com/) nebo [co je Power Apps?](https://powerapps.microsoft.com/)
 
 ## <a name="prerequisites"></a>Předpoklady
 

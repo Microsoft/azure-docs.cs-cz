@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 3c6bee570312009af5fbdf42a018ad2b387662d9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 66c9a3afb91aaff448d6eadc86175d8515be766c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422293"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889078"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Zabezpečte a izolujte clustery Azure HDInsight pomocí privátního propojení (Preview).
 
@@ -25,7 +25,7 @@ Můžete vytvořit privátní clustery HDInsight konfigurací specifických vlas
 
 ## <a name="remove-public-ip-addresses"></a>Odebrat veřejné IP adresy
 
-Ve výchozím nastavení používá HDInsight RP *příchozí* připojení ke clusteru pomocí veřejných IP adres. Když `resourceProviderConnection` je vlastnost Network nastavená na *odchozí* , obrátí se připojení k HDInsight RP, aby se připojení vždy iniciovala v rámci clusteru až po RP. Bez příchozího připojení nemusí být k dispozici žádné vstupní značky služeb ani veřejné IP adresy.
+Ve výchozím nastavení používá HDInsight RP *příchozí* připojení ke clusteru pomocí veřejných IP adres. Když `resourceProviderConnection` je vlastnost Network nastavená na *odchozí*, obrátí se připojení k HDInsight RP, aby se připojení vždy iniciovala v rámci clusteru až po RP. Bez příchozího připojení nemusí být k dispozici žádné vstupní značky služeb ani veřejné IP adresy.
 
 Základní nástroje pro vyrovnávání zatížení používané ve výchozí architektuře virtuální sítě automaticky poskytují veřejné NAT (překlad síťových adres) pro přístup k požadovaným odchozím závislostem, jako je například HDInsight RP. Pokud chcete omezit odchozí připojení k veřejnému Internetu, můžete [nakonfigurovat bránu firewall](./hdinsight-restrict-outbound-traffic.md), ale nejedná se o požadavek.
 
@@ -54,7 +54,7 @@ Pro přístup ke clusteru pomocí plně kvalifikovaných názvů domény cluster
 
 Privátní odkaz, který je ve výchozím nastavení zakázán, vyžaduje rozsáhlou znalost sítě pro nastavení tras definovaných uživatelem (UDR) a pravidla brány firewall, aby bylo možné vytvořit cluster správně. Použití tohoto nastavení je volitelné, ale je k dispozici pouze v případě, že `resourceProviderConnection` je vlastnost síť nastavena na *odchozí* , jak je popsáno v předchozí části.
 
-Když `privateLink` je nastavená možnost *Povolit* , vytvoří se interní standardní nástroj pro [Vyrovnávání zatížení](../load-balancer/load-balancer-overview.md) (SLB) a pro každý SLB se zřídí služba Azure Private Link. Služba privátního propojení umožňuje přístup ke clusteru HDInsight z privátních koncových bodů.
+Když `privateLink` je nastavená možnost *Povolit*, vytvoří se interní standardní nástroj pro [Vyrovnávání zatížení](../load-balancer/load-balancer-overview.md) (SLB) a pro každý SLB se zřídí služba Azure Private Link. Služba privátního propojení umožňuje přístup ke clusteru HDInsight z privátních koncových bodů.
 
 Standardní nástroje pro vyrovnávání zatížení neposkytují automaticky [veřejné odchozí služby NAT](../load-balancer/load-balancer-outbound-connections.md) , jako jsou základní nástroje pro vyrovnávání zatížení. Pro odchozí závislosti musíte zadat vlastní řešení NAT, například [Virtual Network NAT](../virtual-network/nat-overview.md) nebo [bránu firewall](./hdinsight-restrict-outbound-traffic.md). Váš cluster HDInsight pořád potřebuje přístup k odchozím závislostem. Pokud tyto odchozí závislosti nejsou povolené, vytvoření clusteru může selhat.
 
@@ -86,7 +86,8 @@ Následující obrázek ukazuje příklad privátních záznamů DNS potřebnýc
 
 :::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="Diagram architektury privátního propojení":::
 
-## <a name="arm-template-properties"></a>Vlastnosti šablony ARM
+## <a name="how-to-create-clusters"></a>Jak vytvářet clustery?
+### <a name="use-arm-template-properties"></a>Použít vlastnosti šablony ARM
 
 Následující fragment kódu JSON obsahuje dvě vlastnosti sítě, které v šabloně ARM potřebujete ke konfiguraci, aby bylo možné vytvořit privátní cluster HDInsight.
 
@@ -98,6 +99,13 @@ networkProperties: {
 ```
 
 Úplnou šablonu s mnoha funkcemi zabezpečení HDInsight Enterprise, včetně privátního propojení, najdete v tématu [Šablona zabezpečení HDInsight Enterprise](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template).
+
+### <a name="use-azure-powershell"></a>Použití Azure PowerShellu
+
+Pokud chcete použít [PowerShell, podívejte](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)se na tento příklad.
+
+### <a name="use-azure-cli"></a>Použití Azure CLI
+Pokud chcete použít rozhraní příkazového řádku Azure, přečtěte [si tento příklad.](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples)
 
 ## <a name="next-steps"></a>Další kroky
 

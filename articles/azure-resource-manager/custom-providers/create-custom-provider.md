@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ae69f49d37a210dd9fa1bfeedeca6c1b461e20
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85368103"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888857"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Rychlý Start: Vytvoření vlastního zprostředkovatele a nasazení vlastních prostředků
 
@@ -23,8 +23,11 @@ V tomto rychlém startu vytvoříte vlastního poskytovatele prostředků a nasa
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-- Příkazy [Custom-Providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) vyžadují rozšíření. Další informace najdete v tématu [použití rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
-- Příklady použití Azure CLI `az rest` pro `REST` požadavky. Další informace najdete v tématu [AZ REST](/cli/azure/reference-index#az-rest).
+Připravte prostředí pro rozhraní příkazového řádku Azure CLI.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Příklady použití Azure CLI `az rest` pro `REST` požadavky. Další informace najdete v tématu [AZ REST](/cli/azure/reference-index#az-rest).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -33,8 +36,6 @@ V tomto rychlém startu vytvoříte vlastního poskytovatele prostředků a nasa
 - Po instalaci **ARMClient** můžete zobrazit informace o použití z příkazového řádku prostředí PowerShell zadáním příkazu: `armclient.exe` . Nebo si přečtěte na [wikiwebu ARMClient](https://github.com/projectkudu/ARMClient/wiki).
 
 ---
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-custom-provider"></a>Nasazení vlastního zprostředkovatele
 

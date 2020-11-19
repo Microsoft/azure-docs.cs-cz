@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f172bfcb6e4f11520eb9082052968626efe6fecb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dd2ffacb176ed3733acba8699d4e870b15dd3c42
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651239"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888704"
 ---
 # <a name="identity-model"></a>Model identit
 
@@ -83,6 +83,6 @@ Pokud ukládáte do mezipaměti přístupové tokeny do záložního úložišt�
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do správy přístupových tokenů najdete v tématu [vytváření a Správa přístupových tokenů](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
-* Úvodní informace k ověřování najdete v tématu [ověřování ve službě Azure Communication Services](https://docs.microsoft.com/azure/communication-services/concepts/authentication).
-* Úvod k zaregistrování a ochraně osobních údajů najdete v tématu [dostupnost oblasti a](https://docs.microsoft.com/azure/communication-services/concepts/privacy)zaregistrování dat.
+* Úvod do správy přístupových tokenů najdete v tématu [vytváření a Správa přístupových tokenů](../quickstarts/access-tokens.md).
+* Úvodní informace k ověřování najdete v tématu [ověřování ve službě Azure Communication Services](./authentication.md).
+* Úvod k zaregistrování a ochraně osobních údajů najdete v tématu [dostupnost oblasti a](./privacy.md)zaregistrování dat.

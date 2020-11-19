@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ff3e7fee87661fb89ba930b7368bd54e71ad57bf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357619"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886783"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Řešení potíží v komunikačních službách Azure
 
@@ -23,17 +23,17 @@ Tento dokument vám pomůže řešit problémy, se kterými se můžete setkat v
 
 Doporučujeme vývojářům odesílat dotazy, navrhovat funkce a nahlásit problémy jako problémy v [úložišti GitHub](https://github.com/Azure/communication)komunikačních služeb. Mezi další fóra patří:
 
-* [Microsoft – otázky a odpovědi](https://docs.microsoft.com/answers/questions/topics/single/101418.html)
+* [Microsoft – otázky a odpovědi](/answers/questions/topics/single/101418.html)
 * [StackOverflow](https://stackoverflow.com/questions/tagged/azure+communication)
 
 V závislosti na [plánu podpory](https://azure.microsoft.com/support/plans/) předplatného Azure můžete odeslat lístek podpory přímo prostřednictvím [Azure Portal](https://azure.microsoft.com/support/create-ticket/).
 
 Pro usnadnění odstraňování určitých typů problémů se může zobrazit výzva k zadání následujících informací:
 
-* **MS-CV ID** : Toto ID se používá k odstraňování potíží s voláními a zprávami. 
-* **ID volání** : Toto ID slouží k identifikaci volání komunikačních služeb.
-* **ID zprávy SMS** : Toto ID slouží k identifikaci zpráv SMS.
-* **Protokoly volání** : tyto protokoly obsahují podrobné informace, které lze použít k řešení problémů s voláním a sítí.
+* **MS-CV ID**: Toto ID se používá k odstraňování potíží s voláními a zprávami. 
+* **ID volání**: Toto ID slouží k identifikaci volání komunikačních služeb.
+* **ID zprávy SMS**: Toto ID slouží k identifikaci zpráv SMS.
+* **Protokoly volání**: tyto protokoly obsahují podrobné informace, které lze použít k řešení problémů s voláním a sítí.
 
 
 ## <a name="access-your-ms-cv-id"></a>Přístup k vašemu ID MS-CV

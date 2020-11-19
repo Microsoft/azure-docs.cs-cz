@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: dd042b28035b5e9a4b18041d6c1a81f77cfd4ea7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 092b95845ed033ac0705e325fc6535739088848f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86527400"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888789"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Přehled automatického škálování pomocí škálovacích sad virtuálních počítačů Azure
 Sada škálování virtuálních počítačů Azure může automaticky zvýšit nebo snížit počet instancí virtuálních počítačů, které spouštějí vaši aplikaci. Toto automatizované a elastické chování omezuje režijní náklady na správu, které sledují a optimalizují výkon vaší aplikace. Vytvoříte pravidla, která definují přijatelný výkon pro pozitivní prostředí zákazníka. Když jsou splněné tyto prahové hodnoty, pravidla automatického škálování přijímají akci pro úpravu kapacity sady škálování. Můžete také naplánovat události pro automatické zvýšení nebo snížení kapacity sady škálování v pevně dané době. Tento článek poskytuje přehled o dostupných metrikách výkonu a o tom, jaké akce lze provádět pomocí automatického škálování.
@@ -22,6 +22,9 @@ Sada škálování virtuálních počítačů Azure může automaticky zvýšit 
 
 ## <a name="benefits-of-autoscale"></a>Výhody automatického škálování
 Pokud se požadavky na vaši aplikaci zvýší, zvýší se i zatížení instancí virtuálních počítačů ve škálovací sadě. Pokud je toto zvýšené zatížení konzistentní, a nejedná se pouze o krátkou poptávku, můžete nakonfigurovat pravidla automatického škálování pro zvýšení počtu instancí virtuálních počítačů ve škálovací sadě.
+
+> [!NOTE]
+> Při použití automatických oprav instancí pro sadu škálování může být maximální počet instancí v sadě škálování 200. Přečtěte si další informace o [automatických opravách instancí](./virtual-machine-scale-sets-automatic-instance-repairs.md).
 
 Po vytvoření těchto instancí virtuálních počítačů a nasazení aplikací do nich začne škálovací sada distribuovat provoz prostřednictvím nástroje pro vyrovnávání zatížení. Můžete řídit, jaké metriky se mají monitorovat, jako je například procesor nebo paměť, jak dlouho musí zatížení aplikace splňovat danou prahovou hodnotu, a kolik instancí virtuálních počítačů se má přidat do sady škálování.
 
@@ -77,7 +80,7 @@ Když vytváříte pravidla automatického škálování pro monitorování dan�
 | Maximum          |
 | Celkem            |
 | Poslední             |
-| Count            |
+| Počet            |
 
 Pravidla automatického škálování se pak aktivují, když se metriky porovnají s definovanou prahovou hodnotou pomocí jednoho z následujících operátorů:
 
@@ -85,7 +88,7 @@ Pravidla automatického škálování se pak aktivují, když se metriky porovna
 |--------------------------|
 | Větší než             |
 | Větší než nebo rovno |
-| Je menší než                |
+| Menší než                |
 | Menší než nebo rovno    |
 | Je rovno                 |
 | Není rovno             |
@@ -135,7 +138,7 @@ Můžete vytvořit pravidla automatického škálování, která používají me
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Šablony Azure](tutorial-autoscale-template.md)
 
-Tento přehled podrobně popisuje, jak používat pravidla automatického škálování pro horizontální škálování a zvýšení nebo snížení *počtu* instancí virtuálních počítačů ve vaší sadě škálování. *Velikost*instance virtuálního počítače můžete zvýšit nebo snížit také vertikálně. Další informace najdete v tématu [vertikální automatické škálování pomocí služby Virtual Machine Scale Sets](virtual-machine-scale-sets-vertical-scale-reprovision.md).
+Tento přehled podrobně popisuje, jak používat pravidla automatického škálování pro horizontální škálování a zvýšení nebo snížení *počtu* instancí virtuálních počítačů ve vaší sadě škálování. *Velikost* instance virtuálního počítače můžete zvýšit nebo snížit také vertikálně. Další informace najdete v tématu [vertikální automatické škálování pomocí služby Virtual Machine Scale Sets](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
 Informace o tom, jak spravovat instance virtuálních počítačů, najdete v tématu [Správa služby Virtual Machine Scale Sets pomocí Azure PowerShell](./virtual-machine-scale-sets-manage-powershell.md).
 

@@ -3,12 +3,12 @@ title: Plánování nasazení řešení Azure VMware
 description: Tento článek popisuje pracovní postup nasazení řešení Azure VMware.  Konečný výsledek je prostředí připravené pro vytváření a migraci virtuálních počítačů.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: a8ebd5bd4a9e553e24fbe528a4f6654bd4a1dee4
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 08a15e6f8cad4068415cec3353544829f2218fb0
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873331"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888976"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Plánování nasazení řešení Azure VMware
 
@@ -92,14 +92,6 @@ Pamatujte na to, že:
 
 - Pokud hodláte rozšiřovat sítě z místního prostředí, musí se tyto sítě připojit k [vSphere distribuovanému přepínači (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) v místním prostředí VMware.  
 - Pokud sítě, které chcete rozšířit na [vSphere standardním přepínači](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html), se nedají rozšířit.
-
-## <a name="expressroute-global-reach-peering-network"></a>Síť partnerských vztahů ExpressRoute Global Reach
-
-Identifikujte `/29` blok síťových adres CIDR, který je vyžadován pro partnerský vztah ExpressRoute Global REACH. Nezapomeňte, že všechny vytvořené segmenty IP adres musí být jedinečné napříč vaším řešením Azure VMware a místními nároky. IP adresy v tomto segmentu se používají na každém konci ExpressRoute Global Reach připojení pro připojení ExpressRoute okruhu řešení Azure VMware k místnímu okruhu ExpressRoute. 
-
-**Příklad:** 10.1.0.0/29
-
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Identifikace – ExpressRoute Global Reach partnerských sítí" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure Virtual Network k připojení řešení Azure VMware
 

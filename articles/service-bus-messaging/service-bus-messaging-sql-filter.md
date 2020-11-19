@@ -2,17 +2,17 @@
 title: Reference k syntaxi Azure Service Bus SQLFilter | Microsoft Docs
 description: Tento článek poskytuje podrobné informace o SQLFilter gramatiky. SqlFilter podporuje podmnožinu standardu SQL-92.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/17/2020
+ms.openlocfilehash: 7f3c744b691e678ef18c8fa721ccfaecaee9c1e2
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341598"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888466"
 ---
 # <a name="sqlfilter-syntax"></a>Syntaxe SQLFilter
 
-Objekt *SqlFilter* je instancí [třídy SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)a představuje výraz filtru založený na jazyce SQL, který je vyhodnocován proti [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). SqlFilter podporuje podmnožinu standardu SQL-92.  
+Objekt *SqlFilter* je instancí [třídy SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)a představuje výraz filtru založený na jazyce SQL, který je vyhodnocován proti [`BrokeredMessage`](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . SqlFilter podporuje podmnožinu standardu SQL-92.  
   
  V tomto tématu jsou uvedeny podrobnosti o gramatice SqlFilter.  
   
@@ -47,13 +47,13 @@ Objekt *SqlFilter* je instancí [třídy SqlFilter](/dotnet/api/microsoft.servic
   
 ```  
   
-## <a name="arguments"></a>Argumenty  
+## <a name="arguments"></a>Arguments  
   
--   `<scope>` je volitelný řetězec, který označuje rozsah `<property_name>` . Platné hodnoty jsou `sys` nebo `user` . `sys`Hodnota označuje rozsah systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` označuje obor uživatele, kde `<property_name>` je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user` Obor je výchozím rozsahem, pokud není `<scope>` zadán.  
+-   `<scope>` je volitelný řetězec, který označuje rozsah `<property_name>` . Platné hodnoty jsou `sys` nebo `user` . `sys`Hodnota označuje rozsah systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` označuje obor uživatele, kde `<property_name>` je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user` Obor je výchozím oborem, pokud `<scope>` není zadán.  
   
 ## <a name="remarks"></a>Poznámky
 
-Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o přístup k neexistující vlastnosti uživatele není chyba. Místo toho je vlastnost neexistujícího uživatele interně vyhodnocena jako neznámá hodnota. Neznámá hodnota je zpracována speciálně při vyhodnocování operátoru.  
+Pokus o přístup k neexistující systémové vlastnosti je chyba, zatímco pokus o přístup k neexistující vlastnosti uživatele není chyba. Místo toho je vlastnost neexistujícího uživatele interně vyhodnocena jako neznámá hodnota. Neznámá hodnota je zpracována speciálně při vyhodnocování operátoru.  
   
 ## <a name="property_name"></a>property_name  
   
@@ -67,7 +67,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ```  
   
-### <a name="arguments"></a>Argumenty  
+### <a name="arguments"></a>Arguments  
 
  `<regular_identifier>` je řetězec reprezentovaný následujícím regulárním výrazem:  
   
@@ -91,7 +91,7 @@ Tato gramatika znamená libovolný řetězec, který začíná písmenem a násl
   
 ```  
   
-`<quoted_identifier>` je libovolný řetězec, který je uzavřený pomocí dvojitých uvozovek. Dvojité uvozovky v identifikátoru jsou reprezentovány dvěma dvojitými uvozovkami. Nedoporučuje se používat identifikátory v uvozovkách, protože je lze snadno zaměňovat pomocí řetězcové konstanty. Pokud je to možné, použijte oddělený identifikátor. Zde je příklad `<quoted_identifier>` :  
+`<quoted_identifier>` je libovolný řetězec, který je uzavřený pomocí dvojitých uvozovek. Dvojité uvozovky v identifikátoru jsou reprezentovány dvěma dvojitými uvozovkami. Nedoporučuje se používat identifikátory v uvozovkách, protože je možné snadno zaměňovat pomocí řetězcové konstanty. Pokud je to možné, použijte oddělený identifikátor. Tady je příklad `<quoted_identifier>` :  
   
 ```  
 "Contoso & Northwind"  
@@ -121,7 +121,7 @@ Tato gramatika znamená libovolný řetězec, který začíná písmenem a násl
   
 ### <a name="remarks"></a>Poznámky  
 
-`<escape_char>` musí se jednat o výraz, který se vyhodnotí jako řetězec o délce 1. Slouží jako řídicí znak pro operátor LIKE.  
+`<escape_char>` musí se jednat o výraz, který se vyhodnotí jako řetězec o délce 1. Používá se jako řídicí znak pro operátor LIKE.  
   
  Například `property LIKE 'ABC\%' ESCAPE '\'` odpovídá `ABC%` místo řetězce, který začíná na `ABC` .  
   
@@ -132,11 +132,11 @@ Tato gramatika znamená libovolný řetězec, který začíná písmenem a násl
       <integer_constant> | <decimal_constant> | <approximate_number_constant> | <boolean_constant> | NULL  
 ```  
   
-### <a name="arguments"></a>Argumenty  
+### <a name="arguments"></a>Arguments  
   
 -   `<integer_constant>` je řetězec čísel, který není uzavřen v uvozovkách a neobsahuje desetinná místa. Hodnoty se ukládají jako `System.Int64` interně a používají stejný rozsah.  
   
-     Jedná se například o dlouhé konstanty:  
+     Tady jsou příklady dlouhých konstant:  
   
     ```  
     1894  
@@ -145,7 +145,7 @@ Tato gramatika znamená libovolný řetězec, který začíná písmenem a násl
   
 -   `<decimal_constant>` je řetězec čísel, který není uzavřen v uvozovkách a obsahuje desetinnou čárku. Hodnoty se ukládají jako `System.Double` interně a používají stejný rozsah nebo přesnost.  
   
-     V budoucí verzi může být toto číslo Uloženo v jiném datovém typu, aby podporovalo přesnou sémantiku čísel, takže byste neměli spoléhat na skutečnost, že základní datový typ je `System.Double` `<decimal_constant>` .  
+     V budoucí verzi může být toto číslo Uloženo v jiném datovém typu pro podporu přesné sémantiky čísel, takže byste neměli spoléhat na skutečnost, že základní datový typ je `System.Double` pro `<decimal_constant>` .  
   
      Následují příklady desítkových konstant:  
   
@@ -192,11 +192,11 @@ Logické konstanty jsou reprezentovány klíčovými slovy **true** nebo **false
   
 ### <a name="remarks"></a>Poznámky
   
-`newid()`Funkce vrátí hodnotu **System. GUID** vygenerovanou `System.Guid.NewGuid()` metodou.  
+`newid()`Funkce vrátí `System.Guid` vygenerovanou `System.Guid.NewGuid()` metodou.  
   
 `property(name)`Funkce vrátí hodnotu vlastnosti, na kterou odkazuje `name` . `name`Hodnotou může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
   
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
   
 Vezměte v úvahu následující sémantiku [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) :  
   
@@ -267,6 +267,58 @@ Vezměte v úvahu následující sémantiku [SqlFilter](/dotnet/api/microsoft.se
 -   Relační operátory, jako například,,, `>` `>=` `<` `<=` , `!=` a `=` dodržují stejnou sémantiku jako vazba operátoru jazyka C# v propagačních akcích datových typů a implicitních převodech.  
   
 -   Aritmetické operátory jako `+` , `-` , `*` , `/` a `%` sledují stejnou sémantiku jako vazba operátoru jazyka C# v propagačních akcích datových typů a implicitních převodech.
+
+
+## <a name="examples"></a>Příklady
+
+### <a name="set-rule-action-for-a-sql-filter"></a>Nastavit akci pravidla pro filtr SQL
+
+```csharp
+// instantiate the ManagementClient
+this.mgmtClient = new ManagementClient(connectionString);
+
+// create the SQL filter
+var sqlFilter = new SqlFilter("source = @stringParam");
+
+// assign value for the parameter
+sqlFilter.Parameters.Add("@stringParam", "orders");
+
+// instantiate the Rule = Filter + Action
+var filterActionRule = new RuleDescription
+{
+    Name = "filterActionRule",
+    Filter = sqlFilter,
+    Action = new SqlRuleAction("SET source='routedOrders'")
+};
+
+// create the rule on Service Bus
+await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
+```
+
+### <a name="sql-filter-on-a-system-property"></a>Filtr SQL pro systémovou vlastnost
+
+```csharp
+sys.Label LIKE '%bus%'`
+```
+
+### <a name="using-or"></a>Použití nebo 
+
+```csharp
+ sys.Label LIKE '%bus%'` OR `user.tag IN ('queue', 'topic', 'subscription')
+```
+
+### <a name="using-in-and-not-in"></a>Použití IN a NOT IN
+
+```csharp
+StoreId IN('Store1', 'Store2', 'Store3')"
+
+sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
+
+sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
+```
+
+Ukázku pro C# najdete v tématu [ukázky filtrů témat na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters).
+
 
 ## <a name="next-steps"></a>Další kroky
 

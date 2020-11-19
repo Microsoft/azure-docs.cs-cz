@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 67c701946eedf85176b3d14b09d3e723c4c74285
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072114"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888721"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Zpracování událostí v komunikačních službách Azure
 
@@ -22,13 +22,13 @@ ms.locfileid: "92072114"
 
 Komunikační služby Azure se integrují s [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) , aby poskytovaly oznámení událostí v reálném čase spolehlivým, škálovatelným a zabezpečeným způsobem. Tento článek vám umožní nakonfigurovat aplikace tak, aby naslouchaly událostem komunikačních služeb. Například můžete chtít aktualizovat databázi, vytvořit pracovní položku a odeslat nabízené oznámení pokaždé, když se na základě telefonního čísla, které je přidruženo k vašemu prostředku služby Communication Services, pošle zpráva SMS.
 
-Azure Event Grid je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. Event Grid obsahuje integrovanou podporu pro služby Azure, jako je [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) a [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview). Může doručovat výstrahy událostí na služby mimo Azure pomocí webhooků. Úplný seznam obslužných rutin událostí, které Event Grid podporuje, najdete v [úvodu k Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
+Azure Event Grid je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. Event Grid obsahuje integrovanou podporu pro služby Azure, jako je [Azure Functions](../../azure-functions/functions-overview.md) a [Azure Logic Apps](../../azure-functions/functions-overview.md). Může doručovat výstrahy událostí na služby mimo Azure pomocí webhooků. Úplný seznam obslužných rutin událostí, které Event Grid podporuje, najdete v [úvodu k Azure Event Grid](../../event-grid/overview.md).
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="Diagram znázorňující model události Azure Event Grid":::
 
 ## <a name="events-types"></a>Typy událostí
 
-Event Grid používá [odběry událostí](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) ke směrování zpráv událostí odběratelům. 
+Event Grid používá [odběry událostí](../../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí odběratelům. 
 
 Komunikační služby Azure emitují následující typy událostí:
 
@@ -50,7 +50,7 @@ K přihlášení k odběru událostí vygenerovaných vaším prostředkem komun
 
 ## <a name="event-subjects"></a>Předměty událostí
 
-`subject`Pole všech událostí komunikačních služeb identifikuje uživatele, telefonní číslo nebo entitu, která je cílem události. K povolení jednoduchého [filtrování Event Grid](https://docs.microsoft.com/azure/event-grid/event-filtering)se používají společné předpony.
+`subject`Pole všech událostí komunikačních služeb identifikuje uživatele, telefonní číslo nebo entitu, která je cílem události. K povolení jednoduchého [filtrování Event Grid](../../event-grid/event-filtering.md)se používají společné předpony.
 
 | Předpona subjektu                              | Entita služby komunikace |
 | ------------------------------------------- | ---------------------------- |
@@ -351,6 +351,6 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](https://docs.microsoft.com/azure/event-grid/overview)
-* Úvod do Azure Event Grid konceptů najdete v tématu [Koncepty v Event Grid?](https://docs.microsoft.com/azure/event-grid/concepts)
-* Úvod do Azure Event Grid SystemTopics naleznete v tématu [Systémová témata v Azure Event Grid?](https://docs.microsoft.com/azure/event-grid/system-topics)
+* Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](../../event-grid/overview.md)
+* Úvod do Azure Event Grid konceptů najdete v tématu [Koncepty v Event Grid?](../../event-grid/concepts.md)
+* Úvod do Azure Event Grid SystemTopics naleznete v tématu [Systémová témata v Azure Event Grid?](../../event-grid/system-topics.md)

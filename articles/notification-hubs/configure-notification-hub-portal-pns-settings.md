@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9c75ccaa05457f13697d1a26dbc8fd2f6720a751
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517848"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887259"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Rychlý Start: nastavení nabízených oznámení v centru oznámení
 
@@ -35,16 +35,16 @@ Nastavení služby Apple Push Notification Service (APNS):
 
 1. V **režimu ověřování** vyberte buď **certifikát** , nebo **token**.
 
-   a. Pokud vyberete možnost **certifikát** :
+   a. Pokud vyberete možnost **certifikát**:
    * Vyberte ikonu souboru a potom vyberte soubor *. p12* , který chcete nahrát.
    * Zadejte heslo.
    * Vyberte režim **Izolovaný prostor**. Nebo pokud chcete odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu, vyberte režim **výroby** .
 
      ![Snímek obrazovky s konfigurací certifikátu APNS v Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
-   b. Pokud vyberete **token** :
+   b. Pokud vyberete **token**:
 
-   * Zadejte hodnoty **ID klíče** , **ID sady** , **ID týmu** a **tokenu**.
+   * Zadejte hodnoty **ID klíče**, **ID sady**, **ID týmu** a **tokenu**.
    * Vyberte režim **Izolovaný prostor**. Nebo pokud chcete odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu, vyberte režim **výroby** .
 
      ![Snímek obrazovky s konfigurací tokenu APNS v Azure Portal](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
@@ -107,6 +107,8 @@ Pro projekt Google Firebase Cloud Messaging (FCM) budete potřebovat **klíč ro
 Reference k rozhraní příkazového řádku Azure CLI pro jiné platformy získáte pomocí příkazu [AZ Notification-hub Credential](/cli/azure/ext/notification-hub/notification-hub/credential) .
 
 Další informace o odesílání oznámení do aplikace pro Android najdete v tématu [Posílání nabízených oznámení na zařízení s Androidem pomocí Firebase](notification-hubs-android-push-notification-google-fcm-get-started.md).
+
+---
 
 ## <a name="windows-push-notification-service"></a>Služba nabízených oznámení Windows
 

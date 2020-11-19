@@ -2,22 +2,22 @@
 title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
-ms.date: 11/23/2020
-ms.openlocfilehash: 35cc87d7f3f1345972a7f27cecaeb96c6fa687dc
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.date: 11/18/2020
+ms.openlocfilehash: 57bcf1bd3023e56f6a64b5d82d8f1fc90be9dd47
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873909"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888738"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
 V tomto článku se dozvíte, jak nasadit a nakonfigurovat místní konektor VMware HCX pro privátní cloud řešení Azure VMware. Pomocí VMware HCX můžete migrovat úlohy VMware do řešení Azure VMware a dalších připojených lokalit prostřednictvím různých typů migrace. Protože řešení Azure VMware nasazuje a konfiguruje správce cloudu HCX, musíte si stáhnout, aktivovat a nakonfigurovat konektor HCX v místním datacentru VMware.
 
-VMware HCX Advanced Connector je předem nasazený v řešení Azure VMware. Podporuje až tři připojení lokality (z místního prostředí do cloudu nebo Cloud do cloudu). Pokud potřebujete více než tři připojení k webu, odešlete [žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support) , která povolí doplněk [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) . Doplněk je aktuálně ve verzi Preview. 
+VMware HCX Advanced Connector je předem nasazený v řešení Azure VMware. Podporuje až tři připojení lokality (z místního prostředí do cloudu nebo Cloud do cloudu). Pokud potřebujete více než tři připojení k webu, odešlete [žádost o podporu](https://portal.azure.com/#create/Microsoft.Support) , která povolí doplněk [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) . Doplněk je aktuálně ve verzi Preview. 
 
 >[!NOTE]
->VMware HCX Enterprise Edition (EE) je k dispozici v řešení Azure VMware jako služba ve verzi Preview. Je zdarma a podléhá podmínkám a ujednáním pro službu verze Preview. Jakmile je služba VMware HCX EE všeobecně dostupná, dostanete 30denní oznámení o tom, že účtování bude přepínat. Také budete mít možnost vypnout nebo odhlásit službu. Z VMware HCX EE do VMware HCX Advanced neexistuje žádná jednoduchá cesta k downgradům. Pokud se rozhodnete downgradovat, budete muset znovu nasadit a nasazovat výpadky.
+>VMware HCX Enterprise je k dispozici s řešením Azure VMware jako službou ve verzi Preview. Je zdarma a podléhá podmínkám a ujednáním pro službu verze Preview. Jakmile je podniková služba VMware HCX Enterprise všeobecně dostupná, dostanete 30denní oznámení o tom, že účtování bude přepínat. Také budete mít možnost vypnout nebo odhlásit službu. Neexistuje žádná jednoduchá cesta k downgradu z VMware HCX Enterprise na VMware HCX Advanced. Pokud se rozhodnete downgradovat, budete muset znovu nasadit a nasazovat výpadky.
 
 Nejdřív si přečtěte, [než začnete](#before-you-begin), [požadavky na verzi softwaru](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)a [požadavky](#prerequisites). 
 
@@ -46,17 +46,14 @@ Při přípravě nasazení doporučujeme Přečtěte si následující dokumenta
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Pokud plánujete používat VMware HCX EE, ujistěte se, že jste požádali o aktivaci pomocí kanálů podpory řešení Azure VMware.
+Pokud plánujete použít VMware HCX Enterprise, ujistěte se, že jste požádali o aktivaci pomocí kanálů podpory řešení Azure VMware.
 
-* Bez ohledu na to, jestli používáte VMware HCX Advanced nebo VMware HCX EE, musíte nainstalovat opravu z [článku znalostní báze](https://kb.vmware.com/s/article/81558)VMware pro 81558.
 
 ### <a name="on-premises-vsphere-environment"></a>Místní prostředí vSphere
 
-Ujistěte se, že vaše místní prostředí vSphere (zdrojové prostředí) splňuje [minimální požadavky](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-7C79D1AF-B213-4767-9DAB-D96B9D97A2BB). 
+Ujistěte se, že vaše místní prostředí vSphere (zdrojové prostředí) splňuje [minimální požadavky](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html). 
 
 ### <a name="network-and-ports"></a>Síť a porty
-
-* Přečtěte si základní [kurz kurzu](tutorial-network-checklist.md) řešení Azure VMware Software-Defined DATACENTER (SDDC)
 
 * [Azure ExpressRoute Global REACH](tutorial-expressroute-global-reach-private-cloud.md) je nakonfigurovaný mezi místními a SDDC ExpressRoutemi okruhy Azure VMware.
 
@@ -65,7 +62,6 @@ Ujistěte se, že vaše místní prostředí vSphere (zdrojové prostředí) spl
 ### <a name="ip-addresses"></a>IP adresy
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
-
    
 ## <a name="download-the-vmware-hcx-connector-ova"></a>Stáhnout VAJÍČKa konektoru VMware HCX
 
@@ -80,7 +76,7 @@ Než virtuální zařízení nasadíte do místního serveru vCenter, musíte si
 1. Vyberte **Spravovat**  >  **identitu** a pro identifikaci hesla vyberte **heslo správce vCenter** .
 
    > [!TIP]
-   > Heslo vCenter bylo definováno při nastavování privátního cloudu.
+   > Heslo vCenter bylo definováno při nastavování privátního cloudu, jedná se o stejné heslo, které použijete k přihlášení ke službě Azure VMware Solution HCX Manager.
 
    :::image type="content" source="media/tutorial-vmware-hcx/hcx-admin-password.png" alt-text="vyhledejte heslo HCX." lightbox="media/tutorial-vmware-hcx/hcx-admin-password.png":::
 
@@ -115,7 +111,7 @@ Než virtuální zařízení nasadíte do místního serveru vCenter, musíte si
 1. Ověřte konfiguraci a potom kliknutím na **Dokončit** NAsaďte vajíčko konektoru HCX.
    
    > [!IMPORTANT]
-   > Možná budete muset virtuální zařízení zapnout ručně.  V takovém případě počkejte 10-15 minut, než budete pokračovat k dalšímu kroku.
+   > Virtuální zařízení budete muset zapnout ručně.  Po zapnutí počkejte, než se dokročí k dalšímu kroku, počkejte 10-15 minut.
 
 Kompletní přehled tohoto postupu najdete v článku [Řešení Azure VMware: video o nasazení zařízení HCX](https://www.youtube.com/embed/BwSnQeefnso) . 
 
@@ -148,14 +144,14 @@ Po nasazení vajíček konektoru VMware HCX do místního prostředí a spuště
 1. V části **připojit Server vCenter** zadejte plně kvalifikovaný název domény nebo IP adresu vašeho serveru vCenter a příslušné přihlašovací údaje a potom vyberte **pokračovat**.
    
    > [!TIP]
-   > Server vCenter je místo, kde jste nasadili VMware HCX.
+   > Server vCenter je místo, kde jste nasadili konektor VMware HCX ve svém datovém centru.
 
 1. V části **Konfigurace jednotného přihlašování/PSC** zadejte plně kvalifikovaný název domény nebo IP adresu vašeho kontroleru služeb platformy a pak vyberte **pokračovat**.
    
    > [!NOTE]
    > Obvykle je tato položka stejná jako plně kvalifikovaný název domény nebo IP adresa serveru vCenter.
 
-1. Ověřte, zda jsou všechny vstupy správné, a vyberte **restartovat**.
+1. Ověřte, zda jsou zadané informace správné, a vyberte možnost **restartovat**.
     
    > [!NOTE]
    > Po restartu se budete muset setkat po restartování, než se zobrazí výzva k dalšímu kroku.
@@ -166,6 +162,8 @@ Po restartování služeb se na obrazovce, která se zobrazí, zobrazí položka
 
 Ucelený přehled tohoto postupu najdete v [Řešení Azure VMware: Aktivace HCX](https://www.youtube.com/embed/BkAV_TNYxdE) videa.
 
+   > [!IMPORTANT]
+   > Bez ohledu na to, jestli používáte VMware HCX Advanced nebo VMware HCX Enterprise, budete možná muset nainstalovat opravu z [článku znalostní báze](https://kb.vmware.com/s/article/81558)VMware pro systém 81558. 
 
 ## <a name="configure-the-vmware-hcx-connector"></a>Konfigurace konektoru VMware HCX
 
@@ -179,7 +177,7 @@ Můžete se připojit (spárovat) správce cloudu VMware HCX v řešení Azure V
 
 1. V části **infrastruktura** vyberte **párování lokalit** a potom vyberte možnost **připojit ke vzdálené lokalitě** (uprostřed obrazovky). 
 
-1. Zadejte adresu URL nebo IP adresu řešení Azure VMware HCX, kterou jste si poznamenali dříve, řešení Azure VMware cloudadmin \@ vSphere. Local username a heslo. Potom vyberte **Připojit**.
+1. Zadejte adresu URL nebo IP adresu cloudového správce Azure VMware Solution HCX, kterou jste si poznamenali dříve `https://x.x.x.9` , uživatelské jméno řešení Azure VMware cloudadmin@vsphere.local a heslo. Potom vyberte **Připojit**.
 
    > [!NOTE]
    > Aby bylo možné úspěšně vytvořit pár lokalit, váš konektor HCX musí být schopný směrovat do vaší HCX IP adresy cloudového správce přes port 443.
@@ -192,11 +190,9 @@ Můžete se připojit (spárovat) správce cloudu VMware HCX v řešení Azure V
 
 Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: video párování webu HCX](https://www.youtube.com/embed/sKizDCRHOko) .
 
-
-
 ### <a name="create-network-profiles"></a>Vytvoření profilů sítě
 
-VMware HCX nasadí podmnožinu virtuálních zařízení (automatizované), které vyžadují více segmentů IP adres. Při vytváření profilů sítě můžete definovat segmenty IP adres, které jste identifikovali během [fáze přípravy a plánování před nasazením segmentů sítě VMware HCX](production-ready-deployment-steps.md#vmware-hcx-network-segments).
+Konektor VMware HCX nasazuje podmnožinu virtuálních zařízení (automatizovaných), které vyžadují více segmentů IP adres. Když vytváříte profily sítě, použijete segmenty IP, které jste identifikovali během [fáze přípravy a plánování předběžného nasazení HCX sítě VMware](production-ready-deployment-steps.md#vmware-hcx-network-segments).
 
 Vytvoříte čtyři síťové profily:
 
@@ -247,9 +243,6 @@ Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: vid
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-management-network-profile.png" alt-text="Snímek obrazovky, který zobrazuje výběr profilu sítě pro správu a tlačítka pro pokračování" lightbox="media/tutorial-vmware-hcx/select-management-network-profile.png":::
 
-   > [!NOTE]
-   > Profil sítě pro správu umožňuje, aby zařízení VMware HCX komunikovala s vCenter. Prostřednictvím tohoto profilu lze dosáhnout hostitelů ESXi.
-
 1. V části **Vybrat profil sítě pro odesílání** vyberte profil sítě pro odesílání, který jste vytvořili v předchozím postupu. Potom vyberte **Pokračovat**.
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-uplink-network-profile.png" alt-text="Snímek obrazovky, který zobrazuje výběr profilu sítě pro odesílání a tlačítka pro pokračování" lightbox="media/tutorial-vmware-hcx/select-uplink-network-profile.png":::
@@ -260,12 +253,13 @@ Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: vid
 
 1. V části **Vybrat profil sítě pro replikaci vSphere** vyberte profil sítě replikace, který jste vytvořili v předchozích krocích. Potom vyberte **Pokračovat**.
 
-   Ve většině případů je profil sítě replikace stejný jako síťový profil pro správu.  
-
    :::image type="content" source="media/tutorial-vmware-hcx/select-replication-network-profile.png" alt-text="Snímek obrazovky, který zobrazuje výběr profilu sítě pro replikaci a tlačítko pro pokračování" lightbox="media/tutorial-vmware-hcx/select-replication-network-profile.png":::
 
 1. V části **Vybrat distribuované přepínače pro síťová rozšíření** vyberte přepínače, které obsahují virtuální počítače, které se mají migrovat do řešení Azure VMware na rozšířené síti vrstvy 2. Potom vyberte **Pokračovat**.
 
+   > [!NOTE]
+   > Pokud nemigrujete virtuální počítače ve rozšířených sítích úrovně 2, můžete tento krok přeskočit.
+   
    :::image type=" content" source="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png" alt-text="Snímek obrazovky, který zobrazuje výběr distribuovaných virtuálních přepínačů a tlačítka pro pokračování" lightbox="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png":::
 
 1. Zkontrolujte pravidla připojení a vyberte **pokračovat**.  

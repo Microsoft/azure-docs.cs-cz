@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e6fc3441fac5fe037e9a268d26012761d1fece70
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8faa6533ba4dc7fad61c045278c5504c5f78d900
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92463249"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888959"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Začínáme s ukázkou webového volání
 
@@ -37,7 +37,7 @@ Když je na vašem počítači [Ukázková webová volání](https://github.com/
 
 :::image type="content" source="./media/web-calling-tutorial-page-1.png" alt-text="Kurz pro webové volání 1" lightbox="./media/web-calling-tutorial-page-1.png":::
 
-:::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Kurz pro webové volání 1" lightbox="./media/web-calling-tutorial-page-2.png":::
+:::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Kurz pro webové volání 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
 
 ## <a name="user-provisioning-and-sdk-initialization"></a>Zřizování uživatelů a inicializace sady SDK 
@@ -52,29 +52,29 @@ Klikněte na tlačítko Zobrazit kód, abyste viděli vzorový kód, který mů�
 
 Po inicializaci sady SDK by se měla zobrazit následující:
 
-:::image type="content" source="./media/user-provisioning.png" alt-text="Kurz pro webové volání 1" lightbox="./media/user-provisioning.png":::
+:::image type="content" source="./media/user-provisioning.png" alt-text="Zřizování uživatelů" lightbox="./media/user-provisioning.png":::
 
 Teď jste připraveni začít umísťovat volání pomocí prostředku komunikačních služeb!
 
 ## <a name="placing-and-receiving-calls"></a>Umístění a příjem volání
 
-Sada SDK pro volání webu komunikačních služeb umožňuje **1:1**, **1: N**a volání **skupiny** .
+Sada SDK pro volání webu komunikačních služeb umožňuje **1:1**, **1: N** a volání **skupiny** .
 
 Pro 1:1 nebo 1: N odchozí volání můžete zadat více identit uživatelů komunikačních služeb pro volání pomocí hodnot oddělených čárkami. Můžete také zadat tradiční telefonní čísla (PSTN), která budou volána pomocí hodnot oddělených čárkami. 
 
 Při volání telefonních čísel PSTN zadejte alternativní ID volajícího. Kliknutím na tlačítko "umístit volání" umístěte odchozí volání:
 
-:::image type="content" source="./media/place-a-call.png" alt-text="Kurz pro webové volání 1" lightbox="./media/place-a-call.png":::
+:::image type="content" source="./media/place-a-call.png" alt-text="Umístit volání" lightbox="./media/place-a-call.png":::
 
 Pokud se chcete připojit k volání skupiny, zadejte identifikátor GUID, který identifikuje volání, a klikněte na tlačítko "připojit skupinu":
 
-:::image type="content" source="./media/join-a-group-call.png" alt-text="Kurz pro webové volání 1" lightbox="./media/join-a-group-call.png":::
+:::image type="content" source="./media/join-a-group-call.png" alt-text="Připojit se k volání skupiny" lightbox="./media/join-a-group-call.png":::
 
 Klikněte na tlačítko Zobrazit kód, abyste viděli vzorový kód pro umístění volání, přijímání volání a spojování volání skupin.
 
 Aktivní volání vypadá takto:
 
-:::image type="content" source="./media/group-call.png" alt-text="Kurz pro webové volání 1" lightbox="./media/group-call.png":::
+:::image type="content" source="./media/group-call.png" alt-text="Seskupit volání" lightbox="./media/group-call.png":::
 
 Tato ukázka také poskytuje fragmenty kódu pro následující funkce:
 
@@ -95,7 +95,7 @@ Další informace najdete v následujících článcích:
 
 - Seznamte se s [použitím volání klientské knihovny](../quickstarts/voice-video-calling/calling-client-samples.md)
 - Další informace o [volání funkce](../concepts/voice-video-calling/about-call-types.md)
-- Kontrola [referenčních dokumentů rozhraní API](https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js)
+- Kontrola [referenčních dokumentů rozhraní API](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js)
 
 ## <a name="additional-reading"></a>Další materiály ke čtení
 
@@ -103,4 +103,4 @@ Další informace najdete v následujících článcích:
 - [Redux](https://redux.js.org/) – Správa stavu na straně klienta
 - [FluentUI](https://aka.ms/fluent-ui) – knihovna rozhraní založená na Microsoftu
 - [Reagovat](https://reactjs.org/) – knihovna pro sestavování uživatelských rozhraní
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) – rozhraní pro vytváření webových aplikací
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) – rozhraní pro vytváření webových aplikací

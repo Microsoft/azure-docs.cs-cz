@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: d4ef8baa123f805d380b14fa24abff65903cb41d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daf2d675bbbee324769b6e1e8d8d34587d37c72f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946840"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886616"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -37,7 +37,7 @@ Další informace najdete v Koncepční dokumentaci k architektuře a ověřová
 
 ### <a name="azure-functions-set-up"></a>Nastavení Azure Functions
 
-Pojďme nejdřív nastavit základní strukturu pro naši funkci Azure Functions. Podrobné pokyny k nastavení najdete tady: [Vytvoření funkce pomocí Visual Studio Code](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)
+Pojďme nejdřív nastavit základní strukturu pro naši funkci Azure Functions. Podrobné pokyny k nastavení najdete tady: [Vytvoření funkce pomocí Visual Studio Code](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript)
 
 Naše funkce Azure vyžaduje následující konfiguraci:
 
@@ -46,7 +46,7 @@ Naše funkce Azure vyžaduje následující konfiguraci:
 - Úroveň autorizace: anonymní (tuto možnost lze zapnout později, pokud dáváte přednost jinému autorizačnímu modelu)
 - Název funkce: uživatelsky definované
 
-Po provedení následujících [pokynů Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript) s výše uvedenou konfigurací byste měli mít projekt v Visual Studio Code pro funkci Azure Functions se `index.js` souborem, který obsahuje funkci. Kód uvnitř tohoto souboru by měl být následující:
+Po provedení následujících [pokynů Azure Functions](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript) s výše uvedenou konfigurací byste měli mít projekt v Visual Studio Code pro funkci Azure Functions se `index.js` souborem, který obsahuje funkci. Kód uvnitř tohoto souboru by měl být následující:
 
 ```javascript
 
@@ -128,15 +128,15 @@ U existujících komunikačních služeb `CommunicationUser` můžete přeskoči
 
 ## <a name="test-the-azure-function"></a>Testování funkce Azure Functions
 
-Spusťte funkci Azure místně pomocí `F5` . Tím se funkce Azure inicializuje místně a zpřístupní se prostřednictvím: `http://localhost:7071/api/FUNCTION_NAME` . Projděte si další dokumentaci k [místnímu spuštění](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#run-the-function-locally)
+Spusťte funkci Azure místně pomocí `F5` . Tím se funkce Azure inicializuje místně a zpřístupní se prostřednictvím: `http://localhost:7071/api/FUNCTION_NAME` . Projděte si další dokumentaci k [místnímu spuštění](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-locally)
 
 Otevřete adresu URL v prohlížeči a měli byste vidět text odpovědi s ID uživatele komunikace, tokenem a vypršením platnosti tokenu.
 
-:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Diagram pro architekturu důvěryhodné služby":::
+:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Snímek obrazovky znázorňující příklad odpovědi pro vytvořenou funkci Azure Functions.":::
 
 ## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
 
-Pokud chcete nasadit funkci Azure Functions, můžete postupovat podle podrobných [pokynů](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#sign-in-to-azure) .
+Pokud chcete nasadit funkci Azure Functions, můžete postupovat podle podrobných [pokynů](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#sign-in-to-azure) .
 
 Obecně platí, že budete potřebovat:
 1. Přihlášení k Azure ze sady Visual Studio
@@ -151,4 +151,4 @@ Spuštění funkce Azure pomocí adresy URL `http://<function-appn-ame>.azureweb
 
 Adresu URL najdete tak, že kliknete pravým tlačítkem na funkci na Visual Studio Code a zkopírujete adresu URL funkce.
 
-Další informace o [spuštění funkce Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#run-the-function-in-azure)
+Další informace o [spuštění funkce Azure Functions](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-in-azure)

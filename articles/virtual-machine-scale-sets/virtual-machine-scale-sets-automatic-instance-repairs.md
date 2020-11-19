@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 383895f2cb5983abd68bfca67d2c8361ee094ea1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ae508754775d4eb622d8e91ef58eb0d6e1c45692
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744843"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889010"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatické opravy instancí pro škálovací sady virtuálních počítačů Azure
 
@@ -36,9 +36,9 @@ Předtím, než povolíte zásady automatických oprav instancí, zajistěte, ab
 
 U instancí označených jako "není v pořádku" jsou automatické opravy aktivovány sadou škálování. Než povolíte zásady automatických oprav, ujistěte se, že je koncový bod aplikace správně nakonfigurovaný, aby nedocházelo k nezamýšleným opravám instancí, zatímco koncový bod se nakonfiguruje.
 
-**Povolit jednu skupinu umístění**
+**Maximální počet instancí v sadě škálování**
 
-Tato funkce je aktuálně dostupná jenom pro sady škálování nasazené jako jediná skupina umístění. Vlastnost *singlePlacementGroup* by měla být nastavená na *hodnotu true* , aby vaše sada škálování používala funkci automatických oprav instancí. Přečtěte si další informace o [skupinách umístění](./virtual-machine-scale-sets-placement-groups.md#placement-groups).
+Tato funkce je aktuálně dostupná jenom pro sady škálování, které mají maximálně 200 instancí. Sada škálování se dá nasadit buď jako jediná skupina umístění, nebo do skupiny s více umístěními, ale počet instancí nemůže být vyšší než 200, pokud je pro sadu škálování povolená Automatická oprava instancí.
 
 **Verze rozhraní API**
 
@@ -62,13 +62,13 @@ Automatizované operace opravy instancí se provádějí v dávkách. V jednom o
 
 ### <a name="grace-period"></a>Období odkladu
 
-Když instance projde pomocí operace změny stavu z důvodu akce PUT, PATCH nebo POST provedené v sadě škálování (například obnovení bitové kopie, opětovné nasazení, aktualizace atd.), bude jakákoli akce opravy v této instanci provedena až po čekání na dobu odkladu. Období odkladu je doba, po kterou se má instance vrátit do stavu v pořádku. Období odkladu začíná po dokončení změny stavu. To pomáhá zabránit jakýmkoli předčasnému nebo náhodnému opravení. Doba odkladu se dodržuje u všech nově vytvořených instancí v sadě škálování (včetně toho, která se vytvořila v důsledku operace opravy). Období odkladu je zadáno v minutách ve formátu ISO 8601 a lze ho nastavit pomocí vlastnosti *automaticRepairsPolicy. gracePeriod* . Období odkladu může být v rozmezí 30 minut a 90 minut a má výchozí hodnotu 30 minut.
+Když instance projde pomocí operace změny stavu z důvodu akce PUT, PATCH nebo POST provedené v sadě škálování (například obnovení bitové kopie, opětovné nasazení, aktualizace atd.), bude jakákoli akce opravy v této instanci provedena až po čekání na dobu odkladu. Období odkladu je doba, po kterou se má instance vrátit do stavu v pořádku. Období odkladu začíná po dokončení změny stavu. To pomáhá zabránit jakýmkoli předčasnému nebo náhodnému opravení. Doba odkladu se dodržuje u všech nově vytvořených instancí v sadě škálování (včetně toho, která se vytvořila v důsledku operace opravy). Období odkladu je zadáno v minutách ve formátu ISO 8601 a lze ho nastavit pomocí vlastnosti *automaticRepairsPolicy. gracePeriod*. Období odkladu může být v rozmezí 30 minut a 90 minut a má výchozí hodnotu 30 minut.
 
 ### <a name="suspension-of-repairs"></a>Pozastavení oprav 
 
-Virtual Machine Scale Sets nabízí možnost dočasného pozastavení automatických oprav instancí v případě potřeby. *ServiceState* pro automatické opravy pod vlastností *orchestrationServices* v zobrazení instance sady škálování virtuálního počítače zobrazuje aktuální stav automatických oprav. Pokud je nastavená škála pro automatické opravy, hodnota parametru *serviceState* je nastavená na *spuštěno* . Při pozastavení automatických oprav pro sadu škálování se parametr *serviceState* nastaví na *pozastaveno* . Je-li v sadě škálování definováno *automaticRepairsPolicy* , ale funkce Automatické opravy není povolená, parametr *serviceState* je nastaven na *nespuštěno* .
+Virtual Machine Scale Sets nabízí možnost dočasného pozastavení automatických oprav instancí v případě potřeby. *ServiceState* pro automatické opravy pod vlastností *orchestrationServices* v zobrazení instance sady škálování virtuálního počítače zobrazuje aktuální stav automatických oprav. Pokud je nastavená škála pro automatické opravy, hodnota parametru *serviceState* je nastavená na *spuštěno*. Při pozastavení automatických oprav pro sadu škálování se parametr *serviceState* nastaví na *pozastaveno*. Je-li v sadě škálování definováno *automaticRepairsPolicy* , ale funkce Automatické opravy není povolená, parametr *serviceState* je nastaven na *nespuštěno*.
 
-Pokud nově vytvořené instance pro nahrazení stavů, které nejsou v pořádku, zůstávají v sadě škálování stále v pořádku i po opakovaném provádění operací opravy, a pak jako bezpečnostní opatření, které platforma aktualizuje *serviceState* , aby se automatické opravy *pozastavily* . Automatické opravy můžete znovu obnovit nastavením hodnoty *serviceState* pro automatické opravy, které se mají *Spustit* . Podrobné pokyny najdete v části [zobrazení a aktualizace stavu služby automatických oprav zásad](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) pro vaši sadu škálování. 
+Pokud nově vytvořené instance pro nahrazení stavů, které nejsou v pořádku, zůstávají v sadě škálování stále v pořádku i po opakovaném provádění operací opravy, a pak jako bezpečnostní opatření, které platforma aktualizuje *serviceState* , aby se automatické opravy *pozastavily*. Automatické opravy můžete znovu obnovit nastavením hodnoty *serviceState* pro automatické opravy, které se mají *Spustit*. Podrobné pokyny najdete v části [zobrazení a aktualizace stavu služby automatických oprav zásad](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) pro vaši sadu škálování. 
 
 Automatické opravy instancí: proces funguje takto:
 
@@ -92,11 +92,11 @@ Aby bylo možné povolit automatické opravy při vytváření nové sady škál
 
 Tuto [šablonu pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-automatic-repairs-slb-health-probe) můžete také použít k nasazení sady škálování virtuálních počítačů s sondou stavu nástroje pro vyrovnávání zatížení a automatických oprav instancí povolených s dobou odkladu 30 minut.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
  
 Následující kroky umožňují při vytváření nové sady škálování povolit zásady automatických oprav.
  
-1. Přejít na **Virtual Machine Scale Sets** .
+1. Přejít na **Virtual Machine Scale Sets**.
 1. Vyberte **+ Přidat** a vytvořte novou sadu škálování.
 1. Přejít na kartu **stav** . 
 1. Vyhledejte část **stav** .
@@ -141,7 +141,7 @@ New-AzVmssConfig `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Následující příklad povoluje zásadu automatické opravy při vytváření nové sady škálování pomocí funkce *[AZ VMSS Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)* . Nejdřív vytvořte skupinu prostředků a pak vytvořte novou sadu škálování s automatickými opravami doba odkladu, která je nastavená na 30 minut.
+Následující příklad povoluje zásadu automatické opravy při vytváření nové sady škálování pomocí funkce *[AZ VMSS Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)*. Nejdřív vytvořte skupinu prostředků a pak vytvořte novou sadu škálování s automatickými opravami doba odkladu, která je nastavená na 30 minut.
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -156,7 +156,7 @@ az vmss create \
   --automatic-repairs-grace-period 30
 ```
 
-Výše uvedený příklad používá existující Nástroj pro vyrovnávání zatížení a sondu stavu pro monitorování stavu instance aplikace. Pokud místo toho chcete použít rozšíření pro stav aplikace pro monitorování, můžete vytvořit sadu škálování, nakonfigurovat rozšíření stavu aplikace a pak povolit zásadu automatických oprav instancí pomocí funkce *AZ VMSS Update* , jak je vysvětleno v další části.
+Výše uvedený příklad používá existující Nástroj pro vyrovnávání zatížení a sondu stavu pro monitorování stavu instance aplikace. Pokud místo toho chcete použít rozšíření pro stav aplikace pro monitorování, můžete vytvořit sadu škálování, nakonfigurovat rozšíření stavu aplikace a pak povolit zásadu automatických oprav instancí pomocí funkce *AZ VMSS Update*, jak je vysvětleno v další části.
 
 ## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>Povolení zásad automatických oprav při aktualizaci existující sady škálování
 
@@ -164,17 +164,17 @@ Než povolíte funkci Automatické opravy v existující sadě škálování, uj
 
 Po aktualizaci modelu existující sady škálování zajistěte, aby byl na všechny instance stupnice použit nejnovější model. Informace o [tom, jak přenést virtuální počítače do aktuálního stavu pomocí nejnovějšího modelu sady škálování](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Zásady automatických oprav existující sady škálování můžete upravit pomocí Azure Portal. 
  
 1. Přejít na existující sadu škálování virtuálního počítače.
-1. V nabídce **Nastavení** vlevo vyberte **stav a opravit** .
+1. V nabídce **Nastavení** vlevo vyberte **stav a opravit**.
 1. Povolte možnost **monitorovat stav aplikace** .
 1. Vyhledejte oddíl **zásady automatických oprav** .
 1. Zapněte možnost **automatických oprav** . **On**
 1. V části lhůta **odkladu (min)** zadejte dobu odkladu v minutách, povolené hodnoty jsou mezi 30 a 90 minutami. 
-1. Po dokončení vyberte **Uložit** . 
+1. Po dokončení vyberte **Uložit**. 
 
 ### <a name="rest-api"></a>REST API
 
@@ -209,7 +209,7 @@ Update-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Následuje příklad aktualizace zásad automatických oprav instancí existující sady škálování pomocí funkce *[AZ VMSS Update](/cli/azure/vmss?view=azure-cli-latest#az-vmss-update)* .
+Následuje příklad aktualizace zásad automatických oprav instancí existující sady škálování pomocí funkce *[AZ VMSS Update](/cli/azure/vmss?view=azure-cli-latest#az-vmss-update)*.
 
 ```azurecli-interactive
 az vmss update \  
@@ -223,7 +223,7 @@ az vmss update \
 
 ### <a name="rest-api"></a>REST API 
 
-Pomocí funkce [získat zobrazení instance](/rest/api/compute/virtualmachinescalesets/getinstanceview) s rozhraním API verze 2019-12-01 nebo vyšší pro sadu škálování virtuálního počítače můžete zobrazit *serviceState* pro automatické opravy v rámci vlastnosti *orchestrationServices* . 
+Pomocí funkce [získat zobrazení instance](/rest/api/compute/virtualmachinescalesets/getinstanceview) s rozhraním API verze 2019-12-01 nebo vyšší pro sadu škálování virtuálního počítače můžete zobrazit *serviceState* pro automatické opravy v rámci vlastnosti *orchestrationServices*. 
 
 ```http
 GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'
@@ -309,7 +309,7 @@ Instance může být v období odkladu. To je doba, po kterou se má čekat po z
 
 **Zobrazení stavu aplikace pro instance sady škálování**
 
-K zobrazení stavu aplikace můžete použít [rozhraní API pro zobrazení](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) instancí v sadě škálování virtuálního počítače. Pomocí Azure PowerShell můžete rutinu [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) použít s příznakem *-InstanceView* . Stav aplikace je k dispozici pod vlastností *vmHealth* .
+K zobrazení stavu aplikace můžete použít [rozhraní API pro zobrazení](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) instancí v sadě škálování virtuálního počítače. Pomocí Azure PowerShell můžete rutinu [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) použít s příznakem *-InstanceView* . Stav aplikace je k dispozici pod vlastností *vmHealth*.
 
 V Azure Portal vidíte i stav také. Přejděte do existující sady škálování, v nabídce vlevo vyberte **instance** a podívejte se na sloupec **stav** a vyhledejte stav každé instance sady škálování. 
 
