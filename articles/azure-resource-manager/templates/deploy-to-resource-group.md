@@ -2,13 +2,13 @@
 title: Nasazení prostředků do skupin prostředků
 description: Popisuje nasazení prostředků v šabloně Azure Resource Manager. Ukazuje, jak se zaměřit na více než jednu skupinu prostředků.
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: fd211641d7fcc02a1db154053597497583b21ae5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/18/2020
+ms.openlocfilehash: 5e33f0d505759944ccaf2233aa122b6ab701c91f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681463"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917422"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>Nasazení skupiny prostředků s využitím šablon ARM
 
@@ -83,6 +83,8 @@ Při nasazení do skupiny prostředků můžete prostředky nasadit do:
 
 * Cílová skupina prostředků z operace
 * Další skupiny prostředků ve stejném předplatném nebo jiných předplatných
+* jakékoli předplatné v tenantovi
+* tenant pro skupinu prostředků
 * [prostředky rozšíření](scope-extension-resources.md) se dají použít u prostředků.
 
 Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
@@ -95,6 +97,8 @@ Chcete-li nasadit prostředky do cílového prostředku, přidejte tyto prostře
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-rg.json" highlight="5":::
 
+Příklad šablony najdete v tématu [nasazení do cílové skupiny prostředků](#deploy-to-target-resource-group).
+
 ### <a name="scope-to-resource-group-in-same-subscription"></a>Rozsah do skupiny prostředků ve stejném předplatném
 
 Pokud chcete nasadit prostředky do jiné skupiny prostředků ve stejném předplatném, přidejte vnořené nasazení a zahrňte `resourceGroup` vlastnost. Pokud nezadáte ID předplatného nebo skupinu prostředků, použije se předplatné a skupina prostředků z nadřazené šablony. Před spuštěním nasazení musí existovat všechny skupiny prostředků.
@@ -103,13 +107,43 @@ V následujícím příkladu je vnořené nasazení cíleno na skupinu prostřed
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/same-sub-to-resource-group.json" highlight="9,13":::
 
+Příklad šablony najdete v tématu [nasazení do více skupin prostředků](#deploy-to-multiple-resource-groups).
+
 ### <a name="scope-to-resource-group-in-different-subscription"></a>Rozsah do skupiny prostředků v jiném předplatném
 
 Pokud chcete nasadit prostředky do skupiny prostředků v jiném předplatném, přidejte vnořené nasazení a přidejte `subscriptionId` vlastnosti a `resourceGroup` . V následujícím příkladu je vnořené nasazení cíleno na skupinu prostředků s názvem `demoResourceGroup` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/different-sub-to-resource-group.json" highlight="9,10,14":::
 
-## <a name="cross-resource-groups"></a>Skupiny více prostředků
+Příklad šablony najdete v tématu [nasazení do více skupin prostředků](#deploy-to-multiple-resource-groups).
+
+### <a name="scope-to-subscription"></a>Rozsah pro předplatné
+
+Chcete-li nasadit prostředky do předplatného, přidejte vnořené nasazení a zahrňte `subscriptionId` vlastnost. Předplatné může být předplatné pro cílovou skupinu prostředků nebo jakékoli jiné předplatné v tenantovi. Také nastavte `location` vlastnost pro vnořené nasazení.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-subscription.json" highlight="9,10,14":::
+
+Příklad šablony najdete v tématu [Vytvoření skupiny prostředků](#create-resource-group).
+
+### <a name="scope-to-tenant"></a>Rozsah do tenanta
+
+Prostředky můžete vytvořit v tenantovi nastavením nastavení `scope` na `/` . Uživatel, který šablonu nasazuje, musí mít [požadovaný přístup k nasazení v tenantovi](deploy-to-tenant.md#required-access).
+
+Můžete použít vnořené nasazení se sadou `scope` a `location` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-tenant.json" highlight="9,10,14":::
+
+Nebo můžete nastavit obor na `/` pro některé typy prostředků, jako jsou skupiny pro správu.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-create-mg.json" highlight="12,15":::
+
+## <a name="deploy-to-target-resource-group"></a>Nasadit do cílové skupiny prostředků
+
+K nasazení prostředků v cílové skupině prostředků definujte tyto prostředky v části **Resources (prostředky** ) v šabloně. Následující šablona vytvoří účet úložiště ve skupině prostředků, která je určená v operaci nasazení.
+
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
+
+## <a name="deploy-to-multiple-resource-groups"></a>Nasazení do více skupin prostředků
 
 V jedné šabloně ARM můžete nasadit do více než jedné skupiny prostředků. Chcete-li cílit na skupinu prostředků, která je jiná než ta pro nadřazenou šablonu, použijte [vnořenou nebo propojenou šablonu](linked-templates.md). V části typ prostředku nasazení zadejte hodnoty pro ID předplatného a skupinu prostředků, do které chcete vnořenou šablonu nasadit. Skupiny prostředků můžou existovat v různých předplatných.
 
@@ -126,7 +160,7 @@ K otestování předchozí šablony a zobrazení výsledků použijte PowerShell
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pokud chcete nasadit dva účty úložiště do dvou skupin prostředků ve **stejném předplatném** , použijte:
+Pokud chcete nasadit dva účty úložiště do dvou skupin prostředků ve **stejném předplatném**, použijte:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -152,10 +186,10 @@ $secondRG = "secondarygroup"
 $firstSub = "<first-subscription-id>"
 $secondSub = "<second-subscription-id>"
 
-Select-AzSubscription -Subscription $secondSub
+Set-AzContext -Subscription $secondSub
 New-AzResourceGroup -Name $secondRG -Location eastus
 
-Select-AzSubscription -Subscription $firstSub
+Set-AzContext -Subscription $firstSub
 New-AzResourceGroup -Name $firstRG -Location southcentralus
 
 New-AzResourceGroupDeployment `
@@ -169,7 +203,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete nasadit dva účty úložiště do dvou skupin prostředků ve **stejném předplatném** , použijte:
+Pokud chcete nasadit dva účty úložiště do dvou skupin prostředků ve **stejném předplatném**, použijte:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -207,6 +241,76 @@ az deployment group create \
 ```
 
 ---
+
+## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
+
+Z nasazení skupiny prostředků můžete přejít na úroveň předplatného a vytvořit skupinu prostředků. Následující šablona nasadí účet úložiště do cílové skupiny prostředků a vytvoří v zadaném předplatném novou skupinu prostředků.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storagePrefix": {
+            "type": "string",
+            "maxLength": 11
+        },
+        "newResourceGroupName": {
+            "type": "string"
+        },
+        "nestedSubscriptionID": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "variables": {
+        "storageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[variables('storageName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "demoSubDeployment",
+            "location": "westus",
+            "subscriptionId": "[parameters('nestedSubscriptionID')]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Resources/resourceGroups",
+                            "apiVersion": "2020-06-01",
+                            "name": "[parameters('newResourceGroupName')]",
+                            "location": "[parameters('location')]",
+                            "properties": {}
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>Další kroky
 

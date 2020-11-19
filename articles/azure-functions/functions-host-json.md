@@ -3,12 +3,12 @@ title: host.jsna referenci pro Azure Functions 2. x
 description: Referenční dokumentace pro Azure Functions host.jsv souboru s modulem runtime v2.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: aaea37b100d6fadd271f48490628b38cba6cf822
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: c12a9244cdc1a76f678578e281532c73bc9385ba
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377118"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917235"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referenční informace k souboru host.json pro Azure Functions 2.x a novější 
 
@@ -162,6 +162,8 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
+Další informace o těchto nastaveních najdete [v tématu vzorkování v Application Insights](../azure-monitor/app/sampling.md). 
+
 |Vlastnost | Výchozí | Popis |
 | --------- | --------- | --------- | 
 | isEnabled | true | Povolí nebo zakáže vzorkování. | 
@@ -172,7 +174,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 | samplingPercentageDecreaseTimeout | 00:00:01 | Když se změní procentuální hodnota vzorkování, tato vlastnost určuje, jak brzo Application Insights může snížit procento vzorkování znovu a zachytit tak méně dat. |
 | minSamplingPercentage | 0,1 | Když se procento vzorkování liší, tato vlastnost určuje minimální povolený procentuální podíl vzorkování. |
 | maxSamplingPercentage | 100,0 | Když se procento vzorkování liší, tato vlastnost určuje maximální povolené procento vzorkování. |
-| movingAverageRatio | 1.0 | Při výpočtu klouzavého průměru je váha přiřazená k nejnovější hodnotě. Použijte hodnotu rovnou nebo menší než 1. Menší hodnoty nastaví algoritmus méně aktivní na náhlé změny. |
+| movingAverageRatio | 1,0 | Při výpočtu klouzavého průměru je váha přiřazená k nejnovější hodnotě. Použijte hodnotu rovnou nebo menší než 1. Menší hodnoty nastaví algoritmus méně aktivní na náhlé změny. |
 | excludedTypes | null | Středníkem oddělený seznam typů, které nechcete vzorkovat. Rozpoznané typy jsou: `Dependency` , `Event` , `Exception` , `PageView` , a `Request` `Trace` . Jsou přenášeny všechny instance zadaných typů; typy, které nejsou určeny, jsou vzorkované. |
 | includedTypes | null | Seznam typů, které chcete vzorkovat, oddělený středníky; prázdný seznam zahrnuje všechny typy. Typ uvedený v seznamu přepsat typy, které jsou `excludedTypes` zde uvedeny. Rozpoznané typy jsou: `Dependency` , `Event` , `Exception` , `PageView` , a `Request` `Trace` . Instance zadaných typů jsou vzorkované; typy, které nejsou zadány nebo implicitně jsou přenášeny bez vzorkování. |
 
@@ -191,7 +193,7 @@ Další informace o snímcích najdete v tématu [ladění snímků při výjimk
 |Vlastnost | Výchozí | Popis |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | Koncový bod, který se používá pro připojení ke službě Application Insights Snapshot Debugger. Pokud je null, použije se výchozí koncový bod. |
-| captureSnapshotMemoryWeight | 0.5 | Váha přidělená aktuální velikosti paměti procesu při kontrole, zda je k dispozici dostatek paměti pro pořízení snímku. Očekávaná hodnota je větší než 0 správný zlomek (0 < CaptureSnapshotMemoryWeight < 1). |
+| captureSnapshotMemoryWeight | 0,5 | Váha přidělená aktuální velikosti paměti procesu při kontrole, zda je k dispozici dostatek paměti pro pořízení snímku. Očekávaná hodnota je větší než 0 správný zlomek (0 < CaptureSnapshotMemoryWeight < 1). |
 | failedRequestLimit | 3 | Omezení počtu neúspěšných žádostí o snímky, než je procesor telemetrie zakázán.|
 | handleUntrackedExceptions | true | Povolí nebo zakáže sledování výjimek, které nejsou sledovány Application Insights telemetrie. |
 | isEnabled | true | Povolí nebo zakáže shromažďování snímků. | 

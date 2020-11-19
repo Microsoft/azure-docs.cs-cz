@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: df4faf367951402914abb03285498e0da6f3105f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9a2bda0a526c307ae17d8415f6f24423ddf51b63
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337672"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917762"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID Broker (HIB)
 
@@ -52,7 +52,7 @@ Následující diagram znázorňuje základní tok ověřování pro federované
 
 Vytvoření clusteru Balíček zabezpečení podniku s povoleným zprostředkovatelem HDInsight ID:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Postupujte podle základních kroků pro vytvoření clusteru Balíček zabezpečení podniku. Další informace najdete v tématu [Vytvoření clusteru HDInsight s balíček zabezpečení podniku](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
 1. Vyberte **Povolit zprostředkovatele ID HDInsight**.
 
@@ -137,6 +137,25 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 ``` 
 
 Pro použití Beeline a Livy můžete také použít kódy ukázek, které [tady](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) najdete, a nastavit tak klienta tak, aby používal OAuth a připojil se ke clusteru.
+
+## <a name="faq"></a>Nejčastější dotazy
+### <a name="what-app-is-created-by-hdinsight-in-aad"></a>Jakou aplikaci vytvoří HDInsight v AAD?
+Pro každý cluster bude aplikace třetí strany registrována v AAD s identifikátorem URI clusteru jako identifierUri (jako https://clustername.azurehdinsight.net ).
+
+### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>Proč se uživatelé před použitím clusterů s podporou HIB zobrazí výzva k zadání souhlasu?
+V AAD se vyžaduje souhlas pro všechny aplikace třetích stran předtím, než může ověřit uživatele nebo získat přístup k datům.
+
+### <a name="can-the-consent-be-approved-programatically"></a>Je možné souhlas schválit programově?
+Rozhraní API pro Microsoft Graph umožňuje automatizovat souhlas. v dokumentaci k [rozhraní API](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) můžete sekvenci automatizace souhlasu:
+
+* Registrace aplikace a udělení oprávnění Application. getpro přístup k aplikaci Microsoft Graph
+* Po vytvoření clusteru se dotaz na aplikaci clusteru vyhledá na základě identifikátoru URI identifikátoru.
+* Registrace souhlasu aplikace
+
+Když se cluster odstraní, HDInsight aplikaci odstraní a není nutné nic Vyčistě.
+
+ 
+
 
 ## <a name="next-steps"></a>Další kroky
 

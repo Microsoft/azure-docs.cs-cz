@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 11/15/2020
-ms.openlocfilehash: 48bd32569b7eb7fa09f83f81190bf96baa42fae0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.date: 11/19/2020
+ms.openlocfilehash: a79055a77ec73ce2b267bb4f16fa91f37e22ea75
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659977"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916776"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurace prostředí IR v místním prostředí jako proxy serveru pro Azure-SSIS IR v Azure Data Factory
 
@@ -175,8 +175,10 @@ Pokud chcete, aby vaše vlastní komponenty/komponenty třetích stran měly př
 
 1. Nainstalujte vlastní součásti/komponenty od jiných výrobců, které cílí na SQL Server 2017 na Azure-SSIS IR prostřednictvím [vlastních nastavení Standard/Express](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
 
-1. Vytvořte následující klíče registru DTSPath v místním prostředí IR, pokud už neexistují: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` a `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` .
- 
+1. Vytvořte následující klíče registru DTSPath v místním prostředí IR, pokud už neexistují:
+   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` nastavit na `C:\Program Files\Microsoft SQL Server\140\DTS\`
+   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` nastavit na `C:\Program Files (x86)\Microsoft SQL Server\140\DTS\`
+   
 1. Do DTSPath výše nainstalujte vlastní komponenty a součásti třetí strany, které cílí na SQL Server 2017, a ujistěte se, že proces instalace:
 
    1. Vytvoří `<DTSPath>` `<DTSPath>/Connections` složky,, `<DTSPath>/PipelineComponents` a, `<DTSPath>/UpgradeMappings` Pokud již neexistují.
@@ -185,7 +187,7 @@ Pokud chcete, aby vaše vlastní komponenty/komponenty třetích stran měly př
    
    1. Nainstaluje všechna sestavení, na která odkazují vaše sestavení komponent vlastní/třetí strany v globální mezipaměti sestavení (GAC).
 
-Tady je [příklad komponenty třetí strany](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir) , která používá expresní vlastní nastavení a technologii IR pro místní hostování jako proxy pro Azure-SSIS IR.
+Tady jsou příklady od našich partnerů, [Theobald softwaru](https://kb.theobald-software.com/xtract-is/XIS-for-Azure-SHIR) a [Aecorsoft](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir), kteří si přistavili své komponenty pro použití našeho expresního vlastního nastavení a místního prostředí IR jako proxy serveru pro Azure-SSIS IR.
 
 ## <a name="enforce-tls-12"></a>Vynucení protokolu TLS 1.2
 

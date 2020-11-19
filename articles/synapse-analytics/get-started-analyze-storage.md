@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: fabfdce72202f79e2ac5bad08d124df7ce2de542
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 5e3fbd1868cc1216cb7b9d02b2aa8e690af33952
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592579"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917677"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>Analýza dat v účtu úložiště
 
@@ -41,6 +41,8 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 ```
 
 ### <a name="analyze-data-in-a-storage-account"></a>Analýza dat v účtu úložiště
+
+Můžete analyzovat data ve výchozím účtu ADLS Gen2 v pracovním prostoru nebo můžete k pracovnímu prostoru propojit účet ADLS Gen2 nebo úložiště objektů BLOB pomocí možnosti "**Spravovat**" > "**propojené služby**" > "**New**" (následující postup bude odkazovat na primární adls Gen2 účet).
 
 1. V synapse studiu otevřete centrum **dat** a pak vyberte **propojit**.
 1. Přejít na **účty úložiště**  >  **MyWorkspace (Primary-contosolake)**.

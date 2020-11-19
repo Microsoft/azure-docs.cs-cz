@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: a26a618d4f1bd9900136561d95c21c1ecbaadfaa
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516437"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916470"
 ---
-# <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Public Preview: Zvýhodněné hybridní využití Azure – jak se vztahuje na Linux Virtual Machines
+# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Zvýhodněné hybridní využití Azure – způsob použití pro Linux Virtual Machines
 
 ## <a name="overview"></a>Přehled
 
 Zvýhodněné hybridní využití Azure vám umožní snadněji migrovat místní virtuální počítače s Red Hat Enterprise Linux (RHEL) a SUSE Linux Enterprise Server (SLES) do Azure pomocí vlastního předplatného Red Hat nebo SUSE softwaru. S touto výhodou platíte jenom za náklady na infrastrukturu vašeho virtuálního počítače, protože poplatek za software je pokrytý vaším předplatným RHEL nebo SLES. Tato výhoda se vztahuje na všechny image RHEL a SLES Marketplace s průběžnými platbami (PAYG).
 
 > [!IMPORTANT]
-> Zvýhodněné hybridní využití Azure pro virtuální počítače se systémem Linux je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zvýhodněné hybridní využití Azure pro virtuální počítače se systémem Linux jsou nyní k dispozici veřejnosti
+
 
 ## <a name="benefit-description"></a>Popis výhod
 
@@ -44,12 +44,6 @@ Zvýhodněné hybridní využití Azure je k dispozici pro všechny PAYG image S
 Rezervované instance, vyhrazené hostitele a zvýhodněné hybridní využití SQL nejsou způsobilé pro Zvýhodněné hybridní využití Azure, pokud už tuto výhodu používáte s virtuálními počítači se systémem Linux.
 
 ## <a name="how-to-get-started"></a>Jak začít
-
-Zvýhodněné hybridní využití Azure je aktuálně ve fázi Preview pro virtuální počítače se systémem Linux. Jakmile získáte přístup k verzi Preview, můžete povolit výhody pomocí Azure CLI.
-
-### <a name="public-preview"></a>Public Preview
-
-Zvýhodněné hybridní využití Azure (pro Linux) je teď ve fázi Public Preview. K povolení výhod pro distribuce Red Hat a SUSE můžete použít následující kroky. 
 
 ### <a name="red-hat-customers"></a>Zákazníci se Red Hat
 

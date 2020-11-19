@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: d48add78eb73ba1aea248e95ddc5ebc0900ee000
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b900373c7e6a3b3701ae30274ff27629b7f47ef9
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888330"
+ms.locfileid: "94916844"
 ---
 # <a name="supported-devices"></a>Podporovaná zařízení
 
@@ -33,7 +33,7 @@ Pokud potřebujete spravovat prostředky Azure z mobilního zařízení, zkuste 
 Doporučujeme používat nejnovější prohlížeč, který je kompatibilní s vaším operačním systémem. Podporovány jsou následující prohlížeče:
 
 * Microsoft Edge (nejnovější verze)
-* Internet Explorer 11 (podporováno do 31. března 2021)
+* Internet Explorer 11
 * Safari (nejnovější verze, jen Mac)
 * Chrome (nejnovější verze)
 * Firefox (nejnovější verze)

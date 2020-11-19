@@ -2,13 +2,13 @@
 title: Azure Service Bus metriky v Azure Monitor | Microsoft Docs
 description: Tento článek vysvětluje, jak pomocí Azure Monitor monitorovat Service Bus entit (fronty, témata a odběry).
 ms.topic: article
-ms.date: 09/30/2020
-ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 1f8bd9484bf2a2106818da1d6e4ef21e937d2ac3
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598131"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916878"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metriky v Azure Monitor
 
@@ -31,7 +31,7 @@ Metriky můžete monitorovat v průběhu času v [Azure Portal](https://portal.a
 
 ![Snímek obrazovky se stránkou monitor – metrika (Preview) v Azure Portal.][1]
 
-Metriky můžete také přistupovat přímo přes obor názvů. Provedete to tak, že vyberete svůj obor názvů a kliknete na **metriky**. Chcete-li zobrazit metriky filtrované v oboru entity, vyberte entitu a klikněte na možnost **metriky**.
+Metriky můžete také přistupovat přímo přes obor názvů. Provedete to tak, že vyberete svůj obor názvů a pak vyberete **metriky**. Pokud chcete zobrazit metriky filtrované v oboru entity, vyberte entitu a pak vyberte **metriky**.
 
 ![Snímek obrazovky se stránkou monitor – metrika (Preview) se vyfiltruje na obor entity.][2]
 
@@ -41,7 +41,7 @@ Pro metriky podporující dimenze je nutné filtrovat pomocí požadované hodno
 
 Metriky a výstrahy na Azure Monitor se účtují podle jednotlivých výstrah. Tyto poplatky by měly být k dispozici na portálu, když je nastavená výstraha a předtím, než se uloží. 
 
-Další řešení, která ingestují data metrik, se účtují přímo pomocí těchto řešení. Například se fakturuje Azure Storage, Pokud archivujete data metriky na účet Azure Storage. Účtuje se taky Log Analytics, pokud streamuje data metrik pro Log Analytics pro pokročilou analýzu.
+Další řešení, která ingestují data metrik, se účtují přímo pomocí těchto řešení. Fakturuje se například Azure Storage, Pokud archivujete data metriky na účet Azure Storage. účtuje se taky Log Analytics, pokud streamuje data metrik pro Log Analytics pro pokročilou analýzu.
 
 Následující metriky poskytují přehled o stavu služby. 
 
@@ -54,7 +54,7 @@ Všechny hodnoty metrik jsou odesílány do Azure Monitor každou minutu. Časov
 
 Spočítá počet požadavků na data a operace správy.
 
-| Název metriky | Description |
+| Název metriky | Popis |
 | ------------------- | ----------------- |
 | Příchozí žádosti| Počet požadavků provedených ve službě Service Bus v zadaném období. <br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
 |Úspěšné požadavky|Počet úspěšných požadavků provedených ve službě Service Bus v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
@@ -72,7 +72,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 
 ## <a name="message-metrics"></a>Metriky zpráv
 
-| Název metriky | Description |
+| Název metriky | Popis |
 | ------------------- | ----------------- |
 |Příchozí zprávy|Počet událostí nebo zpráv odeslaných do Service Bus v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
 |Odchozí zprávy|Počet událostí nebo zpráv přijatých z Service Bus v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
@@ -80,20 +80,18 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 | Aktivní zprávy| Počet aktivních zpráv ve frontě nebo tématu. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Dimenze: název entity |
 | Nedoručené zprávy| Počet nedoručených zpráv ve frontě nebo tématu <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/>Dimenze: název entity |
 | Naplánované zprávy| Počet naplánovaných zpráv ve frontě nebo tématu. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr  <br/> Dimenze: název entity |
+| Dokončené zprávy| Počet dokončených zpráv ve frontě nebo tématu. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Dimenze: název entity |
+| Opuštěné zprávy| Počet zrušených zpráv ve frontě nebo tématu. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Dimenze: název entity |
 | Velikost | Velikost entity (fronty nebo tématu) v bajtech <br/><br/>Jednotka: počet <br/>Typ agregace: průměr <br/>Dimenze: název entity | 
 
 > [!NOTE]
-> Hodnoty pro následující metriky jsou hodnoty v daném časovém okamžiku. Příchozí zprávy, které byly spotřebovány ihned po tomto okamžiku, se nemusí v těchto metrikách odrazit. 
-> - Zprávy
-> - Aktivní zprávy 
-> - Nedoručené zprávy 
-> - Naplánované zprávy 
+> Hodnoty pro zprávy, aktivní, nedoručené, naplánované, dokončené a opuštěné zprávy jsou hodnoty bodu v čase. Příchozí zprávy, které byly spotřebovány ihned po tomto okamžiku, se nemusí v těchto metrikách odrazit. 
 
 ## <a name="connection-metrics"></a>Metriky připojení
 
-| Název metriky | Description |
+| Název metriky | Popis |
 | ------------------- | ----------------- |
-|Aktivní připojení|Počet aktivních připojení v oboru názvů i pro entitu v oboru názvů. Hodnota této metriky je hodnota k určitému bodu v čase. Připojení, která jsou aktivní ihned po tomto okamžiku, se neprojeví v metrikě.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
+|Aktivní připojení|Počet aktivních připojení v oboru názvů a v entitě v oboru názvů. Hodnota této metriky je hodnota k určitému bodu v čase. Připojení, která jsou aktivní ihned po tomto okamžiku, se neprojeví v metrikě.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
 |Otevřená připojení |Počet otevřených připojení.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
 |Uzavřená připojení |Počet uzavřených připojení<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
 
@@ -106,7 +104,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 > 
 > Další metrikou, kterou můžete monitorovat: **omezené požadavky**. Nemělo by se jednat o problém, dokud obor názvů zůstane v rámci omezení paměti, procesoru a zprostředkovaných připojení. Další informace najdete v tématu [omezování v Azure Service Bus úrovně Premium](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier) .
 
-| Název metriky | Description |
+| Název metriky | Popis |
 | ------------------- | ----------------- |
 |Využití CPU na obor názvů|Procento využití procesoru oboru názvů.<br/><br/> Jednotka: procenta <br/> Typ agregace: maximum <br/> Dimenze: název entity|
 |Využití velikosti paměti na obor názvů|Procento využití paměti oboru názvů.<br/><br/> Jednotka: procenta <br/> Typ agregace: maximum <br/> Dimenze: název entity|
@@ -115,7 +113,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 
 Azure Service Bus podporuje následující dimenze pro metriky v Azure Monitor. Přidávání dimenzí do metrik je volitelné. Pokud dimenze nepřidáte, jsou metriky zadány na úrovni oboru názvů. 
 
-|Název dimenze|Description|
+|Název dimenze|Popis|
 | ------------------- | ----------------- |
 |Název entity| Service Bus podporuje entity zasílání zpráv pod oborem názvů.|
 
@@ -131,30 +129,30 @@ Azure Service Bus podporuje následující dimenze pro metriky v Azure Monitor. 
     4. Vyberte **Hotovo**. 
     
         ![Výběr oboru názvů](./media/service-bus-metrics-azure-monitor/select-namespace.png)
-1. Vyberte **Přidat kritéria**a na stránce **Konfigurovat logiku signálu** proveďte následující akce:
+1. Vyberte **Přidat kritéria** a na stránce **Konfigurovat logiku signálu** proveďte následující akce:
     1. Vyberte **metriky** pro **typ signálu**. 
     2. Vyberte signál. Například: **chyby služby**. 
 
         ![Vybrat chyby serveru](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
     1. Vyberte možnost **větší než** pro **podmínku**.
     2. Vyberte **celkem** pro **agregaci času**. 
-    3. Jako **prahovou hodnotu**zadejte **5** . 
+    3. Jako **prahovou hodnotu** zadejte **5** . 
     4. Vyberte **Hotovo**.    
 
         ![Zadat podmínku](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
-1. Na stránce **vytvořit pravidlo** rozbalte možnost **definovat podrobnosti výstrahy**a proveďte následující akce:
+1. Na stránce **vytvořit pravidlo** rozbalte možnost **definovat podrobnosti výstrahy** a proveďte následující akce:
     1. Zadejte **název** výstrahy. 
     2. Zadejte **Popis** výstrahy.
     3. Vyberte **závažnost** výstrahy. 
 
         ![Snímek obrazovky se stránkou vytvořit pravidlo Definujte podrobnosti výstrahy a zvýrazní se pole název, popis a závažnost pravidla upozornění.](./media/service-bus-metrics-azure-monitor/alert-details.png)
-1. Na stránce **vytvořit pravidlo** rozbalte položku **definovat skupinu akcí**, vyberte možnost **Nová skupina akcí**a na **stránce Přidat skupinu akcí**proveďte následující akce. 
+1. Na stránce **vytvořit pravidlo** rozbalte položku **definovat skupinu akcí**, vyberte možnost **Nová skupina akcí** a na **stránce Přidat skupinu akcí** proveďte následující akce. 
     1. Zadejte název skupiny akcí.
     2. Zadejte krátký název skupiny akcí. 
     3. Vyberte své předplatné. 
     4. Vyberte skupinu prostředků. 
     5. Pro tento návod zadejte pro **název akce** **Odeslat e-mail** .
-    6. Pro **typ akce**vyberte **e-mail/SMS/nabízený/hlas** . 
+    6. Pro **typ akce** vyberte **e-mail/SMS/nabízený/hlas** . 
     7. Vyberte **Upravit podrobnosti**. 
     8. Na stránce **e-mail/SMS/Push/Voice** proveďte následující akce:
         1. Vyberte **e-mail**. 

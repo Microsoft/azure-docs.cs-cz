@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 211ce85fdbf918171ecfc7964bbcdfa2ef245990
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 83f38797e406ff7e62503f59ef979b9ce4f07f97
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790708"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917932"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Co je spravovaná instance Azure SQL?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ Následující diagram popisuje klíčové funkce spravované instance SQL:
 
 ![Klíčové funkce](./media/sql-managed-instance-paas-overview/key-features.png)
 
-Spravovaná instance Azure SQL je navržená pro zákazníky, kteří chtějí migrovat velký počet aplikací z místního prostředí nebo prostředí IaaS, samostatného nebo nezávislého výrobce softwaru (ISV) do plně spravovaného cloudového prostředí PaaS s co nejmenším možným úsilím migrovat. Díky plně automatizované [službě Azure Data Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)můžou zákazníci vyzvednutím a posunutím stávající instance SQL Server do spravované instance SQL, což nabízí kompatibilitu s SQL Server a úplnou izolaci zákaznických instancí s nativní podporou virtuální sítě.  Se Software Assurance vám umožní vyměňovat si stávající licence pro zvýhodněné sazby SQL spravované instance pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Spravovaná instance SQL je nejlepší cíl migrace v cloudu pro SQL Server instance, které vyžadují vysoké zabezpečení a bohatou programovatelné plochu.
+Spravovaná instance Azure SQL je navržená pro zákazníky, kteří chtějí migrovat velký počet aplikací z místního prostředí nebo prostředí IaaS, samostatného nebo nezávislého výrobce softwaru (ISV) do plně spravovaného cloudového prostředí PaaS s co nejmenším možným úsilím migrovat. Díky plně automatizované [službě Azure Data Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)můžou zákazníci vyzvednutím a posunutím stávající instance SQL Server do spravované instance SQL, což nabízí kompatibilitu s SQL Server a úplnou izolaci zákaznických instancí s nativní podporou virtuální sítě. Další informace o možnostech a nástrojích migrace najdete v tématu [Přehled migrace: SQL Server na spravovanou instanci Azure SQL](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md).</br> Se Software Assurance vám umožní vyměňovat si stávající licence pro zvýhodněné sazby SQL spravované instance pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Spravovaná instance SQL je nejlepší cíl migrace v cloudu pro SQL Server instance, které vyžadují vysoké zabezpečení a bohatou programovatelné plochu.
 
 ## <a name="key-features-and-capabilities"></a>Klíčové funkce a možnosti
 
@@ -49,22 +49,22 @@ Spravovaná instance SQL kombinuje nejlepší funkce, které jsou k dispozici v 
 |Izolované prostředí ([Integrace virtuální](connectivity-architecture-overview.md)sítě, samostatná služba tenanta, vyhrazený výpočetní výkon a úložiště) <br>[Transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure Active Directory (Azure AD)](../database/authentication-aad-overview.md), podpora jednotného přihlašování <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Objekty zabezpečení serveru Azure AD (přihlášení)</a>  <br>Dodržuje standardy dodržování předpisů stejné jako Azure SQL Database <br>[Auditování SQL](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Rozhraní Azure Resource Manager API pro automatizaci zřizování a škálování služby <br>Azure Portal funkce ručního zřizování a škálování služeb <br>Database Migration Service
 
 > [!IMPORTANT]
-> Spravovaná instance Azure SQL byla certifikována pro určitý počet standardů dodržování předpisů. Další informace najdete v tématu [nabídky dodržování předpisů Microsoft Azure](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers), kde můžete najít nejaktuálnější seznam certifikátů dodržování předpisů spravovaných instancí SQL, které jsou uvedené v části **SQL Database** .
+> Spravovaná instance Azure SQL byla certifikována pro určitý počet standardů dodržování předpisů. Další informace najdete v tématu [nabídky dodržování předpisů Microsoft Azure](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers), kde můžete najít nejaktuálnější seznam certifikátů dodržování předpisů spravovaných instancí SQL, které jsou uvedené v části **SQL Database**.
 
 Klíčové funkce spravované instance SQL jsou uvedené v následující tabulce:
 
 |Funkce | Popis|
 |---|---|
 | Verze SQL Server/Build | Databázový stroj SQL Server (nejnovější stabilní) |
-| Spravované automatizované zálohy | Ano |
-| Integrovaná instance a monitorování databáze a metriky | Ano |
-| Automatické opravy softwaru | Ano |
-| Nejnovější funkce databázového stroje | Ano |
+| Spravované automatizované zálohy | Yes |
+| Integrovaná instance a monitorování databáze a metriky | Yes |
+| Automatické opravy softwaru | Yes |
+| Nejnovější funkce databázového stroje | Yes |
 | Počet datových souborů (řádků) na databázi | Několik |
 | Počet souborů protokolu (protokol) na databázi | 1 |
-| Nasazení VNet-Azure Resource Manager | Ano |
+| Nasazení VNet-Azure Resource Manager | Yes |
 | Model nasazení sítě VNet – klasický | Ne |
-| Podpora portálu | Ano|
+| Podpora portálu | Yes|
 | Integrovaná integrační služba (SSIS) | No-SSIS je součástí [Azure Data Factory PaaS](../../data-factory/tutorial-deploy-ssis-packages-azure.md) |
 | Integrovaná služba Analysis Service (SSAS) | No-SSAS je samostatný [PaaS](../../analysis-services/analysis-services-overview.md) |
 | Integrovaná služba vytváření sestav (SSRS) | Nepoužívejte místo toho [Power BI stránkované sestavy](/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) nebo Hostujte službu SSRS na virtuálním počítači Azure. I když spravovaná instance SQL nemůže službu SSRS spustit jako službu, může hostovat [databáze katalogu SSRS](/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) pro server sestav nainstalovaný na virtuálním počítači Azure pomocí SQL Server ověřování. |
@@ -85,8 +85,8 @@ Přečtěte si další informace o rozdílech mezi generacemi hardwaru v [omezen
 
 Spravovaná instance SQL je k dispozici ve dvou úrovních služeb:
 
-- **Obecné účely** : navržené pro aplikace s typickými požadavky na výkon a I/O latence.
-- **Kritické pro podnikání** : slouží pro aplikace s požadavky na latenci v/v a minimálním dopadem na základní operace údržby na zatížení.
+- **Obecné účely**: navržené pro aplikace s typickými požadavky na výkon a I/O latence.
+- **Kritické pro podnikání**: slouží pro aplikace s požadavky na latenci v/v a minimálním dopadem na základní operace údržby na zatížení.
 
 Obě úrovně služeb zaručují 99,99% dostupnost a umožňují nezávisle vybrat velikost úložiště a výpočetní kapacitu. Další informace o architektuře vysoké dostupnosti spravované instance Azure SQL najdete v tématu [Vysoká dostupnost a Azure SQL Managed instance](../database/high-availability-sla.md).
 
@@ -156,9 +156,9 @@ Migrace zašifrované databáze do spravované instance SQL je podporována pros
 
 ## <a name="azure-active-directory-integration"></a>Integrace Azure Active Directory
 
-Spravovaná instance SQL podporuje tradiční přihlášení SQL Server databázového stroje a přihlašování do Azure AD. Objekty zabezpečení serveru Azure AD (přihlášení) ( **Public Preview** ) jsou cloudová verze místních přihlášení Azure, která používáte v místním prostředí. Objekty zabezpečení serveru Azure AD (přihlášení) umožňují zadat uživatele a skupiny z vašeho tenanta Azure AD jako pravdivé objekty v rozsahu instance, které mohou provádět operace na úrovni instance, včetně databázových dotazů v rámci stejné spravované instance.
+Spravovaná instance SQL podporuje tradiční přihlášení SQL Server databázového stroje a přihlašování do Azure AD. Objekty zabezpečení serveru Azure AD (přihlášení) (**Public Preview**) jsou cloudová verze místních přihlášení Azure, která používáte v místním prostředí. Objekty zabezpečení serveru Azure AD (přihlášení) umožňují zadat uživatele a skupiny z vašeho tenanta Azure AD jako pravdivé objekty v rozsahu instance, které mohou provádět operace na úrovni instance, včetně databázových dotazů v rámci stejné spravované instance.
 
-Zavádí se nová syntaxe pro vytváření objektů zabezpečení serveru Azure AD (přihlášení) **od externího poskytovatele** . Další informace o syntaxi najdete v tématu <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Vytvoření přihlášení</a>a přečtěte si článek [zřízení Azure Active Directory správce pro spravovanou instanci SQL](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) .
+Zavádí se nová syntaxe pro vytváření objektů zabezpečení serveru Azure AD (přihlášení) **od externího poskytovatele**. Další informace o syntaxi najdete v tématu <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Vytvoření přihlášení</a>a přečtěte si článek [zřízení Azure Active Directory správce pro spravovanou instanci SQL](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) .
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integrace s Azure Active Directory a vícefaktorové ověřování
 
@@ -168,10 +168,10 @@ Služba SQL Managed instance umožňuje centrálně spravovat identity uživatel
 
 Ověřování spravované instance SQL odkazuje na to, jak uživatelé při připojování k databázi prokáže jejich identitu. Spravovaná instance SQL podporuje dva typy ověřování:  
 
-- **Ověřování SQL** :
+- **Ověřování SQL**:
 
   Tato metoda ověřování používá uživatelské jméno a heslo.
-- **Ověřování Azure Active Directory** :
+- **Ověřování Azure Active Directory**:
 
   Tato metoda ověřování používá identity spravované pomocí Azure Active Directory a je podporovaná pro spravované a integrované domény. [Kdykoliv to půjde](/sql/relational-databases/security/choose-an-authentication-mode), použijte ověřování pomocí Active Directory (integrované zabezpečení).
 
@@ -181,14 +181,14 @@ Autorizace odkazuje na to, co může uživatel dělat v rámci databáze ve spra
 
 ## <a name="database-migration"></a>Migrace databáze
 
-Spravovaná instance SQL cílí na scénáře uživatelů s migrací do databáze z místních nebo IaaSch databázových implementací. Spravovaná instance SQL podporuje několik možností migrace databáze:
+Spravovaná instance SQL cílí na scénáře uživatelů s migrací do databáze z místních nebo IaaSch databázových implementací. Spravovaná instance SQL podporuje několik možností migrace databáze popsaných v příručkách pro migraci. Další informace najdete v tématu [Přehled migrace: SQL Server do spravované instance Azure SQL](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md) .
 
 ### <a name="backup-and-restore"></a>Zálohování a obnovení  
 
 Přístup k migraci využívá zálohy SQL do úložiště objektů BLOB v Azure. Zálohy uložené v objektu BLOB služby Azure Storage je možné přímo obnovit do spravované instance pomocí [příkazu T-SQL Restore](/sql/t-sql/statements/restore-statements-transact-sql?preserve-view=true&view=azuresqldb-mi-current).
 
 - Základní informace o tom, jak obnovit World World Importers – soubor zálohy Standard, najdete v tématu [obnovení záložního souboru do spravované instance](restore-sample-database-quickstart.md). V tomto rychlém startu se dozvíte, že musíte nahrát záložní soubor do úložiště objektů BLOB v Azure a zabezpečit ho pomocí klíče sdíleného přístupového podpisu (SAS).
-- Informace o obnovení z adresy URL najdete v tématu [NATIVNÍ obnovení z adresy URL](migrate-to-instance-from-sql-server.md#native-restore-from-url).
+- Informace o obnovení z adresy URL najdete v tématu [NATIVNÍ obnovení z adresy URL](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md#backup-and-restore).
 
 > [!IMPORTANT]
 > Zálohy ze spravované instance lze obnovit pouze do jiné spravované instance. Nelze je obnovit do SQL Server instance nebo Azure SQL Database.

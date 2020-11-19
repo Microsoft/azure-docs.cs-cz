@@ -5,25 +5,25 @@ author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 84336051fc3d653fbe73f650f2fc2badb2ec58da
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 10c9b165041f0a4a1f09511f17bef3629353c3b2
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148939"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917524"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Zabezpečení sítě pro prostředky Azure Event Grid
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Event Grid: 
 
 - Značky služeb pro odchozí přenosy
-- Pravidla brány firewall protokolu IP pro příchozí přenosy (Preview)
+- Pravidla brány firewall protokolu IP pro příchozí přenosy
 - Soukromé koncové body pro příchozí přenosy dat
 
 
 ## <a name="service-tags"></a>Značky služeb
 Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. Další informace o značkách služby najdete v tématu [Přehled značek služeb](../virtual-network/service-tags-overview.md).
 
-Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules)   nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **AzureEventGrid**) v příslušném *zdrojovém*   nebo *cílovém*   poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
+Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **AzureEventGrid**) v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
 
 | Značka služby | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|
@@ -45,7 +45,7 @@ Pomocí [privátních koncových bodů](../private-link/private-endpoint-overvie
 Použití privátních koncových bodů pro váš prostředek Event Grid vám umožní:
 
 - Zabezpečený přístup k vašemu tématu nebo doméně ze sítě VNet přes páteřní síť Microsoftu na rozdíl od veřejného Internetu.
-- Připojte se bezpečně z místních sítí, které se připojují k virtuální síti pomocí sítě VPN nebo ExpressRoutes s privátním partnerským vztahem.
+- Připojte se bezpečně z místních sítí, které se připojují k virtuální síti pomocí sítě VPN nebo Express Routes s privátním partnerským vztahem.
 
 Když vytvoříte privátní koncový bod pro téma nebo doménu ve vaší virtuální síti, pošle se žádost o souhlas ke schválení vlastníkem prostředku. Pokud uživatel žádající o vytvoření privátního koncového bodu je zároveň vlastníkem prostředku, je tato žádost o souhlas automaticky schválena. V opačném případě je připojení v **nedokončeném** stavu, dokud není schváleno. Aplikace ve virtuální síti se můžou bez problémů připojit k Event Grid službě přes soukromý koncový bod pomocí stejných připojovacích řetězců a autorizačních mechanismů, které by jinak používaly. Vlastníci prostředků mohou spravovat žádosti o souhlas a soukromé koncové body prostřednictvím karty **privátní koncové body** pro prostředek v Azure Portal.
 
@@ -83,12 +83,12 @@ Následující tabulka popisuje různé stavy připojení privátního koncovéh
 
 | Stav připojení   |  Úspěšné publikování (ano/ne) |
 | ------------------ | -------------------------------|
-| Schválené           | Ano                            |
+| Schválené           | Yes                            |
 | Zamítnuto           | Ne                             |
 | Čekající            | Ne                             |
 | Propojení       | Ne                             |
 
-Aby publikování bylo úspěšné, měla by být **schválen**stav připojení privátního koncového bodu. Pokud se připojení odmítne, nebude možné ho schválit pomocí Azure Portal. Jedinou možností je odstranit připojení a místo toho vytvořit nový.
+Aby publikování bylo úspěšné, měla by být **schválen** stav připojení privátního koncového bodu. Pokud se připojení odmítne, nebude možné ho schválit pomocí Azure Portal. Jedinou možností je odstranit připojení a místo toho vytvořit nový.
 
 ## <a name="pricing-and-quotas"></a>Ceny a kvóty
 **Soukromé koncové body** jsou k dispozici v Event Grid úrovně Basic i Premium. Event Grid umožňuje vytvoření připojení privátního koncového bodu 64 pro každé téma nebo doménu. 

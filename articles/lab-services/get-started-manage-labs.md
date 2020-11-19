@@ -2,52 +2,27 @@
 title: Začínáme s Azure Lab Services
 description: Tento článek popisuje, jak začít s Azure Lab Services.
 ms.topic: article
-ms.date: 10/02/2020
-ms.openlocfilehash: 33e052931b0c3bd1bb1434b7eeefeed7a2a7ceab
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.date: 11/18/2020
+ms.openlocfilehash: bdc4f4af06d70a1798e7409b78f6b47530ddd7f4
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380197"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917099"
 ---
 # <a name="get-started-with-lab-services"></a>Začínáme se službami testovacího prostředí 
 
-Jako student můžete použít Azure Lab Services k přístupu ke standardnímu softwaru, který je vyžadován pro vaše programy studia na virtuálních počítačích. 
+Azure Lab Services poskytuje studentům a učitelům přístup k virtuálním počítačovým laboratořím přímo ze svých počítačů.
 
-Učitelé potřebují informace o tom, jak naučit, aby studenti využili Azure Lab Services ve svých pokynech prostřednictvím hardwaru vydaných jedním z studentů.
+Učitelé potřebují informace o tom, jak naučit studenty a rodiče využívat laboratorní služby ve svých pokynech prostřednictvím vydávaného hardwaru od jednoho k jednomu studenta. V důsledku toho studenti budou mít přístup ke standardnímu softwaru, který se vyžaduje pro své programy studia, prostřednictvím Virtual Machines (VM). 
 
-Tento článek poskytuje informace pro pedagogy, jak získat přístup, spravovat a naučit studenty, aby mohli využívat Azure Lab Services.
+Virtuální počítač je virtuální prostředí, které funguje jako virtuální počítač. Virtuální počítače mají vlastní procesor, paměť a úložiště. Virtuální počítače poskytují náhradu za skutečný počítač a můžou uživatelům udělit přístup k operačním systémům a softwaru, aniž by je museli mít na svém vlastním zařízení. Azure Lab Services poskytuje studentům Nástroj pro přístup k virtuálním počítačům a k navigaci na virtuální počítače a pro pracovníky ke správě svých virtuálních počítačových laboratoří. 
 
-## <a name="overview"></a>Přehled
+Tento článek poskytuje informace pro pedagogy, jak získat přístup, spravovat a naučit studenty/rodiče využívat Azure Lab Services.
 
-Co je virtuální počítač a jak to funguje?
+## <a name="key-concepts"></a>Klíčové koncepty
 
-Virtuální počítač (VM) je virtuální prostředí, které funguje jako virtuální počítač. Virtuální počítače mají vlastní procesor, paměť a úložiště. Virtuální počítače poskytují náhradu za skutečný počítač a můžou uživatelům udělit přístup k operačním systémům a softwaru, aniž by je museli mít na svém vlastním zařízení. Azure Lab Services poskytuje studentům Nástroj pro přístup k virtuálním počítačům a k navigaci na virtuální počítače a pro pracovníky ke správě svých virtuálních počítačových laboratoří. 
-
-Další informace najdete v tématu [vytváření a Správa učebných cvičení](how-to-manage-classroom-labs.md).
-
-## <a name="lab-dashboards"></a>Řídicí panely testovacího prostředí
-
-Řídicí panely pro učebn Labs v Azure Lab Services poskytují snímek různých aspektů konkrétního testovacího prostředí, včetně informací o virtuálním počítači, počtu přiřazených a nepřiřazených virtuálních počítačů, počtu registrovaných a neregistrovaných uživatelů a informace o plánech testovacího prostředí. 
-
-> [!NOTE]
-> I když se většina administrativních aspektů řídicího panelu a [Azure Lab Services Web](https://labs.azure.com/) bude zobrazovat učitelům, můžou oprávnění specifická pro vaši roli ovlivnit vaši možnost upravovat určitá kritéria na řídicím panelu. Pokud narazíte na problém s konkrétním nastavením testovacího prostředí, kontaktujte svého správce CTE.
-
-:::image type="content" source="./media/use-dashboard/dashboard.png" alt-text="Portál Azure Lab Services":::
-
-1. Přejděte na [web Azure Lab Services](https://labs.azure.com/)a přihlaste se.
-1. Vyberte testovací prostředí.
-1. Na levé straně okna se zobrazí **řídicí panel** . Klikněte na **řídicí panel** a na řídicím panelu se zobrazí počet dlaždic.
-1. Pod dlaždicí **náklady & fakturace** jsou také dlaždice pro šablony, fondy virtuálních počítačů, uživatele a plány, což vám umožní upravit aspekty a zobrazit další podrobnosti o prostředí učebny.
-
-    1. Šablona – popisuje datum vytvoření šablony a poslední publikování. 
-    1. Fond virtuálních počítačů – počet přiřazených a nepřiřazených virtuálních počítačů.
-    1. Uživatelé – počet registrovaných uživatelů a uživatelů, kteří byli přidáni do testovacího prostředí, ale nejsou zaregistrovaní.
-    1. Plány – zobrazí nadcházející naplánované události pro testovací prostředí a odkaz k zobrazení dalších událostí.
-
-Další informace najdete v tématu [Použití řídicího panelu](use-dashboard.md).
-
-## <a name="quota-hours"></a>Hodiny kvóty
+### <a name="quota-hours"></a>Hodiny kvóty
 
 Studenti můžou k virtuálním počítačům přistupovat kdykoli během plánovaného času třídy, aniž by to ovlivnilo jejich pracovní dobu. Hodiny jsou nastavené na celou dobu pololetí a určují počet hodin, po které student může použít svůj virtuální počítač mimo pravidelně naplánovaný čas třídy.
 
@@ -57,17 +32,42 @@ Další informace najdete v tématu [nastavení kvóty](how-to-configure-student
 
 ### <a name="automatic-shut-down"></a>Automatické vypnutí
 
-Pro zajištění snížení nákladů a úspory hodinových hodin studentů budou pro naše cvičení povolena automatická vypnutí. Automatické vypínání vypne virtuální počítače po určité době nečinnosti (žádné vstupy myši a klávesnice). Automatické vypínání funguje ve dvou fázích, první student se od virtuálního počítače po určité době nečinnosti odpojí. V tomto okamžiku je virtuální počítač stále **spuštěný** a studenti se můžou připojit. Po odpojení jiného období nečinnosti se virtuální počítač sám ukončí.
+Pro zajištění snížení nákladů a úspory hodinových hodin studentů jsou pro cvičení povoleny automatické vypnutí. Automatické vypínání vypne virtuální počítače po určité době nečinnosti (žádné vstupy myši a klávesnice). Automatické vypínání funguje ve dvou fázích, první student se od virtuálního počítače po určité době nečinnosti odpojí. V tomto okamžiku je virtuální počítač stále **spuštěný** a studenti se můžou připojit. Po odpojení jiného období nečinnosti se virtuální počítač sám ukončí.
 
-Automatické vypínání jsou důležitým nástrojem, který šetří náklady, ale prezentují výzvu pro studenty v souvislosti s ukládáním jejich práce a vykreslováním velkých souborů projektu. Pokud dojde k často odpojenému studentům, virtuální počítače se příliš rychle vypnou. Kontaktujte prosím svého správce CTE. 
+Automatické vypínání jsou důležitým nástrojem, který šetří náklady, ale prezentují výzvu pro studenty v souvislosti s ukládáním jejich práce a vykreslováním velkých souborů projektu. Pokud jsou vaši studenti často odpojeni nebo virtuální počítače jsou příliš rychle vypnuté, obraťte se na správce CTE. 
 
 Další informace najdete v tématu [Konfigurace automatického vypnutí virtuálních počítačů pro účet testovacího prostředí](how-to-configure-lab-accounts.md).
 
-## <a name="managing-virtual-machines"></a>Správa virtuálních počítačů
+### <a name="managing-virtual-machines"></a>Správa virtuálních počítačů
 
 Správa testovacího prostředí umožňuje učitelům řídit věci, jako je například kapacita testovacího prostředí (počet virtuálních počítačů dostupných pro studenty) a ruční spouštění, zastavování nebo resetování virtuálních počítačů. učitelé se taky můžou připojit k virtuálním počítačům a vyzkoušet si rozhraní studenta, přistupovat k souborům a řešit potíže se softwarem nebo samotným virtuálním počítačem.
 
-Nejdůležitějším aspektem při správě virtuálních počítačů je to, že když je počítač **spuštěný** , účtujeme vám náklady, i když k virtuálnímu počítači nikdo nepřipojí.
+Nejdůležitějším aspektem při správě virtuálních počítačů je to, že když je počítač **spuštěný**, účtujeme vám náklady, i když k virtuálnímu počítači nikdo nepřipojí.
+
+## <a name="lab-dashboards"></a>Řídicí panely testovacího prostředí
+
+### <a name="overview"></a>Přehled
+
+Řídicí panely pro učebn Labs v Azure Lab Services poskytují snímek různých aspektů konkrétního testovacího prostředí, včetně informací o virtuálním počítači, počtu přiřazených a nepřiřazených virtuálních počítačů, počtu registrovaných a neregistrovaných uživatelů a informace o plánech testovacího prostředí. 
+
+> [!NOTE]
+> I když se většina administrativních aspektů řídicího panelu a [Azure Lab Services Web](https://labs.azure.com/) bude zobrazovat učitelům, můžou oprávnění specifická pro vaši roli ovlivnit vaši možnost upravovat určitá kritéria na řídicím panelu. Pokud narazíte na problém s konkrétním nastavením testovacího prostředí, kontaktujte svého správce CTE.
+
+:::image type="content" source="./media/use-dashboard/dashboard.png" alt-text="Portál Azure Lab Services":::
+
+### <a name="examine-a-dashboard"></a>Kontrola řídicího panelu
+
+1. Přejděte na [web Azure Lab Services](https://labs.azure.com/)a přihlaste se.
+1. Vyberte testovací prostředí.
+1. Na levé straně okna se zobrazí **řídicí panel** . Klikněte na **řídicí panel** a na řídicím panelu se zobrazí počet dlaždic.
+1. Pod dlaždicí **náklady & fakturace** jsou také dlaždice pro šablony, fondy virtuálních počítačů, uživatele a plány, což vám umožní upravit aspekty a zobrazit další podrobnosti o prostředí učebny.
+
+    * Šablona – popisuje datum vytvoření šablony a poslední publikování. 
+    * Fond virtuálních počítačů – počet přiřazených a nepřiřazených virtuálních počítačů.
+    * Uživatelé – počet registrovaných uživatelů a uživatelů, kteří byli přidáni do testovacího prostředí, ale nejsou zaregistrovaní.
+    * Plány – zobrazí nadcházející naplánované události pro testovací prostředí a odkaz k zobrazení dalších událostí.
+
+Další informace najdete v tématu [Použití řídicího panelu](use-dashboard.md).
 
 ### <a name="manually-starting-vms"></a>Ruční spouštění virtuálních počítačů
 
@@ -98,7 +98,7 @@ Pokud má student problémy s připojením k virtuálnímu počítači nebo je p
     > [!NOTE]
     > Zapnutím virtuálního počítače studenta nebude mít vliv na kvótu studenta. Kvóty pro uživatele určují počet hodin testovacího prostředí uživatele mimo plánovaný čas třídy.
 
-### <a name="connect-to-virtual-machines"></a>Připojení k Virtual Machines
+### <a name="connect-to-vms"></a>Připojení k virtuálním počítačům
 
 Učitelé se můžou připojit k virtuálnímu počítači studenta, pokud je zapnutý a student není připojený k virtuálnímu počítači. Připojením k virtuálnímu počítači budete mít přístup k místním souborům na virtuálním počítači a pomůžete studentům řešit problémy.
 
@@ -107,7 +107,7 @@ Učitelé se můžou připojit k virtuálnímu počítači studenta, pokud je za
 
 :::image type="content" source="./media/how-to-set-virtual-machine-passwords/connect-student-vm.png" alt-text="Tlačítko připojit k virtuálnímu počítači studenta":::
 
-## <a name="add-and-manage-lab-users"></a>Přidání a správa uživatelů testovacího prostředí
+## <a name="manage-users-in-a-lab"></a>Správa uživatelů v testovacím prostředí
 
 Učitelé můžou přidat uživatele studenta do testovacího prostředí a monitorovat své hodinové kvóty. 
 
@@ -123,7 +123,7 @@ Učitelé můžou přidat uživatele studenta do testovacího prostředí a moni
     :::image type="content" source="./media/get-started-manage-labs/add-students.png" alt-text="Přidání studentů do testovacího prostředí":::
 1. Seznam uživatelů se teď bude aktualizovat s e-maily, stavem, pozvánkou a hodinovou kvótou.
 
-    Po registraci studentů pro testovací prostředí se jejich názvy aktualizují s křestními jmény a příjmeními z adresáře MPS.
+    Po registraci studentů pro testovací prostředí se jejich názvy aktualizují s křestními jmény a příjmeními z Azure Active Directory.
 
     > [!NOTE]
     > Pro uživatele nechejte zapnutý přepínač omezit přístup. To znamená, že se do testovacího prostředí můžou zaregistrovat jenom uživatelé, kteří si vypíšete pomocí registračního odkazu, který odešlete.
@@ -144,7 +144,7 @@ Uživatele můžete také přidat tak, že nahrajete soubor CSV, který obsahuje
 
 ### <a name="register-users"></a>Registrovat uživatele
 
-Po přidání do testovacího prostředí se uživatelé budou muset zaregistrovat, aby mohli přistupovat k virtuálním počítačům. To se dá udělat buď pozváním uživatelů na portálu webových služeb Azure, což vám pošle e-mail s odkazem na registraci testovacího prostředí. Nebo zkopírováním a vložením odkazu na registraci do e-mailu nebo jiné formy komunikace s studenty.
+Po přidání do testovacího prostředí se uživatelé budou muset zaregistrovat, aby mohli přistupovat k virtuálním počítačům. To se dá udělat buď pozváním uživatelů z portálu, a pošle vám e-mail s odkazem na registraci testovacího prostředí. Nebo zkopírováním a vložením odkazu na registraci do e-mailu nebo jiné formy komunikace s studenty.
 
 1. Na stránce **Uživatelé** vyberte studenta nebo více studentů v seznamu.
 
@@ -164,7 +164,7 @@ Po přidání do testovacího prostředí se uživatelé budou muset zaregistrov
     
     :::image type="content" source="./media/get-started-manage-labs/user-registration.png" alt-text="Odeslat registraci uživatele":::
 
-Po pozvaní uživatelů prostřednictvím Azure Portal nebo sdílení odkazu budete moci monitorovat, kteří uživatelé se úspěšně zaregistrovali na stránce **Uživatelé** ve sloupci **stav** . 
+Poté, co jste pozvaní uživatelé nebo nasdíleli odkaz, budete moci monitorovat, kteří uživatelé se úspěšně zaregistrovali na stránce **Uživatelé** ve sloupci **stav** . 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

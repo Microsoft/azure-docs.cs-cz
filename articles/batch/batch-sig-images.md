@@ -4,12 +4,12 @@ description: Vlastní fondy imagí představují účinný způsob konfigurace v
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f0ba6270e6b6b4fcd258d8f5b3668931706f95b5
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c24da435540f62a793620fe6005d176ce10c7b05
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888347"
+ms.locfileid: "94917779"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 
@@ -33,7 +33,7 @@ Použití sdílené bitové kopie nakonfigurované pro váš scénář může m�
 - **Lepší výkon než použití jenom spravované Image jako vlastní image.** U vlastního fondu imagí sdílené Image je čas na dosažení stabilního stavu rychlejší až 25% a latence nečinnosti virtuálního počítače je kratší než 30%.
 - **Správa verzí obrázků a seskupování pro snadnější správu.** Definice seskupení imagí obsahuje informace o tom, proč se image vytvořila, v jakém operačním systému je, a informace o použití image. Seskupení imagí umožňuje snazší správu imagí. Další informace najdete v tématu [definice imagí](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!NOTE]
 > Musíte se ověřit pomocí Azure AD. Pokud používáte ověřování Shared-Key-Authentication, zobrazí se chyba ověřování.  
@@ -73,6 +73,7 @@ Pokud vytváříte nový virtuální počítač pro bitovou kopii, použijte jak
 - Do virtuálního počítače neinstalujte rozšíření Azure, jako je například rozšíření vlastních skriptů. Pokud image obsahuje předem nainstalovanou příponu, může Azure narazit na problémy při nasazování fondu služby Batch.
 - Pokud používáte připojené datové disky, musíte je připojit a naformátovat na virtuálním počítači, aby je bylo možné použít.
 - Ujistěte se, že základní bitová kopie operačního systému, kterou zadáte, používá výchozí dočasnou jednotku. Agent uzlu dávky aktuálně očekává výchozí dočasnou jednotku.
+- Ujistěte se, že disk s operačním systémem není zašifrovaný.
 - Jakmile je virtuální počítač spuštěný, připojte se k němu přes RDP (pro Windows) nebo SSH (pro Linux). Nainstalujte potřebný software nebo zkopírujte požadovaná data.  
 
 ### <a name="create-a-vm-snapshot"></a>Vytvoření snímku virtuálního počítače

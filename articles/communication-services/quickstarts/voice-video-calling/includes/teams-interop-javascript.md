@@ -5,17 +5,17 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 0559a9b763d273579373bb57922606f14ff6e6db
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ab13e02c9154dbfc1bd28872f1bd6f993019a604
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94573994"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915383"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 - Funkční [komunikační služba volá aplikaci](../getting-started-with-calling.md).
-- [Nasazení týmů](https://docs.microsoft.com/deployoffice/teams-install).
+- [Nasazení týmů](/deployoffice/teams-install).
 
 ## <a name="enable-teams-interoperability"></a>Povolit interoperabilitu týmů
 
@@ -98,7 +98,7 @@ meetingButton.addEventListener("click", () => {
 
 ## <a name="get-the-meeting-context"></a>Získat kontext schůzky
 
-Kontext týmů lze načíst pomocí rozhraní Graph API. Tato část je podrobně popsána v [dokumentaci ke grafům](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?view=graph-rest-beta&tabs=http).
+Kontext týmů lze načíst pomocí rozhraní Graph API. Tato část je podrobně popsána v [dokumentaci ke grafům](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
 
 Požadované informace o schůzce můžete také získat z adresy URL **připojení schůzky** v samotném pozvání schůzky.
 
@@ -115,4 +115,3 @@ Otevřete prohlížeč a přejděte na http://localhost:8080/ . Měli byste vid�
 :::image type="content" source="../media/javascript/calling-javascript-app.png" alt-text="Snímek obrazovky dokončené aplikace JavaScriptu":::
 
 Do textového pole vložte kontext týmů a stiskněte *připojit týmy schůzky* , aby se připojili k týmům, které se nacházejí v rámci vaší aplikace komunikační služby.
-

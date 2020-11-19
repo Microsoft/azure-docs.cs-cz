@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: cac14687c6193d58069240529955e69fc680b2e8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 503d3d5ed9b099e01a88ee40ef80e88105beb340
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491813"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917728"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,26 +41,48 @@ Propustnost můžete zřídit na úrovni kontejneru nebo databáze na úrovni je
 > [!NOTE]
 > Další informace o osvědčených postupech pro správu úloh, které mají klíče oddílů vyžadující vyšší limity pro úložiště nebo propustnost, najdete v tématu [Vytvoření syntetického klíče oddílu](synthetic-partition-keys.md).
 
-Cosmos kontejner (nebo sdílená databáze propustnosti) musí mít minimální propustnost 400 RU/s. Při zvětšování kontejneru závisí minimální podporovaná propustnost i na následujících faktorech:
+### <a name="minimum-throughput-limits"></a>Minimální limity propustnosti
 
-* Maximální propustnost, která byla v kontejneru trvale zřízena. Pokud se například propustnost zvýšila na 50 000 RU/s, pak nejnižší možná zajištěná propustnost bude 500 RU/s.
-* Aktuální úložiště v GB v kontejneru. Pokud má váš kontejner například 100 GB úložiště, bude nejnižší možná zajištěná propustnost 1000 RU/s. **Poznámka:** Pokud Váš kontejner nebo databáze obsahuje více než 1 TB dat, může mít váš účet nárok na náš [program "vysokorychlostní úložiště/nízká propustnost"](set-throughput.md#high-storage-low-throughput-program).
-* Minimální propustnost ve sdílené databázi propustnosti také závisí na celkovém počtu kontejnerů, které jste dříve vytvořili ve sdílené databázi propustnosti, měřeno v 100 RU/s na jeden kontejner. Pokud jste například vytvořili pět kontejnerů v rámci sdílené databáze propustnosti, musí být propustnost alespoň 500 RU/s.
+Cosmos kontejner (nebo sdílená databáze propustnosti) musí mít minimální propustnost 400 RU/s. Při zvětšování kontejneru Cosmos DB vyžaduje minimální propustnost, aby bylo zajištěno, že databáze nebo kontejner mají dostatek prostředků na jeho provoz.
 
 Aktuální a minimální propustnost kontejneru nebo databáze lze načíst z Azure Portal nebo sad SDK. Další informace najdete v tématu [zřízení propustnosti u kontejnerů a databází](set-throughput.md). 
 
-> [!NOTE]
-> V některých případech může být možné snížit propustnost na méně než 10%. Použijte rozhraní API k získání přesného minima ru na kontejner.
+Skutečné minimální RU/s se může lišit v závislosti na konfiguraci vašeho účtu. Pomocí [Azure monitor metrik](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) můžete zobrazit historii zřízené propustnosti (ru/s) a úložiště v prostředku. 
+
+#### <a name="minimum-throughput-on-container"></a>Minimální propustnost na kontejneru 
+
+Pokud chcete odhadnout minimální propustnost vyžadovanou kontejnerem s ruční propustností, najděte maximum z těchto hodnot:
+
+* 400 RU/s 
+* Aktuální úložiště v GB × 10 RU/s
+* Nejvyšší RU/s zřízené na kontejneru/100
+
+Příklad: Předpokládejme, že máte zřízen kontejner s 400 RU/s a úložištěm 0 GB. Zvýšíte propustnost na 50 000 RU/s a naimportujete 20 GB dat. Minimální RU/s je teď `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 ru/s. V průběhu času se úložiště zvětšuje na 200 GB. Minimální RU/s je teď `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 ru/s. 
+
+**Poznámka:** Pokud Váš kontejner nebo databáze obsahuje více než 1 TB dat, může mít váš účet nárok na náš [program "vysokorychlostní úložiště/nízká propustnost"](set-throughput.md#high-storage-low-throughput-program).
+
+#### <a name="minimum-throughput-on-shared-throughput-database"></a>Minimální propustnost u sdílené databáze propustnosti 
+Pokud chcete odhadnout minimální propustnost vyžadovanou pro sdílenou databázi propustnosti s ruční propustností, najděte maximum z těchto hodnot:
+
+* 400 RU/s 
+* Aktuální úložiště v GB × 10 RU/s
+* Nejvyšší RU/s zřízené v databázi/100
+* 400 + MAX (počet kontejnerů: 25, 0) × 100 RU/s
+
+Příklad: Předpokládejme, že máte zřízenou databázi s 400 RU/s, 15 GB úložiště a 10 kontejnery. Minimální RU/s je `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Pokud v databázi existovalo 30 kontejnerů, minimální RU/s by byla `400 + MAX(30 - 5, 0) * 100 RU/s` = 900 ru/s. 
+
+**Poznámka:** Pokud Váš kontejner nebo databáze obsahuje více než 1 TB dat, může mít váš účet nárok na náš [program "vysokorychlostní úložiště/nízká propustnost"](set-throughput.md#high-storage-low-throughput-program).
 
 V části Souhrn jsou zde uvedená minimální omezení pro podávání RU. 
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Minimální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimální počet ru na databázi ([zřízený režim sdílené propustnosti](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimální počet ru na kontejner v rámci sdílené databáze propustnosti | 100 |
+| Minimální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimální počet ru na databázi ([zřízený režim sdílené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 400 RU/s pro prvních 25 kontejnerů. Další 100 RU/s pro každý kontejner následně. |
 
-Cosmos DB podporuje Elastické škálování propustnosti (ru) na kontejner nebo databázi prostřednictvím sad SDK nebo portálu. Každý kontejner se může synchronně a hned škálovat v rozmezí od 10 do 100 časů mezi minimální a maximální hodnotou. Pokud je požadovaná hodnota propustnosti mimo rozsah, škálování se provádí asynchronně. Asynchronní škálování může trvat několik minut, než se dokončí v závislosti na požadované propustnosti a velikosti úložiště dat v kontejneru.  
+Cosmos DB podporuje programové škálování propustnosti (RU/s) na kontejner nebo databázi prostřednictvím sad SDK nebo portálu.    
+
+V závislosti na aktuálních nastaveních a prostředcích s plánem RU/s se může každý prostředek škálovat synchronně a hned za minimálních RU/s až po minimální RU/s. Pokud je požadovaná hodnota propustnosti mimo rozsah, škálování se provádí asynchronně. Asynchronní škálování může trvat několik minut, než se dokončí v závislosti na požadované propustnosti a velikosti úložiště dat v kontejneru.  
 
 ### <a name="serverless"></a>Bez serveru
 
@@ -172,9 +194,9 @@ Azure Cosmos DB udržuje systémová metadata pro každý účet. Tato metadata 
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-|Maximální počet vytvoření kolekce za minutu| 5|
-|Maximální počet vytvoření databáze za minutu|   5|
-|Maximální zajištěná četnost aktualizací propustnosti za minutu| 5|
+|Maximální počet vytvoření kolekce za minutu|    5|
+|Maximální počet vytvoření databáze za minutu|    5|
+|Maximální zajištěná četnost aktualizací propustnosti za minutu|    5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Omezení pro zřízenou propustnost automatického škálování
 

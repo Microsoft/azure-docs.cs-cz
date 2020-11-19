@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: d889b7dabc5d97a36f8b12bcff90cf3ad2069fb7
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: a9af249aac18c847bf353f22b23ee67ab6e264c4
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92082107"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915198"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,22 +26,22 @@ V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobr
 
 :::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Snímek obrazovky s oknem pro vytvoření nového projektu v rámci Xcode.":::
 
-### <a name="install-the-package"></a>Instalace balíčku
+### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Instalace balíčku a závislostí pomocí CocoaPods
 
-Přidejte do svého projektu komunikační služby Azure s voláním klientské knihovny a jejích závislostí (AzureCore. Framework a AzureCommunication. Framework).
+1. Vytvořte souboru podfile pro vaši aplikaci takto:
 
-> [!NOTE]
-> S vydáním sady AzureCommunicationCalling SDK najdete skript bash `BuildAzurePackages.sh` . Skript při spuštění vám `sh ./BuildAzurePackages.sh` poskytne cestu k vygenerovaným balíčkům rozhraní, které je třeba importovat do ukázkové aplikace v dalším kroku. Všimněte si, že budete muset nastavit nástroje příkazového řádku Xcode, pokud jste to ještě neudělali předtím, než spustíte skript: Spusťte Xcode, vyberte Předvolby-> umístění. Vyberte verzi Xcode pro nástroje příkazového řádku. **Všimněte si, že skript BuildAzurePackages.sh funguje jenom s Xcode 11,5 a novějším.**
+   ```
+   platform :ios, '13.0'
+   use_frameworks!
+   target 'AzureCommunicationCallingSample' do
+     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.5'
+     pod 'AzureCommunication', '~> 1.0.0-beta.5'
+     pod 'AzureCore', '~> 1.0.0-beta.5'
+   end
+   ```
 
-1. Stáhněte si službu Azure Communications Calling Client Library pro iOS.
-2. V Xcode klikněte na soubor projektu na a vyberte cíl sestavení a otevřete tak editor nastavení projektu.
-3. Na kartě **Obecné** přejděte do části **rámce, knihovny a vložený obsah** a klikněte na ikonu **"+"** .
-4. V levém dolním rohu dialogového okna zvolte možnost **Přidat soubory**, přejděte do adresáře **AzureCommunicationCalling. Framework** balíčku klientské knihovny nástroje unzip.
-    1. Opakujte poslední krok pro přidání rozhraní **AzureCore. Framework** a **AzureCommunication. Framework**.
-5. Otevřete kartu **nastavení sestavení** v editoru nastavení projektu a přejděte k části **cesty hledání** . Přidá novou položku **cest hledání architektury** pro adresář obsahující rozhraní **AzureCommunicationCalling. Framework**.
-    1. Přidejte jinou položku cest hledání architektury ukazující na složku, která obsahuje závislosti.
-
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Snímek obrazovky s oknem pro vytvoření nového projektu v rámci Xcode.":::
+2. Spusťte `pod install`.
+3. Otevřete `.xcworkspace` s Xcode.
 
 ### <a name="request-access-to-the-microphone"></a>Požádat o přístup k mikrofonu
 
@@ -110,9 +110,9 @@ Předat objekt CommunicationUserCredential, který je vytvořený výše, do ACS
 
 ```swift
 
-callClient = ACSCallClient()
-callClient?.createCallAgent(userCredential!,
-    withCompletionHandler: { (callAgent, error) in
+callClient = CallClient()
+callClient?.createCallAgent(with: userCredential!,
+    completionHandler: { (callAgent, error) in
         if error == nil {
             print("Create agent succeeded")
             self.callAgent = callAgent
@@ -134,7 +134,7 @@ Vytvoření a spuštění volání je synchronní. Zobrazí se instance volání
 ```swift
 
 let callees = [CommunicationUser(identifier: 'acsUserId')]
-let oneToOneCall = self.CallingApp.callAgent.call(participants: callees, options: ACSStartCallOptions())
+let oneToOneCall = self.callAgent.call(participants: callees, options: StartCallOptions())
 
 ```
 
@@ -144,7 +144,7 @@ Chcete-li umístit volání do veřejné telefonní sítě, musíte zadat telefo
 
 let pstnCallee = PhoneNumber('+1999999999')
 let callee = CommunicationUser(identifier: 'acsUserId')
-let groupCall = self.CallingApp.callAgent.call(participants: [pstnCallee, callee], options: ACSStartCallOptions())
+let groupCall = self.callAgent.call(participants: [pstnCallee, callee], options: StartCallOptions())
 
 ```
 
@@ -154,14 +154,14 @@ Pokud chcete získat instanci správce zařízení, přečtěte si [tady](#devic
 ```swift
 
 let camera = self.deviceManager!.getCameraList()![0]
-let localVideoStream = ACSLocalVideoStream(camera)
-let videoOptions = ACSVideoOptions(localVideoStream)
+let localVideoStream = LocalVideoStream(camera: camera)
+let videoOptions = VideoOptions(localVideoStream: localVideoStream)
 
-let startCallOptions = ACSStartCallOptions()
+let startCallOptions = StartCallOptions()
 startCallOptions?.videoOptions = videoOptions
 
 let callee = CommunicationUser(identifier: 'acsUserId')
-let call = self.callAgent?.call([callee], options: startCallOptions)
+let call = self.callAgent?.call(participants: [callee], options: startCallOptions)
 
 ```
 
@@ -170,9 +170,9 @@ Pokud se chcete připojit k volání, musíte zavolat jedno z rozhraní API na *
 
 ```swift
 
-let groupCallContext = ACSGroupCallContext()
+let groupCallContext = GroupCallContext()
 groupCallContext?.groupId = UUID(uuidString: "uuid_string")!
-let call = self.callAgent?.join(with: groupCallContext, joinCallOptions: ACSJoinCallOptions())
+let call = self.callAgent?.join(with: groupCallContext, joinCallOptions: JoinCallOptions())
 
 ```
 
@@ -186,7 +186,7 @@ Mobilní nabízené oznámení je místní oznámení, které se zobrazí v mobi
 - Krok 2: Xcode-> podepisování možností & – > přidání možnosti – > režimy na pozadí
 - Krok 3: "režimy na pozadí" – > vybrat "Voice over IP" a "Vzdálená oznámení"
 
-:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Snímek obrazovky s oknem pro vytvoření nového projektu v rámci Xcode." lightbox="../media/ios/xcode-push-notification.png":::
+:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Snímek obrazovky, který ukazuje, jak přidat funkce v Xcode." lightbox="../media/ios/xcode-push-notification.png":::
 
 #### <a name="register-for-push-notifications"></a>Registrace nabízených oznámení
 
@@ -198,8 +198,8 @@ Zaregistrujte se na nabízená oznámení, která se musí volat po úspěšné 
 ```swift
 
 let deviceToken: Data = pushRegistry?.pushToken(for: PKPushType.voIP)
-callAgent.registerPushNotifications(deviceToken,
-                withCompletionHandler: { (error) in
+callAgent.registerPushNotifications(deviceToken: deviceToken,
+                completionHandler: { (error) in
     if(error == nil) {
         print("Successfully registered to push notification.")
     } else {
@@ -215,7 +215,7 @@ Aby bylo možné přijímat příchozí volání nabízených oznámení, zavole
 ```swift
 
 let dictionaryPayload = pushPayload?.dictionaryPayload
-callAgent.handlePushNotification(dictionaryPayload, withCompletionHandler: { (error) in
+callAgent.handlePushNotification(payload: dictionaryPayload, completionHandler: { (error) in
     if (error != nil) {
         print("Handling of push notification failed")
     } else {
@@ -251,7 +251,7 @@ Během volání můžete provádět různé operace ke správě nastavení souvi
 Chcete-li ztlumit nebo zrušit ztlumení místního koncového bodu, můžete použít `mute` `unmute` asynchronní rozhraní API a:
 
 ```swift
-call.mute(completionHandler: { (error) in
+call!.mute(completionHandler: { (error) in
     if error == nil {
         print("Successfully muted")
     } else {
@@ -264,7 +264,7 @@ call.mute(completionHandler: { (error) in
 Asynchronně Místní ztlumení
 
 ```swift
-call.unmute(completionHandler:{ (error) in
+call!.unmute(completionHandler:{ (error) in
     if error == nil {
         print("Successfully un-muted")
     } else {
@@ -279,10 +279,10 @@ Pokud chcete začít odesílat místní video jiným účastníkům ve volání,
 
 ```swift
 
-let firstCamera: ACSVideoDeviceInfo? = self.deviceManager?.getCameraList()![0]
-let localVideoStream = ACSLocalVideoStream(firstCamera)
+let firstCamera: VideoDeviceInfo? = self.deviceManager?.getCameraList()![0]
+let localVideoStream = LocalVideoStream(camera: firstCamera)
 
-call.startVideo(localVideoStream) { (error) in
+call!.startVideo(stream: localVideoStream) { (error) in
     if (error == nil) {
         print("Local video started successfully")
     }
@@ -305,11 +305,10 @@ Asynchronně Pokud chcete zastavit místní video, předejte `localVideoStream` 
 
 ```swift
 
-call.stopVideo(localVideoStream,{ (error) in
+call!.stopVideo(stream: localVideoStream) { (error) in
     if (error == nil) {
         print("Local video stopped successfully")
-    }
-    else {
+    } else {
         print("Local video failed to stop")
     }
 }
@@ -361,7 +360,7 @@ Chcete-li přidat účastníka do volání (buď uživatele, nebo telefonní č�
 
 ```swift
 
-let remoteParticipantAdded: ACSRemoteParticipant = call.addParticipant(CommunicationUser(identifier: "userId"))
+let remoteParticipantAdded: RemoteParticipant = call.add(participant: CommunicationUser(identifier: "userId"))
 
 ```
 
@@ -370,7 +369,7 @@ Chcete-li odebrat účastníka z volání (buď uživatele, nebo telefonní čí
 
 ```swift
 
-call!.remove(remoteParticipantAdded) { (error) in
+call!.remove(participant: remoteParticipantAdded) { (error) in
     if (error == nil) {
         print("Successfully removed participant")
     } else {
@@ -398,7 +397,7 @@ var remoteParticipantVideoStream = call.remoteParticipants[0].videoStreams[0]
 
 ```swift
 
-var type: ACSMediaStreamType = remoteParticipantVideoStream.type // 'ACSMediaStreamTypeVideo'
+var type: MediaStreamType = remoteParticipantVideoStream.type // 'ACSMediaStreamTypeVideo'
 
 var isAvailable: Bool = remoteParticipantVideoStream.isAvailable // indicates if remote stream is available
 
@@ -412,10 +411,10 @@ Zahájení vykreslování vzdálených proudů účastníků:
 
 ```swift
 
-let renderer: ACSRenderer? = ACSRenderer(remoteVideoStream: remoteParticipantVideoStream)
-let targetRemoteParticipantView: ACSRendererView? = renderer?.createView(ACSRenderingOptions(ACSScalingMode.crop))
+let renderer: Renderer? = Renderer(remoteVideoStream: remoteParticipantVideoStream)
+let targetRemoteParticipantView: RendererView? = renderer?.createView(with: RenderingOptions(scalingMode: ScalingMode.crop))
 // To update the scaling mode later
-targetRemoteParticipantView.update(ACSScalingMode.fit)
+targetRemoteParticipantView.update(scalingMode: ScalingMode.fit)
 
 ```
 
@@ -466,11 +465,11 @@ Správce zařízení umožňuje nastavit výchozí zařízení, které se použi
 // get first microphone
 var firstMicrophone = self.deviceManager!.getMicrophoneList()![0]
 // [Synchronous] set microphone
-deviceManager.setMicrophone(ACSAudioDeviceInfo())
+deviceManager.setMicrophone(microphoneDevice: firstMicrophone)
 // get first speaker
 var firstSpeaker = self.deviceManager!.getSpeakerList()![0]
 // [Synchronous] set speaker
-deviceManager.setSpeakers(ACSAudioDeviceInfo())
+deviceManager.setSpeaker(speakerDevice: firstSpeaker)
 ```
 
 ### <a name="local-camera-preview"></a>Místní kamera verze Preview
@@ -479,10 +478,10 @@ Můžete použít `ACSRenderer` k zahájení vykreslování datového proudu z m
 
 ```swift
 
-let camera: ACSVideoDeviceInfo = self.deviceManager!.getCameraList()![0]
-let localVideoStream: ACSLocalVideoStream = ACSLocalVideoStream(camera)
-let renderer: ACSRenderer = ACSRenderer(localVideoStream: localVideoStream)
-self.view = renderer!.createView(ACSRenderingOptions())
+let camera: VideoDeviceInfo = self.deviceManager!.getCameraList()![0]
+let localVideoStream: LocalVideoStream = LocalVideoStream(camera: camera)
+let renderer: Renderer = Renderer(localVideoStream: localVideoStream)
+self.view = renderer!.createView()
 
 ```
 
@@ -493,8 +492,8 @@ Zobrazovací jednotka má sadu vlastností a metod, které umožňují řídit v
 ```swift
 
 // Constructor can take in ACSLocalVideoStream or ACSRemoteVideoStream
-let localRenderer = ACSRenderer(localVideoStream:localVideoStream)
-let remoteRenderer = ACSRenderer(remoteVideoStream:remoteVideoStream)
+let localRenderer = Renderer(localVideoStream:localVideoStream)
+let remoteRenderer = Renderer(remoteVideoStream:remoteVideoStream)
 
 // [ACSStreamSize] size of the rendering view
 localRenderer.size
@@ -502,8 +501,12 @@ localRenderer.size
 // [ACSRendererDelegate] an object you provide to receive events from this ACSRenderer instance
 localRenderer.delegate
 
+// [Synchronous] create view
+try! localRenderer.createView()
+
 // [Synchronous] create view with rendering options
-localRenderer.createView(options:ACSRenderingOptions())
+try! localRenderer.createView(with: RenderingOptions(scalingMode: ScalingMode.fit))
+
 // [Synchronous] dispose rendering view
 localRenderer.dispose()
 
@@ -519,8 +522,8 @@ Přihlášení k odběru `property changed` událostí:
 ```swift
 call.delegate = self
 // Get the property of the call state by doing get on the call's state member
-public func onCallStateChanged(_ call: ACSCall!,
-                               _ args: ACSPropertyChangedEventArgs!)
+public func onCallStateChanged(_ call: Call!,
+                               args: PropertyChangedEventArgs!)
 {
     print("Callback from SDK when the call state changes, current state: " + call.state.rawValue)
 }
@@ -536,8 +539,8 @@ Přihlášení k odběru `collection updated` událostí:
 ```swift
 call.delegate = self
 // Collection contains the streams that were added or removed only
-public func onLocalVideoStreamsChanged(_ call: ACSCall!,
-                                       _ args: ACSLocalVideoStreamsUpdatedEventArgs!)
+public func onLocalVideoStreamsChanged(_ call: Call!,
+                                       args: LocalVideoStreamsUpdatedEventArgs!)
 {
     print(args.addedStreams.count)
     print(args.removedStreams.count)

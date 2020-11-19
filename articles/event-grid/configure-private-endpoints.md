@@ -2,14 +2,14 @@
 title: Konfigurace privátních koncových bodů pro Azure Event Grid témata nebo domény
 description: Tento článek popisuje, jak nakonfigurovat soukromé koncové body pro Azure Event Grid témata nebo doménu.
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 11/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8e0cfc0a850ae15ea6d03ff6ca8b90003adbfc9
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324140"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916936"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Konfigurace privátních koncových bodů pro Azure Event Grid témata nebo domény
 Pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md) můžete v případě, že chcete přijímat události přímo z vaší virtuální sítě, zabezpečit vaše témata a domény přes [privátní propojení](../private-link/private-link-overview.md) , aniž byste museli procházet veřejným internetem. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro vaše téma nebo doménu. Další koncepční informace najdete v tématu [zabezpečení sítě](network-security.md).
@@ -31,23 +31,23 @@ V této části se dozvíte, jak použít Azure Portal k vytvoření privátníh
     2. Vyberte **skupinu prostředků Azure** pro privátní koncový bod. 
     3. Zadejte **název** koncového bodu. 
     4. Vyberte **oblast** pro koncový bod. Váš privátní koncový bod musí být ve stejné oblasti jako vaše virtuální síť, ale může v jiné oblasti než prostředek privátního odkazu (v tomto příkladu téma Event gridu). 
-    5. Potom v dolní části stránky vyberte tlačítko **Další: >prostředku ** . 
+    5. Potom v dolní části stránky vyberte tlačítko **Další: >prostředku** . 
 
       ![Stránka základy privátního koncového bodu](./media/configure-private-endpoints/basics-page.png)
 3. Na stránce **prostředek** použijte následující postup: 
-    1. V případě metody připojení vyberte **v adresáři připojit k prostředku Azure**a postupujte podle těchto kroků. Tento příklad ukazuje, jak se připojit k prostředku Azure ve vašem adresáři. 
+    1. V případě metody připojení vyberte **v adresáři připojit k prostředku Azure** a postupujte podle těchto kroků. Tento příklad ukazuje, jak se připojit k prostředku Azure ve vašem adresáři. 
         1. Vyberte **předplatné Azure** , ve kterém existuje vaše **téma nebo doména** . 
-        1. V části **typ prostředku**vyberte **Microsoft. EventGrid/témata** nebo **Microsoft. EventGrid/domény** pro **typ prostředku**.
-        2. V části **prostředek**vyberte v rozevíracím seznamu téma/doména. 
+        1. V části **typ prostředku** vyberte **Microsoft. EventGrid/témata** nebo **Microsoft. EventGrid/domény** pro **typ prostředku**.
+        2. V části **prostředek** vyberte v rozevíracím seznamu téma/doména. 
         3. Potvrďte, že je **cílový podprostředek** nastavený na **téma** nebo **doménu** (na základě vybraného typu prostředku).    
-        4. V dolní části stránky vyberte tlačítko **Další: >konfigurace ** . 
+        4. V dolní části stránky vyberte tlačítko **Další: >konfigurace** . 
 
             ![Snímek obrazovky se stránkou vytvořit privátní koncový bod – prostředek](./media/configure-private-endpoints/resource-page.png)
     2. Pokud vyberete **připojit k prostředku pomocí ID prostředku nebo aliasu**, postupujte podle následujících kroků:
-        1. Zadejte ID prostředku. Například: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
-        2. Jako **prostředek**zadejte **téma** nebo **doména**. 
+        1. Zadejte ID prostředku. Příklad: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
+        2. Jako **prostředek** zadejte **téma** nebo **doména**. 
         3. volitelné Přidejte zprávu požadavku. 
-        4. V dolní části stránky vyberte tlačítko **Další: >konfigurace ** . 
+        4. V dolní části stránky vyberte tlačítko **Další: >konfigurace** . 
 
             ![Privátní koncový bod – stránka prostředků](./media/configure-private-endpoints/connect-azure-resource-id.png)
 4. Na stránce **Konfigurace** vyberte podsíť ve virtuální síti, do které chcete nasadit privátní koncový bod. 
@@ -57,7 +57,7 @@ V této části se dozvíte, jak použít Azure Portal k vytvoření privátníh
 
     ![Soukromý koncový bod – konfigurační stránka](./media/configure-private-endpoints/configuration-page.png)
 5. Na stránce **značky** vytvořte všechny značky (názvy a hodnoty), které chcete přidružit k prostředku privátního koncového bodu. Potom v dolní části stránky vyberte tlačítko **Revize + vytvořit** . 
-6. Na stránce **zkontrolovat + vytvořit**Zkontrolujte všechna nastavení a výběrem možnosti **vytvořit** vytvořte privátní koncový bod. 
+6. Na stránce **zkontrolovat + vytvořit** Zkontrolujte všechna nastavení a výběrem možnosti **vytvořit** vytvořte privátní koncový bod. 
 
     ![Soukromý koncový bod – kontrola & vytvoření stránky](./media/configure-private-endpoints/review-create-page.png)
     
@@ -78,10 +78,10 @@ Existují čtyři stavy zřizování:
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>Jak spravovat připojení privátního koncového bodu
 V následujících částech se dozvíte, jak schválit nebo odmítnout připojení privátního koncového bodu. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu hledání zadejte **Event Grid témata** nebo **Event Grid domény**.
 1. Vyberte **téma** nebo **doménu** , kterou chcete spravovat.
-1. Vyberte kartu **síť** .
+1. Vyberte kartu **Sítě**.
 1. Pokud existují nějaká připojení, která čekají na **vyřízení, zobrazí se ve stavu** zřizování stav připojení. 
 
 ### <a name="to-approve-a-private-endpoint"></a>Schválení privátního koncového bodu
@@ -108,7 +108,7 @@ Můžete odmítat soukromý koncový bod, který je ve stavu čekání nebo schv
 
 1. Vyberte **soukromý koncový bod** , který chcete odmítnout, a na panelu nástrojů vyberte **odmítnout** .
 
-    ![Snímek obrazovky zobrazující, že je vybrána možnost síť – privátní připojení ke koncovému bodu (Preview) s vybraným názvem odmítnout.](./media/configure-private-endpoints/reject-button.png)
+    ![Snímek obrazovky zobrazující, že je vybrána možnost síť – privátní připojení ke koncovému bodu s názvem odmítnout.](./media/configure-private-endpoints/reject-button.png)
 1. V dialogovém okně **odmítnout připojení** zadejte komentář (volitelné) a vyberte **Ano**. 
 
     ![Soukromý koncový bod – zamítnout](./media/configure-private-endpoints/reject.png)
@@ -121,7 +121,7 @@ Můžete odmítat soukromý koncový bod, který je ve stavu čekání nebo schv
 
 
 ## <a name="use-azure-cli"></a>Použití Azure CLI
-Pokud chcete vytvořit privátní koncový bod, použijte metodu [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) , jak je znázorněno v následujícím příkladu:
+Pokud chcete vytvořit privátní koncový bod, použijte metodu [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -135,12 +135,12 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-Popisy parametrů použitých v příkladu najdete v dokumentaci k [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create). Poznámka v tomto příkladu je několik bodů: 
+Popisy parametrů použitých v příkladu najdete v dokumentaci k [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create). Poznámka v tomto příkladu je několik bodů: 
 
 - V případě `private-connection-resource-id` Zadejte ID prostředku **tématu** nebo **domény**. Předchozí příklad používá typ: téma.
 - pro `group-ids` Zadejte `topic` nebo `domain` . V předchozím příkladu `topic` je použit. 
 
-K odstranění privátního koncového bodu použijte metodu [AZ Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) , jak je znázorněno v následujícím příkladu:
+K odstranění privátního koncového bodu použijte metodu [AZ Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>
@@ -165,7 +165,7 @@ az extension add -n eventgrid
 ```
 
 ### <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
-Pokud chcete vytvořit privátní koncový bod, použijte metodu [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) , jak je znázorněno v následujícím příkladu:
+Pokud chcete vytvořit privátní koncový bod, použijte metodu [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -179,12 +179,12 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-Popisy parametrů použitých v příkladu najdete v dokumentaci k [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create). Poznámka v tomto příkladu je několik bodů: 
+Popisy parametrů použitých v příkladu najdete v dokumentaci k [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create). Poznámka v tomto příkladu je několik bodů: 
 
 - V případě `private-connection-resource-id` Zadejte ID prostředku **tématu** nebo **domény**. Předchozí příklad používá typ: téma.
 - pro `group-ids` Zadejte `topic` nebo `domain` . V předchozím příkladu `topic` je použit. 
 
-K odstranění privátního koncového bodu použijte metodu [AZ Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) , jak je znázorněno v následujícím příkladu:
+K odstranění privátního koncového bodu použijte metodu [AZ Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>

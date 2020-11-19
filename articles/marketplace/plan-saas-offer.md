@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5a646f7f42a2af8dcf15f7b7b2cd700e159fe88d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734391"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917541"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Postup plánování nabídky SaaS pro komerční tržiště
 
@@ -104,7 +104,26 @@ Připojení k CRM můžete kdykoli přidat nebo změnit během vytváření nab�
 
 ## <a name="selecting-an-online-store"></a>Výběr online obchodu
 
-Když publikujete nabídku SaaS, bude uvedena v Microsoft AppSource, Azure Marketplace nebo obou. Každý online obchod slouží jako jedinečné požadavky zákazníků. AppSource je pro obchodní řešení a Azure Marketplace pro IT řešení. Typ vaší nabídky, možnosti Transact a kategorie určují, kde bude vaše nabídka publikovaná. Kategorie a podkategorie jsou namapovány na každý online obchod na základě typu řešení. Podrobné informace o možnostech výpisu podporovaných online obchody najdete v tématu [Možnosti výpisu a cen podle online obchodu](determine-your-listing-type.md#listing-and-pricing-options-by-online-store). Další informace o kategoriích a podkategoriích najdete v tématu [kategorie a podkategorie na komerčním webu Marketplace](categories.md).
+Když publikujete nabídku SaaS, bude uvedena v Microsoft AppSource, Azure Marketplace nebo obou. Každý online obchod slouží jako jedinečné požadavky zákazníků. AppSource je pro obchodní řešení a Azure Marketplace pro IT řešení. Typ vaší nabídky, možnosti Transact a kategorie určují, kde bude vaše nabídka publikovaná. Kategorie a podkategorie jsou namapovány na každý online obchod na základě typu řešení. 
+
+Pokud vaše nabídka SaaS je řešení IT (Azure Marketplace *) i obchodní* řešení (AppSource), vyberte kategorii a podkategorii pro každý online obchod. Nabídky publikované na obou obchodech online by měly mít jako řešení IT *a* obchodní řešení hodnotu Proposition.
+
+> [!IMPORTANT]
+> Nabídky SaaS s [měřenou fakturací](partner-center-portal/saas-metered-billing.md) jsou k dispozici prostřednictvím Azure Marketplace a Azure Portal. SaaS nabízí pouze soukromé plány, které jsou k dispozici prostřednictvím Azure Portal.
+
+| Měřené fakturace | Veřejný plán | Soukromý plán | K dispozici v: |
+|---|---|---|---|
+| Yes             | Yes         | Ne           | Azure Marketplace a Azure Portal |
+| Yes             | Yes         | Yes          | Azure Marketplace a Azure Portal * |
+| Yes             | Ne          | Yes          | Pouze Azure Portal |
+| Ne              | Ne          | Yes          | Pouze Azure Portal |
+|||||
+
+&#42; soukromý plán této nabídky bude k dispozici pouze prostřednictvím Azure Portal
+
+Zákazníci v Azure Portal zakoupí například nabídku s měřením fakturace a soukromým plánem (žádný veřejný plán). Přečtěte si další informace o [privátních nabídkách na komerčním webu Microsoft Marketplace](private-offers.md).
+
+Podrobné informace o možnostech výpisu podporovaných online obchody najdete v tématu [Možnosti výpisu a cen podle online obchodu](determine-your-listing-type.md#listing-and-pricing-options-by-online-store). Další informace o kategoriích a podkategoriích najdete v tématu [kategorie a podkategorie na komerčním webu Marketplace](categories.md).
 
 ## <a name="legal-contracts"></a>Platné smlouvy
 

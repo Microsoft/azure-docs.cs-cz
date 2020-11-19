@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 0dc55f4d77fde48590b1fbf206ed988e8fb9ec0e
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: a02fa7d9f656ed3b6e61aab1f42e2a3ffca131a7
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490266"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917252"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -65,7 +65,7 @@ Všechny kontejnery vytvořené v databázi s zřízenou propustností se musí 
 
 Pokud zatížení na logickém oddílu spotřebovává více než propustnost, která je přidělena konkrétnímu logickému oddílu, jsou operace omezené na míru. Pokud dojde k omezení rychlosti, můžete buď zvýšit propustnost pro celou databázi, nebo opakovat operace. Další informace o dělení najdete v tématu [logické oddíly](partitioning-overview.md).
 
-Kontejnery v databázi se sdílenou propustností sdílí propustnost (RU/s) přidělenou dané databázi. V jedné databázi můžete mít až čtyři kontejnery s minimálně 400 RU/s. Při standardní (ruční) zřízené propustnosti budou mít každý nový kontejner po prvních čtyřech dalších minimálních 100 RU/s. Například pokud máte databázi se sdílenou propustností a osmi kontejnery, minimální počet RU/s pro databázi bude 800 RU/s. Díky zajištění vysoce škálovatelné propustnosti můžete mít až 25 kontejnerů v databázi s AutoScale Max 4000 RU/s (škály 400-4000 RU/s).
+Kontejnery v databázi se sdílenou propustností sdílí propustnost (RU/s) přidělenou dané databázi. Při standardní (ruční) zřízené propustnosti můžete mít v databázi až 25 kontejnerů s minimálně 400 RU/s. Díky zajištění vysoce škálovatelné propustnosti můžete mít až 25 kontejnerů v databázi s AutoScale Max 4000 RU/s (škály 400-4000 RU/s).
 
 > [!NOTE]
 > V únoru 2020 jsme představili změnu, která vám umožní mít ve sdílené databázi propustnosti maximálně 25 kontejnerů, což lépe umožňuje sdílení propustnosti v kontejnerech. Po prvních 25 kontejnerech můžete do databáze přidat další kontejnery pouze v případě, že jsou [zřízeny s vyhrazenou propustností](#set-throughput-on-a-database-and-a-container), která je oddělená od sdílené propustnosti databáze.<br>
@@ -80,11 +80,11 @@ Pokud vaše úlohy zahrnují odstranění a opětovné vytvoření všech kolekc
 Tyto dva modely můžete kombinovat. Zajištění propustnosti databáze i kontejneru je povoleno. Následující příklad ukazuje, jak zřídit standardní (ruční) zřízené propustnost v databázi Azure Cosmos a v kontejneru:
 
 * Můžete vytvořit databázi Azure Cosmos s názvem *Z* s zřízenou propustností *"K"* ru. 
-* Dále v rámci databáze vytvořte pět kontejnerů s názvem *a* , *B* , *C* , *D* a *E* . Při vytváření kontejneru B Nezapomeňte povolit **vyhrazenou propustnost pro tuto možnost kontejneru** a explicitně nakonfigurovat *"P"* ru zřízené propustnosti v tomto kontejneru. Sdílenou a vyhrazenou propustnost můžete nakonfigurovat pouze při vytváření databáze a kontejneru. 
+* Dále v rámci databáze vytvořte pět kontejnerů s názvem *a*, *B*, *C*, *D* a *E* . Při vytváření kontejneru B Nezapomeňte povolit **vyhrazenou propustnost pro tuto možnost kontejneru** a explicitně nakonfigurovat *"P"* ru zřízené propustnosti v tomto kontejneru. Sdílenou a vyhrazenou propustnost můžete nakonfigurovat pouze při vytváření databáze a kontejneru. 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Nastavení propustnosti na úrovni kontejneru":::
 
-* Propustnost *"K"* ru se sdílí mezi čtyřmi kontejnery *a* , *C* , *D* a *E*. Přesné množství propustnosti, které je dostupné pro *a* , *C* , *D* nebo *E* , se liší. Pro každou propustnost jednotlivých kontejnerů neexistují žádné SLA.
+* Propustnost *"K"* ru se sdílí mezi čtyřmi kontejnery *a*, *C*, *D* a *E*. Přesné množství propustnosti, které je dostupné pro *a*, *C*, *D* nebo *E* , se liší. Pro každou propustnost jednotlivých kontejnerů neexistují žádné SLA.
 * U kontejneru s názvem *B* je zaručeno, že se po celou dobu vrátí propustnost ru *"P"* . Je zajištěný pomocí SLA.
 
 > [!NOTE]
@@ -111,7 +111,6 @@ Skutečné minimální RU/s se může lišit v závislosti na konfiguraci vašeh
 * 400 RU/s 
 * Aktuální úložiště v GB × 10 RU/s (Pokud Váš kontejner nebo databáze neobsahuje více než 1 TB dat, přečtěte si náš [velký program pro úložiště/nízkou propustnost](#high-storage-low-throughput-program)).
 * Nejvyšší RU/s zřízené v databázi nebo kontejneru/100
-* Počet kontejnerů × 100 RU/s (pouze sdílená databáze propustnosti)
 
 ### <a name="changing-the-provisioned-throughput"></a>Změna zřízené propustnosti
 
@@ -120,9 +119,9 @@ Zřízenou propustnost kontejneru nebo databáze můžete škálovat prostředni
 * [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
 * [CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) v sadě Java SDK.
 
-Pokud **snižujete zřízenou propustnost** , budete ji moci provést až na [minimum](#current-provisioned-throughput).
+Pokud **snižujete zřízenou propustnost**, budete ji moci provést až na [minimum](#current-provisioned-throughput).
 
-Pokud **zvýšíte zřízenou propustnost** , většinou je operace okamžitá. Existují však případy, kdy může operace trvat delší dobu, protože systémové úlohy vyžadují zřízení požadovaných prostředků. V takovém případě se pokus o změnu zřízené propustnosti v průběhu této operace zaznamená odpověď HTTP 423 s chybovou zprávou s vysvětlením, že probíhá jiná operace škálování.
+Pokud **zvýšíte zřízenou propustnost**, většinou je operace okamžitá. Existují však případy, kdy může operace trvat delší dobu, protože systémové úlohy vyžadují zřízení požadovaných prostředků. V takovém případě se pokus o změnu zřízené propustnosti v průběhu této operace zaznamená odpověď HTTP 423 s chybovou zprávou s vysvětlením, že probíhá jiná operace škálování.
 
 > [!NOTE]
 > Pokud plánujete velmi velkou úlohu příjmu, která bude vyžadovat velký nárůst zřízené propustnosti, pamatujte na to, že operace škálování nemá žádnou smlouvu SLA a jak je uvedeno v předchozím odstavci, může trvat dlouhou dobu, než se zvýší velká doba. Možná budete chtít naplánovat dopředu a zahájit škálování před spuštěním úlohy a pomocí níže uvedených metod ověřit průběh.
@@ -147,8 +146,8 @@ Tato tabulka ukazuje porovnání mezi zřizováním standardní (ruční) propus
 
 |**Parametr**  |**Standardní (ruční) propustnost v databázi**  |**Standardní (ruční) propustnost na kontejneru**|**Automatické škálování propustnosti v databázi** | **Automatické škálování propustnosti na kontejneru**|
 |---------|---------|---------|---------|---------|
-|Vstupní bod (minimální RU/s) |400 RU/s. Po prvních čtyřech kontejnerech vyžaduje každý další kontejner minimálně 100 RU/s.</li> |400| Automatické škálování mezi 400 – 4000 RU/s. Může mít až 25 kontejnerů bez minimálního minima RU/s na jeden kontejner.</li> | Automatické škálování mezi 400 – 4000 RU/s.|
-|Minimální RU/s na kontejner|100|400|--|Automatické škálování mezi 400 – 4000 RU/s|
+|Vstupní bod (minimální RU/s) |400 RU/s. Může mít až 25 kontejnerů bez minimálního minima RU/s na jeden kontejner.</li> |400| Automatické škálování mezi 400 – 4000 RU/s. Může mít až 25 kontejnerů bez minimálního minima RU/s na jeden kontejner.</li> | Automatické škálování mezi 400 – 4000 RU/s.|
+|Minimální RU/s na kontejner|--|400|--|Automatické škálování mezi 400 – 4000 RU/s|
 |Maximální ru|Neomezeno, v databázi.|Bez omezení, na kontejneru.|Neomezeno, v databázi.|Bez omezení, na kontejneru.
 |Ru přiřazený nebo dostupný ke konkrétnímu kontejneru|Žádné záruky. Ru přiřazený k danému kontejneru závisí na vlastnostech. Vlastnosti mohou být volbou klíčů oddílů kontejnerů, které sdílejí propustnost, distribuci zatížení a počet kontejnerů. |Všechny ru nakonfigurované na kontejneru jsou výhradně vyhrazené pro kontejner.|Žádné záruky. Ru přiřazený k danému kontejneru závisí na vlastnostech. Vlastnosti mohou být volbou klíčů oddílů kontejnerů, které sdílejí propustnost, distribuci zatížení a počet kontejnerů. |Všechny ru nakonfigurované na kontejneru jsou výhradně vyhrazené pro kontejner.|
 |Maximální úložiště pro kontejner|Počet.|Unlimited|Unlimited|Unlimited|

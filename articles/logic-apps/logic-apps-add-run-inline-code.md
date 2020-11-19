@@ -5,24 +5,28 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 11/19/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f339ae4ff1ea90929ce7811efe002f5860f7b47d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 589420d96a3a6dfcc1c17a1b204765022b1ce412
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269331"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916640"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Přidat a spustit fragmenty kódu pomocí vloženého kódu v Azure Logic Apps
 
 Pokud chcete v aplikaci logiky spustit část kódu, můžete do pracovního postupu aplikace logiky přidat integrovanou akci **vloženého kódu** jako krok. Tato akce funguje nejlépe, když chcete spustit kód, který odpovídá tomuto scénáři:
 
 * Běží v JavaScriptu. Další jazyky již brzy budou dostupné.
+
 * Dokončeno po dobu 5 sekund nebo méně.
+
 * Zpracovává data o velikosti až 50 MB.
-* Nevyžaduje práci s [akcemi **proměnných** ](../logic-apps/logic-apps-create-variables-store-values.md), které ještě nejsou podporované.
-* Používá Node.js 8.11.1 verze. Další informace najdete v tématu [standardní předdefinované objekty](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects). 
+
+* Nevyžaduje práci s [akcemi **proměnných**](../logic-apps/logic-apps-create-variables-store-values.md), které ještě nejsou podporované.
+
+* Používá Node.js 8.11.1 verze. Další informace najdete v tématu [standardní předdefinované objekty](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects).
 
   > [!NOTE]
   > `require()`Funkce není podporována **vloženou akcí kódu** pro spuštění JavaScriptu.
@@ -41,7 +45,7 @@ V tomto článku se ukázková aplikace logiky aktivuje při přijetí nového e
 
    Ukázková aplikace logiky v tomto tématu používá tuto aktivační událost sady Office 365 Outlook: **při přijetí nového e-mailu** .
 
-* [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , který je propojený s vaší aplikací logiky
+* [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , který je propojený s vaší aplikací logiky. Pokud nechcete vytvořit ani použít účet pro integraci, zkuste vytvořit aplikaci logiky v Azure Portal pomocí nového typu prostředku **Aplikace logiky (Preview)** nebo v Visual Studio Code pomocí nového [rozšíření Azure Logic Apps Preview](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md).
 
   > [!NOTE]
   > Ujistěte se, že používáte účet pro integraci, který je vhodný pro váš případ použití nebo scénář. Například účty pro integraci na [volné](../logic-apps/logic-apps-pricing.md#integration-accounts) úrovni jsou určeny pouze pro průzkumné scénáře a úlohy, nikoli pro produkční scénáře, jsou omezeny využitím a propustností a nejsou podporovány smlouvou o úrovni služeb (SLA). Další úrovně se účtují náklady, ale zahrnují podporu smlouvy SLA, nabízí větší propustnost a má vyšší omezení. Přečtěte si další informace o [úrovních](../logic-apps/logic-apps-pricing.md#integration-accounts)účtu Integration, [cenách](https://azure.microsoft.com/pricing/details/logic-apps/)a [omezeních](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
@@ -60,7 +64,7 @@ V tomto článku se ukázková aplikace logiky aktivuje při přijetí nového e
 
    ![Přidat nový krok](./media/logic-apps-add-run-inline-code/add-new-step.png)
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole "vložený kód" jako filtr. V seznamu akce vyberte tuto akci: **Spustit kód JavaScriptu**
+1. V části **zvolit akci** zadejte do vyhledávacího pole "vložený kód" jako filtr. V seznamu akce vyberte tuto akci: **Spustit kód JavaScriptu**
 
    ![Vyberte spustit kód JavaScriptu.](./media/logic-apps-add-run-inline-code/select-inline-code-action.png)
 
@@ -68,7 +72,7 @@ V tomto článku se ukázková aplikace logiky aktivuje při přijetí nového e
 
    ![Akce vloženého kódu s výchozím ukázkovým kódem](./media/logic-apps-add-run-inline-code/inline-code-action-default.png)
 
-1. V poli **kód** odstraňte ukázkový kód a zadejte kód, který chcete spustit. Napište kód, který byste umístili do metody, ale bez definování signatury metody. 
+1. V poli **kód** odstraňte ukázkový kód a zadejte kód, který chcete spustit. Napište kód, který byste umístili do metody, ale bez definování signatury metody.
 
    Když zadáte rozpoznané klíčové slovo, zobrazí se seznam automatického dokončování, abyste mohli vybírat z dostupných klíčových slov, například:
 
@@ -84,12 +88,11 @@ V tomto článku se ukázková aplikace logiky aktivuje při přijetí nového e
 
    ![Vybrat výsledek](./media/logic-apps-add-run-inline-code/inline-code-example-select-outputs.png)
 
-   V poli **kód** váš fragment kódu může jako vstup použít objekt jen pro čtení `workflowContext` . Tento objekt má podvlastnost, které přidávají vašemu kódu přístup k výsledkům triggeru a předchozím akcím v pracovním postupu.
-   Další informace naleznete v této části dále v tomto tématu: [reference Trigger a Action Results in Your Code](#workflowcontext).
+   V poli **kód** váš fragment kódu může jako vstup použít objekt jen pro čtení `workflowContext` . Tento objekt má podvlastnost, které přidávají vašemu kódu přístup k výsledkům triggeru a předchozím akcím v pracovním postupu. Další informace naleznete v této části dále v tomto tématu: [reference Trigger a Action Results in Your Code](#workflowcontext).
 
    > [!NOTE]
    >
-   > Pokud fragment kódu odkazuje na názvy akcí, které používají operátor tečka (.), je nutné přidat tyto názvy akcí do parametru [ **Actions** ](#add-parameters). Tyto odkazy musí také uzavřít názvy akcí hranatými závorkami ([]) a uvozovkami, například:
+   > Pokud fragment kódu odkazuje na názvy akcí, které používají operátor tečka (.), je nutné přidat tyto názvy akcí do parametru [ **Actions**](#add-parameters). Tyto odkazy musí také uzavřít názvy akcí hranatými závorkami ([]) a uvozovkami, například:
    >
    > `// Correct`</br> 
    > `workflowContext.actions["my.action.name"].body`</br>
@@ -97,8 +100,7 @@ V tomto článku se ukázková aplikace logiky aktivuje při přijetí nového e
    > `// Incorrect`</br>
    > `workflowContext.actions.my.action.name.body`
 
-   Akce vloženého kódu nevyžaduje `return` příkaz, ale výsledky z `return` příkazu jsou k dispozici pro referenci v pozdějších akcích prostřednictvím **výsledného** tokenu. 
-   Například fragment kódu vrátí výsledek voláním `match()` funkce, která najde shody v těle e-mailu s regulárním výrazem. Akce **vytvořit** používá token **výsledku** k odkazování na výsledky z vložené akce kódu a vytvoří jeden výsledek.
+   Akce vloženého kódu nevyžaduje `return` příkaz, ale výsledky z `return` příkazu jsou k dispozici pro referenci v pozdějších akcích prostřednictvím **výsledného** tokenu. Například fragment kódu vrátí výsledek voláním `match()` funkce, která najde shody v těle e-mailu s regulárním výrazem. Akce **vytvořit** používá token **výsledku** k odkazování na výsledky z vložené akce kódu a vytvoří jeden výsledek.
 
    ![Hotová aplikace logiky](./media/logic-apps-add-run-inline-code/inline-code-complete-example.png)
 
@@ -129,7 +131,7 @@ V tomto článku se ukázková aplikace logiky aktivuje při přijetí nového e
 
 Tato tabulka obsahuje další informace o těchto podvlastnostech:
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 |----------|------|-------|
 | `actions` | Kolekce objektů | Objekty výsledků z akcí, které se spustí před spuštěním fragmentu kódu. Každý objekt má dvojici *klíč-hodnota* , kde klíč je název akce a hodnota je ekvivalentní volání [funkce Actions ()](../logic-apps/workflow-definition-language-functions-reference.md#actions) s `@actions('<action-name>')` . Název akce používá stejný název akce, který se používá v příslušné definici pracovního postupu, která nahradí mezery ("") v názvu akce podtržítkem (_). Tento objekt poskytuje přístup k hodnotám vlastností akce z aktuálního běhu instance pracovního postupu. |
 | `trigger` | Objekt | Výsledný objekt z triggeru a ekvivalentní volání [funkce Trigger ()](../logic-apps/workflow-definition-language-functions-reference.md#trigger). Tento objekt poskytuje přístup k aktivačním hodnotám vlastností z aktuálního běhu instance pracovního postupu. |
@@ -247,7 +249,7 @@ Pokud vyberete možnost **Akce**, budete vyzváni k zadání akcí, které chcet
 
   `My.Action.Name`
 
-1. Na panelu nástrojů návrháře klikněte na **zobrazení kódu**a vyhledejte v `actions` atributu název akce.
+1. Na panelu nástrojů návrháře klikněte na **zobrazení kódu** a vyhledejte v `actions` atributu název akce.
 
    Například `Send_approval_email_` je název JSON pro akci **odeslání e-mailu o schválení** .
 
@@ -261,7 +263,7 @@ Pokud vyberete možnost **Akce**, budete vyzváni k zadání akcí, které chcet
 
 1. Chcete-li přidat další akci, vyberte možnost **Přidat novou položku**.
 
-## <a name="reference"></a>Odkaz
+## <a name="reference"></a>Referenční informace
 
 Další informace o struktuře a syntaxi akce **Spustit kód JavaScriptu** v základní definici pracovního postupu aplikace logiky pomocí jazyka definice pracovního postupu najdete v [referenční části](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code)této akce.
 

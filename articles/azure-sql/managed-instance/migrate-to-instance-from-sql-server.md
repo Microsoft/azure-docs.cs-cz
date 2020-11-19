@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 7e7775f289e0221862d11c585ae85a5b0bc6cc27
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2761b97e595f5e11b00e75cd778ee269b12bfcae
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788546"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917796"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migrace instance SQL Server do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-V tomto článku se dozvíte o metodách migrace instance verze SQL Server 2005 nebo novější do [spravované instance Azure SQL](sql-managed-instance-paas-overview.md). Informace o migraci na izolovanou databázi nebo elastický fond najdete v tématu [migrace na SQL Database](../database/migrate-to-database-from-sql-server.md). Informace o migraci z jiných platforem najdete v tématu [Průvodce migrací databáze Azure](https://datamigration.microsoft.com/).
+V tomto článku se dozvíte o metodách migrace instance verze SQL Server 2005 nebo novější do [spravované instance Azure SQL](sql-managed-instance-paas-overview.md). Informace o migraci na izolovanou databázi nebo elastický fond najdete v tématu [Přehled migrace: SQL Server SQL Database](../migration-guides/database/sql-server-to-sql-database-overview.md). Informace o migraci z dalších platforem a pokynů k nástrojům a možnostem najdete v tématu [migrace do Azure SQL](../migration-guides/index.yml).
 
 > [!NOTE]
 > Pokud chcete rychle začít a vyzkoušet spravovanou instanci Azure SQL, můžete místo této stránky přejít na [příručku pro rychlý](quickstart-content-reference-guide.md) Start.

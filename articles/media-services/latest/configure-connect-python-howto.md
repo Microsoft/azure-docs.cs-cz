@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-python
-ms.openlocfilehash: 1a72b0d90a33b011468b5ac42d529befb7acae42
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 76df8baaf170b05762b93478a496eb1e9ed802d5
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844893"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916742"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Připojení k Media Services V3 API – Python
 
@@ -27,7 +27,7 @@ ms.locfileid: "94844893"
 
 V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 Python SDK pomocí metody přihlašování instančního objektu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Stažení Pythonu z [Python.org](https://www.python.org/downloads/)
 - Ujistěte se, že jste nastavili `PATH` proměnnou prostředí.
@@ -43,6 +43,8 @@ Pokud chcete pracovat s Azure Media Services pomocí Pythonu, musíte tyto modul
 
 * `azure-mgmt-resource`Modul, který zahrnuje moduly Azure pro Active Directory.
 * `azure-mgmt-media`Modul, který obsahuje entity Media Services.
+
+    Nezapomeňte získat [nejnovější verzi sady Media Services SDK pro Python](https://pypi.org/project/azure-mgmt-media/).
 
 Otevřete nástroj příkazového řádku a pomocí následujících příkazů nainstalujte moduly.
 

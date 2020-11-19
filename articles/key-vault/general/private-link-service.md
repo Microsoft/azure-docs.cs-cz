@@ -3,17 +3,17 @@ title: Integrace se službou Azure Private Link
 description: Naučte se integrovat Azure Key Vault se službou Azure Private Link.
 author: ShaneBala-keyvault
 ms.author: sudbalas
-ms.date: 03/08/2020
+ms.date: 11/17/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a41eb5b38b741f8bdde59f8a4f1e8de2b4767903
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ec619681f1eebc51da85d31ad15f1db25cfd3cbc
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832768"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917915"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrace služby Key Vault se službou Azure Private Link
 
@@ -23,7 +23,7 @@ Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukr
 
 Další informace najdete v tématu [co je privátní propojení Azure?](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K integraci trezoru klíčů s privátním propojením Azure budete potřebovat následující:
 
@@ -36,6 +36,8 @@ Váš privátní koncový bod a virtuální síť musí být ve stejné oblasti.
 
 Váš privátní koncový bod používá privátní IP adresu ve vaší virtuální síti.
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
 ## <a name="establish-a-private-link-connection-to-key-vault-using-the-azure-portal"></a>Navázání připojení privátního propojení k Key Vault pomocí Azure Portal 
 
 Nejdřív vytvořte virtuální síť podle kroků v části [vytvoření virtuální sítě pomocí Azure Portal](../../virtual-network/quick-create-portal.md)
@@ -44,14 +46,14 @@ Pak můžete buď vytvořit nový trezor klíčů, nebo vytvořit připojení ty
 
 ### <a name="create-a-new-key-vault-and-establish-a-private-link-connection"></a>Vytvoření nového trezoru klíčů a navázání připojení k privátnímu propojení
 
-Azure Key Vault můžete vytvořit pomocí [Azure Portal](../general/quick-create-portal.md), [Azure CLI](../general/quick-create-cli.md)nebo [Azure PowerShell](../general/quick-create-powershell.md).
+Nový trezor klíčů můžete vytvořit pomocí [Azure Portal](../general/quick-create-portal.md), [Azure CLI](../general/quick-create-cli.md)nebo [Azure PowerShell](../general/quick-create-powershell.md).
 
 Po nakonfigurování základních informací o trezoru klíčů vyberte kartu síť a postupujte podle těchto kroků:
 
 1. Na kartě síť vyberte přepínač privátního koncového bodu.
 1. Kliknutím na tlačítko + Přidat přidáte soukromý koncový bod.
 
-    ![Snímek obrazovky, který zobrazuje první obrazovku při vytváření trezoru klíčů.](../media/private-link-service-1.png)
+    ![Image](../media/private-link-service-1.png)
  
 1. V poli umístění v okně vytvořit privátní koncový bod vyberte oblast, ve které se nachází vaše virtuální síť. 
 1. V poli název Vytvořte popisný název, který vám umožní identifikovat Tento soukromý koncový bod. 
@@ -59,7 +61,7 @@ Po nakonfigurování základních informací o trezoru klíčů vyberte kartu s�
 1. Ponechte možnost integrace s DNS privátní zóny beze změny.  
 1. Vyberte OK.
 
-    ![Snímek obrazovky zobrazující pole, která jsou důležitá pro konfiguraci privátního koncového bodu.](../media/private-link-service-8.png)
+    ![Image](../media/private-link-service-8.png)
  
 Teď budete moct zobrazit nakonfigurovaný soukromý koncový bod. Teď máte možnost Tento soukromý koncový bod odstranit a upravit. Vyberte tlačítko "revize + vytvořit" a vytvořte Trezor klíčů. Dokončení nasazení bude trvat 5-10 minut. 
 
@@ -74,81 +76,12 @@ Pokud už máte Trezor klíčů, můžete vytvořit připojení k privátnímu p
 1. Vyberte kartu připojení privátního koncového bodu v horní části stránky.
 1. V horní části stránky vyberte tlačítko + privátní koncový bod.
 
-    ![Snímek obrazovky, který zobrazuje tlačítko + soukromý koncový bod.](../media/private-link-service-3.png)
-    ![Snímek obrazovky, který zobrazuje obrazovku pro vytvoření privátního koncového bodu.](../media/private-link-service-4.png)
+    ![](../media/private-link-service-3.png) ![ Obrázek obrázku](../media/private-link-service-4.png)
 
 Pro libovolný prostředek Azure v tomto okně se můžete rozhodnout vytvořit privátní koncový bod. Pomocí rozevíracích nabídek můžete vybrat typ prostředku a vybrat prostředek ve vašem adresáři, nebo se můžete připojit k libovolnému prostředku Azure pomocí ID prostředku. Ponechte možnost integrace s DNS privátní zóny beze změny.  
 
-## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>Navázání připojení privátního propojení k Key Vault pomocí rozhraní příkazového řádku
-
-### <a name="login-to-azure-cli"></a>Přihlášení do Azure CLI
-```console
-az login 
-```
-### <a name="select-your-azure-subscription"></a>Vyberte své předplatné Azure. 
-```console
-az account set --subscription {AZURE SUBSCRIPTION ID}
-```
-### <a name="create-a-new-resource-group"></a>Vytvoření nové skupiny prostředků 
-```console
-az group create -n {RG} -l {AZURE REGION}
-```
-### <a name="register-microsoftkeyvault-as-a-provider"></a>Registrovat Microsoft. webrecovery jako poskytovatele 
-```console
-az provider register -n Microsoft.KeyVault
-```
-### <a name="create-a-new-key-vault"></a>Vytvořit nový Key Vault
-```console
-az keyvault create --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION}
-```
-### <a name="turn-on-key-vault-firewall"></a>Zapnout bránu Key Vault firewall
-```console
-az keyvault update --name {KEY VAULT NAME} --resource-group {RG} --default-action deny
-```
-### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-```console
-az network vnet create --resource-group {RG} --name {vNet NAME} --location {AZURE REGION}
-```
-### <a name="add-a-subnet"></a>Přidání podsítě
-```console
-az network vnet subnet create --resource-group {RG} --vnet-name {vNet NAME} --name {subnet NAME} --address-prefixes {addressPrefix}
-```
-### <a name="disable-virtual-network-policies"></a>Zakázat zásady Virtual Network 
-```console
-az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
-```
-### <a name="add-a-private-dns-zone"></a>Přidat zónu Privátní DNS 
-```console
-az network private-dns zone create --resource-group {RG} --name privatelink.vaultcore.azure.net
-```
-### <a name="link-private-dns-zone-to-virtual-network"></a>Propojit zónu Privátní DNS s Virtual Network 
-```console
-az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
-```
-### <a name="add-private-dns-records"></a>Přidat záznamy Privátní DNS
-```console
-# https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
-az network private-dns zone list -g $rg_name
-az network private-dns record-set a add-record -g $rg_name -z "privatelink.vaultcore.azure.net" -n $vault_name -a $kv_network_interface_private_ip
-az network private-dns record-set list -g $rg_name -z "privatelink.vaultcore.azure.net"
-
-# From home/public network, you wil get a public IP. If inside a vnet with private zone, nslookup will resolve to the private ip.
-nslookup $vault_name.vault.azure.net
-nslookup $vault_name.privatelink.vaultcore.azure.net
-```
-### <a name="create-a-private-endpoint-automatically-approve"></a>Vytvoření privátního koncového bodu (automaticky schvalovat) 
-```console
-az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
-```
-### <a name="create-a-private-endpoint-manually-request-approval"></a>Vytvoření privátního koncového bodu (žádost o schválení ručně) 
-```console
-az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
-```
-### <a name="show-connection-status"></a>Zobrazit stav připojení 
-```console
-az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
-```
-## <a name="manage-private-link-connection"></a>Spravovat připojení privátního propojení
+![](../media/private-link-service-3.png)
+ ![ Obrázek obrázku](../media/private-link-service-4.png)
 
 Při vytváření privátního koncového bodu musí být připojení schváleno. Pokud je prostředek, pro který vytváříte privátní koncový bod, ve vašem adresáři, budete moci schválit žádost o připojení, pokud máte dostatečná oprávnění. Pokud se připojujete k prostředku Azure v jiném adresáři, musíte počkat, až vlastník tohoto prostředku schválí žádost o připojení.
 
@@ -160,8 +93,8 @@ Existují čtyři stavy zřizování:
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
 | Odmítnout | Zamítnuto | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
 | Odebrat | Propojení | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |
- 
-###  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>Správa připojení privátního koncového bodu k Key Vault pomocí Azure Portal 
+
+### <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>Správa připojení privátního koncového bodu k Key Vault pomocí Azure Portal 
 
 1. Přihlaste se k webu Azure Portal.
 1. Na panelu hledání zadejte "trezory klíčů".
@@ -174,22 +107,72 @@ Existují čtyři stavy zřizování:
 
     ![Image](../media/private-link-service-7.png)
 
-##  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-azure-cli"></a>Správa připojení privátního koncového bodu k Key Vault pomocí rozhraní příkazového řádku Azure
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-### <a name="approve-a-private-link-connection-request"></a>Schválení žádosti o připojení privátního odkazu
+## <a name="establish-a-private-link-connection-to-key-vault-using-cli-initial-setup"></a>Navázání připojení privátního propojení k Key Vault pomocí rozhraní příkazového řádku (počáteční nastavení)
+
 ```console
+az login                                                         # Login to Azure CLI
+az account set --subscription {SUBSCRIPTION ID}                  # Select your Azure Subscription
+az group create -n {RESOURCE GROUP} -l {REGION}                  # Create a new Resource Group
+az provider register -n Microsoft.KeyVault                       # Register KeyVault as a provider
+az keyvault create -n {VAULT NAME} -g {RG} -l {REGION}           # Create a Key Vault
+az keyvault update -n {VAULT NAME} -g {RG} --default-action deny # Turn on Key Vault Firewall
+az network vnet create -g {RG} -n {vNet NAME} -location {REGION} # Create a Virtual Network
+
+    # Create a Subnet
+az network vnet subnet create -g {RG} --vnet-name {vNet NAME} --name {subnet NAME} --address-prefixes {addressPrefix}
+
+    # Disable Virtual Network Policies
+az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
+
+    # Create a Private DNS Zone
+az network private-dns zone create --resource-group {RG} --name privatelink.vaultcore.azure.net
+
+    # Link the Private DNS Zone to the Virtual Network
+az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
+
+```
+
+### <a name="add-private-dns-records"></a>Přidat záznamy Privátní DNS
+```console
+# https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
+az network private-dns zone list -g $rg_name
+az network private-dns record-set a add-record -g $rg_name -z "privatelink.vaultcore.azure.net" -n $vault_name -a $kv_network_interface_private_ip
+az network private-dns record-set list -g $rg_name -z "privatelink.vaultcore.azure.net"
+
+# From home/public network, you wil get a public IP. If inside a vnet with private zone, nslookup will resolve to the private ip.
+nslookup $vault_name.vault.azure.net
+nslookup $vault_name.privatelink.vaultcore.azure.net
+```
+
+### <a name="create-a-private-endpoint-automatically-approve"></a>Vytvoření privátního koncového bodu (automaticky schvalovat) 
+```console
+az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
+```
+
+### <a name="create-a-private-endpoint-manually-request-approval"></a>Vytvoření privátního koncového bodu (žádost o schválení ručně) 
+```console
+az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
+```
+
+### <a name="manage-private-link-connections"></a>Správa připojení privátních odkazů
+
+```console
+# Show Connection Status
+az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
+
+# Approve a Private Link Connection Request
 az keyvault private-endpoint-connection approve --approval-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
-```
 
-### <a name="deny-a-private-link-connection-request"></a>Zamítnutí žádosti o připojení privátního odkazu
-```console
+# Deny a Private Link Connection Request
 az keyvault private-endpoint-connection reject --rejection-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
-```
 
-### <a name="delete-a-private-link-connection-request"></a>Odstranění žádosti o připojení privátního propojení
-```console
+# Delete a Private Link Connection Request
 az keyvault private-endpoint-connection delete --resource-group {RG} --vault-name {KEY VAULT NAME} --name {PRIVATE LINK CONNECTION NAME}
 ```
+
+---
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Ověření, že připojení privátního propojení funguje
 
@@ -243,14 +226,14 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 * Ověřte, že máte prostředek zóny Privátní DNS. 
     1. Musíte mít prostředek zóny Privátní DNS s přesným názvem: privatelink.vaultcore.azure.net. 
-    2. Další informace o tom, jak tento postup nastavit, najdete na následujícím odkazu. [Privátní DNS zóny](../../dns/private-dns-privatednszone.md)
+    2. Další informace o tom, jak tento postup nastavit, najdete na následujícím odkazu. [Privátní DNS zóny](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
     
 * Zkontrolujte, jestli zóna privátního DNS není propojená s virtuální sítí. To může být problém, pokud se vám stále vrátí veřejná IP adresa. 
     1. Pokud DNS privátní zóny není propojena s virtuální sítí, dotaz DNS pocházející z virtuální sítě vrátí veřejnou IP adresu trezoru klíčů. 
     2. Přejděte do prostředku zóny Privátní DNS v Azure Portal a klikněte na možnost odkazy virtuální sítě. 
     4. Musí být uvedena virtuální síť, která provede volání do trezoru klíčů. 
     5. Pokud tam není, přidejte ho. 
-    6. Podrobný postup najdete v následujícím dokumentu [Virtual Network odkaz na privátní DNS Zone](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network)
+    6. Podrobný postup najdete v následujícím dokumentu [Virtual Network odkaz na privátní DNS Zone](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)
 
 * Ověřte, že v zóně Privátní DNS chybí záznam A pro Trezor klíčů. 
     1. Přejděte na stránku Privátní DNS zóna. 
@@ -259,7 +242,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
     4. Ujistěte se, že jste zadali správnou privátní IP adresu. 
     
 * Ověřte, že záznam A má správnou IP adresu. 
-    1. IP adresu můžete ověřit otevřením prostředku privátního koncového bodu na webu Azure Portal. 
+    1. IP adresu můžete potvrdit otevřením prostředku privátního koncového bodu v Azure Portal.
     2. Na webu Azure Portal přejděte k prostředku Microsoft.Network/privateEndpoints (ne k prostředku služby Key Vault).
     3. Na stránce Přehled vyhledejte síťové rozhraní a klikněte na něj. 
     4. Odkaz zobrazí přehled prostředku síťové karty, který obsahuje privátní IP adresu vlastnosti. 

@@ -5,22 +5,25 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: inhenkel
 ms.custom: CLI
-ms.openlocfilehash: eacdfe663ee3ec323d59daf160fe33af073bc1c5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3a99dd9e69363e8fbb02b7e5e1ac5921d079ba21
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92525082"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917868"
 ---
 <!--Create a basic audio transform REST-->
 
-Následující příkaz Azure REST vytvoří základní prostředek zvuku. Nahraďte hodnoty `subscriptionID` , `resourceGroup` a `amsAccountName` hodnotami, se kterými právě pracujete. Zadejte název assetu tak, že `assetName` tady nastavíte.
+Následující příkaz Azure REST vytvoří základní prostředek zvuku. Nahraďte hodnoty `subscriptionID` , `resourceGroup` a `amsAccountName` hodnotami, se kterými právě pracujete. Nastavte transformaci názvu nastavením `transformName` .
 
-```
+```REST
+
 PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.Media/mediaServices/{{accountName}}/transforms/{{transformName}}?api-version=2020-05-01
+
 ```
 
 ## <a name="body"></a>Text
+
 ```json
 {
     "properties": {

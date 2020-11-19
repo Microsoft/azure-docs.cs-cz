@@ -12,17 +12,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/11/2019
-ms.openlocfilehash: 41f3505388e72fba15277067a94cf4e473008f20
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fab52fcea03a2f65c868cfac27f8a8cef115b2be
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790419"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917643"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrace databáze z SQL Serveru do Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-V tomto článku se dozvíte o primárních metodách migrace databáze SQL Server 2005 nebo novější na Azure SQL Database. Informace o migraci do spravované instance Azure SQL najdete v tématu [migrace Instance SQL Server do spravované instance Azure SQL](../managed-instance/migrate-to-instance-from-sql-server.md). Informace o migraci z jiných platforem najdete v tématu [Průvodce migrací databáze Azure](https://datamigration.microsoft.com/).
+V tomto článku se dozvíte o primárních metodách migrace databáze SQL Server 2005 nebo novější na Azure SQL Database. Informace o migraci do spravované instance Azure SQL najdete v tématu [migrace Instance SQL Server do spravované instance Azure SQL](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md). Pokyny k výběru možností migrace a nástrojů pro migraci na Azure SQL najdete v tématu [migrace do Azure SQL](../migration-guides/index.yml) .
+
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>Migrace do izolovaných databází nebo databáze ve fondu
 

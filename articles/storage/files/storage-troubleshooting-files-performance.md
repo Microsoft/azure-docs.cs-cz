@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 6e4eb37477a335ae93b9982692c238d05c81000b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a49dbdace01396656c3114df0bc0d4589aff57c1
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660283"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916487"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Řešení potíží s výkonem Azure File shares
 
@@ -196,7 +196,7 @@ Nedávné změny v nastaveních vícekanálové konfigurace protokolu SMB bez op
 
 ### <a name="cause"></a>Příčina  
 
-Vysoké číslo oznámení změny souborů u sdílených složek může způsobit výrazné vysoké latence. K tomu obvykle dochází u webů hostovaných ve sdílených složkách s hlubokou vnořenou strukturou adresářů. Typickým scénářem je webová aplikace hostovaná službou IIS, kde je pro každý adresář ve výchozí konfiguraci nastaveno oznámení o změně souboru. Každá změna (ReadDirectoryChangesW) ve sdílené složce, která je klientem SMB registrována pro vložení oznámení o změně ze souborové služby do klienta, který přebírá systémové prostředky, a vystavuje zhoršený počet změn. To může způsobit omezení sdílení a proto má za následek vyšší latenci na straně klienta. 
+Vysoké číslo oznámení změny souborů u sdílených složek může způsobit výrazné vysoké latence. K tomu obvykle dochází u webů hostovaných ve sdílených složkách s hlubokou vnořenou strukturou adresářů. Typickým scénářem je webová aplikace hostovaná službou IIS, kde je pro každý adresář ve výchozí konfiguraci nastaveno oznámení o změně souboru. Každá změna ([ReadDirectoryChangesW](https://docs.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) ve sdílené složce, která je klientem SMB registrována pro vložení oznámení o změně ze souborové služby do klienta, který přebírá systémové prostředky, a vystavuje zhoršený počet změn. To může způsobit omezení sdílení a proto má za následek vyšší latenci na straně klienta. 
 
 K potvrzení můžete použít metriky Azure na portálu – 
 
@@ -213,10 +213,8 @@ K potvrzení můžete použít metriky Azure na portálu –
     - Aktualizujte interval dotazování pracovního procesu služby IIS (W3WP) na hodnotu 0 nastavením `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` v registru a restartujte proces W3wp. Další informace o tomto nastavení najdete v tématu [běžné klíče registru, které používá mnoho částí služby IIS](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp).
 - Zvýšit frekvenci intervalu dotazování na změnu souboru pro snížení objemu.
     - Aktualizujte interval dotazování pracovního procesu W3WP na vyšší hodnotu (např. 10mins nebo 30mins) podle vašeho požadavku. Nastavte `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` [v registru](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp) a restartujte proces W3wp.
-- Pokud má váš web namapovaný fyzický adresář adresářové struktury, můžete zkusit omezit rozsah oznámení o změně souboru, aby se snížil objem oznámení.
-    - Služba IIS ve výchozím nastavení používá konfiguraci z Web.config souborů ve fyzickém adresáři, ke kterému je virtuální adresář namapován, a také v všech podřízených adresářích v tomto fyzickém adresáři. Pokud nechcete používat Web.config soubory v podřízených adresářích, zadejte pro atribut nastaveno allowsubdirconfig ve virtuálním adresáři hodnotu false. Další podrobnosti najdete [tady](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories). 
-
-Nastavením možnosti virtuální adresář služby IIS "nastaveno allowsubdirconfig" v Web.Config na hodnotu false pro vyloučení mapovaných fyzických podřízených adresářů z oboru.  
+- Pokud má váš web namapovaný fyzický adresář adresářové struktury, můžete zkusit omezit rozsah oznámení o změně souboru, aby se snížil objem oznámení. Služba IIS ve výchozím nastavení používá konfiguraci z Web.config souborů ve fyzickém adresáři, ke kterému je virtuální adresář namapován, a také v všech podřízených adresářích v tomto fyzickém adresáři. Pokud nechcete používat Web.config soubory v podřízených adresářích, zadejte pro atribut nastaveno allowsubdirconfig ve virtuálním adresáři hodnotu false. Další podrobnosti najdete [tady](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories). 
+    - Nastavením možnosti virtuální adresář služby IIS "nastaveno allowsubdirconfig" v Web.Config na *hodnotu false* pro vyloučení mapovaných fyzických podřízených adresářů z oboru.  
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Postup vytvoření výstrahy, pokud je sdílená složka omezená
 

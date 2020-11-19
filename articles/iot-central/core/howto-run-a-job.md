@@ -5,14 +5,14 @@ ms.service: iot-central
 services: iot-central
 author: philmea
 ms.author: philmea
-ms.date: 09/30/2020
+ms.date: 11/19/2020
 ms.topic: how-to
-ms.openlocfilehash: b8106c154a91d1e823a124a90f7571b7f52ae8cb
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 19d8738790b5634b9de989fa94edac6a542f85f4
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682119"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917337"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Vytvoření a spuštění úlohy v aplikaci Azure IoT Central
 

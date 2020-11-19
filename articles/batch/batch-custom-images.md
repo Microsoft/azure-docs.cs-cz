@@ -2,17 +2,17 @@
 title: Vytvoření vlastního fondu imagí pomocí spravované image
 description: Vytvořte vlastní fond imagí dávky ze spravované image a zřídíte výpočetní uzly se softwarem a daty pro vaši aplikaci.
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 0a357a1d8a22341297f3bee73fb0867fb03f374f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851287"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916572"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Vytvoření vlastního fondu imagí pomocí spravované image
 
-Pokud chcete vytvořit vlastní fond imagí pro virtuální počítače ve fondu Batch, můžete k vytvoření [Image Galerie sdílených imagí](batch-sig-images.md)použít spravovanou bitovou kopii. Podporuje se taky jenom spravovaná image, ale jenom pro verze rozhraní API, a to včetně 2019-08-01. 
+Pokud chcete vytvořit vlastní fond imagí pro virtuální počítače ve fondu Batch, můžete k vytvoření [Image Galerie sdílených imagí](batch-sig-images.md)použít spravovanou bitovou kopii. Podporuje se taky jenom spravovaná image, ale jenom pro verze rozhraní API, a to včetně 2019-08-01.
 
 > [!IMPORTANT]
 > Ve většině případů byste měli vytvořit vlastní image pomocí Galerie sdílených imagí. Pomocí Galerie sdílených imagí můžete vytvořit fondy rychleji, škálovat větší množství virtuálních počítačů a zvýšit spolehlivost při zřizování virtuálních počítačů. Další informace najdete v tématu [použití Galerie sdílených imagí k vytvoření vlastního fondu](batch-sig-images.md).
@@ -49,6 +49,7 @@ Pokud vytváříte nový virtuální počítač pro bitovou kopii, použijte jak
 - Do virtuálního počítače neinstalujte rozšíření Azure, jako je například rozšíření vlastních skriptů. Pokud image obsahuje předem nainstalovanou příponu, může Azure narazit na problémy při nasazování fondu služby Batch.
 - Pokud používáte připojené datové disky, musíte je připojit a naformátovat na virtuálním počítači, aby je bylo možné použít.
 - Ujistěte se, že základní bitová kopie operačního systému, kterou zadáte, používá výchozí dočasnou jednotku. Agent uzlu dávky aktuálně očekává výchozí dočasnou jednotku.
+- Ujistěte se, že disk s operačním systémem není zašifrovaný.
 - Jakmile je virtuální počítač spuštěný, připojte se k němu přes RDP (pro Windows) nebo SSH (pro Linux). Nainstalujte potřebný software nebo zkopírujte požadovaná data.  
 
 ### <a name="create-a-vm-snapshot"></a>Vytvoření snímku virtuálního počítače

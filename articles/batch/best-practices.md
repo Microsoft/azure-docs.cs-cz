@@ -1,18 +1,18 @@
 ---
 title: Osvědčené postupy
-description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
-ms.date: 08/12/2020
+description: Naučte se osvědčené postupy a užitečné tipy pro vývoj Azure Batchch řešení.
+ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: dff6668050e45d9179cd985aa10670b56afe5377
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a799aa7de19b9d5b0b8e085252cb172efebd05dc
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913224"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916861"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
-Tento článek pojednává o shromažďování osvědčených postupů pro efektivní a efektivní používání služby Azure Batch, a to na základě reálného prostředí ve službě Batch. Přečtěte si tento článek, abyste předešli nástrah návrhu, potenciálním problémům s výkonem a antipatternům při vývoji pro a používání služby Batch.
+Tento článek popisuje shromažďování osvědčených postupů a užitečných tipů pro efektivní používání služby Azure Batch, a to na základě zkušeností v reálném čase s využitím služby Batch. Tyto tipy vám pomohou vylepšit výkon a vyhnout se nástrah návrhu ve vašich Azure Batchch řešeních.
 
 ## <a name="pools"></a>Fondy
 
@@ -20,7 +20,7 @@ Tento článek pojednává o shromažďování osvědčených postupů pro efekt
 
 ### <a name="pool-configuration-and-naming"></a>Konfigurace fondu a názvy
 
-- **Režim přidělování fondů** Při vytváření účtu Batch si můžete vybrat mezi dvěma režimy přidělování fondů: předplatné **služby Batch** nebo **uživatele** . Ve většině případů byste měli použít výchozí režim služby Batch, ve kterém se fondy přidělují na pozadí v předplatných spravovaných dávkou. V alternativním režimu Předplatné uživatele se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Účty předplatného uživatele se primárně používají k zajištění důležité, ale malé podmnožiny scénářů. Další informace o režimu předplatného uživatele najdete v [Další konfiguraci pro režim předplatného uživatele](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+- **Režim přidělování fondů** Při vytváření účtu Batch si můžete vybrat mezi dvěma režimy přidělování fondů: předplatné **služby Batch** nebo **uživatele**. Ve většině případů byste měli použít výchozí režim služby Batch, ve kterém se fondy přidělují na pozadí v předplatných spravovaných dávkou. V alternativním režimu Předplatné uživatele se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Účty předplatného uživatele se primárně používají k zajištění důležité, ale malé podmnožiny scénářů. Další informace o režimu předplatného uživatele najdete v [Další konfiguraci pro režim předplatného uživatele](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
 - **Při určování úlohy na mapování fondu zvažte čas spuštění úlohy a úlohy.**
     Pokud máte úlohy skládající se hlavně z krátkých spuštěných úloh a očekávaného celkového počtu úloh je malý, takže celková Očekávaná doba běhu úlohy není dlouhá, nepřiřazujte nový fond pro každou úlohu. Čas přidělení uzlů sníží dobu běhu úlohy.
@@ -41,7 +41,7 @@ Tento článek pojednává o shromažďování osvědčených postupů pro efekt
 Doba života fondu se může lišit v závislosti na metodě přidělování a parametrech, které se vztahují ke konfiguraci fondu. Fondy můžou mít v libovolném časovém okamžiku libovolnou dobu života a proměnlivý počet výpočetních uzlů ve fondu. Vaše zodpovědnost za správu výpočetních uzlů ve fondu buď výslovně, nebo prostřednictvím funkcí poskytovaných službou (automatické škálování nebo automatického fondu).
 
 - **Udržujte fondy v čerstvém stavu.**
-    Při každém několika měsících byste měli své fondy změnit na nula, abyste měli jistotu, že získáte [nejnovější aktualizace agenta uzlů a opravy chyb](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md). Váš fond nebude dostávat aktualizace agenta uzlu, pokud není znovu vytvořen, nebo se změnila velikost na 0 výpočetních uzlů. Než znovu vytvoříte nebo změníte velikost fondu, doporučujeme, abyste si stáhli všechny protokoly agenta uzlů pro účely ladění, jak je popsáno v části [uzly](#nodes) .
+    Změňte velikost fondů na nulu každých několik měsíců, abyste měli jistotu, že získáte [nejnovější aktualizace agenta uzlů a opravy chyb](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md). Váš fond nebude dostávat aktualizace agenta uzlu, pokud není znovu vytvořen, nebo se změnila velikost na 0 výpočetních uzlů. Než znovu vytvoříte nebo změníte velikost fondu, doporučujeme, abyste si stáhli všechny protokoly agenta uzlů pro účely ladění, jak je popsáno v části [uzly](#nodes) .
 
 - **Opětovné vytvoření fondu** Na podobném upozornění se nedoporučuje každý den odstranit a znovu vytvořit fondy. Místo toho vytvořte nový fond a aktualizujte stávající úlohy tak, aby odkazovaly na nový fond. Po přesunutí všech úkolů do nového fondu odstraňte starý fond.
 
@@ -67,7 +67,7 @@ Fondy se dají vytvářet pomocí imagí třetích stran publikovaných na Azure
 
 ### <a name="azure-region-dependency"></a>Závislost oblasti Azure
 
-Doporučujeme, abyste nezávislí na jedné oblasti Azure v případě, že máte časově citlivou nebo produkční úlohu. V některých případech dochází k problémům, které mohou ovlivnit celou oblast. Například pokud vaše zpracování potřebuje spustit v určitou dobu, zvažte možnost škálovat fond v hlavní oblasti *dobře před časem zahájení* . Pokud se škálování fondu nepovede, můžete se vrátit k vertikálnímu navýšení kapacity fondu v oblasti zálohování (nebo oblastech). Fondy napříč několika účty v různých oblastech poskytují připravenou a snadno dostupnou zálohu, pokud se něco pokazilo s jiným fondem. Další informace najdete v tématu [Návrh aplikace pro zajištění vysoké dostupnosti](high-availability-disaster-recovery.md).
+Doporučujeme, abyste nezávislí na jedné oblasti Azure v případě, že máte časově citlivou nebo produkční úlohu. V některých případech dochází k problémům, které mohou ovlivnit celou oblast. Například pokud vaše zpracování potřebuje spustit v určitou dobu, zvažte možnost škálovat fond v hlavní oblasti *dobře před časem zahájení*. Pokud se škálování fondu nepovede, můžete se vrátit k vertikálnímu navýšení kapacity fondu v oblasti zálohování (nebo oblastech). Fondy napříč několika účty v různých oblastech poskytují připravenou a snadno dostupnou zálohu, pokud se něco pokazilo s jiným fondem. Další informace najdete v tématu [Návrh aplikace pro zajištění vysoké dostupnosti](high-availability-disaster-recovery.md).
 
 ## <a name="jobs"></a>Úlohy
 
@@ -175,7 +175,7 @@ Další informace o Správce prostředků a šablonách najdete v tématu [rychl
 
 ## <a name="connectivity"></a>Připojení
 
-Při zvažování připojení ve vašich řešeních služby Batch si přečtěte následující pokyny.
+Přečtěte si následující pokyny týkající se připojení ve vašich dávkových řešeních.
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr)
 
@@ -198,6 +198,10 @@ Ujistěte se, že klienti služby Batch mají k dispozici vhodné zásady opakov
 
 Virtuální počítače ve fondu Batch jsou obvykle přístupné prostřednictvím veřejných IP adres, které se můžou měnit po dobu života fondu. Díky tomu může být obtížné pracovat s databází nebo jinou externí službou, která omezuje přístup k určitým IP adresám. Aby se zajistilo, že se veřejné IP adresy ve vašem fondu neočekávaně nezmění, můžete vytvořit fond pomocí sady statických veřejných IP adres, které ovládáte. Další informace najdete v tématu [Vytvoření fondu Azure Batch se zadanými veřejnými IP adresami](create-pool-public-ip.md).
 
+### <a name="testing-connectivity-with-cloud-services-configuration"></a>Testování připojení s konfigurací Cloud Services
+
+Pro cloudové služby nemůžete použít normální protokol "/ICMP", protože protokol ICMP není povolený prostřednictvím nástroje pro vyrovnávání zatížení Azure. Další informace najdete v tématu věnovaném [připojení a síti pro Azure Cloud Services](../cloud-services/cloud-services-connectivity-and-networking-faq.md#can-i-ping-a-cloud-service).
+
 ## <a name="batch-node-underlying-dependencies"></a>Základní závislosti uzlu Batch
 
 Při navrhování řešení Batch Vezměte v úvahu následující závislosti a omezení.
@@ -206,12 +210,12 @@ Při navrhování řešení Batch Vezměte v úvahu následující závislosti a
 
 Azure Batch vytvoří a spravuje skupinu uživatelů a skupin na virtuálním počítači, které by se neměly měnit. Jsou to tyto:
 
-#### <a name="windows"></a>Windows
+Windows:
 
 - Uživatel s názvem **PoolNonAdmin**
 - Skupina uživatelů s názvem **WATaskCommon**
 
-#### <a name="linux"></a>Linux
+Linux:
 
 - Uživatel s názvem **_azbatch**
 
@@ -220,3 +224,9 @@ Azure Batch vytvoří a spravuje skupinu uživatelů a skupin na virtuálním po
 Batch se aktivně snaží vyčistit pracovní adresář, ve kterém jsou spuštěné úlohy, jakmile doba uchování vyprší. Všechny soubory napsané mimo tento adresář jsou [vaší zodpovědností na vyčištění](#manage-task-lifetime) , aby nedošlo k zaplnění místa na disku.
 
 Automatizované vyčištění pro pracovní adresář se zablokuje, pokud spustíte službu ve Windows z pracovního adresáře startTask, protože se tato složka pořád používá. Výsledkem bude snížení výkonu. Chcete-li tento problém vyřešit, změňte adresář této služby na samostatný adresář, který není spravován službou Batch.
+
+## <a name="next-steps"></a>Další kroky
+
+- [Vytvořte účet Azure Batch pomocí Azure Portal](batch-account-create-portal.md).
+- Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
+- Přečtěte si o [výchozích Azure Batch kvótách, omezeních a omezeních a o tom, jak se zvýší kvóta](batch-quota-limit.md).

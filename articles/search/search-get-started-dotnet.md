@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 10/05/2020
+ms.date: 10/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3e43a6b72d8de25de3220a9a6ac4e0b3986a467
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f82254915ffedf97f945be79be0de827a956af45
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701802"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916606"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Rychlý Start: vytvoření indexu vyhledávání pomocí klientské knihovny Azure.Search.Documents
 
@@ -26,7 +26,7 @@ Použijte novou [Azure.Search.Docknihovnu klienta uments (verze 11)](/dotnet/api
 > [!NOTE]
 > Hledáte starší verzi? Podívejte [se na téma Vytvoření indexu vyhledávání pomocí Microsoft. Azure. Search v10 za účelem](search-get-started-dotnet-v10.md) místo toho.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete mít k dispozici následující nástroje a služby:
 
@@ -37,6 +37,8 @@ Než začnete, budete mít k dispozici následující nástroje a služby:
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/), libovolná edice. Vzorový kód byl testován na bezplatnou edici Community sady Visual Studio 2019.
 
 + [ Balíček NuGetAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/)
+
+Sada Azure SDK pro .NET odpovídá [.NET Standard 2,0](/dotnet/standard/net-standard#net-implementation-support), což znamená, že .NET Framework 4.6.1 a .net Core 2,0 jako minimální požadavky.
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -58,15 +60,9 @@ Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odesla
 
 ### <a name="install-the-nuget-package"></a>Instalace balíčku NuGet
 
-Po vytvoření projektu přidejte knihovnu klienta. [BalíčekAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) se skládá z jedné klientské knihovny, která poskytuje všechna rozhraní API používaná pro práci se službou vyhledávání v .NET.
-
-1. V **nabídce nástroje**  >  **Správce balíčků NuGet** vyberte **Spravovat balíčky NuGet pro řešení...**. 
-
-1. Klikněte na **Browse** (Procházet).
+1. V aplikaci Visual Studio vytvořte nový projekt pomocí šablony Konzolová aplikace (.NET Core) pro C#.
 
 1. Vyhledejte `Azure.Search.Documents` a vyberte verze 11,0 nebo novější.
-
-1. Kliknutím na **instalovat** na pravé straně přidejte sestavení do projektu a řešení.
 
 ### <a name="create-a-search-client"></a>Vytvoření vyhledávacího klienta
 
@@ -134,9 +130,20 @@ V tomto příkladu se synchronní metody knihovny Azure.Search.Documents použí
     }
     ```
 
-1. V **program.cs** vytvořte objekt [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) a pak zavolejte metodu [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) pro vyjádření indexu ve vyhledávací službě.
+1. V **program.cs** vytvořte objekt [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) voláním metody  [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) na `SearchIndexClient` .
 
-   ```csharp
+    ```csharp
+    private static void CreateIndex(string indexName, SearchIndexClient indexClient)
+    {
+        FieldBuilder fieldBuilder = new FieldBuilder();
+        var searchFields = fieldBuilder.Build(typeof(Hotel));
+        var definition = new SearchIndex(indexName, searchFields);
+
+        indexClient.CreateOrUpdateIndex(definition);
+    }
+    ```
+
+   <!-- ```csharp
     // Define an index schema using SearchIndex
     // Create the index using SearchIndexClient
     SearchIndex index = new SearchIndex(indexName)
@@ -153,7 +160,7 @@ V tomto příkladu se synchronní metody knihovny Azure.Search.Documents použí
 
     Console.WriteLine("{0}", "Creating index...\n");
     idxclient.CreateIndex(index);
-   ```
+   ``` -->
 
 Atributy pole určují, jak se používá v aplikaci. Například `IsFilterable` atribut musí být přiřazen každému poli, které podporuje výraz filtru.
 
@@ -194,7 +201,7 @@ Při odesílání dokumentů je nutné použít objekt [IndexDocumentsBatch](/do
 
     Po inicializaci objektu [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) jej můžete odeslat do indexu voláním [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments) na objekt [SearchClient](/dotnet/api/azure.search.documents.searchclient) .
 
-1. Vzhledem k tomu, že se jedná o konzolovou aplikaci, která postupně spouští všechny příkazy, přidejte mezi indexováním a dotazy 2 sekundy čekací dobu.
+1. Vzhledem k tomu, že se jedná o konzolovou aplikaci, která postupně spouští všechny příkazy, přidejte zpoždění 2 sekundy.
 
     ```csharp
     // Wait 2 seconds for indexing to complete before starting queries (for demo and console-app purposes only)
@@ -206,7 +213,7 @@ Při odesílání dokumentů je nutné použít objekt [IndexDocumentsBatch](/do
 
 ## <a name="3---search-an-index"></a>3. Prohledání indexu
 
-Výsledky dotazu můžete získat ihned po indexování prvního dokumentu, ale skutečný test indexu by měl počkat, dokud nebudou všechny dokumenty indexovány.
+Výsledky dotazu můžete získat ihned po indexování prvního dokumentu, ale pro správné testování počkejte, dokud nebudou všechny dokumenty indexovány.
 
 V této části se přidávají dvě části funkčnosti: logika dotazů a výsledky. Pro dotazy použijte metodu [Search](/dotnet/api/azure.search.documents.searchclient.search) . Tato metoda přebírá hledaný text (řetězec dotazu) i další [Možnosti](/dotnet/api/azure.search.documents.searchoptions).
 
@@ -292,14 +299,6 @@ Hledání i filtry se provádějí pomocí metody [SearchClient. Search](/dotnet
 Stisknutím klávesy F5 znovu sestavte aplikaci a spusťte program v celém rozsahu. 
 
 Výstup obsahuje zprávy ze [Console. WriteLine](/dotnet/api/system.console.writeline)s přidáním informací a výsledků dotazu.
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
-
-Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
-
-Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
 ## <a name="next-steps"></a>Další kroky
 

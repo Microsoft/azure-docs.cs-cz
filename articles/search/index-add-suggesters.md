@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 11/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 498934c01970b296c1491e7ccd36ad947324306a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e90c1d1cfa02f63a2b5115124dee2a9da68e2f3f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445332"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917269"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření modulu pro návrhy umožňující automatické dokončování a navrhované výsledky v dotazu
 
-V Azure Kognitivní hledání je vyhledávání "Search-as-Type" povolené prostřednictvím konstrukce **návrhového** modulu přidaného do [indexu vyhledávání](search-what-is-an-index.md). Modul pro návrhy podporuje dvě prostředí: *Automatické dokončování* , které dokončuje částečný vstup pro celý dotaz na určitý termín, a *návrhy* , které pozvaní na kliknutí do konkrétní shody. Automatické dokončování vytvoří dotaz. Návrhy vytvoří vyhovující dokument.
+V Azure Kognitivní hledání je vyhledávání "Search-as-Type" povolené prostřednictvím konstrukce **návrhového** modulu přidaného do [indexu vyhledávání](search-what-is-an-index.md). Modul pro návrhy podporuje dvě prostředí: *Automatické dokončování*, které dokončuje částečný vstup pro celý dotaz na určitý termín, a *návrhy* , které pozvaní na kliknutí do konkrétní shody. Automatické dokončování vytvoří dotaz. Návrhy vytvoří vyhovující dokument.
 
 Následující snímek obrazovky z části [Vytvoření první aplikace v jazyce C#](tutorial-csharp-type-ahead-and-suggestions.md) ilustruje obě. Automatické dokončování předpokládá potenciální termín a dokončuje "TW" s "in". Návrhy jsou zkrácené výsledky hledání, kde pole jako název hotelu představuje odpovídající dokument hledání hotelu z indexu. V případě návrhů můžete Surface libovolného pole, které poskytuje popisné informace.
 
@@ -54,7 +54,7 @@ Automatické dokončování přináší výhody většího fondu polí, ze kter�
 
 Na druhé straně návrhy poskytují lepší výsledky, pokud je volba pole vybraná. Mějte na paměti, že návrh je proxy pro dokument hledání, takže budete chtít, aby pole, která nejlépe reprezentují jeden výsledek. Názvy, názvy nebo jiná jedinečná pole, která rozlišují mezi více shod, fungují nejlépe. Pokud se pole skládají z opakujících se hodnot, návrhy se skládají z identických výsledků a uživatel nebude znát, který z nich se má kliknout.
 
-Aby bylo možné vyhovět vyhledávání výsledků hledání, přidejte všechna pole, která potřebujete pro automatické dokončování, ale pak použijte **$Select** , **$Top** , **$Filter** a **searchFields** k řízení výsledků návrhů.
+Aby bylo možné vyhovět vyhledávání výsledků hledání, přidejte všechna pole, která potřebujete pro automatické dokončování, ale pak použijte **$Select**, **$Top**, **$Filter** a **searchFields** k řízení výsledků návrhů.
 
 ### <a name="choose-analyzers"></a>Zvolit analyzátory
 
@@ -120,20 +120,20 @@ V REST API přidejte moduly pro návrhy prostřednictvím [Create index](/rest/a
 V jazyce C# definujte [objekt SearchSuggester](/dotnet/api/azure.search.documents.indexes.models.searchsuggester). `Suggesters` je kolekce na objektu SearchIndex, ale může mít pouze jednu položku. 
 
 ```csharp
-private static void CreateIndex(string indexName, SearchIndexClient indexClient)
+private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
 {
-    FieldBuilder fieldBuilder = new FieldBuilder();
-    var searchFields = fieldBuilder.Build(typeof(Hotel));
+    var definition = new SearchIndex()
+    {
+        FieldBuilder builder = new FieldBuilder();
+        Fields = builder.Build(typeof(Hotel);
+        Suggesters = new List<Suggester>() {new Suggester()
+            {
+                Name = "sg",
+                SourceFields = new string[] { "HotelName", "Category" }
+            }}
+    }
 
-    //var suggester = new SearchSuggester("sg", sourceFields = "HotelName", "Category");
-
-    var definition = new SearchIndex(indexName, searchFields);
-
-    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category"});
-
-    definition.Suggesters.Add(suggester);
-
-    indexClient.CreateOrUpdateIndex(definition);
+    await indexClient.CreateIndexAsync(definition);
 }
 ```
 

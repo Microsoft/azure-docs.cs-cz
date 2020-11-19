@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 1f71c01d53a89ce1b459826689eb5b2e4899b3a2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c015561e66d77e6df352e601bf1a67da5996d4d5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886523"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915451"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
@@ -151,9 +151,9 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 ### <a name="overview"></a>Přehled
 Mobilní nabízená oznámení jsou místní oznámení, která vidíte na mobilních zařízeních. Pro volání se budeme soustředit na nabízená oznámení VoIP (Voice over Internet Protocol). Zaregistruje se na nabízená oznámení, zpracuje nabízená oznámení a pak zruší registraci nabízených oznámení.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
-Účet Firebase nastavený s povoleným cloudovým zasíláním zpráv (FCM) a službou Firebase Cloud Messaging Service připojenou k instanci centra oznámení Azure. Další informace najdete v tématu [oznámení o komunikačních službách](https://docs.microsoft.com/azure/communication-services/concepts/notifications) .
+Účet Firebase nastavený s povoleným cloudovým zasíláním zpráv (FCM) a službou Firebase Cloud Messaging Service připojenou k instanci centra oznámení Azure. Další informace najdete v tématu [oznámení o komunikačních službách](../../../concepts/notifications.md) .
 Kromě toho kurz předpokládá, že k sestavení aplikace používáte Android Studio verze 3,6 nebo vyšší.
 
 Pro aplikaci pro Android se vyžaduje sada oprávnění, aby bylo možné přijímat zprávy oznámení z Firebase cloudového zasílání zpráv. Do `AndroidManifest.xml` souboru přidejte následující sadu oprávnění hned za *<manifest... >* nebo pod *</application>* značku
