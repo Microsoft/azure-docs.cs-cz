@@ -4,12 +4,12 @@ description: Obsahuje odpovědi na některé běžné dotazy týkající se ře�
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: f83413bc54164107b8e8a4e6010f8a826a5fe327
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c9a8b5f9e02cc76789755bf81d309826de1459c5
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888415"
+ms.locfileid: "94920589"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -237,7 +237,7 @@ Ano, zákazníci můžou nasazovat řešení Azure VMware v rámci předplatnéh
 
 Microsoft poskytuje podporu pro řešení Azure VMware. [Žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)můžete odeslat. 
 
-U předplatných spravovaných poskytovatelem CSP bude poskytovatel řešení poskytovat první úroveň podpory stejným způsobem jako CSP pro jiné služby Azure.
+U předplatných spravovaných poskytovatelem CSP poskytuje poskytovatel řešení první úroveň podpory stejným způsobem jako CSP pro jiné služby Azure.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Jaké účty potřebuji k vytvoření privátního cloudu řešení Azure VMware?
 
@@ -247,9 +247,9 @@ Budete potřebovat účet Azure v předplatném Azure.
 
 Microsoft a Red Hat sdílejí integrovaný, společně umístěný tým podpory, který poskytuje jednotný kontaktní bod pro ekosystémy Red Hat běžící na platformě Azure.  Podobně jako jiné služby platformy Azure, které pracují s Red Hat Enterprise Linux, spadají řešení Azure VMware do cloudového přístupu a integrované podpory a Red Hat Enterprise Linux se podporuje pro provoz v rámci řešení Azure VMware v Azure.
 
-#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Je k dispozici VMware HCX Enterprise Edition, a pokud ano, jak spousta stojí?
+#### <a name="is-vmware-hcx-enterprise-available-and-if-so-how-much-does-it-cost"></a>Je k dispozici VMware HCX Enterprise, a pokud ano, jak spousta stojí?
 
-VMware HCX Enterprise Edition (EE) je k dispozici v rámci řešení Azure VMware jako funkce nebo služby ve *verzi Preview* . Protože řešení VMware HCX EE pro Azure VMware je ve verzi Preview, je to bezplatná funkce nebo služba a podléhá podmínkám a ujednáním služby ve verzi Preview. Jakmile se služba VMware HCX EE dostane do GA, dostanete 30denní oznámení o tom, že účtování přepíná. Službu můžete odpínat nebo odhlásit.
+VMware HCX Enterprise je k dispozici v rámci řešení Azure VMware jako funkce nebo služby ve *verzi Preview* . I když je řešení VMware HCX Enterprise for Azure ve verzi Preview, je to bezplatná funkce nebo služba a podléhá podmínkám a ujednáním služby ve verzi Preview. Jakmile se služba VMware HCX Enterprise dostane do GA, dostanete 30denní oznámení o tom, že účtování bude přepínat. Můžete ho přepnout nebo odhlásit od služby.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Jak Návody požádat o zvýšení kvóty hostitele pro řešení Azure VMware?
 
@@ -260,8 +260,7 @@ Pro předplatná EA použijte následující postup. Nejdřív budete potřebova
 * [Azure smlouva Enterprise (EA)](../cost-management-billing/manage/ea-portal-agreements.md) s Microsoftem.
 * Účet Azure v předplatném Azure.
 
-Před vytvořením prostředku řešení Azure VMware je nutné odeslat lístek podpory pro přidělení uzlů. Ověření žádosti a přidělení uzlů trvá až pět pracovních dnů. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více uzlů, Projděte si stejný postup.
-
+Před vytvořením prostředku řešení Azure VMware odešlete lístek podpory, který bude mít přidělené vaše uzly. Ověření žádosti a přidělení uzlů trvá až pět pracovních dnů. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více uzlů, Projděte si stejný postup.
 
 1. V Azure Portal v části **pomoc a podpora** vytvořte **[novou žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support)** a zadejte pro lístek následující informace:
    - **Typ problému:** Odbornou

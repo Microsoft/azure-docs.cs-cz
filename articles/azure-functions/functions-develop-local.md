@@ -1,14 +1,14 @@
 ---
-title: Místní vývoj a spouštění Azure Functions
-description: Naučte se, jak v místním počítači kódovat a testovat služby Azure Functions, než je spustíte na Azure Functions.
+title: Vývoj a spouštění Azure Functions místně
+description: Naučte se, jak nasměrovat a testovat Azure Functions v místním počítači, než je spustíte v Azure Functions.
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: e8af075f39cf25e39e5098d3c6aa27cac9018d2f
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: c011dff9f43de59d3f08445a7bbd5387b27563ad
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422939"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920028"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Místní psaní kódu a testování funkcí Azure Functions
 

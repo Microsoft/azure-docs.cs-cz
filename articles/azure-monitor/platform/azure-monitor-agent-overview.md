@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 466851ce04a047f3edabcf33b45dba9cab0db20e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 76f541a45c56669d17103f16997f3d036955b773
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132699"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919675"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Přehled agenta Azure Monitor (Preview)
 Agent Azure Monitor (AMA) shromažďuje data monitorování z hostovaného operačního systému virtuálních počítačů a doručuje je do Azure Monitor. V tomto článku najdete přehled agenta Azure Monitor, včetně postupu jeho instalace a konfigurace shromažďování dat.
@@ -78,7 +78,7 @@ Agent Azure Monitor odesílá data do Azure Monitor metrik nebo Log Analytics pr
 
 | Zdroj dat | Cíle | Popis |
 |:---|:---|:---|
-| Výkon        | Azure Monitor metriky<br>Pracovní prostor služby Log Analytics | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
+| Výkon        | Metriky Azure Monitoru<br>Pracovní prostor služby Log Analytics | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
 | Protokoly událostí systému Windows | Pracovní prostor služby Log Analytics | Informace odesílané systému protokolování událostí systému Windows. |
 | Syslog             | Pracovní prostor služby Log Analytics | Informace odesílané systému protokolování událostí pro Linux. |
 
@@ -134,7 +134,7 @@ az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Mo
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
 
 ```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
+Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus -TypeHandlerVersion 1.5
 ```
 ---
 

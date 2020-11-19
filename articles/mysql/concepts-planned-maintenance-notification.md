@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 63cc4448034b6a2ae2d74f4a2d9a0a62296678cf
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: ff197f8add65782a594d64661ffecdaced4598c2
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886477"
+ms.locfileid: "94919620"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Oznámení o plánované údržbě v Azure Database for MySQL – jeden server
 
@@ -78,7 +78,7 @@ Přechodná chyba, označovaná také jako přechodná chyba, je chyba, která s
 
 ## <a name="next-steps"></a>Další kroky
 
-- V případě jakýchkoli otázek nebo návrhů, které byste mohli potřebovat při práci se Azure Database for MySQL, pošlete e-mail týmu Azure Database for MySQL na adrese **AskAzureDBforMySQL@service.microsoft.com** .
+- V případě jakýchkoli otázek nebo návrhů, které byste mohli potřebovat při práci se Azure Database for MySQL, pošlete e-mail týmu Azure Database for MySQL na adrese AskAzureDBforMySQL@service.microsoft.com
 - Pokyny k vytvoření výstrahy na metrikě najdete v tématu [Nastavení výstrah](howto-alert-on-metric.md) .
 - [Řešení potíží s připojením pro Azure Database for MySQL – jeden server](howto-troubleshoot-common-connection-issues.md)
 - [Zpracování přechodných chyb a efektivní připojení k Azure Database for MySQL – jeden server](concepts-connectivity.md)

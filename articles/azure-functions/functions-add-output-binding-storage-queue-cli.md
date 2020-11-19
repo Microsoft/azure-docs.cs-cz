@@ -5,20 +5,18 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c7d41d889692856a9818aacd265e67b0c2d3d1ad
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6d0d559579e841553e04c26bf4dcc78934de3e95
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422858"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920198"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Připojení Azure Functions k Azure Storage pomocí nástrojů příkazového řádku
 
 V tomto článku integrujete frontu Azure Storage pomocí funkce a účtu úložiště, který jste vytvořili v předchozím článku rychlý Start. Tuto integraci dosáhnete pomocí *výstupní vazby* , která zapisuje data z požadavku HTTP do zprávy ve frontě. Po dokončení tohoto článku se neúčtují žádné další náklady nad několik centů za USD předchozího rychlého startu. Další informace o vazbách naleznete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
 
 ## <a name="configure-your-local-environment"></a>Konfigurace místního prostředí
-
-Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku][previous-quickstart]. Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.
 
 ::: zone pivot="programming-language-csharp"  
 Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku](create-first-function-cli-csharp.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.  

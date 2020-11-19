@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/11/2020
+ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 4b4c02efffb39e88a01c35d3c818930a0f6fd9cf
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8a1c789759f1119a6170fffc2c70874cd9a32fde
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069751"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919674"
 ---
 # <a name="known-issues-application-provisioning"></a>Známé problémy: zřizování aplikací
 Známé problémy, které je třeba znát při práci s zřizováním aplikací. Zpětnou vazbu o službě zřizování aplikací na UserVoice najdete v tématu [Azure AD Application zřizování UserVoice](https://aka.ms/appprovisioningfeaturerequest). Úzce sledujeme UserVoice, abychom mohli službu vylepšit. 
@@ -86,6 +86,9 @@ Při nastavování zřizování `enabled = off` nebo zastavení na zastaveno bud
 
 Když je skupina v oboru a člen je mimo rozsah, skupina se zřídí. Uživatel mimo rozsah se zřídí. Pokud se člen vrátí do oboru, služba tuto změnu okamžitě nerozpozná. Tento problém se bude řešit restartováním zřizování. Doporučujeme službu pravidelně restartovat, aby se zajistilo správné zřízení všech uživatelů.  
 
+**Správce není zřízený.**
+
+Pokud je uživatel a jeho manažer v oboru pro zřizování, služba zřídí uživatele a pak aktualizuje správce. Pokud je však jeden uživatel v oboru a správce je mimo rozsah, zřídíme uživatele bez odkazu správce. Když se správce dokončí do rozsahu, odkaz na správce se neaktualizuje, dokud nerestartujete zřizování a nespustíte znovu vyhodnocení všech uživatelů. 
 
 ## <a name="next-steps"></a>Další kroky
 - [Jak funguje zřizování](how-provisioning-works.md)

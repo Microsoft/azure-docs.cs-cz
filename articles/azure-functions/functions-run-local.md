@@ -1,16 +1,16 @@
 ---
 title: Práce s Azure Functions Core Tools
-description: Přečtěte si, jak pomocí příkazového řádku nebo terminálu v místním počítači Code a testovat službu Azure Functions, abyste je mohli spustit na Azure Functions.
+description: Naučte se, jak Code a test Azure Functions z příkazového řádku nebo terminálu na místním počítači, než je spustíte v Azure Functions.
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 78c6e4dffb35980b73fbc09bdc07d55215e659ae
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3cf495ca0687e6fa37f619615fb1529659a462dc
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422582"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920215"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -35,11 +35,11 @@ Existují tři verze Azure Functions Core Tools. Použitá verze závisí na va�
 
 + [**Verze 3. x/2. x**](#v2): podporuje buď [verzi 3. x, nebo 2. x Azure Functions runtime](functions-versions.md). Tyto verze podporují [Windows](?tabs=windows#v2), [MacOS](?tabs=macos#v2)a [Linux](?tabs=linux#v2) a k instalaci používají správce balíčků pro konkrétní platformu nebo npm.
 
-+ **Verze 1. x** : podporuje verzi 1. x modulu runtime Azure Functions. Tato verze nástrojů je podporována pouze v počítačích se systémem Windows a je instalována z [balíčku npm](https://www.npmjs.com/package/azure-functions-core-tools).
++ **Verze 1. x**: podporuje verzi 1. x modulu runtime Azure Functions. Tato verze nástrojů je podporována pouze v počítačích se systémem Windows a je instalována z [balíčku npm](https://www.npmjs.com/package/azure-functions-core-tools).
 
 V daném počítači můžete nainstalovat jenom jednu verzi základních nástrojů. Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Azure Functions Core Tools v současné době závisí na Azure CLI pro ověřování pomocí účtu Azure. To znamená, že musíte [Azure CLI nainstalovat místně](/cli/azure/install-azure-cli) , aby bylo možné [publikovat do Azure](#publish) z Azure Functions Core Tools. 
 
@@ -253,7 +253,7 @@ I při použití Emulátor úložiště Microsoft Azure pro vývoj budete možn�
   Vyberte svůj účet úložiště, vyberte **přístupové klíče** v **Nastavení** a pak zkopírujte jednu z hodnot **připojovacího řetězce** .
   ![Kopírovat připojovací řetězec z Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- Pomocí [Průzkumník služby Azure Storage](https://storageexplorer.com/) se připojte ke svému účtu Azure. V **Průzkumníku** rozbalte své předplatné, rozbalte **účty úložiště** , vyberte svůj účet úložiště a zkopírujte primární nebo sekundární připojovací řetězec.
+- Pomocí [Průzkumník služby Azure Storage](https://storageexplorer.com/) se připojte ke svému účtu Azure. V **Průzkumníku** rozbalte své předplatné, rozbalte **účty úložiště**, vyberte svůj účet úložiště a zkopírujte primární nebo sekundární připojovací řetězec.
 
   ![Kopírovat připojovací řetězec z Průzkumník služby Storage](./media/functions-run-local/storage-explorer.png)
 
@@ -312,9 +312,9 @@ Tyto možnosti můžete zadat také v příkazu pomocí následujících argumen
 | Argument     | Popis                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Verze 2. x a novější verze) Vygeneruje stejné šablony skriptu C# (. csx), které se používají ve verzi 1. x a na portálu. |
-| **`--language`** , **`-l`**| Programovací jazyk šablony, například C#, F # nebo JavaScript. Tato možnost je vyžadována ve verzi 1. x. Ve verzi 2. x a novějších verzích tuto možnost nepoužívejte nebo vyberte jazyk, který se shoduje s modulem runtime pracovního procesu. |
-| **`--name`** , **`-n`** | Název funkce |
-| **`--template`** , **`-t`** | Pomocí `func templates list` příkazu můžete zobrazit úplný seznam dostupných šablon pro každý podporovaný jazyk.   |
+| **`--language`**, **`-l`**| Programovací jazyk šablony, například C#, F # nebo JavaScript. Tato možnost je vyžadována ve verzi 1. x. Ve verzi 2. x a novějších verzích tuto možnost nepoužívejte nebo vyberte jazyk, který se shoduje s modulem runtime pracovního procesu. |
+| **`--name`**, **`-n`** | Název funkce |
+| **`--template`**, **`-t`** | Pomocí `func templates list` příkazu můžete zobrazit úplný seznam dostupných šablon pro každý podporovaný jazyk.   |
 
 
 Například pro vytvoření triggeru HTTP JavaScriptu v jednom příkazu spusťte:
@@ -385,10 +385,10 @@ npm start
 | **`--language-worker`** | Argumenty pro konfiguraci modulu Language Worker. Můžete například povolit ladění pro Language Worker tím, že poskytnete [port ladění a další požadované argumenty](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers). Nepodporováno pro verzi 1. x. |
 | **`--cert`** | Cesta k souboru. pfx, který obsahuje privátní klíč. Používá se jenom pro `--useHttps` . Nepodporováno pro verzi 1. x. |
 | **`--password`** | Buď heslo, nebo soubor, který obsahuje heslo pro soubor. pfx. Používá se jenom pro `--cert` . Nepodporováno pro verzi 1. x. |
-| **`--port`** , **`-p`** | Místní port, na kterém má naslouchat. Výchozí hodnota: 7071. |
+| **`--port`**, **`-p`** | Místní port, na kterém má naslouchat. Výchozí hodnota: 7071. |
 | **`--pause-on-error`** | Před ukončením procesu ponechejte další vstup. Používá se jenom při spouštění základních nástrojů z integrovaného vývojového prostředí (IDE).|
-| **`--script-root`** , **`--prefix`** | Slouží k zadání cesty ke kořenu aplikace Function App, která má být spuštěna nebo nasazena. Používá se pro kompilované projekty, které generují soubory projektu do podsložky. Například při sestavování projektu knihovny tříd jazyka C# jsou host.jsna, local.settings.jsna a function.jsna soubory generovány v *kořenové* podsložce s cestou, jako je například `MyProject/bin/Debug/netstandard2.0` . V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0` . Toto je kořen aplikace Function App při spuštění v Azure. |
-| **`--timeout`** , **`-t`** | Časový limit pro spuštění funkce Host v sekundách. Výchozí hodnota: 20 sekund.|
+| **`--script-root`**, **`--prefix`** | Slouží k zadání cesty ke kořenu aplikace Function App, která má být spuštěna nebo nasazena. Používá se pro kompilované projekty, které generují soubory projektu do podsložky. Například při sestavování projektu knihovny tříd jazyka C# jsou host.jsna, local.settings.jsna a function.jsna soubory generovány v *kořenové* podsložce s cestou, jako je například `MyProject/bin/Debug/netstandard2.0` . V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0` . Toto je kořen aplikace Function App při spuštění v Azure. |
+| **`--timeout`**, **`-t`** | Časový limit pro spuštění funkce Host v sekundách. Výchozí hodnota: 20 sekund.|
 | **`--useHttps`** | Vytvořte vazby na `https://localhost:{port}` místo pro `http://localhost:{port}` . Ve výchozím nastavení tato možnost vytvoří důvěryhodný certifikát na vašem počítači.|
 
 Když se hostitel funkce spustí, vypíše adresu URL funkcí aktivovaných protokolem HTTP:
@@ -488,10 +488,10 @@ Ve verzi 1. x můžete také vyvolat funkci přímo pomocí `func run <FunctionN
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-| **`--content`** , **`-c`** | Vložený obsah. |
-| **`--debug`** , **`-d`** | Před spuštěním funkce připojte k hostitelskému procesu ladicí program.|
-| **`--timeout`** , **`-t`** | Doba, po kterou se má čekat (v sekundách), dokud nebude hostitel místní funkce připravený.|
-| **`--file`** , **`-f`** | Název souboru, který se má použít jako obsah|
+| **`--content`**, **`-c`** | Vložený obsah. |
+| **`--debug`**, **`-d`** | Před spuštěním funkce připojte k hostitelskému procesu ladicí program.|
+| **`--timeout`**, **`-t`** | Doba, po kterou se má čekat (v sekundách), dokud nebude hostitel místní funkce připravený.|
+| **`--file`**, **`-f`** | Název souboru, který se má použít jako obsah|
 | **`--no-interactive`** | Nezobrazuje výzvu k zadání. Užitečné pro scénáře automatizace.|
 
 Například pro volání funkce aktivované protokolem HTTP a předejte tělo obsahu spusťte následující příkaz:
@@ -537,12 +537,12 @@ Následující možnosti publikování jsou podporovány pouze pro verzi 2. x a 
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only`** , **`-o`** |  Pouze publikování nastavení a přeskočení obsahu. Výchozí hodnota je prompt. |
+| **`--publish-settings-only`**, **`-o`** |  Pouze publikování nastavení a přeskočení obsahu. Výchozí hodnota je prompt. |
 |**`--list-ignored-files`** | Zobrazí seznam souborů, které jsou během publikování ignorovány, které jsou založeny na souboru. funcignore. |
 | **`--list-included-files`** | Zobrazí seznam souborů, které jsou publikovány, které jsou založeny na souboru. funcignore. |
 | **`--nozip`** | Zapne výchozí `Run-From-Package` režim. |
 | **`--build-native-deps`** | Při publikování aplikací funkcí Pythonu přeskočí vygenerování složky. kolaes. |
-| **`--build`** , **`-b`** | Provede akci sestavení při nasazení do aplikace Functions pro Linux. Akceptuje: `remote` a `local` . |
+| **`--build`**, **`-b`** | Provede akci sestavení při nasazení do aplikace Functions pro Linux. Akceptuje: `remote` a `local` . |
 | **`--additional-packages`** | Seznam balíčků, které se mají nainstalovat při vytváření nativních závislostí Příklad: `python3-dev libevent-dev`. |
 | **`--force`** | Ignorovat ověření před publikováním v některých scénářích. |
 | **`--csx`** | Publikujte projekt skriptu C# (. csx). |

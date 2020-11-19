@@ -3,12 +3,12 @@ title: Programové vytváření zásad
 description: Tento článek vás provede programově vytvářením a správou zásad pro Azure Policy pomocí rozhraní příkazového řádku Azure, Azure PowerShell a REST API.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 2bf2b1864331fd785ecdd70be4af79be01f1e5e0
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491796"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920011"
 ---
 # <a name="programmatically-create-policies"></a>Programové vytváření zásad
 
@@ -16,7 +16,7 @@ Tento článek vás provede programově vytvářením a správou zásad. Azure P
 
 Informace o dodržování předpisů najdete v tématu [získání dat o dodržování předpisů](get-compliance-data.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jsou splněné následující předpoklady:
 
@@ -203,7 +203,7 @@ Pokud chcete vytvořit definici zásady, použijte následující postup:
    ```
 
    Příkaz vytvoří definici zásady s názvem _audit účty úložiště otevřená ve veřejných sítích_.
-   Další informace o dalších parametrech, které můžete použít, najdete v tématu [AZ Policy definition Create](/cli/azure/policy/definition#az-policy-definition-create).
+   Další informace o dalších parametrech, které můžete použít, najdete v tématu [AZ Policy definition Create](/cli/azure/policy/definition#az_policy_definition_create).
 
    Když se volá bez parametrů umístění, `az policy definition creation` ve výchozím nastavení se uloží definice zásady ve vybraném předplatném kontextu relace. Definici uložíte do jiného umístění pomocí následujících parametrů:
 

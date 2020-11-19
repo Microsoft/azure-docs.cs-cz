@@ -3,16 +3,16 @@ title: Vysvětlení konceptů úložiště modelů zařízení | Microsoft Docs
 description: Jako vývojář řešení nebo odborníky v IT se dozvíte o základních konceptech úložiště modelů zařízení.
 author: rido-min
 ms.author: rmpablos
-ms.date: 09/30/2020
+ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4e15ef5256c1552fc8ab7fb9bd84f15bb3433834
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: b567efe2541bb33c905def73bb78398799b4ed69
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131356"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920538"
 ---
 # <a name="device-model-repository"></a>Úložiště modelů zařízení
 
@@ -30,7 +30,7 @@ Společnost Microsoft je hostitelem veřejné služby DMR s těmito charakterist
 
 ## <a name="custom-device-model-repository"></a>Vlastní úložiště modelů zařízení
 
-Pokud chcete vytvořit vlastní soubor DMR, můžete použít stejný vzor protokolu DMR na jakémkoli úložném médiu, jako je místní systém souborů nebo vlastní webové servery HTTP. Modely zařízení z vlastního zařízení DMR můžete načítat stejným způsobem jako z veřejného DMR, a to jednoduše tak, že změníte základní adresu URL používanou pro přístup ke službě DMR.
+Použijte stejný vzor protokolu DMR k vytvoření vlastního protokolu DMR na jakémkoli úložném médiu, jako je místní systém souborů nebo vlastní webové servery HTTP. Můžete načítat modely zařízení z vlastního zařízení DMR stejným způsobem jako z veřejného ovladače DMR změnou základní adresy URL používané pro přístup ke službě DMR.
 
 > [!NOTE]
 > Microsoft poskytuje nástroje pro ověření modelů zařízení ve veřejné službě DMR. Tyto nástroje můžete znovu použít ve vlastních úložištích.
@@ -47,9 +47,9 @@ Všechna rozhraní ve `dtmi` složkách jsou dostupná taky z veřejného koncov
 
 ### <a name="resolve-models"></a>Řešení modelů
 
-Chcete-li programově získat přístup k těmto rozhraním, je nutné převést DTMI na relativní cestu, kterou můžete použít k dotazování veřejného koncového bodu. Následující ukázka kódu ukazuje, jak to provést:
+Chcete-li programově získat přístup k těmto rozhraním, je nutné převést DTMI na relativní cestu, kterou můžete použít k dotazování veřejného koncového bodu.
 
-Chcete-li převést DTMI na absolutní cestu, používáme `DtmiToPath` funkci s `IsValidDtmi` :
+Chcete-li převést DTMI na absolutní cestu, použijte `DtmiToPath` funkci s `IsValidDtmi` :
 
 ```cs
 static string DtmiToPath(string dtmi)
@@ -87,45 +87,80 @@ string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 
 1. Rozvětvení veřejného úložiště GitHub: [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models) .
 1. Naklonujte rozvětvené úložiště. Volitelně můžete vytvořit novou větev, abyste zachovali změny izolované od `main` větve.
-1. Přidejte nová rozhraní do `dtmi` složky pomocí konvence složka/filename. Prohlédněte si nástroj [Add-model](#add-model) .
-1. Ověřte modely zařízení místně pomocí oddílu [skripty k ověření změn](#validate-files) .
+1. Přidejte nová rozhraní do `dtmi` složky pomocí konvence složka/filename. Další informace najdete v tématu [Import modelu do `dtmi/` složky](#import-a-model-to-the-dtmi-folder).
+1. Ověřte modely místně pomocí `dmr-client` nástroje. Další informace najdete v tématu [ověření modelů](#validate-models).
 1. Potvrďte změny místně a vložte je do rozvětvení.
 1. Z větve vytvořte žádost o přijetí změn, která cílí na `main` větev. Viz téma [vytvoření problému nebo dokumentace žádostí o](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request) přijetí změn.
 1. Zkontrolujte [požadavky žádosti o](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)přijetí změn.
 
-Žádost o přijetí změn spustí řadu akcí GitHubu, které budou ověřovat nová odeslaná rozhraní, a ujistěte se, že vaše žádost o přijetí změn splňuje všechny kontroly.
+Žádost o přijetí změn spustí sadu akcí GitHubu, které ověřují odeslaná rozhraní, a zajistí, že vaše žádost o přijetí změn splňuje všechny požadavky.
 
 Microsoft bude reagovat na žádost o přijetí změn se všemi kontrolami tři pracovní dny.
 
-### <a name="add-model"></a>přidat model
+### <a name="dmr-client-tools"></a>`dmr-client` nástroje
 
-Následující kroky ukazují, jak add-model.js skript vám pomůže přidat nové rozhraní. Tento skript vyžaduje spuštění Node.js:
+Nástroje, které slouží k ověřování modelů během kontrol žádosti o přijetí změn, je možné také použít k místnímu přidání a ověření rozhraní DTDL.
 
-1. Z příkazového řádku přejděte do místního úložiště Git.
-1. Spuštěním příkazu `npm install`
-1. Spuštěním příkazu `npm run add-model <path-to-file-to-add>`
+> [!NOTE]
+> Tento nástroj vyžaduje [sadu .NET SDK](https://dotnet.microsoft.com/download) verze 3,1 nebo vyšší.
+
+### <a name="install-dmr-client"></a>Znovu `dmr-client`
+
+```bash
+curl -L https://aka.ms/install-dmr-client-linux | bash
+```
+
+```powershell
+iwr https://aka.ms/install-dmr-client-windows -UseBasicParsing | iex
+```
+
+### <a name="import-a-model-to-the-dtmi-folder"></a>Import modelu do `dtmi/` složky
+
+Pokud už máte model uložený v souborech JSON, můžete `dmr-client import` k jejich přidání do `dtmi/` složky se správnými názvy souborů použít příkaz:
+
+```bash
+# from the local repo root folder
+dmr-client import --model-file "MyThermostat.json"
+```
+
+> [!TIP]
+> `--local-repo`K určení kořenové složky místního úložiště můžete použít argument.
+
+### <a name="validate-models"></a>Ověřit modely
+
+Pomocí příkazu můžete ověřit své modely `dmr-client validate` :
+
+```bash
+dmr-client validate --model-file ./my/model/file.json
+```
+
+> [!NOTE]
+> Ověřování používá nejnovější verzi analyzátoru DTDL k zajištění kompatibility všech rozhraní se specifikací jazyka DTDL.
+
+Pokud chcete ověřit externí závislosti, musí existovat v místním úložišti. Chcete-li ověřit modely, použijte `--repo` možnost pro určení `local` `remote` složky nebo pro vyřešení závislostí:
+
+```bash
+# from the repo root folder
+dmr-client validate --model-file ./my/model/file.json --repo .
+```
+
+### <a name="strict-validation"></a>Striktní ověřování
+
+Požadavek DMR obsahuje další [požadavky](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md), pomocí `stict` příznaku ověřte, že je váš model k těmto požadavkům:
+
+```bash
+dmr-client validate --model-file ./my/model/file.json --repo . --strict true
+```
 
 Podívejte se na výstup konzoly pro všechny chybové zprávy.
 
-### <a name="local-validation"></a>Místní ověřování
+### <a name="export-models"></a>Export modelů
 
-Před odesláním žádosti o přijetí změn můžete spustit stejné kontroly ověřování místně, aby bylo možné předem diagnostikovat problémy.
+Modely lze z daného úložiště (místní nebo vzdálené) exportovat do jednoho souboru pomocí pole JSON:
 
-#### <a name="validate-files"></a>ověřit – soubory
-
-`npm run validate-files <file1.json> <file2.json>` kontroluje, zda cesta k souboru odpovídá očekávané složce a názvům souborů.
-
-#### <a name="validate-ids"></a>ověřit – ID
-
-`npm run validate-ids <file1.json> <file2.json>` kontroluje, že všechna ID definovaná v dokumentu používají stejný kořen jako hlavní ID.
-
-#### <a name="validate-deps"></a>ověřit – DEPS
-
-`npm run validate-deps <file1.json> <file2.json>` zkontroluje, jestli jsou všechny závislosti dostupné ve `dtmi` složce.
-
-#### <a name="validate-models"></a>ověřit – modely
-
-Můžete spustit [ukázku ověření DTDL](https://github.com/Azure-Samples/DTDL-Validator) a lokálně ověřit modely zařízení.
+```bash
+dmr-client export --dtmi "dtmi:com:example:TemperatureController;1" -o TemperatureController.expanded.json
+```
 
 ## <a name="next-steps"></a>Další kroky
 

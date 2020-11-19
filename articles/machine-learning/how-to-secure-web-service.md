@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 03/05/2020
+ms.date: 11/18/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: a9b68b2d4298c5e692782e529bae9a9df6359953
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 97017e104ecff38ebf4e475fb5f6ae42707ef10e
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331154"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919586"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS
 
@@ -30,7 +30,7 @@ Pomocí [protokolu HTTPS](https://en.wikipedia.org/wiki/HTTPS) můžete omezit p
 >
 > Konkrétně webové služby nasazené prostřednictvím Azure Machine Learning podporují protokol TLS verze 1,2 pro AKS a ACI nová nasazení. V případě nasazení ACI, pokud používáte starší verzi TLS, doporučujeme opětovné nasazení a získat nejnovější verzi TLS.
 
-Protokoly TLS a SSL závisí na *digitálních certifikátech* , které vám pomůžou se šifrováním a ověřením identity. Další informace o tom, jak digitální certifikáty fungují, najdete v tématu [Infrastruktura veřejných klíčů](https://en.wikipedia.org/wiki/Public_key_infrastructure)tématu Wikipedii.
+Protokoly TLS a SSL závisí na *digitálních certifikátech*, které vám pomůžou se šifrováním a ověřením identity. Další informace o tom, jak digitální certifikáty fungují, najdete v tématu [Infrastruktura veřejných klíčů](https://en.wikipedia.org/wiki/Public_key_infrastructure)tématu Wikipedii.
 
 > [!WARNING]
 > Pokud pro webovou službu nepoužíváte protokol HTTPS, data odesílaná do a ze služby mohou být viditelná i pro ostatní na internetu.
@@ -87,6 +87,9 @@ Při nasazení na AKS můžete vytvořit nový cluster AKS nebo připojit existu
 
 Metoda **Enable_ssl** může používat certifikát, který poskytuje společnost Microsoft nebo certifikát, který si koupíte.
 
+> [!WARNING]
+> Pokud je váš cluster AKS nakonfigurovaný s interním nástrojem pro vyrovnávání zatížení __, nepodporuje se__ certifikát poskytnutý společností Microsoft. Použití certifikátu poskytnutého společností Microsoft vyžaduje prostředek veřejné IP adresy v Azure, který není k dispozici pro AKS, pokud je nakonfigurovaný pro interní nástroj pro vyrovnávání zatížení.
+
   * Použijete-li certifikát od společnosti Microsoft, je nutné použít parametr *leaf_domain_label* . Tento parametr vygeneruje název DNS pro službu. Například hodnota "contoso" vytvoří název domény "contoso \<six-random-characters> . \<azureregion> . cloudapp.azure.com ", kde \<azureregion> je oblast, která obsahuje službu. Volitelně můžete pomocí parametru *overwrite_existing_domain* přepsat existující *leaf_domain_label*.
 
     Chcete-li nasadit (nebo znovu nasadit) službu s povoleným protokolem TLS, nastavte parametr *ssl_enabled* na hodnotu "true", ať je to možné. Nastavte parametr *ssl_certificate* na hodnotu souboru *certifikátu* . Nastavte *ssl_key* na hodnotu souboru *klíče* .
@@ -115,7 +118,7 @@ Metoda **Enable_ssl** může používat certifikát, který poskytuje společnos
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
-  * Když použijete *zakoupený certifikát* , použijete parametry *ssl_cert_pem_file* , *ssl_key_pem_file* a *ssl_cname* . Následující příklad ukazuje, jak pomocí souborů *. pem* vytvořit konfiguraci, která používá certifikát TLS/SSL, který jste zakoupili:
+  * Když použijete *zakoupený certifikát*, použijete parametry *ssl_cert_pem_file*, *ssl_key_pem_file* a *ssl_cname* . Následující příklad ukazuje, jak pomocí souborů *. pem* vytvořit konfiguraci, která používá certifikát TLS/SSL, který jste zakoupili:
 
     ```python
     from azureml.core.compute import AksCompute
@@ -132,7 +135,7 @@ Metoda **Enable_ssl** může používat certifikát, který poskytuje společnos
 
 Další informace o *Enable_ssl* naleznete v tématu [AksProvisioningConfiguration.Enable_ssl ()](/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) a [AksAttachConfiguration.Enable_ssl ()](/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
 
-### <a name="deploy-on-azure-container-instances"></a>Nasadit na Azure Container Instances
+### <a name="deploy-on-azure-container-instances"></a>Nasazení v Azure Container Instances
 
 Při nasazení na Azure Container Instances zadáte hodnoty parametrů souvisejících s protokolem TLS, jak ukazuje následující fragment kódu:
 
@@ -159,7 +162,8 @@ Dál je potřeba aktualizovat DNS tak, aby odkazoval na webovou službu.
 
   > [!WARNING]
   > Pokud jste použili *leaf_domain_label* k vytvoření služby pomocí certifikátu od Microsoftu, neaktualizujte ručně hodnotu DNS clusteru. Hodnota by měla být nastavena automaticky.
-
+  >
+  > Pokud je váš cluster AKS nakonfigurovaný pomocí interního nástroje pro vyrovnávání zatížení __, nepodporuje se__ certifikát poskytnutý společností Microsoft (nastavením *leaf_domain_label*). Použití certifikátu poskytnutého společností Microsoft vyžaduje prostředek veřejné IP adresy v Azure, který není k dispozici pro AKS, pokud je nakonfigurovaný pro interní nástroj pro vyrovnávání zatížení.
   Aktualizujte DNS veřejné IP adresy clusteru AKS na kartě **Konfigurace** v části **Nastavení** v levém podokně. (Podívejte se na následující obrázek.) Veřejná IP adresa je typ prostředku, který se vytvoří v rámci skupiny prostředků, která obsahuje uzly agenta AKS a další síťové prostředky.
 
   [![Azure Machine Learning: zabezpečení webových služeb pomocí protokolu TLS](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: b49b9f710a98495342687c4ce1dc702078b27246
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f4546433f5bd20e2f001d6d868d8adfb4b9bf8c0
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535329"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920368"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
@@ -103,7 +103,7 @@ Pokud explicitně nezadáte `validation_data` `n_cross_validation` parametr nebo
 |&nbsp;Velikost dat &nbsp; školení| Technika ověřování |
 |---|-----|
 |**Větší &nbsp; než &nbsp; 20 000 &nbsp; řádků**| Je použito rozdělení dat pro vlak nebo ověření. Ve výchozím nastavení se jako sada ověření provede 10% počáteční sady dat školení. Pak se tato sada ověření používá pro výpočet metrik.
-|**Menší &nbsp; než &nbsp; 20 000 &nbsp; řádků**| Je použit přístup pro křížové ověřování. Výchozí počet skládání závisí na počtu řádků. <br> **Pokud je datová sada menší než 1 000 řádků** , použije se 10 skládání. <br> **Pokud jsou řádky mezi 1 000 a 20 000** , budou použity tři skládání.
+|**Menší &nbsp; než &nbsp; 20 000 &nbsp; řádků**| Je použit přístup pro křížové ověřování. Výchozí počet skládání závisí na počtu řádků. <br> **Pokud je datová sada menší než 1 000 řádků**, použije se 10 skládání. <br> **Pokud jsou řádky mezi 1 000 a 20 000**, budou použity tři skládání.
 
 V tuto chvíli potřebujete pro vyhodnocení modelu zadat vlastní **testovací data** . Příklad kódu, který přináší vlastní testovací data pro vyhodnocení modelu, najdete v části **test** [tohoto poznámkového bloku Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb).
 
@@ -130,26 +130,24 @@ Možné příklady:
 1. Experiment s klasifikací pomocí AUC váže jako primární metrika s časovým limitem experimentu nastaveným na 30 minut a 2 přeložení křížového ověřování.
 
    ```python
-       automl_classifier=AutoMLConfig(
-       task='classification',
-       primary_metric='AUC_weighted',
-       experiment_timeout_minutes=30,
-       blocked_models=['XGBoostClassifier'],
-       training_data=train_data,
-       label_column_name=label,
-       n_cross_validations=2)
+       automl_classifier=AutoMLConfig(task='classification',
+                                      primary_metric='AUC_weighted',
+                                      experiment_timeout_minutes=30,
+                                      blocked_models=['XGBoostClassifier'],
+                                      training_data=train_data,
+                                      label_column_name=label,
+                                      n_cross_validations=2)
    ```
 1. V následujícím příkladu je regresní experiment nastavený na konec po 60 minutách s pěti více než 5 ověřovacími skládáními.
 
    ```python
-      automl_regressor = AutoMLConfig(
-      task='regression',
-      experiment_timeout_minutes=60,
-      allowed_models=['KNN'],
-      primary_metric='r2_score',
-      training_data=train_data,
-      label_column_name=label,
-      n_cross_validations=5)
+      automl_regressor = AutoMLConfig(task='regression',
+                                      experiment_timeout_minutes=60,
+                                      allowed_models=['KNN'],
+                                      primary_metric='r2_score',
+                                      training_data=train_data,
+                                      label_column_name=label,
+                                      n_cross_validations=5)
    ```
 
 
@@ -301,6 +299,18 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
+<a name="exit"></a> 
+
+### <a name="exit-criteria"></a>Výstupní kritéria
+
+Existuje několik možností, které můžete v AutoMLConfig definovat pro ukončení experimentu.
+
+|Kritéria| description
+|----|----
+Žádná &nbsp; kritéria | Pokud nedefinujete žádné parametry ukončení, experiment pokračuje, dokud neproběhne další postup u primární metriky.
+Po &nbsp; &nbsp; delší &nbsp; &nbsp; dobu| Pomocí `experiment_timeout_minutes` Možnosti v nastavení můžete určit, jak dlouho má experiment běžet v řádu minut. <br><br> Aby se zabránilo chybám při experimentování, je k dispozici minimálně 15 minut nebo 60 minut, pokud řádek podle velikosti sloupce překračuje 10 000 000.
+Bylo &nbsp; &nbsp; dosaženo skóre &nbsp; &nbsp;| Použijte `experiment_exit_score` dokončí experiment po dosažení zadaného primárního skóre metriky.
+
 ## <a name="run-experiment"></a>Spustit experiment
 
 Pro automatizované ML vytvoříte `Experiment` objekt, který je pojmenovaný objekt v, který se `Workspace` používá ke spouštění experimentů.
@@ -327,17 +337,15 @@ run = experiment.submit(automl_config, show_output=True)
 >Závislosti jsou nejprve nainstalovány v novém počítači.  Může trvat až 10 minut, než se zobrazí výstup.
 >Nastavení `show_output` na `True` výstup se zobrazí v konzole nástroje.
 
- <a name="exit"></a> 
+### <a name="multiple-child-runs-on-clusters"></a>Několik podřízených spuštění v clusterech
 
-### <a name="exit-criteria"></a>Výstupní kritéria
+Automatizovaná spuštění experimentů v rámci služby můžete provádět na clusteru, který už spouští jiný experiment. Časování však závisí na tom, kolik uzlů cluster má, a pokud jsou tyto uzly k dispozici pro spuštění jiného experimentu.
 
-Existuje několik možností, které můžete definovat pro ukončení experimentu.
+Každý uzel v clusteru funguje jako jednotlivý virtuální počítač (VM), který může provádět jeden školicí běh. pro automatizované ML to znamená podřízený běh. Pokud jsou všechny uzly zaneprázdněné, nový experiment se zařadí do fronty. Pokud ale existují bezplatné uzly, na novém experimentu se v dostupných uzlech/virtuálních počítačích spustí paralelně automatizovaná podřízená rutina ML.
 
-|Kritéria| description
-|----|----
-Žádná &nbsp; kritéria | Pokud nedefinujete žádné parametry ukončení, experiment pokračuje, dokud neproběhne další postup u primární metriky.
-Po &nbsp; &nbsp; delší &nbsp; &nbsp; dobu| Pomocí `experiment_timeout_minutes` Možnosti v nastavení můžete určit, jak dlouho má experiment běžet v řádu minut. <br><br> Aby se zabránilo chybám při experimentování, je k dispozici minimálně 15 minut nebo 60 minut, pokud řádek podle velikosti sloupce překračuje 10 000 000.
-Bylo &nbsp; &nbsp; dosaženo skóre &nbsp; &nbsp;| Použijte `experiment_exit_score` dokončí experiment po dosažení zadaného primárního skóre metriky.
+Aby bylo možné spravovat podřízená spuštění a při jejich provádění, doporučujeme vytvořit vyhrazený cluster na jeden experiment a porovnat počet `max_concurrent_iterations` experimentů s počtem uzlů v clusteru. Tímto způsobem použijete všechny uzly clusteru ve stejnou dobu s počtem souběžných podřízených spuštění/iterací, které chcete.
+
+Nakonfigurujte  `max_concurrent_iterations` v `AutoMLConfig` objektu. Pokud není nakonfigurovaný, pak ve výchozím nastavení je povolený jenom jeden souběžný podřízený běh nebo iterace na jeden experiment.  
 
 ## <a name="explore-models-and-metrics"></a>Prozkoumejte modely a metriky
 
@@ -348,7 +356,7 @@ Přečtěte si téma [vyhodnocení výsledků automatických experimentů strojo
 Chcete-li získat souhrn featurization a pochopit, jaké funkce byly přidány do konkrétního modelu, přečtěte si téma [transparentnost featurization](how-to-configure-auto-features.md#featurization-transparency). 
 
 > [!NOTE]
-> Algoritmy automatizovaného použití ML mají podstatu náhodnosti, která může způsobit mírnou variaci doporučených modelů, jako je přesnost. Automatizované ML také provádí operace s daty, jako je rozdělení výukového testu, rozdělení vlaku-ověření nebo křížové ověřování v případě potřeby. Takže pokud spustíte experiment se stejným nastavením konfigurace a primární metrikou víckrát, pravděpodobně se vám v každém experimentu v důsledku těchto faktorů zobrazí variace konečný výsledek metriky. 
+> Algoritmy automatizované ML mají podstatu, která může způsobit mírnou variaci v konečném skóre Doporučené metriky modelu, jako je přesnost. Automatizované ML také provádí operace s daty, jako je rozdělení výukového testu, rozdělení vlaku-ověření nebo křížové ověřování v případě potřeby. Takže pokud spustíte experiment se stejným nastavením konfigurace a primární metrikou víckrát, pravděpodobně se vám v každém experimentu v důsledku těchto faktorů zobrazí variace konečný výsledek metriky. 
 
 ## <a name="register-and-deploy-models"></a>Registrace a nasazení modelů
 

@@ -3,12 +3,12 @@ title: Vytváření zásad pro vlastnosti polí u prostředků
 description: Naučte se pracovat s parametry pole a výrazy jazyka pole, vyhodnotit alias [*] a přidat prvky pomocí pravidel Definice Azure Policy.
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 92339a6da4fd2061d66935cc8d04428c69822862
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 60044d4a599c14088ea923a6a14cb46543646995
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323233"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920453"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Vytváření zásad pro vlastnosti pole v prostředcích Azure
 
@@ -17,7 +17,7 @@ Vlastnosti Azure Resource Manager jsou běžně definovány jako řetězce a log
 - Typ [parametru definice](../concepts/definition-structure.md#parameters), který poskytuje více možností
 - Součást [pravidla zásad](../concepts/definition-structure.md#policy-rule) s použitím podmínek **v** nebo **notIn**
 - Součást pravidla zásad, které vyhodnocuje [ \[ \* \] alias](../concepts/definition-structure.md#understanding-the--alias) k vyhodnocení:
-  - Scénáře, jako je **none** , **Any** nebo **All**
+  - Scénáře, jako je **none**, **Any** nebo **All**
   - Komplexní scénáře s **počtem**
 - V [efektu připojit](../concepts/effects.md#append) , který se má nahradit nebo přidat k existujícímu poli
 
@@ -28,7 +28,7 @@ Tento článek se zabývá každým použitím Azure Policy a poskytuje několik
 ### <a name="define-a-parameter-array"></a>Definovat pole parametrů
 
 Definování parametru jako pole umožní flexibilitu v případě, že je potřeba zadat víc než jednu hodnotu.
-Tato definice zásady umožňuje, aby bylo každé jedno umístění pro parametr **allowedLocations** a výchozí hodnota _eastus2_ :
+Tato definice zásady umožňuje, aby bylo každé jedno umístění pro parametr **allowedLocations** a výchozí hodnota _eastus2_:
 
 ```json
 "parameters": {
@@ -44,7 +44,7 @@ Tato definice zásady umožňuje, aby bylo každé jedno umístění pro paramet
 }
 ```
 
-Jako _řetězec_ **typu** se dá nastavit jenom jedna hodnota při přiřazování zásady. Pokud je tato zásada přiřazena, prostředky v oboru jsou povoleny pouze v rámci jedné oblasti Azure. Většina definic zásad musí povolit seznam schválených možností, jako je například povolování _eastus2_ , _eastus_ a _westus2_.
+Jako _řetězec_ **typu** se dá nastavit jenom jedna hodnota při přiřazování zásady. Pokud je tato zásada přiřazena, prostředky v oboru jsou povoleny pouze v rámci jedné oblasti Azure. Většina definic zásad musí povolit seznam schválených možností, jako je například povolování _eastus2_, _eastus_ a _westus2_.
 
 Pokud chcete vytvořit definici zásady, která povoluje více možností, použijte _array_ **typ** pole. Stejné zásady je možné přepsat následujícím způsobem:
 
@@ -75,7 +75,7 @@ Tato nová definice parametru během přiřazování zásad trvá víc než jedn
 
 ### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Předání hodnot do pole parametru během přiřazení
 
-Při přiřazování zásad prostřednictvím Azure Portal se jako jedno textové pole zobrazí parametr **typu** _Array_ . Nápověda říká "use; pro oddělení hodnot. (např. Londýn; New York) ". Chcete-li předat povoleným hodnotám umístění _eastus2_ , _eastus_ a _westus2_ parametru, použijte následující řetězec:
+Při přiřazování zásad prostřednictvím Azure Portal se jako jedno textové pole zobrazí parametr **typu** _Array_ . Nápověda říká "use; pro oddělení hodnot. (např. Londýn; New York) ". Chcete-li předat povoleným hodnotám umístění _eastus2_, _eastus_ a _westus2_ parametru, použijte následující řetězec:
 
 `eastus2;eastus;westus2`
 
@@ -95,7 +95,7 @@ Formát hodnoty parametru se při použití rozhraní příkazového řádku Azu
 
 Chcete-li použít tento řetězec pro každou sadu SDK, použijte následující příkazy:
 
-- Azure CLI: příkaz [AZ Policy Assignment Create](/cli/azure/policy/assignment#az-policy-assignment-create) with Parameter **param**
+- Azure CLI: příkaz [AZ Policy Assignment Create](/cli/azure/policy/assignment#az_policy_assignment_create) with Parameter **param**
 - Azure PowerShell: rutina [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) s parametrem **PolicyParameter**
 - REST API: v rámci těla požadavku jako hodnota vlastnosti **Properties. Parameters** _v rámci textu_ [create](/rest/api/resources/policyassignments/create) žádosti.
 
@@ -201,7 +201,7 @@ Pomocí `field()` funkce je vrácená hodnota pole z obsahu žádosti, která se
 
 #### <a name="referencing-the-array-members-collection"></a>Odkazování na kolekci členů pole
 
-Aliasy, které používají `[*]` syntaxi, reprezentují **kolekci hodnot vlastností vybraných z vlastnosti pole** , která se liší od výběru samotné vlastnosti pole. V případě `Microsoft.Test/resourceType/stringArray[*]` vrátí kolekce, která má všechny členy `stringArray` . Jak již bylo zmíněno dříve, `field` Podmínka kontroluje, zda všechny vybrané vlastnosti prostředku splňují podmínku, takže následující podmínka je pravdivá pouze v případě, že se **všechny** členy `stringArray` rovnají hodnotě "".
+Aliasy, které používají `[*]` syntaxi, reprezentují **kolekci hodnot vlastností vybraných z vlastnosti pole**, která se liší od výběru samotné vlastnosti pole. V případě `Microsoft.Test/resourceType/stringArray[*]` vrátí kolekce, která má všechny členy `stringArray` . Jak již bylo zmíněno dříve, `field` Podmínka kontroluje, zda všechny vybrané vlastnosti prostředku splňují podmínku, takže následující podmínka je pravdivá pouze v případě, že se **všechny** členy `stringArray` rovnají hodnotě "".
 
 ```json
 {
@@ -311,7 +311,7 @@ Toto chování funguje i u vnořených polí. Například následující `count`
 }
 ```
 
-Mocnina `count` je v `where` podmínce. Je-li zadána, Azure Policy vytvoří výčet členů pole a vyhodnotí každý s podmínkou a spočítá, na kolik členů pole bylo vyhodnoceno `true` . Konkrétně při každé iteraci `where` vyhodnocení podmínky Azure Policy vybere jednoho člena pole * **i** _ a vyhodnotí obsah prostředků proti `where` podmínce _* jako if * *_i_*_ je jediným členem array_ *. Když je v každé iteraci dostupný jenom jeden člen pole, poskytuje způsob, jak u každého člena pole použít komplexní podmínky.
+Mocnina `count` je v `where` podmínce. Je-li zadána, Azure Policy vytvoří výčet členů pole a vyhodnotí každý s podmínkou a spočítá, na kolik členů pole bylo vyhodnoceno `true` . Konkrétně při každé iteraci `where` vyhodnocení podmínky Azure Policy vybere jednoho člena pole ***i** _ a vyhodnotí obsah prostředků proti `where` podmínce _* jako if **_i_*_ je jediným členem array_ *. Když je v každé iteraci dostupný jenom jeden člen pole, poskytuje způsob, jak u každého člena pole použít komplexní podmínky.
 
 Příklad:
 ```json

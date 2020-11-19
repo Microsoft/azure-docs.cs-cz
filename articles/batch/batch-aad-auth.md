@@ -4,12 +4,12 @@ description: Služba Batch podporuje službu Azure AD k ověřování ze služby
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: cb8306da4022ea1819e2da32a2f513c83bed309f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 685b84f1e628ea67689d3de8bf64c9641edba6fc
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309373"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920504"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -55,7 +55,7 @@ Prvním krokem při ověřování pomocí služby Azure AD je registrace aplikac
 
 Při registraci aplikace zadáváte informace o vaší aplikaci do služby Azure AD. Azure AD pak poskytuje ID aplikace (označované taky jako *ID klienta*), které můžete použít k přidružení aplikace k Azure AD za běhu. Další informace o ID aplikace najdete [v tématu aplikace a objekty zabezpečení služby v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Pokud chcete zaregistrovat aplikaci Batch, postupujte podle kroků v části **Registrace aplikace** v [rychlém startu: registrace aplikace s platformou Microsoft Identity](../active-directory/develop/quickstart-register-app.md). Pokud aplikaci zaregistrujete jako nativní aplikaci, můžete pro **identifikátor URI přesměrování**zadat libovolný platný identifikátor URI. Nemusí se jednat o skutečný koncový bod.
+Pokud chcete zaregistrovat aplikaci Batch, postupujte podle kroků v části **Registrace aplikace** v [rychlém startu: registrace aplikace s platformou Microsoft Identity](../active-directory/develop/quickstart-register-app.md). Pokud aplikaci zaregistrujete jako nativní aplikaci, můžete pro **identifikátor URI přesměrování** zadat libovolný platný identifikátor URI. Nemusí se jednat o skutečný koncový bod.
 
 Po zaregistrování aplikace se zobrazí ID aplikace:
 
@@ -77,15 +77,15 @@ Pokud chcete provést ověření pomocí integrovaného ověřování, musíte a
 
 Po zaregistrování aplikace postupujte podle těchto kroků v Azure Portal a udělte jí přístup ke službě Batch:
 
-1. V Azure Portal zvolte **všechny služby**a pak vyberte **Registrace aplikací**.
+1. V Azure Portal zvolte **všechny služby** a pak vyberte **Registrace aplikací**.
 1. V seznamu registrací aplikací vyhledejte název vaší aplikace.
 1. Vyberte aplikaci a vyberte **oprávnění rozhraní API**.
 1. V části **oprávnění rozhraní API** vyberte **Přidat oprávnění**.
-1. V části **Vybrat rozhraní API**vyhledejte rozhraní API služby Batch. Hledejte každý z těchto řetězců, dokud nenajdete rozhraní API:
+1. V části **Vybrat rozhraní API** vyhledejte rozhraní API služby Batch. Hledejte každý z těchto řetězců, dokud nenajdete rozhraní API:
     1. **Microsoft Azure Batch**
     1. **ddbf3205-c6bd-46ae-8127-60eb93363864** je ID rozhraní API služby Batch.
 1. Jakmile najdete rozhraní API pro dávkové zpracování, vyberte ho a pak zvolte **Vybrat**.
-1. V části **vybrat oprávnění**zaškrtněte políčko vedle pole přístup k **Azure Batch službě** a pak vyberte **Přidat oprávnění**.
+1. V části **vybrat oprávnění** zaškrtněte políčko vedle pole přístup k **Azure Batch službě** a pak vyberte **Přidat oprávnění**.
 
 V části **oprávnění API** se teď zobrazuje, že vaše aplikace Azure AD má přístup k oběma Microsoft Graph i k rozhraní API služby Batch. Oprávnění se udělují Microsoft Graph automaticky při první registraci vaší aplikace ve službě Azure AD.
 
@@ -104,7 +104,7 @@ Na webu Azure Portal postupujte podle těchto pokynů:
 
 1. V Azure Portal vyberte **všechny služby**. Vyberte **Registrace aplikací**.
 1. Vyberte svou aplikaci ze seznamu registrací aplikací.
-1. Vyberte aplikaci a pak vyberte **certifikáty & tajných**kódů. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**.
+1. Vyberte aplikaci a pak vyberte **certifikáty & tajných** kódů. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**.
 1. Pokud chcete vytvořit tajný klíč, zadejte popis tajného kódu. Pak vyberte vypršení platnosti tajného kódu buď za jeden rok, dva roky, nebo bez vypršení platnosti.
 1. Vyberte **Přidat** a vytvořte a zobrazte tajný klíč. Zkopírujte tajnou hodnotu na bezpečné místo, protože po opuštění stránky už k ní nebudete mít přístup.
 
@@ -268,13 +268,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 Vytvořte objekt **BatchTokenCredentials** , který převezme delegáta jako parametr. Pomocí těchto přihlašovacích údajů otevřete objekt **BatchClient** . Tento objekt **BatchClient** můžete použít pro následné operace se službou Batch:
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```
@@ -336,13 +336,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 Vytvořte objekt **BatchTokenCredentials** , který převezme delegáta jako parametr. Pomocí těchto přihlašovacích údajů otevřete objekt **BatchClient** . Pak tento objekt **BatchClient** použijte pro následné operace se službou Batch:
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```

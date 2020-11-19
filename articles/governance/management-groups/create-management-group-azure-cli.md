@@ -4,12 +4,12 @@ description: V tomto rychlém startu pomocí Azure CLI vytvoříte skupinu pro s
 ms.date: 08/31/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f07ae46c95f9ab9cc1ad973204ac5c50320fdf46
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 54d7afbaa4bfe2799ca0d68927394a38d9845c53
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89237245"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920657"
 ---
 # <a name="quickstart-create-a-management-group-with-the-azure-cli"></a>Rychlý Start: Vytvoření skupiny pro správu pomocí Azure CLI
 
@@ -17,7 +17,7 @@ Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, 
 
 První skupina pro správu vytvořená v adresáři může trvat až 15 minut, než se dokončí. Při nastavování služby skupiny pro správu v Azure pro váš adresář existují procesy, které se spouštějí poprvé. Po dokončení procesu obdržíte oznámení. Další informace najdete v tématu [počáteční nastavení skupin pro správu](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -29,7 +29,7 @@ První skupina pro správu vytvořená v adresáři může trvat až 15 minut, n
 
 ### <a name="create-in-the-azure-cli"></a>Vytvoření v Azure CLI
 
-V případě Azure CLI pomocí příkazu [AZ Account Management-Group Create](/cli/azure/account/management-group#az-account-management-group-create) vytvořte novou skupinu pro správu. V tomto příkladu je **název** skupiny pro správu _Contoso_.
+V případě Azure CLI pomocí příkazu [AZ Account Management-Group Create](/cli/azure/account/management-group#az_account_management_group_create) vytvořte novou skupinu pro správu. V tomto příkladu je **název** skupiny pro správu _Contoso_.
 
 ```azurecli-interactive
 az account management-group create --name 'Contoso'
@@ -51,7 +51,7 @@ az account management-group create --name 'ContosoSubGroup' --parent 'Contoso'
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete odebrat skupinu pro správu vytvořenou výše, použijte příkaz [AZ Account Management-Group Delete](/cli/azure/account/management-group#az-account-management-group-delete) :
+Pokud chcete odebrat skupinu pro správu vytvořenou výše, použijte příkaz [AZ Account Management-Group Delete](/cli/azure/account/management-group#az_account_management_group_delete) :
 
 ```azurecli-interactive
 az account management-group delete --name 'Contoso'

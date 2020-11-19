@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: aa45bc9f70bf05074391dd14cc5fc774eb77c762
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7cd704dad3d0ede55e4df4d9e222ff83fd7ae350
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536247"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919637"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 
@@ -111,7 +111,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
     Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
 
     >[!NOTE]
-    > Váš název COMPUTE určí, jestli je *povolená možnost profilace* , kterou vybíráte nebo vytváříte. (Další podrobnosti najdete v části [profilace dat](how-to-connect-data-ui.md#profile) .)
+    > Váš název COMPUTE určí, jestli je *povolená možnost profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti najdete v části [profilace dat](how-to-connect-data-ui.md#profile) .)
 
     Vyberte **Další**.
 
@@ -126,9 +126,9 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
     
         1. Povolte hloubkové učení.
     
-        1. Výběr *sloupce pro čas* : Tento sloupec obsahuje časová data, která se mají použít.
+        1. Výběr *sloupce pro čas*: Tento sloupec obsahuje časová data, která se mají použít.
 
-        1. Vybrat *horizont předpovědi* : Určete, kolik časových jednotek (minuty/hodiny/dny/týdny/měsíce/roky) bude model moci předpovědět do budoucna. Dalším modelem se vyžaduje předpověď do budoucna, tím méně přesné bude. [Přečtěte si další informace o prognózování a horizontu předpovědi](how-to-auto-train-forecast.md).
+        1. Vybrat *horizont předpovědi*: Určete, kolik časových jednotek (minuty/hodiny/dny/týdny/měsíce/roky) bude model moci předpovědět do budoucna. Dalším modelem se vyžaduje předpověď do budoucna, tím méně přesné bude. [Přečtěte si další informace o prognózování a horizontu předpovědi](how-to-auto-train-forecast.md).
 
 1. Volitelné Zobrazit nastavení konfigurace Přidání: Další nastavení, která můžete použít k lepšímu řízení úlohy školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat. 
 
@@ -137,9 +137,9 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
     Primární metrika| Hlavní metrika použitá pro vyhodnocování modelu. [Přečtěte si další informace o metrikách modelů](how-to-configure-auto-train.md#primary-metric).
     Vysvětlete nejlepší model | Tuto možnost vyberte, pokud chcete povolit nebo zakázat, aby se zobrazila vysvětlení doporučeného nejlepšího modelu. <br> Tato funkce není aktuálně k dispozici pro [určité algoritmy prognózy](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
     Blokovaný algoritmus| Vyberte algoritmy, které chcete vyloučit z úlohy školení. <br><br> Povolení algoritmů je dostupné jenom pro [experimenty sady SDK](how-to-configure-auto-train.md#supported-models). <br> Podívejte se na [podporované modely pro každý typ úkolu](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?preserve-view=true&view=azure-ml-py).
-    Výstupní kritérium| Při splnění kteréhokoli z těchto kritérií se školicí úloha zastaví. <br> *Čas úlohy školení (hodiny)* : dobu, po kterou je možné spustit úlohu školení. <br> *Prahová hodnota skóre metriky* : minimální skóre metriky pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, která má být dostupná, nebudete věnovat více času školicím úlohám, než je potřeba.
+    Výstupní kritérium| Při splnění kteréhokoli z těchto kritérií se školicí úloha zastaví. <br> *Čas úlohy školení (hodiny)*: dobu, po kterou je možné spustit úlohu školení. <br> *Prahová hodnota skóre metriky*: minimální skóre metriky pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, která má být dostupná, nebudete věnovat více času školicím úlohám, než je potřeba.
     Ověřování| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. <br> [Další informace o vzájemném ověřování](how-to-configure-cross-validation-data-splits.md#prerequisites).<br> <br>Prognózování podporuje pouze k přeložení pro křížové ověření.
-    Souběžnost| *Maximální počet souběžných iterací* : maximální počet kanálů (iterací), které se mají testovat v úloze školení. Úloha nebude spouštět více než zadaný počet iterací.
+    Souběžnost| *Maximální počet souběžných iterací*: maximální počet kanálů (iterací), které se mají testovat v úloze školení. Úloha nebude spouštět více než zadaný počet iterací. Přečtěte si další informace o tom, jak automatizované ML provádí [v clusterech více podřízených spuštění](how-to-configure-auto-train.md#multiple-child-runs-on-clusters).
 
 1. Volitelné Zobrazit nastavení featurization: Pokud se rozhodnete povolit **Automatické featurization** ve formuláři **Další nastavení konfigurace** , uplatní se výchozí techniky featurization. V **Nastavení zobrazení featurization** můžete změnit tyto výchozí hodnoty a odpovídajícím způsobem je přizpůsobit. Přečtěte si, jak [přizpůsobit featurizations](#customize-featurization). 
 

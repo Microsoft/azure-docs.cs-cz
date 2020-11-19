@@ -11,18 +11,18 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: c8b3ab965c5a85bd6f25e5325fdca24026aec787
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 0f2b9476c9b8c0b5164bfbf29d65d260340effe4
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873824"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919756"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Vytvoření a připojení clusteru služby Azure Kubernetes
 
 Azure Machine Learning můžou nasazovat školicí modely strojového učení do služby Azure Kubernetes. Musíte ale nejdřív __vytvořit__ cluster Azure Kubernetes Service (AKS) z pracovního prostoru Azure ml nebo __připojit__ existující cluster AKS. Tento článek poskytuje informace o tom, jak vytvořit a připojit cluster.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -43,6 +43,8 @@ Azure Machine Learning můžou nasazovat školicí modely strojového učení do
 - Pokud **připojíte** cluster AKS, který má [povolený povolený rozsah IP adres pro přístup k serveru rozhraní API](../aks/api-server-authorized-ip-ranges.md), povolte rozsahy IP adres řídicí plochy AML pro cluster AKS. Rovina ovládacího prvku AML se nasadí mezi spárované oblasti a nasadí odvození lusků do clusteru AKS. Bez přístupu k serveru rozhraní API nejde nasadit odvozené lusky. Při povolování rozsahů IP adres v clusteru AKS použijte [rozsahy IP adres](https://www.microsoft.com/download/confirmation.aspx?id=56519) pro obě [spárované oblasti](../best-practices-availability-paired-regions.md) .
 
     Rozsahy autorizovaných IP adres fungují jenom s Standard Load Balancer.
+
+- Když **připojíte** cluster AKS, musí být ve stejném předplatném Azure jako pracovní prostor Azure Machine Learning.
 
 - Pokud chcete použít privátní cluster AKS (pomocí privátního odkazu Azure), musíte nejdřív vytvořit cluster a pak ho **připojit** k pracovnímu prostoru. Další informace najdete v tématu [Vytvoření privátního clusteru služby Azure Kubernetes](../aks/private-clusters.md).
 

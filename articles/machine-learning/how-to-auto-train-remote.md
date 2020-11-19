@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to, automl
 ms.date: 03/09/2020
-ms.openlocfilehash: a79fc0311e940b9b4eb3e14838ef22e09342a066
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 65ce11581972c83b0294c0afcbe95e5a35ef2471
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357993"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920572"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaného strojového učení v cloudu
 
@@ -45,7 +45,7 @@ ws = Workspace.from_config()
 
 Vytvořte [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?preserve-view=true&view=azure-ml-py) cíl v pracovním prostoru ( `ws` ), pokud ještě neexistuje.
 
-**Časový odhad** : Vytvoření cíle AmlCompute trvá přibližně 5 minut.
+**Časový odhad**: Vytvoření cíle AmlCompute trvá přibližně 5 minut.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -220,7 +220,7 @@ Pokud nejste v Jupyter poznámkovém bloku, můžete zobrazit adresu URL z samot
 remote_run.get_portal_url()
 ```
 
-Ve vašem pracovním prostoru jsou k dispozici stejné informace.  Další informace o těchto výsledcích najdete v tématu [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md).
+Ve vašem pracovním prostoru jsou k dispozici stejné informace.  Další informace o těchto výsledcích najdete v tématu [vyhodnocení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md).
 
 ## <a name="example"></a>Příklad
 

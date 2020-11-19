@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289782"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919926"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informace o certifikátech ve službě Azure Key Vault
 
@@ -44,8 +44,17 @@ Když se vytvoří certifikát Key Vault, dá se načíst z adresního tajemstv�
 
 Adresovatelný klíč se bude důležitější s neexportovatelnými certifikáty KV. Operace s adresovatelnými klávesami se mapují z pole *použití* zásad certifikátu KV, které slouží k vytvoření certifikátu kV.  
 
+Typ páru klíčů, který se má pro certifikáty podporovat
+
  - Podporované typy typů: RSA, RSA-HSM, ES, ES-HSM, Oct ( [zde](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)uvedené) exportovatelné je povolené jenom pro RSA, ES. Klíče HSM by nebyly exportovatelné.
 
+|Typ klíče|Informace|Zabezpečení|
+|--|--|--|
+|**RSA**| Klíč RSA chráněný softwarem|FIPS 140-2 úrovně 1|
+|**RSA – HSM**| Klíč RSA chráněný HSM (jenom SKU úrovně Premium)|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 2|
+|**EC**| Klíč eliptické křivky "chráněný softwarem"|FIPS 140-2 úrovně 1|
+|**EC – HSM**| Klávesa s eliptickou křivkou chráněná HSM (jenom SKU úrovně Premium)|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 2|
+|||
 
 ## <a name="certificate-attributes-and-tags"></a>Atributy a značky certifikátů
 
@@ -57,14 +66,14 @@ Atributy certifikátu se zrcadlí do atributů adresovatelného klíče a tajné
 
 Key Vault certifikát má následující atributy:  
 
--   *povoleno* : logická hodnota, volitelná, výchozí hodnota je **true**. Dá se zadat, aby označovala, jestli se data certifikátu dají načíst jako klíčová, nebo se dá ovládat jako klíč. Používá se také ve spojení s *NBF* a *exp* při výskytu operace mezi *NBF* a *exp* a bude povoleno pouze v případě, že je vlastnost Enabled nastavena na hodnotu true. Operace mimo okno *NBF* a *exp* jsou automaticky zakázané.  
+-   *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Dá se zadat, aby označovala, jestli se data certifikátu dají načíst jako klíčová, nebo se dá ovládat jako klíč. Používá se také ve spojení s *NBF* a *exp* při výskytu operace mezi *NBF* a *exp* a bude povoleno pouze v případě, že je vlastnost Enabled nastavena na hodnotu true. Operace mimo okno *NBF* a *exp* jsou automaticky zakázané.  
 
 V odpovědi jsou k dispozici další atributy jen pro čtení, které jsou k dispozici:
 
--   *Vytvořeno* : IntDate: udává, kdy byla vytvořena tato verze certifikátu.  
--   *Aktualizováno* : IntDate: udává, kdy se tato verze certifikátu aktualizovala.  
--   *exp* : IntDate: obsahuje hodnotu data vypršení platnosti certifikátu x509.  
--   *NBF* : IntDate: obsahuje hodnotu data certifikátu x509.  
+-   *Vytvořeno*: IntDate: udává, kdy byla vytvořena tato verze certifikátu.  
+-   *Aktualizováno*: IntDate: udává, kdy se tato verze certifikátu aktualizovala.  
+-   *exp*: IntDate: obsahuje hodnotu data vypršení platnosti certifikátu x509.  
+-   *NBF*: IntDate: obsahuje hodnotu data certifikátu x509.  
 
 > [!Note] 
 > Pokud vyprší platnost certifikátu ve službě Key Vault, jeho adresovatelný klíč a tajný klíč přestanou fungovat.  

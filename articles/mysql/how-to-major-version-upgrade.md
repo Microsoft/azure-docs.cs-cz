@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 11/16/2020
-ms.openlocfilehash: 78c35e42cefa8897d9f93c3a941b4c0e8b81e5f9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4dd4729589e429cb1b028b183fdfd144617d1d1b
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686774"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920640"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server-using-the-azure-portal"></a>Upgrade hlavní verze v Azure Database for MySQL jednom serveru pomocí Azure Portal
 
@@ -33,6 +33,9 @@ K dokončení tohoto průvodce budete potřebovat:
 ## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57"></a>Proveďte upgrade hlavní verze z MySQL 5,6 na MySQL 5,7.
 
 Pomocí těchto kroků proveďte upgrade hlavní verze pro vaši databázi Azure serveru MySQL 5,6.
+
+> [!IMPORTANT]
+> Doporučujeme nejprve provést upgrade na obnovenou kopii serveru, nikoli přímo upgradovat produkční prostředí. Podívejte [se, jak provést obnovení k bodu v čase](howto-restore-server-portal.md#point-in-time-restore).
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj existující server Azure Database for MySQL 5,6.
 
