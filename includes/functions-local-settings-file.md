@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: aae89e1c6f8db2fb657ac2a43c4bce0396ab3ddd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca8d8edd334d89e03624793a35c49971ba8161ec
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91376878"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94885353"
 ---
 ## <a name="local-settings-file"></a>Soubor místního nastavení
 
@@ -52,7 +52,7 @@ Při místním spuštění může být v poli zahrnuto následující nastavení
 
 | Nastavení | Hodnoty | Popis |
 |-----|-----|-----|
-|**`AzureWebJobsStorage`**| Připojovací řetězec účtu úložiště nebo<br/>`UseDevelopmentStorage=true`| Obsahuje připojovací řetězec pro účet úložiště Azure. Vyžaduje se při použití triggerů než HTTP. Další informace najdete v [`AzureWebJobsStorage`] referenčních informacích.<br/>Pokud máte [emulátor úložiště Azure](../articles/storage/common/storage-use-emulator.md) nainstalovaný místně a nastavíte [`AzureWebJobsStorage`] na `UseDevelopmentStorage=true` , základní nástroje používají emulátor. Emulátor je užitečný během vývoje, ale před nasazením je třeba otestovat pomocí skutečného připojení úložiště.| 
+|**`AzureWebJobsStorage`**| Připojovací řetězec účtu úložiště nebo<br/>`UseDevelopmentStorage=true`| Obsahuje připojovací řetězec pro účet úložiště Azure. Vyžaduje se při použití triggerů než HTTP. Další informace najdete v [`AzureWebJobsStorage`] referenčních informacích.<br/>Pokud máte [emulátor Azure Storage](../articles/storage/common/storage-use-emulator.md) nainstalovaný místně a nastavíte [`AzureWebJobsStorage`] pro `UseDevelopmentStorage=true` , základní nástroje používají emulátor. Emulátor je užitečný během vývoje, ale před nasazením je třeba otestovat pomocí skutečného připojení úložiště.| 
 |**`AzureWebJobs.<FUNCTION_NAME>.Disabled`**| `true`\|`false` | Chcete-li zakázat funkci při místním spuštění, přidejte `"AzureWebJobs.<FUNCTION_NAME>.Disabled": "true"` do kolekce, kde `<FUNCTION_NAME>` je název funkce. Další informace najdete v tématu [zakázání funkcí v Azure Functions](../articles/azure-functions/disable-function.md#localsettingsjson) |
 |**`FUNCTIONS_WORKER_RUNTIME`** | `dotnet`<br/>`node`<br/>`java`<br/>`powershell`<br/>`python`| Označuje cílový jazyk modulu runtime Functions. Vyžadováno pro verzi 2. x a vyšší z modulu runtime Functions. Toto nastavení je vygenerováno pro váš projekt pomocí základních nástrojů. Další informace najdete v [`FUNCTIONS_WORKER_RUNTIME`](../articles/azure-functions/functions-app-settings.md#functions_worker_runtime) referenčních informacích.|
 | **`FUNCTIONS_WORKER_RUNTIME_VERSION`** | `~7` |Indikuje, že se má používat PowerShell 7 při místním spuštění. Pokud není nastavená, použije se PowerShell Core 6. Toto nastavení se používá jenom v případě, že je spuštěný místně. Při spuštění v Azure se verze modulu runtime PowerShellu určuje podle `powerShellVersion` nastavení konfigurace lokality, které se dá [nastavit na portálu](../articles/azure-functions/functions-reference-powershell.md#changing-the-powershell-version). | 
