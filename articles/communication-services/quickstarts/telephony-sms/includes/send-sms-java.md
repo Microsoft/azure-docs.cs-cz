@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: 2daed8edbc433003b72e80de4f5fbfe3539edb31
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 3bc5fffa2c175998aaeb9b508b4481b247172a68
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816761"
+ms.locfileid: "94885310"
 ---
 Začínáme s komunikačními službami Azure pomocí klientské knihovny služby Communications Services Java SMS k posílání zpráv SMS.
 
@@ -85,7 +85,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.azure.communication.common.CommunicationClientCredential;
 import com.azure.communication.common.PhoneNumber;
 import com.azure.communication.sms.SmsClient;
 import com.azure.communication.sms.SmsClientBuilder;
@@ -113,7 +112,6 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce klien
 | SmsClientBuilder              | Tato třída vytvoří třídu SmsClient. Poskytnete ho pro koncové body, přihlašovací údaje a klienta http. |
 | SmsClient                    | Tato třída je potřebná pro všechny funkce SMS. Použijete ho k posílání zpráv SMS.                |
 | SendSmsResponse               | Tato třída obsahuje odpověď ze služby SMS.                                          |
-| CommunicationClientCredential | Tato třída zpracovává požadavky na podepisování.                                                            |
 | PhoneNumber                   | Tato třída obsahuje informace o telefonním čísle.
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
@@ -123,20 +121,32 @@ Vytvořte instanci `SmsClient` s připojovacím řetězcem. Následující kód 
 Do metody `main` přidejte následující kód:
 
 ```java
+// Your can find your endpoint and access key from your resource in the Azure Portal
+String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
+String accessKey = "SECRET";
+
 // Create an HttpClient builder of your choice and customize it
 HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
-
-CommunicationClientCredential credential = new CommunicationClientCredential(accessKey);
 
 // Configure and build a new SmsClient
 SmsClient client = new SmsClientBuilder()
     .endpoint(endpoint)
-    .credential(credential)
+    .accessKey(accessKey)
     .httpClient(httpClient)
     .buildClient();
 ```
 
 Můžete inicializovat klienta pomocí libovolného vlastního klienta HTTP, který implementuje `com.azure.core.http.HttpClient` rozhraní. Výše uvedený kód ukazuje použití [klienta protokolu HTTP v Azure Core](https://docs.microsoft.com/java/api/overview/azure/core-http-netty-readme?view=azure-java-stable&preserve-view=true) , který poskytuje `azure-core` .
+
+Můžete také zadat celý připojovací řetězec pomocí funkce connectionString () místo poskytnutí koncového bodu a přístupového klíče. 
+```java
+// Your can find your connection string from your resource in the Azure Portal
+String connectionString = "<connection_string>";
+SmsClient client = new SmsClientBuilder()
+    .connectionString(connectionString)
+    .httpClient(httpClient)
+    .buildClient();
+```
 
 ## <a name="send-an-sms-message"></a>Odeslání zprávy SMS
 
