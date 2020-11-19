@@ -65,6 +65,8 @@
       href: use-editor-create-project.md
     - name: Vložení widgetů do aplikace
       href: video-indexer-embed-widgets.md
+    - name: Aspekty použití Video Indexeru ve velkém
+      href: considerations-when-use-at-scale.md
     - name: Zotavení po havárii
       href: video-indexer-disaster-recovery.md
     - name: Přizpůsobení modelů obsahu

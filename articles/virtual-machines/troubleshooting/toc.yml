@@ -115,6 +115,8 @@
           href: windows-boot-error-invalid-image-hash.md
         - name: Chyba zastavení Windows – nesprávné informace konfigurace systému
           href: windows-stop-error-bad-system-config-info.md
+        - name: Chyba zastavení Windows – selhání hardwaru
+          href: windows-stop-error-hardware-malfunction.md
         - name: Chyba zastavení Windows – stav nedostatku paměti
           href: troubleshoot-windows-stop-error.md
         - name: Chyba zastavení Windows – ukončení systémového procesu

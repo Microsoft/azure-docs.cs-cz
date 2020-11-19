@@ -139,6 +139,8 @@
       href: ../../container-instances/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Container Registry
       href: ../../container-registry/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Content Delivery Network
+      href: ../../cdn/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Cosmos DB
       href: ../../cosmos-db/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Cost Management

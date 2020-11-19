@@ -28,7 +28,7 @@
       href: network-watcher-nsg-flow-logging-portal.md
 - name: Koncepty
   items:
-    - name: Monitorování připojení (Preview)
+    - name: Monitorování připojení
       href: connection-monitor-overview.md
     - name: Diagnostika potíží s filtrováním síťového provozu virtuálních počítačů
       href: network-watcher-ip-flow-verify-overview.md
@@ -58,7 +58,7 @@
   items:
     - name: Konfigurace Network Watcheru
       href: network-watcher-create.md
-    - name: Vytvoření funkce Monitorování připojení (Preview)
+    - name: Vytvoření monitorování připojení
       items:
         - name: Pomocí webu Azure Portal
           href: connection-monitor-create-using-portal.md
@@ -66,11 +66,11 @@
           href: connection-monitor-create-using-template.md
         - name: Použití PowerShellu
           href: connection-monitor-create-using-powershell.md
-    - name: Migrace na Monitorování připojení (Preview)
+    - name: Migrace na Monitorování připojení
       items:
         - name: Z Network Performance Monitoru
           href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
-        - name: Z Monitorování připojení
+        - name: Z Monitorování připojení (klasická verze)
           href: migrate-to-connection-monitor-preview-from-connection-monitor.md
     - name: Diagnostika potíží se sítí virtuálních počítačů
       items:

@@ -98,6 +98,12 @@
           href: signalr-howto-diagnostic-logs.md
         - name: Audit dodržování předpisů s využitím Azure Policy
           href: signalr-howto-azure-policy.md
+    - name: Řešení potíží
+      items:
+        - name: Průvodci odstraňováním potíží
+          href: signalr-howto-troubleshoot-guide.md
+        - name: Metody pro řešení potíží
+          href: signalr-howto-troubleshoot-method.md
 - name: Odkazy
   items:
     - name: Azure CLI

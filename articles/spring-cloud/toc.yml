@@ -67,7 +67,7 @@
           href: spring-cloud-tutorial-config-server.md
         - name: Povolení registrace služeb
           href: spring-cloud-service-registration.md
-    - name: Nasazení
+    - name: Nasadit
       items:
         - name: Nastavení přípravného prostředí
           href: spring-cloud-howto-staging-environment.md
@@ -81,6 +81,8 @@
           href: spring-cloud-howto-start-stop-delete.md
         - name: Použití trvalého úložiště
           href: spring-cloud-howto-persistent-storage.md
+        - name: Identifikace odchozích veřejných IP adres
+          href: spring-cloud-howto-outbound-public-ip.md
     - name: Monitorování
       items:
         - name: Distribuované trasování a App Insights
@@ -121,7 +123,7 @@
           href: spring-cloud-howto-self-diagnose-solve.md
         - name: Průvodce odstraňováním potíží
           href: spring-cloud-troubleshoot.md
-    - name: Migrace
+    - name: Migrate
       items:
         - name: Spring Cloud
           href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-cloud'

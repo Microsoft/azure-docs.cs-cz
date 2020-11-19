@@ -287,6 +287,10 @@
           items:
             - name: Zastavení/spuštění serveru MySQL
               href: how-to-stop-start-server.md
+        - name: Upgrade hlavní verze
+          items:
+            - name: Upgrade hlavní verze
+              href: how-to-major-version-upgrade.md
         - name: Automatické zvětšení úložiště
           items:
             - name: portál Azure

@@ -67,6 +67,12 @@
           href: storage-sync-files-networking-overview.md
         - name: Informace o vrstvení cloudu
           href: storage-sync-cloud-tiering.md
+    - name: Výkon a škálování
+      items:
+        - name: Výkon funkce SMB Multichannel
+          href: storage-files-smb-multichannel-performance.md
+        - name: Škálovatelnost a cíle výkonnosti
+          href: storage-files-scale-targets.md
     - name: Prevence náhodného odstranění dat
       href: storage-files-prevent-file-share-deletion.md
     - name: Zálohování sdílených složek
@@ -74,9 +80,7 @@
     - name: Šifrování neaktivních uložených dat
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Šifrování neaktivních uložených dat s využitím klíčů spravovaných zákazníkem
-      href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Škálovatelnost a cíle výkonnosti
-      href: storage-files-scale-targets.md
+      href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Nabídky pro dodržování předpisů
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Nejčastější dotazy
@@ -87,8 +91,6 @@
       items:
         - name: Vytvoření sdílené složky SMB
           href: storage-how-to-create-file-share.md
-        - name: Povolení velkých sdílených složek
-          href: storage-files-how-to-create-large-file-share.md
         - name: Vytvoření sdílené složky úrovně Premium
           href: storage-how-to-create-premium-fileshare.md
         - name: Vytvoření sdílené složky NFS
@@ -231,6 +233,12 @@
               href: storage-files-migration-storsimple-8000.md
             - name: Průvodce migrací StorSimple 1200
               href: storage-files-migration-storsimple-1200.md
+    - name: Vylepšení výkonu
+      items:
+        - name: Povolení funkce SMB Multichannel
+          href: storage-files-enable-smb-multichannel.md
+        - name: Povolení velkých sdílených složek
+          href: storage-files-how-to-create-large-file-share.md
     - name: Vývoj
       items:
         - name: Konfigurace připojovacích řetězců

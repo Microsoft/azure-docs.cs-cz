@@ -68,8 +68,8 @@
       items:
         - name: Kódování a streamování vzdáleného souboru – REST
           href: stream-files-tutorial-with-rest.md
-        - name: Klíče spravované zákazníkem s využitím Media Services
-          href: tutorial-byok.md
+        - name: Klíče spravované zákazníkem s využitím REST API
+          href: tutorial-byok-postman.md
     - name: Rozhraní příkazového řádku
       items:
         - name: Kódování a streamování vzdáleného souboru – CLI
@@ -80,6 +80,8 @@
           href: stream-files-nodejs-quickstart.md
     - name: portál Azure
       items:
+        - name: Kurz pro BYOK nebo klíče spravované zákazníkem
+          href: tutorial-byok-portal.md
         - name: Ukládání událostí AMS v Azure Log Analytics
           href: tutorial-events-log-analytics.md
 - name: ukázky
@@ -102,6 +104,11 @@
         - name: Účet úložiště
           href: storage-account-concept.md
           displayName: Storage side encryption
+        - name: Spravované identity a mediální služby
+          displayName: content protection
+          href: concept-managed-identities.md
+        - name: Klíče spravované zákazníkem
+          href: concept-use-customer-managed-keys-byok.md
     - name: Prostředky
       items:
         - name: Prostředky
@@ -178,8 +185,6 @@
         - name: Dynamické šifrování a doručování klíčů
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
-        - name: Klíče spravované zákazníkem
-          href: concept-use-customer-managed-keys-byok.md
         - name: Návrh systému s více variantami DRM
           displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md
@@ -392,7 +397,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Přejít
+        - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.media/allversions

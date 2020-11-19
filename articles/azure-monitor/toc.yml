@@ -944,14 +944,28 @@
           href: insights/vminsights-maps.md
         - name: Monitorování výkonu
           href: insights/vminsights-performance.md
-        - name: Monitorování změn
-          href: insights/vminsights-change-analysis.md
+        - name: Monitorování stavu hosta (Preview)
+          items:
+            - name: Přehled
+              href: insights/vminsights-health-overview.md
+            - name: Povolit
+              href: insights/vminsights-health-enable.md
+            - name: Výstrahy
+              href: insights/vminsights-health-alerts.md
+            - name: Konfigurace monitorování na portálu
+              href: insights/vminsights-health-configure.md
+            - name: Konfigurace monitorování ve velkém
+              href: insights/vminsights-health-configure-dcr.md
+            - name: Řešení potíží
+              href: insights/vminsights-health-troubleshoot.md
         - name: Analýza dat s využitím dotazů na protokoly
           href: insights/vminsights-log-search.md
+        - name: Monitorování výkonu
+          href: insights/vminsights-alerts.md
+        - name: Monitorování změn
+          href: insights/vminsights-change-analysis.md
         - name: Vizualizace dat s využitím sešitů
           href: insights/vminsights-workbooks.md
-        - name: Vytváření pravidel upozornění
-          href: insights/vminsights-alerts.md
         - name: Zákaz monitorování
           href: insights/vminsights-optout.md
     - name: Azure Monitor pro kontejnery
