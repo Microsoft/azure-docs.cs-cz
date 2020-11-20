@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a24890f42b795bb4b9a7d187f74ceb9a4f8557f5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 12fcc9996697f3bbba35826d79bec238bfb0f8b3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539219"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956207"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Použití Device Manager StorSimple ke správě výstrah pro virtuální pole StorSimple
 
@@ -61,7 +61,7 @@ Po povolení e-mailových oznámení pro virtuální pole budou členové seznam
        ![Snímek obrazovky s ověřováním testovacího e-mailu se zobrazí v dialogovém okně.](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
       > [!NOTE]
-      > Pokud zprávu o testovacím oznámení nelze odeslat, Služba StorSimple Device Manager zobrazí příslušnou zprávu. Klikněte na **OK** , počkejte pár minut a pak zkuste poslat zprávu testovacího oznámení znovu.
+      > Pokud zprávu o testovacím oznámení nelze odeslat, Služba StorSimple Device Manager zobrazí příslušnou zprávu. Klikněte na **OK**, počkejte pár minut a pak zkuste poslat zprávu testovacího oznámení znovu.
       >
       >
    5. V dolní části stránky klikněte na **Uložit** a uložte konfiguraci. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
@@ -72,7 +72,7 @@ Po povolení e-mailových oznámení pro virtuální pole budou členové seznam
 
 Vaše virtuální pole StorSimple generuje výstrahy v reakci na nejrůznější podmínky. Níže jsou uvedené nejběžnější typy podmínek upozornění:
 
-* **Problémy s připojením** – tyto výstrahy se objevují v případě problémů s přenosem dat. Problémy s komunikací mohou nastat během přenosu dat do účtu služby Azure Storage a z důvodu nedostatku připojení mezi virtuálními zařízeními a službou StorSimple Device Manager. Problémy s komunikací jsou závažné, aby je bylo možné opravit, protože došlo k mnoha bodům selhání. Předtím, než budete pokračovat na pokročilejší řešení potíží, byste měli nejdřív ověřit, že je k dispozici připojení k síti a přístup k Internetu. Informace o portech a nastaveních brány firewall najdete v [požadavcích na systém StorSimple Virtual Array](storsimple-ova-system-requirements.md). Pomoc s řešením potíží najdete v tématu [řešení potíží pomocí rutiny Test-Connection](storsimple-troubleshoot-deployment.md).
+* **Problémy s připojením** – tyto výstrahy se objevují v případě problémů s přenosem dat. Problémy s komunikací mohou nastat během přenosu dat do účtu služby Azure Storage a z důvodu nedostatku připojení mezi virtuálními zařízeními a službou StorSimple Device Manager. Problémy s komunikací jsou závažné, aby je bylo možné opravit, protože došlo k mnoha bodům selhání. Předtím, než budete pokračovat na pokročilejší řešení potíží, byste měli nejdřív ověřit, že je k dispozici připojení k síti a přístup k Internetu. Informace o portech a nastaveních brány firewall najdete v [požadavcích na systém StorSimple Virtual Array](storsimple-ova-system-requirements.md). Pomoc s řešením potíží najdete v tématu [řešení potíží pomocí rutiny Test-Connection](./storsimple-8000-troubleshoot-deployment.md).
 * **Problémy s výkonem** – tyto výstrahy jsou způsobeny tím, že systém nepracuje optimálně, například když se nachází v případě vysoké zátěže.
 
 Kromě toho se můžou zobrazovat výstrahy související se zabezpečením, aktualizacemi nebo selháními úloh.
@@ -101,7 +101,7 @@ Kliknutím na výstrahu v seznamu získáte další podrobnosti o výstraze, vč
 
 Podrobnosti o výstraze můžete zkopírovat do textového souboru, pokud potřebujete informace odeslat podpora Microsoftu. Po doporučení a vyřešení podmínky upozornění v místním prostředí byste měli upozornění vymazat ze seznamu. Vyberte výstrahu ze seznamu a klikněte na tlačítko **Vymazat**. Chcete-li vymazat více výstrah, vyberte jednotlivá upozornění, klikněte na kterýkoli sloupec kromě sloupce **Výstraha** a po výběru všech výstrah, které mají být vymazány, klikněte na tlačítko **Vymazat** .
 
-Když kliknete na **Vymazat** , budete mít možnost zadat komentáře k výstraze a kroky, které jste provedli k vyřešení tohoto problému.
+Když kliknete na **Vymazat**, budete mít možnost zadat komentáře k výstraze a kroky, které jste provedli k vyřešení tohoto problému.
 
 ![Komentáře výstrahy](./media/storsimple-virtual-array-manage-alerts/alerts17.png)
 
@@ -130,14 +130,14 @@ V následujících tabulkách jsou uvedeny některé StorSimple výstrahy, se kt
 
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
-| Zařízení < *název zařízení* > není připojené ke cloudu. |Pojmenované zařízení se nemůže připojit ke cloudu. |Nepovedlo se připojit ke cloudu. Může to být způsobené jedním z následujících důvodů:<ul><li>Může se jednat o problém s nastavením sítě v zařízení.</li><li>Může se jednat o problém s přihlašovacími údaji k účtu úložiště.</li></ul>Další informace o řešení problémů s připojením najdete v [místním webovém uživatelském rozhraní](storsimple-ova-web-ui-admin.md) zařízení. |
+| Zařízení <*název zařízení*> není připojené ke cloudu. |Pojmenované zařízení se nemůže připojit ke cloudu. |Nepovedlo se připojit ke cloudu. Může to být způsobené jedním z následujících důvodů:<ul><li>Může se jednat o problém s nastavením sítě v zařízení.</li><li>Může se jednat o problém s přihlašovacími údaji k účtu úložiště.</li></ul>Další informace o řešení problémů s připojením najdete v [místním webovém uživatelském rozhraní](storsimple-ova-web-ui-admin.md) zařízení. |
 
 ### <a name="configuration-alerts"></a>Výstrahy konfigurace
 
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
 | Místní konfigurace virtuálních zařízení není podporována. |Pomalý výkon. |Aktuální konfigurace může způsobit snížení výkonu. Ujistěte se, že server splňuje minimální požadavky na konfiguraci. Další informace najdete v požadavcích na [virtuální pole StorSimple](storsimple-ova-system-requirements.md). |
-| Na < *název zařízení* dochází místo zřízeného místa na disku \> . |Upozornění na místo na disku. |Máte dostatek volného místa na disku. Pokud chcete uvolnit místo, zvažte přesunutí úloh na jiný svazek nebo sdílení nebo odstranění dat. |
+| Na <*název zařízení* dochází místo zřízeného místa na disku \> . |Upozornění na místo na disku. |Máte dostatek volného místa na disku. Pokud chcete uvolnit místo, zvažte přesunutí úloh na jiný svazek nebo sdílení nebo odstranění dat. |
 
 ### <a name="job-failure-alerts"></a>Výstrahy selhání úlohy
 
@@ -157,13 +157,13 @@ V následujících tabulkách jsou uvedeny některé StorSimple výstrahy, se kt
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
 | Dochází k neočekávaným zpožděním při přenosu dat. |Pomalý přenos dat. |K chybám omezování dochází, když překročíte cíle škálovatelnosti služby úložiště. Služba úložiště to dělá tak, aby se zajistilo, že žádný jednotlivý klient ani tenant nemůže službu používat na náklady ostatních. Další informace o řešení potíží s účtem služby Azure Storage najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md). |
-| Na < *název zařízení* se spouští místní rezervované místo na disku \> . |Nízká doba odezvy. |10% celkové zřízené velikosti pro < *název zařízení* \> je rezervované na místním zařízení a na rezervované místo teď dochází. Zatížení <ho *zařízení* \> vygeneruje vyšší míru četnosti změn nebo jste mohli nedávno migrovat velké množství dat. To může vést ke snížení výkonu. K vyřešení tohoto problému zvažte jednu z následujících akcí:<ul><li>Zvyšte šířku pásma cloudu na toto zařízení.</li><li>Snižte nebo přesuňte úlohy na jiný svazek nebo sdílenou složku.</li></ul> |
+| Na <*název zařízení* se spouští místní rezervované místo na disku \> . |Nízká doba odezvy. |10% celkové zřízené velikosti pro <*název zařízení* \> je rezervované na místním zařízení a na rezervované místo teď dochází. Zatížení <ho *zařízení* \> vygeneruje vyšší míru četnosti změn nebo jste mohli nedávno migrovat velké množství dat. To může vést ke snížení výkonu. K vyřešení tohoto problému zvažte jednu z následujících akcí:<ul><li>Zvyšte šířku pásma cloudu na toto zařízení.</li><li>Snižte nebo přesuňte úlohy na jiný svazek nebo sdílenou složku.</li></ul> |
 
 ### <a name="security-alerts"></a>Výstrahy zabezpečení
 
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
-| Heslo pro < *název zařízení* \> vyprší za < *počet* \> dnů. |Upozornění na heslo |Platnost vašeho hesla vyprší za < *počet* \> dnů. Zvažte změnu hesla. Další informace najdete [v části Změna hesla správce zařízení StorSimple Virtual Array](storsimple-virtual-array-change-device-admin-password.md). |
+| Heslo pro <*název zařízení* \> vyprší za <*počet* \> dnů. |Upozornění na heslo |Platnost vašeho hesla vyprší za <*počet* \> dnů. Zvažte změnu hesla. Další informace najdete [v části Změna hesla správce zařízení StorSimple Virtual Array](storsimple-virtual-array-change-device-admin-password.md). |
 
 ## <a name="next-steps"></a>Další kroky
 

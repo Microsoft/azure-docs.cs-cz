@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: DSC
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 900273ec48c71e6f88d28bccff6f1e2abd412c1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17ada83f6fa1b57f8dd72d591b6625f25e9a2388
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079570"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955850"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod k obslužné rutině rozšíření Azure Desired State Configuration
 
@@ -108,7 +109,7 @@ Rutina **Remove-AzVMDscExtension** odebere obslužnou rutinu rozšíření z kon
 Důležité informace o rutinách rozšíření DSC Správce prostředků:
 
 - Rutiny Azure Resource Manager jsou synchronní.
-- Parametry *ResourceGroupName*, *VMName*, *ArchiveStorageAccountName*, *Version*a *Location* jsou všechny povinné.
+- Parametry *ResourceGroupName*, *VMName*, *ArchiveStorageAccountName*, *Version* a *Location* jsou všechny povinné.
 - *ArchiveResourceGroupName* je nepovinný parametr. Tento parametr můžete zadat, pokud váš účet úložiště patří do jiné skupiny prostředků, než v jaké je virtuální počítač vytvořený.
 - Pokud je k dispozici, použijte přepínač **AutoUpdate** k automatické aktualizaci obslužné rutiny rozšíření na nejnovější verzi. Tento parametr může při vydání nové verze WMF způsobit restart virtuálního počítače.
 
@@ -178,7 +179,7 @@ Nastavení DSC na portálu:
 
 1. Přejít na virtuální počítač.
 2. V části **Nastavení** vyberte **Rozšíření**.
-3. Na nově vytvořené stránce vyberte **+ Přidat**a pak vyberte **Konfigurace požadovaného stavu prostředí PowerShell**.
+3. Na nově vytvořené stránce vyberte **+ Přidat** a pak vyberte **Konfigurace požadovaného stavu prostředí PowerShell**.
 4. V dolní části stránky s informacemi o rozšíření klikněte na **vytvořit** .
 
 Portál shromažďuje následující vstup:

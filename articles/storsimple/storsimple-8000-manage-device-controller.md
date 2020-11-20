@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: baa035269f4a5b2f39263264f23183b308264ead
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 090797549cc61aa27945114e5ef8b666226b66e2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513947"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956989"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Správa řadičů zařízení StorSimple
 
@@ -117,7 +117,7 @@ Provedením následujících kroků resetujete Microsoft Azure StorSimple zaří
    
     `Reset-HcsFactoryDefault`
    
-    Chcete-li místo toho obnovit jeden kontroler, použijte rutinu  [reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) s `-scope` parametrem.)
+    Chcete-li místo toho obnovit jeden kontroler, použijte rutinu  [reset-HcsFactoryDefault](/previous-versions/windows/powershell-scripting/dn688132(v=wps.630)) s `-scope` parametrem.)
    
     Systém bude restartován několikrát. Po úspěšném dokončení resetování budete upozorněni. V závislosti na modelu systému může trvat 45-60 minut pro zařízení 8100 a 60-90 minut, než se tento proces dokončí na 8600.
    
@@ -161,4 +161,3 @@ V této části jsme si vyložili některé z nejčastějších dotazů týkají
 ## <a name="next-steps"></a>Další kroky
 * Pokud narazíte na problémy s řadiči zařízení StorSimple, které nemůžete vyřešit pomocí postupů uvedených v tomto kurzu, [kontaktujte podpora Microsoftu](storsimple-8000-contact-microsoft-support.md).
 * Další informace o používání služby StorSimple Device Manager najdete v části [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
-

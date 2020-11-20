@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24eb03069689d6dc89d8e237e0e65c71af6c6173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 509a3ac383cebd91821e9c4b872c253ab3b0a947
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184716"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956190"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Zotavení po havárii a převzetí služeb při selhání zařízení StorSimple Virtual Array prostřednictvím webu Azure Portal
 
 ## <a name="overview"></a>Přehled
 Tento článek popisuje zotavení po havárii pro vaše Microsoft Azure StorSimple virtuální pole, včetně podrobných kroků pro převzetí služeb při selhání v jiném virtuálním poli. Převzetí služeb při selhání umožňuje přesunout data ze *zdrojového* zařízení v datacentru do *cílového* zařízení. Cílové zařízení se může nacházet ve stejném nebo jiném geografickém umístění. Převzetí služeb při selhání zařízení je pro celé zařízení. Během převzetí služeb při selhání změní cloudová data pro zdrojové zařízení vlastnictví cílového zařízení.
 
-Tento článek se vztahuje pouze na virtuální pole StorSimple. Pokud chcete převzít služby při selhání zařízení řady 8000, přečtěte si [převzetí služeb při selhání zařízení a zotavení po havárii zařízení StorSimple](storsimple-device-failover-disaster-recovery.md).
+Tento článek se vztahuje pouze na virtuální pole StorSimple. Pokud chcete převzít služby při selhání zařízení řady 8000, přečtěte si [převzetí služeb při selhání zařízení a zotavení po havárii zařízení StorSimple](./storsimple-8000-device-failover-disaster-recovery.md).
 
 ## <a name="what-is-disaster-recovery-and-device-failover"></a>Co je zotavení po havárii a převzetí služeb při selhání zařízení?
 
-Ve scénáři zotavení po havárii primární zařízení přestane fungovat. V tomto scénáři můžete přesunout data cloudu přidružená k zařízení, které selhalo, do jiného zařízení. Jako *zdroj* můžete použít primární zařízení a jako *cíl*zadat jiné zařízení. Tento proces se označuje jako *převzetí služeb při selhání*. Během převzetí služeb při selhání budou všechny svazky nebo sdílené složky ze zdrojového zařízení měnit vlastnictví a jsou přeneseny do cílového zařízení. Nepovoluje se žádné filtrování dat.
+Ve scénáři zotavení po havárii primární zařízení přestane fungovat. V tomto scénáři můžete přesunout data cloudu přidružená k zařízení, které selhalo, do jiného zařízení. Jako *zdroj* můžete použít primární zařízení a jako *cíl* zadat jiné zařízení. Tento proces se označuje jako *převzetí služeb při selhání*. Během převzetí služeb při selhání budou všechny svazky nebo sdílené složky ze zdrojového zařízení měnit vlastnictví a jsou přeneseny do cílového zařízení. Nepovoluje se žádné filtrování dat.
 
 DR se modeluje jako úplné obnovení zařízení pomocí vrstvení a sledování na základě Heat mapy. Heat mapa je definována přiřazením hodnoty tepla k datům na základě vzorů pro čtení a zápis. Tato Heat mapa pak vrstvy nejnižší objemy tepelného zpracování dat do cloudu napřed a přitom udržuje horní datový proud (nejčastěji používané) datové bloky v místní vrstvě. Při zotavení po havárii používá StorSimple Heat mapu k obnovení a dehydratovanému využití dat z cloudu. Zařízení načte všechny svazky nebo sdílené složky v poslední poslední záloze (podle interního určení) a provede obnovení z této zálohy. Virtuální pole orchestruje celý proces zotavení po havárii.
 
@@ -181,4 +181,3 @@ Pokud se StorSimple zařízení, která byla zaregistrována těsně před havá
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o tom, jak [spravovat virtuální pole StorSimple pomocí místního webového uživatelského rozhraní](storsimple-ova-web-ui-admin.md).
-

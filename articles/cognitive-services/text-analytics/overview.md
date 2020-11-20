@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/02/2020
+ms.date: 11/17/2020
 ms.author: aahi
 keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a91be0798dc67bfb751807b385d638343b89562b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365291"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957040"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
@@ -39,7 +39,7 @@ Počínaje verzí v 3.1 verze Preview je dolování stanovisek funkcí Analýza 
 
 Pomocí [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) můžete rychle identifikovat hlavní koncepty v textu. Například v textu "potravina byla Delicious a dostali jsme milované pracovníky", Extrakce klíčových frází vrátí hlavní body pro komunikaci: "jídla" a "milované pracovníky".
 
-## <a name="language-detection"></a>Rozpoznávání jazyka
+## <a name="language-detection"></a>rozpoznávání jazyka,
 
 Rozpoznání jazyka může [detekovat jazyk, ve kterém je vstupní text napsán](how-tos/text-analytics-how-to-language-detection.md) , a nahlásit jeden kód jazyka pro každý dokument odeslaný v žádosti v široké škále jazyků, variant, dialektů a některých regionálních/kulturních jazyků. Kód jazyka se spáruje s skóre spolehlivosti.
 
@@ -50,6 +50,10 @@ Rozpoznávání pojmenovaných entit (NER) dokáže [identifikovat a kategorizov
 ## <a name="use-containers"></a>Použití kontejnerů
 
 [Použijte kontejnery analýza textu](how-tos/text-analytics-how-to-install-containers.md) jako místní řešení pro text dolování a používání rozhraní API. Tyto kontejnery Docker umožňují extrahovat klíčové fráze, detekovat jazyk a analyzovat mínění blíž k vašim datům.
+
+## <a name="asynchronous-operations"></a>Asynchronních operace
+
+`/analyze`Koncový bod umožňuje [asynchronní](how-tos/text-analytics-how-to-call-api.md)použití vybraných funkcí rozhraní API pro analýzu textu, jako je například ner a extrakce klíčových frází.
 
 ## <a name="typical-workflow"></a>Typický pracovní postup
 

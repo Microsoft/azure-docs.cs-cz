@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 42ec826ab95363c2599be541fe451473be5ca08d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f65fb37a4cc6640bc998af1c56e7852cccaba234
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441949"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955511"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kurz – přizpůsobení atributů zřizování uživatelů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -136,7 +136,7 @@ Při úpravách seznamu podporovaných atributů jsou k dispozici následující
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Zřízení vlastního rozšíření atributu pro aplikaci vyhovující SCIM
 SCIM RFC definuje základní schéma uživatelů a skupin a zároveň umožňuje rozšíření schématu, aby splňovala potřeby vaší aplikace. Přidání vlastního atributu do aplikace SCIM:
-   1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com), vyberte **podnikové aplikace** , vyberte svou aplikaci a pak vyberte **zřizování**.
+   1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com), vyberte **podnikové aplikace**, vyberte svou aplikaci a pak vyberte **zřizování**.
    2. V části **mapování** vyberte objekt (uživatele nebo skupinu), pro který chcete přidat vlastní atribut.
    3. V dolní části stránky vyberte **Zobrazit upřesňující možnosti**.
    4. Vyberte možnost **Upravit seznam atributů pro AppName**.
@@ -202,7 +202,7 @@ Pomocí následujících kroků můžete zřídit role pro uživatele aplikace. 
   - **Co je potřeba zvážit**
     - Ujistěte se, že uživateli není přiřazeno více rolí. Nemůžeme zaručit, která role se zřídí.
     
-  - **Příklad výstupu** 
+  - **Příklad žádosti (POST)** 
 
    ```json
     {
@@ -226,6 +226,21 @@ Pomocí následujících kroků můžete zřídit role pro uživatele aplikace. 
    }
    ```
   
+  - **Příklad výstupu (PATCH)** 
+    
+   ```
+   "Operations": [
+   {
+   "op": "Add",
+   "path": "roles",
+   "value": [
+   {
+   "value": "{\"id\":\"06b07648-ecfe-589f-9d2f-6325724a46ee\",\"value\":\"25\",\"displayName\":\"Role1234\"}"
+   }
+   ]
+   ```  
+Formát žádosti v opravě a příspěvku se liší. Chcete-li zajistit, aby byly zprávy POST a PATCH odesílány ve stejném formátu, můžete použít příznak funkce popsané [zde](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior). 
+
 - **AppRoleAssignmentsComplex** 
   - **Kdy použít:** Pomocí výrazu AppRoleAssignmentsComplex můžete zřídit více rolí pro uživatele. 
   - **Postup konfigurace:** Upravte seznam podporovaných atributů, jak je popsáno výše, aby zahrnovaly nový atribut pro role: 

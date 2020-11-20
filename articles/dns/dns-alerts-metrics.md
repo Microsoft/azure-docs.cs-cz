@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
-ms.openlocfilehash: a27c4519024d6d3d2f3852534619b5f8c2bb5e43
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 85b681cbeb1b06784529e321c9e907ab2bdecb73
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489604"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954643"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS metriky a výstrahy
 Azure DNS je hostingová služba pro domény DNS, která poskytuje překlad adres IP pomocí infrastruktury Microsoft Azure. Tento článek popisuje metriky a výstrahy pro službu Azure DNS.
@@ -47,7 +47,7 @@ Tuto metriku zobrazíte tak, že na kartě monitorování v Azure Portal vyberet
 *Obrázek: Azure DNS dotazování na metriky svazků*
 
 ### <a name="record-set-count"></a>Počet sad záznamů
-Metrika *počtu sad záznamů* zobrazuje počet sad záznamů v Azure DNS pro vaši zónu DNS. Započítávají se všechny sady záznamů definované ve vaší zóně. Jednotkou měření je počet a agregace je maximální hodnota všech sad záznamů. Tuto metriku zobrazíte tak, že na kartě **monitorování** v Azure Portal vyberete možnosti Průzkumník **metrik (Preview)** . Vyberte zónu DNS z rozevíracího seznamu **prostředek** , vyberte metriku **počtu sad záznamů** a pak jako **agregaci**vyberte **Maximum** . Další informace o prostředí Průzkumník metrik a vytváření grafů najdete v tématu [Azure Monitor Průzkumník metrik](../azure-monitor/platform/metrics-charts.md). 
+Metrika *počtu sad záznamů* zobrazuje počet sad záznamů v Azure DNS pro vaši zónu DNS. Započítávají se všechny sady záznamů definované ve vaší zóně. Jednotkou měření je počet a agregace je maximální hodnota všech sad záznamů. Tuto metriku zobrazíte tak, že na kartě **monitorování** v Azure Portal vyberete možnosti Průzkumník **metrik (Preview)** . Vyberte zónu DNS z rozevíracího seznamu **prostředek** , vyberte metriku **počtu sad záznamů** a pak jako **agregaci** vyberte **Maximum** . Další informace o prostředí Průzkumník metrik a vytváření grafů najdete v tématu [Azure Monitor Průzkumník metrik](../azure-monitor/platform/metrics-charts.md). 
 
 ![Počet sad záznamů](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
@@ -62,7 +62,7 @@ Metrika *využití kapacity sady záznamů* v Azure DNS zobrazuje procento využ
 *Obrázek: metriky využití kapacity sady záznamů Azure DNS*
 
 ## <a name="alerts-in-azure-dns"></a>Výstrahy v Azure DNS
-Azure Monitor poskytuje možnost upozorňování na dostupné hodnoty metrik. Metriky DNS jsou k dispozici v novém prostředí pro konfiguraci výstrah. Jak je podrobně popsáno v [dokumentaci k výstrahám Azure monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md), můžete jako prostředek vybrat zónu DNS, zvolit typ signálu metriky a nakonfigurovat logiku výstrah a další parametry, jako je například **tečka** a **frekvence**. Můžete dále definovat [skupinu akcí](../azure-monitor/platform/action-groups.md) pro situaci, kdy je splněna podmínka výstrahy, a na základě kterých bude výstraha doručena prostřednictvím zvolených akcí. Další informace o tom, jak nakonfigurovat upozorňování pro Azure Monitor metriky, najdete v tématu [Vytvoření, zobrazení a správa výstrah pomocí Azure monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
+Azure Monitor poskytuje možnost upozorňování na dostupné hodnoty metrik. Metriky DNS jsou k dispozici v novém prostředí pro konfiguraci výstrah. Jak je podrobně popsáno v [dokumentaci k výstrahám Azure monitor](../azure-monitor/platform/alerts-metric.md), můžete jako prostředek vybrat zónu DNS, zvolit typ signálu metriky a nakonfigurovat logiku výstrah a další parametry, jako je například **tečka** a **frekvence**. Můžete dále definovat [skupinu akcí](../azure-monitor/platform/action-groups.md) pro situaci, kdy je splněna podmínka výstrahy, a na základě kterých bude výstraha doručena prostřednictvím zvolených akcí. Další informace o tom, jak nakonfigurovat upozorňování pro Azure Monitor metriky, najdete v tématu [Vytvoření, zobrazení a správa výstrah pomocí Azure monitor](../azure-monitor/platform/alerts-metric.md). 
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [Azure DNS](dns-overview.md).

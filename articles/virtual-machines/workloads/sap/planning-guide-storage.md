@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ed99145a2d3860849c4a8117a93a9a0f24d227c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1cd6f5f7865d18461ac7a635530e9aabfde380a6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540922"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955408"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Typy služby Azure Storage pro úlohy SAP
 Azure má spoustu typů úložiště, které se v různých možnostech, propustnosti, latenci a cenách liší. Některé typy úložiště nejsou ani omezené možnosti použitelné pro scénáře SAP. Vzhledem k tomu, že některé typy úložiště Azure jsou vhodné nebo optimalizované pro konkrétní scénáře úloh SAP. Zejména u SAP HANA některé typy úložiště Azure získali certifikaci pro použití s SAP HANA. V tomto dokumentu procházíme mezi různými typy úložišť a popisujete jejich schopnost a použitelnost pomocí úloh SAP a komponent SAP.
@@ -273,7 +274,7 @@ Další integrovaná funkce úložiště ANF:
 - Klonování svazků ANF ze snímků
 - Obnovení svazků ze snímků (modul snap-vrácení)
 
-**Shrnutí** : Azure NetApp Files je úložiště s nízkou latencí Hana, které umožňuje nasadit svazky nebo sdílené složky systému souborů NFS a SMB. Úložiště obsahuje tři různé úrovně služeb, které poskytují různé propustnosti a vstupně-výstupní operace lineárním způsobem na GiBou kapacitu svazku. Úložiště ANF umožňuje nasazení SAP HANAch scénářů škálování na více instancí s pohotovostním uzlem. Úložiště je vhodné k poskytování sdílených složek, které jsou potřeba pro/sapmnt nebo globální transportní adresář SAP. Úložiště ANF přináší dostupnost funkcí, která je k dispozici jako nativní funkce NetApp.  
+**Shrnutí**: Azure NetApp Files je úložiště s nízkou latencí Hana, které umožňuje nasadit svazky nebo sdílené složky systému souborů NFS a SMB. Úložiště obsahuje tři různé úrovně služeb, které poskytují různé propustnosti a vstupně-výstupní operace lineárním způsobem na GiBou kapacitu svazku. Úložiště ANF umožňuje nasazení SAP HANAch scénářů škálování na více instancí s pohotovostním uzlem. Úložiště je vhodné k poskytování sdílených složek, které jsou potřeba pro/sapmnt nebo globální transportní adresář SAP. Úložiště ANF přináší dostupnost funkcí, která je k dispozici jako nativní funkce NetApp.  
 
 
 

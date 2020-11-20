@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 5806266955eafab8c3c8c99695ff82736de92e9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 600934e2d46c1a84a83fa1290db13b3d0d1508f4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187060"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956887"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Řešení potíží s nasazením zařízení StorSimple
 ## <a name="overview"></a>Přehled
@@ -46,12 +46,12 @@ Následující části vám pomůžou vyřešit problémy, ke kterým dojde při
 ## <a name="first-time-setup-wizard-process"></a>Proces Průvodce instalací v prvním čase
 Následující kroky shrnují proces Průvodce instalací. Podrobné informace o instalaci najdete v tématu [nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 
-1. Spuštěním rutiny [Invoke-HcsSetupWizard](https://technet.microsoft.com/library/dn688135.aspx) spusťte Průvodce instalací, který vás provede zbývajícími kroky. 
+1. Spuštěním rutiny [Invoke-HcsSetupWizard](/previous-versions/windows/powershell-scripting/dn688135(v=wps.630)) spusťte Průvodce instalací, který vás provede zbývajícími kroky. 
 2. Konfigurace sítě: Průvodce instalací umožňuje konfigurovat nastavení sítě pro síťové rozhraní DATA 0 na zařízení StorSimple. Mezi tato nastavení patří následující:
-   * Virtuální IP adresa (VIP), maska podsítě a brána – rutina [set-HcsNetInterface](https://technet.microsoft.com/library/dn688161.aspx) se spustí na pozadí. Konfiguruje IP adresu, masku podsítě a bránu pro síťové rozhraní DATA 0 na zařízení StorSimple.
-   * Primární server DNS – rutina [set-HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) se spustí na pozadí. Nakonfiguruje nastavení DNS pro řešení StorSimple.
-   * Server NTP – rutina [set-HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) se spustí na pozadí. Konfiguruje nastavení serveru NTP pro řešení StorSimple.
-   * Volitelný webový proxy server – rutina [set-HcsWebProxy](https://technet.microsoft.com/library/dn688154.aspx) se spustí na pozadí. Nastavuje a povoluje konfiguraci webového proxy serveru pro řešení StorSimple.
+   * Virtuální IP adresa (VIP), maska podsítě a brána – rutina [set-HcsNetInterface](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630)) se spustí na pozadí. Konfiguruje IP adresu, masku podsítě a bránu pro síťové rozhraní DATA 0 na zařízení StorSimple.
+   * Primární server DNS – rutina [set-HcsDnsClientServerAddress](/previous-versions/windows/powershell-scripting/dn688172(v=wps.630)) se spustí na pozadí. Nakonfiguruje nastavení DNS pro řešení StorSimple.
+   * Server NTP – rutina [set-HcsNtpClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) se spustí na pozadí. Konfiguruje nastavení serveru NTP pro řešení StorSimple.
+   * Volitelný webový proxy server – rutina [set-HcsWebProxy](/previous-versions/windows/powershell-scripting/dn688154(v=wps.630)) se spustí na pozadí. Nastavuje a povoluje konfiguraci webového proxy serveru pro řešení StorSimple.
 3. Nastavení hesla: dalším krokem je nastavení hesla správce zařízení.
    Heslo správce zařízení se používá pro přihlášení k vašemu zařízení. Výchozí heslo zařízení je **Password1**.
         
@@ -139,7 +139,7 @@ K registraci zařízení použijete službu StorSimple Device Manager spuštěno
 | 9 |Upozornění: nepovedlo se aktivovat zařízení. Hesla správce zařízení a StorSimple Snapshot Manager hesla se nezměnila. |Pokud se registrace nepovede, hesla správce zařízení a StorSimple Snapshot Manager se nezmění. | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>Nástroje pro řešení potíží s nasazeními StorSimple
-StorSimple zahrnuje několik nástrojů, které můžete použít k řešení potíží s řešením StorSimple. Tady jsou některé z nich:
+StorSimple zahrnuje několik nástrojů, které můžete použít k řešení potíží s řešením StorSimple. Mezi ně patří:
 
 * Podporuje balíčky a protokoly zařízení.
 * Rutiny navržené speciálně pro řešení potíží.
@@ -157,7 +157,7 @@ Balíček pro podporu obsahuje všechny příslušné protokoly, které mohou po
    2. V podokně **Akce** klikněte na možnost **Otevřít uložený protokol** a ukažte na soubory protokolu ve formátu etvx/ETW (balíček pro podporu). Teď si můžete soubor zobrazit. Po otevření souboru můžete kliknout pravým tlačítkem a uložit soubor jako text.
       
       > [!IMPORTANT]
-      > K otevření těchto souborů v prostředí Windows PowerShell můžete použít také rutinu **GET-WinEvent** . Další informace najdete v tématu [GET-WinEvent](https://technet.microsoft.com/library/hh849682.aspx) v referenční dokumentaci k rutinám Windows PowerShellu.
+      > K otevření těchto souborů v prostředí Windows PowerShell můžete použít také rutinu **GET-WinEvent** . Další informace najdete v tématu [GET-WinEvent](/powershell/module/microsoft.powershell.diagnostics/get-winevent) v referenční dokumentaci k rutinám Windows PowerShellu.
      
 5. Když se protokoly otevřou v Prohlížeč událostí, vyhledejte následující protokoly, které obsahují problémy související s konfigurací zařízení:
    
@@ -189,7 +189,7 @@ Když nakonfigurujete síťová rozhraní pro nasazení na první zařízení, s
    * Pokud je rozhraní v pořádku, ale není povoleno, zobrazí se stav **ifIndex** jako **NotPresent**.
    * Pokud rozhraní neexistuje, nezobrazí se v tomto seznamu. Uživatelské rozhraní služby StorSimple Device Manager bude toto rozhraní pořád zobrazovat ve stavu selhání.
 
-Další informace o tom, jak používat tuto rutinu, najdete v tématu rutiny [Get-netadapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) v tématu Reference k rutinám prostředí Windows PowerShell.
+Další informace o tom, jak používat tuto rutinu, najdete v tématu rutiny [Get-netadapter](/powershell/module/netadapter/get-netadapter?view=win10-ps) v tématu Reference k rutinám prostředí Windows PowerShell.
 
 V následujících částech jsou uvedeny ukázky výstupu z `Get-NetAdapter` rutiny.
 
@@ -284,7 +284,7 @@ Použijte `Test-HcsmConnection` rutinu pro zařízení, které už je připojen�
    * ErrorCode. CiSDeviceDecommissioned – označuje, že zařízení je deaktivováno.
    * ErrorCode. DeviceNotReady – označuje, že zařízení je v režimu údržby.
    * ErrorCode. DeviceNotReady – označuje, že zařízení není online.
-3. Ověřte, že je spuštěná služba StorSimple Device Manager (použijte rutinu [Get-ClusterResource](https://technet.microsoft.com/library/ee461004.aspx) ). Pokud služba není spuštěná, může se zobrazit následující chyby:
+3. Ověřte, že je spuštěná služba StorSimple Device Manager (použijte rutinu [Get-ClusterResource](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee461004(v=technet.10)) ). Pokud služba není spuštěná, může se zobrazit následující chyby:
    
    * ErrorCode. CiSApplianceAgentNotOnline
    * ErrorCode. CisPowershellScriptHcsError – to znamená, že při spuštění Get-ClusterResource došlo k výjimce.
@@ -308,7 +308,7 @@ Použijte `Test-HcsmConnection` rutinu pro zařízení, které už je připojen�
 
 Soubory protokolu CiSCommandletLog0Curr. errlog a CiSAgentsvc0Curr. errlog budou mít další informace, například Podrobnosti o výjimce.
 
-Další informace o tom, jak použít rutinu, najdete v referenční dokumentaci prostředí Windows PowerShell v tématu [test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx) .
+Další informace o tom, jak použít rutinu, najdete v referenční dokumentaci prostředí Windows PowerShell v tématu [test-HcsmConnection](/previous-versions/windows/powershell-scripting/dn715782(v=wps.630)) .
 
 > [!IMPORTANT]
 > Tuto rutinu můžete spustit pro aktivní i pasivní kontroler.
@@ -553,5 +553,5 @@ Chyba může být způsobena některou z následujících příčin:
 
 <!--Link references-->
 
-[1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
-[2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx 
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd379547(v=ws.10)
+[2]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd392266(v=ws.10)

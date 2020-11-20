@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5c49a46dfcd97f5feb43b0b910476ef3ad6f402a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c7f4ab92e4cce3937a933fec97008c281a0eae
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742243"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954116"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Zálohování sdílených složek nebo svazků ve virtuálním poli StorSimple
 
@@ -28,7 +28,7 @@ ms.locfileid: "91742243"
 
 Virtuální pole StorSimple je hybridní cloudové úložiště, které se dá nakonfigurovat jako souborový server nebo server iSCSI. Virtuální pole umožňuje uživateli vytvářet naplánované a ruční zálohy všech sdílených složek nebo svazků v zařízení. Když je nakonfigurovaný jako souborový server, umožňuje taky obnovení na úrovni položek. V tomto kurzu se dozvíte, jak vytvořit naplánované a ruční zálohy a provést obnovení na úrovni položky k obnovení odstraněného souboru ve virtuálním poli.
 
-Tento kurz se vztahuje pouze na virtuální pole StorSimple. Informace o řadě 8000 najdete na webu [vytvoření zálohy pro zařízení 8000 series](storsimple-manage-backup-policies-u2.md) .
+Tento kurz se vztahuje pouze na virtuální pole StorSimple. Informace o řadě 8000 najdete na webu [vytvoření zálohy pro zařízení 8000 series](./storsimple-8000-manage-backup-policies-u2.md) .
 
 ## <a name="back-up-shares-and-volumes"></a>Zálohování sdílených složek a svazků
 
@@ -100,7 +100,7 @@ Chcete-li zobrazit existující zálohy, proveďte následující kroky v Azure 
     ![Přejít ke katalogu záloh](./media/storsimple-virtual-array-backup/viewbackups1.png)
 2. Zadejte následující kritéria, která budou použita pro filtrování:
    
-   - **Časový rozsah** – může být **za 1 hodinu**, **posledních 24 hodin**, **posledních 7 dní**, **posledních 30 dní**, **minulý rok**a **vlastní datum**.
+   - **Časový rozsah** – může být **za 1 hodinu**, **posledních 24 hodin**, **posledních 7 dní**, **posledních 30 dní**, **minulý rok** a **vlastní datum**.
     
    - **Zařízení** – vyberte ze seznamu souborové servery nebo servery iSCSI, které jsou zaregistrované ve službě StorSimple Device Manager.
    
@@ -115,4 +115,3 @@ Chcete-li zobrazit existující zálohy, proveďte následující kroky v Azure 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o [správě virtuálního pole StorSimple](storsimple-ova-web-ui-admin.md).
-

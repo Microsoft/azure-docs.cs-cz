@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: ead24b89dba889a4bb8f11d57eb687e7790aebfb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35fa0fc134045585eebd21324352f9b4ff272e87
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055907"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954235"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Použití uživatelského rozhraní StorSimple Snapshot Manager ke správě úloh zálohování a katalogu záloh
 
@@ -46,7 +46,7 @@ StorSimple Snapshot Manager navíc podporuje [navigaci pomocí klávesnice a řa
 Uživatelské rozhraní StorSimple Snapshot Manager podporuje funkce usnadnění poskytované operačním systémem Windows a konzolu MMC (Microsoft Management Console) a také některé Snapshot Manager StorSimple pro konkrétní klávesové zkratky. 
 
 * Popis funkcí usnadnění systému Windows naleznete v [klávesových zkratce pro systém Windows](https://support.microsoft.com/kb/126449). 
-* Popis funkcí usnadnění přístupu MMC najdete v části [přístupnost pro MMC 3,0](https://technet.microsoft.com/library/cc766075.aspx) .
+* Popis funkcí usnadnění přístupu MMC najdete v části [přístupnost pro MMC 3,0](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc766075(v=ws.11)) .
 * Popis funkcí StorSimple Snapshot Manager dostupnosti najdete na stránce [navigace a zástupci klávesnice](#keyboard-navigation-and-shortcuts).
 
 ## <a name="menu-bar"></a>Řádek nabídek
@@ -67,13 +67,13 @@ Chcete-li zobrazit nabídku **soubor** , klikněte na položku **soubor** na pan
 #### <a name="menu-description"></a>Popis nabídky
 Následující tabulka popisuje položky, které se zobrazí v nabídce **soubor** .
 
-| Položka nabídky | Description |
+| Položka nabídky | Popis |
 |:--- |:--- |
 | Nová |Kliknutím na **Nový** vytvořte novou konzolu založenou na StorSimple Snapshot Manager. |
 | Otevřít |Kliknutím na **otevřít** otevřete existující konzolu. |
 | Uložit |Kliknutím na **Uložit** uložte aktuální konzolu. |
 | Uložit jako |Klikněte na **Uložit jako** a vytvořte novou, přejmenovanou instanci aktuální konzoly. Pomocí možnosti **Uložit jako** můžete přizpůsobit zobrazení a uložit ho pro pozdější načtení. Můžete například vytvořit StorSimple Snapshot Manager moduly snap-in, které odkazují na konkrétní servery. |
-| Přidat nebo odebrat modul snap-in |Kliknutím na **Přidat nebo odebrat modul snap-** in můžete přidat nebo odebrat moduly snap-in a uspořádat uzly v podokně **Rozsah** . Další informace najdete [v konzole MMC 3,0 na Přidat, odebrat a uspořádat moduly snap-in a rozšíření](https://technet.microsoft.com/library/cc722035.aspx). |
+| Přidat nebo odebrat modul snap-in |Kliknutím na **Přidat nebo odebrat modul snap-** in můžete přidat nebo odebrat moduly snap-in a uspořádat uzly v podokně **Rozsah** . Další informace najdete [v konzole MMC 3,0 na Přidat, odebrat a uspořádat moduly snap-in a rozšíření](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc722035(v=ws.11)). |
 | Možnosti |Kliknutím na **Možnosti** změňte ikonu konzoly, určete režimy přístupu uživatele a oprávnění nebo odstraňte soubory konzoly, abyste zvýšili dostupné místo na disku. |
 | Seznam cest k souborům |Kliknutím na cestu v číslovaném seznamu znovu otevřete soubor, který jste nedávno otevřeli. |
 | Ukončit |Kliknutím na tlačítko **ukončit** zavřete nabídku **soubor** . |
@@ -103,20 +103,20 @@ Následující tabulka obsahuje abecední seznam akcí StorSimple Snapshot Manag
 * Sloupec **Popis** popisuje, jak použít jednotlivé akce v nabídce **Akce** nebo podokně akce a vysvětluje, co dělá.
 
 > [!NOTE]
-> Podokno **Akce** a nabídky **akcí** obsahují další možnosti, jako je například **zobrazení**, **nové okno z tohoto místa**, **aktualizace**, **seznam exportu**a **help**. Tyto možnosti jsou k dispozici v rámci konzoly MMC a nejsou specifické pro StorSimple Snapshot Manager. Tabulka obsahuje popisy těchto možností.
+> Podokno **Akce** a nabídky **akcí** obsahují další možnosti, jako je například **zobrazení**, **nové okno z tohoto místa**, **aktualizace**, **seznam exportu** a **help**. Tyto možnosti jsou k dispozici v rámci konzoly MMC a nejsou specifické pro StorSimple Snapshot Manager. Tabulka obsahuje popisy těchto možností.
 > 
 > 
 
-| Akce | Navigace | Description |
+| Akce | Navigace | Popis |
 |:--- |:--- |:--- |
 | Ověření |Klikněte na uzel **zařízení** a v podokně **výsledků** klikněte pravým tlačítkem na zařízení. |Kliknutím na **ověřit** zadejte heslo, které jste nakonfigurovali pro zařízení. |
 | Klonování |Rozbalte **Katalog zálohování**, rozbalte **cloudové snímky**, klikněte na zálohu s datem a potom v podokně **výsledků** vyberte svazek. |Kliknutím na **klonovat** vytvořte kopii snímku cloudu a uložte ji do umístění, které určíte. |
 | Konfigurace zařízení |Klikněte pravým tlačítkem myši na uzel **zařízení** . |Kliknutím na **Konfigurovat zařízení** nakonfigurujte jedno zařízení nebo více zařízení pro připojení k hostiteli Windows. |
-| Vytvořit zásady zálohování |Proveďte některou z následujících akcí:<ul><li>Klikněte pravým tlačítkem na **zásady zálohování**.</li><li>Klikněte nebo rozbalte **skupiny svazků**a potom klikněte pravým tlačítkem na skupinu svazků.</li><li>Klikněte nebo rozbalte **Katalog zálohování**a potom klikněte pravým tlačítkem na skupinu svazků.</li></ul> |Klikněte na **vytvořit zásadu zálohování** a nakonfigurujte naplánované zálohování pro skupinu svazků. |
+| Vytvořit zásady zálohování |Proveďte některou z následujících akcí:<ul><li>Klikněte pravým tlačítkem na **zásady zálohování**.</li><li>Klikněte nebo rozbalte **skupiny svazků** a potom klikněte pravým tlačítkem na skupinu svazků.</li><li>Klikněte nebo rozbalte **Katalog zálohování** a potom klikněte pravým tlačítkem na skupinu svazků.</li></ul> |Klikněte na **vytvořit zásadu zálohování** a nakonfigurujte naplánované zálohování pro skupinu svazků. |
 | Vytvořit skupinu svazků |Proveďte některou z následujících akcí:<ul><li>Klikněte na uzel **svazky** a potom v podokně **výsledků** klikněte pravým tlačítkem na svazek.</li><li>Klikněte pravým tlačítkem myši na uzel **skupiny svazků** .</li></ul> |Kliknutím na **vytvořit skupinu svazků** přiřaďte svazky ke skupině svazků. |
 | Odstranit |Klikněte na uzel nebo výsledek (Tato položka se zobrazí v řadě **akcí** a podoknech  **akcí** .) |Kliknutím na tlačítko **Odstranit** odstraníte uzel nebo výsledek, který jste vybrali. Až se zobrazí potvrzovací dialogové okno, potvrďte nebo zrušte odstranění. |
 | Podrobnosti |Klikněte na uzel **zařízení** a potom v podokně **výsledků** klikněte pravým tlačítkem na zařízení. |Kliknutím na **Podrobnosti** zobrazíte podrobnosti o konfiguraci zařízení. |
-| Upravit |Klikněte na **zásady zálohování**a potom v podokně **výsledků** klikněte pravým tlačítkem na zásadu. |Klikněte na **Upravit** a změňte plán zálohování pro skupinu svazků. |
+| Upravit |Klikněte na **zásady zálohování** a potom v podokně **výsledků** klikněte pravým tlačítkem na zásadu. |Klikněte na **Upravit** a změňte plán zálohování pro skupinu svazků. |
 | Exportovat seznam |Klikněte na libovolný uzel nebo výsledek (Tato položka se zobrazí v podoknech všechny **Akce** a **Akce** ). |Kliknutím na **Exportovat seznam** uložte seznam do souboru s hodnotami oddělenými čárkou (CSV). Tento soubor pak můžete importovat do aplikace v tabulce pro účely analýzy. |
 | Nápověda |Klikněte na libovolný uzel nebo výsledek. (Tato položka se zobrazí v podoknech všechny **Akce** **a akce.** ) |Kliknutím na tlačítko **Zobrazit** otevřete online nápovědě v samostatném okně prohlížeče. |
 | New Window from Here |Klikněte na libovolný uzel nebo výsledek (Tato položka se zobrazí v podoknech všechny **Akce** a **Akce** ). |Kliknutím na **nové okno z tohoto místa** otevřete nové okno StorSimple Snapshot Manager. |
@@ -124,8 +124,8 @@ Následující tabulka obsahuje abecední seznam akcí StorSimple Snapshot Manag
 | Aktualizovat zařízení |Klikněte na uzel **zařízení** a v podokně **výsledků** klikněte pravým tlačítkem na zařízení. |Kliknutím na **aktualizovat zařízení** synchronizujete konkrétní připojené zařízení s Snapshot Manager StorSimple. |
 | Aktualizovat zařízení |Klikněte pravým tlačítkem myši na uzel **zařízení** . |Kliknutím na **aktualizovat zařízení** synchronizujete seznam připojených zařízení s Snapshot Manager StorSimple. |
 | Znovu prohledat svazky |Klikněte pravým tlačítkem na uzel **svazky** . |Kliknutím na možnost **Prohledat svazky** aktualizujte seznam svazků, které se zobrazí v podokně **výsledků** . |
-| Obnovení |Rozbalte **Katalog zálohování**, rozbalte skupinu svazků, rozbalte **místní snímky** nebo **cloudové snímky**a potom klikněte pravým tlačítkem na zálohu. |Kliknutím na **obnovit** nahraďte aktuální data skupiny svazků daty z vybrané zálohy. |
-| Provést zálohování |Proveďte některou z následujících akcí:<ul><li>Rozbalte položku **skupiny svazků**a potom klikněte pravým tlačítkem myši na skupinu svazků.</li><li>Rozbalte položku **katalog záloh**a potom klikněte pravým tlačítkem na skupinu svazků.</li></ul> |Kliknutím na **vytvořit zálohu** spusťte úlohu zálohování okamžitě. |
+| Obnovení |Rozbalte **Katalog zálohování**, rozbalte skupinu svazků, rozbalte **místní snímky** nebo **cloudové snímky** a potom klikněte pravým tlačítkem na zálohu. |Kliknutím na **obnovit** nahraďte aktuální data skupiny svazků daty z vybrané zálohy. |
+| Provést zálohování |Proveďte některou z následujících akcí:<ul><li>Rozbalte položku **skupiny svazků** a potom klikněte pravým tlačítkem myši na skupinu svazků.</li><li>Rozbalte položku **katalog záloh** a potom klikněte pravým tlačítkem na skupinu svazků.</li></ul> |Kliknutím na **vytvořit zálohu** spusťte úlohu zálohování okamžitě. |
 | Přepnout zobrazení importů |Pravým tlačítkem myši klikněte na nejvyšší uzel v podokně **oboru** ( **StorSimple Snapshot Manager** v příkladech). |Kliknutím na tlačítko **Přepnout importy zobrazíte** nebo skryjete skupiny svazků a přidružené zálohy, které byly naimportovány z řídicího panelu služby StorSimple Device Manager. |
 
 ### <a name="view-menu"></a>Nabídka Zobrazit
@@ -139,7 +139,7 @@ K nabídce **zobrazení** můžete získat přístup na panelu nabídek nebo v p
 #### <a name="menu-description"></a>Popis nabídky
 Následující tabulka popisuje položky, které se zobrazí v nabídce **zobrazení** .
 
-| Položka nabídky | Description |
+| Položka nabídky | Popis |
 |:--- |:--- |
 | Přidat či odebrat sloupce |Kliknutím na **Přidat nebo odebrat sloupce** přidejte nebo odeberte sloupce v podokně **výsledků** . |
 | Přizpůsobení |Kliknutím na **přizpůsobit** zobrazíte nebo skryjete položky v okně konzoly StorSimple Snapshot Manager. |
@@ -155,7 +155,7 @@ K nabídce **Oblíbené položky** můžete získat přístup v řádku nabídek
 #### <a name="menu-description"></a>Popis nabídky
 Následující tabulka popisuje položky, které se zobrazí v nabídce **Oblíbené** .
 
-| Položka nabídky | Description |
+| Položka nabídky | Popis |
 |:--- |:--- |
 | Add to Favorites |Kliknutím na tlačítko **Přidat k oblíbeným položkám** přidáte aktuální zobrazení do seznamu oblíbených položek. |
 | Uspořádat oblíbené položky |Kliknutím na **Uspořádat oblíbené položky** uspořádáte obsah složky Oblíbené položky. |
@@ -173,7 +173,7 @@ Přístup k nabídce **okna** můžete získat z panelu nabídek.
 #### <a name="menu-description"></a>Popis nabídky
 Následující tabulka popisuje položky, které se zobrazí v nabídce okna.
 
-| Položka nabídky | Description |
+| Položka nabídky | Popis |
 |:--- |:--- |
 | Nové okno |Kliknutím na **nové okno** otevřete nové okno konzoly (kromě stávajícího okna). |
 | Nášejí |Kliknutím na tlačítko **kaskády** zobrazíte otevřená okna konzoly v Kaskádovém stylu. |
@@ -190,7 +190,7 @@ K nabídce **help** můžete získat přístup na řádku nabídek. Témata náp
 #### <a name="menu-description"></a>Popis nabídky
 Následující tabulka popisuje položky, které se zobrazí v nabídce Help.
 
-| Položka nabídky | Description |
+| Položka nabídky | Popis |
 |:--- |:--- |
 | Help Snapshot Manager StorSimple |Kliknutím na tlačítko **help on StorSimple Snapshot Manager** otevřete Snapshot Manager nápovědě k StorSimple v samostatném okně. |
 | Témata nápovědy |Kliknutím na **témata nápovědy** otevřete MMC online nápovědu v samostatném okně. |
@@ -204,7 +204,7 @@ Panel nástrojů umístěný pod řádkem nabídek obsahuje ikony navigace a úk
 ### <a name="icon-descriptions"></a>Popisy ikon
 Následující tabulka popisuje ikony, které se zobrazí na panelu nástrojů. 
 
-| Ikona | Description |
+| Ikona | Popis |
 |:--- |:--- |
 | ![Šipka vlevo](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |Kliknutím na ikonu se šipkou doleva se vrátíte na předchozí stránku. |
 | ![Šipka vpravo](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |Kliknutím na šipku doprava přejdete na další stránku (Pokud je šipka šedá, akce není k dispozici). |
@@ -276,7 +276,7 @@ Zásady zálohování jsou plány úloh pro místní a cloudové snímky. Uzel *
 
 
 ### <a name="backup-catalog-node"></a>Uzel katalogu zálohování
-Uzel **Katalog zálohování** obsahuje seznam zálohování svazků Azure StorSimple na pracovišti a mimo pracoviště. Tento uzel je uspořádán podle skupiny svazků a každý kontejner skupiny svazků obsahuje samostatné struktury pro místní snímky (uzel **místní snímek**s) a snímky cloudu (uzel **snímky cloudu** ). Když je rozbalený, každý kontejner skupiny svazků obsahuje seznam všech úspěšných záloh, které se provedly interaktivně nebo nakonfigurovanými zásadami.
+Uzel **Katalog zálohování** obsahuje seznam zálohování svazků Azure StorSimple na pracovišti a mimo pracoviště. Tento uzel je uspořádán podle skupiny svazků a každý kontejner skupiny svazků obsahuje samostatné struktury pro místní snímky (uzel **místní snímek** s) a snímky cloudu (uzel **snímky cloudu** ). Když je rozbalený, každý kontejner skupiny svazků obsahuje seznam všech úspěšných záloh, které se provedly interaktivně nebo nakonfigurovanými zásadami.
 
 * Uzel rozbalíte kliknutím na ikonu šipky vedle položky **Katalog zálohování**.
 * Pokud chcete zobrazit nabídku dostupných akcí, klikněte pravým tlačítkem myši na uzel **katalogu zálohování** nebo klikněte pravým tlačítkem na kterýkoli z uzlů, které se zobrazí v rozbaleném zobrazení.
@@ -313,7 +313,7 @@ Chcete-li zobrazit následující příklad, klikněte na uzel **skupiny svazků
 
 ![Podokno výsledků](./media/storsimple-use-snapshot-manager/HCS_SSM_Results_pane.png) 
 
-Můžete nakonfigurovat podrobnosti zobrazené v podokně **výsledků** : klikněte pravým tlačítkem myši na uzel v podokně **Rozsah** , klikněte na možnost **Zobrazit**a poté klikněte na možnost **Přidat nebo odebrat sloupce**.
+Můžete nakonfigurovat podrobnosti zobrazené v podokně **výsledků** : klikněte pravým tlačítkem myši na uzel v podokně **Rozsah** , klikněte na možnost **Zobrazit** a poté klikněte na možnost **Přidat nebo odebrat sloupce**.
 
 ## <a name="actions-pane"></a>Podokno akcí
 Podokno **Akce** je pravé podokno v uživatelském rozhraní StorSimple Snapshot Manager. Obsahuje nabídku operací, které můžete provádět na uzlu, zobrazení nebo datech, která jste vybrali v podokně **oboru** nebo v podokně **výsledků** . Podokno **Akce** obsahuje stejné příkazy jako nabídky **akcí** , které jsou k dispozici pro položky v podokně **oboru** a v podokně **výsledků** . Popis jednotlivých akcí naleznete v tabulce v části menu **Akce** .
@@ -323,7 +323,7 @@ Následující příklad zobrazíte tak, že v podokně **oboru** rozbalíte uze
 
 ![Příklad plánovaných úloh podokna akcí](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane.png) 
 
-Pokud chcete zobrazit další možnosti, v podokně **Rozsah** rozbalte uzel **úlohy** , klikněte na **naplánované**a potom v podokně **výsledků** klikněte na naplánovanou úlohu. V podokně **Akce** se zobrazí dostupné akce pro naplánovanou úlohu, jak je znázorněno v následujícím příkladu.
+Pokud chcete zobrazit další možnosti, v podokně **Rozsah** rozbalte uzel **úlohy** , klikněte na **naplánované** a potom v podokně **výsledků** klikněte na naplánovanou úlohu. V podokně **Akce** se zobrazí dostupné akce pro naplánovanou úlohu, jak je znázorněno v následujícím příkladu.
 
 ![Příklad akcí úlohy podokna akce](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane_Results.png)
 
@@ -340,7 +340,7 @@ Následující tabulka obsahuje popis klíčů, které můžete použít k proch
 | Navigační klíč | Akce |
 |:--- |:--- |
 | Klávesa šipka dolů |Pomocí klávesy se šipkou dolů se můžete pohybovat svisle k další položce v nabídce nebo v podokně. |
-| Enter |Stisknutím klávesy ENTER dokončete akci a potom přejděte k dalšímu kroku. Například stisknutím klávesy ENTER můžete vybrat **Další**, **OK**nebo **vytvořit**a pak přejít k dalšímu kroku v průvodci. |
+| Enter |Stisknutím klávesy ENTER dokončete akci a potom přejděte k dalšímu kroku. Například stisknutím klávesy ENTER můžete vybrat **Další**, **OK** nebo **vytvořit** a pak přejít k dalšímu kroku v průvodci. |
 | Esc |Stisknutím klávesy ESC zavřete nabídku nebo zrušit a zavřete stránku. |
 | F1 |Stisknutím klávesy F1 zobrazíte téma nápovědy pro aktuálně aktivní okno. |
 | F5 |Stisknutím klávesy F5 aktualizujte uzel. |
@@ -450,4 +450,3 @@ V následujících tabulkách jsou uvedeny kombinace klávesových zkratek pro k
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [používat Snapshot Manager StorSimple ke správě řešení StorSimple](storsimple-snapshot-manager-admin.md).
 * Naučte se [používat StorSimple Snapshot Manager pro připojení a správu zařízení](storsimple-snapshot-manager-manage-devices.md).
-

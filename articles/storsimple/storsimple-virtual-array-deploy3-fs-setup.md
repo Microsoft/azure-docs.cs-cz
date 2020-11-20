@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05447db97311fb78707079528e0570b3fd42df59
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 244fdbf7cb723fe85e0987d176a13242f0bff064
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977574"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956819"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Nasazení virtuálního pole StorSimple – nastavení jako souborového serveru prostřednictvím Azure Portal
 ![Diagram znázorňující kroky potřebné k nasazení virtuálního pole První část třetího kroku je označená jako Souborová Server a zvýrazní se.](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -31,7 +31,7 @@ ms.locfileid: "91977574"
 
 Tento článek popisuje, jak provést počáteční nastavení, zaregistrovat souborový server StorSimple, dokončit instalaci zařízení a vytvořit sdílené složky SMB a připojit se k nim. Toto je poslední článek v sérii kurzů pro nasazení požadovaných k úplnému nasazení virtuálního pole jako souborového serveru nebo serveru iSCSI.
 
-Dokončení procesu instalace a konfigurace může trvat přibližně 10 minut. Informace v tomto článku se vztahují pouze k nasazení virtuálního pole StorSimple. Nasazení zařízení řady StorSimple 8000 najdete v části [nasazení zařízení StorSimple 8000 Series s aktualizací Update 2](storsimple-deployment-walkthrough-u2.md).
+Dokončení procesu instalace a konfigurace může trvat přibližně 10 minut. Informace v tomto článku se vztahují pouze k nasazení virtuálního pole StorSimple. Nasazení zařízení řady StorSimple 8000 najdete v části [nasazení zařízení StorSimple 8000 Series s aktualizací Update 2](./storsimple-8000-deployment-walkthrough-u2.md).
 
 ## <a name="setup-prerequisites"></a>Požadavky instalačního programu 
 Před konfigurací a nastavením StorSimple virtuálního pole se ujistěte, že:
@@ -55,10 +55,10 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte virtuáln
 2. Přihlaste se k webovému uživatelskému rozhraní vašeho virtuálního pole jako **StorSimpleAdmin**. Zadejte heslo správce zařízení, které jste změnili v kroku 3: spuštění virtuálního pole v části [zřízení virtuálního pole StorSimple v technologii Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) nebo [zřízení virtuálního pole StorSimple ve VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
    
    ![Snímek obrazovky s přihlašovací stránkou StorSimple Uživatelské jméno StorSimpleAdmin je viditelné a pole pro heslo je vyplněno neurčitými znaky.](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
-3. Přejdete na **domovskou** stránku. Tato stránka popisuje různá nastavení potřebná ke konfiguraci a registraci virtuálního pole pomocí služby StorSimple Device Manager. Nastavení **sítě**, **nastavení webového proxy serveru**a **Nastavení času** jsou volitelné. Jediná požadovaná nastavení jsou **nastavení zařízení** a **Nastavení cloudu**.
+3. Přejdete na **domovskou** stránku. Tato stránka popisuje různá nastavení potřebná ke konfiguraci a registraci virtuálního pole pomocí služby StorSimple Device Manager. Nastavení **sítě**, **nastavení webového proxy serveru** a **Nastavení času** jsou volitelné. Jediná požadovaná nastavení jsou **nastavení zařízení** a **Nastavení cloudu**.
    
    ![Snímek obrazovky domovské stránky Text uvádí, že zařízení není nakonfigurované. Odkazy na několik různých typů nastavení jsou viditelné.](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
-4. Na stránce **nastavení sítě** v části **Síťová rozhraní**se pro vás automaticky nakonfigurují data 0. Každé síťové rozhraní je standardně nastavené tak, aby se automaticky získala IP adresa (DHCP). IP adresa, podsíť a brána se proto automaticky přiřazují (pro IPv4 a IPv6).
+4. Na stránce **nastavení sítě** v části **Síťová rozhraní** se pro vás automaticky nakonfigurují data 0. Každé síťové rozhraní je standardně nastavené tak, aby se automaticky získala IP adresa (DHCP). IP adresa, podsíť a brána se proto automaticky přiřazují (pro IPv4 a IPv6).
    
    ![Snímek obrazovky se stránkou nastavení sítě zobrazující IP adresy, které jsou nakonfigurovány pro různé verze Internet Protocol.](./media/storsimple-virtual-array-deploy3-fs-setup/image5.png)
    
@@ -138,7 +138,7 @@ Provedením následujících kroků v [Azure Portal](https://portal.azure.com/) 
     
    3. Pro šifrování je použit klíč AES 256 s uživatelem definovaným klíčem. Zadejte znakový klíč 32 a pak znovu zadejte klíč pro potvrzení. Poznamenejte si klíč v aplikaci pro správu klíčů, abyste mohli budoucí reference.
     
-   4. Klikněte na **Konfigurovat požadované nastavení** a zadejte přihlašovací údaje účtu úložiště, které se mají používat s vaším zařízením. Pokud nejsou nakonfigurované žádné přihlašovací údaje účtu úložiště, klikněte na **Přidat nový** . **Ujistěte se, že používaný účet úložiště podporuje objekty blob bloku. Objekty blob stránky nejsou podporovány.** Další informace o objektech [BLOB bloků a objektech blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+   4. Klikněte na **Konfigurovat požadované nastavení** a zadejte přihlašovací údaje účtu úložiště, které se mají používat s vaším zařízením. Pokud nejsou nakonfigurované žádné přihlašovací údaje účtu úložiště, klikněte na **Přidat nový** . **Ujistěte se, že používaný účet úložiště podporuje objekty blob bloku. Objekty blob stránky nejsou podporovány.** Další informace o objektech [BLOB bloků a objektech blob stránky](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
    
       ![Konfigurace souborového serveru 3](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. V okně **Přidat přihlašovací údaje účtu úložiště** udělejte toto: 
@@ -182,7 +182,7 @@ Provedením následujících kroků na webu [Azure Portal](https://portal.azure.
     
    2. Volitelný **Popis** sdílené složky. Popis vám pomůže identifikovat vlastníky sdílené složky.
     
-   3. **Typ** pro sdílenou složku. Typ lze **Převrstvený** nebo **lokálně připnout**s vrstvou jako výchozí. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte **místně připojenou** sdílenou složku. U všech ostatních dat vyberte **vrstvenou** sdílenou složku.
+   3. **Typ** pro sdílenou složku. Typ lze **Převrstvený** nebo **lokálně připnout** s vrstvou jako výchozí. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte **místně připojenou** sdílenou složku. U všech ostatních dat vyberte **vrstvenou** sdílenou složku.
       Místně připnuté sdílení je silným způsobem zajišťováno a zajišťuje, aby primární data ve sdílené složce zůstala místní pro zařízení a nepřesahují se do cloudu. Vrstvená sdílená složka je na druhé straně dynamicky zřízená. Když vytvoříte vrstvenou sdílenou složku, na místní úrovni se zřídí 10% místa a 90% místa se zřídí v cloudu. Pokud jste například zřídili svazek o velikosti 1 TB, 100 GB by se nacházelo v místním prostoru a v cloudu se v případě datových vrstev používalo 900 GB. To znamená, že pokud vyčerpáte z místního prostoru na zařízení, nemůžete zřídit vrstvenou sdílenou složku.
    
    4. V poli **nastavit výchozí všechna oprávnění na** pole přiřaďte uživateli nebo skupině, která přistupuje k této sdílené složce. Zadejte jméno uživatele nebo skupiny uživatelů ve formátu *jan \@ contoso.com* . Pro povolení přístupu k těmto sdíleným složkám doporučujeme použít skupinu uživatelů (místo jednoho uživatele). Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
@@ -213,4 +213,3 @@ Nyní se budete muset připojit k jedné nebo více sdíleným složkám, které
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si, jak pomocí místního webového uživatelského rozhraní [spravovat virtuální pole StorSimple](storsimple-ova-web-ui-admin.md).
-

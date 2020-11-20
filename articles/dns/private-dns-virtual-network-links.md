@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e43ad35cdaad89d5b9f43007bad8782f358c1a6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75646757"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954337"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Co je propojení virtuální sítě?
 
@@ -23,7 +23,7 @@ Virtuální síť můžete propojit s privátní zónou DNS jako registrační v
 
 ## <a name="registration-virtual-network"></a>Registrační virtuální síť
 
-Při [vytváření propojení](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) mezi privátní zónou DNS a virtuální sítí máte možnost zapnout pro virtuální počítače funkci [autoregistrování](./private-dns-autoregistration.md) záznamů DNS. Pokud zvolíte tuto možnost, virtuální síť se bude pro privátní zónu DNS stala registrační virtuální sítí. Pro virtuální počítače, které nasazujete v síti, se automaticky vytvoří záznam DNS. Pro virtuální počítače, které jste už ve virtuální síti nasadili, se vytvoří záznamy DNS. Z hlediska virtuální sítě se privátní zóna DNS bude zónou registrace pro tuto virtuální síť.
+Při [vytváření propojení](./private-dns-getstarted-portal.md#link-the-virtual-network) mezi privátní zónou DNS a virtuální sítí máte možnost zapnout pro virtuální počítače funkci [autoregistrování](./private-dns-autoregistration.md) záznamů DNS. Pokud zvolíte tuto možnost, virtuální síť se bude pro privátní zónu DNS stala registrační virtuální sítí. Pro virtuální počítače, které nasazujete v síti, se automaticky vytvoří záznam DNS. Pro virtuální počítače, které jste už ve virtuální síti nasadili, se vytvoří záznamy DNS. Z hlediska virtuální sítě se privátní zóna DNS bude zónou registrace pro tuto virtuální síť.
 Jedna privátní zóna DNS může mít více registračních virtuálních sítí, ale každá virtuální síť může mít přidruženou přesně jednu registrační zónu.
 
 ## <a name="resolution-virtual-network"></a>Překlad virtuální sítě
@@ -33,7 +33,7 @@ Jedna privátní zóna DNS může mít více virtuálních sítí pro řešení 
 
 ## <a name="limits"></a>Omezení
 
-Informace o tom, kolik sítí pro registraci a rozlišení, můžete propojit s privátními zónami DNS, najdete v tématu [omezení Azure DNS](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) .
+Informace o tom, kolik sítí pro registraci a rozlišení, můžete propojit s privátními zónami DNS, najdete v tématu [omezení Azure DNS](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits) .
 
 ## <a name="other-considerations"></a>Další důležité informace
 
@@ -49,7 +49,7 @@ Informace o tom, kolik sítí pro registraci a rozlišení, můžete propojit s 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si, jak propojit virtuální síť s privátní zónou DNS pomocí [Azure Portal](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)
+* Přečtěte si, jak propojit virtuální síť s privátní zónou DNS pomocí [Azure Portal](./private-dns-getstarted-portal.md#link-the-virtual-network)
 
 * Naučte se, jak vytvořit privátní zónu v Azure DNS pomocí [Azure PowerShell](./private-dns-getstarted-powershell.md) nebo [Azure CLI](./private-dns-getstarted-cli.md).
 

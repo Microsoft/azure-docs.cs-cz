@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
-ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72adb2732eb0832589cbc25fb7e4288eb1899214
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710537"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954507"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Webové aplikace Azure s vyrovnáváním zatížení hostitele ve vrcholu zóny
 
@@ -58,7 +58,7 @@ Vytvořte dvě webové aplikace, jednu v každém plánu App Service.
 4. Vyberte **Vytvořit**.
 5. Přijměte výchozí hodnoty a pomocí následující tabulky nakonfigurujte dvě webové aplikace:
 
-   |Name<br>(musí být jedinečné v rámci. azurewebsites.net)|Resource Group |Zásobník modulu runtime|Oblast|App Service plán/umístění
+   |Name<br>(musí být jedinečné v rámci. azurewebsites.net)|Skupina prostředků |Zásobník modulu runtime|Oblast|App Service plán/umístění
    |---------|---------|-|-|-------|
    |App – 01|Použít existující<br>Vyberte skupinu prostředků.|.NET Core 2.2|East US|ASP-01 (D1)|
    |App-02|Použít existující<br>Vyberte skupinu prostředků.|.NET Core 2.2|Střední USA|ASP-02 (D1)|
@@ -69,7 +69,7 @@ Teď je potřeba poznamenat IP adresu a název hostitele pro webové aplikace.
 
 1. Otevřete skupinu prostředků a v tomto příkladu vyberte svou první webovou aplikaci (**App-01** ).
 2. V levém sloupci vyberte možnost **vlastnosti**.
-3. Poznamenejte si adresu pod **adresou URL**a v části **odchozí IP adresy** si všimněte první IP adresy v seznamu. Tyto informace použijete později při konfiguraci Traffic Manager koncových bodů.
+3. Poznamenejte si adresu pod **adresou URL** a v části **odchozí IP adresy** si všimněte první IP adresy v seznamu. Tyto informace použijete později při konfiguraci Traffic Manager koncových bodů.
 4. Opakujte pro **App-02**.
 
 ## <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
@@ -115,8 +115,8 @@ Přidejte vlastní doménu pro obě webové aplikace.
 
 1. Otevřete skupinu prostředků a vyberte svou první webovou aplikaci.
 2. V levém sloupci vyberte **vlastní domény**.
-3. V části **vlastní domény**vyberte **Přidat vlastní doménu**.
-4. V části **vlastní doména**zadejte vlastní název domény. Například contoso.com.
+3. V části **vlastní domény** vyberte **Přidat vlastní doménu**.
+4. V části **vlastní doména** zadejte vlastní název domény. Například contoso.com.
 5. Vyberte **Ověřit**.
 
    Vaše doména by měla projít ověřením a zobrazit zelenou značku zaškrtnutí u **názvu hostitele** a **doménového vlastnictví**.
@@ -158,6 +158,6 @@ Další informace o záznamech aliasů najdete v následujících článcích:
 
 - [Kurz: Konfigurace záznamu aliasu, který odkazuje na veřejnou IP adresu Azure](tutorial-alias-pip.md)
 - [Kurz: Konfigurace záznamu aliasu pro podporu vrcholů názvů domén ve službě Traffic Manager](tutorial-alias-tm.md)
-- [Nejčastější dotazy k DNS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+- [Nejčastější dotazy k DNS](./dns-faq.md#alias-records)
 
 Informace o tom, jak migrovat aktivní název DNS, najdete v tématu [migrace aktivního názvu DNS na Azure App Service](../app-service/manage-custom-dns-migrate-domain.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 29ea9300b2f86f442d95c96d4a5df3364628d866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92041be4d3d5ef4d980c17fa0a5870b740c1784a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744130"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956105"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Nasazení služby StorSimple Device Manager pro virtuální pole StorSimple
 
@@ -36,7 +36,7 @@ Běžné úlohy související se službou StorSimple Device Manager jsou:
 * Získání registračního klíče služby
 * Znovu vygenerovat registrační klíč služby
 
-V tomto kurzu se dozvíte, jak provést všechny předchozí úlohy. Informace obsažené v tomto článku se vztahují pouze na virtuální pole StorSimple. Další informace o řadě StorSimple 8000 najdete v [nasazení StorSimple Manager služby](storsimple-manage-service.md).
+V tomto kurzu se dozvíte, jak provést všechny předchozí úlohy. Informace obsažené v tomto článku se vztahují pouze na virtuální pole StorSimple. Další informace o řadě StorSimple 8000 najdete v [nasazení StorSimple Manager služby](./storsimple-8000-manage-service.md).
 
 ## <a name="create-a-service"></a>Vytvoření služby
 
@@ -89,12 +89,12 @@ Seznam služeb se aktualizuje.
  ![Aktualizovaný seznam služeb](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
 
 ## <a name="get-the-service-registration-key"></a>Získání registračního klíče služby
-Po úspěšném vytvoření služby budete muset zaregistrovat zařízení StorSimple ve službě. K registraci prvního zařízení StorSimple budete potřebovat registrační klíč služby. K registraci dalších zařízení pomocí existující služby StorSimple budete potřebovat registrační klíč a šifrovací klíč dat služby (který se při registraci generuje na prvním zařízení). Další informace o šifrovacím klíči dat služby najdete v tématu [zabezpečení StorSimple](storsimple-security.md). Registrační klíč můžete získat tak, že získáte přístup k oknu **klíče** pro vaši službu.
+Po úspěšném vytvoření služby budete muset zaregistrovat zařízení StorSimple ve službě. K registraci prvního zařízení StorSimple budete potřebovat registrační klíč služby. K registraci dalších zařízení pomocí existující služby StorSimple budete potřebovat registrační klíč a šifrovací klíč dat služby (který se při registraci generuje na prvním zařízení). Další informace o šifrovacím klíči dat služby najdete v tématu [zabezpečení StorSimple](./storsimple-8000-security.md). Registrační klíč můžete získat tak, že získáte přístup k oknu **klíče** pro vaši službu.
 
 K získání registračního klíče služby proveďte následující kroky.
 
 #### <a name="to-get-the-service-registration-key"></a>Získání registračního klíče služby
-1. V okně **StorSimple Device Manager** otevřete okno **klíče**pro **správu &gt; ** .
+1. V okně **StorSimple Device Manager** otevřete okno **klíče** pro **správu &gt;** .
    
    ![Okno Klíče](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. V okně **klíče** se zobrazí registrační klíč služby. Zkopírujte registrační klíč pomocí ikony kopírování. 
@@ -107,7 +107,7 @@ Registrační klíč služby bude nutné znovu vygenerovat, pokud je nutné prov
 K opětovnému vygenerování registračního klíče služby proveďte následující kroky.
 
 #### <a name="to-regenerate-the-service-registration-key"></a>Opětovné vygenerování registračního klíče služby
-1. V okně **StorSimple Device Manager** otevřete okno **klíče**pro **správu &gt; ** .
+1. V okně **StorSimple Device Manager** otevřete okno **klíče** pro **správu &gt;** .
    
    ![Okno klíče](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. V okně **klíče** klikněte na **znovu vygenerovat**.
@@ -125,4 +125,3 @@ K opětovnému vygenerování registračního klíče služby proveďte následu
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [, jak začít s StorSimple](storsimple-virtual-array-deploy1-portal-prep.md) virtuálním polem.
 * Naučte se [spravovat zařízení StorSimple](storsimple-ova-web-ui-admin.md).
-

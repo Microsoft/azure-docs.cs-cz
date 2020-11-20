@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: eaf6b1825a258b11a2e345c771909822de73dfcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cd1d981737db1e7c852931ecc2449e0afc03530
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056485"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956785"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Řešení potíží s operačním StorSimple zařízením
 > [!NOTE]
-> Portál Classic pro StorSimple je zastaralý. Vaši Správci zařízení StorSimple se automaticky přesunou na nový Azure Portal podle plánu ukončování používání. O tomto přesunu vás budeme informovat prostřednictvím e-mailu a oznámení na portálu. Tento dokument zanedlouho také nebude k dispozici. Pokud máte jakékoli dotazy k tomuto přesunu, přečtěte si [Nejčastější dotazy: Přesun na Azure Portal](storsimple-8000-move-azure-portal-faq.md).
+> Portál Classic pro StorSimple je zastaralý. Vaši Správci zařízení StorSimple se automaticky přesunou na nový Azure Portal podle plánu ukončování používání. O tomto přesunu vás budeme informovat prostřednictvím e-mailu a oznámení na portálu. Tento dokument zanedlouho také nebude k dispozici. Pokud máte jakékoli dotazy k tomuto přesunu, přečtěte si [Nejčastější dotazy: Přesun na Azure Portal](./index.yml).
 
 ## <a name="overview"></a>Přehled
 Tento článek poskytuje užitečné pokyny k odstraňování potíží s konfigurací, se kterými se můžete setkat po nasazení a fungování zařízení StorSimple. Popisuje běžné problémy, možné příčiny a doporučené kroky, které vám pomohou vyřešit problémy, se kterými se můžete setkat při spuštění Microsoft Azure StorSimple. Tyto informace platí pro místní fyzické zařízení StorSimple i pro virtuální zařízení StorSimple.
@@ -47,9 +47,9 @@ Následující tabulka popisuje chyby, se kterými se můžete setkat při spuš
 
 | Ne. | Chybová zpráva nebo podmínka | Možné příčiny | Doporučená akce |
 |:--- |:--- |:--- |:--- |
-| 1 |Chyba 350032: Toto zařízení již bylo deaktivováno. |Tato chyba se zobrazí, pokud spustíte Průvodce instalací na zařízení, které je deaktivováno. |Pro další kroky [kontaktujte podpora Microsoftu](storsimple-contact-microsoft-support.md) . Deaktivované zařízení nejde umístit do služby. Aby bylo možné zařízení znovu aktivovat, může být vyžadováno obnovení továrního nastavení. |
+| 1 |Chyba 350032: Toto zařízení již bylo deaktivováno. |Tato chyba se zobrazí, pokud spustíte Průvodce instalací na zařízení, které je deaktivováno. |Pro další kroky [kontaktujte podpora Microsoftu](./storsimple-8000-contact-microsoft-support.md) . Deaktivované zařízení nejde umístit do služby. Aby bylo možné zařízení znovu aktivovat, může být vyžadováno obnovení továrního nastavení. |
 | 2 |Invoke-HcsSetupWizard: ERROR_INVALID_FUNCTION (výjimka z HRESULT: 0x80070001) |Aktualizace serveru DNS se nezdařila. Nastavení DNS jsou globální nastavení a používají se ve všech povolených síťových rozhraních. |Povolte rozhraní a znovu použijte nastavení DNS. To může rušit síť pro jiná povolená rozhraní, protože tato nastavení jsou globální. |
-| 3 |Zdá se, že zařízení je online na portálu služby StorSimple Manager Service, ale když se pokusíte dokončit minimální nastavení a uložit konfiguraci, operace se nezdařila. |Během počáteční instalace není webový proxy server nakonfigurovaný, i když se jednalo o skutečné proxy server. |K vyhledání chyby použijte [rutinu test-HcsmConnection][2] . Pokud problém nemůžete vyřešit, [kontaktujte podpora Microsoftu](storsimple-contact-microsoft-support.md) . |
+| 3 |Zdá se, že zařízení je online na portálu služby StorSimple Manager Service, ale když se pokusíte dokončit minimální nastavení a uložit konfiguraci, operace se nezdařila. |Během počáteční instalace není webový proxy server nakonfigurovaný, i když se jednalo o skutečné proxy server. |K vyhledání chyby použijte [rutinu test-HcsmConnection][2] . Pokud problém nemůžete vyřešit, [kontaktujte podpora Microsoftu](./storsimple-8000-contact-microsoft-support.md) . |
 | 4 |Invoke-HcsSetupWizard: Hodnota nespadá do očekávaného rozsahu. |Tato chyba je vytvářena nesprávnou maskou podsítě. Možné příčiny: <ul><li> Maska podsítě chybí nebo je prázdná.</li><li>Formát předpony IPv6 je nesprávný.</li><li>Rozhraní je povolené pro Cloud, ale brána chybí nebo je nesprávná.</li></ul>Všimněte si, že DATA 0 jsou automaticky povolena v cloudu, pokud je nakonfigurována pomocí Průvodce instalací nástroje. |K určení problému použijte podsíť 0.0.0.0 nebo 256.256.256.256 a potom se podívejte na výstup. V případě potřeby zadejte správné hodnoty masky podsítě, brány a předpony IPv6. |
 
 ## <a name="error-codes"></a>Kódy chyb
@@ -64,7 +64,7 @@ Chyby jsou uvedeny v číselném pořadí.
 | 390143 |Došlo k chybě s kódem chyby 390143. (Neznámá chyba.) |Pokud chyba přetrvává, kontaktujte prosím podpora Microsoftu pro další kroky. |
 
 ## <a name="next-steps"></a>Další kroky
-Pokud tento problém nemůžete vyřešit, obraťte se na [Podpora Microsoftu](storsimple-contact-microsoft-support.md) s žádostí o pomoc. 
+Pokud tento problém nemůžete vyřešit, obraťte se na [Podpora Microsoftu](./storsimple-8000-contact-microsoft-support.md) s žádostí o pomoc. 
 
-[1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx
-[2]: https://technet.microsoft.com/%5Clibrary/Dn715782(v=WPS.630).aspx
+[1]: /previous-versions/windows/powershell-scripting/dn688135(v=wps.630)
+[2]: /previous-versions/windows/powershell-scripting/dn715782(v=wps.630)

@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: d613da4d9abdfe22fc20f1b74da41e4a65cbff33
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: be455de2a1f8aebc7327af4741e0652a4be76665
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151563"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956428"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Vysoká dostupnost IBM DB2 LUW ve virtuálních počítačích Azure na linuxovém serveru Red Hat Enterprise
 
@@ -113,7 +114,7 @@ Před spuštěním nasazení dokončete proces plánování. Plánování staví
 | Virtuální počítače hostující IBM Db2 LUW | Velikost virtuálního počítače, úložiště, sítě, IP adresa. |
 | Název a virtuální IP adresa virtuálního hostitele pro databázi IBM Db2| Virtuální IP adresa nebo název hostitele, který se používá pro připojení aplikačních serverů SAP. **DB-Virt-hostname**, **DB-Virt-IP**. |
 | Oplocení Azure | Způsob, jak zabránit rozdělení situací v mozku, je zabránit. |
-| Nástroj pro vyrovnávání zatížení Azure | Využití úrovně Basic nebo Standard (doporučeno), port testu pro databázi Db2 (náš doporučení 62500) **– port**. |
+| Azure Load Balancer | Využití úrovně Basic nebo Standard (doporučeno), port testu pro databázi Db2 (náš doporučení 62500) **– port**. |
 | Překlad adres| Jak řešení překladu názvů funguje v prostředí. Služba DNS se důrazně doporučuje. Je možné použít místní soubor hostitelů. |
     
 Další informace o Pacemaker pro Linux v Azure najdete v tématu [Nastavení Pacemaker na Red Hat Enterprise Linux v Azure][rhel-pcs-azr].
@@ -144,7 +145,7 @@ Ujistěte se, že je vybraný operační systém podporovaný IBM/SAP pro IBM Db
 
 ## <a name="create-the-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
     
-Pokud chcete pro tento server IBM Db2 vytvořit základní cluster Pacemaker, přečtěte si téma [Nastavení Pacemaker na Red Hat Enterprise Linux v Azure][rhel-pcs-azr]. 
+Pokud chcete pro tento server IBM Db2 vytvořit základní cluster Pacemaker, přečtěte si téma [Nastavení Pacemaker na Red Hat Enterprise Linux v Azure][rhel-pcs-azr]. 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>Instalace prostředí IBM Db2 LUW a SAP
 
@@ -409,11 +410,11 @@ Pokud chcete nakonfigurovat Azure Load Balancer, doporučujeme použít službu 
 
 1. Vytvořte front-end fond IP adres:
 
-   a. V Azure Portal otevřete Azure Load Balancer, vyberte **front-end IP fond**a pak vyberte **Přidat**.
+   a. V Azure Portal otevřete Azure Load Balancer, vyberte **front-end IP fond** a pak vyberte **Přidat**.
 
    b. Zadejte název nového fondu front-end IP adres (například **Db2 připojení**).
 
-   c. Nastavte **přiřazení** na hodnotu **static**a zadejte na začátku IP adresu **virtuální IP** adresa.
+   c. Nastavte **přiřazení** na hodnotu **static** a zadejte na začátku IP adresu **virtuální IP** adresa.
 
    d. Vyberte **OK**.
 
@@ -421,7 +422,7 @@ Pokud chcete nakonfigurovat Azure Load Balancer, doporučujeme použít službu 
 
 1. Vytvořte fond back-end:
 
-   a. V Azure Portal otevřete Azure Load Balancer, vyberte **back-end fondy**a pak vyberte **Přidat**.
+   a. V Azure Portal otevřete Azure Load Balancer, vyberte **back-end fondy** a pak vyberte **Přidat**.
 
    b. Zadejte název nového fondu back-end (například **Db2-back-end**).
 
@@ -435,23 +436,23 @@ Pokud chcete nakonfigurovat Azure Load Balancer, doporučujeme použít službu 
 
 1. Vytvořte sondu stavu:
 
-   a. V Azure Portal otevřete Azure Load Balancer, vyberte **sondy stavu**a vyberte **Přidat**.
+   a. V Azure Portal otevřete Azure Load Balancer, vyberte **sondy stavu** a vyberte **Přidat**.
 
    b. Zadejte název nové sondy stavu (například **Db2-HP**).
 
-   c. Jako protokol a port **62500**vyberte **TCP** . Hodnotu **intervalu** nastavte na **5**a v poli prahová hodnota není v **pořádku** nastavte hodnotu **2**.
+   c. Jako protokol a port **62500** vyberte **TCP** . Hodnotu **intervalu** nastavte na **5** a v poli prahová hodnota není v **pořádku** nastavte hodnotu **2**.
 
    d. Vyberte **OK**.
 
 1. Vytvořte pravidla vyrovnávání zatížení:
 
-   a. V Azure Portal otevřete Azure Load Balancer, vyberte **pravidla vyrovnávání zatížení**a pak vyberte **Přidat**.
+   a. V Azure Portal otevřete Azure Load Balancer, vyberte **pravidla vyrovnávání zatížení** a pak vyberte **Přidat**.
 
    b. Zadejte název nového pravidla Load Balancer (například **Db2-SID**).
 
    c. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Db2-front-endu**).
 
-   d. Zachovejte **protokol** nastaven na **TCP**a zadejte port pro *komunikaci databáze*portů.
+   d. Zachovejte **protokol** nastaven na **TCP** a zadejte port pro *komunikaci databáze* portů.
 
    e. Zvyšte **časový limit nečinnosti** na 30 minut.
 
@@ -509,7 +510,7 @@ Archivace protokolu je prováděna pouze v primární databázi. Pokud změníte
 
 Doporučujeme nakonfigurovat společné sdílené složky NFS nebo GlusterFS, ve kterých jsou protokoly napsané z obou uzlů. Sdílená složka nebo GlusterFS systému souborů NFS musí být vysoce dostupná. 
 
-Pro přenosy nebo adresář profilu můžete použít stávající vysoce dostupné sdílené složky systému souborů NFS nebo GlusterFS. Další informace naleznete v tématech:
+Pro přenosy nebo adresář profilu můžete použít stávající vysoce dostupné sdílené složky systému souborů NFS nebo GlusterFS. Další informace naleznete v tématu:
 
 - [GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver][glusterfs] 
 - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP][anf-rhel]
@@ -616,8 +617,8 @@ sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 </code></pre>
 
 - **přesuny prostředků počítačů \<res_name> <host> :** vytvoří omezení umístění a může způsobit problémy s převzetím.
-- **prostředek počítače vymazat \<res_name> **: vymaže omezení umístění.
-- **Vyčištění \<res_name> prostředků počítačů **: vymaže všechny chyby prostředku.
+- **prostředek počítače vymazat \<res_name>**: vymaže omezení umístění.
+- **Vyčištění \<res_name> prostředků počítačů**: vymaže všechny chyby prostředku.
 
 ### <a name="test-a-manual-takeover"></a>Test ručního převzetí
 

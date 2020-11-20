@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: c787df901fc33c2dcd2c8a901202c72ea6de45d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84fd1a2d3d0dc4ce6960469ea3212b8ca1d4d07c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513601"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956768"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Deaktivace a odstranění služby StorSimple Virtual Array
 
@@ -30,7 +30,7 @@ Když deaktivujete virtuální pole StorSimple, přerušíte připojení mezi za
 * Deaktivace zařízení 
 * Odstranění deaktivovaného zařízení
 
-Informace v tomto článku se týkají pouze virtuálních polí StorSimple. Informace o řadě 8000 najdete v tématu Jak [deaktivovat nebo odstranit zařízení](storsimple-deactivate-and-delete-device.md).
+Informace v tomto článku se týkají pouze virtuálních polí StorSimple. Informace o řadě 8000 najdete v tématu Jak [deaktivovat nebo odstranit zařízení](./storsimple-8000-deactivate-and-delete-device.md).
 
 ## <a name="when-to-deactivate"></a>Kdy se má deaktivovat?
 
@@ -49,7 +49,7 @@ K deaktivaci zařízení proveďte následující kroky.
 1. V rámci služby přejdete na **správa > zařízení**. V okně **zařízení** klikněte na zařízení, které chcete deaktivovat, a vyberte ho.
    
     ![Vyberte zařízení, které chcete deaktivovat.](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
-2. V okně **řídicí panel zařízení** klikněte na **... ** V seznamu vyberte možnost **deaktivovat**.
+2. V okně **řídicí panel zařízení** klikněte na **...** V seznamu vyberte možnost **deaktivovat**.
    
     ![Klikněte na deaktivovat.](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
 3. V okně **deaktivovat** zadejte název zařízení a klikněte na **deaktivovat**. 
@@ -90,5 +90,4 @@ Pokud chcete zařízení odstranit, proveďte následující kroky.
 
 * Informace o tom, jak převzít služby při selhání, najdete v tématu [převzetí služeb při selhání a zotavení po havárii ve virtuálním poli StorSimple](storsimple-virtual-array-failover-dr.md).
 
-* Další informace o tom, jak používat službu StorSimple Device Manager, najdete v článku [použití služby StorSimple Device Manager ke správě vašeho virtuálního pole StorSimple](storsimple-virtual-array-manager-service-administration.md). 
-
+* Další informace o tom, jak používat službu StorSimple Device Manager, najdete v článku [použití služby StorSimple Device Manager ke správě vašeho virtuálního pole StorSimple](storsimple-virtual-array-manager-service-administration.md).

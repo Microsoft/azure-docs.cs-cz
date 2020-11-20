@@ -8,17 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 3b46ae07d4bbbcd02b9880a394b72c790553f95c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9561f96dafd936244831cff2ed05cda4d915d27d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837019"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955969"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Použití PowerShellu k povolení Azure Diagnostics ve virtuálním počítači s Windows
 
@@ -97,8 +98,8 @@ Konfigurace se musí aktualizovat, aby obsahovala následující:
 
 * Atribut *ResourceID* elementu **Metrics** se musí aktualizovat s ID prostředku pro virtuální počítač.
   
-  * ID prostředku se dá sestavit pomocí následujícího vzoru:/subscriptions/{*ID předplatného pro předplatné s virtuálním počítačem*}/RESOURCEGROUPS/{název*virtuálního**počítače*}/Providers/Microsoft.COMPUTE/virtualMachines/{.
-  * Pokud je třeba ID předplatného pro předplatné, kde je spuštěný virtuální počítač, **11111111-1111-1111-1111-111111111111**, název skupiny prostředků pro skupinu prostředků je **MyResourceGroup**a název virtuálního počítače je **MyWindowsVM**, pak bude hodnota *ResourceID* :
+  * ID prostředku se dá sestavit pomocí následujícího vzoru:/subscriptions/{*ID předplatného pro předplatné s virtuálním počítačem*}/RESOURCEGROUPS/{název *virtuálního**počítače*}/Providers/Microsoft.COMPUTE/virtualMachines/{.
+  * Pokud je třeba ID předplatného pro předplatné, kde je spuštěný virtuální počítač, **11111111-1111-1111-1111-111111111111**, název skupiny prostředků pro skupinu prostředků je **MyResourceGroup** a název virtuálního počítače je **MyWindowsVM**, pak bude hodnota *ResourceID* :
     
       ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
