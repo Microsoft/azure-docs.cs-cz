@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66a1e22282864d0425173504735d6beb42b76ad7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710375"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967257"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple jako cíl zálohování pomocí Backup Exec
 
@@ -79,7 +79,7 @@ StorSimple nabízí tyto výhody:
 
 I když StorSimple představuje dva hlavní scénáře nasazení (primární cíl zálohování a sekundární cíl zálohování), v podstatě je to jednoduché, blokové úložné zařízení. StorSimple provádí všechna komprimaci a odstraňování duplicitních dat. Bez problémů odesílá a načítá data mezi cloudem a systémem souborů a aplikací.
 
-Další informace o StorSimple najdete v tématu [StorSimple 8000 series: řešení hybridního cloudového úložiště](storsimple-overview.md). Můžete si také projít [specifikacemi řady Technical StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
+Další informace o StorSimple najdete v tématu [StorSimple 8000 series: řešení hybridního cloudového úložiště](storsimple-overview.md). Můžete si také projít [specifikacemi řady Technical StorSimple 8000](./storsimple-8000-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
 > Použití zařízení StorSimple jako cíle zálohování je podporované jenom pro StorSimple 8000 Update 3 a novější verze.
@@ -102,7 +102,7 @@ V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízen�
 | Scénář zálohování  | Kapacita místního úložiště  | Kapacita cloudového úložiště  |
 |---|---|---|
 | Primární záloha  | Poslední zálohy uložené v místním úložišti pro rychlé obnovení, aby splňovaly cíl bodu obnovení (RPO) | Historie zálohování (RPO) se vejde do kapacity cloudu |
-| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | Není k dispozici  |
+| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | –  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako primární cíl zálohování
 
@@ -170,7 +170,7 @@ Aby se řešení provádělo optimálně, doporučujeme dodržovat tyto osvědč
 
 ### <a name="deploy-storsimple"></a>Nasazení StorSimple
 
-Podrobné pokyny k nasazení StorSimple najdete v tématu [nasazení místního zařízení StorSimple](storsimple-deployment-walkthrough-u2.md).
+Podrobné pokyny k nasazení StorSimple najdete v tématu [nasazení místního zařízení StorSimple](./storsimple-8000-deployment-walkthrough-u2.md).
 
 ### <a name="deploy-backup-exec"></a>Nasazení Backup Exec
 
@@ -185,7 +185,7 @@ V této části předvádíme některé příklady konfigurace. Následující p
 | StorSimple úlohy nasazení  | Další komentáře |
 |---|---|
 | Nasaďte vaše místní zařízení StorSimple. | Podporované verze: aktualizace 3 a novější verze. |
-| Zapněte cíl zálohování. | Pomocí těchto příkazů můžete zapnout nebo vypnout režim cíle zálohování a získat stav. Další informace najdete v tématu [vzdálené připojení k zařízení StorSimple](storsimple-remote-connect.md).</br> Zapnutí režimu zálohování: `Set-HCSBackupApplianceMode -enable` . </br> Vypnutí režimu `Set-HCSBackupApplianceMode -disable` zálohování: </br> Získání aktuálního stavu nastavení režimu zálohování: `Get-HCSBackupApplianceMode` . |
+| Zapněte cíl zálohování. | Pomocí těchto příkazů můžete zapnout nebo vypnout režim cíle zálohování a získat stav. Další informace najdete v tématu [vzdálené připojení k zařízení StorSimple](./storsimple-8000-remote-connect.md).</br> Zapnutí režimu zálohování: `Set-HCSBackupApplianceMode -enable` . </br> Vypnutí režimu `Set-HCSBackupApplianceMode -disable` zálohování: </br> Získání aktuálního stavu nastavení režimu zálohování: `Get-HCSBackupApplianceMode` . |
 | Vytvořte pro svazek společný kontejner svazků, ve kterém jsou uložena data záloh. Všechna data v kontejneru svazků mají za následek odstranění duplicitních dat. | Kontejnery svazků StorSimple definují domény odstranění duplicit.  |
 | Vytvořte StorSimple svazky. | Vytvářejte svazky s velikostí co nejblíže předpokládanému využití, protože velikost svazku ovlivňuje dobu trvání snímku cloudu. Informace o tom, jak velikost svazku získat, najdete v tématu o [zásadách uchovávání informací](#retention-policies).</br> </br> Použijte StorSimple vrstvené svazky a zaškrtněte políčko **použít tento svazek pro archivní data, ke kterým se přistupuje méně často** . </br> Použití pouze místně připojených svazků není podporováno. |
 | Vytvořte jedinečné zásady zálohování StorSimple pro všechny cílové svazky zálohy. | Zásada zálohování StorSimple definuje skupinu konzistence svazku. |
@@ -211,16 +211,16 @@ Nastavte své řešení podle pokynů v následujících částech.
 - Zakažte defragmentaci Windows serveru na svazcích StorSimple.
 - Zakažte indexování Windows serveru na svazcích StorSimple.
 - Spusťte kontrolu antivirové ochrany na zdrojovém hostiteli (nikoli na svazcích StorSimple).
-- Vypněte výchozí [údržbu Windows serveru](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) ve Správci úloh. Udělejte to jedním z následujících způsobů:
+- Vypněte výchozí [údržbu Windows serveru](/windows/win32/w8cookbook/automatic-maintenance) ve Správci úloh. Udělejte to jedním z následujících způsobů:
   - Vypněte Konfigurátor údržby ve Windows Plánovač úloh.
-  - Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) ze systému Windows Sysinternals. Po stažení PsExec spusťte Azure PowerShell jako správce a zadejte:
+  - Stáhněte si [PsExec](/sysinternals/downloads/psexec) ze systému Windows Sysinternals. Po stažení PsExec spusťte Azure PowerShell jako správce a zadejte:
     ```powershell
     psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
     ```
 
 ### <a name="storsimple-best-practices"></a>Osvědčené postupy pro StorSimple
 
-  -   Ujistěte se, že se zařízení StorSimple aktualizovalo na [aktualizaci 3 nebo novější](storsimple-install-update-3.md).
+  -   Ujistěte se, že se zařízení StorSimple aktualizovalo na [aktualizaci 3 nebo novější](./index.yml).
   -   Izolujte provoz iSCSI a Cloud. Pro přenosy mezi StorSimple a záložním serverem používejte vyhrazená připojení iSCSI.
   -   Ujistěte se, že vaše zařízení StorSimple je vyhrazený cíl zálohování. Smíšené úlohy se nepodporují, protože mají vliv na RTO a RPO.
 
@@ -233,7 +233,7 @@ Nastavte své řešení podle pokynů v následujících částech.
 -   StorSimple podporuje zálohování exec a úplné a přírůstkové zálohování. Doporučujeme, abyste nepoužívali syntetické a rozdílové zálohy.
 -   Soubory dat zálohy by měly obsahovat pouze data pro konkrétní úlohu. Například připojení k médiím v různých úlohách není povoleno.
 -   Zakáže ověřování úlohy. V případě potřeby by se mělo ověřování naplánovat po poslední úloze zálohování. Je důležité pochopit, že tato úloha má vliv na okno zálohování.
--   Vyberte **úložiště**  >  **Your disk**  >  **vlastnosti podrobnosti o**disku  >  **Properties**. Vypněte **volbu předem přidělit místo na disku**.
+-   Vyberte **úložiště**  >  **Your disk**  >  **vlastnosti podrobnosti o** disku  >  **Properties**. Vypněte **volbu předem přidělit místo na disku**.
 
 Nejnovější nastavení služby Backup Exec a osvědčené postupy pro implementaci těchto požadavků najdete [na webu Veritas](https://www.veritas.com).
 
@@ -267,15 +267,15 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 
 ### <a name="to-set-up-backup-exec-storage"></a>Nastavení úložiště služby Backup Exec
 
-1.  V konzole pro správu Backup Exec vyberte **úložiště**  >  **Konfigurovat**úložiště  >  **na disku**  >  .**Další**.
+1.  V konzole pro správu Backup Exec vyberte **úložiště**  >  **Konfigurovat** úložiště  >  **na disku**  >  .**Další**.
 
     ![Backup Exec – Konzola pro správu, stránka konfigurace úložiště](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
-2.  Vyberte **Disk Storage**a pak vyberte **Další**.
+2.  Vyberte **Disk Storage** a pak vyberte **Další**.
 
     ![Backup Exec – Konzola pro správu, výběr stránky úložiště](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  Zadejte název zástupce, například **Úplná sobota**a popis. Vyberte **Další**.
+3.  Zadejte název zástupce, například **Úplná sobota** a popis. Vyberte **Další**.
 
     ![Stránka pro správu nástroje Backup Exec, název a popis](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
@@ -283,7 +283,7 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 
     ![Konzola pro správu služby Backup Exec, stránka výběru úložného disku](./media/storsimple-configure-backup-target-using-backup-exec/image9.png)
 
-5.  Zvyšte počet operací zápisu na **16**a pak vyberte **Další**.
+5.  Zvyšte počet operací zápisu na **16** a pak vyberte **Další**.
 
     ![Stránka nastavení pro souběžné operace zápisu v konzole pro správu Backup Exec](./media/storsimple-configure-backup-target-using-backup-exec/image10.png)
 
@@ -314,7 +314,7 @@ Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
 |---|---|---|
 | Týdně (týdny 1-4) | Sobota | Monday-Friday |
 | Měsíčně  | Sobota  |   |
-| Ročně | Sobota  |   |
+| Roční | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování Backup Exec
@@ -327,7 +327,7 @@ Následující sekvence předpokládá, že Backup Exec a cílový hostitel jsou
 
     ![Backup Exec – Konzola pro správu, výběr hostitele, zálohování a zálohování na disk](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
-2.  V dialogovém okně **vlastnosti definice zálohování** v části **zálohování**vyberte **Upravit**.
+2.  V dialogovém okně **vlastnosti definice zálohování** v části **zálohování** vyberte **Upravit**.
 
     ![Konzola pro správu nástroje Backup Exec, dialogové okno Vlastnosti definice zálohování](./media/storsimple-configure-backup-target-using-backup-exec/image15.png)
 
@@ -342,7 +342,7 @@ Následující sekvence předpokládá, že Backup Exec a cílový hostitel jsou
     > [!NOTE]
     > **Komprese** a **typ šifrování** jsou nastaveny na **žádné**.
 
-6.  V části **ověřit**vyberte zaškrtávací políčko **Neověřovat data pro tuto úlohu** . Použití této možnosti může ovlivnit vrstvení StorSimple.
+6.  V části **ověřit** vyberte zaškrtávací políčko **Neověřovat data pro tuto úlohu** . Použití této možnosti může ovlivnit vrstvení StorSimple.
 
     > [!NOTE]
     > Defragmentace, indexování a ověřování na pozadí negativně ovlivňují StorSimpleing vrstev.
@@ -388,7 +388,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 | Týden 3 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 4 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Měsíčně | StorSimple měsíčně |   |   |   |   |   |
-| Ročně | StorSimple ročně  |   |   |   |   |   |
+| Roční | StorSimple ročně  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>Přiřazení svazků StorSimple ke službě Backup Exec a úloze odstranění duplicitních dat
@@ -399,7 +399,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 
     ![Konzola pro správu nástroje Backup Exec, karta vlastnosti definice zálohování](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.  Vyberte **Přidat**  >  **Duplikovat fázi do**  >  **Úpravy**disku.
+2.  Vyberte **Přidat**  >  **Duplikovat fázi do**  >  **Úpravy** disku.
 
     ![Backup Exec – Konzola pro správu, přidat fázi](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
@@ -411,7 +411,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 
     ![Snímek obrazovky, který zobrazuje seznam, ve kterém je nutné vybrat úložiště.](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
-5.  Vyberte **ověřit**a potom zaškrtněte políčko **Neověřovat data pro tuto úlohu** .
+5.  Vyberte **ověřit** a potom zaškrtněte políčko **Neověřovat data pro tuto úlohu** .
 
     ![Snímek obrazovky, který ukazuje, kde jste vybrali možnost Neověřovat data pro tuto úlohu.](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
@@ -474,20 +474,20 @@ Havárie může být způsobeno nejrůznějšími faktory. V následující tabu
 
 | Scénář | Dopad | Postup obnovení | Poznámky |
 |---|---|---|---|
-| Selhání zařízení StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nahraďte neúspěšné zařízení a proveďte [převzetí služeb při selhání StorSimple a zotavení po havárii](storsimple-device-failover-disaster-recovery.md). | Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se načítají z cloudu do nového zařízení. Všechny operace jsou v cloudových rychlostech. Proces opakovaného prohledávání indexování a katalogu může způsobit, že se všechny zálohovací sklady kontrolují a nastavují z vrstvy cloudu na úroveň místního zařízení, což může být časově náročný proces. |
+| Selhání zařízení StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nahraďte neúspěšné zařízení a proveďte [převzetí služeb při selhání StorSimple a zotavení po havárii](./storsimple-8000-device-failover-disaster-recovery.md). | Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se načítají z cloudu do nového zařízení. Všechny operace jsou v cloudových rychlostech. Proces opakovaného prohledávání indexování a katalogu může způsobit, že se všechny zálohovací sklady kontrolují a nastavují z vrstvy cloudu na úroveň místního zařízení, což může být časově náročný proces. |
 | Selhání serveru Backup Exec | Operace zálohování a obnovení jsou přerušeny. | Znovu sestavte záložní server a proveďte obnovení databáze podle podrobných postupů v tématu [Postup ručního zálohování a obnovení databáze Backup Exec (BEDB)](http://www.veritas.com/docs/000041083). | Na serveru pro zotavení po havárii je nutné znovu sestavit nebo obnovit Server Backup Exec. Obnovte databázi do nejnovějšího bodu. Pokud obnovená databáze Backup Exec není synchronizovaná s vašimi nejnovějšími úlohami zálohování, je nutné indexování a vytváření katalogu. Tento index a proces opětovného prohledání katalogu může způsobit, že se všechny zálohovací sklady prohledají a nastavují z vrstvy cloudu na úroveň místního zařízení. Díky tomu je tato operace časově náročná. |
 | Selhání lokality, které vede ke ztrátě záložního serveru i StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a pak obnovte zálohovací Exec. | Nejprve obnovte StorSimple a pak obnovte zálohovací Exec. Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se z cloudu načtou do nového zařízení. Všechny operace jsou v cloudových rychlostech. |
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 Následující dokumenty byly odkazovány na tento článek:
 
-- [StorSimple instalaci funkce Multipath I/O](storsimple-configure-mpio-windows-server.md)
-- [Scénáře úložiště: dynamické zajišťování](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
-- [Použití jednotek GPT](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
-- [Nastavení stínových kopií pro sdílené složky](https://technet.microsoft.com/library/cc771893.aspx)
+- [StorSimple instalaci funkce Multipath I/O](./storsimple-8000-configure-mpio-windows-server.md)
+- [Scénáře úložiště: dynamické zajišťování](/windows-hardware/drivers/storage/thin-provisioning)
+- [Použití jednotek GPT](/previous-versions/windows/hardware/design/dn653580(v=vs.85)#EHD)
+- [Nastavení stínových kopií pro sdílené složky](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771893(v=ws.11))
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o tom, jak [obnovit ze zálohovacího skladu](storsimple-restore-from-backup-set-u2.md).
-- Další informace o tom, jak provést [převzetí služeb při selhání a zotavení po havárii zařízení](storsimple-device-failover-disaster-recovery.md).
+- Přečtěte si další informace o tom, jak [obnovit ze zálohovacího skladu](./storsimple-8000-restore-from-backup-set-u2.md).
+- Další informace o tom, jak provést [převzetí služeb při selhání a zotavení po havárii zařízení](./storsimple-8000-device-failover-disaster-recovery.md).

@@ -3,12 +3,12 @@ title: Koncepty – privátní cloudy a clustery
 description: Seznamte se s klíčovými možnostmi pro datové centra a vSphere clustery definovaná na základě softwaru řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 0454ade503ce40de46363f65d36a64340219c0b1
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874011"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967376"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Koncepce privátního cloudu a clusteru řešení Azure VMware
 
@@ -38,7 +38,7 @@ Správce vSphere a NSX-T můžete použít ke správě většiny dalších aspek
 
 ## <a name="hosts"></a>Hostitelé
 
-Clustery privátního cloudu řešení Azure VMware používají uzly nenáročné infrastruktury založené na technologii Hyper-v holé. V následující tabulce jsou uvedeny kapacity paměti RAM, procesoru a disku hostitele. 
+Clustery privátního cloudu řešení Azure VMware využívají hostitele infrastruktury sblížené s použitím technologie Hyper-v holých počítačů. V následující tabulce jsou uvedeny kapacity paměti RAM, procesoru a disku hostitele. 
 
 | Typ hostitele              |             Procesor             |   RAM (GB)   |  Síti vSAN NVMe cache úrovně (TB, RAW)  |  úroveň kapacity síti vSAN SSD (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 385d9126d578250064659153f6f0f54eec696790
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f70cf96baed274eaf260832bd83ab0e2c91f3683
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60870668"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967036"
 ---
 # <a name="storsimple-virtual-array-update-05-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 0,5
 
@@ -29,7 +29,7 @@ Následující poznámky k verzi identifikují kritické otevřené problémy a 
 
 Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením StorSimple virtuálního pole pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
-Aktualizace 0,5 odpovídá **10.0.10290.0**verze softwaru.
+Aktualizace 0,5 odpovídá **10.0.10290.0** verze softwaru.
 
 > [!NOTE]
 > Aktualizace jsou rušivé a restartují vaše zařízení. Pokud probíhá vstupně-výstupní operace, dojde k výpadku zařízení. Podrobné pokyny, jak použít aktualizaci, najdete v článku [instalace aktualizace 0,5](storsimple-virtual-array-install-update-05.md).
@@ -50,7 +50,7 @@ Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 | Ne. | Příznak | Problém |
 | --- | --- | --- |
 | 1 |Odolnost proti zálohování| V dřívějších verzích byly zálohy opakovány pouze pro určité výjimky. Tato verze obsahuje opravu pro zajištění větší odolnosti před opakováním všech výjimek zálohování.|
-| 2 |Sledování| Monitorování využití úložiště pro řady virtuálních zařízení StorSimple se od 30. června 2017 už nepoužívá. Tato akce má vliv na grafy monitorování ve službě StorSimple Device Manager běžící na virtuálních polích StorSimple (1200 modelu). Tato verze obsahuje aktualizace, které umožňují uživateli pokračovat ve využívání monitorování využívání úložiště u virtuálních polí po 30. června 2017.|
+| 2 |Monitorování| Monitorování využití úložiště pro řady virtuálních zařízení StorSimple se od 30. června 2017 už nepoužívá. Tato akce má vliv na grafy monitorování ve službě StorSimple Device Manager běžící na virtuálních polích StorSimple (1200 modelu). Tato verze obsahuje aktualizace, které umožňují uživateli pokračovat ve využívání monitorování využívání úložiště u virtuálních polí po 30. června 2017.|
 | 3 |Souborový server| V dřívějších verzích mohl uživatel omylem zkopírovat šifrované soubory do virtuálního pole. Tato verze obsahuje opravu, která neumožňuje kopírování šifrovaných souborů do virtuálního pole. Pokud zařízení obsahuje před aktualizací existující šifrované soubory, zálohy budou pokračovat, dokud se všechny šifrované soubory ze systému neodstraní. |
 
 
@@ -80,11 +80,10 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 ## <a name="next-step"></a>Další krok
 [Nainstalujte aktualizaci 0,5](storsimple-virtual-array-install-update-05.md) na virtuální pole StorSimple.
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 Hledáte starší poznámku k verzi? Přejít na:
 
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,4](storsimple-virtual-array-update-04-release-notes.md)
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,3](storsimple-ova-update-03-release-notes.md)
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,1 a 0,2](storsimple-ova-update-01-release-notes.md)
-* [Poznámky k verzi pro StorSimple Virtual Array General Availability](storsimple-ova-pp-release-notes.md)
-
+* [Poznámky k verzi pro StorSimple Virtual Array General Availability](./storsimple-virtual-array-update-06-release-notes.md)

@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/19/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: 056009c34aec97a8c5c45aea4b93ba41977fa7a6
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 31cba884cff490d43341a4c52f24c32b1e253e42
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518188"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967325"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrace na verzi 3. x z rozhraní API pro analýzu textu
 
 [!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
 
-Pokud používáte verzi 2,1 rozhraní API pro analýzu textu, Tento článek vám pomůže při upgradu aplikace na použití verze 3. x. Verze 3,0 je všeobecně dostupná a přináší nové funkce, jako jsou rozšířené [rozpoznávání pojmenovaných entit (ner)](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) a [Správa verzí modelů](concepts/model-versioning.md). K dispozici je také verze Preview verze 3.1 (v 3.1 – Preview. x), která přidává funkce, jako je třeba dolování v podobě [názoru](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features). Modely používané v v2 nebudou dostávat budoucí aktualizace. 
+Pokud používáte verzi 2,1 rozhraní API pro analýzu textu, Tento článek vám pomůže při upgradu aplikace na použití verze 3. x. Verze 3,0 je všeobecně dostupná a přináší nové funkce, jako jsou rozšířené [rozpoznávání pojmenovaných entit (ner)](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-features-and-versions) a [Správa verzí modelů](concepts/model-versioning.md). K dispozici je také verze Preview verze 3.1 (v 3.1 – Preview. x), která přidává funkce, jako je třeba dolování v podobě [názoru](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features). Modely používané v v2 nebudou dostávat budoucí aktualizace. 
 
 #### <a name="sentiment-analysis"></a>[Analýza mínění](#tab/sentiment-analysis)
 
@@ -38,7 +38,7 @@ Pokud vaše aplikace používá REST API, aktualizujte koncový bod požadavku n
 Příklady odpovědi JSON najdete v referenční dokumentaci.
 * [Verze 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 * [Verze 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment) 
-* [Verze 3,1-Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Sentiment)
+* [Verze 3,1-Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
 ### <a name="client-libraries"></a>Klientské knihovny
 
@@ -70,7 +70,7 @@ Také budete muset aplikaci aktualizovat tak, aby používala [kategorie entit](
 Příklady odpovědi JSON najdete v referenční dokumentaci.
 * [Verze 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 * [Verze 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral) 
-* [Verze 3,1-Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/EntitiesRecognitionGeneral)
+* [Verze 3,1-Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/EntitiesRecognitionGeneral)
 
 ### <a name="client-libraries"></a>Klientské knihovny
 
@@ -92,7 +92,7 @@ Pokud vaše aplikace používá REST API, aktualizujte koncový bod požadavku n
 Příklady odpovědi JSON najdete v referenční dokumentaci.
 * [Verze 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)
 * [Verze 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) 
-* [Verze 3,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Languages)
+* [Verze 3,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
 
 ### <a name="client-libraries"></a>Klientské knihovny
 
@@ -123,7 +123,7 @@ Příklady odpovědi JSON najdete v referenční dokumentaci.
 ---
 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Co je rozhraní API pro analýzu textu](overview.md)
 * [Podpora jazyků](language-support.md)

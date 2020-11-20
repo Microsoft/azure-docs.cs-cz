@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: e802f798ade5e6bfe0b40b17bbf15df5387ef7c3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 26192c742ab2e010c18c02226252dbb480b72cee
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357840"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967155"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archivujte, co je nového v Azure Security Center?
 
@@ -188,7 +188,7 @@ Nyní můžete přidat standardy jako:
 - **Canada Federal PBMM**
 - **Azure CIS 1.1.0 (nový)** (což je ucelenější reprezentace Azure CIS 1.1.0)
 
-Kromě toho jsme nedávno přidali **srovnávací testy zabezpečení Azure** , které jsou určené pro zabezpečení a osvědčené postupy pro dodržování předpisů v závislosti na běžných architekturách dodržování předpisů, a pokyny specifické pro Azure. Další standardy budou na řídicím panelu podporovány, jakmile budou k dispozici.  
+Kromě toho jsme nedávno přidali **srovnávací testy zabezpečení Azure**, které jsou určené pro zabezpečení a osvědčené postupy pro dodržování předpisů v závislosti na běžných architekturách dodržování předpisů, a pokyny specifické pro Azure. Další standardy budou na řídicím panelu podporovány, jakmile budou k dispozici.  
  
 Přečtěte si další informace o [přizpůsobení sady standardů na řídicím panelu dodržování legislativních předpisů](update-regulatory-compliance-packages.md).
 
@@ -392,7 +392,7 @@ Kubernetes se rychle stane novým standardem pro nasazení a správu softwaru v 
 Nové funkce ve verzi Public Preview zahrnují:
 
 - **Zjišťování & viditelnost** – nepřetržité zjišťování spravovaných instancí AKS v rámci registrovaných předplatných Security Center.
-- **Doporučení pro bezpečné skóre** – akce, které umožňují zákazníkům dodržovat osvědčené postupy zabezpečení v AKS jako součást zabezpečeného skóre zákazníka, jako je například "Access Control na základě rolí by se měly používat k omezení přístupu ke clusteru služby Kubernetes".
+- **Doporučení pro bezpečné skóre** – akce, které umožňují zákazníkům dodržovat osvědčené postupy zabezpečení pro AKS, a zvyšují jejich bezpečné skóre. Mezi doporučení patří například "řízení přístupu na základě role by mělo sloužit k omezení přístupu ke clusteru služby Kubernetes".
 - **Detekce hrozeb** – zjistilo se hostování a analýzy založené na clusterech, jako je například "zjištěná privilegovaný kontejner".
 
 

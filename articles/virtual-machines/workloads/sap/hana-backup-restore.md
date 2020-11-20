@@ -7,18 +7,19 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fdaa1346e4837b3bf611d964158d132dcdfeeda
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 42333a3feae19b6c3c77494f7e843cac1d9bc078
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282679"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968124"
 ---
 # <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>Zálohování a obnovení SAP HANA ve velkých instancích HANA
 
@@ -338,7 +339,7 @@ Druhou možností, jak odstranit konkrétní snímky, je použít skript `azure_
 
 Další informace o skriptu najdete v tématu "odstranění snímku-azure_hana_snapshot_delete" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
-Spusťte skript jako **kořenový**uživatel.
+Spusťte skript jako **kořenový** uživatel.
 
 >[!IMPORTANT]
 >Pokud máte data, která existují jenom na snímku, který chcete odstranit, po odstranění snímku se tato data ztratí trvale.
@@ -347,7 +348,7 @@ Spusťte skript jako **kořenový**uživatel.
 ## <a name="file-level-restore-from-a-storage-snapshot"></a>Obnovení na úrovni souborů z snímku úložiště
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
-U typů snímků **Hana** a **protokolů**můžete přistupovat k snímkům přímo na svazcích v adresáři **. Snapshot** . Pro každý snímek je podadresář. Zkopírujte každý soubor ve stavu, v němž byl v místě snímku, z tohoto podadresáře do skutečné adresářové struktury. 
+U typů snímků **Hana** a **protokolů** můžete přistupovat k snímkům přímo na svazcích v adresáři **. Snapshot** . Pro každý snímek je podadresář. Zkopírujte každý soubor ve stavu, v němž byl v místě snímku, z tohoto podadresáře do skutečné adresářové struktury. 
 
 V aktuální verzi skriptu není k dispozici *žádný* skript pro obnovení pro obnovení snímku jako Samoobslužná služba. Obnovení snímku můžete provést v rámci samoobslužných skriptů pro obnovení po havárii během převzetí služeb při selhání v lokalitě pro obnovení po havárii. Pokud chcete obnovit požadovaný snímek z existujících dostupných snímků, je nutné, abyste se obrátili na provozní tým Microsoftu otevřením žádosti o služby.
 
@@ -438,19 +439,19 @@ Kroky pro integraci SnapCenter v SAP HANA jsou:
 
 1. Na stránce SAP HANA předplatné vyberte podstránku **skupiny prostředků** .
 
-   :::image type="content" source="./media/snapcenter/solution-lab-subscription-resource-groups.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště" lightbox="./media/snapcenter/solution-lab-subscription-resource-groups.png":::
+   :::image type="content" source="./media/snapcenter/solution-lab-subscription-resource-groups.png" alt-text="Skupina prostředků předplatného řešení testovacího prostředí" lightbox="./media/snapcenter/solution-lab-subscription-resource-groups.png":::
 
 1. Vyberte příslušnou skupinu prostředků v oblasti.
 
-   :::image type="content" source="./media/snapcenter/select-appropriate-resource-group-in-region.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště" lightbox="./media/snapcenter/select-appropriate-resource-group-in-region.png":::
+   :::image type="content" source="./media/snapcenter/select-appropriate-resource-group-in-region.png" alt-text="Vyberte vhodnou skupinu prostředků v oblasti." lightbox="./media/snapcenter/select-appropriate-resource-group-in-region.png":::
 
 1. Vyberte položku SKU, která odpovídá SAP HANA ve službě Azure Storage.
 
-   :::image type="content" source="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště" lightbox="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png":::
+   :::image type="content" source="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png" alt-text="Vyberte položku SKU odpovídající SAP HANA" lightbox="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png":::
 
 1. Otevřete novou žádost o **lístek podpory** , která je popsaný červeně.
 
-   :::image type="content" source="./media/snapcenter/open-new-support-ticket-request.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="./media/snapcenter/open-new-support-ticket-request.png" alt-text="Otevřít nový požadavek lístku podpory":::
 
 1. Na kartě **základy** zadejte pro lístek následující informace:
 
@@ -468,7 +469,7 @@ Kroky pro integraci SnapCenter v SAP HANA jsou:
    * Nastavení SnapCenter pro HLI
    * Váš veřejný klíč pro uživatele SnapCenter (SnapCenter. pem) – Podívejte se na příklad vytvoření veřejného klíče.
 
-     :::image type="content" source="./media/snapcenter/new-support-request-details.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště" lightbox="./media/snapcenter/new-support-request-details.png":::
+     :::image type="content" source="./media/snapcenter/new-support-request-details.png" alt-text="Nová žádost o podporu – karta Podrobnosti" lightbox="./media/snapcenter/new-support-request-details.png":::
 
 1. Vyberte **zkontrolovat + vytvořit** a zkontrolujte svůj lístek podpory. 
 
@@ -525,7 +526,7 @@ Než nainstalujete SnapCenter, přečtěte SAP HANA si téma [zálohování a ob
 
 1. Nakonfigurujte přihlašovací údaje uživatele pro SnapCenter. Ve výchozím nastavení naplní přihlašovací údaje uživatele systému Windows použité pro instalaci aplikace. 
 
-   :::image type="content" source="media/snapcenter/installation-user-inputs-dialog.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště"::: 
+   :::image type="content" source="media/snapcenter/installation-user-inputs-dialog.png" alt-text="Dialog uživatelských vstupů při instalaci"::: 
 
 1. Když spustíte relaci, uloží se výjimka zabezpečení a spustí se grafické rozhraní (GUI).
 
@@ -534,22 +535,22 @@ Než nainstalujete SnapCenter, přečtěte SAP HANA si téma [zálohování a ob
 
 ### <a name="set-up-the-storage-system"></a>Nastavení systému úložiště
 
-1. V SnapCenter vyberte **systém úložiště**a pak vyberte **+ Nová**. 
+1. V SnapCenter vyberte **systém úložiště** a pak vyberte **+ Nová**. 
 
-   :::image type="content" source="./media/snapcenter/snapcenter-storage-connections-window.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště" lightbox="./media/snapcenter/snapcenter-storage-connections-window.png":::
+   :::image type="content" source="./media/snapcenter/snapcenter-storage-connections-window.png" alt-text="SnapCenter připojení úložiště" lightbox="./media/snapcenter/snapcenter-storage-connections-window.png":::
 
    Výchozí hodnota je jedna SVM na tenanta. Pokud má zákazník více tenantů nebo HLIs ve více oblastech, doporučujeme nakonfigurovat všechny SVMs v SnapCenter.
 
 1. V části přidat systém úložiště zadejte informace o systému úložiště, který chcete přidat, uživatelské jméno a heslo SnapCenter a pak vyberte **Odeslat**.
 
-   :::image type="content" source="./media/snapcenter/new-storage-connection.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="./media/snapcenter/new-storage-connection.png" alt-text="Nové připojení úložiště":::
 
    >[!NOTE]
    >Výchozí hodnota je jedna SVM na tenanta.  Pokud existuje více tenantů, pak doporučujeme nakonfigurovat všechny SVMs zde v SnapCenter. 
 
 1. V SnapCenter vyberte **hostitelé** a vyberte **+ Přidat** a nastavte modul plug-in HANA a hostitele databáze Hana.  Nejnovější verze SnapCenter detekuje databázi HANA na hostiteli automaticky.
 
-   :::image type="content" source="media/snapcenter/managed-hosts-new-host.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště" lightbox="media/snapcenter/managed-hosts-new-host.png":::
+   :::image type="content" source="media/snapcenter/managed-hosts-new-host.png" alt-text="V SnapCenter vyberte hostitelé a pak vyberte Přidat." lightbox="media/snapcenter/managed-hosts-new-host.png":::
 
 1. Zadejte informace pro nového hostitele:
    1. Vyberte operační systém pro typ hostitele.
@@ -557,7 +558,7 @@ Než nainstalujete SnapCenter, přečtěte SAP HANA si téma [zálohování a ob
    1. Zadejte přihlašovací údaje, které chcete použít.
    1. Vyberte možnosti **Microsoft Windows** a **SAP HANA** a pak vyberte **Odeslat**.
 
-   :::image type="content" source="media/snapcenter/add-new-host-operating-system-credentials.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/add-new-host-operating-system-credentials.png" alt-text="Informace pro nového hostitele":::
 
    >[!IMPORTANT]
    >Než budete moct nainstalovat první uzel, umožňuje SnapCenter instalovat moduly plug-in do databáze bez oprávnění uživatele root.  Informace o tom, jak povolit nekořenového uživatele, najdete v tématu [Přidání nekořenového uživatele a konfigurace oprávnění sudo](https://library.netapp.com/ecmdocs/ECMLP2590889/html/GUID-A3EEB5FC-242B-4C2C-B407-510E48A8F131.html).
@@ -566,7 +567,7 @@ Než nainstalujete SnapCenter, přečtěte SAP HANA si téma [zálohování a ob
 
 1. Po instalaci modulu plug-in v SnapCenter vyberte **hostitelé** a potom vyberte **+ Přidat** a přidejte uzel Hana.
 
-   :::image type="content" source="media/snapcenter/add-hana-node.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště" lightbox="media/snapcenter/add-hana-node.png":::
+   :::image type="content" source="media/snapcenter/add-hana-node.png" alt-text="Přidat uzel HANA" lightbox="media/snapcenter/add-hana-node.png":::
 
 1. Zadejte informace pro uzel HANA:
    1. Vyberte operační systém pro typ hostitele.
@@ -574,15 +575,15 @@ Než nainstalujete SnapCenter, přečtěte SAP HANA si téma [zálohování a ob
    1. Tuto možnost vyberte **+** , pokud chcete přidat pověření nakonfigurovaná v operačním systému hostitele Hana DB a pak vyberte **OK**.
    1. Vyberte **SAP HANA** a pak vyberte **Odeslat**.
 
-   :::image type="content" source="media/snapcenter/add-hana-node-details.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/add-hana-node-details.png" alt-text="Podrobnosti o SAP HANA uzlu":::
 
 1. Potvrďte otisk prstu a vyberte **Potvrdit a odeslat**.
 
-   :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="Potvrzení a odeslání otisku prstu":::
 
 1. V uzlu Hana v části systémová databáze vyberte **zabezpečení**  >  **Uživatelé**  >  **SNAPCENTER** a vytvořte uživatele SNAPCENTER.
 
-   :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="Vytvoření uživatele SnapCenter v HANA (systémová databáze)":::
 
 
 
@@ -595,15 +596,15 @@ Pokud jste nakonfigurovali HSR, musíte systém nakonfigurovat ručně.
 
 1. V SnapCenter vyberte **prostředky** a **San Hana** (v horní části) a pak vyberte **+ Přidat SAP HANA Database** (napravo).
 
-   :::image type="content" source="media/snapcenter/manual-hana-setup.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště" lightbox="media/snapcenter/manual-hana-setup.png":::
+   :::image type="content" source="media/snapcenter/manual-hana-setup.png" alt-text="Ruční instalace HANA" lightbox="media/snapcenter/manual-hana-setup.png":::
 
 1. Zadejte podrobnosti prostředků uživatele správce HANA nakonfigurovaného na hostiteli se systémem Linux nebo na hostiteli, kde jsou moduly plug-in nainstalovány. Záloha bude spravována z modulu plug-in v systému Linux.
 
-   :::image type="content" source="media/snapcenter/provide-resource-details-sap-hana-database.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/provide-resource-details-sap-hana-database.png" alt-text="Zadejte podrobnosti prostředků uživatele správce HANA nakonfigurovaného na hostiteli se systémem Linux.":::
 
 1. Vyberte datový svazek, pro který potřebujete pořídit snímky, vyberte **Uložit** a pak vyberte **Dokončit**.
 
-   :::image type="content" source="media/snapcenter/provide-storage-footprint.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/provide-storage-footprint.png" alt-text="Vyberte datový svazek, pro který potřebujete pořídit snímky, vyberte Uložit a pak vyberte Dokončit.":::
 
 ### <a name="create-a-snapshot-policy"></a>Vytvoření zásady snímku
 
@@ -611,53 +612,53 @@ Předtím, než použijete SnapCenter k zálohování prostředků databáze SAP
 
 1. V SnapCenter vyberte **prostředky** a potom vyberte databázi.
 
-   :::image type="content" source="media/snapcenter/select-database-create-policy.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/select-database-create-policy.png" alt-text="V SnapCenter vyberte prostředky a potom vyberte databázi.":::
 
 1. Použijte pracovní postup Průvodce konfigurací ke konfiguraci plánovače snímků.
 
-   :::image type="content" source="media/snapcenter/follow-workflow-configuration-wizard.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště" lightbox="media/snapcenter/follow-workflow-configuration-wizard.png":::
+   :::image type="content" source="media/snapcenter/follow-workflow-configuration-wizard.png" alt-text="Použijte pracovní postup Průvodce konfigurací ke konfiguraci plánovače snímků." lightbox="media/snapcenter/follow-workflow-configuration-wizard.png":::
 
 1. Zadejte možnosti pro konfiguraci příkazů pre/post a speciálních klíčů SSL.  V tomto příkladu nepoužíváme žádná speciální nastavení.
 
-   :::image type="content" source="media/snapcenter/configuration-options-pre-post-commands.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště" lightbox="media/snapcenter/configuration-options-pre-post-commands.png":::
+   :::image type="content" source="media/snapcenter/configuration-options-pre-post-commands.png" alt-text="Zadejte možnosti pro konfiguraci příkazů před odesláním a speciálních klíčů SSL." lightbox="media/snapcenter/configuration-options-pre-post-commands.png":::
 
 1. Vyberte **Přidat** a vytvořte zásadu snímku, která se dá použít taky pro jiné databáze Hana. 
 
-   :::image type="content" source="media/snapcenter/select-one-or-more-policies.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/select-one-or-more-policies.png" alt-text="Vyberte Přidat a vytvořte zásadu snímku, která se dá použít taky pro jiné databáze HANA.":::
 
 1. Zadejte název zásady a popis.
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy.png" alt-text="Zadejte název zásady a popis.":::
 
 
 1. Vyberte typ a četnost zálohování.
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-settings.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-settings.png" alt-text="Vyberte typ a četnost zálohování.":::
 
 1. Nakonfigurujte **nastavení uchovávání záloh na vyžádání**.  V našem příkladu nastavujeme uchovávání na tři kopie snímků, aby byly zachovány.
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-retention-settings.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-retention-settings.png" alt-text="Nakonfigurujte nastavení uchovávání záloh na vyžádání.":::
 
 1. Nakonfigurujte **Nastavení hodinového uchovávání**. 
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-hourly-retention-settings.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-hourly-retention-settings.png" alt-text="Nakonfigurujte nastavení hodinového uchovávání.":::
 
 1. Pokud je nakonfigurované nastavení SnapMirror, **po vytvoření místní kopie snímku vyberte aktualizovat SnapMirror**.
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-snapmirror.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-snapmirror.png" alt-text="Pokud se vyžaduje SnapMirror, vyberte aktualizovat SnapMirror po vytvoření místní kopie snímku.":::
 
 1. Vyberte **Dokončit** a zkontrolujte souhrn nových zásad zálohování. 
-1. V části **Konfigurovat plán**vyberte **Přidat**.
+1. V části **Konfigurovat plán** vyberte **Přidat**.
 
-   :::image type="content" source="media/snapcenter/configure-schedules-for-selected-policies.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/configure-schedules-for-selected-policies.png" alt-text="V části Konfigurovat plán vyberte Přidat.":::
 
 1. Vyberte **počáteční datum**, datum **vypršení platnosti** a četnost.
 
-   :::image type="content" source="media/snapcenter/add-schedules-for-policy.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/add-schedules-for-policy.png" alt-text="Vyberte počáteční datum, datum vypršení platnosti a četnost.":::
 
 1. Zadejte podrobnosti e-mailu pro oznámení.
 
-   :::image type="content" source="media/snapcenter/backup-policy-notification-settings.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/backup-policy-notification-settings.png" alt-text="Zadejte podrobnosti e-mailu pro oznámení.":::
 
 1.  Kliknutím na **Dokončit** vytvořte zásadu zálohování.
 
@@ -704,11 +705,11 @@ K obnovení databáze můžete použít SnapCenter.  V této části se podívá
 
 1. Obnovte soubory databáze prostřednictvím SnapCenter.  Vyberte databázi a pak vyberte **obnovit**.  
 
-   :::image type="content" source="media/snapcenter/restore-database-via-snapcenter.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště" lightbox="media/snapcenter/restore-database-via-snapcenter.png":::
+   :::image type="content" source="media/snapcenter/restore-database-via-snapcenter.png" alt-text="Vyberte databázi a vyberte obnovit." lightbox="media/snapcenter/restore-database-via-snapcenter.png":::
 
 1. Vyberte typ obnovení.  V našem příkladu obnovíme kompletní prostředek. 
 
-   :::image type="content" source="media/snapcenter/restore-database-select-restore-type.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/restore-database-select-restore-type.png" alt-text="Vyberte typ obnovení.":::
 
    >[!NOTE]
    >Ve výchozím nastavení nemusíte zadávat příkazy pro místní obnovení z snímku na disku. 
@@ -720,27 +721,27 @@ K obnovení databáze můžete použít SnapCenter.  V této části se podívá
    
    SnapCenter obnoví data do původního umístění, aby bylo možné spustit proces obnovení v HANA. Navíc vzhledem k tomu, že SnapCenter nemůže změnit katalog záloh (databáze je mimo provoz), zobrazí se upozornění.
 
-   :::image type="content" source="media/snapcenter/restore-database-job-details-warning.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/restore-database-job-details-warning.png" alt-text="Vzhledem k tomu, že SnapCenter nemůže změnit katalog záloh, zobrazí se upozornění. ":::
 
-1. Vzhledem k tomu, že jsou všechny soubory databáze obnoveny, spusťte proces obnovení v HANA. V Hana Studio v části **systémy**klikněte pravým tlačítkem na databázi systému a vyberte **zálohování a obnovení**  >  **Systémová databáze**.
+1. Vzhledem k tomu, že jsou všechny soubory databáze obnoveny, spusťte proces obnovení v HANA. V Hana Studio v části **systémy** klikněte pravým tlačítkem na databázi systému a vyberte **zálohování a obnovení**  >  **Systémová databáze**.
 
-   :::image type="content" source="media/snapcenter/hana-studio-backup-recovery.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/hana-studio-backup-recovery.png" alt-text="Zahajte proces obnovení v HANA.":::
 
 1. Vyberte typ obnovení.
 
-   :::image type="content" source="media/snapcenter/restore-database-select-recovery-type.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/restore-database-select-recovery-type.png" alt-text="Vyberte typ obnovení.":::
 
 1. Vyberte umístění katalogu záloh.
 
-   :::image type="content" source="media/snapcenter/restore-database-select-location-backup-catalog.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/restore-database-select-location-backup-catalog.png" alt-text="Vyberte umístění katalogu záloh.":::
 
 1. Vyberte zálohu pro obnovení databáze SAP HANA.
 
-   :::image type="content" source="media/snapcenter/restore-database-select-backup.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+   :::image type="content" source="media/snapcenter/restore-database-select-backup.png" alt-text="Vyberte zálohu pro obnovení databáze SAP HANA.":::
 
    Po obnovení databáze se zobrazí zpráva s **časem obnovení** a **obnovením do razítka umístění protokolu** .
 
-1. V části **systémy**klikněte pravým tlačítkem na databázi systému a vyberte **zálohování a obnovení**  >  **databáze tenanta**.
+1. V části **systémy** klikněte pravým tlačítkem na databázi systému a vyberte **zálohování a obnovení**  >  **databáze tenanta**.
 1. Dokončete obnovení databáze tenanta podle pracovního postupu Průvodce. 
 
 Další informace o obnovení databáze najdete v tématu [SAP HANA zálohování a obnovení pomocí SnapCenter](https://www.netapp.com/us/media/tr-4614.pdf).
@@ -753,7 +754,7 @@ Můžete obnovit nedatové svazky, například síťovou sdílenou složku (/Han
 
 Než budete moct klonovat, musíte mít nainstalovanou stejnou verzi HANA jako zdrojová databáze. Identifikátor SID a ID se mohou lišit. 
 
-:::image type="content" source="media/snapcenter/system-cloning-diagram.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště" lightbox="media/snapcenter/system-cloning-diagram.png" border="false":::
+:::image type="content" source="media/snapcenter/system-cloning-diagram.png" alt-text="Klonování systému SAP HANA" lightbox="media/snapcenter/system-cloning-diagram.png" border="false":::
 
 1. Vytvoření úložiště uživatelů databáze HANA pro databázi H34 z/usr/sap/H34/HDB40.
 
@@ -777,7 +778,7 @@ Než budete moct klonovat, musíte mít nainstalovanou stejnou verzi HANA jako z
 1. Do SnapCenter přidejte cílového hostitele, na kterém bude klon připojen. Další informace najdete v tématu [přidání hostitelů a instalace balíčků modulů plug-in na vzdálených hostitelích](http://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-sap-hana%2FGUID-246C0810-4F0B-4BF7-9A35-B729AD69954A.html).
    1. Zadejte informace pro přihlašovací údaje spustit jako, které chcete přidat. 
    1. Vyberte hostitelský operační systém a zadejte informace o hostiteli.
-   1. V části **moduly plug-in, které chcete nainstalovat**vyberte verzi, zadejte cestu instalace a vyberte **SAP HANA**.
+   1. V části **moduly plug-in, které chcete nainstalovat** vyberte verzi, zadejte cestu instalace a vyberte **SAP HANA**.
    1. Vyberte **ověřit** a spusťte kontrolu před instalací.
 
 1. Zastavte HANA a odpojte starý datový svazek.  Klon budete připojovat z SnapCenter.  
@@ -830,7 +831,7 @@ Než budete moct klonovat, musíte mít nainstalovanou stejnou verzi HANA jako z
    >[!NOTE]
    >Další informace najdete v tématu [klonování ze zálohy](https://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-cpi%2FGUID-F6E7FF73-0183-4B9F-8156-8D7DA17A8555.html).
 
-1. V části **skripty**zadejte následující:
+1. V části **skripty** zadejte následující:
 
    * **Mount – příkaz:** /NetApp/SC-System-Refresh.sh Mount H34% hana_data_h31_mnt00001_t250_vol_Clone
    * **Příkaz po klonování:** /NetApp/SC-System-Refresh.sh Recover H34

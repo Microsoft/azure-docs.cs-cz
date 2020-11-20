@@ -3,6 +3,7 @@ title: Instalace IBM zD&T vývoj/test prostředí v Azure | Microsoft Docs
 description: Nasazení vývojového a testovacího prostředí IBM Z (zD&T) na infrastruktuře virtuálních počítačů Azure jako službu (IaaS).
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12a812f66345a26701b2a1623487fd262ede4be
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499915"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968328"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Instalace IBM zD&T dev/test Environment v Azure
 
@@ -62,7 +63,7 @@ V tomto článku se dozvíte, jak v Azure nastavit vývojové a testovací prost
 
 3. Pomocí tlačítka **připojit** získáte přihlašovací údaje SSH zobrazené v okně **Přehled** virtuálního počítače. Vyberte kartu **SSH** a zkopírujte přihlašovací příkaz SSH do schránky.
 
-4. Přihlaste se k [prostředí bash](../../../../cloud-shell/quickstart.md) z místního počítače a vložte příkaz. Bude ve formě **SSH \<user id\> \@ \<IP Address\> **. Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte je, abyste navázali připojení k domovskému adresáři.
+4. Přihlaste se k [prostředí bash](../../../../cloud-shell/quickstart.md) z místního počítače a vložte příkaz. Bude ve formě **SSH \<user id\> \@ \<IP Address\>**. Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte je, abyste navázali připojení k domovskému adresáři.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Zkopírujte instalační soubor na server.
 
@@ -108,7 +109,7 @@ Instalační soubor pro webový server je **ZDT \_ install \_ EE \_ v 12.0.0.1. 
 
 4. Stiskněte klávesu **ENTER** a pečlivě si přečtěte licenční smlouvy. Na konci licence Pokračujte zadáním **Ano** .
 
-5. Po zobrazení výzvy ke změně hesla pro nově vytvořeného uživatele **ibmsys1**použijte příkaz **sudo passwd ibmsys1** a zadejte nové heslo.
+5. Po zobrazení výzvy ke změně hesla pro nově vytvořeného uživatele **ibmsys1** použijte příkaz **sudo passwd ibmsys1** a zadejte nové heslo.
 
 6. Chcete-li ověřit, zda byla instalace úspěšná, zadejte
 

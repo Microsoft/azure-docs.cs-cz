@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: menchi
-ms.openlocfilehash: e9b5a549d550f117e080fc64193fbe29658f401d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22a01bab81fc330484e7715a65c89a1cfd7802c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85298221"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967172"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-device-provisioning-service"></a>Šifrování neaktivních dat pomocí klíčů spravovaných zákazníkem pro službu Device Provisioning
 
@@ -26,6 +26,6 @@ Tato funkce vyžaduje vytvoření nového DPS. Pokud chcete tuto schopnost vyzko
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o službě Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)
+* [Další informace o službě Device Provisioning Service](./index.yml)
 
-* [Další informace o Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Další informace o Azure Key Vault](../key-vault/general/overview.md)

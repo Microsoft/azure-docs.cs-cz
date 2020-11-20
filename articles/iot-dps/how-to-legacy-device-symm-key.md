@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotga
-ms.openlocfilehash: f67ed44fffe6bd690d6bd76fcefa19d9ee23e52b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc33dcd2c80b2a6d4a1cc27778e49dc06ac48b34
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90529389"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967308"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Jak zřídit zařízení pomocí skupin pro zápis symetrických klíčů
 
@@ -49,7 +49,7 @@ Kód zařízení, který je znázorněn v tomto článku, bude postupovat stejn�
 
 Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou [vývoj desktopových aplikací v jazyce C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) . Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou [vývoj desktopových aplikací v jazyce C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) . Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
 
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
@@ -88,7 +88,7 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
-    Pokud `cmake` nenajde váš kompilátor C++, můžou se při spuštění výše uvedeného příkazu zobrazit chyby sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Pokud `cmake` nenajde váš kompilátor C++, můžou se při spuštění výše uvedeného příkazu zobrazit chyby sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
 
@@ -113,7 +113,7 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
 
 2. Vyberte kartu **spravovat registrace** a pak klikněte na tlačítko **Přidat skupinu** registrací v horní části stránky. 
 
-3. Do pole **Přidat skupinu**registrací zadejte následující informace a klikněte na tlačítko **Uložit** .
+3. Do pole **Přidat skupinu** registrací zadejte následující informace a klikněte na tlačítko **Uložit** .
 
    - **Název skupiny**: zadejte **mylegacydevices**.
 
@@ -121,7 +121,7 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
 
    - **Automaticky vygenerovat klíče**: Toto políčko zaškrtněte.
 
-   - **Vyberte, jak chcete přiřadit zařízení k**centrům: vyberte **statická konfigurace** , abyste se mohli přiřadit k určitému centru.
+   - **Vyberte, jak chcete přiřadit zařízení k** centrům: vyberte **statická konfigurace** , abyste se mohli přiřadit k určitému centru.
 
    - **Vyberte centra IoT, do kterých se dá tato skupina přiřadit**: vyberte jednu z vašich Center.
 
@@ -290,15 +290,4 @@ Mějte na paměti, že to nechá odvozený klíč zařízení zahrnutý jako sou
 
 * Další informace o opětovném zřízení najdete v tématu Koncepty opětovného [zřizování zařízení IoT Hub](concepts-device-reprovision.md) 
 * [Rychlý start: Zřízení simulovaného zařízení se symetrickými klíči](quick-create-simulated-device-symm-key.md)
-* Další informace o zrušení zřízení najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) . 
-
-
-
-
-
-
-
-
-
-
-
+* Další informace o zrušení zřízení najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) .

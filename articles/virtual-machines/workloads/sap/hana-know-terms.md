@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6785ae821f701121185f0064c6317c69d50191ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b65190c0fd2fcac132f762116a63357a08e6bf02
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77617054"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967733"
 ---
 # <a name="know-the-terms"></a>Seznámení s podmínkami
 
@@ -33,7 +34,7 @@ V průvodci architekturou a technickým nasazením se často používá několik
 - **Systém SAP**: kombinace vrstvy a aplikační vrstvy systému DBMS, například vývojového systému SAP ERP, SAP BW testovacího systému a produkčního systému SAP CRM. Nasazení Azure nepodporuje dělení těchto dvou vrstev mezi místními a Azure. Systém SAP je buď nasazený místně, nebo je nasazený v Azure. Můžete nasadit různé systémy SAP na šířku do Azure nebo do místního prostředí. Můžete například nasadit vývojové a testovací systémy SAP CRM do Azure, zatímco nasazujete produkční systém SAP CRM v místním prostředí. V případě SAP HANA v Azure (velké instance) je zamýšlená možnost hostování aplikace SAP pro systémy SAP na virtuálních počítačích a související instanci SAP HANA na jednotce v SAP HANA na platformě Azure (velké instance).
 - **Razítko s velkými instancemi**: sada hardwarových infrastruktur, která je SAP HANA s certifikací TDI a je vyhrazená ke spouštění SAP HANA instancí v rámci Azure.
 - **SAP HANA v Azure (velké instance):** Oficiální název nabídky v Azure, ve kterém se spouštějí instance HANA v SAP HANA hardwaru TDI, který je nasazený ve velkých názvech instancí v různých oblastech Azure. Související *Velká instance Hana* je krátká pro *SAP HANA v Azure (velké instance)* a v této technické příručce pro nasazení se používá často.
-- **Mezi různými**místy: popisuje situaci, kdy se virtuální počítače nasazují do předplatného Azure, které má připojení typu Site-to-site, Multi-Site nebo Azure ExpressRoute mezi místními datovými centry a Azure. V běžné dokumentaci k Azure jsou tyto typy nasazení popsány také jako mezi místními scénáři. Důvodem připojení je rozšiřování místních domén, místních Azure Active Directory/OpenLDAP a místní DNS do Azure. Místní orientace se rozšiřuje na prostředky Azure předplatných Azure. S tímto rozšířením můžou být virtuální počítače součástí místní domény. 
+- **Mezi různými** místy: popisuje situaci, kdy se virtuální počítače nasazují do předplatného Azure, které má připojení typu Site-to-site, Multi-Site nebo Azure ExpressRoute mezi místními datovými centry a Azure. V běžné dokumentaci k Azure jsou tyto typy nasazení popsány také jako mezi místními scénáři. Důvodem připojení je rozšiřování místních domén, místních Azure Active Directory/OpenLDAP a místní DNS do Azure. Místní orientace se rozšiřuje na prostředky Azure předplatných Azure. S tímto rozšířením můžou být virtuální počítače součástí místní domény. 
 
    Uživatelé domény v místní doméně mají přístup k serverům a spouštějí služby na těchto virtuálních počítačích (například služby DBMS). Je možné komunikovat a překlad názvů mezi virtuálními počítači nasazenými místně a virtuálními počítači nasazenými v Azure. Tento scénář je typický pro způsob, jakým se nasazují většina prostředků SAP. Další informace najdete v tématu [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [vytvoření virtuální sítě s připojením typu Site-to-site pomocí Azure Portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Tenant**: zákazník nasazený v aplikaci Hana razítko s velkými instancemi se dostane do tenanta jako izolované *.* Tenant je izolovaný v síti, úložišti a výpočetní vrstvě z jiných tenantů. Úložiště a výpočetní jednotky přiřazené různým klientům se nemůžou vzájemně zobrazit ani vzájemně komunikovat na úrovni razítka velké instance služby HANA. Zákazník se může rozhodnout, že mají nasazení v různých klientech. I potom neexistuje žádná komunikace mezi klienty na úrovni razítka velké instance HANA.

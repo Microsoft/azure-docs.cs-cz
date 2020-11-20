@@ -8,23 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: f0204f5b923cf3363d85be9642d2866436df155a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: references_regions
+ms.openlocfilehash: 8743e765a050bfc4a2ba93a1b3e0344a960edb76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369456"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966883"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
 Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku najdete informace o nových vydaných verzích a funkcích, abyste měli přehled o aktuálním vývoji.
 
+## <a name="november-2020"></a>Listopad 2020
+
+* [Nový koncový bod](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Analyze) s rozhraní API pro analýzu textu v 3.1-Preview. 3 pro nové asynchronní [rozhraní analyzovat rozhraní API](how-tos/text-analytics-how-to-call-api.md?tabs=analyze), které podporuje dávkové zpracování pro operace extrakce ner, PII a klíčové fráze.
+* [Nový koncový bod](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health) s rozhraní API pro analýzu textu v 3.1-Preview. 3 pro nové asynchronní analýza textu rozhraní API pro hostování [stavu](how-tos/text-analytics-for-health.md) s podporou pro dávkové zpracování.
+* Výše uvedené nové funkce jsou dostupné jenom v těchto oblastech: `West US 2` ,, a `East US 2` `Central US` `North Europe` `West Europe` .
+* Portugalština (Brazílie) `pt-BR` je teď podporovaná v [Analýza mínění](how-tos/text-analytics-how-to-sentiment-analysis.md) v3. x počínaje verzí modelu `2020-04-01` . Přičítá se k existující `pt-PT` podpoře pro portugalštinu.
+* Aktualizované klientské knihovny, které zahrnují asynchronní analýzu a Analýza textu pro operace stavu. Příklady najdete na GitHubu:
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+
+
+> [!div class="nextstepaction"]
+> [Další informace o rozhraní API pro analýzu textu v 3.1 – Preview. 3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
+
 ## <a name="october-2020"></a>Říjen 2020
 
 * Podpora Hindština pro Analýza mínění v3. x počínaje verzí modelu `2020-04-01` . 
-* Model verze `2020-09-01` pro koncový bod V3/languages, který přináší zvýšené jazykové rozpoznávání a vylepšení přesnosti.
+* Verze modelu `2020-09-01` pro koncový bod V3/languages, která přináší vylepšené funkce pro detekci a přesnost jazyka.
 * dostupnost V3 v Střed Indie a Spojené arabské emiráty sever.
 
 ## <a name="september-2020"></a>Září 2020
@@ -147,7 +164,7 @@ V případě potřeby se změnily názvy následujících vlastností v odpověd
 
 ### <a name="text-analytics-api-v31-public-preview"></a>Rozhraní API pro analýzu textu v 3.1 Public Preview
    * Nové Analýza mínění dolování funkcí – [názory](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
-   * Nový [ `PII` Filtr domény Personal ()](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) pro chráněné informace o stavu ( `PHI` ).
+   * Nový `PII` Filtr domény Personal () pro chráněné informace o stavu ( `PHI` ).
 
 > [!div class="nextstepaction"]
 > [Další informace o rozhraní API pro analýzu textu v 3.1 verze Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -162,7 +179,7 @@ V rámci [sjednocené verze sady Azure SDK](https://techcommunity.microsoft.com/
    * [JavaScript (Node.js)](./quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript&tabs=version-3)
    * [Java](./quickstarts/text-analytics-sdk.md?pivots=programming-language-java&tabs=version-3)
    
-   > [!div class="nextstepaction"]
+> [!div class="nextstepaction"]
 > [Další informace o sadě rozhraní API pro analýzu textu V3 SDK](./quickstarts/text-analytics-sdk.md?tabs=version-3)
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>Rozpoznávání pojmenovaných entit V3 Public Preview
@@ -185,9 +202,6 @@ Další typy entit jsou teď dostupné ve službě pro rozpoznávání pojmenova
     * Telefonní číslo (jenom USA)
     * URL
     * IP adresa
-
-> [!div class="nextstepaction"]
-> [Další informace o rozpoznávání pojmenovaných entit V3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
 ### <a name="october-2019"></a>Říjen 2019
 
@@ -226,4 +240,4 @@ Podporuje angličtinu ( `en` ), japonštinu () `ja` , zjednodušenou čínštinu
 * [Analýza mínění](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Rozpoznávání jazyka](how-tos/text-analytics-how-to-language-detection.md)
 * [rozpoznávání entit,](how-tos/text-analytics-how-to-entity-linking.md)
-* [extrakce klíčových frází,](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md)

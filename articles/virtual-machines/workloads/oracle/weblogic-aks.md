@@ -2,17 +2,18 @@
 title: Co jsou řešení pro provoz Oracle WebLogic serveru ve službě Azure Kubernetes
 description: Naučte se, jak spustit Oracle WebLogic Server ve službě Azure Kubernetes.
 author: rezar
-ms.service: container-service
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/28/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: ff7b9b0bfcdc0c06eae14ecfdccabf9e337d3649
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: a57d5a00fad9a17e01b96ebdf395fb7a4b857935
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186670"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968685"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Co jsou řešení pro provoz Oracle WebLogic serveru ve službě Azure Kubernetes?
 
@@ -34,15 +35,15 @@ Kromě certifikace WebLogic serveru na AKS, Oracle a Microsoft společně poskyt
 
 Návod aktuálně předpokládá nasazení domény mimo bitovou kopii Docker a použití standardních imagí Docker od Oracle. Přidáme pokyny pro povolení vlastních imagí s vaší doménou v imagi Docker. Další možnosti snadného použití a integrace služeb Azure jsou v budoucnu možné, a to prostřednictvím nabídek na webu Marketplace: zrcadlení Oracle WebLogic Server v Azure Virtual Machines řešení.
 
-_Tato řešení jsou vlastními licencemi_ . Předpokládají, že už máte příslušné licence pro Oracle a máte řádně licenci na spuštění nabídek v Azure.
+_Tato řešení jsou vlastními licencemi_. Předpokládají, že už máte příslušné licence pro Oracle a máte řádně licenci na spuštění nabídek v Azure.
 
-_Pokud vás zajímá, jak úzce pracovat na scénářích migrace pomocí technického týmu, který vyvíjí Tato řešení, vyplňte [Tento krátký průzkum](https://aka.ms/wls-on-azure-survey) a uveďte kontaktní údaje_ . Správci programu, architekti a technici budou brzy k dispozici a zahájí se uzavírání spolupráce. Možnost spolupracovat na scénáři migrace je zadarmo, zatímco řešení se nacházejí v aktivním počátečním vývoji.
+_Pokud vás zajímá, jak úzce pracovat na scénářích migrace pomocí technického týmu, který vyvíjí Tato řešení, vyplňte [Tento krátký průzkum](https://aka.ms/wls-on-azure-survey) a uveďte kontaktní údaje_. Správci programu, architekti a technici budou brzy k dispozici a zahájí se uzavírání spolupráce. Možnost spolupracovat na scénáři migrace je zadarmo, zatímco řešení se nacházejí v aktivním počátečním vývoji.
 
 ## <a name="deployment-architectures"></a>Architektury nasazení
 
 Řešení pro provoz Oracle WebLogic serveru ve službě Azure Kubernetes umožní široké spektrum architektur nasazení připraveného pro produkční prostředí s relativním náběh/s.
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-aks.png" alt-text="K nasazení WebLogic serveru na AKS můžete použít ukázkové skripty.":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-aks.png" alt-text="V AKS jsou povolená složitá nasazení serveru WebLogic.":::
 
 Kromě toho, že řešení poskytují zákazníkům úplnou flexibilitu pro přizpůsobení jejich nasazení. Zákazníci s nasazováním aplikací nejspíš budou integrovat další prostředky Azure s jejich nasazeními. Zákazníkům se doporučuje poskytnout zpětnou vazbu do průzkumu a dále tak vylepšit řešení.
 

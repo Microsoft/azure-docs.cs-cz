@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c5bf559ec7bf85e92cf21e3d4c493cae1361ea7c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "76844985"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968022"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co je Azure Network Watcher?
 
@@ -31,7 +31,7 @@ Azure Network Watcher poskytuje nástroje pro monitorování, diagnostiku, zobra
 
 Koncovým bodem může být jiný virtuální počítač, plně kvalifikovaný název domény, identifikátor URI nebo IPv4 adresa. Funkce *monitorování připojení* v pravidelných intervalech monitoruje komunikaci a poskytuje informace o dostupnosti, latenci a změnách síťové topologie mezi virtuálním počítačem a koncovým bodem. Například můžete mít virtuální počítač s webovým serverem, který komunikuje s virtuálním počítačem s databázovým serverem. Někdo ve vaší organizaci může bez vašeho vědomí pro virtuální počítač s webovým nebo databázovým serverem nebo podsíť použít vlastní pravidlo zabezpečení sítě nebo směrování.
 
-Pokud se koncový bod stane nedostupným, řešení potíží s připojením vám poskytne informace o důvodu. Mezi možné důvody patří problém s překladem názvů DNS, procesor, paměť nebo brána firewall v operačním systému virtuálního počítače, typ segmentu směrování vlastní trasy, pravidlo zabezpečení pro virtuální počítač nebo podsíť odchozího připojení. Další informace o [pravidlech zabezpečení](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules) a [typech segmentů směrování tras](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) v Azure.
+Pokud se koncový bod stane nedostupným, řešení potíží s připojením vám poskytne informace o důvodu. Mezi možné důvody patří problém s překladem názvů DNS, procesor, paměť nebo brána firewall v operačním systému virtuálního počítače, typ segmentu směrování vlastní trasy, pravidlo zabezpečení pro virtuální počítač nebo podsíť odchozího připojení. Další informace o [pravidlech zabezpečení](../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json#security-rules) a [typech segmentů směrování tras](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) v Azure.
 
 Monitorování připojení také poskytuje minimální, průměrnou a maximální zjištěnou latenci v průběhu času. Po zjištění latence připojení můžete zjistit, že se latence dá snížit přesunem vašich prostředků Azure do jiných oblastí Azure. Další informace o určování [relativních latencí mezi oblastmi Azure a poskytovateli internetových služeb](#determine-relative-latencies-between-azure-regions-and-internet-service-providers) a způsobu monitorování komunikace mezi virtuálním počítačem a koncovým bodem pomocí [monitorování připojení](connection-monitor.md). Pokud místo monitorování připojení v průběhu času chcete otestovat připojení k určitému bodu v čase, můžete podobným způsobem jako v případě monitorování připojení použít funkci [řešení potíží s připojením](#connection-troubleshoot).
 

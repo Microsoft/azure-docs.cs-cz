@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d4d21ac0fc0f218b9168adfad3e1b2ec42092b42
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a6b62e9c894c25b2c3cd064524881ae5db51ec5a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544745"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968532"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích SAP pro vysokou dostupnost
 
@@ -63,7 +64,7 @@ Nejprve si přečtěte následující dokumenty:
   * [Přehled azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) – úplný přehled služby Azure Load Balancer, důležité principy, koncepty a kurzy 
   * [Odchozí připojení v Azure](../../../load-balancer/load-balancer-outbound-connections.md#scenarios) – scénáře, jak dosáhnout odchozího připojení v Azure
   * [Odchozí pravidla nástroje pro vyrovnávání zatížení](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)– vysvětluje koncepty odchozích pravidel nástroje pro vyrovnávání zatížení a postup vytváření odchozích pravidel.
-* Brána Azure Firewall
+* Azure Firewall
   * [Přehled Azure firewall](../../../firewall/overview.md)– přehled Azure firewall
   * [Kurz: nasazení a konfigurace Azure firewall](../../../firewall/tutorial-firewall-deploy-portal.md) – pokyny ke konfiguraci Azure Firewall prostřednictvím Azure Portal
 * [Virtuální sítě – uživatelsky definovaná pravidla](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) – koncepce a pravidla směrování Azure  
@@ -91,7 +92,7 @@ Konfigurace by vypadala takto:
 
 1. Vytvořit Load Balancer  
    1. V [Azure Portal](https://portal.azure.com) klikněte na všechny prostředky, přidat a vyhledejte **Load Balancer**  
-   1. Klikněte na **Vytvořit** . 
+   1. Klikněte na **Vytvořit**. 
    1. Název Load Balancer **MyPublicILB**  
    1. Vyberte možnost **Public** jako typ, **Standard** as SKU.  
    1. Vyberte **vytvořit veřejnou IP adresu** a zadejte ji jako název **MyPublicILBFrondEndIP** .  
@@ -109,7 +110,7 @@ Konfigurace by vypadala takto:
 4. Vytvořte pravidla skupiny zabezpečení sítě, abyste omezili přístup ke konkrétním veřejným koncovým bodům. Pokud existuje existující skupina zabezpečení sítě, můžete ji upravit. Následující příklad ukazuje, jak povolit přístup k rozhraní API pro správu Azure: 
    1. Přejít do skupiny zabezpečení sítě
    1. Klikněte na odchozí pravidla zabezpečení.
-   1. Přidejte pravidlo, které **zamítne** veškerý odchozí přístup k **Internetu** .
+   1. Přidejte pravidlo, které **zamítne** veškerý odchozí přístup k **Internetu**.
    1. Přidejte pravidlo pro **Povolení** přístupu k **AzureCloud** s nižší prioritou, než je priorita pravidla, abyste odepřeli veškerý přístup k Internetu.
 
 
@@ -147,14 +148,14 @@ Architektura by vypadala takto:
    1. Klikněte na Přidat podsíť. Jako název zadejte **AzureFirewallSubnet** . Zadejte odpovídající rozsah adres. Uložte.  
 3. Vytvořte Azure Firewall.  
    1. V Azure Portal vyberte všechny prostředky, klikněte na Přidat, brána firewall, vytvořit. Vyberte skupinu prostředků (vyberte stejnou skupinu prostředků, kde Virtual Network).  
-   1. Zadejte název prostředku Azure Firewall. Například **MyAzureFirewall** .  
+   1. Zadejte název prostředku Azure Firewall. Například **MyAzureFirewall**.  
    1. Vyberte oblast a vyberte aspoň dvě zóny dostupnosti zarovnané do zón dostupnosti, ve kterých jsou nasazené vaše virtuální počítače.  
    1. Vyberte svůj Virtual Network, kde se nasadí virtuální počítače SAP a služba Azure Load Balancer úrovně Standard.  
-   1. Veřejná IP adresa: klikněte na vytvořit a zadejte název. Pro instanci **MyFirewallPublicIP** .  
+   1. Veřejná IP adresa: klikněte na vytvořit a zadejte název. Pro instanci **MyFirewallPublicIP**.  
 4. Vytvořte Azure Firewall pravidlo, které povolí odchozí připojení k zadaným veřejným koncovým bodům. V tomto příkladu se dozvíte, jak povolíte přístup ke veřejnému koncovému bodu rozhraní API pro správu Azure.  
    1. Vyberte pravidla, kolekce síťových pravidel a pak klikněte na přidat kolekci pravidel sítě.  
-   1. Název: **MyOutboundRule** , zadejte priority, vyberte akce **Allow** .  
-   1. Služba: název **ToAzureAPI** .  Protokol: vyberte **libovolný** . Zdrojová adresa: zadejte rozsah vaší podsítě, ve kterém jsou nasazené virtuální počítače a Standard Load Balancer pro instanci: **11.97.0.0/24** . Cílové porty: zadejte <b>*</b> .  
+   1. Název: **MyOutboundRule**, zadejte priority, vyberte akce **Allow**.  
+   1. Služba: název **ToAzureAPI**.  Protokol: vyberte **libovolný**. Zdrojová adresa: zadejte rozsah vaší podsítě, ve kterém jsou nasazené virtuální počítače a Standard Load Balancer pro instanci: **11.97.0.0/24**. Cílové porty: zadejte <b>*</b> .  
    1. Uložit
    1. Jak jste pořád na Azure Firewall, vyberte přehled. Poznamenejte si privátní IP adresu Azure Firewall.  
 5. Vytvořit trasu pro Azure Firewall  
@@ -164,9 +165,9 @@ Architektura by vypadala takto:
 
    Pravidlo brány firewall by vypadalo takto: ![ diagram, který ukazuje, jak by brána firewall vypadala jako.](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
-6. Vytvořte uživatelsky definovanou trasu z podsítě vašich virtuálních počítačů do privátní IP adresy **MyAzureFirewall** .
+6. Vytvořte uživatelsky definovanou trasu z podsítě vašich virtuálních počítačů do privátní IP adresy **MyAzureFirewall**.
    1. V případě, že jste umístění umístili do směrovací tabulky, klikněte na trasy. Vyberte Přidat. 
-   1. Název trasy: ToMyAzureFirewall, předpona adresy: **0.0.0.0/0** . Typ dalšího segmentu směrování: vyberte virtuální zařízení. Adresa dalšího segmentu směrování: zadejte privátní IP adresu brány firewall, kterou jste nakonfigurovali: **11.97.1.4** .  
+   1. Název trasy: ToMyAzureFirewall, předpona adresy: **0.0.0.0/0**. Typ dalšího segmentu směrování: vyberte virtuální zařízení. Adresa dalšího segmentu směrování: zadejte privátní IP adresu brány firewall, kterou jste nakonfigurovali: **11.97.1.4**.  
    1. Uložit
 
 ## <a name="using-proxy-for-pacemaker-calls-to-azure-management-api"></a>Volání rozhraní API pro správu Azure pomocí proxy serveru Pacemaker
@@ -185,7 +186,7 @@ Proxy server můžete použít k povolení volání Pacemaker do veřejného kon
 
 ### <a name="pacemaker-configuration-with-proxy"></a>Konfigurace Pacemaker s proxy serverem 
 
-V odvětví je k dispozici celá řada různých možností proxy serveru. Podrobné pokyny pro nasazení proxy serveru jsou mimo rozsah tohoto dokumentu. V následujícím příkladu předpokládáme, že váš proxy server reaguje na **MyProxyService** a naslouchá na portu **MyProxyPort** .  
+V odvětví je k dispozici celá řada různých možností proxy serveru. Podrobné pokyny pro nasazení proxy serveru jsou mimo rozsah tohoto dokumentu. V následujícím příkladu předpokládáme, že váš proxy server reaguje na **MyProxyService** a naslouchá na portu **MyProxyPort**.  
 Pokud chcete, aby služba Pacemaker komunikovala s rozhraním API pro správu Azure, proveďte následující kroky na všech uzlech clusteru:  
 
 1. Upravte konfigurační soubor Pacemaker/etc/sysconfig/Pacemaker a přidejte následující řádky (všechny uzly clusteru):

@@ -3,16 +3,17 @@ title: Co jsou řešení pro provoz Oracle WebLogic serveru v Azure Virtual Mach
 description: Naučte se, jak spustit Oracle WebLogic Server na Microsoft Azure Virtual Machines.
 author: rezar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: d8639214773a4444876b2a89dda5dd831b8c36ce
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 51f0e68b3e07a157a5222a4374f9e1b74ef7e403
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927286"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968702"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Jaká jsou řešení pro spouštění Oracle WebLogic Serveru na virtuálních počítačích Azure?
 
@@ -28,7 +29,7 @@ Server WLS je předním aplikačním serverem Java, který provozuje nejdůleži
 
 Existují čtyři nabídky k dispozici pro splnění různých scénářů: [jeden uzel bez serveru pro správu](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls), [jeden uzel se serverem pro správu](https://portal.azure.com/#create/oracle.20191009-arm-oraclelinux-wls-admin20191009-arm-oraclelinux-wls-admin), [clusterem](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster)a [dynamickým clusterem](https://portal.azure.com/#create/oracle.20191021-arm-oraclelinux-wls-dynamic-cluster20191021-arm-oraclelinux-wls-dynamic-cluster). Nabídky jsou k dispozici bezplatně. Tyto nabídky jsou popsány a propojeny níže.
 
-_Tyto nabídky jsou vlastními licencemi_ . Předpokládají, že už máte příslušné licence pro Oracle a máte řádně licenci na spuštění nabídek v Azure.
+_Tyto nabídky jsou vlastními licencemi_. Předpokládají, že už máte příslušné licence pro Oracle a máte řádně licenci na spuštění nabídek v Azure.
 
 Nabízí podporu řady operačních systémů, jazyků Java a serveru WLS prostřednictvím základních imagí (například WebLogic Server 14 a JDK 11 v Oracle Linux 7,6). Tyto základní image jsou k dispozici také na Azure sami. Základní image jsou vhodné pro zákazníky, kteří vyžadují složitá a přizpůsobená nasazení Azure. Aktuální sada základních imagí je k dispozici [zde](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1).
 
@@ -52,7 +53,7 @@ _Pokud vás zajímá, jak úzce pracovat na scénářích migrace pomocí techni
 
 Řešení umožní široké spektrum architektur pro nasazení připravené pro produkční prostředí s relativním usnadněním. Většinu případů migrace můžete vyhovět co nejefektivnějším způsobem, a to díky tomu, že se zaměříte na vývoj obchodních aplikací.
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="K nasazení WebLogic serveru v Azure můžete použít Azure Portal.":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="V Azure jsou povolená složitá nasazení serveru WebLogic.":::
 
 Kromě toho, co jsou řešení automaticky zřízené, mají zákazníci ještě plnou flexibilitu pro přizpůsobení jejich nasazení. Zákazníci s nasazováním aplikací nejspíš budou integrovat další prostředky Azure s jejich nasazeními. Zákazníkům doporučujeme poskytovat zpětnou vazbu k dalšímu vylepšení řešení.
 

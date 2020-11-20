@@ -4,19 +4,19 @@ description: Řešení chyb při občasném připojení a souvisejících potí�
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
-ms.date: 07/24/2020
+ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 76b4408b2f8c631453281ecf6f214d49318252a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 989f47c0ff60865a8e8be15e089cdcf96ab2550c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785047"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968294"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Řešení chyb občasného odchozího připojení v Azure App Service
 
-Tento článek vám pomůže vyřešit chyby přerušovaného připojení a související problémy s výkonem v [Azure App Service](./overview.md). V tomto tématu najdete další informace o metodách a odstraňování potíží s postupy pro vyčerpání zdrojových adres portů SNAT (Network Translation). Pokud potřebujete další informace v jakémkoli bodě tohoto článku, obraťte se na odborníky na Azure na [webu MSDN Azure a na fórech Stack Overflow](https://azure.microsoft.com/support/forums/). Případně můžete také zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu** .
+Tento článek vám pomůže vyřešit chyby přerušovaného připojení a související problémy s výkonem v [Azure App Service](./overview.md). V tomto tématu najdete další informace o metodách a odstraňování potíží s postupy pro vyčerpání zdrojových adres portů SNAT (Network Translation). Pokud potřebujete další informace v jakémkoli bodě tohoto článku, obraťte se na odborníky na Azure na [webu MSDN Azure a na fórech Stack Overflow](https://azure.microsoft.com/support/forums/). Případně můžete také zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -29,18 +29,29 @@ Aplikace a funkce hostované ve službě Azure App Service můžou vykazovat jed
 
 ## <a name="cause"></a>Příčina
 
-Hlavní příčinou těchto symptomů je, že instance aplikace nemůže otevřít nové připojení k externímu koncovému bodu, protože dosáhlo jednoho z následujících omezení:
+Největší příčinou přerušovaného připojení je, že při vytváření nových odchozích připojení dojde k překročení limitu. Omezení, která můžete použít:
 
-* Připojení TCP: existuje omezení počtu odchozích připojení, která lze vytvořit. Tato hodnota je přidružená k velikosti použitého pracovního procesu.
-* Porty SNAT: jak je popsáno v části [odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md), Azure používá překlad zdrojového síťového adres (SNAT) a Load Balancer (nevystavený zákazníkům) ke komunikaci s koncovými body mimo Azure ve veřejném adresním prostoru IP adres a koncovými body interních k Azure, které nevyužívají výhody služby nebo privátních koncových bodů. Každé instanci ve službě Azure App Service se zpočátku dostal předem přidělený počet portů **128** SNAT. Toto omezení má vliv na otevírání připojení ke stejné kombinaci hostitelů a portů. Pokud vaše aplikace vytvoří připojení ke kombinaci adres a kombinací portů, nebudete používat porty SNAT. Porty SNAT se používají, když máte opakovaná volání stejné kombinace adres a portů. Po uvolnění portu je možné port v případě potřeby znovu použít. Nástroj pro vyrovnávání zatížení sítě Azure uvolní port SNAT z uzavřených připojení jenom po 4 minutách.
+* Připojení TCP: existuje omezení počtu odchozích připojení, která lze vytvořit. Omezení odchozích připojení je přidruženo k použité velikosti pracovního procesu.
+* Porty SNAT: [odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md) popisují omezení portů SNAT a způsob, jakým mají vliv na odchozí připojení. Azure používá ke komunikaci s veřejnými IP adresami protokol SNAT (Network Address Translation) a nástroje pro vyrovnávání zatížení (nezveřejňují se zákazníkům). Každé instanci ve službě Azure App Service se zpočátku dostal předem přidělený počet portů **128** SNAT. Limit portů SNAT má vliv na otevírání připojení ke stejné kombinaci adres a portů. Pokud vaše aplikace vytvoří připojení ke kombinaci adres a kombinací portů, nebudete používat porty SNAT. Porty SNAT se používají, když máte opakovaná volání stejné kombinace adres a portů. Po uvolnění portu je možné port v případě potřeby znovu použít. Nástroj pro vyrovnávání zatížení sítě Azure uvolní port SNAT z uzavřených připojení jenom po 4 minutách.
 
-Když aplikace nebo funkce rychle otevřou nové připojení, můžou rychle vyčerpat svou předem přidělenou kvótu 128 portů. Pak jsou zablokované, dokud nebude k dispozici nový port SNAT, a to prostřednictvím dynamického přidělování dalších portů SNAT nebo opakovaného použití uvolněného portu SNAT. Aplikace nebo funkce, které jsou blokované z důvodu neschopnosti vytvářet nová připojení, začnou mít jeden nebo více problémů popsaných v části **příznaky** v tomto článku.
+Když aplikace nebo funkce rychle otevřou nové připojení, můžou rychle vyčerpat svou předem přidělenou kvótu 128 portů. Pak jsou zablokované, dokud nebude k dispozici nový port SNAT, a to prostřednictvím dynamického přidělování dalších portů SNAT nebo opakovaného použití uvolněného portu SNAT. Pokud vaše aplikace vychází z portů SNAT, bude mít občasné problémy s odchozím připojením. 
 
 ## <a name="avoiding-the-problem"></a>Zamezení problému
 
+Existuje několik řešení, která vám umožní vyhnout se omezením portů SNAT. Mezi ně patří:
+
+* fondy připojení: po sdružování připojení se vyhnete otevírání nových síťových připojení pro volání stejné adresy a portu.
+* koncové body služby: nemáte omezení portu SNAT pro služby zabezpečené pomocí koncových bodů služby.
+* soukromé koncové body: nemáte omezení portu SNAT pro služby zabezpečené pomocí privátních koncových bodů.
+* Brána NAT: u brány NAT máte k dispozici 64 KB odchozích portů SNAT, které jsou použitelné prostředky odesílajícími provoz.
+
+Vyloučení problému s portem SNAT znamená, že se vyhnete vytváření nových připojení opakovaně ke stejnému hostiteli a portu. Fondy připojení jsou jedním z jasnějších způsobů, jak tento problém vyřešit.
+
 Pokud je vaším cílem služba Azure, která podporuje koncové body služby, můžete se vyhnout problémům s vyčerpáním portů SNAT pomocí [místní služby virtuální](./web-sites-integrate-with-vnet.md) sítě a koncových bodů služby nebo privátních koncových bodů. Pokud používáte místní integraci virtuální sítě a umístění koncových bodů služby v podsíti Integration, nebude mít odchozí přenosy na tyto služby omezení portů SNAT. Podobně platí, že pokud použijete místní integraci virtuální sítě a soukromé koncové body, nebudete mít k tomuto cíli žádné odchozí problémy portů SNAT. 
 
-Vyloučení problému s portem SNAT znamená, že se vyhnete vytváření nových připojení opakovaně ke stejnému hostiteli a portu.
+Pokud je vaše cílové umístění externím koncovým bodem mimo Azure, je pomocí brány NAT povolený 64 KB odchozích portů SNAT. Poskytuje vám také vyhrazenou odchozí adresu, kterou nesdílíte s komukoli. 
+
+Pokud je to možné, Vylepšete kód pro používání fondů připojení a vyhněte se celé situaci. Není vždy možné rychle změnit kód a zmírnit tak tuto situaci. V případech, kdy nemůžete změnit kód v čase, využijte další řešení. Nejlepším řešením tohoto problému je zkombinovat všechna řešení jako nejlepší, abyste mohli. Zkuste použít koncové body služby a privátní koncové body služeb Azure a brány NAT pro zbytek. 
 
 Obecné strategie pro zmírnění vyčerpání portů SNAT jsou popsány v [části řešení problémů](../load-balancer/load-balancer-outbound-connections.md) v **odchozích připojeních ke službě Azure** Documentation. Tyto strategie platí pro aplikace a funkce hostované v Azure App Service.
 
@@ -110,7 +121,7 @@ I když PHP nepodporuje sdružování připojení, můžete zkusit použít trva
 * [Zátěžový test](/azure/devops/test/load-test/app-service-web-app-performance-test) by měl simulovat reálné celosvětové údaje při ustálené rychlosti krmení. Testování aplikací a funkcí v rámci reálného zatížení dokáže identifikovat a vyřešit problémy s vyčerpáním portů SNAT před časem.
 * Ujistěte se, že back-endové služby můžou odpovědi vracet rychle. Řešení potíží s výkonem pomocí Azure SQL Database najdete v tématu [řešení potíží s Azure SQL Database problémy s výkonem Intelligent Insights](../azure-sql/database/intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow).
 * Horizontální navýšení kapacity App Service naplánování na více instancí. Další informace o škálování najdete v tématu horizontální navýšení [kapacity aplikace v Azure App Service](./manage-scale-up.md). Každá instance pracovního procesu v plánu služby App Service má přidělený počet portů SNAT. Pokud rozšíříte své využití napříč více instancemi, můžete získat využití portu SNAT na instanci níže doporučeným limitem 100 odchozích připojení na jedinečné vzdálené koncové body.
-* Zvažte přesunutí na [App Service Environment (POmocného mechanismu)](./environment/using-an-ase.md), kde se přiděluje jedna odchozí IP adresa a omezení pro připojení a porty SNAT jsou mnohem vyšší. V pomocném objektu pro čtení je počet portů SNAT na instanci založený na tabulce předdefinovaných [Vyrovnávání zatížení Azure](../load-balancer/load-balancer-outbound-connections.md#snatporttable) . například služba pomocného procesu s 1-50 instancemi pracovních procesů má 1024 předběžně přidělených portů na 512 51-100 instanci
+* Zvažte přesunutí na [App Service Environment (POmocného mechanismu)](./environment/using-an-ase.md), kde se přiděluje jedna odchozí IP adresa a omezení pro připojení a porty SNAT jsou mnohem vyšší. V pomocném mechanismu pro čtení je počet portů SNAT na instanci založený na [tabulce předdefinovaných vyrovnávání zatížení Azure](../load-balancer/load-balancer-outbound-connections.md#snatporttable) , takže například služba pomocného programu s 1-50 instancemi pracovních procesů má 1024 předběžně přidělených portů na instanci, zatímco služba pomocného programu s 51-100mi instancí pracovních procesů má na jednu instanci 512 předem přidělené porty.
 
 Vyloučení odchozích omezení TCP je snazší, protože limity jsou nastaveny podle velikosti pracovního procesu. Můžete si prohlédnout omezení pro [Číselná omezení mezi virtuálními počítači izolovaného prostoru (sandbox) – připojení TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
@@ -130,12 +141,12 @@ Pokud neznáte chování aplikace dostatečně rychle, existují některé nást
 
 [Diagnostiku App Service](./overview-diagnostics.md) můžete použít k vyhledání informací o přidělení portů SNAT a ke sledování metriky přidělení portů snat v App Service lokalitě. Pokud chcete najít informace o přidělování portů SNAT, postupujte podle následujících kroků:
 
-1. Pokud chcete získat přístup k diagnostice App Service, přejděte v [Azure Portal](https://portal.azure.com/)do webové aplikace App Service nebo App Service Environment. V levém navigačním panelu vyberte **Diagnostika a řešení problémů** .
+1. Pokud chcete získat přístup k diagnostice App Service, přejděte v [Azure Portal](https://portal.azure.com/)do webové aplikace App Service nebo App Service Environment. V levém navigačním panelu vyberte **Diagnostika a řešení problémů**.
 2. Vybrat kategorii dostupnosti a výkonu
 3. V seznamu dostupných dlaždic v kategorii Vyberte dlaždici vyčerpání portů SNAT. Postup je udržovat pod 128.
 Pokud to budete potřebovat, můžete přesto otevřít lístek podpory a pracovník podpory obdrží metriku z back-endu za vás.
 
-Počítejte s tím, že protože použití portu SNAT není k dispozici jako metrika, není možné automatické škálování na základě využití portu SNAT nebo pro konfiguraci automatického škálování na základě metriky přidělování portů SNAT.
+Protože použití portu SNAT není k dispozici jako metrika, není možné automatické škálování na základě využití portu SNAT nebo pro konfiguraci automatického škálování na základě metriky přidělování portů SNAT.
 
 ### <a name="tcp-connections-and-snat-ports"></a>Připojení TCP a porty SNAT
 

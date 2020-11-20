@@ -7,18 +7,19 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 89da6935d85628b5ce4ff762ad31d3f280682921
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7f0782738a8aa57b2bc0b87e1378972e3fa5d31c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424254"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967852"
 ---
 # <a name="disaster-recovery-principles"></a>Principy zotavení po havárii
 
@@ -77,7 +78,7 @@ Provozní tým vytvoří vztah replikace mezi PRD svazky v produkční oblasti A
 
 V dalším kroku nastavte nebo upravte plán zálohování snímků úložiště, abyste se dostali k vašemu RTO a RPO v případě havárie. Chcete-li minimalizovat cíl bodu obnovení, nastavte následující intervaly replikace ve službě velká instance HANA:
 - Pro svazky zahrnuté do kombinovaného snímku (typ snímku **Hana**) nastavte hodnotu replikovat každých 15 minut na ekvivalentní cíle svazku úložiště na webu pro zotavení po havárii.
-- Pro svazek zálohy protokolu transakcí ( **protokoly**typu snímku) nastavte na hodnotu replikovat každé 3 minuty na ekvivalentní cíle svazku úložiště v lokalitě pro obnovení po havárii.
+- Pro svazek zálohy protokolu transakcí ( **protokoly** typu snímku) nastavte na hodnotu replikovat každé 3 minuty na ekvivalentní cíle svazku úložiště v lokalitě pro obnovení po havárii.
 
 Chcete-li minimalizovat cíl bodu obnovení, nastavte následující:
 - Proveďte snímek úložiště typu **Hana** (viz "krok 7: provádět snímky") každých 30 minut až 1 hodinu.

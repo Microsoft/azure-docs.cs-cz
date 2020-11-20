@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 887adb3e8b0a5f0410fc9a7732e2220049b7ba6c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 550e22ac861b92994f2695594d09fc2935d273d1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927188"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967750"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Řízení velkých instancí Azure HANA prostřednictvím webu Azure Portal
 Tento dokument popisuje způsob, jakým se v [Azure Portal](https://portal.azure.com) prezentují [velké instance Hana](./hana-overview-architecture.md) a jaké aktivity je možné provádět prostřednictvím Azure Portal s velkými jednotkami instancí Hana, které jsou pro vás nasazené. Viditelnost velkých instancí HANA v Azure Portal k dispozici prostřednictvím poskytovatele prostředků Azure pro velké instance HANA, který je aktuálně ve verzi Public Preview.
@@ -60,7 +61,7 @@ V seznamu skupin prostředků, které se zobrazí, možná budete muset filtrova
 
 ![Filtrovat skupiny prostředků v Azure Portal](./media/hana-li-portal/portal-filtering-subscription.png)
 
-Po filtrování do správného předplatného může být stále dlouhý seznam skupin prostředků. Vyhledejte ho s následnou opravou **-TXXX** , kde xxx je tři číslice, např. **T050** . 
+Po filtrování do správného předplatného může být stále dlouhý seznam skupin prostředků. Vyhledejte ho s následnou opravou **-TXXX** , kde xxx je tři číslice, např. **T050**. 
 
 Jak jste našli skupinu prostředků, uveďte podrobnosti. Seznam, který jste dostali, může vypadat takto:
 
@@ -94,7 +95,7 @@ Další velmi důležité informace najdete v pravém dolním rohu přehledu s n
 Další pole v pravém sloupci záhlaví informuje o stavu napájení jednotky velkých instancí HANA.
 
 > [!NOTE]
-> Stav napájení popisuje, zda je hardwarová jednotka zapnutá nebo vypnutá. Neposkytuje informace o tom, jak operační systém pracuje a je spuštěný. Při restartu velké jednotky instance HANA se zobrazí malý čas, kdy se stav jednotky změní na **zahájení** přechodu do stavu **zahájeno** . Ve stavu **spuštěno** znamená, že se operační systém spouští nebo že byl operační systém zcela spuštěn. V důsledku toho po restartování jednotky Nemůžete očekávat, že se okamžitě přihlašujete k jednotce, jakmile se stav přepne na **zahájeno** .
+> Stav napájení popisuje, zda je hardwarová jednotka zapnutá nebo vypnutá. Neposkytuje informace o tom, jak operační systém pracuje a je spuštěný. Při restartu velké jednotky instance HANA se zobrazí malý čas, kdy se stav jednotky změní na **zahájení** přechodu do stavu **zahájeno**. Ve stavu **spuštěno** znamená, že se operační systém spouští nebo že byl operační systém zcela spuštěn. V důsledku toho po restartování jednotky Nemůžete očekávat, že se okamžitě přihlašujete k jednotce, jakmile se stav přepne na **zahájeno**.
 > 
 
 Pokud stisknete tlačítko Zobrazit další, zobrazí se další informace. Jednou z dalších informací se zobrazuje revize razítka velké instance HANA, jednotka byla nasazena v. Přečtěte si článek [co je SAP HANA v Azure (velké instance)](./hana-overview-architecture.md) pro různé revize rozsáhlých razítek instancí Hana.
@@ -106,7 +107,7 @@ Kromě poskytnutí přehledu jednotek velkých instancí HANA můžete kontrolov
 
 Jedna z hlavních aktivit zaznamenaných je restart jednotky. Uvedená data zahrnují stav aktivity, časové razítko aktivované aktivity, ID předplatného, ze kterého se aktivita aktivovala, a uživatele Azure, který aktivitu aktivoval. 
 
-Další zaznamenaná aktivita se změní na jednotku v metadatech Azure meta. Kromě iniciace restartování můžete zobrazit aktivitu **HANAInstances zápisu** . Tento typ aktivity neprovede žádné změny v samotné jednotce velké instance HANA, ale provádí změny v metadatech jednotky v Azure. V případě uvedeného případu jsme přidali a odstranili značku (viz další oddíl).
+Další zaznamenaná aktivita se změní na jednotku v metadatech Azure meta. Kromě iniciace restartování můžete zobrazit aktivitu **HANAInstances zápisu**. Tento typ aktivity neprovede žádné změny v samotné jednotce velké instance HANA, ale provádí změny v metadatech jednotky v Azure. V případě uvedeného případu jsme přidali a odstranili značku (viz další oddíl).
 
 ## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>Přidání a odstranění značky Azure pro jednotku velkých instancí HANA
 Další možností je přidat [značku](../../../azure-resource-manager/management/tag-resources.md) do jednotky velkých instancí Hana. Způsob přiřazování značek se neliší od přiřazení značek k virtuálním počítačům. Stejně jako u virtuálních počítačů existují značky v metadatech Azure a u velkých instancí HANA mají stejná omezení jako značky pro virtuální počítače.
@@ -131,7 +132,7 @@ Při inicializaci restartování operačního systému Linux došlo k různým s
 Po stisknutí tlačítka restartovat se zobrazí dotaz, zda opravdu chcete jednotku restartovat. Jakmile ověříte, že stisknete tlačítko "Ano", jednotka se restartuje.
 
 > [!NOTE]
-> V procesu restartování se zobrazí malý čas, kdy se stav jednotky změní na **zahájení** přechodu do stavu **zahájeno** . Ve stavu **spuštěno** znamená, že se operační systém spouští nebo že byl operační systém zcela spuštěn. V důsledku toho po restartování jednotky Nemůžete očekávat, že se okamžitě přihlašujete k jednotce, jakmile se stav přepne na **zahájeno** .
+> V procesu restartování se zobrazí malý čas, kdy se stav jednotky změní na **zahájení** přechodu do stavu **zahájeno**. Ve stavu **spuštěno** znamená, že se operační systém spouští nebo že byl operační systém zcela spuštěn. V důsledku toho po restartování jednotky Nemůžete očekávat, že se okamžitě přihlašujete k jednotce, jakmile se stav přepne na **zahájeno**.
 
 > [!IMPORTANT]
 > Závisí na velikosti paměti v jednotce velké instance služby HANA, restartování a restartování hardwaru a operační systém může trvat až jednu hodinu.
@@ -146,7 +147,7 @@ Pokud chcete získat službu Velké instance SAP HANA uvedenou na další obrazo
 
 ![Vybrat všechny služby v Azure Portal](./media/hana-li-portal/portal-create-service-request.png)
 
-V seznamu služeb můžete najít službu **SAP HANA velká instance** . Při výběru této služby můžete vybrat konkrétní typy problémů, jak je znázorněno níže:
+V seznamu služeb můžete najít službu **SAP HANA velká instance**. Při výběru této služby můžete vybrat konkrétní typy problémů, jak je znázorněno níže:
 
 
 ![Vyberte třídu problému v Azure Portal](./media/hana-li-portal/portal-select-problem-class.png)

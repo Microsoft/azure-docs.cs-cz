@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP, Azure HANA, úložiště Ultra disk, Premium Storage
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bbaa9d33d3a31b682a66b2a3254fc2265b6f8d7b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: af2eac929e3e3f40e1ac1cd384c943b1e09171a8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357073"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967461"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -46,7 +47,7 @@ Minimální SAP HANA certifikované podmínky pro různé typy úložišť:
 - Azure Ultra disk alespoň pro svazek **/Hana/log** . Svazek **/Hana/data** můžete umístit do úložiště Premium Storage bez použití Azure akcelerátor zápisu nebo za účelem dosažení rychlejšího restartování Ultra disk
 - Svazky **systému souborů NFS v 4.1** nad Azure NetApp Files **/Hana/log a/Hana/data**. Svazek/Hana/Shared může používat protokol NFS v3 nebo NFS verze 4.1.
 
-Některé typy úložišť lze kombinovat. Například je možné umístit **/Hana/data** do služby Premium Storage a **/Hana/log** je možné umístit do úložiště Ultra disk, aby se dosáhlo požadované nízké latence. Pokud používáte svazek založený na ANF pro **/Hana/data** , musí být  **/Hana/log** svazek založen na systému souborů NFS nad ANF. Použití systému souborů NFS nad ANF pro jeden ze svazků (jako je/Hana/data) a Azure Premium Storage nebo Ultra disk pro ostatní svazky (jako **/Hana/log** **) se nepodporuje.**
+Některé typy úložišť lze kombinovat. Například je možné umístit **/Hana/data** do služby Premium Storage a **/Hana/log** je možné umístit do úložiště Ultra disk, aby se dosáhlo požadované nízké latence. Pokud používáte svazek založený na ANF pro **/Hana/data**, musí být  **/Hana/log** svazek založen na systému souborů NFS nad ANF. Použití systému souborů NFS nad ANF pro jeden ze svazků (jako je/Hana/data) a Azure Premium Storage nebo Ultra disk pro ostatní svazky (jako **/Hana/log** **) se nepodporuje.**
 
 V místním světě se zřídka postará o subsystémech I/O a jeho schopnosti. Důvodem je, že dodavatel zařízení musí zajistit, aby byly splněny minimální požadavky na úložiště pro SAP HANA. Při sestavování infrastruktury Azure byste si měli být vědomi některých z těchto požadavků na vydaných SAP. Některé z minimálních vlastností propustnosti, které SAP doporučuje, jsou:
 
@@ -192,7 +193,7 @@ U ostatních svazků by konfigurace vypadala takto:
 | M416ms_v2 | 11 400 GiB | 2 000 MB/s | 1 × P30 | 1 × P10 | 1 × P6 | 
 
 
-Ověřte, zda propustnost úložiště pro různé navrhované svazky splňuje zatížení, které chcete spustit. Pokud zatížení vyžaduje větší objemy pro **/Hana/data** a **/Hana/log** , je potřeba zvýšit počet virtuálních pevných disků Azure Premium Storage. Změna velikosti svazku s více virtuálními disky, než je uvedené, zvyšuje počet IOPS a propustnost vstupně-výstupních operací v rámci omezení typu virtuálního počítače Azure.
+Ověřte, zda propustnost úložiště pro různé navrhované svazky splňuje zatížení, které chcete spustit. Pokud zatížení vyžaduje větší objemy pro **/Hana/data** a **/Hana/log**, je potřeba zvýšit počet virtuálních pevných disků Azure Premium Storage. Změna velikosti svazku s více virtuálními disky, než je uvedené, zvyšuje počet IOPS a propustnost vstupně-výstupních operací v rámci omezení typu virtuálního počítače Azure.
 
 Azure Akcelerátor zápisu funguje jenom ve spojení se službou [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Proto musí být alespoň disky Azure Premium Storage, které tvoří **/Hana/log** svazek, nasazeny jako spravované disky. Podrobnější pokyny a omezení služby Azure Akcelerátor zápisu najdete v článku [akcelerátor zápisu](../../how-to-enable-write-accelerator.md).
 
@@ -310,6 +311,6 @@ V seznamu jsou uvedené typy virtuálních počítačů, které nejsou certifiko
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [SAP HANA Průvodce vysokou dostupností pro virtuální počítače Azure](./sap-hana-availability-overview.md).

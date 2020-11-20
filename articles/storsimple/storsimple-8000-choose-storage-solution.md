@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f5bb1c2716acbbac8d3e776eb9beda045fd881
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183271"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968736"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>Porovnání StorSimple s možnostmi přenosu dat pomocí Synchronizace souborů Azure a Data Boxu Edge 
 
@@ -20,9 +20,9 @@ ms.locfileid: "88183271"
  
 Tento dokument poskytuje přehled možností místního přenosu dat do Azure, porovnání: Data Box Edge vs. Azure File Sync vs. StorSimple 8000 series.
 
-- **[Data box Edge](/azure/databox-online/data-box-edge-overview)** – data box Edge je místní síťové zařízení, které přesouvá data do a z Azure a má k předběžnému zpracování dat s povoleným AI. Data Box Gateway je virtuální verze zařízení se stejnými možnostmi přenosu dat.
-- **[Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide)** – Azure File Sync můžete použít k centralizaci sdílených složek ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Obecná dostupnost Azure File Sync byla oznámena dříve v 2018.
-- **[StorSimple](/azure/storsimple/storsimple-overview)** – StorSimple je hybridní zařízení, které pomáhá podnikům konsolidovat svou infrastrukturu úložiště pro primární úložiště, ochranu dat, archivaci a zotavení po havárii v jednom řešení, a to těsně integrací se službou Azure Storage. Životní cyklus produktu pro StorSimple najdete [tady](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
+- **[Data box Edge](../databox-online/azure-stack-edge-overview.md)** – data box Edge je místní síťové zařízení, které přesouvá data do a z Azure a má k předběžnému zpracování dat s povoleným AI. Data Box Gateway je virtuální verze tohoto zařízení, ale se stejnými funkcemi pro přenos dat.
+- **[Azure File Sync](../storage/files/storage-sync-files-deployment-guide.md)** – Azure File Sync můžete použít k centralizaci sdílených složek ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Obecná dostupnost Azure File Sync byla oznámena dříve v 2018.
+- **[StorSimple](./storsimple-overview.md)** – StorSimple je hybridní zařízení, které pomáhá podnikům konsolidovat svou infrastrukturu úložiště pro primární úložiště, ochranu dat, archivaci a zotavení po havárii v jednom řešení, a to těsně integrací se službou Azure Storage. Životní cyklus produktu pro StorSimple najdete [tady](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
 
 ## <a name="comparison-summary"></a>Souhrn porovnání
 
@@ -39,5 +39,5 @@ Tento dokument poskytuje přehled možností místního přenosu dat do Azure, p
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o [Azure Data box Edge](/azure/databox-online/data-box-edge-overview) a [Azure Data box Gateway](/azure/databox-online/data-box-gateway-overview)
-- Informace o [Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide)
+- Informace o [Azure Data box Edge](../databox-online/azure-stack-edge-overview.md) a [Azure Data box Gateway](../databox-online/data-box-gateway-overview.md)
+- Informace o [Azure File Sync](../storage/files/storage-sync-files-deployment-guide.md)

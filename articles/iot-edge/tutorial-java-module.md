@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: d68522d92409cfcba38abeb86f2db7c4b78869e6
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 51b7f6e814a9fad286a934466daeb1ffced225c1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045597"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968056"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Kurz: vývoj modulu Java IoT Edge pro zařízení se systémem Linux
 
@@ -34,9 +34,9 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>Obor řešení
+## <a name="prerequisites"></a>Požadavky
 
-Tento kurz ukazuje, jak vytvořit modul v **jazyce Java** pomocí **Visual Studio Code**a jak ho nasadit na **zařízení se systémem Linux**. IoT Edge nepodporuje moduly Java pro zařízení s Windows.
+Tento kurz ukazuje, jak vytvořit modul v **jazyce Java** pomocí **Visual Studio Code** a jak ho nasadit na **zařízení se systémem Linux**. IoT Edge nepodporuje moduly Java pro zařízení s Windows.
 
 Následující tabulka vám pomůže pochopit možnosti pro vývoj a nasazování modulů Java:
 
@@ -44,8 +44,6 @@ Následující tabulka vám pomůže pochopit možnosti pro vývoj a nasazován�
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Použití VS Code pro moduly Java v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Použití VS Code pro moduly Java v systému Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
-
-## <a name="prerequisites"></a>Požadované součásti
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení některého z těchto kurzů byste měli mít následující požadavky:
 
@@ -90,10 +88,10 @@ Vytvořte šablonu řešení v jazyce Java, kterou můžete přizpůsobit pomoc�
 Pokud vytváříte modul Java poprvé, může trvat několik minut, než se stáhnou balíčky Maven. Až bude řešení připravené, okno VS Code načte pracovní prostor řešení IoT Edge. Pracovní prostor řešení obsahuje pět součástí nejvyšší úrovně:
 
 * Složka **moduly** obsahuje kód Java pro váš modul a soubory Docker pro sestavení modulu jako image kontejneru.
-* Soubor ** \. ENV** obsahuje přihlašovací údaje registru kontejneru.
+* Soubor **\. ENV** obsahuje přihlašovací údaje registru kontejneru.
 * Soubor **deployment.template.json** obsahuje informace, které modul runtime IoT Edge používá k nasazení modulů do zařízení.
 * **deployment.debug.template.jsv** kontejneru souboru je ladicí verze modulů.
-* V tomto kurzu nebudete upravovat složku ** \. VSCode** ani soubor ** \. gitignore** .
+* V tomto kurzu nebudete upravovat složku **\. VSCode** ani soubor **\. gitignore** .
 
 Pokud jste při vytváření řešení nezadali registr kontejneru, ale přijali jste výchozí hodnotu localhost:5000, nebudete mít soubor \.env.
 
@@ -111,7 +109,7 @@ Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru konte
 
 V současné době Visual Studio Code může vyvíjet moduly Java pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64.
 
-1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
+1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge** nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
 
 2. V paletě příkazů vyberte v seznamu možností cílovou architekturu. Pro tento kurz používáme virtuální počítač s Ubuntu jako zařízení IoT Edge, takže se zachová výchozí hodnota **amd64**.
 
@@ -286,7 +284,7 @@ V manifestu nasazení jsme použili vláken Module JavaModule, které nastaví p
 
 1. V Visual Studio Code rozbalte podrobnosti pod zařízením IoT Edge a podívejte se na běžící moduly.
 
-2. Klikněte pravým tlačítkem na **JavaModule** a vyberte **Upravit modul s dvojitou**čárkou.
+2. Klikněte pravým tlačítkem na **JavaModule** a vyberte **Upravit modul s dvojitou** čárkou.
 
 3. V požadovaných vlastnostech vyhledejte **TemperatureThreshold** . Změňte jeho hodnotu na novou teplotu 5 stupňů na 10 stupňů vyšší než při nejnovější hlášené teplotě.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 8267a678f35d01119ae3e7d89a07c789dc969614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70b6231829173059ffee675105bacbe1bd1532f2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507496"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967104"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Použití Device Manager StorSimple ke správě přihlašovacích údajů účtu úložiště pro virtuální pole StorSimple
 
@@ -31,7 +31,7 @@ ms.locfileid: "85507496"
   
   ![Řídicí panel služby Device Manager](./media/storsimple-virtual-array-manage-storage-accounts/ova-storageaccts-dashboard.png)  
 
-V tomto kurzu se dozvíte, jak můžete přidat, upravit nebo odstranit přihlašovací údaje účtu úložiště pro virtuální pole StorSimple. Informace v tomto kurzu se vztahují jenom na virtuální pole StorSimple. Informace o tom, jak spravovat účty úložiště v řadě 8000, najdete v tématu [Správa účtu úložiště pomocí služby StorSimple Manager](storsimple-manage-storage-accounts.md).
+V tomto kurzu se dozvíte, jak můžete přidat, upravit nebo odstranit přihlašovací údaje účtu úložiště pro virtuální pole StorSimple. Informace v tomto kurzu se vztahují jenom na virtuální pole StorSimple. Informace o tom, jak spravovat účty úložiště v řadě 8000, najdete v tématu [Správa účtu úložiště pomocí služby StorSimple Manager](./storsimple-8000-manage-storage-accounts.md).
 
 Přihlašovací údaje účtu úložiště obsahují přihlašovací údaje, které zařízení používá pro přístup k vašemu účtu úložiště ve vašem poskytovateli cloudové služby. U Microsoft Azure účtů úložiště se jedná o přihlašovací údaje, jako je název účtu a primární přístupový klíč.
 
@@ -52,7 +52,7 @@ Nejběžnější úlohy související s přihlašovacími údaji účtu úloži�
 Existují tři typy přihlašovacích údajů účtu úložiště, které se dají používat se zařízením StorSimple.
 
 * **Automaticky vygenerované přihlašovací údaje účtu úložiště** – když název navrhuje, tento typ přihlašovacích údajů účtu úložiště se automaticky vygeneruje při prvním vytvoření služby. Další informace o tom, jak se tyto přihlašovací údaje k účtu úložiště vytvářejí, najdete v tématu [Vytvoření nové služby](storsimple-virtual-array-manage-service.md#create-a-service).
-* **přihlašovací údaje účtu úložiště v předplatném služby** – jedná se o přihlašovací údaje účtu úložiště Azure, které jsou přidružené ke stejnému předplatnému jako služba. Další informace o tom, jak se tyto přihlašovací údaje k účtu úložiště vytvářejí, najdete v tématu [informace o Azure Storagech účtech](../storage/common/storage-create-storage-account.md).
+* **přihlašovací údaje účtu úložiště v předplatném služby** – jedná se o přihlašovací údaje účtu úložiště Azure, které jsou přidružené ke stejnému předplatnému jako služba. Další informace o tom, jak se tyto přihlašovací údaje k účtu úložiště vytvářejí, najdete v tématu [informace o Azure Storagech účtech](../storage/common/storage-account-create.md).
 * **přihlašovací údaje účtu úložiště mimo předplatné služby** – jedná se o přihlašovací údaje účtu úložiště Azure, které nejsou přidružené k vaší službě, a nejspíš existovaly před vytvořením služby.
 
 ## <a name="add-a-storage-account-credential"></a>Přidání přihlašovacích údajů účtu úložiště
@@ -72,7 +72,7 @@ K přidání přihlašovacích údajů k účtu úložiště Azure použijte ná
 3. Klikněte na **Přidat**.
 4. V okně **Přidat účet úložiště** udělejte toto:
    
-    1. V **předplatném**vyberte **aktuální**.
+    1. V **předplatném** vyberte **aktuální**.
     2. Zadejte název svého účtu úložiště Azure.
     3. Pokud chcete vytvořit zabezpečený kanál pro síťovou komunikaci mezi zařízením StorSimple a cloudem, vyberte **Povolit** . Vyberte možnost **Zakázat** pouze v případě, že pracujete v rámci privátního cloudu.
     4. Klikněte na **Přidat**. Po úspěšném vytvoření účtu úložiště se zobrazí oznámení.<br></br>
@@ -86,7 +86,7 @@ K přidání přihlašovacích údajů k účtu úložiště Azure použijte ná
 3. Klikněte na **Přidat**.
 4. V okně **Přidat účet úložiště** udělejte toto:
    
-    1. U **předplatného**vyberte **jiné**.
+    1. U **předplatného** vyberte **jiné**.
    
     2. Zadejte název přihlašovacích údajů k účtu úložiště Azure.
    
@@ -142,14 +142,13 @@ Abyste informovali službu StorSimple Device Manager ke změně, budete potřebo
 2. V okně **přihlašovací údaje účtu úložiště** vyberte v seznamu přihlašovací údaje účtu úložiště přihlašovací údaje účtu úložiště, jejichž klíče se mají synchronizovat.
 3. V okně **vlastnosti** pro vybrané přihlašovací údaje účtu úložiště udělejte toto:
    
-    1. Klikněte na **Další**a pak klikněte na **synchronizovat přístupový klíč**.
+    1. Klikněte na **Další** a pak klikněte na **synchronizovat přístupový klíč**.
    
     2. Po zobrazení výzvy k potvrzení klikněte na **synchronizovat klíč** a dokončete synchronizaci.
     
-4. Ve službě StorSimple Device Manager musíte aktualizovat klíč, který se dříve změnil ve službě Microsoft Azure Storage. Pokud se primární přístupový klíč změnil (znovu vygeneroval) v okně **synchronizovat klíč účtu úložiště** , klikněte na primární a pak klikněte na **synchronizovat klíč**. Pokud se sekundární klíč změnil, klikněte na **sekundární**a pak klikněte na **synchronizovat klíč**.
+4. Ve službě StorSimple Device Manager musíte aktualizovat klíč, který se dříve změnil ve službě Microsoft Azure Storage. Pokud se primární přístupový klíč změnil (znovu vygeneroval) v okně **synchronizovat klíč účtu úložiště** , klikněte na primární a pak klikněte na **synchronizovat klíč**. Pokud se sekundární klíč změnil, klikněte na **sekundární** a pak klikněte na **synchronizovat klíč**.
    
     ![Přístupový klíč synchronizace](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [spravovat virtuální pole StorSimple](storsimple-ova-web-ui-admin.md).
-

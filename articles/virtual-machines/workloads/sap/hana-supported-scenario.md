@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4946524768d0cff483feb4045a2cc5fba169a7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f33ef81282dd8e60eba64cc77cbd95ab8dbc557
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86507943"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967563"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Podporované scénáře pro velké instance HANA
 Tento článek popisuje podporované scénáře a podrobnosti architektury pro velké instance HANA (HLI).
@@ -56,7 +57,7 @@ Tento článek popisuje podrobné informace o těchto dvou součástech v každ�
 
 Každý zřízený Server obsahuje předem nakonfigurované sady rozhraní Ethernet. Rozhraní sítě Ethernet konfigurovaná u každé jednotky HLI jsou rozdělená do čtyř typů:
 
-- Odpověď: používá **se**pro nebo klientský přístup.
+- Odpověď: používá **se** pro nebo klientský přístup.
 - **B**: používá se pro komunikaci mezi uzly. Toto rozhraní je nakonfigurované na všech serverech (bez ohledu na požadovanou topologii), ale používá se jenom pro scénáře škálování na více instancí.
 - **C**: používá se pro připojení mezi uzly.
 - **D**: pro instalaci STONITH se používá pro připojení zařízení mezi uzly a iSCSI. Toto rozhraní je konfigurováno pouze v případě, že je požadován instalační program HSR.  

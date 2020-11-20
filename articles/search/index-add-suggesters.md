@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e90c1d1cfa02f63a2b5115124dee2a9da68e2f3f
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 9122d6716aa94a7e0164c9c7774c7c8d85be814a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917269"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968005"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření modulu pro návrhy umožňující automatické dokončování a navrhované výsledky v dotazu
 
@@ -40,7 +40,9 @@ Modul pro návrhy je interní datová struktura, která podporuje chování vyhl
 
 Pokud chcete vytvořit návrh, přidejte ho do [definice indexu](/rest/api/searchservice/create-index). Modul pro návrhy Získá název a kolekci polí, přes které je povoleno prostředí typeahead. a [nastavte každou vlastnost](#property-reference). Nejlepším časem, jak vytvořit modul pro navrhování, je, že definujete pole, které ho bude používat.
 
-+ Použít pouze pole řetězců
++ Použijte pouze pole řetězců.
+
++ Pokud je pole řetězce součástí komplexního typu (například pole město v rámci adresy), zahrňte nadřazený prvek do pole: `"Address/City"` (Rest a C# a Python) nebo `["Address"]["City"]` (JavaScript).
 
 + Použijte výchozí standardní analyzátor Lucene ( `"analyzer": null` ) nebo [analyzátor jazyka](index-add-language-analyzers.md) (například `"analyzer": "en.Microsoft"` ) v poli.
 

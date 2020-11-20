@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 12e5a6db7257678b3d4d14d7583a1a30da0d3a87
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371065"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967138"
 ---
 # <a name="monitor-identity-and-access"></a>Monitorování identity a přístupu
 
-Hraniční zabezpečení se vyvinulo z hraniční sítě až po hranice identity. V tomto vývojovém prostředí je zabezpečení méně o obraně vaší sítě a další informace o správě zabezpečení aplikací, dat a uživatelů.
+Bezpečnostní perimetr se z perimetru sítě vyvinul na perimetr identity. V tomto vývojovém prostředí je zabezpečení méně o obraně vaší sítě a další informace o správě zabezpečení aplikací, dat a uživatelů.
 
 Když sledujete aktivity a nastavení konfigurace související s identitou, můžete proaktivně provádět aktivní akce dřív, než dojde k incidentu, nebo reaktivní akce k zastavení pokusů o útok.
 
@@ -30,7 +30,7 @@ Když sledujete aktivity a nastavení konfigurace související s identitou, mů
 
 Azure Security Center má dva vyhrazené bezpečnostní prvky zabezpečení pro zajištění, že splňujete požadavky na identitu a zabezpečení vaší organizace: 
 
- - **Správa přístupu a oprávnění** – doporučujeme, abyste přijali [model přístupu s minimálními oprávněními](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) a zajistili uživatelům udělení přístupu pouze k tomu, aby mohli provádět své úlohy. Tento ovládací prvek také obsahuje doporučení pro řízení přístupu k vašim prostředkům [pomocí implementace řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) .
+ - **Správa přístupu a oprávnění** – doporučujeme, abyste přijali [model přístupu s minimálními oprávněními](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) a zajistili uživatelům udělení přístupu pouze k tomu, aby mohli provádět své úlohy. Tento ovládací prvek obsahuje taky doporučení pro implementaci [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md) k řízení přístupu k vašim prostředkům.
  
  - **Povolení MFA** – s povoleným [ověřováním MFA](https://www.microsoft.com/security/business/identity/mfa) jsou vaše účty bezpečnější a uživatelé se můžou i nadále ověřovat prakticky u všech aplikací s jednotným přihlašováním.
 

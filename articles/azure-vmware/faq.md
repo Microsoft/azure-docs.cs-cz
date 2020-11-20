@@ -2,18 +2,18 @@
 title: Nejčastější dotazy
 description: Obsahuje odpovědi na některé běžné dotazy týkající se řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/19/2020
 ms.author: dikamath
-ms.openlocfilehash: c9a8b5f9e02cc76789755bf81d309826de1459c5
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 0bc3e0ab5b3017c2d051113a57d79214ffce0836
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920589"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967342"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
-Odpovědi na nejčastější dotazy týkající se řešení Azure VMware.
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se řešení Azure VMware.
 
 ## <a name="general"></a>Obecné
 
@@ -33,7 +33,7 @@ Všechny služby Azure budou dostupné pro zákazníky řešení Azure VMware. O
 
 #### <a name="do-i-use-the-same-tools-that-i-use-now-to-manage-private-cloud-resources"></a>Používají se stejné nástroje, které teď používám ke správě prostředků privátního cloudu?
 
-Ano. Azure Portal se používá pro nasazení a řadu operací správy. vCenter a NSX Manager se používají ke správě prostředků vSphere a NSX-T.
+Ano. Azure Portal se používá pro nasazení a několik operací správy. vCenter a NSX Manager se používají ke správě prostředků vSphere a NSX-T.
 
 #### <a name="can-i-manage-a-private-cloud-with-my-on-premises-vcenter"></a>Můžu pomocí místního serveru vCenter spravovat privátní cloud?
 
@@ -53,7 +53,7 @@ Všechna cloudová prostředí se dodávají s VMware HCX, vSphere 5,5 nebo nov�
 
 #### <a name="what-does-the-change-control-process-look-like"></a>Jak proces řízení změn vypadá jako?
 
-Aktualizace provedené v samotné službě budou následovat po standardním procesu správy změn Microsoft Azure. Zákazníci zodpovídají za všechny úlohy správy úloh a přidružené procesy správy změn.
+Aktualizace provedené v samotné službě se řídí standardním procesem změny správy Microsoft Azure. Zákazníci zodpovídají za všechny úlohy správy úloh a přidružené procesy správy změn.
 
 #### <a name="how-is-this-different-from-azure-vmware-solution-by-cloudsimple"></a>Jak se to liší od řešení Azure VMware podle CloudSimple?
 
@@ -65,7 +65,7 @@ Díky novému řešení Azure VMware mají Microsoft a VMware přímé partnerst
 Ano, pokud je systém, na kterém je nainstalován, má přístup k privátnímu cloudu vCenter a používá veřejnou službu DNS k překladu názvů ESXi.
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Existují zvláštní pokyny k instalaci a používání VMRC s virtuálními počítači řešení Azure VMware?
-Ne, použijte [pokyny poskytované VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) a splní požadavky virtuálních počítačů uvedené v těchto pokynech. 
+Ne. Použijte [Pokyny dodávané společností VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) pro splnění požadavků virtuálních počítačů uvedených v těchto pokynech. 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Podporuje se VMware HCX na sítích VPN?
 Ne, z důvodu požadavků na šířku pásma a latenci.
@@ -74,7 +74,7 @@ Ne, z důvodu požadavků na šířku pásma a latenci.
 Služba Azure bastionu se doporučuje připojit k poli s odkazem, abyste zabránili odhalení řešení Azure VMware na Internet. Azure bastionu se nedá použít pro připojení k virtuálním počítačům řešení VMware Azure, protože se nejedná o objekty Azure IaaS.
 
 #### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Dá se Azure Load Balancer interní použít pro virtuální počítače řešení Azure VMware?
-Ne. Azure Load Balancer interní podporuje jenom virtuální počítače Azure s IaaS. Azure Load Balancer nepodporuje back-end fondy založené na IP adrese; jenom virtuální počítače Azure nebo objekty sady škálování virtuálních počítačů, ve kterých virtuální počítače řešení Azure VMware nejsou objekty Azure.
+Ne. Azure Load Balancer interní – podporuje jenom virtuální počítače Azure s IaaS. Azure Load Balancer nepodporuje back-end fondy založené na IP adrese; jenom virtuální počítače Azure nebo objekty sady škálování virtuálních počítačů, ve kterých virtuální počítače řešení Azure VMware nejsou objekty Azure.
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Může se pro připojení k řešení Azure VMware použít existující brána ExpressRoute?
 Ano, můžete použít existující bránu ExpressRoute pro připojení k řešení Azure VMware, pokud nepřekračuje limit čtyř ExpressRoute okruhů na jednu virtuální síť.  Pro přístup k řešení Azure VMware z místního prostředí prostřednictvím ExpressRoute ale musíte mít ExpressRoute Global Reach, protože brána ExpressRoute neposkytuje přechodné směrování mezi připojenými okruhy.
@@ -105,7 +105,7 @@ Každý hostitel ESXi v řešení Azure VMware je nakonfigurovaný pomocí síť
 
 Ano, všechna síti vSAN data se ve výchozím nastavení šifrují pomocí klíčů uložených v Azure Key Vault.
 
-#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendor-isv-backup-solutions"></a>Dokumenty, které CommVault, Veritas a Veeam, rozšiřují svá záložní řešení pro práci s řešeními Azure VMware. Co jsou to jiní řešení zálohování nezávislého výrobce softwaru (ISV)?
+#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendors-isvs-backup-solutions"></a>Dokumenty, které CommVault, Veritas a Veeam, rozšiřují svá záložní řešení pro práci s řešeními Azure VMware. Jaké jsou další řešení zálohování nezávislých výrobců softwaru (ISV)?
 
 V takovém případě je potřeba, aby jakékoli řešení zálohování, které používá VMware VADP s režimem přenosu HotAdd, fungovalo přímo ze seznamu řešení Azure VMware.
 
@@ -147,7 +147,7 @@ Ne. Vysoce koncoví hostitelé ESXi jsou rezervované pro použití v produkčn�
 
 #### <a name="what-versions-of-vmware-software-is-used-in-private-clouds"></a>Jaké verze softwaru VMware se používají v privátních cloudech?
 
-Privátní cloudy používají vSphere 6,7, síti vSAN 6,7, VMware HCX a verze 2,5 NSX-T.  
+Privátní cloudy používají vSphere 6,7 U3, síti vSAN 6,7 U3, VMware HCX a NSX-T 2,5.  Další informace najdete v tématu [požadavky na verzi softwaru VMware](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>Používají privátní cloudy VMware NSX?
 
@@ -163,7 +163,7 @@ Ne, nemusíte používat NSX místně.
 
 #### <a name="what-is-the-upgrade-and-update-schedule-for-vmware-software-in-a-private-cloud"></a>Jaký je plán upgradu a aktualizace softwaru VMware v privátním cloudu?
 
-Upgrade sady prostředků privátního cloudu se provádí za účelem zachování softwaru v rámci jedné verze nejnovější verze softwarové sady z VMware. Verze privátního cloudového softwaru se mohou lišit od nejaktuálnější verze jednotlivých softwarových komponent (ESXi, NSX-T, vCenter, síti vSAN).
+Upgrady sady prostředků privátního cloudu udržují software v rámci jedné verze nejnovější verze softwarového balíčku od VMware. Verze privátního cloudového softwaru se mohou lišit od nejaktuálnější verze jednotlivých softwarových komponent (ESXi, NSX-T, vCenter, síti vSAN).
 
 #### <a name="how-often-will-the-private-cloud-software-stack-be-updated"></a>Jak často bude balíček softwaru pro privátní cloud aktualizovaný?
 
@@ -237,7 +237,7 @@ Ano, zákazníci můžou nasazovat řešení Azure VMware v rámci předplatnéh
 
 Microsoft poskytuje podporu pro řešení Azure VMware. [Žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)můžete odeslat. 
 
-U předplatných spravovaných poskytovatelem CSP poskytuje poskytovatel řešení první úroveň podpory stejným způsobem jako CSP pro jiné služby Azure.
+U předplatných spravovaných poskytovatelem CSP nabízí první úroveň podpory poskytovatele řešení stejným způsobem jako CSP pro jiné služby Azure.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Jaké účty potřebuji k vytvoření privátního cloudu řešení Azure VMware?
 
@@ -245,7 +245,7 @@ Budete potřebovat účet Azure v předplatném Azure.
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Jsou řešení Red Hat podporovaná v řešení Azure VMware?
 
-Microsoft a Red Hat sdílejí integrovaný, společně umístěný tým podpory, který poskytuje jednotný kontaktní bod pro ekosystémy Red Hat běžící na platformě Azure.  Podobně jako jiné služby platformy Azure, které pracují s Red Hat Enterprise Linux, spadají řešení Azure VMware do cloudového přístupu a integrované podpory a Red Hat Enterprise Linux se podporuje pro provoz v rámci řešení Azure VMware v Azure.
+Microsoft a Red Hat sdílejí integrovaný a společně umístěný tým podpory, který poskytuje jednotný kontaktní bod pro ekosystémy Red Hat běžící na platformě Azure.  Podobně jako jiné služby platformy Azure, které pracují s Red Hat Enterprise Linux, spadají řešení Azure VMware do cloudového přístupu a integrovaného sjednocení podpory. Red Hat Enterprise Linux se podporuje pro běh řešení Azure VMware v rámci Azure.
 
 #### <a name="is-vmware-hcx-enterprise-available-and-if-so-how-much-does-it-cost"></a>Je k dispozici VMware HCX Enterprise, a pokud ano, jak spousta stojí?
 
@@ -260,7 +260,7 @@ Pro předplatná EA použijte následující postup. Nejdřív budete potřebova
 * [Azure smlouva Enterprise (EA)](../cost-management-billing/manage/ea-portal-agreements.md) s Microsoftem.
 * Účet Azure v předplatném Azure.
 
-Před vytvořením prostředku řešení Azure VMware odešlete lístek podpory, který bude mít přidělené vaše uzly. Ověření žádosti a přidělení uzlů trvá až pět pracovních dnů. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více uzlů, Projděte si stejný postup.
+Než budete moct vytvořit prostředek řešení Azure VMware, odešlete lístek podpory, který bude mít přidělené hostitele. Ověření a splnění vaší žádosti trvá až pět pracovních dnů. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více hostitelů, Projděte si stejný postup.
 
 1. V Azure Portal v části **pomoc a podpora** vytvořte **[novou žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support)** a zadejte pro lístek následující informace:
    - **Typ problému:** Odbornou
@@ -275,46 +275,47 @@ Před vytvořením prostředku řešení Azure VMware odešlete lístek podpory,
 
    - KONCEPCE nebo produkce 
    - Název oblasti
-   - Počet uzlů
+   - Počet hostitelů
    - Všechny další podrobnosti
 
    >[!NOTE]
-   >Řešení Azure VMware doporučuje minimálně tři uzly, aby se vymíchoval váš privátní cloud a pro redundanci N + 1 uzlů. 
+   >Řešení Azure VMware doporučuje minimálně tři hostitele, aby se nastavil váš privátní cloud a redundance N + 1 hostitelů. 
 
 1. Kliknutím na tlačítko **zkontrolovat + vytvořit** odešlete žádost.
 
    Může trvat až pět pracovních dnů, než se zástupce podpory potvrdí vaší žádosti.
 
    >[!IMPORTANT] 
-   >Pokud už máte nějaké řešení Azure VMware a požadujete další uzly, je potřeba si uvědomit, že k alokaci uzlů potřebujeme pět pracovních dnů. 
+   >Pokud už máte nějaké řešení Azure VMware a chcete požádat o další hostitele, musíme pro přidělení hostitelů potřebovat pět pracovních dnů. 
 
-1. Než budete moci zřídit své uzly, nezapomeňte zaregistrovat poskytovatele prostředků **Microsoft. AVS** v Azure Portal.  
+1. Než budete moci zřídit hostitele, nezapomeňte zaregistrovat poskytovatele prostředků **Microsoft. AVS** v Azure Portal.  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
+   ```
 
-   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md). 
+   Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md). 
 
-#### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
+#### <a name="are-reserved-instances-available-for-purchasing-through-the-cloud-solution-provider-csp-program"></a>Jsou rezervované instance dostupné k nákupu prostřednictvím programu Cloud Solution Provider (CSP)?
 
-Yes. CSP can purchase reserved instances for their customers. For more information, see the [Save costs with a reserved instance](reserved-instance.md) article. 
+Ano. CSP může koupit rezervované instance pro zákazníky. Další informace najdete v článku [úspory nákladů pomocí rezervované instance](reserved-instance.md) . 
 
-#### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
+#### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Nabízí řešení Azure VMware víceklientské prostředí pro hostování partnerů CSP?
 
-No. Currently Azure VMware Solution doesn't offer multi-tenancy.
+Ne. V současné době řešení Azure VMware nenabízí víceklientské prostředí.
 
-#### Will traffic between on-premises and Azure VMware Solution over ExpressRoute incur any outbound data transfer charge in the metered data plan?
+#### <a name="will-traffic-between-on-premises-and-azure-vmware-solution-over-expressroute-incur-any-outbound-data-transfer-charge-in-the-metered-data-plan"></a>Budou přenosy dat mezi místními a Azure VMware přes ExpressRoute účtovány za všechny poplatky za odchozí přenosy dat v plánu měřených dat?
 
-Traffic in the Azure VMware Solution ExpressRoute circuit isn't metered in any way. Traffic from your ExpressRoute circuit connecting to your on-premises to Azure is charged according to ExpressRoute pricing plans.
+Provoz v okruhu řešení Azure VMware ExpressRoute se nijak neměří. Provoz z okruhu ExpressRoute, který se připojuje k místnímu prostředí do Azure, se účtuje podle cenových tarifů ExpressRoute.
 
 
-## Customer communication
+## <a name="customer-communication"></a>Komunikace se zákazníky
 
-#### How can I receive an alert when Azure sends service health notifications to my Azure subscription?
+#### <a name="how-can-i-receive-an-alert-when-azure-sends-service-health-notifications-to-my-azure-subscription"></a>Jak obdržím výstrahu, když Azure pošle oznámení o stavu služby do předplatného Azure?
 
-Service issues, planned maintenance, health advisories, security advisories notifications are published through **Service Health** in the Azure portal.  You can take timely actions when you set up activity log alerts for these notifications. For more information, see [Create service health alerts using the Azure portal](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
+Problémy se službami, plánovaná údržba a Poradce pro stav, oznámení o výstrahách zabezpečení se zveřejňují prostřednictvím **Service Health** v Azure Portal.  Když nastavíte výstrahy protokolu aktivit pro tato oznámení, můžete provést včasné akce. Další informace najdete v tématu [vytvoření výstrah služby Service Health pomocí Azure Portal](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
 
-:::image type="content" source="media/service-health.png" alt-text="Screenshot of Service Health notifications":::
+:::image type="content" source="media/service-health.png" alt-text="Snímek obrazovky s oznámením o Service Health":::
 
 
 

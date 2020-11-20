@@ -9,12 +9,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
-ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41eb15a38c97532951723f12d1ac74c90c838eb1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85846842"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968192"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Přehled zón a záznamů DNS
 
@@ -93,7 +93,7 @@ Sériové číslo zóny v záznamu SOA není automaticky aktualizováno při pro
 [Záznamy SRV](https://en.wikipedia.org/wiki/SRV_record) jsou používány různými službami k určení umístění serveru. Při zadávání záznamu SRV v Azure DNS:
 
 * *Služba* a *protokol* musí být zadány jako součást názvu sady záznamů s předponami podtržítka.  Například " \_ SIP. \_ tcp.name '.  V případě záznamu ve vrcholu zóny není nutné \@ v názvu záznamu zadat ' ', stačí použít službu a protokol, například ' \_ SIP. \_ protokol TCP.
-* *Priorita*, *váha*, *port*a *cíl* jsou zadány jako parametry každého záznamu v sadě záznamů.
+* *Priorita*, *váha*, *port* a *cíl* jsou zadány jako parametry každého záznamu v sadě záznamů.
 
 ### <a name="txt-records"></a>Záznamy TXT
 
@@ -127,7 +127,7 @@ Ve výchozím nastavení používá Azure DNS PowerShell k blokování souběžn
 
 Na úrovni Azure DNS REST API jsou značky ETag zadány pomocí hlaviček protokolu HTTP.  Jejich chování je uvedené v následující tabulce:
 
-| Záhlaví | Chování |
+| Hlavička | Chování |
 | --- | --- |
 | Žádné |Úspěšné vložení (žádné kontroly ETag) |
 | If-Match \<etag> |Pokaždé, když existuje prostředek a shody ETag, se vloží jenom úspěšně. |
@@ -143,5 +143,5 @@ Při použití Azure DNS platí následující výchozí omezení:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete začít používat Azure DNS, přečtěte si, jak [vytvořit ZÓNU DNS](dns-getstarted-create-dnszone-portal.md) a [vytvořit záznamy DNS](dns-getstarted-create-recordset-portal.md).
+* Pokud chcete začít používat Azure DNS, přečtěte si, jak [vytvořit ZÓNU DNS](./dns-getstarted-portal.md) a [vytvořit záznamy DNS](./dns-getstarted-portal.md).
 * Pokud chcete migrovat existující zónu DNS, přečtěte si, jak [importovat a exportovat soubor zóny DNS](dns-import-export.md).

@@ -3,16 +3,17 @@ title: Referenční architektury pro databáze Oracle v Azure | Microsoft Docs
 description: Odkazuje na architektury pro spouštění Oracle Database Enterprise Edition databází v Microsoft Azure Virtual Machines.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: d2a6954ffdb9f992ada7fc24dbcc161658b21d23
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 86f3ef8ccac83cdc939cff5572dd81e78137d396
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480424"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968719"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenční architektury pro Oracle Database Enterprise Edition v Azure
 

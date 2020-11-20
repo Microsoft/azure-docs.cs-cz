@@ -7,12 +7,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 580c378df5fc3912aa540b5d85adf99bc42605e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f50c84212e62fae378d9d95e8990e084c82bb99a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511938"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967206"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Použití filtrů připojení IP pro Azure IoT DPS
 
@@ -22,7 +22,7 @@ Důležitým aspektem každého řešení IoT je zabezpečení. Někdy je potře
 
 Existují dva konkrétní případy použití, kdy je dobré zablokovat připojení ke koncovému bodu DPS z určitých IP adres:
 
-* Vaše služba DPS by měla přijímat přenosy jenom ze zadaného rozsahu IP adres a všechny ostatní zamítnout. To může být nutné třeba v případě, že pomocí služby DPS v kombinaci s [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) vytváříte privátní připojení mezi službou DPS a zařízeními.
+* Vaše služba DPS by měla přijímat přenosy jenom ze zadaného rozsahu IP adres a všechny ostatní zamítnout. To může být nutné třeba v případě, že pomocí služby DPS v kombinaci s [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) vytváříte privátní připojení mezi službou DPS a zařízeními.
 
 * Potřebujete zamítnout přenosy z IP adres, které správce DPS označil za podezřelé.
 
@@ -48,7 +48,7 @@ Po výběru možnosti **Přidat pravidlo filtru IP adres** vyplňte zobrazená p
 
 ![Po výběru možnosti Přidat pravidlo filtru IP adres](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* Zadejte **název** pravidla filtru IP adres. Musí se jednat o jedinečný alfanumerický řetězec s délkou do 128 znaků, ve kterém se nerozlišují malá a velká písmena. Přípustné jsou jenom 7bitové alfanumerické znaky ASCII a znaky `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`.
+* Zadejte **název** pravidla filtru IP adres. Musí se jednat o jedinečný alfanumerický řetězec s délkou do 128 znaků, ve kterém se nerozlišují malá a velká písmena. Přípustné jsou jenom 7bitové alfanumerické znaky ASCII a znaky `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`.
 
 * Zadejte jednu IPv4 adresu nebo blok IP adres v zápisu CIDR. Například adresa 192.168.100.0/22 v zápisu CIDR odpovídá 1024 IPv4 adresám od 192.168.100.0 do 192.168.103.255.
 
@@ -74,7 +74,7 @@ Pokud chcete některé pravidlo filtru IP adres odstranit, vyberte na přísluš
 
 ## <a name="update-ip-filter-rules-in-code"></a>Aktualizace pravidel filtru IP adres v kódu
 
-Filtr IP adres služby DPS můžete načíst a upravit pomocí koncového bodu REST poskytovatele prostředků Azure. Projděte si část `properties.ipFilterRules` v tématu o [metodě createorupdate](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate).
+Filtr IP adres služby DPS můžete načíst a upravit pomocí koncového bodu REST poskytovatele prostředků Azure. Projděte si část `properties.ipFilterRules` v tématu o [metodě createorupdate](/rest/api/iot-dps/iotdpsresource/createorupdate).
 
 V současné době nepodporujeme aktualizaci pravidel filtru IP adres služby DPS v prostředí Azure CLI ani Azure PowerShell, ale můžete ji provést pomocí šablon Azure Resource Manageru. Pokyny k používání šablon Resource Manageru najdete v tématu o šablonách [Azure Resource Manageru](../azure-resource-manager/templates/overview.md). Následující příklady šablon ukazují, jak vytvořit, upravit a odstranit pravidlo filtru IP adres služby DPS.
 
@@ -136,7 +136,7 @@ Aktualizujte atributy pravidla filtru IP adres této šablony podle svých poža
 | Atribut                | Popis |
 | ------------------------ | ----------- |
 | **FilterName**           | Zadejte název pravidla filtru IP adres. Musí se jednat o jedinečný alfanumerický řetězec s délkou do 128 znaků, ve kterém se nerozlišují malá a velká písmena. Přípustné jsou jenom 7bitové alfanumerické znaky ASCII a znaky {-, :, /, \', ., +, %, _, #, *, ?, !, (, ), ,, =, @, ;, '}. |
-| **Akce**               | Jako akci pro pravidlo filtru IP adres můžete zadat hodnotu **Přijmout** nebo **Odmítnout** . |
+| **Akce**               | Jako akci pro pravidlo filtru IP adres můžete zadat hodnotu **Přijmout** nebo  **Odmítnout** . |
 | **ipMask**               | Zadejte jednu IPv4 adresu nebo blok IP adres v zápisu CIDR. Například adresa 192.168.100.0/22 v zápisu CIDR odpovídá 1024 IPv4 adresám od 192.168.100.0 do 192.168.103.255. |
 
 

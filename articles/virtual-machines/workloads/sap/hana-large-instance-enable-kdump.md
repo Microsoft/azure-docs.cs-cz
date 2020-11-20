@@ -7,18 +7,19 @@ author: prtyag
 manager: hrushib
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8f573f5f00d266fe5d27857cc9e244d136f61a5
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: b6afcfe7684102b451860d9916d849842489cace
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379260"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967699"
 ---
 # <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>Kdump pro SAP HANA ve velkých instancích Azure (HLI)
 
@@ -28,7 +29,7 @@ V těchto případech může dojít k potížím s operačním systémem nebo ap
 
 ## <a name="enable-kdump-service"></a>Povolit službu kdump
 
-Tento dokument popisuje podrobnosti o tom, jak povolit službu kdump ve velké instanci Azure HANA ( **typ I a typ II** ).
+Tento dokument popisuje podrobnosti o tom, jak povolit službu kdump ve velké instanci Azure HANA (**typ I a typ II**).
 
 ## <a name="supported-skus"></a>Podporované SKU
 
@@ -61,7 +62,7 @@ Tento dokument popisuje podrobnosti o tom, jak povolit službu kdump ve velké i
 |   Typ II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
 |   Typ II                   |  SuSE        |   SLES 12 SP4         |  S576m      |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Služba kdump používá `/var/crash` adresář k zápisu výpisů paměti, ujistěte se, že oddíl odpovídající tomuto adresáři má dostatek místa pro ukládání výpisů paměti.
 

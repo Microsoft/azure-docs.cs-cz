@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 3e06c79b9cbd5643d119974a4ed8628ea1b1cd4f
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 9eee315aac28847710662b463add7d6e68d8d505
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096755"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967291"
 ---
 # <a name="x509-certificate-attestation"></a>Atestace certifikátu X.509
 
@@ -26,7 +26,7 @@ Certifikáty X. 509 mohou být uloženy v modulu hardwarového zabezpečení HSM
 
 ## <a name="x509-certificates"></a>Certifikáty X. 509
 
-Používání certifikátů X. 509 jako mechanismu ověřování je skvělým způsobem, jak škálovat produkční prostředí a zjednodušit zřizování zařízení. Certifikáty X. 509 jsou obvykle uspořádány v řetězu certifikátů, ve kterém jsou jednotlivé certifikáty v řetězu podepsány privátním klíčem dalšího certifikátu, a tak dále, s ukončením kořenového certifikátu podepsaného svým držitelem. Toto uspořádání vytvoří delegovaný řetěz důvěryhodnosti z kořenového certifikátu vygenerovaného důvěryhodnou kořenovou certifikační autoritou (CA) prostřednictvím každé zprostředkující certifikační autority na certifikát "list" koncového prvku "na zařízení. Další informace najdete v tématu [ověřování zařízení pomocí certifikátů certifikační autority X. 509](/azure/iot-hub/iot-hub-x509ca-overview). 
+Používání certifikátů X. 509 jako mechanismu ověřování je skvělým způsobem, jak škálovat produkční prostředí a zjednodušit zřizování zařízení. Certifikáty X. 509 jsou obvykle uspořádány v řetězu certifikátů, ve kterém jsou jednotlivé certifikáty v řetězu podepsány privátním klíčem dalšího certifikátu, a tak dále, s ukončením kořenového certifikátu podepsaného svým držitelem. Toto uspořádání vytvoří delegovaný řetěz důvěryhodnosti z kořenového certifikátu vygenerovaného důvěryhodnou kořenovou certifikační autoritou (CA) prostřednictvím každé zprostředkující certifikační autority na certifikát "list" koncového prvku "na zařízení. Další informace najdete v tématu [ověřování zařízení pomocí certifikátů certifikační autority X. 509](../iot-hub/iot-hub-x509ca-overview.md). 
 
 Řetěz certifikátů často představuje logickou nebo fyzickou hierarchii přidruženou k zařízením. Například výrobce může:
 - vydání certifikátu kořenové certifikační autority podepsané svým držitelem
@@ -34,11 +34,11 @@ Používání certifikátů X. 509 jako mechanismu ověřování je skvělým zp
 - k vygenerování jedinečného certifikátu zprostředkující certifikační autority pro každou výrobní linku v závodě použijte certifikát každého objektu pro vytváření.
 - a nakonec použijte certifikát produkčního řádku k vygenerování jedinečného certifikátu zařízení (koncová entita) pro každé zařízení, které je na řádku vyrobeno. 
 
-Další informace najdete v tématu [konceptuální porozumění certifikátům CA X. 509 v oboru IoT](/azure/iot-hub/iot-hub-x509ca-concept). 
+Další informace najdete v tématu [konceptuální porozumění certifikátům CA X. 509 v oboru IoT](../iot-hub/iot-hub-x509ca-concept.md). 
 
 ### <a name="root-certificate"></a>Kořenový certifikát
 
-Kořenový certifikát je certifikát X. 509 podepsaný svým držitelem, který představuje certifikační autoritu (CA). Je to trvají nebo kotva vztahu důvěryhodnosti řetězu certifikátů. Kořenové certifikáty mohou být samostatně vydávány organizací nebo zakoupeny od kořenové certifikační autority. Další informace najdete v tématu [Získání certifikátů certifikační autority X. 509](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). Kořenový certifikát může být také označován jako certifikát kořenové certifikační autority.
+Kořenový certifikát je certifikát X. 509 podepsaný svým držitelem, který představuje certifikační autoritu (CA). Je to trvají nebo kotva vztahu důvěryhodnosti řetězu certifikátů. Kořenové certifikáty mohou být samostatně vydávány organizací nebo zakoupeny od kořenové certifikační autority. Další informace najdete v tématu [Získání certifikátů certifikační autority X. 509](../iot-hub/iot-hub-security-x509-get-started.md#get-x509-ca-certificates). Kořenový certifikát může být také označován jako certifikát kořenové certifikační autority.
 
 ### <a name="intermediate-certificate"></a>Zprostředkující certifikát
 
@@ -56,7 +56,7 @@ Certifikát listu nebo certifikát koncové entity identifikuje držitele certif
 
 Listové certifikáty používané s [jednotlivou](./concepts-service.md#individual-enrollment) položkou registrace mají požadavek, aby byl **název subjektu** nastavený na ID registrace jednotlivé položky registrace. Listové certifikáty, které se používají se záznamem [skupiny](./concepts-service.md#enrollment-group) registrací, by měly mít **název subjektu** nastavený na požadované ID zařízení, které se zobrazí v **záznamech registrace** pro ověřené zařízení ve skupině pro registraci.
 
-Další informace najdete v tématu [ověřování zařízení podepsaných pomocí certifikátů certifikační autority X. 509](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+Další informace najdete v tématu [ověřování zařízení podepsaných pomocí certifikátů certifikační autority X. 509](../iot-hub/iot-hub-x509ca-overview.md#authenticating-devices-signed-with-x509-ca-certificates).
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Řízení přístupu zařízení ke službě zřizování pomocí certifikátů X. 509
 

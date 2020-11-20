@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: fc9c5e1f5922543ea14b13e3e5b424190dbbfb7a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cb1e2337d5a5214c4e748e5b0f45f223b8bcb445
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892192"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967988"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Rozšíření Log Analytics pro virtuální počítače pro Linux
 
@@ -32,7 +33,7 @@ Protokoly Azure Monitor poskytují možnosti monitorování, upozorňování a n
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -105,7 +106,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad |
+| Name | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | vydavatel | Microsoft. EnterpriseCloud. Monitoring |
@@ -176,7 +177,7 @@ Při umístění JSON rozšíření v kořenovém adresáři šablony obsahuje n
 
 ## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
 
-Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření virtuálního počítače agenta Log Analytics do existujícího virtuálního počítače. Hodnotu *myworkspacekey svým* níže nahraďte klíčem pracovního prostoru a hodnotou *MYWORKSPACEID* s vaším ID pracovního prostoru. Tyto hodnoty najdete v pracovním prostoru Log Analytics v Azure Portal v části *Upřesnit nastavení* . 
+Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření virtuálního počítače agenta Log Analytics do existujícího virtuálního počítače. Hodnotu *myworkspacekey svým* níže nahraďte klíčem pracovního prostoru a hodnotou *MYWORKSPACEID* s vaším ID pracovního prostoru. Tyto hodnoty najdete v pracovním prostoru Log Analytics v Azure Portal v části *Upřesnit nastavení*. 
 
 ```azurecli
 az vm extension set \

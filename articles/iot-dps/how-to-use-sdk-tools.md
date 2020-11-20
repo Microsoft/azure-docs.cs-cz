@@ -7,21 +7,21 @@ ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 28d682a9ca698afb72d08b4d111562c725d46996
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 984d38752df93f233c6d87458e3c9ba713696177
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530841"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967240"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Jak používat nástroje, které nabízí sady SDK ke zjednodušení vývoje pro zřizování
 IoT Hub Device Provisioning Service zjednodušuje proces zřizování s nulovým [přízřízením](about-iot-dps.md#provisioning-process) za běhu zabezpečeným a škálovatelným způsobem.  Vyžaduje se ověření zabezpečení ve formě certifikátu X. 509 nebo čipu TPM (Trusted Platform Module).  Společnost Microsoft také spolupracuje s [dalšími bezpečnostními partnery](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) , aby vylepšila jistotu při zabezpečení nasazení IoT. Princip hardwarového požadavku na zabezpečení může být pro vývojáře poměrně náročný. K dispozici je sada sad SDK služby zřizování Azure IoT, aby vývojáři mohli používat pohodlí při psaní klientů, kteří komunikují se službou zřizování. Sady SDK také poskytují ukázky pro běžné scénáře a také sadu nástrojů pro zjednodušení ověření zabezpečení při vývoji.
 
 ## <a name="trusted-platform-module-tpm-simulator"></a>Simulátor čipu TPM (Trusted Platform Module)
-[Čip TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security) může odkazovat na standard pro bezpečné ukládání klíčů pro ověřování platformy nebo může odkazovat na vstupně-výstupní rozhraní, které slouží k interakci s moduly, které implementují Standard. Čipy TPM může existovat jako diskrétní hardware, integrovaný hardware, firmware nebo software založený na firmwaru nebo softwaru.  V produkčním prostředí je čip TPM umístěný na zařízení, a to buď jako diskrétní hardware, integrovaný hardware, nebo na základě firmwaru. Ve fázi testování se vývojářům poskytuje softwarový simulátor čipu TPM.  Tento simulátor je k dispozici pouze pro vývoj na platformě Windows pro nyní.
+[Čip TPM](./concepts-service.md#attestation-mechanism) může odkazovat na standard pro bezpečné ukládání klíčů pro ověřování platformy nebo může odkazovat na vstupně-výstupní rozhraní, které slouží k interakci s moduly, které implementují Standard. Čipy TPM může existovat jako diskrétní hardware, integrovaný hardware, firmware nebo software založený na firmwaru nebo softwaru.  V produkčním prostředí je čip TPM umístěný na zařízení, a to buď jako diskrétní hardware, integrovaný hardware, nebo na základě firmwaru. Ve fázi testování se vývojářům poskytuje softwarový simulátor čipu TPM.  Tento simulátor je k dispozici pouze pro vývoj na platformě Windows pro nyní.
 
 Postup pro použití simulátoru TPM:
-1. [Připravte vývojové prostředí](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) a naklonujte úložiště GitHub:
+1. [Připravte vývojové prostředí](./quick-enroll-device-x509-java.md) a naklonujte úložiště GitHub:
    ```
    git clone https://github.com/Azure/azure-iot-sdk-java.git
    ```
@@ -30,7 +30,7 @@ Postup pro použití simulátoru TPM:
 4. Nechte simulátor běžet na pozadí během procesu zřizování, aby získal ID registrace a ověřovací klíč.  Obě hodnoty jsou platné pouze pro jednu instanci běhu.
 
 ## <a name="x509-certificate-generator"></a>Generátor certifikátů X. 509
-[Certifikáty X. 509](https://docs.microsoft.com/azure/iot-dps/concepts-security#x509-certificates) se dají použít jako mechanismus ověřování, který umožňuje škálovat produkční prostředí a zjednodušit zřizování zařízení.  Existuje [několik způsobů](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) , jak získat certifikát X. 509:
+[Certifikáty X. 509](./concepts-x509-attestation.md#x509-certificates) se dají použít jako mechanismus ověřování, který umožňuje škálovat produkční prostředí a zjednodušit zřizování zařízení.  Existuje [několik způsobů](../iot-hub/iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) , jak získat certifikát X. 509:
 * V produkčním prostředí doporučujeme koupit certifikát CA X. 509 od veřejné kořenové certifikační autority.
 * Pro testovací prostředí můžete vygenerovat kořenový certifikát X. 509 nebo řetěz certifikátů X. 509 pomocí:
     * OpenSSL: můžete použít skripty pro generování certifikátů:
@@ -45,7 +45,7 @@ Sady SDK poskytují generátor certifikátů X. 509 s emulátorem kostky, který
 Zatímco emulátor kostky v současné době výstupuje kořenový certifikát, zprostředkující certifikát, listový certifikát a přidružený privátní klíč.  Kořenový certifikát nebo zprostředkující certifikát však nelze použít k podepsání samostatného listového certifikátu.  Pokud máte v úmyslu otestovat scénář registrace skupiny, který používá jeden podpisový certifikát k podepsání listových certifikátů více zařízení, můžete použít OpenSSL k vytvoření řetězce certifikátů.
 
 Generování certifikátu X. 509 pomocí tohoto generátoru:
-1. [Připravte vývojové prostředí](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) a naklonujte úložiště GitHub:
+1. [Připravte vývojové prostředí](./quick-enroll-device-x509-java.md) a naklonujte úložiště GitHub:
    ```
    git clone https://github.com/Azure/azure-iot-sdk-java.git
    ```
@@ -59,11 +59,11 @@ Generování certifikátu X. 509 pomocí tohoto generátoru:
    java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
    ```
 7. Po zobrazení výzvy můžete volitelně zadat _běžný název_ pro vaše certifikáty.
-8. Nástroj místně vygeneruje **klientský certifikát**, **privátní klíč certifikátu klienta**, **zprostředkující certifikát**a **kořenový certifikát**.
+8. Nástroj místně vygeneruje **klientský certifikát**, **privátní klíč certifikátu klienta**, **zprostředkující certifikát** a **kořenový certifikát**.
 
-Certifikát **klienta** je listový certifikát na zařízení.  V klientovi zařízení je nutný **certifikát klienta** a přidružený **privátní klíč certifikátu klienta** . V závislosti na zvoleném jazyce se mechanismus, který se má umístit do klientské aplikace, může lišit.  Další informace najdete v tématu [rychlé starty](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509) v tématu Vytvoření simulovaného zařízení pomocí X. 509 pro další informace.
+Certifikát **klienta** je listový certifikát na zařízení.  V klientovi zařízení je nutný **certifikát klienta** a přidružený **privátní klíč certifikátu klienta** . V závislosti na zvoleném jazyce se mechanismus, který se má umístit do klientské aplikace, může lišit.  Další informace najdete v tématu [rychlé starty](./quick-create-simulated-device-x509.md) v tématu Vytvoření simulovaného zařízení pomocí X. 509 pro další informace.
 
-Kořenový certifikát nebo zprostředkující se dají použít k vytvoření skupiny registrací nebo jednotlivé registrace prostřednictvím [kódu programu](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments-sdks) nebo pomocí [portálu](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
+Kořenový certifikát nebo zprostředkující se dají použít k vytvoření skupiny registrací nebo jednotlivé registrace prostřednictvím [kódu programu](./how-to-manage-enrollments-sdks.md) nebo pomocí [portálu](./how-to-manage-enrollments.md).
 
 ## <a name="next-steps"></a>Další kroky
 * Vývoj s využitím [sady Azure IoT SDK]( https://github.com/Azure/azure-iot-sdks) pro Azure IoT Hub a Azure IoT Hub Device Provisioning Service

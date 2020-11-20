@@ -3,6 +3,7 @@ title: Nastavení vývojářů aplikací řízených distribucí (ADCD) v IBM zD
 description: Spusťte prostředí IBM Z vývojového a testovacího prostředí (zD&T) na Azure Virtual Machines (VM).
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcd354b906b4d6c92d8b3186fc8e09c94a31ca55
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87052411"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968396"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Nastavení vývojářů aplikací řízených distribucí (ADCD) v IBM zD&T V1
 
@@ -52,17 +53,17 @@ Je vyžadován přístup k médiu ADCD. Níže uvedený postup předpokládá, �
 
 2. Vyberte možnost **Stažení softwaru** a **přístup k médiím**.
 
-3. Vyberte **nabídku programu a číslo smlouvy**a klikněte na **pokračovat**.
+3. Vyberte **nabídku programu a číslo smlouvy** a klikněte na **pokračovat**.
 
 4. Zadejte popis části nebo číslo součásti a klikněte na tlačítko **Finder**.
 
 5. Volitelně můžete kliknutím na seznam abecedních objednávek zobrazit a zobrazit theproduct podle názvu.
 
-6. Vyberte možnost **všechny operační systémy** v **poli operační systém**a **všechny jazyky** v **poli jazyky**. Pak klikněte na tlačítko **Přejít**.
+6. Vyberte možnost **všechny operační systémy** v **poli operační systém** a **všechny jazyky** v **poli jazyky**. Pak klikněte na tlačítko **Přejít**.
 
 7. Kliknutím na **vybrat jednotlivé soubory** rozbalte seznam a zobrazte jednotlivá média ke stažení.
 
-8. Ověřte balíčky, které chcete stáhnout, vyberte **Stáhnout**a pak soubory Stáhněte do požadovaného adresáře.
+8. Ověřte balíčky, které chcete stáhnout, vyberte **Stáhnout** a pak soubory Stáhněte do požadovaného adresáře.
 
 ## <a name="upload-the-adcd-packages"></a>Nahrát ADCD balíčky
 
@@ -111,13 +112,13 @@ Dalším krokem je konfigurace zD&T, aby se používaly nahrané balíčky. Proc
 
     ![Úvodní obrazovka k IBM zD&T Enterprise Edition](media/02-welcome.png)
 
-3. Na stránce **rychlé zprovoznění** v části **Konfigurovat**vyberte **úložiště imagí**.
+3. Na stránce **rychlé zprovoznění** v části **Konfigurovat** vyberte **úložiště imagí**.
 
      ![Rychlé zprovoznění obrazovka IBM zD&T Enterprise Edition](media/03-quickstart.png)
 
 4. Na stránce **Konfigurovat úložiště imagí** vyberte **SSH Protokol FTP (File Transfer Protocol)**.
 
-5. Jako **název hostitele**zadejte **localhost** a zadejte cestu k adresáři, kam jste nahráli obrázky. Například/home/MyUserID/ZDT/adcd/nov2017/volumes.
+5. Jako **název hostitele** zadejte **localhost** a zadejte cestu k adresáři, kam jste nahráli obrázky. Například/home/MyUserID/ZDT/adcd/nov2017/volumes.
 
 6. Zadejte **ID uživatele** a **heslo** pro virtuální počítač. Nepoužívejte ID uživatele a heslo ZD&T.
 
@@ -127,13 +128,13 @@ Dalším krokem je konfigurace zD&T, aby se používaly nahrané balíčky. Proc
 
 Dalším krokem je konfigurace cílového prostředí zD&T. Toto emulované hostované prostředí je místo, kde se vaše image spouští.
 
-1. Na stránce **rychlé zprovoznění** v části **Konfigurovat**vyberte **cílová prostředí**.
+1. Na stránce **rychlé zprovoznění** v části **Konfigurovat** vyberte **cílová prostředí**.
 
 2. Na stránce **Konfigurace cílových prostředí** vyberte **Přidat cíl**.
 
 3. Vyberte **Linux**. IBM podporuje dva typy prostředí, Linux a Cloud (OpenStack), ale tato ukázka běží na Linux.
 
-4. Na stránce **Přidat cílové prostředí** pro **název hostitele**zadejte **localhost**. Nechejte **port SSH** nastavený na **22**.
+4. Na stránce **Přidat cílové prostředí** pro **název hostitele** zadejte **localhost**. Nechejte **port SSH** nastavený na **22**.
 
 5. Do pole **popisek cílového prostředí** zadejte popisek, například **MyCICS.**
 
@@ -143,7 +144,7 @@ Dalším krokem je konfigurace cílového prostředí zD&T. Toto emulované host
 
 Po dokončení předchozích kroků konfigurace je třeba nakonfigurovat zD&T pro použití balíčků a cílového prostředí. Znovu použijete proces úložiště imagí v zD&T, který umožňuje připojení a používání imagí. Může použít SSH nebo FTP.
 
-1. Na stránce **rychlé zprovoznění** v části **Konfigurovat**vyberte možnost **ADCD**. Zobrazí se sada instrukcí, která informuje o krocích, které je třeba provést před tím, než bude možné připojit balíček ADCD. Vysvětluje, proč jsme jmenovali cílový adresář jako dříve.
+1. Na stránce **rychlé zprovoznění** v části **Konfigurovat** vyberte možnost **ADCD**. Zobrazí se sada instrukcí, která informuje o krocích, které je třeba provést před tím, než bude možné připojit balíček ADCD. Vysvětluje, proč jsme jmenovali cílový adresář jako dříve.
 
 2. Za předpokladu, že všechny Image byly nahrány do správných adresářů, klikněte na odkaz **obrázek z ADCD** zobrazený v pravém dolním rohu (viz krok 7 na následujícím snímku obrazovky).
 

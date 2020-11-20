@@ -3,12 +3,12 @@ title: Koncept – integrace nasazení řešení Azure VMware v architektuře hu
 description: Přečtěte si o integraci nasazení řešení Azure VMware v architektuře hub a paprsků v Azure.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: da4a5f5ec6fa2b0a2733e8d1bf0243ec75f38d55
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577715"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967444"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrace řešení Azure VMware v architektuře hub a paprsků
 
@@ -38,7 +38,7 @@ Architektura má následující hlavní součásti:
 
 - **Místní lokalita:** Místní datacentrum (y) zákazníka připojené k Azure prostřednictvím připojení ExpressRoute
 
-- **Privátní cloud řešení Azure VMware:** Řešení Azure VMware SDDC vytvořené jedním nebo několika clustery vSphere, přičemž každý z nich má maximálně 16 uzlů.
+- **Privátní cloud řešení Azure VMware:** Řešení Azure VMware SDDC vytvořené jedním nebo několika clustery vSphere, přičemž každý z nich má maximálně 16 hostitelů.
 
 - **ExpressRoute brána:** Umožňuje komunikaci mezi privátním cloudem řešení Azure VMware, sdílenými službami v centrální virtuální síti a úlohami spuštěnými ve virtuálních sítích s paprsky.
 

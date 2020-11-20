@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: daf54b64e33b83b909fe91455cee2f5c1ec27d3d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c288f59b1cb9a85ed4bc978d1c3fba18ba30b572
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960316"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968753"
 ---
 # <a name="contact-microsoft-support"></a>Kontaktovat podporu Microsoftu
 
@@ -21,7 +21,7 @@ StorSimple Device Manager poskytuje možnost **zaprotokolovat novou žádost o p
 * Jak spravovat životní cyklus žádosti o podporu v rámci portálu.
 * Jak spustit relaci podpory v rozhraní Windows PowerShell zařízení StorSimple.
 
-Před vytvořením Support request si přečtěte [SLA a informace o řadě StorSimple 8000](https://msdn.microsoft.com/library/mt433077.aspx) .
+Před vytvořením Support request si přečtěte [SLA a informace o řadě StorSimple 8000](./storsimple-8000-support-options.md) .
 
 ## <a name="create-a-support-request"></a>Vytvoření žádosti o podporu
 
@@ -47,7 +47,7 @@ V závislosti na [plánu podpory](https://azure.microsoft.com/support/plans/)mů
     2. Určete, jestli problém souvisí se zařízením nebo službou StorSimple Device Manager.
     3. Vyberte **kategorii** pro tento problém a zadejte další **Podrobnosti** o problému.
     4. Zadejte datum a čas spuštění problému.
-    5. V části **nahrání souboru**klikněte na ikonu složky a přejděte do balíčku pro podporu.
+    5. V části **nahrání souboru** klikněte na ikonu složky a přejděte do balíčku pro podporu.
     6. Podívejte se na **sdílené diagnostické informace**.
     7. Klikněte na **Next** (Další).
 
@@ -55,7 +55,7 @@ V závislosti na [plánu podpory](https://azure.microsoft.com/support/plans/)mů
 
 4. V okně **Nová žádost o podporu** klikněte na **Krok 3 kontaktní informace**. V okně **kontaktní informace** proveďte následující kroky:
 
-   1. V **možnostech kontaktů**zadejte preferovanou metodu kontaktu (telefon nebo e-mail) a jazyk. Doba odezvy se automaticky vybere na základě vašeho plánu předplatného.
+   1. V **možnostech kontaktů** zadejte preferovanou metodu kontaktu (telefon nebo e-mail) a jazyk. Doba odezvy se automaticky vybere na základě vašeho plánu předplatného.
    2. V kontaktní informace zadejte své jméno, e-mail, nepovinný kontakt, země/oblast. Zaškrtněte políčko **Uložit změny kontaktů pro budoucí žádosti o podporu** .
    3. Klikněte na **Vytvořit**.
    

@@ -1,17 +1,17 @@
 ---
 title: Jak povolit prostředek řešení Azure VMware
-description: Přečtěte si, jak odeslat žádost o podporu pro povolení prostředku řešení Azure VMware. Ve svém stávajícím privátním cloudu řešení Azure VMware si také můžete vyžádat další uzly.
+description: Přečtěte si, jak odeslat žádost o podporu pro povolení prostředku řešení Azure VMware. V existujícím privátním cloudu řešení Azure VMware si také můžete vyžádat další hostitele.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 8e1b891559cb2d01adc9fdf834ef3c9714fe1233
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: cd58611f77c2f2fb1694597fc9ef049420093ccc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888432"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967359"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Jak povolit prostředek řešení Azure VMware
-Přečtěte si, jak odeslat žádost o podporu pro povolení prostředku [Řešení Azure VMware](introduction.md) . Ve svém stávajícím privátním cloudu řešení Azure VMware si také můžete vyžádat další uzly.
+Přečtěte si, jak odeslat žádost o podporu pro povolení prostředku [Řešení Azure VMware](introduction.md) . V existujícím privátním cloudu řešení Azure VMware si také můžete vyžádat další hostitele.
 
 ## <a name="eligibility-criteria"></a>Kritéria způsobilosti
 
@@ -22,7 +22,7 @@ Budete potřebovat účet Azure v předplatném Azure. Předplatné Azure musí 
 
 
 ## <a name="enable-azure-vmware-solution-for-ea-customers"></a>Povolit řešení Azure VMware pro zákazníky se smlouvou EA
-Před vytvořením prostředku řešení Azure VMware budete muset odeslat lístek podpory, abyste měli své uzly přidělené. Jakmile tým podpory obdrží vaši žádost, trvá vám až pět pracovních dní, aby vaši žádost zkontroloval a rozdělil vaše uzly. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více uzlů, Projděte si stejný postup.
+Před vytvořením prostředku řešení Azure VMware budete muset odeslat lístek podpory, který bude mít přidělené hostitele. Jakmile tým podpory obdrží vaši žádost, trvá vám až pět pracovních dní, aby vaši žádost zkontroloval a rozdělila své hostitele. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více hostitelů, Projděte si stejný postup.
 
 
 1. V Azure Portal v části **pomoc a podpora** vytvořte **[novou žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support)** a zadejte pro lístek následující informace:
@@ -38,20 +38,20 @@ Před vytvořením prostředku řešení Azure VMware budete muset odeslat líst
 
    - KONCEPCE nebo produkce 
    - Název oblasti
-   - Počet uzlů
+   - Počet hostitelů
    - Všechny další podrobnosti
 
    >[!NOTE]
-   >Řešení Azure VMware doporučuje minimálně tři uzly, aby se vymíchoval váš privátní cloud a pro redundanci N + 1 uzlů. 
+   >Řešení Azure VMware doporučuje minimálně tři hostitele, aby se nastavil váš privátní cloud a redundance N + 1 hostitelů. 
 
 1. Kliknutím na tlačítko **zkontrolovat + vytvořit** odešlete žádost.
 
    Může trvat až pět pracovních dnů, než se zástupce podpory potvrdí vaší žádosti.
 
    >[!IMPORTANT] 
-   >Pokud už máte nějaké řešení Azure VMware a požadujete další uzly, je potřeba si uvědomit, že k alokaci uzlů potřebujeme pět pracovních dnů. 
+   >Pokud už máte nějaké řešení Azure VMware a požadujete další hostitele, je potřeba si uvědomit, že k přidělení hostitelů potřebujeme pět pracovních dnů. 
 
-1. Než budete moci zřídit své uzly, nezapomeňte zaregistrovat poskytovatele prostředků **Microsoft. AVS** v Azure Portal.  
+1. Než budete moci zřídit hostitele, nezapomeňte zaregistrovat poskytovatele prostředků **Microsoft. AVS** v Azure Portal.  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
@@ -99,21 +99,21 @@ Po nakonfigurování plánu Azure a povolení oprávnění vSphere RBAC jako CSP
 
    - KONCEPCE nebo produkce 
    - Název oblasti
-   - Počet uzlů
+   - Počet hostitelů
    - Všechny další podrobnosti
    - Je určeno k hostování více zákazníků?
 
    >[!NOTE]
-   >Řešení Azure VMware doporučuje minimálně tři uzly, aby se vymíchoval váš privátní cloud a pro redundanci N + 1 uzlů. 
+   >Řešení Azure VMware doporučuje minimálně tři hostitele, aby se nastavil váš privátní cloud a redundance N + 1 hostitelů. 
 
 1. Kliknutím na tlačítko **zkontrolovat + vytvořit** odešlete žádost.
 
    Může trvat až pět pracovních dnů, než se zástupce podpory potvrdí vaší žádosti.
 
    >[!IMPORTANT] 
-   >Pokud už máte nějaké řešení Azure VMware a požadujete další uzly, je potřeba si uvědomit, že k alokaci uzlů potřebujeme pět pracovních dnů. 
+   >Pokud už máte nějaké řešení Azure VMware a požadujete další hostitele, je potřeba si uvědomit, že k přidělení hostitelů potřebujeme pět pracovních dnů. 
 
-1. Po přidání do plánu Azure a s povolenou kvótou může zákazník nebo Partnerská aplikace nasadit privátní cloud řešení Azure VMware prostřednictvím Azure Portal. Než budete moci zřídit své uzly, nezapomeňte zaregistrovat poskytovatele prostředků **Microsoft. AVS** v Azure Portal.  
+1. Po přidání do plánu Azure a s povolenou kvótou může zákazník nebo Partnerská aplikace nasadit privátní cloud řešení Azure VMware prostřednictvím Azure Portal. Než budete moci zřídit hostitele, nezapomeňte zaregistrovat poskytovatele prostředků **Microsoft. AVS** v Azure Portal.  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>

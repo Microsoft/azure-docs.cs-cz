@@ -3,6 +3,7 @@ title: Úlohy IBM v Azure | Microsoft Docs
 description: Použijte emulátor sálového počítače a další služby od partnerů Microsoftu k opětovnému hostování úloh IBM z/OS pomocí Microsoft Azure.
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: e99685b4d1476ee527b9eb7f1332f6a6beece669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efc4f6293623278314df3ac55b2fecae2e28f7d8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499968"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968345"
 ---
 # <a name="ibm-workloads-on-azure"></a>Úlohy IBM v Azure
 

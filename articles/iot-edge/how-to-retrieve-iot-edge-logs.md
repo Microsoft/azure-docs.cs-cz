@@ -4,18 +4,18 @@ description: IoT Edge načítání protokolů modulu a nahrání do Azure Blob S
 author: v-tcassi
 manager: philmea
 ms.author: v-tcassi
-ms.date: 09/14/2020
+ms.date: 11/12/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 64264028706c1493f687f032a7ec39e69188bd45
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 97cdc4ad0b1d5e7dfb6642fa0163f810be5d7171
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171913"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966917"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Načtení protokolů z nasazení IoT Edge
 
@@ -141,7 +141,15 @@ az iot hub invoke-module-method \
 
 Použijte metodu **UploadModuleLogs** Direct k odeslání požadovaných protokolů do zadaného kontejneru Azure Blob Storage.
 
-Tato metoda přijímá datovou část JSON podobnou **GetModuleLogs**a přidání klíče "sasUrl":
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+> [!NOTE]
+> Pokud chcete nahrávat protokoly ze zařízení za zařízením brány, budete muset mít [proxy rozhraní API a moduly BLOB Storage](how-to-configure-api-proxy-module.md) nakonfigurované na nejvyšší vrstvě zařízení. Tyto moduly směrují protokoly ze zařízení nižší vrstvy přes vaše zařízení brány do úložiště v cloudu.
+
+::: moniker-end
+
+Tato metoda přijímá datovou část JSON podobnou **GetModuleLogs** a přidání klíče "sasUrl":
 
 ```json
     {
@@ -260,6 +268,14 @@ V Azure Portal volejte metodu s názvem metody `UploadModuleLogs` a následujíc
 ## <a name="upload-support-bundle-diagnostics"></a>Nahrát podporu diagnostiky sady prostředků
 
 Pomocí metody **UploadSupportBundle** Direct nahrajte do dostupného kontejneru Azure Blob Storage a nahrajte do něj soubor zip IoT Edge protokolů. Tato přímá metoda spustí na [`iotedge support-bundle`](./troubleshoot.md#gather-debug-information-with-support-bundle-command) zařízení IoT Edge příkaz pro získání protokolů.
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+> [!NOTE]
+> Pokud chcete nahrávat protokoly ze zařízení za zařízením brány, budete muset mít [proxy rozhraní API a moduly BLOB Storage](how-to-configure-api-proxy-module.md) nakonfigurované na nejvyšší vrstvě zařízení. Tyto moduly směrují protokoly ze zařízení nižší vrstvy přes vaše zařízení brány do úložiště v cloudu.
+
+::: moniker-end
 
 Tato metoda přijímá datovou část JSON s následujícím schématem:
 

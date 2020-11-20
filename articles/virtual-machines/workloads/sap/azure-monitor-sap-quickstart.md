@@ -5,14 +5,15 @@ author: sameeksha91
 ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 4b0e54c434f68a8a26f49b6ba0c1010e93d36ad6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739897"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968583"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Nasazení Azure Monitor pro řešení SAP pomocí Azure Portal
 
@@ -24,13 +25,13 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-monitoring-resource"></a>Vytvořit prostředek monitorování
 
-1. Vyberte **Azure monitor pro řešení SAP** z **Azure Marketplace** .
+1. Vyberte **Azure monitor pro řešení SAP** z **Azure Marketplace**.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-1.png" alt-text="Image zobrazuje výběr Azure Monitor pro řešení SAP, které nabízí Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-1.png":::
 
 2. Na kartě **základy** zadejte požadované hodnoty. V případě potřeby můžete použít existující pracovní prostor Log Analytics.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-2.png" alt-text="Image zobrazuje výběr Azure Monitor pro řešení SAP, které nabízí Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-2.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-2.png" alt-text="Zobrazení možností konfigurace Azure Portal." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-2.png":::
 
 3. Při výběru virtuální sítě se ujistěte, že jsou systémy, které chcete monitorovat, dosažitelné v rámci této virtuální sítě. 
 
@@ -43,7 +44,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 1. Vyberte kartu **zprostředkovatel** a přidejte zprostředkovatele, které chcete konfigurovat. Po nasazení prostředku monitorování můžete přidat více poskytovatelů nebo je přidat. 
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="Image zobrazuje výběr Azure Monitor pro řešení SAP, které nabízí Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="Zobrazí kartu poskytovatel, kde můžete přidat další poskytovatele Azure Monitor pro řešení SAP." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
 
 2. Vyberte **Přidat poskytovatele** a v rozevíracím seznamu zvolte **SAP HANA** . 
 
@@ -54,13 +55,13 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 4. Zadejte název tenanta databáze, který chcete použít. Můžete si ale vybrat libovolného klienta. doporučujeme používat **SYSTEMDB** , protože umožňuje širší spektrum oblastí monitorování. 
 
-5. Zadejte číslo portu SQL přidružené k vaší databázi HANA. Číslo portu by mělo být ve formátu **[3]**  +  **[instance #]**  +  **[13]** . Například 30013. 
+5. Zadejte číslo portu SQL přidružené k vaší databázi HANA. Číslo portu by mělo být ve formátu **[3]**  +  **[instance #]**  +  **[13]**. Například 30013. 
 
 6. Zadejte uživatelské jméno databáze, které chcete použít. Zajistěte, aby měl uživatel databáze přiřazené role **monitorování** a **katalog** . 
 
-7. Po dokončení vyberte **Přidat poskytovatele** . V případě potřeby pokračujte v přidávání dalších zprostředkovatelů nebo kliknutím na tlačítko **zkontrolovat + vytvořit** dokončete nasazení.
+7. Po dokončení vyberte **Přidat poskytovatele**. V případě potřeby pokračujte v přidávání dalších zprostředkovatelů nebo kliknutím na tlačítko **zkontrolovat + vytvořit** dokončete nasazení.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Image zobrazuje výběr Azure Monitor pro řešení SAP, které nabízí Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Obrázek možností konfigurace při přidávání informací o poskytovateli." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
 ### <a name="high-availability-cluster-pacemaker-provider"></a>Poskytovatel clusteru s vysokou dostupností (Pacemaker)
 
@@ -73,9 +74,9 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
  
 3. Zadejte ID systému (SID), název hostitele a název clusteru.
 
-4. Po dokončení vyberte **Přidat poskytovatele** . V případě potřeby pokračujte v přidávání dalších zprostředkovatelů nebo kliknutím na tlačítko **zkontrolovat + vytvořit** dokončete nasazení.
+4. Po dokončení vyberte **Přidat poskytovatele**. V případě potřeby pokračujte v přidávání dalších zprostředkovatelů nebo kliknutím na tlačítko **zkontrolovat + vytvořit** dokončete nasazení.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Image zobrazuje výběr Azure Monitor pro řešení SAP, které nabízí Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Image zobrazuje možnosti související s poskytovatelem Pacemaker clusteru HA." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
 
 
 ### <a name="microsoft-sql-server-provider"></a>Poskytovatel Microsoft SQL Server
@@ -111,9 +112,9 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 3. Vyplňte pole pomocí informací přidružených k vašemu Microsoft SQL Server. 
 
-4. Po dokončení vyberte **Přidat poskytovatele** . V případě potřeby pokračujte v přidávání dalších zprostředkovatelů nebo kliknutím na tlačítko **zkontrolovat + vytvořit** dokončete nasazení.
+4. Po dokončení vyberte **Přidat poskytovatele**. V případě potřeby pokračujte v přidávání dalších zprostředkovatelů nebo kliknutím na tlačítko **zkontrolovat + vytvořit** dokončete nasazení.
 
-     :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Image zobrazuje výběr Azure Monitor pro řešení SAP, které nabízí Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
+     :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Image zobrazuje informace související s přidáním poskytovatele Microsoft SQL Server." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

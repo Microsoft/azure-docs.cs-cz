@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 23afa82ffda5341242c01cbe024fb71f482345d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f71cf82b675222836a73eec12d68bd8f62a5538
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710919"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967274"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple jako cíl zálohování s NetBackup
 
@@ -79,7 +79,7 @@ StorSimple nabízí tyto výhody:
 
 I když StorSimple představuje dva hlavní scénáře nasazení (primární cíl zálohování a sekundární cíl zálohování), v podstatě je to jednoduché, blokové úložné zařízení. StorSimple provádí všechna komprimaci a odstraňování duplicitních dat. Bez problémů odesílá a načítá data mezi cloudem a systémem souborů a aplikací.
 
-Další informace o StorSimple najdete v tématu [StorSimple 8000 series: řešení hybridního cloudového úložiště](storsimple-overview.md). Můžete si také projít [specifikacemi řady Technical StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
+Další informace o StorSimple najdete v tématu [StorSimple 8000 series: řešení hybridního cloudového úložiště](storsimple-overview.md). Můžete si také projít [specifikacemi řady Technical StorSimple 8000](./storsimple-8000-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
 > Použití zařízení StorSimple jako cíle zálohování je podporované jenom pro StorSimple 8000 Update 3 a novější verze.
@@ -102,7 +102,7 @@ V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízen�
 | Scénář zálohování  | Kapacita místního úložiště  | Kapacita cloudového úložiště  |
 |---|---|---|
 | Primární záloha  | Poslední zálohy uložené v místním úložišti pro rychlé obnovení, aby splňovaly cíl bodu obnovení (RPO) | Historie zálohování (RPO) se vejde do kapacity cloudu |
-| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | Není k dispozici  |
+| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | –  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako primární cíl zálohování
 
@@ -170,7 +170,7 @@ Aby se řešení provádělo optimálně, doporučujeme dodržovat tyto osvědč
 
 ### <a name="deploy-storsimple"></a>Nasazení StorSimple
 
-Podrobné pokyny k nasazení StorSimple najdete v tématu [nasazení místního zařízení StorSimple](storsimple-deployment-walkthrough-u2.md).
+Podrobné pokyny k nasazení StorSimple najdete v tématu [nasazení místního zařízení StorSimple](./storsimple-8000-deployment-walkthrough-u2.md).
 
 ### <a name="deploy-netbackup"></a>Nasazení NetBackup
 
@@ -185,7 +185,7 @@ V této části předvádíme některé příklady konfigurace. Následující p
 | StorSimple úlohy nasazení  | Další komentáře |
 |---|---|
 | Nasaďte vaše místní zařízení StorSimple. | Podporované verze: aktualizace 3 a novější verze. |
-| Zapněte cíl zálohování. | Pomocí těchto příkazů můžete zapnout nebo vypnout režim cíle zálohování a získat stav. Další informace najdete v tématu [vzdálené připojení k zařízení StorSimple](storsimple-remote-connect.md).</br> Zapnutí režimu zálohování: `Set-HCSBackupApplianceMode -enable` . </br> Vypnutí režimu `Set-HCSBackupApplianceMode -disable` zálohování: </br> Získání aktuálního stavu nastavení režimu zálohování: `Get-HCSBackupApplianceMode` . |
+| Zapněte cíl zálohování. | Pomocí těchto příkazů můžete zapnout nebo vypnout režim cíle zálohování a získat stav. Další informace najdete v tématu [vzdálené připojení k zařízení StorSimple](./storsimple-8000-remote-connect.md).</br> Zapnutí režimu zálohování: `Set-HCSBackupApplianceMode -enable` . </br> Vypnutí režimu `Set-HCSBackupApplianceMode -disable` zálohování: </br> Získání aktuálního stavu nastavení režimu zálohování: `Get-HCSBackupApplianceMode` . |
 | Vytvořte pro svazek společný kontejner svazků, ve kterém jsou uložena data záloh. Všechna data v kontejneru svazků mají za následek odstranění duplicitních dat. | Kontejnery svazků StorSimple definují domény odstranění duplicit.  |
 | Vytvořte StorSimple svazky. | Vytvářejte svazky s velikostí co nejblíže předpokládanému využití, protože velikost svazku ovlivňuje dobu trvání snímku cloudu. Informace o tom, jak velikost svazku získat, najdete v tématu o [zásadách uchovávání informací](#retention-policies).</br> </br> Použijte StorSimple vrstvené svazky a zaškrtněte políčko **použít tento svazek pro archivní data, ke kterým se přistupuje méně často** . </br> Použití pouze místně připojených svazků není podporováno. |
 | Vytvořte jedinečné zásady zálohování StorSimple pro všechny cílové svazky zálohy. | Zásada zálohování StorSimple definuje skupinu konzistence svazku. |
@@ -212,16 +212,16 @@ Nastavte své řešení podle pokynů v následujících částech.
 - Zakažte defragmentaci Windows serveru na svazcích StorSimple.
 - Zakažte indexování Windows serveru na svazcích StorSimple.
 - Spusťte kontrolu antivirové ochrany na zdrojovém hostiteli (nikoli na svazcích StorSimple).
-- Vypněte výchozí [údržbu Windows serveru](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) ve Správci úloh. Udělejte to jedním z následujících způsobů:
+- Vypněte výchozí [údržbu Windows serveru](/windows/win32/w8cookbook/automatic-maintenance) ve Správci úloh. Udělejte to jedním z následujících způsobů:
   - Vypněte Konfigurátor údržby ve Windows Plánovač úloh.
-  - Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) ze systému Windows Sysinternals. Po stažení PsExec spusťte Windows PowerShell jako správce a zadejte:
+  - Stáhněte si [PsExec](/sysinternals/downloads/psexec) ze systému Windows Sysinternals. Po stažení PsExec spusťte Windows PowerShell jako správce a zadejte:
     ```powershell
     psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
     ```
 
 ### <a name="storsimple-best-practices"></a>Osvědčené postupy pro StorSimple
 
--   Ujistěte se, že se zařízení StorSimple aktualizovalo na [aktualizaci 3 nebo novější](storsimple-install-update-3.md).
+-   Ujistěte se, že se zařízení StorSimple aktualizovalo na [aktualizaci 3 nebo novější](./index.yml).
 -   Izolujte provoz iSCSI a Cloud. Pro přenosy mezi StorSimple a záložním serverem používejte vyhrazená připojení iSCSI.
 -   Ujistěte se, že vaše zařízení StorSimple je vyhrazený cíl zálohování. Smíšené úlohy se nepodporují, protože mají vliv na RTO a RPO.
 
@@ -265,7 +265,7 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 
 ### <a name="to-set-up-netbackup-storage"></a>Nastavení úložiště NetBackup
 
-1.  V konzole pro správu NetBackup vyberte **média a zařízení Správa zařízení**  >  **Devices**  >  **fondy disků**. V Průvodci konfigurací fondu disků vyberte typ serveru úložiště **AdvancedDisk**a pak vyberte **Další**.
+1.  V konzole pro správu NetBackup vyberte **média a zařízení Správa zařízení**  >  **Devices**  >  **fondy disků**. V Průvodci konfigurací fondu disků vyberte typ serveru úložiště **AdvancedDisk** a pak vyberte **Další**.
 
     ![Konzola pro správu NetBackup, Průvodce konfigurací fondu disků](./media/storsimple-configure-backup-target-using-netbackup/nbimage1.png)
 
@@ -304,7 +304,7 @@ Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
 |---|---|---|
 | Týdně (týdny 1-4) | Sobota | Monday-Friday |
 | Měsíčně  | Sobota  |   |
-| Ročně | Sobota  |   |
+| Roční | Sobota  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování NetBackup
 
@@ -312,7 +312,7 @@ Následující sekvence předpokládá, že NetBackup a cílový hostitel jsou n
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-backup-job"></a>Přiřazení svazků StorSimple do úlohy zálohování NetBackup
 
-1. V konzole pro správu NetBackup vyberte **Správa NetBackup**, klikněte pravým tlačítkem na **zásady**a pak vyberte **Nová zásada**.
+1. V konzole pro správu NetBackup vyberte **Správa NetBackup**, klikněte pravým tlačítkem na **zásady** a pak vyberte **Nová zásada**.
 
    ![Konzola pro správu NetBackup, vytvoření nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
@@ -324,7 +324,7 @@ Následující sekvence předpokládá, že NetBackup a cílový hostitel jsou n
 
    ![NetBackup konzoly pro správu, vyberte typ zálohování.](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
 
-4. Chcete-li nastavit typ zásady, vyberte možnost **standardní**a potom vyberte možnost **Další**.
+4. Chcete-li nastavit typ zásady, vyberte možnost **standardní** a potom vyberte možnost **Další**.
 
    ![Konzola pro správu NetBackup, výběr typu zásad](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
@@ -346,7 +346,7 @@ Následující sekvence předpokládá, že NetBackup a cílový hostitel jsou n
 
    ![NetBackup konzoly pro správu a plánuje nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
 
-10. Klikněte pravým tlačítkem na možnost **diferenciál – Inc**, vyberte možnost **Kopírovat do nového**a pak vyberte **OK**.
+10. Klikněte pravým tlačítkem na možnost **diferenciál – Inc**, vyberte možnost **Kopírovat do nového** a pak vyberte **OK**.
 
     ![Konzola pro správu NetBackup, kopírování plánu do nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage14.png)
 
@@ -415,7 +415,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 | Týden 3 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 4 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Měsíčně | StorSimple měsíčně |   |   |   |   |   |
-| Ročně | StorSimple ročně  |   |   |   |   |   |
+| Roční | StorSimple ročně  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Přiřazení svazků StorSimple k úloze archivace a duplikování NetBackup
@@ -430,19 +430,19 @@ Po definování počátečních fondů disků musíte definovat tři další zá
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Přiřazení svazků StorSimple k úloze archivace a duplikování NetBackup
 
-1. V konzole pro správu NetBackup vyberte **Storage**  >  **Zásady životního cyklu**úložiště úložiště  >  **nové zásady životního cyklu úložiště**.
+1. V konzole pro správu NetBackup vyberte **Storage**  >  **Zásady životního cyklu** úložiště úložiště  >  **nové zásady životního cyklu úložiště**.
 
    ![Konzola pro správu NetBackup, nová zásada životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
 2. Zadejte název snímku a pak vyberte **Přidat**.
 
-3. V dialogovém okně **Nová operace** na kartě **vlastnosti** pro **operace**vyberte možnost **zálohování**. Vyberte hodnoty, které chcete pro **cílové úložiště**, **typ uchování**a **dobu uchování**. Vyberte **OK**.
+3. V dialogovém okně **Nová operace** na kartě **vlastnosti** pro **operace** vyberte možnost **zálohování**. Vyberte hodnoty, které chcete pro **cílové úložiště**, **typ uchování** a **dobu uchování**. Vyberte **OK**.
 
    ![Konzola pro správu NetBackup, dialogové okno Nová operace](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 
    Tím se definuje první operace zálohování a úložiště.
 
-4. Výběrem této možnost zvýrazníte předchozí operaci a pak vyberete **Přidat**. V dialogovém okně **změnit operaci úložiště** vyberte požadované hodnoty pro **cílové úložiště**, **typ uchování**a **dobu uchování**.
+4. Výběrem této možnost zvýrazníte předchozí operaci a pak vyberete **Přidat**. V dialogovém okně **změnit operaci úložiště** vyberte požadované hodnoty pro **cílové úložiště**, **typ uchování** a **dobu uchování**.
 
    ![Konzola pro správu NetBackup, dialogové okno změnit operaci úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
 
@@ -454,9 +454,9 @@ Po definování počátečních fondů disků musíte definovat tři další zá
 
    ![Konzola pro správu NetBackup, přidání zásad v dialogovém okně nové zásady životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
 
-7. Až dokončíte definování zásad uchovávání SLP, v části **zásady**Definujte zásadu zálohování podle kroků popsaných v části [přiřazení svazků StorSimple k úloze zálohování NetBackup](#assigning-storsimple-volumes-to-a-netbackup-backup-job).
+7. Až dokončíte definování zásad uchovávání SLP, v části **zásady** Definujte zásadu zálohování podle kroků popsaných v části [přiřazení svazků StorSimple k úloze zálohování NetBackup](#assigning-storsimple-volumes-to-a-netbackup-backup-job).
 
-8. V části **plány**v dialogovém okně **změnit plán** klikněte pravým tlačítkem na **úplný**a pak vyberte **změnit**.
+8. V části **plány** v dialogovém okně **změnit plán** klikněte pravým tlačítkem na **úplný** a pak vyberte **změnit**.
 
    ![Konzola pro správu NetBackup, dialogové okno změnit plán](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
 
@@ -464,7 +464,7 @@ Po definování počátečních fondů disků musíte definovat tři další zá
 
    ![Konzola pro správu NetBackup, přepsání výběru úložiště zásad](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
 
-10. Vyberte **OK**a opakujte postup pro plán přírůstkového zálohování.
+10. Vyberte **OK** a opakujte postup pro plán přírůstkového zálohování.
 
     ![Konzola pro správu NetBackup, dialogové okno změnit plán pro přírůstkové zálohování](./media/storsimple-configure-backup-target-using-netbackup/nbimage28.png)
 
@@ -531,20 +531,20 @@ Havárie může být způsobeno nejrůznějšími faktory. V následující tabu
 
 | Scénář | Dopad | Postup obnovení | Poznámky |
 |---|---|---|---|
-| Selhání zařízení StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nahraďte neúspěšné zařízení a proveďte [převzetí služeb při selhání StorSimple a zotavení po havárii](storsimple-device-failover-disaster-recovery.md). | Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se načítají z cloudu do nového zařízení. Všechny operace jsou v cloudových rychlostech. Proces opakovaného prohledání indexu a katalogu může způsobit, že se všechny zálohovací sklady kontrolují a nastavují z vrstvy cloudu na úroveň místního zařízení, což může být časově náročný proces. |
+| Selhání zařízení StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nahraďte neúspěšné zařízení a proveďte [převzetí služeb při selhání StorSimple a zotavení po havárii](./storsimple-8000-device-failover-disaster-recovery.md). | Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se načítají z cloudu do nového zařízení. Všechny operace jsou v cloudových rychlostech. Proces opakovaného prohledání indexu a katalogu může způsobit, že se všechny zálohovací sklady kontrolují a nastavují z vrstvy cloudu na úroveň místního zařízení, což může být časově náročný proces. |
 | Selhání serveru NetBackup | Operace zálohování a obnovení jsou přerušeny. | Znovu sestavte záložní server a proveďte obnovení databáze. | Server NetBackup je nutné znovu sestavit nebo obnovit na webu pro zotavení po havárii. Obnovte databázi do nejnovějšího bodu. Pokud obnovená databáze NetBackup není synchronizovaná s nejnovějšími úlohami zálohování, je nutné indexování a vytváření katalogu. Tento index a proces opětovného prohledání katalogu může způsobit, že se všechny zálohovací sklady prohledají a nastavují z vrstvy cloudu na úroveň místního zařízení. Díky tomu je tato operace časově náročná. |
 | Selhání lokality, které vede ke ztrátě záložního serveru i StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a pak obnovte NetBackup. | Nejprve obnovte StorSimple a pak obnovte NetBackup. Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se z cloudu načtou do nového zařízení. Všechny operace jsou v cloudových rychlostech. |
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 Následující dokumenty byly odkazovány na tento článek:
 
-- [StorSimple instalaci funkce Multipath I/O](storsimple-configure-mpio-windows-server.md)
-- [Scénáře úložiště: dynamické zajišťování](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
-- [Použití jednotek GPT](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
-- [Nastavení stínových kopií pro sdílené složky](https://technet.microsoft.com/library/cc771893.aspx)
+- [StorSimple instalaci funkce Multipath I/O](./storsimple-8000-configure-mpio-windows-server.md)
+- [Scénáře úložiště: dynamické zajišťování](/windows-hardware/drivers/storage/thin-provisioning)
+- [Použití jednotek GPT](/previous-versions/windows/hardware/design/dn653580(v=vs.85)#EHD)
+- [Nastavení stínových kopií pro sdílené složky](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771893(v=ws.11))
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o tom, jak [obnovit ze zálohovacího skladu](storsimple-restore-from-backup-set-u2.md).
-- Další informace o tom, jak provést [převzetí služeb při selhání a zotavení po havárii zařízení](storsimple-device-failover-disaster-recovery.md).
+- Přečtěte si další informace o tom, jak [obnovit ze zálohovacího skladu](./storsimple-8000-restore-from-backup-set-u2.md).
+- Další informace o tom, jak provést [převzetí služeb při selhání a zotavení po havárii zařízení](./storsimple-8000-device-failover-disaster-recovery.md).
