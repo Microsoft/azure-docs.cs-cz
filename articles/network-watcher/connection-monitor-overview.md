@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 5dbb8d508fe824d0264043625c988f43092f3f78
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 13b379fd3b4f788d79cbb6a9bf6d40cb1693eaf9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699232"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948971"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Monitorování připojení k síti pomocí monitorování připojení
 
@@ -34,7 +34,7 @@ Tady jsou některé případy použití pro monitorování připojení:
 - Vaše hybridní aplikace potřebuje připojení ke koncovému bodu Azure Storage. Vaše místní lokalita a vaše aplikace Azure se připojí ke stejnému koncovému bodu Azure Storage. Chcete porovnat latence místního serveru s latencí aplikace Azure.
 - Chcete kontrolovat konektivitu mezi místními nastaveními a virtuálními počítači Azure, které hostují vaši cloudovou aplikaci.
 
-Monitorování připojení spojuje nejlepší ze dvou funkcí: funkce [monitorování připojení Network Watcher (Classic)](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) a služba Network Performance Monitor (npm) pro monitorování [připojení služby](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity), [monitorování ExpressRoute](https://docs.microsoft.com/azure/expressroute/how-to-npm)a funkce [monitorování výkonu](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) .
+Monitorování připojení spojuje nejlepší ze dvou funkcí: funkce [monitorování připojení Network Watcher (Classic)](./network-watcher-monitoring-overview.md#monitor-communication-between-a-virtual-machine-and-an-endpoint) a služba Network Performance Monitor (npm) pro monitorování [připojení služby](../azure-monitor/insights/network-performance-monitor-service-connectivity.md), [monitorování ExpressRoute](../expressroute/how-to-npm.md)a funkce [monitorování výkonu](../azure-monitor/insights/network-performance-monitor-performance-monitor.md) .
 
 Tady jsou některé výhody monitorování připojení:
 
@@ -65,7 +65,7 @@ Monitorování připojení spoléhá na zjednodušené spustitelné soubory, aby
 
 Pokud chcete, aby monitorování připojení rozpoznalo vaše virtuální počítače Azure jako zdroje monitorování, nainstalujte na ně rozšíření Network Watcher agenta virtuálního počítače. Toto rozšíření se označuje také jako *rozšíření Network Watcher*. Virtuální počítače Azure vyžadují, aby rozšíření aktivovalo komplexní monitorování a další pokročilé funkce. 
 
-Rozšíření Network Watcher můžete nainstalovat při [vytváření virtuálního počítače](https://docs.microsoft.com/azure/network-watcher/connection-monitor#create-the-first-vm). Můžete také samostatně instalovat, konfigurovat a řešit potíže s rozšířením Network Watcher pro [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux) a [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows).
+Rozšíření Network Watcher můžete nainstalovat při [vytváření virtuálního počítače](./connection-monitor.md#create-the-first-vm). Můžete také samostatně instalovat, konfigurovat a řešit potíže s rozšířením Network Watcher pro [Linux](../virtual-machines/extensions/network-watcher-linux.md) a [Windows](../virtual-machines/extensions/network-watcher-windows.md).
 
 Pravidla pro skupinu zabezpečení sítě (NSG) nebo bránu firewall můžou blokovat komunikaci mezi zdrojem a cílem. Monitorování připojení tento problém detekuje a zobrazí se jako diagnostická zpráva v topologii. Pokud chcete povolit monitorování připojení, zajistěte, aby NSG a pravidla brány firewall povolovaly pakety přes TCP nebo ICMP mezi zdrojem a cílem.
 
@@ -73,7 +73,7 @@ Pravidla pro skupinu zabezpečení sítě (NSG) nebo bránu firewall můžou blo
 
 Pokud chcete, aby monitorování připojení rozpoznalo vaše místní počítače jako zdroje pro monitorování, nainstalujte na počítače agenta Log Analytics. Pak povolte řešení Network Performance Monitor. Tito agenti jsou propojeni s Log Analytics pracovními prostory, takže musíte nastavit ID a primární klíč pracovního prostoru, aby mohli agenti spustit monitorování.
 
-Chcete-li nainstalovat agenta Log Analytics pro počítače se systémem Windows, přečtěte si téma [Azure monitor rozšíření virtuálních počítačů pro systém Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows).
+Chcete-li nainstalovat agenta Log Analytics pro počítače se systémem Windows, přečtěte si téma [Azure monitor rozšíření virtuálních počítačů pro systém Windows](../virtual-machines/extensions/oms-windows.md).
 
 Pokud cesta obsahuje brány firewall nebo síťová virtuální zařízení (síťová virtuální zařízení), ujistěte se, že cíl je dosažitelný.
 
@@ -81,7 +81,7 @@ Pokud cesta obsahuje brány firewall nebo síťová virtuální zařízení (sí
 
 Všechna předplatná, která mají virtuální síť, jsou povolená s Network Watcher. Když ve svém předplatném vytvoříte virtuální síť, Network Watcher se automaticky povolí v oblasti a předplatném virtuální sítě. Toto automatické povolování nijak neovlivní vaše prostředky ani se neúčtují. Ujistěte se, že ve vašem předplatném není explicitně zakázaná Network Watcher. 
 
-Další informace najdete v tématu [povolení Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
+Další informace najdete v tématu [povolení Network Watcher](./network-watcher-create.md).
 
 ## <a name="create-a-connection-monitor"></a>Vytvoření monitorování připojení 
 
@@ -111,7 +111,7 @@ Monitorování připojení zahrnuje následující entity:
 
  ![Diagram znázorňující monitorování připojení, definování vztahu mezi testovacími skupinami a testy](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-Monitorování připojení můžete vytvořit pomocí [Azure Portal](connection-monitor-preview-create-using-portal.md) nebo [ARMClient](connection-monitor-preview-create-using-arm-client.md)
+Monitorování připojení můžete vytvořit pomocí [Azure Portal](./connection-monitor-create-using-portal.md) nebo [ARMClient](./connection-monitor-create-using-template.md)
 
 Všechny zdroje, cíle a konfigurace testu, které přidáte do testovací skupiny, se rozdělují na jednotlivé testy. Tady je příklad rozdělení zdrojů a cílů:
 
@@ -213,7 +213,7 @@ Chcete-li zobrazit pouze neúspěšné testy v monitorování připojení, kde j
 Chcete-li zobrazit pouze neúspěšné testy v monitorování připojení, kde je cíl outlook.office365.com:
 1. Změňte zobrazení na **test**.
 1. U filtru založeného na stavu vyberte **selhání**.
-1. Do vyhledávacího pole zadejte *Outlook.office365.com*
+1. Do vyhledávacího pole zadejte *Office.Live.com*
 1. V **oblasti** filtr na nejvyšší úrovni vyberte **cílová místa**.
   
   :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="Snímek obrazovky znázorňující zobrazení, které se filtruje tak, aby se zobrazily jenom neúspěšné testy pro cíl Outlook.Office365.com" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
@@ -348,5 +348,5 @@ Pro sítě, jejichž zdroje jsou virtuálními počítači Azure, se dají zjist
 
 ## <a name="next-steps"></a>Další kroky
     
-   * Naučte [se vytvářet monitorování připojení pomocí Azure Portal](connection-monitor-preview-create-using-portal.md)  
-   * Naučte [se vytvářet monitorování připojení pomocí ARMClient](connection-monitor-preview-create-using-arm-client.md) .  
+   * Naučte [se vytvářet monitorování připojení pomocí Azure Portal](./connection-monitor-create-using-portal.md)  
+   * Naučte [se vytvářet monitorování připojení pomocí ARMClient](./connection-monitor-create-using-template.md) .

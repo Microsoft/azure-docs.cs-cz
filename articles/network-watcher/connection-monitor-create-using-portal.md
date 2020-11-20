@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 8c4df64334957a78fcf05c11625335214f8e032a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: d652f1eae62270fa8968d64a2bd15a1261dca673
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699368"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949186"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Vytvoření monitorování v monitorování připojení pomocí Azure Portal
 
@@ -102,7 +102,7 @@ V Azure Portal pro vytvoření testovací skupiny v monitorování připojení z
 
 * **Zakázat testovací skupinu**: Toto políčko můžete zaškrtnout, pokud chcete zakázat monitorování pro všechny zdroje a cíle, které určuje skupina testů. Ve výchozím nastavení je tento výběr vymazán.
 * **Název**: pojmenujte testovací skupinu.
-* **Zdroje**: Pokud jsou agenti nainstalováni, můžete zadat jak virtuální počítače Azure, tak i místní počítače jako zdroje. Informace o instalaci agenta pro zdroj najdete v tématu [Instalace agentů monitorování](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
+* **Zdroje**: Pokud jsou agenti nainstalováni, můžete zadat jak virtuální počítače Azure, tak i místní počítače jako zdroje. Informace o instalaci agenta pro zdroj najdete v tématu [Instalace agentů monitorování](./connection-monitor-overview.md#install-monitoring-agents).
    * Pokud chcete vybrat agenty Azure, vyberte kartu **koncové body Azure** . Tady vidíte jenom virtuální počítače, které jsou svázané s oblastí, kterou jste zadali při vytváření monitorování připojení. Ve výchozím nastavení jsou virtuální počítače seskupené do předplatného, ke kterému patří. Tyto skupiny jsou sbaleny. 
    
        Můžete přejít k podrobnostem z úrovně **předplatného** na jiné úrovně v hierarchii:
@@ -117,7 +117,7 @@ V Azure Portal pro vytvoření testovací skupiny v monitorování připojení z
 
    * Pokud chcete vybrat místní agenty, vyberte kartu **koncové body mimo Azure** . Ve výchozím nastavení se agenti seskupují do pracovních prostorů podle oblasti. U všech těchto pracovních prostorů je Network Performance Monitor nakonfigurovaný. 
    
-       Pokud potřebujete přidat Network Performance Monitor do svého pracovního prostoru, Získejte ho od [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Informace o tom, jak přidat Network Performance Monitor, najdete v tématu [monitorování řešení v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solutions). 
+       Pokud potřebujete přidat Network Performance Monitor do svého pracovního prostoru, Získejte ho od [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Informace o tom, jak přidat Network Performance Monitor, najdete v tématu [monitorování řešení v Azure monitor](../azure-monitor/insights/solutions.md). 
    
        V části **vytvořit monitorování připojení** je na kartě **základy** vybraná možnost výchozí oblast. Změníte-li oblast, můžete vybrat možnost agenti z pracovních prostorů v nové oblasti. Můžete vybrat jednoho nebo více agentů nebo podsítí. V zobrazení **podsítě** můžete pro monitorování vybrat konkrétní IP adresy. Pokud přidáte více podsítí, vytvoří se vlastní místní síť s názvem **OnPremises_Network_1** . V selektoru **skupiny** můžete také změnit seskupení podle agentů.
 
@@ -140,7 +140,7 @@ V Azure Portal pro vytvoření testovací skupiny v monitorování připojení z
     
     * Pokud chcete jako cíle vybrat jiné agenty než Azure, vyberte kartu **koncových bodů mimo Azure** . Ve výchozím nastavení se agenti seskupují do pracovních prostorů podle oblasti. Všechny tyto pracovní prostory jsou Network Performance Monitor nakonfigurované. 
     
-      Pokud potřebujete přidat Network Performance Monitor do svého pracovního prostoru, Získejte ho od Azure Marketplace. Informace o tom, jak přidat Network Performance Monitor, najdete v tématu [monitorování řešení v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solutions). 
+      Pokud potřebujete přidat Network Performance Monitor do svého pracovního prostoru, Získejte ho od Azure Marketplace. Informace o tom, jak přidat Network Performance Monitor, najdete v tématu [monitorování řešení v Azure monitor](../azure-monitor/insights/solutions.md). 
 
       V části **vytvořit monitorování připojení** je na kartě **základy**   Vybraná možnost výchozí oblast. Změníte-li oblast, můžete vybrat možnost agenti z pracovních prostorů v nové oblasti. Můžete vybrat jednoho nebo více agentů nebo podsítí. V zobrazení **podsítě** můžete pro monitorování vybrat konkrétní IP adresy. Pokud přidáte více podsítí, vytvoří se vlastní místní síť s názvem **OnPremises_Network_1** .  
 
@@ -182,7 +182,7 @@ V Azure Portal chcete vytvořit výstrahy pro monitorování připojení, zadejt
 
 - **Název podmínky**: výstraha se vytvoří u `Test Result(preview)` metriky. Pokud výsledek testu monitorování připojení selže, pravidlo výstrahy se aktivuje. 
 
-- **Název skupiny akcí**: můžete zadat přímo svůj e-mail nebo můžete vytvořit upozornění prostřednictvím skupin akcí. Pokud přímo zadáte svůj e-mail, vytvoří se skupina akcí, která má vytvořenou skupinu akcí s názvem **npm e-mail** . ID e-mailu se přidá do této skupiny akcí. Pokud se rozhodnete použít skupiny akcí, je nutné vybrat dříve vytvořenou skupinu akcí. Informace o tom, jak vytvořit skupinu akcí, najdete v tématu [Vytvoření skupin akcí v Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups). Po vytvoření výstrahy můžete [Spravovat výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal). 
+- **Název skupiny akcí**: můžete zadat přímo svůj e-mail nebo můžete vytvořit upozornění prostřednictvím skupin akcí. Pokud přímo zadáte svůj e-mail, vytvoří se skupina akcí, která má vytvořenou skupinu akcí s názvem **npm e-mail** . ID e-mailu se přidá do této skupiny akcí. Pokud se rozhodnete použít skupiny akcí, je nutné vybrat dříve vytvořenou skupinu akcí. Informace o tom, jak vytvořit skupinu akcí, najdete v tématu [Vytvoření skupin akcí v Azure Portal](../azure-monitor/platform/action-groups.md). Po vytvoření výstrahy můžete [Spravovat výstrahy](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal). 
 
 - **Název pravidla výstrahy**: název monitorování připojení.
 
@@ -201,5 +201,5 @@ Monitory připojení mají tyto meze škálování:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte [se analyzovat data monitorování a nastavovat upozornění](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts).
-* Naučte [se diagnostikovat problémy ve vaší síti](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network).
+* Naučte [se analyzovat data monitorování a nastavovat upozornění](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts).
+* Naučte [se diagnostikovat problémy ve vaší síti](./connection-monitor-overview.md#diagnose-issues-in-your-network).

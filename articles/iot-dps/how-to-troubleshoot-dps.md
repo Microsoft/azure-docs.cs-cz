@@ -8,22 +8,22 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d68314aab636180ff17e330c49c9859b8851b06
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75646468"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950682"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Řešení potíží s Azure IoT Hub Device Provisioning Service
 
-Problémy s připojením pro zařízení IoT můžou být obtížné řešit, protože existuje mnoho možných bodů selhání, například selhání ověření identity, selhání registrace atd. Tento článek poskytuje pokyny k detekci a řešení potíží s připojením zařízení prostřednictvím [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
+Problémy s připojením pro zařízení IoT můžou být obtížné řešit, protože existuje mnoho možných bodů selhání, například selhání ověření identity, selhání registrace atd. Tento článek poskytuje pokyny k detekci a řešení potíží s připojením zařízení prostřednictvím [Azure monitor](../azure-monitor/overview.md).
 
 ## <a name="using-azure-monitor-to-view-metrics-and-set-up-alerts"></a>Použití Azure Monitor k zobrazení metrik a nastavení výstrah
 
 Následující postup popisuje, jak zobrazit a nastavit výstrahu pro IoT Hub Device Provisioning Service metriky. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Přejděte na IoT Hub Device Provisioning Service.
 
@@ -42,13 +42,13 @@ Následující postup popisuje, jak zobrazit a nastavit výstrahu pro IoT Hub De
 
 6. Pokud chcete nastavit výstrahu metriky, vyberte **Nová pravidla upozornění** v pravém horním rohu okna metrika, podobně můžete přejít na okno **výstrah** a vybrat **Nová pravidla upozornění**.
 
-7. Vyberte **Přidat podmínku**a pak podle následujících pokynů vyberte požadovanou metriku a prahovou hodnotu.
+7. Vyberte **Přidat podmínku** a pak podle následujících pokynů vyberte požadovanou metriku a prahovou hodnotu.
 
 Další informace najdete v tématu [co jsou klasické výstrahy v Microsoft Azure?](../azure-monitor/platform/alerts-overview.md)
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Zobrazení a řešení chyb pomocí analytického protokolu
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Přejděte do služby IoT Hub.
 
@@ -81,5 +81,5 @@ Pomocí této tabulky můžete pochopit a řešit běžné chyby.
 | 401 | Autorizační token se nedá ověřit. například vypršela platnost nebo se nevztahuje na identifikátor URI žádosti. Tento kód chyby se také vrátí do zařízení jako součást toku ověření čipem TPM. | 401 – Neautorizováno|
 | 404 | Instance služby Device Provisioning nebo prostředek (například registrace) neexistuje. |404 Nenalezeno |
 | 412 | Značka ETag v žádosti se neshoduje s ETagm existujícího prostředku, jak na RFC7232. | Předběžná podmínka 412 se nezdařila |
-| 429 | Služba omezuje operace. Omezení pro konkrétní služby najdete v tématu [omezení IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 příliš mnoho požadavků |
+| 429 | Služba omezuje operace. Omezení pro konkrétní služby najdete v tématu [omezení IoT Hub Device Provisioning Service](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | 429 příliš mnoho požadavků |
 | 500 | Došlo k vnitřní chybě. | 500 – Vnitřní chyba serveru|

@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6f2608dafb77aeba98f188ec04f78649656ef969
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b74de2bdf1f6239f1006c820579a336946939421
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089651"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949577"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Vlastní ověření e-mailu pomocí Mailjet
 
 Pomocí vlastního e-mailu v Azure Active Directory B2C (Azure AD B2C) můžete posílat přizpůsobené e-maily uživatelům, kteří se zaregistrují k používání vašich aplikací. Pomocí [DisplayControls](display-controls.md) (aktuálně ve verzi Preview) a poskytovatele e-mailu třetích stran Mailjet můžete použít vlastní e-mailovou šablonu a z těchto umístění *:* adresa a předmět, stejně jako lokalizace podpory a vlastní nastavení jednorázového hesla (jednorázového hesla).
 
-Vlastní ověřování e-mailu vyžaduje použití poskytovatele e-mailu jiného výrobce, jako je [Mailjet](https://Mailjet.com), [SendGrid](custom-email.md)nebo [SparkPost](https://sparkpost.com), vlastní REST API nebo libovolného poskytovatele e-mailu založeného na protokolu HTTP (včetně vaší vlastní). Tento článek popisuje nastavení řešení, které používá Mailjet.
+Vlastní ověřování e-mailu vyžaduje použití poskytovatele e-mailu jiného výrobce, jako je [Mailjet](https://Mailjet.com), [SendGrid](./custom-email-sendgrid.md)nebo [SparkPost](https://sparkpost.com), vlastní REST API nebo libovolného poskytovatele e-mailu založeného na protokolu HTTP (včetně vaší vlastní). Tento článek popisuje nastavení řešení, které používá Mailjet.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -38,21 +38,21 @@ Pokud ho ještě nemáte, začněte tím, že nastavíte účet Mailjet (zákazn
 
 V dalším kroku uložte klíč rozhraní API Mailjet do klíče zásad Azure AD B2C, aby se zásady odkazovaly na.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce **Přehled** vyberte možnost **Architektura prostředí identity**.
-1. Vyberte **klíče zásad**a pak vyberte **Přidat**.
-1. V případě **možností**vyberte možnost **ručně**.
+1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+1. V případě **možností** vyberte možnost **ručně**.
 1. Zadejte **název** klíče zásad. Například, `MailjetApiKey`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
-1. Do **tajného**klíče zadejte svůj **klíč rozhraní API** Mailjet, který jste předtím nahráli.
-1. V případě **použití klíče**vyberte možnost **podpis**.
+1. Do **tajného** klíče zadejte svůj **klíč rozhraní API** Mailjet, který jste předtím nahráli.
+1. V případě **použití klíče** vyberte možnost **podpis**.
 1. Vyberte **Vytvořit**.
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
-1. V případě **možností**vyberte možnost **ručně**.
+1. V případě **možností** vyberte možnost **ručně**.
 1. Zadejte **název** klíče zásad. Například, `MailjetSecretKey`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
-1. Do **tajného**klíče zadejte svůj **tajný klíč** Mailjet, který jste předtím nahráli.
-1. V případě **použití klíče**vyberte možnost **podpis**.
+1. Do **tajného** klíče zadejte svůj **tajný klíč** Mailjet, který jste předtím nahráli.
+1. V případě **použití klíče** vyberte možnost **podpis**.
 1. Vyberte **Vytvořit**.
 
 ## <a name="create-a-mailjet-template"></a>Vytvoření šablony Mailjet
@@ -60,7 +60,7 @@ V dalším kroku uložte klíč rozhraní API Mailjet do klíče zásad Azure AD
 Když je vytvořený účet Mailjet a klíč rozhraní Mailjet API uložený v klíči zásad Azure AD B2C, vytvořte [šablonu dynamické transakce](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)Mailjet.
 
 1. Na webu Mailjet otevřete stránku [transakční šablony](https://app.mailjet.com/templates/transactional) a vyberte **vytvořit novou šablonu**.
-1. Vyberte **ho pomocí kódování ve formátu HTML**a pak vyberte **kód od začátku**.
+1. Vyberte **ho pomocí kódování ve formátu HTML** a pak vyberte **kód od začátku**.
 1. Zadejte jedinečný název šablony, jako `Verification email` je, a pak vyberte **vytvořit**.
 1. V editoru HTML vložte následující šablonu HTML nebo použijte vlastní. `{{var:otp:""}}`Parametry a `{{var:email:""}}` budou dynamicky nahrazeny hodnotou jednorázového hesla a e-mailovou adresou uživatele.
 
@@ -159,11 +159,11 @@ Když je vytvořený účet Mailjet a klíč rozhraní Mailjet API uložený v k
     ```
 
 1. Rozbalte položku **upravit předmět** v levém horním rohu.
-    1. Pro **Předmět**zadejte výchozí hodnotu předmětu. Mailjet tuto hodnotu používá, když rozhraní API neobsahuje parametr Subject.
-    1. Jako **název**zadejte název vaší společnosti.
-    1. V poli **adresa**vyberte svou e-mailovou adresu.
+    1. Pro **Předmět** zadejte výchozí hodnotu předmětu. Mailjet tuto hodnotu používá, když rozhraní API neobsahuje parametr Subject.
+    1. Jako **název** zadejte název vaší společnosti.
+    1. V poli **adresa** vyberte svou e-mailovou adresu.
     1. Vyberte **Uložit**.
-1. V pravém horním rohu vyberte **uložit & publikovat**a pak klikněte na **Ano, publikovat změny** .
+1. V pravém horním rohu vyberte **uložit & publikovat** a pak klikněte na **Ano, publikovat změny** .
 1. Poznamenejte si **ID** šablony, kterou jste vytvořili pro použití v pozdějším kroku. Toto ID můžete zadat při [přidávání transformace deklarací identity](#add-the-claims-transformation).
 
 

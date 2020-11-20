@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 532f045233f26a9a2933a19ae7a0a893195ad33f
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: fa8b2d967a336343d23c5f6aa4477ebcf2396407
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94384099"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949033"
 ---
 # <a name="create-a-connection-monitor-using-powershell"></a>Vytvoření monitorování připojení pomocí PowerShellu
 
@@ -89,7 +89,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 * Testovací skupiny
     * Název – pojmenujte testovací skupinu.
     * testConfigurations-test konfigurace na základě toho, které zdrojové koncové body se připojují k cílovým koncovým bodům
-    * zdroje – vyberte z koncových bodů vytvořených výše. Zdrojové koncové body založené na Azure musí mít nainstalované rozšíření Azure Network Watcher a zdrojové koncové body založené na Azure musí být nainstalované haveAzure Log Analytics agent. Chcete-li nainstalovat agenta pro zdroj, přečtěte si téma [Instalace agentů monitorování](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
+    * zdroje – vyberte z koncových bodů vytvořených výše. Zdrojové koncové body založené na Azure musí mít nainstalované rozšíření Azure Network Watcher a zdrojové koncové body založené na Azure musí být nainstalované haveAzure Log Analytics agent. Chcete-li nainstalovat agenta pro zdroj, přečtěte si téma [Instalace agentů monitorování](./connection-monitor-overview.md#install-monitoring-agents).
     * cíle – vybrat z koncových bodů vytvořených výše. Můžete monitorovat připojení k virtuálním počítačům Azure nebo libovolnému koncovému bodu (veřejné IP adresy, adresy URL nebo plně kvalifikovanému názvu domény) jejich zadáním jako cíle. V jedné skupině testů můžete přidat virtuální počítače Azure, adresy URL pro Office 365, adresy URL Dynamics 365 a vlastní koncové body.
     * zakázat – pomocí tohoto pole zakážete monitorování pro všechny zdroje a cíle, které určuje skupina testů.
 
@@ -115,5 +115,5 @@ Monitory připojení mají následující meze škálování:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte [se analyzovat data monitorování a nastavovat upozornění](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts) .
-* Zjistěte [, jak diagnostikovat problémy ve vaší síti](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network) .
+* Naučte [se analyzovat data monitorování a nastavovat upozornění](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts) .
+* Zjistěte [, jak diagnostikovat problémy ve vaší síti](./connection-monitor-overview.md#diagnose-issues-in-your-network) .

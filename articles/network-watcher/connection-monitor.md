@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bef78766deb739791720838bb27649586da96152
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76834650"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948790"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači na webu Azure Portal
 
@@ -36,7 +36,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-vms"></a>Vytvoření virtuálních počítačů
 
@@ -73,7 +73,7 @@ Proveďte znovu kroky uvedené v části [Vytvoření prvního virtuálního po�
 |Krok|Nastavení|Hodnota|
 |---|---|---|
 | 1 | Vybrat verzi **serveru Ubuntu** |                                                                         |
-| 3 | Název                                  | myVm2                                                                   |
+| 3 | Name                                  | myVm2                                                                   |
 | 3 | Typ ověřování                   | Vložte váš veřejný klíč SSH nebo vyberte **Heslo** a zadejte heslo. |
 | 3 | Skupina prostředků                        | Vyberte **Použít existující** a pak vyberte **myResourceGroup**.                 |
 | 6 | Rozšíření                            | **Agent Network Watcher pro Linux**                                             |
@@ -85,7 +85,7 @@ Nasazení virtuálního počítače trvá několik minut. Než budete pokračova
 Vytvořte monitorování připojení pro monitorování komunikace přes port TCP 22 z *myVm1* do *myVm2*.
 
 1. Na levé straně portálu vyberte **Všechny služby**.
-2. Do pole **Filtr** začněte psát *network watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
+2. Do pole **Filtr** začněte psát *network watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 3. V části **MONITOROVÁNÍ** vyberte **Monitorování připojení**.
 4. Vyberte **+ Přidat**.
 5. Zadejte nebo vyberte informace o připojení, které chcete monitorovat, a pak vyberte **Přidat**. V příkladu na následujícím obrázku se monitoruje připojení z virtuálního počítače *myVm1* do virtuálního počítače *myVm2* přes port 22:
@@ -129,7 +129,7 @@ Upozornění vytvářejí pravidla upozornění služby Azure Monitor. Pravidla 
 2. Klikněte na **Vybrat cíl** a pak vyberte prostředky, na které chcete cílit. Vyberte **Předplatné** a nastavte **Typ prostředku**, abyste vyfiltrovali monitorování připojení, které chcete použít.
 
     ![Obrazovka upozornění s vybraným cílem](./media/connection-monitor/set-alert-rule.png)
-1. Jakmile vyberete prostředek, na který chcete cílit, vyberte **Přidat kritéria**. Network Watcher nabízí [metriky, podle kterých můžete vytvářet upozornění](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported). Nastavte **Dostupné signály** na metriky ProbesFailedPercent a AverageRoundtripMs:
+1. Jakmile vyberete prostředek, na který chcete cílit, vyberte **Přidat kritéria**. Network Watcher nabízí [metriky, podle kterých můžete vytvářet upozornění](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). Nastavte **Dostupné signály** na metriky ProbesFailedPercent a AverageRoundtripMs:
 
     ![Stránka upozornění s vybranými signály](./media/connection-monitor/set-alert-signals.png)
 1. Vyplňte podrobnosti o upozornění, jako je název pravidla upozornění, popis a závažnost. K upozornění můžete také přidat skupinu akcí, která vám umožní automatizovat a přizpůsobit reakci na upozornění.

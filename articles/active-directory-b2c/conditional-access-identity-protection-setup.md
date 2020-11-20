@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309773"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949764"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Nastavení Identity Protection a podmíněného přístupu v Azure AD B2C
 
@@ -23,10 +23,10 @@ ms.locfileid: "92309773"
 
 Identity Protection poskytuje průběžné zjišťování rizik pro vašeho tenanta Azure AD B2C. Pokud je cenová úroveň tenanta Azure AD B2C Premium P2, můžete v Azure Portal zobrazit podrobné rizikové události ochrany identity. Pomocí zásad [podmíněného přístupu](../active-directory/conditional-access/overview.md) na základě těchto detekcí rizik můžete také určit akce a vynutilit zásady organizace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Váš tenant Azure AD B2C musí být [propojený s předplatným služby Azure AD](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
-- K použití podmíněného přístupu na základě rizik a rizika uživatele se vyžaduje Azure AD B2C Premium P2. V případě potřeby [změňte cenovou úroveň Azure AD B2C na Premium P2](https://aka.ms/exid-pricing-tier). 
+- K použití podmíněného přístupu na základě rizik a rizika uživatele se vyžaduje Azure AD B2C Premium P2. V případě potřeby [změňte cenovou úroveň Azure AD B2C na Premium P2](./billing.md). 
 - Pokud chcete spravovat Identity Protection a podmíněný přístup v tenantovi B2C, budete potřebovat účet, kterému se přiřadí role globálního správce nebo role správce zabezpečení.
 - Pokud chcete tyto funkce ve vašem tenantovi používat, musíte nejdřív přepnout do cenové úrovně Azure AD B2C Premium P2.
 
@@ -56,11 +56,11 @@ Pro Azure AD B2C se aktuálně podporují následující detekce rizik:
 
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 
-1. V části **zabezpečení**vyberte **rizikové uživatele (Preview)**.
+1. V části **zabezpečení** vyberte **rizikové uživatele (Preview)**.
 
    ![Rizikoví uživatelé](media/conditional-access-identity-protection-setup/risky-users.png)
 
-1. V části **zabezpečení**vyberte možnost **detekce rizik (Preview)**.
+1. V části **zabezpečení** vyberte možnost **detekce rizik (Preview)**.
 
    ![Detekce rizik](media/conditional-access-identity-protection-setup/risk-detections.png)
 
@@ -76,7 +76,7 @@ Pokud chcete přidat zásady podmíněného přístupu na základě detekce rizi
 
 3. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 
-4. Vyberte **vlastnosti**a pak vyberte **Spravovat výchozí nastavení zabezpečení**.
+4. Vyberte **vlastnosti** a pak vyberte **Spravovat výchozí nastavení zabezpečení**.
 
    ![Zakázat výchozí hodnoty zabezpečení](media/conditional-access-identity-protection-setup/disable-security-defaults.png)
 
@@ -92,7 +92,7 @@ Pokud chcete přidat zásady podmíněného přístupu na základě detekce rizi
 
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 
-1. V části **zabezpečení**vyberte **podmíněný přístup (Preview)**. Otevře se stránka **zásady podmíněného přístupu** . 
+1. V části **zabezpečení** vyberte **podmíněný přístup (Preview)**. Otevře se stránka **zásady podmíněného přístupu** . 
 
 1. Vyberte **nové zásady** a podle dokumentace podmíněného přístupu Azure AD vytvořte novou zásadu. Například:
 
@@ -105,10 +105,10 @@ Pokud chcete přidat zásady podmíněného přístupu na základě detekce rizi
 
 1. Vytvořte zásadu podmíněného přístupu, jak je uvedeno výše, s následujícím nastavením:
    
-   - V části **Uživatelé a skupiny**vyberte testovacího uživatele. Nevybírejte možnost **Všichni uživatelé** nebo se vám zablokuje přihlášení.
-   - U **cloudových aplikací nebo akcí**zvolte **vybrat aplikace**a pak zvolte svoji aplikaci předávající strany.
-   - V případě podmínek vyberte možnost **rizika přihlášení** a **Vysoká**, **střední**a **Nízká** úroveň rizika.
-   - V případě **udělení**vyberte možnost **blokovat přístup**.
+   - V části **Uživatelé a skupiny** vyberte testovacího uživatele. Nevybírejte možnost **Všichni uživatelé** nebo se vám zablokuje přihlášení.
+   - U **cloudových aplikací nebo akcí** zvolte **vybrat aplikace** a pak zvolte svoji aplikaci předávající strany.
+   - V případě podmínek vyberte možnost **rizika přihlášení** a **Vysoká**, **střední** a **Nízká** úroveň rizika.
+   - V případě **udělení** vyberte možnost **blokovat přístup**.
 
       ![Zvolit přístup k bloku](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
@@ -130,7 +130,7 @@ Kontrola výsledku události podmíněného přístupu:
 
 3. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 
-4. V části **aktivity**vyberte **protokoly auditu**.
+4. V části **aktivity** vyberte **protokoly auditu**.
 
 5. Filtrujte protokol auditu nastavením **kategorie** na **B2C** a nastavení **typu prostředku aktivity** na **IdentityProtection**. Pak vyberte **Použít**.
 

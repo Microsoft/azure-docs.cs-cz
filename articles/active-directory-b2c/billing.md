@@ -11,16 +11,16 @@ ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 416e2c767b5afd40fea38e6f75fcd3f01440b49a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edff5354d0565bd32cd0332b4aa0f215c2980d73
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89255331"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949781"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Model fakturace pro Azure Active Directory B2C
 
-Ceny za Azure Active Directory B2C (Azure AD B2C) jsou založené na měsíčních aktivních uživatelích (MAU), což je počet jedinečných uživatelů s aktivitou ověřování v kalendářním měsíci. Tento model fakturace se vztahuje na klienty Azure AD B2C a [spolupráci uživatelů Azure AD hosta (B2B)](https://docs.microsoft.com/azure/active-directory/external-identities/external-identities-pricing). MAU účtování pomáhá snižovat náklady tím, že nabízí bezplatnou úroveň a flexibilní a předvídatelné ceny. V tomto článku se dozvíte o fakturaci MAU, propojování klientů Azure AD B2C k předplatnému a změně cenové úrovně.
+Ceny za Azure Active Directory B2C (Azure AD B2C) jsou založené na měsíčních aktivních uživatelích (MAU), což je počet jedinečných uživatelů s aktivitou ověřování v kalendářním měsíci. Tento model fakturace se vztahuje na klienty Azure AD B2C a [spolupráci uživatelů Azure AD hosta (B2B)](../active-directory/external-identities/external-identities-pricing.md). MAU účtování pomáhá snižovat náklady tím, že nabízí bezplatnou úroveň a flexibilní a předvídatelné ceny. V tomto článku se dozvíte o fakturaci MAU, propojování klientů Azure AD B2C k předplatnému a změně cenové úrovně.
 
 > [!IMPORTANT]
 > Tento článek neobsahuje informace o cenách. Nejnovější informace o fakturaci a cenách využití najdete v tématu [Azure Active Directory B2C ceny](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
@@ -58,14 +58,14 @@ Předplatné propojené s klientem Azure AD B2C se dá použít k fakturaci vyu�
 
 ### <a name="create-the-link"></a>Vytvořit odkaz
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V horní nabídce vyberte filtr **adresář + odběr** a pak vyberte adresář, který obsahuje předplatné Azure, které chcete použít (*ne* adresář obsahující Azure AD B2C tenanta).
 3. Vyberte **vytvořit prostředek**, zadejte `Active Directory B2C` do pole **Hledat na Marketplace** a pak vyberte **Azure Active Directory B2C**.
 4. Vyberte **Vytvořit**.
 5. Vyberte **propojit existujícího tenanta Azure AD B2C s předplatným Azure**.
 6. Z rozevíracího seznamu vyberte **klienta Azure AD B2C** . Zobrazují se jenom klienti, pro které jste globální správce a kteří ještě nejsou propojení s předplatným. Do pole **Azure AD B2C název prostředku** se naplní název domény Azure AD B2C tenanta, kterého jste vybrali.
 7. Vyberte aktivní **předplatné** Azure, které jste správcem.
-8. V části **Skupina prostředků**vyberte **vytvořit novou**a zadejte **umístění skupiny prostředků**. Toto nastavení skupiny prostředků nemá žádný vliv na váš Azure AD B2C umístění tenanta, výkon ani stav fakturace.
+8. V části **Skupina prostředků** vyberte **vytvořit novou** a zadejte **umístění skupiny prostředků**. Toto nastavení skupiny prostředků nemá žádný vliv na váš Azure AD B2C umístění tenanta, výkon ani stav fakturace.
 9. Vyberte **Vytvořit**.
 
     ![Stránka pro vytvoření prostředku Azure AD B2C v Azure Portal](./media/billing/portal-01-create-b2c-resource-page.png)
@@ -78,13 +78,13 @@ Tenant musí být propojený s příslušnou cenovou úrovní Azure na základě
 
 Pokud chcete změnit cenovou úroveň, postupujte podle těchto kroků.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
-2. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje předplatné Azure, se kterým je váš TENANT Azure B2C*propojený (nevybírejte* samotného klienta Azure AD B2C).
+2. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje předplatné Azure, se kterým je váš TENANT Azure B2C *propojený (nevybírejte* samotného klienta Azure AD B2C).
 
-3. Do vyhledávacího pole v horní části portálu zadejte název vašeho tenanta Azure AD B2C. Pak ve výsledcích hledání v části **prostředky**vyberte tenanta.
+3. Do vyhledávacího pole v horní části portálu zadejte název vašeho tenanta Azure AD B2C. Pak ve výsledcích hledání v části **prostředky** vyberte tenanta.
 
-4. Na stránce **Přehled** prostředků v části **cenová úroveň**vyberte **změnit**.
+4. Na stránce **Přehled** prostředků v části **cenová úroveň** vyberte **změnit**.
 
    ![Změna cenové úrovně](media/billing/change-pricing-tier.png)
  
@@ -112,7 +112,7 @@ Tady je postup, jak převést MAU na fakturaci na stávající prostředek Azure
 
     ![Odkaz na prostředek Azure AD B2C zvýrazněný v Azure Portal](./media/billing/portal-mau-02-b2c-resource-link.png)
 
-5. Na stránce **Přehled** prostředku Azure AD B2C v části **Fakturovatelné jednotky**vyberte odkaz na **jedno ověření (změnit na MAU)** .<br/>
+5. Na stránce **Přehled** prostředku Azure AD B2C v části **Fakturovatelné jednotky** vyberte odkaz na **jedno ověření (změnit na MAU)** .<br/>
 
     ![Změnit na MAU propojení zvýrazněné v Azure Portal](./media/billing/portal-mau-03-change-to-mau-link.png)
 

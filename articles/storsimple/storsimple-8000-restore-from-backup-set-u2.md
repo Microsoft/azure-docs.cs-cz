@@ -10,16 +10,16 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: e9033caf903967432b713afa00a509bd2d966d8b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ff70df225b5ed27960c96889d409d7005f0fbcc4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972012"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950723"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Obnovení svazku StorSimple ze zálohovacího skladu
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Přehled
 
 V tomto kurzu se popisuje operace obnovení prováděná na zařízení řady StorSimple 8000 pomocí existujícího zálohovacího skladu. K obnovení svazku z místního nebo cloudového zálohování použijte okno **katalog záloh** . V okně **katalog záloh** se zobrazí všechny zálohovací sklady, které jsou vytvořeny při ručním nebo automatizovaném zálohování. Operace obnovení ze zálohovacího skladu přinese svazek do online režimu okamžitě při stahování dat na pozadí.
 
@@ -63,7 +63,7 @@ Rutiny Windows PowerShellu se v Update 4 dají použít k dotazování na spouš
 
 * `Set-HcsRehydrationJob` – Tato rutina umožňuje pozastavit, zastavit a obnovit úlohu opětovného nasazování, když probíhá dosazování.
 
-Další informace o rutinách pro vysazování najdete v referenčních informacích k [rutinám Windows PowerShellu pro StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
+Další informace o rutinách pro vysazování najdete v referenčních informacích k [rutinám Windows PowerShellu pro StorSimple](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps).
 
 Při automatickém vysazování se očekává obvykle vyšší výkon přechodného čtení. Skutečná velikost vylepšení závisí na různých faktorech, jako je vzor přístupu, četnost změn dat a datový typ. 
 
@@ -137,4 +137,3 @@ Chcete-li dokončit operaci obnovení, zaveďte svazek do režimu offline na hos
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [Spravovat StorSimple svazky](storsimple-8000-manage-volumes-u2.md).
 * Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
-

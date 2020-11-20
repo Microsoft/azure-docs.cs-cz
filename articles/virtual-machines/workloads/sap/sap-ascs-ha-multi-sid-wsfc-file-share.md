@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a356e96b82e6fbe855d0b474dcb6b1f59c98333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b204aa508370c62aaf33688aeb7ec63d3f8f1b0e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855219"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950614"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Vysoká dostupnost ASCS/SCS instance SAP s Clustering s podporou převzetí služeb při selhání Windows serveru a sdílenou složkou v Azure
 
@@ -71,13 +72,13 @@ Cílem je nainstalovat několik clusterových instancí SAP Advanced Business Ap
 
 _**Obrázek 2:** Konfigurace SAP pro více identifikátorů SID ve dvou clusterech_
 
-Instalace dalšího systému ** \<SID2> SAP** je stejná jako instalace jednoho \<SID> systému. V clusteru ASCS/SCS se vyžadují dva další přípravné kroky i pro cluster sdílení souborů SOFS.
+Instalace dalšího systému **\<SID2> SAP** je stejná jako instalace jednoho \<SID> systému. V clusteru ASCS/SCS se vyžadují dva další přípravné kroky i pro cluster sdílení souborů SOFS.
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Příprava infrastruktury pro scénář s více identifikátory SID SAP
 
 ### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>Příprava infrastruktury na řadiči domény
 
-Vytvořte skupinu domény ** \<Domain> \ SAP_ \<SID2> _GlobalAdmin**například s \<SID2> = PR2. Název skupiny domén je \<Domain> \ SAP_PR2_GlobalAdmin.
+Vytvořte skupinu domény **\<Domain> \ SAP_ \<SID2> _GlobalAdmin** například s \<SID2> = PR2. Název skupiny domén je \<Domain> \ SAP_PR2_GlobalAdmin.
 
 ### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>Příprava infrastruktury v clusteru ASCS/SCS
 
@@ -98,7 +99,7 @@ Můžete znovu použít stávající \<SAPGlobalHost> a Volume1 prvního \<SID1>
 _**Obrázek 3:** SOFS s více SID je stejný jako název globálního hostitele SAP._
 
 > [!IMPORTANT]
->Pro druhý systém **SAP \<SID2> ** se použije stejný Volume1 a stejný **\<SAPGlobalHost>** název sítě.
+>Pro druhý systém **SAP \<SID2>** se použije stejný Volume1 a stejný **\<SAPGlobalHost>** název sítě.
 >Vzhledem k tomu, že jste již nastavili **SAPMNT** jako název sdílené složky pro různé systémy SAP, budete muset použít stejný Volume1, aby bylo možné znovu použít **\<SAPGlobalHost>** název sítě. **Volume1**
 >
 >Cesta k souboru pro \<SID2> globálního hostitele je C:\ClusterStorage \\ **Volume1**\usr\sap \<SID2> \SYS\.

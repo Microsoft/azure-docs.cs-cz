@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8f2498dbb3a555db262c591c9badacbe0e4e2548
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 62bc309bf20186654cb32fb84fb1a07667405ab0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874657"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950801"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Základní hodnoty zabezpečení Azure pro Azure Machine Learning
 
@@ -526,7 +526,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: ke správě přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: Azure Machine Learning podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Machine Learning prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) Azure k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instančního objektu aplikace.
+**Pokyny**: Azure Machine Learning podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Machine Learning prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role Azure (Azure RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instančního objektu aplikace.
 
 - [Správa přístupu k pracovnímu prostoru služby Azure Machine Learning](how-to-assign-roles.md)
 - [Použití Azure RBAC pro autorizaci Kubernetes](../aks/manage-azure-rbac.md)

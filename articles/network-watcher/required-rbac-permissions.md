@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: 9a5bd6dff05fe39d62e5bf5f897bc61936686bb7
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 548db64bd93dd561f9c69e9f594d01f4c0825db9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887225"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948336"
 ---
 # <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Oprávnění řízení přístupu na základě role v Azure, která jsou nutná k použití možností Network Watcher
 
@@ -108,7 +108,7 @@ Funkce Network Watcher také vyžadují následující akce:
 | Microsoft. Authorization/ \* /Read                                     | Používá se k načtení přiřazení rolí Azure a definic zásad.          |
 | Microsoft. Resources/Subscriptions/resourceGroups/Read               | Používá se k zobrazení výčtu všech skupin prostředků v rámci předplatného.    |
 | Microsoft. Storage/storageAccounts/Read                              | Slouží k získání vlastností pro zadaný účet úložiště.   |
-| Microsoft. Storage/storageAccounts/listServiceSas/Action, </br> Microsoft. Storage/storageAccounts/listAccountSas/Action, <br> Microsoft. Storage/storageAccounts/klíče listkey/Action| Slouží k načtení sdíleného přístupového podpisu (SAS), který umožňuje [zabezpečený přístup k účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) a zápis do účtu úložiště. |
+| Microsoft. Storage/storageAccounts/listServiceSas/Action, </br> Microsoft. Storage/storageAccounts/listAccountSas/Action, <br> Microsoft. Storage/storageAccounts/klíče listkey/Action| Slouží k načtení sdíleného přístupového podpisu (SAS), který umožňuje [zabezpečený přístup k účtu úložiště](../storage/common/storage-sas-overview.md) a zápis do účtu úložiště. |
 | Microsoft. COMPUTE/virtualMachines/Read, </br> Microsoft. COMPUTE/virtualMachines/Write| Slouží k přihlášení k virtuálnímu počítači, zachytávání paketů a jeho nahrání do účtu úložiště.|
 | Microsoft. COMPUTE/virtualMachines/Extensions/Read </br> Microsoft. COMPUTE/virtualMachines/Extensions/Write| Slouží ke kontrole, jestli je rozšíření Network Watcher k dispozici, a v případě potřeby ho nainstalujte. |
 | Microsoft. COMPUTE/virtualMachineScaleSets/Read, </br> Microsoft. COMPUTE/virtualMachineScaleSets/Write| Slouží k přístupu k sadám škálování virtuálních počítačů, zachytávání paketů a jejich nahrání do účtu úložiště.|

@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37099b551e004ebfc702dce37c2a1499aa46ff10
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531385"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950717"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena 
 
@@ -25,7 +25,7 @@ Obecně platí, že zrušení zřízení zařízení se skládá ze dvou kroků:
    - Informace o tom, jak zrušit registraci zařízení, najdete v tématu [Jak zrušit registraci zařízení z Azure IoT Hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
    - Informace o tom, jak zrušit registraci zařízení pomocí jedné ze sad SDK služby zřizování, najdete v tématu [Správa registrace zařízení pomocí sad SDK služby](how-to-manage-enrollments-sdks.md).
 
-2. Zrušte registraci zařízení od IoT Hub, abyste zabránili budoucí komunikaci a přenosu dat. Znovu můžete dočasně zakázat nebo trvale odstranit položku zařízení v registru identit pro IoT Hub, kde byla zřízena. Další informace o zakazování najdete v tématu [Zakázání zařízení](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) . Projděte si téma Správa zařízení/zařízení IoT pro váš prostředek IoT Hub v [Azure Portal](https://portal.azure.com).
+2. Zrušte registraci zařízení od IoT Hub, abyste zabránili budoucí komunikaci a přenosu dat. Znovu můžete dočasně zakázat nebo trvale odstranit položku zařízení v registru identit pro IoT Hub, kde byla zřízena. Další informace o zakazování najdete v tématu [Zakázání zařízení](../iot-hub/iot-hub-devguide-identity-registry.md#disable-devices) . Projděte si téma Správa zařízení/zařízení IoT pro váš prostředek IoT Hub v [Azure Portal](https://portal.azure.com).
 
 Přesný postup pro zrušení zřízení zařízení závisí na mechanismu ověřování a příslušné položce registrace ve vaší službě zřizování. Následující části obsahují přehled procesu na základě registrace a typu ověření identity.
 
@@ -49,7 +49,7 @@ Chcete-li zobrazit seznam zařízení, která byla zřízena prostřednictvím s
 
 1. Přihlaste se k Azure Portal a klikněte na **všechny prostředky** v nabídce na levé straně.
 2. V seznamu prostředků klikněte na svou službu zřizování.
-3. Ve vaší službě zřizování klikněte na **Správa**registrací a pak vyberte kartu **skupiny** registrací.
+3. Ve vaší službě zřizování klikněte na **Správa** registrací a pak vyberte kartu **skupiny** registrací.
 4. Kliknutím na skupinu pro zápis ji otevřete.
 
    ![Zobrazit položku skupiny registrace na portálu](./media/how-to-unprovision-devices/view-enrollment-group.png)
@@ -63,4 +63,4 @@ Pomocí skupin registrací je možné zvážit dva scénáře:
 
 - Zrušení zřízení jednoho zařízení ze skupiny pro registraci:
   1. Vytvořte zakázanou jednotlivou registraci pro svůj certifikát na listovém (zařízení). Tím odvoláte přístup ke službě zřizování pro toto zařízení a zároveň povolíte přístup pro jiná zařízení, která mají podpisový certifikát skupiny registrací ve svém řetězci. Neodstraňujte zakázanou jednotlivou registraci zařízení. Tím umožníte, aby se zařízení znovu zaregistrovalo prostřednictvím skupiny pro registraci. 
-  2. Pomocí seznamu zřízených zařízení pro tuto skupinu registrací vyhledejte IoT Hub, ke kterému se zařízení zřídilo, a zakažte nebo odstraňte z registru identit tohoto centra. 
+  2. Pomocí seznamu zřízených zařízení pro tuto skupinu registrací vyhledejte IoT Hub, ke kterému se zařízení zřídilo, a zakažte nebo odstraňte z registru identit tohoto centra.

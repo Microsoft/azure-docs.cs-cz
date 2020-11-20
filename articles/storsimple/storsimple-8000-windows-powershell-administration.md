@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65e9657c3948d8ce5883cd33ca8720f501352105
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999512"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950665"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Správa zařízení pomocí rozhraní Windows PowerShell pro StorSimple
 
@@ -28,7 +28,7 @@ Po přečtení tohoto článku budete moct:
 * Získejte pomoc v Windows PowerShell pro StorSimple.
 
 > [!NOTE]
-> * Rutiny Windows PowerShell pro StorSimple umožňují spravovat zařízení StorSimple pomocí sériové konzoly nebo vzdáleně pomocí vzdálené komunikace Windows PowerShellu. Další informace o jednotlivých rutinách, které se dají použít v tomto rozhraní, najdete v referenčních informacích k [rutině pro Windows PowerShell pro StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
+> * Rutiny Windows PowerShell pro StorSimple umožňují spravovat zařízení StorSimple pomocí sériové konzoly nebo vzdáleně pomocí vzdálené komunikace Windows PowerShellu. Další informace o jednotlivých rutinách, které se dají použít v tomto rozhraní, najdete v referenčních informacích k [rutině pro Windows PowerShell pro StorSimple](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps).
 > * Rutiny Azure PowerShell StorSimple jsou jinou kolekcí rutin, které umožňují automatizovat úlohy na úrovni služby a migrace StorSimple z příkazového řádku. Další informace o rutinách Azure PowerShell pro StorSimple najdete v referenčních informacích k [rutinám Azure StorSimple](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
 
 
@@ -50,7 +50,7 @@ Pokud se chcete připojit k rozhraní Windows PowerShellu z konzoly sériového 
 1. V dialogovém okně **rekonfigurace** výstupu vyberte v podokně **kategorie** možnost **klávesnice**.
 2. Ujistěte se, že jsou vybrány následující možnosti (při spuštění nové relace se jedná o výchozí nastavení).
    
-   | Položka klávesnice | Vyberte |
+   | Položka klávesnice | Vybrat |
    | --- | --- |
    | Klávesa Backspace |Ovládací prvek –? (127) |
    | Domovské a koncové klávesy |Standard |
@@ -63,7 +63,7 @@ Pokud se chcete připojit k rozhraní Windows PowerShellu z konzoly sériového 
 3. Klikněte na **Použít**.
 4. V podokně **kategorie** vyberte možnost **Překlad**.
 5. V poli se seznamem **vzdálených znakových sad** vyberte **UTF-8**.
-6. V části **manipulace se znaky kreslení čáry**vyberte **použít body kódu pro vykreslování spojnice Unicode**. Na následujícím snímku obrazovky vidíte správné možnosti výstupu.
+6. V části **manipulace se znaky kreslení čáry** vyberte **použít body kódu pro vykreslování spojnice Unicode**. Na následujícím snímku obrazovky vidíte správné možnosti výstupu.
    
     ![Nastavení kódování UTF](./media/storsimple-windows-powershell-administration/IC740878.png)
 7. Klikněte na **Použít**.
@@ -178,4 +178,3 @@ V rozhraní Windows PowerShell můžete snadno aktualizovat tuto nápovědě. Ch
 ## <a name="next-steps"></a>Další kroky
 
 Pokud při provádění některého z výše uvedených pracovních postupů dojde k problémům se zařízením s StorSimple, přečtěte si téma [Nástroje pro řešení potíží s nasazeními StorSimple](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
-

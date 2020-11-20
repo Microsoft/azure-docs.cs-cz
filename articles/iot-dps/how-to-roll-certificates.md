@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: fbcb3656bc824e2fd352f92314652bd04167b4d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf8b1e04e11dee4e636826430838a467fe034e3f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531402"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951124"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Postup nasazení certifikátů zařízení X. 509
 
@@ -51,7 +51,7 @@ Když se zařízení zpočátku zřídí prostřednictvím automatického zřizo
 
 Jakmile se nový listový certifikát převede do zařízení, už se nemůže připojit ke službě IoT Hub, protože se k připojení používá nový certifikát. Centrum IoT rozpoznává zařízení jenom se starým certifikátem. Výsledkem pokusu o připojení zařízení bude chyba neautorizovaného připojení. Pokud chcete tuto chybu vyřešit, musíte aktualizovat položku registrace pro zařízení na účet pro nový listový certifikát zařízení. Služba zřizování pak může podle potřeby aktualizovat informace registru IoT Hub zařízení, když se zařízení znovu zřídí. 
 
-Jednou z možných výjimek k této chybě připojení by byl scénář, ve kterém jste ve službě zřizování vytvořili [skupinu pro registraci](concepts-service.md#enrollment-group) zařízení. V takovém případě, pokud se v řetězu certifikátů zařízení neúčtují kořenové nebo zprostředkující certifikáty, bude zařízení rozpoznané, pokud je nový certifikát součástí řetězce důvěryhodnosti definovaného ve skupině pro registraci. Pokud k tomuto scénáři dojde v reakci na porušení zabezpečení, měli byste aspoň zakázat konkrétní certifikáty zařízení ve skupině, které jsou považovány za porušení. Další informace najdete v tématu [zákaz konkrétních zařízení ve skupině pro registraci](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#disallow-specific-devices-in-an-enrollment-group).
+Jednou z možných výjimek k této chybě připojení by byl scénář, ve kterém jste ve službě zřizování vytvořili [skupinu pro registraci](concepts-service.md#enrollment-group) zařízení. V takovém případě, pokud se v řetězu certifikátů zařízení neúčtují kořenové nebo zprostředkující certifikáty, bude zařízení rozpoznané, pokud je nový certifikát součástí řetězce důvěryhodnosti definovaného ve skupině pro registraci. Pokud k tomuto scénáři dojde v reakci na porušení zabezpečení, měli byste aspoň zakázat konkrétní certifikáty zařízení ve skupině, které jsou považovány za porušení. Další informace najdete v tématu [zákaz konkrétních zařízení ve skupině pro registraci](./how-to-revoke-device-access-portal.md#disallow-specific-devices-in-an-enrollment-group).
 
 Aktualizace položek registrace pro zahrnuté certifikáty se provádí na stránce **spravovat registrace** . Pro přístup k této stránce použijte následující postup:
 
@@ -69,7 +69,7 @@ Způsob, jakým se aktualizuje záznam registrace, bude záviset na tom, jestli 
 
 Pokud v reakci na porušení zabezpečení provádíte průběžné certifikáty, měli byste použít následující postup, který okamžitě odstraní aktuální certifikát:
 
-1. Klikněte na **jednotlivé registrace**a v seznamu klikněte na položku ID registrace. 
+1. Klikněte na **jednotlivé registrace** a v seznamu klikněte na položku ID registrace. 
 
 2. Klikněte na tlačítko **Odstranit aktuální certifikát** a potom klikněte na ikonu složky a vyberte nový certifikát, který se má nahrát pro položku registrace. Po dokončení klikněte na **Uložit** .
 
@@ -92,7 +92,7 @@ Pokud vytváříte certifikáty pro zpracování vypršení platnosti certifiká
 Později, když se sekundární certifikát taky blíží vypršení platnosti a je potřeba ho navrátit, můžete ho použít k primární konfiguraci. Otáčení mezi primárním a sekundárním certifikátem tímto způsobem zkracuje výpadky zařízení, která se snaží zřídit.
 
 
-1. Klikněte na **jednotlivé registrace**a v seznamu klikněte na položku ID registrace. 
+1. Klikněte na **jednotlivé registrace** a v seznamu klikněte na položku ID registrace. 
 
 2. Klikněte na **sekundární certifikát** a potom klikněte na ikonu složky a vyberte nový certifikát, který se má nahrát pro položku registrace. Klikněte na **Uložit**.
 
@@ -116,7 +116,7 @@ Pokud chcete aktualizovat registraci skupiny v reakci na porušení zabezpečen�
 
 4. Klikněte na kartu **spravovat registrace** pro instanci služby Device Provisioning a pak klikněte na seznam **skupiny** registrací. V seznamu klikněte na název skupiny zápisu.
 
-5. Klikněte na **certifikát certifikační autority**a vyberte nový certifikát kořenové certifikační autority. Potom klikněte na **Uložit**. 
+5. Klikněte na **certifikát certifikační autority** a vyberte nový certifikát kořenové certifikační autority. Potom klikněte na **Uložit**. 
 
     ![Vyberte certifikát nové kořenové certifikační autority pro ohrožený certifikát.](./media/how-to-roll-certificates/select-new-root-cert.png)
 
@@ -132,9 +132,9 @@ Pokud chcete aktualizovat registraci skupiny v reakci na porušení zabezpečen�
 
 #### <a name="update-compromised-intermediate-certificates"></a>Aktualizace zabezpečení zprostředkujících certifikátů
 
-1. Klikněte na **skupiny**registrací a potom v seznamu klikněte na název skupiny. 
+1. Klikněte na **skupiny** registrací a potom v seznamu klikněte na název skupiny. 
 
-2. Klikněte na **zprostředkující certifikát**a **odstraňte aktuální certifikát**. Klikněte na ikonu složky a přejděte k novému zprostředkujícímu certifikátu, který se má nahrát pro skupinu pro registraci. Až budete hotovi, klikněte na **Uložit** . Tyto kroky je třeba provést pro primární i sekundární certifikát, pokud dojde k ohrožení bezpečnosti obou.
+2. Klikněte na **zprostředkující certifikát** a **odstraňte aktuální certifikát**. Klikněte na ikonu složky a přejděte k novému zprostředkujícímu certifikátu, který se má nahrát pro skupinu pro registraci. Až budete hotovi, klikněte na **Uložit** . Tyto kroky je třeba provést pro primární i sekundární certifikát, pokud dojde k ohrožení bezpečnosti obou.
 
     Tento nový zprostředkující certifikát by měl být podepsaný ověřenou kořenovým certifikátem certifikační autority, který už je přidaný do služby zřizování. Další informace najdete v tématu [certifikáty X. 509](concepts-x509-attestation.md#x509-certificates).
 
@@ -162,7 +162,7 @@ Později, když se sekundární certifikát taky blíží vypršení platnosti a
 
 2. Klikněte na kartu **spravovat registrace** pro instanci služby Device Provisioning a pak klikněte na seznam **skupiny** registrací. V seznamu klikněte na název skupiny zápisu.
 
-3. Klikněte na **certifikát certifikační autority**a vyberte svůj nový kořenový certifikát certifikační autority pod konfigurací **sekundárního certifikátu** . Potom klikněte na **Uložit**. 
+3. Klikněte na **certifikát certifikační autority** a vyberte svůj nový kořenový certifikát certifikační autority pod konfigurací **sekundárního certifikátu** . Potom klikněte na **Uložit**. 
 
     ![Vyberte certifikát nové kořenové certifikační autority pro vypršení platnosti.](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
@@ -175,7 +175,7 @@ Později, když se sekundární certifikát taky blíží vypršení platnosti a
 #### <a name="update-expiring-intermediate-certificates"></a>Aktualizace s vypršenou platností zprostředkujících certifikátů
 
 
-1. Klikněte na **skupiny**registrací a v seznamu klikněte na název skupiny. 
+1. Klikněte na **skupiny** registrací a v seznamu klikněte na název skupiny. 
 
 2. Klikněte na **sekundární certifikát** a potom klikněte na ikonu složky a vyberte nový certifikát, který se má nahrát pro položku registrace. Klikněte na **Uložit**.
 

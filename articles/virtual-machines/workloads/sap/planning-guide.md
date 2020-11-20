@@ -5,18 +5,19 @@ author: MSSedusch
 manager: juergent
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: ea53eda3863ea5164142fa0d37fff7be365a4d5c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: c186e7beeed3a1729560d7deb002d573e0014508
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92894096"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950954"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -314,7 +315,7 @@ Papír doplňuje dokumentaci k instalaci SAP a poznámky SAP, které reprezentuj
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Cloud Computing je široce využívaný termín, který v rámci IT oboru získá více a větší důležitost, od malých společností až po velké a nadnárodní společnosti.
 
 Microsoft Azure je Cloud Services platforma od Microsoftu, která nabízí rozsáhlou škálu nových možností. Zákazníci teď můžou rychle zřídit a zrušit zřízení aplikací jako služby v cloudu, takže nejsou omezené na technické nebo rozpočtové omezení. Namísto investování času a rozpočtu do hardwarové infrastruktury se mohou společnosti soustředit na aplikace, obchodní procesy a její výhody pro zákazníky a uživatele.
@@ -339,7 +340,7 @@ V celém dokumentu používáme následující výrazy:
 * SAP na šířku: Tento pojem odkazuje na celé prostředky SAP v zákaznickém oddělení IT. SAP na šířku zahrnuje všechna produkční a neprodukční prostředí.
 * Systém SAP: kombinace vrstvy systému DBMS a vrstvy aplikace, například vývojového systému SAP ERP, SAP BW testovacího systému, SAP CRM produkčního systému atd. V nasazeních Azure není podpora rozdělují tyto dvě vrstvy mezi místními a Azure. Znamená, že systém SAP je buď nasazený místně, nebo je nasazený v Azure. Můžete ale nasadit různé systémy služby SAP na šířku do Azure nebo místního prostředí. Můžete například nasadit vývojové a testovací systémy SAP CRM v Azure, ale produkční systém SAP CRM v místním prostředí.
 * Propojení mezi různými místy: popisuje situaci, kdy se virtuální počítače nasazují do předplatného Azure, které má připojení typu Site-to-site, Multi-Site nebo ExpressRoute, mezi místními datacentra a Azure. V běžné dokumentaci k Azure jsou tyto typy nasazení popsány také jako mezi různými místními nebo hybridními scénáři. Důvodem připojení je rozšiřování místních domén, místní služby Active Directory/OpenLDAP a místní DNS do Azure. Místní orientace se rozšiřuje na prostředky v rámci předplatného Azure. S tímto rozšířením můžou být virtuální počítače součástí místní domény. Uživatelé domény v místní doméně mají přístup k serverům a můžou na těchto virtuálních počítačích spouštět služby (například služby DBMS). Je možné komunikovat a překlad názvů mezi virtuálními počítači nasazenými místně a virtuálními počítači nasazenými v Azure. Toto je nejběžnější a skoro exkluzivní případ nasazení prostředků SAP do Azure. Další informace najdete v [tomto][vpn-gateway-cross-premises-options] [článku a v tomto článku][vpn-gateway-site-to-site-create].
-* Rozšíření monitorování Azure, rozšířené monitorování a rozšíření Azure pro SAP: popisují jednu a stejnou položku. Popisuje rozšíření virtuálního počítače, které je potřeba nasadit, abyste mohli poskytovat základní data o infrastruktuře Azure pro agenta hostitele SAP. Poznámky SAP v SAP se můžou odkazovat jako na rozšíření monitorování nebo rozšířené monitorování. V Azure odkazujeme na ni jako na **rozšíření Azure pro SAP** .
+* Rozšíření monitorování Azure, rozšířené monitorování a rozšíření Azure pro SAP: popisují jednu a stejnou položku. Popisuje rozšíření virtuálního počítače, které je potřeba nasadit, abyste mohli poskytovat základní data o infrastruktuře Azure pro agenta hostitele SAP. Poznámky SAP v SAP se můžou odkazovat jako na rozšíření monitorování nebo rozšířené monitorování. V Azure odkazujeme na ni jako na **rozšíření Azure pro SAP**.
 
 > [!NOTE]
 > Mezi místní nebo hybridní nasazení systémů SAP, kde je Azure Virtual Machines běžící systémy SAP, jsou pro produkční systémy SAP podporovány členy místní domény. Mezi místními nebo hybridními konfiguracemi se podporuje nasazení částí nebo kompletní řešení SAP v Azure do Azure. I když v Azure běží kompletní prostředí SAP na pracovišti, je potřeba mít tyto virtuální počítače v rámci místní domény a reklamy/OpenLDAP.
@@ -494,7 +495,7 @@ Další informace o cenách na místě najdete v článku [Virtual Machines na m
 Azure navíc nabízí koncepty vyhrazeného hostitele. Koncept vyhrazeného hostitele nabízí větší kontrolu nad cykly oprav, které provádí Azure. Můžete si čas opravit podle vašich vlastních plánů. Tato nabídka je konkrétně zaměřená na zákazníky s úlohou, která nemusí následovat po běžném cyklu úlohy. Pokud si chcete přečíst koncepty nabídek vyhrazených hostitelů Azure, přečtěte si článek [vyhrazený hostitel Azure](../../dedicated-hosts.md). Použití této nabídky je podporováno pro úlohy SAP a používá se několika zákazníky SAP, kteří chtějí mít větší kontrolu nad opravou infrastruktury a s případnými plány údržby společnosti Microsoft. Další informace o tom, jak Microsoft udržuje a opraví infrastrukturu Azure, která je hostitelem virtuálních počítačů, najdete [v článku údržba virtuálních počítačů v Azure](../../maintenance-and-updates.md).
 
 #### <a name="generation-1-and-generation-2-virtual-machines"></a>Generace 1 a generace 2 – virtuální počítače
-Hypervisor Microsoftu dokáže zvládnout dvě různé generace virtuálních počítačů. Tyto formáty se nazývají **generace 1** a **generace 2** . **Generace 2** byla představena v roce 2012 s hypervisorem systému Windows Server 2012. Azure se spustil s použitím virtuálních počítačů 1. generace. Při nasazení virtuálních počítačů Azure stále používá výchozí formát 1. generace. Mezitím můžete nasadit i formáty virtuálních počítačů 2. generace. [Podpora virtuálních počítačů 2. generace v Azure](../../generation-2.md) obsahuje seznam rodin virtuálních počítačů Azure, které se dají nasadit jako virtuální počítač 2. generace. Tento článek obsahuje taky důležité funkční rozdíly virtuálních počítačů generace 2, které můžou běžet na privátním cloudu Hyper-V a v Azure. Důležitější Tento článek také obsahuje seznam funkčních rozdílů mezi virtuálními počítači 1. generace a virtuálními počítači 2. generace, které jsou spuštěny v Azure.
+Hypervisor Microsoftu dokáže zvládnout dvě různé generace virtuálních počítačů. Tyto formáty se nazývají **generace 1** a **generace 2**. **Generace 2** byla představena v roce 2012 s hypervisorem systému Windows Server 2012. Azure se spustil s použitím virtuálních počítačů 1. generace. Při nasazení virtuálních počítačů Azure stále používá výchozí formát 1. generace. Mezitím můžete nasadit i formáty virtuálních počítačů 2. generace. [Podpora virtuálních počítačů 2. generace v Azure](../../generation-2.md) obsahuje seznam rodin virtuálních počítačů Azure, které se dají nasadit jako virtuální počítač 2. generace. Tento článek obsahuje taky důležité funkční rozdíly virtuálních počítačů generace 2, které můžou běžet na privátním cloudu Hyper-V a v Azure. Důležitější Tento článek také obsahuje seznam funkčních rozdílů mezi virtuálními počítači 1. generace a virtuálními počítači 2. generace, které jsou spuštěny v Azure.
 
 > [!NOTE]
 > Existují funkční rozdíly virtuálních počítačů generace 1 a generace 2 spuštěných v Azure. Přečtěte si článek  [Podpora virtuálních počítačů 2. generace v Azure, kde](../../generation-2.md) najdete seznam těchto rozdílů.
@@ -856,7 +857,7 @@ Pokud je virtuální počítač dostatečně připravený, aby byl obecný a nak
 ---
 > ![Logo Windows][Logo_Windows] Windows
 >
-> Posledním krokem je přihlášení k virtuálnímu počítači pomocí účtu správce. Otevřete okno příkazového řádku systému Windows jako *správce* . Přejít na%windir%\Windows\System32\Sysprep a provést sysprep.exe.
+> Posledním krokem je přihlášení k virtuálnímu počítači pomocí účtu správce. Otevřete okno příkazového řádku systému Windows jako *správce*. Přejít na%windir%\Windows\System32\Sysprep a provést sysprep.exe.
 > Zobrazí se malé okno. Je důležité zaškrtnout možnost **generalizace** (výchozí nastavení je nezaškrtnuto) a změnit možnost vypnutí z výchozí hodnoty ' restartovat ' na ' vypínání '. Tento postup předpokládá, že se proces Sysprep v hostovaném operačním systému virtuálního počítače spustil místně.
 > Pokud chcete provést postup s virtuálním počítačem, který už běží v Azure, postupujte podle kroků popsaných v [tomto článku](../../windows/capture-image-resource.md).
 >
@@ -1178,7 +1179,7 @@ Další návrhy a další podrobnosti, konkrétně pro virtuální počítače s
 
 Ve většině scénářů je potřeba vytvořit další disky, aby bylo možné nasadit databázi SAP do virtuálního počítače. Mluvili o požadavcích na počet disků v kapitole [VM/disková struktura pro nasazení SAP][planning-guide-5.5.1] tohoto dokumentu. Azure Portal umožňuje připojit a odpojit disky po nasazení základního virtuálního počítače. Disky je možné připojit/odpojit, když je virtuální počítač v provozu i když je zastavený. Když připojíte disk, Azure Portal nabídky připojit prázdný disk nebo existující disk, který v tomto okamžiku není připojen k jinému virtuálnímu počítači.
 
-**Poznámka** : disky je možné v daném okamžiku připojit pouze k jednomu virtuálnímu počítači.
+**Poznámka**: disky je možné v daném okamžiku připojit pouze k jednomu virtuálnímu počítači.
 
 ![Připojení a odpojení disků pomocí Azure Storage úrovně Standard][planning-guide-figure-1400]
 
@@ -1186,7 +1187,7 @@ Během nasazování nového virtuálního počítače se můžete rozhodnout, je
 
 V dalším kroku se musíte rozhodnout, jestli chcete vytvořit nový a prázdný disk, nebo jestli chcete vybrat existující disk, který jste nahráli dříve, a měl by se teď připojit k virtuálnímu počítači.
 
-**Důležité** : **nechcete používat** ukládání hostitelů do mezipaměti ve službě Azure Storage úrovně Standard. Měli byste ponechat předvolby mezipaměti hostitele ve výchozím nastavení NONE. V případě služby Azure Premium Storage je vhodné povolit ukládání do mezipaměti pro čtení, pokud jsou vstupně-výstupní charakteristiky většinou čteny jako typický vstupně-výstupní přenos dat pro databázové datové soubory. V případě souboru protokolu transakcí databáze není doporučeno ukládat do mezipaměti.
+**Důležité**: **nechcete používat** ukládání hostitelů do mezipaměti ve službě Azure Storage úrovně Standard. Měli byste ponechat předvolby mezipaměti hostitele ve výchozím nastavení NONE. V případě služby Azure Premium Storage je vhodné povolit ukládání do mezipaměti pro čtení, pokud jsou vstupně-výstupní charakteristiky většinou čteny jako typický vstupně-výstupní přenos dat pro databázové datové soubory. V případě souboru protokolu transakcí databáze není doporučeno ukládat do mezipaměti.
 
 ---
 > ![Logo Windows][Logo_Windows] Windows
@@ -1269,13 +1270,13 @@ Je možné, že bude nutné nakonfigurovat bránu firewall na virtuálních poč
 > Ve výchozím nastavení je brána Windows Firewall v rámci virtuálního počítače nasazeného v Azure zapnutá. Nyní je třeba umožnit otevření portu SAP, jinak se grafické uživatelské rozhraní SAP nebude moci připojit.
 > Použijte následující postup:
 >
-> * Otevřete ovládací panely \ systém a Security\Windows firewall pro **Pokročilá nastavení** .
-> * Nyní klikněte pravým tlačítkem na příchozí pravidla a zvolte **nové pravidlo** .
+> * Otevřete ovládací panely \ systém a Security\Windows firewall pro **Pokročilá nastavení**.
+> * Nyní klikněte pravým tlačítkem na příchozí pravidla a zvolte **nové pravidlo**.
 > * V následujícím průvodci se zvolilo vytvoření nového pravidla **portu** .
 > * V dalším kroku průvodce ponechte nastavení na TCP a zadejte číslo portu, který chcete otevřít. Vzhledem k tomu, že naše ID instance SAP je 00, trvala 3200. Pokud má vaše instance jiné číslo instance, je nutné otevřít port, který jste definovali dříve v závislosti na číslu instance.
 > * V další části Průvodce musíte opustit položku **Povolení připojení** zaškrtnuto.
 > * V dalším kroku průvodce potřebujete definovat, jestli se pravidlo vztahuje k doméně, soukromé a veřejné síti. Podle potřeby je upravte. Pokud se ale připojujete pomocí grafického uživatelského rozhraní SAP z vnějšku přes veřejnou síť, musíte použít pravidlo pro veřejnou síť.
-> * V posledním kroku průvodce pojmenujte pravidlo a uložte ho stisknutím tlačítka **Dokončit** .
+> * V posledním kroku průvodce pojmenujte pravidlo a uložte ho stisknutím tlačítka **Dokončit**.
 >
 > Pravidlo se okamžitě projeví.
 >
@@ -1510,7 +1511,7 @@ az vm unmanaged-disk attach --resource-group $rgName --vm-name SAPERPDemo --size
 az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 --disk datadisk --new
 ```
 
-##### <a name="template"></a>Šablona
+##### <a name="template"></a>Template (Šablona)
 
 Ukázkové šablony můžete použít v úložišti Azure-Rychlé šablony na GitHubu.
 
@@ -1776,8 +1777,8 @@ Termín **vysoké dostupnosti (ha)** se obecně týká sady technologií, která
 
 Diskuzi o vysoké dostupnosti SAP v Azure můžeme rozdělit do dvou částí:
 
-* **Infrastruktura Azure s vysokou dostupností** , například ha pro výpočetní prostředky (virtuální počítače), síť, úložiště atd. a její výhody při zvyšování dostupnosti aplikace SAP.
-* **Vysoká dostupnost aplikace SAP** , například ha softwarových komponent SAP:
+* **Infrastruktura Azure s vysokou dostupností**, například ha pro výpočetní prostředky (virtuální počítače), síť, úložiště atd. a její výhody při zvyšování dostupnosti aplikace SAP.
+* **Vysoká dostupnost aplikace SAP**, například ha softwarových komponent SAP:
   * Aplikační servery SAP
   * Instance SAP ASCS/SCS
   * Server DB

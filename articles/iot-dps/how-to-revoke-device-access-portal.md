@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: f5bedde9e5e095b1b8637a09263bf18b06bcddea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 120446472038076e34f62b47ba79348e5de8b972
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532337"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951073"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Postup při rušení registrace zařízení z Azure IoT Hub Device Provisioning Service
 
@@ -32,7 +32,7 @@ Pokud chcete zařízení dočasně zakázat tím, že zakážete jeho zápis:
 
 1. Přihlaste se k Azure Portal a v nabídce vlevo vyberte **všechny prostředky** .
 2. V seznamu prostředků vyberte službu zřizování, ze které chcete zakázat vaše zařízení.
-3. V rámci služby zřizování vyberte možnost **spravovat registrace**a pak vyberte kartu **jednotlivé registrace** .
+3. V rámci služby zřizování vyberte možnost **spravovat registrace** a pak vyberte kartu **jednotlivé registrace** .
 4. Vyberte položku registrace pro zařízení, které chcete zakázat. 
 
     ![Vyberte svoji jednotlivou registraci.](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
@@ -45,7 +45,7 @@ Pokud chcete zařízení trvale zakázat odstraněním jeho registračního záz
 
 1. Přihlaste se k Azure Portal a v nabídce vlevo vyberte **všechny prostředky** .
 2. V seznamu prostředků vyberte službu zřizování, ze které chcete zakázat vaše zařízení.
-3. V rámci služby zřizování vyberte možnost **spravovat registrace**a pak vyberte kartu **jednotlivé registrace** .
+3. V rámci služby zřizování vyberte možnost **spravovat registrace** a pak vyberte kartu **jednotlivé registrace** .
 4. Zaškrtněte políčko vedle položky registrace zařízení, které chcete zakázat. 
 5. V horní části okna vyberte **Odstranit** a pak kliknutím na **Ano** potvrďte, že chcete registraci odebrat. 
 
@@ -56,7 +56,7 @@ Po dokončení postupu byste měli vidět, že se vaše položka odebrala ze sez
 
 ## <a name="disallow-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>Zakažte certifikát X. 509 zprostředkující nebo kořenové certifikační autority pomocí skupiny registrace.
 
-Certifikáty X. 509 jsou obvykle uspořádány v řetězu certifikátů důvěryhodnosti. Pokud dojde k ohrožení bezpečnosti certifikátu v jakékoli fázi v řetězci, je vztah důvěryhodnosti přerušený. Aby se zabránilo službě zřizování zařízení v jakémkoli řetězci, který tento certifikát obsahuje, musí být certifikát zakázaný. Další informace o certifikátech X. 509 a o tom, jak se používají se službou zřizování, najdete v tématu [certifikáty x. 509](./concepts-security.md#x509-certificates). 
+Certifikáty X. 509 jsou obvykle uspořádány v řetězu certifikátů důvěryhodnosti. Pokud dojde k ohrožení bezpečnosti certifikátu v jakékoli fázi v řetězci, je vztah důvěryhodnosti přerušený. Aby se zabránilo službě zřizování zařízení v jakémkoli řetězci, který tento certifikát obsahuje, musí být certifikát zakázaný. Další informace o certifikátech X. 509 a o tom, jak se používají se službou zřizování, najdete v tématu [certifikáty x. 509](./concepts-x509-attestation.md#x509-certificates). 
 
 Skupina registrací je záznam pro zařízení, která sdílejí běžný mechanismus ověřování certifikátů X. 509 podepsaných stejnou zprostředkující nebo kořenovou certifikační autoritou. Položka skupiny registrací je nakonfigurovaná s certifikátem X. 509 přidruženým k zprostředkující nebo kořenové certifikační autoritě. Tato položka je taky nakonfigurovaná s použitím hodnot konfigurace, jako je například zdvojený stav a připojení ke službě IoT Hub, které jsou sdíleny zařízeními s tímto certifikátem v řetězu certifikátů. Chcete-li zakázat certifikát, můžete buď zakázat nebo odstranit jeho skupinu registrací.
 
@@ -64,7 +64,7 @@ Dočasné zakázání certifikátu tím, že zakážete jeho skupinu registrace:
 
 1. Přihlaste se k Azure Portal a v nabídce vlevo vyberte **všechny prostředky** .
 2. V seznamu prostředků vyberte službu zřizování, ze které chcete zakázat podpisový certifikát.
-3. Ve vaší službě zřizování vyberte **spravovat registrace**a pak vyberte kartu **skupiny** registrací.
+3. Ve vaší službě zřizování vyberte **spravovat registrace** a pak vyberte kartu **skupiny** registrací.
 4. Vyberte skupinu registrace pomocí certifikátu, který chcete zakázat.
 5. V přepínači **Povolit položku** vyberte **Zakázat** a pak vyberte **Uložit**.  
 
@@ -75,7 +75,7 @@ Chcete-li certifikát trvale zakázat odstraněním jeho registrační skupiny:
 
 1. Přihlaste se k Azure Portal a v nabídce vlevo vyberte **všechny prostředky** .
 2. V seznamu prostředků vyberte službu zřizování, ze které chcete zakázat vaše zařízení.
-3. Ve vaší službě zřizování vyberte **spravovat registrace**a pak vyberte kartu **skupiny** registrací.
+3. Ve vaší službě zřizování vyberte **spravovat registrace** a pak vyberte kartu **skupiny** registrací.
 4. Zaškrtněte políčko vedle skupiny registrace pro certifikát, který chcete zakázat. 
 5. V horní části okna vyberte **Odstranit** a pak kliknutím na **Ano** potvrďte, že chcete odebrat skupinu registrací. 
 
@@ -94,7 +94,7 @@ Pokud chcete zakázat jednotlivá zařízení ve skupině registrací, postupujt
 
 1. Přihlaste se k Azure Portal a v nabídce vlevo vyberte **všechny prostředky** .
 2. V seznamu prostředků vyberte službu zřizování, která obsahuje skupinu registrace pro zařízení, které chcete zakázat.
-3. V rámci služby zřizování vyberte možnost **spravovat registrace**a pak vyberte kartu **jednotlivé registrace** .
+3. V rámci služby zřizování vyberte možnost **spravovat registrace** a pak vyberte kartu **jednotlivé registrace** .
 4. V horní části vyberte tlačítko **přidat jednotlivou registraci** . 
 5. Na stránce **Přidat registraci** jako **mechanismus** ověřování pro zařízení vyberte **X. 509** .
 
@@ -110,4 +110,4 @@ Po úspěšném vytvoření registrace byste měli vidět zakázaný zápis zař
 
 ## <a name="next-steps"></a>Další kroky
 
-Zrušení registrace je také součástí většího procesu rušení. Zrušení zřízení zařízení zahrnuje jak zrušit registraci ze služby zřizování, a zrušit registraci ze služby IoT Hub. Další informace o plném procesu najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) . 
+Zrušení registrace je také součástí většího procesu rušení. Zrušení zřízení zařízení zahrnuje jak zrušit registraci ze služby zřizování, a zrušit registraci ze služby IoT Hub. Další informace o plném procesu najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) .

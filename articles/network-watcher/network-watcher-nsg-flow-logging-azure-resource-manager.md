@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 6d16d878b0cf7a73c87b5d6e9263a24c4dfb4383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8db4d4ae56a5a0ee0c92de5d9822614a3270b1c5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738137"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948676"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Konfigurace protokolů toku NSG ze šablony Azure Resource Manager
 
@@ -31,15 +31,15 @@ ms.locfileid: "84738137"
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
-[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) je nativní a výkonný způsob správy vaší [infrastruktury jako kódu](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)v Azure.
+[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) je nativní a výkonný způsob správy vaší [infrastruktury jako kódu](/azure/devops/learn/what-is-infrastructure-as-code)v Azure.
 
-V tomto článku se dozvíte, jak povolit [protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) programově pomocí šablony Azure Resource Manager a Azure PowerShell. Začneme tak, že poskytneme Přehled vlastností objektu log Flow NSG následovaný několika ukázkovými šablonami. Pak šablonu nasadíme pomocí místní instance prostředí PowerShell.
+V tomto článku se dozvíte, jak povolit [protokoly toku NSG](./network-watcher-nsg-flow-logging-overview.md) programově pomocí šablony Azure Resource Manager a Azure PowerShell. Začneme tak, že poskytneme Přehled vlastností objektu log Flow NSG následovaný několika ukázkovými šablonami. Pak šablonu nasadíme pomocí místní instance prostředí PowerShell.
 
 
 ## <a name="nsg-flow-logs-object"></a>Objekt protokolů toku NSG
 
 V následujícím seznamu jsou uvedeny objekty protokolů toku NSG se všemi parametry.
-Úplný přehled vlastností najdete v článku [referenční informace k šabloně NSG Flow log](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters).
+Úplný přehled vlastností najdete v článku [referenční informace k šabloně NSG Flow log](/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters).
 
 ```json
 {
@@ -76,8 +76,8 @@ Pokud chcete vytvořit prostředek Microsoft. Network/networkWatchers/flowLogs, 
 
 Pokud používáte šablony Azure Resource Manager poprvé, můžete o nich získat další informace pomocí níže uvedených odkazů.
 
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell#deploy-local-template)
-* [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+* [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)
 
 
 Níže jsou uvedeny dva příklady kompletních šablon pro nastavení protokolů toku NSG.
@@ -172,14 +172,14 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 
 ## <a name="verifying-your-deployment"></a>Ověření nasazení
 
-Existuje několik způsobů, jak ověřit, zda nasazení proběhlo úspěšně. Konzola PowerShellu by měla zobrazit "ProvisioningState" jako "úspěch". Kromě toho můžete navštívit [stránku portálu NSG Flow logs](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) a potvrdit změny. Pokud se s nasazením vyskytly problémy, podívejte se na [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors).
+Existuje několik způsobů, jak ověřit, zda nasazení proběhlo úspěšně. Konzola PowerShellu by měla zobrazit "ProvisioningState" jako "úspěch". Kromě toho můžete navštívit [stránku portálu NSG Flow logs](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) a potvrdit změny. Pokud se s nasazením vyskytly problémy, podívejte se na [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md).
 
 ## <a name="deleting-your-resource"></a>Odstraňování prostředku
-Azure umožňuje odstraňování prostředků prostřednictvím "kompletního" režimu nasazení. Pokud chcete odstranit prostředek toků protokolů, zadejte nasazení v režimu úplné bez zahrnutí prostředku, který chcete odstranit. Přečtěte si další informace o [režimu úplného nasazení](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode) .
+Azure umožňuje odstraňování prostředků prostřednictvím "kompletního" režimu nasazení. Pokud chcete odstranit prostředek toků protokolů, zadejte nasazení v režimu úplné bez zahrnutí prostředku, který chcete odstranit. Přečtěte si další informace o [režimu úplného nasazení](../azure-resource-manager/templates/deployment-modes.md#complete-mode) .
 
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se vizualizovat data toku NSG pomocí:
 * [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 * [Nástroje pro open source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
-* [Analýza provozu Azure](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Analýza provozu Azure](./traffic-analytics.md)

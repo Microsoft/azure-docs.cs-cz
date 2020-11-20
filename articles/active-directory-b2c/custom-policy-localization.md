@@ -10,18 +10,18 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cdd7f4957b22eb4c87d60e3d57b0cec675659963
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 7ba0604c0fb1a51c5276f2a28fb0e39b878b7639
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131798"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949560"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Lokalizace uživatelského rozhraní vaší aplikace pomocí vlastní zásady v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Přizpůsobení jazyka v Azure Active Directory B2C (Azure AD B2C) umožňuje přizpůsobit různé jazyky podle potřeb vašich zákazníků. Společnost Microsoft poskytuje překlady pro [jazyky 36](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages), ale můžete také zadat vlastní překlady pro libovolný jazyk. I v případě, že je vaše prostředí k dispozici pouze pro jeden jazyk, můžete přizpůsobit libovolný text na stránkách. 
+Přizpůsobení jazyka v Azure Active Directory B2C (Azure AD B2C) umožňuje přizpůsobit různé jazyky podle potřeb vašich zákazníků. Společnost Microsoft poskytuje překlady pro [jazyky 36](./user-flow-language-customization.md#supported-languages), ale můžete také zadat vlastní překlady pro libovolný jazyk. I v případě, že je vaše prostředí k dispozici pouze pro jeden jazyk, můžete přizpůsobit libovolný text na stránkách. 
 
 V tomto článku se dozvíte, jak v zásadách pro cesty uživatelů podporovat několik národních prostředí nebo jazyků. Lokalizace vyžaduje tři kroky: nastavte explicitní seznam podporovaných jazyků, zadejte řetězce a kolekce specifické pro jazyk a upravte [definici obsahu](contentdefinitions.md) pro stránku. 
 
@@ -246,7 +246,7 @@ V následujícím příkladu jsou vlastní řetězce anglické (EN) a španělš
 1. Uložte soubor rozšíření.
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. Vyhledejte a vyberte **Azure AD B2C**.
-1. V části **zásady**vyberte **Architektura prostředí identity**.
+1. V části **zásady** vyberte **Architektura prostředí identity**.
 1. Vyberte **Odeslat vlastní zásadu**.
 1. Nahrajte soubor rozšíření, který jste předtím změnili.
 
@@ -265,4 +265,3 @@ https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_s
 
 - Další informace o elementu [lokalizace](localization.md) najdete v referenčních informacích k IEF.
 - Podívejte se na seznam [ID lokalizačních řetězců](localization-string-ids.md) dostupných v Azure AD B2C.
-

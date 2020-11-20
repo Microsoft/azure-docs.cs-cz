@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
-ms.openlocfilehash: 68a7dd1b9a7af9f2667785c8b822b2771510d00e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562779"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949951"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C s využitím Azure Monitor
 
@@ -25,7 +25,7 @@ Pomocí Azure Monitor můžete směrovat přihlašování Azure Active Directory
 Události protokolu můžete směrovat do:
 
 * Účet služby Azure [Storage](../storage/blobs/storage-blobs-introduction.md).
-* [Pracovní prostor Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) (pro analýzu dat, vytváření řídicích panelů a upozornění na konkrétní události).
+* [Pracovní prostor Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) (pro analýzu dat, vytváření řídicích panelů a upozornění na konkrétní události).
 * [Centrum událostí](../event-hubs/event-hubs-about.md) Azure (a integrujte je s vašimi logickými instancemi Splunk a sumo).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak přenést protokoly do pracovního prostoru Az
 
 ## <a name="deployment-overview"></a>Přehled nasazení
 
-Azure AD B2C využívá [Azure Active Directory monitorování](../active-directory/reports-monitoring/overview-monitoring.md). Pokud chcete povolit *nastavení diagnostiky* v Azure Active Directory v rámci vašeho tenanta Azure AD B2C, použijte [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) k [delegování prostředku](../lighthouse/concepts/azure-delegated-resource-management.md), který umožňuje vašemu Azure AD B2C ( **poskytovateli služeb** ) spravovat prostředek služby Azure AD ( **zákazníka** ). Po dokončení kroků v tomto článku budete mít přístup ke skupině prostředků *Azure-AD-B2C-monitor* , která obsahuje [pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md) na portálu **Azure AD B2C** . Protokoly budete moct přenést z Azure AD B2C do pracovního prostoru Log Analytics.
+Azure AD B2C využívá [Azure Active Directory monitorování](../active-directory/reports-monitoring/overview-monitoring.md). Pokud chcete povolit *nastavení diagnostiky* v Azure Active Directory v rámci vašeho tenanta Azure AD B2C, použijte [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) k [delegování prostředku](../lighthouse/concepts/azure-delegated-resource-management.md), který umožňuje vašemu Azure AD B2C ( **poskytovateli služeb**) spravovat prostředek služby Azure AD ( **zákazníka**). Po dokončení kroků v tomto článku budete mít přístup ke skupině prostředků *Azure-AD-B2C-monitor* , která obsahuje [pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md) na portálu **Azure AD B2C** . Protokoly budete moct přenést z Azure AD B2C do pracovního prostoru Log Analytics.
 
 Během tohoto nasazení autorizujete uživatele nebo skupinu v adresáři Azure AD B2C ke konfiguraci instance pracovního prostoru Log Analytics v rámci tenanta, který obsahuje vaše předplatné Azure. Pokud chcete vytvořit autorizaci, nasadíte šablonu [Azure Resource Manager](../azure-resource-manager/index.yml) do svého tenanta služby Azure AD obsahujícího předplatné.
 
@@ -87,7 +87,7 @@ Pro usnadnění správy doporučujeme použít pro každou roli *skupiny* uživa
 
 ### <a name="33-create-an-azure-resource-manager-template"></a>3,3 Vytvoření šablony Azure Resource Manager
 
-V dalším kroku vytvoříte šablonu Azure Resource Manager, která uděluje Azure AD B2C přístup k této skupině prostředků Azure AD, kterou jste vytvořili dříve (například *Azure-AD-B2C-monitor* ). Nasaďte šablonu z ukázky na GitHubu pomocí tlačítka **nasadit do Azure** , které otevře Azure Portal a umožňuje konfiguraci a nasazení šablony přímo na portálu. V případě těchto kroků se ujistěte, že jste přihlášeni ke svému tenantovi služby Azure AD (nikoli k tenantovi Azure AD B2C).
+V dalším kroku vytvoříte šablonu Azure Resource Manager, která uděluje Azure AD B2C přístup k této skupině prostředků Azure AD, kterou jste vytvořili dříve (například *Azure-AD-B2C-monitor*). Nasaďte šablonu z ukázky na GitHubu pomocí tlačítka **nasadit do Azure** , které otevře Azure Portal a umožňuje konfiguraci a nasazení šablony přímo na portálu. V případě těchto kroků se ujistěte, že jste přihlášeni ke svému tenantovi služby Azure AD (nikoli k tenantovi Azure AD B2C).
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho TENANTA **Azure AD** .
@@ -239,7 +239,7 @@ Podle pokynů níže vytvořte nový sešit pomocí šablony Galerie JSON. Tento
 1. Použijte šablonu pomocí tlačítka **použít** .
 1. Kliknutím na tlačítko **Úpravy Hotovo** na panelu nástrojů dokončíte úpravy sešitu.
 1. Nakonec sešit uložte pomocí tlačítka **Uložit** na panelu nástrojů.
-1. Zadejte **název** , například *Azure AD B2C řídicí panel*.
+1. Zadejte **název**, například *Azure AD B2C řídicí panel*.
 1. Vyberte **Uložit**.
 
     ![Uložit sešit](./media/azure-monitor/wrkb-title.png)

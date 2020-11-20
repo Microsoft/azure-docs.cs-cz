@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: damendo
-ms.openlocfilehash: a603f55bd5bff7b2ed68623e9c712faaf8ac766f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 54b87da73d4427234e65e406d183525d55c6c00d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876952"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948540"
 ---
 # <a name="quickstart-deploy-and-manage-nsg-flow-logs-using-azure-policy"></a>Rychlý Start: nasazení a správa protokolů toku NSG pomocí Azure Policy 
 
@@ -25,8 +25,8 @@ ms.locfileid: "91876952"
 Služba Azure Policy pomáhá vynutit standardy organizace a vyhodnotit dodržování předpisů s podporou škálování. Běžné případy použití pro Azure Policy zahrnují implementaci zásad správného řízení pro konzistenci prostředků, dodržování legislativních předpisů, zabezpečení, náklady a správu. V tomto článku použijeme dvě předdefinované zásady, které jsou dostupné pro protokoly toku NSG ke správě nastavení protokolů toku. První zásada označí všechny skupin zabezpečení sítě bez povolených protokolů Flow. Druhá zásada automaticky nasadí protokoly toku pro skupin zabezpečení sítě bez povolených protokolů Flow. 
 
 Pokud vytváříte zásady Azure poprvé, můžete si přečíst: 
-- [Přehled Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) 
-- [Kurz pro vytváření zásad](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal#create-a-policy-assignment)
+- [Přehled Azure Policy](../governance/policy/overview.md) 
+- [Kurz pro vytváření zásad](../governance/policy/assign-policy-portal.md#create-a-policy-assignment)
 
 
 ## <a name="locate-the-policies"></a>Vyhledat zásady
@@ -134,5 +134,5 @@ Po vaší zásadě byste měli vidět, jako je třeba následující snímek obr
 
 ## <a name="next-steps"></a>Další kroky 
 
--   V tomto [kurzu](https://docs.microsoft.com/azure/network-watcher/quickstart-configure-network-security-group-flow-logs-from-arm-template) získáte hlubší použití šablon ARM k nasazení protokolů toku a analýza provozu.
--   Další informace o [Network Watcher](https://docs.microsoft.com/azure/network-watcher/)
+-   V tomto [kurzu](./quickstart-configure-network-security-group-flow-logs-from-arm-template.md) získáte hlubší použití šablon ARM k nasazení protokolů toku a analýza provozu.
+-   Další informace o [Network Watcher](./index.yml)

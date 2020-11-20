@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a9323cc92567d681ee8c73a62e0b89c17c22b1e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a5fcbf80850fd9de77e6f9a431afea6d48cb14d1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647609"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949407"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph
 
@@ -35,13 +35,13 @@ Pokud chcete vytvořit registraci aplikace, kterou může vaše aplikace pro spr
 
 ## <a name="user-management-microsoft-graph-operations"></a>Operace Microsoft Graph správy uživatelů
 
-V [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user)jsou k dispozici následující operace správy uživatelů:
+V [rozhraní Microsoft Graph API](/graph/api/resources/user)jsou k dispozici následující operace správy uživatelů:
 
-- [Získat seznam uživatelů](https://docs.microsoft.com/graph/api/user-list)
-- [Vytvoření uživatele](https://docs.microsoft.com/graph/api/user-post-users)
-- [Získat uživatele](https://docs.microsoft.com/graph/api/user-get)
-- [Aktualizace uživatele](https://docs.microsoft.com/graph/api/user-update)
-- [Odstranění uživatele](https://docs.microsoft.com/graph/api/user-delete)
+- [Získat seznam uživatelů](/graph/api/user-list)
+- [Vytvoření uživatele](/graph/api/user-post-users)
+- [Získat uživatele](/graph/api/user-get)
+- [Aktualizace uživatele](/graph/api/user-update)
+- [Odstranění uživatele](/graph/api/user-delete)
 
 ## <a name="user-properties"></a>Uživatelské vlastnosti
 
@@ -125,7 +125,7 @@ Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s 
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Ukázka kódu: jak programově spravovat uživatelské účty
 
-Tato ukázka kódu je Konzolová aplikace .NET Core, která používá [sadu SDK Microsoft Graph](https://docs.microsoft.com/graph/sdks/sdks-overview) k interakci s rozhraním API Microsoft Graph. Jeho kód ukazuje, jak volat rozhraní API pro programovou správu uživatelů v klientovi Azure AD B2C.
+Tato ukázka kódu je Konzolová aplikace .NET Core, která používá [sadu SDK Microsoft Graph](/graph/sdks/sdks-overview) k interakci s rozhraním API Microsoft Graph. Jeho kód ukazuje, jak volat rozhraní API pro programovou správu uživatelů v klientovi Azure AD B2C.
 Můžete [si stáhnout ukázkový archiv](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*. zip), [Procházet úložiště](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) na GitHubu nebo klonovat úložiště:
 
 ```cmd
@@ -152,7 +152,7 @@ Aplikace zobrazí seznam příkazů, které lze spustit. Můžete například z�
 
 ### <a name="code-discussion"></a>Diskuze o kódu
 
-Vzorový kód používá [sadu Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview), která je navržená tak, aby zjednodušila vytváření vysoce kvalitních, efektivních a odolných aplikací, které přistupují k Microsoft Graph.
+Vzorový kód používá [sadu Microsoft Graph SDK](/graph/sdks/sdks-overview), která je navržená tak, aby zjednodušila vytváření vysoce kvalitních, efektivních a odolných aplikací, které přistupují k Microsoft Graph.
 
 Jakýkoli požadavek na rozhraní Microsoft Graph API vyžaduje přístupový token pro ověřování. Řešení využívá balíček NuGet [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) , který poskytuje obálku Microsoft Authentication Library (MSAL) založenou na scénáři ověřování pro použití s Microsoft Graph SDK.
 
@@ -203,7 +203,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Volání rozhraní API pomocí Microsoft Graph sady SDK](https://docs.microsoft.com/graph/sdks/create-requests) obsahují informace o tom, jak číst a zapisovat informace z Microsoft Graph, použít `$select` k řízení vrácených vlastností, zadání vlastních parametrů dotazu a použití `$filter` `$orderBy` parametrů dotazu a.
+[Volání rozhraní API pomocí Microsoft Graph sady SDK](/graph/sdks/create-requests) obsahují informace o tom, jak číst a zapisovat informace z Microsoft Graph, použít `$select` k řízení vrácených vlastností, zadání vlastních parametrů dotazu a použití `$filter` `$orderBy` parametrů dotazu a.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -211,5 +211,5 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 
 <!-- LINK -->
 
-[graph-objectIdentity]: https://docs.microsoft.com/graph/api/resources/objectidentity
+[graph-objectIdentity]: /graph/api/resources/objectidentity
 [graph-user]: (https://docs.microsoft.com/graph/api/resources/user)

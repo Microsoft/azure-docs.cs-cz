@@ -7,17 +7,18 @@ author: msjuergent
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: b5a83b3976dd3d3af1bfd5695815f7571d73dd9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 522af4bf6cc711bbfdfd30d0443ee58dad56b87e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88652181"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950019"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Průvodce zálohováním pro SAP HANA v Azure Virtual Machines
 
@@ -116,12 +117,12 @@ Jak bylo uvedeno dříve, popis možností zálohování snímků Azure Backup, 
 > Zálohy na základě snímků disku pro SAP HANA v nasazeních, kde se používají víc databázových kontejnerů, vyžaduje minimální verzi HANA 2,0 SP04.
 > 
 
-Služba Azure Storage neposkytuje konzistenci systému souborů na více discích nebo svazcích, které jsou připojeny k virtuálnímu počítači během procesu snímku. To znamená, že konzistence aplikací během snímku musí být doručena aplikací, v tomto případě SAP HANA sebe sama. [Poznámka 2039883 pro SAP](https://launchpad.support.sap.com/#/notes/2039883) obsahuje důležité informace o SAP HANA zálohování podle snímků úložiště. Například u systémů souborů XFS je nutné před spuštěním snímku úložiště spustit ** \_ zablokování XFS** , aby se zajistila konzistence aplikace (podrobnosti o **XFS \_ zablokování**najdete na [stránce o XFS \_ zablokování (8) – Linux Man](https://linux.die.net/man/8/xfs_freeze) ).
+Služba Azure Storage neposkytuje konzistenci systému souborů na více discích nebo svazcích, které jsou připojeny k virtuálnímu počítači během procesu snímku. To znamená, že konzistence aplikací během snímku musí být doručena aplikací, v tomto případě SAP HANA sebe sama. [Poznámka 2039883 pro SAP](https://launchpad.support.sap.com/#/notes/2039883) obsahuje důležité informace o SAP HANA zálohování podle snímků úložiště. Například u systémů souborů XFS je nutné před spuštěním snímku úložiště spustit **\_ zablokování XFS** , aby se zajistila konzistence aplikace (podrobnosti o **XFS \_ zablokování** najdete na [stránce o XFS \_ zablokování (8) – Linux Man](https://linux.die.net/man/8/xfs_freeze) ).
 
 Za předpokladu, že existuje souborový systém XFS se čtyřmi virtuálními disky Azure, následující kroky poskytují konzistentní snímek, který představuje datovou oblast HANA:
 
 1. Příprava pro vytvoření snímku dat HANA
-1. Zablokovat systémy souborů pro všechny disky nebo svazky (například použít ** \_ zablokování XFS**)
+1. Zablokovat systémy souborů pro všechny disky nebo svazky (například použít **\_ zablokování XFS**)
 1. Vytvoření všech potřebných snímků objektů BLOB v Azure
 1. Uvolnit systém souborů
 1. Potvrzení snímku dat HANA (odstraní snímek)
