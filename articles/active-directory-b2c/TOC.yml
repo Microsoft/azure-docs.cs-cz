@@ -356,7 +356,7 @@
                       href: application-insights-technical-profile.md
                     - name: Azure Active Directory
                       href: active-directory-technical-profile.md
-                    - name: Azure Multi-Factor Authentication
+                    - name: Vícefaktorové ověřování Azure AD
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
                     - name: Samoobslužné resetování hesla Azure AD

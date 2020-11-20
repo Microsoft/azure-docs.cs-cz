@@ -184,9 +184,15 @@
               href: manage/pay-by-invoice.md
             - name: Vytvoření dalších předplatných
               href: manage/create-subscription.md
-            - name: Programové vytváření předplatných y využitím nejnovějšího rozhraní API
-              href: manage/programmatically-create-subscription.md
-            - name: Programové vytváření předplatných y využitím rozhraní API ve verzi Preview
+            - name: Programové vytváření předplatných EA s využitím nejnovějšího rozhraní API
+              href: manage/programmatically-create-subscription-enterprise-agreement.md
+            - name: Programové vytváření předplatných MCA s využitím nejnovějšího rozhraní API
+              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
+            - name: Programové vytváření předplatných MPA s využitím nejnovějšího rozhraní API
+              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
+            - name: Programové vytváření předplatných s využitím šablony ARM
+              href: manage/create-subscription-template.md
+            - name: Programové vytváření předplatných y využitím starého rozhraní API ve verzi Preview
               href: manage/programmatically-create-subscription-preview.md
             - name: Udělení přístupu pro vytváření předplatných EA
               href: manage/grant-access-to-create-subscription.md

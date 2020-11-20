@@ -12,12 +12,12 @@ metadata:
   ms.author: joflore
   ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 17775be39e534d0825596973452dabc13054ee8d
-  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+  ms.openlocfilehash: d484600da9be9d84b6af7ad31754ea86bf6b6873
+  ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/13/2020
-  ms.locfileid: "91968221"
+  ms.lasthandoff: 11/18/2020
+  ms.locfileid: "94838047"
 landingContent:
 - title: Informace o ověřování
   linkLists:
@@ -51,21 +51,21 @@ landingContent:
       url: howto-sspr-deployment.md
     - text: Povolení resetování hesla z přihlašovací obrazovky Windows
       url: howto-sspr-windows.md
-- title: Povolení služby Azure Multi-Factor Authentication
+- title: Povolení vícefaktorového ověřování Azure AD
   linkLists:
   - linkListType: concept
     links:
-    - text: Jak funguje Azure Multi-Factor Authentication
+    - text: Jak funguje vícefaktorové ověřování Azure AD
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: Povolení služby Azure Multi-Factor Authentication
+    - text: Povolení vícefaktorového ověřování Azure AD
       url: tutorial-enable-azure-mfa.md
-    - text: Zapnutí služby Azure Multi-Factor Authentication na základě rizikové události
+    - text: Zapnutí vícefaktorového ověřování Azure AD na základě rizikové události
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: Průvodce nasazením pro Azure Multi-Factor Authentication
+    - text: Průvodce nasazením pro vícefaktorové ověřování Azure AD
       url: howto-mfa-getstarted.md
     - text: Integrace místních aplikací pomocí rozšíření serveru NPS
       url: howto-mfa-nps-extension.md

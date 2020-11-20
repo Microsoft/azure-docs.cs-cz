@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: c0e8743d78c8eeafb5bdeb6ade783d5e75991f91
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: b8f95e7e173dd6d1ad43301aab8ff3ec7cf78018
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330984"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980996"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps
 
@@ -57,7 +57,7 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřený pouze po dobu [
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
    | **ADRESA URL PRO POST HTTP** | nTato | Yes | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
-   | **Schéma JSON pro tělo požadavku** | `schema` | No | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
+   | **Schéma JSON pro tělo požadavku** | `schema` | Ne | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
    |||||
 
 1. V poli **schématu JSON textu žádosti** můžete volitelně zadat schéma JSON, které popisuje tělo v příchozím požadavku, například:
@@ -153,7 +153,7 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřený pouze po dobu [
 
 1. Chcete-li ověřit, zda příchozí volání obsahuje text žádosti, který odpovídá zadanému schématu, postupujte podle těchto kroků:
 
-   1. V záhlaví triggeru žádosti vyberte tlačítko se třemi tečkami ( **...** ).
+   1. V záhlaví triggeru žádosti vyberte tlačítko se třemi tečkami (**...**).
 
    1. V nastavení triggeru zapněte **ověřování schématu** a vyberte **Hotovo**.
 
@@ -163,8 +163,8 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřený pouze po dobu [
 
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
-   | **Metoda** | `method` | No | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
-   | **Relativní cesta** | `relativePath` | No | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
+   | **Metoda** | `method` | Ne | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
+   | **Relativní cesta** | `relativePath` | Ne | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
    |||||
 
    Tento příklad přidá vlastnost **metody** :
@@ -190,9 +190,9 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřený pouze po dobu [
    > [!NOTE]
    > Pokud chcete při volání triggeru požadavku do identifikátoru URI zahrnout symbol hash nebo symbol křížku ( **#** ), použijte místo toho tuto kódovanou verzi: `%25%23`
 
-1. Pokud chcete aktivovat aplikaci logiky, odešlete příspěvek HTTP na vygenerovanou adresu URL.
+1. K otestování aplikace logiky odešlete požadavek HTTP na vygenerovanou adresu URL.
 
-   Můžete například použít nástroj, jako je například [post](https://www.getpostman.com/) , k odeslání HTTP POST. Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto aktivační událost, najdete v těchto tématech: [typ triggeru žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a [volání, Trigger nebo vnoření pracovních postupů pomocí koncových bodů HTTP v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
+   Pomocí nástroje, jako je například [post](https://www.getpostman.com/) , můžete například poslat požadavek HTTP. Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto aktivační událost, najdete v těchto tématech: [typ triggeru žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a [volání, Trigger nebo vnoření pracovních postupů pomocí koncových bodů HTTP v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
 Další informace o zabezpečení autorizace a šifrování příchozích volání do vaší aplikace logiky, jako je například TLS ( [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)), dříve označované jako SSL (Secure SOCKETS Layer) (SSL), [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), vystavení vaší aplikace logiky pomocí služby Azure API Management nebo omezení IP adres, které pocházejí z příchozích volání, najdete v tématu [zabezpečený přístup a přístup k datům pro příchozí volání aktivačních událostí](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
@@ -256,8 +256,8 @@ Když použijete Trigger žádosti pro zpracování příchozích požadavků, m
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
    | **Stavový kód** | `statusCode` | Yes | Stavový kód, který se má vrátit v odpovědi |
-   | **Hlavičky** | `headers` | No | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
-   | **Text** | `body` | No | Tělo odpovědi |
+   | **Hlavičky** | `headers` | Ne | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
+   | **Text** | `body` | Ne | Tělo odpovědi |
    |||||
 
 1. Chcete-li zadat další vlastnosti, jako je například schéma JSON pro tělo odpovědi, otevřete seznam **Přidat nový parametr** a vyberte parametry, které chcete přidat.

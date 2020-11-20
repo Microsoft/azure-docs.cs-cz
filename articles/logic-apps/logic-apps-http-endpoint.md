@@ -5,13 +5,13 @@ services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 08/27/2020
-ms.openlocfilehash: 8a59b47dadd845f1a522854c503af11c8fff72fd
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/19/2020
+ms.openlocfilehash: b345168dad63b1846d46c12721587eaffb5f887e
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331970"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981200"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Volání, triggery nebo vnořování aplikací logiky pomocí koncových bodů HTTPS v Azure Logic Apps
 
@@ -104,7 +104,7 @@ Další informace o zabezpečení autorizace a šifrování příchozích volán
 
    * Napravo od pole **Adresa URL http post** vyberte **Kopírovat adresu URL** (ikona zkopírovat soubory).
 
-   * Provést toto volání příspěvku:
+   * Toto volání proveďte pomocí metody, kterou Trigger požadavku očekává. Tento příklad používá `POST` metodu:
 
      `POST https://management.azure.com/{logic-app-resource-ID}/triggers/{endpoint-trigger-name}/listCallbackURL?api-version=2016-06-01`
 
@@ -124,9 +124,9 @@ Další informace o zabezpečení autorizace a šifrování příchozích volán
 
 ## <a name="select-expected-request-method"></a>Vybrat očekávanou metodu žádosti
 
-Ve výchozím nastavení očekává aktivační událost požadavek POST. Můžete zadat jinou metodu, která má být očekávána, ale pouze jediná metoda.
+Ve výchozím nastavení očekává Trigger žádosti `POST` požadavek. Můžete však zadat jinou metodu, kterou volající musí použít, ale pouze jedinou metodu.
 
-1. V aktivační události žádosti otevřete seznam **Přidat nový parametr** a vyberte **metodu** , která do triggeru přidá tuto vlastnost.
+1. V aktivační události žádosti otevřete seznam **Přidat nový parametr** a vyberte **metodu**, která do triggeru přidá tuto vlastnost.
 
    ![Přidat vlastnost Method k triggeru](./media/logic-apps-http-endpoint/select-add-new-parameter-for-method.png)
 
@@ -154,7 +154,7 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
 ### <a name="accept-values-through-get-parameters"></a>Přijmout hodnoty prostřednictvím parametrů GET
 
-1. V triggeru žádosti otevřete **seznam přidat nový parametr** , přidejte do triggeru vlastnost **Method** a vyberte metodu **Get** .
+1. V triggeru žádosti otevřete **seznam přidat nový parametr**, přidejte do triggeru vlastnost **Method** a vyberte metodu **Get** .
 
    Další informace najdete v tématu [Výběr očekávané metody žádosti](#select-method).
 
@@ -217,7 +217,7 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
 ### <a name="accept-values-through-a-relative-path"></a>Přijmout hodnoty pomocí relativní cesty
 
-1. V triggeru žádosti otevřete seznam **Přidat nový parametr** a vyberte **relativní cesta** , která přidá tuto vlastnost triggeru.
+1. V triggeru žádosti otevřete seznam **Přidat nový parametr** a vyberte **relativní cesta**, která přidá tuto vlastnost triggeru.
 
    ![Přidat vlastnost relativní cesty k triggeru](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
 
@@ -262,7 +262,7 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Volání aplikace logiky prostřednictvím adresy URL koncového bodu
 
-Po vytvoření koncového bodu můžete aktivovat aplikaci logiky odesláním `POST` požadavku https na úplnou adresu URL koncového bodu. Logic Apps mají integrovanou podporu koncových bodů s přímým přístupem.
+Po vytvoření koncového bodu můžete aktivovat aplikaci logiky odesláním požadavku HTTPS na úplnou adresu URL koncového bodu. Logic Apps mají integrovanou podporu koncových bodů s přímým přístupem.
 
 <a name="generated-tokens"></a>
 
@@ -396,7 +396,7 @@ Další informace o zabezpečení autorizace a šifrování příchozích volán
 
 #### <a name="q-can-i-configure-callable-endpoints-further"></a>Otázka: můžu dále konfigurovat nastavované koncové body?
 
-Odpověď **: Ano** , koncové body https podporují pokročilejší konfiguraci prostřednictvím [Azure API Management](../api-management/api-management-key-concepts.md). Tato služba také nabízí možnost konzistentně spravovat všechna vaše rozhraní API, včetně aplikací logiky, nastavení vlastních názvů domén, používání dalších metod ověřování a dalších, například:
+Odpověď **: Ano**, koncové body https podporují pokročilejší konfiguraci prostřednictvím [Azure API Management](../api-management/api-management-key-concepts.md). Tato služba také nabízí možnost konzistentně spravovat všechna vaše rozhraní API, včetně aplikací logiky, nastavení vlastních názvů domén, používání dalších metod ověřování a dalších, například:
 
 * [Změna metody Request](../api-management/api-management-advanced-policies.md#SetRequestMethod)
 * [Změna segmentů adres URL žádosti](../api-management/api-management-transformation-policies.md#RewriteURL)

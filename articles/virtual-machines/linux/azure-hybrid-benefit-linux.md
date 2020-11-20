@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: a26a618d4f1bd9900136561d95c21c1ecbaadfaa
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 1459c80c857a436c8369d3ebe89794e0b69c33b1
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916470"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980877"
 ---
 # <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Zvýhodněné hybridní využití Azure – způsob použití pro Linux Virtual Machines
 
@@ -146,6 +146,35 @@ Odpověď: Ne, nemůžete. Pokud se pokusíte zadat typ licence, který nespráv
 *Otázka: zaregistroval (a) se službou Red Hat Cloud Access, ale stále není možné povolit výhodu na mých virtuálních počítačích RHEL. Co mám dělat?*
 
 Odpověď: může trvat nějakou dobu, než se registrace předplatného služby Red Hat pro cloudový přístup došíří z Red Hat do Azure. Pokud se vám i po jednom pracovním dni stále zobrazuje chyba, obraťte se na podporu Microsoftu.
+
+*Otázka: nasadil (a) jsem virtuální počítač pomocí RHEL BYOS "zlatý image". Můžu převést fakturaci na těchto obrázcích z BYOS na PAYG?*
+
+Odpověď: Ne, nemůžete. Zvýhodněné hybridní využití Azure podporuje převod jenom na image s průběžnými platbami.
+
+*Otázka: nasadil (a) jsem virtuální počítač pomocí RHEL BYOS "zlatý image". Můžu převést fakturaci na těchto obrázcích z BYOS na PAYG?*
+
+Odpověď: Ne, nemůžete. Zvýhodněné hybridní využití Azure podporuje převod jenom na image s průběžnými platbami.
+
+*Otázka: nahráli jsem vlastní RHEL image z Prem (prostřednictvím ASR nebo jinak) do Azure. Můžu převést fakturaci na těchto obrázcích z BYOS na PAYG?*
+
+Odpověď: Ne, nemůžete. Funkce Zvýhodněné hybridní využití Azure je k dispozici pouze pro image RHEL a SLES v současnosti. 
+
+*Otázka: je možné použít Zvýhodněné hybridní využití Azure na virtuálních počítačích nasazených z webu Marketplace RHEL a imagí SLES SAP?*
+
+Odpověď: Ano, můžete. Typ licence RHEL_BYOS pro virtuální počítače s RHEL a SLES_BYOS můžete použít pro převody virtuálních počítačů nasazených z Marketplace RHEL a SLESch imagí SAP.
+
+*Otázka: je možné použít Zvýhodněné hybridní využití Azure ve VMSS (Virtual Machine Scale set) pro RHEL a SLES?*
+
+Odpověď: Ne, nemůžete. VMSS nejsou v současné době v rozsahu Zvýhodněné hybridní využití Azure pro RHEL a SLES.
+
+*Otázka: je možné použít Zvýhodněné hybridní využití Azure u rezervovaných instancí (RIs) pro RHEL a SLES?*
+
+Odpověď: Ne, nemůžete. Služby vzdálené instalace nejsou v současné době Zvýhodněné hybridní využití Azure RHEL a SLES v současnosti.
+
+*Otázka: je možné použít Zvýhodněné hybridní využití Azure na virtuálním počítači nasazeném pro SQL Server na obrázcích RHEL?*
+
+Odpověď: Ne, nemůžete. Neexistují žádné plány pro jejich podporu.
+ 
 
 ## <a name="common-issues"></a>Běžné problémy
 Tato část obsahuje seznam běžných problémů, které by mohly být zjištěny, a kroky pro zmírnění rizik.

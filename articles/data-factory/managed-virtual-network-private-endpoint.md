@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: a34f2e50a5eb4ab87a02a5128cb912fa220849f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317070"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980353"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory spravované Virtual Network (Preview)
 
@@ -72,6 +72,11 @@ Pokud vlastník připojení schválí, vytvoří se privátní odkaz. V opačné
 ![Schválení spravovaného privátního koncového bodu](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
 
 Pouze spravovaný privátní koncový bod ve schváleném stavu může odesílat provoz do daného prostředku privátního propojení.
+
+## <a name="interactive-authoring"></a>Interaktivní vytváření
+Funkce interaktivního vytváření se používají pro funkce, jako je test Connection, procházení seznamu složek a seznam tabulek, získání schématu a zobrazení náhledu dat. Když vytváříte nebo upravujete Azure Integration Runtime, které jsou ve virtuální síti spravované přes ADF, můžete povolit interaktivní vytváření. Back-end služba bude předem přidělit výpočetní výkon pro funkce interaktivního vytváření obsahu. V opačném případě se výpočetní výkon přidělí při každé interaktivní operaci, která bude trvat déle. Hodnota TTL (Time to Live) pro interaktivní vytváření je 60 minut, což znamená, že se automaticky zakáže po 60 minutách poslední interaktivní operace vytváření obsahu.
+
+![Interaktivní vytváření](./media/managed-vnet/interactive-authoring.png)
 
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 ### <a name="supported-data-sources"></a>Podporované zdroje dat

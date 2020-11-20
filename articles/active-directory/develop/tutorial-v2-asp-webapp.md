@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 9ff43202bdace577024413c9cc177de2997a0ad5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dad7add63102d462a2111f1ecf12ae43dae123c
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627937"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979908"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Kurz: přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
-Tato příručka ukazuje, jak implementovat přihlášení do Microsoftu prostřednictvím řešení ASP.NET MVC pomocí tradiční aplikace založené na webovém prohlížeči a připojení OpenID.
+V tomto kurzu vytvoříte webovou aplikaci ASP.NET MVC, která se přihlásí uživatelům pomocí middlewaru Open Web Interface for .NET (OWIN) a platformy Microsoft identity.
 
 Po dokončení této příručky bude aplikace moci přijímat přihlášení osobních účtů z podobných outlook.com a live.com. Pracovní a školní účty z libovolné společnosti nebo organizace, která je integrovaná s platformou Microsoft Identity Platform, se budou moct přihlašovat do vaší aplikace.
 
@@ -34,7 +34,7 @@ V tomto kurzu:
 > * Registrace aplikace v Azure Portal
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) s nainstalovanou úlohou **vývoj pro ASP.NET a web**
 
@@ -65,7 +65,7 @@ Tato část popisuje, jak nainstalovat a nakonfigurovat kanál ověřování pro
 1. V aplikaci Visual Studio: Přejít na **soubor**  >  **Nový**  >  **projekt**.
 2. V části **Visual C#\Web** vyberte **Webová aplikace ASP.NET (.NET Framework)**.
 3. Pojmenujte aplikaci a vyberte **OK**.
-4. Vyberte **prázdné**a potom zaškrtněte políčko pro přidání odkazů **MVC** .
+4. Vyberte **prázdné** a potom zaškrtněte políčko pro přidání odkazů **MVC** .
 
 ## <a name="add-authentication-components"></a>Přidat komponenty ověřování
 
@@ -230,7 +230,7 @@ Pokud chcete vytvořit nový kontroler pro vystavování metod přihlášení a 
 V aplikaci Visual Studio vytvořte nové zobrazení, abyste přidali tlačítko pro přihlášení a zobrazili informace o uživateli po ověření:
 
 1.  Pravým tlačítkem myši klikněte na složku **Views\Home** a vyberte **Přidat zobrazení**.
-2.  Pojmenujte nový **index**zobrazení.
+2.  Pojmenujte nový **index** zobrazení.
 3.  Do souboru přidejte následující kód HTMP, který obsahuje tlačítko pro přihlášení:
 
     ```html
@@ -320,7 +320,7 @@ Z důvodu použití `[Authorize]` atributu lze všechny metody tohoto kontroleru
 V sadě Visual Studio vytvořte nové zobrazení, ve kterém se budou zobrazovat deklarace identity uživatele na webové stránce:
 
 1.  Klikněte pravým tlačítkem na složku **Views\Claims** a pak vyberte **Přidat zobrazení**.
-2.  Pojmenujte nový **index**zobrazení.
+2.  Pojmenujte nový **index** zobrazení.
 3.  Přidejte do souboru následující kód HTML:
 
     ```html
@@ -372,7 +372,7 @@ Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci apl
 1. Otevřete Visual Studio a potom:
    1. v Průzkumník řešení vyberte projekt a zobrazte okno Vlastnosti (Pokud nevidíte okno Vlastnosti stiskněte F4).
    1. Změňte povolený protokol SSL na `True` .
-   1. Klikněte pravým tlačítkem myši na projekt v aplikaci Visual Studio, vyberte možnost **vlastnosti**a pak vyberte kartu **Web** . V části **servery** změňte nastavení **adresy URL projektu** na **adresu URL SSL**.
+   1. Klikněte pravým tlačítkem myši na projekt v aplikaci Visual Studio, vyberte možnost **vlastnosti** a pak vyberte kartu **Web** . V části **servery** změňte nastavení **adresy URL projektu** na **adresu URL SSL**.
    1. Zkopírujte adresu URL protokolu SSL. Tuto adresu URL přidáte do seznamu adres URL pro přesměrování v seznamu adres URL pro přesměrování v dalším kroku.<br/><br/>![Vlastnosti projektu](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo pomocí osobního účet Microsoft.
 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte svou relaci portálu na klienta služby Azure AD, kterého chcete.
@@ -381,7 +381,7 @@ Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci apl
 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
    1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, jako je například **ASPNET-tutorial**.
    1. Přidejte adresu URL protokolu SSL, kterou jste zkopírovali ze sady Visual Studio v kroku 1 (například `https://localhost:44368/` ) v **adrese URL odpovědi**, a vyberte možnost **Registrovat**.
-1. Vyberte nabídku **ověřování** , v části **implicitní udělení**vyberte **tokeny ID** a pak vyberte **Uložit**.
+1. Vyberte nabídku **ověřování** , v části **implicitní udělení** vyberte **tokeny ID** a pak vyberte **Uložit**.
 1. V souboru web.config přidejte následující příkaz, který se nachází v kořenové složce v `configuration\appSettings` části:
 
     ```xml

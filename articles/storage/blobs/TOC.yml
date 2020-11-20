@@ -733,8 +733,10 @@
           items:
             - name: Migrace ze služby Data Lake Storage Gen1
               href: data-lake-storage-migrate-gen1-to-gen2.md
-            - name: Migrace místního úložiště HDFS
+            - name: Migrace úložiště HDFS offline
               href: data-lake-storage-migrate-on-premises-HDFS-cluster.md
+            - name: Migrace úložiště HDFS online
+              href: migrate-gen2-wandisco-live-data-platform.md
         - name: Spravovat
           items:
             - name: .NET

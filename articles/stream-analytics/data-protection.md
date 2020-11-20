@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: e823322803958f092cee3b6d77e6a0ca7bc6e3f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 72566987068729efef4310ce145c30584c4895b0
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074246"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980503"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Ochrana dat v Azure Stream Analytics 
 
@@ -61,19 +61,19 @@ Pomocí následujícího postupu můžete nakonfigurovat účet úložiště pro
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** . 
+1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**. 
 
 1.  **Analytics**   > V seznamu výsledků vyberte **úlohu Stream Analytics** analýzy   . 
 
 1. Vyplňte stránku úlohy Stream Analytics s potřebnými podrobnostmi, jako je název, oblast a škálování. 
 
-1. Zaškrtněte políčko, které uvádí *zabezpečení všech privátních datových assetů, které tato úloha potřebuje v účtu úložiště* .
+1. Zaškrtněte políčko, které uvádí *zabezpečení všech privátních datových assetů, které tato úloha potřebuje v účtu úložiště*.
 
 1. Vyberte účet úložiště z vašeho předplatného. Všimněte si, že toto nastavení nelze upravovat v průběhu životního cyklu úlohy. 
 
    ![Nastavení účtu úložiště privátních dat](./media/data-protection/storage-account-create.png)
 
-## <a name="private-data-assets-that-are-stored"></a>Soukromé datové prostředky, které jsou uloženy
+## <a name="private-data-assets-that-are-stored-by-stream-analytics"></a>Soukromé datové prostředky, které jsou uloženy pomocí Stream Analytics
 
 Všechna privátní data, která jsou potřeba k uchování pomocí Stream Analytics, se ukládají do svého účtu úložiště. Mezi soukromé datové prostředky patří: 
 

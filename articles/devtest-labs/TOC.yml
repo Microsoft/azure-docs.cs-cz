@@ -191,6 +191,8 @@
           href: use-managed-identities-environments.md
         - name: Výstrahy zabezpečení pro prostředí
           href: environment-security-alerts.md
+        - name: Vytvoření prostředí zaměřeného na aplikace
+          href: create-application-centric-environment.md
     - name: Správa opětovně využitelných šablon
       items:
         - name: Vlastní image versus vzorce

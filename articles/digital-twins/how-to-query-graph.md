@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperfq2
-ms.openlocfilehash: 6533cbde10dfc924bd982357def859229eb1714a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9aa1156da48ba39672d59858d0640619581329ee
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963160"
+ms.locfileid: "94981115"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -277,7 +277,7 @@ Můžete významně snížit počet dotazů, které potřebujete, vytvořením p
 
 Představte si například scénář, ve kterém *budovy* obsahují *podlahu* a *podlahu* , obsahují *místnosti*. Chcete-li hledat místnosti v rámci budovy, která jsou horká, jedním ze způsobů, jak postupovat podle těchto kroků.
 
-1. Nalezení podlahových poschodí v rámci vytváření na základě `contains` vztahu
+1. Najděte podlahu v budově na základě `contains` vztahu.
 
     ```sql
     SELECT Floor

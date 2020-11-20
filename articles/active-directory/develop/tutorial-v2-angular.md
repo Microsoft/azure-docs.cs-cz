@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: c93704130e150a7ca26144d4895e82756657fae2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: c4c7d021c7c3a5a32d537a50fa45449fdee7e817
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096245"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979925"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z úhlové aplikace s jednou stránkou
 
-Tento kurz vás provede vytvořením jednobarevné aplikace (SPA), která se může přihlašovat uživatelům pomocí osobních účtů Microsoft a pracovních nebo školních účtů a volat Microsoft Graph rozhraní API jménem.
+V tomto kurzu vytvoříte úhlovou jednostránkovou aplikaci (SPA), která podepisuje uživatele a volá rozhraní Microsoft Graph API.
 
 V tomto kurzu:
 
@@ -32,7 +32,7 @@ V tomto kurzu:
 > * Přidat kód pro volání rozhraní API Microsoft Graph
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org/en/download/) pro spuštění místního webového serveru.
 * [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný editor pro úpravu souborů projektu.

@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/03/2020
+ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: a48a13fa18025254ee31344868d10181ae87c65e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e18dc7e16eb0b114bd279d53b7dcc895bd62f338
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685473"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980853"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role v Azure
 
@@ -27,7 +27,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 ## <a name="all"></a>Vše
 
 > [!div class="mx-tableFixed"]
-> | Předdefinovaná role | Description | ID |
+> | Předdefinovaná role | Popis | ID |
 > | --- | --- | --- |
 > | **Obecné** |  |  |
 > | [Přispěvatel](#contributor) | Udělí úplný přístup ke správě všech prostředků, ale neumožňuje přiřadit role v Azure RBAC. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -237,6 +237,7 @@ Udělí úplný přístup ke správě všech prostředků, ale neumožňuje při
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/elevateAccess/Action | Udělit volajícímu přístup Správce uživatelských přístupů v oboru tenanta |
 > | [Microsoft. detail](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/Write | Vytvořit nebo aktualizovat jakékoli přiřazení podrobného plánu |
 > | [Microsoft. detail](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/DELETE | Odstranit všechna přiřazení podrobného plánu |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Galleries/Share/Action | Sdílení galerie s různými obory |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -260,7 +261,8 @@ Udělí úplný přístup ke správě všech prostředků, ale neumožňuje při
         "Microsoft.Authorization/*/Write",
         "Microsoft.Authorization/elevateAccess/Action",
         "Microsoft.Blueprint/blueprintAssignments/write",
-        "Microsoft.Blueprint/blueprintAssignments/delete"
+        "Microsoft.Blueprint/blueprintAssignments/delete",
+        "Microsoft.Compute/galleries/share/action"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -3070,7 +3072,7 @@ Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.
 }
 ```
 
-## <a name="containers"></a>Kontejnery
+## <a name="containers"></a>Containers
 
 
 ### <a name="acrdelete"></a>AcrDelete
@@ -6551,6 +6553,7 @@ Azure Sentinel Přispěvatel – další [informace](../sentinel/roles.md)
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/*/Read |  |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/DataSources/Read | Získat zdroje dat v pracovním prostoru. |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/Read | Čtení soukromého sešitu |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
@@ -6583,6 +6586,7 @@ Azure Sentinel Přispěvatel – další [informace](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/*",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
@@ -6620,6 +6624,7 @@ Azure Sentinel Přispěvatel – další [informace](../sentinel/roles.md)
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/*/Read |  |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/DataSources/Read | Získat zdroje dat v pracovním prostoru. |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Read | Přečíst sešit |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/Read | Čtení soukromého sešitu |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
@@ -6656,6 +6661,7 @@ Azure Sentinel Přispěvatel – další [informace](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/read",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
@@ -6699,13 +6705,15 @@ Azure Sentinel Responder – další [informace](../sentinel/roles.md)
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/*/Read |  |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/DataSources/Read | Získat zdroje dat v pracovním prostoru. |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Read | Přečíst sešit |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/Read | Čtení soukromého sešitu |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
-> | *žádný* |  |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/Cases/*/DELETE |  |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/Incidents/*/DELETE |  |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -6741,13 +6749,17 @@ Azure Sentinel Responder – další [informace](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/read",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Support/*"
       ],
-      "notActions": [],
+      "notActions": [
+        "Microsoft.SecurityInsights/cases/*/Delete",
+        "Microsoft.SecurityInsights/incidents/*/Delete"
+      ],
       "dataActions": [],
       "notDataActions": []
     }
@@ -7004,8 +7016,8 @@ Proveďte jakoukoli akci s klíči trezoru klíčů s výjimkou oprávnění ke 
 > | *žádný* |  |
 > | **Akce dataactions** |  |
 > | /Vaults/Keys/Read [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Zobrazí seznam klíčů v zadaném trezoru nebo vlastnosti pro čtení a veřejný materiál klíče. U asymetrických klíčů Tato operace zveřejňuje veřejný klíč a zahrnuje schopnost provádět algoritmy veřejných klíčů, jako je například šifrování a ověření podpisu. Soukromé klíče a symetrické klíče nejsou nikdy zpřístupněny. |
-> | /Vaults/Keys/Wrap/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Zabalte symetrický klíč pomocí Key Vaultho klíče. Všimněte si, že pokud je klíč Key Vault asymetrický, tato operace se dá provést s přístupem pro čtení. |
-> | /Vaults/Keys/Unwrap/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Rozbalení symetrického klíče pomocí Key Vaultho klíče |
+> | /Vaults/Keys/Wrap/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Zabalí symetrický klíč pomocí Key Vaultho klíče. Všimněte si, že pokud je klíč Key Vault asymetrická, tato operace může být provedena pomocí objektů zabezpečení s přístupem pro čtení. |
+> | /Vaults/Keys/Unwrap/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Rozbalí symetrický klíč pomocí Key Vaultho klíče. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -7049,12 +7061,12 @@ Provádějte kryptografické operace pomocí klíčů. Funguje jenom pro trezory
 > | /Vaults/Keys/Read [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Zobrazí seznam klíčů v zadaném trezoru nebo vlastnosti pro čtení a veřejný materiál klíče. U asymetrických klíčů Tato operace zveřejňuje veřejný klíč a zahrnuje schopnost provádět algoritmy veřejných klíčů, jako je například šifrování a ověření podpisu. Soukromé klíče a symetrické klíče nejsou nikdy zpřístupněny. |
 > | /Vaults/Keys/Update/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Aktualizuje zadané atributy přidružené k danému klíči. |
 > | /Vaults/Keys/Backup/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Vytvoří záložní soubor klíče. Soubor se může použít k obnovení klíče v Key Vault stejného předplatného. Můžou platit omezení. |
-> | /Vaults/Keys/Encrypt/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Šifrujte prostý text klíčem. Všimněte si, že pokud je klíč asymetrické, tato operace může být provedena pomocí objektů zabezpečení s přístupem pro čtení. |
-> | /Vaults/Keys/Decrypt/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Dešifrování šifrovaného textu pomocí klíče |
-> | /Vaults/Keys/Wrap/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Zabalte symetrický klíč pomocí Key Vaultho klíče. Všimněte si, že pokud je klíč Key Vault asymetrický, tato operace se dá provést s přístupem pro čtení. |
-> | /Vaults/Keys/Unwrap/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Rozbalení symetrického klíče pomocí Key Vaultho klíče |
-> | /Vaults/Keys/Sign/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Podepište hash klíčem. |
-> | /Vaults/Keys/Verify/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Ověřte hodnotu hash. Všimněte si, že pokud je klíč asymetrické, tato operace může být provedena pomocí objektů zabezpečení s přístupem pro čtení. |
+> | /Vaults/Keys/Encrypt/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Šifruje prostý text pomocí klíče. Všimněte si, že pokud je klíč asymetrické, tato operace může být provedena pomocí objektů zabezpečení s přístupem pro čtení. |
+> | /Vaults/Keys/Decrypt/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Dešifruje šifrovaný text pomocí klíče. |
+> | /Vaults/Keys/Wrap/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Zabalí symetrický klíč pomocí Key Vaultho klíče. Všimněte si, že pokud je klíč Key Vault asymetrická, tato operace může být provedena pomocí objektů zabezpečení s přístupem pro čtení. |
+> | /Vaults/Keys/Unwrap/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Rozbalí symetrický klíč pomocí Key Vaultho klíče. |
+> | /Vaults/Keys/Sign/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Podepíše hodnotu Message Digest (hash) klíčem. |
+> | /Vaults/Keys/Verify/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Ověří podpis hodnoty hash (Message Digest) s klíčem. Všimněte si, že pokud je klíč asymetrické, tato operace může být provedena pomocí objektů zabezpečení s přístupem pro čtení. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -7618,7 +7630,7 @@ Umožňuje vytvořit novou laboratoř v rámci účtů Azure Lab. [Další infor
 }
 ```
 
-## <a name="monitor"></a>Monitor
+## <a name="monitor"></a>Monitorování
 
 
 ### <a name="application-insights-component-contributor"></a>Přispěvatel Application Insights komponent
@@ -7760,7 +7772,7 @@ Může číst všechna data monitorování a upravovat nastavení monitorování
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/sharedKeys/Action | Načte sdílené klíče pracovního prostoru. Tyto klíče se používají k připojení agentů Microsoft Operational Insights k pracovnímu prostoru. |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/storageinsightconfigs/* | Čtení, zápis a odstraňování konfigurací Log Analytics úložiště |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
-> | [Microsoft. monitor zátěže byl](resource-provider-operations.md#microsoftworkloadmonitor)/Monitors/* | Získejte informace o monitorování stavu virtuálního počítače hosta.  |
+> | [Microsoft. monitor zátěže byl](resource-provider-operations.md#microsoftworkloadmonitor)/Monitors/* | Získejte informace o monitorování stavu virtuálního počítače hosta. |
 > | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartDetectorAlertRules/* |  |
 > | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/actionRules/* |  |
 > | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartGroups/* |  |
@@ -9491,7 +9503,7 @@ Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entit�
 }
 ```
 
-## <a name="other"></a>Jiné
+## <a name="other"></a>Ostatní
 
 
 ### <a name="azure-digital-twins-data-owner"></a>Vlastník dat digitálních vláken Azure

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: f967b10d729c9c5486bbca9b643f48aaf558687c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5489feeeec64c7b3d4b5fc28eddfe8b780308796
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628062"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979874"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Kurz: přihlášení uživatelů a volání chráněného rozhraní API z aplikace Blazor WebAssembly
 
-Blazor WebAssembly (WASM) je jednostránková architektura aplikací pro vytváření interaktivních webových aplikací na straně klienta s .NET. V tomto kurzu se naučíte implementovat ověřování a načítat data z Microsoft Graph v aplikaci Blazor WASM pomocí Microsoft Identity Platform a zaregistrujete svoji aplikaci v Azure Active Directory (Azure AD).
+V tomto kurzu vytvoříte Blazor aplikaci WebAssembly, která přihlašuje uživatele a získává data z Microsoft Graph pomocí platformy Microsoft identity a registraci vaší aplikace v Azure Active Directory (Azure AD).
 
 K dispozici je také [kurz pro server Blazor](tutorial-blazor-server.md). 
 
@@ -28,7 +28,7 @@ V tomto kurzu:
 > * Vytvoření nové aplikace WebAssembly v Blazor, která je nakonfigurovaná tak, aby používala Azure Active Directory (Azure AD) pro [ověřování a autorizaci](authentication-vs-authorization.md) pomocí platformy Microsoft Identity Platform
 > * Načtěte data z chráněného webového rozhraní API, v tomto případě [Microsoft Graph](https://docs.microsoft.com/graph/overview)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 * Tenant služby Azure AD, kde můžete zaregistrovat aplikaci. Pokud nemáte přístup k tenantovi služby Azure AD, můžete si ho zaregistrovat pomocí [vývojářského programu Microsoft 365](https://developer.microsoft.com/microsoft-365/dev-program) nebo vytvořením [bezplatného účtu Azure](https://azure.microsoft.com/free).
@@ -87,7 +87,7 @@ Nejdřív přidejte `Mail.Read` k registraci aplikace oprávnění rozhraní API
 1. V Azure Portal vyberte svou aplikaci v **Registrace aplikací**.
 1. V části **Spravovat** vyberte **oprávnění rozhraní API**.
 1. Vyberte **Přidat**  >  **Microsoft Graph** oprávnění.
-1. Vyberte **delegovaná oprávnění** , vyhledejte a vyberte oprávnění **Pošta. číst** .
+1. Vyberte **delegovaná oprávnění**, vyhledejte a vyberte oprávnění **Pošta. číst** .
 1. Vyberte **Přidat oprávnění**.
 
 Dále do souboru *. csproj* projektu ve skupině **položek** netstandard 2.1 přidejte následující. To vám umožní vytvořit si vlastní HttpClient v dalším kroku.

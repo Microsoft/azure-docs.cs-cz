@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 027305d953a24de17e62aa74b33b72494b03e652
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ded54628a307f3cf4441e804f7f1025a0e943b51
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825917"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979942"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA)
 
-V tomto kurzu vytvoříte jednostránkovou aplikaci (SPA) v JavaScriptu, která se může přihlašovat uživatelům pomocí osobních účtů Microsoft nebo pracovních a školních účtů, a pak získat přístupový token pro volání rozhraní Microsoft Graph API.
+V tomto kurzu vytvoříte jednostránkovou aplikaci v JavaScriptu (SPA), která podepisuje uživatele a volá Microsoft Graph pomocí implicitního toku. Při vytváření zabezpečeného hesla se používá knihovna Microsoft Authentication Library (MSAL) pro jazyk JavaScript v 1.0.
 
 V tomto kurzu:
 
@@ -265,16 +265,16 @@ Teď máte k dispozici jednoduchý Server, který bude sloužit pro SPA. Zamýš
 
 Než budete pokračovat s ověřováním, zaregistrujte svou aplikaci na **Azure Active Directory**.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
 1. Přejít na stránku Microsoft Identity Platform for Developers [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
 1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
-1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 1. V části **identifikátor URI pro přesměrování** vyberte v rozevíracím seznamu **webovou** platformu a pak nastavte tuto hodnotu na adresu URL aplikace, která je založená na vašem webovém serveru.
 1. Vyberte **Zaregistrovat**.
 1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
 1. Tento rychlý Start vyžaduje, aby byl povolený [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) . V levém podokně registrované aplikace vyberte **ověřování**.
-1. V části **Upřesnit nastavení**v části **implicitní udělení**vyberte zaškrtávací políčka **tokeny ID** a **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
+1. V části **Upřesnit nastavení** v části **implicitní udělení** vyberte zaškrtávací políčka **tokeny ID** a **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
 1. Vyberte **Uložit**.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Nastavit adresu URL pro přesměrování pro Node.js
@@ -482,7 +482,7 @@ V ukázkové aplikaci vytvořené touto příručkou se `callMSGraph()` Metoda p
    ```
 1. V prohlížeči zadejte **http://localhost:3000** nebo **http://localhost:{port}** , kde *port* je port, na který webový server naslouchá. Měl by se zobrazit obsah souboru *index.html* a **přihlašovací** tlačítko.
 
-Poté, co prohlížeč načte soubor *index.html* , vyberte možnost **Přihlásit**se. Budete vyzváni k přihlášení pomocí koncového bodu Microsoft Identity Platform:
+Poté, co prohlížeč načte soubor *index.html* , vyberte možnost **Přihlásit** se. Budete vyzváni k přihlášení pomocí koncového bodu Microsoft Identity Platform:
 
 ![Přihlašovací okno účtu v jazyce JavaScript SPA](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 
@@ -513,4 +513,3 @@ V naší sadě scénářů s více částmi se dostanete hlouběji do vývoje je
 
 > [!div class="nextstepaction"]
 > [Scénář: jednostránkové aplikace](scenario-spa-overview.md)
-

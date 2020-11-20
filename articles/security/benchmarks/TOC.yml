@@ -61,10 +61,14 @@
       href: security-baselines-overview.md
     - name: Standardní hodnoty zabezpečení pro API Management
       href: ../../api-management/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro App Service
+      href: ../../app-service/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Application Gateway
       href: ../../application-gateway/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Automation
       href: ../../automation/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Advisor
+      href: ../../advisor/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Backup
       href: ../../backup/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Cache for Redis
@@ -97,6 +101,8 @@
       href: ../../frontdoor/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Functions
       href: ../../azure-functions/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Information Protection
+      href: /azure/information-protection/security-baseline
     - name: Standardní hodnoty zabezpečení pro Azure IoT Hub
       href: ../../iot-hub/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Kubernetes Service

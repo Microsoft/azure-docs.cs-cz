@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: 749807349fd83f9639461fd4ddd9ab771d108119
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.date: 11/17/2020
+ms.openlocfilehash: 14809cb28870e88cfa584c4f02360d50beabf901
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410551"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981034"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových nebo bezstavových pracovních postupů ve Visual Studio Code s využitím rozšíření Azure Logic Apps (Preview)
 
@@ -66,7 +66,7 @@ Rozšíření Azure Logic Apps (Preview) přináší do místního prostředí p
 
 ## <a name="stateful-versus-stateless-logic-apps"></a>Stavová versus Bezstavová Logic aplikace
 
-* *Uzlů*
+* *Stavové*
 
   Vytvářejte stavové aplikace logiky, když potřebujete zachovat, zkontrolovat nebo odkázat data z předchozích událostí. Tyto aplikace logiky udržují vstup a výstup pro každou akci a jejich stavy pracovního postupu v externím úložišti, což umožňuje zkontrolovat podrobnosti a historii spuštění po dokončení každého spuštění. Stavové aplikace logiky poskytují vysokou odolnost, pokud dojde k výpadkům. Po obnovení služeb a systémů můžete rekonstruovat přerušené aplikace logiky spuštěné z uloženého stavu a znovu spustit Logic Apps k dokončení. Stavové pracovní postupy můžou běžet až do roku.
 
@@ -110,7 +110,7 @@ Pro tuto veřejnou verzi Preview nejsou tyto možnosti k dispozici nebo nejsou p
 
 * Nový typ prostředku **Aplikace logiky (Preview)** můžete nasadit jenom do [plánu hostování Premium nebo App Service v Azure](#publish-azure) nebo do [kontejneru Docker](#deploy-docker), a ne do [prostředí ISEs (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Plány hostování **spotřeby** nejsou podporované ani nejsou k dispozici pro nasazení tohoto typu prostředku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="access-and-connectivity"></a>Přístup a připojení
 
@@ -326,7 +326,7 @@ Než budete moct vytvořit aplikaci logiky, vytvořte místní projekt, abyste m
 
       K této chybě může dojít, pokud jste se dříve pokusili otevřít návrháře a potom tento projekt zrušit nebo odstranit. Tuto chybu můžete vyřešit tak, že odstraníte složku **ExtensionBundles** v tomto umístění **. ..\Users \\ {Your-username} \AppData\Local\Temp\Functions\ExtensionBundles** a znovu otevřete **workflow.js** v souboru v návrháři.
 
-1. V seznamu **Povolit konektory v Azure** vyberte **použít konektory z Azure** , které se vztahují na všechny spravované konektory, které jsou k dispozici a nasazené v Azure, nejen konektory pro služby Azure.
+1. V seznamu **Povolit konektory v Azure** vyberte **použít konektory z Azure**, které se vztahují na všechny spravované konektory, které jsou k dispozici a nasazené v Azure, nejen konektory pro služby Azure.
 
    ![Snímek obrazovky zobrazující podokno Průzkumník se seznamem povolit konektory v Azure a vybrat možnost použít konektory z Azure](./media/create-stateful-stateless-workflows-visual-studio-code/use-connectors-from-azure.png)
 
@@ -367,7 +367,7 @@ Po otevření návrháře aplikace logiky z místní nabídky **workflow.jsv** m
 
 Pracovní postup aplikace logiky v tomto příkladu používá tuto aktivační událost a tyto akce:
 
-* Vestavěná [aktivační událost žádosti](../connectors/connectors-native-reqres.md), **když se přijme požadavek HTTP** , který přijímá příchozí volání nebo požadavky a vytvoří koncový bod, který může volat jiné služby nebo Logic Apps.
+* Vestavěná [aktivační událost žádosti](../connectors/connectors-native-reqres.md), **když se přijme požadavek HTTP**, který přijímá příchozí volání nebo požadavky a vytvoří koncový bod, který může volat jiné služby nebo Logic Apps.
 
 * **Odeslání e-mailu** na [akci Office 365 Outlooku](../connectors/connectors-create-api-office365-outlook.md)
 
@@ -392,9 +392,9 @@ Pracovní postup aplikace logiky v tomto příkladu používá tuto aktivační 
 
    1. V návrháři vyberte položku, která otevře podokno podrobností položky na pravé straně.
 
-   1. Zvětšete okno Visual Studio Code dostatečně široké, aby se zobrazilo tlačítko se třemi tečkami ( **...** ) v pravém horním rohu. 
+   1. Zvětšete okno Visual Studio Code dostatečně široké, aby se zobrazilo tlačítko se třemi tečkami (**...**) v pravém horním rohu. 
 
-   1. Otevřete nabídku se třemi tečkami ( **...** ) a vyberte **Odstranit**. Odstranění potvrďte tak, že vyberete **OK**.
+   1. Otevřete nabídku se třemi tečkami (**...**) a vyberte **Odstranit**. Odstranění potvrďte tak, že vyberete **OK**.
 
       ![Snímek obrazovky zobrazující vybranou položku v Návrháři s podoknem otevřít podokno podrobností a tlačítkem s vybranými třemi tečkami a možností odstranit](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 
@@ -446,15 +446,15 @@ Pracovní postup aplikace logiky v tomto příkladu používá tuto aktivační 
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Schopn** | Ano | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
-   | **Předmět** | Ano | `An email from your example workflow` | Předmět e-mailu |
-   | **Text** | Ano | `Hello from your example workflow!` | Obsah těla e-mailu |
+   | **Schopn** | Yes | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
+   | **Předmět** | Yes | `An email from your example workflow` | Předmět e-mailu |
+   | **Text** | Yes | `Hello from your example workflow!` | Obsah těla e-mailu |
    ||||
 
    > [!NOTE]
-   > Chcete-li provést jakékoli změny v podokně podrobností na kartě **Nastavení** , **Spustit po** nebo **statického výsledku** , ujistěte se, že jste vybrali možnost **Hotovo** , aby byly tyto změny potvrzeny před přepnutím tabulátorů nebo změnou fokusu na návrháře. Jinak Visual Studio Code změny nezůstanou. Další informace najdete na [stránce GitHub známé problémy s](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)rozšířením Preview.
+   > Chcete-li provést jakékoli změny v podokně podrobností na kartě **Nastavení**, **Spustit po** nebo **statického výsledku** , ujistěte se, že jste vybrali možnost **Hotovo** , aby byly tyto změny potvrzeny před přepnutím tabulátorů nebo změnou fokusu na návrháře. Jinak Visual Studio Code změny nezůstanou. Další informace najdete na [stránce GitHub známé problémy s](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)rozšířením Preview.
 
-1. V návrháři vyberte Save ( **Uložit** ).
+1. V návrháři vyberte Save ( **Uložit**).
 
 V dalším kroku spouštějte a ladíte pracovní postup místně v Visual Studio Code.
 
@@ -496,9 +496,9 @@ Chcete-li otestovat aplikaci logiky, postupujte podle těchto kroků a vyhledejt
 
    1. V okně **Uložit žádost** zadejte v části **název žádosti** název žádosti, například `Test workflow trigger` .
 
-   1. V části **Vyberte kolekci nebo složku, do které chcete uložit** , vyberte **vytvořit kolekci**.
+   1. V části **Vyberte kolekci nebo složku, do které chcete uložit**, vyberte **vytvořit kolekci**.
 
-   1. V části **všechny kolekce** zadejte název kolekce, která se má vytvořit pro uspořádání vašich požadavků, stiskněte klávesu ENTER a vyberte **Uložit pro < *název* > kolekce**. Tento příklad používá `Logic Apps requests` jako název kolekce.
+   1. V části **všechny kolekce** zadejte název kolekce, která se má vytvořit pro uspořádání vašich požadavků, stiskněte klávesu ENTER a vyberte **Uložit pro <*název* > kolekce**. Tento příklad používá `Logic Apps requests` jako název kolekce.
 
       Otevře se podokno žádosti vystavení, kde můžete poslat žádost na adresu URL zpětného volání pro aktivační událost žádosti.
 
@@ -528,19 +528,22 @@ Chcete-li otestovat aplikaci logiky, postupujte podle těchto kroků a vyhledejt
    | **Bylo přerušeno** | Spuštění bylo zastaveno nebo nebylo dokončeno z důvodu externích problémů, například výpadek systému nebo uplynulé předplatné Azure. |
    | **Stornován** | Běh se aktivoval a začal, ale přijal žádost o zrušení. |
    | **Neúspěšný** | Nejméně jedna akce v běhu se nezdařila. Pro zpracování této chyby nebyly nastaveny žádné následné akce v pracovním postupu. |
-   | **Spuštěný** | Běh se aktivoval a probíhá, ale tento stav se může zobrazit i pro běh, který je omezený z důvodu [omezení akce](logic-apps-limits-and-config.md) nebo [aktuálního cenového plánu](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Tip** : Pokud nastavíte [diagnostické protokolování](monitor-logic-apps-log-analytics.md), můžete získat informace o všech událostech omezení, ke kterým dochází. |
+   | **Spuštěný** | Běh se aktivoval a probíhá, ale tento stav se může zobrazit i pro běh, který je omezený z důvodu [omezení akce](logic-apps-limits-and-config.md) nebo [aktuálního cenového plánu](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Tip**: Pokud nastavíte [diagnostické protokolování](monitor-logic-apps-log-analytics.md), můžete získat informace o všech událostech omezení, ke kterým dochází. |
    | **Úspěšný** | Spuštění proběhlo úspěšně. Pokud se některá akce nezdařila, došlo k selhání následné akce v pracovním postupu. |
-   | **Vypršel časový limit** | Časový limit spuštění vypršel, protože aktuální doba překročila limit doby trvání běhu, který je řízen nastavením [ **uchování historie spuštění ve dnech**](logic-apps-limits-and-config.md#run-duration-retention-limits). Doba trvání běhu se počítá pomocí počátečního času spuštění a omezení doby trvání běhu v daném počátečním čase. <p><p>**Poznámka** : Pokud doba trvání běhu překročí také aktuální *limit uchování historie spuštění* , který je také řízen [nastavením **uchování historie spuštění v rámci dnů**](logic-apps-limits-and-config.md#run-duration-retention-limits), je spuštění vymazáno z historie spuštění podle každodenní úlohy čištění. Bez ohledu na to, jestli doba běhu vyprší nebo dokončí, se doba uchovávání vždycky vypočítá pomocí času spuštění a *aktuálního* limitu uchování. Pokud tedy omezíte dobu trvání spuštění v letadle, vyprší časový limit běhu. Běh ale buď zůstane, nebo se vymaže z historie spuštění na základě toho, jestli doba trvání běhu překročila limit uchování. |
+   | **Vypršel časový limit** | Časový limit spuštění vypršel, protože aktuální doba překročila limit doby trvání běhu, který je řízen nastavením [ **uchování historie spuštění ve dnech**](logic-apps-limits-and-config.md#run-duration-retention-limits). Doba trvání běhu se počítá pomocí počátečního času spuštění a omezení doby trvání běhu v daném počátečním čase. <p><p>**Poznámka**: Pokud doba trvání běhu překročí také aktuální *limit uchování historie spuštění*, který je také řízen [nastavením **uchování historie spuštění v rámci dnů**](logic-apps-limits-and-config.md#run-duration-retention-limits), je spuštění vymazáno z historie spuštění podle každodenní úlohy čištění. Bez ohledu na to, jestli doba běhu vyprší nebo dokončí, se doba uchovávání vždycky vypočítá pomocí času spuštění a *aktuálního* limitu uchování. Pokud tedy omezíte dobu trvání spuštění v letadle, vyprší časový limit běhu. Běh ale buď zůstane, nebo se vymaže z historie spuštění na základě toho, jestli doba trvání běhu překročila limit uchování. |
    | **Čekající** | Běh se nezačal nebo je pozastaven, například kvůli dřívější instanci pracovního postupu, která je pořád spuštěná. |
    |||
 
-1. Pokud chcete zkontrolovat stavy pro každý krok v konkrétním běhu a vstupy a výstupy kroku, vyberte tlačítko se třemi tečkami ( **...** ) pro toto spuštění a vyberte **Zobrazit spustit**.
+1. Pokud chcete zkontrolovat stavy pro každý krok v konkrétním běhu a vstupy a výstupy kroku, vyberte tlačítko se třemi tečkami (**...**) pro toto spuštění a vyberte **Zobrazit spustit**.
 
    ![Snímek obrazovky zobrazující řádek historie spuštění pracovního postupu s tlačítkem elipsy a vybranou možnost Zobrazit běh](./media/create-stateful-stateless-workflows-visual-studio-code/show-run-history.png)
 
    Visual Studio Code otevře zobrazení monitorování a zobrazí stav pro každý krok v běhu.
 
    ![Snímek obrazovky zobrazující každý krok ve spuštění pracovního postupu a jejich stav](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-action-status.png)
+
+   > [!NOTE]
+   > Pokud spuštění selhalo a krok v zobrazení monitorování ukazuje `400 Bad Request` chybu, může to mít za následek delší název triggeru nebo název akce, který způsobí, že základní identifikátor URI (Uniform Resource Identifier) překračuje výchozí limit znaků. Další informace najdete v tématu ["400 Chybný požadavek"](#400-bad-request).
 
    Tady jsou možné stavy, které může každý krok pracovního postupu mít:
 
@@ -609,7 +612,7 @@ Pokud chcete vrátit odpověď zpět volajícímu, který odeslal požadavek do 
 
       ![Snímek obrazovky, který zobrazuje stav jednotlivých kroků v pracovním postupu a také vstupy a výstupy v rozšířené akci "Response".](./media/create-stateful-stateless-workflows-visual-studio-code/response-action-details-body-property.png)
 
-1. V návrháři vyberte Save ( **Uložit** ).
+1. V návrháři vyberte Save ( **Uložit**).
 
 <a name="retest-workflow"></a>
 
@@ -621,7 +624,7 @@ Po provedení aktualizací aplikace logiky můžete spustit další test tak, ž
 
 1. V příspěvku nebo nástroji pro vytváření a odesílání žádostí odešlete další požadavek na aktivaci pracovního postupu.
 
-1. Pokud jste vytvořili stavový pracovní postup, můžete na stránce Přehled pracovního postupu zjistit stav posledního spuštění. Chcete-li zobrazit stav, vstupy a výstupy pro každý krok v daném spuštění, vyberte tlačítko se třemi tečkami ( **...** ) pro toto spuštění a vyberte možnost **Zobrazit běh**.
+1. Pokud jste vytvořili stavový pracovní postup, můžete na stránce Přehled pracovního postupu zjistit stav posledního spuštění. Chcete-li zobrazit stav, vstupy a výstupy pro každý krok v daném spuštění, vyberte tlačítko se třemi tečkami (**...**) pro toto spuštění a vyberte možnost **Zobrazit běh**.
 
    Zde je například podrobný stav pro spuštění po aktualizaci ukázkového pracovního postupu s akcí Response.
 
@@ -750,7 +753,7 @@ V Visual Studio Code můžete zobrazit všechny nasazené aplikace logiky ve va�
 
 1. Pokud chcete zobrazit všechny pracovní postupy v aplikaci logiky, rozbalte svou aplikaci logiky a potom rozbalte uzel **pracovní postupy** .
 
-1. Pokud chcete zobrazit konkrétní pracovní postup, otevřete místní nabídku pracovního postupu a vyberte **otevřít v Návrháři** , který otevře pracovní postup v režimu jen pro čtení.
+1. Pokud chcete zobrazit konkrétní pracovní postup, otevřete místní nabídku pracovního postupu a vyberte **otevřít v Návrháři**, který otevře pracovní postup v režimu jen pro čtení.
 
    Chcete-li upravit pracovní postup, máte tyto možnosti:
 
@@ -869,7 +872,7 @@ Pokud jste projekt již nasadili do Azure Portal, postupujte takto:
 
 1. Do pole **hodnota** zadejte následující hodnotu: `WithStatelessRunHistory`
 
-   Zde je příklad:
+   Například:
 
    ![Snímek obrazovky, který zobrazuje prostředek Azure Portal a aplikace logiky (Preview) s názvem "konfigurace" > "nastavení nového aplikace" < otevře podokno přidat/upravit nastavení aplikace, a pracovní postupy. {yourWorkflowName}. Možnost OperationOptions je nastavena na hodnotu "WithStatelessRunHistory".](./media/create-stateful-stateless-workflows-visual-studio-code/stateless-operation-options-run-history.png)
 
@@ -957,7 +960,7 @@ Pomocí [nástroje rozhraní příkazového řádku (CLI) .NET Core](/dotnet/cor
 
    `POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2019-10-01-edge-preview&code={master-key}`
 
-   Hodnota> *hlavního klíče* <je definovaná v účtu služby Azure Storage, který jste nastavili `AzureWebJobsStorage` v souboru, **Azure-WebJobs-tajnosti/{Deployment-Name}/host.js** , kde můžete najít hodnotu v této části:
+   Hodnota> *hlavního klíče* <je definovaná v účtu služby Azure Storage, který jste nastavili `AzureWebJobsStorage` v souboru, **Azure-WebJobs-tajnosti/{Deployment-Name}/host.js**, kde můžete najít hodnotu v této části:
 
    ```json
    {
@@ -1014,6 +1017,47 @@ I když je mnoho [stávajících omezení pro Azure Logic Apps](../logic-apps/lo
   * Limit znaků kódu se zvyšuje z 1 024 znaků na 100 000 znaků.
 
   * Časový limit pro spuštění kódu se zvyšuje od pěti sekund až po 15 sekund.
+
+<a name="troubleshooting"></a>
+
+## <a name="troubleshoot-errors-and-problems"></a>Řešení chyb a problémů
+
+<a name="400-bad-request"></a>
+
+### <a name="400-bad-request"></a>"400 Chybný požadavek"
+
+Pokud se spuštění nepovede a zkontrolujete zobrazení spustit v monitorování, tato chyba se může zobrazit u triggeru nebo akce, která má delší název, což způsobí, že základní identifikátor URI (Uniform Resource Identifier) překročí výchozí limit znaků.
+
+Chcete-li tento problém vyřešit a upravit delší identifikátor URI, upravte `UrlSegmentMaxCount` `UrlSegmentMaxLength` klíče registru a v počítači podle následujících kroků. Tyto výchozí hodnoty klíče jsou popsány v tomto tématu [Http.sys nastavení registru pro Windows](/troubleshoot/iis/httpsys-registry-windows).
+
+> [!IMPORTANT]
+> Než začnete, ujistěte se, že jste ušetřili práci. Toto řešení vyžaduje, abyste po dokončení počítače restartovali počítač, aby se změny mohly projevit.
+
+1. V počítači otevřete okno **spuštění** a spusťte `regedit` příkaz, který otevře Editor registru.
+
+1. V okně **řízení uživatelských účtů** vyberte možnost **Ano** , pokud chcete povolit změny v počítači.
+
+1. V levém podokně rozbalte v části **počítač** uzly v cestě, **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters** a pak vyberte **parametry**.
+
+1. V pravém podokně vyhledejte `UrlSegmentMaxCount` `UrlSegmentMaxLength` klíče registru a.
+
+1. Zvyšte tyto hodnoty klíčů tak, aby identifikátory URI mohly obsahovat názvy, které chcete použít. Pokud tyto klíče neexistují, přidejte je do složky **Parameters** pomocí následujících kroků:
+
+   1. V místní nabídce **parametrů** vyberte možnost **Nová**  >  **Hodnota DWORD (32 bitů)**.
+
+   1. Do pole pro úpravy, které se zobrazí, zadejte `UrlSegmentMaxCount` název nového klíče.
+
+   1. Otevřete místní nabídku nového klíče a vyberte **změnit**.
+
+   1. Do pole **Upravit řetězec** , které se zobrazí, zadejte hodnotu klíče **dat hodnoty** , kterou chcete mít v šestnáctkovém nebo desítkovém formátu. Například `400` v šestnáctkovém formátu je ekvivalentem `1024` v desítkové soustavě.
+
+   1. Chcete-li přidat `UrlSegmentMaxLength` hodnotu klíče, opakujte tento postup.
+
+   Po zvýšení nebo přidání těchto hodnot klíče bude Editor registru vypadat jako v tomto příkladu:
+
+   ![Snímek obrazovky, který zobrazuje Editor registru.](media/create-stateful-stateless-workflows-visual-studio-code/edit-registry-settings-uri-length.png)
+
+1. Až budete připraveni, restartujte počítač, aby se změny projevily.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,7 +9,7 @@
   items:
     - name: Povolení samoobslužného resetování hesel
       href: tutorial-enable-sspr.md
-    - name: Povolení služby Azure Multi-Factor Authentication
+    - name: Povolení vícefaktorového ověřování Azure AD
       href: tutorial-enable-azure-mfa.md
     - name: Povolení zpětného zápisu hesel do místního prostředí
       href: tutorial-enable-sspr-writeback.md
@@ -80,7 +80,7 @@
           href: howto-sspr-authenticationdata.md
         - name: Klienti SSPR pro Windows
           href: howto-sspr-windows.md
-    - name: Azure Multi-Factor Authentication
+    - name: Vícefaktorové ověřování Azure AD
       items:
         - name: Průvodce nasazením
           href: howto-mfa-getstarted.md
@@ -108,7 +108,7 @@
               href: howto-mfa-nps-extension.md
             - name: Pokročilá konfigurace pro rozšíření serveru NPS
               href: howto-mfa-nps-extension-advanced.md
-            - name: Azure VPN a Azure MFA
+            - name: Azure VPN a Azure AD MFA
               href: ../../vpn-gateway/vpn-gateway-radius-mfa-nsp.md
             - name: Brána vzdálené plochy
               href: howto-mfa-nps-extension-rdg.md

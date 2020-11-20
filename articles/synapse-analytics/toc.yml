@@ -504,14 +504,16 @@
                   href: ./spark/synapse-spark-sql-pool-import-export.md
 - name: Synapse Link
   items:
+    - name: Přehled
+      items:
+        - name: Synapse Link pro Azure Cosmos DB
+          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Rychlé starty
       items:
         - name: Připojení k Synapse Linku pro Cosmos DB
           href: quickstart-connect-synapse-link-cosmos-db.md
     - name: Koncepty
       items:
-        - name: Synapse Link pro Azure Cosmos DB
-          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Přehled analytického úložiště
           href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Podporované funkce Synapse Linku
@@ -967,7 +969,7 @@
   items:
     - name: Přehled
       items:
-        - name: Co je strojové učení ve službě Synapse Analytics?
+        - name: Co je strojové učení ve službě Azure Synapse?
           href: machine-learning/what-is-machine-learning.md
     - name: Rychlé starty
       items:

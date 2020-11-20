@@ -12,17 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 01169f3e73fb1d6ddf0ecaf4958c6121cb21c295
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 6b8a9cbfd3e7057f0d85d5f4e19fea3aa4fbe90b
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216126"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980214"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Kurz: přihlášení uživatelů a volání rozhraní API Microsoft Graph z jednostránkové aplikace v JavaScriptu (SPA) pomocí toku kódu ověřování
 
-V tomto kurzu se dozvíte, jak vytvořit jednostránkovou aplikaci v JavaScriptu (SPA), která používá knihovnu Microsoft Authentication Library (MSAL) pro JavaScript v 2.0:
+V tomto kurzu vytvoříte jednostránkovou aplikaci v JavaScriptu (SPA), která podepisuje uživatele a volá Microsoft Graph pomocí toku autorizačního kódu s PKCE. Při sestavování zabezpečeného hesla se používá knihovna Microsoft Authentication Library (MSAL) pro JavaScript v 2.0.
 
+V tomto kurzu:
 > [!div class="checklist"]
 > * Provedení toku autorizačního kódu OAuth 2,0 s PKCE
 > * Přihlaste se k osobním účtům Microsoft i pracovním a školním účtům.
@@ -31,7 +32,7 @@ V tomto kurzu se dozvíte, jak vytvořit jednostránkovou aplikaci v JavaScriptu
 
 MSAL.js 2,0 vylepšuje MSAL.js 1,0 tím, že podporuje tok autorizačního kódu v prohlížeči místo implicitního toku udělení. MSAL.js **2,0 nepodporuje implicitní** tok.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org/en/download/) pro spuštění místního serveru
 * [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný Editor kódu
@@ -118,13 +119,13 @@ Teď máte malý dynamický Server, který bude sloužit pro SPA. Po dokončení
 ```
 msal-spa-tutorial/
 ├── app
-│   ├── authConfig.js
-│   ├── authPopup.js
-│   ├── authRedirect.js
-│   ├── graphConfig.js
-│   ├── graph.js
-│   ├── index.html
-│   └── ui.js
+│   ├── authConfig.js
+│   ├── authPopup.js
+│   ├── authRedirect.js
+│   ├── graphConfig.js
+│   ├── graph.js
+│   ├── index.html
+│   └── ui.js
 └── server.js
 ```
 
@@ -547,7 +548,7 @@ function readMail() {
 
 Když uživatel poprvé vybere tlačítko pro **přihlášení** , `signIn` metoda se zavolá na `loginPopup` přihlášení uživatele. `loginPopup`Metoda otevře automaticky otevírané okno s *koncovým bodem Microsoft Identity Platform* , kde se zobrazí výzva a ověří přihlašovací údaje uživatele. Po úspěšném přihlášení zahájí *msal.js* [tok autorizačního kódu](v2-oauth2-auth-code-flow.md).
 
-V tomto okamžiku se do koncového bodu tokenu Protected CORS pošle autorizační kód chráněný PKCE a vyměňují se pro tokeny. Vaše *msal.js*aplikace obdrží token ID, přístupový token a aktualizační token a informace obsažené v tokenech jsou uložené v mezipaměti.
+V tomto okamžiku se do koncového bodu tokenu Protected CORS pošle autorizační kód chráněný PKCE a vyměňují se pro tokeny. Vaše *msal.js* aplikace obdrží token ID, přístupový token a aktualizační token a informace obsažené v tokenech jsou uložené v mezipaměti.
 
 Token ID obsahuje základní informace o uživateli, jako je jeho zobrazované jméno. Pokud máte v úmyslu použít jakákoli data poskytnutá tokenem ID, váš back-end server *musí* ověřit, zda byl token vydán platnému uživateli vaší aplikace.
 
@@ -617,25 +618,25 @@ Dokončili jste vytváření aplikace a teď jste připraveni spustit Node.js we
 
 ### <a name="sign-in-to-the-application"></a>Přihlášení k aplikaci
 
-Poté, co prohlížeč načte soubor *index.html* , vyberte možnost **Přihlásit**se. Budete vyzváni k přihlášení pomocí koncového bodu Microsoft Identity Platform:
+Poté, co prohlížeč načte soubor *index.html* , vyberte možnost **Přihlásit** se. Budete vyzváni k přihlášení pomocí koncového bodu Microsoft Identity Platform:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Diagram znázorňující tok autorizačního kódu v aplikaci s jednou stránkou":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Webový prohlížeč, který zobrazuje přihlašovací dialog":::
 
 ### <a name="provide-consent-for-application-access"></a>Poskytnutí souhlasu pro přístup k aplikaci
 
 Při prvním přihlášení k aplikaci se zobrazí výzva, abyste udělili přístup k vašemu profilu a přihlásili se k nim:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Diagram znázorňující tok autorizačního kódu v aplikaci s jednou stránkou":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Dialog obsahu zobrazený ve webovém prohlížeči":::
 
 Pokud souhlasíte s požadovanými oprávněními, webové aplikace zobrazí vaše uživatelské jméno a označuje úspěšné přihlášení:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Diagram znázorňující tok autorizačního kódu v aplikaci s jednou stránkou":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Výsledky úspěšného přihlášení ve webovém prohlížeči":::
 
 ### <a name="call-the-graph-api"></a>Volání Graph API
 
 Po přihlášení vyberte **Zobrazit profil** pro zobrazení informací o profilu uživatele vrácených v odpovědi z volání rozhraní Microsoft Graph API:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Diagram znázorňující tok autorizačního kódu v aplikaci s jednou stránkou":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Informace o profilu z Microsoft Graph zobrazené v prohlížeči":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a delegovaných oprávněních
 

@@ -96,7 +96,7 @@
       href: app-attach.md
     - name: Použití Microsoft Teams
       href: teams-on-wvd.md
-    - name: Nastavení služby Azure Multi-Factor Authentication
+    - name: Nastavení vícefaktorového ověřování Azure AD
       href: set-up-mfa.md
     - name: Konfigurace automatických aktualizací
       href: configure-automatic-updates.md

@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 4d126d1e6bb92d2079ac3c0d95f754cb9aab3c21
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4b9dec0fe684e002fadbac2db375c354db2b6d01
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978607"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981166"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Správa aktualizací platformy pomocí řízení údržby 
 
@@ -23,12 +23,13 @@ Spravujte aktualizace platforem, které nevyžadují restart, pomocí řízení 
 Pomocí řízení údržby můžete:
 - Dávka se aktualizuje do jednoho balíčku aktualizace.
 - Počkejte až 35 dní, než se aktualizace použijí. 
-- Automatizujte aktualizace platforem pro okno údržby pomocí [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
+- Automatizujte aktualizace platforem konfigurací plánu údržby nebo pomocí [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
 - Konfigurace údržby pracují v rámci předplatných a skupin prostředků. 
 
 ## <a name="limitations"></a>Omezení
 
 - Virtuální počítače musí být na [vyhrazeném hostiteli](./dedicated-hosts.md)nebo být vytvořené pomocí [izolované velikosti virtuálního počítače](isolation.md).
+- Pokud je deklarován plán údržby, musí být nejméně 2 hodiny.
 - Po 35 dnech se automaticky použije aktualizace.
 - Uživatel musí mít přístup k **přispěvateli prostředků** .
 

@@ -13,12 +13,12 @@ ms.author: aahi
 keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 6d69c47c4833247ac259f9dcc166d7ab2696c117
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5a0856df71f87e49c1a7d627ba92419352c796d5
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977790"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980935"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Rychlý Start: použití klientské knihovny Analýza textu
 
@@ -38,6 +38,7 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 > * Nejnovější stabilní verze rozhraní API pro analýzu textu je `3.0` .
 >    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
+> * Pokud chcete použít analýza textu pro stav nebo asynchronní operace, přečtěte si příklady na GitHubu pro [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics), [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/) nebo [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) .
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
@@ -50,6 +51,7 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 > [!IMPORTANT]
 > * Nejnovější stabilní verze rozhraní API pro analýzu textu je `3.0` .
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
+Pokud chcete použít analýza textu pro stav nebo asynchronní operace, přečtěte si příklady na GitHubu pro [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics), [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/) nebo [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) .
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
@@ -72,7 +74,7 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 > [!IMPORTANT]
 > * Nejnovější stabilní verze rozhraní API pro analýzu textu je `3.0` .
 >    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
-> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže. 
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže. Pokud chcete použít analýza textu pro stav nebo asynchronní operace, přečtěte si příklady na GitHubu pro [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics), [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/) nebo [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) .
 
 [!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
@@ -84,7 +86,7 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
 Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovacím jazyce nezobrazili rychlý Start. Nedělejte si starosti, máme k dispozici další rychlé starty. Použijte tabulku k vyhledání správné ukázky pro programovací jazyk.
 
-| Language | Dostupná verze | 
+| Jazyk | Dostupná verze | 
 |----------|------------------------|
 | Ruby     | [Verze 2,1](ruby-sdk.md) | 
 | Přejít       | [Verze 2,1](go-sdk.md) | 
