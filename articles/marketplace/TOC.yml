@@ -15,7 +15,7 @@
       href: partner-center-portal/account-migration-from-cpp-to-pc.md
 - name: Koncepty
   items:
-    - name: Aspekty a možnosti publikování
+    - name: Možnosti zápisu
       href: determine-your-listing-type.md
     - name: Transakce na komerčním marketplace
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
@@ -349,15 +349,14 @@
       items:
         - name: Přehled rozhraní API pro dodávky SaaS
           href: partner-center-portal/pc-saas-fulfillment-apis.md
-          items:
-            - name: Registrace aplikace SaaS
-              href: partner-center-portal/pc-saas-registration.md
-            - name: Rozhraní API pro naplnění SaaS v2
-              href: partner-center-portal/pc-saas-fulfillment-api-v2.md
-            - name: Rozhraní API pro naplnění SaaS v1 (zastaralá)
-              href: partner-center-portal/pc-saas-fulfillment-api-v1.md
-            - name: Rozhraní API pro naplnění SaaS – nejčastější dotazy
-              href: partner-center-portal/saas-fulfillment-apis-faq.md
+        - name: Registrace aplikace SaaS
+          href: partner-center-portal/pc-saas-registration.md
+        - name: Rozhraní API pro naplnění SaaS v2
+          href: partner-center-portal/pc-saas-fulfillment-api-v2.md
+        - name: Rozhraní API pro naplnění SaaS v1 (zastaralá)
+          href: partner-center-portal/pc-saas-fulfillment-api-v1.md
+        - name: Rozhraní API pro naplnění SaaS – nejčastější dotazy
+          href: partner-center-portal/saas-fulfillment-apis-faq.md
 - name: Prostředky
   items:
     - name: Nejčastější dotazy ke komerčnímu marketplace
