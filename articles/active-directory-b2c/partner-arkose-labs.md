@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86170220"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953878"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Arkose Labs s Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ Následující diagram popisuje, jak se Arkose Labs integrují s Azure AD B2C.
 
 ![Diagram architektury Arkose Labs](media/partner-arkose-labs/arkose-architecture-diagram.png)
 
-| Krok  | Description |
+| Krok  | Popis |
 |---|---|
 |1     | Uživatel se přihlásí pomocí dříve vytvořeného účtu. Když uživatel vybere odeslat, zobrazí se výzva k vynucení Arkose Labs. Jakmile uživatel tuto výzvu dokončí, pošle se do Arkose Labs stav, ve kterém se vygeneruje token.        |
 |2     |  Arkose Labs pošle token zpátky do Azure AD B2C.       |
@@ -66,13 +66,13 @@ Pokud chcete vytvořit účet úložiště, použijte následující postup:
 
 4. Vyberte **Přidat**.
 
-5. V části **Skupina prostředků**vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a pak vyberte **OK**.
+5. V části  **Skupina prostředků** vyberte  **vytvořit novou**, zadejte název nové skupiny prostředků a pak vyberte **OK**.
 
 6. Zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure, mít délku 3 až 24 znaků a může obsahovat jen číslice a malá písmena.
 
 7. Vyberte umístění účtu úložiště nebo přijměte výchozí umístění.
 
-8. Přijměte všechny ostatní výchozí hodnoty, vyberte  **zkontrolovat & vytvořit**  >  **vytvořit**.
+8. Přijměte všechny ostatní výchozí hodnoty, vyberte   **zkontrolovat & vytvořit**  >  **vytvořit**.
 
 9. Po vytvoření účtu úložiště vyberte  **Přejít k prostředku**.
 
@@ -80,7 +80,7 @@ Pokud chcete vytvořit účet úložiště, použijte následující postup:
 
 1. Na stránce Přehled účtu úložiště vyberte  **objekty blob**.
 
-2. Vyberte  **kontejner**, zadejte název kontejneru, zvolte  **objekt BLOB** (anonymní přístup pro čtení jenom pro objekty BLOB) a pak vyberte **OK**.
+2. Vyberte   **kontejner**, zadejte název kontejneru, zvolte   **objekt BLOB** (anonymní přístup pro čtení jenom pro objekty BLOB) a pak vyberte **OK**.
 
 #### <a name="enable-cross-origin-resource-sharing-cors"></a>Povolit sdílení prostředků mezi zdroji (CORS)
 
@@ -88,15 +88,15 @@ Azure AD B2C kód v prohlížeči používá moderní a standardní přístup k 
 
 1. V nabídce vyberte  **CORS**.
 
-2. V případě  **povolených zdrojů**zadejte  `https://your-tenant-name.b2clogin.com` . Nahraďte název-tenanta názvem vašeho tenanta Azure AD B2C. Příklad:  `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta použijte všechna malá písmena.
+2. V případě  **povolených zdrojů** zadejte  `https://your-tenant-name.b2clogin.com` . Nahraďte název-tenanta názvem vašeho tenanta Azure AD B2C. Příklad:  `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta použijte všechna malá písmena.
 
-3. U **povolených metod**vyberte **získat**, **Vložit**a **Možnosti**.
+3. U  **povolených metod** vyberte  **získat**, **Vložit** a  **Možnosti**.
 
-4. U **povolených hlaviček**zadejte hvězdičku (*).
+4. U **povolených hlaviček** zadejte hvězdičku (*).
 
-5. U **zveřejněných hlaviček**zadejte hvězdičku (*).
+5. U **zveřejněných hlaviček** zadejte hvězdičku (*).
 
-6. Do **maximálního stáří**zadejte 200.
+6. Do **maximálního stáří** zadejte 200.
 
    ![Registrace a přihlášení Arkose Labs](media/partner-arkose-labs/signup-signin-arkose.png)
 
@@ -106,7 +106,7 @@ Azure AD B2C kód v prohlížeči používá moderní a standardní přístup k 
 
 Stáhněte si Git bash a postupujte podle následujících kroků:
 
-1. Postupujte podle pokynů k [Vytvoření webové aplikace](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php)až do zprávy "Blahopřejeme!Nasadili jste svoji první aplikaci v PHP do App Service "zobrazí se.
+1. Postupujte podle pokynů k [Vytvoření webové aplikace](../app-service/quickstart-php.md)až do zprávy "Blahopřejeme!Nasadili jste svoji první aplikaci v PHP do App Service "zobrazí se.
 
 2. Otevřete místní složku a přejmenujte soubor **index. php** na **verify-token. php**.
 
@@ -138,7 +138,7 @@ Stáhněte si Git bash a postupujte podle následujících kroků:
 
 5. Nahrajte soubor index.html do úložiště objektů BLOB vytvořené výše.
 
-6. Přejít na **Storage**  >  **Container**  >  **nahrávání**kontejneru úložiště.
+6. Přejít na **Storage**  >  **Container**  >  **nahrávání** kontejneru úložiště.
 
 #### <a name="set-up-azure-ad-b2c"></a>Nastavit Azure AD B2C
 
@@ -156,7 +156,7 @@ Tato vlastní adresa URL stránky se získává z umístění souboru index.html
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
-1. Otevřete Azure AD B2C tenant a v části **zásady**vyberte **toky uživatelů**.
+1. Otevřete Azure AD B2C tenant a v části **zásady** vyberte **toky uživatelů**.
 
 2. Vyberte dříve vytvořený tok uživatele.
 
@@ -174,7 +174,7 @@ Tato vlastní adresa URL stránky se získává z umístění souboru index.html
 
 6. Projděte si tok přihlášení.
 
-7. Po výběru **pokračovat**se zobrazí skládanka Arkose Labs.
+7. Po výběru **pokračovat** se zobrazí skládanka Arkose Labs.
 
 ## <a name="next-steps"></a>Další kroky
 

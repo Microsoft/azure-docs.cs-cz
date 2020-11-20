@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f99c5b9362380690badce832c3dd540137d35ac
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 07897823a3ba3b83e240e8e8dc005ea13b036fce
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215398"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952042"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
  
@@ -141,7 +141,7 @@ Aplikace, které obsahují dlouhotrvající procesy nebo které fungují bez př
 
 I když služba Azure AD B2C Authentication Service aktuálně nepodporuje tok udělení přihlašovacích údajů klienta OAuth 2,0, můžete nastavit tok přihlašovacích údajů klienta pomocí Azure AD a koncového bodu Microsoft Identity Platform/token pro aplikaci ve vašem tenantovi Azure AD B2C. Tenant Azure AD B2C sdílí některé funkce s klienty Azure AD Enterprise.
 
-Pokud chcete nastavit tok přihlašovacích údajů klienta, přečtěte si téma [Azure Active Directory v 2.0 a tok přihlašovacích údajů klienta OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds). Výsledkem úspěšného ověření je příjem tokenu, který se naformátoval, aby ho služba Azure AD mohla používat, jak je popsáno v tématu [Reference k tokenům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+Pokud chcete nastavit tok přihlašovacích údajů klienta, přečtěte si téma [Azure Active Directory v 2.0 a tok přihlašovacích údajů klienta OAuth 2,0](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). Výsledkem úspěšného ověření je příjem tokenu, který se naformátoval, aby ho služba Azure AD mohla používat, jak je popsáno v tématu [Reference k tokenům Azure AD](../active-directory/develop/id-tokens.md).
 
 Pokyny k registraci aplikace pro správu najdete v tématu [správa Azure AD B2C s](microsoft-graph-get-started.md)využitím Microsoft Graph.
 
@@ -155,7 +155,7 @@ Tento scénář zřetězených webových rozhraní API může být podporován p
 
 Neupravujte Azure AD B2C aplikace těmito způsoby:
 
-- Na jiných portálech pro správu aplikací, jako je [portál pro registraci aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
+- Na jiných portálech pro správu aplikací, jako je [Portál pro registraci aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 - Použití Graph API nebo PowerShellu.
 
 Pokud aplikaci Azure AD B2C upravíte mimo Azure Portal, stane se chybnou aplikací a již nebude použitelná s Azure AD B2C. Odstraňte aplikaci a znovu ji vytvořte.

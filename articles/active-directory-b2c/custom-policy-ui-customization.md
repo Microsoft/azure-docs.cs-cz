@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb833ff35dae4fe1c0c27204ec66fa6b4cdb82c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 340c9629af89bfacb85b37503743fc5770070ae3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388880"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951838"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get
 
 Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte **ContentDefinition** a jeho podřízené prvky ze základního souboru do souboru rozšíření.
 
-1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Tento základní soubor je jedním ze souborů zásad, které jsou součástí počáteční sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Tento základní soubor je jedním ze souborů zásad, které jsou součástí počáteční sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](./custom-policy-get-started.md).
 1. Vyhledejte a zkopírujte celý obsah elementu **ContentDefinitions** .
 1. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions.xml*. Vyhledejte element **BuildingBlocks** . Pokud element neexistuje, přidejte jej.
 1. Vložte celý obsah elementu **ContentDefinitions** , který jste zkopírovali jako podřízený prvek **BuildingBlocks** elementu.
@@ -66,7 +66,7 @@ Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte 
 
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. Vyhledejte a vyberte **Azure AD B2C**.
-1. V části **zásady**vyberte **Architektura prostředí identity**.
+1. V části **zásady** vyberte **Architektura prostředí identity**.
 1. Vyberte **Odeslat vlastní zásadu**.
 1. Nahrajte soubor rozšíření, který jste předtím změnili.
 

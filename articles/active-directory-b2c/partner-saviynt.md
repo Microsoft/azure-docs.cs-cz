@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 184616058cb2a86025eb75b4923e374ab42ebf05
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259132"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953555"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Saviynt s využitím Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Abyste mohli začít, budete potřebovat:
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 
-- [Tenant Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). Tenant je propojený s vaším předplatným Azure.
+- [Tenant Azure AD B2C](./tutorial-create-tenant.md). Tenant je propojený s vaším předplatným Azure.
 
 - [Předplatné](https://saviynt.com/contact-us/) Saviynt
 
@@ -48,13 +48,13 @@ Integrace Saviynt zahrnuje tyto komponenty:
 
 - [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) – platforma pro zásady správného řízení identit, která poskytuje jemně odstupňovanou delegovanou správu pro správu životního cyklu uživatelů a přístup k zásadám správného řízení Azure AD B2C uživatelů.  
 
-- [Rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) – toto rozhraní API poskytuje rozhraní pro Saviynt ke správě Azure AD B2Cch uživatelů a jejich přístupu v Azure AD B2C.
+- [Rozhraní Microsoft Graph API](/graph/use-the-api) – toto rozhraní API poskytuje rozhraní pro Saviynt ke správě Azure AD B2Cch uživatelů a jejich přístupu v Azure AD B2C.
 
 V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Obrázek znázorňující diagram architektury saviynt](./media/partner-saviynt/saviynt-architecture-diagram.png)
 
-|Krok | Description |
+|Krok | Popis |
 |:-----| :-----------|
 | 1. | Delegovaný správce spustí uživatelskou operaci spravovat Azure AD B2C pomocí Saviynt.
 | 2. | Saviynt ověří pomocí svého autorizačního modulu, pokud může provést konkrétní operace.
@@ -69,13 +69,13 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 1. Pokud chcete vytvořit účet Saviynt, kontaktujte [Saviynt](https://saviynt.com/contact-us/) .
 
-2. Vytvořte zásady delegované správy a přiřaďte uživatele jako [delegované správce](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-concept-delegation) s různými rolemi.
+2. Vytvořte zásady delegované správy a přiřaďte uživatele jako [delegované správce](../active-directory/users-groups-roles/roles-concept-delegation.md) s různými rolemi.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Konfigurace Azure AD B2C pomocí Saviynt
 
 ### <a name="create-an-azure-ad-application-for-saviynt"></a>Vytvoření aplikace Azure AD pro Saviynt
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/#home).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/#home).
 
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
@@ -91,7 +91,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 8. Přejít na další stránku a vybrat **oprávnění aplikace**.
 
-9. Vyberte **adresář**a pak vyberte **adresář. Read. All** a **Directory. čitelná. všechna** zaškrtávací políčka.
+9. Vyberte **adresář** a pak vyberte **adresář. Read. All** a **Directory. čitelná. všechna** zaškrtávací políčka.
 
 10. Vyberte **Přidat oprávnění**. Zkontrolujte přidaná oprávnění.
 
@@ -104,7 +104,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
     >[!NOTE]
     > Později budete potřebovat tajný klíč klienta.
 
-14. Přejít na **Přehled** a získat **ID klienta** a **ID**klienta.
+14. Přejít na **Přehled** a získat **ID klienta** a **ID** klienta.
 
 15. K dokončení nastavení v Saviynt bude nutné ID tenanta, ID klienta a tajný klíč klienta.
 
@@ -113,7 +113,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 Níže uvedené kroky vysvětlují, jak povolit Saviynt k provádění operací odstraňování uživatelů v Azure AD B2C.
 
 >[!NOTE]
->[Před udělením přístupu rolí správce k instančnímu objektu vyhodnoťte riziko.](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+>[Před udělením přístupu rolí správce k instančnímu objektu vyhodnoťte riziko.](../active-directory/develop/app-objects-and-service-principals.md)
 
 1. Nainstalujte nejnovější verzi modulu MSOnline PowerShellu na pracovní stanici nebo server s Windows.
 
@@ -133,8 +133,8 @@ Přejděte do tenanta aplikace Saviynt a otestujte správu životního cyklu už
 
 Další informace najdete v následujících článcích:
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
 
-- [Vytvoření aplikace webového rozhraní API](https://docs.microsoft.com/azure/active-directory-b2c/add-web-api-application)
+- [Vytvoření aplikace webového rozhraní API](./add-web-api-application.md)

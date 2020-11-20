@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b7bb33dfbf29b7e448887ce992d03009133b2e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87482834"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953484"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpečení rozhraní API služby Azure API Management pomocí Azure AD B2C
 
@@ -35,22 +35,22 @@ Než budete pokračovat v krocích v tomto článku, budete potřebovat následu
 
 Když Zabezpečete rozhraní API v Azure API Management s Azure AD B2C, potřebujete pro [příchozí zásadu](../api-management/api-management-howto-policies.md) , kterou vytvoříte v APIM, několik hodnot. Nejdřív si poznamenejte ID aplikace, kterou jste dříve vytvořili ve svém tenantovi Azure AD B2C. Pokud používáte aplikaci, kterou jste vytvořili v části požadavky, použijte ID aplikace pro *webbapp1*.
 
-K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
+K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Registrace aplikací**a pak vyberte kartu **vlastněné aplikace** .
+1. Vyberte **Registrace aplikací** a pak vyberte kartu **vlastněné aplikace** .
 1. Poznamenejte si hodnotu ve sloupci **ID aplikace (klienta)** pro *WebApp1* nebo jinou aplikaci, kterou jste vytvořili dříve.
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. V části **Spravovat**vyberte **aplikace (starší verze)**.
+1. V části **Spravovat** vyberte **aplikace (starší verze)**.
 1. Poznamenejte si hodnotu ve sloupci **ID aplikace** pro *WebApp1* nebo jinou aplikaci, kterou jste vytvořili dříve.
 
 * * *
@@ -60,7 +60,7 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové j
 Dále Získejte dobře známou adresu URL konfigurace pro některý z vašich Azure AD B2Cch uživatelských toků. Také potřebujete identifikátor URI koncového bodu vystavitele tokenu, který chcete podporovat v Azure API Management.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na svého tenanta Azure AD B2C.
-1. V části **zásady**vyberte **toky uživatelů**.
+1. V části **zásady** vyberte **toky uživatelů**.
 1. Vyberte existující zásadu, například *B2C_1_signupsignin1*, a pak vyberte **Spustit tok uživatele**.
 1. Poznamenejte si adresu URL v hypertextovém odkazu zobrazenou pod nadpisem **tok spouštěného uživatele** v horní části stránky. Tato adresa URL je známý koncový bod zjišťování OpenID Connect pro tok uživatele a v další části ho použijete při konfiguraci příchozí zásady v Azure API Management.
 
@@ -88,7 +88,7 @@ Nyní jste připraveni přidat příchozí zásadu v Azure API Management, kter�
 1. Vyberte **Rozhraní API**.
 1. Vyberte rozhraní API, které chcete zabezpečit pomocí Azure AD B2C.
 1. Vyberte kartu **Návrh**.
-1. V části **příchozí zpracování**vyberte **\</\>** otevřít Editor kódu zásad.
+1. V části **příchozí zpracování** vyberte **\</\>** otevřít Editor kódu zásad.
 1. Do zásady umístěte následující `<validate-jwt>` značku `<inbound>` .
 
     1. Aktualizujte `url` hodnotu v `<openid-config>` prvku o dobře známou adresu URL konfigurace vaší zásady.
@@ -126,10 +126,10 @@ Pro volání rozhraní API potřebujete přístupový token vydaný Azure AD B2C
 Nejdřív potřebujete token vydaný Azure AD B2C, který se má použít v `Authorization` hlavičce v poli post. Můžete ji získat pomocí funkce **Spustit nyní** v uživatelském toku registrace/přihlášení, kterou byste měli vytvořit jako jeden z požadovaných součástí.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na svého tenanta Azure AD B2C.
-1. V části **zásady**vyberte **toky uživatelů**.
+1. V části **zásady** vyberte **toky uživatelů**.
 1. Vyberte existující tok uživatelů registrace nebo přihlašování, například *B2C_1_signupsignin1*.
-1. V případě **aplikace**vyberte *WebApp1*.
-1. V možnosti **Adresa URL odpovědi**vyberte `https://jwt.ms` .
+1. V případě **aplikace** vyberte *WebApp1*.
+1. V možnosti **Adresa URL odpovědi** vyberte `https://jwt.ms` .
 1. Vyberte **Spustit tok uživatele**.
 
     ![Spustit stránku Flow uživatele pro registraci uživatelského toku přihlášení v Azure Portal](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
@@ -145,7 +145,7 @@ Klientská aplikace (v tomto případě), která volá publikované rozhraní AP
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do instance služby Azure API Management.
 1. Vyberte **Předplatná**.
-1. Vyberte tři tečky pro **produkt: neomezeno**a pak vyberte **Zobrazit/skrýt klíče**.
+1. Vyberte tři tečky pro **produkt: neomezeno** a pak vyberte **Zobrazit/skrýt klíče**.
 1. Zaznamenejte **primární klíč** pro daný produkt. Tento klíč použijete pro `Ocp-Apim-Subscription-Key` hlavičku v žádosti HTTP v poli post.
 
 ![Stránka klíče předplatného s vybranými možnostmi Zobrazit/skrýt klíče v Azure Portal](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)

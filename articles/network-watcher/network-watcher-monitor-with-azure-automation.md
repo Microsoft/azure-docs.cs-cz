@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 273e9f7ce65cdd15000b1cc4ac7c19cde5992992
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af671996722524de9af1a90ae8dfde27f814c8c2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396769"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951634"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Monitorování bran VPN pomocí Network Watcher řešení potíží
 
@@ -51,7 +51,7 @@ Než začnete tento scénář, musíte mít následující požadavky:
 
 ### <a name="create-the-runbook"></a>Vytvoření Runbooku
 
-Prvním krokem ke konfiguraci příkladu je vytvoření Runbooku. V tomto příkladu se používá účet Spustit jako. Další informace o účtech Spustit jako najdete v webu [ověřování runbooků pomocí účtu Spustit jako pro Azure](../automation/automation-create-runas-account.md) .
+Prvním krokem ke konfiguraci příkladu je vytvoření Runbooku. V tomto příkladu se používá účet Spustit jako. Další informace o účtech Spustit jako najdete v webu [ověřování runbooků pomocí účtu Spustit jako pro Azure](../automation/manage-runas-account.md) .
 
 ### <a name="step-1"></a>Krok 1
 
@@ -67,7 +67,7 @@ Kliknutím na **Přidat Runbook** zahajte proces vytváření sady Runbook.
 
 ### <a name="step-3"></a>Krok 3
 
-V části **rychlé vytvoření**klikněte na **vytvořit novou sadu Runbook** a vytvořte sadu Runbook.
+V části **rychlé vytvoření** klikněte na **vytvořit novou sadu Runbook** a vytvořte sadu Runbook.
 
 ![Přidat okno Runbooku][3]
 

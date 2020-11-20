@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6064bd2c62922abea44508b8bf6cdfa3e7ecbc92
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85384936"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953300"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: přihlášení pomocí aplikace pro iOS
 
 Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Použití otevřeného standardního protokolu nabízí při výběru knihovny pro integraci s našimi službami více možností vývojářů. Tento názorný postup a další uživatelé mají za to, aby mohli snadněji psát aplikace, které se připojují k platformě Microsoft identity. Většina knihoven, které implementují [specifikaci RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) , se může připojit k platformě Microsoft identity.
 
 > [!WARNING]
-> Microsoft neposkytuje opravy pro knihovny třetích stran a neprovádí revize těchto knihoven. Tato ukázka používá knihovnu třetí strany s názvem AppAuth, která byla testována z hlediska kompatibility v základních scénářích s Azure AD B2C. Žádosti o problémy a funkce by měly být směrovány na open source projekt knihovny. Další informace najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
+> Microsoft neposkytuje opravy pro knihovny třetích stran a neprovádí revize těchto knihoven. Tato ukázka používá knihovnu třetí strany s názvem AppAuth, která byla testována z hlediska kompatibility v základních scénářích s Azure AD B2C. Žádosti o problémy a funkce by měly být směrovány na open source projekt knihovny. Další informace najdete v [tomto článku](../active-directory/develop/reference-v2-libraries.md).
 >
 >
 
@@ -45,8 +45,8 @@ Také zaznamenejte vlastní identifikátor URI přesměrování pro použití v 
 ## <a name="create-your-user-flows"></a>Vytvoření uživatelských toků
 V Azure AD B2C je každé uživatelské prostředí definované [uživatelským tokem](user-flow-overview.md). Tato aplikace obsahuje jedno prostředí identity: kombinované přihlášení a registrace. Při vytváření toku uživatele nezapomeňte:
 
-* V části **atributy registrace**vyberte **Zobrazovaný název**atributu.  Můžete také vybrat jiné atributy.
-* V části **deklarace identity aplikace**vyberte **Zobrazovaný název** deklarací identity a **ID objektu uživatele**. Můžete vybrat i další deklarace identity.
+* V části **atributy registrace** vyberte **Zobrazovaný název** atributu.  Můžete také vybrat jiné atributy.
+* V části **deklarace identity aplikace** vyberte **Zobrazovaný název** deklarací identity a **ID objektu uživatele**. Můžete vybrat i další deklarace identity.
 * Po vytvoření si zkopírujte **název** každého toku uživatele. Název uživatelského toku je předponou `b2c_1_` při ukládání toku uživatele.  Název toku uživatele budete potřebovat později.
 
 Po vytvoření toků uživatelů budete připraveni k sestavení aplikace.

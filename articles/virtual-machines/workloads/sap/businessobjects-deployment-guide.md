@@ -9,19 +9,20 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 9d1759e5b809bc40e63fb6024fb7f107ad347da6
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ee7cc1c81bd35bf2b51c712c3a60a046435ee700
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094283"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951279"
 ---
-# <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Příručka pro plánování a implementaci SAP BusinessObjects BI Platform v Azure
+# <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Průvodce plánováním a implementací platformy SAP BusinessObjects BI v Azure
 
 ## <a name="overview"></a>Přehled
 
@@ -235,7 +236,7 @@ Azure nabízí pro všechny potřeby svých aplikací odrůdy virtuálních poč
 
 Na základě velikosti platformy SAP BI potřebujete namapovat svůj požadavek na virtuální počítač Azure, který je podporovaný v Azure pro produkt SAP. Systém SAP Note [1928533](https://launchpad.support.sap.com/#/notes/1928533) je dobrým výchozím bodem, který vypíše podporované typy virtuálních počítačů Azure pro produkty SAP v systémech Windows a Linux. Také je potřeba mít na paměti, že kromě výběru čistě podporovaných typů virtuálních počítačů je také nutné ověřit, zda jsou tyto typy virtuálních počítačů k dispozici v konkrétní oblasti. Můžete kontrolovat dostupnost typu virtuálního počítače na stránce [Dostupné produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/) . Pro výběr cenového modelu se můžete podívat na [úlohy SAP na virtuálních počítačích Azure](planning-guide.md#azure-virtual-machines-for-sap-workload) .
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 Azure Storage je cloudová služba spravovaná v Azure, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní úložiště. Některé typy úložišť mají omezené použití pro scénáře SAP. Ale několik typů Azure Storage jsou vhodné nebo optimalizované pro konkrétní scénáře úloh SAP. Další informace najdete v tématu [Azure Storage typy pro Průvodce úlohami SAP](planning-guide-storage.md) , protože vysvětlují různé možnosti úložiště, které jsou vhodné pro SAP.
 

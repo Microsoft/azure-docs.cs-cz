@@ -11,22 +11,22 @@ ms.date: 05/06/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48c79306d376c2faa1089886881a7b5e9a792c86
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d9bdf7258296b82e65e03f6b8af8021b9a7be0f0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840538"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952467"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Správa uživatelských dat v Azure Active Directory B2C
 
- Tento článek popisuje, jak můžete spravovat data uživatelů v Azure Active Directory B2C (Azure AD B2C) pomocí operací, které jsou k dispozici v [rozhraní API pro Microsoft Graph](https://docs.microsoft.com/graph/use-the-api). Správa uživatelských dat zahrnuje odstranění nebo export dat z protokolů auditu.
+ Tento článek popisuje, jak můžete spravovat data uživatelů v Azure Active Directory B2C (Azure AD B2C) pomocí operací, které jsou k dispozici v [rozhraní API pro Microsoft Graph](/graph/use-the-api). Správa uživatelských dat zahrnuje odstranění nebo export dat z protokolů auditu.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="delete-user-data"></a>Odstranění uživatelských dat
 
-Uživatelská data jsou uložená v adresáři Azure AD B2C a v protokolech auditu. Všechna data auditu uživatele se uchovávají 7 dní v Azure AD B2C. Pokud chcete odstranit uživatelská data během období 7 dní, můžete použít operaci [Odstranit uživatele](https://docs.microsoft.com/graph/api/user-delete) . Pro každého klienta Azure AD B2C, kde se mohou nacházet data, se vyžaduje operace odstranění.
+Uživatelská data jsou uložená v adresáři Azure AD B2C a v protokolech auditu. Všechna data auditu uživatele se uchovávají 7 dní v Azure AD B2C. Pokud chcete odstranit uživatelská data během období 7 dní, můžete použít operaci [Odstranit uživatele](/graph/api/user-delete) . Pro každého klienta Azure AD B2C, kde se mohou nacházet data, se vyžaduje operace odstranění.
 
 Každému uživateli v Azure AD B2C je přiřazeno ID objektu. ID objektu poskytuje jednoznačný identifikátor, který můžete použít k odstranění uživatelských dat v Azure AD B2C. V závislosti na vaší architektuře může být ID objektu užitečným identifikátorem korelace napříč ostatními službami, jako jsou finanční, marketingová a zákaznická Správa vztahů se zákazníky.
 

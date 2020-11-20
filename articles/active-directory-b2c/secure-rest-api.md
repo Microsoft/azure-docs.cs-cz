@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: adb9bf48800062d2cc6976a88ec48c1993858dec
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 18979ba8cbc4e68bf79275059c6c1c976578c407
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089532"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953368"
 ---
 # <a name="secure-your-restful-services"></a>Zabezpečení služeb RESTful 
 
@@ -28,7 +28,7 @@ Přečtěte si, jak integrovat REST API v rámci cesty Azure AD B2C uživatele v
 
 Tento článek vás seznámí s postupem zabezpečení REST API pomocí protokolu HTTP Basic, klientského certifikátu nebo ověřování OAuth2. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Proveďte kroky v jednom z následujících pokynů:
 
@@ -43,24 +43,24 @@ Základní ověřování HTTP je definované v [dokumentu RFC 2617](https://tool
 
 Pokud chcete nakonfigurovat REST API technický profil s ověřováním HTTP Basic, vytvořte si uživatelské jméno a heslo pomocí následujících kryptografických klíčů:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
-1. Vyberte **klíče zásad**a pak vyberte **Přidat**.
-1. V případě **možností**vyberte možnost **ručně**.
-1. Jako **název**zadejte **RestApiUsername**.
+1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+1. V případě **možností** vyberte možnost **ručně**.
+1. Jako **název** zadejte **RestApiUsername**.
     *B2C_1A_* předpony je možné přidat automaticky.
 1. Do pole **tajný kód** zadejte REST API uživatelské jméno.
-1. V případě **použití klíče**vyberte **šifrování**.
+1. V případě **použití klíče** vyberte **šifrování**.
 1. Vyberte **Vytvořit**.
 1. Znovu vyberte **klíče zásad** .
 1. Vyberte **Přidat**.
-1. V případě **možností**vyberte možnost **ručně**.
-1. Jako **název**zadejte **RestApiPassword**.
+1. V případě **možností** vyberte možnost **ručně**.
+1. Jako **název** zadejte **RestApiPassword**.
     *B2C_1A_* předpony je možné přidat automaticky.
 1. Do pole **tajný kód** zadejte REST API heslo.
-1. V případě **použití klíče**vyberte **šifrování**.
+1. V případě **použití klíče** vyberte **šifrování**.
 1. Vyberte **Vytvořit**.
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-http-basic-authentication"></a>Konfigurace technického profilu REST API pro použití základního ověřování HTTP
@@ -111,7 +111,7 @@ Ověřování klientským certifikátem je vzájemné ověřování založené n
 
 ### <a name="prepare-a-self-signed-certificate-optional"></a>Příprava certifikátu podepsaného svým držitelem (volitelné)
 
-V případě neprodukčních prostředí můžete použít certifikát podepsaný svým držitelem (samo-signed certificate) i v případě, že ještě nemáte certifikát. Ve Windows můžete k vygenerování certifikátu použít rutinu [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) prostředí PowerShell.
+V případě neprodukčních prostředí můžete použít certifikát podepsaný svým držitelem (samo-signed certificate) i v případě, že ještě nemáte certifikát. Ve Windows můžete k vygenerování certifikátu použít rutinu [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) prostředí PowerShell.
 
 1. Spuštěním tohoto příkazu PowerShellu Vygenerujte certifikát podepsaný svým držitelem. Upravte `-Subject` argument podle potřeby pro vaši aplikaci a Azure AD B2C název tenanta. Můžete také upravit `-NotAfter` Datum a zadat jiné vypršení platnosti certifikátu.
     ```powershell
@@ -132,11 +132,11 @@ V případě neprodukčních prostředí můžete použít certifikát podepsan�
 
 ### <a name="add-a-client-certificate-policy-key"></a>Přidat klíč zásad certifikátu klienta
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
-1. Vyberte **klíče zásad**a pak vyberte **Přidat**.
+1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 1. V poli **Možnosti** vyberte **Odeslat**.
 1. Do pole **název** zadejte **RestApiClientCertificate**.
     *B2C_1A_* předpony se přidají automaticky.
@@ -230,9 +230,9 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
 
 ### <a name="acquiring-an-access-token"></a>Získání přístupového tokenu 
 
-Přístupový token můžete získat jedním z několika způsobů: získáním [od poskytovatele federované identity](idp-pass-through-custom.md)voláním REST API, která vrací přístupový token, pomocí [toku ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)nebo pomocí [toku přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow).  
+Přístupový token můžete získat jedním z několika způsobů: získáním [od poskytovatele federované identity](idp-pass-through-custom.md)voláním REST API, která vrací přístupový token, pomocí [toku ROPC](../active-directory/develop/v2-oauth-ropc.md)nebo pomocí [toku přihlašovacích údajů klienta](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md).  
 
-Následující příklad používá REST API technický profil k vytvoření požadavku na koncový bod tokenu Azure AD pomocí přihlašovacích údajů klienta předaných jako základní ověřování HTTP. Pokud ho chcete nakonfigurovat ve službě Azure AD, přečtěte si část [Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow). Je možné, že ho budete muset změnit na rozhraní s vaším poskytovatelem identity. 
+Následující příklad používá REST API technický profil k vytvoření požadavku na koncový bod tokenu Azure AD pomocí přihlašovacích údajů klienta předaných jako základní ověřování HTTP. Pokud ho chcete nakonfigurovat ve službě Azure AD, přečtěte si část [Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). Je možné, že ho budete muset změnit na rozhraní s vaším poskytovatelem identity. 
 
 Pro ServiceUrl nahraďte název-tenanta názvem vašeho tenanta Azure AD. Všechny dostupné možnosti najdete v tématu [RESTful Technical Profile](restful-technical-profile.md) reference.
 
@@ -267,7 +267,7 @@ Pokud chcete ve vlastních zásadách podporovat ověřování nosných tokenů,
 1. V pracovním adresáři otevřete soubor zásad rozšíření *TrustFrameworkExtensions.xml* .
 1. Vyhledejte `<TechnicalProfile>` uzel, který obsahuje `Id="REST-API-SignUp"` .
 1. Vyhledejte element `<Metadata>`.
-1. Změňte *AuthenticationType* na *nosiče*následujícím způsobem:
+1. Změňte *AuthenticationType* na *nosiče* následujícím způsobem:
     ```xml
     <Item Key="AuthenticationType">Bearer</Item>
     ```
@@ -314,15 +314,15 @@ Po přidání výše uvedených fragmentů kódu by váš technický profil měl
 
 Pokud chcete nakonfigurovat REST API technický profil s nosným tokenem OAuth2, Získejte přístupový token od vlastníka REST API. Pak vytvořte následující kryptografický klíč pro uložení nosného tokenu.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
-1. Vyberte **klíče zásad**a pak vyberte **Přidat**.
-1. Pro **Možnosti**vyberte možnost `Manual` .
+1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+1. Pro **Možnosti** vyberte možnost `Manual` .
 1. Zadejte **název** klíče zásad. Například, `RestApiBearerToken`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
-1. Do **tajného klíče**zadejte tajný klíč klienta, který jste předtím nahráli.
-1. Pro **použití klíče**vyberte `Encryption` .
+1. Do **tajného klíče** zadejte tajný klíč klienta, který jste předtím nahráli.
+1. Pro **použití klíče** vyberte `Encryption` .
 1. Vyberte **Vytvořit**.
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-the-bearer-token-policy-key"></a>Nakonfigurujte svůj REST API technický profil pro použití klíče zásad nosných tokenů.
@@ -367,4 +367,4 @@ Tady je příklad technického profilu RESTful s nakonfigurovaným ověřování
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o elementu [RESTful Technical Profile](restful-technical-profile.md) najdete v referenčních informacích k IEF. 
+- Další informace o elementu [RESTful Technical Profile](restful-technical-profile.md) najdete v referenčních informacích k IEF.

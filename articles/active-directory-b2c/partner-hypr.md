@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4f6b09061a4aa98824e176af55efcedfab3df48c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b80b1a4b3f9bcde6cf01b0e0e59425c6783bd5d9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051902"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953759"
 ---
 # <a name="tutorial-for-configuring-hypr-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci HYPR s využitím Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Abyste mohli začít, budete potřebovat:
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 
-- [Tenant Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). Tenant je propojený s vaším předplatným Azure.
+- [Tenant Azure AD B2C](./tutorial-create-tenant.md). Tenant je propojený s vaším předplatným Azure.
 
 - HYPR Cloud tenant získáte bezplatný [zkušební účet](https://get.hypr.com/free-trial).
 
@@ -50,7 +50,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Snímek obrazovky pro hypr – architektura – diagram](media/partner-hypr/hypr-architecture-diagram.png)
 
-|Krok | Description |
+|Krok | Popis |
 |:-----| :-----------|
 | 1. | Uživatel dorazí na přihlašovací stránku. Uživatelé vyberou přihlášení a zaregistrují se na stránku a zadají uživatelské jméno.
 | 2. | Aplikace pošle atributy uživatele Azure AD B2C k identifikaci ověřování.
@@ -62,7 +62,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 1. Ve složce zásad otevřete [zásady Azure AD B2C HYPR](https://github.com/HYPR-Corp-Public/Azure-AD-B2C-HYPR-Sample/tree/master/policy) .
 
-2. Pomocí tohoto [dokumentu](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) stáhněte [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) .
+2. Pomocí tohoto [dokumentu](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) stáhněte [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) .
 
 3. Nakonfigurujte zásady pro klienta Azure AD B2C.
 
@@ -91,6 +91,6 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 Další informace najdete v následujících článcích:
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

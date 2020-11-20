@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bb13b350dfecf70e5f3a45755f6f77069a855c6c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f7a4d0852edded516b7fbe42f15abfe160e44cd3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363840"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952790"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Přehled uživatelských účtů v Azure Active Directory B2C
 
@@ -50,29 +50,29 @@ Když přidáte nový pracovní účet, je nutné vzít v úvahu následující 
 K vytvoření nového pracovního účtu můžete použít následující informace:
 
 - [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
-- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
+- [Microsoft Graph](/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Aktualizace profilu uživatele
 
 K aktualizaci profilu uživatele můžete použít následující informace:
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
-- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
+- [Microsoft Graph](/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Resetování hesla pro uživatele
 
 K resetování hesla uživatele můžete použít následující informace:
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
-- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
+- [Microsoft Graph](/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>Uživatel typu host
 
-Externí uživatele můžete pozvat do svého tenanta jako uživatel typu Host. Typický scénář pro pozvání uživatele typu Host ke klientovi Azure AD B2C je sdílet odpovědnosti správy. Příklad použití účtu hosta najdete v tématu [vlastnosti Azure Active Directory uživatele spolupráce B2B](../active-directory/b2b/user-properties.md).
+Externí uživatele můžete pozvat do svého tenanta jako uživatel typu Host. Typický scénář pro pozvání uživatele typu Host ke klientovi Azure AD B2C je sdílet odpovědnosti správy. Příklad použití účtu hosta najdete v tématu [vlastnosti Azure Active Directory uživatele spolupráce B2B](../active-directory/external-identities/user-properties.md).
 
-Při pozvání uživatele typu Host k vašemu tenantovi zadáte e-mailovou adresu příjemce a zprávu popisující pozvánku. Odkaz na pozvánku přijímá uživatele na stránce s oznámením o souhlasu, kde je **vybrané tlačítko Začínáme** a kontrola oprávnění je přijatá. Pokud Doručená pošta není připojená k e-mailové adrese, může uživatel přejít na stránku s souhlasem na stránce Microsoftu pomocí pozvaných přihlašovacích údajů. Uživatel pak nuceně uplatňuje pozvánku stejným způsobem jako při kliknutí na odkaz v e-mailu. Například: `https://myapps.microsoft.com/B2CTENANTNAME`.
+Při pozvání uživatele typu Host k vašemu tenantovi zadáte e-mailovou adresu příjemce a zprávu popisující pozvánku. Odkaz na pozvánku přijímá uživatele na stránce s oznámením o souhlasu, kde je **vybrané tlačítko Začínáme** a kontrola oprávnění je přijatá. Pokud Doručená pošta není připojená k e-mailové adrese, může uživatel přejít na stránku s souhlasem na stránce Microsoftu pomocí pozvaných přihlašovacích údajů. Uživatel pak nuceně uplatňuje pozvánku stejným způsobem jako při kliknutí na odkaz v e-mailu. Příklad: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-K pozvání uživatele typu Host můžete použít taky [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) .
+K pozvání uživatele typu Host můžete použít taky [rozhraní Microsoft Graph API](/graph/api/invitation-post?view=graph-rest-beta) .
 
 ## <a name="consumer-user"></a>Uživatel příjemce
 

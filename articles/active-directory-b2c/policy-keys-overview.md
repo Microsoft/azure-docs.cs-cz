@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 02294d4832224f1c94a4c586f3dcc455255bfbbf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670113"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953351"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Přehled klíčů zásad v Azure Active Directory B2C
 
@@ -28,17 +28,17 @@ Azure Active Directory B2C (Azure AD B2C) ukládá tajné klíče a certifikáty
  Tento článek popisuje, co potřebujete znát o klíčích zásad, které používá Azure AD B2C.
 
 > [!NOTE]
-> V současné době se konfigurace klíčů zásad omezí jenom na [vlastní zásady](active-directory-b2c-get-started-custom.md) .
+> V současné době se konfigurace klíčů zásad omezí jenom na [vlastní zásady](./custom-policy-get-started.md) .
 
 Tajné klíče a certifikáty pro vytvoření vztahu důvěryhodnosti mezi službami v Azure Portal můžete nakonfigurovat v nabídce **klíče zásad** . Klíč může být symetrický nebo asymetrický. *Symetrická* kryptografie nebo kryptografie s privátním klíčem, je místo, kde se používá sdílený tajný klíč pro šifrování a dešifrování dat. *Asymetrická* kryptografie nebo kryptografie s veřejným klíčem jsou šifrovací systém, který používá páry klíčů, které se skládají z veřejných klíčů, které jsou sdílené s aplikací předávající strany, a soukromými klíči, které jsou známé pouze pro Azure AD B2C.
 
 ## <a name="policy-keyset-and-keys"></a>Sada klíčů a klíče zásad
 
-Prostředek nejvyšší úrovně pro klíče zásad v Azure AD B2C je kontejner sady **klíčů** . Každá sada klíčů obsahuje alespoň jeden **klíč** . Klíč má následující atributy:
+Prostředek nejvyšší úrovně pro klíče zásad v Azure AD B2C je kontejner sady **klíčů** . Každá sada klíčů obsahuje alespoň jeden **klíč**. Klíč má následující atributy:
 
-| Atribut |  Povinné | Poznámky |
+| Atribut |  Vyžadováno | Poznámky |
 | --- | --- |--- |
-| `use` | Ano | Použití: identifikuje zamýšlené použití veřejného klíče. Šifrování dat `enc` nebo ověřování signatury dat `sig` .|
+| `use` | Yes | Použití: identifikuje zamýšlené použití veřejného klíče. Šifrování dat `enc` nebo ověřování signatury dat `sig` .|
 | `nbf`| Ne | Datum a čas aktivace. |
 | `exp`| Ne | Datum a čas vypršení platnosti. |
 
@@ -58,26 +58,26 @@ Z bezpečnostních důvodů může Azure AD B2C v případě nouze pravidelně p
 
 Pokud má Azure AD B2Cá sada klíčů více klíčů, bude v jednom okamžiku aktivní jenom jeden z klíčů, a to na základě následujících kritérií:
 
-- Aktivace klíče vychází z **data aktivace** .
+- Aktivace klíče vychází z **data aktivace**.
   - Klíče jsou seřazené podle data aktivace ve vzestupném pořadí. Klíče s daty aktivace v budoucnu se zobrazí v seznamu níže. Klíče bez data aktivace jsou umístěné na konci seznamu.
   - Když je aktuální datum a čas delší než datum aktivace klíče, Azure AD B2C aktivuje klíč a přestane používat předchozí aktivní klíč.
 - Když uplynul čas vypršení platnosti aktuálního *klíče a kontejner* klíčů obsahuje nový klíč s platným časem a časem *vypršení platnosti* , nový klíč se automaticky aktivuje.
 - Když uplynul čas vypršení platnosti aktuálního klíče *a kontejner klíčů neobsahuje nový* klíč *s platným* časem a časem *vypršení platnosti* , Azure AD B2C nebude moci použít klíč s vypršenou platností. Azure AD B2C vyvolá chybovou zprávu v rámci závislé součásti vašich vlastních zásad. Chcete-li se tomuto problému vyhnout, můžete vytvořit výchozí klíč bez aktivace a data vypršení platnosti jako bezpečnostní síť.
-- Koncový bod klíče (identifikátoru URI JWKS) OpenId připojit dobře známý konfigurační bod odráží klíče nakonfigurované v kontejneru klíčů, když se na klíč odkazuje v [technickém profilu JwtIssuer](https://docs.microsoft.com/azure/active-directory-b2c/jwt-issuer-technical-profile). Aplikace používající knihovnu OIDC automaticky načte tato metadata, aby zajistila, že používá správné klíče k ověřování tokenů. Další informace najdete v tématu použití [knihovny Microsoft Authentication Library](https://docs.microsoft.com/azure/active-directory/develop/msal-b2c-overview), která vždy automaticky načte nejnovější podpisové klíče tokenu.
+- Koncový bod klíče (identifikátoru URI JWKS) OpenId připojit dobře známý konfigurační bod odráží klíče nakonfigurované v kontejneru klíčů, když se na klíč odkazuje v [technickém profilu JwtIssuer](./jwt-issuer-technical-profile.md). Aplikace používající knihovnu OIDC automaticky načte tato metadata, aby zajistila, že používá správné klíče k ověřování tokenů. Další informace najdete v tématu použití [knihovny Microsoft Authentication Library](../active-directory/develop/msal-b2c-overview.md), která vždy automaticky načte nejnovější podpisové klíče tokenu.
 
 ## <a name="policy-key-management"></a>Správa klíčů zásad
 
-Pokud chcete získat aktuální aktivní klíč v rámci kontejneru klíčů, použijte koncový bod rozhraní API Microsoft Graph [getActiveKey](https://docs.microsoft.com/graph/api/trustframeworkkeyset-getactivekey) .
+Pokud chcete získat aktuální aktivní klíč v rámci kontejneru klíčů, použijte koncový bod rozhraní API Microsoft Graph [getActiveKey](/graph/api/trustframeworkkeyset-getactivekey) .
 
 Postup přidání nebo odstranění podpisových a šifrovacích klíčů:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
-1. V Azure Portal vyhledejte a vyberte **Azure AD B2C** .
-1. Na stránce Přehled v části **zásady** vyberte **Architektura prostředí identity** .
+1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
+1. Na stránce Přehled v části **zásady** vyberte **Architektura prostředí identity**.
 1. Vybrat **klíče zásad** 
-    1. Pokud chcete přidat nový klíč, vyberte **Přidat** .
-    1. Chcete-li odebrat nový klíč, vyberte klíč a pak vyberte **Odstranit** . Pokud chcete odstranit klíč, zadejte název kontejneru klíčů, který se má odstranit. Azure AD B2C odstraní klíč a vytvoří kopii klíče s příponou. bak.
+    1. Pokud chcete přidat nový klíč, vyberte **Přidat**.
+    1. Chcete-li odebrat nový klíč, vyberte klíč a pak vyberte **Odstranit**. Pokud chcete odstranit klíč, zadejte název kontejneru klíčů, který se má odstranit. Azure AD B2C odstraní klíč a vytvoří kopii klíče s příponou. bak.
 
 ### <a name="replace-a-key"></a>Nahradit klíč
 
@@ -89,10 +89,3 @@ Klíče v rámci sady klíčů není nahraditelný nebo vyměnitelná. Pokud pot
 ## <a name="next-steps"></a>Další kroky
 
 - Naučte [se používat](microsoft-graph-operations.md#trust-framework-policy-keyset) Microsoft Graph k automatizaci nasazení [klíčů a klíčů zásad](microsoft-graph-operations.md#trust-framework-policy-key) .
-
-
-
-
-
-
-

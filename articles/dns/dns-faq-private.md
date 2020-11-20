@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 9d183f2da7b916b1547fa1f81aa877b1b5488b41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24f2ca238288854b99160a25c3d4dcedf8ce3368
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308431"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952382"
 ---
 # <a name="azure-private-dns-faq"></a>Nejčastější dotazy k Azure Private DNS
 
@@ -34,7 +34,7 @@ Ne. Soukromé zóny fungují společně s virtuálními sítěmi. Můžete je po
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Může být stejná privátní zóna použita pro více virtuálních sítí pro řešení?
 
-Ano. Můžete propojit privátní zónu DNS s tisíci virtuálních sítí. Další informace najdete v tématu [omezení Azure DNS](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) .
+Ano. Můžete propojit privátní zónu DNS s tisíci virtuálních sítí. Další informace najdete v tématu [omezení Azure DNS](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits) .
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Může být virtuální síť, která patří do jiného předplatného, propojená s privátní zónou?
 
@@ -75,11 +75,11 @@ Ano. Soukromé zóny nenahrazují výchozí zónu internal.cloudapp.net poskytov
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Bude přípona DNS na virtuálních počítačích v propojené virtuální síti změněna na síť privátní zóny?
 
 Ne. Přípona DNS na virtuálních počítačích v propojené virtuální síti zůstane jako výchozí přípona poskytnutá pro Azure (*. internal.cloudapp.net). Tuto příponu DNS můžete na virtuálních počítačích ručně změnit na adresu privátní zóny.
-Pokyny ke změně této přípony najdete [v tématu Použití dynamického DNS k registraci názvů hostitelů ve vlastním serveru DNS](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients) .
+Pokyny ke změně této přípony najdete [v tématu Použití dynamického DNS k registraci názvů hostitelů ve vlastním serveru DNS](../virtual-network/virtual-networks-name-resolution-ddns.md#windows-clients) .
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Jaká jsou omezení využití Azure DNS privátních zón?
 
-Podrobnosti o limitech použití Azure DNSch privátních zón najdete v [Azure DNS omezeních](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) .
+Podrobnosti o limitech použití Azure DNSch privátních zón najdete v [Azure DNS omezeních](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits) .
 
 ## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Proč se moje existující privátní zóny DNS zobrazují v novém prostředí portálu?
 

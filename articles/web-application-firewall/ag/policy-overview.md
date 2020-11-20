@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 10/14/2020
+ms.date: 11/19/2020
 ms.author: victorh
-ms.openlocfilehash: 0f7fec997ec6d0c73fe6d1039ab1033752e0cedf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9fb8bf689e2767f681994258c4d2c51be41d6c68
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566567"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952127"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Přehled zásad firewallu webových aplikací Azure (WAF)
 
@@ -53,7 +53,7 @@ Tato globální zásada je vhodná pro contoso.com a fabrikam.com, ale musíte b
 
 Adatum.com/payments identifikátor URI je tam, kde je potřeba být opatrní. Proto u tohoto identifikátoru URI použijte jinou zásadu a nechte všechna pravidla povolená a také odeberte všechna vyloučení.
 
-V tomto příkladu máte globální zásadu, která se vztahuje na dvě lokality. Máte zásady pro jednotlivé lokality, které platí pro jednu lokalitu, a pak zásady pro jednotlivé identifikátory URI, které platí pro jedno konkrétní pravidlo založené na cestě. V tomto příkladu najdete odkaz (vložení odkazu sem), jak vytvořit zásady pro jednotlivé lokality a identifikátory URI pro odpovídající prostředí PowerShell.
+V tomto příkladu máte globální zásadu, která se vztahuje na dvě lokality. Máte zásady pro jednotlivé lokality, které platí pro jednu lokalitu, a pak zásady pro jednotlivé identifikátory URI, které platí pro jedno konkrétní pravidlo založené na cestě. V tomto příkladu najdete informace v tématu [Konfigurace zásad WAF pro jednotlivé lokality pomocí Azure PowerShell](per-site-policies.md) pro odpovídající prostředí PowerShell.
 
 ## <a name="existing-waf-configurations"></a>Existující konfigurace WAF
 

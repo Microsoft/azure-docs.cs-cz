@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7b76c81a78bfd3eb57a54f1d23ba1b154b09b3e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bcf5f75cf5cabe42f530a6a179c2cafd43b5520d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660147"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952535"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Použití identity Azure AD s webovou službou strojového učení ve službě Azure Kubernetes Service
 
@@ -32,13 +32,13 @@ V tomto postupu se dozvíte, jak přiřadit identitu Azure Active Directory (Azu
 
 ## <a name="create-and-install-an-azure-identity"></a>Vytvoření a instalace identity Azure
 
-1. Pokud chcete zjistit, jestli je váš cluster AKS povolený RBAC, použijte následující příkaz:
+1. Pokud chcete zjistit, jestli je váš cluster AKS Kubernetes RBAC povolený, použijte následující příkaz:
 
     ```azurecli-interactive
     az aks show --name <AKS cluster name> --resource-group <resource group name> --subscription <subscription id> --query enableRbac
     ```
 
-    Tento příkaz vrátí hodnotu, `true` Pokud je povolena funkce RBAC. Tato hodnota určuje příkaz, který se má použít v dalším kroku.
+    Tento příkaz vrátí hodnotu, `true` Pokud je povolena funkce KUBERNETES RBAC. Tato hodnota určuje příkaz, který se má použít v dalším kroku.
 
 1. Do clusteru AKS nainstalujte [identitu Azure AD pod](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/) .
 

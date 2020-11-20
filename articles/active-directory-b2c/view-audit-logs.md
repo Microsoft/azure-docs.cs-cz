@@ -12,12 +12,12 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9485fb09d3ac7684ba91bcd37720a0e55603404b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85383933"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952722"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -53,7 +53,7 @@ Panel Podrobnosti o aktivitě obsahuje následující relevantní informace:
 
 |Sekce|Pole|Popis|
 |-------|-----|-----------|
-| Aktivita | Název | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře skutečné přihlášení uživatele. |
+| Aktivita | Name | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře skutečné přihlášení uživatele. |
 | Iniciované uživatelem (actor) | ObjectId | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |
 | Iniciované uživatelem (actor) | SPN | **ID aplikace** B2C, ke které se uživatel přihlašuje |
 | Cíle | ObjectId | **ID objektu** uživatele, který se přihlašuje. |
@@ -84,7 +84,7 @@ Chcete-li stáhnout seznam událostí aktivit v souboru hodnot oddělených čá
 
 ## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>Získání protokolů auditu pomocí rozhraní API pro vytváření sestav Azure AD
 
-Protokoly auditu se publikují do stejného kanálu jako jiné aktivity pro Azure Active Directory, takže se dají dostat prostřednictvím [rozhraní API pro vytváření sestav Azure Active Directory](https://docs.microsoft.com/graph/api/directoryaudit-list). Další informace najdete v tématu [Začínáme s rozhraním API pro vytváření sestav Azure Active Directory](../active-directory/reports-monitoring/concept-reporting-api.md).
+Protokoly auditu se publikují do stejného kanálu jako jiné aktivity pro Azure Active Directory, takže se dají dostat prostřednictvím [rozhraní API pro vytváření sestav Azure Active Directory](/graph/api/directoryaudit-list). Další informace najdete v tématu [Začínáme s rozhraním API pro vytváření sestav Azure Active Directory](../active-directory/reports-monitoring/concept-reporting-api.md).
 
 ### <a name="enable-reporting-api-access"></a>Povolit přístup k rozhraní API pro vytváření sestav
 

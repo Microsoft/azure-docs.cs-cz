@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: edbc944e77d2483d32574f8044c72fc3d1292e2a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6f62675d27310a15c434baba8e3451a3cd81f058
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840430"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953521"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci TypingDNA s využitím Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ V tomto návodu se dozvíte, jak integrovat ukázkovou online platební aplikaci
 
 2. Když uživatel stránku odešle, bude knihovna TypingDNA počítat s charakteristikou zadání uživatele. Potom tyto informace vložte do skrytého textového pole, které Azure AD B2C vykreslené. Toto pole je skryté pomocí šablon stylů CSS.  
 
-    [Ukázka obsahuje soubory HTML](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) s úpravami jazyka JavaScript a šablon stylů CSS a na ně odkazuje `api.selfasserted.tdnasignin` `api.selfasserted.tdnasignup` definice obsahu a. Chcete-li hostovat soubory HTML, přečtěte si téma [hostování obsahu stránky](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#hosting-the-page-content) .
+    [Ukázka obsahuje soubory HTML](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) s úpravami jazyka JavaScript a šablon stylů CSS a na ně odkazuje `api.selfasserted.tdnasignin` `api.selfasserted.tdnasignup` definice obsahu a. Chcete-li hostovat soubory HTML, přečtěte si téma [hostování obsahu stránky](./custom-policy-ui-customization.md#hosting-the-page-content) .
 
 3. Pokud uživatel odešle svoje přihlašovací údaje, Azure AD B2C nyní má v kontejneru deklarací identity typový vzor. Pro předání těchto dat do koncového bodu TypingDNA REST API musí volat rozhraní API (vaše). Toto rozhraní API je zahrnuté v [ukázce (typingDNA-API-Interface)](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface).
 4. Rozhraní API střední vrstvy pak předá data vzorového vzoru do TypingDNA REST API. Při registraci se zavolá [koncový bod uživatele](https://api.typingdna.com/index.html#api-API_Services-GetUser) , který potvrdí, že uživatel neexistoval, a potom se zavolá koncový bod [vzorového](https://api.typingdna.com/index.html#api-API_Services-saveUserPattern) souboru, který bude ukládat první vzor zápisu uživatele.
@@ -160,7 +160,7 @@ Tyto prahové hodnoty by měly být upraveny na vašem případu použití.
 
 1. Hostování [rozhraní TypingDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) u poskytovatele hostingu dle vlastního výběru
 2. Nahraďte všechny instance `apiKey` a `apiSecret` v řešení [TypingDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) pomocí přihlašovacích údajů z řídicího panelu TypingDNA.
-3. Hostovat soubory HTML podle vašeho poskytovatele dle požadavků CORS uvedených [tady](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors)
+3. Hostovat soubory HTML podle vašeho poskytovatele dle požadavků CORS uvedených [tady](./custom-policy-ui-customization.md#3-configure-cors)
 4. Nahraďte elementy LoadURI pro `api.selfasserted.tdnasignup` `api.selfasserted.tdnasignin` definice obsahu a v `TrustFrameworkExtensions.xml` souboru s identifikátorem URI hostovaných souborů HTML v uvedeném pořadí.
 5. Vytvořte klíč zásad B2C v části architektura prostředí identit v okně Azure AD v **Azure Portal**. Použijte `Generate` možnost a pojmenujte tento klíč `tdnaHashedId` .
 6. Nahradit TenantId v souborech zásad
@@ -194,6 +194,6 @@ Tyto prahové hodnoty by měly být upraveny na vašem případu použití.
 
 Další informace najdete v následujících článcích:
 
-- [Vlastní zásady v AAD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v AAD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v AAD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v AAD B2C](./custom-policy-get-started.md?tabs=applications)

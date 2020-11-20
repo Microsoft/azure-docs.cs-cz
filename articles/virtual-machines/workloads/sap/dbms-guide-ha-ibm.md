@@ -3,16 +3,17 @@ title: Nastavení HADR IBM Db2 na virtuálních počítačích Azure (virtuáln�
 description: Navažte vysokou dostupnost IBM Db2 LUW na virtuálních počítačích Azure (VM).
 author: msjuergent
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 88a84cd90efb42ea096cad647d75f1c3736426f4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0cd1458c90970e219f2929e26423e455ba647a28
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146435"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951311"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Vysoká dostupnost IBM Db2 LUW na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Pacemaker
 
@@ -100,7 +101,7 @@ Před spuštěním nasazení dokončete proces plánování. Plánování staví
 | Název a virtuální IP adresa virtuálního hostitele pro databázi IBM Db2| Virtuální IP adresa nebo název hostitele, který se používá pro připojení aplikačních serverů SAP. **DB-Virt-hostname**, **DB-Virt-IP**. |
 | Oplocení Azure | Služby Azure pro monitorování a oplocení SBD (důrazně doporučeno). Metoda, která neumožňuje rozdělit situace mozku. |
 | VIRTUÁLNÍ POČÍTAČ SBD | Velikost virtuálního počítače SBD, úložiště, síť. |
-| Nástroj pro vyrovnávání zatížení Azure | Využití úrovně Basic nebo Standard (doporučeno), port testu pro databázi Db2 (náš doporučení 62500) **– port**. |
+| Azure Load Balancer | Využití úrovně Basic nebo Standard (doporučeno), port testu pro databázi Db2 (náš doporučení 62500) **– port**. |
 | Překlad adres| Jak řešení překladu názvů funguje v prostředí. Služba DNS se důrazně doporučuje. Je možné použít místní soubor hostitelů. |
     
 Další informace o Pacemaker pro Linux v Azure najdete v tématu [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](./high-availability-guide-suse-pacemaker.md).
@@ -131,7 +132,7 @@ Ujistěte se, že je vybraný operační systém podporovaný IBM/SAP pro IBM Db
 
 ## <a name="create-the-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
     
-Pokud chcete pro tento server IBM Db2 vytvořit základní cluster Pacemaker, přečtěte si téma [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure][sles-pacemaker]. 
+Pokud chcete pro tento server IBM Db2 vytvořit základní cluster Pacemaker, přečtěte si téma [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure][sles-pacemaker]. 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>Instalace prostředí IBM Db2 LUW a SAP
 
@@ -399,11 +400,11 @@ Pokud chcete nakonfigurovat Azure Load Balancer, doporučujeme použít službu 
 
 1. Vytvořte front-end fond IP adres:
 
-   a. V Azure Portal otevřete Azure Load Balancer, vyberte **front-end IP fond**a pak vyberte **Přidat**.
+   a. V Azure Portal otevřete Azure Load Balancer, vyberte **front-end IP fond** a pak vyberte **Přidat**.
 
    b. Zadejte název nového fondu front-end IP adres (například **Db2 připojení**).
 
-   c. Nastavte **přiřazení** na hodnotu **static**a zadejte na začátku IP adresu **virtuální IP** adresa.
+   c. Nastavte **přiřazení** na hodnotu **static** a zadejte na začátku IP adresu **virtuální IP** adresa.
 
    d. Vyberte **OK**.
 
@@ -411,7 +412,7 @@ Pokud chcete nakonfigurovat Azure Load Balancer, doporučujeme použít službu 
 
 1. Vytvořte fond back-end:
 
-   a. V Azure Portal otevřete Azure Load Balancer, vyberte **back-end fondy**a pak vyberte **Přidat**.
+   a. V Azure Portal otevřete Azure Load Balancer, vyberte **back-end fondy** a pak vyberte **Přidat**.
 
    b. Zadejte název nového fondu back-end (například **Db2-back-end**).
 
@@ -425,23 +426,23 @@ Pokud chcete nakonfigurovat Azure Load Balancer, doporučujeme použít službu 
 
 1. Vytvořte sondu stavu:
 
-   a. V Azure Portal otevřete Azure Load Balancer, vyberte **sondy stavu**a vyberte **Přidat**.
+   a. V Azure Portal otevřete Azure Load Balancer, vyberte **sondy stavu** a vyberte **Přidat**.
 
    b. Zadejte název nové sondy stavu (například **Db2-HP**).
 
-   c. Jako protokol a port **62500**vyberte **TCP** . Hodnotu **intervalu** nastavte na **5**a v poli prahová hodnota není v **pořádku** nastavte hodnotu **2**.
+   c. Jako protokol a port **62500** vyberte **TCP** . Hodnotu **intervalu** nastavte na **5** a v poli prahová hodnota není v **pořádku** nastavte hodnotu **2**.
 
    d. Vyberte **OK**.
 
 1. Vytvořte pravidla vyrovnávání zatížení:
 
-   a. V Azure Portal otevřete Azure Load Balancer, vyberte **pravidla vyrovnávání zatížení**a pak vyberte **Přidat**.
+   a. V Azure Portal otevřete Azure Load Balancer, vyberte **pravidla vyrovnávání zatížení** a pak vyberte **Přidat**.
 
    b. Zadejte název nového pravidla Load Balancer (například **Db2-SID**).
 
    c. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Db2-front-endu**).
 
-   d. Zachovejte **protokol** nastaven na **TCP**a zadejte port pro *komunikaci databáze*portů.
+   d. Zachovejte **protokol** nastaven na **TCP** a zadejte port pro *komunikaci databáze* portů.
 
    e. Zvyšte **časový limit nečinnosti** na 30 minut.
 
@@ -491,7 +492,7 @@ Archivace protokolu je prováděna pouze v primární databázi. Pokud změníte
 
 Doporučujeme nakonfigurovat společnou sdílenou složku NFS, do které se zapisují protokoly z obou uzlů. Sdílená složka systému souborů NFS musí být vysoce dostupná. 
 
-Pro přenosy nebo adresář profilu můžete použít existující sdílené složky systému souborů NFS s vysokou dostupností. Další informace naleznete v tématech:
+Pro přenosy nebo adresář profilu můžete použít existující sdílené složky systému souborů NFS s vysokou dostupností. Další informace naleznete v tématu:
 
 - [Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server][nfs-ha] 
 - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](./high-availability-guide-suse-netapp-files.md)
@@ -572,8 +573,8 @@ crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
 - **migrace prostředků CRM \<res_name> \<host> :** vytvoří omezení umístění a může způsobit problémy s převzetím.
-- **prostředek CRM Clear \<res_name> **: vymaže omezení umístění.
-- **Vyčištění \<res_name> prostředků CRM **: vymaže všechny chyby prostředku.
+- **prostředek CRM Clear \<res_name>**: vymaže omezení umístění.
+- **Vyčištění \<res_name> prostředků CRM**: vymaže všechny chyby prostředku.
 
 ### <a name="test-the-fencing-agent"></a>Testování agenta pro oplocení
 

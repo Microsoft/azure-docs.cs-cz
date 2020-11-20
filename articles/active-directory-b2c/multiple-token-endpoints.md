@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5528607b0559dad246262748c83c9d359ee2144e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c362ce256259606c85af0a7e13ccde1715bb012b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385735"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953929"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Migrace webového rozhraní API založeného na OWIN na b2clogin.com
 
@@ -42,8 +42,8 @@ Nejdřív musíte získat identifikátory URI koncového bodu vystavitele tokenu
 Začněte tím, že vyberete jeden z vašich stávajících uživatelských toků:
 
 1. V [Azure Portal](https://portal.azure.com) přejděte do svého tenanta Azure AD B2C.
-1. V části **zásady**vyberte **toky uživatelů (zásady)** .
-1. Vyberte existující zásadu, například *B2C_1_signupsignin1*a pak vyberte **Spustit tok uživatele** .
+1. V části **zásady** vyberte **toky uživatelů (zásady)** .
+1. Vyberte existující zásadu, například *B2C_1_signupsignin1* a pak vyberte **Spustit tok uživatele** .
 1. Pod záhlavím **Spustit uživatele** v horní části stránky vyberte hypertextový odkaz, který umožňuje přejít na koncový bod zjišťování OpenID Connect pro daný tok uživatele.
 
     ![Dobře známý hypertextový odkaz URI na stránce spustit nyní na Azure Portal](media/multi-token-endpoints/portal-01-policy-link.png)
@@ -88,7 +88,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 V této části aktualizujete kód a určíte, že oba koncové body vystavitele tokenu jsou platné.
 
 1. Otevřete řešení **B2C-WebApi-dotnet. sln** v aplikaci Visual Studio
-1. V projektu **TaskService** otevřete soubor *TaskService \\ app_start \\ * * Startup.auth.cs** * v editoru.
+1. V projektu **TaskService** otevřete \\ v editoru soubor * TaskService app_start \\ **Startup.auth.cs** _.
 1. `using`Do horní části souboru přidejte následující direktivu:
 
     `using System.Collections.Generic;`
@@ -107,7 +107,7 @@ V této části aktualizujete kód a určíte, že oba koncové body vystavitele
     };
     ```
 
-`TokenValidationParameters` je poskytována nástrojem MSAL.NET a je využíván middlewarem OWIN v další části kódu v *Startup.auth.cs*. Je-li zadáno více platných vystavitelů, kanál aplikace OWIN ví, že jsou oba koncové body tokenu platnými vystaviteli.
+`TokenValidationParameters` je poskytována nástrojem MSAL.NET a je využíván middlewarem OWIN v další části kódu v _Startup. auth. cs *. Je-li zadáno více platných vystavitelů, kanál aplikace OWIN ví, že jsou oba koncové body tokenu platnými vystaviteli.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -123,7 +123,7 @@ Jak už bylo zmíněno dříve, jiné knihovny OWIN obvykle poskytují podobnou 
 
 U obou identifikátorů URI, které teď podporuje vaše webové rozhraní API, teď potřebujete aktualizovat webovou aplikaci tak, aby se z koncového bodu b2clogin.com načítat tokeny.
 
-Například můžete nakonfigurovat ukázkovou webovou aplikaci tak, aby používala nový koncový bod úpravou `ida:AadInstance` hodnoty v souboru *TaskWebApp \\ * * Web.config** * **TaskWebApp** projektu.
+Například můžete nakonfigurovat ukázkovou webovou aplikaci tak, aby používala nový koncový bod úpravou `ida:AadInstance` hodnoty v *souboru TaskWebApp \\ **Web.config** _ projektu _* TaskWebApp * *.
 
 Změňte `ida:AadInstance` hodnotu v *Web.config* TaskWebApp tak, aby odkazovala `{your-b2c-tenant-name}.b2clogin.com` místo `login.microsoftonline.com` .
 
@@ -154,6 +154,6 @@ Další informace o různých typech tokenů zabezpečení emitovaných Azure AD
 [sample-repo]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi
 
 <!-- LINKS - Internal -->
-[katana]: https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/
-[validissuers]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
-[tokenvalidationparameters]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters
+[katana]: /aspnet/aspnet/overview/owin-and-katana/
+[validissuers]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
+[tokenvalidationparameters]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eaa2984c0d7a5d3763f554e39f687fdbd2865e96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c60cecb9d6bfeeefc0569a1a57185d13f0c6442f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203380"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953113"
 ---
 # <a name="social-accounts-claims-transformations"></a>Transformace deklarací účtů sociálních sítí
 
@@ -39,7 +39,7 @@ Tento článek popisuje příklady použití transformací v rámci schématu ro
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-Vytvoří reprezentaci JSON vlastnosti alternativeSecurityId uživatele, kterou lze použít v voláních Azure Active Directory. Další informace najdete v tématu schéma [AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid) .
+Vytvoří reprezentaci JSON vlastnosti alternativeSecurityId uživatele, kterou lze použít v voláních Azure Active Directory. Další informace najdete v tématu schéma [AlternativeSecurityId](/graph/api/resources/alternativesecurityid) .
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8ebfbeeb4533f21bc0fa10a5fee7b88ef069c262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eca6297a704e1ef478c09baf227cf622d6890bb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84298839"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953147"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace pomocí Azure Active Directory B2C
 
@@ -51,26 +51,26 @@ Chcete-li volat chráněné webové rozhraní API z nativní klientské aplikace
 
 V kurzu požadavků jste zaregistrovali nativní klientskou aplikaci s názvem *nativeapp1*. Následující postup nakonfiguruje registraci nativní aplikace pomocí oborů rozhraní API, které jste vystavili pro *webapi1* v předchozí části. To umožňuje aplikaci klasické pracovní plochy získat přístupový token z Azure AD B2C, kterou může webové rozhraní API použít k ověření a poskytování vymezeného přístupu k prostředkům. V tomto kurzu nakonfigurujete a spustíte i ukázky kódu desktopové aplikace i webové rozhraní API.
 
-K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
+K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
-1. Vyberte **Registrace aplikací**a pak vyberte nativní klientskou aplikaci, která by měla mít přístup k rozhraní API. Například *nativeapp1*.
-1. V části **Spravovat**vyberte **oprávnění rozhraní API**.
-1. V části **konfigurovaná oprávnění**vyberte **Přidat oprávnění**.
+1. Vyberte **Registrace aplikací** a pak vyberte nativní klientskou aplikaci, která by měla mít přístup k rozhraní API. Například *nativeapp1*.
+1. V části **Spravovat** vyberte **oprávnění rozhraní API**.
+1. V části **konfigurovaná oprávnění** vyberte **Přidat oprávnění**.
 1. Vyberte kartu **Moje rozhraní API** .
 1. Vyberte rozhraní API, ke kterému má být přístupná nativní klientská aplikace udělena. Například *webapi1*.
-1. V části **oprávnění**rozbalte **Ukázka**a pak vyberte obory, které jste definovali dříve. Například *demo. Read* a *demo. Write*.
+1. V části **oprávnění** rozbalte **Ukázka** a pak vyberte obory, které jste definovali dříve. Například *demo. Read* a *demo. Write*.
 1. Vyberte **Přidat oprávnění**. Jak je směrované, počkejte několik minut, než budete pokračovat k dalšímu kroku.
 1. Vyberte **udělit souhlas správce pro (název vašeho tenanta)**.
 1. Vyberte aktuálně přihlášený účet správce nebo se přihlaste pomocí účtu v Azure AD B2C tenantovi, kterému byla přiřazena alespoň role *správce cloudové aplikace* .
 1. Vyberte **Přijmout**.
-1. Vyberte **aktualizovat**a pak ověřte, že "uděleno pro..." zobrazí se pod položkou **stav** pro oba obory. Rozšíření oprávnění může trvat několik minut.
+1. Vyberte **aktualizovat** a pak ověřte, že "uděleno pro..." zobrazí se pod položkou **stav** pro oba obory. Rozšíření oprávnění může trvat několik minut.
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
 1. Vyberte **aplikace (starší verze)** a pak vyberte *nativeapp1*.
-1. Vyberte **přístup přes rozhraní API**a pak vyberte **Přidat**.
+1. Vyberte **přístup přes rozhraní API** a pak vyberte **Přidat**.
 1. V rozevíracím seznamu **Vyberte rozhraní API** vyberte možnost *webapi1*.
 1. V rozevíracím seznamu **Vybrat obory** vyberte obory, které jste definovali dříve. Například *demo. Read* a *demo. Write*.
 1. Vyberte **OK**.

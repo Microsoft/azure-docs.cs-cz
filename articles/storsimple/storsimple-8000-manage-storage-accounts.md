@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 5a0ea8a2f07ef596cd80e9165eedb2b98dab0bfa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0df0c12d5942179e2492bfdc932fa25d126a2426
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978709"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951725"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Použijte službu StorSimple Device Manager ke správě přihlašovacích údajů účtu úložiště.
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Přehled
 
 **Konfigurační** oddíl v okně StorSimple Device Manager Service obsahuje všechny parametry globálních služeb, které se dají vytvořit ve službě StorSimple Device Manager. Tyto parametry se dají použít pro všechna zařízení připojená ke službě a zahrnují:
 
@@ -55,7 +55,7 @@ Nejběžnější úlohy týkající se účtů úložiště, které je možné p
 Existují tři typy účtů úložiště, které se dají používat se zařízením StorSimple.
 
 * **Automaticky generované účty úložiště** – jak název navrhuje, tento typ účtu úložiště se automaticky vygeneruje při prvním vytvoření služby. Další informace o tom, jak se tento účet úložiště vytváří, najdete v části [Krok 1: vytvoření nové služby](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) v tématu [nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md). 
-* **Účty úložiště v předplatném služby** – jedná se o účty úložiště Azure, které jsou přidružené ke stejnému předplatnému jako služba. Další informace o tom, jak se tyto účty úložiště vytvářejí, najdete v tématu [informace o Azure Storagech účtech](../storage/common/storage-create-storage-account.md). 
+* **Účty úložiště v předplatném služby** – jedná se o účty úložiště Azure, které jsou přidružené ke stejnému předplatnému jako služba. Další informace o tom, jak se tyto účty úložiště vytvářejí, najdete v tématu [informace o Azure Storagech účtech](../storage/common/storage-account-create.md). 
 * **Účty úložiště mimo předplatné služby** – jedná se o účty úložiště Azure, které nejsou přidružené k vaší službě a nejspíš existovaly před vytvořením služby.
 
 ## <a name="add-a-storage-account"></a>Přidat účet úložiště
@@ -80,7 +80,7 @@ K přidání přihlašovacích údajů k účtu úložiště Azure použijte ná
 3. Klikněte na **Přidat**.
 4. V okně **Přidat přihlašovací údaje účtu úložiště** udělejte toto:
    
-    1. U **předplatného**vyberte **jiné**.
+    1. U **předplatného** vyberte **jiné**.
    
     2. Zadejte název přihlašovacích údajů k účtu úložiště Azure.
    
@@ -179,4 +179,3 @@ Po úspěšné synchronizaci klíče budete upozorněni.
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [zabezpečení StorSimple](storsimple-8000-security.md).
 * Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
-

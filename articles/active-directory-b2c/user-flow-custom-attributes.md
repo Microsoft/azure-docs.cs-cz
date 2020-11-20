@@ -11,12 +11,12 @@ ms.date: 11/30/2018
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1d631c47225fac7d8a95541313593333a1399e07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2233dbd7b0e669c23397b4bc6a84f2bfdc208391
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87115955"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952807"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definování vlastních atributů v Azure Active Directory B2C
 
@@ -36,9 +36,9 @@ ms.locfileid: "87115955"
     ![Tenant B2C se ve filtru adresářů a předplatných zvýrazní.](./media/user-flow-custom-attributes/select-directory.PNG)
 
 3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **atributy uživatele**a pak vyberte **Přidat**.
+4. Vyberte **atributy uživatele** a pak vyberte **Přidat**.
 5. Zadejte **název** vlastního atributu (například "ShoeSize").
-6. Vyberte **datový typ**. K dispozici je pouze **řetězec**, **logická hodnota**a **int** .
+6. Vyberte **datový typ**. K dispozici je pouze **řetězec**, **logická hodnota** a **int** .
 7. Volitelně můžete zadat **Popis** pro informativní účely.
 8. Klikněte na **Vytvořit**.
 
@@ -52,4 +52,4 @@ Vlastní atribut je teď k dispozici v seznamu **atributů uživatele** a pro po
 1. Vyberte **deklarace identity aplikace** a pak vyberte vlastní atribut.
 1. Klikněte na **Uložit**.
 
-Jakmile vytvoříte nového uživatele pomocí toku uživatele, který používá nově vytvořený vlastní atribut, může se objekt dotazovat v [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer). Případně můžete pomocí funkce [tok](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) uživatele v toku uživatelů ověřit činnost zákazníka. Teď byste měli vidět **ShoeSize** v seznamu atributů shromážděných během cesty pro registraci a zobrazit je v tokenu, který se pošle zpátky do vaší aplikace.
+Jakmile vytvoříte nového uživatele pomocí toku uživatele, který používá nově vytvořený vlastní atribut, může se objekt dotazovat v [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer). Případně můžete pomocí funkce [tok](./tutorial-create-user-flows.md) uživatele v toku uživatelů ověřit činnost zákazníka. Teď byste měli vidět **ShoeSize** v seznamu atributů shromážděných během cesty pro registraci a zobrazit je v tokenu, který se pošle zpátky do vaší aplikace.

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 718ccbaa57ffe9f4ebaf4e8df448b602ba8cc3fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1b2c7513562e951e1098cf327780387ddf6a495
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293145"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953538"
 ---
 # <a name="tutorial-for-configuring-whoiam-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci WhoIAM s využitím Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Abyste mohli začít, budete potřebovat:
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 
-- [Klienta Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , který je propojený s vaším předplatným Azure.
+- [Klienta Azure AD B2C](./tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 
 - [Zkušební účet](https://www.whoiam.ai/contact-us/)WhoIAM.
 
@@ -50,7 +50,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Diagram architektury Azure AD B2C integrace s WhoIAM](media/partner-whoiam/whoiam-architecture-diagram.png)
 
-|Krok | Description |
+|Krok | Popis |
 |:-----| :-----------|
 | 1. | Uživatel dorazí na stránku a spustí žádost o registraci nebo přihlášení do aplikace, která jako poskytovatele identity používá Azure AD B2C.
 | 2. | V rámci ověřování si uživatel vyžádá buď, aby ověřil vlastnictví e-mailu nebo telefonu, nebo použil svůj hlas jako faktor biometrického ověřování.  
@@ -72,7 +72,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
     - [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): používá se k ukládání a načítání nastavení.
 
-    - [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#:~:text=Application%20Insights%2C%20a%20feature%20of%20Azure%20Monitor%2C%20is,professionals.%20Use%20it%20to%20monitor%20your%20live%20applications) (volitelné): slouží k přihlášení k rozhraní API i k portálu pro správu.
+    - [Application Insights](../azure-monitor/app/app-insights-overview.md) (volitelné): slouží k přihlášení k rozhraní API i k portálu pro správu.
 
 3. Nasaďte rozhraní API BRIMS a portál pro správu BRIMS v prostředí Azure.
 
@@ -82,15 +82,15 @@ Další informace o BRIMS pro WhoIAM najdete v [dokumentaci k produktu](https://
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
-1. Otevřete klienta Azure AD B2C. V části **zásady**vyberte **Architektura prostředí identity**.
+1. Otevřete klienta Azure AD B2C. V části **zásady** vyberte **Architektura prostředí identity**.
 
 2. Vyberte dříve vytvořenou **SignUpSignIn**.
 
 3. Vyberte **Spustit tok uživatele** a potom:
 
-   a. V poli **aplikace**vyberte registrovanou aplikaci (ukázka je JWT).
+   a. V poli **aplikace** vyberte registrovanou aplikaci (ukázka je JWT).
 
-   b. V poli **Adresa URL odpovědi**vyberte **adresu URL pro přesměrování**.
+   b. V poli **Adresa URL odpovědi** vyberte **adresu URL pro přesměrování**.
 
    c. Vyberte **Spustit tok uživatele**.
 
@@ -102,6 +102,6 @@ Další informace o BRIMS pro WhoIAM najdete v [dokumentaci k produktu](https://
 
 Další informace najdete v následujících článcích:
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

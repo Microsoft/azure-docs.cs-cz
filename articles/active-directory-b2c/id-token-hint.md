@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 708ec35524f25314ca568944b738ba2cdf60d55c
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 79a99d9f0ca117d8f47d56d76399210a72b91bb7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132070"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951651"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definice technického profilu pomocného tokenu ID v Azure Active Directory B2C vlastní zásady
 
@@ -34,7 +34,7 @@ Pomocí id_token_hint Vystavitel tokenu (aplikace předávající strany nebo po
 
 Id_token_hint musí být platný token JWT. V následující tabulce jsou uvedeny deklarace identity, které jsou povinné. Další deklarace identity jsou volitelné.
 
-| Název | Deklarovat | Příklad hodnoty | Popis |
+| Name | Deklarovat | Příklad hodnoty | Popis |
 | ---- | ----- | ------------- | ----------- |
 | Cílová skupina | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Identifikuje zamýšleného příjemce tokenu. Toto je libovolný řetězec definovaný vystavitelem tokenu. Azure AD B2C ověří tuto hodnotu a odmítne token, pokud se neshoduje.  |
 | Vystavitel | `iss` |`https://localhost` | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Toto je libovolný identifikátor URI definovaný vystavitelem tokenu. Azure AD B2C ověří tuto hodnotu a odmítne token, pokud se neshoduje.  |
@@ -84,14 +84,14 @@ Následující metadata jsou relevantní při použití symetrického klíče.
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| issuer | Ano | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota musí být shodná s `iss` deklarací identity v rámci deklarace tokenu JWT. | 
-| IdTokenAudience | Ano | Identifikuje zamýšleného příjemce tokenu. Musí být identické `aud` s deklarací identity s deklarací tokenu JWT. | 
+| issuer | Yes | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota musí být shodná s `iss` deklarací identity v rámci deklarace tokenu JWT. | 
+| IdTokenAudience | Yes | Identifikuje zamýšleného příjemce tokenu. Musí být identické `aud` s deklarací identity s deklarací tokenu JWT. | 
 
 Následující metadata jsou relevantní při použití asymetrického klíče. 
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| MEZIPAMĚŤ| Ano | Adresa URL, která odkazuje na dokument konfigurace vystavitele tokenu, který je také známý jako OpenID dobře známý koncový bod konfigurace.   |
+| MEZIPAMĚŤ| Yes | Adresa URL, která odkazuje na dokument konfigurace vystavitele tokenu, který je také známý jako OpenID dobře známý koncový bod konfigurace.   |
 | issuer | Ne | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota se dá použít k přepsání hodnoty nakonfigurované v metadatech a musí být identická s `iss` deklarací identity v rámci deklarace tokenu JWT. |  
 | IdTokenAudience | Ne | Identifikuje zamýšleného příjemce tokenu. Musí být identické `aud` s deklarací identity s deklarací tokenu JWT. |  
 
@@ -101,7 +101,7 @@ Při použití symetrického klíče obsahuje element **CryptographicKeys** nás
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| client_secret | Ano | Kryptografický klíč, který se používá k ověření podpisu tokenu JWT.|
+| client_secret | Yes | Kryptografický klíč, který se používá k ověření podpisu tokenu JWT.|
 
 
 ## <a name="how-to-guide"></a>Praktičtí průvodci
@@ -127,16 +127,16 @@ Tento kód vytvoří tajný řetězec jako `VK62QTn0m1hMcn0DQ3RPYDAr6yIiSvYgdRwj
 
 Stejný klíč, který používá Vydavatel tokenů, musí být vytvořený v klíčích zásad Azure AD B2C.  
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
-1. Na stránce Přehled v části **zásady**vyberte **Architektura prostředí identity**.
+1. Na stránce Přehled v části **zásady** vyberte **Architektura prostředí identity**.
 1. Vybrat **klíče zásad** 
 1. Vyberte **ručně**.
-1. Pro **název**použijte `IdTokenHintKey` .  
+1. Pro **název** použijte `IdTokenHintKey` .  
    Předponu `B2C_1A_` lze přidat automaticky.
 1. Do pole **tajný kód** zadejte klíč pro přihlášení, který jste předtím vygenerovali.
-1. Pro **použití klíče**použijte **šifrování**.
+1. Pro **použití klíče** použijte **šifrování**.
 1. Vyberte **Vytvořit**.
 1. Potvrďte, že jste vytvořili klíč `B2C_1A_IdTokenHintKey` .
 
@@ -189,7 +189,7 @@ Podívejte se na ukázku kontroleru [TokenMetadataController.cs](https://github.
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>Krok 1. Příprava certifikátu podepsaného svým držitelem
 
-Pokud ještě certifikát nemáte, můžete k tomuto průvodci použít certifikát podepsaný svým držitelem. Ve Windows můžete k vygenerování certifikátu použít rutinu [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) prostředí PowerShell.
+Pokud ještě certifikát nemáte, můžete k tomuto průvodci použít certifikát podepsaný svým držitelem. Ve Windows můžete k vygenerování certifikátu použít rutinu [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) prostředí PowerShell.
 
 Spuštěním tohoto příkazu PowerShellu Vygenerujte certifikát podepsaný svým držitelem. Upravte `-Subject` argument podle potřeby pro vaši aplikaci a Azure AD B2C název tenanta. Můžete také upravit `-NotAfter` Datum a zadat jiné vypršení platnosti certifikátu.
 

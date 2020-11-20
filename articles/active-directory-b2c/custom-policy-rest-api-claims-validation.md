@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30273c0103d8a0fde12b1b7c6f66d16dd4ea84cb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 761bc4db7760ef5e84e3fc3c8a5deea5d4508f51
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089515"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951923"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C k ověření vstupu uživatele
 
@@ -28,7 +28,7 @@ V tomto scénáři přidáme uživatelům možnost zadat věrnostní číslo do 
 
 Můžete také navrhnout interakci jako krok orchestrace. Tato akce je vhodná, když REST API neověřuje data na obrazovce a vždy vrací deklarace identity. Další informace najdete v tématu [Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C jako krok orchestrace](custom-policy-rest-api-claims-exchange.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md). Měli byste mít pracovní vlastní zásady pro registraci a přihlašování pomocí místních účtů.
 - Naučte se [integrovat REST API výměn deklarací identity do vlastních zásad Azure AD B2C](custom-policy-rest-api-intro.md).
@@ -65,7 +65,7 @@ Pokud se ověření nepovedlo, REST API musí vrátit HTTP 409 (konflikt) s `use
 }
 ```
 
-Nastavení koncového bodu REST API je mimo rámec tohoto článku. Vytvořili jsme ukázku [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) . K úplnému kódu funkce Azure můžete přistupovat na [GitHubu](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function).
+Nastavení koncového bodu REST API je mimo rámec tohoto článku. Vytvořili jsme ukázku [Azure Functions](../azure-functions/functions-reference.md) . K úplnému kódu funkce Azure můžete přistupovat na [GitHubu](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function).
 
 ## <a name="define-claims"></a>Definovat deklarace identity
 
@@ -229,15 +229,15 @@ Pokud chcete vrátit deklaraci propagačního kódu zpátky do aplikace předáv
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **architekturu prostředí identity**.
-1. Vyberte **Odeslat vlastní zásadu**a pak nahrajte soubory zásad, které jste změnili: *TrustFrameworkExtensions.xml*a *SignUpOrSignin.xml*. 
+1. Vyberte **Odeslat vlastní zásadu** a pak nahrajte soubory zásad, které jste změnili: *TrustFrameworkExtensions.xml* a *SignUpOrSignin.xml*. 
 1. Vyberte zásadu registrace nebo přihlašování, kterou jste nahráli, a klikněte na tlačítko **Spustit** .
 1. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy.
 1. Klikněte na odkaz **registrace nyní** .
-1. Do pole **věrnostní ID**zadejte 1234 a klikněte na **pokračovat**. V tomto okamžiku byste měli získat chybovou zprávu ověření.
+1. Do pole **věrnostní ID** zadejte 1234 a klikněte na **pokračovat**. V tomto okamžiku byste měli získat chybovou zprávu ověření.
 1. Přejděte na jinou hodnotu a klikněte na **pokračovat**.
 1. Token, který se odesílá zpátky do vaší aplikace, zahrnuje `promoCode` deklaraci identity.
 

@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6daf2da5b5bac051ac110ff15ed2c44971300a30
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 705df6ddc6b665ac3d0d62ec3dad93e38f5e513e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421035"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953096"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Kurz: povolení ověřování v aplikaci s jednou stránkou s Azure AD B2C
 
@@ -36,7 +36,7 @@ V [dalším kurzu](tutorial-single-page-app-webapi.md) v řadě se povoluje čá
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat v krocích v tomto kurzu, budete potřebovat následující Azure AD B2C prostředky:
 
@@ -53,14 +53,14 @@ V místním vývojovém prostředí budete navíc potřebovat následující:
 
 V [druhém kurzu](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-spa) , který jste dokončili v rámci požadavků, jste zaregistrovali jednostránkovou aplikaci v Azure AD B2C. Pokud chcete povolit komunikaci s ukázkami kódu v tomto kurzu, přidejte do registrace aplikace adresu URL odpovědi (označuje se taky jako identifikátor URI přesměrování).
 
-Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
+Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations-auth-code-flow"></a>[Registrace aplikací (tok kódu ověřování)](#tab/app-reg-auth/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Registrace aplikací** , vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *spaapp1* .
+1. Vyberte **Registrace aplikací**, vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *spaapp1* .
 1. V části **jednostránková aplikace** vyberte odkaz **Přidat identifikátor URI** a pak zadejte `http://localhost:6420` .
 1. Vyberte **Uložit**.
 1. Vyberte **Přehled**.
@@ -68,10 +68,10 @@ Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete vy
 
 #### <a name="app-registrations-implicit-flow"></a>[Registrace aplikací (implicitní tok)](#tab/app-reg-implicit/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Registrace aplikací** , vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *spaapp1* .
+1. Vyberte **Registrace aplikací**, vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *spaapp1* .
 1. V části **jednostránková aplikace** vyberte odkaz **Přidat identifikátor URI** a pak zadejte `http://localhost:6420` .
 1. V části **implicitní udělení** vyberte zaškrtávací políčka pro **přístupové tokeny** a **tokeny ID** , pokud ještě není vybraná, a pak vyberte **Uložit**.
 1. Vyberte **Přehled**.
@@ -79,7 +79,7 @@ Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete vy
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace (starší verze)** a pak vyberte aplikaci *spaapp1* .
@@ -141,7 +141,7 @@ Výsledný kód by měl vypadat nějak takto:
 
 #### <a name="auth-code-flow-sample"></a>[Ukázka toku kódu ověřování](#tab/review-auth/)
 
-*authConfig.js* :
+*authConfig.js*:
 
 ```javascript
 const msalConfig = {
@@ -165,7 +165,7 @@ const tokenRequest = {
 };
 ```
 
-*policies.js* :
+*policies.js*:
 
 ```javascript
 const b2cPolicies = {
@@ -189,7 +189,7 @@ const b2cPolicies = {
 }
 ```
 
-*apiConfig.js* :
+*apiConfig.js*:
 
 ```javascript
 const apiConfig = {
@@ -200,7 +200,7 @@ const apiConfig = {
 
 #### <a name="implicit-flow-sample"></a>[Ukázka implicitního toku](#tab/review-implicit/)
 
-*authConfig.js* :
+*authConfig.js*:
 
 ```javascript
 const msalConfig = {
@@ -224,7 +224,7 @@ const tokenRequest = {
 };
 ```
 
-*policies.js* :
+*policies.js*:
 
 ```javascript
 const b2cPolicies = {
@@ -247,7 +247,7 @@ const b2cPolicies = {
 }
 ```
 
-*apiConfig.js* :
+*apiConfig.js*:
 
 ```javascript
 const apiConfig = {
@@ -304,7 +304,7 @@ Tato ukázková aplikace podporuje registraci, přihlášení a resetování hes
 
 1. Vyberte **vytvořit** k vytvoření místního účtu v adresáři Azure AD B2C.
 
-Když vyberete **vytvořit** , aplikace zobrazí jméno přihlášeného uživatele.
+Když vyberete **vytvořit**, aplikace zobrazí jméno přihlášeného uživatele.
 
 :::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="Webový prohlížeč zobrazující jednostránkovou aplikaci s přihlášeným uživatelem":::
 

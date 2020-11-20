@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4e5becdd026b0a1c9e848b183ebeee5833654461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3a8881b9fe44727caf07b3cc0d5ee19f0444e98
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259267"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953657"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Jumio s využitím Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Abyste mohli začít, budete potřebovat:
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 
-- [Klienta Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , který je propojený s vaším předplatným Azure.
+- [Klienta Azure AD B2C](./tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -46,7 +46,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Diagram architektury Azure AD B2C integrace s Jumio.](./media/partner-jumio/jumio-architecture-diagram.png)
 
-|Krok | Description |
+|Krok | Popis |
 |:-----| :-----------|
 | 1. | Uživatel dostane na stránku, ať už se přihlásí, nebo se zaregistruje a vytvoří účet. Azure AD B2C shromažďuje atributy uživatele.
 | 2. | Azure AD B2C volá rozhraní API prostřední vrstvy a předá ho atributům uživatele.
@@ -65,7 +65,7 @@ Po vytvoření účtu Jumio použijte účet ke konfiguraci Azure AD B2C. Násle
 
 ### <a name="deploy-the-api"></a>Nasazení rozhraní API
 
-Nasaďte poskytnutý [kód rozhraní API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) do služby Azure. Kód můžete publikovat ze sady Visual Studio pomocí následujících [pokynů](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Nasaďte poskytnutý [kód rozhraní API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) do služby Azure. Kód můžete publikovat ze sady Visual Studio pomocí následujících [pokynů](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 >[!NOTE]
 >Abyste mohli Azure AD nakonfigurovat pomocí požadovaných nastavení, budete potřebovat adresu URL nasazené služby.
@@ -85,7 +85,7 @@ Nasaďte poskytnutý [kód rozhraní API](https://github.com/azure-ad-b2c/partne
 
    Certifikát se pak vyexportuje do umístění určeného pro ``{your-local-path}`` .
 
-3. Importujte certifikát do Azure App Service podle pokynů v [tomto článku](https://docs.microsoft.com/azure/app-service/configure-ssl-certificate#upload-a-private-certificate).
+3. Importujte certifikát do Azure App Service podle pokynů v [tomto článku](../app-service/configure-ssl-certificate.md#upload-a-private-certificate).
 
 ### <a name="create-a-signingencryption-key"></a>Vytvoření podpisového nebo šifrovacího klíče
 
@@ -102,7 +102,7 @@ K vytvoření řetězce použijte následující skript prostředí PowerShell:
 
 ### <a name="configure-the-api"></a>Konfigurace rozhraní API
 
-[Nastavení aplikace můžete nakonfigurovat v Azure App Service](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Pomocí této metody můžete bezpečně nakonfigurovat nastavení bez jejich rezervace do úložiště. Pro rozhraní REST API musíte zadat následující nastavení:
+[Nastavení aplikace můžete nakonfigurovat v Azure App Service](../app-service/configure-common.md#configure-app-settings). Pomocí této metody můžete bezpečně nakonfigurovat nastavení bez jejich rezervace do úložiště. Pro rozhraní REST API musíte zadat následující nastavení:
 
 | Nastavení aplikace | Zdroj | Poznámky |
 | :-------- | :------------| :-----------|
@@ -118,7 +118,7 @@ K vytvoření řetězce použijte následující skript prostředí PowerShell:
 
 ### <a name="deploy-the-ui"></a>Nasazení uživatelského rozhraní
 
-1. Nastavte [kontejner úložiště objektů BLOB ve svém účtu úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container).
+1. Nastavte [kontejner úložiště objektů BLOB ve svém účtu úložiště](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container).
 
 2. Soubory uživatelského rozhraní uložte ze [složky uživatelského rozhraní](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/UI) v kontejneru objektů BLOB.
 
@@ -139,7 +139,7 @@ K vytvoření řetězce použijte následující skript prostředí PowerShell:
 
 1. Ve složce policies (zásady) vyberte [zásady Azure AD B2C](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/Policies) .
 
-2. Pomocí [tohoto článku](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) si stáhněte [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts).
+2. Pomocí [tohoto článku](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) si stáhněte [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts).
 
 3. Nakonfigurujte zásady pro klienta Azure AD B2C.
 
@@ -148,15 +148,15 @@ K vytvoření řetězce použijte následující skript prostředí PowerShell:
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
-1. Otevřete klienta Azure AD B2C. V části **zásady**vyberte **Architektura prostředí identity**.
+1. Otevřete klienta Azure AD B2C. V části **zásady** vyberte **Architektura prostředí identity**.
 
 2. Vyberte dříve vytvořenou **SignUpSignIn**.
 
 3. Vyberte **Spustit tok uživatele** a potom:
 
-   a. V poli **aplikace**vyberte registrovanou aplikaci (ukázka je JWT).
+   a. V poli **aplikace** vyberte registrovanou aplikaci (ukázka je JWT).
 
-   b. V poli **Adresa URL odpovědi**vyberte **adresu URL pro přesměrování**.
+   b. V poli **Adresa URL odpovědi** vyberte **adresu URL pro přesměrování**.
 
    c. Vyberte **Spustit tok uživatele**.
 
@@ -168,6 +168,6 @@ K vytvoření řetězce použijte následující skript prostředí PowerShell:
 
 Další informace najdete v následujících článcích:
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

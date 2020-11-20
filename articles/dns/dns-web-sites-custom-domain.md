@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 151d5f083fe0e945b330d65095c908be93e3330f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 369c7dab174f0269797b10635882a6821ade8311
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316399"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952858"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření vlastních záznamů DNS ve vlastní doméně pro webovou aplikaci 
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 > * Přidání vlastních názvů hostitelů do vaší webové aplikace
 > * Testování vlastních názvů hostitele
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -49,7 +49,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Vytvořte v Azure DNS zónu DNS a prostřednictvím svého registrátora ji delegujte na Azure DNS.
 
-   1. Při vytváření zóny DNS postupujte podle kroků v článku [Vytvoření zóny DNS](dns-getstarted-create-dnszone.md).
+   1. Při vytváření zóny DNS postupujte podle kroků v článku [Vytvoření zóny DNS](./dns-getstarted-powershell.md).
    2. Pokud chcete delegovat svoji zónu do Azure DNS, postupujte podle kroků v článku [Delegování domény DNS](dns-delegate-domain-azure-dns.md).
 
 Po vytvoření zóny a jejím delegování do Azure DNS můžete vytvořit záznamy pro vlastní doménu.
@@ -174,7 +174,7 @@ Otevřete prohlížeč a přejděte na `http://www.<your domainname>` a `http://
 > [!NOTE]
 > Ujistěte se, že jste `http://` předponu zahrnuli, jinak se může váš prohlížeč pokusit předpovědět adresu URL.
 
-Pro obě adresy URL by se vám měla zobrazit stejná stránka. Příklad:
+Pro obě adresy URL by se vám měla zobrazit stejná stránka. Například:
 
 ![Služba aplikace Contoso](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

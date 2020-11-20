@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e1d76c5ef1f003fe9e01b866343ef7de7ab4166
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214919"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952076"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Nové prostředí Registrace aplikací pro Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ Ve starší verzi prostředí se aplikace vždycky vytvořily jako aplikace s p�
 > [!NOTE]
 > Tato možnost vyžaduje, aby bylo možné spouštět Azure AD B2C toků uživatelů pro ověřování uživatelů pro tuto aplikaci. Naučte se [, jak zaregistrovat aplikaci pro použití s toky uživatelů.](tutorial-register-applications.md)
 
-Tuto možnost můžete použít také k použití Azure AD B2C jako poskytovatele služby SAML. [Další informace](identity-provider-adfs2016-custom.md).
+Tuto možnost můžete použít také k použití Azure AD B2C jako poskytovatele služby SAML. [Přečtěte si další informace](identity-provider-adfs2016-custom.md).
 
 ## <a name="applications-for-devops-scenarios"></a>Aplikace pro scénáře DevOps
 Další typy účtů můžete použít k vytvoření aplikace pro správu DevOpsch scénářů, jako je například použití Microsoft Graph k nahrání zásad architektury pro rozhraní identity nebo zřízení uživatelů. Naučte [se, jak registrovat aplikaci Microsoft Graph pro správu prostředků Azure AD B2C](microsoft-graph-get-started.md).
@@ -91,14 +91,14 @@ Platformy **iOS/MacOS** a **Android** jsou typem veřejného klienta. Poskytují
 
 ## <a name="application-certificates--secrets"></a>Certifikáty aplikací & tajných kódů
 
-V novém prostředí místo klíčů použijete okno **certifikáty & tajných** **kódů**ke správě certifikátů a tajných klíčů. Certifikáty & tajných klíčích umožňují aplikacím identifikovat službu ověřování při přijímání tokenů na webovém umístění s adresou (pomocí schématu HTTPS). Při ověřování vůči službě Azure AD doporučujeme použít certifikát místo tajného klíče klienta pro scénáře přihlašovacích údajů klienta. Certifikáty se nedají použít k ověřování proti Azure AD B2C.
+V novém prostředí místo klíčů použijete okno **certifikáty & tajných** **kódů** ke správě certifikátů a tajných klíčů. Certifikáty & tajných klíčích umožňují aplikacím identifikovat službu ověřování při přijímání tokenů na webovém umístění s adresou (pomocí schématu HTTPS). Při ověřování vůči službě Azure AD doporučujeme použít certifikát místo tajného klíče klienta pro scénáře přihlašovacích údajů klienta. Certifikáty se nedají použít k ověřování proti Azure AD B2C.
 
 
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Funkce, které se nevztahují na Azure AD B2C klienty
 Následující možnosti registrace aplikací Azure AD se nevztahují na Azure AD B2C klienty a nejsou k dispozici:
 - **Role a správci** – nejsou aktuálně k dispozici pro Azure AD B2C.
 - **Branding** – uživatelské rozhraní a přizpůsobení uživatelského rozhraní je nakonfigurované v prostředí **brandingu společnosti** nebo v rámci toku uživatele. Naučte se [přizpůsobit uživatelské rozhraní v Azure Active Directory B2C](customize-ui-overview.md).
-- **Ověřování domény vydavatele** – vaše aplikace je zaregistrovaná v *. onmicrosoft.com*, což není ověřená doména. Doména vydavatele se navíc primárně používá pro udělení souhlasu uživatele, která se nevztahují na Azure AD B2C aplikace pro ověřování uživatelů. [Přečtěte si další informace o doméně vydavatele](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
+- **Ověřování domény vydavatele** – vaše aplikace je zaregistrovaná v *. onmicrosoft.com*, což není ověřená doména. Doména vydavatele se navíc primárně používá pro udělení souhlasu uživatele, která se nevztahují na Azure AD B2C aplikace pro ověřování uživatelů. [Přečtěte si další informace o doméně vydavatele](../active-directory/develop/howto-configure-publisher-domain.md).
 - **Konfigurace tokenu** – token se konfiguruje jako součást uživatelského toku, nikoli aplikace.
 - Prostředí **rychlý Start** v současnosti není pro Azure AD B2C klienty k dispozici.
 <!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->

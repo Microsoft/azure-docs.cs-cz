@@ -3,16 +3,17 @@ title: Implementace Oracle data Guard na virtuálním počítači Azure Linux | 
 description: Do prostředí Azure se rychle dostanete a spusťte ochranu dat Oracle.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: b56fc172aa9fa4e88f03f488bdd1ac567708fe91
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: cc7579b48307325e25d8914ea4c722a9641883f3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996711"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952144"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementace Oracle data Guard na virtuálním počítači Azure Linux 
 

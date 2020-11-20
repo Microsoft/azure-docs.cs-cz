@@ -3,16 +3,17 @@ title: Nastavení Oracle ASM na virtuálním počítači Azure Linux | Microsoft
 description: Rychlé zprovoznění Oracle ASM v prostředí Azure.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: b9653cded11edd36602caea0ecd50cfb8dd05ebe
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e5593d530891e39404e0b9760861f2f22ae333d3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547176"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952688"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Nastavení Oracle ASM na virtuálním počítači Azure Linux  
 
@@ -144,7 +145,7 @@ Další informace o instalaci Oracle ASM najdete v tématu [Oracle ASMLib Ke_sta
 
 ## <a name="set-up-oracle-asm"></a>Nastavení Oracle ASM
 
-Pro tento kurz je výchozím uživatelem *Mřížka* a výchozí skupina je *asmadmin* . Zajistěte, aby byl uživatel *Oracle* součástí skupiny asmadmin. K nastavení instalace Oracle ASM proveďte následující kroky:
+Pro tento kurz je výchozím uživatelem *Mřížka* a výchozí skupina je *asmadmin*. Zajistěte, aby byl uživatel *Oracle* součástí skupiny asmadmin. K nastavení instalace Oracle ASM proveďte následující kroky:
 
 1. Nastavení ovladače knihovny Oracle ASM zahrnuje definování výchozího uživatele (mřížky) a výchozí skupiny (asmadmin) a také konfiguraci jednotky, která se má spustit při spuštění (zvolit y) a vyhledat disky při spuštění (zvolit y). Musíte zodpovědět výzvy z následujícího příkazu:
 
@@ -385,7 +386,7 @@ Pokud chcete stáhnout a připravit software infrastruktury pro mřížku Oracle
    vi /etc/waagent.conf
    ```
 
-   Vyhledejte `ResourceDisk.SwapSizeMB` a změňte hodnotu na **8192** . Budete muset stisknout, pokud `insert` chcete zadat režim vložení, zadat hodnotu **8192** a potom se stisknutím klávesy `esc` vraťte do režimu příkazu. Chcete-li zapsat změny a soubor ukončit, zadejte `:wq` a stiskněte klávesu `enter` .
+   Vyhledejte `ResourceDisk.SwapSizeMB` a změňte hodnotu na **8192**. Budete muset stisknout, pokud `insert` chcete zadat režim vložení, zadat hodnotu **8192** a potom se stisknutím klávesy `esc` vraťte do režimu příkazu. Chcete-li zapsat změny a soubor ukončit, zadejte `:wq` a stiskněte klávesu `enter` .
    
    > [!NOTE]
    > Důrazně doporučujeme, abyste vždy použili `WALinuxAgent` ke konfiguraci odkládacího prostoru tak, aby se vždy vytvořil na místním dočasném disku (dočasný disk), aby se co nejlépe využíval. Další informace o najdete v tématu [Postup přidání odkládacího souboru ve virtuálních počítačích se systémem Linux Azure](https://support.microsoft.com/en-us/help/4010058/how-to-add-a-swap-file-in-linux-azure-virtual-machines).
@@ -420,15 +421,15 @@ Konfigurace Oracle ASM vyžaduje grafické rozhraní k dokončení instalace a k
    > Klíč musí obsahovat řetězec `ssh-rsa` . Obsah klíče musí být také jeden řádek textu.
    >  
 
-6. V klientském systému zahajte výstup do výstupu. V podokně **kategorie** přejít na **připojení**  >  **SSH**  >  **ověřování** . V poli **soubor privátního klíče pro ověřování** přejděte na klíč, který jste dříve vygenerovali.
+6. V klientském systému zahajte výstup do výstupu. V podokně **kategorie** přejít na **připojení**  >  **SSH**  >  **ověřování**. V poli **soubor privátního klíče pro ověřování** přejděte na klíč, který jste dříve vygenerovali.
 
    ![Snímek obrazovky s možnostmi ověřování SSH](./media/oracle-asm/setprivatekey.png)
 
-7. V podokně **kategorie** přejít na **připojení**  >  **SSH**  >  **X11** . Zaškrtněte políčko **Povolit předávání X11** .
+7. V podokně **kategorie** přejít na **připojení**  >  **SSH**  >  **X11**. Zaškrtněte políčko **Povolit předávání X11** .
 
    ![Snímek obrazovky s možnostmi předávání X11 SSH](./media/oracle-asm/enablex11.png)
 
-8. V podokně **kategorie** přejít na **relace** . Do dialogového okna název hostitele zadejte svůj virtuální počítač Oracle ASM `<publicIPaddress>` , zadejte nový `Saved Session` název a klikněte na zapnout `Save` .  Po uložení klikněte na zapnout `open` a připojte se k virtuálnímu počítači Oracle ASM.  Při prvním připojení budete upozorněni, že vzdálený systém není uložen do mezipaměti v registru. Klikněte na tlačítko `yes` a přidejte ho a pokračujte.
+8. V podokně **kategorie** přejít na **relace**. Do dialogového okna název hostitele zadejte svůj virtuální počítač Oracle ASM `<publicIPaddress>` , zadejte nový `Saved Session` název a klikněte na zapnout `Save` .  Po uložení klikněte na zapnout `open` a připojte se k virtuálnímu počítači Oracle ASM.  Při prvním připojení budete upozorněni, že vzdálený systém není uložen do mezipaměti v registru. Klikněte na tlačítko `yes` a přidejte ho a pokračujte.
 
    ![Snímek možností pro relaci výstupu](./media/oracle-asm/puttysession.png)
 
@@ -436,7 +437,7 @@ Konfigurace Oracle ASM vyžaduje grafické rozhraní k dokončení instalace a k
 
 Pro instalaci infrastruktury pro mřížku Oracle proveďte následující kroky:
 
-1. Přihlaste se jako **Mřížka** . (Měli byste být schopni se přihlásit, aniž by se vám zobrazila výzva k zadání hesla.) 
+1. Přihlaste se jako **Mřížka**. (Měli byste být schopni se přihlásit, aniž by se vám zobrazila výzva k zadání hesla.) 
 
    > [!NOTE]
    > Pokud používáte systém Windows, před zahájením instalace se ujistěte, že jste spustili Xming.
@@ -448,7 +449,7 @@ Pro instalaci infrastruktury pro mřížku Oracle proveďte následující kroky
 
    Spustí se instalační program pro infrastrukturu Oracle Grid 12c verze 1. (Spuštění instalačního programu může trvat několik minut.)
 
-2. Na stránce **vybrat možnost instalace vyberte možnost** **instalovat a konfigurovat infrastrukturu mřížky Oracle pro samostatný server** .
+2. Na stránce **vybrat možnost instalace vyberte možnost** **instalovat a konfigurovat infrastrukturu mřížky Oracle pro samostatný server**.
 
    ![Snímek obrazovky se stránkou možností výběru instalace instalačního programu](./media/oracle-asm/install01.png)
 
@@ -456,9 +457,9 @@ Pro instalaci infrastruktury pro mřížku Oracle proveďte následující kroky
 
 4. Na stránce **vytvořit skupinu disků ASM** :
    - Zadejte název skupiny disků.
-   - V části **redundance** vyberte **externí** .
-   - V části **velikost alokační jednotky** vyberte **4** .
-   - V části **Přidat disky** vyberte **ORCLASMSP** .
+   - V části **redundance** vyberte **externí**.
+   - V části **velikost alokační jednotky** vyberte **4**.
+   - V části **Přidat disky** vyberte **ORCLASMSP**.
    - Klikněte na `next` (Další).
 
 5. Na stránce **zadat heslo ASM** zaškrtněte možnost **použít stejná hesla pro tyto účty** a zadejte heslo.
@@ -508,9 +509,9 @@ K nastavení instalace Oracle ASM proveďte následující kroky:
 
 3. V dialogovém okně **vytvořit skupinu disků** :
 
-   - Zadejte název skupiny disků **data** .
-   - V části **Vybrat členské disky** vyberte **ORCL_DATA** a **ORCL_DATA1** .
-   - V části **velikost alokační jednotky** vyberte **4** .
+   - Zadejte název skupiny disků **data**.
+   - V části **Vybrat členské disky** vyberte **ORCL_DATA** a **ORCL_DATA1**.
+   - V části **velikost alokační jednotky** vyberte **4**.
    - Kliknutím `ok` vytvoříte skupinu disků.
    - Kliknutím `ok` zavřete okno potvrzení.
 
@@ -521,9 +522,9 @@ K nastavení instalace Oracle ASM proveďte následující kroky:
 5. V dialogovém okně **vytvořit skupinu disků** :
 
    - Zadejte **název skupiny** disků.
-   - V části **redundance** vyberte **externí (žádné)** .
-   - V části **Vybrat členské disky** vyberte **ORCL_FRA** .
-   - V části **velikost alokační jednotky** vyberte **4** .
+   - V části **redundance** vyberte **externí (žádné)**.
+   - V části **Vybrat členské disky** vyberte **ORCL_FRA**.
+   - V části **velikost alokační jednotky** vyberte **4**.
    - Kliknutím `ok` vytvoříte skupinu disků.
    - Kliknutím `ok` zavřete okno potvrzení.
 
@@ -555,7 +556,7 @@ Software Oracle Database je již nainstalován na Azure Marketplace imagi. Chcet
    - V případě **typu úložiště** zkontrolujte, zda je vybrána možnost **Automatická správa úložiště (ASM)** .
    - Pro **umístění souborů databáze** použijte výchozí navrhované umístění ASM.
    - Pro **oblast rychlé obnovení** použijte výchozí navrhované umístění ASM.
-   - Zadejte **heslo pro správu** a **potvrďte heslo** .
+   - Zadejte **heslo pro správu** a **potvrďte heslo**.
    - Ujistěte `create as container database` se, že je vybraná možnost.
    - Zadejte `pluggable database name` hodnotu.
 

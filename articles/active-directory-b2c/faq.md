@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4db3c58da791a5cad5fc3b9c98f245202d8119e2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 384f178481f7a6ff202d5363ba09c242b1fc366d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054759"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951787"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -37,7 +37,7 @@ Azure AD B2C nelze použít k ověřování uživatelů pro Microsoft 365. Azure
 
 V tenantovi Azure AD uživatelé patřící do přihlášení tenanta pomocí e-mailové adresy formuláře `<xyz>@<tenant domain>` . `<tenant domain>`Je jednou z ověřených domén v tenantovi nebo v počáteční `<...>.onmicrosoft.com` doméně. Tento typ účtu je pracovní nebo školní účet.
 
-V tenantovi Azure AD B2C se většina aplikací chce přihlašovat pomocí libovolné e-mailové adresy (například,, joe@comcast.net bob@gmail.com sarah@contoso.com nebo jim@live.com ). Tento typ účtu je místní účet. Také podporujeme libovolná uživatelská jména jako místní účty (například Jana, Bob, Sarah nebo jim). Při konfiguraci zprostředkovatelů identity pro Azure AD B2C v Azure Portal můžete zvolit jeden z těchto dvou místních typů účtů. Ve vašem tenantovi Azure AD B2C vyberte **Zprostředkovatelé identity**, vyberte **místní účet**a pak vyberte **uživatelské jméno**.
+V tenantovi Azure AD B2C se většina aplikací chce přihlašovat pomocí libovolné e-mailové adresy (například,, joe@comcast.net bob@gmail.com sarah@contoso.com nebo jim@live.com ). Tento typ účtu je místní účet. Také podporujeme libovolná uživatelská jména jako místní účty (například Jana, Bob, Sarah nebo jim). Při konfiguraci zprostředkovatelů identity pro Azure AD B2C v Azure Portal můžete zvolit jeden z těchto dvou místních typů účtů. Ve vašem tenantovi Azure AD B2C vyberte **Zprostředkovatelé identity**, vyberte **místní účet** a pak vyberte **uživatelské jméno**.
 
 Uživatelské účty pro aplikace se dají vytvořit pomocí uživatelského toku registrace, uživatelského toku registrace nebo přihlašování, rozhraní Microsoft Graph API nebo Azure Portal.
 
@@ -90,7 +90,7 @@ K zápisu nástroje pro migraci můžete použít rozhraní Microsoft Graph API.
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Jaký tok uživatelského hesla se používá pro místní účty v Azure AD B2C?
 
-Tok uživatele Azure AD B2C hesla pro místní účty je založený na zásadách pro Azure AD. Služby Azure AD B2C's pro registraci, registraci nebo přihlášení a resetování hesel uživatelské toky používají sílu silného hesla a neprošli platnost hesla. Další podrobnosti najdete v tématu [zásady a omezení hesel v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy).
+Tok uživatele Azure AD B2C hesla pro místní účty je založený na zásadách pro Azure AD. Služby Azure AD B2C's pro registraci, registraci nebo přihlášení a resetování hesel uživatelské toky používají sílu silného hesla a neprošli platnost hesla. Další podrobnosti najdete v tématu [zásady a omezení hesel v Azure Active Directory](../active-directory/authentication/concept-sspr-policy.md).
 
 Informace o uzamčení a heslech účtů najdete v tématu [Správa hrozeb pro prostředky a data v Azure Active Directory B2C](threat-management.md).
 
@@ -104,7 +104,7 @@ Ne, z důvodů zabezpečení nelze v rámci prvku iFrame otevřít Azure AD B2C 
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Funguje Azure AD B2C se systémy CRM, jako je Microsoft Dynamics?
 
-K dispozici je integrace s portálem Microsoft Dynamics 365. Viz téma [Konfigurace portálu Dynamics 365 pro použití Azure AD B2C pro ověřování](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
+K dispozici je integrace s portálem Microsoft Dynamics 365. Viz téma [Konfigurace portálu Dynamics 365 pro použití Azure AD B2C pro ověřování](/dynamics365/customer-engagement/portals/azure-ad-b2c).
 
 ### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Pracuje Azure AD B2C s místní službou SharePoint 2016 nebo starší?
 
@@ -112,7 +112,7 @@ Azure AD B2C není určeno pro scénář sdílení pro externí partnery SharePo
 
 ### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>Mám použít Azure AD B2C nebo B2B ke správě externích identit?
 
-Přečtěte si [Porovnejte spolupráci B2B a B2C ve službě Azure AD](../active-directory/b2b/compare-with-b2c.md) , kde se dozvíte víc o používání vhodných funkcí v rámci vašich vnějších scénářů identity.
+Přečtěte si [Porovnejte spolupráci B2B a B2C ve službě Azure AD](../active-directory/external-identities/compare-with-b2c.md) , kde se dozvíte víc o používání vhodných funkcí v rámci vašich vnějších scénářů identity.
 
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Jaké funkce pro vytváření sestav a auditování Azure AD B2C poskytují? Jsou stejné jako v Azure AD Premium?
 
@@ -134,7 +134,7 @@ Momentálně ne. Tato funkce je v našem plánu. Ověření domény na kartě **
 
 Chcete-li odstranit svého tenanta Azure AD B2C, postupujte podle těchto kroků.
 
-Můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
+Můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
@@ -142,14 +142,14 @@ Můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo 
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Odstraní všechny **toky uživatelů (zásady)** ve vašem tenantovi Azure AD B2C.
-1. Vyberte **Registrace aplikací**a pak vyberte kartu **všechny aplikace** .
+1. Vyberte **Registrace aplikací** a pak vyberte kartu **všechny aplikace** .
 1. Odstraňte všechny aplikace, které jste zaregistrovali.
 1. Odstraňte **B2C-Extensions-App**.
 1. V části **Spravovat** vyberte **Uživatelé**.
 1. Vyberte možnost jednotliví uživatelé zase (vyloučit *Správce předplatného* , kterého jste právě přihlášeni jako uživatel). V dolní části stránky vyberte **Odstranit** a po zobrazení výzvy vyberte **Ano** .
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
-1. V části **Spravovat**vyberte **uživatelská nastavení**.
-1. V části **Spravovat**vyberte **vlastnosti** .
+1. V části **Spravovat** vyberte **uživatelská nastavení**.
+1. V části **Spravovat** vyberte **vlastnosti** .
 1. V části **Správa přístupu pro prostředky Azure** vyberte **Ano** a pak vyberte **Uložit**.
 1. Odhlaste se ze Azure Portal a pak se znovu přihlaste, abyste mohli aktualizovat svůj přístup.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
@@ -167,10 +167,10 @@ Můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo 
 1. Vyberte možnost jednotliví uživatelé zase (vyloučit *Správce předplatného* , kterého jste právě přihlášeni jako uživatel). V dolní části stránky vyberte **Odstranit** a po zobrazení výzvy vyberte **Ano** .
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. Vybrat **Zobrazit všechny aplikace**
-1. Vyberte aplikaci s názvem **B2C-Extensions-App**, vyberte **Odstranit**a po zobrazení výzvy vyberte **Ano** .
-1. V části **Spravovat**vyberte **uživatelská nastavení**.
-1. Pokud je k dispozici, vyberte v části **připojení k účtu LinkedIn**možnost **ne**a pak vyberte **Uložit**.
-1. V části **Spravovat**vyberte **vlastnosti** .
+1. Vyberte aplikaci s názvem **B2C-Extensions-App**, vyberte **Odstranit** a po zobrazení výzvy vyberte **Ano** .
+1. V části **Spravovat** vyberte **uživatelská nastavení**.
+1. Pokud je k dispozici, vyberte v části **připojení k účtu LinkedIn** možnost **ne** a pak vyberte **Uložit**.
+1. V části **Spravovat** vyberte **vlastnosti** .
 1. V části **Správa přístupu pro prostředky Azure** vyberte **Ano** a pak vyberte **Uložit**.
 1. Odhlaste se ze Azure Portal a pak se znovu přihlaste, abyste mohli aktualizovat svůj přístup.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
