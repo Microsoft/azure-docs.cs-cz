@@ -90,6 +90,10 @@
           href: migrate-appliance.md
         - name: Požadavky zařízení replikace
           href: migrate-replication-appliance.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Architektura zařízení Azure Migrate
       href: migrate-appliance-architecture.md
     - name: Architektura migrace Hyper-V

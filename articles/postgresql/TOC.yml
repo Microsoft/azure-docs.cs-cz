@@ -106,8 +106,6 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
-        - name: Integrované služby Azure Policy
-          href: ./policy-reference.md
     - name: Koncepty
       items:
         - name: Servery
@@ -147,6 +145,9 @@
             - name: Dvojité šifrování infrastruktury
               href: concepts-infrastructure-double-encryption.md
               displayName: 'security, infrastructure encryption'
+            - name: Mechanismy zabezpečení služby Azure Policy
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: Standardní hodnoty zabezpečení
               href: security-baseline.md
         - name: Sítě
@@ -638,6 +639,9 @@
       href: /rest/api/postgresql
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

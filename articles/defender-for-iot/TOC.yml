@@ -57,8 +57,12 @@
       href: concept-security-alerts.md
     - name: Přizpůsobitelné výstrahy zabezpečení
       href: concept-customizable-security-alerts.md
-    - name: Doporučení zabezpečení
-      href: concept-recommendations.md
+    - name: Zabezpečení
+      items:
+        - name: Doporučení zabezpečení
+          href: concept-recommendations.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Standardní hodnoty
       href: concept-baseline.md
     - name: Agregace událostí

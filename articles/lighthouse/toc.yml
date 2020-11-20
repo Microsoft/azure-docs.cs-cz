@@ -36,6 +36,10 @@
     - name: Azure Lighthouse a spravované aplikace Azure
       displayName: 'managed apps, ama'
       href: ./concepts/managed-applications.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: Onboarding zákazníků do služby Azure Lighthouse

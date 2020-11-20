@@ -116,8 +116,6 @@
           href: sample-scripts-azure-cli.md
         - name: Sdružování připojení v Javě
           href: sample-scripts-java-connection-pooling.md
-        - name: Integrované služby Azure Policy
-          href: ./policy-reference.md
     - name: Koncepty
       items:
         - name: Servery
@@ -156,6 +154,9 @@
               href: concepts-azure-ad-authentication.md
             - name: Dvojité šifrování infrastruktury
               href: concepts-infrastructure-double-encryption.md
+            - name: Mechanismy zabezpečení služby Azure Policy
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: Standardní hodnoty zabezpečení
               href: security-baseline.md
         - name: Plánovaná údržba
@@ -573,6 +574,9 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: Uložené procedury správy
       href: reference-stored-procedures.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Šablony nasazení

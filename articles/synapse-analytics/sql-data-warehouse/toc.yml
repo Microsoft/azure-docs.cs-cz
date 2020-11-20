@@ -29,6 +29,8 @@
   items:
     - name: Vytvoření a připojení
       items:
+        - name: Azure CLI
+          href: create-data-warehouse-azure-cli.md
         - name: Portál
           href: create-data-warehouse-portal.md
         - name: PowerShell

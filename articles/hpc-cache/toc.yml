@@ -8,6 +8,10 @@
   items:
     - name: Plánování agregovaného oboru názvů
       href: hpc-cache-namespace.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: Požadavky
