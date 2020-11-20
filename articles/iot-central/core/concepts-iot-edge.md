@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 5c51649e742f6e314e0e324ae19c38f1a83b02ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c4248246be845aa8608aac8b8a3ce761ea1ef86
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016856"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987044"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Připojení zařízení Azure IoT Edge k aplikaci Azure IoT Central
 
@@ -63,9 +63,9 @@ V Azure IoT Central můžete importovat manifest nasazení a vytvořit šablonu 
 
 IoT Central modeluje IoT Edge zařízení následujícím způsobem:
 
-* Každá šablona zařízení IoT Edge má model schopností zařízení.
+* Každá šablona zařízení IoT Edge má model zařízení.
 * Pro každý vlastní modul uvedený v manifestu nasazení je vygenerován model schopností modulu.
-* Mezi jednotlivými modely schopností modulu a modelem schopností zařízení je vytvořen vztah.
+* Mezi jednotlivými modely schopností modulu a modelem zařízení je vytvořen vztah.
 * Model schopnosti modulu implementuje rozhraní modulů.
 * Každé rozhraní modulů obsahuje telemetrii, vlastnosti a příkazy.
 
@@ -73,7 +73,7 @@ IoT Central modeluje IoT Edge zařízení následujícím způsobem:
 
 ## <a name="iot-edge-gateway-devices"></a>Zařízení IoT Edge brány
 
-Pokud jste jako zařízení brány vybrali IoT Edge zařízení, můžete pro zařízení, která chcete připojit k zařízení brány, přidat podřízené vztahy k modelům schopností zařízení.
+Pokud jste jako zařízení brány vybrali IoT Edge zařízení, můžete pro zařízení, která chcete připojit k zařízení brány, přidat podřízené vztahy k modelům zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 

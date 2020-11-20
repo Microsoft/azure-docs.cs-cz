@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 4392086146642e18b1fdef28a9e602bdbb5b0b18
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542180"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984443"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
@@ -96,7 +96,7 @@ Vyberte obrázek, který chcete označit, a pak vyberte značku. Tato značka se
 
 ![Animace znázorňuje tok s více štítky](./media/how-to-label-images/multilabel.gif)
 
-Chcete-li opravit chybu, klikněte na " **X** ", chcete-li vymazat jednotlivou značku, nebo vybrat obrázky a pak vybrat značku, která vymaže značku ze všech vybraných imagí. Tento scénář je uvedený tady. Když kliknete na možnost půda, tato značka se z obou vybraných imagí vymaže.
+Chcete-li opravit chybu, klikněte na "**X**", chcete-li vymazat jednotlivou značku, nebo vybrat obrázky a pak vybrat značku, která vymaže značku ze všech vybraných imagí. Tento scénář je uvedený tady. Když kliknete na možnost půda, tato značka se z obou vybraných imagí vymaže.
 
 ![Snímek obrazovky znázorňující více odvýběrů](./media/how-to-label-images/multiple-deselection.png)
 
@@ -133,7 +133,7 @@ Pokud je váš projekt typu "segmentace instancí (mnohoúhelník)", zadáte jed
 
 1. Vyberte značku mnohoúhelníku, kterou chcete vytvořit.
 1. Vyberte nástroj **roztažení oblasti mnohoúhelníku** panel pro ![ vykreslení oblasti mnohoúhelníku ](./media/how-to-label-images/polygon-tool.png) nebo vyberte "P".
-3. Klikněte na každý bod mnohoúhelníku.  Po dokončení tohoto tvaru poklikejte na tlačítko Dokončit.
+1. Klikněte na každý bod mnohoúhelníku.  Po dokončení tohoto tvaru poklikejte na tlačítko Dokončit.
 
     :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="Vytváření mnohoúhelníků pro Cat a pes":::
 
@@ -158,3 +158,5 @@ Až budete s popiskem hotovi, vyberte své jméno v pravém horním rohu portál
 ## <a name="next-steps"></a>Další kroky
 
 * Naučte se naučit [modely klasifikace imagí v Azure](./tutorial-train-models-with-aml.md) .
+
+

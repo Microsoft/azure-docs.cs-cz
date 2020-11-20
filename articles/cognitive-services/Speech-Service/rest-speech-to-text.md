@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb66d8a197a33d6d0ad46502b510662f43ea1ca
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532513"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988557"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
@@ -64,7 +64,7 @@ Tyto parametry mohou být zahrnuty do řetězce dotazu žádosti REST.
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro žádosti o převod řeči na text.
 
-|Záhlaví| Description | Požadováno/volitelné |
+|Hlavička| Popis | Požadováno/volitelné |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto záhlaví, nebo `Authorization` je povinné. |
 | `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví, nebo `Ocp-Apim-Subscription-Key` je povinné. |
@@ -90,12 +90,12 @@ V těle požadavku HTTP se pošle zvuk `POST` . Musí být v jednom z formátů 
 
 Tato tabulka uvádí seznam požadovaných a volitelných parametrů pro posouzení výslovnosti.
 
-| Parametr | Popis | Požadováno/volitelné |
+| Parametr | Popis | Povinné? |
 |-----------|-------------|---------------------|
 | ReferenceText | Text, proti kterému bude výslovnost vyhodnocena. | Vyžadováno |
-| GradingSystem | Systém bodů pro kalibraci skóre. Přijaté hodnoty jsou `FivePoint` a `HundredMark` . Výchozí hodnota je `FivePoint`. | Volitelné |
+| GradingSystem | Systém bodů pro kalibraci skóre. `FivePoint`Systém poskytne skóre 0-5 s plovoucí desetinnou čárkou a `HundredMark` poskytne 0-100 skóre s plovoucí desetinnou čárkou. Výchozí: `FivePoint`. | Volitelné |
 | Členitost | Členitost vyhodnocení. Přípustné hodnoty jsou, což zobrazuje skóre pro úplný text, na úrovni aplikace Word a foném, ve kterém se zobrazuje skóre `Phoneme` `Word` pro úplný text a na úrovni slova, ve `FullText` kterém se zobrazuje skóre pouze na úrovni celého textu. Výchozí hodnota je `Phoneme`. | Volitelné |
-| Rozměr | Definuje výstupní kritéria. Akceptují se hodnoty `Basic` , které ukazují přesnost přesnosti, `Comprehensive` zobrazuje skóre dalších dimenzí (například skóre Fluency a skóre úplnosti na úrovni úplného textu, typ chyby na úrovni slova). Chcete-li zobrazit definice různých dimenzí skóre a typů chyb aplikace Word, zkontrolujte [parametry odpovědi](#response-parameters) . Výchozí hodnota je `Basic`. | Volitelné |
+| Dimenze | Definuje výstupní kritéria. Akceptují se hodnoty `Basic` , které ukazují přesnost přesnosti, `Comprehensive` zobrazuje skóre dalších dimenzí (například skóre Fluency a skóre úplnosti na úrovni úplného textu, typ chyby na úrovni slova). Chcete-li zobrazit definice různých dimenzí skóre a typů chyb aplikace Word, zkontrolujte [parametry odpovědi](#response-parameters) . Výchozí hodnota je `Basic`. | Volitelné |
 | EnableMiscue | Povolí výpočet miscue. Když je tato možnost povolená, vyslovované slova se porovnají s referenčním textem a budou označená vynechání nebo vložení na základě porovnání. Přijaté hodnoty jsou `False` a `True` . Výchozí hodnota je `False`. | Volitelné |
 | ScenarioId | Identifikátor GUID označující systém přizpůsobeného bodu. | Volitelné |
 

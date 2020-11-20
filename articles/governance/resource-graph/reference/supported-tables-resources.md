@@ -1,15 +1,15 @@
 ---
 title: Podporované typy prostředků Azure Resource Manager
 description: Poskytněte seznam Azure Resource Manager typů prostředků, které podporuje Azure Resource Graph, a historii změn.
-ms.date: 10/28/2020
+ms.date: 11/20/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: e604fe7c5e3a7f40e31f43db64bcd59ae0545ac0
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: fa5a5f5741f05e6f5f30a3d04958ba0b450a1bb7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927562"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988336"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Odkaz na typ tabulky a prostředku Azure Resource graphu
 
@@ -68,6 +68,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. aisupercomputer/Accounts/jobgroups
 - Microsoft. aisupercomputer/Accounts/jobgroups/Jobs
 - Microsoft. alertsmanagement/actionrules
+- Microsoft. alertsmanagement/resourcehealthalertrules
 - Microsoft. alertsmanagement/smartdetectoralertrules
 - Microsoft. AnalysisServices/servery
 - Microsoft. apimanagement/Service
@@ -88,6 +89,10 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. azconfig/configurationstores
 - Microsoft. azureactivedirectory selhala/b2cdirectories
 - Microsoft. azureactivedirectory selhala/guestusages
+- Microsoft. azurearcdata/datacontrollers
+- Microsoft. azurearcdata/postgresinstances
+- Microsoft. azurearcdata/sqlmanagedinstances
+- Microsoft. azurearcdata/sqlserverinstances
 - Microsoft. azuredata/datacontrollers
 - Microsoft. azuredata/hybriddatamanagers
 - Microsoft. azuredata/postgresinstances
@@ -103,6 +108,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. baremetal/consoleconnections
 - Microsoft. baremetal/crayservers
 - Microsoft. baremetal/monitoringservers
+- Microsoft. baremetalinfrastructure/baremetalinstances
 - microsoft.batch/batchaccounts
 - microsoft.batChai/Clusters
 - microsoft.batChai/se servery
@@ -131,6 +137,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. cloudy/účty
 - Microsoft. CloudSearch/indexy
 - Microsoft. cloudtest/účty
+- Microsoft. cloudtest/hostedpools
 - Microsoft. cloudtest/images
 - Microsoft. cloudtest/fondy
 - Microsoft. codespaces/– plány
@@ -177,6 +184,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. containerservice/openshiftmanagedclusters
 - Microsoft. contoso/Clusters
 - Microsoft. contoso/zaměstnanci
+- Microsoft. contoso/Towers
 - Microsoft. costmanagement/konektory
 - Microsoft. customproviders/resourceproviders
 - Microsoft. d365customerinsights/instance
@@ -205,6 +213,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. dbforpostgresql/servery
 - Microsoft. dbforpostgresql/serversv2
 - Microsoft. dbforpostgresql/singleservers
+- Microsoft. delegatednetwork/Controller
 - Microsoft. delegatednetwork/delegatedsubnets
 - Microsoft. delegatednetwork/orchestratorinstances
 - Microsoft. deploymentmanager/artifactsources
@@ -302,6 +311,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. machinelearning/pracovní prostory
 - Microsoft. machinelearningcompute/operationalizationclusters
 - Microsoft. machinelearningservices/pracovní prostory
+- Microsoft. machinelearningservices/pracovní prostory/batchendpoints
 - Microsoft. machinelearningservices/pracovní prostory/inferenceendpoints
 - Microsoft. machinelearningservices/pracovní prostory/inferenceendpoints/nasazení
 - Microsoft. machinelearningservices/pracovní prostory/onlineendpoints
@@ -316,6 +326,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. managednetwork/managednetworks/managednetworkgroups
 - Microsoft. managednetwork/managednetworks/managednetworkpeeringpolicies
 - Microsoft. Maps/Accounts
+- Microsoft. Maps/Accounts/Creators
 - Microsoft. Maps/Accounts/privateatlases
 - Microsoft. marketplaceapps/classicdevservices
 - Microsoft. Media/MediaServices
@@ -389,6 +400,8 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Network/serviceendpointpolicies
 - Microsoft. Network/trafficmanagerprofiles
 - Microsoft. Network/virtualhubs
+- Microsoft. Network/virtualhubs/bgpconnections
+- Microsoft. Network/virtualhubs/IPConfiguration
 - Microsoft. Network/virtualnetworkgateways
 - Microsoft. Network/virtualnetworks
 - Microsoft. Network/virtualnetworktaps
@@ -424,6 +437,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. PowerBI/workspacecollections
 - Microsoft. powerbidedicated/– kapacity
 - Microsoft. projectbabylon/účty
+- Microsoft. dosah/účty
 - Microsoft. doby/pracovní prostory
 - Microsoft. recoveryservices/trezory
 - Microsoft. redhatopenshift/openshiftclusters

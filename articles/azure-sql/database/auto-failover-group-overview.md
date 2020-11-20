@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 11/16/2020
-ms.openlocfilehash: e91a3cc0a96add1f53d220e04fb98d63cc7c33f4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841082"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988540"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -142,15 +142,15 @@ Oprávnění pro skupinu převzetí služeb při selhání se spravují prostře
 
 ### <a name="create-failover-group"></a>Vytvořit skupinu převzetí služeb při selhání
 
-Chcete-li vytvořit skupinu převzetí služeb při selhání, budete potřebovat přístup k zápisu RBAC na primární i sekundární server a do všech databází ve skupině převzetí služeb při selhání. U spravované instance SQL potřebujete přístup k zápisu RBAC jak pro primární, tak pro sekundární spravovanou instanci SQL, ale oprávnění pro jednotlivé databáze nejsou relevantní, protože jednotlivé databáze spravované instance SQL nejde do skupiny převzetí služeb při selhání přidat ani z ní odebrat.
+Pokud chcete vytvořit skupinu převzetí služeb při selhání, potřebujete přístup k zápisu do Azure RBAC na primární i sekundární servery i do všech databází ve skupině převzetí služeb při selhání. U spravované instance SQL potřebujete přístup k zápisu v rámci Azure RBAC do primární i sekundární spravované instance SQL, ale oprávnění pro jednotlivé databáze nejsou relevantní, protože jednotlivé databáze spravované instance SQL nejde do skupiny převzetí služeb při selhání přidat ani z ní odebrat.
 
 ### <a name="update-a-failover-group"></a>Aktualizace skupiny převzetí služeb při selhání
 
-Chcete-li aktualizovat skupinu převzetí služeb při selhání, budete potřebovat přístup pro zápis RBAC do skupiny převzetí služeb při selhání a všechny databáze na aktuálním primárním serveru nebo spravované instanci.  
+Pokud chcete aktualizovat skupinu převzetí služeb při selhání, potřebujete přístup k zápisu do skupiny převzetí služeb při selhání pomocí Azure RBAC a všech databází na aktuálním primárním serveru nebo spravované instanci.  
 
 ### <a name="fail-over-a-failover-group"></a>Převzít služby při selhání skupiny převzetí služeb při selhání
 
-Pokud chcete převzít služby při selhání skupiny převzetí služeb při selhání, budete potřebovat přístup k zápisu RBAC do skupiny převzetí služeb při selhání na novém primárním serveru nebo spravované instanci.
+Pokud chcete převzít služby při selhání skupiny převzetí služeb při selhání, potřebujete přístup k zápisu do skupiny převzetí služeb při selhání na novém primárním serveru nebo spravované instanci.
 
 ## <a name="best-practices-for-sql-database"></a>Osvědčené postupy pro SQL Database
 
@@ -409,7 +409,7 @@ Mějte na paměti následující omezení:
 
 ## <a name="programmatically-managing-failover-groups"></a>Programová správa skupin převzetí služeb při selhání
 
-Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při selhání a aktivní geografická replikace je také možné spravovat programově pomocí Azure PowerShell a REST API. V následujících tabulkách jsou popsány sady příkazů, které jsou k dispozici. Aktivní geografická replikace obsahuje sadu Azure Resource Manager rozhraní API pro správu, včetně rutin [Azure SQL Database REST API](/rest/api/sql/) a [Azure PowerShell](/powershell/azure/). Tato rozhraní API vyžadují použití skupin prostředků a podporují zabezpečení na základě rolí (RBAC). Další informace o tom, jak implementovat role přístupu, najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
+Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při selhání a aktivní geografická replikace je také možné spravovat programově pomocí Azure PowerShell a REST API. V následujících tabulkách jsou popsány sady příkazů, které jsou k dispozici. Aktivní geografická replikace obsahuje sadu Azure Resource Manager rozhraní API pro správu, včetně rutin [Azure SQL Database REST API](/rest/api/sql/) a [Azure PowerShell](/powershell/azure/). Tato rozhraní API vyžadují použití skupin prostředků a podporují řízení přístupu na základě role v Azure (Azure RBAC). Další informace o tom, jak implementovat role přístupu, najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="manage-sql-database-failover"></a>Správa převzetí služeb při selhání SQL Database
 

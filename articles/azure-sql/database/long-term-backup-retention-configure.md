@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/14/2020
-ms.openlocfilehash: 42f6badabd27ceaa302f635a7a33b0161b870dc5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3cab3b262f9116903d0b423cd5e4a0ebd03c46fa
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782854"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984426"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa Azure SQL Database dlouhodobého uchovávání záloh
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ V následujících částech se dozvíte, jak použít Azure Portal ke konfigura
 
 Můžete nakonfigurovat SQL Database pro [uchovávání automatizovaných záloh](long-term-retention-overview.md) po dobu delší, než je doba uchování pro vaši úroveň služeb.
 
-1. V Azure Portal vyberte svou instanci SQL Server a pak klikněte na **Spravovat zálohy** . Na kartě **Konfigurovat zásady** zaškrtněte políčko pro databázi, ve které chcete nastavit nebo upravit dlouhodobé zásady uchovávání záloh. Pokud není zaškrtnuté políčko vedle databáze, změny zásad se na tuto databázi nevztahují.  
+1. V Azure Portal vyberte svou instanci SQL Server a pak klikněte na **Spravovat zálohy**. Na kartě **Konfigurovat zásady** zaškrtněte políčko pro databázi, ve které chcete nastavit nebo upravit dlouhodobé zásady uchovávání záloh. Pokud není zaškrtnuté políčko vedle databáze, změny zásad se na tuto databázi nevztahují.  
 
    ![odkaz Správa zálohování](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
 
@@ -39,7 +39,7 @@ Můžete nakonfigurovat SQL Database pro [uchovávání automatizovaných záloh
 
    ![Konfigurace zásad](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
 
-3. Po dokončení klikněte na **použít** .
+3. Po dokončení klikněte na **použít**.
 
 > [!IMPORTANT]
 > Pokud povolíte dlouhodobé zásady uchovávání záloh, může trvat až 7 dní, než se první záloha zobrazí a bude dostupná pro obnovení. Podrobnosti o Cadance zálohování LTR najdete v tématu [dlouhodobé uchovávání záloh](long-term-retention-overview.md).
@@ -48,7 +48,7 @@ Můžete nakonfigurovat SQL Database pro [uchovávání automatizovaných záloh
 
 Prohlédněte si zálohy, které jsou uchovány pro konkrétní databázi se zásadou LTR, a obnovte je z těchto záloh.
 
-1. V Azure Portal vyberte svůj server a pak klikněte na **Spravovat zálohy** . Na kartě **dostupné zálohy** vyberte databázi, pro kterou chcete zobrazit dostupné zálohy.
+1. V Azure Portal vyberte svůj server a pak klikněte na **Spravovat zálohy**. Na kartě **dostupné zálohy** vyberte databázi, pro kterou chcete zobrazit dostupné zálohy.
 
    ![vybrat databázi](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
 
@@ -71,7 +71,7 @@ Prohlédněte si zálohy, které jsou uchovány pro konkrétní databázi se zá
 > [!NOTE]
 > Odtud se můžete pomocí aplikace SQL Server Management Studio připojit k obnovené databázi a provádět požadované úlohy, jako je například [extrakce části dat z obnovené databáze a zkopírování do existující databáze nebo odstranění existující databáze a přejmenování obnovené databáze na název existující databáze](recovery-using-backups.md#point-in-time-restore).
 
-## <a name="using-powershell"></a>Použití PowerShellu
+## <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -100,7 +100,7 @@ V případě funkce **Remove-AzSqlDatabaseLongTermRetentionBackup** budete muset
 > [!NOTE]
 > Role Přispěvatel SQL Server nemá oprávnění odstraňovat zálohy LTR.
 
-Oprávnění RBAC se mohla udělit buď v rámci *předplatného* , nebo v oboru *skupiny prostředků* . Pro přístup k zálohám LTR, které patří k vyřazenému serveru, ale musí být oprávnění uděleno v oboru *předplatného* daného serveru.
+Oprávnění Azure RBAC se mohla udělit buď v rámci *předplatného* , nebo v oboru *skupiny prostředků* . Pro přístup k zálohám LTR, které patří k vyřazenému serveru, ale musí být oprávnění uděleno v oboru *předplatného* daného serveru.
 
 - Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/DELETE
 

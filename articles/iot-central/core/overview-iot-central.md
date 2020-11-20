@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 3952736af9cf7c3b720769cee6a58e3fc52a6111
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b62a0da7074676787b7e1c0182ca7588b83cdbe0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127399"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985038"
 ---
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
@@ -58,7 +58,7 @@ Jako tvůrce řešení můžete pomocí webových nástrojů vytvořit _šablonu
 
 Tato [Šablona zařízení](howto-set-up-template.md) zahrnuje:
 
-- _Model schopností zařízení_ , který popisuje možnosti, které zařízení má implementovat. Mezi možnosti zařízení patří:
+- _Model zařízení_ , který popisuje možnosti, které zařízení má implementovat. Mezi možnosti zařízení patří:
 
   - Telemetrie IT, která se má IoT Central.
   - Vlastnosti jen pro čtení, které používá k hlášení stavu do IoT Central.
@@ -72,9 +72,9 @@ Tato [Šablona zařízení](howto-set-up-template.md) zahrnuje:
 
 Jako tvůrce řešení máte k dispozici několik možností pro vytváření šablon zařízení:
 
-- Navrhněte šablonu zařízení v IoT Central a potom implementujte svůj model schopností zařízení do kódu zařízení.
-- Vytvořte model schopností zařízení pomocí nástroje Visual Studio Code a publikujte model do úložiště. Implementujte kód zařízení z modelu a připojte své zařízení k aplikaci IoT Central. IoT Central najde model schopností zařízení z úložiště a vytvoří pro vás jednoduchou šablonu zařízení.
-- Vytvořte model schopností zařízení pomocí Visual Studio Code. Implementujte kód zařízení z modelu. Model schopností zařízení naimportujte ručně do aplikace IoT Central a pak přidejte jakékoli vlastnosti cloudu, přizpůsobení a řídicí panely, které aplikace IoT Central potřebuje.
+- Navrhněte šablonu zařízení v IoT Central a potom v kódu zařízení implementujte svůj model zařízení.
+- Vytvořte model zařízení pomocí nástroje Visual Studio Code a publikujte model do úložiště. Implementujte kód zařízení z modelu a připojte své zařízení k aplikaci IoT Central. IoT Central najde model zařízení z úložiště a vytvoří pro vás jednoduchou šablonu zařízení.
+- Vytvořte model zařízení pomocí Visual Studio Code. Implementujte kód zařízení z modelu. Ručně importujte model zařízení do aplikace IoT Central a pak přidejte jakékoli vlastnosti cloudu, vlastní nastavení a řídicí panely, které aplikace IoT Central potřebuje.
 
 Jako tvůrce řešení můžete použít IoT Central k vygenerování kódu pro testovací zařízení pro ověření šablon zařízení.
 
@@ -151,7 +151,6 @@ Každé předplatné Azure má výchozí kvóty, které by mohly mít vliv na ro
 - Typy schématu pole nejsou podporovány.
 - Podporovaná je jenom sada SDK pro zařízení C a sady SDK pro Node.js zařízení a služeb.
 - IoT Central je v současné době k dispozici v místech USA, Evropa, Asie a Tichomoří, Austrálie, Spojené království a Japonsko.
-- Modely schopností zařízení musí mít všechna rozhraní definovaná vložené do stejného souboru.
 
 ## <a name="next-steps"></a>Další kroky
 

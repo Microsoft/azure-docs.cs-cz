@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 7c16e3b991bffd9c6bbcc4759a07b9e122ef5b72
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c7a24dbe93bf0096e327804be07acc3f67d2f03b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125338"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985752"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Vytvoření a použití aktivní geografické replikace – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,8 +64,8 @@ Vzhledem k tomu, že jsou sekundární databáze čitelné, lze je použít k p�
 
 Kromě zotavení po havárii aktivní geografická replikace může být použita v následujících scénářích:
 
-- **Migrace databáze** : můžete použít aktivní geografickou replikaci k migraci databáze z jednoho serveru na jiný online s minimálními výpadky.
-- **Upgrady aplikací** : během upgradování aplikace můžete vytvořit další sekundární kopii jako back-mailové kopie.
+- **Migrace databáze**: můžete použít aktivní geografickou replikaci k migraci databáze z jednoho serveru na jiný online s minimálními výpadky.
+- **Upgrady aplikací**: během upgradování aplikace můžete vytvořit další sekundární kopii jako back-mailové kopie.
 
 Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance databáze mezi datacentry je pouze součástí řešení. Kompletní obnovení aplikace (služby) po závažných chybách vyžaduje obnovení všech součástí, které tvoří službu a všechny závislé služby. Mezi tyto komponenty patří klientský software (například prohlížeč s vlastním JavaScriptem), webové front-endy, úložiště a DNS. Je velmi důležité, aby všechny součásti byly odolné vůči stejnou selhání a byly k dispozici v rámci plánované doby obnovení (RTO) vaší aplikace. Proto je potřeba identifikovat všechny závislé služby a porozumět zárukám a funkcím, které poskytují. Pak musíte provést vhodné kroky, abyste zajistili, že vaše služba funguje při převzetí služeb při selhání služeb, na kterých závisí. Další informace o návrhu řešení pro zotavení po havárii najdete v tématu [navrhování cloudových řešení pro zotavení po havárii pomocí aktivní geografické replikace](designing-cloud-solutions-for-disaster-recovery.md).
 
@@ -244,7 +244,7 @@ Chcete-li změřit prodlevu s ohledem na změny primární databáze, které byl
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Programová správa aktivní geografické replikace
 
-Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky programově pomocí Azure PowerShell a REST API. V následujících tabulkách jsou popsány sady příkazů, které jsou k dispozici. Aktivní geografická replikace obsahuje sadu Azure Resource Manager rozhraní API pro správu, včetně rutin [Azure SQL Database REST API](/rest/api/sql/) a [Azure PowerShell](/powershell/azure/). Tato rozhraní API vyžadují použití skupin prostředků a podporují zabezpečení na základě rolí (RBAC). Další informace o tom, jak implementovat role přístupu, najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
+Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky programově pomocí Azure PowerShell a REST API. V následujících tabulkách jsou popsány sady příkazů, které jsou k dispozici. Aktivní geografická replikace obsahuje sadu Azure Resource Manager rozhraní API pro správu, včetně rutin [Azure SQL Database REST API](/rest/api/sql/) a [Azure PowerShell](/powershell/azure/). Tato rozhraní API vyžadují použití skupin prostředků a podporují řízení přístupu na základě role v Azure (Azure RBAC). Další informace o tom, jak implementovat role přístupu, najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Správa převzetí služeb při selhání pro jednotlivé a sdružené databáze
 

@@ -1,5 +1,5 @@
 ---
-title: Migrace na monitorování připojení z monitorování připojení
+title: Migrace na monitor připojení (Preview) z monitorování připojení
 titleSuffix: Azure Network Watcher
 description: Přečtěte si, jak migrovat na monitorování připojení z monitorování připojení.
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
-ms.openlocfilehash: 0ae1a1f36b9f81145b49245d8e6ace37ab36f834
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d785ecd48816150cd33d8e2f5fcce2ff36f1603f
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974828"
+ms.locfileid: "94985786"
 ---
-# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrace na monitorování připojení z monitoru připojení (klasický)
+# <a name="migrate-to-connection-monitor-preview-from-connection-monitor-classic"></a>Migrace na monitor připojení (Preview) z monitoru připojení (klasický)
 
-Stávající monitorování připojení můžete migrovat na nové, vylepšené monitorování připojení jenom několika kliknutími a s nulovými výpadky. Další informace o výhodách najdete v tématu [monitorování připojení](./connection-monitor-overview.md).
+Stávající monitorování připojení můžete migrovat na nové, vylepšené monitorování připojení (Preview) jenom několika kliknutími a s nulovými výpadky. Další informace o výhodách najdete v tématu [monitorování připojení](./connection-monitor-overview.md).
+
+> [!IMPORTANT]
+> Monitor připojení je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="key-points-to-note"></a>Klíčové body k označení
 

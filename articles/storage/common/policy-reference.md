@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Storage
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Storage. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 22e5b882337c7d795872bc82fa79e4b96e321244
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 4eaa15e26be1b18884f3969f1f3a8b10fce14ba6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94736439"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986729"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-storage"></a>Azure Policy předdefinované definice pro Azure Storage
 

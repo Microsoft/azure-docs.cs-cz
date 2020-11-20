@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 11/15/2020
+ms.date: 11/17/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac88e57ce0135295ac4b7078111102fa69e6838
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e89793ed8404bf36f2857f228d94fdf2a8828d43
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646589"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984256"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Omezení oprávnění k přístupu hosta (Preview) v Azure Active Directory
 
@@ -155,7 +155,8 @@ Služba bez aktuální podpory může mít problémy s kompatibilitou s novým n
 Otázka | Odpověď
 -------- | ------
 Kde se tato oprávnění vztahují? | Tato oprávnění na úrovni adresáře se vynutila napříč službami a portály Azure AD, včetně Microsoft Graph, PowerShell v2, Azure Portal a portálu moje aplikace. Ovlivněné jsou taky Microsoft 365 služby, které využívají Microsoft 365 skupiny pro scénáře spolupráce, konkrétně Outlook, Microsoft teams a SharePoint.
-Na které části portálu moje aplikace bude tato funkce mít vliv? | Tato nová oprávnění budou respektovat funkce skupin na portálu moje aplikace. To zahrnuje všechny cesty pro zobrazení seznamu skupin a členství ve skupinách v mých aplikacích. V dostupnosti dlaždice skupiny nebyly provedeny žádné změny. Existující nastavení skupiny na portálu pro správu Azure pořád řídí dostupnost dlaždic skupiny.
+Jak omezená oprávnění ovlivňují, které skupiny můžou zobrazit hosté? | Bez ohledu na výchozí nebo omezené oprávnění hosta nemohou hosté vytvořit výčet seznamu skupin nebo uživatelů. Hosté můžou zobrazit skupiny, které jsou členy v Azure Portal i na portálu moje aplikace v závislosti na oprávněních:<li>**Výchozí oprávnění**: Pokud chcete najít skupiny, které jsou členy v Azure Portal, musí uživatel v seznamu **Všichni uživatelé** vyhledat své ID objektu a pak vybrat **skupiny**. Tady uvidí seznam skupin, které jsou členy, včetně všech podrobností o skupině, včetně názvu, e-mailu a tak dále. Na portálu moje aplikace uvidí seznam skupin, které vlastní, a skupiny, které jsou členy.</li><li>**Omezená oprávnění hostů**: v Azure Portal stále můžou najít seznam skupin, které jsou členy, tak, že v seznamu všichni uživatelé vyhledá své ID objektu a pak vybere skupiny. Mohou zobrazit pouze velmi omezené podrobnosti o skupině, zejména ID objektu. Podle návrhu jsou sloupce název a E-mail prázdné a typ skupiny nebyl rozpoznán. Na portálu moje aplikace nebudou mít přístup k seznamu skupin, které vlastní nebo které skupiny jsou členy.</li><br>Podrobnější porovnání oprávnění adresáře, která pocházejí z Graph API, najdete v tématu věnovaném [výchozím oprávněním uživatele](../fundamentals/users-default-permissions.md#member-and-guest-users).
+Na které části portálu moje aplikace bude tato funkce mít vliv? | Tato nová oprávnění budou respektovat funkce skupin na portálu moje aplikace. To zahrnuje všechny cesty pro zobrazení seznamu skupin a členství ve skupinách v mých aplikacích. V dostupnosti dlaždice skupiny nebyly provedeny žádné změny. Existující nastavení skupiny v Azure Portal nadále řídí dostupnost dlaždice skupiny.
 Potlačí tato oprávnění nastavení hostů pro SharePoint nebo Microsoft Teams? | Ne. Tato stávající nastavení stále ovládají prostředí a přístup k nim v těchto aplikacích. Pokud se například zobrazí problémy na SharePointu, zkontrolujte nastavení externího sdílení.
 Jaké jsou známé problémy s kompatibilitou v Planneru a Yammeru? | <li>S oprávněním nastaveným na omezeno budou hosté přihlášení do aplikace plánovače nebo přístup k plánovači v Microsoft Teams mít přístup k jejich plánům ani úlohám.<li>S oprávněním nastaveným na hodnotu "omezeno" budou hosté přihlášení do Yammeru moci opustit skupinu.
 Budou se moje stávající oprávnění hostů v mém tenantovi měnit? | V aktuálním nastavení se neudělaly žádné změny. Udržujeme zpětnou kompatibilitu s vaším stávajícím nastavením. Rozhodnete, že chcete provést změny.

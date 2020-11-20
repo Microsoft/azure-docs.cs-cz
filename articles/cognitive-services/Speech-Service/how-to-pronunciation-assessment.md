@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 245a00acb07d1c0e769a243413fccdf64d544f5a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1cc313daf0e76ddd14865959410b07d9bdc189d7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133574"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984917"
 ---
 # <a name="pronunciation-assessment"></a>Posouzení výslovnosti
 
@@ -154,12 +154,12 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 
 Tato tabulka uvádí parametry konfigurace pro posouzení výslovnosti.
 
-| Parametr | Popis | Požadováno/volitelné |
+| Parametr | Popis | Povinné? |
 |-----------|-------------|---------------------|
 | ReferenceText | Text, proti kterému bude výslovnost vyhodnocena. | Vyžadováno |
-| GradingSystem | Systém bodů pro kalibraci skóre. Přijaté hodnoty jsou `FivePoint` a `HundredMark` . Výchozí hodnota je `FivePoint`. | Volitelné |
-| Členitost | Členitost vyhodnocení. Přípustné hodnoty jsou, což zobrazuje skóre pro úplný text, na úrovni aplikace Word a foném, ve kterém se zobrazuje skóre `Phoneme` `Word` pro úplný text a na úrovni slova, ve `FullText` kterém se zobrazuje skóre pouze na úrovni celého textu. Výchozí hodnota je `Phoneme`. | Volitelné |
-| EnableMiscue | Povolí výpočet miscue. Když je tato možnost povolená, vyslovované slova se porovnají s referenčním textem a budou označená vynechání nebo vložení na základě porovnání. Přijaté hodnoty jsou `False` a `True` . Výchozí hodnota je `False`. | Volitelné |
+| GradingSystem | Systém bodů pro kalibraci skóre. `FivePoint`Systém poskytne skóre 0-5 s plovoucí desetinnou čárkou a `HundredMark` poskytne 0-100 skóre s plovoucí desetinnou čárkou. Výchozí: `FivePoint`. | Volitelné |
+| Členitost | Členitost vyhodnocení. Přípustné hodnoty jsou, což zobrazuje skóre pro úplný text, na úrovni aplikace Word a foném, ve kterém se zobrazuje skóre `Phoneme` `Word` pro úplný text a na úrovni slova, ve `FullText` kterém se zobrazuje skóre pouze na úrovni celého textu. Výchozí: `Phoneme`. | Volitelné |
+| EnableMiscue | Povolí výpočet miscue. Když je tato možnost povolená, vyslovované slova se porovnají s referenčním textem a budou označená vynechání nebo vložení na základě porovnání. Přijaté hodnoty jsou `False` a `True` . Výchozí: `False`. | Volitelné |
 | ScenarioId | Identifikátor GUID označující systém přizpůsobeného bodu. | Volitelné |
 
 ### <a name="pronunciation-assessment-result-parameters"></a>Parametry výsledku vyhodnocení výslovnosti

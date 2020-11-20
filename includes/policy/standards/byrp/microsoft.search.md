@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 284cf5ff6abd7bd014c300678e3453b4594574c0
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 646c235c31a5f826e8df0072e8607b5ba21962f2
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700187"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985619"
 ---
 ## <a name="azure-security-benchmark"></a>Srovnávací test zabezpečení Azure
 

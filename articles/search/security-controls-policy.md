@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro Azure Kognitivní hledání
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou k dispozici pro Azure Kognitivní hledání. Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 4a31b4564a36a82c2b469c3e3737ab6ecac1a1f7
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 9d271445d472739c304cbf8fa43fe7feb1c6b1bb
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700188"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985620"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>Azure Policy kontroly dodržování předpisů pro Azure Kognitivní hledání
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cc33d3c07461b5662e1454ec131dbc2b5f19a390
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7b048581b29fa4244c42261810f382b229a627dd
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126169"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985959"
 ---
 # <a name="azure-iot-central-architecture"></a>Architektura služby Azure IoT Central
 
@@ -54,7 +54,7 @@ IoT Central povoluje pro IoT Edge zařízení následující funkce:
   - Telemetrii každý modul odesílá.
   - Vlastnosti každého modulu hlásí.
   - Příkazy, na které každý modul reaguje.
-  - Vztahy mezi modelem schopností zařízení IoT Edge brány a modelem schopností pro příjem dat z libovolného zařízení.
+  - Vztahy mezi zařízením IoT Edge brány a zařízením pro příjem dat.
   - Vlastnosti cloudu, které nejsou uložené na zařízení IoT Edge.
   - Vlastní nastavení, řídicí panely a formuláře, které jsou součástí vaší aplikace IoT Central.
 
@@ -133,12 +133,12 @@ V aplikaci IoT Central Azure definují šablony zařízení chování a možnost
 
 ![Architektura šablon](media/concepts-architecture/template-architecture.png)
 
-V šabloně zařízení IoT Central aplikace obsahuje:
+V IoT Central [Šablona zařízení](concepts-device-templates.md) obsahuje:
 
-- **Modely schopností zařízení** určují možnosti zařízení, jako je například telemetrie, kterou posílá, vlastnosti, které definují stav zařízení, a příkazy, na které zařízení reaguje. Možnosti zařízení jsou uspořádány do jednoho nebo více rozhraní.
+- **Model zařízení** , který určuje možnosti zařízení, jako je například telemetrie, kterou posílá, vlastnosti, které definují stav zařízení, a příkazy, na které zařízení reaguje. Možnosti zařízení jsou uspořádány do jednoho nebo více rozhraní.
 - **Vlastnosti cloudu** určují vlastnosti IoT Central úložišť pro zařízení. Tyto vlastnosti jsou uloženy pouze v IoT Central a nejsou nikdy odesílány do zařízení.
 - **Zobrazení** určují řídicí panely a formuláře, které tvůrce vytvoří, aby mohl obsluhu monitorovat a spravovat zařízení.
-- **Přizpůsobení** umožní tvůrci přepsat některé definice v modelu schopností zařízení, aby byly lépe relevantní pro IoT Central aplikace.
+- **Přizpůsobení** umožní tvůrci přepsat některé definice v modelu zařízení, aby byly lépe relevantní pro IoT Central aplikace.
 
 Aplikace může mít jedno nebo několik simulovaných a reálných zařízení založených na každé šabloně zařízení.
 
@@ -152,7 +152,7 @@ V aplikaci IoT Central Azure můžete [vytvářet a spouštět úlohy](howto-run
 
 ## <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
 
-[Správce může definovat pravidla přístupu](howto-manage-users-roles.md) pro aplikaci Azure IoT Central pomocí jedné z předdefinovaných rolí nebo vytvořením vlastní role. Role určují, ke kterým oblastem aplikace má uživatel přístup a jaké akce můžou provádět.
+Každá aplikace IoT Central má vlastní vestavěný systém RBAC. [Správce může definovat pravidla přístupu](howto-manage-users-roles.md) pro aplikaci Azure IoT Central pomocí jedné z předdefinovaných rolí nebo vytvořením vlastní role. Role určují, ke kterým oblastem aplikace má uživatel přístup a jaké akce můžou provádět.
 
 ## <a name="security"></a>Zabezpečení
 

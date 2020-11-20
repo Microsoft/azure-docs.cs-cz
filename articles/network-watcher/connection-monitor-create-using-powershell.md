@@ -1,5 +1,5 @@
 ---
-title: Vytvoření monitorování připojení – PowerShell
+title: Vytvoření monitorování připojení (Preview) – PowerShell
 titleSuffix: Azure Network Watcher
 description: Naučte se vytvářet monitorování připojení pomocí PowerShellu.
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: fa8b2d967a336343d23c5f6aa4477ebcf2396407
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b1ffce75d5c38177c70db3ec1fc024a01821d3ab
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949033"
+ms.locfileid: "94984239"
 ---
-# <a name="create-a-connection-monitor-using-powershell"></a>Vytvoření monitorování připojení pomocí PowerShellu
+# <a name="create-a-connection-monitor-preview-using-powershell"></a>Vytvoření monitorování připojení (Preview) pomocí PowerShellu
 
 Naučte se vytvářet monitorování připojení, abyste mohli monitorovat komunikaci mezi prostředky pomocí PowerShellu.
+
+> [!IMPORTANT]
+> Monitor připojení je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Než začnete 
 
@@ -80,7 +84,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 
 * Koncové body
     * název – jedinečný název pro každý koncový bod
-    * resourceId – pro koncové body Azure ID prostředku odkazuje na ID prostředku Azure Resource Manager pro virtuální počítače. U koncových bodů mimo Azure odkazuje ID prostředku na ID prostředku Azure Resource Manageru pro Log Analytics pracovní prostor, který je propojený s agenty mimo Azure.
+    * resourceId – pro koncové body Azure ID prostředku odkazuje na ID prostředku Azure Resource Manager pro virtuální počítače. U koncových bodů mimo Azure odkazuje ID prostředku na ID prostředku Azure Resource Manager pro pracovní prostor Log Analytics propojený s agenty mimo Azure.
     * Adresa – platí pouze v případě, že buď není zadáno ID prostředku, nebo pokud je ID prostředku Log Analytics pracovního prostoru. Pokud se používá s ID prostředku Log Analytics, odkazuje se na plně kvalifikovaný název domény agenta, který se dá použít k monitorování. Pokud se používá bez ID prostředku, může to být adresa URL nebo IP adresa libovolného veřejného koncového bodu.
     * filtr – pro koncové body mimo Azure použijte filtr k výběru agentů z Log Analytics pracovního prostoru, který se použije pro monitorování v prostředku monitorování připojení. Pokud nejsou filtry nastavené, můžete k monitorování použít všechny agenty patřící do Log Analyticsho pracovního prostoru.
         * typ – nastavte typ jako "adresa agenta".
@@ -100,6 +104,10 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
         * preferHTTPS – určuje, jestli se má použít HTTPS přes HTTP
         * Port – zadejte cílový port, který chcete vybrat.
         * disableTraceRoute – to platí pro testovací skupiny, jejichž protokol je TCP nebo ICMP. Zastavuje zdroje z vyhledávání topologie a času směrování po směrování.
+        * Metoda – to platí pro testovací konfigurace, jejichž protokol je HTTP. Vyberte metodu žádosti HTTP – buď GET, nebo POST.
+        * cesta – zadejte parametry cesty, které se mají připojit k adrese URL.
+        * validStatusCodes – vyberte příslušné stavové kódy. Pokud kód odpovědi neodpovídá tomuto seznamu, zobrazí se diagnostická zpráva.
+        * requestHeaders hostitele – zadejte vlastní řetězce hlaviček žádostí, které se předají do cílového umístění.
     * successThreshold – prahové hodnoty můžete nastavit u následujících síťových parametrů:
         * checksFailedPercent – nastaví procento kontrol, které mohou selhat, když zdroje kontrolují připojení k cílům pomocí zadaných kritérií. V případě protokolu TCP nebo ICMP může být Procento neúspěšných kontrol rovno procentům ztráty paketů. V případě protokolu HTTP toto pole představuje procento požadavků HTTP, které neobdržely odpověď.
         * roundTripTimeMs – doba odezvy v milisekundách, po kterou mohou dlouhé zdroje trvat pro připojení k cíli prostřednictvím konfigurace testu.

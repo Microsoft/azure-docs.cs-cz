@@ -15,14 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: bef78766deb739791720838bb27649586da96152
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 667b07b3fe53ca6d88eba94faeaeeae074d71f1e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948790"
+ms.locfileid: "94984273"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači na webu Azure Portal
+
+> [!NOTE]
+> Tento kurz se zabývá monitorováním připojení (Classic). Vyzkoušejte si nové a vylepšené monitorování [připojení](connection-monitor-overview.md) , aby se vylepšilo monitorování připojení.
 
 Úspěšná komunikace mezi virtuálním počítačem a koncovým bodem, jako je například jiný virtuální počítač, může být pro organizaci velmi důležitá. Někdy se zavádějí změny konfigurace, po kterých může dojít k narušení komunikace. V tomto kurzu se naučíte:
 
@@ -33,6 +36,10 @@ ms.locfileid: "94948790"
 > * Diagnostikovat a vyřešit potíže s komunikací mezi dvěma virtuálními počítači
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+> [!IMPORTANT]
+> Monitor připojení je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -73,7 +80,7 @@ Proveďte znovu kroky uvedené v části [Vytvoření prvního virtuálního po�
 |Krok|Nastavení|Hodnota|
 |---|---|---|
 | 1 | Vybrat verzi **serveru Ubuntu** |                                                                         |
-| 3 | Name                                  | myVm2                                                                   |
+| 3 | Název                                  | myVm2                                                                   |
 | 3 | Typ ověřování                   | Vložte váš veřejný klíč SSH nebo vyberte **Heslo** a zadejte heslo. |
 | 3 | Skupina prostředků                        | Vyberte **Použít existující** a pak vyberte **myResourceGroup**.                 |
 | 6 | Rozšíření                            | **Agent Network Watcher pro Linux**                                             |

@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 812fd0c10b63cfe469a10a99069f201fcc2cc658
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126733"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987350"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>Export dat IoT do cílů cloudu pomocí exportu dat (starší verze)
 
@@ -22,7 +22,7 @@ ms.locfileid: "92126733"
 > - Informace o nových funkcích Preview pro export dat najdete v tématu [Export dat IoT do cloudových cílů pomocí exportu dat](./howto-export-data.md).
 > - Další informace o rozdílech mezi funkcemi exportu dat ve verzi Preview a starších verzí exportu dat najdete v [srovnávací tabulce](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export).
 
-Tento článek popisuje, jak používat funkci exportu dat v Azure IoT Central. Tato funkce umožňuje nepřetržitě exportovat data do **azure Event Hubs**, **Azure Service Bus**nebo instancí služby **Azure Blob Storage** . Export dat používá formát JSON a může zahrnovat telemetrii, informace o zařízení a informace o šabloně zařízení. Použít exportovaná data pro:
+Tento článek popisuje, jak používat funkci exportu dat v Azure IoT Central. Tato funkce umožňuje nepřetržitě exportovat data do **azure Event Hubs**, **Azure Service Bus** nebo instancí služby **Azure Blob Storage** . Export dat používá formát JSON a může zahrnovat telemetrii, informace o zařízení a informace o šabloně zařízení. Použít exportovaná data pro:
 
 - Přehledy a analýzy teplé cesty. Tato možnost zahrnuje aktivaci vlastních pravidel v Azure Stream Analytics, aktivaci vlastních pracovních postupů v Azure Logic Apps nebo jejich předání prostřednictvím Azure Functions pro transformaci.
 - Analýzy studených cest, jako jsou například školicí modely v Azure Machine Learning nebo dlouhodobé analýzy trendů v Microsoft Power BI.
@@ -30,7 +30,7 @@ Tento článek popisuje, jak používat funkci exportu dat v Azure IoT Central. 
 > [!Note]
 > Když zapnete export dat, dostanete od tohoto okamžiku pouze data. V současné době nelze data po vypnutí exportu dat načíst. Pokud chcete zachovat více historických dat, zapněte nejdříve export dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Musíte být správce aplikace IoT Central, nebo mít oprávnění k exportu dat.
 
@@ -72,7 +72,7 @@ Pokud nemáte existující účet úložiště Azure pro export do, postupujte t
     |Standard|Blob Storage|
     |Premium|Úložiště objektů blob bloku|
 
-2. Vytvořte kontejner v účtu úložiště. Přejít na účet úložiště. V části **BLOB Service**vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.
+2. Vytvořte kontejner v účtu úložiště. Přejít na účet úložiště. V části **BLOB Service** vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.
 
 ## <a name="set-up-data-export"></a>Nastavení exportu dat
 
@@ -85,9 +85,9 @@ Teď, když máte cíl pro export dat, postupujte podle těchto kroků a nastavt
     > [!Tip]
     > Pokud nevidíte **exportovat data** v levém podokně, nemáte oprávnění ke konfiguraci exportu dat ve vaší aplikaci. Pokud chcete nastavit export dat, obraťte se na správce.
 
-3. Vyberte tlačítko **+ Nový** . Vyberte jednu z **BLOB Storage Azure**, **Azure Event Hubs**, **frontu Azure Service Bus**nebo **Azure Service Bus téma** jako cíl exportu. Maximální počet exportů na aplikaci je 5.
+3. Vyberte tlačítko **+ Nový** . Vyberte jednu z **BLOB Storage Azure**, **Azure Event Hubs**, **frontu Azure Service Bus** nebo **Azure Service Bus téma** jako cíl exportu. Maximální počet exportů na aplikaci je 5.
 
-4. Zadejte název exportu. V rozevíracím seznamu vyberte svůj **obor názvů**nebo **Zadejte připojovací řetězec**.
+4. Zadejte název exportu. V rozevíracím seznamu vyberte svůj **obor názvů** nebo **Zadejte připojovací řetězec**.
 
     - V rámci stejného předplatného jako aplikace pro IoT Central se zobrazí jenom účty úložiště, Event Hubs obory názvů a Service Bus obory názvů. Pokud chcete exportovat do cílového umístění mimo toto předplatné, vyberte **zadat připojovací řetězec** a podívejte se na krok 6.
     - U aplikací vytvořených pomocí bezplatného cenového plánu je jediným způsobem, jak nakonfigurovat export dat, prostřednictvím připojovacího řetězce. Pro aplikace v cenovém plánu zdarma nemáte přidružené předplatné Azure.
@@ -100,20 +100,20 @@ Teď, když máte cíl pro export dat, postupujte podle těchto kroků a nastavt
 
     - Event Hubs nebo Service Bus v Azure Portal přejít na obor názvů:
         - Použití připojovacího řetězce pro celý obor názvů:
-            1. V části **Nastavení**vyberte **zásady sdíleného přístupu** .
+            1. V části **Nastavení** vyberte **zásady sdíleného přístupu** .
             2. Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
             3. Zkopírování primárního nebo sekundárního připojovacího řetězce
         - Pokud chcete použít připojovací řetězec pro konkrétní instanci centra událostí nebo Service Bus frontu nebo téma, přejít na **entity > Event Hubs** nebo **entity > fronty** nebo **entity > témata**. Vyberte konkrétní instanci a použijte stejný postup k získání připojovacího řetězce.
     - Účet úložiště, v Azure Portal přejít na účet úložiště:
         - Podporují se jenom připojovací řetězce pro celý účet úložiště. Připojovací řetězce s oborem pro jeden kontejner se nepodporují.
-          1. V části **Nastavení**vyberte **přístupové klíče** .
+          1. V části **Nastavení** vyberte **přístupové klíče** .
           2. Zkopírujte buď připojovací řetězec klíč1, nebo připojovací řetězec key2.
 
-    Vložte do připojovacího řetězce. Zadejte **název kontejneru**s rozlišováním instance nebo velikosti písmen.
+    Vložte do připojovacího řetězce. Zadejte **název kontejneru** s rozlišováním instance nebo velikosti písmen.
 
 7. V části **data, která chcete exportovat**, vyberte typy dat k exportu nastavením typ na **zapnuto**.
 
-8. Pokud chcete zapnout export dat, ujistěte se, že **je zapnutý**přepínač **zapnuto** . Vyberte **Uložit**.
+8. Pokud chcete zapnout export dat, ujistěte se, že **je zapnutý** přepínač **zapnuto** . Vyberte **Uložit**.
 
 9. Po několika minutách se vaše data zobrazí ve zvoleném cíli.
 
@@ -382,7 +382,6 @@ V tomto příkladu se zobrazuje zpráva o datech šablon zařízení v centru ud
                           {
                               "@id": "<id>",
                               "@type": ["Command"],
-                              "commandType": "synchronous",
                               "request": {
                                   "@id": "<id>",
                                   "@type": ["SchemaField"],
@@ -506,7 +505,6 @@ Tento ukázkový snímek zobrazuje zprávu, která obsahuje data zařízení a v
                           {
                               "@id": "<id>",
                               "@type": ["Command"],
-                              "commandType": "synchronous",
                               "request": {
                                   "@id": "<id>",
                                   "@type": ["SchemaField"],
@@ -559,13 +557,13 @@ Pokud máte v aplikaci ve verzi Preview existující export dat se zapnutými da
 
 Od 3. února 2020 budou všechny nové exporty v aplikacích se zapnutými šablonami zařízení a zařízení mít formát dat popsaný výše. Všechny exporty vytvořené před tímto datem zůstanou ve starém formátu dat až do 30. června 2020, kdy se tyto exporty automaticky migrují do nového formátu dat. Nový formát dat odpovídá vlastnostem [zařízení](/rest/api/iotcentral/devices/get), [vlastnosti zařízení](/rest/api/iotcentral/devices/getproperties), [cloudové vlastnosti zařízení](/rest/api/iotcentral/devices/getcloudproperties)a objekty [šablon zařízení](/rest/api/iotcentral/devicetemplates/get) ve IoT Central veřejném rozhraní API.
 
-U **zařízení**se jedná o významné rozdíly mezi starým a novým datovým formátem:
+U **zařízení** se jedná o významné rozdíly mezi starým a novým datovým formátem:
 - `@id` v případě odebrání zařízení se `deviceId` přejmenuje na `id` 
 - `provisioned` Přidání příznaku pro popis stavu zřizování zařízení
 - `approved` Přidání příznaku k popisu stavu schválení zařízení
 - `properties` zahrnutí vlastností zařízení a cloudu, které odpovídají entitám ve veřejném rozhraní API
 
-V případě **šablon zařízení**jsou významné rozdíly mezi starým a novým datovým formátem:
+V případě **šablon zařízení** jsou významné rozdíly mezi starým a novým datovým formátem:
 
 - `@id` pro šablonu zařízení je přejmenovaná na `id`
 - `@type` pro šablonu zařízení se přejmenuje na `types` a je teď polem.

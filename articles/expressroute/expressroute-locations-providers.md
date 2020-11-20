@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: duau
-ms.openlocfilehash: 6d58f0178535cf01a413056b2096553e4bd06371
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 9b7b88124837e85874f4f29828a3d4146bb29257
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981013"
+ms.locfileid: "94987809"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -78,7 +78,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Umístění** | **Adresa** | **Zóna** | **Místní oblasti Azure** | **ER Direct** | **Poskytovatelé služeb** |
 | --- | --- | --- | --- | --- | --- |
 | **Smlouv** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | 1 | West Europe | 10G, 100G | Aryaka Networks sítě, v&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, spolucloud, Interxion, KPN, IX dosažitelný, Level 3 Communications, Megaport, NTT Communications, oranžová, Tata Communications, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
-| **Amsterdam2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | West Europe | 10G, 100G | Britské telekomunikace, CenturyLink Cloud Connect, Colt, DE-CIX, euNetworks, GÉANT, Interxion, čísla, oranžová, Vodafone |
+| **Amsterdam2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | West Europe | 10G, 100G | Britské telekomunikace, CenturyLink Cloud Connect, Colt, DE-CIX, euNetworks, GÉANT, Interxion, čísla, NTT globální datacentra EMEA, oranžová, Vodafone |
 | **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 1 | neuvedeno | 10G, 100G | Equinix, Megaport |
 | **Auckland** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | neuvedeno | 10G | Devoli, Kordia, Megaport, Spark NZ, Vocus skupina NZ |
 | **Bangkok** | [SYSTÉMEM](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | neuvedeno | 10G | AIS, UIH |

@@ -1,5 +1,5 @@
 ---
-title: Monitorování připojení | Microsoft Docs
+title: Monitorování připojení (Preview) v Azure | Microsoft Docs
 description: Naučte se používat monitorování připojení k monitorování síťové komunikace v distribuovaném prostředí.
 services: network-watcher
 documentationcenter: na
@@ -15,18 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 13b379fd3b4f788d79cbb6a9bf6d40cb1693eaf9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cb24cc55844d7c42d68e75d6f6ef947b1315a306
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948971"
+ms.locfileid: "94984358"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor"></a>Monitorování připojení k síti pomocí monitorování připojení
+# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Monitorování připojení k síti pomocí monitorování připojení (Preview)
 
 Monitorování připojení nabízí sjednocené monitorování připojení v Azure Network Watcher. Funkce monitorování připojení podporuje hybridní a cloudová nasazení Azure. Network Watcher poskytuje nástroje pro monitorování, diagnostiku a zobrazení metrik souvisejících s připojením pro vaše nasazení Azure.
 
-Tady jsou některé případy použití pro monitorování připojení:
+> [!IMPORTANT]
+> Monitor připojení je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tady jsou některé případy použití pro monitorování připojení:
 
 - Virtuální počítač s front-end webovým serverem komunikuje s virtuálním počítačem s databázovým serverem v vícevrstvé aplikaci. Chcete kontrolovat síťové připojení mezi těmito dvěma virtuálními počítači.
 - Chcete, aby se virtuální počítače v oblasti Východní USA v oblasti Střed USA vyy na virtuální počítače s příkazy pro otestování a chcete porovnat latence sítě mezi oblastmi.

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967901"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988030"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Kurz – definování nového typu zařízení brány IoT v aplikaci Azure IoT Central
 
@@ -51,11 +51,11 @@ Vytvoření šablony zařízení pro zařízení se **senzorem S1** :
 
 1. Na stránce **Kontrola** vyberte **vytvořit** a přidejte do své aplikace šablonu zařízení. 
 
-Vytvoření šablony zařízení pro zařízení**RS40 pro senzory** :
+Vytvoření šablony zařízení pro zařízení *_RS40 pro senzory_* :
 
 1. V levém podokně vyberte **šablony zařízení**. Pak vyberte **+** , pokud chcete začít přidávat šablonu.
 
-1. Posuňte se dolů, dokud se nezobrazí dlaždice zařízení ***RS40 pro snímače obsazení** . Vyberte dlaždici a potom vyberte **Další: přizpůsobit**.
+1. Posuňte se dolů, dokud se nezobrazí dlaždice zařízení **_RS40 pro snímače obsazení_* . Vyberte dlaždici a potom vyberte **Další: přizpůsobit**.
 
 1. Na stránce **Kontrola** vyberte **vytvořit** a přidejte do své aplikace šablonu zařízení. 
 
@@ -110,7 +110,7 @@ Chcete-li přidat vlastnosti cloudu do šablony **zařízení služby inteligent
 
     | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádné          | Date   |
+    | Last Service Date (Datum poslední údržby) | Žádné          | Datum   |
     | Název zákazníka     | Žádné          | Řetězec |
 
 2. Vyberte **Uložit**.
@@ -142,7 +142,7 @@ Publikování šablony zařízení brány:
 
 3. V dialogovém okně **publikovat šablonu zařízení** klikněte na tlačítko **publikovat**.
 
-Po publikování je šablona zařízení zobrazená na stránce **zařízení** a v operátoru. V publikované šabloně zařízení nemůžete upravovat model schopností zařízení bez vytváření nové verze. V publikované šabloně zařízení ale můžete dělat aktualizace vlastností cloudu, přizpůsobení a zobrazení. Tyto aktualizace nezpůsobí vytvoření nové verze. Po provedení změn vyberte **publikovat**  , aby se tyto změny převedly do vašeho operátoru.
+Po publikování je šablona zařízení zobrazená na stránce **zařízení** a v operátoru. V publikované šabloně zařízení nemůžete upravovat model zařízení bez vytváření nové verze. V publikované šabloně zařízení ale můžete dělat aktualizace vlastností cloudu, přizpůsobení a zobrazení. Tyto aktualizace nezpůsobí vytvoření nové verze. Po provedení změn vyberte **publikovat**  , aby se tyto změny převedly do vašeho operátoru.
 
 ## <a name="create-the-simulated-devices"></a>Vytvoření simulovaných zařízení
 

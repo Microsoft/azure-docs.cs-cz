@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
-ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bbfca4d890440574ee6717ca910969226fc781a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283424"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987061"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
 
@@ -48,7 +48,7 @@ Každé nasazení člena konsorcia zahrnuje:
 * Azure Monitor pro agregaci protokolů a statistiky výkonu
 * Brána virtuální sítě (volitelné) pro povolení připojení VPN v privátních virtuální sítě
 
-Ve výchozím nastavení jsou koncové body RPC a peering přístupné přes veřejnou IP adresu, aby bylo možné zjednodušené připojení mezi předplatnými a cloudy. Pro řízení přístupu na úrovni aplikace můžete použít [kontrakty oprávnění parity](https://wiki.parity.io/Permissioning). Podporují se sítě nasazené za sítě VPN, které využívají brány virtuální sítě pro připojení mezi předplatnými. Vzhledem k tomu, že nasazení VPN a virtuálních sítí je složitější, možná budete chtít při vytváření prototypů řešení začít s modelem veřejné IP adresy.
+Ve výchozím nastavení jsou koncové body RPC a peering přístupné přes veřejnou IP adresu, aby bylo možné zjednodušené připojení mezi předplatnými a cloudy. Pro řízení přístupu na úrovni aplikace můžete použít kontrakty oprávnění parity. Podporují se sítě nasazené za sítě VPN, které využívají brány virtuální sítě pro připojení mezi předplatnými. Vzhledem k tomu, že nasazení VPN a virtuálních sítí je složitější, možná budete chtít při vytváření prototypů řešení začít s modelem veřejné IP adresy.
 
 Kontejnery Docker se používají pro spolehlivost a modularitu. Azure Container Registry slouží jako součást jednotlivých nasazení k hostování a obsluze imagí se správou verzí. Image kontejneru se skládají z těchto:
 
@@ -72,7 +72,7 @@ V tomto návodu budeme předpokládat, že vytváříte Ethereemou síť konsorc
 1. Tři členové generují účet Ethereem pomocí MetaMask
 1. *Člen A* nasadí ethereem POA a poskytne jim svou ethereem veřejnou adresu.
 1. *Člen A* poskytuje konsorcium URL pro *členské B* a *členské C* .
-1. *Členské B* a *členské C* nasazují ethereem POA a poskytují svou ethereem veřejnou adresu a adresu URL *člena*a 's Consortium.
+1. *Členské B* a *členské C* nasazují ethereem POA a poskytují svou ethereem veřejnou adresu a adresu URL *člena* a 's Consortium.
 1. *Člen A* hlasy *člena B* jako správce
 1. *Člen a* a *člen B* – hlas *členů C* jako správce
 
@@ -86,7 +86,7 @@ Vyberte **blockchain**  >  **ethereem pro kontrolu-of-Authority Consortium (Prev
 
 ### <a name="basics"></a>Základy
 
-V části **základy**zadejte hodnoty pro standardní parametry pro jakékoli nasazení.
+V části **základy** zadejte hodnoty pro standardní parametry pro jakékoli nasazení.
 
 ![Základy](./media/ethereum-poa-deployment/basic-blade.png)
 
@@ -98,14 +98,14 @@ Uživatelské jméno virtuálního počítače | Uživatelské jméno správce k
 Typ ověřování | Metoda, která se má ověřit pro virtuální počítač. | Heslo
 Heslo | Heslo pro účet správce pro každý nasazený virtuální počítač. Všechny virtuální počítače mají zpočátku stejné heslo. Po zřízení můžete heslo změnit. | 12-72 znaků 
 Předplatné | Předplatné, ke kterému se má nasadit síť konsorcia |
-Resource Group| Skupina prostředků, do které se má nasadit síť konsorcia | myResourceGroup
+Skupina prostředků| Skupina prostředků, do které se má nasadit síť konsorcia | myResourceGroup
 Umístění | Oblast Azure pro skupinu prostředků. | Západní USA 2
 
 Vyberte **OK**.
 
 ### <a name="deployment-regions"></a>Oblasti nasazení
 
-V části *oblasti nasazení*určete počet oblastí a umístění pro každý z nich. Nasazení můžete nasadit v maximálně pěti oblastech. První oblast by se měla shodovat s umístěním skupiny prostředků z části *základy* . Pro vývojové nebo testovací sítě můžete použít jednu oblast na člena. Pro produkční prostředí nasaďte ve dvou nebo více oblastech pro zajištění vysoké dostupnosti.
+V části *oblasti nasazení* určete počet oblastí a umístění pro každý z nich. Nasazení můžete nasadit v maximálně pěti oblastech. První oblast by se měla shodovat s umístěním skupiny prostředků z části *základy* . Pro vývojové nebo testovací sítě můžete použít jednu oblast na člena. Pro produkční prostředí nasaďte ve dvou nebo více oblastech pro zajištění vysoké dostupnosti.
 
 ![oblasti nasazení](./media/ethereum-poa-deployment/deployment-regions.png)
 
@@ -119,7 +119,7 @@ Vyberte **OK**.
 
 ### <a name="network-size-and-performance"></a>Velikost a výkon sítě
 
-V části *velikost a výkon sítě*zadejte vstupy pro velikost sítě konsorcia. Velikost úložiště uzlu validátoru určuje potenciální velikost blockchain. Velikost může být změněna po nasazení.
+V části *velikost a výkon sítě* zadejte vstupy pro velikost sítě konsorcia. Velikost úložiště uzlu validátoru určuje potenciální velikost blockchain. Velikost může být změněna po nasazení.
 
 ![Velikost a výkon sítě](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
@@ -141,7 +141,7 @@ Vyberte **OK**.
 
 ### <a name="ethereum-settings"></a>Nastavení ethereem
 
-V části *Nastavení ethereem*zadejte nastavení konfigurace související s ethereem.
+V části *Nastavení ethereem* zadejte nastavení konfigurace související s ethereem.
 
 ![Nastavení ethereem](./media/ethereum-poa-deployment/ethereum-settings.png)
 
@@ -174,7 +174,7 @@ Existující primární klíč Log Analytics (Připojte se k existujícím proto
 
 Vyberte **OK**.
 
-### <a name="summary"></a>Shrnutí
+### <a name="summary"></a>Souhrn
 
 Kliknutím na Souhrn zkontrolujte zadané vstupy a spusťte základní ověřování před nasazením. Před nasazením si můžete stáhnout šablonu a parametry.
 
@@ -341,7 +341,7 @@ ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
 
 Chcete-li získat další uzly transakcí, zvyšte číslo portu o jednu.
 
-Pokud jste nasadili do více než jedné oblasti, změňte příkaz na název DNS nebo IP adresu nástroje pro vyrovnávání zatížení v této oblasti. Pokud chcete najít název DNS nebo IP adresu ostatních oblastí, vyhledejte prostředek pomocí konvence pojmenování ** \* \* \* \* \* – lbpip-reg \# ** a zobrazte jeho název DNS a IP adresu.
+Pokud jste nasadili do více než jedné oblasti, změňte příkaz na název DNS nebo IP adresu nástroje pro vyrovnávání zatížení v této oblasti. Pokud chcete najít název DNS nebo IP adresu ostatních oblastí, vyhledejte prostředek pomocí konvence pojmenování **\* \* \* \* \* – lbpip-reg \#** a zobrazte jeho název DNS a IP adresu.
 
 ## <a name="azure-traffic-manager-load-balancing"></a>Vyrovnávání zatížení Azure Traffic Manager
 
@@ -370,7 +370,7 @@ Pokud se rozhodnete vytvořit profil Traffic Manager, můžete k přístupu k s�
 
 1. Zvolte kartu **koncové body** a vyberte tlačítko **Přidat** .
 1. Zadejte jedinečný název koncového bodu.
-1. Jako **typ cílového prostředku**vyberte **Veřejná IP adresa**.
+1. Jako **typ cílového prostředku** vyberte **Veřejná IP adresa**.
 1. Vyberte veřejnou IP adresu nástroje pro vyrovnávání zatížení první oblasti.
 
     ![Směrování Traffic Manageru](./media/ethereum-poa-deployment/traffic-manager-routing.png)
@@ -582,7 +582,7 @@ Předtím, než budete moci zkompilovat a nasadit inteligentní kontrakt, je nut
 Vytvořte své inteligentní kontrakty v podadresáři **kontraktů** projektu Truffle.
 
 1. V `postBox.sol` podadresáři **kontrakty** projektu Truffle vytvořte soubor s názvem.
-1. Do **postBox. Sol**přidejte následující kód soliding.
+1. Do **postBox. Sol** přidejte následující kód soliding.
 
     ```javascript
     pragma solidity ^0.5.0;
@@ -685,9 +685,9 @@ Teď, když je vaše inteligentní smlouva nasazená, můžete odeslat transakci
 
 ## <a name="webassembly-wasm-support"></a>Podpora WebAssembly (WASM)
 
-Podpora WebAssembly je už povolená na nově nasazených sítích PoA. Umožňuje vývoj inteligentních kontraktů v jakémkoli jazyce, který předává Web-Assembly (Rust, C, C++). Další informace najdete v tématech [Přehled parity WebAssembly](https://wiki.parity.io/WebAssembly-Home) a [tutorial z parity tech](https://github.com/paritytech/pwasm-tutorial) .
+Podpora WebAssembly je už povolená na nově nasazených sítích PoA. Umožňuje vývoj inteligentních kontraktů v jakémkoli jazyce, který předává Web-Assembly (Rust, C, C++). Další informace najdete v tématu [kurz z parity tech](https://github.com/paritytech/pwasm-tutorial).
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>Všimněte si, že síť obsahuje mnoho transakcí, které jsem neodeslal. Odkud pocházejí?
 

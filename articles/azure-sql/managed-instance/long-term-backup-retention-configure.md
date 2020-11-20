@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/29/2020
-ms.openlocfilehash: 8b0d6665b440516d29cc9aeb0b6e50f509528574
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: ec193eab02d937e9d93b8632fa171fec8227d6c2
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503432"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987486"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Správa dlouhodobého uchovávání záloh spravované instance Azure SQL (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ V následujících částech se dozvíte, jak pomocí PowerShellu nakonfigurovat
 
 ## <a name="azure-roles-to-manage-long-term-retention"></a>Role Azure pro správu dlouhodobého uchovávání
 
-Pro **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** a **Restore-AzSqlInstanceDatabase**budete muset mít jednu z následujících rolí:
+Pro **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** a **Restore-AzSqlInstanceDatabase** budete muset mít jednu z následujících rolí:
 
 - Role vlastníka předplatného nebo
 - Role přispěvatele spravované instance nebo
@@ -39,7 +39,7 @@ Pro **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** a **Restore-AzSqlInstan
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read`
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/read`
 
-V případě funkce **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup**budete muset mít jednu z následujících rolí:
+V případě funkce **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup** budete muset mít jednu z následujících rolí:
 
 - Role vlastníka předplatného nebo
 - Vlastní role s následujícím oprávněním:
@@ -48,7 +48,7 @@ V případě funkce **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup**budet
 > [!NOTE]
 > Role Přispěvatel spravované instance nemá oprávnění odstraňovat zálohy LTR.
 
-Oprávnění RBAC se mohla udělit buď v rámci *předplatného* , nebo v oboru *skupiny prostředků* . Pro přístup k zálohám LTR, které patří do vyřazené instance, ale musí být oprávnění uděleno v oboru *předplatného* této instance.
+Oprávnění Azure RBAC se mohla udělit buď v rámci *předplatného* , nebo v oboru *skupiny prostředků* . Pro přístup k zálohám LTR, které patří do vyřazené instance, ale musí být oprávnění uděleno v oboru *předplatného* této instance.
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 

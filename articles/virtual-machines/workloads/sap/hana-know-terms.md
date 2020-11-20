@@ -11,15 +11,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/21/2020
+ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b65190c0fd2fcac132f762116a63357a08e6bf02
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7777888bd27325e9094032458922969494a9a64e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967733"
+ms.locfileid: "94984953"
 ---
 # <a name="know-the-terms"></a>Seznámení s podmínkami
 
@@ -45,6 +45,7 @@ V průvodci architekturou a technickým nasazením se často používá několik
 - **Revize**: Existují dvě různé revize razítka pro velká instance pro všechna razítka Hana. Liší se v architektuře a blízkosti hostitelů virtuálních počítačů Azure.
     - "Revize 3" (rev 3): je původní návrh, který byl nasazen ze polovině roku 2016
     - "Revize 4" (Rev 4): je nový návrh, který může poskytnout užší blízkost hostitelům virtuálních počítačů Azure a tím snížit latenci sítě mezi virtuálními počítači Azure a jednotkami velkých instancí HANA. 
+    - "Revize 4,2" (Rev 4,2): ve stávajícím řadiči domény revize 4 se prostředky přeBareMetal do infrastruktury.  Zákazníci mají přístup ke svým prostředkům jako BareMetal instance z Azure Portal. 
 
 K dispozici je celá řada dalších prostředků pro nasazení úlohy SAP v cloudu. Pokud máte v úmyslu spustit nasazení SAP HANA v Azure, musíte mít zkušenosti s principy Azure IaaS a nasazením úloh SAP na Azure IaaS. Než budete pokračovat, přečtěte si téma [použití řešení SAP na virtuálních počítačích Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , kde najdete další informace. 
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: f4cb57eb8d3396667e6c9cb40b7e41b1e97622ed
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: f33cb7d4d005f15d0a5fcc70d56ebd4698f86694
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981183"
+ms.locfileid: "94988217"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Řízení aktualizací pomocí řízení údržby a Azure PowerShell
 
@@ -69,7 +69,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 
 ### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>Vytvoření konfigurace údržby pomocí plánovaného okna
 
-Pomocí New-AzMaintenanceConfiguration můžete vytvořit konfiguraci údržby s plánovaným oknem, když Azure použije aktualizace vašich prostředků. Tento příklad vytvoří konfiguraci údržby s názvem myConfig s plánovaným oknem 5 hodin ve čtvrtém pondělí každého měsíce. Po vytvoření naplánovaného okna už aktualizace nemusíte instalovat ručně.
+Můžete také deklarovat naplánované okno, když Azure použije aktualizace vašich prostředků. Tento příklad vytvoří konfiguraci údržby s názvem myConfig s plánovaným oknem 5 hodin ve čtvrtém pondělí každého měsíce. Po vytvoření naplánovaného okna už aktualizace nemusíte instalovat ručně.
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -85,12 +85,10 @@ $config = New-AzMaintenanceConfiguration `
 > [!IMPORTANT]
 > **Doba trvání** údržby musí být *2 hodiny* nebo déle. **Opakování** údržby musí být nastavené na nejméně jednou za 35 dní.
 
-**Opakování** údržby může být vyjádřeno jako:
- | Hodnota | Příklad |
-      |-------|-------------|
-      | dostupnost | recurEvery: Day **nebo** RecurEvery: 3Days | 
-      | weekly | recurEvery: 3Weeks **nebo** RecurEvery: týden – Sobota, neděle | 
-      | Nadpis | recurEvery: month day23, day24 **nebo** RecurEvery: měsíc poslední neděle **nebo** recurEvery: měsíc čtvrtého pondělí | 
+**Opakování** údržby může být vyjádřeno jako denní, týdenní nebo měsíční. Tady je několik příkladů:
+ - denně – "recurEvery: Day" **nebo** "RecurEvery: 3Days" 
+ - týdně – "recurEvery: 3Weeks" **nebo** "RecurEvery: týden Sobota, neděle" 
+ - měsíčně – "recurEvery: month day23, day24" **nebo** "RecurEvery: měsíc poslední neděle" **nebo** "recurEvery: měsíc čtvrtého pondělí"  
       
 
 ## <a name="assign-the-configuration"></a>Přiřazení konfigurace

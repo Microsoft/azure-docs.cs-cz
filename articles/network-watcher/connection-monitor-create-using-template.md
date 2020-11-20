@@ -1,5 +1,5 @@
 ---
-title: Vytvoření monitorování připojení – ARMClient
+title: Vytvořit monitorování připojení (Preview) – šablona ARM
 titleSuffix: Azure Network Watcher
 description: Naučte se vytvářet monitorování připojení pomocí nástroje ARMClient.
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: c80f2aaf26c0f0e89014c997151599c8bddbe903
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e1a0ecd85d07aa4fdf5482c5104c17eb4a068688
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948812"
+ms.locfileid: "94984222"
 ---
-# <a name="create-a-connection-monitor-using-the-armclient"></a>Vytvoření monitorování připojení pomocí ARMClient
+# <a name="create-a-connection-monitor-using-the-arm-template"></a>Vytvoření monitorování připojení pomocí šablony ARM
 
 Naučte se vytvářet monitorování připojení, abyste mohli monitorovat komunikaci mezi prostředky pomocí nástroje ARMClient. Podporuje hybridní nasazení cloudu a Azure.
+
+> [!IMPORTANT]
+> Monitor připojení je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Než začnete 
 

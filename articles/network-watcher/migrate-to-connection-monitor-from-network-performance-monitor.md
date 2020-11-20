@@ -1,5 +1,5 @@
 ---
-title: Migrace na monitorování připojení z Network Performance Monitor
+title: Migrace na monitor připojení (Preview) z Network Performance Monitor
 titleSuffix: Azure Network Watcher
 description: Přečtěte si, jak migrovat na monitorování připojení z Network Performance Monitor.
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
-ms.openlocfilehash: 949f717c56892f8a1d0826e8e6f1f2164a4a142c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 38ea682b4f3894f373d16908b942b4fa578741c4
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974837"
+ms.locfileid: "94985803"
 ---
-# <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrace na monitorování připojení z Network Performance Monitor
+# <a name="migrate-to-connection-monitor-preview-from-network-performance-monitor"></a>Migrace na monitor připojení (Preview) z Network Performance Monitor
 
 Testy můžete migrovat z Network Performance Monitor (NPM) na nové, vylepšené monitorování připojení jediným kliknutím a s nulovými výpadky. Další informace o výhodách najdete v tématu [monitorování připojení](./connection-monitor-overview.md).
+
+> [!IMPORTANT]
+> Monitor připojení je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 >[!NOTE]
 > Do monitorování připojení se dají migrovat jenom testy z monitorování připojení služby.

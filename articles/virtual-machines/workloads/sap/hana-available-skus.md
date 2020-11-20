@@ -12,15 +12,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/23/2020
+ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd979f553ff03d8373948d73c416a96bb140b544
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2732f9fc4b1b9251391180874a055e8ffd8d9e7a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964758"
+ms.locfileid: "94985072"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>Dostupné SKU pro velké instance HANA
 
@@ -35,10 +35,13 @@ SAP HANA v Azure (velké instance) založené na razítkech revize 4 jsou k disp
 
 - Západní USA 2
 - East US
-- USA – východ 2
-- Středojižní USA
+
+BareMetal infrastruktura (certifikováno pro úlohy SAP HANA) založená na razítkech revize 4,2. Je k dispozici v několika konfiguracích v oblastech Azure:
 - West Europe
 - Severní Evropa
+- USA – východ 2
+- Středojižní USA
+
 
 
 

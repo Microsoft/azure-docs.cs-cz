@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288375"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987333"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Nejčastější dotazy – ochrana identity v Azure Active Directory
 
@@ -95,6 +95,4 @@ Vzhledem k kumulativnímu riziku uživatele je souhrnná povaha a nevyprší pla
 
 Vysoké agregované riziko by mohlo být založené na dalších funkcích přihlášení nebo na skutečnost, že pro toto přihlášení bylo vyvoláno více zjišťování. A naopak, přihlášení může mít riziko přihlašování (agregované) na střední úrovni, i když zjišťování spojená s přihlašováním jsou vysoké riziko. 
 
-### <a name="why-is-the-detection-which-is-linked-to-a-risky-sign-in-have-a-different-risk-level-than-the-sign-in-risk-level-real-time"></a>Proč je detekce, která je propojená s rizikovým přihlašováním, odlišná na úrovni rizika přihlašování (v reálném čase)? 
 
-Nedávno jsme provedli vylepšení způsobu, jakým se počítá riziko přihlašování v reálném čase. Výsledkem těchto změn je neshoda zjištěná mezi úrovní zjišťování rizik a úrovní rizika přihlašování. Všimněte si, že riziko přihlášení v reálném čase je hodnota, která se používá při vynucení zásad. 

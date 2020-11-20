@@ -3,32 +3,32 @@ title: Použití vlastností v řešení Azure IoT Central
 description: Naučte se používat vlastnosti jen pro čtení a zapisovatelné vlastnosti v řešení Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/12/2020
+ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1cc4f40374fce83589d2dc10a0422b91f5178c0b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: aeb1e5ee00bd52ebb4bd93dec2f4a1eacb002fb9
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123779"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986523"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Použití vlastností v řešení Azure IoT Central
 
 V tomto článku se dozvíte, jak používat vlastnosti zařízení, které jsou definované v šabloně zařízení v aplikaci Azure IoT Central.
 
-Vlastnosti znázorňují hodnoty bodu v čase. Zařízení může například pomocí vlastnosti nahlásit cílovou teplotu, se kterou se snaží dosáhnout. Vlastnosti také umožňují synchronizovat stav mezi zařízením a aplikací Azure IoT Central. Můžete nastavit vlastnosti s možností zápisu z Azure IoT Central.
+Vlastnosti znázorňují hodnoty bodu v čase. Zařízení může například pomocí vlastnosti nahlásit cílovou teplotu, se kterou se snaží dosáhnout. Ve výchozím nastavení jsou vlastnosti zařízení ve IoT Central jen pro čtení. Zapisovatelné vlastnosti umožňují synchronizovat stav mezi vaším zařízením a aplikací Azure IoT Central.
 
 Můžete také definovat vlastnosti cloudu v aplikaci Azure IoT Central. Hodnoty vlastností cloudu se nikdy nevyměňují pomocí zařízení a nejsou v oboru pro tento článek.
 
 ## <a name="define-your-properties"></a>Definovat vlastnosti
 
-Vlastnosti jsou datová pole, která představují stav vašeho zařízení. Použijte vlastnosti, které reprezentují trvalý stav zařízení, například stav zapnuto/vypnuto zařízení. Vlastnosti mohou také představovat základní vlastnosti zařízení, jako je například verze softwaru zařízení. Vlastnosti můžete deklarovat jako jen pro čtení nebo zapisovatelné.
+Vlastnosti jsou datová pole, která představují stav vašeho zařízení. Použijte vlastnosti, které reprezentují trvalý stav zařízení, například stav zapnuto/vypnuto zařízení. Vlastnosti mohou také představovat základní vlastnosti zařízení, jako je například verze softwaru zařízení. Vlastnosti deklarujete jako jen pro čtení nebo zapisovatelné.
 
 Následující snímek obrazovky ukazuje definici vlastnosti v aplikaci Azure IoT Central.
 
-![Snímek obrazovky, který zobrazuje definici vlastnosti v aplikaci Azure IoT Central.](./media/howto-use-properties/property-definition.png)
+:::image type="content" source="media/howto-use-properties/property-definition.png" alt-text="Snímek obrazovky, který zobrazuje definici vlastnosti v aplikaci Azure IoT Central.":::
 
 Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti.
 
@@ -39,10 +39,10 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti.
 | Typ schopnosti | Majetek.                                                                                                                                                                                                                          |
 | Sémantický typ   | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici.                                                                       |
 | Schéma          | Datový typ vlastnosti, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu.                                               |
-| Writeable       | Pokud vlastnost není zapisovatelná, může zařízení nahlásit hodnoty vlastností do Azure IoT Central. Pokud je vlastnost zapisovatelná, může zařízení nahlásit hodnoty vlastností do Azure IoT Central. Pak může Azure IoT Central odeslat do zařízení aktualizace vlastností. |
-| Závažnost        | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**.                                                                                                                         |
+| Pro zápis       | Pokud vlastnost není zapisovatelná, může zařízení nahlásit hodnoty vlastností do Azure IoT Central. Pokud je vlastnost zapisovatelná, může zařízení nahlásit hodnoty vlastností do Azure IoT Central. Pak může Azure IoT Central odeslat do zařízení aktualizace vlastností. |
+| Závažnost        | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace** nebo **Upozornění**.                                                                                                                         |
 | Hodnoty stavu    | K dispozici pouze pro sémantický typ State. Definujte hodnoty možných stavů, z nichž každá má zobrazované jméno, název, Výčtový typ a hodnotu.                                                                                   |
-| Jednotka            | Jednotka pro hodnotu vlastnosti, například **mph**, **%** nebo ** &deg; C**.                                                                                                                                                              |
+| Jednotka            | Jednotka pro hodnotu vlastnosti, například **mph**, **%** nebo **&deg; C**.                                                                                                                                                              |
 | Zobrazit jednotku    | Zobrazovací jednotka pro použití na řídicích panelech a formulářích.                                                                                                                                                                                    |
 | Komentář         | Jakékoli komentáře k funkci vlastnosti.                                                                                                                                                                                        |
 | Popis     | Popis schopnosti vlastnosti.                                                                                                                                                                                          |
@@ -51,83 +51,63 @@ Vlastnosti lze také definovat v rozhraní v šabloně zařízení, jak je znáz
 
 ``` json
 {
-  "@type": "Property",
-  "displayName": "Device State",
-  "description": "The state of the device. Two states online/offline are available.",
-  "name": "state",
-  "schema": "boolean"
-},
-{
-  "@type": "Property",
-  "displayName": "Customer Name",
-  "description": "The name of the customer currently operating the device.",
-  "name": "name",
-  "schema": "string",
+  "@type": [
+    "Property",
+    "Temperature"
+  ],
+  "name": "targetTemperature",
+  "schema": "double",
+  "displayName": "Target Temperature",
+  "description": "Allows to remotely specify the desired target temperature.",
+  "unit" : "degreeCelsius",
   "writable": true
 },
 {
- "@type": "Property",
- "displayName": "Date ",
- "description": "The date on which the device is currently operating",
- "name": "date",
- "writable": true,
- "schema": "date"
-},
-{ 
- "@type": "Property",
- "displayName": "Location",
- "description": "The current location of the device",
- "name": "location",
- "writable": true,
- "schema": "geopoint"
-},
-{
- "@type": "Property",
- "displayName": "Vector Level",
- "description": "The Vector level of the device",
- "name": "vector",
- "writable": true,
- "schema": "vector"
+  "@type": [
+    "Property",
+    "Temperature"
+  ],
+  "name": "maxTempSinceLastReboot",
+  "schema": "double",
+  "unit" : "degreeCelsius",
+  "displayName": "Max temperature since last reboot.",
+  "description": "Returns the max temperature since last device reboot."
 }
 ```
 
-Tento příklad ukazuje pět vlastností. Tyto vlastnosti mohou souviset s definicí vlastnosti v uživatelském rozhraní, jak je znázorněno zde:
+Tento příklad ukazuje dvě vlastnosti. Tyto vlastnosti se vztahují k definici vlastnosti v uživatelském rozhraní:
 
-* `@type` Chcete-li určit typ funkce: `Property`
-* `name` pro hodnotu vlastnosti.
-* `schema` Zadejte datový typ pro vlastnost. Tato hodnota může být primitivní typ, například Double, Integer, Boolean nebo String. Podporují se také komplexní typy objektů, pole a mapy.
+* `@type` Určuje typ schopnosti: `Property` . Předchozí příklad také ukazuje sémantický typ `Temperature` pro obě vlastnosti.
+* `name` pro vlastnost.
+* `schema` Určuje datový typ pro vlastnost. Tato hodnota může být primitivní typ, například Double, Integer, Boolean nebo String. Podporují se také komplexní typy objektů, pole a mapy.
 * `writable` Ve výchozím nastavení jsou vlastnosti jen pro čtení. Pomocí tohoto pole můžete označit vlastnost jako zapisovatelnou.
 
 Volitelná pole, jako je zobrazované jméno a popis, umožňují přidat další podrobnosti k rozhraní a funkcím.
 
-Při vytváření vlastnosti můžete určit komplexní typy **schémat** , jako je například Object a Enum.
+Při vytváření vlastnosti můžete zadat komplexní typy schémat, jako je například **Object** a **Enum**.
 
 ![Snímek obrazovky, který ukazuje, jak přidat schopnost](./media/howto-use-properties/property.png)
 
 Když vyberete složité **schéma**, například **objekt**, je nutné definovat také objekt.
 
-![Snímek obrazovky, který ukazuje, jak definovat objekt.](./media/howto-use-properties/object.png)
+:::image type="content" source="media/howto-use-properties/object.png" alt-text="Snímek obrazovky, který ukazuje, jak definovat objekt":::
 
 Následující kód ukazuje definici typu vlastnosti objektu. Tento objekt má dvě pole s typy String a Integer.
 
 ``` json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "ObjectProperty"
   },
   "name": "ObjectProperty",
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field1"
         },
@@ -135,8 +115,6 @@ Následující kód ukazuje definici typu vlastnosti objektu. Tento objekt má d
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field2"
         },
@@ -150,15 +128,14 @@ Následující kód ukazuje definici typu vlastnosti objektu. Tento objekt má d
 
 ## <a name="implement-read-only-properties"></a>Implementovat vlastnosti jen pro čtení
 
-Ve výchozím nastavení jsou vlastnosti jen pro čtení. Vlastnosti jen pro čtení znamenají, že aktualizace hodnoty vlastnosti zařízení se aktualizuje do vaší aplikace Azure IoT Central. Vaše aplikace Azure IoT Central nemůže nastavit hodnotu vlastnosti jen pro čtení.
+Ve výchozím nastavení jsou vlastnosti jen pro čtení. Vlastnosti jen pro čtení umožňují, aby se hodnota vlastnosti sestavy zařízení do vaší aplikace Azure IoT Centrala aktualizace. Vaše aplikace Azure IoT Central nemůže nastavit hodnotu vlastnosti jen pro čtení.
 
 Azure IoT Central k synchronizaci hodnot vlastností mezi zařízením a aplikací Azure IoT Central používá vlákna zařízení. Hodnoty vlastností zařízení používají nedokončené hlášené vlastnosti zařízení. Další informace najdete v tématu [vlákna zařízení](../../iot-hub/tutorial-device-twins.md).
 
-Následující fragment kódu z modelu schopností zařízení zobrazuje definici typu vlastnosti jen pro čtení:
+Následující fragment kódu z modelu zařízení zobrazuje definici typu vlastnosti jen pro čtení:
 
 ``` json
 {
-  "@type": "Property",
   "name": "model",
   "displayName": "Device model",
   "schema": "string",
@@ -166,7 +143,7 @@ Následující fragment kódu z modelu schopností zařízení zobrazuje definic
 }
 ```
 
-Zařízení do Azure IoT Central odesílá vlastnosti jen pro čtení. Vlastnosti se odesílají jako datová část JSON. Další informace najdete v tématu [datové části](./concepts-telemetry-properties-commands.md).
+Aktualizace vlastností jsou odesílány zařízením jako datová část JSON. Další informace najdete v tématu [datové části](./concepts-telemetry-properties-commands.md).
 
 K odeslání aktualizace vlastností do aplikace Azure IoT Central můžete použít sadu SDK pro zařízení Azure IoT.
 
@@ -187,16 +164,17 @@ Tento článek používá Node.js pro jednoduchost. Úplné informace o příkla
 
 * [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Node.js)](tutorial-connect-device-nodejs.md)
 * [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Python)](tutorial-connect-device-python.md)
+* [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Java)](tutorial-connect-device-java.md)
 
 Následující zobrazení v aplikaci Azure IoT Central zobrazuje vlastnosti, které vidíte. Zobrazení automaticky nastaví vlastnost **model zařízení** na _vlastnost zařízení jen pro čtení_.
 
-![Snímek obrazovky, který zobrazuje zobrazení vlastnosti jen pro čtení.](./media/howto-use-properties/read-only.png)
+:::image type="content" source="media/howto-use-properties/read-only.png" alt-text="Snímek obrazovky zobrazující zobrazení vlastnosti jen pro čtení":::
 
 ## <a name="implement-writable-properties"></a>Implementovat vlastnosti s možností zápisu
 
 Vlastnosti s možností zápisu jsou nastaveny pomocí operátoru v aplikaci Azure IoT Central ve formuláři. Azure IoT Central odesílá vlastnost do zařízení. Azure IoT Central očekává potvrzení ze zařízení.
 
-Následující fragment kódu z modelu schopností zařízení zobrazuje definici typu vlastnosti s možností zápisu:
+Následující fragment kódu z modelu zařízení zobrazuje definici typu vlastnosti s možností zápisu:
 
 ``` json
 {
@@ -207,12 +185,6 @@ Následující fragment kódu z modelu schopností zařízení zobrazuje definic
   "writable": true,
   "schema": "long"
 }
-```
-
-Klient zařízení by měl poslat datovou část JSON, která vypadá jako v následujícím příkladu, jako hlášená vlastnost v zařízení s dvojitou vlastností:
-
-``` json
-{ "Brightness Level": 2 }
 ```
 
 K definování a zpracování zapisovatelných vlastností, na které zařízení reaguje, můžete použít následující kód:
@@ -248,7 +220,6 @@ Zpráva odpovědi by měla zahrnovat `ac` pole a `av` . Pole `ad` je nepovinné.
 | `'ac': 202` nebo `'ac': 201` | Čekající | Operace změny vlastnosti čeká na vyřízení nebo probíhá. |
 | `'ac': 4xx` | Chyba | Požadovaná změna vlastnosti nebyla platná nebo došlo k chybě. |
 | `'ac': 5xx` | Chyba | U zařízení došlo k neočekávané chybě při zpracování požadované změny. |
-
 
 Další informace o nevlákenách zařízení najdete v tématu [Konfigurace zařízení z back-endové služby](../../iot-hub/tutorial-device-twins.md).
 

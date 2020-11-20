@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro Azure Backup
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou k dispozici pro Azure Backup. Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 author: dcurwin
 ms.author: dacurwin
 ms.service: backup
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: f45cfd8ed5ea605181a000edc68daeea94525bd6
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f3bfca36c727b5e248a20b468fd2b69299a92a71
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694343"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988000"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-backup"></a>Azure Policy kontroly dodržování předpisů pro Azure Backup
 

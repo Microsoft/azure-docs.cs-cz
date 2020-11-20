@@ -1,6 +1,6 @@
 ---
-title: Dotazování na data Azure Cosmos DB pomocí SQL fondu bez serveru v odkazu Azure synapse (Preview)
-description: V tomto článku se naučíte, jak zadávat dotazy na Azure Cosmos DB s využitím fondu SQL bez serveru ve službě Azure synapse Link (Preview).
+title: Dotazování na data Azure Cosmos DB pomocí neserverového fondu SQL ve verzi Preview odkazu na Azure synapse
+description: V tomto článku se naučíte, jak zadávat dotazy na Azure Cosmos DB pomocí neserverového fondu SQL ve verzi Preview pro Azure synapse.
 services: synapse analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
@@ -9,27 +9,27 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2ffc524c14b9ba281d7e386f7f8c726093f11dbf
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: eda05cbdf2f5b077fd6cf217a00cc58b1c6eda27
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94661014"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986636"
 ---
-# <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB ve fondu SQL bez serveru v odkazu Azure synapse (Preview)
+# <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB pomocí neserverového fondu SQL ve verzi Preview odkazu na Azure synapse
 
-Synapse fond SQL bez serveru umožňuje analyzovat data v kontejnerech Azure Cosmos DB, které jsou povolené pomocí [Azure synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) v téměř reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z [analytického úložiště](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a integrovaného připojení k široké škále nástrojů pro dotazování BI a ad-hoc, a to prostřednictvím rozhraní T-SQL.
+Fond SQL bez serveru umožňuje analyzovat data ve vašich Azure Cosmos DBch kontejnerech, které jsou povolené pomocí [Azure synapse s odkazem](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) téměř v reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z [analytického úložiště](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a integrovaného připojení k široké škále nástrojů pro Business Intelligence (BI) a ad hoc pro dotazování prostřednictvím rozhraní T-SQL.
 
-Pro dotazování Azure Cosmos DB je dostupná plocha kompletního [výběru](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) plochy prostřednictvím funkce [OpenRowset](develop-openrowset.md) , včetně většiny [funkcí a operátorů SQL](overview-features.md). Můžete také uložit výsledky dotazu, který čte data z Azure Cosmos DB společně s daty v Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazu [vytvořit externí tabulku jako SELECT](develop-tables-cetas.md#cetas-in-serverless-sql-pool). V současné době nemůžete ukládat výsledky dotazu fondu SQL bez serveru do Azure Cosmos DB pomocí CETAS. 
+Pro dotazování Azure Cosmos DB je podpora celé oblasti [výběru](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) plochy podporována prostřednictvím funkce [OpenRowset](develop-openrowset.md) , která zahrnuje většinu [funkcí a operátorů SQL](overview-features.md). Můžete také uložit výsledky dotazu, který čte data z Azure Cosmos DB společně s daty v Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazu [vytvořit externí tabulku jako SELECT](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS). V současné době nemůžete ukládat výsledky dotazu fondu SQL bez serveru do Azure Cosmos DB pomocí CETAS.
 
-V tomto článku se dozvíte, jak napsat dotaz s neserverovým fondem SQL, který bude dotazovat data z Azure Cosmos DB kontejnerů s povoleným odkazem synapse. Pak si můžete přečíst další informace o vytváření zobrazení fondu SQL bez serveru nad kontejnery Azure Cosmos DB a jejich propojením s Power BI modely v [tomto](./tutorial-data-analyst.md) kurzu. 
+V tomto článku se dozvíte, jak napsat dotaz s neserverovým fondem SQL, který bude dotazovat data z Azure Cosmos DB kontejnerů, které jsou povolené pomocí odkazu Azure synapse. Pak si můžete přečíst další informace o vytváření zobrazení fondu SQL bez serveru nad kontejnery Azure Cosmos DB a jejich propojením s Power BI modely v [tomto kurzu](./tutorial-data-analyst.md).
 
 > [!IMPORTANT]
-> V tomto kurzu se používá kontejner s [Azure Cosmos DB dobře definovaným schématem](../../cosmos-db/analytical-store-introduction.md#schema-representation). Dotaz na možnosti, že fond SQL bez serveru poskytuje [Azure Cosmos DB kompletní schéma přesnosti](#full-fidelity-schema) je dočasné chování, které se změní v závislosti na zpětné vazbě ve verzi Preview. Nespoléhá se na schéma sady výsledků `OPENROWSET` funkce bez `WITH` klauzule, která čte data z kontejneru se schématem s úplnými zobrazeními, protože prostředí dotazů může být zarovnáno se změnami a musí se měnit na základě dobře definovaného schématu. Pošlete svůj názor na [fórum pro zpětnou vazbu ke službě Azure synapse Analytics](https://feedback.azure.com/forums/307516-azure-synapse-analytics) nebo se obraťte na [tým s odkazem na synapse](mailto:cosmosdbsynapselink@microsoft.com) a sdělte nám svůj názor.
+> V tomto kurzu se používá kontejner s [Azure Cosmos DB dobře definovaným schématem](../../cosmos-db/analytical-store-introduction.md#schema-representation). Dotaz na možnosti, že fond SQL bez serveru poskytuje [Azure Cosmos DB kompletní schéma přesnosti](#full-fidelity-schema) je dočasné chování, které se změní v závislosti na zpětné vazbě ve verzi Preview. Nespoléhá se na schéma sady výsledků `OPENROWSET` funkce bez `WITH` klauzule, která čte data z kontejneru se schématem s úplnými zobrazeními, protože prostředí dotazů může být zarovnáno se změnami a musí se měnit na základě dobře definovaného schématu. Svůj názor můžete publikovat ve fóru o [zpětné vazbě Azure synapse Analytics](https://feedback.azure.com/forums/307516-azure-synapse-analytics). Můžete se také obrátit na [produktový tým pro propojení Azure synapse](mailto:cosmosdbsynapselink@microsoft.com) a poskytnout nám svůj názor.
 
 ## <a name="overview"></a>Přehled
 
-Aby bylo možné podporovat dotazování a analýzu dat ve službě Azure Cosmos DB analytické úložiště, fond SQL bez serveru používá následující `OPENROWSET` syntaxi:
+Aby bylo možné podporovat dotazování a analýzu dat ve službě Azure Cosmos DB Analytical Store, fond SQL bez serveru používá následující `OPENROWSET` syntaxi:
 
 ```sql
 OPENROWSET( 
@@ -39,37 +39,38 @@ OPENROWSET(
     )  [ < with clause > ] AS alias
 ```
 
-Připojovací řetězec Azure Cosmos DB určuje Azure Cosmos DB název účtu, název databáze, hlavní klíč databázového účtu a nepovinný název oblasti, který má `OPENROWSET` fungovat. 
+Připojovací řetězec Azure Cosmos DB určuje Azure Cosmos DB název účtu, název databáze, hlavní klíč databázového účtu a nepovinný název oblasti `OPENROWSET` funkce.
 
 > [!IMPORTANT]
-> Ujistěte se, že používáte určitou databázovou kolaci UTF-8 (například `Latin1_General_100_CI_AS_SC_UTF8` ), protože řetězcové hodnoty v Cosmos DB analytických obchodech jsou kódované jako text v kódování UTF-8.
+> Ujistěte se, že používáte určitou databázovou kolaci UTF-8, například `Latin1_General_100_CI_AS_SC_UTF8` proto, že řetězcové hodnoty v Azure Cosmos DB analytických obchodech jsou kódované jako text v kódování UTF-8.
 > Neshoda mezi kódováním textu v souboru a kolaci může způsobit neočekávané chyby převodu textu.
-> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí příkazu T-SQL `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` .
 
 Připojovací řetězec má následující formát:
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
 
-Název kontejneru Azure Cosmos DB je zadán bez uvozovek v `OPENROWSET` syntaxi. Pokud má název kontejneru nějaké speciální znaky (například pomlčku '-'), název by měl být zabalen do `[]` (hranaté závorky) v `OPENROWSET` syntaxi.
+Název kontejneru Azure Cosmos DB je zadán bez uvozovek v `OPENROWSET` syntaxi. Pokud má název kontejneru nějaké speciální znaky, například pomlčkou (-), měl by se název v syntaxi uzavřít do hranatých závorek ( `[]` ) `OPENROWSET` .
 
 > [!NOTE]
-> Fond SQL bez serveru nepodporuje dotazování Azure Cosmos DB transakčním úložištěm.
+> Fond SQL bez serveru nepodporuje dotazování na Azure Cosmos DB transakční úložiště.
 
-## <a name="sample-data-set"></a>Ukázková datová sada
+## <a name="sample-dataset"></a>Ukázková datová sada
 
-Příklady v tomto článku jsou založené na datech z [Evropského centra pro prevenci a řízení nemocí (ECDC) COVID – 19 případů](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) a [COVID-19 Open Research DataSet (šňůra 19), Doi: 10.5281/zenodo. 3715505](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/). 
+Příklady v tomto článku jsou založené na datech z [Evropského centra pro prevenci a řízení nemocí (ECDC) COVID – 19 případů](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) a [COVID-19 Open Research DataSet (šňůra 19), Doi: 10.5281/zenodo. 3715505](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
-Můžete si Zobrazit licenci a strukturu dat na těchto stránkách a stáhnout ukázková data pro sady dat [ECDC](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json) a [Cord19](https://azureopendatastorage.blob.core.windows.net/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json) .
+Na těchto stránkách můžete zobrazit licenci a strukturu dat. Můžete si také stáhnout ukázková data pro datové sady [ECDC](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json) a [šňůr-19](https://azureopendatastorage.blob.core.windows.net/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json) .
 
-Pokud chcete postupovat podle tohoto článku předvádí, jak zadávat dotazy na data Cosmos DB s neserverovým fondem SQL, ujistěte se, že jste vytvořili tyto prostředky:
-* Účet databáze Azure Cosmos DB s [povoleným odkazem synapse](../../cosmos-db/configure-synapse-link.md)
-* Azure Cosmos DB databáze s názvem `covid`
-* Byly načteny dva kontejnery Azure Cosmos DB s názvem `EcdcCases` a `Cord19` nad sadou vzorových datových sad.
+Pokud chcete postupovat podle tohoto článku předvádí, jak zadávat dotazy na data Azure Cosmos DB s neserverovým fondem SQL, ujistěte se, že jste vytvořili tyto prostředky:
+
+* Účet databáze Azure Cosmos DB s [povoleným odkazem na Azure synapse](../../cosmos-db/configure-synapse-link.md).
+* Azure Cosmos DB databáze s názvem `covid` .
+* Dva kontejnery Azure Cosmos DB s názvem `EcdcCases` a `Cord19` načteny s předchozími ukázkovými datovými sadami.
 
 ## <a name="explore-azure-cosmos-db-data-with-automatic-schema-inference"></a>Zkoumání Azure Cosmos DB dat pomocí automatického odvození schématu
 
-Nejjednodušší způsob, jak prozkoumat data v Azure Cosmos DB, je využití možnosti automatického odvození schématu. Vyvoláním `WITH` klauzule z `OPENROWSET` příkazu můžete nastavit fond SQL bez serveru na automatické rozpoznávání (odvodit) schéma analytického úložiště kontejneru Azure Cosmos DB.
+Nejjednodušší způsob, jak prozkoumat data v Azure Cosmos DB, je použití možnosti automatického odvození schématu. Vyvoláním `WITH` klauzule z `OPENROWSET` příkazu můžete instruovat fond SQL bez serveru na automatické rozpoznávání (odvodit) schéma analytického úložiště kontejneru Azure Cosmos DB.
 
 ```sql
 SELECT TOP 10 *
@@ -78,9 +79,9 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-V předchozím příkladu dáváme pokyn k tomu, aby se fond SQL bez serveru připojil k `covid` databázi v Azure Cosmos DB účet `MyCosmosDbAccount` ověřený pomocí Azure Cosmos DB Key (fiktivní v předchozím příkladu). Pak přistupujeme k `EcdcCases` analytickému úložišti kontejneru v `West US 2` oblasti. Vzhledem k tomu, že neexistuje žádná projekce specifických vlastností, `OPENROWSET` funkce vrátí všechny vlastnosti z Azure Cosmos DBch položek. 
+V předchozím příkladu jsme pověřili fond SQL bez serveru pro připojení k `covid` databázi v Azure Cosmos DB účet `MyCosmosDbAccount` ověřený pomocí klíče Azure Cosmos dB (fiktivního v předchozím příkladu). Pak jsme k `EcdcCases` analytickému úložišti kontejneru přistupovali v `West US 2` oblasti. Vzhledem k tomu, že neexistuje žádná projekce specifických vlastností, `OPENROWSET` funkce vrátí všechny vlastnosti z Azure Cosmos DBch položek.
 
-V části předpokládá se, že položky v kontejneru Cosmos DB mají `date_rep` `cases` vlastnosti, a `geo_id` . výsledky tohoto dotazu jsou uvedeny v následující tabulce:
+Za předpokladu, že položky v kontejneru Azure Cosmos DB `date_rep` mají `cases` vlastnosti, a `geo_id` , výsledky tohoto dotazu jsou uvedeny v následující tabulce:
 
 | date_rep | věcech | geo_id |
 | --- | --- | --- |
@@ -88,7 +89,7 @@ V části předpokládá se, že položky v kontejneru Cosmos DB mají `date_rep
 | 2020-08-12 | 235 | RS |
 | 2020-08-11 | 163 | RS |
 
-Pokud potřebujete prozkoumat data z druhého kontejneru ve stejné Azure Cosmos DB databázi, můžete použít stejný připojovací řetězec a odkaz požadovaný kontejner jako třetí parametr:
+Pokud potřebujete prozkoumat data z druhého kontejneru ve stejné Azure Cosmos DB databázi, můžete použít stejný připojovací řetězec a odkazovat na požadovaný kontejner jako na třetí parametr:
 
 ```sql
 SELECT TOP 10 *
@@ -100,9 +101,11 @@ FROM OPENROWSET(
 
 ## <a name="explicitly-specify-schema"></a>Explicitně zadat schéma
 
-I když funkce automatického odvození schématu v nástroji `OPENROWSET` poskytuje jednoduché a snadno použitelné querience, vaše firemní scénáře můžou vyžadovat, abyste v Azure Cosmos DBch datech explicitně určili schéma pro konkrétní vlastnosti jen pro čtení.
+I když funkce automatického odvození schématu v nástroji `OPENROWSET` poskytuje jednoduché, snadno použitelné querience, vaše firemní scénáře můžou vyžadovat, abyste v Azure Cosmos DBch datech explicitně určili schéma pro příslušné vlastnosti jen pro čtení.
 
-`OPENROWSET` umožňuje explicitně určit, které vlastnosti chcete číst z dat v kontejneru a zadat jejich datové typy. Představme si, že jsme naimportovali data z [ECDC sady dat COVID](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) s následující strukturou do Azure Cosmos DB:
+`OPENROWSET`Funkce umožňuje explicitně určit, které vlastnosti chcete číst z dat v kontejneru a zadat jejich datové typy.
+
+Řekněme, že jsme naimportovali některá data z [datové sady ECDC COVID](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) s následující strukturou do Azure Cosmos DB:
 
 ```json
 {"date_rep":"2020-08-13","cases":254,"countries_and_territories":"Serbia","geo_id":"RS"}
@@ -110,7 +113,7 @@ I když funkce automatického odvození schématu v nástroji `OPENROWSET` posky
 {"date_rep":"2020-08-11","cases":163,"countries_and_territories":"Serbia","geo_id":"RS"}
 ```
 
-Tyto ploché dokumenty JSON ve Azure Cosmos DB můžou být reprezentované jako sada řádků a sloupců v synapse SQL. `OPENROWSET` funkce umožňuje určit podmnožinu vlastností, které chcete číst, a přesné typy sloupců v `WITH` klauzuli:
+Tyto ploché dokumenty JSON ve Azure Cosmos DB můžou být reprezentované jako sada řádků a sloupců v synapse SQL. `OPENROWSET`Funkce umožňuje určit podmnožinu vlastností, které chcete číst, a přesné typy sloupců v `WITH` klauzuli:
 
 ```sql
 SELECT TOP 10 *
@@ -121,7 +124,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-Výsledek tohoto dotazu může vypadat takto:
+Výsledek tohoto dotazu může vypadat podobně jako v následující tabulce:
 
 | date_rep | věcech | geo_id |
 | --- | --- | --- |
@@ -129,13 +132,13 @@ Výsledek tohoto dotazu může vypadat takto:
 | 2020-08-12 | 235 | RS |
 | 2020-08-11 | 163 | RS |
 
-Další informace o typech SQL, které by se měly použít pro Azure Cosmos DB hodnotu, najdete v článku [pravidla pro mapování typů SQL](#azure-cosmos-db-to-sql-type-mappings) na konci článku.
+Další informace o typech SQL, které by se měly používat pro Azure Cosmos DB hodnoty, najdete na stránce [pravidla pro mapování typů SQL](#azure-cosmos-db-to-sql-type-mappings) na konci článku.
 
-## <a name="querying-nested-objects-and-arrays"></a>Dotazování na vnořené objekty a pole
+## <a name="query-nested-objects-and-arrays"></a>Dotazování vnořených objektů a polí
 
-Azure Cosmos DB umožňuje znázornit složitější datové modely jejich sestavou jako vnořené objekty nebo pole. Funkce AutoSync pro synapse Link pro Azure Cosmos DB spravuje reprezentaci schématu v analytickém úložišti, která zahrnuje zpracování vnořených datových typů, což umožňuje získat bohatou dotazování z fondu SQL bez serveru.
+Pomocí Azure Cosmos DB můžete reprezentovat složitější datové modely jejich sestavou jako vnořené objekty nebo pole. Funkce AutoSync odkazu Azure synapse pro Azure Cosmos DB spravuje reprezentaci schématu v analytickém úložišti, která zahrnuje zpracování vnořených datových typů, které umožňují vytvářet dotazy z fondu SQL bez serveru.
 
-Například datová sada [šňůr-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) obsahuje dokumenty JSON, které následují následující strukturu:
+Například datová sada [šňůr-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) obsahuje dokumenty JSON, které následují tuto strukturu:
 
 ```json
 {
@@ -149,7 +152,7 @@ Například datová sada [šňůr-19](https://azure.microsoft.com/services/open-
 }
 ```
 
-Vnořené objekty a pole v Azure Cosmos DB jsou reprezentovány jako řetězce JSON ve výsledku dotazu, pokud `OPENROWSET` je funkce čte. Jedna z možností, jak číst hodnoty z těchto komplexních typů, protože sloupce SQL používá funkce SQL JSON:
+Vnořené objekty a pole v Azure Cosmos DB jsou reprezentovány jako řetězce JSON ve výsledku dotazu, pokud `OPENROWSET` je funkce čte. Jedna z možností, jak číst hodnoty z těchto komplexních typů jako sloupce SQL, je použití funkcí SQL JSON:
 
 ```sql
 SELECT
@@ -164,7 +167,7 @@ FROM
     WITH ( metadata varchar(MAX) ) AS docs;
 ```
 
-Výsledek tohoto dotazu může vypadat takto:
+Výsledek tohoto dotazu může vypadat podobně jako v následující tabulce:
 
 | title | Autoři | first_autor_name |
 | --- | --- | --- |
@@ -185,15 +188,15 @@ FROM
     ) AS docs;
 ```
 
-Přečtěte si další informace o analýze [složitých datových typů v odkazech na synapse](../how-to-analyze-complex-schema.md) a [ve vnořených strukturách ve fondu SQL bez serveru](query-parquet-nested-types.md).
+Přečtěte si další informace o analýze [složitých datových typů v odkazech Azure synapse](../how-to-analyze-complex-schema.md) a [ve vnořených strukturách v neserverovém fondu SQL](query-parquet-nested-types.md).
 
 > [!IMPORTANT]
-> Pokud se v textu zobrazí neočekávané znaky jako `MÃƒÂ©lade` místo, není `Mélade` kolace databáze nastavena na kolaci [UTF8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) . 
-> [Změňte kolaci databáze](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) na určitou kolaci UTF8 pomocí nějakého příkazu SQL `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` , jako je.
+> Pokud se v textu jako místo, zobrazí neočekávané znaky `MÃƒÂ©lade` `Mélade` , není kolace databáze nastavená na rekolaci [UTF-8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) .
+> [Změňte kolaci databáze](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) na kolaci UTF-8 pomocí příkazu SQL, jako je `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
 
-## <a name="flattening-nested-arrays"></a>Sloučení vnořených polí
+## <a name="flatten-nested-arrays"></a>Sloučit vnořená pole
 
-Data Azure Cosmos DB můžou mít vnořená podpole, jako je pole autora ze sady dat [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) :
+Data Azure Cosmos DB mohou mít vnořená podpole, jako je pole autora, z datové sady [šňůr-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) :
 
 ```json
 {
@@ -235,7 +238,7 @@ FROM
                   ) AS a
 ```
 
-Výsledek tohoto dotazu může vypadat takto:
+Výsledek tohoto dotazu může vypadat podobně jako v následující tabulce:
 
 | title | Autoři | první | poslední | přidružení |
 | --- | --- | --- | --- | --- |
@@ -245,30 +248,28 @@ Doplňující informace epidemi... | `[{"first":"Nicolas","last":"4#","suffix":"
 | Doplňující informace epidemi... |   `[{"first":"Olivier","last":"Flores","suffix":"","affiliation":{"laboratory":"UMR C53 CIRAD, …` | Olivier | Flores |`{"laboratory":"UMR C53 CIRAD, …` |     
 
 > [!IMPORTANT]
-> Pokud se v textu zobrazí neočekávané znaky jako `MÃƒÂ©lade` místo, není `Mélade` kolace databáze nastavena na kolaci [UTF8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) . 
-> [Změňte kolaci databáze](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) na určitou kolaci UTF8 pomocí nějakého příkazu SQL `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` , jako je.
+> Pokud se v textu jako místo, zobrazí neočekávané znaky `MÃƒÂ©lade` `Mélade` , není kolace databáze nastavená na rekolaci [UTF-8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) . [Změňte kolaci databáze](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) na kolaci UTF-8 pomocí příkazu SQL, jako je `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Mapování typů Azure Cosmos DB na SQL
 
-Je důležité nejdřív si uvědomit, že zatímco Azure Cosmos DB transakčního úložiště je Schema-nezávislá, je analytické úložiště schematized na optimalizaci pro výkon analytických dotazů. Díky schopnosti autosync v synapse Azure Cosmos DB propojení se v analytickém úložišti nástroje spravují reprezentace schématu, která zahrnuje zpracování vnořených datových typů. Vzhledem k tomu, že fond SQL bez serveru se dotazuje na analytické úložiště, je důležité pochopit, jak namapovat Azure Cosmos DB vstupní datové typy na datové typy SQL.
+I když Azure Cosmos DB transakční úložiště je Schema-nezávislá, je analytické úložiště schematized na optimalizaci pro výkon analytických dotazů. Díky možnosti automatické synchronizace v rámci odkazu na Azure synapse Azure Cosmos DB spravuje reprezentaci schématu v analytickém úložišti, která zahrnuje zpracování vnořených datových typů. Vzhledem k tomu, že fond SQL bez serveru se dotazuje na analytické úložiště, je důležité pochopit, jak namapovat Azure Cosmos DB vstupní datové typy na datové typy SQL.
 
-Azure Cosmos DB účty rozhraní API SQL (Core) API podporují typy vlastností JSON číslo, řetězec, logická hodnota, null, vnořený objekt nebo pole. Pokud používáte klauzuli v, musíte zvolit typy SQL, které odpovídají těmto typům JSON `WITH` `OPENROWSET` . Viz níže typy sloupců SQL, které by měly být použity pro různé typy vlastností v Azure Cosmos DB.
+Azure Cosmos DB účty rozhraní API SQL (Core) API podporují typy vlastností JSON číslo, řetězec, logická hodnota, null, vnořený objekt nebo pole. Pokud používáte klauzuli v, musíte zvolit typy SQL, které odpovídají těmto typům JSON `WITH` `OPENROWSET` . V následující tabulce jsou uvedeny typy sloupců SQL, které by měly být použity pro různé typy vlastností v Azure Cosmos DB.
 
 | Typ vlastnosti Azure Cosmos DB | Typ sloupce SQL |
 | --- | --- |
 | Logická hodnota | bit |
 | Integer | bigint |
 | Decimal | float |
-| Řetězec | varchar (kolace databáze UTF8) |
-| Datum a čas (formátovaný řetězec ISO) | varchar (30) |
+| Řetězec | varchar (databázová kola UTF-8) |
+| Datum a čas (řetězec ve formátu ISO) | varchar (30) |
 | Datum a čas (časové razítko systému UNIX) | bigint |
 | Null | `any SQL type` 
-| Vnořený objekt nebo pole | varchar (max) (kolace databáze UTF8), serializovaná jako text JSON |
+| Vnořený objekt nebo pole | varchar (max) (kolace databáze UTF-8), serializovaná jako text JSON |
 
 ## <a name="full-fidelity-schema"></a>Schéma s úplnými kvalitami
 
-Azure Cosmos DB plné schéma přesnosti zaznamenává obě hodnoty a jejich nejlepší typy shod pro každou vlastnost v kontejneru.
-`OPENROWSET` funkce na kontejneru s schématem s plnou přesností poskytuje jak typ, tak skutečnou hodnotu v každé buňce. Řekněme, že následující dotaz čte položky z kontejneru se schématem s úplnými věrností:
+Azure Cosmos DB plné schéma přesnosti zaznamenává obě hodnoty a jejich nejlepší typy shod pro každou vlastnost v kontejneru. `OPENROWSET`Funkce na kontejneru s schématem s úplnými věrností poskytuje jak typ, tak skutečnou hodnotu v každé buňce. Řekněme, že následující dotaz čte položky z kontejneru se schématem s úplnými věrností:
 
 ```sql
 SELECT *
@@ -279,7 +280,7 @@ FROM OPENROWSET(
     ) as rows
 ```
 
-Výsledek tohoto dotazu bude vracet typy a hodnoty formátované jako text JSON: 
+Výsledek tohoto dotazu bude vracet typy a hodnoty formátované jako text JSON:
 
 | date_rep | věcech | geo_id |
 | --- | --- | --- |
@@ -291,20 +292,19 @@ Výsledek tohoto dotazu bude vracet typy a hodnoty formátované jako text JSON:
 | {"String": "2020/08/08"} | {"Int32": "312"} | {"String": "RS"} |
 | {"date": "2020-08-07"} | {"float64": "339.0"} | {"String": "RS"} |
 
-U každé hodnoty vidíte typ identifikovaný v Cosmos DB položka kontejneru. Většina hodnot `date_rep` vlastnosti obsahuje `date` hodnoty, ale některé z nich jsou nesprávně uloženy jako řetězce v Cosmos DB. Schéma s úplnou věrností vrátí správně zadané `date` hodnoty a nesprávně naformátované `string` hodnoty.
-Počet případů je informace uložená jako `int32` hodnota, ale jedna hodnota je zadána jako desetinné číslo. Tato hodnota je `float64` typu. Pokud existují některé hodnoty, které překračují největší `int32` číslo, budou uloženy jako `int64` typ. Všechny `geo_id` hodnoty v tomto příkladu jsou uloženy jako `string` typy.
+U každé hodnoty vidíte typ identifikovaný v Azure Cosmos DB položce kontejneru. Většina hodnot `date_rep` vlastnosti obsahuje `date` hodnoty, ale některé z nich jsou nesprávně uloženy jako řetězce v Azure Cosmos DB. Schéma s úplnou věrností vrátí správně zadané `date` hodnoty a nesprávně naformátované `string` hodnoty.
+Počet případů je informace uložená jako `int32` hodnota, ale jedna hodnota je zadaná jako desetinné číslo. Tato hodnota má `float64` typ. Pokud existují některé hodnoty, které překračují největší `int32` číslo, budou uloženy jako `int64` typ. Všechny `geo_id` hodnoty v tomto příkladu jsou uloženy jako `string` typy.
 
 > [!IMPORTANT]
-> `OPENROWSET` klauzule bez `WITH` klauzule zveřejňuje obě hodnoty s očekávanými typy a hodnotami s nesprávně zadanými typy. Tato funkce je navržena pro zkoumání dat, nikoli pro vytváření sestav. Neanalyzujte hodnoty JSON vrácené z této funkce pro vytváření sestav a použití explicitní [klauzule WITH](#querying-items-with-full-fidelity-schema) k vytvoření sestav.
-> Měli byste vyčistit hodnoty, které mají nesprávné typy v kontejneru Azure Cosmos DB, aby bylo možné použít korect v plném analytickém úložišti s přesností. 
+> `OPENROWSET`Funkce bez `WITH` klauzule zveřejňuje obě hodnoty s očekávanými typy a hodnotami s nesprávně zadanými typy. Tato funkce je určená pro zkoumání dat, nikoli pro vytváření sestav. Neanalyzujte hodnoty JSON vrácené z této funkce pro vytváření sestav. K vytvoření sestav použijte explicitní [klauzuli WITH](#query-items-with-full-fidelity-schema) . V kontejneru Azure Cosmos DB byste měli vyčistit hodnoty, které mají nesprávné typy pro aplikování oprav v plném analytickém úložišti věrnosti.
 
-Pro dotazování Azure Cosmos DBch účtů typu rozhraní API služby Mongo DB můžete získat další informace o úplném vyjádření schématu přesnosti v analytickém úložišti a o rozšířených názvech vlastností, které se [tady](../../cosmos-db/analytical-store-introduction.md#analytical-schema)mají použít.
+Pokud potřebujete zadat dotaz na účty Azure Cosmos DB typu rozhraní API Mongo DB, můžete získat další informace o úplném vyjádření schématu přesnosti v analytickém úložišti a názvu rozšířených vlastností, které se mají použít v [tom, co je Azure Cosmos DB analytické úložiště (Preview)?](../../cosmos-db/analytical-store-introduction.md#analytical-schema).
 
-### <a name="querying-items-with-full-fidelity-schema"></a>Dotazování na položky pomocí schématu s plnou věrností
+### <a name="query-items-with-full-fidelity-schema"></a>Dotazování na položky s úplným schématem přesnosti
 
-Při dotazování schématu na celé přesnosti musíte explicitně zadat typ SQL a očekávaný Cosmos DB typ vlastnosti v `WITH` klauzuli. Nepoužívejte `OPENROWSET` klauzuli bez `WITH` klauzule v sestavách, protože formát sady výsledků může být změněn ve verzi Preview na základě zpětné vazby.
+Při dotazování na schéma s úplnými přesnostmi musíte explicitně zadat typ SQL a očekávaný typ vlastnosti Azure Cosmos DB v `WITH` klauzuli. Nepoužívejte `OPENROWSET` bez `WITH` klauzule v sestavách, protože formát sady výsledků může být změněn ve verzi Preview na základě zpětné vazby.
 
-V následujícím příkladu se předpokládá, že `string` je správný typ pro `geo_id` vlastnost a `int32` správný typ pro `cases` vlastnost:
+V následujícím příkladu předpokládáme, že `string` je správný typ pro `geo_id` vlastnost a `int32` je správného typu pro `cases` vlastnost:
 
 ```sql
 SELECT geo_id, cases = SUM(cases)
@@ -320,7 +320,7 @@ GROUP BY geo_id
 
 Hodnoty pro `geo_id` a `cases` , které mají jiné typy, budou vráceny jako `NULL` hodnoty. Tento dotaz bude odkazovat pouze na `cases` zadaný typ ve výrazu ( `cases.int32` ).
 
-Pokud máte hodnoty s jinými typy ( `cases.int64` , `cases.float64` ), které nelze vyčistit v Cosmos DB kontejneru, bude nutné explicitně odkazovat v `WITH` klauzuli in a kombinovat výsledky. Následující dotaz agreguje a `int32` `int64` `float64` ukládá do `cases` sloupce:
+Pokud máte hodnoty s jinými typy ( `cases.int64` , `cases.float64` ), které nelze vyčistit v kontejneru Azure Cosmos DB, je nutné je explicitně odkazovat v `WITH` klauzuli a kombinovat výsledky. Následující dotaz agreguje a `int32` `int64` `float64` ukládá do `cases` sloupce:
 
 ```sql
 SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
@@ -336,30 +336,30 @@ FROM OPENROWSET(
 GROUP BY geo_id
 ```
 
-V tomto příkladu je počet případů uložen buď jako `int32` , `int64` nebo `float64` hodnoty a všechny hodnoty musí být extrahovány, aby bylo možné vypočítat počet případů na zemi. 
+V tomto příkladu je počet případů uložen buď jako `int32` , `int64` nebo jako `float64` hodnoty. Pro výpočet počtu případů na zemi musí být extrahovány všechny hodnoty.
 
 ## <a name="known-issues"></a>Známé problémy
 
-- Dotaz na možnosti, že fond SQL bez serveru poskytuje [Azure Cosmos DB úplných schémat přesnosti](#full-fidelity-schema) je dočasné chování, které se změní na základě zpětné vazby ve verzi Preview. Nespoléhá se na schéma, které `OPENROWSET` funkce bez `WITH` klauzule poskytuje během veřejné verze Preview, protože prostředí dotazů může být zarovnané podle dobře definovaného schématu na základě zpětné vazby od zákazníků. Pokud chcete poskytnout zpětnou vazbu, kontaktujte [produktový tým synapse Link](mailto:cosmosdbsynapselink@microsoft.com) .
-- Fond SQL bez serveru nebude vracet chybu při kompilaci, pokud `OPENROSET` kolace sloupce nemá kódování UTF-8. Výchozí kolaci pro všechny `OPENROWSET` funkce běžící v aktuální databázi můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+- Dotaz na možnosti, že fond SQL bez serveru poskytuje [Azure Cosmos DB úplných schémat přesnosti](#full-fidelity-schema) je dočasné chování, které se změní na základě zpětné vazby ve verzi Preview. Nespoléhá se na schéma, které `OPENROWSET` funkce bez `WITH` klauzule poskytuje během veřejné verze Preview, protože prostředí dotazů může být zarovnané podle dobře definovaného schématu na základě zpětné vazby od zákazníků. Pokud chcete poskytnout zpětnou vazbu, obraťte se na [produktový tým s odkazem na Azure synapse](mailto:cosmosdbsynapselink@microsoft.com).
+- Fond SQL bez serveru nevrátí chybu při kompilaci, pokud `OPENROWSET` kolace sloupce nemá kódování UTF-8. Můžete snadno změnit výchozí kolaci pro všechny `OPENROWSET` funkce běžící v aktuální databázi pomocí příkazu T-SQL `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` .
 
-Možné chyby a akce při řešení potíží jsou uvedené v následující tabulce:
+Možné chyby a akce při řešení potíží jsou uvedené v následující tabulce.
 
 | Chyba | Původní příčina |
 | --- | --- |
-| Chyby syntaxe:<br/> – Nesprávná syntaxe v blízkosti položky OpenRowset<br/> - `...` není rozpoznaná možnost HROMADNÉho poskytovatele OPENROWSET.<br/> – Nesprávná syntaxe poblíž textu `...` | Možné hlavní příčiny<br/> -Nepoužívá se jako první parametr ' CosmosDB ',<br/> -Použití řetězcového literálu místo identifikátoru ve třetím parametru<br/> -Nespecifikuje se třetí parametr (název kontejneru). |
-| V připojovacím řetězci CosmosDB došlo k chybě. | – Účet, databáze, klíč není zadaný. <br/> -V připojovacím řetězci existuje možnost, která není rozpoznána.<br/> – Středník `;` je umístěný na konci připojovacího řetězce. |
-| Překlad cesty CosmosDB se nezdařil s chybou, nesprávný název účtu nebo nesprávný název databáze. | Zadaný název účtu, název databáze nebo kontejner se nenašel nebo nebylo povolené analytické úložiště o zadané kolekci.|
-| Překlad cesty CosmosDB se nezdařil s chybou "nesprávná tajná hodnota" nebo "tajný klíč má hodnotu null nebo je prázdný". | Klíč účtu není platný nebo chybí. |
-| Sloupec `column name` typu není `type name` kompatibilní s externím datovým typem. `type name` | Zadaný typ sloupce `WITH` klauzule neodpovídá typu v kontejneru Cosmos DB. Zkuste změnit typ sloupce tak, jak je popsán v části [Azure Cosmos DB mapování typu SQL](#azure-cosmos-db-to-sql-type-mappings) nebo `VARCHAR` typ použití. |
-| Sloupec obsahuje `NULL` hodnoty ve všech buňkách. | Pravděpodobnou příčinou je nesprávný název sloupce nebo výraz cesty v `WITH` klauzuli. Název sloupce (nebo výraz cesty za typem sloupce) klauzule v `WITH` klauzuli Cosmos DB Collection se musí shodovat s názvem některé vlastnosti. Porovnávání rozlišuje **velká a malá písmena**  (například `productCode` a `ProductCode` jsou různé vlastnosti). |
+| Chyby syntaxe:<br/> -Nesprávná syntaxe poblíž textu "OPENROWSET"<br/> - `...` není rozpoznaná možnost HROMADNÉho poskytovatele OPENROWSET.<br/> – Nesprávná syntaxe poblíž textu `...` | Možné hlavní příčiny:<br/> – Nepoužívá CosmosDB jako první parametr.<br/> – Použití řetězcového literálu místo identifikátoru ve třetím parametru.<br/> -Nelze zadat třetí parametr (název kontejneru). |
+| V připojovacím řetězci CosmosDB došlo k chybě. | – Účet, databáze nebo klíč není zadaný. <br/> – V připojovacím řetězci je nějaká možnost, která není rozpoznaná.<br/> – Střední ( `;` ) je umístěn na konci připojovacího řetězce. |
+| Překlad cesty CosmosDB se nezdařil s chybou "nesprávný název účtu" nebo "nesprávný název databáze". | Zadaný název účtu, název databáze nebo kontejner se nepodařilo najít, nebo nebylo povoleno analytické úložiště do zadané kolekce.|
+| Překlad cesty CosmosDB se nezdařil s chybou "nesprávná tajná hodnota" nebo "tajný klíč má hodnotu null nebo je prázdný." | Klíč účtu není platný nebo chybí. |
+| Sloupec `column name` typu `type name` není kompatibilní s externím datovým typem `type name` . | Zadaný typ sloupce v klauzuli se `WITH` neshoduje s typem v kontejneru Azure Cosmos DB. Zkuste změnit typ sloupce tak, jak je popsán v části [Azure Cosmos DB mapování typu SQL](#azure-cosmos-db-to-sql-type-mappings), nebo použijte `VARCHAR` typ. |
+| Sloupec obsahuje `NULL` hodnoty ve všech buňkách. | Pravděpodobnou příčinou je nesprávný název sloupce nebo výraz cesty v `WITH` klauzuli. Název sloupce (nebo výraz cesty za typem sloupce) v `WITH` klauzuli se musí shodovat s názvem některé vlastnosti v kolekci Azure Cosmos DB. Porovnávání rozlišuje *velká a malá písmena*. Například `productCode` a `ProductCode` jsou různé vlastnosti. |
 
-Návrhy a problémy můžete nahlásit na [stránce s názory na Azure synapse](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862).
+Návrhy a problémy můžete nahlásit na [stránce pro zpětnou vazbu ke službě Azure synapse Analytics](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862).
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v následujících článcích:
 
 - [Použití Power BI a neserverového fondu SQL s propojením Azure synapse](../../cosmos-db/synapse-link-power-bi.md)
-- [Postupy: vytváření a používání zobrazení ve fondu SQL bez serveru](create-use-views.md) 
+- [Vytváření a používání zobrazení ve fondu SQL bez serveru](create-use-views.md)
 - [Kurz týkající se vytváření zobrazení fondu SQL bez serveru přes Azure Cosmos DB a jejich propojení s Power BI modely prostřednictvím DirectQuery](./tutorial-data-analyst.md)

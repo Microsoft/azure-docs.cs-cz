@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 7bcdabdb4e49d198b9acb7a1c57312b31a5b4fff
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 51e9e66e2fd8ff60dd20c275a66fd13c047cc629
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842222"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985514"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Uživatelsky iniciované ruční převzetí služeb při selhání na spravované instanci SQL
 
@@ -37,9 +37,9 @@ V některých z následujících důvodů můžete zvážit spuštění [ruční
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Iniciovat ruční převzetí služeb při selhání na spravované instanci SQL
 
-### <a name="rbac-permissions-required"></a>Vyžadována oprávnění RBAC
+### <a name="azure-rbac-permissions-required"></a>Vyžaduje se oprávnění Azure RBAC.
 
-Uživatel, který iniciuje převzetí služeb při selhání, bude muset mít jednu z následujících rolí RBAC:
+Uživatel, který iniciuje převzetí služeb při selhání, bude muset mít jednu z následujících rolí Azure:
 
 - Role vlastníka předplatného nebo
 - Role přispěvatele spravované instance nebo

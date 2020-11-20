@@ -1,15 +1,15 @@
 ---
 title: Podrobnosti dodržování předpisů v souladu s předpisy pro NIST SP 800-53 R4
 description: Podrobnosti o integrované iniciativě NIST SP 800-53 R4 dodržování předpisů Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: f3b4253f21bc13bf4ce728f3913f88bef9065b87
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f4a355bf87f679f3a9ac412fad3a1258ca399654
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700620"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987129"
 ---
 # <a name="details-of-the-nist-sp-800-53-r4-regulatory-compliance-built-in-initiative"></a>Podrobnosti o integrované iniciativě NIST SP 800-53 R4 dodržování předpisů
 
@@ -31,7 +31,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-1 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1000 – zásady a postupy pro Access Control](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2ef3cc79-733e-48ed-ab6f-7bf439e9b406) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1000.json) |
 |[Microsoft Managed Control 1001 – zásady a postupy pro Access Control](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4e26f8c3-4bf3-4191-b8fc-d888805101b7) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1001.json) |
@@ -40,7 +40,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Zastaralé účty by se měly odebírat z předplatného.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6b1cbf55-e8b6-442f-ba4c-7246b6381474) |Zastaralé účty by se měly odebírat z vašich předplatných.  Zastaralé účty jsou účty, kterým se zablokuje přihlášení. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveDeprecatedAccounts_Audit.json) |
 |[Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Febb62a0c-3560-49e1-89ed-27e074e9f8ad) |Zastaralé účty s oprávněním vlastníka by měly být odebrány z vašeho předplatného.  Zastaralé účty jsou účty, kterým se zablokuje přihlášení. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveDeprecatedAccountsWithOwnerPermissions_Audit.json) |
@@ -63,7 +63,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-2 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1013-Account Management \| automatizovaná správa účtů systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8fd7b917-d83b-4379-af60-51e14e316c61) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1013.json) |
 
@@ -71,7 +71,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-2 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1014 – Správa účtů – \| odebrání dočasných účtů/mimořádných účtů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5dee936c-8037-4df1-ab35-6635733da48c) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1014.json) |
 
@@ -79,7 +79,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-2 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1015 – Správa účtů \| Zakázat neaktivní účty](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F544a208a-9c3f-40bc-b1d1-d7e144495c14) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1015.json) |
 
@@ -87,7 +87,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-2 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1016 – \| Akce automatizovaného auditu správy účtů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd8b43277-512e-40c3-ab00-14b3b6e72238) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1016.json) |
 
@@ -95,7 +95,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-2 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1017 – \| odhlášení nečinnosti správy účtů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0fc3db37-e59a-48c1-84e9-1780cedb409e) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1017.json) |
 
@@ -103,7 +103,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-2 (7) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Pro SQL servery by se měl zřídit správce Azure Active Directory.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f314764-cb73-4fc9-b863-8eca98ac36e9) |Proveďte audit zřizování správce Azure Active Directory pro SQL Server, aby se povolilo ověřování Azure AD. Ověřování Azure AD umožňuje zjednodušenou správu oprávnění a centralizovanou správu identit uživatelů databáze a dalších služeb Microsoftu. |AuditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SQL_DB_AuditServerADAdmins_Audit.json) |
 |[Auditovat využití vlastních pravidel RBAC](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa451c1ef-c6ca-483d-87ed-f49761e3ffb5) |Místo vlastních rolí RBAC, které jsou náchylné k chybám, byste měli auditovat předdefinované role, jako je vlastník, přispěvatel, čtenář. Použití vlastních rolí se považuje za výjimku a vyžaduje přísné kontroly a modelování hrozeb. |Audit, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/Subscription_AuditCustomRBACRoles_Audit.json) |
@@ -116,7 +116,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-2 (9) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1021 – omezení správy účtů \| pro použití sdílených a skupinových účtů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9a3eb0a3-428d-4669-baff-20a14eb4b551) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1021.json) |
 
@@ -124,7 +124,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-2 (10) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1022 – \| ukončení přihlašovacích údajů účtu Shared/Group Management](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F411f7e2d-9a0b-4627-a0b9-1700432db47d) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1022.json) |
 
@@ -132,7 +132,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-2 (11) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravované řízení společnosti Microsoft 1023 – \| podmínky použití správy účtů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe55698b6-3dea-4aa9-99b9-d8218c6ab6e5) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1023.json) |
 
@@ -140,7 +140,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-2 (12) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Porty pro správu virtuálních počítačů by měly být chráněné pomocí řízení přístupu k síti za běhu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb0f33259-77d7-4c9e-aac6-3aabcfae693c) |Přístup k síti je možný jenom v čase (JIT) se monitoruje Azure Security Center jako doporučení. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_JITNetworkAccess_Audit.json) |
 |[Microsoft Managed Control 1024 – \| monitorování/nezvyklé použití účtu správy účtů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F84914fb4-12da-4c53-a341-a9fd463bed10) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1024.json) |
@@ -150,7 +150,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-2 (13) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1026 – Správa účtů \| zakáže účty High-Risk jednotlivcům.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55419419-c597-4cd4-b51e-009fd2266783) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1026.json) |
 
@@ -158,7 +158,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1027 – vynucení přístupu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa76ca9b0-3f4a-4192-9a38-b25e4f8ae48c) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1027.json) |
 
@@ -166,7 +166,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Sdílení CORS by nemělo umožňovat přístup k webovým aplikacím všem prostředkům](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5744710e-cc2f-4ee8-8809-3b11e89f4bc9) |Sdílení prostředků mezi zdroji (CORS) by nemělo umožňovat přístup k vaší webové aplikaci všem doménám. Povoluje interakci jenom požadovaných domén s webovou aplikací. |AuditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_RestrictCORSAccess_WebApp_Audit.json) |
 |[Microsoft Managed Control 1028 – vynucení toku informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff171df5c-921b-41e9-b12b-50801c315475) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1028.json) |
@@ -175,7 +175,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-4 (8) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1029 – \| filtry zásad zabezpečení vynucování toku informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53ac8f8e-c2b5-4d44-8a2d-058e9ced9b69) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1029.json) |
 
@@ -183,7 +183,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-4 (21) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1030 – \| fyzické a logické oddělení informačních toků k vynucení toku informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd3531453-b869-4606-9122-29c1cd6e7ed1) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1030.json) |
 
@@ -191,7 +191,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-5 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f11b553-d42e-4e3a-89be-32ca364cad4c) |Doporučuje se určit až 3 vlastníky předplatného, aby se snížila pravděpodobnost porušení napadeného vlastníka. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_DesignateLessThanXOwners_Audit.json) |
 |[Audit počítačů s Windows chybějících zadaných členů ve skupině Administrators](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F30f71ea1-ac77-4f26-9fc5-2d926bbd4ba7) |Vyžaduje nasazení požadovaných požadavků do oboru přiřazení zásad. Podrobnosti najdete na adrese [https://aka.ms/gcpol](https://aka.ms/gcpol) . Počítače jsou nekompatibilní, pokud místní skupina Administrators neobsahuje jednoho nebo více členů uvedených v parametru zásad. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToInclude_AINE.json) |
@@ -205,7 +205,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-6 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1034 – nejnižší oprávnění](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F02a5ed00-6d2e-4e97-9a98-46c32c057329) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1034.json) |
 
@@ -213,7 +213,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-6 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1035 – minimální oprávnění \| k autorizaci přístupu k funkcím zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fca94b046-45e2-444f-a862-dc8ce262a516) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1035.json) |
 
@@ -221,7 +221,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-6 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1036 – minimální oprávnění \| bez privilegovaného přístupu pro nezabezpečené funkce](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9a16d673-8cf0-4dcf-b1d5-9b3e114fef71) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1036.json) |
 
@@ -229,7 +229,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-6 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1037 – nejnižší oprávnění \| síťový přístup k privilegovaným příkazům](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffa4c2a3d-1294-41a3-9ada-0e540471e9fb) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1037.json) |
 
@@ -237,7 +237,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-6 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1038 – privilegované účty s minimálním oprávněním \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26692e88-71b7-4a5f-a8ac-9f31dd05bd8e) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1038.json) |
 
@@ -245,7 +245,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-6 (7) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f11b553-d42e-4e3a-89be-32ca364cad4c) |Doporučuje se určit až 3 vlastníky předplatného, aby se snížila pravděpodobnost porušení napadeného vlastníka. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_DesignateLessThanXOwners_Audit.json) |
 |[Audit počítačů s Windows chybějících zadaných členů ve skupině Administrators](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F30f71ea1-ac77-4f26-9fc5-2d926bbd4ba7) |Vyžaduje nasazení požadovaných požadavků do oboru přiřazení zásad. Podrobnosti najdete na adrese [https://aka.ms/gcpol](https://aka.ms/gcpol) . Počítače jsou nekompatibilní, pokud místní skupina Administrators neobsahuje jednoho nebo více členů uvedených v parametru zásad. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToInclude_AINE.json) |
@@ -258,7 +258,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-6 (8) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1041 – minimální \| úrovně oprávnění pro provádění kódu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb3d8d15b-627a-4219-8c96-4d16f788888b) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1041.json) |
 
@@ -266,7 +266,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-6 (9) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1042 – auditování minimálních oprávnění \| pomocí privilegovaných funkcí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F319dc4f0-0fed-4ac9-8fc3-7aeddee82c07) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1042.json) |
 
@@ -274,7 +274,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-6 (10) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1043 – minimální oprávnění \| zakázat uživatelům, kteří nemají oprávnění k provádění privilegovaných funkcí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F361a77f6-0f9c-4748-8eec-bc13aaaa2455) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1043.json) |
 
@@ -282,7 +282,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-7 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1044 – neúspěšné pokusy o přihlášení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0abbac52-57cf-450d-8408-1208d0dd9e90) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1044.json) |
 |[Microsoft Managed Control 1045 – neúspěšné pokusy o přihlášení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F554d2dd6-f3a8-4ad5-b66f-5ce23bd18892) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1045.json) |
@@ -291,7 +291,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-7 (2) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1046 – automatické uzamčení účtu – \| mobilní zařízení vyprázdnění/vymazání](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b1aa965-7502-41f9-92be-3e2fe7cc392a) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1046.json) |
 
@@ -299,7 +299,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-8 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1047 – oznámení o použití systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1ff6d62-a55c-41ab-90ba-90bb5b7b6f62) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1047.json) |
 |[Microsoft Managed Control 1048 – oznámení o použití systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F483e7ca9-82b3-45a2-be97-b93163a0deb7) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1048.json) |
@@ -309,7 +309,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-10 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1050 – souběžné řízení relace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbd20184c-b4ec-4ce5-8db6-6e86352d183f) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1050.json) |
 
@@ -317,7 +317,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-11 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1051 – zámek relace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7cac6ee9-b58b-40c8-a5ce-f0efc3d9b339) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1051.json) |
 |[Spravovaný ovládací prvek společnosti Microsoft 1052 – zámek relace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F027cae1c-ec3e-4492-9036-4168d540c42a) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1052.json) |
@@ -326,7 +326,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-11 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravované řízení od společnosti Microsoft 1053 – \| zobrazení zámku relace Pattern-Hiding](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7582b19c-9dba-438e-aed8-ede59ac35ba3) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1053.json) |
 
@@ -334,7 +334,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-12 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravované řízení od společnosti Microsoft 1054 – ukončení relace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5807e1b4-ba5e-4718-8689-a0ca05a191b2) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1054.json) |
 
@@ -342,7 +342,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-12 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1055 – ukončení relace \| User-Initiated odhlášení nebo zobrazení zpráv](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F769efd9b-3587-4e22-90ce-65ddcd5bd969) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1055.json) |
 |[Microsoft Managed Control 1056 – ukončení relace \| User-Initiated odhlášení nebo zobrazení zpráv](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac43352f-df83-4694-8738-cfce549fd08d) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1056.json) |
@@ -351,7 +351,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-14 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1057 – povolené akce bez identifikace nebo ověřování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F78255758-6d45-4bf0-a005-7016bc03b13c) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1057.json) |
 |[Microsoft Managed Control 1058 – povolené akce bez identifikace nebo ověřování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F76e85d08-8fbb-4112-a1c1-93521e6a9254) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1058.json) |
@@ -360,7 +360,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-16 **vlastnictví**: zákazník
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[V případě spravované instance SQL by mělo být povolené rozšířené zabezpečení dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb7388-5bf4-4ad7-ba99-2cd2f41cebb9) |Auditujte všechny spravované instance SQL bez pokročilých zabezpečení dat. |AuditIfNotExists, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurity_Audit.json) |
 |[Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb4388-5bf4-4ad7-ba82-2cd2f41ceae9) |Auditovat SQL servery bez pokročilých zabezpečení dat |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_AdvancedDataSecurity_Audit.json) |
@@ -369,7 +369,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-17 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1059 – vzdálený přístup](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa29b5d9f-4953-4afe-b560-203a6410b6b4) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1059.json) |
 |[Microsoft Managed Control 1060 – vzdálený přístup](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34a987fd-2003-45de-a120-014956581f2b) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1060.json) |
@@ -378,7 +378,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-17 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Přidat spravovanou identitu přiřazenou systémem a povolit přiřazení konfigurace hostů na virtuálních počítačích bez identit](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e) |Tato zásada přidává spravovanou identitu přiřazenou systémem do virtuálních počítačů hostovaných v Azure, které jsou podporované konfigurací hosta, ale nemají žádné spravované identity. Spravovaná identita přiřazená systémem je předpokladem pro všechna přiřazení konfigurace hostů a musí se do počítačů přidat před použitím libovolných definic zásad konfigurace hostů. Další informace o konfiguraci hosta najdete na adrese [https://aka.ms/gcpol](https://aka.ms/gcpol) . |modify (úprava) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenNone_Prerequisite.json) |
 |[Přidat spravovanou identitu přiřazenou systémem a povolit přiřazení konfigurace hostů na virtuálních počítačích s identitou přiřazenou uživatelem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6) |Tato zásada přidává spravovanou identitu přiřazenou systémem do virtuálních počítačů hostovaných v Azure, které podporuje konfigurace hostů, a má alespoň jednu identitu přiřazenou uživatelem, ale nemá spravovanou identitu přiřazenou systémem. Spravovaná identita přiřazená systémem je předpokladem pro všechna přiřazení konfigurace hostů a musí se do počítačů přidat před použitím libovolných definic zásad konfigurace hostů. Další informace o konfiguraci hosta najdete na adrese [https://aka.ms/gcpol](https://aka.ms/gcpol) . |modify (úprava) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenUser_Prerequisite.json) |
@@ -395,7 +395,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-17 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1062 – \| ochrana důvěrnosti/integrity vzdáleného přístupu pomocí šifrování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4708723f-e099-4af1-bbf9-b6df7642e444) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1062.json) |
 
@@ -403,7 +403,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-17 (3) **vlastnictví**: zákazník
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1063 – \| body Access Control spravované vzdáleným přístupem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F593ce201-54b2-4dd0-b34f-c308005d7780) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1063.json) |
 
@@ -411,7 +411,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-17 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1064 – \| privilegované příkazy a přístup pro vzdálený přístup](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feb4d9508-cbf0-4a3c-bb5c-6c95b159f3fb) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1064.json) |
 |[Spravovaný ovládací prvek Microsoft 1065 – \| privilegované příkazy a přístup pro vzdálený přístup](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff87b8085-dca9-4cf1-8f7b-9822b997797c) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1065.json) |
@@ -420,7 +420,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-17 (9) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1066-vzdálený přístup \| odpojení/zakázání přístupu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4455c2e8-c65d-4acf-895e-304916f90b36) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1066.json) |
 
@@ -428,7 +428,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-18 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1067 – bezdrátový přístup](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5c5e54f6-0127-44d0-8b61-f31dc8dd6190) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1067.json) |
 |[Microsoft Managed Control 1068 – bezdrátový přístup](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d045bca-a0fd-452e-9f41-4ec33769717c) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1068.json) |
@@ -437,7 +437,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-18 (1) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1069 – \| ověřování a šifrování bezdrátových přístupových kódů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F91c97b44-791e-46e9-bad7-ab7c4949edbb) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1069.json) |
 
@@ -445,7 +445,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-18 (3) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1070 – bezdrátový přístup \| zakáže bezdrátové sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F68f837d0-8942-4b1e-9b31-be78b247bda8) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1070.json) |
 
@@ -453,7 +453,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-18 (4) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1071 – bezdrátový přístup \| omezuje konfigurace podle uživatelů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a437f5b-9ad6-4f28-8861-de404d511ae4) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1071.json) |
 
@@ -461,7 +461,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-18 (5) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1072 – antény bezdrátového přístupu \| /úrovně napájení přenosu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1ca29e41-34ec-4e70-aba9-6248aca18c31) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1072.json) |
 
@@ -469,7 +469,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-19 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1073-Access Control pro mobilní zařízení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fab55cdb0-c7dd-4bd8-ae22-a7cea7594e9c) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1073.json) |
 |[Microsoft Managed Control 1074-Access Control pro mobilní zařízení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F27a69937-af92-4198-9b86-08d355c7e59a) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1074.json) |
@@ -478,7 +478,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-19 (5) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1075-Access Control pro \| Úplné šifrování zařízení/Container-Based v mobilních zařízeních](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc933d22-04df-48ed-8f87-22a3773d4309) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1075.json) |
 
@@ -486,7 +486,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-20 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1076 – použití externích informačních systémů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F98a4bd5f-6436-46d4-ad00-930b5b1dfed4) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1076.json) |
 |[Microsoft Managed Control 1077 – použití externích informačních systémů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2dad3668-797a-412e-a798-07d3849a7a79) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1077.json) |
@@ -495,7 +495,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-20 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1078 – použití omezení externích informačních systémů \| při autorizovaných použitích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb25faf85-8a16-4f28-8e15-d05c0072d64d) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1078.json) |
 |[Microsoft Managed Control 1079 – použití omezení externích informačních systémů \| při autorizovaných použitích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F85c32733-7d23-4948-88da-058e2c56b60f) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1079.json) |
@@ -504,7 +504,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-20 (2) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1080 – použití \| přenosného úložného zařízení s externími informačními systémy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F852981b4-a380-4704-aa1e-2e52d63445e5) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1080.json) |
 
@@ -512,7 +512,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-21 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1081 – sdílení informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3867f2a9-23bb-4729-851f-c3ad98580caf) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1081.json) |
 |[Microsoft Managed Control 1082 – sdílení informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F24d480ef-11a0-4b1b-8e70-4e023bf2be23) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1082.json) |
@@ -521,7 +521,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 AC-22 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1083 – veřejně přístupný obsah](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4e319cb6-2ca3-4a58-ad75-e67f484e50ec) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1083.json) |
 |[Microsoft Managed Control 1084 – veřejně přístupný obsah](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd0eb15db-dd1c-4d1d-b200-b12dd6cd060c) |Společnost Microsoft implementuje tento ovládací prvek Access Control |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1084.json) |
@@ -534,7 +534,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 při 1 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1087 – zásady a postupy pro školení k zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F100c82ba-42e9-4d44-a2ba-94b209248583) |Společnost Microsoft implementuje toto povědomí a řízení školení. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1087.json) |
 |[Microsoft Managed Control 1088 – zásady a postupy pro školení k zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d50f99d-1356-49c0-934a-45f742ba7783) |Společnost Microsoft implementuje toto povědomí a řízení školení. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1088.json) |
@@ -543,7 +543,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ve 2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1089 – školení ke sledování bezpečnosti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef080e67-0d1a-4f76-a0c5-fb9b0358485e) |Společnost Microsoft implementuje toto povědomí a řízení školení. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1089.json) |
 |[Microsoft Managed Control 1090 – školení ke sledování bezpečnosti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2fb740e5-cbc7-4d10-8686-d1bf826652b1) |Společnost Microsoft implementuje toto povědomí a řízení školení. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1090.json) |
@@ -553,7 +553,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ve 2 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1092 – bezpečnostní povědomí školení \| Insider Threat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8a29d47b-8604-4667-84ef-90d203fcb305) |Společnost Microsoft implementuje toto povědomí a řízení školení. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1092.json) |
 
@@ -561,7 +561,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ve 3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1093-Role-Based školení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7a0bdeeb-15f4-47e8-a1da-9f769f845fdf) |Společnost Microsoft implementuje toto povědomí a řízení školení. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1093.json) |
 |[Microsoft Managed Control 1094-Role-Based školení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4b1853e0-8973-446b-b567-09d901d31a09) |Společnost Microsoft implementuje toto povědomí a řízení školení. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1094.json) |
@@ -571,7 +571,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 at-3 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1096-Role-Based zabezpečení školení – \| praktická cvičení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F420c1477-aa43-49d0-bd7e-c4abdd9addff) |Společnost Microsoft implementuje toto povědomí a řízení školení. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1096.json) |
 
@@ -579,7 +579,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ve 3 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1097-Role-Based zabezpečení \| , školení o podezřelé komunikaci a chování neobvyklé systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf3e4836-f19e-47eb-a8cd-c3ca150452c0) |Společnost Microsoft implementuje toto povědomí a řízení školení. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1097.json) |
 
@@ -587,7 +587,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ve 4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1098 – záznamy školení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F84363adb-dde3-411a-9fc1-36b56737f822) |Společnost Microsoft implementuje toto povědomí a řízení školení. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1098.json) |
 |[Microsoft Managed Control 1099 – záznamy školení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F01910bab-8639-4bd0-84ef-cc53b24d79ba) |Společnost Microsoft implementuje toto povědomí a řízení školení. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1099.json) |
@@ -598,7 +598,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-1 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1100 – zásady a postupy pro audit a zodpovědnost](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4057863c-ca7d-47eb-b1e0-503580cba8a4) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1100.json) |
 |[Microsoft Managed Control 1101 – zásady a postupy pro audit a zodpovědnost](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7327b708-f0e0-457d-9d2a-527fcc9c9a65) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1101.json) |
@@ -607,7 +607,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1102 – události auditu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9943c16a-c54c-4b4a-ad28-bfd938cdbf57) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1102.json) |
 |[Microsoft Managed Control 1103 – události auditu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16feeb31-6377-437e-bbab-d7f73911896d) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1103.json) |
@@ -618,7 +618,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-2 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1106 – \| Revize a aktualizace událostí auditu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd2b4feae-61ab-423f-a4c5-0e38ac4464d8) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1106.json) |
 
@@ -626,7 +626,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1107-obsah záznamů auditu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb29ed931-8e21-4779-8458-27916122a904) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1107.json) |
 
@@ -634,7 +634,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-3 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1108-obsah záznamů auditu \| Další informace o auditu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff9ad559e-c12d-415e-9a78-e50fdd7da7ba) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1108.json) |
 
@@ -642,7 +642,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-3 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[\[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |Hlásí virtuální počítače jako nevyhovující, pokud image virtuálního počítače (OS) není v seznamu definovaném a Agent není nainstalovaný. Seznam imagí operačního systému se v průběhu času aktualizuje, protože se podpora aktualizuje. |auditIfNotExists |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |
 |[Audit Log Analyticsho nasazení agenta ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5c3bc7b8-a64c-4e08-a9cd-7ff0f31e1138) |Nahlásí sadu škálování virtuálního počítače jako nedodržující předpisy, pokud se image virtuálního počítače (OS) nenachází v seznamu definovaném a Agent není nainstalovaný. Seznam imagí operačního systému se v průběhu času aktualizuje, protože se podpora aktualizuje. |auditIfNotExists |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_VMSS_Audit.json) |
@@ -653,7 +653,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1110 – kapacita úložiště auditu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6182bfa7-0f2a-43f5-834a-a2ddf31c13c7) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1110.json) |
 
@@ -661,7 +661,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-5 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[V případě spravované instance SQL by mělo být povolené rozšířené zabezpečení dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb7388-5bf4-4ad7-ba99-2cd2f41cebb9) |Auditujte všechny spravované instance SQL bez pokročilých zabezpečení dat. |AuditIfNotExists, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurity_Audit.json) |
 |[Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb4388-5bf4-4ad7-ba82-2cd2f41ceae9) |Auditovat SQL servery bez pokročilých zabezpečení dat |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_AdvancedDataSecurity_Audit.json) |
@@ -674,7 +674,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-5 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1113 – odpověď na selhání zpracování auditu auditovaná \| kapacita úložiště](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F562afd61-56be-4313-8fe4-b9564aa4ba7d) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1113.json) |
 
@@ -682,7 +682,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-5 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1114 – odpověď na selhání zpracování auditu \| Real-Time výstrahy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4c090801-59bc-4454-bb33-e0455133486a) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1114.json) |
 
@@ -690,7 +690,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-6 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1115 – kontrola auditu, analýza a vytváření sestav](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b653845-2ad9-4e09-a4f3-5a7c1d78353d) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1115.json) |
 |[Microsoft Managed Control 1116 – kontrola auditu, analýza a vytváření sestav](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5e47bc51-35d1-44b8-92af-e2f2d8b67635) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1116.json) |
@@ -699,7 +699,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-6 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1117 – kontrola auditu, analýza a \| integrace procesu vytváření sestav](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7fbfe680-6dbb-4037-963c-a621c5635902) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1117.json) |
 
@@ -707,7 +707,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-6 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1118 – kontrola auditu, analýza a vytváření sestav \| korelace auditu auditu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa96f743d-a195-420d-983a-08aa06bc441e) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1118.json) |
 
@@ -715,7 +715,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-6 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[\[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |Hlásí virtuální počítače jako nevyhovující, pokud image virtuálního počítače (OS) není v seznamu definovaném a Agent není nainstalovaný. Seznam imagí operačního systému se v průběhu času aktualizuje, protože se podpora aktualizuje. |auditIfNotExists |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |
 |[Audit Log Analyticsho nasazení agenta ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5c3bc7b8-a64c-4e08-a9cd-7ff0f31e1138) |Nahlásí sadu škálování virtuálního počítače jako nedodržující předpisy, pokud se image virtuálního počítače (OS) nenachází v seznamu definovaném a Agent není nainstalovaný. Seznam imagí operačního systému se v průběhu času aktualizuje, protože se podpora aktualizuje. |auditIfNotExists |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_VMSS_Audit.json) |
@@ -726,7 +726,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-6 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1120 – revize auditu, analýza a vytváření sestav, \| Možnosti kontroly a monitorování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc69b870e-857b-458b-af02-bb234f7a00d3) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1120.json) |
 
@@ -734,7 +734,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-6 (6) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1121 – korelace kontroly auditu, analýzy a vytváření sestav \| s fyzickým monitorováním](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc72b0eb9-1fc2-44e5-a866-e7cb0532f7c1) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1121.json) |
 
@@ -742,7 +742,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-6 (7) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1122 – kontrolní opatření pro kontrolu, analýzu a generování sestav \| povolených](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F243ec95e-800c-49d4-ba52-1fdd9f6b8b57) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1122.json) |
 
@@ -750,7 +750,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-6 (10) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1123 – úprava auditu, analýza a \| Nastavení úrovně auditu pro vytváření sestav](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F03996055-37a4-45a5-8b70-3f1caa45f87d) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1123.json) |
 
@@ -758,7 +758,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-7 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1124 – omezení auditu a generování sestav](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc10152dd-78f8-4335-ae2d-ad92cc028da4) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1124.json) |
 |[Spravovaný ovládací prvek Microsoft 1125 – omezení auditu a generování sestav](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc6ce745a-670e-47d3-a6c4-3cfe5ef00c10) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1125.json) |
@@ -767,7 +767,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-7 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1126 – snížení auditu a \| Automatické zpracování generování sestav](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f37f71b-420f-49bf-9477-9c0196974ecf) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1126.json) |
 
@@ -775,7 +775,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-8 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1127 – časová razítka](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3ce328db-aef3-48ed-9f81-2ab7cf839c66) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1127.json) |
 |[Microsoft Managed Control 1128 – časová razítka](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef212163-3bc4-4e86-bcf8-705127086393) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1128.json) |
@@ -784,7 +784,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-8 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control Control 1129 – synchronizace časových razítek \| s autoritativním zdrojem času](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F71bb965d-4047-4623-afd4-b8189a58df5d) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1129.json) |
 |[Microsoft Managed Control Control 1130 – synchronizace časových razítek \| s autoritativním zdrojem času](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffd7c4c1d-51ee-4349-9dab-89a7f8c8d102) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1130.json) |
@@ -793,7 +793,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-9 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1131 – ochrana informací o auditu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb472a17e-c2bc-493f-b50b-42d55a346962) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1131.json) |
 
@@ -801,7 +801,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-9 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1132 – ochrana \| auditu audit Information audit v samostatných fyzických systémech/součástech](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F05938e10-cdbd-4a54-9b2b-1cbcfc141ad0) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1132.json) |
 
@@ -809,7 +809,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-9 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1133 – ochrana \| kryptografické ochrany informací auditu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F90b60a09-133d-45bc-86ef-b206a6134bbe) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1133.json) |
 
@@ -817,7 +817,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-9 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1134 – Ochrana přístupu k informacím o auditu \| pomocí podmnožiny privilegovaných uživatelů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4e95f70e-181c-4422-9da2-43079710c789) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1134.json) |
 
@@ -825,7 +825,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-10 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1135 – Neodmítnutí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9c308b6b-2429-4b97-86cf-081b8e737b04) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1135.json) |
 
@@ -833,7 +833,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-11 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1136-uchovávání záznamů auditu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F97ed5bac-a92f-4f6d-a8ed-dc094723597c) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1136.json) |
 
@@ -841,7 +841,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-12 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[\[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |Hlásí virtuální počítače jako nevyhovující, pokud image virtuálního počítače (OS) není v seznamu definovaném a Agent není nainstalovaný. Seznam imagí operačního systému se v průběhu času aktualizuje, protože se podpora aktualizuje. |auditIfNotExists |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |
 |[V případě spravované instance SQL by mělo být povolené rozšířené zabezpečení dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb7388-5bf4-4ad7-ba99-2cd2f41cebb9) |Auditujte všechny spravované instance SQL bez pokročilých zabezpečení dat. |AuditIfNotExists, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurity_Audit.json) |
@@ -858,7 +858,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-12 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1140- \| záznam auditu System-Wide/Time-Correlated pro generování auditu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F90d8b8ad-8ee3-4db7-913f-2a53fcff5316) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1140.json) |
 
@@ -866,7 +866,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 au-12 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1141 – změny pro generování auditu \| povolují Jednotlivci](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6fdefbf4-93e7-4513-bc95-c1858b7093e0) |Microsoft implementuje tento ovládací prvek pro audit a zodpovědnost. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1141.json) |
 
@@ -876,7 +876,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ca-1 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1142 – zásady a zásady autorizace zabezpečení a postupy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F01524fa8-4555-48ce-ba5f-c3b8dcef5147) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1142.json) |
 |[Microsoft Managed Control 1143 – zásady a zásady autorizace zabezpečení a postupy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7c6de11b-5f51-4f7c-8d83-d2467c8a816e) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1143.json) |
@@ -885,7 +885,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1144 – posouzení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2fa15ff1-a693-4ee4-b094-324818dc9a51) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1144.json) |
 |[Microsoft Managed Control 1145 – posouzení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa0724970-9c75-4a64-a225-a28002953f28) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1145.json) |
@@ -896,7 +896,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-2 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1148 – posouzení zabezpečení \| nezávislá posouzení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F28e62650-c7c2-4786-bdfa-17edc1673902) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1148.json) |
 
@@ -904,7 +904,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-2 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1149-posouzení zabezpečení – \| specializované posouzení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2e1b855b-a013-481a-aeeb-2bcb129fd35d) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1149.json) |
 
@@ -912,7 +912,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-2 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1150 – posouzení zabezpečení \| externích organizací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd630429d-e763-40b1-8fba-d20ba7314afb) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1150.json) |
 
@@ -920,7 +920,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1151 – propojení systémů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F347e3b69-7fb7-47df-a8ef-71a1a7b44bca) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1151.json) |
 |[Microsoft Managed Control 1152 – propojení systémů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbeff0acf-7e67-40b2-b1ca-1a0e8205cf1b) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1152.json) |
@@ -930,7 +930,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-3 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1154-systémy \| propojovat neklasifikovaná nenárodní připojení systému zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe757ceb9-93b3-45fe-a4f4-f43f64f1ac5a) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1154.json) |
 
@@ -938,7 +938,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-3 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1155 – \| omezení pro připojení k externím systémům v systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4d33f9f1-12d0-46ad-9fbd-8f8046694977) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1155.json) |
 
@@ -946,7 +946,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-5 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1156 – plán akcí a milníků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4d52e864-9a3b-41ee-8f03-520815fe5378) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1156.json) |
 |[Microsoft Managed Control 1157 – plán akcí a milníků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F15495367-cf68-464c-bbc3-f53ca5227b7a) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1157.json) |
@@ -955,7 +955,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ca-6 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1158 – autorizace zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffff50cf2-28eb-45b4-b378-c99412688907) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1158.json) |
 |[Microsoft Managed Control 1159 – autorizace zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0925f098-7877-450b-8ba4-d1e55f2d8795) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1159.json) |
@@ -965,7 +965,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-7 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1161 – nepřetržité monitorování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2f8f6c6-dde4-436b-a79d-bc50e129eb3a) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1161.json) |
 |[Spravovaný ovládací prvek společnosti Microsoft 1162 – nepřetržité monitorování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5770f3d6-8c2b-4f6f-bf0e-c8c8fc36d592) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1162.json) |
@@ -979,7 +979,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-7 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1168 – \| nezávislá kontrola nezávislého monitorování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82409f9e-1f32-4775-bf07-b99d53a91b06) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1168.json) |
 
@@ -987,7 +987,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-7 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1169 – \| analýzy trendů nepřetržitého monitorování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe7ba2cb3-5675-4468-8b50-8486bdd998a5) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1169.json) |
 
@@ -995,7 +995,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-8 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1170 – testování průniku](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8b78b9b3-ee3c-48e0-a243-ed6dba5b7a12) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1170.json) |
 
@@ -1003,7 +1003,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-8 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1171 – testování průniku – \| nezávislá agent průniku nebo tým](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6d4820bc-8b61-4982-9501-2123cb776c00) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1171.json) |
 
@@ -1011,7 +1011,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CA-9 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1172 – interní systémová připojení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb43e946e-a4c8-4b92-8201-4a39331db43c) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1172.json) |
 |[Microsoft Managed Control 1173 – interní systémová připojení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4aff9e7-2e60-46fa-86be-506b79033fc5) |Microsoft implementuje toto posouzení zabezpečení a řízení autorizací. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1173.json) |
@@ -1022,7 +1022,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-1- **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1174 – zásady a postupy správy konfigurace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F42a9a714-8fbb-43ac-b115-ea12d2bd652f) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1174.json) |
 |[Microsoft Managed Control 1175 – zásady a postupy správy konfigurace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6dab4254-c30d-4bb7-ae99-1d21586c063c) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1175.json) |
@@ -1031,7 +1031,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1176 – konfigurace standardních hodnot](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc30690a5-7bf3-467f-b0cd-ef5c7c7449cd) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1176.json) |
 
@@ -1039,7 +1039,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-2 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1177 – \| recenze a aktualizace konfigurace standardních hodnot](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F63dbc7a8-e20b-4d38-b857-a7f6c0cd94bc) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1177.json) |
 |[Microsoft Managed Control 1178 – \| recenze a aktualizace konfigurace standardních hodnot](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7818b8f4-47c6-441a-90ae-12ce04e99893) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1178.json) |
@@ -1049,7 +1049,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-2 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1180 – podpora pro automatizaci konfigurace podle směrného plánu \| pro přesnost a měnu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F874e7880-a067-42a7-bcbe-1a340f54c8cc) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1180.json) |
 
@@ -1057,7 +1057,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-2 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1181 – \| uchování předchozích konfigurací podle směrného plánu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21839937-d241-4fa5-95c6-b669253d9ab9) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1181.json) |
 
@@ -1065,7 +1065,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-2 (7) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1182 – konfigurace standardních hodnot \| Konfigurace systémů, součástí nebo zařízení pro High-Risk oblasti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f34f554-da4b-4786-8d66-7915c90893da) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1182.json) |
 |[Microsoft Managed Control 1183 – konfigurace standardních hodnot \| Konfigurace systémů, součástí nebo zařízení pro High-Risk oblasti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5352e3e0-e63a-452e-9e5f-9c1d181cff9c) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1183.json) |
@@ -1074,7 +1074,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1184 – ovládací prvek změny konfigurace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F13579d0e-0ab0-4b26-b0fb-d586f6d7ed20) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1184.json) |
 |[Spravovaný ovládací prvek společnosti Microsoft 1185 – ovládací prvek změny konfigurace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6420cd73-b939-43b7-9d99-e8688fea053c) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1185.json) |
@@ -1088,7 +1088,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-3 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1191 – ovládací prvek změny konfigurace – \| Automatický dokument/oznámení/zákaz změn](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f26a61b-a74d-467c-99cf-63644db144f7) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1191.json) |
 |[Microsoft Managed Control 1192 – ovládací prvek změny konfigurace – \| Automatický dokument/oznámení/zákaz změn](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4ebd97f7-b105-4f50-8daf-c51465991240) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1192.json) |
@@ -1101,7 +1101,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-3 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1197 – řízení změn konfigurace \| test/ověření/změny dokumentu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa20d2eaa-88e2-4907-96a2-8f3a05797e5c) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1197.json) |
 
@@ -1109,7 +1109,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-3 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1198 – zástupce zabezpečení správy změn konfigurace \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff56be5c3-660b-4c61-9078-f67cf072c356) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1198.json) |
 
@@ -1117,7 +1117,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-3 (6) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1199 – \| Správa kryptografie řízení změn konfigurace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa9a08d1c-09b1-48f1-90ea-029bbdf7111e) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1199.json) |
 
@@ -1125,7 +1125,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1200 – analýza dopadu na zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe98fe9d7-2ed3-44f8-93b7-24dca69783ff) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1200.json) |
 
@@ -1133,7 +1133,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-4 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1201 – analýza dopadu zabezpečení \| samostatná testovací prostředí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7daef997-fdd3-461b-8807-a608a6dd70f1) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1201.json) |
 
@@ -1141,7 +1141,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-5 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1202 – omezení přístupu pro změnu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40a2a83b-74f2-4c02-ae65-f460a5d2792a) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1202.json) |
 
@@ -1149,7 +1149,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-5 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1203 – omezení přístupu pro změnu \| automatického vynucování přístupu nebo auditování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff9012d14-e3e6-4d7b-b926-9f37b5537066) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1203.json) |
 
@@ -1157,7 +1157,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-5 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1204 – omezení přístupu pro \| změny systému změn Revize](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0f4f6750-d1ab-4a4c-8dfd-af3237682665) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1204.json) |
 
@@ -1165,7 +1165,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-5 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1205 – omezení přístupu pro změny \| podepsané součásti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5b070cab-0fb8-4e48-ad29-fc90b4c2797c) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1205.json) |
 
@@ -1173,7 +1173,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-5 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1206 – omezení přístupu pro změnu \| omezení produkční/provozní oprávnění](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0de232d-02a0-4652-872d-88afb4ae5e91) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1206.json) |
 |[Microsoft Managed Control 1207 – omezení přístupu pro změnu \| omezení produkční/provozní oprávnění](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8713a0ed-0d1e-4d10-be82-83dffb39830e) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1207.json) |
@@ -1182,7 +1182,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-6 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravované řízení společnosti Microsoft 1208 – nastavení konfigurace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5ea87673-d06b-456f-a324-8abcee5c159f) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1208.json) |
 |[Spravované řízení společnosti Microsoft 1209 – nastavení konfigurace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fce669c31-9103-4552-ae9c-cdef4e03580d) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1209.json) |
@@ -1193,7 +1193,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-6 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1212 – nastavení konfigurace \| automatizovaná centrální Správa/aplikace/ověřování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56d970ee-4efc-49c8-8a4e-5916940d784c) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1212.json) |
 
@@ -1201,7 +1201,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-6 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravované řízení společnosti Microsoft 1213 – nastavení konfigurace \| reagují na neautorizované změny](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F81f11e32-a293-4a58-82cd-134af52e2318) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1213.json) |
 
@@ -1209,7 +1209,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-7 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1214 – minimální funkce](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff714a4e2-b580-47b6-ae8c-f2812d3750f3) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1214.json) |
 |[Microsoft Managed Control 1215 – minimální funkce](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88fc93e8-4745-4785-b5a5-b44bb92c44ff) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1215.json) |
@@ -1218,7 +1218,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-7 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1216 – pravidelná kontrola s minimálními funkcemi \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7894fe6a-f5cb-44c8-ba90-c3f254ff9484) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1216.json) |
 |[Microsoft Managed Control 1217 – pravidelná kontrola s minimálními funkcemi \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fedea4f20-b02c-4115-be75-86c080e5c0ed) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1217.json) |
@@ -1227,7 +1227,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-7 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[V počítačích by měly být povolené Adaptivní řízení aplikací pro definování bezpečných aplikací.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a6b606-51aa-4496-8bb7-64b11cf66adc) |Povolit ovládací prvky aplikace, které definují seznam známých bezpečných aplikací spuštěných na vašich počítačích, a upozorní vás, když se spouštějí jiné aplikace. To pomáhá posílit zabezpečení vašich počítačů proti malwaru. Aby bylo možné zjednodušit proces konfigurace a údržby pravidel, Security Center využívá Machine Learning k analýze aplikací spuštěných na jednotlivých počítačích a k návrhu seznamu známých aplikací, které jsou v bezpečí. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AdaptiveApplicationControls_Audit.json) |
 |[Microsoft Managed Control 1218 – minimální funkce \| zabraňují spuštění programu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4a1d0394-b9f5-493e-9e83-563fd0ac4df8) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1218.json) |
@@ -1236,7 +1236,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-7 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[V počítačích by měly být povolené Adaptivní řízení aplikací pro definování bezpečných aplikací.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a6b606-51aa-4496-8bb7-64b11cf66adc) |Povolit ovládací prvky aplikace, které definují seznam známých bezpečných aplikací spuštěných na vašich počítačích, a upozorní vás, když se spouštějí jiné aplikace. To pomáhá posílit zabezpečení vašich počítačů proti malwaru. Aby bylo možné zjednodušit proces konfigurace a údržby pravidel, Security Center využívá Machine Learning k analýze aplikací spuštěných na jednotlivých počítačích a k návrhu seznamu známých aplikací, které jsou v bezpečí. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AdaptiveApplicationControls_Audit.json) |
 |[Microsoft Managed Control 1219 – minimální \| povolený software/seznam povolených funkcí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2a39ac75-622b-4c88-9a3f-45b7373f7ef7) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1219.json) |
@@ -1247,7 +1247,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-8 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1222 – inventář komponent informací systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb39e62f-6bda-4558-8088-ec03d5670914) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1222.json) |
 |[Microsoft Managed Control 1223 – inventář komponent informací systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F05a1bb01-ad5a-49c1-aad3-b0c893b2ec3a) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1223.json) |
@@ -1256,7 +1256,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-8 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1224 – aktualizace inventáře součásti informačního systému \| během instalací/odebrání](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F28cfa30b-7f72-47ce-ba3b-eed26c8d2c82) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1224.json) |
 
@@ -1264,7 +1264,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-8 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1225 – automatizovaná údržba inventáře součásti systému informací \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8d096fe0-f510-4486-8b4d-d17dc230980b) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1225.json) |
 
@@ -1272,7 +1272,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-8 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1226 – informační systém – inventarizace pro \| Automatické neoprávněné zjišťování komponent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc158eb1c-ae7e-4081-8057-d527140c4e0c) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1226.json) |
 |[Microsoft Managed Control 1227 – informační systém – inventarizace pro \| Automatické neoprávněné zjišťování komponent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F03b78f5e-4877-4303-b0f4-eb6583f25768) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1227.json) |
@@ -1281,7 +1281,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-8 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1228 – informace o odpovědnosti inventáře komponenty systému informací \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F39c54140-5902-4079-8bb5-ad31936fe764) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1228.json) |
 
@@ -1289,7 +1289,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-8 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1229 – inventář komponent informačního systému \| bez duplicitního účtování součástí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F03752212-103c-4ab8-a306-7e813022ca9d) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1229.json) |
 
@@ -1297,7 +1297,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-9 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1230 – plán správy konfigurace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F11158848-f679-4e9b-aa7b-9fb07d945071) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1230.json) |
 |[Microsoft Managed Control 1231 – plán správy konfigurace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F244e0c05-cc45-4fe7-bf36-42dcf01f457d) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1231.json) |
@@ -1308,7 +1308,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-10 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1234 – omezení použití softwaru](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb293f881-361c-47ed-b997-bc4e2296bc0b) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1234.json) |
 |[Microsoft Managed Control 1235 – omezení použití softwaru](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc49c610b-ece4-44b3-988c-2172b70d6e46) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1235.json) |
@@ -1318,7 +1318,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-10 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1237-omezení použití softwaru \| Open source software](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe80b6812-0bfa-4383-8223-cdd86a46a890) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1237.json) |
 
@@ -1326,7 +1326,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-11 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[V počítačích by měly být povolené Adaptivní řízení aplikací pro definování bezpečných aplikací.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a6b606-51aa-4496-8bb7-64b11cf66adc) |Povolit ovládací prvky aplikace, které definují seznam známých bezpečných aplikací spuštěných na vašich počítačích, a upozorní vás, když se spouštějí jiné aplikace. To pomáhá posílit zabezpečení vašich počítačů proti malwaru. Aby bylo možné zjednodušit proces konfigurace a údržby pravidel, Security Center využívá Machine Learning k analýze aplikací spuštěných na jednotlivých počítačích a k návrhu seznamu známých aplikací, které jsou v bezpečí. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AdaptiveApplicationControls_Audit.json) |
 |[Microsoft Managed Control 1238-User-Installed software](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa36cedd4-3ffd-4b1f-8b18-aa71d8d87ce1) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1238.json) |
@@ -1337,7 +1337,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 cm-11 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1241 – výstrahy User-Installed softwaru \| pro neautorizované instalace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feca4d7b2-65e2-4e04-95d4-c68606b063c3) |Společnost Microsoft implementuje tento ovládací prvek správy konfigurace. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1241.json) |
 
@@ -1347,7 +1347,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-1 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1242 – zásady a postupy plánování nepředvídaných řešení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf3b3293-667a-445e-a722-fa0b0afc0958) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1242.json) |
 |[Microsoft Managed Control 1243 – zásady a postupy plánování nepředvídaných řešení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fca9a4469-d6df-4ab2-a42f-1213c396f0ec) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1243.json) |
@@ -1356,7 +1356,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1244 – plán řešení nepředvídaných událostí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6a13a8f8-c163-4b1b-8554-d63569dab937) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1244.json) |
 |[Microsoft Managed Control 1245 – plán řešení nepředvídaných událostí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa0e45314-57b8-4623-80cd-bbb561f59516) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1245.json) |
@@ -1370,7 +1370,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-2 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1251 – souřadnice plánu \| pro pohotovostní plán se souvisejícími plány](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5e2b3730-8c14-4081-8893-19dbb5de7348) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1251.json) |
 
@@ -1378,7 +1378,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-2 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1252 – plánování kapacity pro pohotovostní plán \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa328fd72-8ff5-4f96-8c9c-b30ed95db4ab) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1252.json) |
 
@@ -1386,7 +1386,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-2 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1253 – plán pro pohotovostní \| činnost obnovení základních misí/obchodních funkcí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0afce0b3-dd9f-42bb-af28-1e4284ba8311) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1253.json) |
 
@@ -1394,7 +1394,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-2 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1254 – plán pro pohotovostní \| činnost obnoví všechny pracovní funkce a obchodní funkce.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F704e136a-4fe0-427c-b829-cd69957f5d2b) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1254.json) |
 
@@ -1402,7 +1402,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-2 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1255 – plán pro pohotovostní \| činnost pokračuje v základních misích a obchodních funkcích.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff3793f5e-937f-44f7-bfba-40647ef3efa0) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1255.json) |
 
@@ -1410,7 +1410,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-2 (8) **vlastnictví**: zákazník
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1256 – plán pro pohotovostní \| identifikaci kritických prostředků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F232ab24b-810b-4640-9019-74a7d0d6a980) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1256.json) |
 
@@ -1418,7 +1418,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1257-pohotovostní školení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb958b241-4245-4bd6-bd2d-b8f0779fb543) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1257.json) |
 |[Microsoft Managed Control 1258-pohotovostní školení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7814506c-382c-4d33-a142-249dd4a0dbff) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1258.json) |
@@ -1428,7 +1428,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-3 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1260 – simulace neočekávaných kurzů – \| simulované události](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F42254fc4-2738-4128-9613-72aaa4f0d9c3) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1260.json) |
 
@@ -1436,7 +1436,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1261 – testování plánu pro nepředvídané účely](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F65aeceb5-a59c-4cb1-8d82-9c474be5d431) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1261.json) |
 |[Microsoft Managed Control 1262 – testování plánu pro nepředvídané účely](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F831e510e-db41-4c72-888e-a0621ab62265) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1262.json) |
@@ -1446,7 +1446,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-4 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1264 – koordinace plánů řešení nepředvídaných testů \| se souvisejícími plány](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdd280d4b-50a1-42fb-a479-ece5878acf19) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1264.json) |
 
@@ -1454,7 +1454,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-4 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1265 – \| lokalita alternativního zpracování testování plánu pro nepředvídané účely](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa18adb5b-1db6-4a5b-901a-7d3797d12972) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1265.json) |
 |[Microsoft Managed Control 1266 – \| lokalita alternativního zpracování testování plánu pro nepředvídané účely](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3b4a3eb2-c25d-40bf-ad41-5094b6f59cee) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1266.json) |
@@ -1463,7 +1463,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-6 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1267 – alternativní lokalita úložiště](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4e97ba1d-be5d-4953-8da4-0cccf28f4805) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1267.json) |
 |[Microsoft Managed Control 1268 – alternativní lokalita úložiště](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F23f6e984-3053-4dfc-ab48-543b764781f5) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1268.json) |
@@ -1472,7 +1472,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-6 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1269 – alternativní oddělení lokality úložiště \| z primární lokality](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F19b9439d-865d-4474-b17d-97d2702fdb66) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1269.json) |
 
@@ -1480,7 +1480,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-6 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1270 – alternativní cíle služby Storage site \| Recovery/bodu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53c76a39-2097-408a-b237-b279f7b4614d) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1270.json) |
 
@@ -1488,7 +1488,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-6 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1271 – alternativní přístupnost lokality úložiště \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fda3bfb53-9c46-4010-b3db-a7ba1296dada) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1271.json) |
 
@@ -1496,7 +1496,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-7 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Auditovat virtuální počítače bez nakonfigurovaného zotavení po havárii](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Auditujte virtuální počítače, u kterých není nakonfigurované zotavení po havárii. Další informace o zotavení po havárii najdete v [https://aka.ms/asr-doc](https://aka.ms/asr-doc) . |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json) |
 |[Microsoft Managed Control 1272 – alternativní server pro zpracování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fae46cf7a-e3fd-427b-9b91-44bc78e2d9d8) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1272.json) |
@@ -1507,7 +1507,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-7 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1275 – alternativní zpracování \| oddělení lokality z primární lokality](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa23d9d53-ad2e-45ef-afd5-e6d10900a737) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1275.json) |
 
@@ -1515,7 +1515,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-7 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1276 – alternativní zpracování \| přístupnost webu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe214e563-1206-4a43-a56b-ac5880c9c571) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1276.json) |
 
@@ -1523,7 +1523,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-7 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1277 – alternativní pracovní \| Priorita pro lokalitu služby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdc43e829-3d50-4a0a-aa0f-428d551862aa) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1277.json) |
 
@@ -1531,7 +1531,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-7 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1278 – alternativní zpracování \| Příprava lokality pro použití](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e5ef485-9e16-4c53-a475-fbb8107eac59) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1278.json) |
 
@@ -1539,7 +1539,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-8 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1279 – telekomunikační služby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d00bcd6-963d-4c02-ad8e-b45fa50bf3b0) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1279.json) |
 
@@ -1547,7 +1547,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-8 (1) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1280 – \| pravidla služeb pro telekomunikační služby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffa108498-b3a8-4ffb-9e79-1107e76afad3) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1280.json) |
 |[Spravovaný ovládací prvek společnosti Microsoft 1281 – \| pravidla služeb pro telekomunikační služby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dc459b3-0e77-45af-8d71-cfd8c9654fe2) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1281.json) |
@@ -1556,7 +1556,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-8 (2) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1282 – \| jeden bod selhání pro telekomunikační služby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34042a97-ec6d-4263-93d2-8c1c46823b2a) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1282.json) |
 
@@ -1564,7 +1564,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-8 (3) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1283 – oddělení služeb \| primárního a alternativního poskytovatele služby telekomunikace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa9172e76-7f56-46e9-93bf-75d69bdb5491) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1283.json) |
 
@@ -1572,7 +1572,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-8 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1284 – \| pohotovostní plán poskytovatele telekomunikačních služeb](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F942b3e97-6ae3-410e-a794-c9c999b97c0b) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1284.json) |
 |[Microsoft Managed Control 1285 – \| pohotovostní plán poskytovatele telekomunikačních služeb](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F01f7726b-db54-45c2-bcb5-9bd7a43796ee) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1285.json) |
@@ -1582,7 +1582,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-9 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1287 – informace o zálohování systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F819dc6da-289d-476e-8500-7e341ef8677d) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1287.json) |
 |[Microsoft Managed Control 1288 – informace o zálohování systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8d854c3b-a3e6-4ec9-9f0c-c7274dbaeb2f) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1288.json) |
@@ -1593,7 +1593,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-9 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1291 – informace o \| testování spolehlivosti a integrity v systémovém zálohování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6d8fd073-9c85-4ee2-a9d0-2e4ec9eb8912) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1291.json) |
 
@@ -1601,7 +1601,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-9 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1292 – obnovení záložního \| testovacího systému pomocí vzorkování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd03516cf-0293-489f-9b32-a18f2a79f836) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1292.json) |
 
@@ -1609,7 +1609,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-9 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1293 – informace o zálohování systému \| oddělené úložiště pro důležité informace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F87f7cd82-2e45-4d0f-9e2f-586b0962d142) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1293.json) |
 
@@ -1617,7 +1617,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-9 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1294-Information System Backup \| Transfer do alternativní lokality úložiště](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F49dbe627-2c1e-438c-979e-dd7a39bbf81d) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1294.json) |
 
@@ -1625,7 +1625,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-10 **vlastnictví**: zákazník
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1295 – informace o obnovení a rebudování systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa895fbdb-204d-4302-9689-0a59dc42b3d9) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1295.json) |
 
@@ -1633,7 +1633,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-10 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1296 – obnovení transakcí systému informací o obnovení a reústavy \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe57b98a0-a011-4956-a79d-5d17ed8b8e48) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1296.json) |
 
@@ -1641,7 +1641,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 CP-10 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1297 – informační systém obnovení a \| obnovení v časovém období](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F93fd8af1-c161-4bae-9ba9-f62731f76439) |Microsoft implementuje tuto pohotovostní kontrolu plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1297.json) |
 
@@ -1651,7 +1651,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-1 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1298 – zásady a postupy pro identifikaci a ověřování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1dc784b5-4895-4d27-9d40-a06b032bd1ee) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1298.json) |
 |[Microsoft Managed Control 1299 – zásady a postupy pro identifikaci a ověřování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffd4e54f7-9ab0-4bae-b6cc-457809948a89) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1299.json) |
@@ -1660,7 +1660,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1300 – identifikace a ověřování (uživatelé organizace)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F99deec7d-5526-472e-b07c-3645a792026a) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1300.json) |
 
@@ -1668,7 +1668,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-2 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9297c21d-2ed6-4474-b48f-163f75654ce3) |Multi-Factor Authentication (MFA) by mělo být povolené pro všechny účty předplatného s oprávněním k zápisu, aby se zabránilo narušení účtů nebo prostředků. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableMFAForWritePermissions_Audit.json) |
 |[Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faa633080-8b72-40c4-a2d7-d00c03e80bed) |Multi-Factor Authentication (MFA) by mělo být povolené pro všechny účty předplatného s oprávněním vlastníka, aby se zabránilo narušení účtů nebo prostředků. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableMFAForOwnerPermissions_Audit.json) |
@@ -1678,7 +1678,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-2 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe3576e28-8b17-4677-84c3-db2990658d64) |U všech účtů předplatného s oprávněním ke čtení by se mělo povolit Multi-Factor Authentication (MFA), aby se zabránilo narušení účtů nebo prostředků. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableMFAForReadPermissions_Audit.json) |
 |[Microsoft Managed Control 1302 – identifikace a ověřování (org. Users) \| přístup k síti bez privilegovaných účtů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F09828c65-e323-422b-9774-9d5c646124da) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1302.json) |
@@ -1687,7 +1687,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-2 (3) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1303 – identifikace a ověřování (org. Users) \| místní přístup k privilegovaným účtům](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F80ca0a27-918a-4604-af9e-723a27ee51e8) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1303.json) |
 
@@ -1695,7 +1695,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-2 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1304 – identifikace a ověřování (org. Users) \| místní přístup k neprivilegovaným účtům](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6ca71be3-16cb-4d39-8b50-7f8fd5e2f11b) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1304.json) |
 
@@ -1703,7 +1703,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-2 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Ověřování skupiny Microsoft Managed Control 1305-Identification and Authentication (org. Users) \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d9166a8-1722-4b8f-847c-2cf3f2618b3d) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1305.json) |
 
@@ -1711,7 +1711,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-2 (8) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1306-Identification and Authentication (org. Users) \| net. Přístup k priv. Accts.-Play](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcafc6c3c-5fc5-4c5e-a99b-a0ccb1d34eff) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1306.json) |
 
@@ -1719,7 +1719,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-2 (9) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1307-Identification and Authentication (org. Users) \| net. Přístup k jiným než priv. Accts.-Play](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F84e622c8-4bed-417c-84c6-b2fb0dd73682) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1307.json) |
 
@@ -1727,7 +1727,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-2 (11) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1308-Identification and Authentication (org. Users) \| Remote Access – samostatné zařízení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F81817e1c-5347-48dd-965a-40159d008229) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1308.json) |
 
@@ -1735,7 +1735,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-2 (12) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1309 – identifikace a ověřování (org. Users) \| přijetí přihlašovacích údajů piv](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff355d62b-39a8-4ba3-abf7-90f71cb3b000) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1309.json) |
 
@@ -1743,7 +1743,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1310 – identifikace zařízení a jeho ověřování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F450d7ede-823d-4931-a99d-57f6a38807dc) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1310.json) |
 
@@ -1751,7 +1751,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1311 – Správa identifikátorů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe7568697-0c9e-4ea3-9cec-9e567d14f3c6) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1311.json) |
 |[Spravovaný ovládací prvek Microsoft 1312 – Správa identifikátorů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4d6a5968-9eef-4c18-8534-376790ab7274) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1312.json) |
@@ -1763,7 +1763,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-4 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1316 – Správa identifikátorů \| identifikuje stav uživatele](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8ce14753-66e5-465d-9841-26ef55c09c0d) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1316.json) |
 
@@ -1771,7 +1771,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-5 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Přidat spravovanou identitu přiřazenou systémem a povolit přiřazení konfigurace hostů na virtuálních počítačích bez identit](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e) |Tato zásada přidává spravovanou identitu přiřazenou systémem do virtuálních počítačů hostovaných v Azure, které jsou podporované konfigurací hosta, ale nemají žádné spravované identity. Spravovaná identita přiřazená systémem je předpokladem pro všechna přiřazení konfigurace hostů a musí se do počítačů přidat před použitím libovolných definic zásad konfigurace hostů. Další informace o konfiguraci hosta najdete na adrese [https://aka.ms/gcpol](https://aka.ms/gcpol) . |modify (úprava) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenNone_Prerequisite.json) |
 |[Přidat spravovanou identitu přiřazenou systémem a povolit přiřazení konfigurace hostů na virtuálních počítačích s identitou přiřazenou uživatelem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6) |Tato zásada přidává spravovanou identitu přiřazenou systémem do virtuálních počítačů hostovaných v Azure, které podporuje konfigurace hostů, a má alespoň jednu identitu přiřazenou uživatelem, ale nemá spravovanou identitu přiřazenou systémem. Spravovaná identita přiřazená systémem je předpokladem pro všechna přiřazení konfigurace hostů a musí se do počítačů přidat před použitím libovolných definic zásad konfigurace hostů. Další informace o konfiguraci hosta najdete na adrese [https://aka.ms/gcpol](https://aka.ms/gcpol) . |modify (úprava) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenUser_Prerequisite.json) |
@@ -1795,7 +1795,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-5 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Přidat spravovanou identitu přiřazenou systémem a povolit přiřazení konfigurace hostů na virtuálních počítačích bez identit](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e) |Tato zásada přidává spravovanou identitu přiřazenou systémem do virtuálních počítačů hostovaných v Azure, které jsou podporované konfigurací hosta, ale nemají žádné spravované identity. Spravovaná identita přiřazená systémem je předpokladem pro všechna přiřazení konfigurace hostů a musí se do počítačů přidat před použitím libovolných definic zásad konfigurace hostů. Další informace o konfiguraci hosta najdete na adrese [https://aka.ms/gcpol](https://aka.ms/gcpol) . |modify (úprava) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenNone_Prerequisite.json) |
 |[Přidat spravovanou identitu přiřazenou systémem a povolit přiřazení konfigurace hostů na virtuálních počítačích s identitou přiřazenou uživatelem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6) |Tato zásada přidává spravovanou identitu přiřazenou systémem do virtuálních počítačů hostovaných v Azure, které podporuje konfigurace hostů, a má alespoň jednu identitu přiřazenou uživatelem, ale nemá spravovanou identitu přiřazenou systémem. Spravovaná identita přiřazená systémem je předpokladem pro všechna přiřazení konfigurace hostů a musí se do počítačů přidat před použitím libovolných definic zásad konfigurace hostů. Další informace o konfiguraci hosta najdete na adrese [https://aka.ms/gcpol](https://aka.ms/gcpol) . |modify (úprava) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenUser_Prerequisite.json) |
@@ -1818,7 +1818,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-5 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1333 – ověřování Pki-Based správy ověřovacích dat \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3298d6bf-4bc6-4278-a95d-f7ef3ac6e594) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1333.json) |
 |[Microsoft Managed Control 1334 – ověřování Pki-Based správy ověřovacích dat \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F44bfdadc-8c2e-4c30-9c99-f005986fabcd) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1334.json) |
@@ -1829,7 +1829,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-5 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1337 – Správa ověřovatele \| In-Person nebo důvěryhodná registrace třetí strany](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F463e5220-3f79-4e24-a63f-343e4096cd22) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1337.json) |
 
@@ -1837,7 +1837,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-5 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1338 – \| automatizovaná Podpora správy ověřovatelů pro určení síly hesla](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6c59a207-6aed-41dc-83a2-e1ff66e4a4db) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1338.json) |
 
@@ -1845,7 +1845,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-5 (6) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1339 – ochrana ověřovatelů pro správu ověřovacích dat \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F367ae386-db7f-4167-b672-984ff86277c0) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1339.json) |
 
@@ -1853,7 +1853,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-5 (7) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1340 – Správa ověřovacích dat \| nemá žádné vložené nešifrované statické ověřovací objekty](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe51ff84b-e5ea-408f-b651-2ecc2933e4c6) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1340.json) |
 
@@ -1861,7 +1861,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-5 (8) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1341 – Správa ověřovacích dat \| více účtů systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34cb7e92-fe4c-4826-b51e-8cd203fa5d35) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1341.json) |
 
@@ -1869,7 +1869,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-5 (11) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1342 – \| ověřování Token-Based hardwaru pro správu ověřovatele](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F283a4e29-69d5-4c94-b99e-29acf003c899) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1342.json) |
 
@@ -1877,7 +1877,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-5 (13) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1343 – \| vypršení platnosti ověřovacích dat uložených v mezipaměti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c251a55-31eb-4e53-99c6-e9c43c393ac2) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1343.json) |
 
@@ -1885,7 +1885,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-6 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1344 – zpětná vazba ověřovatele](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c895fe7-2d8e-43a2-838c-3a533a5b355e) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1344.json) |
 
@@ -1893,7 +1893,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-7 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1345 – ověřování kryptografických modulů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff86aa129-7c07-4aa4-bbf5-792d93ffd9ea) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1345.json) |
 
@@ -1901,7 +1901,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-8 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1346 – identifikace a ověřování (uživatelé bez organizace)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F464dc8ce-2200-4720-87a5-dc5952924cc6) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1346.json) |
 
@@ -1909,7 +1909,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-8 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1347 – identifikace a ověřování (ne org). Uživatelé) \| přijetí přihlašovacích údajů piv. Z jiných Agys.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F131a2706-61e9-4916-a164-00e052056462) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1347.json) |
 
@@ -1917,7 +1917,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-8 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1348 – identifikace a ověřování (ne org). Uživatelé) \| přijetí přihlašovacích údajů třetích stran](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F855ced56-417b-4d74-9d5f-dd1bc81e22d6) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1348.json) |
 
@@ -1925,7 +1925,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-8 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1349 – identifikace a ověřování (ne org). Uživatelé) \| použití FICAM-Approved produktů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17641f70-94cd-4a5d-a613-3d1143e20e34) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1349.json) |
 
@@ -1933,7 +1933,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IA-8 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1350 – identifikace a ověřování (ne org). Uživatelé) \| použití profilů FICAM-Issued](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd77fd943-6ba6-4a21-ba07-22b03e347cc4) |Společnost Microsoft implementuje tento ovládací prvek identifikace a ověřování |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1350.json) |
 
@@ -1943,7 +1943,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-1 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1351 – zásady a postupy reakce na incidenty](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbcfb6683-05e5-4ce6-9723-c3fbe9896bdd) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1351.json) |
 |[Microsoft Managed Control 1352 – zásady a postupy reakce na incidenty](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F518cb545-bfa8-43f8-a108-3b7d5037469a) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1352.json) |
@@ -1952,7 +1952,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1353 – školení reakcí na incidenty](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc785ad59-f78f-44ad-9a7f-d1202318c748) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1353.json) |
 |[Microsoft Managed Control 1354 – školení reakcí na incidenty](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9fd92c17-163a-4511-bb96-bbb476449796) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1354.json) |
@@ -1962,7 +1962,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-2 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1356 – simulované události školení pro incidenty \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8829f8f5-e8be-441e-85c9-85b72a5d0ef3) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1356.json) |
 
@@ -1970,7 +1970,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-2 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1357 – školení reakcí na incidenty \| automatizované školicí prostředí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe4213689-05e8-4241-9d4e-8dd1cdafd105) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1357.json) |
 
@@ -1978,7 +1978,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1358 – testování reakce na incidenty](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feffbaeef-5bf4-400d-895e-ef8cbc0e64c7) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1358.json) |
 
@@ -1986,7 +1986,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-3 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1359 – koordinace reakcí na incidenty \| se souvisejícími plány](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47bc7ea0-7d13-4f7c-a154-b903f7194253) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1359.json) |
 
@@ -1994,7 +1994,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1360 – zpracování incidentů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbe5b05e7-0b82-4ebc-9eda-25e447b1a41e) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1360.json) |
 |[Spravovaný ovládací prvek Microsoft 1361 – zpracování incidentů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F03ed3be1-7276-4452-9a5d-e4168565ac67) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1361.json) |
@@ -2004,7 +2004,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-4 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1363 – \| procesy automatizovaného zpracování incidentů zpracovávající incidenty](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea3e8156-89a1-45b1-8bd6-938abc79fdfd) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1363.json) |
 
@@ -2012,7 +2012,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-4 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1364 – \| Dynamická rekonfigurace zpracování incidentů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4c615c2a-dc83-4dda-8220-abce7b50c9bc) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1364.json) |
 
@@ -2020,7 +2020,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-4 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1365 – \| provozní kontinuita zpracování incidentů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4116891d-72f7-46ee-911c-8056cc8dcbd5) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1365.json) |
 
@@ -2028,7 +2028,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-4 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1366 – \| korelace informací o zpracování incidentů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F06c45c30-ae44-4f0f-82be-41331da911cc) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1366.json) |
 
@@ -2036,7 +2036,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-4 (6) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1367 – \| možnosti specifické pro hrozby Insider](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F435b2547-6374-4f87-b42d-6e8dbe6ae62a) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1367.json) |
 
@@ -2044,7 +2044,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-4 (8) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1368 – korelace zpracování incidentů \| s externími organizacemi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F465f32da-0ace-4603-8d1b-7be5a3a702de) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1368.json) |
 
@@ -2052,7 +2052,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-5 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1369 – sledování incidentů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F18cc35ed-a429-486d-8d59-cb47e87304ed) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1369.json) |
 
@@ -2060,7 +2060,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-5 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1370 – \| automatizované sledování sledování incidentů/shromažďování a analýza dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F924e1b2d-c502-478f-bfdb-a7e09a0d5c01) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1370.json) |
 
@@ -2068,7 +2068,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-6 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1371 – generování sestav incidentů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9447f354-2c85-4700-93b3-ecdc6cb6a417) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1371.json) |
 |[Spravovaný ovládací prvek společnosti Microsoft 1372 – generování sestav incidentů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F25b96717-c912-4c00-9143-4e487f411726) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1372.json) |
@@ -2077,7 +2077,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-6 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1373 – generování sestav incidentů \| automatizované vytváření sestav](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4cca950f-c3b7-492a-8e8f-ea39663c14f9) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1373.json) |
 
@@ -2085,7 +2085,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-7 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1374 – pomoc při reakci na incidenty](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcc5c8616-52ef-4e5e-8000-491634ed9249) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1374.json) |
 
@@ -2093,7 +2093,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-7 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1375 – podpora pro reakci na incidenty \| automatizace pro dostupnost informací/podpory](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F00379355-8932-4b52-b63a-3bc6daf3451a) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1375.json) |
 
@@ -2101,7 +2101,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-7 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1376 – koordinace pomocných odpovědí na incidenty \| s externími poskytovateli](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F493a95f3-f2e3-47d0-af02-65e6d6decc2f) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1376.json) |
 |[Spravovaný ovládací prvek společnosti Microsoft 1377 – koordinace pomocných odpovědí na incidenty \| s externími poskytovateli](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F68434bd1-e14b-4031-9edb-a4adf5f84a67) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1377.json) |
@@ -2110,7 +2110,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-8 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1378 – plán reakce na incidenty](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F97fceb70-6983-42d0-9331-18ad8253184d) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1378.json) |
 |[Microsoft Managed Control 1379 – plán reakce na incidenty](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9442dd2c-a07f-46cd-b55a-553b66ba47ca) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1379.json) |
@@ -2123,7 +2123,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-9 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1384 – odpověď na informační úniky](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F79fbc228-461c-4a45-9004-a865ca0728a7) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1384.json) |
 |[Microsoft Managed Control 1385 – odpověď na informační úniky](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3e495e65-8663-49ca-9b38-9f45e800bc58) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1385.json) |
@@ -2136,7 +2136,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-9 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1390 – informační úniky odpovědí \| zodpovědné pracovníky](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc3b65b63-09ec-4cb5-8028-7dd324d10eb0) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1390.json) |
 
@@ -2144,7 +2144,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-9 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1391 – školení odpovědí na informační úniky \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdd6ac1a1-660e-4810-baa8-74e868e2ed47) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1391.json) |
 
@@ -2152,7 +2152,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-9 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1392 – informační úniky odpovědi na \| operace po přelití](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86dc819f-15e1-43f9-a271-41ae58d4cecc) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1392.json) |
 
@@ -2160,7 +2160,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 IR-9 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1393 – odezva \| na únik informací pro neoprávněné zaměstnance](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F731856d8-1598-4b75-92de-7d46235747c0) |Společnost Microsoft implementuje tento ovládací prvek reakce na incidenty |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1393.json) |
 
@@ -2170,7 +2170,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 mA-1 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1394 – zásady a postupy údržby systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4db56f68-3f50-45ab-88f3-ca46f5379a94) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1394.json) |
 |[Microsoft Managed Control 1395 – zásady a postupy údržby systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7207a023-a517-41c5-9df2-09d4c6845a05) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1395.json) |
@@ -2179,7 +2179,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ma-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Údržba řízená přes Microsoft Managed Control 1396](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F276af98f-4ff9-4e69-99fb-c9b2452fb85f) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1396.json) |
 |[Údržba řízená přes Microsoft Managed Control 1397](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F391af4ab-1117-46b9-b2c7-78bbd5cd995b) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1397.json) |
@@ -2192,7 +2192,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ma-2 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1402 – automatizované aktivity údržby řízené údržby \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a560d32-8075-4fec-9615-9f7c853f4ea9) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1402.json) |
 |[Microsoft Managed Control 1403 – automatizované aktivity údržby řízené údržby \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F57149289-d52b-4f40-9fe6-5233c1ef80f7) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1403.json) |
@@ -2201,7 +2201,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ma-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1404 – nástroje údržby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F13d8f903-0cd6-449f-a172-50f6579c182b) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1404.json) |
 
@@ -2209,7 +2209,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ma-3 (1) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1405-nástroje pro údržbu \| kontroly nástrojů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffe1a0bf3-409a-4b00-b60d-0b1f917f7e7b) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1405.json) |
 
@@ -2217,7 +2217,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ma-3 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1406 – nástroje údržby \| Kontrola médií](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa0f5339c-9292-43aa-a0bc-d27c6b8e30aa) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1406.json) |
 
@@ -2225,7 +2225,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ma-3 (3) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1407 – nástroje pro údržbu \| zabraňují neoprávněnému odebrání](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fff9fbd83-1d8d-4b41-aac2-94cb44b33976) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1407.json) |
 |[Microsoft Managed Control 1408 – nástroje pro údržbu \| zabraňují neoprávněnému odebrání](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc5f56ac6-4bb2-4086-bc41-ad76344ba2c2) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1408.json) |
@@ -2236,7 +2236,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 mA-4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1411 – nemístní údržba](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F898d4fe8-f743-4333-86b7-0c9245d93e7d) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1411.json) |
 |[Microsoft Managed Control 1412 – nemístní údržba](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3492d949-0dbb-4589-88b3-7b59601cc764) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1412.json) |
@@ -2248,7 +2248,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 mA-4 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1416 – nemístní \| Údržba dokumentu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F38dfd8a3-5290-4099-88b7-4081f4c4d8ae) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1416.json) |
 
@@ -2256,7 +2256,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 mA-4 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1417 – nemístní údržba \| srovnatelné se zabezpečením/upravením](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7522ed84-70d5-4181-afc0-21e50b1b6d0e) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1417.json) |
 |[Microsoft Managed Control 1418 – nemístní údržba \| srovnatelné se zabezpečením/upravením](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F28e633fd-284e-4ea7-88b4-02ca157ed713) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1418.json) |
@@ -2265,7 +2265,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 mA-4 (6) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1419 – \| kryptografická ochrana nemístní údržby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6747bf9-2b97-45b8-b162-3c8becb9937d) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1419.json) |
 
@@ -2273,7 +2273,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ma-5 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1420 – zaměstnanci údržby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F05ae08cc-a282-413b-90c7-21a2c60b8404) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1420.json) |
 |[Spravovaný ovládací prvek společnosti Microsoft 1421 – zaměstnanci údržby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe539caaa-da8c-41b8-9e1e-449851e2f7a6) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1421.json) |
@@ -2283,7 +2283,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 ma-5 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1423 – zaměstnanci údržby \| bez odpovídajícího přístupu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7741669e-d4f6-485a-83cb-e70ce7cbbc20) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1423.json) |
 |[Microsoft Managed Control 1424 – zaměstnanci údržby \| bez odpovídajícího přístupu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf55fc87-48e1-4676-a2f8-d9a8cf993283) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1424.json) |
@@ -2292,7 +2292,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MA-6 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1425 – včasná údržba](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5983d99c-f39b-4c32-a3dc-170f19f6941b) |Microsoft implementuje tuto kontrolu údržby. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1425.json) |
 
@@ -2302,7 +2302,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MP-1 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1426 – zásady a postupy ochrany médií](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21f639bc-f42b-46b1-8f40-7a2a389c291a) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1426.json) |
 |[Microsoft Managed Control 1427 – zásady a postupy ochrany médií](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbc90e44f-d83f-4bdf-900f-3d5eb4111b31) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1427.json) |
@@ -2311,7 +2311,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MP-2 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1428 – přístup k médiím](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a77fcc7-b8d8-451a-ab52-56197913c0c7) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1428.json) |
 
@@ -2319,7 +2319,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MP-3 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1429 – označení média](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb07c9b24-729e-4e85-95fc-f224d2d08a80) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1429.json) |
 |[Spravovaný ovládací prvek Microsoft 1430 – označení média](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0f559588-5e53-4b14-a7c4-85d28ebc2234) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1430.json) |
@@ -2328,7 +2328,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MP-4 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1431 – Storage Media](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7173c52-2b99-4696-a576-63dd5f970ef4) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1431.json) |
 |[Microsoft Managed Control 1432 – Storage Media](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1140e542-b80d-4048-af45-3f7245be274b) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1432.json) |
@@ -2337,7 +2337,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MP-5 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1433-Media Transport](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5b879b41-2728-41c5-ad24-9ee2c37cbe65) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1433.json) |
 |[Microsoft Managed Control 1434-Media Transport](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c18f06b-a68d-41c3-8863-b8cd3acb5f8f) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1434.json) |
@@ -2348,7 +2348,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MP-5 (4) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1437 – \| kryptografická ochrana Media Transport](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6d1eb6ed-bf13-4046-b993-b9e2aef0f76c) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1437.json) |
 
@@ -2356,7 +2356,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MP-6 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1438 – Správa média](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40fcc635-52a2-4dbc-9523-80a1f4aa1de6) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1438.json) |
 |[Microsoft Managed Control 1439 – Správa média](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdce72873-c5f1-47c3-9b4f-6b8207fd5a45) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1439.json) |
@@ -2365,7 +2365,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MP-6 (1) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1440- \| Kontrola/schválení média/sledování/dokument/ověření](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F881299bf-2a5b-4686-a1b2-321d33679953) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1440.json) |
 
@@ -2373,7 +2373,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MP-6 (2) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1441 – testování vybavení pro úpravu média \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6519d7f3-e8a2-4ff3-a935-9a9497152ad7) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1441.json) |
 
@@ -2381,7 +2381,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MP-6 (3) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1442 – \| nedestruktivní postupy pro úpravu média](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f26049b-2c5a-4841-9ff3-d48a26aae475) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1442.json) |
 
@@ -2389,7 +2389,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MP-7 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1443 – použití multimédií](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcd0ec6fa-a2e7-4361-aee4-a8688659a9ed) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1443.json) |
 
@@ -2397,7 +2397,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 MP-7 (1) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1444 – použití média \| zakázat použití bez vlastníka](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F666143df-f5e0-45bd-b554-135f0f93e44e) |Microsoft implementuje tuto kontrolu Media Protection. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1444.json) |
 
@@ -2407,7 +2407,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-1 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1445 – zásady a postupy ochrany životního prostředí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32d07d59-2716-4972-b37b-214a67ac4a37) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1445.json) |
 |[Microsoft Managed Control 1446 – zásady a postupy ochrany životního prostředí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbf6850fe-abba-468e-9ef4-d09ec7d983cd) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1446.json) |
@@ -2416,7 +2416,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-2 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1447 – autorizace fyzického přístupu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb9783a99-98fe-4a95-873f-29613309fe9a) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1447.json) |
 |[Microsoft Managed Control 1448 – autorizace fyzického přístupu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F825d6494-e583-42f2-a3f2-6458e6f0004f) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1448.json) |
@@ -2427,7 +2427,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-3 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1451 – fyzický Access Control](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe3f1e5a3-25c1-4476-8cb6-3955031f8e65) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1451.json) |
 |[Microsoft Managed Control 1452 – fyzický Access Control](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82c76455-4d3f-4e09-a654-22e592107e74) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1452.json) |
@@ -2441,7 +2441,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-3 (1) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1458 – \| přístup k informacím o fyzickém Access Controlm systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8c19ceb7-56e9-4488-8ddb-b1eb3aa6d203) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1458.json) |
 
@@ -2449,7 +2449,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-4 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1459-Access Control pro přenosové médium](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F75cc73c7-5cdb-479d-a06f-7b4d0dbb1da0) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1459.json) |
 
@@ -2457,7 +2457,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-5 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1460-Access Control pro výstupní zařízení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6f3ce1bb-4f77-4695-8355-70b08d54fdda) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1460.json) |
 
@@ -2465,7 +2465,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-6 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1461 – monitorování fyzického přístupu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faafef03e-fea8-470b-88fa-54bd1fcd7064) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1461.json) |
 |[Spravovaný ovládací prvek společnosti Microsoft 1462 – monitorování fyzického přístupu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9b1f3a9a-13a1-4b40-8420-36bca6fd8c02) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1462.json) |
@@ -2475,7 +2475,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-6 (1) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1464 – \| Upozornění na neoprávněné vniknutí a sledovací zařízení pro fyzický přístup](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41256567-1795-4684-b00b-a1308ce43cac) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1464.json) |
 
@@ -2483,7 +2483,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-6 (4) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1465 – monitorování fyzického přístupu \| monitorování fyzického přístupu k informačním systémům](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe6e41554-86b5-4537-9f7f-4fc41a1d1640) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1465.json) |
 
@@ -2491,7 +2491,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-8 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravované řízení společnosti Microsoft 1466 – záznamy přístupu návštěvníků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0d943a9c-a6f1-401f-a792-740cdb09c451) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1466.json) |
 |[Spravované řízení společnosti Microsoft 1467 – záznamy přístupu návštěvníků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5350cbf9-8bdd-4904-b22a-e88be84ca49d) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1467.json) |
@@ -2500,7 +2500,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-8 (1) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravované řízení společnosti Microsoft 1468 – evidence \| automatických záznamů a kontrola přístupu návštěvníků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F75603f96-80a1-4757-991d-5a1221765ddd) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1468.json) |
 
@@ -2508,7 +2508,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-9 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1469-Power Equipment and kabeláže](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff509c5b6-0de0-4a4e-9b2e-cd9cbf3a58fd) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1469.json) |
 
@@ -2516,7 +2516,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-10 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1470 – Emergency shutoff](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc89ba09f-2e0f-44d0-8095-65b05bd151ef) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1470.json) |
 |[Microsoft Managed Control 1471 – Emergency shutoff](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7dd0e9ce-1772-41fb-a50a-99977071f916) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1471.json) |
@@ -2526,7 +2526,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-11 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1473 – nouzový výkon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd7047705-d719-46a7-8bb0-76ad233eba71) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1473.json) |
 
@@ -2534,7 +2534,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-11 (1) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1474 – nouzové napájení \| Long-Term alternativním zdrojem napájení – minimální provozní schopnost](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F03ad326e-d7a1-44b1-9a76-e17492efc9e4) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1474.json) |
 
@@ -2542,7 +2542,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-12 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1475 – nouzové osvětlení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34a63848-30cf-4081-937e-ce1a1c885501) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1475.json) |
 
@@ -2550,7 +2550,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-13 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1476 – požární ochrana](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0f3c4ac2-3e35-4906-a80b-473b12a622d7) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1476.json) |
 
@@ -2558,7 +2558,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-13 (1) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1477 – \| zařízení/systémy zjišťování ochrany před požáry](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4862a63c-6c74-4a9d-a221-89af3c374503) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1477.json) |
 
@@ -2566,7 +2566,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-13 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1478 – \| zařízení/systémy potlačení brány fire Protection](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff997df46-cfbb-4cc8-aac8-3fecdaf6a183) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1478.json) |
 
@@ -2574,7 +2574,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-13 (3) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1479 – \| automatické potlačení požární ochrany](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe327b072-281d-4f75-9c28-4216e5d72f26) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1479.json) |
 
@@ -2582,7 +2582,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-14 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1480 – kontroly teploty a vlhkosti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F18a767cc-1947-4338-a240-bc058c81164f) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1480.json) |
 |[Microsoft Managed Control 1481 – kontroly teploty a vlhkosti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F717a1c78-a267-4f56-ac58-ee6c54dc4339) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1481.json) |
@@ -2591,7 +2591,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-14 (2) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1482 – řízení teploty a vlhkosti \| monitoruje výstrahy a oznámení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9df4277e-8c88-4d5c-9b1a-541d53d15d7b) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1482.json) |
 
@@ -2599,7 +2599,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-15 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1483 – ochrana před poškozením vody](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5cb81060-3c8a-4968-bcdc-395a1801f6c1) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1483.json) |
 
@@ -2607,7 +2607,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-15 (1) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1484 – Podpora automatizace ochrany před poškozením vody \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F486b006a-3653-45e8-b41c-a052d3e05456) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1484.json) |
 
@@ -2615,7 +2615,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-16 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1485 – doručování a odebírání](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50301354-95d0-4a11-8af5-8039ecf6d38b) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1485.json) |
 
@@ -2623,7 +2623,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-17 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1486 – alternativní pracovní web](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcb790345-a51f-43de-934e-98dbfaf9dca5) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1486.json) |
 |[Microsoft Managed Control 1487 – alternativní pracovní web](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe9c3371d-c30c-4f58-abd9-30b8a8199571) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1487.json) |
@@ -2633,7 +2633,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PE-18 **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1489 – umístění součástí informačního systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0a794f-1444-4c96-9534-e35fc8c39c91) |Společnost Microsoft implementuje toto fyzické a environmentální řízení ochrany. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1489.json) |
 
@@ -2643,7 +2643,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 pl-1 – **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1490 – zásady a postupy plánování zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9e61da80-0957-4892-b70c-609d5eaafb6b) |Společnost Microsoft implementuje tento ovládací prvek plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1490.json) |
 |[Microsoft Managed Control 1491 – zásady a postupy plánování zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1571dd40-dafc-4ef4-8f55-16eba27efc7b) |Společnost Microsoft implementuje tento ovládací prvek plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1491.json) |
@@ -2652,7 +2652,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 pl-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1492 – plán zabezpečení systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ad5f307-e045-46f7-8214-5bdb7e973737) |Společnost Microsoft implementuje tento ovládací prvek plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1492.json) |
 |[Microsoft Managed Control 1493 – plán zabezpečení systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22b469b3-fccf-42da-aa3b-a28e6fb113ce) |Společnost Microsoft implementuje tento ovládací prvek plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1493.json) |
@@ -2664,7 +2664,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 pl-2 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1497-plán \| /koordinace zabezpečení systému pomocí dalších organizačních entit](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2e3c5583-1729-4d36-8771-59c32f090a22) |Společnost Microsoft implementuje tento ovládací prvek plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1497.json) |
 
@@ -2672,7 +2672,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 pl-4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1498 – pravidla chování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F633988b9-cf2f-4323-8394-f0d2af9cd6e1) |Společnost Microsoft implementuje tento ovládací prvek plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1498.json) |
 |[Microsoft Managed Control 1499 – pravidla chování](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe59671ab-9720-4ee2-9c60-170e8c82251e) |Společnost Microsoft implementuje tento ovládací prvek plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1499.json) |
@@ -2683,7 +2683,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 pl-4 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1502 – pravidla chování \| sociálních médií a síťových omezení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe901375c-8f01-4ac8-9183-d5312f47fe63) |Společnost Microsoft implementuje tento ovládací prvek plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1502.json) |
 
@@ -2691,7 +2691,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 pl-8 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1503 – Architektura zabezpečení informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc1fa9c2f-d439-4ab9-8b83-81fb1934f81d) |Společnost Microsoft implementuje tento ovládací prvek plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1503.json) |
 |[Microsoft Managed Control 1504 – Architektura zabezpečení informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9e7c35d0-12d4-4e0c-80a2-8a352537aefd) |Společnost Microsoft implementuje tento ovládací prvek plánování. |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1504.json) |
@@ -2703,7 +2703,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PS-1 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1506 – zásady a postupy zabezpečení zaměstnanců](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff7d2ff17-d604-4dd9-b607-9ecf63f28ad2) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1506.json) |
 |[Microsoft Managed Control 1507 – zásady a postupy zabezpečení zaměstnanců](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86ccd1bf-e7ad-4851-93ce-6ec817469c1e) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1507.json) |
@@ -2712,7 +2712,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PS-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1508 – označení rizika pozice](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F76f500cc-4bca-4583-bda1-6d084dc21086) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1508.json) |
 |[Microsoft Managed Control 1509 – označení rizika pozice](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F70792197-9bfc-4813-905a-bd33993e327f) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1509.json) |
@@ -2722,7 +2722,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PS-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1511 – blokování zaměstnanců](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa9eae324-d327-4539-9293-b48e122465f8) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1511.json) |
 |[Spravovaný ovládací prvek společnosti Microsoft 1512 – blokování zaměstnanců](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5a8324ad-f599-429b-aaed-f9c6e8c987a8) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1512.json) |
@@ -2731,7 +2731,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PS-3 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1513 – \| informace o kontrole personálu se speciálními ochrannými opatřeními](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc416970d-b12b-49eb-8af4-fb144cd7c290) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1513.json) |
 |[Microsoft Managed Control 1514 – \| informace o kontrole personálu se speciálními ochrannými opatřeními](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9ed5ca00-0e43-434e-a018-7aab91461ba7) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1514.json) |
@@ -2740,7 +2740,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PS-4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1515 – ukončení zaměstnanců](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F02dd141a-a2b2-49a7-bcbd-ca31142f6211) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1515.json) |
 |[Spravovaný ovládací prvek společnosti Microsoft 1516 – ukončení zaměstnanců](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fda3cd269-156f-435b-b472-c3af34c032ed) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1516.json) |
@@ -2753,7 +2753,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PS-4 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1521 – \| automatizované oznámení o ukončení zaměstnanců](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cbddf9c-a3aa-4330-a0f5-4c0c1f1862e5) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1521.json) |
 
@@ -2761,7 +2761,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PS-5 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1522 – přenos personálu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F38b470cc-f939-4a15-80e0-9f0c74f2e2c9) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1522.json) |
 |[Microsoft Managed Control 1523 – přenos personálu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5577a310-2551-49c8-803b-36e0d5e55601) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1523.json) |
@@ -2772,7 +2772,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PS-6 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1526 – dohody o přístupu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F953e6261-a05a-44fd-8246-000e1a3edbb9) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1526.json) |
 |[Microsoft Managed Control 1527 – dohody o přístupu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2823de66-332f-4bfd-94a3-3eb036cd3b67) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1527.json) |
@@ -2782,7 +2782,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PS-7 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1529 – zabezpečení zaměstnanců třetí strany](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd74fdc92-1cb8-4a34-9978-8556425cd14c) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1529.json) |
 |[Microsoft Managed Control 1530 – zabezpečení zaměstnanců třetí strany](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6e8f9566-29f1-49cd-b61f-f8628a3cf993) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1530.json) |
@@ -2794,7 +2794,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 PS-8 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1534 – postihy zaměstnanců](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8b2b263e-cd05-4488-bcbf-4debec7a17d9) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1534.json) |
 |[Microsoft Managed Control 1535 – postihy zaměstnanců](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff9a165d2-967d-4733-8399-1074270dae2e) |Společnost Microsoft implementuje tento ovládací prvek zabezpečení zaměstnanců |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1535.json) |
@@ -2805,7 +2805,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 RA-1 – **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1536 – zásady a postupy hodnocení rizik](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6e40d9de-2ad4-4cb5-8945-23143326a502) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1536.json) |
 |[Microsoft Managed Control 1537 – zásady a postupy hodnocení rizik](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb19454ca-0d70-42c0-acf5-ea1c1e5726d1) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1537.json) |
@@ -2814,7 +2814,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 RA-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1538 – kategorizace zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d7658b2-e827-49c3-a2ae-6d2bd0b45874) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1538.json) |
 |[Microsoft Managed Control 1539 – kategorizace zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faabb155f-e7a5-4896-a767-e918bfae2ee0) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1539.json) |
@@ -2824,7 +2824,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 Ra-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1541 – posouzení rizik](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F70f6af82-7be6-44aa-9b15-8b9231b2e434) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1541.json) |
 |[Microsoft Managed Control 1542 – posouzení rizik](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feab340d0-3d55-4826-a0e5-feebfeb0131d) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1542.json) |
@@ -2836,7 +2836,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 RA-5 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[V případě spravované instance SQL by mělo být povolené rozšířené zabezpečení dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb7388-5bf4-4ad7-ba99-2cd2f41cebb9) |Auditujte všechny spravované instance SQL bez pokročilých zabezpečení dat. |AuditIfNotExists, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurity_Audit.json) |
 |[Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb4388-5bf4-4ad7-ba82-2cd2f41ceae9) |Auditovat SQL servery bez pokročilých zabezpečení dat |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_AdvancedDataSecurity_Audit.json) |
@@ -2854,7 +2854,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 RA-5 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1551 – \| možnost aktualizace nástroje pro kontrolu ohrožení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5bbda922-0172-4095-89e6-5b4a0bf03af7) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1551.json) |
 
@@ -2862,7 +2862,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 RA-5 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1552 – Chyba při vyhledávání \| aktualizace frekvencí/před novou kontrolou/po identifikaci](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F43684572-e4f1-4642-af35-6b933bc506da) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1552.json) |
 
@@ -2870,7 +2870,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 RA-5 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1553-Chyba kontroly \| šířky a hloubky pokrytí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9e5225fe-cdfb-4fce-9aec-0fe20dd53b62) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1553.json) |
 
@@ -2878,7 +2878,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 RA-5 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1554-ohrožení zabezpečení při kontrole \| zjistitelných informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F10984b4e-c93e-48d7-bf20-9c03b04e9eca) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1554.json) |
 
@@ -2886,7 +2886,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 RA-5 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1555 – Chyba při prohledávání \| privilegovaného přístupu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5afa8cab-1ed7-4e40-884c-64e0ac2059cc) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1555.json) |
 
@@ -2894,7 +2894,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 RA-5 (6) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1556-ohrožení zabezpečení při kontrole \| automatizovaných analýz trendů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F391ff8b3-afed-405e-9f7d-ef2f8168d5da) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1556.json) |
 
@@ -2902,7 +2902,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 RA-5 (8) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1557-Chyba při \| kontrole historických protokolů auditu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F36fbe499-f2f2-41b6-880e-52d7ea1d94a5) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1557.json) |
 
@@ -2910,7 +2910,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 RA-5 (10) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1558 – kontrola ohrožení zabezpečení \| koreluje informace o kontrole](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F65592b16-4367-42c5-a26e-d371be450e17) |Společnost Microsoft implementuje tento ovládací prvek posouzení rizika |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1558.json) |
 
@@ -2920,7 +2920,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-1 – **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1559 – zásady a postupy pořízení systému a služeb](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F45692294-f074-42bd-ac54-16f1a3c07554) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1559.json) |
 |[Microsoft Managed Control 1560 – zásady a postupy pořízení systému a služeb](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe29e0915-5c2f-4d09-8806-048b749ad763) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1560.json) |
@@ -2929,7 +2929,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1561 – přidělení prostředků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40364c3f-c331-4e29-b1e3-2fbe998ba2f5) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1561.json) |
 |[Spravovaný ovládací prvek společnosti Microsoft 1562 – přidělení prostředků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd4142013-7964-4163-a313-a900301c2cef) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1562.json) |
@@ -2939,7 +2939,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1564-životní cyklus vývoje systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F157f0ef9-143f-496d-b8f9-f8c8eeaad801) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1564.json) |
 |[Microsoft Managed Control 1565-životní cyklus vývoje systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F45ce2396-5c76-4654-9737-f8792ab3d26b) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1565.json) |
@@ -2950,7 +2950,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1568 – proces získání](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6a8eae8-9854-495a-ac82-d2cd3eac02a6) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1568.json) |
 |[Spravovaný ovládací prvek Microsoft 1569 – proces získání](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fad2f8e61-a564-4dfd-8eaa-816f5be8cb34) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1569.json) |
@@ -2964,7 +2964,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-4 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1575- \| Vlastnosti procesu získání řízení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F93e1bb73-1b08-4dbe-9c62-8e2e92e7ec41) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1575.json) |
 
@@ -2972,7 +2972,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-4 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1576 – \| informace o návrhu/implementaci procesu získání pro ovládací prvky zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f18c885-ade3-48c5-80b1-8f9216019c18) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1576.json) |
 
@@ -2980,7 +2980,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-4 (8) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1577 – plán pro \| průběžné monitorování procesu získání](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd922484a-8cfc-4a6b-95a4-77d6a685407f) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1577.json) |
 
@@ -2988,7 +2988,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-4 (9) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1578 – funkce procesu získání \| /porty/protokoly/služby, které se používají](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F45b7b644-5f91-498e-9d89-7402532d3645) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1578.json) |
 
@@ -2996,7 +2996,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-4 (10) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1579 – \| použití schválených produktů piv v procesu získání](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4e54c7ef-7457-430b-9a3e-ef8881d4a8e0) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1579.json) |
 
@@ -3004,7 +3004,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-5 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1580 – dokumentace k informačnímu systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F854db8ac-6adf-42a0-bef3-b73f764f40b9) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1580.json) |
 |[Microsoft Managed Control 1581 – dokumentace k informačnímu systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F742b549b-7a25-465f-b83c-ea1ffb4f4e0e) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1581.json) |
@@ -3016,7 +3016,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-8 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1585 – zásady zabezpečení technického řízení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd57f8732-5cdc-4cda-8d27-ab148e1f3a55) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1585.json) |
 
@@ -3024,7 +3024,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-9 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1586 – externí informační systémové služby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6e3b2fbd-8f37-4766-a64d-3f37703dcb51) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1586.json) |
 |[Microsoft Managed Control 1587 – externí informační systémové služby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32820956-9c6d-4376-934c-05cd8525be7c) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1587.json) |
@@ -3034,7 +3034,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-9 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1589-externí informace o \| rizicích pro posouzení rizik a organizace schválení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86ec7f9b-9478-40ff-8cfd-6a0d510081a8) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1589.json) |
 |[Microsoft Managed Control 1590-externí informace o \| rizicích pro posouzení rizik a organizace schválení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbf296b8c-f391-4ea4-9198-be3c9d39dd1f) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1590.json) |
@@ -3043,7 +3043,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-9 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1591 – externí informační systém \| Ident služby. Funkce/porty/protokoly/služby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff751cdb7-fbee-406b-969b-815d367cb9b3) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1591.json) |
 
@@ -3051,7 +3051,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-9 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1592 – externí informace o \| konzistentních zájmech uživatelů a poskytovatelů služeb](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d01ba6c-289f-42fd-a408-494b355b6222) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1592.json) |
 
@@ -3059,7 +3059,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-9 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1593 – \| zpracování, úložiště a umístění služby externími informačními systémy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2cd0a426-b5f5-4fe0-9539-a6043cdbc6fa) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1593.json) |
 
@@ -3067,7 +3067,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-10 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1594 – Správa konfigurace pro vývojáře](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F042ba2a1-8bb8-45f4-b080-c78cf62b90e9) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1594.json) |
 |[Microsoft Managed Control 1595 – Správa konfigurace pro vývojáře](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1e0414e7-6ef5-4182-8076-aa82fbb53341) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1595.json) |
@@ -3079,7 +3079,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-10 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1599 – \| ověření integrity softwaru/firmwaru správy konfigurace pro vývojáře](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0004bbf0-5099-4179-869e-e9ffe5fb0945) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1599.json) |
 
@@ -3087,7 +3087,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-11 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1600 – testování a vyhodnocení zabezpečení pro vývojáře](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc53f3123-d233-44a7-930b-f40d3bfeb7d6) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1600.json) |
 |[Microsoft Managed Control 1601 – testování a vyhodnocení zabezpečení pro vývojáře](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ee79a0c-addf-4ce9-9b3c-d9576ed5e20e) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1601.json) |
@@ -3099,7 +3099,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-11 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1605 – \| Analýza statického kódu a testování zabezpečení pro vývojáře](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0062eb8b-dc75-4718-8ea5-9bb4a9606655) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1605.json) |
 
@@ -3107,7 +3107,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-11 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1606 – analýzy zabezpečení a bezpečnostní hrozby pro vývoj a testy \| ohrožení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbaa8a9a4-5bbe-4c72-98f6-a3a47ae2b1ca) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1606.json) |
 
@@ -3115,7 +3115,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-11 (8) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1607 – testování zabezpečení pro vývojáře a \| Analýza dynamického kódu pro vyhodnocení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F976a74cf-b192-4d35-8cab-2068f272addb) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1607.json) |
 
@@ -3123,7 +3123,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-12 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1608 – ochrana dodavatelských řetězců](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb73b7b3b-677c-4a2a-b949-ad4dc4acd89f) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1608.json) |
 
@@ -3131,7 +3131,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-15 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1609 – proces vývoje, standardy a nástroje](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9e93fa71-42ac-41a7-b177-efbfdc53c69f) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1609.json) |
 |[Microsoft Managed Control 1610 – proces vývoje, standardy a nástroje](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb9f3fb54-4222-46a1-a308-4874061f8491) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1610.json) |
@@ -3140,7 +3140,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-16 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1611 – Developer-Provided školení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffdda8a0c-ac32-43f6-b2f4-7dc1df03f43f) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1611.json) |
 
@@ -3148,7 +3148,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SA-17 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1612 – architektura a návrh zabezpečení pro vývojáře](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa2037b3d-8b04-4171-8610-e6d4f1d08db5) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1612.json) |
 |[Microsoft Managed Control 1613 – architektura a návrh zabezpečení pro vývojáře](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffe2ad78b-8748-4bff-a924-f74dfca93f30) |Společnost Microsoft implementuje tento ovládací prvek pro pořízení systému a služeb |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1613.json) |
@@ -3160,7 +3160,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-1 – **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1615 – zásady a postupy ochrany pro systém a komunikaci](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff35e02aa-0a55-49f8-8811-8abfa7e6f2c0) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1615.json) |
 |[Microsoft Managed Control 1616 – zásady a postupy ochrany pro systém a komunikaci](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2006457a-48b3-4f7b-8d2e-1532287f9929) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1616.json) |
@@ -3169,7 +3169,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1617-dělení aplikací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa631d8f5-eb81-4f9d-9ee1-74431371e4a3) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1617.json) |
 
@@ -3177,7 +3177,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1618 – izolace funkcí zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff52f89aa-4489-4ec4-950e-8c96a036baa9) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1618.json) |
 
@@ -3185,7 +3185,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1619 – informace ve sdílených prostředcích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc722e569-cb52-45f3-a643-836547d016e1) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1619.json) |
 
@@ -3193,7 +3193,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-5 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Měla by být povolená Azure DDoS Protection Standard.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd) |DDoS Protection Standard by měla být povolená pro všechny virtuální sítě s podsítí, která je součástí aplikační brány s veřejnou IP adresou. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableDDoSProtection_Audit.json) |
 |[Microsoft Managed Control 1620 – odmítnutí služby Service Protection](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd17c826b-1dec-43e1-a984-7b71c446649c) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1620.json) |
@@ -3202,7 +3202,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-6 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1621 – dostupnost prostředků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cb9f731-744a-4691-a481-ca77b0411538) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1621.json) |
 
@@ -3210,9 +3210,9 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-7 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
-|[Doporučení adaptivního posílení zabezpečení sítě by se měla použít na internetových virtuálních počítačích.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F08e6af2d-db70-460a-bfe9-d5bd474ba9d6) |Azure Security Center analyzuje modely přenosů internetových virtuálních počítačů a poskytuje doporučení pro pravidla skupiny zabezpečení sítě, která omezují potenciální útok na plochu. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AdaptiveNetworkHardenings_Audit.json) |
+|[Doporučení adaptivního posílení zabezpečení sítě by se měla použít na internetových virtuálních počítačích.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F08e6af2d-db70-460a-bfe9-d5bd474ba9d6) |Azure Security Center analyzuje modely přenosů internetových virtuálních počítačů a poskytuje doporučení pro pravidla skupiny zabezpečení sítě, která omezují potenciální útok na plochu. |AuditIfNotExists, zakázáno |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AdaptiveNetworkHardenings_Audit.json) |
 |[Všechny síťové porty by měly být omezené na skupinách zabezpečení sítě přidružených k vašemu virtuálnímu počítači.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9daedab3-fb2d-461e-b861-71790eead4f6) |Azure Security Center identifikovali, že některá příchozí pravidla vaší skupiny zabezpečení sítě jsou příliš nepovolují. Příchozí pravidla by neměla umožňovat přístup z rozsahů "any" nebo "Internet". To může potenciálně umožnit útokům cílit na vaše prostředky. |AuditIfNotExists, zakázáno |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnprotectedEndpoints_Audit.json) |
 |[Microsoft Managed Control 1622 – hranice ochrany](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fecf56554-164d-499a-8d00-206b07c27bed) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1622.json) |
 |[Microsoft Managed Control 1623 – hranice ochrany](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F02ce1b22-412a-4528-8630-c42146f917ed) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1623.json) |
@@ -3223,7 +3223,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-7 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Porty pro správu virtuálních počítačů by měly být chráněné pomocí řízení přístupu k síti za běhu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb0f33259-77d7-4c9e-aac6-3aabcfae693c) |Přístup k síti je možný jenom v čase (JIT) se monitoruje Azure Security Center jako doporučení. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_JITNetworkAccess_Audit.json) |
 |[Microsoft Managed Control 1625 – \| přístupové body ochrany hranic](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb9b66a4d-70a1-4b47-8fa1-289cec68c605) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1625.json) |
@@ -3232,7 +3232,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-7 (4) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Porty pro správu virtuálních počítačů by měly být chráněné pomocí řízení přístupu k síti za běhu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb0f33259-77d7-4c9e-aac6-3aabcfae693c) |Přístup k síti je možný jenom v čase (JIT) se monitoruje Azure Security Center jako doporučení. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_JITNetworkAccess_Audit.json) |
 |[Microsoft Managed Control 1626 – ochrana hranic \| externí telekomunikační služby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe8f6bddd-6d67-439a-88d4-c5fe39a79341) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1626.json) |
@@ -3245,7 +3245,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-7 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1631 – omezení ochrany hranic \| ve výchozím nastavení/Povolit při výjimce](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74ae9b8e-e7bb-4c9c-992f-c535282f7a2c) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1631.json) |
 
@@ -3253,7 +3253,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-7 (7) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1632 – hranice ochrany \| brání rozdělenému tunelování pro vzdálená zařízení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4ce9073a-77fa-48f0-96b1-87aa8e6091c2) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1632.json) |
 
@@ -3261,7 +3261,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-7 (8) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1633 – přenos hraniční ochrany \| na ověřené proxy servery](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F07557aa0-e02f-4460-9a81-8ecd2fed601a) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1633.json) |
 
@@ -3269,7 +3269,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-7 (10) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1634 – hranice ochrany \| brání neoprávněnému exfiltrace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F292a7c44-37fa-4c68-af7c-9d836955ded2) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1634.json) |
 
@@ -3277,7 +3277,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-7 (12) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1635 – ochrana hranic \| Host-Based ochrana](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F87551b5d-1deb-4d0f-86cc-9dc14cb4bf7e) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1635.json) |
 
@@ -3285,7 +3285,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-7 (13) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1636 – izolace ochrany hranic \| v nástrojích zabezpečení/mechanismech/součástech podpory](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7b694eed-7081-43c6-867c-41c76c961043) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1636.json) |
 
@@ -3293,7 +3293,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-7 (18) **vlastnictví**: Microsoft
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1637 – hranice ochrany se \| nedaří zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4075bedc-c62a-4635-bede-a01be89807f3) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1637.json) |
 
@@ -3301,7 +3301,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-7 (20) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1638 – \| Dynamická izolace/oddělení ochrany hranic](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F49b99653-32cd-405d-a135-e7d60a9aae1f) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1638.json) |
 
@@ -3309,7 +3309,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-7 (21) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1639 – izolace ochrany hranic součástí \| informačních systémů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F78e8e649-50f6-4fe3-99ac-fedc2e63b03f) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1639.json) |
 
@@ -3317,7 +3317,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-8 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1640 – důvěrnost a integrita přenosu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F05a289ce-6a20-4b75-a0f3-dc8601b6acd0) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1640.json) |
 
@@ -3325,7 +3325,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-8 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Aplikace API by měla být přístupná jen přes protokol HTTPS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb7ddfbdc-1260-477d-91fd-98bd9be789a6) |Použití protokolu HTTPS zajišťuje ověřování serveru nebo služby a chrání data při přenosu z útoků s odposloucháváním síťové vrstvy. |Audit, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppServiceApiApp_AuditHTTP_Audit.json) |
 |[Auditovat webové servery systému Windows, které nepoužívají protokoly zabezpečených komunikací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5752e6d6-1206-46d8-8ab1-ecc2f71a8112) |Vyžaduje nasazení požadovaných požadavků do oboru přiřazení zásad. Podrobnosti najdete na adrese [https://aka.ms/gcpol](https://aka.ms/gcpol) . Počítače jsou nekompatibilní, pokud klíč registru HKLM: \ SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols zahrnuje protokoly méně bezpečné než vybrané v parametru zásad. |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SecureWebProtocol_AINE.json) |
@@ -3339,7 +3339,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-10 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1642 – odpojení sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53397227-5ee3-4b23-9e5e-c8a767ce6928) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1642.json) |
 
@@ -3347,7 +3347,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-12 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1643 – vytváření a Správa kryptografického klíče](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6d8d492c-dd7a-46f7-a723-fa66a425b87c) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1643.json) |
 
@@ -3355,7 +3355,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-12 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1644 – dostupnost a Správa kryptografického klíče \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7211477-c970-446b-b4af-062f37461147) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1644.json) |
 
@@ -3363,7 +3363,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-12 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1645 – symetrické klíče pro vytváření a správu kryptografických klíčů \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fafbd0baf-ff1a-4447-a86f-088a97347c0c) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1645.json) |
 
@@ -3371,7 +3371,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-12 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1646 – vytváření kryptografických klíčů a Správa \| asymetrických klíčů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F506814fa-b930-4b10-894e-a45b98c40e1a) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1646.json) |
 
@@ -3379,7 +3379,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-13 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1647 – kryptografická ochrana](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F791cfc15-6974-42a0-9f4c-2d4b82f4a78c) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1647.json) |
 
@@ -3387,7 +3387,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-15 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1648 – výpočetní zařízení pro spolupráci](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3a9eb14b-495a-4ebb-933c-ce4ef5264e32) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1648.json) |
 |[Microsoft Managed Control 1649 – výpočetní zařízení pro spolupráci](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26d292cc-b0b8-4c29-9337-68abc758bf7b) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1649.json) |
@@ -3396,7 +3396,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-17 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1650 – certifikáty infrastruktury veřejných klíčů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F201d3740-bd16-4baf-b4b8-7cda352228b7) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1650.json) |
 
@@ -3404,7 +3404,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-18 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1651 – mobilní kód](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6db63528-c9ba-491c-8a80-83e1e6977a50) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1651.json) |
 |[Microsoft Managed Control 1652 – mobilní kód](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6998e84a-2d29-4e10-8962-76754d4f772d) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1652.json) |
@@ -3414,7 +3414,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-19 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1654 – Voice over Internet Protocol](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a2ee16e-ab1f-414a-800b-d1608835862b) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1654.json) |
 |[Microsoft Managed Control 1655 – Voice over Internet Protocol](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F121eab72-390e-4629-a7e2-6d6184f57c6b) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1655.json) |
@@ -3423,7 +3423,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-20 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1656 – služba překladu adres IP (autoritativní zdroj)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1cb067d5-c8b5-4113-a7ee-0a493633924b) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1656.json) |
 |[Microsoft Managed Control 1657 – služba překladu adres IP (autoritativní zdroj)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F90f01329-a100-43c2-af31-098996135d2b) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1657.json) |
@@ -3432,7 +3432,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-21 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1658 – služba překladu adres (rekurzivní nebo mezipaměti)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F063b540e-4bdc-4e7a-a569-3a42ddf22098) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1658.json) |
 
@@ -3440,7 +3440,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-22 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1659 – architektura a zřizování pro službu překladu názvů a adres](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F35a4102f-a778-4a2e-98c2-971056288df8) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1659.json) |
 
@@ -3448,7 +3448,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-23 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1660 – pravost relace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F63096613-ce83-43e5-96f4-e588e8813554) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1660.json) |
 
@@ -3456,7 +3456,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-23 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1661- \| při odhlášení neověřuje identifikátory relací.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4c643c9a-1be7-4016-a5e7-e4bada052920) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1661.json) |
 
@@ -3464,7 +3464,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-24 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1662 – chyba ve známém stavu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F165cb91f-7ea8-4ab7-beaf-8636b98c9d15) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1662.json) |
 
@@ -3472,7 +3472,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-28 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1663 – ochrana informací v klidovém znění](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F60171210-6dde-40af-a144-bf2670518bfa) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1663.json) |
 
@@ -3480,7 +3480,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-28 (1) **vlastnictví**: zákazník
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[V případě spravované instance SQL by mělo být povolené rozšířené zabezpečení dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb7388-5bf4-4ad7-ba99-2cd2f41cebb9) |Auditujte všechny spravované instance SQL bez pokročilých zabezpečení dat. |AuditIfNotExists, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurity_Audit.json) |
 |[Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb4388-5bf4-4ad7-ba82-2cd2f41ceae9) |Auditovat SQL servery bez pokročilých zabezpečení dat |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_AdvancedDataSecurity_Audit.json) |
@@ -3492,7 +3492,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 SC-39 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1665 – izolace procesů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5df3a55c-8456-44d4-941e-175f79332512) |Společnost Microsoft implementuje tento systém a řízení ochrany komunikace |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1665.json) |
 
@@ -3502,7 +3502,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4-1 – **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1666 – zásady a postupy integrity systémů a informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12e30ee3-61e6-4509-8302-a871e8ebb91e) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1666.json) |
 |[Microsoft Managed Control 1667 – zásady a postupy integrity systémů a informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd61880dc-6e38-4f2a-a30c-3406a98f8220) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1667.json) |
@@ -3511,7 +3511,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-2 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravované řízení společnosti Microsoft 1668 – Oprava chyby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8fb0966e-be1d-42c3-baca-60df5c0bcc61) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1668.json) |
 |[Spravované řízení společnosti Microsoft 1669 – Oprava chyby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F48f2f62b-5743-4415-a143-288adc0e078d) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1669.json) |
@@ -3528,7 +3528,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-2 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1672-Chyba při nápravě chyby v \| centrální správě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb45fe972-904e-45a4-ac20-673ba027a301) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1672.json) |
 
@@ -3536,7 +3536,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-2 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1673 – \| stav opravy chyby při automatické opravě chyby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdff0b90d-5a6f-491c-b2f8-b90aa402d844) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1673.json) |
 
@@ -3544,7 +3544,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-2 (3) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1674 – doba nápravy chyby pro nápravu \| vad/srovnávacích akcí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F93e9e233-dd0a-4bde-aea5-1371bce0e002) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1674.json) |
 |[Microsoft Managed Control 1675 – doba nápravy chyby pro nápravu \| vad/srovnávacích akcí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffacb66e0-1c48-478a-bed5-747a312323e1) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1675.json) |
@@ -3553,7 +3553,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-3 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Řešení ochrany koncových bodů by se mělo nainstalovat na Virtual Machine Scale Sets.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26a828e1-e88f-464e-bbb3-c134a282b9de) |Auditujte existenci a stav řešení ochrany koncových bodů na virtuálních počítačích, které jsou v sadě škálování, a chránit je před hrozbami a ohroženími zabezpečení. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssMissingEndpointProtection_Audit.json) |
 |[Spravovaný ovládací prvek společnosti Microsoft 1676 – ochrana škodlivých kódů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc10fb58b-56a8-489e-9ce3-7ffe24e78e4b) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1676.json) |
@@ -3566,7 +3566,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-3 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Řešení ochrany koncových bodů by se mělo nainstalovat na Virtual Machine Scale Sets.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26a828e1-e88f-464e-bbb3-c134a282b9de) |Auditujte existenci a stav řešení ochrany koncových bodů na virtuálních počítačích, které jsou v sadě škálování, a chránit je před hrozbami a ohroženími zabezpečení. |AuditIfNotExists, zakázáno |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssMissingEndpointProtection_Audit.json) |
 |[Microsoft Managed Control 1680 – centrální Správa ochrany před škodlivým kódem \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F399cd6ee-0e18-41db-9dea-cde3bd712f38) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1680.json) |
@@ -3576,7 +3576,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-3 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1681 – automatické aktualizace ochrany škodlivých kódů \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12623e7e-4736-4b2e-b776-c1600f35f93a) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1681.json) |
 
@@ -3584,7 +3584,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-3 (7) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1682 – detekce škodlivého kódu \| Nonsignature-Based detekci](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F62b638c5-29d7-404b-8d93-f21e4b1ce198) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1682.json) |
 
@@ -3592,7 +3592,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[\[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |Hlásí virtuální počítače jako nevyhovující, pokud image virtuálního počítače (OS) není v seznamu definovaném a Agent není nainstalovaný. Seznam imagí operačního systému se v průběhu času aktualizuje, protože se podpora aktualizuje. |auditIfNotExists |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |
 |[V případě spravované instance SQL by mělo být povolené rozšířené zabezpečení dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb7388-5bf4-4ad7-ba99-2cd2f41cebb9) |Auditujte všechny spravované instance SQL bez pokročilých zabezpečení dat. |AuditIfNotExists, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurity_Audit.json) |
@@ -3611,7 +3611,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1690 – informační systém monitoring \| System-Wide systém zjišťování neoprávněných vniknutí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa2567a23-d1c3-4783-99f3-d471302a4d6b) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1690.json) |
 
@@ -3619,7 +3619,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1691 – informace o \| automatizovaném nástroji monitorování systémových informací pro Real-Time analýzy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F71475fb4-49bd-450b-a1a5-f63894c24725) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1691.json) |
 
@@ -3627,7 +3627,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (4) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1692 – informační systém sledování \| příchozího a odchozího komunikačního provozu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ecda928-9df4-4dd7-8f44-641a91e470e8) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1692.json) |
 
@@ -3635,7 +3635,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1693 – výstrahy System-Generated monitorování systémových informací \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa450eba6-2efc-4a00-846a-5804a93c6b77) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1693.json) |
 
@@ -3643,7 +3643,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (11) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1694 – informace o sledování \| anomálií komunikace při analýze provozu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F426c4ac9-ff17-49d0-acd7-a13c157081c0) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1694.json) |
 
@@ -3651,7 +3651,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (14) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1695 – informace o monitorování \| neoprávněného vniknutí bezdrátového systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F13fcf812-ec82-4eda-9b89-498de9efd620) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1695.json) |
 
@@ -3659,7 +3659,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (16) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek společnosti Microsoft 1696 – informace o \| sledování korelace sledování systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F69d2a238-20ab-4206-a6dc-f302bf88b1b8) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1696.json) |
 
@@ -3667,7 +3667,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (18) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1697 – informace o monitorování systémových systémů pro \| analýzu provozu/tajnosti exfiltrace](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff9873db2-18ad-46b3-a11a-1a1f8cbf0335) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1697.json) |
 
@@ -3675,7 +3675,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (19) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1698 – informační systém sledování, kteří připravují \| větší riziko](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F31b752c1-05a9-432a-8fce-c39b56550119) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1698.json) |
 
@@ -3683,7 +3683,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (20) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1699 – informační systém pro sledování \| privilegovaných uživatelů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F69c7bee8-bc19-4129-a51e-65a7b39d3e7c) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1699.json) |
 
@@ -3691,7 +3691,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (22) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1700 – informační systém monitorování \| neautorizovaný Network Services](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7831b4ba-c3f4-4cb1-8c11-ef8d59438cd5) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1700.json) |
 
@@ -3699,7 +3699,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (23) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1701 – informační systém monitorování \| Host-Based zařízení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff25bc08f-27cb-43b6-9a23-014d00700426) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1701.json) |
 
@@ -3707,7 +3707,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-4 (24) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1702 – indikátory monitorování systémových informací \| o ohrožení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4dfc0855-92c4-4641-b155-a55ddd962362) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1702.json) |
 
@@ -3715,7 +3715,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-5 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1703 – výstrahy zabezpečení, poradci a direktivy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F804faf7d-b687-40f7-9f74-79e28adf4205) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1703.json) |
 |[Microsoft Managed Control 1704 – výstrahy zabezpečení, poradci a direktivy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d44b6fa-1134-4ea6-ad4e-9edb68f65429) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1704.json) |
@@ -3726,7 +3726,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-5 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1707 – výstrahy zabezpečení, poradci a direktivy \| automatizované výstrahy a poradce](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffd4a2ac8-868a-4702-a345-6c896c3361ce) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1707.json) |
 
@@ -3734,7 +3734,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-6 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1708-ověření funkce zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7a1e2c88-13de-4959-8ee7-47e3d74f1f48) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1708.json) |
 |[Microsoft Managed Control 1709-ověření funkce zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F025992d6-7fee-4137-9bbf-2ffc39c0686c) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1709.json) |
@@ -3745,7 +3745,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si – 7 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1712 – integrita softwaru, firmwaru a informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F44e543aa-41db-42aa-98eb-8a5eb1db53f0) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1712.json) |
 
@@ -3753,7 +3753,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-7 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1713 – kontroly integrity integrity softwaru, firmwaru a informací \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0d87c70b-5012-48e9-994b-e70dd4b8def0) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1713.json) |
 
@@ -3761,7 +3761,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-7 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1714 – \| Automatická oznámení týkající se narušení integrity softwaru, firmwaru a informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe12494fa-b81e-4080-af71-7dbacc2da0ec) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1714.json) |
 
@@ -3769,7 +3769,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-7 (5) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1715 – Automatická reakce na integritu softwaru, firmwaru a informací \| na porušení integrity](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdd469ae0-71a8-4adc-aafc-de6949ca3339) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1715.json) |
 
@@ -3777,7 +3777,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-7 (7) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1716 – Integrace softwaru, firmwaru a integrity informací \| o detekci a reakci](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe54c325e-42a0-4dcf-b105-046e0f6f590f) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1716.json) |
 
@@ -3785,7 +3785,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-7 (14) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1717 – binární soubor, firmware a integrita informací \| binární soubor nebo spustitelný kód počítače](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F967773fc-d9ab-4a4e-8ff6-f5e9e3f5dbef) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1717.json) |
 |[Microsoft Managed Control 1718 – binární soubor, firmware a integrita informací \| binární soubor nebo spustitelný kód počítače](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0dced7ab-9ce5-4137-93aa-14c13e06ab17) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1718.json) |
@@ -3794,7 +3794,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si – 8 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1719 – ochrana před spamem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc13da9b4-fe14-4fe2-853a-5997c9d4215a) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1719.json) |
 |[Microsoft Managed Control 1720 – ochrana před spamem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F44b9a7cd-f36a-491a-a48b-6d04ae7c4221) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1720.json) |
@@ -3803,7 +3803,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-8 (1) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1721 – Správa ochrany před nevyžádanými zprávami \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd207aaef-7c4d-4f8c-9dce-4d62dfa3d29a) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1721.json) |
 
@@ -3811,7 +3811,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-8 (2) **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1722 – automatické aktualizace ochrany před nevyžádanou poštou \|](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1da06bd-25b6-4127-a301-c313d6873fff) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1722.json) |
 
@@ -3819,7 +3819,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-10 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1723 – ověření vstupu informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe91927a0-ac1d-44a0-95f8-5185f9dfce9f) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1723.json) |
 
@@ -3827,7 +3827,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-11 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Spravovaný ovládací prvek Microsoft 1724 – zpracování chyb](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd07594d1-0307-4c08-94db-5d71ff31f0f6) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1724.json) |
 |[Spravovaný ovládací prvek Microsoft 1725 – zpracování chyb](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fafc234b5-456b-4aa5-b3e2-ce89108124cc) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1725.json) |
@@ -3836,7 +3836,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-12 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1726 – zpracování a uchovávání informací](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbaff1279-05e0-4463-9a70-8ba5de4c7aa4) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1726.json) |
 
@@ -3844,7 +3844,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 
 **ID**: NIST SP 800-53 R4 si-16 **vlastnictví**: Shared
 
-|Name<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Microsoft Managed Control 1727 – ochrana paměti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F697175a7-9715-4e89-b98b-c6f605888fa3) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1727.json) |
 
