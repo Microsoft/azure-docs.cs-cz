@@ -3,17 +3,17 @@ title: Rychlý Start – přidání simulovaného zařízení do Azure IoT Centr
 description: V tomto rychlém startu se dozvíte, jak vytvořit šablonu zařízení a přidat do aplikace IoT Central simulované zařízení.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/07/2020
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 1c37742b7ed31d8253f7908c3adac35ca0b4d5d8
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: f8d366554634444db16eb3292f100540f3808e8a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376549"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992837"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Rychlý Start: Přidání simulovaného zařízení do aplikace IoT Central
 
@@ -21,50 +21,56 @@ ms.locfileid: "94376549"
 
 Šablona zařízení definuje možnosti zařízení, které se připojuje k vaší IoT Central aplikaci. Mezi možnosti patří telemetrie, kterou zařízení odesílá, vlastnosti zařízení a příkazy, na které zařízení reaguje. V rámci šablony zařízení může tvůrce nebo operátor přidat do aplikace skutečná i simulovaná zařízení. Simulovaná zařízení jsou užitečná pro testování chování aplikace IoT Central před propojením reálných zařízení.
 
-V tomto rychlém startu přidáte šablonu zařízení pro desku [ *MXChip IoT DevKit* (DevKit)](https://aka.ms/iot-devkit-purchase) a vytvoříte simulované zařízení. K dokončení tohoto rychlého startu nepotřebujete skutečné zařízení, budete pracovat s simulací zařízení. Zařízení DevKit:
+V tomto rychlém startu přidáte šablonu zařízení pro sadu ESP32-Azure pro vývojovou desku IoT Kit a vytvoříte simulované zařízení. K dokončení tohoto rychlého startu nepotřebujete skutečné zařízení, budete pracovat s simulací zařízení. Zařízení ESP32:
 
 * Odesílá telemetrii jako teplotu.
-* Oznamuje vlastnosti specifické pro zařízení, jako je úroveň jasu.
-* Reaguje na příkazy, jako je zapnutí a vypnutí.
+* Oznamuje vlastnosti specifické pro zařízení, například maximální teplotu od restartování zařízení.
+* Reaguje na příkazy, jako je třeba restartování.
 * Sestavy obecných vlastností zařízení, jako je například verze firmwaru a sériové číslo.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Dokončete průvodce [vytvořením aplikace Azure IoT Central](./quick-deploy-iot-central.md) pro vytvoření IoT Central aplikace pomocí vlastní šablony **aplikace > vlastní** .
 
-## <a name="create-a-template"></a>Vytvoření šablony
+## <a name="create-a-device-template"></a>Vytvořit šablonu zařízení
 
 Jako tvůrce můžete v aplikaci IoT Central vytvořit a upravit šablony zařízení. Po publikování šablony zařízení můžete vygenerovat simulované zařízení nebo propojit skutečná zařízení se šablonou zařízení. Simulovaná zařízení umožňují otestovat chování aplikace před připojením reálného zařízení.
 
 Chcete-li přidat novou šablonu zařízení do aplikace, vyberte kartu **šablony zařízení** v levém podokně.
 
-![Stránka šablony zařízení](./media/quick-create-simulated-device/device-definitions.png)
+:::image type="content" source="media/quick-create-simulated-device/device-definitions.png" alt-text="Snímek obrazovky znázorňující prázdný seznam šablon zařízení":::
 
-Šablona zařízení zahrnuje model schopností zařízení, který definuje telemetrii, kterou zařízení odesílá, vlastnosti zařízení a příkazy, na které zařízení reaguje.
+Šablona zařízení zahrnuje model zařízení, který definuje:
 
-### <a name="add-a-device-capability-model"></a>Přidání modelu schopností zařízení
+* Telemetrii, kterou zařízení odesílá
+* Vlastnosti zařízení.
+* Příkazy, na které zařízení reaguje
 
-K dispozici je několik možností, jak přidat model schopností zařízení do aplikace IoT Central. Můžete vytvořit nový model od začátku, importovat model ze souboru nebo vybrat zařízení z katalogu zařízení. IoT Central taky podporuje přístup k *prvnímu zařízení* , kde automaticky importuje model z úložiště, když se zařízení poprvé připojí. V tomto rychlém startu zvolíte zařízení z katalogu zařízení pro Import modelu schopností zařízení.
+### <a name="add-a-device-template"></a>Přidání šablony zařízení
 
-Následující kroky ukazují, jak pomocí katalogu zařízení importovat model schopností pro zařízení **MXChip IoT DevKit** . Tato zařízení odesílají telemetrii, například teplotu, do vaší aplikace:
+K dispozici je několik možností, jak přidat model zařízení do aplikace IoT Central. Můžete vytvořit nový model od začátku, importovat model ze souboru nebo vybrat zařízení z katalogu zařízení. IoT Central také podporuje přístup k *prvnímu zařízení* , kde aplikace automaticky importuje model z úložiště při prvním připojení reálného zařízení.
 
-1. Chcete-li přidat novou šablonu zařízení, vyberte **+** na stránce **šablony zařízení** .
+V tomto rychlém startu zvolíte zařízení z katalogu zařízení, ve kterém chcete vytvořit šablonu zařízení.
 
-1. Na stránce **Vybrat typ šablony** se posuňte dolů, dokud nenajdete dlaždici **MXChip IoT DevKit** .
+Následující kroky ukazují, jak pomocí katalogu zařízení importovat model pro zařízení **ESP32** . Tato zařízení odesílají telemetrii, například teplotu, do vaší aplikace:
 
-1. Vyberte dlaždici **MXChip IoT DevKit** a pak vyberte **Další: přizpůsobit**.
+1. Chcete-li přidat novou šablonu zařízení, vyberte **+ Nový** na stránce **šablony zařízení** .
+
+1. Na stránce **Vybrat typ** se posuňte dolů, dokud nenajdete dlaždici **ESP32-Azure IoT Kit** v části **použití předkonfigurované šablony zařízení** .
+
+1. Vyberte dlaždici **ESP32-Azure IoT Kit** a potom vyberte **Další: zkontrolovat**.
 
 1. Na stránce **Kontrola** vyberte **vytvořit**.
 
 1. Po několika sekundách uvidíte novou šablonu zařízení:
 
-    ![Šablona zařízení IoT DevKit pro MXChip](./media/quick-create-simulated-device/devkit-template.png)
+    :::image type="content" source="media/quick-create-simulated-device/devkit-template.png" alt-text="Snímek obrazovky se šablonou zařízení pro zařízení ESP32":::
 
-    Model schopností MXChip IoT DevKit zahrnuje rozhraní, jako jsou **mxchip_sensor** , **Mxchip_settings** a **informace o zařízení**. Rozhraní definují možnosti zařízení MXChip IoT DevKit. Mezi možnosti patří telemetrie, kterou zařízení odesílá, vlastnosti, které zařízení hlásí, a příkazy, na které zařízení reaguje.
+    Název šablony je **kontroler senzoru**. Model obsahuje komponenty, jako je například **kontroleru senzorů**, **SensorTemp** a **rozhraní informací o zařízení**. Komponenty definují možnosti zařízení ESP32. Mezi možnosti patří telemetrie, vlastnosti a příkazy.
 
 ### <a name="add-cloud-properties"></a>Přidání vlastností cloudu
 
-Šablona zařízení může obsahovat vlastnosti cloudu. Vlastnosti cloudu existují jenom v aplikaci IoT Central a nikdy se neodesílají do zařízení nebo se z něj nepřijímají. Přidání vlastnosti cloudu:
+Šablona zařízení může obsahovat vlastnosti cloudu. Vlastnosti cloudu existují jenom v aplikaci IoT Central a nikdy se neodesílají do zařízení nebo se z něj nepřijímají. Přidání dvou vlastností cloudu:
 
 1. Vyberte **vlastnosti cloudu** a pak **+ přidat cloudovou vlastnost**. K přidání dvou vlastností cloudu do šablony zařízení použijte informace v následující tabulce:
 
@@ -75,7 +81,7 @@ Následující kroky ukazují, jak pomocí katalogu zařízení importovat model
 
 1. Kliknutím na **Uložit** uložte změny:
 
-    ![Vlastnosti cloudu](media/quick-create-simulated-device/cloud-properties.png)
+    :::image type="content" source="media/quick-create-simulated-device/cloud-properties.png" alt-text="Snímek obrazovky zobrazující dvě vlastnosti cloudu":::
 
 ## <a name="views"></a>Zobrazení
 
@@ -100,9 +106,9 @@ Přidání nového formuláře pro **správu zařízení** , který může oper�
 
 1. Změňte název formuláře, aby bylo možné **spravovat zařízení**.
 
-1. Vyberte **název zákazníka** a poslední vlastnosti cloudového **data služby** a vlastnost **rychlost ventilátoru** . Pak vyberte **přidat oddíl** :
+1. Vyberte **název zákazníka** a poslední vlastnosti cloudového **data služby** a cílovou vlastnost **teplota** . Pak vyberte **přidat oddíl**:
 
-    ![Vytvořit nový formulář](media/quick-create-simulated-device/new-form.png)
+    :::image type="content" source="media/quick-create-simulated-device/new-form.png" alt-text="Snímek obrazovky zobrazující nový formulář přidaný do šablony zařízení":::
 
 1. Kliknutím na **Uložit** uložte nový formulář.
 
@@ -112,25 +118,25 @@ Než budete moct vytvořit simulované zařízení nebo připojit reálné zař�
 
 Publikování šablony zařízení:
 
-1. Na stránce **šablony zařízení** můžete přejít na šablonu zařízení.
+1. Na stránce **šablony zařízení** přejděte na šablonu zařízení **kontroleru senzorů** .
 
-1. Vyberte **publikovat** :
+1. Vyberte **publikovat**:
 
-    ![Publikovaný model](media/quick-create-simulated-device/published-model.png)
+    :::image type="content" source="media/quick-create-simulated-device/published-model.png" alt-text="Snímek obrazovky znázorňující umístění ikony publikování":::
 
-1. V dialogovém okně **Publikovat tuto šablonu zařízení do dialogu aplikace** vyberte **publikovat**. 
+1. V dialogovém okně **Publikovat tuto šablonu zařízení do dialogu aplikace** vyberte **publikovat**.
 
-Po publikování se šablona zařízení zobrazí na stránce **zařízení** . V publikované šabloně zařízení nemůžete upravovat model schopností zařízení bez vytváření nové verze. Můžete ale dělat aktualizace vlastností cloudu, přizpůsobení a zobrazení v publikované šabloně zařízení bez správy verzí. Po provedení změn vyberte **publikovat**  , aby se tyto změny převedly do vašeho operátoru.
+Po publikování se šablona zařízení zobrazí na stránce **zařízení** . V publikované šabloně zařízení nemůžete upravovat model zařízení bez vytváření nové verze. Můžete ale upravit vlastnosti cloudu, přizpůsobení a zobrazení v publikované šabloně zařízení bez správy verzí. Po provedení změn vyberte **publikovat**  , aby se tyto změny převedly do vašeho operátoru.
 
 ## <a name="add-a-simulated-device"></a>Přidání simulovaného zařízení
 
-K přidání simulovaného zařízení do aplikace použijete šablonu zařízení **MXChip IoT DevKit** , kterou jste vytvořili.
+K přidání simulovaného zařízení do aplikace použijete šablonu zařízení **ESP32** , kterou jste vytvořili.
 
-1. Pokud chcete přidat nové zařízení jako operátor v levém podokně vyberte **zařízení** . Karta **zařízení** zobrazuje **všechna zařízení** a šablonu zařízení **MXChip IoT DevKit** . Vyberte **MXChip IoT DevKit**.
+1. Pokud chcete přidat nové zařízení jako operátor v levém podokně vyberte **zařízení** . Karta **zařízení** zobrazuje **všechna zařízení** a šablonu zařízení **KONTROLERU senzorů** pro zařízení ESP32. Vyberte **kontroler senzorů**.
 
-1. Pokud chcete přidat simulované zařízení DevKit, vyberte **+** . Použijte navržené **ID zařízení** nebo zadejte vlastní. ID zařízení může obsahovat písmena, číslice a `-` znak. Můžete také zadat název nového zařízení. Ujistěte se, že je **zapnuté** **simulované** přepínání, a pak vyberte **vytvořit**.
+1. Pokud chcete přidat simulované zařízení DevKit, vyberte **+ Nový**. Použijte navržené **ID zařízení** nebo zadejte vlastní. ID zařízení může obsahovat písmena, číslice a `-` znak. Můžete také zadat název nového zařízení. Ujistěte se, že je nastavení **Simulovat toto zařízení** nastaveno na **Ano** , a pak vyberte **vytvořit**.
 
-    ![Simulované zařízení](./media/quick-create-simulated-device/simulated-device.png)
+    :::image type="content" source="media/quick-create-simulated-device/simulated-device.png" alt-text="Snímek obrazovky zobrazující zařízení simulovaného kontroleru senzorů":::
 
 Nyní můžete pracovat se zobrazeními vytvořenými tvůrcem pro šablonu zařízení pomocí simulovaných dat:
 
@@ -138,11 +144,11 @@ Nyní můžete pracovat se zobrazeními vytvořenými tvůrcem pro šablonu zař
 
     * Zobrazení **přehledu** ukazuje vykreslení simulované telemetrie:
 
-        ![Přehledové zobrazení](./media/quick-create-simulated-device/simulated-telemetry.png)
+        :::image type="content" source="media/quick-create-simulated-device/simulated-telemetry.png" alt-text="Snímek obrazovky zobrazující stránku s přehledem pro simulované zařízení":::
 
-    * V zobrazení **informace** se zobrazují hodnoty vlastností, včetně vlastností cloudu, které jste přidali do zobrazení.
+    * V zobrazení **informace** se zobrazují hodnoty vlastností.
 
-    * Zobrazení **příkazy** umožňuje spouštět příkazy, jako je například **blikání** na zařízení.
+    * Zobrazení **příkazy** umožňuje spouštět příkazy, jako je třeba **restartování** na zařízení.
 
     * Zobrazení **Správa zařízení** je formulář, který jste vytvořili pro obsluhu pro správu zařízení.
 
@@ -152,17 +158,17 @@ Nyní můžete pracovat se zobrazeními vytvořenými tvůrcem pro šablonu zař
 
 Po vytvoření nového simulovaného zařízení může tvůrce pomocí tohoto zařízení pokračovat ve zlepšování a sestavování zobrazení pro šablonu zařízení.
 
-1. V levém podokně zvolte **šablony zařízení** a vyberte šablonu **MXChip IoT DevKit** .
+1. V levém podokně zvolte **šablony zařízení** a vyberte šablonu **kontroleru senzorů** .
 
-1. Vyberte libovolné zobrazení, které chcete upravit, nebo vytvořte nové zobrazení. Vyberte **Konfigurovat zařízení verze Preview** a pak **Vyberte ze spuštěného zařízení**. Tady můžete zvolit, aby nedošlo k zobrazení náhledu, reálnému zařízení nakonfigurovanému pro testování nebo existujícímu zařízení, které jste přidali do IoT Central.
+1. Vyberte libovolné zobrazení, které chcete upravit, například **Přehled**, nebo vytvořte nové zobrazení. Vyberte **Konfigurovat zařízení verze Preview** a pak **Vyberte ze spuštěného zařízení**. Tady můžete zvolit, aby nedošlo k zobrazení náhledu, reálnému zařízení nakonfigurovanému pro testování nebo existujícímu zařízení, které jste přidali do IoT Central.
 
 1. V seznamu vyberte simulované zařízení. Pak vyberte **Použít**. Teď můžete vidět stejné simulované zařízení v zobrazeních šablon zařízení. Toto zobrazení je užitečné pro grafy a další vizualizace.
 
-    ![Konfigurace zařízení Preview](./media/quick-create-simulated-device/configure-preview.png)
+    :::image type="content" source="media/quick-create-simulated-device/configure-preview.png" alt-text="Snímek obrazovky s nakonfigurovaným zařízením Preview":::
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se dozvěděli, jak vytvořit šablonu zařízení **MXChip IoT DevKit** a přidat do své aplikace simulované zařízení.
+V tomto rychlém startu jste se dozvěděli, jak vytvořit šablonu zařízení **kontroleru senzorů** pro zařízení ESP32 a přidat do aplikace simulované zařízení.
 
 Další informace o monitorování zařízení připojených k vaší aplikaci získáte, když budete pokračovat v rychlém startu:
 

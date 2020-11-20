@@ -3,18 +3,17 @@ title: Rychlý Start – vytvoření aplikace IoT Central v Azure | Microsoft Do
 description: Rychlý Start – vytvoření nové aplikace Azure IoT Central. Vytvořte aplikaci pomocí cenového plánu zdarma nebo některého ze standardních cenových plánů.
 author: viv-liu
 ms.author: viviali
-ms.date: 07/30/2020
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 477da41bab48ee49727ec2a8c029e748d6e7f863
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: afe3e9812271f4b8e049fb2a53efd45fe746e514
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90987375"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992807"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Rychlý Start – vytvoření aplikace IoT Central v Azure
 
@@ -43,15 +42,15 @@ Vytvoření nové aplikace Azure IoT Central z **vlastní šablony aplikace** :
     ![Informace o fakturaci IoT Central Azure](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
 
     > [!NOTE]
-    > Pokud jste na předchozí stránce vybrali **vlastní aplikaci** , zobrazí se rozevírací nabídka **šablony aplikace** . Rozevírací seznam může zobrazit další šablony, které vám zpřístupnil vaše organizace. 
+    > Pokud jste na předchozí stránce vybrali **vlastní aplikaci** , zobrazí se rozevírací nabídka **šablony aplikace** . Rozevírací seznam může zobrazit další šablony, které vám zpřístupnil vaše organizace.
 
     >[!IMPORTANT]
-    >**Vlastní aplikace (starší verze)** šablona (verze 2) byla vyřazena, protože všechny funkce dříve dostupné v šabloně starší verze aplikace jsou nyní k dispozici v nejnovější **vlastní šabloně aplikace** (V3). 
-    
+    >**Vlastní aplikace (starší verze)** šablona (verze 2) byla vyřazena, protože všechny funkce dříve dostupné v šabloně starší verze aplikace jsou nyní k dispozici v nejnovější **vlastní šabloně aplikace** (V3).
+
 1. Tuto aplikaci můžete vytvořit pomocí cenového plánu bezplatné zkušební verze 7 dní, případně podle standardních cenových plánů:
 
     - Aplikace vytvořené pomocí *bezplatného* plánu jsou po dobu sedmi dnů zdarma a podporují až pět zařízení. Můžete je kdykoli převést na používání standardního cenového plánu, než vyprší jejich platnost.
-    - Aplikace, které vytvoříte pomocí plánu *Standard* , se účtují podle jednotlivých zařízení. můžete si vybrat Cenový tarif **Standard 1** nebo **Standard 2** s prvními dvěma zařízeními, která jsou zdarma. Další informace o cenových plánech zdarma a Standard najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). Pokud vytvoříte aplikaci pomocí cenového plánu Standard, musíte vybrat svůj *adresář*, *předplatné Azure*a *umístění*:
+    - Aplikace, které vytvoříte pomocí plánu *Standard* , se účtují podle jednotlivých zařízení. můžete si vybrat Cenový tarif **Standard 1** nebo **Standard 2** s prvními dvěma zařízeními, která jsou zdarma. Další informace o cenových plánech zdarma a Standard najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). Pokud vytvoříte aplikaci pomocí cenového plánu Standard, musíte vybrat svůj *adresář*, *předplatné Azure* a *umístění*:
         - *Adresář* je Azure Active Directory, ve kterém vytvoříte aplikaci. Azure Active Directory obsahuje identity uživatelů, přihlašovací údaje a další informace o organizaci. Pokud nemáte Azure Active Directory, vytvoří se při vytváření předplatného Azure jedna za vás.
         - *Předplatné Azure* umožňuje vytvářet instance služeb Azure. IoT Central zřídí prostředky v předplatném. Pokud předplatné Azure nemáte, můžete si ho na [stránce pro registraci k Azure](https://aka.ms/createazuresubscription)vytvořit zdarma. Po vytvoření předplatného Azure přejděte zpátky na stránku **Nová aplikace** . Vaše nové předplatné se teď zobrazí v rozevíracím seznamu **předplatné Azure** .
         - *Umístění* je [geografická](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, kde byste chtěli vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejbližší pro vaše zařízení, aby se dosáhlo optimálního výkonu. Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.

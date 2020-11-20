@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
-ms.openlocfilehash: b3919cbbe0ba7a796a21ae566afb8e2d9fa784db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0362c9ed4f736474dbd49e1bfaf1373e0f48acd6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716669"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992705"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>Transformujte JSON a XML pomocí šablon Liquid jako mapy v Azure Logic Apps
 
@@ -80,7 +80,7 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
 
    ![Vybrat účet pro integraci](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-1. V podokně **Přehled** v části **komponenty**vyberte **mapy**.
+1. V podokně **Přehled** v části **komponenty** vyberte **mapy**.
 
     ![Výběr dlaždice Maps](./media/logic-apps-enterprise-integration-liquid-transform/select-maps-tile.png)
 
@@ -90,7 +90,7 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
    |----------|-------|-------------|
    | **Název** | `JsonToJsonTemplate` | Název pro mapu, která je v tomto příkladu "JsonToJsonTemplate" |
    | **Typ mapy** | **ukazuje** | Typ pro mapu. Pro transformaci JSON na JSON musíte vybrat možnost **Liquid**. |
-   | **Mapy** | `SimpleJsonToJsonTemplate.liquid` | Existující šablona nebo soubor mapování v kapalném formátu, který je použit pro transformaci, která je v tomto příkladu "SimpleJsonToJsonTemplate. Liquid". K vyhledání tohoto souboru můžete použít nástroj pro výběr souborů. Omezení velikosti mapování najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
+   | **Mapa** | `SimpleJsonToJsonTemplate.liquid` | Existující šablona nebo soubor mapování v kapalném formátu, který je použit pro transformaci, která je v tomto příkladu "SimpleJsonToJsonTemplate. Liquid". K vyhledání tohoto souboru můžete použít nástroj pro výběr souborů. Omezení velikosti mapování najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
    |||
 
    ![Přidat kapalinovou šablonu](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
@@ -152,7 +152,7 @@ Pomocí [post](https://www.getpostman.com/postman) nebo podobného nástroje ode
 
   * Pokud vaše šablona používá [kapalné filtry](https://shopify.github.io/liquid/basics/introduction/#filters), ujistěte se, že dodržujete [konvence vytváření názvů pro DotLiquid a C#](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers#filter-and-output-casing), které používají *velká a malá písmena*. Pro všechny transformace v kapalině se ujistěte, že názvy filtru ve vaší šabloně používají také velká a malá písmena. V opačném případě nebudou filtry fungovat.
 
-    Například při použití `replace` filtru, použijte `Replace` , nikoli `replace` . Stejné pravidlo platí, pokud si vyzkoušíte příklady na [webu DotLiquid online](http://dotliquidmarkup.org/try-online). Další informace naleznete v tématu [Shopify Liquid Filters](https://shopify.dev/docs/themes/liquid/reference/filters) a [DotLiquid Liquid Filters](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters). Specifikace Shopify obsahuje příklady pro každý filtr, takže pro porovnání můžete vyzkoušet tyto příklady na [DotLiquid-try online](https://dotliquidmarkup.org/try-online).
+    Například při použití `replace` filtru, použijte `Replace` , nikoli `replace` . Stejné pravidlo platí, pokud si vyzkoušíte příklady na [webu DotLiquid online](http://dotliquidmarkup.org/try-online). Další informace naleznete v tématu [Shopify Liquid Filters](https://shopify.dev/docs/themes/liquid/reference/filters) a [DotLiquid Liquid Filters](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters). Specifikace Shopify obsahuje příklady pro každý filtr, takže pro porovnání můžete vyzkoušet tyto příklady na [DotLiquid-try online](http://dotliquidmarkup.org/try-online).
 
   * `json`Filtr z filtrů rozšíření Shopify není [v současnosti implementován v DotLiquid](https://github.com/dotliquid/dotliquid/issues/384). Tento filtr obvykle můžete použít k přípravě textového výstupu pro analýzu řetězců JSON, ale místo toho je potřeba použít `Replace` Filtr.
 
@@ -244,7 +244,7 @@ Tady jsou ukázkové vstupy a výstupy:
 
 * [Jazyk a příklady Shopify Liquid](https://shopify.github.io/liquid/basics/introduction/)
 * [DotLiquid](http://dotliquidmarkup.org/)
-* [DotLiquid – vyzkoušet online](https://dotliquidmarkup.org/try-online)
+* [DotLiquid – vyzkoušet online](http://dotliquidmarkup.org/try-online)
 * [DotLiquid GitHub](https://github.com/dotliquid/dotliquid)
 * [Problémy s DotLiquid GitHubem](https://github.com/dotliquid/dotliquid/issues/)
 * Další informace o [mapách](../logic-apps/logic-apps-enterprise-integration-maps.md)
