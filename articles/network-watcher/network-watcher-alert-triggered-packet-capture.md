@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b6cb195f44bf6c868402481480d9b10802c4d59
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975067"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965663"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro proaktivní monitorování sítě s výstrahami a Azure Functions
 
@@ -39,7 +39,7 @@ Pomocí Network Watcher, upozorňování a funkcí v rámci ekosystému Azure m�
 
 * Nejnovější verze [Azure PowerShell](/powershell/azure/install-Az-ps).
 * Existující instance Network Watcher. Pokud ho ještě nemáte, [vytvořte instanci Network Watcher](network-watcher-create.md).
-* Existující virtuální počítač ve stejné oblasti jako Network Watcher s rozšířením [virtuálního počítače](../virtual-machines/linux/extensions-nwa.md)se [systémem Windows](../virtual-machines/windows/extensions-nwa.md) nebo Linux.
+* Existující virtuální počítač ve stejné oblasti jako Network Watcher s rozšířením [virtuálního počítače](../virtual-machines/extensions/network-watcher-linux.md)se [systémem Windows](../virtual-machines/extensions/network-watcher-windows.md) nebo Linux.
 
 ## <a name="scenario"></a>Scénář
 
@@ -68,7 +68,7 @@ Tento scénář provádí následující akce:
 
 Prvním krokem je vytvoření funkce Azure pro zpracování výstrahy a vytvoření zachytávání paketů.
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**  >  **Compute**  >  **Function App**Compute.
+1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**  >  **Compute**  >  **Function App** Compute.
 
     ![Vytvoření aplikace funkcí][1-1]
 
@@ -85,7 +85,7 @@ Prvním krokem je vytvoření funkce Azure pro zpracování výstrahy a vytvoře
 
 3. V okně **aplikací funkcí PacketCaptureExample** vyberte **funkce**  >  **vlastní funkce**  > **+** .
 
-4. Vyberte **HttpTrigger-PowerShell**a potom zadejte zbývající informace. Nakonec, pokud chcete vytvořit funkci, vyberte **vytvořit**.
+4. Vyberte **HttpTrigger-PowerShell** a potom zadejte zbývající informace. Nakonec, pokud chcete vytvořit funkci, vyberte **vytvořit**.
 
     |**Nastavení** | **Hodnota** | **Podrobnosti** |
     |---|---|---|
@@ -176,7 +176,7 @@ $Encryptedpassword = $secPw | ConvertFrom-SecureString -Key $AESKey
 $Encryptedpassword
 ```
 
-V Editor služby App Service aplikace Function App vytvořte ve složce **AlertPacketCapturePowerShell**složku s názvem **Keys** . Pak nahrajte soubor **PassEncryptKey. Key** , který jste vytvořili v předchozí ukázce prostředí PowerShell.
+V Editor služby App Service aplikace Function App vytvořte ve složce **AlertPacketCapturePowerShell** složku s názvem **Keys** . Pak nahrajte soubor **PassEncryptKey. Key** , který jste vytvořili v předchozí ukázce prostředí PowerShell.
 
 ![Klíč funkcí][functions8]
 
@@ -264,7 +264,7 @@ Nyní je čas provést volání do Network Watcher v rámci funkce Azure Functio
 4. Pravidelné dotazování na sběr paketů, dokud není dokončeno.
 5. Upozorněte uživatele, že relace zachycení paketů je dokončená.
 
-V následujícím příkladu je kód prostředí PowerShell, který lze použít ve funkci. Existují hodnoty, které je třeba nahradit pro **SubscriptionId**, **resourceGroupName**a **storageAccountName**.
+V následujícím příkladu je kód prostředí PowerShell, který lze použít ve funkci. Existují hodnoty, které je třeba nahradit pro **SubscriptionId**, **resourceGroupName** a **storageAccountName**.
 
 ```powershell
             #Import Azure PowerShell modules required to make calls to Network Watcher
@@ -340,20 +340,20 @@ Výstrahy je možné nakonfigurovat tak, aby upozornily na uživatele, když kon
 
 ### <a name="create-the-alert-rule"></a>Vytvoření pravidla výstrahy
 
-Přejít na existující virtuální počítač a pak přidat pravidlo výstrahy. Podrobnější dokumentaci týkající se konfigurace výstrah najdete v popisu [Vytvoření upozornění v Azure monitor pro služby Azure – Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md). V okně **pravidlo výstrahy** zadejte následující hodnoty a pak vyberte **OK**.
+Přejít na existující virtuální počítač a pak přidat pravidlo výstrahy. Podrobnější dokumentaci týkající se konfigurace výstrah najdete v popisu [Vytvoření upozornění v Azure monitor pro služby Azure – Azure Portal](../azure-monitor/platform/alerts-classic-portal.md). V okně **pravidlo výstrahy** zadejte následující hodnoty a pak vyberte **OK**.
 
   |**Nastavení** | **Hodnota** | **Podrobnosti** |
   |---|---|---|
   |**Název**|TCP_Segments_Sent_Exceeded|Název pravidla výstrahy.|
   |**Popis**|Počet odeslaných segmentů TCP překročení prahové hodnoty|Popis pravidla výstrahy.|
   |**Metrika**|Odeslané segmenty TCP| Metrika, která se má použít k aktivaci výstrahy. |
-  |**Condition** (Podmínka)|Je větší než| Podmínka, která se má použít při vyhodnocování metriky.|
+  |**Condition** (Podmínka)|Větší než| Podmínka, která se má použít při vyhodnocování metriky.|
   |**Prahová hodnota**|100| Hodnota metriky, která aktivuje výstrahu. Tato hodnota by měla být nastavená na platnou hodnotu pro vaše prostředí.|
   |**Hodin**|Za posledních pět minut| Určuje období, ve kterém se má hledat prahová hodnota metriky.|
   |**Webhook**|[adresa URL Webhooku z aplikace Function app]| Adresa URL Webhooku z aplikace Function App, která byla vytvořena v předchozích krocích.|
 
 > [!NOTE]
-> Metrika segmentů TCP není ve výchozím nastavení povolena. Další informace o tom, jak povolit další metriky, najdete v tématu [povolení monitorování a diagnostiky](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
+> Metrika segmentů TCP není ve výchozím nastavení povolena. Další informace o tom, jak povolit další metriky, najdete v tématu [povolení monitorování a diagnostiky](../azure-monitor/overview.md).
 
 ## <a name="review-the-results"></a>Kontrola výsledků
 
@@ -363,11 +363,11 @@ Po kritériích pro aktivační události výstrahy se vytvoří zachycení pake
 
 Pokud je zachytávací soubor uložený místně, můžete ho načíst tak, že se přihlásíte k virtuálnímu počítači.
 
-Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu Začínáme [s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Další nástroj, který můžete použít, je [Průzkumník služby Storage](https://storageexplorer.com/).
+Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu Začínáme [s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md). Další nástroj, který můžete použít, je [Průzkumník služby Storage](https://storageexplorer.com/).
 
 Po stažení je vaše zachycení možné zobrazit pomocí libovolného nástroje, který může číst soubor **. Cap** . Následují odkazy na dva z těchto nástrojů:
 
-- [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
+- [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide)
 - [Nástroj](https://www.wireshark.org/)
 
 ## <a name="next-steps"></a>Další kroky

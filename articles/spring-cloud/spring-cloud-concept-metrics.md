@@ -7,13 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f84201de1f63704fefcf5de4041b95ed8c2122cd
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 015aadb791172f5033bf0198caad567c9bc03221
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094054"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965047"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Principy metrik pro jarní cloud Azure
 
@@ -69,7 +68,7 @@ Typ agregace označuje, jak se mají v grafu agregovat body metriky podle času.
 
 ![Úprava metriky](media/metrics/metrics-6.png)
 
-Výchozí zobrazení zahrnuje všechny metriky application's ve službě Azure jarní Cloud Service společně. Metriky jedné aplikace nebo instance je možné filtrovat v zobrazení.  Klikněte na **Přidat filtr**, nastavte vlastnost na **aplikace**a v textovém poli **hodnoty** vyberte cílovou aplikaci, kterou chcete monitorovat. 
+Výchozí zobrazení zahrnuje všechny metriky application's ve službě Azure jarní Cloud Service společně. Metriky jedné aplikace nebo instance je možné filtrovat v zobrazení.  Klikněte na **Přidat filtr**, nastavte vlastnost na **aplikace** a v textovém poli **hodnoty** vyberte cílovou aplikaci, kterou chcete monitorovat. 
 
 Můžete použít dva druhy filtrů (vlastnosti):
 * Aplikace: filtrovat podle názvu aplikace
@@ -82,7 +81,7 @@ Můžete také použít možnost **použít rozdělení** , která nakreslí ví
 ![Rozdělení metriky](media/metrics/metrics-8.png)
 
 >[!TIP]
-> Na stránce metriky můžete vytvořit vlastní grafy a připnout je na **řídicí panel**. Začněte pojmenováním grafu.  Potom **v pravém horním rohu vyberte Připnout na řídicí panel**. Nyní se můžete podívat na svou aplikaci na **řídicím panelu**portálu.
+> Na stránce metriky můžete vytvořit vlastní grafy a připnout je na **řídicí panel**. Začněte pojmenováním grafu.  Potom **v pravém horním rohu vyberte Připnout na řídicí panel**. Nyní se můžete podívat na svou aplikaci na **řídicím panelu** portálu.
 
 ## <a name="user-metrics-options"></a>Možnosti metrik uživatelů
 
@@ -110,7 +109,6 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 >| JVM. GC. Pause. Total. Count | JVM. GC. Pause (celkový počet) | Počet | Celkový počet GC po zahájení této JMV, včetně mladého a starého GC. |
 >| JVM. GC. Pause. Total. time | JVM. GC. Pause (celkem-Time) | Milisekund | Celkový čas GC spotřebovaný po spuštění tohoto JMVu, včetně mladého a starého GC. |
 
-::: zone pivot="programming-language-csharp"
 ### <a name="performance-net"></a>Výkon (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
@@ -136,7 +134,6 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 >| Počet aktivních časovačů               | aktivní – časovač-počet               | Počet | Počet časovačů, které jsou aktuálně aktivní. Aktivní časovač je ten, který se zaregistruje v nějakém okamžiku v budoucnu a ještě není zrušený. |
 
 Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/dotnet-counters).
-::: zone-end
 
 ### <a name="request"></a>Žádost
 >[!div class="mx-tdCol2BreakAll"]
@@ -147,7 +144,6 @@ Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/
 >| Tomcat. Global. Request. Total. Count | Tomcat. Global. Request (celkový počet) | Počet | Celkový počet zpracovaných požadavků Tomcat webového serveru |
 >| Tomcat. Global. Request. max | Tomcat. Global. Request. max | Milisekund | Maximální doba, po kterou webový server Tomcat zpracuje požadavek |
 
-::: zone pivot="programming-language-csharp"
 ### <a name="request-net"></a>Požadavek (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
@@ -159,7 +155,6 @@ Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/
 >| Neúspěšné požadavky | neúspěšné – požadavky | Počet | Počet neúspěšných žádostí |
 
 Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/dotnet-counters).
-::: zone-end
 
 ### <a name="session"></a>Relace
 >[!div class="mx-tdCol2BreakAll"]

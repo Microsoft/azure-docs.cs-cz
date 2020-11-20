@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a9ad018980784a1f809ad28a77dacf9f0328fffa
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 4e2bcb683c9d4c5248315549bf6d6ee26b2a51ac
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873892"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965030"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Podnikové zabezpečení a zásady správného řízení pro Azure Machine Learning
 
@@ -49,7 +49,7 @@ Další informace najdete v tématu [ověřování pro Azure Machine Learning pr
 
 ### <a name="azure-rbac"></a>Azure RBAC
 
-Můžete vytvořit několik pracovních prostorů a každý pracovní prostor může sdílet více lidí. Můžete určit, k jakým funkcím nebo operacím uživatelů pracovního prostoru máte přístup, přiřazením svého účtu Azure AD k rolím Azure RBAC. Níže jsou uvedené předdefinované role:
+Můžete vytvořit několik pracovních prostorů a každý pracovní prostor může sdílet více lidí. Můžete určit, k jakým funkcím nebo operacím uživatelů pracovního prostoru máte přístup, přiřazením svého účtu Azure AD k rolím Azure. Níže jsou uvedené předdefinované role:
 
 * Vlastník
 * Přispěvatel
@@ -127,7 +127,7 @@ Při používání služeb, jako jsou například automatizované Machine Learni
 
 Můžete také chtít šifrovat [diagnostické informace zaznamenané z nasazeného koncového bodu](how-to-enable-app-insights.md) do instance služby Azure Application Insights.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 K dispozici je několik scénářů monitorování, které se Azure Machine Learning v závislosti na roli a co se sleduje.
 

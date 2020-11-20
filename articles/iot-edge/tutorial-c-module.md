@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4c2505f210b1a2b52b64c25b4ffa0c26bb30d7ee
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 470f82026cc27431555336570ef6f41063442c1e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044679"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964537"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Kurz: vývoj modulu C IoT Edge pro zařízení se systémem Linux
 
@@ -33,9 +33,9 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>Obor řešení
+## <a name="prerequisites"></a>Požadavky
 
-Tento kurz ukazuje, jak vytvořit modul v jazyce **C** pomocí **Visual Studio Code**a jak ho nasadit na **zařízení se systémem Linux**. Pokud vyvíjíte moduly pro zařízení s Windows, použijte místo toho [vývoj modulu C IoT Edge pro zařízení s Windows](tutorial-c-module-windows.md) .
+Tento kurz ukazuje, jak vytvořit modul v jazyce **C** pomocí **Visual Studio Code** a jak ho nasadit na **zařízení se systémem Linux**. Pokud vyvíjíte moduly pro zařízení s Windows, použijte místo toho [vývoj modulu C IoT Edge pro zařízení s Windows](tutorial-c-module-windows.md) .
 
 Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modulů jazyka C do systému Linux:
 
@@ -43,8 +43,6 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 | - | ------------------ | ------------- |
 | **Linux AMD64** | ![Použití VS Code pro moduly jazyka C v systému Linux AMD64](./media/tutorial-c-module/green-check.png) | ![Použití VS pro moduly C v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![Použití VS Code pro moduly jazyka C v systému Linux ARM32](./media/tutorial-c-module/green-check.png) | ![Použití VS pro moduly C v ARM32 pro Linux](./media/tutorial-c-module/green-check.png) |
-
-## <a name="prerequisites"></a>Požadované součásti
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
@@ -98,7 +96,7 @@ Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru konte
 
 V současné době Visual Studio Code může vyvíjet moduly C pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64.
 
-1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
+1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge** nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
 
 2. V paletě příkazů vyberte v seznamu možností cílovou architekturu. Pro tento kurz používáme virtuální počítač s Ubuntu jako zařízení IoT Edge, takže se zachová výchozí hodnota **amd64**.
 
@@ -296,7 +294,7 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
 
 V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do CModule, který odfiltruje zprávy, kde je hlášená teplota počítače v přípustných mezích. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
-1. Kliknutím na **Zobrazit**  >  **terminál**otevřete vs Code terminálu.
+1. Kliknutím na **Zobrazit**  >  **terminál** otevřete vs Code terminálu.
 
 2. Přihlaste se k Docker zadáním následujícího příkazu v terminálu. Přihlaste se pomocí uživatelského jména, hesla a přihlašovacího serveru ze služby Azure Container Registry. Tyto hodnoty můžete načíst z oddílu **přístupové klíče** v registru v Azure Portal.
 
@@ -344,7 +342,7 @@ V manifestu nasazení jsme použili vláken Module CModule, které nastaví prah
 
 1. V Visual Studio Code rozbalte podrobnosti pod zařízením IoT Edge a podívejte se na běžící moduly.
 
-2. Klikněte pravým tlačítkem na **CModule** a vyberte **Upravit modul s dvojitou**čárkou.
+2. Klikněte pravým tlačítkem na **CModule** a vyberte **Upravit modul s dvojitou** čárkou.
 
 3. V požadovaných vlastnostech vyhledejte **TemperatureThreshold** . Změňte jeho hodnotu na novou teplotu 5 stupňů na 10 stupňů vyšší než při nejnovější hlášené teplotě.
 

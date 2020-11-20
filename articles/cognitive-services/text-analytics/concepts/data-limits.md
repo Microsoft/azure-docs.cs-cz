@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/14/2020
+ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 905dde6932afb440c34bcccb563bfda98f23eb7c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c60adb09da05ba945bcf6ccb55e71c395f064211
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363829"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965098"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Omezení dat a přenosové rychlosti rozhraní API pro analýzu textu
 <a name="data-limits"></a>
@@ -31,24 +31,28 @@ V tomto článku najdete omezení velikosti a tarify, které můžete použít k
 
 | Omezení | Hodnota |
 |------------------------|---------------|
-| Maximální velikost jednoho dokumentu | 5 120 znaků měřených pomocí [StringInfo. lengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements). Vztahuje se také na Analýza textu pro kontejner Health. |
-| Maximální velikost celého požadavku | 1 MB. Vztahuje se také na Analýza textu pro kontejner Health. |
+| Maximální velikost jednoho dokumentu | 5 120 znaků měřených pomocí [StringInfo. lengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements). Platí také pro Analýza textu pro stav. |
+| Maximální velikost jednoho dokumentu ( `/analyze` koncový bod)  | 125K znaky měřené [StringInfo. lengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements). Neplatí pro Analýza textu pro stav. |
+| Maximální velikost celého požadavku | 1 MB. Platí také pro Analýza textu pro stav. |
 
-Maximální počet dokumentů, které můžete poslat v rámci jedné žádosti, bude záviset na verzi rozhraní API a funkci, kterou používáte.
+Maximální počet dokumentů, které můžete poslat v rámci jedné žádosti, bude záviset na verzi rozhraní API a funkci, kterou používáte. `/analyze`Koncový bod zamítne celý požadavek, pokud nějaký dokument překročí maximální velikost (125K znaků).
 
 #### <a name="version-3"></a>[Verze 3](#tab/version-3)
 
-V v3 rozhraní API se změnila následující omezení. Překročení následujících omezení vygeneruje kód chyby HTTP 400.
+Následující omezení jsou pro aktuální rozhraní API v3. Překročení následujících omezení vygeneruje kód chyby HTTP 400.
 
 
 | Příznak | Maximální počet dokumentů na požadavek | 
 |----------|-----------|
 | Rozpoznávání jazyka | 1000 |
 | Analýza mínění | 10 |
+| Dolování názoru | 10 |
 | Extrakce klíčových frází | 10 |
 | Rozpoznávání pojmenovaných entit | 5 |
 | Entity Linking | 5 |
-| Analýza textu pro kontejner stavu | 1000 |
+| Analýza textu pro zdravotnictví  | 10 pro webové rozhraní API, 1000 pro kontejner. |
+| Analyzovat koncový bod | 25 pro všechny operace. |
+
 #### <a name="version-2"></a>[Verze 2](#tab/version-2)
 
 | Příznak | Maximální počet dokumentů na požadavek | 
@@ -74,7 +78,7 @@ Vaše omezení četnosti se bude lišit od [cenové úrovně](https://azure.micr
 | S3            | 500                 | 500                 |
 | S4            | 1000                | 1000                |
 
-Požadavky se měří pro každou funkci Analýza textu samostatně. Můžete například odeslat maximální počet požadavků pro vaši cenovou úroveň všem funkcím ve stejnou dobu.  
+Frekvence požadavků se měří pro každou funkci Analýza textu samostatně. Do každé funkce můžete současně poslat maximální počet požadavků pro vaši cenovou úroveň. Pokud jste například v rámci `S` vrstvy a odesílali požadavky 1000 najednou, nebudete moci poslat další žádost na 59 sekund.
 
 
 ## <a name="see-also"></a>Viz také

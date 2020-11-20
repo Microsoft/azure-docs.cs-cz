@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9055bb9689895a9b74f3d6b5affa325a3b594d65
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 2cdf89fa3281e070d6b1ac762d30d7c391f4126f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874674"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963636"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -707,10 +707,11 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 | **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Číst vlastnost Devices. bitLockerRecoveryKeys v Azure Active Directory. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
 | Microsoft. Directory/Devices/DELETE | Odstraňte zařízení v Azure Active Directory. |
 | Microsoft. Directory/Devices/Disable | Zakáže zařízení v Azure Active Directory. |
 | Microsoft. Directory/Devices/Enable | Povolte zařízení v Azure Active Directory. |
+| Microsoft. Directory/Devices/extensionAttributes/Update | Aktualizujte všechny hodnoty vlastnosti Devices. extensionAttributes v Azure Active Directory. |
 | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
@@ -731,6 +732,7 @@ Může spravovat všechny aspekty Azure AD a služeb Microsoftu, které použív
 | Microsoft. Directory/Applications/allProperties/allTasks | Vytvářejte a odstraňujte aplikace a čtěte a aktualizujte všechny vlastnosti v Azure Active Directory. |
 | Microsoft. Directory/appRoleAssignments/allProperties/allTasks | Vytvořit a odstranit appRoleAssignments a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
 | Microsoft. Directory/Contacts/allProperties/allTasks | Vytváření a odstraňování kontaktů a čtení a aktualizace všech vlastností v Azure Active Directory. |
 | Microsoft. Directory/Contracts/allProperties/allTasks | Vytváření a odstraňování smluv a čtení a aktualizace všech vlastností v Azure Active Directory. |
 | Microsoft. Directory/Devices/allProperties/allTasks | Vytváření a odstraňování zařízení a čtení a aktualizace všech vlastností v Azure Active Directory. |
@@ -1087,6 +1089,7 @@ Může číst vše, co globální správce může, ale ne nic upravovat.
 | Microsoft. Directory/Applications/Basic/Read    | Přečte základní vlastnosti aplikací v Azure Active Directory. |
 | Microsoft. Directory/aplikace/vlastníci/čtení    | Číst vlastnost Applications. Owners v Azure Active Directory. |
 | Microsoft. Directory/aplikace/zásady/číst    | Přečte vlastnost Applications. policies v Azure Active Directory. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
 | Microsoft. Directory/Contacts/Basic/Read    | Přečte základní vlastnosti kontaktů v Azure Active Directory. |
 | Microsoft. Directory/Contacts/memberOf/Read    | Číst vlastnost Contacts. memberOf v Azure Active Directory. |
 | Microsoft. Directory/Contracts/Basic/Read    | Přečte základní vlastnosti smluv v Azure Active Directory. |
@@ -1267,13 +1270,16 @@ Může spravovat všechny aspekty produktu Intune.
 
 | **Akce** | **Popis** |
 | --- | --- |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
 | Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
 | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
 | Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
 | Microsoft. Directory/Devices/Basic/Update | Aktualizuje základní vlastnosti na zařízeních v Azure Active Directory. |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Číst vlastnost Devices. bitLockerRecoveryKeys v Azure Active Directory. |
 | Microsoft. Directory/Devices/Create | Vytvořte zařízení v Azure Active Directory. |
 | Microsoft. Directory/Devices/DELETE | Odstraňte zařízení v Azure Active Directory. |
+| Microsoft. Directory/Devices/Disable | Zakáže zařízení v Azure Active Directory. |
+| Microsoft. Directory/Devices/Enable | Povolte zařízení v Azure Active Directory. |
+| Microsoft. Directory/Devices/extensionAttributes/Update | Aktualizujte všechny hodnoty vlastnosti Devices. extensionAttributes v Azure Active Directory. |
 | Microsoft. Directory/Devices/registeredOwners/Update | V Azure Active Directory aktualizovat vlastnost Devices. registeredOwners. |
 | Microsoft. Directory/Devices/registeredUsers/Update | V Azure Active Directory aktualizovat vlastnost Devices. registeredUsers. |
 | Microsoft. Directory/Groups/appRoleAssignments/Update | Aktualizuje vlastnost groups. appRoleAssignments v Azure Active Directory. |
@@ -1654,9 +1660,9 @@ Může číst informace o zabezpečení a sestavy a spravovat konfiguraci v Azur
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
 | Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Číst vlastnost Devices. bitLockerRecoveryKeys v Azure Active Directory. |
 | Microsoft. Directory/identityProtection/allProperties/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
 | Microsoft. Directory/identityProtection/allProperties/Update | Aktualizuje všechny prostředky v Microsoft. aad. identityProtection. |
 | Microsoft. Directory/policies/Basic/Update | Aktualizuje základní vlastnosti zásad v Azure Active Directory. |
@@ -1706,7 +1712,7 @@ Může číst informace o zabezpečení a sestavy v Azure AD a Microsoft 365.
 | **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Číst vlastnost Devices. bitLockerRecoveryKeys v Azure Active Directory. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
 | Microsoft. Directory/policies/conditionalAccess/Basic/Read | Číst zásady. conditionalAccess vlastnosti v Azure Active Directory. |
 | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
 | Microsoft. aad. identityProtection/allEntities/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |

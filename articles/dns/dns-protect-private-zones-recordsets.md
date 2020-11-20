@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 738d62d60ad06431bd77cd99343fc8835c4c5685
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a36b37c1f0118055d931f785f570a10041e2dbfc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330168"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965693"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Postup ochrany privátních zón a záznamů DNS
 
@@ -34,7 +34,7 @@ Skupina prostředků *myPrivateDNS* obsahuje pět zón pro společnost Contoso C
 
 Nejjednodušším způsobem přiřazení oprávnění Azure RBAC je [prostřednictvím Azure Portal](../role-based-access-control/role-assignments-portal.md).  
 
-Otevřete pro skupinu prostředků položku **řízení přístupu (IAM)** , vyberte **Přidat**a potom vyberte roli **Přispěvatel privátní DNSová zóna** . Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
+Otevřete pro skupinu prostředků položku **řízení přístupu (IAM)** , vyberte **Přidat** a potom vyberte roli **Přispěvatel privátní DNSová zóna** . Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
 
 ![Úroveň skupiny prostředků Azure RBAC prostřednictvím Azure Portal](./media/dns-protect-private-zones-recordsets/rbac1.png)
 
@@ -67,7 +67,7 @@ Pravidla Azure RBAC se dají použít u předplatného, skupiny prostředků neb
 
 Například skupina prostředků *myPrivateDNS* obsahuje zónu *Private.contoso.com* a podzónu *Customers.Private.contoso.com*. Pro každý účet zákazníka se vytvoří záznamy CNAME. Účet správce, který se používá ke správě záznamů CNAME, má přiřazená oprávnění k vytváření záznamů v zóně *Customers.Private.contoso.com* . Účet může spravovat jenom *Customers.Private.contoso.com* .
 
-Oprávnění Azure RBAC na úrovni zóny je možné udělit prostřednictvím Azure Portal.  Otevřete **řízení přístupu (IAM)** pro zónu, vyberte **Přidat**a potom vyberte roli **Přispěvatel privátní DNS zóna** . Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
+Oprávnění Azure RBAC na úrovni zóny je možné udělit prostřednictvím Azure Portal.  Otevřete **řízení přístupu (IAM)** pro zónu, vyberte **Přidat** a potom vyberte roli **Přispěvatel privátní DNS zóna** . Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
 
 ![Úroveň zóny DNS Azure RBAC prostřednictvím Azure Portal](./media/dns-protect-private-zones-recordsets/rbac2.png)
 
@@ -200,11 +200,11 @@ Existují dva typy uzamčení prostředků: **CanNotDelete** a **ReadOnly**. Tyt
 
 Aby nedocházelo k provedeným změnám, aplikujte na zónu zámek jen pro čtení. Tento zámek zabraňuje vytváření nových sad záznamů a existující sady záznamů z úprav nebo odstranění.
 
-Zámky prostředků na úrovni zóny lze vytvořit prostřednictvím Azure Portal.  Na stránce zóna DNS vyberte **zámky**a pak vyberte **+ Přidat**:
+Zámky prostředků na úrovni zóny lze vytvořit prostřednictvím Azure Portal.  Na stránce zóna DNS vyberte **zámky** a pak vyberte **+ Přidat**:
 
 ![Zámky prostředků na úrovni zóny prostřednictvím Azure Portal](./media/dns-protect-private-zones-recordsets/locks1.png)
 
-Zámky prostředků na úrovni zóny je také možné vytvořit prostřednictvím [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest):
+Zámky prostředků na úrovni zóny je také možné vytvořit prostřednictvím [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest):
 
 ```azurepowershell-interactive
 # Lock a DNS zone
@@ -218,7 +218,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-Ekvivalentní příkaz je dostupný taky [prostřednictvím Azure CLI](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create):
+Ekvivalentní příkaz je dostupný taky [prostřednictvím Azure CLI](/cli/azure/lock?view=azure-cli-latest#az-lock-create):
 
 ```azurecli-interactive
 # Lock a DNS zone

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 55195949cfaa741389f38deaea69806c568c0ce6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008263"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966560"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Kurz: registrace zařízení do služby IoT Hub pomocí klienta služby Azure IoT Hub Provisioning Service (.NET)
 
@@ -42,12 +42,12 @@ Tento kurz simuluje období během výrobního procesu hardwaru nebo těsně po 
 Tento krok zahrnuje přidání jedinečných artefaktů zabezpečení zařízení do služby Device Provisioning. Tyto artefakty zabezpečení jsou následující:
 
 - Zařízení založená na TPM:
-    - *Ověřovací klíč*, který je jedinečný pro každý čip TPM nebo jeho simulaci. Další informace najdete v tématu [Vysvětlení ověřovacího klíče TPM](https://technet.microsoft.com/library/cc770443.aspx).
+    - *Ověřovací klíč*, který je jedinečný pro každý čip TPM nebo jeho simulaci. Další informace najdete v tématu [Vysvětlení ověřovacího klíče TPM](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11)).
     - *ID registrace*, které slouží k jednoznačné identifikaci zařízení v oboru názvů nebo oboru. Toto ID může, ale nemusí být stejné jako ID zařízení. ID je povinné pro každé zařízení. U zařízení založených na TPM můžete ID registrace získat přímo z TMP, například jako hodnotu hash SHA-256 ověřovacího klíče TPM.
 
 - Zařízení založená na X.509:
-    - [Certifikát X.509 vydaný pro zařízení](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) ve formě souboru *.pem* nebo *.cer*. K jednotlivé registraci musíte použít *listový certifikát* pro váš systém X.509, zatímco pro skupiny registrací musíte použít *kořenový certifikát* nebo ekvivalentní *certifikát podpisovatele*.
-    - *ID registrace*, které slouží k jednoznačné identifikaci zařízení v oboru názvů nebo oboru. Toto ID může, ale nemusí být stejné jako ID zařízení. ID je povinné pro každé zařízení. Pro zařízení založená na X.509 se ID registrace odvodí z běžného názvu certifikátu. Další informace o těchto požadavcích najdete v tématu [Koncepty zařízení](https://docs.microsoft.com/azure/iot-dps/concepts-device).
+    - [Certifikát X.509 vydaný pro zařízení](/windows/win32/seccertenroll/about-x-509-public-key-certificates) ve formě souboru *.pem* nebo *.cer*. K jednotlivé registraci musíte použít *listový certifikát* pro váš systém X.509, zatímco pro skupiny registrací musíte použít *kořenový certifikát* nebo ekvivalentní *certifikát podpisovatele*.
+    - *ID registrace*, které slouží k jednoznačné identifikaci zařízení v oboru názvů nebo oboru. Toto ID může, ale nemusí být stejné jako ID zařízení. ID je povinné pro každé zařízení. Pro zařízení založená na X.509 se ID registrace odvodí z běžného názvu certifikátu. Další informace o těchto požadavcích najdete v tématu [Koncepty zařízení](./concepts-service.md).
 
 Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsoby:
 
@@ -129,7 +129,7 @@ Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsob
     Console.ReadLine();
     ```
         
-1. V sadě Visual Studio Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak klikněte na **nastavit projekty po spuštění...**. Vyberte **jeden spouštěný projekt**a pak v rozevírací nabídce vyberte projekt **DeviceProvisioning** .  
+1. V sadě Visual Studio Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak klikněte na **nastavit projekty po spuštění...**. Vyberte **jeden spouštěný projekt** a pak v rozevírací nabídce vyberte projekt **DeviceProvisioning** .  
 
 1. Spusťte aplikaci .NET pro zařízení **DeviceProvisiong**. Pro zařízení by se mělo nastavit zřizování: 
 

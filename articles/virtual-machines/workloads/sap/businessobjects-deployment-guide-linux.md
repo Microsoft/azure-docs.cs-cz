@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 1f15a3b4d8f51ec79fffce09bc006942d08096a6
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427458"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965353"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Průvodce nasazením platformy SAP BusinessObjects BI pro Linux v Azure
 
@@ -36,7 +37,7 @@ V tomto příkladu se používá verze produktu a rozložení systému souborů.
 - Azure Database for MySQL (verze: 8.0.15)
 - MySQL C API Connector – libmysqlclient (verze: 6.1.11)
 
-| Systém souborů        | Popis                                                                                                               | Velikost (GB)             | Vlastník  | Skupina  | Úložiště                    |
+| Systém souborů        | Popis                                                                                                               | Velikost (GB)             | Vlastník  | Skupina  | Storage                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | Systém souborů pro instalaci instance SAP BOBI, výchozí webové aplikace Tomcat a ovladače databáze (v případě potřeby) | Pokyny pro určení velikosti SAP | bl1adm | sapsys | Spravovaný disk úrovně Premium – SSD |
 | /usr/sap/frsinput  | Adresář pro připojení je určený pro sdílené soubory ve všech hostitelích BOBI, které se použijí jako adresář úložiště vstupních souborů.  | Obchodní potřeby         | bl1adm | sapsys | Azure NetApp Files         |
@@ -113,7 +114,7 @@ Při vytváření Azure NetApp Files pro server úložiště souborů platformy 
 
 Kroky v této části používají následující předpony:
 
-**[A]** : Tento krok platí pro všechny hostitele.
+**[A]**: Tento krok platí pro všechny hostitele.
 
 ### <a name="format-and-mount-sap-file-system"></a>Formátování a připojení systému souborů SAP
 
@@ -395,15 +396,15 @@ Aby aplikační Server SAP BOBI měl přístup k databázi, vyžaduje databázov
 
 Kroky v této části používají následující předpony:
 
-**[A]** : Tento krok platí pro všechny hostitele.
+**[A]**: Tento krok platí pro všechny hostitele.
 
 1. **[A]** na základě charakteru systému Linux (SLES nebo RHEL) je nutné nastavit parametry jádra a nainstalovat požadované knihovny. Informace najdete v části **požadavky na systém** v [příručce pro instalaci platformy Business Intelligence pro systém UNIX](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US).
 
 2. **[A]** Ujistěte se, že je ve vašem počítači správně nastavené časové pásmo. Další informace najdete v [části Další požadavky pro systémy UNIX a Linux](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html) v Průvodci instalací.
 
-3. **[A]** vytvořte uživatelský účet ( **BL1** ADM) a skupinu (sapsys), ve kterých se můžou spouštět procesy na pozadí softwaru. Pomocí tohoto účtu můžete spustit instalaci a spustit software. Účet nevyžaduje oprávnění root.
+3. **[A]** vytvořte uživatelský účet (**BL1** ADM) a skupinu (sapsys), ve kterých se můžou spouštět procesy na pozadí softwaru. Pomocí tohoto účtu můžete spustit instalaci a spustit software. Účet nevyžaduje oprávnění root.
 
-4. **[A]** nastavte prostředí uživatelského účtu ( **BL1** ADM) pro použití podporovaného národního prostředí UTF-8 a ujistěte se, že váš software konzoly podporuje znakové sady UTF-8. Aby se zajistilo, že váš operační systém používá správné národní prostředí, nastavte proměnné prostředí LC_ALL a LANG na své preferované národní prostředí ve vašem uživatelském prostředí ( **BL1** ADM).
+4. **[A]** nastavte prostředí uživatelského účtu (**BL1** ADM) pro použití podporovaného národního prostředí UTF-8 a ujistěte se, že váš software konzoly podporuje znakové sady UTF-8. Aby se zajistilo, že váš operační systém používá správné národní prostředí, nastavte proměnné prostředí LC_ALL a LANG na své preferované národní prostředí ve vašem uživatelském prostředí (**BL1** ADM).
 
    ```bash
    # This configuration is for bash shell. If you are using any other shell for sidadm, kindly set environment variable accordingly.
@@ -413,7 +414,7 @@ Kroky v této části používají následující předpony:
    export LC_ALL=en_US.utf8
    ```
 
-5. **[A]** nakonfigurujte uživatelský účet ( **BL1** ADM).
+5. **[A]** nakonfigurujte uživatelský účet (**BL1** ADM).
 
    ```bash
    # Set ulimit for bl1adm to unlimited
@@ -465,7 +466,7 @@ Projděte si příručku pro instalaci [platformy SAP BOBI](https://help.sap.com
 
 - Na obrazovce **Vybrat typ instalace** vyberte možnost **Úplná** instalace na první server (azusbosl1), pro jiný server (Azusbosl2) vyberte možnost **vlastní/rozbalit** , čímž se rozbalí existující nastavení BOBI.
 
-- Na obrazovce **Vybrat výchozí nebo existující databázi** vyberte **Konfigurovat existující databázi** , která vás vyzve k výběru CMS a auditu databáze. Vyberte **MySQL** pro typ databáze CMS a audit typ databáze.
+- Na obrazovce **Vybrat výchozí nebo existující databázi** vyberte **Konfigurovat existující databázi**, která vás vyzve k výběru CMS a auditu databáze. Vyberte **MySQL** pro typ databáze CMS a audit typ databáze.
 
   Pokud během instalace nechcete konfigurovat auditování, můžete také vybrat možnost bez auditování databáze.
 

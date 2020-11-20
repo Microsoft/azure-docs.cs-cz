@@ -12,19 +12,19 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: rohink
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 347fde86b2a37aa0f82c09c94d6aa2f9e405da9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6abcca9d9888dc8968d7233e7aee6cd76aa215f7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075592"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965744"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>Správa Zóny DNS pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Rozhraní příkazového řádku Azure Classic](dns-operations-dnszones-cli-nodejs.md)
+> * [Rozhraní příkazového řádku Azure Classic](./dns-operations-dnszones-cli.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 V tomto článku se dozvíte, jak spravovat zóny DNS pomocí Azure PowerShell. Zóny DNS můžete spravovat i pomocí [Azure CLI](dns-operations-dnszones-cli.md) pro různé platformy nebo Azure Portal.
@@ -174,4 +174,3 @@ Naučte se [Spravovat sady záznamů a záznamy](dns-operations-recordsets.md) v
 Přečtěte si, jak [delegovat doménu na Azure DNS](dns-domain-delegation.md).
 <br>
 Přečtěte si [referenční dokumentaci k Azure DNS PowerShellu](/powershell/module/azurerm.dns).
-

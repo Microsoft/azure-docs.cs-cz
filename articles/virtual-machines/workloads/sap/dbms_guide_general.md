@@ -3,16 +3,17 @@ title: Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP | Micros
 description: Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP
 author: msjuergent
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f71d95d61e401e12c76ca5589368eed6cc29ce6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 38f6cf039de2404c7b3eeecc74ee33233f4a2058
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993290"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965285"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -55,7 +56,7 @@ V celém dokumentu se používají tyto výrazy:
 * **Prostředí SAP**: jedna nebo víc komponent SAP se logicky seskupují tak, aby prováděly obchodní funkce, jako je vývoj, zabezpečování kvality, školení, zotavení po havárii nebo produkce.
 * **SAP na šířku**: Tento pojem odkazuje na celé prostředky SAP v zákaznickém oddělení IT. SAP na úrovni zahrnuje všechna produkční a nevýrobní prostředí.
 * **Systém SAP**: kombinace vrstvy DBMS a aplikační vrstvy, například vývojového systému SAP ERP, testovacího systému SAP Business Warehouse nebo produkčního systému SAP CRM. V nasazeních Azure se nepodporují vydělení těchto dvou vrstev mezi místními a Azure. V důsledku toho je systém SAP buď nasazený místně, nebo je nasazený v Azure. Můžete nasadit různé systémy SAP na šířku v Azure i v místním prostředí. Můžete například nasadit vývojové a testovací systémy SAP CRM do Azure, ale nasadit produkční systém SAP CRM do místního prostředí.
-* **Mezi různými**místy: popisuje situaci, kdy se virtuální počítače nasazují do předplatného Azure, které má připojení typu Site-to-site nebo Azure ExpressRoute mezi místními datovými centry a Azure. V běžné dokumentaci k Azure jsou tyto typy nasazení popsány také jako mezi místními scénáři. 
+* **Mezi různými** místy: popisuje situaci, kdy se virtuální počítače nasazují do předplatného Azure, které má připojení typu Site-to-site nebo Azure ExpressRoute mezi místními datovými centry a Azure. V běžné dokumentaci k Azure jsou tyto typy nasazení popsány také jako mezi místními scénáři. 
 
     Důvodem připojení je rozšiřování místních domén, místní služby Active Directory a místní DNS do Azure. Místní orientace se rozšiřuje na prostředky v rámci předplatného Azure. S tímto rozšířením můžou být virtuální počítače součástí místní domény. Uživatelé domény v místní doméně mají přístup k serverům a spouštějí služby na těchto virtuálních počítačích, jako jsou například služby DBMS. Je možné komunikovat a překlad názvů mezi virtuálními počítači nasazenými místně a virtuálními počítači nasazenými v Azure. Tento scénář je nejběžnějším scénářem, který se používá k nasazení prostředků SAP v Azure. Další informace najdete v tématu [plánování a návrh pro bránu VPN](../../../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
@@ -157,7 +158,7 @@ Pokud požadavek na IOPS překročí, co může jeden virtuální pevný disk po
 >
 > ![Inproužekování úložiště pro Linux][Logo_Linux] Linux
 >
-> Pro vytvoření softwarového pole RAID v systému Linux jsou podporovány pouze MDADM a Správce logických svazků (LVM). Další informace naleznete v tématech:
+> Pro vytvoření softwarového pole RAID v systému Linux jsou podporovány pouze MDADM a Správce logických svazků (LVM). Další informace naleznete v tématu:
 >
 > - [Konfigurace softwarového pole RAID v systému Linux](../../linux/configure-raid.md) pomocí MDADM
 > - [Konfigurace LVM na virtuálním počítači se systémem Linux v Azure](../../linux/configure-lvm.md) pomocí LVM

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d6213d49c98f5e09f22e7310183315800d0c6f6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: fe2d09315dcb2a0958f8a1b8efe7532c64c111d8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359778"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966543"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Kurz: Konfigurace ServiceNow pro Automatické zřizování uživatelů
 
@@ -56,13 +56,6 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
    ![Role správce ServiceNow](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
 
-3. Zkontrolujte, jestli jsou v ServiceNow **zakázaná** tato nastavení:
-
-   1. Vybrat **System Security**  >  **nastavení vysokého zabezpečení** zabezpečení systému  >  **vyžaduje základní ověřování pro příchozí požadavky schématu**.
-   2. Vybrat **Vlastnosti systému**  >  **webové služby**  >  **vyžadují základní autorizaci pro příchozí požadavky SOAP**.
-     
-   > [!IMPORTANT]
-   > Pokud je toto nastavení *povolené* , modul zřizování nebude při komunikaci s ServiceNowem komunikovat.
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání ServiceNow z Galerie aplikací Azure AD
 
@@ -154,7 +147,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
    1. Vybrat **System Security**  >  **nastavení vysokého zabezpečení** zabezpečení systému  >  **vyžaduje základní ověřování pro příchozí požadavky schématu**.
    2. Vybrat **Vlastnosti systému**  >  **webové služby**  >  **vyžadují základní autorizaci pro příchozí požadavky SOAP**.
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

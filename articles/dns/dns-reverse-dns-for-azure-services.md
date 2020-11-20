@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 15396467e92b3e035add03d0d29888558571aa2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3adbf34e4c19a76c2b5b2b1968c7821f37965929
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711234"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965625"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurace reverzního DNS pro služby hostované v Azure
 
@@ -211,7 +211,7 @@ Odebrání reverzní vlastnosti DNS z existující cloudové služby:
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn ""
 ```
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="how-much-do-reverse-dns-records-cost"></a>Kolik stojí reverzních záznamů DNS?
 
@@ -247,11 +247,10 @@ Ne. Azure aktuálně podporuje reverzní DNS jenom pro prostředky IPv4 PublicIp
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Můžu odeslat e-maily externím doménám z výpočetních služeb Azure?
 
-Technická možnost odesílání e-mailů přímo z nasazení Azure závisí na typu předplatného. Bez ohledu na typ předplatného Microsoft doporučuje odesílat odchozí e-mailové služby pomocí důvěryhodných poštovních přenosů. Další podrobnosti najdete v tématu [Rozšířené zabezpečení Azure pro odesílání e-mailů – listopad 2017 Update](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/).
+Technická možnost odesílání e-mailů přímo z nasazení Azure závisí na typu předplatného. Bez ohledu na typ předplatného Microsoft doporučuje odesílat odchozí e-mailové služby pomocí důvěryhodných poštovních přenosů. Další podrobnosti najdete v tématu [Rozšířené zabezpečení Azure pro odesílání e-mailů – listopad 2017 Update](../virtual-network/troubleshoot-outbound-smtp-connectivity.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o reverzních DNS najdete v tématu [reverzní DNS Lookup v Wikipedii](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
 Naučte se [hostovat zónu zpětného vyhledávání pro rozsah IP adres přiřazený poskytovateli internetových služeb v Azure DNS](dns-reverse-dns-for-azure-services.md).
-

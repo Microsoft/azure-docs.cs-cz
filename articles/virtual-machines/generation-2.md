@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0aedcc3be4cb319dc24990507d85756bd77777e4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977591"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963823"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -85,7 +85,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 ### <a name="generation-1-vs-generation-2-features"></a>Generace 1 vs. generace 2 – funkce
 
-| Funkce | 1. generace | 2. generace |
+| Příznak | 1. generace | 2. generace |
 |---------|--------------|--------------|
 | Spouštění             | PCAT                      | UEFI                               |
 | Řadiče disku | IDE – integrované vývojové prostředí                       | SCSI                               |
@@ -101,11 +101,12 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Zálohování a obnovení                    | :heavy_check_mark: | :heavy_check_mark: |
 | Galerie sdílených imagí              | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Disk Encryption             | :heavy_check_mark: | znak                |
+| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | znak                |
+| [Šifrování na straně serveru](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>Vytvoření virtuálního počítače 2. generace
 
-### <a name="marketplace-image"></a>Obrázek Marketplace
+### <a name="marketplace-image"></a>Image z Marketplace
 
 V Azure Portal nebo Azure CLI můžete vytvořit virtuální počítače 2. generace z image Marketplace, která podporuje spouštění pomocí UEFI.
 
@@ -119,7 +120,7 @@ Níže jsou uvedené kroky k vytvoření virtuálního počítače generace 2 (G
 1. Vyberte bitovou kopii, která podporuje Gen2.
 1. Klikněte na **Vytvořit**.
 1. Na kartě **Upřesnit** v části **generování virtuálního počítače** vyberte možnost **Obecné 2** .
-1. Na kartě **základy** klikněte v části **Podrobnosti instance**na **Velikost** a otevřete okno **Vybrat velikost virtuálního počítače** .
+1. Na kartě **základy** klikněte v části **Podrobnosti instance** na **Velikost** a otevřete okno **Vybrat velikost virtuálního počítače** .
 1. Vyberte [podporovaný virtuální počítač 2. generace](#generation-2-vm-sizes).
 1. Projděte si zbývající stránky a dokončete vytváření virtuálního počítače.
 
@@ -163,7 +164,7 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 * **Jsou virtuální počítače generace 2 dostupné ve všech oblastech Azure?**  
-    Yes. Ale ne všechny [velikosti virtuálních počítačů 2. generace](#generation-2-vm-sizes) jsou dostupné v každé oblasti. Dostupnost virtuálního počítače 2. generace závisí na dostupnosti velikosti virtuálního počítače.
+    Ano. Ale ne všechny [velikosti virtuálních počítačů 2. generace](#generation-2-vm-sizes) jsou dostupné v každé oblasti. Dostupnost virtuálního počítače 2. generace závisí na dostupnosti velikosti virtuálního počítače.
 
 * **Existuje cenový rozdíl mezi virtuálními počítači generace 1 a generace 2?**  
    Ne.
@@ -192,13 +193,13 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
   1. V Azure Portal přejdete na stránku vlastností virtuálního počítače.
   1. Pokud chcete virtuální počítač vypnout a zrušit jeho přidělení, vyberte tlačítko **zastavit** .
   1. V části **disky** vyberte disk s operačním systémem, který chcete zvětšit.
-  1. V části **disky** vyberte **Konfigurace**a aktualizujte **Velikost** na požadovanou hodnotu.
+  1. V části **disky** vyberte **Konfigurace** a aktualizujte **Velikost** na požadovanou hodnotu.
   1. Vraťte se na stránku vlastností virtuálního počítače a **Spusťte** virtuální počítač.
   
   Může se zobrazit upozornění na disky s operačním systémem větší než 2 TiB. Upozornění se nevztahuje na virtuální počítače 2. generace. Velikosti disků s operačním systémem větší než 4 TiB se ale nepodporují.
 
 * **Podporují virtuální počítače generace 2 urychlené síťové služby?**  
-    Yes. Další informace najdete v tématu [Vytvoření virtuálního počítače s akcelerovanými síťovými](../virtual-network/create-vm-accelerated-networking-cli.md)službami.
+    Ano. Další informace najdete v tématu [Vytvoření virtuálního počítače s akcelerovanými síťovými](../virtual-network/create-vm-accelerated-networking-cli.md)službami.
 
 * **Podporují virtuální počítače generace 2 v Azure zabezpečené spouštění nebo vTPM?**
     Virtuální počítače 1. generace a 2. generace v Azure nepodporují zabezpečené spouštění ani vTPM. 
@@ -207,7 +208,7 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
     Ne, virtuální počítače 2. generace podporují jenom virtuální pevný disk.
 
 * **Podporují virtuální počítače generace 2 Azure Ultra Disk Storage?**  
-    Yes.
+    Ano.
 
 * **Můžu migrovat virtuální počítač z generace 1 na generaci 2?**  
     Ne, generaci virtuálního počítače po jeho vytvoření nemůžete změnit. Pokud potřebujete přepínat mezi generací virtuálních počítačů, vytvořte nový virtuální počítač jiné generace.

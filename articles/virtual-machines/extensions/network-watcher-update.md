@@ -8,16 +8,17 @@ manager: balar
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: 23520a0249e22b3f81c7f7c598ef10d8c3acb550
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: c427a206e0422e66cb526a29a462d8b6bdf6818e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900185"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965931"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>Aktualizace rozšíření Network Watcher na nejnovější verzi
 
@@ -25,7 +26,7 @@ ms.locfileid: "92900185"
 
 [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) je služba pro sledování, diagnostiku a analýzu výkonu sítě, která monitoruje sítě Azure. Rozšíření virtuálních počítačů s Network Watcher agentem je požadavek na zachytávání síťového provozu na vyžádání a používání dalších pokročilých funkcí na virtuálních počítačích Azure. Rozšíření Network Watcher se používají funkcemi, jako je monitorování připojení, monitorování připojení (Preview), řešení potíží s připojením a zachytávání paketů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte na svém VIRTUÁLNÍm počítači nainstalovanou příponu Network Watcher.
 
@@ -82,7 +83,8 @@ Spusťte následující příkazy:
 Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux"
 
 #Windows command
-Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"
+Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "NetworkWatcherAgentWindows" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -ForceRerun "True"
+
 ```
 
 Pokud to nefunguje. Pomocí níže uvedeného postupu odeberte rozšíření a nainstalujte ho znovu. Tím se automaticky přidá nejnovější verze.
@@ -143,4 +145,4 @@ Pokud jste pro rozšíření Network Watcher nastavili automatický upgrade na h
 
 ## <a name="support"></a>Podpora
 
-Pokud potřebujete další pomoc v jakémkoli bodě tohoto článku, přečtěte si dokumentaci k rozšíření Network Watcher pro [Linux](./network-watcher-linux.md) nebo [Windows](./network-watcher-windows.md). Můžete se také obrátit na odborníky na Azure na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Případně můžete také zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu** . Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další pomoc v jakémkoli bodě tohoto článku, přečtěte si dokumentaci k rozšíření Network Watcher pro [Linux](./network-watcher-linux.md) nebo [Windows](./network-watcher-windows.md). Můžete se také obrátit na odborníky na Azure na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Případně můžete také zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).

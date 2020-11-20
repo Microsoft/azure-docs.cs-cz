@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP, Azure, Oracle, ochrana dat
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e72c9d64a71fceb90d0a6ae9984997f73c1b5c6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3e99b3a8960eb49856e9a016eb054eed41eccde9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963529"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965251"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Nasazení Azure DBMS pro úlohy SAP v Virtual Machines Oracle
 
@@ -359,7 +360,7 @@ V článku [Azure Storage typy pro úlohy SAP](./planning-guide-storage.md) zís
 
 Důrazně doporučujeme použít [Azure Managed disks](../../managed-disks-overview.md). Důrazně doporučujeme pro nasazení Oracle Database použít službu [Azure Premium Storage nebo Azure Ultra disk](../../disks-types.md) .
 
-Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace naleznete v tématech:
+Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace naleznete v tématu:
 
 - [Představujeme službu Microsoft Azure File](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 

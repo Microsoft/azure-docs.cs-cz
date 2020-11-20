@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 1ba6a19b271943c7ecbe2254ef2544a5f576ad3d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3827fa7a98cef9358db0ee102925586bce97fae6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167419"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965234"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro Průvodce pro aplikace SAP s více SID
 
@@ -112,7 +113,7 @@ Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatíže
   * IP adresa pro NW2:10.3.1.16
   * IP adresa pro NW3:10.3.1.13
 * Porty testu paměti
-  * Port 620<strong> &lt; Nr &gt; </strong>, tedy pro NW1, NW2 a porty sondy NW3 620**00**, 620**10** a 620**20**
+  * Port 620 <strong> &lt; Nr &gt;</strong>, tedy pro NW1, NW2 a porty sondy NW3 620 **00**, 620 **10** a 620 **20**
 * Pravidla vyrovnávání zatížení – 
 * Vytvořte jednu pro každou instanci, tj. NW1/ASCS, NW2/ASCS a NW3/ASCS.
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
@@ -132,7 +133,7 @@ Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatíže
   * IP adresa pro NW2 10.3.1.17
   * IP adresa pro NW3 10.3.1.19
 * Port testu paměti
-  * Port 621<strong> &lt; Nr &gt; </strong>, tedy pro NW1, NW2 a N # porty sondy 621**02**, 621**12** a 621**22**
+  * Port 621 <strong> &lt; Nr &gt;</strong>, tedy pro NW1, NW2 a N # porty sondy 621 **02**, 621 **12** a 621 **22**
 * Pravidla vyrovnávání zatížení – pro každou instanci vytvořte jednu z těchto instancí: NW1/OLAJÍCÍCH, NW2/OLAJÍCÍCH a NW3/OLAJÍCÍCH.
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
   * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
@@ -178,7 +179,7 @@ V tomto příkladu předpokládáme, že systém **NW1** už je v clusteru nasaz
 
 Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
-### <a name="prerequisites"></a>Předpoklady 
+### <a name="prerequisites"></a>Požadavky 
 
 > [!IMPORTANT]
 > Než budete postupovat podle pokynů k nasazení dalších systémů SAP v clusteru, postupujte podle pokynů pro nasazení prvního systému SAP v clusteru, protože existují kroky, které jsou nezbytné pouze při prvním nasazení systému.  
@@ -290,7 +291,7 @@ Tato dokumentace předpokládá, že:
 
 2. **[1]** instalace SAP NetWeaver ASCS  
 
-   Nainstalujte SAP NetWeaver ASCS jako kořenový adresář pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS. Například pro System **NW2**je virtuální název hostitele <b>msnw2ascs</b>, <b>10.3.1.16</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>10</b>. pro System **NW3**je virtuální název hostitele <b>msnw3ascs</b>, <b>10.3.1.13</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>20</b>.
+   Nainstalujte SAP NetWeaver ASCS jako kořenový adresář pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS. Například pro System **NW2** je virtuální název hostitele <b>msnw2ascs</b>, <b>10.3.1.16</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>10</b>. pro System **NW3** je virtuální název hostitele <b>msnw3ascs</b>, <b>10.3.1.13</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>20</b>.
 
    Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst. Pomocí parametru SAPINST_USE_HOSTNAME můžete nainstalovat SAP s použitím názvu virtuálního hostitele.  
 
@@ -298,7 +299,7 @@ Tato dokumentace předpokládá, že:
       sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
      ```
 
-   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**SID**/ASCS**instance #**, zkuste nastavit vlastníka na **hodnotu ADM a skupinu na sapsys****instance** ASCS a zkuste to znovu.
+   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**SID**/ASCS **instance #**, zkuste nastavit vlastníka na **hodnotu ADM a skupinu na sapsys****instance** ASCS a zkuste to znovu.
 
 3. **[1]** vytvořte prostředky clusteru virtuální IP adresy a stavu testu pro instanci olajících dalšího systému SAP, který nasazujete do clusteru. Příklad zobrazený tady je pro **NW2** a **NW3** olajících pomocí serveru NFS s vysokou dostupností. 
 
@@ -340,7 +341,7 @@ Tato dokumentace předpokládá, že:
 
 4. **[2]** instalace SAP NetWeaver olajících
 
-   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako root na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro OLAJÍCÍCH. Například pro System **NW2**bude název virtuálního hostitele <b>msnw2ers</b>, <b>10.3.1.17</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>12</b>. Pro System **NW3**se jedná o název virtuálního hostitele <b>msnw3ers</b>, <b>10.3.1.19</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>22</b>. 
+   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako root na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro OLAJÍCÍCH. Například pro System **NW2** bude název virtuálního hostitele <b>msnw2ers</b>, <b>10.3.1.17</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>12</b>. Pro System **NW3** se jedná o název virtuálního hostitele <b>msnw3ers</b>, <b>10.3.1.19</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>22</b>. 
 
    Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst. Pomocí parametru SAPINST_USE_HOSTNAME můžete nainstalovat SAP s použitím názvu virtuálního hostitele.  
 
@@ -351,7 +352,7 @@ Tato dokumentace předpokládá, že:
    > [!NOTE]
    > Použijte SWPM SP 20 PL 05 nebo vyšší. Nižší verze nenastaví správně oprávnění a instalace se nezdaří.
 
-   Pokud se při instalaci nepovede vytvořit podsložku ve složce/usr/SAP/**NW2**/ERS**instance #**, zkuste nastavit vlastníka na hodnotu ADM **SID**a skupinu na sapsys ze složky olajících**instance** a zkuste to znovu.
+   Pokud se při instalaci nepovede vytvořit podsložku ve složce/usr/SAP/**NW2**/ERS **instance #**, zkuste nastavit vlastníka na hodnotu ADM **SID** a skupinu na sapsys ze složky olajících **instance** a zkuste to znovu.
 
    Pokud bylo nutné migrovat skupinu OLAJÍCÍCH nově nasazeného systému SAP na jiný uzel clusteru, nezapomeňte odebrat omezení umístění pro skupinu OLAJÍCÍCH. Omezení můžete odebrat spuštěním následujícího příkazu (příklad je uveden pro SAP Systems **NW2** a **NW3**).  
 
@@ -772,7 +773,7 @@ Zobrazené testy jsou ve dvou uzlech, cluster s více identifikátory SID se tř
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   Spusťte následující příkazy jako **NW2**ADM pro migraci instance NW2 ASCS.
+   Spusťte následující příkazy jako **NW2** ADM pro migraci instance NW2 ASCS.
 
    ```
     slesmsscl2:nw2adm 53> sapcontrol -nr 10 -host msnw2ascs -user nw2adm password -function HAFailoverToNode ""

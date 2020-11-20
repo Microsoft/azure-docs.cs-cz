@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71b018da6b54ebf2b45a261378ea521a397159e5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81460643"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964979"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Osvědčené postupy pro StorSimple Virtual Array
 
@@ -119,7 +119,7 @@ Pokud je vaše virtuální pole připojené k doméně, můžete na něj použí
 Proto doporučujeme:
 
 * Ujistěte se, že vaše virtuální pole je ve své vlastní organizační jednotce pro službu Active Directory.
-* Ujistěte se, že ve virtuálním poli nejsou použité žádné objekty zásad skupiny (GPO). Dědičnost můžete zablokovat, aby se zajistilo, že virtuální pole (podřízený uzel) automaticky nedědí žádné objekty zásad skupiny z nadřazené položky. Další informace najdete na webu [blokování dědičnosti](https://technet.microsoft.com/library/cc731076.aspx).
+* Ujistěte se, že ve virtuálním poli nejsou použité žádné objekty zásad skupiny (GPO). Dědičnost můžete zablokovat, aby se zajistilo, že virtuální pole (podřízený uzel) automaticky nedědí žádné objekty zásad skupiny z nadřazené položky. Další informace najdete na webu [blokování dědičnosti](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731076(v=ws.11)).
 
 ### <a name="networking"></a>Sítě
 Konfigurace sítě pro vaše virtuální pole se provádí prostřednictvím místního webového uživatelského rozhraní. Virtuální síťové rozhraní je povolené prostřednictvím hypervisoru, ve kterém je virtuální pole zřízené. Na stránce [nastavení sítě](storsimple-virtual-array-deploy3-fs-setup.md) můžete nakonfigurovat IP adresu, podsíť a bránu virtuálního síťového rozhraní.  Pro vaše zařízení můžete také nakonfigurovat primární a sekundární server DNS, nastavení času a volitelná nastavení proxy serveru. Většina konfigurace sítě je jednorázová instalace. Před nasazením virtuálního pole si Projděte [požadavky na síť StorSimple](storsimple-ova-system-requirements.md#networking-requirements) .
@@ -137,7 +137,7 @@ Při nasazování virtuálního pole doporučujeme dodržovat tyto osvědčené 
   * Konfigurace statických IP adres. Je nutné nakonfigurovat primární a sekundární server DNS.
   * Pokud ve virtuálním poli definujete více síťových rozhraní, může Cloud dosáhnout jenom první síťové rozhraní (ve výchozím nastavení je to **Ethernet**). Chcete-li řídit typ provozu, můžete vytvořit několik virtuálních síťových rozhraní ve virtuálním poli (nakonfigurovaných jako server iSCSI) a propojit tato rozhraní s různými podsítěmi.
 * Pokud chcete omezit jenom šířku pásma cloudu (používané virtuálním polem), nakonfigurujte omezování směrovače nebo brány firewall. Pokud v hypervisoru definujete omezení, omezí se tím všechny protokoly, včetně iSCSI a protokolu SMB, nikoli jenom šířky pásma cloudu.
-* Ujistěte se, že je povolená synchronizace času pro hypervisory. Pokud používáte Hyper-V, vyberte své virtuální pole ve Správci technologie Hyper-V, klikněte na **nastavení &gt; integrační služby**a ujistěte se, že je zaškrtnutá **synchronizace času** .
+* Ujistěte se, že je povolená synchronizace času pro hypervisory. Pokud používáte Hyper-V, vyberte své virtuální pole ve Správci technologie Hyper-V, klikněte na **nastavení &gt; integrační služby** a ujistěte se, že je zaškrtnutá **synchronizace času** .
 
 ### <a name="storage-accounts"></a>Účty úložiště
 Virtuální pole StorSimple může být přidruženo k jednomu účtu úložiště. Tento účet úložiště může být automaticky generovaný účet úložiště, účet ve stejném předplatném jako služba nebo účet úložiště, který se vztahuje k jinému předplatnému. Další informace najdete v tématu [Správa účtů úložiště pro virtuální pole](storsimple-virtual-array-manage-storage-accounts.md).
@@ -289,4 +289,3 @@ Pro rostoucí pracovní sadu dat, která by mohla přecházet do cloudu, může 
 
 ## <a name="see-also"></a>Viz také
 Naučte se [spravovat virtuální pole StorSimple](storsimple-virtual-array-manager-service-administration.md) prostřednictvím služby StorSimple Manager.
-

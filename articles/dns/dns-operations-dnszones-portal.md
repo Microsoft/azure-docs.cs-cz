@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: rohink
-ms.openlocfilehash: 9b6cac64d2e3def673f6d7c27e80bd64eead9e97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e17812e1116f1e625685d5a818c18e25cdb2da
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84689159"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965795"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Správa Zóny DNS v Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Rozhraní příkazového řádku Azure Classic](dns-operations-dnszones-cli-nodejs.md)
+> * [Rozhraní příkazového řádku Azure Classic](./dns-operations-dnszones-cli.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 V tomto článku se dozvíte, jak spravovat zóny DNS pomocí Azure Portal. Zóny DNS můžete spravovat i pomocí [Azure CLI](dns-operations-dnszones-cli.md) pro různé platformy nebo Azure [PowerShellu](dns-operations-dnszones.md).
@@ -50,7 +50,7 @@ V tomto článku se dozvíte, jak spravovat zóny DNS pomocí Azure Portal. Zón
 
 ## <a name="list-dns-zones"></a>Výpis zón DNS
 
-V Azure Portal přejděte na **Další služby**  >  **síťové**  >  **zóny DNS**. Každá zóna DNS je vlastním prostředkem a v tomto zobrazení se zobrazí informace, jako je například počet sad záznamů a názvové servery. **NÁZVOVÉ servery** sloupce nejsou ve výchozím zobrazení. Pokud ho chcete přidat, klikněte na **sloupce**, vyberte **Názvové servery**a potom klikněte na **Hotovo**.
+V Azure Portal přejděte na **Další služby**  >  **síťové**  >  **zóny DNS**. Každá zóna DNS je vlastním prostředkem a v tomto zobrazení se zobrazí informace, jako je například počet sad záznamů a názvové servery. **NÁZVOVÉ servery** sloupce nejsou ve výchozím zobrazení. Pokud ho chcete přidat, klikněte na **sloupce**, vyberte **Názvové servery** a potom klikněte na **Hotovo**.
 
 ![výpis zón DNS](./media/dns-operations-dnszones-portal/listzones.png)
 

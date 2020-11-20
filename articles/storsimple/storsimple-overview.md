@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9c7a2df83e9d630ce2b4635a830fb941180c758
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006018"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964996"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>Série StorSimple 8000: řešení hybridního cloudového úložiště
 
@@ -48,7 +48,7 @@ Následující tabulka popisuje některé klíčové výhody, které Microsoft A
 | Mobilita dat |Data nahraná do Microsoft Azure Cloud Services se dají z jiných lokalit vycházet z důvodů obnovení a migrace. Kromě toho můžete pomocí StorSimple nakonfigurovat cloudová zařízení StorSimple na virtuálních počítačích běžících v systému Microsoft Azure. Virtuální počítače pak můžou pomocí virtuálních zařízení přistupovat k uloženým datům pro účely testování nebo obnovení. |
 | Kontinuita podnikových procesů |Umožňuje uživatelům řady StorSimple 5000-7000 migrovat data do zařízení StorSimple 8000 series. |
 | Dostupnost na portálu Azure Government |StorSimple je k dispozici na portálu Azure Government. Další informace najdete v tématu [nasazení místního zařízení StorSimple na portálu pro státní](storsimple-8000-deployment-walkthrough-gov-u2.md)správu. |
-| Ochrana dat a dostupnost |Řada StorSimple 8000 podporuje úložiště ZRS (Zone redundantní úložiště), kromě místně redundantního úložiště (LRS) a geograficky redundantního úložiště (GRS). Podrobnosti o ZRS najdete [v tomto článku týkajícím se Azure Storage možností redundance](https://azure.microsoft.com/documentation/articles/storage-redundancy/) . |
+| Ochrana dat a dostupnost |Řada StorSimple 8000 podporuje úložiště ZRS (Zone redundantní úložiště), kromě místně redundantního úložiště (LRS) a geograficky redundantního úložiště (GRS). Podrobnosti o ZRS najdete [v tomto článku týkajícím se Azure Storage možností redundance](../storage/common/storage-redundancy.md) . |
 | Podpora pro kritické aplikace |StorSimple vám umožňuje identifikovat vhodné svazky jako místně připnuté, což zase zajišťuje, aby data vyžadovaná důležitými aplikacemi nebyla vrstvená na Cloud. Místně připnuté svazky nepodléhají latencím v cloudu ani problémům s připojením. Další informace o místně připojených svazcích najdete v tématu věnovaném [správě svazků pomocí služby StorSimple Device Manager](storsimple-8000-manage-volumes-u2.md). |
 | Nízká latence a vysoký výkon |Můžete vytvářet cloudová zařízení, která využívají vysoce výkonné a nízké latence Azure Premium Storage. Další informace o cloudových zařízeních StorSimple Premium najdete v tématu [nasazení a správa StorSimple Cloud Appliance v Azure](storsimple-8000-cloud-appliance-u2.md). |
 
@@ -258,7 +258,7 @@ Následuje seznam jiného softwaru, který se používá s StorSimple k vytvář
 Před nasazením řešení Microsoft Azure StorSimple doporučujeme projít si následující pojmy a definice.
 
 ### <a name="key-terms-and-definitions"></a>Klíčové pojmy a definice
-| Výraz (akronym nebo zkratka) | Description |
+| Výraz (akronym nebo zkratka) | Popis |
 | --- | --- |
 | záznam řízení přístupu (ACR) |Záznam přidružený ke svazku na vašem zařízení Microsoft Azure StorSimple, který určuje, kteří hostitelé se k němu mohou připojit. Stanovení vychází z kvalifikovaného názvu iSCSI (IQN) hostitelů (obsažených v ACR), které se připojují k vašemu zařízení StorSimple. |
 | AES-256 |Algoritmus 256 standard AES (Advanced Encryption Standard) (AES) pro šifrování dat při jejich přesunu do cloudu a z něj. |
@@ -315,4 +315,3 @@ Před nasazením řešení Microsoft Azure StorSimple doporučujeme projít si n
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si o [zabezpečení StorSimple](storsimple-8000-security.md).
-

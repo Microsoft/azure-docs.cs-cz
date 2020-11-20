@@ -1,14 +1,14 @@
 ---
 title: Kurz – nasazení clusteru vSphere v Azure
-description: Naučte se nasadit cluster vSphere v Azure pomocí řešení Azure VMWare.
+description: Naučte se, jak nasadit cluster vSphere v Azure pomocí řešení Azure VMware.
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: b673a67fac734c9cb63e96b6a0c3dc9182f4b994
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/19/2020
+ms.openlocfilehash: 93937f8ca0918494810885f5cb45de571a6e1529
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952280"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966305"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu řešení Azure VMware v Azure
 
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření privátního cloudu řešení Azure VMware
 > * Ověření nasazení privátního cloudu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Odpovídající práva správce a oprávnění k vytvoření privátního cloudu.
@@ -51,7 +51,7 @@ Vyberte **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete 
 
 #### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
+Pomocí příkazu `[az group create](/cli/azure/group)` vytvořte skupinu prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
 ```azurecli-interactive
 
@@ -77,12 +77,12 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Odstranění privátního cloudu řešení Azure VMware
 
-Pokud máte privátní cloud řešení Azure VMware, který už nepotřebujete, můžete ho odstranit. Privátní cloud řešení Azure VMware zahrnuje izolovanou síťovou doménu, jeden nebo více clusterů vSphere zřízených na vyhrazených uzlech serveru a obvykle mnoho virtuálních počítačů. Při odstranění privátního cloudu se odstraní všechny virtuální počítače, jejich data a clustery. Vyhrazené holé uzly se bezpečně vymažou a vrátí do bezplatného fondu. Síťová doména zřízená pro zákazníka se odstraní.  
+Pokud máte privátní cloud řešení Azure VMware, který už nepotřebujete, můžete ho odstranit. Privátní cloud řešení Azure VMware zahrnuje izolovanou síťovou doménu, jeden nebo více zřízené clusterů vSphere na vyhrazených hostitelích serverů a několik virtuálních počítačů. Při odstranění privátního cloudu se odstraní všechny virtuální počítače, jejich data a clustery. Vyhrazená holé hostitelé se bezpečně vymažou a vrátí do bezplatného fondu. Síťová doména zřízená pro zákazníka se odstraní.  
 
 > [!CAUTION]
 > Odstranění privátního cloudu je nevratná operace. Po odstranění privátního cloudu se data nedají obnovit, protože ukončí všechny spuštěné úlohy a komponenty a zničí všechna data privátního cloudu a nastavení konfigurace, včetně veřejných IP adres.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Po odstranění privátního cloudu neexistuje žádný způsob, jak obnovit virtuální počítače a jejich data. Pokud budete později potřebovat data virtuálního počítače, správce musí před odstraněním privátního cloudu nejprve zálohovat všechna data.
 

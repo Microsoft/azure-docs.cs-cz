@@ -6,16 +6,17 @@ documentationcenter: ''
 author: trinadhkotturu
 manager: gwallace
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: 9fe50388e2fc21c28ca1f04035cc7c725e4f87ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bf653bb42351c9ab4811fde695c8f821fd42d7c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275043"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966764"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Rozšíření pro systém Linux snímku virtuálního počítače pro Azure Backup
 
@@ -64,7 +65,7 @@ Následující JSON zobrazuje schéma pro rozšíření snímku virtuálního po
 
 | Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2015-06-15 | datum |
 | taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | řetězec |
 | commandStartTimeUTCTicks | 6.36458 e + 17 | řetězec |
 | locale | cs-cz | řetězec |

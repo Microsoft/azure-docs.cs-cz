@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
-ms.openlocfilehash: a33e01d68a31585e216faa51ac8af193d86c6123
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 639efab3a9eaef400b3fbe3d0b134d02f458b865
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053272"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966288"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Instalace a konfigurace adaptéru StorSimple pro SharePoint
 ## <a name="overview"></a>Přehled
@@ -53,7 +53,7 @@ Microsoft Azure StorSimple implementace RBS přináší následující výhody:
 Přesunutí obsahu objektů BLOB do systému souborů může poskytovat úspory za jiné náklady a výhody. Například použití kódu RBS může snížit potřebu nákladného úložiště vrstvy 1 a, protože zmenší databázi obsahu, kód RBS může snížit počet databází vyžadovaných ve farmě serverů SharePoint. Požadavky na úložiště ale můžou ovlivnit i jiné faktory, jako jsou limity velikosti databáze a množství obsahu bez RBS. Další informace o nákladech a výhodách používání služby RBS najdete v tématu [Plan for RBS (SharePoint Foundation 2010)][4] a [rozhodnutí o použití RBS ve službě SharePoint 2013][5].
 
 ### <a name="capacity-and-performance-limits"></a>Omezení kapacity a výkonu
-Než začnete používat RBS v řešení služby SharePoint, měli byste si být vědomi testovaných limitů výkonu a kapacity pro SharePoint Server 2010 a SharePoint Server 2013 a jak se tato omezení týkají přijatelného výkonu. Další informace najdete v tématu [hranice softwaru a omezení pro SharePoint 2013](https://technet.microsoft.com/library/cc262787.aspx).
+Než začnete používat RBS v řešení služby SharePoint, měli byste si být vědomi testovaných limitů výkonu a kapacity pro SharePoint Server 2010 a SharePoint Server 2013 a jak se tato omezení týkají přijatelného výkonu. Další informace najdete v tématu [hranice softwaru a omezení pro SharePoint 2013](/SharePoint/install/software-boundaries-and-limits-0).
 
 Před konfigurací RBS zkontrolujte následující:
 
@@ -138,8 +138,8 @@ Ujistěte se, že je farma serverů SharePoint správně nakonfigurovaná, a to 
   1. Zavřete všechny instance aplikace Internet Explorer.
   2. Spusťte Správce serveru.
   3. V levém podokně klikněte na **místní server**.
-  4. V pravém podokně vedle **Možnosti konfigurace rozšířeného zabezpečení IE**klikněte **na zapnuto**.
-  5. V části **Správci**klikněte na **vypnout**.
+  4. V pravém podokně vedle **Možnosti konfigurace rozšířeného zabezpečení IE** klikněte **na zapnuto**.
+  5. V části **Správci** klikněte na **vypnout**.
   6. Klikněte na **OK**.
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>Požadavky na vzdálené úložiště objektů BLOB (RBS)
@@ -222,11 +222,11 @@ Před odinstalací adaptéru StorSimple pro software služby SharePoint je nutn�
 #### <a name="to-move-the-blobs-back-to-the-content-databases"></a>Přesunutí objektů BLOB zpět do databází obsahu
 1. Stáhněte si všechny externované objekty.
 2. Otevřete stránku **centrální správy služby SharePoint** a přejděte do **nastavení systému**.
-3. V části **Azure StorSimple**klikněte na **konfigurovat adaptér StorSimple**.
+3. V části **Azure StorSimple** klikněte na **konfigurovat adaptér StorSimple**.
 4. Na stránce **konfigurovat adaptér StorSimple** klikněte na tlačítko **Zakázat** pod každou databází obsahu, kterou chcete odebrat z externího úložiště objektů BLOB. 
 5. Odstraňte objekty ze SharePointu a pak je znovu nahrajte.
 
-Alternativně můžete použít `RBS Migrate()` rutinu prostředí Microsoft PowerShell, která je součástí služby SharePoint. Další informace najdete v tématu [migrace obsahu do RBS nebo](https://technet.microsoft.com/library/ff628255.aspx)z něj.
+Alternativně můžete použít `RBS Migrate()` rutinu prostředí Microsoft PowerShell, která je součástí služby SharePoint. Další informace najdete v tématu [migrace obsahu do RBS nebo](/previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14))z něj.
 
 Po přesunutí objektů BLOB zpět do databáze obsahu přejděte k dalšímu kroku: [odinstalujte adaptér](#uninstall-the-adapter).
 
@@ -251,15 +251,15 @@ Po přesunutí objektů BLOB zpět do databáze obsahu SQL Server použijte jedn
 
 #### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>Postup při použití ovládacího panelu k odinstalaci adaptéru
 1. Otevřete ovládací panely a potom klikněte na **programy a funkce**.
-2. Vyberte **adaptér StorSimple pro SharePoint**a pak klikněte na **odinstalovat**.
+2. Vyberte **adaptér StorSimple pro SharePoint** a pak klikněte na **odinstalovat**.
 
 ## <a name="next-steps"></a>Další kroky
 [Přečtěte si další informace o StorSimple](storsimple-overview.md).
 
 <!--Reference links-->
 [1]: https://www.microsoft.com/download/details.aspx?id=44073
-[2]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[3]: https://technet.microsoft.com/library/ff628583(v=office.14).aspx
-[4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
-[5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[8]: https://technet.microsoft.com/library/ff943565.aspx
+[2]: /SharePoint/administration/rbs-planning
+[3]: /previous-versions/office/sharepoint-server-2010/ff628583(v=office.14)
+[4]: /previous-versions/office/sharepoint-foundation-2010/ff628569(v=office.14)
+[5]: /SharePoint/administration/rbs-planning
+[8]: /SharePoint/administration/maintain-rbs

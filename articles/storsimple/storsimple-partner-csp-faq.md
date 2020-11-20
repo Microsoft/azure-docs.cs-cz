@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 2f606a2ff036c6bc3b4e3c508632d48ae8d40f15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36b96581d98465b860b630fe2f9a8aa64cf0f64f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400039"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964928"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple for Cloud Solutions Provider – Nejčastější dotazy
 
@@ -59,7 +59,7 @@ StorSimple Virtual Array pro CSP je k dispozici na všech trzích, kde je dnes k
 Existuje více řešení:
 
 - Partneři můžou znovu prodávat virtuální pole StorSimple. 
-- Partneři můžou doručovat řešení vytvořená kolem StorSimple a dalších služeb Azure nebo softwaru třetích stran. Další informace najdete v některých možných [řešeních, která se vyskytují kolem StorSimple](https://aka.ms/storsimple-build-solutions).
+- Partneři můžou doručovat řešení vytvořená kolem StorSimple a dalších služeb Azure nebo softwaru třetích stran. Další informace najdete v některých možných [řešeních, která se vyskytují kolem StorSimple](./storsimple-disaster-recovery-using-azure-site-recovery.md).
 - Můžou také zjišťovat nové obchodní modely poskytováním spravovaných služeb.
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>Jaké jsou pobídky dostupné pro partnery StorSimple CSP? Mám nárok na všechny pobídky programu CSP?

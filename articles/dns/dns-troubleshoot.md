@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: a63a0c1e0044f5dcd6babb4941e1f4409404cdd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fae63c61949302e25c9dee2899577fa4f0d2a975
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711183"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965574"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Průvodce řešením problémů pro Azure DNS
 
 V tomto článku najdete informace o řešení běžných otázek Azure DNS.
 
-Pokud tyto kroky problém nevyřeší, můžete také vyhledat nebo odeslat svůj problém na našem webu [Microsoft Q&na stránce s dotazy pro podporu komunity](https://docs.microsoft.com/answers/topics/azure-virtual-network.html). Případně můžete otevřít žádost o podporu Azure.
+Pokud tyto kroky problém nevyřeší, můžete také vyhledat nebo odeslat svůj problém na našem webu [Microsoft Q&na stránce s dotazy pro podporu komunity](/answers/topics/azure-virtual-network.html). Případně můžete otevřít žádost o podporu Azure.
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>Nemůžu vytvořit zónu DNS
@@ -34,7 +34,7 @@ Při řešení běžných problémů zkuste použít jeden nebo několik násled
 ### <a name="recommended-articles"></a>Doporučené články
 
 * [Záznamy a zóny DNS](dns-zones-records.md)
-* [Vytvoření zóny DNS](dns-getstarted-create-dnszone-portal.md)
+* [Vytvoření zóny DNS](./dns-getstarted-portal.md)
 
 ## <a name="i-cant-create-a-dns-record"></a>Nejde mi vytvořit záznam DNS
 
@@ -50,7 +50,7 @@ Při řešení běžných problémů zkuste použít jeden nebo několik násled
 ### <a name="recommended-articles"></a>Doporučené články
 
 * [Záznamy a zóny DNS](dns-zones-records.md)
-* [Vytvoření zóny DNS](dns-getstarted-create-dnszone-portal.md)
+* [Vytvoření zóny DNS](./dns-getstarted-portal.md)
 
 
 
@@ -85,13 +85,12 @@ Ukázkové názvy záznamů SRV (služba = sip, protokol = tcp):
 ### <a name="recommended-articles"></a>Doporučené články
 
 * [Záznamy a zóny DNS](dns-zones-records.md)
-* [Vytváření sad záznamů a záznamů DNS pomocí webu Azure Portal](dns-getstarted-create-recordset-portal.md)
+* [Vytváření sad záznamů a záznamů DNS pomocí webu Azure Portal](./dns-getstarted-portal.md)
 * [Záznamy typu SRV (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
 
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o [Azure DNS zón a záznamech](dns-zones-records.md)
-* Pokud chcete začít používat Azure DNS, přečtěte si, jak [vytvořit ZÓNU DNS](dns-getstarted-create-dnszone-portal.md) a [vytvořit záznamy DNS](dns-getstarted-create-recordset-portal.md).
+* Pokud chcete začít používat Azure DNS, přečtěte si, jak [vytvořit ZÓNU DNS](./dns-getstarted-portal.md) a [vytvořit záznamy DNS](./dns-getstarted-portal.md).
 * Pokud chcete migrovat existující zónu DNS, přečtěte si, jak [importovat a exportovat soubor zóny DNS](dns-import-export.md).
-

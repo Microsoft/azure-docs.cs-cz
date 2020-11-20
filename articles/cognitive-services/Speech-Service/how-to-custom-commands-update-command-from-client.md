@@ -1,7 +1,7 @@
 ---
 title: Aktualizace příkazu z klientské aplikace
 titleSuffix: Azure Cognitive Services
-description: aktualizace příkazu z klientské aplikace
+description: Naučte se aktualizovat příkaz z klientské aplikace.
 services: cognitive-services
 author: encorona-ms
 manager: yetian
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: 1bffb09d0f49bbd0059e8a528d67bfe215f0650d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 765bcbd0521f93bacb0799595e6fbef565d0f313
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654339"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963619"
 ---
-# <a name="update-a-command-from-the-client"></a>Aktualizace příkazu z klienta
+# <a name="update-a-command-from-a-client-app"></a>Aktualizace příkazu z klientské aplikace
 
-V tomto článku se dozvíte, jak aktualizovat průběžný příkaz z klientské aplikace.
+V tomto článku se dozvíte, jak aktualizovat probíhající příkaz z klientské aplikace.
 
 ## <a name="prerequisites"></a>Požadavky
 > [!div class = "checklist"]
@@ -27,9 +27,9 @@ V tomto článku se dozvíte, jak aktualizovat průběžný příkaz z klientsk�
 
 ## <a name="update-the-state-of-a-command"></a>Aktualizace stavu příkazu
 
-Pokud vaše klientská aplikace vyžaduje aktualizaci stavu průběžného příkazu bez hlasového vstupu, můžete odeslat událost pro aktualizaci příkazu.
+Pokud vaše klientská aplikace vyžaduje, abyste aktualizovali stav průběžného příkazu bez hlasového vstupu, můžete odeslat událost pro aktualizaci příkazu.
 
-K tomu, aby se tento scénář mohl aktualizovat, aby se aktualizoval stav probíhajícího příkazu (TurnOnOff), můžeme odeslat následující aktivitu události. 
+Pro ilustraci tohoto scénáře odešlete následující aktivitu události pro aktualizaci stavu probíhajícího příkazu ( `TurnOnOff` ): 
 
 ```json
 {
@@ -49,36 +49,36 @@ K tomu, aby se tento scénář mohl aktualizovat, aby se aktualizoval stav prob�
 }
 ```
 
-Umožňuje zkontrolovat klíčové atributy této aktivity.
+Pojďme si projít klíčové atributy této aktivity:
 
 | Atribut | Vysvětlení |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **textový** | Aktivita je typu Event a název události musí být "RemoteUpdate". |
-| **value** | Atribut "value" obsahuje atributy vyžadované k aktualizaci aktuálního příkazu. |
-| **updatedCommand** | Atribut "updatedCommand" obsahuje název příkazu, "updatedParameters" je mapa s názvem parametrů a jejich aktualizovanými hodnotami. |
-| **operaci** | Pokud je potřeba zrušit probíhající příkaz, nastavte atribut Cancel na hodnotu true. |
-| **updatedGlobalParameters** | Atribut "updatedGlobalParameters" je také mapa, podobně jako "updatedParameters", ale používá se pro globální parametry. |
-| **processTurn** | Pokud je potřeba po odeslání aktivity znovu zpracovat, nastavte atribut "processTurn" na hodnotu true. |
+| **textový** | Aktivita je typu `"event"` a musí být název události `"RemoteUpdate"` . |
+| **value** | Atribut `"value"` obsahuje atributy požadované k aktualizaci aktuálního příkazu. |
+| **updatedCommand** | Atribut `"updatedCommand"` obsahuje název příkazu. V rámci tohoto atributu `"updatedParameters"` je mapa s názvy parametrů a jejich aktualizovanými hodnotami. |
+| **operaci** | Pokud je potřeba zrušit probíhající příkaz, nastavte atribut `"cancel"` na `true` . |
+| **updatedGlobalParameters** | Atribut `"updatedGlobalParameters"` je mapa stejně jako `"updatedParameters"` , ale používá se pro globální parametry. |
+| **processTurn** | Pokud je potřeba po odeslání aktivity znovu zpracovat, nastavte atribut `"processTurn"` na `true` . |
 
-Tento scénář můžete otestovat na portálu Custom Commands.
+Tento scénář můžete vyzkoušet na portálu Custom Commands:
 
-1. Otevřete aplikaci Vlastní příkazy, kterou jste si vytvořili dříve. 
-1. Klikněte na výuka a pak na test.
-1. Poslat zprávu "Zapnout".
-1. Otevřete postranní panel a klikněte na Editor aktivit.
-1. Zadejte a odešlete událost RemoteCommand určenou v předchozí části.
+1. Otevřete aplikaci Custom Commands, kterou jste vytvořili dříve. 
+1. Vyberte možnost **výuka** a potom **test**.
+1. Odeslat `turn` .
+1. Otevřete postranní panel a vyberte **Editor aktivit**.
+1. Zadejte a odešlete `RemoteCommand` událost určenou v předchozí části.
     > [!div class="mx-imgBorder"]
-    > ![Odeslat vzdálený příkaz](media/custom-commands/send-remote-command-activity.png)
+    > ![Snímek obrazovky zobrazující událost vzdáleného příkazu](media/custom-commands/send-remote-command-activity.png)
 
-Všimněte si, že hodnota parametru "(OnOff)" byla nastavena na "on" pomocí aktivity z klienta namísto hlasu nebo textu.
+Všimněte si, jak se hodnota parametru `"OnOff"` nastavila `"on"` prostřednictvím aktivity z klienta namísto hlasu nebo textu.
 
 ## <a name="update-the-catalog-of-the-parameter-for-a-command"></a>Aktualizace katalogu parametru pro příkaz
 
 Když nakonfigurujete seznam platných možností pro parametr, hodnoty pro parametr jsou globálně definovány pro aplikaci. 
 
-V našem příkladu bude mít parametr SubjectDevice pevný seznam podporovaných hodnot bez ohledu na konverzaci.
+V našem příkladu `SubjectDevice` bude mít parametr pevný seznam podporovaných hodnot bez ohledu na konverzaci.
 
-V případě, že potřebujete přidat nové položky do katalogu parametrů na každou konverzaci, můžete odeslat následující aktivitu.
+Pokud chcete přidat nové položky do katalogu parametrů na každou konverzaci, můžete odeslat následující aktivitu:
 
 ```json
 {
@@ -103,48 +103,49 @@ V případě, že potřebujete přidat nové položky do katalogu parametrů na 
   }
 }
 ```
-S touto aktivitou jsme do katalogu parametru "SubjectDevice" v příkazu "TurnOnOff" přidali položku "stereo".
+S touto aktivitou jste přidali záznam pro `"stereo"` do katalogu parametru `"SubjectDevice"` v příkazu `"TurnOnOff"` .
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-commands/update-catalog-with-remote-activity.png" alt-text="Aktualizovat katalog":::
+> :::image type="content" source="./media/custom-commands/update-catalog-with-remote-activity.png" alt-text="Snímek obrazovky, který ukazuje aktualizaci katalogu.":::
 
-Poznamenejte si několik věcí.
-1. Tuto aktivitu musíte poslat jenom jednou (v ideálním případě hned po spuštění připojení).
-1. Po odeslání této aktivity byste měli počkat na odeslání služby Event ParameterCatalogsUpdated zpět do klienta.
+Poznamenejte si několik věcí:
+- Tuto aktivitu musíte poslat jenom jednou (v ideálním případě hned po spuštění připojení).
+- Po odeslání této aktivity byste měli počkat, až se událost `ParameterCatalogsUpdated` pošle zpátky do klienta.
 
-## <a name="add-additional-context-from-the-client-application"></a>Přidat další kontext z klientské aplikace
+## <a name="add-more-context-from-the-client-application"></a>Přidat další kontext z klientské aplikace
 
 Můžete nastavit další kontext z klientské aplikace na každou konverzaci, kterou můžete později použít ve své aplikaci pro vlastní příkazy. 
 
 Zamyslete se například na situaci, kdy chcete poslat ID a název zařízení připojeného k aplikaci Custom Commands.
 
-K otestování tohoto scénáře vytvoříme nový příkaz v naší aktuální aplikaci.
-1. Vytvořte nový příkaz s názvem GetDeviceInfo.
-1. Přidejte ukázkovou větu s "získat informace o zařízení".
-1. V pravidle dokončení dokončeno přidejte akci odeslat odezvu na řeč, která obsahuje atributy instance třídy ClientContext.
-    > ![Odeslat odezvu řeči pomocí kontextu](media/custom-commands/send-speech-response-context.png)
+K otestování tohoto scénáře vytvoříme v aktuální aplikaci nový příkaz:
+1. Vytvořte nový příkaz s názvem `GetDeviceInfo` .
+1. Přidejte ukázkovou větu `get device info` .
+1. **V pravidle** dokončení přidejte akci **Odeslat hlasovou odezvu** , která obsahuje atributy `clientContext` .
+   ![Snímek obrazovky, který zobrazuje odpověď pro odeslání řeči pomocí kontextu](media/custom-commands/send-speech-response-context.png)
 1. Uložte, školení a otestujte svoji aplikaci.
 1. V okně testování odešlete aktivitu pro aktualizaci kontextu klienta.
-    > ```json
-    >{
-    >   "type": "event",
-    >   "name": "RemoteUpdate",
-    >   "value": {
-    >     "clientContext": {
-    >       "deviceId": "12345",
-    >       "deviceName": "My device"
-    >     },
-    >     "processTurn": false
-    >   }
-    >}
-    > ```
-1. Pošle text "získat informace o zařízení".
-    > ![Aktivita odeslání kontextu klienta](media/custom-commands/send-client-context-activity.png)
 
-Všimněte si pár věcí.
-1. Tuto aktivitu musíte poslat jenom jednou (v ideálním případě hned po spuštění připojení).
-1. Pro instance třídy ClientContext můžete použít složité objekty.
-1. Instance třídy ClientContext můžete použít v odpovědích na řeč pro posílání aktivit a při volání webových koncových bodů.
+    ```json
+    {
+       "type": "event",
+       "name": "RemoteUpdate",
+       "value": {
+         "clientContext": {
+           "deviceId": "12345",
+           "deviceName": "My device"
+         },
+         "processTurn": false
+       }
+    }
+    ```
+1. Odešlete text `get device info` .
+   ![Snímek obrazovky, který zobrazuje aktivitu pro odeslání kontextu klienta.](media/custom-commands/send-client-context-activity.png)
+
+Všimněte si pár věcí:
+- Tuto aktivitu musíte poslat jenom jednou (v ideálním případě hned po spuštění připojení).
+- Pro můžete použít komplexní objekty `clientContext` .
+- Můžete použít `clientContext` v odpovědích na řeč pro posílání aktivit a volání webových koncových bodů.
 
 ## <a name="next-steps"></a>Další kroky
 

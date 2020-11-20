@@ -3,16 +3,17 @@ title: Připojení Azure ExpressRoute pomocí cloudové infrastruktury Oracle | 
 description: Připojení Azure ExpressRoute pomocí Oracle Cloud Infrastructure (OCI) FastConnect pro povolení mezicloudových řešení Oracle pro aplikace
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: rogardle
 ms.reviewer: cynthn
-ms.openlocfilehash: e932bf7381e1246f4b489e7d564cf5486c3ec635
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2717ba307cac82465e0c5df996ef3b668af5e7d4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996233"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963704"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Nastavení přímého vzájemného propojení mezi cloudovou infrastrukturou Azure a Oracle  
 
@@ -43,7 +44,7 @@ Následující obrázek ukazuje podrobný přehled propojení:
     * Okruh Azure ExpressRoute poskytuje podrobné možnosti šířky pásma, zatímco FastConnect podporuje 1, 2, 5 nebo 10 GB/s. Proto se doporučuje zvolit jednu z těchto možností pro porovnání šířky pásma v rámci ExpressRoute.
 
     ![Vytvořit okruh ExpressRoute](media/configure-azure-oci-networking/exr-create-new.png)
-1. Poznamenejte si **klíč služby**ExpressRoute. Klíč je potřeba zadat při konfiguraci okruhu FastConnect.
+1. Poznamenejte si **klíč služby** ExpressRoute. Klíč je potřeba zadat při konfiguraci okruhu FastConnect.
 
     ![Klíč služby ExpressRoute](media/configure-azure-oci-networking/exr-service-key.png)
 
@@ -57,7 +58,7 @@ Následující obrázek ukazuje podrobný přehled propojení:
     * V části Konfigurace FastConnect jako zprostředkovatel vyberte **Microsoft Azure: ExpressRoute** .
     * Vyberte bránu dynamického směrování, kterou jste zřídili v předchozím kroku.
     * Vyberte šířku pásma, která se má zřídit. Pro zajištění optimálního výkonu musí šířka pásma odpovídat šířce pásma vybrané při vytváření okruhu ExpressRoute.
-    * Do pole **klíč služby poskytovatele**vložte klíč služby ExpressRoute.
+    * Do pole **klíč služby poskytovatele** vložte klíč služby ExpressRoute.
     * Použijte první/30 privátního prostoru IP adres Carved v předchozím kroku pro **primární IP adresu protokolu BGP** a druhý/30 privátní adresní prostor IP adres pro **sekundární IP adresu protokolu BGP** .
         * Přiřaďte první IP adresu dvou rozsahů pro IP adresu protokolu BGP Oracle (primární a sekundární) a druhou adresu IP adrese protokolu BGP zákazníka (z perspektivy FastConnect). První dostupná IP adresa je druhá IP adresa v adresním prostoru/30 (první IP adresa je vyhrazená Microsoftem).
     * Klikněte na **Vytvořit**.

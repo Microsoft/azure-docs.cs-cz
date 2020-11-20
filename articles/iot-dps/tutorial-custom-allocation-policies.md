@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e20183356655668750cb1450338d4c8af1ee2d8c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4cab1765a387bbae61c9c242a8e7a1ca881ea1f5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951702"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966628"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Kurz: použití vlastních zásad přidělování se službou Device Provisioning Service (DPS)
 
@@ -40,13 +40,13 @@ V tomto kurzu provedete následující akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * V tomto článku se předpokládá, že jste dokončili kroky v části [nastavení IoT Hub Device Provisioning Service s Azure Portal](./quick-setup-auto-provision.md) k vytvoření instance IoT Hub a DPS.
 
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
-* Pro vývojové prostředí Windows se vyžaduje [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou [vývoj desktopových aplikací pomocí C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) . Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
+* Pro vývojové prostředí Windows se vyžaduje [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou [vývoj desktopových aplikací pomocí C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) . Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
 
 * V případě systému Linux nebo macOS si přečtěte příslušnou část v tématu [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k [sadě SDK pro Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) .
 
@@ -55,11 +55,11 @@ V tomto kurzu provedete následující akce:
 
 ## <a name="create-the-custom-allocation-function"></a>Vytvoření vlastní alokační funkce
 
-V této části vytvoříte funkci Azure, která implementuje vaše vlastní zásady přidělování. Tato funkce určuje, jestli má být zařízení zaregistrované ve vašem IoT Hub na základě toho, jestli jeho ID registrace obsahuje předponu řetězce **Contoso-ininformační**zprávy.
+V této části vytvoříte funkci Azure, která implementuje vaše vlastní zásady přidělování. Tato funkce určuje, jestli má být zařízení zaregistrované ve vašem IoT Hub na základě toho, jestli jeho ID registrace obsahuje předponu řetězce **Contoso-ininformační** zprávy.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Na domovské stránce vyberte **+ vytvořit prostředek**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Na domovské stránce vyberte **+ vytvořit prostředek**.
 
-2. Do vyhledávacího pole *Hledat na Marketplace* zadejte "Function App". V rozevíracím seznamu vyberte **Function App**a pak vyberte **vytvořit**.
+2. Do vyhledávacího pole *Hledat na Marketplace* zadejte "Function App". V rozevíracím seznamu vyberte **Function App** a pak vyberte **vytvořit**.
 
 3. Na **Function App** vytvořit stránku na kartě **základy** zadejte následující nastavení pro novou aplikaci Function App a vyberte **zkontrolovat + vytvořit**:
 
@@ -181,7 +181,7 @@ V této části vytvoříte novou skupinu registrací, která používá vlastn�
 
 2. V levém podokně vyberte **spravovat registrace** a pak v horní části stránky vyberte tlačítko **Přidat skupinu** registrací.
 
-3. Do pole **Přidat skupinu**registrací zadejte informace v následující tabulce a klikněte na tlačítko **Uložit** .
+3. Do pole **Přidat skupinu** registrací zadejte informace v následující tabulce a klikněte na tlačítko **Uložit** .
 
     | Pole | Popis a/nebo navrhovaná hodnota |
     | :---- | :----------------------------- |
@@ -296,7 +296,7 @@ Tato část se orientuje k pracovní stanici založené na systému Windows. Př
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    Pokud nenajde `cmake` kompilátor jazyka C++, může při spuštění příkazu dojít k chybám sestavení. Pokud k tomu dojde, zkuste spustit příkaz v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
+    Pokud nenajde `cmake` kompilátor jazyka C++, může při spuštění příkazu dojít k chybám sestavení. Pokud k tomu dojde, zkuste spustit příkaz v [příkazovém řádku sady Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs).
 
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
 
@@ -347,7 +347,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Ve `main()` funkci Najděte volání `Prov_Device_Register_Device()` . Těsně před tímto voláním přidejte následující řádky kódu, které slouží [`Prov_Device_Set_Provisioning_Payload()`](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) k předání vlastní datové části JSON během zřizování. Dá se použít k poskytnutí dalších informací vlastním funkcím přidělení. To se dá také použít k předání typu zařízení místo prověření ID registrace.
+6. Ve `main()` funkci Najděte volání `Prov_Device_Register_Device()` . Těsně před tímto voláním přidejte následující řádky kódu, které slouží [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) k předání vlastní datové části JSON během zřizování. Dá se použít k poskytnutí dalších informací vlastním funkcím přidělení. To se dá také použít k předání typu zařízení místo prověření ID registrace.
 
     ```c
     // An example custom payload
@@ -378,9 +378,9 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
     prov_dev_set_symmetric_key_info("contoso-toaster-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
     ```
 
-    Soubor uložte.
+    Uložte soubor.
 
-2. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano**a znovu sestavte projekt před spuštěním.
+2. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano** a znovu sestavte projekt před spuštěním.
 
     Následující text je příkladem protokolování výstupu z vlastního kódu funkce přidělení spuštěného pro zařízení informačního zařízení. Všimněte si, že centrum se úspěšně vybralo pro informační zařízení. Všimněte si také `payload` člena, který obsahuje vlastní obsah JSON, který jste přidali do kódu. To je k dispozici pro váš kód pro použití v rámci `deviceRuntimeContext` .
 
@@ -423,7 +423,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
     prov_dev_set_symmetric_key_info("contoso-heatpump-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
 
-    Soubor uložte.
+    Uložte soubor.
 
 2. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano** pro opětovné sestavení projektu před spuštěním.
 

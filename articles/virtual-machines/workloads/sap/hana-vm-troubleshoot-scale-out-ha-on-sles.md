@@ -7,17 +7,18 @@ author: hermanndms
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cf18e2d375d7a45c3641876b8a3ed5974882927
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088304"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965421"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Ověření a řešení potíží SAP HANA nastavení vysoké dostupnosti škálování na SLES 12 SP3 
 
@@ -85,7 +86,7 @@ Když použijete příkaz pro **migraci CRM** , nezapomeňte vyčistit konfigura
 
 ## <a name="multiple-subnets-and-vnics"></a>Několik podsítí a virtuální síťové adaptéry
 
-Po SAP HANA doporučení k síti se v jedné virtuální síti Azure vytvořily tři podsítě. SAP HANA horizontálního navýšení kapacity v Azure musí být nainstalované v nesdíleném režimu. To znamená, že každý uzel používá pro **/Hana/data** a **/Hana/log**svazky na místních discích. Vzhledem k tomu, že uzly používají pouze svazky na místních discích, není nutné definovat samostatnou podsíť pro úložiště:
+Po SAP HANA doporučení k síti se v jedné virtuální síti Azure vytvořily tři podsítě. SAP HANA horizontálního navýšení kapacity v Azure musí být nainstalované v nesdíleném režimu. To znamená, že každý uzel používá pro **/Hana/data** a **/Hana/log** svazky na místních discích. Vzhledem k tomu, že uzly používají pouze svazky na místních discích, není nutné definovat samostatnou podsíť pro úložiště:
 
 - 10.0.2.0/24 pro SAP HANA komunikaci mezi uzly
 - 10.0.1.0/24 pro replikaci systému SAP HANA (HSR)
@@ -172,7 +173,7 @@ Konfigurační soubor **Corosync** musí být správný na každém uzlu v clust
 
 Příkladem je obsah **Corosync. conf** z testovacího systému.
 
-První část je **Totem**, jak je popsáno v tématu [instalace clusteru](./high-availability-guide-suse-pacemaker.md#cluster-installation), krok 11. Hodnotu **mcastaddr**můžete ignorovat. Stačí zachovat existující položku. Položky pro **token** a **konsensu** musí být nastaveny podle [Microsoft Azure SAP HANA dokumentaci][sles-pacemaker-ha-guide].
+První část je **Totem**, jak je popsáno v tématu [instalace clusteru](./high-availability-guide-suse-pacemaker.md#cluster-installation), krok 11. Hodnotu **mcastaddr** můžete ignorovat. Stačí zachovat existující položku. Položky pro **token** a **konsensu** musí být nastaveny podle [Microsoft Azure SAP HANA dokumentaci][sles-pacemaker-ha-guide].
 
 <pre><code>
 totem {
@@ -202,7 +203,7 @@ totem {
 }
 </code></pre>
 
-Druhá část, **protokolování**se nezměnila z daných výchozích hodnot:
+Druhá část, **protokolování** se nezměnila z daných výchozích hodnot:
 
 <pre><code>
 logging {
@@ -255,7 +256,7 @@ nodelist {
 }
 </code></pre>
 
-V poslední části **kvora**je důležité nastavit hodnotu pro **expected_votes** správně. Musí to být počet uzlů, včetně uzlu většina maker. A hodnota **two_node** musí být **0**. Položku úplně neodstraňujte. Stačí nastavit hodnotu na **0**.
+V poslední části **kvora** je důležité nastavit hodnotu pro **expected_votes** správně. Musí to být počet uzlů, včetně uzlu většina maker. A hodnota **two_node** musí být **0**. Položku úplně neodstraňujte. Stačí nastavit hodnotu na **0**.
 
 <pre><code>
 quorum {
@@ -455,7 +456,7 @@ Během testování a ověřování se po restartování virtuálního počítač
 3. Posuňte se na pravé straně k **iniciátoru iSCSI** a vyberte ho.
 4. Na další obrazovce na kartě **Služba** vidíte jedinečný název iniciátoru pro uzel.
 5. Nad názvem iniciátoru zajistěte, aby byla **počáteční hodnota služby** nastavena **při spuštění**.
-6. Pokud není, nastavte ji na, pokud se **spouští** místo **ručního**spuštění.
+6. Pokud není, nastavte ji na, pokud se **spouští** místo **ručního** spuštění.
 7. Dále přepněte horní kartu na **propojené cíle**.
 8. Na obrazovce **připojené cíle** by se měla zobrazit položka pro zařízení SBD, jako je tato ukázka: **10.0.0.19:3260 IQN. 2006-04. dbhso. local: dbhso**.
 9. Ověřte, zda je **počáteční** hodnota nastavena **na hodnotu při spuštění**.
@@ -550,7 +551,7 @@ Last change: Wed Sep 12 07:46:54 2018 by root via cibadmin on hso-hana-vm-s2-1
 7 nodes configured
 17 resources configured
 
-              *** Resource management is DISABLED ***
+              **_ Resource management is DISABLED _*_
   The cluster will not attempt to start, stop or recover services
 
 Online: [ hso-hana-dm hso-hana-vm-s1-0 hso-hana-vm-s1-1 hso-hana-vm-s1-2 hso-hana-vm-s2-0 hso-hana-vm-s2-1 hso-hana-vm-s2-2 ]
@@ -586,7 +587,7 @@ crm configure property maintenance-mode=false
 </code></pre>
 
 
-Jiný příkaz **CRM** načte úplnou konfiguraci clusteru do editoru, takže ho můžete upravit. Po uložení změn cluster spustí příslušné akce:
+Další příkaz _ *CRM** načte úplnou konfiguraci clusteru do editoru, takže ho můžete upravit. Po uložení změn cluster spustí příslušné akce:
 
 <pre><code>
 crm configure edit
@@ -680,9 +681,9 @@ watch SAPHanaSR-showAttr
 
 Také pomáhá se zobrazením stavu SAP HANA na šířku ze skriptu SAP Python. Instalační program clusteru hledá tuto hodnotu stavu. Pokud se domníváte, že dojde k selhání pracovního uzlu, je to jasné. Pokud dojde k výpadku pracovního uzlu, SAP HANA okamžitě nevrátí chybu pro stav celého systému s možností horizontálního rozšíření kapacity. 
 
-Dojde k několika opakovaným pokusům, aby nedocházelo k nepotřebným selháním. Cluster se chová jenom v případě, že se stav změní z **OK**, vrátí hodnotu **4**na **chybu**a vrátí hodnotu **1**. Takže je správné, pokud výstup z **SAPHanaSR-showAttr** zobrazuje virtuální počítač se stavem **offline**. Zatím ale neexistuje žádná aktivita pro přepnutí primárního a sekundárního. Žádná aktivita clusteru se neaktivuje, dokud SAP HANA nevrátí chybu.
+Dojde k několika opakovaným pokusům, aby nedocházelo k nepotřebným selháním. Cluster se chová jenom v případě, že se stav změní z **OK**, vrátí hodnotu **4** na **chybu** a vrátí hodnotu **1**. Takže je správné, pokud výstup z **SAPHanaSR-showAttr** zobrazuje virtuální počítač se stavem **offline**. Zatím ale neexistuje žádná aktivita pro přepnutí primárního a sekundárního. Žádná aktivita clusteru se neaktivuje, dokud SAP HANA nevrátí chybu.
 
-Můžete monitorovat stav SAP HANA krajiny na šířku jako text ** \<HANA SID\> ADM** , a to tak, že zavoláte skript SAP Python. Možná budete muset přizpůsobit cestu:
+Můžete monitorovat stav SAP HANA krajiny na šířku jako text **\<HANA SID\> ADM** , a to tak, že zavoláte skript SAP Python. Možná budete muset přizpůsobit cestu:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -768,7 +769,7 @@ Projděte si proces převzetí služeb při selhání pomocí příkazu **SAPHan
 watch SAPHanaSR-showAttr
 </code></pre>
 
-Výstup by měl ukazovat na ruční převzetí služeb při selhání. Byl **povýšen**předchozí sekundární hlavní uzel v této ukázce, **hSo-Hana-VM-S2-0**. Bývalá primární lokalita se zastavila, **LSS** hodnota **1** pro bývalé primární hlavní uzel **hSo-Hana-VM-S1-0**: 
+Výstup by měl ukazovat na ruční převzetí služeb při selhání. Byl **povýšen** předchozí sekundární hlavní uzel v této ukázce, **hSo-Hana-VM-S2-0**. Bývalá primární lokalita se zastavila, **LSS** hodnota **1** pro bývalé primární hlavní uzel **hSo-Hana-VM-S1-0**: 
 
 <pre><code>
 Global cib-time                 prim  sec srHook sync_state
@@ -967,7 +968,7 @@ Výstup **hb_report** můžete také nahrát do Hawk v části **Historie**, jak
 
 ![Hawk výstup nahrávání hb_report](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
-Pomocí **Průzkumníka historie**pak můžete projít všechny přechody clusteru zahrnuté do výstupního **hb_report** :
+Pomocí **Průzkumníka historie** pak můžete projít všechny přechody clusteru zahrnuté do výstupního **hb_report** :
 
 ![Hawk přechody ve výstupu hb_report](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 

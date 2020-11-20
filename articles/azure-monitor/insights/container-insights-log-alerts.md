@@ -3,12 +3,12 @@ title: Protokolování výstrah z Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak vytvořit vlastní výstrahy protokolu pro paměť a využití procesoru z Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: ddf898978bdaf51cb81a95c3209855c51212280f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e9b0e01ca4c0ccb24d0d1b04a4d17ec06db253b6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995262"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966247"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Jak vytvořit výstrahy protokolu z Azure Monitor pro kontejnery
 
@@ -17,7 +17,7 @@ Azure Monitor pro kontejnery monitorují výkon úloh kontejneru, které jsou na
 - Pokud využití procesoru nebo paměti na uzlech clusteru překročí prahovou hodnotu
 - Pokud využití procesoru nebo paměti na jakémkoli kontejneru v rámci kontroleru překročí prahovou hodnotu v porovnání s limitem nastaveným na odpovídajícím prostředku
 - Počet *uzlů stavu pro* stav
-- Počet *neúspěšných*, *nevyřízených*, *neznámých*, *spuštěných*nebo *úspěšných* fází pod sebou
+- Počet *neúspěšných*, *nevyřízených*, *neznámých*, *spuštěných* nebo *úspěšných* fází pod sebou
 - Pokud volné místo na disku na uzlech clusteru překročí prahovou hodnotu
 
 Pokud chcete upozornit na vysoké využití procesoru nebo paměti nebo je málo volného místa na disku v uzlech clusteru, použijte dotazy, které jsou k dispozici k vytvoření výstrahy metriky nebo upozornění na měření metriky. I když výstrahy metrik mají nižší latenci než výstrahy protokolu, výstrahy protokolu poskytují pokročilé dotazy a větší sofistikovanější. Dotazy na výstrahy protokolu porovnávají hodnotu DateTime s použitím operátoru *Now* a vrátí jednu hodinu. (Azure Monitor pro kontejnery ukládají všechna data ve formátu koordinovaného světového času (UTC).)
@@ -207,14 +207,14 @@ KubeNodeInventory
             NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
 | order by ClusterName asc, Computer asc, TimeGenerated desc
 ```
-Následující dotaz vrátí hodnotu pod počty fází na základě všech fází: *selhání*, *čeká*, *Neznámý*, *spuštěný*nebo *úspěšný*.  
+Následující dotaz vrátí hodnotu pod počty fází na základě všech fází: *selhání*, *čeká*, *Neznámý*, *spuštěný* nebo *úspěšný*.  
 
 ```kusto
-let endDateTime = now();
-    let startDateTime = ago(1h);
-    let trendBinSize = 1m;
-    let clusterName = '<your-cluster-name>';
-    KubePodInventory
+let endDateTime = now(); 
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let clusterName = '<your-cluster-name>';
+KubePodInventory
     | where TimeGenerated < endDateTime
     | where TimeGenerated >= startDateTime
     | where ClusterName == clusterName
@@ -224,13 +224,13 @@ let endDateTime = now();
         KubePodInventory
         | where TimeGenerated < endDateTime
         | where TimeGenerated >= startDateTime
-        | distinct ClusterName, Computer, PodUid, TimeGenerated, PodStatus
+        | summarize PodStatus=any(PodStatus) by TimeGenerated, PodUid, ClusterId
         | summarize TotalCount = count(),
                     PendingCount = sumif(1, PodStatus =~ 'Pending'),
                     RunningCount = sumif(1, PodStatus =~ 'Running'),
                     SucceededCount = sumif(1, PodStatus =~ 'Succeeded'),
                     FailedCount = sumif(1, PodStatus =~ 'Failed')
-                 by ClusterName, bin(TimeGenerated, trendBinSize)
+                by ClusterName, bin(TimeGenerated, trendBinSize)
     ) on ClusterName, TimeGenerated
     | extend UnknownCount = TotalCount - PendingCount - RunningCount - SucceededCount - FailedCount
     | project TimeGenerated,
@@ -244,7 +244,7 @@ let endDateTime = now();
 ```
 
 >[!NOTE]
->Chcete-li upozornit na některé fáze pod, jako je například *nevyřízená*, *neúspěšná*nebo *neznámá*, upravte poslední řádek dotazu. Například pro upozornění na *FailedCount* použití: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
+>Chcete-li upozornit na některé fáze pod, jako je například *nevyřízená*, *neúspěšná* nebo *neznámá*, upravte poslední řádek dotazu. Například pro upozornění na *FailedCount* použití: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
 Následující dotaz vrátí disky uzlů clusteru, které překračují 90% volného místa. Chcete-li získat ID clusteru, nejprve spusťte následující dotaz a zkopírujte hodnotu z `ClusterId` vlastnosti:
 
@@ -281,7 +281,7 @@ Tato část vás provede vytvořením pravidla výstrahy měření metriky pomoc
 >Následující postup vytvoření pravidla výstrahy pro využití prostředků kontejneru vyžaduje, abyste přešli na nové rozhraní API upozornění protokolu, jak je popsáno v tématu [předvoleb rozhraní API pro protokolování výstrah](../platform/alerts-log-api-switch.md).
 >
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V Azure Portal vyhledejte a vyberte **Log Analytics pracovní prostory**.
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor podporující Azure Monitor pro kontejnery. 
 4. V podokně na levé straně vyberte **protokoly** a otevřete stránku Azure monitor protokoly. Tato stránka slouží k zápisu a provádění dotazů protokolu Azure.
@@ -292,9 +292,9 @@ Tato část vás provede vytvořením pravidla výstrahy měření metriky pomoc
 9. Výstrahy nakonfigurujte následujícím způsobem:
 
     1. Z rozevíracího seznamu na **základě** vyberte **měření metriky**. Měření metriky vytvoří výstrahu pro každý objekt v dotazu, který má hodnotu nad naši zadanou prahovou hodnotou.
-    1. Jako **podmínku**vyberte **větší než**a jako počáteční **hodnotu prahové hodnoty** počátečního směrného plánu pro výstrahy využití procesoru a paměti zadejte **75** . Pro upozornění na nedostatek místa na disku zadejte **90**. Nebo zadejte jinou hodnotu, která vyhovuje vašim kritériím.
-    1. V části **Výstraha aktivační události na základě** oddílu vyberte **po sobě jdoucí porušení**. V rozevíracím seznamu vyberte **větší než**a zadejte **2**.
-    1. Chcete-li nakonfigurovat výstrahu pro využití procesoru nebo paměti kontejneru, vyberte v části **agregace zapnuto**možnost **ContainerName**. Pokud chcete konfigurovat pro upozornění na nízký disk uzlu clusteru, vyberte **ClusterId**.
+    1. Jako **podmínku** vyberte **větší než** a jako počáteční **hodnotu prahové hodnoty** počátečního směrného plánu pro výstrahy využití procesoru a paměti zadejte **75** . Pro upozornění na nedostatek místa na disku zadejte **90**. Nebo zadejte jinou hodnotu, která vyhovuje vašim kritériím.
+    1. V části **Výstraha aktivační události na základě** oddílu vyberte **po sobě jdoucí porušení**. V rozevíracím seznamu vyberte **větší než** a zadejte **2**.
+    1. Chcete-li nakonfigurovat výstrahu pro využití procesoru nebo paměti kontejneru, vyberte v části **agregace zapnuto** možnost **ContainerName**. Pokud chcete konfigurovat pro upozornění na nízký disk uzlu clusteru, vyberte **ClusterId**.
     1. V části **vyhodnocováno na základě** oddílu nastavte hodnotu **perioda** na **60 minut**. Pravidlo se spustí každých 5 minut a vrátí záznamy, které byly vytvořeny během poslední hodiny od aktuálního času. Nastavení časového období pro velké účty oken za účelem potenciální latence dat. Také zajišťuje, že dotaz vrátí data, aby se předešlo nezápornému falešně pozitivnímu upozornění, že výstraha nebude nikdy aktivována.
 
 10. Vyberte **Hotovo** a dokončete pravidlo výstrahy.

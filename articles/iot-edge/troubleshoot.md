@@ -4,16 +4,16 @@ description: V tomto článku se naučíte používat standardní diagnostické 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 540c4394a73ceff1f68a613561c034ca3bc7efc5
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: daae45c9eca45022225ea47aa048815d5eff70c4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046566"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964503"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Řešení potíží s IoT Edgem zařízením
 
@@ -46,6 +46,8 @@ Nástroj pro řešení potíží spustí mnoho kontrol, které jsou seřazené d
 * *Kontroly připojení* ověřují, zda IoT Edge runtime má přístup k portům na hostitelském zařízení a že se všechny součásti IoT Edge mohou připojit k IoT Hub. Tato sada kontrol vrátí chyby, pokud je zařízení IoT Edge za proxy serverem.
 * *Kontroly připravenosti na produkci* hledají Doporučené provozní postupy, jako je například stav certifikátů certifikační autorita zařízení (CA) a konfigurace souboru protokolu modulu.
 
+Nástroj pro kontrolu IoT Edge používá ke spuštění diagnostiky kontejner. Image kontejneru `mcr.microsoft.com/azureiotedge-diagnostics:latest` je dostupná prostřednictvím [Microsoft Container Registry](https://github.com/microsoft/containerregistry). Pokud potřebujete spustit kontrolu zařízení bez přímého přístupu k Internetu, zařízení budou potřebovat přístup k imagi kontejneru.
+
 Informace o všech diagnostických kontrolách, které tento nástroj spouští, včetně toho, co dělat, pokud se zobrazí chyba nebo upozornění, najdete v tématu [IoT Edge řešení potíží](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
 
 ## <a name="gather-debug-information-with-support-bundle-command"></a>Shromažďování informací o ladění pomocí příkazu support-komplet
@@ -66,6 +68,8 @@ Ve Windows:
 iotedge support-bundle --since 6h
 ```
 
+Můžete také použít přímé volání [metody](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) do vašeho zařízení a nahrát výstup příkazu support-rekomplet do Azure Blob Storage.
+
 > [!WARNING]
 > Výstupem `support-bundle` příkazu může být název hostitele, zařízení a modulu, informace zaznamenané moduly atd. Uvědomte si prosím tuto akci, pokud sdílíte výstup ve veřejném fóru.
 
@@ -74,6 +78,23 @@ iotedge support-bundle --since 6h
 Pokud používáte starší verzi IoT Edge, je možné, že se váš problém vyřeší upgradem. `iotedge check`Nástroj kontroluje, zda je démon zabezpečení IoT Edge nejnovější verze, ale nekontroluje verze IoT Edge centra a agentů. Chcete-li zjistit verzi modulů runtime na vašem zařízení, použijte příkazy `iotedge logs edgeAgent` a `iotedge logs edgeHub` . Číslo verze se zobrazí v protokolech po spuštění modulu.
 
 Pokyny k aktualizaci zařízení najdete v tématu [aktualizace démona zabezpečení IoT Edge a modulu runtime](how-to-update-iot-edge.md).
+
+## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>Ověření instalace IoT Edge na zařízeních
+
+Instalaci IoT Edge můžete ověřit na svých zařízeních tím, že [monitoruje nevlákenný modul edgeAgent](https://docs.microsoft.com/azure/iot-edge/how-to-monitor-module-twins).
+
+Chcete-li získat nejnovější edgeAgent modul, spusťte následující příkaz z [Azure Cloud Shell](https://shell.azure.com/):
+
+   ```azurecli-interactive
+   az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
+   ```
+
+Tento příkaz zobrazí výstup všech [hlášených vlastností](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub)edgeAgent. Tady je několik užitečných sledování stavu zařízení:
+
+* Běhový stav
+* čas spuštění za běhu
+* čas posledního ukončení modulu runtime
+* počet restartování za běhu
 
 ## <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Kontrolovat stav IoT Edge Security Manageru a jeho protokolů
 
@@ -192,6 +213,8 @@ Jakmile je spuštěn démon zabezpečení IoT Edge, podívejte se do protokolů 
 ```cmd
 iotedge logs <container name>
 ```
+
+Můžete také použít přímé volání [metody](how-to-retrieve-iot-edge-logs.md#upload-module-logs) do modulu v zařízení k nahrání protokolů tohoto modulu do Azure Blob Storage.
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Zobrazení zpráv, které procházejí centrem centra IoT Edge
 

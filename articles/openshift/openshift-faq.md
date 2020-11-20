@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: c09f741b37e06010a0bfbab40317980793240e29
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3a474228776c689dbbd6f15ddd926f29383400ce
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683501"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964707"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Nejčastější dotazy k Azure Red Hat OpenShift
 
@@ -21,7 +21,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Micro
 
 ### <a name="which-azure-regions-are-supported"></a>Které oblasti Azure jsou podporované?
 
-Seznam podporovaných oblastí pro Azure Red Hat OpenShift 4. x najdete v tématu [dostupné oblasti](https://docs.openshift.com/aro/4/welcome/index.html#available-regions).
+Seznam podporovaných oblastí pro Azure Red Hat OpenShift 4. x najdete v tématu [dostupné oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all).
 
 Seznam podporovaných oblastí pro Azure Red Hat OpenShift 3,11 najdete v tématu [Dostupné produkty v jednotlivých oblastech](supported-resources.md#azure-regions).
 

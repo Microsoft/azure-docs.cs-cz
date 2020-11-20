@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dcaa83980210a1f5449e8a2e0982cb8e39ff03d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80297708"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966186"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 series software, vysoká dostupnost a síťové požadavky
 
@@ -63,16 +63,16 @@ Následující požadavky na software jsou pro volitelné součásti StorSimple 
 
 Zařízení StorSimple je uzamčené. Porty ale musí být v bráně firewall otevřené, aby bylo možné provozovat přenosy z iSCSI, cloudu a správy. Následující tabulka uvádí porty, které je třeba otevřít v bráně firewall. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* nebo *odchozí* odkazuje na směr, ve kterém vaše zařízení StorSimple odesílá data externě, mimo nasazení: například odchozí na Internet.
 
-| Číslo portu.<sup>1, 2</sup> | V nebo ven | Rozsah portů | Požaduje se | Poznámky |
+| Číslo portu.<sup>1, 2</sup> | V nebo ven | Rozsah portů | Vyžadováno | Poznámky |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Out |Síť WAN |No |<ul><li>Odchozí port se používá pro přístup k Internetu k načtení aktualizací.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |Out |Síť WAN |Ano |<ul><li>Odchozí port se používá pro přístup k datům v cloudu.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li><li>Tento port se používá také na obou řadičích pro uvolňování paměti.</li></ul> |
+| TCP 80 (HTTP)<sup>3</sup> |Out |Síť WAN |Ne |<ul><li>Odchozí port se používá pro přístup k Internetu k načtení aktualizací.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |Out |Síť WAN |Yes |<ul><li>Odchozí port se používá pro přístup k datům v cloudu.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li><li>Tento port se používá také na obou řadičích pro uvolňování paměti.</li></ul> |
 | UDP 53 (DNS) |Out |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server DNS. |
 | UDP 123 (NTP) |Out |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server NTP. |
-| TCP 9354 |Out |Síť WAN |Ano |Odchozí port používá zařízení StorSimple ke komunikaci se službou StorSimple Device Manager. |
-| 3260 (iSCSI) |V |Síť LAN |No |Tento port se používá pro přístup k datům přes iSCSI. |
-| 5985 |V |Síť LAN |No |Port pro příchozí spojení StorSimple Snapshot Manager slouží ke komunikaci se zařízením StorSimple.<br>Tento port se používá také při vzdáleném připojení k Windows PowerShell pro StorSimple přes protokol HTTP. |
-| 5986 |V |Síť LAN |No |Tento port se používá, když se vzdáleně připojujete k Windows PowerShell pro StorSimple přes protokol HTTPS. |
+| TCP 9354 |Out |Síť WAN |Yes |Odchozí port používá zařízení StorSimple ke komunikaci se službou StorSimple Device Manager. |
+| 3260 (iSCSI) |V |Síť LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
+| 5985 |V |Síť LAN |Ne |Port pro příchozí spojení StorSimple Snapshot Manager slouží ke komunikaci se zařízením StorSimple.<br>Tento port se používá také při vzdáleném připojení k Windows PowerShell pro StorSimple přes protokol HTTP. |
+| 5986 |V |Síť LAN |Ne |Tento port se používá, když se vzdáleně připojujete k Windows PowerShell pro StorSimple přes protokol HTTPS. |
 
 <sup>1</sup> na veřejném Internetu není třeba otevřít žádné příchozí porty.
 
@@ -122,7 +122,7 @@ Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy n
 
 Metrika směrování je přidružená k rozhraním a bráně, která směruje data do zadaných sítí. Metriky směrování používá směrovací protokol k výpočtu nejlepší cesty k danému cíli, pokud se zjistí, že existuje více cest ke stejnému cíli. Čím nižší je metrika směrování, tím vyšší je priorita.
 
-Pokud je v kontextu StorSimple více síťových rozhraní a bran pro přenos provozu, budou metriky směrování odesílány do hry, aby určily relativní pořadí, ve kterém se rozhraní budou používat. Metriky směrování nemůže změnit uživatel. `Get-HcsRoutingTable`K vytištění směrovací tabulky (a metrik) na zařízení StorSimple ale můžete použít rutinu. Další informace o rutině Get-HcsRoutingTable při [řešení potíží s nasazením StorSimple](storsimple-troubleshoot-deployment.md)
+Pokud je v kontextu StorSimple více síťových rozhraní a bran pro přenos provozu, budou metriky směrování odesílány do hry, aby určily relativní pořadí, ve kterém se rozhraní budou používat. Metriky směrování nemůže změnit uživatel. `Get-HcsRoutingTable`K vytištění směrovací tabulky (a metrik) na zařízení StorSimple ale můžete použít rutinu. Další informace o rutině Get-HcsRoutingTable při [řešení potíží s nasazením StorSimple](./storsimple-8000-troubleshoot-deployment.md)
 
 Algoritmus metriky směrování použitý pro aktualizaci 2 a novější verze se dá vysvětlit následujícím způsobem.
 
@@ -250,4 +250,4 @@ Pečlivě si prostudujte tyto osvědčené postupy, abyste zajistili vysokou dos
 * [Přečtěte si, jak nasadit řešení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 
 <!--Reference links-->
-[1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731844(v=ws.10)

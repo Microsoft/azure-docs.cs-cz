@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48671e7558ea1bd613d33372c96fa3c563407e81
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514287"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966220"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurace webového proxy serveru pro zařízení StorSimple
 
@@ -63,12 +63,12 @@ Pomocí Průvodce instalací vás provede kroky pro konfiguraci webového proxy 
    
     `Invoke-HcsSetupWizard`
 2. Pokud jste použili Průvodce instalací pro registraci zařízení poprvé, budete muset nakonfigurovat všechna požadovaná nastavení sítě, dokud se nedostanete ke konfiguraci webového proxy serveru. Pokud je zařízení už zaregistrované, přijměte všechna nakonfigurovaná nastavení sítě, dokud nedosáhnete konfigurace webového proxy serveru. Po zobrazení výzvy ke konfiguraci nastavení webového proxy serveru v Průvodci instalací zadejte **Ano**.
-3. Pro **adresu URL webového proxy serveru**zadejte IP adresu nebo plně kvalifikovaný název domény (FQDN) vašeho webového proxy server a číslo portu TCP, které má vaše zařízení používat při komunikaci s cloudem. Použijte tento formát:
+3. Pro **adresu URL webového proxy serveru** zadejte IP adresu nebo plně kvalifikovaný název domény (FQDN) vašeho webového proxy server a číslo portu TCP, které má vaše zařízení používat při komunikaci s cloudem. Použijte tento formát:
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     Ve výchozím nastavení je zadané číslo portu TCP 8080.
-4. Jako typ ověřování vyberte **NTLM**, **Basic**nebo None ( **žádný**). Základní je nejméně zabezpečené ověřování pro konfiguraci proxy server. NT LAN Manager (NTLM) je vysoce zabezpečený a složitý ověřovací protokol, který používá třícestný systém zasílání zpráv (někdy čtyři, pokud je potřeba další integrita) k ověření uživatele. Výchozí ověřování je NTLM. Další informace najdete v tématu ověřování [Basic](https://hc.apache.org/httpclient-3.x/authentication.html) a [NTLM](https://hc.apache.org/httpclient-3.x/authentication.html). 
+4. Jako typ ověřování vyberte **NTLM**, **Basic** nebo None ( **žádný**). Základní je nejméně zabezpečené ověřování pro konfiguraci proxy server. NT LAN Manager (NTLM) je vysoce zabezpečený a složitý ověřovací protokol, který používá třícestný systém zasílání zpráv (někdy čtyři, pokud je potřeba další integrita) k ověření uživatele. Výchozí ověřování je NTLM. Další informace najdete v tématu ověřování [Basic](https://hc.apache.org/httpclient-3.x/authentication.html) a [NTLM](https://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
    > **V StorSimple Device Manager služba nefungují grafy monitorování zařízení v případě, že je v konfiguraci proxy server pro zařízení povolené základní ověřování nebo ověřování NTLM. Aby grafy monitorování fungovaly, je nutné zajistit, aby bylo ověřování nastaveno na možnost žádné.**
@@ -154,6 +154,5 @@ Pokud je nastavení webového proxy serveru nesprávně nakonfigurované, zobraz
 > * Chyby související s nastavením webového proxy serveru se nebudou zobrazovat v Azure Portal ve službě StorSimple Device Manager. Pokud dojde k potížím s webovým proxy serverem po dokončení konfigurace, stav zařízení se změní na **offline** na portálu Classic. |
 
 ## <a name="next-steps"></a>Další kroky
-* Pokud dojde k problémům při nasazování zařízení nebo konfiguraci nastavení webového proxy serveru, přečtěte si téma [řešení potíží s nasazením zařízení StorSimple](storsimple-troubleshoot-deployment.md).
+* Pokud dojde k problémům při nasazování zařízení nebo konfiguraci nastavení webového proxy serveru, přečtěte si téma [řešení potíží s nasazením zařízení StorSimple](./storsimple-8000-troubleshoot-deployment.md).
 * Pokud se chcete dozvědět, jak používat službu StorSimple Device Manager, přečtěte si [použití služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
-

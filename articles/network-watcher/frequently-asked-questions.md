@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 4ba35d91d286cb43a763887d104e21ae0d537c8e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 959062d493d9eb47204be2488f216b70804b3605
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424123"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965761"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Nejčastější dotazy týkající se Azure Network Watcher
-Služba [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) poskytuje sadu nástrojů pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network. Tento článek obsahuje odpovědi na běžné dotazy týkající se služby.
+Služba [azure Network Watcher](./network-watcher-monitoring-overview.md) poskytuje sadu nástrojů pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network. Tento článek obsahuje odpovědi na běžné dotazy týkající se služby.
 
 ## <a name="general"></a>Obecné
 
@@ -31,21 +31,21 @@ Network Watcher je navržený tak, aby sledoval a opravil stav sítě pro souč�
 ### <a name="what-tools-does-network-watcher-provide"></a>Jaké nástroje Network Watcher poskytují?
 Network Watcher poskytuje tři hlavní sady funkcí
 * Monitorování
-  * [Zobrazení topologie](https://docs.microsoft.com/azure/network-watcher/view-network-topology) zobrazuje prostředky ve virtuální síti a vztahy mezi nimi.
-  * [Monitor připojení](https://docs.microsoft.com/azure/network-watcher/connection-monitor) umožňuje monitorovat připojení a latenci mezi virtuálním počítačem a jiným síťovým prostředkem.
-  * [Nástroj Sledování výkonu sítě](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor) umožňuje monitorovat připojení a latence napříč hybridními síťovými architekturami, okruhy ExpressRoute a koncovými body služby nebo aplikace.  
+  * [Zobrazení topologie](./view-network-topology.md) zobrazuje prostředky ve virtuální síti a vztahy mezi nimi.
+  * [Monitor připojení](./connection-monitor.md) umožňuje monitorovat připojení a latenci mezi virtuálním počítačem a jiným síťovým prostředkem.
+  * [Nástroj Sledování výkonu sítě](../azure-monitor/insights/network-performance-monitor.md) umožňuje monitorovat připojení a latence napříč hybridními síťovými architekturami, okruhy ExpressRoute a koncovými body služby nebo aplikace.  
 * Diagnostika
-  * [Ověření toku protokolu IP](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) umožňuje detekovat problémy s filtrováním provozu na úrovni virtuálního počítače.
-  * [Další segment směrování](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) vám pomůže ověřit trasy provozu a zjišťovat problémy s směrováním.
-  * [Řešení potíží s připojením](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal) umožňuje jednorázové připojení a kontrolu latence mezi virtuálním počítačem a jiným síťovým prostředkem.
-  * [Zachytávání paketů](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) umožňuje zachytit veškerý provoz virtuálního počítače ve vaší virtuální síti.
-  * [Řešení potíží s VPN](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-overview) spouští více diagnostických kontrol bran a připojení VPN, které vám pomůžou s laděním.
-* Protokolování
-  * [Protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) vám umožňují protokolovat veškerý provoz ve [skupinách zabezpečení sítě (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/virtual-network/security-overview) .
-  * [Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) zpracovává data protokolu toku NSG, což umožňuje vizualizovat, dotazovat, analyzovat a pochopit síťový provoz.
+  * [Ověření toku protokolu IP](./network-watcher-ip-flow-verify-overview.md) umožňuje detekovat problémy s filtrováním provozu na úrovni virtuálního počítače.
+  * [Další segment směrování](./network-watcher-next-hop-overview.md) vám pomůže ověřit trasy provozu a zjišťovat problémy s směrováním.
+  * [Řešení potíží s připojením](./network-watcher-connectivity-portal.md) umožňuje jednorázové připojení a kontrolu latence mezi virtuálním počítačem a jiným síťovým prostředkem.
+  * [Zachytávání paketů](./network-watcher-packet-capture-overview.md) umožňuje zachytit veškerý provoz virtuálního počítače ve vaší virtuální síti.
+  * [Řešení potíží s VPN](./network-watcher-troubleshoot-overview.md) spouští více diagnostických kontrol bran a připojení VPN, které vám pomůžou s laděním.
+* protokolování
+  * [Protokoly toku NSG](./network-watcher-nsg-flow-logging-overview.md) vám umožňují protokolovat veškerý provoz ve [skupinách zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/network-security-groups-overview.md) .
+  * [Analýza provozu](./traffic-analytics.md) zpracovává data protokolu toku NSG, což umožňuje vizualizovat, dotazovat, analyzovat a pochopit síťový provoz.
 
 
-Podrobnější informace najdete na stránce s [přehledem Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview).
+Podrobnější informace najdete na stránce s [přehledem Network Watcher](./network-watcher-monitoring-overview.md).
 
 
 ### <a name="how-does-network-watcher-pricing-work"></a>Jak funguje Network Watcher ceny?
@@ -55,7 +55,7 @@ Na [stránce s cenami](https://azure.microsoft.com/pricing/details/network-watch
 Nejnovější regionální dostupnost najdete na [stránce dostupnosti služby Azure](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) .
 
 ### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Která oprávnění jsou nutná k použití Network Watcher?
-Podívejte se na seznam [oprávnění Azure RBAC potřebných k použití Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions). Pro nasazení prostředků potřebujete oprávnění přispěvatele k NetworkWatcherRG (viz níže).
+Podívejte se na seznam [oprávnění Azure RBAC potřebných k použití Network Watcher](./required-rbac-permissions.md). Pro nasazení prostředků potřebujete oprávnění přispěvatele k NetworkWatcherRG (viz níže).
 
 ### <a name="how-do-i-enable-network-watcher"></a>Jak povolit službu Network Watcher?
 Služba Network Watcher je [automaticky povolená](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) pro každé předplatné.
@@ -73,13 +73,13 @@ Pro všechny funkce, které potřebují vygenerovat nebo zachytit provoz z virtu
 Funkce zachytávání paketů, řešení potíží s připojením a monitorování připojení vyžadují, aby bylo k dispozici rozšíření Network Watcher.
 
 ### <a name="what-are-resource-limits-on-network-watcher"></a>Co jsou omezení prostředků u Network Watcher?
-Všechna omezení najdete na stránce [omezení služby](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) .  
+Všechna omezení najdete na stránce [omezení služby](../azure-resource-manager/management/azure-subscription-service-limits.md#network-watcher-limits) .  
 
 ### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Proč je pro jednotlivé oblasti povolena pouze jedna instance Network Watcher? 
 Network Watcher pro předplatné, který funguje, je třeba povolit jenom jednou, nejedná se o limit služby.
 
 ### <a name="how-can-i-manage-the-network-watcher-resource"></a>Jak můžu spravovat prostředek Network Watcher? 
-Prostředek Network Watcher představuje back-end službu pro Network Watcher a plně spravuje Azure. Zákazníci je nepotřebují spravovat. Operace, jako je přesun, nejsou u prostředku podporovány. Prostředek je ale [možné odstranit](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal). 
+Prostředek Network Watcher představuje back-end službu pro Network Watcher a plně spravuje Azure. Zákazníci je nepotřebují spravovat. Operace, jako je přesun, nejsou u prostředku podporovány. Prostředek je ale [možné odstranit](./network-watcher-create.md#delete-a-network-watcher-in-the-portal). 
 
 ## <a name="service-availability-and-redundancy"></a>Dostupnost služby a redundance 
 
@@ -92,7 +92,7 @@ Pro povolení odolnosti zóny není nutná žádná konfigurace zákazníka. V z
 ## <a name="nsg-flow-logs"></a>Protokoly toku NSG
 
 ### <a name="what-does-nsg-flow-logs-do"></a>Co dělají protokoly toku NSG?
-Síťové prostředky Azure je možné kombinovat a spravovat prostřednictvím [skupin zabezpečení sítě (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/virtual-network/security-overview). Protokoly toku NSG umožňují protokolovat informace o toku 5-řazené kolekce členů o všech přenosech prostřednictvím služby skupin zabezpečení sítě. Protokoly nezpracovaných toků se zapisují na účet Azure Storage, ze kterého se dají dál zpracovávat, analyzovat, dotazovat nebo exportovat podle potřeby.
+Síťové prostředky Azure je možné kombinovat a spravovat prostřednictvím [skupin zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/network-security-groups-overview.md). Protokoly toku NSG umožňují protokolovat informace o toku 5-řazené kolekce členů o všech přenosech prostřednictvím služby skupin zabezpečení sítě. Protokoly nezpracovaných toků se zapisují na účet Azure Storage, ze kterého se dají dál zpracovávat, analyzovat, dotazovat nebo exportovat podle potřeby.
 
 ### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>Návody používat protokoly toku NSG s účtem úložiště za bránou firewall?
 
@@ -100,7 +100,7 @@ Pokud chcete použít účet úložiště za bránou firewall, musíte poskytnou
 
 * Přejděte do účtu úložiště zadáním názvu účtu úložiště do globálního vyhledávání na portálu nebo na [stránce účty úložiště](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) .
 * V části **NASTAVENÍ** vyberte **Brány firewall a virtuální sítě**.
-* V části "povolení přístupu z" vyberte **vybrané sítě**. Pak v části **výjimky**zaškrtněte políčko u možnosti **"pro přístup k tomuto účtu úložiště pro důvěryhodné služby Microsoftu"** . 
+* V části "povolení přístupu z" vyberte **vybrané sítě**. Pak v části **výjimky** zaškrtněte políčko u možnosti **"pro přístup k tomuto účtu úložiště pro důvěryhodné služby Microsoftu"** . 
 * Pokud je tato možnost již vybraná, není potřeba provádět žádné změny.  
 * Na [stránce Přehled protokolů toků NSG](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) vyhledejte cílovou NSG a povolte protokoly toku NSG s vybraným účtem úložiště.
 
@@ -108,11 +108,11 @@ Po několika minutách můžete zkontrolovat protokoly úložiště, ve kterých
 
 ### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>Návody používat protokoly toku NSG s účtem úložiště za koncovým bodem služby?
 
-Protokoly toku NSG jsou kompatibilní s koncovými body služby bez nutnosti jakékoli další konfigurace. Přečtěte si [kurz povolení koncových bodů služby](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) ve vaší virtuální síti.
+Protokoly toku NSG jsou kompatibilní s koncovými body služby bez nutnosti jakékoli další konfigurace. Přečtěte si [kurz povolení koncových bodů služby](../virtual-network/tutorial-restrict-network-access-to-resources.md#enable-a-service-endpoint) ve vaší virtuální síti.
 
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Jaký je rozdíl mezi protokoly toku verze 1 & 2?
-Protokoly Flow verze 2 zavádí koncept *stavu toku* , & ukládá informace o odeslaných bajtech a paketech. [Další informace](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).
+Protokoly Flow verze 2 zavádí koncept *stavu toku* , & ukládá informace o odeslaných bajtech a paketech. [Další informace](./network-watcher-nsg-flow-logging-overview.md#log-format).
 
 ## <a name="next-steps"></a>Další kroky
- - Přejděte na stránku s [přehledem](https://docs.microsoft.com/azure/network-watcher/) o naší dokumentaci, kde najdete některé kurzy, které vám pomohou začít s Network Watcher.
+ - Přejděte na stránku s [přehledem](./index.yml) o naší dokumentaci, kde najdete některé kurzy, které vám pomohou začít s Network Watcher.

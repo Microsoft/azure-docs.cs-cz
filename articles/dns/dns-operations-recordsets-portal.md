@@ -7,22 +7,22 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
-ms.openlocfilehash: 111d94db1cbec658daabfb1a4c38c8160d6f50b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84696827"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965727"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Správa záznamů a sad záznamů DNS pomocí Azure Portal
 
 V tomto článku se dozvíte, jak spravovat sady záznamů a záznamy pro zónu DNS pomocí Azure Portal.
 
-Je důležité pochopit rozdíl mezi sadami záznamů DNS a jednotlivými záznamy DNS. Sada záznamů je kolekce záznamů v zóně, které mají stejný název a jsou stejného typu. Další informace najdete v tématu [vytváření sad záznamů a záznamů DNS pomocí Azure Portal](dns-getstarted-create-recordset-portal.md).
+Je důležité pochopit rozdíl mezi sadami záznamů DNS a jednotlivými záznamy DNS. Sada záznamů je kolekce záznamů v zóně, které mají stejný název a jsou stejného typu. Další informace najdete v tématu [vytváření sad záznamů a záznamů DNS pomocí Azure Portal](./dns-getstarted-portal.md).
 
 ## <a name="create-a-new-record-set-and-record"></a>Vytvoření nové sady záznamů a záznamu
 
-Pokud chcete vytvořit sadu záznamů v Azure Portal, přečtěte si téma [Vytvoření záznamů DNS pomocí Azure Portal](dns-getstarted-create-recordset-portal.md).
+Pokud chcete vytvořit sadu záznamů v Azure Portal, přečtěte si téma [Vytvoření záznamů DNS pomocí Azure Portal](./dns-getstarted-portal.md).
 
 ## <a name="view-a-record-set"></a>Zobrazení sady záznamů
 

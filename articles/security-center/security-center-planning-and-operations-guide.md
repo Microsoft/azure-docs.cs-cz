@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 36c15907c0f45befacf35389652f6d91c0ab1958
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1f5db17549c2b95d5dd0dd2f866ca1d1c0e7d8aa
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787903"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965115"
 ---
 # <a name="planning-and-operations-guide"></a>Průvodce plánováním a provozem
 Tato příručka je určena odborníkům v oblasti informačních technologií (IT), architektům v oblasti IT, analytikům zabezpečení informací a správcům cloudu plánuje používat Azure Security Center.
@@ -40,7 +40,7 @@ V závislosti na velikosti a struktuře vaší organizace můžou službu Securi
 
 ![Role](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Příklad:
+Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Například:
 
 **Jeff (vlastník úloh)**
 
@@ -76,7 +76,7 @@ Security Center používá [řízení přístupu na základě role Azure (Azure 
 
 Výše popsané role služby Security Center nemají přístup k jiným oblastem služeb Azure, jako je služba Storage, web a mobilní zařízení nebo Internet věcí.
 
-Použití osob uvedených v předchozím diagramu vyžaduje následující nastavení RBAC:
+Pomocí osoby vysvětlené v předchozím diagramu by se vyžadovalo následující Azure RBAC:
 
 **Jeff (vlastník úloh)**
 
@@ -106,7 +106,7 @@ Další informace, které je potřeba vzít v úvahu:
 * Zásady zabezpečení můžou upravovat jenom vlastníci/přispěvatelé předplatného a správci zabezpečení.
 * Doporučení zabezpečení pro určitý prostředek můžou uplatňovat jenom vlastníci a přispěvatelé předplatného a skupiny prostředků.
 
-Při plánování řízení přístupu pomocí RBAC pro Security Center je potřeba si dobře rozmyslet, kdo z vaší organizace bude Security Center používat. Ke správné konfiguraci RBAC je také důležité, jaké typy úloh budou uživatelé provádět.
+Při plánování řízení přístupu pomocí Azure RBAC pro Security Center nezapomeňte pochopit, kdo ve vaší organizaci bude používat Security Center. Také typy úloh, které budou provádět, a následně nakonfigurujte službu Azure RBAC podle potřeby.
 
 > [!NOTE]
 > Doporučujeme přiřadit uživatelům tu nejvíc omezenou roli, kterou ke své práci potřebují. Třeba uživatelům, kteří potřebují jenom zobrazovat informace o stavu zabezpečení prostředků, ale nemusí provádět žádné kroky, třeba uplatňovat doporučení nebo upravovat zásady, by se měla přiřadit role Čtenář.
@@ -207,9 +207,9 @@ I když tento článek nemá záměr, který vám pomůže vytvořit vlastní pl
 
 Výstrahy služby Security Center můžete použít během následujících fází:
 
-* **Detekce** : Identifikace podezřelé aktivity v jednom nebo několika prostředcích.
-* **Posouzení** : Počáteční zhodnocení a získávání dalších informací o podezřelé aktivitě.
-* **Diagnóza** : Technické vyřešení problému podle nápravných kroků.
+* **Detekce**: Identifikace podezřelé aktivity v jednom nebo několika prostředcích.
+* **Posouzení**: Počáteční zhodnocení a získávání dalších informací o podezřelé aktivitě.
+* **Diagnóza**: Technické vyřešení problému podle nápravných kroků.
 
 Každá výstraha zabezpečení poskytuje informace, které umožňují lepší pochopení povahy útoku a navrhují možné kroky ke zmírnění dopadu. Některé výstrahy obsahují i odkazy na další informace nebo další zdroje informací v Azure. Poskytnuté informace můžete využít k dalšímu výzkumu a nápravným krokům. Můžete také prohledávat data související se zabezpečením, která jsou uložena ve vašem pracovním prostoru.
 

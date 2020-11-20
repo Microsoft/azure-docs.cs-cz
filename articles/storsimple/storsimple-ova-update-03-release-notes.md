@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
-ms.openlocfilehash: f56c36f18379449409f4989eab9510da1f686d0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8301b45fe778bd3df7fc665db2662ba81d3e644f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80397808"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966101"
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 0,3
 ## <a name="overview"></a>Přehled
@@ -27,7 +27,7 @@ Následující poznámky k verzi identifikují kritické otevřené problémy a 
 
 Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením StorSimple virtuálního pole pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
-Aktualizace 0,3 odpovídá **10.0.10288.0**verze softwaru.
+Aktualizace 0,3 odpovídá **10.0.10288.0** verze softwaru.
 
 > [!NOTE]
 > Aktualizace jsou rušivé a restartují vaše zařízení. Pokud probíhá vstupně-výstupní operace, dojde k výpadku zařízení.
@@ -66,11 +66,10 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 | **čtrnáct.** |Souborový server |Pokud k souboru ve složce je přidružen alternativní datový proud (ADS), nejsou tyto reklamy zálohovány ani obnoveny prostřednictvím zotavení po havárii, klonování a obnovení na úrovni položek. | |
 
 ## <a name="next-step"></a>Další krok
-[Nainstalujte aktualizaci 0,3](storsimple-ova-install-update-01.md) na virtuální pole StorSimple.
+[Nainstalujte aktualizaci 0,3](./storsimple-virtual-array-install-update-06.md) na virtuální pole StorSimple.
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 Hledáte starší poznámku k verzi? Přejít na: 
 
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,1 a 0,2](storsimple-ova-update-01-release-notes.md)
-* [Poznámky k verzi pro StorSimple Virtual Array General Availability](storsimple-ova-pp-release-notes.md)
-
+* [Poznámky k verzi pro StorSimple Virtual Array General Availability](./storsimple-virtual-array-update-06-release-notes.md)

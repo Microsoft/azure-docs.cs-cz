@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: e1e34bacb905bf48fc5f7cd44e66cf4a4326de91
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d6bc11f4f468b784b957ded954dc9a1720e89bfd
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044645"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964435"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: vývoj modulu C# IoT Edge pro zařízení s Windows
 
@@ -33,7 +33,7 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>Obor řešení
+## <a name="prerequisites"></a>Požadavky
 
 Tento kurz ukazuje, jak vyvíjet modul v **jazyce C#** pomocí sady **Visual Studio 2019** a jak ho nasadit na **zařízení s Windows**. Pokud vyvíjíte moduly pro zařízení se systémem Linux, přečtěte si místo toho [vývoj modulu C# IoT Edge modul pro zařízení se systémem Linux](tutorial-csharp-module.md) .
 
@@ -43,8 +43,6 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 | -- | ------------------ | ------------------ |
 | **Vývoj pro Windows AMD64** | ![Vývoj modulů C# pro WinAMD64 v VS Code](./media/tutorial-c-module/green-check.png) | ![Vývoj modulů C# pro WinAMD64 v aplikaci Visual Studio](./media/tutorial-c-module/green-check.png) |
 | **Ladění systému Windows AMD64** |   | ![Ladění modulů C# pro WinAMD64 v aplikaci Visual Studio](./media/tutorial-c-module/green-check.png) |
-
-## <a name="prerequisites"></a>Požadované součásti
 
 Před zahájením tohoto kurzu byste měli projít předchozí kurz pro nastavení vývojového prostředí a [vytvořit modul IoT Edge pro zařízení s Windows](tutorial-develop-for-windows.md). Po dokončení tohoto kurzu už byste měli mít následující požadavky:
 
@@ -93,7 +91,7 @@ Manifest nasazení sdílí přihlašovací údaje pro váš registr kontejneru s
 
 1. V Průzkumníku řešení sady Visual Studio otevřete **deployment.template.jsv** souboru.
 
-2. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . Měla by mít vaše adresa registru vytvořená z informací, které jste zadali při vytváření projektu, a pole s uživatelským jménem a heslem by měla obsahovat názvy proměnných. Příklad:
+2. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . Měla by mít vaše adresa registru vytvořená z informací, které jste zadali při vytváření projektu, a pole s uživatelským jménem a heslem by měla obsahovat názvy proměnných. Například:
 
    ```json
    "registryCredentials": {
@@ -131,7 +129,7 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
     static int temperatureThreshold { get; set; } = 25;
     ```
 
-4. Po deklaracích proměnných přidejte do třídy **program** třídy **MessageBody**, **Machine**a **Ambient** . Tyto třídy definují očekávané schéma textu příchozích zpráv.
+4. Po deklaracích proměnných přidejte do třídy **program** třídy **MessageBody**, **Machine** a **Ambient** . Tyto třídy definují očekávané schéma textu příchozích zpráv.
 
     ```csharp
     class MessageBody
@@ -273,7 +271,7 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
 
 8. Uložte soubor Program.cs.
 
-9. Otevřete **deployment.template.js** v souboru v řešení IoT Edge. Tento soubor informuje agenta IoT Edge, který moduly mají nasadit, v tomto případě **SimulatedTemperatureSensor** a **CSharpModule**a oznamuje IoT Edgemu centru, jak směrovat zprávy mezi nimi.
+9. Otevřete **deployment.template.js** v souboru v řešení IoT Edge. Tento soubor informuje agenta IoT Edge, který moduly mají nasadit, v tomto případě **SimulatedTemperatureSensor** a **CSharpModule** a oznamuje IoT Edgemu centru, jak směrovat zprávy mezi nimi.
 
 10. Přidejte do manifestu nasazení dvojče modulu **CSharpModule**. Vložte následující obsah JSON do dolní části oddílu **modulesContent** za dvojče modulu **$edgeHub**:
 

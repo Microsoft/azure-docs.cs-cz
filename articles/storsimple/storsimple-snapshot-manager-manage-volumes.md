@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: alkohli
-ms.openlocfilehash: 79a239def70f0455f63c18d86397ec8d927f244c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 309fa85d0a4d877522a89dd8f1e6e71fb2074744
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90054903"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964962"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Zobrazení a správa svazků pomocí Snapshot Manager StorSimple
 ## <a name="overview"></a>Přehled
@@ -45,7 +45,7 @@ V tomto kurzu se dozvíte, jak můžete připojit, inicializovat a naformátovat
 > 
 
 ## <a name="mount-volumes"></a>Připojit svazky
-K připojení, inicializaci a formátování svazků StorSimple použijte následující postup. Tento postup využívá správu disků, systémový nástroj pro správu pevných disků a příslušné svazky nebo oddíly. Další informace o správě disků najdete v části [Správa disků](https://technet.microsoft.com/library/cc770943.aspx) na webu Microsoft TechNet.
+K připojení, inicializaci a formátování svazků StorSimple použijte následující postup. Tento postup využívá správu disků, systémový nástroj pro správu pevných disků a příslušné svazky nebo oddíly. Další informace o správě disků najdete v části [Správa disků](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770943(v=ws.11)) na webu Microsoft TechNet.
 
 #### <a name="to-mount-volumes"></a>Připojení svazků
 1. Na hostitelském počítači spusťte iniciátor iSCSI společnosti Microsoft.
@@ -80,14 +80,14 @@ K připojení, inicializaci a formátování svazků StorSimple použijte násle
       * Vyberte systém souborů NTFS.
       * Zvolte velikost alokační jednotky 64 kB.
       * Proveďte rychlé formátování.
-7. Naformátujte svazky s více oddíly. Pokyny najdete v části "oddíly a svazky" v tématu [Implementace správy disků](https://msdn.microsoft.com/library/dd163556.aspx).
+7. Naformátujte svazky s více oddíly. Pokyny najdete v části "oddíly a svazky" v tématu [Implementace správy disků](/previous-versions/tn-archive/dd163556(v=technet.10)).
 
 ## <a name="view-information-about-your-volumes"></a>Zobrazit informace o svazcích
 K zobrazení informací o místních a StorSimple svazcích Azure použijte následující postup.
 
 #### <a name="to-view-volume-information"></a>Zobrazení informací o svazku
 1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager. 
-2. V podokně **obor** klikněte na uzel **svazky** . V podokně **výsledků** se zobrazí seznam místních a připojených svazků, včetně všech svazků StorSimple Azure. Sloupce v podokně **výsledků** lze konfigurovat. (Klikněte pravým tlačítkem myši na uzel **svazky** , vyberte možnost **zobrazení**a pak vyberte možnost **Přidat nebo odebrat sloupce**.)
+2. V podokně **obor** klikněte na uzel **svazky** . V podokně **výsledků** se zobrazí seznam místních a připojených svazků, včetně všech svazků StorSimple Azure. Sloupce v podokně **výsledků** lze konfigurovat. (Klikněte pravým tlačítkem myši na uzel **svazky** , vyberte možnost **zobrazení** a pak vyberte možnost **Přidat nebo odebrat sloupce**.)
    
     ![Konfigurace sloupců](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
@@ -121,7 +121,7 @@ K opětovnému prohledání svazků připojených k StorSimple Snapshot Manager 
 
 #### <a name="to-rescan-the-volumes"></a>Opětovné prohledání svazků
 1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager.
-2. V podokně **obor** klikněte pravým tlačítkem na **svazky**a pak klikněte na **Prohledat svazky**.
+2. V podokně **obor** klikněte pravým tlačítkem na **svazky** a pak klikněte na **Prohledat svazky**.
    
     ![Znovu prohledat svazky](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Rescan_volumes.png)
    
@@ -133,7 +133,7 @@ Pomocí následujícího postupu můžete nakonfigurovat zálohu základního sv
 ### <a name="prerequisites"></a>Požadavky
 Než začnete:
 
-* Ujistěte se, že zařízení StorSimple a hostitelský počítač jsou správně nakonfigurované. Další informace najdete [v poznámkách k nasazení místního zařízení StorSimple](storsimple-deployment-walkthrough-u2.md).
+* Ujistěte se, že zařízení StorSimple a hostitelský počítač jsou správně nakonfigurované. Další informace najdete [v poznámkách k nasazení místního zařízení StorSimple](./storsimple-8000-deployment-walkthrough-u2.md).
 * Nainstalujte a nakonfigurujte StorSimple Snapshot Manager. Další informace najdete v [nasazení StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
 
 #### <a name="to-configure-backup-of-a-basic-volume"></a>Konfigurace zálohování základního svazku
@@ -166,12 +166,12 @@ Než začnete:
 * Nakonfigurujte na zařízení StorSimple dva svazky. (V těchto příkladech jsou dostupné svazky **disk 1** a **disk 2**.) 
 
 ### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>Krok 1: použití správy disků k vytvoření dynamického zrcadleného svazku
-Správa disků je systémový nástroj pro správu pevných disků a svazků nebo oddílů, které obsahují. Další informace o správě disků najdete v části [Správa disků](https://technet.microsoft.com/library/cc770943.aspx) na webu Microsoft TechNet.
+Správa disků je systémový nástroj pro správu pevných disků a svazků nebo oddílů, které obsahují. Další informace o správě disků najdete v části [Správa disků](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770943(v=ws.11)) na webu Microsoft TechNet.
 
 #### <a name="to-create-a-dynamic-mirrored-volume"></a>Postup vytvoření dynamického zrcadleného svazku
 1. Ke spuštění správy disků použijte kteroukoli z následujících možností: 
    
-   * Otevřete pole **Spustit** , zadejte **diskmgmt. msc**a stiskněte klávesu ENTER.
+   * Otevřete pole **Spustit** , zadejte **diskmgmt. msc** a stiskněte klávesu ENTER.
    * Spusťte Správce serveru, rozbalte uzel **úložiště** a pak vyberte **Správa disků**. 
    * Spusťte **Nástroje pro správu**, rozbalte uzel **Správa počítače** a pak vyberte **Správa disků**. 
 2. Ujistěte se, že na zařízení StorSimple máte k dispozici dva svazky. (V tomto příkladu jsou dostupné svazky **disk 1** a **disk 2**.) 
@@ -179,14 +179,14 @@ Správa disků je systémový nástroj pro správu pevných disků a svazků neb
    
     ![Nový zrcadlený svazek](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_New_mirrored_volume.png) 
 4. Na stránce průvodce **vytvořením zrcadleného svazku** klikněte na **Další**.
-5. Na stránce **Vybrat disky** vyberte v podokně **vybrané** možnost **disk 2** , klikněte na tlačítko **Přidat**a poté klikněte na tlačítko **Další**. 
+5. Na stránce **Vybrat disky** vyberte v podokně **vybrané** možnost **disk 2** , klikněte na tlačítko **Přidat** a poté klikněte na tlačítko **Další**. 
 6. Na stránce **přiřadit písmeno jednotky nebo cestu** přijměte výchozí hodnoty a potom klikněte na tlačítko **Další**. 
 7. Na stránce **Formát svazku** v poli **velikost alokační jednotky** vyberte **64 KB**. Zaškrtněte políčko **provést rychlé formátování** a potom klikněte na tlačítko **Další**. 
 8. Na stránce **dokončení nového zrcadleného svazku** zkontrolujte nastavení a pak klikněte na **Dokončit**. 
 9. Zobrazí se zpráva oznamující, že základní disk bude převeden na dynamický disk. Klikněte na **Ano**.
    
     ![Zpráva s dynamickým převodem disku](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
-10. V nástroji Správa disků ověřte, že disk 1 a disk 2 jsou zobrazené jako dynamické zrcadlené svazky. (Funkce**Dynamic** by se měla zobrazit ve sloupci stav a barva pruhu kapacity by se měla změnit na červenou, což značí zrcadlený svazek.) 
+10. V nástroji Správa disků ověřte, že disk 1 a disk 2 jsou zobrazené jako dynamické zrcadlené svazky. (Funkce **Dynamic** by se měla zobrazit ve sloupci stav a barva pruhu kapacity by se měla změnit na červenou, což značí zrcadlený svazek.) 
     
     ![Zrcadlené dynamické disky správy disků](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Verify_dynamic_disks_2.png) 
 
@@ -210,4 +210,4 @@ Pomocí následujícího postupu nakonfigurujte dynamický zrcadlený svazek a p
 * Naučte se [používat Snapshot Manager StorSimple k vytváření a správě skupin svazků](storsimple-snapshot-manager-manage-volume-groups.md).
 
 <!--Reference links-->
-[1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee338480(v=ws.10)

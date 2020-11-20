@@ -5,15 +5,16 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 503d3d5ed9b099e01a88ee40ef80e88105beb340
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 11/19/2020
+ms.openlocfilehash: f1a7ffc8225ea20b48df4e1d9a049655ca4776a4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917728"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964656"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
+
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Tento článek obsahuje přehled výchozích kvót nabízených pro různé prostředky ve službě Azure Cosmos DB.
@@ -194,8 +195,8 @@ Azure Cosmos DB udržuje systémová metadata pro každý účet. Tato metadata 
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-|Maximální počet vytvoření kolekce za minutu|    5|
-|Maximální počet vytvoření databáze za minutu|    5|
+|Maximální počet vytvoření kolekce za minutu|    100|
+|Maximální počet vytvoření databáze za minutu|    100|
 |Maximální zajištěná četnost aktualizací propustnosti za minutu|    5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Omezení pro zřízenou propustnost automatického škálování

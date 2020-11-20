@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 11/19/2020
 ms.author: alkohli
-ms.openlocfilehash: a73005580c9b7ddeae17e3e0490aa586bd9b0fbb
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: e1dca046177634842de25b255dd1bb22c5d2c5a5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335793"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964006"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
-Azure Data Box Disk je hybridní řešení, které umožňuje rychle, snadno a spolehlivě importovat místní data do Azure. Svá data přenesete do 80TB (využitelná kapacita) úložného zařízení od Microsoftu a pak toto zařízení odešlete zpět. Data se potom nahrají do Azure.
+Azure Data Box Disk je hybridní řešení, které umožňuje rychle, snadno a spolehlivě importovat místní data do Azure. Data přenášíte do úložného zařízení 80 TB společnosti Microsoft, které je k dispozici, a pak zařízení dodáte zpátky. Data se potom nahrají do Azure.
 
 Tento kurz popisuje, jak objednat Azure Data Box. V tomto kurzu získáte informace o těchto tématech:
 
@@ -57,7 +57,7 @@ Než začnete, ujistěte se, že:
 
 * Nainstalujte [Azure CLI](/cli/azure/install-azure-cli) verze 2.0.67 nebo novější. Případně můžete [nainstalovat pomocí MSI](https://aka.ms/installazurecliwindows).
 
-**Přihlášení k Azure**
+**Přihlaste se k Azure**
 
 Otevřete okno příkazového řádku Windows PowerShellu a přihlaste se k Azure pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) :
 
@@ -231,7 +231,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
     |Zdrojová země/oblast    |    Vyberte zemi nebo oblast, ve které jsou data aktuálně umístěná.         |
     |Cílová oblast Azure     |     Vyberte oblast Azure, do které chcete data přenést. <br> Další informace najdete v části věnované [dostupnosti v oblastech](data-box-overview.md#region-availability).            |
 
-    [![Spouští se Azure Data Box pořadí importu.](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
+    [![Spouští se Azure Data Box pořadí importu.](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
 
 5. Vyberte **Data Box**. Maximální použitelná kapacita pro jednu objednávku je 80 TB. V případě větších objemů dat můžete vytvořit více objednávek.
 
@@ -245,17 +245,15 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
     |Skupina prostředků    | Skupina prostředků, kterou jste vybrali dříve. |
     |Název importovaného objednávky | Zadejte popisný název pro sledování objednávky. <br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí.    |
 
-    ![Průvodce Data Boxem pro import objednávek, obrazovka základy, se správnými informacemi, které jsou vyplněné](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![Průvodce Data Boxem pro import objednávek, obrazovka základy, se správnými informacemi, které jsou vyplněné](media/data-box-deploy-ordered/select-data-box-import-06.png)<!--Generic subscription. Cut note. Box command.-->
 
-    Ve výchozím nastavení je heslo k odemknutí zařízení šifrované pomocí klíče spravovaného společností Microsoft. Po dokončení objednávky můžete přidat klíč spravovaný zákazníkem. Klíč spravovaný zákazníkem vám umožní využít vlastní klíč z klíče trezoru klíčů Azure k ochraně vašeho hesla pro odemknutí zařízení. Další informace najdete v tématu [použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data box](data-box-customer-managed-encryption-key-portal.md).
+7. Na obrazovce **cíl dat** vyberte **cílové umístění dat** – buď účty úložiště, nebo spravované disky.
 
-7. Na kartě **cíl dat** vyberte **cíl dat**.
-
-    Pokud jako cíl úložiště používáte **účty úložiště** , zobrazí se následující snímek obrazovky:
+    Pokud jako cíl úložiště používáte **účty úložiště** , zobrazí se následující obrazovka:
 
     ![Data Box Průvodce objednávkami importu, obrazovky cílová data a s vybranými účty úložiště](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
-    Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. Data Box je možné propojit až s 10 účty úložiště. Můžete si také vytvořit nový účet **Pro obecné účely v1** , **Pro obecné účely v2** nebo **účet úložiště objektů blob**.
+    Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. Data Box je možné propojit až s 10 účty úložiště. Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**.
 
     Účty úložiště s virtuálními sítěmi se podporují. Pokud chcete službě Data Box povolit práci se zabezpečenými účty úložiště, v nastavení síťové brány firewall účtu úložiště povolte důvěryhodné služby. Další informace najdete v tématu Postup [přidání Azure Data box jako důvěryhodné služby](../storage/common/storage-network-security.md#exceptions).
 
@@ -263,39 +261,106 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Skupiny prostředků     | Pokud chcete vytvořit spravované disky z místních virtuálních pevných disků, vytvořte nové skupiny prostředků. Stávající skupinu prostředků můžete použít jenom v případě, že se skupina prostředků vytvořila dříve při vytváření Data Boxho pořadí pro spravovaný disk pomocí služby Data Box. <br> Můžete zadat i více skupin prostředků oddělených středníkem. Podporuje se maximálně 10 skupin prostředků.|
+    |Skupiny prostředků     | Pokud chcete vytvořit spravované disky z místních virtuálních pevných disků, vytvořte nové skupiny prostředků. Stávající skupinu prostředků můžete použít jenom v případě, že se skupina prostředků vytvořila dříve při vytváření Data Box pořadí pro spravované disky službou Data Box. <br> Můžete zadat i více skupin prostředků oddělených středníkem. Podporuje se maximálně 10 skupin prostředků.|
 
-    ![Data Box průvodce pro import objednávky, obrazovka cíl dat s vybraným Managed Disks](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![Data Box průvodce pro import objednávky, obrazovka cíl dat s vybraným Managed Disks](media/data-box-deploy-ordered/select-data-box-import-07-b.png)
 
     Účet úložiště zadaný pro spravované disky slouží jako přípravný účet úložiště. Služba Data Box nahraje virtuální pevné disky jako objekty blob stránky do přípravného účtu úložiště, a teprve pak je převede na spravované disky a přesune do skupin prostředků. Další informace najdete v tématu popisujícím [ověření nahrání dat do Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
+
    > [!NOTE]
    > Pokud se objekt blob stránky úspěšně nepřevede na spravovaný disk, zůstane v účtu úložiště a bude vám účtováno za úložiště.
 
-    Pokračujte výběrem **Další: zabezpečení** .
+8. Pokračujte výběrem **Další: zabezpečení** .
 
-    Pomocí obrazovky **zabezpečení** můžete používat vlastní zařízení a sdílet hesla a zvolit, že se má používat dvojité šifrování. 
+    Obrazovka **zabezpečení** umožňuje používat vlastní šifrovací klíč a vlastní zařízení a sdílet hesla a používat dvojité šifrování.
 
     Všechna nastavení na obrazovce **zabezpečení** jsou volitelná. Pokud žádná nastavení nezměníte, použijí se výchozí nastavení.
 
     ![Obrazovka zabezpečení Průvodce Data Boxem pro import](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
 
-8. Pokud nechcete používat systémem generovaná hesla, která Azure Data Box používá ve výchozím nastavení, rozbalte možnost **uvést vlastní heslo**.
+9. Pokud chcete chránit klíč odemknutí pro nový prostředek pomocí vlastního klíče spravovaného zákazníkem, rozbalte možnost **typ šifrování**.
 
-   Systémem generovaná hesla jsou zabezpečená a doporučuje se, pokud vaše organizace nevyžaduje jinak.
+    Konfigurace klíče spravovaného zákazníkem pro vaši Azure Data Box je volitelná. Ve výchozím nastavení používá Data Box k ochraně klíče odemčení klíč Microsoft Managed Key.
 
-   ![Rozšířené nastavení možností hesla na obrazovce zabezpečení pro Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-02.png)
+    Klíč spravovaný zákazníkem nemá vliv na to, jak se data v zařízení šifrují. Klíč se používá pouze k zašifrování klíče odemčení zařízení.
 
-   - Pokud chcete pro nové zařízení použít vlastní heslo, napřed **nastavte předvolby pro heslo zařízení** , vyberte **použít vlastní heslo** a zadejte heslo, které splňuje požadavky na zabezpečení.
+    Pokud nechcete používat klíč spravovaný zákazníkem, přejděte ke kroku 15.
+
+   ![Obrazovka zabezpečení zobrazující nastavení typu šifrování](./media/data-box-deploy-ordered/customer-managed-key-01.png)
+
+10. Jako typ klíče vyberte **spravovaný klíč zákazníka** . Pak vyberte **možnost vybrat Trezor klíčů a klíč**.
+   
+    ![Obrazovka zabezpečení, nastavení pro klíč spravovaný zákazníkem](./media/data-box-deploy-ordered/customer-managed-key-02.png)
+
+11. V okně **Vybrat klíč z Azure Key Vault** se předplatné automaticky vyplní.
+
+    - V případě **trezoru klíčů** můžete v rozevíracím seznamu vybrat existující Trezor klíčů.
+
+      ![Vybrat klíč z Azure Key Vault obrazovky](./media/data-box-deploy-ordered/customer-managed-key-03.png)
+
+    - Můžete také vybrat **vytvořit nové** a vytvořit nový trezor klíčů. Na obrazovce **Vytvoření trezoru klíčů** zadejte skupinu prostředků a název trezoru klíčů. Zajistěte, aby byla zapnutá ochrana proti **odstranění** a **vyprázdnění** . Přijměte všechna ostatní výchozí nastavení a vyberte **zkontrolovat + vytvořit**.
+
+      ![Vytvořit nové nastavení Azure Key Vault](./media/data-box-deploy-ordered/customer-managed-key-04.png)
+
+      Zkontrolujte informace o vašem trezoru klíčů a vyberte **vytvořit**. Počkejte pár minut, než se vytváření trezoru klíčů dokončí.
+
+      ![Obrazovka nové kontroly Azure Key Vault](./media/data-box-deploy-ordered/customer-managed-key-05.png)
+
+12. V části **Vybrat klíč z Azure Key Vault** můžete vybrat existující klíč v trezoru klíčů.
+
+    ![Vyberte existující klíč z Azure Key Vault](./media/data-box-deploy-ordered/customer-managed-key-06.png)
+
+    Pokud chcete vytvořit nový klíč, vyberte **vytvořit novou**. Je nutné použít klíč RSA. Velikost může být 2048 nebo vyšší. Zadejte název nového klíče, Přijměte ostatní výchozí hodnoty a vyberte **vytvořit**.
+
+      ![Vytvořit novou možnost klíče](./media/data-box-deploy-ordered/customer-managed-key-07.png)
+
+      Po vytvoření klíče v trezoru klíčů budete upozorněni.
+
+13. Vyberte **verzi** klíče, který se má použít, a pak zvolte **Vybrat**.
+
+      ![Nový klíč vytvořený v trezoru klíčů](./media/data-box-deploy-ordered/customer-managed-key-08.png)
+
+    Pokud chcete vytvořit novou verzi klíče, vyberte **vytvořit novou**.
+
+    ![Otevření dialogového okna pro vytvoření nové verze klíče](./media/data-box-deploy-ordered/customer-managed-key-08-a.png)
+
+    Zvolte nastavení pro novou verzi klíče a vyberte **vytvořit**.
+
+    ![Vytvořit novou verzi klíče](./media/data-box-deploy-ordered/customer-managed-key-08-b.png)
+
+    Nastavení **typ šifrování** na obrazovce **zabezpečení** zobrazuje Trezor klíčů a klíč.
+
+    ![Klíč a trezor klíčů pro klíč spravovaný zákazníkem](./media/data-box-deploy-ordered/customer-managed-key-09.png)
+
+14. Vyberte identitu uživatele, kterou budete používat ke správě přístupu k tomuto prostředku. Zvolte **Vybrat identitu uživatele**. V panelu na pravé straně vyberte předplatné a spravovanou identitu, kterou chcete použít. Pak zvolte **Vybrat**.
+
+    Spravovaná identita přiřazená uživatelem je samostatný prostředek Azure, který se dá použít ke správě několika prostředků. Další informace najdete v tématu [spravované typy identit](/azure/active-directory/managed-identities-azure-resources/overview).  
+
+    Pokud potřebujete vytvořit novou spravovanou identitu, postupujte podle pokynů v části [Vytvoření, výpis, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal](/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
+    
+    ![Vyberte identitu uživatele.](./media/data-box-deploy-ordered/customer-managed-key-10.png)
+
+    Identita uživatele se zobrazí v nastavení **typ šifrování** .
+
+    ![Vybraná identita uživatele zobrazená v nastavení typ šifrování](./media/data-box-deploy-ordered/customer-managed-key-11.png)
+
+15. Pokud nechcete používat systémem generovaná hesla, která Azure Data Box používá ve výchozím nastavení, rozbalte možnost **převést vlastní heslo** na obrazovku **zabezpečení** .
+
+    Systémem generovaná hesla jsou zabezpečená a doporučuje se, pokud vaše organizace nevyžaduje jinak.
+
+    ![Rozšířené možnosti vlastního hesla pro Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
+
+   - Pokud chcete pro nové zařízení použít vlastní heslo, napřed **nastavte předvolby pro heslo zařízení**, vyberte **použít vlastní heslo** a zadejte heslo, které splňuje požadavky na zabezpečení.
    
      ![Možnosti použití vlastního hesla zařízení na obrazovce zabezpečení pro Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
-   - Použití vlastních hesel ke sdíleným složkám:
+ - Použití vlastních hesel ke sdíleným složkám:
 
-     1. Nastavením **Předvolby pro hesla pro sdílení** vyberte **použít vlastní hesla** a pak **Vyberte hesla pro sdílené složky**.
+   - Nastavením **Předvolby pro hesla pro sdílení** vyberte **použít vlastní hesla** a pak **Vyberte hesla pro sdílené složky**.
      
         ![Možnosti použití vlastních hesel pro sdílení na obrazovce zabezpečení pro Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
-     1. Zadejte heslo pro každý účet úložiště v uvedeném pořadí. Heslo bude použito ve všech sdílených složkách účtu úložiště.
+    - Zadejte heslo pro každý účet úložiště v uvedeném pořadí. Heslo bude použito ve všech sdílených složkách účtu úložiště.
      
         Pokud chcete použít stejné heslo pro všechny účty úložiště, vyberte **Kopírovat do všech**. Po dokončení vyberte **Uložit**.
      
@@ -303,38 +368,38 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
        Na obrazovce **zabezpečení** můžete měnit hesla pomocí **zobrazení nebo změny hesel** .
 
-9. Pokud chcete povolit šifrování na základě softwaru, rozbalte v části **zabezpečení** možnost **dvojité šifrování (pro vysoce zabezpečená prostředí)** a **pro objednávku vyberte Povolit dvojité šifrování**.
+16. Pokud chcete povolit šifrování na základě softwaru, rozbalte v části **zabezpečení** možnost **dvojité šifrování (pro vysoce zabezpečená prostředí)** a **pro objednávku vyberte Povolit dvojité šifrování**.
 
-   ![Možnosti pro povolení šifrování na základě softwaru na obrazovce zabezpečení pro Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
+    ![Obrazovka zabezpečení pro Data Box import a povolení softwarového šifrování pro Data Boxou objednávku](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
-   Šifrování založené na softwaru se provádí kromě šifrování AES-256 dat na Data Box.
+    Šifrování založené na softwaru se provádí kromě šifrování AES-256 dat na Data Box.
 
-   > [!NOTE]
-   > Povolení této možnosti může způsobit, že zpracování objednávek a kopírování dat trvá déle. Po vytvoření objednávky tuto možnost nemůžete změnit.
+    > [!NOTE]
+    > Povolení této možnosti může způsobit, že zpracování objednávek a kopírování dat trvá déle. Po vytvoření objednávky tuto možnost nemůžete změnit.
 
-   Chcete-li pokračovat, vyberte možnost **Další: kontaktní údaje** .
+    Chcete-li pokračovat, vyberte možnost **Další: kontaktní údaje** .
 
-10. V **podrobnostech kontaktu** vyberte **+ Přidat dodací adresu**.
+17. V **podrobnostech kontaktu** vyberte **+ Přidat dodací adresu**.
 
-    ![Na obrazovce s podrobnostmi kontaktu přidejte dodací adresy do objednávky importu Azure Data Box.](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![Na obrazovce s podrobnostmi kontaktu přidejte dodací adresy do objednávky importu Azure Data Box.](media/data-box-deploy-ordered/select-data-box-import-08-a.png)
 
-11. Do pole **Adresa příjemce** zadejte své křestní jméno a příjmení, jméno a poštovní adresu společnosti a platné telefonní číslo. Pak vyberte **ověřit adresu**. Služba kontroluje dostupnost služby pro danou adresu. Pokud je služba k dispozici pro doručovací adresu, dostanete oznámení k tomuto účelu.
+18. V části **Dodací adresa** zadejte jméno a příjmení, název a poštovní adresu společnosti a platné telefonní číslo. Vyberte **Ověřit adresu**. Služba ověří, zda je dodací adresa pro službu dostupná. Pokud je pro zadanou dodací adresu služba k dispozici, obdržíte o tom oznámení.
 
-     ![Dialogové okno Přidat adresu pro expedici s možnostmi odeslání pomocí možností a možnosti Přidat dodací adresu s názvem](media/data-box-deploy-ordered/select-data-box-import-10.png)
+    ![Snímek obrazovky dialogového okna Přidat doručovací adresu s použitím možností a možnosti Přidat adresu pro odeslání s názvem.](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
     Pokud jste vybrali samoobslužné expedici, obdržíte po úspěšném dokončení objednávky e-mailové oznámení. Další informace o samoobslužném expedici najdete v tématu [použití samostatně spravovaného expedice](data-box-portal-customer-managed-shipping.md).
 
-12. Po úspěšném ověření podrobností o expedici vyberte **Přidat dodací adresu** . Vrátíte se na kartu **Podrobnosti o kontaktu** .
+19. Po úspěšném ověření podrobností o expedici vyberte **Přidat dodací adresu** . Vrátíte se na kartu **Podrobnosti o kontaktu** .
 
-13. Až se vrátíte k **podrobnostem kontaktu** , přidejte jednu nebo víc e-mailových adres. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky.
+20. Až se vrátíte k **podrobnostem kontaktu**, přidejte jednu nebo víc e-mailových adres. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky.
 
     Doporučujeme použít skupinový e-mail, abyste oznámení mohli dostávat i tehdy, když odejde správce skupiny.
 
-    ![Část e-mail s kontaktními informacemi v průvodci Order](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![Část e-mail s kontaktními informacemi v průvodci Order](media/data-box-deploy-ordered/select-data-box-import-08-c.png)
 
-12. Projděte si informace v části **Revize + objednávka** týkající se podmínek objednávky, kontaktu, oznámení a ochrany osobních údajů. Zaškrtněte políčko, že souhlasíte s podmínkami ochrany osobních údajů.
+21. Projděte si informace v části **Revize + objednávka** týkající se podmínek objednávky, kontaktu, oznámení a ochrany osobních údajů. Zaškrtněte políčko, že souhlasíte s podmínkami ochrany osobních údajů.
 
-13. Vyberte **Objednat**. Vytvoření objednávky trvá několik minut.
+22. Vyberte **Objednat**. Vytvoření objednávky trvá několik minut.
 
     ![Zobrazit a objednat obrazovku průvodce objednávkou](media/data-box-deploy-ordered/select-data-box-import-11.png)
 

@@ -4,16 +4,17 @@ description: Tento článek popisuje, jak nainstalovat a nakonfigurovat Trend Mi
 author: axayjo
 tags: azure-service-management
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: bed1d567aa48a11c01ae952e6a4a2028e260e6e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d6d80287d05517933f066d5e49fa31e78a48943
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288522"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966374"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Postup instalace a konfigurace Trend Micro hlubokého zabezpečení jako služby na virtuálním počítači s Windows
 
@@ -36,7 +37,7 @@ Když použijete záznam z **Marketplace** , otevře se průvodce, který vám p
 
 Po zobrazení okna **Nastavení** v průvodci proveďte následující kroky:
 
-1. Klikněte na **rozšíření**a potom v dalším podokně klikněte na **Přidat rozšíření** .
+1. Klikněte na **rozšíření** a potom v dalším podokně klikněte na **Přidat rozšíření** .
 
    ![Začněte přidávat rozšíření.][1]
 

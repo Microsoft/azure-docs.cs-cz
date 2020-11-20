@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: 52cb1f144608202739dc46f2053950b38d810631
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 8163fcb3b349e298bc89f06523e3e784bdc4ed49
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330151"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965662"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>Jak chránit záznamy a zóny DNS
 
@@ -34,7 +34,7 @@ Skupina prostředků *myResourceGroup* obsahuje pět zón pro společnost Contos
 
 Nejjednodušším způsobem přiřazení oprávnění Azure RBAC je [prostřednictvím Azure Portal](../role-based-access-control/role-assignments-portal.md).  
 
-Otevřete pro skupinu prostředků položku **řízení přístupu (IAM)** a pak vyberte **Přidat**a potom vyberte roli **Přispěvatel zóny DNS** . Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
+Otevřete pro skupinu prostředků položku **řízení přístupu (IAM)** a pak vyberte **Přidat** a potom vyberte roli **Přispěvatel zóny DNS** . Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
 
 ![Úroveň skupiny prostředků Azure RBAC prostřednictvím Azure Portal](./media/dns-protect-zones-recordsets/rbac1.png)
 
@@ -198,11 +198,11 @@ Existují dva typy uzamčení prostředků: **CanNotDelete** a **ReadOnly**. Tyt
 
 Aby nedocházelo k provedeným změnám, aplikujte na zónu zámek jen pro čtení. Tento zámek zabraňuje vytváření nových sad záznamů a existující sady záznamů z úprav nebo odstranění.
 
-Zámky prostředků na úrovni zóny lze vytvořit prostřednictvím Azure Portal.  Na stránce zóna DNS vyberte **zámky**a pak vyberte **+ Přidat**:
+Zámky prostředků na úrovni zóny lze vytvořit prostřednictvím Azure Portal.  Na stránce zóna DNS vyberte **zámky** a pak vyberte **+ Přidat**:
 
 ![Zámky prostředků na úrovni zóny prostřednictvím Azure Portal](./media/dns-protect-zones-recordsets/locks1.png)
 
-Zámky prostředků na úrovni zóny je také možné vytvořit prostřednictvím [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest):
+Zámky prostředků na úrovni zóny je také možné vytvořit prostřednictvím [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest):
 
 ```azurepowershell
 # Lock a DNS zone
@@ -216,7 +216,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-Ekvivalentní příkaz je dostupný taky [prostřednictvím Azure CLI](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create):
+Ekvivalentní příkaz je dostupný taky [prostřednictvím Azure CLI](/cli/azure/lock?view=azure-cli-latest#az-lock-create):
 
 ```azurecli
 # Lock a DNS zone

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67d3fafb9b4b93ae52bdb09d673bf65cad30b816
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80397867"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966152"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 0,2 a 0,1
 ## <a name="overview"></a>Přehled
@@ -27,7 +27,7 @@ Následující poznámky k verzi identifikují kritické otevřené problémy a 
 
 Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením virtuálního zařízení StorSimple pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
-Aktualizace 0,2 odpovídá **10.0.10280.0**verze softwaru. Aktualizace 0,1 je **10.0.10279.0**verze. V následujících částech jsou uvedeny změny jednotlivých aktualizací. 
+Aktualizace 0,2 odpovídá **10.0.10280.0** verze softwaru. Aktualizace 0,1 je **10.0.10279.0** verze. V následujících částech jsou uvedeny změny jednotlivých aktualizací. 
 
 > [!NOTE]
 > Aktualizace jsou rušivé a restartuje vaše zařízení. Pokud probíhá vstupně-výstupní operace, zařízení bude mít výpadek.
@@ -83,5 +83,4 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 | **čtrnáct.** |Souborový server * |Pokud k souboru ve složce je přidružen alternativní datový proud (ADS), nejsou tyto reklamy zálohovány ani obnoveny prostřednictvím zotavení po havárii, klonování a obnovení na úrovni položek. | |
 
 ## <a name="next-step"></a>Další krok
-[Nainstalujte aktualizace](storsimple-ova-install-update-01.md) ve virtuálním poli StorSimple.
-
+[Nainstalujte aktualizace](./storsimple-virtual-array-install-update-06.md) ve virtuálním poli StorSimple.

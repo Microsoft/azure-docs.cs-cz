@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 9302e922d509f3145fd7913835ce896a6da860fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63bd1d01adf66f33a8ee5349f35063473429b007
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84699460"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964775"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Migrace starších Azure DNS privátních zón do nového modelu prostředků
 
@@ -107,10 +107,10 @@ Tento krok odstraní starší zóny DNS a měl by se provádět až po ověřen�
 ## <a name="update-your-automation"></a>Aktualizace automatizace
 
 Pokud používáte automatizaci, včetně šablon, skriptů PowerShellu nebo vlastního kódu vyvinutého pomocí sady SDK, musíte službu Automation aktualizovat tak, aby používala nový model prostředků pro privátní zóny DNS. Níže najdete odkazy na novou privátní dokumentaci k DNS CLI/PS/SDK.
-* [Azure DNS privátní zóny REST API](https://docs.microsoft.com/rest/api/dns/privatedns/privatezones)
-* [Azure DNS rozhraní příkazového řádku privátních zón](https://docs.microsoft.com/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
-* [Prostředí PowerShell pro privátní zóny Azure DNS](https://docs.microsoft.com/powershell/module/az.privatedns/?view=azps-2.3.2)
-* [Sada SDK privátních zón Azure DNS](https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
+* [Azure DNS privátní zóny REST API](/rest/api/dns/privatedns/privatezones)
+* [Azure DNS rozhraní příkazového řádku privátních zón](/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
+* [Prostředí PowerShell pro privátní zóny Azure DNS](/powershell/module/az.privatedns/?view=azps-2.3.2)
+* [Sada SDK privátních zón Azure DNS](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 
 ## <a name="need-further-help"></a>Potřebujete další pomoc
 

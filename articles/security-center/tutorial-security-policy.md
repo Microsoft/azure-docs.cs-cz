@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5aa6906f7f06e109342d81db6171773a68642e0c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 76695d4d8dbc3e3a6b04b89b8f34e41b83a92963
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342276"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965183"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -46,7 +46,7 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 
 1. Na řídicím panelu **Security Center** vyberte **zásady zabezpečení**.
 
-    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="Stránka správy zásad&quot;:::
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="Stránka správy zásad":::
 
    Na obrazovce **Správa zásad** můžete zobrazit počet skupin pro správu, odběry a pracovní prostory i strukturu skupiny pro správu.
 
@@ -57,7 +57,7 @@ Zobrazení zásad zabezpečení ve službě Security Center:
    ![Stránka zásad](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
-    > Pokud je popisek &quot;g Zděděný" společně s výchozí zásadou, znamená to, že zásada byla přiřazena skupině pro správu a zděděna předplatným, které si prohlížíte.
+    > Pokud je popisek "g Zděděný" společně s výchozí zásadou, znamená to, že zásada byla přiřazena skupině pro správu a zděděna předplatným, které si prohlížíte.
 
 
 1. Vyberte si z dostupných možností na této stránce:
@@ -68,18 +68,7 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 
     1. Pokud chcete zobrazit a upravit výchozí zásady, vyberte **Zobrazit efektivní zásady** a pokračujte podle popisu níže. 
 
-        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Stránka správy zásad&quot;:::
-
-   Na obrazovce **Správa zásad** můžete zobrazit počet skupin pro správu, odběry a pracovní prostory i strukturu skupiny pro správu.
-
-1. Vyberte předplatné nebo skupinu pro správu, jejichž zásady chcete zobrazit.
-
-1. Zobrazí se stránka zásady zabezpečení pro toto předplatné nebo skupinu pro správu. Zobrazuje dostupné a přiřazené zásady.
-
-   ![Stránka zásad](./media/tutorial-security-policy/security-policy-page.png)
-
-    > [!NOTE]
-    > Pokud je popisek &quot;g Zděděný":::
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Obrazovka efektivních zásad":::
 
        Tato obrazovka **zásad zabezpečení** odráží akci provedenou zásadami přiřazenými k předplatnému nebo skupině pro správu, kterou jste vybrali.
        
@@ -97,7 +86,7 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 
 Zásady zabezpečení můžete upravovat prostřednictvím Azure Policyového portálu prostřednictvím REST API nebo pomocí Windows PowerShellu.
 
-Security Center používá Role-Based Access Control (RBAC), která poskytuje předdefinované role, které můžete přiřadit uživatelům, skupinám a službám Azure. Když uživatelé otevřou Security Center, uvidí jenom informace související s prostředky, ke kterým mají přístup. To znamená, že uživatelé mají přiřazenou roli *vlastník*, *Přispěvatel*nebo *Čtenář* k předplatnému prostředku. K dispozici jsou také dvě konkrétní role Security Center:
+Security Center používá řízení přístupu na základě role Azure (Azure RBAC), které poskytuje předdefinované role, které můžete přiřadit uživatelům, skupinám a službám Azure. Když uživatelé otevřou Security Center, uvidí jenom informace související s prostředky, ke kterým mají přístup. To znamená, že uživatelé mají přiřazenou roli *vlastník*, *Přispěvatel* nebo *Čtenář* k předplatnému prostředku. K dispozici jsou také dvě konkrétní role Security Center:
 
 - **Čtecí modul zabezpečení**: má práva k zobrazení Security Centerch položek, jako jsou doporučení, výstrahy, zásady a stav. Nelze provést změny.
 - **Správce zabezpečení**: má stejná oprávnění k zobrazení jako *čtecí modul zabezpečení*. Může také aktualizovat zásady zabezpečení a zrušit výstrahy.

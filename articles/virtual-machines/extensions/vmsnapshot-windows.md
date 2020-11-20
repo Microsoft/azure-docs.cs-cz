@@ -6,15 +6,16 @@ documentationcenter: ''
 author: trinadhkotturu
 manager: gwallace
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: trinadhk
-ms.openlocfilehash: d771c6dd114b252c070a0e56ba3ab23c597ad5aa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1d1342cffc6bc8743c34cb4c028c0790de91dc50
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088852"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965863"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Rozšíření snímku virtuálního počítače pro Windows pro Azure Backup
 
@@ -22,7 +23,7 @@ Azure Backup poskytuje podporu pro zálohování úloh z místního prostředí 
 
 Rozšíření VMSnapshot se zobrazí v Azure Portal pouze pro nespravované virtuální počítače.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 Seznam podporovaných operačních systémů najdete v tématu [operační systémy, které podporuje Azure Backup](../../backup/backup-azure-arm-vms-prepare.md#before-you-start)
@@ -61,7 +62,7 @@ Následující JSON zobrazuje schéma pro rozšíření snímku virtuálního po
 
 | Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2015-06-15 | datum |
 | taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | řetězec |
 | commandStartTimeUTCTicks | 6.36458 e + 17 | řetězec |
 | locale | cs-cz | řetězec |

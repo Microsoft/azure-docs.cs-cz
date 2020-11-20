@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 1c4f1951-3613-4a5a-a0af-36b85750c84e
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed30c271e4c2458a33784cbcfc682001b542f2b6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359609"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964945"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -422,7 +423,7 @@ Následující vývojový diagram znázorňuje posloupnost kroků specifických 
 Nejjednodušší způsob, jak vytvořit nový virtuální počítač s imagí z Azure Marketplace, je použití Azure Portal.
 
 1.  Přejděte na <https://portal.azure.com/#create/hub>.  Nebo v nabídce Azure Portal vyberte **+ Nový**.
-1.  Vyberte **COMPUTE**a potom vyberte typ operačního systému, který chcete nasadit. Například Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2) nebo Oracle Linux 7,2. Výchozí zobrazení seznamu nezobrazuje všechny podporované operační systémy. Pro úplný seznam vyberte **Zobrazit vše** . Další informace o podporovaných operačních systémech pro nasazení softwaru SAP najdete v tématu SAP Note [1928533].
+1.  Vyberte **COMPUTE** a potom vyberte typ operačního systému, který chcete nasadit. Například Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2) nebo Oracle Linux 7,2. Výchozí zobrazení seznamu nezobrazuje všechny podporované operační systémy. Pro úplný seznam vyberte **Zobrazit vše** . Další informace o podporovaných operačních systémech pro nasazení softwaru SAP najdete v tématu SAP Note [1928533].
 1.  Na další stránce si přečtěte podmínky a ujednání.
 1.  V poli **Vyberte model nasazení** vyberte možnost **Správce prostředků**.
 1.  Vyberte **Vytvořit**.
@@ -487,7 +488,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
 
 1. **Nastavení**:
    * **ID systému SAP**: ID systému SAP (SID).
-   * **Typ operačního**systému: operační systém, který chcete nasadit, například Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2), nebo Oracle Linux 7,2.
+   * **Typ operačního** systému: operační systém, který chcete nasadit, například Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2), nebo Oracle Linux 7,2.
 
      V zobrazení seznamu se nezobrazuje všechny podporované operační systémy. Další informace o podporovaných operačních systémech pro nasazení softwaru SAP najdete v tématu SAP Note [1928533].
    * **Velikost systému SAP**: velikost systému SAP.
@@ -625,7 +626,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
    * **Umístění**: kam se má šablona nasadit. Pokud jste vybrali existující skupinu prostředků, použije se umístění této skupiny prostředků.
 1. **Nastavení**:
    * **ID systému SAP**: ID systému SAP.
-   * **Typ operačního**systému: typ operačního systému, který chcete nasadit (Windows nebo Linux).
+   * **Typ operačního** systému: typ operačního systému, který chcete nasadit (Windows nebo Linux).
    * **Velikost systému SAP**: velikost systému SAP.
 
      Počet SAP, který nový systém poskytuje. Pokud si nejste jistí, kolik SAP systém vyžaduje, požádejte svého partnera technologie SAP nebo systémový integrátor.
@@ -720,7 +721,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
    * **Umístění**: kam se má šablona nasadit. Pokud jste vybrali existující skupinu prostředků, použije se umístění této skupiny prostředků.
 1. **Nastavení**:
    * **ID systému SAP**: ID systému SAP.
-   * **Typ operačního**systému: typ operačního systému, který chcete nasadit (Windows nebo Linux).
+   * **Typ operačního** systému: typ operačního systému, který chcete nasadit (Windows nebo Linux).
    * **Velikost systému SAP**: velikost systému SAP.
 
      Počet SAP, který nový systém poskytuje. Pokud si nejste jistí, kolik SAP systém vyžaduje, požádejte svého partnera technologie SAP nebo systémový integrátor.
@@ -854,9 +855,9 @@ Postup pro konfiguraci proxy serveru ve Windows se liší od způsobu konfigurac
 
 Aby bylo možné získat přístup k Internetu, musí být nastavení proxy serveru správně nastaveno pro účet místního systému. Pokud vaše nastavení proxy serveru nejsou nastavená Zásady skupiny, můžete nakonfigurovat nastavení pro účet místního systému.
 
-1. Přejděte na **Start**, zadejte **gpedit. msc**a pak vyberte **ENTER**.
+1. Přejděte na **Start**, zadejte **gpedit. msc** a pak vyberte **ENTER**.
 1. Vyberte **Konfigurace počítače**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer**. Ujistěte se, že nastavení **nastavit proxy na počítač (nikoli na uživatele)** je zakázané nebo není nakonfigurované.
-1. V **Ovládacích panelech**klikněte na možnosti **sítě a sdílení**na webu  >  **Internet Options**.
+1. V **Ovládacích panelech** klikněte na možnosti **sítě a sdílení** na webu  >  **Internet Options**.
 1. Na kartě **připojení** vyberte tlačítko **nastavení sítě LAN** .
 1. Zrušte zaškrtnutí políčka **Automaticky zjišťovat nastavení**.
 1. Zaškrtněte políčko **použít proxy server pro vaši síť LAN** a potom zadejte adresu a port proxy serveru.
@@ -1128,7 +1129,7 @@ Azperflib.exe výstup zobrazuje všechny naplněné čítače výkonu Azure pro 
 ![Výstup kontroly stavu spuštěním azperflib.exe, což znamená, že neexistují žádné problémy][deployment-guide-figure-1100]
 <a name="figure-11"></a>
 
-Zkontroluje výsledek vrácený pro **čítače celkový** výstup, který je hlášený jako prázdný, a pro **stav**uvedený na předchozím obrázku.
+Zkontroluje výsledek vrácený pro **čítače celkový** výstup, který je hlášený jako prázdný, a pro **stav** uvedený na předchozím obrázku.
 
 Vyhodnotit výsledné hodnoty následujícím způsobem:
 
@@ -1279,7 +1280,7 @@ Pokud některá data infrastruktury nejsou doručena správně, jak je uvedeno v
 
    ![Výstup úspěšného testu rozšíření Azure pro SAP][deployment-guide-figure-1300]
 
-Ujistěte se, že všechny výsledky kontroly stavu jsou v **pořádku**. Pokud se některé kontroly nezobrazují, spusťte rutinu **aktualizace, jak**je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. Počkejte 15 minut a opakujte kontroly popsané v části [Kontrola připravenosti pro Azure rozšíření pro SAP][deployment-guide-5.1] a [kontrolu stavu pro rozšíření Azure pro konfiguraci SAP][deployment-guide-5.2]. Pokud kontroly stále indikují problém s některými nebo všemi čítači, přečtěte si téma [řešení potíží s rozšířením Azure pro SAP][deployment-guide-5.3].
+Ujistěte se, že všechny výsledky kontroly stavu jsou v **pořádku**. Pokud se některé kontroly nezobrazují, spusťte rutinu **aktualizace, jak** je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. Počkejte 15 minut a opakujte kontroly popsané v části [Kontrola připravenosti pro Azure rozšíření pro SAP][deployment-guide-5.1] a [kontrolu stavu pro rozšíření Azure pro konfiguraci SAP][deployment-guide-5.2]. Pokud kontroly stále indikují problém s některými nebo všemi čítači, přečtěte si téma [řešení potíží s rozšířením Azure pro SAP][deployment-guide-5.3].
 
 > [!Note]
 > V případech, kdy používáte spravované standardní disky Azure, se můžete setkat s upozorněními. Místo testů se zobrazí upozornění vracející "OK". To je normální a určené pro případ tohoto typu disku. Viz také téma [řešení potíží s rozšířením Azure pro SAP][deployment-guide-5.3] .
