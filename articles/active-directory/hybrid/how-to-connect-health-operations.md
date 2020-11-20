@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91b7bd6d05ee0b992ee166b9acb13aff2e605a2c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89276265"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961001"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health operace
 V tomto tématu najdete popis různých operací, které můžete provádět pomocí služby Azure Active Directory (Azure AD) Connect Health.
@@ -137,7 +137,7 @@ Chcete-li uživateli dovolit přístup na úrovni *všech instancí služby* v r
 3. V podokně **Vybrat roli** vyberte roli (například **vlastník**).<br>
    ![Snímek obrazovky s nabídkou konfigurace Azure AD Connect Health a Azure RBAC](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Zadejte název nebo identifikátor cílového uživatele nebo skupiny. Můžete vybrat jednoho nebo více uživatelů nebo skupin současně. Klikněte na **Vybrat**.
-   ![Snímek obrazovky s Azure AD Connect Health a seznamem rolí Azure RBAC](./media/how-to-connect-health-operations/RBAC_select_users.png)
+   ![Snímek obrazovky Azure AD Connect Health a seznamu rolí Azure](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. Vyberte **OK**.<br>
 6. Po dokončení přiřazení role se uživatelé a skupiny zobrazí v seznamu.<br>
    ![Snímek obrazovky s vybranými Azure AD Connect Health a Azure RBAC a novými uživateli](./media/how-to-connect-health-operations/RBAC_user_list.png)

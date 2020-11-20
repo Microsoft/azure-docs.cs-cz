@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: a2d0ff6810326f7f375595e8dcebbe81b55055ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87505557653e70aab7f1392aeea8dbdf505327e0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330345"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962752"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Migrace databáze SQL Server pro Azure SQL Database pomocí Azure PowerShell
 
@@ -36,26 +36,26 @@ V tomto článku získáte informace o těchto tématech:
 K provedení těchto kroků potřebujete:
 
 * [SQL Server 2016 nebo vyšší](https://www.microsoft.com/sql-server/sql-server-downloads) (jakákoli edice)
-* Povolení protokolu TCP/IP, který je ve výchozím nastavení zakázán při instalaci SQL Server Express. Povolte protokol TCP/IP podle článku [Povolení nebo zakázání síťového protokolu serveru](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
-* Ke konfiguraci [brány Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Instance služby Azure SQL Database. Instanci Azure SQL Database můžete vytvořit podle podrobných informací uvedených v článku [Vytvoření databáze v Azure SQL Database v Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
+* Povolení protokolu TCP/IP, který je ve výchozím nastavení zakázán při instalaci SQL Server Express. Povolte protokol TCP/IP podle článku [Povolení nebo zakázání síťového protokolu serveru](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
+* Ke konfiguraci [brány Windows Firewall pro přístup k databázovému stroji](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* Instance služby Azure SQL Database. Instanci Azure SQL Database můžete vytvořit podle podrobných informací uvedených v článku [Vytvoření databáze v Azure SQL Database v Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 nebo novějším.
-* Pokud chcete vytvořit Microsoft Azure Virtual Network pomocí modelu nasazení Azure Resource Manager, který poskytuje Azure Database Migration Service připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-* Aby bylo dokončeno posouzení místní databáze a migrace schématu pomocí Data Migration Assistant, jak je popsáno v článku, který [provádí hodnocení migrace SQL Server](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)
-* Pokud chcete stáhnout a nainstalovat modul AZ. datamigration z Galerie prostředí PowerShell pomocí [rutiny prostředí PowerShell Install-Module](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1); Nezapomeňte otevřít okno příkazového řádku PowerShellu pomocí příkazu Spustit jako správce.
-* Aby bylo zajištěno, že přihlašovací údaje použité pro připojení ke zdrojové SQL Server instance mají oprávnění [Control Server](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) .
+* Pokud chcete vytvořit Microsoft Azure Virtual Network pomocí modelu nasazení Azure Resource Manager, který poskytuje Azure Database Migration Service připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](../expressroute/expressroute-introduction.md) nebo [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+* Aby bylo dokončeno posouzení místní databáze a migrace schématu pomocí Data Migration Assistant, jak je popsáno v článku, který [provádí hodnocení migrace SQL Server](/sql/dma/dma-assesssqlonprem)
+* Pokud chcete stáhnout a nainstalovat modul AZ. datamigration z Galerie prostředí PowerShell pomocí [rutiny prostředí PowerShell Install-Module](/powershell/module/powershellget/Install-Module?view=powershell-5.1); Nezapomeňte otevřít okno příkazového řádku PowerShellu pomocí příkazu Spustit jako správce.
+* Aby bylo zajištěno, že přihlašovací údaje použité pro připojení ke zdrojové SQL Server instance mají oprávnění [Control Server](/sql/t-sql/statements/grant-server-permissions-transact-sql) .
 * Aby se zajistilo, že přihlašovací údaje použité pro připojení k cílové instanci Azure SQL DB mají oprávnění řídicí databáze pro cílové Azure SQL Database databáze.
 * Předplatné Azure. Pokud ho ještě nemáte, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Přihlášení k předplatnému Microsoft Azure
 
-Pomocí pokynů v článku [přihlášení pomocí Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps) se přihlaste ke svému předplatnému Azure pomocí PowerShellu.
+Pomocí pokynů v článku [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps) se přihlaste ke svému předplatnému Azure pomocí PowerShellu.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Než budete moct vytvořit virtuální počítač, vytvořte skupinu prostředků.
 
-Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) .
+Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) .
 
 Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v oblasti *EastUS* .
 
@@ -67,11 +67,11 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 
 Novou instanci Azure Database Migration Service můžete vytvořit pomocí `New-AzDataMigrationService` rutiny. Tato rutina očekává následující požadované parametry:
 
-* *Název skupiny prostředků Azure*. Pomocí příkazu [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) můžete vytvořit skupinu prostředků Azure, jak je uvedeno výše, a zadat její název jako parametr.
+* *Název skupiny prostředků Azure*. Pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) můžete vytvořit skupinu prostředků Azure, jak je uvedeno výše, a zadat její název jako parametr.
 * *Název služby* Řetězec, který odpovídá požadovanému jedinečnému názvu služby pro Azure Database Migration Service 
 * *Umístění:* Určuje umístění služby. Zadejte umístění datového centra Azure, například Západní USA nebo jihovýchodní Asie.
 * *SKU*. Tento parametr odpovídá názvu SKU DMS. Aktuálně podporovaný název SKU je *GeneralPurpose_4vCores*.
-* *Identifikátor virtuální podsítě*. K vytvoření podsítě můžete použít rutinu [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) . 
+* *Identifikátor virtuální podsítě*. K vytvoření podsítě můžete použít rutinu [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) . 
 
 Následující příklad vytvoří službu s názvem *MyDMS* ve skupině prostředků *MyDMSResourceGroup* nacházející se v *východní USA* oblasti pomocí virtuální sítě s názvem *MyVNET* a podsítě s názvem *MySubnet*.
 
@@ -151,7 +151,7 @@ Nakonec vytvořte a spusťte úlohu Azure Database Migration. Úloha migrace dat
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>Vytvoření parametrů přihlašovacích údajů pro zdroj a cíl
 
-Přihlašovací údaje zabezpečení připojení se dají vytvořit jako objekt [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) .
+Přihlašovací údaje zabezpečení připojení se dají vytvořit jako objekt [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) .
 
 Následující příklad ukazuje vytvoření objektů *PSCredential* pro zdrojové i cílové připojení, které poskytuje hesla jako řetězcové proměnné *$sourcePassword* a *$targetPassword*.
 
@@ -195,8 +195,8 @@ Pomocí `New-AzDataMigrationTask` rutiny vytvořte a spusťte úlohu migrace. Ta
 * *Název_úlohy*. Název úkolu, který se má vytvořit 
 * *SourceConnection*. Objekt AzDmsConnInfo představující zdrojové SQL Server připojení.
 * *TargetConnection*. AzDmsConnInfo objekt představující cílové připojení Azure SQL Database.
-* *SourceCred*. Objekt [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) pro připojení ke zdrojovému serveru.
-* *TargetCred*. Objekt [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) pro připojení k cílovému serveru.
+* *SourceCred*. Objekt [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) pro připojení ke zdrojovému serveru.
+* *TargetCred*. Objekt [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) pro připojení k cílovému serveru.
 * *SelectedDatabase*. Objekt AzDataMigrationSelectedDB představující mapování zdrojového a cílového databáze.
 * *SchemaValidation*. (volitelný přepínač, parametr Switch) Po migraci provede porovnání informací o schématu mezi zdrojem a cílem.
 * *DataIntegrityValidation*. (volitelný přepínač, parametr Switch) Po migraci provede ověření integrity dat na základě kontrolního součtu mezi zdrojem a cílem.

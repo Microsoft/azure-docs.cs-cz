@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 1d5d57cab9906c04c5c207fa7df2d2fae6f749e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85d7114f419266124d0d23368b24700af025758a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514613"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961035"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>Úprava nastavení síťového rozhraní DATA 0 na zařízení řady StorSimple 8000
 
@@ -64,9 +64,8 @@ Alternativní způsob, jak znovu nakonfigurovat síťové rozhraní DATA 0, je p
    * Pevná IPv4 adresa pro řadič 0
    * Pevná adresa IPv4 pro řadič 1
      
-     Další informace o použití této rutiny najdete v části [Windows PowerShell pro StorSimple Reference k rutinám](https://technet.microsoft.com/library/dn688161.aspx).
+     Další informace o použití této rutiny najdete v části [Windows PowerShell pro StorSimple Reference k rutinám](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630)).
 
 ## <a name="next-steps"></a>Další kroky
 * Pokud chcete nakonfigurovat jiná síťová rozhraní než DATA 0, můžete použít [nastavení konfigurace sítě v Azure Portal](storsimple-8000-modify-device-config.md). 
-* Pokud při konfiguraci síťových rozhraní dojde k problémům, přečtěte si téma [řešení potíží s nasazením](storsimple-troubleshoot-deployment.md).
-
+* Pokud při konfiguraci síťových rozhraní dojde k problémům, přečtěte si téma [řešení potíží s nasazením](./storsimple-8000-troubleshoot-deployment.md).

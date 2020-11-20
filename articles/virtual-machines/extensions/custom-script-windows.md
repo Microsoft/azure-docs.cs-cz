@@ -5,17 +5,18 @@ services: virtual-machines-windows
 manager: carmonm
 author: bobbytreed
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8d11ff6eaab8ed6a13c3c2aa1b712cc57e7825ea
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973814"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960967"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro virtuální počítače
 
@@ -23,7 +24,7 @@ Rozšíření vlastních skriptů stáhne a spustí skripty na virtuálních po�
 
 Tento dokument popisuje, jak používat rozšíření vlastních skriptů pomocí modulu Azure PowerShell, Azure Resource Manager šablony a podrobně popisuje postup řešení potíží v systémech Windows.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!NOTE]  
 > Nepoužívejte rozšíření vlastních skriptů ke spuštění Update-AzVM se stejným virtuálním počítačem jako jeho parametr, protože se bude čekat sám na sebe.  
@@ -122,9 +123,9 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2015-06-15 | datum |
 | vydavatel | Microsoft.Compute | řetězec |
 | typ | CustomScriptExtension | řetězec |
 | typeHandlerVersion | 1.10 | int |
@@ -294,7 +295,7 @@ Pokud chcete nasadit rozšíření vlastních skriptů na klasických virtuáln�
 
 ### <a name="azure-portal"></a>portál Azure
 
-Přejděte na prostředek klasického virtuálního počítače. V části **Nastavení**vyberte **rozšíření** .
+Přejděte na prostředek klasického virtuálního počítače. V části **Nastavení** vyberte **rozšíření** .
 
 Klikněte na **+ Přidat** a v seznamu prostředků vyberte **rozšíření vlastních skriptů**.
 

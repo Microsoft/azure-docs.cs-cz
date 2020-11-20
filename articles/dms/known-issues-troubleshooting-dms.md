@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f0ec9d2a3794ea910339b4d329bb28f23c5a76b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297354"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962276"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Řešení běžných problémů s Azure Database Migration Service a chyb
 
@@ -25,7 +25,7 @@ Tento článek popisuje některé běžné problémy a chyby, které Azure Datab
 > [!NOTE]
 > Komunikace bez posunu
 >
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_ text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
 >
 
 ## <a name="migration-activity-in-queued-state"></a>Aktivita migrace ve stavu zařazeném do fronty
@@ -54,7 +54,7 @@ Když migrujete z MySQL na Azure Database for MySQL pomocí Azure Database Migra
 
 | Příčina         | Řešení |
 | ------------- | ------------- |
-| K této chybě může dojít, pokud uživatel, který provádí migraci, chybí ReplicationAdmin role nebo oprávnění klienta replikace, REPLIKy replikace a SUPER (verze starší než MySQL 5.6.6).<br><br><br><br><br><br><br><br><br><br><br><br><br> | Ujistěte se, že jsou požadovaná [oprávnění](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) pro uživatelský účet přesně nakonfigurovaná na instanci Azure Database for MySQL. Pomocí následujících kroků můžete například vytvořit uživatele s názvem "migrateuser" s požadovanými oprávněními:<br>1. Vytvořte migrateuser@ uživatele% identifikovaný klíčovým klíčem; <br>2. udělte všechna oprávnění pro db_name. * do ' migrateuser ' @ '% ' identifikovaný ' Secret '; zopakováním tohoto kroku udělíte přístup k více databázím. <br>3. udělte replikaci na podřízeném počítači *.* do ' migrateuser ' @ '% ' identifikovaný ' Secret ';<br>4. udělte klienta replikace na *.* do ' migrateuser ' @ '% ' identifikovaný ' Secret ';<br>5. vyprázdnit oprávnění; |
+| K této chybě může dojít, pokud uživatel, který provádí migraci, chybí ReplicationAdmin role nebo oprávnění klienta replikace, REPLIKy replikace a SUPER (verze starší než MySQL 5.6.6).<br><br><br><br><br><br><br><br><br><br><br><br><br> | Ujistěte se, že jsou požadovaná [oprávnění](./tutorial-mysql-azure-mysql-online.md#prerequisites) pro uživatelský účet přesně nakonfigurovaná na instanci Azure Database for MySQL. Pomocí následujících kroků můžete například vytvořit uživatele s názvem "migrateuser" s požadovanými oprávněními:<br>1. Vytvořte migrateuser@ uživatele% identifikovaný klíčovým klíčem; <br>2. udělte všechna oprávnění pro db_name. * do ' migrateuser ' @ '% ' identifikovaný ' Secret '; zopakováním tohoto kroku udělíte přístup k více databázím. <br>3. udělte replikaci na podřízeném počítači *.* do ' migrateuser ' @ '% ' identifikovaný ' Secret ';<br>4. udělte klienta replikace na *.* do ' migrateuser ' @ '% ' identifikovaný ' Secret ';<br>5. vyprázdnit oprávnění; |
 
 ## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Při pokusu o zastavení Azure Database Migration Service došlo k chybě.
 
@@ -84,7 +84,7 @@ Při provádění online migrace z SQL Server do spravované instance Azure SQL 
 
 | Příčina         | Řešení    |
 | ------------- | ------------- |
-| Tato chyba znamená, že instanční objekt, který se používá pro online migraci z SQL Server do spravované instance SQL, nemá oprávnění přispívat k tomuto předplatnému. Některá volání rozhraní API se spravovanými instancemi v současné době vyžadují toto oprávnění u předplatného pro operaci obnovení. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Pomocí `Get-AzureADServicePrincipal` rutiny prostředí PowerShell, která `-ObjectId` je k dispozici z chybové zprávy, zobrazte seznam zobrazovaných názvů používaných ID aplikace.<br><br> Ověřte oprávnění k této aplikaci a ujistěte se, že má [roli Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) na úrovni předplatného. <br><br> Tým Azure Database Migration Service Engineering pracuje na omezení požadovaného přístupu z aktuální role Contribute v předplatném. Pokud máte obchodní požadavek, který nepovoluje použití role přispívání, požádejte o další pomoc podporu Azure. |
+| Tato chyba znamená, že instanční objekt, který se používá pro online migraci z SQL Server do spravované instance SQL, nemá oprávnění přispívat k tomuto předplatnému. Některá volání rozhraní API se spravovanými instancemi v současné době vyžadují toto oprávnění u předplatného pro operaci obnovení. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Pomocí `Get-AzureADServicePrincipal` rutiny prostředí PowerShell, která `-ObjectId` je k dispozici z chybové zprávy, zobrazte seznam zobrazovaných názvů používaných ID aplikace.<br><br> Ověřte oprávnění k této aplikaci a ujistěte se, že má [roli Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) na úrovni předplatného. <br><br> Tým Azure Database Migration Service Engineering pracuje na omezení požadovaného přístupu z aktuální role Contribute v předplatném. Pokud máte obchodní požadavek, který nepovoluje použití role přispívání, požádejte o další pomoc podporu Azure. |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Při odstraňování síťového rozhraní přidruženého k Azure Database Migration Service došlo k chybě.
 
@@ -102,7 +102,7 @@ Pokud se pokoušíte připojit ke zdroji v průvodci projektem služby Azure Dat
 
 | Příčina         | Řešení    |
 | ------------- | ------------- |
-| Při použití [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [vyžaduje](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) Azure Database Migration Service zřízení tří koncových bodů služby v podsíti Virtual Network přidružené ke službě:<br> --Service Bus koncový bod<br> – Koncový bod úložiště<br> --Koncový bod cílové databáze (například koncový bod SQL, koncový bod Cosmos DB)<br><br><br><br><br> | [Povolte](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) pro připojení ExpressRoute mezi zdrojem a Azure Database Migration Service požadované koncové body služby. <br><br><br><br><br><br><br><br> |
+| Při použití [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [vyžaduje](./tutorial-sql-server-azure-sql-online.md) Azure Database Migration Service zřízení tří koncových bodů služby v podsíti Virtual Network přidružené ke službě:<br> --Service Bus koncový bod<br> – Koncový bod úložiště<br> --Koncový bod cílové databáze (například koncový bod SQL, koncový bod Cosmos DB)<br><br><br><br><br> | [Povolte](./tutorial-sql-server-azure-sql-online.md) pro připojení ExpressRoute mezi zdrojem a Azure Database Migration Service požadované koncové body služby. <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Při migraci databáze MySQL do Azure DB pro MySQL se zobrazí chyba časového limitu čekání na uzamčení.
 
@@ -126,13 +126,13 @@ Když se pokusíte připojit Azure Database Migration Service k SQL Servermu zdr
 
 ## <a name="additional-known-issues"></a>Další známé problémy
 
-* [Známé problémy/omezení migrace pro online migrace Azure SQL Database](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
-* [Známé problémy/omezení migrace pro online migrace Azure Database for MySQL](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
-* [Známé problémy/omezení migrace pro online migrace Azure Database for PostgreSQL](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
+* [Známé problémy/omezení migrace pro online migrace Azure SQL Database](./known-issues-azure-sql-online.md)
+* [Známé problémy/omezení migrace pro online migrace Azure Database for MySQL](./known-issues-azure-mysql-online.md)
+* [Známé problémy/omezení migrace pro online migrace Azure Database for PostgreSQL](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte se na článek [Azure Database Migration Service PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration).
-* Seznamte se s [postupem konfigurace parametrů serveru v Azure Database for MySQL pomocí Azure Portal](https://docs.microsoft.com/azure/mysql/howto-server-parameters).
-* Seznam [požadavků pro použití Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs)najdete v článku Přehled požadavků.
-* Přečtěte si [Nejčastější dotazy týkající se použití Azure Database Migration Service](https://docs.microsoft.com/azure/dms/faq).
+* Podívejte se na článek [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration).
+* Seznamte se s [postupem konfigurace parametrů serveru v Azure Database for MySQL pomocí Azure Portal](../mysql/howto-server-parameters.md).
+* Seznam [požadavků pro použití Azure Database Migration Service](./pre-reqs.md)najdete v článku Přehled požadavků.
+* Přečtěte si [Nejčastější dotazy týkající se použití Azure Database Migration Service](./faq.md).

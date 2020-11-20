@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: c82acb66266fd36e5b7155adbfa5bd5ade1b765c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e1c45b99138a05ef78976b90f65f57304e676ff
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291983"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962769"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>Migrace SQL Server do spravované instance SQL pomocí PowerShellu & Azure Database Migration Service
 
@@ -40,30 +40,30 @@ Tento článek obsahuje podrobné informace o tom, jak provádět online i offli
 K provedení těchto kroků potřebujete:
 
 * [SQL Server 2016 nebo vyšší](https://www.microsoft.com/sql-server/sql-server-downloads) (jakákoli edice).
-* Místní kopii databáze **AdventureWorks2016** , která je k dispozici ke stažení [zde](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017).
-* Povolení protokolu TCP/IP, který je ve výchozím nastavení zakázán při instalaci SQL Server Express. Povolte protokol TCP/IP podle článku [Povolení nebo zakázání síťového protokolu serveru](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
-* Ke konfiguraci [brány Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* Místní kopii databáze **AdventureWorks2016** , která je k dispozici ke stažení [zde](/sql/samples/adventureworks-install-configure?view=sql-server-2017).
+* Povolení protokolu TCP/IP, který je ve výchozím nastavení zakázán při instalaci SQL Server Express. Povolte protokol TCP/IP podle článku [Povolení nebo zakázání síťového protokolu serveru](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
+* Ke konfiguraci [brány Windows Firewall pro přístup k databázovému stroji](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* Spravovaná instance SQL Pomocí podrobností v článku [Vytvoření spravované instance ASQL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)můžete vytvořit SPRAVOVANOU instanci SQL.
+* Spravovaná instance SQL Pomocí podrobností v článku [Vytvoření spravované instance ASQL](../azure-sql/managed-instance/instance-create-quickstart.md)můžete vytvořit SPRAVOVANOU instanci SQL.
 * Stažení a instalace [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 nebo novějších verzích.
-* Microsoft Azure Virtual Network vytvořili pomocí modelu nasazení Azure Resource Manager, který poskytuje Azure Database Migration Service připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-* Dokončili jste vyhodnocení místní migrace databáze a schématu pomocí Data Migration Assistant, jak je popsáno v článku, který [provádí hodnocení migrace SQL Server](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem).
-* Pokud chcete stáhnout a nainstalovat `Az.DataMigration` modul (verze 0.7.2 nebo novější) z Galerie prostředí PowerShell pomocí [rutiny Install-Module prostředí PowerShell](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1).
-* Aby bylo zajištěno, že přihlašovací údaje použité pro připojení ke zdrojové SQL Server instance mají oprávnění [Control Server](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) .
+* Microsoft Azure Virtual Network vytvořili pomocí modelu nasazení Azure Resource Manager, který poskytuje Azure Database Migration Service připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](../expressroute/expressroute-introduction.md) nebo [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+* Dokončili jste vyhodnocení místní migrace databáze a schématu pomocí Data Migration Assistant, jak je popsáno v článku, který [provádí hodnocení migrace SQL Server](/sql/dma/dma-assesssqlonprem).
+* Pokud chcete stáhnout a nainstalovat `Az.DataMigration` modul (verze 0.7.2 nebo novější) z Galerie prostředí PowerShell pomocí [rutiny Install-Module prostředí PowerShell](/powershell/module/powershellget/Install-Module?view=powershell-5.1).
+* Aby bylo zajištěno, že přihlašovací údaje použité pro připojení ke zdrojové SQL Server instance mají oprávnění [Control Server](/sql/t-sql/statements/grant-server-permissions-transact-sql) .
 * Aby bylo zajištěno, že přihlašovací údaje použité pro připojení k cílové spravované instanci SQL mají oprávnění řídicí databáze pro cílové databáze spravované instance SQL.
 
     > [!IMPORTANT]
-    > Pro online migrace musíte mít již nastavené přihlašovací údaje Azure Active Directory. Další informace najdete v článku [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+    > Pro online migrace musíte mít již nastavené přihlašovací údaje Azure Active Directory. Další informace najdete v článku [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Přihlaste se k předplatnému Microsoft Azure.
 
-Přihlaste se ke svému předplatnému Azure pomocí PowerShellu. Další informace najdete v článku [přihlášení pomocí Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+Přihlaste se ke svému předplatnému Azure pomocí PowerShellu. Další informace najdete v článku [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) příkazu.
+Vytvořte skupinu prostředků pomocí [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) příkazu.
 
 Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v oblasti *východní USA* .
 
@@ -76,11 +76,11 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 Novou instanci Azure Database Migration Service můžete vytvořit pomocí `New-AzDataMigrationService` rutiny.
 Tato rutina očekává následující požadované parametry:
 
-* *Název skupiny prostředků Azure*. Pomocí příkazu můžete [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) vytvořit skupinu prostředků Azure, jak je uvedeno výše, a zadat její název jako parametr.
+* *Název skupiny prostředků Azure*. Pomocí příkazu můžete [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) vytvořit skupinu prostředků Azure, jak je uvedeno výše, a zadat její název jako parametr.
 * *Název služby* Řetězec, který odpovídá požadovanému jedinečnému názvu služby pro Azure Database Migration Service.
 * *Umístění:* Určuje umístění služby. Zadejte umístění datového centra Azure, například Západní USA nebo jihovýchodní Asie.
 * *SKU*. Tento parametr odpovídá názvu SKU DMS. V současné době jsou podporovány názvy SKU *Basic_1vCore*, *Basic_2vCores* *GeneralPurpose_4vCores*.
-* *Identifikátor virtuální podsítě*. Pomocí rutiny můžete [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) vytvořit podsíť.
+* *Identifikátor virtuální podsítě*. Pomocí rutiny můžete [`New-AzVirtualNetworkSubnetConfig`](//powershell/module/az.network/new-azvirtualnetworksubnetconfig) vytvořit podsíť.
 
 Následující příklad vytvoří službu s názvem *MyDMS* ve skupině prostředků *MyDMSResourceGroup* nacházející se v *východní USA* oblasti pomocí virtuální sítě s názvem *MyVNET* a podsítě s názvem *MySubnet*.
 
@@ -161,7 +161,7 @@ Potom vytvořte a spusťte úlohu Azure Database Migration Service. Tato úloha 
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>Vytvoření parametrů přihlašovacích údajů pro zdroj a cíl
 
-Vytvořte přihlašovací údaje zabezpečení připojení jako objekt [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) .
+Vytvořte přihlašovací údaje zabezpečení připojení jako objekt [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) .
 
 Následující příklad ukazuje vytváření *PSCredential* objektů pro zdrojové i cílové připojení a poskytuje hesla jako řetězcové proměnné *$sourcePassword* a *$targetPassword*.
 
@@ -226,7 +226,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 ```
 
 > [!NOTE]
-> Azure Database Migration Service nepodporuje použití tokenu SAS na úrovni účtu. Pro kontejner účtu úložiště je nutné použít identifikátor URI SAS. [Zjistěte, jak získat identifikátor URI SAS pro kontejner objektů blob](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
+> Azure Database Migration Service nepodporuje použití tokenu SAS na úrovni účtu. Pro kontejner účtu úložiště je nutné použít identifikátor URI SAS. [Zjistěte, jak získat identifikátor URI SAS pro kontejner objektů blob](../vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container).
 
 ### <a name="additional-configuration-requirements"></a>Další požadavky na konfiguraci
 
@@ -290,8 +290,8 @@ Bez ohledu na to, jestli provádíte offline nebo online migraci, `New-AzDataMig
 * *Název_úlohy*. Název úkolu, který se má vytvořit 
 * *SourceConnection*. Objekt AzDmsConnInfo představující zdrojové SQL Server připojení.
 * *TargetConnection*. Objekt AzDmsConnInfo, který představuje cílové připojení spravované instance Azure SQL
-* *SourceCred*. Objekt [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) pro připojení ke zdrojovému serveru.
-* *TargetCred*. Objekt [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) pro připojení k cílovému serveru.
+* *SourceCred*. Objekt [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) pro připojení ke zdrojovému serveru.
+* *TargetCred*. Objekt [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) pro připojení k cílovému serveru.
 * *SelectedDatabase*. Objekt AzDataMigrationSelectedDB představující mapování zdrojového a cílového databáze.
 * *BackupFileShare*. Objekt Shared představující sdílenou síťovou složku, do které může Azure Database Migration Service přebírat zdrojové zálohy databáze.
 * *BackupBlobSasUri*. Identifikátor URI SAS, který poskytuje Azure Database Migration Service s přístupem k kontejneru účtu úložiště, do kterého služba odesílá záložní soubory. Zjistěte, jak získat identifikátor URI SAS pro kontejner objektů blob.
@@ -422,4 +422,4 @@ Informace o dalších scénářích migrace (páry zdroj/cíl) najdete v [Průvo
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o Azure Database Migration Service v článku [co je Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
+Přečtěte si další informace o Azure Database Migration Service v článku [co je Azure Database Migration Service?](./dms-overview.md).

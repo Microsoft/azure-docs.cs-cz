@@ -11,19 +11,19 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: dd8eff01cd52f8d80eb56f3a1ebe924763c8b70c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6cd4bbec89e955c398f7cb6e37ba5c3dcc6427ea
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441695"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961222"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru služby Azure Machine Learning
 
 V tomto článku se dozvíte, jak spravovat přístup (autorizaci) k pracovnímu prostoru Azure Machine Learning. [Řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md) se používá ke správě přístupu k prostředkům Azure, jako je třeba možnost vytvářet nové prostředky nebo používat stávající. Uživatelům v Azure Active Directory (Azure AD) se přiřazují konkrétní role, které udělují přístup k prostředkům. Azure poskytuje jak předdefinované role, tak i možnost vytvářet vlastní role.
 
 > [!TIP]
-> I když se tento článek zaměřuje na Azure Machine Learning, jednotlivé služby, na kterých se Azure ML spoléhá, poskytují vlastní nastavení RBAC. Pomocí informací v tomto článku můžete například nakonfigurovat, kdo může odesílat žádosti o vyhodnocování do modelu nasazeného jako webové služby ve službě Azure Kubernetes. Služba Azure Kubernetes ale poskytuje svou vlastní sadu rolí Azure RBAC. Informace o RBAC pro konkrétní služby, které mohou být užitečné při Azure Machine Learning, najdete na následujících odkazech:
+> I když se tento článek zaměřuje na Azure Machine Learning, jednotlivé služby, na kterých se Azure ML spoléhá, poskytují vlastní nastavení RBAC. Pomocí informací v tomto článku můžete například nakonfigurovat, kdo může odesílat žádosti o vyhodnocování do modelu nasazeného jako webové služby ve službě Azure Kubernetes. Služba Azure Kubernetes ale poskytuje svou vlastní sadu rolí Azure. Informace o RBAC pro konkrétní služby, které mohou být užitečné při Azure Machine Learning, najdete na následujících odkazech:
 >
 > * [Řízení přístupu k prostředkům clusteru Azure Kubernetes](../aks/azure-ad-rbac.md)
 > * [Použití Azure RBAC pro autorizaci Kubernetes](../aks/manage-azure-rbac.md)
@@ -209,7 +209,7 @@ Pokud chcete provádět operace MLflow s vaším pracovním prostorem Azure Mach
 
 ### <a name="data-scientist"></a>Datový vědec
 
-Umožňuje, aby datový vědecký pracovník prováděl všechny operace v pracovním prostoru **s výjimkou** :
+Umožňuje, aby datový vědecký pracovník prováděl všechny operace v pracovním prostoru **s výjimkou**:
 
 * Vytváření výpočetních prostředků
 * Nasazení modelů do provozního clusteru AKS
@@ -247,7 +247,7 @@ Umožňuje, aby datový vědecký pracovník prováděl všechny operace v praco
 
 ### <a name="data-scientist-restricted"></a>Datový vědecký pracovník omezený
 
-Přísnější definice role bez zástupných znaků v povolených akcích. Může provádět všechny operace v pracovním prostoru **s výjimkou** :
+Přísnější definice role bez zástupných znaků v povolených akcích. Může provádět všechny operace v pracovním prostoru **s výjimkou**:
 
 * Vytváření výpočetních prostředků
 * Nasazení modelů do provozního clusteru AKS
@@ -310,7 +310,7 @@ Přísnější definice role bez zástupných znaků v povolených akcích. Mů�
      
 ### <a name="mlflow-data-scientist"></a>MLflow data – vědecký pracovník
 
-Umožňuje, aby datový vědecký pracovník prováděl všechny operace podporované MLflow AzureML **s výjimkou** :
+Umožňuje, aby datový vědecký pracovník prováděl všechny operace podporované MLflow AzureML **s výjimkou**:
 
 * Vytváření výpočetních prostředků
 * Nasazení modelů do provozního clusteru AKS
@@ -395,7 +395,7 @@ Slouží k přiřazení role k instančnímu objektu a k automatizaci MLOps kan�
 
 ### <a name="workspace-admin"></a>Správce pracovního prostoru
 
-Umožňuje provádět všechny operace v rámci oboru pracovního prostoru, **s výjimkou** :
+Umožňuje provádět všechny operace v rámci oboru pracovního prostoru, **s výjimkou**:
 
 * Vytváří se nový pracovní prostor.
 * Přiřazení kvót na úrovni předplatného nebo pracovního prostoru
@@ -449,7 +449,7 @@ Slouží k definování rozsahu role pouze k označení dat popisků:
 }
 ```
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 Tady je několik věcí, na kterých je potřeba vědět, když používáte řízení přístupu na základě role Azure (Azure RBAC):
 

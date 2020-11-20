@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 3b9a94f7f9f64426374a5ea349b3653d837fc1ac
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: a9ac4830d11aa3360a272ac1feb167eb20c26c9a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494440"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962616"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Problémy online migrace & omezení pro Azure DB for MySQL s Azure Database Migration Service
 
@@ -118,7 +118,7 @@ Při pokusu o provedení online migrace z AWS VP MySQL do Azure Database for MyS
 
   **Omezení**: k této chybě dochází, pokud cílová databáze Azure Database for MySQL nemá požadované schéma. Migrace schématu je nutná k tomu, aby bylo možné migrovat data do cíle.
 
-  **Alternativní řešení**: [migrujte schéma](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema) ze zdrojové databáze do cílové databáze.
+  **Alternativní řešení**: [migrujte schéma](./tutorial-mysql-azure-mysql-online.md#migrate-the-sample-schema) ze zdrojové databáze do cílové databáze.
 
 ## <a name="other-limitations"></a>Další omezení
 
@@ -136,7 +136,7 @@ Při pokusu o provedení online migrace z AWS VP MySQL do Azure Database for MyS
 
 - V Azure Database Migration Service je limit databází pro migraci v jedné aktivitě migrace čtyři.
 
-- Azure DMS nepodporuje referenční akci CASCADE, která pomáhá automaticky odstranit nebo aktualizovat shodný řádek v podřízené tabulce při odstranění nebo aktualizaci řádku v nadřazené tabulce. Další informace najdete v části referenční akce článku [omezení cizího klíče](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)v dokumentaci k MySQL. Azure DMS vyžaduje, abyste při počátečním načtení dat vyřadíte omezení cizího klíče v cílovém databázovém serveru a nemůžete použít referenční akce. Pokud vaše zatížení závisí na aktualizaci související podřízené tabulky prostřednictvím této referenční akce, doporučujeme místo toho provést [Výpis a obnovení](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) . 
+- Azure DMS nepodporuje referenční akci CASCADE, která pomáhá automaticky odstranit nebo aktualizovat shodný řádek v podřízené tabulce při odstranění nebo aktualizaci řádku v nadřazené tabulce. Další informace najdete v části referenční akce článku [omezení cizího klíče](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)v dokumentaci k MySQL. Azure DMS vyžaduje, abyste při počátečním načtení dat vyřadíte omezení cizího klíče v cílovém databázovém serveru a nemůžete použít referenční akce. Pokud vaše zatížení závisí na aktualizaci související podřízené tabulky prostřednictvím této referenční akce, doporučujeme místo toho provést [Výpis a obnovení](../mysql/concepts-migrate-dump-restore.md) . 
 
 - **Chyba:** Velikost řádku je moc velká (> 8126). Změna některých sloupců na TEXT nebo objekt BLOB může pomáhat. V aktuálním formátu řádku je předpona objektu BLOB 0 bajtů uložená jako vložená.
 

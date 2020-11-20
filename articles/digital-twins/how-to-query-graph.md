@@ -4,29 +4,27 @@ titleSuffix: Azure Digital Twins
 description: Informace najdete v tématu Postup dotazování grafu s dvojitou podseznamem digitálních vláken Azure.
 author: baanders
 ms.author: baanders
-ms.date: 3/26/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 57b6bac49f0142b008a21accfffb614453cc6aec
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: contperfq2
+ms.openlocfilehash: 6533cbde10dfc924bd982357def859229eb1714a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358146"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963160"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
-Tento článek obsahuje příklady a další podrobnosti o použití [jazyka dotazů digitálních vláken Azure](concepts-query-language.md) k dotazování na [nevlákenný graf](concepts-twins-graph.md) pro informace. Dotazy můžete spouštět v grafu pomocí [**rozhraní API pro dotazování**](/rest/api/digital-twins/dataplane/query)digitálních vláken Azure.
+Tento článek nabízí příklady dotazů a podrobnější pokyny k použití **jazyka dotazů digitálních vláken Azure** k dotazování [na informace](concepts-twins-graph.md) . (Úvod do dotazovacího jazyka a úplný seznam jeho funkcí najdete v tématu [*Koncepty: dotazovací jazyk*](concepts-query-language.md).)
 
-[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
+Tento článek začíná vzorovými dotazy, které ilustrují strukturu dotazovacího jazyka a běžné operace dotazů pro digitální vlákna. Pak popisuje, jak spustit dotazy po jejich zápisu pomocí [rozhraní API pro dotazování](/rest/api/digital-twins/dataplane/query) digitálních vláken Azure nebo [sady SDK](how-to-use-apis-sdks.md#overview-data-plane-apis).
 
-Ve zbývající části tohoto článku najdete příklady použití těchto operací.
+> [!TIP]
+> Pokud používáte ukázkové dotazy níže s voláním rozhraní API nebo SDK, budete muset text dotazu zhuštěnit na jeden řádek.
 
-## <a name="query-syntax"></a>Syntaxe dotazů
-
-Tato část obsahuje ukázkové dotazy, které ilustrují strukturu dotazovacího jazyka a provádějí možné operace dotazů u [digitálních vláken](concepts-twins-graph.md).
-
-### <a name="show-all-existing-digital-twins"></a>Zobrazit všechny existující digitální vlákna
+## <a name="show-all-digital-twins"></a>Zobrazit všechny digitální vlákna
 
 Tady je základní dotaz, který vrátí seznam všech digitálních vláken v instanci:
 
@@ -35,108 +33,7 @@ SELECT *
 FROM DIGITALTWINS
 ```
 
-### <a name="select-top-items"></a>Vybrat horní položky
-
-Můžete vybrat několik "horních" položek v dotazu pomocí `Select TOP` klauzule.
-
-```sql
-SELECT TOP (5)
-FROM DIGITALTWINS
-WHERE ...
-```
-
-### <a name="count-items"></a>Počet položek
-
-Počet položek v sadě výsledků můžete spočítat pomocí `Select COUNT` klauzule:
-
-```sql
-SELECT COUNT()
-FROM DIGITALTWINS
-```
-
-Přidejte `WHERE` klauzuli pro zjištění počtu položek, které splňují určitá kritéria. Tady je několik příkladů, jak počítat s použitým filtrem na základě typu dvojitě známého modelu (Další informace najdete v tématu [*dotaz podle modelu*](#query-by-model) níže):
-
-```sql
-SELECT COUNT()
-FROM DIGITALTWINS
-WHERE IS_OF_MODEL('dtmi:sample:Room;1')
-
-SELECT COUNT()
-FROM DIGITALTWINS c
-WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
-```
-
-`COUNT`Spolu s klauzulí můžete také použít `JOIN` . Tady je dotaz, který počítá všechny žárovky obsažené v světelných panelech místností 1 a 2:
-
-```sql
-SELECT COUNT()  
-FROM DIGITALTWINS Room  
-JOIN LightPanel RELATED Room.contains  
-JOIN LightBulb RELATED LightPanel.contains  
-WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
-AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
-AND Room.$dtId IN ['room1', 'room2']
-```
-
-### <a name="specify-return-set-with-projections"></a>Zadat návratovou sadu s projekcemi
-
-Pomocí projekce můžete zvolit, které sloupce bude dotaz vracet.
-
->[!NOTE]
->V současné době nejsou složité vlastnosti podporovány. Chcete-li zajistit, aby vlastnosti projekce byly platné, zkombinujte projekce s `IS_PRIMITIVE` kontrolou.
-
-Tady je příklad dotazu, který pomocí projekce vrací vlákna a vztahy. Následující dotaz projektuje *spotřebitel* , *továrnu* a *hranu* z scénáře, kdy *továrna* s ID *ABC* souvisí s *příjemcem* prostřednictvím vztahu *Factory. Customer.* tento vztah je zobrazený jako *okraj*.
-
-```sql
-SELECT Consumer, Factory, Edge
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-```
-
-Můžete také použít projekci k vrácení vlastnosti vlákna. Následující dotaz projektuje vlastnost *Name* pro *uživatele* , kteří se vztahují k *továrně* s ID *ABC* prostřednictvím vztahu objektu *Factory. Customer*.
-
-```sql
-SELECT Consumer.name
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Consumer.name)
-```
-
-Můžete také použít projekci a vrátit vlastnost vztahu. Podobně jako v předchozím příkladu následující dotaz projektuje vlastnost *Name* *příjemců* souvisejících s *objektem Factory* s ID *ABC* prostřednictvím vztahu objektu *Factory. Customer.* nyní ale vrátí také dvě vlastnosti vztahu, *Prop1* a *prop2*. Provádí pojmenování *hraničních* vztahů a shromáždění jeho vlastností.  
-
-```sql
-SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
-```
-
-Pomocí aliasů můžete také zjednodušit dotazy pomocí projekce.
-
-Následující dotaz provede stejné operace jako v předchozím příkladu, ale aliasuje názvy vlastností do `consumerName` , `first` `second` a `factoryArea` .
-
-```sql
-SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second, Factory.area AS factoryArea
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)"
-```
-
-Zde je podobný dotaz, který se dotazuje stejné sady jako v předchozím příkladu, ale projektuje pouze vlastnost *Consumer.Name* jako `consumerName` a projekty, které tvoří kompletní *objekt pro vytváření* , jako dvojitou hodnotu.
-
-```sql
-SELECT Consumer.name AS consumerName, Factory
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name)
-```
-
-### <a name="query-by-property"></a>Dotaz podle vlastnosti
+## <a name="query-by-property"></a>Dotaz podle vlastnosti
 
 Získat digitální vlákna podle **vlastností** (včetně ID a metadat):
 
@@ -157,7 +54,7 @@ Můžete také získat vlákna na základě **toho, zda je definována určitá 
 SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(Location)
 ```
 
-To vám může přispět k získání vláken podle jejich vlastností *značek* , jak je popsáno v tématu [Přidání značek do digitálních vláken](how-to-use-tags.md). Tady je dotaz, který získá všechny vlákna označené *červeně* :
+To vám může přispět k získání vláken podle jejich vlastností *značek* , jak je popsáno v tématu [Přidání značek do digitálních vláken](how-to-use-tags.md). Tady je dotaz, který získá všechny vlákna označené *červeně*:
 
 ```sql
 SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(tags.red)
@@ -169,7 +66,7 @@ Můžete také získat vlákna na základě **typu vlastnosti**. Tady je dotaz, 
 SELECT * FROM DIGITALTWINS T WHERE IS_NUMBER(T.Temperature)
 ```
 
-### <a name="query-by-model"></a>Dotaz podle modelu
+## <a name="query-by-model"></a>Dotaz podle modelu
 
 `IS_OF_MODEL`Operátor lze použít k filtrování na základě [**modelu**](concepts-models.md)vlákna.
 
@@ -210,7 +107,7 @@ Tady je příklad dotazu, který určuje hodnotu pro všechny tři parametry:
 SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1', exact)
 ```
 
-### <a name="query-based-on-relationships"></a>Dotaz na základě relací
+## <a name="query-by-relationship"></a>Dotaz podle vztahu
 
 Při dotazování na základě **vztahů** digitálních vláken má dotazovací jazyk pro digitální vlákna Azure speciální syntaxi.
 
@@ -224,7 +121,7 @@ Následující část obsahuje několik příkladů toho, co vypadá.
 > [!TIP]
 > V koncepčním důsledku Tato funkce napodobuje funkci CosmosDB orientované na dokumenty, kde `JOIN` lze provádět na podřízených objektech v dokumentu. CosmosDB používá `IN` klíčové slovo k označení toho, že má `JOIN` iterovat přes prvky pole v rámci aktuálního kontextu dokumentu.
 
-#### <a name="relationship-based-query-examples"></a>Příklady dotazů založených na relacích
+### <a name="relationship-based-query-examples"></a>Příklady dotazů založených na relacích
 
 Chcete-li získat datovou sadu, která obsahuje relace, použijte jeden `FROM` příkaz následovaný N `JOIN` příkazy N, kde `JOIN` příkazy Express na výsledek předchozího `FROM` nebo `JOIN` příkazu.
 
@@ -237,10 +134,10 @@ JOIN CT RELATED T.contains
 WHERE T.$dtId = 'ABC'
 ```
 
->[!NOTE]
+> [!NOTE]
 > Vývojář není muset korelovat `JOIN` s hodnotou klíče v `WHERE` klauzuli (nebo zadat hodnotu klíče vloženou s `JOIN` definicí). Tato korelace je vypočítána automaticky systémem, protože samotné vlastnosti vztahu identifikují cílovou entitu.
 
-#### <a name="query-the-properties-of-a-relationship"></a>Dotazování vlastností relace
+### <a name="query-the-properties-of-a-relationship"></a>Dotazování vlastností relace
 
 Podobně jako digitální vlákna mají vlastnosti, které jsou popsány prostřednictvím DTDL, mohou mít relace také vlastnosti. Můžete se dotazovat na vlákna na **základě vlastností jejich vztahů**.
 Jazyk dotazů digitálních vláken Azure umožňuje filtrování a projekci vztahů přiřazením aliasu k relaci v rámci `JOIN` klauzule.
@@ -273,139 +170,197 @@ AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')
 AND Room.$dtId IN ['room1', 'room2']
 ```
 
-### <a name="other-compound-query-examples"></a>Další příklady složených dotazů
+## <a name="count-items"></a>Počet položek
+
+Počet položek v sadě výsledků můžete spočítat pomocí `Select COUNT` klauzule:
+
+```sql
+SELECT COUNT()
+FROM DIGITALTWINS
+```
+
+Přidejte `WHERE` klauzuli pro zjištění počtu položek, které splňují určitá kritéria. Tady je několik příkladů, jak počítat s použitým filtrem na základě typu dvojitě známého modelu (Další informace najdete v tématu [*dotaz podle modelu*](#query-by-model) níže):
+
+```sql
+SELECT COUNT()
+FROM DIGITALTWINS
+WHERE IS_OF_MODEL('dtmi:sample:Room;1')
+
+SELECT COUNT()
+FROM DIGITALTWINS c
+WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
+```
+
+`COUNT`Spolu s klauzulí můžete také použít `JOIN` . Tady je dotaz, který počítá všechny žárovky obsažené v světelných panelech místností 1 a 2:
+
+```sql
+SELECT COUNT()  
+FROM DIGITALTWINS Room  
+JOIN LightPanel RELATED Room.contains  
+JOIN LightBulb RELATED LightPanel.contains  
+WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
+AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
+AND Room.$dtId IN ['room1', 'room2']
+```
+
+## <a name="filter-results-select-top-items"></a>Výsledky filtru: Vyberte horní položky.
+
+Můžete vybrat několik "horních" položek v dotazu pomocí `Select TOP` klauzule.
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE ...
+```
+
+## <a name="filter-results-specify-return-set-with-projections"></a>Výsledky filtru: určení návratové sady s projekcemi
+
+Pomocí projekce v `SELECT` příkazu můžete zvolit, které sloupce bude dotaz vracet.
+
+>[!NOTE]
+>V současné době nejsou složité vlastnosti podporovány. Chcete-li zajistit, aby vlastnosti projekce byly platné, zkombinujte projekce s `IS_PRIMITIVE` kontrolou.
+
+Tady je příklad dotazu, který pomocí projekce vrací vlákna a vztahy. Následující dotaz projektuje *spotřebitel*, *továrnu* a *hranu* z scénáře, kdy *továrna* s ID *ABC* souvisí s *příjemcem* prostřednictvím vztahu *Factory. Customer.* tento vztah je zobrazený jako *okraj*.
+
+```sql
+SELECT Consumer, Factory, Edge
+FROM DIGITALTWINS Factory
+JOIN Consumer RELATED Factory.customer Edge
+WHERE Factory.$dtId = 'ABC'
+```
+
+Můžete také použít projekci k vrácení vlastnosti vlákna. Následující dotaz projektuje vlastnost *Name* pro *uživatele* , kteří se vztahují k *továrně* s ID *ABC* prostřednictvím vztahu objektu *Factory. Customer*.
+
+```sql
+SELECT Consumer.name
+FROM DIGITALTWINS Factory
+JOIN Consumer RELATED Factory.customer Edge
+WHERE Factory.$dtId = 'ABC'
+AND IS_PRIMITIVE(Consumer.name)
+```
+
+Můžete také použít projekci a vrátit vlastnost vztahu. Podobně jako v předchozím příkladu následující dotaz projektuje vlastnost *Name* *příjemců* souvisejících s *objektem Factory* s ID *ABC* prostřednictvím vztahu objektu *Factory. Customer.* nyní ale vrátí také dvě vlastnosti vztahu, *Prop1* a *prop2*. Provádí pojmenování *hraničních* vztahů a shromáždění jeho vlastností.  
+
+```sql
+SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area
+FROM DIGITALTWINS Factory
+JOIN Consumer RELATED Factory.customer Edge
+WHERE Factory.$dtId = 'ABC'
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
+```
+
+Pomocí aliasů můžete také zjednodušit dotazy pomocí projekce.
+
+Následující dotaz provede stejné operace jako v předchozím příkladu, ale aliasuje názvy vlastností do `consumerName` ,, `first` `second` a `factoryArea` .
+
+```sql
+SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second, Factory.area AS factoryArea
+FROM DIGITALTWINS Factory
+JOIN Consumer RELATED Factory.customer Edge
+WHERE Factory.$dtId = 'ABC'
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)"
+```
+
+Zde je podobný dotaz, který se dotazuje stejné sady jako v předchozím příkladu, ale projektuje pouze vlastnost *Consumer.Name* jako `consumerName` a projekty, které tvoří kompletní *objekt pro vytváření* , jako dvojitou hodnotu.
+
+```sql
+SELECT Consumer.name AS consumerName, Factory
+FROM DIGITALTWINS Factory
+JOIN Consumer RELATED Factory.customer Edge
+WHERE Factory.$dtId = 'ABC'
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name)
+```
+
+## <a name="build-efficient-queries-with-the-in-operator"></a>Vytváření efektivních dotazů pomocí operátoru IN
+
+Můžete významně snížit počet dotazů, které potřebujete, vytvořením pole dvojitých vláken a dotazování pomocí `IN` operátoru. 
+
+Představte si například scénář, ve kterém *budovy* obsahují *podlahu* a *podlahu* , obsahují *místnosti*. Chcete-li hledat místnosti v rámci budovy, která jsou horká, jedním ze způsobů, jak postupovat podle těchto kroků.
+
+1. Nalezení podlahových poschodí v rámci vytváření na základě `contains` vztahu
+
+    ```sql
+    SELECT Floor
+    FROM DIGITALTWINS Building
+    JOIN Floor RELATED Building.contains
+    WHERE Building.$dtId = @buildingId
+    ```
+
+2. Chcete-li najít místnosti místo toho, aby se v jednom z nich používal `JOIN` dotaz pro vyhledání místností pro každý z nich, můžete zadat dotaz pomocí kolekce podlah v budově (s názvem *Floor* v dotazu níže).
+
+    V klientské aplikaci:
+    
+    ```csharp
+    var floors = "['floor1','floor2', ..'floorn']"; 
+    ```
+    
+    V dotazu:
+    
+    ```sql
+    
+    SELECT Room
+    FROM DIGITALTWINS Floor
+    JOIN Room RELATED Floor.contains
+    WHERE Floor.$dtId IN ['floor1','floor2', ..'floorn']
+    AND Room. Temperature > 72
+    AND IS_OF_MODEL(Room, 'dtmi:com:contoso:Room;1')
+    
+    ```
+
+## <a name="other-compound-query-examples"></a>Další příklady složených dotazů
 
 Můžete **zkombinovat** libovolný z výše uvedených typů dotazu pomocí operátorů kombinace pro zahrnutí více podrobností v jednom dotazu. Tady jsou některé další příklady složených dotazů, které dotazují na více než jeden typ zdvojeného popisovače najednou.
 
-| Popis | Dotaz |
+| Popis | Dotazy |
 | --- | --- |
-| Ze zařízení, která jsou v *místnosti 123* , se vrátí zařízení MxChip, která obsluhují roli operátora. | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
+| Ze zařízení, která jsou v *místnosti 123* , se vrátí zařízení MxChip, která obsluhují roli operátora. | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contoso:com:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | Získejte vlákna, která mají relaci s názvem, *obsahuje* další nevlákenný identifikátor *ID1* | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
-| Získat všechny místnosti tohoto modelu místnosti, které jsou obsaženy v *floor11* | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
+| Získat všechny místnosti tohoto modelu místnosti, které jsou obsaženy v *floor11* | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contoso:com:DigitalTwins:Room;1')` |
 
-## <a name="reference-expressions-and-conditions"></a>Reference: výrazy a podmínky
+## <a name="run-queries-with-the-api"></a>Spouštění dotazů pomocí rozhraní API
 
-Tato část obsahuje referenční informace o operátorech a funkcích, které jsou k dispozici při psaní dotazů digitálních vláken Azure.
+Jakmile se rozhodnete pro řetězec dotazu, provedete to tak, že zavoláte [**rozhraní API pro dotazy**](/rest/api/digital-twins/dataplane/query).
 
-### <a name="operators"></a>Operátory
+Můžete zavolat rozhraní API přímo nebo použít jednu ze [sad SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) dostupných pro digitální vlákna Azure.
 
-Podporovány jsou následující operátory:
-
-| Rodina | Operátory |
-| --- | --- |
-| Logické |A, NEBO, NOT |
-| Porovnání |=,! =, <, >, <=, >= |
-| Contains | V NZA |
-
-### <a name="functions"></a>Funkce
-
-Podporují se následující funkce kontroly a přetypování typů:
-
-| Funkce | Popis |
-| -------- | ----------- |
-| IS_DEFINED | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota. To je podporováno pouze v případě, že je hodnota primitivního typu. Primitivní typy zahrnují řetězec, Boolean, Numeric nebo `null` . Hodnoty DateTime, typy objektů a pole nejsou podporovány. |
-| IS_OF_MODEL | Vrátí logickou hodnotu, která označuje, jestli zadaný typ vlákna odpovídá zadanému typu modelu. |
-| IS_BOOL | Vrací logickou hodnotu označující, zda je typ zadaného výrazu logická hodnota. |
-| IS_NUMBER | Vrací logickou hodnotu označující, zda je typ zadaného výrazu číslo. |
-| IS_STRING | Vrací logickou hodnotu označující, zda je typ zadaného výrazu řetězec. |
-| IS_NULL | Vrací logickou hodnotu označující, zda je typ zadaného výrazu null. |
-| IS_PRIMITIVE | Vrací logickou hodnotu označující, zda je typ zadaného výrazu primitivní (řetězec, logická hodnota, číselná hodnota nebo `null` ). |
-| IS_OBJECT | Vrací logickou hodnotu označující, zda je typ zadaného výrazu objekt JSON. |
-
-Podporovány jsou následující řetězcové funkce:
-
-| Funkce | Popis |
-| -------- | ----------- |
-| STARTSWITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz začíná druhým. |
-| ENDSWITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz končí druhým. |
-
-## <a name="run-queries-with-an-api-call"></a>Spouštění dotazů pomocí volání rozhraní API
-
-Jakmile se rozhodnete pro řetězec dotazu, provedete to tak, že zavoláte **rozhraní API pro dotazy**.
-Následující fragment kódu znázorňuje toto volání z klientské aplikace:
+Následující fragment kódu ilustruje volání [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) z klientské aplikace:
 
 ```csharp
+    string adtInstanceEndpoint = "https://<your-instance-hostname>";
 
-var adtInstanceEndpoint = new Uri(your-Azure-Digital-Twins-instance-URL>);
-var tokenCredential = new DefaultAzureCredential();
+    var credential = new DefaultAzureCredential();
+    DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceEndpoint), credential);
 
-var client = new DigitalTwinsClient(adtInstanceEndpoint, tokenCredential);
-
-string query = "SELECT * FROM digitaltwins";
-AsyncPageable<string> result = await client.QueryAsync<string>(query);
+    // Run a query for all twins   
+    string query = "SELECT * FROM DIGITALTWINS";
+    AsyncPageable<BasicDigitalTwin> result = client.QueryAsync<BasicDigitalTwin>(query);
 ```
 
-Toto volání vrátí výsledky dotazu ve formě objektu String.
+Toto volání vrátí výsledky dotazu ve formě objektu [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) .
 
 Volání na podporu stránkování. Tady je kompletní příklad použití `BasicDigitalTwin` jako typ výsledku dotazu s zpracováním chyb a stránkováním:
 
 ```csharp
-string query = "SELECT * FROM digitaltwins";
 try
 {
-    AsyncPageable<BasicDigitalTwin> qresult = client.QueryAsync<BasicDigitalTwin>(query);
-    await foreach (BasicDigitalTwin item in qresult)
-    {
-        // Do something with each result
-    }
+    await foreach(BasicDigitalTwin twin in result)
+        {
+            // You can include your own logic to print the result
+            // The logic below prints the twin's ID and contents
+            Console.WriteLine($"Twin ID: {twin.Id} \nTwin data");
+            IDictionary<string, object> contents = twin.Contents;
+            foreach (KeyValuePair<string, object> kvp in contents)
+            {
+                Console.WriteLine($"{kvp.Key}  {kvp.Value}");
+            }
+        }
 }
 catch (RequestFailedException e)
 {
-    Log.Error($"Error {e.Status}: {e.Message}");
+    Console.WriteLine($"Error {e.Status}: {e.Message}");
     throw;
 }
 ```
-
-## <a name="query-limitations"></a>Omezení dotazů
-
-Změny ve vaší instanci se projeví v dotazech až na 10 sekund. Například pokud dokončíte operaci, jako je vytváření nebo odstraňování vláken s rozhraním API DigitalTwins, výsledek se v dotazech rozhraní API nemusí projevit okamžitě. Čekání na krátkou dobu by měla být dostačující pro vyřešení.
-
-Existují další omezení používání `JOIN` .
-
-* V rámci příkazu nejsou podporovány žádné poddotazy `FROM` .
-* `OUTER JOIN` Sémantika není podporována, což znamená, že pokud má relace hodnotu nula, pak je celý "řádek" odstraněn z výstupní sady výsledků.
-* Hloubka procházení grafů je omezená na pět `JOIN` úrovní na jeden dotaz.
-* Zdroj pro `JOIN` operace je omezený: dotaz musí deklarovat vlákna, kde začíná dotaz.
-
-## <a name="query-best-practices"></a>Osvědčené postupy pro dotazy
-
-Níže najdete několik tipů pro dotazování pomocí digitálních vláken Azure.
-
-* Zvažte vzor dotazu během fáze návrhu modelu. Pokuste se zajistit, aby relace, které musí být zodpovězeny v jednom dotazu, byly modelovány jako relace s jednou úrovní.
-* Navrhněte vlastnosti tak, aby se předešlo velkým sadám výsledků z procházení grafů.
-* Můžete významně snížit počet dotazů, které potřebujete, vytvořením pole dvojitých vláken a dotazování pomocí `IN` operátoru. Představte si například scénář, ve kterém *budovy* obsahují *podlahu* a *podlahu* , obsahují *místnosti*. Pokud chcete hledat místnosti v rámci budovy, která je horká, můžete:
-
-    1. Nalezení podlahových poschodí v rámci vytváření na základě `contains` vztahu
-
-        ```sql
-        SELECT Floor
-        FROM DIGITALTWINS Building
-        JOIN Floor RELATED Building.contains
-        WHERE Building.$dtId = @buildingId
-        ```
-
-    2. Chcete-li najít místnosti místo toho, aby se v jednom z nich používal `JOIN` dotaz pro vyhledání místností pro každý z nich, můžete zadat dotaz pomocí kolekce podlah v budově (s názvem *Floor* v dotazu níže).
-
-        V klientské aplikaci:
-
-        ```csharp
-        var floors = "['floor1','floor2', ..'floorn']"; 
-        ```
-
-        V dotazu:
-
-        ```sql
-
-        SELECT Room
-        FROM DIGITALTWINS Floor
-        JOIN Room RELATED Floor.contains
-        WHERE Floor.$dtId IN ['floor1','floor2', ..'floorn']
-        AND Room. Temperature > 72
-        AND IS_OF_MODEL(Room, 'dtmi:com:contoso:Room;1')
-
-        ```
-
-* V názvech vlastností a hodnotách se rozlišují malá a velká písmena, proto je potřeba se starat o použití přesně názvů definovaných v modelech. Pokud jsou názvy vlastností špatně napsané nebo nesprávně použita, je sada výsledků prázdná a nevrátí se žádné chyby.
 
 ## <a name="next-steps"></a>Další kroky
 

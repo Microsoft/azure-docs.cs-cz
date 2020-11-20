@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d121430452e0ed445af19f9b1ac89cfdfccdcdae
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 05bcb0aebd44dee60fa3f323e1f109e4c0761ec8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167317"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961953"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -120,7 +121,7 @@ K nasazení všech požadovaných prostředků můžete použít jednu z šablon
    4. Uživatelské jméno správce a heslo správce  
       Vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
    5. ID podsítě  
-      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/** &lt; ID &gt; odběru**/ResourceGroups/název** &lt; &gt; skupiny prostředků**** &lt; &gt; ** /Providers/Microsoft.Network/virtualNetworks/název** &lt; virtuální sítě &gt; **/subnets/název podsítě
+      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/**&lt; ID &gt; odběru**/ResourceGroups/název **&lt; &gt; skupiny prostředků****&lt; &gt;** /Providers/Microsoft.Network/virtualNetworks/název **&lt; virtuální sítě &gt;**/subnets/název podsítě
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
@@ -158,7 +159,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
          1. Port 61000 pro NW1
             1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
             1. Zadejte název nového testu stavu (například **NW1-HP**).
-            1. Vybrat TCP as Protocol, port 610**00**, zachovat interval 5 a špatný práh 2
+            1. Vybrat TCP as Protocol, port 610 **00**, zachovat interval 5 a špatný práh 2
             1. Klikněte na OK.
          1. Port 61001 pro NW2
             * Zopakováním výše uvedených kroků vytvořte sondu stavu pro NW2.
@@ -192,7 +193,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
          1. Port 61000 pro NW1
             1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
             1. Zadejte název nového testu stavu (například **NW1-HP**).
-            1. Vybrat TCP as Protocol, port 610**00**, zachovat interval 5 a špatný práh 2
+            1. Vybrat TCP as Protocol, port 610 **00**, zachovat interval 5 a špatný práh 2
             1. Klikněte na OK.
          1. Port 61001 pro NW2
             * Zopakováním výše uvedených kroků vytvořte sondu stavu pro NW2.

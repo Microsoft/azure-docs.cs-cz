@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9014f24918013872ce102d094f62fd5703594ddc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738749"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961851"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostika místního připojení prostřednictvím bran VPN
 
@@ -35,7 +35,7 @@ Chcete nakonfigurovat připojení typu Site-to-site mezi Azure a místním prost
 
 1. Brána Virtual Network – VPN Gateway v Azure
 1. Brána místní sítě – místní [(Fortigate) VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) reprezentaci v cloudu Azure
-1. Připojení Site-to-Site (založené na směrování) – [připojení mezi VPN Gateway a místním směrovačem](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
+1. Připojení Site-to-Site (založené na směrování) – [připojení mezi VPN Gateway a místním směrovačem](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)
 1. [Konfigurace FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
 Podrobný návod pro konfiguraci konfigurace site-to-site najdete v tématu [vytvoření virtuální sítě s připojením typu Site-to-site pomocí Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
@@ -87,9 +87,9 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 | PlannedMaintenance |  V instanci brány probíhá údržba.  |Ne|
 | UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti. | Ne |
 | VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | Ne |
-| PlatformInActive | Došlo k problému s platformou. | No|
-| ServiceNotRunning | Podkladová služba není spuštěná. | No|
-| NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Toto je pouze upozornění.| No|
+| PlatformInActive | Došlo k problému s platformou. | Ne|
+| ServiceNotRunning | Podkladová služba není spuštěná. | Ne|
+| NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Toto je pouze upozornění.| Ne|
 | ConnectionsNotConnected | Žádná připojení nejsou připojená. Toto je pouze upozornění.| Yes|
 | GatewayCPUUsageExceeded | Aktuální využití procesoru využití brány je > 95%. | Yes |
 
@@ -101,9 +101,9 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 | GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
 | PlannedMaintenance | V instanci brány probíhá údržba.  |Ne|
 | UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti.  | Ne |
-| VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | No |
-| ConnectionEntityNotFound | Chybí konfigurace připojení. | No |
-| ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojeno. |No|
+| VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | Ne |
+| ConnectionEntityNotFound | Chybí konfigurace připojení. | Ne |
+| ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojeno. |Ne|
 | ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Yes |
 | ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Yes|
 | Authentication | Neshoda s předsdíleným klíčem. | Yes|

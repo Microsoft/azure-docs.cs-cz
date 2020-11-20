@@ -3,18 +3,18 @@ title: Použití značek indexu objektů BLOB ke správě a hledání dat v Azur
 description: Podívejte se na příklady použití značek indexu objektů BLOB ke kategorizaci, správě a dotazování objektů BLOB.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/19/2020
+ms.date: 11/19/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 159252cf850fd59f40d1b59e592153f50d7cb813
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2e3e16b71d52edd9ab4eaf55651567b95e334b84
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371966"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961783"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Použití značek indexu objektů BLOB (Preview) ke správě a hledání dat v Azure Blob Storage
 
@@ -23,7 +23,7 @@ Rejstříky objektů BLOB kategorizují data v účtu úložiště pomocí atrib
 > [!NOTE]
 > Index objektu BLOB je ve verzi Public Preview a je dostupný v oblasti **Kanada – střed**, Kanada – **východ**, Francie – **střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat objektů BLOB v Azure pomocí značek indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -56,7 +56,7 @@ Protože index objektu BLOB je ve verzi Preview, balíček úložiště .NET se 
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>Nahrát nový objekt BLOB se značkami indexu
 
-Nahrávání nového objektu BLOB s klíčovými značkami může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write`Tato operace může provést i uživatel s oprávněním [řízení přístupu na základě role](/azure/role-based-access-control/overview) .
+Tuto úlohu může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [operaci poskytovatele prostředků Azure](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -114,9 +114,9 @@ static async Task BlobIndexTagsOnCreate()
 
 ## <a name="get-set-and-update-blob-index-tags"></a>Získání, nastavení a aktualizace značek indexu objektů BLOB
 
-Načtení značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read`Tato operace může provést i uživatel s oprávněním [řízení přístupu na základě role](/azure/role-based-access-control/overview) .
+Získání značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [operaci poskytovatele prostředků Azure](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
 
-Nastavení a aktualizace značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write`Tato operace může provést i uživatel s oprávněním [řízení přístupu na základě role](/azure/role-based-access-control/overview) .
+Nastavení a aktualizace značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [operaci poskytovatele prostředků Azure](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -132,7 +132,7 @@ Nastavení a aktualizace značek indexu objektů BLOB může provést [vlastník
 
 6. Kliknutím na tlačítko **Uložit** potvrďte všechny aktualizace svého objektu BLOB.
 
-:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Snímek obrazovky Azure Portal znázorňující, jak nahrát objekt BLOB s značkami indexu.":::
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Snímek obrazovky Azure Portal znázorňující, jak načíst, nastavit, aktualizovat a odstranit značky indexu u objektů BLOB.":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -193,7 +193,7 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>Filtrování a hledání dat pomocí značek indexu objektů BLOB
 
-Vyhledávání a filtrování pomocí značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action`Tato operace může provést i uživatel s oprávněním [řízení přístupu na základě role](/azure/role-based-access-control/overview) .
+Tuto úlohu může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [operaci poskytovatele prostředků Azure](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -209,7 +209,7 @@ V rámci Azure Portal filtr značek indexu objektů BLOB automaticky použije `@
 
 5. Vyberte tlačítko **Filtr značek indexu objektů BLOB** a přidejte další filtry značek (až 10).
 
-:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Snímek obrazovky Azure Portal znázorňující, jak nahrát objekt BLOB s značkami indexu.":::
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Snímek obrazovky Azure Portal znázorňující filtrování a hledání tagovaných objektů BLOB pomocí značek indexů":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -303,11 +303,11 @@ static async Task FindBlobsByTagsExample()
 
 4. Výběrem nastaveného **filtru** přidejte volitelný filtr pro porovnávání předpon a shodu indexu objektů BLOB.
 
-  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="Snímek obrazovky Azure Portal znázorňující, jak nahrát objekt BLOB s značkami indexu.":::
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="Snímek obrazovky Azure Portal znázorňující, jak přidat rejstříkové značky pro správu životního cyklu.":::
 
 5. Pokud chcete zkontrolovat nastavení pravidla, vyberte **zkontrolovat + přidat** .
 
-  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="Snímek obrazovky Azure Portal znázorňující, jak nahrát objekt BLOB s značkami indexu.":::
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="Snímek obrazovky Azure Portal znázorňující pravidlo správy životního cyklu s příkladem filtru značek indexu objektů BLOB":::
 
 6. Vyberte **Přidat** a použijte nové pravidlo pro zásady správy životního cyklu.
 

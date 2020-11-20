@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 6393624cb4520ccd28dff41dd97746873bc13f59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d5c79a141dbe1310762dc90b447fe78848ac10d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330294"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962480"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Známé problémy/omezení migrace pro online migrace do spravované instance Azure SQL
 
@@ -31,7 +31,7 @@ Známé problémy a omezení související s online migracemi z SQL Server do sp
 
     Azure Database Migration Service používá metodu zálohování a obnovení k migraci místních databází do spravované instance SQL. Azure Database Migration Service podporuje jenom zálohy vytvořené pomocí kontrolního součtu.
 
-    [Povolit nebo zakázat kontrolní součet zálohování během zálohování nebo obnovení (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
+    [Povolit nebo zakázat kontrolní součet zálohování během zálohování nebo obnovení (SQL Server)](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
 
     > [!NOTE]
     > Pokud převezmete zálohy databáze s kompresí, je kontrolní součet výchozím chováním, pokud není explicitně zakázán.

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: a08ddae1d10cc8b26f3aa7ee85e731c2cea15f93
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5eb5c351462279fe5c4f790e052f73201d211cfb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962883"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961171"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Změna konfigurace zařízení StorSimple pomocí služby StorSimple Device Manager
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Přehled
 
 Část Azure Portal **nastavení zařízení** v okně **Nastavení** obsahuje všechny parametry zařízení, které můžete znovu nakonfigurovat na zařízení StorSimple, které spravuje služba StorSimple Device Manager. V tomto kurzu se dozvíte, jak můžete pomocí okna **Nastavení** provádět následující úlohy na úrovni zařízení:
 
@@ -65,7 +65,7 @@ Vaše zařízení musí synchronizovat čas, aby se mohl ověřit s vaším posk
 
  V rozevíracím seznamu vyberte své časové pásmo. Můžete zadat až dva servery protokolu NTP (Network Time Protocol):
 
- - **Primární server NTP** – konfigurace je povinná a je zadaná při použití Windows PowerShell pro StorSimple ke konfiguraci zařízení. Jako server NTP můžete zadat výchozí **time.Windows.com** Windows serveru. Konfiguraci primárního serveru NTP můžete zobrazit pomocí Azure Portal, k jeho změně ale musíte použít rozhraní Windows PowerShell. Pomocí `Set-HcsNTPClientServerAddress` rutiny upravte primární server NTP vašeho zařízení. Další informace najdete v syntaxi pro rutinu [set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) .
+ - **Primární server NTP** – konfigurace je povinná a je zadaná při použití Windows PowerShell pro StorSimple ke konfiguraci zařízení. Jako server NTP můžete zadat výchozí **time.Windows.com** Windows serveru. Konfiguraci primárního serveru NTP můžete zobrazit pomocí Azure Portal, k jeho změně ale musíte použít rozhraní Windows PowerShell. Pomocí `Set-HcsNTPClientServerAddress` rutiny upravte primární server NTP vašeho zařízení. Další informace najdete v syntaxi pro rutinu [set-HcsNTPClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) .
 
 - **Sekundární server NTP** – konfigurace je volitelná. Portál můžete použít ke konfiguraci sekundárního serveru NTP.
 
@@ -85,7 +85,7 @@ Server DNS se používá, když se vaše zařízení pokusí komunikovat s vaš�
 
 Pro zajištění vysoké dostupnosti je nutné při počátečním nasazení zařízení nakonfigurovat primární a sekundární servery DNS.
 
-**Primární server DNS** – při počátečním nastavení použijte k prvnímu určení primárního serveru DNS Windows PowerShell pro StorSimple. Primární server DNS můžete překonfigurovat jenom přes rozhraní Windows PowerShell. Pomocí `Set-HcsDNSClientServerAddress` rutiny upravte primární server DNS vašeho zařízení. Další informace najdete v syntaxi pro rutinu [set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) .
+**Primární server DNS** – při počátečním nastavení použijte k prvnímu určení primárního serveru DNS Windows PowerShell pro StorSimple. Primární server DNS můžete překonfigurovat jenom přes rozhraní Windows PowerShell. Pomocí `Set-HcsDNSClientServerAddress` rutiny upravte primární server DNS vašeho zařízení. Další informace najdete v syntaxi pro rutinu [set-HcsDNSClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) .
 
 **Sekundární server DNS** – Chcete-li změnit sekundární server DNS, použijte `Set-HcsDNSClientServerAddress` rutinu v rozhraní Windows PowerShell okna zařízení nebo **nastavení sítě** zařízení StorSimple v Azure Portal.
 
@@ -169,4 +169,3 @@ Provedením následujících kroků prohodíte nebo znovu přiřadíte virtuáln
 
 * Přečtěte si, jak [nakonfigurovat funkci MPIO pro zařízení StorSimple](storsimple-8000-configure-mpio-windows-server.md).
 * Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
-

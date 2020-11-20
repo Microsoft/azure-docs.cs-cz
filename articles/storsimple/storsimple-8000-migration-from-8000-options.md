@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 78ac7e849a3a8f1742701006638a2cb72299bad7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4839f8211e678f5fc2fb3572c7eaa545fbee6c6c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055771"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961188"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>Možnosti migrace dat z řady StorSimple 8000
 
@@ -31,7 +31,7 @@ Zákazníci, kteří používají řadu StorSimple 8000, mají možnosti Azure n
 
 Tato značka nové možnosti migrace umožňuje zákazníkům ukládat sdílené složky ve své organizaci do souborů Azure. Tyto sdílené soubory jsou potom centralizované pro místní přístup pomocí Azure File Sync (AFS). AFS se dá nasadit na hostitele Windows serveru. Skutečná migrace dat se pak provede jako kopie hostitele nebo pomocí nástroje pro migraci.
 
-Další informace o tom, jak migrovat data na Azure File Sync, najdete v článku [migrace StorSimple 8100 a 8600 do Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000).
+Další informace o tom, jak migrovat data na Azure File Sync, najdete v článku [migrace StorSimple 8100 a 8600 do Azure File Sync](../storage/files/storage-files-migration-storsimple-8000.md).
 
 ### <a name="third-party-options"></a>Možnosti třetích stran
 
@@ -111,4 +111,4 @@ A. Čas k migraci dat závisí na množství dat a vybrané možnosti upgradu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Migrace dat z řady StorSimple 8000 na Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)
+* [Migrace dat z řady StorSimple 8000 na Azure File Sync](../storage/files/storage-files-migration-storsimple-8000.md)

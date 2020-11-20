@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: e950e34a1965e309d226c42bf4b3128cbe3bf3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dad02735228bb639981bf3f053a74f29d1944e5a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291499"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961477"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>Vlastní role pro SQL Server migrací do online migrace spravované instance Azure SQL
 
@@ -32,7 +32,7 @@ V současnosti doporučujeme vytvořit minimálně dvě vlastní role pro ID apl
 > [!NOTE]
 > Poslední požadavek na vlastní roli možná nebude možné odebrat, protože nový kód spravované instance SQL je nasazený do Azure.
 
-**Vlastní role pro ID aplikace** Tato role se vyžaduje pro Azure Database Migration Service migrace na úrovni *prostředku* nebo *skupiny prostředků* (Další informace o ID aplikace najdete v článku [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)).
+**Vlastní role pro ID aplikace** Tato role se vyžaduje pro Azure Database Migration Service migrace na úrovni *prostředku* nebo *skupiny prostředků* (Další informace o ID aplikace najdete v článku [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md)).
 
 ```json
 {
@@ -83,7 +83,7 @@ V současnosti doporučujeme vytvořit minimálně dvě vlastní role pro ID apl
 
 Výše uvedený formát JSON musí být uložen ve třech textových souborech a můžete použít buď AzureRM, AZ PowerShell rutiny nebo Azure CLI, a vytvořit tak role pomocí rutiny **New-AzureRmRoleDefinition (AzureRM)** nebo **New-AzRoleDefinition (AZ)**.
 
-Další informace najdete v článku [vlastní role Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
+Další informace najdete v článku [vlastní role Azure](../role-based-access-control/custom-roles.md).
 
 Po vytvoření těchto vlastních rolí je nutné přidat přiřazení rolí uživatelům a ID aplikací k příslušným prostředkům nebo skupinám prostředků:
 
@@ -142,7 +142,7 @@ Pokud se počet vlastních rolí v Azure Active Directory netýká, doporučujem
 
 Pokud chcete přiřadit roli uživatelům nebo ID aplikace, otevřete Azure Portal, proveďte následující kroky:
 
-1. Přejděte do skupiny prostředků nebo prostředku (s výjimkou role, kterou je třeba pro předplatné udělit), přejděte na **Access Control**a potom se posuňte, abyste našli vlastní role, které jste právě vytvořili.
+1. Přejděte do skupiny prostředků nebo prostředku (s výjimkou role, kterou je třeba pro předplatné udělit), přejděte na **Access Control** a potom se posuňte, abyste našli vlastní role, které jste právě vytvořili.
 
 2. Vyberte příslušnou roli, vyberte ID aplikace a pak změny uložte.
 

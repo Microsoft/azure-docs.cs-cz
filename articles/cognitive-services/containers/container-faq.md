@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 188a348b497a485be0a8091b50a3f2c11b6493c0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90900056"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960746"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Cognitive Services Containers (FAQ)
 
@@ -50,7 +50,7 @@ Cognitive Services konfigurace kontejnerů prostředků se řídí zákazníky, 
 
 **A:** S termínem "svrchovaného cloudu" nemusíte mít všechny uživatele, takže začneme s definicí:
 
-> "Svrchovaná Cloud" se skládá z cloudů [Azure Government](../../azure-government/documentation-government-welcome.md), [Azure Německo](../../germany/germany-welcome.md)a [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) .
+> "Svrchovaná Cloud" se skládá z cloudů [Azure Government](../../azure-government/documentation-government-welcome.md), [Azure Německo](../../germany/germany-welcome.md)a [Azure Čína 21Vianet](/azure/china/overview-operations) .
 
 Kontejnery Cognitive Services v cloudech svrchovaného *nativně nepodporují.* Kontejnery mohou být spuštěny v těchto cloudech, ale budou vyžádány z veřejného cloudu a musí odesílat data o využití do veřejného koncového bodu.
 

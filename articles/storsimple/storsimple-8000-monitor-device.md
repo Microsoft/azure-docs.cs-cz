@@ -6,19 +6,19 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 7ffb13912780edcf3d92093e672d1dae983e50a8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: de4cae90f2cc1223271672d9fc5ba5b42e4409e4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977404"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962429"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Monitorování zařízení StorSimple pomocí služby StorSimple Device Manager
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Přehled
 Službu StorSimple Device Manager můžete použít k monitorování konkrétních zařízení v rámci řešení StorSimple. Můžete vytvářet vlastní grafy založené na výkonu vstupu a výstupu, využití kapacity, propustnost sítě a metriky výkonu zařízení a připnout je na řídicí panel. Další informace najdete na webu [přizpůsobení řídicího panelu portálu](../azure-portal/azure-portal-dashboards.md).
 
-Chcete-li zobrazit informace o monitorování určitého zařízení, vyberte v Azure Portal službu Device Manager StorSimple. V seznamu zařízení vyberte zařízení a pak přejít na **monitor**. Pak můžete zobrazit diagramy **kapacity**, **využití**a **výkonu** pro vybrané zařízení.
+Chcete-li zobrazit informace o monitorování určitého zařízení, vyberte v Azure Portal službu Device Manager StorSimple. V seznamu zařízení vyberte zařízení a pak přejít na **monitor**. Pak můžete zobrazit diagramy **kapacity**, **využití** a **výkonu** pro vybrané zařízení.
 
 ## <a name="capacity"></a>Kapacita
 **Kapacita** sleduje zřízené místo a zbývající místo na zařízení. Zbývající kapacita se pak zobrazí jako připnuté místně nebo na vrstvenou.
@@ -139,6 +139,5 @@ Pokud se podíváme na graf propustnosti rozhraní data 1, další síťové roz
 
 
 ## <a name="next-steps"></a>Další kroky
-* Naučte se [používat řídicí panel zařízení StorSimple Device Manager Service](storsimple-device-dashboard.md).
-* Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-manager-service-administration.md).
-
+* Naučte se [používat řídicí panel zařízení StorSimple Device Manager Service](./storsimple-8000-device-dashboard.md).
+* Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](./storsimple-8000-manager-service-administration.md).

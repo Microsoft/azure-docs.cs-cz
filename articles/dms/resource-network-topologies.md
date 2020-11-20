@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: reference
 ms.date: 01/08/2020
-ms.openlocfilehash: 5839de1fde8e4a4d5e661d232ae91099a9483bcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae036b7d893eb268ea55026054bf364dad0b610e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291567"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961545"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Síťové topologie pro migrace spravované instance SQL Azure pomocí Azure Database Migration Service
 
@@ -32,7 +32,7 @@ Tuto topologii použijte, pokud je vaše spravovaná instance SQL Azure připoje
 **Požadavky**
 
 - V tomto scénáři jsou spravované instance SQL a instance Azure Database Migration Service vytvořeny ve stejném Microsoft Azure Virtual Network, ale používají jiné podsítě.  
-- Virtuální síť použitá v tomto scénáři je taky připojená k místní síti pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+- Virtuální síť použitá v tomto scénáři je taky připojená k místní síti pomocí [ExpressRoute](../expressroute/expressroute-introduction.md) nebo [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 ## <a name="sql-managed-instance-isolated-from-the-on-premises-network"></a>Spravovaná instance SQL izolovaná od místní sítě
 
@@ -46,8 +46,8 @@ Tuto topologii sítě použijte v případě, že vaše prostředí vyžaduje je
 
 **Požadavky**
 
-- Virtuální síť, kterou Azure Database Migration Service používá pro tento scénář, musí být také připojená k místní síti pomocí ( https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)).
-- Nastavte [partnerský vztah sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuální sítě mezi virtuální sítí použitou pro SPRAVOVANOU instanci SQL a Azure Database Migration Service.
+- Virtuální síť, kterou Azure Database Migration Service používá pro tento scénář, musí být také připojená k místní síti pomocí ( https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)).
+- Nastavte [partnerský vztah sítě](../virtual-network/virtual-network-peering-overview.md) virtuální sítě mezi virtuální sítí použitou pro SPRAVOVANOU instanci SQL a Azure Database Migration Service.
 
 ## <a name="cloud-to-cloud-migrations-shared-virtual-network"></a>Migrace z cloudu do cloudu: sdílená virtuální síť
 
@@ -71,7 +71,7 @@ Tuto topologii sítě použijte v případě, že vaše prostředí vyžaduje je
 
 **Požadavky**
 
-- Nastavte [partnerský vztah sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuální sítě mezi virtuální sítí použitou pro SPRAVOVANOU instanci SQL a Azure Database Migration Service.
+- Nastavte [partnerský vztah sítě](../virtual-network/virtual-network-peering-overview.md) virtuální sítě mezi virtuální sítí použitou pro SPRAVOVANOU instanci SQL a Azure Database Migration Service.
 
 ## <a name="inbound-security-rules"></a>Příchozí pravidla zabezpečení
 
@@ -85,16 +85,16 @@ Tuto topologii sítě použijte v případě, že vaše prostředí vyžaduje je
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | správa                | 443, 9354                                              | TCP          | Všechny        | Všechny                       | Povolit      | Komunikace roviny správy prostřednictvím Service Bus a úložiště objektů BLOB v Azure. <br/>(Pokud je povolen partnerský vztah Microsoftu, možná toto pravidlo nebudete potřebovat.)                                                             |
 | Diagnostika               | 12000                                                 | TCP          | Všechny        | Všechny                       | Povolit      | DMS pomocí tohoto pravidla shromažďuje diagnostické informace pro účely řešení potíží.                                                                                                                      |
-| Zdrojový server SQL         | 1433 (nebo port TCP IP, na který SQL Server naslouchá) | TCP          | Všechny        | Adresní prostor místního prostředí | Povolit      | Připojení ke zdroji SQL Server z DMS <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.)                                                                                       |
-| SQL Server pojmenované instance | 1434                                                  | UDP          | Všechny        | Adresní prostor místního prostředí | Povolit      | SQL Server připojení ke zdroji pojmenované instance z DMS <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.)                                                                        |
-| Sdílená složka SMB                 | 445                                                   | TCP          | Všechny        | Adresní prostor místního prostředí | Povolit      | Síťová sdílená složka SMB pro DMS pro ukládání záložních souborů databáze pro migrace do Azure SQL Database MI a SQL serverů na virtuálním počítači Azure <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.) |
+| Zdrojový server SQL         | 1433 (nebo port TCP IP, na který SQL Server naslouchá) | TCP          | Libovolný        | Adresní prostor místního prostředí | Povolit      | Připojení ke zdroji SQL Server z DMS <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.)                                                                                       |
+| SQL Server pojmenované instance | 1434                                                  | UDP          | Libovolný        | Adresní prostor místního prostředí | Povolit      | SQL Server připojení ke zdroji pojmenované instance z DMS <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.)                                                                        |
+| Sdílená složka SMB                 | 445                                                   | TCP          | Libovolný        | Adresní prostor místního prostředí | Povolit      | Síťová sdílená složka SMB pro DMS pro ukládání záložních souborů databáze pro migrace do Azure SQL Database MI a SQL serverů na virtuálním počítači Azure <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.) |
 | DMS_subnet                | Všechny                                                   | Všechny          | Všechny        | DMS_Subnet                | Povolit      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>Viz také
 
-- [Migrace SQL Server do spravované instance SQL](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
-- [Přehled požadavků pro použití Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs)
-- [Vytvoření virtuální sítě pomocí webu Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Migrace SQL Server do spravované instance SQL](./tutorial-sql-server-to-managed-instance.md)
+- [Přehled požadavků pro použití Azure Database Migration Service](./pre-reqs.md)
+- [Vytvoření virtuální sítě pomocí webu Azure Portal](../virtual-network/quick-create-portal.md)
 
 ## <a name="next-steps"></a>Další kroky
 
