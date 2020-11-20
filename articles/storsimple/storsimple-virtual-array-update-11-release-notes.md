@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2018
 ms.author: alkohli
-ms.openlocfilehash: 55103d6307614f8796c41c35d6345e1fc3aca261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df4722a4232686b0d981c190bdc154f0d1bec62e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60789633"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960197"
 ---
 # <a name="storsimple-virtual-array-update-11-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 1,1
 
@@ -29,7 +29,7 @@ Následující poznámky k verzi identifikují kritické otevřené problémy a 
 
 Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením StorSimple virtuálního pole pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
-Aktualizace 1,1 odpovídá **10.0.10307.0**verze softwaru.
+Aktualizace 1,1 odpovídá **10.0.10307.0** verze softwaru.
 
 > [!IMPORTANT]
 > - Aktualizace jsou rušivé a restartují vaše zařízení. Pokud probíhá vstupně-výstupní operace, dojde k výpadku zařízení. Podrobné pokyny, jak použít aktualizaci, najdete v článku [instalace aktualizace 1,1](storsimple-virtual-array-install-update-11.md).
@@ -83,7 +83,7 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 ## <a name="next-steps"></a>Další kroky
 [Nainstalujte aktualizaci 1,1](storsimple-virtual-array-install-update-11.md) na virtuální pole StorSimple.
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 Hledáte starší poznámku k verzi? Přejít na:
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 1,0](storsimple-virtual-array-update-1-release-notes.md)
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,6](storsimple-virtual-array-update-06-release-notes.md)
@@ -91,4 +91,4 @@ Hledáte starší poznámku k verzi? Přejít na:
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,4](storsimple-virtual-array-update-04-release-notes.md)
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,3](storsimple-ova-update-03-release-notes.md)
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,1 a 0,2](storsimple-ova-update-01-release-notes.md)
-* [Poznámky k verzi pro StorSimple Virtual Array General Availability](storsimple-ova-pp-release-notes.md)
+* [Poznámky k verzi pro StorSimple Virtual Array General Availability](./storsimple-virtual-array-update-06-release-notes.md)

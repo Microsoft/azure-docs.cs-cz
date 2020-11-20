@@ -3,16 +3,17 @@ title: SAP Business One na Azure Virtual Machines | Microsoft Docs
 description: SAP Business One v Azure.
 author: msjuergent
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: b076045f6a106f77717159d3095ffd5973ab27aa
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 1201ff91634a1f63c8fe0e545ca6d6dee33abe35
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359880"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957380"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One ve službě Azure Virtual Machines
 Tento dokument poskytuje pokyny k nasazení SAP Business One na Azure Virtual Machines. Dokumentace není náhradou pro instalaci aplikace Business One for SAP. Dokumentace by se měla týkat základních pokynů pro plánování a nasazení infrastruktury Azure pro provozování obchodních aplikací v jednom.

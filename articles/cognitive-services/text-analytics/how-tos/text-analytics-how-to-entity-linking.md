@@ -8,47 +8,53 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: cabde27591159b5751435a97a909a5f6f8c3081b
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518222"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957091"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
-Rozhraní API pro analýzu textu umožňuje přebírá nestrukturovaný text a vrací seznam nejednoznačných entit s odkazy na Další informace na webu. Rozhraní API podporuje rozpoznávání pojmenovaných entit (NER) i propojení entit.
+Rozhraní API pro analýzu textu umožňuje přebírá nestrukturovaný text a vrací seznam nejednoznačných entit s odkazy na Další informace na webu. Rozhraní API podporuje rozpoznávání pojmenovaných entit (NER) pro několik kategorií entit a propojení entit.
 
-### <a name="entity-linking"></a>Entity Linking
+## <a name="entity-linking"></a>Entity Linking
 
 Propojení entit je schopnost identifikovat a odstranit identitu entity nalezenou v textu (například určit, zda výskyt slova "Mars" odkazuje na globálním nebo římské jsou války). Tento proces vyžaduje přítomnost znalostní báze v příslušném jazyce, aby bylo možné propojit rozpoznané entity v textu. Při propojování entit se jako tato znalostní báze používá [Wikipedii](https://www.wikipedia.org/) .
 
-
-### <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
+## <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
 
 Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé entity v textu a kategorizovat je do předem definovaných tříd nebo typů, jako je například osoba, umístění, událost, produkt a organizace.  
 
-## <a name="named-entity-recognition-versions-and-features"></a>Verze a funkce pro rozpoznávání pojmenovaných entit
+## <a name="personally-identifiable-information-pii"></a>Identifikovatelné osobní údaje (PII)
+
+Funkce PII je součástí NER a může identifikovat a redigování citlivé entity v textu, který je spojený s jednotlivou osobou, jako je telefonní číslo, e-mailová adresa, poštovní adresa, číslo služby Passport.  
+
+## <a name="named-entity-recognition-features-and-versions"></a>Funkce a verze nástroje pro rozpoznávání pojmenovaných entit
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Příznak                                                         | NER v 3.0 | NER verze 3.1 – Preview. 2 |
+| Příznak                                                         | NER v 3.0 | NER v 3.1 – Preview. 3 |
 |-----------------------------------------------------------------|--------|----------|
 | Metody pro jednotlivé a dávkové požadavky                          | X      | X        |
 | Rozšířené rozpoznávání entit napříč několika kategoriemi           | X      | X        |
 | Samostatné koncové body pro posílání NER entit a žádostí o připojení. | X      | X        |
 | Rozpoznávání osobních entit ( `PII` ) a `PHI` informací o stavu ()        |        | X        |
+| Redigování `PII`        |        | X        |
 
 Informace najdete v tématu [Podpora jazyků](../language-support.md) .
 
-## <a name="entity-types"></a>Typy entit
-
 Rozpoznávání pojmenovaných entit V3 poskytuje rozšířené zjišťování napříč více typy. V současné době NER v 3.0 dokáže rozpoznat entity v [kategorii obecné entity](../named-entity-types.md).
 
-Rozpoznávání pojmenovaných entit v 3.1-Preview. 2 zahrnuje možnosti detekce v 3.0 a možnost detekovat osobní údaje ( `PII` ) pomocí `v3.1-preview.2/entities/recognition/pii` koncového bodu. `domain=phi`K detekci důvěrných informací o stavu () můžete použít volitelný parametr `PHI` . Další informace najdete níže v části věnované předmětům [kategorie](../named-entity-types.md) a [koncovým bodům žádosti](#request-endpoints) .
+Recognitioned entity Recognition v 3.1-Preview. 3 zahrnuje možnosti detekce v 3.0 a: 
+* Schopnost zjišťovat osobní údaje ( `PII` ) pomocí `v3.1-preview.3/entities/recognition/pii` koncového bodu. 
+* Volitelný `domain=phi` parametr pro detekci důvěrných informací o stavu ( `PHI` ).
+* [Asynchronní operace](text-analytics-how-to-call-api.md) s použitím `/analyze` koncového bodu.
 
+Další informace najdete v oddílu [kategorie entit](../named-entity-types.md) a níže v části [požadavky na koncové body](#request-endpoints) . 
 
 ## <a name="sending-a-rest-api-request"></a>Odesílá se žádost o REST API.
 
@@ -68,41 +74,41 @@ Vytvořte žádost POST. Můžete [použít post](text-analytics-how-to-call-api
 
 ### <a name="request-endpoints"></a>Koncové body požadavku
 
-#### <a name="version-31-preview2"></a>[Verze 3,1-Preview. 2](#tab/version-3-preview)
+#### <a name="version-31-preview3"></a>[Verze 3,1-Preview. 3](#tab/version-3-preview)
 
-Rozpoznávání pojmenovaných entit `v3.1-preview.2` používá samostatné koncové body pro žádosti o propojení ner, PII a entit. V závislosti na vaší žádosti použijte formát adresy URL:
+Rozpoznávání pojmenovaných entit `v3.1-preview.3` používá samostatné koncové body pro žádosti o propojení ner, PII a entit. V závislosti na vaší žádosti použijte formát adresy URL.
 
-Propojení entit
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
+**Propojení entit**
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
 
-[Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)
+[Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
 
-NER
-* Obecné entity – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/general`
+**Rozpoznávání pojmenovaných entit**
+* Obecné entity – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
 
-[Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
+[Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
 
-Identifikovatelné osobní údaje (PII)
-* Osobní ( `PII` ) informace – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
+**Identifikovatelné osobní údaje (PII)**
+* Osobní ( `PII` ) informace – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii`
 
 `domain=phi`K detekci `PHI` informací o stavu () v textu můžete použít také volitelný parametr. 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
 
-Všimněte si, že přidání `redactedText` vlastnosti do odpovědi JSON, která obsahuje upravený vstupní text, kde jsou zjištěné entity PII nahrazeny znakem * pro každý znak entit.
+Počínaje `v3.1-preview.3` verzí odpověď JSON obsahuje `redactedText` vlastnost, která obsahuje upravený vstupní text, kde byly zjištěné entity, které byly zjištěny, nahrazeny hodnotou `*` pro každý znak v entitách.
 
-[Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii)
+[Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
 #### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 Rozpoznávání pojmenovaných entit V3 používá samostatné koncové body pro žádosti NER a propojení entit. V závislosti na vaší žádosti použijte formát adresy URL:
 
-Propojení entit
+**Propojení entit**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
 
 [Referenční informace k verzi pro rozpoznávání pojmenované entity 3,0 `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
-NER
+**Rozpoznávání pojmenovaných entit**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
 [Referenční informace k verzi pro rozpoznávání pojmenované entity 3,0 `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
@@ -113,7 +119,7 @@ Nastavte hlavičku požadavku tak, aby obsahovala klíč rozhraní API pro anal�
 
 ### <a name="example-ner-request"></a>Příklad žádosti NER 
 
-Následuje příklad obsahu, který můžete odeslat do rozhraní API. Formát požadavku je pro obě verze rozhraní API stejný.
+Následující JSON je příkladem obsahu, který můžete odeslat do rozhraní API. Formát požadavku je pro obě verze rozhraní API stejný.
 
 ```json
 {
@@ -138,7 +144,7 @@ Rozhraní API pro analýzu textu je Bezstavová. Ve vašem účtu se neukládaj�
 
 Všechny žádosti POST vrátí odpověď ve formátu JSON s ID a zjištěnými vlastnostmi entity.
 
-Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo můžete výstup uložit do souboru v místním systému a potom ho naimportovat do aplikace, která umožňuje řadit a vyhledávat data a pracovat s nimi. Vzhledem k podpoře vícejazyčných a Emoji může odpověď obsahovat posunutí textu. Další informace najdete v tématu [postup zpracování posunutí textu](../concepts/text-offsets.md) .
+Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo můžete výstup uložit do souboru v místním systému a potom ho naimportovat do aplikace, která umožňuje řadit a vyhledávat data a pracovat s nimi. Vzhledem k podpoře vícejazyčných a Emoji může odpověď obsahovat posunutí textu. Další informace najdete v tématu [postup zpracování posunutí textu](../concepts/text-offsets.md).
 
 ### <a name="example-responses"></a>Příklady odpovědí
 

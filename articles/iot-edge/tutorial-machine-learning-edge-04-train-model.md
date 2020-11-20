@@ -8,17 +8,14 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cfb778a1a632dc17a9f50c7ea05debed0edb4fb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9a29e890553d15d19853ec836f8c4296869e143
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88660243"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959624"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Kurz: výuka a nasazení Azure Machine Learningho modelu
-
-> [!NOTE]
-> Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
 
 V tomto článku provedeme následující úlohy:
 
@@ -29,6 +26,10 @@ V tomto článku provedeme následující úlohy:
 Azure Notebooks využít pracovní prostor Azure Machine Learning, což je základní blok, který se používá k experimentování, výuce a nasazování modelů strojového učení.
 
 Kroky v tomto článku můžou obvykle provádět odborníci přes data.
+
+## <a name="prerequisites"></a>Požadavky
+
+Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
 ## <a name="set-up-azure-notebooks"></a>Nastavit Azure Notebooks
 
@@ -165,7 +166,7 @@ Chcete-li ověřit, zda byly poznámkové bloky úspěšně dokončeny, ověřte
 
 1. Ověřte, že byly vytvořeny následující prostředky Azure. Některé názvy prostředků se připojují s náhodnými znaky.
 
-    | Prostředek Azure | Název |
+    | Prostředek Azure | Name |
     | --- | --- |
     | Pracovní prostor Machine Learning | turborfanDemo |
     | Container Registry | turbofandemoxxxxxxxx |

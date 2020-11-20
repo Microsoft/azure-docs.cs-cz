@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 21d4af6985dbe246e60fe95f8f03de7f8aa0501b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1383db44922a044f5e51075b6e1feafa70c78009
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314058"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958749"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v SUSE Linux Enterprise Server 
 
@@ -139,7 +140,7 @@ V následujících pokynech se předpokládá, že jste už nasadili službu [Az
 
    Když nasazujete svazky, ujistěte se, že jste vybrali verzi **nfsv 4.1** . V současné době se přístup k NFSv 4.1 vyžaduje přidání do seznamu povolených. Nasaďte svazky v určené Azure NetApp Files [podsíti](/rest/api/virtualnetwork/subnets). IP adresy svazků Azure NetApp se přiřazují automaticky. 
    
-   Pamatujte, že prostředky Azure NetApp Files a virtuální počítače Azure musí být ve stejné virtuální síti Azure nebo ve virtuálních sítích Azure s partnerským vztahem. Například **HN1**-data-Mnt00001, **HN1**-log-mnt00001 atd. jsou názvy svazků**a NFS://10.23.1.5/HN1-data**-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001 atd. jsou cesty k souborům pro Azure NetApp Files svazky.  
+   Pamatujte, že prostředky Azure NetApp Files a virtuální počítače Azure musí být ve stejné virtuální síti Azure nebo ve virtuálních sítích Azure s partnerským vztahem. Například **HN1**-data-Mnt00001, **HN1**-log-mnt00001 atd. jsou názvy svazků **a NFS://10.23.1.5/HN1-data**-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001 atd. jsou cesty k souborům pro Azure NetApp Files svazky.  
 
    * Volume **HN1**-data-mnt00001 (NFS://10.23.1.5/**HN1**-data-mnt00001)
    * Volume **HN1**-data-mnt00002 (NFS://10.23.1.6/**HN1**-data-mnt00002)
@@ -232,11 +233,11 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
 
    c. Vyberte podsíť klientské virtuální sítě Azure. Vyberte možnost [akcelerovaná síť](../../../virtual-network/create-vm-accelerated-networking-cli.md).  
 
-   Když nasadíte virtuální počítače, název síťového rozhraní se vygeneruje automaticky. V těchto pokynech pro zjednodušení budeme odkazovat na automaticky generovaná síťová rozhraní, která jsou připojená k podsíti virtuální sítě Azure Client, jako **hanadb1-Client**, **hanadb2-Client**a **hanadb3-Client**. 
+   Když nasadíte virtuální počítače, název síťového rozhraní se vygeneruje automaticky. V těchto pokynech pro zjednodušení budeme odkazovat na automaticky generovaná síťová rozhraní, která jsou připojená k podsíti virtuální sítě Azure Client, jako **hanadb1-Client**, **hanadb2-Client** a **hanadb3-Client**. 
 
-3. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `storage` podsíť virtuální sítě (v tomto příkladu **hanadb1-Storage**, **hanadb2-Storage**a **hanadb3-Storage**).  
+3. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `storage` podsíť virtuální sítě (v tomto příkladu **hanadb1-Storage**, **hanadb2-Storage** a **hanadb3-Storage**).  
 
-4. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `hana`  podsíť virtuální sítě (v tomto příkladu **hanadb1-Hana**, **hanadb2-Hana**a **hanadb3-Hana**).  
+4. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `hana`  podsíť virtuální sítě (v tomto příkladu **hanadb1-Hana**, **hanadb2-Hana** a **hanadb3-Hana**).  
 
 5. Připojte nově vytvořená virtuální síťová rozhraní k odpovídajícím virtuálním počítačům pomocí následujících kroků:  
 
@@ -246,7 +247,7 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
 
     c. V podokně **Přehled** vyberte možnost zastavit, čímž **zrušíte** přidělení virtuálního počítače.  
 
-    d. Vyberte **sítě**a pak připojte síťové rozhraní. V rozevíracím seznamu **připojit síťové rozhraní** vyberte již vytvořená síťová rozhraní pro `storage` `hana` podsítě a.  
+    d. Vyberte **sítě** a pak připojte síťové rozhraní. V rozevíracím seznamu **připojit síťové rozhraní** vyberte již vytvořená síťová rozhraní pro `storage` `hana` podsítě a.  
     
     e. Vyberte **Uložit**. 
  
@@ -435,7 +436,7 @@ Pomocí následujících kroků nakonfigurujte a připravte operační systém:
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-5. **[A]** vytvořte skupinu SAP Hana a uživatele ručně. ID pro skupiny sapsys a User **HN1**ADM musí být nastavená na stejné identifikátory, které jsou k dispozici během připojování. (V tomto příkladu jsou identifikátory nastavené na **1001**.) Pokud nejsou ID správně nastavená, nebudete mít přístup ke svazkům. ID skupinových sapsys a uživatelských účtů **HN1**ADM a sapadm musí být na všech virtuálních počítačích stejné.  
+5. **[A]** vytvořte skupinu SAP Hana a uživatele ručně. ID pro skupiny sapsys a User **HN1** ADM musí být nastavená na stejné identifikátory, které jsou k dispozici během připojování. (V tomto příkladu jsou identifikátory nastavené na **1001**.) Pokud nejsou ID správně nastavená, nebudete mít přístup ke svazkům. ID skupinových sapsys a uživatelských účtů **HN1** ADM a sapadm musí být na všech virtuálních počítačích stejné.  
 
     <pre><code>
     # Create user group 
@@ -533,7 +534,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
     sudo zypper install libgcc_s1 libstdc++6 libatomic1 
     </code></pre>
 
-4. **[2], [3]** Změňte vlastnictví SAP HANA `data` a `log` adresářů na **HN1**ADM.   
+4. **[2], [3]** Změňte vlastnictví SAP HANA `data` a `log` adresářů na **HN1** ADM.   
 
     <pre><code>
     # Execute as root
@@ -657,7 +658,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 1. Simulujte selhání uzlu na SAP HANA pracovním uzlu. Postupujte následovně: 
 
-   a. Před simulací havárie uzlu spusťte následující příkazy jako **HN1**ADM pro zachycení stavu prostředí:  
+   a. Před simulací havárie uzlu spusťte následující příkazy jako **HN1** ADM pro zachycení stavu prostředí:  
 
    <pre><code>
     # Check the landscape status
@@ -712,7 +713,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 2. Pomocí následujícího postupu ukončete názvový server:
 
-   a. Před testem zkontrolujte stav prostředí spuštěním následujících příkazů jako **HN1**ADM:  
+   a. Před testem zkontrolujte stav prostředí spuštěním následujících příkazů jako **HN1** ADM:  
 
    <pre><code>
     #Landscape status 
@@ -734,7 +735,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GRAY
    </code></pre>
 
-   b. Spusťte následující příkazy jako **HN1**ADM na aktivním hlavním uzlu, který je v tomto případě **hanadb1** :  
+   b. Spusťte následující příkazy jako **HN1** ADM na aktivním hlavním uzlu, který je v tomto případě **hanadb1** :  
 
     <pre><code>
         hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
@@ -768,7 +769,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
     hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   Po zahájení SAP HANA v **hanadb1**očekávat následující stav:  
+   Po zahájení SAP HANA v **hanadb1** očekávat následující stav:  
 
    <pre><code>
     # Check the instance status
@@ -827,7 +828,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   Po zahájení SAP HANA v **hanadb3**bude tento stav vypadat takto:  
+   Po zahájení SAP HANA v **hanadb3** bude tento stav vypadat takto:  
 
    <pre><code>
     # Check the instance status

@@ -3,16 +3,17 @@ title: Infrastruktura aktualizace Red Hat | Microsoft Docs
 description: Přečtěte si o infrastruktuře aktualizací Red Hat pro instance Red Hat Enterprise Linux na vyžádání v Microsoft Azure
 author: asinn826
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 3bdbd84785053b79198479305e1ca76e133a46f3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d4af869a3bf4ba7f454ae8e5c9c9f4eb81f5939f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994270"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957448"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Infrastruktura aktualizace Red Hat pro virtuální počítače na vyžádání Red Hat Enterprise Linux v Azure
  RHUI ( [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) ) umožňuje poskytovatelům cloudu, jako je Azure, zrcadlit obsah úložiště hostovaného na Red Hat, vytvářet vlastní úložiště pomocí obsahu specifického pro Azure a zpřístupňuje je pro virtuální počítače koncových uživatelů.

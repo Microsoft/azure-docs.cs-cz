@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57c6caea2de9063b133d4d5d643629184e412dad
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797742"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957686"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -54,7 +55,7 @@ Nejprve je třeba vytvořit virtuální počítače cíle iSCSI. cílové server
 
 1. Nasaďte nové virtuální počítače s SLES 12 SP1 nebo novější a připojte se k nim přes SSH. Počítače nemusí být velké. Velikost virtuálního počítače, jako je Standard_E2s_v3 nebo Standard_D2s_v3, je dostatečná. Ujistěte se, že používáte disk s operačním systémem Premium Storage.
 
-Na všech **virtuálních počítačích cíle iSCSI**spusťte následující příkazy.
+Na všech **virtuálních počítačích cíle iSCSI** spusťte následující příkazy.
 
 1. Aktualizovat SLES
 
@@ -442,7 +443,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    >Rozšíření můžete ověřit spuštěním SUSEConnect---rozšíření seznamu.  
    >Chcete-li dosáhnout rychlejšího převzetí služeb při selhání pomocí agenta Azure Plot:
    > - v SLES 12 SP4 nebo SLES 12 SP5 nainstalujte verzi **4.6.2** nebo vyšší z balíčku Python – Azure-Správa – Compute.  
-   > - v SLES 15 nainstalujte verzi **4.6.2** nebo vyšší z balíčku Python**3**– Azure-Správa – Compute. 
+   > - v SLES 15 nainstalujte verzi **4.6.2** nebo vyšší z balíčku Python **3**– Azure-Správa – Compute. 
 
 1. **[A]** nastavení rozlišení názvu hostitele
 

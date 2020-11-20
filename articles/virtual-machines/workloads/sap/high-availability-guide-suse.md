@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 63adf2b1ca7ae795e35e8245440093fe0f6e6c49
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 508fff16f96d0dfddb77b219bb545fb8580b4048
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486170"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958893"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP
 
@@ -156,7 +157,7 @@ K nasazení všech požadovaných prostředků můžete použít jednu z šablon
    9. Uživatelské jméno správce a heslo správce  
       Vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
    10. ID podsítě  
-   Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/** &lt; ID &gt; odběru**/ResourceGroups/název** &lt; &gt; skupiny prostředků**** &lt; &gt; ** /Providers/Microsoft.Network/virtualNetworks/název** &lt; virtuální sítě &gt; **/subnets/název podsítě
+   Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/**&lt; ID &gt; odběru**/ResourceGroups/název **&lt; &gt; skupiny prostředků****&lt; &gt;** /Providers/Microsoft.Network/virtualNetworks/název **&lt; virtuální sítě &gt;**/subnets/název podsítě
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
@@ -193,13 +194,13 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
       1. Vyberte virtuální počítače v clusteru (A) SCS a jejich IP adresy.
       1. Klikněte na tlačítko Přidat.
    1. Vytvoření sond stavu
-      1. Port 620**00** pro ASCS
+      1. Port 620 **00** pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **NW1-ASCS-HP**).
-         1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
+         1. Vybrat TCP as Protocol, port 620 **00**, zachovat interval 5 a špatný práh 2
          1. Klikněte na OK.
-      1. Port 621**02** pro ASCS olajících
-         * Zopakováním výše uvedených kroků vytvořte sondu stavu pro OLAJÍCÍCH (například 621**02** a **NW1-aers-HP**)
+      1. Port 621 **02** pro ASCS olajících
+         * Zopakováním výše uvedených kroků vytvořte sondu stavu pro OLAJÍCÍCH (například 621 **02** a **NW1-aers-HP**)
    1. Pravidla vyrovnávání zatížení
       1. Pravidla vyrovnávání zatížení pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
@@ -227,15 +228,15 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
       1. Vyberte virtuální počítače v clusteru (A) SCS.
       1. Klikněte na OK.
    1. Vytvoření sond stavu
-      1. Port 620**00** pro ASCS
+      1. Port 620 **00** pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **NW1-ASCS-HP**).
-         1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
+         1. Vybrat TCP as Protocol, port 620 **00**, zachovat interval 5 a špatný práh 2
          1. Klikněte na OK.
-      1. Port 621**02** pro ASCS olajících
-         * Zopakováním výše uvedených kroků vytvořte sondu stavu pro OLAJÍCÍCH (například 621**02** a **NW1-aers-HP**)
+      1. Port 621 **02** pro ASCS olajících
+         * Zopakováním výše uvedených kroků vytvořte sondu stavu pro OLAJÍCÍCH (například 621 **02** a **NW1-aers-HP**)
    1. Pravidla vyrovnávání zatížení
-      1. 32**00** TCP pro ASCS
+      1. 32 **00** TCP pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
          1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **NW1-kg-3200**).
          1. Vyberte front-end IP adresu, fond back-endu a sondu stavu, který jste vytvořili dříve (například **NW1-ASCS-front-end**).
@@ -244,9 +245,9 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
          1. Klikněte na OK.
       1. Další porty pro ASCS
-         * Opakujte výše uvedené kroky pro porty 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 a TCP pro ASCS
+         * Opakujte výše uvedené kroky pro porty 36 **00**, 39 **00**, 81 **00**, 5 **00** 13, 5 **00** 14, 5 **00** 16 a TCP pro ASCS
       1. Další porty pro ASCS OLAJÍCÍCH
-         * Opakujte výše uvedené kroky pro porty 33**02**, 5**02**13, 5**02**14, 5**02**16 a TCP pro ASCS olajících
+         * Opakujte výše uvedené kroky pro porty 33 **02**, 5 **02** 13, 5 **02** 14, 5 **02** 16 a TCP pro ASCS olajících
 
 > [!IMPORTANT]
 > Plovoucí IP adresa není ve scénářích Vyrovnávání zatížení podporována u sekundární konfigurace IP adresy NIC. Podrobnosti najdete v tématu [omezení nástroje pro vyrovnávání zatížení Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Pokud pro virtuální počítač potřebujete další IP adresu, nasaďte druhou síťovou kartu.  
@@ -450,7 +451,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**NW1**/ASCS**00**, zkuste nastavit vlastníka a skupinu složky ASCS**00** a zkuste to znovu.
+   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**NW1**/ASCS **00**, zkuste nastavit vlastníka a skupinu složky ASCS **00** a zkuste to znovu.
 
    <pre><code>chown nw1adm /usr/sap/<b>NW1</b>/ASCS<b>00</b>
    chgrp sapsys /usr/sap/<b>NW1</b>/ASCS<b>00</b>
@@ -507,7 +508,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    > [!NOTE]
    > Použijte SWPM SP 20 PL 05 nebo vyšší. Nižší verze nenastaví správně oprávnění a instalace se nezdaří.
 
-   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**NW1**/ERS**02**, zkuste nastavit vlastníka a skupinu ve složce olajících**02** a zkuste to znovu.
+   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**NW1**/ERS **02**, zkuste nastavit vlastníka a skupinu ve složce olajících **02** a zkuste to znovu.
 
    <pre><code>chown nw1adm /usr/sap/<b>NW1</b>/ERS<b>02</b>
    chgrp sapsys /usr/sap/<b>NW1</b>/ERS<b>02</b>

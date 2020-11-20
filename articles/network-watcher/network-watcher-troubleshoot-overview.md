@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 95edcee32c1917d23e4808e805f947d18d2fa7f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f27cb217b60c23f3cf89f48effb933837269000e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986231"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960321"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Úvod k řešení potíží s prostředky v Azure Network Watcher
 
@@ -54,9 +54,9 @@ V následujících tabulkách jsou uvedeny různé typy chyb (ID z předchozího
 | PlannedMaintenance |  Probíhá údržba instance brány.  |Ne|
 | UserDrivenUpdate | Tato chyba nastane, když probíhá aktualizace uživatele. Aktualizací může být i operace, která spočívá ve změně velikosti. | Ne |
 | VipUnResponsive | K této chybě dojde, když se nepodaří spojení s primární instancí brány kvůli neúspěšné sondě stavu. | Ne |
-| PlatformInActive | Došlo k problému s platformou. | No|
-| ServiceNotRunning | Podkladová služba není spuštěná. | No|
-| NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Tato chyba je jenom upozornění.| No|
+| PlatformInActive | Došlo k problému s platformou. | Ne|
+| ServiceNotRunning | Podkladová služba není spuštěná. | Ne|
+| NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Tato chyba je jenom upozornění.| Ne|
 | ConnectionsNotConnected | Připojení nejsou připojena. Tato chyba je jenom upozornění.| Yes|
 | GatewayCPUUsageExceeded | Aktuální využití procesoru brány je > 95%. | Yes |
 
@@ -68,9 +68,9 @@ V následujících tabulkách jsou uvedeny různé typy chyb (ID z předchozího
 | GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
 | PlannedMaintenance | Probíhá údržba instance brány.  |Ne|
 | UserDrivenUpdate | Tato chyba nastane, když probíhá aktualizace uživatele. Aktualizací může být i operace, která spočívá ve změně velikosti.  | Ne |
-| VipUnResponsive | K této chybě dojde, když se nepodaří spojení s primární instancí brány kvůli neúspěšné sondě stavu. | No |
-| ConnectionEntityNotFound | Chybí konfigurace připojení. | No |
-| ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojené. |No|
+| VipUnResponsive | K této chybě dojde, když se nepodaří spojení s primární instancí brány kvůli neúspěšné sondě stavu. | Ne |
+| ConnectionEntityNotFound | Chybí konfigurace připojení. | Ne |
+| ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojené. |Ne|
 | ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Yes |
 | ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Yes|
 | Authentication | Neshoda předsdíleného klíče | Yes|
@@ -96,7 +96,7 @@ Následující tabulka uvádí, které brány a připojení jsou podporované p�
 |ExpressRoute| Nepodporuje se|
 |VPNClient| Nepodporuje se|
 
-## <a name="log-files"></a>Soubory protokolů
+## <a name="log-files"></a>Soubory protokolu
 
 Po dokončení řešení potíží s prostředkem se soubory protokolu řešení potíží se zdroji ukládají v účtu úložiště. Následující obrázek ukazuje vzorový obsah volání, jehož výsledkem je chyba.
 
@@ -105,7 +105,7 @@ Po dokončení řešení potíží s prostředkem se soubory protokolu řešení
 > [!NOTE]
 > V některých případech je do úložiště zapisována pouze podmnožina souborů protokolů.
 
-Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu [Začínáme s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Průzkumník služby Storage se dá použít jiný nástroj. Další informace o Průzkumník služby Storage najdete na následujícím odkazu: [Průzkumník služby Storage](https://storageexplorer.com/)
+Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu [Začínáme s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md). Průzkumník služby Storage se dá použít jiný nástroj. Další informace o Průzkumník služby Storage najdete na následujícím odkazu: [Průzkumník služby Storage](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

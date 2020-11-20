@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 520a7649942fc5186d32020853b98297ef8b34d7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 36c101acc9e272ca0860649aad1a5e18fb5000a5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152118"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957329"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA systému škálování na více systémů na Red Hat Enterprise Linux 
 
@@ -138,9 +139,9 @@ Pro konfiguraci prezentovanou v tomto dokumentu nasaďte sedm virtuálních poč
    > Ujistěte se, že operační systém, který vyberete, je SAP – certifikováno pro SAP HANA na specifických typech virtuálních počítačů, které používáte. Seznam SAP HANA certifikovaných typů virtuálních počítačů a verzí operačních systémů pro tyto typy najdete na webu [SAP HANA Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) . Kliknutím na podrobnosti o typu tohoto virtuálního počítače získáte úplný seznam SAP HANA podporovaných verzí operačního systému pro daný typ.  
   
 
-2. Vytvořte šest síťových rozhraní, jednu pro každý virtuální počítač databáze HANA, v `inter` podsíti virtuální sítě (v tomto příkladu **Hana-S1-DB1-Inter**, **Hana-S1-DB2-Inter**, Hana- **S1-DB3-Inter**, **Hana-S2-DB1-Inter**, Hana- **S2-DB2-Inter**a **Hana-S2-DB3-Inter**).  
+2. Vytvořte šest síťových rozhraní, jednu pro každý virtuální počítač databáze HANA, v `inter` podsíti virtuální sítě (v tomto příkladu **Hana-S1-DB1-Inter**, **Hana-S1-DB2-Inter**, Hana- **S1-DB3-Inter**, **Hana-S2-DB1-Inter**, Hana- **S2-DB2-Inter** a **Hana-S2-DB3-Inter**).  
 
-3. Vytvořte šest síťových rozhraní, jednu pro každý virtuální počítač databáze HANA v `hsr` podsíti virtuální sítě (v tomto příkladu **Hana-S1-DB1-HSR**, **Hana-S1-DB2-HSR**, **Hana-S1-DB3-HSR**, **Hana-S2-DB1-HSR**, **Hana-S2-DB2-HSR**a **Hana-S2-DB3-HSR**).  
+3. Vytvořte šest síťových rozhraní, jednu pro každý virtuální počítač databáze HANA v `hsr` podsíti virtuální sítě (v tomto příkladu **Hana-S1-DB1-HSR**, **Hana-S1-DB2-HSR**, **Hana-S1-DB3-HSR**, **Hana-S2-DB1-HSR**, **Hana-S2-DB2-HSR** a **Hana-S2-DB3-HSR**).  
 
 4. Připojte nově vytvořená rozhraní virtuální sítě k odpovídajícím virtuálním počítačům:  
 
@@ -150,7 +151,7 @@ Pro konfiguraci prezentovanou v tomto dokumentu nasaďte sedm virtuálních poč
 
     c. V podokně **Přehled** vyberte možnost zastavit, čímž **zrušíte** přidělení virtuálního počítače.  
 
-    d. Vyberte **sítě**a pak připojte síťové rozhraní. V rozevíracím seznamu **připojit síťové rozhraní** vyberte již vytvořená síťová rozhraní pro `inter` `hsr` podsítě a.  
+    d. Vyberte **sítě** a pak připojte síťové rozhraní. V rozevíracím seznamu **připojit síťové rozhraní** vyberte již vytvořená síťová rozhraní pro `inter` `hsr` podsítě a.  
     
     e. Vyberte **Uložit**. 
  
@@ -187,7 +188,7 @@ Pro konfiguraci prezentovanou v tomto dokumentu nasaďte sedm virtuálních poč
 1. Doporučujeme použít službu Load Balancer úrovně Standard. Pomocí těchto kroků konfigurace nasaďte standardní nástroj pro vyrovnávání zatížení:
    1. Nejprve vytvořte front-end fond IP adres:
 
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond**a vyberte **Přidat**.
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond** a vyberte **Přidat**.
       1. Zadejte název nového fondu front-end IP adres (například **Hana-front-endu**).
       1. Nastavte **přiřazení** na **statické** a zadejte IP adresu (například **10.23.0.18**).
       1. Vyberte **OK**.
@@ -195,7 +196,7 @@ Pro konfiguraci prezentovanou v tomto dokumentu nasaďte sedm virtuálních poč
 
    1. Dále vytvořte fond back-end a přidejte všechny virtuální počítače clusteru do back-endu fondu:
 
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu**a vyberte **Přidat**.
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu** a vyberte **Přidat**.
       1. Zadejte název nového fondu back-end (například **Hana-back-end**).
       1. Vyberte **Přidat virtuální počítač**.
       1. Vyberte **Virtuální počítač**.
@@ -204,14 +205,14 @@ Pro konfiguraci prezentovanou v tomto dokumentu nasaďte sedm virtuálních poč
 
    1. Potom vytvořte sondu stavu:
 
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu**a vyberte **Přidat**.
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu** a vyberte **Přidat**.
       1. Zadejte název nové sondy stavu (například **Hana-HP**).
-      1. Jako protokol a port 625**03**vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
+      1. Jako protokol a port 625 **03** vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
       1. Vyberte **OK**.
 
    1. Dále vytvořte pravidla vyrovnávání zatížení:
    
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení** a vyberte **Přidat**.
       1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **Hana-kg**).
       1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**, **Hana-back-endu** a **Hana-HP**).
       1. Vyberte **porty ha**.
@@ -599,7 +600,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 1. **[1]** konfigurace replikace systému v lokalitě 1:
 
-   Zálohujte databáze jako **HN1**ADM:
+   Zálohujte databáze jako **HN1** ADM:
 
     ```
     hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupSYS')"
@@ -936,7 +937,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
 
    3. Potom vytvořte prostředek instance HANA.  
       > [!NOTE]
-      > Tento článek obsahuje odkazy na *podřízený*termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.  
+      > Tento článek obsahuje odkazy na *podřízený* termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.  
  
       Při sestavování clusteru RHEL **7. x** použijte následující příkazy:    
       ```
@@ -961,7 +962,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
        meta master-max="1" clone-node-max=1 interleave=true
       ```
       > [!IMPORTANT]
-      > Doporučujeme, abyste jako osvědčený postup nastavili pouze AUTOMATED_REGISTER na **ne**a prováděly důkladné testy pro převzetí služeb při selhání, aby se neúspěšná primární instance automaticky registrovala jako sekundární. Po úspěšném dokončení testů pro převzetí služeb při selhání nastavte AUTOMATED_REGISTER na **Ano**, aby se mohla replikace systému automaticky obnovit. 
+      > Doporučujeme, abyste jako osvědčený postup nastavili pouze AUTOMATED_REGISTER na **ne** a prováděly důkladné testy pro převzetí služeb při selhání, aby se neúspěšná primární instance automaticky registrovala jako sekundární. Po úspěšném dokončení testů pro převzetí služeb při selhání nastavte AUTOMATED_REGISTER na **Ano**, aby se mohla replikace systému automaticky obnovit. 
 
    4. Vytvoření virtuální IP adresy a přidružených prostředků  
       ```

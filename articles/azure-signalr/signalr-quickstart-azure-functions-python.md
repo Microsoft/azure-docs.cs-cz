@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.custom: devx-track-python
-ms.openlocfilehash: 24985a006390977c89c4eedc23084a9856272eba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aaaf9011d38e7ec02e83db63757c434329b835e0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91355634"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960287"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Rychlý Start: vytvoření chatovací místnosti pomocí Azure Functions a služby signalizace pomocí Pythonu
 
 Služba Azure SignalR Service umožňuje snadné přidávání funkcí v reálném čase do aplikací. Řešení Azure Functions představuje bezserverovou platformu, která umožňuje spouštět kód, aniž byste museli spravovat nějakou infrastrukturu. V tomto Rychlém zprovoznění se dozvíte, jak pomocí služby SignalR Service a Functions sestavit bezserverovou aplikaci pro chat v reálném čase.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo Linux.
 
@@ -31,21 +31,21 @@ Azure Functions vyžaduje [Python 3,6 nebo 3,7](https://www.python.org/downloads
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qspython)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qspython)prosím o tom.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí svého účtu Azure.
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qspython)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qspython)prosím o tom.
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qspython)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qspython)prosím o tom.
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qspython)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qspython)prosím o tom.
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Konfigurace a spuštění aplikace funkcí Azure
 
@@ -81,7 +81,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
 
-1. Funkce Pythonu jsou uspořádány do složek. V každé složce jsou dva soubory: *function.jsv* definuje vazby, které jsou používány ve funkci, a * \_ \_ init \_ \_ . py* je tělo funkce. Tato aplikace funkcí zahrnuje dvě funkce aktivované protokolem HTTP:
+1. Funkce Pythonu jsou uspořádány do složek. V každé složce jsou dva soubory: *function.jsv* definuje vazby, které jsou používány ve funkci, a *\_ \_ init \_ \_ . py* je tělo funkce. Tato aplikace funkcí zahrnuje dvě funkce aktivované protokolem HTTP:
 
     - **negotiate** – používá vstupní vazbu *SignalRConnectionInfo* ke generování a vracení informací o platném připojení.
     - **messages** – přijímá zprávy chatu v textu požadavku a používá výstupní vazbu *SignalR* k vysílání zpráv všem připojeným klientským aplikacím.
@@ -100,15 +100,15 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
     ![Spustit aplikaci Function App](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
     
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qspython)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qspython)prosím o tom.
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qspython)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qspython)prosím o tom.
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qspython)
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qspython)prosím o tom.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -117,4 +117,3 @@ V tomto rychlém startu jste v VS Code vytvořili a spustili aplikaci bez server
 > [!div class="nextstepaction"]
 > [Nasazení Azure Functions přes VS Code](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
 
-[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qspython)

@@ -9,21 +9,22 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: b85984207742e0b8991ab65875dd22505b918185
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f57e809373a8bd06c4b4afbb9b193464315e788f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736751"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959573"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Kurz: konfigurace zařízení IoT Edge
-
-> [!NOTE]
-> Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
 
 V tomto článku nakonfigurujeme virtuální počítač Azure se systémem Linux, aby se jednalo o IoT Edge zařízení, které funguje jako transparentní brána. Transparentní konfigurace brány umožňuje zařízením připojit se k Azure IoT Hub prostřednictvím brány bez vědomí, že brána existuje. Současně uživatel, který pracuje se zařízeními v Azure IoT Hub, neví, že zařízení zprostředkující brány je v provozu. Nakonec přidáme do našeho systému Edge Analytics tak, že do transparentní brány přidáte IoT Edge moduly.
 
 Kroky v tomto článku jsou obvykle prováděny vývojářem cloudu.
+
+## <a name="prerequisites"></a>Požadavky
+
+Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
 ## <a name="create-certificates"></a>Vytvoření certifikátů
 
@@ -39,11 +40,11 @@ V této části vytvoříme certifikáty podepsané svým držitelem pomocí Ima
 
 4. Otevřete Visual Studio Code.
 
-5. Vyberte **soubor**  >  **Otevřít složku...** a zvolte **C: \\ source \\ IoTEdgeAndMlSample \\ CreateCertificates** .
+5. Vyberte **soubor**  >  **Otevřít složku...** a zvolte **C: \\ source \\ IoTEdgeAndMlSample \\ CreateCertificates**.
 
-6. V podokně Průzkumník klikněte pravým tlačítkem na **souboru Dockerfile** a vyberte **sestavit image** .
+6. V podokně Průzkumník klikněte pravým tlačítkem na **souboru Dockerfile** a vyberte **sestavit image**.
 
-7. V dialogu přijměte výchozí hodnotu pro název obrázku a značku: **createcertificates: nejnovější** .
+7. V dialogu přijměte výchozí hodnotu pro název obrázku a značku: **createcertificates: nejnovější**.
 
     ![Vytvoření certifikátů v Visual Studio Code](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
 
@@ -58,7 +59,7 @@ V této části vytvoříme certifikáty podepsané svým držitelem pomocí Ima
     docker run --name createcertificates --rm -v c:\edgeCertificates:/edgeCertificates createcertificates /edgeCertificates
     ```
 
-10. Docker vás vyzve pro přístup k jednotce **c: \\** . Vyberte možnost **sdílet** .
+10. Docker vás vyzve pro přístup k jednotce **c: \\** . Vyberte možnost **sdílet**.
 
 11. Po zobrazení výzvy zadejte své přihlašovací údaje.
 
@@ -76,7 +77,7 @@ K bezpečnému uložení certifikátů a jejich zpřístupnění z více zaříz
 
 1. Z [Azure Portal](https://portal.azure.com)přejděte do pracovního prostoru Azure Machine Learning.
 
-2. Na stránce Přehled v pracovním prostoru Azure Machine Learning vyhledejte název **Key Vault** .
+2. Na stránce Přehled v pracovním prostoru Azure Machine Learning vyhledejte název **Key Vault**.
 
     ![Kopírovat název trezoru klíčů](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 
@@ -102,7 +103,7 @@ V tomto kurzu vytvoříme novou identitu zařízení pomocí Visual Studio Code.
 
 2. Rozbalte rámec **Azure IoT Hub** v zobrazení Průzkumník Visual Studio Code.
 
-3. Klikněte na tři tečky a vyberte **vytvořit IoT Edge zařízení** .
+3. Klikněte na tři tečky a vyberte **vytvořit IoT Edge zařízení**.
 
 4. Dejte zařízení název. Pro usnadnění práce používáme název **aaTurbofanEdgeDevice** , takže se seřadí na začátek seznamu zařízení.
 
@@ -120,15 +121,15 @@ Pro použití image z webu Marketplace ve skriptovém nasazení musíme pro Imag
 
 1. Přihlaste se k webu Azure Portal.
 
-1. Vyberte **Všechny služby** .
+1. Vyberte **Všechny služby**.
 
-1. Na panelu hledání zadejte a vyberte **Marketplace** .
+1. Na panelu hledání zadejte a vyberte **Marketplace**.
 
-1. Na panelu hledání na webu Marketplace zadejte a vyberte **Azure IoT Edge v Ubuntu** .
+1. Na panelu hledání na webu Marketplace zadejte a vyberte **Azure IoT Edge v Ubuntu**.
 
 1. Vyberte **hypertextový odkaz Začínáme,** který chcete nasadit programově.
 
-1. Klikněte na tlačítko **Povolit** a pak na **Uložit** .
+1. Klikněte na tlačítko **Povolit** a pak na **Uložit**.
 
     ![Povolit programové nasazení pro virtuální počítač](media/tutorial-machine-learning-edge-05-configure-edge-device/deploy-ubuntu-vm.png)
 
@@ -152,11 +153,11 @@ Potom spuštěním skriptu vytvořte virtuální počítač pro zařízení IoT 
 
 3. Po zobrazení výzvy zadejte hodnoty pro každý parametr. Pro předplatné, skupinu prostředků a umístění doporučujeme, abyste používali stejný jako u všech prostředků v rámci tohoto kurzu.
 
-    * **ID předplatného Azure** : našlo se v Azure Portal.
-    * **Název skupiny prostředků** : zapamatovatelné názvy pro seskupení prostředků pro tento kurz
-    * **Umístění** : umístění Azure, ve kterém se virtuální počítač vytvoří. Například westus2 nebo northeurope. Další informace najdete v tématu všechna [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).
-    * **AdminUsername** : název účtu správce, který použijete pro přihlášení k virtuálnímu počítači.
-    * **AdminPassword** : heslo, které se má nastavit pro AdminUsername ve virtuálním počítači.
+    * **ID předplatného Azure**: našlo se v Azure Portal.
+    * **Název skupiny prostředků**: zapamatovatelné názvy pro seskupení prostředků pro tento kurz
+    * **Umístění**: umístění Azure, ve kterém se virtuální počítač vytvoří. Například westus2 nebo northeurope. Další informace najdete v tématu všechna [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).
+    * **AdminUsername**: název účtu správce, který použijete pro přihlášení k virtuálnímu počítači.
+    * **AdminPassword**: heslo, které se má nastavit pro AdminUsername ve virtuálním počítači.
 
 4. Aby se skript mohl nastavit jako virtuální počítač, musíte se přihlásit k Azure pomocí přihlašovacích údajů přidružených k předplatnému Azure, které používáte.
 
@@ -183,7 +184,7 @@ V následujících částech se konfiguruje virtuální počítač Azure, který
     ssh -l <username> iotedge-<suffix>.<region>.cloudapp.azure.com
     ```
 
-2. Po zobrazení výzvy k ověření pravosti hostitele zadejte **Ano** a vyberte **zadat** .
+2. Po zobrazení výzvy k ověření pravosti hostitele zadejte **Ano** a vyberte **zadat**.
 
 3. Po zobrazení výzvy zadejte heslo.
 
@@ -230,13 +231,13 @@ Později v tomto kurzu budeme pracovat se listovým zařízením. V této část
 
 Modul runtime IoT Edge používá soubor `/etc/iotedge/config.yaml` k uchování jeho konfigurace. V tomto souboru musíme aktualizovat tři části informací:
 
-* **Připojovací řetězec zařízení** : připojovací řetězec z identity tohoto zařízení v IoT Hub
+* **Připojovací řetězec zařízení**: připojovací řetězec z identity tohoto zařízení v IoT Hub
 * **Certifikáty:** certifikáty, které se mají použít pro připojení s podřízenými zařízeními.
 * **Název hostitele:** plně kvalifikovaný název domény (FQDN) virtuálního počítače IoT Edge zařízení.
 
 *Azure IoT Edge image Ubuntu* , kterou jsme použili k vytvoření virtuálního počítače s IoT Edge, přichází pomocí skriptu prostředí, který aktualizuje config. yaml připojovacím řetězcem.
 
-1. V Visual Studio Code klikněte pravým tlačítkem na zařízení IoT Edge a pak vyberte **Kopírovat připojovací řetězec zařízení** .
+1. V Visual Studio Code klikněte pravým tlačítkem na zařízení IoT Edge a pak vyberte **Kopírovat připojovací řetězec zařízení**.
 
     ![Kopírovat připojovací řetězec z Visual Studio Code](media/tutorial-machine-learning-edge-05-configure-edge-device/copy-device-connection-string-command.png)
 

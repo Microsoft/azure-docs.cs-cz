@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-python, devx-track-js
-ms.openlocfilehash: a4496ba46b486f183136381a51c6a523dd9e1b87
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5c8918995675cae8e70ca9fc1efb0cf4c7cb233b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047977"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959403"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení modulu Node.js IoT Edge pro zařízení se systémem Linux
 
@@ -33,9 +33,9 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>Obor řešení
+## <a name="prerequisites"></a>Požadavky
 
-Tento kurz ukazuje, jak vytvořit modul v **Node.js** pomocí **Visual Studio Code**a jak ho nasadit na **zařízení se systémem Linux**. IoT Edge nepodporuje moduly Node.js pro zařízení s Windows.
+Tento kurz ukazuje, jak vytvořit modul v **Node.js** pomocí **Visual Studio Code** a jak ho nasadit na **zařízení se systémem Linux**. IoT Edge nepodporuje moduly Node.js pro zařízení s Windows.
 
 Následující tabulka vám pomůže pochopit možnosti pro vývoj a nasazování Node.jsch modulů:
 
@@ -43,8 +43,6 @@ Následující tabulka vám pomůže pochopit možnosti pro vývoj a nasazován�
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Použití VS Code pro Node.js moduly v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Použití VS Code pro Node.js moduly na platformě Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
-
-## <a name="prerequisites"></a>Požadované součásti
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení některého z těchto kurzů byste měli mít následující požadavky:
 
@@ -84,7 +82,7 @@ Pomocí **npm** vytvořte šablonu řešení Node.js, na jejímž základě bude
    | ----- | ----- |
    | Vybrat složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
    | Zadejte název řešení | Zadejte popisný název vašeho řešení nebo přijměte výchozí **EdgeSolution**. |
-   | Vyberte šablonu modulu | Vyberte ** modulNode.js**. |
+   | Vyberte šablonu modulu | Vyberte **modulNode.js**. |
    | Zadejte název modulu | Dejte modulu název **NodeModule**. |
    | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru se předem vyplní názvem, který jste zadali v posledním kroku. Položku **localhost: 5000** nahraďte hodnotou **přihlašovacího serveru** z služby Azure Container Registry. Přihlašovací server můžete načíst ze stránky přehled v registru kontejneru v Azure Portal. <br><br>Konečné úložiště imagí vypadá jako \<registry name\> . azurecr.IO/nodemodule. |
 
@@ -104,7 +102,7 @@ Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru konte
 
 V současné době Visual Studio Code může vyvíjet Node.js moduly pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64.
 
-1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
+1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge** nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
 
 2. V paletě příkazů vyberte v seznamu možností cílovou architekturu. Pro tento kurz používáme virtuální počítač s Ubuntu jako zařízení IoT Edge, takže se zachová výchozí hodnota **amd64**.
 
@@ -235,7 +233,7 @@ V manifestu nasazení jsme použili vláken Module NodeModule, které nastaví p
 
 1. V Visual Studio Code rozbalte podrobnosti pod zařízením IoT Edge a podívejte se na běžící moduly.
 
-2. Klikněte pravým tlačítkem na **NodeModule** a vyberte **Upravit modul s dvojitou**čárkou.
+2. Klikněte pravým tlačítkem na **NodeModule** a vyberte **Upravit modul s dvojitou** čárkou.
 
 3. V požadovaných vlastnostech vyhledejte **TemperatureThreshold** . Změňte jeho hodnotu na novou teplotu 5 stupňů na 10 stupňů vyšší než při nejnovější hlášené teplotě.
 

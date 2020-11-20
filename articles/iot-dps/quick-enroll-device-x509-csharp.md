@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 618b2c6acb8792382adb4c067aa8f33003227091
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9fc34532818a742ef67e4b2532966874d083199d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91532580"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959845"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí C#
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Tento rychlý start ukazuje, jak prostřednictvím kódu programu v C# vytvořit [skupinu registrací](concepts-service.md#enrollment-group), která používá zprostředkující nebo kořenové certifikáty X.509 certifikační autority. Skupina registrací se vytvoří pomocí [sady Microsoft Azure IoT SDK pro .NET](https://github.com/Azure/azure-iot-sdk-csharp) a ukázkové aplikace .NET Core v C#. Skupina registrací řídí přístup ke službě zřizování pro zařízení, která ve svém řetězu certifikátů sdílejí společný podpisový certifikát. Další informace najdete v tématu [Řízení přístupu zařízení ke službě zřizování pomocí certifikátů X.509](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). Další informace o používání infrastruktury veřejných klíčů (PKI) založené na certifikátech X.509 se službami Azure IoT Hub a Device Provisioning najdete v tématu [Přehled zabezpečení pomocí certifikátu webu X.509](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
+Tento rychlý start ukazuje, jak prostřednictvím kódu programu v C# vytvořit [skupinu registrací](concepts-service.md#enrollment-group), která používá zprostředkující nebo kořenové certifikáty X.509 certifikační autority. Skupina registrací se vytvoří pomocí [sady Microsoft Azure IoT SDK pro .NET](https://github.com/Azure/azure-iot-sdk-csharp) a ukázkové aplikace .NET Core v C#. Skupina registrací řídí přístup ke službě zřizování pro zařízení, která ve svém řetězu certifikátů sdílejí společný podpisový certifikát. Další informace najdete v tématu [Řízení přístupu zařízení ke službě zřizování pomocí certifikátů X.509](./concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). Další informace o používání infrastruktury veřejných klíčů (PKI) založené na certifikátech X.509 se službami Azure IoT Hub a Device Provisioning najdete v tématu [Přehled zabezpečení pomocí certifikátu webu X.509](../iot-hub/iot-hub-x509ca-overview.md). 
 
 V tomto rychlém startu se očekává, že už máte vytvořenou instanci služby IoT Hub a Device Provisioning. Pokud jste tyto prostředky ještě nevytvořili, dokončete [nastavení IoT Hub Device Provisioning Service s Azure Portal](./quick-setup-auto-provision.md) rychlý Start, než budete pokračovat v tomto článku.
 
@@ -28,7 +28,7 @@ I když postup v tomto článku funguje na počítačích se systémem Windows i
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte sadu [Visual Studio 2019](https://www.visualstudio.com/vs/).
 * Nainstalujte [.NET Core SDK](https://www.microsoft.com/net/download/windows).
@@ -44,7 +44,7 @@ Pro účely tohoto rychlého startu potřebujete soubor .pem nebo .cer, který o
 > Používejte certifikáty vytvořené pomocí nástrojů sady SDK pouze pro vývojové testování.
 > Nepoužívejte tyto certifikáty v produkčním prostředí.
 > Obsahují pevně kódovaná hesla, například *1234*, jejichž platnost vyprší po 30 dnech.
-> Informace o získání certifikátů vhodných pro použití v produkčním prostředí najdete v tématu věnovaném [získání certifikátu webu X.509](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) v dokumentaci ke službě Azure IoT Hub.
+> Informace o získání certifikátů vhodných pro použití v produkčním prostředí najdete v tématu věnovaném [získání certifikátu webu X.509](../iot-hub/iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) v dokumentaci ke službě Azure IoT Hub.
 >
 
 Chcete-li použít toto testovací nástroje pro generování certifikátů, proveďte následující kroky:
@@ -71,25 +71,25 @@ Kromě nástrojů v sadě C SDK obsahuje [Ukázka ověření certifikátu skupin
 
 Pro ukázku v tomto rychlém startu potřebujete připojovací řetězec pro vaši službu zřizování.
 
-1. Přihlaste se k Azure Portal, vyberte **všechny prostředky**a službu Device Provisioning.
+1. Přihlaste se k Azure Portal, vyberte **všechny prostředky** a službu Device Provisioning.
 
-1. Vyberte **zásady sdíleného přístupu**a pak zvolte zásadu přístupu, kterou chcete použít k otevření jejích vlastností. V části **zásady přístupu**zkopírujte a uložte připojovací řetězec primárního klíče.
+1. Vyberte **zásady sdíleného přístupu** a pak zvolte zásadu přístupu, kterou chcete použít k otevření jejích vlastností. V části **zásady přístupu** zkopírujte a uložte připojovací řetězec primárního klíče.
 
     ![Získání připojovacího řetězce služby zřizování z portálu](media/quick-enroll-device-x509-csharp/get-service-connection-string-vs2019.png)
 
 ## <a name="create-the-enrollment-group-sample"></a>Vytvoření ukázky skupiny registrací 
 
-V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která do vaší služby zřizování přidá skupinu pro registraci. S určitými úpravami můžete pomocí tohoto postupu vytvořit pro přidání skupiny registrací také konzolovou aplikaci [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot). Další informace o vývoji s využitím IoT Core najdete v [dokumentaci pro vývojáře pro Windows IoT Core](https://docs.microsoft.com/windows/iot-core/).
+V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která do vaší služby zřizování přidá skupinu pro registraci. S určitými úpravami můžete pomocí tohoto postupu vytvořit pro přidání skupiny registrací také konzolovou aplikaci [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot). Další informace o vývoji s využitím IoT Core najdete v [dokumentaci pro vývojáře pro Windows IoT Core](/windows/iot-core/).
 
-1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**. V části **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Core)** pro šablonu projektu C# a vyberte **Další**.
+1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**. V části **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Core)** pro šablonu projektu C# a vyberte **Další**.
 
-1. Pojmenujte projekt *CreateEnrollmentGroup*a potom stiskněte **vytvořit**.
+1. Pojmenujte projekt *CreateEnrollmentGroup* a potom stiskněte **vytvořit**.
 
     ![Konfigurovat klasický desktopový projekt Visual C# pro Windows](media//quick-enroll-device-x509-csharp/configure-app-vs2019.png)
 
 1. Po otevření řešení v aplikaci Visual Studio klikněte v podokně **Průzkumník řešení** pravým tlačítkem myši na projekt **CreateEnrollmentGroup** a vyberte možnost **Spravovat balíčky NuGet**.
 
-1. V **nástroji Správce balíčků NuGet**vyberte **Procházet**, vyhledejte a zvolte **Microsoft. Azure. Devices. Provisioning. Service**a potom stiskněte **nainstalovat**.
+1. V **nástroji Správce balíčků NuGet** vyberte **Procházet**, vyhledejte a zvolte **Microsoft. Azure. Devices. Provisioning. Service** a potom stiskněte **nainstalovat**.
 
     ![Okno Správce balíčků NuGet](media//quick-enroll-device-x509-csharp/add-nuget.png)
 
@@ -176,7 +176,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
   
 Spusťte ukázku v sadě Visual Studio, aby se vytvořila skupina registrací. Zobrazí se okno příkazového řádku a začne zobrazovat potvrzovací zprávy. Po úspěšném vytvoření se v okně příkazového řádku zobrazí vlastnosti nové skupiny pro registraci.
 
-Můžete ověřit, že se vytvořila skupina pro registraci. Přejít do přehledu služby Device Provisioning a vybrat **spravovat registrace**a pak vybrat **skupiny**registrací. Měla by se zobrazit nová položka registrace odpovídající ID registrace, které jste použili v ukázce.
+Můžete ověřit, že se vytvořila skupina pro registraci. Přejít do přehledu služby Device Provisioning a vybrat **spravovat registrace** a pak vybrat **skupiny** registrací. Měla by se zobrazit nová položka registrace odpovídající ID registrace, které jste použili v ukázce.
 
 ![Vlastnosti registrace na portálu](media/quick-enroll-device-x509-csharp/verify-enrollment-portal-vs2019.png)
 
@@ -188,9 +188,9 @@ Pokud plánujete prozkoumat ukázku služby C#, neprovádějte čištění prost
 
 1. Zavřete okno výstup ukázky C# ve vašem počítači.
 
-1. V Azure Portal přejděte do vaší služby Device Provisioning, vyberte **spravovat registrace**a pak vyberte **skupiny**registrací. Vyberte *ID registrace* pro položku registrace, kterou jste vytvořili v tomto rychlém startu, a stiskněte klávesu **Delete**.
+1. V Azure Portal přejděte do vaší služby Device Provisioning, vyberte **spravovat registrace** a pak vyberte **skupiny** registrací. Vyberte *ID registrace* pro položku registrace, kterou jste vytvořili v tomto rychlém startu, a stiskněte klávesu **Delete**.
 
-1. Ze služby Device Provisioning v Azure Portal vyberte **certifikáty**, zvolte certifikát, který jste nahráli pro tento rychlý Start, a v horní části **podrobností certifikátu**stiskněte **Odstranit** .  
+1. Ze služby Device Provisioning v Azure Portal vyberte **certifikáty**, zvolte certifikát, který jste nahráli pro tento rychlý Start, a v horní části **podrobností certifikátu** stiskněte **Odstranit** .  
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90b0ab4fdabd40e803d1f85a640e4cb387e40c44
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88853114"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958944"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure ve Windows pomocí protokolu SMB (Azure NetApp Files) pro aplikace SAP
 
@@ -146,7 +147,7 @@ Od SAP budete potřebovat následující software:
 1. Nainstalujte instanci SAP ASCS/SCS do prvního uzlu clusteru. Spusťte instalační nástroj SAP SWPM a pak přejděte na: **produkt**  >  **DBMS** > instalace > aplikační server ABAP (nebo Java) > High-Availability System > ASCS/SCS instance > prvním uzlu clusteru.  
 
 2. Jako konfiguraci sdílené složky clusteru v SWPM vyberte **cluster Shared File** .  
-3. Po zobrazení výzvy ke kroku o **parametrech systémového clusteru SAP**zadejte název hostitele pro sdílenou složku SMB Azure NetApp Files, kterou jste už vytvořili jako **název hostitele pro sdílení souborů**.  V tomto příkladu je název hostitele sdílené složky SMB **anfsmb-9562**. 
+3. Po zobrazení výzvy ke kroku o **parametrech systémového clusteru SAP** zadejte název hostitele pro sdílenou složku SMB Azure NetApp Files, kterou jste už vytvořili jako **název hostitele pro sdílení souborů**.  V tomto příkladu je název hostitele sdílené složky SMB **anfsmb-9562**. 
 
    > [!IMPORTANT]
    > Pokud výsledky kontroly požadovaných součástí SWPM ukazují, že se nesplní podmínka funkce průběžné dostupnosti, můžete ji vyřešit podle pokynů v části [opožděná chybová zpráva při pokusu o přístup ke sdílené složce, která už v systému Windows neexistuje](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l).  

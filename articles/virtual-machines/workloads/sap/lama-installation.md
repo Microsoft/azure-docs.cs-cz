@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: be7cfef5c7121d918c375dae216d293d9d56526b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e3f541e28f47bb6456b441811d23baa9e020fde7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890475"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959148"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -138,7 +139,7 @@ Otevřete web SAP LaMa a přejděte na infrastruktura. Přejděte na kartu cloud
 * Port proxy serveru: port TCP serveru proxy
 * Změnit typ úložiště na Uložit náklady: Toto nastavení povolte, pokud má adaptér Azure změnit typ úložiště Managed Disks tak, aby ušetřil náklady, když se disky nepoužívají. U datových disků, na které se odkazuje v konfiguraci instance SAP, adaptér při přípravě instance změní typ disku na standardní úložiště během přípravy instance a zpátky na původní typ úložiště. Pokud zastavíte virtuální počítač v SAP LaMa, adaptér změní typ úložiště všech připojených disků včetně disku s operačním systémem na úložiště Standard. Pokud spustíte virtuální počítač v SAP LaMa, adaptér změní typ úložiště zpátky na původní typ úložiště.
 
-Kliknutím na test konfigurace Ověřte zadání. Měli byste vidět
+Kliknutím na test konfigurace Ověřte zadání. Měli byste vidět toto:
 
 Připojení bylo úspěšné: připojení k Microsoft cloudu bylo úspěšné. bylo nalezeno 7 skupin prostředků (je požadováno pouze 10 skupin).
 
@@ -319,7 +320,7 @@ V rámci účtu NetApp rozsah kapacity určuje velikost a typ disků pro každý
 
 ![Fond kapacit SAP LaMa NetApp se vytvořil. ](media/lama/sap-lama-capacitypool-list.png)
 
-Svazky NFS se teď dají definovat. Vzhledem k tomu, že budou existovat svazky pro více systémů v jednom fondu, je třeba zvolit schéma pojmenování na základě sebe. Přidáním identifikátoru zabezpečení (SID) lze seskupit související svazky dohromady. Pro ASCS a instanci as jsou potřeba následující připojení: */sapmnt/ \<SID\>* , */usr/SAP/ \<SID\>* a */Home/ \<sid\> ADM* . Volitelně se */usr/SAP/trans* potřebuje pro adresář centrálního přenosu, který se aspoň používá pro všechny systémy na jednom místě.
+Svazky NFS se teď dají definovat. Vzhledem k tomu, že budou existovat svazky pro více systémů v jednom fondu, je třeba zvolit schéma pojmenování na základě sebe. Přidáním identifikátoru zabezpečení (SID) lze seskupit související svazky dohromady. Pro ASCS a instanci as jsou potřeba následující připojení: */sapmnt/ \<SID\>*, */usr/SAP/ \<SID\>* a */Home/ \<sid\> ADM*. Volitelně se */usr/SAP/trans* potřebuje pro adresář centrálního přenosu, který se aspoň používá pro všechny systémy na jednom místě.
 
 > [!NOTE]
 > Během fáze BETA verze musí být názvy svazků v rámci předplatného jedinečné.
@@ -381,7 +382,7 @@ Přidejte další virtuální název hostitele a IP adresu pro název, který po
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-db -n 255.255.255.128
 ```
 
-Spusťte instalaci instance databáze SWPM na virtuálním počítači aplikačního serveru, ne na virtuálním počítači HANA. Použijte *ah1-DB* pro *hostitele databáze* v dialogovém okně *databáze pro systém SAP* .
+Spusťte instalaci instance databáze SWPM na virtuálním počítači aplikačního serveru, ne na virtuálním počítači HANA. Použijte *ah1-DB* pro *hostitele databáze* v dialogovém okně *databáze pro systém SAP*.
 
 #### <a name="install-sap-netweaver-application-server-for-sap-hana"></a>Instalace aplikačního serveru SAP NetWeaver pro SAP HANA
 
@@ -447,9 +448,9 @@ Musíte přidat IP adresu virtuálního hostitele databáze do síťového rozhr
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db -n 255.255.255.128
 ```
 
-Spusťte instalaci instance databáze SWPM na virtuálním počítači SQL serveru. Pomocí SAPINST_USE_HOSTNAME = *AS1-DB* přepište název hostitele, který se používá pro připojení k SQL Server. Pokud jste virtuální počítač nasadili pomocí šablony Azure Resource Manager, ujistěte se, že jste nastavili adresář, který se používá pro datové soubory databáze, do *C:\sql\data* a soubor protokolu databáze na *C:\SQL\LOG* .
+Spusťte instalaci instance databáze SWPM na virtuálním počítači SQL serveru. Pomocí SAPINST_USE_HOSTNAME =*AS1-DB* přepište název hostitele, který se používá pro připojení k SQL Server. Pokud jste virtuální počítač nasadili pomocí šablony Azure Resource Manager, ujistěte se, že jste nastavili adresář, který se používá pro datové soubory databáze, do *C:\sql\data* a soubor protokolu databáze na *C:\SQL\LOG*.
 
-Ujistěte se, že uživatel *NT AUTHORITY\SYSTEM* má přístup k SQL Server a má roli role serveru *sysadmin* . Další informace najdete v tématu SAP Note [1877727] a [2562184].
+Ujistěte se, že uživatel *NT AUTHORITY\SYSTEM* má přístup k SQL Server a má roli role serveru *sysadmin*. Další informace najdete v tématu SAP Note [1877727] a [2562184].
 
 #### <a name="install-sap-netweaver-application-server"></a>Instalace aplikačního serveru SAP NetWeaver
 

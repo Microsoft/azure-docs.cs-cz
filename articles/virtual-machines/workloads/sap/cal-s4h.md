@@ -3,16 +3,17 @@ title: Nasazení SAP S/4HANA nebo ČERNOBÍLé/4HANA na virtuálním počítači
 description: Nasazení SAP S/4HANA nebo ČERNOBÍLé/4HANA na virtuálním počítači Azure
 author: hermanndms
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.reviewer: cynthn
-ms.openlocfilehash: 116de28501b77262ef126ed420982d853376da4e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 6492e770479042a5a1b4da6f61917832adad4873
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993397"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959284"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Nasazení SAP S/4HANA nebo ČERNOBÍLé/4HANA v Azure
 Tento článek popisuje, jak nasadit S/4HANA v Azure pomocí knihovny cloudových zařízení SAP (SAP CAL) 3,0. Pokud chcete nasadit další řešení založená na SAP HANA, jako je například ČERNOBÍLé/4HANA, postupujte podle stejných kroků.
@@ -59,7 +60,7 @@ Na stránce **řešení** se zobrazují některá řešení založená na SAP CA
 
    ![Účty SAP CAL](./media/cal-s4h/s4h-pic3c.png)
 
-1. Kliknutím na **autorizovat**autorizujete službu SAP CAL k nasazení do vámi definovaného předplatného Azure. Na kartě prohlížeč se zobrazí následující stránka:
+1. Kliknutím na **autorizovat** autorizujete službu SAP CAL k nasazení do vámi definovaného předplatného Azure. Na kartě prohlížeč se zobrazí následující stránka:
 
    ![Přihlášení ke cloudovým službám v Internet Exploreru](./media/cal-s4h/s4h-pic4c.png)
 
@@ -105,15 +106,15 @@ Tady Ukážeme základní cestu k nasazení.
 
     a. Vyberte účet SAP CAL. (Použijte účet, který je přidružený k nasazení pomocí modelu nasazení Správce prostředků.)
 
-    b. Zadejte **název**instance.
+    b. Zadejte **název** instance.
 
-    c. Vyberte **oblast**Azure. Rozhraní SAP CAL navrhuje oblast. Pokud potřebujete jinou oblast Azure a nemáte předplatné SAP CAL, musíte si objednat předplatné CAL pomocí SAP.
+    c. Vyberte **oblast** Azure. Rozhraní SAP CAL navrhuje oblast. Pokud potřebujete jinou oblast Azure a nemáte předplatné SAP CAL, musíte si objednat předplatné CAL pomocí SAP.
 
     d. Zadejte hlavní **heslo** pro řešení o osmi nebo devíti znacích. Heslo se používá pro správce různých součástí.
 
    ![Základní režim SAP CAL: vytvořit instanci](./media/cal-s4h/s4h-pic10a.png)
 
-1. Klikněte na tlačítko **vytvořit**a v zobrazeném okně se zprávou klikněte na tlačítko **OK**.
+1. Klikněte na tlačítko **vytvořit** a v zobrazeném okně se zprávou klikněte na tlačítko **OK**.
 
    ![Podporované velikosti virtuálních počítačů SAP CAL](./media/cal-s4h/s4h-pic10b.png)
 

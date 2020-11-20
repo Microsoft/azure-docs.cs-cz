@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: fd5c0905b4a5d050eaf35456353122fd26f8cbf7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 75d013b863671246e6249f367676e4de86bc1de8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445264"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960016"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Publikování a sledování kanálů strojového učení
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak sdílet kanál strojového učení se svými k
 
 Kanály strojového učení jsou opakovaně použitelnými pracovními postupy pro úlohy strojového učení. Jedna výhoda kanálů zvyšuje spolupráci. Můžete také vytvářet verze kanálů a umožnit tak zákazníkům používat aktuální model při práci na nové verzi. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvoření [pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md) pro uložení všech prostředků kanálu
 
@@ -74,7 +74,7 @@ Jakmile budete mít kanál v provozu, můžete publikovat kanál, aby běžel s 
 Všechny publikované kanály mají koncový bod REST. Pomocí koncového bodu kanálu můžete aktivovat spuštění kanálu z libovolného externího systému, včetně klientů mimo Python. Tento koncový bod povoluje ve scénářích dávkového vyhodnocování a přeškolení možnost spravovaná opakovatelnost.
 
 > [!IMPORTANT]
-> Pokud ke správě přístupu k vašemu kanálu používáte řízení přístupu na základě role (RBAC), [nastavte oprávnění pro váš scénář kanálu (školení nebo bodování)](how-to-assign-roles.md#common-scenarios).
+> Pokud ke správě přístupu k vašemu kanálu používáte řízení přístupu na základě role Azure (Azure RBAC), [nastavte oprávnění pro váš scénář kanálu (školení nebo bodování)](how-to-assign-roles.md#common-scenarios).
 
 K vyvolání běhu předchozího kanálu potřebujete Azure Active Directory token hlavičky ověřování. Získání takového tokenu je popsané v referenčních informacích [třídy AzureCliAuthentication](/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?preserve-view=true&view=azure-ml-py) a v tématu [ověřování v](https://aka.ms/pl-restep-auth) poznámkovém bloku Azure Machine Learning.
 

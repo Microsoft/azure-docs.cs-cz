@@ -3,16 +3,17 @@ title: Návrh a implementace databáze Oracle v Azure | Microsoft Docs
 description: Navrhněte a implementujte databázi Oracle v prostředí Azure.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 9bfd2330f71b9690e2864968cf51cb438bb23676
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6b7c280d9ff5f4d8a3c35eb11e080bf2f9f287c0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534069"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959165"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
@@ -143,13 +144,13 @@ Na základě požadavků na šířku pásma sítě si můžete vybrat z různýc
 
 ### <a name="disk-types-and-configurations"></a>Typy disků a konfigurace
 
-- *Výchozí disky s operačním systémem* : tyto typy disků nabízejí trvalá data a ukládání do mezipaměti. Jsou optimalizované pro přístup k operačnímu systému při spuštění a nejsou navržené pro transakční data ani pro úlohy datového skladu (analytická data).
+- *Výchozí disky s operačním systémem*: tyto typy disků nabízejí trvalá data a ukládání do mezipaměti. Jsou optimalizované pro přístup k operačnímu systému při spuštění a nejsou navržené pro transakční data ani pro úlohy datového skladu (analytická data).
 
-- *Nespravované disky* : u těchto typů disků spravujete účty úložiště, které ukládají soubory virtuálních pevných disků (VHD), které odpovídají vašim DISKŮM virtuálních počítačů. Soubory VHD se ukládají jako objekty blob stránky v účtech úložiště Azure.
+- *Nespravované disky*: u těchto typů disků spravujete účty úložiště, které ukládají soubory virtuálních pevných disků (VHD), které odpovídají vašim DISKŮM virtuálních počítačů. Soubory VHD se ukládají jako objekty blob stránky v účtech úložiště Azure.
 
-- *Spravované disky* : Azure spravuje účty úložiště, které používáte pro disky virtuálních počítačů. Určíte typ disku (Premium nebo Standard) a velikost disku, který potřebujete. Azure vytvoří a spravuje disk za vás.
+- *Spravované disky*: Azure spravuje účty úložiště, které používáte pro disky virtuálních počítačů. Určíte typ disku (Premium nebo Standard) a velikost disku, který potřebujete. Azure vytvoří a spravuje disk za vás.
 
-- *Disky Premium Storage* : tyto typy disků jsou nejvhodnější pro produkční úlohy. Premium Storage podporuje disky virtuálních počítačů, které je možné připojit ke konkrétním virtuálním počítačům řady velikostí, například k virtuálním počítačům DS, DSv2, GS a F Series. Disk Premium se dodává s různými velikostmi a můžete si vybrat mezi disky od 32 do 4 096 GB. Každá velikost disku má své vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete k VIRTUÁLNÍmu počítači připojit jeden nebo více disků.
+- *Disky Premium Storage*: tyto typy disků jsou nejvhodnější pro produkční úlohy. Premium Storage podporuje disky virtuálních počítačů, které je možné připojit ke konkrétním virtuálním počítačům řady velikostí, například k virtuálním počítačům DS, DSv2, GS a F Series. Disk Premium se dodává s různými velikostmi a můžete si vybrat mezi disky od 32 do 4 096 GB. Každá velikost disku má své vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete k VIRTUÁLNÍmu počítači připojit jeden nebo více disků.
 
 Při vytváření nového spravovaného disku z portálu můžete zvolit **typ účtu** pro typ disku, který chcete použít. Pamatujte, že ne všechny dostupné disky se zobrazí v rozevírací nabídce. Po zvolení konkrétní velikosti virtuálního počítače se v nabídce zobrazí jenom dostupné SKU Premium Storage, které jsou založené na velikosti tohoto virtuálního počítače.
 
@@ -186,7 +187,7 @@ Po jasném přehledu požadavků na vstupně-výstupní operace můžete zvolit 
 
 Pro ukládání do mezipaměti hostitele existují tři možnosti:
 
-- *ReadOnly* : všechny požadavky jsou ukládány do mezipaměti pro budoucí čtení. Všechna zápisy se ukládají přímo do Azure Blob Storage.
+- *ReadOnly*: všechny požadavky jsou ukládány do mezipaměti pro budoucí čtení. Všechna zápisy se ukládají přímo do Azure Blob Storage.
 
 - Probuzení *: jedná* se o algoritmus "Read-to-dopředu". Čtení a zápisy jsou ukládány do mezipaměti pro budoucí čtení. Zápisy bez zápisů jsou nejprve trvale ukládány do místní mezipaměti. Poskytuje taky nejnižší latenci disku pro úlohy s nižšími procesy. Použití mezipaměti s podporou přečtení z aplikace, která nezpracovává trvalá potřebná data, může způsobit ztrátu dat, pokud dojde k chybě virtuálního počítače.
 
@@ -208,9 +209,9 @@ Po uložení nastavení datového disku nemůžete nastavení mezipaměti hostit
 
 Po nastavení a konfiguraci prostředí Azure je dalším krokem zabezpečení vaší sítě. Tady je několik doporučení:
 
-- *Zásady NSG* : NSG se dají definovat v podsíti nebo síťové kartě. Je jednodušší řídit přístup na úrovni podsítě, a to jak pro zabezpečení, tak pro vynucení směrování pro věci, jako jsou brány firewall pro aplikace.
+- *Zásady NSG*: NSG se dají definovat v podsíti nebo síťové kartě. Je jednodušší řídit přístup na úrovni podsítě, a to jak pro zabezpečení, tak pro vynucení směrování pro věci, jako jsou brány firewall pro aplikace.
 
-- *JumpBox* : pro bezpečnější přístup by se správci neměli přímo připojovat ke službě Application Service nebo databázi. JumpBox se používá jako médium mezi počítačem správce a prostředky Azure.
+- *JumpBox*: pro bezpečnější přístup by se správci neměli přímo připojovat ke službě Application Service nebo databázi. JumpBox se používá jako médium mezi počítačem správce a prostředky Azure.
 ![Snímek obrazovky se stránkou topologie JumpBox](./media/oracle-design/jumpbox.png)
 
     Počítač správce by měl nabízet jenom přístup s omezením IP adres jenom pro JumpBox. JumpBox by měl mít přístup k aplikaci a databázi.

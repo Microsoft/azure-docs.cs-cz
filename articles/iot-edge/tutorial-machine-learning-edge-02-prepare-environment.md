@@ -8,19 +8,20 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 99a0805239ee2437ad6ec9ceb40cf45496a07850
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3a3518ba68c9474fc4a34390e6fd9a7d1e88f6c6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047654"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959590"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: nastavení prostředí pro strojové učení na IoT Edge
 
-> [!NOTE]
-> Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
-
 Tento článek vám pomůže připravit vaše prostředí pro vývoj a nasazení. Nejdřív nastavte vývojový počítač pro všechny nástroje, které potřebujete. Pak vytvořte potřebné cloudové prostředky v Azure.
+
+## <a name="prerequisites"></a>Požadavky
+
+Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
 ## <a name="set-up-the-development-vm"></a>Nastavení vývojového virtuálního počítače
 
@@ -100,7 +101,7 @@ Aby vám pomohla snižovat náklady, byl vytvořen vývojový virtuální počí
 
 1. V Azure Portal přejděte na virtuální počítač, který skript vytvořil.
 
-1. V nabídce v levém podokně v části **operace**vyberte **Automatické vypnutí**.
+1. V nabídce v levém podokně v části **operace** vyberte **Automatické vypnutí**.
 
 1. Podle potřeby upravte **naplánované vypínání** a **časové pásmo** a vyberte **Uložit**.
 
@@ -183,7 +184,7 @@ V rámci vytváření služby IoT Hub vytvořil skript, který jsme spustili v p
 
 1. V seznamu prostředků vyberte IoT Hub vytvoření skriptu. Bude mít název končící náhodnými znaky, jako je například `IotEdgeAndMlHub-jrujej6de6i7w` .
 
-1. V nabídce v levém podokně v části **zasílání zpráv**vyberte **směrování zpráv**.
+1. V nabídce v levém podokně v části **zasílání zpráv** vyberte **směrování zpráv**.
 
 1. Na stránce **směrování zpráv** vyberte kartu **vlastní koncové body** .
 

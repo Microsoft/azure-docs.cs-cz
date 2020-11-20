@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 7cdd70a44a090b03a3f11626805565469c7c04e7
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: df4d777ad78240b3ca84c51152b37861c4ccc486
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554661"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959998"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Použití Azure Machine Learning studia ve službě Azure Virtual Network
 
@@ -36,7 +36,7 @@ Podívejte se na další články v této sérii:
 
 
 > [!IMPORTANT]
-> Pokud je váš pracovní prostor v rámci __svrchovaného cloudu__ , například Azure Government nebo Azure Čína 21Vianet, integrované poznámkové bloky _nepodporují použití_ úložiště, které je ve virtuální síti. Místo toho můžete na výpočetní instanci použít poznámkové bloky Jupyter. Další informace najdete v části [přístup k datům v poznámkovém bloku COMPUTE instance](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) .
+> Pokud je váš pracovní prostor v rámci __svrchovaného cloudu__, například Azure Government nebo Azure Čína 21Vianet, integrované poznámkové bloky _nepodporují použití_ úložiště, které je ve virtuální síti. Místo toho můžete na výpočetní instanci použít poznámkové bloky Jupyter. Další informace najdete v části [přístup k datům v poznámkovém bloku COMPUTE instance](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) .
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -71,7 +71,7 @@ Studio podporuje čtení dat z následujících typů úložiště dat ve virtu�
 * Azure Blob
 * Azure Data Lake Storage Gen1
 * Azure Data Lake Storage Gen2
-* Azure SQL Database
+* Databáze Azure SQL
 
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Udělení přístupu ke spravované identitě spravovanému pracovnímu __prostoru k__ privátnímu odkazu na úložiště
 
@@ -90,7 +90,7 @@ Azure Machine Learning používá [úložiště dat](concept-data.md#datastores)
 1. V nastavení úložiště dat vyberte __Ano__ , pokud  __chcete, aby služba Azure Machine Learning měla přístup k úložišti pomocí identity spravované pracovním prostorem__.
 
 
-Tyto kroky přidají identitu spravovanou pracovním prostorem jako __čtecí__ službu úložiště pomocí řízení přístupu na základě prostředků Azure (Azure RBAC). Přístup __Čtenář__ umožňuje pracovnímu prostoru načíst nastavení brány firewall a zajistit, aby data nezůstala virtuální síť.
+Tyto kroky přidají identitu spravovanou pracovním prostorem jako __čtecí__ službu úložiště pomocí řízení přístupu na základě role Azure (RBAC). Přístup __Čtenář__ umožňuje pracovnímu prostoru načíst nastavení brány firewall a zajistit, aby data nezůstala virtuální síť.
 
 > [!NOTE]
 > Tyto změny mohou trvat až 10 minut, než se projeví.

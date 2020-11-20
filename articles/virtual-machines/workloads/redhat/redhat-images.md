@@ -3,16 +3,17 @@ title: Přehled Red Hat Enterprise Linux imagí v Azure
 description: Přečtěte si o Red Hat Enterprise Linuxch imagí v Microsoft Azure.
 author: asinn826
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 46504f7d6d3a989119a3c851fc029bdf4494e01f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 5cac21046b6b4afdefc4213f6a1fab438d62cca3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994310"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957533"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
 
@@ -145,7 +146,7 @@ Podverze |Příklad obrázku EUS              |Stav EUS                         
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Obrázky publikované v dubnu 2019 a novějších jsou ve výchozím nastavení EUS.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | Obrázky publikované od června 2019 a novějších jsou EUS ve výchozím nastavení. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | Publikované obrázky mohou být 2019 a novější EUS ve výchozím nastavení. |
-RHEL 8,0      |Není k dispozici                            | V Red Hat není k dispozici žádný EUS.                               |
+RHEL 8,0      |–                            | V Red Hat není k dispozici žádný EUS.                               |
 
 ### <a name="update-services-for-sap"></a>Aktualizace služeb pro SAP
 

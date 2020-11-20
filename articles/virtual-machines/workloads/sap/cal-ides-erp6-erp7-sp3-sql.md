@@ -3,16 +3,17 @@ title: Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6,0 v Azure | Microsoft Docs
 description: Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6,0 v Azure
 author: hermanndms
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.reviewer: cynthn
-ms.openlocfilehash: 2e1c20ba5549a1d9660b6e30fafa040d545a6a37
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: dc0c1744c2943d33d516de4ed9d28893541773ad
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993438"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957873"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6,0 v Azure
 Tento článek popisuje, jak nasadit systém SAP v systému SAP se systémem SQL Server a operačním systémem Windows v Azure pomocí knihovny cloudových zařízení SAP (SAP CAL) 3,0. Snímky obrazovky ukazují podrobný proces. Pokud chcete nasadit jiné řešení, použijte stejný postup.
@@ -56,7 +57,7 @@ Až se přihlásíte ke službě SAP CAL, první stránka obvykle vás provede n
 
     ![ID předplatného SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-1. Kliknutím na **autorizovat**autorizujete službu SAP CAL k nasazení do vámi definovaného předplatného Azure. Na kartě prohlížeč se zobrazí následující stránka:
+1. Kliknutím na **autorizovat** autorizujete službu SAP CAL k nasazení do vámi definovaného předplatného Azure. Na kartě prohlížeč se zobrazí následující stránka:
 
     ![Přihlášení ke cloudovým službám v Internet Exploreru](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic4c.PNG)
 
@@ -85,13 +86,13 @@ Až se přihlásíte ke službě SAP CAL, první stránka obvykle vás provede n
 > Než budete moct nasadit řešení SAP IDES založené na Windows a SQL Server, možná budete muset zaregistrovat předplatné SAP CAL. V opačném případě se řešení může na stránce Přehled zobrazit jako **uzamčené** .
 
 ### <a name="deploy-a-solution"></a>Nasazení řešení
-1. Po nastavení účtu SAP CAL vyberte **řešení SAP v systému Windows a SQL Server** řešení. Klikněte na **vytvořit instanci**a potvrďte podmínky použití a podmínky. 
+1. Po nastavení účtu SAP CAL vyberte **řešení SAP v systému Windows a SQL Server** řešení. Klikněte na **vytvořit instanci** a potvrďte podmínky použití a podmínky. 
 
 1. Na stránce **Základní režim: vytvořit instanci** budete potřebovat:
 
-    a. Zadejte **název**instance.
+    a. Zadejte **název** instance.
 
-    b. Vyberte **oblast**Azure. Abyste mohli získat více oblastí Azure, budete možná potřebovat předplatné SAP CAL.
+    b. Vyberte **oblast** Azure. Abyste mohli získat více oblastí Azure, budete možná potřebovat předplatné SAP CAL.
 
     c.  Zadejte hlavní **heslo** pro řešení, jak je znázorněno níže:
 

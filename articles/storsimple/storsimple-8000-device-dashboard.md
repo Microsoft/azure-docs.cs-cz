@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 93d230656fd7ef34e76a143fb3186d23f8d3afed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34bbf4d723e46663efe77560245db74d9dea1fc4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766240"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957907"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Použití souhrnu zařízení ve službě StorSimple Device Manager
 
@@ -78,10 +78,10 @@ Oblast základy zachycuje některé důležité vlastnosti, jako je například 
 
      V tomto grafu si můžete zobrazit metriky celkového primárního úložiště (množství dat zapsaných hostiteli na vaše zařízení) a celkovému cloudového úložiště spotřebovaného vaším zařízením v časovém intervalu.
   
-     V tomto kontextu *primární úložiště* označuje celkové množství dat zapsaných hostitelem a může být rozdělené podle typu svazku: *primární vrstvené úložiště* zahrnuje místně uložená data i data vrstvená do cloudu. *Primární místně připojené úložiště* zahrnuje pouze data uložená místně. *Cloudové úložiště*je na druhé straně měřením celkového množství dat uložených v cloudu. Toto úložiště zahrnuje vrstvená data a zálohy. Data uložená v cloudu se odstraňují a komprimují, zatímco primární úložiště indikuje velikost úložiště, která se použila před odstraněním duplicit dat a jejich komprimací. (Tato dvě čísla můžete porovnat a získat tak představu o kompresní frekvenci.) V případě primárního i cloudového úložiště jsou zobrazené částky založené na frekvenci sledování, kterou nakonfigurujete. Pokud například zvolíte jednu z týdenních frekvencí, zobrazí se v grafu data pro každý den v předchozím týdnu.
+     V tomto kontextu *primární úložiště* označuje celkové množství dat zapsaných hostitelem a může být rozdělené podle typu svazku: *primární vrstvené úložiště* zahrnuje místně uložená data i data vrstvená do cloudu. *Primární místně připojené úložiště* zahrnuje pouze data uložená místně. *Cloudové úložiště* je na druhé straně měřením celkového množství dat uložených v cloudu. Toto úložiště zahrnuje vrstvená data a zálohy. Data uložená v cloudu se odstraňují a komprimují, zatímco primární úložiště indikuje velikost úložiště, která se použila před odstraněním duplicit dat a jejich komprimací. (Tato dvě čísla můžete porovnat a získat tak představu o kompresní frekvenci.) V případě primárního i cloudového úložiště jsou zobrazené částky založené na frekvenci sledování, kterou nakonfigurujete. Pokud například zvolíte jednu z týdenních frekvencí, zobrazí se v grafu data pro každý den v předchozím týdnu.
 
      Pokud chcete zobrazit velikost cloudového úložiště spotřebovaného v průběhu času, vyberte možnost **Použití cloudového úložiště** . Pokud chcete zobrazit celkové úložiště, které je zapsané hostitelem, vyberte **primární vrstvené úložiště** , které se používá, a **primární místně připojené úložiště** . 
-     Další informace najdete v tématu věnovaném [monitorování zařízení StorSimple pomocí služby StorSimple Device Manager](storsimple-monitor-device.md).
+     Další informace najdete v tématu věnovaném [monitorování zařízení StorSimple pomocí služby StorSimple Device Manager](./storsimple-8000-monitor-device.md).
 
 
 * Na dlaždici **kapacita** se zobrazuje primární úložiště, které je zřízené a zbývající v rámci zařízení vzhledem k celkovému počtu dostupných úložišť. **Zřízené** v tomto případě odkazuje na velikost úložiště, které je připraveno a přiděleno k použití, **zbývající** znamená zbývající kapacitu, kterou lze zřídit v rámci tohoto zařízení. 
@@ -96,4 +96,3 @@ Oblast základy zachycuje některé důležité vlastnosti, jako je například 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o okně s [přehledem služby StorSimple](storsimple-8000-service-dashboard.md).
 * Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
-

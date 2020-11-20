@@ -9,17 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199da0586a061bccdf8a6ff8a1f53df2f703512f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857431"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959437"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: vytvoření a nasazení vlastních modulů IoT Edge
-
-> [!NOTE]
-> Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
 
 V tomto článku vytvoříme tři IoT Edge moduly, které přijímají zprávy ze zařízení IoT typu list, spouštíte data prostřednictvím modelu služby Machine Learning a pak dodáte přehledy k IoT Hub.
 
@@ -54,6 +51,10 @@ Následující diagram znázorňuje moduly, vstupy, výstupy a trasy centra IoT 
 ![Diagram architektury IoT Edge tří modulů](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 Kroky v tomto článku jsou obvykle prováděny vývojářem cloudu.
+
+## <a name="prerequisites"></a>Požadavky
+
+Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
 ## <a name="create-a-new-iot-edge-solution"></a>Vytvoření nového řešení IoT Edge
 
@@ -160,7 +161,7 @@ Modul směrovače je důležitou součástí řešení, které zajišťuje zprac
 
 1. Pojmenujte modul **turbofanRouter**.
 
-1. Po zobrazení výzvy pro úložiště imagí Docker použijte registr z pracovního prostoru Machine Learning (můžete najít registr v uzlu registryCredentials *deployment.template.jsv* souboru). Tato hodnota je plně kvalifikovaná adresa registru, například ** \<your registry\> . azurecr.IO/turbofanrouter**.
+1. Po zobrazení výzvy pro úložiště imagí Docker použijte registr z pracovního prostoru Machine Learning (můžete najít registr v uzlu registryCredentials *deployment.template.jsv* souboru). Tato hodnota je plně kvalifikovaná adresa registru, například **\<your registry\> . azurecr.IO/turbofanrouter**.
 
     > [!NOTE]
     > V tomto článku používáme Azure Container Registry, který byl vytvořen Azure Machine Learning pracovním prostorem. To je čistě pro pohodlí. Mohli jsme vytvořit nový registr kontejnerů a publikovat naše moduly tam.
@@ -299,7 +300,7 @@ Modul pro zápis Avro má dvě zodpovědnosti v našem řešení, aby bylo možn
 
 ### <a name="create-module-and-copy-files"></a>Vytvořit modul a kopírovat soubory
 
-1. V Visual Studio Code vyberte **Zobrazit**  >  **paleta příkazů**a pak vyhledejte a vyberte **Python: vybrat Interpret**.
+1. V Visual Studio Code vyberte **Zobrazit**  >  **paleta příkazů** a pak vyhledejte a vyberte **Python: vybrat Interpret**.
 
 1. Vyberte nainstalovanou Python verze 3,7 nebo novější.
 
@@ -577,11 +578,11 @@ Když je směrovač a klasifikátor zavedený, očekáváme, že budete dostáva
 
 1. V Azure Portal přejděte na IoT Hub.
 
-1. V nabídce v levém podokně v části **zasílání zpráv**vyberte **směrování zpráv**.
+1. V nabídce v levém podokně v části **zasílání zpráv** vyberte **směrování zpráv**.
 
 1. Na kartě **trasy** vyberte **Přidat**.
 
-1. Pojmenujte **RulMessageRoute**trasy.
+1. Pojmenujte **RulMessageRoute** trasy.
 
 1. Vyberte **přidat koncový bod** napravo od výběru **koncového bodu** a zvolte možnost **úložiště**.
 
@@ -589,13 +590,13 @@ Když je směrovač a klasifikátor zavedený, očekáváme, že budete dostáva
 
 1. Vyberte vybrat **kontejner**.
 
-1. Na stránce **účty úložiště** Najděte účet úložiště, který používáte v celém rámci tohoto kurzu, který se jmenuje jako **iotedgeandml \<unique suffix\> **.
+1. Na stránce **účty úložiště** Najděte účet úložiště, který používáte v celém rámci tohoto kurzu, který se jmenuje jako **iotedgeandml \<unique suffix\>**.
 
 1. Vyberte kontejner **ruldata** a klikněte na **Vybrat**.
 
 1. Zpátky na stránce **přidat koncový bod úložiště** vyberte **vytvořit** a vytvořte koncový bod úložiště.
 
-1. Zpět na stránce **Přidat trasu** pro **dotaz směrování**nahraďte `true` následujícím dotazem:
+1. Zpět na stránce **Přidat trasu** pro **dotaz směrování** nahraďte `true` následujícím dotazem:
 
     ```sql
     IS_DEFINED($body.PredictedRul) AND NOT IS_DEFINED($body.OperationalSetting1)
@@ -622,7 +623,7 @@ Nechceme směrovat nová data předpovědi do našeho starého umístění úlo�
 
 1. Na stránce **směrování zpráv** IoT Hub vyberte kartu **trasy** .
 
-1. Vyberte **turbofanDeviceDataToStorage**nebo libovolný název, který jste přiřadili k počátečnímu směrování dat zařízení.
+1. Vyberte **turbofanDeviceDataToStorage** nebo libovolný název, který jste přiřadili k počátečnímu směrování dat zařízení.
 
 1. Aktualizovat dotaz směrování na
 
@@ -672,7 +673,7 @@ Nechceme směrovat nová data předpovědi do našeho starého umístění úlo�
 
 Nakonfigurujte funkci nahrávání souborů IoT Hub, aby modul zapisovače souborů mohl nahrávat soubory do úložiště.
 
-1. V nabídce levého podokna v IoT Hub v části **zasílání zpráv**vyberte **nahrávání souborů**.
+1. V nabídce levého podokna v IoT Hub v části **zasílání zpráv** vyberte **nahrávání souborů**.
 
 1. Vyberte **Azure Storage kontejner**.
 
@@ -719,7 +720,7 @@ Teď, když jsme udělali změny konfigurace, jsme připraveni sestavit image a 
 
 1. V Visual Studio Code spusťte nový terminál s příkazovým řádkem a přihlaste se do služby Azure Container Registry (ACR).
 
-  Požadované hodnoty uživatelského jména, hesla a přihlašovacího serveru můžete najít v Azure Portal. Název registru kontejneru má formát "turbofandemo \<unique id\> ". V nabídce v levém podokně v části **Nastavení**vyberte **přístupové klíče** a zobrazte je.
+  Požadované hodnoty uživatelského jména, hesla a přihlašovacího serveru můžete najít v Azure Portal. Název registru kontejneru má formát "turbofandemo \<unique id\> ". V nabídce v levém podokně v části **Nastavení** vyberte **přístupové klíče** a zobrazte je.
 
    ```cmd
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -733,7 +734,7 @@ Po úspěšném dokončení sestavení budeme moci použít Azure Portal ke kont
 
 1. Otevřete Azure Container Registry pro tento kurz. Název registru kontejneru má formát "turbofandemo \<unique id\> ". 
 
-1. V nabídce v levém podokně v části **služby**vyberte **úložiště**.
+1. V nabídce v levém podokně v části **služby** vyberte **úložiště**.
 
 1. Všimněte si, že oba moduly, které jste vytvořili, **avrofilewriter** a **turbofanrouter**, se zobrazí jako úložiště.
 

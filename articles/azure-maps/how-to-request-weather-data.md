@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b5db19a6549e7e4675213973554ff18bf46dda1e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3e0dce10d582006ab8c1dabf6d4b3efc82d8f39f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92915399"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957108"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Vyžádání dat počasí v reálném čase a předpovědi s využitím Azure Maps povětrnostních služeb
 
@@ -28,7 +28,13 @@ V tomto článku se dozvíte, jak:
 * Vyžádá hodinové prognózy pomocí [rozhraní Get hodinové prognózy API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview).
 * Vyžádejte si minutové prognózy s použitím [rozhraní API pro předpovědi pro získání minut](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview).
 
-## <a name="prerequisites"></a>Předpoklady
+Toto video poskytuje přehled služeb počasí v Azure Maps s příklady volání REST.
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player" width="960" height="540" allowFullScreen frameBorder="0" title="Azure Maps povětrnostní služby pro vývojáře – video pro Microsoft Channel 9"></iframe>
+
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
@@ -44,9 +50,9 @@ V tomto kurzu se používá aplikace [po](https://www.postman.com/) aplikaci, al
 
 V tomto příkladu použijete [rozhraní API získat aktuální podmínky](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview) k načtení aktuálních povětrnostních podmínek v souřadnicích v Seattle, WA.
 
-1. Otevřete aplikaci pro vyúčtování. V horní části okna po aplikaci vyberte **Nový** . V okně **vytvořit nové** vyberte **kolekce** .  Pojmenujte kolekci a vyberte tlačítko **vytvořit** . Tuto kolekci použijete pro zbytek příkladů v tomto dokumentu.
+1. Otevřete aplikaci pro vyúčtování. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **kolekce**.  Pojmenujte kolekci a vyberte tlačítko **vytvořit** . Tuto kolekci použijete pro zbytek příkladů v tomto dokumentu.
 
-2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozím kroku, a pak vyberte **Uložit** .
+2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozím kroku, a pak vyberte **Uložit**.
 
 3. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
 
@@ -236,7 +242,7 @@ V tomto příkladu použijete [rozhraní API získat vážné počasí](https://
 >[!NOTE]
 >Tento příklad načte v době psaní závažné výstrahy počasí. Je možné, že v požadovaném umístění již neexistují závažná upozornění na počasí. Pokud chcete při spuštění tohoto příkladu načíst skutečná data o závažných výstrahách, budete potřebovat načíst data v jiném umístění souřadnic.
 
-1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit** .
+1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit**.
 
 2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
 
@@ -288,7 +294,7 @@ V tomto příkladu použijete [rozhraní API získat vážné počasí](https://
 
 V tomto příkladu použijete [rozhraní API získat denní prognózu](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview) k načtení 5 dní předpověď počasí pro souřadnice umístěné v Seattle, WA.
 
-1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit** .
+1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit**.
 
 2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
 
@@ -536,7 +542,7 @@ V tomto příkladu použijete [rozhraní API získat denní prognózu](https://d
 
 V tomto příkladu použijete [rozhraní Get hodinové prognózy API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview) k načtení předpovědi hodinových počasí po dalších 12 hodin v souřadnicích v Seattle, WA.
 
-1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit** .
+1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit**.
 
 2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
 
@@ -643,7 +649,7 @@ V tomto příkladu použijete [rozhraní Get hodinové prognózy API](https://do
 
 V tomto příkladu použijete [rozhraní API pro předpověď minut](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) k načtení předpovědi počasí po minutách v souřadnicích v Seattle, WA. Předpověď počasí je uvedena po dobu dalších 120 minut. Náš dotaz požádá o zadání prognózy v intervalech 15 minut, ale můžete upravit parametr tak, aby byl buď 1, nebo 5 minut.
 
-1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit** .
+1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit**.
 
 2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
 

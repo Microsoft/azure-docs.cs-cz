@@ -8,17 +8,14 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c40f7d988f2b5f206f42eae787efcdce786948a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef6e86bbb55a2c51779f2dcf60f802ce549516cb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857074"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959675"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Kurz: generování dat simulovaného zařízení
-
-> [!NOTE]
-> Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
 
 V tomto článku používáme školicí data Machine Learning k simulaci zařízení odesílajícího telemetrii do Azure IoT Hub. Jak je uvedeno v úvodu, tento kurz používá [sadu dat simulace degradace modulu Turbofan](https://c3.nasa.gov/dashlink/resources/139/) , která simuluje data ze sady modulů v letadlech pro účely školení a testování.
 
@@ -46,6 +43,10 @@ Dokončení úkolů popsaných v tomto článku by mělo trvat přibližně 20 m
 
 Real-World ekvivalent práce v tomto kroku by pravděpodobně prováděli vývojáři zařízení a cloudové vývojáře.
 
+## <a name="prerequisites"></a>Požadavky
+
+Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
+
 ## <a name="configure-visual-studio-code-and-build-deviceharness-project"></a>Konfigurace Visual Studio Code a sestavení projektu DeviceHarness
 
 1. Otevřete relaci vzdálené plochy k VIRTUÁLNÍmu počítači pro vývoj.
@@ -69,7 +70,7 @@ Real-World ekvivalent práce v tomto kroku by pravděpodobně prováděli vývoj
 
    Pokud tato oznámení neobdržíte, zavřete Visual Studio Code, odstraňte adresáře bin a obj v `C:\source\IoTEdgeAndMlSample\DeviceHarness` , otevřete Visual Studio Code a znovu otevřete složku DeviceHarness.
 
-1. Ověřte, že je prostředí správně nastavené spuštěním sestavení, **kombinace kláves CTRL**  +  **SHIFT**  +  **B**nebo **Terminal**  >  **úlohy sestavení pro spuštění**terminálu.
+1. Ověřte, že je prostředí správně nastavené spuštěním sestavení, **kombinace kláves CTRL**  +  **SHIFT**  +  **B** nebo **Terminal**  >  **úlohy sestavení pro spuštění** terminálu.
 
 1. Zobrazí se výzva k výběru úlohy sestavení, která se má spustit. Vyberte **sestavení**.
 
@@ -109,7 +110,7 @@ Teď, když máme sestavení projektu, připojte se k centru IoT, abyste měli p
 
    Pokud se výzva nezobrazí, stiskněte klávesu ENTER.
 
-1. Zadejte v terminálu příkaz `dotnet run`.
+1. Zadejte `dotnet run` v terminálu.
 
 1. Po zobrazení výzvy k zadání připojovacího řetězce IoT Hub vložte připojovací řetězec zkopírovaný v předchozí části.
 
@@ -131,7 +132,7 @@ Data odesílaná DeviceHarness přešla do vašeho centra IoT, kde můžete ově
 
 1. Otevřete [Azure Portal](https://portal.azure.com/) a přejděte do služby IoT Hub vytvořené pro tento kurz.
 
-1. V nabídce v levém podokně v části **monitorování**vyberte **metriky**.
+1. V nabídce v levém podokně v části **monitorování** vyberte **metriky**.
 
 1. Na stránce definice grafu klikněte na rozevírací nabídku **metrika** , přejděte dolů na seznam a vyberte možnost **směrování: data Doručená do úložiště**. Graf by měl zobrazovat špičku, kdy byla data směrována do úložiště.
 
