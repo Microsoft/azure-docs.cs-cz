@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: a386ea5149b36a4e82b4c935e2373f505c6c83cf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: db270224a753f815a2d94e6a1fa79ebbedf49278
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789875"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991532"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Zálohování a obnovení pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -55,23 +55,23 @@ Chcete-li obnovit databázi, je nutné najít požadované záložní soubory v 
 
 Další informace o tom, jak nakonfigurovat automatizované zálohování pro virtuální počítače SQL, najdete v jednom z následujících článků:
 
-- **SQL Server 2016/2017** : [automatizované zálohování v2 pro Azure Virtual Machines](automated-backup.md)
-- **SQL Server 2014** : [automatizované zálohování pro SQL Server 2014 Virtual Machines](automated-backup-sql-2014.md)
+- **SQL Server 2016/2017**: [automatizované zálohování v2 pro Azure Virtual Machines](automated-backup.md)
+- **SQL Server 2014**: [automatizované zálohování pro SQL Server 2014 Virtual Machines](automated-backup-sql-2014.md)
 
 ## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a> Azure Backup pro virtuální počítače SQL
 
 [Azure Backup](../../../backup/index.yml) poskytuje možnost zálohování podnikové třídy pro SQL Server na virtuálních počítačích Azure. Všechny zálohy se ukládají a spravují v Recovery Services trezoru. Toto řešení poskytuje několik výhod, zejména pro podniky:
 
-- **Zálohování s nulovou infrastrukturou** : nemusíte spravovat záložní servery nebo umístění úložiště.
-- **Škálování** : Chraňte mnoho virtuálních počítačů SQL a tisíc databází.
-- Průběžné **platby** : Tato funkce je samostatná služba poskytovaná Azure Backup, ale stejně jako u všech služeb Azure platíte jenom za to, co využijete.
-- **Centrální správa a monitorování** : centrálně Spravujte všechna vaše zálohování, včetně dalších zatížení, které Azure Backup podporuje, z jednoho řídicího panelu v Azure.
-- **Zálohování a uchovávání řízených zásadou** : vytvořte standardní zásady zálohování pro pravidelné zálohování. Vytvořte zásady uchovávání informací pro zachování záloh po roky.
+- **Zálohování s nulovou infrastrukturou**: nemusíte spravovat záložní servery nebo umístění úložiště.
+- **Škálování**: Chraňte mnoho virtuálních počítačů SQL a tisíc databází.
+- Průběžné **platby**: Tato funkce je samostatná služba poskytovaná Azure Backup, ale stejně jako u všech služeb Azure platíte jenom za to, co využijete.
+- **Centrální správa a monitorování**: centrálně Spravujte všechna vaše zálohování, včetně dalších zatížení, které Azure Backup podporuje, z jednoho řídicího panelu v Azure.
+- **Zálohování a uchovávání řízených zásadou**: vytvořte standardní zásady zálohování pro pravidelné zálohování. Vytvořte zásady uchovávání informací pro zachování záloh po roky.
 - **Podpora pro SQL Always On: umožňuje** detekovat a chránit SQL Server konfigurace služby Always On a respektovat předvolbu zálohování skupiny dostupnosti zálohování.
-- **15 minut cíl bodu obnovení (RPO)** : Nakonfigurujte zálohy protokolu transakcí SQL až na každých 15 minut.
-- Obnovení k určitému **bodu v čase** : použijte portál k obnovení databází do konkrétního bodu v čase, aniž byste museli ručně obnovit několik úplných, rozdílových a mezicelých záloh protokolů.
-- **Konsolidovaná e-mailová upozornění pro chyby** : Nakonfigurujte konsolidovaná e-mailová oznámení pro případné chyby.
-- **Řízení přístupu na základě role** : Určete, kdo může spravovat operace zálohování a obnovení prostřednictvím portálu.
+- **15 minut cíl bodu obnovení (RPO)**: Nakonfigurujte zálohy protokolu transakcí SQL až na každých 15 minut.
+- Obnovení k určitému **bodu v čase**: použijte portál k obnovení databází do konkrétního bodu v čase, aniž byste museli ručně obnovit několik úplných, rozdílových a mezicelých záloh protokolů.
+- **Konsolidovaná e-mailová upozornění pro chyby**: Nakonfigurujte konsolidovaná e-mailová oznámení pro případné chyby.
+- **Řízení přístupu na základě role v Azure**: Určete, kdo může spravovat operace zálohování a obnovení prostřednictvím portálu.
 
 Rychlý přehled toho, jak funguje společně s ukázkou, najdete v tomto videu:
 
@@ -108,9 +108,9 @@ Počínaje SQL Server 2012 SP1 CU2 můžete zálohovat a obnovovat přímo do Mi
 
 Další informace najdete v jednom z následujících článků na základě vaší verze SQL Server:
 
-- **SQL Server 2016/2017** : [SQL Server zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
-- **SQL Server 2014** : [SQL Server 2014 zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
-- **SQL Server 2012** : [SQL Server 2012 zálohování na adresu URL](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
+- **SQL Server 2016/2017**: [SQL Server zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
+- **SQL Server 2014**: [SQL Server 2014 zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
+- **SQL Server 2012**: [SQL Server 2012 zálohování na adresu URL](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
 
 ### <a name="managed-backup"></a>Spravované zálohování
 

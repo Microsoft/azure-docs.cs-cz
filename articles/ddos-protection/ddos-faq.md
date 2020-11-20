@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 871ededce1db5e4c3179c187fc46a828cd157456
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 6c475971f604c951280d0351d593cd5d96879d31
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886273"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992399"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection standardní časté otázky
 
@@ -29,7 +29,7 @@ Distributed Denial of Service nebo DDoS je typ útoku, kdy útočník odesílá 
 Azure DDoS Protection Standard, v kombinaci s osvědčenými postupy návrhu aplikací, poskytuje rozšířené funkce zmírnění DDoS, které chrání před útoky DDoS. Automaticky se vyladěna tak, aby chránila vaše konkrétní prostředky Azure ve virtuální síti. Ochranu je snadné povolit v jakékoli nové nebo existující virtuální síti a nevyžaduje žádné změny aplikací nebo prostředků. Má několik výhod oproti základní službě, včetně protokolování, upozorňování a telemetrie. Další podrobnosti najdete v tématu [Přehled služby Azure DDoS Protection Standard](ddos-protection-overview.md) . 
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Co je ochrana ve vrstvě služeb (vrstva 7)?
-Zákazníci mohou používat službu Azure DDoS Protection v kombinaci s [Application Gateway WAF SKU](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview) k ochraně jak v síťové vrstvě (vrstva 3 a 4, kterou nabízí Azure DDoS Protection služba), tak i na vrstvě aplikace (vrstva 7, kterou nabízí Application Gateway SKU WAF).
+Zákazníci mohou používat službu Azure DDoS Protection v kombinaci s [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md) k ochraně jak v síťové vrstvě (vrstva 3 a 4, kterou nabízí Azure DDoS Protection služba), tak i na vrstvě aplikace (vrstva 7, kterou nabízí Application Gateway SKU WAF).
 
 ## <a name="are-services-unsafe-in-azure-without-the-service"></a>Jsou služby v Azure nebezpečné bez služby?
 Služby běžící v Azure jsou v podstatě chráněné Azure DDoS Protection Basic, která je na místě pro ochranu infrastruktury Azure. Ochrana, která chrání infrastrukturu, ale má mnohem vyšší prahovou hodnotu, než většina aplikací má kapacitu zvládnout a neposkytuje telemetrii ani výstrahy, takže když je objem provozu na platformě neškodný, může být devastating k aplikaci, která ji přijímá. 
@@ -64,6 +64,3 @@ Viz [testování prostřednictvím simulací](test-through-simulations.md).
 ## <a name="how-long-does-it-take-for-the-metrics-to-load-on-portal"></a>Jak dlouho trvá, než se metriky načtou na portálu?
 Metriky by se měly zobrazovat na portálu během 5 minut. Pokud je váš prostředek napadený, začnou se na portálu během 5-7 minut zobrazovat další metriky. 
     
-
-
-

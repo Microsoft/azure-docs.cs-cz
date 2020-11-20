@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 133a27d8aef6c9df16ffcabfb4fac6c118665890
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: b3f903b69cebd22e870f7ccd5923e6f08455dff3
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905202"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992382"
 ---
-# <a name="azure-ddos-protection-standard-features"></a>Azure DDoS Protection standardní funkce
+# <a name="azure-ddos-protection-standard-features"></a>Funkce služby Azure DDoS Protection úrovně Standard
 
 Následující části popisují klíčové funkce služby Azure DDoS Protection Standard.
 
@@ -48,13 +48,13 @@ Služba Azure DDoS Protection Basic pomáhá chránit zákazníky a zabránit do
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS Protection telemetrie, monitorování a upozorňování
 
-DDoS Protection Standard zpřístupňuje bohatou telemetrii prostřednictvím [Azure monitor](/azure/azure-monitor/overview) po dobu trvání útoku DDoS. Výstrahy pro libovolnou Azure Monitor metriky, které DDoS Protection používá, můžete nakonfigurovat. Protokolování můžete integrovat s Splunk (Azure Event Hubs), protokoly Azure Monitor a Azure Storage pro pokročilou analýzu prostřednictvím rozhraní diagnostiky Azure Monitor.
+DDoS Protection Standard zpřístupňuje bohatou telemetrii prostřednictvím [Azure monitor](../azure-monitor/overview.md) po dobu trvání útoku DDoS. Výstrahy pro libovolnou Azure Monitor metriky, které DDoS Protection používá, můžete nakonfigurovat. Protokolování můžete integrovat s Splunk (Azure Event Hubs), protokoly Azure Monitor a Azure Storage pro pokročilou analýzu prostřednictvím rozhraní diagnostiky Azure Monitor.
 
 ### <a name="ddos-mitigation-policies"></a>Zásady zmírnění DDoS
 
-V Azure Portal vyberte **monitorovat**  >  **metriky** . V podokně **metriky** vyberte skupinu prostředků, vyberte typ prostředku **Veřejná IP adresa** a vyberte veřejnou IP adresu Azure. Metriky DDoS jsou viditelné v podokně **dostupné metriky** .
+V Azure Portal vyberte **monitorovat**  >  **metriky**. V podokně **metriky** vyberte skupinu prostředků, vyberte typ prostředku **Veřejná IP adresa** a vyberte veřejnou IP adresu Azure. Metriky DDoS jsou viditelné v podokně **dostupné metriky** .
 
-DDoS Protection Standard aplikuje tři zásady zmírnění rizik (TCP SYN, TCP a UDP) pro každou veřejnou IP adresu chráněného prostředku ve virtuální síti, ve které je povolený DDoS. Prahové hodnoty zásad můžete zobrazit tak, že vyberete **příchozí pakety metriky, které budou aktivovat zmírnění DDoS** .
+DDoS Protection Standard aplikuje tři zásady zmírnění rizik (TCP SYN, TCP a UDP) pro každou veřejnou IP adresu chráněného prostředku ve virtuální síti, ve které je povolený DDoS. Prahové hodnoty zásad můžete zobrazit tak, že vyberete **příchozí pakety metriky, které budou aktivovat zmírnění DDoS**.
 
 ![Graf dostupných metrik a metrik](./media/ddos-best-practices/image-7.png)
 
@@ -72,7 +72,7 @@ Další informace najdete v tématu [správa Azure DDoS Protection Standard pomo
 
 ## <a name="web-application-firewall-for-resource-attacks"></a>Firewall webových aplikací pro útoky na prostředky
 
-Pro usnadnění zabezpečení webových aplikací byste měli nakonfigurovat bránu firewall webových aplikací (WAF), která je specifická pro útoky na prostředky v aplikační vrstvě. WAF kontroluje příchozí webový provoz, aby blokoval vkládání SQL, skriptování mezi weby, DDoS a další útoky vrstvy 7. Azure poskytuje [WAF jako funkci Application Gateway](/azure/application-gateway/application-gateway-web-application-firewall-overview) pro centralizovanou ochranu webových aplikací před běžnými zneužitími a chybami zabezpečení. Od partnerů Azure jsou k dispozici další nabídky WAF, které mohou být vhodnější pro vaše potřeby prostřednictvím [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1).
+Pro usnadnění zabezpečení webových aplikací byste měli nakonfigurovat bránu firewall webových aplikací (WAF), která je specifická pro útoky na prostředky v aplikační vrstvě. WAF kontroluje příchozí webový provoz, aby blokoval vkládání SQL, skriptování mezi weby, DDoS a další útoky vrstvy 7. Azure poskytuje [WAF jako funkci Application Gateway](../web-application-firewall/ag/ag-overview.md) pro centralizovanou ochranu webových aplikací před běžnými zneužitími a chybami zabezpečení. Od partnerů Azure jsou k dispozici další nabídky WAF, které mohou být vhodnější pro vaše potřeby prostřednictvím [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1).
 
 Dokonce i brány firewall webových aplikací jsou náchylné k navýšení a útokům na vyčerpání stavu. Důrazně doporučujeme povolit DDoS Protection Standard ve virtuální síti WAF, aby bylo možné lépe chránit před útoky z objemu a protokolu. Další informace najdete v části [referenční architektury DDoS Protection](ddos-protection-reference-architectures.md) .
 

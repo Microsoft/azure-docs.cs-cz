@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 4be3f8c6cd416743c2d1118cf2de01073c3022ff
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 25c2157a8de237d0ec66caa72d59c810d419ac76
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790487"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989118"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias DNS pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -61,7 +61,7 @@ Následující vlastnosti se vztahují na všechny aliasy DNS vašeho serveru:
   - Když vyřadíte Server, systém Azure také zruší všechny aliasy DNS, které na server odkazují.
 - *Není svázána s žádnou oblastí:* Aliasy DNS nejsou svázané s oblastí. Všechny aliasy DNS je možné aktualizovat tak, aby odkazovaly na server, který se nachází v libovolné geografické oblasti.
   - Když ale aktualizujete alias tak, aby odkazoval na jiný server, musí oba servery existovat ve stejném *předplatném* Azure.
-- *Oprávnění:* Aby uživatel mohl spravovat alias DNS, musí mít oprávnění *přispěvatele serveru* nebo vyšší. Další informace najdete v tématu [Začínáme s Role-Based Access Control v Azure Portal](../../role-based-access-control/overview.md).
+- *Oprávnění:* Aby uživatel mohl spravovat alias DNS, musí mít oprávnění *přispěvatele serveru* nebo vyšší. Další informace najdete v tématu [Začínáme s řízením přístupu na základě role Azure v Azure Portal](../../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>Správa aliasů DNS
 

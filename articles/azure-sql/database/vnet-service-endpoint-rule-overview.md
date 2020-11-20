@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5c5276f11da687f14630bafd007532d172ef3737
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325012"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990801"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů a pravidel služby virtuální sítě pro servery v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -55,7 +55,7 @@ V rámci správy koncových bodů služby Virtual Network je oddělení rolí za
 - **Správce sítě:** &nbsp; Zapněte koncový bod.
 - **Správce databáze:** &nbsp; Aktualizujte seznam řízení přístupu (ACL) pro přidání dané podsítě k serveru.
 
-*Alternativa RBAC:*
+*Alternativa k Azure RBAC:*
 
 Role správce sítě a správce databáze mají více možností, než je nutné ke správě pravidel virtuální sítě. Je potřeba jenom podmnožina jejich schopností.
 
@@ -89,7 +89,7 @@ Pro Azure SQL Database funkce pravidla virtuální sítě má následující ome
 
 Při použití koncových bodů služby pro Azure SQL Database se podívejte na následující skutečnosti:
 
-- **Odchozí IP adresa pro Azure SQL Database veřejné IP adresy se vyžadují** : aby se Azure SQL Database IP adres umožňovalo připojení, musí se otevřít skupiny zabezpečení sítě (skupin zabezpečení sítě). To můžete provést pomocí [značek služby](../../virtual-network/network-security-groups-overview.md#service-tags) NSG pro Azure SQL Database.
+- **Odchozí IP adresa pro Azure SQL Database veřejné IP adresy se vyžadují**: aby se Azure SQL Database IP adres umožňovalo připojení, musí se otevřít skupiny zabezpečení sítě (skupin zabezpečení sítě). To můžete provést pomocí [značek služby](../../virtual-network/network-security-groups-overview.md#service-tags) NSG pro Azure SQL Database.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -110,7 +110,7 @@ Ve službě Azure Storage je implementovaná stejná funkce, která umožňuje o
 
 Základ a příkaz COPY se běžně používá k načtení dat do služby Azure synapse Analytics z účtů Azure Storage pro příjem dat s vysokou propustností. Pokud účet Azure Storage, ze kterého načítáte data, přistupuje jenom k sadě virtuálních sítí VNet, připojení při použití základny a příkazu COPY pro účet úložiště dojde k přerušení. Pokud chcete povolit scénáře importu a exportu pomocí kopírování a základu s připojením služby Azure synapse Analytics k Azure Storage, která je zabezpečená pro virtuální síť, postupujte podle následujících kroků:
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 - Pomocí tohoto [průvodce](/powershell/azure/install-az-ps) nainstalujte Azure PowerShell.
 - Pokud máte účet úložiště pro obecné účely verze 1 nebo účet úložiště objektů blob, musíte nejprve pomocí tohoto [průvodce](../../storage/common/storage-account-upgrade.md) upgradovat na účet úložiště pro obecné účely verze 2.
@@ -149,7 +149,7 @@ Základ a příkaz COPY se běžně používá k načtení dat do služby Azure 
        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
        ```
 
-   1. Vytvořit databázi s rozsahem pověření s **identitou = ' identita spravované služby '** :
+   1. Vytvořit databázi s rozsahem pověření s **identitou = ' identita spravované služby '**:
 
        ```sql
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
@@ -188,11 +188,11 @@ Příznak **IgnoreMissingVNetServiceEndpoint** můžete nastavit pomocí prostř
 
 ## <a name="errors-40914-and-40615"></a>Chyby 40914 a 40615
 
-Chyba připojení 40914 se vztahuje k *pravidlům virtuální sítě* , jak je uvedeno v podokně Brána Firewall v Azure Portal. Chyba 40615 je podobná, s tím rozdílem, že se vztahují na *pravidla IP adres* v bráně firewall.
+Chyba připojení 40914 se vztahuje k *pravidlům virtuální sítě*, jak je uvedeno v podokně Brána Firewall v Azure Portal. Chyba 40615 je podobná, s tím rozdílem, že se vztahují na *pravidla IP adres* v bráně firewall.
 
 ### <a name="error-40914"></a>Chyba 40914
 
-*Text zprávy:* Nejde otevřít server *[název serveru]* , který požádal o přihlášení. Klient nemá povolený přístup k serveru.
+*Text zprávy:* Nejde otevřít server *[název serveru]*, který požádal o přihlášení. Klient nemá povolený přístup k serveru.
 
 *Popis chyby:* Klient se nachází v podsíti, která má koncové body virtuálního síťového serveru. Server ale nemá žádné pravidlo virtuální sítě, které by dané podsíti získalo právo komunikovat s databází.
 
@@ -227,7 +227,7 @@ Rutiny PowerShellu pro akce virtuální sítě SQL volají interně volání roz
 
 - [Pravidla Virtual Network: operace][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *typu* koncového bodu služby, který je relevantní pro Azure SQL Database.
 
@@ -238,7 +238,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
-1. Přihlaste se k [portálu Azure Portal][http-azure-portal-link-ref-477t].
+1. Přihlaste se na [Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Vyhledejte a vyberte **SQL servery** a pak vyberte svůj server. V části **zabezpečení** vyberte možnost **brány firewall a virtuální sítě**.
 

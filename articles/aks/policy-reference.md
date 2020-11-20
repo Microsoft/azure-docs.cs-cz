@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro službu Azure Kubernetes
 description: Obsahuje seznam Azure Policy integrovaných definic zásad pro službu Azure Kubernetes. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 098edd98b294246ed3adf6a2c01e7c86884f3b3d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 29f5d2a3a6824730a5a1c96f3a6247867bdb43ee
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738716"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989685"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Azure Policy předdefinované definice pro službu Azure Kubernetes
 

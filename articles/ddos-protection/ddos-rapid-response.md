@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 36e61c8d1e0e41fd981f5483eff1f30814b22b92
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 3655b117b641a6179bd6539aaf3f75af07f21a1a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905177"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992365"
 ---
 # <a name="azure-ddos-rapid-response"></a>Rychlá odezva Azure DDoS
 
 Během aktivního přístupu mají zákazníci Azure DDoS Protection Standard přístup ke týmu DDoS Rapid Response (DRR), který může pomáhat s vyšetřováním útoků během útoku a analýzou po útoku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Než budete moct dokončit kroky v tomto kurzu, musíte nejdřív vytvořit [Plán Standard Protection pro Azure DDoS](manage-ddos-protection.md).
 
@@ -51,7 +51,7 @@ DRR byste měli zapojit jenom v těchto případech:
 
 DRR se řídí modelem podpory Azure Rapid Response. Další informace o rychlé odezvě najdete v tématu [Podpora oboru a odezvy](https://azure.microsoft.com/en-us/support/plans/response/) .
 
-Pokud se chcete dozvědět víc, přečtěte si dokumentaci ke službě [DDoS Protection Standard](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+Pokud se chcete dozvědět víc, přečtěte si dokumentaci ke službě [DDoS Protection Standard](./ddos-protection-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

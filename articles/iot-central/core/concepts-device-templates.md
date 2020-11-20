@@ -3,17 +3,17 @@ title: Co jsou šablony zařízení v Azure IoT Central | Microsoft Docs
 description: Šablony zařízení Azure IoT Central umožňují určit chování zařízení připojených k vaší aplikaci. Šablona zařízení určuje telemetrii, vlastnosti a příkazy, které zařízení musí implementovat. Šablona zařízení také definuje uživatelské rozhraní pro zařízení v IoT Central, jako jsou například formuláře a řídicí panely, které používá operátor.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/21/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 75317b5c6af2d0ce89d2db32f4343d9cc73a1a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e82a377d62184c8ae1d2e8f076b228e36005887a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91813164"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992671"
 ---
 # <a name="what-are-device-templates"></a>Co jsou šablony zařízení?
 
@@ -25,86 +25,99 @@ Tvůrce řešení přidá šablony zařízení do aplikace IoT Central. Vývojá
 
 Šablona zařízení obsahuje následující oddíly:
 
-- _Model schopností zařízení (DCM)_. Tato část šablony zařízení definuje, jak zařízení komunikuje s vaší aplikací. Vývojář zařízení implementuje chování definované v DCM.
-    - _Rozhraní_. DCM obsahuje jedno nebo více rozhraní, která definují telemetrii, vlastnosti a příkazy, které zařízení musí implementovat.
-- _Vlastnosti cloudu_. Tato část šablony zařízení umožňuje vývojáři řešení určit jakákoli metadata zařízení, která se mají uložit. Vlastnosti cloudu se nesynchronizují se zařízeními a v aplikaci existují jenom. Vlastnosti cloudu neovlivňují kód, který vývojář zařízení zapisuje k implementaci DCM.
-- _Vlastní nastavení_. Tato část šablony zařízení umožňuje vývojáři řešení přepsat některé definice v DCM. Vlastní nastavení jsou užitečná, pokud vývojář řešení chce upřesnit způsob, jakým aplikace zpracovává hodnotu, jako je například Změna zobrazovaného názvu pro vlastnost nebo barva použitou k zobrazení hodnoty telemetrie. Přizpůsobení neovlivňují kód, který vývojář zařízení zapisuje k implementaci DCM.
-- _Zobrazení_. Tato část šablony zařízení umožňuje vývojářům řešení definovat vizualizace pro zobrazení dat ze zařízení a formulářů pro správu a řízení zařízení. Zobrazení používají DCM, vlastnosti cloudu a přizpůsobení. Zobrazení neovlivňují kód, který vývojář zařízení zapisuje k implementaci DCM.
+- _Model zařízení_. Tato část šablony zařízení definuje, jak zařízení komunikuje s vaší aplikací. Vývojář zařízení implementuje chování definované v modelu.
+    - _Výchozí součást_. Každý model zařízení má výchozí komponentu. Výchozí rozhraní komponenty popisuje funkce, které jsou specifické pro model zařízení.
+    - _Součásti_. Model zařízení může kromě výchozího komponentu zahrnovat i komponenty, které popisují možnosti zařízení. Každá součást obsahuje rozhraní, které popisuje funkce součásti. Rozhraní komponent se můžou znovu použít v jiných modelech zařízení. Například několik modelů telefonních zařízení může používat stejné rozhraní kamery.
+    - _Zděděná rozhraní_. Model zařízení obsahuje jedno nebo více rozhraní, která šíří možnosti výchozí součásti.
+- _Vlastnosti cloudu_. Tato část šablony zařízení umožňuje vývojáři řešení určit jakákoli metadata zařízení, která se mají uložit. Vlastnosti cloudu se nesynchronizují se zařízeními a v aplikaci existují jenom. Vlastnosti cloudu neovlivňují kód, který vývojář zařízení zapisuje k implementaci modelu zařízení.
+- _Vlastní nastavení_. Tato část šablony zařízení umožňuje vývojáři řešení přepsat některé definice v modelu zařízení. Vlastní nastavení jsou užitečná, pokud vývojář řešení chce upřesnit způsob, jakým aplikace zpracovává hodnotu, jako je například Změna zobrazovaného názvu pro vlastnost nebo barva použitou k zobrazení hodnoty telemetrie. Přizpůsobení neovlivňují kód, který vývojář zařízení zapisuje k implementaci modelu zařízení.
+- _Zobrazení_. Tato část šablony zařízení umožňuje vývojářům řešení definovat vizualizace pro zobrazení dat ze zařízení a formulářů pro správu a řízení zařízení. Zobrazení používají model zařízení, vlastnosti cloudu a přizpůsobení. Zobrazení neovlivňují kód, který vývojář zařízení zapisuje k implementaci modelu zařízení.
 
-## <a name="device-capability-models"></a>Modely funkcí zařízení
+## <a name="device-models"></a>Modely zařízení
 
-DCM definuje, jak zařízení komunikuje s vaší aplikací IoT Central. Vývojář zařízení musí zajistit, aby zařízení implementovalo chování definované v DCM, aby IoT Central mohl monitorovat a spravovat zařízení. DCM je tvořen jedním nebo více _rozhraními_a každé rozhraní může definovat kolekci typů _telemetrie_ , _vlastností zařízení_a _příkazů_. Vývojář řešení může importovat soubor JSON, který definuje DCM na šablonu zařízení, nebo použít webové uživatelské rozhraní v IoT Central k vytvoření nebo úpravě DCM. Změny v DCM provedené pomocí webového uživatelského rozhraní vyžadují, [aby byla šablona zařízení ve verzi](./howto-version-device-template.md).
+Model zařízení definuje, jak zařízení komunikuje s vaší aplikací IoT Central. Vývojář zařízení musí zajistit, aby zařízení implementovalo chování definované v modelu zařízení, aby IoT Central mohl monitorovat a spravovat zařízení. Model zařízení je tvořen jedním nebo více _rozhraními_ a každé rozhraní může definovat kolekci typů _telemetrie_ , _vlastností zařízení_ a _příkazů_. Vývojář řešení může importovat soubor JSON, který definuje model zařízení do šablony zařízení, nebo použít webové uživatelské rozhraní v IoT Central k vytvoření nebo úpravě modelu zařízení. Změny modelu zařízení provedené pomocí webového uživatelského rozhraní vyžadují, [aby se šablona zařízení](./howto-version-device-template.md)používala ve verzi.
 
-Vývojář řešení může také exportovat soubor JSON, který obsahuje DCM. Vývojář zařízení může pomocí tohoto dokumentu JSON pochopit, jak má zařízení komunikovat s aplikací IoT Central.
+Vývojář řešení může také exportovat soubor JSON, který obsahuje model zařízení. Vývojář zařízení může pomocí tohoto dokumentu JSON pochopit, jak má zařízení komunikovat s aplikací IoT Central.
 
-Soubor JSON, který definuje DCM, používá [digitální DTDL (digitald Definition Language) V1](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). IoT Central očekává, že soubor JSON bude obsahovat DCM s rozhraními definovanými jako vložené místo v samostatných souborech.
+Soubor JSON, který definuje model zařízení, používá program [Digital DTDL Definition Language () v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central očekává, že soubor JSON bude obsahovat model zařízení s rozhraními definovanými jako vložené místo v samostatných souborech.
 
 Typické zařízení IoT se skládá z těchto součástí:
 
 - Vlastní části, které tvoří jedinečné zařízení.
 - Standardní části, které jsou společné pro všechna zařízení.
 
-Tyto části se nazývají _rozhraní_ v DCM. Rozhraní definují podrobnosti jednotlivých částí, které vaše zařízení implementuje. Rozhraní jsou opakovaně použitelná napříč DCMs.
+Tyto části se nazývají _rozhraní_ v modelu zařízení. Rozhraní definují podrobnosti jednotlivých částí, které vaše zařízení implementuje. Rozhraní jsou opakovaně použitelná napříč modely zařízení. V rozhraní DTDL komponenta odkazuje na rozhraní definované v samostatném souboru DTDL.
 
-Následující příklad ukazuje osnovu modelu schopností zařízení pro zařízení snímače životního prostředí se dvěma rozhraními:
+Následující příklad ukazuje osnovu modelu zařízení pro zařízení řadiče pro teploty. Výchozí komponenta obsahuje definice pro `workingSet` , `serialNumber` a `reboot` . Model zařízení zahrnuje také `thermostat` `deviceInformation` rozhraní a:
 
 ```json
 {
-  "@id": "urn:contoso:sensor_device:1",
-  "@type": "CapabilityModel",
-  "displayName": "Environment Sensor Capability Model",
-  "implements": [
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:example:TemperatureController;1",
+  "@type": "Interface",
+  "displayName": "Temperature Controller",
+  "description": "Device with two thermostats and remote reboot.",
+  "contents": [
     {
-      "@type": "InterfaceInstance",
-      "name": "deviceinfo",
-      "schema": {
-        "@id": "urn:azureiot:DeviceManagement:DeviceInformation:1",
-        "@type": "Interface",
-        "displayName": "Device Information",
-        "@context": "http://azureiot.com/v1/contexts/IoTModel.json",
-        "contents": [
-          ...
-        ]
+      "@type": [
+        "Telemetry", "DataSize"
+      ],
+      "name": "workingSet",
+      "displayName": "Working Set",
+      "description": "Current working set of the device memory in KiB.",
+      "schema": "double",
+      "unit" : "kibibyte"
+    },
+    {
+      "@type": "Property",
+      "name": "serialNumber",
+      "displayName": "Serial Number",
+      "description": "Serial number of the device.",
+      "schema": "string"
+    },
+    {
+      "@type": "Command",
+      "name": "reboot",
+      "displayName": "Reboot",
+      "description": "Reboots the device after waiting the number of seconds specified.",
+      "request": {
+        "name": "delay",
+        "displayName": "Delay",
+        "description": "Number of seconds to wait before rebooting the device.",
+        "schema": "integer"
       }
     },
     {
-      "@type": "InterfaceInstance",
-      "name": "sensor",
-      "schema": {
-        "@id": "urn:contoso:EnvironmentalSensor:1",
-        "@type": "Interface",
-        "displayName": "Environmental Sensor",
-        "@context": "http://azureiot.com/v1/contexts/IoTModel.json",
-        "contents": [
-          ...
-        ]
-      }
+      "@type" : "Component",
+      "schema": "dtmi:com:example:Thermostat;1",
+      "name": "thermostat",
+      "displayName": "Thermostat",
+      "description": "Thermostat One."
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1",
+      "name": "deviceInformation",
+      "displayName": "Device Information interface",
+      "description": "Optional interface with basic device hardware information."
     }
-  ],
-  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
+  ]
 }
 ```
-
-Model schopností má některá povinná pole:
-
-- `@id`: jedinečné ID ve formě jednoduchého uniformního názvu prostředku.
-- `@type`: deklaruje, že tento objekt je model schopností.
-- `@context`: Určuje verzi DTDL, která se používá pro model schopností.
-- `implements`: zobrazí seznam rozhraní, které vaše zařízení implementuje.
-
-Každá položka v seznamu rozhraní v oddílu Implements má:
-
-- `name`: název programování rozhraní.
-- `schema`: rozhraní, které model schopností implementuje.
 
 Rozhraní má některá povinná pole:
 
 - `@id`: jedinečné ID ve formě jednoduchého uniformního názvu prostředku.
 - `@type`: deklaruje, že tento objekt je rozhraní.
 - `@context`: Určuje verzi DTDL, která se používá pro rozhraní.
-- `contents`: zobrazí seznam vlastností, telemetrie a příkazů, které tvoří vaše zařízení.
+- `contents`: zobrazí seznam vlastností, telemetrie a příkazů, které tvoří vaše zařízení. Možnosti mohou být definovány ve více rozhraních.
 
 K dispozici jsou některá volitelná pole, která můžete použít k přidání dalších podrobností do modelu schopností, jako je například zobrazovaný název a popis.
+
+Každá položka v seznamu rozhraní v oddílu Implements má:
+
+- `name`: název programování rozhraní.
+- `schema`: rozhraní, které model schopností implementuje.
 
 ## <a name="interfaces"></a>Rozhraní
 
@@ -114,55 +127,105 @@ DTDL vám umožňuje popsat možnosti vašeho zařízení. Související možnos
 - `Telemetry`. Pole telemetrie reprezentují měření od senzorů. Pokaždé, když zařízení získá měření senzorů, mělo by se odeslat událost telemetrie obsahující data ze senzorů.
 - `Commands`. Příkazy reprezentují metody, které můžou uživatelé zařízení na zařízení spouštět. Například příkaz pro obnovení nebo příkaz pro zapnutí nebo vypnutí ventilátoru.
 
-Následující příklad ukazuje definici rozhraní senzoru prostředí:
+Následující příklad ukazuje definici rozhraní termostata:
 
 ```json
 {
-  "@type": "Property",
-  "displayName": "Device State",
-  "description": "The state of the device. Two states online/offline are available.",
-  "name": "state",
-  "schema": "boolean"
-},
-{
-  "@type": "Property",
-  "displayName": "Customer Name",
-  "description": "The name of the customer currently operating the device.",
-  "name": "name",
-  "schema": "string",
-  "writable": true
-},
-{
-  "@type": [
-    "Telemetry",
-    "SemanticType/Temperature"
-  ],
-  "description": "Current temperature on the device",
-  "displayName": "Temperature",
-  "name": "temp",
-  "schema": "double",
-  "unit": "Units/Temperature/fahrenheit"
-},
-{
-  "@type": "Command",
-  "name": "turnon",
-  "comment": "This Commands will turn-on the LED light on the device.",
-  "commandType": "synchronous"
-},
-{
-  "@type": "Command",
-  "name": "turnoff",
-  "comment": "This Commands will turn-off the LED light on the device.",
-  "commandType": "synchronous"
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:example:Thermostat;1",
+  "@type": "Interface",
+  "displayName": "Thermostat",
+  "description": "Reports current temperature and provides desired temperature control.",
+  "contents": [
+    {
+      "@type": [
+        "Telemetry",
+        "Temperature"
+      ],
+      "name": "temperature",
+      "displayName" : "Temperature",
+      "description" : "Temperature in degrees Celsius.",
+      "schema": "double",
+      "unit": "degreeCelsius"
+    },
+    {
+      "@type": [
+        "Property",
+        "Temperature"
+      ],
+      "name": "targetTemperature",
+      "schema": "double",
+      "displayName": "Target Temperature",
+      "description": "Allows to remotely specify the desired target temperature.",
+      "unit" : "degreeCelsius",
+      "writable": true
+    },
+    {
+      "@type": [
+        "Property",
+        "Temperature"
+      ],
+      "name": "maxTempSinceLastReboot",
+      "schema": "double",
+      "unit" : "degreeCelsius",
+      "displayName": "Max temperature since last reboot.",
+      "description": "Returns the max temperature since last device reboot."
+    },
+    {
+      "@type": "Command",
+      "name": "getMaxMinReport",
+      "displayName": "Get Max-Min report.",
+      "description": "This command returns the max, min and average temperature from the specified time to the current time.",
+      "request": {
+        "name": "since",
+        "displayName": "Since",
+        "description": "Period to return the max-min report.",
+        "schema": "dateTime"
+      },
+      "response": {
+        "name" : "tempReport",
+        "displayName": "Temperature Report",
+        "schema": {
+          "@type": "Object",
+          "fields": [
+            {
+              "name": "maxTemp",
+              "displayName": "Max temperature",
+              "schema": "double"
+            },
+            {
+              "name": "minTemp",
+              "displayName": "Min temperature",
+              "schema": "double"
+            },
+            {
+              "name" : "avgTemp",
+              "displayName": "Average Temperature",
+              "schema": "double"
+            },
+            {
+              "name" : "startTime",
+              "displayName": "Start Time",
+              "schema": "dateTime"
+            },
+            {
+              "name" : "endTime",
+              "displayName": "End Time",
+              "schema": "dateTime"
+            }
+          ]
+        }
+      }
+    }
+  ]
 }
 ```
 
-Tento příklad ukazuje dvě vlastnosti (jeden jen pro čtení a jeden zapisovatelný), typ telemetrie a dva příkazy. Minimální Popis pole má:
+Tento příklad ukazuje dvě vlastnosti (jeden jen pro čtení a jeden zapisovatelný), typ telemetrie a příkaz. Minimální Popis pole má:
 
 - `@type` Chcete-li určit typ schopnosti: `Telemetry` , `Property` nebo `Command` .  V některých případech typ obsahuje sémantický typ, který umožňuje IoT Central provést některé předpoklady o tom, jak tuto hodnotu zpracovat.
 - `name` pro hodnotu telemetrie.
 - `schema` pro určení datového typu telemetrie nebo vlastnosti. Tato hodnota může být primitivní typ, například Double, Integer, Boolean nebo String. Podporují se také komplexní typy objektů, pole a mapy.
-- `commandType` Určete, jak má být příkaz zpracován.
 
 Volitelná pole, jako je zobrazované jméno a popis, umožňují přidat další podrobnosti k rozhraní a funkcím.
 
@@ -180,33 +243,36 @@ U zapisovatelných vlastností aplikace zařízení vrátí stavový kód požad
 
 ## <a name="telemetry"></a>Telemetrie
 
-IoT Central umožňuje zobrazit telemetrii na řídicích panelech a grafech a používat pravidla pro aktivaci akcí po dosažení mezních hodnot. IoT Central používá informace v DCM, jako jsou datové typy, jednotky a zobrazované názvy, k určení toho, jak se mají zobrazovat hodnoty telemetrie.
+IoT Central umožňuje zobrazit telemetrii na řídicích panelech a grafech a používat pravidla pro aktivaci akcí po dosažení mezních hodnot. IoT Central používá informace v modelu zařízení, jako jsou datové typy, jednotky a zobrazované názvy, k určení, jak zobrazit hodnoty telemetrie.
 
 Můžete použít funkci IoT Central data export k streamování telemetrie do jiných míst určení, jako je například úložiště nebo Event Hubs.
 
 ## <a name="commands"></a>Příkazy
 
-Příkazy jsou buď synchronní, nebo asynchronní. Synchronní příkaz se musí provést během 30 sekund ve výchozím nastavení a zařízení musí být připojené, až se dorazí na příkaz. Pokud zařízení reaguje v čase nebo pokud zařízení není připojené, příkaz se nezdařil.
+Příkaz se musí provést během 30 sekund ve výchozím nastavení a po přijetí příkazu se musí zařízení připojit. Pokud zařízení reaguje v čase nebo pokud zařízení není připojené, příkaz se nezdařil.
 
-Pro dlouhotrvající operace použijte asynchronní příkazy. Zařízení odesílá informace o průběhu pomocí zpráv telemetrie. Tyto zprávy o průběhu mají následující vlastnosti záhlaví:
+Příkazy mohou mít parametry žádosti a vracet odpověď.
 
-- `iothub-command-name`: název příkazu, například `UpdateFirmware` .
-- `iothub-command-request-id`: ID žádosti vygenerované na straně serveru, které se odešle do zařízení při počátečním volání.
-- `iothub-interface-id`: ID rozhraní, ve kterém je tento příkaz definován, například `urn:example:AssetTracker:1` .
- `iothub-interface-name`: název instance tohoto rozhraní, například `myAssetTracker` .
-- `iothub-command-statuscode`: stavový kód vrácený ze zařízení, například `202` .
+### <a name="offline-commands"></a>Offline příkazy
+
+Příkazy Queue můžete zvolit, pokud je zařízení aktuálně offline. Pokud je v šabloně zařízení možnost offline pro příkaz, povolte **frontu** .
+
+Offline příkazy jsou jednosměrná oznámení pro zařízení z vašeho řešení. Příkazy offline můžou mít parametry žádosti, ale nevrátí odpověď.
+
+> [!NOTE]
+> Tato možnost je k dispozici pouze ve webovém uživatelském rozhraní IoT Central. Toto nastavení není zahrnuté, pokud model nebo rozhraní exportujete ze šablony zařízení.
 
 ## <a name="cloud-properties"></a>Vlastnosti cloudu
 
-Vlastnosti cloudu jsou součástí šablony zařízení, ale nejsou součástí DCM. Cloudové vlastnosti umožňují vývojáři řešení zadat libovolná metadata zařízení, která se mají uložit v aplikaci IoT Central. Vlastnosti cloudu neovlivňují kód, který vývojář zařízení zapisuje k implementaci DCM.
+Vlastnosti cloudu jsou součástí šablony zařízení, ale nejsou součástí modelu zařízení. Cloudové vlastnosti umožňují vývojáři řešení zadat libovolná metadata zařízení, která se mají uložit v aplikaci IoT Central. Vlastnosti cloudu neovlivňují kód, který vývojář zařízení zapisuje k implementaci modelu zařízení.
 
 Vývojář řešení může přidat vlastnosti cloudu do řídicích panelů a zobrazení spolu s vlastnostmi zařízení a umožnit tak operátorovi spravovat zařízení připojená k aplikaci. Vývojář řešení může také v rámci definice pravidla použít vlastnosti cloudu, aby mohla být prahová hodnota upravitelná pomocí operátoru.
 
 ## <a name="customizations"></a>Vlastní nastavení
 
-Vlastní nastavení jsou součástí šablony zařízení, ale nejsou součástí DCM. Přizpůsobení umožní vývojářům řešení vylepšit nebo potlačit některé definice v DCM. Například vývojář řešení může změnit zobrazované jméno pro typ nebo vlastnost telemetrie. Vývojář řešení může také pomocí přizpůsobení přidat ověřování, jako je například minimální nebo maximální délka pro vlastnost zařízení typu řetězec.
+Vlastní nastavení jsou součástí šablony zařízení, ale nejsou součástí modelu zařízení. Přizpůsobení umožní vývojářům řešení vylepšit nebo potlačit některé definice v modelu zařízení. Například vývojář řešení může změnit zobrazované jméno pro typ nebo vlastnost telemetrie. Vývojář řešení může také pomocí přizpůsobení přidat ověřování, jako je například minimální nebo maximální délka pro vlastnost zařízení typu řetězec.
 
-Přizpůsobení může mít vliv na kód, který vývojář zařízení zapisuje k implementaci DCM. Přizpůsobení může například nastavit minimální a maximální délku řetězce nebo minimální a maximální číselné hodnoty pro telemetrii.
+Přizpůsobení může mít vliv na kód, který vývojář zařízení zapisuje k implementaci modelu zařízení. Přizpůsobení může například nastavit minimální a maximální délku řetězce nebo minimální a maximální číselné hodnoty pro telemetrii.
 
 ## <a name="views"></a>Zobrazení
 
@@ -219,7 +285,7 @@ Vývojář řešení vytvoří zobrazení, která operátorům umožní monitoro
 - Dlaždice, které umožní operátorovi volat příkazy, včetně příkazů, které očekávají datovou část.
 - Dlaždice pro zobrazení popisků, obrázků nebo Markdownu textu.
 
-Telemetrii, vlastnosti a příkazy, které můžete přidat do zobrazení, jsou určeny pomocí DCM, vlastností cloudu a přizpůsobení v šabloně zařízení.
+Telemetrie, vlastnosti a příkazy, které můžete přidat do zobrazení, se určují podle modelu zařízení, vlastností cloudu a přizpůsobení v šabloně zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 

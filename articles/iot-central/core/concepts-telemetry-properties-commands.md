@@ -3,17 +3,17 @@ title: Datová část telemetrie, vlastností a příkazů v Azure IoT Central |
 description: Šablony zařízení Azure IoT Central umožňují určit telemetrii, vlastnosti a příkazy zařízení, které musí implementovat. Porozumíte formátu dat, která zařízení můžou vyměňovat pomocí IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/12/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 9e5288bb177d5827f05003e4561bc79240a71b59
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427866"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989543"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Datové části telemetrie, vlastností a příkazů
 
@@ -29,12 +29,12 @@ Tento článek popisuje, pro vývojáře zařízení, datové části JSON, kter
 
 Tento článek nepopisuje všechny možné typy telemetrie, vlastností a datových částí příkazu, ale příklady ilustrují všechny typy klíčů.
 
-Každý příklad ukazuje fragment kódu z modelu funkce zařízení (DCM), který definuje typ a ukázkovou datovou část JSON pro ilustraci, jak by mělo zařízení pracovat s aplikací IoT Central.
+Každý příklad ukazuje fragment kódu z modelu zařízení, který definuje typ a ukázkové datové části JSON pro ilustraci, jak by mělo zařízení komunikovat s IoT Centralou aplikací.
 
 > [!NOTE]
-> IoT Central akceptuje platný JSON, ale může se použít jenom pro vizualizace, pokud se shoduje s definicí v DCM. Data, která se neshodují s definicí, můžete exportovat v tématu [Export dat IoT do cílových umístění v Azure](howto-export-data.md).
+> IoT Central přijímá jakýkoli platný formát JSON, ale může se použít jenom pro vizualizace, pokud se shoduje s definicí v modelu zařízení. Data, která se neshodují s definicí, můžete exportovat v tématu [Export dat IoT do cílových umístění v Azure](howto-export-data.md).
 
-Soubor JSON, který definuje DCM, používá [digitální DTDL (digitald Definition Language) V1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md). Tato specifikace zahrnuje definici `@id` formátu vlastnosti.
+Soubor JSON, který definuje model zařízení, používá program [Digital DTDL Definition Language () v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
 
 Vzorový kód zařízení, který zobrazuje některé z těchto používaných datových částí, najdete v tématu věnovaném [Vytvoření a připojení klientské aplikace do aplikace azure IoT Central (Node.js)](tutorial-connect-device-nodejs.md) a [Vytvoření a připojení klientské aplikace k vašim kurzům pro Azure IoT Central aplikace (Python)](tutorial-connect-device-python.md) .
 
@@ -56,11 +56,10 @@ IoT Central umožňuje zobrazit nezpracovaná data, která zařízení odesílá
 
 V této části jsou uvedeny příklady primitivních typů telemetrie, které zařízení streamuje do aplikace IoT Central.
 
-Následující fragment kódu z DCM ukazuje definici `boolean` typu telemetrie:
+Následující fragment kódu z modelu zařízení zobrazuje definici `boolean` typu telemetrie:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "BooleanTelemetry"
@@ -76,11 +75,10 @@ Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v n
 { "BooleanTelemetry": true }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `string` typu telemetrie:
+Následující fragment kódu z modelu zařízení zobrazuje definici `string` typu telemetrie:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "StringTelemetry"
@@ -96,11 +94,10 @@ Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v n
 { "StringTelemetry": "A string value - could be a URL" }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `integer` typu telemetrie:
+Následující fragment kódu z modelu zařízení zobrazuje definici `integer` typu telemetrie:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "IntegerTelemetry"
@@ -117,11 +114,10 @@ Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v n
 { "IntegerTelemetry": 23 }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `double` typu telemetrie:
+Následující fragment kódu z modelu zařízení zobrazuje definici `double` typu telemetrie:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DoubleTelemetry"
@@ -137,11 +133,10 @@ Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v n
 { "DoubleTelemetry": 56.78 }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `dateTime` typu telemetrie:
+Následující fragment kódu z modelu zařízení zobrazuje definici `dateTime` typu telemetrie:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DateTimeTelemetry"
@@ -151,17 +146,16 @@ Následující fragment kódu z DCM ukazuje definici `dateTime` typu telemetrie:
 }
 ```
 
-Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v následujících příkladech, `DateTime` musí být kompatibilní s ISO 8061:
+Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v následujících příkladech, `DateTime` musí být ve formátu ISO 8061:
 
 ```json
 { "DateTimeTelemetry": "2020-08-30T19:16:13.853Z" }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `duration` typu telemetrie:
+Následující fragment kódu z modelu zařízení zobrazuje definici `duration` typu telemetrie:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DurationTelemetry"
@@ -171,7 +165,7 @@ Následující fragment kódu z DCM ukazuje definici `duration` typu telemetrie:
 }
 ```
 
-Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v následujícím příkladu – doba trvání musí odpovídat normám ISO 8601:
+Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v následujícím příkladu – doba trvání musí být ve formátu ISO 8601:
 
 ```json
 { "DurationTelemetry": "PT10H24M6.169083011336625S" }
@@ -181,11 +175,10 @@ Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v n
 
 V této části jsou uvedeny příklady komplexních typů telemetrie, které zařízení streamuje do aplikace IoT Central.
 
-Následující fragment kódu z DCM ukazuje definici `geopoint` typu telemetrie:
+Následující fragment kódu z modelu zařízení zobrazuje definici `geopoint` typu telemetrie:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "GeopointTelemetry"
@@ -207,18 +200,16 @@ Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v n
 }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `Enum` typu telemetrie:
+Následující fragment kódu z modelu zařízení zobrazuje definici `Enum` typu telemetrie:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "EnumTelemetry"
   },
   "name": "EnumTelemetry",
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -226,8 +217,6 @@ Následující fragment kódu z DCM ukazuje definici `Enum` typu telemetrie:
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -235,8 +224,6 @@ Následující fragment kódu z DCM ukazuje definici `Enum` typu telemetrie:
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -244,8 +231,6 @@ Následující fragment kódu z DCM ukazuje definici `Enum` typu telemetrie:
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -263,26 +248,22 @@ Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v n
 { "EnumTelemetry": 1 }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `Object` typu telemetrie. Tento objekt má tři pole s typy `dateTime` , `integer` a `Enum` :
+Následující fragment kódu z modelu zařízení zobrazuje definici `Object` typu telemetrie. Tento objekt má tři pole s typy `dateTime` , `integer` a `Enum` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "ObjectTelemetry"
   },
   "name": "ObjectTelemetry",
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property1"
         },
@@ -290,8 +271,6 @@ Následující fragment kódu z DCM ukazuje definici `Object` typu telemetrie. T
         "schema": "dateTime"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property2"
         },
@@ -299,14 +278,11 @@ Následující fragment kódu z DCM ukazuje definici `Object` typu telemetrie. T
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property3"
         },
         "name": "Property3",
         "schema": {
-          "@id": "<element id>",
           "@type": "Enum",
           "displayName": {
             "en": "Enum"
@@ -314,8 +290,6 @@ Následující fragment kódu z DCM ukazuje definici `Object` typu telemetrie. T
           "valueSchema": "integer",
           "enumValues": [
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item1"
               },
@@ -323,8 +297,6 @@ Následující fragment kódu z DCM ukazuje definici `Object` typu telemetrie. T
               "name": "Item1"
             },
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item2"
               },
@@ -332,8 +304,6 @@ Následující fragment kódu z DCM ukazuje definici `Object` typu telemetrie. T
               "name": "Item2"
             },
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item3"
               },
@@ -360,11 +330,10 @@ Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v n
 }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `vector` typu telemetrie:
+Následující fragment kódu z modelu zařízení zobrazuje definici `vector` typu telemetrie:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "VectorTelemetry"
@@ -390,14 +359,13 @@ Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v n
 
 V této části jsou uvedeny příklady událostí telemetrie a stavy, které zařízení odesílá do aplikace IoT Central.
 
-Následující fragment kódu z DCM zobrazuje definici `integer` typu události:
+Následující fragment kódu z modelu zařízení zobrazuje definici `integer` typu události:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": [
     "Telemetry",
-    "SemanticType/Event"
+    "Event"
   ],
   "displayName": {
     "en": "IntegerEvent"
@@ -413,27 +381,23 @@ Klient zařízení by měl odesílat data události jako formát JSON, který vy
 { "IntegerEvent": 74 }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `integer` typu stavu:
+Následující fragment kódu z modelu zařízení zobrazuje definici `integer` typu stavu:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": [
     "Telemetry",
-    "SemanticType/State"
+    "State"
   ],
   "displayName": {
     "en": "IntegerState"
   },
   "name": "IntegerState",
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level1"
         },
@@ -441,8 +405,6 @@ Následující fragment kódu z DCM ukazuje definici `integer` typu stavu:
         "name": "Level1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level2"
         },
@@ -450,8 +412,6 @@ Následující fragment kódu z DCM ukazuje definici `integer` typu stavu:
         "name": "Level2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level3"
         },
@@ -478,17 +438,17 @@ Klient zařízení by měl odeslat stav jako JSON, který vypadá jako v násled
 
 V této části jsou uvedeny příklady primitivních typů vlastností, které zařízení odesílá do aplikace IoT Central.
 
-Následující fragment kódu z DCM ukazuje definici `boolean` typu vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici `boolean` typu vlastnosti:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "BooleanProperty"
   },
   "name": "BooleanProperty",
-  "schema": "boolean"
+  "schema": "boolean",
+  "writable": false
 }
 ```
 
@@ -498,17 +458,17 @@ Klient zařízení by měl poslat datovou část JSON, která vypadá jako v ná
 { "BooleanProperty": false }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `boolean` typu vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici `boolean` typu vlastnosti:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "LongProperty"
   },
   "name": "LongProperty",
-  "schema": "long"
+  "schema": "long",
+  "writable": false
 }
 ```
 
@@ -518,17 +478,17 @@ Klient zařízení by měl poslat datovou část JSON, která vypadá jako v ná
 { "LongProperty": 439 }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `date` typu vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici `date` typu vlastnosti:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "DateProperty"
   },
   "name": "DateProperty",
-  "schema": "date"
+  "schema": "date",
+  "writable": false
 }
 ```
 
@@ -538,17 +498,17 @@ Klient zařízení by měl poslat datovou část JSON, která vypadá jako v ná
 { "DateProperty": "2020-05-17" }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `duration` typu vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici `duration` typu vlastnosti:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "DurationProperty"
   },
   "name": "DurationProperty",
-  "schema": "duration"
+  "schema": "duration",
+  "writable": false
 }
 ```
 
@@ -558,17 +518,17 @@ Klient zařízení by měl poslat datovou část JSON, která vypadá jako v ná
 { "DurationProperty": "PT10H24M6.169083011336625S" }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `float` typu vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici `float` typu vlastnosti:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "FloatProperty"
   },
   "name": "FloatProperty",
-  "schema": "float"
+  "schema": "float",
+  "writable": false
 }
 ```
 
@@ -578,17 +538,17 @@ Klient zařízení by měl poslat datovou část JSON, která vypadá jako v ná
 { "FloatProperty": 1.9 }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `string` typu vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici `string` typu vlastnosti:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "StringProperty"
   },
   "name": "StringProperty",
-  "schema": "string"
+  "schema": "string",
+  "writable": false
 }
 ```
 
@@ -602,17 +562,17 @@ Klient zařízení by měl poslat datovou část JSON, která vypadá jako v ná
 
 V této části jsou uvedeny příklady komplexních typů vlastností, které zařízení odesílá do aplikace IoT Central.
 
-Následující fragment kódu z DCM ukazuje definici `geopoint` typu vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici `geopoint` typu vlastnosti:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "GeopointProperty"
   },
   "name": "GeopointProperty",
-  "schema": "geopoint"
+  "schema": "geopoint",
+  "writable": false
 }
 ```
 
@@ -628,18 +588,17 @@ Klient zařízení by měl poslat datovou část JSON, která vypadá jako v ná
 }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `Enum` typu vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici `Enum` typu vlastnosti:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "EnumProperty"
   },
   "name": "EnumProperty",
+  "writable": false,
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -647,8 +606,6 @@ Následující fragment kódu z DCM ukazuje definici `Enum` typu vlastnosti:
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -656,8 +613,6 @@ Následující fragment kódu z DCM ukazuje definici `Enum` typu vlastnosti:
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -665,8 +620,6 @@ Následující fragment kódu z DCM ukazuje definici `Enum` typu vlastnosti:
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -684,26 +637,23 @@ Klient zařízení by měl poslat datovou část JSON, která vypadá jako v ná
 { "EnumProperty": 1 }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `Object` typu vlastnosti. Tento objekt má dvě pole s typy `string` a `integer` :
+Následující fragment kódu z modelu zařízení zobrazuje definici `Object` typu vlastnosti. Tento objekt má dvě pole s typy `string` a `integer` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "ObjectProperty"
   },
   "name": "ObjectProperty",
+  "writable": false,
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field1"
         },
@@ -711,8 +661,6 @@ Následující fragment kódu z DCM ukazuje definici `Object` typu vlastnosti. T
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field2"
         },
@@ -735,17 +683,17 @@ Klient zařízení by měl poslat datovou část JSON, která vypadá jako v ná
 }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `vector` typu vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici `vector` typu vlastnosti:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "VectorProperty"
   },
   "name": "VectorProperty",
-  "schema": "vector"
+  "schema": "vector",
+  "writable": false
 }
 ```
 
@@ -780,11 +728,10 @@ IoT Central očekává odpověď ze zařízení do zapisovatelných aktualizací
 
 `ad` je popis řetězce možností.
 
-Následující fragment kódu z DCM ukazuje definici `string` typu zapisovatelné vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici `string` typu zapisovatelné vlastnosti:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "StringPropertyWritable"
@@ -816,11 +763,10 @@ Zařízení by mělo po zpracování aktualizace odeslat následující datovou 
 }
 ```
 
-Následující fragment kódu z DCM ukazuje definici `Enum` typu zapisovatelné vlastnosti:
+Následující fragment kódu z modelu zařízení zobrazuje definici `Enum` typu zapisovatelné vlastnosti:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "EnumPropertyWritable"
@@ -828,7 +774,6 @@ Následující fragment kódu z DCM ukazuje definici `Enum` typu zapisovatelné 
   "name": "EnumPropertyWritable",
   "writable": true,
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -836,8 +781,6 @@ Následující fragment kódu z DCM ukazuje definici `Enum` typu zapisovatelné 
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -845,8 +788,6 @@ Následující fragment kódu z DCM ukazuje definici `Enum` typu zapisovatelné 
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -854,8 +795,6 @@ Následující fragment kódu z DCM ukazuje definici `Enum` typu zapisovatelné 
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -890,36 +829,30 @@ Zařízení by mělo po zpracování aktualizace odeslat následující datovou 
 
 ## <a name="commands"></a>Příkazy
 
-### <a name="synchronous-command-types"></a>Synchronní typy příkazů
+> [!NOTE]
+> Ve webovém uživatelském rozhraní IoT Central můžete vybrat **frontu, pokud** je pro příkaz offline možnost. Toto nastavení není zahrnuté, pokud model nebo rozhraní exportujete ze šablony zařízení.
 
-Následující fragment kódu z DCM zobrazuje definici synchronního příkazu, který nemá žádné parametry a neočekává, že zařízení vrátí cokoli:
+Následující fragment kódu z modelu zařízení zobrazuje definici příkazu, který nemá žádné parametry a neočekává, že zařízení vrátí cokoli.
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "displayName": {
-    "en": "SynchronousCommandBasic"
+    "en": "CommandBasic"
   },
-  "name": "SynchronousCommandBasic"
+  "name": "CommandBasic"
 }
 ```
 
 Zařízení obdrží v žádosti prázdnou datovou část a v odpovědi musí vracet prázdnou datovou část s `200` kódem odpovědi HTTP, aby označovala úspěch.
 
-Následující fragment kódu z DCM ukazuje definici synchronního příkazu, který má celočíselný parametr a očekává, že zařízení vrátí celočíselnou hodnotu:
+Následující fragment kódu z modelu zařízení zobrazuje definici příkazu, který má celočíselný parametr a očekává, že zařízení vrátí celočíselnou hodnotu:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
@@ -927,8 +860,7 @@ Následující fragment kódu z DCM ukazuje definici synchronního příkazu, kt
     "schema": "integer"
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
@@ -936,39 +868,32 @@ Následující fragment kódu z DCM ukazuje definici synchronního příkazu, kt
     "schema": "integer"
   },
   "displayName": {
-    "en": "SynchronousCommandSimple"
+    "en": "CommandSimple"
   },
-  "name": "SynchronousCommandSimple"
+  "name": "CommandSimple"
 }
 ```
 
 Zařízení obdrží jako datovou část požadavku celočíselnou hodnotu. Zařízení by mělo vracet celočíselnou hodnotu jako datovou část odpovědi s `200` kódem odpovědi HTTP, aby označovalo úspěch.
 
-Následující fragment kódu z DCM zobrazuje definici synchronního příkazu, který obsahuje parametr objektu a očekává, že zařízení vrátí objekt. V tomto příkladu mají oba objekty celočíselné a řetězcové pole:
+Následující fragment kódu z modelu zařízení zobrazuje definici příkazu, který má parametr objektu a který očekává, že zařízení vrátí objekt. V tomto příkladu mají oba objekty celočíselné a řetězcové pole:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
     "name": "RequestParam",
     "schema": {
-      "@id": "<element id>",
       "@type": "Object",
       "displayName": {
         "en": "Object"
       },
       "fields": [
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field1"
           },
@@ -976,8 +901,6 @@ Následující fragment kódu z DCM zobrazuje definici synchronního příkazu, 
           "schema": "integer"
         },
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field2"
           },
@@ -988,22 +911,18 @@ Následující fragment kódu z DCM zobrazuje definici synchronního příkazu, 
     }
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
     "name": "ResponseParam",
     "schema": {
-      "@id": "<element id>",
       "@type": "Object",
       "displayName": {
         "en": "Object"
       },
       "fields": [
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field1"
           },
@@ -1011,8 +930,6 @@ Následující fragment kódu z DCM zobrazuje definici synchronního příkazu, 
           "schema": "integer"
         },
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field2"
           },
@@ -1023,9 +940,9 @@ Následující fragment kódu z DCM zobrazuje definici synchronního příkazu, 
     }
   },
   "displayName": {
-    "en": "SynchronousCommandComplex"
+    "en": "CommandComplex"
   },
-  "name": "SynchronousCommandComplex"
+  "name": "CommandComplex"
 }
 ```
 
@@ -1041,19 +958,15 @@ Následující fragment kódu ukazuje příklad datové části odpovědi odesla
 { "Field1": 87, "Field2": "Another string value" }
 ```
 
-### <a name="asynchronous-command-types"></a>Typy asynchronních příkazů
+### <a name="long-running-commands"></a>Dlouho běžící příkazy
 
-Následující fragment kódu z DCM ukazuje definici asynchronního příkazu. Příkaz má celočíselný parametr a očekává, že zařízení vrátí celočíselnou hodnotu:
+Následující fragment kódu z modelu zařízení zobrazuje definici příkazu. Příkaz má celočíselný parametr a očekává, že zařízení vrátí celočíselnou hodnotu:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "asynchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
@@ -1061,8 +974,7 @@ Následující fragment kódu z DCM ukazuje definici asynchronního příkazu. P
     "schema": "integer"
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
@@ -1070,19 +982,19 @@ Následující fragment kódu z DCM ukazuje definici asynchronního příkazu. P
     "schema": "integer"
   },
   "displayName": {
-    "en": "AsynchronousCommandSimple"
+    "en": "LongRunningCommandSimple"
   },
-  "name": "AsynchronousCommandSimple"
+  "name": "LongRunningCommandSimple"
 }
 ```
 
-Zařízení obdrží jako datovou část požadavku celočíselnou hodnotu. Zařízení by mělo vracet prázdnou datovou část odpovědi s `202` kódem odpovědi HTTP a indikovat, že zařízení přijalo požadavek na asynchronní zpracování.
+Zařízení obdrží jako datovou část požadavku celočíselnou hodnotu. Pokud zařízení potřebuje čas ke zpracování tohoto příkazu, měl by vrátit prázdnou datovou část odpovědi s `202` kódem odpovědi HTTP, který indikuje, že zařízení přijalo požadavek na zpracování.
 
 Až zařízení dokončí zpracování žádosti, měla by odeslat vlastnost IoT Central, která vypadá jako v následujícím příkladu. Název vlastnosti musí být stejný jako název příkazu:
 
 ```json
 {
-  "AsynchronousCommandSimple": {
+  "LongRunningCommandSimple": {
     "value": 87
   }
 }

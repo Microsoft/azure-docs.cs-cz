@@ -1,6 +1,6 @@
 ---
 title: Přehled Azure DDoS Protection Standard
-description: Přečtěte si, jak Azure DDoS Protection Standard, v kombinaci s osvědčenými postupy návrhu aplikací, zajišťuje ochranu před útoky DDoS.
+description: Zjistěte, jak služba Azure DDoS Protection úrovně Standard v kombinaci s osvědčenými postupy návrhu aplikací poskytuje ochranu před útoky DDoS.
 services: virtual-network
 documentationcenter: na
 author: yitoh
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: a8d8a41b5d527833ef071275d90cf9102cec47f7
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e3ded2fc286117da1438b0bb28298632532c4329
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905243"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992535"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Přehled služby Azure DDoS Protection úrovně Standard
 
@@ -38,10 +38,10 @@ Azure DDoS Protection neukládá zákaznická data.
 - **Adaptivní ladění:** Inteligentní profilace provozu zjišťuje provoz vaší aplikace v průběhu času a vybere a aktualizuje profil, který je nejvhodnější pro vaši službu. Profil se v průběhu času upraví jako změny provozu.
 - **Víceúrovňová ochrana:** Poskytuje úplnou ochranu zásobníku DDoS při použití s bránou firewall webových aplikací.
 - **Rozsáhlá škála rizik:** U více než 60 různých typů útoků se dá zmírnit s globální kapacitou, která se bude chránit před největším známými DDoS útoky.
-- **Analýza útoků:** Získejte podrobné sestavy během útoku za 5 minut a kompletní souhrn po skončení útoku. Protokoly toku pro zmírnění rizik streamování do [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection) nebo do režimu Siem (Information Security and Event Management) pro téměř v reálném čase při útoku.
+- **Analýza útoků:** Získejte podrobné sestavy během útoku za 5 minut a kompletní souhrn po skončení útoku. Protokoly toku pro zmírnění rizik streamování do [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md) nebo do režimu Siem (Information Security and Event Management) pro téměř v reálném čase při útoku.
 - **Metriky útoku:** Souhrnná metrika z každého útoku je přístupná prostřednictvím Azure Monitor.
 - **Výstrahy útoku:** Výstrahy se dají nakonfigurovat na začátku a na konci útoku a přes dobu trvání útoku pomocí integrované metriky útoku. Výstrahy se integrují do svého provozního softwaru, jako je Microsoft Azure monitorování protokolů, Splunk, Azure Storage, e-mailu a Azure Portal.
-- **DDoS Rapid Response** : pro pomoc s vyšetřováním a analýzou útoků se věnuje tým služby DDoS Protection Rapid Response (DRR). Další informace najdete v tématu [DDoS Rapid Response](ddos-rapid-response.md).
+- **DDoS Rapid Response**: pro pomoc s vyšetřováním a analýzou útoků se věnuje tým služby DDoS Protection Rapid Response (DRR). Další informace najdete v tématu [DDoS Rapid Response](ddos-rapid-response.md).
 - **Záruka nákladů:** Kredity služeb pro přenos dat a škálování aplikací pro dokumentované DDoS útoky.
 
 ## <a name="pricing"></a>Ceny

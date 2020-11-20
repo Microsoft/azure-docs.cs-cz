@@ -1,5 +1,5 @@
 ---
-title: Komponenty strategie DDoS Response
+title: Komponenty strategie reakce na útoky DDoS
 description: Zjistěte, jak pomocí Azure DDoS Protection Standard reagovat na útoky DDoS.
 services: ddos-protection
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 23822ce5b311dc479824128d66bc18a15473862d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a80f03ee82e8d1216353482dc867402adcf7d09
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905174"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992229"
 ---
-# <a name="components-of-a-ddos-response-strategy"></a>Komponenty strategie DDoS Response
+# <a name="components-of-a-ddos-response-strategy"></a>Komponenty strategie reakce na útoky DDoS
 
 Útok DDoS, který cílí na prostředky Azure, obvykle vyžaduje minimální zásah z pohledu uživatele. I když v rámci strategie reakce na incidenty, která zahrnuje zmírnění DDoS, pomáhá minimalizovat dopad na kontinuitu podnikových aplikací.
 
@@ -44,9 +44,9 @@ Je naprosto důležité porozumět vašemu riziku, co je DDoS útok, nepřetrži
 
 - Jsou moje služby aktivní/aktivní s převzetím služeb při selhání napříč více oblastmi?
 
-Je důležité, abyste porozuměli normálnímu chování aplikace a připravili se na to, jestli se aplikace během útoku na DDoS nechová podle očekávání. Máte monitory nakonfigurované pro vaše důležité podnikové aplikace, které napodobují chování klienta, a upozorňovat na to, když se zjistí relevantní anomálie. [Osvědčené postupy pro monitorování a diagnostiku](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) vám pomůžou získat přehled o stavu aplikace.
+Je důležité, abyste porozuměli normálnímu chování aplikace a připravili se na to, jestli se aplikace během útoku na DDoS nechová podle očekávání. Máte monitory nakonfigurované pro vaše důležité podnikové aplikace, které napodobují chování klienta, a upozorňovat na to, když se zjistí relevantní anomálie. [Osvědčené postupy pro monitorování a diagnostiku](/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) vám pomůžou získat přehled o stavu aplikace.
 
-[Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) je rozšiřitelná služba pro správu výkonu aplikací (APM) pro webové vývojáře na různých platformách. Pomocí Application Insights můžete monitorovat živou webovou aplikaci. Automaticky detekuje anomálie výkonu. Obsahuje analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací dělají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
+[Azure Application Insights](../azure-monitor/app/app-insights-overview.md) je rozšiřitelná služba pro správu výkonu aplikací (APM) pro webové vývojáře na různých platformách. Pomocí Application Insights můžete monitorovat živou webovou aplikaci. Automaticky detekuje anomálie výkonu. Obsahuje analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací dělají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
 
 ## <a name="customer-ddos-response-team"></a>Tým zákaznických odpovědí na DDoS
 
@@ -56,7 +56,7 @@ Doporučujeme používat cvičení simulace jako běžnou součást plánování
 
 ## <a name="alerts-during-an-attack"></a>Výstrahy během útoku
 
-Azure DDoS Protection Standard identifikuje a zmírnit útoky DDoS bez zásahu uživatele. Chcete-li dostávat oznámení, když dojde k aktivnímu zmírnění chráněné veřejné IP adresy, můžete [nakonfigurovat výstrahu](telemetry-monitoring-alerting.md) u metriky **v části útok DDoS nebo ne** . Můžete se rozhodnout, že vytvoříte výstrahy pro ostatní metriky DDoS, abyste porozuměli rozsahu útoku, zahození provozu a dalším podrobnostem.
+Azure DDoS Protection Standard identifikuje a zmírnit útoky DDoS bez zásahu uživatele. Chcete-li dostávat oznámení, když dojde k aktivnímu zmírnění chráněné veřejné IP adresy, můžete [nakonfigurovat výstrahu](telemetry-monitoring-alerting.md) u metriky **v části útok DDoS nebo ne**. Můžete se rozhodnout, že vytvoříte výstrahy pro ostatní metriky DDoS, abyste porozuměli rozsahu útoku, zahození provozu a dalším podrobnostem.
 
 ### <a name="when-to-contact-microsoft-support"></a>Kdy kontaktovat podporu Microsoftu
 

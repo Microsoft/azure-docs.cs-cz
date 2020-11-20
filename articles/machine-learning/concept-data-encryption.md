@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: a133cdb72e304a254305833b9ae6e8a7ebe30ab3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 211ef9571b5a126686b4583330dc0f80863fd47e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540004"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992042"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Šifrování dat pomocí Azure Machine Learning
 
@@ -129,6 +129,12 @@ Každý virtuální počítač má také místní dočasný disk pro operace s o
 ### <a name="azure-databricks"></a>Azure Databricks
 
 Azure Databricks lze použít v kanálech Azure Machine Learning. Ve výchozím nastavení je systém souborů datacihly (DBFS) používaný Azure Databricks zašifrovaný pomocí klíče spravovaného společností Microsoft. Pokud chcete nakonfigurovat Azure Databricks pro použití klíčů spravovaných zákazníkem, přečtěte si téma [konfigurace klíčů spravovaných zákazníkem ve výchozím nastavení (root) DBFS](/azure/databricks/security/customer-managed-keys-dbfs).
+
+### <a name="microsoft-generated-data"></a>Data generovaná společností Microsoft
+
+Při používání služeb, jako jsou například automatizované Machine Learning, může společnost Microsoft vygenerovat přechodná a předem zpracovaná data pro školení více modelů. Tato data jsou uložená v úložišti dat ve vašem pracovním prostoru, což vám umožní patřičně vymáhat řízení přístupu a šifrování.
+
+Můžete také chtít šifrovat [diagnostické informace zaznamenané z nasazeného koncového bodu](how-to-enable-app-insights.md) do instance služby Azure Application Insights.
 
 ## <a name="encryption-in-transit"></a>Šifrování během přenosu
 

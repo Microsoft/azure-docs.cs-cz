@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 39ce436cd59447b2b6f8d9f88deaab80b00dd639
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 82818c8db326889079948cd2b32b2ed0be6ab50d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812348"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990750"
 ---
 # <a name="iot-central-device-development-overview"></a>Přehled vývoje zařízení pro IoT Central
 
@@ -72,7 +72,7 @@ Další informace najdete v tématu věnovaném [připojení k Azure IoT Central
 
 ### <a name="security"></a>Zabezpečení
 
-Připojení mezi zařízením a vaší IoT Central aplikací je zabezpečené pomocí [sdílených přístupových podpisů](./concepts-get-connected.md#connect-devices-at-scale-using-sas) nebo standardních [certifikátů X. 509](./concepts-get-connected.md#connect-devices-using-x509-certificates).
+Připojení mezi zařízením a vaší IoT Central aplikací je zabezpečené pomocí [sdílených přístupových podpisů](./concepts-get-connected.md#sas-group-enrollment) nebo standardních [certifikátů X. 509](./concepts-get-connected.md#x509-group-enrollment).
 
 ### <a name="communication-protocols"></a>Komunikační protokoly
 
@@ -80,12 +80,58 @@ Komunikační protokoly, které zařízení může použít pro připojení k Io
 
 ## <a name="implement-the-device"></a>Implementace zařízení
 
+Šablona zařízení IoT Central zahrnuje _model_ , který určuje chování, které má zařízení daného typu implementovat. Chování zahrnují telemetrii, vlastnosti a příkazy.
+
+> [!TIP]
+> Model můžete exportovat z IoT Central jako soubor JSON typu [Digital DTDLs Definition Language () v2](https://github.com/Azure/opendigitaltwins-dtdl) .
+
+Každý model má jedinečný _identifikátor zdvojeného modelu zařízení_ (DTMI), například `dtmi:com:example:Thermostat;1` . Když se zařízení připojí k IoT Central, pošle DTMI modelu, který implementuje. IoT Central pak může k zařízení přidružit správnou šablonu zařízení.
+
+[IoT technologie Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) definuje sadu konvencí, které by mělo zařízení dodržovat, když implementuje DTDL model.
+
+Sady [SDK pro zařízení Azure IoT](#languages-and-sdks) zahrnují podporu pro konvence technologie Plug and Play IoT.
+
+### <a name="device-model"></a>Model zařízení
+
+Model zařízení je definován pomocí [DTDL](https://github.com/Azure/opendigitaltwins-dtdl). Tento jazyk vám umožní definovat:
+
+- Telemetrii, kterou zařízení odesílá Definice zahrnuje název a datový typ telemetrie. Zařízení například odesílá telemetrii teploty jako dvojitou hodnotu.
+- Vlastnosti, na které se zařízení hlásí, IoT Central. Definice vlastnosti zahrnuje název a datový typ. Například zařízení hlásí stav ventilu jako logickou hodnotu.
+- Vlastnosti, které zařízení může přijímat z IoT Central. Volitelně můžete označit vlastnost jako zapisovatelnou. Například IoT Central odesílá cílovou teplotu jako dvojitou hodnotu pro zařízení.
+- Příkazy, na které zařízení reaguje Definice obsahuje název příkazu a názvy a datové typy všech parametrů. Zařízení například odpoví na příkaz k restartování, který určuje, kolik sekund se má čekat před restartováním.
+
+Model DTDL může být modelem _No-Component_ nebo model _více komponent_ :
+
+- Model bez součásti: jednoduchý model nepoužívá vložené nebo kaskádované komponenty. Všechny telemetrie, vlastnosti a příkazy jsou definovány jednou _výchozí komponentou_. Příklad najdete v modelu [termostatu](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) .
+- Model více komponent. Složitější model, který obsahuje dvě nebo více komponent. Tyto komponenty zahrnují jednu výchozí komponentu a jednu nebo více dalších vnořených komponent. Příklad najdete v článku model [řadiče teploty](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) .
+
+Další informace najdete v tématu [komponenty IoT technologie Plug and Play v modelech](../../iot-pnp/concepts-components.md) .
+
+### <a name="conventions"></a>Konvence
+
+Zařízení by se mělo při vyměňujení dat pomocí IoT Central postupovat podle konvencí technologie Plug and Play IoT. Mezi tyto konvence patří:
+
+- Při připojení k IoT Central odeslat DTMI.
+- Posílání správně formátovaných datových částí JSON a metadat IoT Central.
+- Správně reagují na vlastnosti a příkazy s možností zápisu z IoT Central.
+- Použijte zásady vytváření názvů pro příkazy komponent.
+
+> [!NOTE]
+> V současné době IoT Central plně nepodporuje **pole** DTDL a **geoprostorové** datové typy.
+
+Další informace o formátu zpráv JSON, které zařízení vyměňuje pomocí IoT Central, najdete v tématu [telemetrie, vlastnosti a datové části příkazů](concepts-telemetry-properties-commands.md).
+
+Další informace o konvencích technologie Plug and Play IoT najdete v tématu věnovaném [konvencím technologie Plug and Play IoT](../../iot-pnp/concepts-convention.md).
+
+### <a name="device-sdks"></a>Sady SDK pro zařízení
+
 K implementaci chování zařízení použijte jednu ze [sad SDK pro zařízení Azure IoT](#languages-and-sdks) . Kód by měl:
 
 - Zaregistrujte zařízení pomocí DPS a pomocí informací z DPS se připojte k internímu centru IoT ve vaší aplikaci IoT Central.
-- Odešlete telemetrii ve formátu, který určuje šablona zařízení v IoT Central. IoT Central používá šablonu zařízení k určení způsobu použití telemetrie pro vizualizace a analýzu.
-- Synchronizuje hodnoty vlastností mezi zařízením a IoT Central. Šablona zařízení určuje názvy vlastností a datové typy tak, aby IoT Central mohl zobrazit informace.
-- Implementujte obslužné rutiny příkazů pro příkazy, které určuje šablona zařízení. Šablona zařízení určuje názvy příkazů a parametry, které má zařízení použít.
+- Oznamuje DTMI modelu, který zařízení implementuje.
+- Odeslat telemetrii ve formátu, který určuje model zařízení. IoT Central používá model v šabloně zařízení k určení způsobu použití telemetrie pro vizualizace a analýzu.
+- Synchronizuje hodnoty vlastností mezi zařízením a IoT Central. Model určuje názvy vlastností a typy dat tak, aby IoT Central mohl zobrazit informace.
+- Implementujte obslužné rutiny příkazů pro příkazy zadané v modelu. Model určuje názvy příkazů a parametry, které má zařízení použít.
 
 Další informace o roli šablon zařízení najdete v tématu [co jsou to šablony zařízení?](./concepts-device-templates.md).
 

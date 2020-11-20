@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: 1485f06af2bb3c4912df3e34cb23c409b7db3dc2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780355"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989186"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -41,22 +41,22 @@ Pravidla brány firewall protokolu IP udělují přístup k databázím na zákl
 [Pravidla virtuální sítě](vnet-service-endpoint-rule-overview.md) umožňují Azure SQL Database přijímat jenom komunikace, které se odesílají z vybraných podsítí v rámci virtuální sítě.
 
 > [!NOTE]
-> Řízení přístupu pomocí pravidel brány firewall *se nevztahuje* na **spravovanou instanci SQL** . Další informace o potřebné konfiguraci sítě najdete v tématu [připojení ke spravované instanci](../managed-instance/connect-application-instance.md) .
+> Řízení přístupu pomocí pravidel brány firewall *se nevztahuje* na **spravovanou instanci SQL**. Další informace o potřebné konfiguraci sítě najdete v tématu [připojení ke spravované instanci](../managed-instance/connect-application-instance.md) .
 
 ## <a name="access-management"></a>Správa přístupu
 
 > [!IMPORTANT]
-> Správa databází a serverů v Azure je řízena přiřazeními rolí uživatelského účtu portálu. Další informace o tomto článku najdete v tématu [řízení přístupu na základě role v Azure Portal](../../role-based-access-control/overview.md).
+> Správa databází a serverů v Azure je řízena přiřazeními rolí uživatelského účtu portálu. Další informace o tomto článku najdete v tématu [řízení přístupu na základě role Azure v Azure Portal](../../role-based-access-control/overview.md).
 
 ### <a name="authentication"></a>Authentication
 
 Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Database a spravovaná instance SQL podporují dva typy ověřování:
 
-- **Ověřování SQL** :
+- **Ověřování SQL**:
 
     Ověřování SQL odkazuje na ověření uživatele při připojení k Azure SQL Database nebo spravované instanci Azure SQL pomocí uživatelského jména a hesla. Při vytváření serveru je nutné zadat přihlašovací jméno **Správce serveru** s uživatelským jménem a heslem. Pomocí těchto přihlašovacích údajů se může **Správce serveru** ověřit u jakékoli databáze na daném serveru nebo v instanci jako vlastník databáze. Potom může správce serveru vytvořit další přihlášení a uživatele SQL, která uživatelům umožňují připojit se pomocí uživatelského jména a hesla.
 
-- **Ověřování Azure Active Directory** :
+- **Ověřování Azure Active Directory**:
 
     Ověřování Azure Active Directory je mechanismus připojení [Azure SQL Database](sql-database-paas-overview.md), [spravované instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md) a [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) pomocí identit v Azure Active Directory (Azure AD). Ověřování Azure AD umožňuje správcům centrálně spravovat identity a oprávnění uživatelů databáze spolu s dalšími službami Azure v jednom centrálním umístění. To zahrnuje minimalizaci úložiště hesel a umožňuje centralizované zásady rotace hesel.
 
@@ -65,7 +65,7 @@ Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Da
     K dispozici jsou další možnosti ověřování Azure AD, které jsou [univerzálním ověřováním služby Active Directory pro SQL Server Management Studio](authentication-mfa-ssms-overview.md) připojení včetně [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) a [podmíněného přístupu](conditional-access-configure.md).
 
 > [!IMPORTANT]
-> Správa databází a serverů v Azure je řízena přiřazeními rolí uživatelského účtu portálu. Další informace o tomto článku najdete v tématu [řízení přístupu na základě role v Azure Portal](../../role-based-access-control/overview.md). Řízení přístupu pomocí pravidel brány firewall *se nevztahuje* na **spravovanou instanci SQL** . Další informace o potřebné konfiguraci sítě najdete v následujícím článku o [připojení ke spravované instanci](../managed-instance/connect-application-instance.md) .
+> Správa databází a serverů v Azure je řízena přiřazeními rolí uživatelského účtu portálu. Další informace o tomto článku najdete v tématu [řízení přístupu na základě rolí v Azure v Azure Portal](../../role-based-access-control/overview.md). Řízení přístupu pomocí pravidel brány firewall *se nevztahuje* na **spravovanou instanci SQL**. Další informace o potřebné konfiguraci sítě najdete v následujícím článku o [připojení ke spravované instanci](../managed-instance/connect-application-instance.md) .
 
 ## <a name="authorization"></a>Autorizace
 
@@ -103,7 +103,7 @@ SQL Database, Managed instance SQL a Azure synapse Analytics vynutila šifrován
 
 V rámci osvědčeného postupu doporučujeme, abyste v připojovacím řetězci, který používá aplikaci, zadali šifrované _**připojení a**_ nedůvěřujete certifikátu serveru. Tím se aplikace vynutí ověřit certifikát serveru, a tím zabrání v ohrožení vaší aplikace muž při útokech středního typu.
 
-Například při použití ovladače ADO.NET se dosáhnete pomocí  **Encrypt = true** a **TrustServerCertificate = false** . Pokud získáte připojovací řetězec z Azure Portal, bude mít správné nastavení.
+Například při použití ovladače ADO.NET se dosáhnete pomocí  **Encrypt = true** a **TrustServerCertificate = false**. Pokud získáte připojovací řetězec z Azure Portal, bude mít správné nastavení.
 
 > [!IMPORTANT]
 > Všimněte si, že některé ovladače od jiných výrobců nemůžou ve výchozím nastavení používat protokol TLS, nebo se musí spoléhat na starší verzi TLS (<1,2), aby fungovala. V takovém případě server stále umožňuje připojení k vaší databázi. Doporučujeme však vyhodnotit rizika zabezpečení, která umožňují, aby se tyto ovladače a aplikace připojovaly k SQL Database, zejména pokud ukládáte citlivá data.
@@ -130,7 +130,7 @@ Podpora [Bring Your Own Key](transparent-data-encryption-byok-overview.md) (BYOK
 
 ![Diagram znázorňující dynamické maskování dat Obchodní aplikace odesílá data do databáze SQL, která před odesláním zpět do obchodní aplikace data maskuje.](./media/security-overview/azure-database-ddm.png)
 
-Dynamické maskování dat omezuje vystavení citlivých dat jejich maskováním na uživatele bez oprávnění. Dynamické maskování dat automaticky zjišťuje potenciálně citlivá data v Azure SQL Database a spravované instanci SQL a poskytuje užitečná doporučení pro maskování těchto polí s minimálním dopadem na aplikační vrstvu. Funguje tak, že maskuje citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění. Další informace najdete v tématu [Začínáme s SQL Database a dynamické maskování dat spravované instance SQL](dynamic-data-masking-overview.md).
+Dynamické maskování dat minimalizuje odhalení citlivých dat tím, že je pro uživatele bez oprávnění maskuje. Dynamické maskování dat automaticky zjišťuje potenciálně citlivá data v Azure SQL Database a spravované instanci SQL a poskytuje užitečná doporučení pro maskování těchto polí s minimálním dopadem na aplikační vrstvu. Funguje tak, že maskuje citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění. Další informace najdete v tématu [Začínáme s SQL Database a dynamické maskování dat spravované instance SQL](dynamic-data-masking-overview.md).
 
 ## <a name="security-management"></a>Správa zabezpečení
 

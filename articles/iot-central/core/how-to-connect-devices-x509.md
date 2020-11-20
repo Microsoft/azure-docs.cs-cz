@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: c2af331304decd7955892ef4911d1644518f57b8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 33d837f63fca2062ec930fcf0d64ee01ea822c99
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427891"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989526"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>Postup připojení zařízení pomocí certifikátů X. 509 pomocí sady SDK pro Node.js zařízení pro IoT Central aplikace
 
@@ -55,7 +55,7 @@ V této části pomocí certifikátu X. 509 připojíte zařízení s certifiká
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
-    node create_test_cert.js device mytestdevice mytestrootcert
+    node create_test_cert.js device sample-device-01 mytestrootcert
     ```
 
     > [!TIP]
@@ -73,7 +73,7 @@ filename | obsah
 
 1. Otevřete aplikaci IoT Central a v levém podokně přejděte do části **Správa**  a vyberte **připojení zařízení**.
 
-1. Vyberte **+ vytvořit skupinu**registrací a vytvořte novou skupinu registrací s názvem _MyX509Group_ s typem ověření identity **certifikáty (X. 509)**.
+1. Vyberte **+ vytvořit skupinu** registrací a vytvořte novou skupinu registrací s názvem _MyX509Group_ s typem ověření identity **certifikáty (X. 509)**.
 
 1. Otevřete skupinu pro registraci, kterou jste vytvořili, a vyberte **Spravovat primární**.
 
@@ -91,61 +91,70 @@ filename | obsah
 
     ![Ověřený certifikát](./media/how-to-connect-devices-x509/verified.png)
 
-Teď můžete připojit zařízení, která mají certifikát X. 509 odvozený od tohoto primárního kořenového certifikátu. Po uložení skupiny registrace si poznamenejte rozsah ID.
+Teď můžete připojit zařízení, která mají certifikát X. 509 odvozený od tohoto primárního kořenového certifikátu.
+
+Po uložení skupiny registrace si poznamenejte rozsah ID.
 
 ## <a name="run-sample-device-code"></a>Spustit ukázkový kód zařízení
 
-1. V aplikaci Azure IoT Central vyberte **zařízení**a v šabloně zařízení **snímače prostředí** vytvořte nové zařízení s _mytestdevice_ jako **ID zařízení** .
+1. Zkopírujte soubory **sampleDevice01_key. pem** a **sampleDevice01_cert. pem** do složky _Azure-IoT-SDK-Node/Device/Samples/pnp_ , která obsahuje aplikaci **simple_thermostat.js** . Tuto aplikaci jste použili po dokončení [kurzu připojit zařízení (Node.js)](./tutorial-connect-device-nodejs.md).
 
-1. Zkopírujte soubory _mytestdevice_key. pem_ a _mytestdevice_cert. pem_ do složky, která obsahuje aplikaci _environmentalSensor.js_ . Tuto aplikaci jste vytvořili, když jste dokončili [kurz připojení zařízení (Node.js)](./tutorial-connect-device-nodejs.md).
-
-1. Přejděte do složky, která obsahuje aplikaci environmentalSensor.js a spusťte následující příkaz pro instalaci balíčku X. 509:
+1. Přejděte do složky _Azure-IoT-SDK-Node/Device/Samples/PNP_ , která obsahuje aplikaci **simple_thermostat.js** a spusťte následující příkaz pro instalaci balíčku X. 509:
 
     ```cmd/sh
     npm install azure-iot-security-x509 --save
     ```
 
-1. Upravte soubor **environmentalSensor.js** .
-    - Nahraďte `idScope` hodnotu **rozsahem ID** , na které jste si poznamenali dříve.
-    - Nahraďte `registrationId` hodnotu hodnotou `mytestdevice` .
+1. Otevřete soubor **simple_thermostat.js** v textovém editoru.
 
-1. Příkazy upravte takto `require` :
+1. Upravte `require` příkazy tak, aby obsahovaly následující:
 
     ```javascript
-    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
-    var Client = require('azure-iot-device').Client;
-    var Message = require('azure-iot-device').Message;
-    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
-    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
-    var fs = require('fs');
-    var X509Security = require('azure-iot-security-x509').X509Security;
+    const fs = require('fs');
+    const X509Security = require('azure-iot-security-x509').X509Security;
     ```
 
-1. Upravte oddíl, který vytváří klienta, následovně:
+1. Přidejte následující čtyři řádky do oddílu "informace o připojení ke službě DPS" pro inicializaci `deviceCert` proměnné:
 
     ```javascript
-    var provisioningHost = 'global.azure-devices-provisioning.net';
-    var deviceCert = {
-      cert: fs.readFileSync('mytestdevice_cert.pem').toString(),
-      key: fs.readFileSync('mytestdevice_key.pem').toString()
+    const deviceCert = {
+      cert: fs.readFileSync(process.env.IOTHUB_DEVICE_X509_CERT).toString(),
+      key: fs.readFileSync(process.env.IOTHUB_DEVICE_X509_KEY).toString()
     };
-    var provisioningSecurityClient = new X509Security(registrationId, deviceCert);
-    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
-    var hubClient;
     ```
 
-1. Upravte část, která otevře připojení, následujícím způsobem:
+1. Úpravou `provisionDevice` funkce, která vytvoří klienta, nahraďte první řádek následujícím:
 
-   ```javascript
-    var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';x509=true';
-    hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
-    hubClient.setOptions(deviceCert);
+    ```javascript
+    var provSecurityClient = new X509Security(registrationId, deviceCert);
     ```
+
+1. Ve stejné funkci upravte řádek, který nastaví `deviceConnectionString` proměnnou následujícím způsobem:
+
+    ```javascript
+    deviceConnectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';x509=true';
+    ```
+
+1. Do `main` funkce přidejte následující řádek za řádek, který volá `Client.fromConnectionString` :
+
+    ```javascript
+    client.setOptions(deviceCert);
+    ```
+
+1. Ve vašem prostředí prostředí nastavte následující dvě proměnné prostředí:
+
+    ```cmd/sh
+    set IOTHUB_DEVICE_X509_CERT=sampleDevice01_cert.pem
+    set IOTHUB_DEVICE_X509_KEY=sampleDevice01_key.pem
+    ```
+
+    > [!TIP]
+    > Další požadované proměnné prostředí nastavíte po dokončení kurzu [Vytvoření a připojení klientské aplikace do aplikace Azure IoT Central](./tutorial-connect-device-nodejs.md) .
 
 1. Spusťte skript a ověřte, jestli se zařízení úspěšně zřídilo:
 
     ```cmd/sh
-    node environmentalSensor.js
+    node simple_thermostat.js
     ```
 
     Můžete také ověřit, že se telemetrie zobrazí na řídicím panelu.
@@ -170,7 +179,7 @@ Spuštěním skriptu vytvořte certifikát zařízení X. 509 podepsaný svým d
 
 ## <a name="create-individual-enrollment"></a>Vytvořit jednotlivou registraci
 
-1. V aplikaci Azure IoT Central vyberte **zařízení**a vytvořte nové zařízení s **ID zařízení** jako _mytestselfcertprimary_ ze šablony zařízení snímače prostředí. Poznamenejte si **Rozsah ID**a použijte ho později.
+1. V aplikaci Azure IoT Central vyberte **zařízení** a vytvořte nové zařízení s **ID zařízení** jako _mytestselfcertprimary_ ze šablony termostatu zařízení. Poznamenejte si **Rozsah ID** a použijte ho později.
 
 1. Otevřete zařízení, které jste vytvořili, a vyberte **připojit**.
 
@@ -188,19 +197,15 @@ Zařízení je teď zřízené pomocí certifikátu X. 509.
 
 ## <a name="run-a-sample-individual-enrollment-device"></a>Spuštění ukázkového samostatného registračního zařízení
 
-1. Zkopírujte soubory _mytestselfcertprimary_key. pem_ a _mytestselfcertprimary_cert. pem_ do složky, která obsahuje aplikaci environmentalSensor.js. Tuto aplikaci jste vytvořili, když jste dokončili [kurz připojení zařízení (Node.js)](./tutorial-connect-device-nodejs.md).
+1. Zkopírujte soubory _mytestselfcertprimary_key. pem_ a _mytestselfcertprimary_cert. pem_ do složky _Azure-IoT-SDK-Node/Device/Samples/pnp_ , která obsahuje aplikaci **simple_thermostat.js** . Tuto aplikaci jste použili po dokončení [kurzu připojit zařízení (Node.js)](./tutorial-connect-device-nodejs.md).
 
-1. Upravte soubor **environmentalSensor.js** následujícím způsobem a uložte ho.
-    - Nahraďte `idScope` hodnotu **rozsahem ID** , na které jste si poznamenali dříve.
-    - Nahraďte `registrationId` hodnotu hodnotou `mytestselfcertprimary` .
-    - Nahraďte **var deviceCert** jako:
+1. Upravte proměnné prostředí, které jste použili v následujícím příkladu:
 
-        ```javascript
-        var deviceCert = {
-        cert: fs.readFileSync('mytestselfcertprimary_cert.pem').toString(),
-        key: fs.readFileSync('mytestselfcertprimary_key.pem').toString()
-        };
-        ```
+    ```cmd/sh
+    set IOTHUB_DEVICE_DPS_DEVICE_ID=mytestselfcertprimary
+    set IOTHUB_DEVICE_X509_CERT=mytestselfcertprimary_cert.pem
+    set IOTHUB_DEVICE_X509_KEY=mytestselfcertprimary_key.pem
+    ```
 
 1. Spusťte skript a ověřte, jestli se zařízení úspěšně zřídilo:
 

@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 10b10309e438bab3c99cb2ed7202eaa272d24abe
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: dec2c845780b62e9a595c73504037142c511c0e6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905231"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989407"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>Správa plánů DDoS Protection: oprávnění a omezení
 
 Plán DDoS Protection funguje napříč oblastmi a předplatnými. Stejný plán může být propojený s virtuálními sítěmi z jiných předplatných v různých oblastech v rámci vašeho tenanta. K předplatnému, ke kterému je přiřazen plán, se účtují měsíční periodická faktura za plán, jakož i poplatky za překročení limitu pro případ, že počet chráněných veřejných IP adres překračuje 100. Další informace o cenách DDoS najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/ddos-protection/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Než budete moct dokončit kroky v tomto kurzu, musíte nejdřív vytvořit [Plán Standard Protection pro Azure DDoS](manage-ddos-protection.md).
 
@@ -37,7 +37,7 @@ Aby bylo možné pracovat s plány ochrany DDoS Protection, musí být váš ú�
 | Microsoft. Network/ddosProtectionPlans/DELETE      | Odstranění plánu DDoS Protection            |
 | Microsoft. Network/ddosProtectionPlans/JOIN/Action | Připojit se k plánu DDoS Protection              |
 
-Aby bylo možné povolit DDoS ochranu pro virtuální síť, musí mít váš účet také přiřazeny příslušné [akce pro virtuální sítě](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#permissions).
+Aby bylo možné povolit DDoS ochranu pro virtuální síť, musí mít váš účet také přiřazeny příslušné [akce pro virtuální sítě](../virtual-network/manage-virtual-network.md#permissions).
 
 ## <a name="azure-policy"></a>Azure Policy
 
@@ -51,4 +51,4 @@ Pro zákazníky, kteří mají různá předplatná, a kteří chtějí zajistit
 Pokud se chcete dozvědět, jak zobrazit a nakonfigurovat telemetrii pro svůj plán DDoS Protection, přejděte k kurzům.
 
 > [!div class="nextstepaction"]
-> [Zobrazení a konfigurace telemetrie DDoS Protection](telemetry-monitoring-alerting.md)
+> [Zobrazení a konfigurace telemetrie ochrany před útoky DDoS](telemetry-monitoring-alerting.md)

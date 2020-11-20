@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 32734ff9df2e55d24789742cd49984d8da212a17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3d09ec4c4ab578a87f0d983c0f243bee2a84597
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212190"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991226"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions vazby SendGrid
 
@@ -41,6 +41,7 @@ Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-libra
 
 ```cs
 using SendGrid.Helpers.Mail;
+using System.Text.Json;
 
 ...
 
@@ -49,7 +50,7 @@ public static void Run(
     [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
     [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] out SendGridMessage message)
 {
-var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+var emailObject = JsonSerializer.Deserialize<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
 
 message = new SendGridMessage();
 message.AddTo(emailObject.To);
@@ -71,15 +72,16 @@ public class OutgoingEmail
 
 ```cs
 using SendGrid.Helpers.Mail;
+using System.Text.Json;
 
 ...
 
 [FunctionName("SendEmail")]
-public static async void Run(
+public static async Task Run(
  [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
  [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] IAsyncCollector<SendGridMessage> messageCollector)
 {
- var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+ var emailObject = JsonSerializer.Deserialize<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
 
  var message = new SendGridMessage();
  message.AddTo(emailObject.To);
@@ -189,7 +191,7 @@ Tady je kód JavaScriptu:
 ```javascript
 module.exports = function (context, input) {
     var message = {
-         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
+         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
         from: { email: "sender@contoso.com" },
         subject: "Azure news",
         content: [{
@@ -355,12 +357,12 @@ Python nepodporuje atributy.
 
 V následující tabulce jsou uvedeny vlastnosti konfigurace vazby, které jsou k dispozici v  *function.jspro* soubor a `SendGrid` atribut nebo anotaci.
 
-| *function.js* vlastnost | Atribut nebo vlastnost anotace | Description | Volitelné |
+| *function.js* vlastnost | Atribut nebo vlastnost anotace | Popis | Volitelné |
 |--------------------------|-------------------------------|-------------|----------|
-| typ |neuvedeno| Musí být nastaven na hodnotu `sendGrid` .| No |
-| směr |neuvedeno| Musí být nastaven na hodnotu `out` .| No |
-| name |neuvedeno| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return` , pokud je k dispozici pouze jedna návratová hodnota. | No |
-| apiKey | ApiKey | Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je *AzureWebJobsSendGridApiKey*.| No |
+| typ |neuvedeno| Musí být nastaven na hodnotu `sendGrid` .| Ne |
+| směr |neuvedeno| Musí být nastaven na hodnotu `out` .| Ne |
+| name |neuvedeno| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return` , pokud je k dispozici pouze jedna návratová hodnota. | Ne |
+| apiKey | ApiKey | Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je *AzureWebJobsSendGridApiKey*.| Ne |
 | na| Záměr | E-mailová adresa příjemce | Yes |
 | Výsledkem| Z | E-mailová adresa odesílatele |  Yes |
 | závislosti| Předmět | Předmět e-mailu. | Yes |
@@ -390,7 +392,7 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 }
 ```  
 
-|Vlastnost  |Výchozí | Description |
+|Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |Výsledkem|neuvedeno|E-mailová adresa odesílatele napříč všemi funkcemi.| 
 

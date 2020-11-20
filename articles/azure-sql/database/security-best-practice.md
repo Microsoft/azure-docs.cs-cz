@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: c7a94a24bd825249859ff699ab82ce4d3ae8fce1
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b309ce01595e2e62bea7f78ae728d83bc7d9b9be
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842239"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992161"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,7 +62,7 @@ Pokud není uvedeno jinak, doporučujeme, abyste provedli všechny osvědčené 
 
 Chystáme se dál aktualizovat doporučení a osvědčené postupy, které jsou tady uvedené. Zadáním odkazu na **zpětnou vazbu** na konci tohoto článku zadejte nebo opravte tento dokument.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Database a spravovaná instance SQL podporují dva typy ověřování:
 
@@ -107,12 +107,12 @@ Centrální Správa identit nabízí následující výhody:
 > [!NOTE]
 >
 > - Ověřování Azure AD se zaznamenává v protokolech auditu Azure SQL, ale ne v protokolech přihlášení služby Azure AD.
-> - Oprávnění RBAC udělená v Azure se nevztahují na Azure SQL Database nebo oprávnění ke spravovaným instancím SQL. Taková oprávnění je nutné vytvořit nebo namapovat ručně pomocí stávajících oprávnění SQL.
+> - Oprávnění Azure RBAC udělená v Azure se nevztahují na Azure SQL Database nebo oprávnění ke spravovaným instancím SQL. Taková oprávnění je nutné vytvořit nebo namapovat ručně pomocí stávajících oprávnění SQL.
 > - Na straně klienta potřebuje ověřování Azure AD přístup k Internetu nebo prostřednictvím uživatelsky definované trasy (UDR) do virtuální sítě.
 > - Přístupový token Azure AD je uložený v mezipaměti na straně klienta a jeho životnost závisí na konfiguraci tokenu. Viz článek, [konfigurovatelné životnosti tokenů v Azure Active Directory](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)
 > - Pokyny k řešení potíží s ověřováním Azure AD najdete na následujícím blogu: [řešení potíží s Azure AD](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991).
 
-### <a name="azure-ad-multi-factor-authentication"></a>Multi-Factor Authentication Azure AD
+### <a name="azure-ad-multi-factor-authentication"></a>Vícefaktorové ověřování Azure AD
 
 > Zmíněné v: #2 praxe metody OSA, ISO Access Control (AC)
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 594a7e2a6977cc2a7052a15e1a007c68c08da259
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 66c1ab1cb5ed478aa34825fb6903e4d06f834097
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905173"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989469"
 ---
 # <a name="fundamental-best-practices"></a>Základní osvědčené postupy
 
@@ -35,16 +35,16 @@ Důležité je zajistit, aby byla aplikace dostatečně odolná pro zpracování
 
 Škálovatelnost je to, jak dobře dokáže systém zvládnout zvýšené zatížení. Navrhněte své aplikace pro [horizontální škálování](/azure/architecture/guide/design-principles/scale-out) tak, aby splňovaly požadavky na zesilovací zatížení, konkrétně v případě útoku DDoS. Pokud vaše aplikace závisí na jedné instanci služby, vytvoří se v jednom bodě selhání. Zřizování více instancí zajistí, že bude váš systém pružnější a lépe škálovatelný.
 
-V případě [Azure App Service](/azure/app-service/app-service-value-prop-what-is)vyberte [plán App Service](/azure/app-service/overview-hosting-plans) , který nabízí více instancí. Pro Azure Cloud Services nakonfigurujte jednotlivé role tak, aby používaly [víc instancí](/azure/cloud-services/cloud-services-choose-me). V případě [Azure Virtual Machines](../virtual-machines/index.yml)zajistěte, aby architektura virtuálních počítačů (VM) zahrnovala více než jeden virtuální počítač a aby každý virtuální počítač byl součástí [skupiny dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md). Pro možnosti automatického škálování doporučujeme používat [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) .
+V případě [Azure App Service](../app-service/overview.md)vyberte [plán App Service](../app-service/overview-hosting-plans.md) , který nabízí více instancí. Pro Azure Cloud Services nakonfigurujte jednotlivé role tak, aby používaly [víc instancí](../cloud-services/cloud-services-choose-me.md). V případě [Azure Virtual Machines](../virtual-machines/index.yml)zajistěte, aby architektura virtuálních počítačů (VM) zahrnovala více než jeden virtuální počítač a aby každý virtuální počítač byl součástí [skupiny dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md). Pro možnosti automatického škálování doporučujeme používat [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) .
 
 ## <a name="defense-in-depth"></a>Hloubková ochrana
 
 Cílem důkladné obrany je spravovat rizika pomocí různých obrannou linií strategií. Vrstvení zabezpečení v aplikaci omezuje možnost úspěšného útoku. Doporučujeme, abyste pro své aplikace implementovali zabezpečené návrhy pomocí integrovaných možností platformy Azure.
 
-Například riziko útoku se zvyšuje s velikostí ( *oblastí Surface* ) aplikace. Oblast povrchu můžete zmenšit pomocí seznamu schválení a uzavřít tak vystavený adresní prostor IP adres a naslouchající porty, které nejsou potřebné v nástrojích pro vyrovnávání zatížení ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) a [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)). [Skupiny zabezpečení sítě (skupin zabezpečení sítě)](/azure/virtual-network/security-overview) představují jiný způsob, jak omezit plochu pro útok.
-[Značky služeb](/azure/virtual-network/security-overview#service-tags) a [skupiny zabezpečení aplikací](/azure/virtual-network/security-overview#application-security-groups) můžete použít k minimalizaci složitosti při vytváření pravidel zabezpečení a konfiguraci zabezpečení sítě, jako přirozené rozšíření struktury aplikace.
+Například riziko útoku se zvyšuje s velikostí (*oblastí Surface*) aplikace. Oblast povrchu můžete zmenšit pomocí seznamu schválení a uzavřít tak vystavený adresní prostor IP adres a naslouchající porty, které nejsou potřebné v nástrojích pro vyrovnávání zatížení ([Azure Load Balancer](../load-balancer/quickstart-load-balancer-standard-public-portal.md) a [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)). [Skupiny zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/network-security-groups-overview.md) představují jiný způsob, jak omezit plochu pro útok.
+[Značky služeb](../virtual-network/network-security-groups-overview.md#service-tags) a [skupiny zabezpečení aplikací](../virtual-network/network-security-groups-overview.md#application-security-groups) můžete použít k minimalizaci složitosti při vytváření pravidel zabezpečení a konfiguraci zabezpečení sítě, jako přirozené rozšíření struktury aplikace.
 
-Služby Azure ve [virtuální síti](/azure/virtual-network/virtual-networks-overview) byste měli nasazovat, kdykoli to bude možné. Tento postup umožňuje prostředkům služby komunikovat prostřednictvím privátních IP adres. Provoz služeb Azure z virtuální sítě ve výchozím nastavení používá veřejné IP adresy jako zdrojové IP adresy. Použití [koncových bodů služby](/azure/virtual-network/virtual-network-service-endpoints-overview) přepne provoz služby na používání privátních adres virtuální sítě jako zdrojových IP adres při přístupu ke službě Azure z virtuální sítě.
+Služby Azure ve [virtuální síti](../virtual-network/virtual-networks-overview.md) byste měli nasazovat, kdykoli to bude možné. Tento postup umožňuje prostředkům služby komunikovat prostřednictvím privátních IP adres. Provoz služeb Azure z virtuální sítě ve výchozím nastavení používá veřejné IP adresy jako zdrojové IP adresy. Použití [koncových bodů služby](../virtual-network/virtual-network-service-endpoints-overview.md) přepne provoz služby na používání privátních adres virtuální sítě jako zdrojových IP adres při přístupu ke službě Azure z virtuální sítě.
 
 Často se v Azure zobrazují místní prostředky zákazníků, které získávají útok na jejich prostředky. Pokud připojujete místní prostředí k Azure, doporučujeme, abyste minimalizovali expozici místních prostředků veřejnému Internetu. V Azure můžete využít možnosti škálování a rozšířené ochrany DDoS, a to nasazením známých veřejných entit v Azure. Vzhledem k tomu, že tyto veřejně přístupné entity jsou často cílem útoků DDoS, jejich vložení do Azure snižuje dopad na vaše místní prostředky.
 

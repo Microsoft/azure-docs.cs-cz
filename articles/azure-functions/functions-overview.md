@@ -1,94 +1,61 @@
 ---
 title: Přehled Azure Functions
-description: Během několika minut se naučte používat Azure Functions k optimalizaci asynchronních úloh.
-author: mattchenderson
+description: Přečtěte si, jak Azure Functions může pomáhat vytvářet škálovatelné aplikace bez serveru.
+author: craigshoemaker
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
-ms.date: 01/16/2020
+ms.date: 11/20/2020
+ms.author: cshoe
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 0583b68df603b04d47ac6104f0cf127b3c4bedd0
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 31518f2e340aa4f59099e51f4b7b4e76e7366bd1
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173715"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990672"
 ---
-# <a name="an-introduction-to-azure-functions"></a>Seznámení s Azure Functions
+# <a name="introduction-to-azure-functions"></a>Úvod do Azure Functions
 
-Azure Functions umožňuje spustit malé části kódu (označované jako "funkce"), aniž byste se museli starat o infrastrukturu aplikace. Díky Azure Functions cloudová infrastruktura poskytuje všechny aktuální servery, které potřebujete k zajištění, aby vaše aplikace běžela ve velkém měřítku.
+Často vytváříme systémy, které reagují na řadu kritických událostí. Bez ohledu na to, jestli vytváříte webové rozhraní API, reagujete na změny v databázi, zpracováváte datové proudy IoT nebo dokonce spravujete fronty zpráv – každá aplikace potřebuje způsob, jak spustit nějaký kód, když dojde k těmto událostem.
 
-Funkce je "aktivovaná" konkrétním typem události. Mezi [podporované triggery](./functions-triggers-bindings.md) patří reakce na změny v datech, reakce na zprávy, spuštěné podle plánu nebo jako výsledek požadavku HTTP.
+Pro splnění této potřeby Azure Functions poskytuje "výpočetní výkon na vyžádání" a dvěma významnými způsoby.
 
-I když můžete vždy kód přímo proti nesčetných službám, integrace s jinými službami je zjednodušená pomocí vazeb. Vazby poskytují [deklarativní přístup k široké škále služeb Azure a služeb třetích stran](./functions-triggers-bindings.md).
+Nejprve Azure Functions umožňuje implementovat logiku systému do snadno dostupných bloků kódu. Tyto bloky kódu se nazývají "Functions". Různé funkce můžou běžet kdykoli, když potřebujete reagovat na kritické události.
 
-## <a name="features"></a>Funkce
+S tím, jak se žádosti zvyšují, Azure Functions v případě potřeby splňovat požadavky s libovolným počtem prostředků a instancí funkcí, ale pouze v případě potřeby. V případě požadavků se všechny nadbytečné prostředky a instance aplikace vyřadí automaticky.
 
-Mezi klíčové funkce Azure Functions patří:
+Odkud přicházejí všechny výpočetní prostředky? Azure Functions [poskytuje tolik nebo víc výpočetních prostředků, kolik je potřeba](./functions-scale.md) , aby splňovala požadavky vaší aplikace.
 
-- **Aplikace bez serveru**: funkce umožňují vyvíjet aplikace bez [serveru](https://azure.microsoft.com/solutions/serverless/) na Microsoft Azure.
+Poskytování výpočetních prostředků na vyžádání je podstatou výpočetní technologie bez [serveru](https://azure.microsoft.com/solutions/serverless/) v Azure Functions.
 
-- **Volba jazyka**: Zapište funkce pomocí jazyka [C#, Java, JavaScriptu, Pythonu a PowerShellu](supported-languages.md).
+## <a name="scenarios"></a>Scénáře
 
-- **Cenový model pro platby za použití**: Plaťte jenom za čas strávený spouštěním kódu. Viz možnost plánu hostování Consumption v [části týkající se cen](#pricing).  
+V mnoha případech se funkce [integruje s polem cloudových služeb](./functions-triggers-bindings.md) , aby poskytovala implementace náročné na funkce.
 
-- **Přineste si vlastní závislosti**: funkce podporují NUGET a NPM, které vám umožní přístup k oblíbeným knihovnám.
+Níže jsou uvedeny běžné, _ale nemají vyčerpávající význam_, sadu scénářů pro Azure Functions.
 
-- **Integrované zabezpečení**: Chraňte funkce aktivované protokolem HTTP poskytovateli OAuth, jako je Azure Active Directory, Facebook, Google, Twitter a účet Microsoft.
+| Pokud chcete... | pak... |
+| --- | --- |
+| **Sestavení webového rozhraní API** | Implementace koncového bodu pro webové aplikace pomocí [triggeru protokolu HTTP](./functions-bindings-http-webhook.md) |
+| **Zpracovat nahrávání souborů** | Spustit kód, když se v [úložišti objektů BLOB](./functions-bindings-storage-blob.md) nahraje nebo změní soubor |
+| **Sestavení pracovního postupu bez serveru** | Řetězení řady funkcí pomocí [trvalých funkcí](./durable-functions-overview.md) |
+| **Reakce na změny v databázi** | Spuštění vlastní logiky při vytvoření nebo aktualizaci dokumentu v [Cosmos DB](./functions-bindings-cosmosdb-v2.md) |
+| **Spouštění naplánovaných úloh** | Spustit kód v [Nastavení časů](./functions-bindings-timer.md) |
+| **Vytváření spolehlivých systémů fronty zpráv** | Zpracování front zpráv pomocí [Queue Storage](./functions-bindings-storage-queue.md), [Service Bus](./functions-bindings-service-bus.md)nebo [Event Hubs](./functions-bindings-event-hubs.md) |
+| **Analýza datových proudů IoT** | Shromažďování a zpracování [dat ze zařízení IoT](./functions-bindings-event-iot.md) |
+| **Zpracování dat v reálném čase** | Použití [funkcí a signálu R](./functions-bindings-signalr-service.md) k reakci na data v daném okamžiku |
 
-- **Zjednodušená integrace**: Snadná integrace se službami Azure a nabídkami software-as-a-Service (SaaS).
+Při sestavování funkcí máte k dispozici následující možnosti a prostředky:
 
-- **Flexibilní vývoj**: nastavte průběžnou integraci a nasaďte kód prostřednictvím [githubu](../app-service/scripts/cli-continuous-deployment-github.md), [Azure DevOps Services](../app-service/scripts/cli-continuous-deployment-vsts.md)a dalších [podporovaných vývojových nástrojů](../app-service/deploy-local-git.md).
+- **Použijte preferovaný jazyk**: funkce zápisu v [jazycích C#, Java, JavaScript, PowerShell nebo Python](./supported-languages.md)nebo použijte [vlastní obslužnou rutinu](./functions-custom-handlers.md) pro použití prakticky jakéhokoli jiného jazyka.
 
-- **Stavová architektura bez serveru**: orchestrujte aplikace bez serveru pomocí [Durable Functions](durable/durable-functions-overview.md).
+- **Automatizace nasazení**: z přístupu na základě nástrojů pro použití externích kanálů je k dispozici [nesčetných možností nasazení](./functions-deployment-technologies.md) .
 
-- **Open Source**: běhový modul Functions je open source a [dostupný na GitHubu](https://github.com/azure/azure-webjobs-sdk-script).
+- **Řešení potíží s funkcí**: pomocí [monitorovacích nástrojů](./functions-monitoring.md) a [strategií testování](./functions-test-a-function.md) získáte přehled o vašich aplikacích.
 
-## <a name="what-can-i-do-with-functions"></a>Co můžu dělat s Functions?
-
-Funkce je skvělé řešení pro zpracování hromadných dat, integraci systémů, práci s internetem věcí (IoT) a vytváření jednoduchých rozhraní API a mikroslužeb.
-
-K dispozici je řada šablon, které vám pomohou začít s klíčovými scénáři, včetně:
-
-- **Http**: spuštění kódu na základě [požadavků HTTP](functions-create-first-azure-function.md)
-
-- **Timer**: naplánovat spuštění kódu [v předdefinovaných časech](./functions-create-scheduled-function.md)
-
-- **Azure Cosmos DB**: zpracování [nových a upravených dokumentů Azure Cosmos DB](./functions-create-cosmos-db-triggered-function.md)
-
-- **Úložiště objektů BLOB**: zpracovat [nové a upravené objekty blob Azure Storage](./functions-create-storage-blob-triggered-function.md)
-
-- **Queue Storage**: reakce na [zprávy ve frontě Azure Storage](./functions-create-storage-queue-triggered-function.md)
-
-- **Event Grid**: reakce na [Azure Event Grid události prostřednictvím předplatných a filtrů](../event-grid/resize-images-on-storage-blob-upload-event.md)
-
-- **Centrum událostí**: reakce na [velké objemy událostí centra událostí v Azure](./functions-bindings-event-hubs.md)
-
-- **Service Bus fronta**: Připojte se k jiným službám Azure nebo místním službám tím, že [odpovíte Service Bus zpráv fronty](./functions-bindings-service-bus.md) .
-
-- **Service Bus téma**: připojení dalších služeb Azure nebo místních služeb pomocí [reakcí na zprávy o Service Bus tématu](./functions-bindings-service-bus.md)
-
-## <a name="how-much-does-functions-cost"></a><a name="pricing"></a>Kolik stojí Functions?
-
-Azure Functions má tři druhy cenových plánů. Zvolte plán, který nejlépe vyhovuje vašim potřebám:
-
-- **Plán spotřeby**: Azure poskytuje všechny nezbytné výpočetní prostředky. Nemusíte se starat o správu prostředků a platit jenom za čas, kdy je váš kód spuštěný.
-
-- **Plán Premium**: zadáte počet předem zavedených instancí, které jsou vždycky online a připravené k okamžité reakci. Když je vaše funkce spuštěná, Azure poskytuje všechny další výpočetní prostředky, které jsou potřeba. Platíte za průběžné průběžné instance a všechny další instance, které používáte jako Azure, škálují svou aplikaci a jsou v provozu.
-
-- **Plán App Service**: spouštějte vaše funkce stejně jako vaše webové aplikace. Pokud používáte App Service pro jiné aplikace, můžou se vaše funkce spouštět ve stejném plánu bez dalších nákladů.
-
-Další informace o plánech hostování najdete v [porovnání plánů hostování služby Azure Functions](functions-scale.md). Úplné podrobnosti o cenách jsou dostupné na [stránce Ceny Functions](https://azure.microsoft.com/pricing/details/functions/).
+- **Flexibilní cenové možnosti**: s plánem [spotřeby](./pricing.md) platíte jenom za běhu funkcí, zatímco plány [Premium](./pricing.md) a [App Service](./pricing.md) nabízí funkce pro specializované potřeby.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření první funkce Azure](functions-create-first-function-vs-code.md)  
-  Začněte s [Visual Studio Code](functions-create-first-function-vs-code.md), [příkazovým řádkem](functions-create-first-azure-function-azure-cli.md)nebo použijte [Azure Portal](functions-create-first-azure-function.md).
-
-- [Referenční informace pro vývojáře Azure Functions](functions-reference.md)  
-  Poskytuje další odborné informace o modulu runtime Azure Functions a referenční informace pro kódování funkcí a definování triggerů a vazeb.
-
-- [Postup škálování Azure Functions](functions-scale.md)  
-  Toto téma popisuje plány služby, které jsou dostupné se službou Azure Functions (včetně plánu hostování Consumption), a výběr správného plánu.
-
-- [Další informace o Azure App Service](../app-service/overview.md)  
-  Azure Functions využívá službu Azure App Service pro základní funkce, jako jsou nasazení, proměnné prostředí a diagnostika.
+> [!div class="nextstepaction"]
+> [Začínáme prostřednictvím lekcí, ukázek a interaktivních kurzů](./functions-get-started.md)

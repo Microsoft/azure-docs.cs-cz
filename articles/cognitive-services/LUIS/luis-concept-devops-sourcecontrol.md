@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e49b713aca23c0373fa71d772ef7567372abe456
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309502"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990563"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps postupy pro LUIS
 
@@ -58,7 +58,7 @@ Pokud chcete uložit aplikaci LUIS ve `.lu` formátu a umístit ji pod správu z
 
 ### <a name="build-the-luis-app-from-source"></a>Sestavení aplikace LUIS ze zdroje
 
-Pro aplikaci LUIS, která se má vytvořit *ze zdrojové* [verze, vytvoří novou verzi aplikace Luis importováním `.lu` zdroje](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) , [vyškolí verzi](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) a[publikuje ji](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app). Můžete to provést na portálu LUIS nebo na příkazovém řádku:
+Pro aplikaci LUIS, která se má vytvořit *ze zdrojové* [verze, vytvoří novou verzi aplikace Luis importováním `.lu` zdroje](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) , [vyškolí verzi](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) a [publikuje ji](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app). Můžete to provést na portálu LUIS nebo na příkazovém řádku:
 
 - Portál LUIS slouží k [importu `.lu` verze](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) aplikace ze správy zdrojového kódu a k jejímu [zaškolení](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) a [publikování](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app) aplikace.
 
@@ -74,7 +74,7 @@ V rámci správy zdrojového kódu by měly být zachovány následující typy 
 
 - [Soubory dávkového testu](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-file-format) (projevy a očekávané výsledky) použité pro testování výkonu
 
-### <a name="credentialsand-keys-are-not-checked-in"></a>Přihlašovací údaje a klíče nejsou vráceny se změnami.
+### <a name="credentials-and-keys-are-not-checked-in"></a>Přihlašovací údaje a klíče nejsou vráceny se změnami.
 
 Nezahrnujte klíče předplatného ani podobné důvěrné hodnoty do souborů, které jste se změnami navrátit do úložiště, kde můžou být viditelné pro neoprávněné zaměstnance. Mezi klíče a další hodnoty, které byste měli zabránit vrácení se změnami, patří:
 

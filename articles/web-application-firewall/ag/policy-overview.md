@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 11/19/2020
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: 9fb8bf689e2767f681994258c4d2c51be41d6c68
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952127"
+ms.locfileid: "94990121"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Přehled zásad firewallu webových aplikací Azure (WAF)
 
@@ -41,15 +41,15 @@ S využitím zásad WAF pro jednotlivé weby můžete zajistit ochranu několika
 
 Pro ještě více přizpůsobení na úrovni identifikátoru URI můžete přidružit zásadu WAF k pravidlu na základě cesty. Pokud některé stránky v rámci jedné lokality vyžadují různé zásady, můžete v zásadách WAF provádět změny, které mají vliv jenom na daný identifikátor URI. To se může vztahovat na platební nebo přihlašovací stránku nebo na jakékoli jiné identifikátory URI, které potřebují ještě konkrétnější zásady WAF, než ostatní weby za vaší WAF.
 
-Podobně jako u zásad WAF pro jednotlivé lokality potlačuje konkrétnější zásady méně konkrétní. To znamená, že zásady vázané na identifikátor URI na mapě cest URL přepíšou všechny zásady pro lokalitu a globální WAF nad ní.
+Stejně jako u zásad WAF pro jednotlivé lokality potlačí více specifických zásad méně konkrétních. To znamená, že zásady vázané na identifikátor URI na mapě cest URL přepíšou všechny zásady pro lokalitu a globální WAF nad ní.
 
-## <a name="example"></a>Příklad
+### <a name="example"></a>Příklad
 
 Řekněme, že máte tři lokality: contoso.com, fabrikam.com a adatum.com vše za stejnou aplikační bránou. Chcete WAF použít na všechny tři lokality, ale potřebujete přičíst zabezpečení pomocí adatum.com, protože to znamená, že zákazníci navštěvují, procházejí a kupují produkty.
 
 V případě potřeby můžete použít globální zásady na WAF, s některými základními nastaveními, vyloučeními nebo vlastními pravidly, pokud je to potřeba k zastavení některých falešně pozitivních dat. V takovém případě není nutné mít spuštěná globální pravidla pro vkládání SQL, protože fabrikam.com a contoso.com jsou statické stránky bez back-endu SQL. Tato pravidla pak můžete zakázat v globálních zásadách.
 
-Tato globální zásada je vhodná pro contoso.com a fabrikam.com, ale musíte být opatrní s adatum.com, kde se zpracovávají informace o přihlášení a platby. U naslouchacího procesu adatum můžete použít zásadu pro jednotlivé weby a ponechat pravidla SQL spuštěná. Taky předpokládáme, že soubor cookie blokuje nějaký provoz, takže můžete vytvořit vyloučení pro tento soubor cookie, abyste zastavili falešně pozitivní výsledky. 
+Tato globální zásada je vhodná pro contoso.com a fabrikam.com, ale musíte být opatrní s adatum.com, kde jsou zpracovávány přihlašovací údaje a platby. U naslouchacího procesu adatum můžete použít zásadu pro jednotlivé weby a ponechat pravidla SQL spuštěná. Taky předpokládáme, že soubor cookie blokuje nějaký provoz, takže můžete vytvořit vyloučení pro tento soubor cookie, abyste zastavili falešně pozitivní výsledky. 
 
 Adatum.com/payments identifikátor URI je tam, kde je potřeba být opatrní. Proto u tohoto identifikátoru URI použijte jinou zásadu a nechte všechna pravidla povolená a také odeberte všechna vyloučení.
 

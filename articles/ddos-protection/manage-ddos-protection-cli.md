@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 47733f4b141b0064e966d0c083fd6414405f65f9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e2f5528fde977520dc0aa0215a480a40ef8f1e7d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095539"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989611"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Rychlý Start: vytvoření a konfigurace Azure DDoS Protection Standard pomocí Azure CLI
 
@@ -26,7 +26,7 @@ Plán DDoS Protection definuje sadu virtuálních sítí, které mají povolený
 
 V tomto rychlém startu vytvoříte plán DDoS Protection a propojíte ho s virtuální sítí. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Rozhraní příkazového řádku Azure je nainstalované místně nebo Azure Cloud Shell
@@ -39,7 +39,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 V Azure přidělíte související prostředky skupině prostředků. Můžete použít buď existující skupinu prostředků, nebo vytvořit novou.
 
-Chcete-li vytvořit skupinu prostředků, použijte příkaz [AZ Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true). V tomto příkladu pojmenujte naši skupinu prostředků _MyResourceGroup_ a použijeme _východní USA_ umístění:
+Chcete-li vytvořit skupinu prostředků, použijte příkaz [AZ Group Create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create). V tomto příkladu pojmenujte naši skupinu prostředků _MyResourceGroup_ a použijeme _východní USA_ umístění:
 
 ```azurecli-interactive
 az group create \
@@ -47,7 +47,7 @@ az group create \
     --location eastus
 ```
 
-Teď vytvořte plán DDoS Protection s názvem _MyDdosProtectionPlan_ :
+Teď vytvořte plán DDoS Protection s názvem _MyDdosProtectionPlan_:
 
 ```azurecli-interactive
 az network ddos-protection create \
@@ -59,7 +59,7 @@ az network ddos-protection create \
 
 ### <a name="enable-ddos-protection-for-a-new-virtual-network"></a>Povolit DDoS Protection pro novou virtuální síť
 
-Při vytváření virtuální sítě můžete povolit DDoS Protection. V tomto příkladu pojmenujte naši virtuální síť _MyVnet_ : 
+Při vytváření virtuální sítě můžete povolit DDoS Protection. V tomto příkladu pojmenujte naši virtuální síť _MyVnet_: 
 
 ```azurecli-interactive
 az network vnet create \
@@ -73,7 +73,7 @@ Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatn
 
 ### <a name="enable-ddos-protection-for-an-existing-virtual-network"></a>Povolit ochranu DDoS pro existující virtuální síť
 
-Při [vytváření plánu DDoS Protection](#create-a-ddos-protection-plan)můžete k plánu přidružit jednu nebo více virtuálních sítí. Chcete-li přidat více než jednu virtuální síť, jednoduše uveďte názvy nebo ID, které jsou odděleny mezerami. V tomto příkladu přidáme _MyVnet_ :
+Při [vytváření plánu DDoS Protection](#create-a-ddos-protection-plan)můžete k plánu přidružit jednu nebo více virtuálních sítí. Chcete-li přidat více než jednu virtuální síť, jednoduše uveďte názvy nebo ID, které jsou odděleny mezerami. V tomto příkladu přidáme _MyVnet_:
 
 ```azurecli-interactive
 az group create \
@@ -111,7 +111,7 @@ Ověřte, že příkaz vrací správné podrobnosti vašeho plánu DDoS Protecti
 
 Své prostředky můžete uchovávat pro další kurz. Pokud už je nepotřebujete, odstraňte skupinu prostředků _MyResourceGroup_ . Když odstraníte skupinu prostředků, odstraní se i plán DDoS Protection a všechny související prostředky. 
 
-Pokud chcete odstranit skupinu prostředků, použijte [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true):
+Pokud chcete odstranit skupinu prostředků, použijte [AZ Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az_group_delete):
 
 ```azurecli-interactive
 az group delete \
