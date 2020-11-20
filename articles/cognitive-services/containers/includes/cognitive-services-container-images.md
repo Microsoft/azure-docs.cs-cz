@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/03/2020
 ms.author: aahi
-ms.openlocfilehash: 3f2611c9535b9721cccadf35e56bdd21a3020257
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2c2ebe9b419100163ae55c1be85dd1464904e841
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677428"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94978842"
 ---
 ### <a name="container-repositories-and-images"></a>Úložiště kontejnerů a obrázky
 
@@ -89,9 +89,8 @@ Dříve byly do úložiště hostované kontejnery ověřovaného náhledu `cont
 |--|--|--|
 | [Počítačové zpracování obrazu](../../Computer-vision/computer-vision-how-to-install-containers.md) | Číst v 2.0 | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
 | [Počítačové zpracování obrazu](../../Computer-vision/computer-vision-how-to-install-containers.md) | Čtení v 3.1 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
-| [Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container) | Prostorová analýza | `mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis` |
+| [Počítačové zpracování obrazu](../../computer-vision/spatial-analysis-container.md) | Prostorová analýza | `mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis` |
 | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=ctts) | Vlastní převod textu na řeč | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech` |
 | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=lid) | Rozpoznávání jazyka | `mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection` |
 | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=ntts) | Neuronové převodu textu na řeč | `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech` |
-| [Analýza textu pro stav](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | Analýza textu pro zdravotnictví | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |
-
+| [Analýza textu pro zdravotnictví](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | Analýza textu pro zdravotnictví | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |
