@@ -4,47 +4,65 @@ description: Naučte se vyvíjet aplikace a služby Java, které používají so
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/19/2017
+ms.date: 11/18/2020
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 977777aff4aa32bf6876e1d573970d71ec71584e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 25baa278961b93b04e60f2e997b98753cb6cf3ab
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629763"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024105"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Vývoj pro Soubory Azure pomocí Javy
+
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
+
+Naučte se základy vývoje aplikací Java, které používají soubory Azure k ukládání dat. Vytvořte konzolovou aplikaci a Naučte se základní akce pomocí rozhraní API souborů Azure:
+
+- Vytváření a odstraňování sdílených složek Azure
+- Vytváření a odstraňování adresářů
+- Zobrazení výčtu souborů a adresářů ve sdílené složce Azure
+- Nahrání, stažení a odstranění souboru
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
-## <a name="about-this-tutorial"></a>O tomto kurzu
-V tomto kurzu se dozvíte základy použití jazyka Java k vývoji aplikací nebo služeb, které používají soubory Azure k ukládání dat souborů. V tomto kurzu vytvoříme konzolovou aplikaci a ukážeme, jak provádět základní akce s použitím souborů Java a Azure:
-
-* Vytváření a odstraňování sdílených složek Azure
-* Vytváření a odstraňování adresářů
-* Zobrazení výčtu souborů a adresářů ve sdílené složce Azure
-* Nahrání, stažení a odstranění souboru
-
-> [!Note]  
-> Vzhledem k tomu, že soubory Azure mohou být přístupné přes protokol SMB, je možné psát aplikace, které přistupují ke sdílené složce Azure pomocí standardních tříd v/v jazyka Java. Tento článek popisuje, jak psát aplikace, které používají sadu SDK Azure Storage Java, která používá [REST API souborů Azure](/rest/api/storageservices/file-service-rest-api) ke komunikaci se soubory Azure.
-
 ## <a name="create-a-java-application"></a>Vytvoření aplikace Java
-K sestavení ukázek budete potřebovat Java Development Kit (JDK) a [sadu SDK pro Azure Storage pro jazyk Java](https://github.com/Azure/azure-storage-java). Měli byste také vytvořit účet služby Azure Storage.
+
+K sestavení ukázek budete potřebovat Java Development Kit (JDK) a [sadu SDK pro Azure Storage pro jazyk Java](https://github.com/azure/azure-sdk-for-java). Měli byste také vytvořit účet služby Azure Storage.
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>Nastavení aplikace pro používání souborů Azure
-Pokud chcete použít rozhraní API služby Azure Storage, přidejte do horní části souboru Java, do kterého chcete získat přístup ke službě úložiště, následující příkaz.
+
+Pokud chcete používat rozhraní API souborů Azure, přidejte do horní části souboru Java následující kód, ze kterého máte v úmyslu přistupovat k souborům Azure.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_ImportStatements":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
 
 ```java
-// Include the following imports to use blob APIs.
+// Include the following imports to use Azure Files APIs v11
 import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.file.*;
 ```
 
+---
+
 ## <a name="set-up-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce služby Azure Storage
-Pokud chcete používat soubory Azure, musíte se připojit k účtu služby Azure Storage. Prvním krokem je konfigurace připojovacího řetězce, který použijeme pro připojení k vašemu účtu úložiště. Pojďme definovat statickou proměnnou k tomu.
+
+Pokud chcete používat soubory Azure, musíte se připojit k účtu služby Azure Storage. Nakonfigurujte připojovací řetězec a použijte ho pro připojení k vašemu účtu úložiště. Definujte statickou proměnnou pro uložení připojovacího řetězce.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Nahraďte *\<storage_account_name\>* a *\<storage_account_key\>* skutečnými hodnotami pro váš účet úložiště.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_ConnectionString":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+Nahraďte *your_storage_account_name* a *your_storage_account_key* skutečnými hodnotami pro váš účet úložiště.
 
 ```java
 // Configure the connection-string with your values
@@ -54,13 +72,19 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-> [!NOTE]
-> Nahraďte your_storage_account_name a your_storage_account_key skutečnými hodnotami pro váš účet úložiště.
-> 
-> 
+---
 
-## <a name="connecting-to-an-azure-storage-account"></a>Připojení k účtu služby Azure Storage
-Chcete-li se připojit k účtu úložiště, je nutné použít objekt **CloudStorageAccount** a předáním připojovacího řetězce do jeho metody **Parse** .
+## <a name="access-azure-files-storage"></a>Přístup k úložišti Azure Files
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Pro přístup k souborům Azure vytvořte objekt [ShareClient](/java/api/com.azure.storage.file.share.shareclient) . Použijte třídu [ShareClientBuilder](/java/api/com.azure.storage.file.share.shareclientbuilder) k sestavení nového objektu **ShareClient** .
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createClient":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+Chcete-li získat přístup k účtu úložiště, použijte objekt **CloudStorageAccount** a předáním připojovacího řetězce do jeho metody **Parse** .
 
 ```java
 // Use the CloudStorageAccount object to connect to your storage account
@@ -73,8 +97,21 @@ try {
 
 **CloudStorageAccount. Parse** vyvolá InvalidKeyException, takže ho budete muset vložit do bloku try/catch.
 
-## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
-Všechny soubory a adresáře v souborech Azure se nacházejí v kontejneru nazývaném **sdílená složka**. Váš účet úložiště může mít tolik sdílených složek, kolik umožňuje vaše kapacita účtu. Pokud chcete získat přístup ke sdílené složce a jejímu obsahu, musíte použít klienta souborů Azure.
+---
+
+## <a name="create-a-file-share"></a>Vytvoření sdílené složky
+
+Všechny soubory a adresáře v souborech Azure se ukládají do kontejneru nazývaného sdílená složka.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Metoda [ShareClient. Create](/java/api/com.azure.storage.file.share.shareclient.create) vyvolá výjimku, Pokud sdílená složka již existuje. Vložte volání pro **Vytvoření** v `try/catch` bloku a zpracujte výjimku.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createFileShare":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+Pokud chcete získat přístup ke sdílené složce a jejímu obsahu, vytvořte klienta souborů Azure.
 
 ```java
 // Create the Azure Files client.
@@ -88,7 +125,7 @@ Pomocí klienta souborů Azure můžete získat odkaz na sdílenou složku.
 CloudFileShare share = fileClient.getShareReference("sampleshare");
 ```
 
-Chcete-li skutečně vytvořit sdílenou složku, použijte metodu **createIfNotExists** objektu CloudFileShare.
+Chcete-li skutečně vytvořit sdílenou složku, použijte metodu **createIfNotExists** objektu **CloudFileShare** .
 
 ```java
 if (share.createIfNotExists()) {
@@ -96,10 +133,23 @@ if (share.createIfNotExists()) {
 }
 ```
 
-V tomto okamžiku **sdílená složka** uchovává odkaz na sdílenou složku s názvem **sampleshare**.
+V tomto okamžiku **sdílená** složka uchovává odkaz na sdílenou složku s názvem **Vzorová sdílená složka**.
 
-## <a name="delete-an-azure-file-share"></a>Odstranění sdílené složky Azure
-Odstranění sdílené složky se provádí voláním metody **deleteIfExists** v objektu CloudFileShare. Zde je ukázkový kód, který to dělá.
+---
+
+## <a name="delete-a-file-share"></a>Odstranění sdílené složky
+
+Následující vzorový kód odstraní sdílenou složku.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Odstraňte sdílenou složku voláním metody [ShareClient. Delete](/java/api/com.azure.storage.file.share.shareclient.delete) .
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteFileShare":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+Odstraňte sdílenou složku voláním metody **deleteIfExists** v objektu **CloudFileShare** .
 
 ```java
 try
@@ -121,8 +171,21 @@ try
 }
 ```
 
+---
+
 ## <a name="create-a-directory"></a>Vytvoření adresáře
-Úložiště můžete také uspořádat tak, že umístíte soubory do podadresářů místo jejich použití v kořenovém adresáři. Soubory Azure vám umožní vytvořit tolik adresářů, kolik bude váš účet umožňovat. Následující kód vytvoří podadresář s názvem **sampledir** v kořenovém adresáři.
+
+Uspořádejte úložiště tak, že umístíte soubory do podadresářů místo jejich použití v kořenovém adresáři.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Následující kód vytvoří adresář voláním [ShareDirectoryClient. Create](/java/api/com.azure.storage.file.share.sharedirectoryclient.create). Ukázková metoda vrátí `Boolean` hodnotu, která označuje, zda úspěšně vytvořil adresář.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createDirectory":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+Následující kód vytvoří podadresář s názvem **sampledir** v kořenovém adresáři.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -138,8 +201,19 @@ if (sampleDir.createIfNotExists()) {
 }
 ```
 
+---
+
 ## <a name="delete-a-directory"></a>Odstranění adresáře
-Odstranění adresáře je přímočarý úkol, i když je třeba poznamenat, že nemůžete odstranit adresář, který stále obsahuje soubory nebo jiné adresáře.
+
+Odstranění adresáře je přímočarý úkol. Nelze odstranit adresář, který stále obsahuje soubory nebo podadresáře.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Metoda [ShareDirectoryClient. Delete](/java/api/com.azure.storage.file.share.sharedirectoryclient.delete) vyvolá výjimku, pokud adresář neexistuje nebo není prázdný. Vložte volání pro **odstranění** v `try/catch` bloku a zpracujte výjimku.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteDirectory":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
 
 ```java
 // Get a reference to the root directory for the share.
@@ -154,8 +228,19 @@ if ( containerDir.deleteIfExists() ) {
 }
 ```
 
+---
+
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Zobrazení výčtu souborů a adresářů ve sdílené složce Azure
-Seznam souborů a adresářů ve sdílené složce je možné snadno provést voláním **listFilesAndDirectories** na odkaz CloudFileDirectory. Metoda vrátí seznam objektů ListFileItem, na kterých lze iterovat. Například následující kód bude v kořenovém adresáři zobrazovat soubory a adresáře.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Seznam souborů a adresářů získáte voláním [ShareDirectoryClient. listFilesAndDirectories](/java/api/com.azure.storage.file.share.sharedirectoryclient.listfilesanddirectories). Metoda vrátí seznam objektů [ShareFileItem](/java/api/com.azure.storage.file.share.models.sharefileitem) , na kterých lze iterovat. Následující kód obsahuje seznam souborů a adresářů v adresáři určeném parametrem *dirname* .
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_enumerateFilesAndDirs":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+Získat seznam souborů a adresářů voláním **listFilesAndDirectories** na odkaz **CloudFileDirectory** . Metoda vrátí seznam objektů **ListFileItem** , na kterých lze iterovat. Následující kód obsahuje seznam souborů a adresářů v kořenovém adresáři.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -166,10 +251,21 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 }
 ```
 
-## <a name="upload-a-file"></a>Nahrání souboru
-V této části se dozvíte, jak nahrát soubor z místního úložiště do kořenového adresáře sdílené složky.
+---
 
-Prvním krokem při nahrávání souboru je získání odkazu na adresář, ve kterém by měl být umístěný. Provedete to tak, že zavoláte metodu **getRootDirectoryReference** objektu Share.
+## <a name="upload-a-file"></a>Nahrání souboru
+
+Přečtěte si, jak nahrát soubor z místního úložiště.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Následující kód nahraje místní soubor do služby Azure File Storage voláním metody [ShareFileClient. uploadFromFile](/java/api/com.azure.storage.file.share.sharefileclient.uploadfromfile) . Následující příklad metody vrátí hodnotu, `Boolean` která označuje, zda úspěšně nahrál zadaný soubor.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_uploadFile":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+Získejte odkaz na adresář, do kterého se soubor nahraje, voláním metody **getRootDirectoryReference** v objektu Share.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -179,15 +275,28 @@ CloudFileDirectory rootDir = share.getRootDirectoryReference();
 Teď, když máte odkaz na kořenový adresář sdílené složky, můžete do něj nahrát soubor pomocí následujícího kódu.
 
 ```java
-        // Define the path to a local file.
-        final String filePath = "C:\\temp\\Readme.txt";
-    
-        CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
-        cloudFile.uploadFromFile(filePath);
+// Define the path to a local file.
+final String filePath = "C:\\temp\\Readme.txt";
+
+CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
+cloudFile.uploadFromFile(filePath);
 ```
 
+---
+
 ## <a name="download-a-file"></a>Stažení souboru
-Jednou z častých operací, které v Azure Files provedete, je stažení souborů. V následujícím příkladu kód stáhne SampleFile.txt a zobrazí jeho obsah.
+
+Jednou z častých operací je stažení souborů ze služby Azure Files Storage.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Následující příklad stáhne zadaný soubor do místního adresáře zadaného v parametru *destDir* . Ukázková metoda umožňuje, aby stažený název souboru byl jedinečný pomocí předpřipraveného data a času.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_downloadFile":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+Následující příklad stáhne SampleFile.txt a zobrazí jeho obsah.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -203,8 +312,21 @@ CloudFile file = sampleDir.getFileReference("SampleFile.txt");
 System.out.println(file.downloadText());
 ```
 
+---
+
 ## <a name="delete-a-file"></a>Odstranění souboru
-Další běžnou operací se soubory Azure je odstraňování souborů. Následující kód odstraní soubor s názvem SampleFile.txt uložený v adresáři s názvem **sampledir**.
+
+Další běžnou operací se soubory Azure je odstraňování souborů.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Následující kód odstraní zadaný soubor. Nejprve příklad vytvoří [ShareDirectoryClient](/java/api/com.azure.storage.file.share.sharedirectoryclient) na základě parametru *dirname* . Potom kód získá [ShareFileClient](/java/api/com.azure.storage.file.share.sharefileclient) z klienta adresáře na základě parametru *filename* . Nakonec ukázková metoda volá [ShareFileClient. Delete](/java/api/com.azure.storage.file.share.sharefileclient.delete) a soubor se odstraní.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteFile":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+Následující kód odstraní soubor s názvem SampleFile.txt uložený v adresáři s názvem **sampledir**.
 
 ```java
 // Get a reference to the root directory for the share.
@@ -222,14 +344,17 @@ if ( file.deleteIfExists() ) {
 }
 ```
 
+---
+
 ## <a name="next-steps"></a>Další kroky
+
 Pokud se chcete dozvědět víc o dalších rozhraních API služby Azure Storage, postupujte podle těchto odkazů.
 
-* [Azure pro vývojáře v jazyce Java](/java/azure)/)
-* [Sada SDK služby Azure Storage pro Javu](https://github.com/azure/azure-storage-java)
-* [Sada Azure Storage SDK pro Android](https://github.com/azure/azure-storage-android)
-* [Referenční informace ke klientské sadě SDK služby Azure Storage](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
-* [REST API služby Azure Storage](/rest/api/storageservices/)
-* [Blog týmu Azure Storage](/archive/blogs/windowsazurestorage/)
-* [Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy-v10.md)
-* [Řešení potíží se Soubory Azure – Windows](storage-troubleshoot-windows-file-connection-problems.md)
+- [Azure pro vývojáře v Javě](/azure/developer/java)
+- [Azure SDK pro Javu](https://github.com/azure/azure-sdk-for-java)
+- [Sada Azure SDK pro Android](https://github.com/azure/azure-sdk-for-android)
+- [Odkaz na klientskou knihovnu sdílení souborů Azure pro Java SDK](/java/api/overview/azure/storage-file-share-readme)
+- [REST API služby Azure Storage](/rest/api/storageservices/)
+- [Blog týmu Azure Storage](https://azure.microsoft.com/blog/topics/storage-backup-and-recovery/)
+- [Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy-v10.md)
+- [Řešení potíží se Soubory Azure – Windows](storage-troubleshoot-windows-file-connection-problems.md)

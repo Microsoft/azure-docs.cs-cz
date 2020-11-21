@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9fbf4eab55ec2cf8e4f0e27969ca4a22eb1f27ad
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 753c7ff48960711cbedbf6b5d8644a26502dd413
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578610"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023734"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Použití .NET pro Apache Spark s Azure synapse Analytics
 
@@ -74,9 +74,11 @@ Poznámkový blok .NET Spark je založený na [interaktivním prostředí .NET](
 
 ### <a name="install-nuget-packages-in-notebooks"></a>Instalace balíčků NuGet v poznámkových blocích
 
-Balíčky NuGet můžete nainstalovat do poznámkového bloku pomocí `#r` symbolu před názvem balíčku NuGet. Příklad ukazuje následující obrázek:
+Balíčky NuGet můžete nainstalovat do poznámkového bloku pomocí `#r nuget` příkazu Magic před názvem balíčku NuGet. Příklad ukazuje následující obrázek:
 
 ![Snímek obrazovky, který ukazuje použití #r k instalaci balíčku NuGet pro notebook Spark .NET](./media/apache-spark-development-using-notebooks/synapse-spark-dotnet-notebook-nuget.png)
+
+Další informace o tom, jak pracovat s balíčky NuGet v poznámkových blocích, najdete v [dokumentaci k interaktivní technologii .NET](https://github.com/dotnet/interactive/blob/main/docs/nuget-overview.md).
 
 ### <a name="net-for-apache-spark-c-kernel-features"></a>Rozhraní .NET pro Apache Spark funkce jádra C#
 

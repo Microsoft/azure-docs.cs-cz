@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d9b91df896646da7bf36e077d9f3c9187137dd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023019"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021792"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>Ladění chyb při spuštění vlastní aplikace příkazů
 
@@ -60,7 +60,7 @@ Při spuštění vlastní aplikace příkazů se dialog zruší, když dojde k n
 
 - Pokud aplikaci spouštíte s [klientem Windows hlas Assistant](./how-to-custom-commands-developer-flow-test.md), dojde k chybě earcon. **Událost: CancelledDialog** můžete najít v **protokolech aktivit**.
 
-- Pokud používáte klientskou aplikaci příklad klientské [aplikace (se sadou Speech SDK)](./how-to-custom-commands-setup-speech-sdk.md), dojde k chybě earcon. V rámci **stavu**můžete najít **událost: CancelledDialog** .
+- Pokud používáte klientskou aplikaci příklad klientské [aplikace (se sadou Speech SDK)](./how-to-custom-commands-setup-speech-sdk.md), dojde k chybě earcon. V rámci **stavu** můžete najít **událost: CancelledDialog** .
 
 - Pokud vytváříte vlastní klientskou aplikaci, můžete vždy navrhnout požadované logiky pro zpracování událostí CancelledDialog.
 
@@ -92,7 +92,7 @@ Language Understanding (LUIS) má omezení využití prostředků. Obvykle se m�
 
     Pokud se nacházíte na prostředku předpovědi F0, má limit 10 tisíc/měsíc, 5 dotazů za sekundu.
 
-Další podrobnosti o omezeních prostředků LUIS najdete v tématu [Language Understanding využití prostředků a omezení](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits#resource-usage-and-limits) .
+Další podrobnosti o omezeních prostředků LUIS najdete v tématu [Language Understanding využití prostředků a omezení](../luis/luis-limits.md#resource-usage-and-limits) .
 
 ### <a name="connection-to-the-recognizer-failed"></a>Nepovedlo se připojit k nástroji pro rozpoznávání.
 Obvykle to znamená, že došlo k přechodnému selhání připojení k Language Understanding (LUIS) pro rozpoznávání. Zkuste to znovu a problém by se měl vyřešit.
@@ -123,7 +123,7 @@ Neočekávané odpovědi mohou způsobovat více věcí. Několik kontrol začí
 
     Přesnost rozpoznávání LUIS může být ovlivněna v případě, že dva příkazy sdílí podobné záměry a příklady vět. Můžete zkusit udělat funkce příkazů a ukázkové věty co nejblíže.
 
-    Osvědčený postup zlepšení přesnosti rozpoznávání najdete v [Luis osvědčených postupech](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices).
+    Osvědčený postup zlepšení přesnosti rozpoznávání najdete v [Luis osvědčených postupech](../luis/luis-concept-best-practices.md).
 
 - Dialogové okno se zrušilo.
     

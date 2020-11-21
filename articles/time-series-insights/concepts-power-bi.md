@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.openlocfilehash: a04712a22536b5811b2465e56995d7b161a15c6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b6631415c32358cf445fab534b9524c88b6432e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460879"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020874"
 ---
 # <a name="connect-azure-time-series-insights-gen-2-to-power-bi"></a>Připojit Azure Time Series Insights Gen 2 k Power BI  
 
@@ -27,7 +27,7 @@ Azure Time Series Insights se teď bezproblémově integruje s [Power BI](https:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
    [![Možnost exportu v Azure Time Series Insights](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 
@@ -65,4 +65,4 @@ Pro pokročilé funkce dotazování a úpravy v Power BI použijte Rozšířený
 
 * Stáhněte si [Power BI plochu](https://powerbi.microsoft.com/desktop/) a začněte připojovat data.
 
-* Přečtěte si další informace o [Power BI](https://docs.microsoft.com/power-bi/).
+* Přečtěte si další informace o [Power BI](/power-bi/).

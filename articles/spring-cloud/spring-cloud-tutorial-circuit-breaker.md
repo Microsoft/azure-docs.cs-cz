@@ -7,18 +7,17 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0edcdbfec07c032f095cc03eb91be8cf0785b58a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 53884c2f6d9f2e8cbb5676e9ac10e8fb15ed919e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844842"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024275"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Použití řídicího panelu pro dělení na okruhy pomocí Azure jarního cloudu
 
 **Tento článek se týká:** ✔️ Java
 
-::: zone pivot="programming-language-java"
 Jarní [cloudová Netflix turbína](https://github.com/Netflix/Turbine) se běžně používá k agregaci více datových proudů [hystrix](https://github.com/Netflix/Hystrix) metrik, aby bylo možné datové proudy sledovat v jednom zobrazení pomocí řídicího panelu hystrix. V tomto kurzu se dozvíte, jak je používat v Azure jarním cloudu.
 > [!NOTE]
 > Netflix hystrix se běžně používá v mnoha stávajících jarních cloudových aplikacích, ale už není v aktivním vývoji. Pokud vyvíjíte nový projekt, použijte místo toho implementace přerušení cloudového okruhu, jako je [resilience4j](https://github.com/resilience4j/resilience4j). V rámci tohoto kurzu se liší od turbíny, ale nová architektura pro vypínacích okruhů v cloudovém prostředí sjednocuje všechny implementace kanálu dat metrik do mikroměřiče. Pořád pracujeme na podpoře mikroměřiče v Azure jaře cloudu, takže se tento kurz nezabývá.
@@ -84,4 +83,4 @@ Jako webová aplikace by měl řídicí panel hystrix pracovat `test-endpoint` .
 ## <a name="next-steps"></a>Další kroky
 * [Zřízení instance služby v Azure CLI](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
 * [Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure](./spring-cloud-tutorial-prepare-app-deployment.md)
-::: zone-end
+

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: c592055be1987786b94623bde5352e2a3cc0e092
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630147"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021962"
 ---
 # <a name="speech-service-for-telephony-data"></a>Služba řeči pro data telefonního subsystému
 
@@ -60,7 +60,7 @@ Nejedná se o neobvyklou hodnotu 35 procent volání podpory, které by volalo n
 
 ### <a name="translation"></a>Překlad
 
-Některé společnosti experimentují s poskytováním překladných přepisů z volání podpory cizích jazyků, takže správci doručování mohou pochopit, jak se zákazníci setkávají na celém světě. Naše možnosti [překladu](/azure/cognitive-services/speech-service/speech-translation) se překročí. Pro velké množství národních prostředí můžeme přeložit zvuk na zvuk nebo zvuk na text.
+Některé společnosti experimentují s poskytováním překladných přepisů z volání podpory cizích jazyků, takže správci doručování mohou pochopit, jak se zákazníci setkávají na celém světě. Naše možnosti [překladu](./speech-translation.md) se překročí. Pro velké množství národních prostředí můžeme přeložit zvuk na zvuk nebo zvuk na text.
 
 ### <a name="text-to-speech"></a>Převod textu na řeč
 
@@ -70,7 +70,7 @@ Naše kompletní latence je výrazně nízká pro různé technologie, jako je n
 
 Naše nové hlasy jsou také odlišitelné od lidského hlasy. Naše hlasy vám umožní dát své robot své jedinečné preference.
 
-### <a name="search"></a>Hledat
+### <a name="search"></a>Search
 
 Další sešívání analýz je identifikace interakcí, u kterých došlo k určité události nebo zkušenostem. To se obvykle provádí s jedním ze dvou přístupů; buď vyhledávání ad hoc, kde uživatel jednoduše zadá frázi a systém odpoví, nebo více strukturovaný dotaz, kde analytik může vytvořit sadu logických příkazů, které identifikují scénář ve volání, a potom každé volání může být indexováno proti této sadě dotazů. Dobrým příkladem hledání je příkaz všudypřítomný dodržování předpisů "Toto volání se bude zaznamenávat z hlediska kvality... ". Mnohé společnosti chtějí zajistit, aby jejich agenti poskytovali tomuto právnímu omezení zákazníkům před tím, než se volání skutečně zaznamená. Většina analytických systémů má schopnost trendu chování zjištěného pomocí algoritmů dotazu nebo vyhledávání a vytváření sestav trendů je nakonec jednou z nejdůležitějších funkcí analytického systému. V [adresáři služby pro rozpoznávání](https://azure.microsoft.com/services/cognitive-services/directory/search/) koncových služeb je možné výrazně zvýšit možnosti indexování a vyhledávání.
 
@@ -94,7 +94,7 @@ Typické řešení používá tyto služby:
 
 - Služba Speech slouží k přepisovat převodu řeči na text. K použití rozhraní API služby Batch pro přepis se vyžaduje standardní předplatné (S0) pro službu Speech. Bezplatné odběry (F0) nebudou fungovat.
 - [Azure Storage](https://azure.microsoft.com/services/storage/) slouží k ukládání dat telefonního subsystému a přepisů vrácených rozhraním API služby Batch přepisu. Tento účet úložiště by měl používat oznámení, konkrétně pro přidání nových souborů. Tato oznámení slouží k aktivaci procesu přepisu.
-- [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) slouží k vytvoření identifikátoru URI sdíleného přístupového podpisu (SAS) pro každý záznam a aktivaci požadavku HTTP POST pro spuštění přepisu. Kromě toho Azure Functions slouží k vytváření žádostí o načtení a odstranění přepisů pomocí rozhraní API dávkového přepisu.
+- [Azure Functions](../../azure-functions/index.yml) slouží k vytvoření identifikátoru URI sdíleného přístupového podpisu (SAS) pro každý záznam a aktivaci požadavku HTTP POST pro spuštění přepisu. Kromě toho Azure Functions slouží k vytváření žádostí o načtení a odstranění přepisů pomocí rozhraní API dávkového přepisu.
 
 Interně používáme výše uvedené technologie k podpoře zákaznických hovorů Microsoftu v dávkovém režimu.
 :::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="Technologie sloužící k podpoře zákaznických hovorů Microsoftu v režimu dávky.":::
@@ -111,7 +111,7 @@ Interně používáme výše uvedené technologie k analýze v reálném čase z
 
 ## <a name="a-word-on-ivrs"></a>Slovo na IVRs
 
-Službu Speech lze snadno integrovat do libovolného řešení pomocí [sady Speech SDK](speech-sdk.md) nebo [REST API](rest-apis.md). Přepis centra volání ale může vyžadovat další technologie. Obvykle se vyžaduje připojení mezi systémem IRV a Azure. I když tyto komponenty nenabízíme, tady je popis toho, co připojení k IRV vyvolá.
+Službu Speech lze snadno integrovat do libovolného řešení pomocí [sady Speech SDK](speech-sdk.md) nebo [REST API](./overview.md#reference-docs). Přepis centra volání ale může vyžadovat další technologie. Obvykle se vyžaduje připojení mezi systémem IRV a Azure. I když tyto komponenty nenabízíme, tady je popis toho, co připojení k IRV vyvolá.
 
 Několik IRV nebo produktů služby Telephony Service (například Genesys nebo AudioCodes) nabízí možnosti integrace, které se dají využít k povolení příchozího a odchozího zvukového průchodu do služby Azure. V podstatě může vlastní služba Azure poskytovat konkrétní rozhraní pro definování relací telefonních hovorů (například spuštění volání nebo ukončení volání) a vystavit rozhraní WebSocket API pro příjem zvuku příchozího datového proudu, který se používá ve službě Speech. Odchozí odpovědi, jako je například přepis konverzace nebo připojení s rozhraním robota, je možné syntetizovat pomocí služby převodu textu na řeč od Microsoftu a vrátit se do IRV k přehrávání.
 
@@ -121,12 +121,12 @@ Dalším scénářem je přímá integrace s protokolem protokolu SIP (Session I
 
  Služba Speech funguje dobře s integrovanými modely. Můžete ale chtít ještě více přizpůsobit a vyladit prostředí pro svůj produkt nebo prostředí. Možnosti přizpůsobení jsou v rozsahu od ladění akustického modelu až po jedinečná hlasová písma pro vaši značku. Po vytvoření vlastního modelu ho můžete použít s kteroukoli funkcí služby Speech Service v reálném čase nebo v režimu dávky.
 
-| Služba Speech | Model | Description |
+| Služba Speech | Modelování | Popis |
 | -------------- | ----- | ----------- |
-| Převod řeči na text | [Akustický model](how-to-customize-acoustic-models.md) | Vytvořte si vlastní akustický model pro aplikace, nástroje nebo zařízení, které se používají v různých prostředích, jako je třeba v kleci nebo v továrně, z nichž každá má konkrétní podmínky záznamu. Mezi příklady patří zvýrazněné rozpoznávání řeči, konkrétní šum na pozadí nebo použití konkrétního mikrofonu pro záznam. |
-|                | [Jazykový model](how-to-customize-language-model.md) | Vytvořte vlastní jazykový model pro zlepšení přepisu slovníku a gramatiky specifické pro konkrétní odvětví, jako je lékařské terminologie nebo žargonu. |
-|                | [Model výslovnosti](how-to-customize-pronunciation.md) | Pomocí vlastního modelu výslovnosti můžete definovat fonetický formulář a zobrazit ho pro slovo nebo termín. Je užitečné pro zpracování přizpůsobených podmínek, jako jsou názvy produktů nebo akronymy. Vše, co potřebujete začít, je soubor výslovnosti, což je jednoduchý `.txt` soubor. |
-| Převod textu na řeč | [Hlasové písmo](how-to-customize-voice-font.md) | Vlastní hlasová písma umožňují vytvořit rozpoznatelný hlasový hlas pro vaši značku. Pro začátek zabere pouze malé množství dat. Větší údaje, které poskytnete, budou zvukové písmo větší, než je vaše hlasová. |
+| Převod řeči na text | [Akustický model](./how-to-custom-speech-train-model.md) | Vytvořte si vlastní akustický model pro aplikace, nástroje nebo zařízení, které se používají v různých prostředích, jako je třeba v kleci nebo v továrně, z nichž každá má konkrétní podmínky záznamu. Mezi příklady patří zvýrazněné rozpoznávání řeči, konkrétní šum na pozadí nebo použití konkrétního mikrofonu pro záznam. |
+|                | [Jazykový model](./how-to-custom-speech-train-model.md) | Vytvořte vlastní jazykový model pro zlepšení přepisu slovníku a gramatiky specifické pro konkrétní odvětví, jako je lékařské terminologie nebo žargonu. |
+|                | [Model výslovnosti](./how-to-custom-speech-train-model.md) | Pomocí vlastního modelu výslovnosti můžete definovat fonetický formulář a zobrazit ho pro slovo nebo termín. Je užitečné pro zpracování přizpůsobených podmínek, jako jsou názvy produktů nebo akronymy. Vše, co potřebujete začít, je soubor výslovnosti, což je jednoduchý `.txt` soubor. |
+| Převod textu na řeč | [Hlasové písmo](./how-to-custom-voice-create-voice.md) | Vlastní hlasová písma umožňují vytvořit rozpoznatelný hlasový hlas pro vaši značku. Pro začátek zabere pouze malé množství dat. Větší údaje, které poskytnete, budou zvukové písmo větší, než je vaše hlasová. |
 
 ## <a name="sample-code"></a>Ukázka kódu
 
@@ -138,7 +138,7 @@ Vzorový kód je k dispozici na GitHubu pro každou funkci služby Speech. Tyto 
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-- [Speech SDK](speech-sdk-reference.md)
+- [Speech SDK](./speech-sdk.md)
 - [Speech Devices SDK](speech-devices-sdk.md)
 - [REST API: Převod řeči na text](rest-speech-to-text.md)
 - [REST API: převod textu na řeč](rest-text-to-speech.md)

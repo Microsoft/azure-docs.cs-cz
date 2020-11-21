@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 60e62228e33d2d86bb407e45802f5c0621a94049
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80a48a948c70db7344ac9cbc20474177309bd909
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761086"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024224"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Kurz: Vytvoření statické webové aplikace pomocí Blazor ve statickém Web Apps Azure
 
@@ -33,7 +33,7 @@ Služba Azure static Web Apps umožňuje vytváření statických webových apli
 
 Aplikace vybraná v tomto kurzu se skládá ze tří různých projektů Visual studia:
 
-- **API**: aplikace Azure Functions C#, která implementuje koncový bod rozhraní API, který poskytuje informace o počasí do statické aplikace. [`WeatherForecastFunction`](https://github.com/ssdeepak/blazor/blob/main/Api/WeatherForecastFunction.cs)Vrátí pole `WeatherForecast` objektů.
+- **API**: aplikace Azure Functions C#, která implementuje koncový bod rozhraní API, který poskytuje informace o počasí do statické aplikace. **WeatherForecastFunction** vrací pole `WeatherForecast` objektů.
 
 - **Klient**: projekt webového sestavení front-endu Blazor. Je implementována [záložní trasa](#fallback-route) , která zajistí, že všechny trasy budou obsluhovat soubor _index.html_ .
 
@@ -79,7 +79,7 @@ Teď, když je úložiště vytvořené, vytvořte ze Azure Portal statickou web
 
 V části _základy_ začněte konfigurací nové aplikace a propojením s úložištěm GitHub.
 
-:::image type="content" source="media/deploy-blazor/basics.png" alt-text="Dokončení aplikace Blazor":::
+:::image type="content" source="media/deploy-blazor/basics.png" alt-text="Karta základy":::
 
 1. Výběr vašeho _předplatného Azure_
 1. Vyberte nebo vytvořte novou _skupinu prostředků_ .
@@ -91,13 +91,13 @@ V části _základy_ začněte konfigurací nové aplikace a propojením s úlo�
 
 Až se přihlásíte pomocí GitHubu, zadejte informace o úložišti.
 
-:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="Dokončení aplikace Blazor":::
+:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="Podrobnosti úložiště":::
 
 1. Vybrat upřednostňovanou _organizaci_
 1. Z rozevíracího seznamu _úložiště_ vyberte **My-First-static-blazor-App** .
 1. V rozevíracím seznamu _větev_ vyberte **Main (Hlavní** ).
 
-    Pokud nevidíte žádná úložiště, možná budete muset autorizovat Azure static Web Apps v GitHubu. Přejděte do úložiště GitHub a přejděte na **nastavení > aplikace > autorizovaných aplikací OAuth**, vyberte **statické Web Apps Azure**a pak vyberte **udělit**. V případě úložišť organizace musíte být vlastníkem organizace, abyste udělili oprávnění.
+    Pokud nevidíte žádná úložiště, možná budete muset autorizovat Azure static Web Apps v GitHubu. Přejděte do úložiště GitHub a přejděte na **nastavení > aplikace > autorizovaných aplikací OAuth**, vyberte **statické Web Apps Azure** a pak vyberte **udělit**. V případě úložišť organizace musíte být vlastníkem organizace, abyste udělili oprávnění.
 
 1. V části _Podrobnosti o sestavení_ přidejte podrobnosti o konfiguraci specifické pro Blazor.
 
@@ -105,15 +105,15 @@ Až se přihlásíte pomocí GitHubu, zadejte informace o úložišti.
 
 1. Vyberte **Zkontrolovat a vytvořit**.
 
-    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="Dokončení aplikace Blazor":::
+    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="Tlačítko pro vytvoření Revize":::
 
 1. Vyberte **Vytvořit**.
 
-    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="Dokončení aplikace Blazor":::
+    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="Tlačítko Create (Vytvořit)":::
 
 1. Vyberte **Přejít k prostředku**.
 
-    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="Dokončení aplikace Blazor":::
+    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="Tlačítko Go to resource (Přejít k prostředku)":::
 
 ## <a name="view-the-website"></a>Zobrazit web
 
@@ -123,7 +123,7 @@ Předtím, než budete moci přejít na novou statickou lokalitu, musí být ses
 
 V okně Přehled statického Web Apps se zobrazuje řada odkazů, které vám pomůžou s webovou aplikací pracovat.
 
-:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="Dokončení aplikace Blazor":::
+:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="Okno s přehledem":::
 
 1. Kliknutím na banner, který říkáte, _klikněte sem, abyste zkontrolovali stav svých akcí GitHubu_ , které se budou spouštět na základě vašeho úložiště. Jakmile ověříte, že je úloha nasazení dokončená, můžete přejít na web prostřednictvím vygenerované adresy URL.
 

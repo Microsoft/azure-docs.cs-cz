@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5810bea7920dbfe91a836814124cbe4c7f6f3bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edfbbdd1b30cba74cf4f63d6b5e84c2e616e1a0f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653787"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020976"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Průzkumník Azure Time Series Insights
 
@@ -25,11 +25,11 @@ Tento článek popisuje různé funkce a možnosti, které jsou k dispozici v r�
 
 Chcete-li začít s Azure Time Series Insights Explorer, musíte:
 
-* Mít zřízené prostředí Azure Time Series Insights Gen2. Další informace o zřizování instance najdete v kurzu [Azure Time Series Insights Gen2](./time-series-insights-update-create-environment.md) .
-* [Poskytněte přístup k datům](./time-series-insights-data-access.md) prostředí Azure Time Series Insights Gen2, které jste pro účet vytvořili. Můžete poskytovat přístup i ostatním uživatelům.
+* Mít zřízené prostředí Azure Time Series Insights Gen2. Další informace o zřizování instance najdete v kurzu [Azure Time Series Insights Gen2](./tutorials-set-up-tsi-environment.md) .
+* [Poskytněte přístup k datům](./concepts-access-policies.md) prostředí Azure Time Series Insights Gen2, které jste pro účet vytvořili. Můžete poskytovat přístup i ostatním uživatelům.
 * Přidejte zdroj události do prostředí Azure Time Series Insights Gen2, abyste vložili data do prostředí:
-  * Informace [o tom, jak se připojit k centru událostí](./time-series-insights-how-to-add-an-event-source-eventhub.md)
-  * Informace [o tom, jak se připojit ke službě IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md)
+  * Informace [o tom, jak se připojit k centru událostí](./how-to-ingest-data-event-hub.md)
+  * Informace [o tom, jak se připojit ke službě IoT Hub](./how-to-ingest-data-iot-hub.md)
 
 ## <a name="explore-the-azure-time-series-insights-explorer"></a>Prozkoumat Průzkumníka Azure Time Series Insights
 
@@ -133,7 +133,7 @@ Zde je uveden příklad **překrývající se grafu** :
 
   [![Překrývající se možnost grafu](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
-Tlačítko **Další akce** rozbalí, aby se zobrazila možnost **Stáhnout jako sdílený svazek clusteru**, **připojit k Power BI**, **Zobrazit data grafu jako tabulku**a **prozkoumat možnosti nezpracovaných událostí** .
+Tlačítko **Další akce** rozbalí, aby se zobrazila možnost **Stáhnout jako sdílený svazek clusteru**, **připojit k Power BI**, **Zobrazit data grafu jako tabulku** a **prozkoumat možnosti nezpracovaných událostí** .
 
   [![Další akce – možnost](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
 
@@ -160,7 +160,7 @@ Následující webové ovládací prvky jsou k dispozici v Azure Time Series Ins
 
 1. **Ovládací prvek posuvník rozsahu vnějšího data**: pomocí ovládacích prvků koncového bodu můžete vybrat rozsah vnějších kalendářních dat, který bude k dispozici pro ovládací prvek rozsahu vnitřního data.
 
-1. **Ovládací prvek posuvníku časového rozsahu**: použijte ho k rychlému přepínání mezi přednastavenými výběry časových rozsahů, například posledních **30 minut**, **posledních 12 hodin**nebo **vlastním rozsahem**. Změna této hodnoty změní také rozsahy dostupných intervalů, které jsou popsány v nástroji Slider velikost intervalu.
+1. **Ovládací prvek posuvníku časového rozsahu**: použijte ho k rychlému přepínání mezi přednastavenými výběry časových rozsahů, například posledních **30 minut**, **posledních 12 hodin** nebo **vlastním rozsahem**. Změna této hodnoty změní také rozsahy dostupných intervalů, které jsou popsány v nástroji Slider velikost intervalu.
 
    [![Do a z panelu výběru](media/v2-update-explorer/to-and-from-element.png)](media/v2-update-explorer/to-and-from-element.png#lightbox)
 
@@ -221,7 +221,7 @@ Panel editoru Azure Time Series Insightsch podmínek Gen2 má následující par
 | `IN` | String, bool, Double, DateTime, TimeSpan, NULL | Všechny operandy by měly být stejného typu nebo mít nulovou konstantu. |
 | `HAS` | Řetězec | Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a hodnota NULL nejsou povoleny. |
 
-Další informace o podporovaných operacích dotazů a datových typech najdete v tématu [výraz Time Series Expression (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
+Další informace o podporovaných operacích dotazů a datových typech najdete v tématu [výraz Time Series Expression (TSX)](/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 ### <a name="examples-of-where-clauses"></a>Příklady klauzulí WHERE
 
@@ -245,4 +245,4 @@ Prvky na panelu grafu můžete zobrazit a skrýt tak, že vyberete ikonu Visible
 
 * Přečtěte si o [modelování dat](./concepts-model-overview.md) v Azure Time Series Insights Gen2.
 
-* Naučte [se diagnostikovat a řešit potíže s](./time-series-insights-update-how-to-troubleshoot.md) prostředím.
+* Naučte [se diagnostikovat a řešit potíže s](./how-to-diagnose-troubleshoot.md) prostředím.

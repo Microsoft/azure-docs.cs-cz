@@ -8,21 +8,21 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 05/28/2019
-ms.author: Kevin
+ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 878b272e2a1a0e1d5a00a9c2028a6803b6d95383
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 470892aa46d3f75ce8e17200f7d0549ae14b0e86
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91568970"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023782"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování synapse fondu SQL pomocí Azure Portal
 
 Rychle vytvářejte a Dotazujte synapse fond SQL (datový sklad) ve službě Azure synapse Analytics (dřív SQL DW) pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -33,7 +33,7 @@ Rychle vytvářejte a Dotazujte synapse fond SQL (datový sklad) ve službě Azu
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
 
@@ -49,7 +49,7 @@ Pomocí těchto kroků vytvořte fond SQL, který obsahuje ukázková data **Adv
 
    ![vytvoření prázdného datového skladu](./media/create-data-warehouse-portal/create-a-data-warehouse.png)
 
-3. V oblasti **základy**zadejte své předplatné, skupinu prostředků, název fondu SQL a název serveru:
+3. V oblasti **základy** zadejte své předplatné, skupinu prostředků, název fondu SQL a název serveru:
 
    | Nastavení | Navrhovaná hodnota | Popis |
    | :------ | :-------------- | :---------- |
@@ -60,13 +60,13 @@ Pomocí těchto kroků vytvořte fond SQL, který obsahuje ukázková data **Adv
 
    ![vytvoření základních podrobností datového skladu](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
 
-4. V části **úroveň výkonu**vyberte **Vybrat úroveň výkonu** a volitelně změňte konfiguraci pomocí posuvníku.
+4. V části **úroveň výkonu** vyberte **Vybrat úroveň výkonu** a volitelně změňte konfiguraci pomocí posuvníku.
 
    ![změnit úroveň výkonu datového skladu](./media/create-data-warehouse-portal/create-sql-pool-performance-level.png)  
 
    Další informace o úrovních výkonu najdete v tématu [Správa výpočetních prostředků ve službě Azure synapse Analytics](sql-data-warehouse-manage-compute-overview.md).
 
-5. Vyberte **Další nastavení**, v části **použít existující data**zvolte možnost **Ukázka** , aby se AdventureWorksDW vytvořil jako ukázková databáze.
+5. Vyberte **Další nastavení**, v části **použít existující data** zvolte možnost **Ukázka** , aby se AdventureWorksDW vytvořil jako ukázková databáze.
 
     ![Vyberte možnost použít existující data.](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
 
@@ -118,7 +118,7 @@ Nyní se můžete připojit k serveru a jeho fondům SQL pomocí této IP adresy
 
 Získejte plně kvalifikovaný název serveru pro váš server v Azure Portal. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. V nabídce na levé straně vyberte **Azure synapse Analytics** a na stránce **Azure synapse Analytics** vyberte svůj.
 
@@ -198,7 +198,7 @@ Pomocí těchto kroků vyčistěte prostředky, které už nepotřebujete.
 
 4. Pokud chcete odebrat server, který jste vytvořili, vyberte na předchozím obrázku **sqlpoolservername.Database.Windows.NET** a pak vyberte **Odstranit**. S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
 
-5. Pokud chcete odebrat skupinu prostředků, vyberte **myResourceGroup**a pak vyberte **Odstranit skupinu prostředků**.
+5. Pokud chcete odebrat skupinu prostředků, vyberte **myResourceGroup** a pak vyberte **Odstranit skupinu prostředků**.
 
 Chcete optimalizovat a uložit své útraty do cloudu?
 

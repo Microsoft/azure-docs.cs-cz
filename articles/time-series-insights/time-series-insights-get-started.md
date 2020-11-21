@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 401d22ee68ba0652eb684b03b06fddf0b0fe3d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61af7922318514a7b86a349d1970c59d4d168d85
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569456"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023322"
 ---
 # <a name="create-a-new-azure-time-series-insights-gen1-environment-in-the-azure-portal"></a>Vytvoření nového prostředí Azure Time Series Insights Gen1 v Azure Portal
 
@@ -31,7 +31,7 @@ Azure Time Series Insights vám umožňuje začít vizualizovat a dotazovat tok 
 
 Pomocí těchto kroků vytvořte prostředí:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Vyberte tlačítko **+ vytvořit prostředek** .
 
@@ -60,7 +60,7 @@ Pomocí těchto kroků vytvořte prostředí:
 
    [![Podívejte se na oznámení](media/time-series-insights-get-started/tsi-deploy-notifications.png)](media/time-series-insights-get-started/tsi-deploy-notifications.png#lightbox)
 
-1. V **přehledu**prostředků ověřte nastavení konfigurace nasazení.
+1. V **přehledu** prostředků ověřte nastavení konfigurace nasazení.
 
    [![Vytvoření Azure Time Series Insights připnout na řídicí panel](media/time-series-insights-get-started/tsi-verify-deployment.png)](media/time-series-insights-get-started/tsi-verify-deployment.png#lightbox)
 
@@ -68,9 +68,9 @@ Pomocí těchto kroků vytvořte prostředí:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Definujte zásady přístupu k datům](time-series-insights-data-access.md) pro zabezpečení vašeho prostředí.
+* [Definujte zásady přístupu k datům](./concepts-access-policies.md) pro zabezpečení vašeho prostředí.
 
-* [Přidejte zdroj události centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md) do prostředí Azure Time Series Insights.
+* [Přidejte zdroj události centra událostí](./how-to-ingest-data-event-hub.md) do prostředí Azure Time Series Insights.
 
 * [Odešle události](time-series-insights-send-events.md) do zdroje událostí.
 

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: ae767905e24e2d7ddf3b8e12ec77b1efe782cf85
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b93bc4d1adfa2787f14106707b3848ebfe5c57bc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535601"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021197"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití PHP k připojení a dotazování dat v Azure Database for MySQL
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace v [PHP](https://secure.php.net/manual/intro-whatis.php). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi.
@@ -28,9 +28,9 @@ Pro tento rychlý Start budete potřebovat:
     |:--------- |:--------- |:--------- |
     | **Konfigurace pravidel brány firewall** | Veřejná | [Azure Portal](./howto-manage-firewall-using-portal.md) <br/> [Rozhraní příkazového řádku](./howto-manage-firewall-using-cli.md)|
     | **Konfigurace koncového bodu služby** | Veřejná | [Azure Portal](./howto-manage-vnet-using-portal.md) <br/> [Rozhraní příkazového řádku](./howto-manage-vnet-using-cli.md)|
-    | **Konfigurace privátního odkazu** | Soukromá | [Azure Portal](./howto-configure-privatelink-portal.md) <br/> [Rozhraní příkazového řádku](./howto-configure-privatelink-cli.md) |
+    | **Konfigurace privátního odkazu** | Privátní | [Azure Portal](./howto-configure-privatelink-portal.md) <br/> [Rozhraní příkazového řádku](./howto-configure-privatelink-cli.md) |
 
-- [Vytvoření databáze a uživatele bez role správce](/howto-create-users?tabs=single-server)
+- [Vytvoření databáze a uživatele bez role správce](/azure/mysql/howto-create-users?tabs=single-server)
 - Nainstalovat nejnovější verzi PHP pro váš operační systém
     - [PHP na macOS](https://secure.php.net/manual/install.macosx.php)
     - [PHP v systému Linux](https://secure.php.net/manual/install.unix.php)
@@ -46,7 +46,7 @@ Informace o připojení k databázovému serveru můžete získat z Azure Portal
 2. Přejděte na stránku databáze Azure pro MySQL. Můžete vyhledat a vybrat **Azure Database for MySQL**.
 :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/find-azure-mysql-in-portal.png" alt-text="Najít Azure Database for MySQL":::
 
-2. Vyberte svůj server MySQL (například **mydemoserver** ).
+2. Vyberte svůj server MySQL (například **mydemoserver**).
 3. Na stránce **Přehled** zkopírujte název plně kvalifikovaného serveru vedle pole **název serveru** a uživatelské jméno správce vedle **přihlašovací jméno správce serveru**. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 
 > [!IMPORTANT]

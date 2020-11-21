@@ -14,12 +14,12 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d632d078db55696dad7bb05e72368b13610b5978
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b016987162cc8202b7ad28d4dd8e5ab2953469d1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091415"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024241"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Povolit transparentní šifrování dat (TDE) pro Stretch Database v Azure
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ Pokud chcete zakázat TDE pro databázi Azure, která ukládá data migrovaná z
 4. Vyberte nastavení **vypnuto** a pak vyberte **Uložit** .
 
 <!--Anchors-->
-[Transparentní šifrování dat]: https://msdn.microsoft.com/library/bb934049.aspx
+[Transparentní šifrování dat]: /sql/relational-databases/security/encryption/transparent-data-encryption
 
 
 <!--Image references-->

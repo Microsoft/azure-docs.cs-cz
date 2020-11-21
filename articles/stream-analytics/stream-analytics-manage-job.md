@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: fef949e9285264ef46fbaed05a4385a15b27e65e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 70acc696f1cb366d25299f616744e52491a54471
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354426"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024173"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Kurz: Analýza dat telefonního hovoru pomocí Stream Analytics a vizualizace výsledků v řídicím panelu Power BI
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 Než začnete, proveďte následující akce:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se na [Azure Portal](https://portal.azure.com/).
 * Stáhněte si aplikaci pro generování událostí telefonních hovorů [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z webu Microsoft Download Center. Případně získejte zdrojový kód z [GitHubu](https://aka.ms/azure-stream-analytics-telcogenerator).
 * Budete potřebovat účet Power BI.
 
@@ -43,7 +43,7 @@ Než bude Stream Analytics moct analyzovat datový proud podvodných volání, m
 
 Pomocí následujícího postupu vytvořte centrum událostí a odešlete do něj data volání:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Event Hubs**.
 
    ![Vytvoření centra událostí Azure na portálu](media/stream-analytics-manage-job/find-event-hub-resource.png)
@@ -86,7 +86,7 @@ Předtím než aplikace může odesílat data do služby Azure Event Hubs, musí
 
    `Endpoint=sb://<Your event hub namespace>.servicebus.windows.net/;SharedAccessKeyName=<Your shared access policy name>;SharedAccessKey=<generated key>;EntityPath=<Your event hub name>`
 
-   Všimněte si, že připojovací řetězec obsahuje více párů klíč-hodnota oddělené středníky: **Endpoint** , **SharedAccessKeyName** , **SharedAccessKey** a **EntityPath**.
+   Všimněte si, že připojovací řetězec obsahuje více párů klíč-hodnota oddělené středníky: **Endpoint**, **SharedAccessKeyName**, **SharedAccessKey** a **EntityPath**.
 
 ## <a name="start-the-event-generator-application"></a>Spuštění aplikace generátoru událostí
 
@@ -100,7 +100,7 @@ Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, ab
    * Nastavte hodnotu klíče *EventHubName* na hodnotu EntityPath v připojovacím řetězci.
    * Nastavte hodnotu klíče *Microsoft. ServiceBus. ConnectionString* na připojovací řetězec bez hodnoty EntityPath (Nezapomeňte odebrat středník, který ho předchází).
 
-4. Soubor uložte.
+4. Uložte soubor.
 5. Dále otevřete příkazové okno a přejděte do složky, do které jste extrahovali aplikaci TelcoGenerator. Potom zadejte následující příkaz:
 
    ```cmd
@@ -110,7 +110,7 @@ Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, ab
    Tento příkaz má následující parametry:
    * Počet záznamů dat volání za hodinu.
    * Procento pravděpodobnosti podvodů – to znamená, jak často by měla aplikace simulovat podvodné volání. Hodnota 0,2 znamená, že přibližně 20 % záznamů volání bude falešných.
-   * Doba v hodinách – počet hodin, po které by aplikace měla být spuštěná. Aplikaci můžete kdykoli zastavit ukončením procesu ( **CTRL + C** ) na příkazovém řádku.
+   * Doba v hodinách – počet hodin, po které by aplikace měla být spuštěná. Aplikaci můžete kdykoli zastavit ukončením procesu (**CTRL + C**) na příkazovém řádku.
 
    Po několika sekundách aplikace začne zobrazovat záznamy telefonních hovorů na obrazovce, když je odešle do centra událostí. Data telefonních hovorů obsahují následující pole:
 
@@ -129,7 +129,7 @@ Teď, když máte stream událostí volání, můžete vytvořit úlohu Stream A
 
 1. Pokud chcete vytvořit úlohu Stream Analytics, přejděte na web [Azure Portal](https://portal.azure.com/).
 
-2. Vyberte **vytvořit prostředek** a vyhledejte **Stream Analytics úlohy**. Vyberte dlaždici **Stream Analytics úlohy** a vyberte * vytvořit * *.
+2. Vyberte **vytvořit prostředek** a vyhledejte **Stream Analytics úlohy**. Vyberte dlaždici **Stream Analytics úlohy** a vyberte **vytvořit**.
 
 3. Do formuláře **nové úlohy Stream Analytics** zadejte následující hodnoty:
 
@@ -180,7 +180,7 @@ Posledním krokem je definování výstupní jímky, kde úloha může zapisovat
 
 :::image type="content" source="media/stream-analytics-manage-job/authorize-power-bi.png" alt-text="tlačítko pro autorizaci pro Power BI":::
 
-4. Vyplňte formulář výstupu s následujícími podrobnostmi a vyberte **Uložit** :
+4. Vyplňte formulář výstupu s následujícími podrobnostmi a vyberte **Uložit**:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
@@ -241,11 +241,11 @@ Dotaz můžete testovat z editoru dotazů. Otestujte dotaz provedením následuj
 
 2. Vyberte **Nyní** pro čas spuštění výstupu úlohy a vyberte **Spustit**. Stav úlohy můžete sledovat v oznamovacím pruhu.
 
-3. Po úspěšném provedení úlohy přejděte do [Power BI](https://powerbi.com/) a přihlaste se pomocí svého pracovního nebo školního účtu. Pokud dotaz úlohy Stream Analytics vypisuje výsledky, na kartě **Datové sady** se zobrazí existující datová sada *ASAdataset* , kterou jste vytvořili.
+3. Po úspěšném provedení úlohy přejděte do [Power BI](https://powerbi.com/) a přihlaste se pomocí svého pracovního nebo školního účtu. Pokud dotaz úlohy Stream Analytics vypisuje výsledky, na kartě **Datové sady** se zobrazí existující datová sada *ASAdataset*, kterou jste vytvořili.
 
 4. V pracovním prostoru Power BI vyberte **+ Vytvořit** a vytvořte nový řídicí panel *Podvodná volání*.
 
-5. V horní části okna vyberte **Upravit** a **Přidat dlaždici**. Potom vyberte **Vlastní streamovaná data** a **Další**. V části **Vaše datové sady** zvolte **ASAdataset**. V rozevíracím seznamu **typ vizualizace** vyberte **karta** a přidejte **falešná volání** do **polí**. Vyberte **Další** , zadejte název dlaždice a pak výběrem možnosti **Použít** dlaždici vytvořte.
+5. V horní části okna vyberte **Upravit** a **Přidat dlaždici**. Potom vyberte **Vlastní streamovaná data** a **Další**. V části **Vaše datové sady** zvolte **ASAdataset**. V rozevíracím seznamu **typ vizualizace** vyberte **karta** a přidejte **falešná volání** do **polí**. Vyberte **Další**, zadejte název dlaždice a pak výběrem možnosti **Použít** dlaždici vytvořte.
 
    ![Vytvoření dlaždic řídicího panelu Power BI](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
 
@@ -266,9 +266,9 @@ V této části kurzu použijete ukázkovou webovou aplikaci [ASP.NET](https://a
 Pokud chcete nastavit aplikaci, přejděte do úložiště GitHubu [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) a postupujte podle pokynů v části **data, která vlastní uživatel** (použijte adresy URL přesměrování a domovské stránky v podčásti **Integration-Web-App** ). Vzhledem k tomu, že používáme příklad řídicího panelu, použijte vzorový kód **Integration-Web-App** umístěný v [úložišti GitHub](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/Embed%20for%20your%20organization/).
 Jakmile aplikace běží v prohlížeči, postupujte podle těchto kroků a vložte do webové stránky řídicí panel, který jste vytvořili dříve:
 
-1. Vyberte možnost **Přihlásit se k Power BI** , která aplikaci udělí přístup k řídicím panelům v účtu Power BI.
+1. Vyberte možnost **Přihlásit se k Power BI**, která aplikaci udělí přístup k řídicím panelům v účtu Power BI.
 
-2. Vyberte tlačítko **Získat řídicí panely** , které zobrazí tabulku s přehledem řídicích panelů ve vašem účtu. Vyhledejte název řídicího panelu **powerbi-embedded-dashboard** , který jste vytvořili dříve, a zkopírujte odpovídající hodnotu **EmbedUrl**.
+2. Vyberte tlačítko **Získat řídicí panely**, které zobrazí tabulku s přehledem řídicích panelů ve vašem účtu. Vyhledejte název řídicího panelu **powerbi-embedded-dashboard**, který jste vytvořili dříve, a zkopírujte odpovídající hodnotu **EmbedUrl**.
 
 3. Nakonec vložte hodnotu **EmbedUrl** do odpovídajícího textového pole a vyberte **Vložit řídicí panel**. Nyní můžete vidět stejný řídicí panel vložený do webové aplikace.
 

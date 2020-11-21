@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: ee37ab90910058378172223a3435047346f5fe7c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6ffe631dc237e7efaf1d6bfd9ac79ab7431c7371
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701776"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023135"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop RDP ShortPath (Preview)
 
@@ -36,7 +36,7 @@ ShortPath RDP rozšiřuje možnosti vícenásobného přenosu protokolu RDP. Nen
 
 Port UDP 3390 se používá jenom pro příchozí provoz ShortPath, který se ověřuje přes přenos přes reverzní připojení. Naslouchací proces RDP ShortPath ignoruje všechny pokusy o připojení k naslouchacímu procesu, pokud se neshodují s relací reverzního připojení.
 
-Protokol RDP ShortPath používá připojení TLS mezi klientem a hostitelem relace pomocí certifikátů hostitele relace. Ve výchozím nastavení se certifikát používaný pro šifrování RDP během nasazení vygeneruje v operačním systému sami. V případě potřeby můžou zákazníci nasazovat centrálně spravované certifikáty vydané certifikační autoritou organizace. Další informace o konfiguracích certifikátů najdete v [dokumentaci k Windows serveru](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations.md).
+Protokol RDP ShortPath používá připojení TLS mezi klientem a hostitelem relace pomocí certifikátů hostitele relace. Ve výchozím nastavení se certifikát používaný pro šifrování RDP během nasazení vygeneruje v operačním systému sami. V případě potřeby můžou zákazníci nasazovat centrálně spravované certifikáty vydané certifikační autoritou organizace. Další informace o konfiguracích certifikátů najdete v [dokumentaci k Windows serveru](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations).
 
 ## <a name="rdp-shortpath-connection-sequence"></a>Pořadí připojení ShortPath RDP
 
@@ -187,7 +187,7 @@ Možné hodnoty jsou:
 * **0** – připojení uživatele nepoužívá protokol RDP ShortPath
 * **1** – připojení uživatele používá ShortPath RDP.
   
-Následující seznam dotazů vám umožní zkontrolovat informace o připojení. Tento dotaz můžete spustit v [Editoru dotazů Log Analytics](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries). Pro každý dotaz nahraďte `userupn` hlavní název uživatele (UPN), kterého chcete vyhledat.
+Následující seznam dotazů vám umožní zkontrolovat informace o připojení. Tento dotaz můžete spustit v [Editoru dotazů Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query). Pro každý dotaz nahraďte `userupn` hlavní název uživatele (UPN), kterého chcete vyhledat.
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;

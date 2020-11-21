@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
-ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 717a8c87c6a1c22d3f75cd4e3054bfdf0c4b5f9a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83849378"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023441"
 ---
 # <a name="internet-peering-vs-peering-service"></a>Internetový peering vs. Peering Service
 
@@ -53,5 +53,5 @@ Nejčastější dotazy najdete v tématu [Služba peering Service – Nejčastě
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o výhodách zákazníků pomocí [služby peering Service](https://docs.microsoft.com/azure/peering-service/).
+* Přečtěte si další informace o výhodách zákazníků pomocí [služby peering Service](../peering-service/index.yml).
 * Přečtěte si o krocích pro povolení přímého partnerského vztahu pro službu partnerského vztahu v rámci [partnera služby peering Service](walkthrough-peering-service-all.md).

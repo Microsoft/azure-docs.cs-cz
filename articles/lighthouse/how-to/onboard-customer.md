@@ -3,12 +3,12 @@ title: Onboarding zákazníků do služby Azure Lighthouse
 description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: d80fef21e4b7cf1705b67df3c8d08f91bac589bf
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 43f28073c996167c82e241476020bdc341486b26
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042851"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024292"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
 
@@ -38,7 +38,7 @@ Pokud tyto hodnoty ID již nemáte, můžete je načíst jedním z následujíc�
 
 ### <a name="azure-portal"></a>portál Azure
 
-ID tenanta si můžete zobrazit tak, že najedete myší na název účtu v horní pravé části Azure Portal, nebo výběrem **přepínače Adresář** . Pokud chcete vybrat a zkopírovat ID tenanta, vyhledejte na portálu "Azure Active Directory", pak vyberte **vlastnosti** a zkopírujte hodnotu zobrazenou v poli **ID adresáře** . Pokud chcete najít ID předplatného v tenantovi zákazníka, vyhledejte "Subscriptions" a pak vyberte příslušné ID předplatného.
+ID tenanta si můžete zobrazit tak, že najedete myší na název účtu v horní pravé části Azure Portal, nebo výběrem **přepínače Adresář**. Pokud chcete vybrat a zkopírovat ID tenanta, vyhledejte na portálu "Azure Active Directory", pak vyberte **vlastnosti** a zkopírujte hodnotu zobrazenou v poli **ID adresáře** . Pokud chcete najít ID předplatného v tenantovi zákazníka, vyhledejte "Subscriptions" a pak vyberte příslušné ID předplatného.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -67,7 +67,7 @@ Jako poskytovatel služeb můžete chtít pro jednoho zákazníka provést něko
 Pro zjednodušení správy doporučujeme používat pro každou roli skupiny uživatelů Azure AD. Získáte tak flexibilitu při přidávání nebo odebírání jednotlivých uživatelů do skupiny, která má přístup, takže nemusíte opakovat proces připojování, aby se změny projevily uživatelem. Role můžete přiřadit instančnímu objektu, který může být užitečný pro scénáře automatizace.
 
 > [!IMPORTANT]
-> Aby bylo možné přidat oprávnění pro skupinu Azure AD, musí být **typ skupiny** nastavený na **zabezpečení** . Tato možnost je vybrána při vytváření skupiny. Další informace najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+> Aby bylo možné přidat oprávnění pro skupinu Azure AD, musí být **typ skupiny** nastavený na **zabezpečení**. Tato možnost je vybrána při vytváření skupiny. Další informace najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Při definování autorizací nezapomeňte postupovat podle principu minimálního oprávnění, aby uživatelé měli jenom oprávnění potřebná k dokončení své úlohy. Pokyny a informace o podporovaných rolích najdete [v tématu Klienti, uživatelé a role ve scénářích Azure Lighthouse](../concepts/tenants-users-roles.md).
 
@@ -128,7 +128,7 @@ Proces zprovoznění vyžaduje šablonu Azure Resource Manager (poskytnutou v [�
 > [!IMPORTANT]
 > Tento proces, který je zde popsán, vyžaduje samostatné nasazení pro každé připojení k odběru, a to i v případě, že se odběry přihlásily do stejného tenanta zákazníka. Pokud se připojujete k několika skupinám prostředků v rámci různých předplatných ve stejném tenantovi zákazníka, vyžaduje se také samostatné nasazení. Připojování více skupin prostředků v rámci jednoho předplatného se ale dá udělat v jednom nasazení.
 >
-> Pro stejné předplatné (nebo skupiny prostředků v rámci předplatného se taky vyžadují samostatná nasazení). Každá použitá nabídka musí používat jiný **mspOfferName** .
+> Pro stejné předplatné (nebo skupiny prostředků v rámci předplatného se taky vyžadují samostatná nasazení). Každá použitá nabídka musí používat jiný **mspOfferName**.
 
 Šablona, kterou zvolíte, bude záviset na tom, jestli se chystáte registrovat celé předplatné, skupinu prostředků nebo víc skupin prostředků v rámci předplatného. Poskytujeme také šablonu, která se dá použít pro zákazníky, kteří si zakoupili nabídku spravované služby, kterou jste publikovali na Azure Marketplace, pokud upřednostňujete jejich odběry tímto způsobem.
 
@@ -211,8 +211,8 @@ Nasazení se může provést v Azure Portal, pomocí PowerShellu nebo pomocí ro
 ### <a name="azure-portal"></a>portál Azure
 
 1. V našem [úložišti GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)vyberte tlačítko **nasadit do Azure** zobrazené vedle šablony, kterou chcete použít. Šablona se otevře v prostředí Azure Portal.
-1. Zadejte hodnoty pro **název nabídky MSP** , **Popis nabídky MSP** , **spravovaný podle ID tenanta** a **autorizací** . Pokud dáváte přednost, můžete vybrat možnost **Upravit parametry** a zadat hodnoty pro `mspOfferName` , `mspOfferDescription` , `managedbyTenantId` a `authorizations` přímo do souboru parametrů. Nezapomeňte aktualizovat tyto hodnoty namísto použití výchozích hodnot z šablony.
-1. Vyberte **zkontrolovat a vytvořit** a pak vyberte **vytvořit** .
+1. Zadejte hodnoty pro **název nabídky MSP**, **Popis nabídky MSP**, **spravovaný podle ID tenanta** a **autorizací**. Pokud dáváte přednost, můžete vybrat možnost **Upravit parametry** a zadat hodnoty pro `mspOfferName` , `mspOfferDescription` , `managedbyTenantId` a `authorizations` přímo do souboru parametrů. Nezapomeňte aktualizovat tyto hodnoty namísto použití výchozích hodnot z šablony.
+1. Vyberte **zkontrolovat a vytvořit** a pak vyberte **vytvořit**.
 
 Po několika minutách by se měla zobrazit zpráva s oznámením, že nasazení bylo dokončeno.
 
@@ -265,7 +265,7 @@ Po úspěšném připojení zákaznického předplatného do Azure Lighthouse uv
 V tenantovi poskytovatele služeb:
 
 1. Přejděte na [stránku Moji zákazníci](view-manage-customers.md).
-2. Vyberte **Zákazníci** .
+2. Vyberte **Zákazníci**.
 3. Potvrďte, že si můžete zobrazit odběry s názvem nabídky, který jste zadali v šabloně Správce prostředků.
 
 > [!IMPORTANT]
@@ -274,7 +274,7 @@ V tenantovi poskytovatele služeb:
 V tenantovi zákazníka:
 
 1. Přejděte na [stránku poskytovatelé služeb](view-manage-service-providers.md).
-2. Vyberte **Nabídky poskytovatele služeb** .
+2. Vyberte **Nabídky poskytovatele služeb**.
 3. Potvrďte, že si můžete zobrazit odběry s názvem nabídky, který jste zadali v šabloně Správce prostředků.
 
 > [!NOTE]
@@ -286,6 +286,11 @@ V tenantovi zákazníka:
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
 
 Get-AzContext
+
+# Confirm successful onboarding for Azure Lighthouse
+
+Get-AzManagedServicesDefinition
+Get-AzManagedServicesAssignment
 ```
 
 ### <a name="azure-cli"></a>Azure CLI

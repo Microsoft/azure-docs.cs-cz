@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f1ea8d16a441230323b4f0213229d223a0b035bc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8dbf3b5de4b908eb831158b73b2b17472bc4895e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778646"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020959"
 ---
 # <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Jaké jsou srovnání mezi Azure CDNmi funkcemi produktu?
 
@@ -23,7 +23,7 @@ Azure Content Delivery Network (CDN) zahrnuje čtyři produkty:
 * **Azure CDN Standard od Microsoftu**
 * **Azure CDN Standard z Akamai**
 * **Azure CDN Standard z Verizon**
-* **Azure CDN Premium z Verizon** . 
+* **Azure CDN Premium z Verizon**. 
 
 Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jednotlivých produktech.
 
@@ -38,7 +38,7 @@ Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jed
 | Změnit typ optimalizace | |**&#x2713;** | | |
 | Zdrojový port |Všechny porty TCP |[Povolené počáteční porty](/previous-versions/azure/mt757337(v%3Dazure.100)#allowed-origin-ports) |Všechny porty TCP |Všechny porty TCP |
 | [Globální vyrovnávání zatížení serveru (GSLB)](../traffic-manager/traffic-manager-load-balancing-azure.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Rychlé vyprázdnění](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** , vyprázdnit všechny a zástupné znaky nejsou aktuálně Azure CDN z Akamai. |**&#x2713;** |**&#x2713;** |
+| [Rychlé vyprázdnění](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;**, vyprázdnit všechny a zástupné znaky nejsou aktuálně Azure CDN z Akamai. |**&#x2713;** |**&#x2713;** |
 | [Předběžné načítání prostředku](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
 | Nastavení mezipaměti nebo hlaviček (pomocí [pravidel ukládání do mezipaměti](cdn-caching-rules.md))  |**&#x2713;** pomocí [modulu Standard Rules](cdn-standard-rules-engine.md)  |**&#x2713;** |**&#x2713;** | |
 | Přizpůsobitelný modul pro doručování obsahu založený na pravidlech |**&#x2713;** pomocí [modulu Standard Rules](cdn-standard-rules-engine.md)  | | |**&#x2713;** pomocí [modulu pravidel](./cdn-verizon-premium-rules-engine.md) |
@@ -72,7 +72,7 @@ Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jed
 | Snadná integrace se službami Azure, jako jsou [Storage](cdn-create-a-storage-account-with-cdn.md), [Web Apps](cdn-add-to-web-app.md) a [Media Services](../media-services/previous/media-services-portal-manage-streaming-endpoints.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Správa prostřednictvím [REST API](/rest/api/cdn/), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md)nebo [PowerShellu](cdn-manage-powershell.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Komprese typů MIME](./cdn-improve-performance.md)  |Pouze výchozí |Konfigurovatelné |Konfigurovatelné  |Konfigurovatelné  |
-| Kódování komprese  |GZIP, brotli |GZIP |GZIP, Deflate, bzip2, brotili  |GZIP, Deflate, bzip2, brotili  |
+| Kódování komprese  |GZIP, brotli |GZIP |GZIP, Deflate, bzip2, brotli  |GZIP, Deflate, bzip2, brotli  |
 
 ## <a name="migration"></a>Migrace
 

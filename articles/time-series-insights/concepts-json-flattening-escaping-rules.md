@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.openlocfilehash: a1f633548ed36320f40e485f540923c8e3045a99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0839d2c734418824952f37cb177490e56e1133c5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460862"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023305"
 ---
 # <a name="json-flattening-escaping-and-array-handling"></a>Zplošťování, uvozování a zpracování polí JSON
 
@@ -22,18 +22,18 @@ Prostředí Azure Time Series Insights Gen2 bude dynamicky vytvářet sloupce te
 
 > [!IMPORTANT]
 >
-> * Než začnete vybírat [vlastnost ID časové řady](time-series-insights-update-how-to-id.md) nebo vlastní [časové razítko](concepts-streaming-ingestion-event-sources.md#event-source-timestamp)zdroje událostí, zkontrolujte níže uvedená pravidla. Pokud je vaše ID TS nebo časové razítko v rámci vnořeného objektu nebo má jeden nebo více speciálních znaků níže, je důležité zajistit, aby název vlastnosti, který zadáte, odpovídal názvu sloupce *po* použití pravidel pro přijímání zpráv. Viz příklad [B](concepts-json-flattening-escaping-rules.md#example-b) níže.
+> * Než začnete vybírat [vlastnost ID časové řady](./how-to-select-tsid.md) nebo vlastní [časové razítko](concepts-streaming-ingestion-event-sources.md#event-source-timestamp)zdroje událostí, zkontrolujte níže uvedená pravidla. Pokud je vaše ID TS nebo časové razítko v rámci vnořeného objektu nebo má jeden nebo více speciálních znaků níže, je důležité zajistit, aby název vlastnosti, který zadáte, odpovídal názvu sloupce *po* použití pravidel pro přijímání zpráv. Viz příklad [B](concepts-json-flattening-escaping-rules.md#example-b) níže.
 
-| Pravidlo | Ukázkový kód JSON | [Syntaxe výrazů časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Název sloupce vlastnosti v Parquet
+| Pravidlo | Ukázkový kód JSON | [Syntaxe výrazů časové řady](/rest/api/time-series-insights/reference-time-series-expression-syntax) | Název sloupce vlastnosti v Parquet
 |---|---|---|---|
 | Azure Time Series Insights datový typ Gen2 se přidá na konec názvu sloupce jako "_ \<dataType\> ". | ```"type": "Accumulated Heat"``` | `$event.type.String` |`type_string` |
 | [Vlastnost časového razítka](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) zdroje události bude uložena v Azure Time Series Insights Gen2 jako "timestamp" v úložišti a hodnota uložená v UTC. Vlastnost časového razítka zdroje událostí můžete přizpůsobit tak, aby splňovala požadavky vašeho řešení, ale název sloupce v teplém a studeném úložišti je "timestamp". Další vlastnosti formátu JSON, které nejsou časové razítko zdroje událostí, budou uloženy s názvem "_datetime" v názvu sloupce, jak je uvedeno v pravidle výše.  | ```"ts": "2020-03-19 14:40:38.318"``` |  `$event.$ts` | `timestamp` |
 | Názvy vlastností JSON, které obsahují speciální znaky. [\ a ' jsou uvozeny pomocí znaků [a].  |  ```"id.wasp": "6A3090FD337DE6B"``` |  `$event['id.wasp'].String` | `['id.wasp']_string` |
 | V rámci [a] Existují další uvozovací znaky jednoduchých uvozovek a zpětná lomítka. Jedna uvozovka se zapíše jako \ a zpětné lomítko se zapíše jako \\\ | ```"Foo's Law Value": "17.139999389648"``` | `$event['Foo\'s Law Value'].Double` | `['Foo\'s Law Value']_double` |
 | Vnořené objekty JSON jsou shrnuty s tečkou jako s oddělovačem. Je podporováno vnořování až na 10 úrovní. |  ```"series": {"value" : 316 }``` | `$event.series.value.Long`, `$event['series']['value'].Long` nebo `$event.series['value'].Long` |  `series.value_long` |
-| Pole primitivních typů se ukládají jako dynamický typ. |  ```"values": [154, 149, 147]``` | Dynamické typy se dají načíst jenom prostřednictvím rozhraní API [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) . | `values_dynamic` |
+| Pole primitivních typů se ukládají jako dynamický typ. |  ```"values": [154, 149, 147]``` | Dynamické typy se dají načíst jenom prostřednictvím rozhraní API [GetEvents](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) . | `values_dynamic` |
 | Pole obsahující objekty mají v závislosti na obsahu objektu dvě chování: Pokud jsou ID TS nebo vlastnosti časového razítka v rámci objektů v poli, pole bude nekumulativní, takže počáteční datová část JSON vytvoří více událostí. To umožňuje dávkovat více událostí do jedné struktury JSON. Všechny vlastnosti nejvyšší úrovně, které jsou partnery pro pole, budou uloženy s každým nenasazeným objektem. Pokud vaše ID TS a časové razítko *nejsou v poli* , uloží se celý jako dynamický typ. | Viz příklady [a](concepts-json-flattening-escaping-rules.md#example-a), [B](concepts-json-flattening-escaping-rules.md#example-b)a [C](concepts-json-flattening-escaping-rules.md#example-c) níže.
-| Pole obsahující smíšené prvky se nesloučí. |  ```"values": ["foo", {"bar" : 149}, 147]``` | Dynamické typy se dají načíst jenom prostřednictvím rozhraní API [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) . | `values_dynamic` |
+| Pole obsahující smíšené prvky se nesloučí. |  ```"values": ["foo", {"bar" : 149}, 147]``` | Dynamické typy se dají načíst jenom prostřednictvím rozhraní API [GetEvents](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) . | `values_dynamic` |
 | 512 znaků je limit názvů vlastností JSON. Pokud název překračuje 512 znaků, bude zkrácen na 512 a "_< ' hodnotou hash ' > ' je připojen. **Všimněte si** , že to platí i pro názvy vlastností, které jsou zřetězené z objektu, který je sloučený, a označuje cestu k vnořenému objektu. |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` |`"$event.data.items.datapoints.values.telemetry<...continuing to include all chars>.Double"` | `data.items.datapoints.values.telemetry<...continuing to 512 chars>_912ec803b2ce49e4a541068d495ab570_double` |
 
 ## <a name="understanding-the-dual-behavior-for-arrays"></a>Porozumění duálnímu chování pro pole
@@ -44,7 +44,7 @@ V některých případech však pole obsahující objekty jsou smysluplná pouze
 
 ### <a name="how-to-know-if-my-array-of-objects-will-produce-multiple-events"></a>Jak zjistit, jestli moje pole objektů vytvoří více událostí
 
-Pokud je jedna nebo více vašich správných IDENTIFIKÁTORů časových řad v rámci objektů v poli vnořené, *nebo* Pokud je vaše vlastnost časového razítka zdroje události vnořená, modul pro příjem hodnot rozdělí na vytvoření více událostí. Názvy vlastností, které jste zadali pro vaše ID TS a/nebo časové razítko, by se měly řídit výše uvedenými pravidly sloučení, a proto budou označovat tvar vašeho JSON. Podívejte se na následující příklady a podívejte se na návod, jak [Vybrat vlastnost ID časové řady.](time-series-insights-update-how-to-id.md)
+Pokud je jedna nebo více vašich správných IDENTIFIKÁTORů časových řad v rámci objektů v poli vnořené, *nebo* Pokud je vaše vlastnost časového razítka zdroje události vnořená, modul pro příjem hodnot rozdělí na vytvoření více událostí. Názvy vlastností, které jste zadali pro vaše ID TS a/nebo časové razítko, by se měly řídit výše uvedenými pravidly sloučení, a proto budou označovat tvar vašeho JSON. Podívejte se na následující příklady a podívejte se na návod, jak [Vybrat vlastnost ID časové řady.](./how-to-select-tsid.md)
 
 ### <a name="example-a"></a>Příklad A
 

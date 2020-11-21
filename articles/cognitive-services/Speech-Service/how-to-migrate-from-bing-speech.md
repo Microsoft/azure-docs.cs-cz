@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 81c4c26f252cdd9eb302a7f8f362c8bf52e48629
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b7950759914724234ec89e6eaee13b48e735ec9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825584"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024309"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrace z Zpracování řeči Bingu do služby pro rozpoznávání řeči
 
@@ -28,7 +28,7 @@ Jeden klíč předplatného služby Speech uděluje přístup k následujícím 
 * [Převod řeči na text](speech-to-text.md)
 * [Vlastní převod řeči na text](https://cris.ai)
 * [Převod textu na řeč](text-to-speech.md)
-* [Vlastní hlasy pro převod textu na řeč](how-to-customize-voice-font.md)
+* [Vlastní hlasy pro převod textu na řeč](./how-to-custom-voice-create-voice.md)
 * [Překlad řeči](speech-translation.md) (nezahrnuje [Překlad textu](../translator/translator-info-overview.md))
 
 [Sada Speech SDK](speech-sdk.md) je funkční náhradou pro klientské knihovny zpracování řeči Bingu, ale používá jiné rozhraní API.
@@ -63,7 +63,7 @@ Služba Speech používá cenový model založený na čase (nikoli model založ
 
 Pokud vy nebo vaše organizace máte aplikace ve vývoji nebo v produkčním prostředí, které používají rozhraní API pro zpracování řeči Bingu, měli byste je aktualizovat, aby službu Speech Service co nejdříve používaly. Dostupné sady SDK, ukázky kódu a kurzy najdete v [dokumentaci ke službě Speech](index.yml) .
 
-[Rozhraní REST API](rest-apis.md) služby Speech jsou kompatibilní s rozhraními API zpracování řeči Bingu. Pokud aktuálně používáte Zpracování řeči Bingu rozhraní REST API, stačí změnit jenom koncový bod REST a přepnout na klíč předplatného služby Speech.
+[Rozhraní REST API](./overview.md#reference-docs) služby Speech jsou kompatibilní s rozhraními API zpracování řeči Bingu. Pokud aktuálně používáte Zpracování řeči Bingu rozhraní REST API, stačí změnit jenom koncový bod REST a přepnout na klíč předplatného služby Speech.
 
 Pokud používáte klientskou knihovnu Zpracování řeči Bingu pro konkrétní programovací jazyk, migrace do [sady Speech SDK](speech-sdk.md) vyžaduje změny aplikace, protože rozhraní API se liší. Sada Speech SDK může zjednodušit váš kód a zároveň vám poskytne přístup k novým funkcím. Sada Speech SDK je k dispozici v nejrůznějších programovacích jazycích. Rozhraní API na všech platformách jsou podobná, což usnadňuje vývoj pro více platforem.
 
@@ -72,14 +72,14 @@ Služba rozpoznávání řeči nenabízí globální koncový bod. Zjistěte, je
 Začínáme se sadou Speech SDK:
 
 1. Stáhněte si [sadu Speech SDK](speech-sdk.md).
-1. Pracujte prostřednictvím průvodců a [kurzů](how-to-recognize-intents-from-speech-csharp.md)pro [rychlý Start](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) služby Speech. Podívejte se také na [ukázky kódu](samples.md) , abyste získali zkušenosti s novými rozhraními API.
+1. Pracujte prostřednictvím průvodců a [kurzů](how-to-recognize-intents-from-speech-csharp.md)pro [rychlý Start](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) služby Speech. Podívejte se také na [ukázky kódu](./speech-sdk.md#sample-source-code) , abyste získali zkušenosti s novými rozhraními API.
 1. Aktualizujte aplikaci tak, aby používala službu Speech.
 
 ## <a name="support"></a>Podpora
 
 Zákazníci s Zpracování řeči Bingu by měli kontaktovat zákaznickou podporu otevřením [lístku podpory](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Pokud vaše podpora vyžaduje [plán technické podpory](https://azure.microsoft.com/support/plans/), můžete nás taky kontaktovat.
 
-Podporu služby Speech SDK a rozhraní API najdete na [stránce podpory](support.md)služby pro rozpoznávání řeči.
+Podporu služby Speech SDK a rozhraní API najdete na [stránce podpory](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)služby pro rozpoznávání řeči.
 
 ## <a name="next-steps"></a>Další kroky
 

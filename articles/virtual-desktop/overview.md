@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 03566dccbb453aa06a2b5f86bd02b86d85d61b28
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0fe9b3ddaee41802ced30e1898b46cefa2566771
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322049"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023186"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop?
 
@@ -71,7 +71,7 @@ Podporujeme následující operační systémy, takže se ujistěte, že máte [
 
 K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto věci:
 
-* [Azure Active Directory](/azure/active-directory/).
+* [Azure Active Directory](../active-directory/index.yml).
 * Služba Windows Server Active Directory je synchronizovaná s Azure Active Directory. Tuto možnost můžete nakonfigurovat pomocí Azure AD Connect (pro hybridní organizace) nebo Azure AD Domain Services (pro hybridní nebo cloudové organizace).
   * Windows Server AD se synchronizuje s Azure Active Directory. Uživatel se nachází z Windows serveru AD a virtuální počítač virtuálních počítačů s Windows je připojený k doméně Windows serveru AD.
   * Windows Server AD se synchronizuje s Azure Active Directory. Uživatel se nachází z Windows serveru AD a virtuální počítač virtuálních počítačů s Windows je připojený k doméně Azure AD Domain Services.
@@ -85,7 +85,7 @@ Požadavky uživatelů pro připojení k virtuálnímu počítači s Windows:
 
 Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí být:
 
-* [Standardní](../active-directory-domain-services/active-directory-ds-comparison.md) služba AD připojená k doméně nebo k ní [připojená](../active-directory/devices/hybrid-azuread-join-plan.md). Virtuální počítače nemůžou být připojené k Azure AD.
+* [Standardní](../active-directory-domain-services/compare-identity-solutions.md) služba AD připojená k doméně nebo k ní [připojená](../active-directory/devices/hybrid-azuread-join-plan.md). Virtuální počítače nemůžou být připojené k Azure AD.
 * Spouští se jedna z následujících [podporovaných bitových kopií operačního systému](#supported-virtual-machine-os-images).
 
 >[!NOTE]
@@ -101,7 +101,7 @@ Pro zajištění optimálního výkonu zajistěte, aby vaše síť splňovala n�
 * Síťový provoz se může směrovat mimo hranice země/oblasti, když se virtuální počítače, které hostují desktopy a aplikace, připojí ke službě správy.
 * Pro optimalizaci výkonu sítě doporučujeme, aby se virtuální počítače hostitele relace společně umístěného ve stejné oblasti Azure jako služba pro správu.
 
-V naší [architektuře documenation](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)se můžete podívat na typické nastavení architektury virtuálního klienta Windows pro podnik.
+V naší [architektuře documenation](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)se můžete podívat na typické nastavení architektury virtuálního klienta Windows pro podnik.
 
 ## <a name="supported-remote-desktop-clients"></a>Podporovaní klienti vzdálené plochy
 
@@ -136,14 +136,14 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 
 |Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (více relací), verze 2004|Ano|Ano|Ano|Ano|
-|Windows 10 Enterprise (více relací), verze 1909|Ano|Ano|Ano|Ano|
-|Windows 10 Enterprise (více relací), verze 1903|Ano|Ano|Ne|Ne|
-|Windows 10 Enterprise (více relací), verze 1809|Ano|Ano|Ne|Ne|
-|Windows 7 Enterprise|Ano|Ano|Ne|Ne|
-|Windows Server 2019|Ano|Ano|Ne|Ne|
-|Windows Server 2016|Ano|Ano|Ano|Ano|
-|Windows Server 2012 R2|Ano|Ano|Ne|No|
+|Windows 10 Enterprise (více relací), verze 2004|Yes|Yes|Yes|Yes|
+|Windows 10 Enterprise (více relací), verze 1909|Yes|Yes|Yes|Yes|
+|Windows 10 Enterprise (více relací), verze 1903|Yes|Yes|Ne|Ne|
+|Windows 10 Enterprise (více relací), verze 1809|Yes|Yes|Ne|Ne|
+|Windows 7 Enterprise|Yes|Yes|Ne|Ne|
+|Windows Server 2019|Yes|Yes|Ne|Ne|
+|Windows Server 2016|Ano|Yes|Yes|Yes|
+|Windows Server 2012 R2|Ano|Yes|Ne|No|
 
 ## <a name="next-steps"></a>Další kroky
 

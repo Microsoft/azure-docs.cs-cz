@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dc39c1e43580c5cf302e85664783dba4509889af
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d3033af32229be238831740c11a1112513259a43
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842630"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023152"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -62,7 +62,7 @@ Další informace najdete v tématu připojení [předplatného Azure k Security
 
 ### <a name="improve-your-secure-score"></a>Zlepšení bezpečnostního skóre
 
-Bezpečné skóre poskytuje doporučení a Rady pro osvědčené postupy pro zlepšení celkového zabezpečení. Tato doporučení se stanovují podle priorit, aby vám pomohla vybrat, které z nich jsou nejdůležitější, a možnosti rychlé opravy vám pomůžou rychle řešit potenciální slabá místa zabezpečení. Tato doporučení se také aktualizují v průběhu času, takže budete mít k disdnešku nejlepší způsob, jak zajistit zabezpečení vašeho prostředí. Další informace najdete v tématu [vylepšení zabezpečeného skóre v Azure Security Center](../security-center/security-center-secure-score.md).
+Bezpečné skóre poskytuje doporučení a Rady pro osvědčené postupy pro zlepšení celkového zabezpečení. Tato doporučení se stanovují podle priorit, aby vám pomohla vybrat, které z nich jsou nejdůležitější, a možnosti rychlé opravy vám pomůžou rychle řešit potenciální slabá místa zabezpečení. Tato doporučení se také aktualizují v průběhu času, takže budete mít k disdnešku nejlepší způsob, jak zajistit zabezpečení vašeho prostředí. Další informace najdete v tématu [vylepšení zabezpečeného skóre v Azure Security Center](../security-center/secure-score-security-controls.md).
 
 ## <a name="windows-virtual-desktop-security-best-practices"></a>Osvědčené postupy zabezpečení virtuálních počítačů s Windows
 
@@ -74,13 +74,13 @@ Vyžadování služby Multi-Factor Authentication pro všechny uživatele a spr�
 
 ### <a name="enable-conditional-access"></a>Povolit podmíněný přístup
 
-Povolením [podmíněného přístupu](../active-directory/conditional-access/best-practices.md) můžete spravovat rizika před tím, než uživatelům udělíte přístup k prostředí virtuálních počítačů s Windows. Při rozhodování o tom, k jakým uživatelům chcete udělit přístup, doporučujeme také zvážit, kdo je uživatel, jak se přihlašuje a jaké zařízení používají.
+Povolením [podmíněného přístupu](../active-directory/conditional-access/overview.md) můžete spravovat rizika před tím, než uživatelům udělíte přístup k prostředí virtuálních počítačů s Windows. Při rozhodování o tom, k jakým uživatelům chcete udělit přístup, doporučujeme také zvážit, kdo je uživatel, jak se přihlašuje a jaké zařízení používají.
 
 ### <a name="collect-audit-logs"></a>Shromažďovat protokoly auditu
 
 Povolením shromažďování protokolů auditu můžete zobrazit aktivitu uživatelů a správců, která souvisí s virtuálním počítačem s Windows. Mezi klíčové protokoly auditu patří například:
 
--   [Protokol aktivit Azure](../azure-monitor/platform/activity-log-collect.md)
+-   [Protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
 -   [Protokol aktivit Azure Active Directory](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [Hostitelé relace](../azure-monitor/platform/agent-windows.md)
@@ -93,7 +93,7 @@ Při výběru modelu nasazení můžete buď poskytnout vzdáleným uživatelům
 
 ### <a name="monitor-usage-with-azure-monitor"></a>Monitorování využití pomocí Azure Monitor
 
-Monitorujte využití a dostupnost služby virtuálních počítačů s Windows pomocí [Azure monitor](https://azure.microsoft.com/services/monitor/). Zvažte vytvoření [Upozornění na stav služby](../service-health/alerts-activity-log-service-notifications.md) pro službu Virtual Desktop systému Windows pro příjem oznámení vždy, když dojde k události, která má dopad na službu.
+Monitorujte využití a dostupnost služby virtuálních počítačů s Windows pomocí [Azure monitor](https://azure.microsoft.com/services/monitor/). Zvažte vytvoření [Upozornění na stav služby](../service-health/alerts-activity-log-service-notifications-portal.md) pro službu Virtual Desktop systému Windows pro příjem oznámení vždy, když dojde k události, která má dopad na službu.
 
 ## <a name="session-host-security-best-practices"></a>Osvědčené postupy zabezpečení hostitele relací
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90db861a4ef4fc951844d3ae82a51d20cf9dc8c5
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875100"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023169"
 ---
 # <a name="safe-url-list"></a>Seznam bezpečných adres URL
 
@@ -33,8 +33,8 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítač s W
 |kms.core.windows.net|1688|Aktivace Windows|Internet|
 |mrsglobalsteus2prod.blob.core.windows.net|443|Aktualizace zásobníku agenta a SXS|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Podpora Azure Portal|AzureCloud|
-| 169.254.169.254 | 80 | [Koncový bod služby metadat instance Azure](../virtual-machines/windows/instance-metadata-service.md) | Není k dispozici |
-| 168.63.129.16 | 80 | [Monitorování stavu hostitele relace](../virtual-network/security-overview.md#azure-platform-considerations) | Není k dispozici |
+| 169.254.169.254 | 80 | [Koncový bod služby metadat instance Azure](../virtual-machines/windows/instance-metadata-service.md) | – |
+| 168.63.129.16 | 80 | [Monitorování stavu hostitele relace](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | – |
 
 >[!IMPORTANT]
 >Virtuální počítač s Windows teď podporuje značku plně kvalifikovaného názvu domény. Další informace najdete v tématu [použití Azure firewall k ochraně nasazení virtuálních ploch](../firewall/protect-windows-virtual-desktop.md)v systému Windows.
@@ -55,8 +55,8 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítač s W
 |Kms.core.usgovcloudapi.net|1688|Aktivace Windows|Internet|
 |mrsglobalstugviffx.core.usgovcloudapi.net|443|Aktualizace zásobníku agenta a SXS|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Podpora Azure Portal|AzureCloud|
-| 169.254.169.254 | 80 | [Koncový bod služby metadat instance Azure](../virtual-machines/windows/instance-metadata-service.md) | Není k dispozici |
-| 168.63.129.16 | 80 | [Monitorování stavu hostitele relace](../virtual-network/security-overview.md#azure-platform-considerations) | Není k dispozici |
+| 169.254.169.254 | 80 | [Koncový bod služby metadat instance Azure](../virtual-machines/windows/instance-metadata-service.md) | – |
+| 168.63.129.16 | 80 | [Monitorování stavu hostitele relace](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | – |
 
 Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít virtuální počítače Azure přístup:
 
@@ -78,7 +78,7 @@ Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít vi
 >Pro adresy URL, které se týkají provozu služby, je nutné použít zástupný znak (*). Pokud nechcete používat * pro přenosy související s agentem, vyhledáte adresy URL bez zástupných znaků:
 >
 >1. Zaregistrujte virtuální počítače do fondu hostitelů virtuálních počítačů s Windows.
->2. Otevřete **Prohlížeč událostí**a potom v **systému Windows protokoly**  >  **aplikace**  >  **WVD-agent** a vyhledejte událost s ID 3701.
+>2. Otevřete **Prohlížeč událostí** a potom v **systému Windows protokoly**  >  **aplikace**  >  **WVD-agent** a vyhledejte událost s ID 3701.
 >3. Odblokujte adresy URL, které najdete v části ID události 3701. Adresy URL v rámci události s ID 3701 jsou specifické pro oblast. Pro každou oblast, ve které chcete nasadit virtuální počítače, budete muset zopakovat proces odblokování s příslušnými adresami URL.
 
 ## <a name="remote-desktop-clients"></a>Klienti služby Vzdálená plocha

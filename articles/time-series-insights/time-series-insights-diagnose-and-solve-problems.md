@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 231f2e4df1445c60378ac06aab0d0e56f410c1c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f2ff5aaa1d731c13125d0a3ab4ac32acb9276c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530132"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023271"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>Diagnostika a řešení problémů v prostředí Azure Time Series Insights Gen1
 
@@ -37,7 +37,7 @@ Pokud se v [Azure Time Series Insights Exploreru](https://insights.timeseries.az
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Příčina: zdrojová data události nejsou ve formátu JSON.
 
-Azure Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [podporované tvary JSON](./how-to-shape-query-json.md).
+Azure Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [podporované tvary JSON](./concepts-json-flattening-escaping-rules.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Příčina B: ve zdrojovém klíči události chybí požadovaná oprávnění.
 
@@ -85,7 +85,7 @@ Představte si prostředí, které ingestuje zprávy z centra událostí. Má de
 
 Prostředí SKU S1, které má kapacitu 3, může při každé minutě přijímat jenom 2 100 událostí (1 000 000 událostí za den = 700 událostí za minutu se třemi jednotkami = 2 100 událostí za minutu).
 
-Základní informace o tom, jak funguje shrnutá logika, najdete v tématu [podporované tvary JSON](./how-to-shape-query-json.md).
+Základní informace o tom, jak funguje shrnutá logika, najdete v tématu [podporované tvary JSON](./concepts-json-flattening-escaping-rules.md).
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>Doporučená řešení pro nadměrné omezení
 
@@ -127,7 +127,7 @@ Pamatujte, že v názvu vlastnosti časového razítka se rozlišují malá a ve
 
 Nejjednodušší způsob, jak zajistit, aby byl název vlastnosti časového razítka zachycen a správně fungoval, je použití Průzkumníka Azure Time Series Insights. V Průzkumníku Azure Time Series Insights pomocí grafu vyberte časový úsek po zadání názvu vlastnosti časového razítka. Klikněte pravým tlačítkem na výběr a pak vyberte **prozkoumat události**.
 
-První záhlaví sloupce by mělo být název vlastnosti časového razítka. Vedle **časového razítka**slova **($TS)** se zobrazí.
+První záhlaví sloupce by mělo být název vlastnosti časového razítka. Vedle **časového razítka** slova **($TS)** se zobrazí.
 
 Následující hodnoty nebudou zobrazeny:
 

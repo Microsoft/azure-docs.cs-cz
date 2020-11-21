@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8867e680be0aba187daf83bc538dd47c582c71fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5353cf841663d70f2fce6662964358b7828610d8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618501"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020891"
 ---
 # <a name="media-reserved-units"></a>Rezervované jednotky médií
 
@@ -39,7 +39,7 @@ Následující tabulka vám pomůže při rozhodování o tom, jak určit různ�
 > [!NOTE]
 > Pokud jste pro svůj účet nezřídili, budou se vaše mediální úlohy zpracovávat s výkonem seznamu S1 a úlohy se budou postupně vyzvednout. Žádná kapacita zpracování není vyhrazená, takže čekací doba mezi dokončením jednoho úkolu a dalším počátkem bude záviset na dostupnosti prostředků v systému.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 * Pro analýzy zvuku a úlohy analýzy videí, které se spouštějí Media Services V3 nebo Video Indexer, se důrazně doporučuje zřídit účet s deseti jednotkami S3. Pokud potřebujete více než 10 S3 MRUs, otevřete lístek podpory pomocí [Azure Portal](https://portal.azure.com/).
 * Pro úlohy kódování, které nemají MRUs, není k dispozici horní mez doby, kterou mohou úlohy ve stavu zařazeny do fronty, a současně bude spuštěna pouze jedna úloha.
@@ -59,5 +59,5 @@ Vyzkoušejte škálované zpracování multimédií pomocí jedné z těchto tec
 [Rozhraní .NET](media-services-dotnet-encoding-units.md) 
  [Portál](media-services-portal-scale-media-processing.md) 
  [REST](/rest/api/media/operations/encodingreservedunittype) 
- [Jazyk Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples) 
+ [Jazyk Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples) 
  [Php](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)

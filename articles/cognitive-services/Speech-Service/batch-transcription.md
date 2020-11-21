@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f89dd6b7926baf6c1c64cff81e8b613461a3e925
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b9ed43019e7af0cb810c3e0fc849281a458a43e1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345495"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023629"
 ---
 # <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
 
@@ -46,7 +46,7 @@ Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pom
 >[!NOTE]
 > K použití dávkového přepisu se vyžaduje standardní předplatné (S0) pro službu Speech. Klíče bezplatného předplatného (F0) nebudou fungovat. Další informace najdete v tématu [ceny a omezení](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-Pokud plánujete přizpůsobovat modely, postupujte podle kroků v tématu [akustické přizpůsobení](how-to-customize-acoustic-models.md) a [přizpůsobení jazyka](how-to-customize-language-model.md). Pokud chcete v dávkovém přepisu použít vytvořené modely, budete potřebovat jejich umístění modelu. Umístění modelu lze načíst při kontrole podrobností modelu ( `self` vlastnost). Pro službu Batch přepisu není *potřebný* nasazený vlastní koncový bod.
+Pokud plánujete přizpůsobovat modely, postupujte podle kroků v tématu [akustické přizpůsobení](./how-to-custom-speech-train-model.md) a [přizpůsobení jazyka](./how-to-custom-speech-train-model.md). Pokud chcete v dávkovém přepisu použít vytvořené modely, budete potřebovat jejich umístění modelu. Umístění modelu lze načíst při kontrole podrobností modelu ( `self` vlastnost). Pro službu Batch přepisu není *potřebný* nasazený vlastní koncový bod.
 
 >[!NOTE]
 > V rámci REST API má Batch přepis sadu [kvót a omezení](speech-services-quotas-and-limits.md#batch-transcription), které doporučujeme zkontrolovat. Aby bylo možné efektivně přepisovat velký počet zvukových souborů, doporučujeme vždy odeslat více souborů na požadavek nebo přejít na kontejner Blob Storage se zvukovými soubory přepisovat. Služba bude přepisovat soubory současně zkrátit dobu vyřízení. Použití více souborů v jednom požadavku je velmi jednoduché a jednoduché – viz [konfigurační](#configuration) oddíl. 
@@ -182,7 +182,7 @@ K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
 
 ### <a name="storage"></a>Storage
 
-Batch přepis může číst zvuk z internetového identifikátoru URI, který je veřejně viditelný, a může číst zvuk nebo zapisovat přepisy pomocí identifikátoru URI SAS s [úložištěm objektů BLOB v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview).
+Batch přepis může číst zvuk z internetového identifikátoru URI, který je veřejně viditelný, a může číst zvuk nebo zapisovat přepisy pomocí identifikátoru URI SAS s [úložištěm objektů BLOB v Azure](../../storage/blobs/storage-blobs-overview.md).
 
 ## <a name="batch-transcription-result"></a>Výsledek dávkového přepisu
 

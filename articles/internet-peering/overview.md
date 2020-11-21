@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34d340881e4f612544f4b3d68d3c1f3da598cab3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "75908920"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023424"
 ---
 # <a name="internet-peering-overview"></a>Přehled internetového partnerského vztahu
 
@@ -53,4 +53,4 @@ Nejčastější dotazy týkající se partnerských vztahů najdete v tématu [I
 
 * Další informace o krocích pro nastavení přímých partnerských vztahů s Microsoftem najdete v postupu [přímého partnerského vztahu](walkthrough-direct-all.md) .
 * Pokud se chcete dozvědět o krocích pro nastavení partnerského vztahu Exchange s Microsoftem, postupujte podle pokynů pro [partnerský vztah Exchange](walkthrough-exchange-all.md) .
-* Informace o některých dalších klíčových [možnostech sítě](https://docs.microsoft.com/azure/networking/networking-overview) v Azure.
+* Informace o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.

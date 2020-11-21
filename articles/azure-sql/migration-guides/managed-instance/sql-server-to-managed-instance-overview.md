@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 211ad590ab01d0be26d799064e1227accc619585
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 2c143c299cec1d48dd5438d5350c818d5cc93800
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496954"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023714"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Přehled migrace: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ Některé obecné pokyny, které vám pomůžou zvolit správnou úroveň služb
 Můžete zvolit výpočetní prostředky a prostředky úložiště během nasazování a pak je po použití [Azure Portal](../../database/scale-resources.md) změnit, aniž by došlo k výpadku vaší aplikace. 
 
 > [!IMPORTANT]
-> Jakékoli nesrovnalosti v [požadavcích virtuální sítě spravované instance](/../../managed-instance/connectivity-architecture-overview.md#network-requirements) vám můžou zabránit v vytváření nových instancí nebo používání stávajících instancí. Přečtěte si další informace o [vytváření nových](/../../managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data)   a [konfigurování stávajících](/../../managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data)   sítí. 
+> Jakékoli nesrovnalosti v [požadavcích virtuální sítě spravované instance](/azure/azure-sql/managed-instance/connectivity-architecture-overview#network-requirements) vám můžou zabránit v vytváření nových instancí nebo používání stávajících instancí. Přečtěte si další informace o [vytváření nových](/azure/azure-sql/managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data)   a [konfigurování stávajících](/azure/azure-sql/managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data)   sítí. 
 
 ### <a name="sql-server-vm-alternative"></a>Alternativní virtuální počítač SQL Server
 

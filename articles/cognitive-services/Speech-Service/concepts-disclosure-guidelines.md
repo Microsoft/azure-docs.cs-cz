@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: bae801ac64950b0b0e9fe45585a3411477ebf12b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 2276e66fa47b1c125a8c30f3c73a7c948f65a35d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150858"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021928"
 ---
 # <a name="disclosure-design-guidelines"></a>Zpřístupnění pokynů pro návrh
 Naučte se vytvářet a udržovat vztahy důvěryhodnosti se zákazníky transparentním z hlediska syntetické povahy hlasového prostředí.
@@ -76,7 +76,7 @@ Pomocí následujícího diagramu zjistíte, jestli vaše syntetické hlasové p
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
+* [Zveřejnění pro hlasový talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Přehled o uzavírání](concepts-gating-overview.md)
 

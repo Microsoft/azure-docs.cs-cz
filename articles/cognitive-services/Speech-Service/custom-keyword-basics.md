@@ -12,18 +12,18 @@ ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 2d15da55c0bab42571d2a9660156a780c5d27881
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49ac70b6881085f48c8bc3a12e31e4a1aa220c6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305860"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021945"
 ---
 # <a name="get-started-with-custom-keyword"></a>Začínáme se službou Vlastní klíčové slovo
 
 V tomto rychlém startu se naučíte základy práce s vlastními klíčovými slovy pomocí rozpoznávání řeči Studio a sady Speech SDK. Klíčové slovo je slovo nebo krátká fráze, která umožňuje, aby byl váš produkt hlasově aktivovaný. Modely klíčových slov vytvoříte v nástroji Speech Studio a potom exportujete soubor modelu, který používáte se sadou Speech SDK ve vašich aplikacích.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup v tomto článku vyžaduje předplatné řeči a sadu Speech SDK. Pokud ještě nemáte předplatné, [Vyzkoušejte službu Speech Service zdarma](overview.md#try-the-speech-service-for-free). Chcete-li získat sadu SDK, přečtěte si [příručku Instalace](quickstarts/setup-platform.md) pro vaši platformu.
 
@@ -39,7 +39,7 @@ Než budete moct použít vlastní klíčové slovo, musíte vytvořit klíčov�
 
 1. Na stránce [vlastní klíčové slovo](https://aka.ms/sdsdk-wakewordportal) vytvořte **Nový projekt**. 
 
-1. Zadejte **název** , volitelný **Popis** a vyberte jazyk. Potřebujete jeden projekt na jazyk a podpora je aktuálně omezená na `en-US` jazyk.
+1. Zadejte **název**, volitelný **Popis** a vyberte jazyk. Potřebujete jeden projekt na jazyk a podpora je aktuálně omezená na `en-US` jazyk.
 
     ![Popis projektu s klíčovým slovem](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -49,7 +49,7 @@ Než budete moct použít vlastní klíčové slovo, musíte vytvořit klíčov�
 
 1. Pokud chcete vytvořit nový model klíčových slov, klikněte na **výuka model**.
 
-1. Zadejte **název** modelu, volitelný **Popis** a **klíčové slovo** podle vlastního výběru a pak klikněte na **Další**. Přečtěte si [pokyny](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) pro výběr efektivního klíčového slova.
+1. Zadejte **název** modelu, volitelný **Popis** a **klíčové slovo** podle vlastního výběru a pak klikněte na **Další**. Přečtěte si [pokyny](./custom-keyword-overview.md#choose-an-effective-keyword) pro výběr efektivního klíčového slova.
 
     ![Zadejte své klíčové slovo](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -79,4 +79,4 @@ Než budete moct použít vlastní klíčové slovo, musíte vytvořit klíčov�
 
 ## <a name="next-steps"></a>Další kroky
 
-Otestujte svoje vlastní klíčové slovo pomocí [sady Speech Devices SDK pro rychlý Start](https://aka.ms/sdsdk-quickstart).
+Otestujte svoje vlastní klíčové slovo pomocí [sady Speech Devices SDK pro rychlý Start](./speech-devices-sdk-quickstart.md?pivots=platform-android).

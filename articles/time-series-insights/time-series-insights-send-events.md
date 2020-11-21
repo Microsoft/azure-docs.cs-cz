@@ -11,33 +11,33 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2b83433a135fec486701b4538793f0c3e0a6fa6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a9115b5400cc6d6c1ecc5740af796d831f5dee3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611822"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023254"
 ---
 # <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Odeslání událostí do prostředí Azure Time Series Insights Gen1 pomocí centra událostí
 
 > [!CAUTION]
 > Toto je Gen1 článek.
 
-Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v Azure Event Hubs. Popisuje také, jak spustit ukázkovou aplikaci pro vložení událostí do Azure Time Series Insights z Event Hubs. Pokud máte existující centrum událostí s událostmi ve formátu JSON, přeskočte tento kurz a podívejte se na vaše prostředí v [Azure Time Series Insights](./time-series-insights-update-create-environment.md).
+Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v Azure Event Hubs. Popisuje také, jak spustit ukázkovou aplikaci pro vložení událostí do Azure Time Series Insights z Event Hubs. Pokud máte existující centrum událostí s událostmi ve formátu JSON, přeskočte tento kurz a podívejte se na vaše prostředí v [Azure Time Series Insights](./tutorials-set-up-tsi-environment.md).
 
 ## <a name="configure-an-event-hub"></a>Konfigurace centra událostí
 
-1. Pokud se chcete dozvědět, jak vytvořit centrum událostí, přečtěte si [dokumentaci Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
+1. Pokud se chcete dozvědět, jak vytvořit centrum událostí, přečtěte si [dokumentaci Event Hubs](../event-hubs/index.yml).
 1. Do vyhledávacího pole vyhledejte **Event Hubs**. V seznamu vráceno vyberte možnost **Event Hubs**.
 1. Vyberte centrum událostí.
-1. Při vytváření centra událostí vytváříte obor názvů centra událostí. Pokud jste ještě nevytvořili centrum událostí v rámci oboru názvů, vytvořte v nabídce v části **entity**centrum událostí.  
+1. Při vytváření centra událostí vytváříte obor názvů centra událostí. Pokud jste ještě nevytvořili centrum událostí v rámci oboru názvů, vytvořte v nabídce v části **entity** centrum událostí.  
 
     [![Seznam Center událostí](media/send-events/tsi-connect-event-hub-namespace.png)](media/send-events/tsi-connect-event-hub-namespace.png#lightbox)
 
 1. Po vytvoření centra událostí ho vyberte v seznamu Center událostí.
-1. V nabídce v části **entity**vyberte možnost **Event Hubs**.
+1. V nabídce v části **entity** vyberte možnost **Event Hubs**.
 1. Vyberte název centra událostí, abyste ho mohli nakonfigurovat.
-1. V části **Přehled**vyberte **skupiny uživatelů**a pak vyberte **Skupina uživatelů**.
+1. V části **Přehled** vyberte **skupiny uživatelů** a pak vyberte **Skupina uživatelů**.
 
     [![Vytvoření skupiny uživatelů](media/send-events/add-event-hub-consumer-group.png)](media/send-events/add-event-hub-consumer-group.png#lightbox)
 
@@ -46,7 +46,7 @@ Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v 
     > [!IMPORTANT]
     > Ujistěte se, že tuto skupinu uživatelů nepoužívá žádná jiná služba, například Azure Stream Analytics úloha nebo jiné Azure Time Series Insights prostředí. Pokud je skupina uživatelů používána jinými službami, operace čtení jsou negativně ovlivněny pro toto prostředí i pro jiné služby. Pokud jako skupinu příjemců použijete **$Default** , ostatní čtenáři můžou potenciálně znovu použít vaši skupinu uživatelů.
 
-1. V nabídce v části **Nastavení**vyberte **zásady sdíleného přístupu**a pak vyberte **Přidat**.
+1. V nabídce v části **Nastavení** vyberte **zásady sdíleného přístupu** a pak vyberte **Přidat**.
 
     [![Vyberte zásady sdíleného přístupu a pak vyberte tlačítko Přidat.](media/send-events/add-shared-access-policy.png)](media/send-events/add-shared-access-policy.png#lightbox)
 
@@ -54,7 +54,7 @@ Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v 
 
     [![Do pole název zásady zadejte MySendPolicy](media/send-events/configure-shared-access-policy-confirm.png)](media/send-events/configure-shared-access-policy-confirm.png#lightbox)
 
-1. V části **deklarace identity**zaškrtněte políčko **Odeslat** .
+1. V části **deklarace identity** zaškrtněte políčko **Odeslat** .
 
 ## <a name="add-an-azure-time-series-insights-instance"></a>Přidat instanci Azure Time Series Insights
 
@@ -62,9 +62,9 @@ V Azure Time Series Insights Gen2 můžete přidat kontextová data do příchoz
 
 ### <a name="create-an-azure-time-series-insights-event-source"></a>Vytvoření zdroje události Azure Time Series Insights
 
-1. Pokud jste ještě nevytvořili zdroj událostí, proveďte kroky k [Vytvoření zdroje událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
+1. Pokud jste ještě nevytvořili zdroj událostí, proveďte kroky k [Vytvoření zdroje událostí](./how-to-ingest-data-event-hub.md).
 
-1. Nastavte hodnotu pro `timeSeriesId` . Další informace o **ID časových řad**najdete v tématu [modely časových řad](./concepts-model-overview.md)pro čtení.
+1. Nastavte hodnotu pro `timeSeriesId` . Další informace o **ID časových řad** najdete v tématu [modely časových řad](./concepts-model-overview.md)pro čtení.
 
 ### <a name="push-events-to-windmills-sample"></a>Vložení událostí do Windmills Sample
 
@@ -84,7 +84,7 @@ V Azure Time Series Insights Gen2 můžete přidat kontextová data do příchoz
 1. Vyberte **kliknutím spustit**.
 
     > [!TIP]
-    > Simulátor Windmill také vytvoří JSON, který můžete použít jako datovou část s [rozhraními API pro dotazy GA Azure Time Series Insights GA](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query).
+    > Simulátor Windmill také vytvoří JSON, který můžete použít jako datovou část s [rozhraními API pro dotazy GA Azure Time Series Insights GA](/rest/api/time-series-insights/gen1-query).
 
     > [!NOTE]
     > Simulátor bude pokračovat v posílání dat, dokud nebude zavřena karta prohlížeče.
@@ -208,4 +208,4 @@ V Azure Time Series Insights Gen2 můžete přidat kontextová data do příchoz
 
 * [Zobrazte si prostředí](https://insights.timeseries.azure.com) v Průzkumníkovi Azure Time Series Insights.
 
-* Přečtěte si další informace o [IoT Hubch zprávách zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) .
+* Přečtěte si další informace o [IoT Hubch zprávách zařízení](../iot-hub/iot-hub-devguide-messages-construct.md) .

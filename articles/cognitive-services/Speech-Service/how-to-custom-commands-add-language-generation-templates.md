@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 0cbc57922b31f1b3879bb2cad8a988a1ba4cc368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c5e3474d3992108ef61d34e745bc63c1f7a713
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85307591"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020942"
 ---
 # <a name="add-language-generation-templates-for-speech-responses"></a>Přidání šablon generování jazyka pro hlasové odpovědi
 
@@ -34,7 +34,7 @@ Je nutné provést kroky v následujících článcích:
 
 ## <a name="language-generation-templates-overview"></a>Přehled šablon generování jazyka
 
-Šablony vlastních příkazů jsou založené na [šablonách LG](https://aka.ms/speech/cc-lg-format)pro BotFramework. Vzhledem k tomu, že vlastní příkazy v případě potřeby vytvoří novou šablonu LG (to znamená pro odezvy řeči v parametrech nebo akcích), nemusíte zadávat název šablony LG. Takže místo definování šablony jako:
+Šablony vlastních příkazů jsou založené na [šablonách LG](/azure/bot-service/file-format/bot-builder-lg-file-format#templates)pro BotFramework. Vzhledem k tomu, že vlastní příkazy v případě potřeby vytvoří novou šablonu LG (to znamená pro odezvy řeči v parametrech nebo akcích), nemusíte zadávat název šablony LG. Takže místo definování šablony jako:
 
  ```
     # CompletionAction
@@ -51,7 +51,7 @@ Stačí definovat pouze tělo šablony bez názvu, a to následujícím způsobe
 
 Tato změna zavádí variaci odpovědí na převod řeči odesílaných klientovi. Pro stejné utterance by tedy bylo možné odpovídající odpověď na řeč náhodně vyskladnit z poskytnutých možností.
 
-Využití šablon LG vám také umožňuje definovat složité odezvy řeči pro příkazy pomocí adaptivních výrazů. Další podrobnosti najdete ve [formátu šablon LG](https://aka.ms/speech/cc-lg-format) . Vlastní příkazy ve výchozím nastavení podporují všechny možnosti s následujícími drobnými rozdíly:
+Využití šablon LG vám také umožňuje definovat složité odezvy řeči pro příkazy pomocí adaptivních výrazů. Další podrobnosti najdete ve [formátu šablon LG](/azure/bot-service/file-format/bot-builder-lg-file-format#templates) . Vlastní příkazy ve výchozím nastavení podporují všechny možnosti s následujícími drobnými rozdíly:
 
 * Entity šablon LG jsou reprezentovány jako $ {EntityName}. Ve vlastních příkazech nepoužíváme entity, ale parametry se dají použít jako proměnné s jedním z těchto reprezentacemi $ {parameterName} nebo {parameterName}.
 * Složení a rozšíření šablon nejsou ve vlastních příkazech podporovány. Důvodem je to, že soubor nikdy neupravujte `.lg` přímo, ale pouze odpovědi na automaticky vytvořené šablony.
@@ -66,7 +66,7 @@ Využití šablon LG vám také umožňuje definovat složité odezvy řeči pro
 | ------------------ | --------------------- | 
 | Název               | `SubjectContext`         | 
 | Je globální          | unchecked             | 
-| Požaduje se           | unchecked               | 
+| Vyžadováno           | unchecked               | 
 | Typ               | Řetězec                |
 | Výchozí hodnota      | `all` |
 | Konfigurace      | Přijměte předdefinované vstupní hodnoty z interního katalogu. | 
@@ -110,8 +110,8 @@ Dalším způsobem přizpůsobení odpovědí vlastních příkazů je výběr v
 > ![Ukázky vět s parametry](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> - Pro **veřejné hlasy**jsou **typy neuronové** dostupné jenom pro konkrétní oblasti. Pokud chcete ověřit dostupnost, přečtěte si téma [standardní a neuronové hlasy podle oblasti nebo koncového bodu](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).
-> - **Vlastní hlasy**si můžete vytvořit na stránce vlastní hlasového projektu. Viz Začínáme [s vlastním hlasem](./how-to-custom-voice.md).
+> - Pro **veřejné hlasy** jsou **typy neuronové** dostupné jenom pro konkrétní oblasti. Pokud chcete ověřit dostupnost, přečtěte si téma [standardní a neuronové hlasy podle oblasti nebo koncového bodu](./regions.md#standard-and-neural-voices).
+> - **Vlastní hlasy** si můžete vytvořit na stránce vlastní hlasového projektu. Viz Začínáme [s vlastním hlasem](./how-to-custom-voice.md).
 
 Aplikace teď bude ve vybraném hlasu reagovat místo na výchozí hlas.
 

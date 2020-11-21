@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 105faf796583eb0f272eea7a316648993fdafd0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 680b3c5a9548fa06d0139bd441b5583c27427a77
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653770"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020772"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Vizualizace dat z Azure Time Series Insights v Power BI
 
@@ -32,7 +32,7 @@ Nezapomeňte si zaregistrovat [bezplatné předplatné Azure](https://azure.micr
 ## <a name="prerequisites"></a>Požadavky
 
 * Stáhněte a nainstalujte si nejnovější verzi [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-* Vytvoření nebo vytvoření [prostředí Azure Time Series Insights Gen2](time-series-insights-update-how-to-manage.md)
+* Vytvoření nebo vytvoření [prostředí Azure Time Series Insights Gen2](./how-to-provision-manage.md)
 
 > [!IMPORTANT]
 >
@@ -94,7 +94,7 @@ Jak začít:
 
     [![Zvolit vytvořit vlastní dotaz](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
 
-1. V rozevírací nabídce v části **zdroj dat**vyberte možnost **vytvořit vlastní dotaz**. Vložte ze schránky do volitelného pole **vlastní dotaz (volitelné)** níže a potom stiskněte **OK**.
+1. V rozevírací nabídce v části **zdroj dat** vyberte možnost **vytvořit vlastní dotaz**. Vložte ze schránky do volitelného pole **vlastní dotaz (volitelné)** níže a potom stiskněte **OK**.
 
     [![Předejte vlastní dotaz a vyberte OK.](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
 
@@ -130,7 +130,7 @@ Jakmile sestavu vytvoříte, můžete ji publikovat ve službě Power BI Reporti
 
 ## <a name="advanced-editing"></a>Rozšířené úpravy
 
-Pokud jste již datovou sadu načetli v Power BI, ale chcete upravit dotaz (například parametry data a času nebo ID prostředí), můžete to provést prostřednictvím funkce Rozšířený editor Power BI. Další informace najdete v [dokumentaci k Power BI](https://docs.microsoft.com/power-bi/desktop-query-overview) .
+Pokud jste již datovou sadu načetli v Power BI, ale chcete upravit dotaz (například parametry data a času nebo ID prostředí), můžete to provést prostřednictvím funkce Rozšířený editor Power BI. Další informace najdete v [dokumentaci k Power BI](/power-bi/desktop-query-overview) .
 
 Jako přehled:
 
@@ -146,6 +146,6 @@ Rozhraní nyní bude odrážet požadované změny, které jste použili.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o [Power BI konceptech konektoru](https://docs.microsoft.com/power-bi/desktop-query-overview) pro Azure Time Series Insights.
+* Přečtěte si o [Power BI konceptech konektoru](/power-bi/desktop-query-overview) pro Azure Time Series Insights.
 
-* Přečtěte si další informace o [Power BI desktopu](https://docs.microsoft.com/power-bi/desktop-query-overview).
+* Přečtěte si další informace o [Power BI desktopu](/power-bi/desktop-query-overview).

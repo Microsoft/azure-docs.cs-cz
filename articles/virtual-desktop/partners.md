@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fcbcaab7b5cd050e072aaded3e2c09a94a451072
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bf314510a8569a825ccd309ec855e3ff186bba86
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578531"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023373"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -350,7 +350,7 @@ SSH2 je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s 
 appCURE zachycuje podrobnosti o aplikaci ze spuštěných aplikací, aby se zajistilo pochopení všech bodů, které by mohly ovlivnit aplikace koncového uživatele. appCURE se pak aktualizuje a doručí na nový virtuální počítač s Windows. Díky zachycení všech integračních bodů aplikací ve vašem současném prostředí appCURE poskytuje rychlost pro optimalizaci IT prostředků a rychlejší a rychlejší plánování vašich migrací, aby se organizace rychleji dostaly do produkce.
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38).
-- [Přejít na stránku partner](/azure/virtual-desktop/partners#ssh2).
+- [Přejít na stránku partner](#ssh2).
 
 ## <a name="thinprint"></a>ThinPrint
 

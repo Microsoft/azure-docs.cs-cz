@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691407"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023067"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Nasazení diagnostického nástroje pro virtuální počítače s Windows (Classic)
 
@@ -94,9 +94,9 @@ Spuštění skriptu prostředí PowerShell:
 2.  Přejít do [úložiště GitHub šablon RDS](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) a spustit skript **CreateLogAnalyticsWorkspaceforDiagnostics.ps1** v PowerShellu.
 3. Zadejte následující hodnoty parametrů:
 
-    - Pro **ResourceGroupName**zadejte název skupiny prostředků.
-    - Pro **LogAnalyticsWorkspaceName**zadejte jedinečný název pro váš pracovní prostor Log Analytics.
-    - Do pole **umístění**zadejte oblast Azure, kterou používáte.
+    - Pro **ResourceGroupName** zadejte název skupiny prostředků.
+    - Pro **LogAnalyticsWorkspaceName** zadejte jedinečný název pro váš pracovní prostor Log Analytics.
+    - Do pole **umístění** zadejte oblast Azure, kterou používáte.
     - Zadejte **ID předplatného Azure**, které můžete najít v Azure Portal v části **předplatná**.
 
 4. Zadejte přihlašovací údaje uživatele, který má přístup k delegovanému správci.
@@ -121,7 +121,7 @@ Tady je postup, jak ručně nakonfigurovat Doporučené čítače výkonu:
     -   \*Čas procesoru () informace o procesoru \\
     -   Zpoždění vstupu uživatele na relaci ( \* ) \\ Max. zpoždění vstupu
 
-Přečtěte si další informace o čítačích výkonu ve [zdrojích dat výkonu systému Windows a Linux v Azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
+Přečtěte si další informace o čítačích výkonu ve [zdrojích dat výkonu systému Windows a Linux v Azure monitor](../../azure-monitor/platform/data-sources-performance-counters.md).
 
 >[!NOTE]
 >Jakékoli další čítače, které nakonfigurujete, se nezobrazí v samotném nástroji pro diagnostiku. Aby se zobrazila v nástroji pro diagnostiku, je nutné nakonfigurovat konfigurační soubor nástroje. Pokyny k tomu, jak to provést s pokročilou správou, budou k dispozici v GitHubu později.
@@ -144,7 +144,7 @@ Chcete-li zajistit, aby registrace aplikace měla oprávnění rozhraní API:
 Abyste se ujistili, že váš pracovní prostor Log Analytics má předkonfigurované čítače výkonu systému Windows:
 
 1. V [Azure Portal](https://portal.azure.com/)můžete zkontrolovat nakonfigurované čítače výkonu systému Windows, přejít do **Log Analytics pracovních prostorů** .
-2. V části **Nastavení**vyberte **Upřesnit nastavení**.
+2. V části **Nastavení** vyberte **Upřesnit nastavení**.
 3. Pak přejdete na **Data**  >  **čítače výkonu data Windows**.
 4. Ujistěte se, že jsou předem nakonfigurované následující čítače:
 
@@ -162,7 +162,7 @@ Aby bylo možné zobrazit stav virtuálních počítačů, musíte povolit Log A
 2. Přejít do pracovního prostoru Log Analytics.
 3. Na levém panelu v části zdroje dat pracovního prostoru vyberte **virtuální počítače**.
 4. Vyberte název virtuálního počítače, ke kterému se chcete připojit.
-5. Vyberte **Připojit**.
+5. Vyberte **Connect** (Připojit).
 
 ## <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
@@ -191,7 +191,7 @@ Nastavení identifikátoru URI přesměrování:
 4.  Na levém panelu v části spravovat oddíl vyberte **ověřování**.
 5.  Do textového pole **identifikátor URI pro přesměrování** zadejte požadovaný identifikátor URI pro přesměrování a pak v levém horním rohu nabídky vyberte **Save (Uložit** ).
 6. V rozevírací nabídce Typ vyberte **Web** .
-7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Například: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Příklad: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    > [!div class="mx-imgBorder"]
    > ![Stránka s identifikátorem URI pro přesměrování](../media/redirect-uri-page.png)
@@ -204,7 +204,7 @@ Nastavení identifikátoru URI přesměrování:
 
 Před zpřístupněním diagnostického nástroje pro uživatele se ujistěte, že mají následující oprávnění:
 
-- Uživatelé potřebují pro Log Analytics oprávnění ke čtení. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](/azure/azure-monitor/platform/roles-permissions-security).
+- Uživatelé potřebují pro Log Analytics oprávnění ke čtení. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../../azure-monitor/platform/roles-permissions-security.md).
 -  Uživatelé potřebují taky oprávnění ke čtení pro tenanta virtuálních počítačů s Windows (role čtenářů služby Vzdálená plocha). Další informace najdete v tématu [delegovaný přístup na virtuálním počítači s Windows](delegated-access-virtual-desktop-2019.md).
 
 Také musíte uživatelům poskytnout následující informace:

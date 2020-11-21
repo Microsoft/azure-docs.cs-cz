@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8c7e21b0784aacc85bd02e3c1702e1a710e76ab
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357637"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021877"
 ---
 # <a name="what-is-direct-line-speech"></a>Co je Direct Line Speech?
 
@@ -35,11 +35,11 @@ Podrobný průvodce vytvořením jednoduchého hlasového pomocníka pomocí fun
 
 Nabízíme také rychlé starty, které jsou navržené tak, aby vám poskytovaly kód a rychle přeučení rozhraní API. Tato tabulka obsahuje seznam rychlých startů hlasového asistenta uspořádaných podle jazyka a platformy.
 
-| Rychlé zprovoznění | Platforma | referenční dokumentace k rozhraní API |
+| Rychlý start | Platforma | referenční dokumentace k rozhraní API |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Procházet](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Procházet](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Procházet](/dotnet/api/microsoft.cognitiveservices.speech) |
+| Java | Windows, macOS, Linux | [Procházet](/java/api/com.microsoft.cognitiveservices.speech) |
+| Java | Android | [Procházet](/java/api/com.microsoft.cognitiveservices.speech) |
 
 ## <a name="sample-code"></a>Ukázka kódu
 
@@ -50,21 +50,21 @@ Vzorový kód pro vytvoření hlasového asistenta je k dispozici na GitHubu. Ty
 
 ## <a name="customization"></a>Přizpůsobení
 
-Hlasové asistenti sestavené pomocí služby Speech Services můžou používat celou škálu možností přizpůsobení, které jsou k dispozici pro [Převod řeči na text](speech-to-text.md), [Převod textu na řeč](text-to-speech.md)a [vlastní výběr klíčového slova](speech-devices-sdk-create-kws.md).
+Hlasové asistenti sestavené pomocí služby Speech Services můžou používat celou škálu možností přizpůsobení, které jsou k dispozici pro [Převod řeči na text](speech-to-text.md), [Převod textu na řeč](text-to-speech.md)a [vlastní výběr klíčového slova](./custom-keyword-basics.md).
 
 > [!NOTE]
-> Možnosti přizpůsobení se liší podle jazyka nebo národního prostředí (viz [podporované jazyky](supported-languages.md)).
+> Možnosti přizpůsobení se liší podle jazyka nebo národního prostředí (viz [podporované jazyky](./language-support.md)).
 
-Funkce Direct line Speech a její přidružená funkce pro hlasové asistenty jsou ideálním doplňkem k [řešení Virtual Assistant a šabloně organizace](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). I když je přímým line Speech možné pracovat s jakýmkoli kompatibilním robotem, poskytují tyto prostředky opakovaně použitelný směrný plán pro vysoce kvalitní konverzační prostředí a také společné podpůrné dovednosti a modely pro rychlé zahájení práce.
+Funkce Direct line Speech a její přidružená funkce pro hlasové asistenty jsou ideálním doplňkem k [řešení Virtual Assistant a šabloně organizace](/azure/bot-service/bot-builder-enterprise-template-overview). I když je přímým line Speech možné pracovat s jakýmkoli kompatibilním robotem, poskytují tyto prostředky opakovaně použitelný směrný plán pro vysoce kvalitní konverzační prostředí a také společné podpůrné dovednosti a modely pro rychlé zahájení práce.
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Speech SDK](speech-sdk-reference.md)
-* [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [Speech SDK](./speech-sdk.md)
+* [Azure Bot Service](/azure/bot-service/?view=azure-bot-service-4.0)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)
 * [Získat sadu Speech SDK](speech-sdk.md)
-* [Vytvoření a nasazení základního robota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [Vytvoření a nasazení základního robota](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [Získat řešení a šablonu společnosti Virtual Assistant](https://github.com/Microsoft/AI)

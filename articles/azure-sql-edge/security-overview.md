@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: cb673efb3e5d14e72e945bcf8c23d57495823720
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 56d5eb981aa02d9da83973d49e8df79fcd9c7e9c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394947"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021010"
 ---
 # <a name="securing-azure-sql-edge"></a>Zabezpečení Edge Azure SQL
 
@@ -34,14 +34,14 @@ Implementace zabezpečení platformy se spouští s udržováním neautorizovan�
 - Určení a omezení portů hostitele, které se používají pro Azure SQL Edge
 - Ujistěte se, že se na všechny datové svazky, které hostují data Azure SQL Edge, aplikuje správné řízení přístupu. 
 
-Další informace o síťových protokolech Azure SQL Edge a koncových bodech TDS najdete v těchto [síťových protokolech a koncových bodech TDS](//previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105)).
+Další informace o síťových protokolech Azure SQL Edge a koncových bodech TDS najdete v těchto [síťových protokolech a koncových bodech TDS](/previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105)).
 
 ## <a name="authentication-and-authorization"></a>Ověřování a autorizace 
 
 ### <a name="authentication"></a>Authentication  
 Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Edge aktuálně podporuje jenom `SQL Authentication` mechanismus.
 
-- *Ověřování SQL* :
+- *Ověřování SQL*:
 
     Ověřování SQL odkazuje na ověření uživatele při připojování k Edge SQL Azure pomocí uživatelského jména a hesla. Heslo pro přihlášení k SQL **SA** je potřeba zadat během nasazování SQL Edge. Potom může správce serveru vytvořit další přihlášení a uživatele SQL, která uživatelům umožňují připojit se pomocí uživatelského jména a hesla.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dda50a443babca88a0a650fde60df0744d0a1d2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839244"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021826"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>Průběžné nasazování s využitím Azure DevOps
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak nastavit průběžné nasazování pro aplikac
 > [!div class = "checklist"]
 > * Aplikace pro vlastní příkazy pro vývoj (vývoj)
 > * Vlastní aplikace příkazů pro produkci (PROD)
-> * Zaregistrujte se [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)
+> * Zaregistrujte se [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)
 
 ## <a name="exportimportpublish"></a>Export/Import/publikování
 
@@ -99,7 +99,7 @@ Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní př�
 
 ## <a name="deploy-from-source-code"></a>Nasazení ze zdrojového kódu
 
-V případě, že chcete zachovat definici aplikace v úložišti, poskytujeme skripty pro nasazení ze zdrojového kódu. Vzhledem k tomu, že se skripty nacházejí v bash a používáte Windows, budete muset nainstalovat [subsystém Linux](https://docs.microsoft.com/windows/wsl/install-win10).
+V případě, že chcete zachovat definici aplikace v úložišti, poskytujeme skripty pro nasazení ze zdrojového kódu. Vzhledem k tomu, že se skripty nacházejí v bash a používáte Windows, budete muset nainstalovat [subsystém Linux](/windows/wsl/install-win10).
 
 Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní příkazy](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/custom-commands). Naklonujte skripty v adresáři bash do svého úložiště. Ujistěte se, že jste zachovali stejnou cestu.
 
@@ -110,7 +110,7 @@ Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní př�
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | Argumenty | Description |
+    | Arguments | Popis |
     | ------- | --------------- | ----------- |
     | oblast | oblast aplikace, například westus2. |
     | subscriptionkey | klíč předplatného prostředku řeči |
