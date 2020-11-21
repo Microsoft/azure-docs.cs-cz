@@ -100,6 +100,8 @@
           href: concept-enable-rbac.md
         - name: Přiřazení spravované identity Azure
           href: overview-managed-identity.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Vysoká dostupnost
       items:
         - name: Odolnost a zotavení po havárii
