@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 12693fb11556380e62df277be093ce20c02ff372
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fd7499bd5e216f2a625d87ea13996da851a1889e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018028"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019207"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Ukládání a odebírání dat v Language Understanding (LUIS) Cognitive Services
 LUIS ukládá data zašifrovaná v úložišti dat Azure, která odpovídají oblasti určené klíčem. Tato data jsou uložena po dobu 30 dnů. 
@@ -26,8 +26,8 @@ Uživatelé mají plnou kontrolu nad [exportem](luis-how-to-start-new-app.md#exp
 
 Projevy může být uložená na dvou různých místech. 
 
-* Během **procesu vytváření obsahu**jsou projevy vytvořeny a uloženy v záměru. Projevy v záměrech se vyžadují pro úspěšnou aplikaci LUIS. Po publikování aplikace a přijetí dotazů na koncovém bodu určuje dotaz QueryString požadavku koncového bodu, `log=false` zda je uložen koncový bod utterance. Pokud je koncový bod uložený, bude se jednat o součást aktivního výukového projevyu, která se nachází v části **Build** na portálu, v části **Kontrola koncového bodu projevy** . 
-* Když provedete **kontrolu koncového bodu projevy**a do záměru přidáte utterance, utterance se už neukládá jako součást koncového bodu projevy, který se má zkontrolovat. Přidá se do záměrů aplikace. 
+* Během **procesu vytváření obsahu** jsou projevy vytvořeny a uloženy v záměru. Projevy v záměrech se vyžadují pro úspěšnou aplikaci LUIS. Po publikování aplikace a přijetí dotazů na koncovém bodu určuje dotaz QueryString požadavku koncového bodu, `log=false` zda je uložen koncový bod utterance. Pokud je koncový bod uložený, bude se jednat o součást aktivního výukového projevyu, která se nachází v části **Build** na portálu, v části **Kontrola koncového bodu projevy** . 
+* Když provedete **kontrolu koncového bodu projevy** a do záměru přidáte utterance, utterance se už neukládá jako součást koncového bodu projevy, který se má zkontrolovat. Přidá se do záměrů aplikace. 
 
 <a name="utterances-in-an-intent"></a>
 
@@ -55,7 +55,7 @@ Pokud se vám migrace nemigruje, můžete účet odstranit a všechny vaše apli
 Odstranění účtu je k dispozici na stránce **Nastavení** . Na stránce **Nastavení** se dostanete tak, že vyberete název svého účtu v pravém horním navigačním panelu.
 
 ## <a name="delete-an-authoring-resource"></a>Odstranění prostředku pro vytváření
-Pokud jste [migrovali na prostředek pro vytváření obsahu](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring), odstraní se samotný prostředek z Azure Portal všechny aplikace přidružené k tomuto prostředku a jejich příklady projevy a protokolů. Data se uchovávají po dobu 90 dnů, než se trvale odstraní.    
+Pokud jste [migrovali na prostředek pro vytváření obsahu](./luis-migration-authoring.md), odstraní se samotný prostředek z Azure Portal všechny aplikace přidružené k tomuto prostředku a jejich příklady projevy a protokolů. Data se uchovávají po dobu 90 dnů, než se trvale odstraní.    
 
 Pokud chcete prostředek odstranit, otevřete [Azure Portal](https://ms.portal.azure.com/#home) a vyberte prostředek pro vytváření Luis. Přejděte na kartu **Přehled** a klikněte na tlačítko **Odstranit** v horní části stránky. Pak ověřte, že se prostředek odstranil. 
 

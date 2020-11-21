@@ -12,12 +12,12 @@ ms.date: 10/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 340f451080f43fab213a3afc69f2adfae83514d7
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1a08aa4261e8d2546d16bb60394829c83604b4cd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837324"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019955"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -138,6 +138,9 @@ Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednict
 1. Vyberte volitelné deklarace, které se mají přidat.
 1. Vyberte **Přidat**.
 
+> [!NOTE]
+> Okno **Konfigurace tokenu** možností uživatelského rozhraní není k dispozici pro aplikace zaregistrované v klientovi Azure AD B2C. U aplikací zaregistrovaných v tenantovi B2C lze volitelné deklarace identity nakonfigurovat úpravou manifestu aplikace. Další informace najdete v tématu [Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad v Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-configure-user-input) 
+
 **Konfigurace volitelných deklarací pomocí manifestu aplikace:**
 
 [![Ukazuje, jak nakonfigurovat volitelné deklarace identity pomocí manifestu aplikace.](./media/active-directory-optional-claims/app-manifest.png)](./media/active-directory-optional-claims/app-manifest.png)
@@ -175,6 +178,7 @@ Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednict
     ```
 
 2. Po dokončení vyberte **Uložit**. Nyní budou v tokenech vaší aplikace zahrnuty zadané volitelné deklarace identity.
+
 
 ### <a name="optionalclaims-type"></a>Typ OptionalClaims
 

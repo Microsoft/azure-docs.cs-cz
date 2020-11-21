@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.openlocfilehash: 30b4256b37dc3329801a730192e25f7c24a45594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b100e1100b8a4925a967f8b7265f1612e5beb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540897"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018901"
 ---
 # <a name="add-contributors-to-your-app"></a>Přidání přispěvatelů do aplikace
 
@@ -66,7 +66,7 @@ Pokud do aplikace LUIS přidáte přispěvatele nebo spolupracovníky, zadávát
 
 ### <a name="azure-active-directory-resources"></a>Prostředky Azure Active Directory
 
-Pokud ve vaší organizaci používáte [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD), Language UNDERSTANDING (Luis) potřebuje oprávnění k informacím o přístupu vašich uživatelů, když chtějí používat Luis. Prostředky, které LUIS vyžaduje, jsou minimální.
+Pokud ve vaší organizaci používáte [Azure Active Directory](../../active-directory/index.yml) (Azure AD), Language UNDERSTANDING (Luis) potřebuje oprávnění k informacím o přístupu vašich uživatelů, když chtějí používat Luis. Prostředky, které LUIS vyžaduje, jsou minimální.
 
 V případě, že se pokusíte zaregistrovat účet, který má souhlas správce nebo nevyžaduje souhlas správce, jako je třeba souhlas správce, se zobrazí podrobný popis.
 
@@ -87,7 +87,7 @@ Správce tenanta by měl spolupracovat přímo s uživatelem, který potřebuje 
 
 Pokud chce správce tenanta používat LUIS jenom někteří uživatelé, existuje několik možných řešení:
 * Udělení souhlasu správce (souhlasu se všemi uživateli Azure AD), ale pak nastavte na Ano, aby se přiřazení uživatelů vyžadovalo v části vlastnosti podnikové aplikace, a nakonec přiřaďte nebo přidejte do aplikace jenom ty, které jsou k tomu potřeba. V této metodě správce stále poskytuje aplikaci souhlas správce, ale je možné řídit uživatele, kteří k nim mají přístup.
-* Druhým řešením je použití [rozhraní API pro správu identit a přístupu služby Azure AD v Microsoft Graph](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) k poskytnutí souhlasu každému konkrétnímu uživateli.
+* Druhým řešením je použití [rozhraní API pro správu identit a přístupu služby Azure AD v Microsoft Graph](/graph/azuread-identity-access-management-concept-overview) k poskytnutí souhlasu každému konkrétnímu uživateli.
 
 Další informace o uživatelích a souhlasu Azure Active Directory:
 * [Omezení aplikace](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) na sadu uživatelů

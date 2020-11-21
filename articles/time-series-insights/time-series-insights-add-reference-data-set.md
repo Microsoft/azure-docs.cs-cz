@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: dc759bb9af852fab5313686ebaffefda9220f45a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d80d97a609aa3a464b9b114439fe7f4058e287c3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614236"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020142"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Vytvořte referenční datovou sadu pro prostředí Azure Time Series Insights Gen1 pomocí Azure Portal
 
@@ -37,7 +37,7 @@ Referenční data se nepřipojí zpětně. Proto budou odpovídat jenom aktuáln
 
 ## <a name="add-a-reference-data-set"></a>Přidání referenční sady dat
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte existující Azure Time Series Insights prostředí. Vyberte **všechny prostředky** v nabídce na levé straně Azure Portal. Vyberte prostředí Azure Time Series Insights.
 
@@ -107,7 +107,7 @@ Referenční data se nepřipojí zpětně. Proto budou odpovídat jenom aktuáln
     > [!WARNING]
     > Sloupce nebo vlastnosti sdílené mezi referenčními datovými sadami zobrazí chybu při nahrávání **duplicitního názvu vlastnosti** . Chyba nezabrání úspěšnému nahrání referenčních datových sad. Dá se odebrat kombinováním řádků, které sdílí název duplicitní vlastnosti.
 
-1. Vyberte **Přidat řádek**, **hromadné importy řádků**nebo **přidejte sloupec** pro přidání dalších hodnot referenčních dat podle potřeby.
+1. Vyberte **Přidat řádek**, **hromadné importy řádků** nebo **přidejte sloupec** pro přidání dalších hodnot referenčních dat podle potřeby.
 
     [![Přidejte řádek, hromadné importy řádků nebo přidejte sloupec.](media/add-reference-data-set/add-row-or-bulk-upload.png)](media/add-reference-data-set/add-row-or-bulk-upload.png#lightbox)
 
@@ -121,4 +121,4 @@ Referenční data se nepřipojí zpětně. Proto budou odpovídat jenom aktuáln
 
 - [Spravujte referenční data](time-series-insights-manage-reference-data-csharp.md) prostřednictvím kódu programu.
 
-- Úplný odkaz na rozhraní API najdete v dokumentu [rozhraní API pro referenční data](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) .
+- Úplný odkaz na rozhraní API najdete v dokumentu [rozhraní API pro referenční data](/rest/api/time-series-insights/gen1-reference-data-api) .

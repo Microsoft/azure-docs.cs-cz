@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 3cf4ce5dc7061065ea501ae1c00cd5b9e5404770
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b93e9fd4047ee3731ef6fe4652bb92ce5145987d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540859"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018816"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Použití verzí k úpravám a testování bez dopadu na pracovní nebo produkční aplikace
 
-Verze umožňují sestavovat a publikovat různé modely. Dobrým postupem je naklonování aktuálního aktivního modelu do jiné [verze](luis-concept-version.md) aplikace před provedením změn v modelu.
+Verze umožňují sestavovat a publikovat různé modely. Dobrým postupem je naklonování aktuálního aktivního modelu do jiné [verze](./luis-concept-app-iteration.md) aplikace před provedením změn v modelu.
 
 Aktivní verze je verze, kterou upravujete v části **sestavení** portálu Luis, s záměry, entitami, funkcemi a vzory. Při použití rozhraní API pro vytváření obsahu není nutné nastavovat aktivní verzi, protože volání REST API specifických pro verzi zahrnují verzi v trase.
 
@@ -66,4 +66,3 @@ Můžete importovat `.json` nebo `.lu` verzi aplikace.
 * Pokud chcete **Odstranit** verzi, vyberte ze seznamu verzi a pak na panelu nástrojů vyberte **Odstranit** . Vyberte **OK**.
 * Pokud chcete **Přejmenovat** verzi, vyberte ze seznamu verzi a pak na panelu nástrojů vyberte **Přejmenovat** . Zadejte nový název a vyberte **Hotovo**.
 * Pokud chcete **exportovat** verzi, vyberte ze seznamu verzi a pak na panelu nástrojů vyberte **exportovat aplikaci** . Vyberte JSON nebo LU, které chcete exportovat pro zálohování nebo uložit ve správě zdrojového kódu. Pokud chcete [tuto aplikaci použít v kontejneru Luis](luis-container-howto.md), vyberte **Exportovat pro kontejner** .
-

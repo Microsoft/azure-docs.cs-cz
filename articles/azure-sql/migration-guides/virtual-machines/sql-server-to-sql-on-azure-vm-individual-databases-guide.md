@@ -10,17 +10,17 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c7a62bb3ed07ffbd8cfef520e5d504c810d11e5a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 1558c396566b2fcfc098a749407d5e7a28316b6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496907"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019445"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Průvodce migrací: SQL Server SQL Server na virtuálních počítačích Azure 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
 
-Tato příručka k migraci vás seznámí s tím, jak **zjišťovat** , **vyhodnocovat** a **migrovat** vaše uživatelské databáze z SQL Server do instance SQL Server v Azure Virtual Machines (virtuálních počítačích) pomocí zálohování a obnovení a přenosu protokolu s využitím [Pomocník s migrací databáze (DMA)](/sql/dma/dma-overview) k posouzení. 
+Tato příručka k migraci vás seznámí s tím, jak **zjišťovat**, **vyhodnocovat** a **migrovat** vaše uživatelské databáze z SQL Server do instance SQL Server v Azure Virtual Machines (virtuálních počítačích) pomocí zálohování a obnovení a přenosu protokolu s využitím [Pomocník s migrací databáze (DMA)](/sql/dma/dma-overview) k posouzení. 
 
 Můžete migrovat SQL Server spuštěná místně nebo na:
 
@@ -33,14 +33,14 @@ Informace o dalších strategiích migrace najdete v tématu [Přehled migrace S
 
 :::image type="content" source="media/sql-server-to-sql-on-azure-vm-migration-overview/migration-process-flow-small.png" alt-text="Tok procesu migrace":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Migrace na SQL Server na virtuálních počítačích Azure vyžaduje následující: 
 
 - [Pomocník s migrací databáze (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
 - [Azure Migrate projekt](/azure/migrate/create-manage-projects).
 - Připravený cílový [SQL Server na virtuálním počítači Azure](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal) , který má stejnou nebo větší verzi než zdrojový SQL Server.
-- [Připojení mezi Azure a](/architecture/reference-architectures/hybrid-networking)místním prostředím.
+- [Připojení mezi Azure a](/azure/architecture/reference-architectures/hybrid-networking)místním prostředím.
 - [Výběr vhodné strategie migrace](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate).
 
 ## <a name="pre-migration"></a>Před migrací
@@ -59,7 +59,7 @@ Další nástroje pro zjišťování najdete v tématu [služby a nástroje](../
 
 ### <a name="assess"></a>Posouzení
 
-Po zjištění všech zdrojů dat použijte [Data Migration Assistant (DMA)](/dma/dma-overview) k vyhodnocení místních instancí SQL Server migrace na instanci SQL Server na virtuálním počítači Azure, abyste pochopili mezery mezi zdrojovou a cílovou instancí. 
+Po zjištění všech zdrojů dat použijte [Data Migration Assistant (DMA)](/sql/dma/dma-overview) k vyhodnocení místních instancí SQL Server migrace na instanci SQL Server na virtuálním počítači Azure, abyste pochopili mezery mezi zdrojovou a cílovou instancí. 
 
 
 > [!NOTE]
@@ -109,7 +109,7 @@ Důrazně doporučujeme, abyste při [následné migraci](#post-migration)nastav
 > Ne všechny verze SQL Server podporují všechny režimy kompatibility. Ověřte, zda vaše [cílová SQL Server verze](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level) podporuje vaši zvolenou kompatibilitu databáze. Například SQL Server 2019 nepodporuje databáze s kompatibilitou úrovně 90 (což je SQL Server 2005). Tyto databáze by vyžadovaly alespoň upgrade na úroveň kompatibility 100.
 >
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrace
 
 Po dokončení kroků před migrací jste připraveni k migraci uživatelských databází a součástí. Migrujte své databáze pomocí preferované [metody migrace](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate).  
 
@@ -123,7 +123,7 @@ K provedení standardní migrace pomocí zálohování a obnovení použijte ná
 1. Pozastavte nebo zastavte všechny aplikace, které používají databáze určené k migraci. 
 1. Zajistěte, aby byly uživatelské databáze neaktivní pomocí [režimu Single User](/sql/relational-databases/databases/set-a-database-to-single-user-mode). 
 1. Proveďte úplnou zálohu databáze do místního umístění.
-1. Zkopírujte místní záložní soubory do virtuálního počítače pomocí funkce Vzdálená plocha, [Azure Průzkumník dat](/data-explorer/data-explorer-overview)nebo [nástroje příkazového řádku AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (doporučeno zálohování > 2 TB).
+1. Zkopírujte místní záložní soubory do virtuálního počítače pomocí funkce Vzdálená plocha, [Azure Průzkumník dat](/azure/data-explorer/data-explorer-overview)nebo [nástroje příkazového řádku AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (doporučeno zálohování > 2 TB).
 1. Obnovte úplné zálohy databáze na SQL Server na virtuálním počítači Azure.
 
 ### <a name="log-shipping--minimize-downtime"></a>Přesouvání protokolu (minimalizace výpadků)
@@ -133,7 +133,7 @@ Chcete-li provést migraci s minimálními výpadky pomocí zálohování, obnov
 1. Na základě vašich požadavků nastavte připojení k cíli SQL Server na VIRTUÁLNÍm počítači Azure. Viz [připojení k virtuálnímu počítači s SQL Server v Azure (Správce prostředků)](../../virtual-machines/windows/ways-to-connect-to-sql.md).
 1. Zajistěte, aby místní databáze uživatelů, které mají být migrovány, byly v plném nebo hromadně protokolovaném modelu obnovení.
 1. Proveďte úplnou zálohu databáze do místního umístění a upravte všechny stávající úlohy zálohování databáze tak, aby používaly klíčové slovo [COPY_ONLY](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) pro zachování řetězce protokolu.
-1. Zkopírujte místní záložní soubory do virtuálního počítače pomocí funkce Vzdálená plocha, [Azure Průzkumník dat](/data-explorer/data-explorer-overview)nebo [nástroje příkazového řádku AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (doporučeno zálohování >1 TB).
+1. Zkopírujte místní záložní soubory do virtuálního počítače pomocí funkce Vzdálená plocha, [Azure Průzkumník dat](/azure/data-explorer/data-explorer-overview)nebo [nástroje příkazového řádku AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (doporučeno zálohování >1 TB).
 1. Obnovte úplné zálohy databáze na SQL Server na virtuálním počítači Azure.
 1. Nastavte [přesouvání protokolů](/sql/database-engine/log-shipping/configure-log-shipping-sql-server) mezi místní databází a cílovými SQL Server na virtuálním počítači Azure. Nezapomeňte znovu inicializovat databáze, protože již byly dokončeny v předchozích krocích.
 1. **Přeříznout** na cílový server. 

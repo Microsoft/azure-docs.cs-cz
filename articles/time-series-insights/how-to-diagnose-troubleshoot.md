@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: b994e8ce34319da4827d389b49e23ed6e5bcde95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d26a0ef86ab96940f3d5bb96d87340b77f1faca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653753"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016832"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Diagnostika a řešení potíží s prostředím Azure Time Series Insights Gen2
 
@@ -39,7 +39,7 @@ K dispozici je několik běžných důvodů, proč se vaše data nemusí zobrazi
 
 - Vaše zdrojová data události nejsou ve formátu JSON.
 
-    Time Series Insights podporuje pouze data JSON. V případě ukázek JSON čtěte [podporované tvary JSON](./how-to-shape-query-json.md).
+    Time Series Insights podporuje pouze data JSON. V případě ukázek JSON čtěte [podporované tvary JSON](./concepts-json-flattening-escaping-rules.md).
 
 - V klíči zdroje událostí chybí požadovaná oprávnění.
 
@@ -61,13 +61,13 @@ K dispozici je několik běžných důvodů, proč se vaše data nemusí zobrazi
 
 - Vaše vlastnost ID časové řady zadaná v době zřizování není správná, chybí nebo je null.
 
-    K tomuto problému může dojít, pokud je vlastnost ID časové řady v době zřizování prostředí nesprávně nakonfigurovaná. Další informace najdete v článku [osvědčené postupy pro výběr ID časové řady](./time-series-insights-update-how-to-id.md). V tuto chvíli nemůžete aktualizovat existující prostředí Time Series Insights tak, aby používalo jiné ID časové řady.
+    K tomuto problému může dojít, pokud je vlastnost ID časové řady v době zřizování prostředí nesprávně nakonfigurovaná. Další informace najdete v článku [osvědčené postupy pro výběr ID časové řady](./how-to-select-tsid.md). V tuto chvíli nemůžete aktualizovat existující prostředí Time Series Insights tak, aby používalo jiné ID časové řady.
 
 ## <a name="problem-some-data-shows-but-some-is-missing"></a>Problém: některá data jsou zobrazená, ale chybí.
 
 Můžete odesílat data bez ID časové řady.
 
-- K tomuto problému může dojít při odesílání událostí bez pole ID časové řady v datové části. Další informace najdete v článku [podporované tvary JSON](./how-to-shape-query-json.md).
+- K tomuto problému může dojít při odesílání událostí bez pole ID časové řady v datové části. Další informace najdete v článku [podporované tvary JSON](./concepts-json-flattening-escaping-rules.md).
 - K tomuto problému může dojít, protože vaše prostředí je omezené.
 
     > [!NOTE]
@@ -111,7 +111,7 @@ Pokud není explicitně zadaná vlastnost timestamp, použije se jako výchozí 
 
 - Možná přistupujete k Time Series Insights prostředí S1 nebo S2.
 
-   Modely časových řad se podporují jenom v prostředí s průběžnými platbami. Další informace o tom, jak přistupovat k prostředí S1 nebo S2 z Time Series Insights Průzkumníku Gen2, najdete [v článku vizualizace dat v Průzkumníkovi](./time-series-insights-update-explorer.md).
+   Modely časových řad se podporují jenom v prostředí s průběžnými platbami. Další informace o tom, jak přistupovat k prostředí S1 nebo S2 z Time Series Insights Průzkumníku Gen2, najdete [v článku vizualizace dat v Průzkumníkovi](./concepts-ux-panels.md).
 
    [![V prostředí nejsou žádné události.](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
@@ -121,7 +121,7 @@ Pokud není explicitně zadaná vlastnost timestamp, použije se jako výchozí 
 
 ## <a name="problem-all-my-instances-in-the-gen2-explorer-lack-a-parent"></a>Problém: všechny moje instance v Průzkumníkovi Gen2 nemají nadřazený objekt.
 
-K tomuto problému může dojít, pokud vaše prostředí nemá definovánu hierarchii modelu časové řady. Další informace najdete v článku o [práci s modely časových řad](/azure/time-series-insights/time-series-insights-overview).
+K tomuto problému může dojít, pokud vaše prostředí nemá definovánu hierarchii modelu časové řady. Další informace najdete v článku o [práci s modely časových řad](./time-series-insights-overview.md).
 
   [![Nenadřazené instance zobrazí upozornění.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
@@ -135,8 +135,8 @@ K tomuto problému může dojít, pokud v Power BI Desktop nepoužíváte nejnov
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si informace o tom, jak [pracovat s modely časových řad](/azure/time-series-insights/time-series-insights-overview).
+- Přečtěte si informace o tom, jak [pracovat s modely časových řad](./time-series-insights-overview.md).
 
-- Přečtěte si o [podporovaných tvarech JSON](./how-to-shape-query-json.md).
+- Přečtěte si o [podporovaných tvarech JSON](./concepts-json-flattening-escaping-rules.md).
 
-- Zkontrolujte [plánování a omezení](./time-series-insights-update-plan.md) v Azure Time Series Insights Gen2.
+- Zkontrolujte [plánování a omezení](./how-to-plan-your-environment.md) v Azure Time Series Insights Gen2.

@@ -10,26 +10,26 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 0a613ce64d2037fdc7ebad680939893f1faa0639
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: c16fc475e4982724ebc9f4f55301b6fc56dfb7c7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899018"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95017005"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>Rychlý Start: vytvoření trezoru klíčů Azure a klíče pomocí šablony ARM (Preview)
 
 [Azure Key Vault](../general/overview.md) je cloudová služba, která poskytuje zabezpečené úložiště tajných kódů, jako jsou klíče, hesla, certifikáty a další tajné kódy. Tento rychlý Start se zaměřuje na proces nasazení šablony Azure Resource Manager (šablona ARM) pro vytvoření trezoru klíčů a klíče.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup dokončení tohoto článku:
 
-- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
-
+- Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Uživatel musí mít přiřazenou roli RBAC Bult-in EG. skupinou. [Další informace](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 - Šablona potřebuje ke konfiguraci oprávnění vaše ID objektu uživatele Azure AD. Následující procedura získá ID objektu (GUID).
 
-    1. Spusťte následující Azure PowerShell nebo příkaz rozhraní příkazového řádku Azure CLI tak, že vyberete možnost **vyzkoušet** a potom tento skript vložíte do podokna prostředí. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit** .
+    1. Spusťte následující Azure PowerShell nebo příkaz rozhraní příkazového řádku Azure CLI tak, že vyberete možnost **vyzkoušet** a potom tento skript vložíte do podokna prostředí. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**.
 
         # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
         ```azurecli-interactive
@@ -95,7 +95,7 @@ Postup dokončení tohoto článku:
     },
     "keySize": {
       "type": "int",
-      "defaultValue": -1,
+      "defaultValue": 2048,
       "metadata": {
         "description": "The size in bits of the key to be created."
       }
@@ -143,7 +143,7 @@ Postup dokončení tohoto článku:
       "properties": {
         "kty": "[parameters('keyType')]",
         "keyOps": "[parameters('keyOps')]",
-        "keySize": "[if(equals(parameters('keySize'), -1), json('null'), parameters('keySize'))]",
+        "keySize": "[parameters('keySize')]",
         "curveName": "[parameters('curveName')]"
       }
     }

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: bad9757bb62d5175e725bfe8e005155040dccf36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9e0b438e0cfa729300099463086248780c69484c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458927"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019836"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Kurz: Azure Active Directory integrace s Kontiki
 
@@ -50,7 +50,7 @@ Kontiki podporuje následující funkce:
 
 Pokud chcete integrovat Kontiki s Azure AD, musíte přidat Kontiki do seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **Azure Active Directory**.
 
@@ -64,7 +64,7 @@ Pokud chcete integrovat Kontiki s Azure AD, musíte přidat Kontiki do seznamu s
 
     ![Možnost nové aplikace](common/add-new-app.png)
 
-1. Do vyhledávacího pole zadejte **Kontiki**. Ve výsledcích hledání vyberte **Kontiki**a pak vyberte **Přidat**.
+1. Do vyhledávacího pole zadejte **Kontiki**. Ve výsledcích hledání vyberte **Kontiki** a pak vyberte **Přidat**.
 
     ![Kontiki v seznamu výsledků](common/search-new-app.png)
 
@@ -74,7 +74,7 @@ V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Kontiki, musíte dokončit tyto stavební bloky:
 
-| Úloha | Popis |
+| Úkol | Popis |
 | --- | --- |
 | **[Konfigurace jednotného přihlašování Azure AD](#configure-azure-ad-single-sign-on)** | Umožňuje uživatelům používat tuto funkci. |
 | **[Konfigurace jednotného přihlašování Kontiki](#configure-kontiki-single-sign-on)** | Nakonfiguruje nastavení jednotného přihlašování v aplikaci. |
@@ -104,7 +104,7 @@ V této části nakonfigurujete jednotné přihlašování Azure AD pomocí Kont
     ![Informace o jednotném přihlašování v doméně Kontiki a adresách URL](common/sp-signonurl.png)
 
     > [!NOTE]
-    > Pokud chcete získat správnou hodnotu, obraťte se na [tým podpory klienta Kontiki](https://customersupport.kontiki.com/enterprise/contactsupport.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Pokud chcete získat správnou hodnotu, obraťte se na [tým podpory klienta Kontiki](https://kollective.com/support/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. V podokně **nastavit jednu Sign-On s** podoknem SAML vyberte v části **podpisový certifikát SAML** možnost **Stáhnout** vedle **metadat federace XML**. Vyberte možnost stažení podle vašich požadavků. Uložte certifikát do počítače.
 
@@ -120,7 +120,7 @@ V této části nakonfigurujete jednotné přihlašování Azure AD pomocí Kont
 
 ### <a name="configure-kontiki-single-sign-on"></a>Konfigurace jednotného přihlašování Kontiki
 
-Ke konfiguraci jednotného přihlašování na straně Kontiki odešlete stažený soubor XML federačních metadat a příslušné adresy URL, které jste zkopírovali z Azure Portal do [týmu podpory Kontiki](https://customersupport.kontiki.com/enterprise/contactsupport.html). Tým podpory Kontiki používá informace, které odesíláte, aby se zajistilo, že připojení jednotného přihlašování pomocí protokolu SAML je na obou stranách správně nastavené.
+Ke konfiguraci jednotného přihlašování na straně Kontiki odešlete stažený soubor XML federačních metadat a příslušné adresy URL, které jste zkopírovali z Azure Portal do [týmu podpory Kontiki](https://kollective.com/support/). Tým podpory Kontiki používá informace, které odesíláte, aby se zajistilo, že připojení jednotného přihlašování pomocí protokolu SAML je na obou stranách správně nastavené.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -138,7 +138,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **brittasimon \@ \<your-company-domain> . \<extension> **. Například **brittasimon \@ contoso.com**.
+    1. Do pole **uživatelské jméno** zadejte **brittasimon \@ \<your-company-domain> . \<extension>**. Například **brittasimon \@ contoso.com**.
 
     1. Zaškrtněte políčko **Zobrazit heslo** . Zapište hodnotu, která se zobrazí v poli **heslo** .
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: 5ef681e335cf49a1759a096766b5ccd70545e60a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c855be6d31a1ee46434ecadbeae7a36dd6a3ff95
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324701"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018799"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Omezení pro LUIS model a klíče
 LUIS má několik omezených oblastí. První je [limit modelu](#model-limits), který řídí záměry, entity a funkce v Luis. Druhá oblast má [omezení kvóty](#key-limits) na základě typu klíče. Třetí oblastí omezení je [kombinace kláves](#keyboard-controls) pro řízení webu Luis. Čtvrtá oblast je [mapování světové oblasti](luis-reference-regions.md) mezi vytvářením webu Luis a rozhraními API [koncového bodu](luis-glossary.md#endpoint) Luis.
@@ -32,16 +32,16 @@ Pokud vaše aplikace překračuje omezení modelu LUIS, zvažte použití aplika
 | [Vytvoření seznamu entit](./luis-concept-entity-types.md) | Nadřazený objekt: 50, podřízené položky: 20 000. Kanonický název je * výchozí hodnota Maximum znaků. Hodnoty synonym nemají omezení délky. |
 | [entity strojového učení + role](./luis-concept-entity-types.md):<br> Náhled<br>pouh<br>role entity|Limit buď pro 100 nadřazených entit, nebo na 330 entit, podle toho, které uživatele omezují napřed. Role se počítá jako entita pro účely tohoto limitu. Příklad je složený s jednoduchou entitou, která má 2 role: 1 složený + 1 jednoduché + 2 role = 4 entit 330.<br>Subentity můžou být vnořené až o 5 úrovní.|
 |Model jako funkce| Maximální počet modelů, které se dají použít jako funkce pro konkrétní model, je 10 modelů. Maximální počet seznamů frází použitých jako funkce pro určitý model má být 10 frázových seznamů.|
-| [Náhled – entity dynamického seznamu](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 seznamy ~ 1 tisíc na požadavek koncového bodu předpovědi dotazu|
+| [Náhled – entity dynamického seznamu](./luis-migration-api-v3.md)|2 seznamy ~ 1 tisíc na požadavek koncového bodu předpovědi dotazu|
 | [Vzory](luis-concept-patterns.md)|500 vzorů na aplikaci<br>Maximální délka vzorku je 400 znaků.<br>3 vzor. jakékoli entity na vzor<br>Maximálně 2 vnořených volitelných textů ve vzoru|
 | [Vzor. any](./luis-concept-entity-types.md)|100 na aplikaci, 3 vzor. libovolný počet entit na vzor |
 | [Seznam frází][phrase-list]|seznamy frází 500. 10 globálních frázových seznamů z důvodu modelu jako omezení funkce. Seznam frází bez možnosti změny má maximálně 5 000 frází. Seznam frází, který se mění, má maximálně 50 000 frází. Maximální počet všech frází na aplikaci 500 000 frází|
-| [Předem připravené entity](./luis-prebuilt-entities.md) | bez omezení|
+| [Předem připravené entity](./howto-add-prebuilt-models.md) | bez omezení|
 | [Entity regulárního výrazu](./luis-concept-entity-types.md)|20 entit<br>maximální počet znaků: 500 pro vzor entity regulárního výrazu|
-| [Role](luis-concept-roles.md)|role 300 na aplikaci 10 rolí na entitu|
+| [Role](./luis-concept-entity-types.md)|role 300 na aplikaci 10 rolí na entitu|
 | [Promluva][utterances] | 500 znaků<br><br>Pokud máte text delší, než je tento limit znaků, je nutné nejprve segmentovat utterance před vstupem do LUIS a obdržíte jednotlivé reakce na segment. Existují zřejmé přestávky, se kterými můžete pracovat, jako jsou například interpunkční znaménka a dlouhá pauza v řeči.|
 | [Příklady utterance][utterances] | 15 000 na aplikaci – počet projevy na záměr není nijak omezený.<br><br>Pokud potřebujete vytvořit výuku aplikace s dalšími příklady, použijte přístup k modelu [odeslání](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) . Jednotlivé aplikace LUIS (označované jako podřízené aplikace pro nadřazenou aplikaci pro expedici) provedete pomocí jednoho nebo více záměrů a potom zajistěte odeslání aplikace, která se vzorkuje z každého podřízeného projevy aplikace LUIS, aby směrovala požadavek předpovědi na správnou podřízenou aplikaci. |
-| [Versions](luis-concept-version.md) (Verze)| verze 100 na aplikaci |
+| [Versions](./luis-concept-app-iteration.md) (Verze)| verze 100 na aplikaci |
 | [Název verze][luis-how-to-manage-versions] | 128 znaků |
 
 * Výchozí znak maxima je 50 znaků.
@@ -108,7 +108,7 @@ _kind_ `LUIS` Při filtrování prostředků v Azure Portal použijte druh. Pros
 
 ## <a name="keyboard-controls"></a>Ovládací prvky klávesnice
 
-|Vstup z klávesnice | Description |
+|Vstup z klávesnice | Popis |
 |--|--|
 |CTRL + E|Přepíná mezi tokeny a entitami v seznamu projevy.|
 
@@ -116,12 +116,12 @@ _kind_ `LUIS` Při filtrování prostředků v Azure Portal použijte druh. Pros
 
 Přístup k vašemu přihlašování je určen **60 minut**. Tato chyba se zobrazí po uplynutí tohoto časového období. Budete se muset znovu přihlásit.
 
-[luis-get-started-create-app]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app
-[batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test#batch-testing
-[intents]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-intent
-[phrase-list]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-feature
-[utterances]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-utterance
-[luis-how-to-manage-versions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions
+[luis-get-started-create-app]: ./luis-get-started-create-app.md
+[batch-testing]: ./luis-concept-test.md#batch-testing
+[intents]: ./luis-concept-intent.md
+[phrase-list]: ./luis-concept-feature.md
+[utterances]: ./luis-concept-utterance.md
+[luis-how-to-manage-versions]: ./luis-how-to-manage-versions.md
 [pricing]: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/
 <!-- TBD: fix this link -->
 [speech-to-intent-pricing]: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/

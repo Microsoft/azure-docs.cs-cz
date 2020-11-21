@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 49a763af8d936ec9fd15c59c908ba9015f803930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 639f2ef12d190a56e04a9b48d96ea0a6537d243c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568648"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020108"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Průzkumník Gen1
 
@@ -45,8 +45,8 @@ Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládán�
 Než budete moct použít Azure Time Series Insights Explorer, musíte:
 
 - Vytvořte Azure Time Series Insights prostředí. Další informace najdete v článku [jak začít s Azure Time Series Insights](./time-series-insights-get-started.md).
-- [Poskytněte](time-series-insights-data-access.md) v prostředí přístup k vašemu účtu.
-- Přidejte do něj zdroj události služby [IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md) nebo [centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md) .
+- [Poskytněte](./concepts-access-policies.md) v prostředí přístup k vašemu účtu.
+- Přidejte do něj zdroj události služby [IoT Hub](./how-to-ingest-data-iot-hub.md) nebo [centra událostí](./how-to-ingest-data-event-hub.md) .
 
 ## <a name="explore-and-query-data"></a>Prozkoumat data a dotazovat se na ně
 

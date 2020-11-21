@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: a5760db2d6e453d631680d6154e6d9a03ce55cd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541335"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018782"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Předpověď změn koncového bodu pro v3
 
@@ -60,7 +60,7 @@ Pokud víte, že žádná z vašich klientských aplikací nebo integrace (bot F
 
 ### <a name="bing-spell-check"></a>Kontrola pravopisu Bingu
 
-Toto rozhraní API se v koncovém bodě verze V3 nepodporuje – pro opravy pravopisu je dál používán koncový bod pro předpověď rozhraní v2 API. Pokud při použití rozhraní V3 API potřebujete korekci pravopisu, požádejte o klientskou aplikaci rozhraní API [Kontrola pravopisu Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) a před odesláním textu do rozhraní API Luis změňte text na správný pravopis.
+Toto rozhraní API se v koncovém bodě verze V3 nepodporuje – pro opravy pravopisu je dál používán koncový bod pro předpověď rozhraní v2 API. Pokud při použití rozhraní V3 API potřebujete korekci pravopisu, požádejte o klientskou aplikaci rozhraní API [Kontrola pravopisu Bingu](../bing-spell-check/overview.md) a před odesláním textu do rozhraní API Luis změňte text na správný pravopis.
 
 ## <a name="bot-framework-and-azure-bot-service-client-applications"></a>Rozhraní bot Framework a klientské aplikace Azure Bot Service
 
@@ -109,7 +109,7 @@ Pokud se chcete dotazovat podle verze, musíte nejdřív [publikovat přes rozhr
 |`externalEntities`|array|Jenom V3|Nepožadováno.|[Externí entity](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) poskytují vaší aplikaci Luis schopnost identifikovat a označovat entity za běhu, které se dají použít jako funkce pro stávající entity. |
 |`options.datetimeReference`|řetězec|Jenom V3|Žádná výchozí|Používá se k určení [posunu datetimeV2](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity). Formát pro datetimeReference je [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
 |`options.preferExternalEntities`|boolean|Jenom V3|false (nepravda)|Určuje, jestli se použije [Externí entita uživatele (se stejným názvem jako existující entita)](schema-change-prediction-runtime.md#override-existing-model-predictions) , nebo jestli se existující entita v modelu používá pro předpověď. |
-|`query`|řetězec|Jenom V3|Povinná hodnota.|**V v2**je utterance, který má být předpovězen, v `q` parametru. <br><br>**V v3**je funkce předána do `query` parametru.|
+|`query`|řetězec|Jenom V3|Povinná hodnota.|**V v2** je utterance, který má být předpovězen, v `q` parametru. <br><br>**V v3** je funkce předána do `query` parametru.|
 
 ## <a name="response-changes"></a>Změny odpovědí
 
@@ -162,9 +162,9 @@ Změny schématu JSON odpovědi umožňují:
 
 #### <a name="marking-placement-of-entities-in-utterances"></a>Označení umístění entit v projevy
 
-**V v2**byla entita označena v utterance s `startIndex` a `endIndex` .
+**V v2** byla entita označena v utterance s `startIndex` a `endIndex` .
 
-**V v3**je entita označena pomocí `startIndex` a `entityLength` .
+**V v3** je entita označena pomocí `startIndex` a `entityLength` .
 
 #### <a name="access-instance-for-entity-metadata"></a>Přístup `$instance` k metadatům entit
 

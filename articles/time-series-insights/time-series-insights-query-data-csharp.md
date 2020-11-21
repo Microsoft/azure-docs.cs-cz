@@ -11,24 +11,24 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a7dd67387a541ff62bfa85a7afc2f1bbf31c6180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 724bc80f8887ff2c47db93ecfc4cd2e20be7e7f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596429"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020040"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>Dotazování dat z prostředí Azure Time Series Insights Gen1 pomocí jazyka C Sharp
 
 > [!CAUTION]
 > Toto je Gen1 článek.
 
-Tento příklad v jazyce C# ukazuje, jak používat [rozhraní API pro dotazy Gen1](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) k dotazování dat z prostředí Azure Time Series Insights Gen1.
+Tento příklad v jazyce C# ukazuje, jak používat [rozhraní API pro dotazy Gen1](/rest/api/time-series-insights/gen1-query) k dotazování dat z prostředí Azure Time Series Insights Gen1.
 
 > [!TIP]
 > Prohlédněte si ukázky kódu C# Gen1 na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Vzorový kód níže znázorňuje následující funkce:
 
@@ -37,22 +37,22 @@ Vzorový kód níže znázorňuje následující funkce:
 * Postup předání tohoto přístupového tokenu v `Authorization` hlavičce dalších požadavků na rozhraní API pro dotazy.
 
 * Ukázka volá všechna rozhraní API pro dotazy Gen1, která demonstrují, jak jsou požadavky HTTP provedeny:
-  * [Získat prostředí API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environments-api) pro vrácení prostředí, ke kterým má uživatel přístup
-  * [Získat rozhraní API dostupnosti prostředí](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-availability-api)
-  * [Získat rozhraní API metadat prostředí](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api) pro načtení metadat prostředí
-  * [Získat rozhraní API pro události prostředí](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-api)
-  * [Získat rozhraní API pro agregace prostředí](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api)
+  * [Získat prostředí API](/rest/api/time-series-insights/gen1-query-api#get-environments-api) pro vrácení prostředí, ke kterým má uživatel přístup
+  * [Získat rozhraní API dostupnosti prostředí](/rest/api/time-series-insights/gen1-query-api#get-environment-availability-api)
+  * [Získat rozhraní API metadat prostředí](/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api) pro načtení metadat prostředí
+  * [Získat rozhraní API pro události prostředí](/rest/api/time-series-insights/gen1-query-api#get-environment-events-api)
+  * [Získat rozhraní API pro agregace prostředí](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api)
 
 * Jak pracovat s rozhraními API pro dotazy Gen1 pomocí WSS ke zprávě:
 
-  * [Načíst rozhraní API pro streamované události prostředí](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-streamed-api)
-  * [Načíst rozhraní API pro agregované datové prostředí](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-streamed-api)
+  * [Načíst rozhraní API pro streamované události prostředí](/rest/api/time-series-insights/gen1-query-api#get-environment-events-streamed-api)
+  * [Načíst rozhraní API pro agregované datové prostředí](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-streamed-api)
 
 ## <a name="prerequisites-and-setup"></a>Požadavky a instalace
 
 Před kompilací a spuštěním ukázkového kódu proveďte následující kroky:
 
-1. [Zřídí prostředí Gen1 Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) .
+1. [Zřídí prostředí Gen1 Azure Time Series Insights](./time-series-insights-get-started.md) .
 1. Nakonfigurujte Azure Time Series Insights prostředí pro Azure Active Directory, jak je popsáno v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md).
 1. Nainstalujte požadované závislosti projektu.
 1. Níže uvedený ukázkový kód nahraďte každým **#DUMMY #** a příslušným identifikátorem prostředí.
@@ -69,7 +69,7 @@ Vzorový kód má dvě požadované závislosti:
 * Balíček [Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9.
 * [Newtonsoft.Jsbalíček on](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1.
 
-Stáhněte si balíčky v aplikaci Visual Studio 2019 tak, **Build**že vyberete  >  možnost**řešení** sestavení sestavení.
+Stáhněte si balíčky v aplikaci Visual Studio 2019 tak, **Build** že vyberete  >  možnost **řešení** sestavení sestavení.
 
 Případně přidejte balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/):
 
@@ -82,7 +82,7 @@ Chcete-li získat přístup k ukázkovému kódu jazyka C#, přečtěte si pros�
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dotazování najdete v referenčních informacích k [rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api).
+* Další informace o dotazování najdete v referenčních informacích k [rozhraní API pro dotazy](/rest/api/time-series-insights/gen1-query-api).
 
 * Přečtěte si, jak [připojit aplikaci JavaScriptu pomocí klientské sady SDK](https://github.com/microsoft/tsiclient) pro Time Series Insights.
 Azure-Samples/Azure-Time-Series-Insights/Gen1-Sample/CSharp-TSI-Gen1-Sample/program. cs

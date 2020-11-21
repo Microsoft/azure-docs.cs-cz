@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b60a6e53e8fecd71885204690231776ff69fc08f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328875"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018371"
 ---
 # <a name="configure-device-redirections"></a>Konfigurace přesměrování zařízení
 
@@ -19,11 +19,11 @@ Konfigurace přesměrování zařízení pro prostředí virtuálních počíta�
 
 ## <a name="supported-device-redirections"></a>Podporovaná přesměrování zařízení
 
-Každý klient podporuje různé přesměrování zařízení. Úplný seznam podporovaných přesměrování zařízení pro každého klienta najdete v části [porovnání klientů](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare) .
+Každý klient podporuje různé přesměrování zařízení. Úplný seznam podporovaných přesměrování zařízení pro každého klienta najdete v části [porovnání klientů](/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare) .
 
 ## <a name="customizing-rdp-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokolu RDP pro fond hostitelů
 
-Další informace o přizpůsobení vlastností protokolu RDP pro fond hostitelů pomocí PowerShellu nebo Azure Portal najdete v části [Vlastnosti protokolu RDP](customize-rdp-properties.md). Úplný seznam podporovaných vlastností protokolu RDP najdete v části [podporované nastavení souboru RDP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context).
+Další informace o přizpůsobení vlastností protokolu RDP pro fond hostitelů pomocí PowerShellu nebo Azure Portal najdete v části [Vlastnosti protokolu RDP](customize-rdp-properties.md). Úplný seznam podporovaných vlastností protokolu RDP najdete v části [podporované nastavení souboru RDP](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext).
 
 ## <a name="setup-device-redirections"></a>Nastavit přesměrování zařízení
 
@@ -78,7 +78,7 @@ Nejdřív nastavte následující vlastnost RDP tak, aby umožňovala přesměro
 
 Potom na místním zařízení uživatele nastavte následující Zásady skupiny:
 
-- Přejděte k **Computer Configuration**  >  **zásadám**konfigurace počítače >  **šablony pro správu**  >  **součásti systému Windows**  >  **Vzdálená plocha**  >  **připojení ke vzdálené ploše klient**  >  **RemoteFX USB přesměrování zařízení**.
+- Přejděte k **Computer Configuration**  >  **zásadám** konfigurace počítače >  **šablony pro správu**  >  **součásti systému Windows**  >  **Vzdálená plocha**  >  **připojení ke vzdálené ploše klient**  >  **RemoteFX USB přesměrování zařízení**.
 - Vyberte možnost **Povolit přesměrování protokolu RDP dalších podporovaných zařízení USB RemoteFX z tohoto počítače**.
 - Vyberte možnost **povoleno** a potom zaškrtněte políčko **Správci a uživatelé v seznamu přístupová práva přesměrování USB RemoteFX** .
 - Vyberte **OK**.

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/18/2020
-ms.openlocfilehash: fcc803e87b2efd3e94b90eb17258ab3bb156359f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dd06a7b4c8e6296cda747d17fd3d5be5db0af6b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541424"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018884"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Vytvoření nové aplikace LUIS na portálu LUIS
 Existuje několik způsobů, jak vytvořit aplikaci LUIS. Aplikaci LUIS můžete vytvořit na portálu LUIS nebo prostřednictvím [rozhraní API](developer-reference-resource.md)pro vytváření Luis.
@@ -24,7 +24,7 @@ Existuje několik způsobů, jak vytvořit aplikaci LUIS. Aplikaci LUIS můžete
 Novou aplikaci můžete vytvořit na portálu několika způsoby:
 
 * Začněte s prázdnou aplikací a vytvořte záměry, projevy a entity.
-* Začněte s prázdnou aplikací a přidejte [předem vytvořenou doménu](luis-how-to-use-prebuilt-domains.md).
+* Začněte s prázdnou aplikací a přidejte [předem vytvořenou doménu](./howto-add-prebuilt-models.md).
 * Importujte aplikaci LUIS ze `.lu` `.json` souboru nebo, který už obsahuje záměry, projevy a entity.
 
 ## <a name="using-the-authoring-apis"></a>Použití rozhraní API pro vytváření obsahu
@@ -43,7 +43,7 @@ Novou aplikaci s rozhraními API pro vytváření obsahu můžete vytvořit něk
 
 ## <a name="create-new-app-in-luis"></a>Vytvoření nové aplikace v LUIS
 
-1. Na stránce **Moje aplikace** vyberte své **předplatné**a vytvořte  **prostředek** a potom **+ vytvořit**. 
+1. Na stránce **Moje aplikace** vyberte své **předplatné** a vytvořte  **prostředek** a potom **+ vytvořit**. 
 
 > [!div class="mx-imgBorder"]
 > ![Seznam aplikací LUIS](./media/create-app-in-portal.png)
@@ -75,4 +75,4 @@ Panel nástrojů kontextu poskytuje další akce:
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud návrh aplikace zahrnuje detekci záměrů, [vytvořte nové záměry](luis-how-to-add-intents.md)a přidejte příklad projevy. Pokud je návrh aplikace pouze extrahování dat, přidejte příklad projevy k záměru None, pak [vytvořte entity](luis-how-to-add-example-utterances.md)a označte příklad projevy s těmito entitami.
+Pokud návrh aplikace zahrnuje detekci záměrů, [vytvořte nové záměry](luis-how-to-add-intents.md)a přidejte příklad projevy. Pokud je návrh aplikace pouze extrahování dat, přidejte příklad projevy k záměru None, pak [vytvořte entity](./luis-how-to-add-entities.md)a označte příklad projevy s těmito entitami.

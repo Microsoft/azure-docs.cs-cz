@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 10/13/2020
-ms.openlocfilehash: 60151e97c64a3d61044e4b82299573ee59951d46
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128121"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019156"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace domácí automatizace
 
@@ -25,26 +25,26 @@ Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace)
 
 ### <a name="create-an-application"></a>Vytvoření aplikace
 
-Pokud chcete vytvořit aplikaci, klikněte na  **+ Nová aplikace** . 
+Pokud chcete vytvořit aplikaci, klikněte na  **+ Nová aplikace**. 
 
 V okně, které se zobrazí, zadejte následující informace:
 
-|Název  |Description  |
+|Název  |Popis  |
 |---------|---------|
 |AName     | Název vaší aplikace. Například "domácí automatizace".        |
 |Kultura     | Jazyk, který vaše aplikace chápe a mluví.   |
-|Description | Popis vaší aplikace
+|Popis | Popis vaší aplikace
 |Prostředek předpovědi | Předpověď prostředku, který bude přijímat dotazy. |
 
-Vyberte **Hotovo** .
+Vyberte **Hotovo**.
 
 >[!NOTE]
 >Jakmile se aplikace vytvoří, nemůžete změnit její jazykovou verzi.
 
 ## <a name="add-prebuilt-domain"></a>Přidání předem připravené domény
 
-1. V levém navigačním panelu vyberte předem **sestavené domény** .
-1. Vyhledejte **HomeAutomation** .
+1. V levém navigačním panelu vyberte předem **sestavené domény**.
+1. Vyhledejte **HomeAutomation**.
 1. Na kartě HomeAutomation vyberte **Přidat doménu** .
 
     > [!div class="mx-imgBorder"]
@@ -59,12 +59,12 @@ Vyberte **Hotovo** .
     > [!NOTE]
     > **None** (Žádný) je záměr, který poskytují všechny aplikace LUIS. Používá se ke zpracování promluv, které neodpovídají funkci poskytované vaší aplikací.
 
-1. Vyberte záměr **HomeAutomation.TurnOff** . Záměr obsahuje seznam příkladů projevyů, které jsou označeny entitami.
+1. Vyberte záměr **HomeAutomation.TurnOff**. Záměr obsahuje seznam příkladů projevyů, které jsou označeny entitami.
 
     > [!div class="mx-imgBorder"]
     > [![Snímek obrazovky záměru HomeAutomation.TurnOff](media/luis-quickstart-new-app/home-automation-turnoff.png "Snímek obrazovky záměru HomeAutomation.TurnOff")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
-1. Pokud chcete zobrazit entity pro aplikaci, vyberte **entity** . Pokud kliknete na jednu z entit, například **HomeAutomation. název_zařízení** , zobrazí se seznam hodnot, které jsou k němu přidružené. 
+1. Pokud chcete zobrazit entity pro aplikaci, vyberte **entity**. Pokud kliknete na jednu z entit, například **HomeAutomation. název_zařízení** , zobrazí se seznam hodnot, které jsou k němu přidružené. 
  
     :::image type="content" source="media/luis-quickstart-new-app/entities-page.png" alt-text="Alternativní text obrázku" lightbox="media/luis-quickstart-new-app/entities-page.png":::
 
@@ -77,9 +77,9 @@ Jakmile aplikaci vytrénujete, můžete ji otestovat.
 
 1. Vyberte **test** z pravé horní navigační části.
 
-1. Zadejte utterance testu jako `Turn off the lights` do interaktivního testovacího podokna a stiskněte klávesu ENTER. Například vypněte *světla* .
+1. Zadejte utterance testu jako `Turn off the lights` do interaktivního testovacího podokna a stiskněte klávesu ENTER. Například vypněte *světla*.
 
-    V tomto příkladu `Turn off the lights` je správně identifikován jako nejlepší vyhodnocovací záměr **HomeAutomation. TurnOff** .
+    V tomto příkladu `Turn off the lights` je správně identifikován jako nejlepší vyhodnocovací záměr **HomeAutomation. TurnOff**.
 
     ![Snímek obrazovky testovacího panelu se zvýrazněnou promluvou](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
@@ -98,12 +98,12 @@ Aby bylo možné získat LUIS předpověď v robotu chatu nebo v jiné klientsk�
 
 1. V pravém horním rohu okna vyberte **publikovat** .
 
-1. Vyberte **produkční** slot a potom vyberte **Hotovo** .
+1. Vyberte **produkční** slot a potom vyberte **Hotovo**.
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s LUIS publikováním do koncového bodu](media/howto-publish/publish-app-popup.png)
 
-1. Vyberte odkaz **přístup k adresám URL koncových bodů** v oznámení, abyste přešli na stránku **prostředků Azure** . Adresa URL koncového bodu je uvedena jako **vzorový dotaz** .
+1. Vyberte odkaz **přístup k adresám URL koncových bodů** v oznámení, abyste přešli na stránku **prostředků Azure** . Adresa URL koncového bodu je uvedena jako **vzorový dotaz**.
 
 <!-- [!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)] -->
 
@@ -223,4 +223,4 @@ Aby bylo možné získat LUIS předpověď v robotu chatu nebo v jiné klientsk�
 Koncový bod můžete volat prostřednictvím kódu:
 
 > [!div class="nextstepaction"]
-> [Volání koncového bodu služby LUIS pomocí kódu](luis-get-started-cs-get-intent.md)
+> [Volání koncového bodu služby LUIS pomocí kódu](./luis-get-started-get-intent-from-rest.md)

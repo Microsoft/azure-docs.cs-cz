@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: rozpoznávání záměru
-ms.openlocfilehash: 0d718459e0fd0ea410232d3a165b560aa8c59cd1
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174633"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018697"
 ---
 # <a name="what-is-intent-recognition"></a>Co je rozpoznávání záměru?
 
@@ -29,7 +29,7 @@ Pomocí rozpoznávání záměrů můžou vaše aplikace, nástroje a zařízen�
 
 * Služba LUIS se integruje se službou Speech za účelem rozpoznávání záměrů z řeči. Nepotřebujete předplatné služby Speech, stačí vám služba LUIS.
 * Rozpoznávání záměru řeči je integrováno do sady SDK. Ke službě Speech můžete použít LUIS klíč.
-* Rozpoznávání záměrů prostřednictvím sady Speech SDK se [nabízí v podmnožině oblastí, které podporuje Luis](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#intent-recognition).
+* Rozpoznávání záměrů prostřednictvím sady Speech SDK se [nabízí v podmnožině oblastí, které podporuje Luis](./regions.md#intent-recognition).
 
 ## <a name="get-started"></a>Začínáme
 
@@ -39,8 +39,8 @@ Projděte si [rychlý Start](quickstarts/intent-recognition.md) a začněte s ro
 
 Vzorový kód pro rozpoznávání záměru:
 
-* [Rychlý start: Použití předem připravené aplikace domácí automatizace](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)
-* [Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro jazyk C #](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)
+* [Rychlý start: Použití předem připravené aplikace domácí automatizace](../luis/luis-get-started-create-app.md)
+* [Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro jazyk C #](./how-to-recognize-intents-from-speech-csharp.md)
 * [Rozpoznávání záměrů a jiné služby pro rozpoznávání řeči využívající Unity v jazyce C #](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/speechrecognizer)
 * [Rozpoznávání záměrů pomocí sady Speech SDK for Python](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)
 * [Rozpoznávání záměrů a jiné služby pro rozpoznávání řeči pomocí sady Speech SDK pro C++ ve Windows](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console)
@@ -49,7 +49,7 @@ Vzorový kód pro rozpoznávání záměru:
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Speech SDK](speech-sdk-reference.md)
+* [Speech SDK](./speech-sdk.md)
 
 ## <a name="next-steps"></a>Další kroky
 

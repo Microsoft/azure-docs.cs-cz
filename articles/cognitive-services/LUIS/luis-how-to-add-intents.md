@@ -9,18 +9,18 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.service: cognitive-services
-ms.openlocfilehash: c2802f1b41ed2842e12c808a8c380ebd646ffa03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2401c032f0fc90024e0049fad5f696b8a184544
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540927"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018935"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Přidání záměrů k určení záměru uživatele projevy
 
 Přidejte do aplikace LUIS [záměry](luis-concept-intent.md) k identifikaci skupin dotazů nebo příkazů, které mají stejný záměr.
 
-V portálu LUIS se záměry spravují z části **sestavení** v horním navigačním panelu a pak z **záměrů**v levém panelu.
+V portálu LUIS se záměry spravují z části **sestavení** v horním navigačním panelu a pak z **záměrů** v levém panelu.
 
 ## <a name="add-an-intent-to-your-app"></a>Přidání záměru do aplikace
 
@@ -81,4 +81,4 @@ Po přidání, úpravě nebo odebrání záměrů, [školení](luis-how-to-train
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o přidání [ukázkového projevyu](luis-how-to-add-example-utterances.md) s entitami.
+Přečtěte si další informace o přidání [ukázkového projevyu](./luis-how-to-add-entities.md) s entitami.

@@ -11,12 +11,12 @@ ms.date: 9/25/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 60fb258fe2c6063b9b9a3ced0f4ba5f71ffd9d7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ead3393218255808eb67983251fcf9f2561c82c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449509"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020176"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Použití Azure Stream Analytics se službou Azure Synapse Analytics
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak používat datový sklad jako výstupní jímk
     2. Konfigurace a spuštění aplikace generátoru událostí
     3. Zřízení Stream Analytics úlohy
     4. Zadat vstup a dotaz úlohy
-* Fond SQL Azure synapse pro datový sklad – Chcete-li vytvořit nový datový sklad, postupujte podle kroků v [rychlém startu a vytvořte nový datový sklad](create-data-warehouse-portal.md).
+* Synapse vyhrazený fond SQL pro datový sklad – Chcete-li vytvořit nový datový sklad, postupujte podle kroků v [rychlém startu a vytvořte nový datový sklad](create-data-warehouse-portal.md).
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Zadejte výstup streamování, který odkazuje na datový sklad.
 
@@ -52,8 +52,8 @@ Zadejte tyto hodnoty:
 
 * *Alias pro výstup*: zadejte popisný název pro tento výstup úlohy.
 * *Předplatné*:
-  * Pokud je váš datový sklad ve stejném předplatném, jaké má Stream Analytics úloha, klikněte na ***Vybrat Azure synapse Analytics z vašich předplatných***.
-  * Pokud je váš datový sklad v jiném předplatném, klikněte na možnost zadat nastavení Azure synapse Analytics ručně.
+  * Pokud je váš datový sklad ve stejném předplatném, jaké má Stream Analytics úloha, klikněte na ***Vyberte Azure synapse Analytics z vašich předplatných** _.
+  _ Pokud je váš datový sklad v jiném předplatném, klikněte na možnost zadat nastavení služby Azure synapse Analytics ručně.
 * *Databáze*: v rozevíracím seznamu vyberte cílovou databázi.
 * *Uživatelské jméno*: zadejte uživatelské jméno účtu, který má pro databázi oprávnění k zápisu.
 * *Heslo*: zadejte heslo pro zadaný uživatelský účet.
@@ -100,23 +100,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 ### <a name="step-5"></a>Krok 5
 
-V úloze Azure Portal for Stream Analytics klikněte na název vaší úlohy.  V podokně ***podrobností výstupu*** klikněte na tlačítko ***test*** .
+V úloze Azure Portal for Stream Analytics klikněte na název vaší úlohy.  Klikněte na tlačítko **_test_* _ v podokně _*_Podrobnosti výstupu_*_ .
 
 ![Tlačítko Test na výstupu details v ](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) případě úspěšného připojení k databázi se zobrazí oznámení na portálu.
 
 ### <a name="step-6"></a>Krok 6
 
-Klikněte na nabídku ***dotaz*** v části ***topologie úlohy*** a změňte dotaz na vložení dat do výstupního proudu, který jste vytvořili.  Kliknutím na tlačítko ***testovat vybraný dotaz*** otestujete dotaz.  Po úspěšném testu dotazu klikněte na tlačítko ***Uložit dotaz*** .
+Klikněte na nabídku _*_dotaz_*_ v části _*_topologie úlohy_*_ a změňte dotaz na vložení dat do výstupního proudu, který jste vytvořili.  Kliknutím na tlačítko _*_testovat vybraný dotaz_*_ otestujete dotaz.  Po úspěšném testu dotazu klikněte na tlačítko _*_Uložit dotaz_*_ .
 
 ![Uložit dotaz](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>Krok 7
 
-Spusťte úlohu Azure Stream Analytics.  V nabídce ***Přehled*** klikněte na tlačítko ***Start*** .
+Spusťte úlohu Azure Stream Analytics.  V nabídce _*_Přehled_*_ klikněte na tlačítko _*_Start_*_ .
 
 ![Spuštění úlohy Stream Analytics](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-Klikněte na tlačítko ***Start*** v podokně úloha spuštění.
+V podokně spuštění úlohy klikněte na tlačítko _ *_Start_**.
 
 ![Klikněte na tlačítko Start](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 

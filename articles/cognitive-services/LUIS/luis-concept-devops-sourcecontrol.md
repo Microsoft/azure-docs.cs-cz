@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: e49b713aca23c0373fa71d772ef7567372abe456
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 9e322ac89d8ecad93c2002aa302c155f895911f4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990563"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019190"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps postupy pro LUIS
 
@@ -18,7 +18,7 @@ Technici softwaru, kteří vyvíjí aplikaci Language Understanding (LUIS), moho
 
 ## <a name="source-control-and-branch-strategies-for-luis"></a>Správa zdrojového kódu a strategie větvení pro LUIS
 
-Jedním z klíčových faktorů, na kterých je úspěch DevOps závislý, je [Správa zdrojového kódu](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops). Systém správy zdrojového kódu umožňuje vývojářům spolupracovat na kódu a sledovat změny. Použití větví umožňuje vývojářům přepínat mezi různými verzemi základu kódu a pracovat nezávisle na jiných členech týmu. Když vývojáři vyvolají [žádost o](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) přijetí změn (PR), aby navrhli aktualizace z jedné větve do druhé nebo když jsou změny sloučeny, mohou být triggerem pro [automatizované sestavení](luis-concept-devops-automation.md) pro sestavení a průběžný testování kódu.
+Jedním z klíčových faktorů, na kterých je úspěch DevOps závislý, je [Správa zdrojového kódu](/azure/devops/user-guide/source-control?view=azure-devops). Systém správy zdrojového kódu umožňuje vývojářům spolupracovat na kódu a sledovat změny. Použití větví umožňuje vývojářům přepínat mezi různými verzemi základu kódu a pracovat nezávisle na jiných členech týmu. Když vývojáři vyvolají [žádost o](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) přijetí změn (PR), aby navrhli aktualizace z jedné větve do druhé nebo když jsou změny sloučeny, mohou být triggerem pro [automatizované sestavení](luis-concept-devops-automation.md) pro sestavení a průběžný testování kódu.
 
 Pomocí konceptů a návodů, které jsou popsány v tomto dokumentu, můžete vyvíjet aplikaci LUIS při sledování změn v systému správy zdrojů a postupovat podle osvědčených postupů pro Software Engineering:
 
@@ -42,13 +42,13 @@ Pomocí konceptů a návodů, které jsou popsány v tomto dokumentu, můžete v
 
 ## <a name="source-control"></a>Správa zdrojového kódu
 
-Chcete-li zachovat [definici schématu aplikace](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition) aplikace Luis v systému správy zdrojového kódu, použijte reprezentaci aplikace [LUDown Format ( `.lu` )](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  . `.lu` formát je preferovaný `.json` , protože je čitelný pro člověka, což usnadňuje provádění a kontrolu změn v pr.
+Chcete-li zachovat [definici schématu aplikace](./app-schema-definition.md) aplikace Luis v systému správy zdrojového kódu, použijte reprezentaci aplikace [LUDown Format ( `.lu` )](/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  . `.lu` formát je preferovaný `.json` , protože je čitelný pro člověka, což usnadňuje provádění a kontrolu změn v pr.
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>Uložení aplikace LUIS pomocí formátu LUDown
 
 Pokud chcete uložit aplikaci LUIS ve `.lu` formátu a umístit ji pod správu zdrojového kódu:
 
-- BUĎ: [exportujte verzi aplikace](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#other-actions) `.lu` z [portálu Luis](https://www.luis.ai/) a přidejte ji do úložiště správy zdrojového kódu.
+- BUĎ: [exportujte verzi aplikace](./luis-how-to-manage-versions.md#other-actions) `.lu` z [portálu Luis](https://www.luis.ai/) a přidejte ji do úložiště správy zdrojového kódu.
 
 - NEBO: pomocí textového editoru vytvořte `.lu` soubor pro aplikaci Luis a přidejte ji do úložiště správy zdrojového kódu.
 
@@ -58,9 +58,9 @@ Pokud chcete uložit aplikaci LUIS ve `.lu` formátu a umístit ji pod správu z
 
 ### <a name="build-the-luis-app-from-source"></a>Sestavení aplikace LUIS ze zdroje
 
-Pro aplikaci LUIS, která se má vytvořit *ze zdrojové* [verze, vytvoří novou verzi aplikace Luis importováním `.lu` zdroje](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) , [vyškolí verzi](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) a [publikuje ji](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app). Můžete to provést na portálu LUIS nebo na příkazovém řádku:
+Pro aplikaci LUIS, která se má vytvořit *ze zdrojové* [verze, vytvoří novou verzi aplikace Luis importováním `.lu` zdroje](./luis-how-to-manage-versions.md#import-version) , [vyškolí verzi](./luis-how-to-train.md) a [publikuje ji](./luis-how-to-publish-app.md). Můžete to provést na portálu LUIS nebo na příkazovém řádku:
 
-- Portál LUIS slouží k [importu `.lu` verze](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) aplikace ze správy zdrojového kódu a k jejímu [zaškolení](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) a [publikování](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app) aplikace.
+- Portál LUIS slouží k [importu `.lu` verze](./luis-how-to-manage-versions.md#import-version) aplikace ze správy zdrojového kódu a k jejímu [zaškolení](./luis-how-to-train.md) a [publikování](./luis-how-to-publish-app.md) aplikace.
 
 - Použijte [rozhraní příkazového řádku bot Framework pro Luis](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) v příkazovém řádku nebo v pracovním postupu CI/CD pro [Import](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisversionimport) `.lu` verze aplikace ze správy zdrojového kódu do aplikace Luis a [školení](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luistrainrun) a [publikování](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish) aplikace.
 
@@ -72,7 +72,7 @@ V rámci správy zdrojového kódu by měly být zachovány následující typy 
 
 - [Soubory definice testu jednotek](luis-concept-devops-testing.md#writing-tests) (projevy a očekávané výsledky)
 
-- [Soubory dávkového testu](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-file-format) (projevy a očekávané výsledky) použité pro testování výkonu
+- [Soubory dávkového testu](./luis-concept-batch-test.md#batch-file-format) (projevy a očekávané výsledky) použité pro testování výkonu
 
 ### <a name="credentials-and-keys-are-not-checked-in"></a>Přihlašovací údaje a klíče nejsou vráceny se změnami.
 
@@ -81,7 +81,7 @@ Nezahrnujte klíče předplatného ani podobné důvěrné hodnoty do souborů, 
 - LUIS vytváření a předpověď klíčů
 - Koncové body vytváření a předpovědi LUIS
 - Klíče předplatného Azure
-- Přístupové tokeny, jako je token pro [instanční objekt](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) Azure, který se používá pro ověřování služby Automation
+- Přístupové tokeny, jako je token pro [instanční objekt](/cli/azure/ad/sp?view=azure-cli-latest) Azure, který se používá pro ověřování služby Automation
 
 #### <a name="strategies-for-securely-managing-secrets"></a>Strategie pro bezpečnou správu tajných kódů
 
@@ -92,7 +92,7 @@ Mezi strategie pro bezpečnou správu tajných klíčů patří:
 
 ## <a name="branching-and-merging"></a>Větvení a slučování
 
-Distribuované systémy správy verzí, jako je git, poskytují flexibilitu v tom, jak členové týmu publikují, sdílejí, kontrolují a iterují změny kódu prostřednictvím větví vývoje sdílených s ostatními. Proveďte [strategii větvení Git](https://docs.microsoft.com/azure/devops/repos/git/git-branching-guidance) , která je vhodná pro váš tým.
+Distribuované systémy správy verzí, jako je git, poskytují flexibilitu v tom, jak členové týmu publikují, sdílejí, kontrolují a iterují změny kódu prostřednictvím větví vývoje sdílených s ostatními. Proveďte [strategii větvení Git](/azure/devops/repos/git/git-branching-guidance) , která je vhodná pro váš tým.
 
 Jakékoli strategie větvení, kterou přijmete, je klíčovým principem všech z nich, že členové týmu mohou pracovat na řešení v rámci *větve funkcí* nezávisle na práci, která se nachází v jiných větvích.
 
@@ -110,7 +110,7 @@ Vývojáři můžou pracovat na aktualizacích aplikace v LUIS nezávisle na jin
 
 1. Vytvoření větve funkce z hlavní větve (v závislosti na strategii vaší větve, obvykle na hlavním nebo vývojovém).
 
-1. [Vytvořte novou aplikaci Luis na portálu Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-start-new-app) (*aplikace pro vývojovou větev*), která podporuje výhradně práci ve větvi funkce.
+1. [Vytvořte novou aplikaci Luis na portálu Luis](./luis-how-to-start-new-app.md) (*aplikace pro vývojovou větev*), která podporuje výhradně práci ve větvi funkce.
 
    * Pokud `.lu` zdroj vašeho řešení již existuje ve větvi, protože byl uložen po dokončení práce v jiné větvi dříve v projektu, vytvořte Luis aplikaci pro vývojovou větev pomocí importu `.lu` souboru.
 
@@ -120,11 +120,11 @@ Vývojáři můžou pracovat na aktualizacích aplikace v LUIS nezávisle na jin
 
 1. Testování aktualizací – podrobnosti o testování aplikace pro vývojovou větev najdete v tématu [testování pro Luis DevOps](luis-concept-devops-testing.md) .
 
-1. Exportujte aktivní verzi aplikace pro vývojovou větev `.lu` ze [seznamu verzí](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions).
+1. Exportujte aktivní verzi aplikace pro vývojovou větev `.lu` ze [seznamu verzí](./luis-how-to-manage-versions.md).
 
 1. Zaregistrujte aktualizace a pozvěte druhou kontrolu vašich aktualizací. Pokud používáte GitHub, vyvoláte [žádost o](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)přijetí změn.
 
-1. Pokud jsou změny schváleny, sloučí aktualizace do hlavní větve. V tomto okamžiku vytvoříte novou [verzi](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions) *hlavní* aplikace Luis pomocí aktualizovaného `.lu` v hlavní části. Pokyny k nastavení názvu verze najdete v tématu [Správa verzí](#versioning) .
+1. Pokud jsou změny schváleny, sloučí aktualizace do hlavní větve. V tomto okamžiku vytvoříte novou [verzi](./luis-how-to-manage-versions.md) *hlavní* aplikace Luis pomocí aktualizovaného `.lu` v hlavní části. Pokyny k nastavení názvu verze najdete v tématu [Správa verzí](#versioning) .
 
 1. Když je větev funkce odstraněna, je vhodné odstranit aplikaci pro vývojovou větev LUIS, kterou jste vytvořili pro funkci pracovní větve.
 
@@ -144,9 +144,9 @@ Současně můžete podporovat více vývojářů pracujících na stejné větv
 
 - Pokud budete postupovat podle vzoru popsaného výše v tématu [vývojáři můžou pracovat z nezávislých větví](#developers-can-work-from-independent-branches), pak tato větev bude k podpoře vývoje používat jedinečnou aplikaci Luis. Tato aplikace LUIS pro vývojovou větev bude vytvořena prvním členem vývojového týmu, který začíná pracovat ve větvi funkce.
 
-- [Přidejte členy týmu jako přispěvatele](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate) do aplikace dev Branch Luis.
+- [Přidejte členy týmu jako přispěvatele](./luis-how-to-collaborate.md) do aplikace dev Branch Luis.
 
-- Když je dokončená větev funkcí, exportujte aktivní verzi aplikace dev Work LUIS jako `.lu` v [seznamu verze](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions), uložte aktualizovaný `.lu` soubor do úložiště a vraťte se změnami a přičtěte změny.
+- Když je dokončená větev funkcí, exportujte aktivní verzi aplikace dev Work LUIS jako `.lu` v [seznamu verze](./luis-how-to-manage-versions.md), uložte aktualizovaný `.lu` soubor do úložiště a vraťte se změnami a přičtěte změny.
 
 ### <a name="incorporating-changes-from-one-branch-to-another-with-rebase-or-merge"></a>Zahrnutí změn z jedné větve do druhé se přenesením změn nebo sloučením
 
@@ -183,7 +183,7 @@ Aplikace LUIS ve formátu LUDown je humánní čitelnost, která podporuje komun
 
 ## <a name="versioning"></a>Správa verzí
 
-Aplikace se skládá z několika komponent, které můžou zahrnovat věci, jako je robot běžící v [Azure bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), [QnA maker](https://www.qnamaker.ai/), [Služba Azure Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)a další. Aby bylo možné dosáhnout cíle volně vázaných aplikací, použijte [řízení verze](https://docs.microsoft.com/azure/devops/learn/git/what-is-version-control) tak, aby každá komponenta aplikace byla oddělená od verze, a umožní vývojářům detekovat zásadní změny nebo aktualizace pouze tím, že si prohlíží číslo verze. Aplikaci LUIS je snazší používat nezávisle na jiných součástech, pokud ji udržujete ve vlastním úložišti.
+Aplikace se skládá z několika komponent, které můžou zahrnovat věci, jako je robot běžící v [Azure bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), [QnA maker](https://www.qnamaker.ai/), [Služba Azure Speech Service](../speech-service/overview.md)a další. Aby bylo možné dosáhnout cíle volně vázaných aplikací, použijte [řízení verze](/azure/devops/learn/git/what-is-version-control) tak, aby každá komponenta aplikace byla oddělená od verze, a umožní vývojářům detekovat zásadní změny nebo aktualizace pouze tím, že si prohlíží číslo verze. Aplikaci LUIS je snazší používat nezávisle na jiných součástech, pokud ji udržujete ve vlastním úložišti.
 
 Aplikace LUIS pro hlavní větev by měla mít použité schéma správy verzí. Když sloučíte aktualizace do `.lu` aplikace pro Luis do hlavní větve, naimportujete aktualizovaný zdroj do nové verze v aplikaci Luis pro hlavní větev.
 
@@ -195,7 +195,7 @@ Každá aktualizace číslo verze se zvýší na poslední číslici.
 
 Hlavní a vedlejší verzi lze použít k označení rozsahu změn funkce aplikace LUIS:
 
-* Hlavní verze: významná změna, například podpora pro nový [záměr](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-intent) nebo [entitu](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-entity-types)
+* Hlavní verze: významná změna, například podpora pro nový [záměr](./luis-concept-intent.md) nebo [entitu](./luis-concept-entity-types.md)
 * Podverze: zpětně kompatibilní menší změny, například po významném novém školení
 * Sestavení: žádné změny funkčnosti, pouze jiné sestavení.
 

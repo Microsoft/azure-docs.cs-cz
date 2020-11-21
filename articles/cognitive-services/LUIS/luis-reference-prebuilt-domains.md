@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.openlocfilehash: e93822f4a2992f619b598474082caa56562b6e36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73b279f98011181b329cdb010041022ab0da57f0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538360"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018629"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Předem sestavený odkaz na doménu pro aplikaci LUIS
-Tento odkaz obsahuje informace o [předem sestavených doménách](luis-how-to-use-prebuilt-domains.md), které představují předem sestavené kolekce záměrů a entit, které Luis nabídky.
+Tento odkaz obsahuje informace o [předem sestavených doménách](./howto-add-prebuilt-models.md), které představují předem sestavené kolekce záměrů a entit, které Luis nabídky.
 
 [Vlastní domény](luis-how-to-start-new-app.md)na rozdíl od začátku bez záměrů a modelů. Do vlastního modelu můžete přidat všechny předem připravené domény a entity.
 
@@ -29,7 +29,7 @@ Následující tabulka shrnuje aktuálně podporované domény. Podpora angličt
 |:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:|
 | Kalendář  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 |Komunikace  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| E-mail     | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| E-mailu     | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | HomeAutomation          | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Poznámky     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Zadá   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 4c3b5674fe039a89eb97b915d13b5d472a6a0568
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316388"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019071"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Vysvětlení, co je pro vaši aplikaci LUIS dobré projevy
 
@@ -29,7 +29,7 @@ Shromážděte projevyy, které se domníváte, že uživatelé vstoupí v úvah
 
 ## <a name="how-to-choose-varied-utterances"></a>Jak zvolit různé projevy
 
-Když začnete s prvním zprovozněním, [přidáte příklad projevy](luis-how-to-add-example-utterances.md) do modelu Luis. tady je několik principů, které je potřeba vzít v úvahu.
+Když začnete s prvním zprovozněním, [přidáte příklad projevy](./luis-how-to-add-entities.md) do modelu Luis. tady je několik principů, které je potřeba vzít v úvahu.
 
 ### <a name="utterances-arent-always-well-formed"></a>Projevy nejsou vždycky správně vytvořené
 
@@ -147,5 +147,4 @@ Pokud jste chtěli, aby entita události vyhledala všechna data události, ozna
 
 
 ## <a name="next-steps"></a>Další kroky
-Informace o výuce aplikace LUIS pro pochopení uživatelského projevy najdete v tématu věnovaném [Přidání ukázkového projevy](luis-how-to-add-example-utterances.md) .
-
+Informace o výuce aplikace LUIS pro pochopení uživatelského projevy najdete v tématu věnovaném [Přidání ukázkového projevy](./luis-how-to-add-entities.md) .

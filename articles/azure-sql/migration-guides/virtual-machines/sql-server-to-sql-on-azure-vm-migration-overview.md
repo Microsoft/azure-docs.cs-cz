@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: d47abaade13958b4e28d3ad5f62b88e8a53e89a9
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: a910edfbbe1ad07dca806026396c506f7e90e6e7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917833"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019428"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Přehled migrace: SQL Server pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -75,7 +75,7 @@ V následující tabulce najdete podrobnosti o dostupné metodě pro migrační 
 
 |**Metoda** | **Minimální zdrojová verze** | **Minimální cílová verze** | **Omezení velikosti zdrojové zálohy** |  **Poznámky** |
 | --- | --- | --- | --- | --- |
-| [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Limit úložiště virtuálních počítačů Azure](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Existující SQL Server k přesunu jako instance SQL Server na virtuálním počítači Azure. Může škálovat úlohy migrace až na 35 000 virtuálních počítačů. <br /><br /> Zdrojový server (y) zůstávají online a obsluhují požadavky během synchronizace dat serveru a minimalizují prostoje. <br /><br /> **Automatizace & skriptování**: [Azure Site Recovery skriptů](../../../migrate/how-to-migrate-at-scale.md) a [příkladem migrace na škálované a naplánování pro Azure](/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
+| [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Limit úložiště virtuálních počítačů Azure](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Existující SQL Server k přesunu jako instance SQL Server na virtuálním počítači Azure. Může škálovat úlohy migrace až na 35 000 virtuálních počítačů. <br /><br /> Zdrojový server (y) zůstávají online a obsluhují požadavky během synchronizace dat serveru a minimalizují prostoje. <br /><br /> **Automatizace & skriptování**: [Azure Site Recovery skriptů](../../../migrate/how-to-migrate-at-scale.md) a [příkladem migrace na škálované a naplánování pro Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
 ## <a name="migrate"></a>Migrace  
 

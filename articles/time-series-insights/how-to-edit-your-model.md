@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: cac4234d5bd93de8b059ea53a4697dae1bf5c64c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89efc1d4f34b250d211f9fd7492588bd2896eb6e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667875"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016849"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-gen2"></a>Modelování dat v Azure Time Series Insights Gen2
 
@@ -24,11 +24,11 @@ Tento článek popisuje, jak pracovat s modelem časových řad v Azure Time Ser
 > [!TIP]
 >
 > * Přečtěte si další informace o [modelu časové řady](concepts-model-overview.md).
-> * Přečtěte si další informace o navigaci [Azure Time Series Insights Gen2 Exploreru](./time-series-insights-update-explorer.md).
+> * Přečtěte si další informace o navigaci [Azure Time Series Insights Gen2 Exploreru](./concepts-ux-panels.md).
 
 ## <a name="instances"></a>Instance
 
-Průzkumník Azure Time Series Insights podporuje operace **Vytvoření**, **čtení**, **aktualizace**a **odstranění** instancí v prohlížeči.
+Průzkumník Azure Time Series Insights podporuje operace **Vytvoření**, **čtení**, **aktualizace** a **odstranění** instancí v prohlížeči.
 
 Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v Průzkumníkovi Azure Time Series Insights.
 
@@ -76,7 +76,7 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
 
 ## <a name="hierarchies"></a>Hierarchie
 
-Průzkumník Azure Time Series Insights podporuje operace **Vytvoření**, **čtení**, **aktualizace**a **odstranění** hierarchie v prohlížeči.
+Průzkumník Azure Time Series Insights podporuje operace **Vytvoření**, **čtení**, **aktualizace** a **odstranění** hierarchie v prohlížeči.
 
 Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v Průzkumníkovi Azure Time Series Insights.
 
@@ -126,7 +126,7 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
 
 ## <a name="types"></a>Typy
 
-Průzkumník Azure Time Series Insights podporuje operace **Vytvoření**, **čtení**, **aktualizace**a **odstranění** v prohlížeči.
+Průzkumník Azure Time Series Insights podporuje operace **Vytvoření**, **čtení**, **aktualizace** a **odstranění** v prohlížeči.
 
 Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v Průzkumníkovi Azure Time Series Insights.
 
@@ -171,6 +171,6 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
 
 * Další informace o modelu časové řady získáte v tématu věnovaném [modelování dat](./concepts-model-overview.md).
 
-* Pokud chcete získat další informace o Gen2, přečtěte si článek [Vizualizujte data v Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md).
+* Pokud chcete získat další informace o Gen2, přečtěte si článek [Vizualizujte data v Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md).
 
 * Další informace o podporovaných tvarech JSON najdete v článku [podporované tvary JSON](./time-series-insights-send-events.md#supported-json-shapes).

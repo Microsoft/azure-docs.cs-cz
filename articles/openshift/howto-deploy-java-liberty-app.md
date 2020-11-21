@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, mikroprofile, Open-svoboda, WebSphere-svoboda, ARO, OpenShift, Red Hat
-ms.openlocfilehash: ee4baf8eed26a43728fa52289bce86108c9e8c4a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 41891b58942efbfd705747cc16219185f2a2daa2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414579"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018388"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Nasazení aplikace v jazyce Java s otevřeným nástrojem svobody/WebSphere Svoboda v clusteru Azure Red Hat OpenShift 4
 
@@ -20,7 +20,7 @@ V této příručce se dozvíte, jak spustit aplikaci v jazyce Java, Java EE, [J
 
 [!INCLUDE [aro-support](includes/aro-support.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K úspěšnému procházení tohoto průvodce dokončete následující požadavky.
 
@@ -38,7 +38,7 @@ K úspěšnému procházení tohoto průvodce dokončete následující požadav
 
    I když je krok získat tajný klíč pro získání dat Red Hat označený jako volitelný, **je tento článek povinný**.  Tajný klíč pro vyžádání umožňuje vašemu clusteru Azure Red Hat OpenShift najít otevřený operátor svoboda.
 
-   Pokud máte v úmyslu spouštět aplikace náročné na paměť v clusteru, určete správnou velikost virtuálního počítače pro pracovní uzly pomocí `--worker-vm-size` parametru. Například `Standard_E4s_v3` minimální velikost virtuálního počítače pro instalaci operátoru Elasticsearch v clusteru. Další informace najdete tady:
+   Pokud máte v úmyslu spouštět aplikace náročné na paměť v clusteru, určete správnou velikost virtuálního počítače pro pracovní uzly pomocí `--worker-vm-size` parametru. Například `Standard_E4s_v3` minimální velikost virtuálního počítače pro instalaci operátoru Elasticsearch v clusteru. Další informace naleznete v tématu:
 
    * [Rozhraní příkazového řádku Azure pro vytvoření clusteru](https://docs.microsoft.com/cli/azure/aro?view=azure-cli-latest&preserve-view=true#az-aro-create)
    * [Podporované velikosti virtuálních počítačů pro paměťově optimalizované](/azure/openshift/support-policies-v4#memory-optimized)
@@ -65,7 +65,7 @@ Všimněte si, že tyto položky vycházejí z těchto položek po dokončení k
 
 1. Přihlaste se k webové konzole OpenShift z prohlížeče pomocí `kubeadmin` přihlašovacích údajů.
 2. Přejděte do **správy**  >  **obory názvů**  >  **vytvořit obor názvů**.
-3. Vyplňte pole `open-liberty-demo` **název** a vyberte **vytvořit** , jak je uvedeno dále.
+3. Vyplňte pole `open-liberty-demo` **název** a vyberte **vytvořit**, jak je uvedeno dále.
 
    ![vytvořit obor názvů](./media/howto-deploy-java-liberty-app/create-namespace.png)
 
@@ -98,7 +98,7 @@ Po vytvoření a připojení ke clusteru nainstalujte operátor Open.  Hlavní p
 2. Přejděte na **operátory**  >  **OperatorHub** a vyhledejte **otevřený operátor svoboda**.
 3. Ve výsledcích hledání vyberte **otevřít z operátora** .
 4. Vyberte **Install** (Nainstalovat).
-5. V místní nabídce **Vytvořit předplatné operátora** ověřte **všechny obory názvů v clusteru (výchozí)** pro **režim instalace** , **beta verzi** **kanálu pro aktualizaci** a **automatickou** **strategii schvalování** :
+5. V místní nabídce **Vytvořit předplatné operátora** ověřte **všechny obory názvů v clusteru (výchozí)** pro **režim instalace**, **beta verzi** **kanálu pro aktualizaci** a **automatickou** **strategii schvalování**:
 
    ![vytvořit odběr operátoru pro otevření operátoru svoboda](./media/howto-deploy-java-liberty-app/install-operator.png)
 6. Vyberte možnost **přihlásit k odběru** a počkejte minutu nebo dvě, dokud nebude zobrazený operátor Open svoboda.
@@ -126,7 +126,7 @@ Pokud chcete aplikaci spustit na otevřeném počítači, budete muset vytvořit
    [INFO] Source compilation was successful.
    ```
 
-1. Otevřete [http://localhost:9080/](http://localhost:9080/) v prohlížeči a přejděte na domovskou stránku aplikace. Aplikace bude vypadat podobně jako na následujícím obrázku:
+1. Otevřete `http://localhost:9080/` v prohlížeči a přejděte na domovskou stránku aplikace. Aplikace bude vypadat podobně jako na následujícím obrázku:
 
    ![Webové uživatelské rozhraní JavaEE Cafe](./media/howto-deploy-java-liberty-app/javaee-cafe-web-ui.png)
 1. Stisknutím klávesy **CTRL-C** zastavte aplikaci a otevřete Server svobody.
@@ -164,7 +164,7 @@ Před nasazením kontejnerové aplikace do vzdáleného clusteru spusťte s mís
 
 1. Spusťte `docker run -it --rm -p 9080:9080 javaee-cafe-simple:1.0.0` v konzole nástroje.
 2. Počkejte, až se z libovolného serveru spustí a aplikace se úspěšně nasadí.
-3. Otevřete [http://localhost:9080/](http://localhost:9080/) v prohlížeči a přejděte na domovskou stránku aplikace.
+3. Otevřete `http://localhost:9080/` v prohlížeči a přejděte na domovskou stránku aplikace.
 4. Stisknutím **CTRL-C** zastavte aplikaci a k libovolnému serveru.
 
 ### <a name="push-the-image-to-the-container-image-registry"></a>Nahrání image do registru imagí kontejneru
@@ -233,7 +233,7 @@ Nyní můžete nasadit ukázkovou aplikaci do clusteru Azure Red Hat OpenShift 4
 Vzhledem k tomu, že používáme operátor Open svoboda ke správě aplikací svobody, musíme vytvořit instanci své *vlastní definice prostředku* typu "OpenLibertyApplication". Operátor se pak postará o všechny aspekty správy prostředků OpenShift potřebných pro nasazení.
 
 1. Přihlaste se k webové konzole OpenShift z prohlížeče pomocí přihlašovacích údajů uživatele Azure AD.
-1. Rozbalte **Domů** , vyberte **projekty**  >  **otevřít-svoboda-demo**.
+1. Rozbalte **Domů**, vyberte **projekty**  >  **otevřít-svoboda-demo**.
 1. Přejděte na **operátory**  >  **nainstalované** operátory.
 1. Uprostřed stránky vyberte **otevřít operátor**.
 1. Uprostřed stránky vyberte možnost **otevřít aplikaci svobody**.  Navigace položek v uživatelském rozhraní zrcadlí skutečnou hierarchii obsahující používané technologie.

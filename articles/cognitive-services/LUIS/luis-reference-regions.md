@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: a591a8d0df751c071a17b1d77febdb3607a1b53d
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f7c6c3f9c3f468c7b55baf2b0cc45c094d693de5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555766"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018646"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Vytváření a publikování oblastí a přidružených klíčů
 
@@ -27,7 +27,7 @@ Existují tři portály pro vytváření LUIS na základě oblasti. Vytvářet a
 |[au.luis.ai][au.luis.ai] |Austrálie| `australiaeast`|
 |[eu.luis.ai][eu.luis.ai] |Evropa|`westeurope`|
 
-Oblasti vytváření obsahu mají [spárované oblasti převzetí služeb při selhání](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Oblasti vytváření obsahu mají [spárované oblasti převzetí služeb při selhání](../../best-practices-availability-paired-regions.md).
 
 <a name="regions-and-azure-resources"></a>
 
@@ -102,7 +102,7 @@ Přečtěte si další informace o [koncových bodech vytváření a předpověd
 
 Každá oblast má sekundární oblast pro převzetí služeb při selhání. Evropa převezme služeb při selhání uvnitř Evropy a Austrálie převezme přes Austrálii.
 
-Oblasti vytváření obsahu mají [spárované oblasti převzetí služeb při selhání](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Oblasti vytváření obsahu mají [spárované oblasti převzetí služeb při selhání](../../best-practices-availability-paired-regions.md).
 
 ## <a name="next-steps"></a>Další kroky
 

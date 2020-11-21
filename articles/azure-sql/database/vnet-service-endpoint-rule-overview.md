@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 5c5276f11da687f14630bafd007532d172ef3737
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 97be3bf0ecec20c4bf2e1633f893c9aa0d9ba49d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990801"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020278"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů a pravidel služby virtuální sítě pro servery v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,6 +80,7 @@ Pro Azure SQL Database funkce pravidla virtuální sítě má následující ome
 
 - Zapnutím koncových bodů služby virtuální sítě Azure SQL Database také umožníte koncovým bodům pro služby Azure MySQL a PostgreSQL. S koncovými body v se však pokusy o připojení z koncových bodů do instancí MySQL nebo PostgreSQL mohou selhat.
   - Základním důvodem je, že MySQL a PostgreSQL pravděpodobně nemají nakonfigurováno pravidlo virtuální sítě. Je nutné nakonfigurovat pravidlo virtuální sítě pro Azure Database for MySQL a PostgreSQL a připojení bude úspěšné.
+  - Pokud chcete definovat pravidla brány firewall virtuální sítě na logickém serveru SQL, který je už nakonfigurovaný pomocí privátních koncových bodů, nastavte **Odepřít přístup k veřejné síti** na **ne**.
 
 - V bráně firewall se rozsahy IP adres vztahují na následující síťové položky, ale pravidla virtuální sítě ne:
   - [Virtuální privátní síť (VPN) typu Site-to-Site (S2S)][vpn-gateway-indexmd-608y]

@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování v
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 650c239423db23bcd4329ab38080b82809fa4f09
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: cff5c68803d0930bbf3310a385ffa0132bcbb3b1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842171"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95017022"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -50,7 +50,7 @@ Měsíční nebo roční záloha| Při zálohování s rozšířením virtuáln�
 Automatické úpravy hodin | Nepodporováno<br/><br/> Azure Backup se při zálohování virtuálního počítače automaticky nezmění na letní čas při ukládání.<br/><br/>  Zásadu podle potřeby upravte ručně.
 [Funkce zabezpečení pro hybridní zálohování](./backup-azure-security-feature.md) |Zákaz funkcí zabezpečení není podporován.
 Zálohování virtuálního počítače, u kterého se změnil čas počítače | Nepodporováno<br/><br/> Pokud se čas počítače změní na budoucí datum a čas po povolení zálohování pro tento virtuální počítač, ale i když se změna času vrátí zpět, není zaručena úspěšná záloha.
-Virtuální počítače Azure ve službě [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) | Zálohování a obnovení se podporuje pro virtuální počítače s [režimem orchestrace](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes) nastavenou na 3. <br><br>Skupiny dostupnosti nejsou podporované.
+Virtuální počítače Azure ve službě [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) |Skupiny dostupnosti nejsou podporované.
 
 ## <a name="operating-system-support-windows"></a>Podpora operačního systému (Windows)
 
@@ -140,7 +140,7 @@ Obnovení virtuálního počítače v jiné virtuální síti |Podporuje se.<br/
 Velikost virtuálního počítače |Všechny velikosti virtuálních počítačů Azure s minimálně 2 jádry procesoru a 1 GB paměti RAM.<br/><br/> [Další informace](../virtual-machines/sizes.md)
 Zálohování virtuálních počítačů ve [skupinách dostupnosti](../virtual-machines/availability.md#availability-sets) | Podporuje se.<br/><br/> Virtuální počítač nejde obnovit v dostupné sadě pomocí možnosti pro rychlé vytvoření virtuálního počítače. Místo toho můžete při obnovení virtuálního počítače obnovit disk a použít ho k nasazení virtuálního počítače nebo obnovení disku a použít ho k nahrazení stávajícího disku.
 Zálohování virtuálních počítačů nasazených s [využitím programu zvýhodněné hybridní využití (centrum)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) | Podporuje se.
-Zálohování virtuálních počítačů, které jsou nasazené v [sadě škálování](../virtual-machine-scale-sets/overview.md) |Podporuje se. Pro doménu selhání by měl být nastaven [režim orchestrace](../virtual-machine-scale-sets/orchestration-modes.md) na hodnotu 2. Skupina dostupnosti není podporovaná.
+Zálohování virtuálních počítačů, které jsou nasazené v [sadě škálování](../virtual-machine-scale-sets/overview.md) |Podporuje se. Skupina dostupnosti není podporovaná.
 Zálohování virtuálních počítačů nasazených z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Vydavatel: Microsoft, třetí strana) |Podporuje se.<br/><br/> Na virtuálním počítači musí běžet podporovaný operační systém.<br/><br/> Při obnovování souborů na virtuálním počítači se můžete zotavit jenom na kompatibilní operační systém (ne na starší verzi operačního systému nebo novější). Neobnovíme Azure Marketplace virtuální počítače, které jsou zálohované jako virtuální počítače, protože tyto informace jsou potřeba k nákupu. Obnoví se jenom jako disky.
 Zálohování virtuálních počítačů, které se nasazují z vlastní image (třetí strana) |Podporuje se.<br/><br/> Na virtuálním počítači musí běžet podporovaný operační systém.<br/><br/> Při obnovování souborů na virtuálním počítači se můžete zotavit jenom na kompatibilní operační systém (ne na starší verzi operačního systému nebo novější).
 Zálohování virtuálních počítačů, které se migrují do Azure| Podporuje se.<br/><br/> Pokud chcete zálohovat virtuální počítač, musí být na migrovaném počítači nainstalovaný agent virtuálního počítače.

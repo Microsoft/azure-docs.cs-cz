@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: f395f96dfa48567f95a1c50cf5403d3cbb427cb7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cebe0e018b4483a9de1771fb3171effbbd5ca59c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91597826"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020057"
 ---
 # <a name="what-is-azure-time-series-insights-gen1"></a>Co je Azure Time Series Insights Gen1?
 
@@ -33,7 +33,7 @@ Azure Time Series Insights má čtyři klíčové úlohy:
 - Azure Time Series Insights poskytuje okamžitou vizualizaci pomocí Azure Time Series Insights Exploreru.
 - Azure Time Series Insights poskytuje dotazovací službu v Průzkumníkovi Azure Time Series Insights a pomocí rozhraní API, která se dají snadno integrovat pro vložení dat časových řad do vlastních aplikací.
 
-Pokud sestavíte aplikaci pro interní spotřebu nebo externím zákazníkům, abyste je mohli použít, můžete jako back-end použít Azure Time Series Insights. Můžete ji použít k indexování, ukládání a agregaci dat časových řad. Chcete-li vytvořit vlastní vizualizaci a činnost koncového uživatele, použijte [klientskou sadu SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Azure Time Series Insights je také vybaven několika [rozhraními API dotazů](how-to-shape-query-json.md) , aby bylo možné tyto vlastní scénáře povolit.
+Pokud sestavíte aplikaci pro interní spotřebu nebo externím zákazníkům, abyste je mohli použít, můžete jako back-end použít Azure Time Series Insights. Můžete ji použít k indexování, ukládání a agregaci dat časových řad. Chcete-li vytvořit vlastní vizualizaci a činnost koncového uživatele, použijte [klientskou sadu SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Azure Time Series Insights je také vybaven několika [rozhraními API dotazů](./concepts-json-flattening-escaping-rules.md) , aby bylo možné tyto vlastní scénáře povolit.
 
 Data časových řad představují změnu prostředku nebo procesu v průběhu času. Data časové řady jsou indexována pomocí časových razítek a časová osa, podél které jsou taková data uspořádána. Data časové řady obvykle přicházejí v sekvenčním pořadí, takže se považuje za vložené místo aktualizace databáze.
 
@@ -72,7 +72,7 @@ Azure Time Series Insights zachycuje a ukládá každou novou událost jako řá
 
 - **Rychlé zahájení**: Azure Time Series Insights nevyžaduje přípravu dat předem, takže se můžete rychle připojit k miliónům událostí ve službě IoT Hub nebo v centru událostí. Po připojení můžete vizualizovat a interagovat s daty ze senzorů, abyste mohli rychle ověřit vaše řešení IoT. S daty můžete pracovat, aniž byste museli psát kód a nemusíte se učit nový jazyk. Azure Time Series Insights poskytuje detailní a volné plochy pro dotazování pro pokročilé uživatele a průzkum Point-to-Click.
 
-- **Přehledy téměř v reálném**čase: Azure Time Series Insights můžou ingestovat miliony událostí senzorů za den a latence v minutách. Azure Time Series Insights vám pomůže získat přehled o datech ze senzorů. Využijte ji k vyřízení trendů a anomálií, provádění analýz hlavní příčiny a zamezení nákladnému výpadku. Křížové korelace mezi daty v reálném čase a historická data vám pomůžou najít skryté trendy v datech.
+- **Přehledy téměř v reálném** čase: Azure Time Series Insights můžou ingestovat miliony událostí senzorů za den a latence v minutách. Azure Time Series Insights vám pomůže získat přehled o datech ze senzorů. Využijte ji k vyřízení trendů a anomálií, provádění analýz hlavní příčiny a zamezení nákladnému výpadku. Křížové korelace mezi daty v reálném čase a historická data vám pomůžou najít skryté trendy v datech.
 
 - **Sestavování vlastních řešení**: vkládání Azure Time Series Insights dat do stávajících aplikací. Můžete také vytvořit nová vlastní řešení s rozhraními REST API pro Azure Time Series Insights. Můžete vytvářet přizpůsobená zobrazení a sdílet je s ostatními, aby i oni mohli zkoumat přehledy.
 

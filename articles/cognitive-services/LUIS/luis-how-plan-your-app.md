@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 69f2048da0b4690d9de72e96e296edbd55c4cd9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66df23466694fe8b9caea4e56565cde6d8fd7416
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309451"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018952"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Plánování schématu aplikace LUIS s využitím domény a extrakce dat předmětu
 
@@ -21,7 +21,7 @@ Schéma aplikace LUIS obsahuje [záměry](luis-glossary.md#intent) a [entity](lu
 Aplikace LUIS se zacentruje kolem domény předmětu. Můžete mít například cestovní aplikaci, která zpracovává rezervace lístků, letů, hotelů a půjčovny vozidel. Jiná aplikace může poskytovat obsah týkající se výkonu, sledování úsilí o způsobilost a nastavování cílů. Identifikace domény vám pomůže najít slova nebo fráze, které jsou relevantní pro vaši doménu.
 
 > [!TIP]
-> LUIS nabízí [předem připravené domény](luis-how-to-use-prebuilt-domains.md) pro mnoho běžných scénářů. Zkontrolujte, jestli můžete použít předem sestavenou doménu jako výchozí bod pro vaši aplikaci.
+> LUIS nabízí [předem připravené domény](./howto-add-prebuilt-models.md) pro mnoho běžných scénářů. Zkontrolujte, jestli můžete použít předem sestavenou doménu jako výchozí bod pro vaši aplikaci.
 
 ## <a name="identify-your-intents"></a>Identifikujte své záměry
 
@@ -49,7 +49,7 @@ V příkladu projevy Identifikujte entity, které mají být extrahovány. Pro z
 Při určování entit pro použití ve vaší aplikaci Pamatujte na to, že existují různé typy entit pro zachycení vztahů mezi typy objektů. [Entity v Luis](luis-concept-entity-types.md) poskytují další podrobnosti o různých typech.
 
 > [!TIP]
-> LUIS nabízí [předem připravené entity](luis-prebuilt-entities.md) pro běžné scénáře uživatelů v konverzaci. Zvažte použití předem připravených entit jako výchozího bodu pro vývoj aplikací.
+> LUIS nabízí [předem připravené entity](./howto-add-prebuilt-models.md) pro běžné scénáře uživatelů v konverzaci. Zvažte použití předem připravených entit jako výchozího bodu pro vývoj aplikací.
 
 ## <a name="resolution-with-intent-or-entity"></a>Řešení s záměrem nebo entitou?
 
@@ -79,4 +79,3 @@ Pro usnadnění extrakce přidejte funkce do subentit. Vaše funkce zvolíte na 
 
 > [!div class="nextstepaction"]
 > [Učení lifecylce vývoje LUIS](luis-concept-app-iteration.md)
-

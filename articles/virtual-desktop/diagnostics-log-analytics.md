@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d8b696b175c4ef841eef1a51f1d357d1781cba7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006801"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018286"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Použití Log Analytics pro diagnostickou funkci
 
@@ -46,7 +46,7 @@ Azure Monitor umožňuje analyzovat data virtuálních klientů Windows a sledov
 Než budete moct použít Log Analytics, budete muset vytvořit pracovní prostor. Provedete to podle pokynů v jednom z následujících dvou článků:
 
 - Pokud dáváte přednost použití Azure Portal, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
-- Pokud dáváte přednost prostředí PowerShell, přečtěte si téma [vytvoření log Analyticsho pracovního prostoru pomocí prostředí PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
+- Pokud dáváte přednost prostředí PowerShell, přečtěte si téma [vytvoření log Analyticsho pracovního prostoru pomocí prostředí PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
 
 Po vytvoření pracovního prostoru postupujte podle pokynů v tématu [připojení počítačů se systémem Windows k Azure monitor](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) k získání následujících informací:
 
@@ -83,7 +83,7 @@ Nastavení Log Analytics nového objektu:
 6. Vyberte **Uložit**.
 
 >[!NOTE]
->Log Analytics vám poskytne možnost streamovat data do [Event Hubs](../event-hubs/event-hubs-about.md) nebo archivovat v účtu úložiště. Další informace o této funkci najdete v tématu [streamování dat monitorování Azure do centra událostí](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) a [archivaci protokolů prostředků Azure do účtu úložiště](../azure-monitor/platform/resource-logs-collect-storage.md).
+>Log Analytics vám poskytne možnost streamovat data do [Event Hubs](../event-hubs/event-hubs-about.md) nebo archivovat v účtu úložiště. Další informace o této funkci najdete v tématu [streamování dat monitorování Azure do centra událostí](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) a [archivaci protokolů prostředků Azure do účtu úložiště](../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 ## <a name="how-to-access-log-analytics"></a>Přístup k Log Analytics
 
@@ -91,7 +91,7 @@ K Log Analytics pracovním prostorům můžete přistupovat Azure Portal nebo Az
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Přístup k Log Analytics v pracovním prostoru Log Analytics
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Vyhledejte **Log Analytics pracovní prostor**.
 
@@ -114,7 +114,7 @@ K Log Analytics pracovním prostorům můžete přistupovat Azure Portal nebo Az
 5. Jste připraveni na dotaz na diagnostiku. Všechny tabulky diagnostiky mají předponu "WVD".
 
 >[!NOTE]
->Podrobnější informace o tabulkách uložených v protokolech Azure Monitor najdete v části [Azure monitor data](https://docs.microsoft.com/azure/azure-monitor/reference/). Všechny tabulky související s virtuálním počítačem s Windows jsou označené jako "WVD".
+>Podrobnější informace o tabulkách uložených v protokolech Azure Monitor najdete v části [Azure monitor data](/azure/azure-monitor/reference/). Všechny tabulky související s virtuálním počítačem s Windows jsou označené jako "WVD".
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>Tempo pro odesílání diagnostických událostí
 
@@ -134,9 +134,9 @@ Přístup k ukázkovým dotazům prostřednictvím uživatelského rozhraní Azu
 1. Pokud chcete zkontrolovat dostupné dotazy, vyberte **virtuální počítač s Windows** .
 1. Zvolením **příkazu Spustit** spusťte vybraný dotaz.
 
-Přečtěte si další informace o rozhraní ukázkových dotazů v [uložených dotazech v Azure Monitor Log Analytics](../azure-monitor/log-query/saved-queries.md).
+Přečtěte si další informace o rozhraní ukázkových dotazů v [uložených dotazech v Azure Monitor Log Analytics](../azure-monitor/log-query/example-queries.md).
 
-Následující seznam dotazů vám umožní zkontrolovat informace o připojení a problémy pro jednoho uživatele. Tyto dotazy můžete spustit v [Editoru dotazů Log Analytics](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries). Pro každý dotaz nahraďte `userupn` hlavní název uživatele (UPN), kterého chcete vyhledat.
+Následující seznam dotazů vám umožní zkontrolovat informace o připojení a problémy pro jednoho uživatele. Tyto dotazy můžete spustit v [Editoru dotazů Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query). Pro každý dotaz nahraďte `userupn` hlavní název uživatele (UPN), kterého chcete vyhledat.
 
 
 Vyhledání všech připojení pro jednoho uživatele:

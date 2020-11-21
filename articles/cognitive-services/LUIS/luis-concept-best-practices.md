@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.openlocfilehash: a16267b0bc5d9b550c73dc4e1dafee8304ec0237
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc4475eb64744688e901d2b37e30632d044b0115
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541817"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019309"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Osvědčené postupy pro sestavování aplikace pro porozumění jazyku (LUIS)
 Pomocí procesu vytváření aplikací sestavte aplikaci LUIS:
@@ -87,7 +87,7 @@ Přečtěte si o [efektivních entitách strojového učení](luis-concept-entit
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>Opakované sestavování aplikace pomocí verzí
 
-Každý cyklus vytváření obsahu by měl být v rámci nové [verze](luis-concept-version.md), který je klonován z existující verze.
+Každý cyklus vytváření obsahu by měl být v rámci nové [verze](./luis-concept-app-iteration.md), který je klonován z existující verze.
 
 ## <a name="do-build-for-model-decomposition"></a>Sestavit pro dekompozici modelu
 

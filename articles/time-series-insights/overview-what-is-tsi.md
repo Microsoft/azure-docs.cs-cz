@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: fa0416db440e6433829b8077b6988eeaa6a596ad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8fdbb42d06f26849d14e093c340c6d2457ee6ec9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667057"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020091"
 ---
 # <a name="what-is-azure-time-series-insights-gen2"></a>Co je Azure Time Series Insights Gen2
 
@@ -83,7 +83,7 @@ Díky zavedení těchto klíčových funkcí pro průmyslové účely IoT Azure 
 | Vícevrstvé úložiště pro data časových řad IoT-Scale | Pomocí sdíleného kanálu zpracování dat pro ingestování dat můžete ingestovat data do teplého i mrazírenského úložiště. Používejte záložní úložiště pro interaktivní dotazy a chladírenské úložiště pro ukládání velkých objemů dat. Další informace o tom, jak využít výhod vysoce výkonných dotazů založených na prostředcích, najdete v tématu [dotazy](./concepts-query-overview.md). |
 | Model časové řady pro dátí nezpracované telemetrie a odvození přehledů na základě assetů | Model časové řady můžete použít k vytvoření instancí, hierarchií, typů a proměnných pro data časových řad. Další informace o modelu časových řad najdete v tématu [model časových řad](./concepts-model-overview.md).  |
 | Plynulá a kontinuální integrace s jinými datovými řešeními | Data v Azure Time Series Insights Gen2 chladírenský sklad se [ukládají](./concepts-storage.md) do Open Source souborů Apache Parquet. To umožňuje integraci dat s jinými datovými řešeními, 1. nebo třetí stranou, pro scénáře, které zahrnují business intelligence, pokročilé Machine Learning a prediktivní analýzy. |
-| Zkoumání dat téměř v reálném čase | Prostředí [Azure Time Series Insights Průzkumník Gen2](./time-series-insights-update-explorer.md) poskytuje vizualizaci pro všechna streamování dat prostřednictvím kanálu přijímání. Po připojení zdroje událostí můžete zobrazit, prozkoumat a dotazovat data událostí. Tímto způsobem můžete ověřit, jestli zařízení vysílá data podle očekávání. Můžete také monitorovat prostředek IoT pro stav, produktivitu a celkovou efektivitu. |
+| Zkoumání dat téměř v reálném čase | Prostředí [Azure Time Series Insights Průzkumník Gen2](./concepts-ux-panels.md) poskytuje vizualizaci pro všechna streamování dat prostřednictvím kanálu přijímání. Po připojení zdroje událostí můžete zobrazit, prozkoumat a dotazovat data událostí. Tímto způsobem můžete ověřit, jestli zařízení vysílá data podle očekávání. Můžete také monitorovat prostředek IoT pro stav, produktivitu a celkovou efektivitu. |
 | Rozšiřitelnost a integrace | Integrace konektoru Power BI je k dispozici přímo v uživatelském prostředí Průzkumníka časových řad prostřednictvím možnosti **exportovat** , což zákazníkům umožňuje exportovat dotazy časových řad, které vytvoří v prostředí uživatele přímo do Power BI plochy, a zobrazit grafy časových řad společně s dalšími analýzami BI. Tím se otevře dvířka nové třídy scénářů pro podniky IoT v průmyslu, které investovaly do Power BI tím, že v různých zdrojích dat, včetně časových řad IoT, poskytneme jedno podokno ze skleněných zdrojů. |
 | Vlastní aplikace založené na Azure Time Series Insights platformě Gen2 | Azure Time Series Insights Gen2 podporuje [sadu JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Sada SDK poskytuje bohatý ovládací prvky a zjednodušený přístup k dotazům. Pomocí sady SDK můžete sestavovat vlastní aplikace IoT nad Azure Time Series Insights Gen2 tak, aby vyhovovaly vašim obchodním potřebám. Můžete také použít [rozhraní API](./concepts-query-overview.md) pro Azure Time Series Insights Gen2 pro dotazy přímo na data na vlastní aplikace IoT. |
 
@@ -92,9 +92,9 @@ Díky zavedení těchto klíčových funkcí pro průmyslové účely IoT Azure 
 Začínáme s Azure Time Series Insights Gen2:
 
 > [!div class="nextstepaction"]
-> [Příručka Rychlý start](./time-series-insights-update-quickstart.md)
+> [Příručka Rychlý start](./quickstart-explore-tsi.md)
 
 Další informace o případech použití:
 
 > [!div class="nextstepaction"]
-> [Případy použití Azure Time Series Insights Gen2](./time-series-insights-update-use-cases.md)
+> [Případy použití Azure Time Series Insights Gen2](./overview-use-cases.md)

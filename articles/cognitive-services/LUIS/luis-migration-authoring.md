@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 926b79e672c14249ec7c2b053dba7eb3a31443a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 455c7d66748740ae6e2cc11c6a44bbf30c1cbced
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536035"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018833"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
@@ -40,7 +40,7 @@ Migraci je potřeba provést z portálu LUIS. Pokud vytvoříte vytváření kl�
 * Vlastníci jsou vyzváni k odeslání e-mailu spolupracovníkům, kteří je informují o migraci.
 * Pokud jste spolupracujete na aplikaci, nebudou aplikace migrovány s vámi.
 * Neexistuje žádný způsob, jak vlastníkovi sdělit, že spolupracovníci migrovali.
-* Migrace neshromažďuje automaticky spolupracovníky a nepřesouvá je ani nepřidává do prostředku pro vytváření obsahu Azure. Vlastníkem aplikace je ten, který po migraci potřebuje dokončit tento krok. Tento krok vyžaduje [oprávnění k prostředku pro vytváření obsahu Azure](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate).
+* Migrace neshromažďuje automaticky spolupracovníky a nepřesouvá je ani nepřidává do prostředku pro vytváření obsahu Azure. Vlastníkem aplikace je ten, který po migraci potřebuje dokončit tento krok. Tento krok vyžaduje [oprávnění k prostředku pro vytváření obsahu Azure](./luis-how-to-collaborate.md).
 * Po přiřazení spolupracovníků k prostředku Azure musí migrovat na přístup k aplikacím. V opačném případě nebudou mít přístup k vytváření aplikací.
 * Migrovaného uživatele nelze přidat jako spolupracovníka aplikace.
 * Pokud vlastníte klíč předpovědi, který je přiřazený k aplikacím vlastněných jiným uživatelem, bude zablokovaná migrace pro vlastníka i spolupracovníky. Viz doporučení dále v tomto článku.
@@ -174,7 +174,7 @@ Pokud plánujete upravit aplikace programově, budete potřebovat hodnoty pro vy
 
 Naučte [se, jak přidat přispěvatele](luis-how-to-collaborate.md) do prostředku pro vytváření obsahu. Přispěvatelé budou mít přístup ke všem aplikacím v rámci daného prostředku.
 
-Přispěvatele můžete přidat do prostředku vytváření z Azure Portal na stránce **Access Control (IAM)** daného prostředku. Další informace najdete v tématu [Přidání přístupu přispěvatele](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
+Přispěvatele můžete přidat do prostředku vytváření z Azure Portal na stránce **Access Control (IAM)** daného prostředku. Další informace najdete v tématu [Přidání přispěvatelů do aplikace](luis-how-to-collaborate.md).
 
 > [!Note]
 > Pokud vlastník aplikace LUIS migrovali a přidal spolupracovníka jako přispěvatele na prostředku Azure, spolupracovníka nebude mít k této aplikaci k dispozici žádný přístup, pokud se ani nepřenáší.
@@ -229,7 +229,7 @@ Při pokusu o migraci, ale nemůžete najít předplatné Azure v rozevíracím 
 * Ujistěte se, že jste v rámci správného tenanta přidruženého k vašemu platnému předplatnému. Klienty můžete na tomto panelu nástrojů přepnout z miniatury na levou stranu úvodní obrazovky: ![ panel nástrojů, kde můžete přepnout klienty.](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
 Pokud máte existující prostředek pro vytváření obsahu, ale nemůžete ho najít, když vyberete možnost **použít existující prostředek pro vytváření obsahu** :
-* Prostředek se pravděpodobně vytvořil v umístění, které se liší od portálu, ke kterému jste se přihlásili. Ověřte [oblasti a portály pro vytváření Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions).
+* Prostředek se pravděpodobně vytvořil v umístění, které se liší od portálu, ke kterému jste se přihlásili. Ověřte [oblasti a portály pro vytváření Luis](./luis-reference-regions.md#luis-authoring-regions).
 * Místo toho vytvořte nový prostředek z portálu LUIS.
 
 Pokud vyberete možnost **vytvořit nový prostředek pro vytváření obsahu** a migrace se nezdařila, zobrazí se chybová zpráva s informací o tom, že se nepodařilo načíst informace o Azure uživatele, opakovat akci později:

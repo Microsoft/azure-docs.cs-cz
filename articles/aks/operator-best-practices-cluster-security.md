@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Seznamte se s osvědčenými postupy pro postup správy zabezpečení a upgradů clusteru ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: 9ef019e682511e13af46194d26aec48c1555f70e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 11/12/2020
+ms.openlocfilehash: ad1f14fc92433e8d9cb31de165645e4a5731f01a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683297"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019462"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení a upgrady clusterů ve službě Azure Kubernetes Service (AKS)
 

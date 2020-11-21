@@ -6,16 +6,16 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 4d399dc9298c51906d62dabbc36650bf21f94af8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d070a03a81f70cdbf2c721cc67a3bc40c5d731fc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542826"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018731"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Kurz: použití robota webové aplikace s povolenou službou Language Understanding v Node.js
 
-Pomocí Node.js můžete vytvořit chatovací robot integrovaný s jazykem porozumění (LUIS). Robot má vytvořenou službu Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource a [bot Framework verze](https://github.com/Microsoft/botbuilder-dotnet) v4.
+Pomocí Node.js můžete vytvořit chatovací robot integrovaný s jazykem porozumění (LUIS). Robot má vytvořenou službu Azure [Web App bot](/azure/bot-service/) Resource a [bot Framework verze](https://github.com/Microsoft/botbuilder-dotnet) v4.
 
 **V tomto kurzu se naučíte:**
 
@@ -377,7 +377,7 @@ Zeptejte se robota na záměr na knihu letu.
 
 1. Spusťte emulátor rozhraní bot Framework a vyberte **otevřít robot**.
 1. V automaticky **otevřeném okně robota** zadejte adresu URL robota, například `http://localhost:3978/api/messages` . `/api/messages`Trasa je webová adresa pro robota.
-1. Zadejte **ID aplikace Microsoftu** a **heslo aplikace Microsoftu** , které najdete v souboru **. env** v kořenovém adresáři kódu robota, který jste stáhli.
+1. Zadejte **ID aplikace Microsoftu** a **heslo aplikace Microsoftu**, které najdete v souboru **. env** v kořenovém adresáři kódu robota, který jste stáhli.
 
 1. V emulátoru bot Framework zadejte `Book a flight from Seattle to Berlin tomorrow` a získejte stejnou reakci na základní bot, jak jste dostali v **testu ve webovém chatu**.
 
@@ -395,4 +395,4 @@ Zeptejte se robota na záměr na knihu letu.
 Podívejte se na další [ukázky](https://github.com/microsoft/botframework-solutions) s konverzací roboty.
 
 > [!div class="nextstepaction"]
-> [Vytvoření aplikace Language Understanding s vlastní doménou předmětu](luis-quickstart-intents-only.md)
+> [Vytvoření aplikace Language Understanding s vlastní doménou předmětu](./tutorial-intents-only.md)

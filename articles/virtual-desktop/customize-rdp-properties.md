@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 86e3422cbd1cbf92a0d0d218267001c934403753
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: cc3a08f383368b189e41bebd204707f2483e77c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930692"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018303"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) pro fond hostitelů
 
@@ -20,7 +20,7 @@ ms.locfileid: "91930692"
 
 Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu hostitelů, jako je například prostředí pro více monitorů a přesměrování zvuku, umožňuje poskytovat optimální prostředí pro uživatele podle svých potřeb. Vlastnosti protokolu RDP na virtuálním počítači s Windows můžete přizpůsobit buď pomocí Azure Portal, nebo pomocí parametru *-CustomRdpProperty* v rutině **Update-AzWvdHostPool** .
 
-Úplný seznam podporovaných vlastností a jejich výchozích hodnot najdete v tématu [podporované nastavení souboru RDP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .
+Úplný seznam podporovaných vlastností a jejich výchozích hodnot najdete v tématu [podporované nastavení souboru RDP](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext) .
 
 ## <a name="default-rdp-file-properties"></a>Výchozí vlastnosti souboru RDP
 

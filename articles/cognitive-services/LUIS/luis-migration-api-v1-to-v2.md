@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 867ae2cc7567077786bb0840cd11c47b786be423
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541318"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018748"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Průvodce migrací rozhraní API V1 na v2 pro aplikace LUIS
 [Koncový bod](https://aka.ms/v1-endpoint-api-docs) verze 1 a rozhraní API pro [vytváření obsahu](https://aka.ms/v1-authoring-api-docs) jsou zastaralé. Tento průvodce vám pomůže pochopit, jak migrovat na [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) verze 2 a [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) rozhraní API.
 
 ## <a name="new-azure-regions"></a>Nové oblasti Azure
-LUIS má nové [oblasti](https://aka.ms/LUIS-regions) , které jsou k dispozici pro rozhraní Luis API. LUIS poskytuje pro skupiny oblastí jiný portál. Aplikace musí být vytvořená ve stejné oblasti, kterou očekáváte dotazovat. Aplikace nemigrují automaticky oblasti. Aplikaci exportujete z jedné oblasti a pak ji naimportujete do jiné, aby byla dostupná v nové oblasti.
+LUIS má nové [oblasti](./luis-reference-regions.md) , které jsou k dispozici pro rozhraní Luis API. LUIS poskytuje pro skupiny oblastí jiný portál. Aplikace musí být vytvořená ve stejné oblasti, kterou očekáváte dotazovat. Aplikace nemigrují automaticky oblasti. Aplikaci exportujete z jedné oblasti a pak ji naimportujete do jiné, aby byla dostupná v nové oblasti.
 
 ## <a name="authoring-route-changes"></a>Vytváření změn tras
 Trasa rozhraní API pro vytváření obsahu se změnila z použití **programové** trasy na používání trasy **rozhraní API** .
@@ -143,7 +143,7 @@ LUIS navrhuje projevy z existujícího [koncového bodu projevy](luis-how-to-rev
 
 
 ## <a name="create-app-from-prebuilt-domains"></a>Vytvoření aplikace z předem připravených domén
-Předem [připravené domény](luis-how-to-use-prebuilt-domains.md) poskytují předdefinovaný doménový model. Předem připravené domény umožňují rychle vyvíjet aplikace LUIS pro běžné domény. Toto rozhraní API umožňuje vytvořit novou aplikaci založenou na předem sestavené doméně. Odpověď je nový appID.
+Předem [připravené domény](./howto-add-prebuilt-models.md) poskytují předdefinovaný doménový model. Předem připravené domény umožňují rychle vyvíjet aplikace LUIS pro běžné domény. Toto rozhraní API umožňuje vytvořit novou aplikaci založenou na předem sestavené doméně. Odpověď je nový appID.
 
 |V2 Route|operace|
 |--|--|
@@ -154,7 +154,7 @@ Předem [připravené domény](luis-how-to-use-prebuilt-domains.md) poskytují p
 Exportovaný formát JSON aplikace 1. x obsahuje některé oblasti, které je třeba před importem do [LUIS][LUIS] 2,0 změnit.
 
 ### <a name="prebuilt-entities"></a>Předem připravené entity
-[Předem připravené entity](luis-prebuilt-entities.md) se změnily. Ujistěte se, že používáte předem připravené Entity v2. To zahrnuje použití [datetimeV2](luis-reference-prebuilt-datetimev2.md)místo data a času.
+[Předem připravené entity](./howto-add-prebuilt-models.md) se změnily. Ujistěte se, že používáte předem připravené Entity v2. To zahrnuje použití [datetimeV2](luis-reference-prebuilt-datetimev2.md)místo data a času.
 
 ### <a name="actions"></a>Akce
 Vlastnost Actions již není platná. Měla by být prázdná.
@@ -169,4 +169,4 @@ Viz [kódy odpovědí rozhraní API pro Luis](luis-reference-response-codes.md).
 
 Pomocí dokumentace k rozhraní v2 API aktualizujte existující volání REST na [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) Luis a [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) rozhraní API.
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+[LUIS]: ./luis-reference-regions.md

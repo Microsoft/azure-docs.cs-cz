@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.openlocfilehash: 120852c3e66594b1cf5cd28bb52ce06634211060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d2a1702ea131e9b1b4bf5e586f4290db3aff7ff
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541084"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018765"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Oprava nesprávně napsaných slov pomocí Kontrola pravopisu Bingu
 
@@ -97,4 +97,4 @@ Existují dvě řešení:
 Stránka [publikování](luis-how-to-publish-app.md) má zaškrtávací políčko **Povolit kontrolu pravopisu Bingu** . To je pohodlí pro vytvoření klíče a pochopení, jak se adresa URL koncového bodu mění. Aby bylo možné opravit pravopis každého utterance, je stále nutné použít správné parametry koncového bodu.
 
 > [!div class="nextstepaction"]
-> [Další informace o příkladu projevy](luis-how-to-add-example-utterances.md)
+> [Další informace o příkladu projevy](./luis-how-to-add-entities.md)
