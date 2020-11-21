@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 4eb2835bd09e6548149ee90cb7232bf230de0300
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 73887515eea344e920455e3c24f3eae3d5ad515a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538746"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013747"
 ---
-# <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
+# <a name="optical-character-recognition-ocr"></a>optické rozpoznávání znaků (OCR),
 
 Azure rozhraní API pro počítačové zpracování obrazu zahrnuje funkce optického rozpoznávání znaků (OCR), které extrahují vytištěný nebo rukou psaný text z obrázků. Můžete extrahovat text z obrázků, například fotky licenčních desek nebo kontejnerů se sériovými čísly a také z dokumentů – faktury, Bill, finanční sestavy, články a další.
 
@@ -138,7 +138,7 @@ Začněte tím, že [počítačové zpracování obrazu přečtete rychlé start
 ## <a name="supported-languages-for-print-text"></a>Podporované jazyky pro tisk textu
 [Rozhraní API pro čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) podporuje extrakci vytištěného textu v angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a dánských jazycích.
 
-Úplný seznam jazyků podporovaných OCR najdete v [podporovaných jazycích](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) .
+Úplný seznam jazyků podporovaných OCR najdete v [podporovaných jazycích](./language-support.md#optical-character-recognition-ocr) .
 
 ### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>Čtení 3,2 Preview přidává zjednodušenou čínštinu a japonštinu
 [Verze Public Preview pro čtení 3,2 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) přidává podporu pro zjednodušenou čínštinu a japonštinu. Pokud váš scénář vyžaduje podporu více jazyků, přečtěte si část [rozhraní API pro optické rozpoznávání znaků](#ocr-api) . 
@@ -150,7 +150,7 @@ Operace čtení aktuálně podporuje extrakci rukopisného textu výhradně v an
 [REST API pro čtení 3. x](./QuickStarts/CSharp-hand-text.md) je upřednostňovanou možností pro většinu zákazníků kvůli snadné integraci a rychlé produktivitě mimo pole. Azure a služba Počítačové zpracování obrazu obsluhují požadavky na škálování, výkon, zabezpečení dat a dodržování předpisů a přitom se soustředit na splnění potřeb vašich zákazníků.
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>Nasazení v místním počítači pomocí kontejnerů Docker
-[Kontejner pro čtení Docker (Preview)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) umožňuje nasadit nové možnosti optického rozpoznávání OCR ve vlastním místním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat.
+[Kontejner pro čtení Docker (Preview)](./computer-vision-how-to-install-containers.md) umožňuje nasadit nové možnosti optického rozpoznávání OCR ve vlastním místním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat.
 
 ## <a name="example-outputs"></a>Ukázkové výstupy
 
@@ -186,7 +186,7 @@ Rozhraní API pro čtení podporuje obrázky a dokumenty, které obsahují něko
 
 ## <a name="ocr-api"></a>ROZHRANÍ API PRO OPTICKÉ ROZPOZNÁVÁNÍ ZNAKŮ
 
-[Rozhraní API pro rozpoznávání OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) používá starší model rozpoznávání, podporuje pouze image a provádí synchronní operace se zjištěným textem. Podívejte se na [jazyky podporované OCR](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) a pak číst rozhraní API.
+[Rozhraní API pro rozpoznávání OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) používá starší model rozpoznávání, podporuje pouze image a provádí synchronní operace se zjištěným textem. Podívejte se na [jazyky podporované OCR](./language-support.md#optical-character-recognition-ocr) a pak číst rozhraní API.
 
 ## <a name="data-privacy-and-security"></a>Ochrana osobních údajů a zabezpečení dat
 

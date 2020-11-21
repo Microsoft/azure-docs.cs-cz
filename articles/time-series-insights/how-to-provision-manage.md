@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: e54e8e9de1df4c8a1c870285d36e4580daaa698a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c38c57a8480ef2addde494b94d70bd2eb679373
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667822"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016764"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-gen2"></a>Zřizování a Správa Azure Time Series Insights Gen2
 
@@ -31,8 +31,8 @@ Když zřizujete prostředí Azure Time Series Insights Gen2, vytvoříte tyto p
 
 > [!TIP]
 >
-> * Naučte [se plánovat prostředí](./time-series-insights-update-plan.md).
-> * Přečtěte si o tom, jak [Přidat zdroj centra událostí](./time-series-insights-how-to-add-an-event-source-eventhub.md) nebo jak [Přidat zdroj služby IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
+> * Naučte [se plánovat prostředí](./how-to-plan-your-environment.md).
+> * Přečtěte si o tom, jak [Přidat zdroj centra událostí](./how-to-ingest-data-event-hub.md) nebo jak [Přidat zdroj služby IoT Hub](./how-to-ingest-data-iot-hub.md).
 
 V tomto kurzu se naučíte:
 
@@ -49,7 +49,7 @@ Vytvoření Azure Time Series Insightsho prostředí Gen 2:
 
 1. Vytvořte prostředek Azure Time Series Insights v části *Internet věcí* na [Azure Portal](https://portal.azure.com/).
 
-1. Jako **vrstvu**vyberte **Gen2 (L1)** . Zadejte název prostředí a vyberte skupinu předplatných a skupinu prostředků, kterou chcete použít. Pak vyberte podporované umístění pro hostování prostředí.
+1. Jako **vrstvu** vyberte **Gen2 (L1)** . Zadejte název prostředí a vyberte skupinu předplatných a skupinu prostředků, kterou chcete použít. Pak vyberte podporované umístění pro hostování prostředí.
 
    [![Vytvořte instanci Azure Time Series Insights.](media/v2-update-manage/create-and-manage-configuration.png)](media/v2-update-manage/create-and-manage-configuration.png#lightbox)
 
@@ -59,16 +59,16 @@ Vytvoření Azure Time Series Insightsho prostředí Gen 2:
     >
     > * V ID časové řady jsou rozlišována *malá a velká písmena* a *neměnná*. (Po nastavení se nedá změnit.)
     > * ID časových řad můžou být až *tři* klíče. V databázi si můžete představit jako primární klíč, který jednoznačně představuje každý senzor zařízení, který by odesílal data do vašeho prostředí. Může to být jedna vlastnost nebo kombinace až tří vlastností.
-    > * Přečtěte si další informace o [tom, jak zvolit ID časové řady](time-series-insights-update-how-to-id.md) .
+    > * Přečtěte si další informace o [tom, jak zvolit ID časové řady](./how-to-select-tsid.md) .
 
-1. Vytvořte účet Azure Storage výběrem názvu účtu úložiště, druhu účtu a určením volby [replikace](https://docs.microsoft.com/azure/storage/common/redundancy-migration?tabs=portal) . Tím se automaticky vytvoří účet Azure Storage. Ve výchozím nastavení se vytvoří účet pro [obecné účely v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) . Účet se vytvoří ve stejné oblasti jako prostředí Azure Time Series Insights Gen2, které jste předtím vybrali.
+1. Vytvořte účet Azure Storage výběrem názvu účtu úložiště, druhu účtu a určením volby [replikace](../storage/common/redundancy-migration.md?tabs=portal) . Tím se automaticky vytvoří účet Azure Storage. Ve výchozím nastavení se vytvoří účet pro [obecné účely v2](../storage/common/storage-account-overview.md) . Účet se vytvoří ve stejné oblasti jako prostředí Azure Time Series Insights Gen2, které jste předtím vybrali.
 Alternativně můžete při vytváření nového prostředí Azure Time Series Gen2 využít vlastní úložiště (BYOS) i [šablonu ARM](./time-series-insights-manage-resources-using-azure-resource-manager-template.md) .
 
 1. **(Volitelné)** Pokud potřebujete rychlejší a neomezené dotazy nad nejnovějšími daty ve vašem prostředí, povolte pro své prostředí služby pro zajištění tepla. V levém navigačním podokně můžete vytvořit nebo odstranit záložní úložiště pomocí možnosti **Konfigurace úložiště** , a to po vytvoření prostředí Azure Time Series Insights Gen2.
 
 1. **(Volitelné)** Nyní můžete přidat zdroj události. Můžete také počkat až po zřízení instance.
 
-   * Azure Time Series Insights podporuje [azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) a [Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) jako možnosti zdrojů událostí. I když při vytváření prostředí můžete přidat jenom jeden zdroj události, můžete později přidat další zdroj události.
+   * Azure Time Series Insights podporuje [azure IoT Hub](./how-to-ingest-data-iot-hub.md) a [Azure Event Hubs](./how-to-ingest-data-event-hub.md) jako možnosti zdrojů událostí. I když při vytváření prostředí můžete přidat jenom jeden zdroj události, můžete později přidat další zdroj události.
 
      Můžete vybrat existující skupinu uživatelů nebo vytvořit novou skupinu uživatelů, když přidáte zdroj události. Upozorňujeme, že zdroj události vyžaduje pro vaše prostředí jedinečnou skupinu uživatelů, aby na ni bylo možné číst data.
 
@@ -92,19 +92,19 @@ Prostředí Azure Time Series Insights Gen2 můžete spravovat pomocí Azure Por
   * Kapacita se odebere, protože se nevztahuje na Gen2 prostředí.
   * Přidá se vlastnost **ID časové řady** . Určuje, jak jsou data rozdělená na oddíly.
   * Referenční sady dat se odeberou.
-  * Zobrazovaná adresa URL vás přesměruje do [průzkumníka Azure Time Series Insights](./time-series-insights-update-explorer.md).
+  * Zobrazovaná adresa URL vás přesměruje do [průzkumníka Azure Time Series Insights](./concepts-ux-panels.md).
   * Zobrazí se název vašeho účtu Azure Storage.
 
 * Okno **konfigurace** Azure Portal se odebere, protože jednotky škálování se nevztahují na Azure Time Series Insights Gen2 prostředí. Můžete ale použít **konfiguraci úložiště** a nakonfigurovat nově zavedený obchod za tepla.
 
-* Okno **referenčních dat** Azure Portal se v Azure Time Series Insights Gen2 odebralo, protože koncept referenčních dat byl nahrazen [modelem Time Series model (TSM)](/azure/time-series-insights/concepts-model-overview).
+* Okno **referenčních dat** Azure Portal se v Azure Time Series Insights Gen2 odebralo, protože koncept referenčních dat byl nahrazen [modelem Time Series model (TSM)](./concepts-model-overview.md).
 
 [![Azure Time Series Insights prostředí Gen2 v Azure Portal](media/v2-update-manage/create-and-manage-overview-confirm.png)](media/v2-update-manage/create-and-manage-overview-confirm.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o Azure Time Series Insights všeobecně dostupných prostředích a prostředích Gen2. načtěte [si plánování prostředí](./time-series-insights-update-plan.md).
+* Přečtěte si další informace o Azure Time Series Insights všeobecně dostupných prostředích a prostředích Gen2. načtěte [si plánování prostředí](./how-to-plan-your-environment.md).
 
-* Naučte se [Přidat zdroj centra událostí](./time-series-insights-how-to-add-an-event-source-eventhub.md).
+* Naučte se [Přidat zdroj centra událostí](./how-to-ingest-data-event-hub.md).
 
-* Nakonfigurujte [Zdroj služby IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
+* Nakonfigurujte [Zdroj služby IoT Hub](./how-to-ingest-data-iot-hub.md).

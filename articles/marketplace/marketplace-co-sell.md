@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/17/2020
-ms.openlocfilehash: 730178d974ba95db968332ac669f701486b513bd
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.date: 11/20/2020
+ms.openlocfilehash: 9d6970331024ea0cd08e890cc62507d9eb230678
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738522"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016325"
 ---
 # <a name="co-sell-partner-engagement"></a>Zapojení partnerů do společného prodeje
 
@@ -85,6 +85,13 @@ Svůj společný prodej přímo v partnerském centru začněte podle následuj�
         :::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="Tento obrázek ukazuje rozevírací seznam CED pro vyžádání přezkoumání společného prodeje.":::
 
     CED vás bude kontaktovat, abyste mohli proces dokončit.
+
+## <a name="see-your-offers-co-sell-status"></a>Podívejte se na stav společného prodeje vaší nabídky.
+
+U nabídek s [možností společného prodeje v partnerském centru](./partner-center-portal/commercial-marketplace-co-sell.md)můžete zobrazit aktuální stav společného prodeje vaší nabídky na stránce Přehled nabídky:
+
+ :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="Tento obrázek ukazuje aktuální stav nabídky pro účely společného prodeje.":::
+
 
 ## <a name="next-steps"></a>Další kroky
 

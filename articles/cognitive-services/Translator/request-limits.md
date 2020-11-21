@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: dff69f00833cc3f8004befd330d144f4da0e332d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8841c55d8f276f048db53a531bd2e9218e498b34
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566581"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016492"
 ---
 # <a name="request-limits-for-translator"></a>Omezení požadavků pro překladatele
 
@@ -52,17 +52,17 @@ Pokud tato omezení dosáhnete nebo překročíte nebo v krátké době zadáte 
 | S3/C3 | 120 000 000 znaků za hodinu |
 | S4/C4 | 200 000 000 znaků za hodinu |
 
-Limity pro [předplatné s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) jsou stejné jako u úrovně S1.
+Limity pro [předplatné s více službami](./reference/v3-0-reference.md#authentication) jsou stejné jako u úrovně S1.
 
 Tato omezení se omezují na standardní modely překladu společnosti Microsoft. Vlastní modely překladu, které používají vlastní překladatele, jsou omezené na 1 800 znaků za sekundu.
 
 ## <a name="latency"></a>Latence
 
-Při použití vlastních modelů má Překladatel maximální latenci 15 sekund s použitím standardních modelů a 120 sekund. Odpovědi *na text v rámci 100 znaků* jsou obvykle vraceny během 150 milisekund na 300 milisekund. Modely vlastního překladatele mají podobné vlastnosti latence u trvalých požadavků a můžou mít vyšší latenci, když je vaše frekvence požadavků přerušovaná. Doby odezvy se budou lišit v závislosti na velikosti páru požadavků a jazyků. Pokud neobdržíte překlad nebo odpověď na [chybu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) v rámci tohoto časového období, zkontrolujte prosím svůj kód, připojení k síti a zkuste to znovu. 
+Při použití vlastních modelů má Překladatel maximální latenci 15 sekund s použitím standardních modelů a 120 sekund. Odpovědi *na text v rámci 100 znaků* jsou obvykle vraceny během 150 milisekund na 300 milisekund. Modely vlastního překladatele mají podobné vlastnosti latence u trvalých požadavků a můžou mít vyšší latenci, když je vaše frekvence požadavků přerušovaná. Doby odezvy se budou lišit v závislosti na velikosti páru požadavků a jazyků. Pokud neobdržíte překlad nebo odpověď na [chybu](./reference/v3-0-reference.md#errors) v rámci tohoto časového období, zkontrolujte prosím svůj kód, připojení k síti a zkuste to znovu. 
 
 ## <a name="sentence-length-limits"></a>Omezení délky věty
 
-Při použití funkce [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) je délka věty omezená na 275 znaků. Existují výjimky pro tyto jazyky:
+Při použití funkce [BreakSentence](./reference/v3-0-break-sentence.md) je délka věty omezená na 275 znaků. Existují výjimky pro tyto jazyky:
 
 | Jazyk | Kód | Omezení počtu znaků |
 |----------|------|-----------------|
@@ -81,4 +81,4 @@ Při použití funkce [BreakSentence](https://docs.microsoft.com/azure/cognitive
 
 * [Ceny](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Regionální dostupnost](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [Referenční informace ke službě Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [Referenční informace ke službě Translator v3](./reference/v3-0-reference.md)

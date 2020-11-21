@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 7408e3fb279536f61dd2e5cf1858476da57219d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1bd3c5796658663b6111723829cbe620346002c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665802"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016237"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure Time Series Insights
 
@@ -35,7 +35,7 @@ Registrační tok aplikace Azure Active Directory zahrnuje tři hlavní kroky.
 1. Autorizujte aplikaci tak, aby měla [přístup k datům Azure Time Series Insights prostředí](#granting-data-access).
 1. Použijte **ID aplikace** a **tajný klíč klienta** k získání tokenu z `https://api.timeseries.azure.com/` [klientské aplikace](#client-app-initialization). Token se pak dá použít k volání rozhraní Azure Time Series Insights API.
 
-V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám umožní:
+V rámci **kroku 3** oddělení aplikace a přihlašovací údaje uživatele vám umožní:
 
 * Přiřaďte oprávnění identitě aplikace, která se liší od vašich vlastních oprávnění. Tato oprávnění se většinou omezují jenom na to, co aplikace vyžaduje. Aplikaci můžete například dovolit číst data pouze z konkrétního Azure Time Series Insightsho prostředí.
 * Izolujte zabezpečení aplikace od přihlašovacích údajů pro ověření uživatele pomocí **tajného klíče klienta** nebo certifikátu zabezpečení. V důsledku toho přihlašovací údaje aplikace nejsou závislé na přihlašovacích údajích konkrétního uživatele. Pokud se změní role uživatele, aplikace nemusí nutně vyžadovat nové přihlašovací údaje ani další konfiguraci. Pokud uživatel změní heslo, veškerý přístup k aplikaci nevyžaduje nové přihlašovací údaje ani klíče.
@@ -73,7 +73,7 @@ V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám
 1. Uložte zásadu výběrem **OK**.
 
    > [!TIP]
-   > V případě pokročilých možností přístupu k datům si přečtěte téma [udělení přístupu k datům](./time-series-insights-data-access.md).
+   > V případě pokročilých možností přístupu k datům si přečtěte téma [udělení přístupu k datům](./concepts-access-policies.md).
 
 ### <a name="client-app-initialization"></a>Inicializace klientské aplikace
 
@@ -90,18 +90,18 @@ V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám
    1. Token se pak může předat v hlavičce, `Authorization` když aplikace volá rozhraní Azure Time Series Insights API.
 
 > [!IMPORTANT]
-> Pokud Azure Active Directory používáte MSAL [Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) , přečtěte si o [migraci do](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration).
+> Pokud Azure Active Directory používáte MSAL [Authentication Library (ADAL)](../active-directory/azuread-dev/active-directory-authentication-libraries.md) , přečtěte si o [migraci do](../active-directory/develop/msal-net-migration.md).
 
 ## <a name="common-headers-and-parameters"></a>Společné hlavičky a parametry
 
-Tato část popisuje společné hlavičky a parametry požadavků protokolu HTTP, které slouží k vytváření dotazů proti Azure Time Series Insights rozhraní API Gen1 a Gen2. Požadavky na konkrétní rozhraní API jsou podrobněji popsány v [referenční dokumentaci Azure Time Series Insights REST API](https://docs.microsoft.com/rest/api/time-series-insights/).
+Tato část popisuje společné hlavičky a parametry požadavků protokolu HTTP, které slouží k vytváření dotazů proti Azure Time Series Insights rozhraní API Gen1 a Gen2. Požadavky na konkrétní rozhraní API jsou podrobněji popsány v [referenční dokumentaci Azure Time Series Insights REST API](/rest/api/time-series-insights/).
 
 > [!TIP]
-> Další informace o tom, jak využívat rozhraní REST API, dělat požadavky HTTP a zpracovávat odpovědi HTTP, najdete v referenčních informacích k [Azure REST API](https://docs.microsoft.com/rest/api/azure/) .
+> Další informace o tom, jak využívat rozhraní REST API, dělat požadavky HTTP a zpracovávat odpovědi HTTP, najdete v referenčních informacích k [Azure REST API](/rest/api/azure/) .
 
 ### <a name="authentication"></a>Authentication
 
-Aby bylo možné provádět ověřené dotazy proti [Azure Time Series Insights rozhraní REST API](https://docs.microsoft.com/rest/api/time-series-insights/), musí se v [autorizační hlavičce](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) předávat platný token OAuth 2,0 s použitím klienta REST podle vašeho výběru (post, JavaScript, C#).
+Aby bylo možné provádět ověřené dotazy proti [Azure Time Series Insights rozhraní REST API](/rest/api/time-series-insights/), musí se v [autorizační hlavičce](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) předávat platný token OAuth 2,0 s použitím klienta REST podle vašeho výběru (post, JavaScript, C#).
 
 > [!TIP]
 > Přečtěte si [ukázkovou vizualizaci hostované Azure Time Series Insights klientské sady SDK](https://tsiclientsample.azurewebsites.net/) a Naučte se ověřovat pomocí rozhraní api pro Azure Time Series Insights programově pomocí [klientské sady SDK pro JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) spolu s grafy a grafy.
@@ -110,7 +110,7 @@ Aby bylo možné provádět ověřené dotazy proti [Azure Time Series Insights 
 
 Požadované hlavičky požadavku jsou popsány níže.
 
-| Požadovaná hlavička žádosti | Description |
+| Požadovaná hlavička žádosti | Popis |
 | --- | --- |
 | Autorizace | Chcete-li provést ověření pomocí Azure Time Series Insights, musí být do **autorizační** hlavičky předána platný nosný token OAuth 2,0. |
 
@@ -122,7 +122,7 @@ Požadované hlavičky požadavku jsou popsány níže.
 
 Volitelné hlavičky požadavku jsou popsány níže.
 
-| Nepovinná hlavička požadavku | Description |
+| Nepovinná hlavička požadavku | Popis |
 | --- | --- |
 | Typ obsahu | `application/json`podporuje se jenom. |
 | x-MS-Client-Request-ID | ID žádosti klienta. Služba zaznamená tuto hodnotu. Umožňuje službě sledovat operace napříč službami. |
@@ -131,7 +131,7 @@ Volitelné hlavičky požadavku jsou popsány níže.
 
 Volitelné, ale Doporučené hlavičky odpovědí jsou popsány níže.
 
-| Hlavička odpovědi | Description |
+| Hlavička odpovědi | Popis |
 | --- | --- |
 | Typ obsahu | `application/json`Podporuje se jenom. |
 | x-MS-Request-ID | ID žádosti generované serverem Dá se použít ke kontaktování žádosti Microsoftu o vyšetření žádosti. |
@@ -140,7 +140,7 @@ Volitelné, ale Doporučené hlavičky odpovědí jsou popsány níže.
 ### <a name="http-parameters"></a>Parametry HTTP
 
 > [!TIP]
-> Další informace o požadovaných a volitelných informacích o dotazech najdete v [referenční dokumentaci](https://docs.microsoft.com/rest/api/time-series-insights/).
+> Další informace o požadovaných a volitelných informacích o dotazech najdete v [referenční dokumentaci](/rest/api/time-series-insights/).
 
 Požadované parametry řetězce dotazu adresy URL závisí na verzi rozhraní API.
 
@@ -157,7 +157,7 @@ Volitelné parametry řetězce dotazu adresy URL zahrnují nastavení časového
 
 | Volitelný parametr dotazu | Popis | Verze |
 | --- |  --- | --- |
-| `timeout=<timeout>` | Časový limit pro provedení požadavku HTTP na straně serveru. Dá se použít jenom pro [události Get prostředí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) a rozhraní API pro [agregace prostředí](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) . Hodnota časového limitu by měla být ve formátu trvání ISO 8601, například `"PT20S"` a měla by být v rozsahu `1-30 s` . Výchozí hodnota je `30 s`. | Gen1 |
+| `timeout=<timeout>` | Časový limit pro provedení požadavku HTTP na straně serveru. Dá se použít jenom pro [události Get prostředí](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) a rozhraní API pro [agregace prostředí](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) . Hodnota časového limitu by měla být ve formátu trvání ISO 8601, například `"PT20S"` a měla by být v rozsahu `1-30 s` . Výchozí hodnota je `30 s`. | Gen1 |
 | `storeType=<storeType>` | Pro prostředí Gen2 s povoleným teplým úložištěm se dotaz dá spustit buď na `WarmStore` nebo `ColdStore` . Tento parametr v dotazu definuje, na kterém úložišti se má dotaz spustit. Pokud není definován, dotaz se spustí v chladírenském skladu. Pro dotazování na záložní úložiště musí být **storeType** nastavené na `WarmStore` . Pokud není definován, dotaz se spustí pro chladírenský sklad. | Gen2 |
 
 ## <a name="next-steps"></a>Další kroky
@@ -166,6 +166,6 @@ Volitelné parametry řetězce dotazu adresy URL zahrnují nastavení časového
 
 * Vzorový kód, který volá ukázky kódu rozhraní API Gen2 Azure Time Series Insights, čte [data Gen2 dotazů pomocí jazyka C#](./time-series-insights-update-query-data-csharp.md).
 
-* Informace o referenčních informacích k rozhraní API najdete v referenční dokumentaci k [rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api) .
+* Informace o referenčních informacích k rozhraní API najdete v referenční dokumentaci k [rozhraní API pro dotazy](/rest/api/time-series-insights/gen1-query-api) .
 
 * Naučte se [vytvořit instanční objekt](../active-directory/develop/howto-create-service-principal-portal.md).

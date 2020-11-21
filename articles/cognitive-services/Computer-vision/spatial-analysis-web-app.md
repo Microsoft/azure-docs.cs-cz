@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 24d4dd4d0caa49b9514bf19f707ea87b0b071a79
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9b9390b498f28fc8f9029f1c11805b970aaca73d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357092"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014556"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Postupy: nasazení webové aplikace pro počítání lidí
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte, jak:
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Základní porozumění konfiguracím nasazení Azure IoT Edge a [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/)
+* Základní porozumění konfiguracím nasazení Azure IoT Edge a [Azure IoT Hub](../../iot-hub/index.yml)
 * Nakonfigurovaný [hostitelský počítač](spatial-analysis-container.md).
 
 ## <a name="deploy-the-spatial-analysis-container"></a>Nasazení kontejneru prostorových analýz
@@ -65,7 +65,7 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 Nasaďte kontejner prostorových analýz jako modul IoT na hostitelském počítači pomocí Azure CLI. Proces nasazení vyžaduje soubor manifestu nasazení, který pojednává o požadovaných kontejnerech, proměnných a konfiguracích pro vaše nasazení. Ukázkový [manifest nasazení konkrétního Azure Stackho okraje](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) a také [neAzure Stackho nasazení specifického Edge](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) na GitHubu najdete na webu GitHub, který zahrnuje základní konfiguraci nasazení pro kontejner *prostorových analýz* . 
 
-Alternativně můžete pomocí rozšíření Azure IoT pro Visual Studio Code provádět operace se službou IoT Hub. Další informace najdete [v nasazení Azure IoT Edge moduly z Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode) .
+Alternativně můžete pomocí rozšíření Azure IoT pro Visual Studio Code provádět operace se službou IoT Hub. Další informace najdete [v nasazení Azure IoT Edge moduly z Visual Studio Code](../../iot-edge/how-to-deploy-modules-vscode.md) .
 
 > [!NOTE] 
 > Kontejnery *prostorových analýz – telegraf* a *prostorové analýzy pro diagnostiku* jsou volitelné. Můžete se rozhodnout je odebrat z *DeploymentManifest.jsv* souboru. Další informace najdete v článku [telemetrie a řešení problémů](./spatial-analysis-logging.md) . Můžete najít dvě vzorová *DeploymentManifest.jsk* souborům na GitHubu, a to buď pro [zařízení Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) , nebo na jiný [stolní počítač](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) .

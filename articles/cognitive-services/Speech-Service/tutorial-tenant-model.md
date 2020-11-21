@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e861182ee57a0b49d3e62a858fc97dbf0890ea3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48cde51ee9941f705aa848d121c419a8f0c9ad1a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399699"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013706"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Kurz: vytvoření modelu tenanta (Preview)
 
@@ -56,10 +56,10 @@ Postup vypnutí instance modelu tenanta:
 
 Pokud chcete model tenanta použít se sadou Speech SDK, potřebujete prostředek pro rozpoznávání řeči a jeho přidružený klíč předplatného.
 
-1. Přihlaste se k [portálu Azure Portal](https://aka.ms/azureportal).
+1. Přihlaste se na [Azure Portal](https://aka.ms/azureportal).
 1. Vyberte **Vytvořit prostředek**.
 1. Do **vyhledávacího** pole zadejte **Speech**.
-1. V seznamu výsledků vyberte **řeč**a pak vyberte **vytvořit**.
+1. V seznamu výsledků vyberte **řeč** a pak vyberte **vytvořit**.
 1. Pokud chcete vytvořit prostředek, postupujte podle pokynů na obrazovce. Ujistěte se, že:
    * **Umístění** je nastaveno na hodnotu **eastus** nebo **westus**.
    * **Cenová úroveň** je nastavená na **S0**.
@@ -105,7 +105,7 @@ Když je vaše instance modelu tenanta připravená, nasaďte ji následujícím
 
 Teď, když jste model nasadili, ho můžete použít se sadou Speech SDK. V této části použijete vzorový kód pro volání služby Speech pomocí ověřování Azure Active Directory (Azure AD).
 
-Pojďme se podívat na kód, který použijete pro volání sady Speech SDK v jazyce C#. V tomto příkladu provedete rozpoznávání řeči pomocí modelu tenanta. Tato příručka předpokládá, že už máte nastavenou platformu. Pokud potřebujete pomocníka s nastavením, přečtěte si [rychlý Start: rozpoznávání řeči, C# (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
+Pojďme se podívat na kód, který použijete pro volání sady Speech SDK v jazyce C#. V tomto příkladu provedete rozpoznávání řeči pomocí modelu tenanta. Tato příručka předpokládá, že už máte nastavenou platformu. Pokud potřebujete pomocníka s nastavením, přečtěte si [rychlý Start: rozpoznávání řeči, C# (.NET Core)](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore).
 
 Zkopírujte do svého projektu tento kód:
 

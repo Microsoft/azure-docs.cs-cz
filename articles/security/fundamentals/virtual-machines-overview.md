@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d22ce3941b00903be8532caaa36a9ce55e2f2c6f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 91dfb3cb07cca8ec89c77dea43f1cd075db11bbf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409786"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014760"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure Virtual Machines
 Tento článek obsahuje přehled základních funkcí zabezpečení Azure, které je možné používat s virtuálními počítači.
@@ -108,16 +108,16 @@ Důležitou součástí strategie BCDR vaší organizace je zjistit, jak se maj�
 
 Site Recovery:
 
-* **Zjednodušuje strategii BCDR** : Site Recovery usnadňuje zpracování replikace, převzetí služeb při selhání a obnovení více podnikových úloh a aplikací z jednoho místa. Site Recovery orchestruje replikaci a převzetí služeb při selhání, ale nezachycuje data aplikací ani informace o nich.
-* **Poskytuje flexibilní replikaci** : pomocí Site Recovery můžete replikovat úlohy běžící na virtuálních počítačích s technologií Hyper-V, virtuálních počítačích VMware a fyzických serverech s Windows nebo Linux.
-* **Podporuje převzetí služeb při selhání a obnovení** : Site Recovery poskytuje testovací převzetí služeb při selhání pro podporu zotavení po havárii bez ovlivnění produkčních prostředí. Pro očekávané výpadky je možné spouštět plánovaná převzetí služeb při selhání bez ztráty dat. V případě neočekávaných havárií pak mohou proběhnout neplánovaná převzetí služeb s minimálními ztrátami dat (podle četnosti replikací). Po převzetí služeb při selhání můžete provést navrácení služeb po obnovení do primární lokality. Site Recovery poskytuje plány obnovení, které mohou obsahovat skripty a sešity automatizace Azure, což vám umožní přizpůsobit si přebírání služeb při selhání a obnovování vícevrstvých aplikací.
-* **Eliminuje sekundární datová centra** : můžete replikovat do sekundární místní lokality nebo do Azure. Použití Azure jako cíle pro zotavení po havárii eliminuje náklady a složitost údržby sekundární lokality. Replikovaná data jsou uložená v Azure Storage.
-* **Integruje se se stávajícími technologiemi BCDR** : Site Recovery partneři s funkcemi BCDR aplikací. Můžete například použít Site Recovery k ochraně SQL Server back-endu podnikových úloh. Zahrnuje to i nativní podporu SQL Server vždy pro správu převzetí služeb skupin dostupnosti při selhání.
+* **Zjednodušuje strategii BCDR**: Site Recovery usnadňuje zpracování replikace, převzetí služeb při selhání a obnovení více podnikových úloh a aplikací z jednoho místa. Site Recovery orchestruje replikaci a převzetí služeb při selhání, ale nezachycuje data aplikací ani informace o nich.
+* **Poskytuje flexibilní replikaci**: pomocí Site Recovery můžete replikovat úlohy běžící na virtuálních počítačích s technologií Hyper-V, virtuálních počítačích VMware a fyzických serverech s Windows nebo Linux.
+* **Podporuje převzetí služeb při selhání a obnovení**: Site Recovery poskytuje testovací převzetí služeb při selhání pro podporu zotavení po havárii bez ovlivnění produkčních prostředí. Pro očekávané výpadky je možné spouštět plánovaná převzetí služeb při selhání bez ztráty dat. V případě neočekávaných havárií pak mohou proběhnout neplánovaná převzetí služeb s minimálními ztrátami dat (podle četnosti replikací). Po převzetí služeb při selhání můžete provést navrácení služeb po obnovení do primární lokality. Site Recovery poskytuje plány obnovení, které mohou obsahovat skripty a sešity automatizace Azure, což vám umožní přizpůsobit si přebírání služeb při selhání a obnovování vícevrstvých aplikací.
+* **Eliminuje sekundární datová centra**: můžete replikovat do sekundární místní lokality nebo do Azure. Použití Azure jako cíle pro zotavení po havárii eliminuje náklady a složitost údržby sekundární lokality. Replikovaná data jsou uložená v Azure Storage.
+* **Integruje se se stávajícími technologiemi BCDR**: Site Recovery partneři s funkcemi BCDR aplikací. Můžete například použít Site Recovery k ochraně SQL Server back-endu podnikových úloh. Zahrnuje to i nativní podporu SQL Server vždy pro správu převzetí služeb skupin dostupnosti při selhání.
 
 Další informace:
 
 * [Co je Azure Site Recovery?](../../site-recovery/site-recovery-overview.md)
-* [Jak funguje Azure Site Recovery?](/azure/security/fundamentals/azure-to-azure-architecture)
+* [Jak funguje Azure Site Recovery?](/azure/site-recovery/azure-to-azure-architecture)
 * [Jaké úlohy jsou chráněny pomocí Azure Site Recovery?](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Virtuální síť

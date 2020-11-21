@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Překlad řeči
-ms.openlocfilehash: e54659b0d4504def272d3de40d5e953d98404a8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36c2943d7cd5ce2c5c7c4a8501dc0033aa8c9cbc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630066"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015201"
 ---
 # <a name="what-is-speech-translation"></a>Co je překlad řeči?
 
@@ -48,13 +48,13 @@ Vzorový kód pro sadu Speech SDK je k dispozici na GitHubu. Tyto ukázky se tý
 
 ## <a name="migration-guides"></a>Průvodci migrací
 
-Pokud vaše aplikace, nástroje nebo produkty používají [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview), vytvořili jsme příručky, které vám pomůžou s migrací na službu Speech.
+Pokud vaše aplikace, nástroje nebo produkty používají [Translator Speech API](./how-to-migrate-from-translator-speech-api.md), vytvořili jsme příručky, které vám pomůžou s migrací na službu Speech.
 
 * [Migrace z Translator Speech API do služby pro rozpoznávání řeči](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Speech SDK](speech-sdk-reference.md)
+* [Speech SDK](./speech-sdk.md)
 * [Speech Devices SDK](speech-devices-sdk.md)
 * [REST API: Převod řeči na text](rest-speech-to-text.md)
 * [REST API: převod textu na řeč](rest-text-to-speech.md)

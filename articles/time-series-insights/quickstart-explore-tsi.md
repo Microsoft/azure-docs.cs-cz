@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 10/02/2020
-ms.openlocfilehash: 9cd1a6059360c948229a1da00780cd6cb40b7f35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3956f8d91793367f7200d2f349a8713aff3d2f59
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91666530"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016220"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Rychlý Start: Prozkoumejte ukázkové prostředí Azure Time Series Insights Gen2
 
@@ -38,7 +38,7 @@ Azure Time Series Insights Průzkumník Gen2 ukazuje historická data a analýzu
 
 ## <a name="work-with-historical-data"></a>Práce s historickými daty
 
-1. Ve **společnosti Contoso 1**se podívejte na vítr turbín **W7**.  
+1. Ve **společnosti Contoso 1** se podívejte na vítr turbín **W7**.  
 
    1. Změňte rozsah zobrazení na **1/1/17 20:00:00.00 na 3/10/17 20:00:00.00 (UTC)**.
    1. Pokud chcete vybrat senzor, vyberte **Contoso závod 1**  >  **W7**  >  **generátor System**  >  **GeneratorSpeed**. Pak zkontrolujte zobrazené hodnoty.
@@ -102,7 +102,7 @@ Když použijete Azure Time Series Insights Gen2 a telemetrie senzorů, zjistili
 
 1. K zajištění většího kontextu je možné přidat další datové body snímačů. Další senzory, které jsme si vyrozuměli, je úplným porozuměním problému. Pojďme vyřadit značku, aby se zobrazily skutečné hodnoty.
 
-    1. Vyberte **systém generátoru**a potom vyberte tři senzory: **GridVoltagePhase1**, **GridVoltagePhase2**a **GridVoltagePhase3**.
+    1. Vyberte **systém generátoru** a potom vyberte tři senzory: **GridVoltagePhase1**, **GridVoltagePhase2** a **GridVoltagePhase3**.
     1. Přetáhněte značku k poslednímu datovému bodu v viditelné oblasti.
 
        [![Odstranit značku](media/v2-update-quickstart/quick-start-drop-marker.png)](media/v2-update-quickstart/quick-start-drop-marker.png#lightbox)
@@ -119,7 +119,7 @@ Když použijete Azure Time Series Insights Gen2 a telemetrie senzorů, zjistili
 
 Teď, když jste dokončili rychlý Start, vyčistěte prostředky, které jste vytvořili:
 
-1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**a vyhledejte vaši skupinu prostředků Azure Time Series Insights Gen2.
+1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky** a vyhledejte vaši skupinu prostředků Azure Time Series Insights Gen2.
 1. Odstraňte celou skupinu prostředků (a všechny prostředky v ní obsažené) tak, že vyberete možnost **Odstranit** nebo odebrat jednotlivé prostředky zvlášť.
 
 ## <a name="next-steps"></a>Další kroky
@@ -127,9 +127,9 @@ Teď, když jste dokončili rychlý Start, vyčistěte prostředky, které jste 
 Jste připraveni vytvořit vlastní prostředí Azure Time Series Insights Gen2. Začněte takto:
 
 > [!div class="nextstepaction"]
-> [Plánování prostředí Azure Time Series Insights Gen2](time-series-insights-update-plan.md)
+> [Plánování prostředí Azure Time Series Insights Gen2](./how-to-plan-your-environment.md)
 
 Naučte se používat ukázku a její funkce:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights Průzkumník Gen2](time-series-insights-update-explorer.md)
+> [Azure Time Series Insights Průzkumník Gen2](./concepts-ux-panels.md)

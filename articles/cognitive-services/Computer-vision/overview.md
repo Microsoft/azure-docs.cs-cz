@@ -14,12 +14,12 @@ ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: počítačové zpracování obrazu, aplikace počítačové vidění, Služba Computer visioning Service
-ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 1603aa05d8bde6d4c3edba2d49120fa3545d3fd0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629746"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014641"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -64,7 +64,7 @@ Vygeneruje popis celého obrázku v celých větách v čitelném jazyce. Algori
 
 ### <a name="detect-faces"></a>Rozpoznávání tváří
 
-Rozpoznává tváře na obrázku a poskytuje informace o jednotlivých rozpoznaných tvářích. Počítačové zpracování obrazu pro každou rozpoznanou tvář vrátí souřadnice, obdélník, pohlaví a věk.<br/>Počítačové zpracování obrazu poskytuje podmnožinu funkcí služby [obličeje](/azure/cognitive-services/face/) . Službu obličeje můžete použít pro podrobnější analýzu, jako je například identifikace obličeje a detekce pozice. [Rozpoznávání tváří](concept-detecting-faces.md)
+Rozpoznává tváře na obrázku a poskytuje informace o jednotlivých rozpoznaných tvářích. Počítačové zpracování obrazu pro každou rozpoznanou tvář vrátí souřadnice, obdélník, pohlaví a věk.<br/>Počítačové zpracování obrazu poskytuje podmnožinu funkcí služby [obličeje](../face/index.yml) . Službu obličeje můžete použít pro podrobnější analýzu, jako je například identifikace obličeje a detekce pozice. [Rozpoznávání tváří](concept-detecting-faces.md)
 
 ### <a name="detect-image-types"></a>Rozpoznávání typů obrázků
 

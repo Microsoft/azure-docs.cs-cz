@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: ef92895374f07c79f8ba8d626a0aab3d89733f40
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 1ace40098e1d53c6199accea755ffb6969781663
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629644"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015659"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Publikování a přihlášení k odběru pomocí Azure IoT Edge
 
@@ -31,7 +31,7 @@ K publikování a odběru zpráv můžete použít zprostředkovatele Azure IoT 
 - **IoT Hub** SKU buď F1, S1, S2 nebo S3.
 - Mít **IoT Edge zařízení s verzí 1,2 nebo vyšší**. Vzhledem k tomu, že IoT Edge zprostředkovatel MQTT je aktuálně ve verzi Public Preview, nastavte následující proměnné prostředí na hodnotu true v kontejneru edgeHub pro povolení zprostředkovatele MQTT:
 
-   | Name | Hodnota |
+   | Název | Hodnota |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
@@ -60,7 +60,7 @@ Pokud chcete protokol TLS zakázat, použijte port 1883 (MQTT) a navažte kontej
 
 Pokud chcete povolit protokol TLS, bude se iniciovat kanál TLS, pokud se klient připojí na portu 8883 (MQTTS) k zprostředkovateli MQTT. Zprostředkovatel odešle svůj řetěz certifikátů, který musí klient ověřit. Aby bylo možné ověřit řetěz certifikátů, musí být kořenový certifikát zprostředkovatele MQTT nainstalován jako důvěryhodný certifikát na klientovi. Pokud kořenový certifikát není důvěryhodný, klient služby MQTT odmítl knihovnu klienta s chybou ověřování certifikátu. Postup pro instalaci tohoto kořenového certifikátu zprostředkovatele na straně klienta je stejný jako v případě [transparentní brány](how-to-create-transparent-gateway.md) a je popsaný v dokumentaci [Příprava zařízení pro příjem dat](how-to-connect-downstream-device.md#prepare-a-downstream-device) .
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Aby se klient MQTT mohl sám ověřit, musí nejdřív odeslat paket připojení ke zprostředkovateli MQTT a iniciovat připojení v jeho názvu. Tento paket nabízí tři části ověřovacích informací: a `client identifier` , `username` a `password` :
 
@@ -209,7 +209,7 @@ Teď, když jste pochopili, jak se připojit k IoT Edge zprostředkovateli MQTT,
 
 ## <a name="publish-and-subscribe-on-user-defined-topics"></a>Témata týkající se publikování a přihlášení k odběru uživatelem definovaných témat
 
-V tomto článku použijete jednoho klienta s názvem **sub_client** , který se přihlásí k odběru tématu a jinému klientovi s názvem **pub_client** , který se publikuje v tématu. Použijeme ověřování pomocí [symetrického klíče](how-to-authenticate-downstream-device.md#symmetric-key-authentication) , ale totéž se dá provést s ověřováním pomocí [x. 509, které se podepisuje svým držitelem](how-to-authenticate-downstream-device.md#x509-self-signed-authentication) nebo [ověřováním x. 509](./how-to-authenticate-downstream-device.md#x509-self-signed-authentication).
+V tomto článku použijete jednoho klienta s názvem **sub_client** , který se přihlásí k odběru tématu a jinému klientovi s názvem **pub_client** , který se publikuje v tématu. Použijeme ověřování pomocí [symetrického klíče](how-to-authenticate-downstream-device.md#symmetric-key-authentication) , ale totéž se dá udělat s ověřováním pomocí x. 509, které je podepsané [svým držitelem](how-to-authenticate-downstream-device.md#x509-self-signed-authentication) nebo [ověřováním na základě CA x. 509](./how-to-authenticate-downstream-device.md#x509-ca-signed-authentication).
 
 ### <a name="create-publisher-and-subscriber-clients"></a>Vytváření klientů vydavatelů a odběratelů
 
@@ -331,7 +331,7 @@ Všimněte si, že v tomto prvním příkladu se používá port 1883 (MQTT), t�
 
 Klient **sub_client** MQTT je teď spuštěný a čeká na příchozí zprávy `test_topic` .
 
-#### <a name="publish"></a>Publikovat
+#### <a name="publish"></a>Publikování
 
 Připojte klienta **pub_client** MQTT ke zprostředkovateli MQTT a publikuje zprávu na stejném základě, a `test_topic` to spuštěním následujícího příkazu na zařízení IoT Edge z jiného terminálu:
 

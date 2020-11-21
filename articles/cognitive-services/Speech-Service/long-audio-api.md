@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: be38d3e78108a15c9f7875a15156e0eeba5a6211
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a538deb3b7da19261e1bc2b7c0d29f35315f786
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167755"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015409"
 ---
 # <a name="long-audio-api-preview"></a>Dlouhé zvukové rozhraní API (Preview)
 
@@ -27,7 +27,7 @@ Další výhody pro dlouhé zvukové rozhraní API:
 * Není potřeba nasazovat hlasový koncový bod, protože v něm nejsou žádné hlasy v režimu dávek v reálném čase.
 
 > [!NOTE]
-> Rozhraní API pro dlouhé zvukové rozhraní teď podporuje [neuronové hlasy](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) a [vlastní neuronové hlasy](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices).
+> Rozhraní API pro dlouhé zvukové rozhraní teď podporuje [neuronové hlasy](./language-support.md#neural-voices) a [vlastní neuronové hlasy](./how-to-custom-voice.md#custom-neural-voices).
 
 ## <a name="workflow"></a>Pracovní postup
 
@@ -44,7 +44,7 @@ Při přípravě textového souboru se ujistěte, že:
 * Je buď prostý text (. txt), nebo SSML text (. txt)
 * Je kódovaný jako [UTF-8 s označením pořadí bajtů (BOM)](https://www.w3.org/International/questions/qa-utf8-bom.en#bom) .
 * Je jeden soubor, ne zip.
-* Obsahuje více než 400 znaků pro prostý text nebo 400 [fakturovatelných znaků](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) pro text SSML a méně než 10 000 odstavců.
+* Obsahuje více než 400 znaků pro prostý text nebo 400 [fakturovatelných znaků](./text-to-speech.md#pricing-note) pro text SSML a méně než 10 000 odstavců.
   * U prostého textu je každý odstavec oddělený příkladem **zadání a návratového** [vstupu v prostém textu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) .
   * V případě textu SSML se každý SSMLový kus považuje za odstavec. SSML části musí být oddělené různými odstavci – [Příklad textového vstupu SSML textu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
 > [!NOTE]
@@ -114,7 +114,7 @@ Pokud **PublicVoice** má parametr PublicVoice **hodnotu true**, hlas je Public 
 Připravte textový soubor, buď prostý text nebo SSML text, a přidejte následující kód do `voice_synthesis_client.py` :
 
 > [!NOTE]
-> ' concatenateResult ' je volitelný parametr. Pokud tento parametr není nastaven, budou zvukové výstupy vygenerovány podle odstavce. Můžete také zřetězit zvuky do 1 výstupu nastavením parametru. Ve výchozím nastavení je zvukový výstup nastavený na RIFF-16khz-16bitový-mono-PCM. Další informace o podporovaných výstupech zvuku naleznete v tématu [formáty zvukového výstupu](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats).
+> ' concatenateResult ' je volitelný parametr. Pokud tento parametr není nastaven, budou zvukové výstupy vygenerovány podle odstavce. Můžete také zřetězit zvuky do 1 výstupu nastavením parametru. Ve výchozím nastavení je zvukový výstup nastavený na RIFF-16khz-16bitový-mono-PCM. Další informace o podporovaných výstupech zvuku naleznete v tématu [formáty zvukového výstupu](#audio-output-formats).
 
 ```python
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
@@ -278,7 +278,7 @@ Následující tabulka podrobně popisuje kódy a zprávy odpovědi HTTP z REST 
 |        | 404 | Model deklarovaný v definici hlasové syntézy nejde najít: {modelID}. | Ujistěte se, že je {modelID} správné. |
 |        | 429 | Překročil aktivní limit pro syntézu hlasu. Počkejte prosím, než se dokončí některé požadavky. | Server může spouštět a zařadit do fronty až 120 požadavků pro každý účet Azure. Počkejte prosím a vyhněte se odesílání nových požadavků do doby, než se dokončí některé žádosti. |
 | Vše       | 429 | Existuje příliš mnoho požadavků. | Klient může pro každý účet Azure odeslat až 5 požadavků na server za sekundu. Snižte prosím částku žádosti za sekundu. |
-| Odstranit    | 400 | Úkol syntézy hlasu se pořád používá. | Je možné odstranit pouze **dokončené** nebo **neúspěšné**požadavky. |
+| Odstranit    | 400 | Úkol syntézy hlasu se pořád používá. | Je možné odstranit pouze **dokončené** nebo **neúspěšné** požadavky. |
 | GetByID   | 404 | Zadanou entitu nelze nalézt. | Ujistěte se, že je ID syntézy správné. |
 
 ## <a name="regions-and-endpoints"></a>Oblasti a koncové body

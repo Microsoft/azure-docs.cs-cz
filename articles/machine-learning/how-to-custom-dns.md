@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 11/13/2020
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e3d95be52215b03a30dc4b5c7f251357f163b24a
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c67dcbbe2ca6dea533260f59831556c4338374ba
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616089"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012989"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Používání pracovního prostoru s vlastním serverem DNS
 
-Při použití Azure Machine Learning s virtuální sítí existuje [několik způsobů, jak řešit překlad názvů DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Ve výchozím nastavení Azure automaticky zpracovává překlad adres IP pro váš pracovní prostor a soukromý koncový bod. Pokud místo toho _použijete vlastní server DNS_ _, musíte ručně vytvořit položky DNS pro daný pracovní prostor.
+Při použití Azure Machine Learningho pracovního prostoru s privátním koncovým bodem existuje [několik způsobů, jak řešit překlad názvů DNS](../private-link/private-endpoint-dns.md). Ve výchozím nastavení Azure automaticky zpracovává překlad adres IP pro váš pracovní prostor a soukromý koncový bod. Pokud místo toho _použijete vlastní server DNS_ _, musíte ručně vytvořit položky DNS pro daný pracovní prostor.
 
 > [!IMPORTANT]
 > Tento článek popisuje, jak najít plně kvalifikovaný název domény (FQDN) a IP adresy pro tyto položky, které neposkytuje informace o konfiguraci záznamů DNS pro tyto položky. Informace o tom, jak přidat záznamy, najdete v dokumentaci k vašemu softwaru DNS.
@@ -33,6 +33,8 @@ Při použití Azure Machine Learning s virtuální sítí existuje [několik zp
 
 - Znalost používání [izolace sítě během školení & odvození](./how-to-network-security-overview.md).
 
+- Známá [Konfigurace zóny DNS privátního koncového bodu Azure](../private-link/private-endpoint-dns.md)
+
 - Volitelně můžete rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="find-the-ip-addresses"></a>Najít IP adresy
@@ -43,7 +45,7 @@ Následující seznam obsahuje plně kvalifikované názvy domény (FQDN) použ�
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
+* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
 * Pokud vytvoříte výpočetní instanci, musíte také přidat položku pro `<instance-name>.<region>.instances.azureml.ms` s privátní IP adresou privátního koncového bodu v pracovním prostoru.
 
     > [!NOTE]

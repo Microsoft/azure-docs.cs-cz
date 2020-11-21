@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31219fda04095d48b55165f59c27f3dee85485a9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8c6d26de62364b6aca671d1e4283a01c1b78c397
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843634"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014828"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Vytvoření fondu tenanta a hostitele ve virtuální ploše Windows (Classic)
 
@@ -49,7 +49,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **Příčina:** V instanci Azure Active Directory se neudělí souhlas s virtuálním počítačem s Windows.
 
-**Oprava:** [podle tohoto průvodce](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop) udělíte souhlas.
+**Oprava:** [podle tohoto průvodce](./tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop) udělíte souhlas.
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: Uživatel nemá oprávnění k dotazování služby správy
 
@@ -140,9 +140,9 @@ Pokud vaše šablona operace překročí limit kvóty, můžete opravit jednu z 
 
 Při řešení neúspěšného nasazení Azure Resource Manager šablon a prostředí PowerShell DSC postupujte podle těchto pokynů.
 
-1. Projděte si chyby v nasazení pomocí [Zobrazení operací nasazení s Azure Resource Manager](../../azure-resource-manager/resource-manager-deployment-operations.md).
-2. Pokud v nasazení nejsou žádné chyby, zkontrolujte chyby v protokolu aktivit pomocí [zobrazení protokolů aktivit a proveďte audit akcí u prostředků](../../azure-resource-manager/resource-group-audit.md).
-3. Po identifikaci chyby použijte chybovou zprávu a prostředky v tématu [řešení běžných chyb nasazení Azure pomocí Azure Resource Manager](../../azure-resource-manager/resource-manager-common-deployment-errors.md) k vyřešení problému.
+1. Projděte si chyby v nasazení pomocí [Zobrazení operací nasazení s Azure Resource Manager](../../azure-resource-manager/templates/deployment-history.md).
+2. Pokud v nasazení nejsou žádné chyby, zkontrolujte chyby v protokolu aktivit pomocí [zobrazení protokolů aktivit a proveďte audit akcí u prostředků](../../azure-resource-manager/management/view-activity-logs.md).
+3. Po identifikaci chyby použijte chybovou zprávu a prostředky v tématu [řešení běžných chyb nasazení Azure pomocí Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md) k vyřešení problému.
 4. Odstraňte všechny prostředky vytvořené během předchozího nasazení a zkuste šablonu znovu nasadit.
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Chyba: nasazení nebylo úspěšné... \<hostname> /JoinDomain

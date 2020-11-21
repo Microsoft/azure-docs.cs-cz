@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d1b6e20bf2decfe051e79e073736f71181260fa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628209"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014539"
 ---
 # <a name="spatial-analysis-operations"></a>Operace prostorových analýz
 
@@ -23,7 +23,7 @@ Prostorová analýza umožňuje analýzu videa streamovaného v reálném čase 
 
 Kontejner prostorových analýz implementuje následující operace:
 
-| Identifikátor operace| Description|
+| Identifikátor operace| Popis|
 |---------|---------|
 | cognitiveservices Account. Vision. spatialanalysis-personcount | Spočítá lidi v určené zóně v poli zobrazení kamery. <br> Vygeneruje počáteční událost _personCountEvent_ a pak _personCountEvent_ události při změně počtu.  |
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
@@ -32,18 +32,18 @@ Kontejner prostorových analýz implementuje následující operace:
 
 Všechny výše uvedené operace jsou také k dispozici ve `.debug` verzi, které mají schopnost vizualizovat snímky videa při jejich zpracování. Aby `xhost +` bylo možné vizualizaci snímků a událostí videa povolit, bude nutné spustit na hostitelském počítači.
 
-| Identifikátor operace| Description|
+| Identifikátor operace| Popis|
 |---------|---------|
 | cognitiveservices Account. Vision. spatialanalysis-personcount. Debug | Spočítá lidi v určené zóně v poli zobrazení kamery. <br> Vygeneruje počáteční událost _personCountEvent_ a pak _personCountEvent_ události při změně počtu.  |
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline. Debug | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingpolygon. Debug | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br> Vygeneruje událost _personLineEvent_ , když osoba přeškrtne zónu a poskytne směrové informace. |
 | cognitiveservices Account. Vision. spatialanalysis-persondistance. Debug | Sleduje, když lidé narušují pravidlo vzdálenosti. <br> Pravidelně generuje _personDistanceEvent_ s umístěním každého porušení vzdálenosti. |
 
-Prostorová analýza se dá také spustit s [živým video analýzou](https://aka.ms/lva-spatial-analysis) jako jejich modul video AI. 
+Prostorová analýza se dá také spustit s [živým video analýzou](../../media-services/live-video-analytics-edge/spatial-analysis-tutorial.md) jako jejich modul video AI. 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| Identifikátor operace| Description|
+| Identifikátor operace| Popis|
 |---------|---------|
 | cognitiveservices Account. Vision. spatialanalysis-personcount. livevideoanalytics | Spočítá lidi v určené zóně v poli zobrazení kamery. <br> Vygeneruje počáteční událost _personCountEvent_ a pak _personCountEvent_ události při změně počtu.  |
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline. livevideoanalytics | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
@@ -57,7 +57,7 @@ K dispozici jsou také operace živé analýzy videí ve `.debug` verzi (např. 
 
 Jedná se o parametry, které vyžaduje každá z těchto prostorových analytických operací.
 
-| Provozní parametry| Description|
+| Provozní parametry| Popis|
 |---------|---------|
 | ID operace | Identifikátor operace z tabulky výše|
 | enabled | Logická hodnota: true nebo false|
@@ -88,7 +88,7 @@ Jedná se o parametry, které vyžaduje každá z těchto prostorových analytic
 }
 ```
 
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
@@ -121,7 +121,7 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 }
 ```
 
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `lines` | list| Seznam řádků|
 | `name` | řetězec| Popisný název tohoto řádku|
@@ -152,7 +152,7 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 }
 ```
 
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
@@ -184,7 +184,7 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 }
 ```
 
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
@@ -328,7 +328,7 @@ Ukázkový formát JSON pro výstup události v této operaci.
 | Název pole SourceInfo | Typ| Description|
 |---------|---------|---------|
 | `id` | řetězec| ID kamery|
-| `timestamp` | date| Datum UTC při vygenerování datové části JSON|
+| `timestamp` | datum| Datum UTC při vygenerování datové části JSON|
 | `width` | int | Šířka rámečku videa|
 | `height` | int | Výška snímku videa|
 | `frameId` | int | Identifikátor snímku|
@@ -341,7 +341,7 @@ Ukázkový formát JSON pro výstup události v této operaci.
 | Název pole SourceInfo | Typ| Description|
 |---------|---------|---------|
 | `id` | řetězec| ID kamery|
-| `timestamp` | date| Datum UTC při vygenerování datové části JSON|
+| `timestamp` | datum| Datum UTC při vygenerování datové části JSON|
 | `width` | int | Šířka rámečku videa|
 | `height` | int | Výška snímku videa|
 | `frameId` | int | Identifikátor snímku|
@@ -421,7 +421,7 @@ Ukázka JSON pro detekci výstupu pomocí této operace.
 | Název pole SourceInfo | Typ| Description|
 |---------|---------|---------|
 | `id` | řetězec| ID kamery|
-| `timestamp` | date| Datum UTC při vygenerování datové části JSON|
+| `timestamp` | datum| Datum UTC při vygenerování datové části JSON|
 | `width` | int | Šířka rámečku videa|
 | `height` | int | Výška snímku videa|
 | `frameId` | int | Identifikátor snímku|
@@ -623,7 +623,7 @@ Ukázka JSON pro detekci výstupu pomocí této operace.
 | Název pole SourceInfo | Typ| Description|
 |---------|---------|---------|
 | `id` | řetězec| ID kamery|
-| `timestamp` | date| Datum UTC při vygenerování datové části JSON|
+| `timestamp` | datum| Datum UTC při vygenerování datové části JSON|
 | `width` | int | Šířka rámečku videa|
 | `height` | int | Výška snímku videa|
 | `frameId` | int | Identifikátor snímku|
@@ -638,8 +638,8 @@ Ukázka JSON pro detekci výstupu pomocí této operace.
 
 Do své aplikace můžete chtít integrovat detekci prostorové analýzy nebo události. Tady je několik přístupů, které je potřeba vzít v úvahu: 
 
-* K připojení ke koncovému bodu Azure IoT Hub a příjmu událostí použijte sadu Azure Event hub SDK pro zvolený programovací jazyk. Další informace najdete v tématu [čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) . 
-* Nastavte **směrování zpráv** na IoT Hub Azure pro odesílání událostí do jiných koncových bodů nebo uložte události do úložiště dat. Další informace najdete v tématu [IoT Hub směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) . 
+* K připojení ke koncovému bodu Azure IoT Hub a příjmu událostí použijte sadu Azure Event hub SDK pro zvolený programovací jazyk. Další informace najdete v tématu [čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) . 
+* Nastavte **směrování zpráv** na IoT Hub Azure pro odesílání událostí do jiných koncových bodů nebo uložte události do úložiště dat. Další informace najdete v tématu [IoT Hub směrování zpráv](../../iot-hub/iot-hub-devguide-messages-d2c.md) . 
 * Nastavte úlohu Azure Stream Analytics pro zpracování událostí v reálném čase při jejich doručování a vytváření vizualizací. 
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>Škálování provozu prostorových analytických operací ve velkém měřítku (více kamer)
@@ -725,7 +725,7 @@ Aby se dosáhlo nejlepšího výkonu a využití GPU, můžete nasadit všechny 
       }
   }
   ```
-| Název | Typ| Description|
+| Název | Typ| Popis|
 |---------|---------|---------|
 | `batch_size` | int | Určuje počet fotoaparátů, které budou použity v operaci. |
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 698a1d52af6c2472d6c025851ead1a0b6a6dff82
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86232521"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015337"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Doporučení pro pole mikrofonu v sadě Speech Devices SDK
 
@@ -97,7 +97,7 @@ Při integraci mikrotelefonů do zařízení jsou nutné následující pokyny p
 | Vzorkování – hodiny      | Zvuk zařízení musí být bez kolísání a poklesu s nízkým posunem. |
 | Možnost záznamu   | Zařízení musí být schopné nahrávat nezpracované proudy jednotlivých kanálů současně. |
 | USB                 | Všechna zařízení se zvukovým vstupem USB musí nastavit popisovače podle [specifikace USB audio Devices Rev3](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) . |
-| Geometrie mikrofonu | Ovladače musí správně implementovat [popisovače geometrie pro pole mikrofonu](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) . |
+| Geometrie mikrofonu | Ovladače musí správně implementovat [popisovače geometrie pro pole mikrofonu](/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) . |
 | Zjistitelnost     | Zařízení nesmí mít žádný z nezjištěného nebo neovladatelného hardwaru, firmwaru nebo softwaru od jiných výrobců, než je nelineární zpracování zvuku, do/ze zařízení. |
 | Formát zachycení      | Formáty zachycení musí používat minimální vzorkovací frekvenci o 16 kHz a doporučenou 16bitovou hloubku. |
 

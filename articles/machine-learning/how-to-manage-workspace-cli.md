@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 7de78a52482b2f07cb4e5e036509e0f9e402a3f4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: aa85822b433e2d8128df9ae3664411ea3fcddec4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576270"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012923"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 
@@ -26,9 +26,13 @@ V tomto článku se dozvíte, jak vytvořit pracovní prostor Azure Machine Lear
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí** , potřebujete [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
     Použijete-li [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/), k rozhraní příkazového řádku se dostanete v prohlížeči a v cloudu.
+
+## <a name="limitations"></a>Omezení
+
+* Když vytváříte nový pracovní prostor, můžete buď dovolit pracovnímu prostoru vytvořit služby Azure, které musí automaticky nebo poskytovat existující služby. Při poskytování stávajících služeb musí být tyto služby ve stejném předplatném Azure jako pracovní prostor.
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>Připojení rozhraní příkazového řádku k předplatnému Azure
 
@@ -71,14 +75,14 @@ Pracovní prostor Azure Machine Learning spoléhá na tyto služby nebo entity A
 | Služba | Parametr pro určení existující instance |
 | ---- | ---- |
 | **Skupina prostředků Azure** | `-g <resource-group-name>`
-| **Účet Azure Storage** | `--storage-account <service-id>` |
+| **Účet služby Azure Storage** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pracovní prostor Azure Machine Learning musí být vytvořený v rámci skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořit novou. Pokud chcete __vytvořit novou skupinu prostředků__ , použijte následující příkaz. Nahraďte `<resource-group-name>` názvem, který se má použít pro tuto skupinu prostředků. Nahraďte `<location>` oblastí Azure, kterou chcete použít pro tuto skupinu prostředků:
+Pracovní prostor Azure Machine Learning musí být vytvořený v rámci skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořit novou. Pokud chcete __vytvořit novou skupinu prostředků__, použijte následující příkaz. Nahraďte `<resource-group-name>` názvem, který se má použít pro tuto skupinu prostředků. Nahraďte `<location>` oblastí Azure, kterou chcete použít pro tuto skupinu prostředků:
 
 > [!TIP]
 > Vyberte oblast, ve které je Azure Machine Learning k dispozici. Informace najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -107,7 +111,7 @@ Další informace o práci se skupinami prostředků najdete v tématu [AZ Group
 
 ### <a name="automatically-create-required-resources"></a>Automaticky vytvářet požadované prostředky
 
-Pokud chcete vytvořit nový pracovní prostor, ve kterém __se služby vytvoří automaticky__ , použijte následující příkaz:
+Pokud chcete vytvořit nový pracovní prostor, ve kterém __se služby vytvoří automaticky__, použijte následující příkaz:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -189,7 +193,7 @@ Pokud chcete vytvořit pracovní prostor, který používá stávající prostř
 > [!IMPORTANT]
 > Nemusíte zadávat všechny existující prostředky. Můžete zadat jednu nebo více. Můžete například zadat existující účet úložiště a pracovní prostor vytvoří další prostředky.
 
-+ **Účet Azure Storage** : `az storage account show --name <storage-account-name> --query "id"`
++ **Účet Azure Storage**: `az storage account show --name <storage-account-name> --query "id"`
 
     Odpověď z tohoto příkazu je podobná následujícímu textu a je ID účtu úložiště:
 
@@ -198,7 +202,7 @@ Pokud chcete vytvořit pracovní prostor, který používá stávající prostř
     > [!IMPORTANT]
     > Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). Ve _výchozím_ účtu úložiště pracovního prostoru není podporován ani obor názvů Premium Storage ani hierarchický obor názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
 
-+ **Application Insights Azure** :
++ **Application Insights Azure**:
 
     1. Instalace rozšíření Application Insights:
 
@@ -216,13 +220,13 @@ Pokud chcete vytvořit pracovní prostor, který používá stávající prostř
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault** : `az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
 
     Odpověď z tohoto příkazu je podobná následujícímu textu a je ID vašeho trezoru klíčů:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry** : `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     Odpověď z tohoto příkazu je podobná následujícímu textu a je ID pro registr kontejneru:
 

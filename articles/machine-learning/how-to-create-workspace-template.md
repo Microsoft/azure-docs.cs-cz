@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f07efcc18f3eff7e40232941befb563cd236266b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442051"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013035"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte několik způsobů, jak vytvořit pracovní prostor
 
 Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -38,6 +38,10 @@ Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure R
     * __Azure Container Registry pro pracovní prostor za vaší virtuální sítí__
 
     Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+
+## <a name="limitations"></a>Omezení
+
+* Když vytváříte nový pracovní prostor, můžete buď dovolit pracovnímu prostoru vytvořit služby Azure, které musí automaticky nebo poskytovat existující služby. Při poskytování stávajících služeb musí být tyto služby ve stejném předplatném Azure jako pracovní prostor.
 
 ## <a name="workspace-resource-manager-template"></a>Šablona Správce prostředků pracovního prostoru
 
@@ -59,7 +63,7 @@ Ukázková šablona má dva **požadované** parametry:
 
     Šablona bude používat umístění, které jste vybrali pro většinu prostředků. Výjimkou je služba Application Insights, která není dostupná ve všech umístěních, ve kterých jsou jiné služby. Pokud vyberete umístění, kde není k dispozici, bude služba vytvořena v umístění Střed USA – jih.
 
-* Název **pracovního prostoru** , což je popisný název pracovního prostoru Azure Machine Learning.
+* Název **pracovního prostoru**, což je popisný název pracovního prostoru Azure Machine Learning.
 
     > [!NOTE]
     > V názvu pracovního prostoru se nerozlišují malá a velká písmena.
@@ -554,7 +558,7 @@ New-AzResourceGroupDeployment `
 
 Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 7ab9b5166aab07e0629cdd280f8cdccbd0702c99
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 00ef685c755c0fa6f5217d567bfa255ea940d72a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927715"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015965"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Virtual Network
 
@@ -123,8 +123,8 @@ Ne. Virtuální síť je omezená jenom na jednu oblast. Virtuální síť ale z
 
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Můžu připojit virtuální síť k jiné virtuální síti v Azure?
 Ano. Jednu virtuální síť můžete připojit k jiné virtuální síti pomocí těchto akcí:
-- **Partnerský vztah virtuální sítě** : Podrobnosti najdete v tématu [Přehled partnerských vztahů](virtual-network-peering-overview.md) virtuálních sítí.
-- **Azure VPN Gateway** : Podrobnosti najdete v tématu [Konfigurace připojení typu VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+- **Partnerský vztah virtuální sítě**: Podrobnosti najdete v tématu [Přehled partnerských vztahů](virtual-network-peering-overview.md) virtuálních sítí.
+- **Azure VPN Gateway**: Podrobnosti najdete v tématu [Konfigurace připojení typu VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
 ## <a name="name-resolution-dns"></a>Překlad názvů (DNS)
 
@@ -159,8 +159,8 @@ Ano. Všechna síťová rozhraní (NIC) připojená k virtuálnímu počítači 
 ### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>Jaké jsou různé typy IP adres, které můžu přiřadit k virtuálním počítačům?
 * **Privátní:** Přiřazené ke každému síťovému rozhraní v rámci každého virtuálního počítače. Adresa je přiřazena buď pomocí statické, nebo dynamické metody. Privátní IP adresy se přiřazují z rozsahu, který jste zadali v nastavení podsítě vaší virtuální sítě. Prostředky nasazené prostřednictvím modelu nasazení Classic jsou přiřazeny privátní IP adresy, i když nejsou připojené k virtuální síti. Chování metody přidělování se liší v závislosti na tom, jestli byl prostředek nasazený pomocí modelu nasazení Správce prostředků nebo Classic: 
 
-  - **Správce prostředků** : privátní IP adresa přiřazená s dynamickou nebo statickou metodou zůstane přiřazená k virtuálnímu počítači (Správce prostředků) až do odstranění prostředku. Rozdílem je, že vyberete adresu, která se má přiřadit při použití Static, a Azure při použití dynamického výběru zvolí. 
-  - **Classic** : privátní IP adresa přiřazená k dynamické metodě se může změnit, když se virtuální počítač (klasický) restartuje po restartování virtuálního počítače v zastaveném (uvolněném) stavu. Pokud potřebujete zajistit, aby se privátní IP adresa pro prostředek nasazená prostřednictvím modelu nasazení Classic nikdy nezměnila, přiřaďte privátní IP adresu statickou metodou.
+  - **Správce prostředků**: privátní IP adresa přiřazená s dynamickou nebo statickou metodou zůstane přiřazená k virtuálnímu počítači (Správce prostředků) až do odstranění prostředku. Rozdílem je, že vyberete adresu, která se má přiřadit při použití Static, a Azure při použití dynamického výběru zvolí. 
+  - **Classic**: privátní IP adresa přiřazená k dynamické metodě se může změnit, když se virtuální počítač (klasický) restartuje po restartování virtuálního počítače v zastaveném (uvolněném) stavu. Pokud potřebujete zajistit, aby se privátní IP adresa pro prostředek nasazená prostřednictvím modelu nasazení Classic nikdy nezměnila, přiřaďte privátní IP adresu statickou metodou.
 
 * **Veřejné:** Volitelně se přiřazují síťové adaptéry připojené k virtuálním počítačům nasazeným prostřednictvím modelu nasazení Azure Resource Manager. Adresa může být přiřazena se statickou nebo dynamickou metodou přidělování. Všechny virtuální počítače a Cloud Services instance rolí nasazené prostřednictvím modelu nasazení Classic existují v rámci cloudové služby, která je přiřazená k *dynamické* veřejné virtuální IP adrese (VIP). Veřejnou *statickou* IP adresu, která se nazývá [vyhrazená IP adresa adresa](virtual-networks-reserved-public-ip.md), se dá volitelně přiřadit jako virtuální IP adresa. Veřejné IP adresy můžete přiřadit jednotlivým virtuálním počítačům nebo Cloud Services instancím rolí nasazeným prostřednictvím modelu nasazení Classic. Tyto adresy se nazývají [veřejné IP adresy na úrovni instance (adresy ILPIP](virtual-networks-instance-level-public-ip.md) a dají se dynamicky přiřazovat.
 
@@ -271,7 +271,7 @@ K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo
 Ano. Je možné vytvořit partnerský vztah virtuální sítě (místní nebo globální), pokud vaše předplatná patří do různých klientů Azure Active Directory. Můžete to provést prostřednictvím portálu, PowerShellu nebo rozhraní příkazového řádku.
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Moje připojení partnerského vztahu virtuální sítě je v *inicializovaném* stavu, proč se nemůžu připojit?
-Pokud je připojení partnerského vztahu v *inicializovaném* stavu, znamená to, že jste vytvořili pouze jeden odkaz. Aby bylo možné vytvořit úspěšné připojení, je nutné vytvořit obousměrný odkaz. Například pro partnerský virtuální síť A k virtuální síti B se musí vytvořit odkaz z partnerském na VNetB a od VNetB do partnerském. Vytvořením obou propojení dojde ke změně stavu na *připojeno* .
+Pokud je připojení partnerského vztahu v *inicializovaném* stavu, znamená to, že jste vytvořili pouze jeden odkaz. Aby bylo možné vytvořit úspěšné připojení, je nutné vytvořit obousměrný odkaz. Například pro partnerský virtuální síť A k virtuální síti B se musí vytvořit odkaz z partnerském na VNetB a od VNetB do partnerském. Vytvořením obou propojení dojde ke změně stavu na *připojeno*.
 
 ### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>Moje připojení partnerského vztahu virtuálních sítí je v *odpojeném* stavu, proč nemůžu vytvořit připojení partnerského vztahu?
 Pokud je připojení partnerského vztahu virtuálních sítí v *odpojeném* stavu, znamená to, že se odstranila jedna z vytvořených odkazů. Aby bylo možné znovu vytvořit partnerské připojení, bude nutné odstranit odkaz a znovu ho vytvořit.
@@ -281,6 +281,9 @@ Ano. Můžete peer virtuální sítě napříč předplatnými a různými oblas
 
 ### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>Můžu mít dva virtuální sítěy rovnocennosti se stejnými nebo překrývajícími se rozsahy adres?
 Ne. Adresní prostory se nesmí překrývat, aby bylo možné povolit partnerský vztah virtuální sítě.
+
+### <a name="can-i-peer-a-vnet-to-two-different-vnets-with-the-the-use-remote-gateway-option-enabled-on-both-the-peerings"></a>Můžu vytvořit síť VNet se dvěma různými virtuální sítěy s povolenou možností použít vzdálenou bránu u partnerských vztahů?
+Ne. Možnost použít vzdálenou bránu můžete povolit jenom pro jeden partnerský vztah k jednomu z virtuální sítě.
 
 ### <a name="how-much-do-vnet-peering-links-cost"></a>Kolik stojí propojení partnerských vztahů mezi virtuálními sítěmi?
 Za vytvoření připojení partnerského vztahu virtuálních sítí se neúčtují žádné poplatky. Přenos dat mezi připojeními partnerských vztahů se účtuje. [Podívejte se sem](https://azure.microsoft.com/pricing/details/virtual-network/).

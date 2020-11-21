@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: c7f811991cdc325a3901a696216af21883f02fdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d672da30a4d81ead9115fc6b829c35aeab3ee6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596238"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016815"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Přidání zdroje událostí centra událostí do prostředí Azure Time Series Insights
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak pomocí Azure Portal přidat zdroj událostí, kter
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Vytvořte Azure Time Series Insights prostředí, jak je popsáno v tématu [vytvoření Azure Time Series Insights prostředí](./time-series-insights-update-create-environment.md).
+- Vytvořte Azure Time Series Insights prostředí, jak je popsáno v tématu [vytvoření Azure Time Series Insights prostředí](./tutorials-set-up-tsi-environment.md).
 - Vytvořte centrum událostí. Přečtěte si téma [Vytvoření oboru názvů Event Hubs a centra událostí pomocí Azure Portal](../event-hubs/event-hubs-create.md).
 - Centrum událostí musí mít odeslané aktivní události zpráv. Naučte se [odesílat události do Azure Event Hubs pomocí .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
 - Vytvořte vyhrazenou skupinu uživatelů v centru událostí, ze které může prostředí Azure Time Series Insights spotřebovat. Každý Azure Time Series Insights zdroj události musí mít svou vlastní vyhrazenou skupinu uživatelů, která není sdílená s žádným jiným příjemcem. Pokud více čtenářů spotřebovává události ze stejné skupiny příjemců, můžou se všechny čtenáři projevit při selhání. V každém centru událostí je limit 20 skupin uživatelů. Podrobnosti najdete v tématu [Průvodce programováním pro Event Hubs](../event-hubs/event-hubs-programming-guide.md).
@@ -54,17 +54,17 @@ Přidání nové skupiny příjemců do centra událostí:
 
 ## <a name="add-a-new-event-source"></a>Přidat nový zdroj události
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Vyhledejte existující Azure Time Series Insights prostředí. V nabídce vlevo vyberte **všechny prostředky**a pak vyberte prostředí Azure Time Series Insights.
+1. Vyhledejte existující Azure Time Series Insights prostředí. V nabídce vlevo vyberte **všechny prostředky** a pak vyberte prostředí Azure Time Series Insights.
 
-1. Vyberte **zdroje událostí**a pak vyberte **Přidat**.
+1. Vyberte **zdroje událostí** a pak vyberte **Přidat**.
 
    [![V části zdroje událostí vyberte tlačítko Přidat.](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png#lightbox)
 
 1. Zadejte hodnotu pro **název zdroje události** , která je jedinečná pro toto Azure Time Series Insights prostředí, například `Contoso-TSI-Gen 1-Event-Hub-ES` .
 
-1. V případě **zdroje**vyberte **centrum událostí**.
+1. V případě **zdroje** vyberte **centrum událostí**.
 
 1. Vyberte odpovídající hodnoty pro **možnost importovat**:
 
@@ -113,7 +113,7 @@ Přidání nové skupiny příjemců do centra událostí:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Definováním zásad přístupu k datům](time-series-insights-data-access.md) Zabezpečte data.
+- [Definováním zásad přístupu k datům](./concepts-access-policies.md) Zabezpečte data.
 
 - [Odešle události](time-series-insights-send-events.md) do zdroje událostí.
 

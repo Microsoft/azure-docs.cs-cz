@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 28a1990155e1406bf9b79572b3e5307cadfb8076
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09ee98bf8bbe0067f9c79ce4767f3cf68b83fb43
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665918"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016798"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>Přidání zdroje událostí služby IoT Hub do prostředí Azure Time Series Insight
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak pomocí Azure Portal přidat zdroj událostí, kter
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Vytvořte [Azure Time Series Insights prostředí](time-series-insights-update-create-environment.md).
+* Vytvořte [Azure Time Series Insights prostředí](./tutorials-set-up-tsi-environment.md).
 * Vytvořte [Centrum IoT pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md).
 * Služba IoT Hub musí mít v nástroji odesílány události aktivní zprávy.
 * Vytvořte vyhrazenou skupinu uživatelů ve službě IoT Hub pro prostředí Azure Time Series Insight, které se má využít. Každý zdroj událostí Insight v Azure Time Series musí mít svou vlastní vyhrazenou skupinu uživatelů, která není sdílená s žádným jiným příjemcem. Pokud více čtenářů spotřebovává události ze stejné skupiny příjemců, můžou se všechny čtenáři projevit při selhání. Podrobnosti najdete v příručce pro [vývojáře pro Azure IoT Hub](../iot-hub/iot-hub-devguide.md).
@@ -40,27 +40,27 @@ Přidání nové skupiny uživatelů do služby IoT Hub:
 
 1. V [Azure Portal](https://portal.azure.com)Najděte a otevřete Centrum IoT.
 
-1. V části **Nastavení**vyberte **Předdefinované koncové body**a pak vyberte koncový bod **události** .
+1. V části **Nastavení** vyberte **Předdefinované koncové body** a pak vyberte koncový bod **události** .
 
    [![Na stránce koncové body sestavení vyberte tlačítko události.](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-connect-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-connect-iot-hub.png#lightbox)
 
-1. V části **skupiny příjemců**zadejte jedinečný název pro skupinu příjemců. Při vytváření nového zdroje událostí použijte stejný název v prostředí Azure Time Series Insight.
+1. V části **skupiny příjemců** zadejte jedinečný název pro skupinu příjemců. Při vytváření nového zdroje událostí použijte stejný název v prostředí Azure Time Series Insight.
 
 1. Vyberte **Uložit**.
 
 ## <a name="add-a-new-event-source"></a>Přidat nový zdroj události
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **Všechny prostředky**. Vyberte své prostředí Azure Time Series Insight.
 
-1. V části **Nastavení**vyberte **zdroje událostí**a pak vyberte **Přidat**.
+1. V části **Nastavení** vyberte **zdroje událostí** a pak vyberte **Přidat**.
 
    [![Vyberte zdroje událostí a pak klikněte na tlačítko Přidat.](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png#lightbox)
 
-1. V podokně **nový zdroj událostí** pro **název zdroje události**zadejte název, který je jedinečný pro toto prostředí Azure Time Series Insight. Zadejte například **událost-Stream**.
+1. V podokně **nový zdroj událostí** pro **název zdroje události** zadejte název, který je jedinečný pro toto prostředí Azure Time Series Insight. Zadejte například **událost-Stream**.
 
-1. Jako **zdroj**vyberte **IoT Hub**.
+1. Jako **zdroj** vyberte **IoT Hub**.
 
 1. Vyberte hodnotu pro **možnost importu**:
 
@@ -107,7 +107,7 @@ Přidání nové skupiny uživatelů do služby IoT Hub:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Definováním zásad přístupu k datům](time-series-insights-data-access.md) Zabezpečte data.
+* [Definováním zásad přístupu k datům](./concepts-access-policies.md) Zabezpečte data.
 
 * [Odešle události](time-series-insights-send-events.md) do zdroje událostí.
 

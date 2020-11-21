@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 53304f14286577bf0bc25b2a66442286527c5140
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a7f5ec0231612a2cee2a9435144c886527c228e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972427"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014471"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Kurz: Vytvoření aplikace pro správu propojených odpadů v IoT Central
 
@@ -55,7 +55,7 @@ Vytvoření nové aplikace pro správu nepřipojených odpadů v Azure IoT Centr
 
 1. Vyberte šablonu aplikace **pro správu propojených odpadů** . Tato šablona obsahuje ukázkovou šablonu zařízení bin, simulované zařízení, řídicí panel operátora a předem nakonfigurovaná pravidla monitorování.    
 
-2. Klikněte na **vytvořit aplikaci**a otevře se formulář pro vytváření **nových aplikací** s následujícími poli:
+2. Klikněte na **vytvořit aplikaci** a otevře se formulář pro vytváření **nových aplikací** s následujícími poli:
     * **Název aplikace** Ve výchozím nastavení používá aplikace *připojenou správu odpadu* následovaný jedinečným řetězcem ID, který IoT Central generuje. Volitelně můžete zvolit popisný název aplikace. Můžete změnit název aplikace i později.
     * **Adresa URL** – Volitelně můžete zvolit požadovanou adresu URL. Adresu URL můžete později změnit. 
     * Pokud máte předplatné Azure, zadejte svůj *adresář, předplatné Azure a oblast*. Pokud předplatné nemáte, můžete povolit **7 dní bezplatnou zkušební verzi** a dokončit požadované kontaktní údaje.  
@@ -69,9 +69,9 @@ Vytvoření nové aplikace pro správu nepřipojených odpadů v Azure IoT Centr
     ![Informace o fakturaci pro vytvoření propojeného služby Azure IoT Central](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
  
-6. Nyní jste vytvořili aplikaci pro správu připojení k síti pomocí **šablony správy propojených odpadů**v Azure IoT Central. 
+6. Nyní jste vytvořili aplikaci pro správu připojení k síti pomocí **šablony správy propojených odpadů** v Azure IoT Central. 
 
-Blahopřejeme! Vaše nově vytvořená aplikace je dodávána s předem nakonfigurovaným:
+Gratulujeme! Vaše nově vytvořená aplikace je dodávána s předem nakonfigurovaným:
 * Ukázky řídicích panelů operátorů
 * Ukázka předdefinovaných šablon zařízení bin pro připojené odpady
 * Zařízení s simulovaným propojenými odpadními přihrádkami
@@ -81,7 +81,7 @@ Blahopřejeme! Vaše nově vytvořená aplikace je dodávána s předem nakonfig
 Je to vaše aplikace a můžete ji kdykoli upravit. Pojďme teď prozkoumat aplikaci a udělat některá vlastní nastavení.  
 
 ## <a name="explore-and-customize-operator-dashboard"></a>Řídicí panel pro prohlížení a přizpůsobení operátoru 
-Po vytvoření aplikace, kterou nastavíte, na **řídicím panelu pro správu s velkou odpadní propojenou odpadní**sítě.
+Po vytvoření aplikace, kterou nastavíte, na **řídicím panelu pro správu s velkou odpadní propojenou odpadní** sítě.
 
    ![Řídicí panel pro správu připojeného odpadu](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard1.png)
 
@@ -92,18 +92,18 @@ Jako tvůrce můžete na řídicím panelu vytvořit a přizpůsobit zobrazení 
 
 Řídicí panel se skládá z různých druhů dlaždic:
 
-* ***Dlaždice obrázek nástroje World odpad***: první dlaždice na řídicím panelu je dlaždice obrázku fiktivního odpadního programu "celosvětový odpad". Můžete přizpůsobit dlaždici a umístit vlastní image nebo ji odebrat. 
+* ***Dlaždice obrázek nástroje World odpad** _: první dlaždice na řídicím panelu je dlaždice obrázku fiktivního odpadního programu "World odpad". Můžete přizpůsobit dlaždici a umístit vlastní image nebo ji odebrat. 
 
-* ***Dlaždice s obrázkem odpadkového koše***: dlaždice obrázků a obsahu můžete použít k vytvoření vizuální reprezentace zařízení, které se monitoruje společně s popisným textem. 
+_ ***Dlaždice s obrázkem odpadní přihrádky** _: k vytvoření vizuální reprezentace zařízení, které se sleduje spolu s popisným textem, můžete použít dlaždice obrázků a obsahu. 
 
-* ***Dlaždice ukazatel KPI na úrovni výplně***: dlaždice zobrazuje hodnotu oznámenou senzorem na *úrovni výplně* v přihrádce odpadu. Na dálku se dá monitorovat *úroveň výplně* a jiné snímače, jako je *měřič Odor* nebo *váhy* v odpadkovém koši. Operátor může provést akci, jako je odesílání odpadkového vozíku. 
+_ ***Dlaždice ukazatel KPI na úrovni výplně** _: dlaždice zobrazuje hodnotu oznámenou senzorem _Fill Level * v přihrádce odpadu. Na dálku se dá monitorovat *úroveň výplně* a jiné snímače, jako je *měřič Odor* nebo *váhy* v odpadkovém koši. Operátor může provést akci, jako je odesílání odpadkového vozíku. 
 
-*  ***Mapa oblasti monitorování odpadů***: mapa používá Azure Maps, kterou můžete nakonfigurovat přímo v Azure IoT Central. Dlaždice Mapa zobrazuje umístění zařízení. Zkuste ukazatel myši najeďte na mapu a vyzkoušejte ovládací prvky na mapě, jako je přiblížení, zmenšení nebo rozbalení.
+*  ***Mapa oblasti monitorování odpadů** _: mapa používá Azure Maps, kterou můžete nakonfigurovat přímo v Azure IoT Central. Dlaždice Mapa zobrazuje umístění zařízení. Zkuste ukazatel myši najeďte na mapu a vyzkoušejte ovládací prvky na mapě, jako je přiblížení, zmenšení nebo rozbalení.
 
      ![Mapa řídicího panelu správy propojených odpadů](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
 
 
-* ***Výplň, Odor, pruhový graf úrovně váhy**: v pruhovém grafu můžete vizualizovat jedno nebo několik dat telemetrie zařízení. Pruhový graf můžete také rozbalit.  
+_ ***Výplň, Odor, pruhový graf na úrovni váhy**: v pruhovém grafu můžete vizualizovat jedno nebo několik dat telemetrie zařízení. Pruhový graf můžete také rozbalit.  
 
   ![Pruhový graf správy propojených odpadů](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-barchart.png)
 
@@ -135,7 +135,7 @@ Postup zobrazení šablony zařízení:
 
 2. V seznamu šablony zařízení se zobrazí složka **připojené odpadní přihrádka**. Otevřete kliknutím na název.
 
-3. Seznamte se s možnostmi šablon zařízení. Můžete vidět, že definuje senzory, jako je *úroveň výplně*, *měřič Odor*, *váhy*, *umístění*a další.
+3. Seznamte se s možnostmi šablon zařízení. Můžete vidět, že definuje senzory, jako je *úroveň výplně*, *měřič Odor*, *váhy*, *umístění* a další.
 
    ![Snímek obrazovky s podrobnostmi o šabloně zařízení připojené odpadní přihrádky](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -153,7 +153,7 @@ Zkuste upravit následující:
 ### <a name="add-a-cloud-property"></a>Přidat vlastnost cloudu 
 
 1. Přejít na **vlastnost Cloud** z nabídky šablony zařízení
-2. Kliknutím na **+ přidat cloudovou vlastnost**přidejte novou vlastnost cloudu. V IoT Central můžete přidat vlastnost, která je relevantní pro zařízení, ale neočekává se, aby se odesílala zařízením. Cloudová vlastnost může být například prahová hodnota pro výstrahy specifická pro oblast instalace, informace o aktivech nebo informace o údržbě a další informace. 
+2. Kliknutím na **+ přidat cloudovou vlastnost** přidejte novou vlastnost cloudu. V IoT Central můžete přidat vlastnost, která je relevantní pro zařízení, ale neočekává se, aby se odesílala zařízením. Cloudová vlastnost může být například prahová hodnota pro výstrahy specifická pro oblast instalace, informace o aktivech nebo informace o údržbě a další informace. 
 3. **Uložit** všechny změny 
  
 ### <a name="views"></a>Zobrazení 
@@ -161,7 +161,7 @@ Zkuste upravit následující:
 
   ![Zobrazení šablon zařízení](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
 
-### <a name="publish"></a>Publikovat 
+### <a name="publish"></a>Publikování 
 
 * Pokud jste udělali nějaké změny, ujistěte se, že jste šablonu zařízení **publikovali** . 
 
@@ -197,7 +197,7 @@ Aplikace **pro správu propojených odpadů** má dvě simulovaná zařízení n
 
 ## <a name="explore-and-configure-rules"></a>Prozkoumat a nakonfigurovat pravidla
 
-V Azure IoT Central můžete vytvořit pravidla pro automatické monitorování telemetrie zařízení a aktivovat akce, když se splní jedna nebo víc podmínek. Akce mohou zahrnovat posílání e-mailových oznámení, aktivaci akce Microsoft Flow nebo akce Webhooku k odesílání dat do jiných služeb.
+V Azure IoT Central můžete vytvořit pravidla pro automatické monitorování telemetrie zařízení a aktivovat akce, když se splní jedna nebo víc podmínek. Akce mohou zahrnovat odesílání e-mailových oznámení, aktivaci akce automatizace a akci Webhooku k odesílání dat do jiných služeb.
 
 Aplikace **pro správu propojených odpadů** má čtyři vzorová pravidla.
 

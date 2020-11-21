@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 695b0b0ac06e63912ca0a471be3d96c148458c29
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dc3d119479d2dce45b286463f3d6a76410220dd0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104236"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014216"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Standardní sloupce v protokolech Azure Monitor
 Data v Azure Monitor protokoly se [ukládají jako sada záznamů v pracovním prostoru Log Analytics nebo v Application Insights aplikaci](./data-platform-logs.md), z nichž každý má konkrétní datový typ, který má jedinečnou sadu sloupců. Mnoho datových typů bude mít standardní sloupce, které jsou společné pro různé typy. Tento článek popisuje tyto sloupce a poskytuje příklady, jak je můžete použít v dotazech.
@@ -48,7 +48,7 @@ exceptions
 ```
 
 ## <a name="_timereceived"></a>\_TimeReceived
-Sloupec ** \_ TimeReceived** obsahuje datum a čas, kdy byl záznam přijat bodem příjmu Azure monitor v cloudu Azure. To může být užitečné k identifikaci potíží s latencí mezi zdrojem dat a cloudem. Příkladem může být problém se sítí, který způsobuje zpoždění přenášená daty z agenta. Další podrobnosti najdete [v tématu čas příjmu dat protokolu v Azure monitor](data-ingestion-time.md) .
+Sloupec **\_ TimeReceived** obsahuje datum a čas, kdy byl záznam přijat bodem příjmu Azure monitor v cloudu Azure. To může být užitečné k identifikaci potíží s latencí mezi zdrojem dat a cloudem. Příkladem může být problém se sítí, který způsobuje zpoždění přenášená daty z agenta. Další podrobnosti najdete [v tématu čas příjmu dat protokolu v Azure monitor](data-ingestion-time.md) .
 
 Následující dotaz poskytuje průměrnou latenci za hodinu u záznamů událostí od agenta. To zahrnuje dobu od agenta do cloudu a celkovou dobu, po kterou bude záznam pro dotazy protokolu dostupný.
 
@@ -74,11 +74,11 @@ search *
 
 ```
 ## <a name="_itemid"></a>\_ItemId
-Sloupec ** \_ itemid** obsahuje jedinečný identifikátor záznamu.
+Sloupec **\_ itemid** obsahuje jedinečný identifikátor záznamu.
 
 
 ## <a name="_resourceid"></a>\_ResourceId
-Sloupec ** \_ ResourceID** obsahuje jedinečný identifikátor prostředku, ke kterému je přiřazen záznam. Díky tomu máte standardní sloupec, který se použije k určení oboru dotazu jenom na záznamy z konkrétního prostředku, nebo pro spojování souvisejících dat napříč více tabulkami.
+Sloupec **\_ ResourceID** obsahuje jedinečný identifikátor prostředku, ke kterému je přiřazen záznam. Díky tomu máte standardní sloupec, který se použije k určení oboru dotazu jenom na záznamy z konkrétního prostředku, nebo pro spojování souvisejících dat napříč více tabulkami.
 
 U prostředků Azure je hodnotou **_ResourceId** [Adresa URL ID prostředku Azure](../../azure-resource-manager/templates/template-functions-resource.md). Tento sloupec je v současné době omezený na prostředky Azure, ale bude rozšířen na prostředky mimo Azure, jako jsou například místní počítače.
 
@@ -124,7 +124,7 @@ union withsource = tt *
 Tyto dotazy můžete použít `union withsource = tt *` zřídka, protože kontroly napříč datovými typy jsou náročné na spouštění.
 
 ## <a name="_isbillable"></a>\_Fakturovatelnost
-Sloupec ** \_ disfakturovatelné** určuje, zda jsou příjemovaná data fakturovatelná. Data s **hodnotou, která \_ ** se rovná, `false` se shromažďují zdarma a neúčtují se za váš účet Azure.
+Sloupec **\_ disfakturovatelné** určuje, zda jsou příjemovaná data fakturovatelná. Data s **hodnotou, která \_** se rovná, `false` se shromažďují zdarma a neúčtují se za váš účet Azure.
 
 ### <a name="examples"></a>Příklady
 Chcete-li získat seznam počítačů, které odesílají Fakturovatelné datové typy, použijte následující dotaz:
@@ -151,7 +151,7 @@ union withsource = tt *
 ```
 
 ## <a name="_billedsize"></a>\_BilledSize
-Sloupec ** \_ BilledSize** určuje velikost dat (v bajtech), která se budou fakturovat vašemu účtu Azure, pokud je hodnota ** \_ Fakturovatelné** .
+Sloupec **\_ BilledSize** určuje velikost dat (v bajtech), která se budou fakturovat vašemu účtu Azure, pokud je hodnota **\_ Fakturovatelné** .
 
 
 ### <a name="examples"></a>Příklady
@@ -211,4 +211,4 @@ union withsource = tt *
 
 - Přečtěte si další informace o tom, jak [se ukládají data protokolu Azure monitor](../log-query/log-query-overview.md).
 - Získejte lekci k [zápisu dotazů protokolu](../log-query/get-started-queries.md).
-- Získejte lekci o [spojování tabulek v protokolových dotazech](../log-query/joins.md).
+- Získejte lekci o [spojování tabulek v protokolových dotazech](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins).

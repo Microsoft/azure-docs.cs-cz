@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: yohaddad
-ms.openlocfilehash: 5a5e448660583204d424358e571c4bfb74890e8d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e84342bff0d2bbc3b034afc1b3c5e8a7dc4a9eb1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737825"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015523"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
@@ -29,10 +29,10 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 | Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 20-11 |  [4586793]  |  Nejnovější kumulativní aktualizace | 6,25 | 10. listopadu 2020 |
+|  Rel. 20-11 OOB |  [4594442]  |  Nejnovější kumulativní aktualizace | 6,25 | 17. listopadu 2020 |
+|  Rel. 20-11 OOB |  [4594441]  |  Nejnovější kumulativní aktualizace | 5,49 | 19. listopadu 2020 |
 |  Rel. 20-11 |  [4580325]  |  Aktualizace pro Flash | 3,91, 4,84, 5,49, 6,25 | 13. října 2020 |
 |  Rel. 20-11 |  [4586768]  |  Kumulativní aktualizace IE | 2,104, 3,91, 4,84 | 10. listopadu 2020 |
-|  Rel. 20-11 |  [4586830]  |  Nejnovější kumulativní aktualizace | 5,49 | 10. listopadu 2020 |
 |  Rel. 20-11 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | 2,104 | 10. listopadu 2020 |
 |  Rel. 20-11 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 2,104 | 10. listopadu 2020 |
 |  Rel. 20-11 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | 4,84 | 10. listopadu 2020 |
@@ -52,10 +52,10 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 |  Rel. 20-11 |  [4494175]  |  Vyžádal povolení mikrokódu | 5,49 | Od 1. září 2020 |
 |  Rel. 20-11 |  [4494174]  |  Vyžádal povolení mikrokódu | 6,25 | 3. září 2020 |
 
-[4586793]: https://support.microsoft.com/kb/4586793
+[4594442]: https://support.microsoft.com/kb/4594442
+[4594441]: https://support.microsoft.com/kb/4594441
 [4580325]: https://support.microsoft.com/kb/4580325
 [4586768]: https://support.microsoft.com/kb/4586768
-[4586830]: https://support.microsoft.com/kb/4586830
 [4578952]: https://support.microsoft.com/kb/4578952
 [4578955]: https://support.microsoft.com/kb/4578955
 [4578953]: https://support.microsoft.com/kb/4578953

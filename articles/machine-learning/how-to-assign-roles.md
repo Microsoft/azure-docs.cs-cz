@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 6cd4bbec89e955c398f7cb6e37ba5c3dcc6427ea
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 90abd46e73ecb50b5e6de40218571d0ec899752e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961222"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012964"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru služby Azure Machine Learning
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak spravovat přístup (autorizaci) k pracovnímu
 >
 > * [Řízení přístupu k prostředkům clusteru Azure Kubernetes](../aks/azure-ad-rbac.md)
 > * [Použití Azure RBAC pro autorizaci Kubernetes](../aks/manage-azure-rbac.md)
-> * [Použití služby Azure RBAC pro přístup k datům objektu BLOB](/storage/common/storage-auth-aad-rbac-portal.md)
+> * [Použití služby Azure RBAC pro přístup k datům objektu BLOB](/azure/storage/common/storage-auth-aad-rbac-portal)
 
 > [!WARNING]
 > Použití některých rolí může omezit funkce uživatelského rozhraní v Azure Machine Learning Studiu pro jiné uživatele. Pokud například role uživatele nemá možnost vytvořit výpočetní instanci, možnost vytvoření výpočetní instance nebude v nástroji Studio k dispozici. Toto chování je očekávané a brání uživateli v pokusech o operace, které by vrátily chybu odepření přístupu.

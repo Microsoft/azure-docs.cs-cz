@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 546c53334b7700ab73c22edb2d82b324bfad61a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e0f1ea42aa2ba888b89dd652d3397a3a2163a3e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569435"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016203"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>Plánování prostředí Azure Time Series Insights Gen1
 
@@ -67,7 +67,7 @@ Můžete upravit dobu uchovávání a přepínání mezi oběma režimy na strá
 
 1. V [Azure Portal](https://portal.azure.com)vyberte své prostředí Time Series Insights.
 
-1. V podokně **Time Series Insights prostředí** v části **Nastavení**vyberte **Konfigurace úložiště**.
+1. V podokně **Time Series Insights prostředí** v části **Nastavení** vyberte **Konfigurace úložiště**.
 
 1. Do pole **Doba uchovávání dat (ve dnech)** zadejte hodnotu mezi 1 a 400.
 
@@ -92,7 +92,7 @@ Omezování a latence hrají roli v rámci kapacity po minutách. Pokud máte š
 
 Pokud máte třeba jednu SKU S1, data příchozího přenosu dat jsou 720 událostí za minutu a rychlost přenosu dat se v tomto prostředí neshoduje po dobu kratší než jedna hodina, a to v poměru 1 440 událostí nebo méně. Pokud ale po dobu více než jedné hodiny překročíte 1 440 událostí za minutu, pravděpodobně budete mít k dispozici latenci v datech, která jsou vizuální a dostupná pro dotaz ve vašem prostředí.
 
-Je možné, že předem nevíte, kolik dat jste čekali. V takovém případě můžete v předplatném Azure Portal najít telemetrii dat pro [azure IoT Hub](../iot-hub/iot-hub-metrics.md) a [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) . Telemetrii vám pomůže určit, jak se vaše prostředí dá zřídit. K zobrazení telemetrie použijte podokno **metrik** v Azure Portal pro příslušný zdroj události. Pokud rozumíte metrikám zdroje událostí, můžete efektivněji naplánovat a zřídit Azure Time Series Insights prostředí.
+Je možné, že předem nevíte, kolik dat jste čekali. V takovém případě můžete v předplatném Azure Portal najít telemetrii dat pro [azure IoT Hub](../iot-hub/monitor-iot-hub.md) a [Azure Event Hubs](/archive/blogs/cloud_solution_architect/using-the-azure-rest-apis-to-retrieve-event-hub-metrics) . Telemetrii vám pomůže určit, jak se vaše prostředí dá zřídit. K zobrazení telemetrie použijte podokno **metrik** v Azure Portal pro příslušný zdroj události. Pokud rozumíte metrikám zdroje událostí, můžete efektivněji naplánovat a zřídit Azure Time Series Insights prostředí.
 
 ### <a name="calculate-ingress-requirements"></a>Vypočítat požadavky na příchozí přenosy
 
@@ -128,6 +128,6 @@ Pokud chcete získat další informace o tom, jak vytvářet, nahrávat a spravo
 
 - Začněte vytvořením [nového Azure Time Series Insightsho prostředí v Azure Portal](time-series-insights-get-started.md).
 
-- Naučte se, jak [přidat Event Hubs zdroj události](time-series-insights-how-to-add-an-event-source-eventhub.md) do Azure Time Series Insights.
+- Naučte se, jak [přidat Event Hubs zdroj události](./how-to-ingest-data-event-hub.md) do Azure Time Series Insights.
 
-- Přečtěte si o tom, jak [nakonfigurovat zdroj události IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md).
+- Přečtěte si o tom, jak [nakonfigurovat zdroj události IoT Hub](./how-to-ingest-data-iot-hub.md).

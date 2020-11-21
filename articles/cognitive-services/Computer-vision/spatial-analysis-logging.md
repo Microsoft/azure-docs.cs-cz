@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 8154ef7a90011da8c15f52870eebb6c80ebaebca
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496112"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014573"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie a řešení potíží
 
@@ -51,7 +51,7 @@ Vztahují
 Činnosti
 1. Azure Monitor
 
-Zadaný modul telegrafa prostorových analýz bude publikovat všechna data telemetrie vygenerovaná kontejnerem prostorové analýzy do Azure Monitor. Informace o přidání Azure Monitor do předplatného najdete v [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) .
+Zadaný modul telegrafa prostorových analýz bude publikovat všechna data telemetrie vygenerovaná kontejnerem prostorové analýzy do Azure Monitor. Informace o přidání Azure Monitor do předplatného najdete v [Azure monitor](../../azure-monitor/overview.md) .
 
 Po nastavení Azure Monitor budete muset vytvořit přihlašovací údaje, které modulu umožní odeslat telemetrii. K vytvoření nového instančního objektu můžete použít Azure Portal, nebo ho vytvořit pomocí příkazu Azure CLI níže.
 
@@ -215,8 +215,8 @@ Na portálu IoT Edge vyberte zařízení a pak modul **diagnostiky** . V souboru
 Protokoly se nahrávají na vyžádání pomocí `getRTCVLogs` metody IoT Edge v `diagnostics` modulu. 
 
 
-1. Přejít na stránku IoT Hub portálu, vyberte **hraniční zařízení**a pak vyberte zařízení a modul diagnostiky. 
-2. Přejděte na stránku podrobností modulu a klikněte na kartu **_Přímá metoda_*_.
+1. Přejít na stránku IoT Hub portálu, vyberte **hraniční zařízení** a pak vyberte zařízení a modul diagnostiky. 
+2. Přejděte na stránku podrobností modulu a klikněte na kartu **_Přímá metoda_* _.
 3. `getRTCVLogs`V datové části zadejte název metody a řetězec formátu JSON. Můžete zadat `{}` , což je prázdná datová část. 
 4. Nastavte časový limit připojení a metody a klikněte na _ * vyvolat metodu * *.
 5. Vyberte cílový kontejner a vytvořte řetězec JSON datové části pomocí parametrů popsaných v části **syntaxe protokolování** . Pro provedení žádosti klikněte na **vyvolat metodu** .
@@ -224,7 +224,7 @@ Protokoly se nahrávají na vyžádání pomocí `getRTCVLogs` metody IoT Edge v
 >[!NOTE]
 > Vyvoláním `getRTCVLogs` metody s prázdnou datovou částí se vrátí seznam všech kontejnerů nasazených v zařízení. Název metody rozlišuje velká a malá písmena. Pokud je zadán nesprávný název metody, zobrazí se chyba 501.
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Sestava telemetrie Azure Monitor":::
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Vyvolání metody getRTCVLogs ":::
 ![getRTCVLogs Direct – stránka metody](./media/spatial-analysis/direct-log-collection.png)
 
  
@@ -245,7 +245,7 @@ V následující tabulce jsou uvedeny atributy v odpovědi na dotaz.
 
 | Klíčové slovo | Popis|
 |--|--|
-|DoPost| Buď *hodnotu true* , nebo *false*. Určuje, jestli jsou protokoly nahrané nebo ne. Pokud se rozhodnete Nenahrávat protokoly, rozhraní API vrátí informace ***synchronně**_. Pokud se rozhodnete odeslat protokoly, rozhraní API vrátí 200, pokud je požadavek platný, a spustí odesílání protokolů _*_asynchronně_*_.|
+|DoPost| Buď *hodnotu true* , nebo *false*. Určuje, jestli jsou protokoly nahrané nebo ne. Pokud se rozhodnete Nenahrávat protokoly, rozhraní API vrátí informace ***synchronně** _. Pokud se rozhodnete odeslat protokoly, rozhraní API vrátí 200, pokud je požadavek platný, a spustí odesílání protokolů _*_asynchronně_*_.|
 |TimeFilter| Filtr času aplikovaný na protokoly.|
 |ValueFilters| Filtry klíčových slov použité pro protokoly. |
 |Časové razítko| Čas spuštění metody |
@@ -316,8 +316,8 @@ Následující část je k dispozici pro nápovědu k ladění a ověřování s
 
 ### <a name="access-the-kubernetes-api-endpoint"></a>Přístup ke koncovému bodu rozhraní Kubernetes API. 
 
-1. V místním uživatelském rozhraní zařízení, otevřete stránku _*zařízení**. 
-2. V části **koncové body zařízení**zkopírujte koncový bod služby API Kubernetes. Tento koncový bod je řetězec v následujícím formátu: `https://compute..[device-IP-address]` .
+1. V místním uživatelském rozhraní zařízení, otevřete stránku _ *zařízení**. 
+2. V části **koncové body zařízení** zkopírujte koncový bod služby API Kubernetes. Tento koncový bod je řetězec v následujícím formátu: `https://compute..[device-IP-address]` .
 3. Uložte řetězec koncového bodu. Později to budete používat při konfiguraci `kubectl` pro přístup ke clusteru Kubernetes.
 
 ### <a name="connect-to-powershell-interface"></a>Připojení k rozhraní PowerShell
@@ -326,7 +326,7 @@ Vzdáleně se připojte z klienta Windows. Po vytvoření clusteru Kubernetes m�
 
 > [!TIP]
 > * Než začnete, ujistěte se, že na vašem klientovi Windows běží Windows PowerShell 5,0 nebo novější.
-> * PowerShell je také [k dispozici v systému Linux](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux).
+> * PowerShell je také [k dispozici v systému Linux](/powershell/scripting/install/installing-powershell-core-on-linux).
 
 1. Spusťte relaci Windows PowerShellu jako správce. 
     1. Ujistěte se, že je ve vašem klientovi spuštěná služba Vzdálená správa systému Windows. Do příkazového řádku zadejte `winrm quickconfig` .

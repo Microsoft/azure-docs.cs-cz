@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6f777b605c5050b7fa4b3b9e3671f3638ad67372
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313532"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016254"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 
@@ -92,9 +92,9 @@ Postup instalace knihovny do fondu Spark (ve verzi Preview) přímo z Azure Port
 Pokud chcete ověřit, jestli jsou nainstalované správné verze správných knihoven, spusťte následující kód.
 
 ```python
-import pip #needed to use the pip functions
-for i in pip.get_installed_distributions(local_only=True):
-    print(i)
+import pkg_resources
+for d in pkg_resources.working_set:
+     print(d)
 ```
 ### <a name="update-python-packages"></a>Aktualizovat balíčky Pythonu
 Balíčky je možné přidávat nebo upravovat kdykoli mezi relacemi. Když se nahraje nový konfigurační soubor balíčku, přepíše se stávající balíčky a verze.  
@@ -112,7 +112,7 @@ Aktualizace nebo odinstalace knihovny:
    
 
 > [!IMPORTANT]
-> Když vyberete možnost pro **vynucení nových nastavení** , ukončí se všechny aktuální relace pro vybraný fond Spark. Po ukončení relace budete muset počkat na restartování fondu. 
+> Když vyberete možnost pro **vynucení nových nastavení**, ukončí se všechny aktuální relace pro vybraný fond Spark. Po ukončení relace budete muset počkat na restartování fondu. 
 >
 > Pokud je toto nastavení nezaškrtnuté, budete muset počkat, až aktuální relace Spark ukončí nebo zastaví ručně. Po ukončení relace budete muset povolit restart fondu. 
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0e4a6d9180d2a9949cebc40cf30edffac73ef9d0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6c899b4f0dd7a3b91521c6d78b531d1c804ac105
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653534"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015303"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy ke kontejnerům služby Speech Service (FAQ)
 
@@ -292,8 +292,8 @@ Mohli byste vám pomáhat s plněním následujících metrik testu, včetně to
 
 | Koncový bod                                                | Funkční test                                                   | Sada SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Text z syntezátoru (převod textu na řeč)                                  |     | Ano      |
-| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services koncový bod protokolu WebSocket pro diktování Prem v1        | Ano | No       |
+| `/speech/synthesize/cognitiveservices/v1`               | Text z syntezátoru (převod textu na řeč)                                  |     | Yes      |
+| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services koncový bod protokolu WebSocket pro diktování Prem v1        | Yes | Ne       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | Koncový bod Prem Interactive v1 WebSocket v Cognitive Services  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | Koncový bod WebSocket v Prem konverzaci v1 služby vnímání |     |          |
 
@@ -324,7 +324,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>Jaký režim mám použít pro různé zvukové soubory?</b>
 </summary>
 
-**Odpověď:** Tady je [rychlý Start s použitím Pythonu](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-python). Další jazyky, které jsou propojené na webu Docs, najdete v části.
+**Odpověď:** Tady je [rychlý Start s použitím Pythonu](./get-started-speech-to-text.md?pivots=programming-language-python). Další jazyky, které jsou propojené na webu Docs, najdete v části.
 
 Jenom pro objasnění interaktivních, konverzací a diktování; Toto je pokročilý způsob určení konkrétního způsobu, jakým bude naše služba zpracovávat požadavky na řeč. Pro kontejnery on-Prem je ale nutné zadat úplný identifikátor URI (protože zahrnuje místní počítač), proto tyto informace nedošlo k úniku z abstrakce. Spolupracujeme s týmem sady SDK, aby bylo možné ho v budoucnu využít.
 

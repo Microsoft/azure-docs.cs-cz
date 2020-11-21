@@ -12,12 +12,12 @@ ms.date: 09/02/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání mluvčího, Voice biometry
-ms.openlocfilehash: 5001ac166b37f3a3852bc14261a5b5d199d778cd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d07a9960c8a586fa137b4b717afbf91740c265d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844557"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015320"
 ---
 # <a name="what-is-speaker-recognition-preview"></a>Co je rozpoznávání mluvčího (Preview)?
 
@@ -70,10 +70,10 @@ Stejně jako u všech Cognitive Servicesch prostředků musí vývojáři, kteř
 | Jaké jsou podporované zvukové formáty? | Mono 16 bitů, 16kHz WAV s kódováním PCM |
 | Odpovědi **přijmout** a **odmítnout** nejsou přesné, jak tuto prahovou hodnotu vyladit? | Vzhledem k tomu, že se optimální prahová hodnota značně liší u scénářů, rozhraní API rozhoduje, jestli se má "přijmout" nebo "zamítnout" jednoduše na základě výchozí prahové hodnoty 0,5. Pokročilým uživatelům se doporučuje přepsat výchozí rozhodnutí a vyladit výsledek na základě vašeho vlastního scénáře. |
 | Můžete jeden mluvčí zaregistrovat několikrát? | Ano, u ověřování závislého na textu můžete zaregistrovat mluvčí až 50 časů. V případě ověření nezávislého na textu nebo identifikace mluvčího se můžete zaregistrovat až po 300 sekund zvuk. |
-| Jaká data jsou uložená v Azure? | Zvuk registrace je uložený ve službě, dokud se hlasový profil [neodstraní](speaker-recognition-basics.md#deleting-voice-profile-enrollments). Zvukové vzorky rozpoznávání nejsou uchovávány nebo uloženy. |
+| Jaká data jsou uložená v Azure? | Zvuk registrace je uložený ve službě, dokud se hlasový profil [neodstraní](./get-started-speaker-recognition.md#deleting-voice-profile-enrollments). Zvukové vzorky rozpoznávání nejsou uchovávány nebo uloženy. |
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> * Seznamte se s rozpoznávání mluvčího základy běžných vzorů návrhu, které můžete použít ve svých aplikacích, dokončete v tomto [článku](speaker-recognition-basics.md) .
+> * Seznamte se s rozpoznávání mluvčího základy běžných vzorů návrhu, které můžete použít ve svých aplikacích, dokončete v tomto [článku](./get-started-speaker-recognition.md) .
 > * Prohlédněte si [kurz videa](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/) pro ověřování mluvčí nezávislé na textu.

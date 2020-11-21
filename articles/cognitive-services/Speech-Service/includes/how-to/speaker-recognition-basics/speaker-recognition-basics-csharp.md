@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: 5be99ba09032020abf777c80307e347658a6e037
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 2b5a34e8f3e7132a16ad3683b846d57e9ece2cb6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470808"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015464"
 ---
 V tomto rychlém startu se naučíte základní vzory návrhu pro rozpoznávání mluvčího pomocí sady Speech SDK, včetně těchto:
 
@@ -20,7 +20,7 @@ V tomto rychlém startu se naučíte základní vzory návrhu pro rozpoznáván�
 
 Základní informace o konceptech rozpoznávání řeči najdete v článku [Přehled](../../../speaker-recognition-overview.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
@@ -51,7 +51,7 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) . V tomto příkladu vytvoříte [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) pomocí klíče a oblasti předplatného. Také můžete vytvořit nějaký základní často používaný kód, který se použije pro zbytek tohoto článku, který můžete upravit pro různá přizpůsobení.
+Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) . V tomto příkladu vytvoříte [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) pomocí klíče a oblasti předplatného. Také můžete vytvořit nějaký základní často používaný kód, který se použije pro zbytek tohoto článku, který můžete upravit pro různá přizpůsobení.
 
 Všimněte si, že oblast je nastavená na `westus` , protože je jedinou podporovanou oblastí pro službu.
 
@@ -70,7 +70,7 @@ public class Program
 
 ## <a name="text-dependent-verification"></a>Ověřování závislé na textu
 
-Ověření mluvčího je potvrzení, že mluvčí odpovídá známému nebo **zaregistrovanému** hlasu. Prvním krokem je **zápis** hlasového profilu, aby služba měla něco pro porovnání budoucích ukázek hlasu s. V tomto příkladu zaregistrujete profil s použitím strategie **závislé na textu** , která vyžaduje konkrétní předávací frázi, která se má použít pro zápis i ověřování. Seznam podporovaných předávacích frází najdete v [referenční dokumentaci](https://docs.microsoft.com/rest/api/speakerrecognition/) .
+Ověření mluvčího je potvrzení, že mluvčí odpovídá známému nebo **zaregistrovanému** hlasu. Prvním krokem je **zápis** hlasového profilu, aby služba měla něco pro porovnání budoucích ukázek hlasu s. V tomto příkladu zaregistrujete profil s použitím strategie **závislé na textu** , která vyžaduje konkrétní předávací frázi, která se má použít pro zápis i ověřování. Seznam podporovaných předávacích frází najdete v [referenční dokumentaci](/rest/api/speakerrecognition/) .
 
 Začněte vytvořením následující funkce ve `Program` třídě pro zápis hlasového profilu.
 
@@ -232,7 +232,7 @@ Verified voice profile for speaker Your Name, score is 0.849409
 
 Identifikace mluvčího slouží k určení toho **, kdo** z dané skupiny zaregistrovaných hlasů mluví. Tento proces je velmi podobný **ověřování nezávisle na textu**, s hlavním rozdílem, který je schopný ověřit u více hlasových profilů najednou, a ne u jednoho profilu.
 
-Vytvořte funkci `IdentificationEnroll` pro registraci více hlasových profilů. Proces registrace pro každý profil je stejný jako proces registrace pro **ověřování nezávislé na textu**a pro každý profil vyžaduje 20 sekund zvuk. Tato funkce přijímá seznam řetězců a vytvoří `profileNames` nový hlasový profil pro každý název v seznamu. Funkce vrátí seznam `VoiceProfile` objektů, které použijete v další funkci pro identifikaci mluvčího.
+Vytvořte funkci `IdentificationEnroll` pro registraci více hlasových profilů. Proces registrace pro každý profil je stejný jako proces registrace pro **ověřování nezávislé na textu** a pro každý profil vyžaduje 20 sekund zvuk. Tato funkce přijímá seznam řetězců a vytvoří `profileNames` nový hlasový profil pro každý název v seznamu. Funkce vrátí seznam `VoiceProfile` objektů, které použijete v další funkci pro identifikaci mluvčího.
 
 ```csharp
 public static async Task<List<VoiceProfile>> IdentificationEnroll(SpeechConfig config, List<string> profileNames, Dictionary<string, string> profileMapping)

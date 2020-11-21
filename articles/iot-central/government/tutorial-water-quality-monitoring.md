@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a80fe998c1ab241e35bee195b927846e264dec59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07f0e66888eaa909dfce14924e9186bcb9b876b4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972357"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014488"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Kurz: Vytvoření aplikace pro monitorování kvality vody v Azure IoT Central
 
@@ -56,7 +56,7 @@ V této části použijete šablonu **monitorování kvality vody** Azure IoT Ce
 
     * **Název aplikace**: ve výchozím nastavení má název aplikace **monitorování kvality vody** následovaný jedinečným řetězcem ID, který vygeneruje služba Azure IoT Central. Pokud chcete, můžete zadat zobrazované jméno nebo změnit název aplikace později.
     * **Adresa URL**: můžete zadat libovolnou adresu URL, kterou chcete, nebo změnit hodnotu adresy URL později.
-    * Pokud máte předplatné Azure, zadejte hodnoty pro **adresář**, **předplatné Azure**a **oblast**. Pokud předplatné nemáte, můžete zapnout **7 dní bezplatnou zkušební verzi** a doplnit požadované kontaktní údaje.
+    * Pokud máte předplatné Azure, zadejte hodnoty pro **adresář**, **předplatné Azure** a **oblast**. Pokud předplatné nemáte, můžete zapnout **7 dní bezplatnou zkušební verzi** a doplnit požadované kontaktní údaje.
 
     Další informace o adresářích a předplatných najdete v tématu rychlý Start [k vytvoření aplikace](../core/quick-deploy-iot-central.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
 
@@ -188,7 +188,7 @@ Na kartě **zařízení** vyberte **+ Nová** a přidejte nové zařízení.
 
 ## <a name="explore-and-configure-rules"></a>Prozkoumat a nakonfigurovat pravidla
 
-V Azure IoT Central můžete vytvořit pravidla, která automaticky monitorují telemetrii zařízení. Tato pravidla aktivují akci, když je splněna kterákoli z podmínek. Jednou z možných akcí je odesílání e-mailových oznámení. Mezi další možnosti patří akce Microsoft Flow nebo akce Webhooku pro posílání dat do jiných služeb.
+V Azure IoT Central můžete vytvořit pravidla, která automaticky monitorují telemetrii zařízení. Tato pravidla aktivují akci, když je splněna kterákoli z podmínek. Jednou z možných akcí je odesílání e-mailových oznámení. Mezi další možnosti patří akce automatizace nebo akce Webhooku, která odesílá data do jiných služeb.
 
 Vytvořená aplikace pro monitorování kvality vody má dvě předem nakonfigurovaná pravidla.
 
@@ -232,16 +232,16 @@ Pomocí úloh Azure IoT Central můžete na více zařízeních aktivovat aktual
 Jako tvůrce můžete změnit několik nastavení pro přizpůsobení uživatelského prostředí aplikace.
 
 1. Vyberte možnost **Správa**  >  **přizpůsobení aplikace**.
-1. V části **logo aplikace**vyberte **změnit** a zvolte obrázek, který se má nahrát jako logo.
-1. V části **ikona prohlížeče**vyberte **změnit** a zvolte bitovou kopii, která se zobrazí na kartách prohlížeče.
-1. V části **barvy v prohlížeči**můžete nahradit výchozí hodnoty kódy hexadecimálních barev HTML.
+1. V části **logo aplikace** vyberte **změnit** a zvolte obrázek, který se má nahrát jako logo.
+1. V části **ikona prohlížeče** vyberte **změnit** a zvolte bitovou kopii, která se zobrazí na kartách prohlížeče.
+1. V části **barvy v prohlížeči** můžete nahradit výchozí hodnoty kódy hexadecimálních barev HTML.
 1. Vyberte **Nastavení** a změňte hodnotu **Theme**.
 
    ![Přizpůsobení aplikace](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
 
 ### <a name="update-the-application-image"></a>Aktualizace image aplikace
 
-1. Vyberte **Administration**  >  **nastavení aplikace**pro správu.
+1. Vyberte **Administration**  >  **nastavení aplikace** pro správu.
 
 1. Pomocí tlačítka **Vybrat obrázek** můžete zvolit obrázek, který se má nahrát jako obrázek aplikace.
 

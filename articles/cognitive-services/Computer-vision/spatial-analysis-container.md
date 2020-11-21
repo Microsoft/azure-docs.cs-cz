@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2f03746a6a5afc388db2beeff84b3ab4cbd393b5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357109"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014590"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
@@ -34,7 +34,7 @@ Ke spuštění kontejneru prostorových analýz budete potřebovat výpočetní 
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack hraniční zařízení](#tab/azure-stack-edge)
 
-Azure Stack Edge je řešení typu hardware jako služba a hraniční výpočetní zařízení s podporou AI s možnostmi přenosu dat v síti. Podrobné pokyny pro přípravu a nastavení najdete v [dokumentaci k Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep).
+Azure Stack Edge je řešení typu hardware jako služba a hraniční výpočetní zařízení s podporou AI s možnostmi přenosu dat v síti. Podrobné pokyny pro přípravu a nastavení najdete v [dokumentaci k Azure Stack Edge](../../databox-online/azure-stack-edge-deploy-prep.md).
 
 #### <a name="desktop-machine"></a>[Stolní počítač](#tab/desktop-machine)
 
@@ -59,7 +59,7 @@ V tomto článku budete stahovat a instalovat následující softwarové balíč
 * [Grafické ovladače NVIDIA](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html) a [Sada nástrojů NVIDIA CUDA Toolkit](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 * Konfigurace pro [NVIDIA MPS](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf) (multi-proces Service).
 * [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) a [NVIDIA – Docker2](https://github.com/NVIDIA/nvidia-docker) 
-* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) runtime.
+* [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) runtime.
 
 ---
 
@@ -93,7 +93,7 @@ Doporučuje se pro hostitelský počítač použít Azure Stack hraniční zař�
  
 Prostorová analýza používá výpočetní funkce Azure Stackho okraje ke spuštění řešení AI. Pokud chcete povolit výpočetní funkce, ujistěte se, že: 
 
-* Připojili jste se k zařízení Azure Stack Edge [a aktivovali](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate) jste ho. 
+* Připojili jste se k zařízení Azure Stack Edge [a aktivovali](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md) jste ho. 
 * Máte klientský systém Windows se spuštěným prostředím PowerShell 5,0 nebo novějším, abyste měli přístup k zařízení.  
 * Chcete-li nasadit cluster Kubernetes, je nutné nakonfigurovat Azure Stack hraniční zařízení prostřednictvím **místního uživatelského rozhraní** v [Azure Portal](https://portal.azure.com/): 
   1. Povolte funkci COMPUTE na zařízení Azure Stack Edge. Pokud chcete povolit výpočetní prostředky, ve webovém rozhraní pro vaše zařízení navštivte stránku **COMPUTE** . 
@@ -117,7 +117,7 @@ Když se na hraničním zařízení nastaví role hraničního zpracování, vyt
 
 > [!NOTE]
 > * Pro IoT Edge zařízení je momentálně podporovaná jenom Platforma Linux. Pomoc při řešení potíží se zařízením Azure Stack Edge naleznete v článku [protokolování a řešení potíží](spatial-analysis-logging.md) .
-> * Další informace o tom, jak nakonfigurovat zařízení IoT Edge pro komunikaci pomocí proxy server, najdete v tématu [konfigurace IoT Edge zařízení pro komunikaci prostřednictvím proxy server](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal)
+> * Další informace o tom, jak nakonfigurovat zařízení IoT Edge pro komunikaci pomocí proxy server, najdete v tématu [konfigurace IoT Edge zařízení pro komunikaci prostřednictvím proxy server](../../iot-edge/how-to-configure-proxy-support.md#azure-portal)
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>Povolit MPS na Azure Stack Edge 
 
@@ -129,7 +129,7 @@ Když se na hraničním zařízení nastaví role hraničního zpracování, vyt
     winrm quickconfig
     ```
     
-    Pokud se zobrazí upozornění týkající se výjimky brány firewall, zkontrolujte typ připojení k síti a Prohlédněte si dokumentaci k [Vzdálená správa systému Windows](https://docs.microsoft.com/windows/win32/winrm/installation-and-configuration-for-windows-remote-management) .
+    Pokud se zobrazí upozornění týkající se výjimky brány firewall, zkontrolujte typ připojení k síti a Prohlédněte si dokumentaci k [Vzdálená správa systému Windows](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management) .
 
 3. Přiřaďte proměnnou k IP adrese zařízení. 
     
@@ -246,7 +246,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>Konfigurace Azure IoT Edge na hostitelském počítači
 
-Pokud chcete nasadit kontejner prostorových analýz v hostitelském počítači, vytvořte instanci služby [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) pomocí cenové úrovně Standard (S1) nebo Free (F0). Pokud je hostitelský počítač Azure Stack Edge, použijte stejné předplatné a skupinu prostředků, které používá prostředek Azure Stack Edge.
+Pokud chcete nasadit kontejner prostorových analýz v hostitelském počítači, vytvořte instanci služby [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) pomocí cenové úrovně Standard (S1) nebo Free (F0). Pokud je hostitelský počítač Azure Stack Edge, použijte stejné předplatné a skupinu prostředků, které používá prostředek Azure Stack Edge.
 
 Pomocí rozhraní příkazového řádku Azure vytvořte instanci služby Azure IoT Hub. Nahraďte parametry tam, kde je to vhodné. Alternativně můžete vytvořit IoT Hub Azure na [Azure Portal](https://portal.azure.com/).
 
@@ -261,7 +261,7 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Pokud hostitelský počítač není Azure Stack hraniční zařízení, bude nutné nainstalovat [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) verze 1.0.9. Chcete-li stáhnout správnou verzi, postupujte podle následujících kroků:
+Pokud hostitelský počítač není Azure Stack hraniční zařízení, bude nutné nainstalovat [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) verze 1.0.9. Chcete-li stáhnout správnou verzi, postupujte podle následujících kroků:
 
 Ubuntu Server 18,04:
 ```bash
@@ -292,7 +292,7 @@ Instalace verze 1.0.9:
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-V dalším kroku Zaregistrujte hostitelský počítač jako zařízení IoT Edge ve vaší instanci IoT Hub pomocí [připojovacího řetězce](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal).
+V dalším kroku Zaregistrujte hostitelský počítač jako zařízení IoT Edge ve vaší instanci IoT Hub pomocí [připojovacího řetězce](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06).
 
 Zařízení IoT Edge musíte připojit k Azure IoT Hub. Je nutné zkopírovat připojovací řetězec z IoT Edge zařízení, které jste vytvořili dříve. Případně můžete spustit níže uvedený příkaz v rozhraní příkazového řádku Azure CLI.
 
@@ -306,7 +306,7 @@ V hostitelském počítači otevřeném  `/etc/iotedge/config.yaml` pro úpravy.
 sudo systemctl restart iotedge
 ```
 
-Nasaďte kontejner prostorových analýz jako modul IoT na hostitelském počítači, a to buď z [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) nebo prostřednictvím rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli). Pokud používáte portál, nastavte identifikátor URI image na umístění vašeho Azure Container Registry. 
+Nasaďte kontejner prostorových analýz jako modul IoT na hostitelském počítači, a to buď z [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) nebo prostřednictvím rozhraní příkazového [řádku Azure](../../iot-edge/how-to-deploy-modules-cli.md). Pokud používáte portál, nastavte identifikátor URI image na umístění vašeho Azure Container Registry. 
 
 Pomocí následujících kroků nasaďte kontejner pomocí Azure CLI.
 
@@ -335,7 +335,7 @@ V následující tabulce jsou uvedeny různé proměnné prostředí používan�
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, musí být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
 
-Jakmile aktualizujete manifest nasazení pro [Azure Stack hraničních zařízení](https://go.microsoft.com/fwlink/?linkid=2142179) nebo [stolní počítač](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) s vlastním nastavením a výběrem operací, můžete použít následující příkaz rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) k nasazení kontejneru v hostitelském počítači, jako modul IoT Edge.
+Jakmile aktualizujete manifest nasazení pro [Azure Stack hraničních zařízení](https://go.microsoft.com/fwlink/?linkid=2142179) nebo [stolní počítač](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) s vlastním nastavením a výběrem operací, můžete použít následující příkaz rozhraní příkazového [řádku Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) k nasazení kontejneru v hostitelském počítači, jako modul IoT Edge.
 
 ```azurecli
 az login
@@ -366,14 +366,14 @@ K nakonfigurování kontejneru pro použití připojených fotoaparátů, konfig
 
 ## <a name="redeploy-or-delete-the-deployment"></a>Opětovné nasazení nebo odstranění nasazení
 
-Pokud potřebujete nasazení aktualizovat, musíte se ujistit, že jsou předchozí nasazení úspěšně nasazená, nebo potřebujete odstranit nasazení IoT Edge zařízení, která nebyla dokončena. V opačném případě budou tato nasazení pokračovat a systém zůstane v nesprávném stavu. Můžete použít Azure Portal nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment).
+Pokud potřebujete nasazení aktualizovat, musíte se ujistit, že jsou předchozí nasazení úspěšně nasazená, nebo potřebujete odstranit nasazení IoT Edge zařízení, která nebyla dokončena. V opačném případě budou tato nasazení pokračovat a systém zůstane v nesprávném stavu. Můžete použít Azure Portal nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment).
 
 ## <a name="use-the-output-generated-by-the-container"></a>Použít výstup generovaný kontejnerem
 
 Pokud chcete začít spotřebovávat výstup generovaný kontejnerem, přečtěte si následující články:
 
-*   K připojení ke koncovému bodu Azure IoT Hub a příjmu událostí použijte sadu Azure Event hub SDK pro zvolený programovací jazyk. Další informace najdete v tématu [čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) . 
-*   Nastavte směrování zpráv v Azure IoT Hub pro odesílání událostí do jiných koncových bodů nebo ukládání událostí do Azure Blob Storage atd. Další informace najdete v tématu [IoT Hub směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) . 
+*   K připojení ke koncovému bodu Azure IoT Hub a příjmu událostí použijte sadu Azure Event hub SDK pro zvolený programovací jazyk. Další informace najdete v tématu [čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) . 
+*   Nastavte směrování zpráv v Azure IoT Hub pro odesílání událostí do jiných koncových bodů nebo ukládání událostí do Azure Blob Storage atd. Další informace najdete v tématu [IoT Hub směrování zpráv](../../iot-hub/iot-hub-devguide-messages-d2c.md) . 
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>Spuštění prostorové analýzy s nahraným videosouborem
 
@@ -381,7 +381,7 @@ Můžete použít prostorovou analýzu s nahraným nebo živým videem. Pokud ch
     1. Změnit **zabezpečený přenos vyžadovaný** jako **zakázaný**
     2. Změnit **povolený** **veřejný přístup k objektu BLOB**
 
-Přejděte do části **Container** a buď vytvořte nový kontejner, nebo použijte existující. Pak odešlete videosoubor do kontejneru. Rozbalte nastavení souboru pro nahraný soubor a vyberte **Generovat SAS**. Nezapomeňte nastavit **Datum vypršení platnosti** dostatečně dlouho na pokrytí období testování. Nastavte **Povolené protokoly** na *http* ( *https* není podporované).
+Přejděte do části **Container** a buď vytvořte nový kontejner, nebo použijte existující. Pak odešlete videosoubor do kontejneru. Rozbalte nastavení souboru pro nahraný soubor a vyberte **Generovat SAS**. Nezapomeňte nastavit **Datum vypršení platnosti** dostatečně dlouho na pokrytí období testování. Nastavte **Povolené protokoly** na *http* (*https* není podporované).
 
 Klikněte na **vygenerovat token SAS a adresu URL** a zkopírujte adresu URL SAS objektu BLOB. Nahraďte začínající `https` `http` a otestujte adresu URL v prohlížeči, který podporuje přehrávání videa.
 
@@ -418,7 +418,7 @@ Kontejner prostorové analýzy odesílá informace o fakturaci do Azure pomocí 
 U kontejnerů Azure Cognitive Services není licencováno běžet bez připojení ke koncovému bodu měření/fakturace. Kontejnerům musíte povolit, aby informace o fakturaci komunikovaly s koncovým bodem fakturace. Kontejnery Cognitive Services neodesílají zákaznická data, jako je video nebo obrázek, který se analyzuje, do Microsoftu.
 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postup pro stažení, instalaci a spuštění kontejneru prostorové analýzy. Souhrn:
 

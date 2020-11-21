@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9ed4e47cf946827e2e4b9aaeb14d9668e96aeaa5
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: e76612c6c1b83ddb7e88377824902fe6290e7aaf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873773"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015235"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -587,7 +587,7 @@ Můžete také přímo poskytnout očekávanou `alias` zkratku nebo zkrácený t
 
 Další informace o souboru s vlastním souborem lexikonu naleznete v tématu [jiných pracovních prostorů (výslovnost lexikon Specification) verze 1,0](https://www.w3.org/TR/pronunciation-lexicon/).
 
-Potom publikujte svůj vlastní soubor lexikonu. I když nemáme omezení, kde je možné tento soubor uložit, doporučujeme použít [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+Potom publikujte svůj vlastní soubor lexikonu. I když nemáme omezení, kde je možné tento soubor uložit, doporučujeme použít [Azure Blob Storage](../../storage/blobs/storage-quickstart-blobs-portal.md).
 
 Po publikování vlastního slovníku ho můžete odkázat z SSML.
 

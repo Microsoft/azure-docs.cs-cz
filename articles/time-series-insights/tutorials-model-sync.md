@@ -10,16 +10,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: dpalled
-ms.openlocfilehash: c3948a5bdfce583384992fb87bf40e9e7251974d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d02a6e3eb2aef4a02c90360b2016e64af579081
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342375"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014726"
 ---
 # <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Synchronizace modelů mezi Azure Digital Twins a Time Series Insights Gen2
 
-Tento článek vysvětluje osvědčené postupy a nástroje, které se používají k překladu modelu assetu v Azure Digital nevlákens (ADT) na model assetů v Azure Time Series Insights (TSI).  Tento článek je druhou částí série kurzů se dvěma částmi, které objasňují integraci digitálních vláken Azure s Azure Time Series Insights. Integrace digitálních vláken Azure s Time Series Insights umožňuje archivaci a sledování historie telemetrií a počítaných vlastností digitálních vláken. Tato série kurzů se zaměřuje na vývojáře, kteří pracují na integraci Time Series Insights s využitím digitálních vláken Azure. Část 1 vysvětluje  [, jak vytvořit datový kanál, který přináší data skutečného časového seriálu z digitálních vláken Azure do Time Series Insights](https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights) a tato druhá část série kurzů vysvětluje synchronizaci modelů prostředků mezi digitálními a Time Series Insightsmi Azure. Tento kurz vysvětluje osvědčené postupy při výběru a stanovení konvence vytváření názvů pro ID služby Time Series ID (TS ID) a ruční vytváření hierarchií v modelu časové řady (TSM).
+Tento článek vysvětluje osvědčené postupy a nástroje, které se používají k překladu modelu assetu v Azure Digital nevlákens (ADT) na model assetů v Azure Time Series Insights (TSI).  Tento článek je druhou částí série kurzů se dvěma částmi, které objasňují integraci digitálních vláken Azure s Azure Time Series Insights. Integrace digitálních vláken Azure s Time Series Insights umožňuje archivaci a sledování historie telemetrií a počítaných vlastností digitálních vláken. Tato série kurzů se zaměřuje na vývojáře, kteří pracují na integraci Time Series Insights s využitím digitálních vláken Azure. Část 1 vysvětluje  [, jak vytvořit datový kanál, který přináší data skutečného časového seriálu z digitálních vláken Azure do Time Series Insights](../digital-twins/how-to-integrate-time-series-insights.md) a tato druhá část série kurzů vysvětluje synchronizaci modelů prostředků mezi digitálními a Time Series Insightsmi Azure. Tento kurz vysvětluje osvědčené postupy při výběru a stanovení konvence vytváření názvů pro ID služby Time Series ID (TS ID) a ruční vytváření hierarchií v modelu časové řady (TSM).
 
 ## <a name="choosing-a-time-series-id"></a>Výběr ID časové řady
 
@@ -29,7 +29,7 @@ ID časové řady je jedinečný identifikátor, který slouží k identifikaci 
 
 ## <a name="contextualizing-time-series"></a>Contextualizing časová řada
 
-Kontextová data (převážně prostorová v podstatě) v Time Series Insights dosahují pomocí hierarchií prostředků a stejné se používají pro snadné procházení dat prostřednictvím stromového zobrazení v Time Series Insights Exploreru. Typy časových řad a hierarchie jsou definovány pomocí TSM (Time Series model) v Time Series Insights. Typy v TSM nápovědě k definování proměnných, zatímco úrovně hierarchie a hodnoty polí instance slouží k vytvoření stromového zobrazení v Průzkumníkovi Time Series Insights. Další informace o TSM najdete v dokumentaci k [online Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/concepts-model-overview).
+Kontextová data (převážně prostorová v podstatě) v Time Series Insights dosahují pomocí hierarchií prostředků a stejné se používají pro snadné procházení dat prostřednictvím stromového zobrazení v Time Series Insights Exploreru. Typy časových řad a hierarchie jsou definovány pomocí TSM (Time Series model) v Time Series Insights. Typy v TSM nápovědě k definování proměnných, zatímco úrovně hierarchie a hodnoty polí instance slouží k vytvoření stromového zobrazení v Průzkumníkovi Time Series Insights. Další informace o TSM najdete v dokumentaci k [online Time Series Insights](./concepts-model-overview.md).
 
 V případě digitálních vláken Azure se spojení mezi prostředky vyjadřuje pomocí zdvojených vztahů. Zdvojené relace jsou jednoduše grafem propojených prostředků. V rámci Time Series Insight je ale relace mezi prostředky hierarchicky povaze. To znamená, že prostředky sdílejí typ nadřízený-podřízený od a jsou reprezentovány pomocí stromové struktury. Abychom přeložili informace o vztahu z digitálních vláken Azure do Time Series Insights hierarchií, musíme zvolit relevantní hierarchické vztahy z digitálních vláken Azure. Digitální vlákna Azure používá otevřený standardní Modelovací jazyk nazvaný Digital DTDL Definition Language (). V modelech DTDL jsou popsány pomocí variant formátu JSON s názvem JSON-LD. Úplné podrobnosti o specifikaci najdete v [dokumentaci k DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) .
 
@@ -82,7 +82,7 @@ Následující fragment kódu ukazuje, jak klientská aplikace dokázala prochá
 
 > [!Note]
 >
-> Tento příklad fragmentu kódu předpokládá, že čtenáři jsou obeznámené s [částí 01](https://docs.microsoft.com/azure/digital-twins/tutorial-end-to-end#set-up-the-sample-function-app) kurzu a tato změna kódu byla provedena uvnitř funkce "ProcessHubToDTEvents".
+> Tento příklad fragmentu kódu předpokládá, že čtenáři jsou obeznámené s [částí 01](../digital-twins/tutorial-end-to-end.md#set-up-the-sample-function-app) kurzu a tato změna kódu byla provedena uvnitř funkce "ProcessHubToDTEvents".
 
 ```csharp
 if (propertyPath.Equals("/Flow"))
@@ -114,7 +114,7 @@ relationship for " + twinId);
 
 ## <a name="updating-instance-fields-using-apis"></a>Aktualizace polí instance pomocí rozhraní API
 
-V této části kurzu se dozvíte, jak naslouchat změnám modelu v digitálních proobjektech Azure, jako je vytváření, odstraňování zdvojených operací nebo změna v relacích mezi dvojitými a aktualizovanými poli instancí a hierarchií prostřednictvím rozhraní API modelů Time Series Insights. Tato metoda aktualizace modelu Time Series Insights se obvykle dosahuje prostřednictvím služby Azure Functions. V rámci digitálních vláken Azure je možné směrovat oznámení o událostech, jako je například doplněné přidání nebo odstranění dat, jako je například Event Hubs, které je možné doplňovat do Azure Functions. Další podrobnosti o směrování a filtrování událostí jsou vysvětleny [zde](https://docs.microsoft.com/azure/digital-twins/how-to-manage-routes-portal).  Zbývající část tohoto oddílu vysvětluje použití rozhraní API modelu Time Series Insights ve službě Azure Functions k aktualizaci modelu Time Series Insights v reakci na zdvojené sčítání (jeden typ změny modelu) v digitálních proobjektech Azure.
+V této části kurzu se dozvíte, jak naslouchat změnám modelu v digitálních proobjektech Azure, jako je vytváření, odstraňování zdvojených operací nebo změna v relacích mezi dvojitými a aktualizovanými poli instancí a hierarchií prostřednictvím rozhraní API modelů Time Series Insights. Tato metoda aktualizace modelu Time Series Insights se obvykle dosahuje prostřednictvím služby Azure Functions. V rámci digitálních vláken Azure je možné směrovat oznámení o událostech, jako je například doplněné přidání nebo odstranění dat, jako je například Event Hubs, které je možné doplňovat do Azure Functions. Další podrobnosti o směrování a filtrování událostí jsou vysvětleny [zde](../digital-twins/how-to-manage-routes-portal.md).  Zbývající část tohoto oddílu vysvětluje použití rozhraní API modelu Time Series Insights ve službě Azure Functions k aktualizaci modelu Time Series Insights v reakci na zdvojené sčítání (jeden typ změny modelu) v digitálních proobjektech Azure.
 
 ### <a name="receiving-and-identifying-twin-addition-event-notification"></a>Příjem a identifikace oznámení o událostech, která je k události přidání
 
@@ -227,4 +227,4 @@ private async Task<TimeSeriesInstance> AddHierarchyToInstanceAsync(TimeSeriesIns
 
 ## <a name="next-steps"></a>Další kroky
 
-Třetí v řadě kurzů je Ukázat, jak pomocí rozhraní API Time Series Insights dotazovat historická data z digitálních vláken Azure. Jedná se o probíhající práci a oddíl bude aktualizován, až bude připravený. Během této doby se čtenáři doporučuje odkázat na [Time Series Insights dokumentaci k rozhraní API pro dotazy na data](https://docs.microsoft.com/azure/time-series-insights/concepts-query-overview).
+Třetí v řadě kurzů je Ukázat, jak pomocí rozhraní API Time Series Insights dotazovat historická data z digitálních vláken Azure. Jedná se o probíhající práci a oddíl bude aktualizován, až bude připravený. Během této doby se čtenáři doporučuje odkázat na [Time Series Insights dokumentaci k rozhraní API pro dotazy na data](./concepts-query-overview.md).

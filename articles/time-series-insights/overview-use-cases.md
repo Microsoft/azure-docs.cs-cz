@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: b5b6233c0978f15aad94b7f66f8935c2d6f6f1c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8f13a20232fab61dc082c1b12b7ddaa11807554
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666955"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016186"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Případy použití Azure Time Series Insights Gen2
 
@@ -52,13 +52,13 @@ Zákazníci můžou využít rychlost a rychle diagnostikovat problémy souvisej
 
 Existují tři základní způsoby, jak pracovat s daty uloženými v Azure Time Series Insights Gen2:
 
-* První a nejjednodušší způsob, jak začít, je Azure Time Series Insights Gen2 Explorer. Můžete ji použít k rychlému vizualizaci všech dat IoT na jednom místě. Poskytuje nástroje jako Heat mapu, které vám pomůžou odhalit anomálie ve vašich datech. Nabízí také pohled na perspektivu. Pomocí ní můžete porovnat až čtyři zobrazení z jednoho nebo více Azure Time Series Insights Gen2 prostředí na jednom řídicím panelu. Řídicí panel poskytuje zobrazení dat časových řad napříč všemi vašimi umístěními. Přečtěte si další informace o [Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md). Pokud chcete naplánovat své prostředí, přečtěte si téma [plánování Azure Time Series Insights Gen2](./time-series-insights-update-plan.md).
+* První a nejjednodušší způsob, jak začít, je Azure Time Series Insights Gen2 Explorer. Můžete ji použít k rychlému vizualizaci všech dat IoT na jednom místě. Poskytuje nástroje jako Heat mapu, které vám pomůžou odhalit anomálie ve vašich datech. Nabízí také pohled na perspektivu. Pomocí ní můžete porovnat až čtyři zobrazení z jednoho nebo více Azure Time Series Insights Gen2 prostředí na jednom řídicím panelu. Řídicí panel poskytuje zobrazení dat časových řad napříč všemi vašimi umístěními. Přečtěte si další informace o [Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md). Pokud chcete naplánovat své prostředí, přečtěte si téma [plánování Azure Time Series Insights Gen2](./how-to-plan-your-environment.md).
 
 * Druhým způsobem, jak začít, je použít sadu JavaScript SDK k rychlému vkládání výkonných grafů a grafů do vaší webové aplikace. Pouze pár řádků kódu vám umožní vytvářet výkonné dotazy. Použijte je k naplnění spojnicových grafů, výsečových grafů, pruhových grafů, heatch map, datových mřížek a dalších. Všechny tyto prvky existují předem v dialogovém okně pomocí sady SDK. Sada SDK také abstrakce Azure Time Series Insights rozhraní API pro dotazy Gen2. Můžete je použít k vytváření predikátů podobných SQL k dotazování na data, která chcete zobrazit na řídicím panelu. V případě hybridních řešení prezentační vrstvy nabízí Azure Time Series Insights Gen2 parametrizované adresy URL. Poskytují bezproblémové spojovací body s Azure Time Series Insights Gen2 Explorer pro hluboké komentáře na data.
 
   * Přečtěte si o [klientské knihovně js](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) a [ukázkové dokumentaci klienta](https://github.com/Microsoft/tsiclient) , kde se dozvíte další informace o sadě JavaScript SDK.
 
-  * Další informace o sdílení adres URL a novém uživatelském rozhraní najdete [v části vizualizace dat v Azure Time Series Insights Gen2 Explorer](time-series-insights-update-explorer.md).
+  * Další informace o sdílení adres URL a novém uživatelském rozhraní najdete [v části vizualizace dat v Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md).
 
 * Třetí způsob, jak začít, je použít výkonné rozhraní API k dotazování na data uložená v Azure Time Series Insights Gen2. Azure Time Series Insights Gen2 obsahuje dočasné operátory, jako například `from` , `to` , `first` a `last` . Obsahuje agregace a transformace, jako například `average` ,, `sum` , `min` `max` , `time-weighted average` , `time-weighted sum` atd. Umožňuje také filtrování, aritmetické a logické operátory, skalární funkce atd. Všechny tyto operátory umožňují aplikacím pro příjem dat rychle najít zajímavé trendy a vzory ve vašich datech. Použijte je k naplnění vizualizací Homegrown pro zjištění anomálií.
 
@@ -100,6 +100,6 @@ Azure Time Series Insights Gen2 mosty mezi daty IoT a pokročilými analýzami v
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md).
-* Přečtěte si [Azure Time Series Insights osvědčené postupy](./time-series-insights-update-plan.md) pro naplánování prostředí.
+* Přečtěte si další informace o [Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md).
+* Přečtěte si [Azure Time Series Insights osvědčené postupy](./how-to-plan-your-environment.md) pro naplánování prostředí.
 * Přečtěte si [ukázkovou dokumentaci klienta](https://github.com/Microsoft/tsiclient) .

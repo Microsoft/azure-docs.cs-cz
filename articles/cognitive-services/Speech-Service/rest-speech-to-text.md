@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2bb66d8a197a33d6d0ad46502b510662f43ea1ca
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 89e5fa180b011cbedebc25a5e5d555a2190805f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988557"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015354"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
@@ -30,7 +30,7 @@ Před použitím REST API řeči na text zvažte následující:
 Pokud je odeslání delšího zvukového požadavku nutné pro vaši aplikaci, zvažte použití [sady Speech SDK](speech-sdk.md) nebo souborového REST API, jako je například [Batch přepis](batch-transcription.md).
 
 > [!TIP]
-> Podívejte [se na koncové body Azure pro státní](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) správu (FairFax).
+> Podívejte [se na koncové body Azure pro státní](../../azure-government/compare-azure-government-global-azure.md) správu (FairFax).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -307,5 +307,5 @@ Typická odpověď pro rozpoznávání s hodnocením výslovnosti:
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)
-- [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
-- [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)
+- [Přizpůsobení akustických modelů](./how-to-custom-speech-train-model.md)
+- [Přizpůsobení jazykových modelů](./how-to-custom-speech-train-model.md)

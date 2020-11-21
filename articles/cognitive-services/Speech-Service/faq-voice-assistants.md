@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d399507499a320116ff1c732a1ffc0ad84b5731
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74110343"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015438"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Nejčastější dotazy k hlasovým pomocníkům
 
-Pokud nemůžete najít odpovědi na vaše otázky v tomto dokumentu, podívejte se na [Další možnosti podpory](support.md).
+Pokud nemůžete najít odpovědi na vaše otázky v tomto dokumentu, podívejte se na [Další možnosti podpory](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext).
 
 ## <a name="general"></a>Obecné
 
@@ -35,9 +35,9 @@ Odpověď **:** [vlastní příkazy (Preview)](custom-commands.md) jsou vysoce s
 
 **A:** Nejlepším způsobem, jak začít vytvářet vlastní příkazy (Preview) nebo základní roboty bot Framework.
 
-- [Vytvoření vlastní aplikace (Preview)](quickstart-custom-speech-commands-create-new.md)
-- [Vytvoření úrovně Basic bot Framework bot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-- [Připojení robota k kanálu s přímým přístupem k lince Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Vytvoření vlastní aplikace (Preview)](./quickstart-custom-commands-application.md)
+- [Vytvoření úrovně Basic bot Framework bot](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Připojení robota k kanálu s přímým přístupem k lince Speech](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Ladění
 
@@ -62,7 +62,7 @@ Podrobnější příručku najdete v [části kurzu](tutorial-voice-enable-your-
 **A:** Tato chyba označuje problém s komunikací mezi vaším asistentem a službou hlasového asistenta.
 
 - Pro vlastní příkazy (Preview) se ujistěte, že je publikovaná vaše aplikace Custom Commands (Preview).
-- V případě přímého vstupu na řeč se ujistěte, že jste [připojili robota k kanálu přímého řádku s přímým přístupem](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [Přidali jsme podporu protokolu streamování](https://aka.ms/botframework/addstreamingprotocolsupport) do robotu (s příslušnou podporou webového soketu) a pak zkontrolujete, že robot reaguje na příchozí požadavky z kanálu.
+- V případě přímého vstupu na řeč se ujistěte, že jste [připojili robota k kanálu přímého řádku s přímým přístupem](/azure/bot-service/bot-service-channel-connect-directlinespeech), [Přidali jsme podporu protokolu streamování](/azure/bot-service/directline-speech-bot) do robotu (s příslušnou podporou webového soketu) a pak zkontrolujete, že robot reaguje na příchozí požadavky z kanálu.
 
 **Otázka: Tento kód stále nefunguje a/nebo se při použití. zobrazuje jiná chyba `DialogServiceConnector` . Co mám dělat?**
 

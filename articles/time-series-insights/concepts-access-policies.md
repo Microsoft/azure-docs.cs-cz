@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3528ff790f16b5ec759989966ab35b8bad6565a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86b465d0b3c28c50a8aa85247a14e189d4586a47
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629450"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016271"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Udělení přístupu k datům do prostředí
 
@@ -24,7 +24,7 @@ Tento článek pojednává o dvou typech zásad přístupu Azure Time Series Ins
 
 ## <a name="sign-in-to-azure-time-series-insights"></a>Přihlášení k Azure Time Series Insights
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Zadejte `Time Series Insights environments` do **vyhledávacího** pole své prostředí Azure Time Series Insights. `Time Series Insights environments`Ve výsledcích hledání vyberte.
 1. Ze seznamu vyberte prostředí Azure Time Series Insights.
 
@@ -32,7 +32,7 @@ Tento článek pojednává o dvou typech zásad přístupu Azure Time Series Ins
 
 Pomocí těchto kroků udělíte přístup k datům pro objekt zabezpečení uživatele.
 
-1. Vyberte **zásady přístupu k datům**a pak vybrat **+ Přidat**.
+1. Vyberte **zásady přístupu k datům** a pak vybrat **+ Přidat**.
 
     [![Výběr a přidání zásad přístupu k datům](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
 
@@ -60,7 +60,7 @@ Pomocí těchto kroků udělíte přístup k datům pro objekt zabezpečení už
 
 ## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>Poskytnutí přístupu hosta z jiného tenanta Azure AD
 
-Tato `Guest` role není rolí správy. Jedná se o termín, který se používá pro účet, který je pozván z jednoho klienta na jiný. Po pozvání účtu hosta do adresáře klienta může být pro něj použito stejné řízení přístupu jako u jakéhokoli jiného účtu. Přístup pro správu můžete Azure Time Series Insights prostředí udělit pomocí okna Access Control (IAM). Nebo můžete přístup k datům v prostředí udělit prostřednictvím okna zásady přístupu k datům. Pokud chcete získat další informace o přístupu klienta Azure Active Directory (Azure AD) k hostům, přečtěte si téma [přidání Azure Active Directory uživatelů pro spolupráci B2B v Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
+Tato `Guest` role není rolí správy. Jedná se o termín, který se používá pro účet, který je pozván z jednoho klienta na jiný. Po pozvání účtu hosta do adresáře klienta může být pro něj použito stejné řízení přístupu jako u jakéhokoli jiného účtu. Přístup pro správu můžete Azure Time Series Insights prostředí udělit pomocí okna Access Control (IAM). Nebo můžete přístup k datům v prostředí udělit prostřednictvím okna zásady přístupu k datům. Pokud chcete získat další informace o přístupu klienta Azure Active Directory (Azure AD) k hostům, přečtěte si téma [přidání Azure Active Directory uživatelů pro spolupráci B2B v Azure Portal](../active-directory/external-identities/add-users-administrator.md).
 
 Pomocí těchto kroků udělíte uživateli služby Azure AD přístup hosta k Azure Time Series Insights prostředí z jiného tenanta.
 
@@ -100,7 +100,7 @@ Pomocí těchto kroků udělíte uživateli služby Azure AD přístup hosta k A
 
     [![Host vybere začátek pro přijetí.](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
 
-1. Po výběru **možnosti Začínáme se**uživateli typu Host zobrazí pole oprávnění přidružené k organizaci správce. Po udělení oprávnění výběrem možnosti **přijmout**se přihlásí.
+1. Po výběru **možnosti Začínáme se** uživateli typu Host zobrazí pole oprávnění přidružené k organizaci správce. Po udělení oprávnění výběrem možnosti **přijmout** se přihlásí.
 
     [![Host kontroluje oprávnění a přijímá](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
 
@@ -124,4 +124,4 @@ Pomocí těchto kroků udělíte uživateli služby Azure AD přístup hosta k A
 
 * Přečtěte si téma [ověřování a autorizace](time-series-insights-authentication-and-authorization.md) pro Azure Active Directory kroky registrace aplikace.
 
-* Zobrazte [si prostředí v průzkumníkovi Azure Time Series Insights](./time-series-insights-update-explorer.md).
+* Zobrazte [si prostředí v průzkumníkovi Azure Time Series Insights](./concepts-ux-panels.md).

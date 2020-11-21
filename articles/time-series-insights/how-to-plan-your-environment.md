@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: cb12777a6a4fa1e75cd65bc597c87442d592aad5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8d96d7b5952c020493af278ee1ea8ad5ff46716
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598105"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016781"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Plánování prostředí Azure Time Series Insights Gen2
 
@@ -45,7 +45,7 @@ V rámci procesu zřizování určíte, jestli chcete povolit teplé úložišt�
 Dotazy na teplém úložišti jsou bezplatné, zatímco dotazy na chladírenský sklad účtují náklady. Je důležité porozumět vašim vzorům dotazů a odpovídajícím způsobem naplánovat konfiguraci pro svůj záložní obchod. Doporučujeme, aby se interaktivní analýzy na nejaktuálnějších datech nacházely v provozním úložišti a analýze vzorků a dlouhodobé trendy se nachází v chladu.
 
 > [!NOTE]
-> Pokud si chcete přečíst další informace o tom, jak zadávat dotazy na zahřívání, přečtěte si [referenci rozhraní API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters).
+> Pokud si chcete přečíst další informace o tom, jak zadávat dotazy na zahřívání, přečtěte si [referenci rozhraní API](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters).
 
 Začněte tím, že budete potřebovat tři další položky:
 
@@ -64,7 +64,7 @@ Pokud chcete vytvořit nové prostředí Azure Time Series Insights, vyberte ID 
 > [!IMPORTANT]
 > ID časových řad *nelze později změnit*. Ověřte každý z nich před konečným výběrem a prvním použitím.
 
-Můžete vybrat až tři klíče a jednoznačně odlišit vaše prostředky. Další informace najdete v tématu [osvědčené postupy pro výběr ID časových řad](./time-series-insights-update-how-to-id.md) a [pravidel pro přijímání](concepts-json-flattening-escaping-rules.md).
+Můžete vybrat až tři klíče a jednoznačně odlišit vaše prostředky. Další informace najdete v tématu [osvědčené postupy pro výběr ID časových řad](./how-to-select-tsid.md) a [pravidel pro přijímání](concepts-json-flattening-escaping-rules.md).
 
 Vlastnost **časového razítka** je také důležitá. Tuto vlastnost můžete určit při přidávání zdrojů událostí. Každý zdroj události má volitelnou vlastnost časového razítka, která se používá ke sledování zdrojů událostí v průběhu času. Hodnoty časového razítka rozlišují velká a malá písmena a musí být formátovány na jednotlivé specifikace jednotlivých zdrojů událostí.
 
@@ -74,7 +74,7 @@ Pokud je ponecháno prázdné, čas, kdy byla událost zařazena do fronty, do I
 
 Nyní můžete nakonfigurovat model časové řady Azure Time Series Insightsho prostředí. Nový model usnadňuje hledání a analýzu dat IoT. Umožňuje léčební, údržbu a obohacení dat časových řad a pomáhá připravit datové sady připravené pro uživatele. Model používá ID časových řad, které se mapují na instanci, která přidruží jedinečný prostředek k proměnným, označovaným jako typy a hierarchie. Další informace najdete v článku Přehled [modelu časové řady](./concepts-model-overview.md) .
 
-Model je dynamický, takže se dá vytvořit kdykoli. Aby bylo možné rychle začít, sestavte a nahrajte ho před vložením dat do Azure Time Series Insights. Při sestavování modelu si přečtěte část [použití modelu časové řady](/azure/time-series-insights/concepts-model-overview).
+Model je dynamický, takže se dá vytvořit kdykoli. Aby bylo možné rychle začít, sestavte a nahrajte ho před vložením dat do Azure Time Series Insights. Při sestavování modelu si přečtěte část [použití modelu časové řady](./concepts-model-overview.md).
 
 Pro mnoho zákazníků se model časových řad mapuje na existující model assetů nebo systém ERP, který je už na svém místě. Pokud nemáte existující model, je k [dispozici](https://github.com/Microsoft/tsiclient) předem sestavené uživatelské prostředí, které vám umožní rychle začít pracovat. Chcete-li předvést, jak vám model může pomáhat, podívejte se do [ukázkového](https://insights.timeseries.azure.com/preview/demo)ukázkového prostředí.
 

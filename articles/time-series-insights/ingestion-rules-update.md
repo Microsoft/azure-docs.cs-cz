@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 320d92ef0ad6d02dbe7c31b883eb7f73472378ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56a1d5aab2f665f9c5bd8f6fa322f35e55483c7b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667805"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016713"
 ---
 # <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>Nadcházející změny v pravidlech sloučení a uvozovacích znaků JSON pro nová prostředí
 
@@ -44,17 +44,17 @@ Pole objektů jsou vždycky shrnutá a vytvářejí několik událostí. | Pokud
 
 Všechna nová nasazení musí odpovídat novým pravidlům pro přijímání. Pokud máte například ID TS `telemetry_tagId` , budete muset aktualizovat jakékoli šablony Azure Resource Manager nebo skripty pro automatické nasazení, které se konfigurují `telemetry.tagId` jako ID služby TS. Tuto změnu také budete potřebovat pro časová razítka zdroje událostí ve vnořeném formátu JSON.
 
-### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Pokud vaše datová část obsahuje vnořené JSON nebo speciální znaky a automatizujte vytváření výrazů s proměnnými [modelu časové řady](.\time-series-insights-update-tsm.md)
+### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Pokud vaše datová část obsahuje vnořené JSON nebo speciální znaky a automatizujte vytváření výrazů s proměnnými [modelu časové řady](./concepts-model-overview.md)
 
-Aktualizujte kód klienta, který spustí [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) , aby odpovídal novým pravidlům pro přijímání. Například byste měli aktualizovat [výraz předchozí časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) `"value": {"tsx": "$event.series_value.Double"}` na jednu z následujících možností:
+Aktualizujte kód klienta, který spustí [TypesBatchPut](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) , aby odpovídal novým pravidlům pro přijímání. Například byste měli aktualizovat [výraz předchozí časové řady](/rest/api/time-series-insights/reference-time-series-expression-syntax) `"value": {"tsx": "$event.series_value.Double"}` na jednu z následujících možností:
 
 * `"value": {"tsx": "$event.series.value.Double"}`
 * `"value": {"tsx": "$event['series']['value'].Double"}`
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o [Azure Time Series Insights Gen2 úložiště a příchozí přenosy](./time-series-insights-update-storage-ingress.md).
+* Přečtěte si o [Azure Time Series Insights Gen2 úložiště a příchozí přenosy](./concepts-ingestion-overview.md).
 
 * Naučte se, jak zadávat dotazy na data pomocí [rozhraní API pro dotazování časových řad](./concepts-query-overview.md).
 
-* Přečtěte si další informace o [nové syntaxi výrazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
+* Přečtěte si další informace o [nové syntaxi výrazu časové řady](/rest/api/time-series-insights/reference-time-series-expression-syntax).
