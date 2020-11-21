@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 16c3a45e0d88a0546772b3fdc855c90f2e450d14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250327"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026229"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Funkce v rozhraní Citus API pro škálování na více systému ()
 
@@ -30,23 +30,23 @@ Funkce vytvořit \_ distribuovanou \_ tabulku () se používá k definování di
 
 Tato funkce nahradí využití hlavní \_ tabulky Create \_ Distributed \_ Table () následovanou hlavním \_ vytvořením \_ pracovního procesu \_ horizontálních oddílů ().
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ název tabulky:** název tabulky, která musí být distribuována.
+**\_ název tabulky:** název tabulky, která musí být distribuována.
 
 **distribuční \_ sloupec:** sloupec, do kterého má být tabulka distribuována.
 
-** \_ typ distribuce:** (nepovinný) metoda, podle které se má tabulka distribuovat Přípustné hodnoty jsou Append nebo hash s výchozí hodnotou hash.
+**\_ typ distribuce:** (nepovinný) metoda, podle které se má tabulka distribuovat Přípustné hodnoty jsou Append nebo hash s výchozí hodnotou hash.
 
 **spolunajít \_ s:** (volitelné) zahrnout aktuální tabulku do skupiny kolocation v jiné tabulce. Ve výchozím nastavení jsou tabulky společně umístěny, pokud jsou distribuovány pomocí sloupců stejného typu, mají stejný horizontálních oddílů počet a mají stejný faktor replikace. Možné hodnoty pro `colocate_with` jsou `default` , pokud `none` chcete spustit novou skupinu kolokace nebo název jiné tabulky, která se má v této tabulce vyhledat.  (Viz společné [umístění tabulky](concepts-hyperscale-colocation.md).)
 
-Pamatujte, že výchozí hodnota `colocate_with` má implicitní společné umístění. Společné [umístění](concepts-hyperscale-colocation.md) může být skvělé, když se tabulky vztahují nebo budou spojeny.  Pokud ale nesouvisí s dvěma tabulkami, ale k použití stejného datového typu u jejich distribučních sloupců se používá stejný datový typ, nechtěně prohledání může snížit výkon během [horizontálních oddílůho vyrovnávání zatížení](howto-hyperscale-scaling.md#rebalance-shards).  Tabulka horizontálních oddílů bude v kaskádě přesunuta zbytečně \" .\"
+Pamatujte, že výchozí hodnota `colocate_with` má implicitní společné umístění. Společné [umístění](concepts-hyperscale-colocation.md) může být skvělé, když se tabulky vztahují nebo budou spojeny.  Pokud ale nesouvisí s dvěma tabulkami, ale k použití stejného datového typu u jejich distribučních sloupců se používá stejný datový typ, nechtěně prohledání může snížit výkon během [horizontálních oddílůho vyrovnávání zatížení](howto-hyperscale-scale-rebalance.md).  Tabulka horizontálních oddílů bude v kaskádě přesunuta zbytečně \" .\"
 
 Pokud nová distribuovaná tabulka nesouvisí s jinými tabulkami, je nejlepší určit `colocate_with => 'none'` .
 
 #### <a name="return-value"></a>Návratová hodnota
 
-Není k dispozici
+–
 
 #### <a name="example"></a>Příklad
 
@@ -64,13 +64,13 @@ SELECT create_distributed_table('github_events', 'repo_id',
 
 Funkce vytvořit \_ referenční \_ tabulku () se používá k definování malého odkazu nebo tabulky dimenzí. Tato funkce přijímá název tabulky a vytvoří distribuovanou tabulku s pouze jedním horizontálních oddílů, která se replikuje do všech pracovních uzlů.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ název tabulky:** název malé dimenze nebo referenční tabulky, která musí být distribuována.
+**\_ název tabulky:** název malé dimenze nebo referenční tabulky, která musí být distribuována.
 
 #### <a name="return-value"></a>Návratová hodnota
 
-Není k dispozici
+–
 
 #### <a name="example"></a>Příklad
 
@@ -84,13 +84,13 @@ SELECT create_reference_table('nation');
 
 Funkce upgradu \_ na \_ referenční \_ tabulku () převezme existující distribuovanou tabulku, která má horizontálních oddílů počet 1, a upgraduje ji tak, aby byla rozpoznanou referenční tabulkou. Po volání této funkce bude tabulka obsahovat, jako kdyby byla vytvořena pomocí [create_reference_table](#create_reference_table).
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ název tabulky:** název distribuované tabulky (s horizontálních oddílů Count = 1), která bude distribuována jako referenční tabulka.
+**\_ název tabulky:** název distribuované tabulky (s horizontálních oddílů Count = 1), která bude distribuována jako referenční tabulka.
 
 #### <a name="return-value"></a>Návratová hodnota
 
-Není k dispozici
+–
 
 #### <a name="example"></a>Příklad
 
@@ -106,11 +106,11 @@ SELECT upgrade_to_reference_table('nation');
 
 Tabulky se stejným umístěním by se měly provádět v době distribuce v tabulce `colocate_with` , a to prostřednictvím parametru [create_distributed_table](#create_distributed_table), ale v `mark_tables_colocated` případě potřeby se můžou postarat později.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ název zdrojové tabulky \_ :** název distribuované tabulky, jejíž skupina pro kolokace bude přiřazována k odpovídajícím cílům.
+**\_ název zdrojové tabulky \_ :** název distribuované tabulky, jejíž skupina pro kolokace bude přiřazována k odpovídajícím cílům.
 
-** \_ názvy cílových tabulek \_ :** pole názvů distribuovaných cílových tabulek nesmí být prázdné. Tyto distribuované tabulky musí odpovídat zdrojové tabulce v:
+**\_ názvy cílových tabulek \_ :** pole názvů distribuovaných cílových tabulek nesmí být prázdné. Tyto distribuované tabulky musí odpovídat zdrojové tabulce v:
 
 > -   Metoda distribuce
 > -   typ distribučního sloupce
@@ -126,7 +126,7 @@ DETAIL:  Distribution column types don't match for apples and oranges.
 
 #### <a name="return-value"></a>Návratová hodnota
 
-Není k dispozici
+–
 
 #### <a name="example"></a>Příklad
 
@@ -142,17 +142,17 @@ SELECT mark_tables_colocated('stores', ARRAY['products', 'line_items']);
 
 Cesta pro vyhledávání Postgres není šířena od koordinátora k pracovníkům během provádění distribuované funkce, takže kód distribuované funkce by měl plně kvalifikovat názvy databázových objektů. Oznámení vygenerovaná funkcemi se uživatelům nezobrazují také.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ název funkce:** název funkce, která se má distribuovat. Název musí obsahovat typy parametrů funkce v závorkách, protože více funkcí může mít stejný název v PostgreSQL. Instance se například `'foo(int)'` liší od `'foo(int, text)'` .
+**\_ název funkce:** název funkce, která se má distribuovat. Název musí obsahovat typy parametrů funkce v závorkách, protože více funkcí může mít stejný název v PostgreSQL. Instance se například `'foo(int)'` liší od `'foo(int, text)'` .
 
-** \_ \_ název distribučního** argumentu: (nepovinný) název argumentu, podle kterého se má distribuovat. Pro usnadnění (nebo pokud argumenty funkce nemají názvy) je povolený zástupný symbol pozice, například `'$1'` . Pokud tento parametr není zadán, funkce s názvem by `function_name` byla vytvořena pouze na pracovních procesech. Pokud jsou pracovní uzly přidány do budoucna, funkce bude automaticky vytvořena také.
+**\_ \_ název distribučního** argumentu: (nepovinný) název argumentu, podle kterého se má distribuovat. Pro usnadnění (nebo pokud argumenty funkce nemají názvy) je povolený zástupný symbol pozice, například `'$1'` . Pokud tento parametr není zadán, funkce s názvem by `function_name` byla vytvořena pouze na pracovních procesech. Pokud jsou pracovní uzly přidány do budoucna, funkce bude automaticky vytvořena také.
 
 **spolunajít \_ s:** (volitelné) když distribuovaná funkce čte nebo zapisuje do distribuované tabulky (nebo obecněji skupiny pro společné umístění), nezapomeňte tuto tabulku pojmenovat pomocí `colocate_with` parametru. Pak se každé vyvolání funkce spustí na pracovním uzlu, který obsahuje relevantní horizontálních oddílů.
 
 #### <a name="return-value"></a>Návratová hodnota
 
-Není k dispozici
+–
 
 #### <a name="example"></a>Příklad
 
@@ -184,9 +184,9 @@ SELECT create_distributed_function(
 
 Funkce Master \_ Get \_ Table \_ metadata () se dá použít k vrácení metadat souvisejících s distribucí pro distribuovanou tabulku. Tato metadata zahrnují ID vztahu, typ úložiště, způsob distribuce, distribuční sloupec, počet replikací, maximální velikost horizontálních oddílů a zásady umístění horizontálních oddílů pro tabulku. Za sebou tato funkce dotazuje tabulky metadat Citus (), aby získala požadované informace a zřetězí ji do řazené kolekce členů předtím, než ji vrátí uživateli.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ název tabulky:** název distribuované tabulky, pro kterou chcete načíst metadata.
+**\_ název tabulky:** název distribuované tabulky, pro kterou chcete načíst metadata.
 
 #### <a name="return-value"></a>Návratová hodnota
 
@@ -196,15 +196,15 @@ Funkce Master \_ Get \_ Table \_ metadata () se dá použít k vrácení metadat
 
 **součást \_ \_ Typ úložiště:** typ úložiště, který se používá pro tabulku. Může být t ' (standardní tabulka), ' f ' (cizí tabulka) nebo ' c ' (sloupcová tabulka).
 
-** \_ Metoda Part:** metoda distribuce použitá pro tabulku. Může být "a" (append) nebo "h" (hash).
+**\_ Metoda Part:** metoda distribuce použitá pro tabulku. Může být "a" (append) nebo "h" (hash).
 
 **Part \_ Key:** sloupec distribuce pro tabulku.
 
-** \_ počet replik částí \_ :** aktuální počet horizontálních oddílů replikace.
+**\_ počet replik částí \_ :** aktuální počet horizontálních oddílů replikace.
 
-** \_ maximální \_ Velikost součásti:** aktuální maximální velikost horizontálních oddílů v bajtech.
+**\_ maximální \_ Velikost součásti:** aktuální maximální velikost horizontálních oddílů v bajtech.
 
-** \_ Zásady umístění částí \_ :** zásady umístění horizontálních oddílů používané pro umístění horizontálních oddílů tabulky. Může být 1 (místní uzel-First) nebo 2 (kruhové dotazování).
+**\_ Zásady umístění částí \_ :** zásady umístění horizontálních oddílů používané pro umístění horizontálních oddílů tabulky. Může být 1 (místní uzel-First) nebo 2 (kruhové dotazování).
 
 #### <a name="example"></a>Příklad
 
@@ -222,11 +222,11 @@ SELECT * from master_get_table_metadata('github_events');
 
 Citus () přiřadí každý řádek distribuované tabulky k horizontálních oddílů na základě hodnoty sloupce distribuce řádku a metody distribuce tabulky. Ve většině případů je přesné mapování podrobnosti nízké úrovně, které správce databáze může ignorovat. Může to ale být užitečné pro určení horizontálních oddílů řádku, a to buď pro ruční úlohy údržby databáze, nebo jenom pro uspokojení objevili. `get_shard_id_for_distribution_column`Funkce poskytuje tyto informace pro tabulky s hodnotami hash a rozsah a také referenční tabulky. Nefunguje pro připojení distribuce.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ název tabulky:** distribuovaná tabulka.
+**\_ název tabulky:** distribuovaná tabulka.
 
-** \_ hodnota distribuce:** hodnota distribučního sloupce.
+**\_ hodnota distribuce:** hodnota distribučního sloupce.
 
 #### <a name="return-value"></a>Návratová hodnota
 
@@ -249,11 +249,11 @@ Přeloží sloupec na `partkey` `pg_dist_partition` název textového sloupce. P
 
 Podrobnější diskuzi najdete v tématu [Volba distribučního sloupce](concepts-hyperscale-choose-distribution-column.md).
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ název tabulky:** distribuovaná tabulka.
+**\_ název tabulky:** distribuovaná tabulka.
 
-** \_ text var sloupce \_ :** hodnota `partkey` v `pg_dist_partition` tabulce.
+**\_ text var sloupce \_ :** hodnota `partkey` v `pg_dist_partition` tabulce.
 
 #### <a name="return-value"></a>Návratová hodnota
 
@@ -284,7 +284,7 @@ Výstup:
 Získá místo na disku využívané všemi horizontálních oddílůy zadané distribuované tabulky.
 Místo na disku zahrnuje velikost \" hlavní větve, \" ale nezahrnuje mapu viditelnosti a mapu volného místa pro horizontálních oddílů.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
 **logicalrelid:** název distribuované tabulky.
 
@@ -308,7 +308,7 @@ pg_size_pretty
 
 Získejte místo na disku využité všemi horizontálních oddílůy zadané distribuované tabulky, kromě indexů (ale včetně informačních zpráv, mapy volného místa a mapy viditelnosti).
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
 **logicalrelid:** název distribuované tabulky.
 
@@ -332,7 +332,7 @@ pg_size_pretty
 
 Získejte celkové místo na disku využité všemi horizontálních oddílů zadanými distribuovanými tabulkami, včetně všech indexů a dat informačních zpráv.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
 **logicalrelid:** název distribuované tabulky.
 
@@ -357,9 +357,9 @@ pg_size_pretty
 Odebere všechny řádky z [citus_stat_statements](reference-hyperscale-metadata.md#query-statistics-table).
 Tato funkce funguje nezávisle na `pg_stat_statements_reset()` . Chcete-li obnovit všechny statistiky, zavolejte obě funkce.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-Není k dispozici
+–
 
 #### <a name="return-value"></a>Návratová hodnota
 
@@ -373,21 +373,21 @@ Pokud se umístění horizontálních oddílů nepovede aktualizovat během př�
 
 K opravě horizontálních oddílů funkce nejprve přenechá nestavové horizontálních oddílů umístění a znovu ho vytvoří pomocí schématu koordinátora. Po vytvoření umístění horizontálních oddílů funkce zkopíruje data z umístění v pořádku a aktualizuje metadata tak, aby označila nové umístění horizontálních oddílů jako v pořádku. Tato funkce zajišťuje, že horizontálních oddílů bude během opravy chráněn před všemi souběžnými úpravami.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ ID horizontálních oddílů:** ID horizontálních oddílů, které se má opravit
+**\_ ID horizontálních oddílů:** ID horizontálních oddílů, které se má opravit
 
-** \_ \_ název zdrojového uzlu:** název DNS uzlu, na kterém je přítomno dobré umístění horizontálních oddílů ( \" zdrojový \" uzel).
+**\_ \_ název zdrojového uzlu:** název DNS uzlu, na kterém je přítomno dobré umístění horizontálních oddílů ( \" zdrojový \" uzel).
 
-** \_ port zdrojového uzlu \_ :** port na zdrojovém uzlu pracovního procesu, na kterém server databáze naslouchá.
+**\_ port zdrojového uzlu \_ :** port na zdrojovém uzlu pracovního procesu, na kterém server databáze naslouchá.
 
-** \_ \_ název cílového uzlu:** název DNS uzlu, na kterém je přítomné neplatné umístění horizontálních oddílů ( \" cílový \" uzel).
+**\_ \_ název cílového uzlu:** název DNS uzlu, na kterém je přítomné neplatné umístění horizontálních oddílů ( \" cílový \" uzel).
 
-** \_ port cílového uzlu \_ :** port na cílovém uzlu pracovního procesu, na kterém server databáze naslouchá.
+**\_ port cílového uzlu \_ :** port na cílovém uzlu pracovního procesu, na kterém server databáze naslouchá.
 
 #### <a name="return-value"></a>Návratová hodnota
 
-Není k dispozici
+–
 
 #### <a name="example"></a>Příklad
 
@@ -407,19 +407,19 @@ Druhý způsob, kterým se vyhnete blokování horizontálních oddílů zápis�
 
 Po úspěšné operaci přesunu se horizontálních oddílů ve zdrojovém uzlu odstraní. Pokud se přesun v kterémkoli okamžiku nepovede, tato funkce vyvolá chybu a zdrojový a cílový uzel ponechá beze změny.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ ID horizontálních oddílů:** ID horizontálních oddílů, které se má přesunout.
+**\_ ID horizontálních oddílů:** ID horizontálních oddílů, které se má přesunout.
 
-** \_ \_ název zdrojového uzlu:** název DNS uzlu, na kterém je přítomno dobré umístění horizontálních oddílů ( \" zdrojový \" uzel).
+**\_ \_ název zdrojového uzlu:** název DNS uzlu, na kterém je přítomno dobré umístění horizontálních oddílů ( \" zdrojový \" uzel).
 
-** \_ port zdrojového uzlu \_ :** port na zdrojovém uzlu pracovního procesu, na kterém server databáze naslouchá.
+**\_ port zdrojového uzlu \_ :** port na zdrojovém uzlu pracovního procesu, na kterém server databáze naslouchá.
 
-** \_ \_ název cílového uzlu:** název DNS uzlu, na kterém je přítomné neplatné umístění horizontálních oddílů ( \" cílový \" uzel).
+**\_ \_ název cílového uzlu:** název DNS uzlu, na kterém je přítomné neplatné umístění horizontálních oddílů ( \" cílový \" uzel).
 
-** \_ port cílového uzlu \_ :** port na cílovém uzlu pracovního procesu, na kterém server databáze naslouchá.
+**\_ port cílového uzlu \_ :** port na cílovém uzlu pracovního procesu, na kterém server databáze naslouchá.
 
-** \_ režim přenosu horizontálních oddílů \_ :** (volitelné) zadejte metodu replikace, jestli se má použít logická replikace POSTGRESQL nebo příkaz pro kopírování mezi pracovními procesy. Možné hodnoty jsou:
+**\_ režim přenosu horizontálních oddílů \_ :** (volitelné) zadejte metodu replikace, jestli se má použít logická replikace POSTGRESQL nebo příkaz pro kopírování mezi pracovními procesy. Možné hodnoty jsou:
 
 > -   `auto`: Vyžaduje identitu repliky, pokud je možné logickou replikaci. v opačném případě použijte starší chování (např. horizontálních oddílů Repair, PostgreSQL 9,6). Toto je výchozí hodnota.
 > -   `force_logical`: Použijte logickou replikaci, i když tabulka nemá identitu repliky. Jakékoli souběžné příkazy Update/Delete v tabulce selžou při replikaci.
@@ -427,7 +427,7 @@ Po úspěšné operaci přesunu se horizontálních oddílů ve zdrojovém uzlu 
 
 #### <a name="return-value"></a>Návratová hodnota
 
-Není k dispozici
+–
 
 #### <a name="example"></a>Příklad
 
@@ -452,9 +452,9 @@ Pokud některý z těchto předpokladů nedrží, výchozí vyrovnávání zatí
 
 Aby bylo [get_rebalance_table_shards_plan](#get_rebalance_table_shards_plan) \_ \_ možné zobrazit a ověřit akce, které mají být provedeny, je vhodné volat get_rebalance_table_shards_plan před spuštěním horizontálních oddílůí tabulky s vyrovnáváním zatížení.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ název tabulky:** (nepovinný) název tabulky, jejíž horizontálních oddílů musí být znovu vyrovnaný. Pokud je hodnota NULL, pak znovu vyvážit všechny existující skupiny kolokace.
+**\_ název tabulky:** (nepovinný) název tabulky, jejíž horizontálních oddílů musí být znovu vyrovnaný. Pokud je hodnota NULL, pak znovu vyvážit všechny existující skupiny kolokace.
 
 **prahová hodnota:** (volitelné) číslo float mezi 0,0 a 1,0, které určuje maximální poměr rozdílu využití uzlu z průměrného využití. Například zadání 0,1 způsobí, že se horizontálních oddílů pro vyrovnávání zatížení všech uzlů bude uchovávat stejný počet horizontálních oddílů ± 10%.
 Horizontálních oddílů Nástroj pro vyrovnávání zatížení se konkrétně pokusí konvergovat využití všech pracovních uzlů do průměrného využití (1 – prahová hodnota) \* \_ \. . (1
@@ -464,7 +464,7 @@ Horizontálních oddílů Nástroj pro vyrovnávání zatížení se konkrétně
 
 **seznam vyloučených \_ horizontálních oddílů \_ :** (volitelné) identifikátory horizontálních oddílů, které by se během operace obnovení rovnováhy neměly přesunout.
 
-** \_ režim přenosu horizontálních oddílů \_ :** (volitelné) zadejte metodu replikace, jestli se má použít logická replikace POSTGRESQL nebo příkaz pro kopírování mezi pracovními procesy. Možné hodnoty jsou:
+**\_ režim přenosu horizontálních oddílů \_ :** (volitelné) zadejte metodu replikace, jestli se má použít logická replikace POSTGRESQL nebo příkaz pro kopírování mezi pracovními procesy. Možné hodnoty jsou:
 
 > -   `auto`: Vyžaduje identitu repliky, pokud je možné logickou replikaci. v opačném případě použijte starší chování (např. horizontálních oddílů Repair, PostgreSQL 9,6). Toto je výchozí hodnota.
 > -   `force_logical`: Použijte logickou replikaci, i když tabulka nemá identitu repliky. Jakékoli souběžné příkazy Update/Delete v tabulce selžou při replikaci.
@@ -472,12 +472,12 @@ Horizontálních oddílů Nástroj pro vyrovnávání zatížení se konkrétně
 
 **pouze vyprázdnit \_ :** (volitelné) Pokud má hodnotu true, přesuňte horizontálních oddílů mimo pracovní uzly, které mají `shouldhaveshards` v [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table)nastavené na hodnotu false; přesuňte žádné jiné horizontálních oddílů.
 
-** \_ strategie vyrovnávání zatížení:** (nepovinný) název strategie v [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table).
+**\_ strategie vyrovnávání zatížení:** (nepovinný) název strategie v [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table).
 Pokud je tento argument vynechán, funkce zvolí výchozí strategii, jak je uvedeno v tabulce.
 
 #### <a name="return-value"></a>Návratová hodnota
 
-Není k dispozici
+–
 
 #### <a name="example"></a>Příklad
 
@@ -498,7 +498,7 @@ SELECT rebalance_table_shards('github_events', excluded_shard_list:='{1,2}');
 Výstup plánovaných pohybů [rebalance_table_shards](#rebalance_table_shards) horizontálních oddílů bez jejich provedení.
 I když je pravděpodobné, že \_ plán horizontálních oddílů tabulky pro vyrovnávání zatížení \_ \_ může mít \_ za výsledek trochu jiný plán než \_ \_ volání tabulky horizontálních oddílů se stejnými argumenty. Nejsou spouštěny současně, takže fakta týkající se skupiny serverů \- – například místo na disku \- – může být mezi voláními odlišná.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
 Stejné argumenty jako horizontálních oddílů tabulky s vyrovnáváním zatížení \_ \_ : vztah, prahová hodnota, Max \_ horizontálních oddílů – \_ přesunout, vyloučený \_ \_ seznam horizontálních oddílů a jenom vyprázdnit \_ . Význam těchto argumentů naleznete v dokumentaci této funkce.
 
@@ -506,9 +506,9 @@ Stejné argumenty jako horizontálních oddílů tabulky s vyrovnáváním zatí
 
 Řazené kolekce členů obsahující tyto sloupce:
 
--   ** \_ název tabulky**: tabulka, jejíž horizontálních oddílů by přesunul
+-   **\_ název tabulky**: tabulka, jejíž horizontálních oddílů by přesunul
 -   **shardid**: horizontálních oddílů
--   ** \_ Velikost horizontálních oddílů**: velikost v bajtech
+-   **\_ Velikost horizontálních oddílů**: velikost v bajtech
 -   název **zdroje**: název hostitele zdrojového uzlu
 -   **sourceport**: port zdrojového uzlu
 -   **cílový_název**: název hostitele cílového uzlu
@@ -518,18 +518,18 @@ Stejné argumenty jako horizontálních oddílů tabulky s vyrovnáváním zatí
 
 Po zahájení horizontálních oddílů rovnováha `get_rebalance_progress()` funkce vypíše průběh každého horizontálních oddílů. Monitoruje plánované a spouštěné přesuny `rebalance_table_shards()` .
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-Není k dispozici
+–
 
 #### <a name="return-value"></a>Návratová hodnota
 
 Řazené kolekce členů obsahující tyto sloupce:
 
 -   **SessionID**: Postgres PID monitoru pro vyrovnávání zatížení
--   ** \_ název tabulky**: tabulka, jejíž horizontálních oddílů se přesouvá.
+-   **\_ název tabulky**: tabulka, jejíž horizontálních oddílů se přesouvá.
 -   **shardid**: horizontálních oddílů
--   ** \_ Velikost horizontálních oddílů**: velikost v bajtech
+-   **\_ Velikost horizontálních oddílů**: velikost v bajtech
 -   název **zdroje**: název hostitele zdrojového uzlu
 -   **sourceport**: port zdrojového uzlu
 -   **cílový_název**: název hostitele cílového uzlu
@@ -557,7 +557,7 @@ SELECT * FROM get_rebalance_progress();
 
 Připojí řádek do [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md?#rebalancer-strategy-table) .
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
 Další informace o těchto argumentech naleznete v tématu odpovídající hodnoty sloupce v `pg_dist_rebalance_strategy` .
 
@@ -565,7 +565,7 @@ Další informace o těchto argumentech naleznete v tématu odpovídající hodn
 
 **horizontálních oddílů \_ cost \_ Function:** identifikuje funkci použitou k určení \" nákladů na \" jednotlivé horizontálních oddílůy.
 
-** \_ funkce kapacity uzlu \_ :** identifikuje funkci pro měření kapacity uzlu.
+**\_ funkce kapacity uzlu \_ :** identifikuje funkci pro měření kapacity uzlu.
 
 **horizontálních oddílů \_ povolená \_ u \_ \_ funkce Node:** Určuje funkci, která určuje, který horizontálních oddílů se dá umístit na které uzly.
 
@@ -575,19 +575,19 @@ Další informace o těchto argumentech naleznete v tématu odpovídající hodn
 
 #### <a name="return-value"></a>Návratová hodnota
 
-Není k dispozici
+–
 
 ### <a name="citus_set_default_rebalance_strategy"></a>citus \_ nastavit \_ výchozí \_ strategii pro vyrovnávání zatížení \_
 
 Aktualizujte [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table) tabulku a změňte strategii s názvem podle jejího argumentu na výchozí hodnotu vybranou při vyrovnávání horizontálních oddílů.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
 **Name (název):** název strategie v rámci \_ \_ strategie rerovnováhy pro distribuci pg \_
 
 #### <a name="return-value"></a>Návratová hodnota
 
-Není k dispozici
+–
 
 #### <a name="example"></a>Příklad
 
@@ -599,9 +599,9 @@ SELECT citus_set_default_rebalance_strategy('by_disk_size');
 
 \_ \_ Funkce statistiky vzdáleného připojení citus \_ () zobrazuje počet aktivních připojení ke každému vzdálenému uzlu.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-Není k dispozici
+–
 
 #### <a name="example"></a>Příklad
 
@@ -620,24 +620,24 @@ SELECT * from citus_remote_connection_stats();
 
 Funkce hlavního \_ vyprázdnění \_ uzlu () přesouvá horizontálních oddílů z určeného uzlu a do jiných uzlů, které `shouldhaveshards` v [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table)mají nastavené na hodnotu true. Zavolejte funkci před odebráním uzlu ze skupiny serverů a vypnutím fyzického serveru uzlu.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
 **Node:** Název hostitele uzlu, který se má vyprázdnit
 
 **nodeport:** Číslo portu, který se má vyprázdnit
 
-** \_ režim přenosu horizontálních oddílů \_ :** (volitelné) zadejte metodu replikace, jestli se má použít logická replikace POSTGRESQL nebo příkaz pro kopírování mezi pracovními procesy. Možné hodnoty jsou:
+**\_ režim přenosu horizontálních oddílů \_ :** (volitelné) zadejte metodu replikace, jestli se má použít logická replikace POSTGRESQL nebo příkaz pro kopírování mezi pracovními procesy. Možné hodnoty jsou:
 
 > -   `auto`: Vyžaduje identitu repliky, pokud je možné logickou replikaci. v opačném případě použijte starší chování (např. horizontálních oddílů Repair, PostgreSQL 9,6). Toto je výchozí hodnota.
 > -   `force_logical`: Použijte logickou replikaci, i když tabulka nemá identitu repliky. Jakékoli souběžné příkazy Update/Delete v tabulce selžou při replikaci.
 > -   `block_writes`: Použijte kopírování (blokující zápisy) pro tabulky, které nemají primární klíč nebo identitu repliky.
 
-** \_ strategie vyrovnávání zatížení:** (nepovinný) název strategie v [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table).
+**\_ strategie vyrovnávání zatížení:** (nepovinný) název strategie v [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table).
 Pokud je tento argument vynechán, funkce zvolí výchozí strategii, jak je uvedeno v tabulce.
 
 #### <a name="return-value"></a>Návratová hodnota
 
-Není k dispozici
+–
 
 #### <a name="example"></a>Příklad
 
@@ -675,11 +675,11 @@ Při vyprazdňování více uzlů doporučujeme místo toho použít [rebalance_
 
 Funkce replikovat \_ tabulku \_ horizontálních oddílů () replikuje replikované horizontálních oddílů z dané tabulky. Funkce nejprve vypočítá seznam replikovaných horizontálních oddílů a umístění, ze kterých je možné je načíst pro replikaci. Funkce pak zkopíruje tyto horizontálních oddílů a aktualizuje odpovídající metadata horizontálních oddílů, aby odrážela kopii.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ název tabulky:** název tabulky, jejíž horizontálních oddílů je třeba replikovat.
+**\_ název tabulky:** název tabulky, jejíž horizontálních oddílů je třeba replikovat.
 
-** \_ faktor replikace horizontálních oddílů \_ :** (nepovinný) požadovaný faktor replikace, který se má pro každý horizontálních oddílů dosáhnout.
+**\_ faktor replikace horizontálních oddílů \_ :** (nepovinný) požadovaný faktor replikace, který se má pro každý horizontálních oddílů dosáhnout.
 
 **Max \_ horizontálních oddílů \_ kopií:** (volitelné) maximální počet horizontálních oddílů, které se mají zkopírovat, aby se dosáhlo požadovaného faktoru replikace.
 
@@ -687,7 +687,7 @@ Funkce replikovat \_ tabulku \_ horizontálních oddílů () replikuje replikova
 
 #### <a name="return-value"></a>Návratová hodnota
 
-Není k dispozici
+–
 
 #### <a name="examples"></a>Příklady
 
@@ -707,17 +707,17 @@ SELECT replicate_table_shards('github_events', max_shard_copies:=10);
 
 Tato funkce vytvoří nový horizontálních oddílů, který bude uchovávat řádky s konkrétní jednou hodnotou v distribučním sloupci. Je to obzvláště užitečné pro případ použití Citus (multi-tenant), kde se velký tenant dá umístit samostatně na vlastní horizontálních oddílů a nakonec na vlastní fyzický uzel.
 
-#### <a name="arguments"></a>Argumenty
+#### <a name="arguments"></a>Arguments
 
-** \_ název tabulky:** název tabulky, do které se má načíst nový horizontálních oddílů.
+**\_ název tabulky:** název tabulky, do které se má načíst nový horizontálních oddílů.
 
-** \_ ID tenanta:** hodnota distribučního sloupce, který se přiřadí novému horizontálních oddílů.
+**\_ ID tenanta:** hodnota distribučního sloupce, který se přiřadí novému horizontálních oddílů.
 
 **kaskádová \_ možnost:** (volitelné), pokud je nastavena na \" CASCADE \" také izoluje horizontálních oddílů ze všech tabulek ve [skupině kolocation](concepts-hyperscale-colocation.md)aktuální tabulky.
 
 #### <a name="return-value"></a>Návratová hodnota
 
-** \_ ID horizontálních oddílů:** funkce vrátí jedinečné ID přiřazené nově vytvořeným horizontálních oddílů.
+**\_ ID horizontálních oddílů:** funkce vrátí jedinečné ID přiřazené nově vytvořeným horizontálních oddílů.
 
 #### <a name="examples"></a>Příklady
 

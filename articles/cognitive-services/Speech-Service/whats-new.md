@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 87832057e955f8408b369e2f55096a713780e965
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5c4f02eff06c08f1829f9f1c74d1dcb09ee57905
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410772"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024785"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Služba Speech: co je nového v docs
 
@@ -38,17 +38,17 @@ Pokud se chcete dozvědět o aktualizacích služby Speech, sady Speech SDK, Spe
 
 * [O rozhraní API audio input Stream v sadě Speech SDK](how-to-use-audio-input-streams.md) – aktualizace povolených vzorků za sekundu
 * [Automatické zjišování jazyka pro](how-to-automatic-language-detection.md) cíl přidávaného textu – C pokyny k dokumentaci
-* [Zvolit režim rozpoznávání řeči](how-to-choose-recognition-mode.md) – přidání instrukcí jazyka JavaScript do dokumentace
+* [Zvolit režim rozpoznávání řeči](./get-started-speech-to-text.md) – přidání instrukcí jazyka JavaScript do dokumentace
 * [Konfigurace RHEL/CentOS 7 pro sadu Speech SDK](how-to-configure-rhel-centos-7.md) – vylepšené pokyny k instalaci
-* [Seznamy frází pro přidání mluveného slova na text](how-to-phrase-lists.md) – pokyny pro JavaScript k dokumentaci.
-* [Rychlý Start: asynchronní Shrnutí pro dlouhý formát zvuku v Pythonu (Preview)](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) – aktualizováno s podporou pro veřejné hlasy neuronové a přidružené parametry.
-* [Rychlý Start: rozpoznávání řeči ze zvukového souboru](quickstarts/speech-to-text-from-file.md) – pokyny pro JavaScript byly přidány do dokumentace.
-* [Rychlý Start: rozpoznávání řeči pomocí](quickstarts/speech-to-text-from-microphone.md ) instrukcí pro přidání mikrofonu a JavaScriptu k dokumentaci.
+* [Seznamy frází pro přidání mluveného slova na text](./get-started-speech-to-text.md) – pokyny pro JavaScript k dokumentaci.
+* [Rychlý Start: asynchronní Shrnutí pro dlouhý formát zvuku v Pythonu (Preview)](./long-audio-api.md) – aktualizováno s podporou pro veřejné hlasy neuronové a přidružené parametry.
+* [Rychlý Start: rozpoznávání řeči ze zvukového souboru](./get-started-speech-to-text.md) – pokyny pro JavaScript byly přidány do dokumentace.
+* [Rychlý Start: rozpoznávání řeči pomocí](./get-started-speech-to-text.md) instrukcí pro přidání mikrofonu a JavaScriptu k dokumentaci.
 * [Rychlý Start: rozpoznávání řeči uložené ve službě BLOB Storage](quickstarts/from-blob.md) – přidání instrukcí JavaScriptu do dokumentace
 * [Rychlý Start: rozpoznávání řeči, záměrů a entit pomocí Language Understanding (LUIS)](quickstarts/intent-recognition.md)
 * [Rychlý Start: Nastavení vývojového prostředí](quickstarts/setup-platform.md) – přidání instrukcí JavaScriptu do dokumentace
-* [Rychlý Start: syntetizace řeči do zvukového souboru](quickstarts/text-to-speech-audio-file.md) – přidání instrukcí JavaScriptu do dokumentace
-* [Rychlý Start: syntetizace řeči na mluvčí](quickstarts/text-to-speech.md) – pokyny pro JavaScript přidávané do dokumentace
+* [Rychlý Start: syntetizace řeči do zvukového souboru](./get-started-text-to-speech.md) – přidání instrukcí JavaScriptu do dokumentace
+* [Rychlý Start: syntetizace řeči na mluvčí](./get-started-text-to-speech.md) – pokyny pro JavaScript přidávané do dokumentace
 * [Co je klíčové slovo?](custom-keyword-overview.md) – Aktualizovaný obsah a odkazy Začínáme
 * [Zadejte zdrojový jazyk pro mluvený text](how-to-specify-source-language.md) přidaný do dokumentace JavaScript a cíl-C.
 

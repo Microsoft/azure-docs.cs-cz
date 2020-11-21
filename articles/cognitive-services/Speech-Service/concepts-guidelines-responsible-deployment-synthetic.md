@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: a529ac8b7ce16d3ee4463f1b4bc2e8007e5b79b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d80ffb575c6aa15695279584b58288cbc16be43
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73836764"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024972"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Pokyny pro zodpovědnost nasazení syntetické hlasové technologie
 Tady jsou obecné pokyny pro návrh Microsoftu pro používání syntetické hlasové technologie. Tyto aplikace byly vyvinuty v studiích, které společnost Microsoft provedla s talentůmi hlasem, spotřebiteli a také jednotlivcům s poruchami řeči.
@@ -39,7 +39,7 @@ V nejednoznačných transakčních scénářích (například na portálu pro po
 Pokud při práci se službou Voice talentů, jako jsou třeba hlasové objekty Actors, vytváříte syntetické hlasy, platí níže uvedená směrnice.
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>Získání smysluplného souhlasu ze služby Voice talentů
-Hlasový talentů očekává, že má ovládací prvek pro hlasová písma (jak a kde se bude používat) a že se bude na jejich použití kompenzovat kdykoli. Vlastníci systému by proto měli získat explicitní zapsané oprávnění ze služby Voice talentů a mít jasné smluvní specifikace pro případy použití, dobu trvání použití, kompenzaci atd. Některé hlasové talentůy nevědí o potenciálních škodlivých použitích technologií a měly by být určené pro vlastníky systému na schopnosti technologie. Pokud chcete získat další informace o talentů a souhlasech, přečtěte si naše [zveřejnění pro Voice talentů](https://aka.ms/disclosure-voice-talent).
+Hlasový talentů očekává, že má ovládací prvek pro hlasová písma (jak a kde se bude používat) a že se bude na jejich použití kompenzovat kdykoli. Vlastníci systému by proto měli získat explicitní zapsané oprávnění ze služby Voice talentů a mít jasné smluvní specifikace pro případy použití, dobu trvání použití, kompenzaci atd. Některé hlasové talentůy nevědí o potenciálních škodlivých použitích technologií a měly by být určené pro vlastníky systému na schopnosti technologie. Pokud chcete získat další informace o talentů a souhlasech, přečtěte si naše [zveřejnění pro Voice talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent).
 
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>Požadavky na ty s poruchami řeči
@@ -57,13 +57,13 @@ Uživatelé s poruchami v rozpoznávání řeči chtějí dělat aktualizace jej
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
+* [Zveřejnění pro hlasový talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [Přehled o uzavírání](concepts-gating-overview.md)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
 * [Vzory návrhu zpřístupnění](concepts-disclosure-patterns.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
+* [Zveřejnění pro hlasový talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
 * [Vzory návrhu zpřístupnění](concepts-disclosure-patterns.md)

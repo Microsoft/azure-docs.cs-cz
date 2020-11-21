@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 34c0703ee7c335ca904a21bcce6ed44abc6dc13f
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9193da2f3841bb94aa395399c31d7fe826c395e0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555783"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025595"
 ---
-# <a name="train-and-deploy-a-custom-speech-model"></a>Výuka a nasazení Custom Speechho modelu
+# <a name="train-and-deploy-a-custom-speech-model"></a>Trénování a nasazení modelu Custom Speech
 
 V tomto článku se naučíte, jak naučit a nasazovat modely Custom Speech. Školení pro model převodu řeči na text může zlepšit přesnost rozpoznávání pro základní model společnosti Microsoft. Model je vyškolený pomocí přepisů a souvisejících textů v popisku. Tyto datové sady spolu s dříve nahranými zvukovými daty se používají k vylepšení a výukového modelu řeči a textu.
 
@@ -33,7 +33,7 @@ Pokud narazíte na problémy s rozpoznáváním se základním modelem, může p
 
 ## <a name="train-and-evaluate-a-model"></a>Trénování a vyhodnocení modelu
 
-Prvním krokem při výuce modelu je odeslání školicích dat. Použijte [přípravu a testování dat](how-to-custom-speech-test-data.md) pro podrobné pokyny k přípravě přepisů a souvisejících textu (projevy a výslovnosti) s lidským označením. Po nahrání školicích dat postupujte podle těchto pokynů a spusťte školení modelu:
+Prvním krokem při výuce modelu je odeslání školicích dat. Použijte [přípravu a testování dat](./how-to-custom-speech-test-and-train.md) pro podrobné pokyny k přípravě přepisů a souvisejících textu (projevy a výslovnosti) s lidským označením. Po nahrání školicích dat postupujte podle těchto pokynů a spusťte školení modelu:
 
 1. Přihlaste se k [portálu Custom Speech](https://speech.microsoft.com/customspeech).
 2. Přejít na **text > řeči Custom Speech > [název projektu] > školení**.
@@ -61,7 +61,7 @@ V dalším kroku vyberte **přidat koncový bod** a zadejte **název** a **Popis
 > [!NOTE]
 > Nezapomeňte přijmout podmínky použití a podrobnosti o cenách.
 
-V dalším kroku vyberte **vytvořit**. Tato akce vrátí na stránku **nasazení** . Tabulka teď obsahuje položku, která odpovídá vašemu vlastnímu koncovému bodu. Stav koncového bodu zobrazuje aktuální stav. Vytvoření instance nového koncového bodu pomocí vlastních modelů může trvat až 30 minut. Když se změní stav nasazení na **dokončeno** , bude koncový bod připravený k použití.
+V dalším kroku vyberte **vytvořit**. Tato akce vrátí na stránku **nasazení** . Tabulka teď obsahuje položku, která odpovídá vašemu vlastnímu koncovému bodu. Stav koncového bodu zobrazuje aktuální stav. Vytvoření instance nového koncového bodu pomocí vlastních modelů může trvat až 30 minut. Když se změní stav nasazení na **dokončeno**, bude koncový bod připravený k použití.
 
 Po nasazení koncového bodu se název koncového bodu zobrazí jako odkaz. Kliknutím na odkaz zobrazíte informace, které jsou specifické pro váš koncový bod, jako je klíč koncového bodu, adresa URL koncového bodu a ukázkový kód.
 
@@ -77,6 +77,6 @@ Data protokolování jsou k dispozici ke stažení v části **koncový bod > po
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Příprava a testování dat](how-to-custom-speech-test-data.md)
+- [Příprava a testování dat](./how-to-custom-speech-test-and-train.md)
 - [Kontrola dat](how-to-custom-speech-inspect-data.md)
 - [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)

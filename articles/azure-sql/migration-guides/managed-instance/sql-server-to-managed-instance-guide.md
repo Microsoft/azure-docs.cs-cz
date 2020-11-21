@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 0aba809fd18dfd74a344a32b2335aba9426c9845
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5c20fbbe25b51160f42f233d30c39ccaec0f5cac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496597"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026040"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Průvodce migrací: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ Další informace o migraci najdete v tématu [Přehled migrace](sql-server-to-m
 
 :::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-flow-small.png" alt-text="Tok procesu migrace":::
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Pokud chcete migrovat SQL Server do spravované instance Azure SQL, nezapomeňte projít následující požadavky: 
 
@@ -99,10 +99,10 @@ Pokud potřebujete porovnat výkon úlohy na spravované instanci SQL s původn�
 
 ### <a name="create-sql-managed-instance"></a>Vytvoření spravované instance SQL 
 
-Na základě informací ve fázi zjišťování a vyhodnocení vytvořte správnou velikost cílové spravované instance SQL. Můžete k tomu použít [Azure Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)nebo [šablonu Azure Resource Manager (ARM)](/../../managed-instance/create-template-quickstart.md). 
+Na základě informací ve fázi zjišťování a vyhodnocení vytvořte správnou velikost cílové spravované instance SQL. Můžete k tomu použít [Azure Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)nebo [šablonu Azure Resource Manager (ARM)](/azure/azure-sql/managed-instance/create-template-quickstart). 
 
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrace
 
 Po dokončení úloh přidružených ke fázi před migrací jste připraveni provést migraci schématu a dat. 
 
@@ -142,16 +142,16 @@ Následující diagram poskytuje podrobný přehled procesu:
 
 K migraci pomocí zálohování a obnovení použijte následující postup: 
 
-1. Zálohujte databázi do Azure Blob Storage. Například použijte příkaz [Backup na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) v [SQL Server Management Studio](/ssms/download-sql-server-management-studio-ssms). [Nástroj Microsoft Azure](https://go.microsoft.com/fwlink/?LinkID=324399) použijte k podpoře databází starších než SQL Server 2012 SP1 CU2. 
+1. Zálohujte databázi do Azure Blob Storage. Například použijte příkaz [Backup na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) v [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms). [Nástroj Microsoft Azure](https://go.microsoft.com/fwlink/?LinkID=324399) použijte k podpoře databází starších než SQL Server 2012 SP1 CU2. 
 1. Připojte se ke spravované instanci SQL Azure pomocí SQL Server Management Studio. 
-1. Vytvořte přihlašovací údaje pomocí sdíleného přístupového podpisu pro přístup k účtu služby Azure Blob Storage pomocí záloh databáze. Příklad:
+1. Vytvořte přihlašovací údaje pomocí sdíleného přístupového podpisu pro přístup k účtu služby Azure Blob Storage pomocí záloh databáze. Například:
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
    WITH IDENTITY = 'SHARED ACCESS SIGNATURE'
    , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D'
    ```
-1. Obnovte zálohu z kontejneru objektů BLOB služby Azure Storage. Příklad: 
+1. Obnovte zálohu z kontejneru objektů BLOB služby Azure Storage. Například: 
 
     ```sql
    RESTORE DATABASE [TargetDatabaseName] FROM URL =
@@ -191,10 +191,10 @@ Po migraci dat do cílového prostředí všechny aplikace, které dříve využ
 
 Testovací přístup pro migraci databáze se skládá z následujících aktivit:
 
-1. **Vývoj ověřovacích testů** : k otestování migrace databáze je nutné použít dotazy SQL. Je nutné vytvořit ověřovací dotazy ke spuštění proti zdrojové i cílové databázi. Dotazy na ověřování by se měly pokrývat s definovaným oborem.
-1. **Nastavení testovacího prostředí** : testovací prostředí by mělo obsahovat kopii zdrojové databáze a cílovou databázi. Nezapomeňte izolovat testovací prostředí.
-1. **Spustit ověřovací testy** : Spusťte ověřovací testy proti zdroji a cíli a pak Analyzujte výsledky.
-1. **Spustit testy výkonu** : spustit test výkonnosti proti zdroji a cíli a pak analyzovat a porovnat výsledky.
+1. **Vývoj ověřovacích testů**: k otestování migrace databáze je nutné použít dotazy SQL. Je nutné vytvořit ověřovací dotazy ke spuštění proti zdrojové i cílové databázi. Dotazy na ověřování by se měly pokrývat s definovaným oborem.
+1. **Nastavení testovacího prostředí**: testovací prostředí by mělo obsahovat kopii zdrojové databáze a cílovou databázi. Nezapomeňte izolovat testovací prostředí.
+1. **Spustit ověřovací testy**: Spusťte ověřovací testy proti zdroji a cíli a pak Analyzujte výsledky.
+1. **Spustit testy výkonu**: spustit test výkonnosti proti zdroji a cíli a pak analyzovat a porovnat výsledky.
 
    > [!NOTE]
    > Pro pomoc s vývojem a prováděním ověřovacích testů po migraci zvažte řešení kvality dat dostupné od partnera [QuerySurge](https://www.querysurge.com/company/partners/microsoft). 

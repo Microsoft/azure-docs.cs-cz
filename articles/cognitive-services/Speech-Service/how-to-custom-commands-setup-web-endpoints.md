@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566244"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025887"
 ---
 # <a name="set-up-web-endpoints"></a>Nastavení webových koncových bodů
 
@@ -49,16 +49,16 @@ V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webov�
    | Hlavičky | Klíč: aplikace, hodnota: použijte prvních 8 číslic hodnoty applicationId | Parametry hlavičky, které mají být zahrnuté v hlavičce požadavku|
 
     > [!NOTE]
-    > - Ukázkový webový koncový bod je vytvořený pomocí [Azure Functions](https://docs.microsoft.com/azure/azure-functions/). Připojí se k databázi, ve které se ukládá stav televizoru a ventilátoru.
+    > - Ukázkový webový koncový bod je vytvořený pomocí [Azure Functions](../../azure-functions/index.yml). Připojí se k databázi, ve které se ukládá stav televizoru a ventilátoru.
     > - Navrhovaná hlavička je nutná jenom pro ukázkový koncový bod.
     > - Pokud chcete zajistit, že hodnota hlavičky je v našem ukázkovém koncovém bodu jedinečná,použijte prvních 8 číslic hodnoty applicationId.
-    > - Webovým koncovým bodem může v reálném světě být koncový bod pro [centrum IOT](https://docs.microsoft.com/azure/iot-hub/about-iot-hub), které spravuje vaše zařízení.
+    > - Webovým koncovým bodem může v reálném světě být koncový bod pro [centrum IOT](../../iot-hub/about-iot-hub.md), které spravuje vaše zařízení.
 
 1. Klikněte na **Uložit**.
 
 ## <a name="call-web-endpoints"></a>Volání webových koncových bodů
 
-1. Přejděte na příkaz **TurnOnOff** , jako pravidlo dokončení vyberte **ConfirmationResponse** a potom vyberte **Přidat akci**.
+1. Přejděte na příkaz **TurnOnOff**, jako pravidlo dokončení vyberte **ConfirmationResponse** a potom vyberte **Přidat akci**.
 1. V části **New Action-Type** (Nový typ akce) vyberte **Call web endpoint** (Volání koncového bodu).
 1. V části **Edit Action - Endpoints** (Akce pro úpravy – koncové body) vyberte **UpdateDeviceState**. To je webový koncový bod, který jsme vytvořili.  
 1. V části **Configuration** (Konfigurace) zadejte následující hodnoty: 

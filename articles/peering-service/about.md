@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 198ba23920179e71e095e498ee2173d7f0111d42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400175"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026725"
 ---
 # <a name="azure-peering-service-overview"></a>Přehled služby Azure peering
 
@@ -45,7 +45,7 @@ Služba partnerského vztahu je:
 Peering Service není produkt privátního připojení, jako je Azure ExpressRoute nebo produkt VPN.
 
 > [!NOTE]
-> Další informace o ExpressRoute najdete v [dokumentaci k ExpressRoute](https://docs.microsoft.com/azure/expressroute/).
+> Další informace o ExpressRoute najdete v [dokumentaci k ExpressRoute](../expressroute/index.yml).
 >
 
 ## <a name="background"></a>Pozadí
@@ -57,7 +57,7 @@ Poskytovatelé služeb Microsoftu a partnerů zajišťují, aby přenosy pro př
 ![Připojení k síti a veřejné síti Microsoftu](./media/peering-service-about/peering-service-background-final.png)
 
 > [!NOTE]
-> Další informace o globální síti Microsoft najdete v tématu [globální síť Microsoft](https://docs.microsoft.com/azure/networking/microsoft-global-network).
+> Další informace o globální síti Microsoft najdete v tématu [globální síť Microsoft](../networking/microsoft-global-network.md).
 >
 
 ## <a name="why-use-peering-service"></a>Proč používat službu peering Service?

@@ -4,13 +4,13 @@ description: Postupy a pracovní postupy v Azure Container Registry pro správu 
 author: dlepow
 ms.topic: article
 ms.author: danlep
-ms.date: 10/29/2020
-ms.openlocfilehash: def1c3a9b8a1086f453c7e71d766ab0dd89b0c2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 11/20/2020
+ms.openlocfilehash: 0c92899528d417f9c91f8f8930ca4932dc74e850
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347518"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024734"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Správa veřejného obsahu pomocí Azure Container Registry
 
@@ -26,6 +26,8 @@ Bez správných ovládacích prvků, které mají závislosti na obsahu veřejn�
 ## <a name="authenticate-with-docker-hub"></a>Ověřování pomocí Docker Hub
 
 V prvním kroku, pokud v rámci pracovního postupu sestavení nebo nasazení aktuálně vystavíte veřejné image z Docker Hub, doporučujeme místo vytváření anonymní žádosti o přijetí změn provést [ověření pomocí účtu Docker Hub](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) .
+
+Při provádění častých anonymních žádostí o přijetí změn se může zobrazit chyba Docker, která je podobná `ERROR: toomanyrequests: Too Many Requests.` nebo `You have reached your pull rate limit.` ověřena z dokovacího centra, aby tyto chyby nedocházelo.
 
 > [!NOTE]
 > Od 2. listopadu 2020 se [limity četnosti stahování](https://docs.docker.com/docker-hub/download-rate-limit) vztahují na anonymní a ověřené požadavky na Docker Hub z účtů bezplatného plánu Docker a jsou vyhodnoceny podle IP adresy a ID Docker v uvedeném pořadí. 
@@ -46,21 +48,21 @@ Několik služeb Azure, včetně App Service a Azure Container Instances podporu
 
 **App Service**
 
-* **Zdroj bitové kopie** : centrum Docker
-* **Přístup k úložišti** : privátní
-* **Přihlašovací jméno** : \<Docker Hub username>
-* **Heslo** : \<Docker Hub token>
+* **Zdroj bitové kopie**: centrum Docker
+* **Přístup k úložišti**: privátní
+* **Přihlašovací jméno**: \<Docker Hub username>
+* **Heslo**: \<Docker Hub token>
 
 Podrobnosti najdete v tématu [ověřené přijetí změn Docker Hub na App Service](https://azure.github.io/AppService/2020/10/15/Docker-Hub-authenticated-pulls-on-App-Service.html).
 
 **Azure Container Instances**
 
-* **Zdroj bitové kopie** : centrum Docker nebo jiný registr
-* **Typ obrázku** : privátní
-* **Přihlašovací server registru imagí** : Docker.IO
-* **Uživatelské jméno v registru imagí** : \<Docker Hub username>
-* **Heslo k registru bitové kopie** : \<Docker Hub token>
-* **Obrázek** : Docker.IO/ \<repo name\> :\<tag>
+* **Zdroj bitové kopie**: centrum Docker nebo jiný registr
+* **Typ obrázku**: privátní
+* **Přihlašovací server registru imagí**: Docker.IO
+* **Uživatelské jméno v registru imagí**: \<Docker Hub username>
+* **Heslo k registru bitové kopie**: \<Docker Hub token>
+* **Obrázek**: Docker.IO/ \<repo name\> :\<tag>
 
 ## <a name="import-images-to-an-azure-container-registry"></a>Import imagí do služby Azure Container Registry
  

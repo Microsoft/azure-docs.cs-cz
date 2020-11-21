@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4c1284c13d1516ac4061319287adb64ab7e14ff5
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 73902cf53d9995f7dfc1991e3b7ed7c7c469bf2a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579466"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026657"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -23,7 +23,7 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |------------------------------|----------|-------------|---------------|
-|[šifrování klíčů spravované zákazníkem přes indexery, zdroje dat a dovednosti](search-security-manage-encryption-keys.md) | Zabezpečení | Toto přidání rozšiřuje šifrování spravované zákazníkem v celém rozsahu prostředků vytvořených a spravovaných vyhledávací službou. Odvolání této podpory CMK přidá do základního šifrování prováděného a spravovaného Microsoftem další vrstvu šifrování. | Obecně dostupné pomocí rozhraní REST API – verze = 2020-06-30 |  
+|[Šifrování klíčů spravované zákazníkem přes indexery, zdroje dat a dovednosti](search-security-manage-encryption-keys.md) | Zabezpečení | Toto přidání rozšiřuje šifrování spravované zákazníkem v celém rozsahu prostředků vytvořených a spravovaných vyhledávací službou. Zavoláte si, že podpora zákaznických klíčů na základě zákazníka přidá další šifrovací vrstvu nad základní službou, kterou provede a spravuje Microsoft. | Obecně dostupné pomocí rozhraní REST API – verze = 2020-06-30 |  
 
 ## <a name="september-2020"></a>Září 2020
 
@@ -41,7 +41,7 @@ Vytvořte v Azure Active Directory identitu pro vyhledávací službu a pak pomo
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
-| [dvojité šifrování](search-security-overview.md#encryption) | Zabezpečení | Povolte dvojité šifrování ve vrstvě úložiště nakonfigurováním šifrování CMK (Customer-Managed Key) pro nové vyhledávací služby. Vytvořte novou službu, [nakonfigurujte a používejte klíče spravované zákazníkem](search-security-manage-encryption-keys.md) pro indexy nebo mapy synonym a využijte při šifrování tohoto obsahu dvojité šifrování. | Všeobecně dostupná pro všechny služby vyhledávání vytvořené 1. srpna 2020 v těchto oblastech: Západní USA 2, Východní USA, Střed USA – jih, US Gov – Virginie US Gov – Arizona. K vytvoření služby použijte portál, rozhraní REST API pro správu nebo sady SDK. |
+| [dvojité šifrování](search-security-overview.md#encryption) | Zabezpečení | Povolte dvojité šifrování ve vrstvě úložiště nakonfigurováním šifrování klíče spravovaného zákazníkem u nových vyhledávacích služeb. Vytvořte novou službu, [nakonfigurujte a používejte klíče spravované zákazníkem](search-security-manage-encryption-keys.md) pro indexy nebo mapy synonym a využijte při šifrování tohoto obsahu dvojité šifrování. | Všeobecně dostupná pro všechny služby vyhledávání vytvořené 1. srpna 2020 v těchto oblastech: Západní USA 2, Východní USA, Střed USA – jih, US Gov – Virginie US Gov – Arizona. K vytvoření služby použijte portál, rozhraní REST API pro správu nebo sady SDK. |
 
 ## <a name="july-2020"></a>Červenec 2020
 

@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: wellsi
-ms.openlocfilehash: a2652bed6c8e7dec0a6fe8f9471793c3873646bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf0580c96f5bf78f0444b2bb39088f2a417fd658
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82781754"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025057"
 ---
 # <a name="how-to-configure-a-microphone-array"></a>Jak nakonfigurovat pole mikrofonů
 
-V tomto článku se dozvíte, jak nakonfigurovat [pole mikrofonu](https://aka.ms/sdsdk-microphone). Zahrnuje nastavení pracovního úhlu a výběr, který mikrofon se používá pro sadu Speech Devices SDK.
+V tomto článku se dozvíte, jak nakonfigurovat [pole mikrofonu](./speech-devices-sdk-microphone.md). Zahrnuje nastavení pracovního úhlu a výběr, který mikrofon se používá pro sadu Speech Devices SDK.
 
-Sada Speech Devices SDK funguje nejlépe s polem mikrofonu navrženým podle [našich pokynů](https://aka.ms/sdsdk-microphone). Konfiguraci pole mikrofonu může poskytovat operační systém nebo dodávat pomocí jedné z následujících metod.
+Sada Speech Devices SDK funguje nejlépe s polem mikrofonu navrženým podle [našich pokynů](./speech-devices-sdk-microphone.md). Konfiguraci pole mikrofonu může poskytovat operační systém nebo dodávat pomocí jedné z následujících metod.
 
 Sada Speech Devices SDK zpočátku podporovala pole mikrofonu výběrem z pevné sady konfigurací.
 
@@ -49,7 +49,7 @@ Pokud je zadáno pole mikrofonu pomocí `AudioConfig::FromMicrophoneInput` , pou
 Microsoft audio Stack v sadě Speech Devices SDK podporuje pouze převzorkování pro vzorkovací sazby, které jsou integrálními násobky 16 KHz. Kromě toho jsou podporovány následující formáty: 32-bit IEEE Little endian float, 32-bit Little endian signed int, 24 bitů Little-signed int, 16 bitů Little endian signed int a 8bitové celé číslo se znaménkem.
 
 ## <a name="android"></a>Android
-Sada Speech Devices SDK podporuje aktuálně pouze [Roobo v1](speech-devices-sdk-android-quickstart.md) . Chování je stejné jako v předchozích verzích, s výjimkou toho, že `MicArrayGeometryConfigFile` vlastnost Now lze použít k určení souboru JSON obsahujícího rozsah beamforming.
+Sada Speech Devices SDK podporuje aktuálně pouze [Roobo v1](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android) . Chování je stejné jako v předchozích verzích, s výjimkou toho, že `MicArrayGeometryConfigFile` vlastnost Now lze použít k určení souboru JSON obsahujícího rozsah beamforming.
 
 ## <a name="microphone-array-configuration-json"></a>Formát JSON pro konfiguraci pole mikrofonu
 

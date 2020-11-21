@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: převod textu na řeč
-ms.openlocfilehash: 5d60279a2e3cb6aa7226f518783d53a1a38ddaa8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af0c9338cb9661402c3a76bab55f34b01304c7b6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357450"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024513"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
@@ -31,7 +31,7 @@ V tomto přehledu se dozvíte o výhodách a funkcích služby převod textu na 
 
 ## <a name="core-features"></a>Základní funkce
 
-* Syntéza řeči – pomocí [sady Speech SDK](quickstarts/text-to-speech-audio-file.md) nebo [REST API](rest-text-to-speech.md) můžete převést převod textu na řeč pomocí standardních, neuronové nebo vlastních hlasů.
+* Syntéza řeči – pomocí [sady Speech SDK](./get-started-text-to-speech.md) nebo [REST API](rest-text-to-speech.md) můžete převést převod textu na řeč pomocí standardních, neuronové nebo vlastních hlasů.
 
 * Asynchronní syntéza dlouhého zvuku – používá [rozhraní API dlouhého zvukového rozhraní](long-audio-api.md) k asynchronnímu syntetizování souborů přemluveného textu na řeč delší než 10 minut (například zvukové knihy nebo přednášky). Na rozdíl od syntézy prováděné pomocí sady Speech SDK nebo řeči-text REST API nevrátí odpovědi v reálném čase. Očekává se, že se požadavky odesílají asynchronně, odpovědi se dotazují na a že se při zpřístupnění ze služby stáhne syntetizované zvuky. Jsou podporovány pouze vlastní hlasy neuronové.
 

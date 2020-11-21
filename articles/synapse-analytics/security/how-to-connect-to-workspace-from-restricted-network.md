@@ -8,22 +8,22 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7cff2d8245095489fbba3b7af24b416885995e4d
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 55ec8be176dc7274a3b9a1feca53726d57eeb422
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637128"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024461"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Připojení k prostředkům pracovního prostoru z omezené sítě
 
 Předpokládejme, že jste správcem IT, který spravuje omezenou síť vaší organizace. Chcete povolit síťové připojení mezi Azure synapse Analytics Studio a pracovní stanicí v rámci této omezené sítě. V tomto článku se dozvíte, jak.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure** : Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Pracovní prostor analýzy Azure synapse** : můžete si ho vytvořit z Azure synapse Analytics. V kroku 4 budete potřebovat název pracovního prostoru.
-* **Omezená síť** : správce IT udržuje omezenou síť pro organizaci a má oprávnění ke konfiguraci zásad sítě. V kroku 3 budete potřebovat název virtuální sítě a její podsíť.
+* **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
+* **Pracovní prostor analýzy Azure synapse**: můžete si ho vytvořit z Azure synapse Analytics. V kroku 4 budete potřebovat název pracovního prostoru.
+* **Omezená síť**: správce IT udržuje omezenou síť pro organizaci a má oprávnění ke konfiguraci zásad sítě. V kroku 3 budete potřebovat název virtuální sítě a její podsíť.
 
 
 ## <a name="step-1-add-network-outbound-security-rules-to-the-restricted-network"></a>Krok 1: Přidání odchozích pravidel zabezpečení sítě do omezené sítě
@@ -38,9 +38,9 @@ Následující snímek obrazovky ukazuje podrobnosti Azure Resource Manager odch
 
 ![Obrazovka podrobností značek Azure Resource Manager služby](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
 
-Když vytváříte další tři pravidla, nahraďte hodnotu **cílové značky služby** pomocí **AzureFrontDoor. front** - **azureactivedirectory selhala** nebo **AzureMonitor** ze seznamu.
+Když vytváříte další tři pravidla, nahraďte hodnotu **cílové značky služby** pomocí **AzureFrontDoor. front**- **azureactivedirectory selhala** nebo **AzureMonitor** ze seznamu.
 
-Další informace najdete v tématu [Přehled značek služeb](/azure/virtual-network/service-tags-overview.md).
+Další informace najdete v tématu [Přehled značek služeb](/azure/virtual-network/service-tags-overview).
 
 ## <a name="step-2-create-private-link-hubs"></a>Krok 2: vytvoření rozbočovačů privátního propojení
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9e9eca3bb230bbfc969a5a429f664e602ad0d78b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 6d6a392d25aa96ab9b4dbb7763b37c1021db71aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888313"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026280"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Základní hodnoty zabezpečení Azure pro přední dveře Azure
 
@@ -202,7 +202,7 @@ Doporučuje se, aby zákazník vytvořil proces pro zachycení atributů a změn
 
 ## <a name="logging-and-threat-detection"></a>Protokolování a detekce hrozeb
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: povolení protokolování pro síťové aktivity Azure
 
@@ -338,7 +338,7 @@ Navíc můžete označovat prostředky pomocí značek a vytvořit systém pojme
 
 ## <a name="posture-and-vulnerability-management"></a>Stav a Správa ohrožení zabezpečení
 
-*Další informace najdete v článku o [stav a správě ohrožení zabezpečení Azure Security test](/azure/security/benchmarks/security-controls-v2-vulnerability-management).*
+*Další informace najdete v článku o [stav a správě ohrožení zabezpečení Azure Security test](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>Souč_hod-3: Vytvoření zabezpečených konfigurací pro výpočetní prostředky
 
@@ -409,7 +409,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Základy zabezpečení Azure – zabezpečení, šifrování a úložiště dat Azure](../security/fundamentals/encryption-overview.md)
 
-- [Azure Security test – ochrana dat](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure Security test – ochrana dat](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -437,7 +437,7 @@ Zajistěte, aby se strategie segmentace implementovala konzistentně napříč t
 
 **Doprovodné** materiály: nepřetržitě měřit a zmírnit rizika pro jednotlivé prostředky a prostředí, ve kterém jsou hostovány. Určete prioritu prostředků s vysokou hodnotou a vysoce vydaných ploch útoků, jako jsou publikované aplikace, příchozí a výstupní body sítě, koncových bodů uživatelů a správců atd.
 
-- [Azure Security test – stav a Správa ohrožení zabezpečení](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure Security test – stav a Správa ohrožení zabezpečení](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -479,7 +479,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Osvědčené postupy zabezpečení Azure 11 – architektura. Jednotná strategie zabezpečení](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Testování zabezpečení Azure – zabezpečení sítě](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Testování zabezpečení Azure – zabezpečení sítě](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Přehled zabezpečení sítě Azure](../security/fundamentals/network-overview.md)
 
@@ -505,9 +505,9 @@ Tato strategie by měla zahrnovat zdokumentované doprovodné materiály, zásad
 
 Další informace najdete v následujících odkazech:
 
-- [Azure Security benchmark – Správa identit](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure Security benchmark – Správa identit](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure Security test – privilegovaný přístup](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure Security test – privilegovaný přístup](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Osvědčené postupy zabezpečení Azure 11 – architektura. Jednotná strategie zabezpečení](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -539,9 +539,9 @@ Tato strategie by měla zahrnovat zdokumentované doprovodné materiály, zásad
 
 Další informace jsou k dispozici na odkazovaných odkazech.
 
-- [Azure Security test benchmark – protokolování a detekce hrozeb](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure Security test benchmark – protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Srovnávací test zabezpečení Azure – odpověď na incident](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Srovnávací test zabezpečení Azure – odpověď na incident](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Doporučený postup zabezpečení Azure 4 – proces. Aktualizace procesů reakce na incidenty pro Cloud](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

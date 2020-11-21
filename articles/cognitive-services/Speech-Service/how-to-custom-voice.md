@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ae164b1300119481e495e647dd491beafdd5241
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056682"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025074"
 ---
 # <a name="get-started-with-custom-voice"></a>Začínáme se službou Custom Voice
 
@@ -42,7 +42,7 @@ Diagram níže popisuje kroky pro vytvoření vlastního hlasového modelu pomoc
 Funkce pro přizpůsobení hlasu neuronové je aktuálně ve verzi Public Preview omezená na vybrané zákazníky. Vyplňte formulář této [aplikace](https://go.microsoft.com/fwlink/?linkid=2108737) a začněte.
 
 > [!NOTE]
-> V rámci snahy Microsoftu o návrh zodpovědného AI je naším záměrem chránit práva jednotlivců a společnosti a podporovat transparentní interakce v rámci lidských počítačů. Z tohoto důvodu není vlastní neuronové hlas všeobecně dostupný všem zákazníkům. Přístup k technologii můžete získat až po zkontrolování vašich aplikací a s potvrzením, že je budete používat v souladu s našimi principy etiky. Přečtěte si další informace o našich [procesech uzavírání aplikací](https://aka.ms/custom-neural-gating-overview).
+> V rámci snahy Microsoftu o návrh zodpovědného AI je naším záměrem chránit práva jednotlivců a společnosti a podporovat transparentní interakce v rámci lidských počítačů. Z tohoto důvodu není vlastní neuronové hlas všeobecně dostupný všem zákazníkům. Přístup k technologii můžete získat až po zkontrolování vašich aplikací a s potvrzením, že je budete používat v souladu s našimi principy etiky. Přečtěte si další informace o našich [procesech uzavírání aplikací](./concepts-gating-overview.md).
 
 ## <a name="set-up-your-azure-account"></a>Nastavení účtu Azure
 
@@ -62,7 +62,7 @@ Po vytvoření účtu Azure a předplatného služby pro rozpoznávání řeči 
 
 Obsah, který je podobný datům, modelům, testům a koncovým bodům, je uspořádán do **projektů** ve vlastním hlasovém portálu. Každý projekt je specifický pro zemi nebo jazyk a pohlaví hlasu, který chcete vytvořit. Můžete například vytvořit projekt pro žena Voice pro chat roboty vašeho centra volání, který používá angličtinu v USA (EN-US).
 
-Pokud chcete vytvořit svůj první projekt, vyberte kartu **Převod textu na řeč/vlastní hlas** a pak klikněte na **Nový projekt**. Postupujte podle pokynů průvodce a vytvořte projekt. Po vytvoření projektu se zobrazí čtyři karty: **data**, **školení**, **testování**a **nasazení**. Pomocí odkazů uvedených v [následujících krocích](#next-steps) se dozvíte, jak používat jednotlivé karty.
+Pokud chcete vytvořit svůj první projekt, vyberte kartu **Převod textu na řeč/vlastní hlas** a pak klikněte na **Nový projekt**. Postupujte podle pokynů průvodce a vytvořte projekt. Po vytvoření projektu se zobrazí čtyři karty: **data**, **školení**, **testování** a **nasazení**. Pomocí odkazů uvedených v [následujících krocích](#next-steps) se dozvíte, jak používat jednotlivé karty.
 
 > [!IMPORTANT]
 > [Vlastní hlasový portál](https://aka.ms/custom-voice) se nedávno aktualizoval. Pokud jste vytvořili předchozí data, modely, testy a publikované koncové body na portálu CRIS.ai nebo pomocí rozhraní API, je potřeba vytvořit nový projekt na novém portálu pro připojení k těmto starým entitám.

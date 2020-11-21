@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: trbye
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: 6cb338e8b7baa45e1c84f59a5730a9a500e71a79
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ae3d7b329c55ce0be101cee73e1fc7674a2d75aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486773"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026535"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>Začínáme s přepisem konverzací v reálném čase
 
@@ -25,10 +25,10 @@ Rozhraní **ConversationTranscriber** API sady Speech SDK umožňuje přepisovat
 ## <a name="limitations"></a>Omezení
 
 * K dispozici pouze v následujících oblastech předplatného: `centralus` , `eastasia` , `eastus` , `westeurope`
-* Vyžaduje pro datový proud s odkazem na přehrávání více než 7 mikrofon. Pole mikrofonu by mělo splňovat [naše specifikace](https://aka.ms/sdsdk-microphone).
+* Vyžaduje pro datový proud s odkazem na přehrávání více než 7 mikrofon. Pole mikrofonu by mělo splňovat [naše specifikace](./speech-devices-sdk-microphone.md).
 * [Sada Speech Devices SDK](speech-devices-sdk.md) nabízí vhodná zařízení a ukázkovou aplikaci, která demonstruje přepis konverzace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](overview.md#try-the-speech-service-for-free).
 

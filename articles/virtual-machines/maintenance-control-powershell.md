@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: f33cb7d4d005f15d0a5fcc70d56ebd4698f86694
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 2cc935e81e867609159b5c150b6ee7c346bb9f8e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988217"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026144"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Řízení aktualizací pomocí řízení údržby a Azure PowerShell
 
-Řízení údržby vám umožní určit, kdy se mají aktualizace použít pro izolované virtuální počítače a vyhrazené hostitele Azure. Toto téma popisuje možnosti Azure PowerShell pro řízení údržby. Další informace o výhodách použití řízení údržby, jejich omezení a dalších možností správy najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](maintenance-control.md).
+Řízení údržby vám umožní určit, kdy se mají použít aktualizace platformy pro hostitelskou infrastrukturu pro izolované virtuální počítače a vyhrazené hostitele Azure. Toto téma popisuje možnosti Azure PowerShell pro řízení údržby. Další informace o výhodách použití řízení údržby, jejich omezení a dalších možností správy najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](maintenance-control.md).
  
 ## <a name="enable-the-powershell-module"></a>Povolit modul prostředí PowerShell
 
@@ -86,9 +86,9 @@ $config = New-AzMaintenanceConfiguration `
 > **Doba trvání** údržby musí být *2 hodiny* nebo déle. **Opakování** údržby musí být nastavené na nejméně jednou za 35 dní.
 
 **Opakování** údržby může být vyjádřeno jako denní, týdenní nebo měsíční. Tady je několik příkladů:
- - denně – "recurEvery: Day" **nebo** "RecurEvery: 3Days" 
- - týdně – "recurEvery: 3Weeks" **nebo** "RecurEvery: týden Sobota, neděle" 
- - měsíčně – "recurEvery: month day23, day24" **nebo** "RecurEvery: měsíc poslední neděle" **nebo** "recurEvery: měsíc čtvrtého pondělí"  
+ - **denní**– RecurEvery "den" **nebo** "3Days" 
+ - **týdně**-RecurEvery "3Weeks" **nebo** "týden sobotu, neděle" 
+ - **měsíčně**– RecurEvery "Month day23, day24" **nebo** "měsíc poslední neděle" **nebo** "měsíc čtvrtého pondělí"  
       
 
 ## <a name="assign-the-configuration"></a>Přiřazení konfigurace

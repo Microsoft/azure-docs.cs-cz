@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3f2171d3271a4ffc4770dd0c9faea16c23e44d02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f4f52acaa5b461e2b058f112f26dafda86dcb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88005498"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025023"
 ---
 # <a name="tutorial-set-up-service-alerts-for-windows-virtual-desktop-classic"></a>Kurz: nastavení upozornění služby pro virtuální plochu Windows (Classic)
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvořte a nakonfigurujte výstrahy služby.
 
-Další informace o Azure Service Health najdete v dokumentaci ke [službě Azure Health](https://docs.microsoft.com/azure/service-health/).
+Další informace o Azure Service Health najdete v dokumentaci ke [službě Azure Health](../../service-health/index.yml).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,9 +50,9 @@ Doporučujeme vytvořit výstrahy služby pro následující typy událostí sta
 
 Konfigurace výstrah služby:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Service Health.**
-3. Pomocí pokynů v tématu [vytvoření výstrah protokolu aktivit v oznámeních služby](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) nastavte výstrahy a oznámení.
+3. Pomocí pokynů v tématu [vytvoření výstrah protokolu aktivit v oznámeních služby](../../service-health/alerts-activity-log-service-notifications-portal.md?toc=%2fazure%2fservice-health%2ftoc.json) nastavte výstrahy a oznámení.
 
 ## <a name="next-steps"></a>Další kroky
 

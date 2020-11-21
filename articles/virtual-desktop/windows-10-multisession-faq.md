@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91c7c19fddab2a4372f183c90532b24e774277d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24d27859aad7642392a5702ab7ddbb727b538d51
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008045"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025006"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k Windows 10 Enterprise pro více relací
 
@@ -80,8 +80,8 @@ K tomu dochází, protože používáte víc relací Windows 10 Enterprise s ře
 Většina virtualizovaných prostředí se ve výchozím nastavení konfiguruje, aby uživatelé nemohli instalovat další aplikace do jejich profilů. Pokud se chcete ujistit, že aplikace nezmizí, když se uživatel odhlásí z virtuálního klienta Windows, musíte tuto aplikaci zřídit pro všechny uživatelské profily ve vašem prostředí. Další informace o zřizování aplikací najdete v těchto materiálech:
 
 - [Publikování integrovaných aplikací ve virtuálním počítači s Windows](publish-apps.md)
-- [Možnosti příkazového řádku obsluhy balíčku aplikace DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
-- [Add-AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+- [Možnosti příkazového řádku obsluhy balíčku aplikace DISM](/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
 
 ## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Návody zajistěte, aby si uživatelé nestáhli a neinstalovali aplikace z Microsoft Store?
 
@@ -94,7 +94,7 @@ Zakázání aplikace pro Store:
 3. Vyberte **Store**.
 4. Vyberte **aplikace pro Store**.
 5. Vyberte **disabled (zakázáno**) a pak vyberte **OK**.
-6. Vyberte **Použít**.
+6. Vyberte **Apply** (Použít).
 
 ## <a name="next-steps"></a>Další kroky
 

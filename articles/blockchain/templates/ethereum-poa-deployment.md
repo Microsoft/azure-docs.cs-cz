@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
-ms.openlocfilehash: 5bbfca4d890440574ee6717ca910969226fc781a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: e680bc601b7f230314c1063523a003e95a849c0a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987061"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024394"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
 
@@ -48,7 +48,9 @@ Každé nasazení člena konsorcia zahrnuje:
 * Azure Monitor pro agregaci protokolů a statistiky výkonu
 * Brána virtuální sítě (volitelné) pro povolení připojení VPN v privátních virtuální sítě
 
-Ve výchozím nastavení jsou koncové body RPC a peering přístupné přes veřejnou IP adresu, aby bylo možné zjednodušené připojení mezi předplatnými a cloudy. Pro řízení přístupu na úrovni aplikace můžete použít kontrakty oprávnění parity. Podporují se sítě nasazené za sítě VPN, které využívají brány virtuální sítě pro připojení mezi předplatnými. Vzhledem k tomu, že nasazení VPN a virtuálních sítí je složitější, možná budete chtít při vytváření prototypů řešení začít s modelem veřejné IP adresy.
+Ve výchozím nastavení jsou koncové body RPC a peering přístupné přes veřejnou IP adresu, aby bylo možné zjednodušené připojení napříč
+
+Předplatná a cloudy. Pro řízení přístupu na úrovni aplikace můžete použít [kontrakty oprávnění parity](https://openethereum.github.io/Permissioning.html). Podporují se sítě nasazené za sítě VPN, které využívají brány virtuální sítě pro připojení mezi předplatnými. Vzhledem k tomu, že nasazení VPN a virtuálních sítí je složitější, možná budete chtít při vytváření prototypů řešení začít s modelem veřejné IP adresy.
 
 Kontejnery Docker se používají pro spolehlivost a modularitu. Azure Container Registry slouží jako součást jednotlivých nasazení k hostování a obsluze imagí se správou verzí. Image kontejneru se skládají z těchto:
 
@@ -685,7 +687,7 @@ Teď, když je vaše inteligentní smlouva nasazená, můžete odeslat transakci
 
 ## <a name="webassembly-wasm-support"></a>Podpora WebAssembly (WASM)
 
-Podpora WebAssembly je už povolená na nově nasazených sítích PoA. Umožňuje vývoj inteligentních kontraktů v jakémkoli jazyce, který předává Web-Assembly (Rust, C, C++). Další informace najdete v tématu [kurz z parity tech](https://github.com/paritytech/pwasm-tutorial).
+Podpora WebAssembly je už povolená na nově nasazených sítích PoA. Umožňuje vývoj inteligentních kontraktů v jakémkoli jazyce, který předává Web-Assembly (Rust, C, C++). Další informace najdete v tématech [Přehled parity WebAssembly](https://openethereum.github.io/WebAssembly-Home.html) a [tutorial z parity tech](https://github.com/paritytech/pwasm-tutorial) .
 
 ## <a name="faq"></a>Nejčastější dotazy
 

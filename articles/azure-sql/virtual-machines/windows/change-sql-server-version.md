@@ -14,12 +14,12 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a0ecc36d78ffde002dac971a749889104ff10073
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b9223ffc564620804b36f6f0e71602b3888a9f42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556450"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025374"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Místní změna verze SQL Server na virtuálním počítači Azure
 
@@ -66,7 +66,7 @@ Pokud chcete upgradovat verzi SQL Server, Získejte pro pozdější verzi instal
 
    :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="Výběr pro upgrade verze SQL Server":::
 
-1. Na stránce **kód Product Key** vyberte možnost, která určuje, jestli upgradujete na bezplatnou edici SQL Server nebo že máte k dispozici klíč PID pro produkční verzi produktu. Další informace najdete v tématu [edice a podporované funkce SQL Server 2019 (15. x)](/sql/sql-server/editions-and-components-of-sql-server-version-155) a [podporované verze a upgrady edice (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades).
+1. Na stránce **kód Product Key** vyberte možnost, která určuje, jestli upgradujete na bezplatnou edici SQL Server nebo že máte k dispozici klíč PID pro produkční verzi produktu. Další informace najdete v tématu [edice a podporované funkce SQL Server 2019 (15. x)](/sql/sql-server/editions-and-components-of-sql-server-version-15) a [podporované verze a upgrady edice (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades).
 1. Vyberte **Další** , dokud se nedostanete do stránky **připraveno k upgradu** , a pak vyberte **upgradovat**. Až se změna projeví, může okno nastavení přestat reagovat na několik minut. **Kompletní** stránka potvrdí, že se upgrade dokončil. Podrobný postup pro upgrade najdete v tématu [úplný postup](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup#procedure).
 
    :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="Stránka dokončení":::

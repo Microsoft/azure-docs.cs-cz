@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
-ms.openlocfilehash: 8c7cb1e9f39b1de7897da29467a607953b42bb24
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 77ade17803a35491712ec6df70aed9eb7b4883eb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565734"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025870"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>Exportovat aplikaci Custom Commands jako vzdálenou dovednost
 
@@ -23,9 +23,9 @@ V tomto článku se dozvíte, jak exportovat aplikaci Custom Commands jako vzdá
 
 ## <a name="prerequisites"></a>Požadavky
 > [!div class="checklist"]
-> * [Seznámení s dovedností pro robot Framework](https://aka.ms/speech/cc-skill-overview)
+> * [Seznámení s dovedností pro robot Framework](/azure/bot-service/skills-conceptual)
 > * [Porozumění manifestu dovedností](https://aka.ms/speech/cc-skill-manifest)
-> * [Jak vyvolat dovednost z robota bot Frameworku bot](https://aka.ms/speech/cc-skill-consumer)
+> * [Jak vyvolat dovednost z robota bot Frameworku bot](/azure/bot-service/skills-about-skill-consumers)
 > * Existující aplikace vlastních příkazů. V případě, že nemáte žádnou vlastní aplikaci příkazů, vyzkoušejte s – [rychlý Start: vytvoření hlasového asistenta pomocí vlastních příkazů.](quickstart-custom-commands-application.md)
 
 ## <a name="custom-commands-as-remote-skills"></a>Vlastní příkazy jako vzdálené dovednosti

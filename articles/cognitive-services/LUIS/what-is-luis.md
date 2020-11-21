@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 09/02/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 242d131e79966ebdb286a20f75d20f91f5fa7406
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b4034f9b7a5a9ec856134e27b422736e2c98f04a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334646"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025187"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -50,7 +50,7 @@ Aplikace LUIS poskytuje klientské aplikaci informace, které jí umožní chyt�
 
 Vaše aplikace LUIS obsahuje model přirozeného jazyka specifického pro doménu. Aplikaci LUIS můžete spustit s předem připraveným doménovým modelem, sestavit pro ni vlastní model nebo zkombinovat části předem připravené domény s vlastními informacemi.
 
-* **Předem připravený model:** Služba LUIS obsahuje řadu předem připravených doménových modelů, včetně záměrů, promluv a předem připravených entit. Předem připravené entity můžete použít, aniž byste museli použít záměry a promluvy předem připraveného modelu. [Předem připravené doménové modely](luis-how-to-use-prebuilt-domains.md "Předem připravené doménové modely") zahrnují celý návrh a představují skvělý způsob, jak rychle začít používat službu LUIS.
+* **Předem připravený model:** Služba LUIS obsahuje řadu předem připravených doménových modelů, včetně záměrů, promluv a předem připravených entit. Předem připravené entity můžete použít, aniž byste museli použít záměry a promluvy předem připraveného modelu. [Předem připravené doménové modely](./howto-add-prebuilt-models.md "Předem připravené doménové modely") zahrnují celý návrh a představují skvělý způsob, jak rychle začít používat službu LUIS.
 
 * **Vlastní model** LUIS nabízí několik způsobů, jak identifikovat vlastní modely, včetně záměrů a entit. Mezi entity patří entity strojového učení, konkrétní nebo literální entity a kombinace strojového učení a literálu.
 
@@ -116,7 +116,7 @@ Nástroje pro rychlé a snadné používání služby LUIS s využitím robota:
 
 ## <a name="integrate-with-a-bot"></a>Integrace s robotem
 
-Pomocí [služby Azure bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0 "Azure bot Service") s [Microsoft bot Framework](https://dev.botframework.com/ "Microsoft Bot Framework") sestavíte a nasadíte robota chatu. Navrhněte a vývoj pomocí nástrojů grafického rozhraní, [skladatele](https://docs.microsoft.com/composer/ "Composer")nebo [pracovních robotů](https://github.com/microsoft/BotBuilder-Samples "Ukázky pracovních robotů") , které jsou navržené pro scénáře s největším robotem.
+Pomocí [služby Azure bot Service](/azure/bot-service/?view=azure-bot-service-4.0 "Azure bot Service") s [Microsoft bot Framework](https://dev.botframework.com/ "Microsoft Bot Framework") sestavíte a nasadíte robota chatu. Navrhněte a vývoj pomocí nástrojů grafického rozhraní, [skladatele](/composer/ "Composer")nebo [pracovních robotů](https://github.com/microsoft/BotBuilder-Samples "Ukázky pracovních robotů") , které jsou navržené pro scénáře s největším robotem.
 
 ## <a name="integrate-with-other-cognitive-services"></a>Integrace s jinými Cognitive Services
 
@@ -138,8 +138,8 @@ Seznamte se s LUIS s praktickými rychlými starty pomocí [portálu](get-starte
 * [Dotaz na koncový bod předpovědi](luis-get-started-get-intent-from-browser.md "Dotazování koncového bodu předpovědi").
 * [Materiály pro vývojáře](developer-reference-resource.md "Materiály pro vývojáře") pro Luis.
 
-[bot-framework]: https://docs.microsoft.com/bot-framework/
-[flow]: https://docs.microsoft.com/connectors/luis/
+[bot-framework]: /bot-framework/
+[flow]: /connectors/luis/
 [authoring-apis]: https://go.microsoft.com/fwlink/?linkid=2092087
 [endpoint-apis]: https://go.microsoft.com/fwlink/?linkid=2092356
 [qnamaker]: https://qnamaker.ai/

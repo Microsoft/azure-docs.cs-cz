@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87511934"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024360"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Použití funkcí v Azure Monitorch dotazech protokolu
 
@@ -56,10 +56,10 @@ security_updates_last_day | where Title contains "SQL"
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další lekce pro zápis Azure Monitorch dotazů protokolu:
 
-- [Operace s řetězci](string-operations.md)
-- [Operace s datem a časem](datetime-operations.md)
-- [Agregační funkce](aggregations.md)
-- [Pokročilé agregace](advanced-aggregations.md)
-- [JSON a datové struktury](json-data-structures.md)
-- [Spojení](joins.md)
-- [Grafy](charts.md)
+- [Operace s řetězci](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations)
+- [Operace s datem a časem](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#date-and-time-operations)
+- [Agregační funkce](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)
+- [Pokročilé agregace](/azure/data-explorer/write-queries#advanced-aggregations)
+- [JSON a datové struktury](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#json-and-data-structures)
+- [Spojení](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)
+- [Spojnic](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#charts)

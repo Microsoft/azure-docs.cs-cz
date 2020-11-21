@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c2dbaf8f65208126c52617d4b89d901b3670dac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921414"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025170"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>Co je konverzace s více zařízeními (Preview)?
 
 **Konverzace s více zařízeními** usnadňují vytváření hlasových nebo textových konverzací mezi více klienty a koordinaci zpráv odesílaných mezi nimi.
 
-**Konverzace s více zařízeními**vám umožní:
+**Konverzace s více zařízeními** vám umožní:
 
 - Připojit více klientů ke stejné konverzaci a spravovat odesílání a přijímání zpráv mezi nimi.
 - Snadno přepisovat zvuk od každého klienta a předávejte přepis ostatním uživatelům s volitelným překladem.
@@ -72,7 +72,7 @@ Každý klient může posílat zvukové nebo rychlé zprávy. Služba bude použ
 
 ## <a name="overview-of-conversation-host-and-participant"></a>Přehled konverzace, hostitele a účastníka
 
-**Konverzace** je relace, kterou jeden uživatel spustí, aby se připojili k ostatním zúčastněným uživatelům. Všichni klienti se připojují k konverzacím pomocí **kódu konverzace**s pěti písmeny.
+**Konverzace** je relace, kterou jeden uživatel spustí, aby se připojili k ostatním zúčastněným uživatelům. Všichni klienti se připojují k konverzacím pomocí **kódu konverzace** s pěti písmeny.
 
 Každá konverzace vytvoří metadata, která zahrnují:
 -    Časová razítka při zahájení a ukončení konverzace
@@ -105,7 +105,7 @@ Při vytváření nebo spojování konverzace musí každý uživatel zvolit **p
 Existují dva druhy jazyků: **Převod řeči na text** a **text**:
 - Pokud uživatel zvolí jazyk **řeči na text** jako svůj primární jazyk, bude moci v konverzaci použít hlasový vstup a text.
 
-- Pokud uživatel zvolí jazyk **pouze text** , bude moci používat textové zadání a odesílat rychlé zprávy v konverzaci. Jazyky pouze s textem jsou jazyky, které jsou podporovány pro překlad textu, ale nikoli pro převod řeči na text. Dostupné jazyky můžete zobrazit na stránce [Podpora jazyků](supported-languages.md) .
+- Pokud uživatel zvolí jazyk **pouze text** , bude moci používat textové zadání a odesílat rychlé zprávy v konverzaci. Jazyky pouze s textem jsou jazyky, které jsou podporovány pro překlad textu, ale nikoli pro převod řeči na text. Dostupné jazyky můžete zobrazit na stránce [Podpora jazyků](./language-support.md) .
 
 Od jejich primárního jazyka může každý účastník také určit další jazyky pro překlad konverzace.
 
@@ -119,7 +119,7 @@ Níže je uveden přehled toho, co uživatel bude moci dělat v konverzaci s ví
 | Posunutí konverzace | ✔️ | ✔️ |
 
 > [!NOTE]
-> Seznam dostupných jazyků pro převod řeči na text a text naleznete v tématu [podporované jazyky](supported-languages.md).
+> Seznam dostupných jazyků pro převod řeči na text a text naleznete v tématu [podporované jazyky](./language-support.md).
 
 
 

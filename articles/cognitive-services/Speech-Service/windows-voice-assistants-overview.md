@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: fbcb262fee6a2cc62bfe64e8a8589c92b4fe2b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e8b009ecc2181edfaad5da3d8d05ad0c1909051
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82997444"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024751"
 ---
 # <a name="voice-assistants-on-windows"></a>Hlasové asistenti ve Windows
 
@@ -37,7 +37,7 @@ Když uživatel domluví klíčové slovo, zobrazí se v systému spotter klíč
 
 ### <a name="registration"></a>Registrace
 
-Při prvním spuštění aplikace aktivované hlasem zaregistruje ID aplikace a informace o klíčových slovech prostřednictvím rozhraní API ConversationalAgent. AAR registruje všechny konfigurace v globálním mapování s klíčovým slovem hardware nebo software spotter v systému, aby bylo možné detekovat klíčové slovo aplikace. Aplikace také [zaregistruje službu na pozadí](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task).
+Při prvním spuštění aplikace aktivované hlasem zaregistruje ID aplikace a informace o klíčových slovech prostřednictvím rozhraní API ConversationalAgent. AAR registruje všechny konfigurace v globálním mapování s klíčovým slovem hardware nebo software spotter v systému, aby bylo možné detekovat klíčové slovo aplikace. Aplikace také [zaregistruje službu na pozadí](/windows/uwp/launch-resume/register-a-background-task).
 
 Všimněte si, že to znamená, že aplikaci nelze aktivovat pomocí hlasu, dokud nebude spuštěna jednou a bylo povoleno dokončení registrace.
 

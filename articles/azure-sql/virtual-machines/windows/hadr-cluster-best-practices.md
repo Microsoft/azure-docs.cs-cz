@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 86db8c88fae7a5fd1ec4828d8936c6cb8172a61c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 446731e084084ca301b350f6fec0c4065485a40f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564561"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026620"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Osvědčené postupy pro konfiguraci clusteru (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ Použijte jednu síťovou kartu na server (uzel clusteru) a jednu podsíť. Sít
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>Ladění prahových hodnot sítě s clustery
 
-Při spuštění uzlů clusteru s podporou převzetí služeb při selhání Windows na virtuálních počítačích Azure s SQL Server AlwaysOn se doporučuje změnit nastavení clusteru na odlehčený stav monitorování.  Díky tomu bude cluster mnohem stabilnější a spolehlivý.  Podrobnosti najdete v tématu [IaaS with SQL AlwaysOn – vyladění prahových hodnot sítě clusteru s podporou převzetí služeb při selhání](/windows-server/troubleshoot/iaas-sql-failover-cluser).
+Při spuštění uzlů clusteru s podporou převzetí služeb při selhání Windows na virtuálních počítačích Azure s SQL Server AlwaysOn se doporučuje změnit nastavení clusteru na odlehčený stav monitorování.  Díky tomu bude cluster mnohem stabilnější a spolehlivý.  Podrobnosti najdete v tématu [IaaS with SQL AlwaysOn – vyladění prahových hodnot sítě clusteru s podporou převzetí služeb při selhání](/windows-server/troubleshoot/iaas-sql-failover-cluster).
 
 ## <a name="quorum"></a>Umožněn
 
@@ -60,7 +60,7 @@ Nakonfigurujte sdílený disk Azure jako určující disk.
 Informace o tom, jak začít, najdete v tématu [Konfigurace určujícího disku](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Podporovaný operační systém** : vše   
+**Podporovaný operační systém**: vše   
 
 
 ### <a name="cloud-witness"></a>Disk s kopií cloudu
@@ -70,7 +70,7 @@ Určující Cloud je typ určujícího disku kvora clusteru s podporou převzet�
 Informace o tom, jak začít, najdete v tématu [Konfigurace určujícího cloudu](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp).
 
 
-**Podporovaný operační systém** : Windows Server 2016 a novější   
+**Podporovaný operační systém**: Windows Server 2016 a novější   
 
 
 ### <a name="file-share-witness"></a>Určující sdílená složka
@@ -82,7 +82,7 @@ Pokud budete používat sdílenou složku Azure, můžete ji připojit ke stejn�
 Informace o tom, jak začít, najdete v tématu [Konfigurace určující sdílené složky](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Podporovaný operační systém** : Windows Server 2012 a novější   
+**Podporovaný operační systém**: Windows Server 2012 a novější   
 
 ## <a name="connectivity"></a>Připojení
 
@@ -108,9 +108,9 @@ Při použití nástroje pro vyrovnávání zatížení existuje mírné zpožd�
 
 Pokud chcete začít, přečtěte si, jak nakonfigurovat Azure Load Balancer pro [instanci clusteru s podporou převzetí služeb při selhání](failover-cluster-instance-vnn-azure-load-balancer-configure.md) nebo [skupinu dostupnosti](availability-group-vnn-azure-load-balancer-configure.md) .
 
-**Podporovaný operační systém** : vše   
-**Podporovaná verze SQL** : vše   
-**Podporované řešení hadr** : instance clusteru s podporou převzetí služeb při selhání a skupina dostupnosti   
+**Podporovaný operační systém**: vše   
+**Podporovaná verze SQL**: vše   
+**Podporované řešení hadr**: instance clusteru s podporou převzetí služeb při selhání a skupina dostupnosti   
 
 
 ### <a name="distributed-network-name-dnn"></a>Název distribuované sítě (DNN)
@@ -128,9 +128,9 @@ Většina funkcí SQL Server při použití DNN transparentně spolupracuje s FC
 
 Začněte tím, že se seznámíte s konfigurací prostředku názvu distribuované sítě pro [instanci clusteru s podporou převzetí služeb při selhání](failover-cluster-instance-distributed-network-name-dnn-configure.md) nebo [skupinu dostupnosti](availability-group-distributed-network-name-dnn-listener-configure.md) .
 
-**Podporovaný operační systém** : Windows Server 2016 a novější   
-**Podporovaná verze SQL** : SQL Server 2019 CU2 (FCI) a SQL Server 2019 CU8 (AG)   
-**Podporované řešení hadr** : instance clusteru s podporou převzetí služeb při selhání a skupina dostupnosti   
+**Podporovaný operační systém**: Windows Server 2016 a novější   
+**Podporovaná verze SQL**: SQL Server 2019 CU2 (FCI) a SQL Server 2019 CU8 (AG)   
+**Podporované řešení hadr**: instance clusteru s podporou převzetí služeb při selhání a skupina dostupnosti   
 
 
 ## <a name="limitations"></a>Omezení

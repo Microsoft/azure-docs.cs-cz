@@ -5,18 +5,18 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/20/2020
+ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 67e33732574d2a6c173675d5adf0a7d1c2050688
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d94cd649df9da6b36ac484d4fc1e6acef7a21bb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528172"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026161"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Řízení aktualizací pomocí řízení údržby a Azure CLI
 
-Řízení údržby vám umožní určit, kdy se mají aktualizace použít pro izolované virtuální počítače a vyhrazené hostitele Azure. Toto téma popisuje možnosti rozhraní příkazového řádku Azure CLI pro řízení údržby. Další informace o výhodách použití řízení údržby, jejich omezení a dalších možností správy najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](maintenance-control.md).
+Řízení údržby vám umožní určit, kdy se mají použít aktualizace platforem pro hostování infrastruktury pro izolované virtuální počítače a vyhrazené hostitele Azure. Toto téma popisuje možnosti rozhraní příkazového řádku Azure CLI pro řízení údržby. Další informace o výhodách použití řízení údržby, jejich omezení a dalších možností správy najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](maintenance-control.md).
 
 ## <a name="create-a-maintenance-configuration"></a>Vytvoření konfigurace údržby
 
@@ -28,14 +28,14 @@ az group create \
    --name myMaintenanceRG
 az maintenance configuration create \
    -g myMaintenanceRG \
-   --name myConfig \
-   --maintenanceScope host\
+   --resource-name myConfig \
+   --maintenance-scope host\
    --location eastus
 ```
 
 Zkopírujte ID konfigurace z výstupu pro pozdější použití.
 
-Pomocí nástroje `--maintenanceScope host` je zajištěno, že se konfigurace údržby používá pro řízení aktualizací hostitele.
+Pomocí nástroje `--maintenance-scope host` je zajištěno, že se konfigurace údržby používá pro řízení aktualizací infrastruktury hostitele.
 
 Pokud se pokusíte vytvořit konfiguraci se stejným názvem, ale v jiném umístění, zobrazí se chyba. Názvy konfigurace musí být pro vaši skupinu prostředků jedinečné.
 
@@ -44,6 +44,30 @@ K dostupným konfiguracím údržby se můžete dotázat pomocí `az maintenance
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>Vytvoření konfigurace údržby pomocí plánovaného okna
+Můžete také deklarovat naplánované okno, když Azure použije aktualizace vašich prostředků. Tento příklad vytvoří konfiguraci údržby s názvem myConfig s plánovaným oknem 5 hodin ve čtvrtém pondělí každého měsíce. Po vytvoření naplánovaného okna už aktualizace nemusíte instalovat ručně.
+
+```azurecli-interactive
+az maintenance configuration create \
+   -g myMaintenanceRG \
+   --resource-name myConfig \
+   --maintenance-scope host \
+   --location eastus \
+   --maintenance-window-duration "05:00" \
+   --maintenance-window-recur-every "Month Fourth Monday" \
+   --maintenance-window-start-date-time "2020-12-30 08:00" \
+   --maintenance-window-time-zone "Pacific Standard Time"
+```
+
+> [!IMPORTANT]
+> **Doba trvání** údržby musí být *2 hodiny* nebo déle. **Opakování** údržby musí být nastavené na nejméně jednou za 35 dní.
+
+Opakování údržby může být vyjádřeno jako denní, týdenní nebo měsíční. Tady je několik příkladů:
+- **denní** údržba – okno – opakování – každé: "den" **nebo** "3Days"
+- **týdenní**– údržba – okno – opakování – každé: "3Weeks" **nebo** "týden sobotu, neděle"
+- **měsíčně**– údržba – okno – opakování – každé: "měsíc day23, day24" **nebo** "Month Last neděle" **nebo** "Month čtvrté pondělí"
+
 
 ## <a name="assign-the-configuration"></a>Přiřazení konfigurace
 
@@ -251,7 +275,7 @@ Slouží `az maintenance configuration delete` k odstranění konfigurace údrž
 az maintenance configuration delete \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
    -g myResourceGroup \
-   --name myConfig
+   --resource-name myConfig
 ```
 
 ## <a name="next-steps"></a>Další kroky

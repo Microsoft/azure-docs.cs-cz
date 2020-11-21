@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 4bdca8921a99db764cbc8ee1edfdad8cf8b8568f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa885b1dcff59ec1b89d9a0bcf4ac5578cb5e8ea
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360935"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024904"
 ---
 # <a name="what-is-a-voice-assistant"></a>Co je hlasový asistent?
 
@@ -32,7 +32,7 @@ Prvním krokem k vytvoření hlasového asistenta je rozhodování o tom, co by 
 |Nedokončená konverzace s robustními integrací dovedností a úplným řízením nasazení | Azure Bot Service robot s [přímým line Speech](direct-line-speech.md) Channel | <ul><li>"Potřebuji přejít na Seattle"</li><li>"Jaký druh pizza můžu objednat?"</li></ul>
 |Hlasové příkazy nebo jednoduché konverzace orientované na úlohy se zjednodušeným vytvářením a hostováním | [Vlastní příkazy](custom-commands.md) | <ul><li>"Zapnout režijní světlo"</li><li>"Udělejte si 5 stupňů zahřívání"</li><li>Další ukázky [k dispozici](https://speech.microsoft.com/customcommands)</li></ul>
 
-Pokud si zatím nejste jistí, co byste chtěli zvládnout, doporučujeme vám jako nejlepší výchozí volbu použít [přímý vstup hlasu](direct-line-speech.md) . Nabízí integraci s bohatou sadou nástrojů a pomůcek pro vytváření obsahu, jako je [řešení Virtual Assistant a podniková šablona](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) a [Služba QnA maker](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) pro vytváření běžných vzorů a používání stávajících zdrojů znalostí.
+Pokud si zatím nejste jistí, co byste chtěli zvládnout, doporučujeme vám jako nejlepší výchozí volbu použít [přímý vstup hlasu](direct-line-speech.md) . Nabízí integraci s bohatou sadou nástrojů a pomůcek pro vytváření obsahu, jako je [řešení Virtual Assistant a podniková šablona](/azure/bot-service/bot-builder-enterprise-template-overview) a [Služba QnA maker](../qnamaker/overview/overview.md) pro vytváření běžných vzorů a používání stávajících zdrojů znalostí.
 
 [Vlastní příkazy](custom-commands.md) usnadňují vytváření bohatě bohatých aplikací pro hlasové příkazy optimalizovaných pro prostředí s prvními interakcemi hlasu. Poskytuje jednotné prostředí pro vytváření, automatický hostující model a poměrně nižší složitost, což vám pomůže soustředit se na vytváření nejlepšího řešení pro scénáře hlasových příkazů.
 
@@ -49,7 +49,7 @@ Bez ohledu na to, jestli pro vytváření pomocných asistentů zvolíte [přím
 
 | Kategorie | Funkce |
 |----------|----------|
-|[Vlastní klíčové slovo](speech-devices-sdk-create-kws.md) | Uživatelé můžou začít konverzace s asistenty pomocí vlastního klíčového slova "Hey contoso". V aplikaci se jedná o vlastní modul klíčových slov v sadě Speech SDK, který lze konfigurovat pomocí klíčového slova vlastní [, které zde můžete vygenerovat](speech-devices-sdk-create-kws.md). Hlasové asistenti mohou použít ověřování pomocí klíčového slova na straně služby ke zlepšení přesnosti aktivace klíčového slova (oproti samotnému zařízení).
+|[Vlastní klíčové slovo](./custom-keyword-basics.md) | Uživatelé můžou začít konverzace s asistenty pomocí vlastního klíčového slova "Hey contoso". V aplikaci se jedná o vlastní modul klíčových slov v sadě Speech SDK, který lze konfigurovat pomocí klíčového slova vlastní [, které zde můžete vygenerovat](./custom-keyword-basics.md). Hlasové asistenti mohou použít ověřování pomocí klíčového slova na straně služby ke zlepšení přesnosti aktivace klíčového slova (oproti samotnému zařízení).
 |[Převod řeči na text](speech-to-text.md) | Hlasový asistent převádí zvuk v reálném čase na rozpoznaný text pomocí převodu [řeči na text](speech-to-text.md) ze služby Speech. Tento text je jako přepisu k dispozici jak pro vaši pomoc, tak pro klientské aplikace.
 |[Převod textu na řeč](text-to-speech.md) | Textové odpovědi od vašeho asistenta se syntetizují pomocí převodu [textu na řeč](text-to-speech.md) od služby Speech. Tato syntéza je pak zpřístupněna klientské aplikaci jako zvukový datový proud. Microsoft nabízí možnost vytvářet vlastní a vysoce kvalitní hlas neuronové TTS, který poskytuje hlas k vaší značce. Pokud se chcete dozvědět víc, [kontaktujte nás](mailto:mstts@microsoft.com).
 

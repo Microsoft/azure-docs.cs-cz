@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: a74ad7b995f0112346e2212866655107f72c03e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 370dade1b74634649c9de44864a0fd9f5cac988f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324803"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025972"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Pracovní postupy průběžné integrace a průběžného doručování pro LUIS DevOps
 
@@ -27,9 +27,9 @@ V systému správy zdrojového kódu (SCM) nakonfigurujte automatizované kanál
 
 **Pracovní postup CI/CD** kombinuje dva doplňkové vývojové procesy:
 
-* [Průběžná integrace](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-integration) (CI) je technický postup často potvrzujícího kód ve sdíleném úložišti a provádění automatizovaného sestavení na něm. Nepřetržitá integrace s přístupem k automatizovanému [testování](luis-concept-devops-testing.md) umožňuje průběžnou integraci ověřit si, že pro každou aktualizaci je zdroj LUDown stále platný a je možné ho importovat do aplikace Luis, ale také předá skupinu testů, které ověří, že aplikace může rozpoznat záměry a entity vyžadované pro vaše řešení.
+* [Průběžná integrace](/azure/devops/learn/what-is-continuous-integration) (CI) je technický postup často potvrzujícího kód ve sdíleném úložišti a provádění automatizovaného sestavení na něm. Nepřetržitá integrace s přístupem k automatizovanému [testování](luis-concept-devops-testing.md) umožňuje průběžnou integraci ověřit si, že pro každou aktualizaci je zdroj LUDown stále platný a je možné ho importovat do aplikace Luis, ale také předá skupinu testů, které ověří, že aplikace může rozpoznat záměry a entity vyžadované pro vaše řešení.
 
-* [Průběžné doručování](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-delivery) (CD) pořizuje koncept plynulé integrace, který automaticky nasadí aplikaci do prostředí, kde můžete provádět podrobnější testování. CD vám umožní rychle se seznámit s případnými neočekávanými problémy, které vznikají v našich změnách co nejrychleji, a také se dozvědět o mezerách v rámci našeho pokrytí testu.
+* [Průběžné doručování](/azure/devops/learn/what-is-continuous-delivery) (CD) pořizuje koncept plynulé integrace, který automaticky nasadí aplikaci do prostředí, kde můžete provádět podrobnější testování. CD vám umožní rychle se seznámit s případnými neočekávanými problémy, které vznikají v našich změnách co nejrychleji, a také se dozvědět o mezerách v rámci našeho pokrytí testu.
 
 Cílem průběžné integrace a průběžného doručování je zajistit, že "hlavní" je vždycky zasílaná za "". V případě aplikace LUIS to znamená, že jsme v případě potřeby mohli využít libovolnou verzi z hlavní aplikace LUIS a dodat ji v produkčním prostředí.
 
@@ -41,7 +41,7 @@ Pro vytváření pracovních postupů automatizace pro LUIS použijte následuj�
 
 * [Rozhraní bot Framework Tools Luis CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) pro práci s Luis aplikacemi a verzemi, jejich výukou, otestováním a publikováním v rámci služby Luis.
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) pro dotazování na předplatná Azure, načtení klíčů pro vytváření a předpovědi Luis a vytvoření [instančního objektu](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) Azure používaného pro ověřování Automation
+* [Azure CLI](/cli/azure/?view=azure-cli-latest) pro dotazování na předplatná Azure, načtení klíčů pro vytváření a předpovědi Luis a vytvoření [instančního objektu](/cli/azure/ad/sp?view=azure-cli-latest) Azure používaného pro ověřování Automation
 
 * [NLU. Nástroj DevOps](https://github.com/microsoft/NLU.DevOps) pro [testování Luis aplikace](luis-concept-devops-testing.md) a k analýze výsledků testů.
 
@@ -70,7 +70,7 @@ Tento pracovní postup by měl:
 * Vyškolení a publikování verze aplikace LUIS
 
   > [!NOTE]
-  > Jak je vysvětleno v tématu [spouštění testů v procesu automatizovaného sestavení](luis-concept-devops-testing.md#running-tests-in-an-automated-build-workflow) , je nutné publikovat verzi aplikace Luis v rámci testu tak, aby nástroje jako NLU. DevOps k němu má přístup. LUIS podporuje pouze dva pojmenované sloty publikace, *přípravu* a *produkci* pro aplikaci Luis, ale můžete také [Publikovat přímo verzi](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish) a [dotazovat](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-api-v3#changes-by-slot-name-and-version-name)se na verzi. Publikujte pomocí přímé verze publikování v pracovních postupech automatizace, abyste se vyhnuli omezení na použití pojmenovaných slotů publikování.
+  > Jak je vysvětleno v tématu [spouštění testů v procesu automatizovaného sestavení](luis-concept-devops-testing.md#running-tests-in-an-automated-build-workflow) , je nutné publikovat verzi aplikace Luis v rámci testu tak, aby nástroje jako NLU. DevOps k němu má přístup. LUIS podporuje pouze dva pojmenované sloty publikace, *přípravu* a *produkci* pro aplikaci Luis, ale můžete také [Publikovat přímo verzi](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish) a [dotazovat](./luis-migration-api-v3.md#changes-by-slot-name-and-version-name)se na verzi. Publikujte pomocí přímé verze publikování v pracovních postupech automatizace, abyste se vyhnuli omezení na použití pojmenovaných slotů publikování.
 
 * Spusťte všechny [testy jednotek](luis-concept-devops-testing.md).
 
@@ -84,13 +84,13 @@ Tento pracovní postup by měl:
 
 Úloha CD v pracovním postupu CI/CD se spouští podmíněně po úspěšném sestavení a automatizované testy jednotek. Jeho úkolem je automaticky nasadit aplikaci LUIS do prostředí, kde můžete provádět více testování.
 
-Neexistuje žádné doporučené řešení, jak nejlépe nasadit aplikaci LUIS, a musíte implementovat proces, který je vhodný pro váš projekt. Úložiště [šablon Luis DevOps](https://github.com/Azure-Samples/LUIS-DevOps-Template) implementuje jednoduché řešení, které umožňuje [Publikovat novou verzi Luis aplikace](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app) do *produkční* přihrádky pro publikování. To je přesné pro jednoduché nastavení. Pokud ale potřebujete podporovat několik různých produkčních prostředí současně, například *vývoj*, *přípravu* a *UAT*, pak se limit dvou pojmenovaných slotů publikování na aplikaci neprojeví jako nedostatečné.
+Neexistuje žádné doporučené řešení, jak nejlépe nasadit aplikaci LUIS, a musíte implementovat proces, který je vhodný pro váš projekt. Úložiště [šablon Luis DevOps](https://github.com/Azure-Samples/LUIS-DevOps-Template) implementuje jednoduché řešení, které umožňuje [Publikovat novou verzi Luis aplikace](./luis-how-to-publish-app.md) do *produkční* přihrádky pro publikování. To je přesné pro jednoduché nastavení. Pokud ale potřebujete podporovat několik různých produkčních prostředí současně, například *vývoj*, *přípravu* a *UAT*, pak se limit dvou pojmenovaných slotů publikování na aplikaci neprojeví jako nedostatečné.
 
 K dalším možnostem nasazení verze aplikace patří:
 
 * Ponechte verzi aplikace publikovanou na koncový bod přímé verze a implementujte proces pro konfiguraci navazujících produkčních prostředí s přímým koncovým bodem verze podle potřeby.
 * Udržujte různé aplikace LUIS pro každé provozní prostředí a napíšete kroky automatizace pro import `.lu` do nové verze v aplikaci Luis pro cílové provozní prostředí, ke školení a publikování.
-* Exportujte testované verze aplikace LUIS do [kontejneru Docker Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-container-howto?tabs=v3) a nasaďte kontejner Luis do služby Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/).
+* Exportujte testované verze aplikace LUIS do [kontejneru Docker Luis](./luis-container-howto.md?tabs=v3) a nasaďte kontejner Luis do služby Azure [Container Instances](../../container-instances/index.yml).
 
 ## <a name="release-management"></a>Správa vydaných verzí
 

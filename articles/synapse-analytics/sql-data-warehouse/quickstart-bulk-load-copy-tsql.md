@@ -7,20 +7,20 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
-ms.date: 06/18/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: f82bedc6ef638714b2641003e8274c2024a86c2e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 83b5804888379316b855c36f803f646cec102d9e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213002"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024581"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Rychlý Start: hromadné načtení dat pomocí příkazu COPY
 
-V tomto rychlém startu budete hromadně načítat data do fondu SQL pomocí jednoduchého a flexibilního [příkazu kopírování](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) pro příjem dat s vysokou propustností. Příkaz COPY je doporučeným nástrojem pro načítání, protože umožňuje hladce a pružně pružně načíst data poskytnutím funkčnosti:
+V tomto rychlém startu budete hromadně načítat data do vyhrazeného fondu SQL pomocí jednoduchého a flexibilního [příkazu kopírování](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) pro příjem dat s vysokou propustností. Příkaz COPY je doporučeným nástrojem pro načítání, protože umožňuje hladce a pružně pružně načíst data poskytnutím funkčnosti:
 
 - Povolení načtení nižších privilegovaných uživatelů bez nutnosti přísného řízení pro datový sklad
 - Využijte jenom jeden příkaz T-SQL, aniž byste museli vytvářet žádné další databázové objekty.
@@ -32,9 +32,9 @@ V tomto rychlém startu budete hromadně načítat data do fondu SQL pomocí jed
 - Využití SQL Serverch formátů data pro soubory CSV
 - Zadejte v cestě umístění úložiště zástupné znaky a více souborů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-V tomto rychlém startu se předpokládá, že už máte fond SQL. Pokud se fond SQL nevytvořil, použijte rychlý Start pro [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
+V tomto rychlém startu se předpokládá, že už máte vyhrazený fond SQL. Pokud nevytvoříte vyhrazený fond SQL, použijte rychlý Start pro [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
 
 ## <a name="set-up-the-required-permissions"></a>Nastavte požadovaná oprávnění.
 

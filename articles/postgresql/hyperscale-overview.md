@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
 ms.date: 09/01/2020
-ms.openlocfilehash: 90d3cb106fa93649f7d6dda5ab5755061d118f66
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1734128384d63749d3c777cf6315278fced9d140
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91268379"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025136"
 ---
 # <a name="what-is-azure-database-for-postgresql---hyperscale-citus"></a>Co je Azure Database for PostgreSQL – Citus (škálování)?
 
@@ -33,4 +33,4 @@ Aplikace vytvořené pro PostgreSQL můžou spouštět distribuované dotazy na 
 
 - Začněte tím, že [vytvoříte svou první](./quickstart-create-hyperscale-portal.md) skupinu serverů Azure Database for PostgreSQL – Citus (škálování).
 - Porovnání nákladů a kalkulačky najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) . Citus) nabízí také předplacené slevy za rezervované instance. Podrobnosti najdete na stránkách s [cenami na úrovni služby (Citus)](concepts-hyperscale-reserved-pricing.md) .
-- Určení nejlepší [počáteční velikosti](howto-hyperscale-scaling.md#picking-initial-size) pro skupinu serverů
+- Určení nejlepší [počáteční velikosti](howto-hyperscale-scale-initial.md) pro skupinu serverů

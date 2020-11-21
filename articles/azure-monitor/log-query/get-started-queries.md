@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: d43a72db385d282ee189c179254cfc270929dbbf
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8b3b6a41da6e3100739da920472d582711d1e9b1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207185"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024377"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolů v Azure Monitoru
 
@@ -192,7 +192,7 @@ SecurityEvent
 ## <a name="summarize-aggregate-groups-of-rows"></a>Shrnutí: agregované skupiny řádků
 Použijte **sumarizace** k identifikaci skupin záznamů, podle jednoho nebo více sloupců a použijte pro ně agregace. Nejběžnějším využitím **souhrnu** je *počet*, který vrací počet výsledků v každé skupině.
 
-Následující dotaz zkontroluje všechny záznamy *výkonu* za poslední hodinu, seskupuje je podle *ObjectName*a spočítá záznamy v každé skupině: 
+Následující dotaz zkontroluje všechny záznamy *výkonu* za poslední hodinu, seskupuje je podle *ObjectName* a spočítá záznamy v každé skupině: 
 ```Kusto
 Perf
 | where TimeGenerated > ago(1h)
@@ -244,7 +244,7 @@ Chcete-li, aby byl výstup jasný, vyberte ho a zobrazte ho jako časový graf. 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o použití řetězcových dat v dotazu protokolu s použitím [řetězců v Azure Monitorch](string-operations.md)dotazech protokolu.
-- Přečtěte si další informace o agregaci dat v dotazu protokolu s [pokročilými agregacemi v Azure Monitorch dotazech protokolu](advanced-aggregations.md).
-- Naučte se, jak propojit data z několika tabulek pomocí [spojení v Azure monitor dotazy protokolu](joins.md).
+- Přečtěte si další informace o použití řetězcových dat v dotazu protokolu s použitím [řetězců v Azure Monitorch](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations)dotazech protokolu.
+- Přečtěte si další informace o agregaci dat v dotazu protokolu s [pokročilými agregacemi v Azure Monitorch dotazech protokolu](/azure/data-explorer/write-queries#advanced-aggregations).
+- Naučte se, jak propojit data z několika tabulek pomocí [spojení v Azure monitor dotazy protokolu](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins).
 - Získejte dokumentaci k celému dotazovacímu jazyku Kusto v [Referenční příručce jazyka KQL](/azure/kusto/query/).

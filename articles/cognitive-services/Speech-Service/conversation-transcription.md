@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: 5d95525c7dfecd44758c86903ca4a96c2290df52
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c27493748381a3aced92aab41745f352f228c50e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487771"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024989"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>Co je přepis konverzace na schůzkách (Preview)?
 
@@ -54,7 +54,7 @@ Toto je podrobný přehled toho, jak funguje přepis konverzace.
 
 ## <a name="expected-inputs"></a>Očekávané vstupy
 
-- **Audio stream s více kanály** – pro specifikace a podrobné informace o návrhu najdete informace v tématu věnovaném [mikrofonu sady SDK pro zařízení Microsoft Speech](https://aka.ms/cts/microphone). Další informace o tom, jak si můžete koupit vývojovou sadu, najdete v tématu věnovaném [sadě SDK pro zařízení Speech](https://aka.ms/cts/getsdk).
+- **Audio stream s více kanály** – pro specifikace a podrobné informace o návrhu najdete informace v tématu věnovaném [mikrofonu sady SDK pro zařízení Microsoft Speech](./speech-devices-sdk-microphone.md). Další informace o tom, jak si můžete koupit vývojovou sadu, najdete v tématu věnovaném [sadě SDK pro zařízení Speech](./get-speech-devices-sdk.md).
 - **Ukázky uživatelských hlasu** – přepis konverzace potřebuje profily uživatelů před konverzací. Budete potřebovat shromažďovat zvukové nahrávky od každého uživatele a pak je odeslat do [služby pro generování podpisů](https://aka.ms/cts/signaturegenservice) , abyste ověřili zvuk a vygenerovali profily uživatelů.
 
 > [!NOTE]

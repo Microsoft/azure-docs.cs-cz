@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a529875536c2feafe05695e5d20daed0873a95e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934442"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024768"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Implementace hlasových asistentů ve Windows
 
@@ -30,15 +30,15 @@ Po [nastavení prostředí](how-to-windows-voice-assistants-get-started.md) a u�
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>Ujistěte se, že je mikrofon dostupný a přístupný, a sledujte jeho stav.
 
-MVA potřebuje k dispozici mikrofon, aby bylo možné detekovat aktivaci hlasu. Použijte třídy [AppCapability](https://docs.microsoft.com/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362), [DeviceWatcher](https://docs.microsoft.com/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)a [MediaCapture](https://docs.microsoft.com/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) ke kontrole přístupu k ochraně osobních údajů mikrofonu, přítomnosti zařízení a stavu zařízení (například hlasitosti a ztlumení).
+MVA potřebuje k dispozici mikrofon, aby bylo možné detekovat aktivaci hlasu. Použijte třídy [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362), [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)a [MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) ke kontrole přístupu k ochraně osobních údajů mikrofonu, přítomnosti zařízení a stavu zařízení (například hlasitosti a ztlumení).
 
 ### <a name="register-the-application-with-the-background-service"></a>Registrace aplikace ve službě na pozadí
 
-Aby MVA spouštěla aplikaci na pozadí, musí být aplikace zaregistrovaná ve službě na pozadí. [Tady](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task)najdete kompletní příručku pro registraci služby na pozadí.
+Aby MVA spouštěla aplikaci na pozadí, musí být aplikace zaregistrovaná ve službě na pozadí. [Tady](/windows/uwp/launch-resume/register-a-background-task)najdete kompletní příručku pro registraci služby na pozadí.
 
 ### <a name="unlock-the-limited-access-feature"></a>Odemknout funkci omezený přístup
 
-K odemknutí funkce hlasového asistenta použijte klíč funkce pro omezený přístup poskytnutý společností Microsoft. K tomu použijte třídu [LimitedAccessFeature](https://docs.microsoft.com/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) z Windows SDK.
+K odemknutí funkce hlasového asistenta použijte klíč funkce pro omezený přístup poskytnutý společností Microsoft. K tomu použijte třídu [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) z Windows SDK.
 
 ### <a name="register-the-keyword-for-the-application"></a>Registrace klíčového slova pro aplikaci
 
@@ -86,7 +86,7 @@ Jakmile je aplikace hlasového agenta aktivována hlasem, dalším krokem je ov�
 
 ### <a name="retrieve-activation-audio"></a>Načíst zvuk aktivace
 
-Vytvořte [AudioGraph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph) a předejte ho do `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Tím se načte zvuková vyrovnávací paměť grafu se zvukem *začínajícím přibližně 3 sekundy, než bylo zjištěno klíčové slovo*. Tento dodatečný úvodní zvuk je zahrnutý k přizpůsobení široké škály délek klíčových slov a rychlosti mluvčího. Pak zpracujte událost [QuantumStarted](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) z zvukového grafu, aby se načetla zvuková data.
+Vytvořte [AudioGraph](/uwp/api/windows.media.audio.audiograph) a předejte ho do `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Tím se načte zvuková vyrovnávací paměť grafu se zvukem *začínajícím přibližně 3 sekundy, než bylo zjištěno klíčové slovo*. Tento dodatečný úvodní zvuk je zahrnutý k přizpůsobení široké škály délek klíčových slov a rychlosti mluvčího. Pak zpracujte událost [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) z zvukového grafu, aby se načetla zvuková data.
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);
@@ -118,7 +118,7 @@ Následující postup se zabývá požadavky na povolení hlasového asistenta v
 
 Pokyny pro návrh nad rámec zámků najdete v [Průvodci osvědčenými postupy](windows-voice-assistants-best-practices.md).
 
-Když aplikace zobrazuje zámek výše, považuje se za "Celoobrazovkový režim". Další informace o implementaci aplikace, která používá celoobrazovkový režim, najdete v [dokumentaci k celoobrazovkovém režimu](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access).
+Když aplikace zobrazuje zámek výše, považuje se za "Celoobrazovkový režim". Další informace o implementaci aplikace, která používá celoobrazovkový režim, najdete v [dokumentaci k celoobrazovkovém režimu](/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access).
 
 ### <a name="transitioning-above-lock"></a>Přechod nad zámkem
 
@@ -149,7 +149,7 @@ Položka aplikace na stránce nastavení ochrany osobních údajů aktivace hlas
 Aby bylo možné aplikaci řádně zavřít programově během výše nebo pod zámkem, použijte `WindowService.CloseWindow()` rozhraní API. Tím se aktivují všechny metody životního cyklu UWP, včetně potlačení, což umožňuje aplikaci uvolnit její `ConversationalAgentSession` instanci před zavřením.
 
 > [!NOTE]
-> Aplikace může být zavřena bez zavření [níže uvedené instance zámku](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-). V takovém případě musí výše uvedené zobrazení zámku "vyčistit", což zajistí, že po odemčení obrazovky nejsou k dispozici žádné obslužné rutiny událostí ani úlohy, které by se pokusily manipulovat s výše uvedeným zobrazením zámku.
+> Aplikace může být zavřena bez zavření [níže uvedené instance zámku](/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-). V takovém případě musí výše uvedené zobrazení zámku "vyčistit", což zajistí, že po odemčení obrazovky nejsou k dispozici žádné obslužné rutiny událostí ani úlohy, které by se pokusily manipulovat s výše uvedeným zobrazením zámku.
 
 ## <a name="next-steps"></a>Další kroky
 

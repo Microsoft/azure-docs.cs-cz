@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 2f7132ffa1fa55d1dfd8043677bf9695a589b7af
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 43b57d0b58c9268482ca27fd51040c7152ecdc25
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043033"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026047"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Vytvoření clusteru služby Azure Kubernetes (AKS), který používá zóny dostupnosti
 
@@ -31,12 +31,15 @@ Clustery AKS se teď dají vytvářet pomocí zón dostupnosti v následujícíc
 * Austrálie – východ
 * Střední Kanada
 * Střední USA
+* East US 
 * USA – východ 2
-* East US
 * Francie – střed
+* Německo – středozápad
 * Japan East
 * Severní Evropa
-* Jihovýchodní Asie
+* Jižní Afrika – sever
+* Středojižní USA
+* Southeast Asia
 * Spojené království – jih
 * West Europe
 * Západní USA 2
@@ -60,7 +63,7 @@ Zóny dostupnosti jsou nabídka s vysokou dostupností, která chrání vaše ap
 
 Další informace najdete v tématu [co jsou zóny dostupnosti v Azure?][az-overview].
 
-Clustery AKS, které jsou nasazené pomocí zón dostupnosti, můžou distribuovat uzly napříč několika zónami v rámci jedné oblasti. Například cluster v oblasti  *východní USA 2*   může vytvářet uzly ve všech třech zónách dostupnosti v *východní USA 2* . Tato distribuce prostředků clusteru AKS vylepšuje dostupnost clusteru, protože je odolná vůči selhání konkrétní zóny.
+Clustery AKS, které jsou nasazené pomocí zón dostupnosti, můžou distribuovat uzly napříč několika zónami v rámci jedné oblasti. Například cluster v oblasti  *východní USA 2*   může vytvářet uzly ve všech třech zónách dostupnosti v *východní USA 2*. Tato distribuce prostředků clusteru AKS vylepšuje dostupnost clusteru, protože je odolná vůči selhání konkrétní zóny.
 
 ![Distribuce uzlů AKS napříč zónami dostupnosti](media/availability-zones/aks-availability-zones.png)
 
@@ -72,7 +75,7 @@ Když vytvoříte cluster pomocí příkazu [AZ AKS Create][az-aks-create] , `--
 
 Pokud při vytváření clusteru AKS nedefinujete žádné zóny pro výchozí fond agentů, není zaručeno rozprostření komponent řídicí plochy mezi zónami dostupnosti. Další fondy uzlů můžete přidat pomocí příkazu [AZ AKS nodepool Add][az-aks-nodepool-add] a zadat `--zones` pro nové uzly, ale nezmění se způsob rozložení roviny ovládacího prvku mezi zónami. Nastavení zóny dostupnosti se dá definovat jenom v době vytváření clusteru nebo fondu uzlů.
 
-Následující příklad vytvoří cluster AKS s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup* . Vytvoří se celkem *3* uzlů – jeden agent v zóně *1* , jeden v *2* a potom jeden ve *3* .
+Následující příklad vytvoří cluster AKS s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*. Vytvoří se celkem *3* uzlů – jeden agent v zóně *1*, jeden v *2* a potom jeden ve *3*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus2

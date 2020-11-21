@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: affbf57fcda5ff9fb56e148c2fa8769e7aa775e6
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b8b3a0aa6d9790dbb5900eac2d79074f44a749d2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555800"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025646"
 ---
-# <a name="evaluate-and-improve-custom-speech-accuracy"></a>Vyhodnotit a zlepšit přesnost Custom Speech
+# <a name="evaluate-and-improve-custom-speech-accuracy"></a>Vyhodnocení a vylepšení přesnosti služby Custom Speech
 
 V tomto článku se dozvíte, jak změřit a zdokonalit přesnost modelů řeči a textu od Microsoftu nebo vašich vlastních modelů. Pro testování přesnosti se vyžadují data přepisu a přepisu, které by měly být k dispozici po dobu 30 až 5 hodin reprezentativního zvuku.
 
@@ -62,7 +62,7 @@ Po úspěšném vytvoření testu můžete porovnat výsledky vedle sebe.
 
 ### <a name="side-by-side-comparison"></a>Souběžné porovnání
 
-Po dokončení testu, který je označen změnou stavu na *úspěch* , najdete číslo wer pro oba modely zahrnuté v testu. Kliknutím na název testu zobrazíte stránku s podrobnostmi o testování. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě, které označují výsledky rozpoznávání dvou modelů společně s přepisem z odeslané datové sady. Chcete-li zkontrolovat souběžné porovnání, můžete přepínat různé typy chyb včetně vložení, odstranění a nahrazování. Díky poslechu zvuku a porovnávání výsledků rozpoznávání v každém sloupci, který ukazuje přepis a výsledky pro dva modely řeči, můžete rozhodnout, který model vyhovuje vašim potřebám a kde je potřeba další školení a vylepšení.
+Po dokončení testu, který je označen změnou stavu na *úspěch*, najdete číslo wer pro oba modely zahrnuté v testu. Kliknutím na název testu zobrazíte stránku s podrobnostmi o testování. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě, které označují výsledky rozpoznávání dvou modelů společně s přepisem z odeslané datové sady. Chcete-li zkontrolovat souběžné porovnání, můžete přepínat různé typy chyb včetně vložení, odstranění a nahrazování. Díky poslechu zvuku a porovnávání výsledků rozpoznávání v každém sloupci, který ukazuje přepis a výsledky pro dva modely řeči, můžete rozhodnout, který model vyhovuje vašim potřebám a kde je potřeba další školení a vylepšení.
 
 ## <a name="improve-custom-speech-accuracy"></a>Vylepšení přesnosti služby Custom Speech
 
@@ -114,7 +114,7 @@ Vezměte v úvahu tyto podrobnosti:
 
 ### <a name="add-new-words-with-pronunciation"></a>Přidat nová slova s výslovností
 
-Slova, která jsou tvořená nebo vysoce specializovaná, mohou mít jedinečné výslovnost. Tato slova je možné rozpoznat, pokud je možné slovo rozdělit na menší slova a vyslovit. Například pro rozpoznání pole **Xbox** , vyslovení jako **X**. Tento přístup nezvýší celkovou přesnost, ale může zvýšit rozpoznávání těchto klíčových slov.
+Slova, která jsou tvořená nebo vysoce specializovaná, mohou mít jedinečné výslovnost. Tato slova je možné rozpoznat, pokud je možné slovo rozdělit na menší slova a vyslovit. Například pro rozpoznání pole **Xbox**, vyslovení jako **X**. Tento přístup nezvýší celkovou přesnost, ale může zvýšit rozpoznávání těchto klíčových slov.
 
 > [!NOTE]
 > Tato technika je v tuto chvíli dostupná jenom pro některé jazyky. Podrobnosti najdete v tématu přizpůsobení výslovnosti v [tabulce převod řeči na text](language-support.md) .
@@ -136,5 +136,5 @@ Následující tabulka uvádí scénáře rozpoznávání hlasu a uvádí zdrojo
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Příprava a testování dat](how-to-custom-speech-test-data.md)
+* [Příprava a testování dat](./how-to-custom-speech-test-and-train.md)
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)

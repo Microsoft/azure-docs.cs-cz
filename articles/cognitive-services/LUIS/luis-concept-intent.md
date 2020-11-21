@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf5ab7361c84fb787366c7c361829e52362fe427
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536099"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025904"
 ---
 # <a name="intents-in-your-luis-app"></a>Záměry v aplikaci LUIS
 
@@ -32,7 +32,7 @@ Cestovní záměrové aplikace   |   Ukázkové promluvy   |
 Všechny aplikace jsou dodávány s předdefinovaným záměrem "[none](#none-intent)", což je záložní záměr.
 
 ## <a name="prebuilt-domains-provide-intents"></a>Předem připravené domény poskytují záměry
-Kromě záměrů, které definujete, můžete použít předem sestavené záměry z jedné z [předem připravených domén](luis-how-to-use-prebuilt-domains.md).
+Kromě záměrů, které definujete, můžete použít předem sestavené záměry z jedné z [předem připravených domén](./howto-add-prebuilt-models.md).
 
 ## <a name="return-all-intents-scores"></a>Vrátit skóre všech záměrů
 Přiřadíte utterance k jednomu záměru. Když LUIS přijme utterance na koncovém bodu, ve výchozím nastavení vrátí nejvyšší záměr pro daný utterance.
@@ -59,7 +59,7 @@ Vytvořte záměr, když má _záměr_ uživatele spustit akci v klientské apli
 
 ## <a name="prebuilt-domain-intents"></a>Předem sestavené záměry domény
 
-[Předem připravené domény](luis-how-to-use-prebuilt-domains.md) poskytují záměry pomocí projevy.
+[Předem připravené domény](./howto-add-prebuilt-models.md) poskytují záměry pomocí projevy.
 
 ## <a name="none-intent"></a>Žádný záměr
 

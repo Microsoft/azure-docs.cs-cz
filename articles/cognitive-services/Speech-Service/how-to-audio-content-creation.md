@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 5685a2553b95308a1c18c3e490737338f609b594
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 7d4d1acac591bfe6ce40efcf6166357d43718363
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330933"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024955"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Vylepšení syntézy pomocí nástroje pro tvorbu zvukového obsahu
 
@@ -33,13 +33,13 @@ Vytvoření zvukového obsahu je bezplatný nástroj, ale budete platit za služ
 
 ### <a name="step-1---create-an-azure-account"></a>Krok 1 – Vytvoření účtu Azure
 
-Pokud chcete pracovat se vytvářením zvukového obsahu, musíte mít [účet Microsoft](https://account.microsoft.com/account) a [účet Azure](https://azure.microsoft.com/free/ai/). Při [nastavování účtu](get-started.md#new-resource)postupujte podle těchto pokynů. 
+Pokud chcete pracovat se vytvářením zvukového obsahu, musíte mít [účet Microsoft](https://account.microsoft.com/account) a [účet Azure](https://azure.microsoft.com/free/ai/). Při [nastavování účtu](./overview.md#try-the-speech-service-for-free)postupujte podle těchto pokynů. 
 
 [Azure Portal](https://portal.azure.com/) je centralizované místo pro správu účtu Azure. Můžete vytvořit prostředek pro rozpoznávání řeči, spravovat přístup k produktu a monitorovat všechno od jednoduchých webových aplikací až po složitá cloudová nasazení. 
 
 ### <a name="step-2---create-a-speech-resource"></a>Krok 2 – Vytvoření prostředku pro rozpoznávání řeči
 
-Po registraci k účtu Azure budete muset vytvořit prostředek pro rozpoznávání řeči pod účtem Azure pro přístup ke službám Speech. Podívejte se na pokyny, [jak vytvořit prostředek řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview#create-the-azure-resource). 
+Po registraci k účtu Azure budete muset vytvořit prostředek pro rozpoznávání řeči pod účtem Azure pro přístup ke službám Speech. Podívejte se na pokyny, [jak vytvořit prostředek řeči](./overview.md#create-the-azure-resource). 
 
 Nasazení nového prostředku řeči chvíli trvá. Po dokončení nasazení můžete zahájit cestu k vytváření zvukového obsahu. 
 
@@ -63,7 +63,7 @@ Tento diagram znázorňuje kroky potřebné k vyladění výstupů převodu text
 2. Pomocí prostého textu nebo skriptů SSML [vytvořte soubor pro optimalizaci zvuku](#create-an-audio-tuning-file) . Zadejte nebo nahrajte svůj obsah do vytváření zvukového obsahu.
 3. Vyberte hlas a jazyk pro obsah vašeho skriptu. Vytváření zvukového obsahu zahrnuje všechny [hlasy od společnosti Microsoft pro převod textu na řeč](language-support.md#text-to-speech). Můžete použít standardní, neuronové nebo vlastní hlas.
    >[!NOTE]
-   > Gated Access je k dispozici pro vlastní hlasy neuronové, díky kterým můžete vytvářet hlasy s vysokou definicí podobnou přirozenému zvuku řeči. Další podrobnosti najdete v tématu [proces uzavírání](https://aka.ms/ignite2019/speech/ethics).
+   > Gated Access je k dispozici pro vlastní hlasy neuronové, díky kterým můžete vytvářet hlasy s vysokou definicí podobnou přirozenému zvuku řeči. Další podrobnosti najdete v tématu [proces uzavírání](./text-to-speech.md).
 
 4. Kliknutím na ikonu **Přehrát** (trojúhelník) zobrazíte náhled výchozího výstupu Shrnutí. Pak Vylepšete výstup úpravou výslovnosti, přerušení, sklonu, poměru, nevýbušnosti, stylu hlasu a dalších možností. Úplný seznam možností najdete v tématu [jazyk značek pro rozpoznávání řeči](speech-synthesis-markup.md). Tady je [video](https://www.youtube.com/watch?v=O1wIJ7mts_w) , které ukazuje, jak vyladit výstup řeči pomocí vytváření zvukového obsahu. 
 5. Uložte a [exportujte vyladěné zvuky](#export-tuned-audio). Když v systému uložíte stopu ladění, můžete pokračovat v práci a iterovat na výstupu. Až budete s výstupem spokojeni, můžete vytvořit úlohu vytvoření zvuku pomocí funkce exportu. Můžete sledovat stav úlohy exportu a stáhnout výstup pro použití s aplikacemi a produkty.
@@ -160,7 +160,7 @@ Pokud chcete, aby jeden z uživatelů měl přístup k ostatním uživatelům, m
 
 ## <a name="see-also"></a>Viz také
 
-* [Rozhraní API pro dlouhé zvukové zařízení](https://aka.ms/long-audio-api)
+* [Rozhraní API pro dlouhé zvukové zařízení](./long-audio-api.md)
 
 ## <a name="next-steps"></a>Další kroky
 

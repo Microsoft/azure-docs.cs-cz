@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3ff2a1f92cabb61f58d70b732738e613afa7cd9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319100"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025629"
 ---
 # <a name="inspect-custom-speech-data"></a>Kontrola dat služby Custom Speech
 
 > [!NOTE]
-> Tato stránka předpokládá, že jste si přečetli [data pro přípravu testu pro Custom Speech](how-to-custom-speech-test-data.md) a nahráli jste datovou sadu pro kontrolu.
+> Tato stránka předpokládá, že jste si přečetli [data pro přípravu testu pro Custom Speech](./how-to-custom-speech-test-and-train.md) a nahráli jste datovou sadu pro kontrolu.
 
 Custom Speech poskytuje nástroje, které vám umožní vizuálně zkontrolovat kvalitu rozpoznávání modelu tím, že porovná zvuková data s odpovídajícím výsledkem rozpoznávání. Z [portálu Custom Speech](https://speech.microsoft.com/customspeech)můžete přehrát nahraný zvuk a zjistit, jestli je zadaný výsledek rozpoznávání správný. Tento nástroj vám pomůže zkontrolovat kvalitu základního rozpoznávání řeči a textu od Microsoftu, prozkoumat vyškolený vlastní model nebo porovnat přepis dvou modelů.
 
@@ -43,7 +43,7 @@ Po úspěšném vytvoření testu uvidíte, jak model transcribes zvukovou datov
 
 ## <a name="side-by-side-model-comparisons"></a>Porovnání modelů souběžného sdílení
 
-Po _úspěšném_stavu testu klikněte na název testovací položky a zobrazí se podrobnosti testu. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě a zobrazuje výsledky rozpoznávání dvou modelů, které porovnáváte.
+Po _úspěšném_ stavu testu klikněte na název testovací položky a zobrazí se podrobnosti testu. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě a zobrazuje výsledky rozpoznávání dvou modelů, které porovnáváte.
 
 Chcete-li zkontrolovat souběžné porovnání, můžete přepínat různé typy chyb včetně vložení, odstranění a nahrazování. Díky poslechu zvuku a porovnávání výsledků rozpoznávání v jednotlivých sloupcích (ukazující přepis a výsledky dvou typů řeči na text) se můžete rozhodnout, který model vyhovuje vašim potřebám a kde jsou nutná vylepšení.
 
@@ -104,4 +104,4 @@ Soubory exportované do dat budou použity jako značka – Nová datová sada a
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Příprava testovacích dat pro Custom Speech](how-to-custom-speech-test-data.md)
+- [Příprava testovacích dat pro Custom Speech](./how-to-custom-speech-test-and-train.md)

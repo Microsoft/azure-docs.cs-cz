@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 2897fe2e0cc8aeb929b0a33f5cdaba9c60f2a244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dae7b8e0485c1a2456b85e0910f60b2164d4e41c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81261580"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026314"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam ukázek hlasu pro vytvoření vlastního hlasu
 
@@ -211,7 +211,7 @@ Pečlivě naslouchat každému souboru. V této fázi můžete upravit malé nec
 
 Převeďte každý soubor na 16 bitů a vzorkovací frekvenci o 16 kHz před uložením a pokud jste si poznamenali, že jste nahráli chat Studio, odeberte druhý kanál. Uložte každý soubor ve formátu WAV a pojmenujte soubory s utterance číslem ze svého skriptu.
 
-Nakonec vytvořte *přepis* , který přidruží jednotlivé soubory WAV k textové verzi odpovídající utterance. [Vytváření vlastních hlasových písem](how-to-customize-voice-font.md) obsahuje podrobnosti o požadovaném formátu. Text můžete zkopírovat přímo z vašeho skriptu. Pak vytvořte soubor zip se soubory WAV a přepis textu.
+Nakonec vytvořte *přepis* , který přidruží jednotlivé soubory WAV k textové verzi odpovídající utterance. [Vytváření vlastních hlasových písem](./how-to-custom-voice-create-voice.md) obsahuje podrobnosti o požadovaném formátu. Text můžete zkopírovat přímo z vašeho skriptu. Pak vytvořte soubor zip se soubory WAV a přepis textu.
 
 Archivujte původní nahrávky na bezpečném místě pro případ, že je budete potřebovat později. Zachovejte i svůj skript a poznámky.
 
@@ -220,4 +220,4 @@ Archivujte původní nahrávky na bezpečném místě pro případ, že je budet
 Jste připraveni nahrát vaše nahrávky a vytvořit vlastní hlas.
 
 > [!div class="nextstepaction"]
-> [Vytváření vlastních hlasových písem](how-to-customize-voice-font.md)
+> [Vytváření vlastních hlasových písem](./how-to-custom-voice-create-voice.md)

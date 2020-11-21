@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360119"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026023"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integrace s klientskou aplikací pomocí sady Speech SDK
 
@@ -35,7 +35,7 @@ Budete také potřebovat:
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) nebo vyšší. Tato příručka je založená na aplikaci Visual Studio 2019.
 > * Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](overview.md#try-the-speech-service-for-free) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
-> * [Povolení vývoje zařízení](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
+> * [Povolení vývoje zařízení](/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>Krok 1: publikování aplikace Custom Commands
 
@@ -43,7 +43,7 @@ Budete také potřebovat:
 1. Přejít na **Nastavení**, vyberte **prostředek Luis** .
 1. Pokud není **prostředek předpovědi** přiřazený, vyberte klíč předpovědi dotazu nebo vytvořte nový.
 
-    Klíč předpovědi dotazu se vždy vyžaduje před publikováním aplikace. Další informace o prostředcích LUIS najdete v referenčních informacích k [vytvoření prostředku Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription) .
+    Klíč předpovědi dotazu se vždy vyžaduje před publikováním aplikace. Další informace o prostředcích LUIS najdete v referenčních informacích k [vytvoření prostředku Luis](../luis/luis-how-to-azure-subscription.md) .
 
 1. Vraťte se zpět na příkazy pro úpravy, vyberte **publikovat** .
 
@@ -65,7 +65,7 @@ V tomto kroku přidáme kód XAML, který definuje uživatelské rozhraní aplik
 
 Vytvořte uživatelské rozhraní aplikace přidáním kódu jazyka XAML.
 
-1. V **Průzkumník řešení**otevřete `MainPage.xaml`
+1. V **Průzkumník řešení** otevřete `MainPage.xaml`
 
 1. V zobrazení jazyka XAML návrháře nahraďte celý obsah následujícím fragmentem kódu:
 
@@ -129,7 +129,7 @@ Přidejte zdroj kódu na pozadí, aby aplikace fungovala podle očekávání. Zd
 
 Přidejte zdroj kódu na pozadí následujícím způsobem:
 
-1. V **Průzkumník řešení**otevřete zdrojový soubor kódu na pozadí `MainPage.xaml.cs` (seskupeno pod `MainPage.xaml` ).
+1. V **Průzkumník řešení** otevřete zdrojový soubor kódu na pozadí `MainPage.xaml.cs` (seskupeno pod `MainPage.xaml` ).
 
 1. Obsah souboru nahraďte následujícím kódem: 
 
@@ -416,7 +416,7 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
 
    ![Žádost o oprávnění k přístupu k mikrofonu](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Vyberte **hovořit**a mluvte do mikrofonu zařízení anglickou frázi nebo větu. Váš hlas se přenáší na kanál s přímým přístupem a přepisu na text, který se zobrazí v okně.
+1. Vyberte **hovořit** a mluvte do mikrofonu zařízení anglickou frázi nebo větu. Váš hlas se přenáší na kanál s přímým přístupem a přepisu na text, který se zobrazí v okně.
 
 ## <a name="next-steps"></a>Další kroky
 

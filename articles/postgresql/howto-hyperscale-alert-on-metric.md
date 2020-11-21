@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 7e455565a0cd5e1fc96a6fe7d9e0502da3214fcf
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909909"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026450"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Použití Azure Portal k nastavení výstrah pro metriky pro Azure Database for PostgreSQL – Citus (škálování)
 
@@ -41,13 +41,13 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 
 4. Otevře se stránka **vytvořit pravidlo** , jak je znázorněno níže. Vyplňte požadované informace:
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Vybrat pravidla výstrah":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Přidat formulář upozornění metriky":::
 
-5. V části **Podmínka** vyberte **Přidat** .
+5. V části **Podmínka** vyberte **Přidat**.
 
 6. Vyberte metriku ze seznamu signálů, na kterých se má upozornit. V tomto příkladu vyberte "úložiště v procentech".
    
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="Vybrat pravidla výstrah":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="Snímek obrazovky se zobrazí na stránce Konfigurovat logiku signálu, kde můžete zobrazit několik signálů.":::
 
 7. Konfigurace logiky výstrah:
 
@@ -58,13 +58,13 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
    
    Po dokončení vyberte **Hotovo** .
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="Vybrat pravidla výstrah":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="Snímek obrazovky se zobrazí v podokně, kde můžete nakonfigurovat logiku výstrah.":::
 
 8. V části **skupiny akcí** vyberte **vytvořit novou** a vytvořte novou skupinu pro příjem oznámení o výstraze.
 
 9. Vyplňte formulář přidat skupinu akcí s názvem, krátkým názvem, předplatným a skupinou prostředků.
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="Vybrat pravidla výstrah":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="Snímek obrazovky se zobrazí ve formuláři přidat skupinu akcí, kde můžete zadat popsané hodnoty.":::
 
 10. Nakonfigurujte typ akce **e-mail/SMS/Push/Voice** .
     
@@ -72,11 +72,11 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
    
     Po dokončení vyberte **OK** .
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="Vybrat pravidla výstrah":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="Snímek obrazovky se zobrazí v podokně E-mail/S M/s/hlasové oznámení/hlas.":::
 
 11. Zadejte název, popis a závažnost pravidla výstrahy.
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="Vybrat pravidla výstrah"::: 
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="Snímek obrazovky se zobrazí v podokně Podrobnosti výstrahy."::: 
 
 12. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
 
@@ -101,8 +101,8 @@ Doporučujeme nastavit upozornění na místo na disku pro každý uzel v každ�
 Vzhledem k dosažení limitu místa na disku Vyzkoušejte tyto techniky, abyste získali více volného místa:
 
 * Zkontrolujte zásady uchovávání dat. Pokud je to možné, přesuňte starší data do chladírenského úložiště.
-* Zvažte [Přidání uzlů](howto-hyperscale-scaling.md#add-worker-nodes) do skupiny serverů a nové vyrovnávání horizontálních oddílů. Nové vyrovnávání distribuuje data napříč více počítači.
-* Zvažte [větší kapacitu](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes) pracovních uzlů. Každý pracovní proces může mít až 2 TiB úložiště. Před změnou velikosti uzlů by se ale mělo provést pokus o přidání uzlů, protože přidávání uzlů se dokončí rychleji.
+* Zvažte [Přidání uzlů](howto-hyperscale-scale-grow.md#add-worker-nodes) do skupiny serverů a nové vyrovnávání horizontálních oddílů. Nové vyrovnávání distribuuje data napříč více počítači.
+* Zvažte [větší kapacitu](howto-hyperscale-scale-grow.md#increase-or-decrease-vcores-on-nodes) pracovních uzlů. Každý pracovní proces může mít až 2 TiB úložiště. Před změnou velikosti uzlů by se ale mělo provést pokus o přidání uzlů, protože přidávání uzlů se dokončí rychleji.
 
 ### <a name="cpu-usage"></a>Využití procesoru
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: 1f85ba0c64db23e156f384fadcc5ca7bf84a58d4
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: aa2783abe86b90a907510dec8d7eb40162820ad5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130742"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025255"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Kurz: extrakce strukturovaných dat ze utterance uživatelů pomocí entit strojového učení v Language Understanding (LUIS)
 
@@ -79,11 +79,11 @@ K extrakci podrobností o pizzaém pořadí vytvořte entitu Machine-Learning ne
     > [!NOTE]
     > Entita nebude vždy celá utterance. V tomto konkrétním případě `pickup` indikuje, jak má být objednávka přijata. Z koncepční perspektivy `pickup` by měla být součástí označené entity pro danou objednávku.
 
-1. V poli **Zvolte typ entity** vyberte **přidat strukturu** a pak vyberte **Další** . Struktura je nutná pro přidání podentit, jako je velikost a množství.
+1. V poli **Zvolte typ entity** vyberte **přidat strukturu** a pak vyberte **Další**. Struktura je nutná pro přidání podentit, jako je velikost a množství.
 
     ![Snímek obrazovky zobrazuje okno zvolit typ entity s zaškrtnutou možností přidat strukturu.](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
-1. V poli **Přidat dílčí entity (volitelné)** vyberte **+** na `Order` řádku, pak přidat `Size` a `Quantity` jako subentity a pak vyberte **vytvořit** .
+1. V poli **Přidat dílčí entity (volitelné)** vyberte **+** na `Order` řádku, pak přidat `Size` a `Quantity` jako subentity a pak vyberte **vytvořit**.
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky se zvýrazněným oknem přidat podentity (volitelné) s vybranými subentitami.](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
@@ -96,7 +96,7 @@ V předchozích krocích vytvoříte entitu a subentitu. Pro zlepšení extrakce
 
 1. V nabídce vlevo vyberte **entity** a pak vyberte **objednat** entitu.
 
-1. Na kartě **schéma a funkce** vyberte **Velikost** subentity a pak vyberte **+ Přidat funkci** .
+1. Na kartě **schéma a funkce** vyberte **Velikost** subentity a pak vyberte **+ Přidat funkci**.
 
 1. V rozevírací nabídce vyberte **vytvořit nový seznam frází** .
 
@@ -108,7 +108,7 @@ V předchozích krocích vytvoříte entitu a subentitu. Pro zlepšení extrakce
 
 Přidání seznamu známých velikostí, které klientská aplikace rozpozná, pomůže také extrakci.
 
-1. V nabídce vlevo vyberte **entity** a pak vyberte **+ vytvořit** .
+1. V nabídce vlevo vyberte **entity** a pak vyberte **+ vytvořit**.
 
 1. Nastavte název entity jako `SizeListentity` a nastavte typ jako **seznam** , aby bylo možné ho snadno identifikovat ve srovnání s `SizePhraselist` vytvořeným v předchozí části.
 
@@ -116,9 +116,9 @@ Přidání seznamu známých velikostí, které klientská aplikace rozpozná, p
 
     |Normalizovaná hodnota|Synonyma|
     |--|--|
-    |Malý|SM, SML, malý, nejmenší|
+    |Malá|SM, SML, malý, nejmenší|
     |Střední|MD, MDM, Regular, Average, prostřední|
-    |Velký|LG, LRG, velký|
+    |Velká|LG, LRG, velký|
     |XLarge|XL, největší, Obří|
 
 
@@ -131,7 +131,7 @@ Přidání seznamu známých velikostí, které klientská aplikace rozpozná, p
 
 1. Ze seznamu entit vyberte **pořadí** .
 
-1. Na kartě **schéma a funkce** vyberte entitu **Velikost** a pak vyberte **+ Přidat funkci** .
+1. Na kartě **schéma a funkce** vyberte entitu **Velikost** a pak vyberte **+ Přidat funkci**.
 
 1. V rozevíracím seznamu vyberte **@ SizeListentity** .
 
@@ -141,9 +141,9 @@ Přidání seznamu známých velikostí, které klientská aplikace rozpozná, p
 
 Přidání předdefinované číselné entity také pomůže extrakci.
 
-1. V nabídce vlevo vyberte **entity** a pak vyberte **Přidat předem vytvořenou entitu** .
+1. V nabídce vlevo vyberte **entity** a pak vyberte **Přidat předem vytvořenou entitu**.
 
-1. V seznamu vyberte **číslo** a potom vyberte **Hotovo** .
+1. V seznamu vyberte **číslo** a potom vyberte **Hotovo**.
 
 1. Vyberte **entity** z levé nabídky a vraťte se do seznamu entit.
 
@@ -151,7 +151,7 @@ Přidání předdefinované číselné entity také pomůže extrakci.
 
 1. Ze seznamu entit vyberte **pořadí** .
 
-1. Na kartě **schéma a funkce** vyberte entitu **množství** a pak vyberte **+ Přidat funkci** .
+1. Na kartě **schéma a funkce** vyberte entitu **množství** a pak vyberte **+ Přidat funkci**.
 
 1. V rozevíracím seznamu vyberte **@ Number** .
 
@@ -173,7 +173,7 @@ Je vytvořená entita strojového učení a její subentity mají funkce. Aby by
 
 1. V levém navigačním panelu vyberte **záměry** a pak vyberte záměr **OrderPizza** .
 
-1. Pokud chcete otevřít **paletu entit** , vyberte **@** symbol na kontextovém panelu nástrojů.
+1. Pokud chcete otevřít **paletu entit**, vyberte **@** symbol na kontextovém panelu nástrojů.
 
 1. Vyberte jednotlivé řádky entity v paletě a potom pomocí kurzoru palety vyberte entitu v každém příkladu utterance. Až budete hotovi, seznam entit by měl vypadat jako na následujícím obrázku.
 
@@ -182,7 +182,7 @@ Je vytvořená entita strojového učení a její subentity mají funkce. Aby by
 
 ## <a name="train-the-app"></a>Trénování aplikace
 
-Pokud chcete aplikaci naučit, vyberte **vlak** . Školení aplikuje změny, jako jsou nové entity a označené projevy, na aktivní model.
+Pokud chcete aplikaci naučit, vyberte **vlak**. Školení aplikuje změny, jako jsou nové entity a označené projevy, na aktivní model.
 
 ## <a name="add-a-new-example-utterance"></a>Přidat nový příklad utterance
 
@@ -236,12 +236,12 @@ Abyste mohli přijmout předpověď služby LUIS v chatbotu nebo jiné klientsk�
 
     ![Snímek obrazovky s tlačítkem publikovat do koncového bodu LUIS v pravé horní nabídce](./media/howto-publish/publish-button.png)
 
-1. Vyberte **produkční** slot, vyberte **změnit nastavení** , vyberte **Analýza mínění** a potom vyberte **Hotovo** .
+1. Vyberte **produkční** slot, vyberte **změnit nastavení**, vyberte **Analýza mínění** a potom vyberte **Hotovo**.
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s LUIS publikováním do koncového bodu](./media/tutorial-machine-learned-entity/publish-with-sentiment-analysis.png)
 
-1. Vyberte odkaz **přístup k adresám URL koncových bodů** v oznámení, abyste přešli na stránku **prostředků Azure** . Adresa URL koncového bodu je uvedena jako **vzorový dotaz** .
+1. Vyberte odkaz **přístup k adresám URL koncových bodů** v oznámení, abyste přešli na stránku **prostředků Azure** . Adresa URL koncového bodu je uvedena jako **vzorový dotaz**.
 
 ## <a name="get-intent-and-entity-prediction-from-http-endpoint"></a>Získání záměru a předpovědi entit z koncového bodu HTTP
 
@@ -297,7 +297,7 @@ Abyste mohli přijmout předpověď služby LUIS v chatbotu nebo jiné klientsk�
 
 ## <a name="related-information"></a>Související informace
 
-* [Kurz – záměry](luis-quickstart-intents-only.md)
+* [Kurz – záměry](./tutorial-intents-only.md)
 * [Koncept –](luis-concept-entity-types.md) koncepční informace o entitách
 * [Koncept – funkce](luis-concept-feature.md) koncepční informace
 * [Postup výuky](luis-how-to-train.md)
@@ -309,4 +309,4 @@ Abyste mohli přijmout předpověď služby LUIS v chatbotu nebo jiné klientsk�
 V tomto kurzu aplikace používá entitu strojového učení k nalezení záměru utterance uživatele a extrakci podrobností z tohoto utterance. Pomocí entity strojového učení lze rozložit podrobnosti o entitě.
 
 > [!div class="nextstepaction"]
-> [Přidání předem připravené entity klíčové fráze](luis-quickstart-intent-and-key-phrase.md)
+> [Přidání předem připravené entity klíčové fráze](./luis-reference-prebuilt-keyphrase.md)

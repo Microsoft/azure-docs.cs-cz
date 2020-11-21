@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e22eaacd73bb15ddf43f416831ff5ff42923b6e0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 8d70a7b44893ba9c9a0cc2d1d01c65e8e1584e0f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393383"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024478"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Registrace aplikace prostředků v Azure Active Directory
 
@@ -37,73 +37,7 @@ az ad sp create --id 4f6778d8-5aef-43dc-a1ff-b073724b9495
 
 ## <a name="fhir-server-for-azure"></a>Server FHIR pro Azure
 
-Pokud používáte Open Source Server FHIR pro Azure, použijte následující postup k registraci aplikace prostředků.
-
-### <a name="app-registrations-in-azure-portal"></a>Registrace aplikací v Azure Portal
-
-1. Na webu [Azure Portal](https://portal.azure.com) klikněte na levém navigačním panelu na **Azure Active Directory**.
-
-2. V okně **Azure Active Directory** klikněte na **Registrace aplikací** :
-
-    ![Azure Portal. Registrace nové aplikace](media/how-to-aad/portal-aad-new-app-registration.png)
-
-3. Klikněte na **novou registraci**.
-
-### <a name="add-a-new-application-registration"></a>Přidat novou registraci aplikace
-
-Vyplňte podrobnosti nové aplikace. Pro zobrazované jméno neexistují žádné zvláštní požadavky, ale jeho nastavení na identifikátor URI serveru FHIR usnadňuje hledání:
-
-![Registrace nové aplikace](media/how-to-aad/portal-aad-register-new-app-registration-NAME.png)
-
-### <a name="set-identifier-uri-and-define-scopes"></a>Nastavte identifikátor URI identifikátoru a definujte obory.
-
-Aplikace prostředků má identifikátor URI identifikátoru (identifikátor URI ID aplikace), který můžou klienti použít při žádosti o přístup k prostředku. Tato hodnota naplní `aud` deklaraci přístupového tokenu. Doporučuje se, abyste tento identifikátor URI nastavili jako identifikátor URI vašeho serveru FHIR. Pro inteligentní aplikace FHIR se předpokládá, že *cílová skupina* je identifikátor URI serveru FHIR.
-
-1. Klikněte na **zveřejnit rozhraní API** .
-
-2. Klikněte na **nastavit** vedle *ID identifikátoru URI aplikace*.
-
-3. Zadejte identifikátor URI identifikátoru a klikněte na **Uložit**. Identifikátor URI s dobrý identifikátorem by byl identifikátor URI vašeho serveru FHIR.
-
-4. Klikněte na **Přidat obor** a přidejte všechny obory, které byste chtěli pro vaše rozhraní API definovat. Aby bylo možné v budoucnu udělit oprávnění k vaší aplikaci prostředků, je nutné přidat alespoň jeden obor. Pokud nemáte žádné konkrétní obory, které chcete přidat, můžete přidat user_impersonation jako obor.
-
-![Cílová skupina a obor](media/how-to-aad/portal-aad-register-new-app-registration-AUD-SCOPE.png)
-
-### <a name="define-application-roles"></a>Definování aplikačních rolí
-
-Rozhraní Azure API pro FHIR a server OSS FHIR pro Azure používají pro řízení přístupu na základě role [Azure Active Directory aplikační role](/azure/architecture/multitenant-identity/app-roles) . Pro definování rolí, které by měly být k dispozici pro rozhraní API serveru FHIR, otevřete [manifest](/azure/active-directory/active-directory-application-manifest/)aplikace prostředků:
-
-1. Klikněte na **manifest** :
-
-    ![Aplikační role](media/how-to-aad/portal-aad-register-new-app-registration-APP-ROLES.png)
-
-2. Do `appRoles` Vlastnosti přidejte role, které chcete, aby měli uživatelé nebo aplikace:
-
-    ```json
-    "appRoles": [
-      {
-        "allowedMemberTypes": [
-          "User",
-          "Application"
-        ],
-        "description": "FHIR Server Administrators",
-        "displayName": "admin",
-        "id": "1b4f816e-5eaf-48b9-8613-7923830595ad",
-        "isEnabled": true,
-        "value": "admin"
-      },
-      {
-        "allowedMemberTypes": [
-          "User"
-        ],
-        "description": "Users who can read",
-        "displayName": "reader",
-        "id": "c20e145e-5459-4a6c-a074-b942bbd4cfe1",
-        "isEnabled": true,
-        "value": "reader"
-      }
-    ],
-    ```
+Pokud používáte Open Source Server FHIR pro Azure, použijte k registraci aplikace prostředků postup v [úložišti GitHub](https://github.com/microsoft/fhir-server/blob/master/docs/Register-Resource-Application.md) . 
 
 ## <a name="next-steps"></a>Další kroky
 
