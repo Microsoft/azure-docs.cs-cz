@@ -1,5 +1,5 @@
 - name: Azure Synapse (pracovní prostory ve verzi Preview)
-  href: sql-data-warehouse/index.yml
+  href: overview-what-is.md
 - name: Přepnutí na Azure Synapse (dříve SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: Přehled
@@ -7,10 +7,8 @@
     - name: Co je Azure Synapse?
       href: overview-what-is.md
       displayName: overview
-    - name: Tahák
-      href: overview-cheat-sheet.md
-    - name: Nejčastější dotazy
-      href: overview-faq.md
+    - name: Terminologie
+      href: overview-terminology.md
     - name: "Poznámky k\_verzi"
       href: release-notes.md
 - name: Rychlé starty

@@ -78,7 +78,7 @@
     - name: Visící záznam DNS a převzetí subdomény
       href: subdomain-takeover.md
     - name: Zabezpečení hybridní síťové architektury
-      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%252fazure%252fsecurity%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fsecurity%252ftoc.json
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
 - name: Zabezpečení IaaS
   items:
     - name: Antimalware od Microsoftu
@@ -118,7 +118,7 @@
         - name: Kontrolní seznam zabezpečení
           href: database-security-checklist.md
     - name: Příručka zabezpečení úložiště
-      href: ../../storage/blobs/security-recommendations.md?bc=%252fazure%252fsecurity%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fsecurity%252ftoc.json
+      href: ../../storage/blobs/security-recommendations.md?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
     - name: Customer Lockbox
       href: customer-lockbox-overview.md
     - name: Standardní hodnoty zabezpečení pro Customer Lockbox

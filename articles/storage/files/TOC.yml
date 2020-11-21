@@ -102,7 +102,7 @@
         - name: Nasazení Synchronizace souborů Azure
           href: storage-sync-files-deployment-guide.md
         - name: FCI SQL Serveru se sdílenými složkami úrovně Premium
-          href: ../../azure-sql/virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json
+          href: ../../azure-sql/virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Připojení
       items:
         - name: Připojení sdílené složky SMB k Windows

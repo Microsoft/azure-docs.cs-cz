@@ -93,7 +93,7 @@
         - name: Softwarové plány
           href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Databáze SQL
-          href: ../../azure-sql/database/reserved-capacity-overview.md?toc=%252fazure%252fcost-management-billing%252freservations%252ftoc.json
+          href: ../../azure-sql/database/reserved-capacity-overview.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
         - name: Virtuální počítače
           href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: 'Zobrazení, správa a optimalizace po nákupu'

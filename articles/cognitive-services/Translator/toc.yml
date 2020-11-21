@@ -23,7 +23,7 @@
     - name: Návody
       items:
         - name: Registrace ke službě Translator
-          href: translator-text-how-to-signup.md
+          href: ./translator-how-to-signup.md
         - name: Migrace na Text API v3
           href: migrate-to-v3.md
         - name: Přidání filtrování vulgárních výrazů

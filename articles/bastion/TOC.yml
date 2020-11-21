@@ -21,6 +21,10 @@
       href: work-remotely-support.md
     - name: Bastion a VNet Peering
       href: vnet-peering.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: Vytvoření hostitele

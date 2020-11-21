@@ -70,7 +70,7 @@
         - name: Autorizace operací správy
           href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Integrované ovládací prvky zabezpečení
-          href: ../common/security-baseline.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json
+          href: ../common/security-baseline.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Použití privátních koncových bodů Azure
           href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Mechanismy zabezpečení služby Azure Policy

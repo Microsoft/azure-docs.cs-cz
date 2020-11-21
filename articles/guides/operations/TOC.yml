@@ -32,24 +32,24 @@
               href: ../../site-recovery/azure-to-azure-quickstart.md
     - name: Kurzy
       items:
-        - name: Virtuální počítače
+        - name: Virtual Machines
           items:
             - name: Vytvoření a správa virtuálního počítače s Windows
               href: ../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Vytvoření a správa virtuálního počítače s Linuxem
               href: ../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Kanál CI/CD Jenkins
-              href: /azure/developer/jenkins/pipeline-with-github-and-docker?toc=%252fazure%252fguides%252foperations%252ftoc.json
+              href: /azure/developer/jenkins/pipeline-with-github-and-docker?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Vyrovnávání zatížení virtuálních počítačů
               href: ../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Tvorba šablon Azure Resource Manageru
-              href: ../../azure-resource-manager/templates/template-syntax.md?toc=%252fazure%252fguides%252foperations%252ftoc.json
+              href: ../../azure-resource-manager/templates/template-syntax.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Zálohování virtuálních počítačů ve velkém měřítku
               href: ../../backup/tutorial-backup-vm-at-scale.md
     - name: Průvodce postupy
       items:
         - name: Stažení faktury za Azure a dat o denním využití
-          href: ../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md?toc=%252fazure%252fguides%252foperations%252ftoc.json
+          href: ../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
     - name: Zdroje a prostředky
       items:
         - name: Katalog produktů Azure
@@ -60,4 +60,4 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Přehled Portálu Microsoft Azure
           href: 'https://azure.microsoft.com/documentation/articles/azure-portal-overview/'
-    - name: Reference
+    - name: Odkazy

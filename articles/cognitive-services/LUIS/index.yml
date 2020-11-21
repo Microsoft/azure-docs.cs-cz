@@ -12,12 +12,12 @@ metadata:
   title: Dokumentace ke službě Language Understanding (LUIS)
   titleSuffix: Azure Cognitive Services
   description: Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co lidé vlastními slovy chtějí. Služba LUIS využívá strojové učení a umožňuje vývojářům sestavovat aplikace, které dokážou přijmout uživatelský vstup v přirozeném jazyce a extrahovat jeho význam.
-  ms.openlocfilehash: 3bae2e6e0a79dbc0106dc71a9510aa4dc318650c
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: ff928f1879f8cfd356fa020ff6afaa68b72f63c5
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92364180"
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95019377"
 landingContent:
 - title: Informace o službě Language Understanding (LUIS)
   linkLists:
@@ -70,7 +70,7 @@ landingContent:
     - text: Přidání záměru s ukázkovými výroky
       url: luis-how-to-add-intents.md
     - text: Přidání entit
-      url: luis-how-to-add-example-utterances.md
+      url: ./luis-how-to-add-entities.md
     - text: Přidání funkce seznamu frází
       url: luis-how-to-add-features.md
 - title: Správa verzí, trénování, testování a publikování
@@ -78,7 +78,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Správa verzí
-      url: luis-concept-version.md
+      url: ./luis-concept-app-iteration.md
     - text: Interaktivní testování
       url: luis-concept-test.md
     - text: Dávkové testování
@@ -110,15 +110,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: S C# s využitím REST
-      url: luis-get-started-cs-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: S Go s využitím REST
-      url: luis-get-started-go-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: S Javou s využitím REST
-      url: luis-get-started-java-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: S Node.js s využitím REST
-      url: luis-get-started-node-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: S Pythonem s využitím REST
-      url: luis-get-started-python-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
 - title: Referenční informace
   linkLists:
   - linkListType: reference

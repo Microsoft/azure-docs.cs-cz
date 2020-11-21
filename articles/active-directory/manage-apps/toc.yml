@@ -201,7 +201,7 @@
             - name: Integrace s proxy aplikací s využitím PingAccess
               href: application-proxy-ping-access-publishing-guide.md
             - name: Integrace s Azure AD Domain Services
-              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=azure%252factive-directory%252fmanage-apps%252fcontext%252fmanage-apps-context
+              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
             - name: Integrace s Power BI
               href: application-proxy-integrate-with-power-bi.md
             - name: "Integrace s\_řešením Cloud App Security"
@@ -281,7 +281,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory pro vývojáře
-      href: ../develop/developer-support-help-options.md?context=azure%252factive-directory%252fmanage-apps%252fcontext%252fmanage-apps-context
+      href: ../develop/developer-support-help-options.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
     - name: Fórum Azure pro názory
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Stránka s dotazy na Microsoft Q&A
