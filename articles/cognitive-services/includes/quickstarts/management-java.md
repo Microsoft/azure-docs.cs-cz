@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 346854d5990ac6861bd4eb93914bb1745b90bfa5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7fc96127d4449cfe0333ba81532d3c5c4ec19fe
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321550"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097925"
 ---
-[Referenční dokumentace](https://docs.microsoft.com/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18)  |  [Balíček (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
+[Referenční dokumentace](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18)  |  [Balíček (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Platné předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -42,7 +42,7 @@ Spusťte `gradle init` příkaz z pracovního adresáře. Tento příkaz vytvoř
 gradle init --type basic
 ```
 
-Po zobrazení výzvy k výběru **DSL**vyberte **Kotlin**.
+Po zobrazení výzvy k výběru **DSL** vyberte **Kotlin**.
 
 V pracovním adresáři spusťte následující příkaz:
 
@@ -80,7 +80,7 @@ Přejděte do nové složky **Src/Main/Java** a vytvořte soubor s názvem *Mana
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Přidejte třídu v *Management. Java*a přidejte do ní následující pole a jejich hodnoty. Naplňte své hodnoty pomocí instančního objektu, který jste vytvořili, a dalších informací o účtu Azure.
+Přidejte třídu v *Management. Java* a přidejte do ní následující pole a jejich hodnoty. Naplňte své hodnoty pomocí instančního objektu, který jste vytvořili, a dalších informací o účtu Azure.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/azure_management_service/quickstart.java?name=snippet_constants)]
 
@@ -126,7 +126,7 @@ Následující metoda odstraní zadaný prostředek z dané skupiny prostředků
 
 ## <a name="see-also"></a>Viz také
 
-* [Referenční dokumentace k sadě Azure Management SDK](https://docs.microsoft.com/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)
-* [Co je Azure Cognitive Services?](../../Welcome.md)
+* [Referenční dokumentace k sadě Azure Management SDK](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)
+* [Co je Azure Cognitive Services?](../../what-are-cognitive-services.md)
 * [Ověřování požadavků do Azure Cognitive Services](../../authentication.md)
 * [Vytvoření nového prostředku pomocí webu Azure Portal](../../cognitive-services-apis-create-account.md)

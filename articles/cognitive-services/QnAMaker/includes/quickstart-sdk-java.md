@@ -8,12 +8,12 @@ ms.subservice: qna-maker
 ms.topic: include
 ms.date: 09/04/2020
 ms.author: v-jawe
-ms.openlocfilehash: 01b8e32db50b8a1b75bb0d3ebeb6d2f4a3f901a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 59416d2e65f17dadfd9d92969319d1804fa308ac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90982725"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95095516"
 ---
 Pomocí klientské knihovny QnA Maker pro jazyk Java:
 
@@ -30,7 +30,7 @@ Pomocí klientské knihovny QnA Maker pro jazyk Java:
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [JDK](https://www.oracle.com/java/technologies/javase-downloads.html)
@@ -77,7 +77,7 @@ Pro okamžité operace metoda obvykle vrací výsledek, pokud existuje. V příp
 
 ### <a name="qnamakerruntimeclient-object-model"></a>Objektový model QnAMakerRuntimeClient
 
-Běhový QnA Maker klient je objekt [QnAMakerRuntimeClient](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/QnAMakerRuntimeClient.java) .
+Běhový QnA Maker klient je objekt [QnAMakerRuntimeClient](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/QnAMakerClient.java) .
 
 Po publikování znalostní báze pomocí klienta pro vytváření obsahu použijte k získání odpovědi ze znalostní báze [generateAnswer](https://github.com/Azure/azure-sdk-for-java/blob/b455a61f4c6daece13590a0f4136bab3c4f30546/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/Runtimes.java#L36) metodu klienta modulu runtime.
 
@@ -93,10 +93,10 @@ Vytvořte instanci klienta s koncovým bodem pro vytváření obsahu a klíčem 
 
 Znalostní báze ukládá páry dotazů a odpovědí pro objekt [CreateKbDTO](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/CreateKbDTO.java) ze tří zdrojů:
 
-* Pro **redakční obsah**použijte objekt [QnADTO](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/QnADTO.java) .
+* Pro **redakční obsah** použijte objekt [QnADTO](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/QnADTO.java) .
     * Chcete-li použít metadata a výzvy pro následné zpracování, použijte redakční kontext, protože tato data jsou přidána na jednotlivé úrovně páru QnA.
-* Pro **soubory**použijte objekt [FileDTO](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/FileDTO.java) . FileDTO zahrnuje název souboru i veřejnou adresu URL pro přístup k souboru.
-* V případě **adres URL**použijte seznam řetězců, které reprezentují veřejně dostupné adresy URL.
+* Pro **soubory** použijte objekt [FileDTO](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/FileDTO.java) . FileDTO zahrnuje název souboru i veřejnou adresu URL pro přístup k souboru.
+* V případě **adres URL** použijte seznam řetězců, které reprezentují veřejně dostupné adresy URL.
 
 Zavolejte metodu [Create](https://github.com/Azure/azure-sdk-for-java/blob/b455a61f4c6daece13590a0f4136bab3c4f30546/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/Knowledgebases.java#L173) a potom předejte `operationId` vlastnost vrácené operace metodě [GetDetails](#get-status-of-an-operation) pro dotazování na stav.
 

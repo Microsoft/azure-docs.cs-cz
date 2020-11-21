@@ -5,22 +5,22 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 5766eb821800568b567350e1360ca4cf5403be6d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3c093539301f3f4e3309094f0b53a1f0e8393150
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135886"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097842"
 ---
-V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Linux vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription-service.md) . V současné době je podporována pouze služba [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) .
+V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Linux vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription.md) . V současné době je podporována pouze služba [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) .
 
 Aplikace je sestavená pomocí balíčku sady Speech SDK a Java IDE na 64 (v4) na. Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 7/8, CentOS 7/8). Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
-Tato příručka vyžaduje účet [Azure Cognitive Services](../get-started.md) s prostředkem služby Speech. 
+Tato příručka vyžaduje účet [Azure Cognitive Services](../overview.md#try-the-speech-service-for-free) s prostředkem služby Speech. 
 
 Zdrojový kód [ukázkové aplikace](https://aka.ms/sdsdk-download-JRE) je součástí sady Speech Devices SDK. Je také [k dispozici na GitHubu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K tomuto rychlému startu potřebujete:
 
@@ -28,7 +28,7 @@ K tomuto rychlému startu potřebujete:
 * [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Java IDE zatmění](https://www.eclipse.org/downloads/)
 * Jenom [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) .
-* Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](../get-started.md).
+* Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](../overview.md#try-the-speech-service-for-free).
 * Stáhněte si nejnovější verzi [sady Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) pro jazyk Java a extrahujte soubor. zip do pracovního adresáře.
    > [!NOTE]
    > V tomto rychlém startu se předpokládá, že se aplikace extrahuje do/home/wcaltest/JRE-Sample-Release.
@@ -62,7 +62,7 @@ Před spuštěním zatmění se ujistěte, že jsou tyto závislosti nainstalova
 
 Přepis konverzace je v současné době dostupný pouze pro "en-US" a "zh-CN" v oblastech "centralus" a "eastasia". Pokud chcete použít přepis konverzace, musíte mít v jedné z těchto oblastí klíč řeči.
 
-Pokud plánujete použít záměry, budete potřebovat předplatné [služby Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) . Další informace o LUIS a rozpoznávání záměrů najdete v tématu [rozpoznávání hlasových záměrů pomocí Luis, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). Pro tuto aplikaci je k dispozici [Vzorový model Luis](https://aka.ms/sdsdk-luis) .
+Pokud plánujete použít záměry, budete potřebovat předplatné [služby Language Understanding (Luis)](../../luis/luis-how-to-azure-subscription.md) . Další informace o LUIS a rozpoznávání záměrů najdete v tématu [rozpoznávání hlasových záměrů pomocí Luis, C#](../how-to-recognize-intents-from-speech-csharp.md). Pro tuto aplikaci je k dispozici [Vzorový model Luis](https://aka.ms/sdsdk-luis) .
 
 ## <a name="create-and-configure-the-project"></a>Vytvoření a konfigurace projektu
 
@@ -74,13 +74,13 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
 1. Za chvíli se zobrazí hlavní okno prostředí Eclipse IDE. Pokud se zobrazí úvodní obrazovka, zavřete ji.
 
-1. V panelu nabídek zatmění vytvořte nový projekt kliknutím na **soubor**  >  **Nový**  >  **projekt Java** . Pokud není k dispozici, zvolte **projekt** a pak **projekt Java** .
+1. V panelu nabídek zatmění vytvořte nový projekt kliknutím na **soubor**  >  **Nový**  >  **projekt Java**. Pokud není k dispozici, zvolte **projekt** a pak **projekt Java**.
 
-1. Spustí se Průvodce vytvořením **nového projektu Java** . **Vyhledejte** umístění ukázkového projektu. Vyberte **Dokončit** .
+1. Spustí se Průvodce vytvořením **nového projektu Java** . **Vyhledejte** umístění ukázkového projektu. Vyberte **Dokončit**.
 
    ![Snímek obrazovky s průvodcem novým projektem Javy](../media/speech-devices-sdk/eclipse-new-java-project-linux.png)
 
-1. V **Průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt. V místní nabídce vyberte **Konfigurace**  >  **převést na projekt Maven** . Vyberte **Dokončit** .
+1. V **Průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt. V místní nabídce vyberte **Konfigurace**  >  **převést na projekt Maven** . Vyberte **Dokončit**.
 
    ![Snímek obrazovky s průzkumníkem balíčků](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -105,15 +105,15 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
     </dependencies>
    ```
 
-1. V **Průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt. Zvolte **vlastnosti** a pak **Spustit/ladit nastavení**  >  **nové...** > **Aplikace Java** . 
+1. V **Průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt. Zvolte **vlastnosti** a pak **Spustit/ladit nastavení**  >  **nové...** > **Aplikace Java**. 
 
-1. Zobrazí se okno **Upravit konfiguraci** . Do pole **název** zadejte **Main (hlavní** ) a pomocí **hledání** **hlavní třídy** Najděte a vyberte **com. Microsoft. cognitiveservices Account. Speech. Samples. FunctionsList** .
+1. Zobrazí se okno **Upravit konfiguraci** . Do pole **název** zadejte **Main (hlavní**) a pomocí **hledání** **hlavní třídy** Najděte a vyberte **com. Microsoft. cognitiveservices Account. Speech. Samples. FunctionsList**.
 
    ![Snímek obrazovky s konfigurací spuštění úprav](../media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
 
-1. Zkopírujte zvukové binární soubory pro cílovou architekturu, od **Linux – ARM** nebo **Linux-x64** , do umístění projektu Java, např. **/Home/wcaltest/JRE-Sample-Release**
+1. Zkopírujte zvukové binární soubory pro cílovou architekturu, od **Linux – ARM** nebo **Linux-x64**, do umístění projektu Java, např. **/Home/wcaltest/JRE-Sample-Release**
 
-1. Také z okna **Upravit konfiguraci** vyberte stránku **prostředí** a **Nový** . Zobrazí se okno **Nová proměnná prostředí** . Do pole **název** zadejte **LD_LIBRARY_PATH** a do pole **hodnota** zadejte složku obsahující soubory *. so, například **/Home/wcaltest/JRE-Sample-Release**
+1. Také z okna **Upravit konfiguraci** vyberte stránku **prostředí** a **Nový**. Zobrazí se okno **Nová proměnná prostředí** . Do pole **název** zadejte **LD_LIBRARY_PATH** a do pole **hodnota** zadejte složku obsahující soubory *. so, například **/Home/wcaltest/JRE-Sample-Release**
 
 1. Kopírovat `kws.table` a `participants.properties` do složky **cíle/třídy** projektu
 
@@ -143,7 +143,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 1. Výchozí klíčové slovo (klíčové slovo) je "Computer". Můžete také vyzkoušet jedno z dalších poskytnutých klíčových slov, například "počítač" nebo "asistent". Soubory prostředků pro tato alternativní klíčová slova jsou v sadě Speech Devices SDK ve složce klíčová slova. `/home/wcaltest/JRE-Sample-Release/keyword/Computer`Obsahuje například soubory používané pro klíčové slovo "Computer".
 
    > [!TIP]
-   > Můžete také [vytvořit vlastní klíčové slovo](../speech-devices-sdk-create-kws.md).
+   > Můžete také [vytvořit vlastní klíčové slovo](../custom-keyword-basics.md).
 
     Chcete-li použít nové klíčové slovo, aktualizujte následující řádek v `FunctionsList.java` a zkopírujte klíčové slovo do aplikace. Například pro použití klíčového slova ' Machine ' z balíčku klíčového slova `machine.zip` :
 
@@ -163,18 +163,18 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
    ![Snímek obrazovky, který zobrazuje sadu Speech pro zařízení s ukázkami, aplikace a možnosti](../media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. Vyzkoušejte si novou ukázku **přepisu konverzace** . Spusťte zdlouhavého přepisování s **Session**  >  **zahájením** relace. Ve výchozím nastavení je každý host. Nicméně pokud máte signatury hlasu účastníka, mohou být umístěny do `participants.properties` složky **cíl/třídy** projektu. Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Vyzkoušejte si novou ukázku **přepisu konverzace** . Spusťte zdlouhavého přepisování s **Session**  >  **zahájením** relace. Ve výchozím nastavení je každý host. Nicméně pokud máte signatury hlasu účastníka, mohou být umístěny do `participants.properties` složky **cíl/třídy** projektu. Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](../how-to-use-conversation-transcription.md).
 
    ![Snímek obrazovky, který zobrazuje ukázkovou aplikaci přepisující konverzaci](../media/speech-devices-sdk/cts-sample-app-linux.png)
 
 ## <a name="create-and-run-standalone-the-application"></a>Vytvoření a spuštění samostatné aplikace
 
-1. V **Průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt. Vyberte **exportovat** . 
-1. Zobrazí se okno **exportovat** . Rozbalte **Java** a vyberte **soubor JAR spustitelný** a pak vyberte **Další** .
+1. V **Průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt. Vyberte **exportovat**. 
+1. Zobrazí se okno **exportovat** . Rozbalte **Java** a vyberte **soubor JAR spustitelný** a pak vyberte **Další**.
 
    ![Snímek obrazovky zobrazující okno exportu](../media/speech-devices-sdk/eclipse-export-linux.png) 
 
-1. Zobrazí se okno pro **Export souboru jar spustitelný** . Zvolte **cíl exportu** pro aplikaci a pak vyberte **Dokončit** .
+1. Zobrazí se okno pro **Export souboru jar spustitelný** . Zvolte **cíl exportu** pro aplikaci a pak vyberte **Dokončit**.
  
    ![Snímek obrazovky zobrazující okno pro export souboru JAR spustitelný](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
 

@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e2d43290946969643b10d2ecad2f076df208a5d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea7ea08fc07a895bc038b27701d7038a5f76c26f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88925394"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95096800"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../overview.md#try-the-speech-service-for-free)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
-> * Vytvoření robota připojeného k [kanálu pro přímý vstup řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+> * Vytvoření robota připojeného k [kanálu pro přímý vstup řeči](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 > * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 > 
   > [!NOTE]
@@ -33,7 +33,7 @@ Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Stu
 
 Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
-1. V **Průzkumník řešení**otevřete `MainPage.xaml` .
+1. V **Průzkumník řešení** otevřete `MainPage.xaml` .
 
 1. V zobrazení jazyka XAML návrháře nahraďte celý obsah následujícím fragmentem kódu, který definuje uživatelské rozhraní základní:
 
@@ -84,7 +84,7 @@ Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
 Zobrazení Návrh se aktualizuje a zobrazí se uživatelské rozhraní aplikace.
 
-1. V **Průzkumník řešení**otevřete zdrojový soubor kódu na pozadí `MainPage.xaml.cs` . (Je seskupena pod `MainPage.xaml` .) Obsah tohoto souboru nahraďte níže, která zahrnuje:
+1. V **Průzkumník řešení** otevřete zdrojový soubor kódu na pozadí `MainPage.xaml.cs` . (Je seskupena pod `MainPage.xaml` .) Obsah tohoto souboru nahraďte níže, která zahrnuje:
 
 - `using` příkazy pro `Speech` `Speech.Dialog` obory názvů a
 - Jednoduchá implementace pro zajištění přístupu přes mikrofon, který je kabelem k obslužné rutině tlačítka
@@ -277,7 +277,7 @@ Zobrazení Návrh se aktualizuje a zobrazí se uživatelské rozhraní aplikace.
    > Přečtěte si [seznam podporovaných oblastí pro hlasové asistenty](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) a zajistěte, aby byly prostředky nasazeny v jedné z těchto oblastí.
 
    > [!NOTE]
-   > Informace o konfiguraci robota najdete v dokumentaci k rozhraní bot pro [kanál Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+   > Informace o konfiguraci robota najdete v dokumentaci k rozhraní bot pro [kanál Direct line Speech](/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
 1. Nahraďte řetězce `YourSpeechSubscriptionKey` a `YourServiceRegion` vlastními hodnotami pro vaše předplatné a [oblast](~/articles/cognitive-services/speech-service/regions.md)řeči.
 
@@ -375,11 +375,11 @@ Teď jste připraveni vytvořit aplikaci a otestovat vlastní hlasový asistent 
 
    ![Ukázka aplikace hlasového asistenta UWP v C# – rychlý Start](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. Vyberte možnost **Povolit mikrofon**a když se zobrazí žádost o přístupové oprávnění, vyberte **Ano**.
+1. Vyberte možnost **Povolit mikrofon** a když se zobrazí žádost o přístupové oprávnění, vyberte **Ano**.
 
    ![Žádost o oprávnění k přístupu k mikrofonu](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Vyberte možnost **mluvit na robota**a mluvte do mikrofonu zařízení anglickou frázi nebo větu. Váš hlas se přenáší na kanál s přímým přístupem a přepisu na text, který se zobrazí v okně.
+1. Vyberte možnost **mluvit na robota** a mluvte do mikrofonu zařízení anglickou frázi nebo větu. Váš hlas se přenáší na kanál s přímým přístupem a přepisu na text, který se zobrazí v okně.
 
 ## <a name="next-steps"></a>Další kroky
 
