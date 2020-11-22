@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 66ad9f84985c7f35d410c6b1c3508efd33526c83
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 0b2d18165bf2c5a4f70f1cbc555db79020ce988f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147720"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95250613"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob"></a>Vytvoření SAS služby pro kontejner nebo objekt BLOB
 
@@ -32,7 +32,7 @@ Následující příklad kódu vytvoří SAS pro kontejner. Pokud je zadaný ná
 
 Podpis SAS služby se podepisuje pomocí přístupového klíče účtu. Použijte třídu [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) k vytvoření přihlašovacích údajů, které slouží k podepsání SAS. Dále vytvořte nový objekt [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) a zavolejte [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) pro získání řetězce tokenu SAS.
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForContainer":::
 
 ### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -114,13 +114,13 @@ function getContainerSasUri(containerClient, sharedKeyCredential, storedPolicyNa
 
 Následující příklad kódu vytvoří SAS pro objekt BLOB. Pokud je zadaný název existující zásady přístupu, tato zásada je přidružená k SAS. Pokud nejsou k dispozici žádné uložené zásady přístupu, vytvoří kód v objektu BLOB ad hoc SAS.
 
-### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
 Podpis SAS služby se podepisuje pomocí přístupového klíče účtu. Použijte třídu [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) k vytvoření přihlašovacích údajů, které slouží k podepsání SAS. Dále vytvořte nový objekt [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) a zavolejte [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) pro získání řetězce tokenu SAS.
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForBlob":::
 
-### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 Chcete-li vytvořit SAS služby pro objekt blob, zavolejte metodu [CloudBlob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) .
 
@@ -203,6 +203,14 @@ function getBlobSasUri(containerClient, blobName, sharedKeyCredential, storedPol
 ```
 
 ---
+
+## <a name="create-a-service-sas-for-a-directory"></a>Vytvoření SAS služby pro adresář
+
+V účtu úložiště s povoleným hierarchickým oborem názvů můžete pro adresář vytvořit SAS služby. Pokud chcete vytvořit SAS služby, ujistěte se, že máte nainstalovanou verzi 12.5.0 nebo novější z balíčku [Azure. Storage. Files. datalake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) .
+
+Následující příklad ukazuje, jak vytvořit SAS služby pro adresář s klientskou knihovnou V12 pro .NET:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForDirectory":::
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

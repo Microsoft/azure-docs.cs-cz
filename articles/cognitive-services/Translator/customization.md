@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 95cb4aa5827190abf125669f2423c808cf8c92a5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9c4410cb2b9550bc111da96204ada15313867fb1
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368929"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238084"
 ---
 # <a name="customize-your-text-translations"></a>Přizpůsobení překladů textu
 
@@ -38,28 +38,6 @@ Přizpůsobený systém je pak k dispozici prostřednictvím pravidelného volá
 Vzhledem k odpovídajícímu typu a množství školicích dat není běžné očekávat zisky mezi 5 a 10 nebo ještě více BLEUch bodů v kvalitě překladu pomocí vlastního překladatele.
 
 Další podrobnosti o různých úrovních přizpůsobení na základě dostupných dat najdete v [uživatelské příručce pro vlastní překladatele](./custom-translator/overview.md).
-
-
-## <a name="microsoft-translator-hub"></a>Centrum Microsoft Translator
-
-> [!NOTE]
-> Starší verze centra Microsoft Translator se vyřadí do 17. května 2019. [Zobrazení důležitých informací a dat migrace](https://www.microsoft.com/translator/business/hub/).  
-
-## <a name="custom-translator-versus-hub"></a>Vlastní Překladatel versus centrum
-
-| Příznak | Rozbočovač | Custom Translator |
-| ------- | :-: | :---------------: |
-|Stav funkce přizpůsobení    | Obecná dostupnost    | Obecná dostupnost |
-| Verze textového rozhraní API    | Pouze v2    | Jenom V3 |
-| Přizpůsobení SMT    | Yes    | No |
-| Přizpůsobení NMT    | No    | Yes |
-| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči    | No    | Yes |
-| [Žádné trasování](https://www.aka.ms/notrace) | Yes    | Yes |
-
-## <a name="collaborative-translations-framework"></a>Architektura pro spolupráci s překlady
-
-> [!NOTE]
-> Od 1. února 2018, AddTranslation () a AddTranslationArray () již nejsou k dispozici pro použití s překladačem v 2.0. Tyto metody selžou a nic se nebudou zapisovat. Překladatel v 3.0 tyto metody nepodporuje.
 
 ## <a name="next-steps"></a>Další kroky
 

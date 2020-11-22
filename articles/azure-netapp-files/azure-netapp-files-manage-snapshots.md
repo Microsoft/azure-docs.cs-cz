@@ -12,18 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/12/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: c64bc8bf265a8e3cc3c490827bdbd79661e3528a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 03b7941385517fe694f0743194655a1b6a1c0e1e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591733"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253554"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků s využitím služby Azure NetApp Files
 
 Azure NetApp Files podporuje vytváření snímků na vyžádání a použití zásad snímku k naplánování automatického vytváření snímků. Můžete také obnovit snímek na nový svazek, obnovit jeden soubor pomocí klienta nebo vrátit existující svazek pomocí snímku.
+
+> [!NOTE] 
+> Informace o správě snímků při replikaci mezi jednotlivými oblastmi najdete v tématu [požadavky a předpoklady pro použití replikace mezi oblastmi](cross-region-replication-requirements-considerations.md).
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Vytvoření snímku na vyžádání pro svazek
 
@@ -77,7 +80,7 @@ Zásady snímků vám umožní určit četnost vytváření snímků v hodinách
 
 2.  V okně zásady snímku nastavte stav zásady na **povoleno**. 
 
-3.  Klikněte na kartu **hodinové** , **denní** , **týdenní** nebo **měsíční** a vytvořte si hodinové, denní, týdenní nebo měsíční zásady pro snímky. Zadejte **počet snímků, které mají být zachovány**.  
+3.  Klikněte na kartu **hodinové**, **denní**, **týdenní** nebo **měsíční** a vytvořte si hodinové, denní, týdenní nebo měsíční zásady pro snímky. Zadejte **počet snímků, které mají být zachovány**.  
 
     V tématu [omezení prostředků pro Azure NetApp Files](azure-netapp-files-resource-limits.md) o maximálním počtu povolených snímků pro svazek. 
 
@@ -226,7 +229,7 @@ Pokud se adresář snímků nezobrazuje, může být skrytý, protože je aktuá
 
     ![Vložit soubor pro obnovení](../media/azure-netapp-files/snapshot-paste-file-restore.png) 
 
-4. Můžete také kliknout pravým tlačítkem na nadřazený adresář, vybrat **vlastnosti** , kliknout na kartu **předchozí verze** a zobrazit tak seznam snímků a vybrat **obnovit** pro obnovení souboru.  
+4. Můžete také kliknout pravým tlačítkem na nadřazený adresář, vybrat **vlastnosti**, kliknout na kartu **předchozí verze** a zobrazit tak seznam snímků a vybrat **obnovit** pro obnovení souboru.  
 
     ![Vlastnosti předchozích verzí](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
 

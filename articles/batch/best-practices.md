@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj Azure Batchch řešení.
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: a799aa7de19b9d5b0b8e085252cb172efebd05dc
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 6aaed76ad398b5278850dd66ce1da6d5bd33807f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916861"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95254659"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -38,7 +38,7 @@ Tento článek popisuje shromažďování osvědčených postupů a užitečnýc
 
 ### <a name="pool-lifetime-and-billing"></a>Doba života fondu a fakturace
 
-Doba života fondu se může lišit v závislosti na metodě přidělování a parametrech, které se vztahují ke konfiguraci fondu. Fondy můžou mít v libovolném časovém okamžiku libovolnou dobu života a proměnlivý počet výpočetních uzlů ve fondu. Vaše zodpovědnost za správu výpočetních uzlů ve fondu buď výslovně, nebo prostřednictvím funkcí poskytovaných službou (automatické škálování nebo automatického fondu).
+Doba života fondu se může lišit v závislosti na metodě přidělování a parametrech, které se vztahují ke konfiguraci fondu. Fondy můžou mít v libovolném časovém okamžiku libovolnou dobu života a proměnlivý počet výpočetních uzlů ve fondu. Vaše zodpovědnost za správu výpočetních uzlů ve fondu buď výslovně, nebo prostřednictvím funkcí poskytovaných službou ([Automatické škálování nebo automatického](nodes-and-pools.md#automatic-scaling-policy) [fondu](nodes-and-pools.md#autopools)).
 
 - **Udržujte fondy v čerstvém stavu.**
     Změňte velikost fondů na nulu každých několik měsíců, abyste měli jistotu, že získáte [nejnovější aktualizace agenta uzlů a opravy chyb](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md). Váš fond nebude dostávat aktualizace agenta uzlu, pokud není znovu vytvořen, nebo se změnila velikost na 0 výpočetních uzlů. Než znovu vytvoříte nebo změníte velikost fondu, doporučujeme, abyste si stáhli všechny protokoly agenta uzlů pro účely ladění, jak je popsáno v části [uzly](#nodes) .
@@ -93,7 +93,7 @@ Existuje výchozí [kvóta pro aktivní úlohu a plán úlohy](batch-quota-limit
 
 ### <a name="save-task-data"></a>Uložit data úkolu
 
-Výpočetní uzly jsou podle jejich povahy dočasný. V dávce je mnoho funkcí, jako je například automatické fondy a automatické škálování, které usnadňují uzlům zmizení. Když uzly opustí fond (z důvodu změny velikosti nebo odstranění fondu), odstraní se také všechny soubory na těchto uzlech. Z tohoto důvodu by úloha měla přesunout výstup mimo uzel, na kterém je spuštěný, a až do trvalého úložiště, než se dokončí. Podobně platí, že pokud úloha selže, měl by přesunout protokoly potřebné k diagnostice selhání do trvalého úložiště.
+Výpočetní uzly jsou podle jejich povahy dočasný. V dávce je mnoho funkcí, jako je například automatické [fondy](nodes-and-pools.md#autopools) a [Automatické škálování](nodes-and-pools.md#automatic-scaling-policy) , které usnadňují, aby uzly zmizely. Když uzly opustí fond (z důvodu změny velikosti nebo fondu), odstraní se také všechny soubory na těchto uzlech. Z tohoto důvodu by úloha měla přesunout výstup mimo uzel, na kterém je spuštěný, a až do trvalého úložiště, než se dokončí. Podobně platí, že pokud úloha selže, měl by přesunout protokoly potřebné k diagnostice selhání do trvalého úložiště.
 
 Batch má integrovanou podporu Azure Storage pro nahrávání dat prostřednictvím [OutputFiles](batch-task-output-files.md)a také pro celou řadu sdílených systémů souborů, nebo můžete nahrát sami sebe ve svých úlohách.
 

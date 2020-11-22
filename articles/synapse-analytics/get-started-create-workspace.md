@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 10/07/2020
-ms.openlocfilehash: d22d70a360290e7fbfabf1d05fc49d4ef6eb8c83
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 11/21/2020
+ms.openlocfilehash: 42b586062378c59b66ca945880bf723418264071
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986330"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241926"
 ---
 # <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
@@ -67,7 +67,7 @@ Fond Spark oznamuje, že Azure synapse, kolik prostředků Spark se má použít
 
 ## <a name="the-built-in-serverless-sql-pool"></a>Integrovaný fond SQL bez serveru
 
-Každý pracovní prostor obsahuje předem sestavený fond SQL bez serveru s názvem **integrovaný**. Tento fond nejde odstranit. Neserverové fondy SQL umožňují používat SQL Withou, které musí rezervovat kapacitu pomocí vyhrazených fondů SQL. Na rozdíl od vyhrazených fondů SQL je fakturace pro fond SQL bez serveru založená na množství dat naskenovaných pro spuštění dotazu, nikoli na počtu kapacit přidělených do fondu.
+Každý pracovní prostor obsahuje předem sestavený fond SQL bez serveru s názvem **integrovaný**. Tento fond nejde odstranit. Neserverové fondy SQL umožňují používat SQL bez nutnosti rezervovat kapacitu pomocí vyhrazených fondů SQL. Na rozdíl od vyhrazených fondů SQL je fakturace pro fond SQL bez serveru založená na množství dat naskenovaných pro spuštění dotazu, nikoli na počtu kapacit přidělených do fondu.
 
 ## <a name="next-steps"></a>Další kroky
 

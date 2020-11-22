@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: b3ad0da1f910556c172c519faf953d4075647955
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 36d26195e78c74ed7b976cfdd48e1e965bca872b
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109047"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249780"
 ---
 # <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Vytváření a odstraňování privátních koncových bodů v clusteru Azure Stream Analytics
 
 Úlohy Azure Stream Analytics spuštěné v clusteru můžete propojit se vstupními a výstupními prostředky, které se nacházejí za bránou firewall nebo virtuální sítí Azure. Nejprve v clusteru Stream Analytics vytvoříte privátní koncový bod pro prostředek, jako je centrum událostí Azure nebo služba Azure SQL Database. Pak ve vstupním nebo výstupním prostředku schválíte připojení privátního koncového bodu.
 
-Jakmile připojení schválíte, budou mít všechny úlohy spuštěné v clusteru Stream Analytics k tomuto prostředku přístup prostřednictvím privátního koncového bodu. V tomto článku se dozvíte, jak vytvořit a odstranit privátní koncové body v clusteru Stream Analytics.
+Jakmile připojení schválíte, budou mít všechny úlohy spuštěné v clusteru Stream Analytics k tomuto prostředku přístup prostřednictvím privátního koncového bodu. V tomto článku se dozvíte, jak vytvořit a odstranit privátní koncové body v clusteru Stream Analytics. Můžete vytvořit soukromé koncové body pro Azure SQL Database, Azure Storage, Azure Data Lake Storage Gen2, centrum událostí Azure a Azure Service Bus. Brzy se přidají soukromé koncové body pro jiné služby. 
 
 ## <a name="create-private-endpoint-in-stream-analytics-cluster"></a>Vytvoření privátního koncového bodu v clusteru Stream Analytics
 
@@ -27,7 +27,7 @@ V této části se dozvíte, jak vytvořit privátní koncový bod ve Stream Ana
 
 1. V Azure Portal Najděte cluster Stream Analytics a vyberte ho.
 
-1. V části **Nastavení**vyberte **soukromé koncové body**.
+1. V části **Nastavení** vyberte **soukromé koncové body**.
 
 1. Vyberte **Přidat privátní koncový bod** a zadejte následující informace pro výběr prostředku, ke kterému chcete bezpečně přistupovat prostřednictvím privátního koncového bodu.
 
@@ -52,7 +52,7 @@ V této části se dozvíte, jak vytvořit privátní koncový bod ve Stream Ana
 
 1. V Azure Portal Najděte cluster Stream Analytics a vyberte ho.
 
-1. V části **Nastavení**vyberte **soukromé koncové body**.
+1. V části **Nastavení** vyberte **soukromé koncové body**.
 
 1. Zvolte privátní koncový bod, který chcete odstranit, a vyberte **Odstranit**.
 

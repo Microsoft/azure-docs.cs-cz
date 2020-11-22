@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b32e7a1df0dbbf4d43a73f1e3e409a904ab88a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660079"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237472"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Rychlý Start: hromadné načítání pomocí synapse SQL
 
@@ -39,7 +39,8 @@ Teď můžete snadno hromadně načítat data pomocí vyhrazených fondů SQL, a
 
 ### <a name="steps"></a>Postup
 
-1. V panelu umístění úložiště zdroje vyberte účet úložiště a soubor nebo složku, které nahráváte. Průvodce se automaticky pokusí zjistit soubory Parquet. Pokud se typ souboru Parquet nedá potvrdit, použije se ve výchozím nastavení text s oddělovači (CSV). 
+1. V panelu umístění úložiště zdroje vyberte účet úložiště a soubor nebo složku, které nahráváte. Průvodce se automaticky pokusí zjistit soubory Parquet. Pokud se typ souboru Parquet nedá potvrdit, použije se ve výchozím nastavení text s oddělovači (CSV).
+
    ![Výběr zdrojového umístění](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. Vyberte nastavení formátu souboru včetně účtu úložiště, do kterého chcete zapsat odmítnuté řádky (soubor s chybou). V současné době jsou podporovány pouze soubory CSV a Parquet.

@@ -4,12 +4,12 @@ description: Služba Batch podporuje službu Azure AD k ověřování ze služby
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 685b84f1e628ea67689d3de8bf64c9641edba6fc
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920504"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95252636"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -144,7 +144,7 @@ Pomocí vlastní role můžete udělit oprávnění uživateli, skupině nebo in
 - Microsoft.Batch/batchAccounts/Read (pro jakoukoliv operaci čtení)
 - Microsoft.Batch/batchAccounts/klíče listkey/Action (pro všechny operace)
 
-Vlastní role jsou pro uživatele ověřené službou Azure AD, nikoli přihlašovací údaje k účtu Batch (sdílený klíč). Všimněte si, že přihlašovací údaje účtu Batch poskytují úplný přístup k účtu Batch. Všimněte si také, že úlohy využívající autopool vyžadují oprávnění na úrovni fondu.
+Vlastní role jsou pro uživatele ověřené službou Azure AD, nikoli přihlašovací údaje k účtu Batch (sdílený klíč). Všimněte si, že přihlašovací údaje účtu Batch poskytují úplný přístup k účtu Batch. Všimněte si také, že úlohy využívající [autopool](nodes-and-pools.md#autopools) vyžadují oprávnění na úrovni fondu.
 
 > [!NOTE]
 > V poli akce je potřeba zadat určitá přiřazení rolí, zatímco ostatní je potřeba zadat v poli dataaction. Další informace najdete v tématu [operace poskytovatele prostředků Azure](../role-based-access-control/resource-provider-operations.md#microsoftbatch).

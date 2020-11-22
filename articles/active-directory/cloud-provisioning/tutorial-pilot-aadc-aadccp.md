@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a8e6948b9912061801fefaa63d2f49611014aa
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6b510464145f434f761cc28ba4e1c1361f983f8b
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651698"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237387"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
 
@@ -24,7 +24,7 @@ Tento kurz vás provede pilotním zřizováním cloudu pro testovací doménovou
 
 ![Vytvořit](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
 1. Ujistěte se, že jste obeznámeni se základy zřizování cloudu. 
 2. Ujistěte se, že používáte Azure AD Connect Sync verze 1.4.32.0 nebo novější a že jste nakonfigurovali pravidla synchronizace podle zdokumentovaného postupu. Při pilotním nasazení budete z rozsahu Azure AD Connect synchronizace odebírat testovací organizační jednotku nebo skupinu. Přesunutí objektů z oboru vede k odstranění těchto objektů ve službě Azure AD. V případě uživatelských objektů se objekty ve službě Azure AD odpouštějí a dají se obnovit. V případě objektů skupin se objekty ve službě Azure AD neodstraní a nelze je obnovit. V Azure AD Connect synchronizaci se zavedl nový typ odkazu, který zabrání odstranění v případě pilotního scénáře. 
@@ -126,7 +126,7 @@ Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stej
 
 4. Po dokončení této operace se spustí Průvodce konfigurací nástroje.  Přihlaste se pomocí účtu globálního správce služby Azure AD.
 5. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce služby Active Directory.  Tato operace přidá váš místní adresář.  Klikněte na **Next** (Další).</br>
-![Snímek obrazovky, který zobrazuje obrazovku "připojit službu Active Directory" se zadanou hodnotou adresáře.](media/how-to-install/install-3.png)</br>
+![Snímek obrazovky, který zobrazuje obrazovku "připojit službu Active Directory" se zadanou hodnotou adresáře.](media/how-to-install/install-3a.png)</br>
 
 6. Na obrazovce **Konfigurace byla dokončena** klikněte na **Potvrdit**.  Tato operace provede registraci a restart agenta.</br>
 ![Snímek obrazovky zobrazující obrazovku "konfigurace dokončena" s vybraným tlačítkem potvrdit.](media/how-to-install/install-4a.png)</br>

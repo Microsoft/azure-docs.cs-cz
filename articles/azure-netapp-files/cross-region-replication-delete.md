@@ -1,5 +1,5 @@
 ---
-title: Odstranit replikace pro replikaci Azure NetApp Files mezi oblastmi | Microsoft Docs
+title: Odstranění replikace svazků nebo svazků pro replikaci Azure NetApp Files mezi oblastmi | Microsoft Docs
 description: V této části najdete popis postupu odstranění připojení replikace, které už mezi zdrojovým a cílovým svazkem není potřeba.
 services: azure-netapp-files
 documentationcenter: ''
@@ -12,23 +12,41 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: e08b69271ba9d115c26418bc5e421ee6c94b031d
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5ce7a591acd8203775808457219b0ec392cd696e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695703"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249885"
 ---
-# <a name="delete-replications"></a>Odstranění replikací
+# <a name="delete-volume-replications-or-volumes"></a>Odstranit replikace svazků nebo svazky
 
-Odstraněním replikace svazku můžete ukončit připojení replikace mezi zdrojovým a cílovým svazkem. Operaci odstranění můžete provést buď ze zdrojového, nebo cílového svazku. Operace odstranění odebírá jenom autorizaci pro replikaci. neodebere zdrojový nebo cílový svazek. 
+Tento článek popisuje, jak odstranit replikaci svazků. Také popisuje, jak odstranit zdrojový nebo cílový svazek.
 
-## <a name="steps"></a>Postup
+## <a name="delete-volume-replications"></a>Odstranit replikace svazků
 
-1. Před odstraněním replikace svazku se ujistěte, že partnerský vztah replikace byl přerušen.    
-    Podívejte se [na téma zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md) a [přerušení partnerského vztahu replikace](cross-region-replication-manage-disaster-recovery.md#break-replication-peering-to-activate-the-destination-volume).  
+Odstraněním replikace svazku můžete ukončit připojení replikace mezi zdrojovým a cílovým svazkem. Je nutné odstranit replikaci z cílového svazku. Operace odstranění odebírá jenom autorizaci pro replikaci. neodebere zdrojový nebo cílový svazek. 
+
+1. Před odstraněním replikace svazku se ujistěte, že partnerský vztah replikace byl přerušen. Přerušení partnerského vztahu replikace: 
+
+    1. Vyberte *cílový* svazek. Klikněte na **replikace** v části služba úložiště.  
+
+    2.  Než budete pokračovat, ověřte následující pole:  
+        * Ujistěte se, že stav zrcadlení znázorňuje ***zrcadlené** _.   
+            Nepokoušejte se přerušit partnerský vztah replikace, pokud stav zrcadlení ukazuje _Uninitialized *.
+        * Ujistěte se, že stav vztahu zobrazuje ***nečinné** _.   
+            Neprovádějte pokus o přerušení replikace partnerských vztahů, pokud stav relace zobrazuje _Transferring *.   
+
+        Podívejte se [na téma zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md). 
+
+    3.  Klikněte na **přerušit partnerský vztah**.  
+
+    4.  Po zobrazení výzvy zadejte **Ano** a klikněte na tlačítko **přerušit**. 
+
+        ![Přerušit partnerský vztah replikace](../media/azure-netapp-files/cross-region-replication-break-replication-peering.png)
+
 
 1. Replikaci svazku odstraníte tak, že vyberete **replikaci** ze zdrojového nebo cílového svazku.  
 
@@ -37,6 +55,16 @@ Odstraněním replikace svazku můžete ukončit připojení replikace mezi zdro
 3. Potvrďte odstranění zadáním **Ano** a kliknutím na **Odstranit**.   
 
     ![Odstranit replikaci](../media/azure-netapp-files/cross-region-replication-delete-replication.png)
+
+## <a name="delete-source-or-destination-volumes"></a>Odstranit zdrojové nebo cílové svazky
+
+Pokud chcete odstranit zdrojový nebo cílový svazek, musíte v uvedeném pořadí provést následující kroky. V opačném případě `Volume with replication cannot be deleted` dojde k chybě.  
+
+1. Z cílového svazku [odstraňte replikaci svazku](#delete-volume-replications).   
+
+2. Odstraňte cílový nebo zdrojový svazek podle potřeby tak, že kliknete pravým tlačítkem na název svazku a vyberete **Odstranit**.   
+
+    ![Snímek obrazovky, který zobrazuje nabídku svazku po kliknutí pravým tlačítkem myši.](../media/azure-netapp-files/cross-region-replication-delete-volume.png)
 
 ## <a name="next-steps"></a>Další kroky  
 

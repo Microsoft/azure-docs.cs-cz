@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 95c1202fb56e882554d40926e9d5ecec7be49086
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a14656bc1abc42fdc3e948fdae1ca07469681d21
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708656"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249848"
 ---
 # <a name="display-health-status-of-replication-relationship"></a>Zobrazení stavu vztahu replikace 
 
@@ -58,5 +58,6 @@ Stav replikace můžete zobrazit na zdrojovém svazku nebo cílovém svazku.
 * [Replikace mezi oblastmi](cross-region-replication-introduction.md)
 * [Správa zotavení po havárii](cross-region-replication-manage-disaster-recovery.md)
 * [Metriky replikace svazků](azure-netapp-files-metrics.md#replication)
+* [Odstranit replikace svazků nebo svazky](cross-region-replication-delete.md)
 * [Řešení potíží s replikací mezi oblastmi](troubleshoot-cross-region-replication.md)
 

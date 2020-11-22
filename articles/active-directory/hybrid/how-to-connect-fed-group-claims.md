@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb828eeb408a170b93ffc73b58f14b3f7a883cc4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265465"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247230"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurace deklarací identity skupin pro aplikace s Azure Active Directory
 
@@ -74,7 +74,7 @@ Existují dva kroky ke konfiguraci Azure Active Directory k vygenerování názv
 
 ## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>Přidání deklarací skupin do tokenů pro aplikace SAML pomocí konfigurace jednotného přihlašování
 
-Pokud chcete nakonfigurovat deklarace skupin pro aplikaci v galerii nebo mimo galerii SAML, otevřete **podnikové aplikace**, klikněte na aplikaci v seznamu, vyberte **Konfigurace jednotného přihlašování**a pak vyberte **atributy uživatele & deklarace identity**.
+Pokud chcete nakonfigurovat deklarace skupin pro aplikaci v galerii nebo mimo galerii SAML, otevřete **podnikové aplikace**, klikněte na aplikaci v seznamu, vyberte **Konfigurace jednotného přihlašování** a pak vyberte **atributy uživatele & deklarace identity**.
 
 Klikněte na **přidat deklaraci skupiny** .  
 
@@ -144,8 +144,9 @@ Platné hodnoty jsou:
 |----------|-------------|
 | **Všem** | Vygeneruje skupiny zabezpečení, distribuční seznamy a role. |
 | **"Zabezpečení"** | Vygeneruje skupiny zabezpečení, kterých je uživatel členem v deklaraci identity skupin. |
-| **"DirectoryRole** | Pokud je uživateli přiřazené role adresáře, vygenerují se jako deklarace identity WIDS (deklarace identity skupin nebude vygenerována). |
-| **"Aplikační aplikace** | Vygeneruje pouze skupiny, které jsou explicitně přiřazeny k aplikaci a uživatel je členem |
+| **"DirectoryRole"** | Pokud je uživateli přiřazené role adresáře, vygenerují se jako deklarace identity WIDS (deklarace identity skupin nebude vygenerována). |
+| **Proměnná** | Vygeneruje pouze skupiny, které jsou explicitně přiřazeny k aplikaci a uživatel je členem |
+| **NTato** | Nevrátí se žádné skupiny. (Nejedná se o případ – Sensetive, takže žádná funguje stejně a dá se nastavit přímo v manifestu aplikace.) |
 
    Například:
 

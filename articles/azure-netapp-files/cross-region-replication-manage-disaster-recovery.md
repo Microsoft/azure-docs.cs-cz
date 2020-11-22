@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: ad006279a656758ba856cd3f39c17b0410e525e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eab55f881c250c2e07717604d4ba00587a8b6031
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708648"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243201"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>Správa zotavení po havárii pomocí replikace mezi oblastmi 
 
-Probíhající replikace mezi zdrojovým a cílovým svazkem (viz [vytvoření partnerského vztahu replikace](cross-region-replication-create-peering.md)) vás připraví na událost zotavení po havárii. 
+Probíhající replikace mezi zdrojovým a cílovým svazkem (viz [vytvoření replikace svazků](cross-region-replication-create-peering.md)) připraví na událost zotavení po havárii. 
 
-Pokud k takové události dojde, můžete [převzít služby při selhání na cílový svazek](#break-replication-peering-to-activate-the-destination-volume), což klientovi umožní číst a zapisovat do cílového svazku. 
+Pokud k takové události dojde, můžete převzít služby při [selhání cílového svazku](#fail-over-to-destination-volume), což klientovi umožní číst a zapisovat do cílového svazku. 
 
-Po zotavení po havárii můžete navrátit služby po obnovení do zdrojového svazku pomocí [operace opětovné synchronizace](#resync-replication-to-reactivate-the-source-volume) , která přepíše data zdrojového svazku daty cílového svazku.  Pak znovu [vytvoříte replikaci zdrojového do cílového umístění](#reestablish-source-to-destination-replication) a znovu připojíte zdrojový svazek, ke kterému má klient přístup. 
+Po zotavení po havárii můžete provést operaci opětovné [synchronizace](#resync-replication) pro navrácení služeb po obnovení do zdrojového svazku. Pak znovu [vytvoříte replikaci zdrojového do cílového umístění](#reestablish-source-to-destination-replication) a znovu připojíte zdrojový svazek, ke kterému má klient přístup. 
 
 Podrobnosti jsou popsány níže. 
 
-## <a name="break-replication-peering-to-activate-the-destination-volume"></a>Přerušit partnerský vztah replikace, aby se aktivoval cílový svazek
+## <a name="fail-over-to-destination-volume"></a>Převzetí služeb při selhání cílovým svazkem
 
 Pokud potřebujete aktivovat cílový svazek (například když chcete převzít služby při selhání do cílové oblasti), musíte přerušit partnerský vztah replikace a pak cílový svazek připojit.  
 
 1. Chcete-li přerušit partnerský vztah replikace, vyberte cílový svazek. Klikněte na **replikace** v části služba úložiště.  
 
 2.  Než budete pokračovat, ověřte následující pole:  
-    * Ujistěte se, že stav zrcadlení zobrazuje ***zrcadlený svazek***.   
-        Nepokoušejte se přerušit partnerský vztah replikace, pokud stav zrcadlení ukazuje *uninicializovaný*.
-    * Ujistěte se, že stav vztahu zobrazuje ***nečinné***.   
-        Neprovádějte pokus o přerušení replikace partnerských vztahů, pokud stav relace zobrazuje *přenos*.   
+    * Ujistěte se, že stav zrcadlení znázorňuje ***zrcadlené** _.   
+        Nepokoušejte se přerušit partnerský vztah replikace, pokud stav zrcadlení ukazuje _Uninitialized *.
+    * Ujistěte se, že stav vztahu zobrazuje ***nečinné** _.   
+        Neprovádějte pokus o přerušení replikace partnerských vztahů, pokud stav relace zobrazuje _Transferring *.   
 
     Podívejte se [na téma zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md). 
 
@@ -54,7 +54,7 @@ Pokud potřebujete aktivovat cílový svazek (například když chcete převzít
 5.  Připojte cílový svazek podle postupu v části [připojení nebo odpojení svazku pro virtuální počítače se systémem Windows nebo Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md).   
     Tento krok umožňuje klientovi přístup k cílovému svazku.
 
-## <a name="resync-replication-to-reactivate-the-source-volume"></a>Opětovná synchronizace replikace pro opětovnou aktivaci zdrojového svazku   
+## <a name="resync-volumes-after-disaster-recovery"></a><a name="resync-replication"></a>Po zotavení po havárii znovu synchronizovat svazky
 
 Po zotavení po havárii můžete zdrojový svazek znovu aktivovat provedením operace opětovné synchronizace.  Operace opětovné synchronizace stornuje proces replikace a synchronizuje data z cílového svazku do zdrojového svazku.  
 
@@ -63,7 +63,7 @@ Po zotavení po havárii můžete zdrojový svazek znovu aktivovat provedením o
 
 1. Pokud chcete replikaci znovu synchronizovat, vyberte *zdrojový* svazek. Klikněte na **replikace** v části služba úložiště. Pak klikněte na znovu **synchronizovat**.  
 
-2. Po zobrazení výzvy zadejte **Ano** a klikněte na tlačítko **Opětovná synchronizace** . 
+2. Po zobrazení výzvy zadejte **Ano** a klikněte na tlačítko znovu **synchronizovat**. 
  
     ![Znovu synchronizovat replikaci](../media/azure-netapp-files/cross-region-replication-resync-replication.png)
 
@@ -80,10 +80,10 @@ Po dokončení operace opětovné synchronizace z cílového umístění do zdro
 1. Přerušit partnerský vztah replikace:  
     a. Vyberte *cílový* svazek. Klikněte na **replikace** v části služba úložiště.  
     b. Než budete pokračovat, ověřte následující pole:   
-    * Ujistěte se, že stav zrcadlení zobrazuje ***zrcadlený svazek***.   
-    Nepokoušejte se přerušit partnerský vztah replikace, pokud stav zrcadlení ukazuje *uninicializovaný*.  
-    * Ujistěte se, že stav vztahu zobrazuje ***nečinné***.   
-    Neprovádějte pokus o přerušení replikace partnerských vztahů, pokud stav relace zobrazuje *přenos*.    
+    * Ujistěte se, že stav zrcadlení znázorňuje ***zrcadlené** _.   
+    Nepokoušejte se přerušit partnerský vztah replikace, pokud stav zrcadlení ukazuje _uninitialized *.  
+    * Ujistěte se, že stav vztahu zobrazuje ***nečinné** _.   
+    Neprovádějte pokus o přerušení replikace partnerských vztahů, pokud stav relace zobrazuje _transferring *.    
 
         Podívejte se [na téma zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md). 
 
@@ -103,5 +103,6 @@ Po dokončení operace opětovné synchronizace z cílového umístění do zdro
 * [Požadavky a předpoklady pro použití replikace mezi oblastmi](cross-region-replication-requirements-considerations.md)
 * [Zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md)
 * [Metriky replikace svazků](azure-netapp-files-metrics.md#replication)
+* [Odstranit replikace svazků nebo svazky](cross-region-replication-delete.md)
 * [Řešení potíží s replikací mezi oblastmi](troubleshoot-cross-region-replication.md)
 

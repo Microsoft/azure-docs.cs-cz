@@ -1,5 +1,5 @@
 ---
-title: Vytvořit partnerský vztah replikace pro Azure NetApp Files | Microsoft Docs
+title: Vytvořit replikaci svazků pro Azure NetApp Files | Microsoft Docs
 description: Popisuje, jak vytvořit partnerský vztah replikace svazků pro Azure NetApp Files nastavení replikace mezi oblastmi.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: df70f8a37a7223119068afd323583ea6126ca542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 412724a072bfc03a67bf1005173702f757c6fdf4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708663"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249933"
 ---
-# <a name="create-replication-peering-for-azure-netapp-files"></a>Vytvoření partnerského vztahu replikace pro Azure NetApp Files
+# <a name="create-volume-replication-for-azure-netapp-files"></a>Vytvoření replikace svazků pro Azure NetApp Files
 
 > [!IMPORTANT]
 > Funkce replikace mezi oblastmi je aktuálně ve verzi Public Preview. Pro přístup k této funkci musíte odeslat žádost pořadníku Azure NetApp Files prostřednictvím stránky pro [odeslání pořadníku replikace mezi oblastmi](https://aka.ms/anfcrrpreviewsignup). Než použijete funkci replikace mezi oblastmi, počkejte na oficiální e-mail s potvrzením od Azure NetApp Files týmu.
@@ -82,7 +82,7 @@ V případě protokolu NFS zajistěte, aby pravidla zásad exportu splňovala po
 
     ![Vytvoření replikace svazků](../media/azure-netapp-files/cross-region-replication-create-volume-replication.png)
 
-9. Klikněte na tlačítko **zkontrolovat + vytvořit**a potom kliknutím na tlačítko **vytvořit** vytvořte svazek replikace dat.   
+9. Klikněte na tlačítko **zkontrolovat + vytvořit** a potom kliknutím na tlačítko **vytvořit** vytvořte svazek replikace dat.   
 
     ![Kontrola a vytváření replikace](../media/azure-netapp-files/cross-region-replication-review-create-replication.png)
 
@@ -113,5 +113,6 @@ K autorizaci replikace musíte získat ID prostředku cílového svazku replikac
 * [Zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md)
 * [Metriky replikace svazků](azure-netapp-files-metrics.md#replication)
 * [Správa zotavení po havárii](cross-region-replication-manage-disaster-recovery.md)
+* [Odstranit replikace svazků nebo svazky](cross-region-replication-delete.md)
 * [Řešení potíží při replikaci mezi oblastmi](troubleshoot-cross-region-replication.md)
 

@@ -2,13 +2,13 @@
 title: Nasazení prostředků do tenanta
 description: Popisuje postup nasazení prostředků v oboru tenanta v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 854ccbd43509b6c0b5a04357844c78c32b7e6396
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/20/2020
+ms.openlocfilehash: 65a5e90616f8883b338d22fa31eee6932452b5fd
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668704"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95242657"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>Nasazení klientů pomocí šablon ARM
 
@@ -36,11 +36,19 @@ Pro vytváření skupin pro správu použijte:
 
 * [managementGroups](/azure/templates/microsoft.management/managementgroups)
 
+Pro vytváření předplatných použijte:
+
+* [hromad](/azure/templates/microsoft.subscription/aliases)
+
 Pro správu nákladů použijte:
 
 * [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
 * [pokynů](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
+
+Pro konfiguraci portálu použijte:
+
+* [tenantConfigurations](/azure/templates/microsoft.portal/tenantconfigurations)
 
 ## <a name="schema"></a>Schéma
 
@@ -123,12 +131,12 @@ Podrobnější informace o příkazech nasazení a možnostech nasazení šablon
 
 ## <a name="deployment-scopes"></a>Obory nasazení
 
-Při nasazování do skupiny pro správu můžete prostředky nasadit do:
+Při nasazování do tenanta můžete prostředky nasadit do:
 
 * tenant
 * skupiny pro správu v rámci tenanta
 * odběru
-* skupiny prostředků (přes dvě vnořená nasazení)
+* skupinám prostředků
 * [prostředky rozšíření](scope-extension-resources.md) se dají použít u prostředků.
 
 Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
@@ -155,81 +163,33 @@ Chcete-li cílit na předplatné v rámci tenanta, použijte vnořené nasazení
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="10,18":::
 
+### <a name="scope-to-resource-group"></a>Rozsah do skupiny prostředků
+
+V rámci tenanta můžete také cílit na skupiny prostředků. Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
+
+Pokud chcete cílit na skupinu prostředků v rámci tenanta, použijte vnořené nasazení. Nastavte `subscriptionId` vlastnosti a `resourceGroup` . Nenastavte umístění pro vnořené nasazení, protože je nasazené v umístění skupiny prostředků.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-rg.json" highlight="9,10,18":::
+
 ## <a name="deployment-location-and-name"></a>Umístění a název nasazení
 
 Pro nasazení na úrovni tenanta musíte zadat umístění pro nasazení. Umístění nasazení je oddělené od umístění prostředků, které nasazujete. Umístění nasazení určuje, kam se mají ukládat data nasazení.
 
-Můžete zadat název nasazení nebo použít výchozí název nasazení. Výchozí název je název souboru šablony. Například nasazení šablony s názvem **azuredeploy.jsv** vytvoří výchozí název nasazení **azuredeploy** .
+Můžete zadat název nasazení nebo použít výchozí název nasazení. Výchozí název je název souboru šablony. Například nasazení šablony s názvem **azuredeploy.jsv** vytvoří výchozí název nasazení **azuredeploy**.
 
 Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit v jednom umístění, pokud existuje existující nasazení se stejným názvem v jiném umístění. Pokud se zobrazí kód chyby `InvalidDeploymentLocation` , použijte jiný název nebo stejné umístění jako předchozí nasazení pro tento název.
 
 ## <a name="create-management-group"></a>Vytvoření skupiny pro správu
 
-[Následující šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg) vytvoří skupinu pro správu.
+Následující šablona vytvoří skupinu pro správu.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "mgName": {
-      "type": "string",
-      "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Management/managementGroups",
-      "apiVersion": "2019-11-01",
-      "name": "[parameters('mgName')]",
-      "properties": {
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
 
 ## <a name="assign-role"></a>Přiřazení role
 
-[Následující šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment) přiřadí roli v oboru tenanta.
+Následující šablona přiřadí roli v oboru tenanta.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "principalId": {
-      "type": "string",
-      "metadata": {
-        "description": "principalId if the user that will be given contributor access to the resourceGroup"
-      }
-    },
-    "roleDefinitionId": {
-      "type": "string",
-      "defaultValue": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
-      "metadata": {
-        "description": "roleDefinition for the assignment - default is owner"
-      }
-    }
-  },
-  "variables": {
-    // This creates an idempotent guid for the role assignment
-    "roleAssignmentName": "[guid('/', parameters('principalId'), parameters('roleDefinitionId'))]"
-  },
-  "resources": [
-    {
-      "name": "[variables('roleAssignmentName')]",
-      "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2019-04-01-preview",
-      "properties": {
-        "roleDefinitionId": "[tenantResourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
-        "principalId": "[parameters('principalId')]",
-        "scope": "/"
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/tenant-role-assignment/azuredeploy.json":::
 
 ## <a name="next-steps"></a>Další kroky
 

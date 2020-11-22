@@ -1,37 +1,35 @@
 ---
 title: Konfigurace aplikace Azure REST API – zámky
-description: Referenční stránky pro práci s zámky klíč-hodnota pomocí konfigurace aplikace Azure REST API
+description: Referenční stránky pro práci s zámky klíč-hodnota pomocí REST API konfigurace aplikace Azure
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4949db646c54d75f60d29d3c631d0f4ee8d7c26e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 7e63b48f2119c48cd43717acee7b13b1701e0032
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424088"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241263"
 ---
 # <a name="locks"></a>Zámky
 
-verze API-Version: 1,0
-
-Toto rozhraní API poskytuje sémantiku zámku/odemknutí pro prostředek klíč-hodnota. Podporuje následující operace:
+Toto rozhraní API (verze 1,0) poskytuje sémantiku pro zámek a odemknutí pro prostředek klíč-hodnota. Podporuje následující operace:
 
 - Umístit zámek
 - Odebrat zámek
 
-Je-li k dispozici, `label` musí se jednat o explicitní hodnotu popisku ( **nikoli** zástupný znak). U všech operací je to volitelný parametr. Je-li tento parametr vynechán, nepředpokládá žádný popisek.
+Je-li k dispozici, `label` musí se jednat o explicitní hodnotu popisku (nikoli zástupný znak). U všech operací je to volitelný parametr. Je-li tento parametr vynechán, nepředpokládá žádný popisek.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 
-## <a name="lock-key-value"></a>Zamknout Key-Value
+## <a name="lock-key-value"></a>Zamknout klíč-hodnota
 
-- **Požadováno:** ``{key}`` , ``{api-version}``  
-- *Volitelné:*``label``
+- Požadováno: ``{key}`` , ``{api-version}``  
+- Volitelné ``label``
 
 ```http
 PUT /locks/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -63,10 +61,10 @@ Pokud klíč-hodnota neexistuje, vrátí se následující odpověď:
 HTTP/1.1 404 Not Found
 ```
 
-## <a name="unlock-key-value"></a>Odemknout Key-Value
+## <a name="unlock-key-value"></a>Odemknout klíč-hodnota
 
-- **Požadováno:** ``{key}`` , ``{api-version}``  
-- *Volitelné:*``label``
+- Požadováno: ``{key}`` , ``{api-version}``  
+- Volitelné ``label``
 
 ```http
 DELETE /locks/{key}?label={label}?api-version={api-version} HTTP/1.1
@@ -98,9 +96,9 @@ Pokud klíč-hodnota neexistuje, vrátí se následující odpověď:
 HTTP/1.1 404 Not Found
 ```
 
-## <a name="conditional-lockunlock"></a>Podmíněný zámek/odemknutí
+## <a name="conditional-lock-and-unlock"></a>Podmíněný zámek a odemknutí
 
-Aby nedocházelo ke konfliktům časování, použijte `If-Match` nebo `If-None-Match` vyžádejte hlavičky. `etag`Argument je součástí reprezentace klíče. Pokud `If-Match` `If-None-Match` jsou nebo vynechány, operace bude nepodmíněný.
+Aby nedocházelo ke konfliktům časování, použijte `If-Match` nebo `If-None-Match` vyžádejte hlavičky. `etag`Argument je součástí reprezentace klíče. Pokud `If-Match` `If-None-Match` jsou nebo vynechány, operace je nepodmíněný.
 
 Následující požadavek použije operaci pouze v případě, že aktuální reprezentace klíč-hodnota odpovídá zadané hodnotě `etag` :
 

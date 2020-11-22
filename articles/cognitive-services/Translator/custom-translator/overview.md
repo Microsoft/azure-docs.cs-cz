@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: 55555d81eb531ae5a4d946fa3f661796b3294897
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 6a7301fd878eb65e4c1dd540275611bcf9348afc
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365495"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241739"
 ---
 # <a name="what-is-custom-translator"></a>Co je Custom Translator?
 
-[Vlastní Překladatel](https://portal.customtranslator.azure.ai) je funkce služby Microsoft Translator, která umožňuje společnostem překladatelů, vývojářům aplikací a poskytovatelům jazykových služeb vytvářet přizpůsobené systémy NMT (neuronové Machine Translation). Přizpůsobené systémy překladu se hladce integrují do stávajících aplikací, pracovních postupů a webů. [Vlastní Překladatel](https://portal.customtranslator.azure.ai/) nabízí podobné možnosti, které [centrum Microsoftu](https://hub.microsofttranslator.com/) používá pro statistickou strojový překlad (SMT), ale výhradně pro systémy NMT (neuronové Machine Translation).
+[Vlastní Překladatel](https://portal.customtranslator.azure.ai) je funkce služby Microsoft Translator, která umožňuje společnostem překladatelů, vývojářům aplikací a poskytovatelům jazykových služeb vytvářet přizpůsobené systémy NMT (neuronové Machine Translation). Přizpůsobené systémy překladu se hladce integrují do stávajících aplikací, pracovních postupů a webů.
 
 Překladatelské systémy vytvořené pomocí [vlastního překladatele](https://portal.customtranslator.azure.ai) jsou k dispozici prostřednictvím stejného cloudového, [zabezpečeného](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), vysoce výkonného a vysoce škálovatelného rozhraní Microsoft Translator [text API V3](../reference/v3-0-translate.md?tabs=curl), které každý den nakládá miliardám.
 

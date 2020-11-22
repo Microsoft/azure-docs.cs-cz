@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce5658fb79a893e0aca9d78faf090a886a2ee591
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ad5147971fc42e65e4621c8a3f0a98e01f2e0339
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651460"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237288"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Kurz: integrace jedné doménové struktury s jedním tenant Azure AD
 
@@ -67,7 +67,7 @@ Prostředí, které vytvoříte v tomto kurzu, můžete použít pro testování
 7. Po dokončení této operace se spustí Průvodce konfigurací nástroje.  Přihlaste se pomocí účtu globálního správce služby Azure AD.  Všimněte si, že pokud máte povolené rozšířené zabezpečení aplikace Internet Explorer, bude přihlášení zablokované.  Pokud se jedná o tento případ, zavřete instalaci, zakažte v Správce serveru rozšířené zabezpečení IE a restartujte instalaci kliknutím na **Průvodce agentem zřizování AAD Connect** .
 8. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce domény služby Active Directory.  Poznámka: účet správce domény by neměl mít požadavky na změnu hesla. V případě vypršení platnosti nebo změny hesla budete muset agenta znovu nakonfigurovat s novými přihlašovacími údaji. Tato operace přidá váš místní adresář.  Klikněte na **Next** (Další).
 
-   ![Snímek obrazovky připojit ke službě Active Directory](media/how-to-install/install-3.png)
+   ![Snímek obrazovky připojit ke službě Active Directory](media/how-to-install/install-3a.png)
 
 9. Na obrazovce **Konfigurace byla dokončena** klikněte na **Potvrdit**.  Tato operace provede registraci a restart agenta.
 

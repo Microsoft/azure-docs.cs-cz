@@ -2,17 +2,17 @@
 title: Uzly a fondy v Azure Batch
 description: Přečtěte si o výpočetních uzlech a fondech a o tom, jak se používají v Azure Batch pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 77f3a1c954f5591537436c9ee747052b3a642ec4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 11/20/2020
+ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537607"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243065"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Uzly a fondy v Azure Batch
 
-V pracovním postupu Azure Batch je *výpočetní uzel* (neboli *uzel* ) virtuálním počítačem, který zpracovává část úlohy vaší aplikace. *Fond* je kolekce těchto uzlů, na kterých má vaše aplikace běžet. V tomto článku se dozvíte víc o uzlech a fondech spolu s důležitými informacemi při jejich vytváření a používání v pracovním postupu Azure Batch.
+V pracovním postupu Azure Batch je *výpočetní uzel* (neboli *uzel*) virtuálním počítačem, který zpracovává část úlohy vaší aplikace. *Fond* je kolekce těchto uzlů, na kterých má vaše aplikace běžet. V tomto článku se dozvíte víc o uzlech a fondech spolu s důležitými informacemi při jejich vytváření a používání v pracovním postupu Azure Batch.
 
 ## <a name="nodes"></a>Uzly
 
@@ -25,7 +25,7 @@ Uzly mohou spustit libovolný spustitelný soubor nebo skript, který je podporo
 Součástí všech výpočetních uzlů ve službě Batch také jsou:
 
 - Standardní [struktura složek](files-and-directories.md) a přidružené [proměnné prostředí](jobs-and-tasks.md), které jsou úkolu k dispozici.
-- Nastavení **brány firewall** , která jsou nakonfigurována pro řízení přístupu.
+- Nastavení **brány firewall**, která jsou nakonfigurována pro řízení přístupu.
 - [Vzdálený přístup](error-handling.md#connect-to-compute-nodes) k uzlům Windows (protokol RDP (Remote Desktop Protocol) (RDP)) i Linux (Secure Shell (SSH)) (Pokud [nevytvoříte fond se zakázaným vzdáleným přístupem](pool-endpoint-configuration.md)).
 
 Ve výchozím nastavení můžou uzly vzájemně komunikovat, ale nemůžou komunikovat s virtuálními počítači, které nejsou součástí stejného fondu. Pokud chcete, aby uzly komunikovaly bezpečně s ostatními virtuálními počítači nebo v místní síti, můžete fond zřídit [v podsíti virtuální sítě Azure (VNET)](batch-virtual-network.md). Když to uděláte, k vašim uzlům můžete přistup prostřednictvím veřejných IP adres. Tyto veřejné IP adresy vytvoří služba Batch a můžou se měnit po dobu života fondu. Můžete také [vytvořit fond se statickými veřejnými IP adresami](create-pool-public-ip.md) , které řídíte, což zajistí, že se neočekávaně nezmění.
@@ -40,7 +40,7 @@ Každému uzlu, který je přidán do fondu, je přiřazen jedinečný název a 
 
 Fond může být používán pouze účtem Batch, ve kterém byl vytvořen. Účet Batch může vytvořit více fondů pro splnění požadavků na prostředky aplikací, které spustí.
 
-Fond lze vytvořit ručně nebo automaticky pomocí služby Batch při zadání práce, která má být provedena. Při vytváření fondu můžete zadat následující atributy:
+Fond lze vytvořit ručně nebo [automaticky pomocí služby Batch](#autopools) při zadání práce, která má být provedena. Při vytváření fondu můžete zadat následující atributy:
 
 - [Operační systém a verze uzlu](#operating-system-and-version)
 - [Typ uzlu a cílový počet uzlů](#node-type-and-target)
@@ -80,7 +80,7 @@ Podobně jako u rolí pracovního procesu v rámci služby Cloud Services může
 
 ### <a name="node-agent-skus"></a>SKU agenta uzlu
 
-Když vytvoříte fond, je nutné vybrat odpovídající **nodeAgentSkuId** , v závislosti na operačním systému základní image vašeho disku VHD. Můžete získat mapování dostupných ID SKU agenta uzlu na odkazy na image operačního systému voláním operace [seznam podporovaných SKU agenta uzlu](/rest/api/batchservice/list-supported-node-agent-skus) .
+Když vytvoříte fond, je nutné vybrat odpovídající **nodeAgentSkuId**, v závislosti na operačním systému základní image vašeho disku VHD. Můžete získat mapování dostupných ID SKU agenta uzlu na odkazy na image operačního systému voláním operace [seznam podporovaných SKU agenta uzlu](/rest/api/batchservice/list-supported-node-agent-skus) .
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>Vlastní image pro fondy virtuálních počítačů
 
@@ -142,7 +142,7 @@ Možnost konfigurace [maximálního počtu úkolů na uzel](batch-parallel-node-
 
 Výchozí konfigurace určuje, že na uzlu běží současně jen jeden úkol, ale existují scénáře, kdy je výhodné mít na uzlu spuštěno ve stejnou dobu dva a více úkolů. Jaké výhody vám může přinést více úkolů na jednom uzlu je popsáno v části [příklad scénáře](batch-parallel-node-tasks.md#example-scenario) v článku [souběžné úkoly na uzlu](batch-parallel-node-tasks.md).
 
-Můžete také zadat *Typ výplně* , který určuje, zda dávka rovnoměrně rozšíří úlohy napříč všemi uzly ve fondu, nebo sbalí každý uzel s maximálním počtem úkolů před přiřazením úkolů jinému uzlu.
+Můžete také zadat *Typ výplně*, který určuje, zda dávka rovnoměrně rozšíří úlohy napříč všemi uzly ve fondu, nebo sbalí každý uzel s maximálním počtem úkolů před přiřazením úkolů jinému uzlu.
 
 ## <a name="communication-status"></a>Stav komunikace
 
@@ -179,11 +179,15 @@ Další informace o nastavení fondu Batch ve virtuální síti najdete v témat
 
 Při návrhu řešení Azure Batch musíte určit, jak a kdy se mají fondy vytvářet a jak dlouho jsou výpočetní uzly v rámci těchto fondů udržovány dostupné.
 
-Na jednom konci spektra můžete vytvořit fond pro každou úlohu, kterou odešlete, a odstranit jej, jakmile se dokončí provádění příslušných úkolů. Tím se maximalizuje využití, protože uzly jsou přiděleny pouze v případě potřeby a jsou vypnuty, jakmile jsou nečinné. To znamená, že úloha musí čekat, až budou uzly přiděleny. je důležité si uvědomit, že úlohy mají naplánované spuštění, jakmile budou uzly jednotlivě přiděleny a spouštěcí úkol byl dokončen. Služba Batch před přiřazením úkolů k uzlům *nečeká* , až budou všechny uzly v rámci fondu dostupné. Tím je zajištěno maximální využití všech dostupných uzlů.
+Na jednom konci spektra můžete vytvořit fond pro každou úlohu, kterou odešlete, a odstranit jej, jakmile se dokončí provádění příslušných úkolů. Tím se maximalizuje využití, protože uzly jsou přiděleny pouze v případě potřeby a jsou vypnuty, jakmile jsou nečinné. To znamená, že úloha musí čekat, až budou uzly přiděleny. je důležité si uvědomit, že úlohy mají naplánované spuštění, jakmile budou uzly jednotlivě přiděleny a spouštěcí úkol byl dokončen. Služba Batch před přiřazením úkolů k uzlům *nečeká*, až budou všechny uzly v rámci fondu dostupné. Tím je zajištěno maximální využití všech dostupných uzlů.
 
 Na druhém konci spektra, pokud je nejvyšší prioritou okamžité spuštění úloh, můžete fond vytvořit s předstihem, aby jeho uzly byly k dispozici před odesláním úloh. V tomto scénáři se mohou úkoly spustit okamžitě, ale uzly mohou „nečinně sedět“ a čekat na jejich přiřazení.
 
 Kombinovaný přístup se obvykle používá ke zpracování proměnné, ale průběžné načítání. Můžete mít fond, ve kterém je odesláno více úloh, a může škálovat počet uzlů nahoru nebo dolů podle zatížení úlohy. Toto přizpůsobování kapacity můžete provádět reaktivně, na základě aktuálního zatížení, nebo proaktivně, pokud lze zatížení předpovídat. Další informace najdete v tématu [zásady automatického škálování](#automatic-scaling-policy).
+
+## <a name="autopools"></a>Autopools
+
+[Autofond](/rest/api/batchservice/job/add#autopoolspecification) je fond, který je vytvořen službou Batch při odeslání úlohy, a ne před tím, než se vytvoří před úlohami, které se ve fondu spustí. Služba Batch bude spravovat životnost autopoolu podle zadaných charakteristik. Nejčastěji se tyto fondy také nastaví tak, aby se automaticky odstranily po dokončení jejich úloh.
 
 ## <a name="security-with-certificates"></a>Zabezpečení pomocí certifikátů
 

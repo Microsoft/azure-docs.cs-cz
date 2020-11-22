@@ -6,26 +6,26 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: fb3d00fb79c55e29d578f5e068e4ae025414a935
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 78344bd3896ca7d00c9f761c586b6f5142dc1e58
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424016"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253401"
 ---
 # <a name="azure-active-directory-authentication"></a>Ověřování služby Azure Active Directory
 
-Požadavky HTTP se můžou ověřit pomocí schématu ověření **nosiče** s tokenem získaným z Azure Active Directory (Azure AD). Tyto požadavky musí být přenášeny přes protokol TLS.
+Požadavky HTTP můžete ověřit pomocí `Bearer` schématu ověřování s tokenem získaným z Azure Active Directory (Azure AD). Tyto požadavky je nutné přenést přes protokol TLS (Transport Layer Security).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Objekt zabezpečení, který se použije k vyžádání tokenu Azure AD, musí být přiřazený k jedné z platných [rolí konfigurace aplikace](./rest-api-authorization-azure-ad.md) .
+Musíte přiřadit objekt zabezpečení, který se používá k vyžádání tokenu Azure AD pro jednu z platných [rolí konfigurace aplikace Azure](./rest-api-authorization-azure-ad.md).
 
-Zadejte všechny požadavky na všechny hlavičky HTTP vyžadované pro ověřování. Minimální požadovaná:
+Zadejte všechny požadavky na všechny hlavičky HTTP vyžadované pro ověřování. Toto je minimální požadavek:
 
 |  Hlavička požadavku | Popis  |
 | --------------- | ------------ |
-| **Autorizace** | Informace o ověřování vyžadované schématem **nosiče** . Formátování a podrobnosti jsou vysvětleny níže. |
+| `Authorization` | Informace o ověřování požadované `Bearer` schématem. |
 
 **Příklad:**
 
@@ -34,37 +34,40 @@ Host: {myconfig}.azconfig.io
 Authorization: Bearer {{AadToken}}
 ```
 
-## <a name="azure-active-directory-token-acquisition"></a>Získání tokenu Azure Active Directory
+## <a name="azure-ad-token-acquisition"></a>Získání tokenu Azure AD
 
-Než zjistíte, že je potřeba získat token Azure AD, musí zjistit, co uživatel chce ověřit, jakou cílovou skupinu požaduje token, a co by měl používat koncový bod Azure AD (autorita).
+Před získáním tokenu Azure AD musíte zjistit, co se uživatel má ověřit, jakou cílovou skupinu požadujete pro a co koncový bod Azure AD (autorita) má použít.
 
 ### <a name="audience"></a>Cílová skupina
 
-Token Azure AD musí být požadován se správnou cílovou skupinou. Pro konfiguraci aplikací Azure by se při žádosti o token měla zadat jeden z následujících cílových skupin. Cílová skupina může být také označována jako "prostředek", pro který je požadován token.
+Vyžádejte si token Azure AD se správnou cílovou skupinou. Pro konfiguraci aplikací Azure použijte jednu z následujících skupin. Cílovou skupinu lze také označovat jako *prostředek* , pro který je požadován token.
 
 - {configurationStoreName}. azconfig. IO
 - *. azconfig.io
 
 > [!IMPORTANT]
-> Když je požadovaná cílová skupina {configurationStoreName}. azconfig. IO, musí se přesně shodovat s hlavičkou žádosti hostitel (rozlišuje velká a malá písmena), která se používá k odeslání požadavku.
+> Když je požadovaná cílová skupina `{configurationStoreName}.azconfig.io` , musí přesně odpovídat `Host` hlavičce požadavku (rozlišuje velká a malá písmena), která se používá k odeslání požadavku.
 
 ### <a name="azure-ad-authority"></a>Autorita Azure AD
 
-Autorita Azure AD je koncový bod, který se používá k získání tokenu Azure AD. Má formu `https://login.microsoftonline.com/{tenantId}` . `{tenantId}`Segment odkazuje na ID tenanta Azure Active Directory, do kterého patří uživatel nebo aplikace, které se pokouší ověřit.
+Autorita Azure AD je koncový bod, který používáte pro získání tokenu Azure AD. Je ve formátu `https://login.microsoftonline.com/{tenantId}` . `{tenantId}`Segment odkazuje na ID tenanta Azure AD, ke kterému patří uživatel nebo aplikace, které se pokouší ověřit.
 
 ### <a name="authentication-libraries"></a>Knihovny ověřování
 
-Azure poskytuje sadu knihoven s názvem Azure Active Directory Authentication Library (ADAL), která zjednodušuje proces získání tokenu Azure AD. Tyto knihovny jsou sestavené pro různé jazyky. Dokumentaci najdete [tady](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries).
+Azure poskytuje sadu knihoven s názvem Azure Active Directory knihovny ověřování, které zjednodušují proces získání tokenu Azure AD. Azure vytvoří tyto knihovny pro několik jazyků. Další informace najdete v [dokumentaci](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries).
 
-## <a name="errors"></a>**Chyby**
+## <a name="errors"></a>Chyby
+
+Můžete se setkat s následujícími chybami.
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256, Bearer
 ```
 
-**Důvod:** Není Zadaná hlavička žádosti o autorizaci se schématem nosného schématu.
-**Řešení:** Zadejte platnou ```Authorization``` hlavičku požadavku HTTP.
+**Důvod:** Nezadali jste záhlaví žádosti o autorizaci se `Bearer` schématem.
+
+**Řešení:** Zadejte platnou `Authorization` hlavičku požadavku HTTP.
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -72,7 +75,8 @@ WWW-Authenticate: HMAC-SHA256, Bearer error="invalid_token", error_description="
 ```
 
 **Důvod:** Token Azure AD není platný.
-**Řešení:** Získejte token Azure AD od autority Azure AD a zajistěte, aby se použila správná cílová skupina.
+
+**Řešení:** Získejte token Azure AD od autority Azure AD a ujistěte se, že jste používali správnou cílovou skupinu.
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -80,4 +84,5 @@ WWW-Authenticate: HMAC-SHA256, Bearer error="invalid_token", error_description="
 ```
 
 **Důvod:** Token Azure AD není platný.
-**Řešení:** Získejte token Azure AD od autority Azure AD a ujistěte se, že je tenant Azure AD ten přidružený k předplatnému, ke kterému patří úložiště konfigurace. Tato chyba se může zobrazit, pokud objekt zabezpečení patří do více než jednoho tenanta služby Azure AD.
+
+**Řešení:** Získejte token Azure AD od autority Azure AD. Ujistěte se, že je tenant služby Azure AD ten přidružený k předplatnému, ke kterému patří úložiště konfigurace. Tato chyba se může zobrazit, pokud objekt zabezpečení patří do více než jednoho tenanta Azure AD.

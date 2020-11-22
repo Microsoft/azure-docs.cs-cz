@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 94cf1f34db590abeb084c5e95367781e50c85efc
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fa7292d423d8b716ffd75a1a20431fb5a79bbf96
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650089"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237336"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Řešení potíží se zřizováním cloudu
 
@@ -124,40 +124,17 @@ Chcete-li tento problém vyřešit, změňte zásady spouštění prostředí Po
 
 ### <a name="log-files"></a>Soubory protokolu
 
-Ve výchozím nastavení agent generuje minimální množství chybových zpráv a informací o trasování zásobníku. Tyto protokoly trasování najdete ve složce *C:\ProgramData\Microsoft\Azure zřizování služby AD Connect Agent\Trace*.
+Ve výchozím nastavení agent generuje minimální množství chybových zpráv a informací o trasování zásobníku. Tyto protokoly trasování najdete ve složce **C:\ProgramData\Microsoft\Azure zřizování služby AD Connect Agent\Trace**.
 
 Pokud chcete získat další podrobnosti o řešení problémů souvisejících s agentem, postupujte podle těchto kroků.
 
-1. Zastavení služby **Microsoft Azure AD připojení agenta zřizování**.
-1. Vytvořte kopii původního konfiguračního souboru: *C:\Program Files\Microsoft Azure AD Connect zřizování Agent\AADConnectProvisioningAgent.exe.config*.
-1. Existující oddíl nahraďte `<system.diagnostics>` následujícím a všechny zprávy trasování budou přejít do souboru *ProvAgentTrace. log*.
+1.  Nainstalujte modul prostředí PowerShell pro AADCloudSyncTools, jak je popsáno [zde](reference-powershell.md#install-the-aadcloudsynctools-powershell-module).
+2. `Export-AADCloudSyncToolsLogs`Zachyťte informace pomocí rutiny prostředí PowerShell.  Pomocí následujících přepínačů můžete vyladit shromažďování dat.
+      - SkipVerboseTrace jenom k exportu aktuálních protokolů bez zachycení podrobných protokolů (výchozí = false)
+      - TracingDurationMins určit jinou dobu trvání zachycení (výchozí = 3 minuty)
+      - OutputPath zadejte jinou výstupní cestu (výchozí = dokumenty uživatele).
 
-   ```xml
-     <system.diagnostics>
-         <sources>
-         <source name="AAD Connect Provisioning Agent">
-             <listeners>
-             <add name="console"/>
-             <add name="etw"/>
-             <add name="textWriterListener"/>
-             </listeners>
-         </source>
-         </sources>
-         <sharedListeners>
-         <add name="console" type="System.Diagnostics.ConsoleTraceListener" initializeData="false"/>
-         <add name="etw" type="System.Diagnostics.EventLogTraceListener" initializeData="Azure AD Connect Provisioning Agent">
-             <filter type="System.Diagnostics.EventTypeFilter" initializeData="All"/>
-         </add>
-         <add name="textWriterListener" type="System.Diagnostics.TextWriterTraceListener" initializeData="C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log"/>
-         </sharedListeners>
-     </system.diagnostics>
-    
-   ```
-1. Spusťte službu **Microsoft Azure AD připojte agenta zřizování**.
-1. Použijte následující příkaz k zakončení souboru a ladění problémů. 
-    ```
-    Get-Content “C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log” -Wait
-    ```
+
 ## <a name="object-synchronization-problems"></a>Problémy synchronizace objektů
 
 Následující část obsahuje informace o řešení potíží se synchronizací objektů.
@@ -203,6 +180,22 @@ Výběrem stavu můžete zobrazit další informace o karanténě. Můžete tak�
   Použijte následující žádost:
  
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
+
+## <a name="repairing-the-the-cloud-sync-service-account"></a>Opravuje se účet cloudové synchronizační služby.
+Pokud potřebujete opravit účet cloudové synchronizační služby, můžete použít `Repair-AADCloudSyncToolsAccount` .  
+
+
+   1.  Začněte tím, že použijete instalační kroky popsané [tady](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) a potom pokračujte ve zbývajících krocích.
+   2.  Z relace prostředí Windows PowerShell s oprávněními správce zadejte nebo zkopírujte a vložte následující: 
+    ```
+    Connect-AADCloudSyncTools
+    ```  
+   3. Zadejte svoje přihlašovací údaje globálního správce Azure AD.
+   4. Zadejte nebo zkopírujte a vložte následující text: 
+    ```
+    Repair-AADCloudSyncToolsAccount
+    ```  
+   5. Po dokončení by se měl účet úspěšně opravit.
 
 ## <a name="next-steps"></a>Další kroky 
 

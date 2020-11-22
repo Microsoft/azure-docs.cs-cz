@@ -1,30 +1,29 @@
 ---
 title: Konfigurace aplikací Azure REST API – revize klíč-hodnota
-description: Referenční stránky pro práci s revizemi klíčových hodnot pomocí REST API konfigurace aplikace Azure
+description: Referenční stránky pro práci s revizemi klíč-hodnota pomocí REST API konfigurace aplikace Azure
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 7d1990d6bc524a69de2b22b4f7c5aeec88c3ce9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 668345da8bb89412f7b1dd36975c5bed6f229580
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424068"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95246380"
 ---
 # <a name="key-value-revisions"></a>Revize klíč-hodnota
 
-verze API-Version: 1,0
+*Revize klíč-hodnota* definuje historické reprezentace prostředku klíč-hodnota. Revize vyprší za 7 dní pro úložiště úrovně Free nebo 30 dnů pro obchody úrovně Standard. Revize podporuje `List` operaci.
 
-**Revize klíč-hodnota** definuje historické reprezentace prostředku klíč-hodnota. Revize vyprší za 7 dní pro úložiště úrovně Free nebo 30 dnů pro obchody úrovně Standard. Revize podporují následující operace:
+Pro všechny operace ``key`` je volitelný parametr. Pokud tento parametr vynecháte, znamená to, že je nějaký klíč.
 
-- Seznam
+Pro všechny operace ``label`` je volitelný parametr. Pokud tento parametr vynecháte, znamená to, že označuje libovolný popisek.
 
-Pro všechny operace ``key`` je volitelný parametr. Pokud tento parametr vynecháte, znamená to, že je **nějaký** klíč.
-Pro všechny operace ``label`` je volitelný parametr. Pokud tento parametr vynecháte, znamená to, že označuje **libovolný** popisek.
+Tento článek se týká rozhraní API verze 1,0.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 
@@ -62,7 +61,7 @@ Accept-Ranges: items
 
 ## <a name="pagination"></a>Stránkování
 
-Výsledkem je stránkování, pokud počet vrácených položek překročí limit odezvy. Použijte volitelnou ``Link`` hlavičku odpovědi a použijte ji ``rel="next"`` pro navigaci.  Další možností je, že obsah poskytuje další odkaz ve formě ``@nextLink`` Vlastnosti.
+Výsledkem je stránkování, pokud počet vrácených položek překročí limit odezvy. Použijte volitelnou ``Link`` hlavičku odpovědi a použijte ji ``rel="next"`` pro navigaci. Další možností je, že obsah poskytuje další odkaz ve formě ``@nextLink`` Vlastnosti.
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -88,7 +87,7 @@ Link: <{relative uri}>; rel="next"
 
 ## <a name="list-subset-of-revisions"></a>Seznam dílčích revizí
 
-Použijte `Range` hlavičku požadavku. Odpověď bude obsahovat `Content-Range` hlavičku. Pokud server nedokáže splnit požadovaný rozsah, odpoví HTTP `416` (RangeNotSatisfiable).
+Použijte `Range` hlavičku požadavku. Odpověď obsahuje hlavičku `Content-Range`. Pokud server nedokáže splnit požadovaný rozsah, odpoví HTTP `416` ( `RangeNotSatisfiable` ).
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -135,6 +134,8 @@ GET /revisions?key={key}&label={label}&api-version={api-version}
 
 ### <a name="reserved-characters"></a>Vyhrazené znaky
 
+Vyhrazené znaky jsou:
+
 `*`, `\`, `,`
 
 Pokud je vyhrazený znak součástí hodnoty, musí být uvozen pomocí `\{Reserved Character}` . Nerezervované znaky mohou být také uvozeny řídicími znaky.
@@ -160,19 +161,19 @@ Content-Type: application/problem+json; charset=utf-8
 
 ### <a name="examples"></a>Příklady
 
-- Vše
+- Všem
 
     ```http
     GET /revisions
     ```
 
-- Položky, kde název klíče začíná na **ABC**
+- Položky, kde název klíče začíná na **ABC**:
 
     ```http
     GET /revisions?key=abc*&api-version={api-version}
     ```
 
-- Položky, kde je název klíče, buď **ABC** , nebo **XYZ** a popisky obsahují **výrobní** číslo
+- Položky, kde je název klíče **ABC** nebo **XYZ**, a popisky obsahují položku **prod**:
 
     ```http
     GET /revisions?key=abc,xyz&label=*prod*&api-version={api-version}
@@ -186,9 +187,9 @@ Použijte volitelný `$select` parametr řetězce dotazu a zadejte čárkami odd
 GET /revisions?$select=value,label,last_modified&api-version={api-version} HTTP/1.1
 ```
 
-## <a name="time-based-access"></a>Přístup k Time-Based
+## <a name="time-based-access"></a>Přístup založený na čase
 
-Získat reprezentace výsledku v čase, který byl v minulosti. Viz část [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1)
+Získat reprezentace výsledku v čase, který byl v minulosti. Další informace najdete v tématu [rozhraní HTTP pro Time-Based přístupu ke stavům prostředků – soupisky](https://tools.ietf.org/html/rfc7089#section-2.1), oddíl 2.1.1.
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1

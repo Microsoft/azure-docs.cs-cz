@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 613cf7d9b68fe42c26f2c01cb1fb5dd1da1e1fb5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f67df45b6b663584e848983251031146cdf8df60
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946888"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247689"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Přehled clusteru Azure Stream Analytics (Preview)
 
@@ -69,7 +69,7 @@ Vaše clustery Stream Analytics se účtují na základě zvolené kapacity SU. 
 
 ### <a name="which-inputs-and-outputs-can-i-privately-connect-to-from-my-stream-analytics-cluster"></a>K jakým vstupům a výstupům se můžu soukromě připojit z mého clusteru Stream Analytics?
 
-Stream Analytics podporuje různé typy vstupů a výstupů. Kterákoli z těchto služeb, které podporují privátní odkazy Azure, se můžou k vašim úlohám připojit soukromě. V clusteru můžete [vytvořit soukromé koncové body](private-endpoints.md) , které umožní úlohám přístup k vstupnímu a výstupnímu prostředku.
+Stream Analytics podporuje různé typy vstupů a výstupů. V clusteru můžete [vytvořit soukromé koncové body](private-endpoints.md) , které umožní úlohám přístup k vstupnímu a výstupnímu prostředku. V současné době je Azure SQL Database, Azure Storage, Azure Data Lake Storage Gen2, centrum událostí Azure a Azure Service Bus podporované služby a další typy budou brzy přidány. 
 
 ## <a name="next-steps"></a>Další kroky
 

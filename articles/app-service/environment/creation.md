@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a0d474208f11c203ca65e9ac296fa381d8633a8b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663567"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238390"
 ---
 # <a name="create-an-app-service-environment"></a>Vytvoření App Service Environment
 
@@ -48,7 +48,7 @@ ASEv3 je nabídnuta pouze ve vybraných oblastech. Další oblasti budou přidá
 
 ## <a name="creating-an-ase-in-the-portal"></a>Vytvoření pomocného mechanismu pro vytváření na portálu
 
-1. Pokud chcete vytvořit ASEv3, vyhledejte na webu Marketplace **App Service Environment V3**.  
+1. Pokud chcete vytvořit ASEv3, vyhledejte na Marketplace **App Service Environment (Preview)**.  
 2. Základy: vyberte předplatné, vyberte nebo vytvořte skupinu prostředků a zadejte název vašeho přidaných mechanismů.  Název pomocného programu se použije i pro příponu vašeho přidaného správce domény.  Pokud je název pomocného mechanismu služby *Contoso* , bude přípona domény *contoso.appserviceenvironment.NET*.  Tento název se automaticky nastaví v Azure DNS privátní zóně, kterou používá virtuální síť, do které se nasadí pomocný modul pro nasazování. 
 
     ![Karta základy vytváření App Service Environment](./media/creation/creation-basics.png)

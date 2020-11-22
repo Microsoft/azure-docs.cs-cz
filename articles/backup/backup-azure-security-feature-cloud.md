@@ -3,12 +3,12 @@ title: Obnovitelné odstranění pro Azure Backup
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d7998c7f9def6ce9965ded3b6ec700f7975891eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da473b1d886ec2fe95a7baae76b09aff38fb3cd7
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271541"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95254021"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Obnovitelné odstranění pro Azure Backup
 
@@ -35,9 +35,9 @@ Je důležité si uvědomit, že jakmile je obnovitelné odstranění zakázané
 
 Chcete-li zakázat obnovitelné odstranění, použijte následující postup:
 
-1. V Azure Portal přejdete do svého trezoru a pak přejdete na **Settings**  ->  **vlastnosti**nastavení.
+1. V Azure Portal přejdete do svého trezoru a pak přejdete na **Settings**  ->  **vlastnosti** nastavení.
 2. V podokně Vlastnosti vyberte možnost aktualizace **nastavení zabezpečení**  ->  **Update**.  
-3. V podokně nastavení zabezpečení v části **obnovitelné odstranění**vyberte **Zakázat**.
+3. V podokně nastavení zabezpečení v části **obnovitelné odstranění** vyberte **Zakázat**.
 
 ![Zakázat obnovitelné odstranění](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
 
@@ -73,7 +73,7 @@ Postupujte takto:
 
 1. Chcete-li [Zakázat obnovitelné odstranění](#enabling-and-disabling-soft-delete), postupujte podle pokynů.
 
-2. V Azure Portal přejdete do trezoru, přejdete na **zálohované položky**a zvolíte položku neodstraněno.
+2. V Azure Portal přejdete do trezoru, přejdete na **zálohované položky** a zvolíte položku neodstraněno.
 
    ![Zvolit dostraněnou položku](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
@@ -87,11 +87,11 @@ Postupujte takto:
 
 5. Chcete-li trvale odstranit data zálohy, vyberte možnost **Odstranit zálohovaná data** .
 
-   ![Zvolit odstranění zálohovaných dat](/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![Zvolit odstranění zálohovaných dat](./media/backup-azure-manage-vms/delete-backup-button.png)
 
 6. Zadejte název zálohované položky, abyste potvrdili, že chcete body obnovení odstranit.
 
-   ![Zadejte název zálohované položky.](/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![Zadejte název zálohované položky.](./media/backup-azure-manage-vms/delete-backup-data.png)
 
 7. Chcete-li odstranit data zálohy pro položku, vyberte možnost **Odstranit**. Zpráva s oznámením vám poskytne informace o odstranění zálohovaných dat.
 

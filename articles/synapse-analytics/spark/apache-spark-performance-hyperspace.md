@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 1833a606f3dbbc9826858bac4f3ba056b5b7ad8a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 81ebf643591eeb3600957aafa8da2ca6055575a6
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369858"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241586"
 ---
 # <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hyperprostoru: subsystém indexování pro Apache Spark
 
@@ -30,7 +30,7 @@ Právní omezení: hyperprostoru pomáhá zrychlit vaše úlohy nebo dotazy za d
 
 Můžete chtít pečlivě monitorovat vaše úlohy a zjistit, zda vám indexování pomůže na základě velkých a malých písmen.
 
-Tento dokument je také k dispozici ve formě poznámkového bloku pro [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)a [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)
+Tento dokument je také k dispozici ve formě poznámkového bloku pro [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)a [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb).
 
 ## <a name="setup"></a>Nastavení
 
@@ -1542,6 +1542,697 @@ Project [deptName#675]
 *(1) Project [deptName#675]
 +- *(1) Filter (isnotnull(deptId#674) && (deptId#674 > 20))
    +- *(1) FileScan parquet [deptId#674,deptName#675] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), GreaterThan(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
+```
+
+## <a name="hybrid-scan-for-mutable-datasets"></a>Hybridní kontrola měnitelných datových sad
+
+Pokud se často odstranila vaše zdrojová data a odstranily se nějaké nové soubory nebo se odstranily stávající soubory, váš index se nepoužije. Existují však situace, kdy chcete index používat, aniž by bylo nutné jej kdykoli aktualizovat. Může to mít několik příčin:
+
+- Nechcete průběžně aktualizovat index, ale místo toho ho chtít pravidelně porozumět, protože vaše úlohy jsou nejlepší.
+- Přidali jste nebo odebrali jenom pár souborů a nechcete čekat na dokončení další úlohy aktualizace.
+
+Pokud budete chtít pořád používat zastaralý index, výkop do hyperprostoru přináší hybridní kontrolu, novou techniku, která uživatelům umožňuje využívat zastaralé nebo zastaralé indexy (například základní zdrojová data obsahovaly některé nové soubory připojené nebo existující soubory) bez aktualizace indexů.
+
+V případě, že nastavíte příslušnou konfiguraci pro povolení hybridního prohledávání, nástroj hyperprostoru upraví plán dotazu, aby tyto změny využila následujícím způsobem:
+* Připojené soubory lze sloučit s daty indexu pomocí sjednocení nebo BucketUnion (pro připojení). V případě potřeby je možné v případě potřeby také použít přenechání připojených dat.
+* Odstraněné soubory je možné zpracovat vložením filtru – není podmínka pro sloupec dat indexu, aby se indexované řádky z odstraněných souborů mohly vyloučit v době dotazu.
+
+Transformaci plánu dotazu můžete kontrolovat v následujících příkladech.
+
+> [!NOTE]
+> V současné době se hybridní kontrola podporuje jenom pro data, která nejsou rozdělená na oddíly.
+
+### <a name="hybrid-scan-for-appended-files---non-partitioned-data"></a>Hybridní vyhledávání připojených souborů – nedělená data
+
+V následujícím příkladu jsou použity nedělená data. V tomto příkladu očekáváme, že index JOIN se dá použít pro dotaz a BucketUnion se zavádí pro připojené soubory.
+
+:::zone pivot = "programming-language-scala"
+
+```scala
+val testData = Seq(
+    ("orange", 3, "2020-10-01"),
+    ("banana", 1, "2020-10-01"),
+    ("carrot", 5, "2020-10-02"),
+    ("beetroot", 12, "2020-10-02"),
+    ("orange", 2, "2020-10-03"),
+    ("banana", 11, "2020-10-03"),
+    ("carrot", 3, "2020-10-03"),
+    ("beetroot", 2, "2020-10-04"),
+    ("cucumber", 7, "2020-10-05"),
+    ("pepper", 20, "2020-10-06")
+    ).toDF("name", "qty", "date")
+
+val testDataLocation = s"$dataPath/productTable"
+
+testData.write.mode("overwrite").parquet(testDataLocation)
+val testDF = spark.read.parquet(testDataLocation)
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+```python
+testdata = [
+    ("orange", 3, "2020-10-01"),
+    ("banana", 1, "2020-10-01"),
+    ("carrot", 5, "2020-10-02"),
+    ("beetroot", 12, "2020-10-02"),
+    ("orange", 2, "2020-10-03"),
+    ("banana", 11, "2020-10-03"),
+    ("carrot", 3, "2020-10-03"),
+    ("beetroot", 2, "2020-10-04"),
+    ("cucumber", 7, "2020-10-05"),
+    ("pepper", 20, "2020-10-06")
+]
+
+testdata_location = data_path + "/productTable"
+from pyspark.sql.types import StructField, StructType, StringType, IntegerType
+testdata_schema = StructType([
+    StructField('name', StringType(), True),
+    StructField('qty', IntegerType(), True),
+    StructField('date', StringType(), True)])
+
+test_df = spark.createDataFrame(testdata, testdata_schema)
+test_df.write.mode("overwrite").parquet(testdata_location)
+test_df = spark.read.parquet(testdata_location)
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-csharp"
+
+```csharp
+using Microsoft.Spark.Sql.Types;
+
+var products = new List<GenericRow>() {
+    new GenericRow(new object[] {"orange", 3, "2020-10-01"}),
+    new GenericRow(new object[] {"banana", 1, "2020-10-01"}),
+    new GenericRow(new object[] {"carrot", 5, "2020-10-02"}),
+    new GenericRow(new object[] {"beetroot", 12, "2020-10-02"}),
+    new GenericRow(new object[] {"orange", 2, "2020-10-03"}),
+    new GenericRow(new object[] {"banana", 11, "2020-10-03"}),
+    new GenericRow(new object[] {"carrot", 3, "2020-10-03"}),
+    new GenericRow(new object[] {"beetroot", 2, "2020-10-04"}),
+    new GenericRow(new object[] {"cucumber", 7, "2020-10-05"}),
+    new GenericRow(new object[] {"pepper", 20, "2020-10-06"})
+};
+var productsSchema = new StructType(new List<StructField>()
+{
+    new StructField("name", new StringType()),
+    new StructField("qty", new IntegerType()),
+    new StructField("date", new StringType())
+});
+
+DataFrame testData = spark.CreateDataFrame(products, productsSchema); 
+string testDataLocation = $"{dataPath}/productTable";
+testData.Write().Mode("overwrite").Parquet(testDataLocation);
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-scala"
+
+```scala
+// CREATE INDEX
+hyperspace.createIndex(testDF, IndexConfig("productIndex2", Seq("name"), Seq("date", "qty")))
+
+spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
+val filter1 = testDF.filter("name = 'banana'")
+val filter2 = testDF.filter("qty > 10")
+val query = filter1.join(filter2, "name")
+
+// Check Join index rule is applied properly.
+hyperspace.explain(query)(displayHTML(_))
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+```python
+# CREATE INDEX
+hyperspace.createIndex(test_df, IndexConfig("productIndex2", ["name"], ["date", "qty"]))
+
+spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
+filter1 = test_df.filter("name = 'banana'")
+filter2 = test_df.filter("qty > 10")
+query = filter1.join(filter2, "name")
+
+# Check Join index rule is applied properly.
+hyperspace.explain(query, True, displayHTML)
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-csharp"
+
+```csharp
+// CREATE INDEX
+DataFrame testDF = spark.Read().Parquet(testDataLocation);
+var productIndex2Config = new IndexConfig("productIndex", new string[] {"name"}, new string[] {"date", "qty"});
+hyperspace.CreateIndex(testDF, productIndex2Config);
+
+// Check Join index rule is applied properly.
+DataFrame filter1 = testDF.Filter("name = 'banana'");
+DataFrame filter2 = testDF.Filter("qty > 10");
+DataFrame query = filter1.Join(filter2, filter1.Col("name") == filter2.Col("name"));
+
+query.Show();
+
+hyperspace.Explain(query, true, input => DisplayHTML(input));
+```
+
+::: zone-end
+
+Výsledek:
+
+```console
+=============================================================
+Plan with indexes:
+=============================================================
+Project [name#607, qty#608, date#609, qty#632, date#633]
++- SortMergeJoin [name#607], [name#631], Inner
+   :- *(1) Project [name#607, qty#608, date#609]
+   :  +- *(1) Filter (isnotnull(name#607) && (name#607 = banana))
+   :     +- *(1) FileScan parquet [name#607,date#609,qty#608] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/p..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct, SelectedBucketsCount: 1 out of 200
+   +- *(2) Project [name#631, qty#632, date#633]
+      +- *(2) Filter (((isnotnull(qty#632) && (qty#632 > 10)) && isnotnull(name#631)) && (name#631 = banana))
+         +- *(2) FileScan parquet [name#631,date#633,qty#632] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/p..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct, SelectedBucketsCount: 1 out of 200
+
+=============================================================
+Plan without indexes:
+=============================================================
+Project [name#607, qty#608, date#609, qty#632, date#633]
++- SortMergeJoin [name#607], [name#631], Inner
+   :- *(2) Sort [name#607 ASC NULLS FIRST], false, 0
+   :  +- Exchange hashpartitioning(name#607, 200), [id=#453]
+   :     +- *(1) Project [name#607, qty#608, date#609]
+   :        +- *(1) Filter (isnotnull(name#607) && (name#607 = banana))
+   :           +- *(1) FileScan parquet [name#607,qty#608,date#609] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+   +- *(4) Sort [name#631 ASC NULLS FIRST], false, 0
+      +- Exchange hashpartitioning(name#631, 200), [id=#459]
+         +- *(3) Project [name#631, qty#632, date#633]
+            +- *(3) Filter (((isnotnull(qty#632) && (qty#632 > 10)) && isnotnull(name#631)) && (name#631 = banana))
+               +- *(3) FileScan parquet [name#631,qty#632,date#633] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+
+=============================================================
+Indexes used:
+=============================================================
+productIndex2:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/productIndex2/v__=0
+
+```
+
+:::zone pivot = "programming-language-scala"
+
+```scala
+// Append new files.
+val appendData = Seq(
+    ("orange", 13, "2020-11-01"),
+    ("banana", 5, "2020-11-01")).toDF("name", "qty", "date")
+appendData.write.mode("append").parquet(testDataLocation)
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+```python
+# Append new files.
+append_data = [
+    ("orange", 13, "2020-11-01"),
+    ("banana", 5, "2020-11-01")
+]
+append_df = spark.createDataFrame(append_data, testdata_schema)
+append_df.write.mode("append").parquet(testdata_location)
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-csharp"
+
+```csharp
+// Append new files.
+var appendProducts = new List<GenericRow>()
+{
+    new GenericRow(new object[] {"orange", 13, "2020-11-01"}),
+    new GenericRow(new object[] {"banana", 5, "2020-11-01"})
+};
+    
+DataFrame appendData = spark.CreateDataFrame(appendProducts, productsSchema);
+appendData.Write().Mode("Append").Parquet(testDataLocation);
+
+```
+
+::: zone-end
+
+Hybridní kontrola je ve výchozím nastavení zakázaná. Proto uvidíte, že protože jsme připojili nová data, *nebudete se k tomu* muset tento index použít.
+
+Ve výstupu se zobrazí žádné rozdíly v plánu (takže bez zvýraznění).
+
+:::zone pivot = "programming-language-scala"
+
+```scala
+// Hybrid Scan configs are false by default.
+spark.conf.set("spark.hyperspace.index.hybridscan.enabled", "false")
+spark.conf.set("spark.hyperspace.index.hybridscan.delete.enabled", "false")
+
+val testDFWithAppend = spark.read.parquet(testDataLocation)
+val filter1 = testDFWithAppend.filter("name = 'banana'")
+val filter2 = testDFWithAppend.filter("qty > 10")
+val query = filter1.join(filter2, "name")
+hyperspace.explain(query)(displayHTML(_))
+query.show
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+```python
+# Hybrid Scan configs are false by default.
+spark.conf.set("spark.hyperspace.index.hybridscan.enabled", "false")
+spark.conf.set("spark.hyperspace.index.hybridscan.delete.enabled", "false")
+
+test_df_with_append = spark.read.parquet(testdata_location)
+filter1 = test_df_with_append.filter("name = 'banana'")
+filter2 = test_df_with_append.filter("qty > 10")
+query = filter1.join(filter2, "name")
+hyperspace.explain(query, True, displayHTML)
+query.show()
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-csharp"
+
+```csharp
+// Hybrid Scan configs are false by default.
+spark.Conf().Set("spark.hyperspace.index.hybridscan.enabled", "false");
+spark.Conf().Set("spark.hyperspace.index.hybridscan.delete.enabled", "false");
+
+DataFrame testDFWithAppend = spark.Read().Parquet(testDataLocation);
+DataFrame filter1 = testDFWithAppend.Filter("name = 'banana'");
+DataFrame filter2 = testDFWithAppend.Filter("qty > 10");
+DataFrame query = filter1.Join(filter2, filter1.Col("name") == filter2.Col("name"));
+
+query.Show();
+
+hyperspace.Explain(query, true, input => DisplayHTML(input));
+```
+
+::: zone-end
+
+Výsledek:
+
+```console
+=============================================================
+Plan with indexes:
+=============================================================
+Project [name#678, qty#679, date#680, qty#685, date#686]
++- SortMergeJoin [name#678], [name#684], Inner
+   :- *(2) Sort [name#678 ASC NULLS FIRST], false, 0
+   :  +- Exchange hashpartitioning(name#678, 200), [id=#589]
+   :     +- *(1) Project [name#678, qty#679, date#680]
+   :        +- *(1) Filter (isnotnull(name#678) && (name#678 = banana))
+   :           +- *(1) FileScan parquet [name#678,qty#679,date#680] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+   +- *(4) Sort [name#684 ASC NULLS FIRST], false, 0
+      +- Exchange hashpartitioning(name#684, 200), [id=#595]
+         +- *(3) Project [name#684, qty#685, date#686]
+            +- *(3) Filter (((isnotnull(qty#685) && (qty#685 > 10)) && (name#684 = banana)) && isnotnull(name#684))
+               +- *(3) FileScan parquet [name#684,qty#685,date#686] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), EqualTo(name,banana), IsNotNull(name)], ReadSchema: struct
+
+=============================================================
+Plan without indexes:
+=============================================================
+Project [name#678, qty#679, date#680, qty#685, date#686]
++- SortMergeJoin [name#678], [name#684], Inner
+   :- *(2) Sort [name#678 ASC NULLS FIRST], false, 0
+   :  +- Exchange hashpartitioning(name#678, 200), [id=#536]
+   :     +- *(1) Project [name#678, qty#679, date#680]
+   :        +- *(1) Filter (isnotnull(name#678) && (name#678 = banana))
+   :           +- *(1) FileScan parquet [name#678,qty#679,date#680] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+   +- *(4) Sort [name#684 ASC NULLS FIRST], false, 0
+      +- Exchange hashpartitioning(name#684, 200), [id=#542]
+         +- *(3) Project [name#684, qty#685, date#686]
+            +- *(3) Filter (((isnotnull(qty#685) && (qty#685 > 10)) && (name#684 = banana)) && isnotnull(name#684))
+               +- *(3) FileScan parquet [name#684,qty#685,date#686] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), EqualTo(name,banana), IsNotNull(name)], ReadSchema: struct
+
++------+---+----------+---+----------+
+|  name|qty|      date|qty|      date|
++------+---+----------+---+----------+
+|banana| 11|2020-10-03| 11|2020-10-03|
+|banana|  5|2020-11-01| 11|2020-10-03|
+|banana|  1|2020-10-01| 11|2020-10-03|
++------+---+----------+---+----------
+```
+
+### <a name="enable-hybrid-scan"></a>Povolit hybridní kontrolu
+
+V části plánování s indexy se můžete podívat, jak se vytváření oddílů hash systému Exchange vyžaduje jenom pro připojené soubory, takže můžeme pořád používat data indexu "v" "v případě připojených souborů. BucketUnion se používá ke sloučení "přidaných" nepřipojených souborů s daty indexu.
+
+:::zone pivot = "programming-language-scala"
+
+```scala
+// Enable Hybrid Scan config. "delete" config is not necessary since we only appended data.
+spark.conf.set("spark.hyperspace.index.hybridscan.enabled", "true")
+spark.enableHyperspace
+// Need to redefine query to recalculate the query plan.
+val query = filter1.join(filter2, "name")
+hyperspace.explain(query)(displayHTML(_))
+query.show
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+```python
+# Enable Hybrid Scan config. "delete" config is not necessary.
+spark.conf.set("spark.hyperspace.index.hybridscan.enabled", "true")
+
+# Need to redefine query to recalculate the query plan.
+query = filter1.join(filter2, "name")
+hyperspace.explain(query, True, displayHTML)
+query.show()
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-csharp"
+
+```csharp
+// Enable Hybrid Scan config. "delete" config is not necessary.
+spark.Conf().Set("spark.hyperspace.index.hybridscan.enabled", "true");
+spark.EnableHyperspace();
+// Need to redefine query to recalculate the query plan.
+DataFrame query = filter1.Join(filter2, filter1.Col("name") == filter2.Col("name"));
+
+query.Show();
+
+hyperspace.Explain(query, true, input => DisplayHTML(input));
+```
+
+::: zone-end
+
+Výsledek:
+
+```console
+=============================================================
+Plan with indexes:
+=============================================================
+Project [name#678, qty#679, date#680, qty#732, date#733]
++- SortMergeJoin [name#678], [name#731], Inner
+   :- *(3) Sort [name#678 ASC NULLS FIRST], false, 0
+   :  +- BucketUnion 200 buckets, bucket columns: [name]
+   :     :- *(1) Project [name#678, qty#679, date#680]
+   :     :  +- *(1) Filter (isnotnull(name#678) && (name#678 = banana))
+   :     :     +- *(1) FileScan parquet [name#678,date#680,qty#679] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/p..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct, SelectedBucketsCount: 1 out of 200
+   :     +- Exchange hashpartitioning(name#678, 200), [id=#775]
+   :        +- *(2) Project [name#678, qty#679, date#680]
+   :           +- *(2) Filter (isnotnull(name#678) && (name#678 = banana))
+   :              +- *(2) FileScan parquet [name#678,date#680,qty#679] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+   +- *(6) Sort [name#731 ASC NULLS FIRST], false, 0
+      +- BucketUnion 200 buckets, bucket columns: [name]
+         :- *(4) Project [name#731, qty#732, date#733]
+         :  +- *(4) Filter (((isnotnull(qty#732) && (qty#732 > 10)) && isnotnull(name#731)) && (name#731 = banana))
+         :     +- *(4) FileScan parquet [name#731,date#733,qty#732] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/p..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct, SelectedBucketsCount: 1 out of 200
+         +- Exchange hashpartitioning(name#731, 200), [id=#783]
+            +- *(5) Project [name#731, qty#732, date#733]
+               +- *(5) Filter (((isnotnull(qty#732) && (qty#732 > 10)) && isnotnull(name#731)) && (name#731 = banana))
+                  +- *(5) FileScan parquet [name#731,date#733,qty#732] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+
+=============================================================
+Plan without indexes:
+=============================================================
+Project [name#678, qty#679, date#680, qty#732, date#733]
++- SortMergeJoin [name#678], [name#731], Inner
+   :- *(2) Sort [name#678 ASC NULLS FIRST], false, 0
+   :  +- Exchange hashpartitioning(name#678, 200), [id=#701]
+   :     +- *(1) Project [name#678, qty#679, date#680]
+   :        +- *(1) Filter (isnotnull(name#678) && (name#678 = banana))
+   :           +- *(1) FileScan parquet [name#678,qty#679,date#680] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+   +- *(4) Sort [name#731 ASC NULLS FIRST], false, 0
+      +- Exchange hashpartitioning(name#731, 200), [id=#707]
+         +- *(3) Project [name#731, qty#732, date#733]
+            +- *(3) Filter (((isnotnull(qty#732) && (qty#732 > 10)) && isnotnull(name#731)) && (name#731 = banana))
+               +- *(3) FileScan parquet [name#731,qty#732,date#733] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+
+=============================================================
+Indexes used:
+=============================================================
+productIndex2:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/productIndex2/v__=0
+
+
++------+---+----------+---+----------+
+|  name|qty|      date|qty|      date|
++------+---+----------+---+----------+
+|banana|  1|2020-10-01| 11|2020-10-03|
+|banana| 11|2020-10-03| 11|2020-10-03|
+|banana|  5|2020-11-01| 11|2020-10-03|
++------+---+----------+---+----------+
+```
+
+## <a name="incremental-index-refresh"></a>Přírůstková aktualizace indexu
+
+Až budete připraveni aktualizovat své indexy, ale nechcete znovu sestavovat celý index, výkop do hyperprostoru podporuje přírůstkové aktualizace indexů pomocí `hs.refreshIndex("name", "incremental")` rozhraní API. Tím se eliminuje nutnost úplného opětovného sestavování indexu od začátku, využití dříve vytvořených indexových souborů a také aktualizace indexů na nově přidaných datech.
+
+Je samozřejmě vhodné použít doplňkové `optimizeIndex` rozhraní API (zobrazené níže) a zajistit, aby se nezobrazovaly regrese výkonu. Doporučujeme, abyste pro každých 10 volání vyvolali optimalizaci alespoň jednou `refreshIndex(..., "incremental")` . za předpokladu, že data, která jste přidali/odebrali, < 10% původní datové sady. Pokud je například vaše původní datová sada 100 GB a data jste přidali nebo odebrali v přírůstcích a zpomalcích 1 GB, můžete `refreshIndex` před voláním volat 10 časů `optimizeIndex` . Všimněte si, že tento příklad se jednoduše používá pro ilustraci a Vy ho budete muset přizpůsobit pro vaše úlohy.
+
+V následujícím příkladu si všimněte, že je přidání uzlu řazení v plánu dotazů při použití indexů. Důvodem je to, že v připojených datových souborech jsou vytvořeny částečné indexy, což způsobuje, že Spark zavádí `Sort` . Všimněte si také, že `Shuffle` se z tohoto plánu stále eliminuje výměna a poskytuje vám odpovídající akceleraci.
+
+:::zone pivot = "programming-language-scala"
+
+```scala
+def query(): DataFrame = {
+    val testDFWithAppend = spark.read.parquet(testDataLocation)
+    val filter1 = testDFWithAppend.filter("name = 'banana'")
+    val filter2 = testDFWithAppend.filter("qty > 10")
+    filter1.join(filter2, "name")
+}
+
+hyperspace.refreshIndex("productIndex2", "incremental")
+
+hyperspace.explain(query())(displayHTML(_))
+query().show
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+```python
+def query():
+    test_df_with_append = spark.read.parquet(testdata_location)
+    filter1 = test_df_with_append.filter("name = 'banana'")
+    filter2 = test_df_with_append.filter("qty > 10")
+    return filter1.join(filter2, "name")
+
+hyperspace.refreshIndex("productIndex2", "incremental")
+
+hyperspace.explain(query(), True, displayHTML)
+query().show()
+```
+
+::: zone-end
+
+Výsledek:
+
+```console
+=============================================================
+Plan with indexes:
+=============================================================
+Project [name#820, qty#821, date#822, qty#827, date#828]
++- SortMergeJoin [name#820], [name#826], Inner
+   :- *(1) Sort [name#820 ASC NULLS FIRST], false, 0
+   :  +- *(1) Project [name#820, qty#821, date#822]
+   :     +- *(1) Filter (isnotnull(name#820) && (name#820 = banana))
+   :        +- *(1) FileScan parquet [name#820,date#822,qty#821] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/p..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct, SelectedBucketsCount: 1 out of 200
+   +- *(2) Sort [name#826 ASC NULLS FIRST], false, 0
+      +- *(2) Project [name#826, qty#827, date#828]
+         +- *(2) Filter (((isnotnull(qty#827) && (qty#827 > 10)) && (name#826 = banana)) && isnotnull(name#826))
+            +- *(2) FileScan parquet [name#826,date#828,qty#827] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/p..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), EqualTo(name,banana), IsNotNull(name)], ReadSchema: struct, SelectedBucketsCount: 1 out of 200
+
+=============================================================
+Plan without indexes:
+=============================================================
+Project [name#820, qty#821, date#822, qty#827, date#828]
++- SortMergeJoin [name#820], [name#826], Inner
+   :- *(2) Sort [name#820 ASC NULLS FIRST], false, 0
+   :  +- Exchange hashpartitioning(name#820, 200), [id=#927]
+   :     +- *(1) Project [name#820, qty#821, date#822]
+   :        +- *(1) Filter (isnotnull(name#820) && (name#820 = banana))
+   :           +- *(1) FileScan parquet [name#820,qty#821,date#822] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+   +- *(4) Sort [name#826 ASC NULLS FIRST], false, 0
+      +- Exchange hashpartitioning(name#826, 200), [id=#933]
+         +- *(3) Project [name#826, qty#827, date#828]
+            +- *(3) Filter (((isnotnull(qty#827) && (qty#827 > 10)) && (name#826 = banana)) && isnotnull(name#826))
+               +- *(3) FileScan parquet [name#826,qty#827,date#828] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), EqualTo(name,banana), IsNotNull(name)], ReadSchema: struct
+
++------+---+----------+---+----------+
+|  name|qty|      date|qty|      date|
++------+---+----------+---+----------+
+|banana|  1|2020-10-01| 11|2020-10-03|
+|banana| 11|2020-10-03| 11|2020-10-03|
+|banana|  5|2020-11-01| 11|2020-10-03|
++------+---+----------+---+----------+
+```
+
+## <a name="optimize-index-layout"></a>Optimalizovat rozložení indexu
+
+Po opakovaném volání přírůstkových aktualizací u nově připojených dat (např. Pokud uživatel zapisuje data do malých dávek nebo v případě scénářů streamování), počet indexových souborů se obvykle stává velkým dopadem na výkon indexu (velký počet potíží s malými soubory). Výkop poskytuje `hyperspace.optimizeIndex("indexName")` rozhraní API pro optimalizaci rozložení indexu a snížení problému s velkými soubory.
+
+V níže uvedeném plánu si všimněte, že výkop odstranil v plánu dotazů další uzel řazení. Optimalizace může pomoci zabránit řazení pro všechny rejstříkové intervaly, které obsahují pouze jeden soubor. To však bude platit pouze v případě, že všechny rejstříkové intervaly mají maximálně 1 soubor na jeden interval `optimizeIndex` .
+
+:::zone pivot = "programming-language-scala"
+
+```scala
+// Append some more data and call refresh again.
+val appendData = Seq(
+    ("orange", 13, "2020-11-01"),
+    ("banana", 5, "2020-11-01")).toDF("name", "qty", "date")
+appendData.write.mode("append").parquet(testDataLocation)
+
+hyperspace.refreshIndex("productIndex2", "incremental")
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+```python
+
+# Append some more data and call refresh again.
+append_data = [
+    ("orange", 13, "2020-11-01"),
+    ("banana", 5, "2020-11-01")
+]
+append_df = spark.createDataFrame(append_data, testdata_schema)
+append_df.write.mode("append").parquet(testdata_location)
+
+hyperspace.refreshIndex("productIndex2", "incremental"
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-scala"
+
+```scala
+// Call optimize. Ensure that Sort is removed after optimization (This is possible here because after optimize, in this case, every bucket contains only 1 file.).
+hyperspace.optimizeIndex("productIndex2")
+
+hyperspace.explain(query())(displayHTML(_))
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+```python
+# Call optimize. Ensure that Sort is removed after optimization (This is possible here because after optimize, in this case, every bucket contains only 1 file.).
+hyperspace.optimizeIndex("productIndex2")
+
+hyperspace.explain(query(), True, displayHTML)
+```
+
+::: zone-end
+
+Výsledek:
+
+```console
+=============================================================
+Plan with indexes:
+=============================================================
+Project [name#954, qty#955, date#956, qty#961, date#962]
++- SortMergeJoin [name#954], [name#960], Inner
+   :- *(1) Project [name#954, qty#955, date#956]
+   :  +- *(1) Filter (isnotnull(name#954) && (name#954 = banana))
+   :     +- *(1) FileScan parquet [name#954,date#956,qty#955] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/p..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct, SelectedBucketsCount: 1 out of 200
+   +- *(2) Project [name#960, qty#961, date#962]
+      +- *(2) Filter (((isnotnull(qty#961) && (qty#961 > 10)) && isnotnull(name#960)) && (name#960 = banana))
+         +- *(2) FileScan parquet [name#960,date#962,qty#961] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/p..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct, SelectedBucketsCount: 1 out of 200
+
+=============================================================
+Plan without indexes:
+=============================================================
+Project [name#954, qty#955, date#956, qty#961, date#962]
++- SortMergeJoin [name#954], [name#960], Inner
+   :- *(2) Sort [name#954 ASC NULLS FIRST], false, 0
+   :  +- Exchange hashpartitioning(name#954, 200), [id=#1070]
+   :     +- *(1) Project [name#954, qty#955, date#956]
+   :        +- *(1) Filter (isnotnull(name#954) && (name#954 = banana))
+   :           +- *(1) FileScan parquet [name#954,qty#955,date#956] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+   +- *(4) Sort [name#960 ASC NULLS FIRST], false, 0
+      +- Exchange hashpartitioning(name#960, 200), [id=#1076]
+         +- *(3) Project [name#960, qty#961, date#962]
+            +- *(3) Filter (((isnotnull(qty#961) && (qty#961 > 10)) && isnotnull(name#960)) && (name#960 = banana))
+               +- *(3) FileScan parquet [name#960,qty#961,date#962] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+
+=============================================================
+Indexes used:
+=============================================================
+productIndex2:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/productIndex2/v__=3
+```
+
+### <a name="optimize-modes"></a>Režimy optimalizace
+
+Výchozím režimem optimalizace je "rychlý" režim, ve kterém jsou pro optimalizaci vyzvednuty soubory menší než předdefinovaná prahová hodnota. K maximalizaci účinku optimalizace umožňuje výkop do hyperprostoru jiný režim optimalizace "plný", jak je znázorněno níže. Tento režim vybere všechny soubory indexu pro optimalizaci bez ohledu na velikost jejich souboru a vytvoří nejlepší možné rozložení indexu. To je také pomalejší než výchozí režim optimalizace, protože zde jsou zpracovávány další data.
+
+:::zone pivot = "programming-language-scala"
+
+```scala
+hyperspace.optimizeIndex("productIndex2", "full")
+
+hyperspace.explain(query())(displayHTML(_))
+```
+
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+```python
+hyperspace.optimizeIndex("productIndex2", "full")
+
+hyperspace.explain(query(), True, displayHTML)
+```
+
+::: zone-end
+
+Výsledek:
+
+```console
+=============================================================
+Plan with indexes:
+=============================================================
+Project [name#1000, qty#1001, date#1002, qty#1007, date#1008]
++- SortMergeJoin [name#1000], [name#1006], Inner
+   :- *(1) Project [name#1000, qty#1001, date#1002]
+   :  +- *(1) Filter (isnotnull(name#1000) && (name#1000 = banana))
+   :     +- *(1) FileScan parquet [name#1000,date#1002,qty#1001] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/p..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct, SelectedBucketsCount: 1 out of 200
+   +- *(2) Project [name#1006, qty#1007, date#1008]
+      +- *(2) Filter (((isnotnull(qty#1007) && (qty#1007 > 10)) && isnotnull(name#1006)) && (name#1006 = banana))
+         +- *(2) FileScan parquet [name#1006,date#1008,qty#1007] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/p..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct, SelectedBucketsCount: 1 out of 200
+
+=============================================================
+Plan without indexes:
+=============================================================
+Project [name#1000, qty#1001, date#1002, qty#1007, date#1008]
++- SortMergeJoin [name#1000], [name#1006], Inner
+   :- *(2) Sort [name#1000 ASC NULLS FIRST], false, 0
+   :  +- Exchange hashpartitioning(name#1000, 200), [id=#1160]
+   :     +- *(1) Project [name#1000, qty#1001, date#1002]
+   :        +- *(1) Filter (isnotnull(name#1000) && (name#1000 = banana))
+   :           +- *(1) FileScan parquet [name#1000,qty#1001,date#1002] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+   +- *(4) Sort [name#1006 ASC NULLS FIRST], false, 0
+      +- Exchange hashpartitioning(name#1006, 200), [id=#1166]
+         +- *(3) Project [name#1006, qty#1007, date#1008]
+            +- *(3) Filter (((isnotnull(qty#1007) && (qty#1007 > 10)) && isnotnull(name#1006)) && (name#1006 = banana))
+               +- *(3) FileScan parquet [name#1006,qty#1007,date#1008] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/data-777519/prod..., PartitionFilters: [], PushedFilters: [IsNotNull(qty), GreaterThan(qty,10), IsNotNull(name), EqualTo(name,banana)], ReadSchema: struct
+
+=============================================================
+Indexes used:
+=============================================================
+productIndex2:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspace/indexes-777519/productIndex2/v__=4
 ```
 
 ## <a name="next-steps"></a>Další kroky

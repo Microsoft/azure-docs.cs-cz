@@ -6,33 +6,33 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 236670cb59a98ee097baaeb35174489d66e6e786
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4171155f5a9f72ef0c021bd0e37fe4ec2f206646
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424015"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253350"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>Ověřování HMAC – REST API odkaz
 
-Požadavky HTTP se můžou ověřit pomocí schématu ověřování **HMAC-SHA256** . Tyto požadavky musí být přenášeny přes protokol TLS.
+Požadavky HTTP můžete ověřit pomocí schématu ověřování HMAC-SHA256. (HMAC označuje kód pro ověřování zpráv na bázi hash.) Tyto požadavky musí být přenášeny přes protokol TLS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Pověřovací** - \<Access Key ID\>
 - Hodnota **tajného** klíče přístupového kódu pro kódování Base64. ``base64_decode(<Access Key Value>)``
 
-Hodnoty pro přihlašovací údaje (označované také jako "ID") a tajný klíč (označované taky jako hodnota) se musí získat z instance Azure App Configuration, kterou můžete udělat pomocí [Azure Portal](https://portal.azure.com) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true).
+Hodnoty pro přihlašovací údaje (také nazývané `id` ) a tajný kód (také nazývané `value` ) se musí získat z instance konfigurace aplikace Azure. To můžete provést pomocí [Azure Portal](https://portal.azure.com) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true).
 
 Zadejte všechny požadavky na všechny hlavičky HTTP vyžadované pro ověřování. Minimální požadovaná:
 
 |  Hlavička požadavku | Popis  |
 | --------------- | ------------ |
-| **Hostitel** | Internetový hostitel a číslo portu. Viz oddíl  [3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2) |
-| **Date** (Datum) | Datum a čas, kdy žádost pochází. Od aktuálního času GMT nemůže být více než 15 minut. Hodnota je datum HTTP, jak je popsáno v části [3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1) .
-| **x-MS-Date** | Stejné jako ```Date``` výše. Dá se použít místo toho, když Agent nemůže získat přímý přístup k ```Date``` hlavičce požadavku nebo proxy ho upraví. Pokud ```x-ms-date``` a ```Date``` jsou oba poskytované, ```x-ms-date``` má přednost. |
+| **Hostitel** | Internetový hostitel a číslo portu. Další informace najdete v části  [3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2). |
+| **Date** (Datum) | Datum a čas, kdy žádost pochází. Nemůže být delší než 15 minut od aktuálního koordinovaného univerzálního času (Greenwichský střední čas). Hodnota je datum HTTP, jak je popsáno v části [3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1).
+| **x-MS-Date** | Stejné jako ```Date``` výše. Můžete ji použít místo toho, když Agent nemůže získat přímý přístup k ```Date``` hlavičce požadavku nebo proxy server upraví. Pokud ```x-ms-date``` a ```Date``` jsou oba poskytované, ```x-ms-date``` má přednost. |
 | **x-MS-Content-SHA256** | hodnota hash SHA256 kódovaného textu žádosti v kódování Base64 Musí být poskytnut i v případě, že není k dispozici žádné tělo. ```base64_encode(SHA256(body))```|
-| **Autorizace** | Informace o ověřování vyžadované schématem **HMAC-SHA256** . Formátování a podrobnosti jsou vysvětleny níže. |
+| **Autorizace** | Informace o ověřování vyžadované schématem HMAC-SHA256. Formátování a podrobnosti jsou vysvětleny dále v tomto článku. |
 
 **Příklad:**
 
@@ -45,24 +45,24 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ## <a name="authorization-header"></a>Autorizační hlavička
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Syntaxe
 
 ``Authorization``: **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
 |  Argument | Popis  |
 | ------ | ------ |
-| **HMAC – SHA256** | Autorizační schéma _(povinné)_ |
+| **HMAC – SHA256** | Autorizační schéma. _požadovanou_ |
 | **Přihlašovací údaj** | ID přístupového klíče, který se používá k výpočtu podpisu. _požadovanou_ |
 | **SignedHeaders** | K podpisu byly přidány hlavičky požadavků HTTP. _požadovanou_ |
-| **Podpis** | HMACSHA256 kódované **řetězcem na znaménko** ve formátu base64. _požadovanou_|
+| **Podpis** | HMACSHA256 kódované řetězcem na znaménko ve formátu base64. _požadovanou_|
 
 ### <a name="credential"></a>Přihlašovací údaj
 
-ID přístupového klíče, který se používá k výpočtu **podpisu**.
+ID přístupového klíče, který se používá k výpočtu podpisu.
 
 ### <a name="signed-headers"></a>Podepsané hlavičky
 
-Názvy hlaviček žádostí protokolu HTTP oddělené středníkem, které jsou vyžadovány pro podepsání žádosti. Tyto hlavičky HTTP musí být také správně poskytnuty spolu s požadavkem. **Nepoužívejte prázdné znaky**.
+Názvy hlaviček požadavku HTTP oddělené středníky, které se vyžadují pro podepsání žádosti. Tyto hlavičky HTTP musí být také správně poskytnuty spolu s požadavkem. Nepoužívejte prázdné znaky.
 
 ### <a name="required-http-request-headers"></a>Požadované hlavičky požadavku HTTP
 
@@ -76,7 +76,7 @@ x-MS-Date; Host; x-MS-Content-SHA256; ```Content-Type``` ;```Accept```
 
 ### <a name="signature"></a>Podpis
 
-HMACSHA256 algoritmus hash kódovaný v kódování **Base64, který používá** přístupovou klávesu identifikovanou `Credential` .
+HMACSHA256 hash s kódováním base64 pro podepisování řetězce Používá přístupovou klávesu identifikovanou `Credential` .
 ```base64_encode(HMACSHA256(String-To-Sign, Secret))```
 
 ### <a name="string-to-sign"></a>Podepisování řetězcem
@@ -89,9 +89,9 @@ _Řetězec na znaménko =_
 
 |  Argument | Popis  |
 | ------ | ------ |
-| **HTTP_METHOD** | Byl použit malý název metody HTTP, který se používá u žádosti. Viz [část 9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) |
-|**path_and_query** | Zřetězení absolutní cesty k identifikátoru URI požadavku a řetězce dotazu. Viz [část 3,3](https://tools.ietf.org/html/rfc3986#section-3.3).
-| **signed_headers_values** | Hodnoty všech hlaviček požadavků protokolu HTTP, které jsou uvedeny v **SignedHeaders** , oddělených středníkem. Formát následuje **SignedHeaders** sémantika. |
+| **HTTP_METHOD** | Název metody pro velká písmena HTTP použitý u žádosti. Další informace najdete v [části 9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). |
+|**path_and_query** | Zřetězení absolutní cesty k identifikátoru URI požadavku a řetězce dotazu. Další informace najdete v [části 3,3](https://tools.ietf.org/html/rfc3986#section-3.3).
+| **signed_headers_values** | Středníky oddělené hodnoty všech hlaviček požadavků HTTP, které jsou uvedeny v části `SignedHeaders` . Formát následuje `SignedHeaders` sémantika. |
 
 **Příklad:**
 
@@ -111,6 +111,7 @@ WWW-Authenticate: HMAC-SHA256, Bearer
 ```
 
 **Důvod:** Není Zadaná hlavička žádosti o autorizaci se schématem HMAC-SHA256.
+
 **Řešení:** Zadejte platnou ```Authorization``` hlavičku požadavku HTTP.
 
 ```http
@@ -118,7 +119,8 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="The access token has expired", Bearer
 ```
 
-**Důvod:** ```Date``` nebo ```x-ms-date``` Hlavička požadavku je od aktuálního času GMT více než 15 minut.
+**Důvod:** ```Date``` nebo ```x-ms-date``` Hlavička požadavku je více než 15 minut od aktuálního koordinovaného univerzálního času (Greenwichský střední čas).
+
 **Řešení:** Zadejte správné datum a čas.
 
 
@@ -127,14 +129,14 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid access token date", Bearer
 ```
 
-**Důvod:** Chybějící nebo neplatná ```Date``` nebo ```x-ms-date``` Hlavička požadavku
+**Důvod:** Chybějící nebo neplatná ```Date``` ```x-ms-date``` Hlavička nebo žádost
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="[Credential][SignedHeaders][Signature] is required", Bearer
 ```
 
-**Důvod:** Chybí povinný parametr z ```Authorization``` hlavičky požadavku.
+**Důvod:** V hlavičce požadavku chybí povinný parametr ```Authorization``` .
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -142,7 +144,8 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid C
 ```
 
 **Důvod:** Zadané [ ```Host``` ]/[přístupové číslo klíče] se nenašly.
-**Řešení:** Zkontrolujte ```Credential``` parametr ```Authorization``` hlavičky požadavku a ujistěte se, že se jedná o platné ID přístupového klíče. Ujistěte se, že ```Host``` Hlavička odkazuje na registrovaný účet.
+
+**Řešení:** Ověřte ```Credential``` parametr v ```Authorization``` hlavičce požadavku. Ujistěte se, že se jedná o platné ID přístupového klíče, a ujistěte se, že ```Host``` Hlavička odkazuje na registrovaný účet.
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -150,14 +153,16 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid S
 ```
 
 **Důvod:** ```Signature``` Zadané informace se neshodují s tím, co server očekává.
-**Řešení:** Ujistěte se, že ```String-To-Sign``` je správná. Ujistěte se, že ```Secret``` je správné a správně používané (při dekódování Base64 před použitím). Viz část **Příklady** .
+
+**Řešení:** Ujistěte se, že ```String-To-Sign``` je správná. Ujistěte se, že ```Secret``` je správné a správně používané (při dekódování Base64 před použitím).
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Signed request header 'xxx' is not provided", Bearer
 ```
 
-**Důvod:** Chybí Hlavička požadavku, kterou vyžaduje ```SignedHeaders``` parametr v ```Authorization``` hlavičce.
+**Důvod:** Chybí Hlavička požadavku, kterou vyžaduje ```SignedHeaders``` parametr v  ```Authorization``` hlavičce.
+
 **Řešení:** Zadejte požadovanou hlavičku se správnou hodnotou.
 
 ```http
@@ -166,13 +171,14 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="XXX is re
 ```
 
 **Důvod:** Chybí parametr v ```SignedHeaders``` .
-**Řešení:** Ověřte minimální požadavky na **podepsané hlavičky** .
+
+**Řešení:** Ověřte minimální požadavky na podepsané hlavičky.
 
 ## <a name="code-snippets"></a>Fragmenty kódu
 
 ### <a name="javascript"></a>JavaScript
 
-*Požadavky* : [KRYPTOGRAFICKÝch a js](https://code.google.com/archive/p/crypto-js/)
+*Požadavky*: [KRYPTOGRAFICKÝch a js](https://code.google.com/archive/p/crypto-js/)
 
 ```js
 function signRequest(host, 
@@ -362,7 +368,7 @@ import (
     "time"
 )
 
-//SignRequest Setup the auth header for accessing Azure AppConfiguration service
+//SignRequest Setup the auth header for accessing Azure App Configuration service
 func SignRequest(id string, secret string, req *http.Request) error {
     method := req.Method
     host := req.URL.Host
@@ -537,7 +543,7 @@ Invoke-RestMethod -Uri $uri -Method $method -Headers $headers -Body $body
 
 ### <a name="bash"></a>Bash
 
-*Požadavky* :
+*Požadavky*:
 
 | Požadavek | Příkaz | Testované verze |
 | ------------ | ------- | --------------- |

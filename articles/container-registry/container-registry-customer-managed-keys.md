@@ -4,12 +4,12 @@ description: Přečtěte si o šifrování v klidovém prostředí služby Azure
 ms.topic: article
 ms.date: 11/17/2020
 ms.custom: ''
-ms.openlocfilehash: d145e861859d08b644683ea870a48fe9ef8fa459
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6dac2239f223b5dee6ec728833caa01562873210
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024813"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95255016"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Šifrování registru pomocí klíče spravovaného zákazníkem
 
@@ -47,7 +47,7 @@ Když konfigurujete šifrování registru pomocí klíče spravovaného zákazn�
 * **Ruční aktualizace verze klíče** – pro použití konkrétní verze klíče pro šifrování registru zadejte tuto verzi klíče, pokud povolíte šifrování registru s klíčem spravovaným zákazníkem. Pokud je registr zašifrovaný pomocí konkrétní verze klíče, Azure Container Registry používá tuto verzi pro šifrování, dokud ručně neotočíte klíč spravovaný zákazníkem.
 
 > [!NOTE]
-> V současné době můžete pomocí rozhraní příkazového řádku Azure CLI nakonfigurovat registr tak, aby automaticky aktualizoval verzi klíče spravované zákazníkem. Při použití portálu k povolení šifrování musíte ručně aktualizovat verzi klíče.
+> V současné době můžete pomocí rozhraní příkazového řádku Azure CLI nakonfigurovat registr tak, aby automaticky aktualizoval verzi klíče spravované zákazníkem. Pokud používáte portál k povolení šifrování, musíte ručně aktualizovat verzi klíče.
 
 Podrobnosti najdete v části [Výběr ID klíče s nebo bez verze klíče](#choose-key-id-with-or-without-key-version) a [verze aktualizace klíče](#update-key-version)dále v tomto článku.
 

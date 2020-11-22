@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 21e0cfd56a37304d1ec333f8713894504282541f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 107806b6372360e501fe9cc0a21d25cff5cc35f9
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660657"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95248641"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý start: Zprovoznění služby Azure Sentinel
 
@@ -41,7 +41,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
 ### <a name="geographical-availability-and-data-residency"></a>Zeměpisná dostupnost a zasídlí dat
 
-- U všech [oblastí GA Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) s výjimkou oblastí Čína a Německo (svrchovan) může Azure Sentinel běžet v pracovních prostorech. 
+- V pracovních prostorech můžete spustit službu Azure Sentinel ve většině [oblastí GA Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) s výjimkou oblastí Čína a Německo (svrchovan). Může se stát, že nové oblasti Log Analytics můžou nějakou dobu trvat, než se připojí služba Sentinel. 
 
 - Data generovaná službou Azure Sentinel, jako jsou incidenty, záložky a analytická pravidla, můžou obsahovat určitá zákaznická data, která jsou zdrojem zákaznických pracovních Log Analytics. Tato data generovaná službou Azure Sentinel se ukládají v geograficky uvedeném v následující tabulce, podle geografického umístění, ve kterém se nachází pracovní prostor:
 
@@ -63,7 +63,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
    ![Hledání služeb](./media/quickstart-onboard/search-product.png)
 
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
 1. Vyberte pracovní prostor, který chcete použít, nebo vytvořte nový. Službu Azure Sentinel můžete spustit ve více než jednom pracovním prostoru, ale data jsou izolovaná do jednoho pracovního prostoru.
 

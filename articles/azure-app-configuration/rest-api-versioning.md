@@ -6,28 +6,26 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 90d131cdc7c496853f2520951c95b9903d69f8fb
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3a7f50b26d59501d2be3a0147fe89919819b50e6
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424062"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95246363"
 ---
 # <a name="versioning"></a>Správa verzí
 
-verze API-Version: 1,0
-
-Každý požadavek klienta musí jako parametr řetězce dotazu zadat explicitní verzi rozhraní API. Příklad: `https://{myconfig}.azconfig.io/kv?api-version=1.0`
+Každý požadavek klienta musí jako parametr řetězce dotazu zadat explicitní verzi rozhraní API. Příklad: `https://{myconfig}.azconfig.io/kv?api-version=1.0`.
 
 `api-version` je vyjádřen ve formátu SemVer (hlavní_verze. podverze). Vyjednávání rozsahu nebo verze se nepodporuje.
 
-## <a name="error-response"></a>Chybová odezva
+Tento článek se týká rozhraní API verze 1,0.
 
 Následující text objednává souhrn možných odpovědí na chyby vrácených serverem, když nelze porovnat požadovanou verzi rozhraní API.
 
-### <a name="api-version-unspecified"></a>Neurčená verze rozhraní API
+## <a name="api-version-unspecified"></a>Neurčená verze rozhraní API
 
-Vyvolá se v případě, že klient vytvoří požadavek bez poskytnutí verze rozhraní API.
+K této chybě dojde, když klient odešle požadavek bez poskytnutí verze rozhraní API.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -41,9 +39,9 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-### <a name="unsupported-api-version"></a>Nepodporovaná verze rozhraní API
+## <a name="unsupported-api-version"></a>Nepodporovaná verze rozhraní API
 
-Vyvolá se v případě, že požadovaná verze rozhraní API klienta neodpovídá žádné z podporovaných verzí rozhraní API serverem.
+K této chybě dojde, když klient požadoval verzi rozhraní API, protože server neodpovídá žádné z podporovaných verzí rozhraní API.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -57,9 +55,9 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-### <a name="invalid-api-version"></a>Neplatná verze rozhraní API
+## <a name="invalid-api-version"></a>Neplatná verze rozhraní API
 
-Vyvolá se v případě, že klient vytvoří požadavek s verzí rozhraní API, ale hodnota je poškozená nebo nemůže být analyzována serverem.
+K této chybě dochází, když klient vytvoří požadavek s verzí rozhraní API, ale hodnota je poškozená nebo nemůže být analyzována serverem.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -73,9 +71,9 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-### <a name="ambiguous-api-version"></a>Dvojznačná verze rozhraní API
+## <a name="ambiguous-api-version"></a>Dvojznačná verze rozhraní API
 
-Vyvolá se v případě, že klient požaduje verzi rozhraní API, která je pro server nejednoznačná. Například více různých hodnot.
+K této chybě dojde, když klient požaduje verzi rozhraní API, která je nejednoznačná na serveru (například více různých hodnot).
 
 ```http
 HTTP/1.1 400 Bad Request

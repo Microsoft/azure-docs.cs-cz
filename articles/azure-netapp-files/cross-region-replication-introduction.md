@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: 4df96f1c508df22e98a9c611ed04fecf6734970a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1e8ce2e4fe9ae81bc2299ae70e9ff83941b5b4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278290"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95245870"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Replikace Azure NetApp Files svazků mezi oblastmi
 
@@ -111,10 +111,11 @@ Na cílový svazek se vztahuje normální Azure NetApp Files poplatek za kapacit
 
 ## <a name="next-steps"></a>Další kroky
 * [Požadavky a předpoklady pro použití replikace mezi oblastmi](cross-region-replication-requirements-considerations.md)
-* [Vytvoření peeringu replikace](cross-region-replication-create-peering.md)
+* [Vytvoření replikace svazků](cross-region-replication-create-peering.md)
 * [Zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md)
 * [Správa zotavení po havárii](cross-region-replication-manage-disaster-recovery.md)
 * [Metriky replikace svazků](azure-netapp-files-metrics.md#replication)
+* [Odstranit replikace svazků nebo svazky](cross-region-replication-delete.md)
 * [Řešení potíží s replikací mezi oblastmi](troubleshoot-cross-region-replication.md)
 
 

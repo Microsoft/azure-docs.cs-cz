@@ -9,18 +9,18 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: e78c31b3e7c309c0c55895c764fa29589dd15dbd
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4d69c1d69de63dc0d4c3c8f8e46e73f9efc72933
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026835"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95244714"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Terminologie Azure synapse Analytics
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-Tato terminologie Azure synapse Analytics vás provede základními koncepty služby a důležitých příkazů. Tento článek je užitečný pro nové a ty, kteří chtějí zvýrazňovat základní terminologii Azure synapse.
+Tento dokument vás provede základními koncepty analýzy Azure synapse.
 
 ## <a name="basics"></a>Základy
 
@@ -28,16 +28,18 @@ Tato terminologie Azure synapse Analytics vás provede základními koncepty slu
 
 Pracovní prostor umožňuje provádět analýzy pomocí SQL a Apache Sparku. Prostředky dostupné pro SQL a Spark Analytics jsou uspořádány do **fondů** SQL a Spark. 
 
+## <a name="linked-services"></a>Propojené služby
+
 Pracovní prostor může obsahovat libovolný počet **propojených služeb**, v podstatě připojovací řetězce, které definují informace o připojení potřebné k tomu, aby se pracovní prostor připojoval k externím prostředkům.
 
-## <a name="synapse-sql-terminology"></a>Terminologie synapse SQL
+## <a name="synapse-sql"></a>Synapse SQL
 
 **Synapse SQL** je schopnost provádět analýzy založené na T-SQL v pracovním prostoru synapse. Synapse SQL má dva modely spotřeby: vyhrazené a bez serveru.  Pro vyhrazený model použijte **vyhrazené fondy SQL**. Pracovní prostor může obsahovat libovolný počet těchto fondů. Pokud chcete používat model bez serveru, používejte **fondy SQL bez serveru**. Každý pracovní prostor má jeden z těchto fondů.
 
 * **Požadavek SQL** – operace, jako je dotaz spouštěný prostřednictvím vyhrazeného fondu SQL nebo bez serveru SQL
 * **Skript SQL** – sada příkazů SQL, které jsou uložené v souboru. Skript SQL může obsahovat jeden nebo více příkazů SQL. Dá se použít ke spouštění požadavků SQL prostřednictvím vyhrazeného fondu SQL nebo bez serveru SQL.
 
-## <a name="apache-spark-for-synapse-terminology"></a>Apache Spark pro terminologii synapse
+## <a name="apache-spark-for-synapse"></a>Apache Spark pro synapse
 
 Pokud chcete používat Spark Analytics, vytvořte a používejte **fondy Apache Spark bez serveru** v pracovním prostoru synapse.
 
@@ -48,7 +50,7 @@ Pokud chcete používat Spark Analytics, vytvořte a používejte **fondy Apache
 * Interaktivní a reaktivované datové vědy a inženýrské **prostředí s podporou** Scala, PySpark, C# a SparkSQL.
 * **Definice úlohy** Spark – rozhraní pro odeslání úlohy Sparku pomocí sestavení jar obsahujícího kód a jeho závislosti.
 
-## <a name="pipelines-terminology"></a>Terminologie kanálů
+## <a name="pipelines"></a>Kanály
 
 * **Integrace dat** – poskytuje možnost ingestovat data mezi různými zdroji a orchestrovat aktivity běžící v rámci pracovního prostoru nebo mimo pracovní prostor.
 * **Tok dat** – poskytuje plně vizuální prostředí bez nutnosti kódování, které by vyžadovalo transformaci velkých objemů dat. Veškerá optimalizace a provádění jsou zpracovávána způsobem bez serveru.

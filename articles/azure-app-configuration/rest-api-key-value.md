@@ -1,23 +1,23 @@
 ---
-title: REST API konfigurace aplikace Azure – Key-Value
+title: REST API konfigurace aplikace Azure – klíč-hodnota
 description: Referenční stránky pro práci s klíčovými hodnotami pomocí konfigurace aplikace Azure REST API
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 50d97a330507e9361674776acf29d1007ee5bf58
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f89b3f2fa4805eeb2fd9f9d511c8f228b98139ac
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423995"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241025"
 ---
-# <a name="key-values"></a>Key-Values
-
-verze API-Version: 1,0
+# <a name="key-values"></a>Páry klíč-hodnota
 
 Klíč-hodnota je prostředek identifikovaný jedinečnou kombinací `key`  +  `label` . Parametr `label` je volitelný. Chcete-li explicitně odkazovat na klíčovou hodnotu bez popisku, použijte "\ 0" (adresa URL je zakódována jako ``%00`` ). Podívejte se na podrobnosti pro každou operaci.
+
+Tento článek se týká rozhraní API verze 1,0.
 
 ## <a name="operations"></a>Operace
 
@@ -26,11 +26,11 @@ Klíč-hodnota je prostředek identifikovaný jedinečnou kombinací `key`  +  `
 - Nastavit
 - Odstranit
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 ```json
 {
@@ -45,10 +45,10 @@ Klíč-hodnota je prostředek identifikovaný jedinečnou kombinací `key`  +  `
 }
 ```
 
-## <a name="get-key-value"></a>Získat Key-Value
+## <a name="get-key-value"></a>Získání hodnoty klíč-hodnota
 
-**Požadováno:** ``{key}`` , ``{api-version}``  
-*Volitelné:* ``label`` – Pokud je vynechaná, implikuje klíčovou hodnotu bez popisku.
+Požadováno: ``{key}`` , ``{api-version}``  
+Volitelné: ``label`` (Pokud je vynecháno, implikuje klíčovou hodnotu bez popisku.)
 
 ```http
 GET /kv/{key}?label={label}&api-version={api-version}
@@ -87,7 +87,7 @@ HTTP/1.1 404 Not Found
 
 ## <a name="get-conditionally"></a>Získat (podmíněně)
 
-Chcete-li zlepšit ukládání do mezipaměti klienta, použijte `If-Match` nebo `If-None-Match` hlavičku požadavku. `etag`Argument je součástí reprezentace klíče. Viz [část 14,24 a 14,26](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+Chcete-li zlepšit ukládání do mezipaměti klienta, použijte `If-Match` nebo `If-None-Match` hlavičku požadavku. `etag`Argument je součástí reprezentace klíče. Další informace najdete v [oddílech 14,24 a 14,26](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 
 Následující požadavek načte klíč-hodnota pouze v případě, že aktuální reprezentace neodpovídá zadané hodnotě `etag` :
 
@@ -109,12 +109,9 @@ nebo
 HTTP/1.1 200 OK
 ```
 
-## <a name="list-key-values"></a>Seznam Key-Values
+## <a name="list-key-values"></a>Vypsat klíčové hodnoty
 
-Další možnosti najdete v tématu **filtrování** .
-
-*Volitelné:* ``key`` – Pokud není zadaný, implikuje se **libovolný** klíč.
-*Volitelné:* ``label`` – Pokud není zadaný, předpokládá se **libovolný** popisek.
+Volitelné: ``key`` (Pokud není zadáno, implikuje jakýkoli klíč.) Volitelné: ``label`` (Pokud není zadáno, znamená to, že označuje libovolný popisek.)
 
 ```http
 GET /kv?label=*&api-version={api-version} HTTP/1.1
@@ -127,10 +124,12 @@ HTTP/1.1 200 OK
 Content-Type: application/vnd.microsoft.appconfig.kvset+json; charset=utf-8
 ```
 
+Další možnosti najdete v části "filtrování" dále v tomto článku.
+
 ## <a name="pagination"></a>Stránkování
 
 Výsledkem je stránkování, pokud počet vrácených položek překročí limit odezvy. Postupujte podle volitelných `Link` hlaviček odpovědí a použijte `rel="next"` pro navigaci.
-Alternativně obsah poskytuje další odkaz ve formě `@nextLink` Vlastnosti. Propojený identifikátor URI obsahuje `api-version` argument.
+Další možností je, že obsah poskytuje další odkaz ve formě `@nextLink` Vlastnosti. Propojený identifikátor URI obsahuje `api-version` argument.
 
 ```http
 GET /kv?api-version={api-version} HTTP/1.1
@@ -204,7 +203,7 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-_ – *Příklady**
+_ –*Příklady**
 
 - Vše
 
@@ -232,9 +231,9 @@ Použijte volitelný `$select` parametr řetězce dotazu a zadejte čárkami odd
 GET /kv?$select=key,value&api-version={api-version} HTTP/1.1
 ```
 
-## <a name="time-based-access"></a>Přístup k Time-Based
+## <a name="time-based-access"></a>Přístup založený na čase
 
-Získat reprezentace výsledku v čase, který byl v minulosti. Viz část [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1). Stránkování je stále podporováno, jak je definováno výše.
+Získat reprezentace výsledku v čase, který byl v minulosti. Další informace najdete v části [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1). Stránkování je stále podporováno, jak je definováno výše v tomto článku.
 
 ```http
 GET /kv?api-version={api-version} HTTP/1.1
@@ -260,8 +259,8 @@ Link: <{relative uri}>; rel="original"
 
 ## <a name="set-key"></a>Nastavit klíč
 
-- **Požadováno:**``{key}``
-- *Volitelné:* ``label`` – Pokud není zadaný nebo je popisek = %00, znamená to, že bez popisku je KV.
+- Požadovanou ``{key}``
+- Volitelné: ``label`` (Pokud není zadáno nebo popisek = %00, zahrnuje klíčovou hodnotu bez popisku.)
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -323,9 +322,9 @@ Content-Type: application/problem+json; charset="utf-8"
 ## <a name="set-key-conditionally"></a>Set – klíč (podmíněně)
 
 Aby nedocházelo ke konfliktům časování, použijte `If-Match` nebo `If-None-Match` vyžádejte hlavičky. `etag`Argument je součástí reprezentace klíče.
-Pokud `If-Match` `If-None-Match` jsou nebo vynechány, operace bude nepodmíněný.
+Pokud `If-Match` `If-None-Match` jsou nebo vynechány, operace je nepodmíněný.
 
-Následující odpověď aktualizuje hodnotu pouze v případě, že aktuální reprezentace odpovídá zadané `etag`
+Následující odpověď aktualizuje hodnotu pouze v případě, že aktuální reprezentace odpovídá zadané hodnotě `etag` :
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -333,7 +332,7 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json
 If-Match: "4f6dd610dd5e4deebc7fbaef685fb903"
 ```
 
-Následující odpověď aktualizuje hodnotu pouze v případě, že *aktuální reprezentace neodpovídá zadané hodnotě.*`etag`
+Následující odpověď aktualizuje hodnotu pouze v případě, že aktuální reprezentace neodpovídá zadané hodnotě `etag` :
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -349,7 +348,7 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json;
 If-Match: "*"
 ```
 
-Následující požadavek přidá hodnotu pouze v případě, *že reprezentace ještě neexistuje:*
+Následující požadavek přidá hodnotu pouze v případě, že reprezentace ještě neexistuje:
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -373,8 +372,8 @@ HTTP/1.1 412 PreconditionFailed
 
 ## <a name="delete"></a>Odstranit
 
-- **Požadováno:** `{key}` , `{api-version}`
-- *Volitelné:* `{label}` – Pokud není zadaný nebo je popisek = %00, znamená to, že bez popisku je KV.
+- Požadováno: `{key}` , `{api-version}`
+- Volitelné: `{label}` (Pokud není zadáno nebo popisek = %00, zahrnuje klíčovou hodnotu bez popisku.)
 
 ```http
 DELETE /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -396,4 +395,4 @@ HTTP/1.1 204 No Content
 
 ## <a name="delete-key-conditionally"></a>Odstranit klíč (podmíněně)
 
-Podobný jako **klíč nastavení (podmíněně)**
+To je podobné jako v části "nastavit klíč (podmíněně)" dříve v tomto článku.

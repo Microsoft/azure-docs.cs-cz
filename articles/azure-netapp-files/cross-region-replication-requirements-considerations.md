@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: f2a50872fdb71419a0c3f068712ec67523a098e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b664dcd1cb12808960ffacf91c6d02d58632c4e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708647"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243133"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>Požadavky a předpoklady pro použití replikace mezi oblastmi 
 
@@ -38,12 +38,14 @@ Všimněte si následujících požadavků a důležitých informací o [použí
 * Konfigurace replikace svazků pro zdrojové svazky vytvořené ze snímku není v tuto chvíli podporována.
 * Po nastavení replikace mezi oblastmi vytvoří proces replikace *snímky SnapMirror* , které poskytnou odkazy mezi zdrojovým svazkem a cílovým svazkem. Snímky SnapMirror se automaticky cyklují, když se pro každé přírůstkové přenosy vytvoří nový. Snímky SnapMirror nemůžete odstranit, dokud se neodstraní vztah replikace a svazek. 
 * Ruční snímky můžete odstranit ve zdrojovém svazku relace replikace, pokud je relace replikace aktivní nebo přerušená a také po odstranění vztahu replikace. Ruční snímky pro cílový svazek nemůžete odstranit, dokud není přerušený vztah replikace.
+* Nelze se vrátit k snímku, který byl proveden před vytvořením cílového svazku replikace.
 
 ## <a name="next-steps"></a>Další kroky
-* [Vytvoření peeringu replikace](cross-region-replication-create-peering.md)
+* [Vytvoření replikace svazků](cross-region-replication-create-peering.md)
 * [Zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md)
 * [Správa zotavení po havárii](cross-region-replication-manage-disaster-recovery.md)
 * [Metriky replikace svazků](azure-netapp-files-metrics.md#replication)
+* [Odstranit replikace svazků nebo svazky](cross-region-replication-delete.md)
 * [Řešení potíží s replikací mezi oblastmi](troubleshoot-cross-region-replication.md)
 
 

@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cef5c60b8b06a7bedbf65312c3210d5eb746880d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 546d5462c890e73994f04dfe1921b6365a112b7f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649716"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237319"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Integrace stávající doménové struktury a nové doménové struktury s jedním tenantem Azure AD
 
@@ -65,7 +65,7 @@ V tomto scénáři je existující doménová struktura synchronizovaná pomocí
 
 7. Po dokončení této operace se spustí Průvodce konfigurací nástroje.  Přihlaste se pomocí účtu globálního správce služby Azure AD.  Všimněte si, že pokud máte povolené rozšířené zabezpečení aplikace Internet Explorer, bude přihlášení zablokované.  Pokud se jedná o tento případ, zavřete instalaci, zakažte v Správce serveru rozšířené zabezpečení IE a restartujte instalaci kliknutím na **Průvodce agentem zřizování AAD Connect** .
 8. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce domény služby Active Directory. Účet správce domény by neměl mít požadavky na změnu hesla. V případě vypršení platnosti nebo změny hesla budete muset agenta znovu nakonfigurovat s novými přihlašovacími údaji. Tato operace přidá váš místní adresář.  Klikněte na **Next** (Další).</br>
-![Snímek obrazovky, na kterém se zobrazuje obrazovka připojit ke službě Active Directory](media/how-to-install/install-3.png)</br>
+![Snímek obrazovky, na kterém se zobrazuje obrazovka připojit ke službě Active Directory](media/how-to-install/install-3a.png)</br>
 
 9. Na obrazovce **Konfigurace byla dokončena** klikněte na **Potvrdit**.  Tato operace provede registraci a restart agenta.</br>
 ![Snímek obrazovky zobrazující obrazovku "konfigurace dokončena".](media/how-to-install/install-4a.png)</br>

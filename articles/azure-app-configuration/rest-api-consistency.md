@@ -6,20 +6,20 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4f11e6edcd4bc128f815db7e93b00b72bf990ea8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: db9553c2c9c79a6beb9c66d0cb1a1a60435b2abd
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424103"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253333"
 ---
 # <a name="real-time-consistency"></a>Konzistence v reálném čase
 
-Vzhledem k povaze některých distribuovaných systémů je konzistence v reálném čase mezi požadavky obtížné vymáhat implicitně. Řešením je povolení podpory protokolu ve formě více **synchronizačních tokenů**. Tokeny synchronizace jsou volitelné.
+Vzhledem k povaze některých distribuovaných systémů je konzistence v reálném čase mezi požadavky obtížné vymáhat implicitně. Řešením je povolení podpory protokolu ve formě více synchronizačních tokenů. Tokeny synchronizace jsou volitelné.
 
 ## <a name="initial-request"></a>Počáteční požadavek
 
-Aby se zajistila konzistence v reálném čase mezi různými instancemi klienta a požadavky, použijte hlavičky volitelného `Sync-Token` požadavku a odpovědi.
+Chcete-li zaručit konzistenci v reálném čase mezi různými instancemi klienta a požadavky, použijte volitelné `Sync-Token` hlavičky žádosti a odpovědi.
 
 Syntaxe:
 
@@ -31,7 +31,7 @@ Sync-Token: <id>=<value>;sn=<sn>
 |--|--|
 | `<id>` | ID tokenu (neprůhledné) |
 | `<value>` | Hodnota tokenu (neprůhledná). Povoluje řetězec kódovaný v kódování Base64. |
-| `<sn>` | Pořadové číslo tokenu (verze) Vyšší znamená novější verzi stejného tokenu. Umožňuje lepší souběžnost a ukládání do mezipaměti klienta. Klient se může rozhodnout použít jenom poslední verzi tokenu, protože verze tokenů jsou včetně. Nevyžaduje se pro žádosti. |
+| `<sn>` | Pořadové číslo tokenu (verze) Vyšší znamená novější verzi stejného tokenu. Umožňuje lepší souběžnost a ukládání do mezipaměti klienta. Klient se může rozhodnout použít jenom poslední verzi tokenu, protože verze tokenů jsou včetně. Tento parametr není pro požadavky požadován. |
 
 ## <a name="response"></a>Odpověď
 
@@ -43,17 +43,17 @@ Sync-Token: jtqGc1I4=MDoyOA==;sn=28
 
 ## <a name="subsequent-requests"></a>Následné žádosti
 
-Každá následná žádost zaručuje konzistentní odpověď v **reálném čase** ve vztahu k poskytovanému `Sync-Token` .
+Každá následná žádost zaručuje konzistentní odpověď v reálném čase ve vztahu k poskytovanému `Sync-Token` .
 
 ```http
 Sync-Token: <id>=<value>
 ```
 
-Pokud `Sync-Token` je hlavička z požadavku vynechána, je možné, že služba reaguje s daty uloženými v mezipaměti během krátké doby (až do několika sekund), než se interně vyrovná. Toto chování může způsobit nekonzistentní čtení, pokud došlo ke změnám hned před čtením.
+Pokud vynecháte `Sync-Token` hlavičku z požadavku, může služba reagovat s daty uloženými v mezipaměti během krátké doby (až do několika sekund), než se interně vyrovná. Toto chování může způsobit nekonzistentní čtení, pokud došlo ke změnám hned před čtením.
 
 ## <a name="multiple-sync-tokens"></a>Vícenásobná synchronizace – tokeny
 
-Server může reagovat s více synchronizačními tokeny pro jeden požadavek. Aby se zajistila konzistence v **reálném čase** pro další požadavek, klient musí odpovědět se všemi obdrženými tokeny Sync. V závislosti na specifikaci RFC musí být více hodnot hlaviček oddělených čárkami.
+Server může reagovat s více synchronizačními tokeny pro jeden požadavek. Aby se zajistila konzistence v reálném čase pro další požadavek, klient musí odpovědět se všemi přijatými synchronizačními tokeny. Více hodnot záhlaví musí být oddělených čárkami.
 
 ```http
 Sync-Token: <token1-id>=<value>,<token2-id>=<value>

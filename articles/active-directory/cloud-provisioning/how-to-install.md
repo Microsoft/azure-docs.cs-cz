@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb322805ac3368dd6ed8e193875e083b27195e1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5322e5ce1bb124387931eac666cf9e5510cb2463
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695278"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237628"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Instalace agenta zřizování cloudů Azure AD Connect
 Tento dokument vás provede procesem instalace agenta zřizování služby Azure Active Directory (Azure AD) Connect a jeho počáteční konfigurace v Azure Portal.
@@ -25,38 +25,46 @@ Tento dokument vás provede procesem instalace agenta zřizování služby Azure
 >Následující pokyny k instalaci předpokládají, že byly splněny všechny [požadavky](how-to-prerequisites.md) .
 
 Instalace a konfigurace Azure AD Connect zřizování se provádí v následujících krocích:
-    
+
+- [Skupinové účty spravované služby](#group-managed-service-accounts) 
 - [Instalace agenta](#install-the-agent)
 - [Ověřit instalaci agenta](#verify-agent-installation)
+
+
+## <a name="group-managed-service-accounts"></a>Skupinové účty spravované služby
+Skupinový účet spravované služby je účet spravované domény, který poskytuje automatickou správu hesel, zjednodušenou správu hlavního názvu služby (SPN), schopnost delegovat správu na jiné správce a také rozšiřuje tuto funkci na více serverů.  Azure AD Connect synchronizace cloudu podporuje a doporučuje používání skupinového účtu spravované služby ke spuštění agenta.  Další informace o gMSA najdete v tématu [skupinový účet spravované služby](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) . 
+
+
+### <a name="upgrading-an-existing-agent-to-use-the-gmsa-account"></a>Upgrade existujícího agenta na používání účtu gMSA
+Chcete-li upgradovat stávajícího agenta tak, aby používal účet gMSA vytvořený během instalace, stačí aktualizovat službu agenta na nejnovější verzi spuštěním AADConnectProvisioningAgent.msi.  Tím se služba upgraduje na nejnovější verzi.  Nyní spusťte Průvodce instalací a po zobrazení výzvy zadejte přihlašovací údaje pro vytvoření účtu.
+
 
 
 ## <a name="install-the-agent"></a>Instalace agenta
 Chcete-li nainstalovat agenta, postupujte podle těchto kroků.
 
-1. Přihlaste se k serveru, který budete používat s oprávněními podnikového správce.
-1. Přihlaste se k Azure Portal a pak přejít na **Azure Active Directory**.
-1. V nabídce vlevo vyberte **Azure AD Connect**.
-1. Vyberte **Spravovat zřizování (Preview)**  >  **Zkontrolujte všechny agenty**.
-1. Stáhněte si Azure AD Connect agenta zřizování z Azure Portal.
-
+ 1. Přihlaste se k serveru, který budete používat s oprávněními podnikového správce.
+ 2. Přihlaste se k Azure Portal a pak přejít na **Azure Active Directory**.
+ 3. V nabídce vlevo vyberte **Azure AD Connect**.
+ 4. Vyberte **Spravovat zřizování (Preview)**  >  **Zkontrolujte všechny agenty**.
+ 5. Stáhněte si Azure AD Connect agenta zřizování z Azure Portal.
    ![Stáhnout místního agenta](media/how-to-install/install-9.png)</br>
-1. Spusťte instalační program pro zřizování služby Azure AD Connect (AADConnectProvisioningAgent. Installer).
-1. Na obrazovce **Microsoft Azure AD připojení zřizovacího agenta** přijměte licenční podmínky a vyberte **nainstalovat**.
-
+ 6. Spusťte instalační AADConnectProvisioningAgent.msi Azure AD Connect zřizování.
+ 7. Na obrazovce **Microsoft Azure AD připojení zřizovacího agenta** přijměte licenční podmínky a vyberte **nainstalovat**.
    ![Obrazovka balíčku pro zřízení zřizovacího agenta Microsoft Azure AD připojení](media/how-to-install/install-1.png)</br>
-
-1. Po dokončení této operace se spustí Průvodce konfigurací nástroje. Přihlaste se pomocí účtu globálního správce služby Azure AD.
-1. Na obrazovce **připojit ke službě Active Directory** vyberte **Přidat adresář**. Pak se přihlaste pomocí účtu správce služby Active Directory. Tato operace přidá váš místní adresář. Vyberte **Další**.
-
-   ![Obrazovka připojit ke službě Active Directory](media/how-to-install/install-3.png)</br>
-
-1. Na obrazovce **Konfigurace byla dokončena** vyberte **Potvrdit**. Tato operace zaregistruje a restartuje agenta.
-
-   ![Obrazovka dokončení konfigurace](media/how-to-install/install-4a.png)</br>
-
-1. Po dokončení této operace by se měla zobrazit oznámení, že **vaše konfigurace agenta byla úspěšně ověřena.** Vyberte možnost **ukončit**.
-
-   ![Tlačítko Konec](media/how-to-install/install-5.png)</br>
+ 8. Po dokončení této operace se spustí Průvodce konfigurací nástroje. Přihlaste se pomocí účtu globálního správce služby Azure AD.
+ 9. Na **obrazovce konfigurace účtu služby** vyberte buď **vytvořit gMSA** , nebo **použijte vlastní gMSA**.  Pokud povolíte agentovi vytvořit účet, bude název provAgentgMSA $. Pokud zadáte **použít vlastní gMSA** , zobrazí se výzva k zadání tohoto účtu.
+ 10. Zadáním přihlašovacích údajů správce domény vytvořte skupinový účet spravované služby, který se použije ke spuštění služby agenta. Klikněte na **Next** (Další).  
+   ![Vytvořit gMSA](media/how-to-install/install-12.png)</br>
+ 11. Na obrazovce **připojit ke službě Active Directory** vyberte **Přidat adresář**. Pak se přihlaste pomocí účtu správce služby Active Directory. Tato operace přidá váš místní adresář. 
+ 12. Volitelně můžete spravovat preference řadičů domény, které bude agent používat, a to tak, že vybere **možnost vybrat prioritu řadiče domény** a objednává seznam řadičů domény.   Klikněte na **OK**.
+  ![Pořadí controlllers domény](media/how-to-install/install-2a.png)</br>
+ 13. Vyberte **Další**.
+  ![Obrazovka připojit ke službě Active Directory](media/how-to-install/install-3a.png)</br>
+ 14.  Na obrazovce pro **instalaci agenta** potvrďte nastavení a účet, který se vytvoří, a klikněte na **Potvrdit**.
+  ![Potvrdit settngs](media/how-to-install/install-11.png)</br>
+ 15. Po dokončení této operace byste měli vidět, **že se instalace agenta dokončila.** Vyberte možnost **ukončit**.
+  ![Obrazovka dokončení konfigurace](media/how-to-install/install-4a.png)</br>
 1. Pokud se stále zobrazuje úvodní obrazovka úvodního **balíčku Microsoft Azure AD připojení** , vyberte **Zavřít**.
 
 ## <a name="verify-agent-installation"></a>Ověřit instalaci agenta
@@ -91,6 +99,7 @@ Pokud chcete ověřit, jestli je agent spuštěný, postupujte podle těchto kro
 
 >[!IMPORTANT]
 >Agent byl nainstalován, ale musí být nakonfigurován a povolen předtím, než bude moci spustit synchronizaci uživatelů. Pokud chcete nakonfigurovat nového agenta, přečtěte si téma [Vytvoření nové konfigurace pro Azure AD Connect cloudové zřizování](how-to-configure.md).
+
 
 
 
