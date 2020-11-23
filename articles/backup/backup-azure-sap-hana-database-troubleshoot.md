@@ -3,12 +3,12 @@ title: Řešení potíží s chybami zálohování SAP HANAových databází
 description: Popisuje, jak řešit běžné chyby, ke kterým může dojít při použití Azure Backup k zálohování databází SAP HANA.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 5cdad55ef849b9ced31646466e2c2c170ebf0827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9fa73ee38e337a547816432212bc68d419f40bb
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377680"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95411321"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
@@ -153,7 +153,7 @@ Upgrady na operační systém, změnu verze SDC nebo změny verze MDC, které ne
 - Ujistěte se, že [Azure Backup aktuálně podporuje](sap-hana-backup-support-matrix.md#scenario-support) nová verze operačního systému, verze SDC nebo MDC.
 - [Zastavení ochrany s uchováním dat](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) pro databázi
 - Provedení upgradu nebo aktualizace
-- Znovu spusťte skript před registrací. Proces upgradu obvykle odebere potřebné role. Spuštění předregistračního skriptu vám pomůže ověřit všechny požadované role.
+- Znovu spusťte skript před registrací. Proces upgradu často může odebrat [potřebné role](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does). Spuštění předregistračního skriptu vám pomůže ověřit všechny požadované role.
 - Znovu obnovit ochranu pro databázi
 
 ## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>SDC upgrade na MDC bez změny v SID

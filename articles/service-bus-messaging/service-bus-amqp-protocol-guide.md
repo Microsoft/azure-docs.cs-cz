@@ -3,26 +3,26 @@ title: AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs | Microsof
 description: Průvodce protokolem pro výrazy a popis AMQP 1,0 v Azure Service Bus a Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ffccd49d37dbf2a8fc404e9895b648e53007675c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32e71211ed1574cade0567f7944b154eea062b24
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88064532"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95396871"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs
 
-Pokročilý protokol pro řízení front zpráv 1,0 je standardizované rámce a přenosový protokol pro asynchronní, bezpečný a spolehlivý přenos zpráv mezi dvěma stranami. Jedná se o primární protokol Azure Service Bus zasílání zpráv a Azure Event Hubs. Obě služby také podporují protokol HTTPS. Přístupnější protokol SBMP, který je také podporován, je nyní využíván přístupným AMQP.
+Pokročilý protokol pro řízení front zpráv 1,0 je standardizované rámce a přenosový protokol pro asynchronní, bezpečný a spolehlivý přenos zpráv mezi dvěma stranami. Jedná se o primární protokol Azure Service Bus zasílání zpráv a Azure Event Hubs.  
 
-AMQP 1,0 je výsledkem široké spolupráce v oboru, která je spojená s mnoha dodavateli middlewaru, jako je například Microsoft a Red Hat, s mnoha uživateli middlewaru pro zasílání zpráv, jako je například JP Morgan podstatou představující odvětví finančních služeb. Fórum technické normalizace pro specifikace protokolu AMQP a rozšíření je OASIS a dosáhlo se formálního schválení jako mezinárodní standard jako ISO/IEC 19494.
+AMQP 1,0 je výsledkem široké spolupráce v oboru, která je spojená s mnoha dodavateli middlewaru, jako je například Microsoft a Red Hat, s mnoha uživateli middlewaru pro zasílání zpráv, jako je například JP Morgan podstatou představující odvětví finančních služeb. Fórum technické normalizace pro specifikace protokolu AMQP a rozšíření je OASIS a dosáhlo se formálního schválení jako mezinárodní standard jako ISO/IEC 19494:2014. 
 
 ## <a name="goals"></a>Cíle
 
-Tento článek stručně shrnuje základní koncepty specifikace zasílání zpráv AMQP 1,0 spolu s malou sadou konceptových specifikací, které se momentálně dokončují v technickém výboru OASIS AMQP, a vysvětluje, jak Azure Service Bus implementuje a sestavuje tyto specifikace.
+Tento článek shrnuje základní koncepty specifikace zasílání zpráv AMQP 1,0 v rámci specifikací rozšíření vyvinutých [technickým výborem Oasis AMQP](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) a vysvětluje, jak Azure Service Bus implementuje a sestavuje tyto specifikace.
 
 Cílem je, aby každý vývojář používal existující zásobník klienta AMQP 1,0 na libovolné platformě, aby mohl pracovat s Azure Service Bus přes AMQP 1,0.
 
-Běžné AMQP 1,0 pro obecné účely, jako je Apache Proton nebo AMQP.NET Lite, už implementují všechny základní protokoly AMQP 1,0. Tato základní gesta jsou někdy zabalená pomocí rozhraní API vyšší úrovně; Apache Proton dokonce nabízí dva, imperativní rozhraní API pro kurýrní služby a reaktivní rozhraní API Reactor.
+Běžné zásobníky AMQP 1,0 pro obecné účely, jako je [Apache Qpid Proton](https://qpid.apache.org/proton/index.html) nebo [AMQP.NET Lite](https://github.com/Azure/amqpnetlite), implementují všechny prvky protokolu Core AMQP 1,0, jako jsou relace nebo odkazy. Tyto základní prvky jsou někdy zabaleny s využitím rozhraní API vyšší úrovně; Apache Proton dokonce nabízí dva, imperativní rozhraní API pro kurýrní služby a reaktivní rozhraní API Reactor.
 
 V následující diskuzi předpokládáme, že Správa připojení AMQP, relací a odkazů a zpracování přenosů snímků a řízení toku jsou zpracovávána příslušným zásobníkem (například Apache Proton-C) a nevyžadují mnoho, pokud konkrétní pozornost vývojářům aplikací. Implicitně předpokládáme existenci několika primitivních primitiv rozhraní API, jako je možnost připojení, a vytvoření nějaké formy objektů pro abstrakci *odesílatele* a *přijímače* , které pak mají nějaký tvar `send()` a `receive()` operace.
 
@@ -46,7 +46,7 @@ Nejvíc směrodatná zdrojová informace o tom, jak AMQP funguje jako specifikac
 
 ### <a name="connections-and-sessions"></a>Připojení a relace
 
-AMQP volá *kontejnery*komunikujících programů; Ty obsahují *uzly*, které jsou komunikujícími entitami v těchto kontejnerech. Frontou může být takový uzel. AMQP umožňuje multiplexing, takže jedno připojení lze použít pro mnoho komunikačních cest mezi uzly. klient aplikace může například souběžně přijímat z jedné fronty a odesílat je do jiné fronty přes stejné síťové připojení.
+AMQP volá *kontejnery* komunikujících programů; Ty obsahují *uzly*, které jsou komunikujícími entitami v těchto kontejnerech. Frontou může být takový uzel. AMQP umožňuje multiplexing, takže jedno připojení lze použít pro mnoho komunikačních cest mezi uzly. klient aplikace může například souběžně přijímat z jedné fronty a odesílat je do jiné fronty přes stejné síťové připojení.
 
 ![Diagram znázorňující relace a připojení mezi kontejnery.][1]
 
@@ -77,14 +77,14 @@ Klienti, kteří používají připojení AMQP přes protokol TCP, vyžadují, a
 
 ![Seznam cílových portů][4]
 
-Klient rozhraní .NET selže s SocketException ("byl proveden pokus o přístup k soketu způsobem zakázanému jeho přístupovými oprávněními"), pokud jsou tyto porty blokovány bránou firewall. Funkci lze zakázat nastavením `EnableAmqpLinkRedirect=false` v řetězci connectiong, která klientům vynutí komunikaci se vzdálenou službou přes port 5671.
+Klient rozhraní .NET selže s SocketException ("byl proveden pokus o přístup k soketu způsobem zakázanému jeho přístupovými oprávněními"), pokud jsou tyto porty blokovány bránou firewall. Funkci lze zakázat nastavením `EnableAmqpLinkRedirect=false` v připojovacím řetězci, která klientům vynutí komunikaci se vzdálenou službou přes port 5671.
 
 
 ### <a name="links"></a>Odkazy
 
 AMQP přenáší zprávy přes odkazy. Odkaz je komunikační cesta vytvořená v relaci, která umožňuje přenos zpráv v jednom směru. vyjednávání stavu přenosu probíhá přes propojení a obousměrně mezi připojenými stranami.
 
-![Snímek obrazovky znázorňující relaci carryign propojení mezi dvěma kontejnery.][2]
+![Snímek obrazovky znázorňující relaci s propojením spojení mezi dvěma kontejnery.][2]
 
 Odkazy mohou být vytvořeny buď kontejnerem, kdykoli, a přes existující relaci, která AMQP liší od mnoha dalších protokolů, včetně HTTP a MQTT, kde iniciování přenosů a cest přenosu je výhradním oprávněním stran, které vytváří připojení soketu.
 
@@ -120,7 +120,7 @@ Pokud chcete kompenzovat možné duplicitní odesílání, Service Bus podporuje
 
 Kromě výše popsaného modelu řízení toku na úrovni relace má každý odkaz svůj vlastní model řízení toku. Řízení toku na úrovni relace chrání kontejner před tím, než musí zpracovávat příliš mnoho rámců najednou, řízení toku na úrovni propojení vloží aplikaci za poplatek, kolik zpráv chce zpracovat z odkazu a kdy.
 
-![Snímek obrazovky protokolu se zobrazením zdroje, cíle, zdrojového portu, cílového portu a názvu protokolu. V řádku fiest je cílový port 10401 (0x28 A 1) popsaný černě.][4]
+![Snímek obrazovky protokolu se zobrazením zdroje, cíle, zdrojového portu, cílového portu a názvu protokolu. V prvním řádku je cílový port 10401 (0x28 A 1) popsaný černě.][4]
 
 V případě odkazu může k přenosu docházet pouze v případě, že odesílatel má dostatek *kreditů propojení*. Kredit propojení je čítač nastavený příjemcem pomocí performative *Flow* , který je vymezen na odkaz. Když je odesilateli přiřazen odkaz na akreditiv, pokusí se ho použít k doručování zpráv. Každé doručení zprávy sníží kredit zbývajícího propojení o 1. Po použití kreditu propojení se dokončí doručení.
 
@@ -130,7 +130,7 @@ V roli odesílatele Service Bus odesílá zprávy pro použití libovolného ned
 
 Volání Receive na úrovni rozhraní API překládá do služby *Flow* performative, která se Service Bus odesílá klientovi, a Service Bus tuto stranu využívá, když vezme první dostupnou, odemčenou zprávu z fronty, zamkne ji a přenáší. Pokud není k dispozici žádná zpráva pro doručení, zůstane veškerý nedokončený kredit na základě propojení navázaného s touto konkrétní entitou zaznamenán v daném pořadí a zprávy budou zamčeny a přeneseny, jakmile budou k dispozici, aby používaly veškerý neexistující kredit.
 
-Zámek zprávy se uvolní při přesunu přenosu do jednoho z *přijatých*, *zamítnutých*nebo *vydaných*koncových stavů. Zpráva se odebere z Service Bus, když je stav terminálu *přijatý*. Zůstane v Service Bus a bude doručena do dalšího přijímače, když přenos dosáhne kteréhokoli z ostatních stavů. Service Bus automaticky přesune zprávu do fronty nedoručených zpráv entity, když dosáhne maximálního počtu doručení pro entitu z důvodu opakovaného zamítnutí nebo vydání.
+Zámek zprávy se uvolní při přesunu přenosu do jednoho z *přijatých*, *zamítnutých* nebo *vydaných* koncových stavů. Zpráva se odebere z Service Bus, když je stav terminálu *přijatý*. Zůstane v Service Bus a bude doručena do dalšího přijímače, když přenos dosáhne kteréhokoli z ostatních stavů. Service Bus automaticky přesune zprávu do fronty nedoručených zpráv entity, když dosáhne maximálního počtu doručení pro entitu z důvodu opakovaného zamítnutí nebo vydání.
 
 I když rozhraní API pro Service Bus tuto možnost dnes nezveřejňuje, může klient s protokolem AMQP na nižší úrovni použít model propojení-kredit k tomu, aby se při každé žádosti o přijetí změn na model "nabízeného oznámení" vydávala velký počet kreditů propojení a pak přijímaly zprávy, jakmile budou k dispozici bez jakékoliv další interakce. Nabízení je podporováno prostřednictvím nastavení vlastnosti [MessagingFactory. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) nebo [MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) . Pokud jsou nenulové, klient AMQP ho použije jako kredit propojení.
 
@@ -222,7 +222,7 @@ Jakákoli vlastnost, kterou musí aplikace definovat, by měla být namapována 
 | --- | --- | --- |
 | ID zprávy |Identifikátor volného formátu definovaného aplikací pro tuto zprávu. Používá se pro detekci duplicit. |[Parametr](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Identifikátor uživatele definovaný aplikací, není interpretován pomocí Service Bus. |Nedostupné prostřednictvím rozhraní Service Bus API. |
-| na |Identifikátor cíle definovaného aplikací, není interpretován pomocí Service Bus. |[Záměr](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| na |Identifikátor cíle definovaného aplikací, není interpretován pomocí Service Bus. |[Schopn](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | závislosti |Identifikátor účelu zprávy definované aplikací, není interpretován pomocí Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | odpovědět na |Indikátor odpovědi na cestu definovaný aplikací, není interpretován pomocí Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Identifikátor korelace definovaný aplikací, není interpretován pomocí Service Bus. |[ID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -319,7 +319,7 @@ Tato část se věnuje pokročilým funkcím Azure Service Bus, které jsou zalo
 
 ### <a name="amqp-management"></a>Správa AMQP
 
-Specifikace správy AMQP je prvním z rozšíření konceptů popsaných v tomto článku. Tato specifikace definuje sadu protokolů nad protokolem AMQP, která umožňuje interakci správy s infrastrukturou zasílání zpráv přes AMQP. Specifikace definuje obecné operace, jako je *vytváření*, *čtení*, *aktualizace*a *odstranění* pro správu entit v infrastruktuře zasílání zpráv a sadu operací dotazů.
+Specifikace správy AMQP je prvním z rozšíření konceptů popsaných v tomto článku. Tato specifikace definuje sadu protokolů nad protokolem AMQP, která umožňuje interakci správy s infrastrukturou zasílání zpráv přes AMQP. Specifikace definuje obecné operace, jako je *vytváření*, *čtení*, *aktualizace* a *odstranění* pro správu entit v infrastruktuře zasílání zpráv a sadu operací dotazů.
 
 Všechna tato gesta vyžadují interakci mezi klientem a infrastrukturou zasílání zpráv, a proto specifikace definuje, jak modelovat tento vzor interakce na AMQP: klient se připojí k infrastruktuře zasílání zpráv, iniciuje relaci a pak vytvoří dvojici odkazů. Na jednom odkazu klient funguje jako odesílatel a druhý jeho činnost funguje jako příjemce, takže vytvoří dvojici odkazů, které mohou fungovat jako obousměrný kanál.
 
@@ -359,10 +359,10 @@ Zpráva požadavku má následující vlastnosti aplikace:
 
 | Klíč | Volitelné | Typ hodnoty | Obsah hodnoty |
 | --- | --- | --- | --- |
-| operation |No |řetězec |**token Put** |
-| typ |No |řetězec |Typ vytvářeného tokenu. |
-| name |No |řetězec |Cílová skupina, na kterou se vztahuje token. |
-| vypršení platnosti |Yes |časové razítko |Čas vypršení platnosti tokenu. |
+| operation |Ne |řetězec |**token Put** |
+| typ |Ne |řetězec |Typ vytvářeného tokenu. |
+| name |Ne |řetězec |Cílová skupina, na kterou se vztahuje token. |
+| vypršení platnosti |Ano |časové razítko |Čas vypršení platnosti tokenu. |
 
 Vlastnost *Name* určuje entitu, ke které je token přidružen. V Service Bus se jedná o cestu k frontě nebo k tématu nebo předplatnému. Vlastnost *Type* určuje typ tokenu:
 
@@ -378,8 +378,8 @@ Zpráva s odpovědí obsahuje následující hodnoty *vlastností aplikace* .
 
 | Klíč | Volitelné | Typ hodnoty | Obsah hodnoty |
 | --- | --- | --- | --- |
-| Stavový kód |No |int |Kód odpovědi HTTP **[RFC2616]**. |
-| Popis stavu |Yes |řetězec |Popis stavu |
+| Stavový kód |Ne |int |Kód odpovědi HTTP **[RFC2616]**. |
+| Popis stavu |Ano |řetězec |Popis stavu |
 
 Klient může opakovaně volat *tokeny Put* a pro každou entitu v infrastruktuře zasílání zpráv. Tokeny jsou vymezeny na aktuálního klienta a ukotveny k aktuálnímu připojení, což znamená, že server při poklesu připojení vyřazuje všechny zachované tokeny.
 

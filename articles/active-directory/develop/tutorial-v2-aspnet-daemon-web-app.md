@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611091"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95406595"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Kurz: sestavení démona s více klienty, který používá platformu Microsoft identity
 
-V tomto kurzu se naučíte používat Microsoft Identity Platform pro přístup k datům obchodních zákazníků Microsoftu v dlouhodobém, neinteraktivním procesu. Vzorový démon používá [pověření klienta OAuth2](v2-oauth2-client-creds-grant-flow.md) k získání přístupového tokenu. Démon pak pomocí tokenu volá [Microsoft Graph](https://graph.microsoft.io) a přistupuje k datům organizace.
+V tomto kurzu stáhnete a spustíte webovou aplikaci démona ASP.NET, která demonstruje použití přihlašovacích údajů klienta OAuth 2,0, aby získala přístupový token pro volání rozhraní API Microsoft Graph.
+
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Integrace aplikace démona s platformou Microsoft identity
@@ -186,15 +188,15 @@ Příslušný kód pro tuto ukázku je v následujících souborech:
    1. Odebrat **. App_Start** z názvu oboru názvů.
    1. Nahraďte kód pro **spouštěcí** třídu kódem ze stejného souboru ukázkové aplikace.
    Nezapomeňte vzít v úvahu definici celé třídy. Definice se změní z **spuštění veřejné třídy** na **veřejnou částečnou třídu.**
-1. V **Startup.auth.cs**vyřešte chybějící odkazy přidáním příkazů, které jsou **navrženy pomocí technologie** IntelliSense sady Visual Studio.
-1. Klikněte pravým tlačítkem na projekt, vyberte **Přidat**a pak vyberte **Třída**.
+1. V **Startup.auth.cs** vyřešte chybějící odkazy přidáním příkazů, které jsou **navrženy pomocí technologie** IntelliSense sady Visual Studio.
+1. Klikněte pravým tlačítkem na projekt, vyberte **Přidat** a pak vyberte **Třída**.
 1. Do vyhledávacího pole zadejte **Owin**. **Spouštěcí třída Owin** se zobrazuje jako výběr. Vyberte ji a pojmenujte třídu **Startup.cs**.
-1. V **Startup.cs**nahraďte kód pro **spouštěcí** třídu kódem ze stejného souboru ukázkové aplikace. Znovu si všimněte, že se změní definice z **spuštění veřejné třídy** na **veřejnou částečnou třídu**.
+1. V **Startup.cs** nahraďte kód pro **spouštěcí** třídu kódem ze stejného souboru ukázkové aplikace. Znovu si všimněte, že se změní definice z **spuštění veřejné třídy** na **veřejnou částečnou třídu**.
 1. Ve složce **modely** přidejte novou třídu s názvem **MsGraphUser.cs**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Přidejte nový **kontroler MVC 5 – prázdná instance s** názvem **AccountController**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Přidejte nový **kontroler MVC 5 – prázdná instance s** názvem **UserController**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Přidejte nový **kontroler webového rozhraní API 2 – prázdná instance s** názvem **SyncController**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
-1. Pro uživatelské rozhraní ve složce **Views\Account** přidejte tři **prázdné (bez modelu) zobrazení** instancí s názvem **GrantPermissions**, **index**a **UserMismatch**. Přidejte a jeden pojmenovaný **index** do složky **Views\User** . Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
+1. Pro uživatelské rozhraní ve složce **Views\Account** přidejte tři **prázdné (bez modelu) zobrazení** instancí s názvem **GrantPermissions**, **index** a **UserMismatch**. Přidejte a jeden pojmenovaný **index** do složky **Views\User** . Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Aktualizujte **Shared \_ layout. cshtml** a **Home\Index.cshtml** , aby správně propojuje různá zobrazení.
 
 ## <a name="deploy-the-sample-to-azure"></a>Nasazení ukázky do Azure
@@ -209,8 +211,8 @@ Tento projekt má webové aplikace a projekty webového rozhraní API. Pokud je 
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V levém horním rohu vyberte **Vytvořit prostředek**.
-1. Vyberte **Webová**  >  **Webová aplikace**a potom zadejte název svého webu. Například pojmenujte ho **dotnet-web-daemon-v2-contoso.azurewebsites.NET**.
-1. Vyberte informace pro **předplatné**, **skupinu prostředků**a **plán a umístění služby App Service**. **Operační** systém je **Windows**a **publikování** je **kód**.
+1. Vyberte **Webová**  >  **Webová aplikace** a potom zadejte název svého webu. Například pojmenujte ho **dotnet-web-daemon-v2-contoso.azurewebsites.NET**.
+1. Vyberte informace pro **předplatné**, **skupinu prostředků** a **plán a umístění služby App Service**. **Operační** systém je **Windows** a **publikování** je **kód**.
 1. Vyberte **vytvořit** a počkejte, než se služba App Service vytvoří.
 1. Až se vám zobrazí oznámení o **úspěšném nasazení** , vyberte **Přejít k prostředku** a přejít na nově vytvořenou službu App Service.
 1. Po vytvoření webu ho Najděte na **řídicím panelu** a vyberte ho a otevřete tak obrazovku s **přehledem** služby App Service.
@@ -234,7 +236,7 @@ Visual Studio projekt zveřejní a automaticky otevře prohlížeč na adrese UR
 1. Na stránce **ověřování** pro vaši aplikaci aktualizujte pole **Adresa URL pro odhlášení** pomocí adresy vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
 1. V nabídce **značky** aktualizujte adresu **URL domovské stránky** na adresu vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
 1. Konfiguraci uložte.
-1. V seznamu hodnot v **Authentication**  >  nabídce**identifikátory URI přesměrování** ověřování přidejte stejnou adresu URL. Pokud máte více adres URL pro přesměrování, ujistěte se, že je k dispozici nová položka, která pro každou adresu URL přesměrování používá identifikátor URI služby App Service.
+1. V seznamu hodnot v **Authentication**  >  nabídce **identifikátory URI přesměrování** ověřování přidejte stejnou adresu URL. Pokud máte více adres URL pro přesměrování, ujistěte se, že je k dispozici nová položka, která pro každou adresu URL přesměrování používá identifikátor URI služby App Service.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už je nepotřebujete, odstraňte objekt aplikace, který jste vytvořili v kroku [Registrace aplikace](#register-your-application) .  Pokud chcete aplikaci odebrat, postupujte podle pokynů v části [odebrání aplikace vytvořené vámi nebo vaší organizací](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization).
