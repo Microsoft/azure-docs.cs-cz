@@ -89,6 +89,8 @@
               href: samples/resource-manager-web-app.md
             - name: Azure Functions
               href: samples/resource-manager-function-app.md
+        - name: Pravidla shromažďování dat
+          href: samples/resource-manager-data-collection-rules.md
         - name: Nastavení diagnostiky
           href: samples/resource-manager-diagnostic-settings.md
         - name: Pracovní prostory služby Log Analytics
@@ -164,6 +166,7 @@
         - name: Nasazení Azure Monitoru
           href: deploy.md
         - name: Nasazení ve velkém
+          displayName: 'Azure Policy, Policy'
           href: deploy-scale.md
     - name: Správa a konfigurace
       items:
@@ -250,7 +253,7 @@
               href: platform/log-standard-columns.md
             - name: Optimalizace dotazů
               href: log-query/query-optimization.md
-            - name: Funkce
+            - name: Functions
               href: log-query/functions.md
             - name: Analýza textových dat
               href: log-query/parse-text.md
@@ -351,6 +354,9 @@
             - name: Přehled
               displayname: Azure Monitor agent
               href: platform/azure-monitor-agent-overview.md
+            - name: Instalace
+              displayname: Azure Monitor agent
+              href: platform/azure-monitor-agent-install.md
             - name: Shromažďování dat
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md
