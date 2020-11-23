@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 76f541a45c56669d17103f16997f3d036955b773
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919675"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315579"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Přehled agenta Azure Monitor (Preview)
 Agent Azure Monitor (AMA) shromažďuje data monitorování z hostovaného operačního systému virtuálních počítačů a doručuje je do Azure Monitor. V tomto článku najdete přehled agenta Azure Monitor, včetně postupu jeho instalace a konfigurace shromažďování dat.
@@ -54,7 +54,7 @@ Během veřejné verze Preview agenta Azure Monitor platí následující omezen
 
 - Agent Azure Monitor nepodporuje řešení a přehledy, jako je Azure Monitor pro virtuální počítače a Azure Security Center. Jediným scénářem, který se aktuálně podporuje, je shromažďování dat pomocí pravidel shromažďování dat, která nakonfigurujete. 
 - Pravidla shromažďování dat musí být vytvořena ve stejné oblasti jako kterýkoli Log Analytics pracovní prostor, který se používá jako cíl.
-- V tuto chvíli se podporují jenom virtuální počítače Azure. Místní virtuální počítače, sady škálování virtuálních počítačů, ARC pro servery, služba Azure Kubernetes a další typy výpočetních prostředků se aktuálně nepodporují.
+- Virtuální počítače Azure a servery s podporou ARC Azure jsou aktuálně podporované. Služba Virtual Machine Scale Sets, služba Azure Kubernetes a jiné typy výpočetních prostředků se momentálně nepodporují.
 - Virtuální počítač musí mít přístup k následujícím koncovým bodům HTTPS:
   - *.ods.opinsights.azure.com
   - *. ingest.monitor.azure.com
@@ -94,50 +94,8 @@ Agent Azure Monitor nepotřebuje žádné klíče, ale místo toho vyžaduje [sp
 ## <a name="networking"></a>Sítě
 Agent Azure Monitor podporuje značky služeb Azure (vyžadují se značky AzureMonitor a AzureResourceManager), ale ještě nepracuje s Azure Monitormi obory privátních odkazů nebo přímými proxy servery.
 
-## <a name="install-the-azure-monitor-agent"></a>Instalace agenta Azure Monitor
-Agent Azure Monitor se implementuje jako [rozšíření virtuálního počítače Azure](../../virtual-machines/extensions/overview.md) s podrobnostmi v následující tabulce. 
-
-| Vlastnost | Windows | Linux |
-|:---|:---|:---|
-| Publisher | Microsoft. Azure. monitor  | Microsoft. Azure. monitor |
-| Typ      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1,0 | 1.5 |
-
-Nainstalujte agenta Azure Monitor pomocí kterékoli z metod, jak nainstalovat agenty virtuálních počítačů, včetně těchto postupů: PowerShell nebo CLI. Případně můžete agenta nainstalovat a nakonfigurovat shromažďování dat na virtuálních počítačích v předplatném Azure pomocí portálu s postupem popsaným v části [Konfigurace shromažďování dat pro agenta Azure monitor (Preview)](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal).
-
-### <a name="windows"></a>Windows
-
-# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI1)
-
-```azurecli
-az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
-
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell1)
-
-```powershell
-Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
-```
----
-
-
-### <a name="linux"></a>Linux
-
-# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI2)
-
-```azurecli
-az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
-
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
-
-```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus -TypeHandlerVersion 1.5
-```
----
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Nainstalujte agenta Azure monitor](azure-monitor-agent-install.md) na virtuální počítače se systémem Windows a Linux.
 - [Vytvořte pravidlo shromažďování dat](data-collection-rule-azure-monitor-agent.md) pro shromažďování dat z agenta a jeho odeslání na Azure monitor.

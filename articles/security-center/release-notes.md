@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/27/2020
+ms.date: 11/21/2020
 ms.author: memildin
-ms.openlocfilehash: 79dcc645ecff00b3189dc90dcf34e042a78ed318
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9b715ea890c7c85161a9e360bc16f9a2a608d64b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949322"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95320996"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -39,6 +39,8 @@ Aktualizace v listopadu zahrnují:
 - [NIST SP 800 171 R2 přidáno do řídicího panelu dodržování předpisů pro Security Center](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
 - [Seznam doporučení nyní obsahuje filtry](#recommendations-list-now-includes-filters)
 - [Vylepšené a rozšířené prostředí pro Automatické zřizování](#auto-provisioning-experience-improved-and-expanded)
+- [Pro průběžný export je teď dostupné zabezpečené skóre (Preview).](#secure-score-is-now-available-in-continuous-export-preview)
+- ["Na vaše počítače by se měly nainstalovat aktualizace systému." teď obsahuje doporučení pro dílčí doporučení](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 doporučení verze Preview pro zvýšení pokrytí srovnávacích testů zabezpečení Azure
 
@@ -103,6 +105,41 @@ Teď můžete nakonfigurovat automatické zřizování pro:
 - New Microsoft Dependency Agent
 
 Další informace o [automatických zřizováních agentů a rozšíření od Azure Security Center](security-center-enable-data-collection.md).
+
+
+### <a name="secure-score-is-now-available-in-continuous-export-preview"></a>Pro průběžný export je teď dostupné zabezpečené skóre (Preview).
+
+Díky průběžnému exportu zabezpečeného skóre můžete streamovat změny skóre v reálném čase do Azure Event Hubs nebo do pracovního prostoru Log Analytics. Tuto možnost použijte k těmto akcím:
+
+- sledování zabezpečeného skóre v průběhu času pomocí dynamických sestav
+- Export zabezpečeného data skóre do Azure Sentinel (nebo jakékoli jiné SIEM)
+- Integrujte tato data se všemi procesy, které už možná používáte k monitorování zabezpečeného skóre ve vaší organizaci.
+
+Přečtěte si další informace o [průběžném exportu Security Center dat](continuous-export.md).
+
+
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations"></a>"Na vaše počítače by se měly nainstalovat aktualizace systému." teď obsahuje doporučení pro dílčí doporučení
+
+**Aktualizace systému by se měly nainstalovat na vaše doporučení vašich počítačů** . Nová verze zahrnuje dílčí doporučení pro všechny chybějící aktualizace a přináší následující vylepšení:
+
+- Přepracované prostředí na Azure Security Center stránkách Azure Portal. Stránka s podrobnostmi o doporučení pro **aktualizace systému by měla být nainstalovaná na vašich počítačích** obsahuje seznam zjištění, jak je uvedeno níže. Když vyberete jedno hledání, otevře se podokno podrobností s odkazem na informace o opravách a seznam ovlivněných prostředků.
+
+    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="Otevře se jedno z dílčích doporučení v prostředí portálu pro aktualizované doporučení.":::
+
+- Obohacená data pro doporučení z Azure Resource graphu (ARG). ARG je služba Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků. ARG můžete použít k dotazování škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
+
+    Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení.
+
+    Pokud jste dřív uvedli toto doporučení v ARG, jsou dostupné jenom informace o tom, že je potřeba na počítači opravit doporučení. Následující dotaz rozšířené verze vrátí všechny chybějící aktualizace systému seskupené podle počítače.
+
+    ```kusto
+    securityresources
+    | where type =~ "microsoft.security/assessments/subassessments"
+    | where extract(@"(?i)providers/Microsoft.Security/assessments/([^/]*)", 1, id) == "4ab6e3c5-74dd-8b35-9ab9-f61b30875b27"
+    | where properties.status.code == "Unhealthy"
+    ```
+
+
 
 ## <a name="october-2020"></a>Říjen 2020
 

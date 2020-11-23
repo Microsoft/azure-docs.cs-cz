@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/20/2020
-ms.openlocfilehash: 66d420a902cbfb56ece75646ee39bbba774b6208
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 11/21/2020
+ms.openlocfilehash: 30521e85feda0fc19329364dcb710d322ae8cfc1
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312416"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95323239"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
 
@@ -34,20 +34,20 @@ Následující tabulky poskytují rychlé porovnání Azure Monitor agentů pro 
 
 | | Agent Azure Monitor (Preview) | Diagnostika<br>rozšíření (WAD) | Log Analytics<br>agent | Závislost<br>agent |
 |:---|:---|:---|:---|:---|
-| **Podporovaná prostředí** | Azure | Azure | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Místní | 
+| **Podporovaná prostředí** | Azure<br>Jiný Cloud (Azure ARC)<br>Místně (Azure ARC)  | Azure | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Místní | 
 | **Požadavky agenta**  | Žádné | Žádné | Žádné | Vyžaduje agenta Log Analytics |
 | **Shromažďovaná data** | Protokoly událostí<br>Výkon | Protokoly událostí<br>Trasování událostí pro Windows – události<br>Výkon<br>Protokoly založené na souborech<br>Protokoly IIS<br>Protokoly aplikací .NET<br>Výpisy stavu systému<br>Protokoly diagnostiky agenta | Protokoly událostí<br>Výkon<br>Protokoly založené na souborech<br>Protokoly IIS<br>Přehledy a řešení<br>Další služby | Závislosti procesů<br>Metriky síťového připojení |
-| **Data odesílaná do** | Protokoly služby Azure Monitor<br>Azure Monitor metriky | Azure Storage<br>Azure Monitor metriky<br>Centrum událostí | Protokoly služby Azure Monitor | Protokoly služby Azure Monitor<br>(prostřednictvím agenta Log Analytics) |
+| **Data odesílaná do** | Protokoly služby Azure Monitor<br>Metriky Azure Monitoru | Azure Storage<br>Metriky Azure Monitoru<br>Centrum událostí | Protokoly služby Azure Monitor | Protokoly služby Azure Monitor<br>(prostřednictvím agenta Log Analytics) |
 | **Služby a**<br>**funkce**<br>**doložen** | Log Analytics<br>Průzkumník metrik | Průzkumník metrik | Azure Monitor pro virtuální počítače<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | Azure Monitor pro virtuální počítače<br>Mapa služeb |
 
 ### <a name="linux-agents"></a>Agenti systému Linux
 
 | | Agent Azure Monitor (Preview) | Diagnostika<br>rozšíření (LAD) | Telegraf<br>agent | Log Analytics<br>agent | Závislost<br>agent |
 |:---|:---|:---|:---|:---|:---|
-| **Podporovaná prostředí** | Azure | Azure | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Místní |
+| **Podporovaná prostředí** | Azure<br>Jiný Cloud (Azure ARC)<br>Místní (oblouk ARC) | Azure | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Místní |
 | **Požadavky agenta**  | Žádné | Žádné | Žádné | Žádné | Vyžaduje agenta Log Analytics |
 | **Shromažďovaná data** | Syslog<br>Výkon | Syslog<br>Výkon | Výkon | Syslog<br>Výkon| Závislosti procesů<br>Metriky síťového připojení |
-| **Data odesílaná do** | Protokoly služby Azure Monitor<br>Azure Monitor metriky | Azure Storage<br>Centrum událostí | Azure Monitor metriky | Protokoly služby Azure Monitor | Protokoly služby Azure Monitor<br>(prostřednictvím agenta Log Analytics) |
+| **Data odesílaná do** | Protokoly služby Azure Monitor<br>Metriky Azure Monitoru | Azure Storage<br>Centrum událostí | Metriky Azure Monitoru | Protokoly služby Azure Monitor | Protokoly služby Azure Monitor<br>(prostřednictvím agenta Log Analytics) |
 | **Služby a**<br>**funkce**<br>**doložen** | Log Analytics<br>Průzkumník metrik | | Průzkumník metrik | Azure Monitor pro virtuální počítače<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | Azure Monitor pro virtuální počítače<br>Mapa služeb |
 
 
@@ -56,7 +56,7 @@ Následující tabulky poskytují rychlé porovnání Azure Monitor agentů pro 
 
 Agenta Azure Monitor použijte v případě, že potřebujete:
 
-- Shromažďovat protokoly a metriky hostů z libovolného virtuálního počítače v Azure, v jiných cloudech nebo místních. (Jenom Azure ve verzi Preview.)
+- Shromažďovat protokoly a metriky hostů z libovolného virtuálního počítače v Azure, v jiných cloudech nebo místních. (Vyžaduje se ARC Azure pro virtuální počítače mimo Azure.) 
 - Odesílat data do protokolů Azure Monitor a Azure Monitor metriky pro analýzu pomocí Azure Monitor. 
 - Odeslat data do Azure Storage k archivaci.
 - Posílání dat do nástrojů třetích stran pomocí [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md).
@@ -144,7 +144,7 @@ V následujících tabulkách jsou uvedeny operační systémy, které jsou podp
 |:---|:---:|:---:|:---:|:---:|
 | Windows Server 2019                                      | X | X | X | X |
 | Windows Server 2016                                      | X | X | X | X |
-| Windows Server 2016 Core                                 |   |   |   | × |
+| Windows Server 2016 Core                                 |   |   |   | X |
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
@@ -157,29 +157,29 @@ V následujících tabulkách jsou uvedeny operační systémy, které jsou podp
 
 | Provozní systém | Agent Azure Monitoru | Agent Log Analytics | Agent závislostí | Rozšíření diagnostiky | 
 |:---|:---:|:---:|:---:|:---:
-| Amazon Linux 2017,09                                     |   | × |   |   |
-| CentOS Linux 8                                           |   | × |   |   |
+| Amazon Linux 2017,09                                     |   | X |   |   |
+| CentOS Linux 8                                           |   | X |   |   |
 | CentOS Linux 7                                           | X | X |   | X |
 | CentOS Linux 7,8                                         | X | X | X | X |
 | CentOS Linux 7,6                                         | X | X | X | X |
-| CentOS Linux 6                                           |   | × |   |   |
+| CentOS Linux 6                                           |   | X |   |   |
 | CentOS Linux 6.5 +                                        |   | X |   | X |
-| Debian 10                                                | × |   |   |   |
-| Debian 9                                                 | X | X | x | × |
+| Debian 10                                                | X |   |   |   |
+| Debian 9                                                 | X | X | x | X |
 | Debian 8                                                 |   | X | X | X |
-| Debian 7                                                 |   |   |   | × |
-| OpenSUSE 13.1 +                                           |   |   |   | × |
+| Debian 7                                                 |   |   |   | X |
+| OpenSUSE 13.1 +                                           |   |   |   | X |
 | Oracle Linux 7                                           | X | X |   | X |
-| Oracle Linux 6                                           |   | × |   |   |
+| Oracle Linux 6                                           |   | X |   |   |
 | Oracle Linux 6.4 +                                        |   | X |   | X |
-| Server Red Hat Enterprise Linux 8                        |   | × |   |   |
+| Server Red Hat Enterprise Linux 8                        |   | X |   |   |
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                        |   | X | X |   |
 | Red Hat Enterprise Linux Server 6.7 +                     |   | X | X | X |
 | SUSE Linux Enterprise Server 15                          | X | X |   |   |
 | SUSE Linux Enterprise Server 12                          | X | X | X | X |
-| Ubuntu 20,04 LTS                                         |   | × |   |   |
-| Ubuntu 18,04 LTS                                         | X | X | X | X |
+| Ubuntu 20,04 LTS                                         |   | X |   |   |
+| Ubuntu 18.04 LTS                                         | X | X | X | X |
 | Ubuntu 16.04 LTS                                         | X | X | X | X |
 | Ubuntu 14,04 LTS                                         |   | X |   | X |
 
@@ -196,7 +196,7 @@ Vzhledem k tomu, že agent závislostí funguje na úrovni jádra, je podpora ta
 |                    | 6.9     | 2.6.32 – 696  |
 | CentOSPlus         | 6,10    | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
 |                    | 6.9     | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
-| Ubuntu Server      | 18,04   | 5.3.0 – 1020<br>5,0 (zahrnuje jádro Azure vyladěné)<br>4,18* <br> 4,15* |
+| Ubuntu Server      | 18,04   | 5.3.0 – 1020<br>5,0 (zahrnuje jádro Azure vyladěné)<br>4,18 *<br> 4,15* |
 |                    | 16.04.3 | 4,15. * |
 |                    | 16,04   | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
 | SUSE Linux 12 Enterprise Server | 12 SP4 | 4,12. * (zahrnuje jádro Azure s vyladěnými jádry) |

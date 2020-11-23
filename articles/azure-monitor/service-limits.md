@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
-ms.openlocfilehash: fffdc88e1d54622ec17d27cdb3bc574d4ced1111
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 49a9c6663f0505d5104f54630b6925af98ec243f
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505758"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318064"
 ---
 # <a name="azure-monitor-service-limits"></a>Omezení služby Azure Monitor
 
@@ -29,6 +29,10 @@ V tomto článku jsou uvedena omezení v různých oblastech Azure Monitor.
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-autoscale.md)]
 
+
+## <a name="data-collection-rules"></a>Pravidla shromažďování dat
+
+[!INCLUDE [data-collection-rules](../../includes/azure-monitor-limits-data-collection-rules.md)]
 ## <a name="log-queries-and-language"></a>Dotazy a jazyky protokolu
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-log-queries.md)]
@@ -43,6 +47,6 @@ V tomto článku jsou uvedena omezení v různých oblastech Azure Monitor.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Ceny za Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)
+- [Ceny služby Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)
 - [Monitorování využití a odhadovaných nákladů v Azure Monitor](platform/usage-estimated-costs.md)
 - [Správa využití a nákladů pro službu Application Insights](app/pricing.md)

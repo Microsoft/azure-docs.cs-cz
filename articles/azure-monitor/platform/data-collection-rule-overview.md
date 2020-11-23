@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 64dfc7400380505c882979e68a3bf0adcb8942a0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 048068a74151bb986392b5cb27787385fc0f5363
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107959"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315528"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Pravidla shromažďování dat v Azure Monitor (Preview)
 Pravidla shromažďování dat (DCR) definují data přicházející do Azure Monitor a určují, kam se tato data mají odeslat nebo Uložit. Tento článek obsahuje přehled pravidel shromažďování dat, včetně jejich obsahu a struktury a způsobu, jakým můžete s nimi vytvářet a pracovat s nimi.
@@ -49,19 +49,7 @@ Každý zdroj dat má typ zdroje dat. Každý typ definuje jedinečnou sadu vlas
 
 
 ## <a name="limits"></a>Omezení
-V následující tabulce jsou uvedené limity, které se aktuálně vztahují na každé pravidlo shromažďování dat.
-
-| Omezení | Hodnota |
-|:---|:---|
-| Maximální počet zdrojů dat | 10 |
-| Maximální počet specifikátorů čítače v čítači výkonu | 100 |
-| Maximální počet názvů zařízení v protokolu syslog | 20 |
-| Maximální počet dotazů XPath v protokolu událostí | 100 |
-| Maximální počet toků dat | 10 |
-| Maximální počet datových proudů | 10 |
-| Maximální počet rozšíření | 10 |
-| Maximální velikost nastavení rozšíření | 32 KB |
-| Maximální počet Log Analytics pracovních prostorů | 10 |
+Omezení, která platí pro jednotlivá pravidla shromažďování dat, najdete v tématu [omezení služby Azure monitor](../service-limits.md#data-collection-rules).
 
 
 ## <a name="create-a-dcr"></a>Vytvoření sady DCR

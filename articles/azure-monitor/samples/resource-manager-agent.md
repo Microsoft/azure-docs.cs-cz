@@ -1,17 +1,17 @@
 ---
 title: Ukázky šablon Správce prostředků pro agenty
-description: Ukázky Azure Resource Manager šablon pro nasazení a konfiguraci Log Analytics agenta a diagnostického rozšíření v Azure Monitor.
+description: Ukázky Azure Resource Manager šablon pro nasazení a konfiguraci agentů virtuálních počítačů v Azure Monitor.
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2020
-ms.openlocfilehash: 8b0673e534826acb5ff2d3747053f58fb39ff285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/17/2020
+ms.openlocfilehash: 00d6635b7bb322d28f0fe3df509ce0cb03e19f3d
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83854448"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95308660"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Ukázky šablon Správce prostředků pro agenty v Azure Monitor
 Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro nasazení a konfiguraci [agenta Log Analytics](../platform/log-analytics-agent.md) a [rozšíření diagnostiky](../platform/diagnostics-extension-overview.md) pro virtuální počítače v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
@@ -19,10 +19,218 @@ Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
-## <a name="windows-log-analytics-agent"></a>Agent Log Analytics Windows
+## <a name="azure-monitor-agent-preview"></a>Agent Azure Monitor (Preview)
+Ukázky v této části v agentovi Azure Monitor (Preview) v agentech systému Windows a Linux. To zahrnuje instalaci agenta na virtuální počítače v Azure a také servery s podporou ARC Azure. 
+
+### <a name="windows-azure-virtual-machine"></a>Virtuální počítač Microsoft Azure
+Následující ukázka nainstaluje agenta Azure Monitor na virtuální počítač Windows Azure.
+
+#### <a name="template-file"></a>Soubor šablony
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorWindowsAgent')]",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2020-06-01",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorWindowsAgent",
+              "typeHandlerVersion": "1.0",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>Soubor parametrů
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-windows-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="linux-azure-virtual-machine"></a>Virtuální počítač Azure se systémem Linux
+Následující ukázka nainstaluje agenta Azure Monitor na virtuálním počítači Azure se systémem Linux.
+
+#### <a name="template-file"></a>Soubor šablony
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorLinuxAgent')]",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2020-06-01",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorLinuxAgent",
+              "typeHandlerVersion": "1.5",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>Soubor parametrů
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-linux-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="windows-azure-arc-enabled-server"></a>Server s podporou ARC služby Windows Azure
+Následující ukázka nainstaluje agenta Azure Monitor na server s podporou ARC systému Windows Azure.
+
+#### <a name="template-file"></a>Soubor šablony
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorWindowsAgent')]",
+          "type": "Microsoft.HybridCompute/machines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2019-08-02-preview",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorWindowsAgent",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>Soubor parametrů
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-windows-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="linux-azure-arc-enabled-server"></a>Server s podporou Linux Azure ARC
+Následující ukázka nainstaluje agenta Azure Monitor na server s podporou ARC Azure na platformě Linux.
+
+#### <a name="template-file"></a>Soubor šablony
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorLinuxAgent')]",
+          "type": "Microsoft.HybridCompute/machines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2019-08-02-preview",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorLinuxAgent",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>Soubor parametrů
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-linux-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+## <a name="log-analytics-agent"></a>Agent Log Analytics
+Ukázky v této části instalují agenta Log Analytics na virtuální počítače s Windows a Linux v Azure a připojují se k pracovnímu prostoru Log Analytics.
+
+###  <a name="windows"></a>Windows
 Následující ukázka nainstaluje agenta Log Analytics na virtuální počítač Windows Azure. To se provádí povolením [rozšíření Log Analytics virtuálního počítače pro Windows](../../virtual-machines/extensions/oms-windows.md).
 
-### <a name="template-file"></a>Soubor šablony
+#### <a name="template-file"></a>Soubor šablony
 
 ```json
 {
@@ -90,7 +298,7 @@ Následující ukázka nainstaluje agenta Log Analytics na virtuální počíta�
 
 ```
 
-### <a name="parameter-file"></a>Soubor parametrů
+#### <a name="parameter-file"></a>Soubor parametrů
 
 ```json
 {
@@ -114,10 +322,10 @@ Následující ukázka nainstaluje agenta Log Analytics na virtuální počíta�
 ```
 
 
-## <a name="linux-log-analytics-agent"></a>Agent Log Analytics pro Linux
+### <a name="linux"></a>Linux
 Následující ukázka nainstaluje agenta Log Analytics na virtuálním počítači Azure se systémem Linux. To se provádí povolením [rozšíření Log Analytics virtuálního počítače pro Windows](../../virtual-machines/extensions/oms-linux.md).
 
-### <a name="template-file"></a>Soubor šablony
+#### <a name="template-file"></a>Soubor šablony
 
 ```json
 {
@@ -184,7 +392,7 @@ Následující ukázka nainstaluje agenta Log Analytics na virtuálním počíta
 }
 ```
 
-### <a name="parameter-file"></a>Soubor parametrů
+#### <a name="parameter-file"></a>Soubor parametrů
 
 ```json
 {
@@ -209,10 +417,13 @@ Následující ukázka nainstaluje agenta Log Analytics na virtuálním počíta
 
 
 
-## <a name="windows-diagnostic-extension"></a>Diagnostické rozšíření systému Windows
+## <a name="diagnostic-extension"></a>Rozšíření diagnostiky
+Ukázky v této části instalují diagnostické rozšíření na virtuální počítače s Windows a Linux v Azure a konfigurují ho pro shromažďování dat.
+
+### <a name="windows"></a>Windows
 Následující příklad povolí a nakonfiguruje diagnostické rozšíření na virtuálním počítači s Windows Azure. Podrobnosti o konfiguraci najdete v tématu [schéma rozšíření pro diagnostiku systému Windows](../platform/diagnostics-extension-schema-windows.md).
 
-### <a name="template-file"></a>Soubor šablony
+#### <a name="template-file"></a>Soubor šablony
 
 ```json
 {
@@ -345,7 +556,7 @@ Následující příklad povolí a nakonfiguruje diagnostické rozšíření na 
 }
 ```
 
-### <a name="parameter-file"></a>Soubor parametrů
+#### <a name="parameter-file"></a>Soubor parametrů
 
 ```json
 {
@@ -374,10 +585,10 @@ Následující příklad povolí a nakonfiguruje diagnostické rozšíření na 
 }
 ```
 
-## <a name="linux-diagnostic-setting"></a>Nastavení diagnostiky Linux
+### <a name="linux"></a>Linux
 Následující příklad povolí a nakonfiguruje diagnostické rozšíření na virtuálním počítači Azure se systémem Linux. Podrobnosti o konfiguraci najdete v tématu [schéma rozšíření pro diagnostiku systému Windows](../../virtual-machines/extensions/diagnostics-linux.md).
 
-### <a name="template-file"></a>Soubor šablony
+#### <a name="template-file"></a>Soubor šablony
 
 ```json
 {
@@ -565,7 +776,7 @@ Následující příklad povolí a nakonfiguruje diagnostické rozšíření na 
 }
 ```
 
-### <a name="parameter-file"></a>Soubor parametrů
+#### <a name="parameter-file"></a>Soubor parametrů
 
 ```json
 {

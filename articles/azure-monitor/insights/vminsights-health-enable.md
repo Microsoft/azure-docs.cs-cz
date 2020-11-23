@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 6033ca5b0eaf6845d14407832c776dd8e006226b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686781"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318129"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Povolit stav hosta Azure Monitor pro virtuální počítače (Preview)
 Azure Monitor pro virtuální počítače stav hosta umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou odebírány v pravidelných intervalech. Tento článek popisuje, jak povolit tuto funkci ve vašem předplatném a jak povolit monitorování hostů pro každý virtuální počítač.
@@ -24,13 +24,19 @@ Azure Monitor pro virtuální počítače stav hosta má ve verzi Public Preview
   - Ubuntu 16,04 LTS, Ubuntu 18,04 LTS
   - Windows Server 2012 nebo novější
 - Virtuální počítač se musí nacházet v jedné z následujících oblastí:
+  - Austrálie – východ
   - Australia Southeast
+  - Indie – střed
   - Střední USA
   - East US
   - USA – východ 2
   - Východní USA 2 EUAP
+  - Německo – středozápad
+  - Japan East
+  - USA – středosever
   - Severní Evropa
-  - Jihovýchodní Asie
+  - Středojižní USA
+  - Southeast Asia
   - Spojené království – jih
   - West Europe
   - USA – západ
