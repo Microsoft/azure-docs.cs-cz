@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 39c1972eba84f4f1990c87112c5801c386849640
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288336"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545954"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Přehled objektů blob stránky Azure
 
@@ -31,7 +31,7 @@ Objekty blob stránky můžou používat jenom vrstvu **Hot** Access, ale nemů�
 
 ## <a name="sample-use-cases"></a>Ukázkové případy použití
 
-Pojďme si projednávat několik případů použití pro objekty blob stránky počínaje IaaS disky Azure. Objekty blob stránky Azure jsou páteřní platformou platformy virtuálních disků pro Azure IaaS. Operační systémy a datové disky Azure se implementují jako virtuální disky, kde se data trvale trvale na platformě Azure Storage a pak se doručí virtuálním počítačům pro maximální výkon. Disky Azure se ukládají ve [formátu virtuálního pevného disku](https://technet.microsoft.com/library/dd979539.aspx) Hyper-V a ukládají se jako [objekt blob stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) v Azure Storage. Kromě používání virtuálních disků pro virtuální počítače Azure s IaaS můžou objekty blob stránky také povolit scénáře PaaS a DBaaS, jako je například služba Azure SQL DB, která aktuálně používá objekty blob stránky k ukládání dat SQL a umožňuje rychlé náhodné operace čtení a zápisu pro databázi. Dalším příkladem může být, že máte službu PaaS pro přístup ke sdílenému médiu pro aplikace pro úpravy videa pro spolupracovníky. objekty blob stránky umožňují rychlý přístup k náhodným umístěním v médiu. Umožňuje také rychlé a efektivní úpravy a sloučení stejného média více uživateli. 
+Pojďme si projednávat několik případů použití pro objekty blob stránky počínaje IaaS disky Azure. Objekty blob stránky Azure jsou páteřní platformou platformy virtuálních disků pro Azure IaaS. Operační systémy a datové disky Azure se implementují jako virtuální disky, kde se data trvale trvale na platformě Azure Storage a pak se doručí virtuálním počítačům pro maximální výkon. Disky Azure se ukládají ve [formátu virtuálního pevného disku](/previous-versions/windows/it-pro/windows-7/dd979539(v=ws.10)) Hyper-V a ukládají se jako [objekt blob stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) v Azure Storage. Kromě používání virtuálních disků pro virtuální počítače Azure s IaaS můžou objekty blob stránky také povolit scénáře PaaS a DBaaS, jako je například služba Azure SQL DB, která aktuálně používá objekty blob stránky k ukládání dat SQL a umožňuje rychlé náhodné operace čtení a zápisu pro databázi. Dalším příkladem může být, že máte službu PaaS pro přístup ke sdílenému médiu pro aplikace pro úpravy videa pro spolupracovníky. objekty blob stránky umožňují rychlý přístup k náhodným umístěním v médiu. Umožňuje také rychlé a efektivní úpravy a sloučení stejného média více uživateli. 
 
 Služby společnosti Microsoft, jako je například Azure Site Recovery, Azure Backup, i řada vývojářů třetích stran implementovala špičkové inovace pomocí rozhraní REST objektu BLOB. Následuje několik jedinečných scénářů implementovaných v Azure: 
 
@@ -47,7 +47,7 @@ Oba typy úložiště nabízené s objekty blob stránky mají svůj vlastní ce
 
 ### <a name="rest-api"></a>REST API
 
-Pokud chcete začít s [vývojem pomocí objektů blob stránky](storage-dotnet-how-to-use-blobs.md), přečtěte si následující dokument. Příklad najdete v tématu Jak získat přístup k objektům blob stránky pomocí klientské knihovny pro úložiště pro .NET. 
+Pokud chcete začít s [vývojem pomocí objektů blob stránky](./storage-quickstart-blobs-dotnet.md), přečtěte si následující dokument. Příklad najdete v tématu Jak získat přístup k objektům blob stránky pomocí klientské knihovny pro úložiště pro .NET. 
 
 Následující diagram popisuje celkové vztahy mezi účtem, kontejnery a objekty blob stránky.
 
@@ -63,7 +63,7 @@ Nejprve získejte odkaz na kontejner. Chcete-li vytvořit objekt blob stránky, 
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-Pokud chcete vytvořit objekt blob stránky, nejdřív vytvoříme objekt **CloudBlobClient** se základním identifikátorem URI pro přístup k úložišti objektů BLOB pro váš účet úložiště ( *pbaccount* na obrázku 1) společně s objektem **StorageCredentialsAccountAndKey** , jak je znázorněno v následujícím příkladu. Příklad následně ukazuje vytvoření odkazu na objekt **CloudBlobContainer** a pak vytvoření kontejneru ( *testvhds* ), pokud ještě neexistuje. Pak pomocí objektu **CloudBlobContainer** vytvořte odkaz na objekt **CloudPageBlob** zadáním názvu objektu blob stránky (OS4. VHD) k přístupu. Chcete-li vytvořit objekt blob stránky, zavolejte [CloudPageBlob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)a předejte maximální velikost objektu blob, který se má vytvořit. *BlobSize* musí být násobkem 512 bajtů.
+Pokud chcete vytvořit objekt blob stránky, nejdřív vytvoříme objekt **CloudBlobClient** se základním identifikátorem URI pro přístup k úložišti objektů BLOB pro váš účet úložiště (*pbaccount* na obrázku 1) společně s objektem **StorageCredentialsAccountAndKey** , jak je znázorněno v následujícím příkladu. Příklad následně ukazuje vytvoření odkazu na objekt **CloudBlobContainer** a pak vytvoření kontejneru (*testvhds*), pokud ještě neexistuje. Pak pomocí objektu **CloudBlobContainer** vytvořte odkaz na objekt **CloudPageBlob** zadáním názvu objektu blob stránky (OS4. VHD) k přístupu. Chcete-li vytvořit objekt blob stránky, zavolejte [CloudPageBlob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)a předejte maximální velikost objektu blob, který se má vytvořit. *BlobSize* musí být násobkem 512 bajtů.
 
 ```csharp
 using Microsoft.Azure;

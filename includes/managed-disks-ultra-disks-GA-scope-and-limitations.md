@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: eeda43b972e30c573743c8c59f75cfae61d7ee85
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 26a5537496d9e881ece135437c403baf4a4fd67c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413138"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95564246"
 ---
 V současnosti mají extrémně disky další omezení, jsou následující:
 
@@ -67,7 +67,7 @@ V následující tabulce jsou popsány oblasti Ultra disks jsou k dispozici v n�
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Ne všechny velikosti virtuálních počítačů jsou k dispozici v každé podporované oblasti s disky Ultra.
 - Jsou k dispozici pouze jako datové disky. 
-- Ve výchozím nastavení podporuje 4k velikost fyzického sektoru. velikost sektoru 512E je k dispozici jako všeobecně dostupná nabídka, ale je nutné se [k ní zaregistrovat](https://aka.ms/ultradisk512e). Většina aplikací je kompatibilní s velikostmi sektorů 4k, ale některé velikosti sektorů vyžadují 512 bajtů. Příkladem může být Oracle Database, který vyžaduje vydání verze 12,2 nebo novější, aby bylo možné podporovat nativní disky 4k. Pro starší verze Oracle DB je požadována velikost bajtového sektoru 512.
+- Ve výchozím nastavení podporuje 4k velikost fyzického sektoru. velikost sektoru 512E je dostupná jako všeobecně dostupná nabídka (nevyžaduje se žádné přihlášení), ale teď je dostupná jenom pomocí rozhraní příkazového řádku nebo PowerShellu. Většina aplikací je kompatibilní s velikostmi sektorů 4k, ale některé velikosti sektorů vyžadují 512 bajtů. Příkladem může být Oracle Database, který vyžaduje vydání verze 12,2 nebo novější, aby bylo možné podporovat nativní disky 4k. Pro starší verze Oracle DB je požadována velikost bajtového sektoru 512.
 - Dá se vytvořit jenom jako prázdné disky.
 - V současné době nepodporuje snímky disků, image virtuálních počítačů, skupiny dostupnosti, vyhrazené hostitele Azure nebo Azure Disk Encryption.
 - V současné době nepodporuje integraci s Azure Backup ani Azure Site Recovery.

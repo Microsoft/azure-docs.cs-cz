@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/15/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 535ee447ff63aabb9af1f32252fb4e4dd2c392de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 764d75872eb1bad0647235cd70f9984ebd7789bd
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779297"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563910"
 ---
 Následující tabulka uvádí informace o kvótě, které jsou specifické pro Azure Service Bus zasílání zpráv. Informace o cenách a dalších kvótách pro Service Bus najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
 
@@ -21,11 +21,11 @@ Následující tabulka uvádí informace o kvótě, které jsou specifické pro 
 | --- | --- | --- | --- |
 | Maximální počet základních nebo standardních oborů názvů na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů Basic nebo Standard jsou Azure Portal odmítnuty. |100|
 | Maximální počet oborů názvů úrovně Premium na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů úrovně Premium jsou na portálu odmítnuty. |100 |
-| Velikost fronty nebo tématu |Entita |Definováno při vytváření fronty nebo tématu. <br/><br/> Následné příchozí zprávy jsou odmítnuty a volající kód obdrží výjimku. |1, 2, 3, 4 GB nebo 5 GB.<br /><br />V SKU úrovně Premium a standardní SKU s povoleným [rozdělením na oddíly](/azure/service-bus-messaging/service-bus-partitioning) je maximální velikost fronty nebo tématu 80 GB. |
+| Velikost fronty nebo tématu |Entita |Definováno při vytváření fronty nebo tématu. <br/><br/> Následné příchozí zprávy jsou odmítnuty a volající kód obdrží výjimku. |1, 2, 3, 4 GB nebo 5 GB.<br /><br />V SKU úrovně Premium a standardní SKU s povoleným [rozdělením na oddíly](../articles/service-bus-messaging/service-bus-partitioning.md) je maximální velikost fronty nebo tématu 80 GB. |
 | Počet souběžných připojení na obor názvů |Obor názvů |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. Operace REST se nepočítají směrem k souběžným připojením TCP. |Síťové zasílání zpráv: 1 000.<br /><br />AMQP: 5 000. |
 | Počet souběžných žádostí o přijetí změn ve frontě, tématu nebo entitě předplatného |Entita |Následné žádosti o přijetí byly zamítnuty a volající kód obdrží výjimku. Tato kvóta se vztahuje na kombinovaný počet souběžných operací příjmu napříč všemi předplatnými v tématu. |5 000 |
 | Počet témat nebo front na obor názvů |Obor názvů |Následné požadavky na vytvoření nového tématu nebo fronty v oboru názvů se odmítnou. V důsledku toho se při konfiguraci pomocí [Azure Portal][Azure portal]vygeneruje chybová zpráva. Pokud je volána z rozhraní API pro správu, je vyvolána výjimka volajícím kódem. |10 000 pro úroveň Basic nebo Standard. Celkový počet témat a front v oboru názvů musí být menší nebo roven 10 000. <br/><br/>Pro úroveň Premium 1 000 za jednotku zasílání zpráv (MU). Maximální limit je 4 000. |
-| Počet [rozdělených témat nebo front](/azure/service-bus-messaging/service-bus-partitioning) na obor názvů |Obor názvů |Následné požadavky na vytvoření nového oddílu nebo fronty v oboru názvů se odmítnou. V důsledku toho se při konfiguraci pomocí [Azure Portal][Azure portal]vygeneruje chybová zpráva. Pokud je volána z rozhraní API pro správu, výjimka **QuotaExceededException** je přijata volajícím kódem. |Úrovně Basic a Standard: 100.<br/><br/>Dělené entity nejsou podporovány na úrovni [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) .<br/><br />Každá dělená fronta nebo téma se počítá s kvótou 1 000 entit na obor názvů. |
+| Počet [rozdělených témat nebo front](../articles/service-bus-messaging/service-bus-partitioning.md) na obor názvů |Obor názvů |Následné požadavky na vytvoření nového oddílu nebo fronty v oboru názvů se odmítnou. V důsledku toho se při konfiguraci pomocí [Azure Portal][Azure portal]vygeneruje chybová zpráva. Pokud je volána z rozhraní API pro správu, výjimka **QuotaExceededException** je přijata volajícím kódem. |Úrovně Basic a Standard: 100.<br/><br/>Dělené entity nejsou podporovány na úrovni [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) .<br/><br />Každá dělená fronta nebo téma se počítá s kvótou 1 000 entit na obor názvů. |
 | Maximální velikost jakékoli cesty entit zasílání zpráv: fronta nebo téma |Entita |- |260 znaků. |
 | Maximální velikost všech názvů entit pro zasílání zpráv: obor názvů, předplatné nebo pravidlo předplatného |Entita |- |50 znaků. |
 | Maximální velikost [ID zprávy](/dotnet/api/microsoft.azure.servicebus.message.messageid) | Entita |- | 128 |

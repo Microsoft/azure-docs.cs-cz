@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 7bdbfd8ffd44f9515ae4df20c55b09c8a0adcaef
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 1be6a654962b513cfcf755d45e562b86067e7b25
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376028"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95564239"
 ---
 #### <a name="to-create-a-new-service"></a>Vytvoření nové služby
 
@@ -29,13 +29,13 @@ ms.locfileid: "93376028"
 
     2.  V rozevíracím seznamu **Předplatné** vyberte předplatné. Předplatné je propojeno s vaším fakturačním účtem. Toto pole není dostupné, pokud máte pouze jedno předplatné.
 
-    3.  V případě **skupiny prostředků** vyberte existující skupinu nebo vytvořte novou. Další informace najdete v tématu [Skupiny prostředků Azure](/azure/azure-resource-manager/management/manage-resource-groups-portal).
+    3.  V případě **skupiny prostředků** vyberte existující skupinu nebo vytvořte novou. Další informace najdete v tématu [Skupiny prostředků Azure](../articles/azure-resource-manager/management/manage-resource-groups-portal.md).
 
     4.  Zadejte **Umístění** služby. V tématu [oblasti Azure](https://azure.microsoft.com/regions/#services) najdete další informace o tom, které služby jsou dostupné v jednotlivých oblastech. V části Obecné vyberte **umístění** , které je nejblíže geografické oblasti, kde chcete zařízení nasadit. Zvažte i následující okolnosti:
 
         -   Pokud máte v Azure existující úlohy, které máte taky v úmyslu nasadit pomocí zařízení StorSimple, doporučujeme, abyste používali toto datové centrum.
 
-        -   Vaše StorSimple Device Manager a Azure Storage můžou být ve dvou různých umístěních. V takovém případě je nutné vytvořit Správce zařízení StorSimple a účet úložiště Azure odděleně. Pokud chcete vytvořit účet úložiště Azure, přejděte na Azure Storage v Azure Portal a postupujte podle kroků popsaných v tématu [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). Po vytvoření účtu jej přidejte do služby Správce zařízení StorSimple pomocí kroků popsaných v tématu [Konfigurace nového účtu úložiště pro službu](https://azure.microsoft.com/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service).
+        -   Vaše StorSimple Device Manager a Azure Storage můžou být ve dvou různých umístěních. V takovém případě je nutné vytvořit Správce zařízení StorSimple a účet úložiště Azure odděleně. Pokud chcete vytvořit účet úložiště Azure, přejděte na Azure Storage v Azure Portal a postupujte podle kroků popsaných v tématu [Vytvoření účtu úložiště](../articles/storage/common/storage-account-create.md). Po vytvoření účtu jej přidejte do služby Správce zařízení StorSimple pomocí kroků popsaných v tématu [Konfigurace nového účtu úložiště pro službu](../articles/storsimple/storsimple-virtual-array-manage-storage-accounts.md#add-a-storage-account-credential).
 
         -   Pokud nasazujete virtuální zařízení na portálu pro státní správu, Služba StorSimple Device Manager je k dispozici v umístění US Iowa a US) – Virginia.
 
@@ -48,5 +48,3 @@ ms.locfileid: "93376028"
         ![Vytvořit novou službu 2](./media/storsimple-virtual-array-create-new-service/createnewservice4.png)  
 
 Budete přesměrováni na cílovou stránku **služby** . Vytvoření služby trvá několik minut. Po úspěšném vytvoření služby budete odpovídajícím způsobem upozorněni a stav služby se změní na **Aktivní**.
-
-

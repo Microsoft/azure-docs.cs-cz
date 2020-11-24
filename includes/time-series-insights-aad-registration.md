@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
-ms.openlocfilehash: 7de4dc21391f7dbd817c56ce51606a808cf9e3c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50f203357d29d450f5b34593952f611f025b14ff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665803"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563408"
 ---
 1. V [Azure Portal](https://ms.portal.azure.com/)vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **nové registrace**.
 
@@ -22,11 +22,11 @@ ms.locfileid: "91665803"
 
     Vaše aplikace se tady zobrazí po registraci.
 
-1. Dejte aplikaci název a vyberte **účty v tomto organizačním adresáři jenom** k určení **podporovaných typů účtů** , které můžou mít přístup k rozhraní API. Pokud vytváříte [veřejnou klientskou aplikaci](https://docs.microsoft.com/azure/active-directory/develop/msal-client-application-configuration#redirect-uri), přidejte platný identifikátor URI přesměrování a pak ho **Zaregistrujte**.
+1. Dejte aplikaci název a vyberte **účty v tomto organizačním adresáři jenom** k určení **podporovaných typů účtů** , které můžou mít přístup k rozhraní API. Pokud vytváříte [veřejnou klientskou aplikaci](../articles/active-directory/develop/msal-client-application-configuration.md#redirect-uri), přidejte platný identifikátor URI přesměrování a pak ho **Zaregistrujte**.
 
    [![Vytvoření aplikace v Azure Active Directory](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
-1. Důležité informace o Azure Active Directory aplikace se zobrazí v okně **Přehled** vaší aplikace v seznamu. Vyberte svou aplikaci v části **vlastněné aplikace**a pak klikněte na **Přehled**.
+1. Důležité informace o Azure Active Directory aplikace se zobrazí v okně **Přehled** vaší aplikace v seznamu. Vyberte svou aplikaci v části **vlastněné aplikace** a pak klikněte na **Přehled**.
 
    [![Kopírovat ID aplikace](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
 
@@ -55,7 +55,7 @@ ms.locfileid: "91665803"
 
     [![Vytváření identifikátorů URI pro přesměrování](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png)](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png#lightbox)
 
-    Klikněte na **Konfigurovat**a pak na **Uložit**.
+    Klikněte na **Konfigurovat** a pak na **Uložit**.
 
 1. Vyberte **certifikáty & tajných klíčů** a **nový tajný klíč klienta** k vytvoření hesla aplikace, které může klientská aplikace použít k prokázání jeho identity.
 

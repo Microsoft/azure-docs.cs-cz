@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28609ad27330ae4ea5ea7c0d02d5a61181fbe0df
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73034542"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95564226"
 ---
 Při navrhování systému je důležité pochopit potenciální hrozby pro daný systém a odpovídajícím způsobem přidat patřičnou ochranu, protože systém je navržený a navržený. Je důležité navrhnout produkt od začátku s ohledem na zabezpečení, protože porozumět tomu, jak útočník může ohrozit zabezpečení systému, pomáhá zajistit, aby byla na začátku vhodná omezení.
 
@@ -72,7 +72,7 @@ Mezi čtyři základní prvky modelu hrozeb patří:
 
 * Externí entity (cokoli, co komunikuje se systémem, ale nejsou pod kontrolou aplikace, příklady zahrnují uživatele a satelitní kanály)
 
-Všechny prvky v diagramu architektury podléhají různým hrozbám; v tomto článku najdete klávesové zkratky pro rozteč. Přečtěte si [znovu modelování hrozeb a](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) Projděte si další informace o elementech pro rozteč.
+Všechny prvky v diagramu architektury podléhají různým hrozbám; v tomto článku najdete klávesové zkratky pro rozteč. Přečtěte si [znovu modelování hrozeb a](/archive/blogs/larryosterman/threat-modeling-again-stride) Projděte si další informace o elementech pro rozteč.
 
 Na různé prvky diagramu aplikace se vztahují určité hrozby pro rozteč:
 
@@ -263,7 +263,7 @@ Cloud Gateway je většinou vlastní sestavený software, který je spuštěný 
 
 Mezi mezilehlé fyzické povrchy řízení patří takové, kde řízení logiky omezuje funkci fyzického ovládacího prvku, aby se mohla spustit ekvivalentní funkce, nebo když je vstup v konfliktu se vzdáleným vstupem. je možné, že tyto zprostředkující povrchy řízení jsou koncepčně připojené k místnímu řídicímu systému, který využívá stejné základní funkce jako kterýkoli jiný systém vzdáleného řízení, ke kterému se může zařízení připojit paralelně. Hlavní hrozby cloud computingu se dají přečíst na stránce [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/articles/csa-releases-top-threats-to-cloud-computing-deep-dive/) .
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Další informace najdete v následujících článcích:
 
