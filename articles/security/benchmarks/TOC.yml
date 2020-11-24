@@ -69,8 +69,12 @@
       href: ../../automation/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Advisor
       href: ../../advisor/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure App Configuration
+      href: ../../azure-app-configuration/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Backup
       href: ../../backup/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Bastion
+      href: ../../bastion/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Cache for Redis
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Cognitive Search
@@ -201,5 +205,7 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro virtuální síť
       href: ../../virtual-network/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro překlad adres virtuální sítě
+      href: ../../virtual-network/nat-security-baseline.md
     - name: Standardní hodnoty zabezpečení pro VPN Gateway
       href: ../../vpn-gateway/security-baseline.md

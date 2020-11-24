@@ -97,13 +97,13 @@
       href: dynamic-change-volume-service-level.md
     - name: Správa replikace mezi oblastmi
       items:
-        - name: Vytvoření peeringu replikace
+        - name: Vytvoření replikace svazku
           href: cross-region-replication-create-peering.md
         - name: Zobrazení stavu vztahu replikace
           href: cross-region-replication-display-health-status.md
         - name: Správa zotavení po havárii
           href: cross-region-replication-manage-disaster-recovery.md
-        - name: Odstranění replikací
+        - name: Odstranění svazků nebo replikací svazků
           href: cross-region-replication-delete.md
     - name: Vývoj
       items:

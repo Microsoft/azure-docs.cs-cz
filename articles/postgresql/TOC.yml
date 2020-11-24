@@ -603,8 +603,14 @@
           href: reference-hyperscale-metadata.md
     - name: Návody
       items:
-        - name: Škálování skupiny serverů
-          href: howto-hyperscale-scaling.md
+        - name: Velikost skupiny serverů
+          items:
+            - name: Volba počáteční velikosti
+              href: howto-hyperscale-scale-initial.md
+            - name: Škálování skupiny serverů
+              href: howto-hyperscale-scale-grow.md
+            - name: Úprava vyvážení horizontálních oddílů
+              href: howto-hyperscale-scale-rebalance.md
         - name: Pravidla brány firewall
           items:
             - name: portál Azure

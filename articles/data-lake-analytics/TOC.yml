@@ -139,7 +139,7 @@
           href: understand-spark-code-concepts.md
     - name: Řešení potíží s úlohami U-SQL
       items:
-        - name: Řešení potíží se selháními modulu runtime U-SQL
+        - name: Řešení potíží se selháními modulu runtime U-SQL a známé potíže
           href: runtime-troubleshoot.md
         - name: Řešení potíží s upgradem .NET
           href: dotnet-upgrade-troubleshoot.md

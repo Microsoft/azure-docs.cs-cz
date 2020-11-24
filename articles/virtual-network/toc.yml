@@ -95,8 +95,10 @@
           href: public-ip-security-baseline.md
     - name: Zabezpečení
       items:
-        - name: Standardní hodnoty zabezpečení
+        - name: Standardní hodnoty zabezpečení pro virtuální síť
           href: security-baseline.md
+        - name: Standardní hodnoty zabezpečení pro překlad adres virtuální sítě
+          href: nat-security-baseline.md
         - name: Skupiny zabezpečení sítě
           items:
             - name: Přehled

@@ -62,10 +62,12 @@
           href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
 - name: Odkaz
   items:
-    - name: Historie verzí agenta zřizování cloudů Azure AD Connect
-      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: Historie verzí agenta Cloud Sync pro Azure AD Connect
+      href: reference-version-history.md
     - name: Nejčastější dotazy ke zřizování cloudu Azure AD Connect
       href: reference-cloud-provisioning-faq.md
+    - name: Powershellový modul AADCloudSyncTools
+      href: reference-powershell.md
     - name: Synchronizované atributy
       href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Základní prostředí Active Directory a Azure AD

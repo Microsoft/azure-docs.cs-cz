@@ -270,9 +270,13 @@
     - name: Vytváření transformací a úloh
       items:
         - name: Vytváření transformací
-          href: cli-create-transform.md
+          href: how-to-create-transform.md
         - name: Vytvoření základní transformace zvuku s využitím REST
           href: how-to-create-basic-audio-transform.md
+        - name: Vytvoření transformace copyAllBitrateNonInterleaved s využitím REST
+          href: how-to-create-copyallbitratenoninterleaved-transform.md
+        - name: Kopírování videí bez kódování s využitím REST
+          href: how-to-create-copy-video-audio-transform.md
         - name: Vytváření úloh
           href: cli-create-jobs.md
         - name: Vytvoření vstupu úlohy s využitím místního souboru a .NET
@@ -397,7 +401,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Přejít
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.media/allversions

@@ -1,4 +1,4 @@
-- name: Azure Synapse (SQL DW)
+- name: Azure Synapse (dříve SQL DW)
   href: index.yml
 - name: Přepnutí na Azure Synapse (pracovní prostory ve verzi Preview)
   href: ../overview-what-is.md
