@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: dc3d119479d2dce45b286463f3d6a76410220dd0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2370f76bacb8645f1b343da4f056c8bcf06a26dd
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014216"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95796723"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Standardní sloupce v protokolech Azure Monitor
 Data v Azure Monitor protokoly se [ukládají jako sada záznamů v pracovním prostoru Log Analytics nebo v Application Insights aplikaci](./data-platform-logs.md), z nichž každý má konkrétní datový typ, který má jedinečnou sadu sloupců. Mnoho datových typů bude mít standardní sloupce, které jsou společné pro různé typy. Tento článek popisuje tyto sloupce a poskytuje příklady, jak je můžete použít v dotazech.
@@ -80,7 +80,7 @@ Sloupec **\_ itemid** obsahuje jedinečný identifikátor záznamu.
 ## <a name="_resourceid"></a>\_ResourceId
 Sloupec **\_ ResourceID** obsahuje jedinečný identifikátor prostředku, ke kterému je přiřazen záznam. Díky tomu máte standardní sloupec, který se použije k určení oboru dotazu jenom na záznamy z konkrétního prostředku, nebo pro spojování souvisejících dat napříč více tabulkami.
 
-U prostředků Azure je hodnotou **_ResourceId** [Adresa URL ID prostředku Azure](../../azure-resource-manager/templates/template-functions-resource.md). Tento sloupec je v současné době omezený na prostředky Azure, ale bude rozšířen na prostředky mimo Azure, jako jsou například místní počítače.
+U prostředků Azure je hodnotou **_ResourceId** [Adresa URL ID prostředku Azure](../../azure-resource-manager/templates/template-functions-resource.md). Sloupec je omezený na prostředky Azure, včetně prostředků [ARC Azure](../../azure-arc/overview.md) , nebo vlastních protokolů, které během příjmu uvedli ID prostředku.
 
 > [!NOTE]
 > Některé typy dat už obsahují pole, která obsahují ID prostředku Azure nebo alespoň části, jako je ID předplatného. I když jsou tato pole zachovaná kvůli zpětné kompatibilitě, doporučuje se použít _ResourceId k provedení vzájemné korelace, protože bude lépe konzistentní.
@@ -111,17 +111,47 @@ AzureActivity
 ) on _ResourceId  
 ```
 
-Následující dotaz analyzuje **_ResourceId** a agreguje fakturované datové svazky na předplatné Azure.
+Následující dotaz analyzuje **_ResourceId** a agreguje účtované datové svazky na skupinu prostředků Azure.
 
 ```Kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
     resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by resourceGroup | sort by Bytes nulls last 
 ```
 
 Tyto dotazy můžete použít `union withsource = tt *` zřídka, protože kontroly napříč datovými typy jsou náročné na spouštění.
+
+Je vždycky efektivnější použít \_ sloupec SubscriptionId, než ho extrahujete analýzou \_ sloupce ResourceID.
+
+## <a name="_substriptionid"></a>\_SubstriptionId
+Sloupec **\_ SUBSCRIPTIONID** obsahuje ID předplatného prostředku, ke kterému je daný záznam přidružen. Získáte tak standardní sloupec, který se použije k určení oboru dotazu jenom na záznamy z konkrétního předplatného nebo pro porovnání různých předplatných.
+
+U prostředků Azure je hodnotou **__SubscriptionId** předplatným část [adresy URL prostředku Azure ID](../../azure-resource-manager/templates/template-functions-resource.md). Sloupec je omezený na prostředky Azure, včetně prostředků [ARC Azure](../../azure-arc/overview.md) , nebo vlastních protokolů, které během příjmu uvedli ID prostředku.
+
+> [!NOTE]
+> Některé typy dat už obsahují pole, která obsahují ID předplatného Azure. I když jsou tato pole zachovaná pro zpětnou kompatibilitu, doporučuje se použít \_ sloupec SubscriptionId k provedení vzájemné korelace, protože bude lépe konzistentní.
+### <a name="examples"></a>Příklady
+Následující dotaz prověřuje údaje o výkonu pro počítače určitého předplatného. 
+
+```Kusto
+Perf 
+| where TimeGenerated > ago(24h) and CounterName == "memoryAllocatableBytes"
+| where _SubscriptionId == "57366bcb3-7fde-4caf-8629-41dc15e3b352"
+| summarize avgMemoryAllocatableBytes = avg(CounterValue) by Computer
+```
+
+Následující dotaz analyzuje **_ResourceId** a agreguje fakturované datové svazky na předplatné Azure.
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by _SubscriptionId | sort by Bytes nulls last 
+```
+
+Tyto dotazy můžete použít `union withsource = tt *` zřídka, protože kontroly napříč datovými typy jsou náročné na spouštění.
+
 
 ## <a name="_isbillable"></a>\_Fakturovatelnost
 Sloupec **\_ disfakturovatelné** určuje, zda jsou příjemovaná data fakturovatelná. Data s **hodnotou, která \_** se rovná, `false` se shromažďují zdarma a neúčtují se za váš účet Azure.
@@ -168,8 +198,7 @@ Pokud chcete zobrazit velikost fakturovaných událostí, které jsou v rámci j
 ```Kusto
 union withsource=table * 
 | where _IsBillable == true 
-| parse _ResourceId with "/subscriptions/" SubscriptionId "/" *
-| summarize Bytes=sum(_BilledSize) by  SubscriptionId | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by  _SubscriptionId | sort by Bytes nulls last 
 ```
 
 Pokud chcete zobrazit velikost fakturovaných událostí, které se na skupinu prostředků ingestují, použijte následující dotaz:
@@ -178,7 +207,7 @@ Pokud chcete zobrazit velikost fakturovaných událostí, které se na skupinu p
 union withsource=table * 
 | where _IsBillable == true 
 | parse _ResourceId with "/subscriptions/" SubscriptionId "/resourcegroups/" ResourceGroupName "/" *
-| summarize Bytes=sum(_BilledSize) by  SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by  _SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
 
 ```
 

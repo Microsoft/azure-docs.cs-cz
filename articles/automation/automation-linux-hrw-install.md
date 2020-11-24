@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9b06024b7dc25f37f75c71b822f6aeea32c3e26a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 07c04274829530942bab0e3267200f6524c4ddc7
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509061"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95793410"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -20,7 +20,7 @@ Linux Hybrid Runbook Worker spouští Runbooky jako speciálního uživatele, kt
 
 Po úspěšném nasazení služby Runbook Worker si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující.
 
@@ -40,15 +40,15 @@ Role Hybrid Runbook Worker vyžaduje, aby byl pro podporovaný operační systé
 
 ### <a name="supported-linux-operating-systems"></a>Podporované operační systémy Linux
 
-Funkce Hybrid Runbook Worker podporuje následující distribuce:
+Funkce Hybrid Runbook Worker podporuje následující distribuce. Všechny operační systémy se považují za x64. Platforma x86 není podporována pro žádný operační systém.
 
-* Amazon Linux 2012,09 až 2015,09 (x64)
-* CentOS Linux 5, 6 a 7 (x64)
-* Oracle Linux 5, 6 a 7 (x64)
-* Red Hat Enterprise Linux Server 5, 6 a 7 (x64)
-* Debian GNU/Linux 6, 7 a 8 (x64)
-* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS a 18,04 (x64)
-* SUSE Linux Enterprise Server 12 (x64)
+* Amazon Linux 2012,09 až 2015,09
+* CentOS Linux 5, 6 a 7
+* Oracle Linux 5, 6 a 7
+* Red Hat Enterprise Linux Server 5, 6 a 7
+* Debian GNU/Linux 6, 7 a 8
+* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS a 18,04 LTS
+* SUSE Linux Enterprise Server 12
 
 ### <a name="minimum-requirements"></a>Minimální požadavky
 
@@ -87,11 +87,11 @@ Procesy Hybrid Runbook Worker pro Linux podporují v Azure Automation omezené s
 
 |Typ Runbooku | Podporováno |
 |-------------|-----------|
-|Python 2 |Ano |
+|Python 2 |Yes |
 |PowerShell |Ano<sup>1</sup> |
-|Pracovní postup PowerShellu |Ne |
-|Grafický |Ne |
-|Grafický pracovní postup PowerShellu |Ne |
+|Pracovní postup PowerShellu |No |
+|Grafický |No |
+|Grafický pracovní postup PowerShellu |No |
 
 <sup>1</sup> Runbooky PowerShellu vyžadují, aby byl na počítači se systémem Linux nainstalovaný PowerShell Core. Další informace o tom, jak ji nainstalovat, najdete v tématu [instalace PowerShellu Core v systému Linux](/powershell/scripting/install/installing-powershell-core-on-linux) .
 

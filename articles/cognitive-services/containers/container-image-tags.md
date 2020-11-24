@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 11/17/2020
 ms.author: aahi
-ms.openlocfilehash: 90ac4891dbca34ff2d9bdb9653e27ad2a495b317
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 09a83c28d07540b8ecd813e7ab2f10ceee891d7a
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021248"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95792988"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Značky imagí a poznámky k verzi služby Azure Cognitive Services Container
 
@@ -52,6 +52,17 @@ Tato image kontejneru má k dispozici následující značky. Můžete také naj
 
 # <a name="latest-version"></a>[Nejnovější verze](#tab/current)
 
+Poznámky k verzi pro `3.2-preview.1` :
+
+* Nový kontejner v 3.2
+
+| Značky obrázku                    | Poznámky |
+|-------------------------------|:------|
+| `latest`                      |       |
+| `3.2-preview.1` |  |
+
+# <a name="previous-versions"></a>[Předchozí verze](#tab/previous)
+
 Poznámky k verzi pro `v2.0.013250001-amd64-preview` :
 
 * Další snížení využití paměti pro kontejner.
@@ -59,13 +70,6 @@ Poznámky k verzi pro `v2.0.013250001-amd64-preview` :
 * Opravené chybějící výsledky při nastavení Redis Cache je nastavené `ResultExpirationPeriod` na 0.
 * Omezení velikosti textu požadavku 26MB. Kontejner teď může přijímat >soubory 26MB.
 * Přidejte časové razítko a sestavte verzi do protokolování konzoly.
-
-| Značky obrázku                    | Poznámky |
-|-------------------------------|:------|
-| `latest`                      |       |
-| `2.0.013250001-amd64-preview` |  |
-
-# <a name="previous-versions"></a>[Předchozí verze](#tab/previous)
 
 Poznámky k verzi pro `1.1.013050001-amd64-preview`
 
@@ -88,6 +92,7 @@ Poznámky k verzi pro `1.1.013050001-amd64-preview`
 
 | Značky obrázku                    | Poznámky |
 |-------------------------------|:------|
+| `2.0.013250001-amd64-preview` |       |
 | `1.1.013050001-amd64-preview` |       |
 | `1.1.011580001-amd64-preview` |       |
 | `1.1.009920003-amd64-preview` |       |

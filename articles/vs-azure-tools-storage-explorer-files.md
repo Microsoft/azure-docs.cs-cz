@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 1b76413bb78baa211fee3aebe37075188ec8c69e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f9a828b78dc5ba6bdbc77e22daa75be4182015f0
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95531946"
+ms.locfileid: "95805699"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Použití Storage Exploreru se službou Azure File Storage
 
 Azure File Storage je služba, která nabízí sdílené složky v cloudu přes standardní protokol SMB (Server Message Block). Podporují se SMB 2.1 i SMB 3.0. S Azure File Storage můžete rychle a bez nákladných přepisů migrovat starší aplikace, které spoléhají na sdílené složky, do Azure. Službu File Storage můžete používat ke zveřejňování dat pro celý svět, nebo k soukromému ukládání dat aplikací. V tomto článku se dozvíte, jak pomocí Průzkumníka služby Storage pracovat se sdílenými složkami a soubory.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
 - [Stažení a instalace Průzkumníka služby Storage](https://www.storageexplorer.com/)
 
-- [Připojení k účtu nebo službě Azure Storage](//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [Připojení k účtu nebo službě Azure Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>Vytvoření sdílené složky
 
@@ -47,7 +47,7 @@ Následující postup ukazuje vytvoření sdílené složky v Průzkumníkovi sl
 
     ![Vytvoření sdílené složky](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-1. Pod složkou **Sdílené složky** se zobrazí textové pole. Zadejte název sdílené složky. V části popisující [pravidla pojmenování sdílených složek](//azure/storage/storage-dotnet-how-to-use-blobs) najdete seznam pravidel a omezení pro pojmenování sdílených složek.
+1. Pod složkou **Sdílené složky** se zobrazí textové pole. Zadejte název sdílené složky. V části popisující [pravidla pojmenování sdílených složek](/azure/storage/storage-dotnet-how-to-use-blobs) najdete seznam pravidel a omezení pro pojmenování sdílených složek.
 
     ![Pojmenování sdílené složky](media/vs-azure-tools-storage-explorer-files/image2.png)
 
@@ -77,7 +77,7 @@ Následující postup ukazuje, jak zobrazit obsah sdílené složky v Průzkumn�
 
 ## <a name="delete-a-file-share"></a>Odstranění sdílené složky
 
-Sdílené složky můžete podle potřeby snadno vytvářet a odstraňovat. (Chcete-li odstranit jednotlivé soubory, přečtěte si část popisující [správu souborů ve sdílené složce](//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
+Sdílené složky můžete podle potřeby snadno vytvářet a odstraňovat. (Chcete-li odstranit jednotlivé soubory, přečtěte si část popisující [správu souborů ve sdílené složce](/azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
 
 Následující postup ukazuje odstranění sdílené složky v Průzkumníkovi služby Storage:
 
@@ -97,7 +97,7 @@ Následující postup ukazuje odstranění sdílené složky v Průzkumníkovi s
 
 ## <a name="copy-a-file-share"></a>Kopírování sdílené složky
 
-Průzkumník služby Storage umožňuje zkopírování sdílené složky do schránky a následné vložení této sdílené složky do jiného účtu úložiště. (Chcete-li kopírovat jednotlivé soubory, přečtěte si část popisující [správu souborů ve sdílené složce](//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
+Průzkumník služby Storage umožňuje zkopírování sdílené složky do schránky a následné vložení této sdílené složky do jiného účtu úložiště. (Chcete-li kopírovat jednotlivé soubory, přečtěte si část popisující [správu souborů ve sdílené složce](/azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
 
 Následující postup ukazuje kopírování sdílené složky z jednoho účtu úložiště do jiného.
 
@@ -117,7 +117,7 @@ Následující postup ukazuje kopírování sdílené složky z jednoho účtu �
 
 ## <a name="get-the-sas-for-a-file-share"></a>Získání sdíleného přístupového podpisu (SAS) pro sdílenou složku
 
-[Sdílený přístupový podpis (SAS)](//azure/storage/storage-dotnet-shared-access-signature-part-1) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. To znamená, že můžete klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po stanovené časové období a s konkrétní sadou oprávnění, aniž byste museli sdílet přístupové klíče vašeho účtu.
+[Sdílený přístupový podpis (SAS)](/azure/storage/storage-dotnet-shared-access-signature-part-1) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. To znamená, že můžete klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po stanovené časové období a s konkrétní sadou oprávnění, aniž byste museli sdílet přístupové klíče vašeho účtu.
 
 Následující postup ukazuje vytvoření sdíleného přístupového podpisu pro sdílenou složku:
 

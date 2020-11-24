@@ -1,20 +1,19 @@
 ---
-title: Odkaz syntaxe SQLRuleAction v Azure Service Bus
-description: Tento článek poskytuje referenci pro SQLRuleAction syntax. Akce jsou napsány v syntaxi založené na jazyku SQL, která je provedena proti zprostředkované zprávě.
+title: Azure Service Bus syntaxe akce SQL pravidla předplatného | Microsoft Docs
+description: Tento článek poskytuje referenci pro syntaxi akce pravidla SQL. Akce jsou napsány v syntaxi založené na jazyku SQL, která je provedena proti zprávě.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: a156a9d8f18a7763f03c63b56681fa25ce6de289
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341586"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808841"
 ---
-# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Reference syntaxe SQLRuleAction pro Azure Service Bus
+# <a name="subscription-rule-sql-action-syntax"></a>Syntaxe akce SQL pravidla předplatného
 
-*SqlRuleAction* je instancí třídy [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) a představuje sadu akcí napsaných v SYNTAXI založené na jazyce SQL, která se provádí proti [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).   
+*Akce SQL* slouží k manipulaci s metadaty zprávy poté, co byla vybrána zpráva pomocí filtru pravidla předplatného. Jedná se o textový výraz, který se zachází na podmnožinu standardu SQL-92. Výrazy akce se používají s `sqlExpression` prvkem vlastnosti ' Action ' Service Bus `Rule` v [šabloně Azure Resource Manager](service-bus-resource-manager-namespace-topic-with-rule.md)nebo v `az servicebus topic subscription rule create` argumentu příkazu rozhraní příkazového řádku Azure CLI [`--action-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) a několika funkcemi sady SDK, které umožňují správu pravidel předplatného.
   
-V tomto článku jsou uvedeny podrobnosti o gramatické akci pravidla SQL.  
   
 ```  
 <statements> ::=
@@ -52,7 +51,7 @@ V tomto článku jsou uvedeny podrobnosti o gramatické akci pravidla SQL.
     [<scope> .] <property_name>
 ``` 
   
-## <a name="arguments"></a>Argumenty  
+## <a name="arguments"></a>Arguments  
   
 -   `<scope>` je volitelný řetězec, který označuje rozsah `<property_name>` . Platné hodnoty jsou `sys` nebo `user` . `sys`Hodnota označuje rozsah systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` označuje obor uživatele, kde `<property_name>` je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user` Obor je výchozím rozsahem, pokud není `<scope>` zadán.  
   
@@ -72,7 +71,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ```  
   
-### <a name="arguments"></a>Argumenty  
+### <a name="arguments"></a>Arguments  
  `<regular_identifier>` je řetězec reprezentovaný následujícím regulárním výrazem:  
   
 ```  
@@ -136,7 +135,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
       <integer_constant> | <decimal_constant> | <approximate_number_constant> | <boolean_constant> | NULL  
 ```  
   
-### <a name="arguments"></a>Argumenty  
+### <a name="arguments"></a>Arguments  
   
 -   `<integer_constant>` je řetězec čísel, který není uzavřen v uvozovkách a neobsahuje desetinná místa. Hodnoty se ukládají jako `System.Int64` interně a používají stejný rozsah.  
   
@@ -200,7 +199,7 @@ Logické konstanty jsou reprezentovány klíčovými slovy `TRUE` nebo `FALSE` .
   
 `property(name)`Funkce vrátí hodnotu vlastnosti, na kterou odkazuje `name` . `name`Hodnotou může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
   
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 - SADA se používá k vytvoření nové vlastnosti nebo aktualizaci hodnoty existující vlastnosti.
 - K odebrání vlastnosti se používá odebrání.
@@ -211,5 +210,9 @@ Logické konstanty jsou reprezentovány klíčovými slovy `TRUE` nebo `FALSE` .
 
 ## <a name="next-steps"></a>Další kroky
 
-- [SQLRuleAction – třída](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-- [SQLFilter – třída](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLRuleAction – třída (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SQLRuleAction – třída (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
+- [SqlRuleAction – třída (Java)](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
+- [SqlRuleAction (JavaScript)](/javascript/api/@azure/service-bus/sqlruleaction)
+- [AZ ServiceBus téma Subscription Rule](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

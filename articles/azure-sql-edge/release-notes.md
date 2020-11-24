@@ -9,17 +9,32 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 09/22/2020
-ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.date: 11/24/2020
+ms.openlocfilehash: bb0c176ee8c145e1268827d79b453628e6f1bc28
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395032"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808623"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Poznámky k verzi Azure SQL Edge 
 
 Tento článek popisuje, co je nového a co se změnilo u každého nového buildu Azure SQL Edge.
+
+## <a name="azure-sql-edge---101"></a>Azure SQL Edge – 1.0.1
+
+### <a name="sql-engine-build-number---15020001553"></a>Číslo sestavení pro modul SQL Engine – 15.0.2000.1553
+
+### <a name="whats-new"></a>Co je nového?
+
+- Povolí výraz Datebucket definovaný v počítaných sloupcích.
+
+### <a name="fixes"></a>Opravy
+
+- Oprava zásady uchovávání informací pro vyřazení tabulky se zapnutými zásadami uchovávání informací
+- Podpora v nasazení DacFx pro funkce pro streamování a uchovávání zásad 
+- Oprava nasazení DacFx pro povolení nasazení z vnořené složky v adrese URL SAS 
+- Předpovědět opravu pro podporu dlouhých názvů sloupců v chybových zprávách
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge – 1.0.0 (RTM)
 

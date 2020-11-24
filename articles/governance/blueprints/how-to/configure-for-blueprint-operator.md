@@ -1,14 +1,14 @@
 ---
 title: Nastavení prostředí pro operátor podrobného plánu
 description: Přečtěte si, jak nakonfigurovat prostředí Azure pro použití s integrovanou rolí operátora podrobného plánu Azure.
-ms.date: 08/27/2020
+ms.date: 11/24/2020
 ms.topic: how-to
-ms.openlocfilehash: ae881ac6d0714401f8c80e880b4d288f594b7cf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db8450516feab2fae4136f549959a29b006059aa
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535777"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95804923"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Konfigurace prostředí pro operátora podrobného plánu
 
@@ -30,9 +30,11 @@ Definice podrobného plánu může používat spravované identity přiřazené 
 
 1. [Vytvoření spravované identity přiřazené uživatelem](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) pro použití přiřazeným podrobným plánem
 
+1. Udělte uživatelsky přiřazené spravované identitě jakékoli role nebo oprávnění, které vyžaduje definice podrobného plánu pro zamýšlený rozsah.
+
 1. [Přidejte přiřazení role](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) **spravovaného operátoru identity** k účtu nebo skupině zabezpečení. Určení rozsahu přiřazení role k nové uživatelsky přiřazené spravované identitě.
 
-1. Jako **operátor**podrobného plánu [přiřaďte podrobný plán](../create-blueprint-portal.md#assign-a-blueprint) , který používá novou spravovanou identitu přiřazenou uživatelem.
+1. Jako **operátor** podrobného plánu [přiřaďte podrobný plán](../create-blueprint-portal.md#assign-a-blueprint) , který používá novou spravovanou identitu přiřazenou uživatelem.
 
 ## <a name="next-steps"></a>Další kroky
 

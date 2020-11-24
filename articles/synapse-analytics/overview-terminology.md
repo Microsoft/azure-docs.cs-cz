@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4d69c1d69de63dc0d4c3c8f8e46e73f9efc72933
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 20e635d606676a526fac4c3720931525beb66876
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95244714"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95790408"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Terminologie Azure synapse Analytics
 
@@ -43,14 +43,20 @@ Pracovní prostor může obsahovat libovolný počet **propojených služeb**, v
 
 Pokud chcete používat Spark Analytics, vytvořte a používejte **fondy Apache Spark bez serveru** v pracovním prostoru synapse.
 
-* **Apache Spark pro synapse** -Spark používaný ve fondu Spark bez serveru. Aktuální podporovaná verze je Spark 2,4 s Pythonem 3.6.1, Scala 2.11.12, podpora rozhraní .NET pro Apache Spark 0,5 a rozdílový Lake 0,3.  
 * **Fond Apache Spark** – zřízené prostředky od 0 do N Spark s odpovídajícími databázemi se dají nasadit v pracovním prostoru. Fond Spark se dá automaticky pozastavit, obnovit a škálovat.  
 * **Aplikace Spark** – skládá se z procesu ovladače a sady procesů prováděcího modulu. Aplikace Spark běží na fondu Spark bez serveru.            
 * **Relace Spark**– sjednocený vstupní bod aplikace Spark Poskytuje způsob, jak pracovat s různými funkcemi Sparku a s menším počtem konstrukcí. Chcete-li spustit Poznámkový blok, je třeba vytvořit relaci. Relaci lze nakonfigurovat tak, aby běžela na určitém počtu prováděcích modulů určité velikosti. Výchozí konfigurace pro relaci poznámkového bloku se spouští ve dvou prováděcích modulech střední velikosti.
 * Interaktivní a reaktivované datové vědy a inženýrské **prostředí s podporou** Scala, PySpark, C# a SparkSQL.
 * **Definice úlohy** Spark – rozhraní pro odeslání úlohy Sparku pomocí sestavení jar obsahujícího kód a jeho závislosti.
 
-## <a name="pipelines"></a>Kanály
+Podpora verzí:
+* Spark 2,4
+* Python 3.6.1
+* Scala 2.11.12
+* .NET pro Apache Spark 1,0
+* Rozdílový Lake 0,3.  
+
+## <a name="pipelines"></a>Pipelines
 
 * **Integrace dat** – poskytuje možnost ingestovat data mezi různými zdroji a orchestrovat aktivity běžící v rámci pracovního prostoru nebo mimo pracovní prostor.
 * **Tok dat** – poskytuje plně vizuální prostředí bez nutnosti kódování, které by vyžadovalo transformaci velkých objemů dat. Veškerá optimalizace a provádění jsou zpracovávána způsobem bez serveru.

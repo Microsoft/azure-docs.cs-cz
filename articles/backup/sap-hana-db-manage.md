@@ -3,12 +3,12 @@ title: Správa zálohovaných SAP HANA databází na virtuálních počítačíc
 description: V tomto článku se seznámíte s běžnými úlohami při správě a monitorování SAP HANAch databází, které běží na virtuálních počítačích Azure.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e257aa7771f6f76a4d53f16255c2f3cbb80c8967
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c8dc80c7b48217e40d5325b75752e21174ecaae
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377450"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95811953"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Správa a monitorování zálohovaných databází SAP HANA
 
@@ -32,7 +32,7 @@ Další informace o monitorování najdete [v části monitorování v Azure Por
 
 Výstrahy představují snadný způsob, jak monitorovat zálohy databází SAP HANA. Výstrahy vám pomůžou soustředit se na události, které vás zajímají, aniž byste se museli ztratit v mnoha událostech, které zálohování vygeneruje. Azure Backup vám umožní nastavit upozornění a můžou se monitorovat takto:
 
-* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+* Přihlaste se na [Azure Portal](https://portal.azure.com/).
 * Na řídicím panelu trezoru vyberte **výstrahy zálohování**.
 
   ![Výstrahy zálohování na řídicím panelu trezoru](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -62,8 +62,8 @@ Azure Backup usnadňuje správu zálohovaných SAP HANA databáze díky četnost
 Zálohy se spouštějí v souladu s plánem zásad. Zálohu můžete spustit na vyžádání následujícím způsobem:
 
 1. V nabídce trezoru vyberte **zálohované položky**.
-2. V části **zálohované položky**vyberte virtuální počítač, na kterém běží databáze SAP HANA, a pak vyberte **Zálohovat nyní**.
-3. V části **Zálohovat nyní**vyberte typ zálohy, kterou chcete provést. Pak vyberte **OK**. Tato záloha se zachová v závislosti na zásadách přidružených k této zálohované položce.
+2. V části **zálohované položky** vyberte virtuální počítač, na kterém běží databáze SAP HANA, a pak vyberte **Zálohovat nyní**.
+3. V části **Zálohovat nyní** vyberte typ zálohy, kterou chcete provést. Pak vyberte **OK**. Tato záloha se zachová v závislosti na zásadách přidružených k této zálohované položce.
 4. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy zálohování**  >  **In progress**. V závislosti na velikosti databáze může vytváření prvotní zálohy chvíli trvat.
 
 Ve výchozím nastavení je uchovávání záloh na vyžádání 45 dní.
@@ -86,20 +86,39 @@ Tyto zálohy na vyžádání se zobrazí také v seznamu bodů obnovení pro obn
 
 Obnovení spouštěné z nativních klientů HANA (pomocí **Backint**) pro obnovení na stejný počítač se dá [monitorovat](#monitor-manual-backup-jobs-in-the-portal) na stránce **úlohy zálohování** .
 
-### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Spustit SAP HANA zálohování nativního klienta na databázi s povoleným Azure Backup
+### <a name="run-sap-hana-native-client-backup-to-local-disk-on-a-database-with-azure-backup-enabled"></a>Spustit SAP HANA zálohování nativního klienta na místní disk v databázi s povoleným Azure Backup
 
 Pokud chcete použít místní zálohu (pomocí HANA Studio/řídicího panelu) databáze, která se zálohuje pomocí Azure Backup, udělejte toto:
 
 1. Počkejte na dokončení všech úplných záloh nebo zálohování protokolů databáze. Podívejte se na stav v SAP HANA studiu nebo řídicím panelu.
-2. Zakažte zálohování protokolů a nastavte Katalog zálohování na systém souborů pro příslušnou databázi.
-3. Provedete to tak, že dvakrát kliknete na konfigurace **SystemDB**  >  **Configuration**  >  **vybrat databázový**  >  **filtr (protokol)**.
-4. Nastavte **enable_auto_log_backup** na **ne**.
-5. Nastavte **log_backup_using_backint** na **false**.
-6. Proveďte úplné zálohování databáze na vyžádání.
-7. Počkejte na dokončení úplného zálohování a zálohování katalogu.
-8. Vrátí předchozí nastavení zpátky do těch pro Azure:
-   * Nastavte **enable_auto_log_backup** na **Ano**.
-   * Nastavte **log_backup_using_backint** na **hodnotu true**.
+2. pro příslušnou databázi
+    1. Zrušte nastavení parametrů backint. Provedete to tak, že dvakrát kliknete na konfigurace **SystemDB**  >  **Configuration**  >  **vybrat databázový**  >  **filtr (protokol)**.
+        * enable_auto_log_backup: ne
+        * log_backup_using_backint: false
+        * catalog_backup_using_backint: false
+3. Pořídit úplnou zálohu databáze na vyžádání
+4. Pak převratte postup. Pro stejné relevantní databáze uvedené výše
+    1. opětovné povolení parametrů backint
+        1. catalog_backup_using_backint: true
+        1. log_backup_using_backint: true
+        1. enable_auto_log_backup: Ano
+
+### <a name="manage-or-clean-up-the-hana-catalog-for-a-database-with-azure-backup-enabled"></a>Správa nebo vyčištění katalogu HANA pro databázi s povoleným Azure Backup
+
+Pokud chcete katalog záloh upravit nebo vyčistit, postupujte následovně:
+
+1. Počkejte na dokončení všech úplných záloh nebo zálohování protokolů databáze. Podívejte se na stav v SAP HANA studiu nebo řídicím panelu.
+2. pro příslušnou databázi
+    1. Zrušte nastavení parametrů backint. Provedete to tak, že dvakrát kliknete na konfigurace **SystemDB**  >  **Configuration**  >  **vybrat databázový**  >  **filtr (protokol)**.
+        * enable_auto_log_backup: ne
+        * log_backup_using_backint: false
+        * catalog_backup_using_backint: false
+3. Upravit katalog a odebrat starší položky
+4. Pak převratte postup. Pro stejné relevantní databáze uvedené výše
+    1. opětovné povolení parametrů backint
+        1. catalog_backup_using_backint: true
+        1. log_backup_using_backint: true
+        1. enable_auto_log_backup: Ano
 
 ### <a name="change-policy"></a>Změnit zásady
 
@@ -122,9 +141,9 @@ U SAP HANA zálohované položky můžete změnit základní zásady.
 
   ![Zvolit zásadu z rozevíracího seznamu](./media/sap-hana-db-manage/choose-backup-policy.png)
 
-* Uložit změny
+* Uložte změny.
 
-  ![Uložit změny](./media/sap-hana-db-manage/save-changes.png)
+  ![Uložte změny.](./media/sap-hana-db-manage/save-changes.png)
 
 * Změna zásad ovlivní všechny přidružené zálohované položky a spustí odpovídající úlohy **Konfigurace ochrany** .
 
@@ -146,7 +165,7 @@ U SAP HANA zálohované položky můžete změnit základní zásady.
 
 1. Vyberte **Upravit**.
 
-   ![Vybrat upravit](./media/sap-hana-db-manage/modify-policy.png)
+   ![Vyberte Upravit.](./media/sap-hana-db-manage/modify-policy.png)
 
 1. Vyberte frekvenci pro typy zálohování.
 
@@ -180,7 +199,7 @@ Pokud se rozhodnete zachovat body obnovení, mějte na paměti tyto informace:
 Zastavení ochrany databáze:
 
 * Na řídicím panelu trezoru vyberte **zálohované položky**.
-* V části **typ správy zálohování**vyberte **SAP HANA na virtuálním počítači Azure** .
+* V části **typ správy zálohování** vyberte **SAP HANA na virtuálním počítači Azure** .
 
   ![Výběr SAP HANA na virtuálním počítači Azure](./media/sap-hana-db-manage/sap-hana-azure-vm.png)
 
@@ -218,11 +237,15 @@ Naučte se, jak pokračovat v zálohování databáze SAP HANA [po upgradu z SDC
 
 Naučte se, jak pokračovat v zálohování databáze SAP HANA, jejíž [SID se po upgradu z SDC na MDC nezměnilo](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid).
 
+### <a name="upgrading-to-a-new-version-in-either-sdc-or-mdc"></a>Upgrade na novou verzi buď v SDC nebo MDC
+
+Naučte se, jak pokračovat v zálohování databáze SAP HANA, [jejíž verze se upgraduje](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm).
+
 ### <a name="unregister-an-sap-hana-instance"></a>Zrušení registrace instance SAP HANA
 
 Zrušení registrace instance SAP HANA po zakázání ochrany, ale před odstraněním trezoru:
 
-* Na řídicím panelu trezoru v části **Spravovat**vyberte **infrastruktura zálohování**.
+* Na řídicím panelu trezoru v části **Spravovat** vyberte **infrastruktura zálohování**.
 
    ![Výběr infrastruktury zálohování](./media/sap-hana-db-manage/backup-infrastructure.png)
 
@@ -230,7 +253,7 @@ Zrušení registrace instance SAP HANA po zakázání ochrany, ale před odstran
 
    ![Výběr typu správy zálohování jako úlohy na virtuálním počítači Azure](./media/sap-hana-db-manage/backup-management-type.png)
 
-* V části **chráněné servery**vyberte instanci, jejíž registraci chcete zrušit. Pokud chcete trezor odstranit, musíte zrušit registraci všech serverů nebo instancí.
+* V části **chráněné servery** vyberte instanci, jejíž registraci chcete zrušit. Pokud chcete trezor odstranit, musíte zrušit registraci všech serverů nebo instancí.
 
 * Klikněte pravým tlačítkem na chráněnou instanci a vyberte zrušit **registraci**.
 

@@ -1,22 +1,23 @@
 ---
-title: Reference k syntaxi Azure Service Bus SQLFilter | Microsoft Docs
-description: Tento článek poskytuje podrobné informace o SQLFilter gramatiky. SqlFilter podporuje podmnožinu standardu SQL-92.
+title: Syntaxe filtru SQL pro pravidlo předplatného Azure Service Bus | Microsoft Docs
+description: Tento článek poskytuje podrobné informace o gramatice filtru SQL. Filtr SQL podporuje podmnožinu standardu SQL-92.
 ms.topic: article
-ms.date: 11/17/2020
-ms.openlocfilehash: 7f3c744b691e678ef18c8fa721ccfaecaee9c1e2
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 11/24/2020
+ms.openlocfilehash: bd263e8177652165376d4f6fe9e231af71ebdcbe
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888466"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95805639"
 ---
-# <a name="sqlfilter-syntax"></a>Syntaxe SQLFilter
+# <a name="subscription-rule-sql-filter-syntax"></a>Syntaxe filtru SQL pravidla předplatného
 
-Objekt *SqlFilter* je instancí [třídy SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)a představuje výraz filtru založený na jazyce SQL, který je vyhodnocován proti [`BrokeredMessage`](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . SqlFilter podporuje podmnožinu standardu SQL-92.  
+*Filtr SQL* je jedním z dostupných typů filtrů pro Service Bus odběry tématu. Jedná se o textový výraz, který se zachází na podmnožinu standardu SQL-92. Výrazy filtru se používají s `sqlExpression` prvkem vlastnosti sqlFilter Service Bus `Rule` v [šabloně Azure Resource Manager](service-bus-resource-manager-namespace-topic-with-rule.md)nebo v `az servicebus topic subscription rule create` argumentu příkazu Azure CLI [`--filter-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) a několika funkcemi sady SDK, které umožňují správu pravidel předplatného.
+
+Service Bus Premium také podporuje [syntaxi selektoru zpráv SQL JMS](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) prostřednictvím rozhraní JMS 2,0 API.
+
   
- V tomto tématu jsou uvedeny podrobnosti o gramatice SqlFilter.  
-  
-```  
+``` 
 <predicate ::=  
       { NOT <predicate> }  
       | <predicate> AND <predicate>  
@@ -196,7 +197,7 @@ Logické konstanty jsou reprezentovány klíčovými slovy **true** nebo **false
   
 `property(name)`Funkce vrátí hodnotu vlastnosti, na kterou odkazuje `name` . `name`Hodnotou může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
   
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
   
 Vezměte v úvahu následující sémantiku [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) :  
   
@@ -324,4 +325,7 @@ Ukázku pro C# najdete v tématu [ukázky filtrů témat na GitHubu](https://git
 
 - [SQLFilter – třída (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter – třída (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SQLRuleAction – třída](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SqlFilter – třída (Java)](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
+- [SqlRuleFilter (JavaScript)](/javascript/api/@azure/service-bus/sqlrulefilter)
+- [AZ ServiceBus téma Subscription Rule](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

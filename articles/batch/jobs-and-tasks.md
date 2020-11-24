@@ -2,13 +2,13 @@
 title: Úlohy a úlohy v Azure Batch
 description: Přečtěte si o úlohách a úlohách a způsobu jejich použití v Azure Batchovém pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 5120b76f34e81c2ceeba88767a656b5ee0d40c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/23/2020
+ms.openlocfilehash: e1ca721ec7527d9d042c129c22cf0266e57c32e9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85955365"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808594"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Úlohy a úlohy v Azure Batch
 
@@ -18,15 +18,17 @@ V Azure Batch *úkol* představuje jednotku výpočtu. *Úloha* je kolekcí těc
 
 Úloha je kolekce úkolů. Řídí, jak se provádí výpočet pomocí jejích úkolů na výpočetních uzlech ve fondu.
 
-Úloha Určuje [fond](nodes-and-pools.md#pools) , ve kterém má být práce spuštěna. Můžete vytvořit nový fond pro každou úlohu nebo použít jeden fond pro mnoho úloh. Můžete vytvořit fond pro každou úlohu, která je přidružená k plánu úlohy, nebo pro všechny úlohy, které jsou spojeny s plánem úlohy.
+Úloha Určuje [fond](nodes-and-pools.md#pools) , ve kterém má být práce spuštěna. Můžete vytvořit nový fond pro každou úlohu nebo použít jeden fond pro mnoho úloh. Můžete vytvořit fond pro každou úlohu, která je přidružená k [plánu úlohy](#scheduled-jobs), nebo jeden fond pro všechny úlohy, které jsou přidružené k plánu úlohy.
 
 ### <a name="job-priority"></a>Priorita úloh
 
-Úlohám, které vytvoříte, můžete přiřadit volitelnou prioritu úlohy. Hodnotu priority úlohy používá služba Batch k určení pořadí úlohy v rámci účtu (nezaměňovat s [naplánovanou úlohou](#scheduled-jobs)). Hodnoty priority se pohybují v rozsahu -1000 až 1000, kdy -1000 znamená nejnižší prioritu a 1000 nejvyšší. Prioritu úlohy je možné aktualizovat zavoláním operace [Aktualizovat vlastnosti úlohy](/rest/api/batchservice/job/update) (Batch REST) nebo úpravou vlastnosti [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) (Batch .NET).
+Úlohám, které vytvoříte, můžete přiřadit volitelnou prioritu úlohy. Služba Batch používá hodnotu priority úlohy k určení pořadí plánování (pro všechny úlohy v rámci úlohy) wtihin každý fond.
 
-V rámci stejného účtu mají úlohy s vyšší prioritou přednost při plánování před úlohami s nižší prioritou. Úloha s vyšší hodnotou priority v jednom účtu nemá přednost při plánování před jinou úlohou s nižší hodnotou priority v jiném účtu. Úkoly v rámci úloh s nižší prioritou, které jsou již spuštěny, se neruší.
+Chcete-li aktualizovat prioritu úlohy, zavolejte [aktualizaci vlastností operace úlohy](/rest/api/batchservice/job/update) (Batch REST) nebo upravte [vlastnosti cloudjob. priority](/dotnet/api/microsoft.azure.batch.cloudjob) (Batch .NET). Hodnoty priority jsou v rozsahu od-1000 (nejnižší priorita) do 1000 (nejvyšší priorita).
 
-Plánování úloh mezi fondy je nezávislé. Mezi různými fondy není zaručeno, že úloha s vyšší prioritou je naplánována jako první, pokud její přidružený fond nemá dostatek nečinných uzlů. Ve stejném fondu mají úlohy se stejnou úrovní priority stejnou šanci být naplánované.
+V rámci stejného fondu mají úlohy s vyšší prioritou přednost plánování před úlohami s nižší prioritou. Úlohy v úlohách s nižší prioritou, které jsou již spuštěny, nebudou přerušeny úlohami v úloze s vyšší prioritou. Úlohy se stejnou úrovní priority mají stejnou pravděpodobnost, že se naplánuje, a pořadí provádění úkolů není definované.
+
+Úloha s hodnotou s vysokou prioritou spuštěnou v jednom fondu nebude mít vliv na plánování úloh spuštěných v samostatném fondu nebo v jiném účtu Batch. Priorita úlohy se nevztahuje na [autofondy](nodes-and-pools.md#autopools), které jsou vytvořeny při odeslání úlohy.
 
 ### <a name="job-constraints"></a>Omezení úlohy
 
@@ -39,9 +41,9 @@ Můžete použít omezení úlohy k zadání určitých omezení pro úlohy.
 
 Klientská aplikace si může přidat úkoly do úlohy, nebo můžete zadat [úkol správce úloh](#job-manager-task). Úkol správce úloh obsahuje informace potřebné k vytvoření požadovaných úkolů pro úlohu, přičemž úkol správce úloh běží na jednom výpočetním uzlu v rámci fondu. Úkol správce úloh je zpracováván konkrétně dávkou. je zařazená do fronty, jakmile se úloha vytvoří a restartuje se, pokud se nezdařila. Úkol správce úloh je vyžadován pro úlohy, které jsou vytvořeny [plánem úlohy](#scheduled-jobs), protože se jedná o jediný způsob, jak definovat úkoly před vytvořením instance úlohy.
 
-Ve výchozím nastavení zůstanou úlohy v aktivním stavu po dokončení všech úkolů v rámci úlohy. Toto chování můžete změnit tak, aby se úlohy automaticky ukončily po dokončení všech úkolů v úloze. Pokud chcete automaticky ukončovat úlohy poté, co všechny jejich úkoly budou v dokončeném stavu, nastavte vlastnost úlohy **onAllTasksComplete** ([OnAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob) v Batch .NET) na *terminatejob*.
+Ve výchozím nastavení zůstanou úlohy v aktivním stavu po dokončení všech úkolů v rámci úlohy. Toto chování můžete změnit tak, aby se úlohy automaticky ukončily po dokončení všech úkolů v úloze. Nastavte vlastnost **onAllTasksComplete** úlohy ([onAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob) v dávce .NET) na `terminatejob` * pro automatické ukončení úlohy, když jsou všechny její úkoly v dokončeném stavu.
 
-Služba Batch posuzuje úlohu, která nemá *žádné* úkoly na dokončení všech jejích úkolů. Tato možnost se proto nejčastěji používá pro [úkoly správce úloh](#job-manager-task). Pokud chcete použít automatické ukončování úloh bez správce úloh, měli byste na začátku nastavit pro novou úlohu vlastnost **onAllTasksComplete** na *noaction* a na hodnotu *terminatejob* ji nastavit až poté, až dokončíte přidávání úkolů do úlohy.
+Služba Batch posuzuje úlohu, která nemá *žádné* úkoly na dokončení všech jejích úkolů. Tato možnost se proto nejčastěji používá pro [úkoly správce úloh](#job-manager-task). Pokud chcete použít automatické ukončení úlohy bez Správce úloh, měli byste nejprve nastavit vlastnost **onAllTasksComplete** nové úlohy na hodnotu `noaction` a potom ji nastavit na hodnotu `terminatejob` * až po dokončení přidávání úkolů do úlohy.
 
 ### <a name="scheduled-jobs"></a>Naplánované úlohy
 

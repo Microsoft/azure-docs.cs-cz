@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
-ms.openlocfilehash: b5ae68dea228e834b2449152bd3ef357f2a74e83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff1f80641dc3db1f6b69fc0223c60022f8cf8435
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069488"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95811629"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavení mapování sítě a přidělování IP adres pro virtuální sítě
 
@@ -26,11 +26,11 @@ Předtím, než budete mapovat sítě, byste měli mít [Azure virtuální sít�
 
 Mapujte sítě následujícím způsobem:
 
-1. V **Site Recovery infrastruktuře**klikněte na **+ mapování sítě**.
+1. V **Site Recovery infrastruktuře** klikněte na **+ mapování sítě**.
 
     ![ Vytvoření mapování sítě](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 
-3. V části **Přidat mapování sítě**vyberte zdrojové a cílové umístění. V našem příkladu je zdrojový virtuální počítač spuštěný v oblasti Východní Asie a replikuje se do oblasti jihovýchodní Asie.
+3. V části **Přidat mapování sítě** vyberte zdrojové a cílové umístění. V našem příkladu je zdrojový virtuální počítač spuštěný v oblasti Východní Asie a replikuje se do oblasti jihovýchodní Asie.
 
     ![Vybrat zdroj a cíl](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 3. Nyní vytvořte mapování sítě v opačném směru. V našem příkladu bude zdroj teď jihovýchodní Asie a cíl bude Východní Asie.
@@ -85,7 +85,7 @@ Jiný adresní prostor | Následující dostupná IP adresa v cílové podsíti 
 **Cílová síť** | **Podrobnosti**
 --- | ---
 Cílová síť je virtuální síť převzetí služeb při selhání. | -Cílová IP adresa bude statická se stejnou IP adresou. <br/><br/>  – Pokud je stejná IP adresa už přiřazená, pak je tato IP adresa další dostupnou na konci rozsahu podsítě. Příklad: Pokud je zdrojová IP adresa 10.0.0.19 a převzetí služeb při selhání používá rozsah 10.0.0.0/24, pak je 10.0.0.254 další IP adresa přiřazená k cílovému virtuálnímu počítači.
-Cílová síť není virtuální síť převzetí služeb při selhání. | -Cílová IP adresa bude statická se stejnou IP adresou.<br/><br/>  – Pokud je stejná IP adresa už přiřazená, pak je tato IP adresa další dostupnou na konci rozsahu podsítě.<br/><br/> Příklad: Pokud je zdrojová statická IP adresa 10.0.0.19 a převzetí služeb při selhání je v síti, která není síť s podporou převzetí služeb při selhání, s rozsahem 10.0.0.0/24, pak bude cílová statická IP adresa 10.0.0.0.19, pokud bude k dispozici, a jinak bude 10.0.0.254.
+Cílová síť není virtuální síť převzetí služeb při selhání. | -Cílová IP adresa bude statická se stejnou IP adresou.<br/><br/>  – Pokud je stejná IP adresa už přiřazená, pak je tato IP adresa další dostupnou na konci rozsahu podsítě.<br/><br/> Příklad: Pokud je zdrojová statická IP adresa 10.0.0.19 a převzetí služeb při selhání je v síti, která není síť s podporou převzetí služeb při selhání, s rozsahem 10.0.0.0/24, pak bude cílová statická IP adresa 10.0.0.19, pokud bude k dispozici, a jinak bude 10.0.0.254.
 
 - Virtuální síť převzetí služeb při selhání je cílová síť, kterou vyberete při nastavování zotavení po havárii.
 - Pro testovací převzetí služeb při selhání doporučujeme vždycky používat neprodukční síť.

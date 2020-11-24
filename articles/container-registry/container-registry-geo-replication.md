@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: a26a3a0902b76359dc7441d97fa2516989ec7f0b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486868"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810051"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace v Azure Container Registry
 
@@ -18,9 +18,9 @@ Společnosti, které chtějí místní přítomnost, nebo horkou zálohu, se roz
 
 Geograficky replikovaný registr nabízí tyto výhody:
 
-* V několika oblastech se dá použít jediný název registru, image nebo značky.
-* Přístup k registru v blízkosti sítě z místních nasazení
-* Žádné další poplatky za výchozí provoz, protože se image načítají z místního replikovaného registru ve stejné oblasti jako hostitel kontejneru
+* V několika oblastech se dá použít jeden registr, obrázek a názvy značek.
+* Zvýšení výkonu a spolehlivosti regionálních nasazení s přístupem k registru pro ukončení sítě
+* Snížení nákladů na přenos dat pomocí vrstev imagí z místního, replikovaného registru ve stejné nebo blízké oblasti jako hostitele kontejneru
 * Jedna správa registru mezi různými oblastmi
 
 > [!NOTE]
@@ -57,7 +57,8 @@ Pomocí funkce geografické replikace Azure Container Registry jsou tyto výhody
 
 * Správa jednoho registru ve všech oblastech: `contoso.azurecr.io`
 * Spravujte jednu konfiguraci nasazení imagí, protože všechny oblasti používají stejnou adresu URL obrázku: `contoso.azurecr.io/public/products/web:1.2`
-* Doručovat do jednoho registru, zatímco ACR spravuje geografickou replikaci. Místní [Webhooky](container-registry-webhook.md) můžete nakonfigurovat tak, aby vás upozornily na události v určitých replikách.
+* Doručovat do jednoho registru, zatímco ACR spravuje geografickou replikaci. ACR replikuje jenom jedinečné vrstvy, což snižuje přenos dat napříč oblastmi. 
+* Nakonfigurujte místní [Webhooky](container-registry-webhook.md) , aby vás upozornily na události v konkrétních replikách.
 
 ## <a name="configure-geo-replication"></a>Konfigurace geografické replikace
 

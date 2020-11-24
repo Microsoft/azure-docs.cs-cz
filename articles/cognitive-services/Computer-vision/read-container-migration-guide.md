@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 10/23/2020
 ms.author: aahi
-ms.openlocfilehash: 1616a0149ae56de8afe0e9ab485af4bf76326d86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0ae7bb9acde3cc8552a23db12d208a82ba0fb2f3
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014607"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95800865"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrace na přečtené kontejnery OCR v3. x
 
@@ -29,11 +29,11 @@ Pokud používáte verzi 2 Počítačové zpracování obrazu čtení kontejneru
 
 ## <a name="api-changes"></a>Změny rozhraní API
 
-Kontejner Reada v 3.1 používá verzi 3 rozhraní API pro počítačové zpracování obrazu a má následující koncové body:
+Kontejner Reada v 3.2 používá verzi 3 rozhraní API pro počítačové zpracování obrazu a má následující koncové body:
 
-* `/vision/v3.1-preview.2/read/analyzeResults/{operationId}`
-* `/vision/v3.1-preview.2/read/analyze`
-* `/vision/v3.1-preview.2/read/syncAnalyze`
+* `/vision/v3.2-preview.1/read/analyzeResults/{operationId}`
+* `/vision/v3.2-preview.1/read/analyze`
+* `/vision/v3.2-preview.1/read/syncAnalyze`
 
 Podrobné informace o aktualizaci aplikací pro použití verze 3 cloudového rozhraní API pro čtení najdete v [Průvodci migrací REST API počítačové zpracování obrazu V3](./upgrade-api-versions.md) . Tyto informace platí i pro kontejner. Pamatujte, že operace synchronizace jsou podporované jenom v kontejnerech.
 
@@ -43,7 +43,7 @@ Požadavky a doporučení jsou založené na srovnávacích testech s jednou ž�
 
 |Kontejner  |Minimum | Doporučeno  |
 |---------|---------|------|
-|Přečíst 3,1 – Preview | 8 jader, 16 GB paměti         | 8 jader, 24 GB paměti |
+|Přečíst 3,2 – Preview | 8 jader, 16 GB paměti         | 8 jader, 24 GB paměti |
 
 Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 
