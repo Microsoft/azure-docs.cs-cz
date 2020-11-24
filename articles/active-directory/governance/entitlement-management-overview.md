@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/30/2020
+ms.date: 11/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: ecc25af19694c0befdd24b041807e2067db4f13b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 163947268d79a0297eef3f3f6e97187a0aef6994
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886936"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95738138"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
@@ -144,10 +144,10 @@ Specializované cloudy, jako je Azure Německo a Azure Čína 21Vianet, nejsou a
 Zajistěte, aby měl váš adresář aspoň tolik licencí Azure AD Premium P2, kolik máte:
 
 - Uživatelé členů, kteří **můžou** požádat o přístup k balíčku.
-- Členové a uživatelé typu Host, kteří <u>požadují</u> balíček pro přístup
-- Členové a uživatelé typu Host, kteří <u>schvalují žádosti</u> o přístup k balíčku.
+- Uživatelé členů, kteří <u>požadují</u> balíček pro přístup
+- Členské uživatelé, kteří <u>schvalují žádosti</u> o přístup k balíčku.
 - Uživatelé členů, kteří <u>kontrolují přiřazení</u> pro balíček přístupu 
-- Členové a uživatelé typu Host, kteří mají <u>přímé přiřazení</u> k balíčku přístupu
+- Uživatelé, kteří mají <u>přímé přiřazení</u> k balíčku přístupu
 
 Pro uživatele typu Host budou požadavky na licencování záviset na [modelu licencování](../external-identities/external-identities-pricing.md) , který používáte. Následující aktivity uživatelů typu Host se však považují za Azure AD Premium používání P2:
 - Uživatelé typu Host, kteří <u>požadují</u> balíček pro přístup 

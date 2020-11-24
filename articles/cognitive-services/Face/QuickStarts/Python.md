@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 4f747ce424e26a50aadcc84e375da230dff36fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a7812bfcbedc8307557b4fb0623cb8a72913419
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858298"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95743034"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Rychlý Start: detekce plošek v obrázku pomocí REST API obličeje a Pythonu
 
@@ -24,7 +24,7 @@ V tomto rychlém startu použijete REST API Azure Face s Pythonem k detekci lids
 
 ![Člověk a žena, každý s obdélníkem nakresleným kolem plošek a stáří a pohlaví zobrazenými na obrázku](../images/labelled-faces-python.png)
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -85,7 +85,7 @@ params = {
 }
 ```
 
-Odpověď teď obsahuje atributy obličeje. Příklad:
+Odpověď teď obsahuje atributy obličeje. Například:
 
 ```json
 [
@@ -272,3 +272,4 @@ Dále si Projděte referenční dokumentaci Face API, kde najdete další inform
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+ 

@@ -4,12 +4,12 @@ description: Automatické škálování vzorů v Azure pro Web Apps, škálován
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fdb3588833dd9bcf989e020cd1dd861c6e28f37
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327051"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95745312"
 ---
 # <a name="best-practices-for-autoscale"></a>Osvědčené postupy pro automatické škálování
 Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)a [API Management](../../api-management/api-management-key-concepts.md).
@@ -74,6 +74,9 @@ V tomto případě
 4. Pravidlo pro horizontální navýšení kapacity odhaduje konečný stav, pokud by bylo možné ho škálovat. Například 60 x 3 (aktuální počet instancí) = 180/2 (konečný počet instancí při horizontálním navýšení kapacity) = 90. Takže automatické škálování se neškáluje, protože by bylo nutné provést horizontální navýšení kapacity okamžitě. Místo toho přeskočí horizontální navýšení kapacity.
 5. Při příští kontrole automatického škálování CPU pokračuje v dosahování 50. Odhadne se znovu – 50 × 3 instance = 150/2 instance = 75, což je pod prahovou hodnotou pro horizontální na80 výšení kapacity, takže se úspěšně škáluje na 2 instance.
 
+> [!NOTE]
+> Pokud modul automatického škálování detekuje přepíná může být výsledkem škálování na cílový počet instancí, pokusí se také škálovat na jiný počet instancí mezi aktuálním počtem a cílovým počtem. Pokud k přepíná nedojde v tomto rozsahu, automatické škálování bude pokračovat v operaci škálování s novým cílem.
+
 ### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Důležité informace o prahových hodnotách škálování pro speciální metriky
  Pro speciální metriky, jako je například úložiště nebo Service Bus metrika délky fronty, je prahová hodnota průměrný počet dostupných zpráv na aktuální počet instancí. Pečlivě vyberte prahovou hodnotu pro tuto metriku.
 
@@ -115,8 +118,8 @@ Podobně když se automatické škálování přepne zpátky na výchozí profil
 
 V některých případech může být nutné nastavit více pravidel v profilu. Následující pravidla automatického škálování používá modul automatického škálování, když je nastaveno více pravidel.
 
-Při *horizontálním*navýšení kapacity se automatické škálování spustí, pokud je splněno nějaké pravidlo.
-Při *horizontálním*navýšení kapacity vyžaduje automatické škálování splnění všech pravidel.
+Při *horizontálním* navýšení kapacity se automatické škálování spustí, pokud je splněno nějaké pravidlo.
+Při *horizontálním* navýšení kapacity vyžaduje automatické škálování splnění všech pravidel.
 
 K ilustraci se předpokládá, že máte následující čtyři pravidla automatického škálování:
 
@@ -143,6 +146,8 @@ Automatické škálování bude odesílat do protokolu aktivit, pokud dojde k n�
 * Služba automatického škálování nemůže provést akci škálování.
 * Metriky nejsou k dispozici pro službu automatického škálování, aby bylo možné provést rozhodnutí o škálování.
 * Metriky jsou k dispozici (obnovení) znovu, aby bylo možné rozhodnutí škálovat.
+* Automatické škálování detekuje přepíná a přerušuje pokus o škálování. V této situaci se zobrazí typ protokolu `Flapping` . Pokud se to zobrazí, zvažte, jestli jsou vaše prahové hodnoty příliš úzké.
+* Automatické škálování detekuje přepíná, ale pořád dokáže úspěšně škálovat. V této situaci se zobrazí typ protokolu `FlappingOccurred` . Pokud se to zobrazí, modul automatického škálování se pokusil škálovat (např. ze 4 instancí na 2), ale zjistil, že by to způsobilo přepíná. Místo toho se modul automatického škálování změnil na jiný počet instancí (například pomocí 3 instancí namísto 2), který už nezpůsobuje přepíná, takže se na tento počet instancí škáluje.
 
 K monitorování stavu modulu automatického škálování můžete použít také upozornění protokolu aktivit. Tady jsou příklady, jak [vytvořit upozornění protokolu aktivit pro monitorování všech operací automatického škálování v rámci předplatného](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) nebo [Vytvoření upozornění protokolu aktivit pro monitorování všech neúspěšných škálování automatického škálování ve vašem předplatném a na horizontálním](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)navýšení kapacity.
 

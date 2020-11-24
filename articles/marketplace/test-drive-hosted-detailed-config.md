@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
-ms.openlocfilehash: 0765c05e08dda782c084775fb83b22a52558fa0d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 9e8aecfe8b16d8af755d3f4c3c71b875d4e8ec40
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491609"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751245"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Podrobná konfigurace pro hostované testovací jednotky
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak nakonfigurovat hostovaný testovací disk pro Dynam
 
     - **Typ testovací jednotky** – vyberte **Microsoft Hosted (Dynamics 365 for customer Engagement & PowerApps)**. To znamená, že Microsoft bude hostovat a udržovat službu, která provede test zřizování a zrušení zřizování uživatelů.
 
-5. Pomocí [těchto pokynů](https://github.com/Microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md)udělte Microsoft AppSource oprávnění ke zřízení a zrušení zřízení uživatelů testovacích jednotek ve vašem tenantovi. V tomto kroku vygenerujete **aplikace Azure AD ID** a aplikace Azure AD hodnoty **klíče** uvedené níže.
+5. Pomocí [těchto pokynů](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)udělte Microsoft AppSource oprávnění ke zřízení a zrušení zřízení uživatelů testovacích jednotek ve vašem tenantovi. V tomto kroku vygenerujete **aplikace Azure AD ID** a aplikace Azure AD hodnoty **klíče** uvedené níže.
 6. Vyplňte tato pole na stránce **Technická konfigurace testovacích jednotek** .
 
     [![Stránka technické konfigurace testovacích jednotek.](media/test-drive/technical-config-details.png)](media/test-drive/technical-config-details.png#lightbox)

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 366826e591ed131ca63dc94eae994773217438d1
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: af3935bab5cd4d6a2aa4a9e3250f6beec19a8ea4
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511437"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736665"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Předdefinovaný model faktury pro rozpoznávání formulářů
 
@@ -107,7 +107,8 @@ Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uved
 ## <a name="next-steps"></a>Další kroky
 
 - Vyzkoušejte si vlastní faktury a ukázky v [ukázkovém uživatelském rozhraní pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/).
-- Nebo použijte rychlý Start k [extrakci dat faktury](./QuickStarts/python-invoices.md) k implementaci extrakce dat faktury pomocí Pythonu a REST API.
+- Dokončete [rychlý Start klientské knihovny pro rozpoznávání formulářů](quickstarts/client-library.md) a začněte psát aplikaci pro zpracování faktury pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.
+- Nebo použijte rychlý Start k [extrakci dat faktury](./quickstarts/python-invoices.md) k implementaci extrakce dat faktury pomocí Pythonu a REST API.
 ## <a name="see-also"></a>Viz také
 
 * [Co je služba Rozpoznávání formulářů?](./overview.md)

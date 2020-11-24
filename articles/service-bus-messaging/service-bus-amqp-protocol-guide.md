@@ -3,12 +3,12 @@ title: AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs | Microsof
 description: Průvodce protokolem pro výrazy a popis AMQP 1,0 v Azure Service Bus a Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 32e71211ed1574cade0567f7944b154eea062b24
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: e001327c2c7da08cb9a3552f97fc9a7d8b7921a2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95396871"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736710"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs
 
@@ -42,7 +42,7 @@ Protokol AMQP 1,0 je navržený tak, aby bylo možné další specifikace pro zl
 
 V této části je vysvětleno základní použití AMQP 1,0 s Azure Service Bus, což zahrnuje vytváření připojení, relací a propojení a přenos zpráv do a z Service Bus entit, jako jsou fronty, témata a předplatná.
 
-Nejvíc směrodatná zdrojová informace o tom, jak AMQP funguje jako specifikace AMQP 1,0, ale specifikace se zapsala tak, aby přesně provedla implementaci příručky a nedokázala učit protokol. Tato část se zaměřuje na zavádění co nejvíc terminologie pro popis způsobu, jakým Service Bus používá AMQP 1,0. Pro komplexnější seznámení s AMQP a také širší diskuzi o AMQP 1,0 si můžete projít [Tento video kurz][this video course].
+Nejvíc směrodatná zdrojová informace o tom, jak AMQP funguje jako [specifikace AMQP 1,0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html), ale specifikace se zapsala tak, aby přesně provedla implementaci příručky a nedokázala učit protokol. Tato část se zaměřuje na zavádění co nejvíc terminologie pro popis způsobu, jakým Service Bus používá AMQP 1,0. Pro komplexnější seznámení s AMQP a také širší diskuzi o AMQP 1,0 si můžete projít [Tento video kurz][this video course].
 
 ### <a name="connections-and-sessions"></a>Připojení a relace
 
@@ -67,7 +67,7 @@ Relace mají model řízení toku založený na oknech; Při vytvoření relace 
 
 Tento model založený na okně je zhruba podobný konceptu řízení toku založenému na systému Windows, ale na úrovni relace uvnitř soketu. Pojem protokolu pro povolení více souběžných relací existuje, aby provoz s vysokou prioritou mohl rushed za normálním omezením provozu, jako na dálnici Lane.
 
-Azure Service Bus aktuálně používá právě jednu relaci pro každé připojení. Service Bus maximální velikost rámce je 262 144 bajtů (256-K bajtů) pro Service Bus Standard a Event Hubs. Pro Service Bus Premium je 1 048 576 (1 MB). Service Bus neobsahují žádná konkrétní okna omezování na úrovni relace, ale v rámci řízení toku na úrovni odkazů (viz [Další část](#links)) se pravidelně nastavuje okno.
+Azure Service Bus aktuálně používá právě jednu relaci pro každé připojení. Service Bus maximální velikost rámce je 262 144 bajtů (256-K bajtů) pro Service Bus Standard. Je 1 048 576 (1 MB) pro Service Bus Premium a Event Hubs. Service Bus neobsahují žádná konkrétní okna omezování na úrovni relace, ale v rámci řízení toku na úrovni odkazů (viz [Další část](#links)) se pravidelně nastavuje okno.
 
 Připojení, kanály a relace jsou dočasné. Pokud se základní připojení sbalí, připojení, tunelové propojení TLS, SASL autorizační kontext a relace musí být znovu navázány.
 
@@ -359,10 +359,10 @@ Zpráva požadavku má následující vlastnosti aplikace:
 
 | Klíč | Volitelné | Typ hodnoty | Obsah hodnoty |
 | --- | --- | --- | --- |
-| operation |Ne |řetězec |**token Put** |
-| typ |Ne |řetězec |Typ vytvářeného tokenu. |
-| name |Ne |řetězec |Cílová skupina, na kterou se vztahuje token. |
-| vypršení platnosti |Ano |časové razítko |Čas vypršení platnosti tokenu. |
+| operation |No |řetězec |**token Put** |
+| typ |No |řetězec |Typ vytvářeného tokenu. |
+| name |No |řetězec |Cílová skupina, na kterou se vztahuje token. |
+| vypršení platnosti |Yes |časové razítko |Čas vypršení platnosti tokenu. |
 
 Vlastnost *Name* určuje entitu, ke které je token přidružen. V Service Bus se jedná o cestu k frontě nebo k tématu nebo předplatnému. Vlastnost *Type* určuje typ tokenu:
 
@@ -378,8 +378,8 @@ Zpráva s odpovědí obsahuje následující hodnoty *vlastností aplikace* .
 
 | Klíč | Volitelné | Typ hodnoty | Obsah hodnoty |
 | --- | --- | --- | --- |
-| Stavový kód |Ne |int |Kód odpovědi HTTP **[RFC2616]**. |
-| Popis stavu |Ano |řetězec |Popis stavu |
+| Stavový kód |No |int |Kód odpovědi HTTP **[RFC2616]**. |
+| Popis stavu |Yes |řetězec |Popis stavu |
 
 Klient může opakovaně volat *tokeny Put* a pro každou entitu v infrastruktuře zasílání zpráv. Tokeny jsou vymezeny na aktuálního klienta a ukotveny k aktuálnímu připojení, což znamená, že server při poklesu připojení vyřazuje všechny zachované tokeny.
 

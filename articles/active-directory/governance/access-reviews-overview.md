@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 3f52b8d4e56ec854f93940ea77f09c3dff1d362e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 423a879889402d5d3df70a7fadae6451c8418238
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095998"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95743153"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co jsou kontroly přístupu Azure AD?
 
@@ -74,10 +74,18 @@ V závislosti na tom, co chcete zkontrolovat, vytvoříte kontrolu přístupu v 
 
 Váš adresář potřebuje aspoň tolik licencí Azure AD Premium P2 jako počet zaměstnanců, kteří budou provádět následující úlohy:
 
-- Členové a uživatelé typu Host, kteří jsou přiřazeni jako kontroloři
-- Členové a uživatelé typu Host, kteří provádějí samy si kontrolu
-- Vlastníci skupiny, kteří provádějí kontrolu přístupu
-- Vlastníci aplikace, kteří provádějí kontrolu přístupu
+-   Uživatelé členů, kteří jsou přiřazeni jako kontroloři
+-   Uživatelé členů, kteří provádějí kontrolu sami
+-   Uživatelé členů jako vlastníci skupiny, kteří provádějí kontrolu přístupu
+-   Uživatelé členů jako vlastníci aplikací, kteří provádějí kontrolu přístupu
+
+Pro uživatele typu Host budou požadavky na licencování záviset na modelu licencování, který používáte. Následující aktivity uživatelů typu Host se však považují za Azure AD Premium používání P2:
+
+-   Uživatelé typu Host, kteří jsou přiřazeni jako kontroloři
+-   Uživatelé typu Host, kteří provádějí kontrolu sami
+-   Uživatelé typu Host jako vlastníci skupiny, kteří provádějí kontrolu přístupu
+-   Uživatelé typu Host jako vlastníci aplikace, kteří provádějí kontrolu přístupu
+
 
 Licence Azure AD Premium P2 nejsou **vyžadovány** pro uživatele s rolemi globální správce nebo Správce uživatelů, kteří nastavili kontroly přístupu, nakonfigurují nastavení nebo použijí rozhodnutí z recenzí.
 

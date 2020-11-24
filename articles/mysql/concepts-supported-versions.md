@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: ed767055c1227d39fc29ac77a44c96b19030ad28
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8033117d9e3c31f8aa9bba06afb7c3b1b7bba67f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535856"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751024"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Podporované verze serveru Azure Database for MySQL
 
@@ -46,7 +46,7 @@ Další informace o vylepšeních a opravách v této verzi najdete v [poznámk�
 ## <a name="managing-updates-and-upgrades"></a>Správa aktualizací a upgradů
 Služba automaticky spravuje opravy pro aktualizace verze opravy chyb. Například 5.7.20 na 5.7.21.  
 
-Upgrady dílčích a hlavních verzí se v současné době nepodporují. Například upgrade z MySQL 5.6 na MySQL 5.7 se nepodporuje. Pokud chcete upgradovat z verze 5.6 na verzi 5.7, pořiďte [výpis paměti a obnovte](./concepts-migrate-dump-restore.md) ji na serveru vytvořeném s novou verzí jádra.
+Upgrade hlavní verze je aktuálně podporován službou pro upgrady z MySQL v 5.6 až v 5.7. Další podrobnosti najdete v tématu [jak provádět upgrady hlavní verze](how-to-major-version-upgrade.md). Pokud chcete upgradovat z 5,7 na 8,0, doporučujeme, abyste provedli [Výpis a obnovení](./concepts-migrate-dump-restore.md) na server, který byl vytvořen s novou verzí modulu.
 
 ## <a name="next-steps"></a>Další kroky
 

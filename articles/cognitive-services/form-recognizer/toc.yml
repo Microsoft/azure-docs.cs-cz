@@ -38,6 +38,10 @@
           items:
             - name: Python
               href: quickstarts/python-business-cards.md
+        - name: Použití předem sestaveného modelu faktur
+          items:
+            - name: Python
+              href: quickstarts/python-invoices.md
         - name: Získání informací o rozložení textu
           items:
             - name: Python
@@ -50,10 +54,14 @@
       href: tutorial-ai-builder.md
 - name: Koncepty
   items:
+    - name: Extrakce rozložení
+      href: concept-layout.md
     - name: Účtenky
       href: concept-receipts.md
     - name: Vizitky
       href: concept-business-cards.md
+    - name: Faktury
+      href: concept-invoices.md
 - name: Návody
   items:
     - name: Vytvoření trénovací sady dat
@@ -77,7 +85,7 @@
 - name: Referenční informace
   items:
     - name: Rozhraní API služby Rozpoznávání formulářů v2.1 Preview
-      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync'
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync'
     - name: Rozhraní API služby Rozpoznávání formulářů v2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: Sady SDK

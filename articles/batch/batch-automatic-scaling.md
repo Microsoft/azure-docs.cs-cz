@@ -2,14 +2,14 @@
 title: Automatické škálování výpočetních uzlů ve fondu služby Azure Batch
 description: Povolte automatické škálování v cloudovém fondu, abyste mohli dynamicky upravovat počet výpočetních uzlů ve fondu.
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 033272f22b98b27c67e9a551bce952368d35a043
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849788"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95737288"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -135,6 +135,9 @@ Hodnotu těchto proměnných definovaných službou můžete získat tak, aby by
 > [!TIP]
 > Tyto proměnné definované službou jen pro čtení jsou *objekty* , které poskytují různé metody pro přístup k datům, která jsou k nim přidružená. Další informace najdete v části [získání ukázkových dat](#obtain-sample-data) dále v tomto článku.
 
+> [!NOTE]
+> Použijte `$RunningTasks` při škálování na základě počtu úloh spuštěných v určitém časovém okamžiku a `$ActiveTasks` při škálování na základě počtu úloh, které jsou zařazeny do fronty ke spuštění.
+
 ## <a name="types"></a>Typy
 
 Vzorce automatického škálování podporují následující typy:
@@ -186,13 +189,13 @@ Tyto operace jsou povoleny u typů, které jsou uvedeny v předchozí části.
 | *operátor* TimeInterval TimeInterval |<, <=, = =, >=, >,! = |double |
 | Double – *operátor* Double |&&  &#124;&#124; |double |
 
-Při testování typu Double pomocí ternárního operátoru ( `double ? statement1 : statement2` ), nenulová hodnota je **true**a nula je **false**.
+Při testování typu Double pomocí ternárního operátoru ( `double ? statement1 : statement2` ), nenulová hodnota je **true** a nula je **false**.
 
 ## <a name="functions"></a>Funkce
 
 Při definování vzorce automatického škálování můžete použít tyto předdefinované **funkce** .
 
-| Funkce | Návratový typ | Description |
+| Funkce | Návratový typ | Popis |
 | --- | --- | --- |
 | průměr (doubleVecList) |double |Vrátí průměrnou hodnotu pro všechny hodnoty v doubleVecList. |
 | len (doubleVecList) |double |Vrátí délku vektoru, který je vytvořen z doubleVecList. |
@@ -226,7 +229,7 @@ Při definování vzorce můžete použít metriky prostředků i úloh. Cílov�
 
 <table>
   <tr>
-    <th>Metrika</th>
+    <th>Metric</th>
     <th>Popis</th>
   </tr>
   <tr>
@@ -255,7 +258,7 @@ Při definování vzorce můžete použít metriky prostředků i úloh. Cílov�
       <li>$NetworkOutBytes</li></ul></p>
   </tr>
   <tr>
-    <td><b>Úloha</b></td>
+    <td><b>Úkol</b></td>
     <td><p>Metriky úloh jsou založené na stavu úkolů, například aktivní, čeká na vyřízení a dokončeno. Následující proměnné definované službou jsou užitečné při vytváření úprav velikosti fondu na základě metrik úloh:</p>
     <p><ul>
       <li>$ActiveTasks</li>
@@ -381,7 +384,7 @@ $NodeDeallocationOption = taskcompletion;
 ```
 
 > [!NOTE]
-> Pokud se rozhodnete, můžete do řetězců vzorců zahrnout jak komentáře, tak i zalomení řádků.
+> Pokud se rozhodnete, můžete do řetězců vzorců zahrnout jak komentáře, tak i zalomení řádků. Upozorňujeme také, že chybějící středníky mohou způsobit chyby vyhodnocení.
 
 ## <a name="automatic-scaling-interval"></a>Interval automatického škálování
 
@@ -625,7 +628,7 @@ Ve službě Batch .NET má vlastnost [CloudPool. AutoScaleRun](/dotnet/api/micro
 
 V REST API vrátí informace o žádosti [o fond](/rest/api/batchservice/get-information-about-a-pool) informace o fondu, který obsahuje nejnovější informace o spuštění automatického škálování ve vlastnosti [autoScaleRun](/rest/api/batchservice/get-information-about-a-pool) .
 
-Následující příklad jazyka C# používá knihovnu Batch .NET k tisku informací o posledním spuštění automatického škálování na _myPool_fondu.
+Následující příklad jazyka C# používá knihovnu Batch .NET k tisku informací o posledním spuštění automatického škálování na _myPool_ fondu.
 
 ```csharp
 await Cloud pool = myBatchClient.PoolOperations.GetPoolAsync("myPool");

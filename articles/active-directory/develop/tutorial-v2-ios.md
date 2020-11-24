@@ -13,16 +13,16 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611108"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746723"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro iOS nebo macOS
 
-V tomto kurzu se naučíte integrovat aplikaci pro iOS nebo macOS s platformou Microsoft identity. Aplikace se přihlásí k uživateli, získá přístupový token pro volání rozhraní Microsoft Graph API a vytvoří požadavek na rozhraní Microsoft Graph API.
+V tomto kurzu vytvoříte aplikaci pro iOS nebo macOS, která se integruje s platformou Microsoft identity k podepisování uživatelů a získání přístupového tokenu pro volání rozhraní API Microsoft Graph.
 
 Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory. Tento kurz se týká aplikací pro iOS i macOS. Některé kroky se mezi těmito dvěma platformami liší.
 
@@ -63,7 +63,7 @@ Pokud chcete stáhnout dokončenou verzi aplikace, kterou jste vytvořili v tomt
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
 1. Otevřete Xcode a vyberte **vytvořit nový projekt Xcode**.
-2. V případě aplikací pro iOS **iOS**vyberte možnost  >  **aplikace s jedním zobrazením** pro iOS a vyberte **Další**.
+2. V případě aplikací pro iOS **iOS** vyberte možnost  >  **aplikace s jedním zobrazením** pro iOS a vyberte **Další**.
 3. V případě aplikací MacOS vyberte **MacOS**  >  **aplikace pro kakao** a vyberte **Další**.
 4. Zadejte název produktu.
 5. Nastavte **jazyk** na **SWIFT** a vyberte **Další**.

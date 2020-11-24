@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 4252e3a7f8c3ff9d0ec782a2a9222553c063463c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533272"
+ms.locfileid: "95736525"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
@@ -276,7 +276,7 @@ az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-grou
 ```
 
 > [!IMPORTANT]
-> S dočasným operačním systémem můžete nasadit image virtuálních počítačů a instancí až do velikosti mezipaměti virtuálních počítačů. V případě AKS používá výchozí konfigurace disku s operačním systémem Node 100GiB, což znamená, že potřebujete velikost virtuálního počítače, která má mezipaměť větší než 100 GiB. Výchozí Standard_DS2_v2 má velikost mezipaměti 86 GiB, která není dostatečně velká. Standard_DS3_v2 má velikost mezipaměti 172 GiB, která je dostatečně velká. Výchozí velikost disku s operačním systémem můžete také snížit pomocí `--node-osdisk-size` . Minimální velikost pro Image AKS je 30GiB. 
+> S dočasným operačním systémem můžete nasadit image virtuálních počítačů a instancí až do velikosti mezipaměti virtuálních počítačů. V případě AKS používá výchozí konfigurace disku s operačním systémem Node 128 GB, což znamená, že potřebujete velikost virtuálního počítače, která má mezipaměť větší než 128 GB. Výchozí Standard_DS2_v2 má velikost mezipaměti 86GB, která není dostatečně velká. Standard_DS3_v2 má velikost mezipaměti 172GB, která je dostatečně velká. Výchozí velikost disku s operačním systémem můžete také snížit pomocí `--node-osdisk-size` . Minimální velikost pro Image AKS je 30 GB. 
 
 Pokud chcete vytvořit fondy uzlů s disky s operačním systémem připojené k síti, můžete to udělat tak, že zadáte `--node-osdisk-type Managed` .
 

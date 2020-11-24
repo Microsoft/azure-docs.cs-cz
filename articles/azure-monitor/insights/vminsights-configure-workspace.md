@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d3bedfae88544d0b0ebd07868438559305279fed
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a4380ae7fdb523f8b2f5bc14fefa094b6d96e547
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530110"
+ms.locfileid: "95750520"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Konfigurace pracovního prostoru Log Analytics pro Azure Monitor pro virtuální počítače
 Azure Monitor pro virtuální počítače shromažďuje data z jednoho nebo více Log Analytics pracovních prostorů v Azure Monitor. Před registrací agentů musíte vytvořit a nakonfigurovat pracovní prostor. Tento článek popisuje požadavky pracovního prostoru a jeho konfiguraci pro Azure Monitor pro virtuální počítače.
@@ -80,7 +80,7 @@ Než bude možné použít pracovní prostor Log Analytics s Azure Monitor pro v
 ### <a name="azure-portal"></a>portál Azure
 Existují tři možnosti konfigurace stávajícího pracovního prostoru pomocí Azure Portal. Jednotlivé jsou popsány níže.
 
-Pokud chcete nakonfigurovat jeden pracovní prostor, vyberte **Další možnosti připojování** a pak **nakonfigurujte pracovní prostor**. Vyberte předplatné a pracovní prostor a pak klikněte na **Konfigurovat**.
+Pokud chcete nakonfigurovat jeden pracovní prostor, přejděte v nabídce **Azure monitor** na možnost **Virtual Machines** , vyberte **Další možnosti připojování** a pak **nakonfigurujte pracovní prostor**. Vyberte předplatné a pracovní prostor a pak klikněte na **Konfigurovat**.
 
 [![Konfigurace pracovního prostoru](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 

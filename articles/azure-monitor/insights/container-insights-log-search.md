@@ -3,12 +3,12 @@ title: Dotazování protokolů z Azure Monitor pro kontejnery | Microsoft Docs
 description: Azure Monitor pro kontejnery shromažďuje metriky a data protokolů a tento článek popisuje záznamy a obsahuje vzorové dotazy.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: a540ae828b14f231b3b327b714876550cc744a7e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 08c42fab84cb5180497f8da4f077b9bd82283ad4
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994009"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95747675"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Postup dotazování protokolů z Azure Monitor pro kontejnery
 
@@ -16,7 +16,7 @@ Azure Monitor pro kontejnery shromažďují metriky výkonu, data inventáře a 
 
 ## <a name="container-records"></a>Záznamy kontejneru
 
-V následující tabulce jsou uvedeny podrobnosti o záznamech shromažďovaných Azure Monitor pro kontejnery. 
+V následující tabulce jsou uvedeny podrobnosti o záznamech shromažďovaných Azure Monitor pro kontejnery. Seznam popisů sloupců najdete v referenčních informacích k tabulkám [ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) a [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) .
 
 | Data | Zdroj dat | Datový typ | Pole |
 |------|-------------|-----------|--------|
@@ -47,7 +47,7 @@ Výstup protokolu kontejnerů, který se předává do vašeho pracovního prost
 
 Často je užitečné vytvářet dotazy, které začínají s příkladem nebo dvěma, a pak je upravit tak, aby vyhovovaly vašim požadavkům. Pro lepší sestavování pokročilejších dotazů můžete experimentovat s následujícími ukázkovými dotazy:
 
-| Dotaz | Description | 
+| Dotaz | Popis | 
 |-------|-------------|
 | ContainerInventory<br> &#124; projektový počítač, název, obrázek, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; vykreslit tabulku | Vypsat všechny informace o životním cyklu kontejneru| 
 | KubeEvents_CL<br> &#124;, kde ne (neprázdné (Namespace_s))<br> &#124; seřadit podle TimeGenerated DESC<br> &#124; vykreslit tabulku | Události Kubernetes|

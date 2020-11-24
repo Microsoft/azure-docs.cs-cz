@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: f628c2a4c2f8eb474bbc34ef2d3fd2f03f668992
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: de85e4eb553f623790b472e79f8f97487ba96b48
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629899"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751109"
 ---
 # <a name="test-drive-technical-configuration"></a>Technická konfigurace testovací verze
 
@@ -34,11 +34,13 @@ Společnost Microsoft může odebrat složitost nastavení testovacích jednotek
 
 - **Adresa URL instance** (požadováno) – adresa URL, na které zákazník zahájí svoji zkušební verzi. Obvykle adresa URL vaší instance Dynamics 365 spouští vaši aplikaci s nainstalovanou ukázkovou daty (například `https://testdrive.crm.dynamics.com` ).
 
-- **Instance URL webového rozhraní API** (požadováno) – načtení adresy URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení**  >  **přizpůsobení**  >  **Developer Resources**  >  **instance prostředků Web API (kořenová adresa URL služby)** , zkopírujte adresu URL, kterou tady najdete (například `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
+- **Instance URL webového rozhraní API** (požadováno) – načtení adresy URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení**  >  **přizpůsobení**  >  **Developer Resources**  >  **instance prostředků Web API (kořenová adresa URL služby)**, zkopírujte adresu URL, kterou tady najdete (například `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
 
 - **Název role** (povinné) – zadejte název role zabezpečení, kterou jste definovali ve vlastní testovací jednotce Dynamics 365, která se uživateli přiřadí během zkušební jednotky (například Test-Drive-role).
 
-Chcete-li získat nápovědu k nastavení prostředí Dynamics 365 pro testovací verzi a udělení oprávnění AppSource ke zřízení a zrušení zřízení uživatelů testovacích jednotek ve vašem tenantovi, postupujte podle [těchto pokynů](https://github.com/Microsoft/AppSource/blob/patch-1/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md).
+Chcete-li získat nápovědu k nastavení prostředí Dynamics 365 pro testovací verzi a udělení oprávnění AppSource ke zřízení a zrušení zřízení uživatelů testovacích jednotek ve vašem tenantovi, postupujte podle [těchto pokynů](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup).
+
+Podrobné pokyny k výpisu a konfiguraci hostovaného testovacího disku najdete na stránce [Podrobná konfigurace pro hostovaný testovací disk](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) .
 
 ## <a name="logic-app-test-drive"></a>Testovací jednotka aplikace logiky
 
@@ -74,7 +76,7 @@ Abyste Microsoftu umožnili nasazení testovacích jednotek vaším jménem, vyt
 
 - **ID aplikace Azure AD** (požadováno) – zadejte [ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **Registrace aplikací** a vyhledejte uvedené číslo **ID aplikace** (například `50c464d3-4930-494c-963c-1e951d15360e` ).
 
-- **Tajný kód klienta aplikace Azure AD** (povinné) – zadejte svůj [tajný kód klienta](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)aplikace Azure AD. Tuto hodnotu najdete tak, že se přihlásíte k [Azure Portal](https://portal.azure.com/). V nabídce vlevo vyberte kartu **Azure Active Directory** , vyberte **Registrace aplikací** a vyberte svou aplikaci Test Drive. V dalším kroku vyberte **certifikáty a tajné klíče** , vyberte **nový tajný klíč klienta** , zadejte popis, v části **vypršení platnosti** vyberte **nikdy** a pak zvolte **Přidat**. Nezapomeňte hodnotu zkopírovat. Před zkopírováním hodnoty nedělejte odejít ze stránky.
+- **Tajný kód klienta aplikace Azure AD** (povinné) – zadejte svůj [tajný kód klienta](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)aplikace Azure AD. Tuto hodnotu najdete tak, že se přihlásíte k [Azure Portal](https://portal.azure.com/). V nabídce vlevo vyberte kartu **Azure Active Directory** , vyberte **Registrace aplikací** a vyberte svou aplikaci Test Drive. V dalším kroku vyberte **certifikáty a tajné klíče**, vyberte **nový tajný klíč klienta**, zadejte popis, v části **vypršení platnosti** vyberte **nikdy** a pak zvolte **Přidat**. Nezapomeňte hodnotu zkopírovat. Před zkopírováním hodnoty nedělejte odejít ze stránky.
 
 ## <a name="test-drive-listings"></a>Výpisy testovacích jednotek
 
@@ -92,6 +94,8 @@ Možnost **výpisy testovacích jednotek** , která se nachází na kartě **tes
   - **Miniatura** (533 x 324 pixelů) – obrázek musí být ve formátu PNG.
 
 Pokud momentálně vytváříte testovací jednotku v partnerském centru, vyberte před pokračováním **Uložit koncept** .
+
+Podrobné pokyny k výpisu a konfiguraci hostovaného testovacího disku najdete na stránce [Podrobná konfigurace pro hostovaný testovací disk](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) .
 
 ## <a name="additional-resources"></a>Další materiály
 

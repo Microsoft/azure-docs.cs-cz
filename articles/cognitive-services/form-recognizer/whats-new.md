@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 92eda77d03e547e814cac85f5ac8bb03b552d135
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ed6d3b927254d44863b7fd0a597528813be791cf
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95506554"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736597"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
@@ -38,13 +38,13 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
   > [Další informace o extrakci rozložení](concept-layout.md)
 
 - **Podporován nový jazyk: japonština** : nyní jsou podporovány následující nové jazyky: pro `AnalyzeLayout` a `AnalyzeCustomForm` : japonština ( `ja` ). [Podpora jazyků](language-support.md)
-- **Indikace stylu čáry textu (ručně psaný/tisk) (pouze jazyky latinky)** – Nástroj pro rozpoznávání formulářů teď vytvoří výstup `appearance` objektu, který klasifikuje, jestli je každý textový řádek v rukopisu nebo ne, spolu s skóre spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince.
+- **Označení stylu čáry textu (ručně psané) (jenom v jazycích Latin)** – Nástroj pro rozpoznávání formulářů teď vytvoří výstup `appearance` objektu, který klasifikuje, jestli je každý textový řádek v rukopisu, nebo ne, společně s skóre spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince.
 - **Vylepšení kvality** – vylepšení extrakce, včetně vylepšení pro extrakci s jednou číslicí.
 - **Nová funkce try-to-out v nástroji pro rozpoznávání popsání ve formě nástrojů pro označování** , schopnost vymezit předem připravené modely faktur, příjmů a obchodních karet a rozhraní API pro rozložení pomocí ukázkového nástroje pro rozpoznávání formulářů Podívejte se, jak budou data extrahována bez psaní kódu.
 
   > [Vyzkoušejte si vzorový Nástroj pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/)
 
-  ![Příklad FOTT](./media/fott-preview.jpg)
+  ![Příklad FOTT](./media/ui-preview.jpg)
 
 ## <a name="august-2020"></a>Srpen 2020
 
@@ -85,7 +85,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 * **Podpora měny** – detekce a extrakce globálních symbolů měn.
 * **Azure gov** – Nástroj pro rozpoznávání formulářů je teď dostupný i v Azure gov.
 * **Rozšířené funkce zabezpečení**: 
-   * **Přineste si vlastní** Nástroj pro rozpoznávání vlastního klíče, který vaše data automaticky šifruje, když jsou trvale chráněná v cloudu, a pomůžou vám splnit závazky zabezpečení a dodržování předpisů vaší organizace. Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. Vaše předplatné teď můžete spravovat i s vlastními šifrovacími klíči. [Klíče spravované zákazníkem (CMK), označované také jako Přineste si vlastní klíč (BYOK)](./form-recognizer-encryption-of-data-at-rest.md), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat.  
+   * **Přineste si vlastní** Nástroj pro rozpoznávání vlastního klíče, který vaše data automaticky šifruje, když jsou trvale chráněná v cloudu, a pomůžou vám splnit závazky zabezpečení a dodržování předpisů vaší organizace. Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. Vaše předplatné teď můžete spravovat i s vlastními šifrovacími klíči. [Klíče spravované zákazníkem, označované také jako Přineste si vlastní klíč (BYOK)](./form-recognizer-encryption-of-data-at-rest.md), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat.  
    * **Soukromé koncové body** – umožňují vám používat virtuální síť (VNET) pro [zabezpečený přístup k datům prostřednictvím privátního propojení.](../../private-link/private-link-overview.md)
 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 71ff00dbf32ef32ead85be60cdbe53f23c8e35c7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1f31cc982e5e7f92cfe7e8adf588dd96628f2c6f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957567"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95744037"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Rozšířená podpora životního cyklu Red Hat Enterprise Linux (RHEL)
 Tento článek poskytuje informace o podpoře rozšířeného životního cyklu pro Image Red Hat Enterprise:
@@ -22,6 +22,14 @@ Tento článek poskytuje informace o podpoře rozšířeného životního cyklu 
 ## <a name="red-hat-enterprise-linux-6-lifecycle"></a>Životní cyklus Red Hat Enterprise Linux 6
 Od 30. listopadu 2020 se Red Hat Enterprise Linux 6 dostane ke konci fáze údržby. Fáze údržby následuje po rozšířené životní fázi. Vzhledem k tomu, že Red Hat Enterprise Linux 6 přechody mimo fáze úplné/údržby, důrazně doporučujeme upgradovat na Red Hat Enterprise Linux 7 nebo 8. Pokud si zákazníci musí zůstat v Red Hat Enterprise Linux 6, doporučujeme přidat doplněk podpora rozšíření ELS (Extended životní cyklus) Red Hat Enterprise Linux.
 
+## <a name="steps-to-add-extended-lifecycle-support-on-marketplace-pay-as-you-go-vms"></a>Postup přidání rozšířené podpory životního cyklu na virtuální počítače s průběžnými platbami podle aktuálního využití na webu Marketplace
+1. Vyplňte formulář ELS, který je [k dispozici](https://aka.ms/els-form) , pomocí informací o kontaktu a informací o předplatném virtuálních počítačů, pro které chcete přidat podporu ELS. Podrobnosti o cenách pro doplňky jsou k dispozici také ve formuláři.
+1. Tým Azure Red Hat Enterprise Linux vás bude kontaktovat a seznam virtuálních počítačů pro podporu ELS se přidávají do 1-2 pracovních dnů. Seznamte se prosím se seznamem a vyjádřete souhlas s přidáním cen.
+1. Tým Azure Red Hat Enterprise Linux bude sdílet kroky pro přidání balíčku klienta ELS do virtuálních počítačů. Postupujte podle kroků, které budou k dispozici v e-mailu, abyste mohli dál přijímat údržbu softwaru (opravy chyb a zabezpečení) a podporu Red Hat Enterprise Linux 6.
+
+> [!Note]
+> Nesdílejte kroky pro použití RHEL ELS přidat k komukoli mimo vaši organizaci. AzureRedHatELS@microsoft.comVyužijte k získání podpory nebo pro všechny další otázky.
+
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 #### <a name="im-running-red-hat-enterprise-linux-6-and-cant-migrate-to-a-later-version-at-this-time-what-options-do-i-have"></a>Používám Red Hat Enterprise Linux 6 a v tuto chvíli se nedá migrovat na novější verzi. Jaké možnosti mám?
@@ -29,19 +37,8 @@ Od 30. listopadu 2020 se Red Hat Enterprise Linux 6 dostane ke konci fáze údr�
 * Migrujte na Red Hat Enterprise Linux 7 nebo 8, jakmile budete moct.
 
 #### <a name="what-is-the-additional-charge-for-using-red-hat-enterprise-linux-extended-life-cycle-support-els-add-on"></a>Jaké jsou další poplatky za používání doplňku Red Hat Enterprise Linux rozšířené podpory životního cyklu (ELS)?
+Náklady související s rozšířenou podporou životního cyklu najdete ve [formuláři ELS](https://aka.ms/els-form)
 
-|Velikost virtuálního počítače|Rámec dodatečných poplatků za čas|Další částka dolaru (USD)| Poznámky|
-|---|---|---|---|
-| Malý virtuální Host (<= 4 jádra) | Hodinové dodatečné poplatky | TBC | |
-|  | Dodatečné poplatky za měsíc | TBC | Pro rezervované instance |
-|  | Roční dodatečné poplatky | TBC | Pro rezervované instance |
-| Velký virtuální Host (>4 jádra) | Hodinové dodatečné poplatky | TBC | |
-|  | Dodatečné poplatky za měsíc | TBC | Pro rezervované instance |
-|  | Roční dodatečné poplatky | TBC | Pro rezervované instance |
-
-#### <a name="what-is-the-process-to-add-extended-life-cycle-support-els-repositories-to-continue-to-receive-software-maintenance-bug-and-security-fixes-and--support-for-red-hat-enterprise-linux-6"></a>Jaký je proces přidání úložišť s rozšířeným životním cyklem (ELS), aby nadále přijímala údržbu softwaru (opravy chyb a zabezpečení) a podporovala Red Hat Enterprise Linux 6?
-
-Ukončení procesu registrace do ELS bude brzy k dispozici (nejpozději 30. listopadu 2020).
 
 ## <a name="next-steps"></a>Další kroky
 

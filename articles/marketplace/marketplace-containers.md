@@ -7,24 +7,24 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 09/04/2020
-ms.openlocfilehash: c52fabcfc2ff22df2de6dd93f2543d625310baef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/30/2020
+ms.openlocfilehash: 83c575aa40b80d9a8e39263e89a5e7860c8f8774
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484337"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95741657"
 ---
-# <a name="publishing-guide-for-container-offers"></a>Průvodce publikováním pro nabídky kontejnerů
+# <a name="publishing-guide-for-azure-container-offers"></a>Průvodce publikováním pro nabídky Azure Container
 
-Nabídky kontejnerů vám pomůžou publikovat image kontejneru do Azure Marketplace. Tento průvodce vám pomůže pochopit požadavky této nabídky. 
+Nabídky Azure Container vám pomůžou publikovat image kontejneru do Azure Marketplace. Tento průvodce použijte k pochopení požadavků pro tento typ nabídky.
 
-Nabídky kontejnerů jsou nabídky transakcí, které se nasazují a účtují prostřednictvím Azure Marketplace. Možnost výpisu, kterou uživatel vidí, je "získat hned".
+Nabídky Azure Container jsou nabídky transakcí, které se nasazují a účtují prostřednictvím Azure Marketplace. Možnost výpisu, kterou uživatel vidí, je "získat hned".
 
-Pokud je vaše řešení image kontejneru Docker, která je nastavená jako instance služby Azure Container Service, která je založená na Kubernetes, použijte typ nabídky *kontejneru* . 
+Pokud je vaše řešení image kontejneru Docker, která je nastavená jako instance kontejneru Azure na základě Kubernetes, použijte typ nabídky kontejneru Azure.
 
 > [!NOTE]
-> Příklady instancí Azure Container Service založené na Kubernetes jsou Azure Kubernetes Service nebo Azure Container Instances, což je výběr zákazníků Azure pro modul runtime kontejneru na bázi Kubernetes.  
+> Instance kontejneru Azure je instance Docker, která poskytuje nejrychlejší a nejjednodušší způsob, jak spustit kontejner v Azure, aniž by bylo nutné spravovat žádné virtuální počítače a nemusíte přitom muset přijmout službu vyšší úrovně. Instance kontejnerů se dají nasadit přímo do Azure nebo orchestrovat služba Azure Kubernetes Services nebo Azure Kubernetes Service Engine.  
 
 Microsoft v současné době podporuje bezplatných licenčních modelů (BYOL).
 
@@ -39,9 +39,6 @@ Microsoft v současné době podporuje bezplatných licenčních modelů (BYOL).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste to ještě neudělali, přečtěte si, jak [rozšířit cloudovou firmu pomocí Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
+- Informace o přípravě technických prostředků pro nabídku kontejneru najdete v tématu [vytvoření prostředků Azure Container Technical assets](create-azure-container-technical-assets.md).
 
-Registrace a zahájení práce v partnerském centru:
-
-- [Přihlaste se do partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vytvořte nebo dokončete vaši nabídku.
-- Další informace najdete v tématu [Vytvoření nabídky Azure Container](./partner-center-portal/create-azure-container-offer.md) .
+- Pokud chcete vytvořit nabídku kontejneru Azure, přečtěte si téma [Vytvoření nabídky kontejnerů Azure v tématu Azure Marketplace](create-azure-container-offer.md) , kde najdete další informace.
