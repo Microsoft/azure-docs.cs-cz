@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 657221a2acbf592a56cb4659ced2199023bc5e5b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658787"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494773"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifikace pokročilých hrozeb pomocí analýzy chování uživatelů a entit (UEBA) v Azure Sentinel
 
@@ -205,7 +205,7 @@ K vizualizaci metadat partnerských vztahů uživatelů můžete použít [Pozn�
 
 Analýza oprávnění pomáhá určit potenciální dopad na narušení organizačního prostředku útočníkem. Tento dopad se označuje také jako "vysoké poloměr assetu". Analytici zabezpečení můžou tyto informace použít k určení priorit šetření a zpracování incidentů.
 
-Azure Sentinel Určuje práva k přímým a přenosnému přístupu držené daným uživatelem a prostředky Azure vyhodnocením předplatných Azure, ke kterým může uživatel přistupovat přímo nebo prostřednictvím skupin nebo instančních objektů. Tyto informace, stejně jako úplný seznam členství uživatele ve skupině zabezpečení Azure AD, se pak ukládají do tabulky **UserAccessAnalytics** . Níže uvedený snímek obrazovky ukazuje vzorový řádek v tabulce UserAccessAnalytics pro uživatele Alex Johnsonem. **Zdrojová entita** je uživatel nebo hlavní účet služby a **Cílová entita** je prostředek, ke kterému má zdrojová entita přístup. Hodnoty **úrovně přístupu** a **typu přístupu** závisí na modelu řízení přístupu cílové entity. Můžete vidět, že Alex má přispěvatele přístup k Tenantovi Azure s předplatným *Contoso*. Model řízení přístupu předplatného je RBAC.   
+Azure Sentinel Určuje práva k přímým a přenosnému přístupu držené daným uživatelem a prostředky Azure vyhodnocením předplatných Azure, ke kterým může uživatel přistupovat přímo nebo prostřednictvím skupin nebo instančních objektů. Tyto informace, stejně jako úplný seznam členství uživatele ve skupině zabezpečení Azure AD, se pak ukládají do tabulky **UserAccessAnalytics** . Níže uvedený snímek obrazovky ukazuje vzorový řádek v tabulce UserAccessAnalytics pro uživatele Alex Johnsonem. **Zdrojová entita** je uživatel nebo hlavní účet služby a **Cílová entita** je prostředek, ke kterému má zdrojová entita přístup. Hodnoty **úrovně přístupu** a **typu přístupu** závisí na modelu řízení přístupu cílové entity. Můžete vidět, že Alex má přispěvatele přístup k Tenantovi Azure s předplatným *Contoso*. Model řízení přístupu předplatného je Azure RBAC.   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Snímek obrazovky tabulky analýzy přístupu uživatele":::
 

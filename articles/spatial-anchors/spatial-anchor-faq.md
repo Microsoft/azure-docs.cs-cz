@@ -1,19 +1,19 @@
 ---
 title: Nejčastější dotazy
 description: Nejčastější dotazy týkající se služby prostorových kotev Azure
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 05/18/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: eb02de25cfcb0dde01699c1169d03f0d822c4ae2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 01eb0ce83efa54366e027d35d9c3c3bbf86eff7b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097401"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95487363"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy týkající se prostorových kotev Azure
 
@@ -55,7 +55,7 @@ Další informace najdete v tématu [Přehled prostorových kotev Azure](overvie
 
 **Otázka: Jaké informace o prostředí se přenáší a ukládají do služby při použití prostorových kotev Azure? Jsou obrázky prostředí přenášeny a uloženy?**
 
-Odpověď **: při**vytváření nebo hledání kotev jsou obrázky prostředí zpracovávány v zařízení do odvozeného formátu. Tento odvozený formát je přenášen do služby a uložen ve službě.
+Odpověď **: při** vytváření nebo hledání kotev jsou obrázky prostředí zpracovávány v zařízení do odvozeného formátu. Tento odvozený formát je přenášen do služby a uložen ve službě.
 
 K zajištění transparentnosti níže je obrázek prostředí a odvozeného cloudu řídce používaného bodu. V cloudu Point se zobrazuje geometrická reprezentace prostředí, které se přenáší a ukládá do služby. Pro každý bod v cloudu se zhuštěným bodem odesíláme a ukládáme hodnotu hash vizuálních vlastností tohoto bodu. Hodnota hash je odvozena z, ale neobsahuje data v pixelech.
 

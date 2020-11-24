@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 5125fff0ef8987d313c6611e4d5de08d090f2263
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 769dea079339af2c6307d9230e047a654dc3d5dd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913190"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95492206"
 ---
 # <a name="receipt-concepts"></a>Principy účtenek
 
@@ -57,6 +57,13 @@ Rozhraní API pro příjem také vrátí následující informace:
 * Nezpracovaný text OCR (OCR – textový výstup extrahovaný pro celou příjem)
 * Ohraničovací rámeček pro každou hodnotu, řádek a slovo
 
+## <a name="try-it-out"></a>Vyzkoušet
+
+Pokud si chcete vyzkoušet příjemovou službu pro rozpoznávání formulářů, použijte nástroj uživatelské rozhraní online Sample:
+
+> [!div class="nextstepaction"]
+> [Vyzkoušet předem připravené modely](https://fott-preview.azurewebsites.net/)
+
 ## <a name="input-requirements"></a>Požadavky na vstup
 
 [!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
@@ -64,7 +71,7 @@ Rozhraní API pro příjem také vrátí následující informace:
 ## <a name="supported-locales"></a>Podporovaná národní prostředí 
 
 * **Předem sestavená příjem v 2.0** (GA) podporuje prodejní příjeme v národním prostředí en-US.
-* **Předem sestavená příjem v 2.1-Preview. 1** (Public Preview) přidává další podporu následujících národních prostředí pro příjem hodnot EN: 
+* **Předem sestavená příjem v 2.1-Preview. 2** (Public Preview) přidává další podporu následujících národních prostředí pro příjem hodnot EN: 
   * EN-AU 
   * EN-CA 
   * EN-GB 
@@ -73,12 +80,12 @@ Rozhraní API pro příjem také vrátí následující informace:
   > [!NOTE]
   > Vstup jazyka 
   >
-  > Předem sestavená příjem verze 2.1-Preview. 1 má volitelný parametr Request pro určení národního prostředí pro příjem z dalších anglických trhů. Pro prodejní příjeme v angličtině z Austrálie (EN-AU), Kanada (EN-CA), Velká Británie (EN-GB) a Indie (EN-IN), můžete určit národní prostředí a získat tak lepší výsledky. Pokud není zadané žádné národní prostředí v rámci verze 2.1-Preview. 1, model se nastaví jako výchozí pro model EN-US.
+  > Předem sestavená příjem verze 2.1-Preview. 2 má volitelný parametr požadavku pro určení národního prostředí pro příjem z dalších anglických trhů. Pro prodejní příjeme v angličtině z Austrálie (EN-AU), Kanada (EN-CA), Velká Británie (EN-GB) a Indie (EN-IN), můžete určit národní prostředí a získat tak lepší výsledky. Pokud není zadané žádné národní prostředí v rámci verze 2.1-Preview. 2, model se nastaví jako výchozí pro model EN-US.
 
 
 ## <a name="the-analyze-receipt-operation"></a>Operace analyzovat příjem
 
-Při [analýze se obdrží](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) jako vstup obrázek nebo PDF účtenky a získá hodnoty zájmu a text. Volání vrátí pole hlavičky odpovědi s názvem `Operation-Location` . `Operation-Location`Hodnota je adresa URL, která obsahuje ID výsledku, které se má použít v dalším kroku.
+Při [analýze se obdrží](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync) jako vstup obrázek nebo PDF účtenky a získá hodnoty zájmu a text. Volání vrátí pole hlavičky odpovědi s názvem `Operation-Location` . `Operation-Location`Hodnota je adresa URL, která obsahuje ID výsledku, které se má použít v dalším kroku.
 
 |Hlavička odpovědi| Adresa URL výsledku |
 |:-----|:----|
@@ -86,7 +93,7 @@ Při [analýze se obdrží](https://westcentralus.dev.cognitive.microsoft.com/do
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>Operace získání výsledku analýzy pro příjem
 
-Druhým krokem je volání operace [získat analýzu výsledků příjmu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeReceiptResult) . Tato operace přijímá jako vstup ID výsledku, které bylo vytvořeno operací analyzovat příjem. Vrátí odpověď JSON, která obsahuje pole **stav** s následujícími možnými hodnotami. Tuto operaci zavoláte iterativní, dokud se nevrátí s hodnotou **úspěch** . Použijte interval 3 až 5 sekund, abyste předešli překročení sazby za sekundu (RPS).
+Druhým krokem je volání operace [získat analýzu výsledků příjmu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult) . Tato operace přijímá jako vstup ID výsledku, které bylo vytvořeno operací analyzovat příjem. Vrátí odpověď JSON, která obsahuje pole **stav** s následujícími možnými hodnotami. Tuto operaci zavoláte iterativní, dokud se nevrátí s hodnotou **úspěch** . Použijte interval 3 až 5 sekund, abyste předešli překročení sazby za sekundu (RPS).
 
 |Pole| Typ | Možné hodnoty |
 |:-----|:----:|:----|

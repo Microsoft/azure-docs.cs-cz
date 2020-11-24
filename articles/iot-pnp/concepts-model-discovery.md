@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dda0e3d6739e94df4ce5910938c164e3db336bce
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5f82206a7c86c5ae1e6477419faee0dca88ef883
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445570"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495283"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Použití modelů IoT technologie Plug and Play v řešení IoT
 
@@ -125,7 +125,7 @@ Po identifikaci ID modelu pro nové připojení zařízení použijte následuj�
 
 1. Pomocí definice modelu připojeného zařízení můžete vytvořit výčet možností zařízení.
 
-1. Pomocí možností ve výčtu zařízení můžete uživatelům umožnit [interakci se zařízením](quickstart-service-node.md).
+1. Pomocí možností ve výčtu zařízení můžete uživatelům umožnit [interakci se zařízením](quickstart-service.md).
 
 ### <a name="custom-store"></a>Vlastní úložiště
 
@@ -137,12 +137,12 @@ Po identifikaci ID modelu pro nové připojení zařízení použijte následuj�
 
 1. Pomocí definice modelu připojeného zařízení můžete vytvořit výčet možností zařízení. 
 
-1. Pomocí možností ve výčtu zařízení můžete uživatelům umožnit [interakci se zařízením](quickstart-service-node.md).  
+1. Pomocí možností ve výčtu zařízení můžete uživatelům umožnit [interakci se zařízením](quickstart-service.md).  
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili, jak integrovat technologie Plug and Play modelech IoT do řešení IoT, některé z navrhovaných dalších kroků:
 
-- [Interakce se zařízením z vašeho řešení](quickstart-service-node.md)
+- [Interakce se zařízením z vašeho řešení](quickstart-service.md)
 - [Digitální zdvojené REST API IoT](/rest/api/iothub/service/digitaltwin)
 - [Průzkumník Azure IoT](howto-use-iot-explorer.md)

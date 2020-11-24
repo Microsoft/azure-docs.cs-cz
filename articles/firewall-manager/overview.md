@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 09/30/2020
+ms.date: 11/23/2020
 ms.author: victorh
-ms.openlocfilehash: 00a84fbf694a58128712abf806ff12df96f0e5e9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 84ecea7764ddf48d68c983eaa5bccbac5f332d9b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596681"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95489690"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Co je Azure Firewall Manager?
 
@@ -89,7 +89,8 @@ Azure Firewall Manager má následující známé problémy:
 |Pravidla aplikací selžou v zabezpečeném centru s nakonfigurovaným vlastním DNS (Preview).|Vlastní DNS (Preview) nefunguje v nasazeních zabezpečeného centra a v nasazeních virtuálních sítí rozbočovače, kde je povolené vynucené tunelování.|Opravte šetření.|
 |DDoS Protection Standard není podporován u zabezpečených virtuálních rozbočovačů.|DDoS Protection Standard není integrovaný do vWANs.|Prověřování|
 |Protokoly aktivit nejsou plně podporované.|Zásady brány firewall v současné době nepodporují protokoly aktivit.|Prověřování|
-|Konfigurace rozsahů privátních IP adres SNAT|[Nastavení rozsahu privátních IP adres](../firewall/snat-private-range.md) se ignoruje, pokud je nakonfigurovaná zásada Azure firewall. Použije se výchozí chování Azure Firewall, kde se nejedná o Síťová pravidla, pokud je cílová IP adresa v rozsahu privátních IP adres na [úřad IANA RFC 1918](https://tools.ietf.org/html/rfc1918).|Prověřování
+|Konfigurace rozsahů privátních IP adres SNAT|[Nastavení rozsahu privátních IP adres](../firewall/snat-private-range.md) se ignoruje, pokud je nakonfigurovaná zásada Azure firewall. Použije se výchozí chování Azure Firewall, kde se nejedná o Síťová pravidla, pokud je cílová IP adresa v rozsahu privátních IP adres na [úřad IANA RFC 1918](https://tools.ietf.org/html/rfc1918).|Prověřování|
+|Některá nastavení brány firewall se při migraci brány firewall na používání zásad brány firewall nemigrují.|Při migraci na zásady Azure Firewall se nemigrují privátní adresy Zóny dostupnosti a SNAT.|Prověřování| 
 
 ## <a name="next-steps"></a>Další kroky
 

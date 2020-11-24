@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: 16fd15a5939cc6c268a80e88401f05042a206075
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ea55762aa40360d8eea94223a030f08aad504206
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516811"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95485388"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Kurz: Vytvoření aplikace chat serveru Blazor
 
@@ -24,7 +24,7 @@ V tomto kurzu se dozvíte, jak vytvořit a upravit aplikaci Blazor serveru. Dozv
 > * Rychlé nasazení Azure App Service v aplikaci Visual Studio.
 > * Migrujte místní signál do služby Azure Signal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Nainstalovat [sadu .NET Core 3,0 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0) (verze >= 3.0.100)
 * Instalace sady [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) (verze >= 16,3)
 > Verze Visual Studio 2019 Preview funguje i pro vydání nejnovější šablony aplikace Blazor serveru, která cílí na novější verzi .Net Core.
@@ -39,7 +39,7 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
    
    V aplikaci Visual Studio vyberte možnost vytvořit nový projekt – > aplikace Blazor-> (pojmenujte aplikaci a vyberte složku) – > aplikace Blazor serveru. Ujistěte se, že jste už nainstalovali .NET Core SDK 3.0 +, abyste aplikaci Visual Studio správně rozpoznali cílovou architekturu.
 
-   [![blazor – chat – vytvořit ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
+   [![V části vytvořit nový projekt jsou vybrány šablony aplikací Blazor. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
    
    Nebo spusťte příkaz cmd
    ```dotnetcli
@@ -355,7 +355,7 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
 
 1. Kliknutím na <kbd>F5</kbd> spusťte aplikaci. Budete moci chatovat, jak je znázorněno níže.
 
-   [![blazor – chat ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
+   [![Zobrazuje se animovaná konverzace mezi Bobem a Alicí. Alice říká Hello, Bob říká Dobrý den. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
    
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsblazor)
 
@@ -375,13 +375,13 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
    * Konkrétní cíl: jsou podporovány všechny typy **Azure App Service** .
    * App Service: Vytvořte novou nebo vyberte existující službu App Service.
 
-   [![blazor-chat – profil ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
+   [![Animace zobrazuje výběr Azure jako cíle a pak Azure App manifestu jako konkrétní cíl. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
 
 1. Přidat závislost služby signalizace Azure
 
    Po vytvoření profilu publikování se v části **závislosti služby** zobrazí doporučená zpráva. Kliknutím na **Konfigurovat** vytvořte novou nebo vyberte existující službu Azure Signal Service na panelu.
 
-   [![blazor – konverzace – závislost ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
+   [![Při publikování je odkaz na konfiguraci zvýrazněný. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
 
    Tato závislost služby provede následující akce, které umožní aplikaci automaticky přepnout na službu Azure Signal Service v Azure.
 
@@ -391,7 +391,7 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
    * Konfigurace úložiště tajných klíčů závisí na vaší volbě.
    * Přidejte `appsettings` konfiguraci pro výběr cíle vaší aplikace na službu Azure Signal.
 
-   [![blazor-chat-Dependency-Summary ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
+   [![Při souhrnu změn se k výběru všech závislostí použijí zaškrtávací políčka. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
 
 1. Publikování aplikace
 
@@ -400,7 +400,7 @@ V rámci sady Visual Studio 2019 verze 16.2.0 je služba signalizace Azure v pro
    > Nemusí okamžitě fungovat při první návštěvě stránky z důvodu latence spuštění nasazení Azure App Service a zkuste stránku aktualizovat, aby bylo jisté zpoždění.
    > Kromě toho můžete použít režim ladicího programu prohlížeče s nástrojem <kbd>F12</kbd> k ověření, že provoz již přesměruje na službu Azure Signal Service.
 
-   [![blazor – chat – Azure ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
+   [![Ukázka chatu pro signál Blazor obsahuje textové pole pro vaše jméno a tlačítko chat! pro spuštění chatu. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
    
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsblazor)
 
@@ -468,6 +468,6 @@ Přečtěte si další informace o vysoké dostupnosti.
 > [!div class="nextstepaction"]
 > [Odolnost a zotavení po havárii](signalr-concept-disaster-recovery.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [ASP.NET Core Blazor](/aspnet/core/blazor)

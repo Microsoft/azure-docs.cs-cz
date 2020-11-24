@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 61bff59114d25b2f3167a34100ec2f742036bb90
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663549"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95503181"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Jednotné přihlašování založené na hlavičkách pro místní aplikace s Aplikace Azure AD proxy serverem (Preview)
 
@@ -85,7 +85,7 @@ Předtím, než začnete s jednotným přihlašováním pro aplikace založené 
 ## <a name="test-your-app"></a>Testování aplikace 
 
 Až dokončíte všechny tyto kroky, vaše aplikace by měla být spuštěná a dostupná. Testování aplikace: 
-1. Otevřete prohlížeč a přejděte na **externí adresu URL**   z nastavení proxy aplikace. 
+1. Otevřete nové okno prohlížeče nebo privátního prohlížeče, abyste měli jistotu, že se předchozí hlavičky v mezipaměti vymažou. Pak z nastavení proxy aplikace přejděte na **externí adresu URL**   .
 2. Přihlaste se pomocí testovacího účtu, který jste přiřadili k aplikaci. Pokud se k aplikaci můžete pomocí jednotného přihlašování (SSO) načíst a přihlásit se k ní, budete připraveni. 
 
 

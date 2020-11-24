@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79cf0ef059d96ac66f5918605e999d3936d589d2
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88718811"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486513"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Zálohování a obnovení modelů pro rozpoznávání formulářů
 
@@ -26,7 +26,7 @@ Rozhraní API pro kopírování umožňuje tomuto scénáři kopírovat vlastní
 
 Pokud vaše aplikace nebo firma závisí na použití vlastního modelu rozpoznávání formulářů, doporučujeme model zkopírovat do jiného účtu pro rozpoznávání formulářů v jiné oblasti. Pokud dojde k oblastnímu výpadku, můžete získat přístup k modelu v oblasti, kam byl zkopírován.
 
-##  <a name="prerequisites"></a>Požadavky
+##  <a name="prerequisites"></a>Předpoklady
 
 1. Dva prostředky pro rozpoznávání formulářů v různých oblastech Azure. Pokud je nemáte, přečtěte si Azure Portal a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" vytvořte nový prostředek pro rozpoznávání formulářů " target="_blank"> vytvořit nový prostředek pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
 1. Klíč předplatného, adresa URL koncového bodu a ID předplatného prostředku pro rozpoznávání formulářů Tyto hodnoty najdete na kartě **Přehled** prostředku na Azure Portal.
@@ -41,7 +41,7 @@ Proces kopírování vlastního modelu se skládá z následujících kroků:
 1. Pomocí svých přihlašovacích údajů ke zdrojovému zdroji se můžete dotazovat na adresu URL průběhu, dokud nebude operace úspěšná. Můžete také zadat dotaz na nové ID modelu v cílovém prostředku a získat tak stav nového modelu.
 
 > [!CAUTION]
-> Rozhraní API pro kopírování v současné době nepodporuje ID modelů pro [složené vlastní modely](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose). Vytváření modelů je funkce ve verzi Preview v 2.1 verze Preview. 1 Preview. 
+> Rozhraní API pro kopírování v současné době nepodporuje ID modelů pro [složené vlastní modely](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose). Vytváření modelů je funkce ve verzi Preview v 2.1 verze Preview. 2 Preview. 
 
 ## <a name="generate-copy-authorization-request"></a>Vytvořit kopii žádosti o autorizaci
 

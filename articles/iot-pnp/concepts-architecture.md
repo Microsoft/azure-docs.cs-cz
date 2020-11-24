@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: a87617e1cc6910b4c807aa90f413efe94b6e6953
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 2cccb1fdfe775250f80da6cc2ecdcc4ddaa3d88e
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920300"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95484079"
 ---
 # <a name="iot-plug-and-play-architecture"></a>Architektura technologie IoT Plug and Play
 
@@ -98,4 +98,4 @@ Teď, když máte přehled o architektuře řešení IoT technologie Plug and Pl
 
 - [Úložiště modelu](./concepts-model-repository.md)
 - [Integrace digitálního zdvojeného modelu](./concepts-model-discovery.md)
-- [Vývoj pro IoT technologie Plug and Play](./concepts-developer-guide-device-csharp.md)
+- [Vývoj pro IoT technologie Plug and Play](./concepts-developer-guide-device.md)

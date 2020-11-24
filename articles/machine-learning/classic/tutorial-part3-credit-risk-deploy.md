@@ -9,17 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 2d723a18bfe764b4e1459f72b00fa81db716dcdb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3afcf87c360651ac314450910fbf5ab72afd289a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325652"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95503909"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Kurz 3: nasazení modelu úvěrového rizika – Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
-
+**platí pro:** ![ Toto je značka zaškrtnutí, což znamená, že se tento článek týká Machine Learning Studio (Classic). ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ Toto je X, což znamená, že se tento článek týká Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 V tomto kurzu se podíváme na proces vývoje řešení prediktivní analýzy. V Machine Learning Studio (Classic) vyvíjíte jednoduchý model.  Model pak nasadíte jako Azure Machine Learning webovou službu.  Tento nasazený model může vytvářet předpovědi s využitím nových dat. Tento kurz je **třetí částí série kurzů s třemi částmi**.
 
@@ -49,7 +48,7 @@ Vyplňte [druhou část kurzu](tutorial-part2-credit-risk-train.md).
 ## <a name="prepare-for-deployment"></a>Příprava nasazení
 Pokud chcete ostatním umožnit používání prediktivního modelu, který jste vytvořili v tomto kurzu, můžete ho nasadit jako webovou službu v Azure.
 
-Až do tohoto okamžiku jste se seznámili s školením našeho modelu. Nicméně nasazená služba již neprovádí školení – vygeneruje nové předpovědi vyhodnocením vstupu uživatele na základě našeho modelu. Provedeme si ale nějaké přípravy na převod tohoto experimentu z experimentu * **školení** _ na _*_prediktivní_*_ experiment. 
+Až do tohoto okamžiku jste se seznámili s školením našeho modelu. Nicméně nasazená služba již neprovádí školení – vygeneruje nové předpovědi vyhodnocením vstupu uživatele na základě našeho modelu. Provedeme si ale nějaké přípravy na převod tohoto experimentu z experimentu ***školení** _ na _*_prediktivní_*_ experiment. 
 
 Příprava na nasazení je proces tří kroků:  
 
@@ -93,9 +92,9 @@ Můžete to provést ručně, ale naštěstí všechny tři kroky můžete prov�
 > [!TIP]
 > Pokud potřebujete další podrobnosti o tom, co se stane, když převedete školicí experiment na prediktivní experiment, přečtěte si téma [Příprava modelu pro nasazení v Azure Machine Learning Studio (Classic)](deploy-a-machine-learning-web-service.md).
 
-Když kliknete na **nastavit webovou službu** , stane se několik věcí:
+Když kliknete na **nastavit webovou službu**, stane se několik věcí:
 
-* Vycvičený model se převede na jeden modul **trained model** a uloží se do palety modulu nalevo od plátna experimentu (můžete ho najít v části **trained Models** ).
+* Vycvičený model se převede na jeden modul **trained model** a uloží se do palety modulu nalevo od plátna experimentu (můžete ho najít v části **trained Models**).
 * Moduly, které se použily pro školení, se odeberou. určen
   * [Posílený rozhodovací strom se dvěma třídami][two-class-boosted-decision-tree]
   * [Trénování modelu][train-model]
@@ -130,7 +129,7 @@ Spusťte experiment jednou, a to tak, že kliknete na **Spustit**. Pokud chcete 
 Experiment můžete nasadit jako klasickou webovou službu nebo jako novou webovou službu založenou na Azure Resource Manager.
 
 ### <a name="deploy-as-a-classic-web-service"></a>Nasazení jako klasické webové služby
-Pokud chcete nasadit klasickou webovou službu odvozenou z našeho experimentu, klikněte na **nasadit webovou službu** pod plátno a vyberte **nasadit webovou službu [Classic]**. Machine Learning Studio (Classic) nasadí experiment jako webovou službu a přejde na řídicí panel pro tuto webovou službu. Na této stránce se můžete vrátit do experimentu ( **Zobrazit snímek** nebo **Zobrazit nejnovější** ) a spustit jednoduchý test webové služby (viz **testování webové služby** níže). Zde najdete také informace pro vytváření aplikací, které mají přístup k webové službě (Další informace najdete v dalším kroku tohoto kurzu).
+Pokud chcete nasadit klasickou webovou službu odvozenou z našeho experimentu, klikněte na **nasadit webovou službu** pod plátno a vyberte **nasadit webovou službu [Classic]**. Machine Learning Studio (Classic) nasadí experiment jako webovou službu a přejde na řídicí panel pro tuto webovou službu. Na této stránce se můžete vrátit do experimentu (**Zobrazit snímek** nebo **Zobrazit nejnovější**) a spustit jednoduchý test webové služby (viz **testování webové služby** níže). Zde najdete také informace pro vytváření aplikací, které mají přístup k webové službě (Další informace najdete v dalším kroku tohoto kurzu).
 
 ![Řídicí panel webové služby](./media/tutorial-part3-credit-risk-deploy/publish6.png)
 
@@ -162,7 +161,7 @@ Službu můžete nakonfigurovat kliknutím na kartu **Konfigurovat** . Tady mů�
 Chcete-li otestovat webovou službu, klikněte na kartu **test** (viz **Test webové služby** níže). Informace o vytváření aplikací, které mají přístup k webové službě, získáte tak, že kliknete na kartu **spotřebování** (další krok v tomto kurzu se zobrazí podrobněji).
 
 > [!TIP]
-> Webovou službu můžete po nasazení aktualizovat. Například pokud chcete změnit svůj model, můžete upravit experiment pro školení, upravit parametry modelu a kliknout na **nasadit webovou službu** , vybrat **nasadit webovou službu [Classic]** nebo **nasadit webovou službu [New]**. Když znovu nasadíte experiment, nahradí se tím webová služba, která teď používá aktualizovaný model.  
+> Webovou službu můžete po nasazení aktualizovat. Například pokud chcete změnit svůj model, můžete upravit experiment pro školení, upravit parametry modelu a kliknout na **nasadit webovou službu**, vybrat **nasadit webovou službu [Classic]** nebo **nasadit webovou službu [New]**. Když znovu nasadíte experiment, nahradí se tím webová služba, která teď používá aktualizovaný model.  
 > 
 > 
 

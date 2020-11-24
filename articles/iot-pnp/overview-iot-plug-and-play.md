@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 4fd7a24edffbfb63adc830ddb83b45997743ad42
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: d6cba4bcb76094ed156ef35b1ea76cea7001c372
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421630"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486292"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Co je IoT Plug and Play?
 
@@ -72,5 +72,5 @@ Jako tvůrce zařízení můžete vyvíjet hardwarový produkt IoT, který podpo
 
 Teď, když máte přehled o IoT technologie Plug and Play, navržený další krok si vyzkoušíme jedno z rychlých startů:
 
-- [Připojení zařízení k IoT Hub (C)](./quickstart-connect-device-c.md)
-- [Interakce se zařízením z vašeho řešení (Node. js)](./quickstart-service-node.md)
+- [Připojení zařízení ke službě IoT Hub](./quickstart-connect-device.md)
+- [Interakce se zařízením z vašeho řešení](./quickstart-service.md)

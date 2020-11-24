@@ -9,16 +9,42 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c9287e9661172480292a2214b231e7e5dac9c32f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 92eda77d03e547e814cac85f5ac8bb03b552d135
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912239"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95506554"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
 Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek vám umožní udržovat aktuální informace o vylepšeních, opravách a dokumentaci k funkcím.
+
+## <a name="november-2020"></a>Listopad 2020
+
+### <a name="new-features"></a>Nové funkce
+
+- **Nový předem sestavený model faktury** – nový předem sestavený model faktury umožňuje zákazníkům přebírat faktury v nejrůznějších formátech a vracet strukturovaná data pro automatizaci zpracování faktury. Kombinuje naše výkonné funkce optického rozpoznávání znaků (OCR) s fakturací s porozuměním modelem obsáhlého učení pro extrakci klíčových informací z faktur v angličtině. Extrahuje text, tabulky a informace, jako je například zákazník, dodavatel, ID faktury, datum splatnosti faktury, celková částka, splatnost, částka daně, částka pro odeslání, fakturaci a další.
+
+  > [Další informace o předem vytvořeném modelu faktury](concept-invoices.md)
+
+  :::image type="content" source="./media/invoice-example.jpg" alt-text="Příklad faktury" lightbox="./media/invoice-example.jpg":::
+
+- **Vylepšená extrakce tabulky** – Nástroj pro rozpoznávání formulářů teď nabízí rozšířenou extrakci tabulky, která kombinuje naše výkonné funkce optického rozpoznávání znaků (OCR) s modelem extrakce tabulky hloubkového učení. Nástroj pro rozpoznávání formulářů může extrahovat data z tabulek, včetně složitých tabulek se sloučenými sloupci, řádky, bez ohraničení a další. 
+ 
+  :::image type="content" source="./media/tables-example.jpg" alt-text="Příklad tabulek" lightbox="./media/tables-example.jpg":::
+
+ 
+  > [Další informace o extrakci rozložení](concept-layout.md)
+
+- **Podporován nový jazyk: japonština** : nyní jsou podporovány následující nové jazyky: pro `AnalyzeLayout` a `AnalyzeCustomForm` : japonština ( `ja` ). [Podpora jazyků](language-support.md)
+- **Indikace stylu čáry textu (ručně psaný/tisk) (pouze jazyky latinky)** – Nástroj pro rozpoznávání formulářů teď vytvoří výstup `appearance` objektu, který klasifikuje, jestli je každý textový řádek v rukopisu nebo ne, spolu s skóre spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince.
+- **Vylepšení kvality** – vylepšení extrakce, včetně vylepšení pro extrakci s jednou číslicí.
+- **Nová funkce try-to-out v nástroji pro rozpoznávání popsání ve formě nástrojů pro označování** , schopnost vymezit předem připravené modely faktur, příjmů a obchodních karet a rozhraní API pro rozložení pomocí ukázkového nástroje pro rozpoznávání formulářů Podívejte se, jak budou data extrahována bez psaní kódu.
+
+  > [Vyzkoušejte si vzorový Nástroj pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/)
+
+  ![Příklad FOTT](./media/fott-preview.jpg)
 
 ## <a name="august-2020"></a>Srpen 2020
 
@@ -30,11 +56,11 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 - **Odkaz na REST API je k dispozici** – Podívejte se na [odkaz v 2.1-Preview. 1.](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
 - **Nové jazyky podporované kromě angličtiny** jsou teď podporované tyto [jazyky](language-support.md) : pro `Layout` a `Train Custom Model` : angličtina ( `en` ), čínština (zjednodušená) ( `zh-Hans` ), holandština ( `nl` ), francouzština (), `fr` němčina (), `de` italština () `it` , portugalština () `pt` a španělština ( `es` ).
 - **Detekce značek zaškrtnutí nebo výběru** – Nástroj pro rozpoznávání formulářů podporuje detekci a extrakci značek výběru, jako jsou zaškrtávací políčka a přepínače. Značky výběru jsou extrahovány v `Layout` a nyní můžete také označovat popisky a vlaky v `Train Custom Model`  -  _vlakech pomocí popisků_ pro extrakci párů klíč-hodnota pro značky výběru. 
-- **Vytvoření modelu** umožňuje sestavit více modelů a volat je pomocí jediného ID modelu. Při odeslání dokumentu, který má být analyzován pomocí ID složeného modelu, je nejprve proveden krok klasifikace, který bude směrován do správného vlastního modelu. Vytváření modelů je k dispozici pro `Train Custom Model`  -  _vlaky s popisky_ .
-- **Název modelu** : přidejte do vlastních modelů popisný název pro snazší správu a sledování.
+- **Vytváření modelů** – umožňuje sestavit více modelů a volat je pomocí jediného ID modelu. Při odeslání dokumentu, který má být analyzován pomocí ID složeného modelu, je nejprve proveden krok klasifikace, který bude směrován do správného vlastního modelu. Vytváření modelů je k dispozici pro `Train Custom Model`  -  _vlaky s popisky_.
+- **Název modelu** – přidejte do vlastních modelů popisný název pro snazší správu a sledování.
 - **[Nový předem sestavený model pro vizitky](concept-business-cards.md)** pro extrakci společných polí v angličtině, jazykových obchodních karet.
 - **[Nové národní prostředí pro předem připravené příjmy](concept-receipts.md)** kromě en-US je teď k dispozici pro en-au, en-CA, en-GB, EN-in.
-- **Vylepšení kvality** pro `Layout` , `Train Custom Model`  -  _výuku bez popisků_ a _vlaků s popisky_ .
+- **Vylepšení kvality** pro `Layout` , `Train Custom Model`  -  _výuku bez popisků_ a _vlaků s popisky_.
 
 
 **v 2.0** zahrnuje následující aktualizaci:
@@ -45,7 +71,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 **Nové ukázky** jsou k dispozici na GitHubu. 
 - [Recepty pro extrakci znalostní báze – Forms PlayBook](https://github.com/microsoft/knowledge-extraction-recipes-forms) shromažďuje osvědčené postupy z reálných zákaznických zapojení pro rozpoznávání a poskytuje použitelné ukázky kódu, kontrolní seznamy a ukázkové kanály používané při vývoji těchto projektů. 
 - [Nástroj pro označování ukázek](https://github.com/microsoft/OCR-Form-Tools) byl aktualizován tak, aby podporoval nové funkce v 2.1. V tomto [rychlém](quickstarts/label-tool.md) startu najdete informace o tom, jak začít s nástrojem. 
-- Ukázka rozpoznávání formuláře [inteligentního veřejného terminálu](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) ukazuje, jak integrovat `Analyze Receipt` a `Train Custom Model`  -  _vyškolit bez popisků_ .
+- Ukázka rozpoznávání formuláře [inteligentního veřejného terminálu](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) ukazuje, jak integrovat `Analyze Receipt` a `Train Custom Model`  -  _vyškolit bez popisků_.
 
 
 
@@ -53,22 +79,22 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 
 ### <a name="new-features"></a>Nové funkce
 
-* **dostupný odkaz v 2.0** Podívejte se [na reference k rozhraní API v 2.0](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) a aktualizované sady SDK pro [.NET](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet), [Python](/python/api/overview/azure/?view=azure-python), [Java](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)a [JavaScript](/javascript/api/overview/azure/?view=azure-node-latest).
-* Vylepšení **tabulek a vylepšení extrakce** zahrnují vylepšení přesnosti a vylepšení extrahování tabulek, konkrétně možnost učit se záhlaví a struktury tabulek ve _vlastním vlaku bez popisků_ . 
+* **dostupné reference v 2.0** – Podívejte se na [Reference k rozhraní API v 2.0](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) a aktualizované sady SDK pro [.NET](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet), [Python](/python/api/overview/azure/?view=azure-python), [Java](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)a [JavaScript](/javascript/api/overview/azure/?view=azure-node-latest).
+* Vylepšení **tabulek a vylepšení extrakce** – obsahuje vylepšení přesnosti a vylepšení extrahování tabulek, konkrétně možnost učit se záhlaví a struktury tabulek ve _vlastním vlaku bez popisků_. 
 
-* **Podpora měn** Detekce a extrakce globálních symbolů měny.
-* **Gov Azure** Nástroj pro rozpoznávání formulářů je teď také dostupný v Azure gov.
-* **Rozšířené funkce zabezpečení** : 
-   * **Přineste si vlastní klíč**  Nástroj pro rozpoznávání formulářů automaticky šifruje vaše data při trvalém ukládání do cloudu, aby bylo možné je chránit a aby vám pomohla splnit vaše závazky na zabezpečení a dodržování předpisů v organizaci. Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. Vaše předplatné teď můžete spravovat i s vlastními šifrovacími klíči. [Klíče spravované zákazníkem (CMK), označované také jako Přineste si vlastní klíč (BYOK)](./form-recognizer-encryption-of-data-at-rest.md), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat.  
+* **Podpora měny** – detekce a extrakce globálních symbolů měn.
+* **Azure gov** – Nástroj pro rozpoznávání formulářů je teď dostupný i v Azure gov.
+* **Rozšířené funkce zabezpečení**: 
+   * **Přineste si vlastní** Nástroj pro rozpoznávání vlastního klíče, který vaše data automaticky šifruje, když jsou trvale chráněná v cloudu, a pomůžou vám splnit závazky zabezpečení a dodržování předpisů vaší organizace. Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. Vaše předplatné teď můžete spravovat i s vlastními šifrovacími klíči. [Klíče spravované zákazníkem (CMK), označované také jako Přineste si vlastní klíč (BYOK)](./form-recognizer-encryption-of-data-at-rest.md), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat.  
    * **Soukromé koncové body** – umožňují vám používat virtuální síť (VNET) pro [zabezpečený přístup k datům prostřednictvím privátního propojení.](../../private-link/private-link-overview.md)
 
 
 ## <a name="june-2020"></a>Červen 2020
 
 ### <a name="new-features"></a>Nové funkce
-* **Rozhraní API CopyModel přidané do klientských sad SDK** Nyní můžete použít klientské sady SDK ke kopírování modelů z jednoho předplatného do jiného. Obecné informace o této funkci najdete v tématu [zálohování a obnovení modelů](./disaster-recovery.md) .
-* **Integrace Azure Active Directory** Teď můžete použít svoje přihlašovací údaje Azure AD k ověřování objektů klienta pro rozpoznávání ve formuláři v sadách SDK.
-* **Změny specifické pro sadu SDK** Zahrnuje to i drobné dodatečné funkce a zásadní změny. Další informace najdete v tématu Protokol změn sady SDK.
+* **Rozhraní API CopyModel bylo přidáno do klientských sad SDK** – nyní můžete použít klientské sady SDK ke kopírování modelů z jednoho předplatného do jiného. Obecné informace o této funkci najdete v tématu [zálohování a obnovení modelů](./disaster-recovery.md) .
+* **Azure Active Directory Integration** – nyní můžete použít přihlašovací údaje služby Azure AD k ověřování objektů klienta pro rozpoznávání ve formuláři v sadách SDK.
+* **Změny specifické pro sadu SDK** – to zahrnuje i drobné dodatečné funkce a zásadní změny. Další informace najdete v tématu Protokol změn sady SDK.
   * [Protokol změn sady C# SDK Preview 3](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
   * [Protokol změn sady Python SDK verze 3](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
   * [Java SDK Preview 3 – protokol změn](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
@@ -77,7 +103,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 ## <a name="april-2020"></a>Duben 2020
 
 ### <a name="new-features"></a>Nové funkce
-* **Podpora sady SDK pro rozhraní API pro rozpoznávání formulářů v 2.0 Public Preview** Tento měsíc jsme rozšířili podporu naší služby tak, aby zahrnovala sadu SDK verze Preview pro vydaný formulář pro rozpoznávání formulářů v 2.0 (Preview). Pomocí odkazů níže můžete začít s jazykem, který si vyberete: 
+* **Podpora sady SDK pro rozhraní API pro rozpoznávání formulářů v 2.0 Public Preview** – tento měsíc rozšířili jsme podporu naší služby tak, aby ZAHRNOVALA sadu SDK verze Preview pro vydaný formulář pro rozpoznávání formulářů v 2.0 (Preview). Pomocí odkazů níže můžete začít s jazykem, který si vyberete: 
    * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet)
    * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)
    * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme?view=azure-python-preview)
@@ -91,7 +117,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 
 ### <a name="security-improvements"></a>Vylepšení zabezpečení
 
-* Pro FormRecognizer jsou teď k dispozici spravované klíče zákazníka. Další informace najdete v tématu [šifrování dat v klidovém formátu pro rozpoznávání formulářů](./form-recognizer-encryption-of-data-at-rest.md).
+* Customer-Managed klíče jsou nyní k dispozici pro FormRecognizer. Další informace najdete v tématu [šifrování dat v klidovém formátu pro rozpoznávání formulářů](./form-recognizer-encryption-of-data-at-rest.md).
 * Pomocí spravovaných identit můžete získat přístup k prostředkům Azure pomocí Azure Active Directory. Další informace najdete v tématu [autorizace přístupu ke spravovaným identitám](../authentication.md#authorize-access-to-managed-identities).
 
 ## <a name="march-2020"></a>Březen 2020 
@@ -111,9 +137,9 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
   Informace o tom, jak používat tuto funkci, najdete v průvodci [ukázkami popisků](./quickstarts/label-tool.md#specify-tag-value-types) .
 
 
-* **Vizualizace tabulky** Nástroj pro vzorkování popisků teď zobrazuje tabulky, které byly rozpoznané v dokumentu. To vám umožní zobrazit tabulky, které byly rozpoznány a extrahovány z dokumentu před popisky a analýzou. Tuto funkci můžete zapnout nebo vypnout pomocí možnosti vrstvy.
+* **Vizualizace tabulky** Nástroj pro vzorkování popisků teď zobrazuje tabulky, které byly rozpoznané v dokumentu. Tato funkce umožňuje zobrazit tabulky, které byly rozpoznány a extrahovány z dokumentu před popisky a analýzou. Tuto funkci můžete zapnout nebo vypnout pomocí možnosti vrstvy.
 
-  Toto je příklad, jak jsou tabulky rozpoznány a extrahovány:
+  Následující obrázek je příkladem způsobu, jakým jsou tabulky rozpoznány a extrahovány:
 
   > [!div class="mx-imgBorder"]
   > ![Vizualizace tabulky pomocí nástroje Sample labeling](./media/whats-new/formre-table-viz.png)
@@ -144,7 +170,7 @@ Tato verze zavádí nástroj pro rozpoznávání formulářů 2,0 (Preview). V n
 ### <a name="new-features"></a>Nové funkce
 
 * **Vlastní model**
-  * **Výuka s popisky** Nyní můžete vytvořit vlastní model s ručně označenými daty. Výsledkem je lepší provádění modelů a může způsobit vytváření modelů, které pracují se složitými formuláři nebo formuláři obsahujícími hodnoty bez klíčů.
+  * **Výuka s popisky** Nyní můžete vytvořit vlastní model s ručně označenými daty. Tato metoda vede k lepšímu provádění modelů a může vydávat modely, které pracují se složitými formuláři nebo formuláři obsahujícími hodnoty bez klíčů.
   * **Asynchronní rozhraní API** Asynchronní volání rozhraní API můžete použít ke školení a analýze velkých datových sad a souborů.
   * **Podpora souborů TIFF** Nyní můžete data z dokumentů TIFF vyškolit a extrahovat.
   * **Vylepšení přesnosti extrakce**

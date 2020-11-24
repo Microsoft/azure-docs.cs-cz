@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 04/10/2020
+ms.date: 11/18/2020
 ms.author: victorh
-ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f7aa61d3bfb3c712320bbf138160a7ff8197c7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087539"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95502192"
 ---
 # <a name="configure-azure-firewall-rules"></a>Konfigurace pravidel Azure Firewall
 Pravidla překladu adres (NAT), pravidla sítě a aplikace můžete nakonfigurovat na Azure Firewall. Kolekce pravidel se zpracovávají podle typu pravidla v pořadí podle priority, nižších čísel od 100 do 65 000. Název kolekce pravidel může obsahovat jenom písmena, číslice, podtržítka, tečky nebo spojovníky. Musí začínat písmenem nebo číslicí a končit písmenem, číslicí nebo podtržítkem. Maximální délka názvu je 80 znaků.
@@ -26,7 +26,13 @@ Doporučujeme, abyste v případě potřeby nasadili čísla priority kolekce pr
 
 ### <a name="network-rules-and-applications-rules"></a>Pravidla sítě a pravidla pro aplikace
 
-Pokud konfigurujete Síťová pravidla a pravidla pro aplikace, budou se Síťová pravidla aplikována v pořadí podle priority před pravidly aplikací. Pravidla se ukončí. Takže pokud se shoda najde v síťovém pravidle, nezpracovávají se žádná další pravidla.  Pokud se neshoduje žádné pravidlo sítě, a pokud je protokol HTTP, HTTPS nebo MSSQL, pak se paket vyhodnotí podle pravidel aplikace v pořadí podle priority. Pokud se pořád nenajde žádná shoda, vyhodnotí se paket na základě [kolekce pravidel infrastruktury](infrastructure-fqdns.md). Pokud se stále nenajde žádná shoda, ve výchozím nastavení se paket odepře.
+Pokud konfigurujete Síťová pravidla a pravidla pro aplikace, budou se Síťová pravidla aplikována v pořadí podle priority před pravidly aplikací. Pravidla se ukončí. Takže pokud se shoda najde v síťovém pravidle, nezpracovávají se žádná další pravidla.  Pokud se neshoduje žádné síťové pravidlo, a pokud je protokol HTTP, HTTPS nebo MSSQL, pak se paket vyhodnotí podle pravidel aplikace v pořadí podle priority. Pokud se pořád nenajde žádná shoda, vyhodnotí se paket na základě [kolekce pravidel infrastruktury](infrastructure-fqdns.md). Pokud se ještě neshodují, pak je ve výchozím nastavení povolený paket.
+
+#### <a name="network-rule-protocol"></a>Protokol síťových pravidel
+
+Síťová pravidla je možné nakonfigurovat pro protokol **TCP**, **UDP**, protokol **ICMP** nebo **jakýkoli** protokol IP. Jakýkoli protokol IP zahrnuje všechny protokoly IP, jak jsou definované v dokumentu [čísla protokolů (IANA) (Internet Assigned Numbers Authority)](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) . Pokud je cílový port explicitně nakonfigurovaný, pravidlo se převede na pravidlo TCP + UDP.
+
+Do 9. listopadu 2020 **všechny** určené **TCP**, **UDP** nebo **ICMP**. Proto jste mohli nakonfigurovat pravidlo před tímto datem pomocí Protocol = any a cílovými porty = ' * '. Pokud teď nechcete povolit žádný protokol IP, který je aktuálně definovaný, upravte pravidlo tak, aby explicitně nakonfigurovalo protokoly, které chcete (TCP, UDP nebo ICMP).
 
 ## <a name="inbound-connectivity"></a>Příchozí připojení
 
@@ -57,7 +63,7 @@ Připojení k google.com je povolené z důvodu odpovídajícího síťového pr
 
 - Akce: Deny
 
-|name  |Typ zdroje  |Zdroj  |Protokol: port|Cílové plně kvalifikované názvy domén|
+|name  |Typ zdroje  |Zdroj  |Protokol:port|Cílové plně kvalifikované názvy domén|
 |---------|---------|---------|---------|----------|----------|
 |Odepřít – Google     |IP adresa|*|http: 80, https: 443|google.com
 

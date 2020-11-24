@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 82182c24f87a82df5ee040b7853588f74dda449f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 76e19c36f0fa4096966c5dd23d2384b6b30f2271
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909943"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95498856"
 ---
 # <a name="business-card-concepts"></a>Principy vizitek
 
@@ -52,15 +52,15 @@ Rozhraní API pro vizitky může také vracet veškerý rozpoznaný text z vizit
 
 ## <a name="the-analyze-business-card-operation"></a>Operace analyzovat obchodní kartu
 
-[Karta analyzovat obchodní kartu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) jako vstup převezme obrázek nebo PDF vizitky a získá hodnoty, které vás zajímají. Volání vrátí pole hlavičky odpovědi s názvem `Operation-Location` . `Operation-Location`Hodnota je adresa URL, která obsahuje ID výsledku, které se má použít v dalším kroku.
+[Karta analyzovat obchodní kartu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync) jako vstup převezme obrázek nebo PDF vizitky a získá hodnoty, které vás zajímají. Volání vrátí pole hlavičky odpovědi s názvem `Operation-Location` . `Operation-Location`Hodnota je adresa URL, která obsahuje ID výsledku, které se má použít v dalším kroku.
 
 |Hlavička odpovědi| Adresa URL výsledku |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-analyze-business-card-result-operation"></a>Operace získání výsledku analýzy obchodních karet
 
-Druhým krokem je zavolat operaci [získat výsledky analýzy obchodních karet](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeBusinessCardResult) . Tato operace přijímá jako vstup ID výsledku, které bylo vytvořeno operací analyzovat obchodní kartu. Vrátí odpověď JSON, která obsahuje pole **stav** s následujícími možnými hodnotami. Tuto operaci zavoláte iterativní, dokud se nevrátí s hodnotou **úspěch** . Použijte interval 3 až 5 sekund, abyste předešli překročení sazby za sekundu (RPS).
+Druhým krokem je zavolat operaci [získat výsledky analýzy obchodních karet](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeBusinessCardResult) . Tato operace přijímá jako vstup ID výsledku, které bylo vytvořeno operací analyzovat obchodní kartu. Vrátí odpověď JSON, která obsahuje pole **stav** s následujícími možnými hodnotami. Tuto operaci zavoláte iterativní, dokud se nevrátí s hodnotou **úspěch** . Použijte interval 3 až 5 sekund, abyste předešli překročení sazby za sekundu (RPS).
 
 |Pole| Typ | Možné hodnoty |
 |:-----|:----:|:----|
@@ -394,4 +394,4 @@ Rozhraní API na vizitce také zajišťuje [funkci pro zpracování AIBuilder ob
 ## <a name="see-also"></a>Viz také
 
 * [Co je služba Rozpoznávání formulářů?](./overview.md)
-* [Referenční dokumentace REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
+* [Referenční dokumentace REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)

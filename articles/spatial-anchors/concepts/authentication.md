@@ -1,20 +1,20 @@
 ---
 title: Ověřování a autorizace
 description: Seznamte se s různými způsoby, jak se aplikace nebo služba může ověřit pro prostorové kotvy Azure, a úrovně řízení, které musíte mít v bráně přístup k prostorovým ukotvením.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 10/08/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3d88c8d5d42e3dec2142df1ede7a9ee50898e92
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 0166a3b6031f9e1d364a37db99be5bc5a65267df
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242343"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95484606"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Ověřování a autorizace pro prostorové kotvy Azure
 
@@ -97,28 +97,28 @@ Pro aplikace, které cílí na Azure Active Directory uživatele, doporučujeme 
 **V Azure Portal**
 1.    Zaregistrujte svoji aplikaci ve službě Azure AD jako nativní aplikaci. V rámci registrace budete muset určit, jestli má být vaše aplikace víceklientské. Také budete muset zadat adresy URL pro přesměrování povolené pro vaši aplikaci.
 1.  Přejít na kartu **oprávnění rozhraní API** .
-2.  Vyberte **Přidat oprávnění** .
+2.  Vyberte **Přidat oprávnění**.
     1.  Vyberte **poskytovatele prostředků hybridní reality** v **rozhraních API moje organizace používá** kartu.
-    2.  Vyberte **delegovaná oprávnění** .
-    3.  Vyberte **mixedreality.** Přihlaste se pod **mixedreality** .
-    4.  Vyberte **Přidat oprávnění** .
-3.  Vyberte **udělit souhlas správce** .
+    2.  Vyberte **delegovaná oprávnění**.
+    3.  Vyberte **mixedreality.** Přihlaste se pod **mixedreality**.
+    4.  Vyberte **Přidat oprávnění**.
+3.  Vyberte **udělit souhlas správce**.
 
 2. Udělit vaší aplikaci nebo uživatelům přístup k vašemu prostředku:
    1.    V Azure Portal přejít na prostředek prostorových ukotvení.
    2.    Přejděte na kartu **řízení přístupu (IAM)** .
-   3.    Vyberte **Přidat přiřazení role** .
+   3.    Vyberte **Přidat přiřazení role**.
    1.    [Vyberte roli](#azure-role-based-access-control).
    2.    Do pole **Vybrat** zadejte jména uživatelů, skupin nebo aplikací, ke kterým chcete přiřadit přístup.
-   3.    Vyberte **Uložit** .
+   3.    Vyberte **Uložit**.
 
 **Ve vašem kódu**
 1.    Nezapomeňte použít ID aplikace a identifikátor URI pro přesměrování vlastní aplikace Azure AD pro **ID klienta** a parametry **RedirectUri** v MSAL.
 2.    Nastavte informace o tenantovi:
-        1.    Pokud vaše aplikace podporuje **jenom moji organizaci** , nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** . Například contoso.microsoft.com.
-        2.    Pokud vaše aplikace podporuje **účty v jakémkoli organizačním adresáři** , nahraďte tuto hodnotu **organizacemi** .
-        3.    Pokud vaše aplikace podporuje **všechny účet Microsoft uživatele** , nahraďte tuto hodnotu **běžnými** .
-3.    U žádosti o token nastavte **obor** na " **`https://sts.<account-domain>//.default` "** , kde `<account-domain>` se nahradí **doménou účtu** pro účet prostorových kotev Azure. Příkladem oboru pro účet prostorových kotev Azure v doméně účtu Východní USA 2 je " **`https://sts.mixedreality.azure.com//.default` "** . Tento obor oznamuje službě Azure AD, že vaše aplikace požaduje token pro službu tokenu zabezpečení (STS) pro Mixed reality.
+        1.    Pokud vaše aplikace podporuje **jenom moji organizaci**, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta**. Například contoso.microsoft.com.
+        2.    Pokud vaše aplikace podporuje **účty v jakémkoli organizačním adresáři**, nahraďte tuto hodnotu **organizacemi**.
+        3.    Pokud vaše aplikace podporuje **všechny účet Microsoft uživatele**, nahraďte tuto hodnotu **běžnými**.
+3.    U žádosti o token nastavte **obor** na " **`https://sts.<account-domain>//.default` "**, kde `<account-domain>` se nahradí **doménou účtu** pro účet prostorových kotev Azure. Příkladem oboru pro účet prostorových kotev Azure v doméně účtu Východní USA 2 je " **`https://sts.mixedreality.azure.com//.default` "**. Tento obor oznamuje službě Azure AD, že vaše aplikace požaduje token pro službu tokenu zabezpečení (STS) pro Mixed reality.
 
 Po dokončení tohoto postupu by vaše aplikace měla být schopná získat z MSAL tokenu služby Azure AD. Token Azure AD můžete nastavit jako `authenticationToken` v objektu konfigurace relace cloudu:
 
@@ -174,30 +174,30 @@ Přístupový token Azure AD se načte přes [MSAL](../../active-directory/devel
 
 **V Azure Portal**
 1.    Registrace aplikace ve službě Azure AD:
-        1.    V Azure Portal vyberte **Azure Active Directory** a pak vyberte **Registrace aplikací** .
-        2.    Vyberte **Nová registrace** .
-        3.    Zadejte název vaší aplikace, jako typ aplikace vyberte **Webová aplikace nebo rozhraní API** a zadejte adresu URL ověřování pro vaši službu. Vyberte **Vytvořit** .
-2.    V aplikaci vyberte **Nastavení** a pak vyberte kartu **certifikáty a tajné klíče** . Vytvořte nový tajný klíč klienta, vyberte dobu trvání a pak vyberte **Přidat** . Nezapomeňte uložit tajnou hodnotu. Budete je muset zahrnout do kódu vaší webové služby.
+        1.    V Azure Portal vyberte **Azure Active Directory** a pak vyberte **Registrace aplikací**.
+        2.    Vyberte **Nová registrace**.
+        3.    Zadejte název vaší aplikace, jako typ aplikace vyberte **Webová aplikace nebo rozhraní API** a zadejte adresu URL ověřování pro vaši službu. Vyberte **Vytvořit**.
+2.    V aplikaci vyberte **Nastavení** a pak vyberte kartu **certifikáty a tajné klíče** . Vytvořte nový tajný klíč klienta, vyberte dobu trvání a pak vyberte **Přidat**. Nezapomeňte uložit tajnou hodnotu. Budete je muset zahrnout do kódu vaší webové služby.
 3.    Udělte vaší aplikaci nebo uživatelům přístup k vašemu prostředku:
         1.    V Azure Portal přejít na prostředek prostorových ukotvení.
         2.    Přejděte na kartu **řízení přístupu (IAM)** .
-        3.    Vyberte **Přidat přiřazení role** .
+        3.    Vyberte **Přidat přiřazení role**.
         4.    [Vyberte roli](#azure-role-based-access-control).
         5.    Do pole **Vybrat** zadejte název nebo názvy aplikací, ke kterým chcete přiřadit přístup. Pokud chcete, aby uživatelé vaší aplikace měli různé role proti účtu prostorové kotvy, zaregistrujte několik aplikací v Azure AD a přiřaďte jim samostatnou roli. Potom implementujte logiku autorizace pro použití správné role pro vaše uživatele.
 
               > [!NOTE]
-              > V podokně **Přidat přiřazení role** v části **přiřazení přístupu k** vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD** .
+              > V podokně **Přidat přiřazení role** v části **přiřazení přístupu k** vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**.
 
-        6.    Vyberte **Uložit** .
+        6.    Vyberte **Uložit**.
 
 **Ve vašem kódu**
 
 >[!NOTE]
 > Můžete použít ukázku služby, která je k dispozici na GitHubu.
 
-1.    Nezapomeňte použít ID aplikace, tajný klíč aplikace a identifikátor URI přesměrování vlastní aplikace Azure AD jako **ID klienta** , **tajný klíč** a parametry **RedirectUri** v MSAL.
+1.    Nezapomeňte použít ID aplikace, tajný klíč aplikace a identifikátor URI přesměrování vlastní aplikace Azure AD jako **ID klienta**, **tajný klíč** a parametry **RedirectUri** v MSAL.
 2.    Nastavte ID tenanta na vlastní ID tenanta Azure AD v parametru **autorita** v MSAL.
-3.    U žádosti o token nastavte **obor** na " **`https://sts.<account-domain>//.default` "** , kde `<account-domain>` se nahradí **doménou účtu** pro účet prostorových kotev Azure. Příkladem oboru pro účet prostorových kotev Azure v doméně účtu Východní USA 2 je " **`https://sts.mixedreality.azure.com//.default` "** .
+3.    U žádosti o token nastavte **obor** na " **`https://sts.<account-domain>//.default` "**, kde `<account-domain>` se nahradí **doménou účtu** pro účet prostorových kotev Azure. Příkladem oboru pro účet prostorových kotev Azure v doméně účtu Východní USA 2 je " **`https://sts.mixedreality.azure.com//.default` "**.
 
 Po dokončení tohoto postupu může vaše back-end služba získat token Azure AD. Pak ho může vyměňovat pro token MR, který se vrátí zpátky klientovi. Použití tokenu Azure AD k načtení tokenu MR se provádí prostřednictvím volání REST. Zde je příklad volání:
 
@@ -266,7 +266,7 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 Abychom vám pomohli řídit úroveň přístupu udělených aplikacím, službám nebo uživatelům Azure AD vaší služby, můžete těmto již existujícím rolím přiřadit účty prostorových kotev Azure:
 
-- **Vlastník účtu prostorových ukotvení** . Aplikace nebo uživatelé, kteří mají tuto roli, mohou vytvářet prostorové kotvy, dotazovat se na ně a odstraňovat je. Při ověřování na účet pomocí klíčů účtu se k ověřenému objektu zabezpečení přiřadí role vlastníka účtu prostorových ukotvení.
+- **Vlastník účtu prostorových ukotvení**. Aplikace nebo uživatelé, kteří mají tuto roli, mohou vytvářet prostorové kotvy, dotazovat se na ně a odstraňovat je. Při ověřování na účet pomocí klíčů účtu se k ověřenému objektu zabezpečení přiřadí role vlastníka účtu prostorových ukotvení.
 - **Přispěvatel účtu prostorových kotev** Aplikace nebo uživatelé, kteří mají tuto roli, mohou vytvářet prostorové kotvy a dotazovat se na ně, ale nemůžou je odstranit.
 - **Čtečka účtu prostorových kotev** Aplikace nebo uživatelé, kteří mají tuto roli, se mohou dotazovat pouze na prostorové kotvy. Nemůžou vytvářet nové, odstraňovat existující nebo aktualizovat metadata. Tato role se obvykle používá pro aplikace, u kterých někteří uživatelé nastavili prostředí, ale jiné mohou volat pouze kotvy dříve umístěné v prostředí.
 

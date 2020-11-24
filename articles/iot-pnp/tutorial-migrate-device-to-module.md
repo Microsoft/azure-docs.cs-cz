@@ -7,18 +7,18 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dc86340026ec7b85afc9e5208ea8ef8c32d8bac6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9ac616ddf1c3475f2ca3b3e8097bb74da72faa77
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421460"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95500267"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Kurz: připojení modulu IoT technologie Plug and Play (C#)
 
 V tomto kurzu se dozvíte, jak propojit obecný [modul](../iot-hub/iot-hub-devguide-module-twins.md)IoT technologie Plug and Play.
 
-Zařízení je technologie Plug and Play IoT, pokud při připojení ke službě IoT Hub zveřejňuje své ID modelu a implementuje vlastnosti a metody popsané v modelu DTDL (Digital Data Definition Language), který identifikuje ID modelu. Další informace o tom, jak zařízení používají DTDL a ID modelu, najdete v tématu [Příručka pro vývojáře IoT technologie Plug and Play](./concepts-developer-guide-device-csharp.md). Moduly používají identifikátory modelu a modely DTDL stejným způsobem.
+Zařízení je technologie Plug and Play IoT, pokud při připojení ke službě IoT Hub zveřejňuje své ID modelu a implementuje vlastnosti a metody popsané v modelu DTDL (Digital Data Definition Language), který identifikuje ID modelu. Další informace o tom, jak zařízení používají DTDL a ID modelu, najdete v tématu [Příručka pro vývojáře IoT technologie Plug and Play](./concepts-developer-guide-device.md). Moduly používají identifikátory modelu a modely DTDL stejným způsobem.
 
 V tomto kurzu se dozvíte, jak implementovat modul IoT technologie Plug and Play, v tomto kurzu se dozvíte, jak převést vzorek termostatu pro zařízení C# na obecný modul.
 
@@ -33,7 +33,7 @@ Pro dokončení tohoto kurzu ve Windows nainstalujte do svého místního prost�
 
 Pomocí nástroje Azure IoT Explorer přidejte do služby IoT Hub nové zařízení s názvem **Moje modul – zařízení** .
 
-Přidejte modul s názvem **My-Module** do **složky Moje modul – zařízení** :
+Přidejte modul s názvem **My-Module** do **složky Moje modul – zařízení**:
 
 1. V nástroji Azure IoT Explorer přejděte do zařízení **Moje modul – zařízení** .
 
@@ -238,4 +238,4 @@ Pomocí nástroje Azure IoT Explorer můžete zobrazit:
 V tomto kurzu jste se naučili připojit zařízení IoT technologie Plug and Play k modulům ke službě IoT Hub. Další informace o modelech zařízení IoT technologie Plug and Play najdete v tématech:
 
 > [!div class="nextstepaction"]
-> [Příručka pro vývojáře IoT technologie Plug and Play Modeling](./concepts-developer-guide-device-csharp.md)
+> [Příručka pro vývojáře IoT technologie Plug and Play Modeling](./concepts-developer-guide-device.md)

@@ -1,19 +1,19 @@
 ---
 title: Instalace prostorových kotev Azure pro Unity
 description: Konfigurace projektu Unity pro použití prostorových kotev Azure
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 09/29/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2330310b0bf4e165af71208477db128650a787cf
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530408"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496935"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Konfigurace prostorových kotev Azure v projektu Unity
 
@@ -55,7 +55,7 @@ Prostorové kotvy Azure pro Unity jsou aktuálně distribuované pomocí balíč
 #### <a name="android-only-configure-the-maintemplategradle-file"></a>Jenom Android: konfigurace souboru mainTemplate. Gradle
 
 1. Přejít na **Upravit**  >  **nastavení projektu**  >  **Player**.
-2. Na **panelu Inspektor** pro **nastavení přehrávače**vyberte ikonu **Androidu** .
+2. Na **panelu Inspektor** pro **nastavení přehrávače** vyberte ikonu **Androidu** .
 3. V části **sestavení** zaškrtněte políčko **vlastní hlavní Gradle šablona** , čímž vygenerujete vlastní šablonu Gradle na adrese `Assets\Plugins\Android\mainTemplate.gradle` .
 4. Otevřete `mainTemplate.gradle` soubor v textovém editoru.
 5. V `dependencies` části vložte následující závislosti:

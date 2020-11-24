@@ -3,12 +3,12 @@ title: Připojení hybridních počítačů k Azure pomocí PowerShellu
 description: V tomto článku se dozvíte, jak nainstalovat agenta a připojit počítač k Azure pomocí serverů s podporou ARC Azure. Můžete to provést pomocí PowerShellu.
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: f85e2564b2e5b194d306ef4bad2269982331a7d4
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0218235179e1a8a883360d0061e685c04079cbf4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422769"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95492937"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>Připojení hybridních počítačů k Azure pomocí PowerShellu
 
@@ -45,13 +45,13 @@ Po dokončení instalace se zobrazí následující zpráva:
     * Pokud chcete nainstalovat agenta připojeného počítače na cílový počítač, který může přímo komunikovat s Azure, spusťte:
 
         ```azurepowershell
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region>
         ```
     
     * Chcete-li nainstalovat agenta připojeného počítače do cílového počítače, který komunikuje prostřednictvím proxy server, spusťte příkaz:
         
         ```azurepowershell
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -Proxy http://<proxyURL>:<proxyport>
         ```
 
 Pokud se agent po dokončení instalace nepovede spustit, podívejte se do protokolů, kde najdete podrobnější informace o chybě. Ve Windows ověřte tento soubor: *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log*. V systému Linux ověřte tento soubor: */var/opt/azcmagent/log/himds.log*.
@@ -64,20 +64,20 @@ Tady je postup konfigurace jednoho nebo více serverů Windows se servery, kter�
 
 2. Přihlaste se k Azure spuštěním příkazu `Connect-AzAccount` .
 
-3. Chcete-li nainstalovat agenta připojeného počítače, použijte `Connect-AzConnectedMachine` `-Name` parametr s `-ResourceGroupName` parametry, a `-Location` . Pomocí `-SubscriptionId` parametru můžete přepsat výchozí předplatné v důsledku kontextu Azure vytvořeného po přihlášení.
+3. K instalaci agenta připojeného počítače použijte `Connect-AzConnectedMachine` s `-ResourceGroupName` `-Location` parametry a. Názvy prostředků Azure budou automaticky používat název hostitele každého serveru. Pomocí `-SubscriptionId` parametru můžete přepsat výchozí předplatné v důsledku kontextu Azure vytvořeného po přihlášení.
 
     * Pro instalaci agenta připojeného počítače na cílový počítač, který může přímo komunikovat do Azure, spusťte následující příkaz:
     
         ```azurepowershell
-        $session = Connect-PSSession -ComputerName myMachineName
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        $sessions = New-PSSession -ComputerName myMachineName
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Location <region> -PSSession $sessions
         ```
     
     * Chcete-li nainstalovat agenta připojeného počítače do několika vzdálených počítačů současně, přidejte seznam názvů vzdálených počítačů, každou oddělenou čárkou.
 
         ```azurepowershell
-        $session = Connect-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        $sessions = New-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Location <region> -PSSession $sessions
         ```
 
     Následující příklad ukazuje výsledky příkazu, který cílí na jeden počítač:

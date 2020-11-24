@@ -1,19 +1,19 @@
 ---
 title: Přehled Unity prostorových kotev Azure
 description: Přečtěte si, jak můžete používat prostorové kotvy Azure v aplikacích Unity. Projděte si rychlý Start pro Unity pro HoloLens, Unity pro Android a Unity pro iOS.
-author: rgarcia
-ms.author: rgarcia
-manager: vriveras
+author: msftradford
+ms.author: parkerra
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
-ms.date: 02/26/2020
+ms.date: 11/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: d55890fc97ff24bd4b77628791bdda60c5f54347
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 51df8ff31c6f86608b7cae53ca779a2a03068e57
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096143"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95487261"
 ---
 # <a name="building-in-unity-with-azure-spatial-anchors"></a>Sestavování v Unity pomocí prostorových kotev Azure
 

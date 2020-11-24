@@ -7,19 +7,18 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
 ms.topic: overview
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dc0429ae4507172e95618bc95e6a2c51034d352
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bf5a06cf906084e3f87d5f56748476a26587ff17
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379097"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95490727"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -135,7 +134,7 @@ Vlastnosti používané pro pravidla zařízení najdete v tématu [pravidla pro
 
 V následující tabulce jsou uvedeny všechny podporované operátory a jejich syntaxe pro jeden výraz. Operátory lze použít s předponou spojovníku (-) nebo bez ní.
 
-| Operátor | Syntax |
+| Operátor | Syntaxe |
 | --- | --- |
 | Nerovná se |-Ne |
 | Je rovno |– EQ |
@@ -309,8 +308,8 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 Následující tipy vám pomůžou pravidlo používat správně.
 
-- **ID správce** je ID objektu správce. Najdete ho v **profilu**správce.
-- Aby pravidlo fungovalo, ujistěte se, že je vlastnost **Manager** nastavena správně pro uživatele ve vaší organizaci. Aktuální hodnotu můžete ověřit v **profilu**uživatele.
+- **ID správce** je ID objektu správce. Najdete ho v **profilu** správce.
+- Aby pravidlo fungovalo, ujistěte se, že je vlastnost **Manager** nastavena správně pro uživatele ve vaší organizaci. Aktuální hodnotu můžete ověřit v **profilu** uživatele.
 - Toto pravidlo podporuje pouze přímé sestavy vedoucího správce. Jinými slovy, nemůžete vytvořit skupinu s přímými sestavami manažera *a* jejich sestavami.
 - Toto pravidlo nelze kombinovat s jinými pravidly členství.
 
