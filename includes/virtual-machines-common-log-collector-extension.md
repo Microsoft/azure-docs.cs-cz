@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a442b5de7a256dd8bcf47da741bd41894709c3a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74085231"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559612"
 ---
 Diagnostikování problémů s Microsoft Azure cloudovou službou vyžaduje shromažďování souborů protokolu služby na virtuálních počítačích, když dojde k těmto potížím. Rozšíření AzureLogCollector můžete použít na vyžádání a provádět jednorázovou kolekci protokolů z jednoho nebo více virtuálních počítačů cloudových služeb (z webových rolí a rolí pracovních procesů) a přenést shromážděné soubory do účtu služby Azure Storage – to vše bez vzdáleného přihlášení k žádnému virtuálnímu počítači.
 
@@ -36,7 +36,7 @@ V obou režimech kolekce lze zadat další složky shromažďování dat pomocí
 * **SearchPattern**: vzor názvů souborů, které mají být shromážděny. Výchozí hodnota je " \* "
 * **Rekurzivní**: Pokud se soubory, které se mají shromažďovat, rekurzivně nacházejí v zadaném umístění.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
@@ -44,11 +44,11 @@ V obou režimech kolekce lze zadat další složky shromažďování dat pomocí
 * Azure Powershell Pokyny k instalaci naleznete v tématu [install Azure PowerShell](/powershell/azure/install-az-ps)].
 
 ## <a name="add-the-extension"></a>Přidání rozšíření
-K přidání rozšíření AzureLogCollector můžete použít rutiny [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) nebo [rozhraní REST API pro správu služeb](https://msdn.microsoft.com/library/ee460799.aspx) .
+K přidání rozšíření AzureLogCollector můžete použít rutiny [Microsoft Azure PowerShell](/previous-versions/azure/dn495240(v=azure.100)) nebo [rozhraní REST API pro správu služeb](/previous-versions/azure/ee460799(v=azure.100)) .
 
-Pro Cloud Services je možné pomocí existující rutiny Azure PowerShellu **set-AzureServiceExtension**povolit rozšíření pro instance rolí cloudové služby. Pokaždé, když je toto rozšíření povoleno prostřednictvím této rutiny, je kolekce protokolů aktivována u vybraných instancí rolí vybraných rolí.
+Pro Cloud Services je možné pomocí existující rutiny Azure PowerShellu **set-AzureServiceExtension** povolit rozšíření pro instance rolí cloudové služby. Pokaždé, když je toto rozšíření povoleno prostřednictvím této rutiny, je kolekce protokolů aktivována u vybraných instancí rolí vybraných rolí.
 
-Pro Virtual Machines je možné pomocí existující rutiny Azure PowerShellu **set-AzureVMExtension**povolit rozšíření na Virtual Machines. Pokaždé, když je toto rozšíření povoleno prostřednictvím rutin, je shromažďování protokolů aktivováno u každé instance.
+Pro Virtual Machines je možné pomocí existující rutiny Azure PowerShellu **set-AzureVMExtension** povolit rozšíření na Virtual Machines. Pokaždé, když je toto rozšíření povoleno prostřednictvím rutin, je shromažďování protokolů aktivováno u každé instance.
 
 Interně toto rozšíření používá PublicConfiguration a PrivateConfiguration založené na formátu JSON. Následuje rozložení ukázkového formátu JSON pro veřejnou a soukromou konfiguraci.
 
@@ -528,4 +528,3 @@ else
 
 ## <a name="next-steps"></a>Další kroky
 Nyní můžete protokoly kontrolovat nebo kopírovat z jednoho jednoduchého umístění.
-

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: 37a61e270f95ffdc420536046e0ce1eda1e489b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 826fccad043b067ce86d5f56eaebc6ee48b532d1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391470"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557729"
 ---
 | Prostředek |[Plán Consumption](../articles/azure-functions/functions-scale.md#consumption-plan)|[Plán Premium](../articles/azure-functions/functions-scale.md#premium-plan)|[Vyhrazený plán](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
@@ -19,7 +19,7 @@ ms.locfileid: "85391470"
 | Maximální velikost požadavku (MB)<sup>3</sup> | 100 | 100 | 100 | 100 | Závisí na clusteru |
 | Maximální délka řetězce dotazu<sup>3</sup> | 4 096 | 4 096 | 4 096 | 4 096 | Závisí na clusteru |
 | Maximální délka adresy URL požadavku<sup>3</sup> | 8192 | 8192 | 8192 | 8192 | Závisí na clusteru |
-|[ACU](../articles/virtual-machines/windows/acu.md) na instanci | 100 | 210-840 | 100-840 | 210-250<sup>8</sup> | [Ceny AKS](https://azure.microsoft.com/pricing/details/container-service/) |
+|[ACU](../articles/virtual-machines/acu.md) na instanci | 100 | 210-840 | 100-840 | 210-250<sup>8</sup> | [Ceny AKS](https://azure.microsoft.com/pricing/details/container-service/) |
 | Maximální velikost paměti (GB na instanci) | 1.5 | 3,5 – 14 | 1,75 – 14 | 3,5 – 14 | Podporuje se libovolný uzel. |
 | Aplikace Function App na plán |100 |100 |neohraničené<sup>4</sup> | Unbounded | Unbounded |
 | [Plány služby App Service](../articles/app-service/overview-hosting-plans.md) | 100 na [oblast](https://azure.microsoft.com/global-infrastructure/regions/) |100 na skupinu prostředků |100 na skupinu prostředků | - | - |

@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e8e3df77df53b887c4367e46b05d8a7ea4eed2f6
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 946ff043828034340ae3273fc0629e32de755540
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061594"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556083"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>Vytvoření kořenového certifikátu podepsaného svým držitelem
 
-K vytvoření kořenového certifikátu podepsaného svým držitelem použijte rutinu New-SelfSignedCertificate. Další informace o parametrech najdete v článku [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+K vytvoření kořenového certifikátu podepsaného svým držitelem použijte rutinu New-SelfSignedCertificate. Další informace o parametrech najdete v článku [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate).
 
 1. Z počítače se systémem Windows 10 nebo Windows Server 2016 otevřete konzolu prostředí Windows PowerShell se zvýšenými oprávněními. Tyto příklady nefungují v Azure Cloud Shell "vyzkoušet". Tyto příklady musíte spustit místně.
-1. K vytvoření kořenového certifikátu podepsaného svým držitelem použijte následující příklad. Následující příklad vytvoří kořenový certifikát podepsaný svým držitelem s názvem "P2SRootCert", který je automaticky nainstalován v ' Certificates-Current User\Personal\Certificates '. Certifikát můžete zobrazit otevřením nástroje *certmgr. msc* nebo *správou uživatelských certifikátů* .
+1. K vytvoření kořenového certifikátu podepsaného svým držitelem použijte následující příklad. Následující příklad vytvoří kořenový certifikát podepsaný svým držitelem s názvem "P2SRootCert", který je automaticky nainstalován v ' Certificates-Current User\Personal\Certificates '. Certifikát můžete zobrazit otevřením nástroje *certmgr. msc* nebo *správou uživatelských certifikátů*.
 
    Přihlaste se pomocí `Connect-AzAccount` rutiny. Pak spusťte následující příklad se všemi potřebnými úpravami.
 
@@ -39,7 +39,7 @@ Každý klientský počítač, který se připojuje k virtuální síti pomocí 
 
 Následující kroky vás provedou vytvořením klientského certifikátu z kořenového certifikátu podepsaného svým držitelem. Můžete vygenerovat více klientských certifikátů ze stejného kořenového certifikátu. Když vygenerujete klientské certifikáty pomocí následujících kroků, klientský certifikát se automaticky nainstaluje na počítač, který jste použili k vygenerování certifikátu. Pokud chcete nainstalovat klientský certifikát do jiného klientského počítače, můžete certifikát exportovat.
 
-V příkladech se pomocí rutiny New-SelfSignedCertificate vygeneruje klientský certifikát, jehož platnost vyprší v jednom roce. Další informace o parametrech, jako je například nastavení jiné hodnoty vypršení platnosti pro klientský certifikát, naleznete v části [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+V příkladech se pomocí rutiny New-SelfSignedCertificate vygeneruje klientský certifikát, jehož platnost vyprší v jednom roce. Další informace o parametrech, jako je například nastavení jiné hodnoty vypršení platnosti pro klientský certifikát, naleznete v části [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate).
 
 ### <a name="example-1---powershell-console-session-still-open"></a>Příklad 1 – relace konzoly PowerShellu je pořád otevřená
 

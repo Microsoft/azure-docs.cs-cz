@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 1522bb133c7d8f877a334e47bf7929c533ea3465
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b827a80059cecadd7b76263f13dd4a0d141fc7a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375765"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560581"
 ---
 #### <a name="to-create-a-cloud-appliance"></a>Vytvoření cloudového zařízení
 
@@ -33,8 +33,7 @@ ms.locfileid: "93375765"
    7. Zaškrtnutím příslušného políčka potvrďte, že jste seznámeni s tím, že data uložená v cloudovém zařízení jsou hostována v datacentru Microsoftu.
        * Pokud používáte jenom fyzické zařízení, váš šifrovací klíč se uchovává se zařízením, a Microsoft proto nemůže data dešifrovat.
 
-       * Při použití cloudového zařízení jsou šifrovací i dešifrovací klíč uloženy v Microsoft Azure. Další informace najdete v tématu popisujícím [aspekty zabezpečení pro používání cloudového zařízení](../articles/storsimple/storsimple-security.md).
+       * Při použití cloudového zařízení jsou šifrovací i dešifrovací klíč uloženy v Microsoft Azure. Další informace najdete v tématu popisujícím [aspekty zabezpečení pro používání cloudového zařízení](../articles/storsimple/storsimple-8000-security.md).
    8. Kliknutím na **Vytvořit** zřiďte cloudové zařízení. Zřízení zařízení může trvat zhruba 30 minut. Po úspěšném vytvoření cloudového zařízení se zobrazí oznámení. Přejděte do okna Zařízení – seznam zařízení se aktualizuje a zobrazí se v něm cloudové zařízení. Stav zařízení je **Připraveno k nastavení**.
       
       ![Řešení StorSimple Cloud Appliance připravené k nastavení](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
-

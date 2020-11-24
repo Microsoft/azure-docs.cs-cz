@@ -4,16 +4,16 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: c71f35a06d904b45cb014d5199197220b57cf230
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95422ace63c9f79583de5a2c86d777ad4d0a8834
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79486012"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559346"
 ---
-Položky v dokumentu jsou `deploymentconfig.json` mapovány na parametry pro [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
+Položky v dokumentu jsou `deploymentconfig.json` mapovány na parametry pro [AksWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
 
-| Entita JSON | Parametr metody | Description |
+| Entita JSON | Parametr metody | Popis |
 | ----- | ----- | ----- |
 | `computeType` | Není k dispozici | Cílové výpočetní prostředí. Pro AKS musí být hodnota `aks` . |
 | `autoScaler` | Není k dispozici | Obsahuje prvky konfigurace pro automatické škálování. Podívejte se na tabulku automatického škálování. |

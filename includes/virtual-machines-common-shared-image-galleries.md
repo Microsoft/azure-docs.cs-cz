@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 29cbb2f6a7f0faf91852e520f15b779b3fe229c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897825"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555827"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem imagí. Galerie sdílených imagí poskytují:
 
@@ -45,7 +45,7 @@ Funkce Galerie sdílených imagí má více typů prostředků:
 
 Definice obrázků jsou logické seskupení pro verze image. Definice image obsahuje informace o tom, proč se image vytvořila, jaký operační systém je k dispozici, a další informace o použití image. Definice obrázku je jako plán pro všechny podrobnosti o vytváření konkrétní image. Virtuální počítač nebudete nasazovat z definice image, ale z verzí imagí vytvořených z definice.
 
-Existují tři parametry pro každou definici obrázku, které jsou používány v kombinaci – **Vydavatel** , **Nabídka** a **SKU** . Slouží k vyhledání konkrétní definice obrázku. Můžete mít verze bitové kopie, které sdílejí jednu nebo dvě, ale ne všechny tři hodnoty.  Tady jsou například tři definice obrázků a jejich hodnoty:
+Existují tři parametry pro každou definici obrázku, které jsou používány v kombinaci – **Vydavatel**, **Nabídka** a **SKU**. Slouží k vyhledání konkrétní definice obrázku. Můžete mít verze bitové kopie, které sdílejí jednu nebo dvě, ale ne všechny tři hodnoty.  Tady jsou například tři definice obrázků a jejich hodnoty:
 
 |Definice image|Publisher|Nabídka|Skladová jednotka (SKU)|
 |---|---|---|---|
@@ -71,7 +71,7 @@ Níže jsou uvedené další parametry, které je možné nastavit v definici im
 - Značka – při vytváření definice obrázku můžete přidat značky. Další informace o značkách najdete v tématu [použití značek k uspořádání prostředků](../articles/azure-resource-manager/management/tag-resources.md) .
 - Minimální a maximální doporučení pro vCPU a paměť – Pokud má vaše image doporučení vCPU a paměti, můžete tyto informace připojit k definici image.
 - Nepovolené typy disků – můžete zadat informace o požadavcích na úložiště pro váš virtuální počítač. Pokud například bitová kopie není vhodná pro disky se standardním pevným diskem, přidáte je do seznamu zakázat.
-- Informace o plánu nákupu pro Image Marketplace – `-PurchasePlanPublisher` , `-PurchasePlanName` a `-PurchasePlanProduct` . Další informace o nákupních plánech najdete v tématu [Vyhledání obrázků v Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) a [zadání informací o plánu Azure Marketplace nákupu při vytváření obrázků](../articles/virtual-machines/marketplace-images.md).
+- Informace o plánu nákupu pro Image Marketplace – `-PurchasePlanPublisher` , `-PurchasePlanName` a `-PurchasePlanProduct` . Další informace o nákupních plánech najdete v tématu [Vyhledání obrázků v Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) a [zadání informací o plánu Azure Marketplace nákupu při vytváření obrázků](../articles/virtual-machines/marketplace-images.md).
 
 
 ## <a name="image-versions"></a>Verze bitové kopie
@@ -110,7 +110,7 @@ Pro nasazení prostředků pomocí galerií sdílených imagí existují omezen�
 - 10 replik verzí imagí na jedno předplatné v jednotlivých oblastech
 - Všechny disky připojené k imagi musí být menší nebo rovny 1 TB.
 
-Další informace najdete v tématu o tom, jak kontrolovat [využití prostředků proti omezením](https://docs.microsoft.com/azure/networking/check-usage-against-limits) , v příkladech, jak kontrolovat aktuální využití.
+Další informace najdete v tématu o tom, jak kontrolovat [využití prostředků proti omezením](../articles/networking/check-usage-against-limits.md) , v příkladech, jak kontrolovat aktuální využití.
  
 ## <a name="scaling"></a>Škálování
 Galerie sdílených imagí umožňuje zadat počet replik, které má Azure uchovávat pro image. To pomáhá scénářům nasazení ve více virtuálních počítačích, protože nasazení virtuálních počítačů je možné rozložit do různých replik, které omezují nutnost zpracování vytváření instancí z důvodu přetížení jedné repliky.
@@ -128,7 +128,7 @@ Vždycky doporučujeme, abyste převedli počet replik z důvodu faktorů, jako 
 
 [Azure Zone redundantní úložiště (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) zajišťuje odolnost proti selhání zóny dostupnosti v oblasti. Díky obecné dostupnosti Galerie sdílených imagí si můžete vybrat ukládání imagí v účtech ZRS v oblastech s Zóny dostupnosti. 
 
-Můžete také zvolit typ účtu pro každou cílovou oblast. Výchozí typ účtu úložiště je Standard_LRS, ale můžete zvolit Standard_ZRS pro oblasti s Zóny dostupnosti. [Tady se můžete](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)podívat na oblast dostupnosti ZRS.
+Můžete také zvolit typ účtu pro každou cílovou oblast. Výchozí typ účtu úložiště je Standard_LRS, ale můžete zvolit Standard_ZRS pro oblasti s Zóny dostupnosti. [Tady se můžete](../articles/storage/common/storage-redundancy.md)podívat na oblast dostupnosti ZRS.
 
 ![Obrázek znázorňující ZRS](./media/shared-image-galleries/zrs.png)
 
@@ -139,7 +139,7 @@ Oblasti, do kterých se replikuje verze sdíleného obrázku, se dá po vytvoře
 
 ![Obrázek znázorňující, jak můžete replikovat image](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Přístup
+## <a name="access"></a>Access
 
 Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze image, všechny prostředky, můžou se sdílet pomocí integrovaných nativních ovládacích prvků Azure RBAC. Pomocí RBAC můžete tyto prostředky sdílet ostatním uživatelům, instančním objektům a skupinám. Můžete dokonce sdílet přístup jednotlivcům mimo klienta, kterého vytvořili v rámci. Jakmile má uživatel přístup ke sdílené imagi verze, může nasadit virtuální počítač nebo sadu škálování virtuálního počítače.  Tady je tabulka sdílení, která pomáhá pochopit, k čemu uživatel přistupuje:
 
@@ -183,11 +183,11 @@ Verze Image:
 
 Následující sady SDK podporují vytváření galerií sdílených imagí:
 
-- [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
-- [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-- [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
-- [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [Přejít](https://docs.microsoft.com/azure/go/)
+- [.NET](/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
+- [Java](/java/azure/?view=azure-java-stable)
+- [Node.js](/javascript/api/@azure/arm-compute)
+- [Python](/python/api/overview/azure/virtualmachines?view=azure-python)
+- [Přejít](/azure/go/)
 
 ## <a name="templates"></a>Šablony
 
@@ -222,9 +222,9 @@ Prostředek Galerie sdílených imagí můžete vytvořit pomocí šablon. K dis
 Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných, ke kterým máte přístup v Azure Portal, postupujte podle následujících kroků:
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
-1. Posuňte se dolů na stránku a vyberte **všechny prostředky** .
+1. Posuňte se dolů na stránku a vyberte **všechny prostředky**.
 1. Vyberte všechna předplatná, pod kterými chcete zobrazit seznam všech prostředků.
-1. Vyhledejte prostředky pro galerii typu **sdílená image** .
+1. Vyhledejte prostředky pro galerii typu **sdílená image**.
   
 Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných, ke kterým máte oprávnění, použijte následující příkaz v rozhraní příkazového řádku Azure CLI:
 
@@ -244,8 +244,8 @@ Ano. Existují tři scénáře založené na typech imagí, které máte pravdě
 
  Scénář 3: Pokud máte v místním systému souborů virtuální pevný disk, budete muset virtuální pevný disk nahrát do spravované image a pak z něj můžete vytvořit definici image a verzi image.
 
-- Pokud virtuální pevný disk má virtuální počítač s Windows, přečtěte si téma [nahrání virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
-- Pokud je virtuální pevný disk pro virtuální počítač se systémem Linux, přečtěte si téma [nahrání VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
+- Pokud virtuální pevný disk má virtuální počítač s Windows, přečtěte si téma [nahrání virtuálního pevného disku](../articles/virtual-machines/windows/upload-generalized-managed.md).
+- Pokud je virtuální pevný disk pro virtuální počítač se systémem Linux, přečtěte si téma [nahrání VHD](../articles/virtual-machines/linux/upload-vhd.md#option-1-upload-a-vhd)
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Můžu vytvořit verzi image z specializovaného disku?
 
@@ -310,4 +310,4 @@ Pro nasazení virtuálních počítačů a virtuálních počítačů pomocí ve
 
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>Můžu aktualizovat sadu škálování virtuálního počítače vytvořenou pomocí spravované image pro použití imagí Galerie sdílených imagí?
 
-Ano, můžete aktualizovat odkaz na obrázek sady škálování ze spravované image na Image Galerie sdílených imagí, pokud typ operačního systému, generaci technologie Hyper-V a rozložení datových disků odpovídají mezi obrázky. 
+Ano, můžete aktualizovat odkaz na obrázek sady škálování ze spravované image na Image Galerie sdílených imagí, pokud typ operačního systému, generaci technologie Hyper-V a rozložení datových disků odpovídají mezi obrázky.

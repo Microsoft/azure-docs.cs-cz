@@ -4,15 +4,15 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: aec13c6beb8dbfcdd5f38e7f96b86bf03e42fa37
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5c2959a1bf6225c164f8538c3c437e464d834b96
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80986725"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556254"
 ---
 ## <a name="create-a-ruby-application"></a>Vytvoření aplikace v Ruby
-Pokyny najdete v tématu [Vytvoření aplikace v Ruby v Azure](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md).
+Pokyny najdete v tématu [Vytvoření aplikace v Ruby v Azure](/previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app).
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití Service Bus
 Pokud chcete použít Service Bus, Stáhněte a použijte balíček Azure Ruby, který obsahuje sadu praktických knihoven, které komunikují se službou REST (Storage).

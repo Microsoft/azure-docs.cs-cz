@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d8583a1fee96d0a6eb3300882b2b115f057cbeec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 54f4835a904b897370cf9f075ae3c005b1114992
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136172"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557287"
 ---
-[Získání stavu koncového bodu](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) v REST API poskytuje stav koncových bodů a také poslední známou chybu k identifikaci důvodu, proč koncový bod není v pořádku. V tabulce níže jsou uvedeny nejběžnější chyby.
+[Získání stavu koncového bodu](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) v REST API poskytuje stav koncových bodů a také poslední známou chybu k identifikaci důvodu, proč koncový bod není v pořádku. V tabulce níže jsou uvedeny nejběžnější chyby.
 
 |Poslední známá chyba|Popis/kdy k ní dojde|Možné zmírnění|
 |-----|-----|-----|
-|Dočasný|Došlo k přechodné chybě a IoT Hub operaci zopakovat.|Sledujte [protokoly prostředků tras](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#routes).|
-|InternalError|Při doručování zprávy do koncového bodu došlo k chybě.|Jedná se o interní výjimku, ale také Sledujte [protokoly prostředků směrování](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#routes).|
+|Dočasný|Došlo k přechodné chybě a IoT Hub operaci zopakovat.|Sledujte [protokoly prostředků tras](../articles/iot-hub/monitor-iot-hub-reference.md#routes).|
+|InternalError|Při doručování zprávy do koncového bodu došlo k chybě.|Jedná se o interní výjimku, ale také Sledujte [protokoly prostředků směrování](../articles/iot-hub/monitor-iot-hub-reference.md#routes).|
 |Neautorizováno|IoT Hub není autorizován pro posílání zpráv do zadaného koncového bodu.|Ověřte, zda je připojovací řetězec pro koncový bod aktuální. Pokud se změní, zvažte aktualizaci na IoT Hub. Pokud koncový bod používá spravovanou identitu, ověřte, že objekt zabezpečení IoT Hub má požadovaná oprávnění pro cíl.|
 |Omezené|Při zápisu zpráv do koncového bodu se omezuje IoT Hub.|Zkontrolujte omezení omezení pro ovlivněný koncový bod. V případě potřeby upravte konfigurace koncového bodu pro horizontální navýšení kapacity.|
 |Časový limit|Časový limit operace.|Zkuste operaci zopakovat.|

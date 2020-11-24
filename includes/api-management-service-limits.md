@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 5c36a541c9380596884252efcba4a9c0ca2be33f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: cf051d96651161658796689639b5d268230d4b5a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92082112"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558262"
 ---
 | Prostředek | Omezení |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -44,4 +44,4 @@ ms.locfileid: "92082112"
 <sup>7</sup> Certifikáty certifikační autority se v úrovni spotřeby nepodporují.<br/>
 <sup>8</sup> Toto omezení se vztahuje pouze na úroveň spotřeby. V těchto kategoriích neexistují žádná omezení pro jiné úrovně.<br/>
 <sup>9</sup> Platí jenom pro úroveň spotřeby. Zahrnuje až 2048 bajtů dlouhého řetězce dotazu.<br/>
-<sup>10</sup> Samoobslužné brány se podporují jenom v úrovních pro vývojáře a úrovně Premium. Omezení platí pro počet [prostředků samoobslužné brány](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway). Pokud chcete tento limit zvýšit, obraťte se prosím na [podporu](https://azure.microsoft.com/support/options/). Všimněte si, že počet uzlů (nebo replik) přidružených k prostředku samoobslužné brány je neomezený na úrovni Premium a omezené v jednom uzlu ve vrstvě pro vývojáře.
+<sup>10</sup> Samoobslužné brány se podporují jenom v úrovních pro vývojáře a úrovně Premium. Omezení platí pro počet [prostředků samoobslužné brány](/rest/api/apimanagement/2019-12-01/gateway). Pokud chcete tento limit zvýšit, obraťte se prosím na [podporu](https://azure.microsoft.com/support/options/). Všimněte si, že počet uzlů (nebo replik) přidružených k prostředku samoobslužné brány je neomezený na úrovni Premium a omezené v jednom uzlu ve vrstvě pro vývojáře.

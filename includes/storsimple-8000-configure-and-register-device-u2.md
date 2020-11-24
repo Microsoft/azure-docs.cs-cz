@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 56514f5dcf4bfe205ef46ee64dcf4dcf638d4f62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee92e145acd981bb8c84b43986b90306b994c262
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175212"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557691"
 ---
 #### <a name="to-configure-and-register-the-device"></a>Konfigurace a registrace zařízení
 
@@ -98,7 +98,7 @@ ms.locfileid: "67175212"
 
     ```
 
-12. Po provedení registrace zařízení se zobrazí šifrovací klíč dat služby. Klíč zkopírujte a uložte na bezpečném místě. **Tento klíč bude požadován spolu s registračním klíčem služby k registraci dalších zařízení ve službě Správce zařízení StorSimple.** Další informace o tomto klíči najdete v článku [Zabezpečení zařízení StorSimple](../articles/storsimple/storsimple-security.md).
+12. Po provedení registrace zařízení se zobrazí šifrovací klíč dat služby. Klíč zkopírujte a uložte na bezpečném místě. **Tento klíč bude požadován spolu s registračním klíčem služby k registraci dalších zařízení ve službě Správce zařízení StorSimple.** Další informace o tomto klíči najdete v článku [Zabezpečení zařízení StorSimple](../articles/storsimple/storsimple-8000-security.md).
     
     ![Registrace zařízení StorSimple 7](./media/storsimple-8000-configure-and-register-device-u2/step3pssetup1.png)
     
@@ -117,4 +117,3 @@ ms.locfileid: "67175212"
         Možná budete muset několik minut počkat, než se stav zařízení změní na **Připraveno k nastavení**.
        
         Pokud se zařízení v seznamu nezobrazuje, je nutné zkontrolovat, jestli je brána firewall nastavená způsobem popsaným v článku o [požadavcích zařízení StorSimple na sítě](../articles/storsimple/storsimple-8000-system-requirements.md). Zkontrolujte, jestli je port 9354 otevřený pro odchozí komunikaci, protože ho používá sběrnice služby pro komunikaci služby Správce zařízení StorSimple se zařízením.
-

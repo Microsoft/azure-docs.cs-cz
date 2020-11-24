@@ -5,12 +5,12 @@ ms.subservice: cloud-provisioning
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
-ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d95e40623f17a39145778a2fc067dccc68fd872
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79504382"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555641"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>Postup povolení jednotného přihlašování
 Zřizování cloudu funguje s jednotným přihlašováním.  V současné době není k dispozici možnost Povolit jednotné přihlašování při instalaci agenta. k povolení jednotného přihlašování (SSO) ale můžete použít následující postup. 
@@ -23,7 +23,7 @@ Zřizování cloudu funguje s jednotným přihlašováním.  V současné době 
 
 ### <a name="step-2-import-the-seamless-sso-powershell-module"></a>Krok 2: import bezproblémového modulu pro jednotné přihlašování do PowerShellu
 
-1. Stáhněte si a nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+1. Stáhněte si a nainstalujte [Azure AD PowerShell](/powershell/azure/active-directory/overview).
 2. Přejděte do `%programfiles%\Microsoft Azure Active Directory Connect` složky.
 3. Pomocí tohoto příkazu Importujte modul prostředí PowerShell pro bezproblémové přihlašování: `Import-Module .\AzureADSSO.psd1` .
 

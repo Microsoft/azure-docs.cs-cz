@@ -5,18 +5,18 @@ ms.subservice: pod
 ms.topic: include
 ms.date: 09/git14/2020
 ms.author: alkohli
-ms.openlocfilehash: 91f91b1260cc445f90c2608fc5259ad61acd37ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25c2ea04cd062554a975c63aae9b97846e646d68
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90533110"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554704"
 ---
-Tady je seznam podporovaných účtů úložiště a typů úložiště pro Data Box zařízení. Úplný seznam všech různých typů účtů úložiště a jejich úplných možností najdete v tématu [typy účtů úložiště](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
+Tady je seznam podporovaných účtů úložiště a typů úložiště pro Data Box zařízení. Úplný seznam všech různých typů účtů úložiště a jejich úplných možností najdete v tématu [typy účtů úložiště](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts).
 
 Pro příkazy import v následující tabulce jsou uvedeny podporované účty úložiště.
 
-| **Účet úložiště/podporované typy úložišť** | **Objekt blob bloku** |**Objekt blob stránky*** |**Soubory Azure** |**Poznámky**|
+| **Účet úložiště/podporované typy úložišť** | **Objekt blob bloku** |**Objekt blob stránky** _ |_ *Soubory Azure** |**Poznámky**|
 | --- | --- | -- | -- | -- |
 | Klasický Standard | Y | Y | Y |
 | Obecné účely v1 Standard  | Y | Y | Y | Podporují horkou a studenou.|
@@ -29,7 +29,7 @@ Pro příkazy import v následující tabulce jsou uvedeny podporované účty �
 
 V případě exportních objednávek následující tabulka zobrazuje podporované účty úložiště.
 
-| **Účet úložiště/podporované typy úložišť** | **Objekt blob bloku** |**Objekt blob stránky*** |**Soubory Azure** |**Podporované úrovně přístupu**|
+| **Účet úložiště/podporované typy úložišť** | **Objekt blob bloku** |**Objekt blob stránky** _ |_ *Soubory Azure** |**Podporované úrovně přístupu**|
 | --- | --- | -- | -- | -- |
 | Klasický Standard | Y | Y | Y | |
 | Obecné účely v1 Standard  | Y | Y | Y | Horká, studená|
@@ -47,5 +47,3 @@ V případě exportních objednávek následující tabulka zobrazuje podporovan
 > - Data nahraná do objektů blob stránky musí mít 512 bajtů (například VHD).
 > - Exportovat lze maximálně 80 TB.
 > - Historie souborů a snímky objektů BLOB se neexportují.
-
-

@@ -1,19 +1,18 @@
 ---
-ms.openlocfilehash: 475a468977a976e2e7399c14df9329b31446d404
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c400856546142353a7294a03fce6bbff1c258cc0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135330"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554626"
 ---
-
-V Azure Active Directory (Azure AD) pojem **zřizování aplikací** označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích ( [SaaS](https://azure.microsoft.com/overview/what-is-saas/)), ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Mezi běžné scénáře patří zřizování uživatelů Azure AD v aplikacích, jako jsou [Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md)a další.
+V Azure Active Directory (Azure AD) pojem **zřizování aplikací** označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Mezi běžné scénáře patří zřizování uživatelů Azure AD v aplikacích, jako jsou [Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md)a další.
 
 ![Diagram přehledu zřizování](./media/active-directory-app-provisioning/provisioning-overview.png)
 
 Tato funkce vám umožní:
 
-- **Automatizace zřizování** : automatické vytváření nových účtů v pravém systému pro nové lidi při připojení k vašemu týmu nebo organizaci.
+- **Automatizace zřizování**: automatické vytváření nových účtů v pravém systému pro nové lidi při připojení k vašemu týmu nebo organizaci.
 - **Automatické zrušení zřízení:** Automaticky deaktivovat účty ve správných systémech, když lidé odejdou z týmu nebo organizace.
 - **Synchronizovat data mezi systémy:** Zajistěte, aby se identity ve vašich aplikacích a systémech aktualizovaly na základě změn v adresáři nebo v systému lidských zdrojů.
 - **Zřídit skupiny:** Zřizování skupin pro aplikace, které je podporují.
@@ -42,13 +41,13 @@ Zřizování uživatelů Azure AD může tyto výzvy vyřešit. Pokud chcete zí
 
 Azure AD nabízí předem integrovanou podporu pro spoustu oblíbených aplikací SaaS a systémů lidských zdrojů a obecnou podporu pro aplikace, které implementují určité části [standardu SCIM 2,0](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010).
 
-* **Předem integrované aplikace (Galerie aplikací SaaS)** . Všechny aplikace, pro které Azure AD podporuje předem integrovaný zřizovací konektor, najdete v [seznamu kurzů aplikací pro zřizování uživatelů](../articles/active-directory/saas-apps/tutorial-list.md). Předem integrované aplikace uvedené v galerii obecně používají rozhraní API pro správu uživatelů na bázi SCIM 2,0 ke zřízení. 
+* **Předem integrované aplikace (Galerie aplikací SaaS)**. Všechny aplikace, pro které Azure AD podporuje předem integrovaný zřizovací konektor, najdete v [seznamu kurzů aplikací pro zřizování uživatelů](../articles/active-directory/saas-apps/tutorial-list.md). Předem integrované aplikace uvedené v galerii obecně používají rozhraní API pro správu uživatelů na bázi SCIM 2,0 ke zřízení. 
 
    ![Logo Salesforce](./media/active-directory-app-provisioning/gallery-app-logos.png)
 
-   Pokud chcete požádat o novou aplikaci pro zřizování, můžete [požádat o integraci aplikace do naší galerie aplikací](../articles/active-directory/azuread-dev/howto-app-gallery-listing.md). Pro požadavek na zřízení uživatele vyžaduje aplikace, aby měl koncový bod kompatibilní s SCIM. Požádejte prosím, aby dodavatel aplikace následoval za standardu SCIM, abychom mohli rychle připojit aplikaci k naší platformě.
+   Pokud chcete požádat o novou aplikaci pro zřizování, můžete [požádat o integraci aplikace do naší galerie aplikací](../articles/active-directory/develop/v2-howto-app-gallery-listing.md). Pro požadavek na zřízení uživatele vyžaduje aplikace, aby měl koncový bod kompatibilní s SCIM. Požádejte prosím, aby dodavatel aplikace následoval za standardu SCIM, abychom mohli rychle připojit aplikaci k naší platformě.
 
-* **Aplikace, které podporují SCIM 2,0** . Informace o tom, jak obecně připojit aplikace, které implementují rozhraní API pro správu uživatelů na bázi SCIM 2,0, najdete v tématu [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů](../articles/active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md).
+* **Aplikace, které podporují SCIM 2,0**. Informace o tom, jak obecně připojit aplikace, které implementují rozhraní API pro správu uživatelů na bázi SCIM 2,0, najdete v tématu [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů](../articles/active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md).
 
 ## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>Co je systém pro správu identit mezi doménami (SCIM)?
 
@@ -66,11 +65,11 @@ Aplikace v galerii Azure AD podporují jeden ze dvou režimů zřizování:
 
 * **Automaticky** znamená, že se pro tuto aplikaci vyvinul konektor zřizování služby Azure AD. Měli byste postupovat podle kurzu nastavení, který je specifický pro nastavení zřizování pro aplikaci. Kurzy aplikací najdete v tématu [Seznam kurzů, jak integrovat aplikace SaaS s Azure Active Directory](../articles/active-directory/saas-apps/tutorial-list.md).
 
-V galerii Azure AD jsou aplikace, které podporují Automatické zřizování, označeny ikonou **zřizování** . Přepněte na nové prostředí verze Preview, abyste viděli tyto ikony (v horní části **stránky přidat aplikaci** vyberete odkaz, který zobrazíte **kliknutím sem, abyste si vyzkoušeli novou a vylepšenou galerii aplikací** ).
+V galerii Azure AD jsou aplikace, které podporují Automatické zřizování, označeny ikonou **zřizování** . Přepněte na nové prostředí verze Preview, abyste viděli tyto ikony (v horní části **stránky přidat aplikaci** vyberete odkaz, který zobrazíte **kliknutím sem, abyste si vyzkoušeli novou a vylepšenou galerii aplikací**).
 
 ![Ikona zřizování v galerii aplikací](./media/active-directory-app-provisioning/browse-gallery.png)
 
-Režim zřizování podporovaný aplikací je na kartě **zřizování** zobrazen také po přidání aplikace do **podnikových aplikací** .
+Režim zřizování podporovaný aplikací je na kartě **zřizování** zobrazen také po přidání aplikace do **podnikových aplikací**.
 
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Návody nastavit Automatické zřizování pro aplikaci?
 

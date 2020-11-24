@@ -6,16 +6,16 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 63b74675a9b0d3480c90c7414e82658705796e7c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5f604847faf01d1b267e6cbb73481d57ef397bd9
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92438924"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95559476"
 ---
 V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure s voláním klientské knihovny pro iOS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu budete potřebovat následující požadavky:
 
@@ -32,22 +32,23 @@ V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobr
 
 :::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Snímek obrazovky znázorňující okno nového projektu v rámci Xcode.":::
 
-### <a name="install-the-package"></a>Instalace balíčku
+### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Instalace balíčku a závislostí pomocí CocoaPods
 
-Přidejte do svého projektu komunikační služby Azure s voláním klientské knihovny a jejích závislostí (AzureCore. Framework a AzureCommunication. Framework).
+1. Vytvořte souboru podfile pro vaši aplikaci takto:
 
-> [!NOTE]
-> S vydáním sady AzureCommunicationCalling SDK najdete skript bash `BuildAzurePackages.sh` . Skript při spuštění vám `sh ./BuildAzurePackages.sh` poskytne cestu k vygenerovaným balíčkům rozhraní, které je třeba importovat do ukázkové aplikace v dalším kroku. Všimněte si, že budete muset nastavit nástroje příkazového řádku Xcode, pokud jste to ještě neudělali předtím, než spustíte skript: Spusťte Xcode, vyberte Předvolby-> umístění. Vyberte verzi Xcode pro nástroje příkazového řádku. **Skript BuildAzurePackages.sh funguje jenom s Xcode 11,5 a novějším.**
+   ```
+   platform :ios, '13.0'
+   use_frameworks!
 
-1. [Stáhněte si](https://github.com/Azure/Communication/releases) službu Azure Communications Calling Client Library pro iOS.
-2. V Xcode klikněte na soubor projektu na a vyberte cíl sestavení a otevřete tak editor nastavení projektu.
-3. Na kartě **Obecné** přejděte do části **rámce, knihovny a vložený obsah** a klikněte na ikonu **"+"** .
-4. V levém dolním rohu dialogového okna vyberte možnost **Přidat soubory**, přejděte do adresáře **AzureCommunicationCalling. Framework** balíčku GetClient Library.
-    1. Opakujte poslední krok pro přidání rozhraní **AzureCore. Framework** a **AzureCommunication. Framework**.
-5. Otevřete kartu **nastavení sestavení** v editoru nastavení projektu a přejděte k části **cesty hledání** . Přidá novou položku **cest hledání architektury** pro adresář obsahující rozhraní **AzureCommunicationCalling. Framework**.
-    1. Přidejte jinou položku cest hledání architektury ukazující na složku, která obsahuje závislosti.
+   target 'AzureCommunicationCallingSample' do
+     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.5'
+     pod 'AzureCommunication', '~> 1.0.0-beta.5'
+     pod 'AzureCore', '~> 1.0.0-beta.5'
+   end
+   ```
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Snímek obrazovky znázorňující okno nového projektu v rámci Xcode.":::
+2. Spusťte `pod install`.
+3. Otevřete `.xcworkspace` s Xcode.
 
 ### <a name="request-access-to-the-microphone"></a>Požádat o přístup k mikrofonu
 
@@ -74,9 +75,9 @@ Nahraďte implementaci `ContentView` struktury některými jednoduchými ovláda
 ```swift
 struct ContentView: View {
     @State var callee: String = ""
-    @State var callClient: ACSCallClient?
-    @State var callAgent: ACSCallAgent?
-    @State var call: ACSCall?
+    @State var callClient: CallClient?
+    @State var callAgent: CallAgent?
+    @State var call: Call?
 
     var body: some View {
         NavigationView {
@@ -125,7 +126,7 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce komun
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Inicializujte `CallAgent` instanci pomocí přístupového tokenu uživatele, který nám umožní přijmout a přijímat volání. Do `onAppear` zpětného volání v **contentView. SWIFT**přidejte následující kód:
+Inicializujte `CallAgent` instanci pomocí přístupového tokenu uživatele, který nám umožní přijmout a přijímat volání. Do `onAppear` zpětného volání v **contentView. SWIFT** přidejte následující kód:
 
 ```swift
 var userCredential: CommunicationUserCredential?
@@ -136,7 +137,7 @@ do {
     return
 }
 
-self.callClient = ACSCallClient()
+self.callClient = CallClient()
 
 // Creates the call agent
 self.callClient?.createCallAgent(userCredential) { (agent, error) in
@@ -165,13 +166,13 @@ func startCall()
         if granted {
             // start call logic
             let callees:[CommunicationIdentifier] = [CommunicationUser(identifier: self.callee)]
-            self.call = self.callAgent?.call(callees, options: ACSStartCallOptions())
+            self.call = self.callAgent?.call(callees, options: StartCallOptions())
         }
     }
 }
 ```
 
-Můžete také použít vlastnosti v nástroji `ACSStartCallOptions` k nastavení počátečních možností pro volání (to znamená, že umožňuje spuštění volání s neztlumeným mikrofonem).
+Můžete také použít vlastnosti v nástroji `StartCallOptions` k nastavení počátečních možností pro volání (to znamená, že umožňuje spuštění volání s neztlumeným mikrofonem).
 
 ## <a name="end-a-call"></a>Ukončení volání
 
@@ -180,7 +181,7 @@ Implementujte `endCall` metodu pro ukončení aktuálního volání při klepnut
 ```swift
 func endCall()
 {    
-    self.call!.hangup(ACSHangupOptions()) { (error) in
+    self.call!.hangup(HangupOptions()) { (error) in
         if (error != nil) {
             print("ERROR: It was not possible to hangup the call.")
         }
@@ -190,9 +191,9 @@ func endCall()
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Můžete sestavit a spustit aplikaci v simulátoru iOS tak, že **Product**vyberete možnost  >  **spuštění** produktu nebo pomocí klávesové zkratky (&#8984;-R).
+Můžete sestavit a spustit aplikaci v simulátoru iOS tak, že **Product** vyberete možnost  >  **spuštění** produktu nebo pomocí klávesové zkratky (&#8984;-R).
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Snímek obrazovky znázorňující okno nového projektu v rámci Xcode.":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Konečný vzhled a chování aplikace rychlý Start":::
 
 Odchozí volání VOIP můžete vytvořit zadáním ID uživatele v textovém poli a klepnutím na tlačítko **Spustit volání** . Volání se `8:echo123` připojí ke robotu s odezvou. to je skvělé pro začátek a ověření, jestli vaše zvuková zařízení fungují. 
 

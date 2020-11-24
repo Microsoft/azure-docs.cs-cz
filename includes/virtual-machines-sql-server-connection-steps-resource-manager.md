@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 4e79fef08af8ff73ce63ab4732c9efd77e3a5d3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51dc04fbef8d09878f33d7fda6f15039d3afba3e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174962"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554636"
 ---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>Konfigurace názvu DNS veřejné IP adresy
 
@@ -34,7 +34,7 @@ Pokud chcete vytvořit název DNS, nejdřív na portálu vyberte **Virtuální p
 
 ### <a name="connect-to-the-database-engine-from-another-computer"></a>Připojení k databázovému stroji z jiného počítače
 
-1. Na počítači připojeném k internetu otevřete aplikaci SSMS (SQL Server Management Studio). Pokud aplikaci SQL Server Management Studio nemáte, [tady](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) si ji můžete stáhnout.
+1. Na počítači připojeném k internetu otevřete aplikaci SSMS (SQL Server Management Studio). Pokud aplikaci SQL Server Management Studio nemáte, [tady](/sql/ssms/download-sql-server-management-studio-ssms) si ji můžete stáhnout.
 
 1. V dialogovém okně **Připojit k serveru** nebo **Connect to Database Engine** (Připojit k databázovému stroji) upravte hodnotu **Název serveru**. Zadejte IP adresu nebo úplný název DNS virtuálního počítače (určený v předchozí úloze). Můžete také přidat čárku a zadat port TCP SQL Serveru. Například, `mysqlvmlabel.eastus.cloudapp.azure.com,1433`.
 

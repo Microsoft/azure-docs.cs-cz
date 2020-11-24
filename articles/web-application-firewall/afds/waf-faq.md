@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 5b60082db53b458adc53ac23d98731ad1c97b52b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 5c2763112b1aa2d58f5dc57cea72a3d0bdea961e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563643"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545665"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Nejčastější dotazy k firewallu webových aplikací Azure na službě Azure front-dveří
 
@@ -35,7 +35,7 @@ Přední dveře nabízí snižování zátěže TLS. WAF je nativně integrovan�
 
 ## <a name="does-azure-waf-support-ipv6"></a>Podporuje Azure WAF protokol IPv6?
 
-Yes. Můžete nakonfigurovat omezení IP adres pro IPv4 a IPv6.
+Ano. Můžete nakonfigurovat omezení IP adres pro IPv4 a IPv6.
 
 ## <a name="how-up-to-date-are-the-managed-rule-sets"></a>Jak se spravují sady pravidel?
 
@@ -57,6 +57,17 @@ Můžete nakonfigurovat seznam IP Access Control v back-endu tak, aby umožňova
 
 Při použití zásad WAF v Azure jsou k dispozici dvě možnosti. WAF s Azure front-Dvířks je globálně distribuované řešení zabezpečení Edge. WAF s Application Gateway je místní vyhrazené řešení. Doporučujeme zvolit řešení na základě celkových požadavků na výkon a zabezpečení. Další informace najdete v tématu [Vyrovnávání zatížení s využitím sady pro doručování aplikací v Azure](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md).
 
+## <a name="whats-the-recommended-approach-to-enabling-waf-on-front-door"></a>Jaký je doporučený přístup k povolení WAF na předních dveřích?
+
+Pokud WAF povolíte u existující aplikace, je běžné mít falešně pozitivní detekci, kde pravidla WAF zjišťují legitimní provoz jako hrozbu. K minimalizaci rizika dopadu na uživatele doporučujeme následující postup:
+
+* Povolte WAF v režimu [ **detekce**](./waf-front-door-create-portal.md#change-mode) , abyste zajistili, že WAF při práci s tímto procesem neblokuje požadavky.
+  > [!IMPORTANT]
+  > Tento postup popisuje, jak povolit WAF v novém nebo existujícím řešení, pokud je vaše priorita minimalizována pro uživatele vaší aplikace. V případě útoku nebo bezprostřední hrozby možná budete chtít místo toho nasadit WAF do režimu **prevence** a pomocí procesu optimalizace monitorovat a ladit WAF v průběhu času. Tím pravděpodobně dojde k zablokování některých legitimních přenosů, což je důvod, proč to doporučujeme jenom v případě, že máte hrozbu.
+* Postupujte podle našich [pokynů pro optimalizaci WAF](./waf-front-door-tuning.md). Tento proces vyžaduje, abyste povolili protokolování diagnostiky, zkontrolovali protokoly pravidelně a přidali vyloučení pravidel a další zmírnění rizik.
+* Tento celý proces zopakujte a pravidelně kontrolujte protokoly, dokud nebudete přesvědčeni, že nebude zablokovaný žádný oprávněný provoz. Celý proces může trvat několik týdnů. V ideálním případě byste měli po každé změně provedeného ladění zobrazit méně falešně pozitivních detekcí.
+* Nakonec povolte WAF v **režimu prevence**.
+* I když používáte WAF v produkčním prostředí, měli byste monitorování protokolů sledovat, abyste identifikovali jiné falešně pozitivní detekce. Pravidelné kontroly protokolů vám také pomůžou identifikovat všechny reálné pokusy o útokech, které byly zablokovány.
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Podporujete stejné funkce WAF na všech integrovaných platformách?
 

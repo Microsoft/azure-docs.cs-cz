@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c05eb88df27ba9e71c0f61bad75457d893a7ce
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174741"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95553420"
 ---
 > [!NOTE]
 > Tyto příklady neplatí pro konfigurace S2S/ExpressRoute.
@@ -25,7 +25,7 @@ Když přidáte bránu do virtuální sítě pomocí modelu klasických prostře
 
 ### <a name="download-the-network-configuration-file"></a>Stažení konfiguračního souboru sítě
 
-1. Stáhněte si konfigurační soubor sítě pomocí postupu v článku [konfigurační soubor sítě](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) . Otevřete soubor pomocí textového editoru.
+1. Stáhněte si konfigurační soubor sítě pomocí postupu v článku [konfigurační soubor sítě](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file) . Otevřete soubor pomocí textového editoru.
 2. Přidejte do souboru místní síťovou lokalitu. Můžete použít libovolnou platnou předponu adresy. Pro bránu VPN můžete přidat libovolnou platnou IP adresu. Hodnoty adresy v této části se nepoužívají pro operace ExpressRoute, ale vyžadují se pro ověření souboru. V tomto příkladu je "pobočka1" název lokality. Můžete použít jiný název, ale nezapomeňte použít stejnou hodnotu v části Gateway souboru.
 
    ```

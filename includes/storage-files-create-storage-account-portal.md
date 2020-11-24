@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a0db3ee9f32be35e62accc5df7b92697a883df20
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad9f3a115ed226b492a08dae29db61029d9098eb
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83778161"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558845"
 ---
 Účet úložiště je sdílený fond úložiště, ve kterém můžete nasazovat sdílené složky Azure nebo jiné prostředky úložiště, jako jsou objekty blob nebo fronty. Účet úložiště může obsahovat neomezený počet sdílených složek. Sdílená složka může obsahovat neomezený počet souborů až do výše maximální kapacity účtu úložiště.
 
@@ -24,13 +24,13 @@ Vytvoření účtu úložiště:
     ![Snímek obrazovky ukazující, jak by měla vypadat položka účtu úložiště v dialogovém okně hledání prostředků](../articles/storage/files/media/storage-how-to-use-files-portal/create-storage-account-1.png)
 
 1. Do pole **Název** zadejte *mystorageacct* a několik náhodných čísel, dokud se nezobrazí zelená značka zaškrtnutí, která značí, že se jedná o jedinečný název. Název účtu úložiště musí být malými písmeny a globálně jedinečný. Název svého účtu úložiště si poznamenejte. Budete jej později potřebovat. 
-1. V části **model nasazení**ponechte výchozí hodnotu **Správce prostředků**. Další informace o rozdílech mezi Azure Resource Managerem a klasickým modelem nasazení najdete v článku [Vysvětlení modelů nasazení a stavu prostředků](../articles/azure-resource-manager/management/deployment-models.md).
-1. V části **výkon**ponechte výchozí hodnotu **Standard**.
+1. V části **model nasazení** ponechte výchozí hodnotu **Správce prostředků**. Další informace o rozdílech mezi Azure Resource Managerem a klasickým modelem nasazení najdete v článku [Vysvětlení modelů nasazení a stavu prostředků](../articles/azure-resource-manager/management/deployment-models.md).
+1. V části **výkon** ponechte výchozí hodnotu **Standard**.
     
     > [!NOTE]
     > V tomto rychlém startu se vytvoří standardní sdílená složka, ale pokud jste chtěli použít sdílené složky Premium, vyberte místo toho možnost **Premium** .
 
-1. V části **Druh účtu** vyberte **StorageV2**. Další informace o různých druzích účtů úložiště najdete v článku [Vysvětlení účtů úložiště Azure](../articles/storage/common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+1. V části **Druh účtu** vyberte **StorageV2**. Další informace o různých druzích účtů úložiště najdete v článku [Vysvětlení účtů úložiště Azure](../articles/storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
 
     > [!NOTE]
     > V tomto rychlém startu se vytvoří účet pro obecné účely v2. Pokud jste chtěli použít sdílené složky Premium, vyberte místo toho možnost **úložiště** souborů.

@@ -10,12 +10,12 @@ ms.custom: develop apps
 ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
-ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b06004143d4a1ec5a2808e21b1f78833e410c195
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175087"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558509"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Získání připojovacího řetězce z Azure Portal
 Použijte [Azure Portal](https://portal.azure.com/) k získání připojovacího řetězce, který je nezbytný pro komunikaci vašeho klientského programu s Azure SQL Database.
@@ -38,7 +38,7 @@ Použijte [Azure Portal](https://portal.azure.com/) k získání připojovacího
 
 8. V jednom nebo jiném formátu vložte do kódu klientského programu informace o připojovacím řetězci.
 
-Další informace najdete v tématu [připojovací řetězce a konfigurační soubory](https://msdn.microsoft.com/library/ms254494.aspx).
+Další informace najdete v tématu [připojovací řetězce a konfigurační soubory](/dotnet/framework/data/adonet/connection-strings-and-configuration-files).
 
 <!-- Image references. -->
 

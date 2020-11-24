@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b68fce603801c7bc1aee2af871df257b5f69197
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79500195"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561693"
 ---
 1. Nainstalujte klientské certifikáty na klienta Windows 10, jak je znázorněno v tomto článku [klienta VPN typu Point-to-site](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) . Certifikát musí být v úložišti aktuálního uživatele.
 
-1. Nakonfigurujete klienta VPN Always On prostřednictvím PowerShellu, Configuration Manager nebo Intune podle pokynů v tématu [Konfigurace připojení k síti VPN na straně klienta s Windows 10](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
+1. Nakonfigurujete klienta VPN Always On prostřednictvím PowerShellu, Configuration Manager nebo Intune podle pokynů v tématu [Konfigurace připojení k síti VPN na straně klienta s Windows 10](/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
 
 ### <a name="example-configuration-for-the-user-tunnel"></a>Příklad konfigurace pro tunelové propojení uživatelů
 
@@ -128,6 +128,6 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    ```
    
    ![MachineCertTest](./media/vpn-gateway-vwan-always-on-user/p2s2.jpg)
-1. V části **nastavení sítě VPN**vyhledejte položku **UserTest** a pak vyberte **připojit**.
+1. V části **nastavení sítě VPN** vyhledejte položku **UserTest** a pak vyberte **připojit**.
 
 1. Pokud je připojení úspěšné, úspěšně jste nakonfigurovali tunelové propojení vždycky na uživatele.

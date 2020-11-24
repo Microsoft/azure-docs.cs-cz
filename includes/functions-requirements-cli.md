@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 7ddceb2808874e531cfda81e5a9ce74be3a4fab4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 951dbb6c1a44e3c081f682db49458be165e9e930
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517071"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557035"
 ---
 ## <a name="configure-your-local-environment"></a>Konfigurace místního prostředí
 
@@ -23,7 +23,7 @@ Než začnete, musíte mít následující:
 ::: zone pivot="programming-language-python"
 + Verze Azure Functions Core Tools, která odpovídá nainstalované verzi Pythonu:
 
-   | Verze Pythonu | Verze základních nástrojů |
+   | Python version (Verze Pythonu) | Verze základních nástrojů |
    | -------------- | ------------------ |
    | Python 3,8     | [verze 3. x](../articles/azure-functions/functions-run-local.md#v2) |
    | Python 3,6<br/>Python 3.7 | [Verze 2.7.1846 nebo novější](../articles/azure-functions/functions-run-local.md#v2) |
@@ -42,7 +42,7 @@ Než začnete, musíte mít následující:
 + [.NET Core SDK 3,1](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ [Sada Java Developer Kit](https://aka.ms/azure-jdks), verze 8 nebo 11. 
++ [Sada Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), verze 8 nebo 11. 
 
 + [Apache Maven](https://maven.apache.org)verze 3,0 nebo vyšší.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 320fa542f2b786f0a256c22f2d2eb299c476dcae
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 1b5905046fdde4d5574fd4d39f40dce1bbf11e32
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94362731"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554020"
 ---
 Následující tabulky poskytují kvóty a omezení specifické pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -42,17 +42,17 @@ V následující tabulce jsou uvedena omezení, která se mohou lišit pro úrov
 | Počet skupin uživatelů na centrum událostí | &nbsp; |1 |20 |
 | Počet připojení AMQP na obor názvů | Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |100 |5 000|
 | Maximální doba uchování dat události | &nbsp; |1 den |1-7 dní |
-| Maximální počet jednotek propustnosti |Překročení tohoto limitu způsobí omezení vašich dat a vygeneruje [výjimku zaneprázdněnou serverem](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Pokud chcete požádat o větší počet jednotek propustnosti pro úroveň Standard, zaregistrujte [žádost o podporu](/azure/azure-portal/supportability/how-to-create-azure-support-request). [Další jednotky propustnosti](../articles/event-hubs/event-hubs-auto-inflate.md) jsou k dispozici v blocích po 20 na potvrzeném nákupu. |20 | 20 | 
+| Maximální počet jednotek propustnosti |Překročení tohoto limitu způsobí omezení vašich dat a vygeneruje [výjimku zaneprázdněnou serverem](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Pokud chcete požádat o větší počet jednotek propustnosti pro úroveň Standard, zaregistrujte [žádost o podporu](../articles/azure-portal/supportability/how-to-create-azure-support-request.md). [Další jednotky propustnosti](../articles/event-hubs/event-hubs-auto-inflate.md) jsou k dispozici v blocích po 20 na potvrzeném nákupu. |20 | 20 | 
 
 ## <a name="dedicated-tier-vs-standard-tier"></a>Vyhrazená úroveň vs. úroveň Standard
 V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce plánu Standard, ale kapacitu a omezení na úrovni podniku pro zákazníky s náročnými úlohami. 
 
-V tomto [dokumentu](https://docs.microsoft.com/azure/event-hubs/event-hubs-dedicated-cluster-create-portal) najdete informace o tom, jak vytvořit vyhrazený cluster Event Hubs pomocí Azure Portal.
+V tomto [dokumentu](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md) najdete informace o tom, jak vytvořit vyhrazený cluster Event Hubs pomocí Azure Portal.
 
-| Příznak | Standard | Vyhrazená |
+| Funkce | Standard | Vyhrazená |
 | --- |:---|:---|
 | Šířka pásma | 20 počet propustnosti (až 40 počet propustnosti) | 20 kapacitní jednotky |
-| Obory názvů |  1 | 50 za CU |
+| Jmenné prostory |  1 | 50 za CU |
 | Event Hubs |  10 na obor názvů | 1000 na obor názvů |
 | Události příchozího přenosu dat | Plaťte za milion událostí | Zahrnuje |
 | Velikost zprávy | 1 000 000 bajtů | 1 000 000 bajtů |
@@ -66,7 +66,7 @@ V tomto [dokumentu](https://docs.microsoft.com/azure/event-hubs/event-hubs-dedic
 ## <a name="schema-registry-limitations"></a>Omezení registru schématu
 
 ### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>Omezení, která jsou stejná pro **standardní** a **vyhrazené** úrovně 
-| Příznak | Omezení | 
+| Funkce | Omezení | 
 |---|---|--|
 | Maximální délka názvu skupiny schémat | 50 |  
 | Maximální délka názvu schématu | 100 |    
@@ -83,8 +83,3 @@ V tomto [dokumentu](https://docs.microsoft.com/azure/event-hubs/event-hubs-dedic
 | Velikost registru schématu (obor názvů) v megabajtů bajtech | 25 |  1024 |
 | Počet skupin schémat v registru schématu nebo oboru názvů | 1 – vyloučení výchozí skupiny | 1000 |
 | Počet verzí schématu napříč všemi skupinami schémat | 25 | 10000 |
-
-
-
-
-

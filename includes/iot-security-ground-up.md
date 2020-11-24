@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 234407e6973657ba3ad0d78189e7cb1d363c15e2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86050382"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95553927"
 ---
 Internet věcí (IoT) představuje jedinečné problémy se zabezpečením, ochranou osobních údajů a dodržováním předpisů pro firmy po celém světě. Na rozdíl od tradičních počítačové technologie, kde se tyto problémy dotýkají softwaru a způsobu jeho implementace, se v IoT projeví, co se stane, když se světů na internetu a fyzickou akci sblížení. Ochrana řešení IoT vyžaduje zajištění zabezpečeného zřizování zařízení, zabezpečení připojení mezi těmito zařízeními a cloudem a zabezpečení ochrany dat v cloudu během zpracování a ukládání. Práce s těmito funkcemi je však omezená na prostředky, geografickou distribuci nasazení a velký počet zařízení v rámci řešení.
 
@@ -39,11 +39,11 @@ Rozhraní [SDL (Security Development Lifecycle)](https://www.microsoft.com/sdl/)
 
 Microsoft Azure nabízí kompletní cloudové řešení, které spojuje nepřetržitě rostoucí kolekci integrovaných cloudových služeb – analýzy, strojové učení, úložiště, zabezpečení, sítě a web – díky špičkovému závazku k ochraně a ochraně soukromí vašich dat. Strategie [nedodržení](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/) společnosti Microsoft používá vyhrazený *červený tým* odborníků na zabezpečení softwaru, kteří simulují útoky a testují schopnost Azure detekovat, chránit před vznikajícími hrozbami a obnovovat před porušením. Globální tým [reakce na incidenty](https://www.microsoft.com/en-us/TrustCenter/Security/DesignOpSecurity) od Microsoftu funguje kolem hodin, aby se zmírnily důsledky útoků a škodlivá aktivita. Tým řídí postupy pro správu incidentů, komunikaci a obnovení a používá zjistitelná a předvídatelná rozhraní s interními a externími partnery.
 
-Systémy Microsoftu poskytují nepřetržitou detekci vniknutí a prevenci, ochranu před útoky, pravidelné testování průniku a forenzní nástroje, které pomáhají identifikovat a zmírnit hrozby. [Multi-Factor Authentication](../articles/active-directory/authentication/multi-factor-authentication.md) poskytuje další úroveň zabezpečení pro koncové uživatele, kteří budou mít přístup k síti. A pro aplikace a poskytovatele hostitele Microsoft nabízí řízení přístupu, monitorování, ochranu proti malwaru, kontrolu ohrožení zabezpečení, opravy chyb a správu konfigurace.
+Systémy Microsoftu poskytují nepřetržitou detekci vniknutí a prevenci, ochranu před útoky, pravidelné testování průniku a forenzní nástroje, které pomáhají identifikovat a zmírnit hrozby. [Multi-Factor Authentication](../articles/active-directory/authentication/concept-mfa-howitworks.md) poskytuje další úroveň zabezpečení pro koncové uživatele, kteří budou mít přístup k síti. A pro aplikace a poskytovatele hostitele Microsoft nabízí řízení přístupu, monitorování, ochranu proti malwaru, kontrolu ohrožení zabezpečení, opravy chyb a správu konfigurace.
 
 Akcelerátory řešení využívají zabezpečení a ochranu osobních údajů integrované v platformě Azure společně s procesy SDL a OSA pro bezpečný vývoj a provoz veškerého softwaru Microsoftu. Tyto postupy poskytují ochranu infrastruktury, ochranu sítě a funkce identit a správy zásadní pro zabezpečení jakéhokoli řešení.
 
-[Azure IoT Hub](../articles/iot-hub/about-iot-hub.md) v rámci [akcelerátorů řešení IoT](../articles/iot-fundamentals/iot-introduction.md) nabízí plně spravovanou službu, která umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi zařízeními IoT a službami Azure, jako jsou [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) a [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) , pomocí zabezpečovacích přihlašovacích údajů pro zařízení a řízení přístupu.
+[Azure IoT Hub](../articles/iot-hub/about-iot-hub.md) v rámci [akcelerátorů řešení IoT](../articles/iot-fundamentals/iot-introduction.md) nabízí plně spravovanou službu, která umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi zařízeními IoT a službami Azure, jako jsou [Azure Machine Learning](../articles/machine-learning/classic/index.yml) a [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) , pomocí zabezpečovacích přihlašovacích údajů pro zařízení a řízení přístupu.
 
 K tomu, aby se co nejlépe komunikovalo s funkcemi zabezpečení a ochrany osobních údajů, které jsou integrované v akcelerátorech řešení Azure IoT, se v tomto článku rozdělí sada do tří hlavních oblastí zabezpečení.
 
@@ -89,7 +89,7 @@ Pomocí Azure Active Directory (AAD) pro ověřování a autorizaci uživatelů 
 
 Jakmile jsou data v cloudu, můžete je zpracovat a uložit v jakémkoli uživatelsky definovaném pracovním postupu. Přístup ke každé části dat se řídí Azure Active Directory v závislosti na použité službě úložiště.
 
-Všechny klíče používané infrastrukturou IoT jsou uložené v cloudu v zabezpečeném úložišti, a díky tomu je možné převádět i v případě, že klíče je potřeba znovu zřídit. Data je možné uložit v [Azure Cosmos DB](../articles/cosmos-db/introduction.md) nebo v [SQL Database](../articles/sql-database/sql-database-faq.md)a povolit definici požadované úrovně zabezpečení. Kromě toho Azure poskytuje způsob, jak monitorovat a auditovat veškerý přístup k vašim datům, abyste mohli upozorňovat na případné vniknutí nebo neoprávněný přístup.
+Všechny klíče používané infrastrukturou IoT jsou uložené v cloudu v zabezpečeném úložišti, a díky tomu je možné převádět i v případě, že klíče je potřeba znovu zřídit. Data je možné uložit v [Azure Cosmos DB](../articles/cosmos-db/introduction.md) nebo v [SQL Database](../articles/azure-sql/database/sql-database-paas-overview.md)a povolit definici požadované úrovně zabezpečení. Kromě toho Azure poskytuje způsob, jak monitorovat a auditovat veškerý přístup k vašim datům, abyste mohli upozorňovat na případné vniknutí nebo neoprávněný přístup.
 
 ## <a name="conclusion"></a>Závěr
 
