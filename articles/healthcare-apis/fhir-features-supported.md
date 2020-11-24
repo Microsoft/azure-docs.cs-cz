@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 71097f13fffbbe5cb57a69c98fb0ab272e16af5c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3aea2322129c383a385168c54001464da5dae276
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026297"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520080"
 ---
 # <a name="features"></a>Funkce
 
@@ -29,23 +29,23 @@ Předchozí verze, které jsou aktuálně podporované, zahrnují: `3.0.2`
 
 | Rozhraní API                            | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
-| read                           | Yes       | Yes       | Yes       |                                                     |
-| vread                          | Yes       | Yes       | Yes       |                                                     |
-| update                         | Yes       | Yes       | Yes       |                                                     |
-| aktualizace s optimistické uzamykání | Yes       | Yes       | Yes       |                                                     |
-| aktualizovat (podmíněné)           | Yes       | Yes       | Yes       |                                                     |
+| read                           | Ano       | Ano       | Ano       |                                                     |
+| vread                          | Ano       | Ano       | Ano       |                                                     |
+| update                         | Ano       | Ano       | Ano       |                                                     |
+| aktualizace s optimistické uzamykání | Ano       | Ano       | Ano       |                                                     |
+| aktualizovat (podmíněné)           | Ano       | Ano       | Ano       |                                                     |
 | použita                          | Ne        | Ne        | Ne        |                                                     |
-| delete                         | Yes       | Yes       | Yes       |                                                     |
+| delete                         | Ano       | Ano       | Ano       |                                                     |
 | Odstranit (podmíněné)           | Ne        | Ne        | Ne        |                                                     |
-| historie                        | Yes       | Yes       | Yes       |                                                     |
-| vytvoření                         | Yes       | Yes       | Yes       | Podpora pro POST/PUT                               |
-| vytvořit (podmíněné)           | Yes       | Yes       | Yes       | Problém [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
+| historie                        | Ano       | Ano       | Ano       |                                                     |
+| vytvoření                         | Ano       | Ano       | Ano       | Podpora pro POST/PUT                               |
+| vytvořit (podmíněné)           | Ano       | Ano       | Ano       | Problém [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | search                         | Částečné   | Částečné   | Částečné   | Viz níže                                           |
-| zřetězené hledání                 | Ne        | Yes       | Ne        |                                           |
+| zřetězené hledání                 | Ne        | Ano       | Ne        |                                           |
 | zpětné zřetězené hledání         | Ne        | Ne        | Ne        |                                            |
-| možnosti                   | Yes       | Yes       | Yes       |                                                     |
-| dávka                          | Yes       | Yes       | Yes       |                                                     |
-| transakce                    | Ne        | Yes       | Ne        |                                                     |
+| možnosti                   | Ano       | Ano       | Ano       |                                                     |
+| dávka                          | Ano       | Ano       | Ano       |                                                     |
+| transakce                    | Ne        | Ano       | Ne        |                                                     |
 | přenosu                         | Částečné   | Částečné   | Částečné   | `self` a `next` jsou podporovány                     |
 | prostředníci                 | Ne        | Ne        | Ne        |                                                     |
 
@@ -55,56 +55,56 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 
 | Typ parametru hledání | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-----------------------|-----------|-----------|-----------|---------|
-| Číslo                | Yes       | Yes       | Yes       |         |
-| Datum/datum a čas         | Yes       | Yes       | Ano       |         |
-| Řetězec                | Yes       | Yes       | Yes       |         |
-| Token                 | Yes       | Yes       | Yes       |         |
-| Referenční informace             | Yes       | Yes       | Yes       |         |
-| Složený             | Yes       | Yes       | Yes       |         |
-| Množství              | Yes       | Yes       | Yes       |         |
-| Identifikátor URI                   | Yes       | Yes       | Yes       |         |
+| Číslo                | Ano       | Ano       | Ano       |         |
+| Datum/datum a čas         | Ano       | Ano       | Ano       |         |
+| Řetězec                | Ano       | Ano       | Ano       |         |
+| Token                 | Ano       | Ano       | Ano       |         |
+| Referenční informace             | Ano       | Ano       | Ano       |         |
+| Složený             | Ano       | Ano       | Ano       |         |
+| Množství              | Ano       | Ano       | Ano       |         |
+| Identifikátor URI                   | Ano       | Ano       | Ano       |         |
 | Speciální               | Ne        | Ne        | Ne        |         |
 
 
 | Modifikátory             | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-----------------------|-----------|-----------|-----------|---------|
-|`:missing`             | Yes       | Yes       | Yes       |         |
-|`:exact`               | Yes       | Yes       | Yes       |         |
-|`:contains`            | Yes       | Yes       | Yes       |         |
-|`:text`                | Yes       | Yes       | Yes       |         |
+|`:missing`             | Ano       | Ano       | Ano       |         |
+|`:exact`               | Ano       | Ano       | Ano       |         |
+|`:contains`            | Ano       | Ano       | Ano       |         |
+|`:text`                | Ano       | Ano       | Ano       |         |
 |`:in` klíčové          | Ne        | Ne        | Ne        |         |
 |`:below` klíčové       | Ne        | Ne        | Ne        |         |
 |`:above` klíčové       | Ne        | Ne        | Ne        |         |
 |`:not-in` klíčové      | Ne        | Ne        | Ne        |         |
 |`:[type]` odkaz  | Ne        | Ne        | Ne        |         |
-|`:below` identifikátor URI         | Yes       | Yes       | Yes       |         |
+|`:below` identifikátor URI         | Ano       | Ano       | Ano       |         |
 |`:not`                 | Ne        | Ne        | Ne        |         |
 |`:above` identifikátor URI         | Ne        | Ne        | Ne        | Problém [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | Společný parametr hledání | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-------------------------| ----------| ----------| ----------|---------|
-| `_id`                   | Yes       | Yes       | Yes       |         |
-| `_lastUpdated`          | Yes       | Yes       | Yes       |         |
-| `_tag`                  | Yes       | Yes       | Yes       |         |
-| `_profile`              | Yes       | Yes       | Yes       |         |
-| `_security`             | Yes       | Yes       | Yes       |         |
+| `_id`                   | Ano       | Ano       | Ano       |         |
+| `_lastUpdated`          | Ano       | Ano       | Ano       |         |
+| `_tag`                  | Ano       | Ano       | Ano       |         |
+| `_profile`              | Ano       | Ano       | Ano       |         |
+| `_security`             | Ano       | Ano       | Ano       |         |
 | `_text`                 | Ne        | Ne        | Ne        |         |
 | `_content`              | Ne        | Ne        | Ne        |         |
-| `_list`                 | Yes       | Yes       | Yes       |         |
+| `_list`                 | Ano       | Ano       | Ano       |         |
 | `_has`                  | Ne        | Ne        | Ne        |         |
-| `_type`                 | Yes       | Yes       | Yes       |         |
+| `_type`                 | Ano       | Ano       | Ano       |         |
 | `_query`                | Ne        | Ne        | Ne        |         |
 | `_filter`               | Ne        | Ne        | Ne        |         |
 
 | Parametry výsledků hledání | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_sort`                 | Částečné        | Částečné   | Částečné        |   `_sort=_lastUpdated` je podporováno       |
-| `_count`                | Yes       | Yes       | Yes       | `_count` je omezen na 100 znaků. Pokud je nastavena na hodnotu vyšší než 100, bude vrácena pouze 100 a v balíčku bude vráceno upozornění. |
-| `_include`              | Yes       | Yes       | Yes       |Zahrnuté položky jsou omezeny na 100. Zahrnutí do PaaS a OSS v Cosmos DB nezahrnuje: iterace podpora.|
-| `_revinclude`           | Yes       | Yes       | Yes       | Zahrnuté položky jsou omezeny na 100. Zahrnutí do PaaS a OSS v Cosmos DB nezahrnuje: iterace podpora.|
+| `_count`                | Ano       | Ano       | Ano       | `_count` je omezen na 100 znaků. Pokud je nastavena na hodnotu vyšší než 100, bude vrácena pouze 100 a v balíčku bude vráceno upozornění. |
+| `_include`              | Ano       | Ano       | Ano       |Zahrnuté položky jsou omezeny na 100. Zahrnutí do PaaS a OSS v Cosmos DB nezahrnuje: iterace podpora.|
+| `_revinclude`           | Ano       | Ano       | Ano       | Zahrnuté položky jsou omezeny na 100. Zahrnutí do PaaS a OSS v Cosmos DB nezahrnuje: iterace podpora.|
 | `_summary`              | Částečné   | Částečné   | Částečné   | `_summary=count` je podporováno |
 | `_total`                | Částečné   | Částečné   | Částečné   | _total = non and _total = přesný      |
-| `_elements`             | Yes       | Yes       | Yes       |         |
+| `_elements`             | Ano       | Ano       | Ano       |         |
 | `_contained`            | Ne        | Ne        | Ne        |         |
 | `containedType`         | Ne        | Ne        | Ne        |         |
 | `_score`                | Ne        | Ne        | Ne        |         |
@@ -115,9 +115,9 @@ Všechny podporované operace, které rozšiřuje rozhraní RESTful API.
 
 | Typ parametru hledání | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |------------------------|-----------|-----------|-----------|---------|
-| $export (celý systém) | Yes       | Yes       | Yes       |         |
-| Pacient/$export        | Yes       | Yes       | Yes       |         |
-| Skupina/$export          | Yes       | Yes       | Yes       |         |
+| $export (celý systém) | Ano       | Ano       | Ano       |         |
+| Pacient/$export        | Ano       | Ano       | Ano       |         |
+| Skupina/$export          | Ano       | Ano       | Ano       |         |
 
 ## <a name="persistence"></a>Uchování
 
@@ -129,7 +129,7 @@ Cosmos DB je globálně distribuovaná databáze s více modely (rozhraní API S
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Server FHIR používá pro řízení přístupu [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) . Konkrétně je vynutila Role-Based Access Control (RBAC), pokud je `FhirServer:Security:Enabled` parametr konfigurace nastaven na hodnotu `true` a všechny požadavky (kromě `/metadata` ) na server FHIR musí mít `Authorization` hlavičku Request nastavenou na `Bearer <TOKEN>` . Token musí obsahovat jednu nebo více rolí, jak je definováno v `roles` deklaraci identity. Požadavek bude povolen, pokud token obsahuje roli, která umožňuje zadanou akci u zadaného prostředku.
+Server FHIR používá pro řízení přístupu [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) . Konkrétně se vynutilo řízení přístupu na základě role (RBAC), pokud je `FhirServer:Security:Enabled` parametr konfigurace nastavený na hodnotu `true` a všechny požadavky (s výjimkou `/metadata` ) serveru FHIR musí mít `Authorization` nastavenou hlavičku Request nastavenou na `Bearer <TOKEN>` . Token musí obsahovat jednu nebo více rolí, jak je definováno v `roles` deklaraci identity. Požadavek bude povolen, pokud token obsahuje roli, která umožňuje zadanou akci u zadaného prostředku.
 
 V současné době se povolené akce pro danou roli aplikují *globálně* na rozhraní API.
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27e7c899f0d22789c10541fc98a0d2c63a7843ec
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604474"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533051"
 ---
 # <a name="modify-target-settings"></a>Úprava nastavení cíle
 
@@ -41,8 +41,8 @@ Nastavení konfigurace, která lze upravit, jsou shrnuta v tabulce.
 **Skladová položka virtuálního počítače** | [Typ virtuálního počítače](https://azure.microsoft.com/pricing/details/virtual-machines/series/) (dostupný v cílové oblasti), který se použije pro cílový virtuální počítač.<br/><br/> Vybraný cílový virtuální počítač by neměl být menší než zdrojový virtuální počítač.
 **Síťové prostředky** | Možnosti pro virtuální sítě (virtuální sítě)/Network skupiny zabezpečení/síťová rozhraní:<br/><br/> – Vytvoří nový prostředek se stejným názvem v cílové oblasti.<br/><br/> – Vytvoří nový prostředek s jiným názvem v cílové oblasti.<br/><br/> – Použijte existující síťový prostředek v cílové oblasti.<br/><br/> Pokud vytvoříte nový cílový prostředek, s výjimkou nastavení, které upravíte, je mu přiřazeno stejné nastavení jako zdrojový prostředek.
 **Název veřejné IP adresy** | Zadejte název.
-**SKU veřejné IP adresy** | Zadejte [SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku).
-**Zóna veřejné IP adresy** | Zadejte [zónu](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) pro standardní veřejné IP adresy.<br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **zónu redundantní**.
+**SKU veřejné IP adresy** | Zadejte [SKU](../virtual-network/public-ip-addresses.md#sku).
+**Zóna veřejné IP adresy** | Zadejte [zónu](../virtual-network/public-ip-addresses.md#standard) pro standardní veřejné IP adresy.<br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **zónu redundantní**.
 **Název nástroje pro vyrovnávání zatížení** | Zadejte název.
 **SKU nástroje pro vyrovnávání zatížení** | Basic nebo Standard. Doporučujeme používat standard.
 **Zóna nástroje pro vyrovnávání zatížení** | Zadejte zónu pro nástroj pro vyrovnávání zatížení. <br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **zónu redundantní**.
@@ -62,7 +62,7 @@ Nastavení cíle pro prostředek upravíte pomocí položky **cílová konfigura
 Postup úpravy nastavení: 
 
 1. Na stránce **různých oblastí** > **cílový sloupec konfigurace** klikněte na odkaz pro položku prostředku.
-2. V **nastavení konfigurace**můžete vytvořit nový virtuální počítač v cílové oblasti.
+2. V **nastavení konfigurace** můžete vytvořit nový virtuální počítač v cílové oblasti.
 3. Přiřaďte k cílovému virtuálnímu počítači novou zónu dostupnosti, skupinu dostupnosti nebo SKU. **Zóna dostupnosti** a **SKU**.
 
 Změny se provedou jenom pro prostředky, které upravujete. Všechny závislé prostředky je potřeba aktualizovat samostatně.
@@ -90,8 +90,8 @@ Při přesunu Azure SQL Database prostředků můžete změnit nastavení cíle 
 
 Nastavení cíle Azure SQL Database prostředku upravíte následujícím způsobem: 
 
-1. V **různých oblastech**u prostředku, který chcete upravit, klikněte na položku **cílová konfigurace** .
-2. V **nastavení konfigurace**zadejte cílové nastavení shrnuté v tabulce výše.
+1. V **různých oblastech** u prostředku, který chcete upravit, klikněte na položku **cílová konfigurace** .
+2. V **nastavení konfigurace** zadejte cílové nastavení shrnuté v tabulce výše.
 
 ## <a name="next-steps"></a>Další kroky
 

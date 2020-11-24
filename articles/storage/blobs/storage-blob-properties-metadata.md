@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 19d20a208672667e5a4354fd1b7d185d0c00f8d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 984fb00e163a090534da1fb41850dcfef6c5d516
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399121"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521525"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>Správa vlastností a metadat objektů BLOB pomocí .NET
 
@@ -126,7 +126,7 @@ Metadata můžete zadat jako jednu nebo více párů název-hodnota u prostředk
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
 ---
 
-Páry název-hodnota metadat jsou platné hlavičky protokolu HTTP a měly by splňovat všechna omezení, kterými se řídí hlavičky protokolu HTTP. Názvy metadat musí být platné názvy hlaviček protokolu HTTP a platné identifikátory jazyka C#, mohou obsahovat pouze znaky ASCII a měly by se považovat za nerozlišování velkých a malých písmen. Hodnoty metadat kódování [Base64](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string) nebo [URL](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode) , které obsahují znaky jiné než ASCII.
+Páry název-hodnota metadat jsou platné hlavičky protokolu HTTP a měly by splňovat všechna omezení, kterými se řídí hlavičky protokolu HTTP. Názvy metadat musí být platné názvy hlaviček protokolu HTTP a platné identifikátory jazyka C#, mohou obsahovat pouze znaky ASCII a měly by se považovat za nerozlišování velkých a malých písmen. Hodnoty metadat kódování [Base64](/dotnet/api/system.convert.tobase64string) nebo [URL](/dotnet/api/system.web.httputility.urlencode) , které obsahují znaky jiné než ASCII.
 
 Název vašich metadat musí odpovídat konvencím pojmenování identifikátorů C#. Názvy metadat udržují případ použitý při jejich vytvoření, ale při nastavení nebo čtení se nerozlišují malá a velká písmena. Pokud se pro prostředek odešlou dvě nebo víc hlaviček metadat s použitím stejného názvu, Azure Blob Storage vrátí kód chyby HTTP 400 (chybný požadavek).
 

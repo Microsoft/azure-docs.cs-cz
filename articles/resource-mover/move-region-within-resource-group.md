@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 716928761d23c2cf04ebcc72e253ad7884408065
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34064fe3fe88a34b0dd2430d7adec3ebcb17ebcc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061834"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528223"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>Přesunutí prostředků mezi oblasti (ze skupiny prostředků)
 
@@ -22,12 +22,12 @@ V tomto článku se dozvíte, jak přesunout prostředky z konkrétní skupiny p
 > Prostředek Azure Resource stěhovací je momentálně ve verzi Public Preview.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pro předplatné, ve kterém se nacházejí prostředky, které chcete přesunout, potřebujete přístup *vlastníka* .
     - Při prvním přidání prostředku pro konkrétní mapování zdrojového a cílového umístění v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.
     - Pokud chcete vytvořit identitu a přiřadit jí požadovanou roli (přispěvatel nebo správce přístupu uživatele ve zdrojovém předplatném), účet, který použijete k přidání prostředků, potřebuje oprávnění *vlastníka* k tomuto předplatnému. [Přečtěte si další informace](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) o rolích Azure.
-- K vytvoření zdrojových prostředků v cílové oblasti vyžaduje předplatné dostatečnou kvótu. Pokud ne, požádejte o další omezení. [Další informace](/azure/azure-resource-manager/management/azure-subscription-service-limits).
+- K vytvoření zdrojových prostředků v cílové oblasti vyžaduje předplatné dostatečnou kvótu. Pokud ne, požádejte o další omezení. [Přečtěte si další informace](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Ověřte ceny a poplatky spojené s cílovou oblastí, do které přesouváte virtuální počítače. Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) vám pomůžeme.
 - Přečtěte si, že prostředky, které chcete přesunout, jsou podporovány nástrojem Resource stěhovací:
     - Virtuální počítače Azure a přidružené disky
@@ -64,16 +64,16 @@ Vyberte prostředky, které chcete přesunout. Prostředky přesunete do cílov�
 
     ![Výběr pro přesunutí prostředků do jiné oblasti](./media/move-region-within-resource-group/select-move-region.png)
     
-4. V části **zdroj + cíl**vyberte cílovou oblast, do které chcete prostředky přesunout. Pak vyberte **Další**.
+4. V části **zdroj + cíl** vyberte cílovou oblast, do které chcete prostředky přesunout. Pak vyberte **Další**.
 
 
     ![Zdrojová a cílová stránka pro výběr cílové oblasti](./media/move-region-within-resource-group/source-target.png)
 
 
-7. V **prostředcích k přesunu**vyberte **Další**.  
-8. V **Vyberte prostředky**vyberte prostředek, který chcete přesunout. Je možné přidat pouze prostředky podporované pro Move. Potom vyberte **Done** (Hotovo).
-9. V **Přesunutí prostředků**vyberte **Další**. 
-10. V části **Revize a přidat**zkontrolujte podrobnosti o zdroji a cíli.
+7. V **prostředcích k přesunu** vyberte **Další**.  
+8. V **Vyberte prostředky** vyberte prostředek, který chcete přesunout. Je možné přidat pouze prostředky podporované pro Move. Potom vyberte **Done** (Hotovo).
+9. V **Přesunutí prostředků** vyberte **Další**. 
+10. V části **Revize a přidat** zkontrolujte podrobnosti o zdroji a cíli.
 11. Ujistěte se, že jste pochopili, že metadata o přesouvaných prostředcích se budou ukládat do skupiny prostředků vytvořené pro tento účel a že se povolí, aby měl stěhovací systém vytvořit identitu spravovanou systémem pro přístup k prostředkům předplatného.
 1. Vyberte **pokračovat** a začněte přidávat prostředky.
 
@@ -96,7 +96,7 @@ Prostředky, které přesouváte, se zobrazují na stránce pro **různé oblast
     ![Tlačítko pro ověření závislostí](./media/move-region-within-resource-group/validate-dependencies.png)
 
 2. Pokud se najde závislosti, vyberte **přidat závislosti**. 
-3. V části **přidat závislosti**vyberte závislé prostředky > **přidat závislosti**. Sledujte průběh oznámení.
+3. V části **přidat závislosti** vyberte závislé prostředky > **přidat závislosti**. Sledujte průběh oznámení.
 
     ![Tlačítko pro přidání závislostí](./media/move-region-within-resource-group/add-dependencies.png)
 
@@ -110,12 +110,12 @@ Prostředky, které přesouváte, se zobrazují na stránce pro **různé oblast
 
 Než budete moct připravit a přesunout prostředky, musí být zdrojová skupina prostředků přítomna v cílové oblasti. 
 
-### <a name="prepare-to-move-the-source-resource-group"></a>Příprava na přesunutí zdrojové skupiny prostředků
+### <a name="prepare-to-move-the-source-resource-group"></a>Příprava na přesun zdrojové skupiny prostředků
 
 Připravte následujícím způsobem:
 
-1. V **různých oblastech**vyberte zdrojovou skupinu prostředků > **připravit**.
-2. V **Příprava prostředků**vyberte **připravit**.
+1. V **různých oblastech** vyberte zdrojovou skupinu prostředků > **připravit**.
+2. V **Příprava prostředků** vyberte **připravit**.
 1. 
     ![Tlačítko pro přípravu zdrojové skupiny prostředků](./media/move-region-within-resource-group/prepare-source-resource-group.png)
 
@@ -130,7 +130,7 @@ Připravte následujícím způsobem:
 
 Zahajte přesun následujícím způsobem:
 
-1. V **různých oblastech**vyberte skupinu prostředků, > **zahájit přesun** .
+1. V **různých oblastech** vyberte skupinu prostředků, > **zahájit přesun** .
 2. LN **přesune prostředky**, vyberte **zahájit přesun**. Skupina prostředků se přesune do stavu *zahájení probíhajícího přesunu* .
 3. Po zahájení přesunu se vytvoří cílová skupina prostředků na základě vygenerované šablony ARM. Zdrojová skupina prostředků se přesune do stavu *čeká na přesunutí* .
 
@@ -138,7 +138,7 @@ Zahajte přesun následujícím způsobem:
 
 Potvrzení a dokončení procesu přesunutí:
 
-1. V **různých oblastech**vyberte skupinu prostředků > **potvrzení změn** .
+1. V **různých oblastech** vyberte skupinu prostředků > **potvrzení změn** .
 2. LN **přesunout prostředky**, vyberte **Potvrdit**.
 
 > [!NOTE]
@@ -164,7 +164,7 @@ Přesné nastavení, které upravíte, závisí na typu prostředku. [Přečtět
 
 Teď, když je zdrojová skupina prostředků přesunutá, můžete připravit na přesun dalších prostředků.
 
-1. V **různých oblastech**vyberte prostředky, které chcete připravit. 
+1. V **různých oblastech** vyberte prostředky, které chcete připravit. 
 
     ![Stránka pro výběr přípravy na další prostředky](./media/move-region-availability-zone/prepare-other.png)
 
@@ -182,8 +182,8 @@ Teď, když je zdrojová skupina prostředků přesunutá, můžete připravit n
 
 Díky připraveným prostředkům teď můžete zahájit přesun.
 
-1. V **různých oblastech**vyberte prostředky se stavem *zahájit přesun čeká na vyřízení*. Pak vyberte **Spustit přesun**.
-2. V **Přesunutí prostředků**vyberte **Spustit přesun**.
+1. V **různých oblastech** vyberte prostředky se stavem *zahájit přesun čeká na vyřízení*. Pak vyberte **Spustit přesun**.
+2. V **Přesunutí prostředků** vyberte **Spustit přesun**.
 
     ![Vybrat pro tlačítko Zahájit přesun](./media/move-region-within-resource-group/initiate-move.png)
 
@@ -203,15 +203,15 @@ Díky připraveným prostředkům teď můžete zahájit přesun.
 Po počátečním přesunu se můžete rozhodnout, jestli chcete přesunutí potvrdit, nebo ho zahodit. 
 
 - **Zahodit**: při testování můžete zrušit jeho přesunutí a nechcete skutečně přesunout zdrojový prostředek. Zrušením přesunutí se daný prostředek vrátí do stavu *zahájení přesunu čeká na vyřízení*.
-- **Potvrdit**: potvrzení dokončí přesun do cílové oblasti. Po potvrzení bude zdrojový prostředek ve stavu *čeká na odstranění zdroje*a Vy se můžete rozhodnout, jestli ho chcete odstranit.
+- **Potvrdit**: potvrzení dokončí přesun do cílové oblasti. Po potvrzení bude zdrojový prostředek ve stavu *čeká na odstranění zdroje* a Vy se můžete rozhodnout, jestli ho chcete odstranit.
 
 
 ## <a name="discard-the-move"></a>Zrušit přesun 
 
 Přesunutí můžete zrušit následujícím způsobem:
 
-1. V **různých oblastech**vyberte prostředky s *potvrzením změny stavu čeká na přesunutí*a vyberte **zrušit přesun**.
-2. V **Zrušit přesunutí**vyberte **Zrušit**.
+1. V **různých oblastech** vyberte prostředky s *potvrzením změny stavu čeká na přesunutí* a vyberte **zrušit přesun**.
+2. V **Zrušit přesunutí** vyberte **Zrušit**.
 3. Sledujte průběh přesunu na panelu oznámení.
 4. Po zobrazení oznámení o úspěšném přesunutí vyberte **aktualizovat**. 
 
@@ -223,8 +223,8 @@ Přesunutí můžete zrušit následujícím způsobem:
 Pokud chcete dokončit proces přesunutí, potvrďte přesunutí. 
 
 
-1. V **různých oblastech**vyberte prostředky s *potvrzením změny stavu čeká na vyřízení*a vyberte **Potvrdit přesunutí**.
-2. V v **potvrzení zdroje**vyberte **Potvrdit**.
+1. V **různých oblastech** vyberte prostředky s *potvrzením změny stavu čeká na vyřízení* a vyberte **Potvrdit přesunutí**.
+2. V v **potvrzení zdroje** vyberte **Potvrdit**.
 
     ![Stránka pro potvrzení přesunutí prostředků](./media/move-region-within-resource-group/commit-resources.png)
 
@@ -244,7 +244,7 @@ Pokud chcete dokončit proces přesunutí, potvrďte přesunutí.
 
 Po přesunutí můžete případně Odstranit prostředky ve zdrojové oblasti. 
 
-1. V **oblasti napříč oblastmi**vyberte název každého zdrojového prostředku, který chcete odstranit.
+1. V **oblasti napříč oblastmi** vyberte název každého zdrojového prostředku, který chcete odstranit.
 2. Na stránce vlastnosti každého prostředku vyberte možnost **Odstranit**.
 
 ## <a name="delete-additional-resources-created-for-move"></a>Odstranění dalších prostředků vytvořených pro přesun

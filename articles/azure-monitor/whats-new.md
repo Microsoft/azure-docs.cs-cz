@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 18222573956f5ff3e9c617602902374b114328da
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4fa00bffc35c4ed67ce70751c8882b74ad6b01a1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555613"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534496"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
 
@@ -43,7 +43,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 ### <a name="autoscale"></a>Automatické škálování
 - [Začínáme s automatické škálováním v Azure](platform/autoscale-get-started.md) – Přidání oddílu o přesunutí automatického škálování do jiné oblasti.
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 - [Nakonfigurujte monitorování PV pomocí Azure monitor for Containers](insights/container-insights-persistent-volumes.md) – nový článek.
 - [Jak spravovat Azure monitor pro kontejnery agent](insights/container-insights-manage-agent.md) – přidala se podpora pro cluster Kubernetes s podporou ARC Azure.
 - [Výstrahy metriky od Azure monitor pro kontejnery](insights/container-insights-metric-alerts.md) – přidala se podpora pro cluster Kubernetes s podporou Azure ARC.
@@ -98,7 +98,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 - [Použití analýzy změn aplikace v Azure monitor k vyhledání problémů s webovými aplikacemi](app/change-analysis.md) – přidání virtuálního počítače a protokolu aktivit.
 
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 - [Nakonfigurujte cluster Kubernetes s povoleným ARC Azure pomocí Azure monitor pro kontejnery](insights/container-insights-enable-arc-enabled-clusters.md) – doprovodné materiály k povolení monitorování pomocí instančního objektu.
 - [Nasazení & metriky hPa s Azure monitor pro kontejnery](insights/container-insights-deployment-hpa-metrics.md) – nový článek.
 
@@ -177,7 +177,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 - [Pravidla shromažďování dat v Azure monitor (Preview)](platform/data-collection-rule-overview.md) – nový článek.
 
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 - [Nasazení & metriky hPa s Azure monitor pro kontejnery](insights/container-insights-deployment-hpa-metrics.md) – nový článek.
 
 ### <a name="insights"></a>Insights
@@ -222,7 +222,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 - [Příklady šablon Správce prostředků pro prostředky Application Insights](samples/resource-manager-app-resource.md) – nový článek.
 - [Řešení potíží se službou Azure Application Insights Profiler](app/profiler-troubleshooting.md) – přidání poznámky k chybě běžící v profileru pro ASP.NET Core aplikace na Azure App Service. 
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 - [Protokoluje výstrahy z Azure monitor pro kontejnery](insights/container-insights-log-alerts.md) – nový článek.
 - [Výstrahy metriky od Azure monitor pro kontejnery](insights/container-insights-metric-alerts.md) – nový článek.
 
@@ -285,7 +285,7 @@ Nové a aktualizované články z změny struktury Azure Monitor pro virtuální
 - [Monitorujte své aplikace bez změn kódu – automatické instrumentace pro Azure Monitor Application Insights](app/codeless-overview.md) – nový článek.
 - [Řešení potíží se selháním načtení sady SDK pro webové aplikace v jazyce JavaScript](app/javascript-sdk-load-failure.md) – nový článek
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 - [Postup zastavení monitorování hybridního Kubernetes clusteru](insights/container-insights-optout-hybrid.md) – přidáno pro Kubernetes s povoleným obloukem
 - [Nakonfigurujte cluster Kubernetes s povoleným obloukem Azure pomocí Azure monitor for Containers](insights/container-insights-enable-arc-enabled-clusters.md) – nový článek.
 - [Nakonfigurujte Azure Red Hat OpenShift v4. x s Azure monitor pro kontejnery](insights/container-insights-azure-redhat4-setup.md) – aktualizované požadavky.
@@ -296,7 +296,7 @@ Nové a aktualizované články z změny struktury Azure Monitor pro virtuální
 
 ### <a name="logs"></a>Protokoly
 - [Odstraní a obnoví Azure Log Analytics Workspace](platform/delete-workspace.md) – Přidal se příkaz prostředí PowerShell. Aktualizace řešení potíží.
-- [Správa pracovních prostorů Log Analytics v části Azure monitor](platform/manage-access.md) – příklad pro nepovolené tabulky v oddílu RBAC.
+- [Správa pracovních prostorů Log Analytics v části Azure monitor](platform/manage-access.md) – příklad pro nepovolené tabulky v části Azure RBAC.
 - [Spravujte využití a náklady na protokoly Azure monitor](platform/manage-cost-storage.md) – další podrobnosti o výpočtu velikosti dat. Aktualizace konfigurace výstrah datových svazků. Podrobnosti o datech zabezpečení shromažďovaných službou Azure Sentinel Objasnění datového zakončení.
 - [Použijte protokoly Azure monitor s Azure Logic Apps a](platform/logicapp-flow-connector.md) pomocí omezení konektoru Power autoadded.
 
@@ -392,7 +392,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 
 
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 - [Postup povolení Azure monitor pro kontejnery](insights/container-insights-onboard.md) – aktualizovaná konfigurační tabulka brány firewall
 - [Postup aktualizace Azure monitor pro kontejnery pro metriky](insights/container-insights-update-metrics.md) – aktualizace pro shromažďování metrik pomocí spravovaných identit
 - [Náklady na monitorování Azure monitor pro kontejnery](insights/container-insights-cost.md) – nový článek.
@@ -455,7 +455,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 - [Odebrání Application Insights v aplikaci Visual Studio](app/remove-application-insights.md) – nový článek.
 - [Vzorkování telemetrie v Azure Application Insights](app/sampling.md) – oprava v ukázce s pevnou sazbou v Pythonu.
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 
 - [Nakonfigurujte Azure Red Hat OpenShift v4. x s Azure monitor for Containers](insights/container-insights-azure-redhat4-setup.md) – nový článek.
 - [Ruční oprava problémů s synchronizací ServiceNow](platform/itsmc-resync-servicenow.md) – nový článek
@@ -476,7 +476,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 
 - [Pokročilé funkce](platform/metrics-charts.md) oddílu agregace služby Azure Průzkumník metrik – přidáno
 
-### <a name="workbooks"></a>Workbooks
+### <a name="workbooks"></a>Sešity
 
 - [Azure monitor sešitů a šablon Azure Resource Manager](platform/workbooks-automate.md) přidány šablony Správce prostředků pro nasazení šablony sešitu.
 
@@ -503,7 +503,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 - [Monitorujte aplikace v Pythonu pomocí Azure monitor (Preview)](app/opencensus-python.md) – přidané standardní metriky.
 - [Podpora zdrojového mapování pro aplikace JavaScriptu – Azure Monitor Application Insights](app/source-map-support.md) – nový článek
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 
 - [Nejčastější dotazy Azure monitor](faq.md) – aktualizace pro Azure monitor pro kontejnery.
 - [Nakonfigurujte monitorování GPU pomocí Azure monitor for Containers](insights/container-insights-gpu-monitoring.md) – nový článek.
@@ -571,7 +571,7 @@ Více aktualizací jako součást přepisu obsahu diagnostického rozšíření.
 
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
 
-- [Integrace Azure Active Directory se službou Azure Kubernetes](../aks/azure-ad-integration-cli.md) – přidání poznámky k vytvoření klientské aplikace pro podporu clusteru s POVOLENým RBAC pro podporu Azure monitor pro kontejnery.
+- [Integrace Azure Active Directory se službou Azure Kubernetes](../aks/azure-ad-integration-cli.md) – přidání poznámky k vytvoření klientské aplikace pro podporu Kubernetes clusteru s POVOLENým RBAC pro podporu Azure monitor pro kontejnery.
 
 #### <a name="azure-monitor-for-vms"></a>Azure Monitor pro virtuální počítače
 

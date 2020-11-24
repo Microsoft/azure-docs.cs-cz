@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: b439dcfc755f0113ffabf792850a2bd0fbcf322e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: cbbec71ff8ab762ea0da764a7db9459123850271
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996509"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95530229"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
 Pokud dojde k výjimce, můžete automaticky shromáždit snímek ladění z živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnných v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger v [Azure Application Insights](./app-insights-overview.md) monitorují telemetrii výjimek z vaší webové aplikace. Shromažďuje snímky na vašich vyvolané výjimce, takže budete mít k dispozici informace potřebné k diagnostice problémů v produkčním prostředí. Zahrňte do aplikace [balíček NuGet pro kolektor snímků](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a volitelně nakonfigurujte parametry kolekce v [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimkách](./asp-net-exceptions.md) na portálu Application Insights.
@@ -39,7 +39,7 @@ Pokud jste povolili Snapshot Debugger, ale nevidíte snímky, podívejte se na n
 
 ## <a name="grant-permissions"></a>Udělení oprávnění
 
-Přístup ke snímkům je chráněný řízením přístupu na základě role (RBAC). Abyste mohli prozkoumat snímek, vlastník předplatného vás nejprve musí přidat do potřebné role.
+Přístup k snímkům je chráněn řízením přístupu na základě role Azure (Azure RBAC). Abyste mohli prozkoumat snímek, vlastník předplatného vás nejprve musí přidat do potřebné role.
 
 > [!NOTE]
 > Vlastníci a přispěvatelé tuto roli automaticky nemají. Pokud chtějí snímky zobrazit, musí se do této role přidat sami.

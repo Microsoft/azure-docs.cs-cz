@@ -8,23 +8,22 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: 3cfdeaee863c8e11a76ac5842ae6c35d370e2ae2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 74210475cc8c0efd274d6e80c3f1c89b5206a97d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322551"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509506"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretace výsledků modelu v Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
-
+**platí pro:** ![ Toto je značka zaškrtnutí, což znamená, že se tento článek týká Machine Learning Studio (Classic). ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ Toto je X, což znamená, že se tento článek týká Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Toto téma vysvětluje, jak vizualizovat a interpretovat výsledky předpovědi v Azure Machine Learning Studio (Classic). Po vyškolení modelu a provedení předpovědi nad ním ("skóre modelu") potřebujete pochopit a interpretovat výsledek předpovědi.
 
 Existují čtyři hlavní druhy modelů strojového učení v Azure Machine Learning Studio (Classic):
 
-* Klasifikace
+* Classification
 * Clustering
 * Regrese
 * Doporučené systémy
@@ -41,7 +40,7 @@ Informace o tom, jak vyhodnotit modely, najdete v tématu [jak vyhodnotit výkon
 
 Pokud se ML Studio (Classic) nezačínáte, [Naučte se vytvářet jednoduchý experiment](create-experiment.md).
 
-## <a name="classification"></a>Klasifikace
+## <a name="classification"></a>Classification
 Existují dvě podkategorie problémů s klasifikací:
 
 * Problémy s pouze dvěma třídami (klasifikace se dvěma třídami nebo binární)

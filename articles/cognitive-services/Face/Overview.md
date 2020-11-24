@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 9/17/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání obličeje, software pro rozpoznávání obličeje, analýza obličeje, shoda obličeje, aplikace pro rozpoznávání obličeje, hledání na základě obrázku, hledání ve formátu obličeje
-ms.openlocfilehash: ccc9ee3107d287844430be0ae089e4b7ac3a2f44
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 600ca48cc19ee8723b423e484ec96736a55ae7fc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911439"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95532252"
 ---
 # <a name="what-is-the-azure-face-service"></a>Co je služba Azure Face?
 
@@ -48,7 +48,7 @@ Rozhraní API pro ověření provádí ověřování proti dvěma zjištěným p
 
 Rozhraní API najít podobné se shoduje mezi cílovou ploškou a sadou kandidátních plošek a hledáním menší sady tváře, které vypadají podobně jako cílový obličej. To je užitečné při hledání na základě obrázku. 
 
-Podporují se dva pracovní režimy **matchPerson** a **matchFace** . Režim **matchPerson** vrací podobné obličeje po filtrování pro stejnou osobu pomocí [rozhraní API pro ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a). Režim **matchFace** ignoruje filtr stejné osoby. Vrátí seznam podobných kandidátních plošek, které mohou nebo nemusí patřit stejné osobě.
+Podporují se dva pracovní režimy **matchPerson** a **matchFace**. Režim **matchPerson** vrací podobné obličeje po filtrování pro stejnou osobu pomocí [rozhraní API pro ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a). Režim **matchFace** ignoruje filtr stejné osoby. Vrátí seznam podobných kandidátních plošek, které mohou nebo nemusí patřit stejné osobě.
 
 Následující příklad ukazuje cílovou plochu:
 
@@ -76,9 +76,9 @@ Po vytvoření a školení databáze můžete pro skupinu provést identifikaci 
 
 Další informace o identifikaci osob najdete v příručce věnovaném koncepcím [rozpoznávání obličeje](concepts/face-recognition.md) nebo v dokumentaci k [identifikaci rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) .
 
-## <a name="containers"></a>Containers
+## <a name="deploy-on-premises-using-docker-containers"></a>Nasazení místně pomocí kontejnerů Docker
 
-[Pomocí kontejneru obličeje](face-how-to-install-containers.md) můžete detekovat, rozpoznávat a identifikovat plošky tím, že si nainstalujete standardizovaný kontejner Docker blíž k vašim datům.
+K nasazení funkcí rozhraní API v místním prostředí [použijte kontejner obličeje (Preview)](face-how-to-install-containers.md) . Tento kontejner Docker vám umožní přiblížit službu k vašim datům z hlediska dodržování předpisů, zabezpečení nebo jiných provozních důvodů.
 
 ## <a name="sample-apps"></a>Ukázkové aplikace
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828774"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520998"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Průzkumníka služby Microsoft Azure Storage
 
@@ -86,7 +86,7 @@ Pokud si chcete stáhnout předchozí verze Průzkumník služby Storage, může
 * Funkce spravovaného disku nejsou v Azure Stack podporovány.
 * Pokud se odeslání nebo vložení disku nezdaří a před selháním byl vytvořen nový disk, Průzkumník služby Storage disk za vás neodstraní.
 * V závislosti na tom, kdy zrušíte nahrávání nebo vložení disku, je možné tento nový disk ponechat v poškozeném stavu. Pokud k tomu dojde, musíte odstranit nový disk nebo ručně zavolat rozhraní API disku, aby se nahradil obsah disku tak, aby se už nepoškodil.
-* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md) .
 * Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Pokud chcete tento problém obejít, stačí aktualizovat uzel skupiny. Další informace najdete v tématu #537.
 * Pokud používáte VS pro Mac a někdy jste vytvořili vlastní konfiguraci AAD, možná se nebudete moct přihlásit. Pokud chcete tento problém obejít, odstraňte obsah ~/. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
 * Azurite ještě neplně implementovala všechna rozhraní API úložiště. Z tohoto důvodu může při použití Azurite pro vývojové úložiště dojít k neočekávaným chybám nebo chování.
@@ -108,7 +108,7 @@ Pokud si chcete stáhnout předchozí verze Průzkumník služby Storage, může
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
+* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
 
 ## <a name="previous-releases"></a>Předchozí verze
 
@@ -176,7 +176,7 @@ Pokud si chcete stáhnout předchozí verze Průzkumník služby Storage, může
   * Vytvoření snímku disku
 
 Nahrávání, stahování a kopírování disků v různých oblastech využívá AzCopy v10 za účelem.
-* Průzkumník služby Storage se teď dají instalovat přes modul snap-in pro Linux. Při instalaci prostřednictvím obchodu s modulem snap-in jsou pro vás nainstalovány všechny závislosti včetně .NET Core! V současné době jsme ověřili, že Průzkumník služby Storage správně funguje na Ubuntu a CentOS. Pokud narazíte na problémy s instalací z obchodu pro jiné Linux distribuce, [otevřete prosím problém na GitHubu](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Další informace o instalaci z obchodu s modulem snap-in najdete v naší [příručce Začínáme](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux). #68
+* Průzkumník služby Storage se teď dají instalovat přes modul snap-in pro Linux. Při instalaci prostřednictvím obchodu s modulem snap-in jsou pro vás nainstalovány všechny závislosti včetně .NET Core! V současné době jsme ověřili, že Průzkumník služby Storage správně funguje na Ubuntu a CentOS. Pokud narazíte na problémy s instalací z obchodu pro jiné Linux distribuce, [otevřete prosím problém na GitHubu](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Další informace o instalaci z obchodu s modulem snap-in najdete v naší [příručce Začínáme](./vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux). #68
 * Byly provedeny dvě významné změny pro připojení k Azure Active Directory (Azure AD), které jsou určené k tomu, aby byla funkce užitečnější pro ADLS Gen2 uživatele:
   * Teď vyberte tenanta, ve kterém se prostředek, který připojujete. To znamená, že už nepotřebujete mít přístup ke službě RBAC v rámci předplatného prostředku.
   * Pokud připojujete ADLS Gen2 kontejner objektů blob, můžete se teď připojit k určité cestě v kontejneru.
@@ -202,7 +202,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
 * V závislosti na tom, kdy zrušíte nahrávání nebo vložení disku, je možné tento nový disk ponechat v poškozeném stavu. Pokud k tomu dojde, musíte odstranit nový disk nebo ručně zavolat rozhraní API disku, aby se nahradil obsah disku tak, aby se už nepoškodil.
 * V závislosti na tom, kdy zrušíte nahrávání nebo vložení disku, je možné tento nový disk ponechat v poškozeném stavu. Pokud k tomu dojde, musíte odstranit nový disk nebo ručně zavolat rozhraní API disku, aby se nahradil obsah disku tak, aby se už nepoškodil.
 * Při provádění stahování bez AzCopy objektů BLOB se neověřuje algoritmus MD5 pro velké soubory. Důvodem je chyba v sadě SDK pro úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md) .
 * Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Pokud chcete tento problém obejít, stačí aktualizovat uzel skupiny. Další informace najdete v tématu #537.
 * Pokud používáte VS pro Mac a někdy jste vytvořili vlastní konfiguraci AAD, možná se nebudete moct přihlásit. Pokud chcete tento problém obejít, odstraňte obsah ~/. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
 * Azurite ještě neplně implementovala všechna rozhraní API úložiště. Z tohoto důvodu může při použití Azurite pro vývojové úložiště dojít k neočekávaným chybám nebo chování.
@@ -224,7 +224,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
+* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
 
 
 ## <a name="version-1100"></a>1.10.0 verze
@@ -250,7 +250,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
     * Vytvoření snímku disku
 
     Nahrávání, stahování a kopírování disků v různých oblastech využívá AzCopy v10 za účelem.
-* Průzkumník služby Storage se teď dají instalovat přes modul snap-in pro Linux. Při instalaci prostřednictvím obchodu s modulem snap-in jsou pro vás nainstalovány všechny závislosti včetně .NET Core! V současné době jsme ověřili, že Průzkumník služby Storage správně funguje na Ubuntu a CentOS. Pokud narazíte na problémy s instalací z obchodu pro jiné Linux distribuce, [otevřete prosím problém na GitHubu](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Další informace o instalaci z obchodu s modulem snap-in najdete v naší [příručce Začínáme](https://aka.ms/storageexplorer/snapinformation). [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
+* Průzkumník služby Storage se teď dají instalovat přes modul snap-in pro Linux. Při instalaci prostřednictvím obchodu s modulem snap-in jsou pro vás nainstalovány všechny závislosti včetně .NET Core! V současné době jsme ověřili, že Průzkumník služby Storage správně funguje na Ubuntu a CentOS. Pokud narazíte na problémy s instalací z obchodu pro jiné Linux distribuce, [otevřete prosím problém na GitHubu](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Další informace o instalaci z obchodu s modulem snap-in najdete v naší [příručce Začínáme](./vs-azure-tools-storage-manage-with-storage-explorer.md). [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
 * Byly provedeny dvě významné změny pro připojení k Azure Active Directory (Azure AD), které jsou určené k tomu, aby byla funkce užitečnější pro ADLS Gen2 uživatele: * nyní vyberete tenanta, ve kterém je prostředek, který chcete připojit. To znamená, že už nepotřebujete mít přístup ke službě RBAC v rámci předplatného prostředku.
         * Pokud připojujete ADLS Gen2 kontejner objektů blob, můžete se teď připojit k určité cestě v kontejneru.
 * Při správě seznamů ACL pro ADLS Gen2 soubory a složky se teď Průzkumník služby Storage zobrazí popisné názvy entit v seznamu ACL. [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
@@ -276,7 +276,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
 * Pokud se odeslání nebo vložení disku nezdaří a před selháním byl vytvořen nový disk, Průzkumník služby Storage disk za vás neodstraní.
 * V závislosti na tom, kdy zrušíte nahrávání nebo vložení disku, je možné tento nový disk ponechat v poškozeném stavu. Pokud k tomu dojde, musíte odstranit nový disk nebo ručně zavolat rozhraní API disku, aby se nahradil obsah disku tak, aby se už nepoškodil.
 * Při provádění stahování bez AzCopy objektů BLOB se neověřuje algoritmus MD5 pro velké soubory. Důvodem je chyba v sadě SDK pro úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md) .
 * Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Pokud chcete tento problém obejít, stačí aktualizovat uzel skupiny. Další informace najdete v tématu #537.
 * Pokud používáte VS pro Mac a někdy jste vytvořili vlastní konfiguraci AAD, možná se nebudete moct přihlásit. Pokud chcete tento problém obejít, odstraňte obsah ~/. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
 * Azurite ještě neplně implementovala všechna rozhraní API úložiště. Z tohoto důvodu může při použití Azurite pro vývojové úložiště dojít k neočekávaným chybám nebo chování.
@@ -298,7 +298,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
+* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
 
 ## <a name="version-190"></a>1.9.0 verze
 7/1/2019
@@ -334,7 +334,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
 ### <a name="known-issues"></a>Známé problémy
 
 * Při provádění stahování bez AzCopy objektů BLOB se neověřuje algoritmus MD5 pro velké soubory. Důvodem je chyba v sadě SDK pro úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md) .
 * Pokus o přístup k objektům blob ADLS Gen2 v případě, že dojde k selhání za proxy serverem.
 * Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Pokud chcete tento problém obejít, stačí aktualizovat uzel skupiny. Další informace najdete v tématu #537.
 * Pokud používáte VS pro Mac a někdy jste vytvořili vlastní konfiguraci AAD, možná se nebudete moct přihlásit. Pokud chcete tento problém obejít, odstraňte obsah ~/. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
@@ -356,7 +356,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
+* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
 
 ## <a name="version-181"></a>1.8.1 verze
 5/13/2019
@@ -391,7 +391,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
 ### <a name="known-issues"></a>Známé problémy
 
 * Při provádění stahování bez AzCopy objektů BLOB se neověřuje algoritmus MD5 pro velké soubory. Důvodem je chyba v sadě SDK pro úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md) .
 * Pokus o přístup k objektům blob ADLS Gen2 v případě, že dojde k selhání za proxy serverem.
 * Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Pokud chcete tento problém obejít, stačí aktualizovat uzel skupiny. Další informace najdete v tématu #537.
 * Pokud používáte VS pro Mac a někdy jste vytvořili vlastní konfiguraci AAD, možná se nebudete moct přihlásit. Pokud chcete tento problém obejít, odstraňte obsah ~/. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
@@ -413,7 +413,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
+* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
 
 ## <a name="version-180"></a>1.8.0 verze
 1. 5. 2019
@@ -443,7 +443,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
 ### <a name="known-issues"></a>Známé problémy
 
 * Při provádění stahování bez AzCopy objektů BLOB se neověřuje algoritmus MD5 pro velké soubory. Důvodem je chyba v sadě SDK pro úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md) .
 * Pokus o přístup k objektům blob ADLS Gen2 v případě, že dojde k selhání za proxy serverem.
 * Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Pokud chcete tento problém obejít, stačí aktualizovat uzel skupiny. Další informace najdete v tématu #537.
 * Pokud používáte VS pro Mac a někdy jste vytvořili vlastní konfiguraci AAD, možná se nebudete moct přihlásit. Pokud chcete tento problém obejít, odstraňte obsah ~/. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
@@ -465,7 +465,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
+* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
 
 ## <a name="version-170"></a>Verze 1.7.0
 3/5/2019
@@ -499,7 +499,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](./storage/common/storage-explorer-troubleshooting.md) .
 * Pokus o přístup k objektům blob ADLS Gen2 v případě, že dojde k selhání za proxy serverem.
 * Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Pokud chcete tento problém obejít, stačí aktualizovat uzel skupiny. Další informace najdete v tématu #537.
 * Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Pokud chcete tento problém obejít, stačí aktualizovat uzel skupiny. Další informace najdete v tématu #537.
@@ -559,7 +559,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
         
 ### <a name="new"></a>Nová
 
-* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
+* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
 * Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumník služby Storage zjistí, že je pro účet úložiště povolený hierarchický obor názvů, zobrazí se vedle názvu svého účtu úložiště zpráva "(ADLS Gen2 Preview). Průzkumník služby Storage je schopný zjistit, jestli je v případě přihlášení povolený hierarchický obor názvů, nebo jestli jste k účtu úložiště připojili název a klíč. Pro ADLS Gen2 účty úložiště můžete použít Průzkumník služby Storage k těmto akcím:
   * Vytváření a odstraňování kontejnerů
   * Správa vlastností kontejneru a oprávnění (levá strana)
@@ -628,7 +628,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
         
 ### <a name="new"></a>Nová
 
-* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
+* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
 * Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumník služby Storage zjistí, že je pro účet úložiště povolený hierarchický obor názvů, zobrazí se vedle názvu svého účtu úložiště zpráva "(ADLS Gen2 Preview). Průzkumník služby Storage je schopný zjistit, jestli je v případě přihlášení povolený hierarchický obor názvů, nebo jestli jste k účtu úložiště připojili název a klíč. Pro ADLS Gen2 účty úložiště můžete použít Průzkumník služby Storage k těmto akcím:
   * Vytváření a odstraňování kontejnerů
   * Správa vlastností kontejneru a oprávnění (levá strana)
@@ -683,7 +683,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
 
 ### <a name="new"></a>Nová
 
-* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
+* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
 * Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumník služby Storage zjistí, že je pro účet úložiště povolený hierarchický obor názvů, zobrazí se vedle názvu svého účtu úložiště zpráva "(ADLS Gen2 Preview). Průzkumník služby Storage je schopný zjistit, jestli je v případě přihlášení povolený hierarchický obor názvů, nebo jestli jste k účtu úložiště připojili název a klíč. Pro ADLS Gen2 účty úložiště můžete použít Průzkumník služby Storage k těmto akcím:
   * Vytváření a odstraňování kontejnerů
   * Správa vlastností kontejneru a oprávnění (levá strana)
@@ -1144,7 +1144,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
 
 ### <a name="new"></a>Nová
 * Průzkumník služby Storage teď podporuje použití Azurite. Poznámka: připojení k Azurite je pevně zakódované do výchozích koncových bodů vývoje.
-* Průzkumník služby Storage teď podporuje úrovně přístupu jenom pro objekty BLOB a účty úložiště GPV2. Další informace o úrovních přístupu najdete [tady](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
+* Průzkumník služby Storage teď podporuje úrovně přístupu jenom pro objekty BLOB a účty úložiště GPV2. Další informace o úrovních přístupu najdete [tady](./storage/blobs/storage-blob-storage-tiers.md).
 * Čas zahájení již není při generování SAS vyžadován.
 
 ### <a name="fixes"></a>Opravy
@@ -1204,7 +1204,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
 * Průzkumník služby Storage zpětná vazba nyní bydlí na GitHubu. Na stránku problémů se dostanete tak, že kliknete na tlačítko zpětná vazba v dolní části doleva nebo přejdete na [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) . Nebojte se vytvářet návrhy, nahlásit problémy, klást dotazy nebo opustit jakoukoli jinou formu zpětné vazby.
 * Pokud používáte k problémům s certifikátem TLS/SSL a nemůžete najít problematický certifikát, můžete teď Průzkumník služby Storage spustit z příkazového řádku s `--ignore-certificate-errors` příznakem. Při spuštění s tímto příznakem Průzkumník služby Storage bude ignorovat chyby certifikátu TLS/SSL.
 * V kontextové nabídce pro položky BLOB a soubor je teď možnost stáhnout.
-* Vylepšená podpora pro usnadnění přístupu a čtečky obrazovky. Pokud se spoléháte na funkce přístupnosti, najdete další informace v [dokumentaci k usnadnění](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) .
+* Vylepšená podpora pro usnadnění přístupu a čtečky obrazovky. Pokud se spoléháte na funkce přístupnosti, najdete další informace v [dokumentaci k usnadnění](./vs-azure-tools-storage-explorer-accessibility.md) .
 * Průzkumník služby Storage nyní používá elektronickou 1.8.3
 
 ### <a name="breaking-changes"></a>Zásadní změny

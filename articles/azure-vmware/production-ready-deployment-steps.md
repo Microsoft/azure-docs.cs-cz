@@ -3,12 +3,12 @@ title: Plánování nasazení řešení Azure VMware
 description: Tento článek popisuje pracovní postup nasazení řešení Azure VMware.  Konečný výsledek je prostředí připravené pro vytváření a migraci virtuálních počítačů.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 08a15e6f8cad4068415cec3353544829f2218fb0
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1ef83a568e41fe99f1e8e385a599de9c5ab7c0ca
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888976"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95529722"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Plánování nasazení řešení Azure VMware
 
@@ -31,7 +31,7 @@ Identifikujte předplatné, které plánujete použít k nasazení řešení Azu
 
 Identifikujte skupinu prostředků, kterou chcete použít pro vaše řešení Azure VMware.  Obecně platí, že skupina prostředků je vytvořená speciálně pro řešení Azure VMware, ale můžete použít existující skupinu prostředků.
 
-## <a name="region"></a>Oblast
+## <a name="region"></a>Region
 
 Identifikujte oblast, kterou chcete nasadit řešení Azure VMware.  Další informace najdete v tématu [Příručka k produktům Azure, které jsou k dispozici v jednotlivých oblastech](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
 
@@ -48,7 +48,7 @@ Identifikujte hostitele velikostí, které chcete použít při nasazení řeše
 
 ## <a name="number-of-hosts"></a>Počet hostitelů
 
-Zadejte počet hostitelů, které chcete nasadit do privátního cloudu řešení Azure VMware.  Minimální počet uzlů je tři a maximum je 16 na cluster.  Další informace najdete v dokumentaci k [privátnímu cloudu řešení Azure VMware a clusterům](concepts-private-clouds-clusters.md#clusters) .
+Zadejte počet hostitelů, které chcete nasadit do privátního cloudu řešení Azure VMware.  Minimální počet hostitelů je tři a maximum je 16 na cluster.  Další informace najdete v dokumentaci k [privátnímu cloudu řešení Azure VMware a clusterům](concepts-private-clouds-clusters.md#clusters) .
 
 Cluster můžete kdykoli později roztáhnout, pokud potřebujete přejít nad rámec počátečního čísla nasazení.
 

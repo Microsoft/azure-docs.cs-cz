@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72718285ff83a23acd21a5e29001ea96e1f061c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317850"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531351"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics vlastní dělení výstupu objektů BLOB
 
@@ -25,11 +25,11 @@ Vlastní pole nebo vstupní atributy zlepšují pracovní postupy pro zpracován
 
 ### <a name="partition-key-options"></a>Možnosti klíče oddílu
 
-Klíč oddílu nebo název sloupce, který se používá k dělení vstupních dat, můžou obsahovat alfanumerické znaky s pomlčkami, podtržítky a mezerami. Pokud se nepoužívají ve spojení s aliasy, není možné použít vnořená pole jako klíč oddílu. Klíč oddílu musí být NVARCHAR (MAX).
+Klíč oddílu nebo název sloupce, který se používá k dělení vstupních dat, můžou obsahovat alfanumerické znaky s pomlčkami, podtržítky a mezerami. Pokud se nepoužívají ve spojení s aliasy, není možné použít vnořená pole jako klíč oddílu. Klíč oddílu musí být NVARCHAR (MAX), BIGINT, FLOAT nebo BIT (úroveň kompatibility 1,2 nebo vyšší). Další informace najdete v tématu [Azure Stream Analytics datových typů](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Příklad
 
-Předpokládejme, že úloha přebírá vstupní data z živých uživatelských relací připojených ke službě externí videohry, kde ingestovaná data obsahují sloupec **client_id** k identifikaci relací. Při vytváření oddílů dat **client_id**nastavte pole vzor cesty objektů BLOB tak, aby zahrnovalo token oddílu **{client_id}** v výstupních vlastnostech objektu BLOB při vytváření úlohy. Jelikož data s různými **client_idmi** hodnotami přecházejí prostřednictvím úlohy Stream Analytics, výstupní data se ukládají do samostatných složek na základě jedné **client_id** hodnoty na složku.
+Předpokládejme, že úloha přebírá vstupní data z živých uživatelských relací připojených ke službě externí videohry, kde ingestovaná data obsahují sloupec **client_id** k identifikaci relací. Při vytváření oddílů dat **client_id** nastavte pole vzor cesty objektů BLOB tak, aby zahrnovalo token oddílu **{client_id}** v výstupních vlastnostech objektu BLOB při vytváření úlohy. Jelikož data s různými **client_idmi** hodnotami přecházejí prostřednictvím úlohy Stream Analytics, výstupní data se ukládají do samostatných složek na základě jedné **client_id** hodnoty na složku.
 
 ![Vzor cesty s ID klienta](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
 
@@ -63,6 +63,8 @@ Všimněte si, že každý záznam v objektu BLOB má **client_id** sloupec odpo
 
 3. Když vstupní datový proud sestává z záznamů s mohutnosti klíče oddílu v 8000, záznamy se připojí k existujícím objektům blob a v případě potřeby vytvoří jenom nové objekty blob. Pokud mohutnost překračuje 8000, nebudou se do nich zapisovat existující objekty BLOB a nevytvoří se nové objekty blob pro libovolný počet záznamů se stejným klíčem oddílu.
 
+4. Pokud je výstup objektu BLOB [nakonfigurován jako neměnný](../storage/blobs/storage-blob-immutable-storage.md), Stream Analytics vytvoří nový objekt BLOB při každém odeslání dat.
+
 ## <a name="custom-datetime-path-patterns"></a>Vlastní vzory cesty DateTime
 
 Vlastní vzorce pro cestu DateTime umožňují zadat výstupní formát, který bude odpovídat konvencím pro streamování, což dává Azure Stream Analytics schopnost odesílat data do služby Azure HDInsight a Azure Databricks pro zpracování pro příjem dat. Vlastní vzorce cesty DateTime se snadno implementují pomocí `datetime` klíčového slova v poli Předpona cesty pro výstup objektu BLOB spolu s specifikátorem formátu. Například, `{datetime:yyyy}`.
@@ -71,7 +73,7 @@ Vlastní vzorce pro cestu DateTime umožňují zadat výstupní formát, který 
 
 Následující tokeny specifikátoru formátu lze použít samostatně nebo v kombinaci k dosažení vlastních formátů data a času:
 
-|Specifikátor formátu   |Description   |Výsledky pro příklad času 2018-01-02T10:06:08|
+|Specifikátor formátu   |Popis   |Výsledky pro příklad času 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{DateTime: rrrr}|Rok jako čtyřmístné číslo|2018|
 |{DateTime: MM}|Měsíc od 01 do 12|01|

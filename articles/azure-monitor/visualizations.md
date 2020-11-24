@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9f95a5e85ec4eebf82cca707476750595331d73
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983605"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522664"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat z Azure Monitoru
 Tento článek poskytuje souhrn dostupných metod pro vizualizaci dat protokolů a metrik uložených v Azure Monitor.
 
 Vizualizace, jako jsou grafy a grafy, vám pomohou analyzovat data monitorování, aby bylo možné rozlišit problémy a identifikovat vzory. V závislosti na nástroji, který použijete, můžete také sdílet vizualizace s ostatními uživateli v rámci vaší organizace i mimo ni.
 
-## <a name="workbooks"></a>Workbooks
+## <a name="workbooks"></a>Sešity
 [Sešity](./platform/workbooks-overview.md) jsou interaktivní dokumenty, které poskytují podrobné přehledy o vašich datech, vyšetřování a spolupráci v rámci týmu. Konkrétní příklady, kde jsou sešity užitečné, jsou průvodci odstraňováním potíží a Postmortem incidentů.
 
 ![Diagram znázorňuje snímky obrazovky několika stránek ze sešitu, včetně analýzy zobrazení stránky, využití a času stráveného na stránce.](media/visualizations/workbook.png)
@@ -49,7 +49,7 @@ Tady je video s návodem k vytváření řídicích panelů.
 - Hluboká integrace do Azure Vizualizace je možné připnout na řídicí panely z více stránek Azure, včetně Průzkumník metrik, Log Analytics a Application Insights.
 - Podporuje obě metriky a protokoly.
 - Kombinovat data z různých zdrojů, včetně výstupu z [Průzkumníka metrik](platform/metrics-charts.md), [dotazů protokolu](log-query/log-query-overview.md)a [map](app/app-map.md) a dostupnosti v Application Insights.
-- Možnost pro osobní nebo sdílené řídicí panely. Integrováno s [ověřováním na základě rolí Azure (RBAC)](../role-based-access-control/overview.md).
+- Možnost pro osobní nebo sdílené řídicí panely. Integrováno s [řízením přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md).
 - Automatická aktualizace Aktualizace metrik závisí na časovém rozsahu, který je minimálně pět minut. Protokoly se aktualizují každou hodinu s možností ruční aktualizace na vyžádání kliknutím na ikonu aktualizovat v dané vizualizaci nebo aktualizací úplného řídicího panelu.
 - Parametry a řídicí panely metriky s parametry s časovým razítkem a vlastními parametry.
 - Flexibilní možnosti rozložení.

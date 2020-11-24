@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 3174dbd36d9bb39ce606ec12f88397f795e91526
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4f84c3c2f6fc671a8cb6ac70313361540e3dd815
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832428"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523276"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Správa a hledání dat objektů BLOB v Azure pomocí značek indexu objektů BLOB (Preview)
 
@@ -51,7 +51,7 @@ Tyto objekty BLOB se oddělují pomocí předpony *kontejneru/virtuální složk
 Značky indexu objektu BLOB jsou atributy klíč-hodnota, které se dají použít pro nové nebo existující objekty v rámci vašeho účtu úložiště. Můžete zadat rejstříkové značky během procesu nahrávání pomocí [objektu Put BLOB](/rest/api/storageservices/put-blob), [seznam blokovaných](/rest/api/storageservices/put-block-list)objektů nebo [kopie operací objektů BLOB](/rest/api/storageservices/copy-blob) a volitelné `x-ms-tags` hlavičky. Pokud už máte objekty blob ve svém účtu úložiště, můžete [značky objektů BLOB sady](/rest/api/storageservices/set-blob-tags) volání předat FORMÁTOVANÝ dokument XML pomocí značek indexu v těle požadavku.
 
 > [!IMPORTANT]
-> Nastavení značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) a kdokoli se sdíleným přístupovým podpisem, který má oprávnění pro přístup k značkám objektu BLOB ( `t` oprávnění SAS).
+> Nastavení značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) a kdokoli se sdíleným přístupovým podpisem, který má oprávnění pro přístup k značkám objektu BLOB ( `t` oprávnění SAS).
 >
 > Kromě toho `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` může tato operace provádět uživatelé RBAC s oprávněním.
 
@@ -87,7 +87,7 @@ Následující omezení se vztahují na značky indexu objektu BLOB:
 Značky indexu objektů BLOB se ukládají jako dílčí prostředek spolu s daty objektů BLOB a dají se načíst nezávisle na základním obsahu dat blobu. Značky indexu objektu BLOB pro jeden objekt BLOB se dají načíst pomocí operace [Get BLOB Tags](/rest/api/storageservices/get-blob-tags) . Operace [výpisu objektů BLOB](/rest/api/storageservices/list-blobs) s `include:tags` parametrem vrátí také všechny objekty BLOB v rámci kontejneru spolu s jejich značkami indexu objektu BLOB.
 
 > [!IMPORTANT]
-> Získání a výpis značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) a kdokoli se sdíleným přístupovým podpisem, který má oprávnění pro přístup k značkám objektu BLOB ( `t` oprávnění SAS).
+> Získání a výpis značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) a kdokoli se sdíleným přístupovým podpisem, který má oprávnění pro přístup k značkám objektu BLOB ( `t` oprávnění SAS).
 >
 > Kromě toho `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` může tato operace provádět uživatelé RBAC s oprávněním.
 
@@ -100,7 +100,7 @@ Modul indexování zpřístupňuje atributy klíč-hodnota do multidimenzionáln
 Operace [najít objekty BLOB pomocí značek](/rest/api/storageservices/find-blobs-by-tags) umožňuje získat filtrovanou sadu objektů blob, jejichž Indexové značky odpovídají danému výrazu dotazu. `Find Blobs by Tags` podporuje filtrování napříč všemi kontejnery v rámci vašeho účtu úložiště, nebo můžete omezit rozsah filtrování jenom na jeden kontejner. Vzhledem k tomu, že všechny klíče a hodnoty indexových značek jsou řetězce, relační operátory používají řazení lexikografickým pořadím.
 
 > [!IMPORTANT]
-> Hledání dat pomocí značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) a kdokoli se sdíleným přístupovým podpisem, který má oprávnění k hledání objektů BLOB pomocí značek ( `f` oprávnění SAS).
+> Hledání dat pomocí značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) a kdokoli se sdíleným přístupovým podpisem, který má oprávnění k hledání objektů BLOB pomocí značek ( `f` oprávnění SAS).
 >
 > Kromě toho `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` může tato operace provádět uživatelé RBAC s oprávněním.
 
@@ -235,7 +235,7 @@ Volajícím, kteří používají [identitu Azure AD](../common/storage-auth-aad
 | [Získat značky objektu BLOB](/rest/api/storageservices/get-blob-tags)           | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Tags/Read     |
 | [Hledání objektů BLOB podle značek](/rest/api/storageservices/find-blobs-by-tags) | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Filter/Action |
 
-Pro operace indexových značek jsou vyžadovány další oprávnění oddělené od základních dat objektů BLOB. Role [vlastníka dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) má oprávnění pro všechny tři operace se značkami indexu objektu BLOB. [Čtečka dat objektu BLOB služby Storage](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) má udělena pouze oprávnění pro `Find Blobs by Tags` `Get Blob Tags` operace a.
+Pro operace indexových značek jsou vyžadovány další oprávnění oddělené od základních dat objektů BLOB. Role [vlastníka dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) má oprávnění pro všechny tři operace se značkami indexu objektu BLOB. [Čtečka dat objektu BLOB služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) má udělena pouze oprávnění pro `Find Blobs by Tags` `Get Blob Tags` operace a.
 
 ### <a name="sas-permissions"></a>Oprávnění SAS
 
@@ -334,7 +334,7 @@ Tato část popisuje známé problémy a podmínky ve verzi Public Preview znač
 - `Copy Blob` (Asynchronní kopírování) z jiného účtu úložiště s použitými značkami v cílovém objektu BLOB způsobí, že modul indexu objektů BLOB nevrátí objekt BLOB a jeho značky v sadě filtrů. Použijte `Copy Blob` z adresy URL (Synchronization Copy).
 - Značky jsou při vytváření snímku trvalé. Zvýšení úrovně snímku ale není podporované a výsledkem může být prázdná sada značek.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Může vám index objektu BLOB pomáhat při filtrování a dotazování obsahu uvnitř objektů BLOB?**
 

@@ -16,12 +16,12 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
-ms.openlocfilehash: 3957d7501634be01a978481787885ae13ad3273b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57daf9170a7f97c6c141532dafe759cde9d1c77b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225950"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519060"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Odeslání e-mailu pomocí SendGrid z Java v nasazení Azure
 Následující příklad ukazuje, jak můžete použít SendGrid k posílání e-mailů z webové stránky hostované v Azure. Výsledná aplikace zobrazí uživateli výzvu k zadání hodnot e-mailu, jak je znázorněno na následujícím snímku obrazovky.
@@ -215,11 +215,11 @@ Kromě posílání e-mailů poskytuje emailform.jsp výsledek pro uživatele. P�
 ![Odeslat výsledek pošty][emailresult]
 
 ## <a name="next-steps"></a>Další kroky
-Nasaďte aplikaci do emulátoru služby COMPUTE a v rámci prohlížeče spusťte emailform.jsp, zadejte hodnoty do formuláře, klikněte na **Odeslat tento e-mail**a potom se podívejte na výsledky v sendemail.jsp.
+Nasaďte aplikaci do emulátoru služby COMPUTE a v rámci prohlížeče spusťte emailform.jsp, zadejte hodnoty do formuláře, klikněte na **Odeslat tento e-mail** a potom se podívejte na výsledky v sendemail.jsp.
 
 Tento kód vám ukáže, jak používat SendGrid v jazyce Java v Azure. Před nasazením do Azure v produkčním prostředí budete možná chtít přidat další zpracování chyb nebo jiné funkce. Například: 
 
-* Pomocí objektů BLOB služby Azure Storage nebo SQL Database můžete ukládat e-mailové adresy a e-mailové zprávy místo používání webového formuláře. Informace o použití objektů BLOB služby Azure Storage v jazyce Java najdete v tématu [How to use the BLOB Storage Service from Java](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/). Informace o použití SQL Database v jazyce Java najdete v tématu [použití SQL Database v jazyce Java](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java).
+* Pomocí objektů BLOB služby Azure Storage nebo SQL Database můžete ukládat e-mailové adresy a e-mailové zprávy místo používání webového formuláře. Informace o použití objektů BLOB služby Azure Storage v jazyce Java najdete v tématu [How to use the BLOB Storage Service from Java](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/). Informace o použití SQL Database v jazyce Java najdete v tématu [použití SQL Database v jazyce Java](./azure-sql/database/connect-query-java.md).
 * Další informace o používání SendGrid v jazyce Java najdete v tématu [odeslání e-mailu pomocí SendGrid z Java](store-sendgrid-java-how-to-send-email.md).
 
 [emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg

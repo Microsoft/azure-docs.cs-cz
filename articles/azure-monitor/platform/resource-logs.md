@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: a9423069b917c37e77b70a4466e489918cd330c4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a2f46440a4214e298bc6d2f3b9c2b5680437ead7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143927"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522698"
 ---
 # <a name="azure-resource-logs"></a>Protokoly prostředků Azure
 Protokoly prostředků Azure jsou [protokoly platforem](platform-logs-overview.md) , které poskytují přehled o operacích provedených v rámci prostředku Azure. Obsah protokolů prostředků se liší podle typu prostředku a služby Azure. Protokoly prostředků nejsou ve výchozím nastavení shromažďovány. Musíte vytvořit nastavení diagnostiky pro každý prostředek Azure, abyste odesílali své protokoly prostředků do Log Analyticsho pracovního prostoru pro použití s [protokoly Azure monitor](data-platform-logs.md), Azure Event Hubs k posílání mimo Azure nebo Azure Storage k archivaci.
@@ -54,7 +54,7 @@ Tabulka AzureDiagnostics bude vypadat takto:
 | ... |
 
 ### <a name="resource-specific"></a>Specifické pro prostředky
-V tomto režimu se pro každou kategorii vybranou v nastavení diagnostiky vytvoří jednotlivé tabulky ve vybraném pracovním prostoru. Tato metoda se doporučuje, protože je mnohem jednodušší pracovat s daty v protokolových dotazech, poskytuje lepší zjistitelnost schémat a jejich struktury, zlepšuje výkon v rámci latence příjmu a doby dotazování a možnost udělovat práva RBAC pro konkrétní tabulku. Všechny služby Azure nakonec budou migrovány do režimu Resource-Specific. 
+V tomto režimu se pro každou kategorii vybranou v nastavení diagnostiky vytvoří jednotlivé tabulky ve vybraném pracovním prostoru. Tato metoda se doporučuje, protože je mnohem jednodušší pracovat s daty v protokolových dotazech, poskytuje lepší zjistitelnost schémat a jejich struktury, zlepšuje výkon v rámci latence příjmu a doby dotazování a možnost udělovat práva na službu Azure RBAC pro konkrétní tabulku. Všechny služby Azure nakonec budou migrovány do režimu Resource-Specific. 
 
 V předchozím příkladu by se vytvořily tři tabulky:
  

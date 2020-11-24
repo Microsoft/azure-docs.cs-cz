@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 09/21/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizované zpracování dat, zpracování dokumentů, automatizované zadávání dat, zpracování formulářů
-ms.openlocfilehash: 8b790da9eaa17cbb0fbdcbcc49682786deb319a0
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 05024b8d7f4cf76024d71a79cb1fce489d58ee70
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492133"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519519"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -30,9 +30,9 @@ Nástroj pro rozpoznávání formulářů se skládá z následujících služeb
 * **[Rozhraní API pro rozložení](#layout-api)** – extrakce textu, značek výběru a struktur tabulek spolu s jejich souřadnicemi ohraničovacích rámečků z dokumentů
 * **[Vlastní modely](#custom-models)** – z formulářů extrahuje text, páry klíč/hodnota, značky výběru a tabulková data. Tyto modely jsou vyškolené s vašimi vlastními daty, takže jsou přizpůsobené vašim formám.
 * Předem **[připravené modely](#prebuilt-models)** – extrakce dat z jedinečných typů formulářů pomocí předem sestavených modelů. Aktuálně dostupné jsou tyto předem připravené modely.
-    * [Faktury](./concept-invoices.md) 
+    * [Faktury](./concept-invoices.md)
     * [Prodejní příjmy](./concept-receipts.md)
-    * [Vizitky](./concept-business-cards.md) 
+    * [Vizitky](./concept-business-cards.md)
 
 
 ## <a name="try-it-out"></a>Vyzkoušet
@@ -50,7 +50,7 @@ Chcete-li vyzkoušet službu pro rozpoznávání formulářů, použijte nástro
 
 ---
 
-K vyzkoušení služby pro rozpoznávání formulářů budete potřebovat předplatné Azure ([můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services)) a koncový bod a klíč [prostředku pro rozpoznávání formuláře](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) . 
+K vyzkoušení služby pro rozpoznávání formulářů budete potřebovat předplatné Azure ([můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services)) a koncový bod a klíč [prostředku pro rozpoznávání formuláře](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) .
 
 ## <a name="layout-api"></a>Rozhraní API pro rozložení
 
@@ -125,8 +125,6 @@ Pomocí [Nástroje pro rozpoznávání ukázkového formuláře](https://fott.az
     * [Extrakce dat pro příjem – Python](quickstarts/python-receipts.md)
   * Extrakce dat z vizitek
     * [Extrakce dat obchodních karet – Python](quickstarts/python-business-cards.md)
- 
-
 
 ### <a name="review-the-rest-apis"></a>Kontrola rozhraní REST API
 
@@ -153,6 +151,10 @@ Další informace najdete v [referenční dokumentaci k REST API](https://westus
 ## <a name="input-requirements"></a>Požadavky na vstup
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
+
+## <a name="deploy-on-premises-using-docker-containers"></a>Nasazení místně pomocí kontejnerů Docker
+
+[Použijte kontejnery pro rozpoznávání formulářů (Preview)](form-recognizer-container-howto.md) k nasazení funkcí rozhraní API místně. Tento kontejner Docker vám umožní přiblížit službu k vašim datům z hlediska dodržování předpisů, zabezpečení nebo jiných provozních důvodů.
 
 ## <a name="data-privacy-and-security"></a>Ochrana osobních údajů a zabezpečení dat
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 71114b6663d010437e5778d288eacf4e120b3da5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d36a2804519e5728dd068cc6c06ad005244e8c95
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395970"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524092"
 ---
 # <a name="multitenant-applications-in-azure"></a>Multitenantové aplikace v Azure
 Víceklientské aplikace je sdílený prostředek, který umožňuje uživatelům v samostatných klientech zobrazit aplikaci, jako by byla vlastní. Typický scénář, který se sám zapůjčuje do víceklientské aplikace, je ten, ve kterém všichni uživatelé aplikace z různých tenantů můžou chtít přizpůsobit uživatelské prostředí, ale v opačném případě mají stejné základní obchodní požadavky. Příklady rozsáhlých víceklientské aplikací jsou Microsoft 365, Outlook.com a visualstudio.com.
@@ -43,7 +43,7 @@ Správně implementovaná víceklientské aplikace poskytuje uživatelům násle
 
 V krátké době existuje mnoho důležitých informací, které je třeba vzít v úvahu, aby bylo možné zajistit vysoce škálovatelnou službu, existuje také řada cílů a požadavků, které jsou společné pro mnoho víceklientské aplikací. Některé nemusí být relevantní v konkrétních scénářích a význam jednotlivých cílů a požadavků se v každém scénáři liší. Jako poskytovatel víceklientské aplikace budete mít také cíle a požadavky, jako je třeba splnění cílů a požadavků klienta, ziskovosti, fakturace, více úrovní služeb, zřizování, monitorování údržby a automatizace.
 
-Další informace o dalších doporučeních pro návrh víceklientské aplikace najdete v tématu [hostování aplikace s více klienty v Azure][Hosting a Multi-Tenant Application on Azure]. Informace o běžných vzorech architektury dat databázových aplikací softwaru s více tenanty jako služby (SaaS) naleznete v části [Vzory návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
+Další informace o dalších doporučeních pro návrh víceklientské aplikace najdete v tématu [hostování aplikace s více klienty v Azure][Hosting a Multi-Tenant Application on Azure]. Informace o běžných vzorech architektury dat databázových aplikací softwaru s více tenanty jako služby (SaaS) naleznete v části [Vzory návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](./azure-sql/database/saas-tenancy-app-design-patterns.md). 
 
 Azure poskytuje mnoho funkcí, které vám umožní řešit klíčové problémy zjištěné při navrhování víceklientského systému.
 
@@ -92,5 +92,5 @@ Azure poskytuje několik způsobů, jak pro aplikaci zřídit nové klienty. Pro
 
 <!--links-->
 
-[Hosting a Multi-Tenant Application on Azure]: https://msdn.microsoft.com/library/hh534480.aspx
+[Hosting a Multi-Tenant Application on Azure]: /previous-versions/msp-n-p/hh534480(v=pandp.10)
 [Designing Multitenant Applications on Azure]: https://msdn.microsoft.com/library/windowsazure/hh689716

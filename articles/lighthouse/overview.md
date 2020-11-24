@@ -1,14 +1,14 @@
 ---
 title: Co je Azure Lighthouse?
 description: Azure Lighthouse umožňuje poskytovatelům služeb poskytovat spravované služby pro zákazníky s vyšším stupněm automatizace a efektivitou.
-ms.date: 10/19/2020
+ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: a76606ff48a09c0c31584882e3d2aa164ec97325
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a8fd796218804a79c82a5723c0e5851af359cdea
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203785"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528818"
 ---
 # <a name="what-is-azure-lighthouse"></a>Co je Azure Lighthouse?
 
@@ -33,9 +33,12 @@ K používání Azure Lighthouse ke správě prostředků Azure se nevztahují �
 Azure Lighthouse nabízí několik způsobů, jak zjednodušit zapojení a správu:
 
 - **Správa delegovaných prostředků Azure**: [Zabezpečená správa prostředků Azure pro zákazníky z vašeho vlastního tenanta](concepts/azure-delegated-resource-management.md)bez nutnosti přepínat mezi nimi a řídicími rovinami kontextu. Předplatná zákazníků a skupiny prostředků je možné delegovat na konkrétní uživatele a role v tenantovi, který má oprávnění k odebrání přístupu podle potřeby.
-- **Nové prostředí Azure Portal**: zobrazení informací o vzájemném tenantovi na [stránce **moji zákazníci** ](how-to/view-manage-customers.md) v Azure Portal. Odpovídající stránka [ **poskytovatelé služeb** ](how-to/view-manage-service-providers.md) umožňuje zákazníkům zobrazit a spravovat jejich přístup k poskytovateli služeb.
+- **Nové prostředí Azure Portal**: zobrazení informací o vzájemném tenantovi na [stránce **moji zákazníci**](how-to/view-manage-customers.md) v Azure Portal. Odpovídající stránka [ **poskytovatelé služeb**](how-to/view-manage-service-providers.md) umožňuje zákazníkům zobrazit a spravovat jejich přístup k poskytovateli služeb.
 - **Azure Resource Manager šablony**: k [zprovoznění delegovaných prostředků zákazníků](how-to/onboard-customer.md) a [provádění úloh správy mezi klienty](samples/index.md)použijte šablony ARM.
 - **Nabídky spravovaných služeb v Azure Marketplace**: nabízí [vaše služby zákazníkům](concepts/managed-services-offers.md) prostřednictvím soukromých nebo veřejných nabídek a automaticky je zařadí do Azure Lighthouse.
+
+> [!TIP]
+> Podobná nabídka, [Microsoft 365 Lighthouse](https://techcommunity.microsoft.com/t5/small-and-medium-business-blog/announcing-microsoft-365-lighthouse-for-managed-service/ba-p/1698181), pomůže PARTNERům IT přihlížet do provozu, monitorovat a spravovat své Microsoft 365 zákazníky ve velkém měřítku. Microsoft 365 Lighthouse je aktuálně ve verzi Private Preview.
 
 ## <a name="next-steps"></a>Další kroky
 

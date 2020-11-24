@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: a7bdc1ee22d3672160122cad65b18de99f743cc7
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: d3bedfae88544d0b0ebd07868438559305279fed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747685"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95530110"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Konfigurace pracovního prostoru Log Analytics pro Azure Monitor pro virtuální počítače
 Azure Monitor pro virtuální počítače shromažďuje data z jednoho nebo více Log Analytics pracovních prostorů v Azure Monitor. Před registrací agentů musíte vytvořit a nakonfigurovat pracovní prostor. Tento článek popisuje požadavky pracovního prostoru a jeho konfiguraci pro Azure Monitor pro virtuální počítače.
@@ -68,7 +68,7 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostory Log Analy
 - Austrálie – východ
 - Austrálie – jihovýchod
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 Chcete-li povolit a přistupovat k funkcím v Azure Monitor pro virtuální počítače, musíte mít v pracovním prostoru [roli přispěvatele Log Analytics](../platform/manage-access.md#manage-access-using-azure-permissions) . Chcete-li zobrazit data o výkonu, stavu a mapování, musíte mít [roli Čtenář monitorování](../platform/roles-permissions-security.md#built-in-monitoring-roles) pro virtuální počítač Azure. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics, najdete v tématu [Správa pracovních prostorů](../platform/manage-access.md).
 
 ## <a name="add-vminsights-solution-to-workspace"></a>Přidat řešení VMInsights do pracovního prostoru

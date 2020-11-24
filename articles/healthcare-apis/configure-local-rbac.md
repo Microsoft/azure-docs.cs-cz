@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
-ms.openlocfilehash: c62593251cb0e19c91d1c4877d1b33fe407ebd06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 096e4e3ecbcedaec674e074a2baccbb336e03c94
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847002"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524194"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>Konfigurace místní RBAC pro FHIR 
 
@@ -23,7 +23,7 @@ Tento článek vysvětluje, jak nakonfigurovat rozhraní API Azure pro FHIR, aby
 
 ## <a name="add-service-principal"></a>Přidání instančního objektu
 
-Místní RBAC umožňuje použití externího tenanta Azure Active Directory se serverem FHIR. Aby systém RBAC mohl v tomto tenantovi kontrolovat členství ve skupinách, musí mít rozhraní API Azure pro FHIR v tenantovi instanční objekt. Tento instanční objekt se vytvoří automaticky v klientech vázaných na předplatná, která nasadila rozhraní Azure API pro FHIR, ale v případě, že se k tomuto tenantovi neváže žádné předplatné, správce klienta bude muset tento instanční objekt vytvořit pomocí jednoho z následujících příkazů:
+Místní RBAC umožňuje použití externího tenanta Azure Active Directory se serverem FHIR. Aby místní systém RBAC mohl kontrolovat členství ve skupinách v tomto tenantovi, rozhraní Azure API pro FHIR musí mít v tenantovi instanční objekt. Tento instanční objekt se vytvoří automaticky v klientech vázaných na předplatná, která nasadila rozhraní Azure API pro FHIR, ale v případě, že se k tomuto tenantovi neváže žádné předplatné, správce klienta bude muset tento instanční objekt vytvořit pomocí jednoho z následujících příkazů:
 
 Pomocí `Az` modulu PowerShellu:
 

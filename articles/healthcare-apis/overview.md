@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 11/13/2020
 ms.author: matjazl
-ms.openlocfilehash: 3bb168cf3f642d22096c54b3f35c7833afaff769
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 386003d7dae80e086f523b2cebe61aa0eee7b89e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635139"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527815"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Co je Azure API pro FHIR &reg; ?
 
@@ -24,7 +24,7 @@ Azure API for FHIR umožňuje rychlou výměnu dat prostřednictvím rozhraní A
 - Vysoký výkon, nízká latence
 - Zabezpečená správa chráněných dat o stavu (FÍ) v kompatibilním cloudovém prostředí
 - Inteligentní na FHIR pro mobilní a webové implementace
-- Správa vlastních dat ve velkém měřítku pomocí Role-Based Access Control (RBAC)
+- Řízení přístupu na základě role (RBAC) s využitím vlastních dat ve velkém měřítku
 - Sledování protokolu auditu pro přístup, vytváření, úpravy a čtení v rámci každého úložiště dat
 
 Azure API pro FHIR umožňuje vytvořit a nasadit službu FHIR během několika minut a využít tak Elastické škálování cloudu.  Platíte jenom za propustnost a úložiště, které potřebujete. Služby Azure, které Power Azure API for FHIR jsou navržené tak, aby bez ohledu na velikost datových sad, které spravujete, byly navrženy pro zajištění rychlého výkonu.
@@ -53,7 +53,7 @@ Použití rozhraní API Azure pro FHIR umožňuje připojit se k libovolnému sy
 
 ### <a name="control-data-access-at-scale"></a>Řízení přístupu k datům ve velkém měřítku
 
-Data se řídí. Role-Based Access Control (RBAC) umožňuje spravovat způsob ukládání a přístupu k datům.  Zajištění zvýšeného zabezpečení a snížení administrativních úloh, určíte, kdo má přístup k datovým sadám, které vytvoříte, na základě definic rolí, které vytvoříte pro vaše prostředí.  
+Data se řídí. Řízení přístupu na základě role (RBAC) umožňuje spravovat způsob ukládání a přístupu k datům.  Zajištění zvýšeného zabezpečení a snížení administrativních úloh, určíte, kdo má přístup k datovým sadám, které vytvoříte, na základě definic rolí, které vytvoříte pro vaše prostředí.  
 
 ### <a name="audit-logs-and-tracking"></a>Protokoly a sledování auditu 
 

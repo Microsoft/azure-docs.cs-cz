@@ -14,23 +14,23 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 536a28801193cdbb4204ca1432892abdc7fb297e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22e0a19c0e2f5b29b35ebf43a3f250959c9b636d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268481"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521117"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Jak uskutečnit telefonní hovor pomocí Twilio ve webové roli v Azure
 Tato příručka ukazuje, jak pomocí Twilio uskutečnit volání z webové stránky hostované v Azure. Výsledná aplikace vyzve uživatele, aby provedl volání s daným číslem a zprávou, jak je znázorněno na následujícím snímku obrazovky.
 
 ![Formulář volání Azure pomocí Twilio a ASP.NET][twilio_dotnet_basic_form]
 
-## <a name="prerequisites"></a><a name="twilio-prereqs"></a>Požadavky
+## <a name="prerequisites"></a><a name="twilio-prereqs"></a>Předpoklady
 K použití kódu v tomto tématu budete muset provést následující:
 
 1. Získejte účet Twilio a ověřovací token z [konzoly Twilio][twilio_console]. Pokud chcete začít s Twilio, zaregistrujte se [https://www.twilio.com/try-twilio][try_twilio] . Ceny můžete vyhodnotit na adrese [https://www.twilio.com/pricing][twilio_pricing] . Informace o rozhraní API, které poskytuje Twilio, najdete v tématu [https://www.twilio.com/voice/api][twilio_api] .
-2. Přidejte *knihovnu .NET Twilio* do webové role. Viz téma **Přidání knihoven Twilio do projektu webové role**dále v tomto tématu.
+2. Přidejte *knihovnu .NET Twilio* do webové role. Viz téma **Přidání knihoven Twilio do projektu webové role** dále v tomto tématu.
 
 Měli byste být obeznámeni s vytvořením základní [webové role v Azure][azure_webroles_get_started].
 
@@ -186,5 +186,5 @@ Tento kód vám poskytne základní funkce využívající Twilio ve webové rol
 [twilio_say]: https://www.twilio.com/docs/api/twiml/say
 
 
-[azure_runtime_ref_dotnet]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
-[azure_webroles_get_started]: https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-get-started
+[azure_runtime_ref_dotnet]: /previous-versions/azure/reference/ee741722(v=azure.100)
+[azure_webroles_get_started]: ./cloud-services/cloud-services-dotnet-get-started.md

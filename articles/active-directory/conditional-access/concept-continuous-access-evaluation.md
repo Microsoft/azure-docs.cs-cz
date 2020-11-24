@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: daa3f3b1687b01005f32cbd2665c84b933c993b8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 706fa1666dc327955294fb350b673aed40d6bf48
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837613"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520658"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -26,7 +26,9 @@ Zákazníci vyjádřili obavy ohledně prodlevy mezi tím, kdy se u uživatele m
 
 Včasná reakce na porušení zásad nebo problémy se zabezpečením vyžadují "konverzaci" mezi vystavitelem tokenu, jako je Azure AD, a předávající stranou, jako je Exchange Online. Tato obousměrná konverzace nabízí dvě důležité možnosti. Předávající strana si může všimnout, že se změnily nějaké věci, třeba když klient přichází z nového umístění, a sdělí vystaviteli tokenů. Také dává vydavateli tokenů způsob, jak říct předávající straně, aby zastavila dodržování tokenů pro daného uživatele z důvodu ohrožení bezpečnosti, zákazu nebo jiných obav. Mechanismus pro tuto konverzaci je vyhodnocování nepřetržitého přístupu (CAE). Cílem je, aby odpověď byla prakticky v reálném čase, ale v některých případech může být v důsledku doby šíření událostí zjištěna latence až 15 minut.
 
-Počáteční implementace vyhodnocení průběžného přístupu se zaměřuje na Exchange, týmy a SharePoint Online. 
+Počáteční implementace vyhodnocení průběžného přístupu se zaměřuje na Exchange, týmy a SharePoint Online.
+
+Pokud chcete připravit své aplikace na používání CAE, přečtěte si téma [Jak používat rozhraní API s povoleným vyhodnocováním průběžného přístupu ve vašich aplikacích](/develop/app-resilience-continuous-access-evaluation.md).
 
 ### <a name="key-benefits"></a>Klíčové výhody
 

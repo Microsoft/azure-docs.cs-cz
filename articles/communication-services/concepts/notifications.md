@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f4de7268f3384f86b7090dfe18576347311e048e
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 9cf503f374cd2fd1ca04aad6650b2c07abebbc46
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888670"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519349"
 ---
 # <a name="communication-services-notifications"></a>Oznámení služby Communication Services
 
@@ -77,7 +77,8 @@ Na portálu přejděte do svého prostředku služby Azure Communication Service
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Snímek obrazovky s nastavením nabízených oznámení na webu Azure Portal":::
 
 > [!NOTE]
-> Pokud je připojovací řetězec centra oznámení Azure aktualizovaný, je nutné aktualizovat také prostředek komunikačních služeb.
+> Pokud je připojovací řetězec centra oznámení Azure aktualizovaný, je nutné aktualizovat také prostředek komunikačních služeb.  
+Jakákoli změna způsobu propojení rozbočovače se projeví v rovině dat (tj. při posílání oznámení) během maximální doby v ``10`` minutách. To platí také v případě, že je centrum propojeno poprvé, **Pokud** se předtím poslala nějaká oznámení.
 
 #### <a name="device-registration"></a>Registrace zařízení 
 

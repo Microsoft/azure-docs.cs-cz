@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak nastavit zobrazení protokolů kontejn
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6fdd2d0a97357a2126ff37c0840b1f7da2859da5
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 45ed931f734e874e81af837fff5c4a326349cb21
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682668"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95530178"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Jak nastavit funkci živých dat (Preview)
 
@@ -26,7 +26,7 @@ Tyto pokyny vyžadují přístup pro správu ke clusteru Kubernetes a pokud se k
 
 Tento článek vysvětluje, jak nakonfigurovat ověřování pro řízení přístupu k funkci živá data (Preview) z clusteru:
 
-- AKS cluster s povoleným řízením přístupu na základě role (RBAC)
+- Kubernetes cluster AKS s povoleným řízením přístupu na základě role (Kubernetes RBAC)
 - Azure Active Directory integrovaný cluster AKS.
 
 >[!NOTE]
@@ -39,20 +39,20 @@ Funkce Live data (Preview) využívá rozhraní Kubernetes API, které se shoduj
 Azure Portal vás vyzve k ověření přihlašovacích údajů pro cluster Azure Active Directory a přesměrování vás na nastavení registrace klienta během vytváření clusteru (a v tomto článku znovu nakonfigurované). Toto chování je podobné procesu ověřování, který vyžaduje `kubectl` .
 
 >[!NOTE]
->Autorizaci ke clusteru spravuje Kubernetes a model zabezpečení, se kterým se konfiguruje. Uživatelé, kteří mají přístup k této funkci, vyžadují oprávnění ke stažení konfigurace Kubernetes (*kubeconfig*), podobně jako je spuštěná `az aks get-credentials -n {your cluster name} -g {your resource group}` . Tento konfigurační soubor obsahuje token pro autorizaci a ověření pro **roli uživatele clusteru služby Azure Kubernetes** v případě, že jsou clustery s povolenou službou RBAC a AKS bez povoleného ověřování RBAC. Obsahuje informace o Azure AD a registrační registraci klienta, pokud je AKS povoleno pomocí jednotného přihlašování založeného na SAML Azure Active Directory (AD).
+>Autorizaci ke clusteru spravuje Kubernetes a model zabezpečení, se kterým se konfiguruje. Uživatelé, kteří mají přístup k této funkci, vyžadují oprávnění ke stažení konfigurace Kubernetes (*kubeconfig*), podobně jako je spuštěná `az aks get-credentials -n {your cluster name} -g {your resource group}` . Tento konfigurační soubor obsahuje token pro autorizaci a ověření pro **roli uživatele clusteru služby Azure Kubernetes** v případě, že jsou clustery Azure RBAC-Enabled a AKS bez povoleného ověřování RBAC. Obsahuje informace o Azure AD a registrační registraci klienta, pokud je AKS povoleno pomocí jednotného přihlašování založeného na SAML Azure Active Directory (AD).
 
 >[!IMPORTANT]
 >Uživatelé této funkce vyžadují ke clusteru [roli uživatele clusteru Azure Kubernetes](../../role-based-access-control/built-in-roles.md) , aby mohli stáhnout `kubeconfig` a používat tuto funkci. K využití této funkce uživatelé **nevyžadují přístup** Přispěvatel ke clusteru.
 
-## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>Použití clusterMonitoringUser s clustery s povolenou službou RBAC
+## <a name="using-clustermonitoringuser-with-kubernetes-rbac-enabled-clusters"></a>Použití clusterMonitoringUser s clustery s povolenými Kubernetes RBAC
 
-Aby se odstranila nutnost použít další změny konfigurace, aby Kubernetes role uživatele **clusterUser** přístup k funkci živá data (Preview) po [Povolení autorizace RBAC](#configure-kubernetes-rbac-authorization) , AKS přidala novou vazbu role clusteru Kubernetes s názvem **clusterMonitoringUser**. Pro přístup k rozhraní Kubernetes API a koncovým bodům pro použití funkce živá data (Preview) má tato vazba role clusteru všechna potřebná oprávnění.
+Aby se odstranila nutnost použít další změny konfigurace, aby Kubernetes role uživatele **clusterUser** přístup k funkci živá data (Preview) po [Povolení autorizace KUBERNETES RBAC](#configure-kubernetes-rbac-authorization) , AKS se přidala nová vazba role clusteru Kubernetes s názvem **clusterMonitoringUser**. Pro přístup k rozhraní Kubernetes API a koncovým bodům pro použití funkce živá data (Preview) má tato vazba role clusteru všechna potřebná oprávnění.
 
 Aby bylo možné používat funkci živá data (Preview) s tímto novým uživatelem, musíte být členem role [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) v prostředku clusteru AKS. Azure Monitor pro kontejnery, pokud je povoleno, je nakonfigurován k ověřování pomocí tohoto uživatele ve výchozím nastavení. Pokud vazba role clusterMonitoringUser neexistuje v clusteru, místo toho se použije **clusterUser** pro ověřování.
 
 AKS vydal tuto novou vazbu role v lednu 2020, takže clustery vytvořené před lednem 2020 je neobsahují. Pokud máte cluster vytvořený před lednem 2020, můžete nový **clusterMonitoringUser** přidat do existujícího clusteru provedením operace Put v clusteru nebo provedením jakékoli jiné operace v clusteru, který provádí operaci Put v clusteru, jako je například aktualizace verze clusteru.
 
-## <a name="kubernetes-cluster-without-rbac-enabled"></a>Cluster Kubernetes bez RBAC povolen
+## <a name="kubernetes-cluster-without-kubernetes-rbac-enabled"></a>Cluster Kubernetes bez povoleného Kubernetes RBAC
 
 Pokud máte cluster Kubernetes, který není nakonfigurovaný s autorizací Kubernetes RBAC nebo se integruje s jednotným přihlašováním k Azure AD, nemusíte postupovat podle těchto kroků. Důvodem je to, že ve výchozím nastavení máte v konfiguraci jiného typu než RBAC oprávnění správce.
 
@@ -108,7 +108,7 @@ Registrace klienta Azure AD musí být znovu nakonfigurovaná, aby Azure Portal 
 Další informace o pokročilém nastavení zabezpečení v Kubernetes najdete v [dokumentaci k Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 >[!NOTE]
->Pokud vytváříte nový cluster s podporou RBAC, přečtěte si téma [integrace Azure Active Directory se službou Azure Kubernetes](../../aks/azure-ad-integration-cli.md) a postup při konfiguraci ověřování Azure AD. Všimněte si, že během postupu vytvoření klientské aplikace se v této části zvýrazní dvě adresy URL pro přesměrování, které je potřeba vytvořit pro Azure Monitor pro kontejnery odpovídající hodnotám uvedeným v kroku 3 níže.
+>Pokud vytváříte nový cluster s podporou RBAC Kubernetes, přečtěte si téma věnované [integraci Azure Active Directory se službou Azure Kubernetes](../../aks/azure-ad-integration-cli.md) a postupujte podle pokynů ke konfiguraci ověřování Azure AD. Všimněte si, že během postupu vytvoření klientské aplikace se v této části zvýrazní dvě adresy URL pro přesměrování, které je potřeba vytvořit pro Azure Monitor pro kontejnery odpovídající hodnotám uvedeným v kroku 3 níže.
 
 ### <a name="client-registration-reconfiguration"></a>Konfigurace registrace klienta
 
@@ -134,7 +134,7 @@ Další informace o pokročilém nastavení zabezpečení v Kubernetes najdete v
 Aby bylo možné získat přístup k funkci živá data (Preview), musí mít každý účet Azure AD udělené oprávnění k příslušným rozhraním API v Kubernetes. Postup pro udělení Azure Active Directory účtu se podobá postupu popsanému v části [ověřování RBAC Kubernetes](#configure-kubernetes-rbac-authorization) . Než použijete šablonu konfigurace YAML pro váš cluster, nahraďte **clusterUser** v rámci **ClusterRoleBinding** požadovaným uživatelem.
 
 >[!IMPORTANT]
->Pokud se uživateli, kterému udělíte vazbu RBAC, nachází ve stejném tenantovi Azure AD, přiřaďte oprávnění na základě třídy userPrincipalName. Pokud je uživatel v jiném tenantovi služby Azure AD, dotaz na a použijte vlastnost objectId.
+>Pokud je uživateli, kterému udělíte vazbu Kubernetes RBAC, ve stejném tenantovi Azure AD, přiřaďte oprávnění na základě třídy userPrincipalName. Pokud je uživatel v jiném tenantovi služby Azure AD, dotaz na a použijte vlastnost objectId.
 
 Další nápovědu ke konfiguraci **ClusterRoleBinding** clusteru AKS najdete v tématu [vytvoření vazby Kubernetes RBAC](../../aks/azure-ad-integration-cli.md#create-kubernetes-rbac-binding).
 

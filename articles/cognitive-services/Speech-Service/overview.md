@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 08/20/2020
+ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: 14b9429de5432680e5203e392827efa32e2a2a38
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 291ac7804109b098b556e38c57ca493ba74f1b14
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015392"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528886"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?
 
@@ -30,14 +30,14 @@ Následující funkce jsou součástí služby Speech. Pomocí odkazů v této t
 |---------|---------|-------------|-----|------|
 | [Převod řeči na text](speech-to-text.md) | Převod řeči na text v reálném čase | Převod řeči na text transcribes nebo přeloží zvukové streamy nebo místní soubory na text v reálném čase, který mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Použití převodu řeči na text s [Language Understanding (Luis)](../luis/index.yml) k odvození záměrů uživatele z přepisu řeči a fungování hlasových příkazů. | [Ano](./speech-sdk.md) | [Ano](#reference-docs) |
 | | [Dávkové zpracování řeči na text](batch-transcription.md) | Batch Speech-to-text umožňuje asynchronní převod řeči na text s velkými objemy zvukového zvuku, který je uložený v Azure Blob Storage. Kromě převodu zvukového zvuku na text, Batch Speech-to-text také umožňuje diarization a mínění-Analysis. | Ne | [Ano](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
-| | [Konverzace s více zařízeními](multi-device-conversation.md) | Připojení více zařízení nebo klientů v rámci konverzace pro odesílání hlasových a textových zpráv s jednoduchou podporou pro přepis a překlady| Yes | Ne |
-| | [Přepis konverzace](./conversation-transcription.md) | Umožňuje rozpoznávání řeči v reálném čase, identifikaci mluvčího a diarization. Je ideální pro zdlouhavého přepisování schůzky na osobu s možností odlišit reproduktory. | Yes | Ne |
+| | [Konverzace s více zařízeními](multi-device-conversation.md) | Připojení více zařízení nebo klientů v rámci konverzace pro odesílání hlasových a textových zpráv s jednoduchou podporou pro přepis a překlady| Ano | Ne |
+| | [Přepis konverzace](./conversation-transcription.md) | Umožňuje rozpoznávání řeči v reálném čase, identifikaci mluvčího a diarization. Je ideální pro zdlouhavého přepisování schůzky na osobu s možností odlišit reproduktory. | Ano | Ne |
 | | [Vytváření modelů Custom Speech](#customize-your-speech-experience) | Pokud používáte převod řeči na text pro rozpoznávání a přepis v jedinečném prostředí, můžete vytvořit a vyškolit vlastní modely akustického, jazyka a výslovnosti pro řešení hluku nebo slovníku specifického pro konkrétní obor. | Ne | [Ano](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | [Převod textu na řeč](text-to-speech.md) | Převod textu na řeč | Převod textu na řeč převede vstupní text na syntetizované rozpoznávání řeči pomocí [jazyka SSML (Speech syntézy)](speech-synthesis-markup.md). Vyberte si ze standardních hlasů a hlasy neuronové (viz [Podpora jazyků](language-support.md)). | [Ano](./speech-sdk.md) | [Ano](#reference-docs) |
 | | [Vytváření vlastních hlasů](#customize-your-speech-experience) | Vytvářejte vlastní hlasová písma, která jsou jedinečná pro vaši značku nebo produkt. | Ne | [Ano](#reference-docs) |
 | [Překlad řeči](speech-translation.md) | Překlad řeči | Překlad řeči umožňuje překlady řeči v reálném čase pro aplikace, nástroje a zařízení v reálném čase. Použijte tuto službu pro překlad řeči a převod řeči na text. | [Ano](./speech-sdk.md) | Ne |
 | [Hlasoví asistenti](voice-assistants.md) | Hlasoví asistenti | Hlasové asistenti, kteří používají službu pro rozpoznávání řeči, umožňují vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku. Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a implementací pomocníka, která používá kanál s přímým přístupem na platformě bot nebo integrované vlastní příkazy (Preview) pro dokončení úkolu. | [Ano](voice-assistants.md) | Ne |
-| [Rozpoznávání mluvčího](speaker-recognition-overview.md) | Identifikace & ověření mluvčího | Služba rozpoznávání mluvčího poskytuje algoritmy pro ověřování a identifikaci mluvčích podle jejich jedinečných vlastností hlasu. Rozpoznávání mluvčího slouží k zodpovězení otázky "kdo se mluví?". | Yes | [Ano](/rest/api/speakerrecognition/) |
+| [Rozpoznávání mluvčího](speaker-recognition-overview.md) | Identifikace & ověření mluvčího | Služba rozpoznávání mluvčího poskytuje algoritmy pro ověřování a identifikaci mluvčích podle jejich jedinečných vlastností hlasu. Rozpoznávání mluvčího slouží k zodpovězení otázky "kdo se mluví?". | Ano | [Ano](/rest/api/speakerrecognition/) |
 
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
@@ -134,6 +134,17 @@ Další produkty nabízejí modely řeči optimalizované pro konkrétní účel
 | Převod řeči na text | [Custom Speech](https://aka.ms/customspeech) | Modely rozpoznávání řeči můžete přizpůsobit vašim potřebám a dostupným datům. Překonání překážek rozpoznávání řeči, například mluveného stylu, slovníku a hluku na pozadí. |
 | Převod textu na řeč | [Vlastní hlas](https://aka.ms/customvoice) | Vytvořte si rozpoznatelný jedinečný hlas vašich aplikací pro převod textu na řeč pomocí vašich dostupných dat o hlasu. Hlasové výstupy můžete ještě více ladit úpravou sady hlasových parametrů. |
 
+## <a name="deploy-on-premises-using-docker-containers"></a>Nasazení místně pomocí kontejnerů Docker
+
+[Použijte kontejnery služby Speech](speech-container-howto.md) k nasazení funkcí rozhraní API místně. Tyto kontejnery Docker umožňují přiblížit službu k vašim datům pro účely dodržování předpisů, zabezpečení nebo jiných provozních důvodů. Služba rozpoznávání řeči nabízí tyto kontejnery:
+
+* Standardní převod řeči na text
+* Custom Speech na text
+* Standardní převod textu na řeč
+* Neuronové převodu textu na řeč
+* Vlastní převod textu na řeč (Náhled)
+* Rozpoznávání jazyka řeči (Preview)
+
 ## <a name="reference-docs"></a>Referenční dokumenty
 
 - [Speech SDK](./speech-sdk.md)
@@ -141,6 +152,7 @@ Další produkty nabízejí modely řeči optimalizované pro konkrétní účel
 - [REST API: Převod řeči na text](rest-speech-to-text.md)
 - [REST API: převod textu na řeč](rest-text-to-speech.md)
 - [REST API: přepis a přizpůsobení Batch](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
+
 
 ## <a name="next-steps"></a>Další kroky
 

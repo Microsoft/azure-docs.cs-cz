@@ -2,33 +2,38 @@
 title: Segmenty sítě VMware HCX
 description: Pro VMware HCX jsou potřeba čtyři sítě.
 ms.topic: include
-ms.date: 09/28/2020
-ms.openlocfilehash: 8137b4383d2a243d53db317db6f5a78b3bc68e67
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.date: 11/23/2020
+ms.openlocfilehash: 48894c532c97b70cde1473fb8b81f406ded70343
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173614"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95529723"
 ---
 <!-- Used in avs-production-ready-deployment.md and tutorial-deploy-vmware-hcx.md -->
 
 Pro VMware HCX jsou potřeba čtyři sítě:
 
-- **Síť pro správu:** Obvykle se jedná o stejnou síť pro správu, která se používá v clusteru vSphere. Minimálně Identifikujte dvě IP adresy v tomto segmentu sítě pro VMware HCX. (V závislosti na vašem nasazení možná budete potřebovat větší počet čísel.)
+- **Síť pro správu:** Obvykle se jedná o stejnou síť pro správu, která se používá v clusteru vSphere. Minimálně Identifikujte dvě IP adresy v tomto segmentu sítě pro VMware HCX. V závislosti na vašem nasazení budete možná potřebovat větší čísla.
 
-- **vMotion síť:** Obvykle se jedná o stejnou síť, která se používá pro vMotion v clusteru vSphere.  Minimálně Identifikujte dvě IP adresy v tomto segmentu sítě pro VMware HCX. (V závislosti na vašem nasazení možná budete potřebovat větší počet čísel.)  
+   > [!NOTE]
+   > Metoda, kterou doporučujeme vytvořit síť/26. V síti/26 můžete použít až 10 sítí a 60 síťových zařízení (-1 na síť služby). Můžete roztáhnout osm sítí na rozšíření sítě pomocí privátních cloudů řešení Azure VMware.
+   >
+   
+- **vMotion síť:** Obvykle se jedná o stejnou síť, která se používá pro vMotion v clusteru vSphere.  Minimálně Identifikujte dvě IP adresy v tomto segmentu sítě pro VMware HCX. V závislosti na vašem nasazení budete možná potřebovat větší čísla.  
 
    Síť vMotion musí být vystavena v distribuovaném virtuálním přepínači nebo v vSwitch0. Pokud není, upravte prostředí.
 
    > [!NOTE]
-   > Pokud tato síť není směrována (soukromá), je to v pořádku.
+   > Tato síť může být soukromá (nesměrována).
 
-- **Síť pro odesílání:** Chcete vytvořit novou síť pro HCX pro odchozí připojení VMware a roztáhnout ji do svého clusteru vSphere přes skupinu portů. Minimálně Identifikujte dvě IP adresy v tomto segmentu sítě pro VMware HCX. (V závislosti na vašem nasazení možná budete potřebovat větší počet čísel.)  
-
-   > [!NOTE]
-   > Doporučenou metodou je vytvořit síť o velikosti/29, ale bude to mít jakákoli síť.
-
-- **Síť replikace:** Chcete vytvořit novou síť pro replikaci VMware HCX a tuto síť do svého clusteru vSphere rozšíříte přes skupinu portů. Minimálně Identifikujte dvě IP adresy v tomto segmentu sítě pro VMware HCX. (V závislosti na vašem nasazení možná budete potřebovat větší počet čísel.)
+- **Síť pro odesílání:** Chcete vytvořit novou síť pro HCX pro odchozí připojení VMware a roztáhnout ji do svého clusteru vSphere přes skupinu portů. Minimálně Identifikujte dvě IP adresy v tomto segmentu sítě pro VMware HCX. V závislosti na vašem nasazení budete možná potřebovat větší čísla.  
 
    > [!NOTE]
-   > Doporučenou metodou je vytvořit síť o velikosti/29, ale bude to mít jakákoli síť.
+   > Metoda, kterou doporučujeme vytvořit síť/26. V síti/26 můžete použít až 10 sítí a 60 síťových zařízení (-1 na síť služby). Můžete roztáhnout osm sítí na rozšíření sítě pomocí privátních cloudů řešení Azure VMware.
+   >
+   
+- **Síť replikace:** To je volitelné. Chcete vytvořit novou síť pro replikaci VMware HCX a tuto síť do svého clusteru vSphere rozšíříte přes skupinu portů. Minimálně Identifikujte dvě IP adresy v tomto segmentu sítě pro VMware HCX. V závislosti na vašem nasazení budete možná potřebovat větší čísla.
+
+   > [!NOTE]
+   > Tato konfigurace je možná jenom v případě, že hostitelé místního clusteru používají vyhrazenou replikaci VMkernel Network.  Pokud Váš místní cluster nemá definovanou vyhrazenou VMkernel síť pro replikaci, nemusíte tuto síť vytvářet.

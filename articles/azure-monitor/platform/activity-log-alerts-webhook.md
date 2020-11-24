@@ -4,12 +4,12 @@ description: Přečtěte si o schématu JSON, které se pošle na adresu URL Web
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: 0ebaf7f0cc52ac131573226dfff5516581745c67
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 026613c3f5710137fb110153b34f9ed74bbf8a7b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104270"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522783"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
 V rámci definice skupiny akcí můžete nakonfigurovat koncové body Webhooku tak, aby přijímaly oznámení o výstrahách protokolu aktivit. Pomocí webhooků můžete tato oznámení směrovat do jiných systémů pro následné zpracování nebo vlastní akce. V tomto článku se dozvíte, jak se datová část příspěvku HTTP na Webhook líbí.
@@ -262,14 +262,14 @@ Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení 
 | conditionType |Vždy "Event" |
 | name |Název pravidla výstrahy. |
 | id |ID prostředku výstrahy |
-| Popis |Popis výstrahy nastavený při vytvoření výstrahy |
+| description |Popis výstrahy nastavený při vytvoření výstrahy |
 | subscriptionId |ID předplatného Azure. |
 | časové razítko |Čas, kdy byla událost vygenerována službou Azure, která zpracovala požadavek. |
 | resourceId |ID prostředku ovlivněného prostředku |
 | resourceGroupName |Název skupiny prostředků pro ovlivněný prostředek. |
 | properties |Sada `<Key, Value>` párů (to znamená `Dictionary<String, String>` ), která obsahuje podrobnosti o události. |
 | event |Prvek, který obsahuje metadata o události. |
-| autorizace |Vlastnosti Role-Based Access Control události. Tyto vlastnosti obvykle zahrnují akci, roli a obor. |
+| autorizace |Vlastnosti řízení přístupu na základě role v Azure Tyto vlastnosti obvykle zahrnují akci, roli a obor. |
 | category |Kategorie události Mezi podporované hodnoty patří administrativní, výstraha, zabezpečení, ServiceHealth a doporučení. |
 | volající |E-mailová adresa uživatele, který provedl operaci, deklaraci hlavního názvu uživatele (UPN) nebo deklaraci identity SPN na základě dostupnosti. Pro určitá systémová volání může mít hodnotu null. |
 | correlationId |Obvykle identifikátor GUID ve formátu řetězce. Události s ID korelace patří stejné větší akci a obvykle sdílejí ID korelace. |

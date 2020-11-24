@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 6fd20cd9e3172d6ce80d2c18c2cfa41fcc044929
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8021d659c144bfb68c2714f1680b6ad27a51b56a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92508025"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522341"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je privátní koncový bod Azure?
 
@@ -28,7 +28,7 @@ Privátní koncový bod Azure je síťové rozhraní, které vás privátně a z
 |Podsíť    |  Podsíť pro nasazení a přidělování privátních IP adres z virtuální sítě. Požadavky na podsíť najdete v části omezení v tomto článku.         |
 |Prostředek privátního propojení    |   Prostředek privátního propojení pro připojení pomocí ID prostředku nebo aliasu ze seznamu dostupných typů. Pro veškerý provoz odeslaný do tohoto prostředku se vygeneruje jedinečný identifikátor sítě.       |
 |Cílový podprostředek   |      Prostředek, který se má připojit. Každý typ prostředku privátního propojení má různé možnosti pro výběr na základě předvolby.    |
-|Metoda schválení připojení    |  Automatické nebo ruční. V závislosti na oprávněních řízení přístupu na základě role (RBAC) může být váš soukromý koncový bod schválen automaticky. Pokud se pokusíte připojit k prostředku privátního propojení bez RBAC, použijte ruční metodu, která vlastníkovi prostředku povolí schválení připojení.        |
+|Metoda schválení připojení    |  Automatické nebo ruční. V závislosti na oprávněních řízení přístupu na základě role Azure (Azure RBAC) může být váš soukromý koncový bod schválen automaticky. Pokud se pokusíte připojit k prostředku privátního propojení bez Azure RBAC, použijte ruční metodu, která vlastníkovi prostředku umožní schválení připojení.        |
 |Zpráva požadavku     |  Můžete zadat zprávu, aby požadovaná připojení byla schválena ručně. Tato zpráva se dá použít k identifikaci konkrétního požadavku.        |
 |Stav připojení   |   Vlastnost jen pro čtení, která určuje, zda je privátní koncový bod aktivní. K odeslání provozu lze použít pouze privátní koncové body ve schváleném stavu. Další stavy k dispozici: <br>-**Schváleno**: připojení bylo automaticky nebo schváleno a je připraveno k použití.</br><br>-**Čeká na vyřízení**: připojení bylo vytvořeno ručně a uživatel čeká na schválení vlastníkem prostředku privátního odkazu.</br><br>-**Odmítnuto**: připojení bylo odmítnuto vlastníkem prostředku privátního odkazu.</br><br>-**Odpojeno**: připojení bylo odebráno vlastníkem prostředku privátního odkazu. Soukromý koncový bod se bude jednat o informativní a měl by se odstranit pro vyčištění. </br>|
 
@@ -45,9 +45,9 @@ Tady jsou některé klíčové podrobnosti o privátních koncových bodech:
  
 - Pomocí stejného prostředku privátního propojení lze vytvořit více privátních koncových bodů. V případě jedné sítě, která používá běžnou konfiguraci serveru DNS, doporučujeme použít jeden privátní koncový bod pro daný prostředek privátního propojení, aby nedocházelo k duplicitním položkám nebo konfliktům v překladu názvů DNS. 
  
-- Ve stejné virtuální síti je možné vytvořit více privátních koncových bodů v rámci jedné nebo více podsítí. Existují omezení počtu privátních koncových bodů, které můžete v rámci předplatného vytvořit. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Ve stejné virtuální síti je možné vytvořit více privátních koncových bodů v rámci jedné nebo více podsítí. Existují omezení počtu privátních koncových bodů, které můžete v rámci předplatného vytvořit. Podrobnosti najdete v tématu [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
-- Odběr z prostředku privátního propojení musí být také zaregistrován pomocí poskytovatele prostředků obraťte. Network. Podrobnosti najdete v tématu [poskytovatelé prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+- Odběr z prostředku privátního propojení musí být také zaregistrován pomocí poskytovatele prostředků obraťte. Network. Podrobnosti najdete v tématu [poskytovatelé prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
 
  
 ## <a name="private-link-resource"></a>Prostředek privátního propojení 
@@ -136,7 +136,7 @@ Následující tabulka obsahuje seznam známých omezení při použití privát
 - [Vytvoření privátního koncového bodu pro SQL Database pomocí portálu](create-private-endpoint-portal.md)
 - [Vytvoření privátního koncového bodu pro SQL Database pomocí prostředí PowerShell](create-private-endpoint-powershell.md)
 - [Vytvoření privátního koncového bodu pro SQL Database pomocí rozhraní příkazového řádku](create-private-endpoint-cli.md)
-- [Vytvoření privátního koncového bodu pro účet úložiště pomocí portálu](create-private-endpoint-storage-portal.md)
+- [Vytvoření privátního koncového bodu pro účet úložiště pomocí portálu](./tutorial-private-endpoint-storage-portal.md)
 - [Vytvoření privátního koncového bodu pro účet Azure Cosmos pomocí portálu](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Vytvoření vlastní služby privátního propojení pomocí Azure PowerShell](create-private-link-service-powershell.md)
 - [Vytvoření vlastního privátního odkazu pro Azure Database for PostgreSQL s jedním serverem pomocí portálu](../postgresql/howto-configure-privatelink-portal.md)

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: c831e099eca3cd6e6da20f55ad19980ae8e9ddc5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 557f0a6a37747d3a461ced8de16fd1fcf0d1abab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545918"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524109"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Konfigurace síťového virtuálního zařízení ve službě Azure HDInsight
 
@@ -22,7 +22,7 @@ ms.locfileid: "92545918"
 Azure Firewall značka plně kvalifikovaného názvu domény se automaticky nakonfiguruje tak, aby umožňovala provoz pro mnoho běžných důležitých plně kvalifikovaných názvů domén. Použití jiného síťového virtuálního zařízení bude vyžadovat, abyste nakonfigurovali řadu dalších funkcí. Při konfiguraci síťového virtuálního zařízení mějte na paměti následující faktory:
 
 * Služby podporující koncové body služby je možné konfigurovat pomocí koncových bodů služby, které mají za následek obejít síťové virtuální zařízení, obvykle pro náklady nebo požadavky na výkon.
-* Pokud je ResourceProviderConnection nastavené na *odchozí* , můžete pro úložiště a SQL servery použít privátní koncové body pro metaúložiště a nemusíte je PŘIDÁVAT do síťové virtuální zařízení.
+* Pokud je ResourceProviderConnection nastavené na *odchozí*, můžete pro úložiště a SQL servery použít privátní koncové body pro metaúložiště a nemusíte je PŘIDÁVAT do síťové virtuální zařízení.
 * Závislosti IP adres jsou pro přenos bez HTTP/S (provoz TCP i UDP).
 * V zařízení síťové virtuální zařízení se dají schvalovat koncové body HTTP/HTTPS s plně kvalifikovaným názvem domény.
 * Přiřaďte směrovací tabulku, kterou vytvoříte ve své podsíti HDInsight.
@@ -41,7 +41,7 @@ Volitelně můžete povolit jeden nebo více následujících koncových bodů s
 
 | **Koncový bod** | **Podrobnosti** |
 |---|---|
-| [Zde](hdinsight-management-ip-addresses.md) publikované IP adresy | Tyto IP adresy jsou pro poskytovatele prostředků HDInsight a měly by být součástí UDR, aby se zabránilo asymetrickému směrování. Toto pravidlo je potřeba jenom v případě, že je ResourceProviderConnection nastavené na *příchozí* . Pokud je ResourceProviderConnection nastavené na *odchozí* , pak tyto IP adresy nejsou v udr potřeba.  |
+| [Zde](hdinsight-management-ip-addresses.md) publikované IP adresy | Tyto IP adresy jsou pro poskytovatele prostředků HDInsight a měly by být součástí UDR, aby se zabránilo asymetrickému směrování. Toto pravidlo je potřeba jenom v případě, že je ResourceProviderConnection nastavené na *příchozí*. Pokud je ResourceProviderConnection nastavené na *odchozí* , pak tyto IP adresy nejsou v udr potřeba.  |
 | Privátní IP adresy AAD-DS | Vyžaduje se jenom pro clustery ESP, pokud virtuální sítě nejsou partnerského vztahu.|
 
 
@@ -57,6 +57,7 @@ Následující seznam obsahuje jenom několik plně kvalifikovaných názvů dom
 | security.ubuntu.com:80                                                |
 | ocsp.msocsp.com:80                                                    |
 | ocsp.digicert.com:80                                                  |
+| microsoft.com/pki/mscorp/cps/default.htm:443                                      |
 | microsoft.com:80                                                      |
 |login.windows.net:443                                                  |
 |login.microsoftonline.com:443                                          |

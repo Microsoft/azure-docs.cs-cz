@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
-ms.date: 10/28/2020
-ms.openlocfilehash: 0d7f455e748a52595839cc509720bf7ad5b9b617
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: mvc, devx-track-azurecli, contperfq2
+ms.date: 11/23/2020
+ms.openlocfilehash: f5b8497772a14e9613977c9cdc22025e8e58b92c
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099058"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509469"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Rychlý Start: vytváření a Správa aplikací logiky pomocí Azure CLI
 
 V tomto rychlém startu se dozvíte, jak vytvářet a spravovat Logic Apps pomocí [rozšíření Azure CLI Logic Apps](/cli/azure/ext/logic/logic) ( `az logic` ). Z příkazového řádku můžete vytvořit aplikaci logiky pomocí souboru JSON pro definici pracovního postupu aplikace logiky. Aplikaci logiky pak můžete spravovat spuštěním operací, jako například `list` , `show` ( `get` ), `update` a `delete` z příkazového řádku.
 
 > [!WARNING]
-> Rozšíření Azure CLI Logic Apps v současné době *experimentální* a nezabývá se *zákaznickou podporou* . Toto rozšíření CLI používejte opatrně, zejména pokud se rozhodnete použít rozšíření v produkčním prostředí.
+> Rozšíření Azure CLI Logic Apps v současné době *experimentální* a nezabývá se *zákaznickou podporou*. Toto rozšíření CLI používejte opatrně, zejména pokud se rozhodnete použít rozšíření v produkčním prostředí.
 
 Pokud s Logic Apps začínáte, můžete se také seznámit s tím, jak vytvořit své první aplikace logiky [prostřednictvím Azure Portal](quickstart-create-first-logic-app-workflow.md), [v aplikaci Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)a [v Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md).
 
@@ -63,7 +63,7 @@ Výstup ukazuje, `provisioningState` Jak `Succeeded` se vaše skupina prostředk
 
 ## <a name="workflow-definition"></a>Definice pracovního postupu
 
-Než [vytvoříte novou aplikaci logiky](#create-logic-apps-from-cli) nebo [aktualizujete existující aplikaci logiky](#update-logic-apps-from-cli) pomocí rozhraní příkazového řádku Azure, budete potřebovat definici pracovního postupu pro vaši aplikaci logiky. V Azure Portal můžete zobrazit definici zdrojové pracovní postup aplikace logiky ve formátu JSON přepnutím ze zobrazení **Návrháře** do **zobrazení kódu** .
+Než [vytvoříte novou aplikaci logiky](#create-logic-apps-from-cli) nebo [aktualizujete existující aplikaci logiky](#update-logic-apps-from-cli) pomocí rozhraní příkazového řádku Azure, budete potřebovat definici pracovního postupu pro vaši aplikaci logiky. V Azure Portal můžete zobrazit definici zdrojové pracovní postup aplikace logiky ve formátu JSON přepnutím ze zobrazení **Návrháře** do **zobrazení kódu**.
 
 Když spustíte příkazy pro vytvoření nebo aktualizaci aplikace logiky, vaše definice pracovního postupu se nahraje jako požadovaný parametr ( `--definition` ). Definici pracovního postupu musíte vytvořit jako soubor JSON, který následuje po [schématu jazyka definice pracovního postupu](./logic-apps-workflow-definition-language.md).
 
@@ -223,7 +223,7 @@ Výsledky můžete filtrovat podle následujících [volitelných parametrů](/c
 | --------- | ----- | ----------- |
 | Název skupiny prostředků | `--resource-group -g` | Název skupiny prostředků, podle které chcete filtrovat výsledky. |
 | Počet položek | `--top` | Počet položek, které jsou součástí vašich výsledků. |
-| Filtrovat | `--filter` | Typ filtru, který používáte v seznamu. Můžete filtrovat podle stavu ( `State` ), triggeru ( `Trigger` ) a identifikátoru odkazovaného prostředku ( `ReferencedResourceId` ). |
+| Filtr | `--filter` | Typ filtru, který používáte v seznamu. Můžete filtrovat podle stavu ( `State` ), triggeru ( `Trigger` ) a identifikátoru odkazovaného prostředku ( `ReferencedResourceId` ). |
 
 ```azurecli
 

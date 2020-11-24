@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 06/22/2020
-ms.openlocfilehash: fb81405e85d6e2653e0cf6c007c363493992161a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3417b59d0be9e285f8793ef598abb7f98bda7549
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419967"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527985"
 ---
 # <a name="networking-in-azure-red-hat-on-openshift-4"></a>Sítě v Azure Red Hat na OpenShift 4
 
@@ -98,7 +98,7 @@ V Azure Red Hat OpenShift 4 jsou k dispozici následující nastavení sítě:
     * Veřejné sítě mají přístup k serveru rozhraní API Public.
     * "Privátní" Server rozhraní API přiřadil privátní IP adresu z podsítě hlavních serverů, k dispozici pouze pomocí propojených sítí (s partnerskými virtuálními sítěmi, jinými podsítěmi v clusteru). V zastoupení zákazníka se vytvoří privátní zóna DNS.
 * **Viditelnost** příchozího přenosu – při spuštění [příkazu AZ ARO Create](tutorial-create-cluster.md#create-the-cluster)se nastaví viditelnost rozhraní API.
-    * "Veřejné" trasy budou ve výchozím nastavení veřejné služby Azure Standard Load Balancer (může být změněno).
+    * "Veřejné" trasy budou ve výchozím nastavení veřejné Standard Load Balancer (může být změněno).
     * "Soukromé" trasy budou výchozím nastavením interního nástroje pro vyrovnávání zatížení (Tento stav může být změněn).
 
 ## <a name="network-security-groups"></a>Skupiny zabezpečení sítě

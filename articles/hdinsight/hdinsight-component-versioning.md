@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 282f13c89c527b096573b67b5d539de821e89032
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 82297b81ebe99301574e99ef438cc81c711dbeff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900794"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533680"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Součásti a verze Apache dostupné pro Azure HDInsight
 
@@ -32,7 +32,7 @@ Verze komponent spojené s verzemi clusterů HDInsight jsou uvedené v následuj
 |------------------------|---------------|-----------------------------|
 | Apache Hadoop a PŘÍZe | 3.1.1         | 2.7.3                       |
 | Apache Tez             | 0.9.1         | 0.7.0                       |
-| Apache prasete             | 0.16.0        | 0.16.0                      |
+| Apache prasete             | 0.16.1        | 0.16.0                      |
 | Apache Hive            | 3.1.0         | 1.2.1 (2.1.0 on ESP Interactive Query) |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
@@ -89,7 +89,7 @@ Tato tabulka obsahuje seznam verzí HDInsight, které jsou k dispozici v Azure P
 | HDInsight 3,6 Spark             | 2,2               | Vyřazení 30. června 2020          |                             |
 | HDInsight 3,6 Spark             | 2.1               | Vyřazení 30. června 2020          |                             |
 | HDInsight 3,6 Kafka             | 1,1               | 31. prosince 2020                      | 30. června 2021               |
-| HDInsight 3,6 Kafka             | 1.0               | Vyřazení 30. června 2020.         |                             |
+| HDInsight 3,6 Kafka             | 1,0               | Vyřazení 30. června 2020.         |                             |
 | Adaptéry HDInsight 3,6             | 1,1               | 31. prosince 2020                      | 30. června 2021               |
 | Interaktivní dotaz HDInsight 3,6 | 2.1               | 31. prosince 2020                      | 30. června 2021               |
 | HDInsight 3,6 – zaplavení             | 1,1               | 31. prosince 2020                      | 30. června 2021               |
@@ -119,7 +119,7 @@ Tato tabulka obsahuje seznam verzí HDInsight, které nejsou k dispozici v Azure
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Smlouva o úrovni služeb pro verze clusteru HDInsight
 
-Smlouva o úrovni služeb je definovaná jako _okno podpory_ . Okno podpory je časový interval, po který podporuje zákaznická služba a podpora Microsoftu verzi HDInsight. Pokud verze prošla _datem vypršení platnosti podpory_ , cluster HDInsight je mimo okno podpory. Podpora vypršení platnosti pro HDInsight verze X (po dostupnosti novější verze X + 1) je novější z těchto verzí:
+Smlouva o úrovni služeb je definovaná jako _okno podpory_. Okno podpory je časový interval, po který podporuje zákaznická služba a podpora Microsoftu verzi HDInsight. Pokud verze prošla _datem vypršení platnosti podpory_, cluster HDInsight je mimo okno podpory. Podpora vypršení platnosti pro HDInsight verze X (po dostupnosti novější verze X + 1) je novější z těchto verzí:
 
 - **Vzorec 1:** Přidejte 180 dní do data, kdy byl vydán cluster HDInsight verze X.
 - **Vzorec 2:** Do data přidejte 90 dní, kdy je ve Azure Portal k dispozici cluster HDInsight verze X + 1.

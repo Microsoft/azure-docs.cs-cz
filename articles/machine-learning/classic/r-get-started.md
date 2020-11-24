@@ -9,17 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: b7c442aaf6484e8e47bd6d00c91023fba43af75d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bca2f0229a15f44ff8f3589a9c1e80032036b97c
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325025"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95507202"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Začínáme s Azure Machine Learning Studio (Classic) v R
 
-**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
-
+**platí pro:** ![ Toto je značka zaškrtnutí, což znamená, že se tento článek týká Machine Learning Studio (Classic). ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ Toto je X, což znamená, že se tento článek týká Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 <!-- Stephen F Elston, Ph.D. -->
 V tomto kurzu se naučíte, jak pomocí Azure Machine Learning Studio (Classic) vytvořit, otestovat a spustit kód R. Na konci budete mít kompletní řešení předpovědi.
@@ -122,9 +121,9 @@ Pokud v tuto chvíli nerozumíte poslednímu řádku tohoto kódu, přečtěte s
 
 RStudio je široce používané integrované vývojové prostředí (IDE) pro R. RStudio použijeme k úpravě, testování a ladění kódu R použitého v tomto průvodci. Po otestování a přípravě kódu R můžete z editoru RStudio vyjímat a vkládat do Machine Learning Studio (Classic) spustit modul skriptu jazyka [r][execute-r-script] .
 
-Pokud nemáte na stolním počítači nainstalovaný programovací jazyk R, udělejte to teď. Bezplatné stahování Open Source jazyka R je k dispozici v [komplexní síti archivu r (Cran)](https://www.r-project.org/). Soubory ke stažení jsou k dispozici pro Windows, Mac OS a Linux/UNIX. Vyberte okolní zrcadlo a postupujte podle pokynů ke stažení. Kromě toho CRAN obsahuje mnoho užitečných analýz a datových balíčků pro manipulaci s daty.
+Pokud nemáte na stolním počítači nainstalovaný programovací jazyk R, udělejte to teď. Bezplatné stahování Open Source jazyka R je k dispozici v [komplexní síti archivu r (Cran)](https://www.r-project.org/). Soubory ke stažení jsou k dispozici pro Windows, macOS a Linux/UNIX. Vyberte okolní zrcadlo a postupujte podle pokynů ke stažení. Kromě toho CRAN obsahuje mnoho užitečných analýz a datových balíčků pro manipulaci s daty.
 
-Pokud s RStudio začínáte, měli byste si stáhnout a nainstalovat desktopovou verzi. Soubory ke stažení RStudio pro Windows, Mac OS a Linux/UNIX najdete na adrese [RStudio](http://www.rstudio.com/products/RStudio/). Postupujte podle pokynů uvedených k instalaci RStudio na stolní počítač.
+Pokud s RStudio začínáte, měli byste si stáhnout a nainstalovat desktopovou verzi. Soubory ke stažení RStudio pro Windows, macOS a Linux/UNIX najdete na adrese [RStudio](http://www.rstudio.com/products/RStudio/). Postupujte podle pokynů uvedených k instalaci RStudio na stolní počítač.
 
 Kurz Úvod do RStudio je k dispozici v [části použití prostředí IDE RStudio](https://support.rstudio.com/hc/sections/200107586-Using-RStudio).
 
@@ -159,7 +158,7 @@ Teď, když máme nějaká data v Machine Learning Studio (Classic), musíme vyt
 1. Přetáhněte do experimentu **csdairydata.csv datovou sadu** .
 1. V poli **Hledat položky experimentu** v horní části levého podokna zadejte příkaz [Spustit skript jazyka R][execute-r-script]. Modul se zobrazí v seznamu hledání.
 1. Přetáhněte na paletu modul [spuštění skriptu jazyka R][execute-r-script] .
-1. Připojte výstup **csdairydata.csv datové sady** ke vstupu úplně vlevo ( **DataSet1.** ) [skriptu Execute jazyka R][execute-r-script].
+1. Připojte výstup **csdairydata.csv datové sady** ke vstupu úplně vlevo (**DataSet1.**) [skriptu Execute jazyka R][execute-r-script].
 1. Vyberte **Uložit**.
 
 V tomto okamžiku by experiment měl vypadat podobně jako v tomto příkladu.
@@ -1276,9 +1275,9 @@ Z těchto výsledků vidíte, že přidání sezónních faktorů do modelu sni�
 
 RStudio je dobře zdokumentováná. Tady jsou některé odkazy na klíčové oddíly dokumentace k RStudio, které vám pomohou začít.
 
-* **Vytváření projektů** : pomocí RStudio můžete organizovat a spravovat kód R v projektech. Další informace naleznete v tématu [using Projects](https://support.rstudio.com/hc/articles/200526207-Using-Projects). Postupujte podle těchto pokynů a vytvořte projekt pro příklady kódu R v tomto článku.
-* **Upravit a spustit kód r** : RStudio poskytuje integrované prostředí pro úpravy a spouštění kódu r. Další informace naleznete v tématu [Editing and vykonávající Code](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
-* **Ladění** : RStudio zahrnuje výkonné funkce ladění. Další informace o těchto funkcích naleznete v tématu [ladění pomocí RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio). Informace o funkcích řešení potíží s zarážkou najdete v tématu [řešení potíží s zarážkou](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
+* **Vytváření projektů**: pomocí RStudio můžete organizovat a spravovat kód R v projektech. Další informace naleznete v tématu [using Projects](https://support.rstudio.com/hc/articles/200526207-Using-Projects). Postupujte podle těchto pokynů a vytvořte projekt pro příklady kódu R v tomto článku.
+* **Upravit a spustit kód r**: RStudio poskytuje integrované prostředí pro úpravy a spouštění kódu r. Další informace naleznete v tématu [Editing and vykonávající Code](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
+* **Ladění**: RStudio zahrnuje výkonné funkce ladění. Další informace o těchto funkcích naleznete v tématu [ladění pomocí RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio). Informace o funkcích řešení potíží s zarážkou najdete v tématu [řešení potíží s zarážkou](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
 
 ## <a name="further-reading"></a><a id="appendixb"></a>Další čtení
 

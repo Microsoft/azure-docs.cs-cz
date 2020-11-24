@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: a91be0798dc67bfb751807b385d638343b89562b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 14dfa6111bbda8750b175c8c9b2a96321e1af2c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957040"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519400"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
@@ -35,11 +35,11 @@ Tato funkce poskytuje popisky mínění (například "negativní", "neutrální"
 
 Počínaje verzí v 3.1 verze Preview je dolování stanovisek funkcí Analýza mínění. Tato funkce také označovaná jako Analýza mínění založená na aspektech při zpracování přirozeného jazyka (NLP). Tato funkce poskytuje podrobnější informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu.
 
-## <a name="key-phrase-extraction"></a>extrakce klíčových frází,
+## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
 Pomocí [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) můžete rychle identifikovat hlavní koncepty v textu. Například v textu "potravina byla Delicious a dostali jsme milované pracovníky", Extrakce klíčových frází vrátí hlavní body pro komunikaci: "jídla" a "milované pracovníky".
 
-## <a name="language-detection"></a>rozpoznávání jazyka,
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 Rozpoznání jazyka může [detekovat jazyk, ve kterém je vstupní text napsán](how-tos/text-analytics-how-to-language-detection.md) , a nahlásit jeden kód jazyka pro každý dokument odeslaný v žádosti v široké škále jazyků, variant, dialektů a některých regionálních/kulturních jazyků. Kód jazyka se spáruje s skóre spolehlivosti.
 
@@ -47,9 +47,14 @@ Rozpoznání jazyka může [detekovat jazyk, ve kterém je vstupní text napsán
 
 Rozpoznávání pojmenovaných entit (NER) dokáže [identifikovat a kategorizovat entity](how-tos/text-analytics-how-to-entity-linking.md) ve vašem textu, protože uživatelé, místa, organizace, množství, známé entity jsou také rozpoznány a propojeny s dalšími informacemi na webu.
 
-## <a name="use-containers"></a>Použití kontejnerů
+## <a name="deploy-on-premises-using-docker-containers"></a>Nasazení místně pomocí kontejnerů Docker
 
-[Použijte kontejnery analýza textu](how-tos/text-analytics-how-to-install-containers.md) jako místní řešení pro text dolování a používání rozhraní API. Tyto kontejnery Docker umožňují extrahovat klíčové fráze, detekovat jazyk a analyzovat mínění blíž k vašim datům.
+[Použijte kontejnery analýza textu](how-tos/text-analytics-how-to-install-containers.md) k nasazení funkcí rozhraní API místně. Tyto kontejnery Docker umožňují přiblížit službu k vašim datům pro účely dodržování předpisů, zabezpečení nebo jiných provozních důvodů. Analýza textu nabízí následující kontejnery:
+
+* Analýza mínění
+* extrakce klíčových frází (Preview)
+* rozpoznávání jazyka (Preview)
+* Analýza textu pro stav (Preview)
 
 ## <a name="asynchronous-operations"></a>Asynchronních operace
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 404999cfac5037702eb61fdf74b2c5245ce9eb30
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74270222"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95526115"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Úrovně výkonu úložiště objektů blob bloku
 
@@ -83,6 +83,6 @@ Nemůžete přesouvat data uložená v účtu úložiště blob bloku úrovně P
 Vyhodnoťte horkou, studenou a archivní v účtech GPv2 a BLOB Storage.
 
 - [Přečtěte si informace o prodehydratacích dat objektů BLOB z archivní úrovně.](storage-blob-rehydration.md)
-- [Zapnutí metrik Azure Storage a vyhodnocení používání aktuálních účtů úložiště](../common/storage-enable-and-view-metrics.md)
+- [Zapnutí metrik Azure Storage a vyhodnocení používání aktuálních účtů úložiště](./monitor-blob-storage.md)
 - [Ověření cen horké, studené a archivní úrovně v účtech Blob Storage a GPv2 v jednotlivých oblastech](https://azure.microsoft.com/pricing/details/storage/)
 - [Posouzení cen přenosu dat](https://azure.microsoft.com/pricing/details/data-transfers/)

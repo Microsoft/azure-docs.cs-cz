@@ -5,20 +5,31 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 11/23/2020
 ms.author: victorh
-ms.openlocfilehash: 34134f2c790851d34db7b5327aa76350d54d137d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650cf1e9b0e9fbbadc5a783cad844898698bf017
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075459"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509735"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Přehled zásad Azure Firewall Manageru
 
-Zásada brány firewall je prostředek Azure, který obsahuje kolekce pravidel NAT, síť a aplikace a také nastavení analýzy hrozeb. Jedná se o globální prostředek, který se dá použít napříč několika Azure Firewall instancemi v zabezpečených virtuálních rozbočovačích a virtuálních sítích rozbočovačů. Zásady fungují napříč oblastmi a předplatnými.
+Zásada brány firewall je prostředek Azure, který obsahuje kolekce pravidel NAT, síť a aplikace a nastavení analýzy hrozeb. Jedná se o globální prostředek, který se dá použít napříč několika Azure Firewall instancemi v zabezpečených virtuálních rozbočovačích a virtuálních sítích rozbočovačů. Zásady fungují napříč oblastmi a předplatnými.
 
 ![Zásady Azure Firewall Manageru](media/policy-overview/policy-overview.png)
+
+## <a name="availability"></a>Dostupnost
+
+Zásada brány firewall je vysoce dostupný a automaticky replikovaný prostředek. Pokud dojde k vzácnější havárii, operace zásad brány firewall převzetí služeb při selhání do spárovaných oblastí Azure. Po převzetí služeb při selhání operací obnovení do primární oblasti Azure pro synchronní i asynchronní operace. 
+
+Spárované oblasti poskytují několik výhod, včetně:
+- fyzická izolace oddělená minimálně 300 mil.
+- rychlejší zotavení po havárii
+- splnění požadavků na zasedací data, která jsou pověřená geograficky
+
+Další informace o spárovaných oblastech najdete v tématu [provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure](../best-practices-availability-paired-regions.md).
 
 ## <a name="policy-creation-and-association"></a>Vytvoření a přidružení zásad
 
@@ -47,7 +58,7 @@ Díky dědičnosti jsou všechny změny nadřazené zásady automaticky aplikov�
 Azure Firewall podporuje tradiční pravidla a zásady. V následující tabulce jsou porovnávány zásady a pravidla:
 
 
-| Předmět | Zásady  | Pravidla |
+| Předmět | Zásada  | Pravidla |
 | ------- | ------- | ----- |
 |Contains     |NAT, síť, pravidla použití, vlastní nastavení DNS a DNS, skupiny IP a nastavení analýzy hrozeb (včetně seznamu povolených)|Pravidla pro překlad adres (NAT), síť a aplikace, vlastní nastavení DNS a DNS, skupiny IP adres a nastavení analýzy hrozeb (včetně seznamu povolených)|
 |Proti     |Virtuální rozbočovače a virtuální sítě|Pouze virtuální sítě|

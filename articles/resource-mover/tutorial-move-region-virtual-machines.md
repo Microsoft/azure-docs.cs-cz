@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3a5489241aa15ce105dbe4d89086aff00373ca55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f21db00ecc9ff2668698f53a4d20f5bae525721
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603964"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520437"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Kurz: přesunutí virtuálních počítačů Azure napříč oblastmi
 
@@ -37,14 +37,14 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti. 
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete. Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 -  Ověřte, že máte přístup *vlastníka* k předplatnému obsahujícímu prostředky, které chcete přesunout.
     - Při prvním přidání prostředku pro konkrétní dvojici zdroje a cíle v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.
     - Pokud chcete vytvořit identitu a přiřadit jí požadovanou roli (přispěvatel nebo správce přístupu uživatele ve zdrojovém předplatném), účet, který použijete k přidání prostředků, potřebuje oprávnění *vlastníka* k tomuto předplatnému. [Přečtěte si další informace](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) o rolích Azure.
-- Předplatné potřebuje dostatek kvót k vytvoření prostředků, které přesouváte v cílové oblasti. Pokud nemá kvótu, [požádejte o další omezení](/azure/azure-resource-manager/management/azure-subscription-service-limits).
+- Předplatné potřebuje dostatek kvót k vytvoření prostředků, které přesouváte v cílové oblasti. Pokud nemá kvótu, [požádejte o další omezení](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Ověřte ceny a poplatky spojené s cílovou oblastí, do které přesouváte virtuální počítače. Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) vám pomůžeme.
     
 
@@ -71,41 +71,41 @@ Vyberte prostředky, které chcete přesunout.
 - Prostředky, které již byly přidány pro přesun mezi oblastmi, nejsou zobrazeny.
 - Prostředky přesunete do cílové oblasti ve stejném předplatném jako zdrojová oblast. Pokud chcete změnit předplatné, můžete to udělat po přesunu prostředků.
 
-1. V Azure Portal vyhledejte *prostředek Resource stěhovací*. Pak v části **služby**vyberte **Azure Resource stěhovací**.
+1. V Azure Portal vyhledejte *prostředek Resource stěhovací*. Pak v části **služby** vyberte **Azure Resource stěhovací**.
 
     ![Výsledky hledání pro prostředek Resource stěhovací v Azure Portal](./media/tutorial-move-region-virtual-machines/search.png)
 
-2. V **přehledu**klikněte na **Začínáme.**
+2. V **přehledu** klikněte na **Začínáme.**
 
     ![Tlačítko pro přidání prostředků pro přesun do jiné oblasti](./media/tutorial-move-region-virtual-machines/get-started.png)
 
-3. V části **přesunout prostředky**  >  **zdroj + cíl**vyberte zdrojové předplatné a oblast.
-4. V části **cíl**vyberte oblast, do které chcete virtuální počítače přesunout. Potom klikněte na **Další**.
+3. V části **přesunout prostředky**  >  **zdroj + cíl** vyberte zdrojové předplatné a oblast.
+4. V části **cíl** vyberte oblast, do které chcete virtuální počítače přesunout. Potom klikněte na **Další**.
 
     ![Stránka pro výběr zdrojové a cílové oblasti](./media/tutorial-move-region-virtual-machines/source-target.png)
 
-6. V nabídce **prostředky k přesunutí**klikněte na **vybrat prostředky**.
-7. V části **vybrat prostředky**vyberte virtuální počítač. Je možné přidat pouze [prostředky podporované pro Move](#check-vm-requirements). Pak klikněte na **Hotovo**.
+6. V nabídce **prostředky k přesunutí** klikněte na **vybrat prostředky**.
+7. V části **vybrat prostředky** vyberte virtuální počítač. Je možné přidat pouze [prostředky podporované pro Move](#check-vm-requirements). Pak klikněte na **Hotovo**.
 
     ![Na stránce vyberte virtuální počítače, které se mají přesunout.](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
-8.  V nabídce **prostředky k přesunutí**klikněte na **Další**.
-9. V části **Revize a přidat**zkontrolujte nastavení zdroje a cíle. 
+8.  V nabídce **prostředky k přesunutí** klikněte na **Další**.
+9. V části **Revize a přidat** zkontrolujte nastavení zdroje a cíle. 
 
     ![Stránku ke kontrole nastavení a pokračování v přesunutí](./media/tutorial-move-region-virtual-machines/review.png)
-10. Klikněte na **pokračovat**a začněte přidávat prostředky.
+10. Klikněte na **pokračovat** a začněte přidávat prostředky.
 11. Po úspěšném dokončení procesu přidávání klikněte na ikonu oznámení na **Přidat prostředky pro přesun** .
 12. Po kliknutí na oznámení zkontrolujte prostředky na stránce **napříč oblastmi** .
 
 > [!NOTE]
 > - Přidané prostředky jsou ve stavu *Příprava čeká na vyřízení* .
-> - Pokud chcete odebrat prostředek z kolekce přesunutí, metoda pro to závisí na tom, kde se nacházíte v procesu přesunutí. [Další informace](remove-move-resources.md).
+> - Pokud chcete odebrat prostředek z kolekce přesunutí, metoda pro to závisí na tom, kde se nacházíte v procesu přesunutí. [Přečtěte si další informace](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Vyřešit závislosti
 
 1. Pokud zdroje zobrazují zprávu *ověřit závislosti* ve sloupci **problémy** , klikněte na tlačítko **ověřit závislosti** . Spustí se proces ověřování.
 2. Pokud se najde závislosti, klikněte na **přidat závislosti**. 
-3. V části **přidat závislosti**vyberte závislé prostředky > **přidat závislosti**. Sledujte průběh oznámení.
+3. V části **přidat závislosti** vyberte závislé prostředky > **přidat závislosti**. Sledujte průběh oznámení.
 
     ![Přidat závislosti](./media/tutorial-move-region-virtual-machines/add-dependencies.png)
 
@@ -123,14 +123,14 @@ Vyberte prostředky, které chcete přesunout.
 
 Než budete moct připravit a přesunout virtuální počítače, musí být v cílové oblasti přítomna skupina prostředků virtuálních počítačů. 
 
-### <a name="prepare-to-move-the-source-resource-group"></a>Příprava na přesunutí zdrojové skupiny prostředků
+### <a name="prepare-to-move-the-source-resource-group"></a>Příprava na přesun zdrojové skupiny prostředků
 
 Během procesu přípravy Resource dogeneruje pomocí nastavení skupiny prostředků Azure Resource Manager (ARM) šablony. Prostředky ve skupině prostředků nejsou ovlivněny.
 
 Připravte následujícím způsobem:
 
-1. V **různých oblastech**vyberte zdrojovou skupinu prostředků > **připravit**.
-2. V nabídce **Příprava prostředků**klikněte na **připravit**.
+1. V **různých oblastech** vyberte zdrojovou skupinu prostředků > **připravit**.
+2. V nabídce **Příprava prostředků** klikněte na **připravit**.
 
     ![Příprava skupiny prostředků](./media/tutorial-move-region-virtual-machines/prepare-resource-group.png)
 
@@ -142,7 +142,7 @@ Připravte následujícím způsobem:
 
 Zahajte přesun následujícím způsobem:
 
-1. V **různých oblastech**vyberte skupinu prostředků, > **zahájit přesun** .
+1. V **různých oblastech** vyberte skupinu prostředků, > **zahájit přesun** .
 2. LN **přesunout prostředky**, klikněte na **Spustit přesun**. Skupina prostředků se přesune do stavu *zahájení probíhajícího přesunu* .
 3. Po zahájení přesunu se vytvoří cílová skupina prostředků na základě vygenerované šablony ARM. Zdrojová skupina prostředků se přesune do stavu *čeká na přesunutí* .
 
@@ -150,7 +150,7 @@ Zahajte přesun následujícím způsobem:
 
 Potvrzení a dokončení procesu přesunutí:
 
-1. V **oblasti napříč oblastmi**vyberte skupinu prostředků > **Potvrdit přesunutí**.
+1. V **oblasti napříč oblastmi** vyberte skupinu prostředků > **Potvrdit přesunutí**.
 2. LN **přesunout prostředky**, klikněte na **Potvrdit**.
 
 > [!NOTE]
@@ -160,7 +160,7 @@ Potvrzení a dokončení procesu přesunutí:
 
 Teď, když je zdrojová skupina prostředků přesunutá, můžete připravit na přesun dalších prostředků.
 
-1. V **různých oblastech**vyberte prostředky, které chcete připravit. 
+1. V **různých oblastech** vyberte prostředky, které chcete připravit. 
 
     ![Stránka pro výběr přípravy na další prostředky](./media/tutorial-move-region-virtual-machines/prepare-other.png)
 
@@ -179,8 +179,8 @@ Teď, když je zdrojová skupina prostředků přesunutá, můžete připravit n
 
 Díky připraveným prostředkům teď můžete zahájit přesun. 
 
-1. V **různých oblastech**vyberte prostředky se stavem *zahájit přesun čeká na vyřízení*. Pak klikněte na **Spustit přesun**.
-2. V nabídce **přesunout prostředky**klikněte na možnost **Spustit přesun**.
+1. V **různých oblastech** vyberte prostředky se stavem *zahájit přesun čeká na vyřízení*. Pak klikněte na **Spustit přesun**.
+2. V nabídce **přesunout prostředky** klikněte na možnost **Spustit přesun**.
 
     ![Kliknutí pro tlačítko Zahájit přesun](./media/tutorial-move-region-virtual-machines/initiate-move.png)
 
@@ -199,15 +199,15 @@ Díky připraveným prostředkům teď můžete zahájit přesun.
 Po počátečním přesunu se můžete rozhodnout, jestli chcete přesunutí potvrdit, nebo ho zahodit. 
 
 - **Zahodit**: při testování můžete zrušit jeho přesunutí a nechcete skutečně přesunout zdrojový prostředek. Zrušením přesunutí se daný prostředek vrátí do stavu *zahájení přesunu čeká na vyřízení*.
-- **Potvrdit**: potvrzení dokončí přesun do cílové oblasti. Po potvrzení bude zdrojový prostředek ve stavu *čeká na odstranění zdroje*a Vy se můžete rozhodnout, jestli ho chcete odstranit.
+- **Potvrdit**: potvrzení dokončí přesun do cílové oblasti. Po potvrzení bude zdrojový prostředek ve stavu *čeká na odstranění zdroje* a Vy se můžete rozhodnout, jestli ho chcete odstranit.
 
 
 ## <a name="discard-the-move"></a>Zrušit přesun 
 
 Přesunutí můžete zrušit následujícím způsobem:
 
-1. V **různých oblastech**vyberte prostředky s *potvrzením změny stavu čeká na přesunutí*a klikněte na **zrušit přesun**.
-2. V nabídce **Zrušit přesunutí**klikněte na **Zahodit**.
+1. V **různých oblastech** vyberte prostředky s *potvrzením změny stavu čeká na přesunutí* a klikněte na **zrušit přesun**.
+2. V nabídce **Zrušit přesunutí** klikněte na **Zahodit**.
 3. Sledujte průběh přesunu na panelu oznámení.
 
 
@@ -218,8 +218,8 @@ Přesunutí můžete zrušit následujícím způsobem:
 
 Pokud chcete dokončit proces přesunutí, potvrďte přesunutí. 
 
-1. V **různých oblastech**vyberte prostředky s *potvrzením změny stavu čeká*na potvrzení a klikněte na **Potvrdit přesunutí**.
-2. V nabídce **potvrzení prostředků**klikněte na **Potvrdit**.
+1. V **různých oblastech** vyberte prostředky s *potvrzením změny stavu čeká* na potvrzení a klikněte na **Potvrdit přesunutí**.
+2. V nabídce **potvrzení prostředků** klikněte na **Potvrdit**.
 
     ![Stránka pro potvrzení přesunutí prostředků](./media/tutorial-move-region-virtual-machines/commit-resources.png)
 
@@ -242,7 +242,7 @@ Pokud chcete dokončit proces přesunutí, potvrďte přesunutí.
 
 Po přesunutí můžete případně Odstranit prostředky ve zdrojové oblasti. 
 
-1. V **různých oblastech**klikněte na název každého zdrojového prostředku, který chcete odstranit.
+1. V **různých oblastech** klikněte na název každého zdrojového prostředku, který chcete odstranit.
 2. Na stránce vlastnosti každého prostředku vyberte možnost **Odstranit**.
 
 ## <a name="delete-additional-resources-created-for-move"></a>Odstranění dalších prostředků vytvořených pro přesun
