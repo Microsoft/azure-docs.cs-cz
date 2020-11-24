@@ -67,6 +67,8 @@
           href: ./ag/application-gateway-waf-faq.md
     - name: Front Door
       items:
+        - name: Optimalizace
+          href: ./afds/waf-front-door-tuning.md
         - name: Vlastní pravidla
           href: ./afds/waf-front-door-custom-rules.md
         - name: Seznamy vyloučení

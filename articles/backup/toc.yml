@@ -4,6 +4,8 @@
   items:
     - name: Přehled služby Azure Backup
       href: backup-overview.md
+    - name: Co je nového ve službě Azure Backup
+      href: whats-new.md
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/backup/'
 - name: Rychlé starty

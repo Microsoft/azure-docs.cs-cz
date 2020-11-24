@@ -260,6 +260,8 @@
       href: install-vm-agent-offline.md
     - name: Řešení potíží s agentem virtuálního počítače s Windows
       href: windows-azure-guest-agent.md
+    - name: Řešení potíží s linuxovým agentem virtuálního počítače
+      href: linux-azure-guest-agent.md
 - name: Zálohování a obnovení
   items:
     - name: Řešení potíží se zálohováním u virtuálních počítačů Azure

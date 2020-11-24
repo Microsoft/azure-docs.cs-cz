@@ -539,6 +539,8 @@
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: Zpracování ITP v Safari
           href: reference-third-party-cookies-spas.md
+        - name: Použití rozhraní API pro nepřetržité vyhodnocování přístupu
+          href: app-resilience-continuous-access-evaluation.md
     - name: Konfigurace aplikací
       displayName: App configuration
       items:

@@ -75,6 +75,8 @@
           href: spring-cloud-howto-launch-from-source.md
         - name: Použití IntelliJ k nasazení aplikací
           href: spring-cloud-tutorial-intellij-deploy-apps.md
+        - name: Nasazení Azure Spring Cloudu s využitím Azure PowerShellu
+          href: spring-cloud-howto-deploy-powershell.md
     - name: Konfigurace
       items:
         - name: 'Spuštění, zastavení a odstranění aplikace'
