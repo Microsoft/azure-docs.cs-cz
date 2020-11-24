@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: bd6ba091b3715741af929613600a59511e7cdb0b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 16292999bf8c01615a9125ffaa9f93fc4b2a8ec2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94498317"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95756209"
 ---
 # <a name="log-analytics-tutorial"></a>Kurz Log Analytics
 Log Analytics je nástroj v Azure Portal, který umožňuje upravovat a spouštět dotazy protokolu z dat shromažďovaných službou Azure Monitor protokoly a interaktivně analyzovat jejich výsledky. Pomocí Log Analytics dotazů můžete načíst záznamy, které odpovídají konkrétním kritériím, identifikovat trendy, analyzovat vzorce a poskytovat nejrůznější přehledy o vašich datech. 
@@ -23,13 +23,13 @@ Tento kurz vás provede rozhraním Log Analytics, který vám pomůže začít s
 > * Zápis a spouštění jednoduchých dotazů a změna časového rozsahu pro dotazy
 > * Filtrování, řazení a seskupení výsledků dotazu
 > * Zobrazení, úprava a sdílení vizuálů výsledků dotazu
-> * Uložení, načtení, export a kopírování dotazů a výsledků
+> * Načtení, export a kopírování dotazů a výsledků
 
 > [!IMPORTANT]
 > V tomto kurzu se používá funkce Log Analytics k sestavení a spuštění dotazu namísto práce s samotným dotazem. Budete využívat Log Analytics funkce pro vytvoření jednoho dotazu a použití dalšího ukázkového dotazu. Až budete připraveni zjistit syntaxi dotazů a začít přímo upravovat samotný dotaz, Projděte si [kurz dotazovacího jazyka Kusto](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor). V tomto kurzu se seznámíte s několika příklady dotazů, které můžete upravovat a spouštět v Log Analytics s využitím několika funkcí, které se v tomto kurzu naučíte.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto kurzu se používá ukázkové [prostředí Log Analytics](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), které zahrnuje spoustu ukázkových dat podporujících Ukázkové dotazy. Můžete také použít vlastní předplatné Azure, ale možná nebudete mít data ve stejných tabulkách.
 
 ## <a name="open-log-analytics"></a>Otevřít Log Analytics
@@ -59,7 +59,7 @@ Toto je nejjednodušší dotaz, který můžeme zapsat. Pouze vrátí všechny z
 
 Uvidíte, že máme výsledky. Počet záznamů vrácených dotazem se zobrazí v pravém dolním rohu. 
 
-## <a name="filter"></a>Filtrovat
+## <a name="filter"></a>Filtr
 
 Pojďme do dotazu přidat filtr, aby se snížil počet vrácených záznamů. V levém podokně vyberte kartu **Filtr** . Tato možnost zobrazí různé sloupce ve výsledcích dotazu, které lze použít k filtrování výsledků. Nejvyšší hodnoty v těchto sloupcích se zobrazí s počtem záznamů s touto hodnotou. Klikněte na **správce** v části **CategoryValue** a pak **použijte & spustit**. 
 

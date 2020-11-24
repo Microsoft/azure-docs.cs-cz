@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 40929a165e7a3afbbc92a472c352172723745040
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 18b62e34ab57d1d7e937eb21b9ed2a7feffa758c
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533187"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95758944"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu v JavaScriptu pomocí toku kódu ověřování
 
@@ -55,7 +55,7 @@ Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobn
 > 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure AD, kterého chcete použít.
 > 1. Vyberte [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908).
 > 1. Vyberte **Nová registrace**.
-> 1. Když se zobrazí stránka **Zaregistrovat aplikaci** , zadejte název pro vaši aplikaci.
+> 1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
 > 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 > 1. Vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
 > 1. V levém podokně registrované aplikace vyberte **ověřování**.
@@ -114,10 +114,10 @@ Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobn
 > - `Enter_the_Application_Id_Here` je **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali.
 > - `Enter_the_Cloud_Instance_Id_Here` je instancí cloudu Azure. V případě hlavního nebo globálního cloudu Azure zadejte `https://login.microsoftonline.com/` . Pro **národní** cloudy (například Čína) si přečtěte téma [národní cloudy](authentication-national-cloud.md).
 > - `Enter_the_Tenant_info_here` je nastaveno na jednu z následujících možností:
->   - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři* , nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta**. Například, `contoso.microsoft.com`.
->   - Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři* , nahraďte tuto hodnotu hodnotou `organizations` .
->   - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft* , nahraďte tuto hodnotu hodnotou `common` . **Pro tento rychlý Start** použijte `common` .
->   - Pokud chcete omezit podporu *jenom na osobní účty Microsoft* , nahraďte tuto hodnotu hodnotou `consumers` .
+>   - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta**. Například, `contoso.microsoft.com`.
+>   - Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu hodnotou `organizations` .
+>   - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu hodnotou `common` . **Pro tento rychlý Start** použijte `common` .
+>   - Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu hodnotou `consumers` .
 > - `Enter_the_Redirect_Uri_Here` je `http://localhost:3000/`.
 >
 > `authority`Pokud používáte hlavní (globální) cloud Azure, měla by být hodnota v *authConfig.js* podobná následující:
@@ -127,7 +127,7 @@ Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobn
 > ```
 >
 > > [!TIP]
-> > Pokud chcete najít hodnoty **ID aplikace (klienta)** , **ID adresáře (tenanta)** a **podporované typy účtů** , na stránce s **přehledem** registrace aplikace se podívejte do Azure Portal.
+> > Pokud chcete najít hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **podporované typy účtů**, na stránce s **přehledem** registrace aplikace se podívejte do Azure Portal.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: bb4b69902f73a22cbd2b0fd5ad97c547ceb76a5c
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3ba08f11fb52fc0ffe3acda5e81e21b7e7629628
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912323"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95757416"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Kurz: Vytvoření aplikace pro zpracování formulářů pomocí Tvůrce AI
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Trénování modelu
 > * Publikování modelu pro použití ve službě Azure Power apps nebo automatizace Power
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Sada alespoň pěti forem stejného typu, která se má použít pro data školení a testování. Tipy a možnosti pro vložení sady školicích dat najdete v tématu [Vytvoření školicích dat](./build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2128080).
 * Power apps nebo Power automatizuje License – viz [Průvodce licencováním](https://go.microsoft.com/fwlink/?linkid=2085130). Licence musí zahrnovat [Common data Service](https://powerplatform.microsoft.com/common-data-service/).
@@ -40,10 +40,10 @@ V tomto kurzu se naučíte:
 ## <a name="create-a-form-processing-project"></a>Vytvořit projekt zpracování formuláře
 
 1. Přejít na [Power Apps](https://make.powerapps.com/) nebo [Power Automatizujte](https://flow.microsoft.com/signin)a přihlaste se pomocí účtu organizace.
-1. V levém podokně vyberte sestavení pro **Tvůrce AI**  >  **Build** .
+1. V levém podokně vyberte sestavení pro **Tvůrce AI**  >  **Build**.
 1. Vyberte kartu pro **zpracování formuláře** .
 1. Zadejte název pro svůj model.
-1. Vyberte **Vytvořit** .
+1. Vyberte **Vytvořit**.
 
 ## <a name="upload-and-analyze-documents"></a>Nahrání a analýza dokumentů
 
@@ -61,9 +61,9 @@ Na stránce **Přidat dokumenty** musíte poskytnout ukázkové dokumenty, kter�
 
 ### <a name="upload-your-documents"></a>Nahrání dokumentů
 
-1. Vyberte **Přidat dokumenty** , vyberte aspoň pět dokumentů a pak vyberte **Nahrát** .
-1. Po dokončení nahrávání vyberte **Zavřít** .
-1. Pak vyberte **analyzovat** .
+1. Vyberte **Přidat dokumenty**, vyberte aspoň pět dokumentů a pak vyberte **Nahrát**.
+1. Po dokončení nahrávání vyberte **Zavřít**.
+1. Pak vyberte **analyzovat**.
 
 > [!NOTE] 
 > Po nahrání dokumentů můžete některé z nich odebrat nebo nahrát další.
@@ -89,8 +89,8 @@ Na stránce Výběr polí vyberte pole, která vás zajímají:
 
     Po kliknutí na zjištěné pole se zobrazí následující informace:
 
-    - **Název pole** : název popisku zjištěného pole.
-    - **Hodnota pole** : hodnota zjištěného pole.
+    - **Název pole**: název popisku zjištěného pole.
+    - **Hodnota pole**: hodnota zjištěného pole.
 
 > [!div class="mx-imgBorder"]
 > ![Stránka označování](./media/tutorial-ai-builder/select-fields-page.png)
@@ -101,16 +101,16 @@ Pokud pole, které chcete označit popiskem, nebylo automaticky zjištěno model
 
 ## <a name="train-your-model"></a>Trénování modelu
 
-1. Vyberte **Další** , abyste zkontrolovali vybraná pole formuláře. Pokud vše vypadá dobře, vyberte **Trénovat** k trénování modelu.
+1. Vyberte **Další**, abyste zkontrolovali vybraná pole formuláře. Pokud vše vypadá dobře, vyberte **Trénovat** k trénování modelu.
 
     > [!div class="mx-imgBorder"]
     > ![Stránka školení](./media/tutorial-ai-builder/summary-train-page.png)
-1. Po dokončení trénování vyberte **Přejít na stránku s podrobnostmi** na obrazovce **Trénování dokončeno** .
+1. Po dokončení trénování vyberte **Přejít na stránku s podrobnostmi** na obrazovce **Trénování dokončeno**.
 ## <a name="quick-test-your-model"></a>Rychlé otestování modelu
 
 Stránka s podrobnostmi vám umožní otestovat model před jeho publikováním nebo použitím:
 
-1. Na stránce s podrobnostmi vyberte **Rychlý test** .
+1. Na stránce s podrobnostmi vyberte **Rychlý test**.
 2. Můžete buď přetáhnout dokument, nebo vybrat **Odeslat ze zařízení** a nahrát testovací soubor. Rychlý test by měl výsledky zobrazit během pár sekund.
 3. Můžete vybrat možnost **začít znovu** a spustit další test nebo **Zavřít** , pokud jste hotovi.
 

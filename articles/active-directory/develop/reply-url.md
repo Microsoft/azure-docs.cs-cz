@@ -5,18 +5,18 @@ description: Popis omezení a omezení pro formát identifikátoru URI přesměr
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 10/29/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: a2838e40844b83d1e90789439ce286f2738e22c4
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331851"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95752778"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Omezení a omezení URI pro přesměrování (adresa URL odpovědi)
 
@@ -51,25 +51,32 @@ Pokud chcete přidat identifikátory URI pro přesměrování se schématem HTTP
 
 V [bodech RFC 8252, 8,3](https://tools.ietf.org/html/rfc8252#section-8.3) a [7,3](https://tools.ietf.org/html/rfc8252#section-7.3), se identifikátory URI pro přesměrování "Loopback" nebo "localhost" dodávají se dvěma speciálními požadavky:
 
-1. `http` Schémata identifikátorů URI jsou přijatelná, protože přesměrování zařízení nikdy neopouští. V takovém případě jsou přijatelné obě tyto podmínky:
-    - `http://127.0.0.1/myApp`
-    - `https://127.0.0.1/myApp`
-1. Vzhledem k dočasným rozsahům portů, které jsou často vyžadovány nativními aplikacemi, je součást portu (například `:5001` nebo `:443` ) ignorována pro účely porovnání identifikátoru URI přesměrování. V důsledku toho jsou všechny tyto hodnoty považovány za ekvivalentní:
-    - `http://127.0.0.1/MyApp`
-    - `http://127.0.0.1:1234/MyApp`
-    - `http://127.0.0.1:5000/MyApp`
-    - `http://127.0.0.1:8080/MyApp`
+1. `http` Schémata identifikátorů URI jsou přijatelná, protože přesměrování zařízení nikdy neopouští. V takovém případě jsou oba tyto identifikátory URI přijatelné:
+    - `http://localhost/myApp`
+    - `https://localhost/myApp`
+1. Vzhledem k dočasným rozsahům portů, které jsou často vyžadovány nativními aplikacemi, je součást portu (například `:5001` nebo `:443` ) ignorována pro účely porovnání identifikátoru URI přesměrování. V důsledku toho jsou všechny tyto identifikátory URI považovány za ekvivalentní:
+    - `http://localhost/MyApp`
+    - `http://localhost:1234/MyApp`
+    - `http://localhost:5000/MyApp`
+    - `http://localhost:8080/MyApp`
 
 Z pohledu vývoje to znamená několik věcí:
 
 * Neregistrujte více identifikátorů URI přesměrování, přičemž se liší pouze port. Přihlašovací server vybere jednu z nich a použije chování spojené s tímto identifikátorem URI přesměrování (například bez ohledu na to, zda se jedná o `web` `native` přesměrování typu a, nebo `spa` ).
 
     To je obzvláště důležité, pokud chcete použít různé toky ověřování ve stejné registraci aplikace, například udělení autorizačního kódu i implicitní tok. Aby bylo možné přidružit správné chování odpovědí každému identifikátoru URI přesměrování, musí mít přihlašovací server schopnost rozlišovat identifikátory URI pro přesměrování a nemůže tak učinit, pokud se liší pouze port.
-* Pokud potřebujete zaregistrovat více identifikátorů URI pro přesměrování na localhost pro testování různých toků během vývoje, rozlišit je pomocí komponenty *cesty* identifikátoru URI. Například `http://127.0.0.1/MyWebApp` neodpovídá `http://127.0.0.1/MyNativeApp` .
+* Pokud potřebujete zaregistrovat více identifikátorů URI pro přesměrování na localhost pro testování různých toků během vývoje, rozlišit je pomocí komponenty *cesty* identifikátoru URI. Například `http://localhost/MyWebApp` neodpovídá `http://localhost/MyNativeApp` .
 * Adresa zpětné smyčky IPv6 ( `[::1]` ) se momentálně nepodporuje.
-* Pokud chcete zabránit tomu, aby se vaše aplikace přerušila pomocí nesprávně nakonfigurovaných bran firewall nebo přejmenovaných síťových rozhraní, místo použijte adresu zpětné smyčky IP adresy `127.0.0.1` v identifikátoru URI přesměrování `localhost` .
 
-    Chcete-li použít `http` schéma s adresou zpětné smyčky IP `127.0.0.1` , je nutné v [manifestu aplikace](reference-app-manifest.md)v současné době Upravit atribut [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) .
+#### <a name="prefer-127001-over-localhost"></a>Preferovat 127.0.0.1 přes localhost
+
+Pokud chcete zabránit tomu, aby se vaše aplikace přerušila pomocí nesprávně nakonfigurovaných bran firewall nebo přejmenovaných síťových rozhraní, místo použijte adresu zpětné smyčky IP adresy `127.0.0.1` v identifikátoru URI přesměrování `localhost` . Například, `https://127.0.0.1`.
+
+Nemůžete však použít textové pole pro **přesměrování identifikátorů URI** v Azure Portal k přidání identifikátoru URI přesměrování založeného na zpětné smyčce, který používá `http` schéma:
+
+:::image type="content" source="media/reply-url/portal-01-no-http-loopback-redirect-uri.png" alt-text="Chybový dialog v Azure Portal zobrazuje nepovolený identifikátor URI přesměrování zpětné smyčky na základě protokolu http":::
+
+Chcete-li přidat identifikátor URI pro přesměrování, který používá `http` schéma s `127.0.0.1` adresou zpětné smyčky, je nutné v [manifestu aplikace](reference-app-manifest.md)v současné době Upravit atribut [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) .
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>Omezení zástupných znaků v identifikátorech URI pro přesměrování
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 2ce048ea8c9a4414b1c9f049569251c39d931c9a
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0858d448cf768dbe6ea48f07247725fac30da860
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174162"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95758885"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru Azure Log Analytics
 
@@ -41,14 +41,16 @@ Operace odstranění pracovního prostoru odstraní Správce prostředků prost�
 > [!NOTE] 
 > Nainstalovaná řešení a propojené služby, jako je váš účet Azure Automation, se trvale odeberou z pracovního prostoru v době odstranění a nedají se obnovit. Ty by měly být překonfigurovány po operaci obnovení, aby byl pracovní prostor v dříve nakonfigurovaném stavu.
 
-Pracovní prostor můžete odstranit pomocí [PowerShellu](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](/rest/api/loganalytics/workspaces/delete)nebo v [Azure Portal](https://portal.azure.com).
+Pracovní prostor můžete odstranit pomocí [PowerShellu](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0&preserve-view=true), [REST API](/rest/api/loganalytics/workspaces/delete)nebo v [Azure Portal](https://portal.azure.com).
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor a pak v horní části prostředního podokna klikněte na **Odstranit**  .
-4. Zobrazí se stránka s potvrzením, která zobrazuje příjem dat do pracovního prostoru za minulý týden. Zadejte název pracovního prostoru, který chcete potvrdit, a pak klikněte na **Odstranit**.
+4. Zobrazí se stránka s potvrzením, která zobrazuje příjem dat do pracovního prostoru za minulý týden. 
+5. Pokud chcete trvale odstranit pracovní prostor odebráním možnosti pro pozdější obnovení, zaškrtněte políčko **Odstranit pracovní prostor trvale** .
+6. Zadejte název pracovního prostoru, který chcete potvrdit, a pak klikněte na **Odstranit**.
 
    ![Potvrdit odstranění pracovního prostoru](media/delete-workspace/workspace-delete.png)
 
@@ -60,11 +62,12 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 ## <a name="permanent-workspace-delete"></a>Odstranění trvalého pracovního prostoru
 Metoda obnovitelného odstranění se nemusí vejít do některých scénářů, jako je například vývoj a testování, kde je třeba opakovat nasazení se stejným nastavením a názvem pracovního prostoru. V takových případech můžete pracovní prostor trvale odstranit a "přepsat" období obnovitelného odstranění. Operace odstranění trvalého pracovního prostoru uvolní název pracovního prostoru a nový pracovní prostor můžete vytvořit pomocí stejného názvu.
 
-
 > [!IMPORTANT]
 > Používejte trvalou operaci odstranění pracovního prostoru s opatrností, protože ji nejde vrátit zpět a nebudete moct obnovit pracovní prostor a jeho data.
 
-Přidáním značky '-ForceDelete ' můžete trvale odstranit pracovní prostor. Možnost-ForceDelete je aktuálně dostupná pomocí příkazu AZ. OperationalInsights 2.3.0 nebo vyšší. 
+Pokud chcete trvale odstranit pracovní prostor pomocí Azure Portal, zaškrtněte políčko **Odstranit pracovní prostor trvale** a potom klikněte na tlačítko **Odstranit** .
+
+Pokud chcete trvale odstranit pracovní prostor pomocí PowerShellu, přidejte značku '-ForceDelete ' k trvalému odstranění pracovního prostoru. Možnost-ForceDelete je aktuálně dostupná pomocí příkazu AZ. OperationalInsights 2.3.0 nebo vyšší. 
 
 ```powershell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -ForceDelete
@@ -82,7 +85,7 @@ Během období obnovitelného odstranění si můžete pracovní prostor obnovit
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**. Zobrazí se seznam pracovních prostorů, které máte ve vybraném oboru.
 3. Kliknutím na tlačítko **obnovit** v levém horním rohu otevřete stránku s pracovními prostory ve stavu obnovitelného odstranění, který je možné obnovit.
 
